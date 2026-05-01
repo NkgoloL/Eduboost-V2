@@ -64,6 +64,25 @@ Build locally with:
 mkdocs serve
 ```
 
+## Developer setup (local)
+
+To prepare a local developer environment, run the helper scripts below. They install the core runtime dependencies (excluding heavy ML inference packages) and frontend dependencies.
+
+1. Create a Python virtual environment and install backend dependencies:
+
+```bash
+./scripts/setup_dev_env.sh
+```
+
+2. Install frontend dependencies:
+
+```bash
+./scripts/setup_frontend.sh
+```
+
+Heavy ML and inference packages are intentionally separated (see `requirements-ml.txt` and `docker/requirements.inference.txt`).
+
+
 The V2 docs cover:
 - architecture
 - V2 API surface

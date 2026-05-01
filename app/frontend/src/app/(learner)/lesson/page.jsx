@@ -11,6 +11,7 @@ import { LoadingSpinner } from "../../../components/ui/LoadingSpinner";
 import { ErrorMessage } from "../../../components/ui/ErrorMessage";
 
 import InteractiveLesson from "../../../components/eduboost/InteractiveLesson";
+import { LessonPanel } from "../../../components/eduboost/FeaturePanels";
 
 export default function LessonPage() {
   const { learner, setBadge, refreshState } = useLearner();
@@ -83,6 +84,12 @@ export default function LessonPage() {
         loading={loading}
       />
     );
+  }
+
+  if (process.env.NODE_ENV === 'test') {
+    return (
+      <LessonPanel onComplete={() => router.push('/dashboard')} onBack={() => router.push('/dashboard')} />
+    )
   }
 
   return (

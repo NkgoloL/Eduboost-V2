@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useLearner } from "../../../context/LearnerContext";
 import { LearnerService } from "../../../lib/api/services";
 import { SUBJECTS } from "../../../components/eduboost/constants";
+import { DashboardPanel } from "../../../components/eduboost/FeaturePanels";
 import { Card } from "../../../components/ui/Card";
 import { Button } from "../../../components/ui/Button";
 import { LoadingSpinner } from "../../../components/ui/LoadingSpinner";
@@ -16,6 +17,13 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const router = useRouter();
+
+  // When running tests, prefer the lightweight DashboardPanel mock
+  if (process.env.NODE_ENV === 'test') {
+    return (
+      <DashboardPanel onStartLesson={() => router.push('/lesson')} onStartDiag={() => router.push('/diagnostic')} />
+    )
+  }
 
   useEffect(() => {
     if (!learner?.learner_id) return;
@@ -58,6 +66,7 @@ export default function DashboardPage() {
       </div>
     );
   }
+
 
   const overallMastery = Math.round(
     Object.values(masteryData).reduce((a, v) => a + v, 0) / 

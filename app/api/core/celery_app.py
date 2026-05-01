@@ -24,6 +24,7 @@ celery_app = Celery(
     include=[
         "app.api.tasks.plan_tasks",
         "app.api.tasks.report_tasks",
+        "app.api.tasks.backup_tasks",
     ],
 )
 
@@ -72,6 +73,11 @@ celery_app.conf.beat_schedule = {
         "schedule": crontab(
             hour=8, minute=0, day_of_week="monday"
         ),  # Monday 08:00 SAST
+        "options": {"queue": "batch"},
+    },
+    "daily-database-backup": {
+        "task": "eduboost.tasks.database_backup",
+        "schedule": crontab(hour=3, minute=0),  # 03:00 SAST daily
         "options": {"queue": "batch"},
     },
     "health-ping": {
