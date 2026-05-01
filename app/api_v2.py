@@ -11,7 +11,7 @@ from fastapi import FastAPI
 from app.core.logging import configure_logging
 from app.core.config import get_v2_settings
 from app.domain.schemas import HealthResponse
-from app.api_v2_routers import auth, learners, diagnostics, study_plans, parents, audit, lessons, gamification, system, assessments
+from app.api_v2_routers import auth, learners, diagnostics, study_plans, parents, audit, lessons, gamification, system, assessments, ether, judiciary
 
 settings = get_v2_settings()
 configure_logging(settings.log_level)
@@ -37,3 +37,5 @@ app.include_router(lessons.router)
 app.include_router(gamification.router)
 app.include_router(system.router)
 app.include_router(assessments.router)
+app.include_router(ether.router)
+app.include_router(judiciary.router)

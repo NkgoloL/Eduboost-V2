@@ -1,17 +1,20 @@
 """Diagnostic routes for EduBoost V2."""
 
-from fastapi import APIRouter, BackgroundTasks, HTTPException
+from fastapi import APIRouter, BackgroundTasks, HTTPException, Depends
 
 from app.domain.api_v2_models import DiagnosticRunRequest
 from app.services.audit_service import AuditService
 from app.services.diagnostic_service_v2 import DiagnosticServiceV2
 from app.services.quota_service import QuotaExceededError
+from app.core.dependencies import get_current_user
 
 router = APIRouter(prefix="/api/v2/diagnostics", tags=["V2 Diagnostics"])
 
 
 @router.post("/{learner_id}")
-async def run_diagnostic(learner_id: str, request: DiagnosticRunRequest, background_tasks: BackgroundTasks):
+async def run_diagnostic(learner_id: str, request: DiagnosticRunRequest, background_tasks: BackgroundTasks, user: dict = Depends(get_current_user)):
+    if user.get("role") not in {"Student", "Parent", "Admin"}:
+        raise HTTPException(status_code=403, detail="Forbidden")
     try:
         result = await DiagnosticServiceV2().run_diagnostic(
             learner_id=learner_id,

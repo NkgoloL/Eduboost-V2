@@ -20,3 +20,15 @@ class LearnerService:
             home_language=learner.home_language,
             overall_mastery=learner.overall_mastery,
         )
+
+    async def delete_learner(self, learner_id: str) -> bool:
+        """Execute a Right to Erasure request for a learner."""
+        from app.services.audit_service import AuditService
+        success = await self.repository.delete_by_id(learner_id)
+        if success:
+            await AuditService().log_event(
+                event_type="LEARNER_ERASURE_EXECUTED",
+                learner_id=learner_id,
+                payload={"status": "purged"},
+            )
+        return success
