@@ -13,4 +13,8 @@ node_modules/
 .env
 .env.*
 !.env.example
+# Ignore tracked Celery Beat runtime file
 app/api/celerybeat-schedule*
+# Ignore other runtime artifacts
+.pytest_cache/
+.venv/
