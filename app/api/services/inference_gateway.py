@@ -1,0 +1,286 @@
+"""
+EduBoost SA — Inference Gateway
+PII Scrubber → Groq (primary) → Anthropic (secondary) → Inference Microservice (offline fallback)
+Learner identifiers NEVER reach the LLM.
+
+Offline inference is delegated to a dedicated HTTP microservice (docker/Dockerfile.inference)
+that runs torch + transformers in isolation. The API container has NO torch dependency.
+
+Provider chain:
+  1. Groq         (primary — ultra-fast, cloud)
+  2. Anthropic    (secondary — cloud fallback)
+  3. Inference svc (offline — http://inference:9100 — only when EDUBOOST_OFFLINE_MODE=true)
+"""
+
+import os
+import json
+import structlog
+from typing import Any, Optional
+from tenacity import (
+    retry,
+    stop_after_attempt,
+    wait_exponential,
+    retry_if_exception_type,
+)
+
+import httpx
+import time
+from groq import AsyncGroq
+from anthropic import AsyncAnthropic
+
+from app.api.core.config import settings
+from app.api.core.pii_patterns import PII_SCRUBBER_PATTERNS
+from app.api.core.metrics import (
+    LLM_INFERENCE_DURATION,
+    LLM_INFERENCE_TOTAL,
+    LLM_COST_TOTAL,
+)
+
+log = structlog.get_logger()
+
+# ── Offline Mode Configuration ───────────────────────────────────────────────
+_OFFLINE_MODE = os.environ.get("EDUBOOST_OFFLINE_MODE", "false").lower() == "true"
+_INFERENCE_SERVICE_URL = os.environ.get("INFERENCE_SERVICE_URL", "http://localhost:9100")
+
+# ── PII Patterns (South African) ─────────────────────────────────────────────
+_PII_PATTERNS = PII_SCRUBBER_PATTERNS
+
+_groq_client: Optional[AsyncGroq] = (
+    AsyncGroq(api_key=settings.GROQ_API_KEY) if settings.GROQ_API_KEY else None
+)
+_anthropic_client: Optional[AsyncAnthropic] = (
+    AsyncAnthropic(api_key=settings.ANTHROPIC_API_KEY)
+    if settings.ANTHROPIC_API_KEY
+    else None
+)
+
+
+def scrub_pii(text: str) -> str:
+    """Remove South African PII patterns from a string."""
+    # 1) Special-case SA ID numbers: only redact if they validate
+    from app.api.core.pii_patterns import SA_ID_RE, is_valid_sa_id
+
+    def _replace_sa_id(match):
+        idv = match.group(0)
+        return "[SA_ID]" if is_valid_sa_id(idv) else idv
+
+    text = SA_ID_RE.sub(_replace_sa_id, text)
+
+    # 2) Apply remaining scrub patterns (skip the generic SA_ID entry if present)
+    for pattern, replacement in _PII_PATTERNS:
+        # Skip pattern that matches plain SA ID digits (handled above)
+        if pattern.pattern == SA_ID_RE.pattern:
+            continue
+        text = pattern.sub(replacement, text)
+    return text
+
+
+def scrub_dict(data: dict) -> dict:
+    """Recursively scrub PII from a dictionary (used before LLM calls)."""
+    serialised = json.dumps(data, default=str)
+    serialised = scrub_pii(serialised)
+    return json.loads(serialised)
+
+
+@retry(
+    stop=stop_after_attempt(2),
+    wait=wait_exponential(multiplier=1, min=2, max=8),
+    retry=retry_if_exception_type(Exception),
+    reraise=True,
+)
+async def _call_groq(system_prompt: str, user_prompt: str, max_tokens: int) -> str:
+    if not _groq_client:
+        raise RuntimeError("Groq client not configured")
+    response = await _groq_client.chat.completions.create(
+        model=settings.GROQ_MODEL,
+        max_tokens=max_tokens,
+        temperature=settings.GROQ_TEMPERATURE,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ],
+    )
+    return response.choices[0].message.content
+
+
+async def _call_anthropic(system_prompt: str, user_prompt: str, max_tokens: int) -> str:
+    if not _anthropic_client:
+        raise RuntimeError("Anthropic client not configured")
+    response = await _anthropic_client.messages.create(
+        model=settings.ANTHROPIC_MODEL,
+        max_tokens=max_tokens,
+        system=system_prompt,
+        messages=[{"role": "user", "content": user_prompt}],
+    )
+    return response.content[0].text
+
+
+async def _call_huggingface(
+    system_prompt: str, user_prompt: str, max_tokens: int
+) -> str:
+    prompt = f"<|system|>\n{system_prompt}\n<|user|>\n{user_prompt}\n<|assistant|>"
+    async with httpx.AsyncClient(timeout=60) as client:
+        response = await client.post(
+            f"https://api-inference.huggingface.co/models/{settings.HUGGINGFACE_MODEL}",
+            headers={"Authorization": f"Bearer {settings.HUGGINGFACE_API_KEY}"},
+            json={"inputs": prompt, "parameters": {"max_new_tokens": max_tokens}},
+        )
+        response.raise_for_status()
+        result = response.json()
+        generated = (
+            result[0]["generated_text"]
+            if isinstance(result, list)
+            else result.get("generated_text", "")
+        )
+        if "<|assistant|>" in generated:
+            generated = generated.split("<|assistant|>")[-1].strip()
+        return generated
+
+
+async def _call_offline_inference(
+    system_prompt: str, user_prompt: str, max_tokens: int
+) -> str:
+    """
+    Offline inference via the dedicated inference microservice.
+
+    This function calls the inference HTTP service (docker/Dockerfile.inference)
+    which runs torch + transformers in an isolated container. The API process
+    itself has NO torch dependency — keeping the API image lean (<500 MB).
+
+    The service is reachable at INFERENCE_SERVICE_URL (default: http://inference:9100
+    in Docker Compose, http://localhost:9100 for local dev).
+    """
+    prompt = f"{system_prompt}\n\n{user_prompt}"
+    payload = {
+        "prompt": prompt,
+        "max_new_tokens": min(max_tokens, 512),
+        "temperature": 0.7,
+    }
+
+    try:
+        async with httpx.AsyncClient(timeout=120) as client:
+            resp = await client.post(
+                f"{_INFERENCE_SERVICE_URL}/generate",
+                json=payload,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+            result = data.get("text", "")
+            log.info(
+                "inference_gateway.offline.success",
+                model=data.get("model", "unknown"),
+                latency_ms=data.get("latency_ms"),
+            )
+            return result
+    except httpx.HTTPStatusError as e:
+        log.error("inference_gateway.offline.http_error", status=e.response.status_code, error=str(e))
+        raise RuntimeError(f"Inference service returned {e.response.status_code}") from e
+    except httpx.ConnectError:
+        log.error("inference_gateway.offline.connect_failed", url=_INFERENCE_SERVICE_URL)
+        raise RuntimeError(
+            f"Cannot reach inference service at {_INFERENCE_SERVICE_URL}. "
+            "Ensure the inference container is running: docker-compose up inference"
+        )
+
+
+def is_offline_mode() -> bool:
+    """Check if offline mode is enabled."""
+    return _OFFLINE_MODE
+
+
+async def call_llm(
+    system_prompt: str,
+    user_prompt: str,
+    max_tokens: int = 1200,
+    pedagogical_params: Optional[dict] = None,
+) -> str:
+    """
+    Route through LLM providers with automatic failover.
+    Supports offline-capable inference mode for low-connectivity deployments.
+    IMPORTANT: system_prompt and user_prompt must contain NO learner PII.
+    """
+    clean_system = scrub_pii(system_prompt)
+    clean_user = scrub_pii(user_prompt)
+
+    log.info(
+        "inference_gateway.call", max_tokens=max_tokens, offline_mode=_OFFLINE_MODE
+    )
+
+    # Check for offline mode first
+    if _OFFLINE_MODE:
+        start_time = time.time()
+        try:
+            result = await _call_offline_inference(clean_system, clean_user, max_tokens)
+            duration = time.time() - start_time
+            LLM_INFERENCE_DURATION.labels(provider="offline", model="local").observe(duration)
+            LLM_INFERENCE_TOTAL.labels(provider="offline", model="local", status="success").inc()
+            log.info("inference_gateway.success", provider="offline")
+            return result
+        except Exception as e:
+            LLM_INFERENCE_TOTAL.labels(provider="offline", model="local", status="error").inc()
+            log.error("inference_gateway.offline_failed", error=str(e))
+            # Fall through to online providers if offline fails
+
+    # 1. Try Groq (primary — ultra fast)
+    start_time = time.time()
+    try:
+        result = await _call_groq(clean_system, clean_user, max_tokens)
+        duration = time.time() - start_time
+        LLM_INFERENCE_DURATION.labels(provider="groq", model=settings.GROQ_MODEL).observe(duration)
+        LLM_INFERENCE_TOTAL.labels(provider="groq", model=settings.GROQ_MODEL, status="success").inc()
+        # Estimate cost (approx $0.59 / 1M tokens)
+        est_cost = (max_tokens / 1000000) * 0.59
+        LLM_COST_TOTAL.labels(provider="groq", model=settings.GROQ_MODEL).inc(est_cost)
+        
+        log.info("inference_gateway.success", provider="groq")
+        return result
+    except Exception as e:
+        LLM_INFERENCE_TOTAL.labels(provider="groq", model=settings.GROQ_MODEL, status="error").inc()
+        log.warning("inference_gateway.groq_failed", error=str(e))
+
+    # 2. Try Anthropic (secondary)
+    start_time = time.time()
+    try:
+        result = await _call_anthropic(clean_system, clean_user, max_tokens)
+        duration = time.time() - start_time
+        LLM_INFERENCE_DURATION.labels(provider="anthropic", model=settings.ANTHROPIC_MODEL).observe(duration)
+        LLM_INFERENCE_TOTAL.labels(provider="anthropic", model=settings.ANTHROPIC_MODEL, status="success").inc()
+        # Estimate cost (approx $0.25 / 1M input, $1.25 / 1M output for Haiku)
+        est_cost = (max_tokens / 1000000) * 1.25
+        LLM_COST_TOTAL.labels(provider="anthropic", model=settings.ANTHROPIC_MODEL).inc(est_cost)
+        
+        log.info("inference_gateway.success", provider="anthropic")
+        return result
+    except Exception as e:
+        LLM_INFERENCE_TOTAL.labels(provider="anthropic", model=settings.ANTHROPIC_MODEL, status="error").inc()
+        log.warning("inference_gateway.anthropic_failed", error=str(e))
+
+    # 3. Try HuggingFace (fallback)
+    start_time = time.time()
+    try:
+        result = await _call_huggingface(clean_system, clean_user, max_tokens)
+        duration = time.time() - start_time
+        LLM_INFERENCE_DURATION.labels(provider="huggingface", model=settings.HUGGINGFACE_MODEL).observe(duration)
+        LLM_INFERENCE_TOTAL.labels(provider="huggingface", model=settings.HUGGINGFACE_MODEL, status="success").inc()
+        # HF Inference API is often free/pro-tier, but let's attribute a nominal cost
+        LLM_COST_TOTAL.labels(provider="huggingface", model=settings.HUGGINGFACE_MODEL).inc(0.0001)
+        
+        log.info("inference_gateway.success", provider="huggingface")
+        return result
+    except Exception as e:
+        LLM_INFERENCE_TOTAL.labels(provider="huggingface", model=settings.HUGGINGFACE_MODEL, status="error").inc()
+        log.error("inference_gateway.all_providers_failed", error=str(e))
+        raise RuntimeError("All LLM providers failed") from e
+
+
+def parse_json_response(text: str) -> Any:
+    """Safely parse JSON from LLM response, stripping markdown fences."""
+    cleaned = text.replace("```json", "").replace("```", "").strip()
+    start = cleaned.find("{")
+    end = cleaned.rfind("}") + 1
+    if start == -1 or end == 0:
+        start = cleaned.find("[")
+        end = cleaned.rfind("]") + 1
+    if start == -1:
+        raise ValueError(f"No JSON found in LLM response: {text[:200]}")
+    return json.loads(cleaned[start:end])

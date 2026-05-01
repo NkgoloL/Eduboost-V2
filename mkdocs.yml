@@ -1,0 +1,45 @@
+site_name: EduBoost V2
+site_description: Automated architecture and API documentation for EduBoost V2
+site_url: https://example.com/eduboost-v2
+repo_url: https://gitlab.com/l3b3lo/copy-eduboost
+site_dir: site
+
+theme:
+  name: material
+
+nav:
+  - Home: docs/index.md
+  - Architecture: docs/architecture.md
+  - V2 Migration: docs/v2_migration.md
+  - V2 Handoff: docs/v2_handoff.md
+  - API V2:
+      - Overview: docs/api_v2.md
+      - Core Config: docs/reference/app/core/config.md
+      - Security: docs/reference/app/core/security.md
+      - Domain Entities: docs/reference/app/domain/entities.md
+      - Learner Service: docs/reference/app/services/learner_service.md
+      - Audit Service: docs/reference/app/services/audit_service.md
+      - Auth Service: docs/reference/app/services/auth_service.md
+      - Diagnostic Service: docs/reference/app/services/diagnostic_service_v2.md
+      - Quota Service: docs/reference/app/services/quota_service.md
+      - Study Plan Service: docs/reference/app/services/study_plan_service_v2.md
+      - Parent Report Service: docs/reference/app/services/parent_report_service_v2.md
+      - Lesson Service: docs/reference/app/services/lesson_service_v2.md
+      - Gamification Service: docs/reference/app/services/gamification_service_v2.md
+      - System Service: docs/reference/app/services/system_service_v2.md
+      - Assessment Service: docs/reference/app/services/assessment_service_v2.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_root_heading: true
+            show_source: false
+            docstring_style: google
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true

@@ -1,0 +1,298 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# EduBoost SA — Docker Compose (Local Development Stack)
+#
+# [IMMEDIATE FIX 1] Frontend port corrected: was 3002:3050, now 3000:3000.
+# [IMMEDIATE FIX 3] PyTorch/HuggingFace extracted to dedicated `inference`
+#                   service so the main API image stays lean (<500 MB).
+#
+# Usage: docker-compose up --build
+# ─────────────────────────────────────────────────────────────────────────────
+
+name: eduboost-sa
+
+networks:
+  eduboost-net:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:
+  grafana_data:
+  prometheus_data:
+  model_cache:          # shared HuggingFace model cache for inference service
+  loki_data:            # Grafana Loki log storage
+
+services:
+
+  # ── FRONTEND: Next.js ──────────────────────────────────────────────────────
+  # [FIX] port was 3002:3050 — corrected to 3000:3000 to match README docs.
+  frontend:
+    build:
+      context: ./app/frontend
+      dockerfile: ../../docker/Dockerfile.frontend
+      target: development
+    container_name: eduboost-frontend
+    ports:
+      - "3000:3000"           # ← FIXED (was 3002:3050)
+    volumes:
+      - ./app/frontend:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+    depends_on:
+      - api
+    networks:
+      - eduboost-net
+    restart: unless-stopped
+
+  # ── BACKEND: FastAPI (lean — no PyTorch) ──────────────────────────────────
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+      target: development
+    container_name: eduboost-api
+    working_dir: /workspace/app/api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/workspace/app
+    environment:
+      - APP_ENV=development
+      - DATABASE_URL=postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      - REDIS_URL=redis://redis:6379/0
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - JWT_SECRET=${JWT_SECRET}
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY}
+      - ENCRYPTION_SALT=${ENCRYPTION_SALT}
+      - SENTRY_DSN=${SENTRY_DSN}
+      # Inference service base URL (internal network)
+      - INFERENCE_SERVICE_URL=http://inference:9100
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - eduboost-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ── INFERENCE SERVICE (PyTorch / HuggingFace offline models) ──────────────
+  # [FIX] Extracted from main API image. Uses Dockerfile.inference which
+  #       installs torch + transformers. Only loaded when offline inference
+  #       is needed; can be scaled / disabled independently.
+  inference:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.inference
+    container_name: eduboost-inference
+    ports:
+      - "9100:9100"
+    volumes:
+      - model_cache:/root/.cache/huggingface   # persist downloaded models
+      - ./app/api/ml:/workspace/ml             # shared ML code
+    environment:
+      - APP_ENV=development
+      - HUGGINGFACE_API_KEY=${HUGGINGFACE_API_KEY}
+      - MODEL_CACHE_DIR=/root/.cache/huggingface
+      - INFERENCE_PORT=9100
+    networks:
+      - eduboost-net
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 6G           # torch needs headroom
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9100/health"]
+      interval: 60s
+      timeout: 20s
+      retries: 3
+
+  # ── CELERY WORKER ─────────────────────────────────────────────────────────
+  celery-worker:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    container_name: eduboost-celery
+    command: celery -A app.api.core.celery_app worker --loglevel=info --concurrency=2
+    working_dir: /workspace/app/api
+    volumes:
+      - ./app:/workspace/app
+    environment:
+      - APP_ENV=development
+      - DATABASE_URL=postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      - REDIS_URL=redis://redis:6379/0
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - INFERENCE_SERVICE_URL=http://inference:9100
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - eduboost-net
+    restart: unless-stopped
+
+  # ── CELERY BEAT ───────────────────────────────────────────────────────────
+  celery-beat:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    container_name: eduboost-beat
+    command: celery -A app.api.core.celery_app beat --loglevel=info
+    working_dir: /workspace/app/api
+    volumes:
+      - ./app:/workspace/app
+    environment:
+      - APP_ENV=development
+      - DATABASE_URL=postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - eduboost-net
+    restart: unless-stopped
+
+  # ── POSTGRESQL ────────────────────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: eduboost-postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # NOTE: SQL init scripts remain for local bootstrapping only.
+      # All schema changes MUST go through Alembic (see SHORT-TERM fixes).
+      - ./scripts/db_init.sql:/docker-entrypoint-initdb.d/01_init.sql
+      - ./scripts/db_seed.sql:/docker-entrypoint-initdb.d/02_seed.sql
+      - ./scripts/db_audit_migration.sql:/docker-entrypoint-initdb.d/03_audit.sql
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-eduboost}
+      - POSTGRES_USER=${POSTGRES_USER:-eduboost_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-devpassword}
+    networks:
+      - eduboost-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-eduboost_user} -d ${POSTGRES_DB:-eduboost}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── REDIS ─────────────────────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: eduboost-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    networks:
+      - eduboost-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # ── PROMETHEUS ────────────────────────────────────────────────────────────
+  prometheus:
+    image: prom/prometheus:v2.52.0
+    container_name: eduboost-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=30d'
+    networks:
+      - eduboost-net
+    restart: unless-stopped
+
+  # ── GRAFANA ───────────────────────────────────────────────────────────────
+  grafana:
+    image: grafana/grafana:10.4.2
+    container_name: eduboost-grafana
+    ports:
+      - "3001:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./grafana/datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml:ro
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SERVER_ROOT_URL=http://localhost:3001
+    depends_on:
+      - prometheus
+    networks:
+      - eduboost-net
+    restart: unless-stopped
+
+  # ── FLOWER ────────────────────────────────────────────────────────────────
+  flower:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    container_name: eduboost-flower
+    command: celery -A app.api.core.celery_app flower --port=5555
+    working_dir: /workspace/app/api
+    ports:
+      - "5555:5555"
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+      - celery-worker
+    networks:
+      - eduboost-net
+    restart: unless-stopped
+
+  # ── LOKI: Centralised Log Aggregation ────────────────────────────────────
+  # [MEDIUM-TERM] Grafana Loki for structured log aggregation.
+  # Access logs via Grafana Explore → Loki data source.
+  loki:
+    image: grafana/loki:2.9.8
+    container_name: eduboost-loki
+    ports:
+      - "3100:3100"
+    volumes:
+      - loki_data:/loki
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - eduboost-net
+    restart: unless-stopped
+
+  # ── PROMTAIL: Log shipper (Docker → Loki) ────────────────────────────────
+  promtail:
+    image: grafana/promtail:2.9.8
+    container_name: eduboost-promtail
+    volumes:
+      - /var/log:/var/log:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - ./grafana/promtail-config.yml:/etc/promtail/config.yml:ro
+    command: -config.file=/etc/promtail/config.yml
+    depends_on:
+      - loki
+    networks:
+      - eduboost-net
+    restart: unless-stopped

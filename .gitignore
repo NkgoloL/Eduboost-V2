@@ -1,0 +1,16 @@
+.venv/
+.coverage
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+coverage_html/
+node_modules/
+.next/
+*.db
+*.sqlite
+.env
+.env.*
+!.env.example
+app/api/celerybeat-schedule*
