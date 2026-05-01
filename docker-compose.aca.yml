@@ -1,0 +1,46 @@
+# Azure Container Apps — EduBoost V2 Production Deployment
+# Production deployment target: Azure Container Apps (ACA)
+# Registry: Azure Container Registry (ACR)
+# Infrastructure managed via: Azure Bicep (see bicep/)
+
+# -------------------------------------------------------------------------
+# Build and push commands (run from repo root):
+#
+#   az acr login --name <ACR_NAME>
+#   docker build -f docker/Dockerfile.v2 -t <ACR_NAME>.azurecr.io/eduboost-v2-api:latest .
+#   docker push <ACR_NAME>.azurecr.io/eduboost-v2-api:latest
+#
+#   az containerapp update \
+#     --name eduboost-v2-api \
+#     --resource-group <RG> \
+#     --image <ACR_NAME>.azurecr.io/eduboost-v2-api:latest
+# -------------------------------------------------------------------------
+
+# This file is used for LOCAL validation of the ACA target image only.
+# For production, use the Bicep templates in bicep/container_apps.bicep.
+
+services:
+  api:
+    image: ${ACR_NAME}.azurecr.io/eduboost-v2-api:${IMAGE_TAG:-latest}
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.v2
+    environment:
+      APP_ENV: production
+      APP_NAME: "EduBoost V2"
+      LOG_LEVEL: INFO
+      DATABASE_URL: ${DATABASE_URL}
+      REDIS_URL: ${REDIS_URL}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_ALGORITHM: HS256
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      CONSTITUTIONAL_AI_ENABLED: "true"
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s

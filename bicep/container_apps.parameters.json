@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": { "value": "southafricanorth" },
+    "environmentName": { "value": "prod" },
+    "imageTag": { "value": "latest" },
+    "acrLoginServer": { "value": "YOUR_ACR_NAME.azurecr.io" },
+    "acrUsername": { "value": "REPLACE_FROM_ACR_ACCESS_KEYS" },
+    "acrPassword": { "value": "REPLACE_FROM_ACR_ACCESS_KEYS" },
+    "databaseUrl": { "value": "postgresql+asyncpg://USER:PASS@HOST:5432/eduboost_v2?ssl=require" },
+    "redisUrl": { "value": "rediss://:PASSWORD@HOST:6380/0" },
+    "jwtSecret": { "value": "REPLACE_WITH_32_CHAR_SECRET" },
+    "groqApiKey": { "value": "REPLACE_WITH_GROQ_KEY" },
+    "anthropicApiKey": { "value": "REPLACE_WITH_ANTHROPIC_KEY" }
+  }
+}
