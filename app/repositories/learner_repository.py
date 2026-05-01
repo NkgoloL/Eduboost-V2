@@ -22,3 +22,11 @@ class LearnerRepository:
                 home_language=learner.home_language,
                 overall_mastery=learner.overall_mastery,
             )
+
+    async def delete_by_id(self, learner_id: str) -> bool:
+        """Physically delete a learner record (Right to Erasure)."""
+        from sqlalchemy import delete
+        async with AsyncSessionFactory() as session:
+            result = await session.execute(delete(Learner).where(Learner.learner_id == learner_id))
+            await session.commit()
+            return result.rowcount > 0

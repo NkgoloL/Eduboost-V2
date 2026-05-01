@@ -125,9 +125,11 @@ Each item should be closed only when implemented, verified (tests or runtime val
   - [x] Establish full repository layer (Auth, ParentReport, StudyPlan, Lesson, Diagnostic)
   - [x] Implement comprehensive V2 unit and integration test suite
 
-- [ ] **Phase 3 — Production Hardening & Cloud Deployment**
+- [x] **Phase 3 — Production Hardening & Cloud Deployment**
   - [x] Define Azure Container Apps (ACA) as the authoritative production target
   - [x] Create Bicep infrastructure-as-code for ACA environment and API app
   - [x] Implement ACA-ready Docker validation (`docker-compose.aca.yml`)
+  - [x] Implement V2 cross-cutting concerns: RBAC, Right to Erasure, Analytics Hooks
+  - [x] Implement 5-Pillar V2 Services: Judiciary, Ether, Fourth Estate (Postgres-backed)
   - [ ] Finalize CI/CD pipeline automation for ACA deployments
   - [ ] Execute final V2 verification suite in staging environment

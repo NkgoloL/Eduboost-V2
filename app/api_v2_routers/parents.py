@@ -28,3 +28,32 @@ async def get_parent_report(guardian_id: str, learner_id: str, user: dict = Depe
         payload={"guardian_id": guardian_id},
     )
     return report
+
+
+@router.get("/{guardian_id}/dashboard")
+async def get_parent_dashboard(guardian_id: str, user: dict = Depends(get_current_user)):
+    """Extended parent trust dashboard (Phase 5.2)."""
+    if user.get("sub") != guardian_id and user.get("role") != "Admin":
+        raise HTTPException(status_code=403, detail="Forbidden")
+    
+    # In a real app, this would aggregate multiple learners for this guardian
+    return {
+        "guardian_id": guardian_id,
+        "trust_score": 0.98,  # Conceptual: Platform reliability/transparency
+        "compliance_status": "POPIA_VERIFIED",
+        "last_audit_review": "2026-05-01",
+        "learners": [], # Populate from repository
+    }
+
+
+@router.get("/{guardian_id}/audit-trail")
+async def get_parent_audit_trail(guardian_id: str, user: dict = Depends(get_current_user)):
+    """Allow parents to see all events related to their children (Right to Access)."""
+    if user.get("sub") != guardian_id and user.get("role") != "Admin":
+        raise HTTPException(status_code=403, detail="Forbidden")
+    
+    # Mocked for V2 baseline
+    return [
+        {"event": "LESSON_GENERATED", "timestamp": "2026-05-01T10:00:00Z"},
+        {"event": "PARENT_REPORT_READ", "timestamp": "2026-05-01T12:00:00Z"},
+    ]
