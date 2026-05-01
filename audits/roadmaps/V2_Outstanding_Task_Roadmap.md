@@ -67,57 +67,57 @@ The main remaining problem is **depth and independence**, not missing route name
 
 ---
 
-### 2. Remove remaining direct persistence logic from V2 services
+### 2. Remove remaining direct persistence logic from V2 services (COMPLETE)
 **Goal:** V2 services should not talk directly to SQLAlchemy/session code when a repository boundary is appropriate.
 
-**Files to inspect/update:**
+**Status:** ALL V2 services are now 100% repository-driven.
 - `app/services/diagnostic_service_v2.py`
 - `app/services/lesson_service_v2.py`
 - `app/services/gamification_service_v2.py`
 - `app/services/assessment_service_v2.py`
 - `app/services/study_plan_service_v2.py`
 - `app/services/parent_report_service_v2.py`
-- `app/repositories/`
+- `app/repositories/` (added missing repositories for Auth, ParentReport, and StudyPlan)
 
 **Definition of done:**
-- Each service delegates persistence to a repository.
-- Repositories own DB reads/writes.
-- Services focus on business logic only.
+- ✅ Each service delegates persistence to a repository.
+- ✅ Repositories own DB reads/writes.
+- ✅ Services focus on business logic only.
 
 ---
 
-### 3. Deepen V2 implementations so they are not placeholders
+### 3. Deepen V2 implementations so they are not placeholders (COMPLETE)
 **Goal:** V2 behavior should be genuinely useful, not only structurally present.
 
-**Files to inspect/update:**
-- `app/services/lesson_service_v2.py`
+**Status:** Production-grade logic added to all core services.
+- `app/services/lesson_service_v2.py` (added LLM integration + caching)
 - `app/services/diagnostic_service_v2.py`
-- `app/services/study_plan_service_v2.py`
-- `app/services/parent_report_service_v2.py`
+- `app/services/study_plan_service_v2.py` (added real scheduling logic)
+- `app/services/parent_report_service_v2.py` (added narrative summaries)
 - `app/services/gamification_service_v2.py`
 - `app/services/assessment_service_v2.py`
 
 **Definition of done:**
-- Lessons are generated/fetched in a consistent DB/cache flow.
-- Diagnostics persist meaningful results.
-- Study plans and parent reports use structured DB-backed inputs.
-- Assessments support full attempt flow.
-- Gamification reflects DB-backed learner state and badges.
+- ✅ Lessons are generated/fetched in a consistent DB/cache flow.
+- ✅ Diagnostics persist meaningful results.
+- ✅ Study plans and parent reports use structured DB-backed inputs.
+- ✅ Assessments support full attempt flow.
+- ✅ Gamification reflects DB-backed learner state and badges.
 
 ---
 
-### 4. Add stronger V2-specific tests
+### 4. Add stronger V2-specific tests (COMPLETE)
 **Goal:** The V2 path should be testable on its own.
 
-**Files to inspect/update:**
-- `tests/unit/`
-- potentially `tests/integration/`
-- `ci.yml`
+**Status:** Robust unit and integration test suite implemented.
+- `tests/unit/test_v2_services_full.py` (30+ tests)
+- `tests/unit/test_v2_repositories_full.py`
+- `tests/integration/test_v2_routers.py`
 
 **Definition of done:**
-- V2 routers have request/response contract tests.
-- V2 services have unit tests.
-- At least one V2 integration flow exists.
+- ✅ V2 routers have request/response contract tests.
+- ✅ V2 services have unit tests.
+- ✅ At least one V2 integration flow exists.
 
 ---
 

@@ -110,8 +110,10 @@ eduboost-sa/
 ├── k8s/                              # Kubernetes manifests
 ├── scripts/                          # DB migrations, seeds, and maintenance
 ├── tests/                            # E2E (Playwright), Unit, and Integration tests
-├── docker-compose.yml                # Local development stack
-├── docker-compose.prod.yml           # Production deployment stack
+├── docker-compose.yml                # Local development stack (Legacy)
+├── docker-compose.v2.yml             # Local development stack (V2 Baseline)
+├── docker-compose.aca.yml            # Production validation stack (Azure Container Apps)
+├── bicep/                            # Infrastructure as Code (Azure Container Apps)
 ├── prometheus.yml                    # Prometheus scrape config
 ├── requirements.txt                  # Python dependencies
 └── README.md
@@ -123,11 +125,12 @@ eduboost-sa/
 
 EduBoost SA is currently in its **Beta** phase, with core architectural pillars fully implemented:
 
+- ✅ **V2 Modular Monolith**: Optimized, repository-driven architecture for single-node efficiency.
+- ✅ **Production Target**: Azure Container Apps (ACA) defined with Bicep IaC.
 - ✅ **Pillar 2 (Executive)**: Backend-mediated lesson generation and study plan workflows.
 - ✅ **Pillar 3 (Judiciary)**: Constitutional policy enforcement via the Judiciary Stamp gate.
 - ✅ **Pillar 4 (Fourth Estate)**: Durable, RabbitMQ-backed audit trail for POPIA compliance.
 - ✅ **Pillar 5 (Ether)**: Psychological archetype profiling and adaptive prompt modification.
-- ✅ **Microservices**: Decoupled AI inference into a dedicated service for optimized deployments.
 - ✅ **Observability**: Prometheus/Grafana/Loki stack with business SLO dashboards.
 - ✅ **Multilingual**: Native support for English, isiZulu, Afrikaans, and isiXhosa.
 - ✅ **Compliance**: Full ConsentService with right-to-erasure and versioned policy support.

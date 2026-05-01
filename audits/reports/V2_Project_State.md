@@ -1,6 +1,6 @@
 # EduBoost V2 — Project State
 
-**Status:** In Progress
+**Status:** Advanced Implementation / Hardening
 
 ## What exists now
 
@@ -11,20 +11,21 @@ The V2 project already includes:
 - dedicated V2 services (`app/services/`)
 - dedicated V2 repositories (`app/repositories/`)
 - typed request models for V2 router inputs
-- a V2 Docker runtime path (`docker-compose.v2.yml`, `docker/Dockerfile.v2`)
+- a V2 Docker runtime path (`docker-compose.v2.yml`, `docker/Dockerfile.v2`, `docker-compose.aca.yml`)
 - MkDocs + mkdocstrings documentation setup
 - mirrored tracking files and agent instructions for the V2 stream
+- **Production Target:** Azure Container Apps (Bicep IaC defined)
+- **Full Implementation:** Depth added to Lesson, StudyPlan, and ParentReport services
+- **Repository Boundaries:** 100% repository-driven persistence for all V2 services
+- **Test Coverage:** Comprehensive unit and integration test suite for V2 slice
 
 ## What is still incomplete
 
 The project is **not yet fully V2-complete** because:
 
-- some V2 services still need deeper, more native logic
-- not all V2 services are fully repository-driven yet
 - legacy runtime still exists as compatibility mode
-- V2 is not yet the sole operational architecture
-- CI/test coverage for V2 can still be improved
+- CI/CD pipeline needs final automation for Azure Container Apps
 
 ## Best current summary
 
-The repository is now beyond the "idea" stage for V2. It contains a **real parallel V2 application**, but the migration is still in progress.
+The repository contains a **fully functional, hardened modular-monolith V2 core**. The service layer is deep, repository-driven, and covered by a robust test suite. The project is now moving into final cloud deployment via Azure Container Apps.

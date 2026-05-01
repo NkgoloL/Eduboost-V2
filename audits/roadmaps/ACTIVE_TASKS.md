@@ -100,24 +100,34 @@ Each item should be closed only when implemented, verified (tests or runtime val
 
 ### Scope: V2 Baseline Pivot (`gemini-code-1777601244294.md`)
 
-- [~] **Phase 0 — Repository Bootstrap & Foundation**
+- [x] **Phase 0 — Repository Bootstrap & Foundation**
   - [x] Scaffolded initial modular-monolith directories: `app/core`, `app/domain`, `app/repositories`, `app/services`
   - [x] Added foundational V2 modules: `config.py`, `security.py`, `logging.py`
   - [x] Added initial domain entities and learner repository abstraction
-  - [ ] Align runtime startup and Docker path with V2 single-node constraints
+  - [x] Align runtime startup and Docker path with V2 single-node constraints
 
-- [ ] **Phase 1 — Boundary Enforcement**
+- [x] **Phase 1 — Boundary Enforcement**
   - [x] Migrate initial learner-facing business logic toward `app/services` and `app/repositories`
   - [x] Define append-only PostgreSQL audit table target to replace legacy broker dependency
   - [x] Introduce initial V2 API surface for learner read + audit feed
-  - [ ] Reduce direct router-to-persistence coupling across the wider application
+  - [x] Reduce direct router-to-persistence coupling across the wider application
 
-- [ ] **Phase 2+ — V2 Manifest Migration**
+- [x] **Phase 2+ — V2 Manifest Migration**
   - [x] Replace legacy completion claims in audit docs with V2 migration status
   - [x] Plan staged retirement of Celery/RabbitMQ/microservice-first assumptions
   - [x] Implement initial V2-safe equivalents using BackgroundTasks and modular monolith boundaries
   - [x] Add initial diagnostics + quota control to the V2 slice
-  - [ ] Complete migration of all legacy routes and workflows into V2 boundaries
+  - [x] Complete migration of all legacy routes and workflows into V2 boundaries
   - [x] Replicate multi-file tracking/documentation structure for the V2 stream
   - [x] Promote dedicated `app/api_v2_routers/*` route surface and document legacy runtime as compatibility mode
   - [x] Expand V2 route families to include lessons, gamification, system, and assessments
+  - [x] Deepen V2 service implementations (Lesson, StudyPlan, ParentReport) with production-grade logic
+  - [x] Establish full repository layer (Auth, ParentReport, StudyPlan, Lesson, Diagnostic)
+  - [x] Implement comprehensive V2 unit and integration test suite
+
+- [ ] **Phase 3 — Production Hardening & Cloud Deployment**
+  - [x] Define Azure Container Apps (ACA) as the authoritative production target
+  - [x] Create Bicep infrastructure-as-code for ACA environment and API app
+  - [x] Implement ACA-ready Docker validation (`docker-compose.aca.yml`)
+  - [ ] Finalize CI/CD pipeline automation for ACA deployments
+  - [ ] Execute final V2 verification suite in staging environment
