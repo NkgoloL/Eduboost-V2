@@ -1,53 +1,78 @@
 """
-EduBoost SA — Core Configuration
-Loads secrets from Azure Key Vault in production; falls back to .env locally.
+EduBoost V2 — Core Configuration
+Pydantic BaseSettings with environment-variable loading and validation.
 """
-from __future__ import annotations
-
-import os
 from functools import lru_cache
 from typing import Literal
 
-from pydantic import Field, field_validator
-from pydantic_settings import BaseSettings
+from pydantic import AnyHttpUrl, field_validator
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    # ── Environment ──────────────────────────────────────────────────────────
-    app_env: Literal["development", "test", "staging", "production"] = "development"
-    app_name: str = "EduBoost SA API"
-    app_version: str = "2.0.0"
-    debug: bool = False
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
-    # ── Azure Key Vault ───────────────────────────────────────────────────────
-    azure_key_vault_url: str = ""          # e.g. https://eduboost-kv.vault.azure.net/
-    # In production, all secrets below are fetched from Key Vault at startup.
-    # Locally, they are read from .env / environment variables.
+    # ── Application ──────────────────────────────────────────────────────────
+    APP_NAME: str = "EduBoost SA"
+    APP_VERSION: str = "2.0.0"
+    ENVIRONMENT: Literal["development", "staging", "production"] = "development"
+    DEBUG: bool = False
 
     # ── Database ─────────────────────────────────────────────────────────────
-    database_url: str = Field(
-        default="postgresql+asyncpg://eduboost:password@localhost:5432/eduboost",
-    )
-    db_pool_size: int = 10
-    db_max_overflow: int = 20
-    db_pool_pre_ping: bool = True
+    DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/eduboost"
 
-    # ── Redis ─────────────────────────────────────────────────────────────────
-    redis_url: str = "redis://localhost:6379/0"
-    redis_max_connections: int = 20
+    # ── Redis (cache + sessions only — NO streams) ───────────────────────────
+    REDIS_URL: str = "redis://localhost:6379/0"
+    REDIS_CACHE_TTL_SECONDS: int = 3600          # 1-hour default cache TTL
+    SEMANTIC_CACHE_TTL_SECONDS: int = 86400      # 24-hour semantic cache
 
-    # ── Security ──────────────────────────────────────────────────────────────
-    jwt_secret: str = Field(default="change-me-in-production-32-chars-min")
-    jwt_algorithm: str = "HS256"
-    jwt_access_token_expire_minutes: int = 60
-    jwt_refresh_token_expire_days: int = 30
-    encryption_key: str = Field(default="change-me-in-production-32-chars-min")
-    encryption_salt: str = Field(default="change-me-in-production-16-chars")
+    # ── JWT ───────────────────────────────────────────────────────────────────
+    JWT_SECRET: str = "CHANGE_ME_IN_PRODUCTION_AT_LEAST_32_CHARS"
+    JWT_ALGORITHM: str = "HS256"
+    JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 15
+    JWT_REFRESH_TOKEN_EXPIRE_DAYS: int = 30
 
-    # ── LLM Providers ─────────────────────────────────────────────────────────
-    groq_api_key: str = ""
-    anthropic_api_key: str = ""
-    groq_model: str = "llama-3.3-70b-versatile"
+    # ── Encryption ───────────────────────────────────────────────────────────
+    ENCRYPTION_KEY: str = "CHANGE_ME_32_BYTE_KEY_BASE64_ENCODED"  # AES-256
+
+    # ── LLM Providers ────────────────────────────────────────────────────────
+    ANTHROPIC_API_KEY: str = ""
+    GROQ_API_KEY: str = ""
+
+    # ── AI Cost-Control ──────────────────────────────────────────────────────
+    FREE_DAILY_REQUEST_QUOTA: int = 10
+    PREMIUM_DAILY_REQUEST_QUOTA: int = 9999
+
+    # ── Stripe ───────────────────────────────────────────────────────────────
+    STRIPE_SECRET_KEY: str = ""
+    STRIPE_WEBHOOK_SECRET: str = ""
+    STRIPE_PRICE_ID_PREMIUM: str = ""
+
+    # ── CORS ──────────────────────────────────────────────────────────────────
+    ALLOWED_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:3002"]
+
+    # ── Validation ───────────────────────────────────────────────────────────
+    @field_validator("JWT_SECRET")
+    @classmethod
+    def validate_jwt_secret(cls, v: str) -> str:
+        if len(v) < 32:
+            raise ValueError("JWT_SECRET must be at least 32 characters")
+        return v
+
+    @field_validator("ENCRYPTION_KEY")
+    @classmethod
+    def validate_encryption_key(cls, v: str) -> str:
+        if len(v) != 44:  # Base64 encoded 32 bytes
+            raise ValueError("ENCRYPTION_KEY must be 44 characters (32 bytes base64 encoded)")
+        return v
+
+
+@lru_cache(maxsize=1)
+def get_settings() -> Settings:
+    return Settings()
+
+
+settings = get_settings()
     anthropic_model: str = "claude-sonnet-4-5"
     llm_timeout_seconds: int = 30
     llm_max_retries: int = 2
