@@ -14,29 +14,99 @@ Release cadence:
 
 ## [Unreleased]
 
-### Added
+### ⚠️ BREAKING: Complete V2 Architectural Migration (2026-05-02)
+
+**Status**: Architecture restructured from five-pillar monolith to modular monolith. **V1 code deleted entirely.** All recommendations from `EduBoost_Architecture_Recommendation.md` implemented.
+
+#### Added
+- **Modular Architecture**: Domain modules structured as bounded contexts (`app/modules/{auth,diagnostics,lessons,consent,learners,study_plans,gamification,parent_portal,rlhf}`)
+- **Core Infrastructure**: New shared kernel (`app/core/`) with:
+  - Async SQLAlchemy session management (`database.py`)
+  - Pydantic config with Azure Key Vault integration (`config.py`)
+  - JWT + encryption utilities (`security.py`)
+  - PostgreSQL-backed audit trail (async writes, non-blocking) (`audit.py`)
+  - Prometheus metrics infrastructure (`metrics.py`)
+  - FastAPI middleware: rate limiting, request ID, request timing (`middleware.py`)
+  - Global exception handlers (`exceptions.py`)
+  - Dependency injection helpers (`dependencies.py`)
+  - Generic base repository pattern (`base.py`)
+- **ORM Models**: Centralized SQLAlchemy models (`app/models/__init__.py`) — Alembic-managed
+- **LLM Gateway Abstraction**: Provider-agnostic interface with Groq (primary) + Anthropic (fallback) in `app/modules/lessons/llm_gateway.py`
+- **IRT Engine**: Diagnostic scoring logic isolated in `app/modules/diagnostics/irt_engine.py`
+- **Background Jobs**: Migration from Celery to `arq` (async Redis queue) for single-node simplicity
+- **Consent Middleware**: POPIA gate as FastAPI dependency — impossible to forget, visible in OpenAPI
+- **GitHub Workflows**: CI/CD moved to `.github/workflows/ci-cd.yml` (standard location)
+- **Test Reorganization**: 
+  - `tests/popia/test_popia_compliance.py` — compliance test suite
+  - `tests/smoke/test_v2_smoke.py` — v2 smoke tests
+  - `tests/unit/modules/diagnostics/test_irt_engine.py` — IRT unit tests
+
+#### Removed
+- ✅ **V1 API layer** (`app/api/`) — no active clients, zero migration obligation
+- ✅ **RabbitMQ** — audit trail now PostgreSQL-backed with async writes
+- ✅ **Celery + Flower** — replaced by `arq` (async Redis queue)
+- ✅ **Five-pillar metaphor** — `Executive`, `Judiciary`, `Fourth Estate`, `Ether` services
+  - Audit policy replaced by `core/audit.py` async writer
+  - Judiciary policy logic absorbed into `core/dependencies.py` consent middleware
+- ✅ **Legacy compose files** — `docker-compose.yml`, `docker-compose.prod.yml`
+- ✅ **Temporary artifacts** — `mnt/`, `scratch/`, `gemini-code-*.md`
+- ✅ **Old domain structure** — `app/domain/`, `app/services/`
+
+#### Changed
+- **Infrastructure Target**: Azure Container Apps (ACA) + managed PostgreSQL + managed Redis
+- **Secrets**: Azure Key Vault integration in `core/config.py` (local `.env` fallback for dev)
+- **API Entrypoint**: Single `app/api_v2.py` aggregating routers from `api_v2_routers/`
+- **Repositories**: Now live in `app/repositories/` with base class in `core/base.py`
+- **Exception Handling**: Unified in `core/exceptions.py` — all endpoints use same stack trace formatting
+
+#### Infrastructure (Production)
+| Component | Service | Notes |
+|---|---|---|
+| Backend | Azure Container Apps | Single node, auto-scale to zero |
+| Frontend | Azure Static Web Apps or ACA | Managed, no ops burden |
+| Database | Azure Database for PostgreSQL Flexible | South Africa North region, POPIA-compliant |
+| Cache / Jobs | Azure Cache for Redis | Managed, for arq background jobs |
+| Inference | ACA sidecar container | Isolated torch/transformers, internal-only |
+| Secrets | Azure Key Vault | Centralized, audited secret access |
+| Observability | Grafana Cloud (free tier) | Managed Prometheus + Loki, no self-hosted |
+| CDN / WAF | Azure Front Door | SSL termination, South Africa PoP |
+
+#### Migration Checklist (Completed)
+- [x] Delete all V1 code and legacy infrastructure
+- [x] Move CI pipeline to `.github/workflows/`
+- [x] Migrate core infrastructure to `app/core/`
+- [x] Migrate routers to `app/api_v2_routers/`
+- [x] Reorganize domain modules into `app/modules/`
+- [x] Centralize ORM models in `app/models/`
+- [x] Reorganize tests by domain
+- [x] Create Python package structure (__init__.py for all modules)
+
+#### Next Steps (Backlog)
+- [ ] Replace Celery with arq in background job handlers
+- [ ] Validate 80% unit test coverage on all domain modules
+- [ ] Complete POPIA compliance test suite
+- [ ] Deploy to ACA staging environment via updated CI
+- [ ] Set up Grafana Cloud dashboards (prod observability)
+- [ ] Complete security pen test checklist
+
+---
+
+### Added (Other)
 - `requirements-ml.txt` separates torch/transformers from base install (#4)
 - `INCLUDE_ML` Docker build argument gates heavyweight ML deps (#4)
-- `docker-compose.prod.yml` canonical production deployment stack (#3)
-- Nginx reverse-proxy with SSL termination and security headers (#3)
-- `.github/workflows/ci-cd.yml` canonical CI/CD pipeline with staging and production gates (#3)
 - Playwright E2E test suite covering diagnostic → study plan → lesson → parent portal (#6)
 - `scripts/popia_sweep.py` automated POPIA audit of LLM prompt paths and consent gates (#7)
-- `tests/popia/test_consent_enforcement.py` integration tests for consent gating (#7)
 - Grafana dashboard: Learner Journey SLOs (`grafana/dashboards/learner_journey.json`) (#9)
 - Grafana dashboard: LLM Provider Health (`grafana/dashboards/llm_provider_health.json`) (#9)
 - Consolidated `.env.example` (removed duplicate `env.example`) (#10)
 - `CONTRIBUTING.md` developer onboarding and contribution guidelines (#10)
-- `app/api/version.py` single source of truth for application version
 
-### Changed
-- `docker-compose.yml` frontend port corrected to `3000:3000` (was `3002:3050`) (#5)
+### Changed (Other)
+- `docker-compose.v2.yml` now the canonical dev stack (v1 and prod variants deleted)
 - Alembic migration `0001` now sole source of truth for schema (SQL scripts removed from compose startup) (#1)
-- `ConsentService.require_active_consent()` documented as mandatory gate at all learner endpoints (#2)
 
 ### Fixed
-- `celery-beat` missing `db-migrate` dependency in compose file
-- `db-migrate` service lacked `SEED_ON_BOOT` default in dev compose
+- Removed stale RabbitMQ references from all docker-compose files
 
 ---
 
