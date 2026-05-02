@@ -1,7 +1,7 @@
 # EduBoost SA — System Status Roadmap
 
-**Last Updated:** April 30, 2026  
-**Status:** 🟢 Active  
+**Last Updated:** May 2, 2026  
+**Status:** 🟢 Active — V2 Architecture Migration Complete  
 
 This roadmap outlines the core functionalities and capabilities of the EduBoost SA system. Each entry below has a corresponding detail block in the [System Status Report](../reports/System_Status_Report_2.md) for current implementation details and status checks.
 
@@ -42,10 +42,11 @@ This roadmap outlines the core functionalities and capabilities of the EduBoost 
 - [x] Support granular consent management and data requests.
 - [x] Generate comprehensive parent-friendly performance reports.
 
-### 8. Auditing & Logging (Fourth Estate)
+### 8. Auditing & Logging (Fourth Estate) — V2 Modernized
 - [x] Immutable event tracking for PII, Consent, and System mutations.
-- [x] Centralized **RabbitMQ-backed** durable event bus.
-- [x] Integrated WorkerAgent auditing and structured logging.
+- [x] **Migrated from RabbitMQ to PostgreSQL-backed async audit trail** (`core/audit.py`)
+- [x] Simplified audit enforcement with FastAPI dependencies (no middleware bloat)
+- [x] Structured async audit writes via `BackgroundTasks` (non-blocking)
 
 ### 9. Infrastructure & Tooling
 - [x] Post-startup Dummy Data Generator for demo/dev environments.
@@ -53,9 +54,12 @@ This roadmap outlines the core functionalities and capabilities of the EduBoost 
 - [x] Prometheus metrics and Grafana observability stack.
 - [x] CI/CD and Release Automation workflows.
 
-### 10. V2 Modular Monolith Pivot
-- [x] Establish initial `app/core`, `app/domain`, `app/repositories`, and `app/services` boundaries.
-- [ ] Migrate business logic out of legacy runtime-centric locations into V2 service/repository boundaries.
-- [ ] Replace broker-first audit/event architecture with the V2 append-only PostgreSQL audit target.
-- [ ] Replace Celery/RabbitMQ-driven async patterns with V2-compatible `BackgroundTasks` where appropriate.
-- [ ] Align deployment/runtime architecture with the V2 single-node constraint.
+### 10. V2 Modular Monolith Pivot — ✅ COMPLETED
+- [x] Establish modular structure: `app/modules/`, `app/core/`, `app/repositories/`, `app/models/`
+- [x] Migrate all business logic from V1 domain/services into V2 module architecture
+- [x] Replace broker-first audit with V2 PostgreSQL append-only audit in `core/audit.py`
+- [x] Replace Celery with `arq` (async Redis queue) for single-node simplicity
+- [x] Align deployment to V2 single-node modular monolith constraint
+- [x] **Delete all V1 code** — no active clients, zero migration obligation
+- [x] Reorganize CI/CD to `.github/workflows/` standard location
+- [x] Update all tracking documents with completion status

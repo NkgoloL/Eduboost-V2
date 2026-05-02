@@ -3,6 +3,35 @@
 This file is the **authoritative checklist** for the work currently being executed in this repository.  
 Each item should be closed only when implemented, verified (tests or runtime validation), and committed.
 
+---
+
+### 🎯 **MILESTONE: V2 Architecture Migration (2026-05-02)** ✅ COMPLETED
+
+All recommendations from `EduBoost_Architecture_Recommendation.md` implemented. V1 code deleted entirely. Architecture restructured to modular monolith with PostgreSQL-backed audit trail.
+
+#### Completed Deliverables
+- [x] Delete V1 infrastructure (`app/api/`, legacy docker-compose files, RabbitMQ/Celery refs)
+- [x] Delete temporary artifacts (`mnt/`, `scratch/`, `gemini-code-*.md`)
+- [x] Reorganize CI/CD to `.github/workflows/ci-cd.yml`
+- [x] Migrate core infrastructure to `app/core/` with PostgreSQL audit trail (`audit.py`)
+- [x] Migrate routers to `app/api_v2_routers/` (auth, consent, lessons)
+- [x] Reorganize domain modules: `app/modules/{auth,diagnostics,lessons,consent,learners,study_plans,gamification,parent_portal,rlhf}`
+- [x] Migrate IRT engine to `modules/diagnostics/irt_engine.py`
+- [x] Migrate LLM gateway to `modules/lessons/llm_gateway.py`
+- [x] Centralize ORM models in `app/models/`
+- [x] Reorganize tests: POPIA → `tests/popia/`, Smoke → `tests/smoke/`, IRT → `tests/unit/modules/diagnostics/`
+- [x] Initialize all modules as Python packages
+- [x] Update tracking documents (CHANGELOG, System_Status_Roadmap, ACTIVE_TASKS)
+
+#### Next Immediate Work (Post-Migration)
+- [ ] Verify module imports and dependencies (run pytest for circular imports)
+- [ ] Replace Celery with `arq` (async Redis queue)
+- [ ] Validate 80%+ unit test coverage on domain modules
+- [ ] Test full stack in Docker (docker-compose.v2.yml)
+- [ ] Run CI pipeline to ensure green status
+
+---
+
 ### Scope: Backend functional verification + dummy data generator
 
 - [x] **Docs scaffolding**

@@ -1,34 +1,150 @@
-"""Lesson routes for EduBoost V2."""
+"""
+EduBoost SA — Lessons Router (V2)
+LLM-generated adaptive lessons. Consent gate applied at router level.
+"""
+from __future__ import annotations
 
-from fastapi import APIRouter, HTTPException, Depends
+from uuid import UUID
 
-from app.domain.api_v2_models import LessonGenerateRequest
-from app.services.lesson_service_v2 import LessonServiceV2
-from app.core.dependencies import get_current_user
+from fastapi import APIRouter, Depends, status
+from pydantic import BaseModel
+from sqlalchemy.ext.asyncio import AsyncSession
 
-router = APIRouter(prefix="/api/v2/lessons", tags=["V2 Lessons"])
+from app.core.database import get_db
+from app.core.dependencies import get_current_user_id, require_active_consent
+from app.modules.lessons.llm_gateway import LLMGateway
+from app.repositories import DiagnosticRepository, LessonRepository
+
+router = APIRouter(prefix="/lessons", tags=["Lessons"])
+_llm = LLMGateway()
+_lesson_repo = LessonRepository()
+_diagnostic_repo = DiagnosticRepository()
 
 
-@router.post("/generate")
-async def generate_lesson(request: LessonGenerateRequest, user: dict = Depends(get_current_user)):
-    # Basic role check
-    if user.get("role") not in {"Student", "Parent", "Admin"}:
-        raise HTTPException(status_code=403, detail="Forbidden")
+class GenerateLessonRequest(BaseModel):
+    learner_id: UUID
+    subject: str
+    topic: str
+    language: str = "en"
 
-    from app.services.analytics_service import AnalyticsService
-    await AnalyticsService().track_event("lesson_requested", request.learner_id, {"topic": request.topic})
-    
-    return await LessonServiceV2().generate_lesson(
-        learner_id=request.learner_id,
-        subject_code=request.subject_code,
-        topic=request.topic,
-        grade_level=request.grade_level,
+
+@router.post(
+    "/generate",
+    status_code=status.HTTP_201_CREATED,
+    # Consent gate — declarative, cannot be forgotten, visible in OpenAPI schema
+    dependencies=[Depends(require_active_consent)],
+)
+async def generate_lesson(
+    body: GenerateLessonRequest,
+    _user_id: UUID = Depends(get_current_user_id),
+    db: AsyncSession = Depends(get_db),
+) -> dict:
+    from app.core.security import pseudonymise_for_llm
+    from app.core.metrics import lessons_generated_total
+    from app.models import Lesson
+
+    # Get ability level from latest diagnostic (null-safe)
+    latest_diag = await _diagnostic_repo.get_latest_for_learner(
+        body.learner_id, body.subject, db
+    )
+    ability = float(latest_diag.ability_estimate or 0.0) if latest_diag else 0.0
+
+    # Pseudonymise learner — NEVER send real UUID to LLM provider
+    pseudonym = pseudonymise_for_llm(body.learner_id)
+
+    prompt = _build_lesson_prompt(
+        subject=body.subject,
+        topic=body.topic,
+        language=body.language,
+        ability=ability,
+        pseudonym=pseudonym,
     )
 
+    response = await _llm.generate(
+        prompt,
+        system=_LESSON_SYSTEM_PROMPT,
+        language=body.language,
+        max_tokens=1200,
+    )
 
-@router.get("/{lesson_id}")
-async def get_lesson(lesson_id: str):
-    lesson = await LessonServiceV2().get_lesson(lesson_id)
-    if lesson is None:
-        raise HTTPException(status_code=404, detail="Lesson not found")
-    return lesson
+    lesson = await _lesson_repo.create(
+        db,
+        learner_id=body.learner_id,
+        subject=body.subject,
+        grade="",  # Populated from learner profile in full implementation
+        language=body.language,
+        topic=body.topic,
+        content=response.content,
+        llm_provider=response.provider,
+        prompt_tokens=response.prompt_tokens,
+        completion_tokens=response.completion_tokens,
+        ability_level=ability,
+    )
+
+    lessons_generated_total.labels(
+        grade="", subject=body.subject, language=body.language
+    ).inc()
+
+    return {
+        "id": str(lesson.id),
+        "topic": lesson.topic,
+        "content": lesson.content,
+        "provider": lesson.llm_provider,
+        "created_at": lesson.created_at.isoformat(),
+    }
+
+
+@router.get(
+    "/{learner_id}",
+    dependencies=[Depends(require_active_consent)],
+)
+async def get_lessons(
+    learner_id: UUID,
+    subject: str | None = None,
+    limit: int = 10,
+    _user_id: UUID = Depends(get_current_user_id),
+    db: AsyncSession = Depends(get_db),
+) -> list[dict]:
+    lessons = await _lesson_repo.get_recent_for_learner(
+        learner_id, db, subject=subject, limit=limit
+    )
+    return [
+        {
+            "id": str(l.id),
+            "subject": l.subject,
+            "topic": l.topic,
+            "language": l.language,
+            "created_at": l.created_at.isoformat(),
+        }
+        for l in lessons
+    ]
+
+
+_LESSON_SYSTEM_PROMPT = (
+    "You are a South African Grade R-7 educational assistant. "
+    "Generate clear, engaging, age-appropriate lessons aligned to the CAPS curriculum. "
+    "Use simple, encouraging language. Never include learner personal information. "
+    "Format your response in clean markdown."
+)
+
+
+def _build_lesson_prompt(
+    *,
+    subject: str,
+    topic: str,
+    language: str,
+    ability: float,
+    pseudonym: str,
+) -> str:
+    from app.modules.diagnostics.irt_engine import IRTEngine
+    band = IRTEngine.interpret_ability(ability)
+    lang_name = {"en": "English", "zu": "isiZulu", "xh": "isiXhosa", "af": "Afrikaans"}.get(language, "English")
+
+    return (
+        f"Create a {band['label'].lower()}-level lesson on '{topic}' in {subject} "
+        f"for a South African learner. "
+        f"Write the lesson in {lang_name}. "
+        f"The learner is at the {band['label']} level ({band['emoji']}). "
+        f"Include: a clear explanation, 2-3 worked examples, and 3 practice questions. "
+        f"Keep it encouraging and age-appropriate for the CAPS curriculum."
+    )

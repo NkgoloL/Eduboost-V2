@@ -1,28 +1,71 @@
-"""Auth routes for EduBoost V2."""
+"""
+EduBoost SA — Auth Router (V2)
+Thin HTTP layer — delegates all logic to AuthService.
+"""
+from __future__ import annotations
 
-from fastapi import APIRouter
+from uuid import UUID
 
-from app.services.auth_service import AuthService
+from fastapi import APIRouter, Depends, Request, status
+from pydantic import BaseModel, EmailStr
+from sqlalchemy.ext.asyncio import AsyncSession
 
-router = APIRouter(prefix="/api/v2/auth", tags=["V2 Auth"])
+from app.core.database import get_db
+from app.core.dependencies import get_current_user_id
+from app.modules.auth.service import AuthService
 
-
-@router.post("/session")
-async def create_session(subject: str, role: str):
-    """V2 Session creation (Login). In production, this would verify credentials via AuthRepository."""
-    return AuthService().create_session(subject=subject, role=role)
-
-
-@router.post("/refresh")
-async def refresh_session(refresh_token: str):
-    """Rotate a refresh token for a new access token."""
-    return await AuthService().rotate_refresh_token(refresh_token)
+router = APIRouter(prefix="/auth", tags=["Authentication"])
+_auth_service = AuthService()
 
 
-@router.post("/revoke")
-async def revoke_token(jti: str, expires_at: str):
-    """Revoke a token's JTI (Admin only or via session)."""
-    from datetime import datetime
-    from app.repositories.auth_repository import AuthRepository
-    await AuthRepository().revoke_jti(jti, datetime.fromisoformat(expires_at))
-    return {"status": "revoked", "jti": jti}
+class RegisterRequest(BaseModel):
+    email: EmailStr
+    password: str
+    full_name: str
+    phone: str | None = None
+
+
+class LoginRequest(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class TokenResponse(BaseModel):
+    access_token: str
+    refresh_token: str
+    token_type: str = "bearer"
+
+
+@router.post("/register", status_code=status.HTTP_201_CREATED)
+async def register(body: RegisterRequest, db: AsyncSession = Depends(get_db)) -> dict:
+    guardian = await _auth_service.register_guardian(
+        db,
+        email=body.email,
+        password=body.password,
+        full_name=body.full_name,
+        phone=body.phone,
+    )
+    return {"id": str(guardian.id), "message": "Registration successful. Please verify your email."}
+
+
+@router.post("/login", response_model=TokenResponse)
+async def login(body: LoginRequest, request: Request, db: AsyncSession = Depends(get_db)) -> TokenResponse:
+    ip = request.client.host if request.client else None
+    access, refresh = await _auth_service.authenticate(
+        db, email=body.email, password=body.password, ip_address=ip
+    )
+    return TokenResponse(access_token=access, refresh_token=refresh)
+
+
+@router.get("/verify-email/{token}")
+async def verify_email(token: str, db: AsyncSession = Depends(get_db)) -> dict:
+    await _auth_service.verify_email(token, db)
+    return {"message": "Email verified successfully"}
+
+
+@router.get("/me")
+async def get_profile(
+    user_id: UUID = Depends(get_current_user_id),
+    db: AsyncSession = Depends(get_db),
+) -> dict:
+    return await _auth_service.get_guardian_profile(user_id, db)
