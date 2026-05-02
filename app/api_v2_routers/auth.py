@@ -4,11 +4,13 @@ Register, login, and JWT refresh with HTTP-only cookie for refresh token.
 """
 from __future__ import annotations
 
-from fastapi import APIRouter, Depends, HTTPException, Response, status
+from fastapi import APIRouter, Cookie, Depends, HTTPException, Response, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
-from app.core.security import Role, create_access_token, create_refresh_token, decode_token, hash_email, hash_password, verify_password
+from app.core.refresh_tokens import consume_refresh_token, store_refresh_token
+from app.core.security import Role, create_access_token, create_refresh_token, hash_email, hash_password, verify_password
+from app.core.config import settings
 from app.domain.schemas import LoginRequest, RefreshRequest, RegisterRequest, TokenResponse
 from app.repositories.repositories import GuardianRepository
 from app.services.fourth_estate import FourthEstateService
@@ -38,6 +40,7 @@ async def register(body: RegisterRequest, response: Response, db: AsyncSession =
     access = create_access_token(guardian.id, Role(guardian.role))
     refresh = create_refresh_token(guardian.id, Role(guardian.role))
 
+    await store_refresh_token(refresh)
     _set_refresh_cookie(response, refresh)
     await audit.auth_event("USER_REGISTERED", guardian.id, {"role": body.role})
 
@@ -57,6 +60,7 @@ async def login(body: LoginRequest, response: Response, db: AsyncSession = Depen
     access = create_access_token(guardian.id, Role(guardian.role))
     refresh = create_refresh_token(guardian.id, Role(guardian.role))
 
+    await store_refresh_token(refresh)
     _set_refresh_cookie(response, refresh)
     await audit.auth_event("USER_LOGIN", guardian.id)
 
@@ -64,10 +68,17 @@ async def login(body: LoginRequest, response: Response, db: AsyncSession = Depen
 
 
 @router.post("/refresh", response_model=TokenResponse)
-async def refresh_token(body: RefreshRequest, response: Response, db: AsyncSession = Depends(get_db)):
-    payload = decode_token(body.refresh_token)
-    if payload.get("type") != "refresh":
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Not a refresh token")
+async def refresh_token(
+    body: RefreshRequest | None = None,
+    response: Response,
+    db: AsyncSession = Depends(get_db),
+    cookie_refresh: str | None = Cookie(default=None, alias=REFRESH_COOKIE),
+):
+    token = (body.refresh_token if body else None) or cookie_refresh
+    if not token:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Refresh token required")
+
+    payload = await consume_refresh_token(token)
 
     repo = GuardianRepository(db)
     guardian = await repo.get_by_id(payload["sub"])
@@ -76,6 +87,7 @@ async def refresh_token(body: RefreshRequest, response: Response, db: AsyncSessi
 
     access = create_access_token(guardian.id, Role(guardian.role))
     new_refresh = create_refresh_token(guardian.id, Role(guardian.role))
+    await store_refresh_token(new_refresh)
     _set_refresh_cookie(response, new_refresh)
 
     return TokenResponse(access_token=access, expires_in=900)
@@ -87,7 +99,7 @@ def _set_refresh_cookie(response: Response, token: str) -> None:
         token,
         httponly=True,
         secure=True,
-        samesite="lax",
-        max_age=30 * 24 * 3600,
+        samesite="strict",
+        max_age=settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS * 24 * 3600,
         path="/api/v2/auth/refresh",
     )

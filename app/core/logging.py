@@ -18,7 +18,7 @@ def configure_logging() -> None:
         structlog.processors.TimeStamper(fmt="iso", utc=True),
     ]
 
-    if settings.is_production:
+    if settings.is_production():
         shared_processors.append(structlog.processors.JSONRenderer())
     else:
         shared_processors.append(structlog.dev.ConsoleRenderer(colors=True))

@@ -4,7 +4,7 @@ from __future__ import annotations
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.database import get_db
+from app.core.database import AsyncSessionLocal, get_db
 from app.core.security import get_current_user, require_parent_or_admin
 from app.domain.schemas import LearnerCreate, LearnerResponse
 from app.repositories.repositories import LearnerRepository
@@ -65,6 +65,8 @@ async def request_erasure(
     if learner.guardian_id != current_user["sub"] and current_user.get("role") != "admin":
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorised to erase this learner")
 
+    learner_pseudonym = learner.pseudonym_id
+
     # Soft-delete immediately
     await repo.soft_delete(learner_id)
 
@@ -74,15 +76,20 @@ async def request_erasure(
 
     # Audit
     audit = FourthEstateService(db)
-    await audit.erasure_requested(current_user["sub"], learner_id)
+    await audit.erasure_requested(current_user["sub"], learner_pseudonym)
 
-    # Physical purge scheduled within 30 days (BackgroundTask placeholder)
-    background_tasks.add_task(_schedule_physical_purge, learner_id)
+    # Physical purge runs in the background; audit keeps only an anonymised tombstone.
+    background_tasks.add_task(_execute_physical_purge, learner_id, learner_pseudonym)
 
     return {"detail": f"Erasure of learner {learner_id} initiated. Physical purge within 30 days."}
 
 
-async def _schedule_physical_purge(learner_id: str) -> None:
-    """Placeholder: in production, enqueue a timed job or send to a purge queue."""
-    import logging
-    logging.getLogger(__name__).info("POPIA purge scheduled for learner %s", learner_id)
+async def _execute_physical_purge(learner_id: str, learner_pseudonym: str) -> None:
+    async with AsyncSessionLocal() as session:
+        try:
+            await LearnerRepository(session).purge_personal_data(learner_id)
+            await FourthEstateService(session).erasure_executed(learner_pseudonym)
+            await session.commit()
+        except Exception:
+            await session.rollback()
+            raise

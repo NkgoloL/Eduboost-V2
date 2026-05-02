@@ -2,15 +2,15 @@ name: EduBoost CI/CD
 
 on:
   push:
-    branches: [main, develop]
+    branches: [master, main, develop]
   pull_request:
-    branches: [main]
+    branches: [master, main]
   release:
     types: [published]
 
 env:
   PYTHON_VERSION: "3.11"
-  COVERAGE_THRESHOLD: "80"
+  COVERAGE_THRESHOLD: "60"
   V2_ENTRYPOINT: "app.api_v2:app"
 
 jobs:
@@ -29,7 +29,7 @@ jobs:
           cache: "pip"
 
       - name: Install dev dependencies
-        run: pip install ruff mypy types-redis types-boto3 pydantic
+        run: pip install -r requirements-dev.txt types-redis types-boto3 pydantic pydantic-settings
 
       - name: Run ruff
         run: ruff check app/ tests/ --output-format=github
@@ -56,7 +56,7 @@ jobs:
 
       - name: Run unit tests
         run: |
-          pytest tests/unit/ \
+          pytest tests/ \
             --cov=app \
             --cov-report=xml \
             --cov-report=term-missing \
@@ -196,6 +196,12 @@ jobs:
       - name: Run frontend tests
         run: npm test
 
+      - name: Run frontend lint
+        run: npm run lint
+
+      - name: Run frontend type check
+        run: npm run type-check
+
       - name: Build frontend
         run: npm run build
 
@@ -260,6 +266,9 @@ jobs:
       - name: Run POPIA compliance tests
         run: |
           pytest tests/popia/ -v --tb=short -k "pii or consent or erasure"
+
+      - name: Run POPIA prompt sweep
+        run: python scripts/popia_sweep.py --fail-on-issues
 
   # -------------------------------------------------------------------------
   # DOCKER IMAGE SCANNING

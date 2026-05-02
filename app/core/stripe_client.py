@@ -11,6 +11,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.config import settings
 from app.core.logging import get_logger
 from app.repositories.repositories import GuardianRepository, StripeEventRepository
+from app.services.subscription_service import SubscriptionService
 
 log = get_logger(__name__)
 
@@ -19,6 +20,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 class StripeService:
     def __init__(self, db: AsyncSession) -> None:
+        self._db = db
         self._guardian_repo = GuardianRepository(db)
         self._event_repo = StripeEventRepository(db)
 
@@ -62,6 +64,8 @@ class StripeService:
                 await self._handle_subscription_change(event["data"]["object"], active=True)
             case "customer.subscription.deleted":
                 await self._handle_subscription_change(event["data"]["object"], active=False)
+            case "invoice.payment_failed":
+                await self._handle_invoice_payment_failed(event["data"]["object"])
 
         return {"status": "processed"}
 
@@ -71,5 +75,14 @@ class StripeService:
             log.warning("stripe_no_guardian_id", subscription_id=subscription.get("id"))
             return
         new_tier = "premium" if active and subscription.get("status") == "active" else "free"
-        await self._guardian_repo.update_subscription(guardian_id, new_tier, subscription.get("id"))
+        subscriptions = SubscriptionService(self._db)
+        if new_tier == "premium":
+            await subscriptions.activate_premium(guardian_id, subscription.get("id"))
+        else:
+            await subscriptions.downgrade_to_free(guardian_id)
         log.info("subscription_updated", guardian_id=guardian_id, tier=new_tier)
+
+    async def _handle_invoice_payment_failed(self, invoice: dict) -> None:
+        subscription_id = invoice.get("subscription")
+        customer_id = invoice.get("customer")
+        log.warning("stripe_invoice_payment_failed", subscription_id=subscription_id, customer_id=customer_id)

@@ -6,7 +6,7 @@ from app.domain.api_v2_models import StudyPlanGenerateRequest
 from app.services.audit_service import AuditService
 from app.services.study_plan_service_v2 import StudyPlanServiceV2
 
-router = APIRouter(prefix="/api/v2/study-plans", tags=["V2 Study Plans"])
+router = APIRouter(prefix="/study-plans", tags=["V2 Study Plans"])
 
 
 @router.post("/{learner_id}")

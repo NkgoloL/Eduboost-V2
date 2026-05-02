@@ -8,7 +8,6 @@ Fully async LLM inference via Anthropic + Groq with:
 from __future__ import annotations
 
 import hashlib
-import json
 from typing import Any
 
 import anthropic
@@ -16,7 +15,8 @@ from groq import AsyncGroq
 
 from app.core.config import settings
 from app.core.logging import get_logger
-from app.core.redis import cache_get, cache_set, increment_counter
+from app.core.rate_limiter import AIQuotaExceeded, check_ai_quota
+from app.core.redis import cache_get, cache_set
 from app.services.judiciary import JudiciaryService, LessonPayload
 
 log = get_logger(__name__)
@@ -48,12 +48,11 @@ class QuotaExceededError(Exception):
 
 async def check_and_consume_quota(user_id: str, tier: str) -> int:
     """Atomically increment and check daily request counter. Returns current count."""
-    limit = settings.FREE_DAILY_REQUEST_QUOTA if tier == "free" else settings.PREMIUM_DAILY_REQUEST_QUOTA
-    key = f"quota:{user_id}:{__import__('datetime').date.today()}"
-    count = await increment_counter(key, ttl_seconds=86400)
-    if count > limit:
-        raise QuotaExceededError(f"Daily quota of {limit} requests exceeded")
-    return count
+    try:
+        decision = await check_ai_quota(user_id, tier)
+    except AIQuotaExceeded as exc:
+        raise QuotaExceededError(str(exc.detail)) from exc
+    return decision.used
 
 
 # ── Semantic cache ────────────────────────────────────────────────────────────
@@ -115,12 +114,19 @@ class ExecutiveService:
             f"Language: {language} | Learner archetype: {archetype or 'general'}"
         )
 
-        raw = await self._call_groq(user_prompt)
+        raw = await self._call_with_fallback(user_prompt)
         payload = self._judiciary.stamp_lesson(raw)
 
         await cache_set(cache_k, raw, ttl=settings.SEMANTIC_CACHE_TTL_SECONDS)
         log.info("lesson_generated", pseudonym=pseudonym_id, provider="groq")
         return payload, False
+
+    async def _call_with_fallback(self, user_prompt: str) -> str:
+        try:
+            return await self._call_groq(user_prompt)
+        except Exception as exc:
+            log.warning("groq_lesson_generation_failed", error=str(exc))
+            return await self._call_anthropic(user_prompt)
 
     async def _call_groq(self, user_prompt: str) -> str:
         client = _get_groq()

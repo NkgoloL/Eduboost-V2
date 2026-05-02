@@ -35,7 +35,7 @@ class TokenResponse(BaseModel):
 
 
 class RefreshRequest(BaseModel):
-    refresh_token: str
+    refresh_token: str | None = None
 
 
 # ── Learner ───────────────────────────────────────────────────────────────────
@@ -147,3 +147,11 @@ class QuotaStatus(BaseModel):
     used_today: int
     daily_limit: int
     tier: str
+
+
+class AuditLogEntry(BaseModel):
+    event_id: str
+    learner_id: str | None = None
+    event_type: str
+    occurred_at: datetime
+    payload: dict = Field(default_factory=dict)

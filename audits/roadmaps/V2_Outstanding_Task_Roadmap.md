@@ -53,6 +53,8 @@ The main remaining problem is **depth and independence**, not missing route name
 ### 1. Make V2 the sole operational default
 **Goal:** A new developer should naturally start and use V2 first.
 
+**Status:** In progress. `docker-compose.v2.yml` now includes API, docs, Postgres, Redis, and frontend services; CI now targets `master`/PRs and includes V2 smoke, frontend lint/type checks, and POPIA sweep wiring. Full green verification still requires a Python 3.11 environment.
+
 **Files to inspect/update:**
 - `README.md`
 - `CONTRIBUTING.md`
@@ -124,6 +126,8 @@ The main remaining problem is **depth and independence**, not missing route name
 ### 5. Reduce dependence on legacy architecture assumptions
 **Goal:** V2 should stop depending conceptually on Celery, RabbitMQ, and the inference microservice for its main path.
 
+**Status:** In progress. The V2 service package now exists and key routers can target the V2 service boundary. `docker-compose.v2.yml` remains RabbitMQ-free; Redis is used for cache/session-style workloads only.
+
 **Files to inspect/update:**
 - `docker-compose.v2.yml`
 - `app/api_v2.py`
@@ -139,6 +143,8 @@ The main remaining problem is **depth and independence**, not missing route name
 
 ### 6. Create a clear V2 deprecation plan for legacy runtime
 **Goal:** The repo should state what is legacy and what is target state.
+
+**Status:** In progress. `LEGACY_RETIREMENT_DATE` is now available in V2 settings. This checkout does not currently contain the legacy `app/api/routers/*` tree referenced by older TODOs, so response-header deprecation work is not applicable until/unless that tree is restored.
 
 **Files to inspect/update:**
 - `README.md`

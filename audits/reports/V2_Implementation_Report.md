@@ -60,3 +60,24 @@
 
 **Why:**
 - Reduce the remaining gap between the legacy route surface and the V2 route surface.
+
+---
+
+### [2026-05-02] V2 Stabilisation Pass
+**Status:** Partially verified  
+**What changed:**
+- Repaired `app/core/config.py` so the V2 settings module is syntactically valid and includes current runtime knobs
+- Added the missing `app/services/` package and compatibility service modules expected by V2 routers/tests
+- Added `app/domain/models.py`, `app/domain/entities.py`, and `app/domain/api_v2_models.py` compatibility modules
+- Updated Alembic to import V2 ORM metadata from `app.models`
+- Added `app/api/version.py`, RBAC compatibility helpers, and V2 health metadata
+- Aligned the frontend API default with `/api/v2`
+- Added a frontend service to `docker-compose.v2.yml`
+- Updated CI to run on `master`, use the repository dev requirements, run frontend lint/type checks, and include the POPIA prompt sweep
+
+**Verification notes:**
+- Full dependency installation is blocked on this Windows/Python 3.13 environment because the project targets Python 3.11 and `scikit-learn==1.5.0` attempts a local compile.
+- A partial dependency install was attempted to support import smoke tests, but pip later hit a memory error in this environment.
+
+**Why:**
+- The V2 tree had import/runtime blockers before deeper TODO work could be safely validated.

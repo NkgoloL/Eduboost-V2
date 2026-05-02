@@ -34,12 +34,9 @@ config.set_main_option("sqlalchemy.url", database_url)
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# ── Import ALL models so autogenerate can diff them ───────────────────────
-# Add every new models module here as the project grows.
-from app.api.models.base import Base  # noqa: E402  (imports Base.metadata)
-import app.api.models.consent         # noqa: F401
-import app.api.models.learner         # noqa: F401  (import existing models)
-import app.api.models.audit           # noqa: F401
+# ── Import ALL V2 models so autogenerate can diff them ────────────────────
+from app.core.database import Base  # noqa: E402
+import app.models  # noqa: F401,E402
 
 target_metadata = Base.metadata
 
