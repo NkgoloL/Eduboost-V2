@@ -33,3 +33,8 @@ All changes MUST be committed and pushed to the remote repository.
 - After completing any work (Epic, fix, feature), stage and commit changes
 - Push to remote immediately after commit
 - Use descriptive commit messages that reference the Epic or task
+
+
+## 6. Assume Skills 
+
+- Assume all skills listed at AGENT_SPEC.md
