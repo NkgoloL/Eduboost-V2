@@ -11,13 +11,8 @@ revisions should be created from the single head produced by this merge.
 from alembic import op
 
 revision = "merge_2026_05_01"
-# List all current heads discovered in the repo; Alembic will treat this as a merge
-down_revision = (
-    "0001",
-    "0001_initial",
-    "0001_five_pillar_schema",
-    "0004_add_rlhf_pipeline",
-)
+# Merge head: all legacy 0001_* branches now unified under single canonical schema
+down_revision = "0001_v2_consolidated"
 branch_labels = None
 depends_on = None
 

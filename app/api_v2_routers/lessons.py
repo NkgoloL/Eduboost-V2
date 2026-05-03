@@ -5,6 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.rate_limit import limiter, LESSON_GENERATION_LIMIT, LESSON_GENERATION_PREMIUM_LIMIT
 from app.core.security import get_current_user
 from app.domain.schemas import LessonFeedback, LessonRequest, LessonResponse
 from app.repositories.repositories import GuardianRepository, LearnerRepository, LessonRepository
@@ -17,6 +18,7 @@ _executive = ExecutiveService()
 
 
 @router.post("/", response_model=LessonResponse, status_code=status.HTTP_201_CREATED)
+@limiter.limit("10/day")  # Default rate limit; will be enhanced with per-tier logic below
 async def generate_lesson(
     body: LessonRequest,
     db: AsyncSession = Depends(get_db),

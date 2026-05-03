@@ -95,57 +95,11 @@ class Settings(BaseSettings):
             raise ValueError("ENCRYPTION_KEY must be 44 characters (32 bytes base64 encoded)")
         return v
 
-    def is_production(self) -> bool:
-        return self.ENVIRONMENT == "production" or self.APP_ENV == "production"
-
-    def is_development(self) -> bool:
-        return self.ENVIRONMENT == "development" or self.APP_ENV == "development"
-
 
 @lru_cache(maxsize=1)
 def get_settings() -> Settings:
-    settings = Settings()
-    return _load_from_key_vault(settings)
+    return Settings()
 
 
-def _load_from_key_vault(settings: Settings) -> Settings:
-    """Fetch secrets from Azure Key Vault and patch settings (production only)."""
-    if not settings.AZURE_KEY_VAULT_URL:
-        return settings
-
-    try:
-        from azure.identity import DefaultAzureCredential
-        from azure.keyvault.secrets import SecretClient
-
-        credential = DefaultAzureCredential()
-        client = SecretClient(vault_url=settings.AZURE_KEY_VAULT_URL, credential=credential)
-
-        secret_map = {
-            "jwt-secret": "JWT_SECRET",
-            "encryption-key": "ENCRYPTION_KEY",
-            "groq-api-key": "GROQ_API_KEY",
-            "anthropic-api-key": "ANTHROPIC_API_KEY",
-            "sendgrid-api-key": "SENDGRID_API_KEY",
-            "database-url": "DATABASE_URL",
-            "redis-url": "REDIS_URL",
-            "azure-storage-connection-string": "AZURE_STORAGE_CONNECTION_STRING",
-            "grafana-cloud-api-key": "GRAFANA_CLOUD_API_KEY",
-        }
-
-        overrides: dict[str, str] = {}
-        for vault_name, field_name in secret_map.items():
-            try:
-                overrides[field_name] = client.get_secret(vault_name).value or ""
-            except Exception:
-                pass  # Secret not in vault — keep env/default value
-
-        if overrides:
-            return settings.model_copy(update=overrides)
-
-    except ImportError:
-        pass  # azure-identity not installed — local dev
-
-    return settings
-
-
+# Exported singleton
 settings = get_settings()
