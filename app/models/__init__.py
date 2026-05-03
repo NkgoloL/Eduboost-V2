@@ -244,7 +244,7 @@ class AuditLog(Base):
     learner_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), index=True)
     resource_type: Mapped[str | None] = mapped_column(String(64))
     resource_id: Mapped[str | None] = mapped_column(String(128))
-    metadata: Mapped[str | None] = mapped_column(Text)              # JSON, PII-stripped
+    metadata_json: Mapped[str | None] = mapped_column("metadata", Text)  # JSON, PII-stripped
     ip_address: Mapped[str | None] = mapped_column(String(45))
     user_agent: Mapped[str | None] = mapped_column(Text)
     occurred_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, nullable=False)

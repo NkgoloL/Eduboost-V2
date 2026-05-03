@@ -88,7 +88,7 @@ async def write_audit_event(
             )
             # Both committed together — no partial state possible.
     """
-    from app.models.audit_log import AuditLog  # avoid circular import
+    from app.models import AuditLog  # avoid circular import
 
     # Sanitise metadata — never log raw PII
     safe_metadata = _sanitise_metadata(metadata or {})
@@ -99,7 +99,7 @@ async def write_audit_event(
         learner_id=learner_id,
         resource_type=resource_type,
         resource_id=resource_id,
-        metadata=json.dumps(safe_metadata),
+        metadata_json=json.dumps(safe_metadata),
         ip_address=ip_address,
         user_agent=user_agent,
         occurred_at=datetime.now(UTC),

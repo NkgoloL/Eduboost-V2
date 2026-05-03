@@ -27,15 +27,15 @@ const PRECACHE_URLS = [
 // Routes that should use cache-first strategy
 const CACHE_FIRST_PATTERNS = [
   /\/_next\/static\//,
-  /\/api\/v1\/lessons\/[^/]+$/,
-  /\/api\/v1\/study-plans\/[^/]+\/current$/,
+  /\/v2\/lessons\/[^/]+$/,
+  /\/v2\/study-plans\/[^/]+\/current$/,
 ];
 
 // Routes that should queue when offline
 const QUEUEABLE_API_PATTERNS = [
-  /\/api\/v1\/diagnostic\/session\/[^/]+\/respond/,
-  /\/api\/v1\/lessons\/[^/]+\/feedback/,
-  /\/api\/v1\/assessments\/[^/]+\/submit/,
+  /\/v2\/diagnostics\/session\/[^/]+\/respond/,
+  /\/v2\/lessons\/[^/]+\/feedback/,
+  /\/v2\/assessments\/[^/]+\/submit/,
 ];
 
 // ---------------------------------------------------------------------------

@@ -31,8 +31,6 @@ class GenerateLessonRequest(BaseModel):
 @router.post(
     "/generate",
     status_code=status.HTTP_201_CREATED,
-    # Consent gate — declarative, cannot be forgotten, visible in OpenAPI schema
-    dependencies=[Depends(require_active_consent)],
 )
 async def generate_lesson(
     body: GenerateLessonRequest,
@@ -41,7 +39,8 @@ async def generate_lesson(
 ) -> dict:
     from app.core.security import pseudonymise_for_llm
     from app.core.metrics import lessons_generated_total
-    from app.models import Lesson
+
+    await require_active_consent(body.learner_id, db)
 
     # Get ability level from latest diagnostic (null-safe)
     latest_diag = await _diagnostic_repo.get_latest_for_learner(

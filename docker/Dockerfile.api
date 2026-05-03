@@ -17,11 +17,11 @@ COPY alembic ./alembic
 COPY alembic.ini ./alembic.ini
 
 FROM base AS development
-WORKDIR /workspace/app/api
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+WORKDIR /workspace
+CMD ["uvicorn", "app.api_v2:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
 
 FROM base AS production
-WORKDIR /workspace/app/api
+WORKDIR /workspace
 RUN useradd -m appuser && chown -R appuser /workspace
 USER appuser
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
+CMD ["uvicorn", "app.api_v2:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]

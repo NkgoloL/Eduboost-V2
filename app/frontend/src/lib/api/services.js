@@ -8,13 +8,13 @@ export const AuthService = {
     }),
 
   registerGuardian: (data) =>
-    fetchApi("/auth/guardian/register", {
+    fetchApi("/auth/register", {
       method: "POST",
       body: JSON.stringify(data),
     }),
 
   loginGuardian: (data) =>
-    fetchApi("/auth/guardian/login", {
+    fetchApi("/auth/login", {
       method: "POST",
       body: JSON.stringify(data),
     }),
@@ -44,10 +44,10 @@ export const LearnerService = {
 };
 
 export const ParentService = {
-  getLinkedLearners: () => fetchApi("/auth/guardian/linked-learners"),
+  getLinkedLearners: () => fetchApi("/auth/me"),
   
   linkLearner: (learnerId, relationship) =>
-    fetchApi("/auth/guardian/link-learner", {
+    fetchApi("/learners/link", {
       method: "POST",
       body: JSON.stringify({ learner_id: learnerId, relationship }),
     }),

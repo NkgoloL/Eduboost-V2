@@ -102,7 +102,7 @@ jobs:
 
     env:
       DATABASE_URL: postgresql+asyncpg://eduboost:testpassword@localhost:5432/eduboost_test
-      JWT_SECRET: test-jwt-secret
+      JWT_SECRET: test-jwt-secret-32-chars-minimum-value
       ENCRYPTION_KEY: test-encryption-key-32-chars-xxxx
       ENCRYPTION_SALT: test-encryption-salt
       AUDIT_DATABASE_URL: postgresql+asyncpg://eduboost:testpassword@localhost:5432/eduboost_test
@@ -160,7 +160,7 @@ jobs:
     env:
       DATABASE_URL: postgresql+asyncpg://eduboost:testpassword@localhost:5432/eduboost_test
       REDIS_URL: redis://localhost:6379/0
-      JWT_SECRET: test-jwt-secret
+      JWT_SECRET: test-jwt-secret-32-chars-minimum-value
       APP_ENV: test
     steps:
       - uses: actions/checkout@v4
