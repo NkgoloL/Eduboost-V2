@@ -2,20 +2,38 @@
 
 from __future__ import annotations
 
-import uuid
+from uuid import UUID
 
-from sqlalchemy import insert
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.api.core.database import AsyncSessionFactory
-from app.api.models.db_models import DiagnosticSession as DiagnosticSessionRecord
+from app.core.base import BaseRepository
+from app.models import DiagnosticSession
 
 
-class DiagnosticRepository:
+class DiagnosticRepository(BaseRepository[DiagnosticSession]):
+    model = DiagnosticSession
+
+    async def get_latest_for_learner(
+        self,
+        learner_id: UUID,
+        subject: str,
+        db: AsyncSession,
+    ) -> DiagnosticSession | None:
+        result = await db.execute(
+            select(DiagnosticSession)
+            .where(DiagnosticSession.learner_id == learner_id)
+            .where(DiagnosticSession.subject == subject)
+            .order_by(DiagnosticSession.started_at.desc())
+            .limit(1)
+        )
+        return result.scalar_one_or_none()
+
     async def create_session(
         self,
-        learner_id: str,
+        learner_id: str | UUID,
         subject_code: str,
-        grade_level: int,
+        grade_level: int | str,
         theta: float,
         sem: float,
         items_administered: int,
@@ -23,22 +41,21 @@ class DiagnosticRepository:
         items_total: int,
         final_mastery_score: float,
         knowledge_gaps: list,
-    ) -> None:
-        async with AsyncSessionFactory() as db:
-            await db.execute(
-                insert(DiagnosticSessionRecord).values(
-                    session_id=uuid.uuid4(),
-                    learner_id=uuid.UUID(learner_id),
-                    subject_code=subject_code,
-                    grade_level=grade_level,
-                    status="completed",
-                    theta_estimate=theta,
-                    standard_error=sem,
-                    items_administered=items_administered,
-                    items_correct=items_correct,
-                    items_total=items_total,
-                    final_mastery_score=final_mastery_score,
-                    knowledge_gaps=knowledge_gaps,
-                )
-            )
-            await db.commit()
+        db: AsyncSession,
+    ) -> DiagnosticSession:
+        return await self.create(
+            db,
+            learner_id=UUID(str(learner_id)),
+            subject=subject_code,
+            grade=str(grade_level),
+            ability_estimate=theta,
+            ability_std_error=sem,
+            items_administered=items_administered,
+            responses={
+                "items_correct": items_correct,
+                "items_total": items_total,
+                "final_mastery_score": final_mastery_score,
+                "knowledge_gaps": knowledge_gaps,
+            },
+            is_complete=True,
+        )
