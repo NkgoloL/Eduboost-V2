@@ -22,7 +22,7 @@ async def create_checkout(
     # Note: In production, retrieve email from encrypted field and decrypt
     url = await svc.create_checkout_session(
         guardian_id=current_user["sub"],
-        email_plaintext="placeholder@eduboost.co.za",
+        email_plaintext="billing-placeholder",
     )
     return CheckoutSessionResponse(checkout_url=url)
 

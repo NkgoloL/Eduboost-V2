@@ -83,13 +83,14 @@ async def generate_lesson(
 @router.get("/{lesson_id}")
 async def get_lesson(
     lesson_id: str,
-    _: dict = Depends(get_current_user),
+    current_user: dict = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
     result = await db.execute(select(Lesson).where(Lesson.id == lesson_id))
     lesson = result.scalar_one_or_none()
     if not lesson:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Lesson not found")
+    await ConsentService(db).require_active_consent(lesson.learner_id, actor_id=current_user.get("sub"))
     return LessonResponse.model_validate(lesson)
 
 

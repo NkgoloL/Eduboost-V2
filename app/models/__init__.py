@@ -158,6 +158,23 @@ class ParentalConsent(Base):
     __table_args__ = (UniqueConstraint("guardian_id", "learner_id", name="uq_consent_guardian_learner"),)
 
 
+class AuditEvent(Base):
+    __tablename__ = "audit_events"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    event_type: Mapped[str] = mapped_column(Text, nullable=False, index=True)
+    actor_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True, index=True)
+    resource_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
+    payload: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, nullable=False)
+
+    __table_args__ = (
+        Index("idx_audit_events_actor", "actor_id"),
+        Index("idx_audit_events_type", "event_type"),
+        Index("idx_audit_events_ts", "created_at"),
+    )
+
+
 # ── IRT Item Bank ─────────────────────────────────────────────────────────────
 
 
@@ -265,3 +282,6 @@ class StripeWebhookEvent(Base):
     event_type: Mapped[str] = mapped_column(String(80), nullable=False)
     processed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
     payload: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
+
+
+LessonRecord = Lesson

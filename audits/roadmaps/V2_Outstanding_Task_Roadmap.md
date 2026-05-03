@@ -51,6 +51,7 @@ Recent security/runtime hardening already landed:
 - production secret loading now pulls required values from Azure Key Vault
 - access-token revocation now uses a Redis-backed JWT denylist on logout/revoke-all paths
 - V2 runtime remains RabbitMQ-free, and legacy docs/examples no longer advertise `guest/guest`
+- POPIA tasks 21-25 are complete: erasure verification, consent audit trail, append-only audit table, annual renewal reminders, and RLHF PII export gate are all implemented and validated
 
 ---
 

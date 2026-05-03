@@ -101,7 +101,7 @@ class Issue:
 
 @dataclass
 class SweepReport:
-    timestamp: str = field(default_factory=lambda: datetime.datetime.utcnow().isoformat())
+    timestamp: str = field(default_factory=lambda: datetime.datetime.now(datetime.UTC).isoformat())
     project: str = "EduBoost SA"
     issues: list[Issue] = field(default_factory=list)
     files_scanned: int = 0

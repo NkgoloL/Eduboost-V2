@@ -25,6 +25,7 @@ from app.models import (
     KnowledgeGap,
 )
 from app.repositories.repositories import LearnerRepository
+from app.services.consent import ConsentService
 from app.services.fourth_estate import FourthEstateService
 
 router = APIRouter(prefix="/popia", tags=["compliance"])
@@ -58,11 +59,12 @@ async def export_learner_data(
         )
     
     # Check guardian relationship
-    if learner.guardian_id != requester_id and current_user.get("role") != "admin":
+    if learner.guardian_id != requester_id and str(current_user.get("role", "")).lower() != "admin":
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="You can only access data for your own learners",
         )
+    await ConsentService(db).require_active_consent(learner_id, actor_id=requester_id)
     
     # Collect all learner data
     stmt = select(DiagnosticSession).where(DiagnosticSession.learner_id == learner_id)
@@ -144,10 +146,11 @@ async def export_learner_data(
     
     # Audit the export
     audit = FourthEstateService(db)
-    await audit.audit_event(
-        event_type="DATA_EXPORT_REQUESTED",
+    await audit.record(
+        event_type="data_export.requested",
         learner_pseudonym=learner.pseudonym_id,
         actor_id=requester_id,
+        resource_id=learner_id,
         payload={"learner_id": learner_id},
     )
     
@@ -192,6 +195,7 @@ async def request_learner_deletion(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Only the learner's guardian can request deletion",
         )
+    await ConsentService(db).require_active_consent(learner_id, actor_id=requester_id)
     
     # Check if deletion is already requested
     if learner.deletion_requested_at is not None:
@@ -207,10 +211,11 @@ async def request_learner_deletion(
     
     # Audit the deletion request
     audit = FourthEstateService(db)
-    await audit.audit_event(
-        event_type="DELETION_REQUESTED",
+    await audit.record(
+        event_type="deletion.requested",
         learner_pseudonym=learner.pseudonym_id,
         actor_id=requester_id,
+        resource_id=learner_id,
         constitutional_outcome="APPROVED",
         payload={
             "learner_id": learner_id,
@@ -253,6 +258,7 @@ async def cancel_learner_deletion(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Only the learner's guardian can cancel deletion",
         )
+    await ConsentService(db).require_active_consent(learner_id, actor_id=requester_id)
     
     # Check if deletion was requested
     if learner.deletion_requested_at is None:
@@ -268,10 +274,11 @@ async def cancel_learner_deletion(
     
     # Audit the cancellation
     audit = FourthEstateService(db)
-    await audit.audit_event(
-        event_type="DELETION_CANCELLED",
+    await audit.record(
+        event_type="deletion.cancelled",
         learner_pseudonym=learner.pseudonym_id,
         actor_id=requester_id,
+        resource_id=learner_id,
         payload={"learner_id": learner_id},
     )
     
@@ -301,7 +308,7 @@ async def get_deletion_status(
         )
     
     # Verify guardian relationship (or admin)
-    if learner.guardian_id != requester_id and current_user.get("role") != "admin":
+    if learner.guardian_id != requester_id and str(current_user.get("role", "")).lower() != "admin":
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="You can only check status for your own learners",

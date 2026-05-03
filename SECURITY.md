@@ -90,8 +90,8 @@ Given that EduBoost SA handles **children's learning data**, we prioritise the f
 ### Authentication
 
 - JWT tokens signed with HS256 using a 64-character random secret (`JWT_SECRET`)
-- Tokens expire after 24 hours (`JWT_EXPIRY_HOURS=24`)
-- Refresh token flow: planned but not yet implemented
+- Access tokens expire after 15 minutes
+- Refresh tokens rotate via HTTP-only cookies and can be revoked immediately via the Redis-backed denylist
 - Rate limiting on auth endpoints via `slowapi`
 
 ### Data Encryption
@@ -109,9 +109,8 @@ Given that EduBoost SA handles **children's learning data**, we prioritise the f
 
 ### Audit Trail
 
-- The `fourth_estate.py` module writes all sensitive operations to a Redis stream (`eduboost:audit_stream`)
-- Stream max length: 100,000 entries
-- Audit records are immutable once written (append-only stream)
+- The V2 path writes sensitive operations to the append-only PostgreSQL `audit_events` table
+- PostgreSQL rules block `UPDATE` and `DELETE` on V2 audit records
 - Events include: login, consent grant/revocation, data access, erasure requests, LLM prompts
 
 ### LLM Security
@@ -156,11 +155,11 @@ As of the current codebase state, the following security items are **incomplete*
 
 | Gap | Status |
 |-----|--------|
-| Right-to-erasure (POPIA Section 24) not end-to-end verified | In progress |
-| Consent audit trail incomplete across all workflows | In progress |
+| Right-to-erasure (POPIA Section 24) not end-to-end verified | Complete |
+| Consent audit trail incomplete across all workflows | Complete |
 | No automated dependency vulnerability scanning | Planned |
 | HTTPS not enforced in local dev stack | By design; enforced in production config |
-| Refresh token rotation not implemented | Planned |
+| Refresh token rotation not implemented | Complete |
 | CI/CD secrets scanning not configured | Complete |
 
 We include this transparency so contributors can help address these gaps.

@@ -14,6 +14,7 @@ from app.services.pii_sweep import (
     _luhn_valid,
     assert_no_pii,
 )
+from app.services.rlhf_service import RLHFService
 
 
 # ---------------------------------------------------------------------------
@@ -217,6 +218,32 @@ class TestAssertNoPII:
         # With a mock scanner that returns clean, should not raise
         assert_no_pii(records, scanner=mock_scanner)
         mock_scanner.scan_record.assert_called_once()
+
+
+class TestRLHFServiceExports:
+
+    def test_openai_export_blocks_pii(self):
+        service = RLHFService()
+        records = [{"prompt": "Call me", "chosen": "0821234567", "rejected": "No thanks"}]
+
+        with pytest.raises(PIISweepError):
+            service.export_openai_format(records)
+
+    def test_anthropic_export_blocks_pii(self):
+        service = RLHFService()
+        records = [{"prompt": "Email me", "chosen": "user@example.com", "rejected": "N/A"}]
+
+        with pytest.raises(PIISweepError):
+            service.export_anthropic_format(records)
+
+    def test_clean_export_succeeds(self):
+        service = RLHFService()
+        records = [{"prompt": "What is 2+2?", "chosen": "4", "rejected": "5"}]
+
+        payload = service.export_openai_format(records)
+
+        assert payload["format"] == "openai"
+        assert payload["record_count"] == 1
 
     def test_pii_sweep_error_has_field_name(self):
         records = [{"chosen_response": "My email is test@example.com"}]

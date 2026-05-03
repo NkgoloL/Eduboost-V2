@@ -6,11 +6,14 @@ reminder job on-demand (in addition to the daily arq schedule).
 """
 from __future__ import annotations
 
-from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, status
+from fastapi import APIRouter, BackgroundTasks, Depends, status
 from pydantic import BaseModel
-from sqlalchemy.ext.asyncio import AsyncSession
 
-router = APIRouter(prefix="/api/v2/admin/consent", tags=["V2 Admin – Consent"])
+from app.core.config import settings
+from app.core.database import AsyncSessionLocal
+from app.core.security import require_admin
+
+router = APIRouter(prefix="/admin/consent", tags=["V2 Admin – Consent"])
 
 
 class ConsentRenewalResponse(BaseModel):
@@ -26,10 +29,7 @@ class ConsentRenewalResponse(BaseModel):
 )
 async def trigger_renewal_reminders(
     background_tasks: BackgroundTasks,
-    # Replace these stubs with real DI once the V2 dependency helpers are wired:
-    # db: AsyncSession = Depends(get_async_db),
-    # settings: V2Settings = Depends(get_v2_settings),
-    # _: None = Depends(require_role("Admin")),
+    _: dict = Depends(require_admin),
 ) -> ConsentRenewalResponse:
     """
     Queues the consent renewal reminder job as a FastAPI BackgroundTask.
@@ -38,21 +38,15 @@ async def trigger_renewal_reminders(
     Access: Admin role required (RBAC enforced via ``require_role("Admin")``
     dependency — wire once Task #15 RBAC is complete).
     """
-    # Lazy import to avoid circular dependency at module load time.
-    from app.core.config import get_v2_settings  # type: ignore[import]
-    from app.core.database import get_async_db  # type: ignore[import]
     from app.services.consent_renewal_service import (
         ConsentRenewalService,
         SendGridEmailGateway,
     )
 
-    settings = get_v2_settings()
     email_gateway = SendGridEmailGateway(settings)
 
     async def _run_job() -> None:
-        # Each background task opens its own DB session to avoid
-        # using a session that has already been closed by the request lifecycle.
-        async for db in get_async_db():
+        async with AsyncSessionLocal() as db:
             service = ConsentRenewalService(db, email_gateway, settings)
             await service.run()
 

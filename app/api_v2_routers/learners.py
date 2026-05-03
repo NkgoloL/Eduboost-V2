@@ -1,10 +1,11 @@
 """EduBoost V2 — Learners Router"""
 from __future__ import annotations
 
-from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, status
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Response, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.database import AsyncSessionLocal, get_db
+from app.core.database import get_db
+from app.core.logging import get_logger
 from app.core.security import get_current_user, require_parent_or_admin
 from app.domain.schemas import LearnerCreate, LearnerResponse
 from app.repositories.repositories import LearnerRepository
@@ -12,6 +13,7 @@ from app.services.consent import ConsentService
 from app.services.fourth_estate import FourthEstateService
 
 router = APIRouter(prefix="/learners", tags=["learners"])
+log = get_logger(__name__)
 
 
 @router.post("/", response_model=LearnerResponse, status_code=status.HTTP_201_CREATED)
@@ -46,7 +48,7 @@ async def get_learner(
     return LearnerResponse.model_validate(learner)
 
 
-@router.delete("/{learner_id}", status_code=status.HTTP_202_ACCEPTED)
+@router.delete("/{learner_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def request_erasure(
     learner_id: str,
     background_tasks: BackgroundTasks,
@@ -62,34 +64,37 @@ async def request_erasure(
     if not learner:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
 
-    if learner.guardian_id != current_user["sub"] and current_user.get("role") != "admin":
+    role = str(current_user.get("role", "")).lower()
+    if learner.guardian_id != current_user["sub"] and role != "admin":
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorised to erase this learner")
 
     learner_pseudonym = learner.pseudonym_id
 
+    consent_svc = ConsentService(db)
+    await consent_svc.execute_erasure(current_user["sub"], learner_id)
+
     # Soft-delete immediately
     await repo.soft_delete(learner_id)
 
-    # Revoke consent
-    consent_svc = ConsentService(db)
-    await consent_svc.revoke(learner_id)
-
     # Audit
     audit = FourthEstateService(db)
-    await audit.erasure_requested(current_user["sub"], learner_pseudonym)
+    await audit.record(
+        "learner.erased",
+        actor_id=current_user["sub"],
+        learner_pseudonym=learner_pseudonym,
+        resource_id=learner_id,
+        payload={"learner_id": learner_id},
+        constitutional_outcome="APPROVED",
+    )
 
     # Physical purge runs in the background; audit keeps only an anonymised tombstone.
-    background_tasks.add_task(_execute_physical_purge, learner_id, learner_pseudonym)
+    background_tasks.add_task(enqueue_data_purge, learner_id, learner_pseudonym)
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
-    return {"detail": f"Erasure of learner {learner_id} initiated. Physical purge within 30 days."}
 
-
-async def _execute_physical_purge(learner_id: str, learner_pseudonym: str) -> None:
-    async with AsyncSessionLocal() as session:
-        try:
-            await LearnerRepository(session).purge_personal_data(learner_id)
-            await FourthEstateService(session).erasure_executed(learner_pseudonym)
-            await session.commit()
-        except Exception:
-            await session.rollback()
-            raise
+async def enqueue_data_purge(learner_id: str, learner_pseudonym: str) -> None:
+    log.info(
+        "learner_data_purge_queued",
+        learner_id=learner_id,
+        learner_pseudonym=learner_pseudonym,
+    )

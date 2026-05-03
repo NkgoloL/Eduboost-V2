@@ -98,7 +98,12 @@ class LearnerRepository:
         await self.db.execute(
             update(LearnerProfile)
             .where(LearnerProfile.id == learner_id)
-            .values(is_deleted=True, deletion_requested_at=datetime.now(UTC), updated_at=datetime.now(UTC))
+            .values(
+                display_name="[erased]",
+                is_deleted=True,
+                deletion_requested_at=datetime.now(UTC),
+                updated_at=datetime.now(UTC),
+            )
         )
 
     async def purge_personal_data(self, learner_id: str) -> None:

@@ -18,7 +18,12 @@ class AuditService:
         actor_id: str | None = None,
     ) -> AuditLogEntry:
         if self.repository is not None and hasattr(self.repository, "append"):
-            row = await self.repository.append(event_type=event_type, payload=payload or {}, learner_id=learner_id, actor_id=actor_id)
+            row = await self.repository.append(
+                event_type=event_type,
+                payload=payload or {},
+                resource_id=learner_id,
+                actor_id=actor_id,
+            )
             return _entry_from_row(row)
         if self.repository is not None and hasattr(self.repository, "log"):
             row = await self.repository.log(event_type=event_type, payload=payload or {}, actor_id=actor_id, learner_pseudonym=learner_id)

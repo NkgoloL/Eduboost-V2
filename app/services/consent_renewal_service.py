@@ -37,7 +37,7 @@ class GuardianRecord(Protocol):
     """Structural typing — matches the SQLAlchemy Guardian ORM model."""
     id: str
     email_hash: str          # SHA-256 hash — never plaintext
-    email_encrypted: bytes   # AES-encrypted ciphertext
+    email_encrypted: str   # encrypted ciphertext
 
 
 # ---------------------------------------------------------------------------
@@ -48,7 +48,7 @@ class EmailGateway(Protocol):
     async def send_renewal_reminder(
         self,
         *,
-        to_encrypted_email: bytes,
+        to_encrypted_email: str,
         guardian_id: str,
         consent_id: str,
         expires_at: datetime,
@@ -91,19 +91,19 @@ class SendGridEmailGateway:
                 ) from exc
         return self._client
 
-    def _decrypt_email(self, ciphertext: bytes) -> str:
+    def _decrypt_email(self, ciphertext: str) -> str:
         """Decrypt the guardian's email address for sending."""
         try:
             from cryptography.fernet import Fernet  # type: ignore[import]
             key = self._settings.ENCRYPTION_KEY.encode()
-            return Fernet(key).decrypt(ciphertext).decode()
+            return Fernet(key).decrypt(ciphertext.encode()).decode()
         except Exception as exc:
-            raise ValueError(f"Failed to decrypt guardian email: {exc}") from exc
+            raise ValueError(f"Failed to decrypt guardian contact cipher: {exc}") from exc
 
     async def send_renewal_reminder(
         self,
         *,
-        to_encrypted_email: bytes,
+        to_encrypted_email: str,
         guardian_id: str,
         consent_id: str,
         expires_at: datetime,
@@ -282,10 +282,15 @@ class ConsentRenewalService:
             # Fallback for unit-test environments without the full ORM.
             return []
 
+        from sqlalchemy import and_
+
         cutoff = datetime.now(tz=timezone.utc) + timedelta(days=self._days_threshold)
         result = await self._db.execute(
             sa_select(ParentalConsent).where(
-                ParentalConsent.is_active == True,  # noqa: E712
+                and_(
+                    ParentalConsent.revoked_at.is_(None),
+                    ParentalConsent.expires_at > datetime.now(tz=timezone.utc),
+                ),
                 ParentalConsent.expires_at <= cutoff,
             )
         )

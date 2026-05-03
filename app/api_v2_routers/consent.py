@@ -34,6 +34,7 @@ async def grant_consent(
     guardian_id: UUID = Depends(get_current_guardian_id),
     db: AsyncSession = Depends(get_db),
 ) -> dict:
+    # AuditLog emission is handled inside ConsentService.grant().
     consent = await ConsentService(db).grant(
         str(guardian_id),
         str(body.learner_id),
@@ -56,7 +57,12 @@ async def revoke_consent(
     guardian_id: UUID = Depends(get_current_guardian_id),
     db: AsyncSession = Depends(get_db),
 ) -> dict:
-    await ConsentService(db).revoke(str(body.learner_id))
+    # AuditLog emission is handled inside ConsentService.revoke().
+    await ConsentService(db).revoke(
+        str(body.learner_id),
+        guardian_id=str(guardian_id),
+        reason=body.reason,
+    )
     return {"revoked": 1, "message": "Consent revoked. Learner data access has been suspended."}
 
 

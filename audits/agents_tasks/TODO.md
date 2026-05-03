@@ -254,7 +254,7 @@
 ## GROUP C — POPIA COMPLIANCE COMPLETION  (Score impact: POPIA 9.0→10.0)
 ## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-21. Complete end-to-end verification of **Right to Erasure (POPIA §24)**. Write
+21. [x] Complete end-to-end verification of **Right to Erasure (POPIA §24)**. Write
     a comprehensive integration test in `tests/popia/test_right_to_erasure.py`:
     1. Create guardian + learner + active consent + lesson record + diagnostic session
     2. Call `DELETE /api/v2/learners/{id}` with a valid Guardian JWT
@@ -270,7 +270,7 @@
     `tests/popia/test_right_to_erasure.py` for live integration.
     Commit: `test(popia): complete end-to-end right-to-erasure verification`.
 
-22. Complete the **Consent Audit Trail** across all workflows where consent state
+22. [x] Complete the **Consent Audit Trail** across all workflows where consent state
     changes. Audit every code path that calls `grant()`, `revoke()`, and
     `execute_erasure()` on `ConsentService`. Ensure each path produces an audit
     log entry via `fourth_estate.py` (legacy) or the V2 append-only audit table.
@@ -282,7 +282,7 @@
     `tests/popia/test_consent_audit_trail.py` for live integration.
     Commit: `feat(popia): complete consent audit trail across all workflows`.
 
-23. Implement the **V2 Audit Service** backed by an append-only PostgreSQL table,
+23. [x] Implement the **V2 Audit Service** backed by an append-only PostgreSQL table,
     replacing the Redis stream dependency for the V2 path. Create an Alembic
     migration (`0005_v2_audit_events.py`):
     ```sql
@@ -310,7 +310,7 @@
     `app/repositories/audit_repository.py`, and
     `tests/unit/test_audit_repository.py` for live integration.
 
-24. Implement a scheduled **POPIA Annual Consent Renewal Reminder**. Add a
+24. [x] Implement a scheduled **POPIA Annual Consent Renewal Reminder**. Add a
     FastAPI `BackgroundTasks`-compatible scheduler (or Celery Beat in the legacy
     path) that runs daily and queries for `ParentalConsent` records where
     `expires_at` is within 30 days. For each expiring record, dispatch a
@@ -322,7 +322,7 @@
     `tests/integration/test_consent_renewal.py` for live integration.
     `feat(popia): add annual consent renewal reminder email`.
 
-25. Implement **PII Minimisation Audit** on the RLHF export pipeline. In
+25. [x] Implement **PII Minimisation Audit** on the RLHF export pipeline. In
     `RLHFService`, before any preference dataset is exported (OpenAI or
     Anthropic format), run a final regex scan across all free-text fields using
     `bleach` and `phonenumbers` to detect any residual PII (names, phone

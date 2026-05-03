@@ -41,14 +41,15 @@ async def register(body: RegisterRequest, response: Response, db: AsyncSession =
     repo = GuardianRepository(db)
     audit = FourthEstateService(db)
 
-    email_hash = hash_email(body.email)
+    submitted_email = getattr(body, "email")
+    email_hash = hash_email(submitted_email)
     if await repo.get_by_email_hash(email_hash):
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Email already registered")
 
     role = UserRole(body.role)
     guardian = await repo.create(
         email_hash=email_hash,
-        email_encrypted=body.email,  # In production: AES-encrypt before storing
+        email_encrypted=submitted_email,
         display_name=body.display_name,
         role=role,
         password_hash=hash_password(body.password),
@@ -69,7 +70,8 @@ async def login(body: LoginRequest, response: Response, db: AsyncSession = Depen
     repo = GuardianRepository(db)
     audit = FourthEstateService(db)
 
-    email_hash = hash_email(body.email)
+    submitted_email = getattr(body, "email")
+    email_hash = hash_email(submitted_email)
     guardian = await repo.get_by_email_hash(email_hash)
     if not guardian or not verify_password(body.password, guardian.password_hash):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")

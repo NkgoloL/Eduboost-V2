@@ -165,8 +165,21 @@
   - Legacy RabbitMQ guidance no longer recommends `guest/guest`, while the V2 runtime remains RabbitMQ-free.
   - The V2 FastAPI entrypoint import path was repaired by restoring the missing `BaseHTTPMiddleware` import.
 - **Verification:**
-  - `python -m pytest tests/unit/test_config_key_vault.py tests/unit/test_token_denylist.py -v --tb=short -o addopts=""` → 8 passed
-  - `python -m pytest tests/smoke -v --tb=short -o addopts=""` → 20 passed
+- `python -m pytest tests/unit/test_config_key_vault.py tests/unit/test_token_denylist.py -v --tb=short -o addopts=""` → 8 passed
+- `python -m pytest tests/smoke -v --tb=short -o addopts=""` → 20 passed
+
+### Epic 20: POPIA Completion Batch (Tasks 21-25)
+- **Status:** Completed (2026-05-03)
+- **Outcome:**
+  - Right-to-erasure is now verified end to end against the V2 learner deletion route, including consent revocation, soft-delete markers, purge job queueing, consent denial after erasure, and erasure audit records.
+  - Consent mutations now emit a consistent V2 audit trail for grant, revoke, renew, erasure, and rejected access checks.
+  - The append-only PostgreSQL audit service is now exercised against a rebuilt test schema that verifies database-level immutability rules.
+  - Annual consent renewal now runs through the V2 renewal service, admin trigger endpoint, and daily scheduler path with SendGrid-compatible dispatch logic.
+  - RLHF exports now hard-stop on residual PII for both OpenAI and Anthropic dataset formats.
+- **Verification:**
+  - `python -m pytest tests/unit/test_audit_repository.py tests/popia/test_consent_audit_trail.py tests/popia/test_right_to_erasure.py tests/popia/test_rlhf_pii_scrubbing.py tests/integration/test_consent_renewal.py -q -o addopts=""` → 58 passed
+  - `python -m pytest tests/smoke -q -o addopts=""` → 20 passed
+  - `python scripts/popia_sweep.py --fail-on-issues` → clean
 
 ## Final Summary
 Legacy execution epics are complete, but the repository is **not** globally complete. EduBoost is now in a **V2 baseline migration** phase driven by `docs/architecture/V2_ARCHITECTURE.md`.
