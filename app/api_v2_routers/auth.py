@@ -9,7 +9,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.core.security import (
-    Role,
     create_access_token,
     create_refresh_token,
     decode_token,
@@ -21,6 +20,7 @@ from app.core.security import (
 )
 from app.core.token_revocation import revoke_token, revoke_user_tokens
 from app.domain.schemas import LoginRequest, RefreshRequest, RegisterRequest, TokenResponse
+from app.models import UserRole
 from app.repositories.repositories import GuardianRepository
 from app.services.fourth_estate import FourthEstateService
 
@@ -38,19 +38,20 @@ async def register(body: RegisterRequest, response: Response, db: AsyncSession =
     if await repo.get_by_email_hash(email_hash):
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Email already registered")
 
+    role = UserRole(body.role)
     guardian = await repo.create(
         email_hash=email_hash,
         email_encrypted=body.email,  # In production: AES-encrypt before storing
         display_name=body.display_name,
-        role=body.role,
+        role=role,
         password_hash=hash_password(body.password),
     )
 
-    access = create_access_token(guardian.id, Role(guardian.role))
-    refresh = create_refresh_token(guardian.id, Role(guardian.role))
+    access = create_access_token(guardian.id, guardian.role)
+    refresh = create_refresh_token(guardian.id, guardian.role)
 
     _set_refresh_cookie(response, refresh)
-    await audit.auth_event("USER_REGISTERED", guardian.id, {"role": body.role})
+    await audit.auth_event("USER_REGISTERED", guardian.id, {"role": role.value})
 
     return TokenResponse(access_token=access, expires_in=900)
 
@@ -65,8 +66,8 @@ async def login(body: LoginRequest, response: Response, db: AsyncSession = Depen
     if not guardian or not verify_password(body.password, guardian.password_hash):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
 
-    access = create_access_token(guardian.id, Role(guardian.role))
-    refresh = create_refresh_token(guardian.id, Role(guardian.role))
+    access = create_access_token(guardian.id, guardian.role)
+    refresh = create_refresh_token(guardian.id, guardian.role)
 
     _set_refresh_cookie(response, refresh)
     await audit.auth_event("USER_LOGIN", guardian.id)
@@ -85,8 +86,8 @@ async def refresh_token(body: RefreshRequest, response: Response, db: AsyncSessi
     if not guardian or not guardian.is_active:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Account inactive")
 
-    access = create_access_token(guardian.id, Role(guardian.role))
-    new_refresh = create_refresh_token(guardian.id, Role(guardian.role))
+    access = create_access_token(guardian.id, guardian.role)
+    new_refresh = create_refresh_token(guardian.id, guardian.role)
     _set_refresh_cookie(response, new_refresh)
 
     return TokenResponse(access_token=access, expires_in=900)

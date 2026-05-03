@@ -7,7 +7,6 @@ from __future__ import annotations
 import hashlib
 import uuid
 from datetime import UTC, datetime, timedelta
-from enum import StrEnum
 from typing import Any
 
 from fastapi import Depends, HTTPException, status
@@ -17,6 +16,7 @@ from passlib.context import CryptContext
 
 from app.core.config import settings
 from app.core.token_revocation import is_token_revoked, is_user_revoked
+from app.models import UserRole
 
 # ── Password hashing ──────────────────────────────────────────────────────────
 _pwd_ctx = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -35,16 +35,8 @@ def hash_email(email: str) -> str:
     return hashlib.sha256(email.lower().strip().encode()).hexdigest()
 
 
-# ── Roles ─────────────────────────────────────────────────────────────────────
-class Role(StrEnum):
-    STUDENT = "student"
-    PARENT = "parent"
-    TEACHER = "teacher"
-    ADMIN = "admin"
-
-
 # ── Token schemas ─────────────────────────────────────────────────────────────
-def create_access_token(subject: str, role: Role, extra: dict[str, Any] | None = None) -> str:
+def create_access_token(subject: str, role: UserRole, extra: dict[str, Any] | None = None) -> str:
     expire = datetime.now(UTC) + timedelta(minutes=settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES)
     payload = {
         "sub": subject,
@@ -58,7 +50,7 @@ def create_access_token(subject: str, role: Role, extra: dict[str, Any] | None =
     return jwt.encode(payload, settings.JWT_SECRET, algorithm=settings.JWT_ALGORITHM)
 
 
-def create_refresh_token(subject: str, role: Role) -> str:
+def create_refresh_token(subject: str, role: UserRole) -> str:
     expire = datetime.now(UTC) + timedelta(days=settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS)
     payload = {
         "sub": subject,
@@ -114,7 +106,7 @@ async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(_
     return payload
 
 
-def require_roles(*roles: Role):
+def require_roles(*roles: UserRole):
     """Dependency factory: enforce that the caller has one of the specified roles."""
 
     def _inner(current_user: dict = Depends(get_current_user)) -> dict:
@@ -128,6 +120,6 @@ def require_roles(*roles: Role):
     return _inner
 
 
-require_admin = require_roles(Role.ADMIN)
-require_parent_or_admin = require_roles(Role.PARENT, Role.ADMIN)
-require_teacher_or_admin = require_roles(Role.TEACHER, Role.ADMIN)
+require_admin = require_roles(UserRole.ADMIN)
+require_parent_or_admin = require_roles(UserRole.PARENT, UserRole.ADMIN)
+require_teacher_or_admin = require_roles(UserRole.TEACHER, UserRole.ADMIN)
