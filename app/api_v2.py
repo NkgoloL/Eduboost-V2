@@ -4,6 +4,7 @@ Strict Modular Monolith. No Celery, no RabbitMQ, no microservices.
 """
 from __future__ import annotations
 
+import asyncio
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -24,7 +25,12 @@ log = get_logger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     log.info("eduboost_v2_starting", env=settings.ENVIRONMENT, version=settings.APP_VERSION)
+    consent_task = None
+    if settings.ENVIRONMENT != "test":
+        consent_task = asyncio.create_task(consent_expiry_loop())
     yield
+    if consent_task:
+        consent_task.cancel()
     log.info("eduboost_v2_shutdown")
 
 
@@ -57,6 +63,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.middleware("http")(analytics_middleware)
 
 # ── Routers ───────────────────────────────────────────────────────────────────
 from app.api_v2_routers import auth, billing, diagnostics, learners, lessons, onboarding, parents, popia  # noqa: E402
@@ -75,7 +82,7 @@ app.include_router(popia.router, prefix=API_V2)
 # ── Health & meta ─────────────────────────────────────────────────────────────
 @app.get("/health", tags=["ops"])
 async def health():
-    return {"status": "ok", "version": settings.APP_VERSION, "environment": settings.ENVIRONMENT}
+    return {"status": "ok", "version": __version__, "environment": settings.ENVIRONMENT, "mode": "v2-baseline"}
 
 
 @app.get("/", tags=["ops"])

@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
-from sqlalchemy import select, update
+from sqlalchemy import delete, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.models import (
@@ -100,6 +100,14 @@ class LearnerRepository:
             .where(LearnerProfile.id == learner_id)
             .values(is_deleted=True, deletion_requested_at=datetime.now(UTC), updated_at=datetime.now(UTC))
         )
+
+    async def purge_personal_data(self, learner_id: str) -> None:
+        """Physically purge learner-linked personal/product data after erasure approval."""
+        await self.db.execute(delete(Lesson).where(Lesson.learner_id == learner_id))
+        await self.db.execute(delete(KnowledgeGap).where(KnowledgeGap.learner_id == learner_id))
+        await self.db.execute(delete(DiagnosticSession).where(DiagnosticSession.learner_id == learner_id))
+        await self.db.execute(delete(ParentalConsent).where(ParentalConsent.learner_id == learner_id))
+        await self.db.execute(delete(LearnerProfile).where(LearnerProfile.id == learner_id))
 
     async def count_lessons(self, learner_id: str) -> int:
         result = await self.db.execute(select(Lesson).where(Lesson.learner_id == learner_id))

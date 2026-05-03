@@ -64,11 +64,20 @@ class FourthEstateService:
             constitutional_outcome="APPROVED",
         )
 
-    async def erasure_requested(self, guardian_id: str, learner_id: str) -> None:
+    async def erasure_requested(self, guardian_id: str, learner_pseudonym: str) -> None:
         await self.record(
             "ERASURE_REQUESTED",
             actor_id=guardian_id,
-            payload={"learner_id": learner_id},
+            learner_pseudonym=learner_pseudonym,
+            payload={"event": "erasure_requested"},
+            constitutional_outcome="APPROVED",
+        )
+
+    async def erasure_executed(self, learner_pseudonym: str) -> None:
+        await self.record(
+            "ERASURE_EXECUTED",
+            learner_pseudonym=learner_pseudonym,
+            payload={"event": "erasure_executed"},
             constitutional_outcome="APPROVED",
         )
 

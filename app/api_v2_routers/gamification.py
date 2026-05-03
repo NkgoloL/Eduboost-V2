@@ -4,7 +4,7 @@ from fastapi import APIRouter
 
 from app.services.gamification_service_v2 import GamificationServiceV2
 
-router = APIRouter(prefix="/api/v2/gamification", tags=["V2 Gamification"])
+router = APIRouter(prefix="/gamification", tags=["V2 Gamification"])
 
 
 @router.get("/profile/{learner_id}")
