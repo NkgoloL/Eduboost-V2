@@ -18,7 +18,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 revision = "0002_add_missing_tables"
-down_revision = "0001_phase2_baseline"
+down_revision = "merge_2026_05_01"
 branch_labels = None
 depends_on = None
 

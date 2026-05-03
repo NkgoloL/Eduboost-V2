@@ -10,12 +10,13 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from slowapi.errors import RateLimitExceeded
+from slowapi import Limiter
+from slowapi.util import get_remote_address
 
 from app.core.config import settings
 from app.core.logging import configure_logging, get_logger
-from app.api.version import __version__
-from app.core.analytics import analytics_middleware
-from app.services.consent_expiry_service import consent_expiry_loop
+from app.core.rate_limit import limiter
 
 configure_logging()
 log = get_logger(__name__)
@@ -42,6 +43,18 @@ app = FastAPI(
     redoc_url="/redoc",
 )
 
+# ── Rate Limiter (attach to app for per-endpoint limits) ─────────────────────
+app.state.limiter = limiter
+
+
+@app.exception_handler(RateLimitExceeded)
+async def _rate_limit_handler(request, exc):
+    return JSONResponse(
+        status_code=429,
+        content={"detail": "Rate limit exceeded. Please upgrade to Premium for higher limits."},
+    )
+
+
 # ── CORS ──────────────────────────────────────────────────────────────────────
 app.add_middleware(
     CORSMiddleware,
@@ -53,8 +66,7 @@ app.add_middleware(
 app.middleware("http")(analytics_middleware)
 
 # ── Routers ───────────────────────────────────────────────────────────────────
-from app.api_v2_routers import auth, billing, diagnostics, learners, lessons, onboarding, parents  # noqa: E402
-from app.api_v2_routers import audit, gamification, study_plans, system  # noqa: E402
+from app.api_v2_routers import auth, billing, diagnostics, learners, lessons, onboarding, parents, popia  # noqa: E402
 
 API_V2 = "/api/v2"
 app.include_router(auth.router, prefix=API_V2)
@@ -64,10 +76,7 @@ app.include_router(diagnostics.router, prefix=API_V2)
 app.include_router(onboarding.router, prefix=API_V2)
 app.include_router(parents.router, prefix=API_V2)
 app.include_router(billing.router, prefix=API_V2)
-app.include_router(audit.router, prefix=API_V2)
-app.include_router(gamification.router, prefix=API_V2)
-app.include_router(study_plans.router, prefix=API_V2)
-app.include_router(system.router, prefix=API_V2)
+app.include_router(popia.router, prefix=API_V2)
 
 
 # ── Health & meta ─────────────────────────────────────────────────────────────
