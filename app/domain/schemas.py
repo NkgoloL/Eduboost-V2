@@ -6,6 +6,7 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Literal
+from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
@@ -147,6 +148,33 @@ class QuotaStatus(BaseModel):
     used_today: int
     daily_limit: int
     tier: str
+
+
+class ParentDashboardLearner(BaseModel):
+    learner_id: UUID
+    display_name: str
+    grade_level: str
+    archetype: str | None
+    irt_theta: float
+    lessons_this_week: int
+    active_knowledge_gaps: int
+    last_lesson_at: datetime | None
+
+
+class ParentDashboardResponse(BaseModel):
+    guardian_id: UUID
+    learners: list[ParentDashboardLearner]
+    total_lessons_generated: int
+    subscription_tier: str
+
+
+class QuotaStatusResponse(BaseModel):
+    tokens_used_today: int
+    tokens_quota: int
+    requests_today: int
+    quota_date: str
+    tier: str
+    is_exhausted: bool
 
 
 class AuditLogEntry(BaseModel):

@@ -77,6 +77,10 @@ class Settings(BaseSettings):
     STRIPE_WEBHOOK_SECRET: str = ""
     STRIPE_PRICE_ID_PREMIUM: str = ""
 
+    # ── PostHog Telemetry ─────────────────────────────────────────────────────
+    POSTHOG_API_KEY: str = ""
+    POSTHOG_HOST: str = "https://app.posthog.com"
+
     # ── Email ────────────────────────────────────────────────────────────────
     SENDGRID_API_KEY: str = ""
     SENDGRID_FROM_EMAIL: str = ""
