@@ -2,35 +2,33 @@
 
 from __future__ import annotations
 
-from sqlalchemy import insert, select
+from uuid import UUID
 
-from app.api.core.database import AsyncSessionFactory
-from app.api.models.db_models import Lesson as LessonRecord
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.core.base import BaseRepository
+from app.models import Lesson
 
 
-class LessonRepository:
-    async def create(self, lesson: dict, grade_level: int) -> None:
-        async with AsyncSessionFactory() as session:
-            await session.execute(
-                insert(LessonRecord).values(
-                    lesson_id=lesson["lesson_id"],
-                    title=lesson["title"],
-                    subject_code=lesson["subject_code"],
-                    grade_level=grade_level,
-                    topic=lesson["topic"],
-                    content=lesson["content"],
-                    content_modality="text",
-                    duration_minutes=15,
-                    difficulty_level=0.5,
-                    learning_objectives=[lesson["topic"]],
-                    prerequisites=[],
-                    is_cap_aligned=True,
-                    is_active=True,
-                )
-            )
-            await session.commit()
+class LessonRepository(BaseRepository[Lesson]):
+    model = Lesson
 
-    async def get_by_id(self, lesson_id: str) -> LessonRecord | None:
-        async with AsyncSessionFactory() as session:
-            result = await session.execute(select(LessonRecord).where(LessonRecord.lesson_id == lesson_id))
-            return result.scalar_one_or_none()
+    async def get_recent_for_learner(
+        self,
+        learner_id: UUID,
+        db: AsyncSession,
+        *,
+        subject: str | None = None,
+        limit: int = 10,
+    ) -> list[Lesson]:
+        stmt = (
+            select(Lesson)
+            .where(Lesson.learner_id == learner_id)
+            .order_by(Lesson.created_at.desc())
+            .limit(limit)
+        )
+        if subject:
+            stmt = stmt.where(Lesson.subject == subject)
+        result = await db.execute(stmt)
+        return list(result.scalars().all())

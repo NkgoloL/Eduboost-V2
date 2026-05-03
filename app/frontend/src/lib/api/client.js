@@ -8,11 +8,11 @@ export async function fetchApi(endpoint, options = {}) {
   // Try to get tokens from localStorage
   let token = null;
   if (typeof window !== "undefined") {
-    // If making a parent portal request, prefer guardian token
-    if (endpoint.includes("/guardian") || endpoint.includes("/parent")) {
+    // Guardian auth is the V2 token source for parent and learner-scoped calls.
+    if (endpoint.includes("/auth") || endpoint.includes("/consent") || endpoint.includes("/parent")) {
       token = localStorage.getItem("guardian_token");
     } else {
-      token = localStorage.getItem("learner_token");
+      token = localStorage.getItem("guardian_token") || localStorage.getItem("learner_token");
     }
   }
 
