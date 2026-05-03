@@ -299,13 +299,27 @@ jobs:
           sarif_file: "trivy-results.sarif"
 
   # -------------------------------------------------------------------------
+  # SECRETS SCANNING
+  # -------------------------------------------------------------------------
+  secrets-scan:
+    name: Secrets Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # -------------------------------------------------------------------------
   # PRODUCTION PROMOTION GATE (tag-triggered)
   # -------------------------------------------------------------------------
   production-promote:
     name: Production Promotion Gate
     runs-on: ubuntu-latest
     if: github.event_name == 'release' && github.event.action == 'published'
-    needs: [lint, unit-tests, integration-tests, frontend, schema-drift, popia-tests, image-scan]
+    needs: [lint, unit-tests, integration-tests, frontend, schema-drift, popia-tests, image-scan, secrets-scan]
     environment: production
     steps:
       - uses: actions/checkout@v4
