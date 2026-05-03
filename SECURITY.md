@@ -161,7 +161,7 @@ As of the current codebase state, the following security items are **incomplete*
 | No automated dependency vulnerability scanning | Planned |
 | HTTPS not enforced in local dev stack | By design; enforced in production config |
 | Refresh token rotation not implemented | Planned |
-| CI/CD secrets scanning not configured | Planned |
+| CI/CD secrets scanning not configured | Complete |
 
 We include this transparency so contributors can help address these gaps.
 
