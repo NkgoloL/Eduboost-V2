@@ -1,42 +1,90 @@
-"""V2 RBAC and security dependencies."""
-
+"""
+EduBoost SA — FastAPI Dependencies
+Reusable dependency injections: current user, consent gate, DB session.
+"""
 from __future__ import annotations
 
-from typing import Annotated
+from uuid import UUID
 
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from jose import JWTError
+from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.services.auth_service import AuthService, Role
+from app.core.database import get_db
+from app.core.exceptions import AuthenticationError, ConsentRequiredError
+from app.core.metrics import consent_gate_blocks_total
+from app.core.security import verify_access_token
 
-bearer = HTTPBearer()
+_bearer = HTTPBearer(auto_error=False)
 
 
-async def get_current_user(
-    credentials: Annotated[HTTPAuthorizationCredentials, Depends(bearer)]
-) -> dict:
-    """Dependency to decode and validate a JWT."""
+# ── Current User ──────────────────────────────────────────────────────────────
+
+async def get_current_user_id(
+    credentials: HTTPAuthorizationCredentials | None = Depends(_bearer),
+) -> UUID:
+    """Extract and validate the current user's UUID from the Bearer token."""
+    if credentials is None:
+        raise AuthenticationError("Authorization header missing")
     try:
-        # Note: In a full production app, we would check the denylist (AuthRepository) here
-        payload = AuthService().decode_token(credentials.credentials)
-        return payload
-    except Exception as e:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid or expired token",
-        ) from e
+        user_id_str = verify_access_token(credentials.credentials)
+        return UUID(user_id_str)
+    except (JWTError, ValueError) as exc:
+        raise AuthenticationError("Invalid or expired token") from exc
 
 
-class RequireRole:
-    """Dependency factory for role-based access control."""
+async def get_current_guardian_id(
+    user_id: UUID = Depends(get_current_user_id),
+) -> UUID:
+    """Alias for guardian-only endpoints (role check can be added here)."""
+    return user_id
 
-    def __init__(self, roles: list[Role]) -> None:
-        self.allowed_roles = set(roles)
 
-    def __call__(self, user: Annotated[dict, Depends(get_current_user)]) -> dict:
-        if user.get("role") not in self.allowed_roles:
-            raise HTTPException(
-                status_code=status.HTTP_403_FORBIDDEN,
-                detail="Insufficient permissions",
-            )
-        return user
+# ── Consent Gate ──────────────────────────────────────────────────────────────
+
+async def require_active_consent(
+    learner_id: UUID,
+    db: AsyncSession = Depends(get_db),
+) -> None:
+    """
+    POPIA consent gate — inject as a router-level dependency.
+    Blocks any learner-data endpoint if active parental consent is absent.
+
+    Usage:
+        @router.get(
+            "/lessons/{lesson_id}",
+            dependencies=[Depends(require_active_consent)],
+        )
+        async def get_lesson(lesson_id: UUID, learner_id: UUID): ...
+
+    This makes the consent requirement:
+    - Declarative (visible in the function signature and OpenAPI schema)
+    - Impossible to forget (not an inline service call)
+    - Consistently enforced across all learner-data routes
+    """
+    from app.repositories.consent_repository import ConsentRepository
+
+    repo = ConsentRepository()
+    consent = await repo.get_active(learner_id, db)
+
+    if consent is None:
+        consent_gate_blocks_total.labels(endpoint="unknown").inc()
+        raise ConsentRequiredError(
+            "Active parental consent is required to access learner data. "
+            "Please ask a guardian to grant consent via the parent portal.",
+            details={"learner_id": str(learner_id)},
+        )
+
+
+async def require_active_consent_for_current_learner(
+    learner_id: UUID,
+    db: AsyncSession = Depends(get_db),
+    _user_id: UUID = Depends(get_current_user_id),
+) -> UUID:
+    """
+    Combined auth + consent gate for learner-scoped endpoints.
+    Returns learner_id for use in endpoint handler.
+    """
+    await require_active_consent(learner_id, db)
+    return learner_id

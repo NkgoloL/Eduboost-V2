@@ -12,41 +12,101 @@
 
 ## 📋 Overview
 
-EduBoost SA is an adaptive learning platform undergoing a major V2 architectural pivot. The current repository contains a working legacy runtime based on the Five Pillar architecture, while the new target state is defined in `gemini-code-1777601244294.md`: a strict modular monolith optimized for deterministic outputs, POPIA compliance, and simpler single-node operations.
+**Status (2026-05-02):** ✅ V2 Modular Monolith Architecture Complete. V1 codebase deleted.
 
-The repository therefore currently contains two truths:
-- a **current runtime** that remains operational
-- a **V2 target architecture** that is now the active implementation direction
+EduBoost SA is an **adaptive learning platform** deployed as a **modular monolith** on Azure Container Apps. The architecture is documented in [`temp/EduBoost_Architecture_Recommendation.md`](temp/EduBoost_Architecture_Recommendation.md) and fully implemented.
 
-For V2 local development, the preferred runtime path is now:
+### Current Architecture (V2)
+
+**Single-node modular monolith** structured around domain modules with clear internal boundaries:
+
+```
+app/
+├── api_v2.py                    # Single FastAPI entrypoint
+├── api_v2_routers/              # Thin HTTP layer (routing only)
+├── modules/                     # Domain logic (bounded contexts)
+│   ├── auth/
+│   ├── diagnostics/             # IRT scoring engine
+│   ├── lessons/                 # LLM provider gateway
+│   ├── consent/                 # POPIA enforcement
+│   ├── learners/
+│   ├── study_plans/
+│   ├── gamification/
+│   ├── parent_portal/
+│   └── rlhf/
+├── repositories/                # Data access layer
+├── core/                        # Shared kernel
+│   ├── database.py              # Async SQLAlchemy
+│   ├── config.py                # Pydantic + Azure Key Vault
+│   ├── security.py              # JWT, encryption
+│   ├── audit.py                 # PostgreSQL audit trail
+│   ├── metrics.py               # Prometheus
+│   ├── middleware.py            # Rate limiting, request ID
+│   ├── exceptions.py            # Global exception handlers
+│   ├── dependencies.py          # Dependency injection
+│   └── base.py                  # Generic repository
+└── models/                      # SQLAlchemy ORM (Alembic-managed)
+```
+
+### Why This Architecture?
+
+**Single-node modular monolith** (not microservices):
+- ✅ Strong internal boundaries (Python package structure) without operational complexity
+- ✅ No distributed transaction complexity (POPIA consent gating stays atomic)
+- ✅ No network latency in learner-critical paths (IRT → lesson generation)
+- ✅ Simple deployment: single ACA container
+- ✅ Clear scaling path: split modules into independent ACA services only when load demands it
+
+**Key simplifications from V1:**
+- ❌ **Deleted:** V1 API layer, RabbitMQ, Celery, Five-Pillar metaphor
+- ✅ **New:** PostgreSQL-backed audit trail (async writes), `arq` for background jobs, LLM gateway abstraction, Consent as FastAPI dependency
+
+### Infrastructure Stack (Production)
+
+| Component | Service |
+|---|---|
+| Backend | Azure Container Apps |
+| Frontend | Azure Static Web Apps / ACA |
+| Database | Azure Database for PostgreSQL Flexible |
+| Cache / Jobs | Azure Cache for Redis (`arq`) |
+| Inference | ACA sidecar container |
+| Secrets | Azure Key Vault |
+| Observability | Grafana Cloud (Prometheus + Loki) |
+
+### Development Quick Start
+
+**Prerequisites:**
+- Python 3.11+
+- Docker & Docker Compose
+- Node.js 18+ (for frontend)
+
+**Local development (single command):**
 
 ```bash
 docker compose -f docker-compose.v2.yml up --build
 ```
 
-This V2 path is the intended single-node baseline and avoids Celery/RabbitMQ in the active V2 slice.
+This starts:
+- 🔵 **Backend**: FastAPI on `http://localhost:8000`
+- 🔴 **Frontend**: Next.js on `http://localhost:3000`
+- 🐘 **Database**: PostgreSQL on `localhost:5432`
+- 🔑 **Cache**: Redis on `localhost:6379`
+- 📊 **Observability**: Grafana on `http://localhost:3001`
 
-It also now exposes a dedicated docs service for the V2 documentation set:
+**Run tests locally (no Docker):**
 
-- API: `http://localhost:8000`
-- V2 Docs: `http://localhost:8001`
+```bash
+python -m venv .venv
+source .venv/bin/activate  # or .venv\Scripts\activate on Windows
+pip install -r requirements.txt
+pytest tests/ -v  # POPIA compliance tests in tests/popia/
+```
 
-## 🚧 Legacy Runtime Status
+**Generate dummy data for testing:**
 
-The original `docker-compose.yml` and `app/api/routers/*` surface are now considered **legacy compatibility mode**.
-
-The preferred direction is:
-- `app/api_v2.py`
-- `app/api_v2_routers/*`
-- `app/repositories/*`
-- `docker-compose.v2.yml`
-- `docker/Dockerfile.v2`
-
-New implementation work should target the V2 path first, and persistence should move behind repository boundaries whenever a V2 service needs database access.
-
-## 📚 Automated Documentation
-
-The project now includes **MkDocs** + **mkdocstrings** for continuously generated technical documentation.
+```bash
+python scripts/dummy_data_generator.py --count 10000
+```
 
 The V2 migration now also mirrors the repository’s existing multi-file tracking structure with dedicated:
 - roadmap files
@@ -63,6 +123,25 @@ Build locally with:
 ```bash
 mkdocs serve
 ```
+
+## Developer setup (local)
+
+To prepare a local developer environment, run the helper scripts below. They install the core runtime dependencies (excluding heavy ML inference packages) and frontend dependencies.
+
+1. Create a Python virtual environment and install backend dependencies:
+
+```bash
+./scripts/setup_dev_env.sh
+```
+
+2. Install frontend dependencies:
+
+```bash
+./scripts/setup_frontend.sh
+```
+
+Heavy ML and inference packages are intentionally separated (see `requirements-ml.txt` and `docker/requirements.inference.txt`).
+
 
 The V2 docs cover:
 - architecture

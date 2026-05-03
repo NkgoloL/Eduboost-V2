@@ -15,18 +15,18 @@ The following tasks are targeted for the next phase of development.
 
 ### 1. Production Deployment & Reliability
 - [ ] Execute trial production deployment using `docker-compose.prod.yml`.
-- [ ] Implement database backup and automated restore drills.
+- [x] Implement database backup and automated restore drills.
 - [ ] Stress-test RabbitMQ and Celery under concurrent learner load.
 
 ### 2. Pedagogy & Content Hardening
-- [ ] Formalize CAPS-alignment validation rules for Grade 4-7.
+- [x] Formalize CAPS-alignment validation rules for Grade 4-7.
 - [x] Implement multi-language lesson generation for Zulu, Xhosa and Afrikaans.
-- [ ] Expand the IRT Item Bank with calibrated CAPS items.
+- [x] Expand the IRT Item Bank with calibrated CAPS items.
 
 ### 3. Frontend UX & Accessibility
 - [ ] Conduct WCAG 2.1 accessibility audit for the Learner Dashboard.
 - [x] Implement "Offline First" lesson synchronization (PWA).
-- [ ] Enhance Parent Portal with downloadable progress PDF reports.
+- [x] Enhance Parent Portal with downloadable progress PDF reports.
 
 ### 4. AI Governance
 - [x] Implement prompt versioning and A/B testing framework (PromptManager).

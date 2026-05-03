@@ -1,1 +1,1 @@
-"""V2 service layer entrypoint."""
+"""V2 service boundary package."""

@@ -1,49 +1,95 @@
-"""Learner routes for EduBoost V2."""
+"""EduBoost V2 — Learners Router"""
+from __future__ import annotations
 
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, status
+from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.services.audit_service import AuditService
-from app.services.learner_service import LearnerService
-from app.core.dependencies import get_current_user
+from app.core.database import AsyncSessionLocal, get_db
+from app.core.security import get_current_user, require_parent_or_admin
+from app.domain.schemas import LearnerCreate, LearnerResponse
+from app.repositories.repositories import LearnerRepository
+from app.services.consent import ConsentService
+from app.services.fourth_estate import FourthEstateService
 
-router = APIRouter(prefix="/api/v2/learners", tags=["V2 Learners"])
-
-
-@router.get("/{learner_id}")
-async def get_learner(learner_id: str):
-    learner = await LearnerService().get_learner_summary(learner_id)
-    if learner is None:
-        raise HTTPException(status_code=404, detail="Learner not found")
-    await AuditService().log_event(
-        event_type="LEARNER_READ",
-        learner_id=learner_id,
-        payload={"route": "/api/v2/learners/{learner_id}"},
-    )
-    return learner
+router = APIRouter(prefix="/learners", tags=["learners"])
 
 
-@router.delete("/{learner_id}")
-async def delete_learner(
-    learner_id: str,
-    user: dict = Depends(get_current_user),
+@router.post("/", response_model=LearnerResponse, status_code=status.HTTP_201_CREATED)
+async def create_learner(
+    body: LearnerCreate,
+    db: AsyncSession = Depends(get_db),
+    current_user: dict = Depends(require_parent_or_admin),
 ):
-    """Right to Erasure endpoint. Requires Guardian role and ownership link."""
-    from app.repositories.parent_report_repository import ParentReportRepository
-    
-    # 1. Ensure caller is a Guardian or Admin
-    if user.get("role") not in {"Parent", "Admin"}:
-        raise HTTPException(status_code=403, detail="Only parents or admins can delete learners")
+    repo = LearnerRepository(db)
+    learner = await repo.create(
+        guardian_id=current_user["sub"],
+        display_name=body.display_name,
+        grade=body.grade,
+        language=body.language,
+    )
+    return LearnerResponse.model_validate(learner)
 
-    # 2. If Parent, verify ownership link
-    if user.get("role") == "Parent":
-        guardian_id = user.get("sub")
-        is_linked = await ParentReportRepository().verify_guardian_link(learner_id, guardian_id)
-        if not is_linked:
-            raise HTTPException(status_code=403, detail="You do not have authority over this learner")
 
-    # 3. Execute erasure
-    success = await LearnerService().delete_learner(learner_id)
-    if not success:
-        raise HTTPException(status_code=404, detail="Learner not found or already deleted")
-    
-    return {"status": "erasure_initiated", "learner_id": learner_id}
+@router.get("/{learner_id}", response_model=LearnerResponse)
+async def get_learner(
+    learner_id: str,
+    db: AsyncSession = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    consent = ConsentService(db)
+    await consent.require_active_consent(learner_id)
+
+    repo = LearnerRepository(db)
+    learner = await repo.get_by_id(learner_id)
+    if not learner:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
+    return LearnerResponse.model_validate(learner)
+
+
+@router.delete("/{learner_id}", status_code=status.HTTP_202_ACCEPTED)
+async def request_erasure(
+    learner_id: str,
+    background_tasks: BackgroundTasks,
+    db: AsyncSession = Depends(get_db),
+    current_user: dict = Depends(require_parent_or_admin),
+):
+    """
+    POPIA Section 24 — Right to Erasure.
+    Mandates a valid Guardian JWT. Physical purge runs as a BackgroundTask.
+    """
+    repo = LearnerRepository(db)
+    learner = await repo.get_by_id(learner_id)
+    if not learner:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
+
+    if learner.guardian_id != current_user["sub"] and current_user.get("role") != "admin":
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorised to erase this learner")
+
+    learner_pseudonym = learner.pseudonym_id
+
+    # Soft-delete immediately
+    await repo.soft_delete(learner_id)
+
+    # Revoke consent
+    consent_svc = ConsentService(db)
+    await consent_svc.revoke(learner_id)
+
+    # Audit
+    audit = FourthEstateService(db)
+    await audit.erasure_requested(current_user["sub"], learner_pseudonym)
+
+    # Physical purge runs in the background; audit keeps only an anonymised tombstone.
+    background_tasks.add_task(_execute_physical_purge, learner_id, learner_pseudonym)
+
+    return {"detail": f"Erasure of learner {learner_id} initiated. Physical purge within 30 days."}
+
+
+async def _execute_physical_purge(learner_id: str, learner_pseudonym: str) -> None:
+    async with AsyncSessionLocal() as session:
+        try:
+            await LearnerRepository(session).purge_personal_data(learner_id)
+            await FourthEstateService(session).erasure_executed(learner_pseudonym)
+            await session.commit()
+        except Exception:
+            await session.rollback()
+            raise

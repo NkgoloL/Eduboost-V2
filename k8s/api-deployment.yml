@@ -1,6 +1,6 @@
-# Non-authoritative legacy manifest.
-# Docker + GitLab CI is the supported delivery path for this repository.
-# This manifest is retained only as a reference and must not be treated as production-ready.
+# Archived post-MVP reference only.
+# Azure Container Apps is the authorised V2 deployment target.
+# Do not use this manifest for active deployment without a new architecture decision record.
 apiVersion: apps/v1
 kind: Deployment
 metadata:

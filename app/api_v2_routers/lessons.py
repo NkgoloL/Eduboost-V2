@@ -1,34 +1,88 @@
-"""Lesson routes for EduBoost V2."""
+"""EduBoost V2 — Lessons Router"""
+from __future__ import annotations
 
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.domain.api_v2_models import LessonGenerateRequest
-from app.services.lesson_service_v2 import LessonServiceV2
-from app.core.dependencies import get_current_user
+from app.core.database import get_db
+from app.core.rate_limit import limiter, LESSON_GENERATION_LIMIT, LESSON_GENERATION_PREMIUM_LIMIT
+from app.core.security import get_current_user
+from app.domain.schemas import LessonFeedback, LessonRequest, LessonResponse
+from app.repositories.repositories import GuardianRepository, LearnerRepository, LessonRepository
+from app.services.consent import ConsentService
+from app.services.executive import ExecutiveService, QuotaExceededError
+from app.services.fourth_estate import FourthEstateService
 
-router = APIRouter(prefix="/api/v2/lessons", tags=["V2 Lessons"])
+router = APIRouter(prefix="/lessons", tags=["lessons"])
+_executive = ExecutiveService()
 
 
-@router.post("/generate")
-async def generate_lesson(request: LessonGenerateRequest, user: dict = Depends(get_current_user)):
-    # Basic role check
-    if user.get("role") not in {"Student", "Parent", "Admin"}:
-        raise HTTPException(status_code=403, detail="Forbidden")
+@router.post("/", response_model=LessonResponse, status_code=status.HTTP_201_CREATED)
+@limiter.limit("10/day")  # Default rate limit; will be enhanced with per-tier logic below
+async def generate_lesson(
+    body: LessonRequest,
+    db: AsyncSession = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    # Consent gate
+    await ConsentService(db).require_active_consent(body.learner_id)
 
-    from app.services.analytics_service import AnalyticsService
-    await AnalyticsService().track_event("lesson_requested", request.learner_id, {"topic": request.topic})
-    
-    return await LessonServiceV2().generate_lesson(
-        learner_id=request.learner_id,
-        subject_code=request.subject_code,
-        topic=request.topic,
-        grade_level=request.grade_level,
+    learner_repo = LearnerRepository(db)
+    learner = await learner_repo.get_by_id(body.learner_id)
+    if not learner:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
+
+    # Fetch guardian tier for quota
+    guardian_repo = GuardianRepository(db)
+    guardian = await guardian_repo.get_by_id(learner.guardian_id)
+    tier = guardian.subscription_tier if guardian else "free"
+
+    try:
+        payload, from_cache = await _executive.generate_lesson(
+            pseudonym_id=learner.pseudonym_id,
+            grade=learner.grade,
+            subject=body.subject,
+            topic=body.topic,
+            language=body.language,
+            archetype=learner.archetype,
+            user_id=learner.guardian_id,
+            tier=tier,
+        )
+    except QuotaExceededError:
+        raise HTTPException(status_code=status.HTTP_429_TOO_MANY_REQUESTS, detail="Daily AI quota exceeded. Upgrade to Premium for unlimited access.")
+
+    # Persist lesson
+    lesson_repo = LessonRepository(db)
+    content_text = (
+        f"# {payload.title}\n\n{payload.introduction}\n\n{payload.main_content}\n\n"
+        f"## Worked Example\n{payload.worked_example}\n\n"
+        f"## Practice\n{payload.practice_question}\n\n**Answer:** {payload.answer}\n\n"
+        f"---\n*{payload.cultural_hook}*"
+    )
+    lesson = await lesson_repo.create(
+        learner_id=body.learner_id,
+        grade=learner.grade,
+        subject=body.subject,
+        topic=body.topic,
+        language=body.language,
+        archetype=learner.archetype,
+        content=content_text,
+        llm_provider="groq",
+        served_from_cache=from_cache,
     )
 
+    audit = FourthEstateService(db)
+    await audit.lesson_generated(learner.pseudonym_id, body.subject, body.topic, "groq")
 
-@router.get("/{lesson_id}")
-async def get_lesson(lesson_id: str):
-    lesson = await LessonServiceV2().get_lesson(lesson_id)
-    if lesson is None:
-        raise HTTPException(status_code=404, detail="Lesson not found")
-    return lesson
+    return LessonResponse.model_validate(lesson)
+
+
+@router.post("/{lesson_id}/feedback")
+async def submit_feedback(
+    lesson_id: str,
+    body: LessonFeedback,
+    db: AsyncSession = Depends(get_db),
+    _: dict = Depends(get_current_user),
+):
+    await LessonRepository(db).record_feedback(lesson_id, body.score)
+    return {"detail": "Feedback recorded. Thank you!"}
