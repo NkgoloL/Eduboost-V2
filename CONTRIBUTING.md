@@ -131,7 +131,7 @@ python scripts/popia_sweep.py --fail-on-issues
 cd app/frontend && npm run lint && npm run type-check
 ```
 
-Coverage target: **60% minimum** (CI enforces this). New features must not
+Coverage target: **80% minimum** (CI enforces this). New features must not
 lower coverage.
 
 ---
