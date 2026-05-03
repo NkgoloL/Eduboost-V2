@@ -16,6 +16,7 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 
 from app.core.config import settings
+from app.core.token_revocation import is_token_revoked, is_user_revoked
 
 # ── Password hashing ──────────────────────────────────────────────────────────
 _pwd_ctx = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -85,10 +86,31 @@ def decode_token(token: str) -> dict[str, Any]:
 _bearer = HTTPBearer()
 
 
-def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(_bearer)) -> dict[str, Any]:
+async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(_bearer)) -> dict[str, Any]:
     payload = decode_token(credentials.credentials)
+    
+    # Check if token type is correct
     if payload.get("type") != "access":
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Refresh token cannot be used here")
+    
+    # Check if token has been revoked (by JTI)
+    jti = payload.get("jti")
+    if jti and await is_token_revoked(jti):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token has been revoked",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    
+    # Check if user's all tokens have been revoked
+    user_id = payload.get("sub")
+    if user_id and await is_user_revoked(user_id):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="User tokens have been revoked",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    
     return payload
 
 

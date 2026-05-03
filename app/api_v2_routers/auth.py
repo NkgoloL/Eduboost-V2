@@ -8,7 +8,18 @@ from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
-from app.core.security import Role, create_access_token, create_refresh_token, decode_token, hash_email, hash_password, verify_password
+from app.core.security import (
+    Role,
+    create_access_token,
+    create_refresh_token,
+    decode_token,
+    get_current_user,
+    hash_email,
+    hash_password,
+    require_parent_or_admin,
+    verify_password,
+)
+from app.core.token_revocation import revoke_token, revoke_user_tokens
 from app.domain.schemas import LoginRequest, RefreshRequest, RegisterRequest, TokenResponse
 from app.repositories.repositories import GuardianRepository
 from app.services.fourth_estate import FourthEstateService
@@ -91,3 +102,51 @@ def _set_refresh_cookie(response: Response, token: str) -> None:
         max_age=30 * 24 * 3600,
         path="/api/v2/auth/refresh",
     )
+
+
+@router.post("/logout", status_code=status.HTTP_204_NO_CONTENT)
+async def logout(
+    response: Response,
+    current_user: dict = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    """
+    Revoke the current access token and clear the refresh token cookie.
+    """
+    # Revoke this specific access token (by JTI)
+    jti = current_user.get("jti")
+    exp = current_user.get("exp")
+    if jti and exp:
+        await revoke_token(jti, exp)
+    
+    # Clear refresh cookie
+    response.delete_cookie(REFRESH_COOKIE, path="/api/v2/auth/refresh")
+    
+    # Audit the logout
+    audit = FourthEstateService(db)
+    await audit.auth_event("USER_LOGOUT", current_user.get("sub"))
+    
+    return None
+
+
+@router.post("/revoke-all", status_code=status.HTTP_204_NO_CONTENT)
+async def revoke_all_tokens(
+    response: Response,
+    current_user: dict = Depends(require_parent_or_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    """
+    Revoke ALL tokens for the current user (logout from all devices).
+    Useful for security incidents or password changes.
+    """
+    user_id = current_user.get("sub")
+    await revoke_user_tokens(user_id)
+    
+    # Clear refresh cookie
+    response.delete_cookie(REFRESH_COOKIE, path="/api/v2/auth/refresh")
+    
+    # Audit the revocation
+    audit = FourthEstateService(db)
+    await audit.auth_event("USER_TOKENS_REVOKED_ALL", user_id)
+    
+    return None

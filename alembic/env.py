@@ -35,11 +35,9 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 # ── Import ALL models so autogenerate can diff them ───────────────────────
-# Add every new models module here as the project grows.
-from app.api.models.base import Base  # noqa: E402  (imports Base.metadata)
-import app.api.models.consent         # noqa: F401
-import app.api.models.learner         # noqa: F401  (import existing models)
-import app.api.models.audit           # noqa: F401
+# All V2 models live in app.models.__init__.py
+from app.core.database import Base    # noqa: E402
+import app.models                      # noqa: F401  (imports all ORM models)
 
 target_metadata = Base.metadata
 
