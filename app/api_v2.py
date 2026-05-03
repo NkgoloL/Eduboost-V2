@@ -88,7 +88,7 @@ app.add_middleware(RequestIDMiddleware)
 app.middleware("http")(analytics_middleware)
 
 # ── Routers ───────────────────────────────────────────────────────────────────
-from app.api_v2_routers import auth, billing, consent, diagnostics, learners, lessons, onboarding, parents, popia  # noqa: E402
+from app.api_v2_routers import auth, billing, consent, consent_renewal, diagnostics, learners, lessons, onboarding, parents, popia  # noqa: E402
 
 API_V2 = "/api/v2"
 for prefix in (API_V2, "/v2"):
@@ -100,6 +100,7 @@ for prefix in (API_V2, "/v2"):
     app.include_router(parents.router, prefix=prefix)
     app.include_router(billing.router, prefix=prefix)
     app.include_router(consent.router, prefix=prefix)
+    app.include_router(consent_renewal.router, prefix=prefix)
     app.include_router(popia.router, prefix=prefix)
 
 

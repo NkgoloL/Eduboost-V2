@@ -266,6 +266,8 @@
     8. Assert an audit log entry exists for the erasure event
     Run `pytest tests/popia/test_right_to_erasure.py -v` and confirm green.
     Update `SECURITY.md` Known Gaps table: "Right-to-erasure → Status: Complete".
+    Note: implementation scaffold moved from `temp/code_1/` into
+    `tests/popia/test_right_to_erasure.py` for live integration.
     Commit: `test(popia): complete end-to-end right-to-erasure verification`.
 
 22. Complete the **Consent Audit Trail** across all workflows where consent state
@@ -276,6 +278,8 @@
     audit record is created for: consent grant, consent revocation, annual
     renewal, erasure request, and failed consent check (rejected access attempt).
     Update `SECURITY.md` Known Gaps: "Consent audit trail → Status: Complete".
+    Note: implementation scaffold moved from `temp/code_1/` into
+    `tests/popia/test_consent_audit_trail.py` for live integration.
     Commit: `feat(popia): complete consent audit trail across all workflows`.
 
 23. Implement the **V2 Audit Service** backed by an append-only PostgreSQL table,
@@ -301,6 +305,10 @@
     `fourth_estate.py`. Write tests in `tests/unit/test_audit_repository.py`
     confirming that UPDATE and DELETE on audit records are rejected at the
     database level. Commit: `feat(v2): implement PostgreSQL append-only V2 audit service`.
+    Note: implementation scaffold moved from `temp/code_1/` into
+    `alembic/versions/0006_v2_audit_events.py`,
+    `app/repositories/audit_repository.py`, and
+    `tests/unit/test_audit_repository.py` for live integration.
 
 24. Implement a scheduled **POPIA Annual Consent Renewal Reminder**. Add a
     FastAPI `BackgroundTasks`-compatible scheduler (or Celery Beat in the legacy
@@ -308,6 +316,10 @@
     `expires_at` is within 30 days. For each expiring record, dispatch a
     SendGrid email via the existing `sendgrid` dependency with a renewal link.
     Write a test in `tests/integration/test_consent_renewal.py`. Commit:
+    Note: implementation scaffold moved from `temp/code_1/` into
+    `app/api_v2_routers/consent_renewal.py`, `app/jobs/consent_renewal_job.py`,
+    `app/services/consent_renewal_service.py`, and
+    `tests/integration/test_consent_renewal.py` for live integration.
     `feat(popia): add annual consent renewal reminder email`.
 
 25. Implement **PII Minimisation Audit** on the RLHF export pipeline. In
@@ -316,6 +328,9 @@
     `bleach` and `phonenumbers` to detect any residual PII (names, phone
     numbers, email addresses, SA ID numbers). Raise `PIISweepError` and abort
     the export if any PII is detected. Write tests in
+    Note: implementation scaffold moved from `temp/code_1/` into
+    `app/services/pii_sweep.py` and `tests/popia/test_rlhf_pii_scrubbing.py`
+    for live integration.
     `tests/popia/test_rlhf_pii_scrubbing.py`. Commit:
     `feat(popia): add pre-export PII minimisation gate to RLHF pipeline`.
 
