@@ -198,6 +198,9 @@ jobs:
       - name: Install frontend dependencies
         run: npm ci --include=optional --legacy-peer-deps
 
+      - name: Audit npm dependencies
+        run: npm audit --audit-level=high
+
       - name: Run frontend tests
         run: npm test
 
