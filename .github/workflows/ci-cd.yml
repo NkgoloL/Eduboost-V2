@@ -180,6 +180,17 @@ jobs:
       - name: Import V2 repositories
         run: python -c "import importlib; [importlib.import_module(m) for m in ['app.repositories.diagnostic_repository','app.repositories.lesson_repository','app.repositories.gamification_repository','app.repositories.assessment_repository']]"
 
+      - name: V2 module coverage
+        run: |
+          pytest tests/unit/ \
+            --cov=app.api_v2 \
+            --cov=app.repositories \
+            --cov=app.services \
+            --cov=app.domain \
+            --cov-report=term-missing \
+            --cov-fail-under=80 \
+            -v --tb=short
+
   frontend:
     name: Frontend Tests & Build
     runs-on: ubuntu-latest
