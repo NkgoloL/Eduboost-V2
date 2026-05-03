@@ -37,6 +37,11 @@ jobs:
       - name: Run mypy
         run: mypy app/ --ignore-missing-imports --strict-optional
 
+      - name: Audit Python dependencies
+        run: |
+          pip install pip-audit
+          pip-audit -r requirements.txt -r requirements-ml.txt
+
   # -------------------------------------------------------------------------
   # UNIT TESTS
   # -------------------------------------------------------------------------
