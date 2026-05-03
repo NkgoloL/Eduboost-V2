@@ -9,7 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
 from app.core.database import get_db
-from app.core.refresh_tokens import consume_refresh_token, store_refresh_token
+from app.core.refresh_tokens import consume_refresh_token, revoke_refresh_token, store_refresh_token
 from app.core.security import (
     create_access_token,
     create_refresh_token,
@@ -104,6 +104,7 @@ async def refresh_token(
 
     access = create_access_token(guardian.id, guardian.role)
     new_refresh = create_refresh_token(guardian.id, guardian.role)
+    await store_refresh_token(new_refresh)
     _set_refresh_cookie(response, new_refresh)
 
     return TokenResponse(access_token=access, expires_in=900)
@@ -126,6 +127,7 @@ async def logout(
     response: Response,
     current_user: dict = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
+    cookie_refresh: str | None = Cookie(default=None, alias=REFRESH_COOKIE),
 ):
     """
     Revoke the current access token and clear the refresh token cookie.
@@ -135,6 +137,8 @@ async def logout(
     exp = current_user.get("exp")
     if jti and exp:
         await revoke_token(jti, exp)
+    if cookie_refresh:
+        await revoke_refresh_token(cookie_refresh)
     
     # Clear refresh cookie
     response.delete_cookie(REFRESH_COOKIE, path="/api/v2/auth/refresh")
@@ -151,6 +155,7 @@ async def revoke_all_tokens(
     response: Response,
     current_user: dict = Depends(require_parent_or_admin),
     db: AsyncSession = Depends(get_db),
+    cookie_refresh: str | None = Cookie(default=None, alias=REFRESH_COOKIE),
 ):
     """
     Revoke ALL tokens for the current user (logout from all devices).
@@ -158,6 +163,8 @@ async def revoke_all_tokens(
     """
     user_id = current_user.get("sub")
     await revoke_user_tokens(user_id)
+    if cookie_refresh:
+        await revoke_refresh_token(cookie_refresh)
     
     # Clear refresh cookie
     response.delete_cookie(REFRESH_COOKIE, path="/api/v2/auth/refresh")

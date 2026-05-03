@@ -3,10 +3,32 @@ EduBoost V2 — Core Configuration
 Pydantic BaseSettings with environment-variable loading and validation.
 """
 from functools import lru_cache
+from typing import Any
 from typing import Literal
 
-from pydantic import AnyHttpUrl, field_validator
+from pydantic import field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+KEY_VAULT_SECRET_NAMES = {
+    "JWT_SECRET": "eduboost-jwt-secret",
+    "ENCRYPTION_KEY": "eduboost-encryption-key",
+    "ENCRYPTION_SALT": "eduboost-encryption-salt",
+    "GROQ_API_KEY": "eduboost-groq-api-key",
+    "ANTHROPIC_API_KEY": "eduboost-anthropic-api-key",
+}
+
+
+def _fetch_key_vault_secret_values(vault_url: str) -> dict[str, str]:
+    from azure.identity import DefaultAzureCredential
+    from azure.keyvault.secrets import SecretClient
+
+    credential = DefaultAzureCredential()
+    client = SecretClient(vault_url=vault_url, credential=credential)
+    return {
+        field_name: client.get_secret(secret_name).value
+        for field_name, secret_name in KEY_VAULT_SECRET_NAMES.items()
+    }
 
 
 class Settings(BaseSettings):
@@ -36,6 +58,7 @@ class Settings(BaseSettings):
 
     # ── Encryption ───────────────────────────────────────────────────────────
     ENCRYPTION_KEY: str = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="  # dev-only 32-byte base64 placeholder
+    ENCRYPTION_SALT: str = "test-encryption-salt"
 
     # ── LLM Providers ────────────────────────────────────────────────────────
     ANTHROPIC_API_KEY: str = ""
@@ -60,6 +83,9 @@ class Settings(BaseSettings):
 
     # ── Azure / Observability ────────────────────────────────────────────────
     AZURE_KEY_VAULT_URL: str = ""
+    AZURE_CLIENT_ID: str = ""
+    AZURE_CLIENT_SECRET: str = ""
+    AZURE_TENANT_ID: str = ""
     AZURE_STORAGE_CONNECTION_STRING: str = ""
     AZURE_STORAGE_CONTAINER: str = "eduboost-assets"
     GRAFANA_CLOUD_PROMETHEUS_URL: str = ""
@@ -97,6 +123,20 @@ class Settings(BaseSettings):
 
     def is_production(self) -> bool:
         return self.APP_ENV == "production" or self.ENVIRONMENT == "production"
+
+    @model_validator(mode="after")
+    def load_production_secrets_from_key_vault(self) -> "Settings":
+        if not self.is_production():
+            return self
+        if not self.AZURE_KEY_VAULT_URL:
+            raise ValueError("AZURE_KEY_VAULT_URL is required when APP_ENV is production")
+
+        secret_values = _fetch_key_vault_secret_values(self.AZURE_KEY_VAULT_URL)
+        for field_name, value in secret_values.items():
+            if not value:
+                raise ValueError(f"Azure Key Vault returned an empty value for {field_name}")
+            setattr(self, field_name, value)
+        return self
 
 
 @lru_cache(maxsize=1)

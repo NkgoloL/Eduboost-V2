@@ -157,5 +157,16 @@
 - **Notes:** Added V2 services and routers for lessons, gamification, system, and assessments so the V2 app now covers the major legacy route families.
 - **Progress:** The remaining migration problem is now primarily depth/independence of implementation rather than missing top-level route families.
 
+### Epic 19: V2 Security Hardening Batch
+- **Status:** Completed (2026-05-03)
+- **Outcome:**
+  - Production V2 secrets now load from Azure Key Vault via `app/core/config.py`.
+  - JWT revocation is now verified end to end with Redis-backed JTI denylist tests plus logout/revoke-all refresh-token invalidation.
+  - Legacy RabbitMQ guidance no longer recommends `guest/guest`, while the V2 runtime remains RabbitMQ-free.
+  - The V2 FastAPI entrypoint import path was repaired by restoring the missing `BaseHTTPMiddleware` import.
+- **Verification:**
+  - `python -m pytest tests/unit/test_config_key_vault.py tests/unit/test_token_denylist.py -v --tb=short -o addopts=""` → 8 passed
+  - `python -m pytest tests/smoke -v --tb=short -o addopts=""` → 20 passed
+
 ## Final Summary
 Legacy execution epics are complete, but the repository is **not** globally complete. EduBoost is now in a **V2 baseline migration** phase driven by `docs/architecture/V2_ARCHITECTURE.md`.

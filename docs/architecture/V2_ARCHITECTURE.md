@@ -202,7 +202,14 @@ Celery is heavyweight for the V2 single-node model. Replace with `arq` (async Re
 
 ### 5. Secrets: Azure Key Vault from Day One
 
-Do not defer Key Vault integration. The `azure-keyvault-secrets` library is already in `requirements.txt`. Wire it up in `core/config.py` so all secrets (JWT secret, encryption key, API keys) are fetched from Key Vault at startup, with local `.env` fallback for development only.
+Do not defer Key Vault integration. The `azure-keyvault-secrets` library is already in `requirements.txt`. Wire it up in `core/config.py` so all secrets (JWT secret, encryption key, encryption salt, and API keys) are fetched from Key Vault at startup, with local `.env` fallback for development only.
+
+Required production Key Vault secret names:
+- `eduboost-jwt-secret`
+- `eduboost-encryption-key`
+- `eduboost-encryption-salt`
+- `eduboost-groq-api-key`
+- `eduboost-anthropic-api-key`
 
 ---
 

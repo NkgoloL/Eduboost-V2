@@ -46,6 +46,12 @@ The V2 route surface already covers:
 
 The main remaining problem is **depth and independence**, not missing route names.
 
+Recent security/runtime hardening already landed:
+
+- production secret loading now pulls required values from Azure Key Vault
+- access-token revocation now uses a Redis-backed JWT denylist on logout/revoke-all paths
+- V2 runtime remains RabbitMQ-free, and legacy docs/examples no longer advertise `guest/guest`
+
 ---
 
 ## Outstanding tasks (highest priority first)
@@ -126,7 +132,7 @@ The main remaining problem is **depth and independence**, not missing route name
 ### 5. Reduce dependence on legacy architecture assumptions
 **Goal:** V2 should stop depending conceptually on Celery, RabbitMQ, and the inference microservice for its main path.
 
-**Status:** In progress. The V2 service package now exists and key routers can target the V2 service boundary. `docker-compose.v2.yml` remains RabbitMQ-free; Redis is used for cache/session-style workloads only.
+**Status:** In progress. The V2 service package now exists and key routers can target the V2 service boundary. `docker-compose.v2.yml` remains RabbitMQ-free; Redis is used for cache/session-style workloads only. Production secrets now load from Azure Key Vault, and the auth flow now enforces immediate JWT denylist checks during logout/revoke-all flows.
 
 **Files to inspect/update:**
 - `docker-compose.v2.yml`

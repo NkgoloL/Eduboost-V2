@@ -244,7 +244,6 @@ Services will be available at:
 | API | http://localhost:8000 |
 | API Docs | http://localhost:8000/docs |
 | Grafana | http://localhost:3001 |
-| RabbitMQ UI | http://localhost:15672 (guest/guest) |
 
 ---
 
@@ -253,8 +252,7 @@ Services will be available at:
 | Variable | Description |
 |---|---|
 | `DATABASE_URL` | Async SQLAlchemy connection string (Postgres) |
-| `REDIS_URL` | Redis connection string (Cache/Celery) |
-| `RABBITMQ_URL` | RabbitMQ connection string (Audit Trail/Broker) |
+| `REDIS_URL` | Redis connection string (Cache/Jobs) |
 | `GROQ_API_KEY` | Primary LLM inference key |
 | `ANTHROPIC_API_KEY` | Secondary LLM provider key |
 | `JWT_SECRET` | JWT signing secret |

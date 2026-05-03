@@ -225,7 +225,7 @@
     Write a test confirming all headers are present on responses. Commit:
     `feat(security): add HTTP security headers middleware`.
 
-18. Wire **Azure Key Vault** into application startup for all production secrets.
+18. [x] Wire **Azure Key Vault** into application startup for all production secrets.
     In `app/core/config.py`, when `APP_ENV == "production"`, source
     `JWT_SECRET`, `ENCRYPTION_KEY`, `ENCRYPTION_SALT`, `GROQ_API_KEY`, and
     `ANTHROPIC_API_KEY` from Key Vault using `azure-keyvault-secrets` +
@@ -234,7 +234,7 @@
     secret names in `.env.example` and in `docs/architecture/V2_ARCHITECTURE.md`.
     Commit: `feat(config): source all production secrets from Azure Key Vault`.
 
-19. Implement a Redis token denylist for immediate JWT invalidation on logout
+19. [x] Implement a Redis token denylist for immediate JWT invalidation on logout
     and for admin-forced session revocation. Store invalidated JTI (JWT ID)
     claims in Redis with TTL equal to the token's remaining validity. Add a
     `jti` claim to all issued access tokens. Update the JWT validation
@@ -242,7 +242,7 @@
     `tests/unit/test_token_denylist.py`. Commit:
     `feat(auth): implement Redis JWT denylist for immediate token revocation`.
 
-20. Harden RabbitMQ (legacy) and Redis credentials. In `docker-compose.yml`
+20. [x] Harden RabbitMQ (legacy) and Redis credentials. In `docker-compose.yml`
     (legacy path), replace the default `guest/guest` RabbitMQ credentials with
     environment-variable-driven values (`RABBITMQ_USER`, `RABBITMQ_PASSWORD`).
     Update `.env.example` to document these as REQUIRED in production. Confirm
