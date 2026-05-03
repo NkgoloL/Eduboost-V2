@@ -158,4 +158,4 @@
 - **Progress:** The remaining migration problem is now primarily depth/independence of implementation rather than missing top-level route families.
 
 ## Final Summary
-Legacy execution epics are complete, but the repository is **not** globally complete. EduBoost is now in a **V2 baseline migration** phase driven by `gemini-code-1777601244294.md`.
+Legacy execution epics are complete, but the repository is **not** globally complete. EduBoost is now in a **V2 baseline migration** phase driven by `docs/architecture/V2_ARCHITECTURE.md`.

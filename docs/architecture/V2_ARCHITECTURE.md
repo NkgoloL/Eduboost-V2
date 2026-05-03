@@ -227,7 +227,7 @@ Do not defer Key Vault integration. The `azure-keyvault-secrets` library is alre
 
 ### Week 1 — Immediate Triage
 - [ ] Delete all `app/api/` (legacy V1) code and `docker-compose.yml`
-- [ ] Delete `mnt/`, `scratch/`, `gemini-code-1777601244294.md` from repo
+- [ ] Delete `mnt/`, `scratch/` from repo
 - [ ] Move `ci.yml` → `.github/workflows/ci-cd.yml`
 - [ ] Confirm CI pipeline runs green
 
@@ -280,7 +280,7 @@ Do not defer Key Vault integration. The `azure-keyvault-secrets` library is alre
 | Celery/Flower | Replaced by arq |
 | `mnt/` directory | Accidental AI session artifact |
 | `scratch/` directory | WIP, belongs in feature branch |
-| `gemini-code-1777601244294.md` | Replace with ADRs |
+| `gemini-code-1777601244294.md` | Replaced with this document |
 | Root-level `package.json` | Consolidate into `app/frontend/` |
 
 ---

@@ -1,6 +1,6 @@
 # EduBoost V2 — Execution Roadmap
 
-**Purpose:** This roadmap mirrors the existing audit-driven execution style, but for the V2 architectural pivot introduced in `gemini-code-1777601244294.md`.
+**Purpose:** This roadmap mirrors the existing audit-driven execution style, but for the V2 architectural pivot introduced in `docs/architecture/V2_ARCHITECTURE.md`.
 
 ## Phase 0 — Baseline
 - [x] Scaffold `app/core`, `app/domain`, `app/repositories`, `app/services`

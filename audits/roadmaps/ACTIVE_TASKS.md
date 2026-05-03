@@ -127,7 +127,7 @@ All recommendations from `EduBoost_Architecture_Recommendation.md` implemented. 
   - [x] Created structured **Security Pen-Test Checklist** and runbook
   - [x] Enabled **PWA** manifest and service worker for offline installation
 
-### Scope: V2 Baseline Pivot (`gemini-code-1777601244294.md`)
+### Scope: V2 Baseline Pivot (docs/architecture/V2_ARCHITECTURE.md)
 
 - [x] **Phase 0 — Repository Bootstrap & Foundation**
   - [x] Scaffolded initial modular-monolith directories: `app/core`, `app/domain`, `app/repositories`, `app/services`
