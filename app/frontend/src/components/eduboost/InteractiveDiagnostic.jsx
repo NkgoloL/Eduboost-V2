@@ -87,7 +87,7 @@ export function InteractiveDiagnostic({ learner, onComplete, onBack }) {
           <div className="text-center mb-10">
             <div className="text-7xl mb-6 animate-bounce">🏆</div>
             <h2 className="text-4xl font-['Baloo_2'] text-gray-800 font-bold">Assessment Complete!</h2>
-            <p className="text-gray-500 text-lg mt-2">Amazing work, {learner?.nickname}! We've mapped your knowledge.</p>
+            <p className="text-gray-500 text-lg mt-2">Amazing work, {learner?.nickname}! We&apos;ve mapped your knowledge.</p>
           </div>
 
           <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-3xl mb-10 border border-blue-100 shadow-inner">

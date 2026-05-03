@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useCallback, useContext, useState, useEffect } from "react";
 import { LearnerService } from "../lib/api/services";
 
 const LearnerContext = createContext();
@@ -25,19 +25,7 @@ export function LearnerProvider({ children }) {
     setLoading(false);
   }, []);
 
-  // Save learner to localStorage whenever it changes
-  useEffect(() => {
-    if (learner) {
-      localStorage.setItem("eb_active_learner", JSON.stringify(learner));
-      refreshState();
-    } else {
-      localStorage.removeItem("eb_active_learner");
-      setMasteryData({});
-      setGamification(null);
-    }
-  }, [learner]);
-
-  const refreshState = async () => {
+  const refreshState = useCallback(async () => {
     if (!learner?.learner_id) return;
     try {
       const [masteryRes, gamificationRes] = await Promise.all([
@@ -56,7 +44,19 @@ export function LearnerProvider({ children }) {
     } catch (err) {
       console.error("Failed to refresh learner state:", err);
     }
-  };
+  }, [learner?.learner_id]);
+
+  // Save learner to localStorage whenever it changes
+  useEffect(() => {
+    if (learner) {
+      localStorage.setItem("eb_active_learner", JSON.stringify(learner));
+      refreshState();
+    } else {
+      localStorage.removeItem("eb_active_learner");
+      setMasteryData({});
+      setGamification(null);
+    }
+  }, [learner, refreshState]);
 
   return (
     <LearnerContext.Provider

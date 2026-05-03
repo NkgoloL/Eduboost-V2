@@ -54,7 +54,7 @@ export default function BadgesPage() {
           🏆 Your Achievements
         </h1>
         <p className="text-[var(--muted)] font-medium">
-          Celebrate your hard work and see all the badges you've earned on your journey.
+          Celebrate your hard work and see all the badges you&apos;ve earned on your journey.
         </p>
       </header>
 

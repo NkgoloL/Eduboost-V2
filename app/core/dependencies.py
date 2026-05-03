@@ -14,7 +14,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.database import get_db
 from app.core.exceptions import AuthenticationError, ConsentRequiredError
 from app.core.metrics import consent_gate_blocks_total
-from app.core.security import verify_access_token
+from app.core.security import decode_token
 
 _bearer = HTTPBearer(auto_error=False)
 
@@ -28,7 +28,10 @@ async def get_current_user_id(
     if credentials is None:
         raise AuthenticationError("Authorization header missing")
     try:
-        user_id_str = verify_access_token(credentials.credentials)
+        payload = decode_token(credentials.credentials)
+        user_id_str = payload.get("sub")
+        if not user_id_str:
+            raise ValueError("Token subject missing")
         return UUID(user_id_str)
     except (JWTError, ValueError) as exc:
         raise AuthenticationError("Invalid or expired token") from exc

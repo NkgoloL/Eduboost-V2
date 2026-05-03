@@ -126,6 +126,9 @@ class LearnerProfile(Base):
     __table_args__ = (Index("ix_learner_guardian_grade", "guardian_id", "grade"),)
 
 
+Learner = LearnerProfile
+
+
 # ── Parental Consent (POPIA) ──────────────────────────────────────────────────
 
 

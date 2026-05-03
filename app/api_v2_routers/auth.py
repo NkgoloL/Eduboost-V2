@@ -7,7 +7,9 @@ from __future__ import annotations
 from fastapi import APIRouter, Cookie, Depends, HTTPException, Response, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.core.config import settings
 from app.core.database import get_db
+from app.core.refresh_tokens import consume_refresh_token, store_refresh_token
 from app.core.security import (
     create_access_token,
     create_refresh_token,
@@ -27,6 +29,11 @@ from app.services.fourth_estate import FourthEstateService
 router = APIRouter(prefix="/auth", tags=["auth"])
 
 REFRESH_COOKIE = "eduboost_refresh"
+
+
+@router.get("/me")
+async def me(current_user: dict = Depends(get_current_user)):
+    return current_user
 
 
 @router.post("/register", response_model=TokenResponse, status_code=status.HTTP_201_CREATED)
@@ -79,8 +86,8 @@ async def login(body: LoginRequest, response: Response, db: AsyncSession = Depen
 
 @router.post("/refresh", response_model=TokenResponse)
 async def refresh_token(
-    body: RefreshRequest | None = None,
     response: Response,
+    body: RefreshRequest | None = None,
     db: AsyncSession = Depends(get_db),
     cookie_refresh: str | None = Cookie(default=None, alias=REFRESH_COOKIE),
 ):

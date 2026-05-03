@@ -1,13 +1,14 @@
 """EduBoost V2 — Lessons Router"""
-from __future__ import annotations
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Request, status
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.core.rate_limit import limiter, LESSON_GENERATION_LIMIT, LESSON_GENERATION_PREMIUM_LIMIT
 from app.core.security import get_current_user
 from app.domain.schemas import LessonFeedback, LessonRequest, LessonResponse
+from app.models import Lesson
 from app.repositories.repositories import GuardianRepository, LearnerRepository, LessonRepository
 from app.services.consent import ConsentService
 from app.services.executive import ExecutiveService, QuotaExceededError
@@ -17,9 +18,11 @@ router = APIRouter(prefix="/lessons", tags=["lessons"])
 _executive = ExecutiveService()
 
 
+@router.post("/generate", response_model=LessonResponse, status_code=status.HTTP_201_CREATED)
 @router.post("/", response_model=LessonResponse, status_code=status.HTTP_201_CREATED)
 @limiter.limit("10/day")  # Default rate limit; will be enhanced with per-tier logic below
 async def generate_lesson(
+    request: Request,
     body: LessonRequest,
     db: AsyncSession = Depends(get_db),
     current_user: dict = Depends(get_current_user),
@@ -74,6 +77,19 @@ async def generate_lesson(
     audit = FourthEstateService(db)
     await audit.lesson_generated(learner.pseudonym_id, body.subject, body.topic, "groq")
 
+    return LessonResponse.model_validate(lesson)
+
+
+@router.get("/{lesson_id}")
+async def get_lesson(
+    lesson_id: str,
+    _: dict = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    result = await db.execute(select(Lesson).where(Lesson.id == lesson_id))
+    lesson = result.scalar_one_or_none()
+    if not lesson:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Lesson not found")
     return LessonResponse.model_validate(lesson)
 
 

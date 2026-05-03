@@ -9,14 +9,20 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
-from slowapi.errors import RateLimitExceeded
-from slowapi import Limiter
-from slowapi.util import get_remote_address
+from fastapi.responses import JSONResponse, Response
 
+from slowapi.errors import RateLimitExceeded
+
+from app.api.version import __version__
+from app.core.analytics import analytics_middleware
 from app.core.config import settings
+from app.core.exceptions import register_exception_handlers
 from app.core.logging import configure_logging, get_logger
+from app.core.metrics import REGISTRY
+from app.core.middleware import RequestIDMiddleware, TimingMiddleware
 from app.core.rate_limit import limiter
+from app.services.consent_expiry_service import consent_expiry_loop
+from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
 
 configure_logging()
 log = get_logger(__name__)
@@ -45,6 +51,7 @@ app = FastAPI(
 
 # ── Rate Limiter (attach to app for per-endpoint limits) ─────────────────────
 app.state.limiter = limiter
+register_exception_handlers(app)
 
 
 @app.exception_handler(RateLimitExceeded)
@@ -63,26 +70,40 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.add_middleware(TimingMiddleware)
+app.add_middleware(RequestIDMiddleware)
 app.middleware("http")(analytics_middleware)
 
 # ── Routers ───────────────────────────────────────────────────────────────────
-from app.api_v2_routers import auth, billing, diagnostics, learners, lessons, onboarding, parents, popia  # noqa: E402
+from app.api_v2_routers import auth, billing, consent, diagnostics, learners, lessons, onboarding, parents, popia  # noqa: E402
 
 API_V2 = "/api/v2"
-app.include_router(auth.router, prefix=API_V2)
-app.include_router(learners.router, prefix=API_V2)
-app.include_router(lessons.router, prefix=API_V2)
-app.include_router(diagnostics.router, prefix=API_V2)
-app.include_router(onboarding.router, prefix=API_V2)
-app.include_router(parents.router, prefix=API_V2)
-app.include_router(billing.router, prefix=API_V2)
-app.include_router(popia.router, prefix=API_V2)
+for prefix in (API_V2, "/v2"):
+    app.include_router(auth.router, prefix=prefix)
+    app.include_router(learners.router, prefix=prefix)
+    app.include_router(lessons.router, prefix=prefix)
+    app.include_router(diagnostics.router, prefix=prefix)
+    app.include_router(onboarding.router, prefix=prefix)
+    app.include_router(parents.router, prefix=prefix)
+    app.include_router(billing.router, prefix=prefix)
+    app.include_router(consent.router, prefix=prefix)
+    app.include_router(popia.router, prefix=prefix)
 
 
 # ── Health & meta ─────────────────────────────────────────────────────────────
 @app.get("/health", tags=["ops"])
 async def health():
     return {"status": "ok", "version": __version__, "environment": settings.ENVIRONMENT, "mode": "v2-baseline"}
+
+
+@app.get("/ready", tags=["ops"])
+async def ready():
+    return JSONResponse(status_code=503, content={"status": "unavailable"})
+
+
+@app.get("/metrics", tags=["ops"])
+async def metrics():
+    return Response(generate_latest(REGISTRY), media_type=CONTENT_TYPE_LATEST)
 
 
 @app.get("/", tags=["ops"])

@@ -130,7 +130,7 @@ export default function LoginPage() {
 
       {isParent && (
         <p className="text-center mt-4 text-sm text-gray-600">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <button onClick={() => router.push("/register")} className="text-blue-600 font-bold hover:underline">
             Register
           </button>

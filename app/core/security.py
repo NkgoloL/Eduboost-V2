@@ -75,10 +75,16 @@ def decode_token(token: str) -> dict[str, Any]:
 
 
 # ── FastAPI dependency helpers ────────────────────────────────────────────────
-_bearer = HTTPBearer()
+_bearer = HTTPBearer(auto_error=False)
 
 
-async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(_bearer)) -> dict[str, Any]:
+async def get_current_user(credentials: HTTPAuthorizationCredentials | None = Depends(_bearer)) -> dict[str, Any]:
+    if credentials is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Authorization header missing",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
     payload = decode_token(credentials.credentials)
     
     # Check if token type is correct

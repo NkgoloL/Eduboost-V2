@@ -102,7 +102,7 @@ export function ParentDashboard({ onBack }) {
             <Card className="col-span-full p-12 text-center bg-white/10 backdrop-blur border-dashed border-2 border-white/20">
               <div className="text-5xl mb-4">👶</div>
               <h3 className="text-xl font-bold text-white mb-2">No linked learners yet</h3>
-              <p className="text-blue-100 mb-6 text-sm">Link your child's learner ID to see their progress.</p>
+              <p className="text-blue-100 mb-6 text-sm">Link your child&apos;s learner ID to see their progress.</p>
               <Button onClick={() => setShowLinkModal(true)}>+ Link a Learner</Button>
             </Card>
           ) : (
@@ -171,7 +171,7 @@ export function ParentDashboard({ onBack }) {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
           <Card className="w-full max-w-md p-8 bg-[var(--surface)] border-[var(--border)] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
             <h2 className="text-2xl font-['Baloo_2'] font-bold mb-2 text-white">Link Learner Profile</h2>
-            <p className="text-[var(--muted)] text-sm mb-8">Enter the Learner Pseudonym ID from your child's app dashboard.</p>
+            <p className="text-[var(--muted)] text-sm mb-8">Enter the Learner Pseudonym ID from your child&apos;s app dashboard.</p>
             
             <form onSubmit={handleLinkLearner}>
               <div className="mb-6">
@@ -215,7 +215,7 @@ export function ParentDashboard({ onBack }) {
                   </button>
                 </div>
                 <div className="bg-white/10 rounded-xl p-4 backdrop-blur-sm border border-white/10">
-                  <p className="text-lg leading-relaxed italic">"{activeReport.summary}"</p>
+                  <p className="text-lg leading-relaxed italic">&ldquo;{activeReport.summary}&rdquo;</p>
                 </div>
               </div>
 

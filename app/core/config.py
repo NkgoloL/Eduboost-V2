@@ -95,6 +95,9 @@ class Settings(BaseSettings):
             raise ValueError("ENCRYPTION_KEY must be 44 characters (32 bytes base64 encoded)")
         return v
 
+    def is_production(self) -> bool:
+        return self.APP_ENV == "production" or self.ENVIRONMENT == "production"
+
 
 @lru_cache(maxsize=1)
 def get_settings() -> Settings:

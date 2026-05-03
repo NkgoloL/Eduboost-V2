@@ -10,7 +10,7 @@ from slowapi.util import get_remote_address
 # Rate limiter instance (uses Redis backend if available)
 limiter = Limiter(
     key_func=get_remote_address,
-    storage_uri="memory",  # In production, use Redis: "redis://localhost:6379"
+    storage_uri="memory://",  # In production, use Redis: "redis://localhost:6379"
     default_limits=["200 per day", "50 per hour"],  # Global defaults
     swallow_errors=True,  # Don't crash if rate limiter is down
 )

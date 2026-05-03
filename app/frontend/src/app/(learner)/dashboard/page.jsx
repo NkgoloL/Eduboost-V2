@@ -18,13 +18,6 @@ export default function DashboardPage() {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  // When running tests, prefer the lightweight DashboardPanel mock
-  if (process.env.NODE_ENV === 'test') {
-    return (
-      <DashboardPanel onStartLesson={() => router.push('/lesson')} onStartDiag={() => router.push('/diagnostic')} />
-    )
-  }
-
   useEffect(() => {
     if (!learner?.learner_id) return;
 
@@ -39,11 +32,13 @@ export default function DashboardPage() {
 
         // Update mastery data in context
         if (masteryRes && masteryRes.mastery) {
-          const newMastery = { ...masteryData };
-          masteryRes.mastery.forEach((m) => {
-            newMastery[m.subject_code] = Math.round(m.mastery_score * 100);
+          setMasteryData((current) => {
+            const newMastery = { ...current };
+            masteryRes.mastery.forEach((m) => {
+              newMastery[m.subject_code] = Math.round(m.mastery_score * 100);
+            });
+            return newMastery;
           });
-          setMasteryData(newMastery);
         }
 
         setGamification(gamificationRes);
@@ -56,7 +51,14 @@ export default function DashboardPage() {
     };
 
     fetchData();
-  }, [learner?.learner_id]);
+  }, [learner?.learner_id, setMasteryData]);
+
+  // When running tests, prefer the lightweight DashboardPanel mock
+  if (process.env.NODE_ENV === "test") {
+    return (
+      <DashboardPanel onStartLesson={() => router.push("/lesson")} onStartDiag={() => router.push("/diagnostic")} />
+    );
+  }
 
   if (loading && !gamification) {
     return (
@@ -81,7 +83,7 @@ export default function DashboardPage() {
           🏠 Welcome back, {learner?.nickname || "Learner"}!
         </h1>
         <p className="text-[var(--muted)] font-medium">
-          You're doing great! Here's a look at your progress today.
+          You&apos;re doing great! Here&apos;s a look at your progress today.
         </p>
       </header>
 
