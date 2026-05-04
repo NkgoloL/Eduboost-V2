@@ -97,7 +97,7 @@ class LearnerRepository:
         await self.db.execute(
             update(LearnerProfile)
             .where(LearnerProfile.id == learner_id)
-            .values(xp=current + xp_delta, updated_at=datetime.now(UTC))
+            .values(xp=current + xp_delta, last_active=datetime.now(UTC), updated_at=datetime.now(UTC))
         )
 
     async def soft_delete(self, learner_id: str) -> None:

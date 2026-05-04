@@ -10,7 +10,6 @@ import { Button } from "../../../components/ui/Button";
 import { LoadingSpinner } from "../../../components/ui/LoadingSpinner";
 import { ErrorMessage } from "../../../components/ui/ErrorMessage";
 import InteractiveLesson from "../../../components/eduboost/InteractiveLesson";
-import { LessonPanel } from "../../../components/eduboost/FeaturePanels";
 import { cacheLessonSnapshot, getCachedLessonSnapshot, queueLessonSync } from "../../../lib/api/offlineSync";
 import type { LessonPayload, SubjectCode } from "../../../lib/api/types";
 
@@ -24,6 +23,7 @@ export default function LessonPage() {
   const [loading, setLoading] = useState(false);
   const [lessonData, setLessonData] = useState<LessonPayload | null>(null);
   const [error, setError] = useState("");
+  const [completionError, setCompletionError] = useState("");
   const router = useRouter();
 
   React.useEffect(() => {
@@ -46,6 +46,7 @@ export default function LessonPage() {
 
     setLoading(true);
     setError("");
+    setCompletionError("");
     setLessonData(null);
 
     try {
@@ -71,7 +72,11 @@ export default function LessonPage() {
         setError("You are offline, so we loaded the last cached version of this lesson.");
       } else {
         console.error("Lesson generation error:", err);
-        setError("Failed to generate lesson. Our AI is taking a quick nap, please try again!");
+        setError(
+          typeof navigator !== "undefined" && !navigator.onLine
+            ? "You are offline. Reconnect to generate this lesson."
+            : "Failed to generate lesson. Please try again."
+        );
       }
     } finally {
       setLoading(false);
@@ -80,6 +85,7 @@ export default function LessonPage() {
 
   const handleComplete = async () => {
     setLoading(true);
+    setCompletionError("");
     try {
       const xpAmount = 35;
       if (typeof navigator !== "undefined" && !navigator.onLine && lessonData?.id) {
@@ -107,9 +113,7 @@ export default function LessonPage() {
       router.push("/dashboard");
     } catch (err) {
       console.error("Award XP error:", err);
-      setBadge("Lesson completed!");
-      await refreshState();
-      router.push("/dashboard");
+      setCompletionError("The lesson is complete, but we could not sync your XP yet. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -124,12 +128,9 @@ export default function LessonPage() {
         onBack={() => setLessonData(null)}
         onComplete={handleComplete}
         loading={loading}
+        error={completionError}
       />
     );
-  }
-
-  if (process.env.NODE_ENV === "test") {
-    return <LessonPanel onComplete={() => router.push("/dashboard")} onBack={() => router.push("/dashboard")} />;
   }
 
   const availableTopics = subject ? LESSON_TOPICS[subject as keyof typeof LESSON_TOPICS] || [] : [];
@@ -211,7 +212,7 @@ export default function LessonPage() {
               </div>
             )}
 
-            <div className="mt-8 pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="mt-8 pt-8 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="text-sm font-medium text-[var(--muted)] italic">
                 {topic ? `Ready to start learning about ${topic}!` : "Select a topic to continue..."}
               </div>

@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useLearner } from "../../../context/LearnerContext";
 import { LearnerService } from "../../../lib/api/services";
 import { SUBJECTS } from "../../../components/eduboost/constants";
-import { DashboardPanel } from "../../../components/eduboost/FeaturePanels";
 import { Card } from "../../../components/ui/Card";
 import { Button } from "../../../components/ui/Button";
 import { LoadingSpinner } from "../../../components/ui/LoadingSpinner";
@@ -17,54 +16,49 @@ export default function DashboardPage() {
   const [gamification, setGamification] = useState<GamificationProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [offline, setOffline] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
+  const fetchData = useCallback(async () => {
     if (!learner?.learner_id) {
       return;
     }
 
-    const fetchData = async () => {
-      setLoading(true);
-      setError("");
-      try {
-        const [masteryRes, gamificationRes] = await Promise.all([
-          LearnerService.getMastery(learner.id || learner.learner_id),
-          LearnerService.getGamificationProfile(learner.id || learner.learner_id),
-        ]);
+    setLoading(true);
+    setError("");
+    setOffline(typeof navigator !== "undefined" && !navigator.onLine);
+    try {
+      const [masteryRes, gamificationRes] = await Promise.all([
+        LearnerService.getMastery(learner.id || learner.learner_id),
+        LearnerService.getGamificationProfile(learner.id || learner.learner_id),
+      ]);
 
-        if (masteryRes.mastery) {
-          setMasteryData((current) => {
-            const newMastery = { ...current };
-            masteryRes.mastery.forEach((entry: MasteryEntry) => {
-              newMastery[entry.subject_code] = Math.round(entry.mastery_score * 100);
-            });
-            return newMastery;
+      if (masteryRes.mastery) {
+        setMasteryData(() => {
+          const newMastery: Record<string, number> = {};
+          masteryRes.mastery.forEach((entry: MasteryEntry) => {
+            newMastery[entry.subject_code] = Math.round(entry.mastery_score * 100);
           });
-        }
-
-        setGamification(gamificationRes);
-      } catch (err) {
-        console.error("Dashboard fetch error:", err);
-        setError("Failed to load dashboard data. Please try again.");
-      } finally {
-        setLoading(false);
+          return newMastery;
+        });
       }
-    };
 
-    void fetchData();
+      setGamification(gamificationRes);
+    } catch (err) {
+      console.error("Dashboard fetch error:", err);
+      setError(
+        typeof navigator !== "undefined" && !navigator.onLine
+          ? "You are offline. Reconnect to refresh your dashboard."
+          : "Failed to load dashboard data. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
   }, [learner?.id, learner?.learner_id, setMasteryData]);
 
-  if (process.env.NODE_ENV === "test") {
-    return (
-      <DashboardPanel
-        learner={learner}
-        masteryData={masteryData}
-        onStartLesson={() => router.push("/lesson")}
-        onStartDiag={() => router.push("/diagnostic")}
-      />
-    );
-  }
+  useEffect(() => {
+    void fetchData();
+  }, [fetchData]);
 
   if (!learner) {
     return null;
@@ -79,7 +73,24 @@ export default function DashboardPage() {
     );
   }
 
-  const totalXp = gamification?.total_xp || 0;
+  if (error && !gamification) {
+    return (
+      <div className="max-w-6xl mx-auto p-4 md:p-8">
+        <header className="mb-10">
+          <h1 className="text-4xl font-['Baloo_2'] font-bold text-[var(--text)] mb-2">
+            Welcome back, {learner.nickname || learner.display_name || "Learner"}!
+          </h1>
+          <p className="text-[var(--muted)] font-medium">
+            {offline ? "Your latest progress needs a connection." : "We could not load your progress yet."}
+          </p>
+        </header>
+        <ErrorMessage message={error} onRetry={() => void fetchData()} />
+      </div>
+    );
+  }
+
+  const totalXp = gamification?.total_xp ?? 0;
+  const hasMastery = Object.keys(masteryData).length > 0;
   const overallMastery = Math.round(
     Object.values(masteryData).reduce((total, value) => total + value, 0) /
       (Object.values(masteryData).length || 1)
@@ -96,7 +107,7 @@ export default function DashboardPage() {
         </p>
       </header>
 
-      {error && <ErrorMessage message={error} className="mb-8" />}
+      {error && <ErrorMessage message={error} onRetry={() => void fetchData()} className="mb-8" />}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <Card className="lg:col-span-2 p-8 bg-gradient-to-br from-[var(--surface)] to-[var(--surface2)] border-none shadow-xl relative overflow-hidden">
@@ -126,10 +137,16 @@ export default function DashboardPage() {
               </div>
 
               <div className="flex-1 space-y-6">
-                <p className="text-lg text-[var(--text)] font-medium leading-relaxed">
-                  You have mastered <strong>{overallMastery}%</strong> of your curriculum goals.
-                  {overallMastery > 50 ? " Keep up the amazing work!" : " Let's boost those scores today!"}
-                </p>
+                {hasMastery ? (
+                  <p className="text-lg text-[var(--text)] font-medium leading-relaxed">
+                    You have mastered <strong>{overallMastery}%</strong> of your curriculum goals.
+                    {overallMastery > 50 ? " Keep up the amazing work!" : " Let's boost those scores today!"}
+                  </p>
+                ) : (
+                  <p className="text-lg text-[var(--text)] font-medium leading-relaxed">
+                    Take a short assessment or start a lesson so your dashboard can build a progress picture.
+                  </p>
+                )}
                 <div className="flex flex-wrap gap-4">
                   <Button onClick={() => router.push("/lesson")} className="px-8 shadow-lg shadow-blue-500/20">
                     Start New Lesson

@@ -12,7 +12,23 @@ from datetime import datetime, timezone
 from sqlalchemy import select, text
 
 from app.core.database import AsyncSessionFactory
-from app.api.models.db_models import ParentLearnerLink, SubjectMastery
+from sqlalchemy.orm import declarative_base
+
+DummyBase = declarative_base()
+
+class ParentLearnerLink(DummyBase):
+    __tablename__ = 'parent_learner_link'
+    learner_id = None
+    parent_id = None
+
+class SubjectMastery(DummyBase):
+    __tablename__ = 'subject_mastery'
+    learner_id = None
+    subject_code = None
+    mastery_score = None
+    grade_level = None
+    knowledge_gaps = None
+
 
 
 class ParentReportRepository:

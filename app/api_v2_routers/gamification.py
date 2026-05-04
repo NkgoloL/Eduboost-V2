@@ -47,7 +47,8 @@ async def award_xp(
     if learner is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
 
-    await LearnerRepository(db).add_xp(body.learner_id, body.xp_amount)
+    learner_repo = LearnerRepository(db)
+    await learner_repo.add_xp(body.learner_id, body.xp_amount)
     if body.lesson_id:
         await LessonRepository(db).mark_completed(body.lesson_id)
 
@@ -65,7 +66,13 @@ async def award_xp(
         constitutional_outcome="APPROVED",
     )
     await db.commit()
-    return {"awarded": True, "xp_amount": body.xp_amount}
+    updated_profile = await GamificationServiceV2(GamificationRepository(db)).get_profile(body.learner_id)
+    return {
+        "awarded": True,
+        "xp_amount": body.xp_amount,
+        "lesson_completed": bool(body.lesson_id),
+        "profile": updated_profile,
+    }
 
 
 @router.get("/leaderboard")

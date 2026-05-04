@@ -103,6 +103,13 @@ export interface StudyPlanResponse {
   gap_ratio?: number;
 }
 
+export interface AwardXPResponse {
+  awarded: boolean;
+  xp_amount: number;
+  lesson_completed?: boolean;
+  profile?: GamificationProfile;
+}
+
 export interface DiagnosticItem {
   id?: string;
   item_id?: string;
