@@ -5,7 +5,7 @@ Shipped to Grafana Cloud via remote_write in production.
 """
 from __future__ import annotations
 
-from prometheus_client import Counter, Histogram, Gauge, CollectorRegistry, make_asgi_app
+from prometheus_client import CollectorRegistry, Counter, Gauge, Histogram, make_asgi_app
 
 REGISTRY = CollectorRegistry(auto_describe=True)
 
@@ -41,19 +41,22 @@ llm_latency_seconds = Histogram(
     registry=REGISTRY,
 )
 
-llm_tokens_total = Counter(
+LLM_TOKENS_TOTAL = Counter(
     "eduboost_llm_tokens_total",
     "Total tokens consumed",
-    ["provider", "direction"],  # direction: input|output
+    ["provider", "model", "operation"],
     registry=REGISTRY,
 )
 
-llm_estimated_cost_usd_daily = Gauge(
+LLM_COST_USD = Gauge(
     "eduboost_llm_estimated_cost_usd_daily",
     "Estimated daily LLM cost in USD",
     ["provider"],
     registry=REGISTRY,
 )
+
+llm_tokens_total = LLM_TOKENS_TOTAL
+llm_estimated_cost_usd_daily = LLM_COST_USD
 
 LLM_PRICING_USD_PER_TOKEN: dict[str, dict[str, float]] = {
     "groq": {"input": 0.59 / 1_000_000, "output": 0.79 / 1_000_000},
@@ -123,15 +126,22 @@ arq_job_duration_seconds = Histogram(
 )
 
 
-def record_llm_tokens(provider: str, input_tokens: int, output_tokens: int) -> None:
+def record_llm_tokens(
+    provider: str,
+    model: str,
+    operation: str,
+    input_tokens: int,
+    output_tokens: int,
+) -> None:
     """Record token usage and update estimated daily provider cost telemetry."""
-    llm_tokens_total.labels(provider=provider, direction="input").inc(input_tokens)
-    llm_tokens_total.labels(provider=provider, direction="output").inc(output_tokens)
+    LLM_TOKENS_TOTAL.labels(provider=provider, model=model, operation=operation).inc(
+        input_tokens + output_tokens
+    )
 
     pricing = LLM_PRICING_USD_PER_TOKEN.get(provider, {"input": 0.0, "output": 0.0})
     cost = input_tokens * pricing["input"] + output_tokens * pricing["output"]
     _llm_daily_cost_accumulator[provider] = _llm_daily_cost_accumulator.get(provider, 0.0) + cost
-    llm_estimated_cost_usd_daily.labels(provider=provider).set(
+    LLM_COST_USD.labels(provider=provider).set(
         _llm_daily_cost_accumulator[provider]
     )
 

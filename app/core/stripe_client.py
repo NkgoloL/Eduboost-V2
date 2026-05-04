@@ -6,10 +6,12 @@ from __future__ import annotations
 
 import stripe
 from fastapi import HTTPException, status
+from sqlalchemy import update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
 from app.core.logging import get_logger
+from app.models import Guardian
 from app.repositories.repositories import GuardianRepository, StripeEventRepository
 from app.services.subscription_service import SubscriptionService
 
@@ -35,6 +37,11 @@ class StripeService:
         if not customer_id:
             customer = stripe.Customer.create(email=email_plaintext, metadata={"guardian_id": guardian_id})
             customer_id = customer.id
+            await self._db.execute(
+                update(Guardian)
+                .where(Guardian.id == guardian_id)
+                .values(stripe_customer_id=customer_id)
+            )
             await self._guardian_repo.update_subscription(guardian_id, "free", None)
 
         checkout = stripe.checkout.Session.create(
@@ -85,4 +92,8 @@ class StripeService:
     async def _handle_invoice_payment_failed(self, invoice: dict) -> None:
         subscription_id = invoice.get("subscription")
         customer_id = invoice.get("customer")
+        if customer_id:
+            guardian = await self._guardian_repo.get_by_stripe_customer_id(customer_id)
+            if guardian is not None:
+                await SubscriptionService(self._db).downgrade_to_free(guardian.id)
         log.warning("stripe_invoice_payment_failed", subscription_id=subscription_id, customer_id=customer_id)

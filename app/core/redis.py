@@ -36,6 +36,13 @@ async def cache_delete(key: str) -> None:
     await get_redis().delete(key)
 
 
+async def cache_delete_pattern(pattern: str) -> int:
+    keys = [key async for key in get_redis().scan_iter(match=pattern)]
+    if not keys:
+        return 0
+    return int(await get_redis().delete(*keys))
+
+
 async def increment_counter(key: str, ttl_seconds: int = 86400) -> int:
     """Atomic increment — used for per-user daily quota tracking."""
     redis = get_redis()

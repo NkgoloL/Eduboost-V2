@@ -41,6 +41,12 @@ class GuardianRepository:
         result = await self.db.execute(select(Guardian).where(Guardian.email_hash == email_hash))
         return result.scalar_one_or_none()
 
+    async def get_by_stripe_customer_id(self, stripe_customer_id: str) -> Guardian | None:
+        result = await self.db.execute(
+            select(Guardian).where(Guardian.stripe_customer_id == stripe_customer_id)
+        )
+        return result.scalar_one_or_none()
+
     async def update_subscription(self, guardian_id: str, tier: str, stripe_sub_id: str | None = None) -> None:
         await self.db.execute(
             update(Guardian)
@@ -229,6 +235,13 @@ class LessonRepository:
 
     async def record_feedback(self, lesson_id: str, score: int) -> None:
         await self.db.execute(update(Lesson).where(Lesson.id == lesson_id).values(feedback_score=score))
+
+    async def mark_completed(self, lesson_id: str, completed_at: datetime | None = None) -> None:
+        await self.db.execute(
+            update(Lesson)
+            .where(Lesson.id == lesson_id)
+            .values(completed_at=completed_at or datetime.now(UTC))
+        )
 
 
 class AuditRepository:

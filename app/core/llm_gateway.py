@@ -8,16 +8,19 @@ Fully async LLM inference via Anthropic + Groq with:
 from __future__ import annotations
 
 import hashlib
-from typing import Any
+import json
 
 import anthropic
 from groq import AsyncGroq
 
 from app.core.config import settings
+from app.core.judiciary import ConstitutionalViolation, LessonPayload
 from app.core.logging import get_logger
+from app.core.metrics import record_llm_tokens
 from app.core.rate_limiter import AIQuotaExceeded, check_ai_quota
 from app.core.redis import cache_get, cache_set
-from app.services.judiciary import JudiciaryService, LessonPayload
+from app.services.judiciary import JudiciaryService
+from app.services.caps_validator import CAPSAlignmentValidator
 
 log = get_logger(__name__)
 
@@ -84,6 +87,7 @@ class ExecutiveService:
 
     def __init__(self) -> None:
         self._judiciary = JudiciaryService()
+        self._caps_validator = CAPSAlignmentValidator()
 
     async def generate_lesson(
         self,
@@ -109,26 +113,59 @@ class ExecutiveService:
 
         await check_and_consume_quota(user_id, tier)
 
-        user_prompt = (
-            f"Grade {grade} | Subject: {subject} | Topic: {topic} | "
-            f"Language: {language} | Learner archetype: {archetype or 'general'}"
-        )
+        requested_topic = topic
+        validation = self._caps_validator.validate(grade, subject, topic)
+        if not validation.caps_aligned and validation.canonical_topic:
+            topic = validation.canonical_topic
 
-        raw = await self._call_with_fallback(user_prompt)
+        user_prompt = self._build_lesson_prompt(grade, subject, topic, language, archetype, requested_topic)
+
+        raw = await self._call_with_fallback(user_prompt, operation="lesson_generation")
         payload = self._judiciary.stamp_lesson(raw)
+        if not self._caps_validator.validate_generated_content(
+            grade, subject, topic, f"{payload.introduction} {payload.main_content} {payload.worked_example}"
+        ).caps_aligned:
+            correction_prompt = (
+                f"{user_prompt}\n\nCorrection: keep the lesson inside CAPS scope for Grade {grade} "
+                f"{subject} and focus on {topic}."
+            )
+            raw = await self._call_with_fallback(correction_prompt, operation="lesson_generation_retry")
+            payload = self._judiciary.stamp_lesson(raw)
+            final_validation = self._caps_validator.validate_generated_content(
+                grade, subject, topic, f"{payload.introduction} {payload.main_content} {payload.worked_example}"
+            )
+            if not final_validation.caps_aligned:
+                raise ConstitutionalViolation(final_validation.reason)
 
         await cache_set(cache_k, raw, ttl=settings.SEMANTIC_CACHE_TTL_SECONDS)
         log.info("lesson_generated", pseudonym=pseudonym_id, provider="groq")
         return payload, False
 
-    async def _call_with_fallback(self, user_prompt: str) -> str:
+    def _build_lesson_prompt(
+        self,
+        grade: int,
+        subject: str,
+        topic: str,
+        language: str,
+        archetype: str | None,
+        requested_topic: str,
+    ) -> str:
+        prompt = (
+            f"Grade {grade} | Subject: {subject} | Topic: {topic} | "
+            f"Language: {language} | Learner archetype: {archetype or 'general'}"
+        )
+        if requested_topic != topic:
+            prompt += f" | Requested topic adjusted from '{requested_topic}' to CAPS-aligned topic '{topic}'."
+        return prompt
+
+    async def _call_with_fallback(self, user_prompt: str, *, operation: str) -> str:
         try:
-            return await self._call_groq(user_prompt)
+            return await self._call_groq(user_prompt, operation=operation)
         except Exception as exc:
             log.warning("groq_lesson_generation_failed", error=str(exc))
-            return await self._call_anthropic(user_prompt)
+            return await self._call_anthropic(user_prompt, operation=operation)
 
-    async def _call_groq(self, user_prompt: str) -> str:
+    async def _call_groq(self, user_prompt: str, *, operation: str) -> str:
         client = _get_groq()
         response = await client.chat.completions.create(
             model="llama3-70b-8192",
@@ -140,17 +177,44 @@ class ExecutiveService:
             max_tokens=1200,
             temperature=0.7,
         )
+        usage = response.usage
+        if usage is not None:
+            record_llm_tokens(
+                provider="groq",
+                model="llama3-70b-8192",
+                operation=operation,
+                input_tokens=usage.prompt_tokens,
+                output_tokens=usage.completion_tokens,
+            )
         return response.choices[0].message.content or "{}"
 
-    async def _call_anthropic(self, user_prompt: str) -> str:
+    async def _call_anthropic(self, user_prompt: str, *, operation: str) -> str:
         """Fallback to Claude when Groq is unavailable."""
         client = _get_anthropic()
         response = await client.messages.create(
-            model="claude-haiku-4-5-20251001",
+            model=settings.ANTHROPIC_MODEL,
             max_tokens=1200,
             system=_LESSON_SYSTEM_PROMPT,
+            tools=[
+                {
+                    "name": "submit_lesson",
+                    "description": "Return a CAPS-aligned structured lesson payload.",
+                    "input_schema": LessonPayload.model_json_schema(),
+                }
+            ],
+            tool_choice={"type": "tool", "name": "submit_lesson"},
             messages=[{"role": "user", "content": user_prompt}],
         )
+        record_llm_tokens(
+            provider="anthropic",
+            model=settings.ANTHROPIC_MODEL,
+            operation=operation,
+            input_tokens=response.usage.input_tokens,
+            output_tokens=response.usage.output_tokens,
+        )
+        for block in response.content:
+            if getattr(block, "type", "") == "tool_use" and getattr(block, "name", "") == "submit_lesson":
+                return json.dumps(block.input)
         return response.content[0].text if response.content else "{}"
 
     async def generate_progress_summary(self, pseudonym_id: str, gaps: list[str], lessons_done: int) -> str:
@@ -167,4 +231,13 @@ class ExecutiveService:
             max_tokens=200,
             temperature=0.5,
         )
+        usage = response.usage
+        if usage is not None:
+            record_llm_tokens(
+                provider="groq",
+                model="llama3-70b-8192",
+                operation="parent_progress_summary",
+                input_tokens=usage.prompt_tokens,
+                output_tokens=usage.completion_tokens,
+            )
         return response.choices[0].message.content or "Progress data is being processed."

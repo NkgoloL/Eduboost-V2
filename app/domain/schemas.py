@@ -5,7 +5,7 @@ Request/response models. No ORM imports here.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal
+from typing import Any, Literal
 from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
@@ -76,11 +76,25 @@ class LessonResponse(OrmBase):
     content: str
     archetype: str | None
     served_from_cache: bool
+    cache_hit: bool = False
+    caps_aligned: bool = True
     created_at: datetime
 
 
 class LessonFeedback(BaseModel):
     score: int = Field(ge=1, le=5)
+
+
+class LessonSyncEvent(BaseModel):
+    lesson_id: str
+    event_type: Literal["complete", "feedback"]
+    score: int | None = Field(default=None, ge=1, le=5)
+    completed_at: datetime | None = None
+    metadata: dict[str, Any] = Field(default_factory=dict)
+
+
+class LessonSyncRequest(BaseModel):
+    responses: list[LessonSyncEvent] = Field(default_factory=list)
 
 
 # ── Diagnostic ────────────────────────────────────────────────────────────────
@@ -99,6 +113,9 @@ class DiagnosticResult(BaseModel):
     theta_before: float
     theta_after: float
     gaps_identified: list[str]
+    standard_error: float | None = None
+    grade_equivalent: int | None = None
+    ranked_gaps: list[dict] = Field(default_factory=list)
 
 
 # ── Onboarding (Ether cold-start) ─────────────────────────────────────────────
@@ -116,6 +133,7 @@ class OnboardingResult(BaseModel):
     learner_id: str
     archetype: str
     description: str
+    probabilities: dict[str, float] = Field(default_factory=dict)
 
 
 # ── Parent Portal ─────────────────────────────────────────────────────────────
@@ -166,6 +184,26 @@ class ParentDashboardResponse(BaseModel):
     learners: list[ParentDashboardLearner]
     total_lessons_generated: int
     subscription_tier: str
+
+
+class ParentTrustDashboardLearner(BaseModel):
+    learner_id: str
+    display_name: str
+    grade_level: int
+    archetype: str | None
+    irt_theta: float
+    top_knowledge_gaps: list[str] = Field(default_factory=list)
+    ai_progress_summary: str
+    lesson_completion_rate_7d: float
+    streak_days: int
+    export_url: str
+
+
+class ParentTrustDashboardResponse(BaseModel):
+    guardian_id: str
+    subscription_tier: str
+    generated_at: datetime
+    learners: list[ParentTrustDashboardLearner] = Field(default_factory=list)
 
 
 class QuotaStatusResponse(BaseModel):

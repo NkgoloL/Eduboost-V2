@@ -249,6 +249,7 @@ class Lesson(Base):
     llm_provider: Mapped[str] = mapped_column(String(30), default="groq")
     served_from_cache: Mapped[bool] = mapped_column(Boolean, default=False)
     feedback_score: Mapped[int | None] = mapped_column(Integer, nullable=True)  # 1-5
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
 
     learner: Mapped[LearnerProfile] = relationship("LearnerProfile", back_populates="lessons")

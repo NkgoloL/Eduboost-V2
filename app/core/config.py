@@ -64,7 +64,7 @@ class Settings(BaseSettings):
     # ── LLM Providers ────────────────────────────────────────────────────────
     ANTHROPIC_API_KEY: str = ""
     GROQ_API_KEY: str = ""
-    ANTHROPIC_MODEL: str = "claude-sonnet-4-5"
+    ANTHROPIC_MODEL: str = "claude-sonnet-4-20250514"
     LLM_TIMEOUT_SECONDS: int = 30
     LLM_MAX_RETRIES: int = 2
 
@@ -98,6 +98,7 @@ class Settings(BaseSettings):
     GRAFANA_CLOUD_API_KEY: str = ""
     PROMETHEUS_METRICS_PATH: str = "/metrics"
     LOG_LEVEL: str = "INFO"
+    KEY_VAULT_REFRESH_INTERVAL_HOURS: int = 6
 
     # ── Rate Limiting / Jobs ────────────────────────────────────────────────
     RATE_LIMIT_DEFAULT: str = "100/minute"
@@ -129,18 +130,27 @@ class Settings(BaseSettings):
     def is_production(self) -> bool:
         return self.APP_ENV == "production" or self.ENVIRONMENT == "production"
 
-    @model_validator(mode="after")
-    def load_production_secrets_from_key_vault(self) -> "Settings":
+    def refresh_from_key_vault(self) -> set[str]:
         if not self.is_production():
-            return self
+            return set()
         if not self.AZURE_KEY_VAULT_URL:
             raise ValueError("AZURE_KEY_VAULT_URL is required when APP_ENV is production")
 
         secret_values = _fetch_key_vault_secret_values(self.AZURE_KEY_VAULT_URL)
+        updated: set[str] = set()
         for field_name, value in secret_values.items():
             if not value:
                 raise ValueError(f"Azure Key Vault returned an empty value for {field_name}")
-            setattr(self, field_name, value)
+            if getattr(self, field_name) != value:
+                setattr(self, field_name, value)
+                updated.add(field_name)
+        return updated
+
+    @model_validator(mode="after")
+    def load_production_secrets_from_key_vault(self) -> "Settings":
+        if not self.is_production():
+            return self
+        self.refresh_from_key_vault()
         return self
 
 
