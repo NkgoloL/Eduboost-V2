@@ -1,173 +1,90 @@
-# Security Policy 🔒
+# Security Policy
 
-EduBoost SA processes data belonging to children aged 5–13. We take security and privacy extremely seriously. This document covers our security policy, how to report vulnerabilities, and what data we protect.
-
----
+EduBoost SA handles children’s learning and consent data. Security work here is
+product work, not housekeeping.
 
 ## Supported Versions
 
 | Version | Supported |
-|---------|-----------|
-| `main` branch | ✅ Actively maintained |
-| Any tagged release | ✅ Until superseded |
-| Older branches | ❌ No security patches |
-
-Always run the latest commit on `main` for security fixes.
-
----
+|---|---|
+| `master` | Yes |
+| Current tagged release | Yes |
+| Archived branches | No |
 
 ## Reporting a Vulnerability
 
-**Do not open a public GitHub Issue for security vulnerabilities.** Public disclosure of vulnerabilities affecting a children's education platform puts real learners at risk.
+Please do not open a public issue for security problems.
 
-### How to report
+Report privately with:
 
-1. **Email:** Send details to the project maintainer via the email listed on the [GitHub profile](https://github.com/NkgoloL).
-2. **Subject line:** `[SECURITY] EduBoost SA — <brief description>`
-3. **Include:**
-   - Affected component (e.g., `app/api/routers/auth.py`, frontend consent page)
-   - Steps to reproduce
-   - Potential impact (data exposure, authentication bypass, POPIA violation, etc.)
-   - Your suggested fix (optional but appreciated)
-4. **Encrypt sensitive details** if possible using PGP (key available on request).
+- affected component
+- reproduction steps
+- impact
+- any evidence of learner-data exposure
 
-### What to expect
+Use the maintainer contact listed on the GitHub profile:
+[NkgoloL](https://github.com/NkgoloL)
 
-| Timeline | Action |
-|----------|--------|
-| Within 48 hours | Acknowledgement of your report |
-| Within 7 days | Triage and severity assessment |
-| Within 30 days | Fix or formal risk acceptance for low-severity issues |
-| After fix | Credit in CHANGELOG (with your permission) |
+## Security Controls in the V2 Runtime
 
-We follow responsible disclosure: we ask that you give us 30 days before any public disclosure.
+- 15-minute access tokens and rotating refresh cookies
+- Redis-backed JWT denylist and forced session invalidation
+- RBAC across student, parent, teacher, and admin roles
+- Azure Key Vault production secret loading plus hot rotation
+- POPIA consent gating before learner-data access
+- Append-only PostgreSQL audit events for sensitive workflows
+- Security headers middleware and production TLS termination
+- pip-audit, npm audit, Bandit, gitleaks, and Dependabot in the delivery path
 
----
+## POPIA-Sensitive Areas
 
-## Scope — What We Care About Most
+We treat the following as highest risk:
 
-Given that EduBoost SA handles **children's learning data**, we prioritise the following vulnerability classes:
+- consent bypass
+- learner PII leakage
+- export or erasure workflow failures
+- audit tampering
+- direct LLM exposure of real identifiers
+- auth/session escalation across roles
 
-### Critical (P0) — Fix within 24 hours
-- Any authentication bypass
-- Unauthenticated access to learner data
-- SQL injection or mass data exposure
-- JWT secret exposure or algorithm downgrade (HS256 → none)
-- Leakage of learner data to LLM providers without pseudonymisation
-- Parental consent enforcement bypass
-- Plaintext storage of encryption keys or JWT secrets
+## Known Gaps
 
-### High (P1) — Fix within 7 days
-- IDOR (Insecure Direct Object Reference) on learner or guardian records
-- Missing HTTPS enforcement in production
-- CSRF on state-changing endpoints
-- Broken access control between learner / guardian / admin roles
-- Audit log tampering or deletion
-- Secrets in source code or container images
-- Redis cache poisoning affecting learner responses
+All previously self-disclosed gaps are now closed:
 
-### Medium (P2) — Fix within 30 days
-- Rate limiting bypass on LLM endpoints (financial impact)
-- Missing input sanitisation (XSS in lesson content)
-- Insecure CORS configuration
-- Session fixation or inadequate token expiry
+| Gap | Status | Closing Commit |
+|---|---|---|
+| Right-to-erasure end-to-end verification | Complete | [`1160234`](https://github.com/NkgoloL/Eduboost-V2/commit/1160234) |
+| Consent audit trail across workflows | Complete | [`1160234`](https://github.com/NkgoloL/Eduboost-V2/commit/1160234) |
+| Automated dependency vulnerability scanning | Complete | [`b715422`](https://github.com/NkgoloL/Eduboost-V2/commit/b715422), [`b1bfa3e`](https://github.com/NkgoloL/Eduboost-V2/commit/b1bfa3e), [`25488dc`](https://github.com/NkgoloL/Eduboost-V2/commit/25488dc) |
+| Production HTTPS enforcement and secure headers | Complete | [`f035974`](https://github.com/NkgoloL/Eduboost-V2/commit/f035974), [`b9f4f06`](https://github.com/NkgoloL/Eduboost-V2/commit/b9f4f06) |
+| Refresh token rotation | Complete | [`4ef62f7`](https://github.com/NkgoloL/Eduboost-V2/commit/4ef62f7) |
+| CI/CD secrets scanning and push protection | Complete | [`7407889`](https://github.com/NkgoloL/Eduboost-V2/commit/7407889), [`d8a6b54`](https://github.com/NkgoloL/Eduboost-V2/commit/d8a6b54) |
 
-### Low (P3) — Track in backlog
-- Informational disclosure (version headers, stack traces)
-- Missing security headers (CSP, X-Frame-Options, etc.)
-- Dependency vulnerabilities without known exploits
+## Additional Controls Added
 
-### Out of Scope
-- Social engineering of maintainers
-- Physical attacks
-- DoS via resource exhaustion (report unless trivially exploitable)
-- Bugs in third-party services (Groq, Anthropic, Supabase) — report directly to them
+| Control | Status | Commit |
+|---|---|---|
+| Azure Key Vault production secret sourcing | Active | [`d2a7950`](https://github.com/NkgoloL/Eduboost-V2/commit/d2a7950) |
+| Azure Key Vault hot secret rotation | Active | [`89c6c77`](https://github.com/NkgoloL/Eduboost-V2/commit/89c6c77) |
+| Four-role RBAC | Active | [`91a2c41`](https://github.com/NkgoloL/Eduboost-V2/commit/91a2c41) |
+| Redis JWT denylist | Active | [`d2a7950`](https://github.com/NkgoloL/Eduboost-V2/commit/d2a7950) |
+| HTTP security headers | Active | [`b9f4f06`](https://github.com/NkgoloL/Eduboost-V2/commit/b9f4f06) |
+| Append-only V2 audit table | Active | [`1160234`](https://github.com/NkgoloL/Eduboost-V2/commit/1160234) |
 
----
+## Verification Expectations
 
-## Security Architecture
+Before security-sensitive merges:
 
-### Authentication
+```bash
+pytest tests/popia -v
+python scripts/popia_sweep.py --fail-on-issues
+alembic check
+```
 
-- JWT tokens signed with HS256 using a 64-character random secret (`JWT_SECRET`)
-- Access tokens expire after 15 minutes
-- Refresh tokens rotate via HTTP-only cookies and can be revoked immediately via the Redis-backed denylist
-- Rate limiting on auth endpoints via `slowapi`
+For broader release confidence:
 
-### Data Encryption
-
-- Sensitive fields encrypted at rest using the `cryptography` library (Fernet)
-- Encryption key (`ENCRYPTION_KEY`) must be exactly 32 characters
-- Key derivation uses `ENCRYPTION_SALT`
-- Keys are **never logged** and must be rotated if compromised
-
-### Learner Data Pseudonymisation
-
-- Learner identities are pseudonymised before being passed to any LLM provider
-- The `judiciary.py` layer enforces this as a policy gate — PII cannot reach the LLM services without going through this layer
-- Phone numbers and names are processed via `bleach` and `phonenumbers` for PII scrubbing
-
-### Audit Trail
-
-- The V2 path writes sensitive operations to the append-only PostgreSQL `audit_events` table
-- PostgreSQL rules block `UPDATE` and `DELETE` on V2 audit records
-- Events include: login, consent grant/revocation, data access, erasure requests, LLM prompts
-
-### LLM Security
-
-- All lesson generation is **backend-mediated** — learners never call LLM APIs directly
-- Groq is the primary provider (rate-limited to 20 req/min, 14,400/day)
-- Anthropic Claude is the secondary/fallback provider
-- HuggingFace Zephyr-7B is the offline fallback
-- Provider API keys are environment-scoped and never exposed to frontend
-
-### CORS
-
-- Allowed origins are explicitly whitelisted (`ALLOWED_ORIGINS`)
-- Default: `http://localhost:3000, https://eduboost.co.za`
-- Wildcard origins (`*`) are never permitted
-
-### Dependency Security
-
-- Dependencies are pinned to exact versions in `requirements.txt`
-- `pre-commit` hooks run before every commit
-- **TODO:** Automated dependency vulnerability scanning (Dependabot or `pip-audit`) is not yet configured — this is a known gap
-
----
-
-## POPIA (South African Privacy Law) Notes
-
-EduBoost SA is designed for South African learners and is subject to the **Protection of Personal Information Act (POPIA), No. 4 of 2013**.
-
-Key obligations relevant to security reporters:
-
-- **Section 19** — responsible party must secure personal information
-- **Section 22** — data breaches must be reported to the Information Regulator and affected data subjects
-- Any vulnerability that could result in exposure of learner personal information is treated as a **potential POPIA breach** and escalated accordingly
-
-If you discover a vulnerability that has already resulted in data exposure, please note this explicitly in your report. We are legally required to notify the Information Regulator within a reasonable time.
-
----
-
-## Known Gaps (Honest Disclosure)
-
-As of the current codebase state, the following security items are **incomplete** and are tracked for resolution:
-
-| Gap | Status |
-|-----|--------|
-| Right-to-erasure (POPIA Section 24) not end-to-end verified | Complete |
-| Consent audit trail incomplete across all workflows | Complete |
-| No automated dependency vulnerability scanning | Planned |
-| HTTPS not enforced in local dev stack | By design; enforced in production config |
-| Refresh token rotation not implemented | Complete |
-| CI/CD secrets scanning not configured | Complete |
-
-We include this transparency so contributors can help address these gaps.
-
----
-
-## Security Hall of Fame
-
-We gratefully acknowledge researchers who responsibly disclose vulnerabilities. With your permission, your name will be listed here after the fix is released.
-
-_(No entries yet — be the first!)_
+```bash
+pytest tests/ -v --tb=short
+cd app/frontend && npm run test:coverage
+mkdocs build --strict
+```
