@@ -15,7 +15,6 @@ export default defineConfig({
     setupFiles: ['./__tests__/setup.ts'],
     coverage: {
       provider: 'v8',
-      all: true,
       include: ['src/components/eduboost/**/*.{ts,tsx}', 'src/lib/api/**/*.{ts,tsx}'],
       exclude: ['src/components/eduboost/styles.ts'],
       reporter: ['text', 'html', 'json-summary'],

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useLearner } from "../../../context/LearnerContext";
 import { LearnerService } from "../../../lib/api/services";
 import { SUBJECTS, LESSON_TOPICS } from "../../../components/eduboost/constants";
@@ -10,18 +10,30 @@ import { Button } from "../../../components/ui/Button";
 import { LoadingSpinner } from "../../../components/ui/LoadingSpinner";
 import { ErrorMessage } from "../../../components/ui/ErrorMessage";
 import InteractiveLesson from "../../../components/eduboost/InteractiveLesson";
-import { LessonPanel } from "../../../components/eduboost/FeaturePanels";
 import { cacheLessonSnapshot, getCachedLessonSnapshot, queueLessonSync } from "../../../lib/api/offlineSync";
 import type { LessonPayload, SubjectCode } from "../../../lib/api/types";
 
 export default function LessonPage() {
   const { learner, setBadge, refreshState } = useLearner();
+  const searchParams = useSearchParams();
+  const initialSubject = searchParams.get("subject") as SubjectCode | null;
+  const initialTopic = searchParams.get("topic") || "";
   const [subject, setSubject] = useState<SubjectCode | null>(null);
   const [topic, setTopic] = useState("");
   const [loading, setLoading] = useState(false);
   const [lessonData, setLessonData] = useState<LessonPayload | null>(null);
   const [error, setError] = useState("");
+  const [completionError, setCompletionError] = useState("");
   const router = useRouter();
+
+  React.useEffect(() => {
+    if (initialSubject && SUBJECTS.some((entry) => entry.code === initialSubject)) {
+      setSubject((current) => current ?? initialSubject);
+    }
+    if (initialTopic) {
+      setTopic((current) => current || initialTopic);
+    }
+  }, [initialSubject, initialTopic]);
 
   if (!learner) {
     return null;
@@ -34,6 +46,7 @@ export default function LessonPage() {
 
     setLoading(true);
     setError("");
+    setCompletionError("");
     setLessonData(null);
 
     try {
@@ -59,7 +72,11 @@ export default function LessonPage() {
         setError("You are offline, so we loaded the last cached version of this lesson.");
       } else {
         console.error("Lesson generation error:", err);
-        setError("Failed to generate lesson. Our AI is taking a quick nap, please try again!");
+        setError(
+          typeof navigator !== "undefined" && !navigator.onLine
+            ? "You are offline. Reconnect to generate this lesson."
+            : "Failed to generate lesson. Please try again."
+        );
       }
     } finally {
       setLoading(false);
@@ -68,6 +85,7 @@ export default function LessonPage() {
 
   const handleComplete = async () => {
     setLoading(true);
+    setCompletionError("");
     try {
       const xpAmount = 35;
       if (typeof navigator !== "undefined" && !navigator.onLine && lessonData?.id) {
@@ -95,9 +113,7 @@ export default function LessonPage() {
       router.push("/dashboard");
     } catch (err) {
       console.error("Award XP error:", err);
-      setBadge("Lesson completed!");
-      await refreshState();
-      router.push("/dashboard");
+      setCompletionError("The lesson is complete, but we could not sync your XP yet. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -112,12 +128,9 @@ export default function LessonPage() {
         onBack={() => setLessonData(null)}
         onComplete={handleComplete}
         loading={loading}
+        error={completionError}
       />
     );
-  }
-
-  if (process.env.NODE_ENV === "test") {
-    return <LessonPanel onComplete={() => router.push("/dashboard")} onBack={() => router.push("/dashboard")} />;
   }
 
   const availableTopics = subject ? LESSON_TOPICS[subject as keyof typeof LESSON_TOPICS] || [] : [];
@@ -145,8 +158,8 @@ export default function LessonPage() {
               }}
               className={`w-full flex items-center gap-4 p-4 rounded-2xl border-2 transition-all text-left ${
                 subject === entry.code
-                  ? "bg-white border-[var(--gold)] shadow-lg scale-[1.02]"
-                  : "bg-transparent border-transparent hover:bg-white/50"
+                  ? "bg-[var(--surface)] border-[var(--gold)] shadow-lg scale-[1.02]"
+                  : "bg-[var(--surface)]/50 border-[var(--border)] hover:bg-[var(--surface)]"
               }`}
             >
               <div
@@ -155,7 +168,7 @@ export default function LessonPage() {
               >
                 {entry.icon}
               </div>
-              <span className={`font-bold ${subject === entry.code ? "text-gray-800" : "text-[var(--muted)]"}`}>
+              <span className={`font-bold ${subject === entry.code ? "text-[var(--text)]" : "text-[var(--muted)]"}`}>
                 {entry.label}
               </span>
             </button>
@@ -163,7 +176,7 @@ export default function LessonPage() {
         </div>
 
         <div className="lg:col-span-3">
-          <Card className="p-8 border-none bg-white/60 backdrop-blur min-h-[400px] flex flex-col">
+          <Card className="p-8 border-none bg-[var(--surface)]/95 backdrop-blur min-h-[400px] flex flex-col">
             <h2 className="text-sm font-bold text-[var(--muted)] uppercase tracking-widest mb-6">
               {subject ? `2. Select a Topic for ${SUBJECTS.find((entry) => entry.code === subject)?.label}` : "2. Select a Subject first"}
             </h2>
@@ -182,15 +195,15 @@ export default function LessonPage() {
                       onClick={() => setTopic(entry)}
                       className={`p-6 rounded-2xl border-2 transition-all text-left group ${
                         topic === entry
-                          ? "bg-blue-600 border-blue-600 text-white shadow-xl scale-[1.02]"
-                          : "bg-white border-gray-100 text-gray-700 hover:border-blue-200"
+                          ? "bg-blue-600 border-blue-500 text-white shadow-xl scale-[1.02]"
+                          : "bg-[var(--surface2)] border-[var(--border)] text-[var(--text)] hover:border-blue-400"
                       }`}
                     >
                       <div className="flex items-center justify-between">
                         <span className="font-bold text-lg">{entry}</span>
                         {topic === entry && <span className="text-xl">✨</span>}
                       </div>
-                      <p className={`text-sm mt-2 ${topic === entry ? "text-blue-100" : "text-gray-400"}`}>
+                      <p className={`text-sm mt-2 ${topic === entry ? "text-blue-100" : "text-[var(--muted)]"}`}>
                         Interactive Grade {learner.grade} lesson with AI tutor.
                       </p>
                     </button>
@@ -199,8 +212,8 @@ export default function LessonPage() {
               </div>
             )}
 
-            <div className="mt-8 pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="text-sm font-medium text-gray-500 italic">
+            <div className="mt-8 pt-8 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="text-sm font-medium text-[var(--muted)] italic">
                 {topic ? `Ready to start learning about ${topic}!` : "Select a topic to continue..."}
               </div>
               <Button disabled={!subject || !topic || loading} onClick={handleGenerate} className="px-12 py-4 shadow-lg shadow-blue-600/20">

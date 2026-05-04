@@ -80,6 +80,7 @@ def _error_response(
         content={
             "error": error_code,
             "message": message,
+            "detail": message,
             "details": details or {},
             "request_id": request_id,
         },

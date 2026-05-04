@@ -4,6 +4,7 @@ SQLAlchemy async engine wired to PostgreSQL via asyncpg.
 """
 from collections.abc import AsyncGenerator
 
+from sqlalchemy.pool import NullPool
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.orm import DeclarativeBase
 
@@ -16,7 +17,9 @@ engine_kwargs = {
 }
 
 # PostgreSQL-specific settings
-if settings.DATABASE_URL.startswith("postgresql"):
+if settings.DATABASE_URL.startswith("postgresql") and settings.APP_ENV in {"development", "test"}:
+    engine_kwargs["poolclass"] = NullPool
+elif settings.DATABASE_URL.startswith("postgresql"):
     engine_kwargs.update({
         "pool_size": 10,
         "max_overflow": 20,

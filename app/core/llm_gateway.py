@@ -113,6 +113,13 @@ class ExecutiveService:
 
         await check_and_consume_quota(user_id, tier)
 
+        if not settings.GROQ_API_KEY and not settings.ANTHROPIC_API_KEY and not settings.is_production():
+            payload = _fallback_lesson_payload(grade, subject, topic, language)
+            raw = payload.model_dump_json()
+            await cache_set(cache_k, raw, ttl=settings.SEMANTIC_CACHE_TTL_SECONDS)
+            log.info("lesson_generated_offline_fallback", pseudonym=pseudonym_id, subject=subject, topic=topic)
+            return payload, False
+
         requested_topic = topic
         validation = self._caps_validator.validate(grade, subject, topic)
         if not validation.caps_aligned and validation.canonical_topic:
@@ -120,7 +127,22 @@ class ExecutiveService:
 
         user_prompt = self._build_lesson_prompt(grade, subject, topic, language, archetype, requested_topic)
 
-        raw = await self._call_with_fallback(user_prompt, operation="lesson_generation")
+        try:
+            raw = await self._call_with_fallback(user_prompt, operation="lesson_generation")
+        except Exception as exc:
+            if settings.is_production():
+                raise
+            payload = _fallback_lesson_payload(grade, subject, topic, language)
+            raw = payload.model_dump_json()
+            await cache_set(cache_k, raw, ttl=settings.SEMANTIC_CACHE_TTL_SECONDS)
+            log.warning(
+                "lesson_generated_offline_fallback_after_provider_failure",
+                error=str(exc),
+                pseudonym=pseudonym_id,
+                subject=subject,
+                topic=topic,
+            )
+            return payload, False
         payload = self._judiciary.stamp_lesson(raw)
         if not self._caps_validator.validate_generated_content(
             grade, subject, topic, f"{payload.introduction} {payload.main_content} {payload.worked_example}"
@@ -241,3 +263,28 @@ class ExecutiveService:
                 output_tokens=usage.completion_tokens,
             )
         return response.choices[0].message.content or "Progress data is being processed."
+
+
+def _fallback_lesson_payload(grade: int, subject: str, topic: str, language: str) -> LessonPayload:
+    lesson_language = {"zu": "isiZulu", "af": "Afrikaans", "xh": "isiXhosa"}.get(language, "English")
+    return LessonPayload(
+        title=f"{subject.title()} - {topic}",
+        introduction=(
+            f"Welcome to your Grade {grade} {subject.title()} lesson on {topic}. "
+            f"This offline-friendly version keeps your learning moving while local AI providers are unavailable."
+        ),
+        main_content=(
+            f"In this lesson, we focus on the key idea behind {topic}. "
+            f"Read each section slowly, talk through the examples, and explain the idea back in {lesson_language} if that helps."
+        ),
+        worked_example=(
+            f"Example: identify one simple fact about {topic}, then explain why it matters in your schoolwork."
+        ),
+        practice_question=f"Practice: write or say one thing you learned about {topic} and one question you still have.",
+        answer=(
+            "A strong answer names a correct idea from the lesson and adds a short explanation in the learner's own words."
+        ),
+        cultural_hook=(
+            f"Think about how {topic} could show up in everyday South African life, like shopping in rands, sport, community, or the classroom."
+        ),
+    )

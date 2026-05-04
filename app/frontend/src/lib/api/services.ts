@@ -1,7 +1,9 @@
 import { fetchApi, waitForJobResult } from "./client";
 import type {
   ActiveLearner,
+  AwardXPResponse,
   AuthTokenResponse,
+  DevSessionResponse,
   DiagnosticAnswerInput,
   DiagnosticItem,
   DiagnosticResult,
@@ -24,6 +26,22 @@ const normalizeGamification = (profile: GamificationProfile): GamificationProfil
   earned_badges: profile.earned_badges ?? profile.badges ?? [],
 });
 
+const normalizeStudyPlan = (plan: StudyPlanResponse): StudyPlanResponse => {
+  const schedule = plan.days ?? plan.schedule ?? {};
+  return {
+    ...plan,
+    schedule,
+    days: schedule,
+    week_focus: plan.week_focus ?? "Balanced revision and grade-level progress",
+  };
+};
+
+const normalizeLesson = (lesson: LessonJobResult): LessonJobResult => ({
+  ...lesson,
+  title: lesson.title || "Generated Lesson",
+  content: lesson.content || lesson.summary || "Your lesson is ready.",
+});
+
 export const AuthService = {
   registerLearner: (data: Record<string, unknown>) =>
     fetchApi<ActiveLearner>("/learners/", {
@@ -41,6 +59,11 @@ export const AuthService = {
     fetchApi<AuthTokenResponse>("/auth/login", {
       method: "POST",
       body: JSON.stringify(data),
+    }),
+
+  createDevSession: () =>
+    fetchApi<DevSessionResponse>("/auth/dev-session", {
+      method: "POST",
     }),
 };
 
@@ -61,7 +84,7 @@ export const LearnerService = {
       method: "POST",
       body: JSON.stringify({ gap_ratio: 0.4 }),
     });
-    return waitForJobResult<StudyPlanResponse>(accepted);
+    return normalizeStudyPlan(await waitForJobResult<StudyPlanResponse>(accepted));
   },
 
   getMastery: (learnerId: string) => fetchApi<MasteryResponse>(`/learners/${learnerId}/mastery`),
@@ -71,7 +94,7 @@ export const LearnerService = {
       method: "POST",
       body: JSON.stringify(data),
     });
-    return waitForJobResult<LessonJobResult>(accepted);
+    return normalizeLesson(await waitForJobResult<LessonJobResult>(accepted));
   },
 
   markLessonComplete: (lessonId: string) =>
@@ -86,7 +109,7 @@ export const LearnerService = {
     }),
 
   awardXP: (data: Record<string, unknown>) =>
-    fetchApi<{ awarded: boolean; xp_amount: number }>("/gamification/award-xp", {
+    fetchApi<AwardXPResponse>("/gamification/award-xp", {
       method: "POST",
       body: JSON.stringify(data),
     }),

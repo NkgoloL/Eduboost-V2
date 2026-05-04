@@ -42,3 +42,8 @@ async def revoke_refresh_token(token: str) -> None:
     payload = decode_token(token)
     if payload.get("jti"):
         await cache_delete(f"refresh:{payload['jti']}")
+
+
+async def revoke_refresh_token_jti(jti: str | None) -> None:
+    if jti:
+        await cache_delete(f"refresh:{jti}")

@@ -14,7 +14,6 @@ from starlette.middleware.base import BaseHTTPMiddleware
 
 from slowapi.errors import RateLimitExceeded
 
-from app.api.version import __version__
 from app.core.analytics import analytics_middleware
 from app.core.config import settings
 from app.core.health import gather_deep_health
@@ -118,7 +117,7 @@ for prefix in (API_V2, "/v2"):
 # ── Health & meta ─────────────────────────────────────────────────────────────
 @app.get("/health", tags=["ops"])
 async def health():
-    return {"status": "ok", "version": __version__, "environment": settings.ENVIRONMENT, "mode": "v2-baseline"}
+    return {"status": "ok", "version": settings.APP_VERSION, "environment": settings.ENVIRONMENT, "mode": "v2-baseline"}
 
 
 @app.get("/ready", tags=["ops"])

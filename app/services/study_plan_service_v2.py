@@ -19,14 +19,20 @@ class StudyPlanServiceV2:
         week_focus = "Balanced revision and grade-level progress"
         if weak:
             week_focus = "Focus on " + ", ".join(item.get("subject_code", "subject") for item in weak)
+        schedule = _build_schedule(weak)
         plan = await self.study_plan_repository.create(
             learner_id=learner_id,
-            schedule={"monday": week_focus},
+            schedule=schedule,
             gap_ratio=gap_ratio if weak else min(gap_ratio, 0.2),
             week_focus=week_focus,
         )
         await AuditService().log_event("STUDY_PLAN_CREATED", {"week_focus": week_focus}, learner_id)
-        return plan
+        return {
+            **plan,
+            "schedule": schedule,
+            "days": schedule,
+            "week_focus": week_focus,
+        }
 
     async def list_plans(self, learner_id: str) -> list[dict]:
         learner = await self.learner_repository.get_by_id(learner_id)
@@ -49,3 +55,28 @@ class _MemoryStudyPlanRepository:
 
     async def list_for_learner(self, learner_id: str):
         return []
+
+
+def _build_schedule(weak: list[dict]) -> dict[str, list[dict]]:
+    days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    gap_subjects = [item.get("subject_code", "General Review") for item in weak if item.get("subject_code")]
+    if not gap_subjects:
+        gap_subjects = ["English", "Mathematics"]
+
+    weekday_topics = [
+        {"label": f"{gap_subjects[0]} Review", "emoji": "📘", "type": "curriculum"},
+        {"label": f"{gap_subjects[-1]} Practice", "emoji": "📝", "type": "gap-fill"},
+        {"label": "Reading and Reflection", "emoji": "📖", "type": "curriculum"},
+        {"label": "Problem Solving", "emoji": "🧠", "type": "gap-fill"},
+        {"label": "Weekly Challenge", "emoji": "🏆", "type": "curriculum"},
+    ]
+
+    return {
+        "Mon": [weekday_topics[0]],
+        "Tue": [weekday_topics[1]],
+        "Wed": [weekday_topics[2]],
+        "Thu": [weekday_topics[3]],
+        "Fri": [weekday_topics[4]],
+        "Sat": [],
+        "Sun": [],
+    }

@@ -41,7 +41,7 @@ def get_issue_id(message):
     return None
 
 def sync():
-    commits = get_latest_commits(10)
+    commits = get_latest_commits(100)
     
     for line in commits:
         if not line: continue

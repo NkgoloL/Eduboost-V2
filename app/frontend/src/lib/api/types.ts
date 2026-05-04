@@ -19,6 +19,11 @@ export interface AuthTokenResponse {
   expires_in?: number;
 }
 
+export interface DevSessionResponse extends AuthTokenResponse {
+  guardian_id: string;
+  learner: ActiveLearner;
+}
+
 export interface ApiErrorShape {
   detail?: string;
   message?: string;
@@ -96,6 +101,13 @@ export interface StudyPlanResponse {
   schedule?: Record<string, StudyPlanItem[]>;
   days?: Record<string, StudyPlanItem[]>;
   gap_ratio?: number;
+}
+
+export interface AwardXPResponse {
+  awarded: boolean;
+  xp_amount: number;
+  lesson_completed?: boolean;
+  profile?: GamificationProfile;
 }
 
 export interface DiagnosticItem {
