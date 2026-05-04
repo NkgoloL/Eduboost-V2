@@ -401,7 +401,7 @@
     and the V2 app startup path, then verified by `tests/integration/test_security_headers.py`,
     `tests/unit/test_imports.py`, and the V2 smoke suite.
 
-30. Implement the V2 `BackgroundTasks`-based async pattern across all service
+30. [x] Implement the V2 `BackgroundTasks`-based async pattern across all service
     operations that were previously handled by Celery tasks. This includes:
     - Lesson generation (decouple HTTP response from LLM call)
     - Study plan generation
@@ -412,6 +412,11 @@
     `GET /api/v2/jobs/{job_id}` endpoint backed by Redis that returns the task
     status and result when complete. Write integration tests for each. Commit:
     `feat(v2): replace Celery async tasks with FastAPI BackgroundTasks + Redis job store`.
+    Note: implemented with a shared V2 job store in `app/core/jobs.py`, a new
+    `/api/v2/jobs/{job_id}` status route, and async job dispatch for lesson
+    generation, study plans, POPIA purge execution, RLHF export processing,
+    and consent renewal reminders. Integration coverage lives in
+    `tests/integration/test_v2_jobs.py`.
 
 31. Update `anthropic` SDK from `0.40.0` to the latest stable version. Verify
     Claude Sonnet 4 model strings are used correctly throughout

@@ -195,5 +195,15 @@
   - `python -m pytest tests/integration/test_security_headers.py tests/unit/test_imports.py -q -o addopts=""` → passed
   - `python -m pytest tests/smoke -q -o addopts=""` → passed
 
+### Epic 22: V2 Background Job Pattern (Task 30)
+- **Status:** Completed (2026-05-04)
+- **Outcome:**
+  - Added a shared Redis-backed V2 job store in `app/core/jobs.py` with queued/running/completed/failed states and `GET /api/v2/jobs/{job_id}` polling.
+  - Converted lesson generation, study-plan generation, POPIA purge execution, RLHF export processing, and consent-renewal reminder dispatch to `BackgroundTasks` jobs that return `202 Accepted` plus a job ID.
+  - Kept a memory mirror of job state alongside Redis so TestClient/background-task event-loop boundaries do not lose status visibility while Redis remains the primary runtime backend.
+- **Verification:**
+  - `python -m pytest tests/integration/test_v2_jobs.py -q -o addopts=""` → 5 passed
+  - `python -m pytest tests/smoke -q -o addopts=""` → 20 passed
+
 ## Final Summary
 Legacy execution epics are complete, but the repository is **not** globally complete. EduBoost is now in a **V2 baseline migration** phase driven by `docs/architecture/V2_ARCHITECTURE.md`.

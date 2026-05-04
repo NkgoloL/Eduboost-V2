@@ -89,13 +89,14 @@ app.add_middleware(RequestIDMiddleware)
 app.middleware("http")(analytics_middleware)
 
 # ── Routers ───────────────────────────────────────────────────────────────────
-from app.api_v2_routers import auth, billing, consent, consent_renewal, diagnostics, learners, lessons, onboarding, parents, popia  # noqa: E402
+from app.api_v2_routers import auth, billing, consent, consent_renewal, diagnostics, jobs, learners, lessons, onboarding, parents, popia, study_plans  # noqa: E402
 
 API_V2 = "/api/v2"
 for prefix in (API_V2, "/v2"):
     app.include_router(auth.router, prefix=prefix)
     app.include_router(learners.router, prefix=prefix)
     app.include_router(lessons.router, prefix=prefix)
+    app.include_router(study_plans.router, prefix=prefix)
     app.include_router(diagnostics.router, prefix=prefix)
     app.include_router(onboarding.router, prefix=prefix)
     app.include_router(parents.router, prefix=prefix)
@@ -103,6 +104,7 @@ for prefix in (API_V2, "/v2"):
     app.include_router(consent.router, prefix=prefix)
     app.include_router(consent_renewal.router, prefix=prefix)
     app.include_router(popia.router, prefix=prefix)
+    app.include_router(jobs.router, prefix=prefix)
 
 
 # ── Health & meta ─────────────────────────────────────────────────────────────
