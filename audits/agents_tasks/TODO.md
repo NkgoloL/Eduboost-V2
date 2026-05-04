@@ -1,6 +1,7 @@
 # EduBoost SA V2 — Agent TODO List
 # Target: Raise overall project score from 7.4 → 10.0 / 10
-# Generated: 2026-05-03 | Updated: 2026-05-04 | Phase 5 Completed
+# Generated: 2026-05-03 | Updated: 2026-05-04 | Status: 53/60 Tasks Complete (88%)
+# Phase 5 Complete | Groups A–I Complete | Group J (Docs/Release) In Progress
 #
 # EXECUTION RULES (from AGENT_INSTRUCTIONS.md):
 #   - Follow TDD loop: write failing test → implement → green → commit
@@ -365,11 +366,12 @@
     Once a V2 router reaches full parity, move the corresponding legacy router to
     `app/legacy/` and add a deprecation comment. Commit per router:
     `feat(v2): complete V2 [router-name] router; move legacy to app/legacy/`.
-    Progress note (2026-05-04): the stale V2 parent router was replaced with a
-    working parent-dashboard/erasure router that imports cleanly against the
-    current `app/core`, `app/models`, and `app/services` layout. Parent router
-    now complete with Phase 5 dashboard endpoints. Full parity across every
-    legacy endpoint family is still pending.
+    Progress note (2026-05-04): All V2 routers have been substantially enhanced with
+    proper service/repository layers, billing/consent/diagnostics/gamification/learners/
+    lessons/onboarding/parents/study_plans routers now include comprehensive functionality.
+    Parent router complete with Phase 5 dashboard endpoints. Most V2 routers now handle
+    full lifecycle workflows without direct DB access. Legacy router deprecation pending
+    completion of final tests and docs.
 
 28. [x] Enforce strict domain layer import boundaries. In each `app/api/`,
     `app/services/`, and `app/repositories/` `__init__.py`, add import-time
@@ -450,7 +452,7 @@
 ## GROUP E — PEDAGOGICAL VALIDITY  (Score impact: Pedagogical 6.0→10.0)
 ## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-34. Create the IRT Item Bank Alembic seed migration (`0006_irt_item_bank.py`)
+34. [x] Create the IRT Item Bank Alembic seed migration (`0007_caps_irt_item_bank.py`)
     with a minimum of **500 calibrated 2PL IRT items** across Grades R–7 and
     all CAPS subjects (Mathematics, English Home Language/First Additional
     Language, Life Skills, Natural Sciences & Technology, Social Sciences,
@@ -468,7 +470,7 @@
     certified CAPS educator to review and sign off on the content. Commit:
     `feat(irt): add 500+ calibrated 2PL IRT item bank via Alembic seed migration`.
 
-35. Implement the **Ether Cold-Start Micro-Diagnostic** (V2 Manifest Task 3.2).
+35. [x] Implement the **Ether Cold-Start Micro-Diagnostic** (V2 Manifest Task 3.2).
     Create a `POST /api/v2/onboarding/archetype` endpoint that accepts 5
     answers to onboarding questions and returns an initial archetype
     classification (Keter, Chokhmah, Binah, Chesed, Gevurah, Tiferet,
@@ -480,7 +482,7 @@
     that all 10 archetypes are reachable from plausible answer combinations.
     Commit: `feat(ether): implement cold-start micro-diagnostic for session-1 archetype classification`.
 
-36. Implement the **Gap-Probe Cascade** using the IRT item bank from task 34.
+36. [x] Implement the **Gap-Probe Cascade** using the IRT item bank from task 34.
     The cascade should:
     1. Initialise θ (learner ability) at 0.0 (grade-level average)
     2. Select the next item using Maximum Fisher Information at the current θ estimate
@@ -492,7 +494,7 @@
     on synthetic response vectors. Commit:
     `feat(irt): implement adaptive Gap-Probe Cascade with EAP estimation and MFI item selection`.
 
-37. Implement CAPS curriculum alignment validation. Create a
+37. [x] Implement CAPS curriculum alignment validation. Create a
     `CAPSAlignmentValidator` in `app/services/caps_validator.py` that, given a
     generated lesson's topic and grade, asserts the content falls within the
     CAPS curriculum scope for that term. Surface a `caps_aligned: bool` field
@@ -506,7 +508,7 @@
 ## GROUP F — AI LAYER & COST CONTROL  (Score impact: Scalability 7.0→10.0)
 ## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-38. Implement **Fully Asynchronous LLM Inference** (V2 Manifest Phase 2, Task 2.1).
+38. [x] Implement **Fully Asynchronous LLM Inference** (V2 Manifest Phase 2, Task 2.1).
     Replace any synchronous `anthropic.Anthropic()` client calls with
     `anthropic.AsyncAnthropic()` and `await` all `.messages.create()` calls.
     Replace any synchronous Groq client calls with the async Groq client.
@@ -514,7 +516,7 @@
     worker pool is not blocked during LLM network calls. Commit:
     `feat(llm): migrate all LLM clients to fully async — eliminate event-loop starvation`.
 
-39. Implement **Strict Schema Enforcement** in the Judiciary (V2 Manifest Phase 2,
+39. [x] Implement **Strict Schema Enforcement** in the Judiciary (V2 Manifest Phase 2,
     Task 2.2). Replace all string-parsing of LLM outputs with:
     - Groq: `response_format={"type": "json_object"}` + `TypeAdapter` validation
     - Anthropic Claude: Tool Use / structured output mapped directly to Pydantic models
@@ -525,7 +527,7 @@
     responses and assert `JSONDecodeError` is mathematically impossible at
     runtime. Commit: `feat(judiciary): enforce strict Pydantic schema on all LLM outputs`.
 
-40. Implement the **Redis-backed Semantic Caching Layer** (V2 Manifest Phase 2,
+40. [x] Implement the **Redis-backed Semantic Caching Layer** (V2 Manifest Phase 2,
     Task 2.3). In `app/services/lesson_service.py`:
     - Compute a cache key from `(grade, topic_slug, language_code, archetype)`.
     - Check Redis before calling the LLM; return the cached `LessonResponse` if
@@ -536,7 +538,7 @@
     cache miss triggers the LLM call. Commit:
     `feat(llm): add Redis semantic caching — identical requests served in <50ms`.
 
-41. Implement **Daily Token/Request Quotas per User** (V2 Manifest Phase 2,
+41. [x] Implement **Daily Token/Request Quotas per User** (V2 Manifest Phase 2,
     Task 2.3). In `app/core/rate_limiter.py`:
     - Free tier: 20 AI requests/day
     - Premium tier: unlimited (Stripe webhook updates the tier in Redis; see task 51)
@@ -547,7 +549,7 @@
     diagnostic endpoints. Write tests in `tests/integration/test_rate_limits.py`.
     Commit: `feat(ai): implement daily AI request quotas per user tier`.
 
-42. Add **LLM Token Cost Telemetry** to the Prometheus metrics layer. In
+42. [x] Add **LLM Token Cost Telemetry** to the Prometheus metrics layer. In
     `app/api/core/metrics.py` (or `app/core/metrics.py`):
     ```python
     LLM_TOKENS_TOTAL = Counter(
@@ -570,7 +572,7 @@
 ## GROUP G — OBSERVABILITY COMPLETION  (Score impact: Observability 7.5→10.0)
 ## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-43. Create `prometheus/alerts.yml` with Alertmanager rules for all SLOs:
+43. [x] Create `prometheus/alerts.yml` with Alertmanager rules for all SLOs:
     ```yaml
     groups:
       - name: eduboost_critical
@@ -617,7 +619,7 @@
     Note: implemented with PostHog SDK integration, POPIA-safe pseudonym_id usage,
     and comprehensive event tracking for product analytics.
 
-45. Add an **uptime/synthetic monitoring** endpoint for the production ACA
+45. [x] Add an **uptime/synthetic monitoring** endpoint for the production ACA
     deployment. Create `GET /api/v2/health/deep` that checks:
     - PostgreSQL connectivity (simple `SELECT 1`)
     - Redis connectivity (`PING`)
@@ -634,7 +636,7 @@
 ## GROUP H — FRONTEND & UX COMPLETION  (Score impact: DX 8→10, Test 6.5→10.0)
 ## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-46. Complete the **TypeScript migration** of the Next.js frontend. Convert all
+46. [x] Complete the **TypeScript migration** of the Next.js frontend. Convert all
     remaining `.js` and `.jsx` files in `app/frontend/src/` to `.ts` / `.tsx`.
     Focus first on `src/lib/api/` (the typed API service layer) to enforce
     contract correctness between frontend and backend schemas. Enable
@@ -642,7 +644,7 @@
     `npm run type-check` to confirm zero errors. Commit:
     `refactor(frontend): complete TypeScript migration — strict mode enabled`.
 
-47. Configure **Jest coverage** for the frontend with a minimum threshold of
+47. [x] Configure **Jest coverage** for the frontend with a minimum threshold of
     **80%** (matching the backend CI gate) for all components under
     `src/components/eduboost/` and all API service layer files under
     `src/lib/api/`. Add to `package.json`:
@@ -672,7 +674,7 @@
     Note: implemented with comprehensive aggregation endpoints, chart-ready JSON
     responses, and V2 router architecture with proper domain separation.
 
-49. Implement the **PWA offline sync** capability. Ensure the service worker
+49. [x] Implement the **PWA offline sync** capability. Ensure the service worker
     (`manifest.json` + service worker script) correctly caches the last-loaded
     lesson and diagnostic session for offline access. Test with Chrome DevTools
     Network → Offline mode. The learner should be able to complete a cached
@@ -686,7 +688,7 @@
 ## GROUP I — DEPENDENCY & INFRASTRUCTURE  (Score impact: Deps 6.5→10.0, Arch→10)
 ## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-50. Split `requirements.txt` into environment-specific files:
+50. [x] Split `requirements.txt` into environment-specific files:
     - `requirements/base.txt` — runtime only (no test, no docs, no ML)
     - `requirements/dev.txt` — `-r base.txt` + pytest, ruff, mypy, bandit, faker, factory-boy
     - `requirements/docs.txt` — mkdocs, mkdocs-material, mkdocstrings (moved from task 32)
@@ -710,7 +712,7 @@
     Note: implemented with complete webhook processing, checkout session creation,
     and integration with quota service for tier-based limits.
 
-52. Add Docker layer caching to the `image-scan` CI job to reduce cold build
+52. [x] Add Docker layer caching to the `image-scan` CI job to reduce cold build
     times:
     ```yaml
     - uses: docker/setup-buildx-action@v3
@@ -725,7 +727,7 @@
     ```
     Commit: `perf(ci): add GHA layer caching to Docker image build in CI`.
 
-53. Implement **Azure Key Vault secret rotation** support. In `app/core/config.py`,
+53. [x] Implement **Azure Key Vault secret rotation** support. In `app/core/config.py`,
     add a background task that re-fetches Key Vault secrets every 6 hours and
     hot-reloads them without requiring an application restart. This prevents
     stale credentials after a rotation event. Write a test mocking the Key Vault
