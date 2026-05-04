@@ -7,5 +7,11 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: ['./__tests__/setup.ts'],
+    coverage: {
+      provider: "v8",
+      all: true,
+      include: ["src/components/eduboost/**/*.{ts,tsx}", "src/lib/api/**/*.{ts,tsx}"],
+      reporter: ["text", "html", "json-summary"],
+    },
   },
 })
