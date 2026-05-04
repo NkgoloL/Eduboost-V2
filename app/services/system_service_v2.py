@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-from app.api.version import __version__
+from app.core.config import settings
 
 
 class SystemServiceV2:
     async def health(self) -> dict:
-        return {"status": "ok", "version": __version__, "mode": "v2-baseline"}
+        return {"status": "ok", "version": settings.APP_VERSION, "mode": "v2-baseline"}
 
     async def pillars(self) -> dict:
         return {

@@ -31,6 +31,10 @@ AsyncSessionLocal = async_sessionmaker(
     autoflush=False,
 )
 
+# Compatibility aliases while the remaining legacy tests and helper modules
+# are migrated onto the V2 core package.
+AsyncSessionFactory = AsyncSessionLocal
+
 
 class Base(DeclarativeBase):
     """Shared declarative base for all ORM models."""
@@ -59,3 +63,8 @@ async def drop_all_tables() -> None:
     """Drop all tables (test teardown only)."""
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
+
+
+async def init_test_schema() -> None:
+    """Legacy helper alias retained while tests migrate to app.core.database."""
+    await create_all_tables()

@@ -181,5 +181,19 @@
   - `python -m pytest tests/smoke -q -o addopts=""` → 20 passed
   - `python scripts/popia_sweep.py --fail-on-issues` → clean
 
+### Epic 21: V2 Runtime Hygiene Batch (Tasks 26, 28, 29)
+- **Status:** Completed (2026-05-04)
+- **Outcome:**
+  - Verified and tracked the Redis healthcheck plus `depends_on` gating already present in `docker-compose.v2.yml`.
+  - Merged the useful `temp/code_4/` scaffolds into the live repo by adding `import-linter` dev support, a repository `.importlinter` contract file, and CI enforcement via `lint-imports`.
+  - Hardened the V2 structured logging path so request-scoped `request_id`, `APP_ENV`, and `APP_VERSION` flow through middleware and logger setup without the previous structlog/stdlib mismatch.
+  - Migrated remaining active core database imports onto `app/core/database.py` and added compatibility aliases for tests still converging on the V2 core package.
+  - Extended Prometheus telemetry with estimated daily LLM cost tracking.
+  - Replaced the stale parent router with an importable V2 router that matches the current `app/core` and `app/models` layout, restoring clean `app.api_v2` startup.
+- **Verification:**
+  - `lint-imports` → passed
+  - `python -m pytest tests/integration/test_security_headers.py tests/unit/test_imports.py -q -o addopts=""` → passed
+  - `python -m pytest tests/smoke -q -o addopts=""` → passed
+
 ## Final Summary
 Legacy execution epics are complete, but the repository is **not** globally complete. EduBoost is now in a **V2 baseline migration** phase driven by `docs/architecture/V2_ARCHITECTURE.md`.

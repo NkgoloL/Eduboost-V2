@@ -13,7 +13,7 @@ from typing import Any
 from sqlalchemy import select, update
 from sqlalchemy.exc import NoResultFound
 
-from app.api.core.database import AsyncSessionFactory
+from app.core.database import AsyncSessionFactory
 from app.api.models.db_models import StudyPlan, SubjectMastery
 
 

@@ -20,7 +20,7 @@ from app.core.config import settings
 from app.core.exceptions import register_exception_handlers
 from app.core.logging import configure_logging, get_logger
 from app.core.metrics import REGISTRY
-from app.core.middleware import RequestIDMiddleware, TimingMiddleware
+from app.core.middleware import RequestIDMiddleware, StructuredLoggingMiddleware, TimingMiddleware
 from app.core.rate_limit import limiter
 from app.services.consent_expiry_service import consent_expiry_loop
 from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
@@ -83,6 +83,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 app.add_middleware(SecurityHeadersMiddleware)
+app.add_middleware(StructuredLoggingMiddleware)
 app.add_middleware(TimingMiddleware)
 app.add_middleware(RequestIDMiddleware)
 app.middleware("http")(analytics_middleware)

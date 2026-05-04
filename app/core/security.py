@@ -18,6 +18,9 @@ from app.core.config import settings
 from app.core.token_revocation import is_token_revoked, is_user_revoked
 from app.models import UserRole
 
+Role = UserRole
+TokenPayload = dict[str, Any]
+
 # ── Password hashing ──────────────────────────────────────────────────────────
 _pwd_ctx = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -126,6 +129,24 @@ def require_roles(*roles: UserRole):
     return _inner
 
 
+require_role = require_roles
 require_admin = require_roles(UserRole.ADMIN)
 require_parent_or_admin = require_roles(UserRole.PARENT, UserRole.ADMIN)
 require_teacher_or_admin = require_roles(UserRole.TEACHER, UserRole.ADMIN)
+
+__all__ = [
+    "Role",
+    "TokenPayload",
+    "create_access_token",
+    "create_refresh_token",
+    "decode_token",
+    "get_current_user",
+    "hash_email",
+    "hash_password",
+    "require_admin",
+    "require_parent_or_admin",
+    "require_role",
+    "require_roles",
+    "require_teacher_or_admin",
+    "verify_password",
+]

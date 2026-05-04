@@ -339,7 +339,7 @@
 ## GROUP D — V2 MIGRATION COMPLETION  (Score impact: Architecture 7.5→10.0)
 ## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-26. Add the Redis healthcheck to `docker-compose.v2.yml` and update the `api`
+26. [x] Add the Redis healthcheck to `docker-compose.v2.yml` and update the `api`
     service `depends_on` block to wait for Redis healthy before starting:
     ```yaml
     redis:
@@ -365,8 +365,12 @@
     Once a V2 router reaches full parity, move the corresponding legacy router to
     `app/legacy/` and add a deprecation comment. Commit per router:
     `feat(v2): complete V2 [router-name] router; move legacy to app/legacy/`.
+    Progress note (2026-05-04): the stale V2 parent router was replaced with a
+    working parent-dashboard/erasure router that imports cleanly against the
+    current `app/core`, `app/models`, and `app/services` layout. Full parity
+    across every legacy endpoint family is still pending.
 
-28. Enforce strict domain layer import boundaries. In each `app/api/`,
+28. [x] Enforce strict domain layer import boundaries. In each `app/api/`,
     `app/services/`, and `app/repositories/` `__init__.py`, add import-time
     assertions or use `import-linter` to prevent boundary violations (e.g.,
     `app/api/` must not import from `app/repositories/` directly). Add
@@ -382,13 +386,20 @@
     ```
     Add `lint-imports` to the `lint` CI job. Commit:
     `feat(arch): enforce DDD import boundaries with import-linter`.
+    Note: the useful `temp/code_4/` scaffold was merged into
+    `.importlinter`, `requirements-dev.txt`, and `.github/workflows/ci-cd.yml`,
+    then validated with a passing `lint-imports` run.
 
-29. Migrate `app/api/core/` configuration to `app/core/` (the V2 canonical
+29. [x] Migrate `app/api/core/` configuration to `app/core/` (the V2 canonical
     location). Consolidate `config.py`, `security.py`, and `logging.py` into
     the V2 `app/core/` module. Update all imports throughout the codebase.
     Ensure structured JSON logging is active from application startup with
     `APP_ENV`, `APP_VERSION`, and `REQUEST_ID` fields on every log line.
     Commit: `refactor(v2): consolidate core config/security/logging into app/core/`.
+    Note: the `temp/code_4/` metrics/logging/app wiring was folded into
+    `app/core/logging.py`, `app/core/middleware.py`, `app/core/metrics.py`,
+    and the V2 app startup path, then verified by `tests/integration/test_security_headers.py`,
+    `tests/unit/test_imports.py`, and the V2 smoke suite.
 
 30. Implement the V2 `BackgroundTasks`-based async pattern across all service
     operations that were previously handled by Celery tasks. This includes:

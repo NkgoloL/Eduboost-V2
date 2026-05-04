@@ -6,8 +6,8 @@ def test_import_api_modules():
         "app.api_v2",
         "app.api_v2_routers",
         "app.api.main",
-        "app.api.core.config",
-        "app.api.models.db_models",
+        "app.core.config",
+        "app.models",
     ]
 
     for m in modules:

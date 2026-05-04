@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 
 from sqlalchemy import select, text
 
-from app.api.core.database import AsyncSessionFactory
+from app.core.database import AsyncSessionFactory
 from app.api.models.db_models import ParentLearnerLink, SubjectMastery
 
 

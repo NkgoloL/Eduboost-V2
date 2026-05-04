@@ -52,6 +52,9 @@ jobs:
           name: bandit-report
           path: bandit-report.json
 
+      - name: Enforce DDD import boundaries
+        run: lint-imports
+
   # -------------------------------------------------------------------------
   # UNIT TESTS
   # -------------------------------------------------------------------------

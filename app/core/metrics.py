@@ -48,6 +48,20 @@ llm_tokens_total = Counter(
     registry=REGISTRY,
 )
 
+llm_estimated_cost_usd_daily = Gauge(
+    "eduboost_llm_estimated_cost_usd_daily",
+    "Estimated daily LLM cost in USD",
+    ["provider"],
+    registry=REGISTRY,
+)
+
+LLM_PRICING_USD_PER_TOKEN: dict[str, dict[str, float]] = {
+    "groq": {"input": 0.59 / 1_000_000, "output": 0.79 / 1_000_000},
+    "anthropic": {"input": 3.00 / 1_000_000, "output": 15.00 / 1_000_000},
+}
+
+_llm_daily_cost_accumulator: dict[str, float] = {"groq": 0.0, "anthropic": 0.0}
+
 # ── IRT Engine ────────────────────────────────────────────────────────────────
 irt_sessions_total = Counter(
     "eduboost_irt_sessions_total",
@@ -107,6 +121,19 @@ arq_job_duration_seconds = Histogram(
     buckets=[0.1, 0.5, 1.0, 5.0, 30.0, 120.0],
     registry=REGISTRY,
 )
+
+
+def record_llm_tokens(provider: str, input_tokens: int, output_tokens: int) -> None:
+    """Record token usage and update estimated daily provider cost telemetry."""
+    llm_tokens_total.labels(provider=provider, direction="input").inc(input_tokens)
+    llm_tokens_total.labels(provider=provider, direction="output").inc(output_tokens)
+
+    pricing = LLM_PRICING_USD_PER_TOKEN.get(provider, {"input": 0.0, "output": 0.0})
+    cost = input_tokens * pricing["input"] + output_tokens * pricing["output"]
+    _llm_daily_cost_accumulator[provider] = _llm_daily_cost_accumulator.get(provider, 0.0) + cost
+    llm_estimated_cost_usd_daily.labels(provider=provider).set(
+        _llm_daily_cost_accumulator[provider]
+    )
 
 
 def make_metrics_app() -> object:

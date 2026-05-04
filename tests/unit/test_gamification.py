@@ -1,7 +1,7 @@
 import pytest
 import uuid
 from datetime import datetime, timedelta
-from app.api.core.database import AsyncSessionFactory, init_test_schema
+from app.core.database import AsyncSessionFactory, init_test_schema
 from app.api.services.gamification_service import GamificationService
 from app.api.models.db_models import Learner, SubjectMastery
 

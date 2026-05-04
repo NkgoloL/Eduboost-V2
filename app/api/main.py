@@ -1,9 +1,11 @@
 """Legacy API entrypoint compatibility shim."""
 from __future__ import annotations
 
+from importlib import import_module
+
 from fastapi import HTTPException, status
 
-from app.api_v2 import app
+app = import_module("app.api_v2").app
 
 
 @app.post("/api/v1/lessons/generate", include_in_schema=False)

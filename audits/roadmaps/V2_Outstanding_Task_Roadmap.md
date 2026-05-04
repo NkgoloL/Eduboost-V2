@@ -52,6 +52,8 @@ Recent security/runtime hardening already landed:
 - access-token revocation now uses a Redis-backed JWT denylist on logout/revoke-all paths
 - V2 runtime remains RabbitMQ-free, and legacy docs/examples no longer advertise `guest/guest`
 - POPIA tasks 21-25 are complete: erasure verification, consent audit trail, append-only audit table, annual renewal reminders, and RLHF PII export gate are all implemented and validated
+- V2 runtime hygiene tasks now also cover Redis healthcheck gating, import-linter CI enforcement, and request-scoped structured logging through the core package
+- the temporary `temp/code_4/` scaffolds have been merged into the live V2 runtime, and the parent router now imports cleanly again under the current package layout
 
 ---
 

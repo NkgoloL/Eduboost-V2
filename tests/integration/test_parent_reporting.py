@@ -1,7 +1,7 @@
 import pytest
 import uuid
 from datetime import datetime, timedelta
-from app.api.core.database import AsyncSessionFactory
+from app.core.database import AsyncSessionFactory
 from app.api.services.parent_portal_service import ParentPortalService
 from app.api.models.db_models import Learner, SubjectMastery, ParentLearnerLink, ConsentAudit
 
