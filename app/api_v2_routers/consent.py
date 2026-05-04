@@ -41,6 +41,11 @@ async def grant_consent(
         body.consent_version,
         ip_hash=_get_ip(request),
     )
+    request.state.analytics = {
+        "event": "consent_granted",
+        "pseudonym_id": f"learner:{body.learner_id}",
+        "properties": {"policy_version": body.consent_version},
+    }
     return {
         "id": str(consent.id),
         "learner_id": str(consent.learner_id),
@@ -63,6 +68,11 @@ async def revoke_consent(
         guardian_id=str(guardian_id),
         reason=body.reason,
     )
+    request.state.analytics = {
+        "event": "consent_revoked",
+        "pseudonym_id": f"learner:{body.learner_id}",
+        "properties": {"reason": body.reason},
+    }
     return {"revoked": 1, "message": "Consent revoked. Learner data access has been suspended."}
 
 

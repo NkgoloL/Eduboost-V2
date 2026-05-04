@@ -1,15 +1,67 @@
 """Gamification routes for EduBoost V2."""
+from __future__ import annotations
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends, HTTPException, status
+from pydantic import BaseModel, Field
+from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.core.database import get_db
+from app.core.security import get_current_user
+from app.repositories.repositories import LearnerRepository, LessonRepository
+from app.services.consent import ConsentService
+from app.services.fourth_estate import FourthEstateService
 from app.services.gamification_service_v2 import GamificationServiceV2
 
 router = APIRouter(prefix="/gamification", tags=["V2 Gamification"])
 
 
+class AwardXPRequest(BaseModel):
+    learner_id: str
+    xp_amount: int = Field(ge=1, le=500)
+    event_type: str = "lesson_completed"
+    lesson_id: str | None = None
+
+
 @router.get("/profile/{learner_id}")
-async def get_profile(learner_id: str):
+async def get_profile(
+    learner_id: str,
+    db: AsyncSession = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    await ConsentService(db).require_active_consent(learner_id, actor_id=current_user.get("sub"))
     return await GamificationServiceV2().get_profile(learner_id)
+
+
+@router.post("/award-xp")
+async def award_xp(
+    body: AwardXPRequest,
+    db: AsyncSession = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    await ConsentService(db).require_active_consent(body.learner_id, actor_id=current_user.get("sub"))
+    learner = await LearnerRepository(db).get_by_id(body.learner_id)
+    if learner is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
+
+    await LearnerRepository(db).add_xp(body.learner_id, body.xp_amount)
+    if body.lesson_id:
+        await LessonRepository(db).mark_completed(body.lesson_id)
+
+    await FourthEstateService(db).record(
+        event_type="gamification.xp_awarded",
+        actor_id=current_user.get("sub"),
+        learner_pseudonym=learner.pseudonym_id,
+        resource_id=body.learner_id,
+        payload={
+            "learner_id": body.learner_id,
+            "xp_amount": body.xp_amount,
+            "event_type": body.event_type,
+            "lesson_id": body.lesson_id,
+        },
+        constitutional_outcome="APPROVED",
+    )
+    await db.commit()
+    return {"awarded": True, "xp_amount": body.xp_amount}
 
 
 @router.get("/leaderboard")

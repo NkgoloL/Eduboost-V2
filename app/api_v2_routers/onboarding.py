@@ -20,6 +20,7 @@ async def get_onboarding_questions(_: dict = Depends(get_current_user)):
 
 
 @router.post("/submit", response_model=OnboardingResult)
+@router.post("/archetype", response_model=OnboardingResult)
 async def submit_onboarding(
     body: OnboardingSubmit,
     db: AsyncSession = Depends(get_db),
@@ -31,8 +32,13 @@ async def submit_onboarding(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
 
     answers_raw = [{"question_id": a.question_id, "answer": a.answer} for a in body.answers]
-    archetype, description = _ether.classify_archetype(answers_raw)
+    archetype, description, probabilities = _ether.classify_archetype(answers_raw)
 
     await learner_repo.update_archetype(body.learner_id, archetype.value)
 
-    return OnboardingResult(learner_id=body.learner_id, archetype=archetype.value, description=description)
+    return OnboardingResult(
+        learner_id=body.learner_id,
+        archetype=archetype.value,
+        description=description,
+        probabilities=probabilities,
+    )

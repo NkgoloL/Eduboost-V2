@@ -17,11 +17,13 @@ from slowapi.errors import RateLimitExceeded
 from app.api.version import __version__
 from app.core.analytics import analytics_middleware
 from app.core.config import settings
+from app.core.health import gather_deep_health
 from app.core.exceptions import register_exception_handlers
 from app.core.logging import configure_logging, get_logger
 from app.core.metrics import REGISTRY
 from app.core.middleware import RequestIDMiddleware, StructuredLoggingMiddleware, TimingMiddleware
 from app.core.rate_limit import limiter
+from app.core.secret_rotation import key_vault_rotation_loop
 from app.services.consent_expiry_service import consent_expiry_loop
 from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
 
@@ -44,11 +46,16 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
 async def lifespan(app: FastAPI):
     log.info("eduboost_v2_starting", env=settings.ENVIRONMENT, version=settings.APP_VERSION)
     consent_task = None
+    secret_rotation_task = None
     if settings.ENVIRONMENT != "test":
         consent_task = asyncio.create_task(consent_expiry_loop())
+        if settings.is_production() and settings.AZURE_KEY_VAULT_URL:
+            secret_rotation_task = asyncio.create_task(key_vault_rotation_loop())
     yield
     if consent_task:
         consent_task.cancel()
+    if secret_rotation_task:
+        secret_rotation_task.cancel()
     log.info("eduboost_v2_shutdown")
 
 
@@ -89,7 +96,7 @@ app.add_middleware(RequestIDMiddleware)
 app.middleware("http")(analytics_middleware)
 
 # ── Routers ───────────────────────────────────────────────────────────────────
-from app.api_v2_routers import auth, billing, consent, consent_renewal, diagnostics, jobs, learners, lessons, onboarding, parents, popia, study_plans  # noqa: E402
+from app.api_v2_routers import auth, billing, consent, consent_renewal, diagnostics, gamification, jobs, learners, lessons, onboarding, parents, popia, study_plans  # noqa: E402
 
 API_V2 = "/api/v2"
 for prefix in (API_V2, "/v2"):
@@ -98,6 +105,7 @@ for prefix in (API_V2, "/v2"):
     app.include_router(lessons.router, prefix=prefix)
     app.include_router(study_plans.router, prefix=prefix)
     app.include_router(diagnostics.router, prefix=prefix)
+    app.include_router(gamification.router, prefix=prefix)
     app.include_router(onboarding.router, prefix=prefix)
     app.include_router(parents.router, prefix=prefix)
     app.include_router(billing.router, prefix=prefix)
@@ -116,6 +124,14 @@ async def health():
 @app.get("/ready", tags=["ops"])
 async def ready():
     return JSONResponse(status_code=503, content={"status": "unavailable"})
+
+
+@app.get("/api/v2/health/deep", tags=["ops"])
+@app.get("/v2/health/deep", tags=["ops"])
+async def deep_health():
+    payload = await gather_deep_health()
+    status_code = 200 if payload["status"] == "ok" else 503
+    return JSONResponse(status_code=status_code, content=payload)
 
 
 @app.get("/metrics", tags=["ops"])

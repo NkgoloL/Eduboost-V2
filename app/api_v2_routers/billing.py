@@ -14,6 +14,7 @@ router = APIRouter(prefix="/billing", tags=["billing"])
 
 
 @router.post("/checkout", response_model=CheckoutSessionResponse)
+@router.post("/create-checkout-session", response_model=CheckoutSessionResponse)
 async def create_checkout(
     db: AsyncSession = Depends(get_db),
     current_user: dict = Depends(require_parent_or_admin),

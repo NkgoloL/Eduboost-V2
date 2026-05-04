@@ -3,23 +3,31 @@ from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta
 
-from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Response, status
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request, Response, status
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.core.security import require_parent_or_admin
-from app.domain.schemas import ParentDashboardLearner, ParentDashboardResponse
+from app.domain.schemas import (
+    ParentDashboardLearner,
+    ParentDashboardResponse,
+    ParentTrustDashboardLearner,
+    ParentTrustDashboardResponse,
+)
 from app.models import Guardian, KnowledgeGap, Lesson
 from app.repositories.repositories import LearnerRepository
 from app.services.consent import ConsentService
+from app.services.executive import ExecutiveService
 from app.services.fourth_estate import FourthEstateService
 
 router = APIRouter(prefix="/parents", tags=["parents"])
+_executive = ExecutiveService()
 
 
 @router.get("/dashboard", response_model=ParentDashboardResponse)
 async def get_parent_dashboard(
+    request: Request,
     db: AsyncSession = Depends(get_db),
     current_user: dict = Depends(require_parent_or_admin),
 ) -> ParentDashboardResponse:
@@ -75,6 +83,12 @@ async def get_parent_dashboard(
                 last_lesson_at=last_lesson_at,
             )
         )
+    if dashboard_learners:
+        request.state.analytics = {
+            "event": "parent_portal_viewed",
+            "pseudonym_id": str(dashboard_learners[0].learner_id),
+            "properties": {"learner_count": len(dashboard_learners)},
+        }
 
     return ParentDashboardResponse(
         guardian_id=guardian.id,
@@ -82,6 +96,120 @@ async def get_parent_dashboard(
         total_lessons_generated=total_lessons_generated,
         subscription_tier=guardian.subscription_tier,
     )
+
+
+@router.get("/{guardian_id}/dashboard", response_model=ParentTrustDashboardResponse)
+async def get_parent_trust_dashboard(
+    guardian_id: str,
+    request: Request,
+    db: AsyncSession = Depends(get_db),
+    current_user: dict = Depends(require_parent_or_admin),
+) -> ParentTrustDashboardResponse:
+    if guardian_id != current_user["sub"] and str(current_user.get("role", "")).lower() != "admin":
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorised to view this dashboard")
+
+    guardian = await db.get(Guardian, guardian_id)
+    if guardian is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Guardian not found")
+
+    learners = await LearnerRepository(db).get_by_guardian(guardian_id)
+    consent_service = ConsentService(db)
+    seven_days_ago = datetime.now(UTC) - timedelta(days=7)
+    response_learners: list[ParentTrustDashboardLearner] = []
+
+    for learner in learners:
+        try:
+            await consent_service.require_active_consent(learner.id, actor_id=current_user["sub"])
+        except HTTPException:
+            continue
+
+        gaps_result = await db.execute(
+            select(KnowledgeGap)
+            .where(KnowledgeGap.learner_id == learner.id, KnowledgeGap.resolved == False)  # noqa: E712
+            .order_by(KnowledgeGap.severity.desc(), KnowledgeGap.created_at.desc())
+            .limit(3)
+        )
+        top_gaps = [gap.topic for gap in gaps_result.scalars().all()]
+
+        lessons_generated = await db.scalar(
+            select(func.count(Lesson.id)).where(
+                Lesson.learner_id == learner.id,
+                Lesson.created_at >= seven_days_ago,
+            )
+        ) or 0
+        lessons_completed = await db.scalar(
+            select(func.count(Lesson.id)).where(
+                Lesson.learner_id == learner.id,
+                Lesson.completed_at != None,  # noqa: E711
+                Lesson.completed_at >= seven_days_ago,
+            )
+        ) or 0
+        completion_rate = round((lessons_completed / max(lessons_generated, 1)) * 100, 2) if lessons_generated else 0.0
+        ai_progress_summary = await _executive.generate_progress_summary(
+            learner.pseudonym_id,
+            top_gaps,
+            lessons_completed,
+        )
+
+        response_learners.append(
+            ParentTrustDashboardLearner(
+                learner_id=learner.id,
+                display_name=learner.display_name,
+                grade_level=learner.grade,
+                archetype=learner.archetype,
+                irt_theta=round(learner.theta, 3),
+                top_knowledge_gaps=top_gaps,
+                ai_progress_summary=ai_progress_summary,
+                lesson_completion_rate_7d=completion_rate,
+                streak_days=learner.streak_days,
+                export_url=f"/api/v2/popia/data-export/{learner.id}",
+            )
+        )
+
+    request.state.analytics = {
+        "event": "parent_portal_viewed",
+        "pseudonym_id": guardian_id,
+        "properties": {"learner_count": len(response_learners), "route": "trust_dashboard"},
+    }
+
+    return ParentTrustDashboardResponse(
+        guardian_id=guardian_id,
+        subscription_tier=guardian.subscription_tier,
+        generated_at=datetime.now(UTC),
+        learners=response_learners,
+    )
+
+
+@router.get("/{guardian_id}/export")
+async def export_parent_access_bundle(
+    guardian_id: str,
+    db: AsyncSession = Depends(get_db),
+    current_user: dict = Depends(require_parent_or_admin),
+):
+    if guardian_id != current_user["sub"] and str(current_user.get("role", "")).lower() != "admin":
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorised to export this data")
+
+    guardian = await db.get(Guardian, guardian_id)
+    if guardian is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Guardian not found")
+
+    learners = await LearnerRepository(db).get_by_guardian(guardian_id)
+    consent_service = ConsentService(db)
+    exports = []
+    for learner in learners:
+        await consent_service.require_active_consent(learner.id, actor_id=current_user["sub"])
+        exports.append(
+            {
+                "learner_id": learner.id,
+                "display_name": learner.display_name,
+                "export_url": f"/api/v2/popia/data-export/{learner.id}",
+            }
+        )
+    return {
+        "guardian_id": guardian_id,
+        "subscription_tier": guardian.subscription_tier,
+        "exports": exports,
+    }
 
 
 @router.get("/learners/{learner_id}/progress")

@@ -1,5 +1,7 @@
 """EduBoost V2 — Lessons Router"""
 
+from datetime import UTC, datetime
+
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request, status
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -9,7 +11,7 @@ from app.core.jobs import enqueue_job
 from app.core.rate_limit import limiter, LESSON_GENERATION_LIMIT, LESSON_GENERATION_PREMIUM_LIMIT
 from app.core.security import get_current_user
 from app.domain.api_v2_models import JobAcceptedResponse
-from app.domain.schemas import LessonFeedback, LessonRequest, LessonResponse
+from app.domain.schemas import LessonFeedback, LessonRequest, LessonResponse, LessonSyncRequest
 from app.models import Lesson
 from app.repositories.repositories import GuardianRepository, LearnerRepository, LessonRepository
 from app.services.consent import ConsentService
@@ -78,7 +80,9 @@ async def generate_lesson(
             )
             await FourthEstateService(db).lesson_generated(learner.pseudonym_id, body.subject, body.topic, "groq")
             await db.commit()
-            return LessonResponse.model_validate(lesson).model_dump(mode="json")
+            return LessonResponse.model_validate(lesson).model_copy(
+                update={"cache_hit": from_cache, "caps_aligned": True}
+            ).model_dump(mode="json")
 
     job = await enqueue_job(
         background_tasks,
@@ -92,6 +96,7 @@ async def generate_lesson(
 @router.get("/{lesson_id}")
 async def get_lesson(
     lesson_id: str,
+    request: Request,
     current_user: dict = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
@@ -100,15 +105,94 @@ async def get_lesson(
     if not lesson:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Lesson not found")
     await ConsentService(db).require_active_consent(lesson.learner_id, actor_id=current_user.get("sub"))
-    return LessonResponse.model_validate(lesson)
+    learner = await LearnerRepository(db).get_by_id(lesson.learner_id)
+    if learner is not None:
+        request.state.analytics = {
+            "event": "lesson_viewed",
+            "pseudonym_id": learner.pseudonym_id,
+            "properties": {"subject": lesson.subject, "topic": lesson.topic},
+        }
+    return LessonResponse.model_validate(lesson).model_copy(
+        update={"cache_hit": lesson.served_from_cache, "caps_aligned": True}
+    )
 
 
 @router.post("/{lesson_id}/feedback")
 async def submit_feedback(
     lesson_id: str,
     body: LessonFeedback,
+    request: Request,
     db: AsyncSession = Depends(get_db),
-    _: dict = Depends(get_current_user),
+    current_user: dict = Depends(get_current_user),
 ):
+    lesson = await db.get(Lesson, lesson_id)
+    if lesson is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Lesson not found")
+    await ConsentService(db).require_active_consent(lesson.learner_id, actor_id=current_user.get("sub"))
     await LessonRepository(db).record_feedback(lesson_id, body.score)
+    await db.commit()
+    learner = await LearnerRepository(db).get_by_id(lesson.learner_id) if lesson else None
+    if learner is not None:
+        request.state.analytics = {
+            "event": "lesson_feedback_submitted",
+            "pseudonym_id": learner.pseudonym_id,
+            "properties": {"score": body.score},
+        }
     return {"detail": "Feedback recorded. Thank you!"}
+
+
+@router.post("/{lesson_id}/complete")
+async def complete_lesson(
+    lesson_id: str,
+    request: Request,
+    db: AsyncSession = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    lesson = await db.get(Lesson, lesson_id)
+    if not lesson:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Lesson not found")
+    await ConsentService(db).require_active_consent(lesson.learner_id, actor_id=current_user.get("sub"))
+    await LessonRepository(db).mark_completed(lesson_id)
+    learner = await LearnerRepository(db).get_by_id(lesson.learner_id)
+    if learner is not None:
+        request.state.analytics = {
+            "event": "lesson_completed",
+            "pseudonym_id": learner.pseudonym_id,
+            "properties": {"lesson_id": lesson_id, "subject": lesson.subject},
+        }
+    await db.commit()
+    return {"detail": "Lesson marked complete."}
+
+
+@router.post("/sync")
+async def sync_lesson_responses(
+    body: LessonSyncRequest,
+    request: Request,
+    db: AsyncSession = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    processed = 0
+    for event in body.responses:
+        lesson = await db.get(Lesson, event.lesson_id)
+        if lesson is None:
+            continue
+        await ConsentService(db).require_active_consent(lesson.learner_id, actor_id=current_user.get("sub"))
+        repo = LessonRepository(db)
+        if event.event_type == "complete":
+            await repo.mark_completed(
+                event.lesson_id,
+                completed_at=event.completed_at or datetime.now(UTC),
+            )
+        elif event.event_type == "feedback" and event.score is not None:
+            await repo.record_feedback(event.lesson_id, event.score)
+        processed += 1
+        learner = await LearnerRepository(db).get_by_id(lesson.learner_id)
+        if learner is not None:
+            request.state.analytics = {
+                "event": "lesson_completed" if event.event_type == "complete" else "lesson_feedback_submitted",
+                "pseudonym_id": learner.pseudonym_id,
+                "properties": {"lesson_id": lesson.id, "score": event.score},
+            }
+
+    await db.commit()
+    return {"processed": processed, "queued": max(0, len(body.responses) - processed)}

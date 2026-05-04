@@ -9,6 +9,7 @@ from app.domain.api_v2_models import JobAcceptedResponse, StudyPlanGenerateReque
 from app.repositories.repositories import LearnerRepository
 from app.services.audit_service import AuditService
 from app.services.study_plan_service_v2 import StudyPlanServiceV2
+from app.services.telemetry import TelemetryService
 
 router = APIRouter(prefix="/study-plans", tags=["V2 Study Plans"])
 
@@ -38,6 +39,11 @@ async def generate_study_plan(
                 event_type="STUDY_PLAN_GENERATED",
                 learner_id=learner_id,
                 payload={"plan_id": plan["plan_id"]},
+            )
+            await TelemetryService().track_event_async(
+                "study_plan_generated",
+                pseudonym_id=f"learner:{learner_id}",
+                properties={"gap_ratio": request.gap_ratio},
             )
             return plan
 
