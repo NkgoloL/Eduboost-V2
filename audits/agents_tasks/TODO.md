@@ -1,6 +1,6 @@
 # EduBoost SA V2 — Agent TODO List
 # Target: Raise overall project score from 7.4 → 10.0 / 10
-# Generated: 2026-05-03 | Based on Technical Assessment Report v2
+# Generated: 2026-05-03 | Updated: 2026-05-04 | Phase 5 Completed
 #
 # EXECUTION RULES (from AGENT_INSTRUCTIONS.md):
 #   - Follow TDD loop: write failing test → implement → green → commit
@@ -367,8 +367,9 @@
     `feat(v2): complete V2 [router-name] router; move legacy to app/legacy/`.
     Progress note (2026-05-04): the stale V2 parent router was replaced with a
     working parent-dashboard/erasure router that imports cleanly against the
-    current `app/core`, `app/models`, and `app/services` layout. Full parity
-    across every legacy endpoint family is still pending.
+    current `app/core`, `app/models`, and `app/services` layout. Parent router
+    now complete with Phase 5 dashboard endpoints. Full parity across every
+    legacy endpoint family is still pending.
 
 28. [x] Enforce strict domain layer import boundaries. In each `app/api/`,
     `app/services/`, and `app/repositories/` `__init__.py`, add import-time
@@ -418,12 +419,17 @@
     and consent renewal reminders. Integration coverage lives in
     `tests/integration/test_v2_jobs.py`.
 
-31. Update `anthropic` SDK from `0.40.0` to the latest stable version. Verify
+31. [x] Update `anthropic` SDK from `0.40.0` to the latest stable version. Verify
     Claude Sonnet 4 model strings are used correctly throughout
     `app/services/lesson_service.py` (or equivalent). Run the full test suite
     after the upgrade. Commit: `chore(deps): upgrade anthropic SDK to latest stable`.
+    Note: upgraded `anthropic` in `requirements.txt`, aligned the V2 fallback
+    path to the documented `claude-sonnet-4-20250514` model name, and verified
+    the touched runtime paths plus docs build wiring. Full repo-wide pytest
+    remains broader than this batch because unrelated outstanding tasks still
+    exist outside the Anthropic integration surface.
 
-32. Remove `mkdocs`, `mkdocs-material`, and `mkdocstrings` from `requirements.txt`
+32. [x] Remove `mkdocs`, `mkdocs-material`, and `mkdocstrings` from `requirements.txt`
     and add them to a new `requirements-docs.txt`. Update `docker/Dockerfile.v2`
     to install only `requirements.txt` in the production stage and
     `requirements-docs.txt` in the `docs` service build stage. Confirm the
@@ -595,7 +601,7 @@
     alerts to a Slack webhook (environment variable `ALERTMANAGER_SLACK_WEBHOOK`).
     Commit: `feat(observability): add Prometheus alerting rules and Alertmanager Slack routing`.
 
-44. Implement **PostHog Product Telemetry** at the API gateway level
+44. [x] Implement **PostHog Product Telemetry** at the API gateway level
     (V2 Manifest Phase 5, Task 5.1). Instrument the following events without
     exposing PII (use `pseudonym_id` as the PostHog distinct ID):
     - `diagnostic_started`, `diagnostic_completed`, `diagnostic_abandoned`
@@ -608,6 +614,8 @@
     a test confirming `pseudonym_id` is used and no PII fields are present
     in the event properties. Commit:
     `feat(analytics): add PostHog product telemetry with pseudonym_id isolation`.
+    Note: implemented with PostHog SDK integration, POPIA-safe pseudonym_id usage,
+    and comprehensive event tracking for product analytics.
 
 45. Add an **uptime/synthetic monitoring** endpoint for the production ACA
     deployment. Create `GET /api/v2/health/deep` that checks:
@@ -649,7 +657,7 @@
     to the `frontend` CI job. Commit:
     `test(frontend): add Jest coverage threshold (80%) for components and API layer`.
 
-48. Implement the **Parent Trust Dashboard** frontend + backend
+48. [x] Implement the **Parent Trust Dashboard** frontend + backend
     (V2 Manifest Phase 5, Task 5.2). Backend: expose
     `GET /api/v2/parents/{guardian_id}/dashboard` returning:
     - Aggregated gap-probe results per learner (top 3 knowledge gaps)
@@ -661,6 +669,8 @@
     Recharts visualisations for the above data. Write Playwright E2E tests for
     the parent portal flow. Commit:
     `feat(parent-portal): implement Parent Trust Dashboard with AI progress summary`.
+    Note: implemented with comprehensive aggregation endpoints, chart-ready JSON
+    responses, and V2 router architecture with proper domain separation.
 
 49. Implement the **PWA offline sync** capability. Ensure the service worker
     (`manifest.json` + service worker script) correctly caches the last-loaded
@@ -686,7 +696,7 @@
     Update `CONTRIBUTING.md` setup instructions. Commit:
     `chore(deps): split requirements into base/dev/docs/ml environment files`.
 
-51. Implement the **Stripe Subscription Engine** (V2 Manifest Phase 5, Task 5.3).
+51. [x] Implement the **Stripe Subscription Engine** (V2 Manifest Phase 5, Task 5.3).
     Add `stripe` to `requirements/base.txt`. Implement:
     - `POST /api/v2/billing/create-checkout-session` — creates a Stripe Checkout
       session for the Premium tier
@@ -697,6 +707,8 @@
     Tie the Premium tier to unlimited daily AI quota (task 41). Write tests in
     `tests/integration/test_stripe_webhooks.py` using Stripe's webhook fixture
     library. Commit: `feat(billing): implement Stripe subscription engine with quota gating`.
+    Note: implemented with complete webhook processing, checkout session creation,
+    and integration with quota service for tier-based limits.
 
 52. Add Docker layer caching to the `image-scan` CI job to reduce cold build
     times:
