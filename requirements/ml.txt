@@ -4,6 +4,8 @@
 #
 #    pip-compile --output-file=requirements/ml.txt requirements/ml.in
 #
+beautifulsoup4==4.12.3
+    # via -r requirements/ml.in
 certifi==2026.4.22
     # via requests
 charset-normalizer==3.4.7
@@ -79,6 +81,10 @@ packaging==26.2
     #   transformers
 pillow==12.2.0
     # via sentence-transformers
+pymupdf==1.24.4
+    # via -r requirements/ml.in
+pymupdfb==1.24.3
+    # via pymupdf
 pyyaml==6.0.3
     # via
     #   huggingface-hub
@@ -99,6 +105,8 @@ scipy==1.17.1
     #   sentence-transformers
 sentence-transformers==2.7.0
     # via -r requirements/ml.in
+soupsieve==2.8.3
+    # via beautifulsoup4
 sympy==1.14.0
     # via torch
 threadpoolctl==3.6.0
