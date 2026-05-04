@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useLearner } from "../../../context/LearnerContext";
 import { LearnerService } from "../../../lib/api/services";
+import { extractErrorMessage } from "../../../lib/api/client";
 import { SUBJECTS } from "../../../components/eduboost/constants";
 import { Card } from "../../../components/ui/Card";
 import { Button } from "../../../components/ui/Button";
@@ -33,7 +34,7 @@ export default function DashboardPage() {
         LearnerService.getGamificationProfile(learner.id || learner.learner_id),
       ]);
 
-      if (masteryRes.mastery) {
+      if (masteryRes && masteryRes.mastery) {
         setMasteryData(() => {
           const newMastery: Record<string, number> = {};
           masteryRes.mastery.forEach((entry: MasteryEntry) => {
@@ -46,10 +47,11 @@ export default function DashboardPage() {
       setGamification(gamificationRes);
     } catch (err) {
       console.error("Dashboard fetch error:", err);
+      const msg = extractErrorMessage(err);
       setError(
         typeof navigator !== "undefined" && !navigator.onLine
           ? "You are offline. Reconnect to refresh your dashboard."
-          : "Failed to load dashboard data. Please try again."
+          : msg
       );
     } finally {
       setLoading(false);

@@ -11,7 +11,10 @@ export function getApiBaseUrl() {
 }
 
 export function extractErrorMessage(error: unknown, fallback = "API request failed") {
-  return error instanceof Error ? error.message : fallback;
+  if (error instanceof Error) return error.message;
+  // If it's already a string, use it (handy for simple throws)
+  if (typeof error === "string") return error;
+  return fallback;
 }
 
 export async function fetchApi<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
@@ -43,12 +46,25 @@ export async function fetchApi<T>(endpoint: string, options: RequestInit = {}): 
     const data = (await response.json().catch(() => null)) as ApiErrorShape | T | null;
 
     if (!response.ok) {
-      throw new Error(
-        (data as ApiErrorShape | null)?.detail ||
-          (data as ApiErrorShape | null)?.message ||
-          response.statusText ||
-          "API request failed"
-      );
+      let errorMessage = "API request failed";
+      
+      if (data && typeof data === "object") {
+        errorMessage = (data as any).detail || (data as any).message || errorMessage;
+      }
+
+      if (response.status === 401) {
+        errorMessage = "Your session has expired. Please log in again.";
+      } else if (response.status === 403) {
+        errorMessage = (data as any)?.detail || (data as any)?.message || "You don't have permission to perform this action.";
+      } else if (response.status === 429) {
+        errorMessage = "Too many requests. Please wait a moment or upgrade to Premium.";
+      } else if (response.status === 503 || response.status === 504) {
+        errorMessage = "The server is currently busy. Please try again in a few seconds.";
+      } else {
+        errorMessage = (data as any)?.detail || (data as any)?.message || response.statusText || errorMessage;
+      }
+
+      throw new Error(errorMessage);
     }
 
     return data as T;
