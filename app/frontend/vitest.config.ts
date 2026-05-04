@@ -13,18 +13,18 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: ['./__tests__/setup.ts'],
-  },
-  coverage: {
-    provider: 'v8',
-    all: true,
-    include: ['src/components/eduboost/**/*.{ts,tsx}', 'src/lib/api/**/*.{ts,tsx}'],
-    exclude: ['src/components/eduboost/styles.ts'],
-    reporter: ['text', 'html', 'json-summary'],
-    thresholds: {
-      branches: 80,
-      functions: 80,
-      lines: 80,
-      statements: 80,
+    coverage: {
+      provider: 'v8',
+      all: true,
+      include: ['src/components/eduboost/**/*.{ts,tsx}', 'src/lib/api/**/*.{ts,tsx}'],
+      exclude: ['src/components/eduboost/styles.ts'],
+      reporter: ['text', 'html', 'json-summary'],
+      thresholds: {
+        branches: 80,
+        functions: 80,
+        lines: 80,
+        statements: 80,
+      },
     },
   },
 })
