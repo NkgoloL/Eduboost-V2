@@ -11,6 +11,6 @@ source "$VENV_DIR/bin/activate"
 pip install --upgrade pip
 
 echo "Installing backend requirements (core)"
-pip install -r requirements.txt
+pip install -r requirements/dev.txt
 
 echo "Dev environment ready. Activate with: source $VENV_DIR/bin/activate"

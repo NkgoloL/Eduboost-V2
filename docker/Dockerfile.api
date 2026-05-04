@@ -9,8 +9,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl \
 # Install Python dependencies
 # NOTE: torch / transformers / huggingface-hub are NOT here.
 #       They live in docker/Dockerfile.inference (the dedicated inference service).
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements ./requirements
+RUN pip install --no-cache-dir -r requirements/base.txt
 
 COPY app ./app
 COPY alembic ./alembic

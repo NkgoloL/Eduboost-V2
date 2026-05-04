@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile.v2
+      target: production
     ports:
       - "8000:8000"
     environment:
@@ -22,7 +23,7 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile.v2
-    command: mkdocs serve -a 0.0.0.0:8001
+      target: docs
     ports:
       - "8001:8001"
     volumes:
@@ -45,6 +46,29 @@ services:
     volumes:
       - ./app/frontend:/app
       - /app/node_modules
+
+  prometheus:
+    image: prom/prometheus:v2.53.0
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+    depends_on:
+      - api
+
+  alertmanager:
+    image: prom/alertmanager:v0.27.0
+    command:
+      - --config.file=/etc/alertmanager/alertmanager.yml
+    ports:
+      - "9093:9093"
+    environment:
+      - ALERTMANAGER_SLACK_WEBHOOK=${ALERTMANAGER_SLACK_WEBHOOK:-}
+    volumes:
+      - ./alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
 
   postgres:
     image: postgres:16-alpine

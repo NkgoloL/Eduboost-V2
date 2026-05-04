@@ -29,7 +29,7 @@ jobs:
           cache: "pip"
 
       - name: Install dev dependencies
-        run: pip install -r requirements-dev.txt types-redis types-boto3 pydantic pydantic-settings
+        run: pip install -r requirements/dev.txt types-redis types-boto3 pydantic pydantic-settings
 
       - name: Run ruff
         run: ruff check app/ tests/ --output-format=github
@@ -40,7 +40,7 @@ jobs:
       - name: Audit Python dependencies
         run: |
           pip install pip-audit
-          pip-audit -r requirements.txt -r requirements-ml.txt
+          pip-audit -r requirements/base.txt -r requirements/ml.txt
 
       - name: Run Bandit SAST
         run: |
@@ -70,7 +70,7 @@ jobs:
           cache: "pip"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt pytest pytest-asyncio pytest-cov
+        run: pip install -r requirements/dev.txt
 
       - name: Run unit tests
         run: |
@@ -139,7 +139,7 @@ jobs:
           cache: "pip"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt pytest pytest-asyncio
+        run: pip install -r requirements/dev.txt
 
       - name: Run Alembic migrations
         run: alembic upgrade head
@@ -187,7 +187,7 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r requirements/dev.txt
       - name: Import V2 entrypoint
         run: python -c "import importlib; importlib.import_module('app.api_v2')"
       - name: Import V2 repositories
@@ -291,7 +291,7 @@ jobs:
           cache: "pip"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt alembic
+        run: pip install -r requirements/dev.txt
 
       - name: Bootstrap schema
         run: alembic upgrade head
@@ -314,7 +314,7 @@ jobs:
           cache: "pip"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt pytest pytest-asyncio
+        run: pip install -r requirements/dev.txt
 
       - name: Run POPIA compliance tests
         run: |
@@ -333,8 +333,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build API image
-        run: docker build -f docker/Dockerfile.api -t eduboost-api:scan .
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: docker/Dockerfile.api
+          tags: eduboost-api:scan
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          load: true
 
       - name: Run Trivy vulnerability scan
         uses: aquasecurity/trivy-action@master
