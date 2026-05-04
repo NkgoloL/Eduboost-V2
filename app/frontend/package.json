@@ -8,7 +8,8 @@
     "start": "next start -p 3050",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@supabase/auth-helpers-nextjs": "0.10.0",

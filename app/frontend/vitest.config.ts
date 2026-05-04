@@ -11,7 +11,14 @@ export default defineConfig({
       provider: "v8",
       all: true,
       include: ["src/components/eduboost/**/*.{ts,tsx}", "src/lib/api/**/*.{ts,tsx}"],
+      exclude: ["src/components/eduboost/styles.ts"],
       reporter: ["text", "html", "json-summary"],
+      thresholds: {
+        branches: 80,
+        functions: 80,
+        lines: 80,
+        statements: 80,
+      },
     },
   },
 })

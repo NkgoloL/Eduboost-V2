@@ -225,8 +225,14 @@ jobs:
       - name: Audit npm dependencies
         run: npm audit --audit-level=high
 
-      - name: Run frontend tests
-        run: npm test
+      - name: Run frontend coverage gate
+        run: npm run test:coverage
+
+      - name: Upload frontend coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-coverage
+          path: app/frontend/coverage/
 
       - name: Run frontend lint
         run: npm run lint

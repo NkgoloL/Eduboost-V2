@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { fetchApi, waitForJobResult } from "../lib/api/client";
+import { extractErrorMessage, fetchApi, getApiBaseUrl, waitForJobResult } from "../lib/api/client";
 import { AuthService, DiagnosticService, LearnerService, ParentService } from "../lib/api/services";
 
 describe("API layer", () => {
@@ -29,6 +29,11 @@ describe("API layer", () => {
     );
   });
 
+  it("exposes the configured API base URL and fallback error extraction", () => {
+    expect(getApiBaseUrl()).toContain("/api/v2");
+    expect(extractErrorMessage("not-an-error", "fallback")).toBe("fallback");
+  });
+
   it("handles 204 responses cleanly", async () => {
     vi.spyOn(globalThis, "fetch").mockResolvedValue({
       ok: true,
@@ -48,6 +53,30 @@ describe("API layer", () => {
     } as Response);
 
     await expect(fetchApi("/parents/demo/export")).rejects.toThrow("No access");
+  });
+
+  it("uses learner tokens for learner-scoped absolute URLs and falls back to statusText", async () => {
+    window.localStorage.removeItem("guardian_token");
+    window.localStorage.setItem("learner_token", "learner-token");
+
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue({
+      ok: false,
+      status: 502,
+      statusText: "Bad Gateway",
+      json: async () => {
+        throw new Error("bad json");
+      },
+    } as unknown as Response);
+
+    await expect(fetchApi("https://example.com/lessons")).rejects.toThrow("Bad Gateway");
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://example.com/lessons",
+      expect.objectContaining({
+        headers: expect.objectContaining({
+          Authorization: "Bearer learner-token",
+        }),
+      })
+    );
   });
 
   it("waits for background jobs to complete", async () => {
@@ -88,6 +117,47 @@ describe("API layer", () => {
       status: "queued",
     });
     expect(result.title).toBe("Fractions");
+  });
+
+  it("raises failed and timed-out job states", async () => {
+    const fetchMock = vi.spyOn(globalThis, "fetch");
+    fetchMock.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        job_id: "job-fail",
+        operation: "lesson_generation",
+        status: "failed",
+        payload: {},
+        result: null,
+        error: { message: "Provider down" },
+        created_at: "now",
+        updated_at: "now",
+      }),
+    } as Response);
+
+    await expect(
+      waitForJobResult({ job_id: "job-fail", operation: "lesson_generation", status: "queued" }, 1, 1)
+    ).rejects.toThrow("Provider down");
+
+    fetchMock.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        job_id: "job-timeout",
+        operation: "study_plan_generation",
+        status: "running",
+        payload: {},
+        result: null,
+        error: null,
+        created_at: "now",
+        updated_at: "now",
+      }),
+    } as Response);
+
+    await expect(
+      waitForJobResult({ job_id: "job-timeout", operation: "study_plan_generation", status: "queued" }, 1, 1)
+    ).rejects.toThrow("Timed out waiting for study_plan_generation");
   });
 
   it("hydrates lesson generation jobs through the service layer", async () => {

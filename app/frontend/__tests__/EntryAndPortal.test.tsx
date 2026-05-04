@@ -96,6 +96,24 @@ describe("Entry and portal components", () => {
     expect(screen.getAllByText("Fractions").length).toBeGreaterThan(0);
 
     render(
+      <InteractiveLesson
+        lesson={{
+          id: "lesson-2",
+          title: "Energy",
+          summary: "Power up.",
+          content: [{ heading: "Starter", body: "Let's explore energy." }, "It moves things."],
+        }}
+        subject="NS"
+        topic="Energy"
+        onBack={vi.fn()}
+        onComplete={vi.fn()}
+        loading
+      />
+    );
+    expect(screen.getByText("Starter")).toBeInTheDocument();
+    expect(screen.getByText("It moves things.")).toBeInTheDocument();
+
+    render(
       <>
         <Sidebar learner={{ learner_id: "learner-1", id: "learner-1", nickname: "Avi", grade: 4, avatar: 0 }} activeTab="dashboard" onTab={vi.fn()} onLogout={vi.fn()} />
         <BadgePopup badge="You did it!" onDismiss={vi.fn()} />
@@ -120,5 +138,98 @@ describe("Entry and portal components", () => {
 
     render(<ParentDashboard onBack={vi.fn()} />);
     await waitFor(() => screen.getByText(/Failed to load the parent dashboard./i));
+  });
+
+  it("renders no-session, empty, and no-gap parent states plus sidebar fallbacks", async () => {
+    render(<ParentDashboard onBack={vi.fn()} />);
+    await waitFor(() => screen.getByText(/Parent access requires a guardian session./i));
+
+    window.localStorage.setItem("guardian_id", "guardian-2");
+    vi.spyOn(services.ParentService, "getTrustDashboard").mockResolvedValueOnce({
+      guardian_id: "guardian-2",
+      subscription_tier: "free",
+      generated_at: "now",
+      learners: [],
+    });
+    vi.spyOn(services.ParentService, "getExportBundle").mockResolvedValueOnce({
+      guardian_id: "guardian-2",
+      subscription_tier: "free",
+      exports: [],
+    });
+
+    render(<ParentDashboard onBack={vi.fn()} />);
+    await waitFor(() => screen.getByText(/No active learners were found/i));
+
+    vi.spyOn(services.ParentService, "getTrustDashboard").mockResolvedValueOnce({
+      guardian_id: "guardian-2",
+      subscription_tier: "premium",
+      generated_at: "now",
+      learners: [
+        {
+          learner_id: "learner-2",
+          display_name: "Lebo",
+          grade_level: 5,
+          irt_theta: 1.1,
+          top_knowledge_gaps: [],
+          ai_progress_summary: "Steady and confident.",
+          lesson_completion_rate_7d: 92,
+          streak_days: 7,
+          export_url: "/api/v2/popia/data-export/learner-2",
+        },
+      ],
+    });
+    vi.spyOn(services.ParentService, "getExportBundle").mockResolvedValueOnce({
+      guardian_id: "guardian-2",
+      subscription_tier: "premium",
+      exports: [{ learner_id: "learner-2", display_name: "Lebo", export_url: "/api/v2/popia/data-export/learner-2" }],
+    });
+
+    render(<ParentDashboard onBack={vi.fn()} />);
+    await waitFor(() => screen.getByText(/No unresolved gaps/i));
+    expect(screen.getByText(/General archetype/i)).toBeInTheDocument();
+
+    vi.spyOn(context, "useLearner").mockReturnValue({
+      learner: { learner_id: "learner-2", id: "learner-2", nickname: "Lebo", grade: 5 },
+      setLearner: vi.fn(),
+      masteryData: {},
+      setMasteryData: vi.fn(),
+      gamification: null,
+      setGamification: vi.fn(),
+      refreshState: vi.fn(),
+      badge: null,
+      setBadge: vi.fn(),
+      loading: false,
+    });
+
+    render(
+      <Sidebar learner={{ learner_id: "learner-2", id: "learner-2", nickname: "Lebo", grade: 5 }} activeTab="dashboard" onTab={vi.fn()} onLogout={vi.fn()} />
+    );
+    expect(screen.getByText("LVL 1")).toBeInTheDocument();
+    expect(screen.getByText("0 XP")).toBeInTheDocument();
+
+    vi.spyOn(context, "useLearner").mockReturnValue({
+      learner: null,
+      setLearner: vi.fn(),
+      masteryData: {},
+      setMasteryData: vi.fn(),
+      gamification: null,
+      setGamification: vi.fn(),
+      refreshState: vi.fn(),
+      badge: null,
+      setBadge: vi.fn(),
+      loading: false,
+    });
+
+    const { container } = render(
+      <InteractiveLesson
+        lesson={{ title: "Hidden", content: "No learner context" }}
+        subject="MATH"
+        topic="Numbers"
+        onBack={vi.fn()}
+        onComplete={vi.fn()}
+        loading={false}
+      />
+    );
+    expect(container).toBeEmptyDOMElement();
   });
 });

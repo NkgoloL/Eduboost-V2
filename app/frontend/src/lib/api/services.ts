@@ -44,6 +44,12 @@ export const AuthService = {
 };
 
 export const LearnerService = {
+  registerLearner: (data: Record<string, unknown>) =>
+    fetchApi<ActiveLearner>("/learners/", {
+      method: "POST",
+      body: JSON.stringify(data),
+    }),
+
   getProfile: (learnerId: string) => fetchApi<ActiveLearner>(`/learners/${learnerId}`),
 
   getGamificationProfile: async (learnerId: string) =>

@@ -36,4 +36,27 @@ describe("InteractiveDiagnostic", () => {
 
     expect(onComplete).toHaveBeenCalled();
   });
+
+  it("surfaces empty-subject and mastered-all states", async () => {
+    vi.spyOn(services.DiagnosticService, "getItems")
+      .mockResolvedValueOnce([])
+      .mockResolvedValueOnce([
+        { item_id: "item-2", question_text: "Water freezes at?", options: ["0°C"], subject: "NS", topic: "Matter" },
+      ]);
+    vi.spyOn(services.DiagnosticService, "submit").mockResolvedValue({
+      theta_after: undefined,
+      ranked_gaps: [],
+    });
+
+    render(<InteractiveDiagnostic learner={learner} onComplete={vi.fn()} onBack={vi.fn()} />);
+
+    fireEvent.click(screen.getByText("English"));
+    await waitFor(() => screen.getByText(/No diagnostic items are available/i));
+
+    fireEvent.click(screen.getByText("Natural Science"));
+    await waitFor(() => screen.getByText("Water freezes at?"));
+    fireEvent.click(screen.getByText("0°C"));
+    await waitFor(() => screen.getByText(/You have mastered all current concepts!/i));
+    expect(screen.getByText("70%")).toBeInTheDocument();
+  });
 });

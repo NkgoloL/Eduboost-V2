@@ -38,7 +38,12 @@ export function ParentDashboard({ onBack }: ParentDashboardProps) {
         setDashboard(dashboardData);
         setExportBundle(exportData);
       } catch (err) {
-        setError(extractErrorMessage(err, "Failed to load the parent dashboard."));
+        const detail = extractErrorMessage(err, "");
+        setError(
+          detail && detail !== "Failed to load the parent dashboard."
+            ? `Failed to load the parent dashboard. ${detail}`
+            : "Failed to load the parent dashboard."
+        );
       } finally {
         setLoading(false);
       }
