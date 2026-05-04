@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useLearner } from "../../../context/LearnerContext";
 import { LearnerService } from "../../../lib/api/services";
 import { Card } from "../../../components/ui/Card";
+import { Button } from "../../../components/ui/Button";
 import { LoadingSpinner } from "../../../components/ui/LoadingSpinner";
 import { ErrorMessage } from "../../../components/ui/ErrorMessage";
 import type { StudyPlanItem, StudyPlanResponse } from "../../../lib/api/types";
@@ -120,12 +121,20 @@ export default function StudyPlanPage() {
       </Card>
 
       {!hasScheduledItems && (
-        <Card className="mb-8 p-8 border-dashed bg-[var(--surface)] text-center">
-          <h3 className="text-xl font-bold mb-2">No study blocks yet</h3>
-          <p className="text-[var(--muted)] mb-6">Take an assessment or generate a lesson so your plan can adapt.</p>
-          <button onClick={() => router.push("/diagnostic")} className="btn-primary">
-            Take Assessment
-          </button>
+        <Card className="mb-12 p-12 border-2 border-dashed border-[var(--border)] bg-[var(--surface)]/50 text-center rounded-3xl">
+          <div className="text-6xl mb-4">📅</div>
+          <h3 className="text-2xl font-bold mb-2">No study blocks yet</h3>
+          <p className="text-[var(--muted)] text-lg mb-8 max-w-md mx-auto">
+            Take a quick assessment or start your first lesson so we can build your personalized learning path.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button onClick={() => router.push("/diagnostic")} className="px-10">
+              Take Assessment
+            </Button>
+            <Button variant="secondary" onClick={() => router.push("/lesson")} className="px-10">
+              Browse Lessons
+            </Button>
+          </div>
         </Card>
       )}
 
@@ -136,10 +145,12 @@ export default function StudyPlanPage() {
 
           return (
             <div key={day} className={`flex flex-col md:flex-row gap-4 md:gap-8 ${isToday ? "relative" : ""}`}>
-              <div className="md:w-32 flex flex-row md:flex-col items-center justify-center gap-2 md:gap-1 md:pt-4">
-                <span className={`text-xl font-black uppercase tracking-normal ${isToday ? "text-[var(--blue)]" : "text-[var(--muted)]"}`}>{day}</span>
+              <div className="md:w-32 flex flex-col items-center md:items-start justify-start pt-2">
+                <span className={`text-xl font-black uppercase tracking-wider ${isToday ? "text-[var(--blue)]" : "text-[var(--muted)]"}`}>
+                  {day}
+                </span>
                 {isToday && (
-                  <span className="ml-2 md:ml-0 md:mt-1 bg-[var(--surface2)] text-[var(--blue)] text-[10px] px-2 py-0.5 rounded-full font-bold">
+                  <span className="mt-1 bg-blue-500/10 text-[var(--blue)] text-[10px] px-3 py-1 rounded-full font-black border border-blue-500/20">
                     TODAY
                   </span>
                 )}

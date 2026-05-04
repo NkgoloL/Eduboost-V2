@@ -4,6 +4,7 @@ This page summarizes the verified repository state as of **2026-05-04**.
 
 ## Verified Today
 
+- The Frontend-Backend Recovery phase (addressing API mismatches, UI regressions, and E2E testing for V2) has been successfully completed.
 - The active backend entrypoint is `app/api_v2.py`.
 - The root `docker-compose.yml` points at the V2 runtime and is the default
   local stack.

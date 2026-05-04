@@ -156,21 +156,26 @@ export default function LessonPage() {
                 setSubject(entry.code);
                 setTopic("");
               }}
-              className={`w-full flex items-center gap-4 p-4 rounded-2xl border-2 transition-all text-left ${
+              className={`w-full flex items-center gap-4 p-5 rounded-2xl border-2 transition-all text-left group hover:shadow-md ${
                 subject === entry.code
-                  ? "bg-[var(--surface)] border-[var(--gold)] shadow-lg scale-[1.02]"
-                  : "bg-[var(--surface)]/50 border-[var(--border)] hover:bg-[var(--surface)]"
+                  ? "bg-white dark:bg-[var(--surface)] border-[var(--gold)] shadow-lg scale-[1.03] z-10"
+                  : "bg-[var(--surface)]/40 border-[var(--border)] hover:border-[var(--muted)]/50"
               }`}
             >
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center text-xl shadow-sm"
+                className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl shadow-sm transition-transform group-hover:scale-110"
                 style={{ backgroundColor: `${entry.color}20`, color: entry.color }}
               >
                 {entry.icon}
               </div>
-              <span className={`font-bold ${subject === entry.code ? "text-[var(--text)]" : "text-[var(--muted)]"}`}>
-                {entry.label}
-              </span>
+              <div className="flex-1">
+                <span className={`block font-black text-lg ${subject === entry.code ? "text-[var(--text)]" : "text-[var(--muted)]"}`}>
+                  {entry.label}
+                </span>
+                {subject === entry.code && (
+                  <span className="text-[10px] font-bold text-[var(--gold)] uppercase tracking-tighter">Active Choice</span>
+                )}
+              </div>
             </button>
           ))}
         </div>
@@ -193,19 +198,26 @@ export default function LessonPage() {
                     <button
                       key={entry}
                       onClick={() => setTopic(entry)}
-                      className={`p-6 rounded-2xl border-2 transition-all text-left group ${
+                      className={`p-6 rounded-3xl border-2 transition-all text-left group relative overflow-hidden ${
                         topic === entry
-                          ? "bg-blue-600 border-blue-500 text-white shadow-xl scale-[1.02]"
-                          : "bg-[var(--surface2)] border-[var(--border)] text-[var(--text)] hover:border-blue-400"
+                          ? "bg-blue-600 border-blue-500 text-white shadow-2xl scale-[1.02]"
+                          : "bg-[var(--surface)] border-[var(--border)] text-[var(--text)] hover:border-blue-400 hover:shadow-md"
                       }`}
                     >
-                      <div className="flex items-center justify-between">
-                        <span className="font-bold text-lg">{entry}</span>
-                        {topic === entry && <span className="text-xl">✨</span>}
+                      <div className="relative z-10">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="font-black text-xl leading-tight">{entry}</span>
+                          {topic === entry && <span className="text-2xl animate-pulse">✨</span>}
+                        </div>
+                        <p className={`text-sm font-medium ${topic === entry ? "text-blue-100" : "text-[var(--muted)]"}`}>
+                          Personalized Grade {learner.grade} lesson with your AI tutor.
+                        </p>
                       </div>
-                      <p className={`text-sm mt-2 ${topic === entry ? "text-blue-100" : "text-[var(--muted)]"}`}>
-                        Interactive Grade {learner.grade} lesson with AI tutor.
-                      </p>
+                      {topic === entry && (
+                        <div className="absolute top-0 right-0 p-2 opacity-10 text-6xl pointer-events-none">
+                          🚀
+                        </div>
+                      )}
                     </button>
                   ))}
                 </div>

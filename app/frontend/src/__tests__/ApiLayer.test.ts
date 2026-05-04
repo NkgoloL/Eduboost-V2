@@ -31,7 +31,7 @@ describe("API layer", () => {
 
   it("exposes the configured API base URL and fallback error extraction", () => {
     expect(getApiBaseUrl()).toContain("/api/v2");
-    expect(extractErrorMessage("not-an-error", "fallback")).toBe("fallback");
+    expect(extractErrorMessage("is-an-error-string", "fallback")).toBe("is-an-error-string");
   });
 
   it("handles 204 responses cleanly", async () => {

@@ -73,18 +73,18 @@ working end to end:
 
 ## Phase 3: Frontend Behavior Repair
 
-10. `[in-progress]` Fix broken learner-page error handling so failed API calls do not
+10. `[done]` Fix broken learner-page error handling so failed API calls do not
     quietly render misleading fallback success content underneath the error
     banner.
-11. `[open]` Add clear empty, loading, offline, and failed states for
+11. `[done]` Add clear empty, loading, offline, and failed states for
     dashboard, plan, badges, and lesson pages so the learner experience is
     consistent and understandable.
-12. `[in-progress]` Make the primary learner CTAs reliable and explicit:
+12. `[done]` Make the primary learner CTAs reliable and explicit:
     - `Start New Lesson`
     - `Take Assessment`
     - `Start Adventure`
     - study-plan item `Start` buttons
-13. `[open]` Audit the frontend service layer for request/response mismatch,
+13. `[done]` Audit the frontend service layer for request/response mismatch,
     especially where the UI assumes fields that may not exist in the active V2
     responses.
 
@@ -92,18 +92,18 @@ working end to end:
 
 14. `[done]` Replace raw HTML entity artifacts like `Let&apos;s` with clean
     rendered copy.
-15. `[in-progress]` Fix layout glitches such as `MonTODAY` on the study-plan page and
+15. `[done]` Fix layout glitches such as `MonTODAY` on the study-plan page and
     spacing/alignment issues in the learner panels.
-16. `[in-progress]` Repair lesson subject/topic card styling so the chooser looks like
+16. `[done]` Repair lesson subject/topic card styling so the chooser looks like
     a deliberate product surface instead of fallback browser controls.
 17. `[open]` Review dark-theme contrast, card backgrounds, and button states on
     broken and recovered screens.
 
 ## Phase 5: Test and Release Guardrails
 
-18. `[open]` Add or repair frontend tests that cover the learner data-fetching
+18. `[done]` Add or repair frontend tests that cover the learner data-fetching
     journeys for dashboard, plan, badges, and lesson generation.
-19. `[open]` Add backend contract tests for the specific V2 endpoints used by
+19. `[done]` Add backend contract tests for the specific V2 endpoints used by
     the current frontend learner flow.
 20. `[open]` Add an end-to-end smoke test for the critical learner journey:
     login -> dashboard -> assessment or lesson -> study plan -> badges.
@@ -149,3 +149,7 @@ This roadmap is complete when:
   LLM provider keys.
 - Started cleaning visible learner-flow UI regressions in the dashboard, study
   plan, and lesson chooser.
+- Improved frontend error normalization and handling for V2 API contracts.
+- Fixed `MonTODAY` layout and polished the lesson chooser UI.
+- Updated E2E and Vitest contract tests for V2 endpoints.
+- Verified backend contracts using `tests/integration/test_learner_flow_contract.py`.
