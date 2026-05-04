@@ -11,7 +11,7 @@ from dataclasses import dataclass
 
 from app.core.config import get_settings
 from app.core.exceptions import LLMError
-from app.core.metrics import llm_latency_seconds, llm_requests_total, llm_tokens_total
+from app.core.metrics import llm_latency_seconds, llm_requests_total, record_llm_tokens
 
 logger = logging.getLogger(__name__)
 
@@ -85,8 +85,13 @@ class LLMGateway:
         llm_latency_seconds.labels(provider="groq").observe(duration)
         usage = completion.usage
         if usage:
-            llm_tokens_total.labels(provider="groq", direction="input").inc(usage.prompt_tokens)
-            llm_tokens_total.labels(provider="groq", direction="output").inc(usage.completion_tokens)
+            record_llm_tokens(
+                provider="groq",
+                model=cfg.groq_model,
+                operation="lesson_generation",
+                input_tokens=usage.prompt_tokens,
+                output_tokens=usage.completion_tokens,
+            )
 
         return LLMResponse(
             content=completion.choices[0].message.content or "",
@@ -115,8 +120,13 @@ class LLMGateway:
         duration = time.perf_counter() - start
 
         llm_latency_seconds.labels(provider="anthropic").observe(duration)
-        llm_tokens_total.labels(provider="anthropic", direction="input").inc(message.usage.input_tokens)
-        llm_tokens_total.labels(provider="anthropic", direction="output").inc(message.usage.output_tokens)
+        record_llm_tokens(
+            provider="anthropic",
+            model=cfg.anthropic_model,
+            operation="lesson_generation",
+            input_tokens=message.usage.input_tokens,
+            output_tokens=message.usage.output_tokens,
+        )
 
         return LLMResponse(
             content=message.content[0].text if message.content else "",
