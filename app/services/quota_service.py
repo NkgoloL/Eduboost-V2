@@ -30,6 +30,10 @@ _QUOTA_KEY = "quota:{guardian_id}:{date}"      # e.g. quota:uuid:2026-05-03
 _CACHE_KEY = "semcache:{hash}"                  # semantic cache
 
 
+class QuotaExceededError(RuntimeError):
+    """Compatibility exception for quota failures in lightweight unit tests."""
+
+
 class QuotaService:
     """
     Daily token quota enforcement.

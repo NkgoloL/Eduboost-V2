@@ -1,3 +1,3 @@
-"""Single source of truth for the EduBoost application version."""
+"""Compatibility wrapper for the archived legacy version shim."""
 
-__version__ = "0.2.0-rc1"
+from app.legacy.api.version import __version__
