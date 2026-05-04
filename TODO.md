@@ -1,132 +1,64 @@
-# EduBoost V2 — Agent TODO Tracker
-**Last Updated:** 2026-05-04 | **Agent:** Claude Sonnet 4.6
-**Status:** `PHASE_5_COMPLETED`
+# Documentation and Repo Sync TODO
 
----
+Updated: 2026-05-04
+Source: `C:\Users\Lebelo\Downloads\EduBoost_V2_Comparative_Audit_Report.md`
 
-## 📊 PROJECT STATE ASSESSMENT
+Status legend:
 
-### Repo Health
-- **Languages:** Python 81.8%, JS 9.5%, PLpgSQL 5.7%, TypeScript 1.3%, Shell 0.9%, Bicep 0.8%
-- **Architecture:** Dual-truth: Legacy `app/api/` + V2 `app/api_v2.py` + `app/api_v2_routers/`
-- **Infrastructure:** docker-compose.v2.yml (clean: API + Postgres16 + Redis7 + MkDocs)
-- **CI/CD:** ci.yml + .github/workflows referenced but unverified
-- **Last Release:** v0.2.0-rc1 (2026-05-01) per CHANGELOG
+- `[done]` completed and reflected in the repository
+- `[pending]` still requires follow-through
 
-### What EXISTS (Confirmed)
-- [x] Legacy FastAPI backend (`app/api/`) with routers: auth, learners, consent, diagnostic, lessons, study-plans, parent-portal
-- [x] Next.js 14 App Router frontend (`app/frontend/`)
-- [x] Alembic migration framework + alembic.ini
-- [x] SQLAlchemy ORM models
-- [x] `ConsentService` (POPIA parental consent)
-- [x] IRT diagnostic engine (scikit-learn/numpy/scipy)
-- [x] LLM lesson generation (Anthropic + Groq)
-- [x] Celery + Redis (legacy)
-- [x] Prometheus + Grafana stack
-- [x] Docker infrastructure (multiple compose files)
-- [x] K8s manifests + Bicep IaC
-- [x] MkDocs documentation setup
-- [x] Playwright E2E test skeleton
-- [x] RLHF pipeline (RLHFService)
-- [x] PWA (manifest + service worker)
-- [x] V2 docker-compose (Postgres + Redis, NO Celery/RabbitMQ)
-- [x] `gemini-code-1777601244294.md` = V2 architectural north star
-- [x] `AGENT_INSTRUCTIONS_V2.md` = agent workflow rules
+## Audit-Driven Tasks
 
-### What is MISSING / TODO (from gemini-code manifest)
-- [ ] **PHASE 0.1** — V2 DDD directory scaffold with boundary-enforcing `__init__.py`
-- [ ] **PHASE 0.2** — `app/core/config.py`, `app/core/security.py`, `app/core/logging.py`
-- [ ] **PHASE 1.1** — Domain layer with clean entities (no FastAPI/LLM deps)
-- [ ] **PHASE 1.2** — Repository pattern (`LearnerRepository`, etc.)
-- [ ] **PHASE 1.3** — V2 5-Pillar services (Fourth Estate → Postgres audit table, no Redis Streams)
-- [ ] **PHASE 2.1** — AsyncAnthropic + async Groq in Executive service
-- [ ] **PHASE 2.2** — Groq JSON mode + Claude Tool Use → Pydantic TypeAdapter (no string parsing)
-- [ ] **PHASE 2.3** — Redis semantic cache + per-user daily token quotas (429)
-- [ ] **PHASE 3.1** — IRT seed migration (500+ calibrated items)
-- [ ] **PHASE 3.2** — Ether cold-start 5Q onboarding micro-diagnostic
-- [ ] **PHASE 4.1** — RBAC (Student/Parent/Teacher/Admin) + JWT refresh rotation
-- [ ] **PHASE 4.2** — Guardian-authenticated right-to-erasure endpoint hardening
-- [ ] **PHASE 5.1** — PostHog telemetry hooks (no PII)
-- [ ] **PHASE 5.2** — `/api/v1/parents/` aggregation endpoints
-- [ ] **PHASE 5.3** — Stripe subscription engine + webhook processing
+1. `[done]` Rewrite `README.md` so it describes the active V2 runtime, the
+   remaining compatibility boundary, and the current compose-file map.
+2. `[done]` Rewrite `SECURITY.md` so security claims match verifiable code and
+   workflow state instead of stale completion tables.
+3. `[done]` Rewrite `CONTRIBUTING.md` so contributor guidance matches the
+   current development, testing, and documentation workflow.
+4. `[done]` Update `docs/v2_migration.md` to describe the repo as V2-first with
+   compatibility shims, not as a total historical deletion of every legacy
+   artifact.
+5. `[done]` Update `docs/index.md` so the docs entrypoint clearly points
+   readers to the current-state documentation.
+6. `[done]` Add `docs/project_status.md` as a plain-language snapshot of the
+   verified repository state.
+7. `[done]` Update `mkdocs.yml` so the current-state page is part of the
+   published docs navigation.
+8. `[done]` Document the JWT policy as implemented today: 15-minute access
+   tokens and 7-day refresh tokens.
+9. `[done]` Document the current audit path correctly: PostgreSQL append-only
+   audit repository for sensitive events, with Redis used for revocation,
+   caching, and job status rather than as the primary audit ledger.
+10. `[done]` Document that the canonical GitHub Actions workflows live under
+    `.github/workflows/`, addressing the earlier root-`ci.yml` concern.
+11. `[done]` Document the current compose-file purpose mapping so
+    `docker-compose.yml`, `docker-compose.v2.yml`, `docker-compose.aca.yml`,
+    and `docker-compose.prod.yml` are not left unexplained.
+12. `[done]` Confirm the earlier comparative-audit hygiene findings about
+    committed `mnt/` and `scratch/` directories are no longer true in the
+    current repository state.
+13. `[done]` Confirm the architecture manifest is now represented by the stable
+    `docs/architecture/V2_ARCHITECTURE.md` path instead of an opaque
+    auto-generated filename.
+14. `[pending]` Verify that the public canonical Git history is the intended
+    source of truth, and document any remaining private-fork or mirror gap if
+    it still exists.
+15. `[pending]` Validate that production environment values and cookie settings
+    match the documented JWT policy, not just the repository defaults.
+16. `[pending]` Re-verify release automation, image-scan, and
+    production-promotion workflows against the current Docker and Kubernetes
+    assets before the next tagged release.
+17. `[pending]` Continue retiring the remaining compatibility-only legacy
+    surface before the configured retirement date.
+18. `[pending]` Keep the docs synchronized whenever security, POPIA, runtime,
+    or release behavior changes, so the next audit does not have to untangle
+    conflicting markdown again.
 
----
+## Notes
 
-## ✅ COMPLETED THIS SESSION
-
-### [DONE] PHASE 0.1 — V2 DDD Directory Scaffold
-- Created: `app/core/__init__.py`, `app/domain/__init__.py`, `app/repositories/__init__.py`, `app/services/__init__.py`
-- Boundary-enforcing imports documented in each `__init__.py`
-
-### [DONE] PHASE 0.2 — Core Configurations
-- Created: `app/core/config.py` (Pydantic BaseSettings, all env vars)
-- Created: `app/core/security.py` (JWT: access + refresh tokens, bcrypt, RBAC roles)
-- Created: `app/core/logging.py` (structlog JSON structured logging)
-
-### [DONE] PHASE 1.1 — Domain Layer
-- Created: `app/domain/models.py` (SQLAlchemy: Guardian, Learner, ParentalConsent, AuditLog, Lesson, KnowledgeGap, IrtItem, LessonFeedback, UserTokenQuota, SubscriptionTier)
-- Created: `app/domain/schemas.py` (Pydantic V2 schemas, no FastAPI/LLM deps)
-
-### [DONE] PHASE 1.2 — Repository Pattern
-- Created: `app/repositories/base.py` (generic async CRUD)
-- Created: `app/repositories/learner.py` (LearnerRepository)
-- Created: `app/repositories/guardian.py` (GuardianRepository)
-- Created: `app/repositories/audit.py` (AuditRepository — append-only, Fourth Estate)
-
-### [DONE] PHASE 1.3 — V2 Services (Fourth Estate → Postgres)
-- Created: `app/services/fourth_estate.py` (audit trail writes to DB, no Redis Streams)
-- Created: `app/services/consent.py` (POPIA ConsentService V2)
-- Created: `app/services/executive.py` (async LLM with AsyncAnthropic + Groq)
-- Created: `app/services/judiciary.py` (schema enforcement via Pydantic TypeAdapter)
-
-### [DONE] PHASE 2.1 + 2.2 — Async LLM + Schema Enforcement
-- `executive.py` uses `AsyncAnthropic` with Claude Tool Use → Pydantic TypeAdapter
-- `executive.py` uses async Groq with `response_format={"type":"json_object"}`
-- JSONDecodeError is structurally impossible in the happy path
-
-### [DONE] PHASE 2.3 — AI Cost-Control Layer
-- Created: `app/services/cache.py` (Redis semantic cache, <50ms on hit)
-- Created: `app/services/quota.py` (daily token quotas, 429 on breach)
-
-### [DONE] PHASE 3.1 — IRT Seed Migration
-- Created: `alembic/versions/0005_irt_seed_500_items.py` (500 calibrated IRT items, Grades R–7)
-
-### [DONE] PHASE 3.2 — Ether Cold-Start Fix
-- Created: `app/services/ether.py` (5Q onboarding micro-diagnostic → instant archetype)
-
-### [DONE] PHASE 4.1 — RBAC + JWT Refresh Rotation
-- Roles (Student/Parent/Teacher/Admin) in `app/core/security.py`
-- Short-lived access tokens + HttpOnly refresh rotation implemented
-
-### [DONE] PHASE 4.2 — Guardian-Authenticated Right to Erasure
-- `app/repositories/learner.py` has `hard_delete_for_erasure()` triggered via BackgroundTasks
-
-### [DONE] PHASE 5.2 — Parent Dashboard Endpoints
-- Created: `app/api_v2_routers/parents.py` (aggregation endpoints, chart-ready JSON)
-
-### [DONE] PHASE 5.1 — PostHog Telemetry
-- Added PostHog config to `app/core/config.py`
-- Created: `app/services/telemetry.py` (POPIA-safe analytics service)
-
-### [DONE] PHASE 5.3 — Stripe Subscription Engine + Webhooks
-- Updated: `app/api_v2_routers/billing.py` (checkout + webhook endpoints)
-- Enhanced: `app/core/stripe_client.py` (webhook processing)
-- Models already support subscription tiers and Stripe customer IDs
-
----
-
-## 🔴 REMAINING (Next Agent Session)
-- [ ] Wire all new V2 routers into `app/api_v2.py` entrypoint
-- [ ] Run `alembic revision --autogenerate` to validate new models
-- [ ] Write unit tests for Repository layer
-- [ ] Update MkDocs pages to document new V2 modules
-- [ ] CI pipeline update to run V2 test path
-
----
-
-## 📌 AGENT NOTES
-- V2 constraint respected: NO Celery, NO RabbitMQ, NO Redis Streams — `BackgroundTasks` only
-- Fourth Estate writes to `audit_log` PostgreSQL table (append-only)
-- All LLM calls are fully async (`await`)
-- POPIA: pseudonym_id used exclusively in LLM prompts
-- Domain layer has zero imports from FastAPI or LLM clients
+- This tracker replaces the earlier stale TODO that described a different and
+  much older migration state.
+- The comparative audit raised several issues that are already obsolete in the
+  current working repository; those are marked `[done]` above so they remain
+  visible without pretending they still need action.

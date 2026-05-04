@@ -1,51 +1,64 @@
 # V2 Migration Guide
 
-This page now serves mainly as a record of what changed during the cutover to
-the V2 modular monolith.
+This page is the migration ledger for EduBoost SA. It explains what has
+actually moved to the V2 surface, what compatibility code still exists, and
+which cleanup steps remain.
 
-## Goals
-- move business logic into `app/services`
-- isolate persistence in `app/repositories`
-- keep domain entities in `app/domain`
-- make `app/api_v2.py` the primary API surface
-- phase out broker-first and task-queue-first architecture for the main product path
+## What V2 Means Here
 
-## Current V2 Capabilities
-- learner reads
-- auth/session issuance and refresh rotation
-- diagnostics
-- study plans
-- parent reports
-- append-only audit logging target
-- quota enforcement and caching
-- V2 service package boundary for routers/tests
-- frontend API client defaulting to `/api/v2`
-- single-command V2 compose stack including frontend, API, docs, Postgres, and Redis
+In the current repository state:
 
-## Completed Outcomes
+- `app/api_v2.py` is the active FastAPI entrypoint for new work.
+- `app/api_v2_routers/`, `app/services/`, `app/repositories/`, `app/core/`,
+  and `app/modules/` hold the main V2 implementation path.
+- `docker compose up --build` starts the V2-oriented local stack.
+- The frontend defaults to the V2 API surface.
 
-- V2 is the default local runtime through `docker compose up --build`
-- `app/api` is now a compatibility wrapper over `app/legacy`
-- long-running tasks use `BackgroundTasks` plus Redis job polling
-- requirements are split into base, dev, docs, and ml lockfiles
-- frontend API contracts are fully TypeScript-checked
-- MkDocs now covers the V2 package surface
+## What Still Exists for Compatibility
 
-## Current Route Migration Progress
-- auth → V2 router package
-- learner read → V2 router package
-- diagnostics → V2 router package
-- study plans → V2 router package
-- parent reports → V2 router package
-- audit feed → V2 router package
+The migration is far enough along that V2 is the default development path, but
+not so complete that every historical surface has vanished.
 
-The following route families are now available in the V2 route surface:
-- lessons
-- gamification
-- system
-- assessments
+The repository still keeps:
 
-The active compatibility boundary is now intentionally narrow:
+- [`app/api/main.py`](/app/api/main.py) as a compatibility import shim
+- archived legacy runtime code under [`app/legacy`](/app/legacy/DEPRECATED.md)
+- a narrow set of migration-era compatibility behaviors instead of a total
+  hard delete of every old path
 
-- `app.api.main` import compatibility
-- `POST /api/v1/lessons/generate` returning `410 Gone`
+That means the repository should be described as "V2-first with compatibility
+shims", not as "every legacy artifact has been erased from history."
+
+## Current Verified V2 Behaviors
+
+- auth and role-aware access control live in the V2 runtime
+- learner, diagnostics, study-plan, lesson, parent, consent, and system route
+  families exist in the V2 surface
+- long-running actions use FastAPI background work plus Redis-backed job status
+- Redis supports cache, token revocation, and job polling
+- sensitive audit events are written through the append-only PostgreSQL audit
+  repository
+- dependency locks are split into base, dev, docs, and ml groups
+
+## Compose and Environment Mapping
+
+- `docker-compose.yml` - default local development stack
+- `docker-compose.v2.yml` - explicit V2 stack variant
+- `docker-compose.aca.yml` - Azure Container Apps-oriented setup
+- `docker-compose.prod.yml` - production-like compose workflow
+
+Use the root Compose file unless you are intentionally targeting one of the
+specialized environments above.
+
+## Remaining Migration Work
+
+The migration is not "done forever." The main follow-up items are:
+
+- retire the remaining compatibility-only legacy surface on schedule
+- keep the docs aligned with the actual security/runtime behavior
+- keep release automation and production-promotion steps verified against the
+  current repo layout
+- keep public and internal audit narratives synchronized
+
+See [`docs/project_status.md`](/docs/project_status.md) and the root
+[`TODO.md`](/TODO.md) for the live tracking view.

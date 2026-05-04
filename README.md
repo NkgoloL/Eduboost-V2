@@ -3,24 +3,31 @@
 [![CI/CD](https://github.com/NkgoloL/Eduboost-V2/actions/workflows/ci-cd.yml/badge.svg?branch=master)](https://github.com/NkgoloL/Eduboost-V2/actions/workflows/ci-cd.yml)
 [![Coverage](https://img.shields.io/badge/Coverage-80%25%2B-brightgreen)](/app/frontend/coverage/index.html)
 [![Security Scans](https://img.shields.io/badge/Security-Scanned-blue)](/SECURITY.md)
-[![POPIA](https://img.shields.io/badge/POPIA-Compliant-success)](/docs/POPIA_COMPLIANCE.md)
+[![POPIA](https://img.shields.io/badge/POPIA-Tracked-success)](/docs/POPIA_COMPLIANCE.md)
 [![CAPS](https://img.shields.io/badge/CAPS-Aligned-00897B)](https://www.education.gov.za)
 
-EduBoost SA is a V2 modular monolith for adaptive learning in South African
-primary education. It serves CAPS-aligned diagnostics, study plans, lesson
-generation, parent reporting, consent management, and compliance workflows
-through a single FastAPI runtime and a typed Next.js frontend.
+EduBoost SA is a modular learning platform for South African primary education.
+The active implementation path is the V2 FastAPI runtime plus the Next.js
+frontend, with a small compatibility surface still kept around for legacy
+imports and controlled migration behavior.
 
 ## Current State
 
-- V2 is the sole supported runtime.
-- The default local stack is `docker compose up --build`.
-- POPIA consent, right-to-erasure, append-only audit logging, and PII export
-  gates are implemented in the active runtime.
-- Background work uses FastAPI `BackgroundTasks` plus a Redis job store instead
-  of the old Celery-first path.
-- Legacy imports are archived under [`app/legacy`](/app/legacy/DEPRECATED.md)
-  and exposed only through compatibility shims.
+- `app/api_v2.py` is the active backend entrypoint for new work.
+- `docker compose up --build` is the default local stack and points at the V2
+  runtime.
+- Legacy code has been archived behind compatibility shims under
+  [`app/legacy`](/app/legacy/DEPRECATED.md) and [`app/api/main.py`](/app/api/main.py).
+- Redis is used for caching, token revocation, and background job status.
+- Sensitive audit events are persisted through the V2 append-only PostgreSQL
+  audit repository.
+- The repository still carries migration-era artifacts, so documentation should
+  be read as "current master state", not as a promise that every legacy surface
+  is already retired.
+
+For the current documentation sync status, see
+[`docs/project_status.md`](/docs/project_status.md) and the root
+[`TODO.md`](/TODO.md).
 
 ## Quick Start
 
@@ -30,14 +37,14 @@ through a single FastAPI runtime and a typed Next.js frontend.
 - Python 3.11+
 - Node.js 20 LTS
 
-### Start the full stack
+### Start the default stack
 
 ```bash
 cp .env.example .env
 docker compose up --build
 ```
 
-Services:
+Useful URLs:
 
 - Frontend: `http://localhost:3050`
 - API: `http://localhost:8000`
@@ -55,14 +62,14 @@ pip install -r requirements/dev.txt
 cd app/frontend && npm ci
 ```
 
-Run the backend checks:
+Run backend checks:
 
 ```bash
 pytest tests/ -v --tb=short
 python scripts/popia_sweep.py --fail-on-issues
 ```
 
-Run the frontend checks:
+Run frontend checks:
 
 ```bash
 cd app/frontend
@@ -72,42 +79,59 @@ npm run type-check
 npm run lint
 ```
 
-## Architecture
+## Runtime Layout
 
-The system is organized as a modular monolith with strict boundaries:
+The codebase is organized as a modular monolith:
 
-- `app/api_v2.py` — FastAPI entrypoint
-- `app/api_v2_routers/` — HTTP routes
-- `app/services/` — business workflows
-- `app/repositories/` — persistence layer
-- `app/domain/` — request/response and domain contracts
-- `app/core/` — shared runtime kernel
-- `app/modules/` — adaptive engines such as IRT and archetype onboarding
+- `app/api_v2.py` - FastAPI entrypoint
+- `app/api_v2_routers/` - HTTP routes
+- `app/services/` - application workflows
+- `app/repositories/` - persistence layer
+- `app/domain/` - contracts and domain models
+- `app/core/` - shared runtime kernel
+- `app/modules/` - learning engines and bounded modules
 
-The architecture record lives in
-[`docs/architecture/V2_ARCHITECTURE.md`](/docs/architecture/V2_ARCHITECTURE.md).
+Legacy compatibility notes:
 
-## Key Capabilities
+- [`app/api/main.py`](/app/api/main.py) remains as an import shim.
+- Archived legacy runtime code lives under [`app/legacy`](/app/legacy/DEPRECATED.md).
+- V1 behavior that should no longer be used is intentionally narrowed rather
+  than silently preserved.
 
-- Adaptive IRT diagnostics and gap ranking
-- CAPS-scoped lesson generation with schema validation and semantic caching
-- Redis-backed async job polling for long-running AI work
-- Parent Trust Dashboard with export links and progress summaries
-- POPIA consent enforcement, annual renewal reminders, and right-to-erasure
-- Stripe subscription gating for free vs premium AI quotas
-- PostHog and Prometheus instrumentation for product and runtime telemetry
-- Offline-capable PWA lesson sync
+## Compose File Map
+
+The repository contains multiple Compose files on purpose:
+
+- `docker-compose.yml` - default local V2 stack
+- `docker-compose.v2.yml` - explicit V2-focused compose variant
+- `docker-compose.aca.yml` - Azure Container Apps-oriented stack
+- `docker-compose.prod.yml` - production-like compose path
+
+If you are unsure which to use, start with `docker compose up --build` at the
+repository root.
+
+## Security and Compliance Snapshot
+
+- Access tokens default to 15 minutes; refresh tokens default to 7 days.
+- JWT revocation is backed by Redis.
+- POPIA consent and erasure workflows are tracked in the active V2 surface.
+- Security and compliance claims are documented in [`SECURITY.md`](/SECURITY.md)
+  and are written to match the current repository state as closely as possible.
+
+Operational readiness still depends on green CI, successful migrations, and a
+verified release path. This repository should not claim more than those checks
+can prove.
 
 ## Dependency Layout
 
 Python dependencies are split by environment:
 
-- `requirements/base.txt` — runtime
-- `requirements/dev.txt` — tests, linting, typing, and tooling
-- `requirements/docs.txt` — MkDocs and doc generation
-- `requirements/ml.txt` — optional ML extras
+- `requirements/base.txt` - runtime
+- `requirements/dev.txt` - tests, linting, typing, and tooling
+- `requirements/docs.txt` - MkDocs and doc generation
+- `requirements/ml.txt` - optional ML extras
 
-The editable sources for pinned locks are:
+The editable inputs for those lockfiles are:
 
 - `requirements/base.in`
 - `requirements/dev.in`
@@ -116,17 +140,12 @@ The editable sources for pinned locks are:
 
 ## Documentation
 
+- Status snapshot: [`docs/project_status.md`](/docs/project_status.md)
 - Architecture: [`docs/architecture/V2_ARCHITECTURE.md`](/docs/architecture/V2_ARCHITECTURE.md)
 - Migration guide: [`docs/v2_migration.md`](/docs/v2_migration.md)
 - POPIA notes: [`docs/POPIA_COMPLIANCE.md`](/docs/POPIA_COMPLIANCE.md)
-- API reference: `mkdocs serve` or `docker compose up --build`
+- Security policy: [`SECURITY.md`](/SECURITY.md)
+- Contribution guide: [`CONTRIBUTING.md`](/CONTRIBUTING.md)
 
-## Compatibility Notes
-
-Legacy runtime files are archived, not active:
-
-- [`app/legacy/DEPRECATED.md`](/app/legacy/DEPRECATED.md)
-- [`app/api/main.py`](/app/api/main.py) remains as a compatibility import shim
-- `POST /api/v1/lessons/generate` returns `410 Gone`
-
-New work should land only in the V2 runtime surface.
+Use `mkdocs serve` or `docker compose up --build` to browse the generated docs
+site locally.
