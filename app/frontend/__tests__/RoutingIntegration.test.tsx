@@ -1,5 +1,5 @@
 import React from "react";
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { LearnerProvider } from "../src/context/LearnerContext";
 import DashboardPage from "../src/app/(learner)/dashboard/page";

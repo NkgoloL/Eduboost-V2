@@ -9,6 +9,7 @@ import type {
   JobAcceptedResponse,
   LessonJobResult,
   LessonPayload,
+  OfflineLessonSyncEvent,
   MasteryResponse,
   ParentExportBundle,
   ParentTrustDashboardResponse,
@@ -78,7 +79,7 @@ export const LearnerService = {
       method: "POST",
     }),
 
-  syncLessonResponses: (responses: Array<Record<string, unknown>>) =>
+  syncLessonResponses: (responses: OfflineLessonSyncEvent[]) =>
     fetchApi<{ processed: number; queued: number }>("/lessons/sync", {
       method: "POST",
       body: JSON.stringify({ responses }),

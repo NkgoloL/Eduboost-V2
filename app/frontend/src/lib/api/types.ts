@@ -57,11 +57,18 @@ export interface LessonSection {
   body?: string;
 }
 
+export interface OfflineLessonSyncEvent {
+  lesson_id: string;
+  event_type: "complete" | "feedback";
+  completed_at?: string;
+  score?: number;
+}
+
 export interface LessonPayload {
   id?: string;
   title: string;
   summary?: string;
-  content?: string | LessonSection[];
+  content?: string | Array<LessonSection | string>;
   subject?: SubjectCode;
   topic?: string;
   cache_hit?: boolean;

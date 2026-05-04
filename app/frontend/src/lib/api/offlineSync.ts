@@ -1,15 +1,8 @@
 import { LearnerService } from "./services";
-import type { LessonPayload } from "./types";
+import type { LessonPayload, OfflineLessonSyncEvent } from "./types";
 
 const LESSON_SYNC_QUEUE_KEY = "eb_offline_lesson_sync_queue";
 const LESSON_CACHE_PREFIX = "eb_cached_lesson:";
-
-export interface OfflineLessonSyncEvent {
-  lesson_id: string;
-  event_type: "complete" | "feedback";
-  completed_at?: string;
-  score?: number;
-}
 
 function safeWindow() {
   return typeof window !== "undefined" ? window : null;
