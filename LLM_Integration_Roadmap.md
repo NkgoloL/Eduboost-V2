@@ -4,29 +4,29 @@ This roadmap outlines the systematic integration of **DeepSeek v4 (via Hugging F
 
 ## Phase 1: Infrastructure & Inference Setup
 
-1. **[ ] Provision GPU Infrastructure**
-   - Identify and provision suitable GPU infrastructure (AWS EC2) capable of handling the VRAM requirements for DeepSeek v4 (either quantized or full-precision).
-2. **[ ] Set Up Hugging Face Ecosystem**
-   - Authenticate with Hugging Face (`huggingface-cli login`).
-   - Install required dependencies: `transformers`, `accelerate`, `peft`, `bitsandbytes` (for quantization), and `trl`.
+1. **[ ] Provision GPU Infrastructure** [BLOCKED: ACCOUNT RESTRICTED TO FREE TIER]
+   - Identify and provision suitable GPU infrastructure (AWS EC2) capable of handling the VRAM requirements for DeepSeek v4.
+2. **[x] Set Up Hugging Face Ecosystem**
+   - Authenticate with Hugging Face (`huggingface-cli login`). [DONE]
+   - Install required dependencies: `transformers`, `accelerate`, `peft`, `bitsandbytes`, and `trl`. [DONE]
 3. **[ ] Deploy Inference Server**
    - Set up an optimized inference engine like **vLLM** or **Text Generation Inference (TGI)** to serve the base DeepSeek v4 model.
    - Expose the model via an OpenAI-compatible REST API.
-4. **[ ] Initial EduBoost Connection**
-   - Update `app/core/config.py` and `.env` to point the `INFERENCE_SERVICE_URL` to the new local/hosted DeepSeek v4 endpoint.
-   - Verify basic connectivity between the EduBoost FastAPI backend and the model.
+4. **[/] Initial EduBoost Connection**
+   - Update `app/core/config.py` and `.env` to point the `INFERENCE_SERVICE_URL` to the new endpoint. [DONE]
+   - Verify basic connectivity between the EduBoost FastAPI backend and the model. [PENDING INFRASTRUCTURE]
 
 ## Phase 2: CAPS Dataset Curation & Preparation
 
-5. **[ ] Scrape Department of Education Website**
+5. **[x] Scrape Department of Education Website** [DONE]
    - Write a scraping pipeline using `Playwright` and `BeautifulSoup`.
    - Target `education.gov.za` to systematically download all official PDF/text documents for the South African CAPS curriculum, focusing on Primary Education (Grade R-7) subjects.
 6. **[ ] Data Storage Strategy**
    - Store the raw scraped PDFs in the existing Cloudflare R2 bucket (`eduboost-assets`) to minimize costs.
    - During fine-tuning, sync these files to the EC2 instance's local high-speed EBS volume (200GB+).
-7. **[ ] Extract and Clean Data**
+7. **[x] Extract and Clean Data** [DONE]
    - Process the curriculum documents to extract learning outcomes, topics, assessment criteria, and pedagogical guidelines.
-7. **[ ] Construct Instruction-Tuning Dataset**
+8. **[x] Construct Instruction-Tuning Dataset** [DONE]
    - Format the extracted data into an instruction-response JSONL format suitable for LLM fine-tuning.
    - Example format: `{"instruction": "Generate a Grade 4 Mathematics lesson on fractions according to CAPS guidelines.", "output": "..."}`
 8. **[ ] Create Pedagogical Guardrails Dataset**

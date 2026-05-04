@@ -64,7 +64,9 @@ class Settings(BaseSettings):
     # ── LLM Providers ────────────────────────────────────────────────────────
     ANTHROPIC_API_KEY: str = ""
     GROQ_API_KEY: str = ""
+    HUGGINGFACE_API_KEY: str = ""
     ANTHROPIC_MODEL: str = "claude-sonnet-4-20250514"
+    INFERENCE_SERVICE_URL: str = "http://localhost:9100"
     LLM_TIMEOUT_SECONDS: int = 30
     LLM_MAX_RETRIES: int = 2
 

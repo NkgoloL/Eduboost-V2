@@ -137,7 +137,7 @@ INSTANCE_ID="$(aws ec2 run-instances \
   --subnet-id "${SUBNET_ID}" \
   --security-group-ids "${SG_ID}" \
   --instance-initiated-shutdown-behavior terminate \
-  --instance-market-options "MarketType=spot,SpotOptions={MaxPrice=${MAX_SPOT_PRICE},SpotInstanceType=one-time,InstanceInterruptionBehavior=terminate}" \
+  --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=one-time,InstanceInterruptionBehavior=terminate}" \
   --block-device-mappings "DeviceName=/dev/sda1,Ebs={VolumeSize=${VOLUME_SIZE_GB},VolumeType=gp3,DeleteOnTermination=true}" \
   --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=eduboost-gpu-training},{Key=Project,Value=EduBoost},{Key=Purpose,Value=LLM-FineTuning},{Key=MaxRuntimeHours,Value=${MAX_RUNTIME_HOURS}},{Key=R2Bucket,Value=${R2_BUCKET_NAME}}]" \
   --user-data "file://${USER_DATA}" \
