@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.core.security import get_current_user
+from app.repositories.gamification_repository import GamificationRepository
 from app.repositories.repositories import LearnerRepository, LessonRepository
 from app.services.consent import ConsentService
 from app.services.fourth_estate import FourthEstateService
@@ -29,7 +30,10 @@ async def get_profile(
     current_user: dict = Depends(get_current_user),
 ):
     await ConsentService(db).require_active_consent(learner_id, actor_id=current_user.get("sub"))
-    return await GamificationServiceV2().get_profile(learner_id)
+    try:
+        return await GamificationServiceV2(GamificationRepository(db)).get_profile(learner_id)
+    except ValueError as exc:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found") from exc
 
 
 @router.post("/award-xp")
@@ -65,5 +69,5 @@ async def award_xp(
 
 
 @router.get("/leaderboard")
-async def get_leaderboard(limit: int = 10):
-    return await GamificationServiceV2().leaderboard(limit=limit)
+async def get_leaderboard(limit: int = 10, db: AsyncSession = Depends(get_db)):
+    return await GamificationServiceV2(GamificationRepository(db)).leaderboard(limit=limit)

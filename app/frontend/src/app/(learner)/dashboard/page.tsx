@@ -128,7 +128,7 @@ export default function DashboardPage() {
               <div className="flex-1 space-y-6">
                 <p className="text-lg text-[var(--text)] font-medium leading-relaxed">
                   You have mastered <strong>{overallMastery}%</strong> of your curriculum goals.
-                  {overallMastery > 50 ? " Keep up the amazing work!" : " Let&apos;s boost those scores today!"}
+                  {overallMastery > 50 ? " Keep up the amazing work!" : " Let's boost those scores today!"}
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Button onClick={() => router.push("/lesson")} className="px-8 shadow-lg shadow-blue-500/20">

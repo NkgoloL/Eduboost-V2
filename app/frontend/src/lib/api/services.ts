@@ -2,6 +2,7 @@ import { fetchApi, waitForJobResult } from "./client";
 import type {
   ActiveLearner,
   AuthTokenResponse,
+  DevSessionResponse,
   DiagnosticAnswerInput,
   DiagnosticItem,
   DiagnosticResult,
@@ -41,6 +42,11 @@ export const AuthService = {
     fetchApi<AuthTokenResponse>("/auth/login", {
       method: "POST",
       body: JSON.stringify(data),
+    }),
+
+  createDevSession: () =>
+    fetchApi<DevSessionResponse>("/auth/dev-session", {
+      method: "POST",
     }),
 };
 

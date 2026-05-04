@@ -17,6 +17,22 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const bootstrapDevSession = async (target: "learner" | "parent") => {
+    setError("");
+    setLoading(true);
+    try {
+      const res = await AuthService.createDevSession();
+      localStorage.setItem("guardian_token", res.access_token);
+      localStorage.setItem("guardian_id", res.guardian_id);
+      setLearner(res.learner);
+      router.push(target === "parent" ? "/parent-dashboard" : "/dashboard");
+    } catch (err) {
+      setError(extractErrorMessage(err, "Failed to create a dev session"));
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
@@ -88,20 +104,13 @@ export default function LoginPage() {
         ) : (
           <div className="text-center py-4 text-gray-500 flex flex-col gap-3">
             <p>Learner login flow is under construction.</p>
-            <Button 
-              onClick={() => {
-                setLearner({
-                  learner_id: "550e8400-e29b-41d4-a716-446655440000",
-                  nickname: "DevLearner",
-                  grade: 3,
-                  avatar: 0
-                });
-                router.push("/dashboard");
-              }} 
+            <Button
+              onClick={() => void bootstrapDevSession("learner")}
               variant="secondary" 
               className="bg-green-50 text-green-700 border-green-200"
+              disabled={loading}
             >
-              Bypass Login (Dev) →
+              {loading ? "Preparing dev learner..." : "Bypass Login (Dev) →"}
             </Button>
           </div>
         )}
@@ -115,16 +124,14 @@ export default function LoginPage() {
 
       {isParent && (
         <div className="mt-4">
-          <Button 
-            onClick={() => {
-              localStorage.setItem("guardian_token", "dev-token");
-              router.push("/parent-dashboard");
-            }} 
+          <Button
+            onClick={() => void bootstrapDevSession("parent")}
             variant="secondary" 
             fullWidth 
             className="bg-yellow-50 text-yellow-700 border-yellow-200"
+            disabled={loading}
           >
-            Bypass Parent Login (Dev) →
+            {loading ? "Preparing dev parent..." : "Bypass Parent Login (Dev) →"}
           </Button>
         </div>
       )}

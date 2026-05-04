@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useLearner } from "../../../context/LearnerContext";
 import { LearnerService } from "../../../lib/api/services";
 import { Card } from "../../../components/ui/Card";
@@ -13,6 +14,7 @@ export default function StudyPlanPage() {
   const [plan, setPlan] = useState<StudyPlanResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     if (!learner?.learner_id) {
@@ -84,7 +86,7 @@ export default function StudyPlanPage() {
 
           return (
             <div key={day} className={`flex flex-col md:flex-row gap-4 md:gap-8 ${isToday ? "relative" : ""}`}>
-              <div className="md:w-32 flex flex-row md:flex-col items-center justify-center md:pt-4">
+              <div className="md:w-32 flex flex-row md:flex-col items-center justify-center gap-2 md:gap-1 md:pt-4">
                 <span className={`text-xl font-black uppercase tracking-tighter ${isToday ? "text-blue-600" : "text-gray-300"}`}>{day}</span>
                 {isToday && (
                   <span className="ml-2 md:ml-0 md:mt-1 bg-blue-100 text-blue-600 text-[10px] px-2 py-0.5 rounded-full font-bold">
@@ -131,11 +133,13 @@ export default function StudyPlanPage() {
                         </p>
                       </div>
                       <button
+                        onClick={() => router.push("/lesson")}
                         className={`px-6 py-2 rounded-xl font-bold transition-all ${
                           item.type === "completed"
                             ? "bg-green-50 text-green-600 cursor-default"
                             : "bg-gray-100 text-gray-600 hover:bg-blue-600 hover:text-white"
                         }`}
+                        disabled={item.type === "completed"}
                       >
                         {item.type === "completed" ? "Done" : "Start"}
                       </button>

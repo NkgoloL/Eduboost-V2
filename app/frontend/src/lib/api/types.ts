@@ -19,6 +19,11 @@ export interface AuthTokenResponse {
   expires_in?: number;
 }
 
+export interface DevSessionResponse extends AuthTokenResponse {
+  guardian_id: string;
+  learner: ActiveLearner;
+}
+
 export interface ApiErrorShape {
   detail?: string;
   message?: string;
