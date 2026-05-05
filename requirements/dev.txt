@@ -254,7 +254,9 @@ playwright==1.44.0
     #   -r requirements/dev.in
     #   pytest-playwright
 pluggy==1.6.0
-    # via pytest
+    # via
+    #   pytest
+    #   pytest-cov
 posthog==7.11.2
     # via -r requirements/base.in
 pre-commit==3.7.1
@@ -312,7 +314,7 @@ pytest-asyncio==0.23.7
     # via -r requirements/dev.in
 pytest-base-url==2.1.0
     # via pytest-playwright
-pytest-cov==5.0.0
+pytest-cov==7.1.0
     # via -r requirements/dev.in
 pytest-mock==3.14.0
     # via -r requirements/dev.in
