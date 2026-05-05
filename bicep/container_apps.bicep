@@ -153,7 +153,7 @@ resource eduboostApi 'Microsoft.App/containerApps@2023-05-01' = {
             {
               type: 'Readiness'
               httpGet: {
-                path: '/health'
+                path: '/ready'
                 port: 8000
               }
               initialDelaySeconds: 10

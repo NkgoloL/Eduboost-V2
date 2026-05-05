@@ -55,6 +55,11 @@ jobs:
       - name: Enforce DDD import boundaries
         run: lint-imports
 
+      - name: Lint Markdown
+        run: |
+          pip install pymarkdownlnt
+          pymarkdown scan docs/ audits/ README.md
+
   # -------------------------------------------------------------------------
   # UNIT TESTS
   # -------------------------------------------------------------------------
@@ -344,7 +349,8 @@ jobs:
       - uses: docker/build-push-action@v5
         with:
           context: .
-          file: docker/Dockerfile.api
+          file: docker/Dockerfile.v2
+          target: production
           tags: eduboost-api:scan
           cache-from: type=gha
           cache-to: type=gha,mode=max

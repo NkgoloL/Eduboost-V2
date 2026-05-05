@@ -1,21 +1,59 @@
+# ── Base Stage ───────────────────────────────────────────────────────────────
 FROM python:3.11-slim AS base
-WORKDIR /workspace
-ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PYTHONPATH=/workspace
 
-RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
+WORKDIR /workspace
+
+# Non-root user setup
+RUN groupadd -g 1000 eduboost && \
+    useradd -u 1000 -g eduboost -s /bin/bash -m eduboost
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/workspace \
+    PATH="/home/eduboost/.local/bin:${PATH}"
+
+# Install essentials
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# ── Dependencies Stage ────────────────────────────────────────────────────────
+FROM base AS dependencies
 
 COPY requirements ./requirements
-RUN pip install --no-cache-dir -r requirements/base.txt
+RUN pip install --no-cache-dir --user -r requirements/base.txt
 
-COPY app ./app
-COPY alembic ./alembic
-COPY alembic.ini ./alembic.ini
+# ── Runtime Stage ─────────────────────────────────────────────────────────────
+FROM base AS production
+
+# Copy dependencies from dependencies stage
+COPY --from=dependencies /root/.local /home/eduboost/.local
+RUN chown -R eduboost:eduboost /home/eduboost/.local
+
+# Copy application code
+COPY --chown=eduboost:eduboost app ./app
+COPY --chown=eduboost:eduboost alembic ./alembic
+COPY --chown=eduboost:eduboost alembic.ini ./alembic.ini
+
+# Switch to non-root user
+USER eduboost
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:8000/ready || exit 1
+
+EXPOSE 8000
+
+CMD ["uvicorn", "app.api_v2:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
+
+# ── Documentation Stage ───────────────────────────────────────────────────────
+FROM base AS docs
+
+RUN pip install --no-cache-dir mkdocs mkdocs-material
+
 COPY mkdocs.yml ./mkdocs.yml
 COPY docs ./docs
 
-FROM base AS production
-CMD ["uvicorn", "app.api_v2:app", "--host", "0.0.0.0", "--port", "8000"]
+EXPOSE 8001
 
-FROM base AS docs
-RUN pip install --no-cache-dir -r requirements/docs.txt
 CMD ["mkdocs", "serve", "-a", "0.0.0.0:8001"]
