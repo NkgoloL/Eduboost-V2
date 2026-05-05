@@ -71,11 +71,14 @@ class LearnerRepository:
         )
         return result.scalar_one_or_none()
 
-    async def get_by_guardian(self, guardian_id: str) -> list[LearnerProfile]:
+    async def get_by_guardian(self, guardian_id: str, skip: int = 0, limit: int = 20) -> list[LearnerProfile]:
         result = await self.db.execute(
-            select(LearnerProfile).where(
+            select(LearnerProfile)
+            .where(
                 LearnerProfile.guardian_id == guardian_id, LearnerProfile.is_deleted == False  # noqa: E712
             )
+            .offset(skip)
+            .limit(limit)
         )
         return list(result.scalars().all())
 
@@ -227,9 +230,13 @@ class LessonRepository:
         await self.db.flush()
         return lesson
 
-    async def get_recent(self, learner_id: str, limit: int = 5) -> list[Lesson]:
+    async def get_recent(self, learner_id: str, skip: int = 0, limit: int = 10) -> list[Lesson]:
         result = await self.db.execute(
-            select(Lesson).where(Lesson.learner_id == learner_id).order_by(Lesson.created_at.desc()).limit(limit)
+            select(Lesson)
+            .where(Lesson.learner_id == learner_id)
+            .order_by(Lesson.created_at.desc())
+            .offset(skip)
+            .limit(limit)
         )
         return list(result.scalars().all())
 
