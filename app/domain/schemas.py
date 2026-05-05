@@ -76,9 +76,9 @@ class LearnerResponse(OrmBase):
 # ── Lesson ────────────────────────────────────────────────────────────────────
 class LessonRequest(BaseModel):
     learner_id: str
-    subject: str
-    topic: str
-    language: str = "en"
+    subject: str = Field(min_length=2, max_length=60, pattern=r"^[a-zA-Z0-9\s\-]+$")
+    topic: str = Field(min_length=2, max_length=120, pattern=r"^[a-zA-Z0-9\s\-\(\)\.]+$")
+    language: str = Field(default="en", pattern=r"^[a-z]{2}$")
 
 
 class LessonResponse(OrmBase):

@@ -63,14 +63,6 @@ app.state.limiter = limiter
 register_exception_handlers(app)
 
 
-@app.exception_handler(RateLimitExceeded)
-async def _rate_limit_handler(request, exc):
-    return JSONResponse(
-        status_code=429,
-        content={"detail": "Rate limit exceeded. Please upgrade to Premium for higher limits."},
-    )
-
-
 # ── CORS ──────────────────────────────────────────────────────────────────────
 app.add_middleware(
     CORSMiddleware,
