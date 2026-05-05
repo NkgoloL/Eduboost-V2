@@ -338,7 +338,7 @@ def fetch_page_html(url: str, timeout_ms: int) -> str:
 
 
 def fetch_page_html_stdlib(url: str, timeout_ms: int) -> str:
-    request = Request(url, headers={"User-Agent": "EduBoost-CAPS-Scraper/1.0"})
+    request = Request(url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"})
     with urlopen(request, timeout=timeout_ms / 1000) as response:
         return response.read().decode("utf-8", errors="replace")
 
@@ -377,7 +377,7 @@ def download_file(url: str, destination: Path, timeout_ms: int) -> None:
 
 
 def download_file_stdlib(url: str, destination: Path, timeout_ms: int) -> None:
-    request = Request(url, headers={"User-Agent": "EduBoost-CAPS-Scraper/1.0"})
+    request = Request(url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"})
     with urlopen(request, timeout=timeout_ms / 1000) as response:
         destination.write_bytes(response.read())
 

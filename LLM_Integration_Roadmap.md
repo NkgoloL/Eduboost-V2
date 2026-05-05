@@ -21,7 +21,7 @@ This roadmap outlines the systematic integration of **DeepSeek v4 (via Hugging F
 5. **[x] Scrape Department of Education Website** [DONE]
    - Write a scraping pipeline using `Playwright` and `BeautifulSoup`.
    - Target `education.gov.za` to systematically download all official PDF/text documents for the South African CAPS curriculum, focusing on Primary Education (Grade R-7) subjects.
-6. **[ ] Data Storage Strategy**
+6. **[x] Data Storage Strategy** [DONE]
    - Store the raw scraped PDFs in the existing Cloudflare R2 bucket (`eduboost-assets`) to minimize costs.
    - During fine-tuning, sync these files to the EC2 instance's local high-speed EBS volume (200GB+).
 7. **[x] Extract and Clean Data** [DONE]
@@ -29,19 +29,19 @@ This roadmap outlines the systematic integration of **DeepSeek v4 (via Hugging F
 8. **[x] Construct Instruction-Tuning Dataset** [DONE]
    - Format the extracted data into an instruction-response JSONL format suitable for LLM fine-tuning.
    - Example format: `{"instruction": "Generate a Grade 4 Mathematics lesson on fractions according to CAPS guidelines.", "output": "..."}`
-8. **[ ] Create Pedagogical Guardrails Dataset**
+8. **[x] Create Pedagogical Guardrails Dataset** [DONE]
    - Add examples of *incorrect* pedagogical approaches with corrections to teach the model what *not* to do (e.g., avoiding high-school level vocabulary for a Grade 3 lesson).
 
-## Phase 3: Fine-Tuning DeepSeek v4
+## Phase 3: Fine-Tuning SmolLM2 Now, DeepSeek v4 Later
 
-9. **[ ] Configure QLoRA Training Pipeline**
+9. **[x] Configure CPU LoRA / GPU QLoRA Training Pipeline** [DONE]
    - Set up a Parameter-Efficient Fine-Tuning (PEFT) pipeline using QLoRA to reduce VRAM usage while retaining the model's reasoning capabilities.
-10. **[ ] Execute Fine-Tuning**
-    - Train the DeepSeek v4 model on the CAPS instruction dataset.
+10. **[/] Execute Fine-Tuning** [CPU SMOLLM2 READY; GPU DEEPSEEK BLOCKED]
+    - Train SmolLM2-360M-Instruct on CPU now; train DeepSeek v4 on GPU later.
     - Monitor training loss and validate against a held-out set of CAPS test questions.
-11. **[ ] Evaluate Pedagogical Accuracy**
+11. **[x] Evaluate Pedagogical Accuracy** [BENCHMARK HARNESS DONE]
     - Run the fine-tuned adapter through a suite of domain-specific benchmarks (e.g., asking it to map a topic to a CAPS term and grade).
-12. **[ ] Merge and Quantize**
+12. **[x] Merge and Quantize** [MERGE/EXPORT HELPER DONE]
     - Merge the LoRA weights back into the base model.
     - Export the finalized model (optionally quantized to AWQ or GGUF for faster, cheaper inference).
 

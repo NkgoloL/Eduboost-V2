@@ -4,30 +4,68 @@
 #
 #    pip-compile --output-file=requirements/ml.txt requirements/ml.in
 #
+accelerate==0.30.1
+    # via
+    #   -r requirements/ml.in
+    #   peft
+    #   trl
+aiohappyeyeballs==2.6.1
+    # via aiohttp
+aiohttp==3.13.5
+    # via
+    #   datasets
+    #   fsspec
+aiosignal==1.4.0
+    # via aiohttp
+attrs==26.1.0
+    # via aiohttp
 beautifulsoup4==4.12.3
+    # via -r requirements/ml.in
+bitsandbytes==0.43.1
     # via -r requirements/ml.in
 certifi==2026.4.22
     # via requests
 charset-normalizer==3.4.7
     # via requests
+datasets==2.19.2
+    # via
+    #   -r requirements/ml.in
+    #   trl
+dill==0.3.8
+    # via
+    #   datasets
+    #   multiprocess
+docstring-parser==0.18.0
+    # via tyro
 filelock==3.29.0
     # via
+    #   datasets
     #   huggingface-hub
     #   torch
     #   transformers
-fsspec==2026.4.0
+frozenlist==1.8.0
     # via
+    #   aiohttp
+    #   aiosignal
+fsspec[http]==2024.3.1
+    # via
+    #   datasets
     #   huggingface-hub
     #   torch
 hf-xet==1.4.3
     # via huggingface-hub
 huggingface-hub==0.36.2
     # via
+    #   accelerate
+    #   datasets
+    #   peft
     #   sentence-transformers
     #   tokenizers
     #   transformers
 idna==3.13
-    # via requests
+    # via
+    #   requests
+    #   yarl
 jinja2==3.1.6
     # via torch
 joblib==1.5.3
@@ -36,14 +74,26 @@ markupsafe==3.0.3
     # via jinja2
 mpmath==1.3.0
     # via sympy
+multidict==6.7.1
+    # via
+    #   aiohttp
+    #   yarl
+multiprocess==0.70.16
+    # via datasets
 networkx==3.6.1
     # via torch
 numpy==2.4.4
     # via
+    #   accelerate
+    #   bitsandbytes
+    #   datasets
+    #   pandas
+    #   peft
     #   scikit-learn
     #   scipy
     #   sentence-transformers
     #   transformers
+    #   trl
 nvidia-cublas-cu12==12.1.3.1
     # via
     #   nvidia-cudnn-cu12
@@ -77,26 +127,54 @@ nvidia-nvtx-cu12==12.1.105
     # via torch
 packaging==26.2
     # via
+    #   accelerate
+    #   datasets
     #   huggingface-hub
+    #   peft
     #   transformers
+pandas==3.0.2
+    # via datasets
+peft==0.11.1
+    # via -r requirements/ml.in
 pillow==12.2.0
     # via sentence-transformers
+propcache==0.4.1
+    # via
+    #   aiohttp
+    #   yarl
+psutil==7.2.2
+    # via
+    #   accelerate
+    #   peft
+pyarrow==24.0.0
+    # via datasets
+pyarrow-hotfix==0.7
+    # via datasets
 pymupdf==1.24.4
     # via -r requirements/ml.in
 pymupdfb==1.24.3
     # via pymupdf
+python-dateutil==2.9.0.post0
+    # via pandas
 pyyaml==6.0.3
     # via
+    #   accelerate
+    #   datasets
     #   huggingface-hub
+    #   peft
     #   transformers
 regex==2026.4.4
     # via transformers
 requests==2.33.1
     # via
+    #   datasets
     #   huggingface-hub
     #   transformers
 safetensors==0.7.0
-    # via transformers
+    # via
+    #   accelerate
+    #   peft
+    #   transformers
 scikit-learn==1.8.0
     # via sentence-transformers
 scipy==1.17.1
@@ -105,6 +183,8 @@ scipy==1.17.1
     #   sentence-transformers
 sentence-transformers==2.7.0
     # via -r requirements/ml.in
+six==1.17.0
+    # via python-dateutil
 soupsieve==2.8.3
     # via beautifulsoup4
 sympy==1.14.0
@@ -116,19 +196,40 @@ tokenizers==0.19.1
 torch==2.3.0
     # via
     #   -r requirements/ml.in
+    #   accelerate
+    #   bitsandbytes
+    #   peft
     #   sentence-transformers
+    #   trl
 tqdm==4.67.3
     # via
+    #   datasets
     #   huggingface-hub
+    #   peft
     #   sentence-transformers
     #   transformers
 transformers==4.40.0
     # via
     #   -r requirements/ml.in
+    #   peft
     #   sentence-transformers
+    #   trl
+trl==0.8.6
+    # via -r requirements/ml.in
+typeguard==4.5.1
+    # via tyro
 typing-extensions==4.15.0
     # via
+    #   aiosignal
     #   huggingface-hub
     #   torch
+    #   typeguard
+    #   tyro
+tyro==1.0.13
+    # via trl
 urllib3==2.6.3
     # via requests
+xxhash==3.7.0
+    # via datasets
+yarl==1.23.0
+    # via aiohttp
