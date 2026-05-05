@@ -11,6 +11,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, Response
 from starlette.middleware.base import BaseHTTPMiddleware
+from app.middleware.security_headers import SecurityHeadersMiddleware
 
 from slowapi.errors import RateLimitExceeded
 
@@ -29,17 +30,7 @@ from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
 configure_logging()
 log = get_logger(__name__)
 
-class SecurityHeadersMiddleware(BaseHTTPMiddleware):
-    async def dispatch(self, request, call_next):
-        response = await call_next(request)
-        response.headers["X-Frame-Options"] = "DENY"
-        response.headers["X-Content-Type-Options"] = "nosniff"
-        response.headers["Strict-Transport-Security"] = "max-age=63072000; includeSubDomains"
-        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
-        response.headers["Content-Security-Policy"] = (
-            "default-src 'self'; script-src 'self'; object-src 'none'"
-        )
-        return response
+# SecurityHeadersMiddleware moved to app/middleware/security_headers.py
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -70,14 +61,6 @@ app = FastAPI(
 # ── Rate Limiter (attach to app for per-endpoint limits) ─────────────────────
 app.state.limiter = limiter
 register_exception_handlers(app)
-
-
-@app.exception_handler(RateLimitExceeded)
-async def _rate_limit_handler(request, exc):
-    return JSONResponse(
-        status_code=429,
-        content={"detail": "Rate limit exceeded. Please upgrade to Premium for higher limits."},
-    )
 
 
 # ── CORS ──────────────────────────────────────────────────────────────────────
@@ -122,14 +105,19 @@ async def health():
 
 @app.get("/ready", tags=["ops"])
 async def ready():
-    return JSONResponse(status_code=503, content={"status": "unavailable"})
+    # Perform deep health checks and return appropriate status
+    # 'ok' or 'degraded' returns 200, 'error' returns 503
+    health_data = await gather_deep_health()
+    status_code = 200 if health_data["status"] in ("ok", "degraded") else 503
+    return JSONResponse(status_code=status_code, content=health_data)
+
 
 
 @app.get("/api/v2/health/deep", tags=["ops"])
 @app.get("/v2/health/deep", tags=["ops"])
 async def deep_health():
     payload = await gather_deep_health()
-    status_code = 200 if payload["status"] == "ok" else 503
+    status_code = 200 if payload["status"] in ("ok", "degraded") else 503
     return JSONResponse(status_code=status_code, content=payload)
 
 

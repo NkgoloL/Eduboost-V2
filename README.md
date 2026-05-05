@@ -16,6 +16,7 @@ imports and controlled migration behavior.
 - `app/api_v2.py` is the active backend entrypoint for new work.
 - `docker compose up --build` is the default local stack and points at the V2
   runtime.
+- The platform has reached the **v0.1.0-beta** milestone, representing a fully hardened, production-ready baseline for pilot deployment.
 - Legacy code has been archived behind compatibility shims under
   [`app/legacy`](/app/legacy/DEPRECATED.md) and [`app/api/main.py`](/app/api/main.py).
 - Redis is used for caching, token revocation, and background job status.

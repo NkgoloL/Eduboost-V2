@@ -44,7 +44,9 @@ class JudiciaryService:
         """Parse + validate an LLM lesson response. Raises on any violation."""
         self._assert_no_violations(raw_output)
         try:
-            return _LESSON_ADAPTER.validate_json(self._clean_json(raw_output))
+            payload = _LESSON_ADAPTER.validate_json(self._clean_json(raw_output))
+            self._assert_answer_quality(payload)
+            return payload
         except ValidationError as exc:
             log.warning("judiciary_lesson_invalid", errors=exc.errors())
             raise ConstitutionalViolation(f"Lesson schema violation: {exc}") from exc
@@ -72,3 +74,18 @@ class JudiciaryService:
     def _assert_no_violations(self, text: str) -> None:
         if _BLOCKED_PATTERNS.search(text):
             raise ConstitutionalViolation("Content policy violation detected in AI output")
+
+    def _assert_answer_quality(self, payload: LessonPayload) -> None:
+        """Ensure the lesson has a non-empty answer that isn't just a placeholder."""
+        answer = payload.answer.strip().lower()
+        if not answer or len(answer) < 2:
+            raise ConstitutionalViolation("Lesson missing a valid answer key")
+        
+        placeholders = {"tbd", "n/a", "none", "no answer", "answer here"}
+        if answer in placeholders:
+            raise ConstitutionalViolation("Lesson contains a placeholder answer key")
+
+        # Basic check: if the practice question asks for a calculation, the answer should have digits?
+        # This is a bit brittle, but good for a baseline.
+        if "calculate" in payload.practice_question.lower() and not any(c.isdigit() for c in payload.answer):
+             log.warning("judiciary_potential_hallucination", reason="Calculation requested but answer has no digits")

@@ -64,7 +64,9 @@ class Settings(BaseSettings):
     # ── LLM Providers ────────────────────────────────────────────────────────
     ANTHROPIC_API_KEY: str = ""
     GROQ_API_KEY: str = ""
+    HUGGINGFACE_API_KEY: str = ""
     ANTHROPIC_MODEL: str = "claude-sonnet-4-20250514"
+    INFERENCE_SERVICE_URL: str = "http://localhost:9100"
     LLM_TIMEOUT_SECONDS: int = 30
     LLM_MAX_RETRIES: int = 2
 
@@ -98,6 +100,7 @@ class Settings(BaseSettings):
     GRAFANA_CLOUD_API_KEY: str = ""
     PROMETHEUS_METRICS_PATH: str = "/metrics"
     LOG_LEVEL: str = "INFO"
+    SENTRY_DSN: str = ""
     KEY_VAULT_REFRESH_INTERVAL_HOURS: int = 6
 
     # ── Rate Limiting / Jobs ────────────────────────────────────────────────
@@ -108,7 +111,7 @@ class Settings(BaseSettings):
     ARQ_JOB_TIMEOUT: int = 300
 
     # ── CORS ──────────────────────────────────────────────────────────────────
-    ALLOWED_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:3002"]
+    ALLOWED_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:3002", "http://localhost:3050"]
 
     # ── Validation ───────────────────────────────────────────────────────────
     @field_validator("JWT_SECRET")

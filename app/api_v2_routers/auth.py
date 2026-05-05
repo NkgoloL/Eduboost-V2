@@ -2,9 +2,9 @@
 EduBoost V2 — Auth Router
 Register, login, and JWT refresh with HTTP-only cookie for refresh token.
 """
-from __future__ import annotations
+# from __future__ import annotations
 
-from fastapi import APIRouter, Cookie, Depends, HTTPException, Response, status
+from fastapi import APIRouter, Cookie, Depends, HTTPException, Request, Response, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
@@ -29,7 +29,8 @@ from app.core.token_revocation import revoke_token, revoke_user_tokens
 from app.domain.schemas import LoginRequest, RefreshRequest, RegisterRequest, TokenResponse
 from app.models import UserRole
 from app.repositories.repositories import ConsentRepository, GuardianRepository, LearnerRepository
-from app.services.fourth_estate import FourthEstateService
+from app.core.rate_limit import limiter
+
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -46,7 +47,8 @@ async def me(current_user: dict = Depends(get_current_user)):
 
 
 @router.post("/register", response_model=TokenResponse, status_code=status.HTTP_201_CREATED)
-async def register(body: RegisterRequest, response: Response, db: AsyncSession = Depends(get_db)):
+@limiter.limit("5/hour")
+async def register(request: Request, body: RegisterRequest, response: Response, db: AsyncSession = Depends(get_db)):
     repo = GuardianRepository(db)
     audit = FourthEstateService(db)
 
@@ -75,7 +77,8 @@ async def register(body: RegisterRequest, response: Response, db: AsyncSession =
 
 
 @router.post("/login", response_model=TokenResponse)
-async def login(body: LoginRequest, response: Response, db: AsyncSession = Depends(get_db)):
+@limiter.limit("10/hour")
+async def login(request: Request, body: LoginRequest, response: Response, db: AsyncSession = Depends(get_db)):
     repo = GuardianRepository(db)
     audit = FourthEstateService(db)
 

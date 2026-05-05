@@ -9,6 +9,7 @@ import uuid
 from datetime import UTC, datetime, timedelta
 from enum import StrEnum
 
+import sqlalchemy as sa
 from sqlalchemy import (
     Boolean,
     DateTime,
@@ -91,6 +92,8 @@ class Guardian(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, onupdate=_now)
 
+    __table_args__ = (Index("ix_guardians_created_at", "created_at"),)
+
     learners: Mapped[list[LearnerProfile]] = relationship("LearnerProfile", back_populates="guardian")
     consents: Mapped[list[ParentalConsent]] = relationship("ParentalConsent", back_populates="guardian")
 
@@ -120,10 +123,15 @@ class LearnerProfile(Base):
     guardian: Mapped[Guardian] = relationship("Guardian", back_populates="learners")
     consents: Mapped[list[ParentalConsent]] = relationship("ParentalConsent", back_populates="learner")
     knowledge_gaps: Mapped[list[KnowledgeGap]] = relationship("KnowledgeGap", back_populates="learner")
+    mastery_records: Mapped[list[SubjectMastery]] = relationship("SubjectMastery", back_populates="learner")
     diagnostic_sessions: Mapped[list[DiagnosticSession]] = relationship("DiagnosticSession", back_populates="learner")
     lessons: Mapped[list[Lesson]] = relationship("Lesson", back_populates="learner")
 
-    __table_args__ = (Index("ix_learner_guardian_grade", "guardian_id", "grade"),)
+    __table_args__ = (
+        Index("ix_learner_guardian_grade", "guardian_id", "grade"),
+        Index("ix_learner_profiles_created_at", "created_at"),
+        Index("ix_learner_profiles_last_active", "last_active"),
+    )
 
 
 Learner = LearnerProfile
@@ -155,7 +163,14 @@ class ParentalConsent(Base):
         now = datetime.now(UTC)
         return self.revoked_at is None and self.expires_at > now
 
-    __table_args__ = (UniqueConstraint("guardian_id", "learner_id", name="uq_consent_guardian_learner"),)
+    __table_args__ = (
+        UniqueConstraint("guardian_id", "learner_id", name="uq_consent_guardian_learner"),
+        Index(
+            "ix_active_parental_consents",
+            "learner_id",
+            postgresql_where=sa.text("revoked_at IS NULL AND expires_at > CURRENT_TIMESTAMP"),
+        ),
+    )
 
 
 class AuditEvent(Base):
@@ -228,7 +243,28 @@ class KnowledgeGap(Base):
     resolved: Mapped[bool] = mapped_column(Boolean, default=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
 
+    __table_args__ = (Index("ix_knowledge_gaps_created_at", "created_at"),)
+
     learner: Mapped[LearnerProfile] = relationship("LearnerProfile", back_populates="knowledge_gaps")
+
+
+# ── Mastery Tracking ─────────────────────────────────────────────────────────
+
+
+class SubjectMastery(Base):
+    __tablename__ = "subject_mastery"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    learner_id: Mapped[str] = mapped_column(ForeignKey("learner_profiles.id", ondelete="CASCADE"), nullable=False)
+    subject: Mapped[str] = mapped_column(String(60), nullable=False)
+    topic: Mapped[str] = mapped_column(String(120), nullable=False)
+    theta: Mapped[float] = mapped_column(Float, default=0.0)       # Topic-level ability
+    standard_error: Mapped[float] = mapped_column(Float, default=1.0)
+    last_updated: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, onupdate=_now)
+
+    __table_args__ = (Index("ix_subject_mastery_learner_subject", "learner_id", "subject"),)
+
+    learner: Mapped[LearnerProfile] = relationship("LearnerProfile", back_populates="mastery_records")
 
 
 # ── Lesson ────────────────────────────────────────────────────────────────────
@@ -251,6 +287,8 @@ class Lesson(Base):
     feedback_score: Mapped[int | None] = mapped_column(Integer, nullable=True)  # 1-5
     completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+    __table_args__ = (Index("ix_lessons_created_at", "created_at"),)
 
     learner: Mapped[LearnerProfile] = relationship("LearnerProfile", back_populates="lessons")
 

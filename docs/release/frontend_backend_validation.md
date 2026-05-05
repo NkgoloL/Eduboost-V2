@@ -24,6 +24,7 @@ Use this before marking a local or release build healthy.
 - Auth lifecycle: `.venv/bin/python -m pytest -q tests/integration/test_auth_refresh.py --no-cov`
 - Frontend type check: `node node_modules/typescript/bin/tsc --noEmit`
 - Frontend journey tests: `npm run test -- LearnerPages ApiLayer`
+- Critical Playwright smoke: `npx playwright test tests/e2e/learner_smoke.spec.ts --project=chromium`
 
 ## Release Gate
 

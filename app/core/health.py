@@ -71,15 +71,30 @@ async def check_judiciary() -> dict[str, Any]:
 
 
 async def gather_deep_health() -> dict[str, Any]:
-    checks = {
+    critical_checks = {
         "postgres": await check_postgres(),
         "redis": await check_redis(),
+    }
+    optional_checks = {
         "llm_provider": await check_llm_provider(),
         "judiciary": await check_judiciary(),
     }
+    
     overall = "ok"
-    for component in checks.values():
+    for component in critical_checks.values():
         if component["status"] == "error":
             overall = "error"
             break
-    return {"status": overall, "components": checks}
+            
+    if overall == "ok":
+        for component in optional_checks.values():
+            if component["status"] == "error":
+                overall = "degraded"
+                break
+                
+    return {
+        "status": overall,
+        "critical": critical_checks,
+        "optional": optional_checks,
+        "message": "System is operational" if overall == "ok" else "System is operational but in degraded mode" if overall == "degraded" else "System is unavailable"
+    }

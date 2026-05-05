@@ -8,6 +8,11 @@ import logging
 import sys
 
 import structlog
+import sentry_sdk
+from sentry_sdk.integrations.fastapi import FastApiIntegration
+from sentry_sdk.integrations.logging import LoggingIntegration
+from sentry_sdk.integrations.sqlalchemy import SqlalchemyIntegration
+
 from app.core.config import settings
 
 
@@ -59,6 +64,25 @@ def configure_logging() -> None:
         app_env=settings.APP_ENV,
         app_version=settings.APP_VERSION,
     )
+
+    # ── Sentry ───────────────────────────────────────────────────────────────
+    if settings.is_production() and hasattr(settings, "SENTRY_DSN") and settings.SENTRY_DSN:
+        sentry_logging = LoggingIntegration(
+            level=logging.INFO,        # Capture info and above as breadcrumbs
+            event_level=logging.ERROR  # Send errors as events
+        )
+        sentry_sdk.init(
+            dsn=settings.SENTRY_DSN,
+            environment=settings.APP_ENV,
+            release=f"eduboost@{settings.APP_VERSION}",
+            integrations=[
+                FastApiIntegration(),
+                SqlalchemyIntegration(),
+                sentry_logging,
+            ],
+            traces_sample_rate=0.1,  # 10% sampling for performance tracing
+            profiles_sample_rate=0.1,
+        )
 
 
 def get_logger(name: str) -> structlog.BoundLogger:

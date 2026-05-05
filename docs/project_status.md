@@ -1,10 +1,13 @@
 # Project Status
 
-This page summarizes the verified repository state as of **2026-05-04**.
+This page summarizes the verified repository state as of **2026-05-05**.
 
 ## Verified Today
 
-- The Frontend-Backend Recovery phase (addressing API mismatches, UI regressions, and E2E testing for V2) has been successfully completed.
+- The **Production Hardening Phase (Phases 5-12)** has been successfully completed, culminating in the **v0.1.0-beta** release.
+- The platform now features a robust API validation layer, POPIA-compliant data rights workflows, hardened IRT diagnostics, and full Sentry/Prometheus observability.
+- The recovery roadmap is officially 100% complete across all technical pillars.
+- Playwright E2E journeys are stable and integrated into the CI/CD pipeline.
 - The active backend entrypoint is `app/api_v2.py`.
 - The root `docker-compose.yml` points at the V2 runtime and is the default
   local stack.
@@ -34,6 +37,7 @@ EduBoost is V2-first, but not every historical surface has disappeared:
   future state.
 - Security, migration, and operational claims should be phrased in terms of
   what the code and workflows currently prove.
+- GPU DeepSeek/vLLM production rollout is still externally blocked by infrastructure and account tier, so it should not be represented as complete.
 
 ## Audit Tracker
 

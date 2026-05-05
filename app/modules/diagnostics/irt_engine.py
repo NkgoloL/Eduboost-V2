@@ -18,6 +18,10 @@ log = get_logger(__name__)
 
 def p_correct(theta: float, a: float, b: float) -> float:
     """Probability of a correct response given ability theta."""
+    # Hard bounds for parameters to prevent overflow/divergence
+    a = max(0.1, min(4.0, a))
+    b = max(-4.0, min(4.0, b))
+    theta = max(-5.0, min(5.0, theta))
     return 1.0 / (1.0 + math.exp(-a * (theta - b)))
 
 
@@ -89,8 +93,10 @@ class DiagnosticEngine:
             prior = math.exp(-0.5 * (((theta - prior_mean) / prior_sd) ** 2))
             likelihood = 1.0
             for item, correct in responses:
-                prob = max(1e-6, min(1 - 1e-6, p_correct(theta, item.a_param, item.b_param)))
-                likelihood *= prob if correct else (1.0 - prob)
+                # 2PL model probability
+                prob = p_correct(theta, item.a_param, item.b_param)
+                # Likelihood clamping to prevent underflow
+                likelihood *= max(1e-12, prob if correct else (1.0 - prob))
             posterior_weights.append(prior * likelihood)
 
         total = sum(posterior_weights) or 1.0

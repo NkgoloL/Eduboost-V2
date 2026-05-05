@@ -8,7 +8,7 @@ from datetime import datetime
 from typing import Any, Literal
 from uuid import UUID
 
-from pydantic import BaseModel, ConfigDict, EmailStr, Field
+from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
 
 
 # ── Shared ────────────────────────────────────────────────────────────────────
@@ -19,9 +19,23 @@ class OrmBase(BaseModel):
 # ── Auth ──────────────────────────────────────────────────────────────────────
 class RegisterRequest(BaseModel):
     email: EmailStr
-    password: str = Field(min_length=8)
+    password: str = Field(
+        min_length=8,
+        description="Password must be at least 8 characters and include at least one uppercase letter, one lowercase letter, and one number.",
+    )
     display_name: str = Field(min_length=2, max_length=120)
     role: Literal["parent", "teacher"] = "parent"
+
+    @field_validator("password")
+    @classmethod
+    def password_complexity(cls, v: str) -> str:
+        if not any(c.isupper() for c in v):
+            raise ValueError("Password must contain at least one uppercase letter")
+        if not any(c.islower() for c in v):
+            raise ValueError("Password must contain at least one lowercase letter")
+        if not any(c.isdigit() for c in v):
+            raise ValueError("Password must contain at least one number")
+        return v
 
 
 class LoginRequest(BaseModel):
@@ -62,9 +76,9 @@ class LearnerResponse(OrmBase):
 # ── Lesson ────────────────────────────────────────────────────────────────────
 class LessonRequest(BaseModel):
     learner_id: str
-    subject: str
-    topic: str
-    language: str = "en"
+    subject: str = Field(min_length=2, max_length=60, pattern=r"^[a-zA-Z0-9\s\-]+$")
+    topic: str = Field(min_length=2, max_length=120, pattern=r"^[a-zA-Z0-9\s\-\(\)\.]+$")
+    language: str = Field(default="en", pattern=r"^[a-z]{2}$")
 
 
 class LessonResponse(OrmBase):

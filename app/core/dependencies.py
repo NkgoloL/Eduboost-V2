@@ -15,8 +15,15 @@ from app.core.database import get_db
 from app.core.exceptions import AuthenticationError, ConsentRequiredError
 from app.core.metrics import consent_gate_blocks_total
 from app.core.security import decode_token
+from app.repositories.consent_repository import ConsentRepository
 
 _bearer = HTTPBearer(auto_error=False)
+
+
+# ── Repositories & Services ───────────────────────────────────────────────────
+
+async def get_consent_repo() -> ConsentRepository:
+    return ConsentRepository()
 
 
 # ── Current User ──────────────────────────────────────────────────────────────
@@ -49,6 +56,7 @@ async def get_current_guardian_id(
 async def require_active_consent(
     learner_id: UUID,
     db: AsyncSession = Depends(get_db),
+    repo: ConsentRepository = Depends(get_consent_repo),
 ) -> None:
     """
     POPIA consent gate — inject as a router-level dependency.
@@ -66,9 +74,6 @@ async def require_active_consent(
     - Impossible to forget (not an inline service call)
     - Consistently enforced across all learner-data routes
     """
-    from app.repositories.consent_repository import ConsentRepository
-
-    repo = ConsentRepository()
     consent = await repo.get_active(learner_id, db)
 
     if consent is None:
@@ -83,11 +88,21 @@ async def require_active_consent(
 async def require_active_consent_for_current_learner(
     learner_id: UUID,
     db: AsyncSession = Depends(get_db),
+    repo: ConsentRepository = Depends(get_consent_repo),
     _user_id: UUID = Depends(get_current_user_id),
 ) -> UUID:
     """
     Combined auth + consent gate for learner-scoped endpoints.
     Returns learner_id for use in endpoint handler.
     """
-    await require_active_consent(learner_id, db)
+    await require_active_consent(learner_id, db, repo)
     return learner_id
+
+
+# ── Observability ─────────────────────────────────────────────────────────────
+
+from fastapi import Request
+
+async def get_request_id(request: Request) -> str:
+    """Retrieve the correlation/request ID from the headers."""
+    return request.headers.get("X-Request-ID", "unknown")
