@@ -53,7 +53,7 @@ async def _ensure_audit_rules() -> None:
         )
 
 
-@pytest_asyncio.fixture(scope="session", autouse=True)
+@pytest_asyncio.fixture(scope="session")
 async def setup_test_schema():
     await _reset_schema()
     await _ensure_audit_rules()

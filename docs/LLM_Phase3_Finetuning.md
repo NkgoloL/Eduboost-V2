@@ -58,6 +58,17 @@ python scripts/train_qlora.py \
 
 This path uses standard PEFT LoRA on CPU with `adamw_torch`, no CUDA, and no 4-bit `bitsandbytes` dependency at runtime. It is intended to validate EduBoost data and pedagogy behavior, not to replace the later larger GPU model.
 
+Latest local smoke result:
+
+- Base model: `HuggingFaceTB/SmolLM2-360M-Instruct`
+- Training mode: `cpu-lora`
+- Dataset: `data/caps/training_data_with_guardrails.jsonl`
+- Train/eval split: 27 / 2 examples
+- Smoke run: 4 optimizer steps, `max_seq_length=512`
+- Final train loss: `3.9698`
+- Eval loss: `4.1111`
+- Adapter output: `artifacts/llm/smollm2-caps-adapter`
+
 ## 4. Optional GPU QLoRA Later
 
 ```bash
@@ -87,6 +98,8 @@ python scripts/evaluate_pedagogy.py \
   --report artifacts/llm/pedagogy_eval_report.json
 ```
 
+Current smoke adapter result: `1/3` benchmark cases passed. This confirms the evaluation path works, but the adapter needs a longer run and more CAPS examples before it should be treated as production-quality.
+
 ## 6. Merge And Export
 
 Dry-run the export metadata:
@@ -105,3 +118,5 @@ python scripts/merge_lora.py \
 ```
 
 The merge helper writes Hugging Face format weights and `export_metadata.json`. GGUF/AWQ quantization should be performed in a dedicated export image with `llama.cpp` or AWQ tooling after the merged weights are produced.
+
+Latest local smoke merge output: `artifacts/llm/merged-smollm2-caps-model`.

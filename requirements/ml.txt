@@ -82,7 +82,7 @@ multiprocess==0.70.16
     # via datasets
 networkx==3.6.1
     # via torch
-numpy==2.4.4
+numpy==1.26.4
     # via
     #   accelerate
     #   bitsandbytes
@@ -132,7 +132,7 @@ packaging==26.2
     #   huggingface-hub
     #   peft
     #   transformers
-pandas==3.0.2
+pandas==2.2.2
     # via datasets
 peft==0.11.1
     # via -r requirements/ml.in
@@ -146,7 +146,7 @@ psutil==7.2.2
     # via
     #   accelerate
     #   peft
-pyarrow==24.0.0
+pyarrow==16.1.0
     # via datasets
 pyarrow-hotfix==0.7
     # via datasets

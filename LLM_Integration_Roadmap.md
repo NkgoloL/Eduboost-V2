@@ -36,14 +36,17 @@ This roadmap outlines the systematic integration of **DeepSeek v4 (via Hugging F
 
 9. **[x] Configure CPU LoRA / GPU QLoRA Training Pipeline** [DONE]
    - Set up a Parameter-Efficient Fine-Tuning (PEFT) pipeline using QLoRA to reduce VRAM usage while retaining the model's reasoning capabilities.
-10. **[/] Execute Fine-Tuning** [CPU SMOLLM2 READY; GPU DEEPSEEK BLOCKED]
-    - Train SmolLM2-360M-Instruct on CPU now; train DeepSeek v4 on GPU later.
+10. **[/] Execute Fine-Tuning** [CPU SMOLLM2 SMOKE RUN DONE; GPU DEEPSEEK BLOCKED]
+    - Trained a CPU LoRA proof adapter for SmolLM2-360M-Instruct and saved local artifacts under `artifacts/llm/smollm2-caps-adapter`.
+    - Train DeepSeek v4 on GPU later when infrastructure is available.
     - Monitor training loss and validate against a held-out set of CAPS test questions.
-11. **[x] Evaluate Pedagogical Accuracy** [BENCHMARK HARNESS DONE]
+11. **[/] Evaluate Pedagogical Accuracy** [HARNESS DONE; QUALITY NEEDS LONGER TRAINING]
     - Run the fine-tuned adapter through a suite of domain-specific benchmarks (e.g., asking it to map a topic to a CAPS term and grade).
+    - Current CPU smoke adapter passes 1/3 lightweight benchmark cases; it proves the pipeline, not final pedagogy quality.
 12. **[x] Merge and Quantize** [MERGE/EXPORT HELPER DONE]
     - Merge the LoRA weights back into the base model.
     - Export the finalized model (optionally quantized to AWQ or GGUF for faster, cheaper inference).
+    - CPU smoke adapter was merged locally to `artifacts/llm/merged-smollm2-caps-model`; GGUF/AWQ conversion still belongs in a dedicated export image.
 
 ## Phase 4: Application Integration ("The Brain")
 

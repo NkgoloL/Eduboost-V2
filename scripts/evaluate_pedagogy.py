@@ -15,6 +15,10 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_ADAPTER_DIR = PROJECT_ROOT / "artifacts" / "llm" / "smollm2-caps-adapter"
 DEFAULT_REPORT = PROJECT_ROOT / "artifacts" / "llm" / "pedagogy_eval_report.json"
 DEFAULT_MODEL_ID = "HuggingFaceTB/SmolLM2-360M-Instruct"
+SYSTEM_PROMPT = (
+    "You are EduBoost Brain, a South African CAPS-aligned teaching assistant. "
+    "Respond with age-appropriate pedagogy, clear structure, and POPIA-safe language."
+)
 
 
 @dataclass(frozen=True)
@@ -123,10 +127,14 @@ def generate_responses(args: argparse.Namespace, cases: list[BenchmarkCase]) -> 
     responses: dict[str, str] = {}
     for case in cases:
         prompt = (
-            "You are EduBoost Brain. Answer in CAPS-aligned South African classroom language.\n\n"
-            f"Instruction: {case.prompt}\nResponse:"
+            "<|system|>\n"
+            f"{SYSTEM_PROMPT}\n"
+            "<|user|>\n"
+            f"{case.prompt}\n"
+            "<|assistant|>\n"
         )
         inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+        prompt_length = inputs["input_ids"].shape[-1]
         with torch.no_grad():
             output = model.generate(
                 **inputs,
@@ -135,8 +143,8 @@ def generate_responses(args: argparse.Namespace, cases: list[BenchmarkCase]) -> 
                 do_sample=args.temperature > 0,
                 pad_token_id=tokenizer.eos_token_id,
             )
-        decoded = tokenizer.decode(output[0], skip_special_tokens=True)
-        responses[case.id] = decoded.split("Response:", 1)[-1].strip()
+        generated_tokens = output[0][prompt_length:]
+        responses[case.id] = tokenizer.decode(generated_tokens, skip_special_tokens=True).strip()
     return responses
 
 
