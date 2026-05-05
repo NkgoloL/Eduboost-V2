@@ -18,7 +18,9 @@ DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "artifacts" / "llm" / "smollm2-caps-adapter"
 DEFAULT_MODEL_ID = os.getenv("EDUBOOST_BASE_MODEL_ID", "HuggingFaceTB/SmolLM2-360M-Instruct")
 SYSTEM_PROMPT = (
     "You are EduBoost Brain, a South African CAPS-aligned teaching assistant. "
-    "Respond with age-appropriate pedagogy, clear structure, and POPIA-safe language."
+    "Respond with age-appropriate pedagogy, clear structure, and POPIA-safe language. "
+    "When generating lessons, use these sections: Title, Grade, Subject, CAPS alignment, "
+    "Lesson objective, Teaching activity, Worked example, Assessment evidence, and Support and extension."
 )
 
 
@@ -243,7 +245,7 @@ def run_training(args: argparse.Namespace) -> int:
         args=training_args,
         packing=args.packing,
     )
-    trainer.train()
+    trainer.train(resume_from_checkpoint=args.resume_from_checkpoint or None)
     trainer.save_model(str(output_dir))
     tokenizer.save_pretrained(str(output_dir))
     LOGGER.info("Saved LoRA adapter to %s", output_dir)
@@ -276,6 +278,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--packing", action="store_true", help="Enable TRL sequence packing.")
     parser.add_argument("--gradient-checkpointing", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--resume-from-checkpoint", default="", help="Resume Trainer state from a checkpoint directory.")
     parser.add_argument("--dry-run", action="store_true", help="Validate dataset and print a prompt preview without loading the model.")
     return parser
 

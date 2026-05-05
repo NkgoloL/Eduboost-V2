@@ -131,6 +131,8 @@ def generate_responses(args: argparse.Namespace, cases: list[BenchmarkCase]) -> 
             f"{SYSTEM_PROMPT}\n"
             "<|user|>\n"
             f"{case.prompt}\n"
+            "Use these sections: Title, Grade, Subject, CAPS alignment, Lesson objective, "
+            "Teaching activity, Worked example, Assessment evidence, and Support and extension.\n"
             "<|assistant|>\n"
         )
         inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
