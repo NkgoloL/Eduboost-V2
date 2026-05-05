@@ -9,6 +9,7 @@ import uuid
 from datetime import UTC, datetime, timedelta
 from enum import StrEnum
 
+import sqlalchemy as sa
 from sqlalchemy import (
     Boolean,
     DateTime,
