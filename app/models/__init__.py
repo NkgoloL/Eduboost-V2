@@ -123,6 +123,7 @@ class LearnerProfile(Base):
     guardian: Mapped[Guardian] = relationship("Guardian", back_populates="learners")
     consents: Mapped[list[ParentalConsent]] = relationship("ParentalConsent", back_populates="learner")
     knowledge_gaps: Mapped[list[KnowledgeGap]] = relationship("KnowledgeGap", back_populates="learner")
+    mastery_records: Mapped[list[SubjectMastery]] = relationship("SubjectMastery", back_populates="learner")
     diagnostic_sessions: Mapped[list[DiagnosticSession]] = relationship("DiagnosticSession", back_populates="learner")
     lessons: Mapped[list[Lesson]] = relationship("Lesson", back_populates="learner")
 
@@ -245,6 +246,25 @@ class KnowledgeGap(Base):
     __table_args__ = (Index("ix_knowledge_gaps_created_at", "created_at"),)
 
     learner: Mapped[LearnerProfile] = relationship("LearnerProfile", back_populates="knowledge_gaps")
+
+
+# ── Mastery Tracking ─────────────────────────────────────────────────────────
+
+
+class SubjectMastery(Base):
+    __tablename__ = "subject_mastery"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    learner_id: Mapped[str] = mapped_column(ForeignKey("learner_profiles.id", ondelete="CASCADE"), nullable=False)
+    subject: Mapped[str] = mapped_column(String(60), nullable=False)
+    topic: Mapped[str] = mapped_column(String(120), nullable=False)
+    theta: Mapped[float] = mapped_column(Float, default=0.0)       # Topic-level ability
+    standard_error: Mapped[float] = mapped_column(Float, default=1.0)
+    last_updated: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, onupdate=_now)
+
+    __table_args__ = (Index("ix_subject_mastery_learner_subject", "learner_id", "subject"),)
+
+    learner: Mapped[LearnerProfile] = relationship("LearnerProfile", back_populates="mastery_records")
 
 
 # ── Lesson ────────────────────────────────────────────────────────────────────
