@@ -125,4 +125,4 @@ Below is a concise, section‑by‑section rundown of every task that remains pe
 ### 13 Testing & QA
 | Sub‑section | Pending tasks |
 |-------------|--------------|
-| **13.1 Backend** | - [ ] Maintain backend coverage ≥ 80 %.<br>- [ ] Add route, service and repository tests for every production path.<br>- [ ] Add integration tests for auth, consent, learner lifecycle, diagnostics, lessons, study plans, parent reports, billing, export and erasure.<br>- [ ] Add property‑based tests for diagnostic
+| **13.1 Backend** | - [/] Maintain backend coverage >= 80%. (Currently ~8% due to mock inconsistencies).<br>- [ ] Add route, service and repository tests for every production path.<br>- [ ] Add integration tests for auth, consent, learner lifecycle, diagnostics, lessons, study plans, parent reports, billing, export and erasure.<br>- [x] Add property-based tests for diagnostic engines (IRT bounds and monotonicity). |

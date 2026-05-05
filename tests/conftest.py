@@ -9,6 +9,11 @@ def mock_db_session():
     return session
 
 @pytest.fixture
+def db_session(mock_db_session):
+    """Alias for mock_db_session for compatibility with legacy tests."""
+    return mock_db_session
+
+@pytest.fixture
 def mock_llm_service():
     """Fixture for a mocked LLM service."""
     service = AsyncMock()
