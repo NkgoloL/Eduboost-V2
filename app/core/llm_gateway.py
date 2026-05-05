@@ -13,6 +13,12 @@ from typing import Any
 
 import anthropic
 from groq import AsyncGroq
+from tenacity import (
+    retry,
+    stop_after_attempt,
+    wait_exponential,
+    retry_if_exception_type,
+)
 
 from app.core.config import settings
 from app.core.judiciary import ConstitutionalViolation, LessonPayload
@@ -200,6 +206,12 @@ class ExecutiveService:
             log.warning("groq_lesson_generation_failed", error=str(exc))
             return await self._call_anthropic(user_prompt, operation=operation)
 
+    @retry(
+        stop=stop_after_attempt(3),
+        wait=wait_exponential(multiplier=1, min=2, max=10),
+        retry=retry_if_exception_type(Exception),  # Better to be more specific in production
+        reraise=True,
+    )
     async def _call_groq(self, user_prompt: str, *, operation: str) -> str:
         client = _get_groq()
         response = await client.chat.completions.create(
@@ -223,6 +235,12 @@ class ExecutiveService:
             )
         return response.choices[0].message.content or "{}"
 
+    @retry(
+        stop=stop_after_attempt(3),
+        wait=wait_exponential(multiplier=1, min=2, max=10),
+        retry=retry_if_exception_type(Exception),
+        reraise=True,
+    )
     async def _call_anthropic(self, user_prompt: str, *, operation: str) -> str:
         """Fallback to Claude when Groq is unavailable."""
         client = _get_anthropic()
