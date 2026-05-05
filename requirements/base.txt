@@ -218,7 +218,7 @@ pyasn1==0.6.3
     #   rsa
 pycparser==3.0
     # via cffi
-pydantic[email]==2.7.1
+pydantic[email]==2.13.3
     # via
     #   -r requirements/base.in
     #   anthropic
@@ -226,7 +226,7 @@ pydantic[email]==2.7.1
     #   groq
     #   openai
     #   pydantic-settings
-pydantic-core==2.18.2
+pydantic-core==2.46.3
     # via pydantic
 pydantic-settings==2.2.1
     # via -r requirements/base.in
@@ -347,6 +347,9 @@ typing-extensions==4.15.0
     #   rich-toolkit
     #   sqlalchemy
     #   stripe
+    #   typing-inspection
+typing-inspection==0.4.2
+    # via pydantic
 tzdata==2026.2
     # via
     #   celery
