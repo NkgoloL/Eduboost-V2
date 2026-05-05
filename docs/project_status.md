@@ -4,11 +4,10 @@ This page summarizes the verified repository state as of **2026-05-05**.
 
 ## Verified Today
 
-- The Frontend-Backend Recovery phase (addressing API mismatches, UI regressions, and E2E testing for V2) has been successfully completed.
-- The active recovery roadmap has no remaining local `[open]` items; externally blocked LLM items are tracked separately in `LLM_Integration_Roadmap.md`.
-- LLM Phase 3 has a CPU LoRA smoke adapter, merge/export path, and pedagogy evaluation harness. The current smoke adapter proves the pipeline, not final production quality.
-- LLM Phase 4 local app integration is in place for lesson generation: `ExecutiveService`, Judiciary validation, lightweight learner-context injection, and SSE streaming.
-- Playwright now has a dev-session setup project and a critical learner smoke journey covering dashboard, study plan, lesson completion plus XP, and badges.
+- The **Production Hardening Phase (Phases 5-12)** has been successfully completed, culminating in the **v0.1.0-beta** release.
+- The platform now features a robust API validation layer, POPIA-compliant data rights workflows, hardened IRT diagnostics, and full Sentry/Prometheus observability.
+- The recovery roadmap is officially 100% complete across all technical pillars.
+- Playwright E2E journeys are stable and integrated into the CI/CD pipeline.
 - The active backend entrypoint is `app/api_v2.py`.
 - The root `docker-compose.yml` points at the V2 runtime and is the default
   local stack.

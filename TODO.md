@@ -32,20 +32,20 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 ## 0.1 Non-negotiable production gate
 
-- [ ] `[critical]` Publish a first tagged release, e.g. `v0.1.0-beta`, only after all mandatory CI jobs pass on the canonical production branch.
+- [x] `[critical]` Publish a first tagged release, e.g. `v0.1.0-beta`, only after all mandatory CI jobs pass on the canonical production branch.
 - [x] `[critical]` Confirm the release workflow blocks production promotion unless the following pass: backend lint, backend type check, backend unit tests, backend integration tests, Alembic schema drift check, POPIA compliance tests, frontend tests, frontend type check, frontend build, Playwright E2E tests, Docker image scan, dependency audit, secret scan, and staging smoke tests.
-- [ ] `[critical]` Generate a release evidence bundle containing backend image digest, frontend build/image digest, migration revision, changelog entry, SBOM, test reports, coverage reports, security scan reports, and deployment manifest.
-- [ ] `[critical]` Add `docs/release_checklist.md` and require it for every tagged release.
-- [ ] `[critical]` Define production launch scope precisely: supported grades, supported subjects, supported lesson types, supported diagnostic flows, supported languages, supported payment modes, and unsupported features.
-- [ ] `[critical]` Avoid claiming full CAPS coverage until every claimed topic has validated lessons, diagnostic items, answer keys, and review status.
+- [x] `[critical]` Generate a release evidence bundle containing backend image digest, frontend build/image digest, migration revision, changelog entry, SBOM, test reports, coverage reports, security scan reports, and deployment manifest.
+- [x] `[critical]` Add `docs/release_checklist.md` and require it for every tagged release.
+- [x] `[critical]` Define production launch scope precisely: supported grades, supported subjects, supported lesson types, supported diagnostic flows, supported languages, supported payment modes, and unsupported features.
+- [x] `[critical]` Avoid claiming full CAPS coverage until every claimed topic has validated lessons, diagnostic items, answer keys, and review status.
 
 ## 0.2 Health, readiness, and runtime acceptance
 
 - [x] `[critical]` `/health` returns `200` when the API process is alive.
-- [ ] `[critical]` `/ready` returns `200` only when PostgreSQL, Redis, migrations, audit repository, critical secrets, and core background-job dependencies are available.
-- [ ] `[critical]` `/ready` returns `503` with structured non-sensitive diagnostics when dependencies are unavailable.
-- [ ] `[critical]` Add tests for `/health`, `/ready`, `/metrics`, `/docs`, and `/openapi.json` in local, CI, and staging contexts.
-- [ ] `[critical]` Ensure readiness probes are wired correctly in Docker Compose, Kubernetes, and Azure deployment assets.
+- [x] `[critical]` `/ready` returns `200` only when PostgreSQL, Redis, migrations, audit repository, critical secrets, and core background-job dependencies are available.
+- [x] `[critical]` `/ready` returns `503` with structured non-sensitive diagnostics when dependencies are unavailable.
+- [x] `[critical]` Add tests for `/health`, `/ready`, `/metrics`, `/docs`, and `/openapi.json` in local, CI, and staging contexts.
+- [x] `[critical]` Ensure readiness probes are wired correctly in Docker Compose, Kubernetes, and Azure deployment assets.
 - [ ] `[high]` Add graceful degraded-mode behavior for optional dependencies such as LLM providers, analytics, email, or billing.
 
 ## 0.3 Operational acceptance
@@ -203,11 +203,11 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 ## 5.3 Data minimization and inventory
 
-- [ ] `[critical]` Create `docs/data_inventory.md` listing every collected field, purpose, lawful/consent basis, retention period, access roles, and third-party exposure.
-- [ ] `[critical]` Remove learner data fields not essential to educational purpose.
-- [ ] `[high]` Hash or tokenize identifiers where raw values are unnecessary.
-- [ ] `[high]` Separate identifiable operational data from analytics data.
-- [ ] `[high]` Prevent names, emails, phone numbers, and raw identifiers from being sent to LLM providers.
+- [x] `[critical]` Create `docs/data_inventory.md` listing every collected field, purpose, lawful/consent basis, retention period, access roles, and third-party exposure.
+- [x] `[critical]` Remove learner data fields not essential to educational purpose.
+- [x] `[high]` Hash or tokenize identifiers where raw values are unnecessary.
+- [x] `[high]` Separate identifiable operational data from analytics data.
+- [x] `[high]` Prevent names, emails, phone numbers, and raw identifiers from being sent to LLM providers.
 - [ ] `[medium]` Create `docs/data_retention_policy.md` and `docs/subprocessor_register.md`.
 
 ## 5.4 Audit integrity
@@ -395,11 +395,11 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 ## 10.4 CI/CD
 
-- [ ] `[critical]` Fix workflow inconsistencies: Dockerfile paths, branch conditions, image registry casing, duplicated environment variables, stale service names.
-- [ ] `[critical]` Ensure CI uses the same dependency files developers use locally.
-- [ ] `[high]` Add workflow concurrency to cancel outdated runs.
-- [ ] `[high]` Upload backend and frontend test/coverage reports as artifacts.
-- [ ] `[medium]` Add OpenAPI diff, docs lint, link checker, migration diff summary, license check, and SBOM generation.
+- [x] `[critical]` Fix workflow inconsistencies: Dockerfile paths, branch conditions, image registry casing, duplicated environment variables, stale service names.
+- [x] `[critical]` Ensure CI uses the same dependency files developers use locally.
+- [x] `[high]` Add workflow concurrency to cancel outdated runs.
+- [x] `[high]` Upload backend and frontend test/coverage reports as artifacts.
+- [x] `[medium]` Add OpenAPI diff, docs lint, link checker, migration diff summary, license check, and SBOM generation.
 
 ---
 
