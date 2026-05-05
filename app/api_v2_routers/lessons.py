@@ -1,8 +1,10 @@
 """EduBoost V2 — Lessons Router"""
 
 from datetime import UTC, datetime
+import json
 
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request, status
+from fastapi.responses import StreamingResponse
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -12,7 +14,7 @@ from app.core.rate_limit import limiter, LESSON_GENERATION_LIMIT, LESSON_GENERAT
 from app.core.security import get_current_user
 from app.domain.api_v2_models import JobAcceptedResponse
 from app.domain.schemas import LessonFeedback, LessonRequest, LessonResponse, LessonSyncRequest
-from app.models import Lesson
+from app.models import KnowledgeGap, Lesson
 from app.repositories.repositories import GuardianRepository, LearnerRepository, LessonRepository
 from app.services.consent import ConsentService
 from app.services.executive import ExecutiveService, QuotaExceededError
@@ -31,6 +33,82 @@ def _render_lesson_content(payload) -> str:
     )
 
 
+async def _build_learner_context(db: AsyncSession, learner_id: str, subject: str) -> dict:
+    gaps_result = await db.execute(
+        select(KnowledgeGap.topic, KnowledgeGap.severity)
+        .where(
+            KnowledgeGap.learner_id == learner_id,
+            KnowledgeGap.resolved == False,  # noqa: E712
+            KnowledgeGap.subject == subject,
+        )
+        .order_by(KnowledgeGap.severity.desc())
+        .limit(3)
+    )
+    recent_lessons = await LessonRepository(db).get_recent(learner_id, limit=3)
+    return {
+        "knowledge_gaps": [
+            {"topic": topic, "severity": severity}
+            for topic, severity in gaps_result.all()
+        ],
+        "recent_lessons": [
+            {"subject": lesson.subject, "topic": lesson.topic, "completed": lesson.completed_at is not None}
+            for lesson in recent_lessons
+        ],
+    }
+
+
+async def _create_lesson_for_request(body: LessonRequest, current_user: dict) -> tuple[LessonResponse, bool, str]:
+    async with AsyncSessionLocal() as db:
+        await ConsentService(db).require_active_consent(body.learner_id, actor_id=current_user.get("sub"))
+        learner_repo = LearnerRepository(db)
+        learner = await learner_repo.get_by_id(body.learner_id)
+        if not learner:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
+
+        guardian = await GuardianRepository(db).get_by_id(learner.guardian_id)
+        tier = guardian.subscription_tier if guardian else "free"
+        learner_context = await _build_learner_context(db, body.learner_id, body.subject)
+        try:
+            payload, from_cache = await _executive.generate_lesson(
+                pseudonym_id=learner.pseudonym_id,
+                grade=learner.grade,
+                subject=body.subject,
+                topic=body.topic,
+                language=body.language,
+                archetype=learner.archetype,
+                user_id=learner.guardian_id,
+                tier=tier,
+                learner_context=learner_context,
+            )
+        except QuotaExceededError as exc:
+            raise HTTPException(
+                status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+                detail="Daily AI quota exceeded. Upgrade to Premium for unlimited access.",
+            ) from exc
+
+        provider = "cache" if from_cache else "groq"
+        lesson = await LessonRepository(db).create(
+            learner_id=body.learner_id,
+            grade=learner.grade,
+            subject=body.subject,
+            topic=body.topic,
+            language=body.language,
+            archetype=learner.archetype,
+            content=_render_lesson_content(payload),
+            llm_provider=provider,
+            served_from_cache=from_cache,
+        )
+        await FourthEstateService(db).lesson_generated(learner.pseudonym_id, body.subject, body.topic, provider)
+        await db.commit()
+        return (
+            LessonResponse.model_validate(lesson).model_copy(
+                update={"cache_hit": from_cache, "caps_aligned": True}
+            ),
+            from_cache,
+            provider,
+        )
+
+
 @router.post("/generate", response_model=JobAcceptedResponse, status_code=status.HTTP_202_ACCEPTED)
 @router.post("/", response_model=JobAcceptedResponse, status_code=status.HTTP_202_ACCEPTED)
 @limiter.limit("10/day")  # Default rate limit; will be enhanced with per-tier logic below
@@ -41,48 +119,8 @@ async def generate_lesson(
     current_user: dict = Depends(get_current_user),
 ):
     async def _run() -> dict:
-        async with AsyncSessionLocal() as db:
-            await ConsentService(db).require_active_consent(body.learner_id, actor_id=current_user.get("sub"))
-            learner_repo = LearnerRepository(db)
-            learner = await learner_repo.get_by_id(body.learner_id)
-            if not learner:
-                raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
-
-            guardian = await GuardianRepository(db).get_by_id(learner.guardian_id)
-            tier = guardian.subscription_tier if guardian else "free"
-            try:
-                payload, from_cache = await _executive.generate_lesson(
-                    pseudonym_id=learner.pseudonym_id,
-                    grade=learner.grade,
-                    subject=body.subject,
-                    topic=body.topic,
-                    language=body.language,
-                    archetype=learner.archetype,
-                    user_id=learner.guardian_id,
-                    tier=tier,
-                )
-            except QuotaExceededError as exc:
-                raise HTTPException(
-                    status_code=status.HTTP_429_TOO_MANY_REQUESTS,
-                    detail="Daily AI quota exceeded. Upgrade to Premium for unlimited access.",
-                ) from exc
-
-            lesson = await LessonRepository(db).create(
-                learner_id=body.learner_id,
-                grade=learner.grade,
-                subject=body.subject,
-                topic=body.topic,
-                language=body.language,
-                archetype=learner.archetype,
-                content=_render_lesson_content(payload),
-                llm_provider="groq",
-                served_from_cache=from_cache,
-            )
-            await FourthEstateService(db).lesson_generated(learner.pseudonym_id, body.subject, body.topic, "groq")
-            await db.commit()
-            return LessonResponse.model_validate(lesson).model_copy(
-                update={"cache_hit": from_cache, "caps_aligned": True}
-            ).model_dump(mode="json")
+        lesson, _, _ = await _create_lesson_for_request(body, current_user)
+        return lesson.model_dump(mode="json")
 
     job = await enqueue_job(
         background_tasks,
@@ -91,6 +129,25 @@ async def generate_lesson(
         handler=_run,
     )
     return JobAcceptedResponse(job_id=job["job_id"], operation=job["operation"], status=job["status"])
+
+
+@router.post("/generate/stream")
+async def generate_lesson_stream(
+    body: LessonRequest,
+    current_user: dict = Depends(get_current_user),
+):
+    async def _events():
+        yield f"event: status\ndata: {json.dumps({'status': 'accepted', 'operation': 'lesson_generation'})}\n\n"
+        try:
+            lesson, from_cache, provider = await _create_lesson_for_request(body, current_user)
+            yield f"event: result\ndata: {lesson.model_dump_json()}\n\n"
+            yield f"event: done\ndata: {json.dumps({'status': 'completed', 'cache_hit': from_cache, 'provider': provider})}\n\n"
+        except HTTPException as exc:
+            yield f"event: error\ndata: {json.dumps({'status': 'failed', 'message': exc.detail})}\n\n"
+        except Exception as exc:  # noqa: BLE001
+            yield f"event: error\ndata: {json.dumps({'status': 'failed', 'message': str(exc)})}\n\n"
+
+    return StreamingResponse(_events(), media_type="text/event-stream")
 
 
 @router.get("/{lesson_id}")

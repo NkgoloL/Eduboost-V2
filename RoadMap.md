@@ -1,6 +1,6 @@
 # Frontend-Backend Recovery Roadmap
 
-Updated: 2026-05-04  
+Updated: 2026-05-05
 Source: user-reported frontend failures plus screenshots from the learner flow
 
 Status legend:
@@ -68,7 +68,7 @@ working end to end:
    - lesson-generation endpoint availability
    - async job completion or direct response flow
    - required provider/config dependencies in local development
-9. `[open]` Verify that lesson completion, XP award, and post-lesson state
+9. `[done]` Verify that lesson completion, XP award, and post-lesson state
    refresh work after lesson generation succeeds.
 
 ## Phase 3: Frontend Behavior Repair
@@ -96,7 +96,7 @@ working end to end:
     spacing/alignment issues in the learner panels.
 16. `[done]` Repair lesson subject/topic card styling so the chooser looks like
     a deliberate product surface instead of fallback browser controls.
-17. `[open]` Review dark-theme contrast, card backgrounds, and button states on
+17. `[done]` Review dark-theme contrast, card backgrounds, and button states on
     broken and recovered screens.
 
 ## Phase 5: Test and Release Guardrails
@@ -105,9 +105,9 @@ working end to end:
     journeys for dashboard, plan, badges, and lesson generation.
 19. `[done]` Add backend contract tests for the specific V2 endpoints used by
     the current frontend learner flow.
-20. `[open]` Add an end-to-end smoke test for the critical learner journey:
+20. `[done]` Add an end-to-end smoke test for the critical learner journey:
     login -> dashboard -> assessment or lesson -> study plan -> badges.
-21. `[open]` Add a pre-release validation checklist that confirms the frontend
+21. `[done]` Add a pre-release validation checklist that confirms the frontend
     can talk to the backend in the local Docker stack before marking a build as
     healthy.
 
@@ -153,3 +153,10 @@ This roadmap is complete when:
 - Fixed `MonTODAY` layout and polished the lesson chooser UI.
 - Updated E2E and Vitest contract tests for V2 endpoints.
 - Verified backend contracts using `tests/integration/test_learner_flow_contract.py`.
+- Added Playwright dev-session setup and `tests/e2e/learner_smoke.spec.ts`
+  to cover dashboard -> study plan -> lesson completion + XP -> badges.
+- Confirmed dark-theme surfaces use the shared `--bg`, `--surface`,
+  `--surface2`, `--border`, `--text`, and `--muted` tokens across recovered
+  learner screens.
+- Published the pre-release frontend-backend validation checklist at
+  `docs/release/frontend_backend_validation.md`.

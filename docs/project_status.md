@@ -1,10 +1,14 @@
 # Project Status
 
-This page summarizes the verified repository state as of **2026-05-04**.
+This page summarizes the verified repository state as of **2026-05-05**.
 
 ## Verified Today
 
 - The Frontend-Backend Recovery phase (addressing API mismatches, UI regressions, and E2E testing for V2) has been successfully completed.
+- The active recovery roadmap has no remaining local `[open]` items; externally blocked LLM items are tracked separately in `LLM_Integration_Roadmap.md`.
+- LLM Phase 3 has a CPU LoRA smoke adapter, merge/export path, and pedagogy evaluation harness. The current smoke adapter proves the pipeline, not final production quality.
+- LLM Phase 4 local app integration is in place for lesson generation: `ExecutiveService`, Judiciary validation, lightweight learner-context injection, and SSE streaming.
+- Playwright now has a dev-session setup project and a critical learner smoke journey covering dashboard, study plan, lesson completion plus XP, and badges.
 - The active backend entrypoint is `app/api_v2.py`.
 - The root `docker-compose.yml` points at the V2 runtime and is the default
   local stack.
@@ -34,6 +38,7 @@ EduBoost is V2-first, but not every historical surface has disappeared:
   future state.
 - Security, migration, and operational claims should be phrased in terms of
   what the code and workflows currently prove.
+- GPU DeepSeek/vLLM production rollout is still externally blocked by infrastructure and account tier, so it should not be represented as complete.
 
 ## Audit Tracker
 
