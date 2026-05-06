@@ -1,0 +1,889 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>app.modules.diagnostics.irt_engine &mdash; EduBoost SA 2.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=c5a06975" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=51b770b3"></script>
+      <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            EduBoost SA
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/core.html">Core — Shared Kernel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/core.html#module-app.core.config">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings"><code class="docutils literal notranslate"><span class="pre">Settings</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.APP_NAME"><code class="docutils literal notranslate"><span class="pre">Settings.APP_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.APP_VERSION"><code class="docutils literal notranslate"><span class="pre">Settings.APP_VERSION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.APP_BASE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.APP_BASE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.ENVIRONMENT"><code class="docutils literal notranslate"><span class="pre">Settings.ENVIRONMENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.APP_ENV"><code class="docutils literal notranslate"><span class="pre">Settings.APP_ENV</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.DEBUG"><code class="docutils literal notranslate"><span class="pre">Settings.DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.LEGACY_RETIREMENT_DATE"><code class="docutils literal notranslate"><span class="pre">Settings.LEGACY_RETIREMENT_DATE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.DATABASE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.DATABASE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.REDIS_URL"><code class="docutils literal notranslate"><span class="pre">Settings.REDIS_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.REDIS_CACHE_TTL_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.REDIS_CACHE_TTL_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.SEMANTIC_CACHE_TTL_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.SEMANTIC_CACHE_TTL_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.JWT_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.JWT_ALGORITHM"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_ALGORITHM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.ENCRYPTION_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.ENCRYPTION_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.ENCRYPTION_SALT"><code class="docutils literal notranslate"><span class="pre">Settings.ENCRYPTION_SALT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.ANTHROPIC_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.ANTHROPIC_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.GROQ_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.GROQ_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.HUGGINGFACE_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.HUGGINGFACE_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.ANTHROPIC_MODEL"><code class="docutils literal notranslate"><span class="pre">Settings.ANTHROPIC_MODEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.INFERENCE_SERVICE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.INFERENCE_SERVICE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.LLM_TIMEOUT_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_TIMEOUT_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.LLM_MAX_RETRIES"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_MAX_RETRIES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.LLM_PROVIDER"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_PROVIDER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.LOCAL_BASE_MODEL_ID"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_BASE_MODEL_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.LOCAL_ADAPTER_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_ADAPTER_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.LOCAL_MERGED_MODEL_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_MERGED_MODEL_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.LOCAL_LLM_MAX_NEW_TOKENS"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_LLM_MAX_NEW_TOKENS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.LOCAL_LLM_TEMPERATURE"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_LLM_TEMPERATURE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.FREE_DAILY_REQUEST_QUOTA"><code class="docutils literal notranslate"><span class="pre">Settings.FREE_DAILY_REQUEST_QUOTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.PREMIUM_DAILY_REQUEST_QUOTA"><code class="docutils literal notranslate"><span class="pre">Settings.PREMIUM_DAILY_REQUEST_QUOTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.STRIPE_SECRET_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_SECRET_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.STRIPE_WEBHOOK_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_WEBHOOK_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.STRIPE_PRICE_ID_PREMIUM"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_PRICE_ID_PREMIUM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.POSTHOG_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.POSTHOG_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.POSTHOG_HOST"><code class="docutils literal notranslate"><span class="pre">Settings.POSTHOG_HOST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.SENDGRID_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.SENDGRID_FROM_EMAIL"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_FROM_EMAIL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.SENDGRID_FROM_NAME"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_FROM_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.AZURE_KEY_VAULT_URL"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_KEY_VAULT_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.AZURE_CLIENT_ID"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_CLIENT_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.AZURE_CLIENT_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_CLIENT_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.AZURE_TENANT_ID"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_TENANT_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.AZURE_STORAGE_CONNECTION_STRING"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_STORAGE_CONNECTION_STRING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.AZURE_STORAGE_CONTAINER"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_STORAGE_CONTAINER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.GRAFANA_CLOUD_PROMETHEUS_URL"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_PROMETHEUS_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.GRAFANA_CLOUD_LOKI_URL"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_LOKI_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.GRAFANA_CLOUD_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.PROMETHEUS_METRICS_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.PROMETHEUS_METRICS_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.LOG_LEVEL"><code class="docutils literal notranslate"><span class="pre">Settings.LOG_LEVEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.SENTRY_DSN"><code class="docutils literal notranslate"><span class="pre">Settings.SENTRY_DSN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.KEY_VAULT_REFRESH_INTERVAL_HOURS"><code class="docutils literal notranslate"><span class="pre">Settings.KEY_VAULT_REFRESH_INTERVAL_HOURS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.RATE_LIMIT_DEFAULT"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_DEFAULT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.RATE_LIMIT_AUTH"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_AUTH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.RATE_LIMIT_LLM"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_LLM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.ARQ_MAX_JOBS"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_MAX_JOBS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.ARQ_JOB_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_JOB_TIMEOUT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.ALLOWED_ORIGINS"><code class="docutils literal notranslate"><span class="pre">Settings.ALLOWED_ORIGINS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.validate_jwt_secret"><code class="docutils literal notranslate"><span class="pre">Settings.validate_jwt_secret()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.validate_encryption_key"><code class="docutils literal notranslate"><span class="pre">Settings.validate_encryption_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.is_production"><code class="docutils literal notranslate"><span class="pre">Settings.is_production()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.refresh_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.refresh_from_key_vault()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.config.Settings.load_production_secrets_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.load_production_secrets_from_key_vault()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/core.html#app.core.config.get_settings"><code class="docutils literal notranslate"><span class="pre">get_settings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/core.html#security">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/core.html#module-app.core.audit">Audit Trail</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/core.html#app.core.audit.FourthEstateService"><code class="docutils literal notranslate"><span class="pre">FourthEstateService</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.audit.FourthEstateService.record"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.record()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.audit.FourthEstateService.consent_granted"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.consent_granted()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.audit.FourthEstateService.consent_revoked"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.consent_revoked()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.audit.FourthEstateService.erasure_requested"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.erasure_requested()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.audit.FourthEstateService.erasure_executed"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.erasure_executed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.audit.FourthEstateService.lesson_generated"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.lesson_generated()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.audit.FourthEstateService.constitutional_violation"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.constitutional_violation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.audit.FourthEstateService.auth_event"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.auth_event()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.audit.FourthEstateService.access_rejected"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.access_rejected()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/core.html#app.core.audit.FourthEstateService.subscription_changed"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.subscription_changed()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/modules.html">Domain Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/modules.html#diagnostics-irt-engine">Diagnostics — IRT Engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.p_correct"><code class="docutils literal notranslate"><span class="pre">p_correct()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.fisher_information"><code class="docutils literal notranslate"><span class="pre">fisher_information()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.update_theta_mle"><code class="docutils literal notranslate"><span class="pre">update_theta_mle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.compute_theta"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.compute_theta()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.estimate_theta_eap"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.estimate_theta_eap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.identify_gaps"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.identify_gaps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.select_next_item"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.select_next_item()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.should_stop"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.should_stop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.map_grade_equivalent"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.map_grade_equivalent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.run_gap_probe_cascade"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.run_gap_probe_cascade()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/modules.html#lessons-llm-gateway">Lessons — LLM Gateway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/modules.html#app.modules.lessons.llm_gateway.LLMResponse"><code class="docutils literal notranslate"><span class="pre">LLMResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.lessons.llm_gateway.LLMResponse.content"><code class="docutils literal notranslate"><span class="pre">LLMResponse.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.lessons.llm_gateway.LLMResponse.provider"><code class="docutils literal notranslate"><span class="pre">LLMResponse.provider</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.lessons.llm_gateway.LLMResponse.prompt_tokens"><code class="docutils literal notranslate"><span class="pre">LLMResponse.prompt_tokens</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.lessons.llm_gateway.LLMResponse.completion_tokens"><code class="docutils literal notranslate"><span class="pre">LLMResponse.completion_tokens</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.lessons.llm_gateway.LLMResponse.model"><code class="docutils literal notranslate"><span class="pre">LLMResponse.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#id0"><code class="docutils literal notranslate"><span class="pre">LLMResponse.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#id1"><code class="docutils literal notranslate"><span class="pre">LLMResponse.provider</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#id2"><code class="docutils literal notranslate"><span class="pre">LLMResponse.prompt_tokens</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#id3"><code class="docutils literal notranslate"><span class="pre">LLMResponse.completion_tokens</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#id4"><code class="docutils literal notranslate"><span class="pre">LLMResponse.model</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/modules.html#app.modules.lessons.llm_gateway.LLMGateway"><code class="docutils literal notranslate"><span class="pre">LLMGateway</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.lessons.llm_gateway.LLMGateway.generate"><code class="docutils literal notranslate"><span class="pre">LLMGateway.generate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/modules.html#consent-popia-service">Consent — POPIA Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/modules.html#app.modules.consent.service.ConsentService"><code class="docutils literal notranslate"><span class="pre">ConsentService</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.consent.service.ConsentService.__init__"><code class="docutils literal notranslate"><span class="pre">ConsentService.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.consent.service.ConsentService.require_active_consent"><code class="docutils literal notranslate"><span class="pre">ConsentService.require_active_consent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.consent.service.ConsentService.grant"><code class="docutils literal notranslate"><span class="pre">ConsentService.grant()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.consent.service.ConsentService.revoke"><code class="docutils literal notranslate"><span class="pre">ConsentService.revoke()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.consent.service.ConsentService.renew"><code class="docutils literal notranslate"><span class="pre">ConsentService.renew()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.consent.service.ConsentService.execute_erasure"><code class="docutils literal notranslate"><span class="pre">ConsentService.execute_erasure()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.consent.service.ConsentService.get_status"><code class="docutils literal notranslate"><span class="pre">ConsentService.get_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/modules.html#app.modules.consent.service.ConsentService.get_expiring_consents"><code class="docutils literal notranslate"><span class="pre">ConsentService.get_expiring_consents()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/modules.html#module-app.modules.learners">Learners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/modules.html#module-app.modules.study_plans">Study Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/modules.html#module-app.modules.gamification">Gamification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/modules.html#module-app.modules.parent_portal">Parent Portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/modules.html#module-app.modules.rlhf">RLHF Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/routers.html">API Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/models.html">ORM Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/models.html#app.models.UserRole"><code class="docutils literal notranslate"><span class="pre">UserRole</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.UserRole.STUDENT"><code class="docutils literal notranslate"><span class="pre">UserRole.STUDENT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.UserRole.PARENT"><code class="docutils literal notranslate"><span class="pre">UserRole.PARENT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.UserRole.TEACHER"><code class="docutils literal notranslate"><span class="pre">UserRole.TEACHER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.UserRole.ADMIN"><code class="docutils literal notranslate"><span class="pre">UserRole.ADMIN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/models.html#app.models.SubscriptionTier"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.SubscriptionTier.FREE"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier.FREE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.SubscriptionTier.PREMIUM"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier.PREMIUM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/models.html#app.models.ArchetypeLabel"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.ArchetypeLabel.KETER"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.KETER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.ArchetypeLabel.CHOKMAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.CHOKMAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.ArchetypeLabel.BINAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.BINAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.ArchetypeLabel.CHESED"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.CHESED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.ArchetypeLabel.GEVURAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.GEVURAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.ArchetypeLabel.TIFERET"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.TIFERET</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.ArchetypeLabel.NETZACH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.NETZACH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.ArchetypeLabel.HOD"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.HOD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.ArchetypeLabel.YESOD"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.YESOD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.ArchetypeLabel.MALKUTH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.MALKUTH</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/models.html#app.models.Language"><code class="docutils literal notranslate"><span class="pre">Language</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.Language.ENGLISH"><code class="docutils literal notranslate"><span class="pre">Language.ENGLISH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.Language.ISIZULU"><code class="docutils literal notranslate"><span class="pre">Language.ISIZULU</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.Language.AFRIKAANS"><code class="docutils literal notranslate"><span class="pre">Language.AFRIKAANS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.Language.ISIXHOSA"><code class="docutils literal notranslate"><span class="pre">Language.ISIXHOSA</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/models.html#app.models.Guardian"><code class="docutils literal notranslate"><span class="pre">Guardian</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.Guardian.learners"><code class="docutils literal notranslate"><span class="pre">Guardian.learners</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.Guardian.consents"><code class="docutils literal notranslate"><span class="pre">Guardian.consents</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/models.html#app.models.LearnerProfile"><code class="docutils literal notranslate"><span class="pre">LearnerProfile</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.LearnerProfile.guardian"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.guardian</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.LearnerProfile.consents"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.consents</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.LearnerProfile.knowledge_gaps"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.knowledge_gaps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.LearnerProfile.mastery_records"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.mastery_records</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.LearnerProfile.diagnostic_sessions"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.diagnostic_sessions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.LearnerProfile.lessons"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.lessons</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/models.html#app.models.Learner"><code class="docutils literal notranslate"><span class="pre">Learner</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/models.html#app.models.ParentalConsent"><code class="docutils literal notranslate"><span class="pre">ParentalConsent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.ParentalConsent.guardian"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.guardian</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.ParentalConsent.learner"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.learner</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.ParentalConsent.is_active"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.is_active</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/models.html#app.models.AuditEvent"><code class="docutils literal notranslate"><span class="pre">AuditEvent</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/models.html#app.models.IRTItem"><code class="docutils literal notranslate"><span class="pre">IRTItem</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/models.html#app.models.DiagnosticSession"><code class="docutils literal notranslate"><span class="pre">DiagnosticSession</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.DiagnosticSession.learner"><code class="docutils literal notranslate"><span class="pre">DiagnosticSession.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/models.html#app.models.KnowledgeGap"><code class="docutils literal notranslate"><span class="pre">KnowledgeGap</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.KnowledgeGap.learner"><code class="docutils literal notranslate"><span class="pre">KnowledgeGap.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/models.html#app.models.SubjectMastery"><code class="docutils literal notranslate"><span class="pre">SubjectMastery</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.SubjectMastery.learner"><code class="docutils literal notranslate"><span class="pre">SubjectMastery.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/models.html#app.models.Lesson"><code class="docutils literal notranslate"><span class="pre">Lesson</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/models.html#app.models.Lesson.learner"><code class="docutils literal notranslate"><span class="pre">Lesson.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/models.html#app.models.AuditLog"><code class="docutils literal notranslate"><span class="pre">AuditLog</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/models.html#app.models.StripeWebhookEvent"><code class="docutils literal notranslate"><span class="pre">StripeWebhookEvent</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/models.html#app.models.LessonRecord"><code class="docutils literal notranslate"><span class="pre">LessonRecord</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/repositories.html">Repositories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.AssessmentRepository"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.AssessmentRepository.list_assessments"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.list_assessments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.AssessmentRepository.get_assessment"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.get_assessment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.AssessmentRepository.create_attempt"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.create_attempt()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.AuditRepository"><code class="docutils literal notranslate"><span class="pre">AuditRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.AuditRepository.append"><code class="docutils literal notranslate"><span class="pre">AuditRepository.append()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.AuditRepository.log"><code class="docutils literal notranslate"><span class="pre">AuditRepository.log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.AuditRepository.latest"><code class="docutils literal notranslate"><span class="pre">AuditRepository.latest()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.AuditRepository.get_by_id"><code class="docutils literal notranslate"><span class="pre">AuditRepository.get_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.AuditRepository.get_by_resource"><code class="docutils literal notranslate"><span class="pre">AuditRepository.get_by_resource()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.AuditRepository.get_by_actor"><code class="docutils literal notranslate"><span class="pre">AuditRepository.get_by_actor()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.AuthRepository"><code class="docutils literal notranslate"><span class="pre">AuthRepository</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.ConsentRepository"><code class="docutils literal notranslate"><span class="pre">ConsentRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.ConsentRepository.model"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.ConsentRepository.get_active"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.get_active()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.ConsentRepository.grant"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.grant()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.ConsentRepository.revoke"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.revoke()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.ConsentRepository.renew"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.renew()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.ConsentRepository.get_expiring_soon"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.get_expiring_soon()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.DiagnosticRepository"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.DiagnosticRepository.model"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.DiagnosticRepository.get_latest_for_learner"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.get_latest_for_learner()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.DiagnosticRepository.create_session"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.create_session()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.GamificationRepository"><code class="docutils literal notranslate"><span class="pre">GamificationRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.GamificationRepository.get_profile_rows"><code class="docutils literal notranslate"><span class="pre">GamificationRepository.get_profile_rows()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.GamificationRepository.get_leaderboard_rows"><code class="docutils literal notranslate"><span class="pre">GamificationRepository.get_leaderboard_rows()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.GuardianRepository"><code class="docutils literal notranslate"><span class="pre">GuardianRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.GuardianRepository.model"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.GuardianRepository.get_by_email_hash"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_email_hash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.GuardianRepository.get_by_verification_token"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_verification_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.GuardianRepository.get_guardian_by_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_guardian_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.GuardianRepository.revoke_jti"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.revoke_jti()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.GuardianRepository.is_jti_revoked"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.is_jti_revoked()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.LearnerRepository"><code class="docutils literal notranslate"><span class="pre">LearnerRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.LearnerRepository.model"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.LearnerRepository.get_by_id"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.get_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.LearnerRepository.delete_by_id"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.delete_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.LearnerRepository.soft_delete"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.soft_delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.LearnerRepository.purge_personal_data"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.purge_personal_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.LessonRepository"><code class="docutils literal notranslate"><span class="pre">LessonRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.LessonRepository.model"><code class="docutils literal notranslate"><span class="pre">LessonRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/repositories.html#app.repositories.LessonRepository.get_recent_for_learner"><code class="docutils literal notranslate"><span class="pre">LessonRepository.get_recent_for_learner()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notes/changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notes/changelog.html#v2-0-0-may-2026">v2.0.0 (May 2026)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notes/todo.html">Outstanding Work</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">EduBoost SA</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">app.modules.diagnostics.irt_engine</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for app.modules.diagnostics.irt_engine</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;IRT 2-Parameter Logistic (2PL) adaptive diagnostic engine.</span>
+
+<span class="sd">Implements Item Response Theory scoring used to estimate each learner&#39;s</span>
+<span class="sd">latent ability (theta, θ) from their responses to adaptive questions.</span>
+<span class="sd">The 2PL model uses per-item *discrimination* (a) and *difficulty* (b)</span>
+<span class="sd">parameters calibrated against the South African CAPS curriculum for</span>
+<span class="sd">grades R–7.</span>
+
+<span class="sd">Mathematical model:</span>
+
+<span class="sd">.. math::</span>
+
+<span class="sd">    P(X=1 \\mid \\theta) = \\frac{1}{1 + e^{-a(\\theta - b)}}</span>
+
+<span class="sd">where:</span>
+
+<span class="sd">* :math:`\\theta` — learner ability estimate (logit scale, typically −4 to +4)</span>
+<span class="sd">* :math:`a` — item discrimination (steepness of the ICC curve)</span>
+<span class="sd">* :math:`b` — item difficulty (ability level at which P = 0.5)</span>
+
+<span class="sd">Example:</span>
+<span class="sd">    Run a full diagnostic cascade::</span>
+
+<span class="sd">        from app.modules.diagnostics.irt_engine import DiagnosticEngine</span>
+
+<span class="sd">        engine = DiagnosticEngine()</span>
+<span class="sd">        result = engine.run_gap_probe_cascade(</span>
+<span class="sd">            learner_grade=4, items=item_bank,</span>
+<span class="sd">            correct_item_ids={&quot;q1&quot;, &quot;q3&quot;, &quot;q5&quot;},</span>
+<span class="sd">        )</span>
+<span class="sd">        print(f&quot;θ = {result[&#39;theta&#39;]:.3f} ± {result[&#39;standard_error&#39;]:.3f}&quot;)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">statistics</span><span class="w"> </span><span class="kn">import</span> <span class="n">fmean</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.core.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.domain.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">IRTItem</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="c1"># ── IRT maths ─────────────────────────────────────────────────────────────────</span>
+
+
+<div class="viewcode-block" id="p_correct">
+<a class="viewcode-back" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.p_correct">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">p_correct</span><span class="p">(</span><span class="n">theta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the 2PL probability of a correct response.</span>
+
+<span class="sd">    Implements the Item Characteristic Curve (ICC):</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        P(\\theta) = \\frac{1}{1 + e^{-a(\\theta - b)}}</span>
+
+<span class="sd">    Parameters are hard-clamped to prevent overflow:</span>
+<span class="sd">    ``a`` ∈ [0.1, 4.0], ``b`` ∈ [−4, 4], ``θ`` ∈ [−5, 5].</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        theta: Learner ability estimate on the IRT logit scale.</span>
+<span class="sd">        a: Item discrimination parameter (typically 0.5–2.5).</span>
+<span class="sd">        b: Item difficulty parameter (typically −3 to +3).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Probability of a correct response in ``[0, 1]``.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        ::</span>
+
+<span class="sd">            p = p_correct(theta=0.0, a=1.0, b=0.0)</span>
+<span class="sd">            assert abs(p - 0.5) &lt; 1e-9  # theta == b → P = 0.5</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Hard bounds for parameters to prevent overflow/divergence</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">theta</span><span class="p">))</span>
+    <span class="k">return</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">theta</span> <span class="o">-</span> <span class="n">b</span><span class="p">)))</span></div>
+
+
+
+<div class="viewcode-block" id="fisher_information">
+<a class="viewcode-back" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.fisher_information">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fisher_information</span><span class="p">(</span><span class="n">theta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the Fisher information for a given IRT item.</span>
+
+<span class="sd">    Measures how much statistical information the item provides about</span>
+<span class="sd">    ability around the current theta estimate:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        I(\\theta) = a^2 \\cdot P(\\theta) \\cdot [1 - P(\\theta)]</span>
+
+<span class="sd">    Items with high discrimination (``a``) and difficulty close to</span>
+<span class="sd">    ``theta`` provide the most information.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        theta: Learner ability estimate.</span>
+<span class="sd">        a: Item discrimination parameter.</span>
+<span class="sd">        b: Item difficulty parameter.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Fisher information scalar value.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        ::</span>
+
+<span class="sd">            info = fisher_information(theta=0.0, a=1.5, b=0.0)</span>
+<span class="sd">            assert info &gt; 0  # maximum info when theta == b</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">p_correct</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">p</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="n">q</span></div>
+
+
+
+<div class="viewcode-block" id="update_theta_mle">
+<a class="viewcode-back" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.update_theta_mle">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_theta_mle</span><span class="p">(</span><span class="n">theta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">responses</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">IRTItem</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]],</span> <span class="n">max_iter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Estimate theta using Newton-Raphson maximum likelihood estimation.</span>
+
+<span class="sd">    Maximises the log-likelihood of the observed response pattern</span>
+<span class="sd">    given the 2PL model.  Convergence is reached when the update step</span>
+<span class="sd">    is smaller than ``1e-4`` or ``max_iter`` is exhausted.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        theta: Initial ability value to seed the optimisation.</span>
+<span class="sd">        responses: List of ``(item, correct)`` tuples pairing</span>
+<span class="sd">            :class:`~app.domain.models.IRTItem` instances with</span>
+<span class="sd">            correctness flags.</span>
+<span class="sd">        max_iter: Maximum Newton-Raphson iterations (default ``20``).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Estimated theta value clamped to ``[-4, 4]``.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        ::</span>
+
+<span class="sd">            theta = update_theta_mle(0.0, [(item, True), (item2, False)])</span>
+<span class="sd">            assert -4.0 &lt;= theta &lt;= 4.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">current</span> <span class="o">=</span> <span class="n">theta</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+        <span class="n">gradient</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">hessian</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">for</span> <span class="n">item</span><span class="p">,</span> <span class="n">correct</span> <span class="ow">in</span> <span class="n">responses</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">p_correct</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">a_param</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">b_param</span><span class="p">)</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">p</span>
+            <span class="n">residual</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="k">if</span> <span class="n">correct</span> <span class="k">else</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">-</span> <span class="n">p</span>
+            <span class="n">gradient</span> <span class="o">+=</span> <span class="n">item</span><span class="o">.</span><span class="n">a_param</span> <span class="o">*</span> <span class="n">residual</span>
+            <span class="n">hessian</span> <span class="o">-=</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">a_param</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="n">q</span>
+
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">hessian</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-9</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">gradient</span> <span class="o">/</span> <span class="n">hessian</span>
+        <span class="n">current</span> <span class="o">-=</span> <span class="n">delta</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-4</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">current</span><span class="p">)),</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># clamp to [-4, 4]</span></div>
+
+
+
+<div class="viewcode-block" id="DiagnosticEngine">
+<a class="viewcode-back" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DiagnosticEngine</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Runs the Gap-Probe Cascade using a real IRT item bank.</span>
+
+<span class="sd">    The engine estimates learner ability via Expected A Posteriori (EAP)</span>
+<span class="sd">    integration, identifies knowledge gaps from missed items, selects</span>
+<span class="sd">    the next most informative item via Fisher information, and returns</span>
+<span class="sd">    grade-equivalent guidance aligned to the CAPS curriculum.</span>
+
+<span class="sd">    All public methods are synchronous (CPU-bound maths); database I/O</span>
+<span class="sd">    is handled by the calling service layer.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        ::</span>
+
+<span class="sd">            engine = DiagnosticEngine()</span>
+<span class="sd">            result = engine.run_gap_probe_cascade(</span>
+<span class="sd">                learner_grade=3, items=bank,</span>
+<span class="sd">                correct_item_ids={&quot;q1&quot;, &quot;q3&quot;},</span>
+<span class="sd">            )</span>
+<span class="sd">            print(result[&quot;theta&quot;], result[&quot;ranked_gaps&quot;])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DiagnosticEngine.compute_theta">
+<a class="viewcode-back" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.compute_theta">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_theta</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">starting_theta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">IRTItem</span><span class="p">],</span>
+        <span class="n">correct_item_ids</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute learner theta from administered item results.</span>
+
+<span class="sd">        Delegates to :meth:`estimate_theta_eap` with the given</span>
+<span class="sd">        ``starting_theta`` as the prior mean.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            starting_theta: Initial ability estimate for the learner.</span>
+<span class="sd">            items: List of administered :class:`~app.domain.models.IRTItem`</span>
+<span class="sd">                instances.</span>
+<span class="sd">            correct_item_ids: Set of item IDs answered correctly.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: Estimated learner theta.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            ::</span>
+
+<span class="sd">                theta = engine.compute_theta(0.0, items, {&quot;q1&quot;, &quot;q3&quot;})</span>
+<span class="sd">                assert -4.0 &lt;= theta &lt;= 4.0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">responses</span> <span class="o">=</span> <span class="p">[(</span><span class="n">item</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="ow">in</span> <span class="n">correct_item_ids</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">]</span>
+        <span class="n">theta</span><span class="p">,</span> <span class="n">_sem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimate_theta_eap</span><span class="p">(</span><span class="n">responses</span><span class="p">,</span> <span class="n">prior_mean</span><span class="o">=</span><span class="n">starting_theta</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">theta</span></div>
+
+
+<div class="viewcode-block" id="DiagnosticEngine.estimate_theta_eap">
+<a class="viewcode-back" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.estimate_theta_eap">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">estimate_theta_eap</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">responses</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">IRTItem</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]],</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">prior_mean</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">prior_sd</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">theta_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.0</span><span class="p">,</span>
+        <span class="n">theta_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">4.0</span><span class="p">,</span>
+        <span class="n">step</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Estimate theta via Expected A Posteriori (EAP) integration.</span>
+
+<span class="sd">        Computes the posterior mean of theta by integrating over a</span>
+<span class="sd">        discrete grid with a Gaussian prior:</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \\hat{\\theta}_{EAP} = \\frac{\\sum_k \\theta_k \\cdot L(\\theta_k) \\cdot \\pi(\\theta_k)}</span>
+<span class="sd">            {\\sum_k L(\\theta_k) \\cdot \\pi(\\theta_k)}</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            responses: List of ``(item, correct)`` tuples.</span>
+<span class="sd">            prior_mean: Mean of the Gaussian prior for theta.</span>
+<span class="sd">            prior_sd: Standard deviation of the theta prior.</span>
+<span class="sd">            theta_min: Minimum theta on the integration grid.</span>
+<span class="sd">            theta_max: Maximum theta on the integration grid.</span>
+<span class="sd">            step: Grid resolution for theta values.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple[float, float]: ``(theta_estimate, standard_error)``.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            ::</span>
+
+<span class="sd">                theta, se = engine.estimate_theta_eap(</span>
+<span class="sd">                    [(item1, True), (item2, False)],</span>
+<span class="sd">                    prior_mean=0.0,</span>
+<span class="sd">                )</span>
+<span class="sd">                assert -4.0 &lt;= theta &lt;= 4.0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">grid</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">theta_min</span>
+        <span class="k">while</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="n">theta_max</span> <span class="o">+</span> <span class="mf">1e-9</span><span class="p">:</span>
+            <span class="n">grid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+            <span class="n">value</span> <span class="o">+=</span> <span class="n">step</span>
+
+        <span class="n">posterior_weights</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">:</span>
+            <span class="n">prior</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(((</span><span class="n">theta</span> <span class="o">-</span> <span class="n">prior_mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">prior_sd</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+            <span class="n">likelihood</span> <span class="o">=</span> <span class="mf">1.0</span>
+            <span class="k">for</span> <span class="n">item</span><span class="p">,</span> <span class="n">correct</span> <span class="ow">in</span> <span class="n">responses</span><span class="p">:</span>
+                <span class="c1"># 2PL model probability</span>
+                <span class="n">prob</span> <span class="o">=</span> <span class="n">p_correct</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">a_param</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">b_param</span><span class="p">)</span>
+                <span class="c1"># Likelihood clamping to prevent underflow</span>
+                <span class="n">likelihood</span> <span class="o">*=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">1e-12</span><span class="p">,</span> <span class="n">prob</span> <span class="k">if</span> <span class="n">correct</span> <span class="k">else</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">prob</span><span class="p">))</span>
+            <span class="n">posterior_weights</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prior</span> <span class="o">*</span> <span class="n">likelihood</span><span class="p">)</span>
+
+        <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">posterior_weights</span><span class="p">)</span> <span class="ow">or</span> <span class="mf">1.0</span>
+        <span class="n">posterior</span> <span class="o">=</span> <span class="p">[</span><span class="n">weight</span> <span class="o">/</span> <span class="n">total</span> <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">posterior_weights</span><span class="p">]</span>
+        <span class="n">eap</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">theta</span> <span class="o">*</span> <span class="n">weight</span> <span class="k">for</span> <span class="n">theta</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">posterior</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="n">variance</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(((</span><span class="n">theta</span> <span class="o">-</span> <span class="n">eap</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">weight</span> <span class="k">for</span> <span class="n">theta</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">posterior</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="n">sem</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">variance</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">eap</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="n">sem</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DiagnosticEngine.identify_gaps">
+<a class="viewcode-back" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.identify_gaps">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">identify_gaps</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">IRTItem</span><span class="p">],</span> <span class="n">correct_item_ids</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">threshold_p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.50</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Identify knowledge gaps from missed items.</span>
+
+<span class="sd">        An item is considered a gap when the learner missed it and its</span>
+<span class="sd">        normalised difficulty exceeds the threshold.  Gaps are deduplicated</span>
+<span class="sd">        by ``subject::topic`` and ranked by severity (descending).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            items: List of administered :class:`~app.domain.models.IRTItem`</span>
+<span class="sd">                instances.</span>
+<span class="sd">            correct_item_ids: Set of correctly answered item IDs.</span>
+<span class="sd">            threshold_p: Minimum expected probability of correctness to</span>
+<span class="sd">                count as a gap when missed (default ``0.50``).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list[dict]: Ranked list of gap dictionaries with keys</span>
+<span class="sd">            ``grade``, ``subject``, ``topic``, and ``severity``.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            ::</span>
+
+<span class="sd">                gaps = engine.identify_gaps(items, {&quot;q1&quot;})</span>
+<span class="sd">                assert all(&quot;severity&quot; in g for g in gaps)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">gaps</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">correct_item_ids</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">subject</span><span class="si">}</span><span class="s2">::</span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">topic</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="n">existing</span> <span class="o">=</span> <span class="n">gaps</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">existing</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">b_param</span> <span class="o">&gt;</span> <span class="n">existing</span><span class="p">[</span><span class="s2">&quot;severity&quot;</span><span class="p">]:</span>
+                    <span class="n">gaps</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                        <span class="s2">&quot;grade&quot;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">grade</span><span class="p">,</span>
+                        <span class="s2">&quot;subject&quot;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">subject</span><span class="p">,</span>
+                        <span class="s2">&quot;topic&quot;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">topic</span><span class="p">,</span>
+                        <span class="s2">&quot;severity&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">b_param</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">6</span><span class="p">)),</span> <span class="mi">3</span><span class="p">),</span>
+                    <span class="p">}</span>
+        <span class="n">ranked</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">gaps</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">gap</span><span class="p">:</span> <span class="n">gap</span><span class="p">[</span><span class="s2">&quot;severity&quot;</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ranked</span></div>
+
+
+<div class="viewcode-block" id="DiagnosticEngine.select_next_item">
+<a class="viewcode-back" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.select_next_item">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">select_next_item</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">theta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">administered_ids</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">bank</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">IRTItem</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IRTItem</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Select the next item with maximum Fisher information.</span>
+
+<span class="sd">        Uses :func:`fisher_information` as the item-selection criterion.</span>
+<span class="sd">        Items already administered are excluded.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            theta: Current ability estimate.</span>
+<span class="sd">            administered_ids: Item IDs already shown in this session.</span>
+<span class="sd">            bank: Candidate :class:`~app.domain.models.IRTItem` bank.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            IRTItem | None: Most informative next item, or ``None`` if</span>
+<span class="sd">            the bank is exhausted.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            ::</span>
+
+<span class="sd">                item = engine.select_next_item(0.5, {&quot;q1&quot;}, item_bank)</span>
+<span class="sd">                if item:</span>
+<span class="sd">                    print(f&quot;Next item: {item.id}&quot;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">best_item</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">best_info</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">bank</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="ow">in</span> <span class="n">administered_ids</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">information</span> <span class="o">=</span> <span class="n">fisher_information</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">a_param</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">b_param</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">information</span> <span class="o">&gt;</span> <span class="n">best_info</span><span class="p">:</span>
+                <span class="n">best_info</span> <span class="o">=</span> <span class="n">information</span>
+                <span class="n">best_item</span> <span class="o">=</span> <span class="n">item</span>
+        <span class="k">return</span> <span class="n">best_item</span></div>
+
+
+<div class="viewcode-block" id="DiagnosticEngine.should_stop">
+<a class="viewcode-back" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.should_stop">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">should_stop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">administered_count</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">standard_error</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Decide whether the adaptive diagnostic should stop.</span>
+
+<span class="sd">        The session terminates when either the item cap (20) is reached</span>
+<span class="sd">        or the standard error drops below the precision threshold (0.3).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            administered_count: Number of items administered so far.</span>
+<span class="sd">            standard_error: Current theta standard error.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: ``True`` when the session should end.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            ::</span>
+
+<span class="sd">                assert engine.should_stop(20, 0.5) is True</span>
+<span class="sd">                assert engine.should_stop(5, 0.2) is True</span>
+<span class="sd">                assert engine.should_stop(5, 0.5) is False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">administered_count</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="ow">or</span> <span class="n">standard_error</span> <span class="o">&lt;</span> <span class="mf">0.3</span></div>
+
+
+<div class="viewcode-block" id="DiagnosticEngine.map_grade_equivalent">
+<a class="viewcode-back" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.map_grade_equivalent">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">map_grade_equivalent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">learner_grade</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert theta into a grade-equivalent recommendation.</span>
+
+<span class="sd">        Maps the ability estimate to a recommended CAPS grade level</span>
+<span class="sd">        (0–7) by applying a shift based on theta magnitude:</span>
+
+<span class="sd">        * θ ≤ −1.8 → −2 grades</span>
+<span class="sd">        * −1.8 &lt; θ ≤ −0.8 → −1 grade</span>
+<span class="sd">        * −0.8 &lt; θ &lt; 0.8 → same grade</span>
+<span class="sd">        * 0.8 ≤ θ &lt; 1.8 → +1 grade</span>
+<span class="sd">        * θ ≥ 1.8 → +2 grades</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            theta: Estimated learner ability.</span>
+<span class="sd">            learner_grade: Current learner grade level (0–7).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int: Recommended grade equivalent clamped to 0–7.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            ::</span>
+
+<span class="sd">                assert engine.map_grade_equivalent(2.0, 3) == 5</span>
+<span class="sd">                assert engine.map_grade_equivalent(-2.0, 3) == 1</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">shift</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">theta</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mf">1.8</span><span class="p">:</span>
+            <span class="n">shift</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+        <span class="k">elif</span> <span class="n">theta</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">:</span>
+            <span class="n">shift</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">theta</span> <span class="o">&gt;=</span> <span class="mf">1.8</span><span class="p">:</span>
+            <span class="n">shift</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="k">elif</span> <span class="n">theta</span> <span class="o">&gt;=</span> <span class="mf">0.8</span><span class="p">:</span>
+            <span class="n">shift</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">learner_grade</span> <span class="o">+</span> <span class="n">shift</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="DiagnosticEngine.run_gap_probe_cascade">
+<a class="viewcode-back" href="../../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.run_gap_probe_cascade">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run_gap_probe_cascade</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">learner_grade</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">IRTItem</span><span class="p">],</span>
+        <span class="n">correct_item_ids</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">starting_theta</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Execute the full adaptive gap-probe cascade.</span>
+
+<span class="sd">        Orchestrates theta estimation, knowledge-gap identification, and</span>
+<span class="sd">        grade-equivalent mapping into a single diagnostic dashboard.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            learner_grade: Current CAPS grade of the learner (0–7).</span>
+<span class="sd">            items: List of candidate :class:`~app.domain.models.IRTItem`</span>
+<span class="sd">                instances.</span>
+<span class="sd">            correct_item_ids: Set of IDs answered correctly.</span>
+<span class="sd">            starting_theta: Initial ability estimate (default ``0.0``).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Dashboard dictionary containing:</span>
+
+<span class="sd">            * ``theta`` — EAP ability estimate</span>
+<span class="sd">            * ``standard_error`` — estimation precision</span>
+<span class="sd">            * ``grade_equivalent`` — recommended CAPS grade</span>
+<span class="sd">            * ``ranked_gaps`` — severity-ranked knowledge gaps</span>
+<span class="sd">            * ``knowledge_gap_topics`` — top-3 gap topic strings</span>
+<span class="sd">            * ``stopped`` — whether stopping criteria were met</span>
+<span class="sd">            * ``mean_difficulty`` — average item difficulty</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            ::</span>
+
+<span class="sd">                result = engine.run_gap_probe_cascade(</span>
+<span class="sd">                    learner_grade=4, items=bank,</span>
+<span class="sd">                    correct_item_ids={&quot;q1&quot;, &quot;q3&quot;},</span>
+<span class="sd">                )</span>
+<span class="sd">                assert &quot;theta&quot; in result</span>
+<span class="sd">                assert &quot;ranked_gaps&quot; in result</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">administered</span> <span class="o">=</span> <span class="n">items</span><span class="p">[:</span><span class="mi">20</span><span class="p">]</span>
+        <span class="n">responses</span> <span class="o">=</span> <span class="p">[(</span><span class="n">item</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="ow">in</span> <span class="n">correct_item_ids</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">administered</span><span class="p">]</span>
+        <span class="n">theta</span><span class="p">,</span> <span class="n">standard_error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimate_theta_eap</span><span class="p">(</span><span class="n">responses</span><span class="p">,</span> <span class="n">prior_mean</span><span class="o">=</span><span class="n">starting_theta</span><span class="p">)</span>
+        <span class="n">grade_equivalent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">map_grade_equivalent</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">learner_grade</span><span class="p">)</span>
+        <span class="n">ranked_gaps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">identify_gaps</span><span class="p">(</span><span class="n">administered</span><span class="p">,</span> <span class="n">correct_item_ids</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;theta&quot;</span><span class="p">:</span> <span class="n">theta</span><span class="p">,</span>
+            <span class="s2">&quot;standard_error&quot;</span><span class="p">:</span> <span class="n">standard_error</span><span class="p">,</span>
+            <span class="s2">&quot;grade_equivalent&quot;</span><span class="p">:</span> <span class="n">grade_equivalent</span><span class="p">,</span>
+            <span class="s2">&quot;ranked_gaps&quot;</span><span class="p">:</span> <span class="n">ranked_gaps</span><span class="p">,</span>
+            <span class="s2">&quot;knowledge_gap_topics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">gap</span><span class="p">[</span><span class="s2">&quot;topic&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">gap</span> <span class="ow">in</span> <span class="n">ranked_gaps</span><span class="p">[:</span><span class="mi">3</span><span class="p">]],</span>
+            <span class="s2">&quot;stopped&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">should_stop</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">administered</span><span class="p">),</span> <span class="n">standard_error</span><span class="p">),</span>
+            <span class="s2">&quot;mean_difficulty&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">fmean</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">b_param</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">administered</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span> <span class="k">if</span> <span class="n">administered</span> <span class="k">else</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="p">}</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, EduBoost SA Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

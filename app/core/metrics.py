@@ -109,6 +109,32 @@ consent_gate_blocks_total = Counter(
     registry=REGISTRY,
 )
 
+# ── Infrastructure ───────────────────────────────────────────────────────────
+db_pool_size = Gauge(
+    "eduboost_db_pool_size_total",
+    "Total database connections in the pool",
+    registry=REGISTRY,
+)
+
+db_pool_checkedout = Gauge(
+    "eduboost_db_pool_checkedout_total",
+    "Database connections currently in use",
+    registry=REGISTRY,
+)
+
+db_pool_overflow = Gauge(
+    "eduboost_db_pool_overflow_total",
+    "Database connections beyond the pool_size",
+    registry=REGISTRY,
+)
+
+redis_connected_clients = Gauge(
+    "eduboost_redis_connected_clients",
+    "Number of clients connected to Redis",
+    registry=REGISTRY,
+)
+
+
 # ── ARQ Background Jobs ───────────────────────────────────────────────────────
 arq_jobs_total = Counter(
     "eduboost_arq_jobs_total",

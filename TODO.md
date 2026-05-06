@@ -225,7 +225,7 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 ## 6.1 LLM gateway
 
-- [ ] `[critical]` Define LLM gateway interface: provider, model/version, prompt template version, input schema, output schema, latency, token usage, safety status, and fallback status.
+- [x] `[critical]` Define LLM gateway interface: provider, model/version, prompt template version, input schema, output schema, latency, token usage, safety status, and fallback status.
 - [ ] `[critical]` Add structured output validation for AI-generated lessons.
 - [ ] `[critical]` Reject output that fails schema, CAPS alignment, age-appropriateness, PII safety, or answer-key validation.
 - [ ] `[critical]` Ensure no raw learner PII is sent to LLM providers.
