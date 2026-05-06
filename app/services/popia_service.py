@@ -14,7 +14,7 @@ from app.core.exceptions import NotFoundError
 from app.repositories.learner_repository import LearnerRepository
 from app.repositories.lesson_repository import LessonRepository
 from app.repositories.knowledge_gap_repository import KnowledgeGapRepository
-from app.services.fourth_estate import FourthEstateService
+from app.services.audit_service import AuditService
 
 logger = logging.getLogger(__name__)
 
@@ -25,7 +25,7 @@ class POPIAService:
         self.learner_repo = LearnerRepository(db)
         self.lesson_repo = LessonRepository(db)
         self.gap_repo = KnowledgeGapRepository(db)
-        self.audit = FourthEstateService(db)
+        self.audit = AuditService(db)
 
     async def export_learner_data(self, learner_id: str, guardian_id: str) -> dict[str, Any]:
         """

@@ -1,8 +1,8 @@
-from app.core.llm_gateway import ExecutiveService
+from app.core.llm import LessonGenerator
 
 
 def test_lesson_prompt_includes_learner_context():
-    service = ExecutiveService()
+    service = LessonGenerator()
 
     prompt = service._build_lesson_prompt(
         grade=4,

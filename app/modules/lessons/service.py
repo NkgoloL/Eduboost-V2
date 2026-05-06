@@ -4,7 +4,7 @@ from __future__ import annotations
 
 Orchestrates the end-to-end lesson lifecycle: POPIA consent validation,
 learner context construction (knowledge gaps + recent lessons), AI
-lesson generation via the :class:`~app.services.executive.ExecutiveService`,
+lesson generation via the :class:`~app.services.lesson_generator.LessonGenerator`,
 persistence, and audit logging.
 
 All lesson requests are consent-gated via
@@ -35,8 +35,8 @@ from app.repositories.auth_repository import GuardianRepository
 from app.repositories.learner_repository import LearnerRepository
 from app.repositories.lesson_repository import LessonRepository
 from app.services.consent import ConsentService
-from app.services.executive import ExecutiveService, QuotaExceededError
-from app.services.fourth_estate import FourthEstateService
+from app.services.lesson_generator import LessonGenerator, QuotaExceededError
+from app.services.audit_service import AuditService
 
 if TYPE_CHECKING:
     from sqlalchemy.ext.asyncio import AsyncSession
@@ -48,8 +48,8 @@ class LessonService:
 
     Ensures that learners have active parental consent before generating
     CAPS-aligned lesson content via the
-    :class:`~app.services.executive.ExecutiveService` and records every
-    generation event in the :class:`~app.services.fourth_estate.FourthEstateService`
+    :class:`~app.services.lesson_generator.LessonGenerator` and records every
+    generation event in the :class:`~app.services.fourth_estate.AuditService`
     audit trail.
 
     Example:
@@ -73,12 +73,12 @@ class LessonService:
                 svc = LessonService(db)
         """
         self.db = db
-        self._executive = ExecutiveService()
+        self._executive = LessonGenerator()
         self._lesson_repo = LessonRepository(db)
         self._learner_repo = LearnerRepository(db)
         self._guardian_repo = GuardianRepository(db)
         self._consent_service = ConsentService(db)
-        self._audit_service = FourthEstateService(db)
+        self._audit_service = AuditService(db)
 
     async def generate_lesson_for_learner(
         self, body: LessonRequest, current_user_id: UUID
@@ -90,7 +90,7 @@ class LessonService:
         1. Validate active parental consent via
            :meth:`~app.modules.consent.service.ConsentService.require_active_consent`.
         2. Build learner context (knowledge gaps + recent lessons).
-        3. Invoke the :class:`~app.services.executive.ExecutiveService`
+        3. Invoke the :class:`~app.services.lesson_generator.LessonGenerator`
            AI lesson generator.
         4. Persist the lesson and record an audit event.
 

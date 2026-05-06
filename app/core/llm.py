@@ -23,12 +23,12 @@ from tenacity import (
 )
 
 from app.core.config import settings
-from app.core.judiciary import ConstitutionalViolation, LessonPayload
+from app.core.policy import PolicyViolation, LessonPayload
 from app.core.logging import get_logger
 from app.core.metrics import record_llm_tokens
 from app.core.rate_limiter import AIQuotaExceeded, check_ai_quota
 from app.core.redis import cache_get, cache_set
-from app.services.judiciary import JudiciaryService
+from app.services.policy_service import PolicyService
 from app.services.caps_validator import CAPSAlignmentValidator
 
 log = get_logger(__name__)
@@ -162,11 +162,11 @@ _LOCAL_HF_SYSTEM_PROMPT = (
 )
 
 
-class ExecutiveService:
-    """Constitutional Pillar 2: The Executive. Orchestrates AI inference."""
+class LessonGenerator:
+    """AI Lesson Generation Engine. Orchestrates AI inference."""
 
     def __init__(self) -> None:
-        self._judiciary = JudiciaryService()
+        self._judiciary = PolicyService()
         self._caps_validator = CAPSAlignmentValidator()
 
     async def generate_lesson(
@@ -251,7 +251,7 @@ class ExecutiveService:
                 grade, subject, topic, f"{payload.introduction} {payload.main_content} {payload.worked_example}"
             )
             if not final_validation.caps_aligned:
-                raise ConstitutionalViolation(final_validation.reason)
+                raise PolicyViolation(final_validation.reason)
 
         await cache_set(cache_k, raw, ttl=settings.SEMANTIC_CACHE_TTL_SECONDS)
         log.info("lesson_generated", pseudonym=pseudonym_id, provider="groq")

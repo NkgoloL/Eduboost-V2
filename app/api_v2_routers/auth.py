@@ -52,7 +52,7 @@ async def me(current_user: dict = Depends(get_current_user)):
 @limiter.limit("5/hour")
 async def register(request: Request, body: RegisterRequest, response: Response, db: AsyncSession = Depends(get_db)):
     repo = GuardianRepository(db)
-    audit = FourthEstateService(db)
+    audit = AuditService(db)
 
     submitted_email = getattr(body, "email")
     email_hash = hash_email(submitted_email)
@@ -82,7 +82,7 @@ async def register(request: Request, body: RegisterRequest, response: Response, 
 @limiter.limit("10/hour")
 async def login(request: Request, body: LoginRequest, response: Response, db: AsyncSession = Depends(get_db)):
     repo = GuardianRepository(db)
-    audit = FourthEstateService(db)
+    audit = AuditService(db)
 
     submitted_email = getattr(body, "email")
     email_hash = hash_email(submitted_email)
@@ -113,7 +113,7 @@ async def create_dev_session(response: Response, db: AsyncSession = Depends(get_
     guardian_repo = GuardianRepository(db)
     learner_repo = LearnerRepository(db)
     consent_repo = ConsentRepository(db)
-    audit = FourthEstateService(db)
+    audit = AuditService(db)
 
     email_hash = hash_email(DEV_GUARDIAN_EMAIL)
     guardian = await guardian_repo.get_by_email_hash(email_hash)
@@ -228,7 +228,7 @@ async def logout(
     response.delete_cookie(REFRESH_COOKIE, path="/api/v2/auth")
     
     # Audit the logout
-    audit = FourthEstateService(db)
+    audit = AuditService(db)
     await audit.auth_event("USER_LOGOUT", current_user.get("sub"))
     
     return None
@@ -254,7 +254,7 @@ async def revoke_all_tokens(
     response.delete_cookie(REFRESH_COOKIE, path="/api/v2/auth")
     
     # Audit the revocation
-    audit = FourthEstateService(db)
+    audit = AuditService(db)
     await audit.auth_event("USER_TOKENS_REVOKED_ALL", user_id)
     
     return None

@@ -4,7 +4,7 @@ Covers:
   - ConstitutionalRule immutability (hash + ORM events)
   - PII scrubber (all known patterns)
   - WorkerAgent stamp gate (approved / rejected / missing stamp)
-  - JudiciaryService fast-path checks
+  - PolicyService fast-path checks
   - Consent gate enforcement
   - Orchestrator state machine valid/invalid transitions
   - AuditAgent orphan detection
@@ -243,7 +243,7 @@ class TestWorkerAgentStampGate:
 
 
 # ============================================================================
-# PILLAR 3: JudiciaryService fast-path
+# PILLAR 3: PolicyService fast-path
 # ============================================================================
 class TestJudiciaryFastPath:
     def _make_action(self, params=None, learner_pseudonym="PSEUDO-XYZ"):
@@ -261,26 +261,26 @@ class TestJudiciaryFastPath:
 
     @pytest.mark.asyncio
     async def test_sa_id_number_triggers_fast_rejection(self):
-        from app.api.judiciary.service import JudiciaryService
+        from app.api.judiciary.service import PolicyService
         action = self._make_action(params={"data": "9001015800089"})
-        service = JudiciaryService(session=MagicMock())
+        service = PolicyService(session=MagicMock())
         result = await service._fast_path_check(action)
         assert result is not None
         assert "PII pattern" in result
 
     @pytest.mark.asyncio
     async def test_email_in_params_triggers_fast_rejection(self):
-        from app.api.judiciary.service import JudiciaryService
+        from app.api.judiciary.service import PolicyService
         action = self._make_action(params={"contact": "parent@example.co.za"})
-        service = JudiciaryService(session=MagicMock())
+        service = PolicyService(session=MagicMock())
         result = await service._fast_path_check(action)
         assert result is not None
 
     @pytest.mark.asyncio
     async def test_clean_action_passes_fast_path(self):
-        from app.api.judiciary.service import JudiciaryService
+        from app.api.judiciary.service import PolicyService
         action = self._make_action(params={"subject": "Maths", "grade": 5})
-        service = JudiciaryService(session=MagicMock())
+        service = PolicyService(session=MagicMock())
         result = await service._fast_path_check(action)
         assert result is None
 

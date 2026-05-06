@@ -11,7 +11,7 @@ from app.repositories.gamification_repository import GamificationRepository
 from app.repositories.learner_repository import LearnerRepository
 from app.repositories.lesson_repository import LessonRepository
 from app.services.consent import ConsentService
-from app.services.fourth_estate import FourthEstateService
+from app.services.audit_service import AuditService
 from app.services.gamification_service_v2 import GamificationServiceV2
 
 router = APIRouter(prefix="/gamification", tags=["V2 Gamification"])
@@ -53,7 +53,7 @@ async def award_xp(
     if body.lesson_id:
         await LessonRepository(db).mark_completed(body.lesson_id)
 
-    await FourthEstateService(db).record(
+    await AuditService(db).record(
         event_type="gamification.xp_awarded",
         actor_id=current_user.get("sub"),
         learner_pseudonym=learner.pseudonym_id,

@@ -90,9 +90,9 @@ async def check_llm_provider() -> dict[str, Any]:
 
 async def check_judiciary() -> dict[str, Any]:
     try:
-        from app.core.judiciary import JudiciaryService
+        from app.core.judiciary import PolicyService
 
-        service = JudiciaryService()
+        service = PolicyService()
         service._assert_no_violations("safe classroom content")  # noqa: SLF001 - intentional health probe
         return {"status": "ok"}
     except Exception as exc:  # noqa: BLE001

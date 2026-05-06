@@ -4,7 +4,7 @@ Enforces active parental consent before learner data or lesson generation
 can proceed.  All operations are audited for South African POPIA
 compliance using either a provided
 :class:`~app.repositories.audit_repository.AuditRepository` or the
-:class:`~app.core.audit.FourthEstateService` fallback.
+:class:`~app.core.audit.AuditService` fallback.
 
 Every consent state change (grant, revoke, renew, erasure) is recorded
 in the audit trail for compliance and investigation.
@@ -22,7 +22,7 @@ from __future__ import annotations
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.audit import FourthEstateService
+from app.services.audit_service import AuditService
 from app.core.exceptions import ConsentRequiredError
 from app.repositories.audit_repository import AuditRepository
 from app.repositories.consent_repository import ConsentRepository
@@ -34,7 +34,7 @@ class ConsentService:
     Exposes operations to grant, revoke, renew, and query parental
     consent records.  Every consent state change is recorded in the
     audit trail via :class:`~app.repositories.audit_repository.AuditRepository`
-    or :class:`~app.core.audit.FourthEstateService`.
+    or :class:`~app.core.audit.AuditService`.
 
     Example:
         ::
@@ -305,7 +305,7 @@ class ConsentService:
         """Persist an audit event for a consent lifecycle operation.
 
         Tries :class:`~app.repositories.audit_repository.AuditRepository`
-        first; falls back to :class:`~app.core.audit.FourthEstateService`
+        first; falls back to :class:`~app.core.audit.AuditService`
         if no audit repository was configured.
 
         Args:
@@ -324,7 +324,7 @@ class ConsentService:
             )
             return
         if self._db is not None:
-            await FourthEstateService(self._db).record(
+            await AuditService(self._db).record(
                 event_type=event_type,
                 actor_id=actor_id,
                 payload=payload,

@@ -29,7 +29,7 @@ from app.models import (
 )
 from app.repositories.learner_repository import LearnerRepository
 from app.services.consent import ConsentService
-from app.services.fourth_estate import FourthEstateService
+from app.services.audit_service import AuditService
 from app.services.rlhf_service import RLHFService
 
 router = APIRouter(prefix="/popia", tags=["compliance"])
@@ -149,7 +149,7 @@ async def export_learner_data(
     }
     
     # Audit the export
-    audit = FourthEstateService(db)
+    audit = AuditService(db)
     await audit.record(
         event_type="data_export.requested",
         learner_pseudonym=learner.pseudonym_id,
@@ -214,7 +214,7 @@ async def request_learner_deletion(
     await db.commit()
     
     # Audit the deletion request
-    audit = FourthEstateService(db)
+    audit = AuditService(db)
     await audit.record(
         event_type="deletion.requested",
         learner_pseudonym=learner.pseudonym_id,
@@ -277,7 +277,7 @@ async def cancel_learner_deletion(
     await db.commit()
     
     # Audit the cancellation
-    audit = FourthEstateService(db)
+    audit = AuditService(db)
     await audit.record(
         event_type="deletion.cancelled",
         learner_pseudonym=learner.pseudonym_id,
@@ -307,7 +307,7 @@ async def execute_learner_deletion(
             if learner.guardian_id != current_user.get("sub") and role != "admin":
                 raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorised to purge this learner")
             await LearnerRepository(db).purge_personal_data(learner_id)
-            await FourthEstateService(db).record(
+            await AuditService(db).record(
                 event_type="deletion.executed",
                 learner_pseudonym=learner.pseudonym_id,
                 actor_id=current_user.get("sub"),

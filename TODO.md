@@ -93,13 +93,13 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 ## 2.2 Router/service/domain boundaries
 
-- [ ] `[critical]` Ensure routers are thin: request validation, auth/consent dependencies, service call, response mapping.
-- [ ] `[critical]` Move business logic out of routers into services or bounded modules.
+- [x] `[critical]` Ensure routers are thin: request validation, auth/consent dependencies, service call, response mapping.
+- [x] `[critical]` Move business logic out of routers into services or bounded modules.
 - [ ] `[high]` Define service contracts for auth, learners, guardians, consent, diagnostics, lessons, study plans, gamification, billing, audit, POPIA export, and erasure.
-- [ ] `[high]` Collapse duplicate service concepts between `app/services/*_service_v2.py` and `app/modules/*/service.py`.
+- [x] `[high]` Collapse duplicate service concepts between `app/services/*_service_v2.py` and `app/modules/*/service.py`.
 - [ ] `[high]` Decide canonical business-logic location: either `app/services` as application layer or `app/modules/<context>/service.py` as bounded-context services.
-- [ ] `[high]` Remove metaphor-layer ambiguity from active code: `ether`, `judiciary`, `fourth_estate`, and `executive` should not be core engineering boundaries.
-- [ ] `[medium]` Keep metaphor names only for storytelling/docs if useful; use domain names in code.
+- [x] `[high]` Remove metaphor-layer ambiguity from active code: `ether`, `judiciary`, `fourth_estate`, and `executive` should not be core engineering boundaries.
+- [x] `[medium]` Keep metaphor names only for storytelling/docs if useful; use domain names in code.
 - [ ] `[medium]` Enforce import boundaries: routers → services → repositories/domain/core; repositories → models/database; domain should not depend on infrastructure.
 
 ## 2.3 Dependency injection and cross-cutting concerns

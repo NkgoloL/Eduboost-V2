@@ -18,11 +18,11 @@ from app.domain.schemas import (
 from app.models import Guardian, KnowledgeGap, Lesson
 from app.repositories.learner_repository import LearnerRepository
 from app.services.consent import ConsentService
-from app.services.executive import ExecutiveService
-from app.services.fourth_estate import FourthEstateService
+from app.services.lesson_generator import LessonGenerator
+from app.services.audit_service import AuditService
 
 router = APIRouter(prefix="/parents", tags=["parents"])
-_executive = ExecutiveService()
+_executive = LessonGenerator()
 
 
 @router.get("/dashboard", response_model=ParentDashboardResponse)
@@ -282,7 +282,7 @@ async def request_erasure(
     await consent_service.execute_erasure(current_user["sub"], learner_id)
     await LearnerRepository(db).soft_delete(learner_id)
 
-    await FourthEstateService(db).record(
+    await AuditService(db).record(
         "learner.erasure_requested",
         actor_id=current_user["sub"],
         learner_pseudonym=learner.pseudonym_id,

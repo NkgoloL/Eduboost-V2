@@ -7,7 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.database import get_db
 from app.core.security import require_parent_or_admin
 from app.domain.schemas import CheckoutSessionResponse
-from app.services.fourth_estate import FourthEstateService
+from app.services.audit_service import AuditService
 from app.services.stripe_service import StripeService
 
 router = APIRouter(prefix="/billing", tags=["billing"])
@@ -39,7 +39,7 @@ async def stripe_webhook(
     result = await svc.handle_webhook(payload, stripe_signature)
 
     # Record to audit trail
-    audit = FourthEstateService(db)
+    audit = AuditService(db)
     await audit.record("STRIPE_WEBHOOK", payload=result)
 
     return result

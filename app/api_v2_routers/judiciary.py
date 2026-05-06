@@ -5,7 +5,7 @@ from __future__ import annotations
 from fastapi import APIRouter, Depends, HTTPException
 
 from app.core.dependencies import get_current_user, RequireRole
-from app.services.judiciary_service_v2 import JudiciaryServiceV2
+from app.services.judiciary_service_v2 import PolicyServiceV2
 
 router = APIRouter(prefix="/api/v2/judiciary", tags=["V2 Judiciary"])
 
@@ -19,7 +19,7 @@ async def screen_content(
     if user.get("role") not in {"Admin", "Teacher"}:
         raise HTTPException(status_code=403, detail="Forbidden")
         
-    is_safe = await JudiciaryServiceV2().screen_content(text)
+    is_safe = await PolicyServiceV2().screen_content(text)
     return {"is_safe": is_safe}
 
 

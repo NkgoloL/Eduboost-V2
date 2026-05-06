@@ -40,7 +40,7 @@ class QuotaService:
     Uses Redis as the fast counter; PostgreSQL is the durable audit store.
     """
 
-    def __init__(self, redis_client: aioredis.Redis) -> None:
+    def __init__(self, redis_client: aioredis.Redis | None = None) -> None:
         self._redis = redis_client
 
     def _quota_key(self, guardian_id: str) -> str:

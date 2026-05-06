@@ -18,7 +18,8 @@ async def test_learner_service_returns_summary():
         home_language="eng",
         overall_mastery=0.72,
     )
-    service = LearnerService(repository=repo)
+    db_mock = AsyncMock()
+    service = LearnerService(db=db_mock, repository=repo)
 
     result = await service.get_learner_summary("learner-1")
 

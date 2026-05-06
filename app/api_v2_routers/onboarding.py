@@ -8,10 +8,10 @@ from app.core.database import get_db
 from app.core.security import get_current_user
 from app.domain.schemas import OnboardingResult, OnboardingSubmit
 from app.repositories.learner_repository import LearnerRepository
-from app.services.ether import EtherService
+from app.services.archetype_service import ArchetypeService
 
 router = APIRouter(prefix="/onboarding", tags=["onboarding"])
-_ether = EtherService()
+_ether = ArchetypeService()
 
 
 @router.get("/questions")
@@ -26,19 +26,10 @@ async def submit_onboarding(
     db: AsyncSession = Depends(get_db),
     _: dict = Depends(get_current_user),
 ):
-    learner_repo = LearnerRepository(db)
-    learner = await learner_repo.get_by_id(body.learner_id)
-    if not learner:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
-
+    from app.services.learner_service import LearnerService
+    
+    svc = LearnerService(db)
     answers_raw = [{"question_id": a.question_id, "answer": a.answer} for a in body.answers]
-    archetype, description, probabilities = _ether.classify_archetype(answers_raw)
-
-    await learner_repo.update_archetype(body.learner_id, archetype.value)
-
-    return OnboardingResult(
-        learner_id=body.learner_id,
-        archetype=archetype.value,
-        description=description,
-        probabilities=probabilities,
-    )
+    
+    result = await svc.process_onboarding(body.learner_id, answers_raw)
+    return OnboardingResult(**result)
