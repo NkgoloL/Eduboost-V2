@@ -1,7 +1,28 @@
-"""
-EduBoost V2 — Ether Service (Pillar 5)
-Psychological archetype profiling and cold-start onboarding micro-diagnostic.
-Assigns a Kabbalistic archetype on session 1 — eliminates the legacy 8–10 event lag.
+"""Psychological archetype profiling and cold-start onboarding.
+
+Constitutional Pillar 5 — *The Ether*.  Assigns a Kabbalistic archetype
+on the learner's first session via a five-question micro-diagnostic,
+eliminating the legacy 8–10 event lag.
+
+The archetype drives LLM prompt-tone modifiers so that lesson content
+is personalised for the learner's cognitive style (e.g. visual, hands-on,
+narrative).  See :meth:`EtherService.modify_prompt_for_archetype`.
+
+Example:
+    Classify a learner during onboarding::
+
+        from app.modules.learners.ether_service import EtherService
+
+        svc = EtherService()
+        answers = [
+            {"question_id": 1, "answer": "A"},
+            {"question_id": 2, "answer": "C"},
+            {"question_id": 3, "answer": "D"},
+            {"question_id": 4, "answer": "B"},
+            {"question_id": 5, "answer": "A"},
+        ]
+        label, description, scores = svc.classify_archetype(answers)
+        print(f"{label.value}: {description}")
 """
 from __future__ import annotations
 
@@ -10,7 +31,7 @@ from collections.abc import Iterable
 from app.domain.models import ArchetypeLabel
 
 # ── Cold-start onboarding questions ──────────────────────────────────────────
-ONBOARDING_QUESTIONS = [
+ONBOARDING_QUESTIONS: list[dict] = [
     {
         "id": 1,
         "text": "When you don't understand something, what do you prefer to do?",
@@ -62,6 +83,11 @@ ONBOARDING_QUESTIONS = [
         },
     },
 ]
+"""Five-question micro-diagnostic for first-session archetype assignment.
+
+Each question has four options (A–D) mapped to archetype likelihood
+scores in :data:`_LIKELIHOOD_MAP`.
+"""
 
 # ── Scoring matrix: (q_id, answer) → archetype scores ─────────────────────────
 _LIKELIHOOD_MAP: dict[tuple[int, str], dict[str, float]] = {
@@ -102,29 +128,64 @@ _ARCHETYPE_DESCRIPTIONS = {
 
 
 class EtherService:
-    """
-    Constitutional Pillar 5: The Ether.
-    Assigns a psychological archetype on first session, bypassing the legacy lag.
+    """Constitutional Pillar 5: The Ether — archetype profiling service.
+
+    Assigns a psychological archetype on the learner's first session
+    by scoring five onboarding questions against a Bayesian likelihood
+    matrix.  The resulting :class:`~app.domain.models.ArchetypeLabel`
+    is persisted on the learner profile and used to tailor LLM prompts.
+
+    Example:
+        ::
+
+            svc = EtherService()
+            label, desc, scores = svc.classify_archetype(answers)
     """
 
     def get_onboarding_questions(self) -> list[dict]:
-        """Return the cold-start onboarding questions used for archetype scoring.
+        """Return the cold-start onboarding questions.
 
         Returns:
-            List of question dictionaries for the first-session archetype assessment.
+            list[dict]: List of question dictionaries from
+            :data:`ONBOARDING_QUESTIONS`, each containing ``id``,
+            ``text``, and ``options``.
+
+        Example:
+            ::
+
+                questions = svc.get_onboarding_questions()
+                assert len(questions) == 5
         """
         return ONBOARDING_QUESTIONS
 
     def classify_archetype(self, answers: list[dict]) -> tuple[ArchetypeLabel, str, dict[str, float]]:
         """Classify a learner archetype from onboarding answers.
 
+        Computes the posterior distribution via
+        :meth:`posterior_distribution`, selects the maximum-probability
+        archetype, and returns its :class:`~app.domain.models.ArchetypeLabel`
+        with a human-readable description.
+
         Args:
-            answers: List of answer dictionaries containing ``question_id`` and
-                ``answer`` values.
+            answers: List of answer dictionaries, each containing
+                ``question_id`` (``int``) and ``answer`` (``str``,
+                one of ``"A"``–``"D"``).
 
         Returns:
-            Tuple containing the selected archetype label, a short
-            description, and the posterior probability distribution.
+            tuple[ArchetypeLabel, str, dict[str, float]]:
+            ``(label, description, posterior_scores)``.
+
+        Example:
+            ::
+
+                label, desc, scores = svc.classify_archetype([
+                    {"question_id": 1, "answer": "A"},
+                    {"question_id": 2, "answer": "C"},
+                    {"question_id": 3, "answer": "D"},
+                    {"question_id": 4, "answer": "B"},
+                    {"question_id": 5, "answer": "A"},
+                ])
+                assert isinstance(label, ArchetypeLabel)
         """
         scores = self.posterior_distribution(answers)
         best = max(scores, key=scores.get)
@@ -133,14 +194,27 @@ class EtherService:
         return label, description, scores
 
     def posterior_distribution(self, answers: Iterable[dict]) -> dict[str, float]:
-        """Compute the posterior archetype distribution for onboarding answers.
+        """Compute the posterior archetype distribution.
+
+        Applies Bayesian updating over the :data:`_LIKELIHOOD_MAP`
+        evidence for each answer, starting from a uniform prior over
+        all :class:`~app.domain.models.ArchetypeLabel` values.
 
         Args:
-            answers: Iterable of answer dictionaries with question identifiers
-                and selected answers.
+            answers: Iterable of answer dictionaries with
+                ``question_id`` and ``answer`` keys.
 
         Returns:
-            Normalized probability distribution over archetype labels.
+            dict[str, float]: Normalised probability distribution
+            over archetype label strings, rounded to 4 decimal places.
+
+        Example:
+            ::
+
+                scores = svc.posterior_distribution([
+                    {"question_id": 1, "answer": "B"},
+                ])
+                assert abs(sum(scores.values()) - 1.0) < 0.01
         """
         posterior: dict[str, float] = {a.value: 1.0 / len(ArchetypeLabel) for a in ArchetypeLabel}
         for answer in answers:
@@ -153,7 +227,30 @@ class EtherService:
         return {archetype: round(weight, 4) for archetype, weight in posterior.items()}
 
     def modify_prompt_for_archetype(self, base_prompt: str, archetype: ArchetypeLabel | None) -> str:
-        """Append archetype-specific tone modifier to an LLM prompt."""
+        """Append an archetype-specific tone modifier to an LLM prompt.
+
+        Each :class:`~app.domain.models.ArchetypeLabel` maps to a
+        one-sentence instruction that adjusts the LLM's pedagogical
+        tone (e.g. visual emphasis for Hod, hands-on for Yesod).
+
+        Args:
+            base_prompt: The original LLM prompt text.
+            archetype: The learner's assigned archetype, or ``None``
+                to leave the prompt unmodified.
+
+        Returns:
+            str: The prompt with an appended ``Tone modifier:`` line,
+            or the original prompt if ``archetype`` is ``None``.
+
+        Example:
+            ::
+
+                modified = svc.modify_prompt_for_archetype(
+                    "Explain multiplication.",
+                    ArchetypeLabel.HOD,
+                )
+                assert "diagrams" in modified.lower()
+        """
         modifiers = {
             ArchetypeLabel.KETER: "Use abstract reasoning and philosophical framing.",
             ArchetypeLabel.CHOKMAH: "Be concise and spark intuition — skip verbose explanations.",

@@ -1,7 +1,34 @@
-"""
-EduBoost V2 — IRT Diagnostic Engine (Legislature Pillar 1)
-2-Parameter Logistic (2PL) Item Response Theory model.
-P(correct | θ) = 1 / (1 + exp(-a(θ - b)))
+"""IRT 2-Parameter Logistic (2PL) adaptive diagnostic engine.
+
+Implements Item Response Theory scoring used to estimate each learner's
+latent ability (theta, θ) from their responses to adaptive questions.
+The 2PL model uses per-item *discrimination* (a) and *difficulty* (b)
+parameters calibrated against the South African CAPS curriculum for
+grades R–7.
+
+Mathematical model:
+
+.. math::
+
+    P(X=1 \\mid \\theta) = \\frac{1}{1 + e^{-a(\\theta - b)}}
+
+where:
+
+* :math:`\\theta` — learner ability estimate (logit scale, typically −4 to +4)
+* :math:`a` — item discrimination (steepness of the ICC curve)
+* :math:`b` — item difficulty (ability level at which P = 0.5)
+
+Example:
+    Run a full diagnostic cascade::
+
+        from app.modules.diagnostics.irt_engine import DiagnosticEngine
+
+        engine = DiagnosticEngine()
+        result = engine.run_gap_probe_cascade(
+            learner_grade=4, items=item_bank,
+            correct_item_ids={"q1", "q3", "q5"},
+        )
+        print(f"θ = {result['theta']:.3f} ± {result['standard_error']:.3f}")
 """
 from __future__ import annotations
 
@@ -19,13 +46,28 @@ log = get_logger(__name__)
 def p_correct(theta: float, a: float, b: float) -> float:
     """Compute the 2PL probability of a correct response.
 
+    Implements the Item Characteristic Curve (ICC):
+
+    .. math::
+
+        P(\\theta) = \\frac{1}{1 + e^{-a(\\theta - b)}}
+
+    Parameters are hard-clamped to prevent overflow:
+    ``a`` ∈ [0.1, 4.0], ``b`` ∈ [−4, 4], ``θ`` ∈ [−5, 5].
+
     Args:
         theta: Learner ability estimate on the IRT logit scale.
-        a: Item discrimination parameter.
-        b: Item difficulty parameter.
+        a: Item discrimination parameter (typically 0.5–2.5).
+        b: Item difficulty parameter (typically −3 to +3).
 
     Returns:
-        Probability of a correct response in ``[0, 1]``.
+        float: Probability of a correct response in ``[0, 1]``.
+
+    Example:
+        ::
+
+            p = p_correct(theta=0.0, a=1.0, b=0.0)
+            assert abs(p - 0.5) < 1e-9  # theta == b → P = 0.5
     """
     # Hard bounds for parameters to prevent overflow/divergence
     a = max(0.1, min(4.0, a))
@@ -37,8 +79,15 @@ def p_correct(theta: float, a: float, b: float) -> float:
 def fisher_information(theta: float, a: float, b: float) -> float:
     """Compute the Fisher information for a given IRT item.
 
-    This measures how much information the item provides about ability
-    around the current theta estimate.
+    Measures how much statistical information the item provides about
+    ability around the current theta estimate:
+
+    .. math::
+
+        I(\\theta) = a^2 \\cdot P(\\theta) \\cdot [1 - P(\\theta)]
+
+    Items with high discrimination (``a``) and difficulty close to
+    ``theta`` provide the most information.
 
     Args:
         theta: Learner ability estimate.
@@ -46,7 +95,13 @@ def fisher_information(theta: float, a: float, b: float) -> float:
         b: Item difficulty parameter.
 
     Returns:
-        Fisher information scalar value.
+        float: Fisher information scalar value.
+
+    Example:
+        ::
+
+            info = fisher_information(theta=0.0, a=1.5, b=0.0)
+            assert info > 0  # maximum info when theta == b
     """
     p = p_correct(theta, a, b)
     q = 1.0 - p
@@ -54,15 +109,27 @@ def fisher_information(theta: float, a: float, b: float) -> float:
 
 
 def update_theta_mle(theta: float, responses: list[tuple[IRTItem, bool]], max_iter: int = 20) -> float:
-    """Estimate theta using Newton-Raphson maximum likelihood iteration.
+    """Estimate theta using Newton-Raphson maximum likelihood estimation.
+
+    Maximises the log-likelihood of the observed response pattern
+    given the 2PL model.  Convergence is reached when the update step
+    is smaller than ``1e-4`` or ``max_iter`` is exhausted.
 
     Args:
-        theta: Initial ability value to seed the optimization.
-        responses: List of tuples pairing IRT items with correctness flags.
-        max_iter: Maximum number of Newton-Raphson iterations.
+        theta: Initial ability value to seed the optimisation.
+        responses: List of ``(item, correct)`` tuples pairing
+            :class:`~app.domain.models.IRTItem` instances with
+            correctness flags.
+        max_iter: Maximum Newton-Raphson iterations (default ``20``).
 
     Returns:
-        Estimated theta value clamped to ``[-4, 4]``.
+        float: Estimated theta value clamped to ``[-4, 4]``.
+
+    Example:
+        ::
+
+            theta = update_theta_mle(0.0, [(item, True), (item2, False)])
+            assert -4.0 <= theta <= 4.0
     """
     current = theta
     for _ in range(max_iter):
@@ -86,10 +153,25 @@ def update_theta_mle(theta: float, responses: list[tuple[IRTItem, bool]], max_it
 
 
 class DiagnosticEngine:
-    """Runs the Gap-Probe Cascade using real IRT item bank data.
+    """Runs the Gap-Probe Cascade using a real IRT item bank.
 
-    The engine estimates learner ability, identifies knowledge gaps, selects the
-    next most informative item, and returns grade-equivalent guidance.
+    The engine estimates learner ability via Expected A Posteriori (EAP)
+    integration, identifies knowledge gaps from missed items, selects
+    the next most informative item via Fisher information, and returns
+    grade-equivalent guidance aligned to the CAPS curriculum.
+
+    All public methods are synchronous (CPU-bound maths); database I/O
+    is handled by the calling service layer.
+
+    Example:
+        ::
+
+            engine = DiagnosticEngine()
+            result = engine.run_gap_probe_cascade(
+                learner_grade=3, items=bank,
+                correct_item_ids={"q1", "q3"},
+            )
+            print(result["theta"], result["ranked_gaps"])
     """
 
     def compute_theta(
@@ -100,13 +182,23 @@ class DiagnosticEngine:
     ) -> float:
         """Compute learner theta from administered item results.
 
+        Delegates to :meth:`estimate_theta_eap` with the given
+        ``starting_theta`` as the prior mean.
+
         Args:
             starting_theta: Initial ability estimate for the learner.
-            items: List of administered IRT items.
+            items: List of administered :class:`~app.domain.models.IRTItem`
+                instances.
             correct_item_ids: Set of item IDs answered correctly.
 
         Returns:
-            Estimated learner theta.
+            float: Estimated learner theta.
+
+        Example:
+            ::
+
+                theta = engine.compute_theta(0.0, items, {"q1", "q3"})
+                assert -4.0 <= theta <= 4.0
         """
         responses = [(item, item.id in correct_item_ids) for item in items]
         theta, _sem = self.estimate_theta_eap(responses, prior_mean=starting_theta)
@@ -124,16 +216,33 @@ class DiagnosticEngine:
     ) -> tuple[float, float]:
         """Estimate theta via Expected A Posteriori (EAP) integration.
 
+        Computes the posterior mean of theta by integrating over a
+        discrete grid with a Gaussian prior:
+
+        .. math::
+
+            \\hat{\\theta}_{EAP} = \\frac{\\sum_k \\theta_k \\cdot L(\\theta_k) \\cdot \\pi(\\theta_k)}
+            {\\sum_k L(\\theta_k) \\cdot \\pi(\\theta_k)}
+
         Args:
-            responses: List of tuples pairing IRT items with correctness flags.
+            responses: List of ``(item, correct)`` tuples.
             prior_mean: Mean of the Gaussian prior for theta.
             prior_sd: Standard deviation of the theta prior.
-            theta_min: Minimum theta value on the integration grid.
-            theta_max: Maximum theta value on the integration grid.
+            theta_min: Minimum theta on the integration grid.
+            theta_max: Maximum theta on the integration grid.
             step: Grid resolution for theta values.
 
         Returns:
-            Tuple of ``(theta_estimate, standard_error)``.
+            tuple[float, float]: ``(theta_estimate, standard_error)``.
+
+        Example:
+            ::
+
+                theta, se = engine.estimate_theta_eap(
+                    [(item1, True), (item2, False)],
+                    prior_mean=0.0,
+                )
+                assert -4.0 <= theta <= 4.0
         """
         grid: list[float] = []
         value = theta_min
@@ -165,16 +274,25 @@ class DiagnosticEngine:
         """Identify knowledge gaps from missed items.
 
         An item is considered a gap when the learner missed it and its
-        predicted probability of correctness exceeds the threshold.
+        normalised difficulty exceeds the threshold.  Gaps are deduplicated
+        by ``subject::topic`` and ranked by severity (descending).
 
         Args:
-            items: List of administered IRT items.
+            items: List of administered :class:`~app.domain.models.IRTItem`
+                instances.
             correct_item_ids: Set of correctly answered item IDs.
-            threshold_p: Minimum expected probability of correctness to count as
-                a gap when missed.
+            threshold_p: Minimum expected probability of correctness to
+                count as a gap when missed (default ``0.50``).
 
         Returns:
-            Ranked list of gap dictionaries with grade, subject, topic, and severity.
+            list[dict]: Ranked list of gap dictionaries with keys
+            ``grade``, ``subject``, ``topic``, and ``severity``.
+
+        Example:
+            ::
+
+                gaps = engine.identify_gaps(items, {"q1"})
+                assert all("severity" in g for g in gaps)
         """
         gaps: dict[str, dict] = {}
         for item in items:
@@ -196,13 +314,24 @@ class DiagnosticEngine:
     ) -> IRTItem | None:
         """Select the next item with maximum Fisher information.
 
+        Uses :func:`fisher_information` as the item-selection criterion.
+        Items already administered are excluded.
+
         Args:
             theta: Current ability estimate.
-            administered_ids: Item IDs already administered to the learner.
-            bank: Candidate item bank to select from.
+            administered_ids: Item IDs already shown in this session.
+            bank: Candidate :class:`~app.domain.models.IRTItem` bank.
 
         Returns:
-            Most informative next item, or ``None`` if the bank is exhausted.
+            IRTItem | None: Most informative next item, or ``None`` if
+            the bank is exhausted.
+
+        Example:
+            ::
+
+                item = engine.select_next_item(0.5, {"q1"}, item_bank)
+                if item:
+                    print(f"Next item: {item.id}")
         """
         best_item = None
         best_info = -1.0
@@ -218,24 +347,49 @@ class DiagnosticEngine:
     def should_stop(self, administered_count: int, standard_error: float) -> bool:
         """Decide whether the adaptive diagnostic should stop.
 
+        The session terminates when either the item cap (20) is reached
+        or the standard error drops below the precision threshold (0.3).
+
         Args:
             administered_count: Number of items administered so far.
-            standard_error: Current theta estimate standard error.
+            standard_error: Current theta standard error.
 
         Returns:
-            True when the session has reached item or precision limits.
+            bool: ``True`` when the session should end.
+
+        Example:
+            ::
+
+                assert engine.should_stop(20, 0.5) is True
+                assert engine.should_stop(5, 0.2) is True
+                assert engine.should_stop(5, 0.5) is False
         """
         return administered_count >= 20 or standard_error < 0.3
 
     def map_grade_equivalent(self, theta: float, learner_grade: int) -> int:
         """Convert theta into a grade-equivalent recommendation.
 
+        Maps the ability estimate to a recommended CAPS grade level
+        (0–7) by applying a shift based on theta magnitude:
+
+        * θ ≤ −1.8 → −2 grades
+        * −1.8 < θ ≤ −0.8 → −1 grade
+        * −0.8 < θ < 0.8 → same grade
+        * 0.8 ≤ θ < 1.8 → +1 grade
+        * θ ≥ 1.8 → +2 grades
+
         Args:
             theta: Estimated learner ability.
-            learner_grade: Current learner grade level.
+            learner_grade: Current learner grade level (0–7).
 
         Returns:
-            Recommended grade equivalent clamped to 0–7.
+            int: Recommended grade equivalent clamped to 0–7.
+
+        Example:
+            ::
+
+                assert engine.map_grade_equivalent(2.0, 3) == 5
+                assert engine.map_grade_equivalent(-2.0, 3) == 1
         """
         shift = 0
         if theta <= -1.8:
@@ -258,15 +412,36 @@ class DiagnosticEngine:
     ) -> dict:
         """Execute the full adaptive gap-probe cascade.
 
+        Orchestrates theta estimation, knowledge-gap identification, and
+        grade-equivalent mapping into a single diagnostic dashboard.
+
         Args:
-            learner_grade: Current grade of the learner.
-            items: List of candidate IRT items.
+            learner_grade: Current CAPS grade of the learner (0–7).
+            items: List of candidate :class:`~app.domain.models.IRTItem`
+                instances.
             correct_item_ids: Set of IDs answered correctly.
-            starting_theta: Initial ability estimate.
+            starting_theta: Initial ability estimate (default ``0.0``).
 
         Returns:
-            Dashboard dictionary containing theta, standard error, grade equivalent,
-            ranked gaps, and stopping information.
+            dict: Dashboard dictionary containing:
+
+            * ``theta`` — EAP ability estimate
+            * ``standard_error`` — estimation precision
+            * ``grade_equivalent`` — recommended CAPS grade
+            * ``ranked_gaps`` — severity-ranked knowledge gaps
+            * ``knowledge_gap_topics`` — top-3 gap topic strings
+            * ``stopped`` — whether stopping criteria were met
+            * ``mean_difficulty`` — average item difficulty
+
+        Example:
+            ::
+
+                result = engine.run_gap_probe_cascade(
+                    learner_grade=4, items=bank,
+                    correct_item_ids={"q1", "q3"},
+                )
+                assert "theta" in result
+                assert "ranked_gaps" in result
         """
         administered = items[:20]
         responses = [(item, item.id in correct_item_ids) for item in administered]

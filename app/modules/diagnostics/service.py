@@ -1,6 +1,13 @@
-"""
-EduBoost SA — Diagnostics Module
-Core diagnostic scoring, gap identification, and consent-related diagnostics.
+"""Consent-gated diagnostic session orchestration.
+
+Provides a :class:`ConsentService` used by diagnostic flows to enforce
+active parental consent before learner assessment data can be accessed
+or generated.  Every consent state change is committed in the same
+transaction as the corresponding audit event.
+
+This module is distinct from :mod:`app.modules.consent.service` — it
+focuses on diagnostic-flow consent checks and is co-located with the
+IRT engine for import convenience.
 """
 from __future__ import annotations
 
@@ -20,10 +27,20 @@ _learner_repo = LearnerRepository()
 
 
 class ConsentService:
-    """Service for parental consent checks and audit-enforced operations.
+    """Parental consent checks for diagnostic flows.
 
-    This service is used by diagnostic flows that require active parental consent
-    before learner assessment or data access can proceed.
+    Used by the :class:`~app.modules.diagnostics.irt_engine.DiagnosticEngine`
+    and diagnostic API routes to ensure active parental consent before a
+    learner's assessment or data is accessed.
+
+    All operations are audit-logged via
+    :func:`~app.core.audit.write_audit_event`.
+
+    Example:
+        ::
+
+            svc = ConsentService()
+            consent = await svc.require_active_consent(learner_id, db)
     """
 
     async def grant_consent(
@@ -35,9 +52,34 @@ class ConsentService:
         request: Request | None = None,
         consent_version: str = "1.0",
     ) -> ParentalConsent:
-        """
-        Grant parental consent for a learner.
-        Atomic: revokes existing consent and writes audit event in same transaction.
+        """Grant parental consent for a learner.
+
+        Atomic operation: revokes any existing consent, creates a new
+        :class:`~app.models.ParentalConsent` record, and writes an
+        audit event in the same database transaction.
+
+        Args:
+            learner_id: UUID of the learner being covered.
+            guardian_id: UUID of the parent granting consent.
+            db: Async database session.
+            request: Optional FastAPI request for IP / user-agent extraction.
+            consent_version: Policy version the guardian agreed to
+                (default ``"1.0"``).
+
+        Returns:
+            ParentalConsent: The newly created consent record.
+
+        Raises:
+            AuthorisationError: When the guardian is not the parent of
+                the specified learner.
+
+        Example:
+            ::
+
+                consent = await svc.grant_consent(
+                    learner_id, guardian_id, db, consent_version="1.2",
+                )
+                assert consent.is_active
         """
         learner = await _learner_repo.get_or_404(learner_id, db)
         if learner.guardian_id != guardian_id:
@@ -71,9 +113,33 @@ class ConsentService:
         reason: str = "guardian_request",
         request: Request | None = None,
     ) -> int:
-        """
-        Revoke parental consent. Returns count of consents revoked.
-        Audit event committed in same transaction.
+        """Revoke parental consent for a learner.
+
+        Sets consent status to revoked and records a
+        :attr:`~app.core.audit.AuditAction.CONSENT_REVOKED` audit event
+        in the same transaction.
+
+        Args:
+            learner_id: UUID of the learner whose consent is revoked.
+            guardian_id: UUID of the guardian performing the revocation.
+            db: Async database session.
+            reason: Revocation reason string (default ``"guardian_request"``).
+            request: Optional FastAPI request for IP extraction.
+
+        Returns:
+            int: Number of consent records revoked.
+
+        Raises:
+            AuthorisationError: When the guardian is not the parent of
+                the specified learner.
+
+        Example:
+            ::
+
+                count = await svc.revoke_consent(
+                    learner_id, guardian_id, db, reason="erasure_request",
+                )
+                assert count >= 1
         """
         learner = await _learner_repo.get_or_404(learner_id, db)
         if learner.guardian_id != guardian_id:
@@ -95,9 +161,27 @@ class ConsentService:
     async def require_active_consent(
         self, learner_id: UUID, db: AsyncSession
     ) -> ParentalConsent:
-        """
-        Assert active consent exists — raises ConsentRequiredError if not.
-        Used by the FastAPI consent gate dependency.
+        """Assert that active parental consent exists for a learner.
+
+        Used as a FastAPI dependency via ``Depends`` to enforce the
+        consent gate on every route that accesses learner data.
+
+        Args:
+            learner_id: UUID of the learner to check.
+            db: Async database session.
+
+        Returns:
+            ParentalConsent: The active :class:`~app.models.ParentalConsent`
+            record.
+
+        Raises:
+            ConsentRequiredError: When no active consent record exists
+                for the learner.
+
+        Example:
+            ::
+
+                consent = await svc.require_active_consent(learner_id, db)
         """
         consent = await _consent_repo.get_active(learner_id, db)
         if consent is None:
@@ -109,7 +193,19 @@ class ConsentService:
     async def get_expiring_consents(
         self, db: AsyncSession, days: int = 30
     ) -> list[ParentalConsent]:
-        """Used by the ARQ renewal reminder background job."""
+        """Return consent records expiring within a given window.
+
+        Used by the ARQ consent-renewal reminder background job
+        (:func:`~app.modules.jobs.send_consent_renewal_reminders`).
+
+        Args:
+            db: Async database session.
+            days: Number of days until expiry to include (default ``30``).
+
+        Returns:
+            list[ParentalConsent]: Consent records expiring within the
+            specified window.
+        """
         return await _consent_repo.get_expiring_soon(db, days=days)
 
 

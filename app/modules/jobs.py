@@ -1,7 +1,24 @@
-"""
-EduBoost SA — ARQ Background Jobs
-Async Redis Queue replacing Celery + Flower.
-Integrates natively with asyncio and FastAPI.
+"""ARQ background job definitions for EduBoost.
+
+Async Redis Queue (ARQ) jobs replacing Celery + Flower.  All jobs
+integrate natively with ``asyncio`` and FastAPI and are instrumented
+with Prometheus counters via :mod:`app.core.metrics`.
+
+Registered jobs:
+
+* :func:`send_consent_renewal_reminders` — daily cron at 08:00 SAST.
+* :func:`process_rlhf_feedback_batch` — queued on-demand.
+* :func:`expire_stale_diagnostic_sessions` — hourly cron.
+
+Example:
+    Enqueue an RLHF batch manually::
+
+        from arq.connections import ArqRedis
+
+        redis = ArqRedis(...)
+        await redis.enqueue_job(
+            "process_rlhf_feedback_batch", "batch-42",
+        )
 """
 from __future__ import annotations
 
@@ -21,9 +38,21 @@ logger = logging.getLogger(__name__)
 # ── Job Definitions ───────────────────────────────────────────────────────────
 
 async def send_consent_renewal_reminders(ctx: dict[str, Any]) -> dict[str, Any]:
-    """
-    Cron job: find consents expiring in ≤30 days and send guardian email reminders.
-    Runs daily at 08:00 SAST.
+    """Send email reminders for consents expiring within 30 days.
+
+    Cron schedule: daily at 06:00 UTC (08:00 SAST).  Queries
+    :meth:`~app.modules.consent.service.ConsentService.get_expiring_consents`
+    and sends a renewal email to each guardian via SendGrid.
+
+    Args:
+        ctx: ARQ worker context dictionary.
+
+    Returns:
+        dict[str, Any]: Summary with keys ``sent`` (emails dispatched)
+        and ``total_expiring`` (consents found).
+
+    Raises:
+        Exception: Re-raised after incrementing the failure counter.
     """
     import time
     start = time.perf_counter()
@@ -57,9 +86,20 @@ async def send_consent_renewal_reminders(ctx: dict[str, Any]) -> dict[str, Any]:
 
 
 async def process_rlhf_feedback_batch(ctx: dict[str, Any], batch_id: str) -> dict[str, Any]:
-    """
-    Process a batch of RLHF lesson feedback for model improvement pipeline.
-    Queued after feedback volume threshold is reached.
+    """Process a batch of RLHF lesson feedback for model improvement.
+
+    Queued on-demand after the feedback volume threshold is reached.
+    Exports the batch to Azure Blob Storage for offline training.
+
+    Args:
+        ctx: ARQ worker context dictionary.
+        batch_id: Unique identifier for the feedback batch to process.
+
+    Returns:
+        dict[str, Any]: Summary with keys ``batch_id`` and ``status``.
+
+    Raises:
+        Exception: Re-raised after incrementing the failure counter.
     """
     import time
     start = time.perf_counter()
@@ -80,9 +120,21 @@ async def process_rlhf_feedback_batch(ctx: dict[str, Any], batch_id: str) -> dic
 
 
 async def expire_stale_diagnostic_sessions(ctx: dict[str, Any]) -> dict[str, Any]:
-    """
-    Cron job: mark incomplete diagnostic sessions older than 24h as abandoned.
-    Runs hourly.
+    """Mark incomplete diagnostic sessions older than 24 h as abandoned.
+
+    Cron schedule: hourly at minute 0.  Updates
+    :class:`~app.models.DiagnosticSession` records whose
+    ``started_at`` timestamp is more than 24 hours in the past.
+
+    Args:
+        ctx: ARQ worker context dictionary.
+
+    Returns:
+        dict[str, Any]: Summary with key ``expired`` (number of
+        sessions marked complete).
+
+    Raises:
+        Exception: Re-raised after incrementing the failure counter.
     """
     import time
     from datetime import UTC, timedelta
@@ -118,7 +170,16 @@ async def expire_stale_diagnostic_sessions(ctx: dict[str, Any]) -> dict[str, Any
 
 
 async def _send_renewal_email(consent: Any) -> None:
-    """Send a consent renewal reminder via SendGrid."""
+    """Send a consent renewal reminder email via SendGrid.
+
+    Decrypts the guardian's email using
+    :func:`~app.core.security.decrypt_pii` before sending.  Silently
+    returns if SendGrid is not configured.
+
+    Args:
+        consent: A :class:`~app.models.ParentalConsent` record with
+            ``guardian_id`` and ``expires_at`` attributes.
+    """
     cfg = get_settings()
     if not cfg.sendgrid_api_key:
         logger.warning("SendGrid not configured — skipping renewal email")
@@ -175,7 +236,20 @@ async def shutdown(ctx: dict[str, Any]) -> None:
 
 
 class WorkerSettings:
-    """ARQ worker configuration — replace Celery/Flower."""
+    """ARQ worker configuration — replaces Celery + Flower.
+
+    Registers all background job functions, cron schedules, and
+    connection settings for the Redis-backed async worker.
+
+    Attributes:
+        functions: List of registered async job callables.
+        cron_jobs: Scheduled cron job definitions.
+        on_startup: Coroutine called when the worker starts.
+        on_shutdown: Coroutine called when the worker stops.
+        max_jobs: Maximum concurrent jobs (default ``10``).
+        job_timeout: Per-job timeout in seconds (default ``300``).
+        keep_result: Seconds to retain job results (default ``3600``).
+    """
     functions = [
         send_consent_renewal_reminders,
         process_rlhf_feedback_batch,
