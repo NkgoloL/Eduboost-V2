@@ -77,6 +77,14 @@ app.add_middleware(TimingMiddleware)
 app.add_middleware(RequestIDMiddleware)
 app.middleware("http")(analytics_middleware)
 
+
+# Generic OPTIONS handler to improve CORS preflight handling in tests
+@app.options("/{full_path:path}")
+async def generic_options(full_path: str):
+    # Return an empty successful response so CORSMiddleware can attach
+    # Access-Control-* headers for preflight requests during test runs.
+    return Response(status_code=204)
+
 # ── Routers ───────────────────────────────────────────────────────────────────
 from app.api_v2_routers import auth, billing, consent, consent_renewal, diagnostics, gamification, jobs, learners, lessons, onboarding, parents, popia, study_plans  # noqa: E402
 
