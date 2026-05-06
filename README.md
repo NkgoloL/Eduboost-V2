@@ -17,15 +17,11 @@ imports and controlled migration behavior.
 - `app/api_v2.py` is the active backend entrypoint for new work.
 - `docker compose up --build` is the default local stack and points at the V2
   runtime.
-- The platform has reached the **v0.1.0-beta** milestone, representing a fully hardened, production-ready baseline for pilot deployment.
-- Legacy code has been archived behind compatibility shims under
-  [`app/legacy`](/app/legacy/DEPRECATED.md) and [`app/api/main.py`](/app/api/main.py).
-- Redis is used for caching, token revocation, and background job status.
-- Sensitive audit events are persisted through the V2 append-only PostgreSQL
-  audit repository.
-- The repository still carries migration-era artifacts, so documentation should
-  be read as "current master state", not as a promise that every legacy surface
-  is already retired.
+- The platform has reached the **v1.0.0-rc1** milestone, representing a fully hardened, production-ready modular monolith.
+- Legacy V1 code has been fully decommissioned; the V2 runtime is now the sole authoritative path.
+- Background tasks are handled by `arq` (async Redis queue), replacing Celery and RabbitMQ.
+- The repository is organized into domain modules (`app/modules/`) with strict architectural boundaries.
+- POPIA compliance is verified via automated sweeps and a dedicated audit repository.
 
 For the current documentation sync status, see
 [`docs/project_status.md`](/docs/project_status.md) and the root
@@ -106,8 +102,7 @@ The repository contains multiple Compose files on purpose:
 
 - `docker-compose.yml` - default local V2 stack
 - `docker-compose.v2.yml` - explicit V2-focused compose variant
-- `docker-compose.aca.yml` - Azure Container Apps-oriented stack
-- `docker-compose.prod.yml` - production-like compose path
+- `docker-compose.prod.yml` - production-like compose path (Nginx + SSL)
 
 If you are unsure which to use, start with `docker compose up --build` at the
 repository root.
@@ -143,7 +138,7 @@ The editable inputs for those lockfiles are:
 ## Documentation
 
 - Status snapshot: [`docs/project_status.md`](/docs/project_status.md)
-- Architecture: [`docs/architecture/V2_ARCHITECTURE.md`](/docs/architecture/V2_ARCHITECTURE.md)
+- Architecture: [`docs/architecture/ARCHITECTURE.md`](/docs/architecture/ARCHITECTURE.md)
 - Migration guide: [`docs/v2_migration.md`](/docs/v2_migration.md)
 - POPIA notes: [`docs/POPIA_COMPLIANCE.md`](/docs/POPIA_COMPLIANCE.md)
 - Security policy: [`SECURITY.md`](/SECURITY.md)

@@ -16,7 +16,7 @@ This page summarizes the verified repository state as of **2026-05-05**.
 - The repository does **not** currently contain the `mnt/` or `scratch/`
   directories that were called out in an earlier comparative audit.
 - The architecture manifest is linked through
-  [`docs/architecture/V2_ARCHITECTURE.md`](architecture/V2_ARCHITECTURE.md)
+  [`docs/architecture/ARCHITECTURE.md`](architecture/ARCHITECTURE.md)
   rather than a transient auto-generated filename.
 - Access tokens default to 15 minutes, refresh tokens to 7 days, and sensitive
   audit events are documented as PostgreSQL-backed in the active V2 path.

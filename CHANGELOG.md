@@ -14,6 +14,24 @@ Release cadence:
 
 ## [Unreleased]
 
+### 🔧 Hardening: Final Documentation & Infrastructure Alignment (2026-05-06)
+
+**Status**: Repository documentation and core infrastructure synchronized with the V2 Modular Monolith state.
+
+#### Added
+- **Agent Instructions**: New `AGENT_INSTRUCTIONS_V2.md` in root with TDD, POPIA, and `arq` mandates.
+- **Docker Sync**: Restored `docker-compose.v2.yml` and updated `docker-compose.prod.yml` to reflect the full V2 stack (FastAPI, Next.js, arq, PostgreSQL, Redis).
+- **Architecture Stability**: Renamed architecture manifest to a stable path at `docs/architecture/ARCHITECTURE.md`.
+
+#### Changed
+- **Requirements**: Replaced Celery/Flower with `arq` in `requirements/base.in`.
+- **Cleanup**: Removed all residual traces of the transient `gemini-code-*` filename from the entire repository.
+- **README**: Updated "Compose File Map" and documentation links for consistency.
+
+---
+
+## [1.0.0-rc1] — 2026-05-04
+
 ### ⚠️ BREAKING: Complete V2 Architectural Migration (2026-05-02)
 
 **Status**: Architecture restructured from five-pillar monolith to modular monolith. **V1 code deleted entirely.** All recommendations from `EduBoost_Architecture_Recommendation.md` implemented.

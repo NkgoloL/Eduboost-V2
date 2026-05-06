@@ -287,7 +287,7 @@ Required production Key Vault secret names:
 | Celery/Flower | Replaced by arq |
 | `mnt/` directory | Accidental AI session artifact |
 | `scratch/` directory | WIP, belongs in feature branch |
-| `gemini-code-1777601244294.md` | Replaced with this document |
+| Legacy Architecture Manifest | Replaced with this document |
 | Root-level `package.json` | Consolidate into `app/frontend/` |
 
 ---

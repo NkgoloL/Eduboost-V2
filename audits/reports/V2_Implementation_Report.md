@@ -88,7 +88,7 @@
 **Status:** Complete  
 **What changed:**
 - Wired `app/core/config.py` to load `JWT_SECRET`, `ENCRYPTION_KEY`, `ENCRYPTION_SALT`, `GROQ_API_KEY`, and `ANTHROPIC_API_KEY` from Azure Key Vault in production
-- Documented the required Key Vault secret names in `.env.example` and `docs/architecture/V2_ARCHITECTURE.md`
+- Documented the required Key Vault secret names in `.env.example` and `docs/architecture/ARCHITECTURE.md`
 - Added unit coverage for production/non-production Key Vault behavior in `tests/unit/test_config_key_vault.py`
 - Completed Redis-backed JWT denylist verification in `tests/unit/test_token_denylist.py`
 - Updated the auth refresh/logout/revoke-all flow to persist rotated refresh tokens and revoke cookie-backed refresh tokens on logout
