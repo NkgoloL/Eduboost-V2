@@ -84,9 +84,9 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 ## 2.1 Runtime surface
 
-- [ ] `[critical]` Keep `app/api_v2.py` as the only supported backend runtime entrypoint.
-- [ ] `[critical]` Ensure `app/api/main.py` remains a compatibility shim only and cannot diverge from V2 behavior.
-- [ ] `[high]` Add a regression test that imports the V2 app using every documented deployment command.
+- [x] `[critical]` Keep `app/api_v2.py` as the only supported backend runtime entrypoint.
+- [x] `[critical]` Ensure `app/api/main.py` remains a compatibility shim only and cannot diverge from V2 behavior.
+- [x] `[high]` Add a regression test that imports the V2 app using every documented deployment command.
 - [ ] `[high]` Add tests proving legacy-only routes are not accidentally exposed as production APIs.
 - [ ] `[high]` Generate and commit or publish the OpenAPI schema for review.
 - [ ] `[medium]` Add OpenAPI diff checks in PRs.
@@ -184,7 +184,7 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 - [ ] `[critical]` Define consent states: pending, granted, denied, expired, withdrawn, and renewal_required.
 - [ ] `[critical]` Enforce parent/guardian consent before processing child learner data.
-- [ ] `[critical]` Make consent enforcement declarative through FastAPI dependencies or middleware, not scattered manual checks.
+- [x] `[critical]` Make consent enforcement declarative through FastAPI dependencies or middleware, not scattered manual checks.
 - [ ] `[critical]` Add negative tests proving consent bypass is impossible for diagnostics, lessons, profiles, reports, gamification, analytics, AI feedback loops, and exports.
 - [ ] `[high]` Add consent renewal workflow with expiry date, notification schedule, grace period, and restricted mode.
 - [ ] `[high]` Add consent withdrawal workflow with immediate stop to optional processing, confirmation, audit event, and downstream deletion/anonymization job where applicable.
@@ -791,7 +791,7 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 ## Milestone A: Production hardening foundation
 
-- [ ] `/ready` dependency-aware readiness.
+- [x] `/ready` dependency-aware readiness.
 - [ ] Protected branch and release workflow.
 - [ ] Environment variable documentation.
 - [ ] Database backup and restore test.
@@ -848,7 +848,7 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 # 28. Immediate Next 20 Tasks
 
-1. [ ] Fix or complete `/ready` so it reflects dependency readiness accurately.
+1. [x] Fix or complete `/ready` so it reflects dependency readiness accurately.
 2. [ ] Confirm Dockerfile naming consistency between CI, compose, and production deployment.
 3. [ ] Create `docs/environment_variables.md`.
 4. [ ] Create `docs/release_checklist.md`.
