@@ -7,8 +7,10 @@ Fully async LLM inference via Anthropic + Groq with:
 """
 from __future__ import annotations
 
+import asyncio
 import hashlib
 import json
+from pathlib import Path
 from typing import Any
 
 import anthropic
@@ -34,6 +36,8 @@ log = get_logger(__name__)
 # ── Clients (instantiated once per worker) ────────────────────────────────────
 _groq_client: AsyncGroq | None = None
 _anthropic_client: anthropic.AsyncAnthropic | None = None
+_local_hf_runtime: dict[str, Any] | None = None
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 def _get_groq() -> AsyncGroq:
@@ -48,6 +52,68 @@ def _get_anthropic() -> anthropic.AsyncAnthropic:
     if _anthropic_client is None:
         _anthropic_client = anthropic.AsyncAnthropic(api_key=settings.ANTHROPIC_API_KEY)
     return _anthropic_client
+
+
+def _resolve_project_path(value: str) -> Path:
+    path = Path(value)
+    return path if path.is_absolute() else PROJECT_ROOT / path
+
+
+def _local_hf_configured() -> bool:
+    return (
+        _resolve_project_path(settings.LOCAL_MERGED_MODEL_PATH).exists()
+        or _resolve_project_path(settings.LOCAL_ADAPTER_PATH).exists()
+    )
+
+
+def _get_local_hf_runtime() -> dict[str, Any]:
+    """Load the local focused CAPS model lazily for development/test inference."""
+    global _local_hf_runtime
+    if _local_hf_runtime is not None:
+        return _local_hf_runtime
+
+    try:
+        import torch
+        from peft import PeftModel
+        from transformers import AutoModelForCausalLM, AutoTokenizer
+    except ImportError as exc:  # pragma: no cover - depends on ML extras
+        raise RuntimeError("Install ML dependencies before using LLM_PROVIDER=local_hf") from exc
+
+    merged_path = _resolve_project_path(settings.LOCAL_MERGED_MODEL_PATH)
+    adapter_path = _resolve_project_path(settings.LOCAL_ADAPTER_PATH)
+    dtype = torch.bfloat16 if torch.cuda.is_available() else torch.float32
+
+    if merged_path.exists() and (merged_path / "config.json").exists():
+        model_source = str(merged_path)
+        tokenizer_source = str(merged_path)
+        model = AutoModelForCausalLM.from_pretrained(
+            model_source,
+            torch_dtype=dtype,
+            device_map="auto",
+            trust_remote_code=True,
+        )
+    elif adapter_path.exists():
+        model_source = settings.LOCAL_BASE_MODEL_ID
+        tokenizer_source = str(adapter_path)
+        model = AutoModelForCausalLM.from_pretrained(
+            model_source,
+            torch_dtype=dtype,
+            device_map="auto",
+            trust_remote_code=True,
+        )
+        model = PeftModel.from_pretrained(model, str(adapter_path))
+    else:
+        raise RuntimeError(
+            "No local model found. Set LOCAL_MERGED_MODEL_PATH or LOCAL_ADAPTER_PATH "
+            "to a trained EduBoost adapter/model directory."
+        )
+
+    tokenizer = AutoTokenizer.from_pretrained(tokenizer_source, trust_remote_code=True)
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
+    model.eval()
+    _local_hf_runtime = {"model": model, "tokenizer": tokenizer, "model_source": model_source}
+    return _local_hf_runtime
 
 
 # ── Quota enforcement ─────────────────────────────────────────────────────────
@@ -88,6 +154,13 @@ Respond ONLY with a valid JSON object matching this exact schema (no markdown, n
 }
 """
 
+_LOCAL_HF_SYSTEM_PROMPT = (
+    "You are EduBoost Brain, a South African CAPS-aligned teaching assistant. "
+    "Respond with age-appropriate pedagogy, clear structure, and POPIA-safe language. "
+    "When generating lessons, use these sections: Title, Grade, Subject, CAPS alignment, "
+    "Lesson objective, Teaching activity, Worked example, Assessment evidence, and Support and extension."
+)
+
 
 class ExecutiveService:
     """Constitutional Pillar 2: The Executive. Orchestrates AI inference."""
@@ -121,7 +194,12 @@ class ExecutiveService:
 
         await check_and_consume_quota(user_id, tier)
 
-        if not settings.GROQ_API_KEY and not settings.ANTHROPIC_API_KEY and not settings.is_production():
+        if (
+            settings.LLM_PROVIDER != "local_hf"
+            and not settings.GROQ_API_KEY
+            and not settings.ANTHROPIC_API_KEY
+            and not settings.is_production()
+        ):
             payload = _fallback_lesson_payload(grade, subject, topic, language)
             raw = payload.model_dump_json()
             await cache_set(cache_k, raw, ttl=settings.SEMANTIC_CACHE_TTL_SECONDS)
@@ -200,11 +278,52 @@ class ExecutiveService:
         return prompt
 
     async def _call_with_fallback(self, user_prompt: str, *, operation: str) -> str:
+        if settings.LLM_PROVIDER == "local_hf":
+            return await self._call_local_hf(user_prompt, operation=operation)
+        if settings.LLM_PROVIDER == "anthropic":
+            return await self._call_anthropic(user_prompt, operation=operation)
         try:
             return await self._call_groq(user_prompt, operation=operation)
         except Exception as exc:
             log.warning("groq_lesson_generation_failed", error=str(exc))
             return await self._call_anthropic(user_prompt, operation=operation)
+
+    async def _call_local_hf(self, user_prompt: str, *, operation: str) -> str:
+        return await asyncio.to_thread(self._call_local_hf_sync, user_prompt, operation=operation)
+
+    def _call_local_hf_sync(self, user_prompt: str, *, operation: str) -> str:
+        runtime = _get_local_hf_runtime()
+        model = runtime["model"]
+        tokenizer = runtime["tokenizer"]
+        prompt = (
+            "<|system|>\n"
+            f"{_LOCAL_HF_SYSTEM_PROMPT}\n"
+            "<|user|>\n"
+            f"{user_prompt}\n"
+            "Use these sections: Title, Grade, Subject, CAPS alignment, Lesson objective, "
+            "Teaching activity, Worked example, Assessment evidence, and Support and extension.\n"
+            "<|assistant|>\n"
+        )
+        inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+        prompt_tokens = int(inputs["input_ids"].shape[-1])
+        with __import__("torch").no_grad():
+            output = model.generate(
+                **inputs,
+                max_new_tokens=settings.LOCAL_LLM_MAX_NEW_TOKENS,
+                temperature=settings.LOCAL_LLM_TEMPERATURE,
+                do_sample=settings.LOCAL_LLM_TEMPERATURE > 0,
+                pad_token_id=tokenizer.eos_token_id,
+            )
+        completion_ids = output[0][prompt_tokens:]
+        completion = tokenizer.decode(completion_ids, skip_special_tokens=True).strip()
+        record_llm_tokens(
+            provider="local_hf",
+            model=str(runtime["model_source"]),
+            operation=operation,
+            input_tokens=prompt_tokens,
+            output_tokens=int(completion_ids.shape[-1]),
+        )
+        return _coerce_lesson_json(completion)
 
     @retry(
         stop=stop_after_attempt(3),
@@ -319,3 +438,103 @@ def _fallback_lesson_payload(grade: int, subject: str, topic: str, language: str
             f"Think about how {topic} could show up in everyday South African life, like shopping in rands, sport, community, or the classroom."
         ),
     )
+
+
+def _extract_json_object(text: str) -> str:
+    """Return the first JSON object from model text, or the original text if none is found."""
+    start = text.find("{")
+    end = text.rfind("}")
+    if start == -1 or end == -1 or end <= start:
+        return text
+    return text[start : end + 1]
+
+
+def _coerce_lesson_json(text: str) -> str:
+    """Convert focused adapter section text into the app's lesson JSON schema."""
+    text = _strip_generation_artifacts(text)
+    candidate = _extract_json_object(text)
+    try:
+        parsed = json.loads(candidate)
+        if _has_lesson_payload_fields(parsed):
+            return candidate
+        if isinstance(parsed, dict):
+            text = _json_dict_to_section_text(parsed)
+    except json.JSONDecodeError:
+        pass
+
+    sections = _extract_labelled_sections(text)
+    title = sections.get("title") or "CAPS-aligned lesson"
+    objective = sections.get("lesson objective") or sections.get("objective") or ""
+    activity = sections.get("teaching activity") or ""
+    assessment = sections.get("assessment evidence") or ""
+    support = sections.get("support and extension") or ""
+    payload = {
+        "title": title,
+        "introduction": " ".join(part for part in [sections.get("caps alignment", ""), objective] if part).strip()
+        or text[:500],
+        "main_content": activity or text[:900],
+        "worked_example": sections.get("worked example") or "Work through one short example with the learner.",
+        "practice_question": sections.get("practice question") or "What is one thing you learned, and how can you show it?",
+        "answer": sections.get("answer") or assessment or "A strong answer explains the idea in the learner's own words.",
+        "cultural_hook": support
+        or "Connect the lesson to an everyday South African classroom, home, or community example.",
+    }
+    return json.dumps(payload)
+
+
+def _strip_generation_artifacts(text: str) -> str:
+    for marker in ["<|user|>", "<|assistant|>", "<|system|>", "<|unexpected", "<|response|>", "</s>"]:
+        marker_index = text.find(marker)
+        if marker_index != -1:
+            text = text[:marker_index]
+    return text.strip()
+
+
+def _has_lesson_payload_fields(value: Any) -> bool:
+    required = {
+        "title",
+        "introduction",
+        "main_content",
+        "worked_example",
+        "practice_question",
+        "answer",
+        "cultural_hook",
+    }
+    return isinstance(value, dict) and required.issubset(value)
+
+
+def _json_dict_to_section_text(value: dict[str, Any]) -> str:
+    return "\n".join(f"{key}: {content}" for key, content in value.items() if content)
+
+
+def _extract_labelled_sections(text: str) -> dict[str, str]:
+    labels = [
+        "title",
+        "grade",
+        "subject",
+        "caps alignment",
+        "lesson objective",
+        "objective",
+        "teaching activity",
+        "worked example",
+        "assessment evidence",
+        "support and extension",
+        "practice question",
+        "answer",
+    ]
+    positions: list[tuple[int, str, int]] = []
+    lowered = text.lower()
+    for label in labels:
+        needle = f"{label}:"
+        start = lowered.find(needle)
+        if start != -1:
+            positions.append((start, label, start + len(needle)))
+    positions.sort()
+
+    sections: dict[str, str] = {}
+    for index, (start, label, content_start) in enumerate(positions):
+        end = positions[index + 1][0] if index + 1 < len(positions) else len(text)
+        value = text[content_start:end].strip(" \n\r\t-*0123456789.")
+        if value:
+            sections[label] = value
+    return sections

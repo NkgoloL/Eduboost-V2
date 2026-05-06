@@ -109,7 +109,7 @@ def require_training_dependencies() -> dict[str, Any]:
     try:
         import torch
         from datasets import Dataset
-        from peft import LoraConfig, prepare_model_for_kbit_training
+        from peft import LoraConfig, PeftModel, prepare_model_for_kbit_training
         from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig, TrainingArguments
         from trl import SFTTrainer
     except ImportError as exc:  # pragma: no cover - depends on training image
@@ -118,6 +118,7 @@ def require_training_dependencies() -> dict[str, Any]:
         "torch": torch,
         "Dataset": Dataset,
         "LoraConfig": LoraConfig,
+        "PeftModel": PeftModel,
         "prepare_model_for_kbit_training": prepare_model_for_kbit_training,
         "AutoModelForCausalLM": AutoModelForCausalLM,
         "AutoTokenizer": AutoTokenizer,
@@ -141,6 +142,7 @@ def load_model_for_mode(args: argparse.Namespace, deps: dict[str, Any]) -> Any:
     AutoModelForCausalLM = deps["AutoModelForCausalLM"]
     BitsAndBytesConfig = deps["BitsAndBytesConfig"]
     prepare_model_for_kbit_training = deps["prepare_model_for_kbit_training"]
+    PeftModel = deps["PeftModel"]
 
     if args.training_mode == "qlora":
         quantization_config = BitsAndBytesConfig(
@@ -168,6 +170,8 @@ def load_model_for_mode(args: argparse.Namespace, deps: dict[str, Any]) -> Any:
             model.gradient_checkpointing_enable()
 
     model.config.use_cache = False
+    if args.init_adapter_dir:
+        model = PeftModel.from_pretrained(model, args.init_adapter_dir, is_trainable=True)
     return model
 
 
@@ -203,14 +207,16 @@ def run_training(args: argparse.Namespace) -> int:
     train_dataset, eval_dataset = build_datasets(Dataset, tokenizer, train_examples, eval_examples)
     model = load_model_for_mode(args, deps)
 
-    lora_config = LoraConfig(
-        r=args.lora_r,
-        lora_alpha=args.lora_alpha,
-        lora_dropout=args.lora_dropout,
-        bias="none",
-        task_type="CAUSAL_LM",
-        target_modules=[module.strip() for module in args.target_modules.split(",") if module.strip()],
-    )
+    lora_config = None
+    if not args.init_adapter_dir:
+        lora_config = LoraConfig(
+            r=args.lora_r,
+            lora_alpha=args.lora_alpha,
+            lora_dropout=args.lora_dropout,
+            bias="none",
+            task_type="CAUSAL_LM",
+            target_modules=[module.strip() for module in args.target_modules.split(",") if module.strip()],
+        )
     use_cuda = args.training_mode == "qlora"
     training_args = TrainingArguments(
         output_dir=str(output_dir),
@@ -273,6 +279,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--lora-alpha", type=int, default=16)
     parser.add_argument("--lora-dropout", type=float, default=0.05)
     parser.add_argument("--target-modules", default="q_proj,k_proj,v_proj,o_proj", help="Comma-separated LoRA target module names.")
+    parser.add_argument("--init-adapter-dir", default="", help="Optional existing LoRA adapter to continue training from.")
     parser.add_argument("--cpu-dtype", choices=["float32", "bfloat16"], default="float32")
     parser.add_argument("--report-to", default="none", help="Trainer reporting target, e.g. none, tensorboard, wandb.")
     parser.add_argument("--seed", type=int, default=42)

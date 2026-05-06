@@ -1,0 +1,20 @@
+/* EduBoost SA — Sphinx RTD theme customisations */
+
+:root {
+    --eb-blue-dark: #1F3864;
+    --eb-blue-mid: #2E5FA3;
+}
+
+.wy-nav-content {
+    max-width: 1000px;
+}
+
+.rst-content .highlight {
+    border-left: 4px solid var(--eb-blue-mid);
+}
+
+/* Tighten parameter lists */
+.rst-content dl.field-list > dt {
+    font-weight: 600;
+    color: var(--eb-blue-dark);
+}

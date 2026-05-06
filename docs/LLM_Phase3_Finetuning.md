@@ -100,6 +100,22 @@ python scripts/evaluate_pedagogy.py \
 
 Current smoke adapter result: `1/3` benchmark cases passed. This confirms the evaluation path works, but the adapter needs a longer run and more CAPS examples before it should be treated as production-quality.
 
+Focused adapter evaluation after the 9-epoch CAPS run:
+
+```bash
+python scripts/validate_focused_adapter.py --skip-merge
+```
+
+This checks that the focused adapter is complete, writes
+`artifacts/llm/focused_adapter_validation_manifest.json`, and runs the richer
+benchmark file at `tests/fixtures/llm/focused_caps_eval.jsonl`.
+
+To evaluate and merge in one pass for local app testing:
+
+```bash
+python scripts/validate_focused_adapter.py
+```
+
 ## 6. Merge And Export
 
 Dry-run the export metadata:
@@ -120,3 +136,44 @@ python scripts/merge_lora.py \
 The merge helper writes Hugging Face format weights and `export_metadata.json`. GGUF/AWQ quantization should be performed in a dedicated export image with `llama.cpp` or AWQ tooling after the merged weights are produced.
 
 Latest local smoke merge output: `artifacts/llm/merged-smollm2-caps-model`.
+
+Focused merge output for app-level testing:
+
+```bash
+python scripts/merge_lora.py \
+  --model-id HuggingFaceTB/SmolLM2-360M-Instruct \
+  --adapter-dir artifacts/llm/smollm2-caps-focused-9epoch-adapter \
+  --output-dir artifacts/llm/merged-smollm2-caps-focused-model \
+  --torch-dtype float32
+```
+
+## 7. Wire The Focused Adapter Into The App For Testing
+
+The FastAPI lesson `ExecutiveService` supports a development-only local Hugging
+Face provider. Use it to test the focused adapter through the real lesson
+generation path, including CAPS validation, Judiciary validation, caching, and
+persistence.
+
+For adapter loading:
+
+```env
+LLM_PROVIDER=local_hf
+LOCAL_BASE_MODEL_ID=HuggingFaceTB/SmolLM2-360M-Instruct
+LOCAL_ADAPTER_PATH=artifacts/llm/smollm2-caps-focused-9epoch-adapter
+```
+
+For merged-model loading:
+
+```env
+LLM_PROVIDER=local_hf
+LOCAL_MERGED_MODEL_PATH=artifacts/llm/merged-smollm2-caps-focused-model
+```
+
+Then run the normal lesson generation route:
+
+```text
+POST /api/v2/lessons/generate
+POST /api/v2/lessons/generate/stream
+```
+
+Keep `LLM_PROVIDER=auto` for normal provider fallback behavior.

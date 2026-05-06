@@ -5,6 +5,7 @@ from pathlib import Path
 from scripts.evaluate_pedagogy import BenchmarkCase, score_response
 from scripts.merge_lora import build_export_metadata
 from scripts.train_qlora import TrainingExample, format_chat_prompt, load_training_examples, split_examples
+from scripts.validate_focused_adapter import ensure_adapter_ready, write_manifest
 
 
 def test_format_chat_prompt_includes_caps_system_and_context():
@@ -86,3 +87,36 @@ def test_training_parser_defaults_to_cpu_smollm2():
 
     assert args.training_mode == "cpu-lora"
     assert args.model_id == "HuggingFaceTB/SmolLM2-360M-Instruct"
+
+
+def test_focused_adapter_manifest_records_eval_and_merge_paths(tmp_path: Path):
+    args = argparse.Namespace(
+        adapter_dir=str(tmp_path / "adapter"),
+        benchmark_file=str(tmp_path / "benchmarks.jsonl"),
+        merged_output_dir=str(tmp_path / "merged"),
+        model_id="base-model",
+        report=str(tmp_path / "report.json"),
+        skip_eval=False,
+        skip_merge=False,
+    )
+    manifest_path = tmp_path / "manifest.json"
+
+    write_manifest(manifest_path, args)
+
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert manifest["model_id"] == "base-model"
+    assert manifest["steps"] == {"evaluate": True, "merge": True}
+
+
+def test_ensure_adapter_ready_requires_lora_files(tmp_path: Path):
+    adapter_dir = tmp_path / "adapter"
+    adapter_dir.mkdir()
+    for filename in ["adapter_config.json", "adapter_model.safetensors"]:
+        (adapter_dir / filename).write_text("{}", encoding="utf-8")
+
+    try:
+        ensure_adapter_ready(adapter_dir)
+    except SystemExit as exc:
+        assert "tokenizer_config.json" in str(exc)
+    else:  # pragma: no cover
+        raise AssertionError("Expected incomplete adapter to fail readiness check")
