@@ -5,7 +5,7 @@ from unittest.mock import AsyncMock
 
 import pytest
 
-from app.core.llm_gateway import ExecutiveService
+from app.core.llm_gateway import ExecutiveService, _coerce_lesson_json, _extract_json_object, _strip_generation_artifacts, settings
 from app.services.caps_validator import CAPSAlignmentValidator
 
 
@@ -20,6 +20,66 @@ def test_caps_validator_suggests_nearest_allowed_topic() -> None:
     result = validator.validate(4, "Mathematics", "Probability", "This lesson is about dice.")
     assert result.caps_aligned is False
     assert result.canonical_topic in {"fractions", "problem solving", "measurement", "geometry", "decimals"}
+
+
+def test_extract_json_object_from_local_model_text() -> None:
+    text = 'Here is the lesson:\n{"title": "Fractions", "introduction": "Start"}\nDone.'
+
+    assert _extract_json_object(text) == '{"title": "Fractions", "introduction": "Start"}'
+
+
+def test_coerce_section_lesson_text_to_json_payload() -> None:
+    raw = """
+    Title: Grade 4 Mathematics - Fractions
+    CAPS alignment: Uses South African CAPS expectations.
+    Lesson objective: Learners explain equivalent fractions.
+    Teaching activity: Use paper strips to compare halves and quarters.
+    Worked example: Two quarters equal one half.
+    Assessment evidence: Learners explain one equivalent pair.
+    Support and extension: Use local shopping examples with rands.
+    """
+
+    payload = json.loads(_coerce_lesson_json(raw))
+
+    assert payload["title"] == "Grade 4 Mathematics - Fractions"
+    assert "equivalent fractions" in payload["introduction"]
+    assert "paper strips" in payload["main_content"]
+    assert "rands" in payload["cultural_hook"]
+
+
+def test_coerce_incomplete_json_to_required_lesson_payload() -> None:
+    raw = json.dumps(
+        {
+            "title": "Grade 4 Mathematics - Fractions",
+            "lesson objective": "Learners explain equivalent fractions.",
+            "teaching activity": "Use paper strips to compare fractions.",
+        }
+    )
+
+    payload = json.loads(_coerce_lesson_json(raw))
+
+    assert payload["title"] == "Grade 4 Mathematics - Fractions"
+    assert payload["practice_question"]
+    assert payload["answer"]
+
+
+def test_strip_generation_artifacts_removes_synthetic_chat_turns() -> None:
+    raw = "Title: Fractions\nSupport and extension: Use rands.\n<|user|>\nIgnore this"
+
+    assert _strip_generation_artifacts(raw).endswith("Use rands.")
+
+
+@pytest.mark.asyncio
+async def test_executive_uses_local_hf_provider_when_configured(monkeypatch) -> None:
+    service = ExecutiveService()
+    monkeypatch.setattr(settings, "LLM_PROVIDER", "local_hf")
+    local_call = AsyncMock(return_value='{"title": "Local"}')
+    monkeypatch.setattr(service, "_call_local_hf", local_call)
+
+    response = await service._call_with_fallback("Prompt", operation="lesson_generation")
+
+    assert response == '{"title": "Local"}'
+    local_call.assert_awaited_once_with("Prompt", operation="lesson_generation")
 
 
 @pytest.mark.asyncio

@@ -69,6 +69,12 @@ class Settings(BaseSettings):
     INFERENCE_SERVICE_URL: str = "http://localhost:9100"
     LLM_TIMEOUT_SECONDS: int = 30
     LLM_MAX_RETRIES: int = 2
+    LLM_PROVIDER: Literal["auto", "groq", "anthropic", "local_hf"] = "auto"
+    LOCAL_BASE_MODEL_ID: str = "HuggingFaceTB/SmolLM2-360M-Instruct"
+    LOCAL_ADAPTER_PATH: str = "artifacts/llm/smollm2-caps-focused-9epoch-adapter"
+    LOCAL_MERGED_MODEL_PATH: str = "artifacts/llm/merged-smollm2-caps-focused-model"
+    LOCAL_LLM_MAX_NEW_TOKENS: int = 900
+    LOCAL_LLM_TEMPERATURE: float = 0.2
 
     # ── AI Cost-Control ──────────────────────────────────────────────────────
     FREE_DAILY_REQUEST_QUOTA: int = 20
