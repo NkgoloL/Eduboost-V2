@@ -101,7 +101,7 @@ class Issue:
 
 @dataclass
 class SweepReport:
-    timestamp: str = field(default_factory=lambda: datetime.datetime.utcnow().isoformat())
+    timestamp: str = field(default_factory=lambda: datetime.datetime.now(datetime.UTC).isoformat())
     project: str = "EduBoost SA"
     issues: list[Issue] = field(default_factory=list)
     files_scanned: int = 0
@@ -222,6 +222,19 @@ def check_consent_gates_in_routers(source: str, filepath: Path, report: SweepRep
         if not isinstance(node, ast.AsyncFunctionDef):
             continue
 
+        decorator_names = []
+        for decorator in node.decorator_list:
+            if isinstance(decorator, ast.Call):
+                decorator = decorator.func
+            if isinstance(decorator, ast.Attribute):
+                decorator_names.append(decorator.attr)
+            elif isinstance(decorator, ast.Name):
+                decorator_names.append(decorator.id)
+
+        is_route_handler = any(name in {"get", "post", "put", "patch", "delete"} for name in decorator_names)
+        if not is_route_handler:
+            continue
+
         func_source = ast.get_source_segment(source, node) or ""
         is_learner_endpoint = any(p.search(func_source) for p in LEARNER_DATA_PATTERNS)
         if not is_learner_endpoint:
@@ -229,16 +242,26 @@ def check_consent_gates_in_routers(source: str, filepath: Path, report: SweepRep
 
         report.endpoints_checked += 1
 
+        direct_body_statements = [
+            stmt
+            for stmt in node.body
+            if not isinstance(stmt, (ast.AsyncFunctionDef, ast.FunctionDef, ast.ClassDef))
+        ]
+        direct_body_source = "\n".join(
+            ast.get_source_segment(source, stmt) or ""
+            for stmt in direct_body_statements
+        )
+
         has_consent_gate = (
-            "require_active_consent" in func_source
-            or "ConsentService.require_active_consent" in func_source
+            "require_active_consent" in direct_body_source
+            or "ConsentService.require_active_consent" in direct_body_source
         )
 
         if has_consent_gate:
             report.consent_gates_found += 1
         else:
             # Is it a read/write endpoint (has DB call)?
-            has_db_call = any(kw in func_source for kw in ["db.execute", "db.get", "await db", "select("])
+            has_db_call = any(kw in direct_body_source for kw in ["db.execute", "db.get", "await db", "select("])
             if has_db_call:
                 report.add(Issue(
                     severity="critical",

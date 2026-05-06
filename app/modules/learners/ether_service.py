@@ -5,6 +5,8 @@ Assigns a Kabbalistic archetype on session 1 — eliminates the legacy 8–10 ev
 """
 from __future__ import annotations
 
+from collections.abc import Iterable
+
 from app.domain.models import ArchetypeLabel
 
 # ── Cold-start onboarding questions ──────────────────────────────────────────
@@ -62,27 +64,27 @@ ONBOARDING_QUESTIONS = [
 ]
 
 # ── Scoring matrix: (q_id, answer) → archetype scores ─────────────────────────
-_SCORE_MAP: dict[tuple[int, str], dict[str, int]] = {
-    (1, "A"): {"Keter": 2, "Binah": 1},
-    (1, "B"): {"Chokmah": 2, "Chesed": 1},
-    (1, "C"): {"Hod": 2, "Netzach": 1},
-    (1, "D"): {"Yesod": 2, "Gevurah": 1},
-    (2, "A"): {"Keter": 2, "Binah": 1},
-    (2, "B"): {"Malkuth": 2, "Hod": 1},
-    (2, "C"): {"Tiferet": 2, "Netzach": 1},
-    (2, "D"): {"Gevurah": 2, "Yesod": 1},
-    (3, "A"): {"Malkuth": 2, "Yesod": 1},
-    (3, "B"): {"Chesed": 2, "Tiferet": 1},
-    (3, "C"): {"Hod": 2, "Binah": 1},
-    (3, "D"): {"Keter": 2, "Gevurah": 1},
-    (4, "A"): {"Binah": 2, "Hod": 1},
-    (4, "B"): {"Tiferet": 2, "Netzach": 1},
-    (4, "C"): {"Chokmah": 2, "Keter": 1},
-    (4, "D"): {"Yesod": 2, "Chesed": 1},
-    (5, "A"): {"Keter": 2, "Chokmah": 1},
-    (5, "B"): {"Gevurah": 2, "Yesod": 1},
-    (5, "C"): {"Netzach": 2, "Tiferet": 1},
-    (5, "D"): {"Chesed": 2, "Malkuth": 1},
+_LIKELIHOOD_MAP: dict[tuple[int, str], dict[str, float]] = {
+    (1, "A"): {"Keter": 0.64, "Binah": 0.23},
+    (1, "B"): {"Chokmah": 0.65, "Chesed": 0.22},
+    (1, "C"): {"Hod": 0.62, "Netzach": 0.24},
+    (1, "D"): {"Yesod": 0.63, "Gevurah": 0.24},
+    (2, "A"): {"Binah": 0.62, "Keter": 0.24},
+    (2, "B"): {"Malkuth": 0.64, "Hod": 0.22},
+    (2, "C"): {"Tiferet": 0.65, "Netzach": 0.22},
+    (2, "D"): {"Gevurah": 0.62, "Yesod": 0.24},
+    (3, "A"): {"Malkuth": 0.62, "Yesod": 0.24},
+    (3, "B"): {"Chesed": 0.64, "Tiferet": 0.22},
+    (3, "C"): {"Hod": 0.64, "Binah": 0.22},
+    (3, "D"): {"Keter": 0.63, "Gevurah": 0.24},
+    (4, "A"): {"Binah": 0.66, "Hod": 0.2},
+    (4, "B"): {"Tiferet": 0.64, "Netzach": 0.22},
+    (4, "C"): {"Chokmah": 0.65, "Keter": 0.21},
+    (4, "D"): {"Yesod": 0.65, "Chesed": 0.22},
+    (5, "A"): {"Keter": 0.62, "Chokmah": 0.24},
+    (5, "B"): {"Gevurah": 0.65, "Yesod": 0.21},
+    (5, "C"): {"Netzach": 0.66, "Tiferet": 0.2},
+    (5, "D"): {"Chesed": 0.63, "Malkuth": 0.23},
 }
 
 _ARCHETYPE_DESCRIPTIONS = {
@@ -106,23 +108,49 @@ class EtherService:
     """
 
     def get_onboarding_questions(self) -> list[dict]:
+        """Return the cold-start onboarding questions used for archetype scoring.
+
+        Returns:
+            List of question dictionaries for the first-session archetype assessment.
+        """
         return ONBOARDING_QUESTIONS
 
-    def classify_archetype(self, answers: list[dict]) -> tuple[ArchetypeLabel, str]:
-        """
-        answers: [{"question_id": int, "answer": str}, ...]
-        Returns (ArchetypeLabel, description_string).
-        """
-        scores: dict[str, int] = {a.value: 0 for a in ArchetypeLabel}
-        for a in answers:
-            key = (int(a["question_id"]), str(a["answer"]).upper())
-            for archetype, pts in _SCORE_MAP.get(key, {}).items():
-                scores[archetype] = scores.get(archetype, 0) + pts
+    def classify_archetype(self, answers: list[dict]) -> tuple[ArchetypeLabel, str, dict[str, float]]:
+        """Classify a learner archetype from onboarding answers.
 
-        best = max(scores, key=lambda k: scores[k])
+        Args:
+            answers: List of answer dictionaries containing ``question_id`` and
+                ``answer`` values.
+
+        Returns:
+            Tuple containing the selected archetype label, a short
+            description, and the posterior probability distribution.
+        """
+        scores = self.posterior_distribution(answers)
+        best = max(scores, key=scores.get)
         label = ArchetypeLabel(best)
         description = _ARCHETYPE_DESCRIPTIONS.get(best, "")
-        return label, description
+        return label, description, scores
+
+    def posterior_distribution(self, answers: Iterable[dict]) -> dict[str, float]:
+        """Compute the posterior archetype distribution for onboarding answers.
+
+        Args:
+            answers: Iterable of answer dictionaries with question identifiers
+                and selected answers.
+
+        Returns:
+            Normalized probability distribution over archetype labels.
+        """
+        posterior: dict[str, float] = {a.value: 1.0 / len(ArchetypeLabel) for a in ArchetypeLabel}
+        for answer in answers:
+            key = (int(answer["question_id"]), str(answer["answer"]).upper())
+            evidence = _LIKELIHOOD_MAP.get(key, {})
+            for archetype in posterior:
+                posterior[archetype] *= evidence.get(archetype, 0.04)
+            total = sum(posterior.values()) or 1.0
+            posterior = {archetype: weight / total for archetype, weight in posterior.items()}
+        return {archetype: round(weight, 4) for archetype, weight in posterior.items()}
 
     def modify_prompt_for_archetype(self, base_prompt: str, archetype: ArchetypeLabel | None) -> str:
         """Append archetype-specific tone modifier to an LLM prompt."""

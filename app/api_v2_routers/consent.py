@@ -15,7 +15,6 @@ from app.core.dependencies import get_current_guardian_id
 from app.modules.consent.service import ConsentService
 
 router = APIRouter(prefix="/consent", tags=["POPIA Consent"])
-_consent_service = ConsentService()
 
 
 class ConsentGrantRequest(BaseModel):
@@ -35,11 +34,18 @@ async def grant_consent(
     guardian_id: UUID = Depends(get_current_guardian_id),
     db: AsyncSession = Depends(get_db),
 ) -> dict:
-    consent = await _consent_service.grant_consent(
-        body.learner_id, guardian_id, db,
-        request=request,
-        consent_version=body.consent_version,
+    # AuditLog emission is handled inside ConsentService.grant().
+    consent = await ConsentService(db).grant(
+        str(guardian_id),
+        str(body.learner_id),
+        body.consent_version,
+        ip_hash=_get_ip(request),
     )
+    request.state.analytics = {
+        "event": "consent_granted",
+        "pseudonym_id": f"learner:{body.learner_id}",
+        "properties": {"policy_version": body.consent_version},
+    }
     return {
         "id": str(consent.id),
         "learner_id": str(consent.learner_id),
@@ -56,11 +62,18 @@ async def revoke_consent(
     guardian_id: UUID = Depends(get_current_guardian_id),
     db: AsyncSession = Depends(get_db),
 ) -> dict:
-    count = await _consent_service.revoke_consent(
-        body.learner_id, guardian_id, db,
-        reason=body.reason, request=request,
+    # AuditLog emission is handled inside ConsentService.revoke().
+    await ConsentService(db).revoke(
+        str(body.learner_id),
+        guardian_id=str(guardian_id),
+        reason=body.reason,
     )
-    return {"revoked": count, "message": "Consent revoked. Learner data access has been suspended."}
+    request.state.analytics = {
+        "event": "consent_revoked",
+        "pseudonym_id": f"learner:{body.learner_id}",
+        "properties": {"reason": body.reason},
+    }
+    return {"revoked": 1, "message": "Consent revoked. Learner data access has been suspended."}
 
 
 @router.get("/status/{learner_id}")
@@ -69,9 +82,7 @@ async def consent_status(
     guardian_id: UUID = Depends(get_current_guardian_id),
     db: AsyncSession = Depends(get_db),
 ) -> dict:
-    from app.repositories import ConsentRepository
-    repo = ConsentRepository()
-    consent = await repo.get_active(learner_id, db)
+    consent = await ConsentService(db).get_status(str(learner_id))
     if consent is None:
         return {"active": False, "learner_id": str(learner_id)}
     return {
@@ -81,3 +92,10 @@ async def consent_status(
         "expires_at": consent.expires_at.isoformat(),
         "days_remaining": (consent.expires_at - consent.granted_at).days,
     }
+
+
+def _get_ip(request: Request) -> str | None:
+    forwarded = request.headers.get("X-Forwarded-For")
+    if forwarded:
+        return forwarded.split(",")[0].strip()
+    return request.client.host if request.client else None

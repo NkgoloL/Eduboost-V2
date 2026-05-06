@@ -5,9 +5,10 @@ Request/response models. No ORM imports here.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal
+from typing import Any, Literal
+from uuid import UUID
 
-from pydantic import BaseModel, ConfigDict, EmailStr, Field
+from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
 
 
 # ── Shared ────────────────────────────────────────────────────────────────────
@@ -18,9 +19,23 @@ class OrmBase(BaseModel):
 # ── Auth ──────────────────────────────────────────────────────────────────────
 class RegisterRequest(BaseModel):
     email: EmailStr
-    password: str = Field(min_length=8)
+    password: str = Field(
+        min_length=8,
+        description="Password must be at least 8 characters and include at least one uppercase letter, one lowercase letter, and one number.",
+    )
     display_name: str = Field(min_length=2, max_length=120)
     role: Literal["parent", "teacher"] = "parent"
+
+    @field_validator("password")
+    @classmethod
+    def password_complexity(cls, v: str) -> str:
+        if not any(c.isupper() for c in v):
+            raise ValueError("Password must contain at least one uppercase letter")
+        if not any(c.islower() for c in v):
+            raise ValueError("Password must contain at least one lowercase letter")
+        if not any(c.isdigit() for c in v):
+            raise ValueError("Password must contain at least one number")
+        return v
 
 
 class LoginRequest(BaseModel):
@@ -61,9 +76,9 @@ class LearnerResponse(OrmBase):
 # ── Lesson ────────────────────────────────────────────────────────────────────
 class LessonRequest(BaseModel):
     learner_id: str
-    subject: str
-    topic: str
-    language: str = "en"
+    subject: str = Field(min_length=2, max_length=60, pattern=r"^[a-zA-Z0-9\s\-]+$")
+    topic: str = Field(min_length=2, max_length=120, pattern=r"^[a-zA-Z0-9\s\-\(\)\.]+$")
+    language: str = Field(default="en", pattern=r"^[a-z]{2}$")
 
 
 class LessonResponse(OrmBase):
@@ -75,11 +90,25 @@ class LessonResponse(OrmBase):
     content: str
     archetype: str | None
     served_from_cache: bool
+    cache_hit: bool = False
+    caps_aligned: bool = True
     created_at: datetime
 
 
 class LessonFeedback(BaseModel):
     score: int = Field(ge=1, le=5)
+
+
+class LessonSyncEvent(BaseModel):
+    lesson_id: str
+    event_type: Literal["complete", "feedback"]
+    score: int | None = Field(default=None, ge=1, le=5)
+    completed_at: datetime | None = None
+    metadata: dict[str, Any] = Field(default_factory=dict)
+
+
+class LessonSyncRequest(BaseModel):
+    responses: list[LessonSyncEvent] = Field(default_factory=list)
 
 
 # ── Diagnostic ────────────────────────────────────────────────────────────────
@@ -98,6 +127,9 @@ class DiagnosticResult(BaseModel):
     theta_before: float
     theta_after: float
     gaps_identified: list[str]
+    standard_error: float | None = None
+    grade_equivalent: int | None = None
+    ranked_gaps: list[dict] = Field(default_factory=list)
 
 
 # ── Onboarding (Ether cold-start) ─────────────────────────────────────────────
@@ -115,6 +147,7 @@ class OnboardingResult(BaseModel):
     learner_id: str
     archetype: str
     description: str
+    probabilities: dict[str, float] = Field(default_factory=dict)
 
 
 # ── Parent Portal ─────────────────────────────────────────────────────────────
@@ -147,6 +180,53 @@ class QuotaStatus(BaseModel):
     used_today: int
     daily_limit: int
     tier: str
+
+
+class ParentDashboardLearner(BaseModel):
+    learner_id: UUID
+    display_name: str
+    grade_level: str
+    archetype: str | None
+    irt_theta: float
+    lessons_this_week: int
+    active_knowledge_gaps: int
+    last_lesson_at: datetime | None
+
+
+class ParentDashboardResponse(BaseModel):
+    guardian_id: UUID
+    learners: list[ParentDashboardLearner]
+    total_lessons_generated: int
+    subscription_tier: str
+
+
+class ParentTrustDashboardLearner(BaseModel):
+    learner_id: str
+    display_name: str
+    grade_level: int
+    archetype: str | None
+    irt_theta: float
+    top_knowledge_gaps: list[str] = Field(default_factory=list)
+    ai_progress_summary: str
+    lesson_completion_rate_7d: float
+    streak_days: int
+    export_url: str
+
+
+class ParentTrustDashboardResponse(BaseModel):
+    guardian_id: str
+    subscription_tier: str
+    generated_at: datetime
+    learners: list[ParentTrustDashboardLearner] = Field(default_factory=list)
+
+
+class QuotaStatusResponse(BaseModel):
+    tokens_used_today: int
+    tokens_quota: int
+    requests_today: int
+    quota_date: str
+    tier: str
+    is_exhausted: bool
 
 
 class AuditLogEntry(BaseModel):

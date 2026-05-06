@@ -14,6 +14,7 @@ router = APIRouter(prefix="/billing", tags=["billing"])
 
 
 @router.post("/checkout", response_model=CheckoutSessionResponse)
+@router.post("/create-checkout-session", response_model=CheckoutSessionResponse)
 async def create_checkout(
     db: AsyncSession = Depends(get_db),
     current_user: dict = Depends(require_parent_or_admin),
@@ -22,7 +23,7 @@ async def create_checkout(
     # Note: In production, retrieve email from encrypted field and decrypt
     url = await svc.create_checkout_session(
         guardian_id=current_user["sub"],
-        email_plaintext="placeholder@eduboost.co.za",
+        email_plaintext="billing-placeholder",
     )
     return CheckoutSessionResponse(checkout_url=url)
 

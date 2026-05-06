@@ -81,3 +81,24 @@
 
 **Why:**
 - The V2 tree had import/runtime blockers before deeper TODO work could be safely validated.
+
+---
+
+### [2026-05-03] V2 Security Hardening Batch (Tasks 18-20)
+**Status:** Complete  
+**What changed:**
+- Wired `app/core/config.py` to load `JWT_SECRET`, `ENCRYPTION_KEY`, `ENCRYPTION_SALT`, `GROQ_API_KEY`, and `ANTHROPIC_API_KEY` from Azure Key Vault in production
+- Documented the required Key Vault secret names in `.env.example` and `docs/architecture/V2_ARCHITECTURE.md`
+- Added unit coverage for production/non-production Key Vault behavior in `tests/unit/test_config_key_vault.py`
+- Completed Redis-backed JWT denylist verification in `tests/unit/test_token_denylist.py`
+- Updated the auth refresh/logout/revoke-all flow to persist rotated refresh tokens and revoke cookie-backed refresh tokens on logout
+- Removed legacy `guest/guest` RabbitMQ guidance from top-level docs and replaced legacy integration examples with environment-driven credentials
+- Fixed the missing `BaseHTTPMiddleware` import in `app/api_v2.py` so the V2 smoke suite can import and execute the app
+
+**Verification:**
+- `.venv/bin/python -m py_compile app/api_v2.py app/core/config.py app/core/security.py app/core/token_revocation.py app/api_v2_routers/auth.py tests/unit/test_config_key_vault.py tests/unit/test_token_denylist.py`
+- `.venv/bin/python -m pytest tests/unit/test_config_key_vault.py tests/unit/test_token_denylist.py -v --tb=short -o addopts=""`
+- `.venv/bin/python -m pytest tests/smoke -v --tb=short -o addopts=""`
+
+**Why:**
+- Close the remaining production-secret, token-revocation, and legacy-broker hardening gaps without reintroducing RabbitMQ into the V2 runtime.

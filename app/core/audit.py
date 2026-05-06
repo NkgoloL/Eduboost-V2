@@ -8,7 +8,7 @@ from __future__ import annotations
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.logging import get_logger
-from app.repositories.repositories import AuditRepository
+from app.repositories.audit_repository import AuditRepository
 
 log = get_logger(__name__)
 
@@ -27,24 +27,35 @@ class FourthEstateService:
         event_type: str,
         actor_id: str | None = None,
         learner_pseudonym: str | None = None,
+        resource_id: str | None = None,
         payload: dict | None = None,
         constitutional_outcome: str | None = None,
     ) -> None:
-        entry = await self._repo.log(
+        entry = await self._repo.append(
             event_type=event_type,
             actor_id=actor_id,
-            learner_pseudonym=learner_pseudonym,
-            payload=payload,
-            constitutional_outcome=constitutional_outcome,
+            resource_id=resource_id,
+            payload={
+                **(payload or {}),
+                **({"learner_pseudonym": learner_pseudonym} if learner_pseudonym else {}),
+                **({"constitutional_outcome": constitutional_outcome} if constitutional_outcome else {}),
+            },
         )
-        log.info(
-            "audit_event",
-            event_type=event_type,
-            actor=actor_id,
-            pseudonym=learner_pseudonym,
-            outcome=constitutional_outcome,
-            audit_id=entry.id,
-        )
+        try:
+            log.info(
+                "audit_event",
+                event_type=event_type,
+                actor=actor_id,
+                pseudonym=learner_pseudonym,
+                outcome=constitutional_outcome,
+                audit_id=str(entry.id),
+            )
+        except AttributeError:
+            # Some test logging setups expose a minimal logger without the
+            # stdlib attributes structlog processors expect. The audit record
+            # itself is the source of truth, so logging must not break the
+            # protected action.
+            pass
 
     # ── Convenience helpers ───────────────────────────────────────────────────
 
@@ -98,7 +109,15 @@ class FourthEstateService:
         )
 
     async def auth_event(self, event: str, actor_id: str, detail: dict | None = None) -> None:
-        await self.record(event, actor_id=actor_id, payload=detail or {})
+        await self.record(event.lower(), actor_id=actor_id, payload=detail or {})
+
+    async def access_rejected(self, actor_id: str | None, learner_id: str, reason: str) -> None:
+        await self.record(
+            "consent.access_rejected",
+            actor_id=actor_id,
+            payload={"learner_id": learner_id, "reason": reason},
+            constitutional_outcome="REJECTED",
+        )
 
     async def subscription_changed(self, guardian_id: str, new_tier: str, stripe_event_id: str) -> None:
         await self.record(

@@ -1,33 +1,34 @@
 site_name: EduBoost V2
-site_description: Automated architecture and API documentation for EduBoost V2
+site_description: Architecture, operations, and API documentation for EduBoost SA V2
 site_url: https://example.com/eduboost-v2
-repo_url: https://gitlab.com/l3b3lo/copy-eduboost
+repo_url: https://github.com/NkgoloL/Eduboost-V2
 site_dir: site
 
 theme:
   name: material
 
 nav:
-  - Home: docs/index.md
-  - Architecture: docs/architecture.md
-  - V2 Migration: docs/v2_migration.md
-  - V2 Handoff: docs/v2_handoff.md
-  - API V2:
-      - Overview: docs/api_v2.md
-      - Core Config: docs/reference/app/core/config.md
-      - Security: docs/reference/app/core/security.md
-      - Domain Entities: docs/reference/app/domain/entities.md
-      - Learner Service: docs/reference/app/services/learner_service.md
-      - Audit Service: docs/reference/app/services/audit_service.md
-      - Auth Service: docs/reference/app/services/auth_service.md
-      - Diagnostic Service: docs/reference/app/services/diagnostic_service_v2.md
-      - Quota Service: docs/reference/app/services/quota_service.md
-      - Study Plan Service: docs/reference/app/services/study_plan_service_v2.md
-      - Parent Report Service: docs/reference/app/services/parent_report_service_v2.md
-      - Lesson Service: docs/reference/app/services/lesson_service_v2.md
-      - Gamification Service: docs/reference/app/services/gamification_service_v2.md
-      - System Service: docs/reference/app/services/system_service_v2.md
-      - Assessment Service: docs/reference/app/services/assessment_service_v2.md
+  - Home: index.md
+  - Project Status: project_status.md
+  - Architecture:
+      - Overview: architecture.md
+      - V2 Manifest: architecture/V2_ARCHITECTURE.md
+      - Migration Guide: v2_migration.md
+      - Agent Handoff: v2_handoff.md
+  - Operations:
+      - API Overview: api_v2.md
+      - POPIA Compliance: POPIA_COMPLIANCE.md
+      - Right to Erasure: popia_erasure.md
+      - Azure Migration: Azure_Migration_Guide.md
+      - Development: DEVELOPMENT.md
+  - API Reference:
+      - FastAPI Entrypoint: reference/api_v2.md
+      - Routers: reference/api_v2_routers.md
+      - Core Runtime: reference/core.md
+      - Domain Models: reference/domain.md
+      - Repositories: reference/repositories.md
+      - Services: reference/services.md
+      - Learning Engines: reference/modules.md
 
 plugins:
   - search
@@ -35,6 +36,7 @@ plugins:
       handlers:
         python:
           options:
+            paths: ["."]
             show_root_heading: true
             show_source: false
             docstring_style: google

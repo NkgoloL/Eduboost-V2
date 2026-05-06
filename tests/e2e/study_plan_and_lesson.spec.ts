@@ -33,7 +33,7 @@ test.describe("Study Plan Generation", () => {
     request,
   }) => {
     const res = await request.post(
-      `${process.env.API_BASE_URL ?? "http://localhost:8000/api/v1"}/learners/${learnerId}/plan/generate`,
+      `${process.env.API_BASE_URL ?? "http://localhost:8000/api/v2"}/study-plans/generate/${learnerId}`,
       {
         headers: { Authorization: `Bearer ${accessToken}` },
         data: { subject: "mathematics" },
@@ -64,7 +64,7 @@ test.describe("Study Plan Generation", () => {
   test("API returns 403 without active consent", async ({ request }) => {
     // Use a bogus learner ID to simulate no-consent scenario
     const res = await request.get(
-      `${process.env.API_BASE_URL ?? "http://localhost:8000/api/v1"}/learners/00000000-0000-0000-0000-000000000000/plan`,
+      `${process.env.API_BASE_URL ?? "http://localhost:8000/api/v2"}/study-plans/${learnerId}`,
       {
         headers: { Authorization: `Bearer ${accessToken}` },
       }
@@ -95,7 +95,7 @@ test.describe("Lesson Delivery", () => {
 
   test("can request a new lesson via API", async ({ request }) => {
     const res = await request.post(
-      `${process.env.API_BASE_URL ?? "http://localhost:8000/api/v1"}/learners/${learnerId}/lesson`,
+      `${process.env.API_BASE_URL ?? "http://localhost:8000/api/v2"}/lessons/generate`,
       {
         headers: { Authorization: `Bearer ${accessToken}` },
         data: {

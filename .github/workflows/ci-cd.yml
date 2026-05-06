@@ -10,7 +10,7 @@ on:
 
 env:
   PYTHON_VERSION: "3.11"
-  COVERAGE_THRESHOLD: "60"
+  COVERAGE_THRESHOLD: "80"
   V2_ENTRYPOINT: "app.api_v2:app"
 
 jobs:
@@ -29,13 +29,36 @@ jobs:
           cache: "pip"
 
       - name: Install dev dependencies
-        run: pip install -r requirements-dev.txt types-redis types-boto3 pydantic pydantic-settings
+        run: pip install -r requirements/dev.txt types-redis types-boto3 pydantic pydantic-settings
 
       - name: Run ruff
         run: ruff check app/ tests/ --output-format=github
 
       - name: Run mypy
         run: mypy app/ --ignore-missing-imports --strict-optional
+
+      - name: Audit Python dependencies
+        run: |
+          pip install pip-audit
+          pip-audit -r requirements/base.txt -r requirements/ml.txt
+
+      - name: Run Bandit SAST
+        run: |
+          pip install bandit
+          bandit -r app/ -ll -ii --exclude app/tests -f json -o bandit-report.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bandit-report
+          path: bandit-report.json
+
+      - name: Enforce DDD import boundaries
+        run: lint-imports
+
+      - name: Lint Markdown
+        run: |
+          pip install pymarkdownlnt
+          pymarkdown scan docs/ audits/ README.md
 
   # -------------------------------------------------------------------------
   # UNIT TESTS
@@ -52,7 +75,7 @@ jobs:
           cache: "pip"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt pytest pytest-asyncio pytest-cov
+        run: pip install -r requirements/dev.txt
 
       - name: Run unit tests
         run: |
@@ -102,7 +125,7 @@ jobs:
 
     env:
       DATABASE_URL: postgresql+asyncpg://eduboost:testpassword@localhost:5432/eduboost_test
-      JWT_SECRET: test-jwt-secret
+      JWT_SECRET: test-jwt-secret-32-chars-minimum-value
       ENCRYPTION_KEY: test-encryption-key-32-chars-xxxx
       ENCRYPTION_SALT: test-encryption-salt
       AUDIT_DATABASE_URL: postgresql+asyncpg://eduboost:testpassword@localhost:5432/eduboost_test
@@ -121,7 +144,7 @@ jobs:
           cache: "pip"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt pytest pytest-asyncio
+        run: pip install -r requirements/dev.txt
 
       - name: Run Alembic migrations
         run: alembic upgrade head
@@ -160,7 +183,7 @@ jobs:
     env:
       DATABASE_URL: postgresql+asyncpg://eduboost:testpassword@localhost:5432/eduboost_test
       REDIS_URL: redis://localhost:6379/0
-      JWT_SECRET: test-jwt-secret
+      JWT_SECRET: test-jwt-secret-32-chars-minimum-value
       APP_ENV: test
     steps:
       - uses: actions/checkout@v4
@@ -169,11 +192,22 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r requirements/dev.txt
       - name: Import V2 entrypoint
         run: python -c "import importlib; importlib.import_module('app.api_v2')"
       - name: Import V2 repositories
         run: python -c "import importlib; [importlib.import_module(m) for m in ['app.repositories.diagnostic_repository','app.repositories.lesson_repository','app.repositories.gamification_repository','app.repositories.assessment_repository']]"
+
+      - name: V2 module coverage
+        run: |
+          pytest tests/unit/ \
+            --cov=app.api_v2 \
+            --cov=app.repositories \
+            --cov=app.services \
+            --cov=app.domain \
+            --cov-report=term-missing \
+            --cov-fail-under=80 \
+            -v --tb=short
 
   frontend:
     name: Frontend Tests & Build
@@ -193,8 +227,17 @@ jobs:
       - name: Install frontend dependencies
         run: npm ci --include=optional --legacy-peer-deps
 
-      - name: Run frontend tests
-        run: npm test
+      - name: Audit npm dependencies
+        run: npm audit --audit-level=high
+
+      - name: Run frontend coverage gate
+        run: npm run test:coverage
+
+      - name: Upload frontend coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-coverage
+          path: app/frontend/coverage/
 
       - name: Run frontend lint
         run: npm run lint
@@ -204,6 +247,27 @@ jobs:
 
       - name: Build frontend
         run: npm run build
+
+  # -------------------------------------------------------------------------
+  # E2E TESTS (Playwright)
+  # -------------------------------------------------------------------------
+  e2e:
+    name: E2E Tests (Playwright)
+    needs: [integration-tests]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report/
 
   # -------------------------------------------------------------------------
   # SCHEMA DRIFT GATE (alembic check)
@@ -238,7 +302,7 @@ jobs:
           cache: "pip"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt alembic
+        run: pip install -r requirements/dev.txt
 
       - name: Bootstrap schema
         run: alembic upgrade head
@@ -261,7 +325,7 @@ jobs:
           cache: "pip"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt pytest pytest-asyncio
+        run: pip install -r requirements/dev.txt
 
       - name: Run POPIA compliance tests
         run: |
@@ -280,8 +344,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build API image
-        run: docker build -f docker/Dockerfile.api -t eduboost-api:scan .
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: docker/Dockerfile.v2
+          target: production
+          tags: eduboost-api:scan
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          load: true
 
       - name: Run Trivy vulnerability scan
         uses: aquasecurity/trivy-action@master
@@ -299,13 +372,27 @@ jobs:
           sarif_file: "trivy-results.sarif"
 
   # -------------------------------------------------------------------------
+  # SECRETS SCANNING
+  # -------------------------------------------------------------------------
+  secrets-scan:
+    name: Secrets Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # -------------------------------------------------------------------------
   # PRODUCTION PROMOTION GATE (tag-triggered)
   # -------------------------------------------------------------------------
   production-promote:
     name: Production Promotion Gate
     runs-on: ubuntu-latest
     if: github.event_name == 'release' && github.event.action == 'published'
-    needs: [lint, unit-tests, integration-tests, frontend, schema-drift, popia-tests, image-scan]
+    needs: [lint, unit-tests, integration-tests, frontend, schema-drift, popia-tests, image-scan, secrets-scan, e2e]
     environment: production
     steps:
       - uses: actions/checkout@v4

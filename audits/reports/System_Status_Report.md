@@ -49,7 +49,7 @@ This report provides the current implementation status for each capability defin
 ### 9. Infrastructure & Tooling
 - **Current Runtime Stack:** ✅ Implemented with Docker, Redis, Celery, RabbitMQ, and a dedicated inference service.
 - **Migrations:** ✅ Implemented. Alembic handles DB schema versions and drift detection.
-- **V2 Target Architecture:** 🟡 In Progress. `gemini-code-1777601244294.md` establishes a new target state that explicitly avoids Celery, RabbitMQ, microservices, and complex orchestration unless re-authorized.
+- **V2 Target Architecture:** 🟡 In Progress. `docs/architecture/V2_ARCHITECTURE.md` establishes a new target state that explicitly avoids Celery, RabbitMQ, microservices, and complex orchestration unless re-authorized.
 
 ### 10. V2 Pivot Status
 - **V2 Baseline State:** 🟡 In Progress. Initial modular-monolith scaffolding now exists under `app/core`, `app/domain`, `app/repositories`, and `app/services`.

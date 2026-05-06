@@ -12,6 +12,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from jose import JWTError
 from sqlalchemy.exc import IntegrityError
+from slowapi.errors import RateLimitExceeded
 
 logger = logging.getLogger(__name__)
 
@@ -80,6 +81,7 @@ def _error_response(
         content={
             "error": error_code,
             "message": message,
+            "detail": message,
             "details": details or {},
             "request_id": request_id,
         },
@@ -134,6 +136,15 @@ def register_exception_handlers(app: FastAPI) -> None:
             status.HTTP_409_CONFLICT,
             "duplicate",
             "Resource already exists",
+            request_id=getattr(request.state, "request_id", None),
+        )
+
+    @app.exception_handler(RateLimitExceeded)
+    async def handle_rate_limit(request: Request, exc: RateLimitExceeded) -> JSONResponse:
+        return _error_response(
+            status.HTTP_429_TOO_MANY_REQUESTS,
+            "rate_limit_exceeded",
+            "Rate limit exceeded. Please upgrade to Premium for higher limits.",
             request_id=getattr(request.state, "request_id", None),
         )
 

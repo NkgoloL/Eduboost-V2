@@ -3,10 +3,32 @@ EduBoost V2 — Core Configuration
 Pydantic BaseSettings with environment-variable loading and validation.
 """
 from functools import lru_cache
+from typing import Any
 from typing import Literal
 
-from pydantic import AnyHttpUrl, field_validator
+from pydantic import field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+KEY_VAULT_SECRET_NAMES = {
+    "JWT_SECRET": "eduboost-jwt-secret",
+    "ENCRYPTION_KEY": "eduboost-encryption-key",
+    "ENCRYPTION_SALT": "eduboost-encryption-salt",
+    "GROQ_API_KEY": "eduboost-groq-api-key",
+    "ANTHROPIC_API_KEY": "eduboost-anthropic-api-key",
+}
+
+
+def _fetch_key_vault_secret_values(vault_url: str) -> dict[str, str]:
+    from azure.identity import DefaultAzureCredential
+    from azure.keyvault.secrets import SecretClient
+
+    credential = DefaultAzureCredential()
+    client = SecretClient(vault_url=vault_url, credential=credential)
+    return {
+        field_name: client.get_secret(secret_name).value
+        for field_name, secret_name in KEY_VAULT_SECRET_NAMES.items()
+    }
 
 
 class Settings(BaseSettings):
@@ -15,6 +37,7 @@ class Settings(BaseSettings):
     # ── Application ──────────────────────────────────────────────────────────
     APP_NAME: str = "EduBoost SA"
     APP_VERSION: str = "2.0.0"
+    APP_BASE_URL: str = "https://eduboost.co.za"
     ENVIRONMENT: Literal["development", "test", "staging", "production"] = "development"
     APP_ENV: Literal["development", "test", "staging", "production"] = "development"
     DEBUG: bool = False
@@ -36,13 +59,22 @@ class Settings(BaseSettings):
 
     # ── Encryption ───────────────────────────────────────────────────────────
     ENCRYPTION_KEY: str = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="  # dev-only 32-byte base64 placeholder
+    ENCRYPTION_SALT: str = "test-encryption-salt"
 
     # ── LLM Providers ────────────────────────────────────────────────────────
     ANTHROPIC_API_KEY: str = ""
     GROQ_API_KEY: str = ""
-    ANTHROPIC_MODEL: str = "claude-sonnet-4-5"
+    HUGGINGFACE_API_KEY: str = ""
+    ANTHROPIC_MODEL: str = "claude-sonnet-4-20250514"
+    INFERENCE_SERVICE_URL: str = "http://localhost:9100"
     LLM_TIMEOUT_SECONDS: int = 30
     LLM_MAX_RETRIES: int = 2
+    LLM_PROVIDER: Literal["auto", "groq", "anthropic", "local_hf"] = "auto"
+    LOCAL_BASE_MODEL_ID: str = "HuggingFaceTB/SmolLM2-360M-Instruct"
+    LOCAL_ADAPTER_PATH: str = "artifacts/llm/smollm2-caps-focused-9epoch-adapter"
+    LOCAL_MERGED_MODEL_PATH: str = "artifacts/llm/merged-smollm2-caps-focused-model"
+    LOCAL_LLM_MAX_NEW_TOKENS: int = 900
+    LOCAL_LLM_TEMPERATURE: float = 0.2
 
     # ── AI Cost-Control ──────────────────────────────────────────────────────
     FREE_DAILY_REQUEST_QUOTA: int = 20
@@ -53,13 +85,20 @@ class Settings(BaseSettings):
     STRIPE_WEBHOOK_SECRET: str = ""
     STRIPE_PRICE_ID_PREMIUM: str = ""
 
+    # ── PostHog Telemetry ─────────────────────────────────────────────────────
+    POSTHOG_API_KEY: str = ""
+    POSTHOG_HOST: str = "https://app.posthog.com"
+
     # ── Email ────────────────────────────────────────────────────────────────
     SENDGRID_API_KEY: str = ""
-    SENDGRID_FROM_EMAIL: str = "noreply@eduboost.co.za"
+    SENDGRID_FROM_EMAIL: str = ""
     SENDGRID_FROM_NAME: str = "EduBoost SA"
 
     # ── Azure / Observability ────────────────────────────────────────────────
     AZURE_KEY_VAULT_URL: str = ""
+    AZURE_CLIENT_ID: str = ""
+    AZURE_CLIENT_SECRET: str = ""
+    AZURE_TENANT_ID: str = ""
     AZURE_STORAGE_CONNECTION_STRING: str = ""
     AZURE_STORAGE_CONTAINER: str = "eduboost-assets"
     GRAFANA_CLOUD_PROMETHEUS_URL: str = ""
@@ -67,6 +106,8 @@ class Settings(BaseSettings):
     GRAFANA_CLOUD_API_KEY: str = ""
     PROMETHEUS_METRICS_PATH: str = "/metrics"
     LOG_LEVEL: str = "INFO"
+    SENTRY_DSN: str = ""
+    KEY_VAULT_REFRESH_INTERVAL_HOURS: int = 6
 
     # ── Rate Limiting / Jobs ────────────────────────────────────────────────
     RATE_LIMIT_DEFAULT: str = "100/minute"
@@ -76,7 +117,7 @@ class Settings(BaseSettings):
     ARQ_JOB_TIMEOUT: int = 300
 
     # ── CORS ──────────────────────────────────────────────────────────────────
-    ALLOWED_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:3002"]
+    ALLOWED_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:3002", "http://localhost:3050"]
 
     # ── Validation ───────────────────────────────────────────────────────────
     @field_validator("JWT_SECRET")
@@ -94,6 +135,32 @@ class Settings(BaseSettings):
         if len(v) != 44:  # Base64 encoded 32 bytes
             raise ValueError("ENCRYPTION_KEY must be 44 characters (32 bytes base64 encoded)")
         return v
+
+    def is_production(self) -> bool:
+        return self.APP_ENV == "production" or self.ENVIRONMENT == "production"
+
+    def refresh_from_key_vault(self) -> set[str]:
+        if not self.is_production():
+            return set()
+        if not self.AZURE_KEY_VAULT_URL:
+            raise ValueError("AZURE_KEY_VAULT_URL is required when APP_ENV is production")
+
+        secret_values = _fetch_key_vault_secret_values(self.AZURE_KEY_VAULT_URL)
+        updated: set[str] = set()
+        for field_name, value in secret_values.items():
+            if not value:
+                raise ValueError(f"Azure Key Vault returned an empty value for {field_name}")
+            if getattr(self, field_name) != value:
+                setattr(self, field_name, value)
+                updated.add(field_name)
+        return updated
+
+    @model_validator(mode="after")
+    def load_production_secrets_from_key_vault(self) -> "Settings":
+        if not self.is_production():
+            return self
+        self.refresh_from_key_vault()
+        return self
 
 
 @lru_cache(maxsize=1)

@@ -1,19 +1,29 @@
 # API V2 Overview
 
-The V2 API is introduced incrementally alongside the legacy runtime.
+The V2 API is the supported EduBoost runtime.
 
-Current V2 baseline endpoints:
+Operational endpoints:
 
 - `GET /health`
-- `POST /api/v2/auth/session`
+- `GET /ready`
+- `GET /api/v2/health/deep`
+- `GET /metrics`
+- `POST /api/v2/auth/login`
 - `POST /api/v2/auth/refresh`
 - `GET /api/v2/learners/{learner_id}`
-- `POST /api/v2/diagnostics/{learner_id}`
-- `POST /api/v2/study-plans/{learner_id}`
-- `GET /api/v2/parents/{guardian_id}/reports/{learner_id}`
-- `GET /api/v2/audit`
+- `GET /api/v2/learners/{learner_id}/mastery`
+- `POST /api/v2/lessons/generate`
+- `POST /api/v2/study-plans/generate/{learner_id}`
+- `GET /api/v2/jobs/{job_id}`
+- `GET /api/v2/parents/{guardian_id}/dashboard`
+- `GET /api/v2/parents/{guardian_id}/export`
+- `DELETE /api/v2/learners/{learner_id}`
 
-The V2 slice now includes:
-- Redis-backed quota enforcement
-- semantic-style response caching for diagnostics
-- BackgroundTasks-based async logging hooks
+The V2 slice includes:
+
+- Redis-backed job polling for long-running AI work
+- daily quotas by subscription tier
+- semantic lesson caching
+- strict LLM schema validation
+- append-only audit logging
+- POPIA consent gating and erasure flows

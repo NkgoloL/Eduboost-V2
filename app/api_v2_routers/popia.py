@@ -9,12 +9,15 @@ import json
 from datetime import UTC, datetime, timedelta
 from io import BytesIO
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
 from app.core.database import get_db
+from app.core.database import AsyncSessionLocal
+from app.core.jobs import enqueue_job
 from app.core.security import get_current_user, require_parent_or_admin
+from app.domain.api_v2_models import JobAcceptedResponse, RLHFExportRequest
 from app.models import (
     Guardian,
     LearnerProfile,
@@ -25,7 +28,9 @@ from app.models import (
     KnowledgeGap,
 )
 from app.repositories.repositories import LearnerRepository
+from app.services.consent import ConsentService
 from app.services.fourth_estate import FourthEstateService
+from app.services.rlhf_service import RLHFService
 
 router = APIRouter(prefix="/popia", tags=["compliance"])
 
@@ -58,11 +63,12 @@ async def export_learner_data(
         )
     
     # Check guardian relationship
-    if learner.guardian_id != requester_id and current_user.get("role") != "admin":
+    if learner.guardian_id != requester_id and str(current_user.get("role", "")).lower() != "admin":
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="You can only access data for your own learners",
         )
+    await ConsentService(db).require_active_consent(learner_id, actor_id=requester_id)
     
     # Collect all learner data
     stmt = select(DiagnosticSession).where(DiagnosticSession.learner_id == learner_id)
@@ -144,10 +150,11 @@ async def export_learner_data(
     
     # Audit the export
     audit = FourthEstateService(db)
-    await audit.audit_event(
-        event_type="DATA_EXPORT_REQUESTED",
+    await audit.record(
+        event_type="data_export.requested",
         learner_pseudonym=learner.pseudonym_id,
         actor_id=requester_id,
+        resource_id=learner_id,
         payload={"learner_id": learner_id},
     )
     
@@ -192,6 +199,7 @@ async def request_learner_deletion(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Only the learner's guardian can request deletion",
         )
+    await ConsentService(db).require_active_consent(learner_id, actor_id=requester_id)
     
     # Check if deletion is already requested
     if learner.deletion_requested_at is not None:
@@ -207,10 +215,11 @@ async def request_learner_deletion(
     
     # Audit the deletion request
     audit = FourthEstateService(db)
-    await audit.audit_event(
-        event_type="DELETION_REQUESTED",
+    await audit.record(
+        event_type="deletion.requested",
         learner_pseudonym=learner.pseudonym_id,
         actor_id=requester_id,
+        resource_id=learner_id,
         constitutional_outcome="APPROVED",
         payload={
             "learner_id": learner_id,
@@ -253,6 +262,7 @@ async def cancel_learner_deletion(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Only the learner's guardian can cancel deletion",
         )
+    await ConsentService(db).require_active_consent(learner_id, actor_id=requester_id)
     
     # Check if deletion was requested
     if learner.deletion_requested_at is None:
@@ -268,10 +278,11 @@ async def cancel_learner_deletion(
     
     # Audit the cancellation
     audit = FourthEstateService(db)
-    await audit.audit_event(
-        event_type="DELETION_CANCELLED",
+    await audit.record(
+        event_type="deletion.cancelled",
         learner_pseudonym=learner.pseudonym_id,
         actor_id=requester_id,
+        resource_id=learner_id,
         payload={"learner_id": learner_id},
     )
     
@@ -279,6 +290,67 @@ async def cancel_learner_deletion(
         "detail": "Deletion request cancelled. Learner profile restored.",
         "learner_id": learner_id,
     }
+
+
+@router.post("/deletion-execute/{learner_id}", response_model=JobAcceptedResponse, status_code=status.HTTP_202_ACCEPTED)
+async def execute_learner_deletion(
+    learner_id: str,
+    background_tasks: BackgroundTasks,
+    current_user: dict = Depends(require_parent_or_admin),
+):
+    async def _run() -> dict:
+        async with AsyncSessionLocal() as db:
+            learner = await db.get(LearnerProfile, learner_id)
+            if learner is None:
+                raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
+            role = str(current_user.get("role", "")).lower()
+            if learner.guardian_id != current_user.get("sub") and role != "admin":
+                raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorised to purge this learner")
+            await LearnerRepository(db).purge_personal_data(learner_id)
+            await FourthEstateService(db).record(
+                event_type="deletion.executed",
+                learner_pseudonym=learner.pseudonym_id,
+                actor_id=current_user.get("sub"),
+                resource_id=learner_id,
+                constitutional_outcome="APPROVED",
+                payload={"learner_id": learner_id},
+            )
+            await db.commit()
+            return {"learner_id": learner_id, "purged": True}
+
+    job = await enqueue_job(
+        background_tasks,
+        operation="popia_data_purge",
+        payload={"learner_id": learner_id},
+        handler=_run,
+    )
+    return JobAcceptedResponse(job_id=job["job_id"], operation=job["operation"], status=job["status"])
+
+
+@router.post("/rlhf-export/{export_format}", response_model=JobAcceptedResponse, status_code=status.HTTP_202_ACCEPTED)
+async def export_rlhf_dataset(
+    export_format: str,
+    body: RLHFExportRequest,
+    background_tasks: BackgroundTasks,
+    _: dict = Depends(require_parent_or_admin),
+):
+    export_format = export_format.lower()
+    if export_format not in {"openai", "anthropic"}:
+        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail="Unsupported export format")
+
+    async def _run() -> dict:
+        service = RLHFService()
+        if export_format == "openai":
+            return service.export_openai_format(body.records)
+        return service.export_anthropic_format(body.records)
+
+    job = await enqueue_job(
+        background_tasks,
+        operation="rlhf_export",
+        payload={"format": export_format, "record_count": len(body.records)},
+        handler=_run,
+    )
+    return JobAcceptedResponse(job_id=job["job_id"], operation=job["operation"], status=job["status"])
 
 
 @router.get("/deletion-status/{learner_id}")
@@ -301,7 +373,7 @@ async def get_deletion_status(
         )
     
     # Verify guardian relationship (or admin)
-    if learner.guardian_id != requester_id and current_user.get("role") != "admin":
+    if learner.guardian_id != requester_id and str(current_user.get("role", "")).lower() != "admin":
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="You can only check status for your own learners",

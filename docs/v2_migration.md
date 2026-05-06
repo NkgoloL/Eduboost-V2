@@ -1,48 +1,64 @@
 # V2 Migration Guide
 
-This page tracks the migration from the legacy EduBoost runtime to the new V2 modular-monolith architecture.
+This page is the migration ledger for EduBoost SA. It explains what has
+actually moved to the V2 surface, what compatibility code still exists, and
+which cleanup steps remain.
 
-## Goals
-- move business logic into `app/services`
-- isolate persistence in `app/repositories`
-- keep domain entities in `app/domain`
-- make `app/api_v2.py` the primary API surface
-- phase out broker-first and task-queue-first architecture for the main product path
+## What V2 Means Here
 
-## Current V2 Capabilities
-- learner reads
-- auth/session issuance and refresh rotation
-- diagnostics
-- study plans
-- parent reports
-- append-only audit logging target
-- quota enforcement and caching
-- V2 service package boundary for routers/tests
-- frontend API client defaulting to `/api/v2`
-- single-command V2 compose stack including frontend, API, docs, Postgres, and Redis
+In the current repository state:
 
-## Next Steps
-- verify V2 import/tests in Python 3.11
-- reconcile remaining service/repository contract mismatches found by tests
-- continue promoting V2 runtime as default
-- document any legacy runtime paths that reappear in future checkouts
+- `app/api_v2.py` is the active FastAPI entrypoint for new work.
+- `app/api_v2_routers/`, `app/services/`, `app/repositories/`, `app/core/`,
+  and `app/modules/` hold the main V2 implementation path.
+- `docker compose up --build` starts the V2-oriented local stack.
+- The frontend defaults to the V2 API surface.
 
-## Current Route Migration Progress
-- auth → V2 router package
-- learner read → V2 router package
-- diagnostics → V2 router package
-- study plans → V2 router package
-- parent reports → V2 router package
-- audit feed → V2 router package
+## What Still Exists for Compatibility
 
-The following route families are now available in the V2 route surface:
-- lessons
-- gamification
-- system
-- assessments
+The migration is far enough along that V2 is the default development path, but
+not so complete that every historical surface has vanished.
 
-Remaining work is now less about missing route families and more about deepening the implementations, reducing legacy dependencies, and making V2 the sole operational architecture.
+The repository still keeps:
 
-## 2026-05-02 Stabilisation Notes
+- [`app/api/main.py`](/app/api/main.py) as a compatibility import shim
+- archived legacy runtime code under [`app/legacy`](/app/legacy/DEPRECATED.md)
+- a narrow set of migration-era compatibility behaviors instead of a total
+  hard delete of every old path
 
-The V2 tree had several consolidation mismatches: `app/services` was referenced but absent, Alembic pointed at legacy model imports, and the frontend defaulted to `/api/v1`. These have been corrected in the working tree. Local verification is constrained by the available Windows Python 3.13 environment; the project should be verified in Python 3.11 as declared by CI and `.python-version`.
+That means the repository should be described as "V2-first with compatibility
+shims", not as "every legacy artifact has been erased from history."
+
+## Current Verified V2 Behaviors
+
+- auth and role-aware access control live in the V2 runtime
+- learner, diagnostics, study-plan, lesson, parent, consent, and system route
+  families exist in the V2 surface
+- long-running actions use FastAPI background work plus Redis-backed job status
+- Redis supports cache, token revocation, and job polling
+- sensitive audit events are written through the append-only PostgreSQL audit
+  repository
+- dependency locks are split into base, dev, docs, and ml groups
+
+## Compose and Environment Mapping
+
+- `docker-compose.yml` - default local development stack
+- `docker-compose.v2.yml` - explicit V2 stack variant
+- `docker-compose.aca.yml` - Azure Container Apps-oriented setup
+- `docker-compose.prod.yml` - production-like compose workflow
+
+Use the root Compose file unless you are intentionally targeting one of the
+specialized environments above.
+
+## Remaining Migration Work
+
+The migration is not "done forever." The main follow-up items are:
+
+- retire the remaining compatibility-only legacy surface on schedule
+- keep the docs aligned with the actual security/runtime behavior
+- keep release automation and production-promotion steps verified against the
+  current repo layout
+- keep public and internal audit narratives synchronized
+
+See [`docs/project_status.md`](/docs/project_status.md) and the root
+[`TODO.md`](/TODO.md) for the live tracking view.

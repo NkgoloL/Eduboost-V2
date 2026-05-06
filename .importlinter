@@ -1,0 +1,18 @@
+[importlinter]
+root_package = app
+
+[importlinter:contract:1]
+name = API package must not import repositories
+type = forbidden
+source_modules =
+    app.api
+forbidden_modules =
+    app.repositories
+
+[importlinter:contract:2]
+name = Services must not import API package
+type = forbidden
+source_modules =
+    app.services
+forbidden_modules =
+    app.api

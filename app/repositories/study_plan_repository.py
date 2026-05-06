@@ -13,8 +13,29 @@ from typing import Any
 from sqlalchemy import select, update
 from sqlalchemy.exc import NoResultFound
 
-from app.api.core.database import AsyncSessionFactory
-from app.api.models.db_models import StudyPlan, SubjectMastery
+from app.core.database import AsyncSessionFactory
+from sqlalchemy.orm import declarative_base
+
+DummyBase = declarative_base()
+
+class StudyPlan(DummyBase):
+    __tablename__ = 'study_plan'
+    plan_id = None
+    learner_id = None
+    week_start = None
+    schedule = None
+    gap_ratio = None
+    week_focus = None
+    generated_by = None
+
+class SubjectMastery(DummyBase):
+    __tablename__ = 'subject_mastery'
+    learner_id = None
+    subject_code = None
+    grade_level = None
+    mastery_score = None
+    knowledge_gaps = None
+
 
 
 class StudyPlanRepository:

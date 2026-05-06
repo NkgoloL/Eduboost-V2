@@ -13,21 +13,21 @@ class GamificationServiceV2:
         learner, badge_rows = await self.repository.get_profile_rows(learner_id)
         if learner is None:
             raise ValueError("Learner not found")
-        total_xp = int(getattr(learner, "total_xp", getattr(learner, "xp", 0)))
+        total_xp = int(_read_field(learner, "total_xp", _read_field(learner, "xp", 0)))
         level = total_xp // 100 + 1
         badges = [
             {
-                "badge_key": getattr(badge, "badge_key", ""),
-                "name": getattr(badge, "name", ""),
-                "earned_at": getattr(learner_badge, "earned_at", None),
+                "badge_key": _read_field(badge, "badge_key", ""),
+                "name": _read_field(badge, "name", ""),
+                "earned_at": _read_field(learner_badge, "earned_at", None),
             }
             for learner_badge, badge in badge_rows
         ]
         await AuditService().log_event("GAMIFICATION_PROFILE_READ", {}, learner_id)
         return {
-            "learner_id": str(getattr(learner, "learner_id", learner_id)),
+            "learner_id": str(_read_field(learner, "learner_id", _read_field(learner, "id", learner_id))),
             "total_xp": total_xp,
-            "streak_days": getattr(learner, "streak_days", 0),
+            "streak_days": _read_field(learner, "streak_days", 0),
             "level": level,
             "badges": badges,
         }
@@ -36,12 +36,18 @@ class GamificationServiceV2:
         rows = await self.repository.get_leaderboard_rows(limit=limit)
         return [
             {
-                "learner_id": str(getattr(row, "learner_id", "")),
-                "total_xp": int(getattr(row, "total_xp", getattr(row, "xp", 0))),
-                "streak_days": getattr(row, "streak_days", 0),
+                "learner_id": str(_read_field(row, "learner_id", _read_field(row, "id", ""))),
+                "total_xp": int(_read_field(row, "total_xp", _read_field(row, "xp", 0))),
+                "streak_days": _read_field(row, "streak_days", 0),
             }
             for row in rows
         ]
+
+
+def _read_field(source: Any, field: str, default: Any = None) -> Any:
+    if isinstance(source, dict):
+        return source.get(field, default)
+    return getattr(source, field, default)
 
 
 class _EmptyGamificationRepository:

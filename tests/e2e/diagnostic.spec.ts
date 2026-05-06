@@ -84,7 +84,7 @@ test.describe("Diagnostic Assessment Flow", () => {
   }) => {
     const fixtures = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8"));
     const res = await request.get(
-      `${process.env.API_BASE_URL ?? "http://localhost:8000/api/v1"}/learners/${learnerId}/diagnostic/latest`,
+      `${process.env.API_BASE_URL ?? "http://localhost:8000/api/v2"}/diagnostics/latest/${learnerId}`,
       {
         headers: { Authorization: `Bearer ${fixtures.accessToken}` },
       }

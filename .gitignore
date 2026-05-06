@@ -1,6 +1,7 @@
 .venv/
 .tmp/
 mnt/
+scratch/
 .coverage
 .pytest_cache/
 .ruff_cache/
@@ -20,3 +21,9 @@ app/api/celerybeat-schedule*
 # Ignore other runtime artifacts
 .pytest_cache/
 .venv/
+site/
+app/frontend/coverage/
+data/caps/
+artifacts/llm/
+# Sensitive keys
+*.pem

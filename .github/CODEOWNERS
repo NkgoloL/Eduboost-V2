@@ -1,25 +1,18 @@
-# CODEOWNERS — EduBoost SA
-# Reviewers listed here are automatically requested on PRs that touch these paths.
-# At least one reviewer per path must approve before merge.
+# EduBoost V2 Code Owners
 
-# Judiciary — compliance firewall (requires 2 reviewers)
-app/api/judiciary.py                        @eduboost/senior-engineers @eduboost/senior-engineers
-app/api/pillar_3_judiciary/                 @eduboost/senior-engineers
+# Global owners
+*       @NkgoloL
 
-# Constitutional schema — immutable rule store (requires Information Officer)
-app/api/constitutional_schema/              @eduboost/senior-engineers @eduboost/information-officer
-app/api/pillar_1_legislature/               @eduboost/senior-engineers @eduboost/information-officer
+# Backend specific
+/app/api_v2.py @NkgoloL
+/app/core/ @NkgoloL
+/app/modules/ @NkgoloL
 
-# Audit infrastructure — append-only event bus
-audits/                                     @eduboost/senior-engineers
-app/api/pillar_4_fourth_estate/             @eduboost/senior-engineers
+# Security & Compliance
+/docs/POPIA_COMPLIANCE.md @NkgoloL
+/app/middleware/security_headers.py @NkgoloL
 
-# POPIA compliance paths
-popia/                                      @eduboost/information-officer
-app/api/popia/                              @eduboost/information-officer
-
-# Database migrations — any schema change
-alembic/versions/                           @eduboost/senior-engineers
-
-# CI/CD pipeline
-.github/workflows/                          @eduboost/senior-engineers
+# Infrastructure
+/docker-compose.yml @NkgoloL
+/deployment/ @NkgoloL
+/.github/workflows/ @NkgoloL

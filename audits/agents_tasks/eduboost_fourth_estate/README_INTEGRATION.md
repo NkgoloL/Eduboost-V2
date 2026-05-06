@@ -13,7 +13,9 @@ aio-pika>=9.4.0
 ## 2. Environment Variables
 Update your `.env` file or environment config:
 ```bash
-RABBITMQ_URL=amqp://guest:guest@localhost:5672/
+RABBITMQ_USER=CHANGE_ME
+RABBITMQ_PASSWORD=CHANGE_ME
+RABBITMQ_URL=amqp://${RABBITMQ_USER}:${RABBITMQ_PASSWORD}@localhost:5672/
 ```
 
 ## 3. Infrastructure (Docker)
@@ -21,6 +23,9 @@ If you don't have RabbitMQ running, add this to your `docker-compose.yml`:
 ```yaml
   rabbitmq:
     image: rabbitmq:3-management
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
     ports:
       - "5672:5672"
       - "15672:15672"

@@ -5,7 +5,7 @@ Shipped to Grafana Cloud via remote_write in production.
 """
 from __future__ import annotations
 
-from prometheus_client import Counter, Histogram, Gauge, CollectorRegistry, make_asgi_app
+from prometheus_client import CollectorRegistry, Counter, Gauge, Histogram, make_asgi_app
 
 REGISTRY = CollectorRegistry(auto_describe=True)
 
@@ -41,12 +41,29 @@ llm_latency_seconds = Histogram(
     registry=REGISTRY,
 )
 
-llm_tokens_total = Counter(
+LLM_TOKENS_TOTAL = Counter(
     "eduboost_llm_tokens_total",
     "Total tokens consumed",
-    ["provider", "direction"],  # direction: input|output
+    ["provider", "model", "operation"],
     registry=REGISTRY,
 )
+
+LLM_COST_USD = Gauge(
+    "eduboost_llm_estimated_cost_usd_daily",
+    "Estimated daily LLM cost in USD",
+    ["provider"],
+    registry=REGISTRY,
+)
+
+llm_tokens_total = LLM_TOKENS_TOTAL
+llm_estimated_cost_usd_daily = LLM_COST_USD
+
+LLM_PRICING_USD_PER_TOKEN: dict[str, dict[str, float]] = {
+    "groq": {"input": 0.59 / 1_000_000, "output": 0.79 / 1_000_000},
+    "anthropic": {"input": 3.00 / 1_000_000, "output": 15.00 / 1_000_000},
+}
+
+_llm_daily_cost_accumulator: dict[str, float] = {"groq": 0.0, "anthropic": 0.0}
 
 # ── IRT Engine ────────────────────────────────────────────────────────────────
 irt_sessions_total = Counter(
@@ -107,6 +124,26 @@ arq_job_duration_seconds = Histogram(
     buckets=[0.1, 0.5, 1.0, 5.0, 30.0, 120.0],
     registry=REGISTRY,
 )
+
+
+def record_llm_tokens(
+    provider: str,
+    model: str,
+    operation: str,
+    input_tokens: int,
+    output_tokens: int,
+) -> None:
+    """Record token usage and update estimated daily provider cost telemetry."""
+    LLM_TOKENS_TOTAL.labels(provider=provider, model=model, operation=operation).inc(
+        input_tokens + output_tokens
+    )
+
+    pricing = LLM_PRICING_USD_PER_TOKEN.get(provider, {"input": 0.0, "output": 0.0})
+    cost = input_tokens * pricing["input"] + output_tokens * pricing["output"]
+    _llm_daily_cost_accumulator[provider] = _llm_daily_cost_accumulator.get(provider, 0.0) + cost
+    LLM_COST_USD.labels(provider=provider).set(
+        _llm_daily_cost_accumulator[provider]
+    )
 
 
 def make_metrics_app() -> object:

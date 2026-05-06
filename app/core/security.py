@@ -9,25 +9,27 @@ import uuid
 from datetime import UTC, datetime, timedelta
 from typing import Any
 
+import bcrypt
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from jose import JWTError, jwt
-from passlib.context import CryptContext
 
 from app.core.config import settings
 from app.core.token_revocation import is_token_revoked, is_user_revoked
 from app.models import UserRole
 
-# ── Password hashing ──────────────────────────────────────────────────────────
-_pwd_ctx = CryptContext(schemes=["bcrypt"], deprecated="auto")
+Role = UserRole
+TokenPayload = dict[str, Any]
 
+# ── Password hashing ──────────────────────────────────────────────────────────
 
 def hash_password(plain: str) -> str:
-    return _pwd_ctx.hash(plain)
+    secret = plain.encode("utf-8")
+    return bcrypt.hashpw(secret, bcrypt.gensalt()).decode("utf-8")
 
 
 def verify_password(plain: str, hashed: str) -> bool:
-    return _pwd_ctx.verify(plain, hashed)
+    return bcrypt.checkpw(plain.encode("utf-8"), hashed.encode("utf-8"))
 
 
 def hash_email(email: str) -> str:
@@ -75,10 +77,16 @@ def decode_token(token: str) -> dict[str, Any]:
 
 
 # ── FastAPI dependency helpers ────────────────────────────────────────────────
-_bearer = HTTPBearer()
+_bearer = HTTPBearer(auto_error=False)
 
 
-async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(_bearer)) -> dict[str, Any]:
+async def get_current_user(credentials: HTTPAuthorizationCredentials | None = Depends(_bearer)) -> dict[str, Any]:
+    if credentials is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Authorization header missing",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
     payload = decode_token(credentials.credentials)
     
     # Check if token type is correct
@@ -120,6 +128,24 @@ def require_roles(*roles: UserRole):
     return _inner
 
 
+require_role = require_roles
 require_admin = require_roles(UserRole.ADMIN)
 require_parent_or_admin = require_roles(UserRole.PARENT, UserRole.ADMIN)
 require_teacher_or_admin = require_roles(UserRole.TEACHER, UserRole.ADMIN)
+
+__all__ = [
+    "Role",
+    "TokenPayload",
+    "create_access_token",
+    "create_refresh_token",
+    "decode_token",
+    "get_current_user",
+    "hash_email",
+    "hash_password",
+    "require_admin",
+    "require_parent_or_admin",
+    "require_role",
+    "require_roles",
+    "require_teacher_or_admin",
+    "verify_password",
+]

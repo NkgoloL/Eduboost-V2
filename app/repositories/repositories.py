@@ -41,6 +41,12 @@ class GuardianRepository:
         result = await self.db.execute(select(Guardian).where(Guardian.email_hash == email_hash))
         return result.scalar_one_or_none()
 
+    async def get_by_stripe_customer_id(self, stripe_customer_id: str) -> Guardian | None:
+        result = await self.db.execute(
+            select(Guardian).where(Guardian.stripe_customer_id == stripe_customer_id)
+        )
+        return result.scalar_one_or_none()
+
     async def update_subscription(self, guardian_id: str, tier: str, stripe_sub_id: str | None = None) -> None:
         await self.db.execute(
             update(Guardian)
@@ -65,11 +71,14 @@ class LearnerRepository:
         )
         return result.scalar_one_or_none()
 
-    async def get_by_guardian(self, guardian_id: str) -> list[LearnerProfile]:
+    async def get_by_guardian(self, guardian_id: str, skip: int = 0, limit: int = 20) -> list[LearnerProfile]:
         result = await self.db.execute(
-            select(LearnerProfile).where(
+            select(LearnerProfile)
+            .where(
                 LearnerProfile.guardian_id == guardian_id, LearnerProfile.is_deleted == False  # noqa: E712
             )
+            .offset(skip)
+            .limit(limit)
         )
         return list(result.scalars().all())
 
@@ -91,14 +100,19 @@ class LearnerRepository:
         await self.db.execute(
             update(LearnerProfile)
             .where(LearnerProfile.id == learner_id)
-            .values(xp=current + xp_delta, updated_at=datetime.now(UTC))
+            .values(xp=current + xp_delta, last_active=datetime.now(UTC), updated_at=datetime.now(UTC))
         )
 
     async def soft_delete(self, learner_id: str) -> None:
         await self.db.execute(
             update(LearnerProfile)
             .where(LearnerProfile.id == learner_id)
-            .values(is_deleted=True, deletion_requested_at=datetime.now(UTC), updated_at=datetime.now(UTC))
+            .values(
+                display_name="[erased]",
+                is_deleted=True,
+                deletion_requested_at=datetime.now(UTC),
+                updated_at=datetime.now(UTC),
+            )
         )
 
     async def purge_personal_data(self, learner_id: str) -> None:
@@ -216,14 +230,25 @@ class LessonRepository:
         await self.db.flush()
         return lesson
 
-    async def get_recent(self, learner_id: str, limit: int = 5) -> list[Lesson]:
+    async def get_recent(self, learner_id: str, skip: int = 0, limit: int = 10) -> list[Lesson]:
         result = await self.db.execute(
-            select(Lesson).where(Lesson.learner_id == learner_id).order_by(Lesson.created_at.desc()).limit(limit)
+            select(Lesson)
+            .where(Lesson.learner_id == learner_id)
+            .order_by(Lesson.created_at.desc())
+            .offset(skip)
+            .limit(limit)
         )
         return list(result.scalars().all())
 
     async def record_feedback(self, lesson_id: str, score: int) -> None:
         await self.db.execute(update(Lesson).where(Lesson.id == lesson_id).values(feedback_score=score))
+
+    async def mark_completed(self, lesson_id: str, completed_at: datetime | None = None) -> None:
+        await self.db.execute(
+            update(Lesson)
+            .where(Lesson.id == lesson_id)
+            .values(completed_at=completed_at or datetime.now(UTC))
+        )
 
 
 class AuditRepository:
