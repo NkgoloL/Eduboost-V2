@@ -1,6 +1,7 @@
 # EduBoost SA
 
 [![CI/CD](https://github.com/NkgoloL/Eduboost-V2/actions/workflows/ci-cd.yml/badge.svg?branch=master)](https://github.com/NkgoloL/Eduboost-V2/actions/workflows/ci-cd.yml)
+[![Docs](https://github.com/NkgoloL/Eduboost-V2/actions/workflows/docs.yml/badge.svg?branch=main)](https://nkgolol.github.io/Eduboost-V2/)
 [![Coverage](https://img.shields.io/badge/Coverage-80%25%2B-brightgreen)](/app/frontend/coverage/index.html)
 [![Security Scans](https://img.shields.io/badge/Security-Scanned-blue)](/SECURITY.md)
 [![POPIA](https://img.shields.io/badge/POPIA-Tracked-success)](/docs/POPIA_COMPLIANCE.md)
