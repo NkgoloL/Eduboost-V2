@@ -126,6 +126,8 @@ class LearnerProfile(Base):
     mastery_records: Mapped[list[SubjectMastery]] = relationship("SubjectMastery", back_populates="learner")
     diagnostic_sessions: Mapped[list[DiagnosticSession]] = relationship("DiagnosticSession", back_populates="learner")
     lessons: Mapped[list[Lesson]] = relationship("Lesson", back_populates="learner")
+    study_plans: Mapped[list[StudyPlan]] = relationship("StudyPlan", back_populates="learner")
+    assessment_attempts: Mapped[list[AssessmentAttempt]] = relationship("AssessmentAttempt", back_populates="learner")
 
     __table_args__ = (
         Index("ix_learner_guardian_grade", "guardian_id", "grade"),
@@ -211,6 +213,42 @@ class IRTItem(Base):
     __table_args__ = (Index("ix_irt_grade_subject", "grade", "subject"),)
 
 
+# ── Assessment & Attempts ─────────────────────────────────────────────────────
+
+
+class Assessment(Base):
+    __tablename__ = "assessments"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    title: Mapped[str] = mapped_column(String(200), nullable=False)
+    subject_code: Mapped[str] = mapped_column(String(20), nullable=False, index=True)
+    grade_level: Mapped[int] = mapped_column(Integer, nullable=False, index=True)
+    assessment_type: Mapped[str] = mapped_column(String(50), nullable=False)  # e.g., "diagnostic", "module_test"
+    total_marks: Mapped[int] = mapped_column(Integer, nullable=False)
+    questions: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
+    passing_score: Mapped[int] = mapped_column(Integer, default=50)
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+    attempts: Mapped[list[AssessmentAttempt]] = relationship("AssessmentAttempt", back_populates="assessment")
+
+
+class AssessmentAttempt(Base):
+    __tablename__ = "assessment_attempts"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    learner_id: Mapped[str] = mapped_column(ForeignKey("learner_profiles.id", ondelete="CASCADE"), nullable=False)
+    assessment_id: Mapped[str] = mapped_column(ForeignKey("assessments.id", ondelete="CASCADE"), nullable=False)
+    score: Mapped[float] = mapped_column(Float, nullable=False)
+    marks_obtained: Mapped[int] = mapped_column(Integer, nullable=False)
+    time_taken_seconds: Mapped[int] = mapped_column(Integer, nullable=False)
+    responses: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
+    completed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+    learner: Mapped[LearnerProfile] = relationship("LearnerProfile", back_populates="assessment_attempts")
+    assessment: Mapped[Assessment] = relationship("Assessment", back_populates="attempts")
+
+
 # ── Diagnostic Session ────────────────────────────────────────────────────────
 
 
@@ -246,6 +284,24 @@ class KnowledgeGap(Base):
     __table_args__ = (Index("ix_knowledge_gaps_created_at", "created_at"),)
 
     learner: Mapped[LearnerProfile] = relationship("LearnerProfile", back_populates="knowledge_gaps")
+
+
+# ── Study Plan ───────────────────────────────────────────────────────────────
+
+
+class StudyPlan(Base):
+    __tablename__ = "study_plans"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    learner_id: Mapped[str] = mapped_column(ForeignKey("learner_profiles.id", ondelete="CASCADE"), nullable=False)
+    week_start: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+    schedule: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
+    gap_ratio: Mapped[float] = mapped_column(Float, default=0.0)
+    week_focus: Mapped[str] = mapped_column(String(200), nullable=False)
+    generated_by: Mapped[str] = mapped_column(String(50), default="V2_ALGORITHM")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+    learner: Mapped[LearnerProfile] = relationship("LearnerProfile", back_populates="study_plans")
 
 
 # ── Mastery Tracking ─────────────────────────────────────────────────────────

@@ -12,7 +12,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.config import settings
 from app.core.logging import get_logger
 from app.models import Guardian
-from app.repositories.repositories import GuardianRepository, StripeEventRepository
+from app.repositories.auth_repository import GuardianRepository
+from app.repositories.stripe_event_repository import StripeEventRepository
 from app.services.subscription_service import SubscriptionService
 
 log = get_logger(__name__)

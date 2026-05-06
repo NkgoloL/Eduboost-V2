@@ -31,11 +31,9 @@ from sqlalchemy import select
 
 from app.core.database import AsyncSessionLocal
 from app.models import KnowledgeGap, Lesson
-from app.repositories.repositories import (
-    GuardianRepository,
-    LearnerRepository,
-    LessonRepository,
-)
+from app.repositories.auth_repository import GuardianRepository
+from app.repositories.learner_repository import LearnerRepository
+from app.repositories.lesson_repository import LessonRepository
 from app.services.consent import ConsentService
 from app.services.executive import ExecutiveService, QuotaExceededError
 from app.services.fourth_estate import FourthEstateService
