@@ -35,15 +35,11 @@ log = get_logger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     log.info("eduboost_v2_starting", env=settings.ENVIRONMENT, version=settings.APP_VERSION)
-    consent_task = None
     secret_rotation_task = None
     if settings.ENVIRONMENT != "test":
-        consent_task = asyncio.create_task(consent_expiry_loop())
         if settings.is_production() and settings.AZURE_KEY_VAULT_URL:
             secret_rotation_task = asyncio.create_task(key_vault_rotation_loop())
     yield
-    if consent_task:
-        consent_task.cancel()
     if secret_rotation_task:
         secret_rotation_task.cancel()
     log.info("eduboost_v2_shutdown")

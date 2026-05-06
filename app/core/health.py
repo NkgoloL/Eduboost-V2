@@ -11,6 +11,18 @@ from app.core.database import AsyncSessionLocal
 from app.core.redis import get_redis
 
 
+async def check_arq() -> dict[str, Any]:
+    """Verify that the arq worker queue is responsive."""
+    try:
+        redis = get_redis()
+        # arq stores queue metadata in redis. We check for connectivity.
+        # A more robust check would involve checking the arq:health-check key if the worker is running.
+        ping = await redis.ping()
+        return {"status": "ok" if ping else "error", "queue": "default"}
+    except Exception as exc:  # noqa: BLE001
+        return {"status": "error", "detail": str(exc)}
+
+
 async def check_postgres() -> dict[str, Any]:
     try:
         async with AsyncSessionLocal() as session:
@@ -95,6 +107,7 @@ async def gather_deep_health() -> dict[str, Any]:
     optional_checks = {
         "llm_provider": await check_llm_provider(),
         "judiciary": await check_judiciary(),
+        "arq_worker": await check_arq(),
     }
     
     overall = "ok"

@@ -36,7 +36,7 @@ class Settings(BaseSettings):
 
     # ── Application ──────────────────────────────────────────────────────────
     APP_NAME: str = "EduBoost SA"
-    APP_VERSION: str = "2.0.0"
+    APP_VERSION: str = "1.0.0-rc1"
     APP_BASE_URL: str = "https://eduboost.co.za"
     ENVIRONMENT: Literal["development", "test", "staging", "production"] = "development"
     APP_ENV: Literal["development", "test", "staging", "production"] = "development"
