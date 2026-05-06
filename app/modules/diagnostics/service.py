@@ -1,6 +1,6 @@
 """
-EduBoost SA — Consent Module
-POPIA parental consent lifecycle management.
+EduBoost SA — Diagnostics Module
+Core diagnostic scoring, gap identification, and consent-related diagnostics.
 """
 from __future__ import annotations
 
@@ -20,6 +20,11 @@ _learner_repo = LearnerRepository()
 
 
 class ConsentService:
+    """Service for parental consent checks and audit-enforced operations.
+
+    This service is used by diagnostic flows that require active parental consent
+    before learner assessment or data access can proceed.
+    """
 
     async def grant_consent(
         self,
@@ -109,6 +114,14 @@ class ConsentService:
 
 
 def _get_ip(request: Request | None) -> str | None:
+    """Extract the client IP address from the request headers.
+
+    Args:
+        request: FastAPI request object or ``None``.
+
+    Returns:
+        The client IP address if available, otherwise ``None``.
+    """
     if request is None:
         return None
     forwarded = request.headers.get("X-Forwarded-For")
@@ -118,4 +131,12 @@ def _get_ip(request: Request | None) -> str | None:
 
 
 def _get_ua(request: Request | None) -> str | None:
+    """Extract the user agent string from the request headers.
+
+    Args:
+        request: FastAPI request object or ``None``.
+
+    Returns:
+        The User-Agent header value, or ``None`` if unavailable.
+    """
     return request.headers.get("User-Agent") if request else None

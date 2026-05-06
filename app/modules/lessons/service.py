@@ -1,5 +1,11 @@
 from __future__ import annotations
 
+"""Lesson generation service for EduBoost V2.
+
+This module handles consent validation, learner context construction, AI lesson
+generation, persistence, and audit logging for CAPS-aligned lesson delivery.
+"""
+
 from datetime import UTC, datetime
 from typing import TYPE_CHECKING
 from uuid import UUID
@@ -24,7 +30,18 @@ if TYPE_CHECKING:
 
 
 class LessonService:
+    """Service responsible for lesson generation and learner context orchestration.
+
+    The class ensures that learners have active parental consent before generating
+    CAPS-aligned lesson content and records the event in the audit trail.
+    """
+
     def __init__(self, db: AsyncSession):
+        """Create a lesson service with repository and audit dependencies.
+
+        Args:
+            db: Async database session used for repository operations.
+        """
         self.db = db
         self._executive = ExecutiveService()
         self._lesson_repo = LessonRepository(db)
@@ -36,6 +53,23 @@ class LessonService:
     async def generate_lesson_for_learner(
         self, body: LessonRequest, current_user_id: UUID
     ) -> tuple[LessonResponse, bool, str]:
+        """Generate, persist, and audit a lesson for a learner.
+
+        This method validates active parental consent, builds learner context,
+        invokes the executive AI lesson generator, persists the resulting lesson,
+        and returns the rendered response together with cache metadata.
+
+        Args:
+            body: Lesson request payload containing learner and topic details.
+            current_user_id: Identifier of the currently authenticated user.
+
+        Returns:
+            Tuple containing the lesson response, a cache hit boolean, and the
+            LLM provider label.
+
+        Raises:
+            HTTPException: If the learner is not found or AI quota is exceeded.
+        """
         # 1. Consent Gate
         await self._consent_service.require_active_consent(
             body.learner_id, actor_id=str(current_user_id)
@@ -103,6 +137,15 @@ class LessonService:
         )
 
     async def _build_learner_context(self, learner_id: str, subject: str) -> dict:
+        """Build learner context from recent lessons and unresolved knowledge gaps.
+
+        Args:
+            learner_id: Learner identifier used to fetch context.
+            subject: CAPS subject code for the lesson.
+
+        Returns:
+            Context dictionary with knowledge gaps and recent lessons.
+        """
         gaps_result = await self.db.execute(
             select(KnowledgeGap.topic, KnowledgeGap.severity)
             .where(
@@ -130,6 +173,15 @@ class LessonService:
         }
 
     def _render_lesson_content(self, payload) -> str:
+        """Render lesson payload into the stored lesson content format.
+
+        Args:
+            payload: AI lesson payload containing title, introduction, content,
+                worked example, practice question, answer, and cultural hook.
+
+        Returns:
+            Rendered lesson content string for persistence and learner delivery.
+        """
         return (
             f"# {payload.title}\n\n{payload.introduction}\n\n{payload.main_content}\n\n"
             f"## Worked Example\n{payload.worked_example}\n\n"

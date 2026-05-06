@@ -108,9 +108,24 @@ class EtherService:
     """
 
     def get_onboarding_questions(self) -> list[dict]:
+        """Return the cold-start onboarding questions used for archetype scoring.
+
+        Returns:
+            List of question dictionaries for the first-session archetype assessment.
+        """
         return ONBOARDING_QUESTIONS
 
     def classify_archetype(self, answers: list[dict]) -> tuple[ArchetypeLabel, str, dict[str, float]]:
+        """Classify a learner archetype from onboarding answers.
+
+        Args:
+            answers: List of answer dictionaries containing ``question_id`` and
+                ``answer`` values.
+
+        Returns:
+            Tuple containing the selected archetype label, a short
+            description, and the posterior probability distribution.
+        """
         scores = self.posterior_distribution(answers)
         best = max(scores, key=scores.get)
         label = ArchetypeLabel(best)
@@ -118,6 +133,15 @@ class EtherService:
         return label, description, scores
 
     def posterior_distribution(self, answers: Iterable[dict]) -> dict[str, float]:
+        """Compute the posterior archetype distribution for onboarding answers.
+
+        Args:
+            answers: Iterable of answer dictionaries with question identifiers
+                and selected answers.
+
+        Returns:
+            Normalized probability distribution over archetype labels.
+        """
         posterior: dict[str, float] = {a.value: 1.0 / len(ArchetypeLabel) for a in ArchetypeLabel}
         for answer in answers:
             key = (int(answer["question_id"]), str(answer["answer"]).upper())
