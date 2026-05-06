@@ -8,13 +8,11 @@ from app.core.database import get_db
 from app.core.rate_limiter import check_ai_quota
 from app.core.security import get_current_user
 from app.domain.schemas import DiagnosticResult, DiagnosticSubmit
-from app.repositories.repositories import (
-    DiagnosticRepository,
-    GuardianRepository,
-    IRTRepository,
-    KnowledgeGapRepository,
-    LearnerRepository,
-)
+from app.repositories.learner_repository import LearnerRepository
+from app.repositories.diagnostic_repository import DiagnosticRepository
+from app.repositories.auth_repository import GuardianRepository
+from app.repositories.irt_repository import IRTRepository
+from app.repositories.knowledge_gap_repository import KnowledgeGapRepository
 from app.services.consent import ConsentService
 from app.services.diagnostic import DiagnosticEngine
 

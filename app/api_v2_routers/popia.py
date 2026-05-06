@@ -27,7 +27,7 @@ from app.models import (
     AuditLog,
     KnowledgeGap,
 )
-from app.repositories.repositories import LearnerRepository
+from app.repositories.learner_repository import LearnerRepository
 from app.services.consent import ConsentService
 from app.services.fourth_estate import FourthEstateService
 from app.services.rlhf_service import RLHFService

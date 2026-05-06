@@ -8,7 +8,8 @@ from app.core.database import get_db
 from app.core.logging import get_logger
 from app.core.security import get_current_user, require_parent_or_admin
 from app.domain.schemas import LearnerCreate, LearnerResponse
-from app.repositories.repositories import KnowledgeGapRepository, LearnerRepository
+from app.repositories.knowledge_gap_repository import KnowledgeGapRepository
+from app.repositories.learner_repository import LearnerRepository
 from app.services.consent import ConsentService
 from app.services.fourth_estate import FourthEstateService
 

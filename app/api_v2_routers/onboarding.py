@@ -7,7 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.database import get_db
 from app.core.security import get_current_user
 from app.domain.schemas import OnboardingResult, OnboardingSubmit
-from app.repositories.repositories import LearnerRepository
+from app.repositories.learner_repository import LearnerRepository
 from app.services.ether import EtherService
 
 router = APIRouter(prefix="/onboarding", tags=["onboarding"])

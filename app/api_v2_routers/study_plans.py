@@ -6,7 +6,7 @@ from app.core.database import AsyncSessionLocal
 from app.core.jobs import enqueue_job
 from app.core.security import get_current_user
 from app.domain.api_v2_models import JobAcceptedResponse, StudyPlanGenerateRequest
-from app.repositories.repositories import LearnerRepository
+from app.repositories.learner_repository import LearnerRepository
 from app.services.audit_service import AuditService
 from app.services.study_plan_service_v2 import StudyPlanServiceV2
 from app.services.telemetry import TelemetryService

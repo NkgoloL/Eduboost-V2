@@ -4,7 +4,7 @@ from __future__ import annotations
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.redis import cache_delete_pattern, cache_set
-from app.repositories.repositories import GuardianRepository
+from app.repositories.auth_repository import GuardianRepository
 
 
 class SubscriptionService:

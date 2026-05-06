@@ -28,7 +28,9 @@ from app.core.security import (
 from app.core.token_revocation import revoke_token, revoke_user_tokens
 from app.domain.schemas import LoginRequest, RefreshRequest, RegisterRequest, TokenResponse
 from app.models import UserRole
-from app.repositories.repositories import ConsentRepository, GuardianRepository, LearnerRepository
+from app.repositories.auth_repository import GuardianRepository
+from app.repositories.consent_repository import ConsentRepository
+from app.repositories.learner_repository import LearnerRepository
 from app.core.rate_limit import limiter
 
 

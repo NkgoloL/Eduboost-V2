@@ -8,7 +8,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.database import get_db
 from app.core.security import get_current_user
 from app.repositories.gamification_repository import GamificationRepository
-from app.repositories.repositories import LearnerRepository, LessonRepository
+from app.repositories.learner_repository import LearnerRepository
+from app.repositories.lesson_repository import LessonRepository
 from app.services.consent import ConsentService
 from app.services.fourth_estate import FourthEstateService
 from app.services.gamification_service_v2 import GamificationServiceV2

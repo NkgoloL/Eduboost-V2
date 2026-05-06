@@ -11,7 +11,9 @@ from typing import Any
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.exceptions import NotFoundError
-from app.repositories.repositories import LearnerRepository, LessonRepository, KnowledgeGapRepository
+from app.repositories.learner_repository import LearnerRepository
+from app.repositories.lesson_repository import LessonRepository
+from app.repositories.knowledge_gap_repository import KnowledgeGapRepository
 from app.services.fourth_estate import FourthEstateService
 
 logger = logging.getLogger(__name__)

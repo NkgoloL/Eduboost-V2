@@ -16,7 +16,7 @@ from app.domain.schemas import (
     ParentTrustDashboardResponse,
 )
 from app.models import Guardian, KnowledgeGap, Lesson
-from app.repositories.repositories import LearnerRepository
+from app.repositories.learner_repository import LearnerRepository
 from app.services.consent import ConsentService
 from app.services.executive import ExecutiveService
 from app.services.fourth_estate import FourthEstateService
