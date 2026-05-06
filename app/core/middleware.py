@@ -15,6 +15,7 @@ from starlette.responses import Response
 
 from app.core.config import settings
 from app.core.metrics import http_request_duration_seconds, http_requests_total
+from app.core import context
 
 logger = structlog.get_logger(__name__)
 
@@ -25,6 +26,8 @@ class RequestIDMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next: object) -> Response:
         request_id = request.headers.get("X-Request-ID") or str(uuid.uuid4())
         request.state.request_id = request_id
+        # populate contextvar so background tasks and services can access request id
+        context.set_request_id(request_id)
         structlog.contextvars.clear_contextvars()
         structlog.contextvars.bind_contextvars(
             app_env=settings.APP_ENV,
@@ -35,6 +38,8 @@ class RequestIDMiddleware(BaseHTTPMiddleware):
             response: Response = await call_next(request)  # type: ignore[operator]
         finally:
             structlog.contextvars.clear_contextvars()
+            # clear our contextvar to avoid leaking to unrelated tasks
+            context.clear_request_id()
         response.headers["X-Request-ID"] = request_id
         return response
 

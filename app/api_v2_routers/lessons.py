@@ -8,6 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from uuid import UUID
 
 from app.core.database import get_db
+from app.core import providers
 from app.core.jobs import enqueue_job
 from app.core.rate_limit import limiter
 from app.core.dependencies import get_current_user_id
@@ -17,8 +18,7 @@ from app.modules.lessons.service import LessonService
 
 router = APIRouter(prefix="/lessons", tags=["lessons"])
 
-async def get_lesson_service(db: AsyncSession = Depends(get_db)) -> LessonService:
-    return LessonService(db)
+# Use centralized provider from `app.core.providers`
 
 @router.post("/generate", response_model=JobAcceptedResponse, status_code=status.HTTP_202_ACCEPTED)
 @router.post("/", response_model=JobAcceptedResponse, status_code=status.HTTP_202_ACCEPTED)
@@ -28,7 +28,7 @@ async def generate_lesson(
     body: LessonRequest,
     background_tasks: BackgroundTasks,
     user_id: UUID = Depends(get_current_user_id),
-    service: LessonService = Depends(get_lesson_service),
+    service: LessonService = Depends(providers.get_lesson_service),
 ):
     async def _run() -> dict:
         lesson, _, _ = await service.generate_lesson_for_learner(body, user_id)
@@ -47,7 +47,7 @@ async def generate_lesson(
 async def generate_lesson_stream(
     body: LessonRequest,
     user_id: UUID = Depends(get_current_user_id),
-    service: LessonService = Depends(get_lesson_service),
+    service: LessonService = Depends(providers.get_lesson_service),
 ):
     async def _events():
         yield f"event: status\ndata: {json.dumps({'status': 'accepted', 'operation': 'lesson_generation'})}\n\n"

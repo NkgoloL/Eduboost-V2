@@ -102,7 +102,21 @@ async def require_active_consent_for_current_learner(
 # ── Observability ─────────────────────────────────────────────────────────────
 
 from fastapi import Request
+from app.core import context
+
 
 async def get_request_id(request: Request) -> str:
-    """Retrieve the correlation/request ID from the headers."""
+    """Retrieve the correlation/request ID from the request or context.
+
+    Preference order:
+    1. Contextvar set by middleware
+    2. Incoming `X-Request-ID` header
+    3. Fallback `unknown`
+    """
+    # Try the contextvar first (covers background tasks and code called outside
+    # of the request scope when middleware has set the value).
+    rid = context.get_request_id(default=None)
+    if rid and rid != "unknown":
+        return rid
+    # Fall back to header if contextvar not set
     return request.headers.get("X-Request-ID", "unknown")

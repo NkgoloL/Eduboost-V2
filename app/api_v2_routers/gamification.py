@@ -12,6 +12,7 @@ from app.repositories.learner_repository import LearnerRepository
 from app.repositories.lesson_repository import LessonRepository
 from app.services.consent import ConsentService
 from app.services.audit_service import AuditService
+from app.core import providers
 from app.services.gamification_service_v2 import GamificationServiceV2
 
 router = APIRouter(prefix="/gamification", tags=["V2 Gamification"])
@@ -42,6 +43,7 @@ async def award_xp(
     body: AwardXPRequest,
     db: AsyncSession = Depends(get_db),
     current_user: dict = Depends(get_current_user),
+    audit: AuditService = Depends(providers.get_audit_service),
 ):
     await ConsentService(db).require_active_consent(body.learner_id, actor_id=current_user.get("sub"))
     learner = await LearnerRepository(db).get_by_id(body.learner_id)
@@ -53,7 +55,7 @@ async def award_xp(
     if body.lesson_id:
         await LessonRepository(db).mark_completed(body.lesson_id)
 
-    await AuditService(db).record(
+    await audit.record(
         event_type="gamification.xp_awarded",
         actor_id=current_user.get("sub"),
         learner_pseudonym=learner.pseudonym_id,

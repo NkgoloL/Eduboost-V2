@@ -32,6 +32,8 @@ from app.repositories.auth_repository import GuardianRepository
 from app.repositories.consent_repository import ConsentRepository
 from app.repositories.learner_repository import LearnerRepository
 from app.core.rate_limit import limiter
+from app.core import providers
+from app.services.audit_service import AuditService
 
 
 router = APIRouter(prefix="/auth", tags=["auth"])
@@ -50,9 +52,8 @@ async def me(current_user: dict = Depends(get_current_user)):
 
 @router.post("/register", response_model=TokenResponse, status_code=status.HTTP_201_CREATED)
 @limiter.limit("5/hour")
-async def register(request: Request, body: RegisterRequest, response: Response, db: AsyncSession = Depends(get_db)):
+async def register(request: Request, body: RegisterRequest, response: Response, db: AsyncSession = Depends(get_db), audit: AuditService = Depends(providers.get_audit_service)):
     repo = GuardianRepository(db)
-    audit = AuditService(db)
 
     submitted_email = getattr(body, "email")
     email_hash = hash_email(submitted_email)
@@ -80,9 +81,8 @@ async def register(request: Request, body: RegisterRequest, response: Response, 
 
 @router.post("/login", response_model=TokenResponse)
 @limiter.limit("10/hour")
-async def login(request: Request, body: LoginRequest, response: Response, db: AsyncSession = Depends(get_db)):
+async def login(request: Request, body: LoginRequest, response: Response, db: AsyncSession = Depends(get_db), audit: AuditService = Depends(providers.get_audit_service)):
     repo = GuardianRepository(db)
-    audit = AuditService(db)
 
     submitted_email = getattr(body, "email")
     email_hash = hash_email(submitted_email)
@@ -113,7 +113,6 @@ async def create_dev_session(response: Response, db: AsyncSession = Depends(get_
     guardian_repo = GuardianRepository(db)
     learner_repo = LearnerRepository(db)
     consent_repo = ConsentRepository(db)
-    audit = AuditService(db)
 
     email_hash = hash_email(DEV_GUARDIAN_EMAIL)
     guardian = await guardian_repo.get_by_email_hash(email_hash)
@@ -211,6 +210,7 @@ async def logout(
     current_user: dict = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
     cookie_refresh: str | None = Cookie(default=None, alias=REFRESH_COOKIE),
+    audit: AuditService = Depends(providers.get_audit_service),
 ):
     """
     Revoke the current access token and clear the refresh token cookie.
@@ -228,7 +228,6 @@ async def logout(
     response.delete_cookie(REFRESH_COOKIE, path="/api/v2/auth")
     
     # Audit the logout
-    audit = AuditService(db)
     await audit.auth_event("USER_LOGOUT", current_user.get("sub"))
     
     return None
@@ -240,6 +239,7 @@ async def revoke_all_tokens(
     current_user: dict = Depends(require_parent_or_admin),
     db: AsyncSession = Depends(get_db),
     cookie_refresh: str | None = Cookie(default=None, alias=REFRESH_COOKIE),
+    audit: AuditService = Depends(providers.get_audit_service),
 ):
     """
     Revoke ALL tokens for the current user (logout from all devices).
@@ -254,7 +254,6 @@ async def revoke_all_tokens(
     response.delete_cookie(REFRESH_COOKIE, path="/api/v2/auth")
     
     # Audit the revocation
-    audit = AuditService(db)
     await audit.auth_event("USER_TOKENS_REVOKED_ALL", user_id)
     
     return None

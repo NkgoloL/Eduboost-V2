@@ -8,6 +8,7 @@ from app.core.database import get_db
 from app.core.security import require_parent_or_admin
 from app.domain.schemas import CheckoutSessionResponse
 from app.services.audit_service import AuditService
+from app.core import providers
 from app.services.stripe_service import StripeService
 
 router = APIRouter(prefix="/billing", tags=["billing"])
@@ -33,13 +34,13 @@ async def stripe_webhook(
     request: Request,
     db: AsyncSession = Depends(get_db),
     stripe_signature: str = Header(alias="stripe-signature"),
+    audit: AuditService = Depends(providers.get_audit_service),
 ):
     payload = await request.body()
     svc = StripeService(db)
     result = await svc.handle_webhook(payload, stripe_signature)
 
     # Record to audit trail
-    audit = AuditService(db)
     await audit.record("STRIPE_WEBHOOK", payload=result)
 
     return result

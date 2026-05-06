@@ -20,6 +20,7 @@ from app.repositories.learner_repository import LearnerRepository
 from app.services.consent import ConsentService
 from app.services.lesson_generator import LessonGenerator
 from app.services.audit_service import AuditService
+from app.core import providers
 
 router = APIRouter(prefix="/parents", tags=["parents"])
 _executive = LessonGenerator()
@@ -271,6 +272,7 @@ async def request_erasure(
     background_tasks: BackgroundTasks,
     db: AsyncSession = Depends(get_db),
     current_user: dict = Depends(require_parent_or_admin),
+    audit: AuditService = Depends(providers.get_audit_service),
 ) -> Response:
     learner = await LearnerRepository(db).get_by_id(learner_id)
     if learner is None:
@@ -282,7 +284,7 @@ async def request_erasure(
     await consent_service.execute_erasure(current_user["sub"], learner_id)
     await LearnerRepository(db).soft_delete(learner_id)
 
-    await AuditService(db).record(
+    await audit.record(
         "learner.erasure_requested",
         actor_id=current_user["sub"],
         learner_pseudonym=learner.pseudonym_id,

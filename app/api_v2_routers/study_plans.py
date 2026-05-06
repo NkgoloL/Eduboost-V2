@@ -35,7 +35,8 @@ async def generate_study_plan(
                 study_plan_repository=study_plan_repository,
             )
             plan = await service.generate_plan(learner_id, gap_ratio=request.gap_ratio)
-            await AuditService().log_event(
+            audit = AuditService(db)
+            await audit.log_event(
                 event_type="STUDY_PLAN_GENERATED",
                 learner_id=learner_id,
                 payload={"plan_id": plan["plan_id"]},

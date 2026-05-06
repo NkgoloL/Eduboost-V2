@@ -30,6 +30,7 @@ from app.models import (
 from app.repositories.learner_repository import LearnerRepository
 from app.services.consent import ConsentService
 from app.services.audit_service import AuditService
+from app.core import providers
 from app.services.rlhf_service import RLHFService
 
 router = APIRouter(prefix="/popia", tags=["compliance"])
@@ -45,6 +46,7 @@ async def export_learner_data(
     learner_id: str,
     current_user: dict = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
+    audit: AuditService = Depends(providers.get_audit_service),
 ):
     """
     POPIA Right-to-Access: Export all personal data for a specific learner.
@@ -149,7 +151,6 @@ async def export_learner_data(
     }
     
     # Audit the export
-    audit = AuditService(db)
     await audit.record(
         event_type="data_export.requested",
         learner_pseudonym=learner.pseudonym_id,
@@ -174,6 +175,7 @@ async def request_learner_deletion(
     learner_id: str,
     current_user: dict = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
+    audit: AuditService = Depends(providers.get_audit_service),
 ):
     """
     POPIA Right-to-Erasure: Request permanent deletion of learner data.
@@ -214,7 +216,6 @@ async def request_learner_deletion(
     await db.commit()
     
     # Audit the deletion request
-    audit = AuditService(db)
     await audit.record(
         event_type="deletion.requested",
         learner_pseudonym=learner.pseudonym_id,
@@ -241,6 +242,7 @@ async def cancel_learner_deletion(
     learner_id: str,
     current_user: dict = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
+    audit: AuditService = Depends(providers.get_audit_service),
 ):
     """
     Cancel a pending deletion request within the 30-day grace period.
@@ -277,7 +279,6 @@ async def cancel_learner_deletion(
     await db.commit()
     
     # Audit the cancellation
-    audit = AuditService(db)
     await audit.record(
         event_type="deletion.cancelled",
         learner_pseudonym=learner.pseudonym_id,
