@@ -1,0 +1,15 @@
+[Unit]
+Description=EduBoost DB backup
+After=network.target
+
+[Service]
+Type=oneshot
+User=eduboost
+Group=eduboost
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+WorkingDirectory=/opt/eduboost
+ExecStart=/opt/eduboost/scripts/db_backup.sh
+Nice=10
+
+[Install]
+WantedBy=multi-user.target

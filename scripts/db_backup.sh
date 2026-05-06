@@ -1,3 +1,53 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# EduBoost — simple idempotent Postgres backup script
+# - Uses `pg_dump` to create a consistent dump
+# - Stores compressed backups in $BACKUP_DIR
+# - Rotates old backups older than $RETENTION_DAYS
+# - Intended for cron or systemd-timer execution
+
+BACKUP_DIR="${BACKUP_DIR:-./backups}"
+RETENTION_DAYS="${RETENTION_DAYS:-7}"
+PG_DUMP_BIN="${PG_DUMP_BIN:-pg_dump}"
+
+# Database connection parameters (prefer DATABASE_URL or PG_ env vars)
+DATABASE_URL="${DATABASE_URL:-}"
+
+timestamp() { date -u +"%Y%m%dT%H%M%SZ"; }
+log() { echo "$(date -u +"%Y-%m-%dT%H:%M:%SZ") [db-backup] $*"; }
+
+mkdir -p "$BACKUP_DIR"
+
+TS=$(timestamp)
+FNAME="eduboost-db-${TS}.dump"
+OUT_PATH="$BACKUP_DIR/$FNAME"
+
+log "Starting backup -> $OUT_PATH"
+
+if [[ -n "$DATABASE_URL" ]]; then
+  # Use pg_dump with a URL
+  "$PG_DUMP_BIN" --format=custom --file="$OUT_PATH" "$DATABASE_URL"
+else
+  # Rely on pg env vars (PGHOST, PGUSER, PGPASSWORD, PGDATABASE)
+  "$PG_DUMP_BIN" --format=custom --file="$OUT_PATH"
+fi
+
+# Compress the dump to save space
+gzip -f "$OUT_PATH"
+OUT_GZ="$OUT_PATH.gz"
+
+log "Backup completed: $OUT_GZ"
+
+# Rotation: remove older backups
+if command -v find >/dev/null 2>&1; then
+  log "Pruning backups older than $RETENTION_DAYS days in $BACKUP_DIR"
+  find "$BACKUP_DIR" -type f -name 'eduboost-db-*.dump.gz' -mtime +"$RETENTION_DAYS" -print -delete || true
+fi
+
+log "Backup finished successfully"
+
+exit 0
 #!/bin/bash
 # EduBoost V2 Database Backup Script
 
