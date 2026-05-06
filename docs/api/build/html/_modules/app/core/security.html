@@ -1,0 +1,582 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>app.core.security &mdash; EduBoost SA 2.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=c5a06975" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=51b770b3"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            EduBoost SA
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/core.html">Core — Shared Kernel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/core.html#module-app.core.config">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings"><code class="docutils literal notranslate"><span class="pre">Settings</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.APP_NAME"><code class="docutils literal notranslate"><span class="pre">Settings.APP_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.APP_VERSION"><code class="docutils literal notranslate"><span class="pre">Settings.APP_VERSION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.APP_BASE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.APP_BASE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.ENVIRONMENT"><code class="docutils literal notranslate"><span class="pre">Settings.ENVIRONMENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.APP_ENV"><code class="docutils literal notranslate"><span class="pre">Settings.APP_ENV</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.DEBUG"><code class="docutils literal notranslate"><span class="pre">Settings.DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LEGACY_RETIREMENT_DATE"><code class="docutils literal notranslate"><span class="pre">Settings.LEGACY_RETIREMENT_DATE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.DATABASE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.DATABASE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.REDIS_URL"><code class="docutils literal notranslate"><span class="pre">Settings.REDIS_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.REDIS_CACHE_TTL_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.REDIS_CACHE_TTL_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.SEMANTIC_CACHE_TTL_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.SEMANTIC_CACHE_TTL_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.JWT_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.JWT_ALGORITHM"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_ALGORITHM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.ENCRYPTION_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.ENCRYPTION_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.ENCRYPTION_SALT"><code class="docutils literal notranslate"><span class="pre">Settings.ENCRYPTION_SALT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.BACKUP_ENCRYPTION_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.BACKUP_ENCRYPTION_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.BACKUP_RETENTION_DAYS"><code class="docutils literal notranslate"><span class="pre">Settings.BACKUP_RETENTION_DAYS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.ANTHROPIC_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.ANTHROPIC_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.GROQ_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.GROQ_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.HUGGINGFACE_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.HUGGINGFACE_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.ANTHROPIC_MODEL"><code class="docutils literal notranslate"><span class="pre">Settings.ANTHROPIC_MODEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.INFERENCE_SERVICE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.INFERENCE_SERVICE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LLM_TIMEOUT_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_TIMEOUT_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LLM_MAX_RETRIES"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_MAX_RETRIES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LLM_PROVIDER"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_PROVIDER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LOCAL_BASE_MODEL_ID"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_BASE_MODEL_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LOCAL_ADAPTER_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_ADAPTER_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LOCAL_MERGED_MODEL_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_MERGED_MODEL_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LOCAL_LLM_MAX_NEW_TOKENS"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_LLM_MAX_NEW_TOKENS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LOCAL_LLM_TEMPERATURE"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_LLM_TEMPERATURE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.FREE_DAILY_REQUEST_QUOTA"><code class="docutils literal notranslate"><span class="pre">Settings.FREE_DAILY_REQUEST_QUOTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.PREMIUM_DAILY_REQUEST_QUOTA"><code class="docutils literal notranslate"><span class="pre">Settings.PREMIUM_DAILY_REQUEST_QUOTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.STRIPE_SECRET_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_SECRET_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.STRIPE_WEBHOOK_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_WEBHOOK_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.STRIPE_PRICE_ID_PREMIUM"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_PRICE_ID_PREMIUM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.POSTHOG_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.POSTHOG_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.POSTHOG_HOST"><code class="docutils literal notranslate"><span class="pre">Settings.POSTHOG_HOST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.SENDGRID_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.SENDGRID_FROM_EMAIL"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_FROM_EMAIL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.SENDGRID_FROM_NAME"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_FROM_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.AZURE_KEY_VAULT_URL"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_KEY_VAULT_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.AZURE_CLIENT_ID"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_CLIENT_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.AZURE_CLIENT_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_CLIENT_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.AZURE_TENANT_ID"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_TENANT_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.AZURE_STORAGE_CONNECTION_STRING"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_STORAGE_CONNECTION_STRING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.AZURE_STORAGE_CONTAINER"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_STORAGE_CONTAINER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.GRAFANA_CLOUD_PROMETHEUS_URL"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_PROMETHEUS_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.GRAFANA_CLOUD_LOKI_URL"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_LOKI_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.GRAFANA_CLOUD_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.PROMETHEUS_METRICS_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.PROMETHEUS_METRICS_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LOG_LEVEL"><code class="docutils literal notranslate"><span class="pre">Settings.LOG_LEVEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.SENTRY_DSN"><code class="docutils literal notranslate"><span class="pre">Settings.SENTRY_DSN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.KEY_VAULT_REFRESH_INTERVAL_HOURS"><code class="docutils literal notranslate"><span class="pre">Settings.KEY_VAULT_REFRESH_INTERVAL_HOURS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.RATE_LIMIT_DEFAULT"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_DEFAULT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.RATE_LIMIT_AUTH"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_AUTH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.RATE_LIMIT_LLM"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_LLM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.ARQ_MAX_JOBS"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_MAX_JOBS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.ARQ_JOB_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_JOB_TIMEOUT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.ALLOWED_ORIGINS"><code class="docutils literal notranslate"><span class="pre">Settings.ALLOWED_ORIGINS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.is_production"><code class="docutils literal notranslate"><span class="pre">Settings.is_production()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.refresh_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.refresh_from_key_vault()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.load_production_secrets_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.load_production_secrets_from_key_vault()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.config.get_settings"><code class="docutils literal notranslate"><span class="pre">get_settings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/core.html#module-app.core.security">Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.security.Role"><code class="docutils literal notranslate"><span class="pre">Role</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.security.create_access_token"><code class="docutils literal notranslate"><span class="pre">create_access_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.security.create_refresh_token"><code class="docutils literal notranslate"><span class="pre">create_refresh_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.security.decode_token"><code class="docutils literal notranslate"><span class="pre">decode_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.security.get_current_user"><code class="docutils literal notranslate"><span class="pre">get_current_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.security.hash_email"><code class="docutils literal notranslate"><span class="pre">hash_email()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.security.hash_password"><code class="docutils literal notranslate"><span class="pre">hash_password()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.security.require_admin"><code class="docutils literal notranslate"><span class="pre">require_admin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.security.require_parent_or_admin"><code class="docutils literal notranslate"><span class="pre">require_parent_or_admin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.security.require_role"><code class="docutils literal notranslate"><span class="pre">require_role()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.security.require_roles"><code class="docutils literal notranslate"><span class="pre">require_roles()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.security.require_teacher_or_admin"><code class="docutils literal notranslate"><span class="pre">require_teacher_or_admin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.security.verify_password"><code class="docutils literal notranslate"><span class="pre">verify_password()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/core.html#module-app.core.audit">Audit Trail</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.audit.FourthEstateService"><code class="docutils literal notranslate"><span class="pre">FourthEstateService</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.audit.FourthEstateService.record"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.record()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.audit.FourthEstateService.consent_granted"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.consent_granted()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.audit.FourthEstateService.consent_revoked"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.consent_revoked()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.audit.FourthEstateService.erasure_requested"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.erasure_requested()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.audit.FourthEstateService.erasure_executed"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.erasure_executed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.audit.FourthEstateService.lesson_generated"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.lesson_generated()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.audit.FourthEstateService.constitutional_violation"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.constitutional_violation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.audit.FourthEstateService.auth_event"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.auth_event()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.audit.FourthEstateService.access_rejected"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.access_rejected()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.audit.FourthEstateService.subscription_changed"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.subscription_changed()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">Domain Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/modules.html#diagnostics-irt-engine">Diagnostics — IRT Engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/modules.html#app.modules.diagnostics.irt_engine.p_correct"><code class="docutils literal notranslate"><span class="pre">p_correct()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/modules.html#app.modules.diagnostics.irt_engine.fisher_information"><code class="docutils literal notranslate"><span class="pre">fisher_information()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/modules.html#app.modules.diagnostics.irt_engine.update_theta_mle"><code class="docutils literal notranslate"><span class="pre">update_theta_mle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.compute_theta"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.compute_theta()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.estimate_theta_eap"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.estimate_theta_eap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.identify_gaps"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.identify_gaps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.select_next_item"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.select_next_item()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.should_stop"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.should_stop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.map_grade_equivalent"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.map_grade_equivalent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.diagnostics.irt_engine.DiagnosticEngine.run_gap_probe_cascade"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.run_gap_probe_cascade()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/modules.html#lessons-llm-gateway">Lessons — LLM Gateway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/modules.html#app.modules.lessons.llm_gateway.LLMResponse"><code class="docutils literal notranslate"><span class="pre">LLMResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.lessons.llm_gateway.LLMResponse.content"><code class="docutils literal notranslate"><span class="pre">LLMResponse.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.lessons.llm_gateway.LLMResponse.provider"><code class="docutils literal notranslate"><span class="pre">LLMResponse.provider</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.lessons.llm_gateway.LLMResponse.prompt_tokens"><code class="docutils literal notranslate"><span class="pre">LLMResponse.prompt_tokens</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.lessons.llm_gateway.LLMResponse.completion_tokens"><code class="docutils literal notranslate"><span class="pre">LLMResponse.completion_tokens</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.lessons.llm_gateway.LLMResponse.model"><code class="docutils literal notranslate"><span class="pre">LLMResponse.model</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/modules.html#app.modules.lessons.llm_gateway.LLMGateway"><code class="docutils literal notranslate"><span class="pre">LLMGateway</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.lessons.llm_gateway.LLMGateway.generate"><code class="docutils literal notranslate"><span class="pre">LLMGateway.generate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/modules.html#consent-popia-service">Consent — POPIA Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/modules.html#app.modules.consent.service.ConsentService"><code class="docutils literal notranslate"><span class="pre">ConsentService</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.consent.service.ConsentService.__init__"><code class="docutils literal notranslate"><span class="pre">ConsentService.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.consent.service.ConsentService.require_active_consent"><code class="docutils literal notranslate"><span class="pre">ConsentService.require_active_consent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.consent.service.ConsentService.grant"><code class="docutils literal notranslate"><span class="pre">ConsentService.grant()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.consent.service.ConsentService.revoke"><code class="docutils literal notranslate"><span class="pre">ConsentService.revoke()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.consent.service.ConsentService.renew"><code class="docutils literal notranslate"><span class="pre">ConsentService.renew()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.consent.service.ConsentService.execute_erasure"><code class="docutils literal notranslate"><span class="pre">ConsentService.execute_erasure()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.consent.service.ConsentService.get_status"><code class="docutils literal notranslate"><span class="pre">ConsentService.get_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#app.modules.consent.service.ConsentService.get_expiring_consents"><code class="docutils literal notranslate"><span class="pre">ConsentService.get_expiring_consents()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/modules.html#module-app.modules.learners">Learners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/modules.html#module-app.modules.study_plans">Study Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/modules.html#module-app.modules.gamification">Gamification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/modules.html#module-app.modules.parent_portal">Parent Portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/modules.html#module-app.modules.rlhf">RLHF Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/routers.html">API Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/models.html">ORM Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.UserRole"><code class="docutils literal notranslate"><span class="pre">UserRole</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.UserRole.STUDENT"><code class="docutils literal notranslate"><span class="pre">UserRole.STUDENT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.UserRole.PARENT"><code class="docutils literal notranslate"><span class="pre">UserRole.PARENT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.UserRole.TEACHER"><code class="docutils literal notranslate"><span class="pre">UserRole.TEACHER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.UserRole.ADMIN"><code class="docutils literal notranslate"><span class="pre">UserRole.ADMIN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.SubscriptionTier"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.SubscriptionTier.FREE"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier.FREE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.SubscriptionTier.PREMIUM"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier.PREMIUM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.KETER"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.KETER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.CHOKMAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.CHOKMAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.BINAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.BINAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.CHESED"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.CHESED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.GEVURAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.GEVURAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.TIFERET"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.TIFERET</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.NETZACH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.NETZACH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.HOD"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.HOD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.YESOD"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.YESOD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.MALKUTH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.MALKUTH</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.Language"><code class="docutils literal notranslate"><span class="pre">Language</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Language.ENGLISH"><code class="docutils literal notranslate"><span class="pre">Language.ENGLISH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Language.ISIZULU"><code class="docutils literal notranslate"><span class="pre">Language.ISIZULU</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Language.AFRIKAANS"><code class="docutils literal notranslate"><span class="pre">Language.AFRIKAANS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Language.ISIXHOSA"><code class="docutils literal notranslate"><span class="pre">Language.ISIXHOSA</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.Guardian"><code class="docutils literal notranslate"><span class="pre">Guardian</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Guardian.learners"><code class="docutils literal notranslate"><span class="pre">Guardian.learners</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Guardian.consents"><code class="docutils literal notranslate"><span class="pre">Guardian.consents</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.LearnerProfile"><code class="docutils literal notranslate"><span class="pre">LearnerProfile</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.LearnerProfile.guardian"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.guardian</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.LearnerProfile.consents"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.consents</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.LearnerProfile.knowledge_gaps"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.knowledge_gaps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.LearnerProfile.mastery_records"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.mastery_records</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.LearnerProfile.diagnostic_sessions"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.diagnostic_sessions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.LearnerProfile.lessons"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.lessons</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.Learner"><code class="docutils literal notranslate"><span class="pre">Learner</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.ParentalConsent"><code class="docutils literal notranslate"><span class="pre">ParentalConsent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ParentalConsent.guardian"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.guardian</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ParentalConsent.learner"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.learner</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ParentalConsent.is_active"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.is_active</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.AuditEvent"><code class="docutils literal notranslate"><span class="pre">AuditEvent</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.IRTItem"><code class="docutils literal notranslate"><span class="pre">IRTItem</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.DiagnosticSession"><code class="docutils literal notranslate"><span class="pre">DiagnosticSession</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.DiagnosticSession.learner"><code class="docutils literal notranslate"><span class="pre">DiagnosticSession.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.KnowledgeGap"><code class="docutils literal notranslate"><span class="pre">KnowledgeGap</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.KnowledgeGap.learner"><code class="docutils literal notranslate"><span class="pre">KnowledgeGap.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.SubjectMastery"><code class="docutils literal notranslate"><span class="pre">SubjectMastery</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.SubjectMastery.learner"><code class="docutils literal notranslate"><span class="pre">SubjectMastery.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.Lesson"><code class="docutils literal notranslate"><span class="pre">Lesson</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Lesson.learner"><code class="docutils literal notranslate"><span class="pre">Lesson.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.AuditLog"><code class="docutils literal notranslate"><span class="pre">AuditLog</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.StripeWebhookEvent"><code class="docutils literal notranslate"><span class="pre">StripeWebhookEvent</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.LessonRecord"><code class="docutils literal notranslate"><span class="pre">LessonRecord</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/repositories.html">Repositories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.list_assessments"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.list_assessments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.get_assessment"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.get_assessment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.create_attempt"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.create_attempt()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AuditRepository"><code class="docutils literal notranslate"><span class="pre">AuditRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AuditRepository.append"><code class="docutils literal notranslate"><span class="pre">AuditRepository.append()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AuditRepository.log"><code class="docutils literal notranslate"><span class="pre">AuditRepository.log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AuditRepository.latest"><code class="docutils literal notranslate"><span class="pre">AuditRepository.latest()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AuditRepository.get_by_id"><code class="docutils literal notranslate"><span class="pre">AuditRepository.get_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AuditRepository.get_by_resource"><code class="docutils literal notranslate"><span class="pre">AuditRepository.get_by_resource()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AuditRepository.get_by_actor"><code class="docutils literal notranslate"><span class="pre">AuditRepository.get_by_actor()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AuthRepository"><code class="docutils literal notranslate"><span class="pre">AuthRepository</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.ConsentRepository"><code class="docutils literal notranslate"><span class="pre">ConsentRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.ConsentRepository.model"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.ConsentRepository.get_active"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.get_active()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.ConsentRepository.grant"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.grant()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.ConsentRepository.revoke"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.revoke()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.ConsentRepository.renew"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.renew()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.ConsentRepository.get_expiring_soon"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.get_expiring_soon()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.DiagnosticRepository"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.DiagnosticRepository.model"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.DiagnosticRepository.get_latest_for_learner"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.get_latest_for_learner()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.DiagnosticRepository.create_session"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.create_session()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GamificationRepository"><code class="docutils literal notranslate"><span class="pre">GamificationRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GamificationRepository.get_profile_rows"><code class="docutils literal notranslate"><span class="pre">GamificationRepository.get_profile_rows()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GamificationRepository.get_leaderboard_rows"><code class="docutils literal notranslate"><span class="pre">GamificationRepository.get_leaderboard_rows()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository"><code class="docutils literal notranslate"><span class="pre">GuardianRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.model"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_by_email_hash"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_email_hash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_by_verification_token"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_verification_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_guardian_by_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_guardian_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.revoke_jti"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.revoke_jti()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.is_jti_revoked"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.is_jti_revoked()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LearnerRepository"><code class="docutils literal notranslate"><span class="pre">LearnerRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LearnerRepository.model"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LearnerRepository.get_by_id"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.get_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LearnerRepository.delete_by_id"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.delete_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LearnerRepository.soft_delete"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.soft_delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LearnerRepository.purge_personal_data"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.purge_personal_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LessonRepository"><code class="docutils literal notranslate"><span class="pre">LessonRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LessonRepository.model"><code class="docutils literal notranslate"><span class="pre">LessonRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LessonRepository.get_recent_for_learner"><code class="docutils literal notranslate"><span class="pre">LessonRepository.get_recent_for_learner()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../notes/changelog.html#v2-0-0-may-2026">v2.0.0 (May 2026)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/todo.html">Outstanding Work</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">EduBoost SA</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">app.core.security</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for app.core.security</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">EduBoost V2 — Security Helpers</span>
+<span class="sd">JWT creation/verification, bcrypt password hashing, RBAC role enforcement.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">hashlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">UTC</span><span class="p">,</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">bcrypt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">Depends</span><span class="p">,</span> <span class="n">HTTPException</span><span class="p">,</span> <span class="n">status</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPAuthorizationCredentials</span><span class="p">,</span> <span class="n">HTTPBearer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jose</span><span class="w"> </span><span class="kn">import</span> <span class="n">JWTError</span><span class="p">,</span> <span class="n">jwt</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.core.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.core.token_revocation</span><span class="w"> </span><span class="kn">import</span> <span class="n">is_token_revoked</span><span class="p">,</span> <span class="n">is_user_revoked</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserRole</span>
+
+<span class="n">Role</span> <span class="o">=</span> <span class="n">UserRole</span>
+<span class="n">TokenPayload</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+
+<span class="c1"># ── Password hashing ──────────────────────────────────────────────────────────</span>
+
+<div class="viewcode-block" id="hash_password">
+<a class="viewcode-back" href="../../../api/core.html#app.core.security.hash_password">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">hash_password</span><span class="p">(</span><span class="n">plain</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">secret</span> <span class="o">=</span> <span class="n">plain</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">hashpw</span><span class="p">(</span><span class="n">secret</span><span class="p">,</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">gensalt</span><span class="p">())</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="verify_password">
+<a class="viewcode-back" href="../../../api/core.html#app.core.security.verify_password">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">verify_password</span><span class="p">(</span><span class="n">plain</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hashed</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">checkpw</span><span class="p">(</span><span class="n">plain</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">),</span> <span class="n">hashed</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="hash_email">
+<a class="viewcode-back" href="../../../api/core.html#app.core.security.hash_email">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">hash_email</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Deterministic SHA-256 hash of an email for lookup (POPIA-safe).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">email</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span></div>
+
+
+
+<span class="c1"># ── Token schemas ─────────────────────────────────────────────────────────────</span>
+<div class="viewcode-block" id="create_access_token">
+<a class="viewcode-back" href="../../../api/core.html#app.core.security.create_access_token">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_access_token</span><span class="p">(</span><span class="n">subject</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">role</span><span class="p">:</span> <span class="n">UserRole</span><span class="p">,</span> <span class="n">extra</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">expire</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">UTC</span><span class="p">)</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">JWT_ACCESS_TOKEN_EXPIRE_MINUTES</span><span class="p">)</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="n">subject</span><span class="p">,</span>
+        <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="n">role</span><span class="p">,</span>
+        <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="n">expire</span><span class="p">,</span>
+        <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">UTC</span><span class="p">),</span>
+        <span class="s2">&quot;jti&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()),</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;access&quot;</span><span class="p">,</span>
+        <span class="o">**</span><span class="p">(</span><span class="n">extra</span> <span class="ow">or</span> <span class="p">{}),</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">jwt</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">JWT_SECRET</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">JWT_ALGORITHM</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="create_refresh_token">
+<a class="viewcode-back" href="../../../api/core.html#app.core.security.create_refresh_token">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_refresh_token</span><span class="p">(</span><span class="n">subject</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">role</span><span class="p">:</span> <span class="n">UserRole</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">expire</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">UTC</span><span class="p">)</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">JWT_REFRESH_TOKEN_EXPIRE_DAYS</span><span class="p">)</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="n">subject</span><span class="p">,</span>
+        <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="n">role</span><span class="p">,</span>
+        <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="n">expire</span><span class="p">,</span>
+        <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">UTC</span><span class="p">),</span>
+        <span class="s2">&quot;jti&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()),</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;refresh&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">jwt</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">JWT_SECRET</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">JWT_ALGORITHM</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="decode_token">
+<a class="viewcode-back" href="../../../api/core.html#app.core.security.decode_token">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">decode_token</span><span class="p">(</span><span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jwt</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">JWT_SECRET</span><span class="p">,</span> <span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="n">settings</span><span class="o">.</span><span class="n">JWT_ALGORITHM</span><span class="p">])</span>
+    <span class="k">except</span> <span class="n">JWTError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_401_UNAUTHORIZED</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Invalid or expired token&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;WWW-Authenticate&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer&quot;</span><span class="p">},</span>
+        <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span></div>
+
+
+
+<span class="c1"># ── FastAPI dependency helpers ────────────────────────────────────────────────</span>
+<span class="n">_bearer</span> <span class="o">=</span> <span class="n">HTTPBearer</span><span class="p">(</span><span class="n">auto_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_current_user">
+<a class="viewcode-back" href="../../../api/core.html#app.core.security.get_current_user">[docs]</a>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_current_user</span><span class="p">(</span><span class="n">credentials</span><span class="p">:</span> <span class="n">HTTPAuthorizationCredentials</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">_bearer</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">credentials</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_401_UNAUTHORIZED</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Authorization header missing&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;WWW-Authenticate&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="n">decode_token</span><span class="p">(</span><span class="n">credentials</span><span class="o">.</span><span class="n">credentials</span><span class="p">)</span>
+    
+    <span class="c1"># Check if token type is correct</span>
+    <span class="k">if</span> <span class="n">payload</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;access&quot;</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_401_UNAUTHORIZED</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Refresh token cannot be used here&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Check if token has been revoked (by JTI)</span>
+    <span class="n">jti</span> <span class="o">=</span> <span class="n">payload</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;jti&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">jti</span> <span class="ow">and</span> <span class="k">await</span> <span class="n">is_token_revoked</span><span class="p">(</span><span class="n">jti</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_401_UNAUTHORIZED</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Token has been revoked&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;WWW-Authenticate&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+    
+    <span class="c1"># Check if user&#39;s all tokens have been revoked</span>
+    <span class="n">user_id</span> <span class="o">=</span> <span class="n">payload</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sub&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">user_id</span> <span class="ow">and</span> <span class="k">await</span> <span class="n">is_user_revoked</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_401_UNAUTHORIZED</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;User tokens have been revoked&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;WWW-Authenticate&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">payload</span></div>
+
+
+
+<div class="viewcode-block" id="require_roles">
+<a class="viewcode-back" href="../../../api/core.html#app.core.security.require_roles">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">require_roles</span><span class="p">(</span><span class="o">*</span><span class="n">roles</span><span class="p">:</span> <span class="n">UserRole</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dependency factory: enforce that the caller has one of the specified roles.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_inner</span><span class="p">(</span><span class="n">current_user</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_current_user</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">current_user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;role&quot;</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">roles</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+                <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_403_FORBIDDEN</span><span class="p">,</span>
+                <span class="n">detail</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Requires one of roles: </span><span class="si">{</span><span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">roles</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">current_user</span>
+
+    <span class="k">return</span> <span class="n">_inner</span></div>
+
+
+
+<span class="n">require_role</span> <span class="o">=</span> <span class="n">require_roles</span>
+<span class="n">require_admin</span> <span class="o">=</span> <span class="n">require_roles</span><span class="p">(</span><span class="n">UserRole</span><span class="o">.</span><span class="n">ADMIN</span><span class="p">)</span>
+<span class="n">require_parent_or_admin</span> <span class="o">=</span> <span class="n">require_roles</span><span class="p">(</span><span class="n">UserRole</span><span class="o">.</span><span class="n">PARENT</span><span class="p">,</span> <span class="n">UserRole</span><span class="o">.</span><span class="n">ADMIN</span><span class="p">)</span>
+<span class="n">require_teacher_or_admin</span> <span class="o">=</span> <span class="n">require_roles</span><span class="p">(</span><span class="n">UserRole</span><span class="o">.</span><span class="n">TEACHER</span><span class="p">,</span> <span class="n">UserRole</span><span class="o">.</span><span class="n">ADMIN</span><span class="p">)</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Role&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;TokenPayload&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;create_access_token&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;create_refresh_token&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;decode_token&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;get_current_user&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hash_email&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hash_password&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;require_admin&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;require_parent_or_admin&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;require_role&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;require_roles&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;require_teacher_or_admin&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;verify_password&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, EduBoost SA Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -60,6 +60,8 @@ class Settings(BaseSettings):
     # ── Encryption ───────────────────────────────────────────────────────────
     ENCRYPTION_KEY: str = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="  # dev-only 32-byte base64 placeholder
     ENCRYPTION_SALT: str = "test-encryption-salt"
+    BACKUP_ENCRYPTION_KEY: str = ""
+    BACKUP_RETENTION_DAYS: int = 30
 
     # ── LLM Providers ────────────────────────────────────────────────────────
     ANTHROPIC_API_KEY: str = ""

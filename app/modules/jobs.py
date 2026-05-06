@@ -169,6 +169,70 @@ async def expire_stale_diagnostic_sessions(ctx: dict[str, Any]) -> dict[str, Any
         raise
 
 
+async def run_database_backup(ctx: dict[str, Any]) -> dict[str, Any]:
+    """Execute automated encrypted PostgreSQL backup.
+
+    Cron schedule: daily at 00:00 UTC (02:00 SAST).  Invokes
+    ``scripts/backup_postgres.sh`` with configuration from
+    :class:`~app.core.config.Settings`.
+
+    Args:
+        ctx: ARQ worker context dictionary.
+
+    Returns:
+        dict[str, Any]: Summary with ``status``, ``duration``, and
+        tail of the backup script output.
+
+    Raises:
+        subprocess.CalledProcessError: If the backup script exits with non-zero.
+        Exception: Re-raised after incrementing the failure counter.
+    """
+    import os
+    import subprocess
+    import time
+
+    start = time.perf_counter()
+    job_name = "database_backup"
+    cfg = get_settings()
+
+    try:
+        # Prepare environment for the shell script
+        env = os.environ.copy()
+        if cfg.BACKUP_ENCRYPTION_KEY:
+            env["BACKUP_ENCRYPTION_KEY"] = cfg.BACKUP_ENCRYPTION_KEY
+        env["RETENTION_DAYS"] = str(cfg.BACKUP_RETENTION_DAYS)
+
+        # Determine script path relative to repo root
+        script_path = os.path.join(os.getcwd(), "scripts", "backup_postgres.sh")
+
+        # Ensure script is executable
+        if not os.access(script_path, os.X_OK):
+            os.chmod(script_path, 0o755)
+
+        # Run the script
+        result = subprocess.run(
+            [script_path],
+            env=env,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+
+        arq_jobs_total.labels(job_name=job_name, status="success").inc()
+        duration = time.perf_counter() - start
+        arq_job_duration_seconds.labels(job_name=job_name).observe(duration)
+
+        return {
+            "status": "success",
+            "duration": round(duration, 2),
+            "output_tail": result.stdout.splitlines()[-3:] if result.stdout else [],
+        }
+    except Exception as exc:
+        arq_jobs_total.labels(job_name=job_name, status="failed").inc()
+        logger.error("Database backup failed: %s", exc, exc_info=True)
+        raise
+
+
 async def _send_renewal_email(consent: Any) -> None:
     """Send a consent renewal reminder email via SendGrid.
 
@@ -254,9 +318,12 @@ class WorkerSettings:
         send_consent_renewal_reminders,
         process_rlhf_feedback_batch,
         expire_stale_diagnostic_sessions,
+        run_database_backup,
     ]
 
     cron_jobs = [
+        # Daily at 00:00 UTC (02:00 SAST)
+        cron(run_database_backup, hour=0, minute=0),
         # Daily at 06:00 UTC (08:00 SAST)
         cron(send_consent_renewal_reminders, hour=6, minute=0),
         # Hourly

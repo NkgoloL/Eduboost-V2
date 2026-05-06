@@ -15,6 +15,15 @@ async def check_postgres() -> dict[str, Any]:
     try:
         async with AsyncSessionLocal() as session:
             await session.execute(text("SELECT 1"))
+        
+        # Update metrics
+        from app.core.database import engine
+        from app.core.metrics import db_pool_checkedout, db_pool_overflow, db_pool_size
+        if hasattr(engine.pool, "checkedout"):
+            db_pool_size.set(getattr(engine.pool, "size", lambda: 0)())
+            db_pool_checkedout.set(engine.pool.checkedout())
+            db_pool_overflow.set(engine.pool.overflow())
+            
         return {"status": "ok"}
     except Exception as exc:  # noqa: BLE001
         return {"status": "error", "detail": str(exc)}
@@ -22,7 +31,15 @@ async def check_postgres() -> dict[str, Any]:
 
 async def check_redis() -> dict[str, Any]:
     try:
-        pong = await get_redis().ping()
+        redis = get_redis()
+        pong = await redis.ping()
+        
+        # Update metrics
+        from app.core.metrics import redis_connected_clients
+        info = await redis.info("clients")
+        if info:
+            redis_connected_clients.set(info.get("connected_clients", 0))
+            
         return {"status": "ok" if pong else "error"}
     except Exception as exc:  # noqa: BLE001
         return {"status": "error", "detail": str(exc)}

@@ -1,0 +1,1239 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Domain Modules &mdash; EduBoost SA 2.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=c5a06975" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=51b770b3"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API Routers" href="routers.html" />
+    <link rel="prev" title="Core — Shared Kernel" href="core.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EduBoost SA
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="core.html">Core — Shared Kernel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core.html#module-app.core.config">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.config.Settings"><code class="docutils literal notranslate"><span class="pre">Settings</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.APP_NAME"><code class="docutils literal notranslate"><span class="pre">Settings.APP_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.APP_VERSION"><code class="docutils literal notranslate"><span class="pre">Settings.APP_VERSION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.APP_BASE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.APP_BASE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ENVIRONMENT"><code class="docutils literal notranslate"><span class="pre">Settings.ENVIRONMENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.APP_ENV"><code class="docutils literal notranslate"><span class="pre">Settings.APP_ENV</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.DEBUG"><code class="docutils literal notranslate"><span class="pre">Settings.DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LEGACY_RETIREMENT_DATE"><code class="docutils literal notranslate"><span class="pre">Settings.LEGACY_RETIREMENT_DATE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.DATABASE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.DATABASE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.REDIS_URL"><code class="docutils literal notranslate"><span class="pre">Settings.REDIS_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.REDIS_CACHE_TTL_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.REDIS_CACHE_TTL_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.SEMANTIC_CACHE_TTL_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.SEMANTIC_CACHE_TTL_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.JWT_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.JWT_ALGORITHM"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_ALGORITHM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ENCRYPTION_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.ENCRYPTION_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ENCRYPTION_SALT"><code class="docutils literal notranslate"><span class="pre">Settings.ENCRYPTION_SALT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.BACKUP_ENCRYPTION_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.BACKUP_ENCRYPTION_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.BACKUP_RETENTION_DAYS"><code class="docutils literal notranslate"><span class="pre">Settings.BACKUP_RETENTION_DAYS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ANTHROPIC_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.ANTHROPIC_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GROQ_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.GROQ_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.HUGGINGFACE_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.HUGGINGFACE_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ANTHROPIC_MODEL"><code class="docutils literal notranslate"><span class="pre">Settings.ANTHROPIC_MODEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.INFERENCE_SERVICE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.INFERENCE_SERVICE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LLM_TIMEOUT_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_TIMEOUT_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LLM_MAX_RETRIES"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_MAX_RETRIES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LLM_PROVIDER"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_PROVIDER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOCAL_BASE_MODEL_ID"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_BASE_MODEL_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOCAL_ADAPTER_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_ADAPTER_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOCAL_MERGED_MODEL_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_MERGED_MODEL_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOCAL_LLM_MAX_NEW_TOKENS"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_LLM_MAX_NEW_TOKENS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOCAL_LLM_TEMPERATURE"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_LLM_TEMPERATURE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.FREE_DAILY_REQUEST_QUOTA"><code class="docutils literal notranslate"><span class="pre">Settings.FREE_DAILY_REQUEST_QUOTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PREMIUM_DAILY_REQUEST_QUOTA"><code class="docutils literal notranslate"><span class="pre">Settings.PREMIUM_DAILY_REQUEST_QUOTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.STRIPE_SECRET_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_SECRET_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.STRIPE_WEBHOOK_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_WEBHOOK_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.STRIPE_PRICE_ID_PREMIUM"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_PRICE_ID_PREMIUM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.POSTHOG_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.POSTHOG_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.POSTHOG_HOST"><code class="docutils literal notranslate"><span class="pre">Settings.POSTHOG_HOST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.SENDGRID_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.SENDGRID_FROM_EMAIL"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_FROM_EMAIL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.SENDGRID_FROM_NAME"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_FROM_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_KEY_VAULT_URL"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_KEY_VAULT_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_CLIENT_ID"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_CLIENT_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_CLIENT_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_CLIENT_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_TENANT_ID"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_TENANT_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_STORAGE_CONNECTION_STRING"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_STORAGE_CONNECTION_STRING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_STORAGE_CONTAINER"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_STORAGE_CONTAINER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GRAFANA_CLOUD_PROMETHEUS_URL"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_PROMETHEUS_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GRAFANA_CLOUD_LOKI_URL"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_LOKI_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GRAFANA_CLOUD_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PROMETHEUS_METRICS_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.PROMETHEUS_METRICS_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOG_LEVEL"><code class="docutils literal notranslate"><span class="pre">Settings.LOG_LEVEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.SENTRY_DSN"><code class="docutils literal notranslate"><span class="pre">Settings.SENTRY_DSN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.KEY_VAULT_REFRESH_INTERVAL_HOURS"><code class="docutils literal notranslate"><span class="pre">Settings.KEY_VAULT_REFRESH_INTERVAL_HOURS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.RATE_LIMIT_DEFAULT"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_DEFAULT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.RATE_LIMIT_AUTH"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_AUTH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.RATE_LIMIT_LLM"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_LLM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ARQ_MAX_JOBS"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_MAX_JOBS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ARQ_JOB_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_JOB_TIMEOUT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ALLOWED_ORIGINS"><code class="docutils literal notranslate"><span class="pre">Settings.ALLOWED_ORIGINS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.is_production"><code class="docutils literal notranslate"><span class="pre">Settings.is_production()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.refresh_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.refresh_from_key_vault()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.load_production_secrets_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.load_production_secrets_from_key_vault()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.config.get_settings"><code class="docutils literal notranslate"><span class="pre">get_settings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#module-app.core.security">Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.Role"><code class="docutils literal notranslate"><span class="pre">Role</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.create_access_token"><code class="docutils literal notranslate"><span class="pre">create_access_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.create_refresh_token"><code class="docutils literal notranslate"><span class="pre">create_refresh_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.decode_token"><code class="docutils literal notranslate"><span class="pre">decode_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.get_current_user"><code class="docutils literal notranslate"><span class="pre">get_current_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.hash_email"><code class="docutils literal notranslate"><span class="pre">hash_email()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.hash_password"><code class="docutils literal notranslate"><span class="pre">hash_password()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.require_admin"><code class="docutils literal notranslate"><span class="pre">require_admin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.require_parent_or_admin"><code class="docutils literal notranslate"><span class="pre">require_parent_or_admin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.require_role"><code class="docutils literal notranslate"><span class="pre">require_role()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.require_roles"><code class="docutils literal notranslate"><span class="pre">require_roles()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.require_teacher_or_admin"><code class="docutils literal notranslate"><span class="pre">require_teacher_or_admin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.verify_password"><code class="docutils literal notranslate"><span class="pre">verify_password()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#module-app.core.audit">Audit Trail</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.audit.FourthEstateService"><code class="docutils literal notranslate"><span class="pre">FourthEstateService</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.audit.FourthEstateService.record"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.record()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.audit.FourthEstateService.consent_granted"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.consent_granted()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.audit.FourthEstateService.consent_revoked"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.consent_revoked()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.audit.FourthEstateService.erasure_requested"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.erasure_requested()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.audit.FourthEstateService.erasure_executed"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.erasure_executed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.audit.FourthEstateService.lesson_generated"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.lesson_generated()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.audit.FourthEstateService.constitutional_violation"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.constitutional_violation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.audit.FourthEstateService.auth_event"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.auth_event()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.audit.FourthEstateService.access_rejected"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.access_rejected()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.audit.FourthEstateService.subscription_changed"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.subscription_changed()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Domain Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#diagnostics-irt-engine">Diagnostics — IRT Engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.modules.diagnostics.irt_engine.p_correct"><code class="docutils literal notranslate"><span class="pre">p_correct()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.modules.diagnostics.irt_engine.fisher_information"><code class="docutils literal notranslate"><span class="pre">fisher_information()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.modules.diagnostics.irt_engine.update_theta_mle"><code class="docutils literal notranslate"><span class="pre">update_theta_mle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.modules.diagnostics.irt_engine.DiagnosticEngine"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.diagnostics.irt_engine.DiagnosticEngine.compute_theta"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.compute_theta()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.diagnostics.irt_engine.DiagnosticEngine.estimate_theta_eap"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.estimate_theta_eap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.diagnostics.irt_engine.DiagnosticEngine.identify_gaps"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.identify_gaps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.diagnostics.irt_engine.DiagnosticEngine.select_next_item"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.select_next_item()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.diagnostics.irt_engine.DiagnosticEngine.should_stop"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.should_stop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.diagnostics.irt_engine.DiagnosticEngine.map_grade_equivalent"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.map_grade_equivalent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.diagnostics.irt_engine.DiagnosticEngine.run_gap_probe_cascade"><code class="docutils literal notranslate"><span class="pre">DiagnosticEngine.run_gap_probe_cascade()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lessons-llm-gateway">Lessons — LLM Gateway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.modules.lessons.llm_gateway.LLMResponse"><code class="docutils literal notranslate"><span class="pre">LLMResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.lessons.llm_gateway.LLMResponse.content"><code class="docutils literal notranslate"><span class="pre">LLMResponse.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.lessons.llm_gateway.LLMResponse.provider"><code class="docutils literal notranslate"><span class="pre">LLMResponse.provider</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.lessons.llm_gateway.LLMResponse.prompt_tokens"><code class="docutils literal notranslate"><span class="pre">LLMResponse.prompt_tokens</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.lessons.llm_gateway.LLMResponse.completion_tokens"><code class="docutils literal notranslate"><span class="pre">LLMResponse.completion_tokens</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.lessons.llm_gateway.LLMResponse.model"><code class="docutils literal notranslate"><span class="pre">LLMResponse.model</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#app.modules.lessons.llm_gateway.LLMGateway"><code class="docutils literal notranslate"><span class="pre">LLMGateway</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.lessons.llm_gateway.LLMGateway.generate"><code class="docutils literal notranslate"><span class="pre">LLMGateway.generate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#consent-popia-service">Consent — POPIA Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.modules.consent.service.ConsentService"><code class="docutils literal notranslate"><span class="pre">ConsentService</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.consent.service.ConsentService.__init__"><code class="docutils literal notranslate"><span class="pre">ConsentService.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.consent.service.ConsentService.require_active_consent"><code class="docutils literal notranslate"><span class="pre">ConsentService.require_active_consent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.consent.service.ConsentService.grant"><code class="docutils literal notranslate"><span class="pre">ConsentService.grant()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.consent.service.ConsentService.revoke"><code class="docutils literal notranslate"><span class="pre">ConsentService.revoke()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.consent.service.ConsentService.renew"><code class="docutils literal notranslate"><span class="pre">ConsentService.renew()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.consent.service.ConsentService.execute_erasure"><code class="docutils literal notranslate"><span class="pre">ConsentService.execute_erasure()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.consent.service.ConsentService.get_status"><code class="docutils literal notranslate"><span class="pre">ConsentService.get_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.modules.consent.service.ConsentService.get_expiring_consents"><code class="docutils literal notranslate"><span class="pre">ConsentService.get_expiring_consents()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.modules.learners">Learners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.modules.study_plans">Study Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.modules.gamification">Gamification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.modules.parent_portal">Parent Portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.modules.rlhf">RLHF Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routers.html">API Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">ORM Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.UserRole"><code class="docutils literal notranslate"><span class="pre">UserRole</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.UserRole.STUDENT"><code class="docutils literal notranslate"><span class="pre">UserRole.STUDENT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.UserRole.PARENT"><code class="docutils literal notranslate"><span class="pre">UserRole.PARENT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.UserRole.TEACHER"><code class="docutils literal notranslate"><span class="pre">UserRole.TEACHER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.UserRole.ADMIN"><code class="docutils literal notranslate"><span class="pre">UserRole.ADMIN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.SubscriptionTier"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.SubscriptionTier.FREE"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier.FREE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.SubscriptionTier.PREMIUM"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier.PREMIUM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.ArchetypeLabel"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.KETER"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.KETER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.CHOKMAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.CHOKMAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.BINAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.BINAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.CHESED"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.CHESED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.GEVURAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.GEVURAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.TIFERET"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.TIFERET</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.NETZACH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.NETZACH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.HOD"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.HOD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.YESOD"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.YESOD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.MALKUTH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.MALKUTH</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.Language"><code class="docutils literal notranslate"><span class="pre">Language</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Language.ENGLISH"><code class="docutils literal notranslate"><span class="pre">Language.ENGLISH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Language.ISIZULU"><code class="docutils literal notranslate"><span class="pre">Language.ISIZULU</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Language.AFRIKAANS"><code class="docutils literal notranslate"><span class="pre">Language.AFRIKAANS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Language.ISIXHOSA"><code class="docutils literal notranslate"><span class="pre">Language.ISIXHOSA</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.Guardian"><code class="docutils literal notranslate"><span class="pre">Guardian</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Guardian.learners"><code class="docutils literal notranslate"><span class="pre">Guardian.learners</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Guardian.consents"><code class="docutils literal notranslate"><span class="pre">Guardian.consents</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.LearnerProfile"><code class="docutils literal notranslate"><span class="pre">LearnerProfile</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.LearnerProfile.guardian"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.guardian</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.LearnerProfile.consents"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.consents</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.LearnerProfile.knowledge_gaps"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.knowledge_gaps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.LearnerProfile.mastery_records"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.mastery_records</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.LearnerProfile.diagnostic_sessions"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.diagnostic_sessions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.LearnerProfile.lessons"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.lessons</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.Learner"><code class="docutils literal notranslate"><span class="pre">Learner</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.ParentalConsent"><code class="docutils literal notranslate"><span class="pre">ParentalConsent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ParentalConsent.guardian"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.guardian</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ParentalConsent.learner"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.learner</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ParentalConsent.is_active"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.is_active</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.AuditEvent"><code class="docutils literal notranslate"><span class="pre">AuditEvent</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.IRTItem"><code class="docutils literal notranslate"><span class="pre">IRTItem</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.DiagnosticSession"><code class="docutils literal notranslate"><span class="pre">DiagnosticSession</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.DiagnosticSession.learner"><code class="docutils literal notranslate"><span class="pre">DiagnosticSession.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.KnowledgeGap"><code class="docutils literal notranslate"><span class="pre">KnowledgeGap</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.KnowledgeGap.learner"><code class="docutils literal notranslate"><span class="pre">KnowledgeGap.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.SubjectMastery"><code class="docutils literal notranslate"><span class="pre">SubjectMastery</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.SubjectMastery.learner"><code class="docutils literal notranslate"><span class="pre">SubjectMastery.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.Lesson"><code class="docutils literal notranslate"><span class="pre">Lesson</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Lesson.learner"><code class="docutils literal notranslate"><span class="pre">Lesson.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.AuditLog"><code class="docutils literal notranslate"><span class="pre">AuditLog</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.StripeWebhookEvent"><code class="docutils literal notranslate"><span class="pre">StripeWebhookEvent</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.LessonRecord"><code class="docutils literal notranslate"><span class="pre">LessonRecord</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="repositories.html">Repositories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.AssessmentRepository"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.AssessmentRepository.list_assessments"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.list_assessments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.AssessmentRepository.get_assessment"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.get_assessment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.AssessmentRepository.create_attempt"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.create_attempt()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.AuditRepository"><code class="docutils literal notranslate"><span class="pre">AuditRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.AuditRepository.append"><code class="docutils literal notranslate"><span class="pre">AuditRepository.append()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.AuditRepository.log"><code class="docutils literal notranslate"><span class="pre">AuditRepository.log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.AuditRepository.latest"><code class="docutils literal notranslate"><span class="pre">AuditRepository.latest()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.AuditRepository.get_by_id"><code class="docutils literal notranslate"><span class="pre">AuditRepository.get_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.AuditRepository.get_by_resource"><code class="docutils literal notranslate"><span class="pre">AuditRepository.get_by_resource()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.AuditRepository.get_by_actor"><code class="docutils literal notranslate"><span class="pre">AuditRepository.get_by_actor()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.AuthRepository"><code class="docutils literal notranslate"><span class="pre">AuthRepository</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.ConsentRepository"><code class="docutils literal notranslate"><span class="pre">ConsentRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.ConsentRepository.model"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.ConsentRepository.get_active"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.get_active()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.ConsentRepository.grant"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.grant()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.ConsentRepository.revoke"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.revoke()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.ConsentRepository.renew"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.renew()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.ConsentRepository.get_expiring_soon"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.get_expiring_soon()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.DiagnosticRepository"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.DiagnosticRepository.model"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.DiagnosticRepository.get_latest_for_learner"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.get_latest_for_learner()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.DiagnosticRepository.create_session"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.create_session()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.GamificationRepository"><code class="docutils literal notranslate"><span class="pre">GamificationRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.GamificationRepository.get_profile_rows"><code class="docutils literal notranslate"><span class="pre">GamificationRepository.get_profile_rows()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.GamificationRepository.get_leaderboard_rows"><code class="docutils literal notranslate"><span class="pre">GamificationRepository.get_leaderboard_rows()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.GuardianRepository"><code class="docutils literal notranslate"><span class="pre">GuardianRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.GuardianRepository.model"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.GuardianRepository.get_by_email_hash"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_email_hash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.GuardianRepository.get_by_verification_token"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_verification_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.GuardianRepository.get_guardian_by_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_guardian_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.GuardianRepository.revoke_jti"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.revoke_jti()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.GuardianRepository.is_jti_revoked"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.is_jti_revoked()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.LearnerRepository"><code class="docutils literal notranslate"><span class="pre">LearnerRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LearnerRepository.model"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LearnerRepository.get_by_id"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.get_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LearnerRepository.delete_by_id"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.delete_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LearnerRepository.soft_delete"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.soft_delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LearnerRepository.purge_personal_data"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.purge_personal_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.LessonRepository"><code class="docutils literal notranslate"><span class="pre">LessonRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LessonRepository.model"><code class="docutils literal notranslate"><span class="pre">LessonRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LessonRepository.get_recent_for_learner"><code class="docutils literal notranslate"><span class="pre">LessonRepository.get_recent_for_learner()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../notes/changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/changelog.html#v2-0-0-may-2026">v2.0.0 (May 2026)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/todo.html">Outstanding Work</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EduBoost SA</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Domain Modules</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="domain-modules">
+<h1>Domain Modules<a class="headerlink" href="#domain-modules" title="Link to this heading"></a></h1>
+<p>Domain logic is organised into bounded contexts under <code class="docutils literal notranslate"><span class="pre">app.modules</span></code>.
+Each sub-package owns its own service layer, schemas, and (where needed)
+background workers.</p>
+<nav class="contents local" id="bounded-contexts">
+<p class="topic-title">Bounded Contexts</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#diagnostics-irt-engine" id="id1">Diagnostics — IRT Engine</a></p></li>
+<li><p><a class="reference internal" href="#lessons-llm-gateway" id="id2">Lessons — LLM Gateway</a></p></li>
+<li><p><a class="reference internal" href="#consent-popia-service" id="id3">Consent — POPIA Service</a></p></li>
+<li><p><a class="reference internal" href="#module-app.modules.learners" id="id4">Learners</a></p></li>
+<li><p><a class="reference internal" href="#module-app.modules.study_plans" id="id5">Study Plans</a></p></li>
+<li><p><a class="reference internal" href="#module-app.modules.gamification" id="id6">Gamification</a></p></li>
+<li><p><a class="reference internal" href="#module-app.modules.parent_portal" id="id7">Parent Portal</a></p></li>
+<li><p><a class="reference internal" href="#module-app.modules.rlhf" id="id8">RLHF Pipeline</a></p></li>
+</ul>
+</nav>
+<hr class="docutils" />
+<section id="diagnostics-irt-engine">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Diagnostics — IRT Engine</a><a class="headerlink" href="#diagnostics-irt-engine" title="Link to this heading"></a></h2>
+<p>Implements the IRT 2-Parameter Logistic model for adaptive ability
+estimation and item selection.</p>
+<p id="module-app.modules.diagnostics.irt_engine">IRT 2-Parameter Logistic (2PL) adaptive diagnostic engine.</p>
+<p>Implements Item Response Theory scoring used to estimate each learner’s
+latent ability (theta, θ) from their responses to adaptive questions.
+The 2PL model uses per-item <em>discrimination</em> (a) and <em>difficulty</em> (b)
+parameters calibrated against the South African CAPS curriculum for
+grades R–7.</p>
+<p>Mathematical model:</p>
+<div class="math notranslate nohighlight">
+\[P(X=1 \mid \theta) = \frac{1}{1 + e^{-a(\theta - b)}}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\theta\)</span> — learner ability estimate (logit scale, typically −4 to +4)</p></li>
+<li><p><span class="math notranslate nohighlight">\(a\)</span> — item discrimination (steepness of the ICC curve)</p></li>
+<li><p><span class="math notranslate nohighlight">\(b\)</span> — item difficulty (ability level at which P = 0.5)</p></li>
+</ul>
+<p class="rubric">Example</p>
+<p>Run a full diagnostic cascade:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">app.modules.diagnostics.irt_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">DiagnosticEngine</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">DiagnosticEngine</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">run_gap_probe_cascade</span><span class="p">(</span>
+    <span class="n">learner_grade</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="n">item_bank</span><span class="p">,</span>
+    <span class="n">correct_item_ids</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;q1&quot;</span><span class="p">,</span> <span class="s2">&quot;q3&quot;</span><span class="p">,</span> <span class="s2">&quot;q5&quot;</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;θ = </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;standard_error&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="app.modules.diagnostics.irt_engine.p_correct">
+<span class="sig-prename descclassname"><span class="pre">app.modules.diagnostics.irt_engine.</span></span><span class="sig-name descname"><span class="pre">p_correct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/diagnostics/irt_engine.html#p_correct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.diagnostics.irt_engine.p_correct" title="Link to this definition"></a></dt>
+<dd><p>Compute the 2PL probability of a correct response.</p>
+<p>Implements the Item Characteristic Curve (ICC):</p>
+<div class="math notranslate nohighlight">
+\[P(\theta) = \frac{1}{1 + e^{-a(\theta - b)}}\]</div>
+<p>Parameters are hard-clamped to prevent overflow:
+<code class="docutils literal notranslate"><span class="pre">a</span></code> ∈ [0.1, 4.0], <code class="docutils literal notranslate"><span class="pre">b</span></code> ∈ [−4, 4], <code class="docutils literal notranslate"><span class="pre">θ</span></code> ∈ [−5, 5].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Learner ability estimate on the IRT logit scale.</p></li>
+<li><p><strong>a</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Item discrimination parameter (typically 0.5–2.5).</p></li>
+<li><p><strong>b</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Item difficulty parameter (typically −3 to +3).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Probability of a correct response in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">p_correct</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-9</span>  <span class="c1"># theta == b → P = 0.5</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.modules.diagnostics.irt_engine.fisher_information">
+<span class="sig-prename descclassname"><span class="pre">app.modules.diagnostics.irt_engine.</span></span><span class="sig-name descname"><span class="pre">fisher_information</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/diagnostics/irt_engine.html#fisher_information"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.diagnostics.irt_engine.fisher_information" title="Link to this definition"></a></dt>
+<dd><p>Compute the Fisher information for a given IRT item.</p>
+<p>Measures how much statistical information the item provides about
+ability around the current theta estimate:</p>
+<div class="math notranslate nohighlight">
+\[I(\theta) = a^2 \cdot P(\theta) \cdot [1 - P(\theta)]\]</div>
+<p>Items with high discrimination (<code class="docutils literal notranslate"><span class="pre">a</span></code>) and difficulty close to
+<code class="docutils literal notranslate"><span class="pre">theta</span></code> provide the most information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Learner ability estimate.</p></li>
+<li><p><strong>a</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Item discrimination parameter.</p></li>
+<li><p><strong>b</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Item difficulty parameter.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Fisher information scalar value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="n">fisher_information</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">info</span> <span class="o">&gt;</span> <span class="mi">0</span>  <span class="c1"># maximum info when theta == b</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.modules.diagnostics.irt_engine.update_theta_mle">
+<span class="sig-prename descclassname"><span class="pre">app.modules.diagnostics.irt_engine.</span></span><span class="sig-name descname"><span class="pre">update_theta_mle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">responses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/diagnostics/irt_engine.html#update_theta_mle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.diagnostics.irt_engine.update_theta_mle" title="Link to this definition"></a></dt>
+<dd><p>Estimate theta using Newton-Raphson maximum likelihood estimation.</p>
+<p>Maximises the log-likelihood of the observed response pattern
+given the 2PL model.  Convergence is reached when the update step
+is smaller than <code class="docutils literal notranslate"><span class="pre">1e-4</span></code> or <code class="docutils literal notranslate"><span class="pre">max_iter</span></code> is exhausted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Initial ability value to seed the optimisation.</p></li>
+<li><p><strong>responses</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><em>tuple</em></a><em>[</em><a class="reference internal" href="models.html#app.models.IRTItem" title="app.models.IRTItem"><em>IRTItem</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>]</em><em>]</em>) – List of <code class="docutils literal notranslate"><span class="pre">(item,</span> <span class="pre">correct)</span></code> tuples pairing
+<code class="xref py py-class docutils literal notranslate"><span class="pre">IRTItem</span></code> instances with
+correctness flags.</p></li>
+<li><p><strong>max_iter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Maximum Newton-Raphson iterations (default <code class="docutils literal notranslate"><span class="pre">20</span></code>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Estimated theta value clamped to <code class="docutils literal notranslate"><span class="pre">[-4,</span> <span class="pre">4]</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span> <span class="o">=</span> <span class="n">update_theta_mle</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="p">[(</span><span class="n">item</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span> <span class="p">(</span><span class="n">item2</span><span class="p">,</span> <span class="kc">False</span><span class="p">)])</span>
+<span class="k">assert</span> <span class="o">-</span><span class="mf">4.0</span> <span class="o">&lt;=</span> <span class="n">theta</span> <span class="o">&lt;=</span> <span class="mf">4.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.modules.diagnostics.irt_engine.DiagnosticEngine">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.modules.diagnostics.irt_engine.</span></span><span class="sig-name descname"><span class="pre">DiagnosticEngine</span></span><a class="reference internal" href="../_modules/app/modules/diagnostics/irt_engine.html#DiagnosticEngine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.diagnostics.irt_engine.DiagnosticEngine" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Runs the Gap-Probe Cascade using a real IRT item bank.</p>
+<p>The engine estimates learner ability via Expected A Posteriori (EAP)
+integration, identifies knowledge gaps from missed items, selects
+the next most informative item via Fisher information, and returns
+grade-equivalent guidance aligned to the CAPS curriculum.</p>
+<p>All public methods are synchronous (CPU-bound maths); database I/O
+is handled by the calling service layer.</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">engine</span> <span class="o">=</span> <span class="n">DiagnosticEngine</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">run_gap_probe_cascade</span><span class="p">(</span>
+    <span class="n">learner_grade</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="n">bank</span><span class="p">,</span>
+    <span class="n">correct_item_ids</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;q1&quot;</span><span class="p">,</span> <span class="s2">&quot;q3&quot;</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;theta&quot;</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;ranked_gaps&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="app.modules.diagnostics.irt_engine.DiagnosticEngine.compute_theta">
+<span class="sig-name descname"><span class="pre">compute_theta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">starting_theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_item_ids</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/diagnostics/irt_engine.html#DiagnosticEngine.compute_theta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.diagnostics.irt_engine.DiagnosticEngine.compute_theta" title="Link to this definition"></a></dt>
+<dd><p>Compute learner theta from administered item results.</p>
+<p>Delegates to <a class="reference internal" href="#app.modules.diagnostics.irt_engine.DiagnosticEngine.estimate_theta_eap" title="app.modules.diagnostics.irt_engine.DiagnosticEngine.estimate_theta_eap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">estimate_theta_eap()</span></code></a> with the given
+<code class="docutils literal notranslate"><span class="pre">starting_theta</span></code> as the prior mean.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>starting_theta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Initial ability estimate for the learner.</p></li>
+<li><p><strong>items</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference internal" href="models.html#app.models.IRTItem" title="app.models.IRTItem"><em>IRTItem</em></a><em>]</em>) – List of administered <code class="xref py py-class docutils literal notranslate"><span class="pre">IRTItem</span></code>
+instances.</p></li>
+<li><p><strong>correct_item_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><em>set</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>) – Set of item IDs answered correctly.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Estimated learner theta.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">compute_theta</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;q1&quot;</span><span class="p">,</span> <span class="s2">&quot;q3&quot;</span><span class="p">})</span>
+<span class="k">assert</span> <span class="o">-</span><span class="mf">4.0</span> <span class="o">&lt;=</span> <span class="n">theta</span> <span class="o">&lt;=</span> <span class="mf">4.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.modules.diagnostics.irt_engine.DiagnosticEngine.estimate_theta_eap">
+<span class="sig-name descname"><span class="pre">estimate_theta_eap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">responses</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">prior_mean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prior_sd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-4.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/diagnostics/irt_engine.html#DiagnosticEngine.estimate_theta_eap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.diagnostics.irt_engine.DiagnosticEngine.estimate_theta_eap" title="Link to this definition"></a></dt>
+<dd><p>Estimate theta via Expected A Posteriori (EAP) integration.</p>
+<p>Computes the posterior mean of theta by integrating over a
+discrete grid with a Gaussian prior:</p>
+<div class="math notranslate nohighlight">
+\[\hat{\theta}_{EAP} = \frac{\sum_k \theta_k \cdot L(\theta_k) \cdot \pi(\theta_k)}
+{\sum_k L(\theta_k) \cdot \pi(\theta_k)}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>responses</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><em>tuple</em></a><em>[</em><a class="reference internal" href="models.html#app.models.IRTItem" title="app.models.IRTItem"><em>IRTItem</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>]</em><em>]</em>) – List of <code class="docutils literal notranslate"><span class="pre">(item,</span> <span class="pre">correct)</span></code> tuples.</p></li>
+<li><p><strong>prior_mean</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Mean of the Gaussian prior for theta.</p></li>
+<li><p><strong>prior_sd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Standard deviation of the theta prior.</p></li>
+<li><p><strong>theta_min</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Minimum theta on the integration grid.</p></li>
+<li><p><strong>theta_max</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Maximum theta on the integration grid.</p></li>
+<li><p><strong>step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Grid resolution for theta values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">(theta_estimate,</span> <span class="pre">standard_error)</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)">tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span><span class="p">,</span> <span class="n">se</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">estimate_theta_eap</span><span class="p">(</span>
+    <span class="p">[(</span><span class="n">item1</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span> <span class="p">(</span><span class="n">item2</span><span class="p">,</span> <span class="kc">False</span><span class="p">)],</span>
+    <span class="n">prior_mean</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">assert</span> <span class="o">-</span><span class="mf">4.0</span> <span class="o">&lt;=</span> <span class="n">theta</span> <span class="o">&lt;=</span> <span class="mf">4.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.modules.diagnostics.irt_engine.DiagnosticEngine.identify_gaps">
+<span class="sig-name descname"><span class="pre">identify_gaps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_item_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/diagnostics/irt_engine.html#DiagnosticEngine.identify_gaps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.diagnostics.irt_engine.DiagnosticEngine.identify_gaps" title="Link to this definition"></a></dt>
+<dd><p>Identify knowledge gaps from missed items.</p>
+<p>An item is considered a gap when the learner missed it and its
+normalised difficulty exceeds the threshold.  Gaps are deduplicated
+by <code class="docutils literal notranslate"><span class="pre">subject::topic</span></code> and ranked by severity (descending).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>items</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference internal" href="models.html#app.models.IRTItem" title="app.models.IRTItem"><em>IRTItem</em></a><em>]</em>) – List of administered <code class="xref py py-class docutils literal notranslate"><span class="pre">IRTItem</span></code>
+instances.</p></li>
+<li><p><strong>correct_item_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><em>set</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>) – Set of correctly answered item IDs.</p></li>
+<li><p><strong>threshold_p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Minimum expected probability of correctness to
+count as a gap when missed (default <code class="docutils literal notranslate"><span class="pre">0.50</span></code>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Ranked list of gap dictionaries with keys
+<code class="docutils literal notranslate"><span class="pre">grade</span></code>, <code class="docutils literal notranslate"><span class="pre">subject</span></code>, <code class="docutils literal notranslate"><span class="pre">topic</span></code>, and <code class="docutils literal notranslate"><span class="pre">severity</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gaps</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">identify_gaps</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;q1&quot;</span><span class="p">})</span>
+<span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="s2">&quot;severity&quot;</span> <span class="ow">in</span> <span class="n">g</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gaps</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.modules.diagnostics.irt_engine.DiagnosticEngine.select_next_item">
+<span class="sig-name descname"><span class="pre">select_next_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">administered_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bank</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/diagnostics/irt_engine.html#DiagnosticEngine.select_next_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.diagnostics.irt_engine.DiagnosticEngine.select_next_item" title="Link to this definition"></a></dt>
+<dd><p>Select the next item with maximum Fisher information.</p>
+<p>Uses <a class="reference internal" href="#app.modules.diagnostics.irt_engine.fisher_information" title="app.modules.diagnostics.irt_engine.fisher_information"><code class="xref py py-func docutils literal notranslate"><span class="pre">fisher_information()</span></code></a> as the item-selection criterion.
+Items already administered are excluded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Current ability estimate.</p></li>
+<li><p><strong>administered_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><em>set</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>) – Item IDs already shown in this session.</p></li>
+<li><p><strong>bank</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference internal" href="models.html#app.models.IRTItem" title="app.models.IRTItem"><em>IRTItem</em></a><em>]</em>) – Candidate <code class="xref py py-class docutils literal notranslate"><span class="pre">IRTItem</span></code> bank.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Most informative next item, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if
+the bank is exhausted.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="models.html#app.models.IRTItem" title="app.models.IRTItem">IRTItem</a> | None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">item</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">select_next_item</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;q1&quot;</span><span class="p">},</span> <span class="n">item_bank</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">item</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Next item: </span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.modules.diagnostics.irt_engine.DiagnosticEngine.should_stop">
+<span class="sig-name descname"><span class="pre">should_stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">administered_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standard_error</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/diagnostics/irt_engine.html#DiagnosticEngine.should_stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.diagnostics.irt_engine.DiagnosticEngine.should_stop" title="Link to this definition"></a></dt>
+<dd><p>Decide whether the adaptive diagnostic should stop.</p>
+<p>The session terminates when either the item cap (20) is reached
+or the standard error drops below the precision threshold (0.3).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>administered_count</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Number of items administered so far.</p></li>
+<li><p><strong>standard_error</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Current theta standard error.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> when the session should end.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">engine</span><span class="o">.</span><span class="n">should_stop</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">engine</span><span class="o">.</span><span class="n">should_stop</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">engine</span><span class="o">.</span><span class="n">should_stop</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.modules.diagnostics.irt_engine.DiagnosticEngine.map_grade_equivalent">
+<span class="sig-name descname"><span class="pre">map_grade_equivalent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learner_grade</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/diagnostics/irt_engine.html#DiagnosticEngine.map_grade_equivalent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.diagnostics.irt_engine.DiagnosticEngine.map_grade_equivalent" title="Link to this definition"></a></dt>
+<dd><p>Convert theta into a grade-equivalent recommendation.</p>
+<p>Maps the ability estimate to a recommended CAPS grade level
+(0–7) by applying a shift based on theta magnitude:</p>
+<ul class="simple">
+<li><p>θ ≤ −1.8 → −2 grades</p></li>
+<li><p>−1.8 &lt; θ ≤ −0.8 → −1 grade</p></li>
+<li><p>−0.8 &lt; θ &lt; 0.8 → same grade</p></li>
+<li><p>0.8 ≤ θ &lt; 1.8 → +1 grade</p></li>
+<li><p>θ ≥ 1.8 → +2 grades</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Estimated learner ability.</p></li>
+<li><p><strong>learner_grade</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Current learner grade level (0–7).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Recommended grade equivalent clamped to 0–7.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">engine</span><span class="o">.</span><span class="n">map_grade_equivalent</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="k">assert</span> <span class="n">engine</span><span class="o">.</span><span class="n">map_grade_equivalent</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.modules.diagnostics.irt_engine.DiagnosticEngine.run_gap_probe_cascade">
+<span class="sig-name descname"><span class="pre">run_gap_probe_cascade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner_grade</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_item_ids</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/diagnostics/irt_engine.html#DiagnosticEngine.run_gap_probe_cascade"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.diagnostics.irt_engine.DiagnosticEngine.run_gap_probe_cascade" title="Link to this definition"></a></dt>
+<dd><p>Execute the full adaptive gap-probe cascade.</p>
+<p>Orchestrates theta estimation, knowledge-gap identification, and
+grade-equivalent mapping into a single diagnostic dashboard.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>learner_grade</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Current CAPS grade of the learner (0–7).</p></li>
+<li><p><strong>items</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference internal" href="models.html#app.models.IRTItem" title="app.models.IRTItem"><em>IRTItem</em></a><em>]</em>) – List of candidate <code class="xref py py-class docutils literal notranslate"><span class="pre">IRTItem</span></code>
+instances.</p></li>
+<li><p><strong>correct_item_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><em>set</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>) – Set of IDs answered correctly.</p></li>
+<li><p><strong>starting_theta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Initial ability estimate (default <code class="docutils literal notranslate"><span class="pre">0.0</span></code>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>Dashboard dictionary containing:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">theta</span></code> — EAP ability estimate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">standard_error</span></code> — estimation precision</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grade_equivalent</span></code> — recommended CAPS grade</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ranked_gaps</span></code> — severity-ranked knowledge gaps</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">knowledge_gap_topics</span></code> — top-3 gap topic strings</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stopped</span></code> — whether stopping criteria were met</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mean_difficulty</span></code> — average item difficulty</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">run_gap_probe_cascade</span><span class="p">(</span>
+    <span class="n">learner_grade</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="n">bank</span><span class="p">,</span>
+    <span class="n">correct_item_ids</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;q1&quot;</span><span class="p">,</span> <span class="s2">&quot;q3&quot;</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="k">assert</span> <span class="s2">&quot;theta&quot;</span> <span class="ow">in</span> <span class="n">result</span>
+<span class="k">assert</span> <span class="s2">&quot;ranked_gaps&quot;</span> <span class="ow">in</span> <span class="n">result</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="lessons-llm-gateway">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Lessons — LLM Gateway</a><a class="headerlink" href="#lessons-llm-gateway" title="Link to this heading"></a></h2>
+<p>Provider-agnostic gateway for AI lesson generation with semantic caching
+and automatic Groq → Anthropic fallback.</p>
+<p id="module-app.modules.lessons.llm_gateway">Provider-agnostic LLM gateway with automatic fallback.</p>
+<p>Abstraction layer over Groq (primary) and Anthropic Claude (fallback)
+for all AI lesson-generation calls in EduBoost.  Real learner UUIDs are
+<strong>never</strong> passed to external providers — always use <code class="docutils literal notranslate"><span class="pre">pseudonym_id</span></code>.</p>
+<p>All calls are instrumented with Prometheus metrics via
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">app.core.metrics</span></code> for latency, token usage, and error tracking.</p>
+<p class="rubric">Example</p>
+<p>Generate a lesson completion:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">app.modules.lessons.llm_gateway</span><span class="w"> </span><span class="kn">import</span> <span class="n">LLMGateway</span>
+
+<span class="n">gateway</span> <span class="o">=</span> <span class="n">LLMGateway</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">gateway</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+    <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Explain fractions for Grade 4&quot;</span><span class="p">,</span>
+    <span class="n">system</span><span class="o">=</span><span class="s2">&quot;You are a CAPS-aligned tutor.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">[:</span><span class="mi">200</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.modules.lessons.llm_gateway.LLMResponse">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.modules.lessons.llm_gateway.</span></span><span class="sig-name descname"><span class="pre">LLMResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provider</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prompt_tokens</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">completion_tokens</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/lessons/llm_gateway.html#LLMResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMResponse" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Value object returned by the LLM gateway after a completion call.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>content</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>prompt_tokens</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>completion_tokens</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>model</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.modules.lessons.llm_gateway.LLMResponse.content">
+<span class="sig-name descname"><span class="pre">content</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMResponse.content" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.modules.lessons.llm_gateway.LLMResponse.provider">
+<span class="sig-name descname"><span class="pre">provider</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMResponse.provider" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.modules.lessons.llm_gateway.LLMResponse.prompt_tokens">
+<span class="sig-name descname"><span class="pre">prompt_tokens</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMResponse.prompt_tokens" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.modules.lessons.llm_gateway.LLMResponse.completion_tokens">
+<span class="sig-name descname"><span class="pre">completion_tokens</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMResponse.completion_tokens" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.modules.lessons.llm_gateway.LLMResponse.model">
+<span class="sig-name descname"><span class="pre">model</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMResponse.model" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.modules.lessons.llm_gateway.LLMGateway">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.modules.lessons.llm_gateway.</span></span><span class="sig-name descname"><span class="pre">LLMGateway</span></span><a class="reference internal" href="../_modules/app/modules/lessons/llm_gateway.html#LLMGateway"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMGateway" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Async gateway for all LLM calls in EduBoost.</p>
+<p>Groq is the primary provider (fast, cost-effective).  Anthropic Claude
+is the automatic fallback.  Provider coupling is fully isolated here —
+service modules never call LLM APIs directly.</p>
+<p>The gateway instruments every call with <code class="xref py py-data docutils literal notranslate"><span class="pre">llm_latency_seconds</span></code>
+and <code class="xref py py-data docutils literal notranslate"><span class="pre">llm_requests_total</span></code> for observability.</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gateway</span> <span class="o">=</span> <span class="n">LLMGateway</span><span class="p">()</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="k">await</span> <span class="n">gateway</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s2">&quot;Explain place value for Grade 3.&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">provider</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;groq&quot;</span><span class="p">,</span> <span class="s2">&quot;anthropic&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="app.modules.lessons.llm_gateway.LLMGateway.generate">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompt</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">system</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_tokens</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1024</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/lessons/llm_gateway.html#LLMGateway.generate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMGateway.generate" title="Link to this definition"></a></dt>
+<dd><p>Generate an LLM completion with automatic provider fallback.</p>
+<p>Attempts Groq first; on any failure, transparently retries against
+Anthropic Claude.  Both attempts are recorded in Prometheus
+counters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prompt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – The user-facing prompt text to send to the model.</p></li>
+<li><p><strong>system</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Optional system prompt providing behavioural context
+(e.g. <code class="docutils literal notranslate"><span class="pre">&quot;You</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">CAPS-aligned</span> <span class="pre">tutor.&quot;</span></code>).</p></li>
+<li><p><strong>language</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – ISO 639-1 language code for the response
+(default <code class="docutils literal notranslate"><span class="pre">&quot;en&quot;</span></code>).</p></li>
+<li><p><strong>max_tokens</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Maximum tokens to generate (default <code class="docutils literal notranslate"><span class="pre">1024</span></code>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Generated text with provider metadata and
+token counts.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#app.modules.lessons.llm_gateway.LLMResponse" title="app.modules.lessons.llm_gateway.LLMResponse">LLMResponse</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>LLMError</strong> – When both Groq and Anthropic fail to produce a
+    response.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">resp</span> <span class="o">=</span> <span class="k">await</span> <span class="n">LLMGateway</span><span class="p">()</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+    <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;List the 9 provinces of South Africa.&quot;</span><span class="p">,</span>
+    <span class="n">system</span><span class="o">=</span><span class="s2">&quot;You are a helpful SA geography tutor.&quot;</span><span class="p">,</span>
+    <span class="n">max_tokens</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">content</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="consent-popia-service">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Consent — POPIA Service</a><a class="headerlink" href="#consent-popia-service" title="Link to this heading"></a></h2>
+<p>Full lifecycle management of parental consent records in compliance with
+the Protection of Personal Information Act.</p>
+<p id="module-app.modules.consent.service">POPIA parental consent lifecycle service.</p>
+<p>Enforces active parental consent before learner data or lesson generation
+can proceed.  All operations are audited for South African POPIA
+compliance using either a provided
+<a class="reference internal" href="repositories.html#app.repositories.AuditRepository" title="app.repositories.audit_repository.AuditRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">AuditRepository</span></code></a> or the
+<a class="reference internal" href="core.html#app.core.audit.FourthEstateService" title="app.core.audit.FourthEstateService"><code class="xref py py-class docutils literal notranslate"><span class="pre">FourthEstateService</span></code></a> fallback.</p>
+<p>Every consent state change (grant, revoke, renew, erasure) is recorded
+in the audit trail for compliance and investigation.</p>
+<p class="rubric">Example</p>
+<p>Check and enforce consent before accessing learner data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">app.modules.consent.service</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsentService</span>
+
+<span class="n">svc</span> <span class="o">=</span> <span class="n">ConsentService</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">svc</span><span class="o">.</span><span class="n">require_active_consent</span><span class="p">(</span><span class="s2">&quot;learner-uuid&quot;</span><span class="p">,</span> <span class="n">actor_id</span><span class="o">=</span><span class="s2">&quot;user-uuid&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.modules.consent.service.ConsentService">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.modules.consent.service.</span></span><span class="sig-name descname"><span class="pre">ConsentService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">consent_repo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audit_repo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/consent/service.html#ConsentService"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.consent.service.ConsentService" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Async POPIA consent lifecycle service.</p>
+<p>Exposes operations to grant, revoke, renew, and query parental
+consent records.  Every consent state change is recorded in the
+audit trail via <a class="reference internal" href="repositories.html#app.repositories.AuditRepository" title="app.repositories.audit_repository.AuditRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">AuditRepository</span></code></a>
+or <a class="reference internal" href="core.html#app.core.audit.FourthEstateService" title="app.core.audit.FourthEstateService"><code class="xref py py-class docutils literal notranslate"><span class="pre">FourthEstateService</span></code></a>.</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">svc</span> <span class="o">=</span> <span class="n">ConsentService</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+<span class="n">consent</span> <span class="o">=</span> <span class="k">await</span> <span class="n">svc</span><span class="o">.</span><span class="n">grant</span><span class="p">(</span>
+    <span class="n">guardian_id</span><span class="o">=</span><span class="s2">&quot;g-001&quot;</span><span class="p">,</span> <span class="n">learner_id</span><span class="o">=</span><span class="s2">&quot;l-001&quot;</span><span class="p">,</span>
+    <span class="n">consent_version</span><span class="o">=</span><span class="s2">&quot;1.2&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">assert</span> <span class="n">consent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>consent_repo</strong> (<a class="reference internal" href="repositories.html#app.repositories.ConsentRepository" title="app.repositories.ConsentRepository"><em>ConsentRepository</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>audit_repo</strong> (<a class="reference internal" href="repositories.html#app.repositories.AuditRepository" title="app.repositories.AuditRepository"><em>AuditRepository</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="app.modules.consent.service.ConsentService.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">consent_repo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audit_repo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/consent/service.html#ConsentService.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.consent.service.ConsentService.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialise the consent service with repository dependencies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>) – Optional async database session.  Required when explicit
+repositories are not provided.</p></li>
+<li><p><strong>consent_repo</strong> (<a class="reference internal" href="repositories.html#app.repositories.ConsentRepository" title="app.repositories.ConsentRepository"><em>ConsentRepository</em></a><em> | </em><em>None</em>) – Optional <a class="reference internal" href="repositories.html#app.repositories.ConsentRepository" title="app.repositories.consent_repository.ConsentRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConsentRepository</span></code></a>
+instance.  Created from <code class="docutils literal notranslate"><span class="pre">db</span></code> if not supplied.</p></li>
+<li><p><strong>audit_repo</strong> (<a class="reference internal" href="repositories.html#app.repositories.AuditRepository" title="app.repositories.AuditRepository"><em>AuditRepository</em></a><em> | </em><em>None</em>) – Optional <a class="reference internal" href="repositories.html#app.repositories.AuditRepository" title="app.repositories.audit_repository.AuditRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">AuditRepository</span></code></a>
+instance.  Created from <code class="docutils literal notranslate"><span class="pre">db</span></code> if not supplied.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If neither a database session nor a consent
+    repository is provided.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">svc</span> <span class="o">=</span> <span class="n">ConsentService</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>  <span class="c1"># auto-creates repos</span>
+<span class="n">svc</span> <span class="o">=</span> <span class="n">ConsentService</span><span class="p">(</span><span class="n">consent_repo</span><span class="o">=</span><span class="n">repo</span><span class="p">)</span>  <span class="c1"># explicit repo</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.modules.consent.service.ConsentService.require_active_consent">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">require_active_consent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/consent/service.html#ConsentService.require_active_consent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.consent.service.ConsentService.require_active_consent" title="Link to this definition"></a></dt>
+<dd><p>Enforce active consent for a learner.</p>
+<p>If no active consent exists, an audit event is appended and a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ConsentRequiredError</span></code> is raised.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>learner_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Learner identifier to validate consent for.</p></li>
+<li><p><strong>actor_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>) – Optional actor identifier for the audit event.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ConsentRequiredError</strong> – When the learner does not have active
+    consent.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">svc</span><span class="o">.</span><span class="n">require_active_consent</span><span class="p">(</span><span class="s2">&quot;l-001&quot;</span><span class="p">,</span> <span class="n">actor_id</span><span class="o">=</span><span class="s2">&quot;u-001&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.modules.consent.service.ConsentService.grant">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">grant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">guardian_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learner_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">consent_version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_agent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/consent/service.html#ConsentService.grant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.consent.service.ConsentService.grant" title="Link to this definition"></a></dt>
+<dd><p>Grant a new parental consent record.</p>
+<p>Creates a consent record via
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">grant()</span></code>
+and records a <code class="docutils literal notranslate"><span class="pre">consent.granted</span></code> audit event.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>guardian_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Guardian identifier granting consent.</p></li>
+<li><p><strong>learner_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Learner identifier covered by the consent.</p></li>
+<li><p><strong>consent_version</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Version of the consent policy agreed to.</p></li>
+<li><p><strong>ip_address</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>) – Optional IP address from the guardian’s session.</p></li>
+<li><p><strong>user_agent</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>) – Optional browser user agent string.</p></li>
+<li><p><strong>ip_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>) – Optional hashed IP for privacy-preserving audit.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The newly created consent record.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">consent</span> <span class="o">=</span> <span class="k">await</span> <span class="n">svc</span><span class="o">.</span><span class="n">grant</span><span class="p">(</span>
+    <span class="s2">&quot;g-001&quot;</span><span class="p">,</span> <span class="s2">&quot;l-001&quot;</span><span class="p">,</span> <span class="s2">&quot;1.2&quot;</span><span class="p">,</span> <span class="n">ip_address</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.modules.consent.service.ConsentService.revoke">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">revoke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guardian_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reason</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'revoked'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/consent/service.html#ConsentService.revoke"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.consent.service.ConsentService.revoke" title="Link to this definition"></a></dt>
+<dd><p>Revoke existing active consent for a learner.</p>
+<p>Sets consent status to revoked and records a <code class="docutils literal notranslate"><span class="pre">consent.revoked</span></code>
+audit event.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>learner_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Learner identifier whose consent is revoked.</p></li>
+<li><p><strong>guardian_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>) – Optional guardian identifier for the audit event.</p></li>
+<li><p><strong>reason</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Revocation reason (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;revoked&quot;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&quot;erasure_requested&quot;</span></code>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Number of consent records revoked.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="k">await</span> <span class="n">svc</span><span class="o">.</span><span class="n">revoke</span><span class="p">(</span><span class="s2">&quot;l-001&quot;</span><span class="p">,</span> <span class="n">guardian_id</span><span class="o">=</span><span class="s2">&quot;g-001&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">count</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.modules.consent.service.ConsentService.renew">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">renew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">guardian_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learner_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">consent_version</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/consent/service.html#ConsentService.renew"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.consent.service.ConsentService.renew" title="Link to this definition"></a></dt>
+<dd><p>Renew an existing consent record with a new policy version.</p>
+<p>Revokes the previous consent and creates a fresh record with
+the updated <code class="docutils literal notranslate"><span class="pre">consent_version</span></code>.  Records a <code class="docutils literal notranslate"><span class="pre">consent.renewed</span></code>
+audit event.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>guardian_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Guardian identifier renewing consent.</p></li>
+<li><p><strong>learner_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Learner identifier under consent.</p></li>
+<li><p><strong>consent_version</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – New consent policy version string.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The renewed consent record.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">renewed</span> <span class="o">=</span> <span class="k">await</span> <span class="n">svc</span><span class="o">.</span><span class="n">renew</span><span class="p">(</span><span class="s2">&quot;g-001&quot;</span><span class="p">,</span> <span class="s2">&quot;l-001&quot;</span><span class="p">,</span> <span class="s2">&quot;2.0&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.modules.consent.service.ConsentService.execute_erasure">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">execute_erasure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">guardian_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learner_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/consent/service.html#ConsentService.execute_erasure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.consent.service.ConsentService.execute_erasure" title="Link to this definition"></a></dt>
+<dd><p>Execute a POPIA right-to-erasure workflow for a learner.</p>
+<p>Revokes active consent via <a class="reference internal" href="#app.modules.consent.service.ConsentService.revoke" title="app.modules.consent.service.ConsentService.revoke"><code class="xref py py-meth docutils literal notranslate"><span class="pre">revoke()</span></code></a> and records a
+dedicated <code class="docutils literal notranslate"><span class="pre">consent.erasure_requested</span></code> audit event for
+compliance purposes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>guardian_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Guardian identifier requesting erasure.</p></li>
+<li><p><strong>learner_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Learner identifier whose data erasure is
+requested.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">svc</span><span class="o">.</span><span class="n">execute_erasure</span><span class="p">(</span><span class="s2">&quot;g-001&quot;</span><span class="p">,</span> <span class="s2">&quot;l-001&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.modules.consent.service.ConsentService.get_status">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/consent/service.html#ConsentService.get_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.consent.service.ConsentService.get_status" title="Link to this definition"></a></dt>
+<dd><p>Return the current active consent status for a learner.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>learner_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Learner identifier to query.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional consent record, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if no active consent
+exists.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">consent</span> <span class="o">=</span> <span class="k">await</span> <span class="n">svc</span><span class="o">.</span><span class="n">get_status</span><span class="p">(</span><span class="s2">&quot;l-001&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">consent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No active consent&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.modules.consent.service.ConsentService.get_expiring_consents">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_expiring_consents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/modules/consent/service.html#ConsentService.get_expiring_consents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.modules.consent.service.ConsentService.get_expiring_consents" title="Link to this definition"></a></dt>
+<dd><p>Return consent records expiring within a given window.</p>
+<p>Used by the ARQ consent-renewal reminder background job
+(<code class="xref py py-func docutils literal notranslate"><span class="pre">send_consent_renewal_reminders()</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>) – Optional database session.  Falls back to the service’s
+configured session via the repository.</p></li>
+<li><p><strong>days</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Number of days until expiry to include (default <code class="docutils literal notranslate"><span class="pre">30</span></code>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of consent records expiring within the window.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="module-app.modules.learners">
+<span id="learners"></span><h2><a class="toc-backref" href="#id4" role="doc-backlink">Learners</a><a class="headerlink" href="#module-app.modules.learners" title="Link to this heading"></a></h2>
+<p>Learner profile and archetype management module.</p>
+<p>Provides the <code class="xref py py-class docutils literal notranslate"><span class="pre">EtherService</span></code>
+(Constitutional Pillar 5 — <em>The Ether</em>) for cold-start onboarding and
+psychological archetype profiling.</p>
+<p>The archetype is assigned on the learner’s first session via a five-question
+micro-diagnostic, eliminating the legacy 8–10 event lag.  Archetype labels
+follow Kabbalistic naming (Keter, Chokmah, Binah, …) and map to concrete
+LLM prompt-tone modifiers for personalised lesson delivery.</p>
+</section>
+<hr class="docutils" />
+<section id="module-app.modules.study_plans">
+<span id="study-plans"></span><h2><a class="toc-backref" href="#id5" role="doc-backlink">Study Plans</a><a class="headerlink" href="#module-app.modules.study_plans" title="Link to this heading"></a></h2>
+<p>Study Plans module for EduBoost SA.</p>
+<p>Supports personalized study plan generation and learner scheduling.
+Implementation coming soon.</p>
+</section>
+<hr class="docutils" />
+<section id="module-app.modules.gamification">
+<span id="gamification"></span><h2><a class="toc-backref" href="#id6" role="doc-backlink">Gamification</a><a class="headerlink" href="#module-app.modules.gamification" title="Link to this heading"></a></h2>
+<p>Gamification module for EduBoost SA.</p>
+<p>Handles points, badges, leaderboards, and engagement mechanics for learners.
+Implementation coming soon.</p>
+</section>
+<hr class="docutils" />
+<section id="module-app.modules.parent_portal">
+<span id="parent-portal"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">Parent Portal</a><a class="headerlink" href="#module-app.modules.parent_portal" title="Link to this heading"></a></h2>
+<p>Parent Portal module for EduBoost SA.</p>
+<p>Provides parent-facing dashboards, consent management, and learner progress tracking.
+Implementation coming soon.</p>
+</section>
+<hr class="docutils" />
+<section id="module-app.modules.rlhf">
+<span id="rlhf-pipeline"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink">RLHF Pipeline</a><a class="headerlink" href="#module-app.modules.rlhf" title="Link to this heading"></a></h2>
+<p>RLHF (Reinforcement Learning from Human Feedback) module for EduBoost SA.</p>
+<p>Handles lesson feedback collection and model improvement workflows.
+Implementation coming soon.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="core.html" class="btn btn-neutral float-left" title="Core — Shared Kernel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="routers.html" class="btn btn-neutral float-right" title="API Routers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, EduBoost SA Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
