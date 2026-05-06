@@ -61,6 +61,36 @@ jobs:
           pymarkdown scan docs/ audits/ README.md
 
   # -------------------------------------------------------------------------
+  # DOCUMENTATION BUILD
+  # -------------------------------------------------------------------------
+  docs:
+    name: Build API Docs (Sphinx)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements/dev.txt
+          pip install -r docs/api/requirements.txt
+
+      - name: Build HTML documentation
+        run: |
+          # Build docs, treat warnings as errors to ensure documentation quality
+          sphinx-build -W -b html docs/api/source docs/api/_build/html
+
+      - name: Upload documentation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-documentation
+          path: docs/api/_build/html/
+
+  # -------------------------------------------------------------------------
   # UNIT TESTS
   # -------------------------------------------------------------------------
   unit-tests:

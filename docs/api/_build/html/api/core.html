@@ -107,8 +107,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#app.core.config.Settings.ARQ_MAX_JOBS"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_MAX_JOBS</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#app.core.config.Settings.ARQ_JOB_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_JOB_TIMEOUT</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#app.core.config.Settings.ALLOWED_ORIGINS"><code class="docutils literal notranslate"><span class="pre">Settings.ALLOWED_ORIGINS</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#app.core.config.Settings.validate_jwt_secret"><code class="docutils literal notranslate"><span class="pre">Settings.validate_jwt_secret()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#app.core.config.Settings.validate_encryption_key"><code class="docutils literal notranslate"><span class="pre">Settings.validate_encryption_key()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#app.core.config.Settings.is_production"><code class="docutils literal notranslate"><span class="pre">Settings.is_production()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#app.core.config.Settings.refresh_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.refresh_from_key_vault()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#app.core.config.Settings.load_production_secrets_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.load_production_secrets_from_key_vault()</span></code></a></li>
@@ -117,7 +115,22 @@
 <li class="toctree-l3"><a class="reference internal" href="#app.core.config.get_settings"><code class="docutils literal notranslate"><span class="pre">get_settings()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#security">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-app.core.security">Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.core.security.Role"><code class="docutils literal notranslate"><span class="pre">Role</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.core.security.create_access_token"><code class="docutils literal notranslate"><span class="pre">create_access_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.core.security.create_refresh_token"><code class="docutils literal notranslate"><span class="pre">create_refresh_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.core.security.decode_token"><code class="docutils literal notranslate"><span class="pre">decode_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.core.security.get_current_user"><code class="docutils literal notranslate"><span class="pre">get_current_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.core.security.hash_email"><code class="docutils literal notranslate"><span class="pre">hash_email()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.core.security.hash_password"><code class="docutils literal notranslate"><span class="pre">hash_password()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.core.security.require_admin"><code class="docutils literal notranslate"><span class="pre">require_admin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.core.security.require_parent_or_admin"><code class="docutils literal notranslate"><span class="pre">require_parent_or_admin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.core.security.require_role"><code class="docutils literal notranslate"><span class="pre">require_role()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.core.security.require_roles"><code class="docutils literal notranslate"><span class="pre">require_roles()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.core.security.require_teacher_or_admin"><code class="docutils literal notranslate"><span class="pre">require_teacher_or_admin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.core.security.verify_password"><code class="docutils literal notranslate"><span class="pre">verify_password()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#module-app.core.audit">Audit Trail</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#app.core.audit.FourthEstateService"><code class="docutils literal notranslate"><span class="pre">FourthEstateService</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#app.core.audit.FourthEstateService.record"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.record()</span></code></a></li>
@@ -160,11 +173,6 @@
 <li class="toctree-l4"><a class="reference internal" href="modules.html#app.modules.lessons.llm_gateway.LLMResponse.prompt_tokens"><code class="docutils literal notranslate"><span class="pre">LLMResponse.prompt_tokens</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules.html#app.modules.lessons.llm_gateway.LLMResponse.completion_tokens"><code class="docutils literal notranslate"><span class="pre">LLMResponse.completion_tokens</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules.html#app.modules.lessons.llm_gateway.LLMResponse.model"><code class="docutils literal notranslate"><span class="pre">LLMResponse.model</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules.html#id0"><code class="docutils literal notranslate"><span class="pre">LLMResponse.content</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules.html#id1"><code class="docutils literal notranslate"><span class="pre">LLMResponse.provider</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules.html#id2"><code class="docutils literal notranslate"><span class="pre">LLMResponse.prompt_tokens</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules.html#id3"><code class="docutils literal notranslate"><span class="pre">LLMResponse.completion_tokens</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules.html#id4"><code class="docutils literal notranslate"><span class="pre">LLMResponse.model</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="modules.html#app.modules.lessons.llm_gateway.LLMGateway"><code class="docutils literal notranslate"><span class="pre">LLMGateway</span></code></a><ul>
@@ -376,11 +384,10 @@ primitives, the audit trail, Prometheus metrics, and middleware.</p>
 <p class="topic-title">Modules</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#module-app.core.config" id="id1">Configuration</a></p></li>
-<li><p><a class="reference internal" href="#security" id="id2">Security</a></p></li>
+<li><p><a class="reference internal" href="#module-app.core.security" id="id2">Security</a></p></li>
 <li><p><a class="reference internal" href="#module-app.core.audit" id="id3">Audit Trail</a></p></li>
 </ul>
 </nav>
-<hr class="docutils" />
 <section id="module-app.core.config">
 <span id="configuration"></span><h2><a class="toc-backref" href="#id1" role="doc-backlink">Configuration</a><a class="headerlink" href="#module-app.core.config" title="Link to this heading"></a></h2>
 <p>EduBoost V2 — Core Configuration
@@ -696,16 +703,6 @@ Pydantic BaseSettings with environment-variable loading and validation.</p>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="app.core.config.Settings.validate_jwt_secret">
-<span class="sig-name descname"><span class="pre">validate_jwt_secret</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.core.config.Settings.validate_jwt_secret" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="app.core.config.Settings.validate_encryption_key">
-<span class="sig-name descname"><span class="pre">validate_encryption_key</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.core.config.Settings.validate_encryption_key" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="app.core.config.Settings.is_production">
 <span class="sig-name descname"><span class="pre">is_production</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/core/config.html#Settings.is_production"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.core.config.Settings.is_production" title="Link to this definition"></a></dt>
 <dd><dl class="field-list simple">
@@ -748,11 +745,180 @@ Pydantic BaseSettings with environment-variable loading and validation.</p>
 </dd></dl>
 
 </section>
-<hr class="docutils" />
-<section id="security">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Security</a><a class="headerlink" href="#security" title="Link to this heading"></a></h2>
+<section id="module-app.core.security">
+<span id="security"></span><h2><a class="toc-backref" href="#id2" role="doc-backlink">Security</a><a class="headerlink" href="#module-app.core.security" title="Link to this heading"></a></h2>
+<p>EduBoost V2 — Security Helpers
+JWT creation/verification, bcrypt password hashing, RBAC role enforcement.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.core.security.Role">
+<span class="sig-prename descclassname"><span class="pre">app.core.security.</span></span><span class="sig-name descname"><span class="pre">Role</span></span><a class="headerlink" href="#app.core.security.Role" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#app.models.UserRole" title="app.models.UserRole"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserRole</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.core.security.create_access_token">
+<span class="sig-prename descclassname"><span class="pre">app.core.security.</span></span><span class="sig-name descname"><span class="pre">create_access_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/core/security.html#create_access_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.core.security.create_access_token" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subject</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>role</strong> (<a class="reference internal" href="models.html#app.models.UserRole" title="app.models.UserRole"><em>UserRole</em></a>)</p></li>
+<li><p><strong>extra</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.core.security.create_refresh_token">
+<span class="sig-prename descclassname"><span class="pre">app.core.security.</span></span><span class="sig-name descname"><span class="pre">create_refresh_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/core/security.html#create_refresh_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.core.security.create_refresh_token" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subject</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>role</strong> (<a class="reference internal" href="models.html#app.models.UserRole" title="app.models.UserRole"><em>UserRole</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.core.security.decode_token">
+<span class="sig-prename descclassname"><span class="pre">app.core.security.</span></span><span class="sig-name descname"><span class="pre">decode_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/core/security.html#decode_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.core.security.decode_token" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>token</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.core.security.get_current_user">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.core.security.</span></span><span class="sig-name descname"><span class="pre">get_current_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">credentials</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">fastapi.Depends</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/core/security.html#get_current_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.core.security.get_current_user" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>credentials</strong> (<em>HTTPAuthorizationCredentials</em><em> | </em><em>None</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.core.security.hash_email">
+<span class="sig-prename descclassname"><span class="pre">app.core.security.</span></span><span class="sig-name descname"><span class="pre">hash_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/core/security.html#hash_email"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.core.security.hash_email" title="Link to this definition"></a></dt>
+<dd><p>Deterministic SHA-256 hash of an email for lookup (POPIA-safe).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>email</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.core.security.hash_password">
+<span class="sig-prename descclassname"><span class="pre">app.core.security.</span></span><span class="sig-name descname"><span class="pre">hash_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plain</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/core/security.html#hash_password"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.core.security.hash_password" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>plain</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.core.security.require_admin">
+<span class="sig-prename descclassname"><span class="pre">app.core.security.</span></span><span class="sig-name descname"><span class="pre">require_admin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">fastapi.Depends</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.core.security.require_admin" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>current_user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.core.security.require_parent_or_admin">
+<span class="sig-prename descclassname"><span class="pre">app.core.security.</span></span><span class="sig-name descname"><span class="pre">require_parent_or_admin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">fastapi.Depends</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.core.security.require_parent_or_admin" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>current_user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.core.security.require_role">
+<span class="sig-prename descclassname"><span class="pre">app.core.security.</span></span><span class="sig-name descname"><span class="pre">require_role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">roles</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.core.security.require_role" title="Link to this definition"></a></dt>
+<dd><p>Dependency factory: enforce that the caller has one of the specified roles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>roles</strong> (<a class="reference internal" href="models.html#app.models.UserRole" title="app.models.UserRole"><em>UserRole</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.core.security.require_roles">
+<span class="sig-prename descclassname"><span class="pre">app.core.security.</span></span><span class="sig-name descname"><span class="pre">require_roles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">roles</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/core/security.html#require_roles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.core.security.require_roles" title="Link to this definition"></a></dt>
+<dd><p>Dependency factory: enforce that the caller has one of the specified roles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>roles</strong> (<a class="reference internal" href="models.html#app.models.UserRole" title="app.models.UserRole"><em>UserRole</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.core.security.require_teacher_or_admin">
+<span class="sig-prename descclassname"><span class="pre">app.core.security.</span></span><span class="sig-name descname"><span class="pre">require_teacher_or_admin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">fastapi.Depends</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.core.security.require_teacher_or_admin" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>current_user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.core.security.verify_password">
+<span class="sig-prename descclassname"><span class="pre">app.core.security.</span></span><span class="sig-name descname"><span class="pre">verify_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hashed</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/core/security.html#verify_password"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.core.security.verify_password" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plain</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>hashed</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<hr class="docutils" />
 <section id="module-app.core.audit">
 <span id="audit-trail"></span><h2><a class="toc-backref" href="#id3" role="doc-backlink">Audit Trail</a><a class="headerlink" href="#module-app.core.audit" title="Link to this heading"></a></h2>
 <p>EduBoost V2 — Fourth Estate Service (Pillar 4)

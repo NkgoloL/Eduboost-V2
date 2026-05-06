@@ -34,28 +34,7 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class LLMResponse:
-    """Value object returned by the LLM gateway after a completion call.
-
-    Attributes:
-        content: The generated text from the LLM provider.
-        provider: Provider identifier that served the request
-            (``"groq"`` or ``"anthropic"``).
-        prompt_tokens: Number of tokens in the input prompt.
-        completion_tokens: Number of tokens in the generated response.
-        model: Model identifier used for the completion
-            (e.g. ``"llama3-8b-8192"``).
-
-    Example:
-        ::
-
-            resp = LLMResponse(
-                content="# Fractions …",
-                provider="groq",
-                prompt_tokens=312,
-                completion_tokens=580,
-                model="llama3-8b-8192",
-            )
-    """
+    """Value object returned by the LLM gateway after a completion call."""
 
     content: str
     provider: str

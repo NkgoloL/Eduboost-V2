@@ -9,17 +9,13 @@ primitives, the audit trail, Prometheus metrics, and middleware.
    :local:
    :depth: 1
 
-----
-
 Configuration
 -------------
 
 .. automodule:: app.core.config
    :members:
-   :undoc-members:
+   :exclude-members: validate_jwt_secret, validate_encryption_key
    :show-inheritance:
-
-----
 
 Security
 --------
@@ -28,8 +24,6 @@ Security
    :members:
    :undoc-members:
    :show-inheritance:
-
-----
 
 Audit Trail
 -----------

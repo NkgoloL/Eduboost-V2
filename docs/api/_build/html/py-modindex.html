@@ -107,8 +107,6 @@
 <li class="toctree-l4"><a class="reference internal" href="api/core.html#app.core.config.Settings.ARQ_MAX_JOBS"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_MAX_JOBS</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/core.html#app.core.config.Settings.ARQ_JOB_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_JOB_TIMEOUT</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/core.html#app.core.config.Settings.ALLOWED_ORIGINS"><code class="docutils literal notranslate"><span class="pre">Settings.ALLOWED_ORIGINS</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/core.html#app.core.config.Settings.validate_jwt_secret"><code class="docutils literal notranslate"><span class="pre">Settings.validate_jwt_secret()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/core.html#app.core.config.Settings.validate_encryption_key"><code class="docutils literal notranslate"><span class="pre">Settings.validate_encryption_key()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/core.html#app.core.config.Settings.is_production"><code class="docutils literal notranslate"><span class="pre">Settings.is_production()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/core.html#app.core.config.Settings.refresh_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.refresh_from_key_vault()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/core.html#app.core.config.Settings.load_production_secrets_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.load_production_secrets_from_key_vault()</span></code></a></li>
@@ -117,7 +115,22 @@
 <li class="toctree-l3"><a class="reference internal" href="api/core.html#app.core.config.get_settings"><code class="docutils literal notranslate"><span class="pre">get_settings()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="api/core.html#security">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/core.html#module-app.core.security">Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#app.core.security.Role"><code class="docutils literal notranslate"><span class="pre">Role</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#app.core.security.create_access_token"><code class="docutils literal notranslate"><span class="pre">create_access_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#app.core.security.create_refresh_token"><code class="docutils literal notranslate"><span class="pre">create_refresh_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#app.core.security.decode_token"><code class="docutils literal notranslate"><span class="pre">decode_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#app.core.security.get_current_user"><code class="docutils literal notranslate"><span class="pre">get_current_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#app.core.security.hash_email"><code class="docutils literal notranslate"><span class="pre">hash_email()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#app.core.security.hash_password"><code class="docutils literal notranslate"><span class="pre">hash_password()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#app.core.security.require_admin"><code class="docutils literal notranslate"><span class="pre">require_admin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#app.core.security.require_parent_or_admin"><code class="docutils literal notranslate"><span class="pre">require_parent_or_admin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#app.core.security.require_role"><code class="docutils literal notranslate"><span class="pre">require_role()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#app.core.security.require_roles"><code class="docutils literal notranslate"><span class="pre">require_roles()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#app.core.security.require_teacher_or_admin"><code class="docutils literal notranslate"><span class="pre">require_teacher_or_admin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#app.core.security.verify_password"><code class="docutils literal notranslate"><span class="pre">verify_password()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="api/core.html#module-app.core.audit">Audit Trail</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api/core.html#app.core.audit.FourthEstateService"><code class="docutils literal notranslate"><span class="pre">FourthEstateService</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="api/core.html#app.core.audit.FourthEstateService.record"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.record()</span></code></a></li>
@@ -160,11 +173,6 @@
 <li class="toctree-l4"><a class="reference internal" href="api/modules.html#app.modules.lessons.llm_gateway.LLMResponse.prompt_tokens"><code class="docutils literal notranslate"><span class="pre">LLMResponse.prompt_tokens</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/modules.html#app.modules.lessons.llm_gateway.LLMResponse.completion_tokens"><code class="docutils literal notranslate"><span class="pre">LLMResponse.completion_tokens</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/modules.html#app.modules.lessons.llm_gateway.LLMResponse.model"><code class="docutils literal notranslate"><span class="pre">LLMResponse.model</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/modules.html#id0"><code class="docutils literal notranslate"><span class="pre">LLMResponse.content</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/modules.html#id1"><code class="docutils literal notranslate"><span class="pre">LLMResponse.provider</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/modules.html#id2"><code class="docutils literal notranslate"><span class="pre">LLMResponse.prompt_tokens</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/modules.html#id3"><code class="docutils literal notranslate"><span class="pre">LLMResponse.completion_tokens</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/modules.html#id4"><code class="docutils literal notranslate"><span class="pre">LLMResponse.model</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="api/modules.html#app.modules.lessons.llm_gateway.LLMGateway"><code class="docutils literal notranslate"><span class="pre">LLMGateway</span></code></a><ul>
@@ -397,6 +405,11 @@
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="api/core.html#module-app.core.config"><code class="xref">app.core.config</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/core.html#module-app.core.security"><code class="xref">app.core.security</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>

@@ -108,8 +108,6 @@
 <li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ARQ_MAX_JOBS"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_MAX_JOBS</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ARQ_JOB_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_JOB_TIMEOUT</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ALLOWED_ORIGINS"><code class="docutils literal notranslate"><span class="pre">Settings.ALLOWED_ORIGINS</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.validate_jwt_secret"><code class="docutils literal notranslate"><span class="pre">Settings.validate_jwt_secret()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.validate_encryption_key"><code class="docutils literal notranslate"><span class="pre">Settings.validate_encryption_key()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.is_production"><code class="docutils literal notranslate"><span class="pre">Settings.is_production()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.refresh_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.refresh_from_key_vault()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.load_production_secrets_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.load_production_secrets_from_key_vault()</span></code></a></li>
@@ -118,7 +116,22 @@
 <li class="toctree-l3"><a class="reference internal" href="core.html#app.core.config.get_settings"><code class="docutils literal notranslate"><span class="pre">get_settings()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="core.html#security">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#module-app.core.security">Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.Role"><code class="docutils literal notranslate"><span class="pre">Role</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.create_access_token"><code class="docutils literal notranslate"><span class="pre">create_access_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.create_refresh_token"><code class="docutils literal notranslate"><span class="pre">create_refresh_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.decode_token"><code class="docutils literal notranslate"><span class="pre">decode_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.get_current_user"><code class="docutils literal notranslate"><span class="pre">get_current_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.hash_email"><code class="docutils literal notranslate"><span class="pre">hash_email()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.hash_password"><code class="docutils literal notranslate"><span class="pre">hash_password()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.require_admin"><code class="docutils literal notranslate"><span class="pre">require_admin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.require_parent_or_admin"><code class="docutils literal notranslate"><span class="pre">require_parent_or_admin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.require_role"><code class="docutils literal notranslate"><span class="pre">require_role()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.require_roles"><code class="docutils literal notranslate"><span class="pre">require_roles()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.require_teacher_or_admin"><code class="docutils literal notranslate"><span class="pre">require_teacher_or_admin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.security.verify_password"><code class="docutils literal notranslate"><span class="pre">verify_password()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="core.html#module-app.core.audit">Audit Trail</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="core.html#app.core.audit.FourthEstateService"><code class="docutils literal notranslate"><span class="pre">FourthEstateService</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="core.html#app.core.audit.FourthEstateService.record"><code class="docutils literal notranslate"><span class="pre">FourthEstateService.record()</span></code></a></li>
@@ -161,11 +174,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#app.modules.lessons.llm_gateway.LLMResponse.prompt_tokens"><code class="docutils literal notranslate"><span class="pre">LLMResponse.prompt_tokens</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#app.modules.lessons.llm_gateway.LLMResponse.completion_tokens"><code class="docutils literal notranslate"><span class="pre">LLMResponse.completion_tokens</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#app.modules.lessons.llm_gateway.LLMResponse.model"><code class="docutils literal notranslate"><span class="pre">LLMResponse.model</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">LLMResponse.content</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">LLMResponse.provider</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">LLMResponse.prompt_tokens</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">LLMResponse.completion_tokens</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">LLMResponse.model</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#app.modules.lessons.llm_gateway.LLMGateway"><code class="docutils literal notranslate"><span class="pre">LLMGateway</span></code></a><ul>
@@ -376,19 +384,19 @@ background workers.</p>
 <nav class="contents local" id="bounded-contexts">
 <p class="topic-title">Bounded Contexts</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#diagnostics-irt-engine" id="id5">Diagnostics — IRT Engine</a></p></li>
-<li><p><a class="reference internal" href="#lessons-llm-gateway" id="id6">Lessons — LLM Gateway</a></p></li>
-<li><p><a class="reference internal" href="#consent-popia-service" id="id7">Consent — POPIA Service</a></p></li>
-<li><p><a class="reference internal" href="#module-app.modules.learners" id="id8">Learners</a></p></li>
-<li><p><a class="reference internal" href="#module-app.modules.study_plans" id="id9">Study Plans</a></p></li>
-<li><p><a class="reference internal" href="#module-app.modules.gamification" id="id10">Gamification</a></p></li>
-<li><p><a class="reference internal" href="#module-app.modules.parent_portal" id="id11">Parent Portal</a></p></li>
-<li><p><a class="reference internal" href="#module-app.modules.rlhf" id="id12">RLHF Pipeline</a></p></li>
+<li><p><a class="reference internal" href="#diagnostics-irt-engine" id="id1">Diagnostics — IRT Engine</a></p></li>
+<li><p><a class="reference internal" href="#lessons-llm-gateway" id="id2">Lessons — LLM Gateway</a></p></li>
+<li><p><a class="reference internal" href="#consent-popia-service" id="id3">Consent — POPIA Service</a></p></li>
+<li><p><a class="reference internal" href="#module-app.modules.learners" id="id4">Learners</a></p></li>
+<li><p><a class="reference internal" href="#module-app.modules.study_plans" id="id5">Study Plans</a></p></li>
+<li><p><a class="reference internal" href="#module-app.modules.gamification" id="id6">Gamification</a></p></li>
+<li><p><a class="reference internal" href="#module-app.modules.parent_portal" id="id7">Parent Portal</a></p></li>
+<li><p><a class="reference internal" href="#module-app.modules.rlhf" id="id8">RLHF Pipeline</a></p></li>
 </ul>
 </nav>
 <hr class="docutils" />
 <section id="diagnostics-irt-engine">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">Diagnostics — IRT Engine</a><a class="headerlink" href="#diagnostics-irt-engine" title="Link to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Diagnostics — IRT Engine</a><a class="headerlink" href="#diagnostics-irt-engine" title="Link to this heading"></a></h2>
 <p>Implements the IRT 2-Parameter Logistic model for adaptive ability
 estimation and item selection.</p>
 <p id="module-app.modules.diagnostics.irt_engine">IRT 2-Parameter Logistic (2PL) adaptive diagnostic engine.</p>
@@ -771,7 +779,7 @@ instances.</p></li>
 </section>
 <hr class="docutils" />
 <section id="lessons-llm-gateway">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Lessons — LLM Gateway</a><a class="headerlink" href="#lessons-llm-gateway" title="Link to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Lessons — LLM Gateway</a><a class="headerlink" href="#lessons-llm-gateway" title="Link to this heading"></a></h2>
 <p>Provider-agnostic gateway for AI lesson generation with semantic caching
 and automatic Groq → Anthropic fallback.</p>
 <p id="module-app.modules.lessons.llm_gateway">Provider-agnostic LLM gateway with automatic fallback.</p>
@@ -810,94 +818,27 @@ for all AI lesson-generation calls in EduBoost.  Real learner UUIDs are
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.modules.lessons.llm_gateway.LLMResponse.content">
-<span class="sig-name descname"><span class="pre">content</span></span><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMResponse.content" title="Link to this definition"></a></dt>
-<dd><p>The generated text from the LLM provider.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
+<span class="sig-name descname"><span class="pre">content</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMResponse.content" title="Link to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.modules.lessons.llm_gateway.LLMResponse.provider">
-<span class="sig-name descname"><span class="pre">provider</span></span><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMResponse.provider" title="Link to this definition"></a></dt>
-<dd><p>Provider identifier that served the request
-(<code class="docutils literal notranslate"><span class="pre">&quot;groq&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;anthropic&quot;</span></code>).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
+<span class="sig-name descname"><span class="pre">provider</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMResponse.provider" title="Link to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.modules.lessons.llm_gateway.LLMResponse.prompt_tokens">
-<span class="sig-name descname"><span class="pre">prompt_tokens</span></span><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMResponse.prompt_tokens" title="Link to this definition"></a></dt>
-<dd><p>Number of tokens in the input prompt.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
-</dd>
-</dl>
-</dd></dl>
+<span class="sig-name descname"><span class="pre">prompt_tokens</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMResponse.prompt_tokens" title="Link to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.modules.lessons.llm_gateway.LLMResponse.completion_tokens">
-<span class="sig-name descname"><span class="pre">completion_tokens</span></span><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMResponse.completion_tokens" title="Link to this definition"></a></dt>
-<dd><p>Number of tokens in the generated response.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
-</dd>
-</dl>
-</dd></dl>
+<span class="sig-name descname"><span class="pre">completion_tokens</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMResponse.completion_tokens" title="Link to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.modules.lessons.llm_gateway.LLMResponse.model">
-<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMResponse.model" title="Link to this definition"></a></dt>
-<dd><p>Model identifier used for the completion
-(e.g. <code class="docutils literal notranslate"><span class="pre">&quot;llama3-8b-8192&quot;</span></code>).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">resp</span> <span class="o">=</span> <span class="n">LLMResponse</span><span class="p">(</span>
-    <span class="n">content</span><span class="o">=</span><span class="s2">&quot;# Fractions …&quot;</span><span class="p">,</span>
-    <span class="n">provider</span><span class="o">=</span><span class="s2">&quot;groq&quot;</span><span class="p">,</span>
-    <span class="n">prompt_tokens</span><span class="o">=</span><span class="mi">312</span><span class="p">,</span>
-    <span class="n">completion_tokens</span><span class="o">=</span><span class="mi">580</span><span class="p">,</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;llama3-8b-8192&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">content</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id1">
-<span class="sig-name descname"><span class="pre">provider</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id2">
-<span class="sig-name descname"><span class="pre">prompt_tokens</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id3">
-<span class="sig-name descname"><span class="pre">completion_tokens</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id4">
-<span class="sig-name descname"><span class="pre">model</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#id4" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">model</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#app.modules.lessons.llm_gateway.LLMResponse.model" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -964,7 +905,7 @@ token counts.</p>
 </section>
 <hr class="docutils" />
 <section id="consent-popia-service">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">Consent — POPIA Service</a><a class="headerlink" href="#consent-popia-service" title="Link to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Consent — POPIA Service</a><a class="headerlink" href="#consent-popia-service" title="Link to this heading"></a></h2>
 <p>Full lifecycle management of parental consent records in compliance with
 the Protection of Personal Information Act.</p>
 <p id="module-app.modules.consent.service">POPIA parental consent lifecycle service.</p>
@@ -1222,7 +1163,7 @@ configured session via the repository.</p></li>
 </section>
 <hr class="docutils" />
 <section id="module-app.modules.learners">
-<span id="learners"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink">Learners</a><a class="headerlink" href="#module-app.modules.learners" title="Link to this heading"></a></h2>
+<span id="learners"></span><h2><a class="toc-backref" href="#id4" role="doc-backlink">Learners</a><a class="headerlink" href="#module-app.modules.learners" title="Link to this heading"></a></h2>
 <p>Learner profile and archetype management module.</p>
 <p>Provides the <code class="xref py py-class docutils literal notranslate"><span class="pre">EtherService</span></code>
 (Constitutional Pillar 5 — <em>The Ether</em>) for cold-start onboarding and
@@ -1234,28 +1175,28 @@ LLM prompt-tone modifiers for personalised lesson delivery.</p>
 </section>
 <hr class="docutils" />
 <section id="module-app.modules.study_plans">
-<span id="study-plans"></span><h2><a class="toc-backref" href="#id9" role="doc-backlink">Study Plans</a><a class="headerlink" href="#module-app.modules.study_plans" title="Link to this heading"></a></h2>
+<span id="study-plans"></span><h2><a class="toc-backref" href="#id5" role="doc-backlink">Study Plans</a><a class="headerlink" href="#module-app.modules.study_plans" title="Link to this heading"></a></h2>
 <p>Study Plans module for EduBoost SA.</p>
 <p>Supports personalized study plan generation and learner scheduling.
 Implementation coming soon.</p>
 </section>
 <hr class="docutils" />
 <section id="module-app.modules.gamification">
-<span id="gamification"></span><h2><a class="toc-backref" href="#id10" role="doc-backlink">Gamification</a><a class="headerlink" href="#module-app.modules.gamification" title="Link to this heading"></a></h2>
+<span id="gamification"></span><h2><a class="toc-backref" href="#id6" role="doc-backlink">Gamification</a><a class="headerlink" href="#module-app.modules.gamification" title="Link to this heading"></a></h2>
 <p>Gamification module for EduBoost SA.</p>
 <p>Handles points, badges, leaderboards, and engagement mechanics for learners.
 Implementation coming soon.</p>
 </section>
 <hr class="docutils" />
 <section id="module-app.modules.parent_portal">
-<span id="parent-portal"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">Parent Portal</a><a class="headerlink" href="#module-app.modules.parent_portal" title="Link to this heading"></a></h2>
+<span id="parent-portal"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">Parent Portal</a><a class="headerlink" href="#module-app.modules.parent_portal" title="Link to this heading"></a></h2>
 <p>Parent Portal module for EduBoost SA.</p>
 <p>Provides parent-facing dashboards, consent management, and learner progress tracking.
 Implementation coming soon.</p>
 </section>
 <hr class="docutils" />
 <section id="module-app.modules.rlhf">
-<span id="rlhf-pipeline"></span><h2><a class="toc-backref" href="#id12" role="doc-backlink">RLHF Pipeline</a><a class="headerlink" href="#module-app.modules.rlhf" title="Link to this heading"></a></h2>
+<span id="rlhf-pipeline"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink">RLHF Pipeline</a><a class="headerlink" href="#module-app.modules.rlhf" title="Link to this heading"></a></h2>
 <p>RLHF (Reinforcement Learning from Human Feedback) module for EduBoost SA.</p>
 <p>Handles lesson feedback collection and model improvement workflows.
 Implementation coming soon.</p>
