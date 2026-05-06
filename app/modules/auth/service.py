@@ -23,6 +23,12 @@ _guardian_repo = GuardianRepository()
 
 
 class AuthService:
+    """Authentication and guardian lifecycle service.
+
+    Responsible for guardian registration, login, email verification, and
+    profile retrieval while preserving encrypted personal data and audit trail
+    behavior.
+    """
 
     async def register_guardian(
         self,
@@ -33,6 +39,21 @@ class AuthService:
         full_name: str,
         phone: str | None = None,
     ) -> Guardian:
+        """Register a new guardian account.
+
+        Args:
+            db: Async database session for repository operations.
+            email: Guardian email address.
+            password: Plaintext password to hash and store securely.
+            full_name: Guardian full name to encrypt for storage.
+            phone: Optional guardian phone number.
+
+        Returns:
+            Created Guardian model instance.
+
+        Raises:
+            DuplicateError: When an account already exists for the email.
+        """
         email_hash = hash_email(email)
         existing = await _guardian_repo.get_by_email_hash(email_hash, db)
         if existing:
@@ -100,6 +121,18 @@ class AuthService:
         return access_token, refresh_token
 
     async def verify_email(self, token: str, db: AsyncSession) -> Guardian:
+        """Verify a guardian's email address using a token.
+
+        Args:
+            token: Email verification token issued during registration.
+            db: Async database session.
+
+        Returns:
+            Guardian model instance with ``is_verified`` set to ``True``.
+
+        Raises:
+            NotFoundError: When the token is invalid or expired.
+        """
         guardian = await _guardian_repo.get_by_verification_token(token, db)
         if guardian is None:
             raise NotFoundError("Invalid or expired verification token")
@@ -110,6 +143,15 @@ class AuthService:
         )
 
     async def get_guardian_profile(self, guardian_id: UUID, db: AsyncSession) -> dict:
+        """Retrieve a guardian profile for the parent portal.
+
+        Args:
+            guardian_id: UUID of the guardian.
+            db: Async database session.
+
+        Returns:
+            Dictionary containing decrypted guardian profile fields.
+        """
         guardian = await _guardian_repo.get_or_404(guardian_id, db)
         return {
             "id": str(guardian.id),

@@ -157,10 +157,20 @@ async def _send_renewal_email(consent: Any) -> None:
 # ── Worker Settings ───────────────────────────────────────────────────────────
 
 async def startup(ctx: dict[str, Any]) -> None:
+    """Log worker startup events.
+
+    Args:
+        ctx: ARQ worker context dictionary.
+    """
     logger.info("ARQ worker starting up")
 
 
 async def shutdown(ctx: dict[str, Any]) -> None:
+    """Log worker shutdown events.
+
+    Args:
+        ctx: ARQ worker context dictionary.
+    """
     logger.info("ARQ worker shutting down")
 
 
@@ -187,6 +197,11 @@ class WorkerSettings:
 
     @classmethod
     def redis_settings(cls) -> RedisSettings:
+        """Build Redis connection settings from application configuration.
+
+        Returns:
+            RedisSettings instance configured from the project's redis URL.
+        """
         cfg = get_settings()
         # Parse redis://host:port/db
         import urllib.parse
