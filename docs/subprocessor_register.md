@@ -1,39 +1,13 @@
-# Subprocessor Register
+# Subprocessor register
 
-Purpose: Record third-party subprocessors used by EduBoost-V2, their purpose, data processed, and contact/security details.
+| Subprocessor | Purpose | Data exposure | Status |
+|---|---|---|---|
+| PostgreSQL hosting provider | Primary application database | Guardian/learner operational data | Required production processor |
+| Redis hosting provider | Cache, rate limits, token/session revocation | Session metadata, no learner content | Required production processor |
+| SendGrid or configured email provider | Transactional email | Guardian email address, template metadata | Pending production selection |
+| Stripe | Billing/subscriptions | Guardian billing/customer metadata | Pending production selection |
+| PostHog | Product analytics | Pseudonymous events only | Optional; no raw learner PII |
+| Anthropic/Groq/local HF provider | LLM lesson generation | Pseudonymous educational context only | Provider depends on deployment config |
+| Azure Blob/Object storage | Backups/assets/exports if enabled | Encrypted objects | Pending production selection |
 
-NOTE: Fill production vendor details and contractual references.
-
-1. Azure (or cloud provider)
-- Purpose: Hosting, managed databases, object storage, key management
-- Data processed: infrastructure metadata, optionally encrypted backups
-- Data protection contact/contract: TODO — add subscription/account and data processing agreement reference
-
-2. Email provider (e.g., SendGrid / Mailer)
-- Purpose: Transactional email (verification, password reset, notifications)
-- Data processed: email addresses, transactional content
-- Contact/contract: TODO
-
-3. Analytics provider (e.g., Segment, PostHog)
-- Purpose: Product analytics and event collection
-- Data processed: event metadata (pseudonymized IDs recommended)
-- Contact/contract: TODO
-
-4. LLM provider(s)
-- Purpose: AI lesson generation and augmentation
-- Data processed: non-PII prompts and structured context only; never send raw learner PII
-- Contact/contract: TODO; ensure Data Processing Agreements and security reviews
-
-5. Payment/billing provider (if used)
-- Purpose: Payment processing and subscription lifecycle
-- Data processed: payment metadata (tokens, customer IDs) — never store raw card PANs
-- Contact/contract: TODO
-
-6. Monitoring and error-reporting (e.g., Sentry, Datadog)
-- Purpose: Observability, alerts, and error aggregation
-- Data processed: stack traces (redact PII in logs before sending)
-- Contact/contract: TODO
-
-Maintaining the register
-- Add vendor name, contact, DPA link, data categories processed, and last-reviewed date for each entry.
-- Review the register annually or when adding/removing subprocessors.
+Before production launch, each active subprocessor must have: contract/DPA status, region, retention behavior, breach-notification terms, and offboarding procedure recorded.
