@@ -11,6 +11,22 @@ Environment
 - `BACKUP_DIR` — directory to store backups (default `./backups`)
 - `RETENTION_DAYS` — how many days to keep backups (default `7`)
 
+Encryption
+- `ENCRYPTION_TOOL` — set to `age` or `gpg` to enable encryption (default empty = no encryption)
+- If `ENCRYPTION_TOOL=age` set `AGE_RECIPIENTS` to a comma- or space-separated list of age recipient public keys (e.g. `age1... age1...`). Example usage:
+
+```bash
+ENCRYPTION_TOOL=age AGE_RECIPIENTS="age1..." DATABASE_URL="$DATABASE_URL" bash scripts/db_backup.sh
+```
+
+- If `ENCRYPTION_TOOL=gpg` set `GPG_RECIPIENT` to the recipient (email or keyid). Example:
+
+```bash
+ENCRYPTION_TOOL=gpg GPG_RECIPIENT="backup@yourorg.example" DATABASE_URL="$DATABASE_URL" bash scripts/db_backup.sh
+```
+
+- `KEEP_PLAINTEXT=true` will retain the gzipped dump alongside the encrypted artifact (disabled by default).
+
 Installation (systemd)
 1. Copy `scripts/db_backup.sh` to `/opt/eduboost/scripts/` and `deployment/systemd/db-backup.*` to `/etc/systemd/system/`.
 2. Make script executable: `chmod +x /opt/eduboost/scripts/db_backup.sh`.
