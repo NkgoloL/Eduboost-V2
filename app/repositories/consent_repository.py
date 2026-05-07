@@ -7,7 +7,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.base import BaseRepository
-from app.models import ParentalConsent
+from app.models import ConsentState, ParentalConsent
 
 
 class ConsentRepository(BaseRepository[ParentalConsent]):
@@ -22,6 +22,16 @@ class ConsentRepository(BaseRepository[ParentalConsent]):
             raise ValueError("ConsentRepository requires an AsyncSession")
         return session
 
+    async def get_latest_for_learner(self, learner_id: str, db: AsyncSession | None = None) -> ParentalConsent | None:
+        db = self._db(db)
+        result = await db.execute(
+            select(ParentalConsent)
+            .where(ParentalConsent.learner_id == learner_id)
+            .order_by(ParentalConsent.granted_at.desc())
+            .limit(1)
+        )
+        return result.scalar_one_or_none()
+
     async def get_active(self, learner_id: str, db: AsyncSession | None = None) -> ParentalConsent | None:
         db = self._db(db)
         result = await db.execute(
@@ -29,6 +39,7 @@ class ConsentRepository(BaseRepository[ParentalConsent]):
             .where(ParentalConsent.learner_id == learner_id)
             .where(ParentalConsent.revoked_at.is_(None))
             .where(ParentalConsent.expires_at > datetime.now(UTC))
+            .where(ParentalConsent.status.in_([ConsentState.GRANTED, ConsentState.RENEWAL_REQUIRED]))
             .order_by(ParentalConsent.granted_at.desc())
             .limit(1)
         )
@@ -43,6 +54,7 @@ class ConsentRepository(BaseRepository[ParentalConsent]):
         ip_address: str | None = None,
         user_agent: str | None = None,
         consent_version: str = "1.0",
+        state: str = "granted",
     ) -> ParentalConsent:
         db = self._db(db)
         # AuditLog emission happens in ConsentService; this repository only
@@ -57,12 +69,14 @@ class ConsentRepository(BaseRepository[ParentalConsent]):
                 granted_at=now,
                 expires_at=now + timedelta(days=365),
                 policy_version=consent_version,
+                status=ConsentState(state),
                 ip_address_hash=ip_address,
             )
         existing.granted_at = now
         existing.expires_at = now + timedelta(days=365)
         existing.policy_version = consent_version
         existing.revoked_at = None
+        existing.status = ConsentState(state)
         existing.ip_address_hash = ip_address
         db.add(existing)
         await db.flush()
@@ -86,6 +100,7 @@ class ConsentRepository(BaseRepository[ParentalConsent]):
         consents = list(result.scalars().all())
         for consent in consents:
             consent.revoked_at = datetime.now(UTC)
+            consent.status = ConsentState.WITHDRAWN
             db.add(consent)
         await db.flush()
         return len(consents)

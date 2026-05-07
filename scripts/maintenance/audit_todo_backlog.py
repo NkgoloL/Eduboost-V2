@@ -3,7 +3,7 @@ import csv, re
 from collections import Counter, defaultdict
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 TODO = ROOT/'TODO.md'
 OUT = ROOT/'docs'/'backlog'; OUT.mkdir(parents=True, exist_ok=True)
 EXCLUDE_DIRS={'.git','.venv','__pycache__','node_modules','.tmp','temp'}

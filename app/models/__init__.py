@@ -71,6 +71,15 @@ class Language(StrEnum):
     ISIXHOSA = "xh"
 
 
+class ConsentState(StrEnum):
+    PENDING = "pending"
+    GRANTED = "granted"
+    DENIED = "denied"
+    EXPIRED = "expired"
+    WITHDRAWN = "withdrawn"
+    RENEWAL_REQUIRED = "renewal_required"
+
+
 # ── Guardian (Parent / Teacher) ───────────────────────────────────────────────
 
 
@@ -147,6 +156,7 @@ class ParentalConsent(Base):
     guardian_id: Mapped[str] = mapped_column(ForeignKey("guardians.id", ondelete="CASCADE"), nullable=False)
     learner_id: Mapped[str] = mapped_column(ForeignKey("learner_profiles.id", ondelete="CASCADE"), nullable=False)
     policy_version: Mapped[str] = mapped_column(String(20), nullable=False, default="1.0")
+    status: Mapped[ConsentState] = mapped_column(Enum(ConsentState), nullable=False, default=ConsentState.GRANTED)
     granted_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
     expires_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
@@ -161,7 +171,11 @@ class ParentalConsent(Base):
     @property
     def is_active(self) -> bool:
         now = datetime.now(UTC)
-        return self.revoked_at is None and self.expires_at > now
+        return (
+            self.revoked_at is None
+            and self.expires_at > now
+            and self.status in {ConsentState.GRANTED, ConsentState.RENEWAL_REQUIRED}
+        )
 
     __table_args__ = (
         UniqueConstraint("guardian_id", "learner_id", name="uq_consent_guardian_learner"),
@@ -181,12 +195,16 @@ class AuditEvent(Base):
     actor_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True, index=True)
     resource_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     payload: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
+    previous_event_hash: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    event_hash: Mapped[str] = mapped_column(String(64), nullable=False, default="")
+    hmac_signature: Mapped[str] = mapped_column(String(64), nullable=False, default="")
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, nullable=False)
 
     __table_args__ = (
         Index("idx_audit_events_actor", "actor_id"),
         Index("idx_audit_events_type", "event_type"),
         Index("idx_audit_events_ts", "created_at"),
+        Index("idx_audit_events_hash", "event_hash"),
     )
 
 

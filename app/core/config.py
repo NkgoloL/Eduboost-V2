@@ -56,12 +56,16 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str = "HS256"
     JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 15
     JWT_REFRESH_TOKEN_EXPIRE_DAYS: int = 7
+    PASSWORD_BCRYPT_ROUNDS: int = 12
+    PASSWORD_MIN_LENGTH: int = 12
+    PASSWORD_PASSPHRASE_MIN_LENGTH: int = 16
 
     # ── Encryption ───────────────────────────────────────────────────────────
     ENCRYPTION_KEY: str = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="  # dev-only 32-byte base64 placeholder
     ENCRYPTION_SALT: str = "test-encryption-salt"
     BACKUP_ENCRYPTION_KEY: str = ""
     BACKUP_RETENTION_DAYS: int = 30
+    AUDIT_HMAC_SECRET: str = ""
 
     # ── LLM Providers ────────────────────────────────────────────────────────
     ANTHROPIC_API_KEY: str = ""

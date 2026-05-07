@@ -2,13 +2,48 @@
 
 from __future__ import annotations
 
+import hashlib
+import hmac
+import json
 import uuid
 from typing import Any
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.core.config import settings
 from app.models import AuditEvent
+
+
+
+
+def _stable_json(data: dict[str, Any]) -> str:
+    return json.dumps(data, sort_keys=True, separators=(",", ":"), default=str)
+
+
+def compute_audit_hash(
+    *,
+    event_id: uuid.UUID,
+    event_type: str,
+    actor_id: uuid.UUID | None,
+    resource_id: uuid.UUID | None,
+    payload: dict[str, Any],
+    previous_event_hash: str | None,
+) -> str:
+    material = {
+        "id": str(event_id),
+        "event_type": event_type,
+        "actor_id": str(actor_id) if actor_id else None,
+        "resource_id": str(resource_id) if resource_id else None,
+        "payload": payload,
+        "previous_event_hash": previous_event_hash,
+    }
+    return hashlib.sha256(_stable_json(material).encode("utf-8")).hexdigest()
+
+
+def sign_audit_hash(event_hash: str, secret: str | None = None) -> str:
+    key = (secret or settings.AUDIT_HMAC_SECRET or settings.JWT_SECRET).encode("utf-8")
+    return hmac.new(key, event_hash.encode("utf-8"), hashlib.sha256).hexdigest()
 
 
 def _as_uuid(value: str | uuid.UUID | None) -> uuid.UUID | None:
@@ -34,12 +69,27 @@ class AuditRepository:
             raise ValueError("event_type must be a non-empty string")
         self._validate_payload_no_pii(payload)
 
-        audit_event = AuditEvent(
-            id=uuid.uuid4(),
+        event_id = uuid.uuid4()
+        normalized_actor_id = _as_uuid(actor_id)
+        normalized_resource_id = _as_uuid(resource_id)
+        previous_event_hash = await self._latest_event_hash()
+        event_hash = compute_audit_hash(
+            event_id=event_id,
             event_type=event_type.strip(),
-            actor_id=_as_uuid(actor_id),
-            resource_id=_as_uuid(resource_id),
+            actor_id=normalized_actor_id,
+            resource_id=normalized_resource_id,
             payload=payload,
+            previous_event_hash=previous_event_hash,
+        )
+        audit_event = AuditEvent(
+            id=event_id,
+            event_type=event_type.strip(),
+            actor_id=normalized_actor_id,
+            resource_id=normalized_resource_id,
+            payload=payload,
+            previous_event_hash=previous_event_hash,
+            event_hash=event_hash,
+            hmac_signature=sign_audit_hash(event_hash),
         )
         self._session.add(audit_event)
         await self._session.flush()
@@ -89,6 +139,35 @@ class AuditRepository:
         stmt = stmt.order_by(AuditEvent.created_at.desc()).limit(limit)
         result = await self._session.execute(stmt)
         return list(result.scalars().all())
+
+    async def _latest_event_hash(self) -> str | None:
+        result = await self._session.execute(
+            select(AuditEvent.event_hash).order_by(AuditEvent.created_at.desc()).limit(1)
+        )
+        return result.scalar_one_or_none()
+
+    async def verify_chain(self, limit: int = 1000) -> bool:
+        result = await self._session.execute(
+            select(AuditEvent).order_by(AuditEvent.created_at.asc()).limit(limit)
+        )
+        previous_hash: str | None = None
+        for event in result.scalars().all():
+            expected_hash = compute_audit_hash(
+                event_id=event.id,
+                event_type=event.event_type,
+                actor_id=event.actor_id,
+                resource_id=event.resource_id,
+                payload=event.payload,
+                previous_event_hash=previous_hash,
+            )
+            if event.previous_event_hash != previous_hash:
+                return False
+            if event.event_hash != expected_hash:
+                return False
+            if event.hmac_signature != sign_audit_hash(event.event_hash):
+                return False
+            previous_hash = event.event_hash
+        return True
 
     async def get_by_actor(
         self,

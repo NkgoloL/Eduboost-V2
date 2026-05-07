@@ -4,6 +4,7 @@ from __future__ import annotations
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.core.authorization import assert_can_access_learner
 from app.core.database import get_db
 from app.core.rate_limiter import check_ai_quota
 from app.core.security import get_current_user
@@ -27,12 +28,13 @@ async def get_diagnostic_items(
     learner_id: str,
     request: Request,
     db: AsyncSession = Depends(get_db),
-    _: dict = Depends(get_current_user),
+    current_user: dict = Depends(get_current_user),
 ):
-    await ConsentService(db).require_active_consent(learner_id)
+    await ConsentService(db).require_active_consent(learner_id, actor_id=current_user.get("sub"))
     learner = await LearnerRepository(db).get_by_id(learner_id)
     if not learner:
         raise HTTPException(status_code=404, detail="Learner not found")
+    assert_can_access_learner(current_user, learner)
     request.state.analytics = {
         "event": "diagnostic_started",
         "pseudonym_id": learner.pseudonym_id,
@@ -51,12 +53,13 @@ async def submit_diagnostic(
     body: DiagnosticSubmit,
     request: Request,
     db: AsyncSession = Depends(get_db),
-    _: dict = Depends(get_current_user),
+    current_user: dict = Depends(get_current_user),
 ):
-    await ConsentService(db).require_active_consent(body.learner_id)
+    await ConsentService(db).require_active_consent(body.learner_id, actor_id=current_user.get("sub"))
     learner = await LearnerRepository(db).get_by_id(body.learner_id)
     if not learner:
         raise HTTPException(status_code=404, detail="Learner not found")
+    assert_can_access_learner(current_user, learner)
     guardian = await GuardianRepository(db).get_by_id(learner.guardian_id)
     tier = guardian.subscription_tier if guardian else "free"
     await check_ai_quota(learner.guardian_id, tier)
