@@ -105,7 +105,7 @@ for prefix in (API_V2, "/v2"):
     app.include_router(jobs.router, prefix=prefix)
 
 
-# ── Health & meta ─────────────────────────────────────────────────────────────
+from app.api_v2_routers import auth, billing, consent, consent_renewal, diagnostics, gamification, jobs, learners, lessons, onboarding, parents, popia, study_plans, system  # noqa: E402
 @app.get("/health", tags=["ops"])
 async def health():
     return {"status": "ok", "version": settings.APP_VERSION, "environment": settings.ENVIRONMENT, "mode": "v2-baseline"}
@@ -121,7 +121,7 @@ async def ready():
 
 
 
-@app.get("/api/v2/health/deep", tags=["ops"])
+    app.include_router(system.router, prefix=prefix)
 @app.get("/v2/health/deep", tags=["ops"])
 async def deep_health():
     payload = await gather_deep_health()
