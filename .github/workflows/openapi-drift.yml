@@ -1,0 +1,58 @@
+name: OpenAPI Drift
+
+on:
+  pull_request:
+    branches:
+      - master
+      - "release/**"
+    paths:
+      - "app/**"
+      - "docs/openapi.json"
+      - "scripts/generate_openapi.py"
+      - "tests/unit/test_generate_openapi.py"
+      - "Makefile"
+      - ".github/workflows/openapi-drift.yml"
+  push:
+    branches:
+      - master
+      - "release/**"
+    paths:
+      - "app/**"
+      - "docs/openapi.json"
+      - "scripts/generate_openapi.py"
+      - "tests/unit/test_generate_openapi.py"
+      - "Makefile"
+      - ".github/workflows/openapi-drift.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  openapi-check:
+    name: Check OpenAPI drift
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt
+          fi
+          if [ -f requirements-dev.txt ]; then
+            python -m pip install -r requirements-dev.txt
+          fi
+
+      - name: Verify committed OpenAPI schema
+        run: make openapi-check

@@ -1,46 +1,19 @@
 SHELL := /bin/bash
+PYTHON ?= python3
 
-.PHONY: help dev test lint typecheck migrate
-
-help:
-	@echo "Makefile targets: dev, test, lint, typecheck, migrate"
-
-dev:
-	@echo "Starting development server (uvicorn app.api_v2:app)..."
-	python -m uvicorn app.api_v2:app --reload --port 8000
-
-test:
-	@echo "Running tests..."
-	pytest -q
-
-lint:
-	@echo "Running linter (ruff if available, fall back to flake8)..."
-	if command -v ruff >/dev/null 2>&1; then \
-		ruff check .; \
-	else \
-		flake8 . || true; \
-	fi
-
-typecheck:
-	@echo "Running mypy type checks..."
-	mypy . || true
-
-migrate:
-	@echo "Applying Alembic migrations (upgrade head)..."
-	alembic upgrade head
-# EduBoost V2 Makefile
-
-.PHONY: help dev test lint typecheck migrate docs clean
+.PHONY: help dev test lint typecheck migrate docs clean migration-check schema-integrity migration-smoke openapi openapi-check
 
 help:
 	@echo "Available commands:"
-	@echo "  dev        - Start development servers (API, Frontend, Postgres, Redis)"
-	@echo "  test       - Run backend tests"
-	@echo "  lint       - Run linters (ruff, black)"
-	@echo "  typecheck  - Run type checker (mypy)"
-	@echo "  migrate    - Run database migrations"
-	@echo "  docs       - Build and serve documentation"
-	@echo "  clean      - Remove temporary files"
+	@echo "  dev             - Start development servers (API, Frontend, Postgres, Redis)"
+	@echo "  test            - Run backend tests"
+	@echo "  lint            - Run linters (ruff, black)"
+	@echo "  typecheck       - Run type checker (mypy)"
+	@echo "  migrate         - Run database migrations"
+	@echo "  docs            - Build and serve documentation"
+	@echo "  openapi         - Generate docs/openapi.json"
+	@echo "  openapi-check   - Verify docs/openapi.json is current"
+	@echo "  clean           - Remove temporary files"
 
 dev:
 	docker-compose up
@@ -61,6 +34,11 @@ migrate:
 docs:
 	mkdocs serve
 
+openapi:
+	$(PYTHON) scripts/generate_openapi.py
+
+openapi-check:
+	$(PYTHON) scripts/generate_openapi.py --check
 
 migration-check: schema-integrity
 	@echo "Running migration graph and schema integrity checks"
