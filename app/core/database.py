@@ -7,6 +7,8 @@ from collections.abc import AsyncGenerator
 from sqlalchemy.pool import NullPool
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy import event
+import time
 
 from app.core.config import settings
 
@@ -71,3 +73,61 @@ async def drop_all_tables() -> None:
 async def init_test_schema() -> None:
     """Legacy helper alias retained while tests migrate to app.core.database."""
     await create_all_tables()
+
+
+# Slow-query instrumentation
+# Registers SQLAlchemy event listeners on the underlying sync engine to measure
+# query execution time and emit structured logs for queries exceeding the
+# configured threshold. Parameter values are not logged to avoid PII leakage.
+try:
+    slow_threshold = float(getattr(settings, "SLOW_QUERY_SECONDS", 0) or 0)
+except Exception:
+    slow_threshold = 0.0
+
+if slow_threshold > 0:
+    try:
+        # Prefer structured logger if available
+        from app.core.logging import get_logger
+
+        slow_log = get_logger("sqlalchemy.slow")
+    except Exception:
+        import logging as _logging
+
+        slow_log = _logging.getLogger("sqlalchemy.slow")
+
+    def _before_cursor_execute(conn, cursor, statement, parameters, context, executemany):
+        conn.info.setdefault("query_start_time", []).append(time.time())
+
+    def _after_cursor_execute(conn, cursor, statement, parameters, context, executemany):
+        start_times = conn.info.get("query_start_time", [])
+        if not start_times:
+            return
+        start_time = start_times.pop(-1)
+        duration = time.time() - start_time
+        if duration >= slow_threshold:
+            try:
+                param_count = len(parameters) if parameters is not None else 0
+            except Exception:
+                param_count = 0
+            # Avoid logging parameter values to prevent leaking sensitive data
+            try:
+                slow_log.warning(
+                    "slow_query",
+                    duration_seconds=round(duration, 4),
+                    param_count=param_count,
+                    statement=statement,
+                )
+            except Exception:
+                # Fallback to stdlib logging message format
+                import logging as _logging
+
+                _logging.getLogger("sqlalchemy.slow").warning(
+                    "Slow query: %.4fs params=%d statement=%s",
+                    duration,
+                    param_count,
+                    statement,
+                )
+
+    # Register listeners on the sync engine wrapped by the async engine
+    event.listen(engine.sync_engine, "before_cursor_execute", _before_cursor_execute)
+    event.listen(engine.sync_engine, "after_cursor_execute", _after_cursor_execute)

@@ -65,7 +65,10 @@ class Settings(BaseSettings):
     ENCRYPTION_SALT: str = "test-encryption-salt"
     BACKUP_ENCRYPTION_KEY: str = ""
     BACKUP_RETENTION_DAYS: int = 30
-    AUDIT_HMAC_SECRET: str = ""
+    # Audit HMAC secret used by audit repository (dev default)
+    AUDIT_HMAC_SECRET: str = "dev-audit-secret"
+    # Compatibility alias expected by some legacy modules/tests
+    JWT_SECRET_KEY: str = "CHANGE_ME_IN_PRODUCTION_AT_LEAST_32_CHARS"
 
     # ── LLM Providers ────────────────────────────────────────────────────────
     ANTHROPIC_API_KEY: str = ""
@@ -75,7 +78,7 @@ class Settings(BaseSettings):
     INFERENCE_SERVICE_URL: str = "http://localhost:9100"
     LLM_TIMEOUT_SECONDS: int = 30
     LLM_MAX_RETRIES: int = 2
-    LLM_PROVIDER: Literal["auto", "groq", "anthropic", "local_hf", "mock"] = "auto"
+    LLM_PROVIDER: Literal["auto", "groq", "anthropic", "local_hf"] = "auto"
     LOCAL_BASE_MODEL_ID: str = "HuggingFaceTB/SmolLM2-360M-Instruct"
     LOCAL_ADAPTER_PATH: str = "artifacts/llm/smollm2-caps-focused-9epoch-adapter"
     LOCAL_MERGED_MODEL_PATH: str = "artifacts/llm/merged-smollm2-caps-focused-model"
@@ -112,6 +115,8 @@ class Settings(BaseSettings):
     GRAFANA_CLOUD_API_KEY: str = ""
     PROMETHEUS_METRICS_PATH: str = "/metrics"
     LOG_LEVEL: str = "INFO"
+    # Threshold (seconds) above which a SQL query is considered "slow". Set to 0 to disable.
+    SLOW_QUERY_SECONDS: float = 0.5
     SENTRY_DSN: str = ""
     KEY_VAULT_REFRESH_INTERVAL_HOURS: int = 6
 

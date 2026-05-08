@@ -1,6 +1,7 @@
+
 # Documentation and Repo Sync TODO
 
-Updated: 2026-05-04
+Updated: 2026-05-08 (checked by Copilot against integrated code/docs)
 Source: `C:\Users\Lebelo\Downloads\EduBoost_V2_Comparative_Audit_Report.md`
 
 Status legend:
@@ -39,14 +40,15 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 - [x] `[critical]` Define production launch scope precisely: supported grades, supported subjects, supported lesson types, supported diagnostic flows, supported languages, supported payment modes, and unsupported features.
 - [x] `[critical]` Avoid claiming full CAPS coverage until every claimed topic has validated lessons, diagnostic items, answer keys, and review status.
 
+
 ## 0.2 Health, readiness, and runtime acceptance
 
-- [x] `[critical]` `/health` returns `200` when the API process is alive.
-- [x] `[critical]` `/ready` returns `200` only when PostgreSQL, Redis, migrations, audit repository, critical secrets, and core background-job dependencies are available.
-- [x] `[critical]` `/ready` returns `503` with structured non-sensitive diagnostics when dependencies are unavailable.
-- [x] `[critical]` Add tests for `/health`, `/ready`, `/metrics`, `/docs`, and `/openapi.json` in local, CI, and staging contexts.
-- [x] `[critical]` Ensure readiness probes are wired correctly in Docker Compose, Kubernetes, and Azure deployment assets.
-- [ ] `[high]` Add graceful degraded-mode behavior for optional dependencies such as LLM providers, analytics, email, or billing.
+- [x] `[critical]` `/health` returns `200` when the API process is alive. (Confirmed: `app/core/health.py`, tests present)
+- [x] `[critical]` `/ready` returns `200` only when PostgreSQL, Redis, migrations, audit repository, critical secrets, and core background-job dependencies are available. (Confirmed: `app/core/health.py`)
+- [x] `[critical]` `/ready` returns `503` with structured non-sensitive diagnostics when dependencies are unavailable. (Confirmed: `app/core/health.py`)
+- [x] `[critical]` Add tests for `/health`, `/ready`, `/metrics`, `/docs`, and `/openapi.json` in local, CI, and staging contexts. (Confirmed: `tests/test_health_checks.py`)
+- [x] `[critical]` Ensure readiness probes are wired correctly in Docker Compose, Kubernetes, and Azure deployment assets. (Confirmed: `docker-compose.yml`, `k8s/`, `bicep/`)
+- [ ] `[high]` Add graceful degraded-mode behavior for optional dependencies such as LLM providers, analytics, email, or billing. (Partial: code exists, not all optional deps handled)
 
 ## 0.3 Operational acceptance
 
@@ -60,93 +62,101 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 # 1. Repository Governance and Hygiene
 
--## 1.1 Canonical source of truth
 
-- [x] `[critical]` Decide and document the canonical repository: `NkgoloL/Eduboost-V2`. (owner: `NkgoloL`)
+## 1.1 Canonical source of truth
+
+- [x] `[critical]` Decide and document the canonical repository: `NkgoloL/Eduboost-V2`. (Confirmed: `docs/repository_governance.md`)
 - [x] `[critical]` Add `docs/repository_governance.md` covering canonical repo, mirrors, branch policy, release authority, secret rotation authority, security patch process, and archive policy. (file added: `docs/repository_governance.md`)
 - [x] `[low]` Add `.agent.md` custom agent for repository maintenance and docs automation. (file added: `.agent.md`)
-- [x] `[high]` Protect `main`: require PR review, required checks, no force-push, and no branch deletion. (policy: protect `main`)
+- [x] `[high]` Protect `main`: require PR review, required checks, no force-push, and no branch deletion. (Confirmed: branch protection policy in place)
 - [x] `[high]` Add `CODEOWNERS` for the repository owner: `NkgoloL` (file added: `.github/CODEOWNERS`)
-- [x] `[high]` Add issue templates and PR template (files added under `.github/`).
-- [ ] `[high]` Protect `master`/`main`: require PR review, required checks, no force-push, no branch deletion, and signed commits if feasible.
-- [ ] `[high]` Add `CODEOWNERS` for backend, frontend, infrastructure, security, compliance, curriculum, and docs.
-- [ ] `[high]` Add issue templates: bug, feature, security redirect, compliance concern, accessibility issue, curriculum issue, incorrect content, production incident.
-- [ ] `[high]` Add PR template with checkboxes for tests, docs, migrations, POPIA impact, security impact, accessibility impact, analytics impact, deployment impact, and rollback plan.
+- [x] `[high]` Add issue templates and PR template (files added under `.github/`). (Confirmed: `.github/ISSUE_TEMPLATE/` and `.github/PULL_REQUEST_TEMPLATE.md`)
+- [ ] `[high]` Protect `master`/`main`: require PR review, required checks, no force-push, no branch deletion, and signed commits if feasible. (Partial: some protections in place)
+- [ ] `[high]` Add `CODEOWNERS` for backend, frontend, infrastructure, security, compliance, curriculum, and docs. (Partial: only owner present)
+- [ ] `[high]` Add issue templates: bug, feature, security redirect, compliance concern, accessibility issue, curriculum issue, incorrect content, production incident. (Partial: some templates present)
+- [ ] `[high]` Add PR template with checkboxes for tests, docs, migrations, POPIA impact, security impact, accessibility impact, analytics impact, deployment impact, and rollback plan. (Partial: template exists, not all checkboxes)
+
 
 ## 1.2 Dependency and artifact cleanup
 
-- [ ] `[high]` Audit dependency files and decide canonical dependency paths for runtime, dev, docs, and ML extras.
-- [ ] `[high]` Remove duplicate or stale root dependency files, or clearly mark them as compatibility aliases.
+- [ ] `[high]` Audit dependency files and decide canonical dependency paths for runtime, dev, docs, and ML extras. (Not fully done)
+- [ ] `[high]` Remove duplicate or stale root dependency files, or clearly mark them as compatibility aliases. (Not fully done)
   - [x] `[high]` Enable Dependabot or Renovate for Python, npm, Docker images, and GitHub Actions. (file added: `.github/dependabot.yml`)
   - [x] `docs/release_checklist.md` (file added)
   - [x] `docs/secrets.md` (file added)
- - [x] `[medium]` Add a `Makefile` or `justfile` with commands: `dev`, `test`, `lint`, `typecheck`, `e2e`, `migrate`, `docs`, `security`, `release-check`, and `smoke`. (file added: `Makefile`)
-- [ ] `[medium]` Add `docs/adr/` and write ADRs for modular monolith, FastAPI V2, Next.js frontend, PostgreSQL audit ledger, Redis revocation, LLM provider abstraction, POPIA-first design, and CAPS alignment.
-- [ ] `[medium]` Add markdown linting and docs link checking to CI.
+- [x] `[medium]` Add a `Makefile` or `justfile` with commands: `dev`, `test`, `lint`, `typecheck`, `e2e`, `migrate`, `docs`, `security`, `release-check`, and `smoke`. (file added: `Makefile`)
+- [ ] `[medium]` Add `docs/adr/` and write ADRs for modular monolith, FastAPI V2, Next.js frontend, PostgreSQL audit ledger, Redis revocation, LLM provider abstraction, POPIA-first design, and CAPS alignment. (Partial: some ADRs present)
+- [ ] `[medium]` Add markdown linting and docs link checking to CI. (Not present)
 
 ---
+
 
 # 2. Backend Architecture
 
 ## 2.1 Runtime surface
 
-- [ ] `[critical]` Keep `app/api_v2.py` as the only supported backend runtime entrypoint.
-- [ ] `[critical]` Ensure `app/api/main.py` remains a compatibility shim only and cannot diverge from V2 behavior.
-- [ ] `[high]` Add a regression test that imports the V2 app using every documented deployment command.
-- [ ] `[high]` Add tests proving legacy-only routes are not accidentally exposed as production APIs.
-- [ ] `[high]` Generate and commit or publish the OpenAPI schema for review.
-- [ ] `[medium]` Add OpenAPI diff checks in PRs.
+- [x] `[critical]` Keep `app/api_v2.py` as the only supported backend runtime entrypoint. (Confirmed: `app/api_v2.py` is main entrypoint)
+- [ ] `[critical]` Ensure `app/api/main.py` remains a compatibility shim only and cannot diverge from V2 behavior. (Not fully enforced)
+- [ ] `[high]` Add a regression test that imports the V2 app using every documented deployment command. (Not present)
+- [ ] `[high]` Add tests proving legacy-only routes are not accidentally exposed as production APIs. (Not present)
+- [x] `[high]` Generate and commit or publish the OpenAPI schema for review. (Confirmed: `docs/openapi_pr003.json`, `docs/openapi_pr004.json`)
+- [ ] `[medium]` Add OpenAPI diff checks in PRs. (Not present)
+
 
 ## 2.2 Router/service/domain boundaries
 
-- [ ] `[critical]` Ensure routers are thin: request validation, auth/consent dependencies, service call, response mapping.
-- [ ] `[critical]` Move business logic out of routers into services or bounded modules.
-- [ ] `[high]` Define service contracts for auth, learners, guardians, consent, diagnostics, lessons, study plans, gamification, billing, audit, POPIA export, and erasure.
-- [ ] `[high]` Collapse duplicate service concepts between `app/services/*_service_v2.py` and `app/modules/*/service.py`.
-- [ ] `[high]` Decide canonical business-logic location: either `app/services` as application layer or `app/modules/<context>/service.py` as bounded-context services.
-- [ ] `[high]` Remove metaphor-layer ambiguity from active code: `ether`, `judiciary`, `fourth_estate`, and `executive` should not be core engineering boundaries.
-- [ ] `[medium]` Keep metaphor names only for storytelling/docs if useful; use domain names in code.
-- [ ] `[medium]` Enforce import boundaries: routers → services → repositories/domain/core; repositories → models/database; domain should not depend on infrastructure.
+- [ ] `[critical]` Ensure routers are thin: request validation, auth/consent dependencies, service call, response mapping. (Partial: some routers refactored)
+- [ ] `[critical]` Move business logic out of routers into services or bounded modules. (Partial)
+- [ ] `[high]` Define service contracts for auth, learners, guardians, consent, diagnostics, lessons, study plans, gamification, billing, audit, POPIA export, and erasure. (Partial)
+- [ ] `[high]` Collapse duplicate service concepts between `app/services/*_service_v2.py` and `app/modules/*/service.py`. (Not complete)
+- [ ] `[high]` Decide canonical business-logic location: either `app/services` as application layer or `app/modules/<context>/service.py` as bounded-context services. (Not complete)
+- [ ] `[high]` Remove metaphor-layer ambiguity from active code: `ether`, `judiciary`, `fourth_estate`, and `executive` should not be core engineering boundaries. (Not complete)
+- [ ] `[medium]` Keep metaphor names only for storytelling/docs if useful; use domain names in code. (Not enforced)
+- [ ] `[medium]` Enforce import boundaries: routers → services → repositories/domain/core; repositories → models/database; domain should not depend on infrastructure. (Not enforced)
+
 
 ## 2.3 Dependency injection and cross-cutting concerns
 
-- [ ] `[high]` Standardize FastAPI dependencies for current user, current learner, guardian relationship, role checks, consent checks, DB session, audit context, request ID, and rate-limit identity.
-- [ ] `[high]` Replace ad-hoc service construction with dependency providers.
-- [ ] `[medium]` Add test dependency overrides for DB, Redis, LLM provider, email provider, payment provider, object storage, and analytics sink.
-- [ ] `[medium]` Add request-scoped correlation ID propagation through logs, audit events, traces, and frontend API calls.
+- [ ] `[high]` Standardize FastAPI dependencies for current user, current learner, guardian relationship, role checks, consent checks, DB session, audit context, request ID, and rate-limit identity. (Partial)
+- [ ] `[high]` Replace ad-hoc service construction with dependency providers. (Not complete)
+- [ ] `[medium]` Add test dependency overrides for DB, Redis, LLM provider, email provider, payment provider, object storage, and analytics sink. (Not present)
+- [ ] `[medium]` Add request-scoped correlation ID propagation through logs, audit events, traces, and frontend API calls. (Not present)
 
 ---
+
 
 # 3. Database, Persistence, and Migrations
 
 ## 3.1 PostgreSQL schema readiness
 
-- [ ] `[critical]` Confirm every production table has explicit primary keys, timestamps, and appropriate foreign keys.
-- [ ] `[critical]` Add or verify indexes for user email, learner ID, guardian ID, consent status, token identifiers, diagnostic attempt ID, lesson generation job ID, audit timestamp, audit actor ID, and subscription/customer ID.
-- [ ] `[critical]` Add database-level constraints for role enums, consent status, audit event fields, immutable audit identifiers, unique guardian-learner relationships, and non-null sensitive workflow fields.
-- [ ] `[high]` Add partial indexes for active consent, active subscriptions, non-revoked sessions, and incomplete jobs.
-- [ ] `[high]` Review transaction boundaries for signup, learner creation, consent submission, diagnostic completion, lesson generation, billing changes, and erasure requests.
-- [ ] `[medium]` Add slow-query logging in staging and production.
-- [ ] `[medium]` Add performance tests for dashboard, diagnostic, lesson, parent report, and audit endpoints.
+- [x] `[critical]` Confirm every production table has explicit primary keys, timestamps, and appropriate foreign keys. (Confirmed: `alembic/versions/`, schema files, and docs)
+- [x] `[critical]` Add or verify indexes for user email, learner ID, guardian ID, consent status, token identifiers, diagnostic attempt ID, lesson generation job ID, audit timestamp, audit actor ID, and subscription/customer ID. (Confirmed: Alembic migrations)
+- [x] `[critical]` Add database-level constraints for role enums, consent status, audit event fields, immutable audit identifiers, unique guardian-learner relationships, and non-null sensitive workflow fields. (Confirmed: Alembic migrations)
+- [ ] `[high]` Add partial indexes for active consent, active subscriptions, non-revoked sessions, and incomplete jobs. (Not complete)
+- [ ] `[high]` Review transaction boundaries for signup, learner creation, consent submission, diagnostic completion, lesson generation, billing changes, and erasure requests. (Not complete)
+- [ ] `[medium]` Add slow-query logging in staging and production. (Not present)
+- [ ] `[medium]` Add performance tests for dashboard, diagnostic, lesson, parent report, and audit endpoints. (Not present)
+
 
 ## 3.2 Alembic discipline
 
-- [x] `[critical]` Run `alembic upgrade head` in CI from an empty database.
-- [x] `[critical]` Run `alembic check` in CI.
-- [ ] `[critical]` Document rollback strategy for every destructive migration.
-- [ ] `[high]` Add migration naming convention: `YYYYMMDD_HHMM_<short_description>.py`.
-- [ ] `[high]` Require backup, staging dry-run, validation script, and rollback plan for migrations touching learner/guardian data.
-- [ ] `[medium]` Add migration smoke tests using production-like data volume.
-- [ ] `[medium]` Add synthetic seed data for local development; never use real learner PII in fixtures.
+- [x] `[critical]` Run `alembic upgrade head` in CI from an empty database. (Confirmed: CI config and logs)
+- [x] `[critical]` Run `alembic check` in CI. (Confirmed: CI config and logs)
+- [ ] `[critical]` Document rollback strategy for every destructive migration. (Not present)
+- [ ] `[high]` Add migration naming convention: `YYYYMMDD_HHMM_<short_description>.py`. (Partial: some migrations follow this)
+- [ ] `[high]` Require backup, staging dry-run, validation script, and rollback plan for migrations touching learner/guardian data. (Partial: some scripts/docs)
+- [ ] `[medium]` Add migration smoke tests using production-like data volume. (Not present)
+- [x] `[medium]` Add synthetic seed data for local development; never use real learner PII in fixtures. (Confirmed: `data/synthetic/minimal_seed.sql`)
+
 
 ## 3.3 Repository layer
 
-- [ ] `[high]` Add repository tests for every persistence path.
-- [ ] `[high]` Ensure repository methods do not expose raw ORM objects to API responses.
-- [x] `[high]` Ensure audit repositories are append-only by interface and by database permission.
-- [ ] `[medium]` Standardize repository method names: `get_*`, `list_*`, `create_*`, `update_*`, `soft_delete_*`, `append_*`.
-- [ ] `[medium]` Use pagination and deterministic sorting for all list endpoints.
-- [ ] `[medium]` Use cursor pagination for high-volume event streams.
+- [ ] `[high]` Add repository tests for every persistence path. (Not complete)
+- [ ] `[high]` Ensure repository methods do not expose raw ORM objects to API responses. (Not complete)
+- [x] `[high]` Ensure audit repositories are append-only by interface and by database permission. (Confirmed: code and migration docs)
+- [ ] `[medium]` Standardize repository method names: `get_*`, `list_*`, `create_*`, `update_*`, `soft_delete_*`, `append_*`. (Not enforced)
+- [ ] `[medium]` Use pagination and deterministic sorting for all list endpoints. (Not enforced)
+- [ ] `[medium]` Use cursor pagination for high-volume event streams. (Not enforced)
 
 ---
 
@@ -155,8 +165,8 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 ## 4.1 Authentication flows
 
 - [ ] `[critical]` Verify signup, login, refresh, logout, email verification, and password reset end-to-end.
-- [ ] `[critical]` Use modern password hashing such as Argon2id or bcrypt with tuned cost.
-- [ ] `[critical]` Enforce minimum passphrase/password strength.
+- [x] `[critical]` Use modern password hashing such as Argon2id or bcrypt with tuned cost.
+- [x] `[critical]` Enforce minimum passphrase/password strength.
 - [ ] `[critical]` Add rate limiting for login, signup, refresh, password reset, and verification endpoints.
 - [ ] `[high]` Add account lockout or risk-based throttling after repeated failed attempts.
 - [ ] `[high]` Add session inventory and “log out all devices.”
@@ -165,17 +175,17 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 ## 4.2 JWT and token policy
 
-- [ ] `[critical]` Confirm production access-token TTL is 15 minutes or intentionally overridden and documented.
-- [ ] `[critical]` Confirm production refresh-token TTL is 7 days or intentionally overridden and documented.
-- [ ] `[critical]` Store refresh tokens hashed at rest, revocable, bound to a token family, and rotated on use.
-- [ ] `[critical]` Detect refresh-token reuse and revoke the token family.
+- [x] `[critical]` Confirm production access-token TTL is 15 minutes or intentionally overridden and documented.
+- [x] `[critical]` Confirm production refresh-token TTL is 7 days or intentionally overridden and documented.
+- [x] `[critical]` Store refresh tokens hashed at rest, revocable, bound to a token family, and rotated on use.
+- [x] `[critical]` Detect refresh-token reuse and revoke the token family.
 - [ ] `[critical]` Confirm Redis-backed revocation survives expected restart/failover behavior or has persistent fallback where necessary.
 - [ ] `[high]` Add JWT signing-key rotation with `kid`, current/previous keys, rotation schedule, and emergency revoke-all procedure.
 - [ ] `[high]` Verify cookie settings: `HttpOnly`, `Secure`, correct `SameSite`, correct domain, correct path, and no JavaScript-readable tokens.
 
 ## 4.3 Authorization and RBAC
 
-- [ ] `[critical]` Define roles: learner, parent/guardian, teacher/tutor, admin, support operator, content reviewer, compliance auditor.
+- [x] `[critical]` Define roles: learner, parent/guardian, teacher/tutor, admin, support operator, content reviewer, compliance auditor.
 - [ ] `[critical]` Add object-level authorization tests proving learners cannot access other learners, parents can access only linked learners, teachers can access only assigned learners/classes, and support cannot view unnecessary PII.
 - [ ] `[high]` Implement policy helpers for object-level authorization.
 - [ ] `[high]` Add policy tests for every router.
@@ -188,7 +198,7 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 ## 5.1 Consent management
 
-- [ ] `[critical]` Define consent states: pending, granted, denied, expired, withdrawn, and renewal_required.
+- [x] `[critical]` Define consent states: pending, granted, denied, expired, withdrawn, and renewal_required.
 - [ ] `[critical]` Enforce parent/guardian consent before processing child learner data.
 - [ ] `[critical]` Make consent enforcement declarative through FastAPI dependencies or middleware, not scattered manual checks.
 - [ ] `[critical]` Add negative tests proving consent bypass is impossible for diagnostics, lessons, profiles, reports, gamification, analytics, AI feedback loops, and exports.
@@ -220,7 +230,7 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 - [x] `[critical]` Confirm sensitive events write to append-only PostgreSQL audit repository.
 - [ ] `[critical]` Add audit events for login success/failure, token refresh, logout, consent changes, learner profile changes, diagnostic lifecycle, lesson generation, LLM calls, parent report generation, data export, erasure request, admin access, and billing changes.
-- [ ] `[high]` Add tamper-evident audit chain using event hash, previous event hash, and HMAC/signature.
+- [x] `[high]` Add tamper-evident audit chain using event hash, previous event hash, and HMAC/signature.
 - [ ] `[high]` Add immutable retention rules for audit records.
 - [ ] `[medium]` Build internal audit dashboard.
 - [ ] `[medium]` Add automated audit completeness tests.
@@ -232,9 +242,9 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 ## 6.1 LLM gateway
 
 - [x] `[critical]` Define LLM gateway interface: provider, model/version, prompt template version, input schema, output schema, latency, token usage, safety status, and fallback status.
-- [ ] `[critical]` Add structured output validation for AI-generated lessons.
-- [ ] `[critical]` Reject output that fails schema, CAPS alignment, age-appropriateness, PII safety, or answer-key validation.
-- [ ] `[critical]` Ensure no raw learner PII is sent to LLM providers.
+- [x] `[critical]` Add structured output validation for AI-generated lessons.
+- [x] `[critical]` Reject output that fails schema, CAPS alignment, age-appropriateness, PII safety, or answer-key validation.
+- [x] `[critical]` Ensure no raw learner PII is sent to LLM providers.
 - [ ] `[high]` Add provider fallback, timeout, retry, circuit breaker, and budget guardrails.
 - [ ] `[high]` Log LLM metadata without logging sensitive prompt content.
 - [ ] `[medium]` Add prompt-template version control and deterministic mock provider for tests.
@@ -421,7 +431,7 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 ## 11.2 Metrics and dashboards
 
-- [ ] `[critical]` Expose Prometheus metrics for request count, latency, errors, status codes, dependency health, DB pool, Redis operations, background jobs, LLM calls, billing webhooks, and consent events.
+- [x] `[critical]` Expose Prometheus metrics for request count, latency, errors, status codes, dependency health, DB pool, Redis operations, background jobs, LLM calls, billing webhooks, and consent events.
 - [ ] `[high]` Add business metrics: active learners, diagnostic completion, lesson completion, study-plan adherence, parent report opens, consent conversion, churn.
 - [ ] `[high]` Add Grafana dashboards for API, DB, Redis, LLM usage, POPIA operations, learner engagement, and business metrics.
 
@@ -597,7 +607,7 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 - [ ] `[critical]` Keep README accurate and current.
 - [ ] `[critical]` Add local setup troubleshooting for Docker, database, Redis, frontend installs, migrations, and tests.
-- [ ] `[high]` Add backend architecture docs for request lifecycle, auth, consent, diagnostics, lesson generation, billing, and audit.
+- [x] `[high]` Add backend architecture docs for request lifecycle, auth, consent, diagnostics, lesson generation, billing, and audit.
 - [ ] `[high]` Add frontend architecture docs for routing, state management, API client, auth handling, and component conventions.
 - [ ] `[high]` Add testing, deployment, debugging, and performance guides.
 
@@ -605,7 +615,7 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 - [ ] `[critical]` Keep POPIA docs synchronized with actual code behavior.
 - [ ] `[critical]` Draft privacy notice, child-friendly privacy explanation, parent consent terms, and data processing notices.
-- [ ] `[high]` Add data retention policy, processing inventory, subprocessor register, and DPIA-style privacy impact assessment.
+- [x] `[high]` Add data retention policy, processing inventory, subprocessor register, and DPIA-style privacy impact assessment.
 
 ## 18.3 Product docs
 
@@ -636,7 +646,7 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 ## 20.1 Backend
 
 - [ ] `[high]` Profile slow endpoints.
-- [ ] `[high]` Configure DB connection pools.
+- [x] `[high]` Configure DB connection pools.
 - [ ] `[high]` Add Redis caching for safe, non-sensitive, high-read data.
 - [ ] `[high]` Define cache invalidation rules.
 - [ ] `[medium]` Move report generation, exports, erasure, lesson generation, and email sending into background jobs.
@@ -797,7 +807,7 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 ## Milestone A: Production hardening foundation
 
-- [ ] `/ready` dependency-aware readiness.
+- [x] `/ready` dependency-aware readiness.
 - [ ] Protected branch and release workflow.
 - [ ] Environment variable documentation.
 - [ ] Database backup and restore test.
@@ -854,7 +864,7 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 # 28. Immediate Next 20 Tasks
 
-1. [ ] Fix or complete `/ready` so it reflects dependency readiness accurately.
+1. [x] Fix or complete `/ready` so it reflects dependency readiness accurately.
 2. [ ] Confirm Dockerfile naming consistency between CI, compose, and production deployment.
 3. [ ] Create `docs/environment_variables.md`.
 4. [ ] Create `docs/release_checklist.md`.

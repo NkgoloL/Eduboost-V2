@@ -50,6 +50,14 @@ class TelemetryService:
         except Exception as exc:  # noqa: BLE001 - telemetry must never break learner flows
             log.warning("telemetry_dispatch_failed", event=event_name, error=exc.__class__.__name__)
 
+    @staticmethod
+    def sanitize_properties(properties: dict[str, Any]) -> dict[str, Any]:
+        """Return a sanitized subset of properties safe for analytics dispatch.
+
+        Kept for backward compatibility with older tests and callers.
+        """
+        return {k: v for k, v in properties.items() if k in ALLOWED_ANALYTICS_PROPERTIES}
+
 
 def validate_event_payload(event_name: str, pseudonym_id: str, properties: dict[str, Any]) -> dict[str, Any]:
     if not event_name or not event_name.replace("_", "").isalnum():

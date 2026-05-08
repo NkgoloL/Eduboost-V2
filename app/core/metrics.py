@@ -135,6 +135,35 @@ redis_connected_clients = Gauge(
 )
 
 
+
+# ── Readiness / Release Operations ──────────────────────────────────────────
+readiness_component_status = Gauge(
+    "eduboost_readiness_component_status",
+    "Dependency readiness status by component; 1=ok, 0=unavailable/degraded",
+    ["component", "criticality"],
+    registry=REGISTRY,
+)
+
+audit_write_failures_total = Counter(
+    "eduboost_audit_write_failures_total",
+    "Audit write failures observed by the application",
+    ["operation"],
+    registry=REGISTRY,
+)
+
+backup_last_success_timestamp = Gauge(
+    "eduboost_backup_last_success_timestamp",
+    "Unix timestamp of the last successful PostgreSQL backup reported by backup automation",
+    registry=REGISTRY,
+)
+
+backup_failures_total = Counter(
+    "eduboost_backup_failures_total",
+    "PostgreSQL backup failures reported by backup automation",
+    ["stage"],
+    registry=REGISTRY,
+)
+
 # ── ARQ Background Jobs ───────────────────────────────────────────────────────
 arq_jobs_total = Counter(
     "eduboost_arq_jobs_total",

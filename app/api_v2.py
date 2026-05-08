@@ -137,3 +137,21 @@ async def metrics():
 @app.get("/", tags=["ops"])
 async def root():
     return JSONResponse({"message": "EduBoost SA V2 — Ngiyabonga! 🦁", "docs": "/docs"})
+
+
+# Dev-only helper to simulate a slow DB query for testing slow-query logging.
+# Executes `pg_sleep(0.02)` via an AsyncSession; only enabled outside production.
+@app.get("/__dev/slow_query", tags=["dev"])
+async def dev_slow_query():
+    if settings.is_production():
+        return JSONResponse(status_code=404, content={"detail": "not found"})
+    try:
+        from app.core.database import AsyncSessionLocal
+        from sqlalchemy import text
+
+        async with AsyncSessionLocal() as session:
+            # 0.02s sleep should exceed low thresholds like 0.01s
+            await session.execute(text("SELECT pg_sleep(0.02)"))
+        return JSONResponse({"status": "ok", "note": "executed pg_sleep(0.02)"})
+    except Exception as exc:  # pragma: no cover - dev helper
+        return JSONResponse(status_code=500, content={"status": "error", "detail": str(exc)})

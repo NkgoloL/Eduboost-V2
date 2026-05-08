@@ -45,14 +45,6 @@ def validate_password_strength(password: str) -> str:
     - complex password: length >= PASSWORD_MIN_LENGTH with upper/lower/digit/symbol
     - passphrase: length >= PASSWORD_PASSPHRASE_MIN_LENGTH and at least 3 words
     """
-    # In non-production environments we accept weaker passwords to simplify
-    # local development and automated tests. Production policy is enforced
-    # via `get_password_policy()` when `settings.is_production()` is True.
-    from app.core.config import settings
-
-    if not settings.is_production():
-        return password
-
     policy = get_password_policy()
     candidate = password or ""
     lowered = candidate.lower()

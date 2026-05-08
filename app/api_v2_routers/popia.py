@@ -15,7 +15,6 @@ from app.models import LearnerProfile
 from app.repositories.repositories import LearnerRepository
 from app.services.fourth_estate import FourthEstateService
 from app.services.popia_service import POPIA_ERASURE_GRACE_DAYS, POPIADataRightsService
-from app.services.consent import ConsentService
 from app.services.rlhf_service import RLHFService
 
 router = APIRouter(prefix="/popia", tags=["compliance"])
