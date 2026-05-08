@@ -11,6 +11,8 @@ from app.core.config import settings
 from app.core.database import get_db
 from app.core.refresh_tokens import (
     consume_refresh_token,
+    list_user_refresh_sessions,
+    revoke_all_refresh_tokens_for_user,
     revoke_refresh_token,
     revoke_refresh_token_jti,
     store_refresh_token,
@@ -26,6 +28,7 @@ from app.core.security import (
     verify_password,
 )
 from app.core.token_revocation import revoke_token, revoke_user_tokens
+from app.services.fourth_estate import FourthEstateService
 from app.domain.schemas import LoginRequest, RefreshRequest, RegisterRequest, TokenResponse
 from app.models import UserRole
 from app.repositories.repositories import ConsentRepository, GuardianRepository, LearnerRepository
@@ -36,7 +39,7 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 
 REFRESH_COOKIE = "eduboost_refresh"
 DEV_GUARDIAN_EMAIL = "dev.guardian@eduboost.local"
-DEV_GUARDIAN_PASSWORD = "DevPass123!"
+DEV_GUARDIAN_PASSWORD = "DevPass1234!"
 DEV_GUARDIAN_NAME = "Dev Guardian"
 DEV_LEARNER_NAME = "DevLearner"
 
@@ -47,7 +50,7 @@ async def me(current_user: dict = Depends(get_current_user)):
 
 
 @router.post("/register", response_model=TokenResponse, status_code=status.HTTP_201_CREATED)
-@limiter.limit("5/hour")
+@limiter.limit(settings.RATE_LIMIT_AUTH)
 async def register(request: Request, body: RegisterRequest, response: Response, db: AsyncSession = Depends(get_db)):
     repo = GuardianRepository(db)
     audit = FourthEstateService(db)
@@ -67,7 +70,8 @@ async def register(request: Request, body: RegisterRequest, response: Response, 
     )
 
     refresh = create_refresh_token(guardian.id, guardian.role)
-    access = create_access_token(guardian.id, guardian.role, {"refresh_jti": decode_token(refresh).get("jti")})
+    refresh_payload = decode_token(refresh)
+    access = create_access_token(guardian.id, guardian.role, {"refresh_jti": refresh_payload.get("jti"), "refresh_family": refresh_payload.get("family")})
 
     await store_refresh_token(refresh)
     _set_refresh_cookie(response, refresh)
@@ -77,7 +81,7 @@ async def register(request: Request, body: RegisterRequest, response: Response, 
 
 
 @router.post("/login", response_model=TokenResponse)
-@limiter.limit("10/hour")
+@limiter.limit(settings.RATE_LIMIT_AUTH)
 async def login(request: Request, body: LoginRequest, response: Response, db: AsyncSession = Depends(get_db)):
     repo = GuardianRepository(db)
     audit = FourthEstateService(db)
@@ -86,10 +90,12 @@ async def login(request: Request, body: LoginRequest, response: Response, db: As
     email_hash = hash_email(submitted_email)
     guardian = await repo.get_by_email_hash(email_hash)
     if not guardian or not verify_password(body.password, guardian.password_hash):
+        await audit.auth_event("USER_LOGIN_FAILED", guardian.id if guardian else None, {"email_hash": email_hash})
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
 
     refresh = create_refresh_token(guardian.id, guardian.role)
-    access = create_access_token(guardian.id, guardian.role, {"refresh_jti": decode_token(refresh).get("jti")})
+    refresh_payload = decode_token(refresh)
+    access = create_access_token(guardian.id, guardian.role, {"refresh_jti": refresh_payload.get("jti"), "refresh_family": refresh_payload.get("family")})
 
     await store_refresh_token(refresh)
     _set_refresh_cookie(response, refresh)
@@ -142,7 +148,8 @@ async def create_dev_session(response: Response, db: AsyncSession = Depends(get_
         )
 
     refresh = create_refresh_token(guardian.id, guardian.role)
-    access = create_access_token(guardian.id, guardian.role, {"refresh_jti": decode_token(refresh).get("jti")})
+    refresh_payload = decode_token(refresh)
+    access = create_access_token(guardian.id, guardian.role, {"refresh_jti": refresh_payload.get("jti"), "refresh_family": refresh_payload.get("family")})
     await store_refresh_token(refresh)
     _set_refresh_cookie(response, refresh)
     await audit.auth_event("DEV_SESSION_BOOTSTRAPPED", guardian.id, {"learner_id": learner.id})
@@ -166,7 +173,9 @@ async def create_dev_session(response: Response, db: AsyncSession = Depends(get_
 
 
 @router.post("/refresh", response_model=TokenResponse)
+@limiter.limit(settings.RATE_LIMIT_AUTH)
 async def refresh_token(
+    request: Request,
     response: Response,
     body: RefreshRequest | None = None,
     db: AsyncSession = Depends(get_db),
@@ -183,9 +192,11 @@ async def refresh_token(
     if not guardian or not guardian.is_active:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Account inactive")
 
-    new_refresh = create_refresh_token(guardian.id, guardian.role)
-    access = create_access_token(guardian.id, guardian.role, {"refresh_jti": decode_token(new_refresh).get("jti")})
+    new_refresh = create_refresh_token(guardian.id, guardian.role, family_id=payload.get("family"))
+    new_refresh_payload = decode_token(new_refresh)
+    access = create_access_token(guardian.id, guardian.role, {"refresh_jti": new_refresh_payload.get("jti"), "refresh_family": new_refresh_payload.get("family")})
     await store_refresh_token(new_refresh)
+    await FourthEstateService(db).auth_event("USER_TOKEN_REFRESHED", guardian.id)
     _set_refresh_cookie(response, new_refresh)
 
     return TokenResponse(access_token=access, expires_in=900)
@@ -203,6 +214,14 @@ def _set_refresh_cookie(response: Response, token: str) -> None:
     )
 
 
+@router.get("/sessions")
+async def list_sessions(current_user: dict = Depends(get_current_user)):
+    """Return active refresh-token sessions for the current user.
+
+    The response intentionally exposes only token metadata, never token values.
+    """
+    return {"sessions": await list_user_refresh_sessions(current_user["sub"])}
+
 @router.post("/logout", status_code=status.HTTP_204_NO_CONTENT)
 async def logout(
     response: Response,
@@ -218,7 +237,7 @@ async def logout(
     exp = current_user.get("exp")
     if jti and exp:
         await revoke_token(jti, exp)
-    await revoke_refresh_token_jti(current_user.get("refresh_jti"))
+    await revoke_refresh_token_jti(current_user.get("refresh_jti"), current_user.get("sub"), current_user.get("refresh_family"))
     if cookie_refresh:
         await revoke_refresh_token(cookie_refresh)
     
@@ -245,6 +264,8 @@ async def revoke_all_tokens(
     """
     user_id = current_user.get("sub")
     await revoke_user_tokens(user_id)
+    if user_id:
+        await revoke_all_refresh_tokens_for_user(user_id)
     if cookie_refresh:
         await revoke_refresh_token(cookie_refresh)
     

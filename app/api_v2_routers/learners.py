@@ -4,6 +4,7 @@ from __future__ import annotations
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Response, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.core.authorization import assert_can_access_learner
 from app.core.database import get_db
 from app.core.logging import get_logger
 from app.core.security import get_current_user, require_parent_or_admin
@@ -45,6 +46,7 @@ async def get_learner(
     learner = await repo.get_by_id(learner_id)
     if not learner:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
+    assert_can_access_learner(current_user, learner)
     return LearnerResponse.model_validate(learner)
 
 
@@ -60,6 +62,7 @@ async def get_mastery(
     learner = await LearnerRepository(db).get_by_id(learner_id)
     if not learner:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
+    assert_can_access_learner(current_user, learner)
 
     active_gaps = await KnowledgeGapRepository(db).get_active_gaps(learner_id)
     default_subjects = {"MATH": 0.72, "ENG": 0.7, "LIFE": 0.78, "NS": 0.68, "SS": 0.69}

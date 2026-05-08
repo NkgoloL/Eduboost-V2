@@ -1,0 +1,35 @@
+name: Curriculum issue
+description: Report a CAPS alignment, grade/phase, prerequisite, or assessment-standard issue.
+title: "[CURRICULUM]: "
+labels: [curriculum, content, needs-triage]
+body:
+  - type: dropdown
+    id: subject
+    attributes:
+      label: Subject
+      options:
+        - Mathematics
+        - Mathematical Literacy
+        - Natural Sciences
+        - Physical Sciences
+        - English
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: grade
+    attributes:
+      label: Grade/phase/term
+      placeholder: "Grade 8, Term 2"
+  - type: textarea
+    id: issue
+    attributes:
+      label: Curriculum concern
+      description: Explain the suspected mismatch, missing prerequisite, sequencing issue, or assessment concern.
+    validations:
+      required: true
+  - type: textarea
+    id: reference
+    attributes:
+      label: CAPS/reference evidence
+      description: Include non-copyright-infringing references or short excerpts only where necessary.

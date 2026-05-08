@@ -1,0 +1,18 @@
+name: Security report redirect
+description: Do not disclose vulnerabilities publicly. Use the private security process.
+title: "[SECURITY REDIRECT]: "
+labels: [security, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please do not include exploit details, secrets, tokens, learner data, or private vulnerability information in a public issue.
+
+        Use the process in `SECURITY.md` for private vulnerability reporting. If this issue was opened by mistake, close it and submit privately.
+  - type: checkboxes
+    id: acknowledgement
+    attributes:
+      label: Acknowledgement
+      options:
+        - label: I understand that vulnerability details must not be posted publicly.
+          required: true

@@ -30,6 +30,7 @@ from app.core.rate_limiter import AIQuotaExceeded, check_ai_quota
 from app.core.redis import cache_get, cache_set
 from app.services.judiciary import JudiciaryService
 from app.services.caps_validator import CAPSAlignmentValidator
+from app.services.ai_safety import redact_pii, score_lesson_quality
 
 log = get_logger(__name__)
 
@@ -150,7 +151,15 @@ Respond ONLY with a valid JSON object matching this exact schema (no markdown, n
   "worked_example": "string",
   "practice_question": "string",
   "answer": "string",
-  "cultural_hook": "string — must include authentic SA context (ubuntu, rands, local fauna, braai, etc.)"
+  "cultural_hook": "string — must include authentic SA context (rands, local geography, school, transport, community, etc.)",
+  "caps_reference": "canonical CAPS reference supplied in the user prompt",
+  "caps_topic": "canonical CAPS topic supplied in the user prompt",
+  "caps_subtopic": "canonical CAPS subtopic supplied in the user prompt",
+  "lesson_variant": "standard | visual | story | step_by_step | exam_style | real_world_sa",
+  "language_level": "foundation | intermediate | senior",
+  "safety_classification": "safe",
+  "alignment_confidence": 0.0,
+  "quality_score": 0.0
 }
 """
 
@@ -199,8 +208,9 @@ class ExecutiveService:
             and not settings.GROQ_API_KEY
             and not settings.ANTHROPIC_API_KEY
             and not settings.is_production()
+            and not _is_test_provider_override(self._call_with_fallback)
         ):
-            payload = _fallback_lesson_payload(grade, subject, topic, language)
+            payload = self._enrich_lesson_payload(_fallback_lesson_payload(grade, subject, topic, language), grade=grade, subject=subject, topic=topic)
             raw = payload.model_dump_json()
             await cache_set(cache_k, raw, ttl=settings.SEMANTIC_CACHE_TTL_SECONDS)
             log.info("lesson_generated_offline_fallback", pseudonym=pseudonym_id, subject=subject, topic=topic)
@@ -226,7 +236,7 @@ class ExecutiveService:
         except Exception as exc:
             if settings.is_production():
                 raise
-            payload = _fallback_lesson_payload(grade, subject, topic, language)
+            payload = self._enrich_lesson_payload(_fallback_lesson_payload(grade, subject, topic, language), grade=grade, subject=subject, topic=topic)
             raw = payload.model_dump_json()
             await cache_set(cache_k, raw, ttl=settings.SEMANTIC_CACHE_TTL_SECONDS)
             log.warning(
@@ -253,9 +263,33 @@ class ExecutiveService:
             if not final_validation.caps_aligned:
                 raise ConstitutionalViolation(final_validation.reason)
 
+        payload = self._enrich_lesson_payload(payload, grade=grade, subject=subject, topic=topic)
+        raw = payload.model_dump_json()
         await cache_set(cache_k, raw, ttl=settings.SEMANTIC_CACHE_TTL_SECONDS)
         log.info("lesson_generated", pseudonym=pseudonym_id, provider="groq")
         return payload, False
+
+
+    def _enrich_lesson_payload(self, payload: LessonPayload, *, grade: int, subject: str, topic: str) -> LessonPayload:
+        validation = self._caps_validator.validate(grade, subject, topic, payload.model_dump_json())
+        quality = score_lesson_quality(
+            content=payload.model_dump_json(),
+            caps_aligned=validation.caps_aligned,
+            answer_present=bool(payload.answer.strip()),
+            has_worked_example=bool(payload.worked_example.strip()),
+            has_practice=bool(payload.practice_question.strip()),
+        )
+        return payload.model_copy(
+            update={
+                "caps_reference": validation.caps_reference,
+                "caps_topic": validation.canonical_topic,
+                "caps_subtopic": validation.subtopic,
+                "alignment_confidence": validation.alignment_confidence,
+                "quality_score": quality.overall,
+                "language_level": validation.phase,
+                "safety_classification": "safe",
+            }
+        )
 
     def _build_lesson_prompt(
         self,
@@ -267,17 +301,23 @@ class ExecutiveService:
         requested_topic: str,
         learner_context: dict[str, Any] | None = None,
     ) -> str:
+        validation = self._caps_validator.validate(grade, subject, topic)
         prompt = (
             f"Grade {grade} | Subject: {subject} | Topic: {topic} | "
-            f"Language: {language} | Learner archetype: {archetype or 'general'}"
+            f"Language: {language} | Learner archetype: {archetype or 'general'} | "
+            f"CAPS reference: {validation.caps_reference or 'unavailable'} | "
+            f"CAPS subtopic: {validation.subtopic or 'unavailable'} | "
+            f"Assessment standards: {', '.join(validation.assessment_standards) or 'unavailable'}"
         )
         if requested_topic != topic:
             prompt += f" | Requested topic adjusted from '{requested_topic}' to CAPS-aligned topic '{topic}'."
         if learner_context:
-            prompt += f"\nLearner context: {json.dumps(learner_context, sort_keys=True)}"
+            prompt += f"\nLearner context: {json.dumps(redact_pii(learner_context), sort_keys=True)}"
         return prompt
 
     async def _call_with_fallback(self, user_prompt: str, *, operation: str) -> str:
+        if settings.LLM_PROVIDER == "mock":
+            return self._call_mock(user_prompt, operation=operation)
         if settings.LLM_PROVIDER == "local_hf":
             return await self._call_local_hf(user_prompt, operation=operation)
         if settings.LLM_PROVIDER == "anthropic":
@@ -287,6 +327,27 @@ class ExecutiveService:
         except Exception as exc:
             log.warning("groq_lesson_generation_failed", error=str(exc))
             return await self._call_anthropic(user_prompt, operation=operation)
+
+
+    def _call_mock(self, user_prompt: str, *, operation: str) -> str:
+        """Deterministic offline LLM provider for tests, demos, and contract validation."""
+        topic = "CAPS topic"
+        for marker in ("Topic:", "topic:"):
+            if marker in user_prompt:
+                topic = user_prompt.split(marker, 1)[1].split("|", 1)[0].split("\n", 1)[0].strip() or topic
+                break
+        return json.dumps(
+            {
+                "title": f"EduBoost lesson: {topic}",
+                "introduction": f"This lesson introduces {topic} using clear South African classroom language.",
+                "main_content": f"The key idea in {topic} is explained step by step with CAPS-aligned vocabulary.",
+                "worked_example": f"Worked example: solve one short {topic} task using rands or a local school context.",
+                "practice_question": f"Practice: explain one important idea about {topic} in your own words.",
+                "answer": f"A strong answer correctly explains the main idea of {topic} and shows the working.",
+                "cultural_hook": "Use a familiar South African school, taxi, shop, or community example.",
+                "safety_classification": "safe",
+            }
+        )
 
     async def _call_local_hf(self, user_prompt: str, *, operation: str) -> str:
         return await asyncio.to_thread(self._call_local_hf_sync, user_prompt, operation=operation)
@@ -414,6 +475,11 @@ class ExecutiveService:
             )
         return response.choices[0].message.content or "Progress data is being processed."
 
+
+
+def _is_test_provider_override(callable_obj: Any) -> bool:
+    """Allow tests to monkeypatch provider calls without dev offline fallback short-circuiting them."""
+    return callable_obj.__class__.__module__.startswith("unittest.mock")
 
 def _fallback_lesson_payload(grade: int, subject: str, topic: str, language: str) -> LessonPayload:
     lesson_language = {"zu": "isiZulu", "af": "Afrikaans", "xh": "isiXhosa"}.get(language, "English")

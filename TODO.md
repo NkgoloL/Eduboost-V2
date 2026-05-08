@@ -60,10 +60,14 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 # 1. Repository Governance and Hygiene
 
-## 1.1 Canonical source of truth
+-## 1.1 Canonical source of truth
 
-- [ ] `[critical]` Decide and document the canonical repository: `NkgoloL/Eduboost-V2`, `w3ll3ml3b3lo-hue/Eduboost-V2`, or another private/public upstream.
-- [ ] `[critical]` Add `docs/repository_governance.md` covering canonical repo, mirrors, branch policy, release authority, secret rotation authority, security patch process, and archive policy.
+- [x] `[critical]` Decide and document the canonical repository: `NkgoloL/Eduboost-V2`. (owner: `NkgoloL`)
+- [x] `[critical]` Add `docs/repository_governance.md` covering canonical repo, mirrors, branch policy, release authority, secret rotation authority, security patch process, and archive policy. (file added: `docs/repository_governance.md`)
+- [x] `[low]` Add `.agent.md` custom agent for repository maintenance and docs automation. (file added: `.agent.md`)
+- [x] `[high]` Protect `main`: require PR review, required checks, no force-push, and no branch deletion. (policy: protect `main`)
+- [x] `[high]` Add `CODEOWNERS` for the repository owner: `NkgoloL` (file added: `.github/CODEOWNERS`)
+- [x] `[high]` Add issue templates and PR template (files added under `.github/`).
 - [ ] `[high]` Protect `master`/`main`: require PR review, required checks, no force-push, no branch deletion, and signed commits if feasible.
 - [ ] `[high]` Add `CODEOWNERS` for backend, frontend, infrastructure, security, compliance, curriculum, and docs.
 - [ ] `[high]` Add issue templates: bug, feature, security redirect, compliance concern, accessibility issue, curriculum issue, incorrect content, production incident.
@@ -73,8 +77,10 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 
 - [ ] `[high]` Audit dependency files and decide canonical dependency paths for runtime, dev, docs, and ML extras.
 - [ ] `[high]` Remove duplicate or stale root dependency files, or clearly mark them as compatibility aliases.
-- [ ] `[high]` Enable Dependabot or Renovate for Python, npm, Docker images, and GitHub Actions.
-- [ ] `[medium]` Add a `Makefile` or `justfile` with commands: `dev`, `test`, `lint`, `typecheck`, `e2e`, `migrate`, `docs`, `security`, `release-check`, and `smoke`.
+  - [x] `[high]` Enable Dependabot or Renovate for Python, npm, Docker images, and GitHub Actions. (file added: `.github/dependabot.yml`)
+  - [x] `docs/release_checklist.md` (file added)
+  - [x] `docs/secrets.md` (file added)
+ - [x] `[medium]` Add a `Makefile` or `justfile` with commands: `dev`, `test`, `lint`, `typecheck`, `e2e`, `migrate`, `docs`, `security`, `release-check`, and `smoke`. (file added: `Makefile`)
 - [ ] `[medium]` Add `docs/adr/` and write ADRs for modular monolith, FastAPI V2, Next.js frontend, PostgreSQL audit ledger, Redis revocation, LLM provider abstraction, POPIA-first design, and CAPS alignment.
 - [ ] `[medium]` Add markdown linting and docs link checking to CI.
 
@@ -208,7 +214,7 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 - [x] `[high]` Hash or tokenize identifiers where raw values are unnecessary.
 - [x] `[high]` Separate identifiable operational data from analytics data.
 - [x] `[high]` Prevent names, emails, phone numbers, and raw identifiers from being sent to LLM providers.
-- [ ] `[medium]` Create `docs/data_retention_policy.md` and `docs/subprocessor_register.md`.
+- [x] `[medium]` Create `docs/data_retention_policy.md` and `docs/subprocessor_register.md`. (files added: `docs/data_retention_policy.md`, `docs/subprocessor_register.md`)
 
 ## 5.4 Audit integrity
 

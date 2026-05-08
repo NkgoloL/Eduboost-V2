@@ -1,0 +1,35 @@
+name: DB Backup Dry-Run
+
+on:
+  push:
+    branches: [ main, feat/** ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  backup-dry-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Make scripts executable
+        run: |
+          chmod +x scripts/ci/mock_pg_dump.sh
+          chmod +x scripts/db_backup.sh
+
+      - name: Run backup script (dry-run, no real DB)
+        env:
+          BACKUP_DIR: ./backups-ci
+          RETENTION_DAYS: 1
+          # point to the mock pg_dump to avoid contacting a real DB
+          PG_DUMP_BIN: ./scripts/ci/mock_pg_dump.sh
+          # DATABASE_URL left empty so script will call pg_dump without URL
+        run: |
+          ./scripts/db_backup.sh
+
+      - name: Upload backups artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: eduboost-db-backups-dryrun
+          path: backups-ci

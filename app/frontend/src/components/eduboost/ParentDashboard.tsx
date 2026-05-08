@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip } from "recharts";
-import { ParentService } from "../../lib/api/services";
+import { DataRightsService, ParentService } from "../../lib/api/services";
 import { extractErrorMessage } from "../../lib/api/client";
 import { Button } from "../ui/Button";
 import { Card } from "../ui/Card";
@@ -18,6 +18,7 @@ export function ParentDashboard({ onBack }: ParentDashboardProps) {
   const [error, setError] = useState("");
   const [dashboard, setDashboard] = useState<ParentTrustDashboardResponse | null>(null);
   const [exportBundle, setExportBundle] = useState<ParentExportBundle | null>(null);
+  const [privacyStatus, setPrivacyStatus] = useState<Record<string, string>>({});
 
   useEffect(() => {
     const guardianId = typeof window !== "undefined" ? localStorage.getItem("guardian_id") : null;
@@ -52,6 +53,25 @@ export function ParentDashboard({ onBack }: ParentDashboardProps) {
     void load();
   }, []);
 
+
+  const runDataRightsAction = async (learnerId: string, action: "export" | "restrict" | "erase") => {
+    setPrivacyStatus((current) => ({ ...current, [learnerId]: "Submitting privacy request..." }));
+    try {
+      if (action === "export") {
+        const bundle = await DataRightsService.exportLearner(learnerId, "json");
+        setPrivacyStatus((current) => ({ ...current, [learnerId]: `Export ready: ${bundle.filename}` }));
+      } else if (action === "restrict") {
+        await DataRightsService.restrictProcessing(learnerId, "guardian_requested_from_dashboard");
+        setPrivacyStatus((current) => ({ ...current, [learnerId]: "Processing restricted. Optional learner processing is paused." }));
+      } else {
+        await DataRightsService.requestErasure(learnerId, "guardian_requested_from_dashboard");
+        setPrivacyStatus((current) => ({ ...current, [learnerId]: "Erasure request submitted for review." }));
+      }
+    } catch (err) {
+      setPrivacyStatus((current) => ({ ...current, [learnerId]: extractErrorMessage(err, "Privacy request failed") }));
+    }
+  };
+
   const chartData = useMemo(
     () =>
       (dashboard?.learners || []).map((learner) => ({
@@ -63,7 +83,7 @@ export function ParentDashboard({ onBack }: ParentDashboardProps) {
   );
 
   return (
-    <div className="screen min-h-screen bg-[var(--bg)] p-6 overflow-y-auto">
+    <main id="main-content" className="screen min-h-screen bg-[var(--bg)] p-6 overflow-y-auto">
       <Stars />
       <div className="relative z-10 max-w-6xl mx-auto">
         <div className="flex justify-between items-center mb-8">
@@ -87,13 +107,14 @@ export function ParentDashboard({ onBack }: ParentDashboardProps) {
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-8">
               <Card className="xl:col-span-2 p-6 bg-[var(--surface2)]/70 border-[var(--border)] shadow-2xl">
                 <h2 className="text-xl font-bold text-white mb-4">7-Day Completion Trend</h2>
+                <p className="sr-only">Bar chart showing recent lesson completion for each learner.</p>
                 <div className="h-72">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={chartData}>
-                      <XAxis dataKey="name" stroke="#cbd5e1" />
-                      <YAxis stroke="#cbd5e1" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
                       <Tooltip />
-                      <Bar dataKey="completion" fill="#60a5fa" radius={[8, 8, 0, 0]} />
+                      <Bar dataKey="completion" radius={[8, 8, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
@@ -164,15 +185,23 @@ export function ParentDashboard({ onBack }: ParentDashboardProps) {
                     <p className="text-blue-50 leading-relaxed">{learner.ai_progress_summary}</p>
                   </div>
 
-                  <a href={learner.export_url} className="inline-flex items-center rounded-xl bg-blue-600 px-4 py-2 font-bold text-white hover:bg-blue-500 transition-colors">
-                    Open learner export
-                  </a>
+                  <div className="rounded-2xl bg-black/10 p-4" aria-label={`Privacy controls for ${learner.display_name}`}>
+                    <div className="text-xs uppercase tracking-widest text-blue-200 mb-3">Privacy controls</div>
+                    <div className="flex flex-wrap gap-3">
+                      <button type="button" onClick={() => void runDataRightsAction(learner.learner_id, "export")} className="rounded-xl bg-blue-600 px-4 py-2 font-bold text-white hover:bg-blue-500 transition-colors">Request export</button>
+                      <button type="button" onClick={() => void runDataRightsAction(learner.learner_id, "restrict")} className="rounded-xl bg-yellow-500/20 px-4 py-2 font-bold text-yellow-100 hover:bg-yellow-500/30 transition-colors">Restrict processing</button>
+                      <button type="button" onClick={() => void runDataRightsAction(learner.learner_id, "erase")} className="rounded-xl bg-red-500/20 px-4 py-2 font-bold text-red-100 hover:bg-red-500/30 transition-colors">Request erasure</button>
+                    </div>
+                    {privacyStatus[learner.learner_id] && (
+                      <p className="mt-3 text-sm text-blue-100" role="status" aria-live="polite">{privacyStatus[learner.learner_id]}</p>
+                    )}
+                  </div>
                 </Card>
               ))}
             </div>
           </>
         )}
       </div>
-    </div>
+    </main>
   );
 }

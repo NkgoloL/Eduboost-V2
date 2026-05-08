@@ -23,7 +23,8 @@ from __future__ import annotations
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.audit import FourthEstateService
-from app.core.exceptions import ConsentRequiredError
+from app.core.consent_policy import ConsentPolicyDecision, derive_consent_state
+from app.core.exceptions import ConsentExpiredError, ConsentRequiredError
 from app.repositories.audit_repository import AuditRepository
 from app.repositories.consent_repository import ConsentRepository
 
@@ -85,34 +86,29 @@ class ConsentService:
         self._repo = consent_repo
         self._audit_repo = audit_repo
 
-    async def require_active_consent(self, learner_id: str, actor_id: str | None = None) -> None:
+    async def consent_decision(self, learner_id: str) -> ConsentPolicyDecision:
+        """Return the canonical consent-state decision for a learner."""
+        consent = await self._repo.get_latest_for_learner(str(learner_id))
+        return derive_consent_state(consent, learner_id=str(learner_id))
+
+    async def require_active_consent(self, learner_id: str, actor_id: str | None = None) -> ConsentPolicyDecision:
         """Enforce active consent for a learner.
 
-        If no active consent exists, an audit event is appended and a
-        :class:`~app.core.exceptions.ConsentRequiredError` is raised.
-
-        Args:
-            learner_id: Learner identifier to validate consent for.
-            actor_id: Optional actor identifier for the audit event.
-
-        Raises:
-            ConsentRequiredError: When the learner does not have active
-                consent.
-
-        Example:
-            ::
-
-                await svc.require_active_consent("l-001", actor_id="u-001")
+        Returns the policy decision when processing may proceed. Pending,
+        expired, denied, or withdrawn states are audited and blocked.
         """
-        consent = await self._repo.get_active(str(learner_id))
-        if consent is None:
+        decision = await self.consent_decision(str(learner_id))
+        if not decision.active:
             await self._append_audit(
                 "consent.access_rejected",
                 actor_id=actor_id,
                 resource_id=learner_id,
-                payload={"learner_id": str(learner_id), "reason": "missing_or_expired"},
+                payload={"learner_id": str(learner_id), "reason": decision.reason, "state": decision.state.value},
             )
+            if decision.state.value == "expired":
+                raise ConsentExpiredError("Guardian consent has expired")
             raise ConsentRequiredError("Active parental consent required")
+        return decision
 
     async def grant(
         self,
@@ -154,12 +150,13 @@ class ConsentService:
             consent_version=consent_version,
             ip_address=ip_address or ip_hash,
             user_agent=user_agent,
+            state="granted",
         )
         await self._append_audit(
             "consent.granted",
             actor_id=guardian_id,
             resource_id=consent.id,
-            payload={"learner_id": str(learner_id), "consent_version": consent_version},
+            payload={"learner_id": str(learner_id), "consent_version": consent_version, "state": "granted"},
         )
         return consent
 
@@ -192,7 +189,7 @@ class ConsentService:
                 "consent.revoked",
                 actor_id=guardian_id,
                 resource_id=active.id,
-                payload={"learner_id": str(learner_id), "reason": reason},
+                payload={"learner_id": str(learner_id), "reason": reason, "state": "withdrawn"},
             )
         return count
 
@@ -276,7 +273,7 @@ class ConsentService:
                 if consent is None:
                     print("No active consent")
         """
-        return await self._repo.get_active(str(learner_id))
+        return await self._repo.get_latest_for_learner(str(learner_id))
 
     async def get_expiring_consents(self, db: AsyncSession | None = None, days: int = 30):
         """Return consent records expiring within a given window.

@@ -58,7 +58,43 @@ jobs:
       - name: Lint Markdown
         run: |
           pip install pymarkdownlnt
-          pymarkdown scan docs/ audits/ README.md
+          pymarkdown scan docs/ audits/ README.md SECURITY.md CONTRIBUTING.md
+
+  # -------------------------------------------------------------------------
+  # DOCUMENTATION QUALITY
+  # -------------------------------------------------------------------------
+  docs-quality:
+    name: Markdown & Link Checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: "pip"
+
+      - name: Lint Markdown
+        run: |
+          pip install pymarkdownlnt
+          pymarkdown scan README.md SECURITY.md CONTRIBUTING.md docs/ audits/
+
+      - name: Check Markdown links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --verbose
+            --no-progress
+            --accept 200,204,206,301,302,429
+            --exclude-loopback
+            --exclude-mail
+            'README.md'
+            'SECURITY.md'
+            'CONTRIBUTING.md'
+            'docs/**/*.md'
+            'audits/**/*.md'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # -------------------------------------------------------------------------
   # DOCUMENTATION BUILD
@@ -160,7 +196,6 @@ jobs:
       ENCRYPTION_SALT: test-encryption-salt
       AUDIT_DATABASE_URL: postgresql+asyncpg://eduboost:testpassword@localhost:5432/eduboost_test
       REDIS_URL: redis://localhost:6379/0
-      ENCRYPTION_KEY: test-encryption-key-32-chars-xxxx
       JUDICIARY_API_KEY: test-judiciary-key
       JUDICIARY_SERVICE_URL: http://localhost:8001
       APP_ENV: test

@@ -32,29 +32,31 @@ vi.mock("next/navigation", () => ({
 }));
 
 // Mock the components used in pages to avoid massive dependency chain
-vi.mock("../src/components/eduboost/FeaturePanels", () => ({
-  DashboardPanel: ({ onStartLesson, onStartDiag }: DashboardPanelProps) => (
+vi.mock("../src/components/eduboost/FeaturePanels", () => {
+  const DashboardPanel = ({ onStartLesson, onStartDiag }: DashboardPanelProps) => (
     <div>
       <button onClick={onStartLesson}>Start lesson</button>
       <button onClick={onStartDiag}>Open diagnostic</button>
     </div>
-  ),
-  LessonPanel: ({ onComplete, onBack }: LessonPanelProps) => (
+  );
+  const LessonPanel = ({ onComplete, onBack }: LessonPanelProps) => (
     <div>
       <button onClick={onComplete}>Complete Lesson</button>
       <button onClick={onBack}>Back</button>
     </div>
-  ),
-}));
+  );
+  return { __esModule: true, DashboardPanel, LessonPanel, default: { DashboardPanel, LessonPanel } };
+});
 
-vi.mock("../src/components/eduboost/InteractiveDiagnostic", () => ({
-  InteractiveDiagnostic: ({ onComplete, onBack }: DiagnosticPanelProps) => (
+vi.mock("../src/components/eduboost/InteractiveDiagnostic", () => {
+  const InteractiveDiagnostic = ({ onComplete, onBack }: DiagnosticPanelProps) => (
     <div>
       <button onClick={() => onComplete?.("MATH", 80)}>Complete Diagnostic</button>
       <button onClick={onBack}>Back</button>
     </div>
-  ),
-}));
+  );
+  return { __esModule: true, InteractiveDiagnostic, default: { InteractiveDiagnostic } };
+});
 
 describe("Routing Integration", () => {
   beforeEach(() => {

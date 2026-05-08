@@ -56,12 +56,16 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str = "HS256"
     JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 15
     JWT_REFRESH_TOKEN_EXPIRE_DAYS: int = 7
+    PASSWORD_BCRYPT_ROUNDS: int = 12
+    PASSWORD_MIN_LENGTH: int = 12
+    PASSWORD_PASSPHRASE_MIN_LENGTH: int = 16
 
     # ── Encryption ───────────────────────────────────────────────────────────
     ENCRYPTION_KEY: str = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="  # dev-only 32-byte base64 placeholder
     ENCRYPTION_SALT: str = "test-encryption-salt"
     BACKUP_ENCRYPTION_KEY: str = ""
     BACKUP_RETENTION_DAYS: int = 30
+    AUDIT_HMAC_SECRET: str = ""
 
     # ── LLM Providers ────────────────────────────────────────────────────────
     ANTHROPIC_API_KEY: str = ""
@@ -71,7 +75,7 @@ class Settings(BaseSettings):
     INFERENCE_SERVICE_URL: str = "http://localhost:9100"
     LLM_TIMEOUT_SECONDS: int = 30
     LLM_MAX_RETRIES: int = 2
-    LLM_PROVIDER: Literal["auto", "groq", "anthropic", "local_hf"] = "auto"
+    LLM_PROVIDER: Literal["auto", "groq", "anthropic", "local_hf", "mock"] = "auto"
     LOCAL_BASE_MODEL_ID: str = "HuggingFaceTB/SmolLM2-360M-Instruct"
     LOCAL_ADAPTER_PATH: str = "artifacts/llm/smollm2-caps-focused-9epoch-adapter"
     LOCAL_MERGED_MODEL_PATH: str = "artifacts/llm/merged-smollm2-caps-focused-model"

@@ -9,7 +9,10 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "test": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "env-check": "python ../../scripts/validate_frontend_env.py",
+    "a11y-check": "vitest run src/__tests__/AccessibilityContracts.test.tsx",
+    "pr-007-check": "npm run env-check && npm run type-check && npm run test"
   },
   "dependencies": {
     "@supabase/auth-helpers-nextjs": "0.10.0",

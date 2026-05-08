@@ -163,6 +163,10 @@ class LessonService:
             language=body.language,
             archetype=learner.archetype,
             content=self._render_lesson_content(payload),
+            caps_reference=getattr(payload, "caps_reference", None),
+            alignment_confidence=getattr(payload, "alignment_confidence", 0.0),
+            quality_score=getattr(payload, "quality_score", 0.0),
+            trust_label=(getattr(payload, "trust_label", None).model_dump() if getattr(payload, "trust_label", None) else {}),
             llm_provider=provider,
             served_from_cache=from_cache,
         )

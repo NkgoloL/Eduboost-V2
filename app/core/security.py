@@ -25,11 +25,14 @@ TokenPayload = dict[str, Any]
 
 def hash_password(plain: str) -> str:
     secret = plain.encode("utf-8")
-    return bcrypt.hashpw(secret, bcrypt.gensalt()).decode("utf-8")
+    return bcrypt.hashpw(secret, bcrypt.gensalt(rounds=settings.PASSWORD_BCRYPT_ROUNDS)).decode("utf-8")
 
 
 def verify_password(plain: str, hashed: str) -> bool:
-    return bcrypt.checkpw(plain.encode("utf-8"), hashed.encode("utf-8"))
+    try:
+        return bcrypt.checkpw(plain.encode("utf-8"), hashed.encode("utf-8"))
+    except ValueError:
+        return False
 
 
 def hash_email(email: str) -> str:
@@ -52,7 +55,7 @@ def create_access_token(subject: str, role: UserRole, extra: dict[str, Any] | No
     return jwt.encode(payload, settings.JWT_SECRET, algorithm=settings.JWT_ALGORITHM)
 
 
-def create_refresh_token(subject: str, role: UserRole) -> str:
+def create_refresh_token(subject: str, role: UserRole, family_id: str | None = None) -> str:
     expire = datetime.now(UTC) + timedelta(days=settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS)
     payload = {
         "sub": subject,
@@ -61,6 +64,7 @@ def create_refresh_token(subject: str, role: UserRole) -> str:
         "iat": datetime.now(UTC),
         "jti": str(uuid.uuid4()),
         "type": "refresh",
+        "family": family_id or str(uuid.uuid4()),
     }
     return jwt.encode(payload, settings.JWT_SECRET, algorithm=settings.JWT_ALGORITHM)
 

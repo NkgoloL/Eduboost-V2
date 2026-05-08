@@ -1,5 +1,7 @@
 import { LearnerProvider } from "../context/LearnerContext";
 import { ServiceWorkerRegistration } from "../components/ServiceWorkerRegistration";
+import { ErrorBoundary } from "../components/eduboost/ErrorBoundary";
+import { SkipLink } from "../components/accessibility/A11y";
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
 
@@ -20,9 +22,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
+        <SkipLink />
         <LearnerProvider>
-          <ServiceWorkerRegistration />
-          {children}
+          <ErrorBoundary>
+            <ServiceWorkerRegistration />
+            {children}
+          </ErrorBoundary>
         </LearnerProvider>
       </body>
     </html>

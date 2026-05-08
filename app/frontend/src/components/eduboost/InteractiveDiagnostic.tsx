@@ -91,7 +91,7 @@ export function InteractiveDiagnostic({ learner, onComplete, onBack }: Interacti
   if (completed && gapReport) {
     const rankedGaps = gapReport.ranked_gaps || [];
     return (
-      <div className="screen flex items-center justify-center p-4">
+      <main id="main-content" className="screen flex items-center justify-center p-4">
         <Stars />
         <Card className="relative z-10 p-8 max-w-2xl w-full bg-white/90 backdrop-blur-xl shadow-2xl border-none rounded-3xl">
           <div className="text-center mb-10">
@@ -135,14 +135,14 @@ export function InteractiveDiagnostic({ learner, onComplete, onBack }: Interacti
             Update My Study Plan
           </button>
         </Card>
-      </div>
+      </main>
     );
   }
 
   if (currentItem) {
     const progress = ((questionCount + 1) / Math.max(items.length, 1)) * 100;
     return (
-      <div className="screen flex items-center justify-center p-4">
+      <main id="main-content" className="screen flex items-center justify-center p-4">
         <Stars />
         <Card className="relative z-10 w-full max-w-2xl p-10 bg-white/95 backdrop-blur shadow-2xl border-none rounded-3xl">
           <div className="mb-8">
@@ -154,21 +154,24 @@ export function InteractiveDiagnostic({ learner, onComplete, onBack }: Interacti
                 Question {questionCount + 1} / {items.length}
               </span>
             </div>
-            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+            <div className="h-2 bg-gray-100 rounded-full overflow-hidden" role="progressbar" aria-label="Diagnostic progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress)}>
               <div className="h-full bg-blue-500 transition-all duration-500" style={{ width: `${progress}%` }} />
             </div>
           </div>
 
           <div className="min-h-[120px] flex items-center mb-10">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 leading-tight">
+            <h3 id="diagnostic-question" className="text-2xl md:text-3xl font-bold text-gray-800 leading-tight">
               {currentItem.question_text || currentItem.question}
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 mb-10">
+          <div className="grid grid-cols-1 gap-4 mb-10" role="radiogroup" aria-labelledby="diagnostic-question">
             {currentItem.options.map((option, index) => (
               <button
                 key={`${currentItem.item_id}-${index}`}
+                type="button"
+                role="radio"
+                aria-checked="false"
                 disabled={loading}
                 onClick={() => void handleAnswer(option)}
                 className="group relative text-left p-6 border-2 border-gray-50 rounded-2xl hover:border-blue-400 hover:bg-blue-50 transition-all transform hover:-translate-y-1 active:scale-95 shadow-sm"
@@ -183,7 +186,7 @@ export function InteractiveDiagnostic({ learner, onComplete, onBack }: Interacti
             ))}
           </div>
 
-          {error && <div className="bg-red-50 text-red-500 p-4 rounded-xl mb-6 text-sm font-medium border border-red-100">{error}</div>}
+          {error && <div role="alert" className="bg-red-50 text-red-500 p-4 rounded-xl mb-6 text-sm font-medium border border-red-100">{error}</div>}
 
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2 text-gray-400 text-xs font-bold uppercase tracking-wider">
@@ -193,15 +196,15 @@ export function InteractiveDiagnostic({ learner, onComplete, onBack }: Interacti
             {loading && <div className="text-blue-500 font-bold text-sm">Calculating...</div>}
           </div>
         </Card>
-      </div>
+      </main>
     );
   }
 
   return (
-    <div className="screen flex items-center justify-center p-4">
+    <main id="main-content" className="screen flex items-center justify-center p-4">
       <Stars />
       <Card className="relative z-10 w-full max-w-lg p-10 bg-white/95 backdrop-blur shadow-2xl border-none rounded-3xl">
-        <button onClick={onBack} className="text-gray-400 hover:text-gray-600 mb-8 flex items-center gap-2 font-bold transition-colors">
+        <button type="button" onClick={onBack} className="text-gray-400 hover:text-gray-600 mb-8 flex items-center gap-2 font-bold transition-colors">
           Back to Dashboard
         </button>
 
@@ -212,6 +215,7 @@ export function InteractiveDiagnostic({ learner, onComplete, onBack }: Interacti
           {subjects.map((entry) => (
             <button
               key={entry.code}
+              type="button"
               onClick={() => void handleStart(entry.code)}
               disabled={loading}
               className="group flex items-center gap-5 p-6 border-2 border-gray-50 rounded-3xl hover:border-blue-400 hover:bg-blue-50 transition-all text-left shadow-sm hover:shadow-md active:scale-95"
@@ -230,6 +234,6 @@ export function InteractiveDiagnostic({ learner, onComplete, onBack }: Interacti
 
         {error && <div className="mt-6 bg-red-50 text-red-500 p-4 rounded-xl text-sm font-medium border border-red-100">{error}</div>}
       </Card>
-    </div>
+    </main>
   );
 }

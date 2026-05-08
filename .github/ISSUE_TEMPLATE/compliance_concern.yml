@@ -1,0 +1,31 @@
+name: Compliance concern
+description: Report a POPIA, learner-data, retention, consent, or auditability concern.
+title: "[COMPLIANCE]: "
+labels: [compliance, privacy, needs-triage]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Concern area
+      options:
+        - POPIA consent
+        - Learner data minimisation
+        - Data export/correction/erasure
+        - Retention/deletion
+        - Audit logging
+        - Third-party processor/sub-processor
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: concern
+    attributes:
+      label: Concern summary
+      description: Do not include learner PII. Describe the affected flow, data class, or control.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or affected paths
+      description: Link code paths, docs, routes, or test cases where possible. Redact personal information.

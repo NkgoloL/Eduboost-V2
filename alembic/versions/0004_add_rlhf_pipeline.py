@@ -19,7 +19,7 @@ def upgrade() -> None:
     op.create_table(
         "lesson_feedback",
         sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True),
-        sa.Column("lesson_id", postgresql.UUID(as_uuid=True), sa.ForeignKey("lessons.id", ondelete="SET NULL"), nullable=True),
+        sa.Column("lesson_id", sa.String(36), sa.ForeignKey("lessons.id", ondelete="SET NULL"), nullable=True),
         sa.Column("learner_pseudonym", sa.Text, nullable=False),
         sa.Column("rating", sa.SmallInteger, nullable=False),
         sa.Column("comment", sa.Text, nullable=True),
