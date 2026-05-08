@@ -9,6 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.base import BaseRepository
 from app.models import Lesson
+from app.core.database import AsyncSessionFactory
 
 
 class LessonRepository(BaseRepository[Lesson]):

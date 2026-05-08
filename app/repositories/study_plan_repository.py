@@ -10,31 +10,31 @@ import uuid
 from datetime import datetime, timezone
 from typing import Any
 
-from sqlalchemy import select, update
+from sqlalchemy import select, update, Column, String, DateTime, Float, JSON, Integer, Text
 from sqlalchemy.exc import NoResultFound
 
-from app.core.database import AsyncSessionFactory
-from sqlalchemy.orm import declarative_base
+from app.core.database import AsyncSessionFactory, Base
 
-DummyBase = declarative_base()
 
-class StudyPlan(DummyBase):
-    __tablename__ = 'study_plan'
-    plan_id = None
-    learner_id = None
-    week_start = None
-    schedule = None
-    gap_ratio = None
-    week_focus = None
-    generated_by = None
+class StudyPlan(Base):
+    __tablename__ = "study_plan"
+    plan_id = Column(String, primary_key=True)
+    learner_id = Column(String, nullable=False)
+    week_start = Column(DateTime, nullable=False)
+    schedule = Column(JSON, nullable=False)
+    gap_ratio = Column(Float, nullable=False)
+    week_focus = Column(Text)
+    generated_by = Column(String)
 
-class SubjectMastery(DummyBase):
-    __tablename__ = 'subject_mastery'
-    learner_id = None
-    subject_code = None
-    grade_level = None
-    mastery_score = None
-    knowledge_gaps = None
+
+class SubjectMastery(Base):
+    __tablename__ = "subject_mastery"
+    __table_args__ = {"extend_existing": True}
+    learner_id = Column(String, primary_key=True)
+    subject_code = Column(String, primary_key=True)
+    grade_level = Column(Integer)
+    mastery_score = Column(Float)
+    knowledge_gaps = Column(JSON)
 
 
 
