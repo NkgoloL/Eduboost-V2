@@ -119,3 +119,61 @@ Successfully integrated 8 PRs into main codebase:
 5. Run smoke tests from PR-008
 6. Address low-priority items based on product roadmap
 
+
+## PR-002R — Backend Runtime and API Contract Baseline
+
+Status: implemented locally on the PR-002R branch; CI verification required before merge.
+
+### Purpose
+
+PR-002R establishes the runtime/API contract foundation required before continuing production-readiness work.
+
+### Implemented Areas
+
+- Canonical runtime: `app.api_v2:app`.
+- V2 router registration under `/api/v2` and `/v2`.
+- System router registration.
+- Runtime import tests.
+- Legacy route exclusion tests.
+- API response envelope helpers.
+- Canonical error envelope handlers.
+- Deterministic OpenAPI generation.
+- Committed OpenAPI schema.
+- `make openapi-check`.
+- OpenAPI drift workflow for `master` and `release/**`.
+
+### Evidence
+
+| Evidence type | Path |
+| --- | --- |
+| Runtime/API evidence doc | `docs/pr/PR-002R_BACKEND_RUNTIME_API_CONTRACT.md` |
+| Route inventory | `docs/route_inventory.md` |
+| Error contract | `docs/error_contract.md` |
+| API versioning policy | `docs/api_versioning_policy.md` |
+| Runtime tests | `tests/test_entrypoints.py` |
+| Legacy route tests | `tests/test_legacy_route_exclusion.py` |
+| Envelope tests | `tests/unit/test_api_v2_envelope.py` |
+| Exception-envelope tests | `tests/unit/test_exception_envelopes.py` |
+| OpenAPI generator tests | `tests/unit/test_generate_openapi.py` |
+| OpenAPI CI contract tests | `tests/unit/test_openapi_ci_contract.py` |
+| Documentation contract tests | `tests/unit/test_pr002r_docs_contract.py` |
+
+### Required Verification
+
+```bash
+python3 scripts/generate_openapi.py
+make openapi-check
+pytest -c pytest.ini \
+  tests/test_entrypoints.py \
+  tests/test_legacy_route_exclusion.py \
+  tests/unit/test_api_v2_envelope.py \
+  tests/unit/test_exception_envelopes.py \
+  tests/unit/test_generate_openapi.py \
+  tests/unit/test_openapi_ci_contract.py \
+  tests/unit/test_pr002r_docs_contract.py \
+  -q --no-cov
+```
+
+### Non-Scope
+
+PR-002R does not complete security, POPIA workflows, audit-chain integrity, backup/restore, AI/CAPS validation, frontend production journeys, staging acceptance, or release approval.

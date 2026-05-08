@@ -1,46 +1,76 @@
 # Project Status
 
-This page summarizes the verified repository state as of **2026-05-05**.
+This page summarizes the verified repository state as of **2026-05-08**.
 
-## Verified Today
+## Current Verified Baseline
 
-- The **Production Hardening Phase (Phases 5-12)** has been successfully completed, culminating in the **v0.1.0-beta** release.
-- The platform now features a robust API validation layer, POPIA-compliant data rights workflows, hardened IRT diagnostics, and full Sentry/Prometheus observability.
-- The recovery roadmap is officially 100% complete across all technical pillars.
-- Playwright E2E journeys are stable and integrated into the CI/CD pipeline.
-- The active backend entrypoint is `app/api_v2.py`.
-- The root `docker-compose.yml` points at the V2 runtime and is the default
-  local stack.
-- GitHub Actions workflows live under `.github/workflows/`, including
-  `ci-cd.yml` and `release.yml`.
-- The repository does **not** currently contain the `mnt/` or `scratch/`
-  directories that were called out in an earlier comparative audit.
-- The architecture manifest is linked through
-  [`docs/architecture/V2_ARCHITECTURE.md`](architecture/V2_ARCHITECTURE.md)
-  rather than a transient auto-generated filename.
-- Access tokens default to 15 minutes, refresh tokens to 7 days, and sensitive
-  audit events are documented as PostgreSQL-backed in the active V2 path.
+EduBoost V2 is in a **production-readiness implementation phase**, not a public-beta-ready state.
+
+The current PR-002R work establishes the backend runtime and API contract baseline:
+
+- Canonical production branch: `master`.
+- Canonical backend runtime: `app.api_v2:app`.
+- Freshness marker for the baseline that started this work: `Merge pull request #52 from NkgoloL/chore/slow-query-logging`.
+- The V2 runtime imports cleanly from `app.api_v2:app`.
+- Production routers are registered under both `/api/v2` and `/v2`.
+- `system.router` is registered under both supported V2 prefixes.
+- The legacy V1 lesson-generation compatibility route is excluded from the canonical `app.api_v2:app` route surface.
+- Canonical response helpers now exist for V2 success, error, and paginated envelopes.
+- Global exception handlers emit the V2 error envelope.
+- `docs/openapi.json` is generated from `app.api_v2:app`.
+- `make openapi-check` verifies the committed OpenAPI schema has not drifted.
+- The OpenAPI drift workflow targets `master` and `release/**`, not `main`.
+
+## Claim Discipline
+
+Do not describe the repository as production-ready until the release-blocker checklist is complete.
+
+Claims must be phrased according to evidence:
+
+| Claim type | Meaning |
+| --- | --- |
+| `implemented` | Source code exists. |
+| `tested` | Targeted tests pass locally or in CI. |
+| `CI verified` | Required workflow passed on the relevant branch or PR. |
+| `staging verified` | Evidence exists from the staging environment. |
+| `production verified` | Evidence exists from the production environment. |
+| `planned` | Work is accepted but not implemented. |
+| `blocked` | Work cannot proceed without an explicit blocker being resolved. |
 
 ## Compatibility Boundary
 
 EduBoost is V2-first, but not every historical surface has disappeared:
 
-- [`app/api/main.py`](/app/api/main.py) remains as a compatibility import shim.
-- Archived legacy code is kept under [`app/legacy`](/app/legacy/DEPRECATED.md).
-- Some migration-era documentation and support files still exist because the
-  cutover has been staged rather than rewritten from scratch.
+- Archived legacy code is kept under `app/legacy`.
+- `app.legacy.api.main:app` is retained as a compatibility shim.
+- The legacy shim may expose a 410 Gone response for `/api/v1/lessons/generate` when explicitly imported.
+- The canonical production runtime remains `app.api_v2:app`.
+- Legacy compatibility routes must not appear in the canonical V2 OpenAPI schema.
 
-## What This Means for Contributors
+## Remaining Release Blockers
 
-- New implementation work should target the V2 runtime.
-- Documentation should describe the repo as it exists now, not as a perfect
-  future state.
-- Security, migration, and operational claims should be phrased in terms of
-  what the code and workflows currently prove.
-- GPU DeepSeek/vLLM production rollout is still externally blocked by infrastructure and account tier, so it should not be represented as complete.
+The following categories remain release blockers before real learner data or public beta use:
+
+- Security and object-level authorization.
+- POPIA consent enforcement and negative tests.
+- Data-subject rights workflows.
+- Audit integrity and audit-chain verification.
+- Database migration proof from an empty database.
+- Backup/restore drill evidence.
+- AI prompt PII safety, lesson validators, and CAPS validation.
+- Diagnostic item-bank and IRT validation.
+- Frontend API-envelope adoption and learner/guardian journeys.
+- Staging acceptance evidence.
+- Incident response and release evidence bundle.
+
+## Evidence Documents
+
+- [`docs/pr/PR-002R_BACKEND_RUNTIME_API_CONTRACT.md`](pr/PR-002R_BACKEND_RUNTIME_API_CONTRACT.md)
+- [`docs/route_inventory.md`](route_inventory.md)
+- [`docs/error_contract.md`](error_contract.md)
+- [`docs/api_versioning_policy.md`](api_versioning_policy.md)
+- [`PR_INTEGRATION_SUMMARY.md`](/PR_INTEGRATION_SUMMARY.md)
 
 ## Audit Tracker
 
-The comparative-audit follow-up list lives in the root
-[`TODO.md`](/TODO.md). That file is the live tracker for documentation sync and
-repo-hygiene items raised by the report.
+The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
