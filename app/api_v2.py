@@ -10,11 +10,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, Response
-from starlette.middleware.base import BaseHTTPMiddleware
+
 from app.middleware.security_headers import SecurityHeadersMiddleware
-
-from slowapi.errors import RateLimitExceeded
-
 from app.core.analytics import analytics_middleware
 from app.core.config import settings
 from app.core.health import gather_deep_health
@@ -30,7 +27,6 @@ from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
 configure_logging()
 log = get_logger(__name__)
 
-# SecurityHeadersMiddleware moved to app/middleware/security_headers.py
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -85,8 +81,24 @@ async def generic_options(full_path: str):
     # Access-Control-* headers for preflight requests during test runs.
     return Response(status_code=204)
 
+
 # ── Routers ───────────────────────────────────────────────────────────────────
-from app.api_v2_routers import auth, billing, consent, consent_renewal, diagnostics, gamification, jobs, learners, lessons, onboarding, parents, popia, study_plans  # noqa: E402
+from app.api_v2_routers import (  # noqa: E402
+    auth,
+    billing,
+    consent,
+    consent_renewal,
+    diagnostics,
+    gamification,
+    jobs,
+    learners,
+    lessons,
+    onboarding,
+    parents,
+    popia,
+    study_plans,
+    system,
+)
 
 API_V2 = "/api/v2"
 for prefix in (API_V2, "/v2"):
@@ -103,25 +115,28 @@ for prefix in (API_V2, "/v2"):
     app.include_router(consent_renewal.router, prefix=prefix)
     app.include_router(popia.router, prefix=prefix)
     app.include_router(jobs.router, prefix=prefix)
+    app.include_router(system.router, prefix=prefix)
 
 
-from app.api_v2_routers import auth, billing, consent, consent_renewal, diagnostics, gamification, jobs, learners, lessons, onboarding, parents, popia, study_plans, system  # noqa: E402
 @app.get("/health", tags=["ops"])
 async def health():
-    return {"status": "ok", "version": settings.APP_VERSION, "environment": settings.ENVIRONMENT, "mode": "v2-baseline"}
+    return {
+        "status": "ok",
+        "version": settings.APP_VERSION,
+        "environment": settings.ENVIRONMENT,
+        "mode": "v2-baseline",
+    }
 
 
 @app.get("/ready", tags=["ops"])
 async def ready():
-    # Perform deep health checks and return appropriate status
-    # 'ok' or 'degraded' returns 200, 'error' returns 503
+    # Perform deep health checks and return appropriate status.
+    # 'ok' or 'degraded' returns 200, 'error' returns 503.
     health_data = await gather_deep_health()
     status_code = 200 if health_data["status"] in ("ok", "degraded") else 503
     return JSONResponse(status_code=status_code, content=health_data)
 
 
-
-    app.include_router(system.router, prefix=prefix)
 @app.get("/v2/health/deep", tags=["ops"])
 async def deep_health():
     payload = await gather_deep_health()
