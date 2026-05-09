@@ -216,3 +216,15 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Phase 2 Authorization Closure Check
 
 - [`docs/security/phase2_authorization_closure_check.md`](security/phase2_authorization_closure_check.md)
+
+## Dev Session Environment Gate
+
+- [`docs/security/dev_session_environment_gate.md`](security/dev_session_environment_gate.md)
+
+## Consent Renewal Admin Authorization Boundary
+
+- [`docs/security/consent_renewal_admin_auth_boundary.md`](security/consent_renewal_admin_auth_boundary.md)
+
+## Ether Onboarding Questions Authentication Boundary
+
+- [`docs/security/ether_onboarding_questions_auth_boundary.md`](security/ether_onboarding_questions_auth_boundary.md)

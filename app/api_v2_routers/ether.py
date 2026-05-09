@@ -11,7 +11,7 @@ router = APIRouter(prefix="/api/v2/ether", tags=["V2 Ether"])
 
 
 @router.get("/onboarding/questions")
-async def get_questions():
+async def get_questions(user: dict = Depends(get_current_user)):
     """Get the visual onboarding question set."""
     return await EtherService().get_onboarding_questions()
 

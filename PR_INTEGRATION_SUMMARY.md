@@ -281,3 +281,9 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 - Phase 2 authorization closure stamp added to `docs/security/PHASE2_AUTHORIZATION_CLOSURE.md`.
 
 - Phase 2 evidence checker updated for Codes 63-64: final closure check and closure stamp.
+
+- Dev-session production hiding contract added: `tests/unit/test_dev_session_environment_gate.py`.
+
+- Consent-renewal admin boundary recognized by learner authorization matrix: `tests/unit/test_consent_renewal_admin_auth_boundary.py`.
+
+- Ether onboarding questions authentication boundary added: `tests/unit/test_ether_onboarding_questions_auth_boundary.py`.

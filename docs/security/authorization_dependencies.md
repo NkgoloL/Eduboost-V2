@@ -205,3 +205,15 @@ Review `docs/security/learner_route_authorization_inspection.md` before wiring t
 ## Phase 2 Authorization Closure Check
 
 - [`docs/security/phase2_authorization_closure_check.md`](phase2_authorization_closure_check.md)
+
+## Dev Session Environment Gate
+
+- [`docs/security/dev_session_environment_gate.md`](dev_session_environment_gate.md)
+
+## Consent Renewal Admin Authorization Boundary
+
+- [`docs/security/consent_renewal_admin_auth_boundary.md`](consent_renewal_admin_auth_boundary.md)
+
+## Ether Onboarding Questions Authentication Boundary
+
+- [`docs/security/ether_onboarding_questions_auth_boundary.md`](ether_onboarding_questions_auth_boundary.md)

@@ -17,11 +17,9 @@ ALLOWLIST = {
     ("assessments.py", "GET", "/"),
     ("assessments.py", "GET", ""),
     ("onboarding.py", "GET", "/questions"),
-    ("ether.py", "GET", "/onboarding/questions"),
     # Development/session bootstrap is not learner-object scoped.
     ("auth.py", "POST", "/dev-session"),
     # Operational consent-renewal trigger is tracked outside learner-object route checks.
-    ("consent_renewal.py", "POST", "/trigger-renewal-reminders"),
     # Public ranking endpoint; this is aggregate gamification data and not learner-object scoped.
     ("gamification.py", "GET", "/leaderboard"),
 }

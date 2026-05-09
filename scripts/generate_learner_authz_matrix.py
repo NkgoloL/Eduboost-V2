@@ -28,6 +28,7 @@ AUTHZ_MARKERS = (
     "require_learner_write_for_current_user",
     "require_learner_delete",
     "require_parent_or_admin",
+    "require_admin",
     "get_current_user",
     "get_current_guardian_id",
     "get_current_user_id",
