@@ -245,3 +245,9 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 - Phase 2 lesson stream write authorization wiring and HTTP tests: `tests/unit/test_lesson_stream_authorization_wiring.py`, `tests/integration/test_lesson_stream_authorization.py`
 
 - Phase 2 authorization evidence checker updated for Codes 45-46: gamification award XP and lesson stream generation.
+
+- Phase 2 assessment attempt write authorization wiring and tests: `tests/unit/test_assessment_attempt_authorization_wiring.py`
+
+- Phase 2 onboarding write authorization wiring and tests: `tests/unit/test_onboarding_authorization_wiring.py`
+
+- Phase 2 authorization evidence checker updated for Codes 48-49: assessment attempt and onboarding learner writes.

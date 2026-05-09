@@ -9,6 +9,7 @@ from app.core.security import get_current_user
 from app.domain.schemas import OnboardingResult, OnboardingSubmit
 from app.repositories.repositories import LearnerRepository
 from app.services.ether import EtherService
+from app.security.dependencies import require_learner_write_for_current_user
 
 router = APIRouter(prefix="/onboarding", tags=["onboarding"])
 _ether = EtherService()
@@ -24,12 +25,13 @@ async def get_onboarding_questions(_: dict = Depends(get_current_user)):
 async def submit_onboarding(
     body: OnboardingSubmit,
     db: AsyncSession = Depends(get_db),
-    _: dict = Depends(get_current_user),
+    current_user: dict = Depends(get_current_user),
 ):
     learner_repo = LearnerRepository(db)
     learner = await learner_repo.get_by_id(body.learner_id)
     if not learner:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
+    require_learner_write_for_current_user(current_user, body.learner_id)
 
     answers_raw = [{"question_id": a.question_id, "answer": a.answer} for a in body.answers]
     archetype, description, probabilities = _ether.classify_archetype(answers_raw)

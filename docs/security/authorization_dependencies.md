@@ -161,3 +161,11 @@ Review `docs/security/learner_route_authorization_inspection.md` before wiring t
 ## Lesson Stream Authorization
 
 - [`docs/security/lesson_stream_authorization_wiring.md`](lesson_stream_authorization_wiring.md)
+
+## Assessment Attempt Authorization
+
+- [`docs/security/assessment_attempt_authorization_wiring.md`](assessment_attempt_authorization_wiring.md)
+
+## Onboarding Authorization
+
+- [`docs/security/onboarding_authorization_wiring.md`](onboarding_authorization_wiring.md)

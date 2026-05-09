@@ -172,3 +172,11 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Lesson Stream Authorization
 
 - [`docs/security/lesson_stream_authorization_wiring.md`](security/lesson_stream_authorization_wiring.md)
+
+## Assessment Attempt Authorization
+
+- [`docs/security/assessment_attempt_authorization_wiring.md`](security/assessment_attempt_authorization_wiring.md)
+
+## Onboarding Authorization
+
+- [`docs/security/onboarding_authorization_wiring.md`](security/onboarding_authorization_wiring.md)

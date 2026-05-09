@@ -10,6 +10,10 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_onboarding_authorization_wiring.py",
+    "tests/unit/test_assessment_attempt_authorization_wiring.py",
+    "docs/security/onboarding_authorization_wiring.md",
+    "docs/security/assessment_attempt_authorization_wiring.md",
     "tests/integration/test_lesson_stream_authorization.py",
     "tests/unit/test_lesson_stream_authorization_wiring.py",
     "tests/integration/test_gamification_award_xp_authorization.py",
@@ -91,6 +95,15 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/security/onboarding_authorization_wiring.md": (
+        "POST /api/v2/onboarding/submit",
+        "POST /api/v2/onboarding/archetype",
+        "require_learner_write_for_current_user",
+    ),
+    "docs/security/assessment_attempt_authorization_wiring.md": (
+        "POST /api/v2/assessments/{assessment_id}/attempt",
+        "require_learner_write_for_current_user",
+    ),
     "docs/security/lesson_stream_authorization_wiring.md": (
         "POST /api/v2/lessons/generate/stream",
         "require_learner_write_for_current_user",
