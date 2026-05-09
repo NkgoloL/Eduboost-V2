@@ -52,3 +52,7 @@ pytest -c pytest.ini tests/unit/test_learner_route_authorization_wiring.py -q --
 
 The next enforcement slice should add HTTP-level tests for the learner route
 using FastAPI dependency overrides and a mocked learner repository/session.
+
+## HTTP Contract Tests
+
+- [`docs/security/learner_read_authorization_http_tests.md`](learner_read_authorization_http_tests.md)
