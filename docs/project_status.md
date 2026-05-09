@@ -65,6 +65,11 @@ The following categories remain release blockers before real learner data or pub
 
 ## Evidence Documents
 
+- [`docs/security/learner_mastery_authorization_wiring.md`](security/learner_mastery_authorization_wiring.md)
+- [`docs/security/learner_read_authorization_http_tests.md`](security/learner_read_authorization_http_tests.md)
+- [`docs/security/learner_route_authorization_wiring.md`](security/learner_route_authorization_wiring.md)
+- [`docs/security/learner_route_authorization_inspection.md`](security/learner_route_authorization_inspection.md)
+- [`docs/security/authorization_dependencies.md`](security/authorization_dependencies.md)
 - [`docs/security/object_authorization.md`](security/object_authorization.md)
 - [`docs/testing/pr002r_evidence_check.md`](testing/pr002r_evidence_check.md)
 - [`docs/testing/pytest_import_path.md`](testing/pytest_import_path.md)
