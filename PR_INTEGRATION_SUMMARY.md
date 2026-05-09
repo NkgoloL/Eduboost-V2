@@ -293,3 +293,5 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 - Phase 2 closure report stamped with operational auth boundary hardening evidence.
 
 - Aggregate operational auth boundary evidence added: `tests/unit/test_operational_auth_boundaries.py`.
+
+- POPIA consent/audit baseline added for next security cluster: `docs/security/POPIA_CONSENT_AUDIT_BASELINE.md`.

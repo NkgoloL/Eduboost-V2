@@ -84,3 +84,6 @@ learner-authz-check: learner-authz-matrix
 
 phase2-authz-closure:
 	$(PYTHON) scripts/check_phase2_authorization_closure.py
+
+audit-contract-check:
+	$(PYTHON) scripts/check_audit_event_contracts.py

@@ -232,3 +232,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Operational Auth Boundaries
 
 - [`docs/security/operational_auth_boundaries.md`](security/operational_auth_boundaries.md)
+
+## POPIA Consent and Audit Baseline
+
+- [`docs/security/POPIA_CONSENT_AUDIT_BASELINE.md`](security/POPIA_CONSENT_AUDIT_BASELINE.md)
