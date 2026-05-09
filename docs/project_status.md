@@ -140,3 +140,15 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Parent Export Authorization
 
 - [`docs/security/parent_export_authorization_wiring.md`](security/parent_export_authorization_wiring.md)
+
+## Consent Status Authorization
+
+- [`docs/security/consent_status_authorization_wiring.md`](security/consent_status_authorization_wiring.md)
+
+## Parent Trust Dashboard Authorization
+
+- [`docs/security/parent_trust_dashboard_authorization_wiring.md`](security/parent_trust_dashboard_authorization_wiring.md)
+
+## Parent Dashboard Authorization
+
+- [`docs/security/parent_dashboard_authorization_wiring.md`](security/parent_dashboard_authorization_wiring.md)

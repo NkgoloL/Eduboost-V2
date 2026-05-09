@@ -46,6 +46,7 @@ async def get_parent_dashboard(
 
     for learner in learners:
         try:
+            require_learner_read_for_current_user(current_user, learner)
             await consent_service.require_active_consent(learner.id, actor_id=current_user["sub"])
         except HTTPException:
             continue
@@ -121,6 +122,7 @@ async def get_parent_trust_dashboard(
 
     for learner in learners:
         try:
+            require_learner_read_for_current_user(current_user, learner)
             await consent_service.require_active_consent(learner.id, actor_id=current_user["sub"])
         except HTTPException:
             continue

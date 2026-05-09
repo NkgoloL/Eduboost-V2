@@ -129,3 +129,15 @@ Review `docs/security/learner_route_authorization_inspection.md` before wiring t
 ## Parent Export Authorization
 
 - [`docs/security/parent_export_authorization_wiring.md`](parent_export_authorization_wiring.md)
+
+## Consent Status Authorization
+
+- [`docs/security/consent_status_authorization_wiring.md`](consent_status_authorization_wiring.md)
+
+## Parent Trust Dashboard Authorization
+
+- [`docs/security/parent_trust_dashboard_authorization_wiring.md`](parent_trust_dashboard_authorization_wiring.md)
+
+## Parent Dashboard Authorization
+
+- [`docs/security/parent_dashboard_authorization_wiring.md`](parent_dashboard_authorization_wiring.md)

@@ -10,6 +10,13 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_parent_dashboard_authorization_wiring.py",
+    "tests/unit/test_parent_trust_dashboard_authorization_wiring.py",
+    "tests/integration/test_consent_status_authorization.py",
+    "tests/unit/test_consent_status_authorization_wiring.py",
+    "docs/security/parent_dashboard_authorization_wiring.md",
+    "docs/security/parent_trust_dashboard_authorization_wiring.md",
+    "docs/security/consent_status_authorization_wiring.md",
     "tests/integration/test_parent_export_authorization.py",
     "tests/unit/test_parent_export_authorization_wiring.py",
     "tests/integration/test_popia_deletion_execute_authorization.py",
@@ -69,6 +76,18 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/security/parent_dashboard_authorization_wiring.md": (
+        "GET /api/v2/parents/dashboard",
+        "require_learner_read_for_current_user",
+    ),
+    "docs/security/parent_trust_dashboard_authorization_wiring.md": (
+        "GET /api/v2/parents/{guardian_id}/dashboard",
+        "require_learner_read_for_current_user",
+    ),
+    "docs/security/consent_status_authorization_wiring.md": (
+        "GET /api/v2/consent/status/{learner_id}",
+        "require_learner_read_for_current_user",
+    ),
     "docs/security/parent_export_authorization_wiring.md": (
         "GET /api/v2/parents/{guardian_id}/export",
         "require_learner_read_for_current_user",
