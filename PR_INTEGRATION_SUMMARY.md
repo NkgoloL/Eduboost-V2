@@ -177,3 +177,7 @@ pytest -c pytest.ini \
 ### Non-Scope
 
 PR-002R does not complete security, POPIA workflows, audit-chain integrity, backup/restore, AI/CAPS validation, frontend production journeys, staging acceptance, or release approval.
+
+- Governance contract tests: `tests/unit/test_pr002r_governance_contract.py`
+
+- Pytest import-path test: `tests/unit/test_pytest_import_path.py`

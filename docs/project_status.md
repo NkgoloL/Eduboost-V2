@@ -65,6 +65,8 @@ The following categories remain release blockers before real learner data or pub
 
 ## Evidence Documents
 
+- [`docs/testing/pytest_import_path.md`](testing/pytest_import_path.md)
+- [`docs/release/PR-002R_EVIDENCE.md`](release/PR-002R_EVIDENCE.md)
 - [`docs/pr/PR-002R_BACKEND_RUNTIME_API_CONTRACT.md`](pr/PR-002R_BACKEND_RUNTIME_API_CONTRACT.md)
 - [`docs/route_inventory.md`](route_inventory.md)
 - [`docs/error_contract.md`](error_contract.md)

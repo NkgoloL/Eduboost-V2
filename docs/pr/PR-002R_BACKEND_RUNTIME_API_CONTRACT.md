@@ -47,6 +47,7 @@ The archived compatibility shim must not be treated as a separate production run
 | Area | Evidence |
 | --- | --- |
 | Runtime import | `tests/test_entrypoints.py` |
+| Runtime entrypoint check | `scripts/check_runtime_entrypoints.py`, `tests/unit/test_check_runtime_entrypoints.py` |
 | Router registration | `app/api_v2.py`, `tests/test_entrypoints.py` |
 | Legacy route exclusion | `tests/test_legacy_route_exclusion.py` |
 | API envelope helpers | `app/domain/api_v2_models.py`, `tests/unit/test_api_v2_envelope.py` |
@@ -54,6 +55,9 @@ The archived compatibility shim must not be treated as a separate production run
 | OpenAPI generator | `scripts/generate_openapi.py`, `tests/unit/test_generate_openapi.py` |
 | OpenAPI drift guard | `Makefile`, `.github/workflows/openapi-drift.yml`, `tests/unit/test_openapi_ci_contract.py` |
 | OpenAPI schema artifact | `docs/openapi.json` |
+| PR acceptance checklist | `.github/pull_request_template.md`, `tests/unit/test_pr002r_governance_contract.py` |
+| Pytest import-path policy | `tests/conftest.py`, `tests/unit/test_pytest_import_path.py`, `docs/testing/pytest_import_path.md` |
+| Release evidence index | `docs/release/PR-002R_EVIDENCE.md` |
 
 ## Verification Commands
 

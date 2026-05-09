@@ -1,31 +1,23 @@
-import pytest
-from unittest.mock import AsyncMock, MagicMock
-from uuid import uuid4
+"""Shared pytest configuration for repository-local imports.
 
-@pytest.fixture
-def mock_db_session():
-    """Fixture for a mocked SQLAlchemy AsyncSession."""
-    session = AsyncMock()
-    return session
+Pytest can be invoked from CI, IDEs, or local shells in modes where the
+repository root is not automatically placed on ``sys.path``. The application
+package lives at ``app/``, so test collection must make the repository root
+importable before integration, POPIA, smoke, and unit modules import app code.
+"""
+from __future__ import annotations
 
-@pytest.fixture
-def db_session(mock_db_session):
-    """Alias for mock_db_session for compatibility with legacy tests."""
-    return mock_db_session
+import sys
+from pathlib import Path
 
-@pytest.fixture
-def mock_llm_service():
-    """Fixture for a mocked LLM service."""
-    service = AsyncMock()
-    service.generate_lesson.return_value = (MagicMock(), False)
-    return service
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
-@pytest.fixture
-def mock_user_id():
-    """Fixture for a consistent test user ID."""
-    return uuid4()
 
-@pytest.fixture
-def mock_learner_id():
-    """Fixture for a consistent test learner ID."""
-    return uuid4()
+def ensure_repo_root_on_path() -> None:
+    """Ensure repository-local packages are importable during pytest collection."""
+    repo_root = str(REPO_ROOT)
+    if repo_root not in sys.path:
+        sys.path.insert(0, repo_root)
+
+
+ensure_repo_root_on_path()
