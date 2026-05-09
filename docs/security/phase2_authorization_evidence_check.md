@@ -23,6 +23,8 @@ python3 scripts/check_phase2_authorization_evidence.py
 
 | Area | Endpoint |
 | --- | --- |
+| Lesson stream write | `POST /api/v2/lessons/generate/stream` |
+| Gamification award XP write | `POST /api/v2/gamification/award-xp` |
 | Learner read | `GET /api/v2/learners/{learner_id}` |
 | Learner mastery | `GET /api/v2/learners/{learner_id}/mastery` |
 | Study plan write | `POST /api/v2/study-plans/{learner_id}` |

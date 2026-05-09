@@ -239,3 +239,9 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 - Phase 2 consent-revoke write authorization wiring and HTTP tests: `tests/unit/test_consent_revoke_authorization_wiring.py`, `tests/integration/test_consent_revoke_authorization.py`
 
 - Phase 2 gamification profile read authorization wiring and HTTP tests: `tests/unit/test_gamification_profile_authorization_wiring.py`, `tests/integration/test_gamification_profile_authorization.py`
+
+- Phase 2 gamification award-xp write authorization wiring and HTTP tests: `tests/unit/test_gamification_award_xp_authorization_wiring.py`, `tests/integration/test_gamification_award_xp_authorization.py`
+
+- Phase 2 lesson stream write authorization wiring and HTTP tests: `tests/unit/test_lesson_stream_authorization_wiring.py`, `tests/integration/test_lesson_stream_authorization.py`
+
+- Phase 2 authorization evidence checker updated for Codes 45-46: gamification award XP and lesson stream generation.

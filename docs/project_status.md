@@ -164,3 +164,11 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Gamification Profile Authorization
 
 - [`docs/security/gamification_profile_authorization_wiring.md`](security/gamification_profile_authorization_wiring.md)
+
+## Gamification Award XP Authorization
+
+- [`docs/security/gamification_award_xp_authorization_wiring.md`](security/gamification_award_xp_authorization_wiring.md)
+
+## Lesson Stream Authorization
+
+- [`docs/security/lesson_stream_authorization_wiring.md`](security/lesson_stream_authorization_wiring.md)

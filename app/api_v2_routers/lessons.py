@@ -50,9 +50,11 @@ async def generate_lesson(
 @router.post("/generate/stream")
 async def generate_lesson_stream(
     body: LessonRequest,
-    user_id: UUID = Depends(get_current_user_id),
+    current_user: dict = Depends(get_current_user),
     service: LessonService = Depends(get_lesson_service),
 ):
+    require_learner_write_for_current_user(current_user, str(body.learner_id))
+    user_id = UUID(str(current_user["sub"]))
     async def _events():
         yield f"event: status\ndata: {json.dumps({'status': 'accepted', 'operation': 'lesson_generation'})}\n\n"
         try:

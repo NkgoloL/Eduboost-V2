@@ -10,6 +10,12 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/integration/test_lesson_stream_authorization.py",
+    "tests/unit/test_lesson_stream_authorization_wiring.py",
+    "tests/integration/test_gamification_award_xp_authorization.py",
+    "tests/unit/test_gamification_award_xp_authorization_wiring.py",
+    "docs/security/lesson_stream_authorization_wiring.md",
+    "docs/security/gamification_award_xp_authorization_wiring.md",
     "tests/integration/test_gamification_profile_authorization.py",
     "tests/unit/test_gamification_profile_authorization_wiring.py",
     "tests/integration/test_consent_revoke_authorization.py",
@@ -85,6 +91,14 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/security/lesson_stream_authorization_wiring.md": (
+        "POST /api/v2/lessons/generate/stream",
+        "require_learner_write_for_current_user",
+    ),
+    "docs/security/gamification_award_xp_authorization_wiring.md": (
+        "POST /api/v2/gamification/award-xp",
+        "require_learner_write_for_current_user",
+    ),
     "docs/security/gamification_profile_authorization_wiring.md": (
         "GET /api/v2/gamification/profile/{learner_id}",
         "require_learner_read_for_current_user",

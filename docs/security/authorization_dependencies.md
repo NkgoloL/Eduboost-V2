@@ -153,3 +153,11 @@ Review `docs/security/learner_route_authorization_inspection.md` before wiring t
 ## Gamification Profile Authorization
 
 - [`docs/security/gamification_profile_authorization_wiring.md`](gamification_profile_authorization_wiring.md)
+
+## Gamification Award XP Authorization
+
+- [`docs/security/gamification_award_xp_authorization_wiring.md`](gamification_award_xp_authorization_wiring.md)
+
+## Lesson Stream Authorization
+
+- [`docs/security/lesson_stream_authorization_wiring.md`](lesson_stream_authorization_wiring.md)
