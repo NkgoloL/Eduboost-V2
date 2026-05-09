@@ -142,3 +142,84 @@ def require_learner_delete(actor: Actor, learner_id: str) -> AuthorizationDecisi
         learner_id=learner_id,
         permission=Permission.DELETE,
     )
+
+# Current-user adapter -------------------------------------------------------
+
+from typing import Any as _Any
+
+
+def _current_user_role_value(raw_role: _Any) -> str:
+    value = getattr(raw_role, "value", raw_role)
+    return str(value or "").lower()
+
+
+def _role_from_current_user(raw_role: _Any) -> Role:
+    role = _current_user_role_value(raw_role)
+    role_map = {
+        "admin": Role.ADMIN,
+        "system": Role.SYSTEM,
+        "support": Role.SUPPORT,
+        "parent": Role.GUARDIAN,
+        "guardian": Role.GUARDIAN,
+        "student": Role.LEARNER,
+        "learner": Role.LEARNER,
+        "teacher": Role.EDUCATOR,
+        "educator": Role.EDUCATOR,
+    }
+    try:
+        return role_map[role]
+    except KeyError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail=f"Unsupported authenticated role: {role}",
+        ) from exc
+
+
+def build_actor_from_current_user_for_learner(
+    current_user: dict[str, _Any],
+    learner: _Any,
+) -> Actor:
+    """Build an authorization Actor from the JWT payload and learner object."""
+    subject_id = str(current_user.get("sub") or "")
+    if not subject_id:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Missing authenticated subject.",
+        )
+
+    role = _role_from_current_user(current_user.get("role"))
+    learner_id = str(getattr(learner, "id"))
+
+    learner_ids: tuple[str, ...] = ()
+    guardian_learner_ids: tuple[str, ...] = ()
+    educator_learner_ids: tuple[str, ...] = ()
+
+    if role == Role.LEARNER and learner_id == subject_id:
+        learner_ids = (learner_id,)
+
+    if role == Role.GUARDIAN and str(getattr(learner, "guardian_id", "")) == subject_id:
+        guardian_learner_ids = (learner_id,)
+
+    # Future assignment-backed educator wiring should populate this from the
+    # assignment repository. For now, educators only receive scope when the
+    # token payload already carries learner_ids.
+    if role == Role.EDUCATOR:
+        educator_learner_ids = tuple(str(value) for value in current_user.get("learner_ids", ()) or ())
+
+    return Actor.from_values(
+        subject_id=subject_id,
+        roles=(role,),
+        learner_ids=learner_ids,
+        guardian_learner_ids=guardian_learner_ids,
+        educator_learner_ids=educator_learner_ids,
+    )
+
+
+def require_learner_read_for_current_user(
+    current_user: dict[str, _Any],
+    learner: _Any,
+) -> AuthorizationDecision:
+    """Authorize read access to a loaded learner for the current user payload."""
+    actor = build_actor_from_current_user_for_learner(current_user, learner)
+    return require_learner_read(actor, str(getattr(learner, "id")))
+

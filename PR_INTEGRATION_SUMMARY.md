@@ -189,3 +189,5 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 - Phase 2 authorization dependency adapter: `app/security/dependencies.py`, `tests/unit/test_security_dependencies.py`
 
 - Phase 2 learner route inspection: `scripts/inspect_learner_routes.py`, `tests/unit/test_inspect_learner_routes.py`
+
+- Phase 2 learner read-route authorization wiring: `app/api_v2_routers/learners.py`, `tests/unit/test_learner_route_authorization_wiring.py`

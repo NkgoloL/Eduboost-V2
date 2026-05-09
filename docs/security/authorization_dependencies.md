@@ -69,3 +69,7 @@ python3 scripts/inspect_learner_routes.py
 ```
 
 Review `docs/security/learner_route_authorization_inspection.md` before wiring the first route.
+
+## Enforcement Wiring
+
+- [`docs/security/learner_route_authorization_wiring.md`](learner_route_authorization_wiring.md)

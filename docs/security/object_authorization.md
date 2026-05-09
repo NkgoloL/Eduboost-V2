@@ -76,3 +76,7 @@ pytest -c pytest.ini tests/unit/test_object_authorization.py -q --no-cov
 ## Related Documents
 
 - [`docs/security/authorization_dependencies.md`](authorization_dependencies.md)
+
+## Enforcement Wiring
+
+- [`docs/security/learner_route_authorization_wiring.md`](learner_route_authorization_wiring.md)
