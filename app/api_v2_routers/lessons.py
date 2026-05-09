@@ -10,10 +10,12 @@ from uuid import UUID
 from app.core.database import get_db
 from app.core.jobs import enqueue_job
 from app.core.rate_limit import limiter
+from app.core.security import get_current_user
 from app.core.dependencies import get_current_user_id
 from app.domain.api_v2_models import JobAcceptedResponse
 from app.domain.schemas import LessonFeedback, LessonRequest, LessonResponse, LessonSyncRequest
 from app.modules.lessons.service import LessonService
+from app.security.dependencies import require_learner_write_for_current_user
 
 router = APIRouter(prefix="/lessons", tags=["lessons"])
 
@@ -27,9 +29,11 @@ async def generate_lesson(
     request: Request,
     body: LessonRequest,
     background_tasks: BackgroundTasks,
-    user_id: UUID = Depends(get_current_user_id),
+    current_user: dict = Depends(get_current_user),
     service: LessonService = Depends(get_lesson_service),
 ):
+    require_learner_write_for_current_user(current_user, str(body.learner_id))
+    user_id = UUID(str(current_user["sub"]))
     async def _run() -> dict:
         lesson, _, _ = await service.generate_lesson_for_learner(body, user_id)
         return lesson.model_dump(mode="json")

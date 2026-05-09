@@ -9,6 +9,7 @@ from app.core.database import get_db
 from app.core.rate_limiter import check_ai_quota
 from app.core.security import get_current_user
 from app.domain.schemas import DiagnosticResult, DiagnosticSubmit
+from app.security.dependencies import require_learner_read_for_current_user
 from app.repositories.repositories import (
     DiagnosticRepository,
     GuardianRepository,
@@ -36,7 +37,7 @@ async def get_diagnostic_items(
     learner = await LearnerRepository(db).get_by_id(learner_id)
     if not learner:
         raise HTTPException(status_code=404, detail="Learner not found")
-    assert_can_access_learner(current_user, learner)
+    require_learner_read_for_current_user(current_user, learner)
     request.state.analytics = {
         "event": "diagnostic_started",
         "pseudonym_id": learner.pseudonym_id,

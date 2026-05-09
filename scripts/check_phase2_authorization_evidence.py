@@ -1,0 +1,136 @@
+#!/usr/bin/env python3
+"""Check Phase 2 authorization evidence and pilot route coverage."""
+from __future__ import annotations
+
+import argparse
+import json
+from dataclasses import asdict, dataclass
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
+REQUIRED_FILES = (
+    "app/security/object_authorization.py",
+    "app/security/dependencies.py",
+    "docs/security/object_authorization.md",
+    "docs/security/authorization_dependencies.md",
+    "docs/security/learner_route_authorization_inspection.md",
+    "docs/security/learner_route_authorization_wiring.md",
+    "docs/security/learner_read_authorization_http_tests.md",
+    "docs/security/learner_mastery_authorization_wiring.md",
+    "docs/security/study_plan_authorization_wiring.md",
+    "docs/security/lesson_generation_authorization_wiring.md",
+    "docs/security/diagnostic_items_authorization_wiring.md",
+    "tests/unit/test_object_authorization.py",
+    "tests/unit/test_security_dependencies.py",
+    "tests/unit/test_learner_route_authorization_wiring.py",
+    "tests/integration/test_learner_read_authorization.py",
+    "tests/unit/test_learner_mastery_authorization_wiring.py",
+    "tests/integration/test_learner_mastery_authorization.py",
+    "tests/unit/test_study_plan_authorization_wiring.py",
+    "tests/integration/test_study_plan_authorization.py",
+    "tests/unit/test_lesson_generation_authorization_wiring.py",
+    "tests/integration/test_lesson_generation_authorization.py",
+    "tests/unit/test_diagnostic_items_authorization_wiring.py",
+    "tests/integration/test_diagnostic_items_authorization.py",
+)
+
+CONTENT_REQUIREMENTS = {
+    "app/api_v2_routers/learners.py": (
+        "require_learner_read_for_current_user(current_user, learner)",
+    ),
+    "app/api_v2_routers/study_plans.py": (
+        "require_learner_write_for_current_user(current_user, learner_id)",
+    ),
+    "app/api_v2_routers/lessons.py": (
+        "require_learner_write_for_current_user(current_user, str(body.learner_id))",
+    ),
+    "app/api_v2_routers/diagnostics.py": (
+        "require_learner_read_for_current_user(current_user, learner)",
+    ),
+    "docs/security/study_plan_authorization_wiring.md": (
+        "POST /api/v2/study-plans/{learner_id}",
+        "require_learner_write_for_current_user",
+    ),
+    "docs/security/lesson_generation_authorization_wiring.md": (
+        "POST /api/v2/lessons/generate",
+        "require_learner_write_for_current_user",
+    ),
+    "docs/security/diagnostic_items_authorization_wiring.md": (
+        "GET /api/v2/diagnostics/items/{learner_id}",
+        "require_learner_read_for_current_user",
+    ),
+}
+
+
+@dataclass(frozen=True)
+class CheckResult:
+    category: str
+    target: str
+    ok: bool
+    detail: str
+
+
+def check_files() -> list[CheckResult]:
+    results: list[CheckResult] = []
+    for rel_path in REQUIRED_FILES:
+        path = REPO_ROOT / rel_path
+        results.append(
+            CheckResult(
+                category="file",
+                target=rel_path,
+                ok=path.exists(),
+                detail="present" if path.exists() else "missing",
+            )
+        )
+    return results
+
+
+def check_content() -> list[CheckResult]:
+    results: list[CheckResult] = []
+    for rel_path, snippets in CONTENT_REQUIREMENTS.items():
+        path = REPO_ROOT / rel_path
+        if not path.exists():
+            results.append(CheckResult("content", rel_path, False, "file missing"))
+            continue
+
+        text = path.read_text(encoding="utf-8")
+        for snippet in snippets:
+            results.append(
+                CheckResult(
+                    category="content",
+                    target=rel_path,
+                    ok=snippet in text,
+                    detail=f"contains {snippet!r}" if snippet in text else f"missing {snippet!r}",
+                )
+            )
+    return results
+
+
+def check_all() -> list[CheckResult]:
+    return [*check_files(), *check_content()]
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Check Phase 2 authorization evidence.")
+    parser.add_argument("--json", action="store_true")
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    results = check_all()
+
+    if args.json:
+        print(json.dumps([asdict(result) for result in results], indent=2, sort_keys=True))
+    else:
+        print("Phase 2 authorization evidence check")
+        for result in results:
+            status = "PASS" if result.ok else "FAIL"
+            print(f"- {status} [{result.category}] {result.target}: {result.detail}")
+
+    return 0 if all(result.ok for result in results) else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -84,3 +84,15 @@ The following categories remain release blockers before real learner data or pub
 ## Audit Tracker
 
 The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
+
+## Lesson Generation Authorization
+
+- [`docs/security/lesson_generation_authorization_wiring.md`](security/lesson_generation_authorization_wiring.md)
+
+## Diagnostic Items Authorization
+
+- [`docs/security/diagnostic_items_authorization_wiring.md`](security/diagnostic_items_authorization_wiring.md)
+
+## Phase 2 Authorization Evidence
+
+- [`docs/security/phase2_authorization_evidence_check.md`](security/phase2_authorization_evidence_check.md)

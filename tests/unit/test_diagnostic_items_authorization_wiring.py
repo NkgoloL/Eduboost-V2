@@ -1,0 +1,23 @@
+"""Tests for diagnostic items read authorization wiring."""
+from __future__ import annotations
+
+from pathlib import Path
+
+import pytest
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
+
+
+@pytest.mark.unit
+def test_get_diagnostic_items_uses_phase2_read_authorization() -> None:
+    source = (REPO_ROOT / "app" / "api_v2_routers" / "diagnostics.py").read_text(
+        encoding="utf-8"
+    )
+
+    block = source.split("async def get_diagnostic_items", maxsplit=1)[1].split(
+        "@router.post",
+        maxsplit=1,
+    )[0]
+
+    assert "require_learner_read_for_current_user(current_user, learner)" in block
+    assert "assert_can_access_learner(current_user, learner)" not in block
