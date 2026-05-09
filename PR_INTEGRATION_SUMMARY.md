@@ -257,3 +257,9 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 - Phase 2 onboarding questions authentication boundary: `tests/unit/test_onboarding_questions_auth_boundary.py`
 
 - Phase 2 authorization evidence checker updated for Codes 51-52: assessment list and onboarding question authentication boundaries.
+
+- Assessment attempt request model centralized in `app/domain/api_v2_models.py` with contract test: `tests/unit/test_assessment_attempt_model_contract.py`
+
+- Phase 2 router import smoke coverage added: `tests/unit/test_phase2_router_import_smoke.py`
+
+- Phase 2 evidence checker updated for Codes 54-55: assessment model contract and router import smoke tests.

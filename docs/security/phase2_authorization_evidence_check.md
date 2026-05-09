@@ -23,6 +23,8 @@ python3 scripts/check_phase2_authorization_evidence.py
 
 | Area | Endpoint |
 | --- | --- |
+| Phase 2 router import smoke | `tests/unit/test_phase2_router_import_smoke.py` |
+| Assessment attempt model contract | `app/domain/api_v2_models.py` |
 | Onboarding questions auth boundary | `GET /api/v2/onboarding/questions` |
 | Assessment list auth boundary | `GET /api/v2/assessments` |
 | Onboarding write | `POST /api/v2/onboarding/submit`, `POST /api/v2/onboarding/archetype` |

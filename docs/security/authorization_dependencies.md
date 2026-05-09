@@ -177,3 +177,11 @@ Review `docs/security/learner_route_authorization_inspection.md` before wiring t
 ## Onboarding Questions Authentication Boundary
 
 - [`docs/security/onboarding_questions_auth_boundary.md`](onboarding_questions_auth_boundary.md)
+
+## Assessment Attempt Model Contract
+
+- [`docs/security/assessment_attempt_model_contract.md`](assessment_attempt_model_contract.md)
+
+## Phase 2 Router Import Smoke
+
+- [`docs/security/phase2_router_import_smoke.md`](phase2_router_import_smoke.md)

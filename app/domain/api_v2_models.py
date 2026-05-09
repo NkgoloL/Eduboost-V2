@@ -160,6 +160,19 @@ class HealthResponse(BaseModel):
     mode: str | None = None
 
 
+class AssessmentAttemptResponseItem(BaseModel):
+    item_id: str
+    selected_option: str | None = None
+    answer: str | None = None
+    metadata: dict[str, Any] = Field(default_factory=dict)
+
+
+class AssessmentAttemptRequest(BaseModel):
+    learner_id: str
+    responses: list[AssessmentAttemptResponseItem] = Field(default_factory=list)
+    time_taken_seconds: int = Field(default=0, ge=0)
+
+
 class StudyPlanGenerateRequest(BaseModel):
     gap_ratio: float = Field(default=0.4, ge=0.0, le=1.0)
 

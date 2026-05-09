@@ -10,6 +10,10 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_phase2_router_import_smoke.py",
+    "tests/unit/test_assessment_attempt_model_contract.py",
+    "docs/security/phase2_router_import_smoke.md",
+    "docs/security/assessment_attempt_model_contract.md",
     "tests/unit/test_onboarding_questions_auth_boundary.py",
     "tests/unit/test_assessment_list_auth_boundary.py",
     "docs/security/onboarding_questions_auth_boundary.md",
@@ -99,6 +103,19 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "app/domain/api_v2_models.py": (
+        "class AssessmentAttemptRequest",
+        "class AssessmentAttemptResponseItem",
+    ),
+    "docs/security/phase2_router_import_smoke.md": (
+        "Phase 2 Router Import Smoke",
+        "assessments",
+        "study_plans",
+    ),
+    "docs/security/assessment_attempt_model_contract.md": (
+        "AssessmentAttemptRequest",
+        "app/domain/api_v2_models.py",
+    ),
     "docs/security/onboarding_questions_auth_boundary.md": (
         "GET /api/v2/onboarding/questions",
         "authentication",

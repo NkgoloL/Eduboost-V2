@@ -3,23 +3,8 @@
 from fastapi import APIRouter, Depends
 
 from app.core.security import get_current_user
-try:
-    from app.domain.api_v2_models import AssessmentAttemptRequest
-except ImportError:  # compatibility until shared model is restored
-    from typing import Any
+from app.domain.api_v2_models import AssessmentAttemptRequest
 
-    from pydantic import BaseModel, Field
-
-    class AssessmentAttemptResponseItem(BaseModel):
-        item_id: str
-        selected_option: str | None = None
-        answer: str | None = None
-        metadata: dict[str, Any] = Field(default_factory=dict)
-
-    class AssessmentAttemptRequest(BaseModel):
-        learner_id: str
-        responses: list[AssessmentAttemptResponseItem] = Field(default_factory=list)
-        time_taken_seconds: int = Field(default=0, ge=0)
 from app.services.assessment_service_v2 import AssessmentServiceV2
 from app.security.dependencies import require_learner_write_for_current_user
 

@@ -188,3 +188,11 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Onboarding Questions Authentication Boundary
 
 - [`docs/security/onboarding_questions_auth_boundary.md`](security/onboarding_questions_auth_boundary.md)
+
+## Assessment Attempt Model Contract
+
+- [`docs/security/assessment_attempt_model_contract.md`](security/assessment_attempt_model_contract.md)
+
+## Phase 2 Router Import Smoke
+
+- [`docs/security/phase2_router_import_smoke.md`](security/phase2_router_import_smoke.md)
