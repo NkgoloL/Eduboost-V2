@@ -483,3 +483,7 @@ class StripeWebhookEvent(Base):
 
 
 LessonRecord = Lesson
+
+# ── CAPS Diagnostic Items ────────────────────────────────────────────────────
+from app.models.diagnostic_item import DiagnosticItem
+from app.models.item_exposure import ItemExposure
