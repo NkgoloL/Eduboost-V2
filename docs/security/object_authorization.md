@@ -72,3 +72,7 @@ Later Phase 2 slices should wire this policy into:
 ```bash
 pytest -c pytest.ini tests/unit/test_object_authorization.py -q --no-cov
 ```
+
+## Related Documents
+
+- [`docs/security/authorization_dependencies.md`](authorization_dependencies.md)

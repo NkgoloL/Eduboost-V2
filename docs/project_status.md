@@ -65,6 +65,7 @@ The following categories remain release blockers before real learner data or pub
 
 ## Evidence Documents
 
+- [`docs/security/authorization_dependencies.md`](security/authorization_dependencies.md)
 - [`docs/security/object_authorization.md`](security/object_authorization.md)
 - [`docs/testing/pr002r_evidence_check.md`](testing/pr002r_evidence_check.md)
 - [`docs/testing/pytest_import_path.md`](testing/pytest_import_path.md)

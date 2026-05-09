@@ -185,3 +185,5 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 - PR-002R evidence checker: `scripts/check_pr002r_evidence.py`
 
 - Phase 2 object authorization baseline: `app/security/object_authorization.py`, `tests/unit/test_object_authorization.py`
+
+- Phase 2 authorization dependency adapter: `app/security/dependencies.py`, `tests/unit/test_security_dependencies.py`
