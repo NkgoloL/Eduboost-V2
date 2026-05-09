@@ -305,3 +305,9 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 - POPIA consent dependency adapter added: `require_active_consent_for_current_user`.
 
 - Removed stale lesson consent-gate allowlist entries after lesson route wiring.
+
+- Study-plan POPIA consent gate wiring added.
+
+- Learner read/mastery POPIA consent gate wiring normalized.
+
+- Gamification POPIA consent gate wiring normalized.

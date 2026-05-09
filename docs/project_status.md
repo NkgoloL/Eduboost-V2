@@ -248,3 +248,15 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## POPIA Consent Dependency Adapter
 
 - [`docs/security/consent_dependency_adapter.md`](security/consent_dependency_adapter.md)
+
+## Study Plan Consent Gate
+
+- [`docs/security/study_plan_consent_gate.md`](security/study_plan_consent_gate.md)
+
+## Learner Read Consent Gate
+
+- [`docs/security/learner_read_consent_gate.md`](security/learner_read_consent_gate.md)
+
+## Gamification Consent Gate
+
+- [`docs/security/gamification_consent_gate.md`](security/gamification_consent_gate.md)

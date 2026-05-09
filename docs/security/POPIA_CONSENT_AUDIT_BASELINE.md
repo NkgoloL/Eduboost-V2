@@ -41,3 +41,15 @@ pytest -c pytest.ini tests/unit/test_generate_consent_gate_inventory.py tests/un
 ## POPIA Consent Dependency Adapter
 
 - `app/security/dependencies.py` exposes `require_active_consent_for_current_user` for route-level consent gates.
+
+## Study Plan Consent Gate
+
+- Study-plan generation routes require active POPIA consent before job enqueue.
+
+## Learner Read Consent Gate
+
+- Learner read/mastery routes use centralized active-consent gates after read authorization.
+
+## Gamification Consent Gate
+
+- Gamification profile and award-xp routes use centralized active-consent gates after object authorization.
