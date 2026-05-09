@@ -195,3 +195,5 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 - Phase 2 learner read authorization HTTP tests: `tests/integration/test_learner_read_authorization.py`
 
 - Phase 2 learner mastery authorization wiring and HTTP tests: `tests/unit/test_learner_mastery_authorization_wiring.py`, `tests/integration/test_learner_mastery_authorization.py`
+
+- Phase 2 study-plan write authorization wiring and HTTP tests: `tests/unit/test_study_plan_authorization_wiring.py`, `tests/integration/test_study_plan_authorization.py`

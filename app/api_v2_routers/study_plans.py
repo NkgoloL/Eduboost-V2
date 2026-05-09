@@ -7,6 +7,7 @@ from app.core.jobs import enqueue_job
 from app.core.security import get_current_user
 from app.domain.api_v2_models import JobAcceptedResponse, StudyPlanGenerateRequest
 from app.repositories.repositories import LearnerRepository
+from app.security.dependencies import require_learner_write_for_current_user
 from app.services.audit_service import AuditService
 from app.services.study_plan_service_v2 import StudyPlanServiceV2
 from app.services.telemetry import TelemetryService
@@ -20,8 +21,9 @@ async def generate_study_plan(
     learner_id: str,
     request: StudyPlanGenerateRequest,
     background_tasks: BackgroundTasks,
-    _: dict = Depends(get_current_user),
+    current_user: dict = Depends(get_current_user),
 ):
+    require_learner_write_for_current_user(current_user, learner_id)
     async def _run() -> dict:
         try:
             from app.repositories.study_plan_repository import StudyPlanRepository

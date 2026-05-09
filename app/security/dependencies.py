@@ -223,3 +223,46 @@ def require_learner_read_for_current_user(
     actor = build_actor_from_current_user_for_learner(current_user, learner)
     return require_learner_read(actor, str(getattr(learner, "id")))
 
+
+def _iter_claim_values(value: _Any) -> tuple[str, ...]:
+    if value is None:
+        return ()
+    if isinstance(value, str):
+        return tuple(part.strip() for part in value.split(",") if part.strip())
+    if isinstance(value, (list, tuple, set, frozenset)):
+        return tuple(str(part) for part in value if str(part))
+    return (str(value),)
+
+
+def build_actor_from_current_user_claims(current_user: dict[str, _Any]) -> Actor:
+    """Build an Actor from current-user claims without loading a resource."""
+    subject_id = str(current_user.get("sub") or "")
+    if not subject_id:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Missing authenticated subject.",
+        )
+
+    role = _role_from_current_user(current_user.get("role"))
+
+    return Actor.from_values(
+        subject_id=subject_id,
+        roles=(role,),
+        learner_ids=_iter_claim_values(current_user.get("learner_ids") or current_user.get("learner_id")),
+        guardian_learner_ids=_iter_claim_values(
+            current_user.get("guardian_learner_ids") or current_user.get("guardian_learner_id")
+        ),
+        educator_learner_ids=_iter_claim_values(
+            current_user.get("educator_learner_ids") or current_user.get("educator_learner_id")
+        ),
+    )
+
+
+def require_learner_write_for_current_user(
+    current_user: dict[str, _Any],
+    learner_id: str,
+) -> AuthorizationDecision:
+    """Authorize write access to a learner id for the current user payload."""
+    actor = build_actor_from_current_user_claims(current_user)
+    return require_learner_write(actor, learner_id)
+

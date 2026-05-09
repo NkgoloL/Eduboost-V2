@@ -73,3 +73,7 @@ Review `docs/security/learner_route_authorization_inspection.md` before wiring t
 ## Enforcement Wiring
 
 - [`docs/security/learner_route_authorization_wiring.md`](learner_route_authorization_wiring.md)
+
+## Write-Path Wiring
+
+- [`docs/security/study_plan_authorization_wiring.md`](study_plan_authorization_wiring.md)

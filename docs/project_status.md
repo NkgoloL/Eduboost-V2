@@ -65,6 +65,7 @@ The following categories remain release blockers before real learner data or pub
 
 ## Evidence Documents
 
+- [`docs/security/study_plan_authorization_wiring.md`](security/study_plan_authorization_wiring.md)
 - [`docs/security/learner_mastery_authorization_wiring.md`](security/learner_mastery_authorization_wiring.md)
 - [`docs/security/learner_read_authorization_http_tests.md`](security/learner_read_authorization_http_tests.md)
 - [`docs/security/learner_route_authorization_wiring.md`](security/learner_route_authorization_wiring.md)
