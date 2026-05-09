@@ -233,3 +233,9 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 - Phase 2 parent trust-dashboard per-learner read authorization wiring: `tests/unit/test_parent_trust_dashboard_authorization_wiring.py`
 
 - Phase 2 parent dashboard per-learner read authorization wiring: `tests/unit/test_parent_dashboard_authorization_wiring.py`
+
+- Phase 2 consent-grant write authorization wiring and HTTP tests: `tests/unit/test_consent_grant_authorization_wiring.py`, `tests/integration/test_consent_grant_authorization.py`
+
+- Phase 2 consent-revoke write authorization wiring and HTTP tests: `tests/unit/test_consent_revoke_authorization_wiring.py`, `tests/integration/test_consent_revoke_authorization.py`
+
+- Phase 2 gamification profile read authorization wiring and HTTP tests: `tests/unit/test_gamification_profile_authorization_wiring.py`, `tests/integration/test_gamification_profile_authorization.py`

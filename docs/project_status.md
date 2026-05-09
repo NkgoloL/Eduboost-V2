@@ -152,3 +152,15 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Parent Dashboard Authorization
 
 - [`docs/security/parent_dashboard_authorization_wiring.md`](security/parent_dashboard_authorization_wiring.md)
+
+## Consent Grant Authorization
+
+- [`docs/security/consent_grant_authorization_wiring.md`](security/consent_grant_authorization_wiring.md)
+
+## Consent Revoke Authorization
+
+- [`docs/security/consent_revoke_authorization_wiring.md`](security/consent_revoke_authorization_wiring.md)
+
+## Gamification Profile Authorization
+
+- [`docs/security/gamification_profile_authorization_wiring.md`](security/gamification_profile_authorization_wiring.md)

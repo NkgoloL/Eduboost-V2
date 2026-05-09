@@ -10,6 +10,15 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/integration/test_gamification_profile_authorization.py",
+    "tests/unit/test_gamification_profile_authorization_wiring.py",
+    "tests/integration/test_consent_revoke_authorization.py",
+    "tests/unit/test_consent_revoke_authorization_wiring.py",
+    "tests/integration/test_consent_grant_authorization.py",
+    "tests/unit/test_consent_grant_authorization_wiring.py",
+    "docs/security/gamification_profile_authorization_wiring.md",
+    "docs/security/consent_revoke_authorization_wiring.md",
+    "docs/security/consent_grant_authorization_wiring.md",
     "tests/unit/test_parent_dashboard_authorization_wiring.py",
     "tests/unit/test_parent_trust_dashboard_authorization_wiring.py",
     "tests/integration/test_consent_status_authorization.py",
@@ -76,6 +85,18 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/security/gamification_profile_authorization_wiring.md": (
+        "GET /api/v2/gamification/profile/{learner_id}",
+        "require_learner_read_for_current_user",
+    ),
+    "docs/security/consent_revoke_authorization_wiring.md": (
+        "POST /api/v2/consent/revoke",
+        "require_learner_write_for_current_user",
+    ),
+    "docs/security/consent_grant_authorization_wiring.md": (
+        "POST /api/v2/consent/grant",
+        "require_learner_write_for_current_user",
+    ),
     "docs/security/parent_dashboard_authorization_wiring.md": (
         "GET /api/v2/parents/dashboard",
         "require_learner_read_for_current_user",
