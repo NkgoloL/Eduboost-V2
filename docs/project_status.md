@@ -260,3 +260,11 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Gamification Consent Gate
 
 - [`docs/security/gamification_consent_gate.md`](security/gamification_consent_gate.md)
+
+## Parent Routes Consent Gate
+
+- [`docs/security/parent_routes_consent_gate.md`](security/parent_routes_consent_gate.md)
+
+## POPIA Data-Rights Consent Boundary
+
+- [`docs/security/popia_data_rights_consent_boundary.md`](security/popia_data_rights_consent_boundary.md)

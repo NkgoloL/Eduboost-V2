@@ -311,3 +311,9 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 - Learner read/mastery POPIA consent gate wiring normalized.
 
 - Gamification POPIA consent gate wiring normalized.
+
+- Parent learner-data POPIA consent gate wiring normalized.
+
+- POPIA data-rights consent boundary documented and tested.
+
+- Parent and POPIA consent-gate evidence registered in aggregate checker.

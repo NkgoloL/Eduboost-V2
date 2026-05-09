@@ -53,3 +53,11 @@ pytest -c pytest.ini tests/unit/test_generate_consent_gate_inventory.py tests/un
 ## Gamification Consent Gate
 
 - Gamification profile and award-xp routes use centralized active-consent gates after object authorization.
+
+## Parent Routes Consent Gate
+
+- Parent dashboard/export/progress learner-data reads use centralized active-consent gates.
+
+## POPIA Data-Rights Consent Boundary
+
+- POPIA data export requires active consent; DSR workflows remain object-authorized rights-exercise routes.

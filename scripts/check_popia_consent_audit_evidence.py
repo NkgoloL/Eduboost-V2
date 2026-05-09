@@ -9,6 +9,10 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
 REQUIRED_FILES = (
+    "tests/unit/test_popia_data_rights_consent_boundary.py",
+    "tests/unit/test_parent_routes_consent_gate_wiring.py",
+    "docs/security/popia_data_rights_consent_boundary.md",
+    "docs/security/parent_routes_consent_gate.md",
     "scripts/generate_consent_gate_inventory.py",
     "scripts/check_consent_gate_inventory.py",
     "scripts/check_audit_event_contracts.py",
@@ -27,6 +31,23 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/security/popia_data_rights_consent_boundary.md": (
+        "Data-Subject Rights Workflows",
+        "not blocked by active consent",
+    ),
+    "docs/security/parent_routes_consent_gate.md": (
+        "Parent Routes Consent Gate",
+        "active POPIA consent",
+    ),
+    "app/api_v2_routers/popia.py": (
+        "require_active_consent_for_current_user",
+        "await require_active_consent_for_current_user(db, current_user, learner_id)",
+    ),
+    "app/api_v2_routers/parents.py": (
+        "require_active_consent_for_current_user",
+        "await require_active_consent_for_current_user(db, current_user, learner.id)",
+        "await require_active_consent_for_current_user(db, current_user, learner_id)",
+    ),
     "Makefile": (
         "audit-contract-check:",
         "popia-consent-gate-check:",
