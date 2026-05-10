@@ -9,6 +9,16 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_h_sealed_package_audit_review_terminal_handoff_wiring.py",
+    "tests/unit/test_terminal_handoff_closure_note.py",
+    "tests/unit/test_audit_review_closeout_certificate.py",
+    "tests/unit/test_final_sealed_package_manifest.py",
+    "scripts/check_terminal_handoff_closure_note.py",
+    "scripts/check_audit_review_closeout_certificate.py",
+    "scripts/check_final_sealed_package_manifest.py",
+    "docs/operations/terminal_handoff_closure_note.md",
+    "docs/operations/audit_review_closeout_certificate.md",
+    "docs/operations/final_sealed_package_manifest.md",
     "tests/unit/test_cluster_h_reviewer_closeout_audit_handoff_terminal_pr_index_wiring.py",
     "tests/unit/test_terminal_pr_evidence_index.py",
     "tests/unit/test_final_audit_handoff_register.py",
@@ -288,6 +298,18 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/operations/terminal_handoff_closure_note.md": (
+        "Terminal Handoff Closure Note",
+        "does not approve production launch, execute deployment, create release tags, or merge the pull request automatically",
+    ),
+    "docs/operations/audit_review_closeout_certificate.md": (
+        "Audit Review Closeout Certificate",
+        "does not approve production launch, execute deployment, create release tags, or merge the pull request automatically",
+    ),
+    "docs/operations/final_sealed_package_manifest.md": (
+        "Final Sealed Package Manifest",
+        "does not approve production launch, execute deployment, create release tags, or merge the pull request automatically",
+    ),
     "docs/operations/terminal_pr_evidence_index.md": (
         "Terminal PR Evidence Index",
         "does not approve production launch, execute deployment, create release tags, or merge the pull request automatically",
@@ -704,6 +726,9 @@ CONTENT_REQUIREMENTS = {
         "sealed-reviewer-closeout-packet-check:",
         "final-audit-handoff-register-check:",
         "terminal-pr-evidence-index-check:",
+        "final-sealed-package-manifest-check:",
+        "audit-review-closeout-certificate-check:",
+        "terminal-handoff-closure-note-check:",
     ),
     "docs/operations/beta_release_readiness_contract.md": (
         "Beta Release Readiness Contract",

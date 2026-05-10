@@ -51,3 +51,9 @@ This final audit handoff register records audit handoff evidence only. It does n
 ```bash
 make final-audit-handoff-register-check
 ```
+
+## Sealed Package Audit Review Terminal Handoff Evidence
+
+- `docs/operations/final_sealed_package_manifest.md`
+- `docs/operations/audit_review_closeout_certificate.md`
+- `docs/operations/terminal_handoff_closure_note.md`

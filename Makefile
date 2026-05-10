@@ -563,3 +563,12 @@ final-audit-handoff-register-check:
 
 terminal-pr-evidence-index-check:
 	$(PYTHON) scripts/check_terminal_pr_evidence_index.py
+
+final-sealed-package-manifest-check:
+	$(PYTHON) scripts/check_final_sealed_package_manifest.py
+
+audit-review-closeout-certificate-check:
+	$(PYTHON) scripts/check_audit_review_closeout_certificate.py
+
+terminal-handoff-closure-note-check:
+	$(PYTHON) scripts/check_terminal_handoff_closure_note.py
