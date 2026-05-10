@@ -9,6 +9,16 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_h_readiness_rollup_freeze_merge_summary_wiring.py",
+    "tests/unit/test_pr_merge_evidence_summary.py",
+    "tests/unit/test_evidence_freeze_confirmation_record.py",
+    "tests/unit/test_final_release_readiness_rollup.py",
+    "scripts/check_pr_merge_evidence_summary.py",
+    "scripts/check_evidence_freeze_confirmation_record.py",
+    "scripts/check_final_release_readiness_rollup.py",
+    "docs/operations/pr_merge_evidence_summary.md",
+    "docs/operations/evidence_freeze_confirmation_record.md",
+    "docs/operations/final_release_readiness_rollup.md",
     "tests/unit/test_cluster_h_reviewer_pack_merge_control_retention_wiring.py",
     "tests/unit/test_release_evidence_retention_finalization.py",
     "tests/unit/test_merge_control_evidence_gate.py",
@@ -228,6 +238,18 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/operations/pr_merge_evidence_summary.md": (
+        "PR Merge Evidence Summary",
+        "does not approve production launch, execute deployment, create release tags, or merge the pull request automatically",
+    ),
+    "docs/operations/evidence_freeze_confirmation_record.md": (
+        "Evidence Freeze Confirmation Record",
+        "does not approve production launch, execute deployment, create release tags, or merge the pull request automatically",
+    ),
+    "docs/operations/final_release_readiness_rollup.md": (
+        "Final Release Readiness Rollup",
+        "does not approve production launch, execute deployment, create release tags, or merge the pull request automatically",
+    ),
     "docs/operations/release_evidence_retention_finalization.md": (
         "Release Evidence Retention Finalization",
         "does not approve production launch, execute deployment, create release tags, or replace manual approval",
@@ -554,6 +576,9 @@ CONTENT_REQUIREMENTS = {
         "final-reviewer-pack-checklist-check:",
         "merge-control-evidence-gate-check:",
         "release-evidence-retention-finalization-check:",
+        "final-release-readiness-rollup-check:",
+        "evidence-freeze-confirmation-record-check:",
+        "pr-merge-evidence-summary-check:",
     ),
     "docs/operations/beta_release_readiness_contract.md": (
         "Beta Release Readiness Contract",

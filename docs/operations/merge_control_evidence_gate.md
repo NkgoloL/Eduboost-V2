@@ -47,3 +47,9 @@ This merge-control evidence gate records merge-gating evidence only. It does not
 ```bash
 make merge-control-evidence-gate-check
 ```
+
+## Readiness Rollup Freeze Merge Summary Evidence
+
+- `docs/operations/final_release_readiness_rollup.md`
+- `docs/operations/evidence_freeze_confirmation_record.md`
+- `docs/operations/pr_merge_evidence_summary.md`

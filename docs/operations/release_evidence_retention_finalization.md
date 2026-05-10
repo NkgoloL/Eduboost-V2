@@ -47,3 +47,9 @@ This retention finalization records retention expectations only. It does not app
 ```bash
 make release-evidence-retention-finalization-check
 ```
+
+## Readiness Rollup Freeze Merge Summary Evidence
+
+- `docs/operations/final_release_readiness_rollup.md`
+- `docs/operations/evidence_freeze_confirmation_record.md`
+- `docs/operations/pr_merge_evidence_summary.md`

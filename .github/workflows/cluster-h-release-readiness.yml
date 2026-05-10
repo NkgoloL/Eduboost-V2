@@ -91,11 +91,18 @@ jobs:
           make final-reviewer-pack-checklist-check
           make merge-control-evidence-gate-check
           make release-evidence-retention-finalization-check
+          make final-release-readiness-rollup-check
+          make evidence-freeze-confirmation-record-check
+          make pr-merge-evidence-summary-check
           make cluster-h-release-readiness-check
       - name: Run Cluster H release readiness tests
         run: |
           pytest -c pytest.ini \
             tests/unit/test_beta_release_readiness_contract.py \
+            tests/unit/test_cluster_h_readiness_rollup_freeze_merge_summary_wiring.py \
+            tests/unit/test_pr_merge_evidence_summary.py \
+            tests/unit/test_evidence_freeze_confirmation_record.py \
+            tests/unit/test_final_release_readiness_rollup.py \
             tests/unit/test_cluster_h_reviewer_pack_merge_control_retention_wiring.py \
             tests/unit/test_release_evidence_retention_finalization.py \
             tests/unit/test_merge_control_evidence_gate.py \

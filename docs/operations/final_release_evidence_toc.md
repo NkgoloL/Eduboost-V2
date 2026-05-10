@@ -45,3 +45,9 @@ make final-release-evidence-toc-check
 - `docs/operations/final_reviewer_pack_checklist.md`
 - `docs/operations/merge_control_evidence_gate.md`
 - `docs/operations/release_evidence_retention_finalization.md`
+
+## Readiness Rollup Freeze Merge Summary Evidence
+
+- `docs/operations/final_release_readiness_rollup.md`
+- `docs/operations/evidence_freeze_confirmation_record.md`
+- `docs/operations/pr_merge_evidence_summary.md`

@@ -526,3 +526,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster H Reviewer Pack Merge-Control Retention
 
 - Cluster H final reviewer pack, merge-control evidence gate, and release evidence retention finalization added.
+
+## Cluster H Readiness Rollup Freeze Merge Summary
+
+- Cluster H final release readiness rollup, evidence freeze confirmation record, and PR merge evidence summary added.

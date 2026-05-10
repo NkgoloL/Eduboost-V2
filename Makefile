@@ -509,3 +509,12 @@ merge-control-evidence-gate-check:
 
 release-evidence-retention-finalization-check:
 	$(PYTHON) scripts/check_release_evidence_retention_finalization.py
+
+final-release-readiness-rollup-check:
+	$(PYTHON) scripts/check_final_release_readiness_rollup.py
+
+evidence-freeze-confirmation-record-check:
+	$(PYTHON) scripts/check_evidence_freeze_confirmation_record.py
+
+pr-merge-evidence-summary-check:
+	$(PYTHON) scripts/check_pr_merge_evidence_summary.py

@@ -46,3 +46,9 @@ This final reviewer pack checklist records reviewer workflow only. It does not a
 ```bash
 make final-reviewer-pack-checklist-check
 ```
+
+## Readiness Rollup Freeze Merge Summary Evidence
+
+- `docs/operations/final_release_readiness_rollup.md`
+- `docs/operations/evidence_freeze_confirmation_record.md`
+- `docs/operations/pr_merge_evidence_summary.md`
