@@ -17,8 +17,9 @@
 | **Target Items per Topic** | ≥ 40 approved |
 | **Total Target** | ≥ 120 approved |
 | **Current Approved Items** | 14 approved starter items |
-| **Outstanding to Production Target** | 106 approved items |
-| **Current Status** | Implementation integrated; content bank not production-complete |
+| **AI-Generated Candidate Items** | 106 candidates |
+| **Outstanding to Production Target** | 106 approval promotions |
+| **Current Status** | Implementation integrated; full generated candidate coverage exists; approval gate remains open |
 | **Definition of Done** | All 3 CAPS refs ≥ 40 approved · `validate_item_bank.py` 0 failures · CI green with production thresholds |
 
 ---
@@ -32,9 +33,9 @@ distribution.
 
 | CAPS Ref | Topic | Term | Approved | Draft | AI-Gen | Retired | Status | IRT Calibrated |
 |----------|-------|------|----------|-------|--------|---------|--------|----------------|
-| **4.M.1.1** | Whole Numbers | 1 | 4 | 0 | 0 | 0 | Starter bank only | Pre-calibration |
-| **4.M.1.2** | Common Fractions | 1 | 5 | 0 | 0 | 0 | Starter bank only | Pre-calibration |
-| **4.M.1.3** | 2D Shapes | 1 | 5 | 0 | 0 | 0 | Starter bank only | Pre-calibration |
+| **4.M.1.1** | Whole Numbers | 1 | 4 | 0 | 36 | 0 | Candidate coverage generated; approval pending | Pre-calibration |
+| **4.M.1.2** | Common Fractions | 1 | 5 | 0 | 35 | 0 | Candidate coverage generated; approval pending | Pre-calibration |
+| **4.M.1.3** | 2D Shapes | 1 | 5 | 0 | 35 | 0 | Candidate coverage generated; approval pending | Pre-calibration |
 
 > **Populate this table** by running `python scripts/generate_coverage_matrix.py --output docs/caps/grade4_maths_coverage_matrix.md`
 > The script queries the database and replaces all `<!-- ... -->` placeholders with live counts.
@@ -57,6 +58,10 @@ levels to produce reliable ability (θ) estimates (standard error < 0.4).
 
 ### 4.M.1.1 — Whole Numbers
 
+Approved actual remains below target. The AI-generated candidate batch fills the
+documented content gap exactly: 7 easy, 11 moderate, 12 on-level, and 6
+challenging candidates.
+
 | Band | Target | Actual | Gap |
 |------|--------|--------|-----|
 | Easy | 10 | 3 | 7 |
@@ -66,6 +71,10 @@ levels to produce reliable ability (θ) estimates (standard error < 0.4).
 
 ### 4.M.1.2 — Common Fractions
 
+Approved actual remains below target. The AI-generated candidate batch fills the
+documented content gap exactly: 10 easy, 9 moderate, 10 on-level, and 6
+challenging candidates.
+
 | Band | Target | Actual | Gap |
 |------|--------|--------|-----|
 | Easy | 10 | 0 | 10 |
@@ -74,6 +83,10 @@ levels to produce reliable ability (θ) estimates (standard error < 0.4).
 | Challenging | 6 | 0 | 6 |
 
 ### 4.M.1.3 — 2D Shapes
+
+Approved actual remains below target. The AI-generated candidate batch fills the
+documented content gap exactly: 9 easy, 10 moderate, 10 on-level, and 6
+challenging candidates.
 
 | Band | Target | Actual | Gap |
 |------|--------|--------|-----|
@@ -161,9 +174,11 @@ remediation.
 ## Definition of Done — Checklist
 
 Use this checklist to confirm the item bank is production-ready for launch.
-As of this update, the implementation is integrated but the item content target
-is not yet met.
+As of this update, the implementation is integrated and the generated item
+content target is met. Production readiness still depends on promoting the
+generated candidates through the curriculum approval workflow.
 
+- [x] `validate_item_bank.py --all-statuses` reports **0 failures** across all 121 current items
 - [ ] `validate_item_bank.py` reports **0 failures** across all 120 approved items (CI P5-04)
 - [ ] ≥ 40 approved items for **4.M.1.1** (CI P5-03)
 - [ ] ≥ 40 approved items for **4.M.1.2** (CI P5-03)
@@ -182,7 +197,7 @@ is not yet met.
 - [ ] Release candidate tagged in Git (P5-12)
 
 See [Grade 4 Mathematics 120-Item Production Plan](grade4_maths_120_item_production_plan.md)
-for the batch plan to close the remaining 106 approved items.
+for the review plan to promote the remaining 106 candidates.
 
 ---
 

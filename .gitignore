@@ -23,7 +23,9 @@ app/api/celerybeat-schedule*
 .venv/
 site/
 app/frontend/coverage/
-data/caps/
+data/caps/*
+!data/caps/caps_topic_map_grade4_maths.json
+!data/caps/grade4_maths_item_bank.json
 artifacts/llm/
 # Sensitive keys
 *.pem
