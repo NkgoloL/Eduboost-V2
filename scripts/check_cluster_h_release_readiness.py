@@ -9,6 +9,16 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_h_outcome_retrospective_archive_wiring.py",
+    "tests/unit/test_post_beta_evidence_archive_manifest.py",
+    "tests/unit/test_beta_retrospective_action_register.py",
+    "tests/unit/test_beta_outcome_report_template.py",
+    "scripts/check_post_beta_evidence_archive_manifest.py",
+    "scripts/check_beta_retrospective_action_register.py",
+    "scripts/check_beta_outcome_report_template.py",
+    "docs/operations/post_beta_evidence_archive_manifest.md",
+    "docs/operations/beta_retrospective_action_register.md",
+    "docs/operations/beta_outcome_report_template.md",
     "tests/unit/test_cluster_h_feedback_issues_acceptance_wiring.py",
     "tests/unit/test_beta_acceptance_exit_criteria.py",
     "tests/unit/test_beta_known_issues_register.py",
@@ -138,6 +148,18 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/operations/post_beta_evidence_archive_manifest.md": (
+        "Post-Beta Evidence Archive Manifest",
+        "does not approve release, execute deployment, create release tags, or replace source control history",
+    ),
+    "docs/operations/beta_retrospective_action_register.md": (
+        "Beta Retrospective Action Register",
+        "does not create tickets automatically, approve release, execute remediation, or close actions without evidence",
+    ),
+    "docs/operations/beta_outcome_report_template.md": (
+        "Beta Outcome Report Template",
+        "does not approve production launch, execute deployment, create release tags, or close follow-up work automatically",
+    ),
     "docs/operations/beta_acceptance_exit_criteria.md": (
         "Beta Acceptance Exit Criteria",
         "does not approve production launch, execute deployment, create release tags, or override unresolved blocker issues",
@@ -329,6 +351,9 @@ CONTENT_REQUIREMENTS = {
         "beta-feedback-intake-contract-check:",
         "beta-known-issues-register-check:",
         "beta-acceptance-exit-criteria-check:",
+        "beta-outcome-report-template-check:",
+        "beta-retrospective-action-register-check:",
+        "post-beta-evidence-archive-manifest-check:",
     ),
     "docs/operations/beta_release_readiness_contract.md": (
         "Beta Release Readiness Contract",

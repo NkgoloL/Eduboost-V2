@@ -46,3 +46,9 @@ make beta-acceptance-exit-criteria-check
 ```
 
 Exit boundary: these criteria does not approve production launch, execute deployment, create release tags, or override unresolved blocker issues.
+
+## Outcome Retrospective Archive Evidence
+
+- `docs/operations/beta_outcome_report_template.md`
+- `docs/operations/beta_retrospective_action_register.md`
+- `docs/operations/post_beta_evidence_archive_manifest.md`

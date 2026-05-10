@@ -53,3 +53,9 @@ make cluster-h-final-closeout-rollup-check
 - `docs/operations/beta_feedback_intake_contract.md`
 - `docs/operations/beta_known_issues_register.md`
 - `docs/operations/beta_acceptance_exit_criteria.md`
+
+## Outcome Retrospective Archive Evidence
+
+- `docs/operations/beta_outcome_report_template.md`
+- `docs/operations/beta_retrospective_action_register.md`
+- `docs/operations/post_beta_evidence_archive_manifest.md`

@@ -428,3 +428,12 @@ beta-known-issues-register-check:
 
 beta-acceptance-exit-criteria-check:
 	$(PYTHON) scripts/check_beta_acceptance_exit_criteria.py
+
+beta-retrospective-action-register-check:
+	$(PYTHON) scripts/check_beta_retrospective_action_register.py
+
+post-beta-evidence-archive-manifest-check:
+	$(PYTHON) scripts/check_post_beta_evidence_archive_manifest.py
+
+beta-outcome-report-template-check:
+	$(PYTHON) scripts/check_beta_outcome_report_template.py
