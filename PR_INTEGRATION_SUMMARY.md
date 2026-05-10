@@ -435,3 +435,7 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 ## Cluster G API Fixture Evidence
 
 - Cluster G frontend API inventory and journey fixtures added.
+
+## Cluster G Playwright Evidence
+
+- Cluster G Playwright scaffold and journey smoke specs added.

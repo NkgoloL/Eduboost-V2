@@ -404,3 +404,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster G API Fixture Evidence
 
 - Cluster G frontend API inventory and journey fixtures added.
+
+## Cluster G Playwright Evidence
+
+- Cluster G Playwright scaffold and journey smoke specs added.

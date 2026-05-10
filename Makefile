@@ -245,3 +245,12 @@ frontend-api-client-inventory-check:
 
 frontend-journey-fixture-check:
 	$(PYTHON) scripts/check_frontend_journey_fixtures.py
+
+frontend-playwright-scaffold-check:
+	$(PYTHON) scripts/check_frontend_playwright_scaffold.py
+
+frontend-e2e:
+	npx playwright test
+
+frontend-playwright-specs-check:
+	$(PYTHON) scripts/check_frontend_playwright_specs.py

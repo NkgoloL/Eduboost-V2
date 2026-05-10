@@ -9,6 +9,16 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_g_playwright_evidence.py",
+    "tests/unit/test_frontend_playwright_specs.py",
+    "tests/unit/test_frontend_playwright_scaffold.py",
+    "tests/e2e/parent-vertical-journey.spec.ts",
+    "tests/e2e/learner-vertical-journey.spec.ts",
+    "docs/frontend/playwright_vertical_journey_specs.md",
+    "docs/frontend/playwright_e2e_scaffold.md",
+    "scripts/check_frontend_playwright_specs.py",
+    "scripts/check_frontend_playwright_scaffold.py",
+    "playwright.config.ts",
     "tests/unit/test_cluster_g_api_fixture_evidence.py",
     "tests/unit/test_frontend_journey_fixtures.py",
     "tests/unit/test_frontend_api_client_inventory.py",
@@ -36,6 +46,14 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/frontend/playwright_vertical_journey_specs.md": (
+        "Playwright Vertical Journey Specs",
+        "frontend shell is not blank",
+    ),
+    "docs/frontend/playwright_e2e_scaffold.md": (
+        "Playwright E2E Scaffold",
+        "runtime browser tests should run in a frontend or staging workflow",
+    ),
     "docs/frontend/playwright_journey_fixture_contract.md": (
         "Playwright Journey Fixture Contract",
         "consent and authorization denial states",
@@ -61,6 +79,9 @@ CONTENT_REQUIREMENTS = {
         "frontend-api-client-inventory:",
         "frontend-api-client-inventory-check:",
         "frontend-journey-fixture-check:",
+        "frontend-playwright-scaffold-check:",
+        "frontend-playwright-specs-check:",
+        "frontend-e2e:",
     ),
     "docs/frontend/frontend_route_inventory.md": (
         "Frontend Route Inventory",
