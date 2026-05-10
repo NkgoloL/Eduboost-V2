@@ -1,0 +1,22 @@
+# grafana/provisioning/dashboards/item_bank.yml
+#
+# Phase 5 — P5-09
+# Provisions the item bank coverage dashboard automatically on Grafana startup.
+# The dashboard JSON is loaded from grafana/dashboards/.
+#
+# Mount at: /etc/grafana/provisioning/dashboards/item_bank.yml
+
+apiVersion: 1
+
+providers:
+  - name: EduBoost Item Bank Dashboards
+    orgId: 1
+    folder: EduBoost
+    folderUid: eduboost
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 30
+    allowUiUpdates: true
+    options:
+      path: /var/lib/grafana/dashboards/eduboost
+      foldersFromFilesStructure: false

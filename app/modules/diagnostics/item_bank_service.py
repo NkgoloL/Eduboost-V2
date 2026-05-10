@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import math
 import uuid
-from typing import Sequence, Optional, Any
+from typing import Sequence, Optional
 
 from app.models.diagnostic_item import DiagnosticItem
 from app.repositories.item_bank_repository import ItemBankRepository
@@ -30,6 +30,22 @@ class ItemSelectionError(Exception):
     """Raised when no eligible item can be found for a learner."""
 
 
+def _3pl_probability(theta: float, a: float, b: float, c: float) -> float:
+    """3-parameter logistic IRT probability of a correct response."""
+    exponent = -1.7 * float(a) * (theta - float(b))
+    exponent = max(-500.0, min(500.0, exponent))
+    return float(c) + (1.0 - float(c)) / (1.0 + math.exp(exponent))
+
+
+def _fisher_information(theta: float, a: float, b: float, c: float) -> float:
+    """Fisher information for a 3PL item at ability theta."""
+    p = _3pl_probability(theta, a, b, c)
+    q = 1.0 - p
+    if p < 1e-10 or q < 1e-10:
+        return 0.0
+    return (1.7 * float(a) * (p - float(c)) / (1.0 - float(c))) ** 2 * q / p
+
+
 class ItemBankService:
     """
     Application-layer service for the diagnostic item bank.
@@ -38,6 +54,7 @@ class ItemBankService:
 
     def __init__(self, repo: ItemBankRepository) -> None:
         self.repo = repo
+        self._repo = repo
 
     # ─── Public API ──────────────────────────────────────────────────────────
 
@@ -46,6 +63,8 @@ class ItemBankService:
         caps_ref: str,
         learner_id: uuid.UUID,
         theta: float = 0.0,
+        exclude_ids: Optional[set[uuid.UUID]] = None,
+        review_status: str = "approved",
     ) -> Optional[DiagnosticItem]:
         """
         Select the single best next item for this learner using IRT-informed,
@@ -57,6 +76,7 @@ class ItemBankService:
             caps_ref=caps_ref,
             min_b_param=theta - _THETA_WINDOW,
             max_b_param=theta + _THETA_WINDOW,
+            review_status=review_status,
             limit=30,
         )
 
@@ -65,15 +85,25 @@ class ItemBankService:
             candidates = await self.repo.get_unexposed_items(
                 learner_id=learner_id,
                 caps_ref=caps_ref,
+                review_status=review_status,
                 limit=40,
             )
+
+        exclude_ids = exclude_ids or set()
+        candidates = [item for item in candidates if item.item_id not in exclude_ids]
 
         if not candidates:
             return None
 
-        # Pick item whose b-param minimises |b - θ|
-        best = min(candidates, key=lambda item: abs(float(item.difficulty_b or 0.0) - theta))
-        return best
+        return max(
+            candidates,
+            key=lambda item: _fisher_information(
+                theta,
+                float(item.discrimination_a or 1.0),
+                float(item.difficulty_b or 0.0),
+                float(item.guessing_c or 0.25),
+            ),
+        )
 
     async def record_item_served(
         self,
@@ -102,6 +132,10 @@ class ItemBankService:
 
         return summaries
 
+    async def get_exposure_heatmap(self, caps_ref: str) -> list[dict]:
+        """Return per-item exposure utilisation for a CAPS reference."""
+        return await self.repo.get_exposure_heatmap(caps_ref)
+
     async def is_launch_ready(self) -> bool:
         """Returns True when ALL launch caps_refs have ≥ target approved items."""
         summaries = await self.get_coverage_summary(caps_refs=list(LAUNCH_TARGET_ITEMS.keys()))
@@ -110,12 +144,14 @@ class ItemBankService:
     async def mark_item_reviewed(
         self,
         item_id: uuid.UUID,
-        new_status: str,
-        *,
-        reviewer_id: uuid.UUID,
+        new_status: str | uuid.UUID,
+        reviewer_id: Optional[uuid.UUID | str] = None,
         quality_score: Optional[float] = None,
     ) -> Optional[DiagnosticItem]:
         """Transition item review status."""
+        if isinstance(new_status, uuid.UUID) and isinstance(reviewer_id, str):
+            new_status, reviewer_id = reviewer_id, new_status
+
         # Enforce audit trail requirement
         if new_status in {"human_reviewed", "approved"}:
             if reviewer_id is None:

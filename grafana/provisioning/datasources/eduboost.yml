@@ -1,0 +1,50 @@
+# grafana/provisioning/datasources/eduboost.yml
+#
+# Phase 5 — P5-09
+# Auto-provisions Prometheus and PostgreSQL data sources for the
+# EduBoost Grafana instance. Referenced by item_bank_coverage dashboard.
+#
+# Mount this file into Grafana at:
+#   /etc/grafana/provisioning/datasources/eduboost.yml
+#
+# docker-compose.yml grafana service should include:
+#   volumes:
+#     - ./grafana/provisioning:/etc/grafana/provisioning
+
+apiVersion: 1
+
+datasources:
+  # ─── Prometheus ────────────────────────────────────────────────────────────
+  - name: Prometheus
+    uid: DS_PROMETHEUS
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    jsonData:
+      httpMethod: POST
+      prometheusType: Prometheus
+      prometheusVersion: 2.48.0
+      cacheLevel: High
+      disableRecordingRules: false
+      incrementalQueryOverlapWindow: 10m
+    editable: true
+
+  # ─── PostgreSQL ────────────────────────────────────────────────────────────
+  - name: PostgreSQL
+    uid: DS_POSTGRES
+    type: postgres
+    access: proxy
+    url: postgres:5432
+    database: eduboost
+    user: ${GF_DS_POSTGRES_USER:-eduboost}
+    secureJsonData:
+      password: ${GF_DS_POSTGRES_PASSWORD:-eduboost}
+    jsonData:
+      sslmode: disable
+      maxOpenConns: 10
+      maxIdleConns: 2
+      connMaxLifetime: 14400
+      postgresVersion: 1500
+      timescaledb: false
+    editable: true

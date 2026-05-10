@@ -11,7 +11,7 @@ import uuid
 from datetime import datetime, timezone
 from typing import Sequence, Optional
 
-from sqlalchemy import func, select, update
+from sqlalchemy import desc, func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.diagnostic_item import DiagnosticItem, ReviewStatusEnum
@@ -68,6 +68,7 @@ class ItemBankRepository:
         *,
         max_b_param: Optional[float] = None,
         min_b_param: Optional[float] = None,
+        review_status: Optional[str | ReviewStatus | ReviewStatusEnum] = None,
         limit: int = 20,
     ) -> Sequence[DiagnosticItem]:
         """
@@ -80,11 +81,14 @@ class ItemBankRepository:
             .scalar_subquery()
         )
 
+        status = review_status or ReviewStatusEnum.APPROVED
+        status_val = status.value if hasattr(status, "value") else status
+
         stmt = (
             select(DiagnosticItem)
             .where(
                 DiagnosticItem.caps_ref == caps_ref,
-                DiagnosticItem.review_status == ReviewStatusEnum.APPROVED,
+                DiagnosticItem.review_status == status_val,
                 DiagnosticItem.safety_passed.is_(True),
                 DiagnosticItem.exposure_count < DiagnosticItem.max_exposure,
                 DiagnosticItem.item_id.not_in(seen_subq),
@@ -100,6 +104,37 @@ class ItemBankRepository:
 
         result = await self.db.execute(stmt)
         return result.scalars().all()
+
+    async def get_exposure_heatmap(self, caps_ref: str) -> list[dict]:
+        """Return exposure utilisation per item for a CAPS reference."""
+        stmt = (
+            select(
+                DiagnosticItem.item_id,
+                DiagnosticItem.caps_ref,
+                DiagnosticItem.review_status,
+                DiagnosticItem.exposure_count,
+                DiagnosticItem.max_exposure,
+            )
+            .where(DiagnosticItem.caps_ref == caps_ref)
+            .order_by(desc(DiagnosticItem.exposure_count), DiagnosticItem.item_id.asc())
+        )
+        result = await self.db.execute(stmt)
+
+        heatmap: list[dict] = []
+        for item_id, ref, status, exposure_count, max_exposure in result.all():
+            max_count = int(max_exposure or 0)
+            current = int(exposure_count or 0)
+            heatmap.append(
+                {
+                    "item_id": str(item_id),
+                    "caps_ref": ref,
+                    "review_status": status.value if hasattr(status, "value") else str(status),
+                    "exposure_count": current,
+                    "max_exposure": max_count,
+                    "utilisation": round(current / max_count, 4) if max_count else 0.0,
+                }
+            )
+        return heatmap
 
     async def get_coverage_summary(
         self,
@@ -176,6 +211,7 @@ class ItemBankRepository:
         *,
         reviewer_id: Optional[uuid.UUID] = None,
         quality_score: Optional[float] = None,
+        reviewed_at: Optional[datetime] = None,
     ) -> Optional[DiagnosticItem]:
         """Transition an item's review workflow status."""
         item = await self.get_item(item_id)
@@ -190,7 +226,7 @@ class ItemBankRepository:
 
         if reviewer_id is not None:
             item.reviewer_id = reviewer_id
-            item.reviewed_at = datetime.now(tz=timezone.utc)
+            item.reviewed_at = reviewed_at or datetime.now(tz=timezone.utc)
         if quality_score is not None:
             item.quality_score = quality_score
 
@@ -255,11 +291,14 @@ class ItemBankRepository:
             d["source"] = self._SOURCE_MAP.get(d["source"], d["source"].lower())
         if "language" in d and isinstance(d["language"], str):
             d["language"] = self._LANGUAGE_MAP.get(d["language"], d["language"].lower())
+        for key in ("reviewed_at", "created_at", "updated_at"):
+            if isinstance(d.get(key), str):
+                value = d[key].replace("Z", "+00:00")
+                d[key] = datetime.fromisoformat(value)
         return d
 
     async def upsert(self, data: dict) -> DiagnosticItem:
         data = self._normalise(data)
-        import sys; print(f"[UPSERT] subject={data.get('subject')!r} item_type={data.get('item_type')!r} review_status={data.get('review_status')!r}", file=sys.stderr, flush=True)
         item_id = uuid.UUID(data["item_id"]) if isinstance(data["item_id"], str) else data["item_id"]
 
         existing = await self.get_item(item_id)

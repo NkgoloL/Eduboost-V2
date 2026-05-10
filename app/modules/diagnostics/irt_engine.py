@@ -33,10 +33,16 @@ Example:
 from __future__ import annotations
 
 import math
+from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from statistics import fmean
+from typing import Optional
+from uuid import UUID
 
 from app.core.logging import get_logger
 from app.domain.models import IRTItem
+from app.models.diagnostic_item import DiagnosticItem
+from app.modules.diagnostics.item_bank_service import ItemBankService, _3pl_probability
 
 log = get_logger(__name__)
 
@@ -457,3 +463,193 @@ class DiagnosticEngine:
             "stopped": self.should_stop(len(administered), standard_error),
             "mean_difficulty": round(fmean(item.b_param for item in administered), 4) if administered else 0.0,
         }
+
+
+THETA_GRID = [round(-3.0 + i * 0.1, 2) for i in range(61)]
+MIN_ITEMS = 8
+MAX_ITEMS = 15
+SE_THRESHOLD = 0.40
+GRADE_LEVEL_THRESHOLD = 0.0
+
+
+def _normal_pdf(x: float, mean: float = 0.0, sd: float = 1.0) -> float:
+    return math.exp(-0.5 * ((x - mean) / sd) ** 2) / (sd * math.sqrt(2 * math.pi))
+
+
+def _eap_estimate_3pl(
+    responses: list[tuple[DiagnosticItem, bool]],
+    prior_mean: float = 0.0,
+    prior_sd: float = 1.0,
+) -> tuple[float, float]:
+    """Expected A Posteriori ability estimate for the 3PL item bank flow."""
+    weights: list[float] = []
+    for theta in THETA_GRID:
+        prior = _normal_pdf(theta, mean=prior_mean, sd=prior_sd)
+        likelihood = 1.0
+        for item, correct in responses:
+            p = _3pl_probability(
+                theta,
+                float(item.discrimination_a or 1.0),
+                float(item.difficulty_b or 0.0),
+                float(item.guessing_c or 0.25),
+            )
+            likelihood *= max(1e-12, p if correct else (1.0 - p))
+        weights.append(prior * likelihood)
+
+    total = sum(weights)
+    if total < 1e-300:
+        return round(prior_mean, 4), round(prior_sd, 4)
+
+    posterior = [weight / total for weight in weights]
+    theta_hat = sum(theta * weight for theta, weight in zip(THETA_GRID, posterior, strict=True))
+    variance = sum(
+        ((theta - theta_hat) ** 2) * weight
+        for theta, weight in zip(THETA_GRID, posterior, strict=True)
+    )
+    return round(theta_hat, 4), round(math.sqrt(max(variance, 0.0)), 4)
+
+
+@dataclass
+class DiagnosticSessionState:
+    """Redis-serialisable state for a CAPS item-bank diagnostic session."""
+
+    session_id: UUID
+    learner_id: UUID
+    caps_ref: str
+    responses: list[tuple[str, bool]] = field(default_factory=list)
+    served_ids: set[UUID] = field(default_factory=set)
+    theta: float = 0.0
+    standard_error: float = 1.0
+    started_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
+    completed: bool = False
+
+    def to_redis_dict(self) -> dict:
+        return {
+            "session_id": str(self.session_id),
+            "learner_id": str(self.learner_id),
+            "caps_ref": self.caps_ref,
+            "responses": [[item_id, int(correct)] for item_id, correct in self.responses],
+            "served_ids": [str(item_id) for item_id in self.served_ids],
+            "theta": self.theta,
+            "standard_error": self.standard_error,
+            "started_at": self.started_at.isoformat(),
+            "completed": self.completed,
+        }
+
+    @classmethod
+    def from_redis_dict(cls, data: dict) -> "DiagnosticSessionState":
+        import uuid as _uuid
+
+        return cls(
+            session_id=_uuid.UUID(data["session_id"]),
+            learner_id=_uuid.UUID(data["learner_id"]),
+            caps_ref=data["caps_ref"],
+            responses=[(item_id, bool(correct)) for item_id, correct in data.get("responses", [])],
+            served_ids={_uuid.UUID(item_id) for item_id in data.get("served_ids", [])},
+            theta=float(data.get("theta", 0.0)),
+            standard_error=float(data.get("standard_error", 1.0)),
+            started_at=datetime.fromisoformat(data["started_at"]),
+            completed=bool(data.get("completed", False)),
+        )
+
+
+class IRTEngine:
+    """Adaptive diagnostic engine backed by the real CAPS item bank."""
+
+    def __init__(self, item_bank_service: ItemBankService) -> None:
+        self._service = item_bank_service
+
+    def new_session(
+        self,
+        session_id: UUID,
+        learner_id: UUID,
+        caps_ref: str,
+        prior_theta: float = 0.0,
+    ) -> DiagnosticSessionState:
+        return DiagnosticSessionState(
+            session_id=session_id,
+            learner_id=learner_id,
+            caps_ref=caps_ref,
+            theta=prior_theta,
+        )
+
+    async def next_item(self, state: DiagnosticSessionState) -> Optional[DiagnosticItem]:
+        n_served = len(state.responses)
+        if n_served >= MAX_ITEMS:
+            state.completed = True
+            return None
+        if n_served >= MIN_ITEMS and state.standard_error < SE_THRESHOLD:
+            state.completed = True
+            return None
+
+        item = await self._service.select_item_for_learner(
+            caps_ref=state.caps_ref,
+            learner_id=state.learner_id,
+            theta=state.theta,
+            exclude_ids=state.served_ids,
+        )
+        if item is None:
+            state.completed = True
+        return item
+
+    async def record_response(
+        self,
+        state: DiagnosticSessionState,
+        item: DiagnosticItem,
+        is_correct: bool,
+        session_id: Optional[UUID] = None,
+    ) -> None:
+        state.responses.append((str(item.item_id), is_correct))
+        state.served_ids.add(item.item_id)
+
+        proxy_responses = self._build_proxy_responses(state, item)
+        theta_hat, se = _eap_estimate_3pl(proxy_responses, prior_mean=state.theta)
+        state.theta = theta_hat
+        state.standard_error = se
+
+        await self._service.record_item_served(
+            item_id=item.item_id,
+            learner_id=state.learner_id,
+            session_id=session_id or state.session_id,
+        )
+
+    def session_result(self, state: DiagnosticSessionState) -> dict:
+        correct = sum(1 for _, is_correct in state.responses if is_correct)
+        attempted = len(state.responses)
+        below_grade = state.theta < GRADE_LEVEL_THRESHOLD
+        return {
+            "session_id": str(state.session_id),
+            "learner_id": str(state.learner_id),
+            "caps_ref": state.caps_ref,
+            "theta": state.theta,
+            "standard_error": state.standard_error,
+            "items_attempted": attempted,
+            "items_correct": correct,
+            "accuracy": round(correct / attempted, 3) if attempted else 0.0,
+            "below_grade_level": below_grade,
+            "gap_topics": [state.caps_ref] if below_grade else [],
+            "misconception_tags": [],
+            "completed_at": datetime.now(timezone.utc).isoformat(),
+        }
+
+    def _build_proxy_responses(
+        self,
+        state: DiagnosticSessionState,
+        last_item: DiagnosticItem,
+    ) -> list[tuple[DiagnosticItem, bool]]:
+        proxies: list[tuple[DiagnosticItem, bool]] = []
+        final_index = len(state.responses) - 1
+        for index, (_item_id, correct) in enumerate(state.responses):
+            if index == final_index:
+                proxies.append((last_item, correct))
+            else:
+                proxies.append((_ItemProxy(), correct))
+        return proxies
+
+
+class _ItemProxy:
+    """Minimal item-like object for earlier responses not cached in memory."""
+
+    discrimination_a = 1.0
+    difficulty_b = 0.0
+    guessing_c = 0.25

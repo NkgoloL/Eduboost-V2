@@ -1,0 +1,332 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "description": "Canonical CAPS topic map for Grade 4 Mathematics — Terms 1 & 2 (MVP launch scope). Each entry defines the CAPS reference, topic, subtopics, skills, prerequisites, and item generation targets used by the IRT engine and the item generator.",
+  "generated": "2026-05-09",
+  "grade": 4,
+  "subject": "Mathematics",
+  "subject_code": "M",
+  "launch_scope": {
+    "terms": [1, 2],
+    "items_per_cluster_target": 40,
+    "total_items_target": 120,
+    "rationale": "Grade 4 is the foundation year of the Intermediate Phase. Term 1 covers the three most distinct, prerequisite-linked topic clusters (Whole Numbers, Common Fractions, 2D Shapes) that make an ideal IRT pilot with clear right/wrong answers."
+  },
+  "topics": [
+    {
+      "caps_ref": "4.M.1.1",
+      "term": 1,
+      "topic": "Whole Numbers",
+      "topic_index": 1,
+      "items_target": 40,
+      "irt_b_range": { "min": -1.5, "max": 1.0 },
+      "difficulty_band_distribution": {
+        "easy": 10,
+        "moderate": 12,
+        "on_level": 12,
+        "challenging": 6
+      },
+      "subtopics": [
+        {
+          "caps_ref": "4.M.1.1.1",
+          "subtopic_index": 1,
+          "subtopic": "Count, order and compare whole numbers",
+          "skills": [
+            "count_forwards_backwards_4digit",
+            "ordering_4digit_numbers",
+            "comparing_4digit_numbers_lt_gt_eq"
+          ],
+          "learning_outcomes": [
+            "Count forwards and backwards in 10s, 100s, and 1000s to at least 10 000",
+            "Order and compare whole numbers up to at least 9 999",
+            "Represent odd and even numbers to at least 1 000"
+          ],
+          "sa_context_examples": [
+            "Number of cattle in a Limpopo farm",
+            "Population of a South African township",
+            "Distance between Johannesburg and Durban in kilometres"
+          ],
+          "items_target": 10,
+          "irt_b_range": { "min": -1.5, "max": 0.0 }
+        },
+        {
+          "caps_ref": "4.M.1.1.2",
+          "subtopic_index": 2,
+          "subtopic": "Place value",
+          "skills": [
+            "identify_place_value_4digit",
+            "expand_4digit_numbers",
+            "build_numbers_from_place_value"
+          ],
+          "learning_outcomes": [
+            "Recognise the place value of digits in whole numbers up to at least 9 999",
+            "Decompose 4-digit numbers into thousands, hundreds, tens, and ones",
+            "Build numbers from their place value components"
+          ],
+          "sa_context_examples": [
+            "Price of a school uniform in rands",
+            "Number of books in a school library",
+            "Seating capacity of a stadium"
+          ],
+          "items_target": 10,
+          "irt_b_range": { "min": -1.0, "max": 0.5 }
+        },
+        {
+          "caps_ref": "4.M.1.1.3",
+          "subtopic_index": 3,
+          "subtopic": "Round off and estimate",
+          "skills": [
+            "round_to_nearest_10",
+            "round_to_nearest_100",
+            "estimate_answers"
+          ],
+          "learning_outcomes": [
+            "Round off whole numbers to the nearest 10",
+            "Round off whole numbers to the nearest 100",
+            "Use rounding to estimate answers to calculations"
+          ],
+          "sa_context_examples": [
+            "Rounding taxi fares to nearest R10",
+            "Estimating number of learners in a school"
+          ],
+          "items_target": 10,
+          "irt_b_range": { "min": -0.5, "max": 1.0 }
+        },
+        {
+          "caps_ref": "4.M.1.1.4",
+          "subtopic_index": 4,
+          "subtopic": "Number sentences and properties of operations",
+          "skills": [
+            "write_number_sentences_addition",
+            "write_number_sentences_multiplication",
+            "identify_commutative_property",
+            "identify_associative_property"
+          ],
+          "learning_outcomes": [
+            "Write number sentences for word problems involving addition and multiplication",
+            "Identify the commutative and associative properties of addition and multiplication"
+          ],
+          "sa_context_examples": [
+            "Sharing sweets equally among friends",
+            "Adding up scores in a sports game"
+          ],
+          "items_target": 10,
+          "irt_b_range": { "min": -0.5, "max": 1.0 }
+        }
+      ],
+      "common_misconceptions": [
+        "place_value_confusion",
+        "carries_error_addition",
+        "zero_as_placeholder_ignored",
+        "ordering_by_digit_count_only",
+        "rounding_direction_error"
+      ],
+      "prerequisites": []
+    },
+    {
+      "caps_ref": "4.M.1.2",
+      "term": 1,
+      "topic": "Common Fractions",
+      "topic_index": 2,
+      "items_target": 40,
+      "irt_b_range": { "min": -0.5, "max": 1.5 },
+      "difficulty_band_distribution": {
+        "easy": 10,
+        "moderate": 12,
+        "on_level": 12,
+        "challenging": 6
+      },
+      "subtopics": [
+        {
+          "caps_ref": "4.M.1.2.1",
+          "subtopic_index": 1,
+          "subtopic": "Name and write fractions",
+          "skills": [
+            "name_unit_fractions",
+            "write_fraction_notation",
+            "identify_numerator_denominator"
+          ],
+          "learning_outcomes": [
+            "Name and write fractions including halves, thirds, quarters, fifths, sixths, sevenths, and eighths",
+            "Recognise fractions in diagrammatic form",
+            "Identify numerator and denominator"
+          ],
+          "sa_context_examples": [
+            "Sharing a magwinya (fat cake) equally",
+            "Cutting a pap portion into equal parts",
+            "Dividing a braai between families"
+          ],
+          "items_target": 10,
+          "irt_b_range": { "min": -0.5, "max": 0.5 }
+        },
+        {
+          "caps_ref": "4.M.1.2.2",
+          "subtopic_index": 2,
+          "subtopic": "Order and compare fractions",
+          "skills": [
+            "compare_unit_fractions",
+            "order_unit_fractions_ascending",
+            "order_unit_fractions_descending"
+          ],
+          "learning_outcomes": [
+            "Compare and order common fractions with the same denominator",
+            "Understand that larger denominator means smaller unit fraction (when numerator=1)",
+            "Place fractions on a number line"
+          ],
+          "sa_context_examples": [
+            "Comparing portions of boerewors",
+            "Water levels in containers"
+          ],
+          "items_target": 10,
+          "irt_b_range": { "min": -0.5, "max": 1.0 }
+        },
+        {
+          "caps_ref": "4.M.1.2.3",
+          "subtopic_index": 3,
+          "subtopic": "Equivalent fractions",
+          "skills": [
+            "identify_equivalent_fractions",
+            "find_equivalent_fractions_by_multiplication",
+            "simplify_fractions"
+          ],
+          "learning_outcomes": [
+            "Identify equivalent fractions using diagrams",
+            "Find equivalent fractions by multiplying or dividing numerator and denominator by the same number",
+            "Recognise that 2/4 = 1/2"
+          ],
+          "sa_context_examples": [
+            "Splitting a rand coin into equal smaller values"
+          ],
+          "items_target": 10,
+          "irt_b_range": { "min": 0.0, "max": 1.5 }
+        },
+        {
+          "caps_ref": "4.M.1.2.4",
+          "subtopic_index": 4,
+          "subtopic": "Fractions of whole numbers",
+          "skills": [
+            "find_fraction_of_whole_number",
+            "share_equally_to_find_fraction"
+          ],
+          "learning_outcomes": [
+            "Calculate a fraction of a whole number, e.g. 1/4 of 20",
+            "Solve word problems involving fractions of quantities"
+          ],
+          "sa_context_examples": [
+            "1/4 of a bag of mielie meal",
+            "Fraction of learners present at school"
+          ],
+          "items_target": 10,
+          "irt_b_range": { "min": 0.5, "max": 1.5 }
+        }
+      ],
+      "common_misconceptions": [
+        "larger_denominator_means_larger_fraction",
+        "fraction_as_two_separate_numbers",
+        "equivalent_fraction_addition_not_multiplication",
+        "unit_fraction_ordering_reversed"
+      ],
+      "prerequisites": ["4.M.1.1"]
+    },
+    {
+      "caps_ref": "4.M.1.3",
+      "term": 1,
+      "topic": "2D Shapes",
+      "topic_index": 3,
+      "items_target": 40,
+      "irt_b_range": { "min": -1.0, "max": 1.5 },
+      "difficulty_band_distribution": {
+        "easy": 10,
+        "moderate": 12,
+        "on_level": 12,
+        "challenging": 6
+      },
+      "subtopics": [
+        {
+          "caps_ref": "4.M.1.3.1",
+          "subtopic_index": 1,
+          "subtopic": "Name and describe 2D shapes",
+          "skills": [
+            "name_circles_triangles_quadrilaterals",
+            "describe_sides_and_angles",
+            "classify_triangles_by_sides",
+            "classify_quadrilaterals"
+          ],
+          "learning_outcomes": [
+            "Name and describe circles, triangles, squares, rectangles, and other quadrilaterals",
+            "Describe shapes by their number of sides, angles, and equal sides",
+            "Distinguish between regular and irregular shapes"
+          ],
+          "sa_context_examples": [
+            "Shape of a rondavel (circular hut)",
+            "Traditional Ndebele geometric patterns",
+            "Shape of a stop sign on South African roads"
+          ],
+          "items_target": 14,
+          "irt_b_range": { "min": -1.0, "max": 0.5 }
+        },
+        {
+          "caps_ref": "4.M.1.3.2",
+          "subtopic_index": 2,
+          "subtopic": "Lines of symmetry",
+          "skills": [
+            "identify_line_of_symmetry",
+            "draw_line_of_symmetry",
+            "count_lines_of_symmetry"
+          ],
+          "learning_outcomes": [
+            "Identify and draw lines of symmetry in 2D shapes",
+            "Determine whether a shape is symmetrical",
+            "Count the number of lines of symmetry in regular shapes"
+          ],
+          "sa_context_examples": [
+            "Symmetry in the South African flag",
+            "Butterfly wings found in the Kruger National Park"
+          ],
+          "items_target": 13,
+          "irt_b_range": { "min": -0.5, "max": 1.0 }
+        },
+        {
+          "caps_ref": "4.M.1.3.3",
+          "subtopic_index": 3,
+          "subtopic": "Tessellations",
+          "skills": [
+            "identify_tessellating_shapes",
+            "explain_why_shape_tessellates",
+            "create_tessellation_pattern"
+          ],
+          "learning_outcomes": [
+            "Investigate tessellations with regular shapes",
+            "Identify which shapes tessellate and why",
+            "Create a simple tessellation pattern"
+          ],
+          "sa_context_examples": [
+            "Tiling patterns on South African pavements",
+            "Traditional weaving patterns in baskets"
+          ],
+          "items_target": 13,
+          "irt_b_range": { "min": 0.5, "max": 1.5 }
+        }
+      ],
+      "common_misconceptions": [
+        "square_not_a_rectangle",
+        "rectangle_not_a_parallelogram",
+        "symmetry_line_must_be_vertical",
+        "all_quadrilaterals_have_equal_sides",
+        "tessellation_requires_same_colour"
+      ],
+      "prerequisites": []
+    }
+  ],
+  "item_generation_targets": {
+    "total_candidates_to_generate": 180,
+    "total_approved_target": 120,
+    "pass_rate_target": 0.80,
+    "review_batches": [
+      { "caps_ref": "4.M.1.1", "batch": 1, "candidates": 60, "approved_target": 40 },
+      { "caps_ref": "4.M.1.2", "batch": 2, "candidates": 60, "approved_target": 40 },
+      { "caps_ref": "4.M.1.3", "batch": 3, "candidates": 60, "approved_target": 40 }
+    ]
+  },
+  "irt_calibration_note": "Initial b-parameters are set from difficulty_band at generation time. True IRT calibration (MLE/MAP estimation) runs after the first 100 real diagnostic sessions. Discrimination a=1.0 and guessing c=0.25 are pre-calibration defaults for all 4-option MCQ items."
+}

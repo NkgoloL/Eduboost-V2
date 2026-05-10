@@ -220,14 +220,18 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Validate and seed the CAPS item bank into PostgreSQL."
     )
-    parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
+    parser.add_argument("--input", "--path", dest="input", type=Path, default=DEFAULT_INPUT)
+    parser.add_argument(
+        "--db-url",
+        help="Accepted for Phase 5 CI compatibility; DATABASE_URL remains the app source of truth.",
+    )
     parser.add_argument(
         "--status",
         default="approved",
         help="Only seed items with this review_status (default: approved)",
     )
     parser.add_argument(
-        "--dry-run", action="store_true",
+        "--dry-run", nargs="?", const="true", default="false",
         help="Validate only — do not write to the database",
     )
     parser.add_argument(
@@ -238,7 +242,15 @@ def parse_args() -> argparse.Namespace:
         "--abort-on-failure", action="store_true",
         help="Stop at the first validation failure",
     )
-    return parser.parse_args()
+    parser.add_argument(
+        "--status-filter",
+        dest="status",
+        default=argparse.SUPPRESS,
+        help="Phase 5 alias for --status.",
+    )
+    args = parser.parse_args()
+    args.dry_run = str(args.dry_run).lower() in {"1", "true", "yes", "on"}
+    return args
 
 
 def main() -> None:

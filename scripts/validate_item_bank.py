@@ -90,7 +90,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Validate all items in the CAPS item bank seed file."
     )
-    parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
+    parser.add_argument("--input", "--path", dest="input", type=Path, default=DEFAULT_INPUT)
     parser.add_argument(
         "--caps-ref",
         help="Only validate items for a specific CAPS ref, e.g. 4.M.1.1",
@@ -107,7 +107,24 @@ def main() -> None:
         "--show-passing", action="store_true",
         help="Print a line for each passing item (default: only failures)",
     )
+    parser.add_argument(
+        "--fail-on-any-error", action="store_true",
+        help="CI alias: exit non-zero if any validated item fails",
+    )
+    parser.add_argument(
+        "--all-statuses", action="store_true",
+        help="Validate all review statuses instead of defaulting to approved in CI mode",
+    )
+    parser.add_argument(
+        "--output-format",
+        choices=["text", "github-annotations"],
+        default="text",
+        help="Output format for CI annotations",
+    )
     args = parser.parse_args()
+
+    if args.fail_on_any_error and not args.status and not args.all_statuses:
+        args.status = "approved"
 
     topic_map = load_topic_map()
     seed      = load_seed(args.input)
@@ -154,9 +171,17 @@ def main() -> None:
                 print(f"  ✅  {item_id}  [{caps_ref}]  {stem_preview}…")
         else:
             failed += 1
-            print(f"  ❌  {item_id}  [{caps_ref}]  {stem_preview}…")
-            for err in errors:
-                print(f"       └─ [{err.rule}] {err.detail}")
+            if args.output_format == "github-annotations":
+                for err in errors:
+                    print(
+                        "::error file=data/caps/grade4_maths_item_bank.json,"
+                        f"title=Item Bank Validation [{err.rule}]::"
+                        f"Item {item.get('item_id')}: {err.detail}"
+                    )
+            else:
+                print(f"  ❌  {item_id}  [{caps_ref}]  {stem_preview}…")
+                for err in errors:
+                    print(f"       └─ [{err.rule}] {err.detail}")
             failure_log.append({
                 "item_id":  item.get("item_id"),
                 "caps_ref": caps_ref,
@@ -188,6 +213,8 @@ def main() -> None:
     print(f"  Failed:           {failed}")
 
     if failed == 0:
+        if args.output_format == "github-annotations":
+            print("::notice::Item bank validation passed — 0 failures.")
         print(f"\n  ✅  All {total} items passed validation.\n")
         sys.exit(0)
     else:
