@@ -437,3 +437,12 @@ post-beta-evidence-archive-manifest-check:
 
 beta-outcome-report-template-check:
 	$(PYTHON) scripts/check_beta_outcome_report_template.py
+
+beta-governance-seal-check:
+	$(PYTHON) scripts/check_beta_governance_seal.py
+
+beta-release-final-index-check:
+	$(PYTHON) scripts/check_beta_release_final_index.py
+
+cluster-h-terminal-closure-assertion-check:
+	$(PYTHON) scripts/check_cluster_h_terminal_closure_assertion.py

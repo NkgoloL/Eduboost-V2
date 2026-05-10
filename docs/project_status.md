@@ -494,3 +494,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster H Outcome Retrospective Archive
 
 - Cluster H beta outcome report, retrospective action, and post-beta evidence archive evidence added.
+
+## Cluster H Governance Seal Terminal Closure
+
+- Cluster H beta governance seal, final index, and terminal closure assertion evidence added.

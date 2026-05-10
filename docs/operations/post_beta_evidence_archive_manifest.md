@@ -56,3 +56,9 @@ This archive manifest preserves evidence. It does not approve release, execute d
 ```bash
 make post-beta-evidence-archive-manifest-check
 ```
+
+## Governance Seal Terminal Closure Evidence
+
+- `docs/operations/beta_governance_seal_checklist.md`
+- `docs/operations/beta_release_final_index.md`
+- `docs/operations/cluster_h_terminal_closure_assertion.md`

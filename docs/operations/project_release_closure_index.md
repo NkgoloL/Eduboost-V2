@@ -90,3 +90,9 @@ make project-release-closure-index-check
 - `docs/operations/release_audit_trail_index.md`
 - `docs/operations/beta_release_closure_attestation.md`
 - `docs/operations/final_cluster_h_closeout_rollup.md`
+
+## Governance Seal Terminal Closure Evidence
+
+- `docs/operations/beta_governance_seal_checklist.md`
+- `docs/operations/beta_release_final_index.md`
+- `docs/operations/cluster_h_terminal_closure_assertion.md`

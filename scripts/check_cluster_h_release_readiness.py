@@ -9,6 +9,16 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_h_governance_seal_terminal_closure_wiring.py",
+    "tests/unit/test_cluster_h_terminal_closure_assertion.py",
+    "tests/unit/test_beta_release_final_index.py",
+    "tests/unit/test_beta_governance_seal.py",
+    "scripts/check_cluster_h_terminal_closure_assertion.py",
+    "scripts/check_beta_release_final_index.py",
+    "scripts/check_beta_governance_seal.py",
+    "docs/operations/cluster_h_terminal_closure_assertion.md",
+    "docs/operations/beta_release_final_index.md",
+    "docs/operations/beta_governance_seal_checklist.md",
     "tests/unit/test_cluster_h_outcome_retrospective_archive_wiring.py",
     "tests/unit/test_post_beta_evidence_archive_manifest.py",
     "tests/unit/test_beta_retrospective_action_register.py",
@@ -148,6 +158,18 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/operations/cluster_h_terminal_closure_assertion.md": (
+        "Cluster H Terminal Closure Assertion",
+        "does not approve production launch, execute deployment, create release tags, or override manual approval",
+    ),
+    "docs/operations/beta_release_final_index.md": (
+        "Beta Release Final Index",
+        "does not approve production launch, execute deployment, create release tags, or replace workflow logs",
+    ),
+    "docs/operations/beta_governance_seal_checklist.md": (
+        "Beta Governance Seal Checklist",
+        "does not approve production launch, execute deployment, create release tags, or override unresolved blocker issues",
+    ),
     "docs/operations/post_beta_evidence_archive_manifest.md": (
         "Post-Beta Evidence Archive Manifest",
         "does not approve release, execute deployment, create release tags, or replace source control history",
@@ -354,6 +376,9 @@ CONTENT_REQUIREMENTS = {
         "beta-outcome-report-template-check:",
         "beta-retrospective-action-register-check:",
         "post-beta-evidence-archive-manifest-check:",
+        "beta-governance-seal-check:",
+        "beta-release-final-index-check:",
+        "cluster-h-terminal-closure-assertion-check:",
     ),
     "docs/operations/beta_release_readiness_contract.md": (
         "Beta Release Readiness Contract",
