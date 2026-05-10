@@ -320,3 +320,21 @@ beta-rollback-runbook-check:
 
 post-deploy-staging-smoke-checklist-check:
 	$(PYTHON) scripts/check_post_deploy_staging_smoke_checklist.py
+
+beta-release-evidence-bundle:
+	$(PYTHON) scripts/generate_beta_release_evidence_bundle.py
+
+beta-release-evidence-bundle-check:
+	$(PYTHON) scripts/check_beta_release_evidence_bundle.py
+
+release-approval-workflow-contract-check:
+	$(PYTHON) scripts/check_release_approval_workflow_contract.py
+
+release-candidate-tag-manifest:
+	$(PYTHON) scripts/generate_release_candidate_tag_manifest.py
+
+release-candidate-tag-manifest-check:
+	$(PYTHON) scripts/check_release_candidate_tag_manifest.py
+
+cluster-h-closure-check:
+	$(PYTHON) scripts/check_cluster_h_closure.py

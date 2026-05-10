@@ -9,6 +9,22 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_h_bundle_approval_closure.py",
+    "tests/unit/test_cluster_h_closure.py",
+    "tests/unit/test_release_candidate_tag_manifest.py",
+    "tests/unit/test_release_approval_workflow_contract.py",
+    "tests/unit/test_beta_release_evidence_bundle.py",
+    ".github/workflows/beta-release-approval.yml",
+    "docs/operations/CLUSTER_H_CLOSURE.md",
+    "docs/operations/release_candidate_tag_manifest.md",
+    "docs/operations/release_approval_workflow_contract.md",
+    "docs/operations/beta_release_evidence_bundle.md",
+    "scripts/check_cluster_h_closure.py",
+    "scripts/check_release_candidate_tag_manifest.py",
+    "scripts/generate_release_candidate_tag_manifest.py",
+    "scripts/check_release_approval_workflow_contract.py",
+    "scripts/check_beta_release_evidence_bundle.py",
+    "scripts/generate_beta_release_evidence_bundle.py",
     "tests/unit/test_cluster_h_operational_release_controls.py",
     "tests/unit/test_post_deploy_staging_smoke_checklist.py",
     "tests/unit/test_beta_rollback_runbook.py",
@@ -30,6 +46,27 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    ".github/workflows/beta-release-approval.yml": (
+        "workflow_dispatch:",
+        "make beta-release-evidence-bundle",
+        "make cluster-h-release-readiness-check",
+    ),
+    "docs/operations/CLUSTER_H_CLOSURE.md": (
+        "Cluster H Staging and Beta Release Closure",
+        "does not authorize unrestricted production launch",
+    ),
+    "docs/operations/release_candidate_tag_manifest.md": (
+        "Release Candidate Tag Manifest",
+        "Do not create or push the release tag until Cluster H checks pass",
+    ),
+    "docs/operations/release_approval_workflow_contract.md": (
+        "Release Approval Workflow Contract",
+        "manual workflow dispatch",
+    ),
+    "docs/operations/beta_release_evidence_bundle.md": (
+        "Beta Release Evidence Bundle",
+        "Cluster G closure",
+    ),
     "docs/operations/post_deploy_staging_smoke_checklist.md": (
         "Post-Deploy Staging Smoke Checklist",
         "auth/consent denial UX contract passes",
@@ -52,6 +89,12 @@ CONTENT_REQUIREMENTS = {
         "beta-signoff-manifest-check:",
         "beta-rollback-runbook-check:",
         "post-deploy-staging-smoke-checklist-check:",
+        "beta-release-evidence-bundle:",
+        "beta-release-evidence-bundle-check:",
+        "release-approval-workflow-contract-check:",
+        "release-candidate-tag-manifest:",
+        "release-candidate-tag-manifest-check:",
+        "cluster-h-closure-check:",
     ),
     "docs/operations/beta_release_readiness_contract.md": (
         "Beta Release Readiness Contract",

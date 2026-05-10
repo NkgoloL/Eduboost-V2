@@ -53,3 +53,10 @@ make beta-release-readiness-contract-check
 - `docs/operations/beta_signoff_manifest.md`
 - `docs/operations/beta_rollback_runbook.md`
 - `docs/operations/post_deploy_staging_smoke_checklist.md`
+
+## Release Bundle Approval Closure Evidence
+
+- `docs/operations/beta_release_evidence_bundle.md`
+- `docs/operations/release_approval_workflow_contract.md`
+- `docs/operations/release_candidate_tag_manifest.md`
+- `docs/operations/CLUSTER_H_CLOSURE.md`

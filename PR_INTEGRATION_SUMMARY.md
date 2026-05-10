@@ -471,3 +471,7 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 ## Cluster H Operational Release Controls
 
 - Cluster H operational release controls added: sign-off manifest, rollback runbook, and post-deploy smoke checklist.
+
+## Cluster H Release Bundle Approval Closure
+
+- Cluster H release bundle, approval workflow, tag manifest, and closure check added.
