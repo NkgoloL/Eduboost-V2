@@ -8,6 +8,12 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_dev_only_endpoint_exposure.py",
+    "tests/unit/test_production_secret_placeholders.py",
+    "docs/security/dev_only_endpoint_exposure.md",
+    "docs/security/production_secret_placeholder_guard.md",
+    "scripts/check_dev_only_endpoint_exposure.py",
+    "scripts/check_production_secret_placeholders.py",
     "scripts/check_environment_security_contract.py",
     "scripts/check_deployment_readiness_docs.py",
     "docs/security/environment_security_contract.md",
@@ -17,9 +23,19 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/security/dev_only_endpoint_exposure.md": (
+        "Dev-Only Endpoint Exposure Guard",
+        "HTTP_404_NOT_FOUND",
+    ),
+    "docs/security/production_secret_placeholder_guard.md": (
+        "Production Secret Placeholder Guard",
+        "AZURE_KEY_VAULT_URL is required when APP_ENV is production",
+    ),
     "Makefile": (
         "environment-security-check:",
         "deployment-readiness-docs-check:",
+        "production-secret-placeholder-check:",
+        "dev-only-endpoint-check:",
     ),
     "app/core/config.py": (
         "def is_production(self) -> bool:",

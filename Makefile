@@ -119,3 +119,9 @@ deployment-readiness-docs-check:
 
 cluster-d-ci-check:
 	$(PYTHON) scripts/check_cluster_d_ci_evidence.py
+
+production-secret-placeholder-check:
+	$(PYTHON) scripts/check_production_secret_placeholders.py
+
+dev-only-endpoint-check:
+	$(PYTHON) scripts/check_dev_only_endpoint_exposure.py

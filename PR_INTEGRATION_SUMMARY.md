@@ -343,3 +343,7 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 ## Cluster D CI Deployment Evidence
 
 - Cluster D CI/deployment/environment evidence baseline added.
+
+## Cluster D Runtime Environment Gates
+
+- Cluster D runtime gate evidence added for production placeholders and dev-only endpoint exposure.

@@ -24,6 +24,8 @@
 ## Environment Contract
 
 - `make environment-security-check`
+- `make dev-only-endpoint-check`
+- `make production-secret-placeholder-check`
 
 ## Production Requirements
 

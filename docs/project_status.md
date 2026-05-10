@@ -312,3 +312,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster D CI Deployment Evidence
 
 - Cluster D CI/deployment/environment evidence checks added.
+
+## Cluster D Runtime Environment Gates
+
+- Cluster D runtime environment gates now cover production placeholders and dev-only endpoint exposure.
