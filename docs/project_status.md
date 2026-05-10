@@ -522,3 +522,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster H Archival Lock PR-Ready TOC
 
 - Cluster H archival lock assertion, PR-ready final closure certificate, and final release evidence table of contents added.
+
+## Cluster H Reviewer Pack Merge-Control Retention
+
+- Cluster H final reviewer pack, merge-control evidence gate, and release evidence retention finalization added.

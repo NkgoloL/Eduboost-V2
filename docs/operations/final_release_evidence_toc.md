@@ -39,3 +39,9 @@ This final release evidence table of contents records reviewer navigation only. 
 ```bash
 make final-release-evidence-toc-check
 ```
+
+## Reviewer Pack Merge-Control Retention Evidence
+
+- `docs/operations/final_reviewer_pack_checklist.md`
+- `docs/operations/merge_control_evidence_gate.md`
+- `docs/operations/release_evidence_retention_finalization.md`

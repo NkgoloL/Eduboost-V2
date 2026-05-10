@@ -45,3 +45,9 @@ This archival lock assertion records archive readiness only. It does not approve
 ```bash
 make archival-lock-assertion-check
 ```
+
+## Reviewer Pack Merge-Control Retention Evidence
+
+- `docs/operations/final_reviewer_pack_checklist.md`
+- `docs/operations/merge_control_evidence_gate.md`
+- `docs/operations/release_evidence_retention_finalization.md`

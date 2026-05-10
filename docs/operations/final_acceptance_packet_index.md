@@ -57,3 +57,9 @@ make final-acceptance-packet-index-check
 - `docs/operations/archival_lock_assertion.md`
 - `docs/operations/pr_ready_final_closure_certificate.md`
 - `docs/operations/final_release_evidence_toc.md`
+
+## Reviewer Pack Merge-Control Retention Evidence
+
+- `docs/operations/final_reviewer_pack_checklist.md`
+- `docs/operations/merge_control_evidence_gate.md`
+- `docs/operations/release_evidence_retention_finalization.md`

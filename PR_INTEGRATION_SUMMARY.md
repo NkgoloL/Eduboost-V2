@@ -543,3 +543,7 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 ## Cluster H Archival Lock PR-Ready TOC
 
 - Cluster H archival lock assertion, PR-ready final closure certificate, and final release evidence table of contents added.
+
+## Cluster H Reviewer Pack Merge-Control Retention
+
+- Cluster H final reviewer pack, merge-control evidence gate, and release evidence retention finalization added.

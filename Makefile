@@ -500,3 +500,12 @@ pr-ready-final-closure-certificate-check:
 
 final-release-evidence-toc-check:
 	$(PYTHON) scripts/check_final_release_evidence_toc.py
+
+final-reviewer-pack-checklist-check:
+	$(PYTHON) scripts/check_final_reviewer_pack_checklist.py
+
+merge-control-evidence-gate-check:
+	$(PYTHON) scripts/check_merge_control_evidence_gate.py
+
+release-evidence-retention-finalization-check:
+	$(PYTHON) scripts/check_release_evidence_retention_finalization.py
