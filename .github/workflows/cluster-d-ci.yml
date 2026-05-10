@@ -1,0 +1,29 @@
+name: Cluster D CI Deployment Evidence
+
+on:
+  pull_request:
+    branches: [master, "release/**"]
+  push:
+    branches: [master, "release/**"]
+
+jobs:
+  cluster-d-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Cluster D evidence checks
+        run: |
+          make environment-security-check
+          make deployment-readiness-docs-check
+          make cluster-d-ci-check
+          pytest -c pytest.ini \
+            tests/unit/test_environment_security_contract.py \
+            tests/unit/test_deployment_readiness_docs.py \
+            -q --no-cov

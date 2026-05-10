@@ -308,3 +308,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster C Closure Stamp
 
 - Cluster C POPIA consent/audit closure stamp recorded.
+
+## Cluster D CI Deployment Evidence
+
+- Cluster D CI/deployment/environment evidence checks added.

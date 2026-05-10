@@ -110,3 +110,12 @@ popia-consent-source-check:
 
 popia-consent-closure-check:
 	$(PYTHON) scripts/check_popia_consent_closure.py
+
+environment-security-check:
+	$(PYTHON) scripts/check_environment_security_contract.py
+
+deployment-readiness-docs-check:
+	$(PYTHON) scripts/check_deployment_readiness_docs.py
+
+cluster-d-ci-check:
+	$(PYTHON) scripts/check_cluster_d_ci_evidence.py
