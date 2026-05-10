@@ -336,3 +336,15 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster E Data Resilience
 
 - Cluster E data-resilience baseline added for backup/restore evidence.
+
+## Cluster E Backup Restore Commands
+
+- Cluster E backup/restore dry-run command contracts added.
+
+## Cluster E Backup Restore Evidence Records
+
+- Cluster E backup manifest and restore evidence records added.
+
+## Cluster E Backup Restore Integrity
+
+- Cluster E backup/restore integrity checks added.

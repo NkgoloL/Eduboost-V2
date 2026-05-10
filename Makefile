@@ -143,3 +143,21 @@ database-restore-drill-docs-check:
 
 cluster-e-data-resilience-check:
 	$(PYTHON) scripts/check_cluster_e_data_resilience_evidence.py
+
+database-backup-dry-run:
+	$(PYTHON) scripts/run_database_backup.py --dry-run
+
+database-restore-dry-run:
+	$(PYTHON) scripts/run_database_restore.py --dry-run --target-environment staging
+
+database-backup-manifest:
+	$(PYTHON) scripts/generate_database_backup_manifest.py --encrypted
+
+database-restore-evidence:
+	$(PYTHON) scripts/generate_database_restore_evidence.py
+
+database-backup-integrity-check:
+	$(PYTHON) scripts/check_database_backup_integrity.py
+
+database-restore-integrity-check:
+	$(PYTHON) scripts/check_database_restore_integrity.py
