@@ -386,3 +386,67 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster F Closure
 
 - Cluster F lesson/remediation safety and closure aggregate check added.
+
+## Cluster F Release Evidence Wiring
+
+- Cluster F evidence index, closure report, and release-gate wiring added.
+
+## Cluster F Fixture Validation
+
+- Cluster F fixture-based AI output validation added.
+
+## Cluster F Prompt Refusal Evidence
+
+- Cluster F prompt surface inventory and refusal regression fixtures added.
+
+## Cluster F Secret Fixture Coverage
+
+- Cluster F prompt secret-leak and fixture coverage guards added.
+
+## Cluster G Frontend Journey
+
+- Cluster G frontend vertical journey evidence baseline added.
+
+## Cluster G Parent Denial UX
+
+- Cluster G parent journey and auth/consent denial UX contracts added.
+
+## Cluster G API Fixture Evidence
+
+- Cluster G frontend API inventory and journey fixtures added.
+
+## Cluster G Playwright Evidence
+
+- Cluster G Playwright scaffold and journey smoke specs added.
+
+## Cluster G Accessibility Evidence
+
+- Cluster G frontend accessibility contract and static scan added.
+
+## Cluster G Runtime Mock Evidence
+
+- Cluster G frontend runtime inventory and mock API fixtures added.
+
+## Cluster G Mocked Playwright Evidence
+
+- Cluster G mocked Playwright API route evidence added.
+
+## Cluster G E2E Runtime Evidence
+
+- Cluster G frontend E2E environment and runtime command evidence added.
+
+## Cluster G Build E2E Workflow Evidence
+
+- Cluster G frontend build/test/lint contract and opt-in E2E workflow added.
+
+## Cluster G Closure Release Evidence
+
+- Cluster G frontend closure and release-gate evidence wiring added.
+
+## Cluster H Release Readiness Baseline
+
+- Cluster H beta release readiness baseline added.
+
+## Cluster H Operational Release Controls
+
+- Cluster H operational release controls added: sign-off manifest, rollback runbook, and post-deploy smoke checklist.

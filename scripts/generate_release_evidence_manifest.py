@@ -20,6 +20,8 @@ EVIDENCE_COMMANDS = (
     ("POPIA consent/audit", "make popia-consent-closure-check"),
     ("Cluster D environment/deployment", "make cluster-d-closure-check"),
     ("Cluster E data resilience", "make cluster-e-closure-check"),
+    ("Cluster F AI safety", "make cluster-f-closure-check"),
+    ("Cluster G frontend journey", "make cluster-g-closure-check"),
 )
 
 

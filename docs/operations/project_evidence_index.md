@@ -34,9 +34,26 @@
 - `docs/operations/database_restore_evidence.md`
 - `.github/workflows/cluster-e-data-resilience.yml`
 
+
+## AI/CAPS Safety Contract
+
+- `docs/ai/CLUSTER_F_CLOSURE.md`
+- `docs/ai/ai_safety_evidence_index.md`
+- `.github/workflows/cluster-f-ai-safety.yml`
+
+
+## Frontend Journey Contract
+
+- `docs/frontend/CLUSTER_G_CLOSURE.md`
+- `docs/frontend/frontend_evidence_index.md`
+- `.github/workflows/cluster-g-frontend.yml`
+- `.github/workflows/frontend-e2e-opt-in.yml`
+
 ## Release Gate
 
 - `make staging-release-gate-check`
 - `make release-evidence-artifacts-check`
 - `make cluster-d-closure-check`
 - `make cluster-e-closure-check`
+- `make cluster-f-closure-check`
+- `make cluster-g-closure-check`

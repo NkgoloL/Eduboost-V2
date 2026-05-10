@@ -1,0 +1,54 @@
+name: Frontend E2E Opt-In
+
+on:
+  workflow_dispatch:
+    inputs:
+      frontend_base_url:
+        description: "Frontend base URL"
+        required: true
+        default: "http://127.0.0.1:5173"
+      learner_path:
+        description: "Learner journey path"
+        required: false
+        default: "/"
+      parent_path:
+        description: "Parent journey path"
+        required: false
+        default: "/"
+      web_server_command:
+        description: "Optional command to start frontend server"
+        required: false
+        default: ""
+
+jobs:
+  frontend-e2e-opt-in:
+    runs-on: ubuntu-latest
+    env:
+      FRONTEND_BASE_URL: ${{ inputs.frontend_base_url }}
+      LEARNER_JOURNEY_PATH: ${{ inputs.learner_path }}
+      PARENT_JOURNEY_PATH: ${{ inputs.parent_path }}
+      PLAYWRIGHT_WEB_SERVER_COMMAND: ${{ inputs.web_server_command }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install Node dependencies
+        run: |
+          if [ -f frontend/package-lock.json ]; then
+            cd frontend && npm ci
+          elif [ -f package-lock.json ]; then
+            npm ci
+          elif [ -f frontend/package.json ]; then
+            cd frontend && npm install
+          elif [ -f package.json ]; then
+            npm install
+          else
+            echo "No package.json found; skipping dependency install"
+          fi
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+      - name: Run mocked frontend E2E
+        run: make frontend-e2e-mocked
+      - name: Run smoke frontend E2E
+        run: make frontend-e2e-smoke

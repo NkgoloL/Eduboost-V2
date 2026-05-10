@@ -1,0 +1,92 @@
+#!/usr/bin/env python3
+"""Validate learner vertical journey evidence contract."""
+from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DOC = REPO_ROOT / "docs" / "frontend" / "learner_vertical_journey_contract.md"
+INVENTORY = REPO_ROOT / "docs" / "frontend" / "frontend_route_inventory.md"
+
+DOC_SNIPPETS = (
+    "Learner Vertical Journey Contract",
+    "learner signs in",
+    "learner completes or resumes onboarding",
+    "learner opens dashboard",
+    "learner starts diagnostic",
+    "learner submits diagnostic response",
+    "learner receives study plan",
+    "learner opens generated lesson",
+    "learner completes practice or assessment attempt",
+    "learner sees progress/mastery feedback",
+    "consent and authorization boundaries",
+    "make learner-vertical-journey-contract-check",
+)
+
+INVENTORY_SNIPPETS = (
+    "Frontend Route Inventory",
+    "learner onboarding",
+    "learner dashboard",
+    "diagnostic start and submit",
+    "lesson generation and lesson view",
+)
+
+
+@dataclass(frozen=True)
+class LearnerJourneyResult:
+    target: str
+    ok: bool
+    detail: str
+
+
+def run_checks() -> list[LearnerJourneyResult]:
+    results: list[LearnerJourneyResult] = []
+    doc_text = DOC.read_text(encoding="utf-8") if DOC.exists() else ""
+    inventory_text = INVENTORY.read_text(encoding="utf-8") if INVENTORY.exists() else ""
+
+    results.append(
+        LearnerJourneyResult(str(DOC.relative_to(REPO_ROOT)), DOC.exists(), "contract present" if DOC.exists() else "contract missing")
+    )
+
+    for snippet in DOC_SNIPPETS:
+        results.append(
+            LearnerJourneyResult(
+                str(DOC.relative_to(REPO_ROOT)),
+                snippet in doc_text,
+                f"contains {snippet!r}" if snippet in doc_text else f"missing {snippet!r}",
+            )
+        )
+
+    results.append(
+        LearnerJourneyResult(
+            str(INVENTORY.relative_to(REPO_ROOT)),
+            INVENTORY.exists(),
+            "route inventory present" if INVENTORY.exists() else "route inventory missing",
+        )
+    )
+
+    for snippet in INVENTORY_SNIPPETS:
+        results.append(
+            LearnerJourneyResult(
+                str(INVENTORY.relative_to(REPO_ROOT)),
+                snippet in inventory_text,
+                f"contains {snippet!r}" if snippet in inventory_text else f"missing {snippet!r}",
+            )
+        )
+
+    return results
+
+
+def main() -> int:
+    results = run_checks()
+    print("Learner vertical journey contract check")
+    for result in results:
+        status = "PASS" if result.ok else "FAIL"
+        print(f"- {status} {result.target}: {result.detail}")
+    return 0 if all(result.ok for result in results) else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

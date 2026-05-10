@@ -15,12 +15,16 @@ EduBoost V2 to a staging environment.
 - `make popia-consent-closure-check`
 - `make cluster-d-closure-check`
 - `make cluster-e-closure-check`
+- `make cluster-f-closure-check`
+- `make cluster-g-closure-check`
 - `python3 scripts/generate_release_evidence_manifest.py`
 
 ## Required Artifacts
 
 - `docs/operations/release_evidence_manifest.md`
 - `docs/operations/CLUSTER_E_CLOSURE.md`
+- `docs/ai/CLUSTER_F_CLOSURE.md`
+- `docs/frontend/CLUSTER_G_CLOSURE.md`
 - `docs/operations/deployment_readiness_checklist.md`
 - `docs/security/POPIA_CONSENT_GATE_CLOSURE.md`
 - `docs/security/PHASE2_AUTHORIZATION_CLOSURE.md`
