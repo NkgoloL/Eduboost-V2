@@ -57,3 +57,9 @@ make final-release-evidence-toc-check
 - `docs/operations/final_acceptance_memo.md`
 - `docs/operations/release_record_closure_ledger.md`
 - `docs/operations/post_merge_evidence_continuity_note.md`
+
+## Operator Brief Terminal Review Sealed Access Evidence
+
+- `docs/operations/final_release_operator_brief.md`
+- `docs/operations/terminal_review_index.md`
+- `docs/operations/sealed_evidence_access_handoff.md`

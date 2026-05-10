@@ -563,3 +563,7 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 ## Cluster H Reviewer Disposition Terminal Seal PR Handoff
 
 - Cluster H final reviewer disposition record, terminal evidence seal, and final PR handoff summary added.
+
+## Cluster H Operator Brief Terminal Review Sealed Access
+
+- Cluster H final release operator brief, terminal review index, and sealed evidence access handoff added.

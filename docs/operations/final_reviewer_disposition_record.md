@@ -52,3 +52,9 @@ This final reviewer disposition record records review disposition only. It does 
 ```bash
 make final-reviewer-disposition-record-check
 ```
+
+## Operator Brief Terminal Review Sealed Access Evidence
+
+- `docs/operations/final_release_operator_brief.md`
+- `docs/operations/terminal_review_index.md`
+- `docs/operations/sealed_evidence_access_handoff.md`

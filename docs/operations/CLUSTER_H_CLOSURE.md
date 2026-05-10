@@ -183,3 +183,9 @@ Cluster H is first-pass closed when `make cluster-h-closure-check` passes.
 - `docs/operations/final_reviewer_disposition_record.md`
 - `docs/operations/terminal_evidence_seal.md`
 - `docs/operations/final_pr_handoff_summary.md`
+
+## Operator Brief Terminal Review Sealed Access Evidence
+
+- `docs/operations/final_release_operator_brief.md`
+- `docs/operations/terminal_review_index.md`
+- `docs/operations/sealed_evidence_access_handoff.md`

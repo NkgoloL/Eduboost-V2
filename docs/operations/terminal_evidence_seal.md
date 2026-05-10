@@ -60,3 +60,9 @@ This terminal evidence seal records final evidence seal state only. It does not 
 ```bash
 make terminal-evidence-seal-check
 ```
+
+## Operator Brief Terminal Review Sealed Access Evidence
+
+- `docs/operations/final_release_operator_brief.md`
+- `docs/operations/terminal_review_index.md`
+- `docs/operations/sealed_evidence_access_handoff.md`

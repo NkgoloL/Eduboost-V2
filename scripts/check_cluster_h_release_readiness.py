@@ -9,6 +9,16 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_h_operator_brief_terminal_review_sealed_access_wiring.py",
+    "tests/unit/test_sealed_evidence_access_handoff.py",
+    "tests/unit/test_terminal_review_index.py",
+    "tests/unit/test_final_release_operator_brief.py",
+    "scripts/check_sealed_evidence_access_handoff.py",
+    "scripts/check_terminal_review_index.py",
+    "scripts/check_final_release_operator_brief.py",
+    "docs/operations/sealed_evidence_access_handoff.md",
+    "docs/operations/terminal_review_index.md",
+    "docs/operations/final_release_operator_brief.md",
     "tests/unit/test_cluster_h_reviewer_disposition_terminal_seal_pr_handoff_wiring.py",
     "tests/unit/test_final_pr_handoff_summary.py",
     "tests/unit/test_terminal_evidence_seal.py",
@@ -268,6 +278,18 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/operations/sealed_evidence_access_handoff.md": (
+        "Sealed Evidence Access Handoff",
+        "does not approve production launch, execute deployment, create release tags, or merge the pull request automatically",
+    ),
+    "docs/operations/terminal_review_index.md": (
+        "Terminal Review Index",
+        "does not approve production launch, execute deployment, create release tags, or merge the pull request automatically",
+    ),
+    "docs/operations/final_release_operator_brief.md": (
+        "Final Release Operator Brief",
+        "does not approve production launch, execute deployment, create release tags, or merge the pull request automatically",
+    ),
     "docs/operations/final_pr_handoff_summary.md": (
         "Final PR Handoff Summary",
         "does not approve production launch, execute deployment, create release tags, or merge the pull request automatically",
@@ -654,6 +676,9 @@ CONTENT_REQUIREMENTS = {
         "final-reviewer-disposition-record-check:",
         "terminal-evidence-seal-check:",
         "final-pr-handoff-summary-check:",
+        "final-release-operator-brief-check:",
+        "terminal-review-index-check:",
+        "sealed-evidence-access-handoff-check:",
     ),
     "docs/operations/beta_release_readiness_contract.md": (
         "Beta Release Readiness Contract",

@@ -545,3 +545,12 @@ terminal-evidence-seal-check:
 
 final-pr-handoff-summary-check:
 	$(PYTHON) scripts/check_final_pr_handoff_summary.py
+
+final-release-operator-brief-check:
+	$(PYTHON) scripts/check_final_release_operator_brief.py
+
+terminal-review-index-check:
+	$(PYTHON) scripts/check_terminal_review_index.py
+
+sealed-evidence-access-handoff-check:
+	$(PYTHON) scripts/check_sealed_evidence_access_handoff.py
