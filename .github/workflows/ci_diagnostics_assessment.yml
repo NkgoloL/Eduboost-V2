@@ -1,0 +1,25 @@
+name: Diagnostics Assessment Quality
+
+on:
+  pull_request:
+    paths:
+      - "app/modules/diagnostics/**"
+      - "app/modules/progress/**"
+      - "app/modules/practice/**"
+      - "tests/unit/modules/diagnostics/**"
+      - "tests/unit/modules/progress/**"
+      - "tests/unit/modules/practice/**"
+      - "scripts/ci/check_diagnostics_assessment.py"
+  workflow_dispatch:
+
+jobs:
+  diagnostics-assessment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python scripts/ci/check_diagnostics_assessment.py
+      - run: pytest tests/unit/modules/diagnostics/test_irt_engine_hardening.py tests/unit/modules/diagnostics/test_session_lifecycle.py tests/unit/modules/progress/test_mastery_model.py tests/unit/modules/practice/test_practice_and_calibration.py --no-cov

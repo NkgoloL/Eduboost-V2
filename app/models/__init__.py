@@ -302,6 +302,12 @@ class DiagnosticSession(Base):
     responses: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)  # {item_id: bool}
     theta_before: Mapped[float] = mapped_column(Float, default=0.0)
     theta_after: Mapped[float | None] = mapped_column(Float, nullable=True)
+    se_estimate: Mapped[float] = mapped_column(Float, nullable=False, default=1.0)
+    session_state: Mapped[str] = mapped_column(String(40), nullable=False, default="initialising")
+    gap_topics: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    misconception_tags: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    items_served: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    theta_history: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
     items_correct: Mapped[int] = mapped_column(Integer, default=0)
     completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
@@ -309,7 +315,10 @@ class DiagnosticSession(Base):
     learner: Mapped[LearnerProfile] = relationship("LearnerProfile", back_populates="diagnostic_sessions")
 
     __table_args__ = (
+        CheckConstraint("se_estimate >= 0", name="ck_diagnostic_sessions_se_non_negative"),
+        CheckConstraint("items_served >= 0", name="ck_diagnostic_sessions_items_served_non_negative"),
         Index("ix_diagnostic_sessions_created_at", "created_at"),
+        Index("ix_diagnostic_sessions_state", "session_state"),
         Index(
             "ix_diagnostic_sessions_incomplete",
             "learner_id",
@@ -364,6 +373,96 @@ class SubjectMastery(Base):
     )
 
     learner: Mapped[LearnerProfile] = relationship("LearnerProfile", back_populates="mastery_records")
+
+
+
+
+class TopicMastery(Base):
+    __tablename__ = "topic_mastery"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    learner_id: Mapped[str] = mapped_column(ForeignKey("learner_profiles.id", ondelete="CASCADE"), nullable=False)
+    caps_ref: Mapped[str] = mapped_column(String(80), nullable=False)
+    mastery_score: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
+    mastery_label: Mapped[str] = mapped_column(String(40), nullable=False, default="needs_practice")
+    theta_estimate: Mapped[float | None] = mapped_column(Float, nullable=True)
+    theta_se: Mapped[float | None] = mapped_column(Float, nullable=True)
+    last_updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, onupdate=_now)
+
+    __table_args__ = (
+        UniqueConstraint("learner_id", "caps_ref", name="uq_topic_mastery_learner_caps_ref"),
+        CheckConstraint("mastery_score >= 0 AND mastery_score <= 1", name="ck_topic_mastery_score_range"),
+        Index("ix_topic_mastery_learner", "learner_id"),
+        Index("ix_topic_mastery_caps_ref", "caps_ref"),
+    )
+
+
+class MasterySnapshot(Base):
+    __tablename__ = "mastery_snapshots"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    learner_id: Mapped[str] = mapped_column(ForeignKey("learner_profiles.id", ondelete="CASCADE"), nullable=False)
+    caps_ref: Mapped[str] = mapped_column(String(80), nullable=False)
+    mastery_score: Mapped[float] = mapped_column(Float, nullable=False)
+    mastery_label: Mapped[str] = mapped_column(String(40), nullable=False)
+    theta_estimate: Mapped[float | None] = mapped_column(Float, nullable=True)
+    theta_se: Mapped[float | None] = mapped_column(Float, nullable=True)
+    practice_accuracy: Mapped[float | None] = mapped_column(Float, nullable=True)
+    trigger: Mapped[str] = mapped_column(String(60), nullable=False)
+    snapshot_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, nullable=False)
+
+    __table_args__ = (
+        CheckConstraint("mastery_score >= 0 AND mastery_score <= 1", name="ck_mastery_snapshots_score_range"),
+        Index("ix_mastery_snapshots_learner_caps_ref", "learner_id", "caps_ref"),
+        Index("ix_mastery_snapshots_at", "snapshot_at"),
+    )
+
+
+class PracticeQueue(Base):
+    __tablename__ = "practice_queue"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    learner_id: Mapped[str] = mapped_column(ForeignKey("learner_profiles.id", ondelete="CASCADE"), nullable=False)
+    caps_ref: Mapped[str] = mapped_column(String(80), nullable=False)
+    item_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
+    scheduled_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, nullable=False)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    response: Mapped[str | None] = mapped_column(Text, nullable=True)
+    correct: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
+
+    __table_args__ = (Index("ix_practice_queue_learner_due", "learner_id", "scheduled_at"),)
+
+
+class SpacedReviewSchedule(Base):
+    __tablename__ = "spaced_review_schedule"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    learner_id: Mapped[str] = mapped_column(ForeignKey("learner_profiles.id", ondelete="CASCADE"), nullable=False)
+    caps_ref: Mapped[str] = mapped_column(String(80), nullable=False)
+    next_review_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    interval_days: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
+    easiness_factor: Mapped[float] = mapped_column(Float, nullable=False, default=2.5)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, onupdate=_now)
+
+    __table_args__ = (
+        UniqueConstraint("learner_id", "caps_ref", name="uq_spaced_review_learner_caps_ref"),
+        CheckConstraint("interval_days >= 1", name="ck_spaced_review_interval_positive"),
+        Index("ix_spaced_review_due", "next_review_at"),
+    )
+
+
+class CalibrationAudit(Base):
+    __tablename__ = "calibration_audits"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    item_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
+    response_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    old_parameters: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
+    new_parameters: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
+    review_required: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, nullable=False)
+
+    __table_args__ = (Index("ix_calibration_audits_item", "item_id"),)
 
 
 # ── Lesson ────────────────────────────────────────────────────────────────────
