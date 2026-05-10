@@ -17,7 +17,7 @@ from app.domain.schemas import (
 )
 from app.models import Guardian, KnowledgeGap, Lesson
 from app.repositories.repositories import LearnerRepository
-from app.security.dependencies import require_learner_read_for_current_user
+from app.security.dependencies import require_active_consent_for_current_user, require_learner_read_for_current_user
 from app.security.dependencies import require_learner_write_for_current_user
 from app.services.consent import ConsentService
 from app.services.executive import ExecutiveService
@@ -38,7 +38,6 @@ async def get_parent_dashboard(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Guardian not found")
 
     learners = await LearnerRepository(db).get_by_guardian(current_user["sub"])
-    consent_service = ConsentService(db)
     one_week_ago = datetime.now(UTC) - timedelta(days=7)
 
     dashboard_learners: list[ParentDashboardLearner] = []
@@ -47,7 +46,7 @@ async def get_parent_dashboard(
     for learner in learners:
         try:
             require_learner_read_for_current_user(current_user, learner)
-            await consent_service.require_active_consent(learner.id, actor_id=current_user["sub"])
+            await require_active_consent_for_current_user(db, current_user, learner.id)
         except HTTPException:
             continue
 
@@ -116,14 +115,13 @@ async def get_parent_trust_dashboard(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Guardian not found")
 
     learners = await LearnerRepository(db).get_by_guardian(guardian_id)
-    consent_service = ConsentService(db)
     seven_days_ago = datetime.now(UTC) - timedelta(days=7)
     response_learners: list[ParentTrustDashboardLearner] = []
 
     for learner in learners:
         try:
             require_learner_read_for_current_user(current_user, learner)
-            await consent_service.require_active_consent(learner.id, actor_id=current_user["sub"])
+            await require_active_consent_for_current_user(db, current_user, learner.id)
         except HTTPException:
             continue
 
@@ -198,11 +196,10 @@ async def export_parent_access_bundle(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Guardian not found")
 
     learners = await LearnerRepository(db).get_by_guardian(guardian_id)
-    consent_service = ConsentService(db)
     exports = []
     for learner in learners:
         require_learner_read_for_current_user(current_user, learner)
-        await consent_service.require_active_consent(learner.id, actor_id=current_user["sub"])
+        await require_active_consent_for_current_user(db, current_user, learner.id)
         exports.append(
             {
                 "learner_id": learner.id,
@@ -228,7 +225,7 @@ async def get_learner_progress(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
     require_learner_read_for_current_user(current_user, learner)
 
-    await ConsentService(db).require_active_consent(learner_id, actor_id=current_user["sub"])
+    await require_active_consent_for_current_user(db, current_user, learner_id)
 
     thirty_days_ago = datetime.now(UTC) - timedelta(days=30)
     lessons = (

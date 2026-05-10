@@ -13,7 +13,7 @@ from app.core.security import get_current_user, require_parent_or_admin
 from app.domain.api_v2_models import JobAcceptedResponse, RLHFExportRequest
 from app.models import LearnerProfile
 from app.repositories.repositories import LearnerRepository
-from app.security.dependencies import require_learner_read_for_current_user
+from app.security.dependencies import require_active_consent_for_current_user, require_learner_read_for_current_user
 from app.security.dependencies import require_learner_write_for_current_user
 from app.services.fourth_estate import FourthEstateService
 from app.services.popia_service import POPIA_ERASURE_GRACE_DAYS, POPIADataRightsService
@@ -47,6 +47,7 @@ async def export_learner_data(
     if learner is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
     require_learner_read_for_current_user(current_user, learner)
+    await require_active_consent_for_current_user(db, current_user, learner_id)
     return await POPIADataRightsService(db).build_learner_export(
         learner_id,
         current_user,

@@ -146,6 +146,8 @@ def require_learner_delete(actor: Actor, learner_id: str) -> AuthorizationDecisi
 # Current-user adapter -------------------------------------------------------
 
 from typing import Any as _Any
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.modules.consent.service import ConsentService
 
 
 def _current_user_role_value(raw_role: _Any) -> str:
@@ -266,3 +268,31 @@ def require_learner_write_for_current_user(
     actor = build_actor_from_current_user_claims(current_user)
     return require_learner_write(actor, learner_id)
 
+def actor_id_from_current_user(current_user: dict | None) -> str | None:
+    """Return the canonical actor id from the authenticated-user payload."""
+    if not current_user:
+        return None
+    value = (
+        current_user.get("sub")
+        or current_user.get("id")
+        or current_user.get("user_id")
+        or current_user.get("guardian_id")
+    )
+    return str(value) if value is not None else None
+
+
+async def require_active_consent_for_current_user(
+    db: AsyncSession,
+    current_user: dict | None,
+    learner_id: str,
+):
+    """Enforce active POPIA consent for a learner-scoped operation.
+
+    Authorization answers "may this actor access this learner?"
+    Consent answers "may this learner's data be processed right now?"
+    Both checks are required for learner-data routes.
+    """
+    return await ConsentService(db).require_active_consent(
+        str(learner_id),
+        actor_id=actor_id_from_current_user(current_user),
+    )

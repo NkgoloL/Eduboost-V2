@@ -84,3 +84,47 @@ learner-authz-check: learner-authz-matrix
 
 phase2-authz-closure:
 	$(PYTHON) scripts/check_phase2_authorization_closure.py
+
+audit-contract-check:
+	$(PYTHON) scripts/check_audit_event_contracts.py
+
+popia-consent-gate-check:
+	$(PYTHON) scripts/generate_consent_gate_inventory.py
+	$(PYTHON) scripts/check_consent_gate_inventory.py
+
+popia-consent-audit-check:
+	$(PYTHON) scripts/check_popia_consent_audit_evidence.py
+
+popia-consent-boundary-check:
+	$(PYTHON) scripts/generate_popia_consent_boundary_matrix.py
+	$(PYTHON) scripts/check_popia_consent_boundary_matrix.py
+
+popia-consent-order-check:
+	$(PYTHON) scripts/check_active_consent_route_order.py
+
+popia-consent-rejection-audit-check:
+	$(PYTHON) scripts/check_consent_rejection_audit.py
+
+popia-consent-source-check:
+	$(PYTHON) scripts/check_active_consent_route_sources.py
+
+popia-consent-closure-check:
+	$(PYTHON) scripts/check_popia_consent_closure.py
+
+environment-security-check:
+	$(PYTHON) scripts/check_environment_security_contract.py
+
+deployment-readiness-docs-check:
+	$(PYTHON) scripts/check_deployment_readiness_docs.py
+
+cluster-d-ci-check:
+	$(PYTHON) scripts/check_cluster_d_ci_evidence.py
+
+production-secret-placeholder-check:
+	$(PYTHON) scripts/check_production_secret_placeholders.py
+
+dev-only-endpoint-check:
+	$(PYTHON) scripts/check_dev_only_endpoint_exposure.py
+
+cluster-d-closure-check:
+	$(PYTHON) scripts/check_cluster_d_closure.py

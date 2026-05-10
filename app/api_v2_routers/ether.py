@@ -3,9 +3,12 @@
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.dependencies import get_current_user
 from app.services.ether_service import EtherService, OnboardingResponse
+from app.security.dependencies import require_active_consent_for_current_user
+from app.core.database import get_db
 
 router = APIRouter(prefix="/api/v2/ether", tags=["V2 Ether"])
 
@@ -20,6 +23,7 @@ async def get_questions(user: dict = Depends(get_current_user)):
 async def submit_onboarding(
     response: OnboardingResponse,
     user: dict = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
 ):
     """Submit onboarding responses to determine learner archetype."""
     if user.get("role") not in {"Student", "Parent", "Admin"}:

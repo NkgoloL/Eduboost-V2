@@ -221,3 +221,7 @@ Review `docs/security/learner_route_authorization_inspection.md` before wiring t
 ## Operational Auth Boundaries
 
 - [`docs/security/operational_auth_boundaries.md`](operational_auth_boundaries.md)
+
+## POPIA Consent and Audit Baseline
+
+- [`docs/security/POPIA_CONSENT_AUDIT_BASELINE.md`](POPIA_CONSENT_AUDIT_BASELINE.md)

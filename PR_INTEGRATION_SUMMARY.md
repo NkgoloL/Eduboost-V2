@@ -293,3 +293,65 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 - Phase 2 closure report stamped with operational auth boundary hardening evidence.
 
 - Aggregate operational auth boundary evidence added: `tests/unit/test_operational_auth_boundaries.py`.
+
+- POPIA consent/audit baseline added for next security cluster: `docs/security/POPIA_CONSENT_AUDIT_BASELINE.md`.
+
+- POPIA consent-gate inventory drift guard added: `make popia-consent-gate-check`.
+
+- POPIA consent/audit CI workflow added: `.github/workflows/popia-consent-audit.yml`.
+
+- POPIA consent/audit aggregate evidence check added: `make popia-consent-audit-check`.
+
+- POPIA consent dependency adapter added: `require_active_consent_for_current_user`.
+
+- Removed stale lesson consent-gate allowlist entries after lesson route wiring.
+
+- Study-plan POPIA consent gate wiring added.
+
+- Learner read/mastery POPIA consent gate wiring normalized.
+
+- Gamification POPIA consent gate wiring normalized.
+
+- Parent learner-data POPIA consent gate wiring normalized.
+
+- POPIA data-rights consent boundary documented and tested.
+
+- Parent and POPIA consent-gate evidence registered in aggregate checker.
+
+- Assessment attempt POPIA consent gate wiring added.
+
+- Onboarding submit/archetype POPIA consent gate wiring added.
+
+- Assessment and onboarding consent-gate evidence registered in aggregate checker.
+
+- Ether onboarding POPIA consent gate wiring added and matrix evidence refreshed.
+
+- Ether onboarding consent boundary reclassified as authenticated non-learner-record boundary.
+
+- POPIA consent-boundary matrix and first-pass closure report added.
+
+- POPIA consent CI closure now includes boundary, order, and rejection-audit checks.
+
+- Consent dependency denial path regression tests added.
+
+- Diagnostics central consent adapter source normalization added.
+
+- POPIA negative consent evidence added for denial paths and central route-source usage.
+
+- Cluster C POPIA consent/audit closure stamp recorded.
+
+## Cluster D CI Deployment Evidence
+
+- Cluster D CI/deployment/environment evidence baseline added.
+
+## Cluster D Runtime Environment Gates
+
+- Cluster D runtime gate evidence added for production placeholders and dev-only endpoint exposure.
+
+## Production Key Vault Behavior
+
+- Production Key Vault behavior tests added for Cluster D runtime gates.
+
+## Cluster D Closure
+
+- Cluster D closure command and production Key Vault behavior evidence added.

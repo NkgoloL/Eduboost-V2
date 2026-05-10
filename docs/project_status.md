@@ -232,3 +232,95 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Operational Auth Boundaries
 
 - [`docs/security/operational_auth_boundaries.md`](security/operational_auth_boundaries.md)
+
+## POPIA Consent and Audit Baseline
+
+- [`docs/security/POPIA_CONSENT_AUDIT_BASELINE.md`](security/POPIA_CONSENT_AUDIT_BASELINE.md)
+
+## POPIA Consent Gate Check
+
+- [`docs/security/popia_consent_gate_check.md`](security/popia_consent_gate_check.md)
+
+## POPIA Consent Audit CI
+
+- [`docs/security/popia_consent_audit_ci.md`](security/popia_consent_audit_ci.md)
+
+## POPIA Consent Dependency Adapter
+
+- [`docs/security/consent_dependency_adapter.md`](security/consent_dependency_adapter.md)
+
+## Study Plan Consent Gate
+
+- [`docs/security/study_plan_consent_gate.md`](security/study_plan_consent_gate.md)
+
+## Learner Read Consent Gate
+
+- [`docs/security/learner_read_consent_gate.md`](security/learner_read_consent_gate.md)
+
+## Gamification Consent Gate
+
+- [`docs/security/gamification_consent_gate.md`](security/gamification_consent_gate.md)
+
+## Parent Routes Consent Gate
+
+- [`docs/security/parent_routes_consent_gate.md`](security/parent_routes_consent_gate.md)
+
+## POPIA Data-Rights Consent Boundary
+
+- [`docs/security/popia_data_rights_consent_boundary.md`](security/popia_data_rights_consent_boundary.md)
+
+## Assessment Consent Gate
+
+- [`docs/security/assessment_consent_gate.md`](security/assessment_consent_gate.md)
+
+## Onboarding Consent Gate
+
+- [`docs/security/onboarding_consent_gate.md`](security/onboarding_consent_gate.md)
+
+## Ether Onboarding Consent Gate
+
+- [`docs/security/ether_onboarding_consent_gate.md`](security/ether_onboarding_consent_gate.md)
+
+## Ether Onboarding Consent Boundary
+
+- [`docs/security/ether_onboarding_consent_gate.md`](security/ether_onboarding_consent_gate.md)
+
+## POPIA Consent Gate Closure
+
+- [`docs/security/POPIA_CONSENT_GATE_CLOSURE.md`](security/POPIA_CONSENT_GATE_CLOSURE.md)
+
+## Ether Onboarding Consent Boundary
+
+- [`docs/security/ether_onboarding_consent_gate.md`](security/ether_onboarding_consent_gate.md)
+
+## POPIA Consent CI Closure
+
+- POPIA consent CI closure includes boundary, order, and rejection-audit checks.
+
+## Diagnostics Central Consent Source
+
+- [`docs/security/diagnostics_central_consent_source.md`](security/diagnostics_central_consent_source.md)
+
+## POPIA Negative Consent Evidence
+
+- POPIA negative-consent evidence includes adapter denial paths and central route-source checks.
+
+## Cluster C Closure Stamp
+
+- Cluster C POPIA consent/audit closure stamp recorded.
+
+## Cluster D CI Deployment Evidence
+
+- Cluster D CI/deployment/environment evidence checks added.
+
+## Cluster D Runtime Environment Gates
+
+- Cluster D runtime environment gates now cover production placeholders and dev-only endpoint exposure.
+
+## Production Key Vault Behavior
+
+- Production Key Vault behavior tests added for Cluster D.
+
+## Cluster D Closure
+
+- Cluster D closure command and production Key Vault behavior evidence added.

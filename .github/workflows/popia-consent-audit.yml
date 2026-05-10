@@ -1,0 +1,49 @@
+name: POPIA Consent Audit
+
+on:
+  pull_request:
+    branches:
+      - master
+      - 'release/**'
+  push:
+    branches:
+      - master
+      - 'release/**'
+
+jobs:
+  popia-consent-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Run POPIA consent and audit checks
+        run: |
+          make audit-contract-check
+          make popia-consent-gate-check
+          make popia-consent-rejection-audit-check
+          make popia-consent-closure-check
+          make popia-consent-order-check
+          make popia-consent-source-check
+          make popia-consent-boundary-check
+          pytest -c pytest.ini \
+            tests/unit/test_generate_consent_gate_inventory.py \
+            tests/unit/test_consent_gate_inventory_check.py \
+            tests/unit/test_audit_event_contracts.py \
+            tests/unit/test_popia_consent_audit_baseline_docs.py \
+            tests/unit/test_consent_rejection_audit_check.py \
+            tests/unit/test_active_consent_route_sources.py \
+            tests/unit/test_consent_dependency_denial_paths.py \
+            tests/unit/test_active_consent_route_order.py \
+            tests/unit/test_popia_consent_gate_closure_report.py \
+            tests/unit/test_popia_consent_boundary_matrix_check.py \
+            tests/unit/test_generate_popia_consent_boundary_matrix.py \
+            -q --no-cov
+
+            tests/unit/test_popia_consent_closure_check.py \
