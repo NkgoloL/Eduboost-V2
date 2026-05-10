@@ -8,6 +8,12 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_database_restore_command.py",
+    "tests/unit/test_database_backup_command.py",
+    "docs/operations/database_restore_command.md",
+    "docs/operations/database_backup_command.md",
+    "scripts/run_database_restore.py",
+    "scripts/run_database_backup.py",
     "scripts/check_database_backup_contract.py",
     "scripts/check_database_restore_drill_docs.py",
     "docs/operations/database_backup_contract.md",
@@ -17,9 +23,30 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "scripts/run_database_restore.py": (
+        "validate_target_environment",
+        "--allow-production-target",
+        "--dry-run",
+    ),
+    "scripts/run_database_backup.py": (
+        "REQUIRED_ENV",
+        "BACKUP_ENCRYPTION_KEY",
+        "--dry-run",
+    ),
+    "docs/operations/database_restore_command.md": (
+        "Database Restore Command",
+        "make database-restore-dry-run",
+        "production target is blocked",
+    ),
+    "docs/operations/database_backup_command.md": (
+        "Database Backup Command",
+        "make database-backup-dry-run",
+    ),
     "Makefile": (
         "database-backup-contract-check:",
         "database-restore-drill-docs-check:",
+        "database-backup-dry-run:",
+        "database-restore-dry-run:",
     ),
     "docs/operations/database_backup_contract.md": (
         "Database Backup Contract",
