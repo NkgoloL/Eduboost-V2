@@ -348,3 +348,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster E Backup Restore Integrity
 
 - Cluster E backup/restore integrity checks added.
+
+## Cluster E Closure
+
+- Cluster E closure command and report added.

@@ -29,8 +29,11 @@ jobs:
           make database-backup-integrity-check
           make database-restore-integrity-check
           make cluster-e-data-resilience-check
+          make cluster-e-closure-check
           pytest -c pytest.ini \
             tests/unit/test_database_backup_contract.py \
+            tests/unit/test_cluster_e_closure_report.py \
+            tests/unit/test_cluster_e_closure_check.py \
             tests/unit/test_database_restore_integrity.py \
             tests/unit/test_database_backup_integrity.py \
             tests/unit/test_generate_database_restore_evidence.py \

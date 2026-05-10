@@ -379,3 +379,7 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 ## Cluster E Backup Restore Integrity
 
 - Cluster E backup/restore integrity checks added.
+
+## Cluster E Closure
+
+- Cluster E closure command and report added.

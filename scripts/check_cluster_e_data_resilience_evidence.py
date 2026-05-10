@@ -8,6 +8,11 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_e_closure_report.py",
+    "tests/unit/test_cluster_e_closure_check.py",
+    "docs/operations/CLUSTER_E_CLOSURE.md",
+    "docs/operations/cluster_e_closure_check.md",
+    "scripts/check_cluster_e_closure.py",
     "tests/unit/test_database_restore_integrity.py",
     "tests/unit/test_database_backup_integrity.py",
     "docs/operations/database_restore_integrity_check.md",
@@ -35,6 +40,15 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/operations/CLUSTER_E_CLOSURE.md": (
+        "Cluster E Data Resilience Closure",
+        "make cluster-e-closure-check",
+        "evidence scaffold",
+    ),
+    "docs/operations/cluster_e_closure_check.md": (
+        "Cluster E Closure Check",
+        "make cluster-e-closure-check",
+    ),
     "docs/operations/database_restore_integrity_check.md": (
         "Database Restore Integrity Check",
         "make database-restore-integrity-check",
@@ -88,6 +102,7 @@ CONTENT_REQUIREMENTS = {
         "database-restore-evidence:",
         "database-backup-integrity-check:",
         "database-restore-integrity-check:",
+        "cluster-e-closure-check:",
     ),
     "docs/operations/database_backup_contract.md": (
         "Database Backup Contract",

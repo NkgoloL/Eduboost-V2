@@ -161,3 +161,6 @@ database-backup-integrity-check:
 
 database-restore-integrity-check:
 	$(PYTHON) scripts/check_database_restore_integrity.py
+
+cluster-e-closure-check:
+	$(PYTHON) scripts/check_cluster_e_closure.py

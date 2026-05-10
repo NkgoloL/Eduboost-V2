@@ -44,6 +44,10 @@ when `AZURE_KEY_VAULT_URL` is missing.
 
 - `make staging-release-gate-check`
 
+## Data Resilience Evidence
+
+- `make cluster-e-closure-check`
+
 ## Release Evidence
 
 Before staging or production release, attach command output for all checklist

@@ -25,8 +25,17 @@
 - `docs/operations/staging_release_gate.md`
 - `.github/workflows/cluster-d-ci.yml`
 
+
+## Data Resilience Contract
+
+- `docs/operations/CLUSTER_E_CLOSURE.md`
+- `docs/operations/database_backup_manifest.md`
+- `docs/operations/database_restore_evidence.md`
+- `.github/workflows/cluster-e-data-resilience.yml`
+
 ## Release Gate
 
 - `make staging-release-gate-check`
 - `make release-evidence-artifacts-check`
 - `make cluster-d-closure-check`
+- `make cluster-e-closure-check`
