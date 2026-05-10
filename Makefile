@@ -419,3 +419,12 @@ beta-monitoring-incident-trigger-check:
 
 beta-participant-support-handoff-check:
 	$(PYTHON) scripts/check_beta_participant_support_handoff.py
+
+beta-feedback-intake-contract-check:
+	$(PYTHON) scripts/check_beta_feedback_intake_contract.py
+
+beta-known-issues-register-check:
+	$(PYTHON) scripts/check_beta_known_issues_register.py
+
+beta-acceptance-exit-criteria-check:
+	$(PYTHON) scripts/check_beta_acceptance_exit_criteria.py

@@ -507,3 +507,7 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 ## Cluster H Communications Monitoring Support
 
 - Cluster H beta communications, monitoring trigger, and participant support handoff evidence added.
+
+## Cluster H Feedback Issues Acceptance
+
+- Cluster H beta feedback intake, known issues, and acceptance exit criteria evidence added.

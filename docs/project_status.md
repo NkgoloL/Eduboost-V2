@@ -486,3 +486,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster H Communications Monitoring Support
 
 - Cluster H beta communications, monitoring trigger, and participant support handoff evidence added.
+
+## Cluster H Feedback Issues Acceptance
+
+- Cluster H beta feedback intake, known issues, and acceptance exit criteria evidence added.

@@ -99,3 +99,9 @@ Cluster H is first-pass closed when `make cluster-h-closure-check` passes.
 - `docs/operations/beta_release_communications_plan.md`
 - `docs/operations/beta_monitoring_incident_trigger_matrix.md`
 - `docs/operations/beta_participant_support_handoff_checklist.md`
+
+## Feedback Issues Acceptance Evidence
+
+- `docs/operations/beta_feedback_intake_contract.md`
+- `docs/operations/beta_known_issues_register.md`
+- `docs/operations/beta_acceptance_exit_criteria.md`

@@ -61,11 +61,18 @@ jobs:
           make beta-release-communications-plan-check
           make beta-monitoring-incident-trigger-check
           make beta-participant-support-handoff-check
+          make beta-feedback-intake-contract-check
+          make beta-known-issues-register-check
+          make beta-acceptance-exit-criteria-check
           make cluster-h-release-readiness-check
       - name: Run Cluster H release readiness tests
         run: |
           pytest -c pytest.ini \
             tests/unit/test_beta_release_readiness_contract.py \
+            tests/unit/test_cluster_h_feedback_issues_acceptance_wiring.py \
+            tests/unit/test_beta_acceptance_exit_criteria.py \
+            tests/unit/test_beta_known_issues_register.py \
+            tests/unit/test_beta_feedback_intake_contract.py \
             tests/unit/test_cluster_h_communications_monitoring_support_wiring.py \
             tests/unit/test_beta_participant_support_handoff.py \
             tests/unit/test_beta_monitoring_incident_trigger.py \

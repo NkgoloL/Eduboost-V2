@@ -9,6 +9,16 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_h_feedback_issues_acceptance_wiring.py",
+    "tests/unit/test_beta_acceptance_exit_criteria.py",
+    "tests/unit/test_beta_known_issues_register.py",
+    "tests/unit/test_beta_feedback_intake_contract.py",
+    "scripts/check_beta_acceptance_exit_criteria.py",
+    "scripts/check_beta_known_issues_register.py",
+    "scripts/check_beta_feedback_intake_contract.py",
+    "docs/operations/beta_acceptance_exit_criteria.md",
+    "docs/operations/beta_known_issues_register.md",
+    "docs/operations/beta_feedback_intake_contract.md",
     "tests/unit/test_cluster_h_communications_monitoring_support_wiring.py",
     "tests/unit/test_beta_participant_support_handoff.py",
     "tests/unit/test_beta_monitoring_incident_trigger.py",
@@ -128,6 +138,18 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/operations/beta_acceptance_exit_criteria.md": (
+        "Beta Acceptance Exit Criteria",
+        "does not approve production launch, execute deployment, create release tags, or override unresolved blocker issues",
+    ),
+    "docs/operations/beta_known_issues_register.md": (
+        "Beta Known Issues Register",
+        "does not accept risk automatically, approve release, execute remediation, or override incident triggers",
+    ),
+    "docs/operations/beta_feedback_intake_contract.md": (
+        "Beta Feedback Intake Contract",
+        "does not collect live participant data, approve release, execute deployment, or create product commitments",
+    ),
     "docs/operations/beta_participant_support_handoff_checklist.md": (
         "Beta Participant Support Handoff Checklist",
         "does not invite beta participants, approve release, execute deployment, or collect participant data",
@@ -304,6 +326,9 @@ CONTENT_REQUIREMENTS = {
         "beta-release-communications-plan-check:",
         "beta-monitoring-incident-trigger-check:",
         "beta-participant-support-handoff-check:",
+        "beta-feedback-intake-contract-check:",
+        "beta-known-issues-register-check:",
+        "beta-acceptance-exit-criteria-check:",
     ),
     "docs/operations/beta_release_readiness_contract.md": (
         "Beta Release Readiness Contract",

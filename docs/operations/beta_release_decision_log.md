@@ -40,3 +40,9 @@ This log records decisions. It does not approve release automatically and does n
 ```bash
 make beta-release-decision-log-check
 ```
+
+## Feedback Issues Acceptance Evidence
+
+- `docs/operations/beta_feedback_intake_contract.md`
+- `docs/operations/beta_known_issues_register.md`
+- `docs/operations/beta_acceptance_exit_criteria.md`
