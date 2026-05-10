@@ -416,3 +416,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster G Runtime Mock Evidence
 
 - Cluster G frontend runtime inventory and mock API fixtures added.
+
+## Cluster G Mocked Playwright Evidence
+
+- Cluster G mocked Playwright API route evidence added.

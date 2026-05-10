@@ -447,3 +447,7 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 ## Cluster G Runtime Mock Evidence
 
 - Cluster G frontend runtime inventory and mock API fixtures added.
+
+## Cluster G Mocked Playwright Evidence
+
+- Cluster G mocked Playwright API route evidence added.

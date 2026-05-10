@@ -29,6 +29,8 @@ jobs:
           make frontend-playwright-scaffold-check
           make frontend-api-client-inventory-check
           make frontend-mock-api-fixture-check
+          make frontend-playwright-mocked-specs-check
+          make frontend-playwright-mock-helper-check
           make frontend-runtime-inventory-check
           make frontend-runtime-inventory
           make frontend-api-client-inventory
@@ -38,6 +40,9 @@ jobs:
           make cluster-g-frontend-check
           pytest -c pytest.ini \
             tests/unit/test_frontend_route_inventory.py \
+            tests/unit/test_cluster_g_mocked_playwright_evidence.py \
+            tests/unit/test_frontend_playwright_mocked_specs.py \
+            tests/unit/test_frontend_playwright_mock_helpers.py \
             tests/unit/test_cluster_g_runtime_mock_evidence.py \
             tests/unit/test_frontend_mock_api_fixtures.py \
             tests/unit/test_frontend_runtime_inventory.py \

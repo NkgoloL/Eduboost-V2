@@ -9,6 +9,16 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_g_mocked_playwright_evidence.py",
+    "tests/unit/test_frontend_playwright_mocked_specs.py",
+    "tests/unit/test_frontend_playwright_mock_helpers.py",
+    "docs/frontend/playwright_mocked_journey_specs.md",
+    "docs/frontend/playwright_mock_route_helpers.md",
+    "scripts/check_frontend_playwright_mocked_specs.py",
+    "scripts/check_frontend_playwright_mock_helpers.py",
+    "tests/e2e/parent-mocked-api-journey.spec.ts",
+    "tests/e2e/learner-mocked-api-journey.spec.ts",
+    "tests/e2e/support/mockApi.ts",
     "tests/unit/test_cluster_g_runtime_mock_evidence.py",
     "tests/unit/test_frontend_mock_api_fixtures.py",
     "tests/unit/test_frontend_runtime_inventory.py",
@@ -67,6 +77,14 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/frontend/playwright_mocked_journey_specs.md": (
+        "Playwright Mocked Journey Specs",
+        "must not require live learner data",
+    ),
+    "docs/frontend/playwright_mock_route_helpers.md": (
+        "Playwright Mock Route Helpers",
+        "canonical API fixture envelopes",
+    ),
     "docs/frontend/playwright_mock_api_fixtures.md": (
         "Playwright Mock API Fixtures",
         "error.safe_next_action",
@@ -125,6 +143,8 @@ CONTENT_REQUIREMENTS = {
         "frontend-runtime-inventory:",
         "frontend-runtime-inventory-check:",
         "frontend-mock-api-fixture-check:",
+        "frontend-playwright-mock-helper-check:",
+        "frontend-playwright-mocked-specs-check:",
     ),
     "docs/frontend/frontend_route_inventory.md": (
         "Frontend Route Inventory",

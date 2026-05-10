@@ -269,3 +269,9 @@ frontend-runtime-inventory-check:
 
 frontend-mock-api-fixture-check:
 	$(PYTHON) scripts/check_frontend_mock_api_fixtures.py
+
+frontend-playwright-mock-helper-check:
+	$(PYTHON) scripts/check_frontend_playwright_mock_helpers.py
+
+frontend-playwright-mocked-specs-check:
+	$(PYTHON) scripts/check_frontend_playwright_mocked_specs.py
