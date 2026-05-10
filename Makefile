@@ -287,3 +287,9 @@ frontend-e2e-smoke:
 
 frontend-e2e-runtime-command-check:
 	$(PYTHON) scripts/check_frontend_e2e_runtime_commands.py
+
+frontend-build-test-lint-contract-check:
+	$(PYTHON) scripts/check_frontend_build_test_lint_contract.py
+
+frontend-e2e-opt-in-workflow-check:
+	$(PYTHON) scripts/check_frontend_e2e_opt_in_workflow.py

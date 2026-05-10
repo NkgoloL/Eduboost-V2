@@ -9,6 +9,14 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_g_build_e2e_workflow_evidence.py",
+    "tests/unit/test_frontend_e2e_opt_in_workflow.py",
+    "tests/unit/test_frontend_build_test_lint_contract.py",
+    ".github/workflows/frontend-e2e-opt-in.yml",
+    "docs/frontend/frontend_e2e_opt_in_workflow.md",
+    "docs/frontend/frontend_build_test_lint_contract.md",
+    "scripts/check_frontend_e2e_opt_in_workflow.py",
+    "scripts/check_frontend_build_test_lint_contract.py",
     "tests/unit/test_cluster_g_e2e_runtime_evidence.py",
     "tests/unit/test_frontend_e2e_runtime_commands.py",
     "tests/unit/test_frontend_e2e_environment_contract.py",
@@ -84,6 +92,19 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    ".github/workflows/frontend-e2e-opt-in.yml": (
+        "workflow_dispatch:",
+        "make frontend-e2e-mocked",
+        "make frontend-e2e-smoke",
+    ),
+    "docs/frontend/frontend_e2e_opt_in_workflow.md": (
+        "Frontend E2E Opt-In Workflow",
+        "must not run automatically on every pull request",
+    ),
+    "docs/frontend/frontend_build_test_lint_contract.md": (
+        "Frontend Build Test Lint Contract",
+        "Runtime build/test commands may be wired as opt-in",
+    ),
     "docs/frontend/frontend_e2e_runtime_commands.md": (
         "Frontend E2E Runtime Commands",
         "must not require production credentials",
@@ -164,6 +185,8 @@ CONTENT_REQUIREMENTS = {
         "frontend-e2e-runtime-command-check:",
         "frontend-e2e-smoke:",
         "frontend-e2e-mocked:",
+        "frontend-build-test-lint-contract-check:",
+        "frontend-e2e-opt-in-workflow-check:",
     ),
     "docs/frontend/frontend_route_inventory.md": (
         "Frontend Route Inventory",

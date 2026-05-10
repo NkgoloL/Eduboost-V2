@@ -424,3 +424,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster G E2E Runtime Evidence
 
 - Cluster G frontend E2E environment and runtime command evidence added.
+
+## Cluster G Build E2E Workflow Evidence
+
+- Cluster G frontend build/test/lint contract and opt-in E2E workflow added.
