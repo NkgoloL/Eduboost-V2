@@ -9,6 +9,13 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
 REQUIRED_FILES = (
+    "docs/security/active_consent_route_sources.md",
+    "tests/unit/test_active_consent_route_sources.py",
+    "scripts/check_active_consent_route_sources.py",
+    "docs/security/consent_dependency_denial_paths.md",
+    "tests/unit/test_consent_dependency_denial_paths.py",
+    "docs/security/diagnostics_central_consent_source.md",
+    "tests/unit/test_diagnostics_central_consent_source.py",
     "tests/unit/test_popia_ci_closure_contract.py",
     "tests/unit/test_consent_rejection_audit_check.py",
     "tests/unit/test_active_consent_route_order.py",
@@ -52,6 +59,27 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "scripts/check_active_consent_route_sources.py": (
+        "CENTRAL_CONSENT",
+        "does not bypass central adapter",
+    ),
+    "docs/security/active_consent_route_sources.md": (
+        "Active Consent Route Sources",
+        "require_active_consent_for_current_user",
+    ),
+    "docs/security/consent_dependency_denial_paths.md": (
+        "Consent Dependency Denial Paths",
+        "does not catch `ConsentRequiredError`",
+        "does not catch `ConsentExpiredError`",
+    ),
+    "app/api_v2_routers/diagnostics.py": (
+        "require_active_consent_for_current_user",
+    ),
+    "docs/security/diagnostics_central_consent_source.md": (
+        "Diagnostics Central Consent Source",
+        "must not",
+        "ConsentService(db).require_active_consent",
+    ),
     "docs/security/consent_rejection_audit.md": (
         "consent.access_rejected",
         "ConsentExpiredError",
@@ -112,6 +140,7 @@ CONTENT_REQUIREMENTS = {
         "popia-consent-boundary-check:",
         "popia-consent-order-check:",
         "popia-consent-rejection-audit-check:",
+        "popia-consent-source-check:",
     ),
     "scripts/generate_consent_gate_inventory.py": (
         "ConsentGateRow",

@@ -85,3 +85,11 @@ pytest -c pytest.ini tests/unit/test_generate_consent_gate_inventory.py tests/un
 ## POPIA Consent CI Closure
 
 - POPIA CI includes boundary, route-order, and consent-rejection audit checks.
+
+## Diagnostics Central Consent Source
+
+- Diagnostics active-consent routes use central consent adapter source only.
+
+## POPIA Negative Consent Evidence
+
+- Negative consent evidence includes denial-path and route-source guards.

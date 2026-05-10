@@ -296,3 +296,11 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## POPIA Consent CI Closure
 
 - POPIA consent CI closure includes boundary, order, and rejection-audit checks.
+
+## Diagnostics Central Consent Source
+
+- [`docs/security/diagnostics_central_consent_source.md`](security/diagnostics_central_consent_source.md)
+
+## POPIA Negative Consent Evidence
+
+- POPIA negative-consent evidence includes adapter denial paths and central route-source checks.

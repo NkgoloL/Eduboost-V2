@@ -104,3 +104,6 @@ popia-consent-order-check:
 
 popia-consent-rejection-audit-check:
 	$(PYTHON) scripts/check_consent_rejection_audit.py
+
+popia-consent-source-check:
+	$(PYTHON) scripts/check_active_consent_route_sources.py

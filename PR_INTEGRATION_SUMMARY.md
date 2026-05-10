@@ -331,3 +331,9 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 - POPIA consent-boundary matrix and first-pass closure report added.
 
 - POPIA consent CI closure now includes boundary, order, and rejection-audit checks.
+
+- Consent dependency denial path regression tests added.
+
+- Diagnostics central consent adapter source normalization added.
+
+- POPIA negative consent evidence added for denial paths and central route-source usage.

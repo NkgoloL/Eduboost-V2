@@ -47,3 +47,11 @@ make popia-consent-boundary-check
 ## POPIA Consent CI Closure
 
 - CI now enforces consent-boundary, route-order, and rejection-audit checks.
+
+## Diagnostics Central Consent Source
+
+- Diagnostics routes now use the central consent adapter without direct consent-service bypasses.
+
+## POPIA Negative Consent Evidence
+
+- Negative consent evidence now covers adapter denial paths and central route-source usage.
