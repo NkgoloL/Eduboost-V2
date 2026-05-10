@@ -1,0 +1,35 @@
+name: Cluster H Release Readiness
+
+on:
+  pull_request:
+    branches: [master, "release/**"]
+  push:
+    branches: [master, "release/**"]
+
+jobs:
+  cluster-h-release-readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f requirements/dev.txt ]; then pip install -r requirements/dev.txt; fi
+      - name: Generate staging smoke evidence
+        run: make staging-smoke-evidence-manifest
+      - name: Check Cluster H release readiness
+        run: |
+          make beta-release-readiness-contract-check
+          make staging-smoke-evidence-manifest-check
+          make cluster-h-release-readiness-check
+      - name: Run Cluster H release readiness tests
+        run: |
+          pytest -c pytest.ini \
+            tests/unit/test_beta_release_readiness_contract.py \
+            tests/unit/test_staging_smoke_evidence_manifest.py \
+            tests/unit/test_cluster_h_release_readiness.py \
+            -q --no-cov

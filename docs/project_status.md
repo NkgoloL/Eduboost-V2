@@ -432,3 +432,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster G Closure Release Evidence
 
 - Cluster G frontend closure and release-gate evidence wiring added.
+
+## Cluster H Release Readiness Baseline
+
+- Cluster H beta release readiness baseline added.

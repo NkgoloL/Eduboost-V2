@@ -1,0 +1,89 @@
+#!/usr/bin/env python3
+"""Validate Cluster H release readiness baseline evidence."""
+from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
+REQUIRED_FILES = (
+    "docs/operations/beta_release_readiness_contract.md",
+    "docs/operations/staging_smoke_evidence_manifest.md",
+    "scripts/check_beta_release_readiness_contract.py",
+    "scripts/generate_staging_smoke_evidence_manifest.py",
+    "scripts/check_staging_smoke_evidence_manifest.py",
+    "tests/unit/test_beta_release_readiness_contract.py",
+    "tests/unit/test_staging_smoke_evidence_manifest.py",
+)
+
+CONTENT_REQUIREMENTS = {
+    "Makefile": (
+        "beta-release-readiness-contract-check:",
+        "staging-smoke-evidence-manifest:",
+        "staging-smoke-evidence-manifest-check:",
+        "cluster-h-release-readiness-check:",
+    ),
+    "docs/operations/beta_release_readiness_contract.md": (
+        "Beta Release Readiness Contract",
+        "Cluster G frontend vertical journey closure",
+        "controlled validation with limited users",
+    ),
+    "docs/operations/staging_smoke_evidence_manifest.md": (
+        "Staging Smoke Evidence Manifest",
+        "Cluster G frontend journey closure",
+        "make staging-smoke-evidence-manifest",
+    ),
+}
+
+
+@dataclass(frozen=True)
+class ClusterHReadinessResult:
+    category: str
+    target: str
+    ok: bool
+    detail: str
+
+
+def run_checks() -> list[ClusterHReadinessResult]:
+    results: list[ClusterHReadinessResult] = []
+
+    for rel_path in REQUIRED_FILES:
+        path = REPO_ROOT / rel_path
+        results.append(
+            ClusterHReadinessResult(
+                "file",
+                rel_path,
+                path.exists(),
+                "present" if path.exists() else "missing",
+            )
+        )
+
+    for rel_path, snippets in CONTENT_REQUIREMENTS.items():
+        path = REPO_ROOT / rel_path
+        text = path.read_text(encoding="utf-8") if path.exists() else ""
+        for snippet in snippets:
+            results.append(
+                ClusterHReadinessResult(
+                    "content",
+                    rel_path,
+                    snippet in text,
+                    f"contains {snippet!r}" if snippet in text else f"missing {snippet!r}",
+                )
+            )
+
+    return results
+
+
+def main() -> int:
+    results = run_checks()
+    print("Cluster H release readiness check")
+    for result in results:
+        status = "PASS" if result.ok else "FAIL"
+        print(f"- {status} [{result.category}] {result.target}: {result.detail}")
+    return 0 if all(result.ok for result in results) else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

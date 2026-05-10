@@ -296,3 +296,15 @@ frontend-e2e-opt-in-workflow-check:
 
 cluster-g-closure-check:
 	$(PYTHON) scripts/check_cluster_g_closure.py
+
+beta-release-readiness-contract-check:
+	$(PYTHON) scripts/check_beta_release_readiness_contract.py
+
+staging-smoke-evidence-manifest:
+	$(PYTHON) scripts/generate_staging_smoke_evidence_manifest.py
+
+staging-smoke-evidence-manifest-check:
+	$(PYTHON) scripts/check_staging_smoke_evidence_manifest.py
+
+cluster-h-release-readiness-check:
+	$(PYTHON) scripts/check_cluster_h_release_readiness.py

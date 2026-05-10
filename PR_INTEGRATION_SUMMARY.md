@@ -463,3 +463,7 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 ## Cluster G Closure Release Evidence
 
 - Cluster G frontend closure and release-gate evidence wiring added.
+
+## Cluster H Release Readiness Baseline
+
+- Cluster H beta release readiness baseline added.
