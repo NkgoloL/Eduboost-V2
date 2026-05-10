@@ -316,3 +316,11 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster D Runtime Environment Gates
 
 - Cluster D runtime environment gates now cover production placeholders and dev-only endpoint exposure.
+
+## Production Key Vault Behavior
+
+- Production Key Vault behavior tests added for Cluster D.
+
+## Cluster D Closure
+
+- Cluster D closure command and production Key Vault behavior evidence added.

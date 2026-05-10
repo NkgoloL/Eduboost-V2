@@ -125,3 +125,6 @@ production-secret-placeholder-check:
 
 dev-only-endpoint-check:
 	$(PYTHON) scripts/check_dev_only_endpoint_exposure.py
+
+cluster-d-closure-check:
+	$(PYTHON) scripts/check_cluster_d_closure.py

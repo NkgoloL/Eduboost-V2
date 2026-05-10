@@ -25,3 +25,7 @@ make environment-security-check
 ```bash
 pytest -c pytest.ini tests/unit/test_environment_security_contract.py -q --no-cov
 ```
+
+## Production Key Vault Behavior
+
+- Production Key Vault behavior tests cover fail-closed and refresh paths.

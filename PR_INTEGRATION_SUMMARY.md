@@ -347,3 +347,11 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 ## Cluster D Runtime Environment Gates
 
 - Cluster D runtime gate evidence added for production placeholders and dev-only endpoint exposure.
+
+## Production Key Vault Behavior
+
+- Production Key Vault behavior tests added for Cluster D runtime gates.
+
+## Cluster D Closure
+
+- Cluster D closure command and production Key Vault behavior evidence added.

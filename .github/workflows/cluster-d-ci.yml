@@ -25,8 +25,11 @@ jobs:
           make production-secret-placeholder-check
           make deployment-readiness-docs-check
           make cluster-d-ci-check
+          make cluster-d-closure-check
           pytest -c pytest.ini \
             tests/unit/test_environment_security_contract.py \
+            tests/unit/test_cluster_d_closure_check.py \
+            tests/unit/test_production_key_vault_behavior.py \
             tests/unit/test_dev_only_endpoint_exposure.py \
             tests/unit/test_production_secret_placeholders.py \
             tests/unit/test_deployment_readiness_docs.py \

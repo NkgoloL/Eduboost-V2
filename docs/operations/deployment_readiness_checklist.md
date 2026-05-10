@@ -32,6 +32,10 @@
 Production must use Azure Key Vault for required secrets and must fail closed
 when `AZURE_KEY_VAULT_URL` is missing.
 
+## Cluster D Closure
+
+- `make cluster-d-closure-check`
+
 ## Release Evidence
 
 Before staging or production release, attach command output for all checklist

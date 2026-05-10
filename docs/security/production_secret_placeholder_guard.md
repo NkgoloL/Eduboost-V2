@@ -34,3 +34,7 @@ make production-secret-placeholder-check
 ```bash
 pytest -c pytest.ini tests/unit/test_production_secret_placeholders.py -q --no-cov
 ```
+
+## Production Key Vault Behavior
+
+- Production Key Vault behavior tests verify placeholder replacement and empty-secret failure.

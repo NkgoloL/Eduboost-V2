@@ -8,6 +8,11 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "docs/operations/cluster_d_closure_check.md",
+    "tests/unit/test_cluster_d_closure_check.py",
+    "scripts/check_cluster_d_closure.py",
+    "docs/security/production_key_vault_behavior.md",
+    "tests/unit/test_production_key_vault_behavior.py",
     "tests/unit/test_dev_only_endpoint_exposure.py",
     "tests/unit/test_production_secret_placeholders.py",
     "docs/security/dev_only_endpoint_exposure.md",
@@ -23,6 +28,14 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/operations/cluster_d_closure_check.md": (
+        "Cluster D Closure Check",
+        "make cluster-d-closure-check",
+    ),
+    "docs/security/production_key_vault_behavior.md": (
+        "Production Key Vault Behavior",
+        "empty Key Vault secret values fail closed",
+    ),
     "docs/security/dev_only_endpoint_exposure.md": (
         "Dev-Only Endpoint Exposure Guard",
         "HTTP_404_NOT_FOUND",
@@ -36,6 +49,7 @@ CONTENT_REQUIREMENTS = {
         "deployment-readiness-docs-check:",
         "production-secret-placeholder-check:",
         "dev-only-endpoint-check:",
+        "cluster-d-closure-check:",
     ),
     "app/core/config.py": (
         "def is_production(self) -> bool:",
