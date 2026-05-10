@@ -381,10 +381,33 @@ class Lesson(Base):
     language: Mapped[Language] = mapped_column(Enum(Language, values_callable=_enum_values), default=Language.ENGLISH)
     archetype: Mapped[ArchetypeLabel | None] = mapped_column(Enum(ArchetypeLabel, values_callable=_enum_values), nullable=True)
     content: Mapped[str] = mapped_column(Text, nullable=False)
+    caps_ref: Mapped[str | None] = mapped_column(String(80), nullable=True, index=True)
     caps_reference: Mapped[str | None] = mapped_column(String(220), nullable=True)
+    term: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    subtopic: Mapped[str | None] = mapped_column(String(160), nullable=True)
+    learning_objectives: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    explanation: Mapped[str | None] = mapped_column(Text, nullable=True)
+    worked_examples: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    practice_questions: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    answer_key: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    remediation_hints: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    difficulty_level: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    language_level: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    safety_classification: Mapped[str] = mapped_column(String(40), nullable=False, default="requires_review")
+    pii_check_passed: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    answer_key_verified: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     alignment_confidence: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
     quality_score: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
     trust_label: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
+    review_status: Mapped[str] = mapped_column(String(40), nullable=False, default="ai_generated")
+    reviewer_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
+    reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    prompt_template_version: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    provider: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    model_version: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    generation_latency_ms: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    token_usage: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
+    variant_type: Mapped[str] = mapped_column(String(40), nullable=False, default="standard")
     llm_provider: Mapped[str] = mapped_column(String(30), default="groq")
     served_from_cache: Mapped[bool] = mapped_column(Boolean, default=False)
     feedback_score: Mapped[int | None] = mapped_column(Integer, nullable=True)  # 1-5
@@ -396,8 +419,12 @@ class Lesson(Base):
         CheckConstraint("feedback_score IS NULL OR (feedback_score >= 1 AND feedback_score <= 5)", name="ck_lessons_feedback_score_range"),
         CheckConstraint("alignment_confidence >= 0 AND alignment_confidence <= 1", name="ck_lessons_alignment_confidence_range"),
         CheckConstraint("quality_score >= 0 AND quality_score <= 1", name="ck_lessons_quality_score_range"),
+        CheckConstraint("term IS NULL OR (term >= 1 AND term <= 4)", name="ck_lessons_term_range"),
+        CheckConstraint("generation_latency_ms >= 0", name="ck_lessons_generation_latency_non_negative"),
         Index("ix_lessons_created_at", "created_at"),
         Index("ix_lessons_caps_reference", "caps_reference"),
+        Index("ix_lessons_caps_ref_review_status", "caps_ref", "review_status"),
+        Index("ix_lessons_review_status", "review_status"),
     )
 
     learner: Mapped[LearnerProfile] = relationship("LearnerProfile", back_populates="lessons")

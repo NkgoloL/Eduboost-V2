@@ -15,9 +15,12 @@ from app.core.dependencies import get_current_user_id
 from app.domain.api_v2_models import JobAcceptedResponse
 from app.domain.schemas import LessonFeedback, LessonRequest, LessonResponse, LessonSyncRequest
 from app.modules.lessons.service import LessonService
+from app.modules.lessons import lesson_coverage_router, lesson_review_router
 from app.security.dependencies import require_learner_write_for_current_user, require_active_consent_for_current_user
 
 router = APIRouter(prefix="/lessons", tags=["lessons"])
+router.include_router(lesson_review_router.router)
+router.include_router(lesson_coverage_router.router)
 
 async def get_lesson_service(db: AsyncSession = Depends(get_db)) -> LessonService:
     return LessonService(db)

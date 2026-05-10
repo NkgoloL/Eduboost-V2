@@ -200,3 +200,13 @@ remediation-safety-contract-check:
 
 cluster-f-closure-check:
 	$(PYTHON) scripts/check_cluster_f_closure.py
+
+
+lesson-generate:
+	$(PYTHON) scripts/lessons/generate_lessons.py --caps-ref $(CAPS_REF) --n-lessons $(N) --difficulty $(DIFFICULTY)
+
+lesson-validate:
+	$(PYTHON) scripts/lessons/validate_lessons.py --caps-ref $(CAPS_REF)
+
+lesson-bank-check:
+	$(PYTHON) scripts/ci/ci_lesson_bank_check.py

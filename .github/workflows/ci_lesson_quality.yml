@@ -1,0 +1,371 @@
+# .github/workflows/ci_lesson_quality.yml
+#
+# L5-04, L5-05, L5-06, L5-07 — EduBoost SA Phase 5
+# CI workflow: AI Lesson Quality — runs on every PR touching the lessons
+# module and after every lesson generation batch merge to master.
+#
+# Jobs:
+#   1. lesson-threshold-check   (L5-04) — ≥8 approved lessons per launch caps_ref
+#   2. lesson-integrity-check   (L5-05) — all approved lessons pass validators
+#   3. lesson-regression-suite  (L5-06) — re-validate on prompt version change
+#   4. lesson-golden-tests      (L5-03) — golden prompt unit tests
+#   5. lesson-perf-test         (L5-07) — performance gate (staging only)
+
+name: AI Lesson Quality
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "app/modules/lessons/**"
+      - "app/repositories/lesson_repository.py"
+      - "app/domain/lesson.py"
+      - "scripts/ci_lesson_bank_check.py"
+      - "scripts/lesson_regression_suite.py"
+      - "tests/unit/modules/lessons/**"
+      - "tests/e2e/lesson_*.spec.ts"
+  pull_request:
+    paths:
+      - "app/modules/lessons/**"
+      - "app/repositories/lesson_repository.py"
+      - "app/domain/lesson.py"
+      - "scripts/ci_lesson_bank_check.py"
+      - "scripts/lesson_regression_suite.py"
+      - "tests/unit/modules/lessons/**"
+      - "tests/e2e/lesson_*.spec.ts"
+  # Also run full suite after a generation batch merge
+  workflow_dispatch:
+    inputs:
+      run_perf_tests:
+        description: "Run performance tests"
+        required: false
+        default: "false"
+        type: choice
+        options: ["true", "false"]
+
+env:
+  PYTHON_VERSION: "3.11"
+  NODE_VERSION: "20"
+
+# ---------------------------------------------------------------------------
+# Job 1: Lesson bank threshold check (L5-04)
+# ---------------------------------------------------------------------------
+
+jobs:
+  lesson-threshold-check:
+    name: "L5-04 | Lesson Bank Threshold (≥8 approved per caps_ref)"
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: eduboost_test
+          POSTGRES_USER: eduboost
+          POSTGRES_PASSWORD: testpass
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements/dev.txt
+
+      - name: Run Alembic migrations
+        env:
+          DATABASE_URL: postgresql://eduboost:testpass@localhost:5432/eduboost_test
+        run: |
+          alembic upgrade head
+          alembic check
+
+      - name: L5-04 — Lesson bank threshold check
+        env:
+          DATABASE_URL: postgresql://eduboost:testpass@localhost:5432/eduboost_test
+          MIN_APPROVED_LESSONS: "8"
+        run: |
+          python scripts/ci_lesson_bank_check.py \
+            --job threshold \
+            --output-json reports/lesson_threshold_report.json
+
+      - name: Upload threshold report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lesson-threshold-report
+          path: reports/lesson_threshold_report.json
+          retention-days: 30
+
+  # ---------------------------------------------------------------------------
+  # Job 2: Approved lesson integrity check (L5-05)
+  # ---------------------------------------------------------------------------
+
+  lesson-integrity-check:
+    name: "L5-05 | Approved Lesson Integrity (all validators pass)"
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: eduboost_test
+          POSTGRES_USER: eduboost
+          POSTGRES_PASSWORD: testpass
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements/dev.txt
+
+      - name: Run Alembic migrations
+        env:
+          DATABASE_URL: postgresql://eduboost:testpass@localhost:5432/eduboost_test
+        run: alembic upgrade head
+
+      - name: L5-05 — Approved lesson integrity check
+        env:
+          DATABASE_URL: postgresql://eduboost:testpass@localhost:5432/eduboost_test
+        run: |
+          python scripts/ci_lesson_bank_check.py \
+            --job validate \
+            --output-json reports/lesson_integrity_report.json
+
+      - name: Upload integrity report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lesson-integrity-report
+          path: reports/lesson_integrity_report.json
+          retention-days: 30
+
+  # ---------------------------------------------------------------------------
+  # Job 3: Lesson regression suite (L5-06)
+  # Runs on any PR that touches the lessons module or a prompt template.
+  # ---------------------------------------------------------------------------
+
+  lesson-regression-suite:
+    name: "L5-06 | Lesson Regression Suite (no approved lesson degrades)"
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: eduboost_test
+          POSTGRES_USER: eduboost
+          POSTGRES_PASSWORD: testpass
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements/dev.txt
+
+      - name: Run Alembic migrations
+        env:
+          DATABASE_URL: postgresql://eduboost:testpass@localhost:5432/eduboost_test
+        run: alembic upgrade head
+
+      - name: Detect prompt template version change
+        id: prompt_version
+        run: |
+          # Check if any prompt template file has changed in this commit range
+          if git diff --name-only HEAD~1 HEAD | grep -q "app/modules/lessons/prompts/"; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: L5-06 — Full regression suite
+        env:
+          DATABASE_URL: postgresql://eduboost:testpass@localhost:5432/eduboost_test
+        run: |
+          python scripts/lesson_regression_suite.py \
+            --output-report reports/lesson_regression_report.json
+
+      - name: Upload regression report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lesson-regression-report
+          path: reports/lesson_regression_report.json
+          retention-days: 30
+
+  # ---------------------------------------------------------------------------
+  # Job 4: Golden prompt unit tests (L5-03)
+  # ---------------------------------------------------------------------------
+
+  lesson-golden-tests:
+    name: "L5-03 | Golden Prompt Tests (mock provider, all validators pass)"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements/dev.txt
+
+      - name: L5-03 — Golden prompt tests
+        run: |
+          pytest tests/unit/modules/lessons/test_golden_prompts.py \
+            -v \
+            --tb=short \
+            --junitxml=reports/golden_tests.xml
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: golden-test-results
+          path: reports/golden_tests.xml
+          retention-days: 30
+
+      - name: Publish test summary
+        if: always()
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          files: reports/golden_tests.xml
+
+  # ---------------------------------------------------------------------------
+  # Job 5: E2E tests — lesson generation flow (L5-01) and fallback (L5-02)
+  # Runs only on push to master with full stack available.
+  # ---------------------------------------------------------------------------
+
+  lesson-e2e:
+    name: "L5-01 + L5-02 | E2E: Generation Flow + Provider Fallback"
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Start full docker-compose stack
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          docker compose up -d
+          # Wait for the stack to be healthy
+          timeout 120 bash -c 'until curl -sf http://localhost:8000/health; do sleep 5; done'
+          timeout 120 bash -c 'until curl -sf http://localhost:3000; do sleep 5; done'
+
+      - name: Run E2E lesson generation tests (L5-01 + L5-02)
+        env:
+          API_BASE_URL: "http://localhost:8000"
+          BASE_URL: "http://localhost:3000"
+          ADMIN_API_TOKEN: ${{ secrets.ADMIN_API_TOKEN }}
+          LEARNER_EMAIL: "learner@test.eduboost.sa"
+          LEARNER_PASSWORD: ${{ secrets.TEST_LEARNER_PASSWORD }}
+        run: |
+          npx playwright test \
+            tests/e2e/lesson_generation_flow.spec.ts \
+            tests/e2e/lesson_provider_fallback.spec.ts \
+            --project=chromium \
+            --reporter=list,junit
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-lesson-report
+          path: playwright-report/
+          retention-days: 14
+
+      - name: Stop docker-compose stack
+        if: always()
+        run: docker compose down -v
+
+  # ---------------------------------------------------------------------------
+  # Job 6: Performance tests (L5-07) — staging only, manual trigger
+  # ---------------------------------------------------------------------------
+
+  lesson-perf-test:
+    name: "L5-07 | Performance: generation p99 < 5s, validator p99 < 200ms"
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'workflow_dispatch' &&
+      github.event.inputs.run_perf_tests == 'true'
+    environment: staging
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements/dev.txt
+
+      - name: L5-07 — Performance tests
+        env:
+          API_BASE_URL: ${{ vars.STAGING_API_URL }}
+          LEARNER_TOKEN: ${{ secrets.STAGING_LEARNER_TOKEN }}
+        run: |
+          pytest tests/performance/test_lesson_generation_perf.py \
+            -v --performance \
+            --tb=short \
+            --junitxml=reports/perf_tests.xml
+
+      - name: Upload performance report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: perf-test-results
+          path: reports/perf_tests.xml
+          retention-days: 14
