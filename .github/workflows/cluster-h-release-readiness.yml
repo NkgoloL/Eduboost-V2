@@ -41,11 +41,19 @@ jobs:
           make generated-artifact-hygiene-check
           make branch-sync-rebase-checklist-check
           make pr-closeout-evidence-checklist-check
+          make beta-release-execution-plan-check
+          make beta-pr-body
+          make beta-pr-body-check
+          make final-release-verification-check
           make cluster-h-release-readiness-check
       - name: Run Cluster H release readiness tests
         run: |
           pytest -c pytest.ini \
             tests/unit/test_beta_release_readiness_contract.py \
+            tests/unit/test_cluster_h_execution_pr_verification_wiring.py \
+            tests/unit/test_final_release_verification_bundle.py \
+            tests/unit/test_beta_pr_body.py \
+            tests/unit/test_beta_release_execution_plan.py \
             tests/unit/test_cluster_h_release_hygiene_closeout.py \
             tests/unit/test_pr_closeout_evidence_checklist.py \
             tests/unit/test_branch_sync_rebase_checklist.py \

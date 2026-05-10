@@ -66,3 +66,9 @@ make project-release-closure-index-check
 - `docs/operations/generated_artifact_hygiene_contract.md`
 - `docs/operations/branch_sync_rebase_checklist.md`
 - `docs/operations/pr_closeout_evidence_checklist.md`
+
+## Release Execution PR Verification Evidence
+
+- `docs/operations/beta_release_execution_plan.md`
+- `docs/operations/beta_release_pr_body.md`
+- `docs/operations/final_release_verification_bundle.md`

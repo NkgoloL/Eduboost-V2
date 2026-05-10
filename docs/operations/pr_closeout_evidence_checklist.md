@@ -43,3 +43,9 @@ make cluster-h-closure-check
 ```bash
 make pr-closeout-evidence-checklist-check
 ```
+
+## Release Execution PR Verification Evidence
+
+- `docs/operations/beta_release_execution_plan.md`
+- `docs/operations/beta_release_pr_body.md`
+- `docs/operations/final_release_verification_bundle.md`

@@ -356,3 +356,18 @@ branch-sync-rebase-checklist-check:
 
 pr-closeout-evidence-checklist-check:
 	$(PYTHON) scripts/check_pr_closeout_evidence_checklist.py
+
+beta-release-execution-plan-check:
+	$(PYTHON) scripts/check_beta_release_execution_plan.py
+
+beta-pr-body:
+	$(PYTHON) scripts/generate_beta_pr_body.py
+
+beta-pr-body-check:
+	$(PYTHON) scripts/check_beta_pr_body.py
+
+final-release-verification-check:
+	$(PYTHON) scripts/check_final_release_verification_bundle.py
+
+final-release-verification:
+	$(PYTHON) scripts/check_final_release_verification_bundle.py --execute

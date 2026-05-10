@@ -9,6 +9,17 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_h_execution_pr_verification_wiring.py",
+    "tests/unit/test_final_release_verification_bundle.py",
+    "tests/unit/test_beta_pr_body.py",
+    "tests/unit/test_beta_release_execution_plan.py",
+    "scripts/check_final_release_verification_bundle.py",
+    "scripts/check_beta_pr_body.py",
+    "scripts/generate_beta_pr_body.py",
+    "scripts/check_beta_release_execution_plan.py",
+    "docs/operations/final_release_verification_bundle.md",
+    "docs/operations/beta_release_pr_body.md",
+    "docs/operations/beta_release_execution_plan.md",
     "tests/unit/test_cluster_h_release_hygiene_closeout.py",
     "tests/unit/test_pr_closeout_evidence_checklist.py",
     "tests/unit/test_branch_sync_rebase_checklist.py",
@@ -66,6 +77,18 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/operations/final_release_verification_bundle.md": (
+        "Final Release Verification Bundle",
+        "operator-controlled actions",
+    ),
+    "docs/operations/beta_release_pr_body.md": (
+        "Beta Release PR Body",
+        "make final-release-verification",
+    ),
+    "docs/operations/beta_release_execution_plan.md": (
+        "Beta Release Execution Plan",
+        "generated artifact conflict such as `coverage.xml`",
+    ),
     ".gitignore": (
         "coverage.xml",
         ".pytest_cache/",
@@ -149,6 +172,11 @@ CONTENT_REQUIREMENTS = {
         "generated-artifact-hygiene-check:",
         "branch-sync-rebase-checklist-check:",
         "pr-closeout-evidence-checklist-check:",
+        "beta-release-execution-plan-check:",
+        "beta-pr-body:",
+        "beta-pr-body-check:",
+        "final-release-verification-check:",
+        "final-release-verification:",
     ),
     "docs/operations/beta_release_readiness_contract.md": (
         "Beta Release Readiness Contract",
