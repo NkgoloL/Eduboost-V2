@@ -9,6 +9,16 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_h_execution_guardrail_closeout_checksum_wiring.py",
+    "tests/unit/test_cluster_h_release_evidence_checksum_index.py",
+    "tests/unit/test_final_project_closeout_attestation.py",
+    "tests/unit/test_release_owner_execution_guardrail.py",
+    "scripts/check_cluster_h_release_evidence_checksum_index.py",
+    "scripts/check_final_project_closeout_attestation.py",
+    "scripts/check_release_owner_execution_guardrail.py",
+    "docs/operations/cluster_h_release_evidence_checksum_index.md",
+    "docs/operations/final_project_closeout_attestation.md",
+    "docs/operations/release_owner_execution_guardrail.md",
     "tests/unit/test_cluster_h_post_terminal_handoff_archive_audit_wiring.py",
     "tests/unit/test_post_terminal_audit_readiness.py",
     "tests/unit/test_evidence_archive_completeness_guard.py",
@@ -168,6 +178,18 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/operations/cluster_h_release_evidence_checksum_index.md": (
+        "Cluster H Release Evidence Checksum Index",
+        "does not compute hashes automatically, approve production launch, execute deployment, or create release tags",
+    ),
+    "docs/operations/final_project_closeout_attestation.md": (
+        "Final Project Closeout Attestation",
+        "does not approve production launch, execute deployment, create release tags, or replace manual approval",
+    ),
+    "docs/operations/release_owner_execution_guardrail.md": (
+        "Release Owner Execution Guardrail",
+        "does not approve production launch, execute deployment, create release tags, or override manual approval",
+    ),
     "docs/operations/post_terminal_audit_readiness_assertion.md": (
         "Post-Terminal Audit Readiness Assertion",
         "does not approve production launch, execute deployment, create release tags, or replace manual approvals",
@@ -404,6 +426,9 @@ CONTENT_REQUIREMENTS = {
         "final-release-handoff-package-check:",
         "evidence-archive-completeness-guard-check:",
         "post-terminal-audit-readiness-check:",
+        "release-owner-execution-guardrail-check:",
+        "final-project-closeout-attestation-check:",
+        "cluster-h-release-evidence-checksum-index-check:",
     ),
     "docs/operations/beta_release_readiness_contract.md": (
         "Beta Release Readiness Contract",

@@ -73,11 +73,18 @@ jobs:
           make final-release-handoff-package-check
           make evidence-archive-completeness-guard-check
           make post-terminal-audit-readiness-check
+          make release-owner-execution-guardrail-check
+          make final-project-closeout-attestation-check
+          make cluster-h-release-evidence-checksum-index-check
           make cluster-h-release-readiness-check
       - name: Run Cluster H release readiness tests
         run: |
           pytest -c pytest.ini \
             tests/unit/test_beta_release_readiness_contract.py \
+            tests/unit/test_cluster_h_execution_guardrail_closeout_checksum_wiring.py \
+            tests/unit/test_cluster_h_release_evidence_checksum_index.py \
+            tests/unit/test_final_project_closeout_attestation.py \
+            tests/unit/test_release_owner_execution_guardrail.py \
             tests/unit/test_cluster_h_post_terminal_handoff_archive_audit_wiring.py \
             tests/unit/test_post_terminal_audit_readiness.py \
             tests/unit/test_evidence_archive_completeness_guard.py \

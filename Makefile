@@ -455,3 +455,12 @@ evidence-archive-completeness-guard-check:
 
 post-terminal-audit-readiness-check:
 	$(PYTHON) scripts/check_post_terminal_audit_readiness.py
+
+release-owner-execution-guardrail-check:
+	$(PYTHON) scripts/check_release_owner_execution_guardrail.py
+
+final-project-closeout-attestation-check:
+	$(PYTHON) scripts/check_final_project_closeout_attestation.py
+
+cluster-h-release-evidence-checksum-index-check:
+	$(PYTHON) scripts/check_cluster_h_release_evidence_checksum_index.py

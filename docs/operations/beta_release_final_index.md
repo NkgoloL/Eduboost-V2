@@ -70,3 +70,9 @@ make beta-release-final-index-check
 - `docs/operations/final_release_handoff_package.md`
 - `docs/operations/evidence_archive_completeness_guard.md`
 - `docs/operations/post_terminal_audit_readiness_assertion.md`
+
+## Execution Guardrail Closeout Checksum Evidence
+
+- `docs/operations/release_owner_execution_guardrail.md`
+- `docs/operations/final_project_closeout_attestation.md`
+- `docs/operations/cluster_h_release_evidence_checksum_index.md`

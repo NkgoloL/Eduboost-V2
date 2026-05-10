@@ -502,3 +502,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster H Post-Terminal Handoff Archive Audit
 
 - Cluster H post-terminal handoff, archive completeness, and audit readiness evidence added.
+
+## Cluster H Execution Guardrail Closeout Checksum
+
+- Cluster H release-owner execution guardrail, final project closeout attestation, and evidence checksum index added.

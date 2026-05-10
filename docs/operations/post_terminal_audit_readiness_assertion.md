@@ -44,3 +44,9 @@ This assertion records audit readiness only. It does not approve production laun
 ```bash
 make post-terminal-audit-readiness-check
 ```
+
+## Execution Guardrail Closeout Checksum Evidence
+
+- `docs/operations/release_owner_execution_guardrail.md`
+- `docs/operations/final_project_closeout_attestation.md`
+- `docs/operations/cluster_h_release_evidence_checksum_index.md`

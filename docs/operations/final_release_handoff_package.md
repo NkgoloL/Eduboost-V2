@@ -50,3 +50,9 @@ This handoff package records post-terminal evidence transfer. It does not approv
 ```bash
 make final-release-handoff-package-check
 ```
+
+## Execution Guardrail Closeout Checksum Evidence
+
+- `docs/operations/release_owner_execution_guardrail.md`
+- `docs/operations/final_project_closeout_attestation.md`
+- `docs/operations/cluster_h_release_evidence_checksum_index.md`

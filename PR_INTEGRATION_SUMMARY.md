@@ -523,3 +523,7 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 ## Cluster H Post-Terminal Handoff Archive Audit
 
 - Cluster H post-terminal handoff, archive completeness, and audit readiness evidence added.
+
+## Cluster H Execution Guardrail Closeout Checksum
+
+- Cluster H release-owner execution guardrail, final project closeout attestation, and evidence checksum index added.
