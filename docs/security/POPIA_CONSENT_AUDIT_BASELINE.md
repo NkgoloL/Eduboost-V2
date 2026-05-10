@@ -93,3 +93,7 @@ pytest -c pytest.ini tests/unit/test_generate_consent_gate_inventory.py tests/un
 ## POPIA Negative Consent Evidence
 
 - Negative consent evidence includes denial-path and route-source guards.
+
+## Cluster C Closure Stamp
+
+- Cluster C closure stamp records the POPIA consent/audit boundary as first-pass closed.

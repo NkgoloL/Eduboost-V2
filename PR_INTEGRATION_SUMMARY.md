@@ -337,3 +337,5 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 - Diagnostics central consent adapter source normalization added.
 
 - POPIA negative consent evidence added for denial paths and central route-source usage.
+
+- Cluster C POPIA consent/audit closure stamp recorded.

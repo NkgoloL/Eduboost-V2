@@ -9,6 +9,12 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
 REQUIRED_FILES = (
+    "tests/unit/test_popia_consent_cluster_c_closure_stamp.py",
+    "docs/security/popia_consent_closure_ci.md",
+    "docs/security/popia_consent_closure_check.md",
+    "tests/unit/test_popia_consent_closure_ci_contract.py",
+    "tests/unit/test_popia_consent_closure_check.py",
+    "scripts/check_popia_consent_closure.py",
     "docs/security/active_consent_route_sources.md",
     "tests/unit/test_active_consent_route_sources.py",
     "scripts/check_active_consent_route_sources.py",
@@ -59,6 +65,14 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/security/popia_consent_closure_ci.md": (
+        "POPIA Consent Closure CI",
+        "make popia-consent-closure-check",
+    ),
+    "docs/security/popia_consent_closure_check.md": (
+        "POPIA Consent Closure Check",
+        "make popia-consent-closure-check",
+    ),
     "scripts/check_active_consent_route_sources.py": (
         "CENTRAL_CONSENT",
         "does not bypass central adapter",
@@ -96,6 +110,7 @@ CONTENT_REQUIREMENTS = {
         "POPIA Consent Gate Closure Report",
         "make popia-consent-boundary-check",
         "rights_exercise_not_active_consent_blocked",
+        "Cluster C Closure Stamp",
     ),
     "docs/security/ether_onboarding_consent_gate.md": (
         "Ether Onboarding Consent Boundary",
@@ -141,6 +156,7 @@ CONTENT_REQUIREMENTS = {
         "popia-consent-order-check:",
         "popia-consent-rejection-audit-check:",
         "popia-consent-source-check:",
+        "popia-consent-closure-check:",
     ),
     "scripts/generate_consent_gate_inventory.py": (
         "ConsentGateRow",
@@ -163,6 +179,7 @@ CONTENT_REQUIREMENTS = {
         "make popia-consent-gate-check",
         "make popia-consent-order-check",
         "make popia-consent-rejection-audit-check",
+        "make popia-consent-closure-check",
     ),
     "docs/security/POPIA_CONSENT_AUDIT_BASELINE.md": (
         "POPIA Consent and Audit Baseline",

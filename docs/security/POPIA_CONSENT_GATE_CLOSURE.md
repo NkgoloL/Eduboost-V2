@@ -55,3 +55,26 @@ make popia-consent-boundary-check
 ## POPIA Negative Consent Evidence
 
 - Negative consent evidence now covers adapter denial paths and central route-source usage.
+
+## Cluster C Closure Stamp
+
+Stamped: 2026-05-10T01:14:17Z
+
+The first-pass POPIA consent/audit boundary is closed by:
+
+- `make popia-consent-closure-check`
+- `make popia-consent-gate-check`
+- `make audit-contract-check`
+- `make popia-consent-audit-check`
+- `make popia-consent-boundary-check`
+- `make popia-consent-order-check`
+- `make popia-consent-source-check`
+- `make popia-consent-rejection-audit-check`
+
+Closure artifacts:
+
+- `docs/security/popia_consent_gate_inventory.md`
+- `docs/security/popia_consent_boundary_matrix.md`
+- `docs/security/popia_consent_closure_check.md`
+- `docs/security/popia_consent_closure_ci.md`
+

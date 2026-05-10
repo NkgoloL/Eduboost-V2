@@ -107,3 +107,6 @@ popia-consent-rejection-audit-check:
 
 popia-consent-source-check:
 	$(PYTHON) scripts/check_active_consent_route_sources.py
+
+popia-consent-closure-check:
+	$(PYTHON) scripts/check_popia_consent_closure.py

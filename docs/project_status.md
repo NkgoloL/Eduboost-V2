@@ -304,3 +304,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## POPIA Negative Consent Evidence
 
 - POPIA negative-consent evidence includes adapter denial paths and central route-source checks.
+
+## Cluster C Closure Stamp
+
+- Cluster C POPIA consent/audit closure stamp recorded.

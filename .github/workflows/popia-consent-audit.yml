@@ -28,6 +28,7 @@ jobs:
           make audit-contract-check
           make popia-consent-gate-check
           make popia-consent-rejection-audit-check
+          make popia-consent-closure-check
           make popia-consent-order-check
           make popia-consent-source-check
           make popia-consent-boundary-check
@@ -44,3 +45,5 @@ jobs:
             tests/unit/test_popia_consent_boundary_matrix_check.py \
             tests/unit/test_generate_popia_consent_boundary_matrix.py \
             -q --no-cov
+
+            tests/unit/test_popia_consent_closure_check.py \
