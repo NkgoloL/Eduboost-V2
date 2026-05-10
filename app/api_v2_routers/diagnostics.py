@@ -26,8 +26,14 @@ from app.services.caps_validator import CAPSAlignmentValidator
 from app.core.metrics import ITEM_BANK_COVERAGE_RATIO
 from app.modules.diagnostics.item_bank_service import ItemBankService
 from app.repositories.item_bank_repository import ItemBankRepository
+from app.modules.diagnostics import bias_review_router
+from app.modules.diagnostics.diagnostic_session_service import DiagnosticSessionService
+from app.modules.diagnostics.session_recovery_service import SessionRecoveryService
+from app.repositories.diagnostic_session_repository import DiagnosticSessionRepository
+from app.repositories.mastery_repository import MasteryRepository
 
 router = APIRouter(prefix="/diagnostics", tags=["diagnostics"])
+router.include_router(bias_review_router.router)
 _engine = DiagnosticEngine()
 _caps_validator = CAPSAlignmentValidator()
 
@@ -219,3 +225,79 @@ async def review_item_bank_item(
         "reviewer_id": str(item.reviewer_id) if item.reviewer_id else None,
         "reviewed_at": item.reviewed_at.isoformat() if item.reviewed_at else None,
     }
+
+
+class DiagnosticSessionStartRequest(BaseModel):
+    learner_id: UUID
+    caps_ref: str
+    theta: float = 0.0
+
+
+class DiagnosticSessionResponseRequest(BaseModel):
+    item_id: UUID
+    correct: bool
+    response: str | None = None
+
+
+@router.post("/sessions", status_code=status.HTTP_201_CREATED)
+async def start_diagnostic_session(
+    body: DiagnosticSessionStartRequest,
+    db: AsyncSession = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    require_learner_write_for_current_user(current_user, str(body.learner_id))
+    await require_active_consent_for_current_user(db, current_user, str(body.learner_id))
+    service = DiagnosticSessionService(
+        session_repository=DiagnosticSessionRepository(db),
+        mastery_repository=MasteryRepository(db),
+        recovery_service=SessionRecoveryService(),
+    )
+    snap = await service.start_session(body.learner_id, body.caps_ref, theta=body.theta)
+    return snap.__dict__
+
+
+@router.get("/sessions/{session_id}/recover")
+async def recover_diagnostic_session(session_id: UUID):
+    snap = await DiagnosticSessionService(recovery_service=SessionRecoveryService()).recover_session(session_id)
+    if snap is None:
+        raise HTTPException(status_code=404, detail="No recoverable diagnostic session")
+    return snap.__dict__
+
+
+@router.get("/sessions/{session_id}/next-item")
+async def diagnostic_next_item(
+    session_id: UUID,
+    caps_ref: str,
+    db: AsyncSession = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    repo = ItemBankRepository(db)
+    items = list(await repo.list_by_caps_ref(caps_ref, limit=200))
+    item = await DiagnosticSessionService(recovery_service=SessionRecoveryService()).get_next_item(session_id, items)
+    if item is None:
+        return {"completed": True}
+    return {
+        "completed": False,
+        "item_id": str(item.item_id),
+        "caps_ref": item.caps_ref,
+        "stem": item.stem,
+        "options": item.options,
+    }
+
+
+@router.post("/sessions/{session_id}/respond")
+async def diagnostic_respond(
+    session_id: UUID,
+    body: DiagnosticSessionResponseRequest,
+    db: AsyncSession = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    item = await ItemBankRepository(db).get_item(body.item_id)
+    if item is None:
+        raise HTTPException(status_code=404, detail="Diagnostic item not found")
+    result = await DiagnosticSessionService(
+        session_repository=DiagnosticSessionRepository(db),
+        mastery_repository=MasteryRepository(db),
+        recovery_service=SessionRecoveryService(),
+    ).submit_response(session_id, item, correct=body.correct, response=body.response)
+    return result.__dict__

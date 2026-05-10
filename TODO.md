@@ -287,13 +287,13 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 ## 7.1 IRT diagnostic engine
 
 - [ ] `[critical]` Define diagnostic item schema: item ID, subject, grade, topic, skill, difficulty, discrimination, correct answer, distractors, explanation, and CAPS reference.
-- [ ] `[critical]` Validate IRT parameters for difficulty bounds, discrimination bounds, probability output, overflow, and invalid input.
-- [ ] `[critical]` Add tests for probability of correctness, Fisher information, ability update, edge responses, empty responses, all-correct, and all-incorrect.
-- [ ] `[high]` Add item calibration workflow.
-- [ ] `[high]` Add item exposure limits so learners do not repeatedly see the same questions.
-- [ ] `[high]` Add diagnostic session recovery after disconnect.
-- [ ] `[medium]` Add confidence intervals for ability estimates.
-- [ ] `[medium]` Add item bias review across language, region, and socioeconomic context.
+- [x] `[critical]` Validate IRT parameters for difficulty bounds, discrimination bounds, probability output, overflow, and invalid input.
+- [x] `[critical]` Add tests for probability of correctness, Fisher information, ability update, edge responses, empty responses, all-correct, and all-incorrect.
+- [x] `[high]` Add item calibration workflow.
+- [x] `[high]` Add item exposure limits so learners do not repeatedly see the same questions.
+- [x] `[high]` Add diagnostic session recovery after disconnect.
+- [x] `[medium]` Add confidence intervals for ability estimates.
+- [x] `[medium]` Add item bias review across language, region, and socioeconomic context.
 
 ## 7.2 Assessment content
 
@@ -301,15 +301,15 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 - [ ] `[critical]` Add item review status: draft, AI-generated, human-reviewed, approved, retired.
 - [ ] `[high]` Add distractor quality review and explanation quality review.
 - [ ] `[medium]` Tag items by misconception.
-- [ ] `[medium]` Add adaptive practice generator based on diagnostic gaps.
-- [ ] `[medium]` Add spaced repetition and retrieval practice.
+- [x] `[medium]` Add adaptive practice generator based on diagnostic gaps.
+- [x] `[medium]` Add spaced repetition and retrieval practice.
 
 ## 7.3 Progress model
 
-- [ ] `[critical]` Define mastery model combining diagnostic estimate, practice performance, recency, consistency, and confidence.
-- [ ] `[high]` Add progress timelines per learner.
-- [ ] `[high]` Add subject-level and topic-level mastery.
-- [ ] `[medium]` Add learning velocity, risk-of-falling-behind signal, and next-best-activity recommendation.
+- [x] `[critical]` Define mastery model combining diagnostic estimate, practice performance, recency, consistency, and confidence.
+- [x] `[high]` Add progress timelines per learner.
+- [x] `[high]` Add subject-level and topic-level mastery.
+- [x] `[medium]` Add learning velocity, risk-of-falling-behind signal, and next-best-activity recommendation.
 - [ ] `[research]` Evaluate Bayesian Knowledge Tracing or Deep Knowledge Tracing once enough usage data exists.
 
 ---

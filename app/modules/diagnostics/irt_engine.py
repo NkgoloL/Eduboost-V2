@@ -653,3 +653,105 @@ class _ItemProxy:
     discrimination_a = 1.0
     difficulty_b = 0.0
     guessing_c = 0.25
+
+
+# ---------------------------------------------------------------------------
+# Diagnostics assessment roadmap section 4: hardened 3PL helpers
+# ---------------------------------------------------------------------------
+
+class IrtParameterError(ValueError):
+    """Raised when an IRT parameter is outside the live-session range."""
+
+
+def _is_finite(value: float) -> bool:
+    return isinstance(value, (int, float)) and math.isfinite(float(value))
+
+
+def clamp_theta(theta: float, *, minimum: float = -4.0, maximum: float = 4.0) -> float:
+    """Clamp theta to the supported live-session range."""
+    if not _is_finite(theta):
+        raise IrtParameterError("theta must be finite")
+    clamped = max(minimum, min(maximum, float(theta)))
+    if clamped != float(theta):
+        log.warning("irt_theta_clamped", theta=theta, clamped=clamped)
+    return round(clamped, 4)
+
+
+def validate_irt_parameters(theta: float, a: float, b: float, c: float = 0.25) -> None:
+    """Validate live-session 3PL parameters before scoring an item."""
+    values = {"theta": theta, "a": a, "b": b, "c": c}
+    for name, value in values.items():
+        if not _is_finite(value):
+            raise IrtParameterError(f"{name} must be finite")
+    if not 0.5 <= float(a) <= 2.5:
+        raise IrtParameterError("discrimination a must be in [0.5, 2.5]")
+    if not -3.0 <= float(b) <= 3.0:
+        raise IrtParameterError("difficulty b must be in [-3.0, 3.0]")
+    if not 0.0 <= float(c) <= 0.35:
+        raise IrtParameterError("guessing c must be in [0.0, 0.35]")
+
+
+def p_correct_3pl(theta: float, a: float, b: float, c: float = 0.25) -> float:
+    """Compute clamped 3PL correctness probability in [c, 1.0]."""
+    validate_irt_parameters(theta, a, b, c)
+    theta = clamp_theta(theta)
+    exponent = max(-60.0, min(60.0, -float(a) * (theta - float(b))))
+    logistic = 1.0 / (1.0 + math.exp(exponent))
+    probability = float(c) + (1.0 - float(c)) * logistic
+    return max(float(c), min(1.0 - 1e-12, probability))
+
+
+def fisher_information_3pl(theta: float, a: float, b: float, c: float = 0.25) -> float:
+    """Fisher information for the EduBoost 3PL diagnostic model."""
+    p = p_correct_3pl(theta, a, b, c)
+    numerator = (float(a) ** 2) * ((p - float(c)) ** 2)
+    denominator = ((1.0 - float(c)) ** 2) * p * (1.0 - p)
+    return max(0.0, numerator / max(denominator, 1e-12))
+
+
+def standard_error_from_information(theta: float, items: list[object]) -> float:
+    """Compute standard error from summed Fisher information."""
+    total = 0.0
+    for item in items:
+        a = float(getattr(item, "discrimination_a", getattr(item, "a_param", 1.0)) or 1.0)
+        b = float(getattr(item, "difficulty_b", getattr(item, "b_param", 0.0)) or 0.0)
+        c = float(getattr(item, "guessing_c", 0.25) or 0.25)
+        total += fisher_information_3pl(theta, a, b, c)
+    if total <= 0.0:
+        return 1.0
+    return round(1.0 / math.sqrt(total), 4)
+
+
+def eap_update_3pl(
+    responses: list[tuple[object, bool]],
+    *,
+    prior_mean: float = 0.0,
+    prior_sd: float = 1.0,
+    theta_min: float = -4.0,
+    theta_max: float = 4.0,
+    step: float = 0.1,
+) -> tuple[float, float]:
+    """Expected A Posteriori theta update with standard normal prior."""
+    if not responses:
+        return clamp_theta(prior_mean), 1.0
+    grid = []
+    value = theta_min
+    while value <= theta_max + 1e-9:
+        grid.append(round(value, 4))
+        value += step
+    weights = []
+    for theta in grid:
+        prior = math.exp(-0.5 * (((theta - prior_mean) / prior_sd) ** 2))
+        likelihood = 1.0
+        for item, correct in responses:
+            a = float(getattr(item, "discrimination_a", getattr(item, "a_param", 1.0)) or 1.0)
+            b = float(getattr(item, "difficulty_b", getattr(item, "b_param", 0.0)) or 0.0)
+            c = float(getattr(item, "guessing_c", 0.25) or 0.25)
+            probability = p_correct_3pl(theta, a, b, c)
+            likelihood *= max(1e-12, probability if correct else (1.0 - probability))
+        weights.append(prior * likelihood)
+    total = sum(weights) or 1.0
+    posterior = [w / total for w in weights]
+    theta_hat = sum(theta * weight for theta, weight in zip(grid, posterior, strict=True))
+    variance = sum(((theta - theta_hat) ** 2) * weight for theta, weight in zip(grid, posterior, strict=True))
+    return clamp_theta(theta_hat), round(math.sqrt(max(variance, 1e-12)), 4)

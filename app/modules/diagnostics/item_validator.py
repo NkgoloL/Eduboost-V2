@@ -141,14 +141,20 @@ class ItemValidator:
             # Handle both list and dict formats for robustness
             topics = self._topic_map["topics"]
             if isinstance(topics, list):
-                for t in topics:
-                    if "caps_ref" in t:
-                        self._valid_caps_refs.add(t["caps_ref"])
-                    for st in t.get("subtopics", []):
-                        if "caps_ref" in st:
-                            self._valid_caps_refs.add(st["caps_ref"])
+                self._index_topic_list(topics)
             elif isinstance(topics, dict):
                 self._valid_caps_refs.update(topics.keys())
+        elif "terms" in self._topic_map:
+            for term in self._topic_map.get("terms", []):
+                self._index_topic_list(term.get("topics", []))
+
+    def _index_topic_list(self, topics: list[dict]) -> None:
+        for t in topics:
+            if "caps_ref" in t:
+                self._valid_caps_refs.add(t["caps_ref"])
+            for st in t.get("subtopics", []):
+                if "caps_ref" in st:
+                    self._valid_caps_refs.add(st["caps_ref"])
 
     # ─── Main entry point ────────────────────────────────────────────────────
 

@@ -83,6 +83,7 @@ async def generic_options(full_path: str):
 
 
 # ── Routers ───────────────────────────────────────────────────────────────────
+from app.modules.practice import router as practice_router  # noqa: E402
 from app.api_v2_routers import (  # noqa: E402
     auth,
     billing,
@@ -107,6 +108,7 @@ for prefix in (API_V2, "/v2"):
     app.include_router(lessons.router, prefix=prefix)
     app.include_router(study_plans.router, prefix=prefix)
     app.include_router(diagnostics.router, prefix=prefix)
+    app.include_router(practice_router.router, prefix=prefix)
     app.include_router(gamification.router, prefix=prefix)
     app.include_router(onboarding.router, prefix=prefix)
     app.include_router(parents.router, prefix=prefix)

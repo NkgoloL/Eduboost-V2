@@ -15,6 +15,7 @@ Release cadence:
 ## [Unreleased]
 
 ### Added
+- Integrated the diagnostics assessment roadmap implementation: hardened 3PL IRT parameter validation, EAP updates, SE computation, MFIS item selection, termination rules, Redis-style session recovery, mastery/progress services, adaptive practice, spaced repetition, calibration, bias review routing, learning-science docs, migrations, CI checks, and focused tests.
 - Integrated the CAPS Grade 4 Mathematics item-bank phase bundle: diagnostic session orchestration services, lesson context and study-plan update helpers, coverage matrix generation, CI coverage/validation tests, Playwright diagnostic-flow coverage, Grafana dashboard provisioning, and Alertmanager rules.
 - Added item-bank Makefile targets for validation, seeding, coverage assertions, coverage matrix generation, E2E checks, performance checks, and release-candidate tagging.
 - Added admin-facing item-bank coverage and review endpoints under the diagnostics router.
