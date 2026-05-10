@@ -60,3 +60,9 @@ make beta-release-readiness-contract-check
 - `docs/operations/release_approval_workflow_contract.md`
 - `docs/operations/release_candidate_tag_manifest.md`
 - `docs/operations/CLUSTER_H_CLOSURE.md`
+
+## Final Project Closure Evidence
+
+- `docs/operations/release_artifact_retention_contract.md`
+- `docs/operations/beta_release_final_checklist.md`
+- `docs/operations/project_release_closure_index.md`

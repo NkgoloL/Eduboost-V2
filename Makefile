@@ -338,3 +338,12 @@ release-candidate-tag-manifest-check:
 
 cluster-h-closure-check:
 	$(PYTHON) scripts/check_cluster_h_closure.py
+
+release-artifact-retention-contract-check:
+	$(PYTHON) scripts/check_release_artifact_retention_contract.py
+
+beta-release-final-checklist-check:
+	$(PYTHON) scripts/check_beta_release_final_checklist.py
+
+project-release-closure-index-check:
+	$(PYTHON) scripts/check_project_release_closure_index.py

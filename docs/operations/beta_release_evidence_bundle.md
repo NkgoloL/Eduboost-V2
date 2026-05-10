@@ -36,3 +36,9 @@ The beta release evidence bundle indexes release artifacts. It does not replace 
 ```bash
 make beta-release-evidence-bundle
 ```
+
+## Final Project Closure Evidence
+
+- `docs/operations/release_artifact_retention_contract.md`
+- `docs/operations/beta_release_final_checklist.md`
+- `docs/operations/project_release_closure_index.md`

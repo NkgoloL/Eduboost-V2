@@ -35,3 +35,9 @@ EduBoost V2 to a staging environment.
 
 Production promotion is blocked unless staging evidence is attached to the PR
 or release record.
+
+## Final Project Closure Evidence
+
+- `docs/operations/release_artifact_retention_contract.md`
+- `docs/operations/beta_release_final_checklist.md`
+- `docs/operations/project_release_closure_index.md`

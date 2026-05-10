@@ -57,3 +57,9 @@
 - `make cluster-e-closure-check`
 - `make cluster-f-closure-check`
 - `make cluster-g-closure-check`
+
+## Final Project Closure Evidence
+
+- `docs/operations/release_artifact_retention_contract.md`
+- `docs/operations/beta_release_final_checklist.md`
+- `docs/operations/project_release_closure_index.md`

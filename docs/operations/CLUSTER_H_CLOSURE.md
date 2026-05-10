@@ -46,3 +46,9 @@ defined and CI-checkable. It does not authorize unrestricted production launch.
 ## Closure Stamp
 
 Cluster H is first-pass closed when `make cluster-h-closure-check` passes.
+
+## Final Project Closure Evidence
+
+- `docs/operations/release_artifact_retention_contract.md`
+- `docs/operations/beta_release_final_checklist.md`
+- `docs/operations/project_release_closure_index.md`

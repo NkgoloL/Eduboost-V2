@@ -9,6 +9,16 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_h_final_project_closure_wiring.py",
+    "tests/unit/test_project_release_closure_index.py",
+    "tests/unit/test_beta_release_final_checklist.py",
+    "tests/unit/test_release_artifact_retention_contract.py",
+    "scripts/check_project_release_closure_index.py",
+    "scripts/check_beta_release_final_checklist.py",
+    "scripts/check_release_artifact_retention_contract.py",
+    "docs/operations/project_release_closure_index.md",
+    "docs/operations/beta_release_final_checklist.md",
+    "docs/operations/release_artifact_retention_contract.md",
     "tests/unit/test_cluster_h_bundle_approval_closure.py",
     "tests/unit/test_cluster_h_closure.py",
     "tests/unit/test_release_candidate_tag_manifest.py",
@@ -46,6 +56,18 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/operations/project_release_closure_index.md": (
+        "Project Release Closure Index",
+        "Staging and Beta Release Closure",
+    ),
+    "docs/operations/beta_release_final_checklist.md": (
+        "Beta Release Final Checklist",
+        "no unrestricted production launch",
+    ),
+    "docs/operations/release_artifact_retention_contract.md": (
+        "Release Artifact Retention Contract",
+        "generated coverage output is not treated as release evidence",
+    ),
     ".github/workflows/beta-release-approval.yml": (
         "workflow_dispatch:",
         "make beta-release-evidence-bundle",
@@ -95,6 +117,9 @@ CONTENT_REQUIREMENTS = {
         "release-candidate-tag-manifest:",
         "release-candidate-tag-manifest-check:",
         "cluster-h-closure-check:",
+        "release-artifact-retention-contract-check:",
+        "beta-release-final-checklist-check:",
+        "project-release-closure-index-check:",
     ),
     "docs/operations/beta_release_readiness_contract.md": (
         "Beta Release Readiness Contract",

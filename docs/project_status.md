@@ -454,3 +454,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster H Release Bundle Approval Closure
 
 - Cluster H release bundle, approval workflow, tag manifest, and closure check added.
+
+## Cluster H Final Project Release Closure
+
+- Cluster H final project release closure, retention, and checklist evidence added.
