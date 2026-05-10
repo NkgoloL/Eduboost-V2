@@ -9,6 +9,17 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_h_operational_release_controls.py",
+    "tests/unit/test_post_deploy_staging_smoke_checklist.py",
+    "tests/unit/test_beta_rollback_runbook.py",
+    "tests/unit/test_beta_signoff_manifest.py",
+    "docs/operations/post_deploy_staging_smoke_checklist.md",
+    "docs/operations/beta_rollback_runbook.md",
+    "docs/operations/beta_signoff_manifest.md",
+    "scripts/check_post_deploy_staging_smoke_checklist.py",
+    "scripts/check_beta_rollback_runbook.py",
+    "scripts/check_beta_signoff_manifest.py",
+    "scripts/generate_beta_signoff_manifest.py",
     "docs/operations/beta_release_readiness_contract.md",
     "docs/operations/staging_smoke_evidence_manifest.md",
     "scripts/check_beta_release_readiness_contract.py",
@@ -19,11 +30,28 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/operations/post_deploy_staging_smoke_checklist.md": (
+        "Post-Deploy Staging Smoke Checklist",
+        "auth/consent denial UX contract passes",
+    ),
+    "docs/operations/beta_rollback_runbook.md": (
+        "Beta Rollback Runbook",
+        "Deploy last known good artifact or revert the release commit",
+    ),
+    "docs/operations/beta_signoff_manifest.md": (
+        "Beta Sign-Off Manifest",
+        "rollback owner sign-off",
+        "valid only for the referenced commit and release candidate",
+    ),
     "Makefile": (
         "beta-release-readiness-contract-check:",
         "staging-smoke-evidence-manifest:",
         "staging-smoke-evidence-manifest-check:",
         "cluster-h-release-readiness-check:",
+        "beta-signoff-manifest:",
+        "beta-signoff-manifest-check:",
+        "beta-rollback-runbook-check:",
+        "post-deploy-staging-smoke-checklist-check:",
     ),
     "docs/operations/beta_release_readiness_contract.md": (
         "Beta Release Readiness Contract",

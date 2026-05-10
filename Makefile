@@ -308,3 +308,15 @@ staging-smoke-evidence-manifest-check:
 
 cluster-h-release-readiness-check:
 	$(PYTHON) scripts/check_cluster_h_release_readiness.py
+
+beta-signoff-manifest:
+	$(PYTHON) scripts/generate_beta_signoff_manifest.py
+
+beta-signoff-manifest-check:
+	$(PYTHON) scripts/check_beta_signoff_manifest.py
+
+beta-rollback-runbook-check:
+	$(PYTHON) scripts/check_beta_rollback_runbook.py
+
+post-deploy-staging-smoke-checklist-check:
+	$(PYTHON) scripts/check_post_deploy_staging_smoke_checklist.py

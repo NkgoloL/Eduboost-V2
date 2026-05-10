@@ -467,3 +467,7 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 ## Cluster H Release Readiness Baseline
 
 - Cluster H beta release readiness baseline added.
+
+## Cluster H Operational Release Controls
+
+- Cluster H operational release controls added: sign-off manifest, rollback runbook, and post-deploy smoke checklist.

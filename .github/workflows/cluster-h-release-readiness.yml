@@ -21,15 +21,23 @@ jobs:
           if [ -f requirements/dev.txt ]; then pip install -r requirements/dev.txt; fi
       - name: Generate staging smoke evidence
         run: make staging-smoke-evidence-manifest
+          make beta-signoff-manifest
       - name: Check Cluster H release readiness
         run: |
           make beta-release-readiness-contract-check
           make staging-smoke-evidence-manifest-check
+          make beta-signoff-manifest-check
+          make beta-rollback-runbook-check
+          make post-deploy-staging-smoke-checklist-check
           make cluster-h-release-readiness-check
       - name: Run Cluster H release readiness tests
         run: |
           pytest -c pytest.ini \
             tests/unit/test_beta_release_readiness_contract.py \
+            tests/unit/test_cluster_h_operational_release_controls.py \
+            tests/unit/test_post_deploy_staging_smoke_checklist.py \
+            tests/unit/test_beta_rollback_runbook.py \
+            tests/unit/test_beta_signoff_manifest.py \
             tests/unit/test_staging_smoke_evidence_manifest.py \
             tests/unit/test_cluster_h_release_readiness.py \
             -q --no-cov

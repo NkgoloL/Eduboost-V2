@@ -47,3 +47,9 @@ backup/restore readiness, and documented release evidence.
 ```bash
 make beta-release-readiness-contract-check
 ```
+
+## Operational Release Control Evidence
+
+- `docs/operations/beta_signoff_manifest.md`
+- `docs/operations/beta_rollback_runbook.md`
+- `docs/operations/post_deploy_staging_smoke_checklist.md`

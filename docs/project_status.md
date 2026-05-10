@@ -436,3 +436,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster H Release Readiness Baseline
 
 - Cluster H beta release readiness baseline added.
+
+## Cluster H Operational Release Controls
+
+- Cluster H operational release controls added: sign-off manifest, rollback runbook, and post-deploy smoke checklist.
