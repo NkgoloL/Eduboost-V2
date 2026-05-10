@@ -230,3 +230,9 @@ learner-vertical-journey-contract-check:
 
 cluster-g-frontend-check:
 	$(PYTHON) scripts/check_cluster_g_frontend_evidence.py
+
+parent-vertical-journey-contract-check:
+	$(PYTHON) scripts/check_parent_vertical_journey_contract.py
+
+frontend-auth-consent-denial-check:
+	$(PYTHON) scripts/check_frontend_auth_consent_denial_contract.py

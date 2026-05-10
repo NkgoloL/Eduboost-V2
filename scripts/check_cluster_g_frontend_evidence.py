@@ -9,6 +9,13 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_g_parent_denial_evidence.py",
+    "tests/unit/test_frontend_auth_consent_denial_contract.py",
+    "tests/unit/test_parent_vertical_journey_contract.py",
+    "docs/frontend/frontend_auth_consent_denial_contract.md",
+    "docs/frontend/parent_vertical_journey_contract.md",
+    "scripts/check_frontend_auth_consent_denial_contract.py",
+    "scripts/check_parent_vertical_journey_contract.py",
     "scripts/generate_frontend_route_inventory.py",
     "scripts/check_frontend_route_inventory.py",
     "scripts/check_learner_vertical_journey_contract.py",
@@ -19,10 +26,20 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/frontend/frontend_auth_consent_denial_contract.md": (
+        "Frontend Auth Consent Denial Contract",
+        "denial states must show safe next action",
+    ),
+    "docs/frontend/parent_vertical_journey_contract.md": (
+        "Parent Vertical Journey Contract",
+        "does not expose unrelated learner data",
+    ),
     "Makefile": (
         "frontend-route-inventory:",
         "frontend-route-inventory-check:",
         "learner-vertical-journey-contract-check:",
+        "parent-vertical-journey-contract-check:",
+        "frontend-auth-consent-denial-check:",
     ),
     "docs/frontend/frontend_route_inventory.md": (
         "Frontend Route Inventory",

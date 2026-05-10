@@ -23,9 +23,14 @@ jobs:
           make frontend-route-inventory
           make frontend-route-inventory-check
           make learner-vertical-journey-contract-check
+          make frontend-auth-consent-denial-check
+          make parent-vertical-journey-contract-check
           make cluster-g-frontend-check
           pytest -c pytest.ini \
             tests/unit/test_frontend_route_inventory.py \
+            tests/unit/test_cluster_g_parent_denial_evidence.py \
+            tests/unit/test_frontend_auth_consent_denial_contract.py \
+            tests/unit/test_parent_vertical_journey_contract.py \
             tests/unit/test_learner_vertical_journey_contract.py \
             tests/unit/test_cluster_g_frontend_evidence.py \
             -q --no-cov

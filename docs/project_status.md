@@ -396,3 +396,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster G Frontend Journey
 
 - Cluster G frontend vertical journey evidence baseline added.
+
+## Cluster G Parent Denial UX
+
+- Cluster G parent journey and auth/consent denial UX contracts added.
