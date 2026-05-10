@@ -20,6 +20,10 @@ The current PR-002R work establishes the backend runtime and API contract baseli
 - `docs/openapi.json` is generated from `app.api_v2:app`.
 - `make openapi-check` verifies the committed OpenAPI schema has not drifted.
 - The OpenAPI drift workflow targets `master` and `release/**`, not `main`.
+- The CAPS Grade 4 Mathematics item-bank implementation is integrated and has
+  a coverage matrix at [`docs/caps/grade4_maths_coverage_matrix.md`](caps/grade4_maths_coverage_matrix.md).
+  The current committed seed is a starter bank and still needs expansion before
+  the production coverage gate can be claimed as met.
 
 ## Claim Discipline
 

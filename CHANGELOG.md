@@ -14,6 +14,14 @@ Release cadence:
 
 ## [Unreleased]
 
+### Added
+- Integrated the CAPS Grade 4 Mathematics item-bank phase bundle: diagnostic session orchestration services, lesson context and study-plan update helpers, coverage matrix generation, CI coverage/validation tests, Playwright diagnostic-flow coverage, Grafana dashboard provisioning, and Alertmanager rules.
+- Added item-bank Makefile targets for validation, seeding, coverage assertions, coverage matrix generation, E2E checks, performance checks, and release-candidate tagging.
+- Added admin-facing item-bank coverage and review endpoints under the diagnostics router.
+
+### Changed
+- Extended item-bank repository and service APIs for exposure heatmaps, review workflow compatibility, exclusion-aware IRT item selection, and Phase 5 CI script arguments.
+
 ### ⚠️ BREAKING: Complete V2 Architectural Migration (2026-05-02)
 
 **Status**: Architecture restructured from five-pillar monolith to modular monolith. **V1 code deleted entirely.** All recommendations from `EduBoost_Architecture_Recommendation.md` implemented.
