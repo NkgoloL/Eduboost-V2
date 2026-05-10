@@ -134,3 +134,12 @@ staging-release-gate-check:
 
 release-evidence-artifacts-check:
 	$(PYTHON) scripts/check_release_evidence_artifacts.py
+
+database-backup-contract-check:
+	$(PYTHON) scripts/check_database_backup_contract.py
+
+database-restore-drill-docs-check:
+	$(PYTHON) scripts/check_database_restore_drill_docs.py
+
+cluster-e-data-resilience-check:
+	$(PYTHON) scripts/check_cluster_e_data_resilience_evidence.py

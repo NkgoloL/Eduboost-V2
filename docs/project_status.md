@@ -332,3 +332,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Project Evidence Index
 
 - Project evidence index and Cluster D closure report added.
+
+## Cluster E Data Resilience
+
+- Cluster E data-resilience baseline added for backup/restore evidence.
