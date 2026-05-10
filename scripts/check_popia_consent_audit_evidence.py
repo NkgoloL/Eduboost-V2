@@ -9,6 +9,23 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
 REQUIRED_FILES = (
+    "tests/unit/test_popia_ci_closure_contract.py",
+    "tests/unit/test_consent_rejection_audit_check.py",
+    "tests/unit/test_active_consent_route_order.py",
+    "docs/security/consent_rejection_audit.md",
+    "docs/security/active_consent_route_order.md",
+    "scripts/check_consent_rejection_audit.py",
+    "scripts/check_active_consent_route_order.py",
+    "tests/unit/test_popia_consent_gate_closure_report.py",
+    "tests/unit/test_popia_consent_boundary_matrix_check.py",
+    "tests/unit/test_generate_popia_consent_boundary_matrix.py",
+    "docs/security/POPIA_CONSENT_GATE_CLOSURE.md",
+    "docs/security/popia_consent_boundary_check.md",
+    "docs/security/popia_consent_boundary_matrix.md",
+    "scripts/check_popia_consent_boundary_matrix.py",
+    "scripts/generate_popia_consent_boundary_matrix.py",
+    "tests/unit/test_ether_onboarding_consent_gate_wiring.py",
+    "docs/security/ether_onboarding_consent_gate.md",
     "tests/unit/test_onboarding_consent_gate_wiring.py",
     "tests/unit/test_assessment_consent_gate_wiring.py",
     "docs/security/onboarding_consent_gate.md",
@@ -35,6 +52,27 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/security/consent_rejection_audit.md": (
+        "consent.access_rejected",
+        "ConsentExpiredError",
+    ),
+    "docs/security/active_consent_route_order.md": (
+        "object authorization must run before active POPIA consent",
+    ),
+    "docs/security/popia_consent_boundary_matrix.md": (
+        "POPIA Consent Boundary Matrix",
+        "active_consent_required",
+        "rights_exercise_not_active_consent_blocked",
+    ),
+    "docs/security/POPIA_CONSENT_GATE_CLOSURE.md": (
+        "POPIA Consent Gate Closure Report",
+        "make popia-consent-boundary-check",
+        "rights_exercise_not_active_consent_blocked",
+    ),
+    "docs/security/ether_onboarding_consent_gate.md": (
+        "Ether Onboarding Consent Boundary",
+        "authenticated_catalog_boundary",
+    ),
     "docs/security/onboarding_consent_gate.md": (
         "Onboarding Consent Gate",
         "authenticated catalog boundary",
@@ -71,6 +109,9 @@ CONTENT_REQUIREMENTS = {
     "Makefile": (
         "audit-contract-check:",
         "popia-consent-gate-check:",
+        "popia-consent-boundary-check:",
+        "popia-consent-order-check:",
+        "popia-consent-rejection-audit-check:",
     ),
     "scripts/generate_consent_gate_inventory.py": (
         "ConsentGateRow",
@@ -91,6 +132,8 @@ CONTENT_REQUIREMENTS = {
         "POPIA Consent Audit",
         "make audit-contract-check",
         "make popia-consent-gate-check",
+        "make popia-consent-order-check",
+        "make popia-consent-rejection-audit-check",
     ),
     "docs/security/POPIA_CONSENT_AUDIT_BASELINE.md": (
         "POPIA Consent and Audit Baseline",

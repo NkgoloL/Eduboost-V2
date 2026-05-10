@@ -69,3 +69,19 @@ pytest -c pytest.ini tests/unit/test_generate_consent_gate_inventory.py tests/un
 ## Onboarding Consent Gate
 
 - Onboarding submit/archetype routes require active POPIA consent; questions remains an authenticated catalog boundary.
+
+## Ether Onboarding Consent Gate
+
+- Ether onboarding submit requires active POPIA consent.
+
+## Ether Onboarding Consent Boundary
+
+- Ether onboarding submit is authenticated but not learner-scoped; canonical onboarding writes carry active consent.
+
+## POPIA Consent Gate Closure
+
+- `docs/security/POPIA_CONSENT_GATE_CLOSURE.md` records first-pass consent-gate closure evidence.
+
+## POPIA Consent CI Closure
+
+- POPIA CI includes boundary, route-order, and consent-rejection audit checks.

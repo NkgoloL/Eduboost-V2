@@ -94,3 +94,13 @@ popia-consent-gate-check:
 
 popia-consent-audit-check:
 	$(PYTHON) scripts/check_popia_consent_audit_evidence.py
+
+popia-consent-boundary-check:
+	$(PYTHON) scripts/generate_popia_consent_boundary_matrix.py
+	$(PYTHON) scripts/check_popia_consent_boundary_matrix.py
+
+popia-consent-order-check:
+	$(PYTHON) scripts/check_active_consent_route_order.py
+
+popia-consent-rejection-audit-check:
+	$(PYTHON) scripts/check_consent_rejection_audit.py

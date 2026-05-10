@@ -38,3 +38,13 @@ def test_makefile_exposes_popia_consent_audit_check() -> None:
 
     assert "popia-consent-audit-check:" in text
     assert "scripts/check_popia_consent_audit_evidence.py" in text
+
+
+@pytest.mark.unit
+def test_ether_onboarding_evidence_uses_boundary_not_gate_wording() -> None:
+    checker = REPO_ROOT / "scripts" / "check_popia_consent_audit_evidence.py"
+    source = checker.read_text(encoding="utf-8")
+
+    assert "Ether Onboarding Consent Boundary" in source
+    assert "authenticated_catalog_boundary" in source
+    assert "Ether Onboarding Consent Gate" not in source

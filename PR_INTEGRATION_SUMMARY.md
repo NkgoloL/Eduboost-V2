@@ -323,3 +323,11 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 - Onboarding submit/archetype POPIA consent gate wiring added.
 
 - Assessment and onboarding consent-gate evidence registered in aggregate checker.
+
+- Ether onboarding POPIA consent gate wiring added and matrix evidence refreshed.
+
+- Ether onboarding consent boundary reclassified as authenticated non-learner-record boundary.
+
+- POPIA consent-boundary matrix and first-pass closure report added.
+
+- POPIA consent CI closure now includes boundary, order, and rejection-audit checks.

@@ -276,3 +276,23 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Onboarding Consent Gate
 
 - [`docs/security/onboarding_consent_gate.md`](security/onboarding_consent_gate.md)
+
+## Ether Onboarding Consent Gate
+
+- [`docs/security/ether_onboarding_consent_gate.md`](security/ether_onboarding_consent_gate.md)
+
+## Ether Onboarding Consent Boundary
+
+- [`docs/security/ether_onboarding_consent_gate.md`](security/ether_onboarding_consent_gate.md)
+
+## POPIA Consent Gate Closure
+
+- [`docs/security/POPIA_CONSENT_GATE_CLOSURE.md`](security/POPIA_CONSENT_GATE_CLOSURE.md)
+
+## Ether Onboarding Consent Boundary
+
+- [`docs/security/ether_onboarding_consent_gate.md`](security/ether_onboarding_consent_gate.md)
+
+## POPIA Consent CI Closure
+
+- POPIA consent CI closure includes boundary, order, and rejection-audit checks.

@@ -27,9 +27,17 @@ jobs:
         run: |
           make audit-contract-check
           make popia-consent-gate-check
+          make popia-consent-rejection-audit-check
+          make popia-consent-order-check
+          make popia-consent-boundary-check
           pytest -c pytest.ini \
             tests/unit/test_generate_consent_gate_inventory.py \
             tests/unit/test_consent_gate_inventory_check.py \
             tests/unit/test_audit_event_contracts.py \
             tests/unit/test_popia_consent_audit_baseline_docs.py \
+            tests/unit/test_consent_rejection_audit_check.py \
+            tests/unit/test_active_consent_route_order.py \
+            tests/unit/test_popia_consent_gate_closure_report.py \
+            tests/unit/test_popia_consent_boundary_matrix_check.py \
+            tests/unit/test_generate_popia_consent_boundary_matrix.py \
             -q --no-cov
