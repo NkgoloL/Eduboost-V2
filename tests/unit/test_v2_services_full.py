@@ -39,16 +39,18 @@ class TestLessonServiceV2:
     def _svc(self, cached=None, db_row=None):
         from app.services.lesson_service_v2 import LessonServiceV2
         repo = AsyncMock()
-        repo.create = AsyncMock()
+        mock_row = MagicMock()
+        mock_row.id = LESSON_ID
+        repo.create = AsyncMock(return_value=mock_row)
         repo.get_by_id = AsyncMock(return_value=db_row)
-        svc = LessonServiceV2(lesson_repository=repo)
-        svc.redis = AsyncMock()
-        svc.redis.get = AsyncMock(return_value=None)
-        svc.redis.set = AsyncMock()
+        redis_mock = AsyncMock()
+        redis_mock.get = AsyncMock(return_value=None)
+        svc = LessonServiceV2(lesson_repository=repo, redis_client=redis_mock)
+        svc.cache_service = AsyncMock()
+        svc.cache_service.get = AsyncMock(return_value=cached)
+        svc.cache_service.build_cache_key = MagicMock(return_value="key")
         svc.quota_service = AsyncMock()
-        svc.quota_service.assert_within_quota = AsyncMock(return_value=1)
-        svc.quota_service.get_cached = AsyncMock(return_value=cached)
-        svc.quota_service.set_cached = AsyncMock()
+        svc.quota_service.check_and_reserve = AsyncMock()
         return svc, repo
 
     @pytest.mark.asyncio
@@ -73,10 +75,10 @@ class TestLessonServiceV2:
 
     @pytest.mark.asyncio
     async def test_generate_enforces_quota(self):
-        from app.services.quota_service import QuotaExceededError
+        from fastapi import HTTPException
         svc, _ = self._svc()
-        svc.quota_service.assert_within_quota = AsyncMock(side_effect=QuotaExceededError("over"))
-        with pytest.raises(QuotaExceededError):
+        svc.quota_service.check_and_reserve = AsyncMock(side_effect=HTTPException(status_code=429))
+        with pytest.raises(HTTPException):
             await svc.generate_lesson(LEARNER_ID, "MATH", "Fractions")
 
     @pytest.mark.asyncio

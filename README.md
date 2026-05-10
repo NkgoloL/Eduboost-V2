@@ -22,6 +22,11 @@ imports and controlled migration behavior.
 - Redis is used for caching, token revocation, and background job status.
 - Sensitive audit events are persisted through the V2 append-only PostgreSQL
   audit repository.
+- The Grade 4 Mathematics CAPS item-bank implementation is integrated across
+  schema, services, seed data, validation scripts, CI gates, and observability
+  assets. The current seed file has 14 approved starter items against a
+  120-item production target; use `make validate-items`, `make seed-items`, and
+  `make coverage-matrix` as the operational workflow.
 - The repository still carries migration-era artifacts, so documentation should
   be read as "current master state", not as a promise that every legacy surface
   is already retired.
@@ -29,6 +34,11 @@ imports and controlled migration behavior.
 For the current documentation sync status, see
 [`docs/project_status.md`](/docs/project_status.md) and the root
 [`TODO.md`](/TODO.md).
+
+Item-bank coverage details live in
+[`docs/caps/grade4_maths_coverage_matrix.md`](/docs/caps/grade4_maths_coverage_matrix.md).
+The remaining 106-item content plan lives in
+[`docs/caps/grade4_maths_120_item_production_plan.md`](/docs/caps/grade4_maths_120_item_production_plan.md).
 
 ## Quick Start
 

@@ -80,6 +80,32 @@ irt_computation_seconds = Histogram(
     registry=REGISTRY,
 )
 
+item_bank_coverage_ratio = Gauge(
+    "eduboost_item_bank_coverage_ratio",
+    "Fraction of target approved item count per CAPS reference",
+    ["caps_ref"],
+    registry=REGISTRY,
+)
+
+diagnostic_sessions_total = Counter(
+    "eduboost_diagnostic_sessions_total",
+    "Diagnostic sessions by CAPS reference and outcome",
+    ["caps_ref", "outcome"],
+    registry=REGISTRY,
+)
+
+item_selection_latency_seconds = Histogram(
+    "eduboost_item_selection_latency_seconds",
+    "Item-bank selection latency",
+    ["caps_ref"],
+    buckets=[0.005, 0.01, 0.025, 0.05, 0.075, 0.1, 0.25],
+    registry=REGISTRY,
+)
+
+ITEM_BANK_COVERAGE_RATIO = item_bank_coverage_ratio
+DIAGNOSTIC_SESSIONS_TOTAL = diagnostic_sessions_total
+ITEM_SELECTION_LATENCY_SECONDS = item_selection_latency_seconds
+
 # ── Learner Activity ──────────────────────────────────────────────────────────
 active_learners_gauge = Gauge(
     "eduboost_active_learners",

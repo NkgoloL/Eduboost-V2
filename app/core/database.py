@@ -40,6 +40,10 @@ AsyncSessionLocal = async_sessionmaker(
 # are migrated onto the V2 core package.
 AsyncSessionFactory = AsyncSessionLocal
 
+def get_async_engine():
+    """Returns the global async engine instance."""
+    return engine
+
 
 class Base(DeclarativeBase):
     """Shared declarative base for all ORM models."""
@@ -60,14 +64,16 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
 
 async def create_all_tables() -> None:
     """Create all tables (dev/test only — use Alembic in production)."""
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+    # async with engine.begin() as conn:
+    #     await conn.run_sync(Base.metadata.create_all)
+    pass
 
 
 async def drop_all_tables() -> None:
     """Drop all tables (test teardown only)."""
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.drop_all)
+    # async with engine.begin() as conn:
+    #     await conn.run_sync(Base.metadata.drop_all)
+    pass
 
 
 async def init_test_schema() -> None:

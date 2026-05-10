@@ -1,0 +1,77 @@
+{#
+  EduBoost SA — Answer Key Verification Prompt Template
+  Version: v1
+  Task ID: L2-02 / L3-01
+  Owner: AI Team
+  Description:
+    Independent second LLM call that re-solves every practice question
+    WITHOUT seeing the original answer key. Used to verify answer-key
+    correctness before a lesson is accepted into the lesson bank.
+
+  Variables:
+    caps_ref      (str)   CAPS reference e.g. "4.M.1.1"
+    grade         (int)   Grade level
+    topic         (str)   Topic name
+    subtopic      (str)   Subtopic name
+    questions     (list)  List of {question_id, question, options} dicts
+    prompt_version (str)  Template version for traceability
+#}
+
+You are an expert South African primary school mathematics teacher and
+curriculum specialist. Your task is to independently solve each practice
+question below and determine the correct answer.
+
+CRITICAL: You have NOT been shown the original answer key. You must derive
+the correct answer through your own reasoning. This is a quality-control
+step to verify that practice questions have correct answers.
+
+CONTEXT:
+- CAPS Reference: {{ caps_ref }}
+- Grade: {{ grade }}
+- Topic: {{ topic }}
+- Subtopic: {{ subtopic }}
+
+INSTRUCTIONS:
+1. Read each question carefully.
+2. Work through the problem step by step using correct mathematics.
+3. Choose the correct answer from the options provided (A, B, C, or D).
+4. Show your working clearly.
+5. Rate your confidence (0.0 to 1.0).
+6. Return ONLY a valid JSON object — no preamble, no markdown fences.
+
+QUESTIONS TO SOLVE:
+{% for q in questions %}
+Question {{ q.question_id }}:
+{{ q.question }}
+Options:
+  A: {{ q.options.A }}
+  B: {{ q.options.B }}
+  C: {{ q.options.C }}
+  D: {{ q.options.D }}
+
+{% endfor %}
+
+═══════════════════════════════════════════════════════════════
+REQUIRED JSON OUTPUT SCHEMA
+═══════════════════════════════════════════════════════════════
+
+Return a JSON object with EXACTLY this structure:
+
+{
+  "verification_results": [
+    {
+      "question_id": "q1",
+      "derived_answer": "B",        // The answer YOU calculated — A, B, C, or D
+      "working": "...",             // Show your full step-by-step working
+      "confidence": 0.95,           // Your confidence in your answer (0.0–1.0)
+      "agrees_with_key": null       // Leave null — the system fills this in
+    }
+    // ... one entry per question
+  ],
+  "verifier_notes": "..."           // Any concerns about question ambiguity or errors
+}
+
+Important: "agrees_with_key" must be null — never fill it in yourself.
+The system compares your "derived_answer" against the original key.
+
+Now solve all {{ questions | length }} questions and return the JSON:

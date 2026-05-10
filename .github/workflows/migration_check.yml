@@ -1,0 +1,163 @@
+# P1-07 — .github/workflows/migration_check.yml
+#
+# Standalone CI job that:
+#   1. Spins up a fresh PostgreSQL container
+#   2. Runs `alembic upgrade head` from a completely empty database
+#   3. Runs `alembic check` to verify no model drift exists
+#   4. Runs `seed_item_bank.py --dry-run` to validate the seed file schema
+#
+# This job is required to pass before any PR that touches:
+#   - alembic/versions/
+#   - app/models/
+#   - app/domain/item_schema.py
+#   - data/caps/grade4_maths_item_bank.json
+#
+# Add to: .github/workflows/migration_check.yml
+# Then reference it as a required check in the branch protection rule.
+
+name: Migration & Schema Check
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - "alembic/**"
+      - "app/models/**"
+      - "app/domain/item_schema.py"
+      - "data/caps/**.json"
+      - ".github/workflows/migration_check.yml"
+  pull_request:
+    branches: [master, main]
+    paths:
+      - "alembic/**"
+      - "app/models/**"
+      - "app/domain/item_schema.py"
+      - "data/caps/**.json"
+      - ".github/workflows/migration_check.yml"
+
+concurrency:
+  group: migration-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  migration-check:
+    name: "Alembic upgrade head + check"
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: eduboost_ci
+          POSTGRES_PASSWORD: ci_password
+          POSTGRES_DB: eduboost_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U eduboost_ci"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      DATABASE_URL: postgresql+asyncpg://eduboost_ci:ci_password@localhost:5432/eduboost_test
+      # Synchronous URL used by alembic env.py and seed script
+      SYNC_DATABASE_URL: postgresql://eduboost_ci:ci_password@localhost:5432/eduboost_test
+      REDIS_URL: redis://localhost:6379/0
+      JWT_SECRET: ci-test-secret-not-production
+      ENCRYPTION_KEY: ci-test-encryption-key-32bytes!!
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements/base.txt
+
+      - name: Wait for PostgreSQL
+        run: |
+          until pg_isready -h localhost -U eduboost_ci; do
+            echo "Waiting for PostgreSQL…"
+            sleep 2
+          done
+
+      # -----------------------------------------------------------------
+      # Step 1: Run all migrations from an empty database
+      # -----------------------------------------------------------------
+      - name: Run alembic upgrade head (empty DB)
+        run: |
+          alembic upgrade head
+        env:
+          DATABASE_URL: ${{ env.SYNC_DATABASE_URL }}
+
+      # -----------------------------------------------------------------
+      # Step 2: Verify no model drift (all ORM models match the schema)
+      # -----------------------------------------------------------------
+      - name: Run alembic check (no model drift)
+        run: |
+          alembic check
+        env:
+          DATABASE_URL: ${{ env.SYNC_DATABASE_URL }}
+
+      # -----------------------------------------------------------------
+      # Step 3: Validate item bank seed file schema (no DB writes)
+      # -----------------------------------------------------------------
+      - name: Validate seed file (dry run)
+        run: |
+          python scripts/seed_item_bank.py \
+            --seed-file data/caps/grade4_maths_item_bank.json \
+            --dry-run
+        env:
+          DATABASE_URL: ${{ env.DATABASE_URL }}
+
+      # -----------------------------------------------------------------
+      # Step 4: Validate CAPS topic map JSON is parseable
+      # -----------------------------------------------------------------
+      - name: Validate CAPS topic map JSON
+        run: |
+          python -c "
+          import json, sys
+          with open('data/caps/caps_topic_map_grade4_maths.json') as f:
+              data = json.load(f)
+          topics = data.get('topics', [])
+          print(f'CAPS topic map: {len(topics)} topics loaded')
+          refs = [t['caps_ref'] for t in topics]
+          required = {'4.M.1.1', '4.M.1.2', '4.M.1.3'}
+          missing = required - set(refs)
+          if missing:
+              print(f'ERROR: Missing required CAPS refs: {missing}', file=sys.stderr)
+              sys.exit(1)
+          print('All required launch-scope CAPS refs present.')
+          "
+
+      # -----------------------------------------------------------------
+      # Step 5: Validate item schema can be exported without errors
+      # -----------------------------------------------------------------
+      - name: Validate item schema export
+        run: |
+          python -c "
+          from app.domain.item_schema import export_json_schema
+          schema = export_json_schema()
+          assert schema['version'] == '1.0.0', 'Schema version mismatch'
+          print(f'Item schema exported: {len(schema)} top-level keys')
+          "
+        env:
+          DATABASE_URL: ${{ env.DATABASE_URL }}
+
+      # -----------------------------------------------------------------
+      # Step 6: Downgrade to verify rollback is clean
+      # -----------------------------------------------------------------
+      - name: Verify downgrade from head (rollback test)
+        run: |
+          alembic downgrade -2
+          alembic upgrade head
+        env:
+          DATABASE_URL: ${{ env.SYNC_DATABASE_URL }}

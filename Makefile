@@ -201,122 +201,12 @@ remediation-safety-contract-check:
 cluster-f-closure-check:
 	$(PYTHON) scripts/check_cluster_f_closure.py
 
-ai-output-fixture-validation-check:
-	$(PYTHON) scripts/validate_ai_output_fixtures.py
 
-ai-prompt-surface-inventory:
-	$(PYTHON) scripts/generate_ai_prompt_surface_inventory.py
+lesson-generate:
+	$(PYTHON) scripts/lessons/generate_lessons.py --caps-ref $(CAPS_REF) --n-lessons $(N) --difficulty $(DIFFICULTY)
 
-ai-prompt-surface-inventory-check:
-	$(PYTHON) scripts/check_ai_prompt_surface_inventory.py
+lesson-validate:
+	$(PYTHON) scripts/lessons/validate_lessons.py --caps-ref $(CAPS_REF)
 
-ai-refusal-fixture-check:
-	$(PYTHON) scripts/check_ai_refusal_fixtures.py
-
-ai-prompt-secret-leakage-check:
-	$(PYTHON) scripts/check_ai_prompt_secret_leakage.py
-
-ai-fixture-coverage-check:
-	$(PYTHON) scripts/check_ai_fixture_coverage_matrix.py
-
-frontend-route-inventory:
-	$(PYTHON) scripts/generate_frontend_route_inventory.py
-
-frontend-route-inventory-check:
-	$(PYTHON) scripts/check_frontend_route_inventory.py
-
-learner-vertical-journey-contract-check:
-	$(PYTHON) scripts/check_learner_vertical_journey_contract.py
-
-cluster-g-frontend-check:
-	$(PYTHON) scripts/check_cluster_g_frontend_evidence.py
-
-parent-vertical-journey-contract-check:
-	$(PYTHON) scripts/check_parent_vertical_journey_contract.py
-
-frontend-auth-consent-denial-check:
-	$(PYTHON) scripts/check_frontend_auth_consent_denial_contract.py
-
-frontend-api-client-inventory:
-	$(PYTHON) scripts/generate_frontend_api_client_inventory.py
-
-frontend-api-client-inventory-check:
-	$(PYTHON) scripts/check_frontend_api_client_inventory.py
-
-frontend-journey-fixture-check:
-	$(PYTHON) scripts/check_frontend_journey_fixtures.py
-
-frontend-playwright-scaffold-check:
-	$(PYTHON) scripts/check_frontend_playwright_scaffold.py
-
-frontend-e2e:
-	npx playwright test
-
-frontend-playwright-specs-check:
-	$(PYTHON) scripts/check_frontend_playwright_specs.py
-
-frontend-accessibility-contract-check:
-	$(PYTHON) scripts/check_frontend_accessibility_contract.py
-
-frontend-accessibility-static-check:
-	$(PYTHON) scripts/check_frontend_accessibility_static.py
-
-frontend-runtime-inventory:
-	$(PYTHON) scripts/generate_frontend_runtime_inventory.py
-
-frontend-runtime-inventory-check:
-	$(PYTHON) scripts/check_frontend_runtime_inventory.py
-
-frontend-mock-api-fixture-check:
-	$(PYTHON) scripts/check_frontend_mock_api_fixtures.py
-
-frontend-playwright-mock-helper-check:
-	$(PYTHON) scripts/check_frontend_playwright_mock_helpers.py
-
-frontend-playwright-mocked-specs-check:
-	$(PYTHON) scripts/check_frontend_playwright_mocked_specs.py
-
-frontend-e2e-env-contract-check:
-	$(PYTHON) scripts/check_frontend_e2e_environment_contract.py
-
-frontend-e2e-mocked:
-	PLAYWRIGHT_MOCK_API=1 npx playwright test tests/e2e/learner-mocked-api-journey.spec.ts tests/e2e/parent-mocked-api-journey.spec.ts
-
-frontend-e2e-smoke:
-	npx playwright test tests/e2e/learner-vertical-journey.spec.ts tests/e2e/parent-vertical-journey.spec.ts
-
-frontend-e2e-runtime-command-check:
-	$(PYTHON) scripts/check_frontend_e2e_runtime_commands.py
-
-frontend-build-test-lint-contract-check:
-	$(PYTHON) scripts/check_frontend_build_test_lint_contract.py
-
-frontend-e2e-opt-in-workflow-check:
-	$(PYTHON) scripts/check_frontend_e2e_opt_in_workflow.py
-
-cluster-g-closure-check:
-	$(PYTHON) scripts/check_cluster_g_closure.py
-
-beta-release-readiness-contract-check:
-	$(PYTHON) scripts/check_beta_release_readiness_contract.py
-
-staging-smoke-evidence-manifest:
-	$(PYTHON) scripts/generate_staging_smoke_evidence_manifest.py
-
-staging-smoke-evidence-manifest-check:
-	$(PYTHON) scripts/check_staging_smoke_evidence_manifest.py
-
-cluster-h-release-readiness-check:
-	$(PYTHON) scripts/check_cluster_h_release_readiness.py
-
-beta-signoff-manifest:
-	$(PYTHON) scripts/generate_beta_signoff_manifest.py
-
-beta-signoff-manifest-check:
-	$(PYTHON) scripts/check_beta_signoff_manifest.py
-
-beta-rollback-runbook-check:
-	$(PYTHON) scripts/check_beta_rollback_runbook.py
-
-post-deploy-staging-smoke-checklist-check:
-	$(PYTHON) scripts/check_post_deploy_staging_smoke_checklist.py
+lesson-bank-check:
+	$(PYTHON) scripts/ci/ci_lesson_bank_check.py

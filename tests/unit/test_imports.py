@@ -5,9 +5,10 @@ def test_import_api_modules():
     modules = [
         "app.api_v2",
         "app.api_v2_routers",
-        "app.api.main",
         "app.core.config",
         "app.models",
+        "app.repositories",
+        "app.services",
     ]
 
     for m in modules:

@@ -27,14 +27,7 @@ class StudyPlan(Base):
     generated_by = Column(String)
 
 
-class SubjectMastery(Base):
-    __tablename__ = "subject_mastery"
-    __table_args__ = {"extend_existing": True}
-    learner_id = Column(String, primary_key=True)
-    subject_code = Column(String, primary_key=True)
-    grade_level = Column(Integer)
-    mastery_score = Column(Float)
-    knowledge_gaps = Column(JSON)
+from app.models import SubjectMastery
 
 
 

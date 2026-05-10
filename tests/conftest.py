@@ -1,17 +1,14 @@
-"""Shared pytest configuration for repository-local imports.
-
-Pytest can be invoked from CI, IDEs, or local shells in modes where the
-repository root is not automatically placed on ``sys.path``. The application
-package lives at ``app/``, so test collection must make the repository root
-importable before integration, POPIA, smoke, and unit modules import app code.
-"""
 from __future__ import annotations
 
 import sys
 from pathlib import Path
+from collections.abc import AsyncGenerator
+
+import pytest
+import pytest_asyncio
+from sqlalchemy.ext.asyncio import AsyncSession
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-
 
 def ensure_repo_root_on_path() -> None:
     """Ensure repository-local packages are importable during pytest collection."""
@@ -19,5 +16,25 @@ def ensure_repo_root_on_path() -> None:
     if repo_root not in sys.path:
         sys.path.insert(0, repo_root)
 
-
 ensure_repo_root_on_path()
+
+from app.core.database import AsyncSessionFactory, create_all_tables, drop_all_tables, engine
+
+@pytest_asyncio.fixture(scope="session", autouse=True)
+async def test_db_setup():
+    """Create all tables at the start of the test session and drop them at the end."""
+    await create_all_tables()
+    yield
+    await drop_all_tables()
+
+
+@pytest_asyncio.fixture
+async def db_session() -> AsyncGenerator[AsyncSession, None]:
+    """Provide a fresh async database session for each test."""
+    async with AsyncSessionFactory() as session:
+        yield session
+        async with engine.begin() as conn:
+            # await conn.run_sync(Base.metadata.create_all)
+            pass
+        await session.rollback()
+        await session.close()

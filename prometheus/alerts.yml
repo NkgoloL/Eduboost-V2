@@ -1,28 +1,82 @@
 groups:
-  - name: eduboost_critical
+  - name: critical_alerts
     rules:
+      - alert: EduBoostApiDown
+        expr: up{job="eduboost-api"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "EduBoost API is down"
+
+      - alert: EduBoostReadinessFailure
+        expr: eduboost_readiness_component_status == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "A critical component is not ready"
+
+      - alert: EduBoostHigh5xxRate
+        expr: rate(eduboost_http_requests_total{status_code=~"5.."}[5m]) / rate(eduboost_http_requests_total[5m]) > 0.05
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High rate of 5xx errors on EduBoost API"
+
+      - alert: EduBoostHighLatency
+        expr: histogram_quantile(0.95, sum(rate(eduboost_http_request_duration_seconds_bucket[5m])) by (le)) > 5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "P95 HTTP latency is over 5s"
+
+      - alert: EduBoostDatabaseUnavailable
+        expr: eduboost_db_pool_size_total == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Database connection pool is empty"
+
+      - alert: EduBoostRedisUnavailable
+        expr: eduboost_redis_connected_clients == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Redis has no connected clients"
+
+      - alert: EduBoostAuditWriteFailure
+        expr: rate(eduboost_audit_write_failures_total[5m]) > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Audit log write failures detected"
+
+      - alert: EduBoostBackupFailure
+        expr: rate(eduboost_backup_failures_total[1h]) > 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "PostgreSQL backup failure detected"
+
       - alert: LLMProviderDown
         expr: rate(eduboost_llm_requests_total{status="error"}[5m]) > 0.5
         for: 2m
         labels:
           severity: critical
+        annotations:
+          summary: "LLM provider is reporting high error rate"
+
       - alert: ConsentGateFailureSpike
-        expr: rate(eduboost_consent_gate_blocks_total[5m]) > 0.05
+        expr: rate(eduboost_consent_gate_blocks_total[5m]) > 0.1
         for: 2m
         labels:
-          severity: critical
-      - alert: LessonGenerationHighLatency
-        expr: histogram_quantile(0.95, rate(eduboost_http_request_duration_seconds_bucket{endpoint=~".*/lessons.*"}[5m])) > 15
-        for: 5m
-        labels:
           severity: warning
-      - alert: JudiciaryHighRejectionRate
-        expr: rate(eduboost_judiciary_rejections_total[5m]) / clamp_min(rate(eduboost_judiciary_stamps_total[5m]), 0.001) > 0.1
-        for: 5m
-        labels:
-          severity: warning
-      - alert: DiagnosticDropOffSpike
-        expr: rate(eduboost_diagnostic_abandonments_total[10m]) > 0.3
-        for: 10m
-        labels:
-          severity: warning
+        annotations:
+          summary: "Spike in consent gate blocks"

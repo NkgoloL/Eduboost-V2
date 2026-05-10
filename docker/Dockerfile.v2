@@ -1,5 +1,9 @@
-# ── Base Stage ───────────────────────────────────────────────────────────────
 FROM python:3.11-slim AS base
+LABEL org.opencontainers.image.title="EduBoost SA V2" \
+      org.opencontainers.image.description="AI-powered adaptive learning platform — Grade R to 7. CAPS-aligned. POPIA-compliant." \
+      org.opencontainers.image.vendor="EduBoost SA" \
+      org.opencontainers.image.licenses="Proprietary" \
+      org.opencontainers.image.source="https://github.com/NkgoloL/Eduboost-V2"
 
 WORKDIR /workspace
 

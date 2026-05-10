@@ -1,0 +1,81 @@
+# alertmanager/rules/item_bank_coverage.yml
+#
+# Phase 5 — P4-11 / P5-09
+# Prometheus alerting rules for CAPS item bank coverage.
+# Fires when item_bank_coverage_ratio drops below 0.8 for any launch CAPS ref.
+#
+# Add to prometheus.yml under rule_files:
+#   rule_files:
+#     - /etc/prometheus/rules/item_bank_coverage.yml
+
+groups:
+  - name: item_bank_coverage
+    interval: 5m
+    rules:
+
+      # ── Coverage ratio below target ─────────────────────────────────────────
+      - alert: ItemBankCoverageRatioBelowThreshold
+        expr: item_bank_coverage_ratio < 0.8
+        for: 10m
+        labels:
+          severity: warning
+          team: curriculum
+          component: item_bank
+        annotations:
+          summary: >-
+            Item bank coverage for {{ $labels.caps_ref }} is below 80%
+          description: >-
+            The approved item count for CAPS ref {{ $labels.caps_ref }} has
+            dropped to {{ printf "%.0f" ($value * 40) }} approved items
+            ({{ printf "%.0f" ($value * 100) }}% of the 40-item target).
+            Run `make generate-items CAPS_REF={{ $labels.caps_ref }} N=20`
+            and trigger a human review before the next diagnostic sessions.
+          runbook_url: >-
+            https://github.com/nkgolo-lebelo/Eduboost/blob/master/docs/runbooks/item_bank_replenishment.md
+
+      # ── Coverage ratio critically low ───────────────────────────────────────
+      - alert: ItemBankCoverageRatioCritical
+        expr: item_bank_coverage_ratio < 0.5
+        for: 5m
+        labels:
+          severity: critical
+          team: curriculum
+          component: item_bank
+        annotations:
+          summary: >-
+            CRITICAL: Item bank for {{ $labels.caps_ref }} below 50% — diagnostics degraded
+          description: >-
+            CAPS ref {{ $labels.caps_ref }} has fewer than 20 approved items
+            (ratio={{ printf "%.2f" $value }}). The IRT engine will recycle items
+            and produce unreliable ability estimates. Immediate replenishment required.
+          runbook_url: >-
+            https://github.com/nkgolo-lebelo/Eduboost/blob/master/docs/runbooks/item_bank_replenishment.md
+
+      # ── Items approaching exposure cap ──────────────────────────────────────
+      - alert: ItemBankExposureCapApproaching
+        expr: >-
+          (
+            count by (caps_ref) (
+              eduboost_item_exposure_pct{caps_ref=~"4\\.M\\..*"} >= 0.8
+            )
+          )
+          /
+          (
+            count by (caps_ref) (
+              item_bank_coverage_ratio{caps_ref=~"4\\.M\\..*"} >= 0
+            )
+          ) > 0.2
+        for: 30m
+        labels:
+          severity: warning
+          team: curriculum
+          component: item_bank
+        annotations:
+          summary: >-
+            >20% of items for {{ $labels.caps_ref }} are near their exposure cap
+          description: >-
+            More than 20% of approved items for CAPS ref {{ $labels.caps_ref }}
+            have reached 80% of their max_exposure limit. Consider generating
+            new items to maintain item freshness.
+          runbook_url: >-
+            https://github.com/nkgolo-lebelo/Eduboost/blob/master/docs/runbooks/item_bank_replenishment.md

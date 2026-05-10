@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from uuid import UUID
+from datetime import datetime, timezone
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -46,17 +47,18 @@ class DiagnosticRepository(BaseRepository[DiagnosticSession]):
     ) -> DiagnosticSession:
         return await self.create(
             db,
-            learner_id=UUID(str(learner_id)),
-            subject=subject_code,
-            grade=str(grade_level),
-            ability_estimate=theta,
-            ability_std_error=sem,
-            items_administered=items_administered,
+            learner_id=str(learner_id),
+            theta_before=theta,
+            theta_after=theta,
+            items_correct=items_correct,
             responses={
-                "items_correct": items_correct,
+                "subject": subject_code,
+                "grade": grade_level,
+                "sem": sem,
+                "items_administered": items_administered,
                 "items_total": items_total,
                 "final_mastery_score": final_mastery_score,
                 "knowledge_gaps": knowledge_gaps,
             },
-            is_complete=True,
+            completed_at=datetime.now(timezone.utc),
         )

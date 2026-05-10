@@ -1,7 +1,10 @@
 """EduBoost V2 — Diagnostic Router"""
 from __future__ import annotations
 
+from uuid import UUID
+
 from fastapi import APIRouter, Depends, HTTPException, Request, status
+from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.authorization import assert_can_access_learner
@@ -20,10 +23,26 @@ from app.repositories.repositories import (
 )
 from app.services.diagnostic import DiagnosticEngine
 from app.services.caps_validator import CAPSAlignmentValidator
+from app.core.metrics import ITEM_BANK_COVERAGE_RATIO
+from app.modules.diagnostics.item_bank_service import ItemBankService
+from app.repositories.item_bank_repository import ItemBankRepository
 
 router = APIRouter(prefix="/diagnostics", tags=["diagnostics"])
 _engine = DiagnosticEngine()
 _caps_validator = CAPSAlignmentValidator()
+
+
+class ReviewItemRequest(BaseModel):
+    review_status: str = Field(..., pattern="^(draft|ai_generated|human_reviewed|approved|retired)$")
+    quality_score: float | None = Field(default=None, ge=0.0, le=1.0)
+
+
+def _require_item_bank_admin(current_user: dict) -> None:
+    if current_user.get("role") != "admin":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Item bank administration requires admin role",
+        )
 
 
 @router.get("/items/{learner_id}")
@@ -123,3 +142,80 @@ async def submit_diagnostic(
         grade_equivalent=analysis["grade_equivalent"],
         ranked_gaps=gaps,
     )
+
+
+@router.get("/coverage")
+async def get_item_bank_coverage(
+    db: AsyncSession = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    _require_item_bank_admin(current_user)
+    service = ItemBankService(ItemBankRepository(db))
+    summary = await service.get_coverage_summary()
+    for caps_ref, row in summary.items():
+        ITEM_BANK_COVERAGE_RATIO.labels(caps_ref=caps_ref).set(row.get("coverage_ratio", 0.0))
+    return summary
+
+
+@router.get("/item-bank/items/{item_id}")
+async def get_item_bank_item(
+    item_id: UUID,
+    db: AsyncSession = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    _require_item_bank_admin(current_user)
+    item = await ItemBankRepository(db).get_item(item_id)
+    if item is None:
+        raise HTTPException(status_code=404, detail="Item not found")
+    return {
+        "item_id": str(item.item_id),
+        "caps_ref": item.caps_ref,
+        "grade": item.grade,
+        "subject": getattr(item.subject, "value", item.subject),
+        "term": item.term,
+        "topic": item.topic,
+        "subtopic": item.subtopic,
+        "skill": item.skill,
+        "stem": item.stem,
+        "answer_key": item.answer_key,
+        "options": item.options,
+        "explanation": item.explanation,
+        "distractor_rationale": item.distractor_rationale,
+        "misconception_tags": item.misconception_tags,
+        "difficulty_b": float(item.difficulty_b),
+        "discrimination_a": float(item.discrimination_a),
+        "guessing_c": float(item.guessing_c),
+        "review_status": getattr(item.review_status, "value", item.review_status),
+        "reviewer_id": str(item.reviewer_id) if item.reviewer_id else None,
+        "reviewed_at": item.reviewed_at.isoformat() if item.reviewed_at else None,
+        "exposure_count": item.exposure_count,
+        "max_exposure": item.max_exposure,
+        "quality_score": float(item.quality_score) if item.quality_score is not None else None,
+        "safety_passed": item.safety_passed,
+    }
+
+
+@router.post("/item-bank/items/{item_id}/review")
+async def review_item_bank_item(
+    item_id: UUID,
+    body: ReviewItemRequest,
+    db: AsyncSession = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+):
+    _require_item_bank_admin(current_user)
+    reviewer_id = UUID(str(current_user["sub"]))
+    service = ItemBankService(ItemBankRepository(db))
+    item = await service.mark_item_reviewed(
+        item_id=item_id,
+        new_status=body.review_status,
+        reviewer_id=reviewer_id,
+        quality_score=body.quality_score,
+    )
+    if item is None:
+        raise HTTPException(status_code=404, detail="Item not found")
+    return {
+        "item_id": str(item.item_id),
+        "review_status": getattr(item.review_status, "value", item.review_status),
+        "reviewer_id": str(item.reviewer_id) if item.reviewer_id else None,
+        "reviewed_at": item.reviewed_at.isoformat() if item.reviewed_at else None,
+    }

@@ -62,14 +62,13 @@ def upgrade() -> None:
         ["subscription_tier", "stripe_subscription_id"],
         unique=False,
         postgresql_where=sa.text(
-            "is_active IS TRUE AND stripe_subscription_id IS NOT NULL "
-            "AND lower(subscription_tier::text) = 'premium'"
+            "is_active IS TRUE AND stripe_subscription_id IS NOT NULL"
         ),
     )
     op.create_index(
         "ix_parental_consents_guardian_learner_status",
         "parental_consents",
-        ["guardian_id", "learner_id", "status"],
+        ["guardian_id", "learner_id"],
     )
     op.create_index(
         "ix_parental_consents_active_status",
@@ -77,8 +76,7 @@ def upgrade() -> None:
         ["learner_id", "guardian_id"],
         unique=False,
         postgresql_where=sa.text(
-            "revoked_at IS NULL AND expires_at > CURRENT_TIMESTAMP "
-            "AND status::text IN ('granted', 'renewal_required')"
+            "revoked_at IS NULL"
         ),
     )
     op.create_index("ix_diagnostic_sessions_created_at", "diagnostic_sessions", ["created_at"])

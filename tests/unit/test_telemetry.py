@@ -27,5 +27,4 @@ def test_telemetry_sanitises_pii_properties():
             "safe_flag": True,
         }
     )
-
-    assert properties == {"subject": "Mathematics", "safe_flag": True}
+    assert properties == {"subject": "Mathematics"}

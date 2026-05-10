@@ -5,7 +5,7 @@ import uuid
 from typing import Any
 
 from app.services.audit_service import AuditService
-from app.services.quota_service import QuotaService
+from app.services.quota_service import QuotaService, SemanticCacheService
 
 
 async def _call_llm(*_: Any, **__: Any) -> dict:
@@ -20,10 +20,11 @@ async def _call_llm(*_: Any, **__: Any) -> dict:
 
 
 class LessonServiceV2:
-    def __init__(self, lesson_repository: Any) -> None:
+    def __init__(self, lesson_repository: Any, redis_client: Any | None = None) -> None:
         self.lesson_repository = lesson_repository
-        self.quota_service = QuotaService()
-        self.redis: Any | None = None
+        self.redis = redis_client
+        self.quota_service = QuotaService(redis_client) if redis_client else None
+        self.cache_service = SemanticCacheService(redis_client) if redis_client else None
 
     async def generate_lesson(
         self,
@@ -35,32 +36,39 @@ class LessonServiceV2:
         archetype: str | None = None,
         tier: str = "free",
     ) -> dict:
-        key = self.quota_service.cache_key(grade_level or "", subject_code, topic, language, archetype or "")
-        cached = await self.quota_service.get_cached(key)
-        if cached:
-            return cached
+        key = None
+        if self.cache_service:
+            key = self.cache_service.build_cache_key(subject_code, topic, str(grade_level or ""), language, archetype)
+            cached = await self.cache_service.get(key)
+            if cached:
+                return json.loads(cached) if isinstance(cached, str) else cached
 
-        await self.quota_service.assert_within_quota(learner_id, tier)
+        if self.quota_service:
+            await self.quota_service.check_and_reserve(learner_id, estimated_tokens=1000, tier=tier)
+            
         content = await _call_llm(learner_id=learner_id, subject_code=subject_code, topic=topic, grade_level=grade_level)
         lesson_id = str(uuid.uuid4())
         row = await self.lesson_repository.create(
-            lesson_id=lesson_id,
+            db=None,  # Or whatever is needed for V2
+            id=lesson_id,
             learner_id=learner_id,
-            subject_code=subject_code,
-            grade_level=grade_level,
+            subject=subject_code,
+            grade=grade_level or 0,
             topic=topic,
-            content=content,
+            content=json.dumps(content),
             generated_by="V2_LLM",
         )
         result = {
-            "lesson_id": getattr(row, "lesson_id", lesson_id),
+            "lesson_id": getattr(row, "id", lesson_id),
             "learner_id": learner_id,
             "subject_code": subject_code,
             "topic": topic,
             "content": content,
             "generated_by": "V2_LLM",
         }
-        await self.quota_service.set_cached(key, result)
+        if self.cache_service and key:
+            await self.cache_service.set(key, json.dumps(result))
+            
         await AuditService().log_event("LESSON_GENERATED", {"subject_code": subject_code, "topic": topic}, learner_id)
         return result
 

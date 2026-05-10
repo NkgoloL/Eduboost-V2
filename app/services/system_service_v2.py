@@ -9,12 +9,14 @@ class SystemServiceV2:
 
     async def pillars(self) -> dict:
         return {
+            "architecture": "modular-monolith",
+            "audit_target": "postgresql-append-only",
             "pillars": [
                 "diagnostics",
-                "executive",
-                "judiciary",
+                "lessons",
+                "gamification",
                 "audit",
-                "ether",
+                "parent_portal",
             ]
         }
 
