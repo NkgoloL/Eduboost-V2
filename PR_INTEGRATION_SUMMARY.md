@@ -371,3 +371,7 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 ## Cluster E Backup Restore Commands
 
 - Cluster E backup/restore dry-run command contracts added.
+
+## Cluster E Backup Restore Evidence Records
+
+- Cluster E backup manifest and restore evidence records added.

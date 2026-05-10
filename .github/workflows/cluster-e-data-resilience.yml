@@ -24,9 +24,13 @@ jobs:
           make database-restore-drill-docs-check
           make database-restore-dry-run
           make database-backup-dry-run
+          make database-restore-evidence
+          make database-backup-manifest
           make cluster-e-data-resilience-check
           pytest -c pytest.ini \
             tests/unit/test_database_backup_contract.py \
+            tests/unit/test_generate_database_restore_evidence.py \
+            tests/unit/test_generate_database_backup_manifest.py \
             tests/unit/test_database_restore_command.py \
             tests/unit/test_database_backup_command.py \
             tests/unit/test_database_restore_drill_docs.py \

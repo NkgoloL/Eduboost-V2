@@ -149,3 +149,9 @@ database-backup-dry-run:
 
 database-restore-dry-run:
 	$(PYTHON) scripts/run_database_restore.py --dry-run --target-environment staging
+
+database-backup-manifest:
+	$(PYTHON) scripts/generate_database_backup_manifest.py --encrypted
+
+database-restore-evidence:
+	$(PYTHON) scripts/generate_database_restore_evidence.py

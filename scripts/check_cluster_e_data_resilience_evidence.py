@@ -8,6 +8,12 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_generate_database_restore_evidence.py",
+    "tests/unit/test_generate_database_backup_manifest.py",
+    "docs/operations/database_restore_evidence.md",
+    "docs/operations/database_backup_manifest.md",
+    "scripts/generate_database_restore_evidence.py",
+    "scripts/generate_database_backup_manifest.py",
     "tests/unit/test_database_restore_command.py",
     "tests/unit/test_database_backup_command.py",
     "docs/operations/database_restore_command.md",
@@ -23,6 +29,23 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "scripts/generate_database_restore_evidence.py": (
+        "RestoreEvidenceInput",
+        "Consent count status",
+        "Audit count status",
+    ),
+    "scripts/generate_database_backup_manifest.py": (
+        "BackupManifestInput",
+        "backup artifact is encrypted",
+    ),
+    "docs/operations/database_restore_evidence.md": (
+        "Database Restore Evidence",
+        "Production promotion is blocked",
+    ),
+    "docs/operations/database_backup_manifest.md": (
+        "Database Backup Manifest",
+        "backup artifact is encrypted",
+    ),
     "scripts/run_database_restore.py": (
         "validate_target_environment",
         "--allow-production-target",
@@ -47,6 +70,8 @@ CONTENT_REQUIREMENTS = {
         "database-restore-drill-docs-check:",
         "database-backup-dry-run:",
         "database-restore-dry-run:",
+        "database-backup-manifest:",
+        "database-restore-evidence:",
     ),
     "docs/operations/database_backup_contract.md": (
         "Database Backup Contract",
