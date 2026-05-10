@@ -9,6 +9,16 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_h_audit_attestation_rollup_wiring.py",
+    "tests/unit/test_cluster_h_final_closeout_rollup.py",
+    "tests/unit/test_beta_release_closure_attestation.py",
+    "tests/unit/test_release_audit_trail_index.py",
+    "scripts/check_cluster_h_final_closeout_rollup.py",
+    "scripts/check_beta_release_closure_attestation.py",
+    "scripts/check_release_audit_trail_index.py",
+    "docs/operations/final_cluster_h_closeout_rollup.md",
+    "docs/operations/beta_release_closure_attestation.md",
+    "docs/operations/release_audit_trail_index.md",
     "tests/unit/test_cluster_h_post_merge_governance_wiring.py",
     "tests/unit/test_beta_release_decision_log.py",
     "tests/unit/test_release_owner_accountability.py",
@@ -98,6 +108,18 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/operations/final_cluster_h_closeout_rollup.md": (
+        "Final Cluster H Closeout Rollup",
+        "does not perform deployment, manual approval, tag creation, production migration, or post-deploy browser execution",
+    ),
+    "docs/operations/beta_release_closure_attestation.md": (
+        "Beta Release Closure Attestation",
+        "does not grant release approval, execute deployment, create release tags, or authorize production launch",
+    ),
+    "docs/operations/release_audit_trail_index.md": (
+        "Release Audit Trail Index",
+        "does not replace workflow logs, approval records, deployment platform evidence, or incident records",
+    ),
     "docs/operations/beta_release_decision_log.md": (
         "Beta Release Decision Log",
         "decision log does not replace platform workflow logs",
@@ -229,6 +251,9 @@ CONTENT_REQUIREMENTS = {
         "post-merge-release-handoff-check:",
         "release-owner-accountability-check:",
         "beta-release-decision-log-check:",
+        "release-audit-trail-index-check:",
+        "beta-release-closure-attestation-check:",
+        "cluster-h-final-closeout-rollup-check:",
     ),
     "docs/operations/beta_release_readiness_contract.md": (
         "Beta Release Readiness Contract",

@@ -392,3 +392,12 @@ release-owner-accountability-check:
 
 beta-release-decision-log-check:
 	$(PYTHON) scripts/check_beta_release_decision_log.py
+
+release-audit-trail-index-check:
+	$(PYTHON) scripts/check_release_audit_trail_index.py
+
+beta-release-closure-attestation-check:
+	$(PYTHON) scripts/check_beta_release_closure_attestation.py
+
+cluster-h-final-closeout-rollup-check:
+	$(PYTHON) scripts/check_cluster_h_final_closeout_rollup.py

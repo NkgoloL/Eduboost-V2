@@ -52,11 +52,18 @@ jobs:
           make post-merge-release-handoff-check
           make release-owner-accountability-check
           make beta-release-decision-log-check
+          make release-audit-trail-index-check
+          make beta-release-closure-attestation-check
+          make cluster-h-final-closeout-rollup-check
           make cluster-h-release-readiness-check
       - name: Run Cluster H release readiness tests
         run: |
           pytest -c pytest.ini \
             tests/unit/test_beta_release_readiness_contract.py \
+            tests/unit/test_cluster_h_audit_attestation_rollup_wiring.py \
+            tests/unit/test_cluster_h_final_closeout_rollup.py \
+            tests/unit/test_beta_release_closure_attestation.py \
+            tests/unit/test_release_audit_trail_index.py \
             tests/unit/test_cluster_h_post_merge_governance_wiring.py \
             tests/unit/test_beta_release_decision_log.py \
             tests/unit/test_release_owner_accountability.py \

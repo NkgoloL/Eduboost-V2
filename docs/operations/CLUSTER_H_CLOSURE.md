@@ -81,3 +81,9 @@ Cluster H is first-pass closed when `make cluster-h-closure-check` passes.
 - `docs/operations/post_merge_release_handoff_checklist.md`
 - `docs/operations/release_owner_accountability_matrix.md`
 - `docs/operations/beta_release_decision_log.md`
+
+## Audit Attestation Rollup Evidence
+
+- `docs/operations/release_audit_trail_index.md`
+- `docs/operations/beta_release_closure_attestation.md`
+- `docs/operations/final_cluster_h_closeout_rollup.md`

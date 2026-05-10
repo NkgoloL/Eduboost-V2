@@ -474,3 +474,7 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster H Post-Merge Governance Handoff
 
 - Cluster H post-merge governance, owner accountability, and release decision log added.
+
+## Cluster H Audit Attestation Rollup
+
+- Cluster H release audit trail, closure attestation, and final closeout rollup added.
