@@ -9,6 +9,13 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = (
+    "tests/unit/test_cluster_g_release_gate_wiring.py",
+    "tests/unit/test_cluster_g_closure_report.py",
+    "tests/unit/test_frontend_evidence_index.py",
+    "docs/frontend/CLUSTER_G_CLOSURE.md",
+    "docs/frontend/frontend_evidence_index.md",
+    "tests/unit/test_cluster_g_closure_check.py",
+    "scripts/check_cluster_g_closure.py",
     "tests/unit/test_cluster_g_build_e2e_workflow_evidence.py",
     "tests/unit/test_frontend_e2e_opt_in_workflow.py",
     "tests/unit/test_frontend_build_test_lint_contract.py",
@@ -92,6 +99,29 @@ REQUIRED_FILES = (
 )
 
 CONTENT_REQUIREMENTS = {
+    "docs/operations/project_evidence_index.md": (
+        "Frontend Journey Contract",
+        "docs/frontend/frontend_evidence_index.md",
+        "make cluster-g-closure-check",
+    ),
+    "docs/operations/staging_release_gate.md": (
+        "make cluster-g-closure-check",
+        "docs/frontend/CLUSTER_G_CLOSURE.md",
+    ),
+    "docs/operations/release_evidence_manifest.md": (
+        "Cluster G frontend journey",
+        "make cluster-g-closure-check",
+    ),
+    "docs/frontend/CLUSTER_G_CLOSURE.md": (
+        "Cluster G Frontend Vertical Journey Closure",
+        "make cluster-g-closure-check",
+        "opt-in runtime browser",
+    ),
+    "docs/frontend/frontend_evidence_index.md": (
+        "Frontend Evidence Index",
+        "Cluster G Closure",
+        "make cluster-g-closure-check",
+    ),
     ".github/workflows/frontend-e2e-opt-in.yml": (
         "workflow_dispatch:",
         "make frontend-e2e-mocked",
@@ -187,6 +217,7 @@ CONTENT_REQUIREMENTS = {
         "frontend-e2e-mocked:",
         "frontend-build-test-lint-contract-check:",
         "frontend-e2e-opt-in-workflow-check:",
+        "cluster-g-closure-check:",
     ),
     "docs/frontend/frontend_route_inventory.md": (
         "Frontend Route Inventory",

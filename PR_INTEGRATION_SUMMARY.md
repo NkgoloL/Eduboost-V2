@@ -459,3 +459,7 @@ PR-002R does not complete security, POPIA workflows, audit-chain integrity, back
 ## Cluster G Build E2E Workflow Evidence
 
 - Cluster G frontend build/test/lint contract and opt-in E2E workflow added.
+
+## Cluster G Closure Release Evidence
+
+- Cluster G frontend closure and release-gate evidence wiring added.

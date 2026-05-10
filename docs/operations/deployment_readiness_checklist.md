@@ -52,6 +52,10 @@ when `AZURE_KEY_VAULT_URL` is missing.
 
 - `make cluster-f-closure-check`
 
+## Frontend Journey Evidence
+
+- `make cluster-g-closure-check`
+
 ## Release Evidence
 
 Before staging or production release, attach command output for all checklist

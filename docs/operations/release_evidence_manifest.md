@@ -1,8 +1,8 @@
 # Release Evidence Manifest
 
-Generated: `2026-05-10T14:54:26Z`
+Generated: `2026-05-10T16:57:28Z`
 Branch: `codex/cluster-c-popia-consent-audi`
-Commit: `c51f7748044979c51fa438663db866adcaa6d67e`
+Commit: `b737f9e8e5d07e423e7052aff469a023b60c8143`
 
 ## Required Evidence Commands
 
@@ -17,6 +17,7 @@ Commit: `c51f7748044979c51fa438663db866adcaa6d67e`
 | Cluster D environment/deployment | `make cluster-d-closure-check` | pending |
 | Cluster E data resilience | `make cluster-e-closure-check` | pending |
 | Cluster F AI safety | `make cluster-f-closure-check` | pending |
+| Cluster G frontend journey | `make cluster-g-closure-check` | pending |
 
 ## Release Evidence Notes
 

@@ -42,8 +42,13 @@ jobs:
           make frontend-auth-consent-denial-check
           make parent-vertical-journey-contract-check
           make cluster-g-frontend-check
+          make cluster-g-closure-check
           pytest -c pytest.ini \
             tests/unit/test_frontend_route_inventory.py \
+            tests/unit/test_cluster_g_release_gate_wiring.py \
+            tests/unit/test_cluster_g_closure_report.py \
+            tests/unit/test_frontend_evidence_index.py \
+            tests/unit/test_cluster_g_closure_check.py \
             tests/unit/test_cluster_g_build_e2e_workflow_evidence.py \
             tests/unit/test_frontend_e2e_opt_in_workflow.py \
             tests/unit/test_frontend_build_test_lint_contract.py \

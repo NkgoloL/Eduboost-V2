@@ -293,3 +293,6 @@ frontend-build-test-lint-contract-check:
 
 frontend-e2e-opt-in-workflow-check:
 	$(PYTHON) scripts/check_frontend_e2e_opt_in_workflow.py
+
+cluster-g-closure-check:
+	$(PYTHON) scripts/check_cluster_g_closure.py
