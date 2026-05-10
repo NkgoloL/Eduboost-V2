@@ -1,0 +1,29 @@
+name: Cluster E Data Resilience Evidence
+
+on:
+  pull_request:
+    branches: [master, "release/**"]
+  push:
+    branches: [master, "release/**"]
+
+jobs:
+  cluster-e-data-resilience:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Cluster E evidence checks
+        run: |
+          make database-backup-contract-check
+          make database-restore-drill-docs-check
+          make cluster-e-data-resilience-check
+          pytest -c pytest.ini \
+            tests/unit/test_database_backup_contract.py \
+            tests/unit/test_database_restore_drill_docs.py \
+            -q --no-cov

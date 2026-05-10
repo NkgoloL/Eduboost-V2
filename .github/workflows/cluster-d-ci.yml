@@ -25,7 +25,10 @@ jobs:
           make production-secret-placeholder-check
           make deployment-readiness-docs-check
           make cluster-d-ci-check
+          make staging-release-gate-check
+          python scripts/generate_release_evidence_manifest.py
           make cluster-d-closure-check
+          make release-evidence-artifacts-check
           pytest -c pytest.ini \
             tests/unit/test_environment_security_contract.py \
             tests/unit/test_cluster_d_closure_check.py \
@@ -33,4 +36,7 @@ jobs:
             tests/unit/test_dev_only_endpoint_exposure.py \
             tests/unit/test_production_secret_placeholders.py \
             tests/unit/test_deployment_readiness_docs.py \
+            tests/unit/test_release_evidence_artifacts.py \
+            tests/unit/test_cluster_d_closure_report.py \
+            tests/unit/test_project_evidence_index.py \
             -q --no-cov

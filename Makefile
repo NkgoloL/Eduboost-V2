@@ -128,3 +128,18 @@ dev-only-endpoint-check:
 
 cluster-d-closure-check:
 	$(PYTHON) scripts/check_cluster_d_closure.py
+
+staging-release-gate-check:
+	$(PYTHON) scripts/check_staging_release_gate.py
+
+release-evidence-artifacts-check:
+	$(PYTHON) scripts/check_release_evidence_artifacts.py
+
+database-backup-contract-check:
+	$(PYTHON) scripts/check_database_backup_contract.py
+
+database-restore-drill-docs-check:
+	$(PYTHON) scripts/check_database_restore_drill_docs.py
+
+cluster-e-data-resilience-check:
+	$(PYTHON) scripts/check_cluster_e_data_resilience_evidence.py

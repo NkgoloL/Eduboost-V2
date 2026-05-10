@@ -36,6 +36,14 @@ when `AZURE_KEY_VAULT_URL` is missing.
 
 - `make cluster-d-closure-check`
 
+## Release Gate Evidence
+
+- `python3 scripts/generate_release_evidence_manifest.py`
+
+## Release Gate Evidence
+
+- `make staging-release-gate-check`
+
 ## Release Evidence
 
 Before staging or production release, attach command output for all checklist

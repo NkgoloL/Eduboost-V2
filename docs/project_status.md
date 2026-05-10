@@ -324,3 +324,15 @@ The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
 ## Cluster D Closure
 
 - Cluster D closure command and production Key Vault behavior evidence added.
+
+## Cluster D Release Evidence
+
+- Release evidence manifest and staging release gate added to Cluster D.
+
+## Project Evidence Index
+
+- Project evidence index and Cluster D closure report added.
+
+## Cluster E Data Resilience
+
+- Cluster E data-resilience baseline added for backup/restore evidence.
