@@ -200,6 +200,9 @@ caps-alignment-contract-check:
 ai-safety-boundary-check:
 	$(PYTHON) scripts/check_ai_safety_boundary_contract.py
 
+ai-safety-release-check:
+	$(PYTHON) scripts/check_ai_safety_release_evidence.py
+
 cluster-f-ai-safety-check:
 	$(PYTHON) scripts/check_cluster_f_ai_safety_evidence.py
 
