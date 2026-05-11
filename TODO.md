@@ -525,7 +525,7 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 - [ ] `P0` Add test that support cannot view unnecessary PII.
 - [ ] `P0` Add test that compliance auditor can view audit records without broad data mutation rights.
 - [ ] `P0` Add audit events for privileged access.
-- [ ] `P1` Add policy tests for every router.
+- [verify] `P1` Add policy tests for every router. Evidence: `docs/security/PHASE2_AUTHORIZATION_CLOSURE.md`, `scripts/check_phase2_authorization_evidence.py`, `scripts/check_privacy_boundary_evidence.py`; verification gap: every router still needs item-level reconciliation before this can become `[x]`.
 - [ ] `P1` Move from basic RBAC to policy-based authorization for sensitive workflows.
 - [ ] `P2` Add tightly audited admin impersonation only if absolutely required.
 
@@ -574,21 +574,21 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 ## 4.2 Declarative consent enforcement
 
 - [ ] `P0` Make consent enforcement declarative through FastAPI dependency or middleware.
-- [ ] `P0` Add `scripts/check_consent_gates.py`.
-- [ ] `P0` Identify all learner-data routes.
-- [ ] `P0` Mark consent-required route patterns.
-- [ ] `P0` Fail CI if consent-required route lacks consent gate.
-- [ ] `P0` Add negative test for diagnostics without consent.
-- [ ] `P0` Add negative test for lessons without consent.
-- [ ] `P0` Add negative test for learner profile access without consent.
-- [ ] `P0` Add negative test for study plan access without consent.
-- [ ] `P0` Add negative test for gamification without consent.
+- [verify] `P0` Add consent gate checker. Evidence: `scripts/generate_consent_gate_inventory.py`, `scripts/check_consent_gate_inventory.py`, `make popia-consent-gate-check`.
+- [verify] `P0` Identify all learner-data routes. Evidence: `docs/security/popia_consent_gate_inventory.md`, `docs/security/privacy_boundary_evidence.md`.
+- [verify] `P0` Mark consent-required route patterns. Evidence: `docs/security/popia_consent_boundary_matrix.md`, `scripts/check_popia_consent_boundary_matrix.py`.
+- [verify] `P0` Fail CI if consent-required route lacks consent gate. Evidence: `.github/workflows/privacy-boundary.yml`, `scripts/check_privacy_boundary_evidence.py`; verification gap: required-check enforcement must be configured in GitHub branch protection.
+- [verify] `P0` Add negative test for diagnostics without consent. Evidence: `docs/security/diagnostics_consent_gate.md`, `tests/unit/test_diagnostics_consent_gate_wiring.py`.
+- [verify] `P0` Add negative test for lessons without consent. Evidence: `docs/security/lesson_generation_consent_gate.md`, `tests/unit/test_lesson_generation_consent_gate_wiring.py`.
+- [verify] `P0` Add negative test for learner profile access without consent. Evidence: `docs/security/learner_read_consent_gate.md`, `tests/unit/test_learner_read_consent_gate_wiring.py`.
+- [verify] `P0` Add negative test for study plan access without consent. Evidence: `docs/security/study_plan_consent_gate.md`.
+- [verify] `P0` Add negative test for gamification without consent. Evidence: `docs/security/gamification_consent_gate.md`, `tests/unit/test_gamification_consent_gate_wiring.py`.
 - [ ] `P0` Add negative test for analytics processing without consent.
 - [ ] `P0` Add negative test for RLHF feedback without consent.
 - [ ] `P0` Add negative test for parent reports without consent.
 - [ ] `P0` Add negative test for data export without consent/authority.
 - [ ] `P0` Add negative test for erasure request without authority.
-- [ ] `P1` Add route-level consent policy documentation.
+- [verify] `P1` Add route-level consent policy documentation. Evidence: `docs/security/privacy_boundary_evidence.md`, `docs/security/popia_consent_gate_inventory.md`, `docs/security/popia_consent_boundary_matrix.md`.
 
 ## 4.3 Data subject rights
 
@@ -609,10 +609,10 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 - [ ] `P1` Add admin review queue for billing/school/legal-retention conflicts.
 - [ ] `P1` Add notification to guardian when export is ready.
 - [ ] `P1` Add notification to guardian when erasure completes.
-- [ ] `P1` Add tests for export workflow.
-- [ ] `P1` Add tests for erasure workflow.
-- [ ] `P1` Add tests for correction workflow.
-- [ ] `P1` Add tests for restriction workflow.
+- [verify] `P1` Add tests for export workflow. Evidence: `tests/integration/test_popia_data_export_authorization.py`, `tests/integration/test_parent_export_authorization.py`; verification gap: full export artifact generation still requires release evidence.
+- [verify] `P1` Add tests for erasure workflow. Evidence: `tests/popia/test_right_to_erasure.py`, `tests/integration/test_parent_erasure_authorization.py`, `tests/integration/test_popia_deletion_request_authorization.py`.
+- [verify] `P1` Add tests for correction workflow. Evidence: `tests/integration/test_popia_correction_request_authorization.py`.
+- [verify] `P1` Add tests for restriction workflow. Evidence: `tests/integration/test_popia_restriction_request_authorization.py`.
 
 ## 4.4 Data minimization and inventory
 
@@ -665,7 +665,7 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 - [ ] `P0` Add audit event for admin access.
 - [ ] `P0` Add audit event for billing changes.
 - [ ] `P1` Add immutable retention rules for audit records.
-- [ ] `P1` Add automated audit completeness tests.
+- [verify] `P1` Add automated audit completeness tests. Evidence: `scripts/check_audit_event_contracts.py`, `tests/unit/test_audit_event_contracts.py`, `docs/security/audit_event_contracts.md`; verification gap: staging audit sink evidence still required.
 - [ ] `P1` Build internal audit dashboard.
 
 ## 4.6 Legal/privacy docs

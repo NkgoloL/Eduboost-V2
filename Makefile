@@ -119,6 +119,9 @@ popia-consent-source-check:
 popia-consent-closure-check:
 	$(PYTHON) scripts/check_popia_consent_closure.py
 
+privacy-boundary-check:
+	$(PYTHON) scripts/check_privacy_boundary_evidence.py
+
 environment-security-check:
 	$(PYTHON) scripts/check_environment_security_contract.py
 
