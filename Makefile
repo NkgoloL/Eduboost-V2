@@ -68,6 +68,9 @@ schema-integrity:
 	@echo "Validating ORM schema integrity"
 	$(PYTHON) scripts/validate_schema_integrity.py
 
+db-repository-check:
+	$(PYTHON) scripts/check_db_repository_evidence.py
+
 migration-smoke:
 	@echo "Run migration smoke tests (requires DATABASE_URL pointing to disposable DB)"
 	./scripts/smoke_test_migrations.sh
