@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 PYTHON ?= python3
 
-.PHONY: help dev test lint typecheck migrate docs clean migration-check schema-integrity migration-smoke openapi openapi-check route-inventory route-inventory-check runtime-check pr002r-check beta-release-readiness-contract-check phase2-authz-check
+.PHONY: help dev test lint typecheck migrate docs clean migration-check schema-integrity migration-smoke openapi openapi-check route-inventory route-inventory-check runtime-check verify-repo-state pr002r-check beta-release-readiness-contract-check phase2-authz-check
 
 help:
 	@echo "Available commands:"
@@ -16,6 +16,7 @@ help:
 	@echo "  route-inventory - Generate docs/route_inventory.md"
 	@echo "  route-inventory-check - Verify docs/route_inventory.md is current"
 	@echo "  runtime-check   - Verify FastAPI runtime entrypoints"
+	@echo "  verify-repo-state - Verify repository provenance and release branch expectations"
 	@echo "  pr002r-check   - Verify PR-002R evidence bundle"
 	@echo "  beta-release-readiness-contract-check - Verify release-readiness docs contract wording"
 	@echo "  clean           - Remove temporary files"
@@ -53,6 +54,9 @@ route-inventory-check:
 
 runtime-check:
 	$(PYTHON) scripts/check_runtime_entrypoints.py
+
+verify-repo-state:
+	$(PYTHON) scripts/verify_repo_state.py --expected-branch "$${EXPECTED_RELEASE_BRANCH:-master}" $${VERIFY_REPO_STATE_ARGS:-}
 
 pr002r-check:
 	$(PYTHON) scripts/check_pr002r_evidence.py

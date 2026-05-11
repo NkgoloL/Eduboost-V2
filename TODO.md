@@ -108,15 +108,15 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 
 ## 0.1 Canonical repo, fork, and branch policy
 
-- [ ] `P0` Confirm canonical source repo in `docs/repository_governance.md`.
-- [ ] `P0` Confirm active branch is `master`.
-- [ ] `P0` Confirm latest valid repo state is identified by the commit message containing `Merge pull request #52`.
-- [ ] `P0` Document relationship between `NkgoloL/Eduboost-V2` and `userxrebornbackup-ux/Eduboost-V2`.
-- [ ] `P0` Document which repo produces official releases.
-- [ ] `P0` Document which repo is allowed to receive production hotfixes.
-- [ ] `P0` Document whether the backup fork is temporary, permanent mirror, or recovery source.
-- [ ] `P0` Stop using raw commit count as the canonical freshness signal.
-- [ ] `P0` Use head SHA + merge marker + release tag + CI evidence as freshness criteria.
+- [verify] `P0` Confirm canonical source repo in `docs/repository_governance.md`. Evidence: `docs/repository_governance.md`, `scripts/verify_repo_state.py`.
+- [verify] `P0` Confirm active branch is `master`. Evidence: `docs/repository_governance.md`, `scripts/verify_repo_state.py`; verification gap: branch protection must be confirmed in GitHub settings.
+- [verify] `P0` Confirm latest valid repo state is identified by the commit message containing `Merge pull request #52`. Evidence: `scripts/verify_repo_state.py`.
+- [verify] `P0` Document relationship between `NkgoloL/Eduboost-V2` and `userxrebornbackup-ux/Eduboost-V2`. Evidence: `docs/repository_governance.md`.
+- [verify] `P0` Document which repo produces official releases. Evidence: `docs/repository_governance.md`.
+- [verify] `P0` Document which repo is allowed to receive production hotfixes. Evidence: `docs/repository_governance.md`.
+- [verify] `P0` Document whether the backup fork is temporary, permanent mirror, or recovery source. Evidence: `docs/repository_governance.md`; verification gap: owner approval record still required.
+- [verify] `P0` Stop using raw commit count as the canonical freshness signal. Evidence: `scripts/verify_repo_state.py`.
+- [verify] `P0` Use head SHA + merge marker + release tag + CI evidence as freshness criteria. Evidence: `scripts/verify_repo_state.py`, `.github/workflows/repo-state.yml`; verification gap: release tag evidence still required at release time.
 - [ ] `P1` Add mirror-sync policy.
 - [ ] `P1` Add fork divergence-detection policy.
 - [ ] `P1` Add fork recovery procedure.
@@ -129,15 +129,15 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 
 ## 0.2 Repo-state verification automation
 
-- [ ] `P0` Add `scripts/verify_repo_state.py`.
-- [ ] `P0` Script must verify current git branch is `master`.
-- [ ] `P0` Script must verify remote URL matches accepted canonical or recovery repo.
-- [ ] `P0` Script must verify latest commit message contains the accepted freshness marker.
-- [ ] `P0` Script must print current head SHA.
-- [ ] `P0` Script must fail if working tree is dirty unless `--allow-dirty` is passed.
-- [ ] `P0` Script must fail if run from the wrong repo.
-- [ ] `P1` Add `make verify-repo-state`.
-- [ ] `P1` Add CI step for repo-state verification.
+- [verify] `P0` Add `scripts/verify_repo_state.py`. Evidence: `scripts/verify_repo_state.py`, `tests/unit/test_verify_repo_state.py`.
+- [verify] `P0` Script must verify current git branch is `master`. Evidence: `scripts/verify_repo_state.py`; verification gap: release branch check runs strictly only on release branches.
+- [verify] `P0` Script must verify remote URL matches accepted canonical or recovery repo. Evidence: `scripts/verify_repo_state.py`, `tests/unit/test_verify_repo_state.py`.
+- [verify] `P0` Script must verify latest commit message contains the accepted freshness marker. Evidence: `scripts/verify_repo_state.py`, `tests/unit/test_verify_repo_state.py`.
+- [verify] `P0` Script must print current head SHA. Evidence: `scripts/verify_repo_state.py`.
+- [verify] `P0` Script must fail if working tree is dirty unless `--allow-dirty` is passed. Evidence: `scripts/verify_repo_state.py`, `tests/unit/test_verify_repo_state.py`.
+- [verify] `P0` Script must fail if run from the wrong repo. Evidence: `scripts/verify_repo_state.py`.
+- [verify] `P1` Add `make verify-repo-state`. Evidence: `Makefile`.
+- [verify] `P1` Add CI step for repo-state verification. Evidence: `.github/workflows/repo-state.yml`.
 - [ ] `P1` Add repo-state verification output to release evidence bundle.
 - [ ] `P2` Add JSON output mode to `scripts/verify_repo_state.py`.
 
@@ -181,20 +181,20 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 
 ## 1.2 Canonical runtime
 
-- [ ] `P0` Confirm production runtime is `app.api_v2:app`.
-- [ ] `P0` Update all docs to reference `app.api_v2:app`.
+- [verify] `P0` Confirm production runtime is `app.api_v2:app`. Evidence: `scripts/check_runtime_entrypoints.py`, `tests/test_entrypoints.py`.
+- [verify] `P0` Update all docs to reference `app.api_v2:app`. Evidence: `docs/current_state.md`, `docs/pr/PR-002R_BACKEND_RUNTIME_API_CONTRACT.md`, `docs/route_inventory.md`.
 - [ ] `P0` Update Dockerfile command to reference `app.api_v2:app`.
 - [ ] `P0` Update docker-compose command to reference `app.api_v2:app` if command is explicit.
 - [ ] `P0` Update CI smoke test to import `app.api_v2`.
 - [ ] `P0` Update release checklist to require `app.api_v2:app`.
-- [ ] `P0` Add `tests/test_runtime_entrypoints.py`.
-- [ ] `P0` Add test importing `app.api_v2:app`.
+- [verify] `P0` Add runtime entrypoint tests. Evidence: `tests/test_entrypoints.py`, `tests/unit/test_check_runtime_entrypoints.py`.
+- [verify] `P0` Add test importing `app.api_v2:app`. Evidence: `tests/test_entrypoints.py`.
 - [ ] `P0` Add test importing `app.api.main:app`.
-- [ ] `P0` Add test importing `app.legacy.api.main:app`, if legacy shim is retained.
-- [ ] `P0` Ensure compatibility imports resolve to the V2 app or documented shim.
-- [ ] `P0` Test that compatibility shim title/version matches V2 app.
-- [ ] `P0` Test that compatibility shim exposes the same `/health` behavior.
-- [ ] `P0` Test that compatibility shim exposes the same `/ready` behavior.
+- [verify] `P0` Add test importing `app.legacy.api.main:app`, if legacy shim is retained. Evidence: `tests/test_entrypoints.py`.
+- [verify] `P0` Ensure compatibility imports resolve to the V2 app or documented shim. Evidence: `tests/test_entrypoints.py`.
+- [verify] `P0` Test that compatibility shim title/version matches V2 app. Evidence: `scripts/check_runtime_entrypoints.py`, `tests/unit/test_check_runtime_entrypoints.py`.
+- [verify] `P0` Test that compatibility shim exposes the same `/health` behavior. Evidence: `tests/test_entrypoints.py`.
+- [verify] `P0` Test that compatibility shim exposes the same `/ready` behavior. Evidence: `tests/test_entrypoints.py`.
 - [ ] `P1` Add `scripts/check_runtime_entrypoints.py`.
 - [x] `P1` Add `make runtime-check`. Evidence: `Makefile`,
   `scripts/check_runtime_entrypoints.py`.
@@ -202,27 +202,27 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 
 ## 1.3 Fix `app/api_v2.py` router registration
 
-- [ ] `P0` Remove duplicate router import blocks from `app/api_v2.py`.
-- [ ] `P0` Move `system.router` registration into the actual router-registration loop.
-- [ ] `P0` Confirm `system.router` is registered under `/api/v2`.
-- [ ] `P0` Confirm `system.router` is registered under `/v2`.
-- [ ] `P0` Remove unreachable/dead router-registration code.
-- [ ] `P0` Add regression test for system routes.
-- [ ] `P0` Add import smoke test:
+- [verify] `P0` Remove duplicate router import blocks from `app/api_v2.py`. Evidence: `app/api_v2.py`.
+- [verify] `P0` Move `system.router` registration into the actual router-registration loop. Evidence: `app/api_v2.py`, `tests/unit/test_api_v2_router_contract.py`.
+- [verify] `P0` Confirm `system.router` is registered under `/api/v2`. Evidence: `tests/unit/test_api_v2_router_contract.py`.
+- [verify] `P0` Confirm `system.router` is registered under `/v2`. Evidence: `tests/unit/test_api_v2_router_contract.py`.
+- [verify] `P0` Remove unreachable/dead router-registration code. Evidence: `app/api_v2.py`.
+- [verify] `P0` Add regression test for system routes. Evidence: `tests/unit/test_api_v2_router_contract.py`.
+- [verify] `P0` Add import smoke test:
   ```bash
   python -c "from app.api_v2 import app; print(app.title)"
   ```
-- [ ] `P0` Add test ensuring all router modules import without side effects.
-- [ ] `P1` Add route inventory test that snapshots all registered routes.
-- [ ] `P1` Commit route inventory artifact under `docs/route_inventory.md`.
+- [verify] `P0` Add test ensuring all router modules import without side effects. Evidence: `tests/unit/test_api_v2_router_contract.py`.
+- [verify] `P1` Add route inventory test that snapshots all registered routes. Evidence: `tests/unit/test_generate_route_inventory.py`.
+- [verify] `P1` Commit route inventory artifact under `docs/route_inventory.md`. Evidence: `docs/route_inventory.md`.
 
 ## 1.4 Legacy route exclusion
 
 - [ ] `P0` Define which routes are V2 production routes.
 - [ ] `P0` Define which routes are legacy-only and forbidden in production.
-- [ ] `P0` Add test proving legacy-only routes are not exposed by `app.api_v2:app`.
-- [ ] `P0` Add test proving archived `app/legacy` code is not mounted.
-- [ ] `P0` Add test proving V1 routers are not included accidentally.
+- [verify] `P0` Add test proving legacy-only routes are not exposed by `app.api_v2:app`. Evidence: `tests/unit/test_api_v2_router_contract.py`, `tests/test_entrypoints.py`.
+- [verify] `P0` Add test proving archived `app/legacy` code is not mounted. Evidence: `tests/test_entrypoints.py`.
+- [verify] `P0` Add test proving V1 routers are not included accidentally. Evidence: `tests/unit/test_api_v2_router_contract.py`.
 - [ ] `P1` Add CI job `legacy-route-guard`.
 - [ ] `P1` Add `docs/legacy_compatibility.md`.
 - [ ] `P2` Remove stale V1 docs or mark them archived.

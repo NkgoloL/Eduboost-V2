@@ -39,10 +39,9 @@ The current verified truth is narrower: only the checks listed under
   exist.
 - Governance and evidence checks exist for release-readiness contracts, POPIA
   consent boundaries, route inventories, and PR-002R evidence.
-- A privacy-boundary evidence index and aggregate check exist for
-  object-authorization, consent-gate, POPIA data-rights, and audit evidence:
-  `docs/security/privacy_boundary_evidence.md` and
-  `make privacy-boundary-check`.
+- Repository provenance verification exists through
+  `scripts/verify_repo_state.py`, `make verify-repo-state`, and the
+  `.github/workflows/repo-state.yml` workflow.
 - Grade 4 Mathematics item-bank implementation exists with 14 approved starter
   items plus generated candidate content that still requires approval before
   production coverage can be claimed.
@@ -59,6 +58,8 @@ correction commit:
 - YAML parsing for every `.github/workflows/*.yml` with PyYAML.
 - `make beta-release-readiness-contract-check`, scoped to documentation
   contract wording only.
+- `pytest tests/unit/test_verify_repo_state.py -q --no-cov` validates the
+  repo-state checker contract.
 
 These checks still require fresh verification before release promotion:
 
