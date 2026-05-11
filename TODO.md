@@ -45,6 +45,55 @@ For each completed task, add a reference to one or more of:
 - security/compliance review
 - legal review
 
+## Evidence category rule
+
+Every status document must separate these two categories:
+
+- **Implemented in code**: source, scripts, workflows, docs, or tests exist in
+  the repository.
+- **Verified by green runtime/CI evidence**: a named command, local run, CI job,
+  staging run, or release-evidence artifact has passed against the commit being
+  described.
+
+Do not describe a feature, release gate, or workflow as "ready", "tested",
+"complete", or "production-grade" unless both categories are listed with
+evidence. If only code exists, mark the item `[verify]`.
+
+## Documentation drift correction plan
+
+- [x] `P0` Split status documentation into "Implemented in code" and
+  "Verified by green runtime/CI evidence" categories. Evidence:
+  `TODO.md`, `docs/current_state.md`.
+- [x] `P0` Mark `EduBoost_Technical_Status_Report.md` as a historical snapshot
+  rather than current release truth. Evidence:
+  `EduBoost_Technical_Status_Report.md`.
+- [x] `P0` Mark `INTEGRATION_COMPLETE.md` as a historical integration snapshot
+  rather than current release truth. Evidence: `INTEGRATION_COMPLETE.md`.
+- [x] `P0` Make `docs/current_state.md` the single source of truth for current
+  release state and keep `docs/project_status.md` as an index/redirect.
+  Evidence: `docs/current_state.md`, `docs/project_status.md`.
+- [x] `P0` Ensure `make runtime-check` references a committed script. Evidence:
+  `Makefile`, `scripts/check_runtime_entrypoints.py`,
+  `tests/unit/test_check_runtime_entrypoints.py`.
+- [x] `P0` Regenerate and commit `docs/openapi.json`, then keep
+  `make openapi-check` green. Evidence: `docs/openapi.json`,
+  `make openapi-check` passed on 2026-05-11.
+- [x] `P0` Fix stale legacy references to the removed legacy shim path. Evidence:
+  `README.md`, `tests/smoke/test_app_import.py`.
+- [x] `P0` Fix smoke failures before any release-readiness claim. Evidence:
+  `pytest tests/smoke tests/test_entrypoints.py tests/test_health_checks.py -q --no-cov`
+  passed on 2026-05-11 with 35 passed, 4 skipped.
+- [x] `P1` Remove the static 80% coverage badge until a real CI-generated badge
+  is available. Evidence: `README.md`.
+- [x] `P0` Validate every workflow with YAML/GitHub Actions parsing,
+  starting with `db-backup-matrix.yml`. Evidence:
+  `.github/workflows/db-backup-matrix.yml` and all `.github/workflows/*.yml`
+  parsed with PyYAML on 2026-05-11.
+- [x] `P0` Treat `beta-release-readiness-contract-check` as a docs-contract
+  check, not a release go/no-go check. Evidence:
+  `docs/operations/beta_release_readiness_contract.md`,
+  `scripts/check_beta_release_readiness_contract.py`.
+
 ---
 
 # 0. Repository state and canonical source of truth
@@ -139,7 +188,8 @@ For each completed task, add a reference to one or more of:
 - [ ] `P0` Test that compatibility shim exposes the same `/health` behavior.
 - [ ] `P0` Test that compatibility shim exposes the same `/ready` behavior.
 - [ ] `P1` Add `scripts/check_runtime_entrypoints.py`.
-- [ ] `P1` Add `make runtime-check`.
+- [x] `P1` Add `make runtime-check`. Evidence: `Makefile`,
+  `scripts/check_runtime_entrypoints.py`.
 - [ ] `P1` Add runtime check to CI.
 
 ## 1.3 Fix `app/api_v2.py` router registration

@@ -32,7 +32,7 @@ jobs:
           chmod +x scripts/ci/mock_pg_dump.sh scripts/ci/mock_age.sh scripts/ci/mock_gpg.sh scripts/db_backup.sh
 
       - name: Show scenario
-        run: echo "Running scenario: ${{ matrix.include.name }}"
+        run: 'echo "Running scenario: ${{ matrix.include.name }}"'
 
       - name: Run backup script (scenario)
         shell: bash -l {0}

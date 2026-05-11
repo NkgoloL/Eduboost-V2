@@ -3,6 +3,13 @@
 **Date**: 2026-05-08  
 **Status**: All 8 PR branches successfully integrated into main codebase
 
+> **Historical integration snapshot notice:** This document records an
+> integration event. It is not the current release-readiness source of truth.
+> Current claims must be checked against [`docs/current_state.md`](docs/current_state.md)
+> and the live backlog in [`TODO.md`](TODO.md). "Complete" in this document means
+> integrated into the codebase at the time of writing, not necessarily verified
+> by green runtime/CI/staging evidence on the current commit.
+
 ---
 
 ## Integration Summary
@@ -289,6 +296,7 @@ git reset --hard HEAD^
 ---
 
 **Integration completed**: 2026-05-08 11:30 UTC  
-**Status**: ✅ READY FOR STAGING VALIDATION  
+**Historical status**: integrated and queued for staging validation at the time
+of writing. Current staging readiness must be proven by the checks listed in
+`docs/current_state.md`.
 **Next milestone**: Staging deployment + smoke test pass-through
-

@@ -1,6 +1,10 @@
 # Project Status
 
-This page summarizes the verified repository state as of **2026-05-10**.
+This page is retained as a project-status index. The canonical current-state
+source of truth is [`docs/current_state.md`](current_state.md).
+
+This page summarizes the verified repository state as of **2026-05-10** and is
+superseded by `docs/current_state.md` for release-readiness claims.
 
 ## Current Verified Baseline
 

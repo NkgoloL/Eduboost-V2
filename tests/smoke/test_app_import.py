@@ -1,5 +1,5 @@
 def test_fastapi_app_imports():
-    from app.api.main import app
+    from app.legacy.api.main import app
 
     route_paths = {route.path for route in app.routes}
 

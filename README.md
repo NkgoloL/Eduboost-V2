@@ -1,7 +1,6 @@
 # EduBoost SA
 
 [![CI/CD](https://github.com/NkgoloL/Eduboost-V2/actions/workflows/ci-cd.yml/badge.svg?branch=master)](https://github.com/NkgoloL/Eduboost-V2/actions/workflows/ci-cd.yml)
-[![Coverage](https://img.shields.io/badge/Coverage-80%25%2B-brightgreen)](/app/frontend/coverage/index.html)
 [![Security Scans](https://img.shields.io/badge/Security-Scanned-blue)](/SECURITY.md)
 [![POPIA](https://img.shields.io/badge/POPIA-Tracked-success)](/docs/POPIA_COMPLIANCE.md)
 [![CAPS](https://img.shields.io/badge/CAPS-Aligned-00897B)](https://www.education.gov.za)
@@ -18,7 +17,7 @@ imports and controlled migration behavior.
   runtime.
 - The current PR-002R work establishes the V2 runtime and API contract baseline; production readiness still depends on the remaining security, POPIA, CI/CD, backup/restore, AI-safety, frontend, staging, and release-evidence gates.
 - Legacy code has been archived behind compatibility shims under
-  [`app/legacy`](/app/legacy/DEPRECATED.md) and [`app/api/main.py`](/app/api/main.py).
+  [`app/legacy`](/app/legacy/DEPRECATED.md) and [`app/legacy/api/main.py`](/app/legacy/api/main.py).
 - Redis is used for caching, token revocation, and background job status.
 - Sensitive audit events are persisted through the V2 append-only PostgreSQL
   audit repository.
@@ -32,7 +31,7 @@ imports and controlled migration behavior.
   is already retired.
 
 For the current documentation sync status, see
-[`docs/project_status.md`](/docs/project_status.md) and the root
+[`docs/current_state.md`](/docs/current_state.md), [`docs/project_status.md`](/docs/project_status.md), and the root
 [`TODO.md`](/TODO.md).
 
 Item-bank coverage details live in
@@ -104,7 +103,7 @@ The codebase is organized as a modular monolith:
 
 Legacy compatibility notes:
 
-- [`app/api/main.py`](/app/api/main.py) remains as an import shim.
+- [`app/legacy/api/main.py`](/app/legacy/api/main.py) remains as an import shim.
 - Archived legacy runtime code lives under [`app/legacy`](/app/legacy/DEPRECATED.md).
 - V1 behavior that should no longer be used is intentionally narrowed rather
   than silently preserved.
@@ -151,7 +150,8 @@ The editable inputs for those lockfiles are:
 
 ## Documentation
 
-- Status snapshot: [`docs/project_status.md`](/docs/project_status.md)
+- Current state: [`docs/current_state.md`](/docs/current_state.md)
+- Status index: [`docs/project_status.md`](/docs/project_status.md)
 - Architecture: [`docs/architecture/V2_ARCHITECTURE.md`](/docs/architecture/V2_ARCHITECTURE.md)
 - Migration guide: [`docs/v2_migration.md`](/docs/v2_migration.md)
 - POPIA notes: [`docs/POPIA_COMPLIANCE.md`](/docs/POPIA_COMPLIANCE.md)

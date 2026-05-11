@@ -37,6 +37,151 @@
         "title": "AwardXPRequest",
         "type": "object"
       },
+      "BiasReviewRequest": {
+        "properties": {
+          "notes": {
+            "anyOf": [
+              {
+                "maxLength": 2000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          },
+          "outcome": {
+            "pattern": "^(approve|retire|needs_revision)$",
+            "title": "Outcome",
+            "type": "string"
+          }
+        },
+        "required": [
+          "outcome"
+        ],
+        "title": "BiasReviewRequest",
+        "type": "object"
+      },
+      "CapsRefCoverage": {
+        "properties": {
+          "ai_generated_lessons": {
+            "title": "Ai Generated Lessons",
+            "type": "integer"
+          },
+          "answer_key_verification_rate_pct": {
+            "title": "Answer Key Verification Rate Pct",
+            "type": "number"
+          },
+          "answer_key_verified_count": {
+            "title": "Answer Key Verified Count",
+            "type": "integer"
+          },
+          "approved_lessons": {
+            "title": "Approved Lessons",
+            "type": "integer"
+          },
+          "avg_generation_latency_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Avg Generation Latency Ms"
+          },
+          "caps_ref": {
+            "title": "Caps Ref",
+            "type": "string"
+          },
+          "coverage_status": {
+            "title": "Coverage Status",
+            "type": "string"
+          },
+          "grade": {
+            "title": "Grade",
+            "type": "integer"
+          },
+          "pending_review_lessons": {
+            "title": "Pending Review Lessons",
+            "type": "integer"
+          },
+          "provider_breakdown": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Provider Breakdown",
+            "type": "object"
+          },
+          "quality_score_distribution": {
+            "$ref": "#/components/schemas/QualityScoreDistribution"
+          },
+          "rejected_lessons": {
+            "title": "Rejected Lessons",
+            "type": "integer"
+          },
+          "review_queue_depth": {
+            "title": "Review Queue Depth",
+            "type": "integer"
+          },
+          "subject": {
+            "title": "Subject",
+            "type": "string"
+          },
+          "subtopic": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Subtopic"
+          },
+          "term": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Term"
+          },
+          "topic": {
+            "title": "Topic",
+            "type": "string"
+          },
+          "total_lessons": {
+            "title": "Total Lessons",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "caps_ref",
+          "grade",
+          "subject",
+          "term",
+          "topic",
+          "total_lessons",
+          "approved_lessons",
+          "pending_review_lessons",
+          "rejected_lessons",
+          "ai_generated_lessons",
+          "quality_score_distribution",
+          "answer_key_verified_count",
+          "answer_key_verification_rate_pct",
+          "avg_generation_latency_ms",
+          "coverage_status",
+          "review_queue_depth"
+        ],
+        "title": "CapsRefCoverage",
+        "type": "object"
+      },
       "CheckoutSessionResponse": {
         "properties": {
           "checkout_url": {
@@ -105,6 +250,115 @@
           "reason"
         ],
         "title": "CorrectionRequest",
+        "type": "object"
+      },
+      "CoverageResponse": {
+        "properties": {
+          "grade": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Grade"
+          },
+          "per_caps_ref": {
+            "items": {
+              "$ref": "#/components/schemas/CapsRefCoverage"
+            },
+            "title": "Per Caps Ref",
+            "type": "array"
+          },
+          "subject": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Subject"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/CoverageSummary"
+          }
+        },
+        "required": [
+          "grade",
+          "subject",
+          "summary",
+          "per_caps_ref"
+        ],
+        "title": "CoverageResponse",
+        "type": "object"
+      },
+      "CoverageSummary": {
+        "properties": {
+          "amber_refs": {
+            "title": "Amber Refs",
+            "type": "integer"
+          },
+          "green_refs": {
+            "title": "Green Refs",
+            "type": "integer"
+          },
+          "overall_answer_key_verification_rate_pct": {
+            "title": "Overall Answer Key Verification Rate Pct",
+            "type": "number"
+          },
+          "overall_avg_quality_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Overall Avg Quality Score"
+          },
+          "overall_review_queue_depth": {
+            "title": "Overall Review Queue Depth",
+            "type": "integer"
+          },
+          "red_refs": {
+            "title": "Red Refs",
+            "type": "integer"
+          },
+          "total_approved_lessons": {
+            "title": "Total Approved Lessons",
+            "type": "integer"
+          },
+          "total_caps_refs_in_scope": {
+            "title": "Total Caps Refs In Scope",
+            "type": "integer"
+          },
+          "total_pending_review_lessons": {
+            "title": "Total Pending Review Lessons",
+            "type": "integer"
+          },
+          "uncovered_refs": {
+            "title": "Uncovered Refs",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "total_caps_refs_in_scope",
+          "green_refs",
+          "amber_refs",
+          "red_refs",
+          "uncovered_refs",
+          "total_approved_lessons",
+          "total_pending_review_lessons",
+          "overall_review_queue_depth",
+          "overall_answer_key_verification_rate_pct",
+          "overall_avg_quality_score"
+        ],
+        "title": "CoverageSummary",
         "type": "object"
       },
       "DiagnosticAnswer": {
@@ -183,6 +437,60 @@
           "gaps_identified"
         ],
         "title": "DiagnosticResult",
+        "type": "object"
+      },
+      "DiagnosticSessionResponseRequest": {
+        "properties": {
+          "correct": {
+            "title": "Correct",
+            "type": "boolean"
+          },
+          "item_id": {
+            "format": "uuid",
+            "title": "Item Id",
+            "type": "string"
+          },
+          "response": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Response"
+          }
+        },
+        "required": [
+          "item_id",
+          "correct"
+        ],
+        "title": "DiagnosticSessionResponseRequest",
+        "type": "object"
+      },
+      "DiagnosticSessionStartRequest": {
+        "properties": {
+          "caps_ref": {
+            "title": "Caps Ref",
+            "type": "string"
+          },
+          "learner_id": {
+            "format": "uuid",
+            "title": "Learner Id",
+            "type": "string"
+          },
+          "theta": {
+            "default": 0.0,
+            "title": "Theta",
+            "type": "number"
+          }
+        },
+        "required": [
+          "learner_id",
+          "caps_ref"
+        ],
+        "title": "DiagnosticSessionStartRequest",
         "type": "object"
       },
       "DiagnosticSubmit": {
@@ -438,6 +746,30 @@
           "topic"
         ],
         "title": "LessonRequest",
+        "type": "object"
+      },
+      "LessonReviewRequest": {
+        "properties": {
+          "decision": {
+            "$ref": "#/components/schemas/ReviewDecision"
+          },
+          "reviewer_notes": {
+            "anyOf": [
+              {
+                "maxLength": 2000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reviewer Notes"
+          }
+        },
+        "required": [
+          "decision"
+        ],
+        "title": "LessonReviewRequest",
         "type": "object"
       },
       "LoginRequest": {
@@ -724,6 +1056,251 @@
         "title": "ParentTrustDashboardResponse",
         "type": "object"
       },
+      "PracticeResponseRequest": {
+        "properties": {
+          "correct": {
+            "title": "Correct",
+            "type": "boolean"
+          },
+          "item_id": {
+            "format": "uuid",
+            "title": "Item Id",
+            "type": "string"
+          },
+          "response": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Response"
+          }
+        },
+        "required": [
+          "item_id",
+          "correct"
+        ],
+        "title": "PracticeResponseRequest",
+        "type": "object"
+      },
+      "PracticeSessionRequest": {
+        "properties": {
+          "gap_topics": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Gap Topics",
+            "type": "array"
+          },
+          "learner_id": {
+            "format": "uuid",
+            "title": "Learner Id",
+            "type": "string"
+          },
+          "theta": {
+            "default": 0.0,
+            "title": "Theta",
+            "type": "number"
+          }
+        },
+        "required": [
+          "learner_id"
+        ],
+        "title": "PracticeSessionRequest",
+        "type": "object"
+      },
+      "QualityScoreDistribution": {
+        "properties": {
+          "below_threshold": {
+            "description": "Lessons with quality_score < 0.7.",
+            "title": "Below Threshold",
+            "type": "integer"
+          },
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "max": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max"
+          },
+          "mean": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mean"
+          },
+          "min": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Min"
+          },
+          "p25": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P25"
+          },
+          "p75": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P75"
+          }
+        },
+        "required": [
+          "count",
+          "below_threshold"
+        ],
+        "title": "QualityScoreDistribution",
+        "type": "object"
+      },
+      "QueuedLessonSummary": {
+        "properties": {
+          "answer_key_verified": {
+            "title": "Answer Key Verified",
+            "type": "boolean"
+          },
+          "auto_queue_reason": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Auto Queue Reason",
+            "type": "array"
+          },
+          "caps_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Caps Ref"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "grade": {
+            "title": "Grade",
+            "type": "integer"
+          },
+          "lesson_id": {
+            "title": "Lesson Id",
+            "type": "string"
+          },
+          "prompt_template_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompt Template Version"
+          },
+          "provider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Provider"
+          },
+          "quality_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quality Score"
+          },
+          "review_status": {
+            "$ref": "#/components/schemas/ReviewStatus"
+          },
+          "safety_classification": {
+            "$ref": "#/components/schemas/SafetyClassification"
+          },
+          "subject": {
+            "title": "Subject",
+            "type": "string"
+          },
+          "subtopic": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Subtopic"
+          },
+          "topic": {
+            "title": "Topic",
+            "type": "string"
+          }
+        },
+        "required": [
+          "lesson_id",
+          "caps_ref",
+          "grade",
+          "subject",
+          "topic",
+          "subtopic",
+          "quality_score",
+          "answer_key_verified",
+          "safety_classification",
+          "review_status",
+          "auto_queue_reason",
+          "created_at",
+          "provider",
+          "prompt_template_version"
+        ],
+        "title": "QueuedLessonSummary",
+        "type": "object"
+      },
       "RLHFExportRequest": {
         "properties": {
           "records": {
@@ -805,6 +1382,115 @@
         ],
         "title": "RestrictionRequest",
         "type": "object"
+      },
+      "ReviewActionResponse": {
+        "properties": {
+          "lesson_id": {
+            "title": "Lesson Id",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "review_status": {
+            "$ref": "#/components/schemas/ReviewStatus"
+          },
+          "reviewed_at": {
+            "format": "date-time",
+            "title": "Reviewed At",
+            "type": "string"
+          },
+          "reviewer_id": {
+            "title": "Reviewer Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "lesson_id",
+          "review_status",
+          "reviewer_id",
+          "reviewed_at",
+          "message"
+        ],
+        "title": "ReviewActionResponse",
+        "type": "object"
+      },
+      "ReviewDecision": {
+        "enum": [
+          "approved",
+          "rejected"
+        ],
+        "title": "ReviewDecision",
+        "type": "string"
+      },
+      "ReviewItemRequest": {
+        "properties": {
+          "quality_score": {
+            "anyOf": [
+              {
+                "maximum": 1.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quality Score"
+          },
+          "review_status": {
+            "pattern": "^(draft|ai_generated|human_reviewed|approved|retired)$",
+            "title": "Review Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "review_status"
+        ],
+        "title": "ReviewItemRequest",
+        "type": "object"
+      },
+      "ReviewQueueResponse": {
+        "properties": {
+          "lessons": {
+            "items": {
+              "$ref": "#/components/schemas/QueuedLessonSummary"
+            },
+            "title": "Lessons",
+            "type": "array"
+          },
+          "total_pending": {
+            "title": "Total Pending",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "total_pending",
+          "lessons"
+        ],
+        "title": "ReviewQueueResponse",
+        "type": "object"
+      },
+      "ReviewStatus": {
+        "enum": [
+          "ai_generated",
+          "human_reviewed",
+          "approved",
+          "rejected",
+          "retired"
+        ],
+        "title": "ReviewStatus",
+        "type": "string"
+      },
+      "SafetyClassification": {
+        "enum": [
+          "safe",
+          "requires_review",
+          "rejected"
+        ],
+        "title": "SafetyClassification",
+        "type": "string"
       },
       "StudyPlanGenerateRequest": {
         "properties": {
@@ -1503,6 +2189,254 @@
         ]
       }
     },
+    "/api/v2/diagnostics/admin/items/bias-review-queue": {
+      "get": {
+        "operationId": "bias_review_queue_api_v2_diagnostics_admin_items_bias_review_queue_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "caps_ref",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Caps Ref"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 200,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Bias Review Queue",
+        "tags": [
+          "diagnostics",
+          "item-bias-review"
+        ]
+      }
+    },
+    "/api/v2/diagnostics/admin/items/{item_id}/bias-review": {
+      "post": {
+        "operationId": "record_bias_review_api_v2_diagnostics_admin_items__item_id__bias_review_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BiasReviewRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Record Bias Review",
+        "tags": [
+          "diagnostics",
+          "item-bias-review"
+        ]
+      }
+    },
+    "/api/v2/diagnostics/coverage": {
+      "get": {
+        "operationId": "get_item_bank_coverage_api_v2_diagnostics_coverage_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Item Bank Coverage",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
+    "/api/v2/diagnostics/item-bank/items/{item_id}": {
+      "get": {
+        "operationId": "get_item_bank_item_api_v2_diagnostics_item_bank_items__item_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Item Bank Item",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
+    "/api/v2/diagnostics/item-bank/items/{item_id}/review": {
+      "post": {
+        "operationId": "review_item_bank_item_api_v2_diagnostics_item_bank_items__item_id__review_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewItemRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Review Item Bank Item",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
     "/api/v2/diagnostics/items/{learner_id}": {
       "get": {
         "operationId": "get_diagnostic_items_api_v2_diagnostics_items__learner_id__get",
@@ -1543,6 +2477,202 @@
           }
         ],
         "summary": "Get Diagnostic Items",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
+    "/api/v2/diagnostics/sessions": {
+      "post": {
+        "operationId": "start_diagnostic_session_api_v2_diagnostics_sessions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DiagnosticSessionStartRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Start Diagnostic Session",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
+    "/api/v2/diagnostics/sessions/{session_id}/next-item": {
+      "get": {
+        "operationId": "diagnostic_next_item_api_v2_diagnostics_sessions__session_id__next_item_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Session Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "caps_ref",
+            "required": true,
+            "schema": {
+              "title": "Caps Ref",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Diagnostic Next Item",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
+    "/api/v2/diagnostics/sessions/{session_id}/recover": {
+      "get": {
+        "operationId": "recover_diagnostic_session_api_v2_diagnostics_sessions__session_id__recover_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Recover Diagnostic Session",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
+    "/api/v2/diagnostics/sessions/{session_id}/respond": {
+      "post": {
+        "operationId": "diagnostic_respond_api_v2_diagnostics_sessions__session_id__respond_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DiagnosticSessionResponseRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Diagnostic Respond",
         "tags": [
           "diagnostics"
         ]
@@ -1948,6 +3078,105 @@
         ]
       }
     },
+    "/api/v2/learners/{learner_id}/mastery/summary": {
+      "get": {
+        "operationId": "get_mastery_summary_api_v2_learners__learner_id__mastery_summary_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Mastery Summary",
+        "tags": [
+          "learners"
+        ]
+      }
+    },
+    "/api/v2/learners/{learner_id}/mastery/{caps_ref}": {
+      "get": {
+        "operationId": "get_topic_mastery_api_v2_learners__learner_id__mastery__caps_ref__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "caps_ref",
+            "required": true,
+            "schema": {
+              "title": "Caps Ref",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Topic Mastery",
+        "tags": [
+          "learners"
+        ]
+      }
+    },
     "/api/v2/lessons/": {
       "post": {
         "operationId": "generate_lesson_api_v2_lessons__post",
@@ -1991,6 +3220,74 @@
         "summary": "Generate Lesson",
         "tags": [
           "lessons"
+        ]
+      }
+    },
+    "/api/v2/lessons/coverage": {
+      "get": {
+        "operationId": "get_lesson_coverage_api_v2_lessons_coverage_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "grade",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maximum": 12,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Grade"
+            }
+          },
+          {
+            "in": "query",
+            "name": "subject",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Subject"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoverageResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Lesson Coverage",
+        "tags": [
+          "lessons",
+          "lesson-coverage"
         ]
       }
     },
@@ -2081,6 +3378,177 @@
         "summary": "Generate Lesson Stream",
         "tags": [
           "lessons"
+        ]
+      }
+    },
+    "/api/v2/lessons/review/queue": {
+      "get": {
+        "operationId": "get_review_queue_api_v2_lessons_review_queue_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "grade",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maximum": 12,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Grade"
+            }
+          },
+          {
+            "in": "query",
+            "name": "subject",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Subject"
+            }
+          },
+          {
+            "in": "query",
+            "name": "caps_ref",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Caps Ref"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 200,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewQueueResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Review Queue",
+        "tags": [
+          "lessons",
+          "lesson-review"
+        ]
+      }
+    },
+    "/api/v2/lessons/{lesson_id}/review": {
+      "post": {
+        "operationId": "review_lesson_api_v2_lessons__lesson_id__review_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "lesson_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Lesson Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LessonReviewRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewActionResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Review Lesson",
+        "tags": [
+          "lessons",
+          "lesson-review"
         ]
       }
     },
@@ -2833,6 +4301,140 @@
         "summary": "Export Rlhf Dataset",
         "tags": [
           "compliance"
+        ]
+      }
+    },
+    "/api/v2/practice/sessions": {
+      "post": {
+        "operationId": "create_practice_session_api_v2_practice_sessions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PracticeSessionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Practice Session",
+        "tags": [
+          "practice"
+        ]
+      }
+    },
+    "/api/v2/practice/sessions/{session_id}/next-item": {
+      "get": {
+        "operationId": "next_practice_item_api_v2_practice_sessions__session_id__next_item_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Next Practice Item",
+        "tags": [
+          "practice"
+        ]
+      }
+    },
+    "/api/v2/practice/sessions/{session_id}/respond": {
+      "post": {
+        "operationId": "respond_practice_api_v2_practice_sessions__session_id__respond_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PracticeResponseRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Respond Practice",
+        "tags": [
+          "practice"
         ]
       }
     },
@@ -3658,6 +5260,254 @@
         ]
       }
     },
+    "/v2/diagnostics/admin/items/bias-review-queue": {
+      "get": {
+        "operationId": "bias_review_queue_v2_diagnostics_admin_items_bias_review_queue_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "caps_ref",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Caps Ref"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 200,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Bias Review Queue",
+        "tags": [
+          "diagnostics",
+          "item-bias-review"
+        ]
+      }
+    },
+    "/v2/diagnostics/admin/items/{item_id}/bias-review": {
+      "post": {
+        "operationId": "record_bias_review_v2_diagnostics_admin_items__item_id__bias_review_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BiasReviewRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Record Bias Review",
+        "tags": [
+          "diagnostics",
+          "item-bias-review"
+        ]
+      }
+    },
+    "/v2/diagnostics/coverage": {
+      "get": {
+        "operationId": "get_item_bank_coverage_v2_diagnostics_coverage_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Item Bank Coverage",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
+    "/v2/diagnostics/item-bank/items/{item_id}": {
+      "get": {
+        "operationId": "get_item_bank_item_v2_diagnostics_item_bank_items__item_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Item Bank Item",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
+    "/v2/diagnostics/item-bank/items/{item_id}/review": {
+      "post": {
+        "operationId": "review_item_bank_item_v2_diagnostics_item_bank_items__item_id__review_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewItemRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Review Item Bank Item",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
     "/v2/diagnostics/items/{learner_id}": {
       "get": {
         "operationId": "get_diagnostic_items_v2_diagnostics_items__learner_id__get",
@@ -3698,6 +5548,202 @@
           }
         ],
         "summary": "Get Diagnostic Items",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
+    "/v2/diagnostics/sessions": {
+      "post": {
+        "operationId": "start_diagnostic_session_v2_diagnostics_sessions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DiagnosticSessionStartRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Start Diagnostic Session",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
+    "/v2/diagnostics/sessions/{session_id}/next-item": {
+      "get": {
+        "operationId": "diagnostic_next_item_v2_diagnostics_sessions__session_id__next_item_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Session Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "caps_ref",
+            "required": true,
+            "schema": {
+              "title": "Caps Ref",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Diagnostic Next Item",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
+    "/v2/diagnostics/sessions/{session_id}/recover": {
+      "get": {
+        "operationId": "recover_diagnostic_session_v2_diagnostics_sessions__session_id__recover_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Recover Diagnostic Session",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
+    "/v2/diagnostics/sessions/{session_id}/respond": {
+      "post": {
+        "operationId": "diagnostic_respond_v2_diagnostics_sessions__session_id__respond_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DiagnosticSessionResponseRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Diagnostic Respond",
         "tags": [
           "diagnostics"
         ]
@@ -4122,6 +6168,105 @@
         ]
       }
     },
+    "/v2/learners/{learner_id}/mastery/summary": {
+      "get": {
+        "operationId": "get_mastery_summary_v2_learners__learner_id__mastery_summary_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Mastery Summary",
+        "tags": [
+          "learners"
+        ]
+      }
+    },
+    "/v2/learners/{learner_id}/mastery/{caps_ref}": {
+      "get": {
+        "operationId": "get_topic_mastery_v2_learners__learner_id__mastery__caps_ref__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "caps_ref",
+            "required": true,
+            "schema": {
+              "title": "Caps Ref",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Topic Mastery",
+        "tags": [
+          "learners"
+        ]
+      }
+    },
     "/v2/lessons/": {
       "post": {
         "operationId": "generate_lesson_v2_lessons__post",
@@ -4165,6 +6310,74 @@
         "summary": "Generate Lesson",
         "tags": [
           "lessons"
+        ]
+      }
+    },
+    "/v2/lessons/coverage": {
+      "get": {
+        "operationId": "get_lesson_coverage_v2_lessons_coverage_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "grade",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maximum": 12,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Grade"
+            }
+          },
+          {
+            "in": "query",
+            "name": "subject",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Subject"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoverageResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Lesson Coverage",
+        "tags": [
+          "lessons",
+          "lesson-coverage"
         ]
       }
     },
@@ -4255,6 +6468,177 @@
         "summary": "Generate Lesson Stream",
         "tags": [
           "lessons"
+        ]
+      }
+    },
+    "/v2/lessons/review/queue": {
+      "get": {
+        "operationId": "get_review_queue_v2_lessons_review_queue_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "grade",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maximum": 12,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Grade"
+            }
+          },
+          {
+            "in": "query",
+            "name": "subject",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Subject"
+            }
+          },
+          {
+            "in": "query",
+            "name": "caps_ref",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Caps Ref"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 200,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewQueueResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Review Queue",
+        "tags": [
+          "lessons",
+          "lesson-review"
+        ]
+      }
+    },
+    "/v2/lessons/{lesson_id}/review": {
+      "post": {
+        "operationId": "review_lesson_v2_lessons__lesson_id__review_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "lesson_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Lesson Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LessonReviewRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewActionResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Review Lesson",
+        "tags": [
+          "lessons",
+          "lesson-review"
         ]
       }
     },
@@ -5007,6 +7391,140 @@
         "summary": "Export Rlhf Dataset",
         "tags": [
           "compliance"
+        ]
+      }
+    },
+    "/v2/practice/sessions": {
+      "post": {
+        "operationId": "create_practice_session_v2_practice_sessions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PracticeSessionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Practice Session",
+        "tags": [
+          "practice"
+        ]
+      }
+    },
+    "/v2/practice/sessions/{session_id}/next-item": {
+      "get": {
+        "operationId": "next_practice_item_v2_practice_sessions__session_id__next_item_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Next Practice Item",
+        "tags": [
+          "practice"
+        ]
+      }
+    },
+    "/v2/practice/sessions/{session_id}/respond": {
+      "post": {
+        "operationId": "respond_practice_v2_practice_sessions__session_id__respond_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PracticeResponseRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Respond Practice",
+        "tags": [
+          "practice"
         ]
       }
     },
