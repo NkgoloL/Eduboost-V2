@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 PYTHON ?= python3
 
-.PHONY: help dev test lint typecheck migrate docs clean migration-check schema-integrity migration-smoke openapi openapi-check route-inventory route-inventory-check runtime-check pr002r-check beta-release-readiness-contract-check phase2-authz-check
+.PHONY: help dev test lint typecheck migrate docs clean migration-check schema-integrity migration-smoke openapi openapi-check route-inventory route-inventory-check runtime-check verify-repo-state pr002r-check beta-release-readiness-contract-check phase2-authz-check
 
 help:
 	@echo "Available commands:"
@@ -16,6 +16,7 @@ help:
 	@echo "  route-inventory - Generate docs/route_inventory.md"
 	@echo "  route-inventory-check - Verify docs/route_inventory.md is current"
 	@echo "  runtime-check   - Verify FastAPI runtime entrypoints"
+	@echo "  verify-repo-state - Verify repository provenance and release branch expectations"
 	@echo "  pr002r-check   - Verify PR-002R evidence bundle"
 	@echo "  beta-release-readiness-contract-check - Verify release-readiness docs contract wording"
 	@echo "  clean           - Remove temporary files"
@@ -54,6 +55,9 @@ route-inventory-check:
 runtime-check:
 	$(PYTHON) scripts/check_runtime_entrypoints.py
 
+verify-repo-state:
+	$(PYTHON) scripts/verify_repo_state.py --expected-branch "$${EXPECTED_RELEASE_BRANCH:-master}" $${VERIFY_REPO_STATE_ARGS:-}
+
 pr002r-check:
 	$(PYTHON) scripts/check_pr002r_evidence.py
 
@@ -67,6 +71,9 @@ migration-check: schema-integrity
 schema-integrity:
 	@echo "Validating ORM schema integrity"
 	$(PYTHON) scripts/validate_schema_integrity.py
+
+db-repository-check:
+	$(PYTHON) scripts/check_db_repository_evidence.py
 
 migration-smoke:
 	@echo "Run migration smoke tests (requires DATABASE_URL pointing to disposable DB)"
@@ -92,6 +99,9 @@ phase2-authz-closure:
 audit-contract-check:
 	$(PYTHON) scripts/check_audit_event_contracts.py
 
+auth-boundary-check:
+	$(PYTHON) scripts/check_auth_boundary_evidence.py
+
 popia-consent-gate-check:
 	$(PYTHON) scripts/generate_consent_gate_inventory.py
 	$(PYTHON) scripts/check_consent_gate_inventory.py
@@ -114,6 +124,9 @@ popia-consent-source-check:
 
 popia-consent-closure-check:
 	$(PYTHON) scripts/check_popia_consent_closure.py
+
+privacy-boundary-check:
+	$(PYTHON) scripts/check_privacy_boundary_evidence.py
 
 environment-security-check:
 	$(PYTHON) scripts/check_environment_security_contract.py
@@ -169,6 +182,9 @@ database-backup-integrity-check:
 database-restore-integrity-check:
 	$(PYTHON) scripts/check_database_restore_integrity.py
 
+backup-redis-dr-check:
+	$(PYTHON) scripts/check_backup_redis_dr_evidence.py
+
 cluster-e-closure-check:
 	$(PYTHON) scripts/check_cluster_e_closure.py
 
@@ -178,11 +194,17 @@ database-resilience-env-matrix-check:
 production-restore-approval-check:
 	$(PYTHON) scripts/check_production_restore_approval.py
 
+persistence-resilience-check:
+	$(PYTHON) scripts/check_persistence_resilience_evidence.py
+
 caps-alignment-contract-check:
 	$(PYTHON) scripts/check_caps_alignment_contract.py
 
 ai-safety-boundary-check:
 	$(PYTHON) scripts/check_ai_safety_boundary_contract.py
+
+ai-safety-release-check:
+	$(PYTHON) scripts/check_ai_safety_release_evidence.py
 
 cluster-f-ai-safety-check:
 	$(PYTHON) scripts/check_cluster_f_ai_safety_evidence.py
@@ -223,3 +245,6 @@ lesson-bank-check:
 diagnostics-assessment-check:
 	$(PYTHON) scripts/ci/check_diagnostics_assessment.py
 	pytest tests/unit/modules/diagnostics/test_irt_engine_hardening.py tests/unit/modules/diagnostics/test_session_lifecycle.py tests/unit/modules/progress/test_mastery_model.py tests/unit/modules/practice/test_practice_and_calibration.py --no-cov
+
+learning-evidence-check:
+	$(PYTHON) scripts/check_learning_evidence.py

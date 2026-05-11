@@ -10,8 +10,13 @@ from __future__ import annotations
 
 import sys
 from collections.abc import Iterable
+from pathlib import Path
 
 import sqlalchemy as sa
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 from app.core.database import Base
 import app.models  # noqa: F401  # import side-effect populates Base.metadata
