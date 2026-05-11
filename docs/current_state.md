@@ -42,6 +42,9 @@ The current verified truth is narrower: only the checks listed under
 - Grade 4 Mathematics item-bank implementation exists with 14 approved starter
   items plus generated candidate content that still requires approval before
   production coverage can be claimed.
+- CAPS/learning proof is indexed by `docs/caps/caps_learning_proof.md` and
+  checked by `make caps-learning-proof-check`; full item-bank approval remains
+  open.
 
 ## Verified By Green Runtime/CI Evidence
 

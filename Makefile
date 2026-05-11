@@ -220,3 +220,6 @@ lesson-bank-check:
 diagnostics-assessment-check:
 	$(PYTHON) scripts/ci/check_diagnostics_assessment.py
 	pytest tests/unit/modules/diagnostics/test_irt_engine_hardening.py tests/unit/modules/diagnostics/test_session_lifecycle.py tests/unit/modules/progress/test_mastery_model.py tests/unit/modules/practice/test_practice_and_calibration.py --no-cov
+
+caps-learning-proof-check:
+	$(PYTHON) scripts/check_caps_learning_proof.py
