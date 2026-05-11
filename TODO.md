@@ -69,6 +69,18 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 
 ## Documentation drift correction plan
 
+## Batch evidence update: PR7 auth boundary
+
+- [verify] `P0` Add an aggregate auth boundary evidence gate for
+  authentication, refresh-token rotation/revocation, cookie policy, RBAC,
+  rate limiting, and object authorization. Evidence:
+  `docs/security/auth_boundary_evidence.md`,
+  `scripts/check_auth_boundary_evidence.py`,
+  `tests/unit/test_auth_boundary_evidence.py`, and
+  `make auth-boundary-check` passed on 2026-05-11. Verification gap:
+  route-by-route abuse-path and Redis-outage behavior still require separate
+  evidence before broader auth readiness claims can be marked `[x]`.
+
 - [x] `P0` Split status documentation into "Implemented in code" and
   "Verified by green runtime/CI evidence" categories. Evidence:
   `TODO.md`, `docs/current_state.md`.
