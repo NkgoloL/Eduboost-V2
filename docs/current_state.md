@@ -45,6 +45,10 @@ The current verified truth is narrower: only the checks listed under
 - Grade 4 Mathematics item-bank implementation exists with 14 approved starter
   items plus generated candidate content that still requires approval before
   production coverage can be claimed.
+- Learning evidence wiring exists through
+  `docs/learning_science/learning_evidence.md` and
+  `make learning-evidence-check`, with full item-bank approval still listed as
+  a verification gap.
 
 ## Verified By Green Runtime/CI Evidence
 

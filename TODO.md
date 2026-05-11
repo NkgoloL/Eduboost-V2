@@ -940,32 +940,32 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 
 Granular verification backlog:
 
-- [ ] `P0` Define diagnostic item schema.
-- [ ] `P0` Include item ID.
-- [ ] `P0` Include subject.
-- [ ] `P0` Include grade.
-- [ ] `P0` Include topic.
-- [ ] `P0` Include skill.
-- [ ] `P0` Include difficulty parameter.
-- [ ] `P0` Include discrimination parameter.
-- [ ] `P0` Include correct answer.
-- [ ] `P0` Include distractors.
-- [ ] `P0` Include explanation.
-- [ ] `P0` Include CAPS reference.
-- [ ] `P0` Validate theta bounds.
-- [ ] `P0` Validate discrimination bounds.
-- [ ] `P0` Validate difficulty bounds.
-- [ ] `P0` Validate probability output.
-- [ ] `P0` Validate overflow safety.
-- [ ] `P0` Validate invalid input handling.
-- [ ] `P0` Add test for probability of correctness.
-- [ ] `P0` Add test for Fisher information.
-- [ ] `P0` Add test for ability update.
-- [ ] `P0` Add test for EAP estimate.
-- [ ] `P0` Add test for empty responses.
-- [ ] `P0` Add test for all-correct responses.
-- [ ] `P0` Add test for all-incorrect responses.
-- [ ] `P0` Add test for stopping criteria.
+- [verify] `P0` Define diagnostic item schema. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`, `tests/unit/modules/diagnostics/test_item_bank_models.py`.
+- [verify] `P0` Include item ID. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Include subject. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Include grade. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Include topic. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Include skill. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Include difficulty parameter. Evidence: `app/domain/item_schema.py`, `app/modules/diagnostics/irt_engine.py`.
+- [verify] `P0` Include discrimination parameter. Evidence: `app/domain/item_schema.py`, `app/modules/diagnostics/irt_engine.py`.
+- [verify] `P0` Include correct answer. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Include distractors. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Include explanation. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Include CAPS reference. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Validate theta bounds. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`, `tests/unit/test_irt_properties.py`.
+- [verify] `P0` Validate discrimination bounds. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Validate difficulty bounds. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Validate probability output. Evidence: `scripts/ci/check_diagnostics_assessment.py`, `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Validate overflow safety. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Validate invalid input handling. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Add test for probability of correctness. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Add test for Fisher information. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`, `scripts/ci/check_diagnostics_assessment.py`.
+- [verify] `P0` Add test for ability update. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P0` Add test for EAP estimate. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Add test for empty responses. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Add test for all-correct responses. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Add test for all-incorrect responses. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Add test for stopping criteria. Evidence: `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
 - [ ] `P0` Add test for grade-equivalent mapping.
 - [ ] `P1` Add test for item selection by Fisher information.
 - [ ] `P1` Add test for gap identification.
@@ -988,9 +988,9 @@ Granular item-bank backlog:
 - [ ] `P0` Add item review status `human-reviewed`.
 - [ ] `P0` Add item review status `approved`.
 - [ ] `P0` Add item review status `retired`.
-- [ ] `P1` Add item calibration workflow.
-- [ ] `P1` Add item exposure limits.
-- [ ] `P1` Add item reuse policy.
+- [verify] `P1` Add item calibration workflow. Evidence: `app/modules/diagnostics/calibration_service.py`, `tests/unit/modules/practice/test_practice_and_calibration.py`.
+- [verify] `P1` Add item exposure limits. Evidence: `app/models/item_exposure.py`, `app/modules/diagnostics/item_bank_service.py`, `tests/unit/modules/diagnostics/test_item_bank_service.py`.
+- [verify] `P1` Add item reuse policy. Evidence: `docs/learning_science/learning_evidence.md`, `app/modules/diagnostics/item_bank_service.py`; verification gap: production item analytics still required.
 - [ ] `P1` Add item retirement workflow.
 - [ ] `P1` Add item import/export tooling.
 - [ ] `P2` Add item authoring interface.
@@ -1006,18 +1006,18 @@ Granular item-bank backlog:
 
 Granular diagnostic-session backlog:
 
-- [ ] `P0` Implement diagnostic session start.
-- [ ] `P0` Implement question serving.
-- [ ] `P0` Implement answer submission.
-- [ ] `P0` Implement ability update.
-- [ ] `P0` Implement result retrieval.
-- [ ] `P0` Implement consent check before diagnostic.
-- [ ] `P0` Implement object authorization check before diagnostic.
-- [ ] `P1` Add diagnostic pause/resume.
-- [ ] `P1` Add diagnostic session recovery after disconnect.
-- [ ] `P1` Add maximum item cap.
-- [ ] `P1` Add minimum evidence threshold before final result.
-- [ ] `P1` Add confidence interval.
+- [verify] `P0` Implement diagnostic session start. Evidence: `app/modules/diagnostics/diagnostic_session_service.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P0` Implement question serving. Evidence: `app/modules/diagnostics/diagnostic_session_service.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P0` Implement answer submission. Evidence: `app/modules/diagnostics/diagnostic_session_service.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P0` Implement ability update. Evidence: `app/modules/diagnostics/irt_engine.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P0` Implement result retrieval. Evidence: `app/modules/diagnostics/diagnostic_session_service.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P0` Implement consent check before diagnostic. Evidence: `docs/security/diagnostics_consent_gate.md`, `tests/unit/test_diagnostics_consent_gate_wiring.py`.
+- [verify] `P0` Implement object authorization check before diagnostic. Evidence: `docs/security/diagnostic_items_authorization_wiring.md`, `docs/security/diagnostic_submit_authorization_wiring.md`.
+- [verify] `P1` Add diagnostic pause/resume. Evidence: `app/modules/diagnostics/session_recovery_service.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P1` Add diagnostic session recovery after disconnect. Evidence: `app/modules/diagnostics/session_recovery_service.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P1` Add maximum item cap. Evidence: `app/modules/diagnostics/termination_service.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P1` Add minimum evidence threshold before final result. Evidence: `app/modules/diagnostics/termination_service.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P1` Add confidence interval. Evidence: `app/modules/diagnostics/irt_engine.py`, `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
 - [ ] `P2` Add diagnostic review by educator.
 
 ## 7.4 Bias, quality, and fairness
@@ -1033,16 +1033,16 @@ Granular diagnostic-session backlog:
 
 ## 7.5 Mastery and remediation
 
-- [ ] `P1` Define mastery model.
-- [ ] `P1` Combine diagnostic estimate into mastery.
-- [ ] `P1` Combine practice performance into mastery.
-- [ ] `P1` Combine recency into mastery.
-- [ ] `P1` Combine consistency into mastery.
-- [ ] `P1` Combine confidence into mastery.
-- [ ] `P1` Add topic-level mastery.
-- [ ] `P1` Add subject-level mastery.
-- [ ] `P1` Add progress timelines.
-- [ ] `P1` Add adaptive practice generator.
+- [verify] `P1` Define mastery model. Evidence: `app/modules/progress/mastery_model.py`, `docs/learning_science/mastery_model.md`, `tests/unit/modules/progress/test_mastery_model.py`.
+- [verify] `P1` Combine diagnostic estimate into mastery. Evidence: `app/modules/progress/mastery_model.py`, `tests/unit/modules/progress/test_mastery_model.py`.
+- [verify] `P1` Combine practice performance into mastery. Evidence: `app/modules/progress/mastery_model.py`, `tests/unit/modules/progress/test_mastery_model.py`.
+- [verify] `P1` Combine recency into mastery. Evidence: `app/modules/progress/mastery_model.py`, `tests/unit/modules/progress/test_mastery_model.py`.
+- [verify] `P1` Combine consistency into mastery. Evidence: `app/modules/progress/mastery_model.py`, `tests/unit/modules/progress/test_mastery_model.py`.
+- [verify] `P1` Combine confidence into mastery. Evidence: `app/modules/progress/mastery_model.py`, `tests/unit/modules/progress/test_mastery_model.py`.
+- [verify] `P1` Add topic-level mastery. Evidence: `app/modules/progress/mastery_model.py`, `app/repositories/mastery_repository.py`.
+- [verify] `P1` Add subject-level mastery. Evidence: `app/modules/progress/mastery_model.py`, `app/repositories/mastery_repository.py`.
+- [verify] `P1` Add progress timelines. Evidence: `app/modules/progress/progress_timeline_service.py`.
+- [verify] `P1` Add adaptive practice generator. Evidence: `app/modules/practice/practice_generator.py`, `tests/unit/modules/practice/test_practice_and_calibration.py`.
 - [ ] `P1` Add remediation based on misconception.
 - [ ] `P2` Add spaced repetition.
 - [ ] `P2` Add retrieval practice.
