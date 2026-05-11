@@ -69,6 +69,18 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 
 ## Documentation drift correction plan
 
+## Batch evidence update: PR16 observability ops
+
+- [verify] `P0` Add an aggregate observability/ops evidence gate for metrics,
+  logging, Prometheus alerts, Grafana provisioning, Alertmanager, incident
+  response, support handoff, and beta monitoring triggers. Evidence:
+  `docs/operations/observability_ops_evidence.md`,
+  `scripts/check_observability_ops_evidence.py`,
+  `tests/unit/test_observability_ops_evidence.py`, and
+  `make observability-ops-check` passed on 2026-05-11. Verification gap:
+  live dashboard screenshots, alert firing tests, tracing coverage, and
+  tabletop exercise evidence remain open.
+
 - [x] `P0` Split status documentation into "Implemented in code" and
   "Verified by green runtime/CI evidence" categories. Evidence:
   `TODO.md`, `docs/current_state.md`.
