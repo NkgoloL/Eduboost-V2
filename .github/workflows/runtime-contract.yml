@@ -9,6 +9,7 @@ on:
       - "app/**"
       - "scripts/check_runtime_entrypoints.py"
       - "tests/test_entrypoints.py"
+      - "tests/unit/test_api_v2_router_contract.py"
       - "tests/unit/test_check_runtime_entrypoints.py"
       - "Makefile"
       - ".github/workflows/runtime-contract.yml"
@@ -20,6 +21,7 @@ on:
       - "app/**"
       - "scripts/check_runtime_entrypoints.py"
       - "tests/test_entrypoints.py"
+      - "tests/unit/test_api_v2_router_contract.py"
       - "tests/unit/test_check_runtime_entrypoints.py"
       - "Makefile"
       - ".github/workflows/runtime-contract.yml"
@@ -67,5 +69,6 @@ jobs:
         run: |
           pytest -c pytest.ini \
             tests/test_entrypoints.py \
+            tests/unit/test_api_v2_router_contract.py \
             tests/unit/test_check_runtime_entrypoints.py \
             -q --no-cov
