@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 PYTHON ?= python3
 
-.PHONY: help dev test lint typecheck migrate docs clean migration-check schema-integrity migration-smoke openapi openapi-check route-inventory route-inventory-check runtime-check verify-repo-state pr002r-check beta-release-readiness-contract-check api-envelope-error-contract-check phase2-authz-check popia-legal-check caps-learning-proof-check frontend-journey-check accessibility-pwa-e2e-check observability-ops-check
+.PHONY: help dev test lint typecheck migrate docs clean migration-check schema-integrity migration-smoke openapi openapi-check route-inventory route-inventory-check runtime-check verify-repo-state pr002r-check beta-release-readiness-contract-check api-envelope-error-contract-check release-candidate-evidence-sweep-check phase2-authz-check popia-legal-check caps-learning-proof-check frontend-journey-check accessibility-pwa-e2e-check observability-ops-check
 
 help:
 	@echo "Available commands:"
@@ -19,6 +19,7 @@ help:
 	@echo "  verify-repo-state - Verify repository provenance and release branch expectations"
 	@echo "  pr002r-check   - Verify PR-002R evidence bundle"
 	@echo "  beta-release-readiness-contract-check - Verify release-readiness docs contract wording"
+	@echo "  release-candidate-evidence-sweep-check - Verify release-candidate evidence sweep"
 	@echo "  clean           - Remove temporary files"
 
 dev:
@@ -63,6 +64,9 @@ pr002r-check:
 
 beta-release-readiness-contract-check:
 	$(PYTHON) scripts/check_beta_release_readiness_contract.py
+
+release-candidate-evidence-sweep-check:
+	$(PYTHON) scripts/check_release_candidate_evidence_sweep.py
 
 api-envelope-error-contract-check:
 	$(PYTHON) scripts/check_api_envelope_error_contract.py
