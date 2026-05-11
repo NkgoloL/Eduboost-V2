@@ -69,17 +69,17 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 
 ## Documentation drift correction plan
 
-## Batch evidence update: PR11 AI safety
+## Batch evidence update: PR7 auth boundary
 
-- [verify] `P0` Add an aggregate AI-safety release evidence gate for LLM
-  gateway, PII sweep, prompt-input contracts, output schema validation,
-  provider fallback, remediation safety, and refusal fixtures. Evidence:
-  `docs/ai/ai_safety_release_evidence.md`,
-  `scripts/check_ai_safety_release_evidence.py`,
-  `tests/unit/test_ai_safety_release_evidence.py`, and
-  `make ai-safety-release-check` passed on 2026-05-11. Verification gap:
-  live-provider staging checks, educator review, and full CAPS approval remain
-  separate release gates.
+- [verify] `P0` Add an aggregate auth boundary evidence gate for
+  authentication, refresh-token rotation/revocation, cookie policy, RBAC,
+  rate limiting, and object authorization. Evidence:
+  `docs/security/auth_boundary_evidence.md`,
+  `scripts/check_auth_boundary_evidence.py`,
+  `tests/unit/test_auth_boundary_evidence.py`, and
+  `make auth-boundary-check` passed on 2026-05-11. Verification gap:
+  route-by-route abuse-path and Redis-outage behavior still require separate
+  evidence before broader auth readiness claims can be marked `[x]`.
 
 - [x] `P0` Split status documentation into "Implemented in code" and
   "Verified by green runtime/CI evidence" categories. Evidence:
@@ -120,15 +120,15 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 
 ## 0.1 Canonical repo, fork, and branch policy
 
-- [ ] `P0` Confirm canonical source repo in `docs/repository_governance.md`.
-- [ ] `P0` Confirm active branch is `master`.
-- [ ] `P0` Confirm latest valid repo state is identified by the commit message containing `Merge pull request #52`.
-- [ ] `P0` Document relationship between `NkgoloL/Eduboost-V2` and `userxrebornbackup-ux/Eduboost-V2`.
-- [ ] `P0` Document which repo produces official releases.
-- [ ] `P0` Document which repo is allowed to receive production hotfixes.
-- [ ] `P0` Document whether the backup fork is temporary, permanent mirror, or recovery source.
-- [ ] `P0` Stop using raw commit count as the canonical freshness signal.
-- [ ] `P0` Use head SHA + merge marker + release tag + CI evidence as freshness criteria.
+- [verify] `P0` Confirm canonical source repo in `docs/repository_governance.md`. Evidence: `docs/repository_governance.md`, `scripts/verify_repo_state.py`.
+- [verify] `P0` Confirm active branch is `master`. Evidence: `docs/repository_governance.md`, `scripts/verify_repo_state.py`; verification gap: branch protection must be confirmed in GitHub settings.
+- [verify] `P0` Confirm latest valid repo state is identified by the commit message containing `Merge pull request #52`. Evidence: `scripts/verify_repo_state.py`.
+- [verify] `P0` Document relationship between `NkgoloL/Eduboost-V2` and `userxrebornbackup-ux/Eduboost-V2`. Evidence: `docs/repository_governance.md`.
+- [verify] `P0` Document which repo produces official releases. Evidence: `docs/repository_governance.md`.
+- [verify] `P0` Document which repo is allowed to receive production hotfixes. Evidence: `docs/repository_governance.md`.
+- [verify] `P0` Document whether the backup fork is temporary, permanent mirror, or recovery source. Evidence: `docs/repository_governance.md`; verification gap: owner approval record still required.
+- [verify] `P0` Stop using raw commit count as the canonical freshness signal. Evidence: `scripts/verify_repo_state.py`.
+- [verify] `P0` Use head SHA + merge marker + release tag + CI evidence as freshness criteria. Evidence: `scripts/verify_repo_state.py`, `.github/workflows/repo-state.yml`; verification gap: release tag evidence still required at release time.
 - [ ] `P1` Add mirror-sync policy.
 - [ ] `P1` Add fork divergence-detection policy.
 - [ ] `P1` Add fork recovery procedure.
@@ -141,15 +141,15 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 
 ## 0.2 Repo-state verification automation
 
-- [ ] `P0` Add `scripts/verify_repo_state.py`.
-- [ ] `P0` Script must verify current git branch is `master`.
-- [ ] `P0` Script must verify remote URL matches accepted canonical or recovery repo.
-- [ ] `P0` Script must verify latest commit message contains the accepted freshness marker.
-- [ ] `P0` Script must print current head SHA.
-- [ ] `P0` Script must fail if working tree is dirty unless `--allow-dirty` is passed.
-- [ ] `P0` Script must fail if run from the wrong repo.
-- [ ] `P1` Add `make verify-repo-state`.
-- [ ] `P1` Add CI step for repo-state verification.
+- [verify] `P0` Add `scripts/verify_repo_state.py`. Evidence: `scripts/verify_repo_state.py`, `tests/unit/test_verify_repo_state.py`.
+- [verify] `P0` Script must verify current git branch is `master`. Evidence: `scripts/verify_repo_state.py`; verification gap: release branch check runs strictly only on release branches.
+- [verify] `P0` Script must verify remote URL matches accepted canonical or recovery repo. Evidence: `scripts/verify_repo_state.py`, `tests/unit/test_verify_repo_state.py`.
+- [verify] `P0` Script must verify latest commit message contains the accepted freshness marker. Evidence: `scripts/verify_repo_state.py`, `tests/unit/test_verify_repo_state.py`.
+- [verify] `P0` Script must print current head SHA. Evidence: `scripts/verify_repo_state.py`.
+- [verify] `P0` Script must fail if working tree is dirty unless `--allow-dirty` is passed. Evidence: `scripts/verify_repo_state.py`, `tests/unit/test_verify_repo_state.py`.
+- [verify] `P0` Script must fail if run from the wrong repo. Evidence: `scripts/verify_repo_state.py`.
+- [verify] `P1` Add `make verify-repo-state`. Evidence: `Makefile`.
+- [verify] `P1` Add CI step for repo-state verification. Evidence: `.github/workflows/repo-state.yml`.
 - [ ] `P1` Add repo-state verification output to release evidence bundle.
 - [ ] `P2` Add JSON output mode to `scripts/verify_repo_state.py`.
 
@@ -193,20 +193,20 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 
 ## 1.2 Canonical runtime
 
-- [ ] `P0` Confirm production runtime is `app.api_v2:app`.
-- [ ] `P0` Update all docs to reference `app.api_v2:app`.
+- [verify] `P0` Confirm production runtime is `app.api_v2:app`. Evidence: `scripts/check_runtime_entrypoints.py`, `tests/test_entrypoints.py`.
+- [verify] `P0` Update all docs to reference `app.api_v2:app`. Evidence: `docs/current_state.md`, `docs/pr/PR-002R_BACKEND_RUNTIME_API_CONTRACT.md`, `docs/route_inventory.md`.
 - [ ] `P0` Update Dockerfile command to reference `app.api_v2:app`.
 - [ ] `P0` Update docker-compose command to reference `app.api_v2:app` if command is explicit.
 - [ ] `P0` Update CI smoke test to import `app.api_v2`.
 - [ ] `P0` Update release checklist to require `app.api_v2:app`.
-- [ ] `P0` Add `tests/test_runtime_entrypoints.py`.
-- [ ] `P0` Add test importing `app.api_v2:app`.
+- [verify] `P0` Add runtime entrypoint tests. Evidence: `tests/test_entrypoints.py`, `tests/unit/test_check_runtime_entrypoints.py`.
+- [verify] `P0` Add test importing `app.api_v2:app`. Evidence: `tests/test_entrypoints.py`.
 - [ ] `P0` Add test importing `app.api.main:app`.
-- [ ] `P0` Add test importing `app.legacy.api.main:app`, if legacy shim is retained.
-- [ ] `P0` Ensure compatibility imports resolve to the V2 app or documented shim.
-- [ ] `P0` Test that compatibility shim title/version matches V2 app.
-- [ ] `P0` Test that compatibility shim exposes the same `/health` behavior.
-- [ ] `P0` Test that compatibility shim exposes the same `/ready` behavior.
+- [verify] `P0` Add test importing `app.legacy.api.main:app`, if legacy shim is retained. Evidence: `tests/test_entrypoints.py`.
+- [verify] `P0` Ensure compatibility imports resolve to the V2 app or documented shim. Evidence: `tests/test_entrypoints.py`.
+- [verify] `P0` Test that compatibility shim title/version matches V2 app. Evidence: `scripts/check_runtime_entrypoints.py`, `tests/unit/test_check_runtime_entrypoints.py`.
+- [verify] `P0` Test that compatibility shim exposes the same `/health` behavior. Evidence: `tests/test_entrypoints.py`.
+- [verify] `P0` Test that compatibility shim exposes the same `/ready` behavior. Evidence: `tests/test_entrypoints.py`.
 - [ ] `P1` Add `scripts/check_runtime_entrypoints.py`.
 - [x] `P1` Add `make runtime-check`. Evidence: `Makefile`,
   `scripts/check_runtime_entrypoints.py`.
@@ -214,48 +214,48 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 
 ## 1.3 Fix `app/api_v2.py` router registration
 
-- [ ] `P0` Remove duplicate router import blocks from `app/api_v2.py`.
-- [ ] `P0` Move `system.router` registration into the actual router-registration loop.
-- [ ] `P0` Confirm `system.router` is registered under `/api/v2`.
-- [ ] `P0` Confirm `system.router` is registered under `/v2`.
-- [ ] `P0` Remove unreachable/dead router-registration code.
-- [ ] `P0` Add regression test for system routes.
-- [ ] `P0` Add import smoke test:
+- [verify] `P0` Remove duplicate router import blocks from `app/api_v2.py`. Evidence: `app/api_v2.py`.
+- [verify] `P0` Move `system.router` registration into the actual router-registration loop. Evidence: `app/api_v2.py`, `tests/unit/test_api_v2_router_contract.py`.
+- [verify] `P0` Confirm `system.router` is registered under `/api/v2`. Evidence: `tests/unit/test_api_v2_router_contract.py`.
+- [verify] `P0` Confirm `system.router` is registered under `/v2`. Evidence: `tests/unit/test_api_v2_router_contract.py`.
+- [verify] `P0` Remove unreachable/dead router-registration code. Evidence: `app/api_v2.py`.
+- [verify] `P0` Add regression test for system routes. Evidence: `tests/unit/test_api_v2_router_contract.py`.
+- [verify] `P0` Add import smoke test:
   ```bash
   python -c "from app.api_v2 import app; print(app.title)"
   ```
-- [ ] `P0` Add test ensuring all router modules import without side effects.
-- [ ] `P1` Add route inventory test that snapshots all registered routes.
-- [ ] `P1` Commit route inventory artifact under `docs/route_inventory.md`.
+- [verify] `P0` Add test ensuring all router modules import without side effects. Evidence: `tests/unit/test_api_v2_router_contract.py`.
+- [verify] `P1` Add route inventory test that snapshots all registered routes. Evidence: `tests/unit/test_generate_route_inventory.py`.
+- [verify] `P1` Commit route inventory artifact under `docs/route_inventory.md`. Evidence: `docs/route_inventory.md`.
 
 ## 1.4 Legacy route exclusion
 
 - [ ] `P0` Define which routes are V2 production routes.
 - [ ] `P0` Define which routes are legacy-only and forbidden in production.
-- [ ] `P0` Add test proving legacy-only routes are not exposed by `app.api_v2:app`.
-- [ ] `P0` Add test proving archived `app/legacy` code is not mounted.
-- [ ] `P0` Add test proving V1 routers are not included accidentally.
+- [verify] `P0` Add test proving legacy-only routes are not exposed by `app.api_v2:app`. Evidence: `tests/unit/test_api_v2_router_contract.py`, `tests/test_entrypoints.py`.
+- [verify] `P0` Add test proving archived `app/legacy` code is not mounted. Evidence: `tests/test_entrypoints.py`.
+- [verify] `P0` Add test proving V1 routers are not included accidentally. Evidence: `tests/unit/test_api_v2_router_contract.py`.
 - [ ] `P1` Add CI job `legacy-route-guard`.
 - [ ] `P1` Add `docs/legacy_compatibility.md`.
 - [ ] `P2` Remove stale V1 docs or mark them archived.
 
 ## 1.5 API response envelope
 
-- [ ] `P0` Create `app/domain/api_v2_models.py`.
-- [ ] `P0` Define `ApiMeta` model.
-- [ ] `P0` Define `ApiError` model.
-- [ ] `P0` Define `ApiEnvelope[T]` model.
-- [ ] `P0` Define `PaginationMeta` model.
-- [ ] `P0` Define success envelope helper `ok`.
-- [ ] `P0` Define error envelope helper `fail`.
-- [ ] `P0` Define pagination envelope helper `paginated`.
-- [ ] `P0` Include `request_id` in every envelope.
-- [ ] `P0` Include `api_version` in every envelope.
-- [ ] `P0` Ensure `error` is `null` on success.
-- [ ] `P0` Ensure `data` is `null` on error.
-- [ ] `P0` Add unit tests for `ok`.
-- [ ] `P0` Add unit tests for `fail`.
-- [ ] `P0` Add unit tests for `paginated`.
+- [verify] `P0` Create `app/domain/api_v2_models.py`. Evidence: `app/domain/api_v2_models.py`, `tests/unit/test_api_v2_envelope.py`.
+- [verify] `P0` Define `ApiMeta` model. Evidence: `app/domain/api_v2_models.py`.
+- [verify] `P0` Define `ApiError` model. Evidence: `app/domain/api_v2_models.py`.
+- [verify] `P0` Define `ApiEnvelope[T]` model. Evidence: `app/domain/api_v2_models.py`.
+- [verify] `P0` Define `PaginationMeta` model. Evidence: `app/domain/api_v2_models.py`.
+- [verify] `P0` Define success envelope helper `ok`. Evidence: `app/domain/api_v2_models.py`, `tests/unit/test_api_v2_envelope.py`.
+- [verify] `P0` Define error envelope helper `fail`. Evidence: `app/domain/api_v2_models.py`, `tests/unit/test_api_v2_envelope.py`.
+- [verify] `P0` Define pagination envelope helper `paginated`. Evidence: `app/domain/api_v2_models.py`, `tests/unit/test_api_v2_envelope.py`.
+- [verify] `P0` Include `request_id` in every envelope. Evidence: `app/domain/api_v2_models.py`, `tests/unit/test_api_v2_envelope.py`.
+- [verify] `P0` Include `api_version` in every envelope. Evidence: `app/domain/api_v2_models.py`, `tests/unit/test_api_v2_envelope.py`.
+- [verify] `P0` Ensure `error` is `null` on success. Evidence: `tests/unit/test_api_v2_envelope.py`.
+- [verify] `P0` Ensure `data` is `null` on error. Evidence: `tests/unit/test_api_v2_envelope.py`, `tests/unit/test_exception_envelopes.py`.
+- [verify] `P0` Add unit tests for `ok`. Evidence: `tests/unit/test_api_v2_envelope.py`.
+- [verify] `P0` Add unit tests for `fail`. Evidence: `tests/unit/test_api_v2_envelope.py`.
+- [verify] `P0` Add unit tests for `paginated`. Evidence: `tests/unit/test_api_v2_envelope.py`.
 - [ ] `P0` Apply envelope to auth router.
 - [ ] `P0` Apply envelope to learners router.
 - [ ] `P0` Apply envelope to lessons router.
@@ -271,37 +271,37 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 - [ ] `P0` Apply envelope to jobs router.
 - [ ] `P0` Apply envelope to system router.
 - [ ] `P1` Add lint/test rule preventing raw dict responses from production routers unless explicitly exempted.
-- [ ] `P1` Add docs examples for success envelope.
-- [ ] `P1` Add docs examples for error envelope.
-- [ ] `P1` Add docs examples for pagination envelope.
+- [verify] `P1` Add docs examples for success envelope. Evidence: `docs/api_envelope_contract.md`.
+- [verify] `P1` Add docs examples for error envelope. Evidence: `docs/api_envelope_contract.md`, `docs/error_contract.md`.
+- [verify] `P1` Add docs examples for pagination envelope. Evidence: `docs/api_envelope_contract.md`.
 
 ## 1.6 API error contract
 
-- [ ] `P0` Update `app/core/exceptions.py` to emit canonical error envelope.
-- [ ] `P0` Include machine-readable error code.
-- [ ] `P0` Include human-readable message.
-- [ ] `P0` Include field errors when validation fails.
-- [ ] `P0` Include remediation hint when useful.
-- [ ] `P0` Include request ID.
-- [ ] `P0` Prevent sensitive exception details from leaking.
-- [ ] `P0` Implement error code `validation_error`.
-- [ ] `P0` Implement error code `unauthorized`.
-- [ ] `P0` Implement error code `forbidden`.
-- [ ] `P0` Implement error code `not_found`.
-- [ ] `P0` Implement error code `conflict`.
-- [ ] `P0` Implement error code `rate_limited`.
-- [ ] `P0` Implement error code `consent_required`.
-- [ ] `P0` Implement error code `consent_expired`.
-- [ ] `P0` Implement error code `dependency_unavailable`.
-- [ ] `P0` Implement error code `internal_error`.
-- [ ] `P0` Add tests for all error codes.
-- [ ] `P0` Add tests for validation errors.
-- [ ] `P0` Add tests for auth errors.
-- [ ] `P0` Add tests for authorization errors.
-- [ ] `P0` Add tests for consent errors.
-- [ ] `P0` Add tests for rate-limit errors.
-- [ ] `P0` Add tests proving internal exceptions hide details in production.
-- [ ] `P1` Add `docs/error_contract.md`.
+- [verify] `P0` Update `app/core/exceptions.py` to emit canonical error envelope. Evidence: `app/core/exceptions.py`, `tests/unit/test_exception_envelopes.py`.
+- [verify] `P0` Include machine-readable error code. Evidence: `app/core/exceptions.py`, `docs/error_contract.md`.
+- [verify] `P0` Include human-readable message. Evidence: `app/core/exceptions.py`, `tests/unit/test_exception_envelopes.py`.
+- [verify] `P0` Include field errors when validation fails. Evidence: `app/core/exceptions.py`, `tests/unit/test_exception_envelopes.py`.
+- [verify] `P0` Include remediation hint when useful. Evidence: `app/core/exceptions.py`, `docs/api_envelope_contract.md`.
+- [verify] `P0` Include request ID. Evidence: `app/core/exceptions.py`, `tests/unit/test_exception_envelopes.py`.
+- [verify] `P0` Prevent sensitive exception details from leaking. Evidence: `app/core/exceptions.py`, `tests/unit/test_exception_envelopes.py`.
+- [verify] `P0` Implement error code `validation_error`. Evidence: `docs/error_contract.md`, `tests/unit/test_exception_envelopes.py`.
+- [verify] `P0` Implement error code `unauthorized`. Evidence: `docs/error_contract.md`, `app/core/exceptions.py`.
+- [verify] `P0` Implement error code `forbidden`. Evidence: `docs/error_contract.md`, `tests/unit/test_exception_envelopes.py`.
+- [verify] `P0` Implement error code `not_found`. Evidence: `docs/error_contract.md`, `tests/unit/test_exception_envelopes.py`.
+- [verify] `P0` Implement error code `conflict`. Evidence: `docs/error_contract.md`, `tests/unit/test_exception_envelopes.py`.
+- [verify] `P0` Implement error code `rate_limited`. Evidence: `docs/error_contract.md`, `app/core/exceptions.py`.
+- [verify] `P0` Implement error code `consent_required`. Evidence: `docs/error_contract.md`, `tests/unit/test_exception_envelopes.py`.
+- [verify] `P0` Implement error code `consent_expired`. Evidence: `docs/error_contract.md`, `app/core/exceptions.py`.
+- [verify] `P0` Implement error code `dependency_unavailable`. Evidence: `docs/error_contract.md`, `app/core/exceptions.py`.
+- [verify] `P0` Implement error code `internal_error`. Evidence: `docs/error_contract.md`, `tests/unit/test_exception_envelopes.py`.
+- [verify] `P0` Add tests for all error codes. Evidence: `tests/unit/test_api_envelope_error_contract.py`; verification gap: executable endpoint tests still cover a representative subset.
+- [verify] `P0` Add tests for validation errors. Evidence: `tests/unit/test_exception_envelopes.py`.
+- [verify] `P0` Add tests for auth errors. Evidence: `app/core/exceptions.py`, `docs/error_contract.md`; verification gap: endpoint-level auth error tests remain router-specific.
+- [verify] `P0` Add tests for authorization errors. Evidence: `tests/unit/test_exception_envelopes.py`.
+- [verify] `P0` Add tests for consent errors. Evidence: `tests/unit/test_exception_envelopes.py`.
+- [verify] `P0` Add tests for rate-limit errors. Evidence: `app/core/exceptions.py`; verification gap: executable rate-limit handler test remains open.
+- [verify] `P0` Add tests proving internal exceptions hide details in production. Evidence: `tests/unit/test_exception_envelopes.py`.
+- [verify] `P1` Add `docs/error_contract.md`. Evidence: `docs/error_contract.md`.
 
 ## 1.7 OpenAPI generation and contract
 
@@ -537,7 +537,7 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 - [ ] `P0` Add test that support cannot view unnecessary PII.
 - [ ] `P0` Add test that compliance auditor can view audit records without broad data mutation rights.
 - [ ] `P0` Add audit events for privileged access.
-- [ ] `P1` Add policy tests for every router.
+- [verify] `P1` Add policy tests for every router. Evidence: `docs/security/PHASE2_AUTHORIZATION_CLOSURE.md`, `scripts/check_phase2_authorization_evidence.py`, `scripts/check_privacy_boundary_evidence.py`; verification gap: every router still needs item-level reconciliation before this can become `[x]`.
 - [ ] `P1` Move from basic RBAC to policy-based authorization for sensitive workflows.
 - [ ] `P2` Add tightly audited admin impersonation only if absolutely required.
 
@@ -586,21 +586,21 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 ## 4.2 Declarative consent enforcement
 
 - [ ] `P0` Make consent enforcement declarative through FastAPI dependency or middleware.
-- [ ] `P0` Add `scripts/check_consent_gates.py`.
-- [ ] `P0` Identify all learner-data routes.
-- [ ] `P0` Mark consent-required route patterns.
-- [ ] `P0` Fail CI if consent-required route lacks consent gate.
-- [ ] `P0` Add negative test for diagnostics without consent.
-- [ ] `P0` Add negative test for lessons without consent.
-- [ ] `P0` Add negative test for learner profile access without consent.
-- [ ] `P0` Add negative test for study plan access without consent.
-- [ ] `P0` Add negative test for gamification without consent.
+- [verify] `P0` Add consent gate checker. Evidence: `scripts/generate_consent_gate_inventory.py`, `scripts/check_consent_gate_inventory.py`, `make popia-consent-gate-check`.
+- [verify] `P0` Identify all learner-data routes. Evidence: `docs/security/popia_consent_gate_inventory.md`, `docs/security/privacy_boundary_evidence.md`.
+- [verify] `P0` Mark consent-required route patterns. Evidence: `docs/security/popia_consent_boundary_matrix.md`, `scripts/check_popia_consent_boundary_matrix.py`.
+- [verify] `P0` Fail CI if consent-required route lacks consent gate. Evidence: `.github/workflows/privacy-boundary.yml`, `scripts/check_privacy_boundary_evidence.py`; verification gap: required-check enforcement must be configured in GitHub branch protection.
+- [verify] `P0` Add negative test for diagnostics without consent. Evidence: `docs/security/diagnostics_consent_gate.md`, `tests/unit/test_diagnostics_consent_gate_wiring.py`.
+- [verify] `P0` Add negative test for lessons without consent. Evidence: `docs/security/lesson_generation_consent_gate.md`, `tests/unit/test_lesson_generation_consent_gate_wiring.py`.
+- [verify] `P0` Add negative test for learner profile access without consent. Evidence: `docs/security/learner_read_consent_gate.md`, `tests/unit/test_learner_read_consent_gate_wiring.py`.
+- [verify] `P0` Add negative test for study plan access without consent. Evidence: `docs/security/study_plan_consent_gate.md`.
+- [verify] `P0` Add negative test for gamification without consent. Evidence: `docs/security/gamification_consent_gate.md`, `tests/unit/test_gamification_consent_gate_wiring.py`.
 - [ ] `P0` Add negative test for analytics processing without consent.
 - [ ] `P0` Add negative test for RLHF feedback without consent.
 - [ ] `P0` Add negative test for parent reports without consent.
 - [ ] `P0` Add negative test for data export without consent/authority.
 - [ ] `P0` Add negative test for erasure request without authority.
-- [ ] `P1` Add route-level consent policy documentation.
+- [verify] `P1` Add route-level consent policy documentation. Evidence: `docs/security/privacy_boundary_evidence.md`, `docs/security/popia_consent_gate_inventory.md`, `docs/security/popia_consent_boundary_matrix.md`.
 
 ## 4.3 Data subject rights
 
@@ -621,10 +621,10 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 - [ ] `P1` Add admin review queue for billing/school/legal-retention conflicts.
 - [ ] `P1` Add notification to guardian when export is ready.
 - [ ] `P1` Add notification to guardian when erasure completes.
-- [ ] `P1` Add tests for export workflow.
-- [ ] `P1` Add tests for erasure workflow.
-- [ ] `P1` Add tests for correction workflow.
-- [ ] `P1` Add tests for restriction workflow.
+- [verify] `P1` Add tests for export workflow. Evidence: `tests/integration/test_popia_data_export_authorization.py`, `tests/integration/test_parent_export_authorization.py`; verification gap: full export artifact generation still requires release evidence.
+- [verify] `P1` Add tests for erasure workflow. Evidence: `tests/popia/test_right_to_erasure.py`, `tests/integration/test_parent_erasure_authorization.py`, `tests/integration/test_popia_deletion_request_authorization.py`.
+- [verify] `P1` Add tests for correction workflow. Evidence: `tests/integration/test_popia_correction_request_authorization.py`.
+- [verify] `P1` Add tests for restriction workflow. Evidence: `tests/integration/test_popia_restriction_request_authorization.py`.
 
 ## 4.4 Data minimization and inventory
 
@@ -677,7 +677,7 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 - [ ] `P0` Add audit event for admin access.
 - [ ] `P0` Add audit event for billing changes.
 - [ ] `P1` Add immutable retention rules for audit records.
-- [ ] `P1` Add automated audit completeness tests.
+- [verify] `P1` Add automated audit completeness tests. Evidence: `scripts/check_audit_event_contracts.py`, `tests/unit/test_audit_event_contracts.py`, `docs/security/audit_event_contracts.md`; verification gap: staging audit sink evidence still required.
 - [ ] `P1` Build internal audit dashboard.
 
 ## 4.6 Legal/privacy docs
@@ -729,8 +729,8 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 
 - [ ] `P0` Ensure `alembic upgrade head` runs in CI from empty DB.
 - [ ] `P0` Ensure `alembic check` runs in CI.
-- [ ] `P0` Add migration graph validation.
-- [ ] `P0` Add schema integrity validation.
+- [verify] `P0` Add migration graph validation. Evidence: `scripts/verify_migration_graph.py`, `tests/unit/test_migration_graph.py`, `make migration-check`.
+- [verify] `P0` Add schema integrity validation. Evidence: `scripts/validate_schema_integrity.py`, `tests/unit/test_schema_integrity.py`, `make schema-integrity`.
 - [ ] `P0` Document rollback for every destructive migration.
 - [ ] `P0` Require backup plan for migrations touching learner/guardian data.
 - [ ] `P0` Require staging dry run for migrations touching learner/guardian data.
@@ -952,32 +952,32 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 
 Granular verification backlog:
 
-- [ ] `P0` Define diagnostic item schema.
-- [ ] `P0` Include item ID.
-- [ ] `P0` Include subject.
-- [ ] `P0` Include grade.
-- [ ] `P0` Include topic.
-- [ ] `P0` Include skill.
-- [ ] `P0` Include difficulty parameter.
-- [ ] `P0` Include discrimination parameter.
-- [ ] `P0` Include correct answer.
-- [ ] `P0` Include distractors.
-- [ ] `P0` Include explanation.
-- [ ] `P0` Include CAPS reference.
-- [ ] `P0` Validate theta bounds.
-- [ ] `P0` Validate discrimination bounds.
-- [ ] `P0` Validate difficulty bounds.
-- [ ] `P0` Validate probability output.
-- [ ] `P0` Validate overflow safety.
-- [ ] `P0` Validate invalid input handling.
-- [ ] `P0` Add test for probability of correctness.
-- [ ] `P0` Add test for Fisher information.
-- [ ] `P0` Add test for ability update.
-- [ ] `P0` Add test for EAP estimate.
-- [ ] `P0` Add test for empty responses.
-- [ ] `P0` Add test for all-correct responses.
-- [ ] `P0` Add test for all-incorrect responses.
-- [ ] `P0` Add test for stopping criteria.
+- [verify] `P0` Define diagnostic item schema. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`, `tests/unit/modules/diagnostics/test_item_bank_models.py`.
+- [verify] `P0` Include item ID. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Include subject. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Include grade. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Include topic. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Include skill. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Include difficulty parameter. Evidence: `app/domain/item_schema.py`, `app/modules/diagnostics/irt_engine.py`.
+- [verify] `P0` Include discrimination parameter. Evidence: `app/domain/item_schema.py`, `app/modules/diagnostics/irt_engine.py`.
+- [verify] `P0` Include correct answer. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Include distractors. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Include explanation. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Include CAPS reference. Evidence: `docs/diagnostics/item_contract.md`, `app/domain/item_schema.py`.
+- [verify] `P0` Validate theta bounds. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`, `tests/unit/test_irt_properties.py`.
+- [verify] `P0` Validate discrimination bounds. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Validate difficulty bounds. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Validate probability output. Evidence: `scripts/ci/check_diagnostics_assessment.py`, `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Validate overflow safety. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Validate invalid input handling. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Add test for probability of correctness. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Add test for Fisher information. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`, `scripts/ci/check_diagnostics_assessment.py`.
+- [verify] `P0` Add test for ability update. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P0` Add test for EAP estimate. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Add test for empty responses. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Add test for all-correct responses. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Add test for all-incorrect responses. Evidence: `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
+- [verify] `P0` Add test for stopping criteria. Evidence: `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
 - [ ] `P0` Add test for grade-equivalent mapping.
 - [ ] `P1` Add test for item selection by Fisher information.
 - [ ] `P1` Add test for gap identification.
@@ -1000,9 +1000,9 @@ Granular item-bank backlog:
 - [ ] `P0` Add item review status `human-reviewed`.
 - [ ] `P0` Add item review status `approved`.
 - [ ] `P0` Add item review status `retired`.
-- [ ] `P1` Add item calibration workflow.
-- [ ] `P1` Add item exposure limits.
-- [ ] `P1` Add item reuse policy.
+- [verify] `P1` Add item calibration workflow. Evidence: `app/modules/diagnostics/calibration_service.py`, `tests/unit/modules/practice/test_practice_and_calibration.py`.
+- [verify] `P1` Add item exposure limits. Evidence: `app/models/item_exposure.py`, `app/modules/diagnostics/item_bank_service.py`, `tests/unit/modules/diagnostics/test_item_bank_service.py`.
+- [verify] `P1` Add item reuse policy. Evidence: `docs/learning_science/learning_evidence.md`, `app/modules/diagnostics/item_bank_service.py`; verification gap: production item analytics still required.
 - [ ] `P1` Add item retirement workflow.
 - [ ] `P1` Add item import/export tooling.
 - [ ] `P2` Add item authoring interface.
@@ -1018,18 +1018,18 @@ Granular item-bank backlog:
 
 Granular diagnostic-session backlog:
 
-- [ ] `P0` Implement diagnostic session start.
-- [ ] `P0` Implement question serving.
-- [ ] `P0` Implement answer submission.
-- [ ] `P0` Implement ability update.
-- [ ] `P0` Implement result retrieval.
-- [ ] `P0` Implement consent check before diagnostic.
-- [ ] `P0` Implement object authorization check before diagnostic.
-- [ ] `P1` Add diagnostic pause/resume.
-- [ ] `P1` Add diagnostic session recovery after disconnect.
-- [ ] `P1` Add maximum item cap.
-- [ ] `P1` Add minimum evidence threshold before final result.
-- [ ] `P1` Add confidence interval.
+- [verify] `P0` Implement diagnostic session start. Evidence: `app/modules/diagnostics/diagnostic_session_service.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P0` Implement question serving. Evidence: `app/modules/diagnostics/diagnostic_session_service.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P0` Implement answer submission. Evidence: `app/modules/diagnostics/diagnostic_session_service.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P0` Implement ability update. Evidence: `app/modules/diagnostics/irt_engine.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P0` Implement result retrieval. Evidence: `app/modules/diagnostics/diagnostic_session_service.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P0` Implement consent check before diagnostic. Evidence: `docs/security/diagnostics_consent_gate.md`, `tests/unit/test_diagnostics_consent_gate_wiring.py`.
+- [verify] `P0` Implement object authorization check before diagnostic. Evidence: `docs/security/diagnostic_items_authorization_wiring.md`, `docs/security/diagnostic_submit_authorization_wiring.md`.
+- [verify] `P1` Add diagnostic pause/resume. Evidence: `app/modules/diagnostics/session_recovery_service.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P1` Add diagnostic session recovery after disconnect. Evidence: `app/modules/diagnostics/session_recovery_service.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P1` Add maximum item cap. Evidence: `app/modules/diagnostics/termination_service.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P1` Add minimum evidence threshold before final result. Evidence: `app/modules/diagnostics/termination_service.py`, `tests/unit/modules/diagnostics/test_session_lifecycle.py`.
+- [verify] `P1` Add confidence interval. Evidence: `app/modules/diagnostics/irt_engine.py`, `tests/unit/modules/diagnostics/test_irt_engine_hardening.py`.
 - [ ] `P2` Add diagnostic review by educator.
 
 ## 7.4 Bias, quality, and fairness
@@ -1045,16 +1045,16 @@ Granular diagnostic-session backlog:
 
 ## 7.5 Mastery and remediation
 
-- [ ] `P1` Define mastery model.
-- [ ] `P1` Combine diagnostic estimate into mastery.
-- [ ] `P1` Combine practice performance into mastery.
-- [ ] `P1` Combine recency into mastery.
-- [ ] `P1` Combine consistency into mastery.
-- [ ] `P1` Combine confidence into mastery.
-- [ ] `P1` Add topic-level mastery.
-- [ ] `P1` Add subject-level mastery.
-- [ ] `P1` Add progress timelines.
-- [ ] `P1` Add adaptive practice generator.
+- [verify] `P1` Define mastery model. Evidence: `app/modules/progress/mastery_model.py`, `docs/learning_science/mastery_model.md`, `tests/unit/modules/progress/test_mastery_model.py`.
+- [verify] `P1` Combine diagnostic estimate into mastery. Evidence: `app/modules/progress/mastery_model.py`, `tests/unit/modules/progress/test_mastery_model.py`.
+- [verify] `P1` Combine practice performance into mastery. Evidence: `app/modules/progress/mastery_model.py`, `tests/unit/modules/progress/test_mastery_model.py`.
+- [verify] `P1` Combine recency into mastery. Evidence: `app/modules/progress/mastery_model.py`, `tests/unit/modules/progress/test_mastery_model.py`.
+- [verify] `P1` Combine consistency into mastery. Evidence: `app/modules/progress/mastery_model.py`, `tests/unit/modules/progress/test_mastery_model.py`.
+- [verify] `P1` Combine confidence into mastery. Evidence: `app/modules/progress/mastery_model.py`, `tests/unit/modules/progress/test_mastery_model.py`.
+- [verify] `P1` Add topic-level mastery. Evidence: `app/modules/progress/mastery_model.py`, `app/repositories/mastery_repository.py`.
+- [verify] `P1` Add subject-level mastery. Evidence: `app/modules/progress/mastery_model.py`, `app/repositories/mastery_repository.py`.
+- [verify] `P1` Add progress timelines. Evidence: `app/modules/progress/progress_timeline_service.py`.
+- [verify] `P1` Add adaptive practice generator. Evidence: `app/modules/practice/practice_generator.py`, `tests/unit/modules/practice/test_practice_and_calibration.py`.
 - [ ] `P1` Add remediation based on misconception.
 - [ ] `P2` Add spaced repetition.
 - [ ] `P2` Add retrieval practice.
@@ -1542,9 +1542,9 @@ Granular diagnostic-session backlog:
 - [ ] `P0` Add backup success metric.
 - [ ] `P0` Add backup failure metric.
 - [ ] `P0` Add backup failure alert.
-- [ ] `P0` Document backup configuration.
-- [ ] `P0` Add backup runbook.
-- [ ] `P1` Add backup integrity verification.
+- [verify] `P0` Document backup configuration. Evidence: `docs/operations/database_backup_contract.md`, `docs/operations/database_backup_command.md`, `docs/operations/persistence_resilience_evidence.md`.
+- [verify] `P0` Add backup runbook. Evidence: `docs/operations/backup_restore_runbook.md`.
+- [verify] `P1` Add backup integrity verification. Evidence: `scripts/check_database_backup_integrity.py`, `tests/unit/test_database_backup_integrity.py`, `make database-backup-integrity-check`.
 - [ ] `P1` Add backup cost monitoring.
 
 ## 13.2 Restore tests
@@ -1559,15 +1559,15 @@ Granular diagnostic-session backlog:
 - [ ] `P0` Validate lesson metadata after restore.
 - [ ] `P0` Validate Alembic version after restore.
 - [ ] `P0` Record restore duration.
-- [ ] `P0` Record restore evidence.
+- [verify] `P0` Record restore evidence. Evidence: `scripts/generate_database_restore_evidence.py`, `docs/operations/database_restore_evidence.md`, `tests/unit/test_generate_database_restore_evidence.py`.
 - [ ] `P1` Automate restore test in staging on schedule.
 
 ## 13.3 RPO/RTO and DR
 
-- [ ] `P0` Define RPO.
-- [ ] `P0` Define RTO.
-- [ ] `P0` Create `docs/disaster_recovery.md`.
-- [ ] `P0` Add restore runbook.
+- [verify] `P0` Define RPO. Evidence: `docs/operations/backup_restore_runbook.md`, `docs/operations/persistence_resilience_evidence.md`; verification gap: release-owner approval still required.
+- [verify] `P0` Define RTO. Evidence: `docs/operations/backup_restore_runbook.md`, `docs/operations/persistence_resilience_evidence.md`; verification gap: release-owner approval still required.
+- [verify] `P0` Create disaster recovery documentation. Evidence: `docs/operations/backup_restore_runbook.md`, `docs/operations/database_restore_drill.md`, `docs/operations/persistence_resilience_evidence.md`.
+- [verify] `P0` Add restore runbook. Evidence: `docs/operations/backup_restore_runbook.md`, `docs/operations/database_restore_command.md`.
 - [ ] `P0` Add failover runbook.
 - [ ] `P0` Add rollback runbook.
 - [ ] `P0` Add emergency contacts.
@@ -1578,12 +1578,12 @@ Granular diagnostic-session backlog:
 
 ## 13.4 Redis recoverability
 
-- [ ] `P1` Decide Redis recoverability model.
-- [ ] `P1` Document whether Redis is disposable.
-- [ ] `P1` Document token revocation impact if Redis is lost.
-- [ ] `P1` Document cache impact if Redis is lost.
-- [ ] `P1` Document job status impact if Redis is lost.
-- [ ] `P1` Document rate-limit impact if Redis is lost.
+- [verify] `P1` Decide Redis recoverability model. Evidence: `docs/operations/persistence_resilience_evidence.md`; verification gap: executable Redis outage test still required.
+- [verify] `P1` Document whether Redis is disposable. Evidence: `docs/operations/persistence_resilience_evidence.md`.
+- [verify] `P1` Document token revocation impact if Redis is lost. Evidence: `docs/operations/persistence_resilience_evidence.md`.
+- [verify] `P1` Document cache impact if Redis is lost. Evidence: `docs/operations/persistence_resilience_evidence.md`.
+- [verify] `P1` Document job status impact if Redis is lost. Evidence: `docs/operations/persistence_resilience_evidence.md`.
+- [verify] `P1` Document rate-limit impact if Redis is lost. Evidence: `docs/operations/persistence_resilience_evidence.md`.
 - [ ] `P1` Add Redis outage test.
 - [ ] `P1` Add degraded-mode behavior for Redis outage.
 - [ ] `P2` Add Redis failover test if using managed failover.
