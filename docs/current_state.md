@@ -39,6 +39,10 @@ The current verified truth is narrower: only the checks listed under
   exist.
 - Governance and evidence checks exist for release-readiness contracts, POPIA
   consent boundaries, route inventories, and PR-002R evidence.
+- Auth/session/RBAC/object-authorization evidence is indexed by
+  `docs/security/auth_boundary_evidence.md` and checked by
+  `make auth-boundary-check`; full abuse-path coverage remains a verification
+  gap.
 - Grade 4 Mathematics item-bank implementation exists with 14 approved starter
   items plus generated candidate content that still requires approval before
   production coverage can be claimed.
