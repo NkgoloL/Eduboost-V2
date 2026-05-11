@@ -5,6 +5,14 @@
 **Latest Commit**: `2d3c77f — feat: complete remaining project phases`  
 **Version**: Unreleased (post-`0.2.0-rc1`)
 
+> **Historical snapshot notice:** This report is retained for engineering
+> traceability only. It is not the current release-readiness source of truth.
+> Current claims must be checked against [`docs/current_state.md`](docs/current_state.md)
+> and the live backlog in [`TODO.md`](TODO.md). Treat statements in this file
+> such as "mature pre-production", "complete", or "implemented and tested" as
+> dated claims from the branch and commit above unless backed by fresh green
+> evidence on the current commit.
+
 ---
 
 ## 1. Executive Summary
@@ -500,7 +508,12 @@ b626b34 feat(devops): complete CI/CD pipeline and infrastructure hardening
 
 ## 13. Conclusion
 
-EduBoost V2 is in a **mature pre-production state**. The architectural migration is complete, the data pipeline is operational, and the frontend-backend integration is stable with comprehensive test coverage. The primary bottleneck for production readiness is **GPU infrastructure** for training a production-quality CAPS-aligned LLM adapter. All other systems — auth, consent, diagnostics, gamification, observability, CI/CD — are implemented and tested.
+As a historical snapshot, this report recorded substantial pre-production
+progress on the branch above. It must not be read as current release truth.
+Current readiness is governed by `docs/current_state.md`: EduBoost V2 has many
+implemented backend, frontend, governance, and AI-safety components, but beta or
+production readiness requires green runtime, OpenAPI, smoke, workflow,
+frontend, migration, backup/restore, and staging evidence on the current commit.
 
 **Recommended Next Steps** (priority order):
 1. Resolve GPU provisioning to unblock DeepSeek v4 fine-tuning

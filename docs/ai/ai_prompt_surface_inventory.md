@@ -61,13 +61,15 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/build_corrective_caps_v2.py` | `prompt, llm, remediation` |
 | `scripts/build_focused_caps_dataset.py` | `remediation` |
 | `scripts/build_guardrails_dataset.py` | `remediation` |
+| `scripts/check_ai_fixture_coverage_matrix.py` | `prompt, diagnostic` |
 | `scripts/check_ai_output_schema_contract.py` | `prompt, diagnostic` |
 | `scripts/check_ai_prompt_input_contract.py` | `prompt, diagnostic` |
+| `scripts/check_ai_prompt_secret_leakage.py` | `prompt, system_message, user_message, anthropic, groq, generate_lesson, diagnostic, remediation` |
 | `scripts/check_ai_prompt_surface_inventory.py` | `prompt` |
 | `scripts/check_ai_refusal_fixtures.py` | `prompt` |
 | `scripts/check_ai_safety_boundary_contract.py` | `prompt` |
 | `scripts/check_caps_alignment_contract.py` | `prompt, diagnostic, remediation` |
-| `scripts/check_cluster_f_ai_safety_evidence.py` | `prompt, llm, diagnostic, remediation` |
+| `scripts/check_cluster_f_ai_safety_evidence.py` | `prompt, llm, anthropic, diagnostic, remediation` |
 | `scripts/check_cluster_f_closure.py` | `prompt, llm, diagnostic, remediation` |
 | `scripts/check_diagnostic_generation_safety_contract.py` | `diagnostic` |
 | `scripts/check_environment_security_contract.py` | `anthropic, groq` |

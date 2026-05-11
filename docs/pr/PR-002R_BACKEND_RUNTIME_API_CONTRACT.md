@@ -20,6 +20,7 @@ PR-002R establishes:
 - Deterministic OpenAPI generation.
 - Committed OpenAPI schema at `docs/openapi.json`.
 - OpenAPI drift verification through `make openapi-check`.
+- Deterministic route inventory at `docs/route_inventory.md`.
 - CI branch policy using `master` and `release/**`.
 
 ## Repository Freshness Marker
@@ -55,6 +56,7 @@ The archived compatibility shim must not be treated as a separate production run
 | OpenAPI generator | `scripts/generate_openapi.py`, `tests/unit/test_generate_openapi.py` |
 | OpenAPI drift guard | `Makefile`, `.github/workflows/openapi-drift.yml`, `tests/unit/test_openapi_ci_contract.py` |
 | OpenAPI schema artifact | `docs/openapi.json` |
+| Route inventory artifact | `docs/route_inventory.md`, `scripts/generate_route_inventory.py`, `tests/unit/test_generate_route_inventory.py` |
 | PR acceptance checklist | `.github/pull_request_template.md`, `tests/unit/test_pr002r_governance_contract.py` |
 | Pytest import-path policy | `tests/conftest.py`, `tests/unit/test_pytest_import_path.py`, `docs/testing/pytest_import_path.md` |
 | Release evidence index | `docs/release/PR-002R_EVIDENCE.md` |
@@ -65,6 +67,7 @@ The archived compatibility shim must not be treated as a separate production run
 python3 -c "from app.api_v2 import app; print(app.title)"
 python3 scripts/generate_openapi.py
 make openapi-check
+make route-inventory-check
 pytest -c pytest.ini \
   tests/test_entrypoints.py \
   tests/test_legacy_route_exclusion.py \

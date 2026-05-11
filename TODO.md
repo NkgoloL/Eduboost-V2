@@ -1,290 +1,925 @@
+# EduBoost V2 — Complete Outstanding Production Readiness TODO
 
-# Documentation and Repo Sync TODO
+**Purpose:** Replace the root `TODO.md` with a granular implementation backlog.  
+**Scope:** All outstanding work required to move EduBoost V2 from the latest integrated `master` state to a production-ready, public-beta-safe platform.  
+**Freshness marker:** this TODO assumes the repository state containing:
 
-Updated: 2026-05-08 (checked by Copilot against integrated code/docs)
-Source: `C:\Users\Lebelo\Downloads\EduBoost_V2_Comparative_Audit_Report.md`
+```text
+Merge pull request #52 from NkgoloL/chore/slow-query-logging
+```
 
-Status legend:
-
-- `[done]` completed and reflected in the repository
-- `[pending]` still requires follow-through
-
-# EduBoost V2 Production-Grade TODO
-
-> **Purpose:** Comprehensive production-readiness and mission-upgrade backlog for EduBoost V2.
-> **Scope:** FastAPI V2 backend, Next.js frontend, PostgreSQL/Alembic, Redis, POPIA compliance, CAPS-aligned learning, AI lesson generation, observability, DevSecOps, deployment, product strategy, and launch operations.
-> **Assumed repo state:** V2 modular monolith; backend entrypoint `app/api_v2.py`; frontend under `app/frontend`; Redis for cache/token revocation/job state; PostgreSQL audit repository; CI/CD under `.github/workflows`; Docker, Kubernetes, Bicep, Prometheus, Alertmanager, Grafana, and MkDocs assets present.
-
-## Status Legend
-
-- `[critical]` Must be resolved before production launch.
-- `[high]` Should be resolved before public beta or paid users.
-- `[medium]` Improves reliability, UX, maintainability, or differentiation.
-- `[low]` Polish, future-proofing, or post-launch optimization.
-- `[research]` Needs spike, user interviews, educator review, benchmarking, or legal review.
-
-## Ownership Labels
-
-Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`, `devops`, `product`, `design`, `docs`, `qa`, `growth`, and `ops`.
+**Canonical production branch:** `master`  
+**Primary runtime:** `app.api_v2:app`  
+**Frontend:** `app/frontend`  
+**Production-readiness rule:** no item is considered complete unless there is implementation evidence and verification evidence.
 
 ---
 
-# 0. Production Definition of Done
+## Status legend
 
-## 0.1 Non-negotiable production gate
+- `[ ]` Not complete.
+- `[x]` Complete and verified.
+- `[blocked]` Blocked; add blocker note inline.
+- `[verify]` Implemented but not yet verified.
 
-- [x] `[critical]` Publish a first tagged release, e.g. `v0.1.0-beta`, only after all mandatory CI jobs pass on the canonical production branch.
-- [x] `[critical]` Confirm the release workflow blocks production promotion unless the following pass: backend lint, backend type check, backend unit tests, backend integration tests, Alembic schema drift check, POPIA compliance tests, frontend tests, frontend type check, frontend build, Playwright E2E tests, Docker image scan, dependency audit, secret scan, and staging smoke tests.
-- [x] `[critical]` Generate a release evidence bundle containing backend image digest, frontend build/image digest, migration revision, changelog entry, SBOM, test reports, coverage reports, security scan reports, and deployment manifest.
-- [x] `[critical]` Add `docs/release_checklist.md` and require it for every tagged release.
-- [x] `[critical]` Define production launch scope precisely: supported grades, supported subjects, supported lesson types, supported diagnostic flows, supported languages, supported payment modes, and unsupported features.
-- [x] `[critical]` Avoid claiming full CAPS coverage until every claimed topic has validated lessons, diagnostic items, answer keys, and review status.
+## Priority legend
 
+- `P0` — Release blocker. Required before handling real learner data or public beta.
+- `P1` — Required before paid users, school pilots, or broad pilot rollout.
+- `P2` — Important hardening, maintainability, UX, reliability, or scale work.
+- `P3` — Later optimization or product expansion.
+- `Research` — Requires spike, benchmark, legal review, educator review, or user research.
 
-## 0.2 Health, readiness, and runtime acceptance
+## Completion rule
 
-- [x] `[critical]` `/health` returns `200` when the API process is alive. (Confirmed: `app/core/health.py`, tests present)
-- [x] `[critical]` `/ready` returns `200` only when PostgreSQL, Redis, migrations, audit repository, critical secrets, and core background-job dependencies are available. (Confirmed: `app/core/health.py`)
-- [x] `[critical]` `/ready` returns `503` with structured non-sensitive diagnostics when dependencies are unavailable. (Confirmed: `app/core/health.py`)
-- [x] `[critical]` Add tests for `/health`, `/ready`, `/metrics`, `/docs`, and `/openapi.json` in local, CI, and staging contexts. (Confirmed: `tests/test_health_checks.py`)
-- [x] `[critical]` Ensure readiness probes are wired correctly in Docker Compose, Kubernetes, and Azure deployment assets. (Confirmed: `docker-compose.yml`, `k8s/`, `bicep/`)
-- [ ] `[high]` Add graceful degraded-mode behavior for optional dependencies such as LLM providers, analytics, email, or billing. (Partial: code exists, not all optional deps handled)
+For each completed task, add a reference to one or more of:
 
-## 0.3 Operational acceptance
+- source file
+- test file
+- migration
+- CI job
+- OpenAPI diff
+- runbook
+- staging evidence
+- release evidence bundle
+- security/compliance review
+- legal review
 
-- [ ] `[critical]` Automated database backups are enabled, encrypted, monitored, and restore-tested.
-- [ ] `[critical]` Security headers, CORS, cookie policy, JWT policy, and rate limits are verified in staging.
-- [ ] `[critical]` Logs, metrics, traces, alerts, and dashboards are live before real learner data is processed.
-- [ ] `[critical]` Incident response, security disclosure, data breach handling, and learner-data escalation procedures are documented.
-- [ ] `[critical]` POPIA consent, export, erasure, retention, audit, and LLM PII-redaction workflows are tested end-to-end.
+## Evidence category rule
 
----
+Every status document must separate these two categories:
 
-# 1. Repository Governance and Hygiene
+- **Implemented in code**: source, scripts, workflows, docs, or tests exist in
+  the repository.
+- **Verified by green runtime/CI evidence**: a named command, local run, CI job,
+  staging run, or release-evidence artifact has passed against the commit being
+  described.
 
+Do not describe a feature, release gate, or workflow as "ready", "tested",
+"complete", or "production-grade" unless both categories are listed with
+evidence. If only code exists, mark the item `[verify]`.
 
-## 1.1 Canonical source of truth
+## Documentation drift correction plan
 
-- [x] `[critical]` Decide and document the canonical repository: `NkgoloL/Eduboost-V2`. (Confirmed: `docs/repository_governance.md`)
-- [x] `[critical]` Add `docs/repository_governance.md` covering canonical repo, mirrors, branch policy, release authority, secret rotation authority, security patch process, and archive policy. (file added: `docs/repository_governance.md`)
-- [x] `[low]` Add `.agent.md` custom agent for repository maintenance and docs automation. (file added: `.agent.md`)
-- [x] `[high]` Protect `main`: require PR review, required checks, no force-push, and no branch deletion. (Confirmed: branch protection policy in place)
-- [x] `[high]` Add `CODEOWNERS` for the repository owner: `NkgoloL` (file added: `.github/CODEOWNERS`)
-- [x] `[high]` Add issue templates and PR template (files added under `.github/`). (Confirmed: `.github/ISSUE_TEMPLATE/` and `.github/PULL_REQUEST_TEMPLATE.md`)
-- [ ] `[high]` Protect `master`/`main`: require PR review, required checks, no force-push, no branch deletion, and signed commits if feasible. (Partial: some protections in place)
-- [ ] `[high]` Add `CODEOWNERS` for backend, frontend, infrastructure, security, compliance, curriculum, and docs. (Partial: only owner present)
-- [ ] `[high]` Add issue templates: bug, feature, security redirect, compliance concern, accessibility issue, curriculum issue, incorrect content, production incident. (Partial: some templates present)
-- [ ] `[high]` Add PR template with checkboxes for tests, docs, migrations, POPIA impact, security impact, accessibility impact, analytics impact, deployment impact, and rollback plan. (Partial: template exists, not all checkboxes)
-
-
-## 1.2 Dependency and artifact cleanup
-
-- [ ] `[high]` Audit dependency files and decide canonical dependency paths for runtime, dev, docs, and ML extras. (Not fully done)
-- [ ] `[high]` Remove duplicate or stale root dependency files, or clearly mark them as compatibility aliases. (Not fully done)
-  - [x] `[high]` Enable Dependabot or Renovate for Python, npm, Docker images, and GitHub Actions. (file added: `.github/dependabot.yml`)
-  - [x] `docs/release_checklist.md` (file added)
-  - [x] `docs/secrets.md` (file added)
-- [x] `[medium]` Add a `Makefile` or `justfile` with commands: `dev`, `test`, `lint`, `typecheck`, `e2e`, `migrate`, `docs`, `security`, `release-check`, and `smoke`. (file added: `Makefile`)
-- [ ] `[medium]` Add `docs/adr/` and write ADRs for modular monolith, FastAPI V2, Next.js frontend, PostgreSQL audit ledger, Redis revocation, LLM provider abstraction, POPIA-first design, and CAPS alignment. (Partial: some ADRs present)
-- [ ] `[medium]` Add markdown linting and docs link checking to CI. (Not present)
-
----
-
-
-# 2. Backend Architecture
-
-## 2.1 Runtime surface
-
-- [x] `[critical]` Keep `app/api_v2.py` as the only supported backend runtime entrypoint. (Confirmed: `app/api_v2.py` is main entrypoint)
-- [ ] `[critical]` Ensure `app/api/main.py` remains a compatibility shim only and cannot diverge from V2 behavior. (Not fully enforced)
-- [ ] `[high]` Add a regression test that imports the V2 app using every documented deployment command. (Not present)
-- [ ] `[high]` Add tests proving legacy-only routes are not accidentally exposed as production APIs. (Not present)
-- [x] `[high]` Generate and commit or publish the OpenAPI schema for review. (Confirmed: `docs/openapi_pr003.json`, `docs/openapi_pr004.json`)
-- [ ] `[medium]` Add OpenAPI diff checks in PRs. (Not present)
-
-
-## 2.2 Router/service/domain boundaries
-
-- [ ] `[critical]` Ensure routers are thin: request validation, auth/consent dependencies, service call, response mapping. (Partial: some routers refactored)
-- [ ] `[critical]` Move business logic out of routers into services or bounded modules. (Partial)
-- [ ] `[high]` Define service contracts for auth, learners, guardians, consent, diagnostics, lessons, study plans, gamification, billing, audit, POPIA export, and erasure. (Partial)
-- [ ] `[high]` Collapse duplicate service concepts between `app/services/*_service_v2.py` and `app/modules/*/service.py`. (Not complete)
-- [ ] `[high]` Decide canonical business-logic location: either `app/services` as application layer or `app/modules/<context>/service.py` as bounded-context services. (Not complete)
-- [ ] `[high]` Remove metaphor-layer ambiguity from active code: `ether`, `judiciary`, `fourth_estate`, and `executive` should not be core engineering boundaries. (Not complete)
-- [ ] `[medium]` Keep metaphor names only for storytelling/docs if useful; use domain names in code. (Not enforced)
-- [ ] `[medium]` Enforce import boundaries: routers → services → repositories/domain/core; repositories → models/database; domain should not depend on infrastructure. (Not enforced)
-
-
-## 2.3 Dependency injection and cross-cutting concerns
-
-- [ ] `[high]` Standardize FastAPI dependencies for current user, current learner, guardian relationship, role checks, consent checks, DB session, audit context, request ID, and rate-limit identity. (Partial)
-- [ ] `[high]` Replace ad-hoc service construction with dependency providers. (Not complete)
-- [ ] `[medium]` Add test dependency overrides for DB, Redis, LLM provider, email provider, payment provider, object storage, and analytics sink. (Not present)
-- [ ] `[medium]` Add request-scoped correlation ID propagation through logs, audit events, traces, and frontend API calls. (Not present)
+- [x] `P0` Split status documentation into "Implemented in code" and
+  "Verified by green runtime/CI evidence" categories. Evidence:
+  `TODO.md`, `docs/current_state.md`.
+- [x] `P0` Mark `EduBoost_Technical_Status_Report.md` as a historical snapshot
+  rather than current release truth. Evidence:
+  `EduBoost_Technical_Status_Report.md`.
+- [x] `P0` Mark `INTEGRATION_COMPLETE.md` as a historical integration snapshot
+  rather than current release truth. Evidence: `INTEGRATION_COMPLETE.md`.
+- [x] `P0` Make `docs/current_state.md` the single source of truth for current
+  release state and keep `docs/project_status.md` as an index/redirect.
+  Evidence: `docs/current_state.md`, `docs/project_status.md`.
+- [x] `P0` Ensure `make runtime-check` references a committed script. Evidence:
+  `Makefile`, `scripts/check_runtime_entrypoints.py`,
+  `tests/unit/test_check_runtime_entrypoints.py`.
+- [x] `P0` Regenerate and commit `docs/openapi.json`, then keep
+  `make openapi-check` green. Evidence: `docs/openapi.json`,
+  `make openapi-check` passed on 2026-05-11.
+- [x] `P0` Fix stale legacy references to the removed legacy shim path. Evidence:
+  `README.md`, `tests/smoke/test_app_import.py`.
+- [x] `P0` Fix smoke failures before any release-readiness claim. Evidence:
+  `pytest tests/smoke tests/test_entrypoints.py tests/test_health_checks.py -q --no-cov`
+  passed on 2026-05-11 with 35 passed, 4 skipped.
+- [x] `P1` Remove the static 80% coverage badge until a real CI-generated badge
+  is available. Evidence: `README.md`.
+- [x] `P0` Validate every workflow with YAML/GitHub Actions parsing,
+  starting with `db-backup-matrix.yml`. Evidence:
+  `.github/workflows/db-backup-matrix.yml` and all `.github/workflows/*.yml`
+  parsed with PyYAML on 2026-05-11.
+- [x] `P0` Treat `beta-release-readiness-contract-check` as a docs-contract
+  check, not a release go/no-go check. Evidence:
+  `docs/operations/beta_release_readiness_contract.md`,
+  `scripts/check_beta_release_readiness_contract.py`.
 
 ---
 
+# 0. Repository state and canonical source of truth
 
-# 3. Database, Persistence, and Migrations
+## 0.1 Canonical repo, fork, and branch policy
 
-## 3.1 PostgreSQL schema readiness
+- [ ] `P0` Confirm canonical source repo in `docs/repository_governance.md`.
+- [ ] `P0` Confirm active branch is `master`.
+- [ ] `P0` Confirm latest valid repo state is identified by the commit message containing `Merge pull request #52`.
+- [ ] `P0` Document relationship between `NkgoloL/Eduboost-V2` and `userxrebornbackup-ux/Eduboost-V2`.
+- [ ] `P0` Document which repo produces official releases.
+- [ ] `P0` Document which repo is allowed to receive production hotfixes.
+- [ ] `P0` Document whether the backup fork is temporary, permanent mirror, or recovery source.
+- [ ] `P0` Stop using raw commit count as the canonical freshness signal.
+- [ ] `P0` Use head SHA + merge marker + release tag + CI evidence as freshness criteria.
+- [ ] `P1` Add mirror-sync policy.
+- [ ] `P1` Add fork divergence-detection policy.
+- [ ] `P1` Add fork recovery procedure.
+- [ ] `P1` Add release authority section.
+- [ ] `P1` Add security patch authority section.
+- [ ] `P1` Add archive/deprecation policy for stale forks.
+- [ ] `P2` Add branch naming conventions.
+- [ ] `P2` Add PR naming conventions.
+- [ ] `P2` Add issue labels for `backend`, `frontend`, `security`, `compliance`, `ai`, `curriculum`, `devops`, `docs`, `qa`, `ops`, and `product`.
 
-- [x] `[critical]` Confirm every production table has explicit primary keys, timestamps, and appropriate foreign keys. (Confirmed: `alembic/versions/`, schema files, and docs)
-- [x] `[critical]` Add or verify indexes for user email, learner ID, guardian ID, consent status, token identifiers, diagnostic attempt ID, lesson generation job ID, audit timestamp, audit actor ID, and subscription/customer ID. (Confirmed: Alembic migrations)
-- [x] `[critical]` Add database-level constraints for role enums, consent status, audit event fields, immutable audit identifiers, unique guardian-learner relationships, and non-null sensitive workflow fields. (Confirmed: Alembic migrations)
-- [ ] `[high]` Add partial indexes for active consent, active subscriptions, non-revoked sessions, and incomplete jobs. (Not complete)
-- [ ] `[high]` Review transaction boundaries for signup, learner creation, consent submission, diagnostic completion, lesson generation, billing changes, and erasure requests. (Not complete)
-- [ ] `[medium]` Add slow-query logging in staging and production. (Not present)
-- [ ] `[medium]` Add performance tests for dashboard, diagnostic, lesson, parent report, and audit endpoints. (Not present)
+## 0.2 Repo-state verification automation
 
+- [ ] `P0` Add `scripts/verify_repo_state.py`.
+- [ ] `P0` Script must verify current git branch is `master`.
+- [ ] `P0` Script must verify remote URL matches accepted canonical or recovery repo.
+- [ ] `P0` Script must verify latest commit message contains the accepted freshness marker.
+- [ ] `P0` Script must print current head SHA.
+- [ ] `P0` Script must fail if working tree is dirty unless `--allow-dirty` is passed.
+- [ ] `P0` Script must fail if run from the wrong repo.
+- [ ] `P1` Add `make verify-repo-state`.
+- [ ] `P1` Add CI step for repo-state verification.
+- [ ] `P1` Add repo-state verification output to release evidence bundle.
+- [ ] `P2` Add JSON output mode to `scripts/verify_repo_state.py`.
 
-## 3.2 Alembic discipline
+## 0.3 Branch protection and governance
 
-- [x] `[critical]` Run `alembic upgrade head` in CI from an empty database. (Confirmed: CI config and logs)
-- [x] `[critical]` Run `alembic check` in CI. (Confirmed: CI config and logs)
-- [ ] `[critical]` Document rollback strategy for every destructive migration. (Not present)
-- [ ] `[high]` Add migration naming convention: `YYYYMMDD_HHMM_<short_description>.py`. (Partial: some migrations follow this)
-- [ ] `[high]` Require backup, staging dry-run, validation script, and rollback plan for migrations touching learner/guardian data. (Partial: some scripts/docs)
-- [ ] `[medium]` Add migration smoke tests using production-like data volume. (Not present)
-- [x] `[medium]` Add synthetic seed data for local development; never use real learner PII in fixtures. (Confirmed: `data/synthetic/minimal_seed.sql`)
-
-
-## 3.3 Repository layer
-
-- [ ] `[high]` Add repository tests for every persistence path. (Not complete)
-- [ ] `[high]` Ensure repository methods do not expose raw ORM objects to API responses. (Not complete)
-- [x] `[high]` Ensure audit repositories are append-only by interface and by database permission. (Confirmed: code and migration docs)
-- [ ] `[medium]` Standardize repository method names: `get_*`, `list_*`, `create_*`, `update_*`, `soft_delete_*`, `append_*`. (Not enforced)
-- [ ] `[medium]` Use pagination and deterministic sorting for all list endpoints. (Not enforced)
-- [ ] `[medium]` Use cursor pagination for high-volume event streams. (Not enforced)
-
----
-
-# 4. Authentication, Authorization, and Session Security
-
-## 4.1 Authentication flows
-
-- [ ] `[critical]` Verify signup, login, refresh, logout, email verification, and password reset end-to-end.
-- [x] `[critical]` Use modern password hashing such as Argon2id or bcrypt with tuned cost.
-- [x] `[critical]` Enforce minimum passphrase/password strength.
-- [ ] `[critical]` Add rate limiting for login, signup, refresh, password reset, and verification endpoints.
-- [ ] `[high]` Add account lockout or risk-based throttling after repeated failed attempts.
-- [ ] `[high]` Add session inventory and “log out all devices.”
-- [ ] `[medium]` Add optional MFA for parents, teachers, admins, and support operators.
-- [ ] `[medium]` Add passkeys/WebAuthn later as a trust differentiator.
-
-## 4.2 JWT and token policy
-
-- [x] `[critical]` Confirm production access-token TTL is 15 minutes or intentionally overridden and documented.
-- [x] `[critical]` Confirm production refresh-token TTL is 7 days or intentionally overridden and documented.
-- [x] `[critical]` Store refresh tokens hashed at rest, revocable, bound to a token family, and rotated on use.
-- [x] `[critical]` Detect refresh-token reuse and revoke the token family.
-- [ ] `[critical]` Confirm Redis-backed revocation survives expected restart/failover behavior or has persistent fallback where necessary.
-- [ ] `[high]` Add JWT signing-key rotation with `kid`, current/previous keys, rotation schedule, and emergency revoke-all procedure.
-- [ ] `[high]` Verify cookie settings: `HttpOnly`, `Secure`, correct `SameSite`, correct domain, correct path, and no JavaScript-readable tokens.
-
-## 4.3 Authorization and RBAC
-
-- [x] `[critical]` Define roles: learner, parent/guardian, teacher/tutor, admin, support operator, content reviewer, compliance auditor.
-- [ ] `[critical]` Add object-level authorization tests proving learners cannot access other learners, parents can access only linked learners, teachers can access only assigned learners/classes, and support cannot view unnecessary PII.
-- [ ] `[high]` Implement policy helpers for object-level authorization.
-- [ ] `[high]` Add policy tests for every router.
-- [ ] `[medium]` Move from basic RBAC to policy-based access control for sensitive workflows.
-- [ ] `[medium]` Add tightly audited admin impersonation only if absolutely required.
+- [ ] `P0` Protect `master`.
+- [ ] `P0` Require pull request review before merge to `master`.
+- [ ] `P0` Require required checks before merge to `master`.
+- [ ] `P0` Disable force-push on `master`.
+- [ ] `P0` Disable branch deletion on `master`.
+- [ ] `P1` Require signed commits where feasible.
+- [ ] `P1` Require linear history or document why merge commits are accepted.
+- [ ] `P1` Add CODEOWNERS for backend.
+- [ ] `P1` Add CODEOWNERS for frontend.
+- [ ] `P1` Add CODEOWNERS for infrastructure.
+- [ ] `P1` Add CODEOWNERS for security.
+- [ ] `P1` Add CODEOWNERS for compliance.
+- [ ] `P1` Add CODEOWNERS for curriculum/CAPS.
+- [ ] `P1` Add CODEOWNERS for AI safety.
+- [ ] `P1` Add CODEOWNERS for docs.
+- [ ] `P1` Require security owner review for auth, secrets, crypto, authorization, and infra changes.
+- [ ] `P1` Require compliance owner review for consent, POPIA, audit, export, erasure, and learner data changes.
+- [ ] `P1` Require AI safety owner review for LLM prompts, lesson generation, RLHF, and content validation.
+- [ ] `P1` Require curriculum owner review for CAPS map and diagnostic content.
 
 ---
 
-# 5. POPIA, Privacy, and Learner Data Protection
+# 1. PR-002R replacement — backend runtime and API contract baseline
 
-## 5.1 Consent management
+## 1.1 PR-002R governance
 
-- [x] `[critical]` Define consent states: pending, granted, denied, expired, withdrawn, and renewal_required.
-- [ ] `[critical]` Enforce parent/guardian consent before processing child learner data.
-- [ ] `[critical]` Make consent enforcement declarative through FastAPI dependencies or middleware, not scattered manual checks.
-- [ ] `[critical]` Add negative tests proving consent bypass is impossible for diagnostics, lessons, profiles, reports, gamification, analytics, AI feedback loops, and exports.
-- [ ] `[high]` Add consent renewal workflow with expiry date, notification schedule, grace period, and restricted mode.
-- [ ] `[high]` Add consent withdrawal workflow with immediate stop to optional processing, confirmation, audit event, and downstream deletion/anonymization job where applicable.
-- [ ] `[high]` Add consent versioning tied to a specific privacy notice version.
-- [ ] `[medium]` Add school-mediated consent model if institutional deployments enter scope.
+- [ ] `P0` Create recovery document `docs/pr/PR-002R_BACKEND_RUNTIME_API_CONTRACT.md`.
+- [ ] `P0` Explain why PR-002R exists.
+- [ ] `P0` List original PR-002 expected deliverables if known.
+- [ ] `P0` Mark PR-002R as replacement implementation, not a placeholder.
+- [ ] `P0` Add PR-002R to `PR_INTEGRATION_SUMMARY.md`.
+- [ ] `P0` Add PR-002R to release evidence bundle.
+- [ ] `P1` Create issue `PR-002R Backend Runtime/API Contract Baseline`.
+- [ ] `P1` Link all PR-002R commits to the issue.
+- [ ] `P1` Add acceptance checklist to the PR template for API contract changes.
 
-## 5.2 Data subject rights
+## 1.2 Canonical runtime
 
-- [ ] `[critical]` Implement export workflow for learner and guardian data.
-- [ ] `[critical]` Implement erasure workflow with exceptions for legally required audit records.
-- [ ] `[critical]` Implement correction/update workflow for inaccurate personal information.
-- [ ] `[critical]` Implement processing restriction workflow.
-- [ ] `[high]` Add status tracking and SLA targets for export/erasure requests.
-- [ ] `[high]` Add admin review queue for erasure requests affecting billing, school records, or legally retained audit records.
-- [ ] `[medium]` Provide machine-readable export formats: JSON, CSV, and a guardian-friendly PDF summary.
+- [ ] `P0` Confirm production runtime is `app.api_v2:app`.
+- [ ] `P0` Update all docs to reference `app.api_v2:app`.
+- [ ] `P0` Update Dockerfile command to reference `app.api_v2:app`.
+- [ ] `P0` Update docker-compose command to reference `app.api_v2:app` if command is explicit.
+- [ ] `P0` Update CI smoke test to import `app.api_v2`.
+- [ ] `P0` Update release checklist to require `app.api_v2:app`.
+- [ ] `P0` Add `tests/test_runtime_entrypoints.py`.
+- [ ] `P0` Add test importing `app.api_v2:app`.
+- [ ] `P0` Add test importing `app.api.main:app`.
+- [ ] `P0` Add test importing `app.legacy.api.main:app`, if legacy shim is retained.
+- [ ] `P0` Ensure compatibility imports resolve to the V2 app or documented shim.
+- [ ] `P0` Test that compatibility shim title/version matches V2 app.
+- [ ] `P0` Test that compatibility shim exposes the same `/health` behavior.
+- [ ] `P0` Test that compatibility shim exposes the same `/ready` behavior.
+- [ ] `P1` Add `scripts/check_runtime_entrypoints.py`.
+- [x] `P1` Add `make runtime-check`. Evidence: `Makefile`,
+  `scripts/check_runtime_entrypoints.py`.
+- [ ] `P1` Add runtime check to CI.
 
-## 5.3 Data minimization and inventory
+## 1.3 Fix `app/api_v2.py` router registration
 
-- [x] `[critical]` Create `docs/data_inventory.md` listing every collected field, purpose, lawful/consent basis, retention period, access roles, and third-party exposure.
-- [x] `[critical]` Remove learner data fields not essential to educational purpose.
-- [x] `[high]` Hash or tokenize identifiers where raw values are unnecessary.
-- [x] `[high]` Separate identifiable operational data from analytics data.
-- [x] `[high]` Prevent names, emails, phone numbers, and raw identifiers from being sent to LLM providers.
-- [x] `[medium]` Create `docs/data_retention_policy.md` and `docs/subprocessor_register.md`. (files added: `docs/data_retention_policy.md`, `docs/subprocessor_register.md`)
+- [ ] `P0` Remove duplicate router import blocks from `app/api_v2.py`.
+- [ ] `P0` Move `system.router` registration into the actual router-registration loop.
+- [ ] `P0` Confirm `system.router` is registered under `/api/v2`.
+- [ ] `P0` Confirm `system.router` is registered under `/v2`.
+- [ ] `P0` Remove unreachable/dead router-registration code.
+- [ ] `P0` Add regression test for system routes.
+- [ ] `P0` Add import smoke test:
+  ```bash
+  python -c "from app.api_v2 import app; print(app.title)"
+  ```
+- [ ] `P0` Add test ensuring all router modules import without side effects.
+- [ ] `P1` Add route inventory test that snapshots all registered routes.
+- [ ] `P1` Commit route inventory artifact under `docs/route_inventory.md`.
 
-## 5.4 Audit integrity
+## 1.4 Legacy route exclusion
 
-- [x] `[critical]` Confirm sensitive events write to append-only PostgreSQL audit repository.
-- [ ] `[critical]` Add audit events for login success/failure, token refresh, logout, consent changes, learner profile changes, diagnostic lifecycle, lesson generation, LLM calls, parent report generation, data export, erasure request, admin access, and billing changes.
-- [x] `[high]` Add tamper-evident audit chain using event hash, previous event hash, and HMAC/signature.
-- [ ] `[high]` Add immutable retention rules for audit records.
-- [ ] `[medium]` Build internal audit dashboard.
-- [ ] `[medium]` Add automated audit completeness tests.
+- [ ] `P0` Define which routes are V2 production routes.
+- [ ] `P0` Define which routes are legacy-only and forbidden in production.
+- [ ] `P0` Add test proving legacy-only routes are not exposed by `app.api_v2:app`.
+- [ ] `P0` Add test proving archived `app/legacy` code is not mounted.
+- [ ] `P0` Add test proving V1 routers are not included accidentally.
+- [ ] `P1` Add CI job `legacy-route-guard`.
+- [ ] `P1` Add `docs/legacy_compatibility.md`.
+- [ ] `P2` Remove stale V1 docs or mark them archived.
+
+## 1.5 API response envelope
+
+- [ ] `P0` Create `app/domain/api_v2_models.py`.
+- [ ] `P0` Define `ApiMeta` model.
+- [ ] `P0` Define `ApiError` model.
+- [ ] `P0` Define `ApiEnvelope[T]` model.
+- [ ] `P0` Define `PaginationMeta` model.
+- [ ] `P0` Define success envelope helper `ok`.
+- [ ] `P0` Define error envelope helper `fail`.
+- [ ] `P0` Define pagination envelope helper `paginated`.
+- [ ] `P0` Include `request_id` in every envelope.
+- [ ] `P0` Include `api_version` in every envelope.
+- [ ] `P0` Ensure `error` is `null` on success.
+- [ ] `P0` Ensure `data` is `null` on error.
+- [ ] `P0` Add unit tests for `ok`.
+- [ ] `P0` Add unit tests for `fail`.
+- [ ] `P0` Add unit tests for `paginated`.
+- [ ] `P0` Apply envelope to auth router.
+- [ ] `P0` Apply envelope to learners router.
+- [ ] `P0` Apply envelope to lessons router.
+- [ ] `P0` Apply envelope to study plans router.
+- [ ] `P0` Apply envelope to diagnostics router.
+- [ ] `P0` Apply envelope to gamification router.
+- [ ] `P0` Apply envelope to onboarding router.
+- [ ] `P0` Apply envelope to parents router.
+- [ ] `P0` Apply envelope to billing router.
+- [ ] `P0` Apply envelope to consent router.
+- [ ] `P0` Apply envelope to consent renewal router.
+- [ ] `P0` Apply envelope to POPIA router.
+- [ ] `P0` Apply envelope to jobs router.
+- [ ] `P0` Apply envelope to system router.
+- [ ] `P1` Add lint/test rule preventing raw dict responses from production routers unless explicitly exempted.
+- [ ] `P1` Add docs examples for success envelope.
+- [ ] `P1` Add docs examples for error envelope.
+- [ ] `P1` Add docs examples for pagination envelope.
+
+## 1.6 API error contract
+
+- [ ] `P0` Update `app/core/exceptions.py` to emit canonical error envelope.
+- [ ] `P0` Include machine-readable error code.
+- [ ] `P0` Include human-readable message.
+- [ ] `P0` Include field errors when validation fails.
+- [ ] `P0` Include remediation hint when useful.
+- [ ] `P0` Include request ID.
+- [ ] `P0` Prevent sensitive exception details from leaking.
+- [ ] `P0` Implement error code `validation_error`.
+- [ ] `P0` Implement error code `unauthorized`.
+- [ ] `P0` Implement error code `forbidden`.
+- [ ] `P0` Implement error code `not_found`.
+- [ ] `P0` Implement error code `conflict`.
+- [ ] `P0` Implement error code `rate_limited`.
+- [ ] `P0` Implement error code `consent_required`.
+- [ ] `P0` Implement error code `consent_expired`.
+- [ ] `P0` Implement error code `dependency_unavailable`.
+- [ ] `P0` Implement error code `internal_error`.
+- [ ] `P0` Add tests for all error codes.
+- [ ] `P0` Add tests for validation errors.
+- [ ] `P0` Add tests for auth errors.
+- [ ] `P0` Add tests for authorization errors.
+- [ ] `P0` Add tests for consent errors.
+- [ ] `P0` Add tests for rate-limit errors.
+- [ ] `P0` Add tests proving internal exceptions hide details in production.
+- [ ] `P1` Add `docs/error_contract.md`.
+
+## 1.7 OpenAPI generation and contract
+
+- [ ] `P0` Add `scripts/generate_openapi.py`.
+- [ ] `P0` Ensure script imports `app.api_v2:app`.
+- [ ] `P0` Ensure script writes `docs/openapi.json`.
+- [ ] `P0` Generate `docs/openapi.json`.
+- [ ] `P0` Add `make openapi`.
+- [ ] `P0` Add `make openapi-check`.
+- [ ] `P0` Add CI job `openapi-contract`.
+- [ ] `P0` CI must fail if generated schema differs from committed schema.
+- [ ] `P0` Add OpenAPI tags for ops.
+- [ ] `P0` Add OpenAPI tags for auth.
+- [ ] `P0` Add OpenAPI tags for learners.
+- [ ] `P0` Add OpenAPI tags for consent.
+- [ ] `P0` Add OpenAPI tags for diagnostics.
+- [ ] `P0` Add OpenAPI tags for lessons.
+- [ ] `P0` Add OpenAPI tags for study plans.
+- [ ] `P0` Add OpenAPI tags for gamification.
+- [ ] `P0` Add OpenAPI tags for parents.
+- [ ] `P0` Add OpenAPI tags for POPIA.
+- [ ] `P0` Add OpenAPI tags for billing.
+- [ ] `P0` Add OpenAPI tags for jobs.
+- [ ] `P0` Add OpenAPI tags for system.
+- [ ] `P0` Add summaries for all production endpoints.
+- [ ] `P0` Add descriptions for all production endpoints.
+- [ ] `P0` Add examples for major request models.
+- [ ] `P0` Add examples for major response models.
+- [ ] `P1` Add breaking-change detection for OpenAPI diffs.
+- [ ] `P1` Add PR label requirement for breaking API changes.
+- [ ] `P1` Add `docs/api_v2.md`.
+- [ ] `P1` Add `docs/api_versioning_policy.md`.
+- [ ] `P2` Publish generated API docs through MkDocs/Sphinx.
+
+## 1.8 PR-002R acceptance evidence
+
+- [ ] `P0` PR-002R tests pass locally.
+- [ ] `P0` PR-002R tests pass in CI.
+- [ ] `P0` Runtime import test is included in release evidence bundle.
+- [ ] `P0` OpenAPI schema hash is included in release evidence bundle.
+- [ ] `P0` Route inventory is included in release evidence bundle.
+- [ ] `P0` Error-envelope test output is included in release evidence bundle.
+- [ ] `P0` Add PR-002R completion note to `docs/project_status.md`.
+- [ ] `P0` Add PR-002R completion note to `PR_INTEGRATION_SUMMARY.md`.
 
 ---
 
-# 6. AI, LLM Safety, and Lesson Generation
+# 2. Backend architecture, modular monolith, and dependency boundaries
+
+## 2.1 Canonical architecture
+
+- [ ] `P0` Reconfirm V2 is a modular monolith.
+- [ ] `P0` Reconfirm no production microservices except explicitly documented inference sidecar if retained.
+- [ ] `P0` Reconfirm no Celery/RabbitMQ for new V2 work unless explicitly re-approved.
+- [ ] `P0` Reconcile docs that say “no microservices” with any inference sidecar.
+- [ ] `P0` Reconcile docs that say “V1 fully deleted” with actual legacy shim/archive state.
+- [ ] `P1` Update architecture diagram.
+- [ ] `P1` Add `docs/backend_architecture.md`.
+- [ ] `P1` Add `docs/architecture_decisions.md` index.
+- [ ] `P1` Document bounded contexts:
+  - auth
+  - learners
+  - consent
+  - diagnostics
+  - lessons
+  - study plans
+  - gamification
+  - parent portal
+  - POPIA
+  - billing
+  - jobs
+  - observability
+- [ ] `P2` Generate module dependency graph.
+
+## 2.2 Business logic location
+
+- [ ] `P0` Decide canonical business-logic location.
+- [ ] `P0` Choose between `app/services` and `app/modules/<context>/service.py`.
+- [ ] `P0` Write ADR `docs/adr/0010-business-logic-location.md`.
+- [ ] `P1` Inventory all files in `app/services`.
+- [ ] `P1` Inventory all files in `app/modules`.
+- [ ] `P1` Identify duplicate service concepts.
+- [ ] `P1` Collapse duplicate auth service concepts.
+- [ ] `P1` Collapse duplicate consent service concepts.
+- [ ] `P1` Collapse duplicate diagnostic service concepts.
+- [ ] `P1` Collapse duplicate lesson service concepts.
+- [ ] `P1` Collapse duplicate study-plan service concepts.
+- [ ] `P1` Collapse duplicate parent-portal service concepts.
+- [ ] `P1` Collapse duplicate billing service concepts.
+- [ ] `P1` Mark deprecated service paths with deprecation notices.
+- [ ] `P2` Add migration guide for service path changes.
+
+## 2.3 Router thinness
+
+- [ ] `P1` Audit auth router for business logic.
+- [ ] `P1` Audit learners router for business logic.
+- [ ] `P1` Audit lessons router for business logic.
+- [ ] `P1` Audit study plans router for business logic.
+- [ ] `P1` Audit diagnostics router for business logic.
+- [ ] `P1` Audit gamification router for business logic.
+- [ ] `P1` Audit onboarding router for business logic.
+- [ ] `P1` Audit parents router for business logic.
+- [ ] `P1` Audit billing router for business logic.
+- [ ] `P1` Audit consent router for business logic.
+- [ ] `P1` Audit consent renewal router for business logic.
+- [ ] `P1` Audit POPIA router for business logic.
+- [ ] `P1` Audit jobs router for business logic.
+- [ ] `P1` Move business logic out of routers.
+- [ ] `P1` Keep routers limited to validation, dependencies, service calls, and response mapping.
+- [ ] `P1` Add code-review checklist item: “Router contains no business logic.”
+- [ ] `P2` Add static complexity threshold for router functions.
+
+## 2.4 Import boundaries
+
+- [ ] `P1` Add `import-linter` configuration.
+- [ ] `P1` Enforce `routers -> services/modules`.
+- [ ] `P1` Enforce `services/modules -> repositories`.
+- [ ] `P1` Enforce `repositories -> models/database`.
+- [ ] `P1` Enforce `domain` has no infrastructure imports.
+- [ ] `P1` Enforce repositories never import routers.
+- [ ] `P1` Enforce services never depend on FastAPI `Request` unless explicitly justified.
+- [ ] `P1` Add `lint-imports` to CI.
+- [ ] `P1` Add import boundary check to required branch protection.
+- [ ] `P2` Add docs explaining import boundaries.
+
+## 2.5 Metaphor-layer cleanup
+
+- [ ] `P1` Inventory active-code references to `executive`.
+- [ ] `P1` Inventory active-code references to `judiciary`.
+- [ ] `P1` Inventory active-code references to `fourth_estate`.
+- [ ] `P1` Inventory active-code references to `ether`.
+- [ ] `P1` Rename active engineering boundaries to domain names.
+- [ ] `P1` Move metaphor language to product/storytelling docs only, if retained.
+- [ ] `P2` Add glossary mapping old metaphor names to new domain names.
+- [ ] `P2` Remove metaphor terminology from onboarding docs for new engineers.
+
+---
+
+# 3. Authentication, sessions, RBAC, and object-level authorization
+
+## 3.1 Authentication flows
+
+- [ ] `P0` Verify guardian signup success path.
+- [ ] `P0` Verify guardian signup validation errors.
+- [ ] `P0` Verify duplicate email handling.
+- [ ] `P0` Verify login success path.
+- [ ] `P0` Verify login invalid password path.
+- [ ] `P0` Verify login nonexistent account path.
+- [ ] `P0` Verify logout revokes current token.
+- [ ] `P0` Verify logout clears refresh cookie where applicable.
+- [ ] `P0` Verify refresh-token success path.
+- [ ] `P0` Verify refresh-token expired path.
+- [ ] `P0` Verify refresh-token reuse detection.
+- [ ] `P0` Verify refresh-token family revocation.
+- [ ] `P0` Verify email verification flow.
+- [ ] `P0` Verify password reset request.
+- [ ] `P0` Verify password reset token expiry.
+- [ ] `P0` Verify password reset completion.
+- [ ] `P0` Verify password reset invalid token behavior.
+- [ ] `P1` Add account lockout or risk-based throttling after repeated failures.
+- [ ] `P1` Add security alert event for suspicious auth behavior.
+- [ ] `P1` Add tests for all auth abuse paths.
+
+## 3.2 Password security
+
+- [ ] `P0` Verify password hashing uses bcrypt or Argon2id with tuned cost.
+- [ ] `P0` Verify configured bcrypt rounds are production-safe.
+- [ ] `P0` Verify password strength policy.
+- [ ] `P0` Add password strength tests.
+- [ ] `P1` Add breached-password check if feasible.
+- [ ] `P1` Add password change flow.
+- [ ] `P1` Add password change audit event.
+- [ ] `P2` Add optional passphrase guidance.
+
+## 3.3 Token policy
+
+- [ ] `P0` Confirm access-token TTL is 15 minutes or documented override.
+- [ ] `P0` Confirm refresh-token TTL is 7 days or documented override.
+- [ ] `P0` Verify refresh tokens are hashed at rest.
+- [ ] `P0` Verify refresh tokens are revocable.
+- [ ] `P0` Verify refresh tokens are bound to token family.
+- [ ] `P0` Verify refresh-token rotation on use.
+- [ ] `P0` Verify token-family reuse detection.
+- [ ] `P0` Verify Redis-backed revocation.
+- [ ] `P0` Decide behavior when Redis revocation store is unavailable.
+- [ ] `P1` Add persistent fallback for revocation if required.
+- [ ] `P1` Add JWT signing-key rotation with `kid`.
+- [ ] `P1` Add current signing key.
+- [ ] `P1` Add previous signing key validation window.
+- [ ] `P1` Add emergency revoke-all procedure.
+- [ ] `P1` Add tests for `kid` rotation.
+- [ ] `P1` Add tests for emergency revoke-all.
+
+## 3.4 Cookie security
+
+- [ ] `P0` Verify cookies are `HttpOnly`.
+- [ ] `P0` Verify cookies are `Secure` in production.
+- [ ] `P0` Verify cookies use correct `SameSite`.
+- [ ] `P0` Verify cookie domain is correct per environment.
+- [ ] `P0` Verify cookie path is correct.
+- [ ] `P0` Verify no refresh token is JavaScript-readable.
+- [ ] `P0` Verify no access token is stored insecurely in frontend.
+- [ ] `P1` Add cookie policy tests.
+- [ ] `P1` Document cookie strategy.
+
+## 3.5 RBAC and roles
+
+- [ ] `P0` Define role `learner`.
+- [ ] `P0` Define role `parent` or `guardian`.
+- [ ] `P0` Define role `teacher`.
+- [ ] `P0` Define role `admin`.
+- [ ] `P0` Define role `support_operator`.
+- [ ] `P0` Define role `content_reviewer`.
+- [ ] `P0` Define role `compliance_auditor`.
+- [ ] `P1` Document role permissions.
+- [ ] `P1` Add tests for each role.
+- [ ] `P1` Add route policy matrix.
+
+## 3.6 Object-level authorization
+
+- [ ] `P0` Add policy helper `can_view_learner`.
+- [ ] `P0` Add policy helper `can_update_learner`.
+- [ ] `P0` Add policy helper `can_generate_lesson_for_learner`.
+- [ ] `P0` Add policy helper `can_start_diagnostic_for_learner`.
+- [ ] `P0` Add policy helper `can_view_study_plan`.
+- [ ] `P0` Add policy helper `can_view_parent_report`.
+- [ ] `P0` Add policy helper `can_export_learner_data`.
+- [ ] `P0` Add policy helper `can_request_erasure`.
+- [ ] `P0` Add policy helper `can_view_billing`.
+- [ ] `P0` Add test that learner cannot access another learner.
+- [ ] `P0` Add test that guardian can access only linked learners.
+- [ ] `P0` Add test that teacher can access only assigned learners/classes.
+- [ ] `P0` Add test that support cannot view unnecessary PII.
+- [ ] `P0` Add test that compliance auditor can view audit records without broad data mutation rights.
+- [ ] `P0` Add audit events for privileged access.
+- [ ] `P1` Add policy tests for every router.
+- [ ] `P1` Move from basic RBAC to policy-based authorization for sensitive workflows.
+- [ ] `P2` Add tightly audited admin impersonation only if absolutely required.
+
+## 3.7 Rate limiting and abuse prevention
+
+- [ ] `P0` Add rate limit to login.
+- [ ] `P0` Add rate limit to signup.
+- [ ] `P0` Add rate limit to refresh.
+- [ ] `P0` Add rate limit to password reset.
+- [ ] `P0` Add rate limit to email verification.
+- [ ] `P0` Add rate limit to LLM lesson generation.
+- [ ] `P0` Add rate limit to data export.
+- [ ] `P0` Add rate limit to billing webhook endpoints if applicable.
+- [ ] `P1` Add account-level throttling.
+- [ ] `P1` Add IP-level throttling.
+- [ ] `P1` Add risk-based throttling.
+- [ ] `P1` Add rate-limit tests.
+
+---
+
+# 4. POPIA consent, privacy, data-subject rights, and audit
+
+## 4.1 Consent lifecycle
+
+- [ ] `P0` Define consent state `pending`.
+- [ ] `P0` Define consent state `granted`.
+- [ ] `P0` Define consent state `denied`.
+- [ ] `P0` Define consent state `expired`.
+- [ ] `P0` Define consent state `withdrawn`.
+- [ ] `P0` Define consent state `renewal_required`.
+- [ ] `P0` Implement consent grant flow.
+- [ ] `P0` Implement consent denial flow.
+- [ ] `P0` Implement consent withdrawal flow.
+- [ ] `P0` Implement consent renewal flow.
+- [ ] `P0` Implement consent expiry handling.
+- [ ] `P0` Implement restricted mode after consent expiry if applicable.
+- [ ] `P0` Tie consent to privacy notice version.
+- [ ] `P0` Tie consent to guardian identity.
+- [ ] `P0` Tie consent to learner identity.
+- [ ] `P0` Audit every consent state change.
+- [ ] `P1` Add consent expiry notification schedule.
+- [ ] `P1` Add grace period policy if required.
+- [ ] `P1` Add consent status dashboard for guardians.
+- [ ] `P2` Add school-mediated consent model if institutional deployments enter scope.
+
+## 4.2 Declarative consent enforcement
+
+- [ ] `P0` Make consent enforcement declarative through FastAPI dependency or middleware.
+- [ ] `P0` Add `scripts/check_consent_gates.py`.
+- [ ] `P0` Identify all learner-data routes.
+- [ ] `P0` Mark consent-required route patterns.
+- [ ] `P0` Fail CI if consent-required route lacks consent gate.
+- [ ] `P0` Add negative test for diagnostics without consent.
+- [ ] `P0` Add negative test for lessons without consent.
+- [ ] `P0` Add negative test for learner profile access without consent.
+- [ ] `P0` Add negative test for study plan access without consent.
+- [ ] `P0` Add negative test for gamification without consent.
+- [ ] `P0` Add negative test for analytics processing without consent.
+- [ ] `P0` Add negative test for RLHF feedback without consent.
+- [ ] `P0` Add negative test for parent reports without consent.
+- [ ] `P0` Add negative test for data export without consent/authority.
+- [ ] `P0` Add negative test for erasure request without authority.
+- [ ] `P1` Add route-level consent policy documentation.
+
+## 4.3 Data subject rights
+
+- [ ] `P0` Implement data export request creation.
+- [ ] `P0` Implement data export status endpoint.
+- [ ] `P0` Implement data export download endpoint.
+- [ ] `P0` Implement machine-readable JSON export.
+- [ ] `P0` Implement machine-readable CSV export.
+- [ ] `P1` Implement guardian-friendly PDF export summary.
+- [ ] `P0` Implement erasure request creation.
+- [ ] `P0` Implement erasure status endpoint.
+- [ ] `P0` Implement erasure approval/review queue.
+- [ ] `P0` Implement erasure execution with audit-retention exceptions.
+- [ ] `P0` Implement correction/update workflow.
+- [ ] `P0` Implement processing restriction workflow.
+- [ ] `P0` Implement SLA tracking for export requests.
+- [ ] `P0` Implement SLA tracking for erasure requests.
+- [ ] `P1` Add admin review queue for billing/school/legal-retention conflicts.
+- [ ] `P1` Add notification to guardian when export is ready.
+- [ ] `P1` Add notification to guardian when erasure completes.
+- [ ] `P1` Add tests for export workflow.
+- [ ] `P1` Add tests for erasure workflow.
+- [ ] `P1` Add tests for correction workflow.
+- [ ] `P1` Add tests for restriction workflow.
+
+## 4.4 Data minimization and inventory
+
+- [ ] `P0` Create or update `docs/data_inventory.md`.
+- [ ] `P0` List every collected learner field.
+- [ ] `P0` List every collected guardian field.
+- [ ] `P0` List every collected diagnostic field.
+- [ ] `P0` List every collected lesson/AI field.
+- [ ] `P0` List every collected billing field.
+- [ ] `P0` List purpose for each field.
+- [ ] `P0` List lawful/consent basis for each field.
+- [ ] `P0` List retention period for each field.
+- [ ] `P0` List access roles for each field.
+- [ ] `P0` List third-party exposure for each field.
+- [ ] `P0` Remove non-essential learner data fields.
+- [ ] `P0` Hash or tokenize identifiers where raw values are unnecessary.
+- [ ] `P0` Separate identifiable operational data from analytics data.
+- [ ] `P0` Prevent names, emails, phone numbers, and raw identifiers from LLM prompts.
+- [ ] `P1` Create or update `docs/data_retention_policy.md`.
+- [ ] `P1` Create or update `docs/subprocessor_register.md`.
+
+## 4.5 Audit integrity
+
+- [ ] `P0` Confirm sensitive events write to append-only PostgreSQL audit repository.
+- [ ] `P0` Prevent application update/delete operations on audit records.
+- [ ] `P0` Prevent database role update/delete on audit records where feasible.
+- [ ] `P0` Add event hash to audit records.
+- [ ] `P0` Add previous event hash to audit records.
+- [ ] `P0` Add HMAC/signature to audit records.
+- [ ] `P0` Add audit-chain verification script.
+- [ ] `P0` Add audit event for login success.
+- [ ] `P0` Add audit event for login failure.
+- [ ] `P0` Add audit event for token refresh.
+- [ ] `P0` Add audit event for logout.
+- [ ] `P0` Add audit event for consent grant.
+- [ ] `P0` Add audit event for consent renewal.
+- [ ] `P0` Add audit event for consent withdrawal.
+- [ ] `P0` Add audit event for consent expiry.
+- [ ] `P0` Add audit event for learner profile create/update/delete.
+- [ ] `P0` Add audit event for diagnostic start.
+- [ ] `P0` Add audit event for diagnostic answer submission.
+- [ ] `P0` Add audit event for diagnostic completion.
+- [ ] `P0` Add audit event for lesson generation.
+- [ ] `P0` Add audit event for LLM provider call.
+- [ ] `P0` Add audit event for parent report generation.
+- [ ] `P0` Add audit event for data export request.
+- [ ] `P0` Add audit event for data export download.
+- [ ] `P0` Add audit event for erasure request.
+- [ ] `P0` Add audit event for erasure execution.
+- [ ] `P0` Add audit event for admin access.
+- [ ] `P0` Add audit event for billing changes.
+- [ ] `P1` Add immutable retention rules for audit records.
+- [ ] `P1` Add automated audit completeness tests.
+- [ ] `P1` Build internal audit dashboard.
+
+## 4.6 Legal/privacy docs
+
+- [ ] `P0` Draft Privacy Policy.
+- [ ] `P0` Draft Terms of Service.
+- [ ] `P0` Draft Parent Consent Notice.
+- [ ] `P0` Draft Child-friendly Privacy Notice.
+- [ ] `P0` Draft Security Disclosure Policy.
+- [ ] `P1` Complete DPIA-style privacy impact assessment.
+- [ ] `P1` Conduct legal review of Privacy Policy.
+- [ ] `P1` Conduct legal review of Terms of Service.
+- [ ] `P1` Conduct legal review of Parent Consent Notice.
+- [ ] `P1` Conduct legal review of Child-friendly Privacy Notice.
+- [ ] `P1` Conduct legal review of data retention policy.
+- [ ] `P1` Conduct legal review of subprocessor register.
+
+---
+
+# 5. Database, persistence, migrations, and performance
+
+## 5.1 Schema readiness
+
+- [ ] `P0` Confirm every production table has explicit primary key.
+- [ ] `P0` Confirm every production table has timestamps.
+- [ ] `P0` Confirm every relationship has appropriate foreign key.
+- [ ] `P0` Confirm role enum constraints.
+- [ ] `P0` Confirm consent status constraints.
+- [ ] `P0` Confirm audit event constraints.
+- [ ] `P0` Confirm immutable audit identifier constraints.
+- [ ] `P0` Confirm unique guardian-learner relationship constraints.
+- [ ] `P0` Confirm non-null constraints for sensitive workflow fields.
+- [ ] `P0` Verify index on user email hash.
+- [ ] `P0` Verify index on learner ID.
+- [ ] `P0` Verify index on guardian ID.
+- [ ] `P0` Verify index on consent status.
+- [ ] `P0` Verify index on token identifiers.
+- [ ] `P0` Verify index on diagnostic attempt/session ID.
+- [ ] `P0` Verify index on lesson generation job ID.
+- [ ] `P0` Verify index on audit timestamp.
+- [ ] `P0` Verify index on audit actor ID.
+- [ ] `P0` Verify index on subscription/customer ID.
+- [ ] `P1` Add partial index for active consent.
+- [ ] `P1` Add partial index for active subscriptions.
+- [ ] `P1` Add partial index for non-revoked sessions.
+- [ ] `P1` Add partial index for incomplete jobs.
+
+## 5.2 Migration discipline
+
+- [ ] `P0` Ensure `alembic upgrade head` runs in CI from empty DB.
+- [ ] `P0` Ensure `alembic check` runs in CI.
+- [ ] `P0` Add migration graph validation.
+- [ ] `P0` Add schema integrity validation.
+- [ ] `P0` Document rollback for every destructive migration.
+- [ ] `P0` Require backup plan for migrations touching learner/guardian data.
+- [ ] `P0` Require staging dry run for migrations touching learner/guardian data.
+- [ ] `P0` Require validation script for migrations touching learner/guardian data.
+- [ ] `P0` Require rollback plan for migrations touching learner/guardian data.
+- [ ] `P1` Enforce migration naming convention:
+  ```text
+  YYYYMMDD_HHMM_<short_description>.py
+  ```
+- [ ] `P1` Add migration smoke test using production-like data volume.
+- [ ] `P1` Add synthetic seed data for local development.
+- [ ] `P1` Ensure no real learner PII appears in fixtures.
+- [ ] `P2` Add migration-diff summary artifact in CI.
+
+## 5.3 Transaction boundaries
+
+- [ ] `P1` Review transaction boundary for signup.
+- [ ] `P1` Review transaction boundary for learner creation.
+- [ ] `P1` Review transaction boundary for consent submission.
+- [ ] `P1` Review transaction boundary for diagnostic completion.
+- [ ] `P1` Review transaction boundary for lesson generation.
+- [ ] `P1` Review transaction boundary for billing changes.
+- [ ] `P1` Review transaction boundary for erasure requests.
+- [ ] `P1` Add tests for rollback on partial failure.
+- [ ] `P1` Add tests for idempotent retries where appropriate.
+
+## 5.4 Repository layer
+
+- [ ] `P1` Add repository tests for guardian repository.
+- [ ] `P1` Add repository tests for learner repository.
+- [ ] `P1` Add repository tests for consent repository.
+- [ ] `P1` Add repository tests for diagnostic repository.
+- [ ] `P1` Add repository tests for lesson repository.
+- [ ] `P1` Add repository tests for study-plan repository.
+- [ ] `P1` Add repository tests for gamification repository.
+- [ ] `P1` Add repository tests for audit repository.
+- [ ] `P1` Add repository tests for billing repository.
+- [ ] `P1` Ensure repositories do not expose raw ORM objects to API responses.
+- [ ] `P1` Standardize repository method prefixes:
+  - `get_*`
+  - `list_*`
+  - `create_*`
+  - `update_*`
+  - `soft_delete_*`
+  - `append_*`
+- [ ] `P1` Add pagination to all list queries.
+- [ ] `P1` Add deterministic sorting to all list queries.
+- [ ] `P2` Add cursor pagination for high-volume audit/event streams.
+
+## 5.5 Performance
+
+- [ ] `P1` Add slow-query logging in staging.
+- [ ] `P1` Add slow-query logging in production.
+- [ ] `P1` Add performance test for dashboard endpoints.
+- [ ] `P1` Add performance test for diagnostic endpoints.
+- [ ] `P1` Add performance test for lesson-generation endpoints.
+- [ ] `P1` Add performance test for parent-report endpoints.
+- [ ] `P1` Add performance test for audit endpoints.
+- [ ] `P1` Add performance test for POPIA export endpoints.
+- [ ] `P2` Define query latency budgets.
+- [ ] `P2` Add DB connection pool monitoring.
+- [ ] `P2` Add N+1 query checks for dashboard flows.
+
+---
+
+# 6. AI, LLM safety, lesson generation, and CAPS validation
 
 ## 6.1 LLM gateway
 
-- [x] `[critical]` Define LLM gateway interface: provider, model/version, prompt template version, input schema, output schema, latency, token usage, safety status, and fallback status.
-- [x] `[critical]` Add structured output validation for AI-generated lessons.
-- [x] `[critical]` Reject output that fails schema, CAPS alignment, age-appropriateness, PII safety, or answer-key validation.
-- [x] `[critical]` Ensure no raw learner PII is sent to LLM providers.
-- [ ] `[high]` Add provider fallback, timeout, retry, circuit breaker, and budget guardrails.
-- [ ] `[high]` Log LLM metadata without logging sensitive prompt content.
-- [ ] `[medium]` Add prompt-template version control and deterministic mock provider for tests.
-- [ ] `[medium]` Add golden prompt tests for every supported grade/subject/topic.
+- [ ] `P0` Define canonical LLM gateway interface.
+- [ ] `P0` Include provider name in gateway metadata.
+- [ ] `P0` Include model/version in gateway metadata.
+- [ ] `P0` Include prompt template version in gateway metadata.
+- [ ] `P0` Include input schema in gateway metadata.
+- [ ] `P0` Include output schema in gateway metadata.
+- [ ] `P0` Include latency in gateway metadata.
+- [ ] `P0` Include token usage in gateway metadata.
+- [ ] `P0` Include safety status in gateway metadata.
+- [ ] `P0` Include fallback status in gateway metadata.
+- [ ] `P1` Add provider fallback.
+- [ ] `P1` Add timeout per provider.
+- [ ] `P1` Add retry policy per provider.
+- [ ] `P1` Add circuit breaker.
+- [ ] `P1` Add budget guardrails.
+- [ ] `P1` Add deterministic mock provider.
+- [ ] `P1` Add local/offline fallback for development only.
+- [ ] `P1` Add provider health checks.
+- [ ] `P1` Add emergency flag `DISABLE_LESSON_GENERATION`.
+- [ ] `P2` Add model comparison harness.
 
-## 6.2 Content quality and hallucination control
+## 6.2 PII safety in LLM calls
 
-- [ ] `[critical]` Define lesson output contract: topic, grade, subject, CAPS reference, objectives, explanation, worked examples, practice questions, answer key, remediation hints, difficulty, language level, and safety classification.
-- [ ] `[critical]` Require generated answer keys to be independently checked.
-- [ ] `[high]` Add validators for arithmetic correctness, answer-key consistency, grade-level readability, missing explanations, unsafe content, and PII leakage.
-- [ ] `[high]` Add human review queue for low-confidence or high-impact content.
-- [ ] `[high]` Build content quality score: correctness, CAPS alignment, clarity, readability, pedagogical completeness, inclusiveness, and safety.
-- [ ] `[medium]` Create lesson regression suite so accepted lessons do not degrade after prompt/model changes.
-- [ ] `[medium]` Add model comparison harness for cost, latency, correctness, stability, language quality, and hallucination rate.
+- [ ] `P0` Ensure no raw learner name enters prompts.
+- [ ] `P0` Ensure no guardian name enters prompts.
+- [ ] `P0` Ensure no email enters prompts.
+- [ ] `P0` Ensure no phone number enters prompts.
+- [ ] `P0` Ensure no address enters prompts.
+- [ ] `P0` Ensure no raw learner UUID enters external prompts if pseudonym is available.
+- [ ] `P0` Ensure `pseudonym_id` is used for LLM context.
+- [ ] `P0` Expand `scripts/popia_sweep.py`.
+- [ ] `P0` Add PII seeded tests for lesson generation.
+- [ ] `P0` Add PII seeded tests for parent summaries.
+- [ ] `P0` Add PII seeded tests for RLHF feedback.
+- [ ] `P0` Add PII seeded tests for logs.
+- [ ] `P0` Fail CI if PII is detected in prompt paths.
+- [ ] `P1` Add PII redaction metrics.
+- [ ] `P1` Add redaction failure alerts.
 
-## 6.3 CAPS alignment
+## 6.3 Structured lesson output
 
-- [ ] `[critical]` Create canonical CAPS topic map: phase, grade, subject, term, topic, subtopic, prerequisites, assessment standards.
-- [ ] `[critical]` Add validators ensuring generated content references a valid CAPS topic.
-- [ ] `[high]` Add curriculum coverage dashboards.
-- [ ] `[high]` Detect topics without lessons, diagnostics, practice questions, or quality-reviewed content.
-- [ ] `[medium]` Add teacher-facing CAPS coverage export.
-- [ ] `[medium]` Add alignment confidence score per lesson.
-- [ ] `[medium]` Version curriculum maps.
+- [ ] `P0` Define lesson output field `topic`.
+- [ ] `P0` Define lesson output field `grade`.
+- [ ] `P0` Define lesson output field `subject`.
+- [ ] `P0` Define lesson output field `CAPS reference`.
+- [ ] `P0` Define lesson output field `objectives`.
+- [ ] `P0` Define lesson output field `explanation`.
+- [ ] `P0` Define lesson output field `worked examples`.
+- [ ] `P0` Define lesson output field `practice questions`.
+- [ ] `P0` Define lesson output field `answer key`.
+- [ ] `P0` Define lesson output field `remediation hints`.
+- [ ] `P0` Define lesson output field `difficulty`.
+- [ ] `P0` Define lesson output field `language level`.
+- [ ] `P0` Define lesson output field `safety classification`.
+- [ ] `P0` Define lesson output field `alignment confidence`.
+- [ ] `P0` Define lesson output field `quality score`.
+- [ ] `P0` Reject generated lesson if schema invalid.
+- [ ] `P0` Reject generated lesson if CAPS alignment invalid.
+- [ ] `P0` Reject generated lesson if age-inappropriate.
+- [ ] `P0` Reject generated lesson if unsafe.
+- [ ] `P0` Reject generated lesson if PII detected.
+- [ ] `P0` Reject generated lesson if answer key missing.
+- [ ] `P0` Reject generated lesson if answer key inconsistent.
+- [ ] `P1` Add schema examples to OpenAPI.
+- [ ] `P1` Add lesson schema documentation.
 
-## 6.4 AI mission differentiation
+## 6.4 Content correctness validators
 
-- [ ] `[high]` Add “explain it my way” lesson variants: visual, story-based, step-by-step, exam-style, real-world South African examples, and multilingual support.
-- [ ] `[high]` Add adaptive remediation: detect misconception, choose explanation strategy, generate targeted practice, re-assess.
-- [ ] `[medium]` Add parent explanation mode: what the learner struggled with, how to help at home, and what to practice next.
-- [ ] `[medium]` Add teacher insight mode: class misconceptions, intervention groups, topic heatmaps.
-- [ ] `[medium]` Add low-bandwidth AI mode with pre-generated lessons, compressed payloads, and offline-friendly assets.
-- [ ] `[research]` Investigate retrieval-augmented generation using only approved CAPS-aligned content.
-- [ ] `[research]` Investigate local/smaller models for cost and privacy-sensitive workloads.
+- [ ] `P0` Add arithmetic correctness validator.
+- [ ] `P0` Add answer-key consistency validator.
+- [ ] `P0` Add grade-level readability validator.
+- [ ] `P0` Add missing-explanation validator.
+- [ ] `P0` Add unsafe-content validator.
+- [ ] `P0` Add PII-leakage validator.
+- [ ] `P0` Add independent answer-key checking.
+- [ ] `P1` Add content quality score.
+- [ ] `P1` Add quality score threshold.
+- [ ] `P1` Add low-confidence rejection path.
+- [ ] `P1` Add low-confidence human-review path.
+- [ ] `P2` Add lesson regression suite.
+- [ ] `P2` Add accepted lesson snapshot tests.
+- [ ] `P2` Add prompt regression tests.
+
+## 6.5 Golden prompt coverage
+
+- [ ] `P1` Add golden prompt test for each supported grade.
+- [ ] `P1` Add golden prompt test for each supported subject.
+- [ ] `P1` Add golden prompt test for each launch topic.
+- [ ] `P1` Add golden prompt test for English.
+- [ ] `P1` Add golden prompt test for isiZulu.
+- [ ] `P1` Add golden prompt test for Afrikaans.
+- [ ] `P1` Add golden prompt test for isiXhosa.
+- [ ] `P1` Add golden prompt test for standard lesson variant.
+- [ ] `P1` Add golden prompt test for visual variant.
+- [ ] `P1` Add golden prompt test for story-based variant.
+- [ ] `P1` Add golden prompt test for step-by-step variant.
+- [ ] `P1` Add golden prompt test for exam-style variant.
+- [ ] `P1` Add golden prompt test for real-world South African examples.
+- [ ] `P2` Add golden prompt report artifact.
+
+## 6.6 CAPS alignment
+
+- [ ] `P0` Create canonical CAPS topic map.
+- [ ] `P0` Include phase.
+- [ ] `P0` Include grade.
+- [ ] `P0` Include subject.
+- [ ] `P0` Include term.
+- [ ] `P0` Include topic.
+- [ ] `P0` Include subtopic.
+- [ ] `P0` Include prerequisites.
+- [ ] `P0` Include assessment standards.
+- [ ] `P0` Validate generated content references a valid CAPS topic.
+- [ ] `P0` Prevent claims of full CAPS coverage until coverage is validated.
+- [ ] `P1` Add curriculum coverage dashboard.
+- [ ] `P1` Detect topics without lessons.
+- [ ] `P1` Detect topics without diagnostics.
+- [ ] `P1` Detect topics without practice questions.
+- [ ] `P1` Detect topics without quality-reviewed content.
+- [ ] `P1` Add alignment confidence score per lesson.
+- [ ] `P2` Add teacher-facing CAPS coverage export.
+- [ ] `P2` Version curriculum maps.
+
+## 6.7 RLHF and feedback loop
+
+- [ ] `P1` Verify RLHF feedback capture.
+- [ ] `P1` Verify PII scrubbing before RLHF storage.
+- [ ] `P1` Verify PII scrubbing before RLHF export.
+- [ ] `P1` Add RLHF export format for OpenAI preference datasets if retained.
+- [ ] `P1` Add RLHF export format for Anthropic preference datasets if retained.
+- [ ] `P1` Add consent check before RLHF processing.
+- [ ] `P1` Add guardian/learner feedback issue-reporting flow.
+- [ ] `P2` Add RLHF quality analytics.
+- [ ] `P2` Add feedback moderation queue.
+- [ ] `P2` Add educator review workflow.
 
 ---
 
-# 7. Diagnostics, Assessment, and Learning Science
+# 7. Diagnostics, assessment, item bank, and mastery model
 
-## 7.1 IRT diagnostic engine
+## 7.1 IRT engine validation
 
 - [ ] `[critical]` Define diagnostic item schema: item ID, subject, grade, topic, skill, difficulty, discrimination, correct answer, distractors, explanation, and CAPS reference.
 - [x] `[critical]` Validate IRT parameters for difficulty bounds, discrimination bounds, probability output, overflow, and invalid input.
@@ -295,7 +930,39 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 - [x] `[medium]` Add confidence intervals for ability estimates.
 - [x] `[medium]` Add item bias review across language, region, and socioeconomic context.
 
-## 7.2 Assessment content
+Granular verification backlog:
+
+- [ ] `P0` Define diagnostic item schema.
+- [ ] `P0` Include item ID.
+- [ ] `P0` Include subject.
+- [ ] `P0` Include grade.
+- [ ] `P0` Include topic.
+- [ ] `P0` Include skill.
+- [ ] `P0` Include difficulty parameter.
+- [ ] `P0` Include discrimination parameter.
+- [ ] `P0` Include correct answer.
+- [ ] `P0` Include distractors.
+- [ ] `P0` Include explanation.
+- [ ] `P0` Include CAPS reference.
+- [ ] `P0` Validate theta bounds.
+- [ ] `P0` Validate discrimination bounds.
+- [ ] `P0` Validate difficulty bounds.
+- [ ] `P0` Validate probability output.
+- [ ] `P0` Validate overflow safety.
+- [ ] `P0` Validate invalid input handling.
+- [ ] `P0` Add test for probability of correctness.
+- [ ] `P0` Add test for Fisher information.
+- [ ] `P0` Add test for ability update.
+- [ ] `P0` Add test for EAP estimate.
+- [ ] `P0` Add test for empty responses.
+- [ ] `P0` Add test for all-correct responses.
+- [ ] `P0` Add test for all-incorrect responses.
+- [ ] `P0` Add test for stopping criteria.
+- [ ] `P0` Add test for grade-equivalent mapping.
+- [ ] `P1` Add test for item selection by Fisher information.
+- [ ] `P1` Add test for gap identification.
+
+## 7.2 Item bank
 
 - [ ] `[critical]` Build minimum viable item bank for each supported launch grade/subject.
 - [ ] `[critical]` Add item review status: draft, AI-generated, human-reviewed, approved, retired.
@@ -304,7 +971,24 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 - [x] `[medium]` Add adaptive practice generator based on diagnostic gaps.
 - [x] `[medium]` Add spaced repetition and retrieval practice.
 
-## 7.3 Progress model
+Granular item-bank backlog:
+
+- [ ] `P0` Build minimum viable item bank for each launch grade.
+- [ ] `P0` Build minimum viable item bank for each launch subject.
+- [ ] `P0` Add item review status `draft`.
+- [ ] `P0` Add item review status `AI-generated`.
+- [ ] `P0` Add item review status `human-reviewed`.
+- [ ] `P0` Add item review status `approved`.
+- [ ] `P0` Add item review status `retired`.
+- [ ] `P1` Add item calibration workflow.
+- [ ] `P1` Add item exposure limits.
+- [ ] `P1` Add item reuse policy.
+- [ ] `P1` Add item retirement workflow.
+- [ ] `P1` Add item import/export tooling.
+- [ ] `P2` Add item authoring interface.
+- [ ] `P2` Add item analytics dashboard.
+
+## 7.3 Diagnostic session lifecycle
 
 - [x] `[critical]` Define mastery model combining diagnostic estimate, practice performance, recency, consistency, and confidence.
 - [x] `[high]` Add progress timelines per learner.
@@ -312,602 +996,1026 @@ Use labels such as `backend`, `frontend`, `data`, `ai`, `security`, `compliance`
 - [x] `[medium]` Add learning velocity, risk-of-falling-behind signal, and next-best-activity recommendation.
 - [ ] `[research]` Evaluate Bayesian Knowledge Tracing or Deep Knowledge Tracing once enough usage data exists.
 
----
+Granular diagnostic-session backlog:
 
-# 8. Frontend Production Readiness
+- [ ] `P0` Implement diagnostic session start.
+- [ ] `P0` Implement question serving.
+- [ ] `P0` Implement answer submission.
+- [ ] `P0` Implement ability update.
+- [ ] `P0` Implement result retrieval.
+- [ ] `P0` Implement consent check before diagnostic.
+- [ ] `P0` Implement object authorization check before diagnostic.
+- [ ] `P1` Add diagnostic pause/resume.
+- [ ] `P1` Add diagnostic session recovery after disconnect.
+- [ ] `P1` Add maximum item cap.
+- [ ] `P1` Add minimum evidence threshold before final result.
+- [ ] `P1` Add confidence interval.
+- [ ] `P2` Add diagnostic review by educator.
 
-## 8.1 Next.js hardening
+## 7.4 Bias, quality, and fairness
 
-- [ ] `[critical]` Separate public browser-safe environment variables from server-only variables and deployment secrets.
-- [ ] `[critical]` Ensure no secrets are exposed through `NEXT_PUBLIC_*`.
-- [ ] `[critical]` Add error boundaries for all major routes.
-- [ ] `[critical]` Add loading, empty, and failure states for all API-backed screens.
-- [ ] `[high]` Add global typed API client with auth handling, refresh handling, request ID propagation, typed responses, and normalized errors.
-- [ ] `[high]` Add protected route guards for learner, parent, teacher, and admin dashboards.
-- [ ] `[medium]` Add bundle analysis, route-level code splitting, and performance budgets.
+- [ ] `P1` Add item bias review across language.
+- [ ] `P1` Add item bias review across region.
+- [ ] `P1` Add item bias review across socioeconomic context.
+- [ ] `P1` Add distractor quality review.
+- [ ] `P1` Add explanation quality review.
+- [ ] `P1` Tag items by misconception.
+- [ ] `P2` Add bias-review dashboard.
+- [ ] `P2` Add educator sign-off process.
 
-## 8.2 Core UX flows
+## 7.5 Mastery and remediation
 
-- [ ] `[critical]` Complete signup/onboarding: guardian account, learner profile, consent capture, grade/subject selection, diagnostic start.
-- [ ] `[critical]` Complete login, logout, session expiry, password reset, and email verification UX.
-- [ ] `[high]` Build learner dashboard with study plan, next lesson, progress, streak, weak topics, and recommended next activity.
-- [ ] `[high]` Build parent dashboard with child progress, consent status, recommended support, reports, subscription/billing, and privacy controls.
-- [ ] `[high]` Build diagnostic UX: question display, progress indicator, answer submission, pause/resume, and result summary.
-- [ ] `[high]` Build lesson UX: explanation, worked example, practice questions, hints, answer reveal, feedback, and report-content issue.
-- [ ] `[medium]` Build study-plan UX, teacher dashboard, and admin console.
-
-## 8.3 Accessibility and mobile
-
-- [ ] `[critical]` Meet WCAG 2.1 AA for core flows.
-- [ ] `[critical]` Add keyboard navigation tests for login, signup, consent, diagnostic, lesson, and dashboards.
-- [ ] `[critical]` Ensure sufficient color contrast and accessible form validation.
-- [ ] `[high]` Add semantic headings, landmarks, and screen-reader friendly diagnostic questions.
-- [ ] `[medium]` Add reduced-motion mode, dyslexia-friendly typography option, text resizing, and audio narration.
-- [ ] `[critical]` Make all learner and parent flows usable on mobile.
-- [ ] `[high]` Add responsive layout tests.
-- [ ] `[medium]` Add PWA/low-data mode with cached app shell, compressed assets, and offline-friendly messaging.
-
----
-
-# 9. API Design and Integrations
-
-## 9.1 API consistency
-
-- [ ] `[critical]` Standardize response envelopes: `data`, `error`, `meta`, and `request_id`.
-- [ ] `[critical]` Standardize error shape: machine code, human message, field errors, request ID, and remediation hint.
-- [ ] `[high]` Add OpenAPI tags, summaries, examples, and versioning policy.
-- [ ] `[medium]` Add idempotency keys for billing, lesson generation, consent submission, and export requests.
-- [ ] `[medium]` Add pagination metadata for all list endpoints.
-
-## 9.2 Billing and subscriptions
-
-- [ ] `[critical]` Decide production billing provider.
-- [ ] `[critical]` Implement secure webhook signature verification, idempotency, replay protection, and audit logging.
-- [ ] `[critical]` Add subscription states: trial, active, past_due, paused, canceled, expired.
-- [ ] `[high]` Define pricing: free tier, parent plan, school plan, sponsored learner plan, NGO/community plan.
-- [ ] `[high]` Add billing lifecycle tests.
-- [ ] `[medium]` Add invoices/receipts, coupons, sponsorships, and data-access-after-cancellation policy.
-
-## 9.3 Notifications
-
-- [ ] `[critical]` Choose production email provider.
-- [ ] `[critical]` Add transactional templates: verification, password reset, consent request, consent expiry, diagnostic complete, weekly parent report, billing event, security alert.
-- [ ] `[high]` Add notification preferences and delivery tracking.
-- [ ] `[medium]` Add SMS/WhatsApp notifications only after privacy impact review.
-- [ ] `[medium]` Add notification rate limits and quiet hours.
+- [ ] `P1` Define mastery model.
+- [ ] `P1` Combine diagnostic estimate into mastery.
+- [ ] `P1` Combine practice performance into mastery.
+- [ ] `P1` Combine recency into mastery.
+- [ ] `P1` Combine consistency into mastery.
+- [ ] `P1` Combine confidence into mastery.
+- [ ] `P1` Add topic-level mastery.
+- [ ] `P1` Add subject-level mastery.
+- [ ] `P1` Add progress timelines.
+- [ ] `P1` Add adaptive practice generator.
+- [ ] `P1` Add remediation based on misconception.
+- [ ] `P2` Add spaced repetition.
+- [ ] `P2` Add retrieval practice.
+- [ ] `P2` Add learning velocity.
+- [ ] `P2` Add risk-of-falling-behind signal.
+- [ ] `P2` Add next-best-activity recommendation.
+- [ ] `Research` Evaluate Bayesian Knowledge Tracing after sufficient data exists.
+- [ ] `Research` Evaluate Deep Knowledge Tracing after sufficient data exists.
 
 ---
 
-# 10. DevOps, Infrastructure, and Deployment
+# 8. Frontend production readiness and UX
 
-## 10.1 Docker and images
+## 8.1 Environment and frontend security
 
-- [ ] `[critical]` Verify every Dockerfile builds from a clean checkout.
-- [ ] `[critical]` Align CI image build paths with production Dockerfile names.
-- [ ] `[critical]` Run images as non-root users.
-- [ ] `[critical]` Pin base images and minimize runtime layers.
-- [ ] `[high]` Add multi-stage builds and container healthchecks.
-- [ ] `[high]` Remove build tools from runtime images.
-- [ ] `[medium]` Add image labels: commit SHA, version, build time, source repo, license.
+- [ ] `P0` Separate browser-safe environment variables from server-only secrets.
+- [ ] `P0` Ensure no secrets are exposed through `NEXT_PUBLIC_*`.
+- [ ] `P0` Add frontend env validation script to CI.
+- [ ] `P0` Add safe public API URL configuration.
+- [ ] `P0` Add typed environment schema.
+- [ ] `P1` Add staging frontend env validation.
+- [ ] `P1` Add production frontend env validation.
+- [ ] `P1` Document frontend environment variables.
 
-## 10.2 Kubernetes / Azure
+## 8.2 API client
 
-- [ ] `[critical]` Choose production target explicitly: Azure Container Apps, AKS, or another managed container platform.
-- [ ] `[critical]` Make Docker Compose, Kubernetes, Bicep, and CI deployment assets match the chosen target.
-- [ ] `[critical]` Verify manifests for deployment, service, ingress, config maps, secret references, probes, resource requests, and limits.
-- [ ] `[high]` Add horizontal autoscaling, network policies, workload identity, and rollout strategy.
-- [ ] `[medium]` Add blue-green or canary deployment.
-- [ ] `[medium]` Add automated rollback on failed health checks.
+- [ ] `P0` Update typed API client to consume canonical PR-002R envelope.
+- [ ] `P0` Normalize error handling against canonical error envelope.
+- [ ] `P0` Add auth token handling.
+- [ ] `P0` Add refresh handling.
+- [ ] `P0` Add request ID propagation.
+- [ ] `P0` Add typed response parsing.
+- [ ] `P0` Add typed error parsing.
+- [ ] `P1` Add retry behavior for safe idempotent requests.
+- [ ] `P1` Add network-offline detection.
+- [ ] `P1` Add stale-data handling.
+- [ ] `P1` Add API client tests.
 
-## 10.3 Environment management
+## 8.3 Auth and onboarding UX
 
-- [ ] `[critical]` Define local, test, staging, and production environments.
-- [ ] `[critical]` Add `docs/environment_variables.md` with variable name, required/optional status, default, environment scope, sensitivity, and example.
-- [ ] `[critical]` Validate required environment variables at startup.
-- [ ] `[critical]` Fail fast on missing production secrets.
-- [ ] `[high]` Store production secrets in Azure Key Vault or equivalent.
-- [ ] `[high]` Rotate secrets regularly.
-- [ ] `[medium]` Add environment drift detection.
+- [ ] `P0` Complete guardian signup screen.
+- [ ] `P0` Complete guardian login screen.
+- [ ] `P0` Complete logout UX.
+- [ ] `P0` Complete session-expiry UX.
+- [ ] `P0` Complete password reset request screen.
+- [ ] `P0` Complete password reset completion screen.
+- [ ] `P0` Complete email verification UX.
+- [ ] `P0` Complete learner profile creation.
+- [ ] `P0` Complete grade selection.
+- [ ] `P0` Complete subject selection.
+- [ ] `P0` Complete parental consent capture.
+- [ ] `P0` Complete onboarding completion route.
+- [ ] `P1` Add onboarding progress indicator.
+- [ ] `P1` Add recoverable onboarding state.
+- [ ] `P1` Add onboarding E2E test.
 
-## 10.4 CI/CD
+## 8.4 Protected routes
 
-- [x] `[critical]` Fix workflow inconsistencies: Dockerfile paths, branch conditions, image registry casing, duplicated environment variables, stale service names.
-- [x] `[critical]` Ensure CI uses the same dependency files developers use locally.
-- [x] `[high]` Add workflow concurrency to cancel outdated runs.
-- [x] `[high]` Upload backend and frontend test/coverage reports as artifacts.
-- [x] `[medium]` Add OpenAPI diff, docs lint, link checker, migration diff summary, license check, and SBOM generation.
+- [ ] `P0` Add protected route guard for learner dashboard.
+- [ ] `P0` Add protected route guard for parent dashboard.
+- [ ] `P0` Add protected route guard for teacher dashboard.
+- [ ] `P0` Add protected route guard for admin dashboard.
+- [ ] `P0` Add role-based redirect rules.
+- [ ] `P0` Add unauthorized state.
+- [ ] `P0` Add forbidden state.
+- [ ] `P1` Add tests for route guards.
 
----
+## 8.5 Learner UX
 
-# 11. Observability, Reliability, and Operations
+- [ ] `P0` Complete learner dashboard.
+- [ ] `P0` Show study plan.
+- [ ] `P0` Show next recommended lesson.
+- [ ] `P0` Show progress.
+- [ ] `P0` Show streak if gamification enabled.
+- [ ] `P0` Show weak topics.
+- [ ] `P0` Show recommended next activity.
+- [ ] `P0` Complete diagnostic question display.
+- [ ] `P0` Complete diagnostic progress indicator.
+- [ ] `P0` Complete diagnostic answer submission.
+- [ ] `P0` Complete diagnostic result summary.
+- [ ] `P0` Complete lesson explanation view.
+- [ ] `P0` Complete worked example view.
+- [ ] `P0` Complete practice question interaction.
+- [ ] `P0` Complete hints.
+- [ ] `P0` Complete answer reveal.
+- [ ] `P0` Complete feedback capture.
+- [ ] `P0` Complete report-content issue flow.
+- [ ] `P1` Add pause/resume diagnostic UX.
+- [ ] `P1` Add offline-friendly lesson state.
+- [ ] `P2` Add learner personalization settings.
 
-## 11.1 Logging
+## 8.6 Parent/guardian UX
 
-- [ ] `[critical]` Emit structured JSON logs in production.
-- [ ] `[critical]` Include request ID in every backend log line.
-- [ ] `[critical]` Scrub PII, tokens, cookies, API keys, passwords, and secrets from logs.
-- [ ] `[high]` Separate audit logs from operational logs.
-- [ ] `[medium]` Add frontend error logging and correlation ID propagation.
+- [ ] `P0` Complete parent dashboard.
+- [ ] `P0` Show child progress.
+- [ ] `P0` Show consent status.
+- [ ] `P0` Show recommended support actions.
+- [ ] `P0` Show reports.
+- [ ] `P0` Show privacy controls.
+- [ ] `P0` Add data export request UI.
+- [ ] `P0` Add erasure request UI.
+- [ ] `P0` Add data correction request UI.
+- [ ] `P0` Add processing restriction request UI.
+- [ ] `P1` Add subscription/billing UI.
+- [ ] `P1` Add consent renewal UI.
+- [ ] `P1` Add notification preferences UI.
+- [ ] `P2` Add weekly parent report view.
+- [ ] `P2` Add “how to help at home” guidance.
 
-## 11.2 Metrics and dashboards
+## 8.7 Teacher/admin UX
 
-- [x] `[critical]` Expose Prometheus metrics for request count, latency, errors, status codes, dependency health, DB pool, Redis operations, background jobs, LLM calls, billing webhooks, and consent events.
-- [ ] `[high]` Add business metrics: active learners, diagnostic completion, lesson completion, study-plan adherence, parent report opens, consent conversion, churn.
-- [ ] `[high]` Add Grafana dashboards for API, DB, Redis, LLM usage, POPIA operations, learner engagement, and business metrics.
+- [ ] `P1` Build teacher dashboard if in beta scope.
+- [ ] `P1` Build admin console if in beta scope.
+- [ ] `P1` Build audit dashboard.
+- [ ] `P1` Build content review queue.
+- [ ] `P2` Build class-level diagnostics.
+- [ ] `P2` Build intervention groups.
+- [ ] `P2` Build topic heatmaps.
+- [ ] `P2` Build curriculum coverage admin view.
 
-## 11.3 Tracing and alerting
+## 8.8 Accessibility and mobile
 
-- [ ] `[high]` Add OpenTelemetry across frontend, API, services, repositories, database, Redis, and LLM provider calls.
-- [ ] `[critical]` Configure alerts for API down, readiness failure, high 5xx rate, high latency, DB unavailable, Redis unavailable, migration failure, audit write failure, consent enforcement failure, failed security scan, and failed backup.
-- [ ] `[high]` Add warning alerts for LLM cost spike, queue backlog, high 4xx rate, memory pressure, and disk usage.
+- [ ] `P0` Meet WCAG 2.1 AA for signup.
+- [ ] `P0` Meet WCAG 2.1 AA for login.
+- [ ] `P0` Meet WCAG 2.1 AA for consent.
+- [ ] `P0` Meet WCAG 2.1 AA for diagnostic.
+- [ ] `P0` Meet WCAG 2.1 AA for lesson.
+- [ ] `P0` Meet WCAG 2.1 AA for dashboards.
+- [ ] `P0` Add keyboard navigation tests.
+- [ ] `P0` Ensure sufficient color contrast.
+- [ ] `P0` Add accessible form validation.
+- [ ] `P0` Add semantic headings.
+- [ ] `P0` Add landmarks.
+- [ ] `P0` Add screen-reader friendly diagnostic questions.
+- [ ] `P0` Make all learner flows usable on mobile.
+- [ ] `P0` Make all parent flows usable on mobile.
+- [ ] `P1` Add responsive layout tests.
+- [ ] `P1` Add reduced-motion mode.
+- [ ] `P1` Add dyslexia-friendly typography option.
+- [ ] `P1` Add text resizing.
+- [ ] `P2` Add audio narration if product scope supports it.
 
-## 11.4 Incident response
+## 8.9 PWA and low-data mode
 
-- [ ] `[critical]` Create `docs/incident_response.md`.
-- [ ] `[critical]` Define incident categories: security incident, learner data exposure, auth outage, billing outage, AI content safety issue, data corruption, availability outage.
-- [ ] `[critical]` Define emergency actions: disable lesson generation, revoke sessions, disable provider, freeze billing webhooks, maintenance mode.
-- [ ] `[high]` Add postmortem template and run at least one tabletop exercise before production.
-
----
-
-# 12. Backup, Restore, and Disaster Recovery
-
-- [ ] `[critical]` Enable automated encrypted PostgreSQL backups in a separate failure domain.
-- [ ] `[critical]` Define backup retention: daily, weekly, monthly.
-- [ ] `[critical]` Add backup failure alert.
-- [ ] `[critical]` Perform restore test into a clean environment.
-- [ ] `[critical]` Document RPO and RTO.
-- [ ] `[critical]` Validate audit records, consent states, billing states, and learner records after restore.
-- [ ] `[high]` Document Redis recoverability: disposable, replicated, or persistent.
-- [ ] `[high]` Create `docs/disaster_recovery.md`.
-- [ ] `[high]` Define provider outage plans for cloud, LLM, payment, email, object storage, and analytics.
-- [ ] `[medium]` Automate monthly restore drills.
-
----
-
-# 13. Testing and QA
-
-## 13.1 Backend
-
-- [ ] `[critical]` Maintain backend coverage threshold of at least 80%.
-- [ ] `[critical]` Add route, service, and repository tests for every production path.
-- [ ] `[critical]` Add integration tests for auth, consent, learner lifecycle, diagnostics, lessons, study plans, parent reports, billing, export, and erasure.
-- [ ] `[high]` Add property-based tests for diagnostic engine.
-- [ ] `[high]` Add fuzz tests for public API inputs.
-- [ ] `[medium]` Add contract tests for external integrations.
-
-## 13.2 Frontend
-
-- [ ] `[critical]` Maintain frontend coverage threshold of at least 80%.
-- [ ] `[critical]` Add component tests for login, signup, consent, diagnostic question, lesson card, progress chart, and parent report summary.
-- [ ] `[high]` Add route-level tests for protected pages.
-- [ ] `[high]` Add API error-handling tests.
-- [ ] `[medium]` Add visual regression and accessibility tests.
-
-## 13.3 E2E and performance
-
-- [ ] `[critical]` Add Playwright flow: guardian signup → learner profile → consent → diagnostic → first lesson → parent report → logout.
-- [ ] `[critical]` Add negative E2E tests: no consent, unauthorized learner access, expired session, failed payment, and unavailable LLM provider.
-- [ ] `[high]` Add production-like compose E2E test.
-- [ ] `[high]` Define performance targets for API p95 latency, dashboard load, diagnostic submit, lesson queue time, and report generation.
-- [ ] `[medium]` Add k6 or Locust load tests.
-
----
-
-# 14. Security Hardening
-
-## 14.1 Application security
-
-- [ ] `[critical]` Configure security headers: CSP, HSTS, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, and frame protections.
-- [ ] `[critical]` Validate production CORS; no wildcard origins with credentials.
-- [ ] `[critical]` Add CSRF strategy if cookie-based auth is used.
-- [ ] `[critical]` Sanitize user-generated content.
-- [ ] `[critical]` Validate file upload handling if uploads exist.
-- [ ] `[high]` Add request size limits, per-user/per-IP rate limits, and brute-force detection.
-- [ ] `[high]` Add SSRF protections for any URL-fetching capability.
-
-## 14.2 Supply chain and secrets
-
-- [ ] `[critical]` Keep pip-audit, npm audit, Trivy, Bandit, and gitleaks green.
-- [ ] `[critical]` Confirm no real secrets exist in git history; rotate anything exposed during development.
-- [ ] `[high]` Pin Docker base images by digest.
-- [ ] `[high]` Generate SBOM for backend and frontend images.
-- [ ] `[high]` Add license policy.
-- [ ] `[medium]` Sign container images with cosign.
-
-## 14.3 Security testing
-
-- [ ] `[high]` Run OWASP ZAP baseline scan against staging.
-- [ ] `[high]` Add threat model workshop.
-- [ ] `[medium]` Commission external penetration test before broad public launch.
-- [ ] `[medium]` Create clear vulnerability disclosure policy.
-
----
-
-# 15. Product Strategy and Mission Differentiation
-
-## 15.1 Mission clarity
-
-- [ ] `[high]` Adopt a crisp mission statement: “EduBoost helps South African primary learners master CAPS topics through consent-safe adaptive diagnostics, AI-generated remediation, and parent-visible progress.”
-- [ ] `[high]` Add public value proposition: CAPS-aligned, parent-aware, low-bandwidth friendly, privacy-first, adaptive, South African context.
-- [ ] `[high]` Add “Why EduBoost is different” to README and landing page.
-- [ ] `[medium]` Define mission KPIs: mastery lift, diagnostic-to-remediation completion, parent engagement, weekly active learners, topic mastery lift, accessibility reach, low-bandwidth success rate.
-
-## 15.2 South African differentiation
-
-- [ ] `[high]` Use South African examples in lessons: local currency, geography, school calendar, everyday contexts, and culturally familiar scenarios.
-- [ ] `[high]` Add multilingual roadmap: English, isiZulu, isiXhosa, Afrikaans, Sepedi, Setswana, Sesotho, Tshivenda, Xitsonga, siSwati, isiNdebele.
-- [ ] `[medium]` Add home-language preference and vocabulary bridge mode.
-- [ ] `[medium]` Add low-bandwidth and mobile-first commitments to marketing and product UX.
-- [ ] `[research]` Explore partnerships with schools, NGOs, after-school programs, and community learning centers.
-
-## 15.3 Trust and transparency
-
-- [ ] `[high]` Add “How EduBoost uses AI” page.
-- [ ] `[high]` Add “How EduBoost protects learner data” page.
-- [ ] `[high]` Add “What parents can see” page.
-- [ ] `[medium]` Add visible lesson trust labels: AI-generated, answer-checked, CAPS-linked, teacher-reviewed.
-- [ ] `[medium]` Add “report a content problem” on every generated lesson.
+- [ ] `P1` Add or verify service worker.
+- [ ] `P1` Add or verify manifest.
+- [ ] `P1` Cache app shell.
+- [ ] `P1` Add offline-friendly lesson content.
+- [ ] `P1` Add offline messaging.
+- [ ] `P1` Add compressed assets.
+- [ ] `P1` Add low-data mode.
+- [ ] `P1` Add PWA installability test.
+- [ ] `P1` Add offline E2E test.
+- [ ] `P2` Add offline feedback queue.
+- [ ] `P2` Add sync-on-reconnect behavior.
 
 ---
 
-# 16. Growth, Onboarding, and Retention
+# 9. Billing, subscriptions, payments, and monetization
 
-## 16.1 Onboarding
+## 9.1 Provider and architecture
 
-- [ ] `[critical]` Reduce first-run path to: guardian account → learner profile → consent → grade/subject → short diagnostic → first lesson.
-- [ ] `[high]` Add progress indicator and consent explanation during onboarding.
-- [ ] `[high]` Add onboarding analytics funnel.
-- [ ] `[medium]` Add demo mode with synthetic learner data.
-- [ ] `[medium]` Add school invite flow if school deployments are planned.
+- [ ] `P0` Decide production billing provider.
+- [ ] `P0` Document billing provider decision in ADR.
+- [ ] `P0` Document billing architecture.
+- [ ] `P0` Define billing data model.
+- [ ] `P0` Define subscription state machine.
+- [ ] `P0` Define state `trial`.
+- [ ] `P0` Define state `active`.
+- [ ] `P0` Define state `past_due`.
+- [ ] `P0` Define state `paused`.
+- [ ] `P0` Define state `canceled`.
+- [ ] `P0` Define state `expired`.
+- [ ] `P1` Define sponsorship state if sponsored learner model is in scope.
+- [ ] `P1` Define school-plan billing model if schools are in scope.
 
-## 16.2 Retention
+## 9.2 Webhooks
 
-- [ ] `[high]` Add weekly learner goals and parent weekly summaries.
-- [ ] `[high]` Add streaks carefully without encouraging unhealthy usage patterns.
-- [ ] `[medium]` Add spaced review reminders, “continue where you left off,” mastery celebrations, and learner-visible topic map.
-- [ ] `[medium]` Add reflection prompts: “What confused you?”, “What helped?”, and “How confident are you?”
+- [ ] `P0` Implement webhook signature verification.
+- [ ] `P0` Implement webhook idempotency.
+- [ ] `P0` Implement webhook replay protection.
+- [ ] `P0` Implement webhook audit logging.
+- [ ] `P0` Add webhook tests for valid signature.
+- [ ] `P0` Add webhook tests for invalid signature.
+- [ ] `P0` Add webhook tests for replay.
+- [ ] `P0` Add webhook tests for duplicate event.
+- [ ] `P0` Add webhook tests for out-of-order events.
+- [ ] `P1` Add webhook dead-letter handling.
+- [ ] `P1` Add webhook retry/backoff.
+- [ ] `P1` Add webhook dashboard.
 
-## 16.3 Growth loops
+## 9.3 Pricing and product rules
 
-- [ ] `[medium]` Add shareable parent progress report that excludes sensitive details by default.
-- [ ] `[medium]` Add referral flow for parents.
-- [ ] `[medium]` Add classroom invitation flow.
-- [ ] `[research]` Explore sponsored learner and low-data partnership models.
+- [ ] `P1` Define free tier.
+- [ ] `P1` Define parent plan.
+- [ ] `P1` Define school plan.
+- [ ] `P1` Define sponsored learner plan.
+- [ ] `P1` Define NGO/community plan.
+- [ ] `P1` Define trial length.
+- [ ] `P1` Define payment failure policy.
+- [ ] `P1` Define cancellation policy.
+- [ ] `P1` Define refund policy.
+- [ ] `P1` Define data-access-after-cancellation policy.
+- [ ] `P1` Add invoices.
+- [ ] `P1` Add receipts.
+- [ ] `P1` Add coupons.
+- [ ] `P1` Add sponsorships.
+- [ ] `P2` Add pricing admin config.
 
----
+## 9.4 Billing UX and tests
 
-# 17. Admin, Support, and Internal Operations
-
-## 17.1 Admin console
-
-- [ ] `[high]` Build admin console with strict RBAC.
-- [ ] `[high]` Include user search, learner search, consent status, subscription status, diagnostic attempts, lesson jobs, audit lookup, and export/erasure queue.
-- [ ] `[critical]` Audit every admin read/write action.
-- [ ] `[critical]` Hide unnecessary PII from support roles.
-- [ ] `[high]` Add break-glass access policy.
-
-## 17.2 Support workflows
-
-- [ ] `[high]` Create playbooks for login issues, consent issues, billing issues, incorrect lessons, data export, erasure, suspected compromise, and account recovery.
-- [ ] `[high]` Add user-facing help center docs.
-- [ ] `[medium]` Add support ticket integration and support macros.
-
-## 17.3 Content operations
-
-- [ ] `[high]` Build content review workflow with reviewer roles.
-- [ ] `[high]` Add lesson approval queue.
-- [ ] `[medium]` Add versioned content publishing, rollback, and topic coverage dashboard.
-
----
-
-# 18. Documentation
-
-## 18.1 Developer docs
-
-- [ ] `[critical]` Keep README accurate and current.
-- [ ] `[critical]` Add local setup troubleshooting for Docker, database, Redis, frontend installs, migrations, and tests.
-- [x] `[high]` Add backend architecture docs for request lifecycle, auth, consent, diagnostics, lesson generation, billing, and audit.
-- [ ] `[high]` Add frontend architecture docs for routing, state management, API client, auth handling, and component conventions.
-- [ ] `[high]` Add testing, deployment, debugging, and performance guides.
-
-## 18.2 Compliance docs
-
-- [ ] `[critical]` Keep POPIA docs synchronized with actual code behavior.
-- [ ] `[critical]` Draft privacy notice, child-friendly privacy explanation, parent consent terms, and data processing notices.
-- [x] `[high]` Add data retention policy, processing inventory, subprocessor register, and DPIA-style privacy impact assessment.
-
-## 18.3 Product docs
-
-- [ ] `[high]` Add product overview, parent guide, learner guide, teacher guide, FAQ, pricing/billing FAQ, and AI transparency FAQ.
+- [ ] `P1` Add parent billing page.
+- [ ] `P1` Add subscription status display.
+- [ ] `P1` Add invoice history.
+- [ ] `P1` Add cancel subscription flow.
+- [ ] `P1` Add payment failure state.
+- [ ] `P1` Add billing lifecycle tests.
+- [ ] `P1` Add billing audit tests.
+- [ ] `P2` Add billing metrics.
+- [ ] `P2` Add churn metrics.
 
 ---
 
-# 19. Analytics and Experimentation
+# 10. Notifications and communication
 
-## 19.1 Privacy-preserving analytics
+## 10.1 Provider selection
 
-- [ ] `[critical]` Define analytics events with privacy review.
-- [ ] `[critical]` Do not send raw learner PII to analytics tools.
-- [ ] `[high]` Track core funnel: visit, signup started, signup completed, learner added, consent granted, diagnostic started, diagnostic completed, first lesson opened, first practice completed, parent report viewed.
-- [ ] `[high]` Track learning outcomes: baseline diagnostic, remediation activity, reassessment, mastery change.
-- [ ] `[medium]` Add analytics opt-out where appropriate and event schema validation.
+- [ ] `P0` Choose production email provider.
+- [ ] `P0` Write ADR for notification provider.
+- [ ] `P0` Document notification architecture.
+- [ ] `P0` Document email domain/authentication requirements.
+- [ ] `P1` Add provider sandbox for staging.
+- [ ] `P1` Add provider failover plan if required.
 
-## 19.2 Experimentation
+## 10.2 Transactional templates
 
-- [ ] `[medium]` Add feature flags and server-side experiment assignment.
-- [ ] `[medium]` Test onboarding copy, diagnostic length, lesson explanation style, and parent report format.
-- [ ] `[research]` Define ethical experimentation guidelines for minors and education.
+- [ ] `P0` Add email verification template.
+- [ ] `P0` Add password reset template.
+- [ ] `P0` Add consent request template.
+- [ ] `P0` Add consent expiry template.
+- [ ] `P0` Add diagnostic complete template.
+- [ ] `P0` Add weekly parent report template.
+- [ ] `P0` Add billing event template.
+- [ ] `P0` Add security alert template.
+- [ ] `P1` Add erasure request received template.
+- [ ] `P1` Add erasure completed template.
+- [ ] `P1` Add export ready template.
+- [ ] `P1` Add account lockout template.
+- [ ] `P1` Add template preview tests.
+- [ ] `P1` Add localization plan for templates.
 
----
+## 10.3 Delivery controls
 
-# 20. Performance and Scalability
-
-## 20.1 Backend
-
-- [ ] `[high]` Profile slow endpoints.
-- [x] `[high]` Configure DB connection pools.
-- [ ] `[high]` Add Redis caching for safe, non-sensitive, high-read data.
-- [ ] `[high]` Define cache invalidation rules.
-- [ ] `[medium]` Move report generation, exports, erasure, lesson generation, and email sending into background jobs.
-- [ ] `[medium]` Add queue backlog metrics and API response compression.
-
-## 20.2 Frontend
-
-- [ ] `[high]` Measure Core Web Vitals.
-- [ ] `[high]` Optimize dashboard render time and lazy-load heavy charts.
-- [ ] `[medium]` Add image optimization, route code splitting, and skeleton states.
-
-## 20.3 AI cost/performance
-
-- [ ] `[high]` Add per-user and per-tenant AI usage limits.
-- [ ] `[high]` Cache reusable generated content where privacy-safe.
-- [ ] `[high]` Track cost by provider/model/feature.
-- [ ] `[medium]` Fall back from live generation to curated/static content.
-- [ ] `[medium]` Batch-generate common topics.
-- [ ] `[research]` Explore local inference for cheaper high-volume tasks.
-
----
-
-# 21. Data Science and Learning Analytics
-
-- [ ] `[high]` Define learning event schema: pseudonymous learner ID, topic, activity type, timestamp, correctness, attempt number, time spent, hint usage, confidence.
-- [ ] `[high]` Separate analytics warehouse from transactional DB if scale requires.
-- [ ] `[high]` Add anonymization or pseudonymization strategy.
-- [ ] `[medium]` Add data quality checks.
-- [ ] `[medium]` Build parent insight cards: needs practice, improving, mastered, next focus.
-- [ ] `[medium]` Build learner insight cards: strongest topic, practice next, mistake pattern.
-- [ ] `[medium]` Build teacher insights: class heatmap, misconception clusters, intervention groups.
-- [ ] `[research]` Evaluate fairness of recommendations across language and socioeconomic context.
+- [ ] `P0` Add notification audit events.
+- [ ] `P0` Add delivery tracking.
+- [ ] `P0` Add retry/backoff.
+- [ ] `P0` Add bounce handling.
+- [ ] `P0` Add complaint handling.
+- [ ] `P1` Add notification preferences.
+- [ ] `P1` Add quiet hours.
+- [ ] `P1` Add rate limits.
+- [ ] `P1` Add unsubscribe rules where appropriate.
+- [ ] `P1` Add failed delivery dashboard.
+- [ ] `P2` Evaluate SMS after privacy impact review.
+- [ ] `P2` Evaluate WhatsApp after privacy impact review.
 
 ---
 
-# 22. Gamification and Motivation
+# 11. Observability, metrics, logging, tracing, and alerting
 
-- [ ] `[high]` Ensure gamification supports learning, not compulsive engagement.
-- [ ] `[high]` Avoid dark patterns.
-- [ ] `[high]` Make mastery-based rewards more important than time-spent rewards.
-- [ ] `[medium]` Add badges for consistency, resilience, topic mastery, revision, and challenge completion.
-- [ ] `[medium]` Add streak freeze or compassionate repair to prevent demotivation.
-- [ ] `[medium]` Let learners choose explanation style, difficulty, theme/avatar, and daily goal.
-- [ ] `[medium]` Add growth-mindset messaging grounded in effort and strategy.
+## 11.1 Metrics
 
----
+- [ ] `P0` Verify `/metrics` endpoint works.
+- [ ] `P0` Add HTTP request count metric.
+- [ ] `P0` Add HTTP latency metric.
+- [ ] `P0` Add HTTP error-rate metric.
+- [ ] `P0` Add status-code metric.
+- [ ] `P0` Add dependency health metric.
+- [ ] `P0` Add DB pool metric.
+- [ ] `P0` Add Redis operation metric.
+- [ ] `P0` Add background job metric.
+- [ ] `P0` Add LLM call count metric.
+- [ ] `P0` Add LLM latency metric.
+- [ ] `P0` Add LLM token usage metric.
+- [ ] `P0` Add LLM fallback metric.
+- [ ] `P0` Add billing webhook metric.
+- [ ] `P0` Add consent lifecycle metric.
+- [ ] `P0` Add diagnostic session metric.
+- [ ] `P0` Add lesson generation metric.
+- [ ] `P0` Add backup success/failure metric.
+- [ ] `P0` Add audit write failure metric.
+- [ ] `P1` Add active learners metric.
+- [ ] `P1` Add lesson completion metric.
+- [ ] `P1` Add study-plan adherence metric.
+- [ ] `P1` Add parent report open metric.
+- [ ] `P1` Add consent conversion metric.
+- [ ] `P1` Add churn metric if billing enabled.
 
-# 23. Content, Curriculum, and Pedagogy
+## 11.2 Dashboards
 
-## 23.1 Curriculum coverage
+- [ ] `P0` Build API dashboard.
+- [ ] `P0` Build database dashboard.
+- [ ] `P0` Build Redis dashboard.
+- [ ] `P0` Build LLM provider dashboard.
+- [ ] `P0` Build POPIA operations dashboard.
+- [ ] `P0` Build learner journey dashboard.
+- [ ] `P0` Build audit dashboard.
+- [ ] `P0` Build backup/restore dashboard.
+- [ ] `P1` Build billing dashboard.
+- [ ] `P1` Build frontend error dashboard.
+- [ ] `P1` Build business metrics dashboard.
+- [ ] `P2` Build curriculum coverage dashboard.
+- [ ] `P2` Build content quality dashboard.
 
-- [ ] `[critical]` Define supported launch scope: grades, subjects, terms, topics.
-- [ ] `[critical]` Do not claim complete CAPS coverage until verified.
-- [ ] `[high]` Create coverage matrix.
-- [ ] `[high]` Add minimum lesson count and diagnostic item count per topic.
-- [ ] `[medium]` Add curriculum gap roadmap.
+## 11.3 Alerts
 
-## 23.2 Pedagogical quality
+- [ ] `P0` Alert when API is down.
+- [ ] `P0` Alert on readiness failure.
+- [ ] `P0` Alert on high 5xx rate.
+- [ ] `P0` Alert on high latency.
+- [ ] `P0` Alert when DB unavailable.
+- [ ] `P0` Alert when Redis unavailable.
+- [ ] `P0` Alert on migration failure.
+- [ ] `P0` Alert on audit write failure.
+- [ ] `P0` Alert on consent enforcement failure.
+- [ ] `P0` Alert on failed backup.
+- [ ] `P0` Alert on failed security scan.
+- [ ] `P1` Alert on LLM cost spike.
+- [ ] `P1` Alert on LLM error spike.
+- [ ] `P1` Alert on queue backlog.
+- [ ] `P1` Alert on high 4xx rate.
+- [ ] `P1` Alert on memory pressure.
+- [ ] `P1` Alert on disk pressure.
+- [ ] `P1` Alert on abnormal auth failures.
+- [ ] `P1` Alert on webhook failure spike.
 
-- [ ] `[high]` Create lesson quality rubric and diagnostic item quality rubric.
-- [ ] `[high]` Include worked examples, guided practice, independent practice, misconception feedback, retrieval practice, and spaced review.
-- [ ] `[medium]` Add concrete-representational-abstract progression for math.
-- [ ] `[medium]` Add reading-level checks and culturally relevant examples.
-- [ ] `[research]` Partner with educators for expert review.
+## 11.4 Logging
 
-## 23.3 Multilingual pedagogy
+- [ ] `P0` Emit structured JSON logs in production.
+- [ ] `P0` Include request ID in every backend log.
+- [ ] `P0` Include user/actor pseudonymous identifier where safe.
+- [ ] `P0` Scrub PII from logs.
+- [ ] `P0` Scrub tokens from logs.
+- [ ] `P0` Scrub cookies from logs.
+- [ ] `P0` Scrub API keys from logs.
+- [ ] `P0` Scrub passwords from logs.
+- [ ] `P0` Scrub secrets from logs.
+- [ ] `P1` Separate audit logs from operational logs.
+- [ ] `P1` Add frontend error logging.
+- [ ] `P1` Add log retention policy.
+- [ ] `P1` Add log access policy.
 
-- [ ] `[medium]` Add glossary support: English term, home-language term, simple explanation, example sentence.
-- [ ] `[medium]` Add code-switching support where educationally useful.
-- [ ] `[medium]` Add teacher/parent language preference.
-- [ ] `[research]` Validate translations with native speakers and educators.
+## 11.5 Tracing
 
----
-
-# 24. Legal, Policy, and Business Readiness
-
-- [ ] `[critical]` Draft and review Terms of Service, Privacy Policy, Child-friendly Privacy Notice, Parent Consent Notice, Acceptable Use Policy, Refund Policy, and school Data Processing Agreement.
-- [ ] `[critical]` Ensure legal docs match actual product behavior.
-- [ ] `[high]` Add legal document versioning and acceptance tracking.
-- [ ] `[high]` Add policy update notification workflow.
-- [ ] `[high]` Define production support model, pricing operations, refund process, and escalation process.
-- [ ] `[medium]` Define school procurement workflow, sponsored learner workflow, and NGO/community deployment model.
-
----
-
-# 25. Launch Plan
-
-## 25.1 Private alpha
-
-- [ ] `[critical]` Use synthetic or explicitly consented test users only.
-- [ ] `[critical]` Validate onboarding, consent, diagnostics, lessons, parent reports, and support workflow.
-- [ ] `[high]` Collect structured feedback from parents, learners, and educators.
-- [ ] `[high]` Measure technical stability and content correctness.
-
-## 25.2 Public beta
-
-- [ ] `[critical]` Launch only after security baseline, POPIA workflows, backups, support channel, incident response, and billing are tested.
-- [ ] `[high]` Add beta label in UI.
-- [ ] `[high]` Add feedback/report issue button.
-- [ ] `[high]` Add content correction workflow.
-- [ ] `[medium]` Publish transparent roadmap.
-
-## 25.3 Production launch
-
-- [ ] `[critical]` Final launch checklist: release tag, production deploy, health green, readiness green, migrations applied, backup verified, alerting live, dashboards live, legal docs live, privacy docs live, support live, rollback tested.
-- [ ] `[high]` Announce limited scope accurately.
-- [ ] `[high]` Avoid overclaiming AI capability, CAPS coverage, or guaranteed learning outcomes.
-
----
-
-# 26. Make the Mission Stand Out
-
-## 26.1 South African Learning Graph
-
-- [ ] `[research]` Build CAPS-aligned knowledge graph: topics, prerequisites, misconceptions, diagnostic items, lessons, practice questions, local examples.
-- [ ] `[medium]` Use the graph to power next-best lesson, parent explanations, teacher intervention groups, and curriculum coverage maps.
-- [ ] `[medium]` Visualize the graph for learners as a learning map.
-
-## 26.2 Parent co-pilot
-
-- [ ] `[medium]` Add parent-friendly weekly reports: what was learned, what is difficult, how to help in 10 minutes, next week’s focus.
-- [ ] `[medium]` Add “ask EduBoost how to help my child” with strict privacy controls.
-- [ ] `[medium]` Add printable at-home practice sheets.
-- [ ] `[medium]` Add parent nudges that are supportive, not guilt-driven.
-
-## 26.3 Teacher/classroom mode
-
-- [ ] `[medium]` Add teacher rosters, class diagnostics, class misconception dashboard, intervention groups, and CAPS evidence reports.
-- [ ] `[research]` Validate workflow with real classroom constraints before scaling this mode.
-
-## 26.4 Offline-first and low-resource resilience
-
-- [ ] `[medium]` Add offline lesson packs and printable worksheets.
-- [ ] `[medium]` Treat low-data mode as a first-class product feature.
-- [ ] `[research]` Explore intermittent-internet school/community deployment.
-
-## 26.5 AI transparency and trust score
-
-- [ ] `[medium]` Add visible lesson trust label: CAPS-linked, answer-checked, teacher-reviewed, AI-generated.
-- [ ] `[medium]` Add correction history for lessons.
-- [ ] `[medium]` Route content reports into a review queue.
-
-## 26.6 Ethical learning analytics
-
-- [ ] `[medium]` Avoid negative labels such as “weak learner” or “poor performer.”
-- [ ] `[medium]` Use constructive labels: ready to strengthen, needs another example, almost mastered, ready for challenge.
-- [ ] `[medium]` Add explainable recommendations: “We recommend fractions because the diagnostic showed difficulty with equivalent forms.”
-
-## 26.7 Sponsorship and community impact
-
-- [ ] `[research]` Add sponsored learner model.
-- [ ] `[research]` Add NGO/community dashboard.
-- [ ] `[research]` Add anonymized impact reports: learners supported, topics mastered, practice hours, regions served, language support usage.
+- [ ] `P1` Add OpenTelemetry to frontend.
+- [ ] `P1` Add OpenTelemetry to API.
+- [ ] `P1` Add OpenTelemetry to service layer.
+- [ ] `P1` Add OpenTelemetry to repositories.
+- [ ] `P1` Add OpenTelemetry to database calls.
+- [ ] `P1` Add OpenTelemetry to Redis calls.
+- [ ] `P1` Add OpenTelemetry to LLM provider calls.
+- [ ] `P2` Correlate traces with audit events where safe.
+- [ ] `P2` Add trace sampling policy.
 
 ---
 
-# 27. Suggested Milestones
+# 12. CI/CD, infrastructure, deployment, Docker, and environments
 
-## Milestone A: Production hardening foundation
+## 12.1 CI correctness
 
-- [x] `/ready` dependency-aware readiness.
-- [ ] Protected branch and release workflow.
-- [ ] Environment variable documentation.
-- [ ] Database backup and restore test.
-- [ ] Auth/consent/POPIA integration tests.
-- [ ] CI workflow cleanup.
-- [ ] Security headers and CORS verified.
-- [ ] Staging environment online.
+- [ ] `P0` Fix CI branch assumptions to support `master`.
+- [ ] `P0` Ensure image scan runs on `master`.
+- [ ] `P0` Ensure production gates run for release tags from `master`.
+- [ ] `P0` Ensure CI uses same dependency files as local dev.
+- [ ] `P0` Ensure backend lint runs.
+- [ ] `P0` Ensure backend type check runs.
+- [ ] `P0` Ensure backend unit tests run.
+- [ ] `P0` Ensure backend integration tests run.
+- [ ] `P0` Ensure Alembic migration check runs.
+- [ ] `P0` Ensure POPIA tests run.
+- [ ] `P0` Ensure frontend tests run.
+- [ ] `P0` Ensure frontend type check runs.
+- [ ] `P0` Ensure frontend build runs.
+- [ ] `P0` Ensure Playwright E2E runs.
+- [ ] `P0` Ensure Docker image scan runs.
+- [ ] `P0` Ensure dependency audit runs.
+- [ ] `P0` Ensure secret scan runs.
+- [ ] `P0` Ensure staging smoke tests run before production promotion.
+- [ ] `P1` Add workflow concurrency to cancel stale runs.
+- [ ] `P1` Upload backend test reports.
+- [ ] `P1` Upload frontend test reports.
+- [ ] `P1` Upload coverage reports.
+- [ ] `P1` Upload security scan reports.
+- [ ] `P1` Upload OpenAPI diff artifact.
+- [ ] `P1` Upload SBOM artifact.
 
-## Milestone B: Learner MVP
+## 12.2 Deployment target alignment
 
-- [ ] Guardian signup.
-- [ ] Learner profile.
-- [ ] Consent.
-- [ ] Diagnostic.
-- [ ] First generated/validated lesson.
-- [ ] Learner dashboard.
-- [ ] Parent progress summary.
-- [ ] Feedback/report content issue.
+- [ ] `P0` Decide production deployment target.
+- [ ] `P0` Reconcile Azure Container Apps docs with Kubernetes deployment commands.
+- [ ] `P0` If ACA is target, remove or archive Kubernetes production deployment from CI.
+- [ ] `P0` If AKS is target, update architecture docs to say AKS.
+- [ ] `P0` Align Docker Compose with chosen target.
+- [ ] `P0` Align Bicep with chosen target.
+- [ ] `P0` Align Kubernetes manifests with chosen target or mark future-only.
+- [ ] `P0` Align runbooks with chosen target.
+- [ ] `P1` Add staging deployment workflow.
+- [ ] `P1` Add production promotion workflow.
+- [ ] `P1` Add deployment rollback workflow.
+- [ ] `P2` Add blue-green deployment.
+- [ ] `P2` Add canary deployment.
+- [ ] `P2` Add automated rollback on failed health checks.
 
-## Milestone C: Trustworthy AI learning loop
+## 12.3 Docker and images
 
-- [ ] CAPS topic map.
-- [ ] Structured lesson schema.
-- [ ] Output validation.
-- [ ] Answer-key checking.
-- [ ] Prompt versioning.
-- [ ] Human review queue.
-- [ ] Quality scoring.
-- [ ] AI transparency UI.
+- [ ] `P0` Verify API Dockerfile builds from clean checkout.
+- [ ] `P0` Verify frontend Dockerfile builds from clean checkout.
+- [ ] `P0` Verify docs Dockerfile target builds from clean checkout.
+- [ ] `P0` Align CI build paths with Dockerfile names.
+- [ ] `P0` Run images as non-root.
+- [ ] `P0` Pin base images.
+- [ ] `P0` Minimize runtime layers.
+- [ ] `P0` Add healthcheck to API image.
+- [ ] `P0` Add healthcheck to frontend image if applicable.
+- [ ] `P1` Remove build tools from runtime image.
+- [ ] `P1` Add OCI image label for commit SHA.
+- [ ] `P1` Add OCI image label for version.
+- [ ] `P1` Add OCI image label for build time.
+- [ ] `P1` Add OCI image label for source repo.
+- [ ] `P1` Add OCI image label for license.
+- [ ] `P1` Generate SBOM.
+- [ ] `P1` Scan SBOM.
+- [ ] `P2` Add image signing.
 
-## Milestone D: Beta launch
+## 12.4 Environment management
 
-- [ ] Legal docs.
-- [ ] Privacy docs.
-- [ ] Incident response.
-- [ ] Backups.
-- [ ] Monitoring.
-- [ ] Support workflow.
-- [ ] E2E tests.
-- [ ] First release tag.
-- [ ] Limited beta cohort.
+- [ ] `P0` Define local environment.
+- [ ] `P0` Define test environment.
+- [ ] `P0` Define staging environment.
+- [ ] `P0` Define production environment.
+- [ ] `P0` Add `docs/environment_variables.md`.
+- [ ] `P0` Document every env var name.
+- [ ] `P0` Document whether each env var is required.
+- [ ] `P0` Document default value if any.
+- [ ] `P0` Document environment scope.
+- [ ] `P0` Document sensitivity.
+- [ ] `P0` Document example value.
+- [ ] `P0` Validate required env vars at startup.
+- [ ] `P0` Fail fast on missing production secrets.
+- [ ] `P0` Store production secrets in Azure Key Vault or equivalent.
+- [ ] `P1` Add secret rotation procedure.
+- [ ] `P1` Add environment drift detection.
+- [ ] `P1` Add staging env validation.
+- [ ] `P1` Add production env validation.
 
-## Milestone E: Mission expansion
+## 12.5 Staging
 
-- [ ] Multilingual support.
-- [ ] Low-data mode.
-- [ ] Parent co-pilot.
-- [ ] Teacher dashboard.
-- [ ] Sponsored learner model.
-- [ ] CAPS learning graph.
-- [ ] Offline lesson packs.
+- [ ] `P0` Provision staging environment.
+- [ ] `P0` Configure staging database.
+- [ ] `P0` Configure staging Redis.
+- [ ] `P0` Configure staging secrets.
+- [ ] `P0` Configure staging frontend.
+- [ ] `P0` Configure staging API.
+- [ ] `P0` Use synthetic data only in staging.
+- [ ] `P0` Run smoke tests against staging.
+- [ ] `P0` Run Playwright against staging.
+- [ ] `P0` Run POPIA tests against staging-safe data.
+- [ ] `P0` Run backup/restore drill against staging.
+- [ ] `P0` Run security scan against staging.
+- [ ] `P1` Run load smoke test against staging.
+- [ ] `P0` Produce staging acceptance report.
 
 ---
 
-# 28. Immediate Next 20 Tasks
+# 13. Backup, restore, and disaster recovery
 
-1. [x] Fix or complete `/ready` so it reflects dependency readiness accurately.
-2. [ ] Confirm Dockerfile naming consistency between CI, compose, and production deployment.
-3. [ ] Create `docs/environment_variables.md`.
-4. [ ] Create `docs/release_checklist.md`.
-5. [ ] Protect `master` with required checks.
-6. [ ] Add PR template with security/POPIA/migration checkboxes.
-7. [ ] Add object-level authorization tests for learner/guardian access.
-8. [ ] Add consent-bypass negative tests for all learner-data routes.
-9. [ ] Add LLM PII-redaction tests.
-10. [ ] Add structured lesson output schema and validator.
-11. [ ] Add CAPS topic map MVP for the first supported grade/subject.
-12. [ ] Add E2E test for guardian signup → consent → learner diagnostic → first lesson.
-13. [ ] Add backup/restore documentation and run first restore test.
-14. [ ] Add admin/support access audit events.
-15. [ ] Add production CORS/security-header verification tests.
-16. [ ] Add OpenAPI schema generation and diff artifact in CI.
-17. [ ] Add data inventory for learner, guardian, consent, audit, diagnostic, lesson, and billing data.
-18. [ ] Add child-friendly privacy notice draft.
-19. [ ] Add parent-facing “How EduBoost uses AI” page.
-20. [ ] Publish first beta release only after the above items are complete and verified.
+## 13.1 PostgreSQL backups
+
+- [ ] `P0` Enable automated PostgreSQL backups.
+- [ ] `P0` Encrypt PostgreSQL backups.
+- [ ] `P0` Store backups in separate failure domain.
+- [ ] `P0` Define daily retention.
+- [ ] `P0` Define weekly retention.
+- [ ] `P0` Define monthly retention.
+- [ ] `P0` Add backup success metric.
+- [ ] `P0` Add backup failure metric.
+- [ ] `P0` Add backup failure alert.
+- [ ] `P0` Document backup configuration.
+- [ ] `P0` Add backup runbook.
+- [ ] `P1` Add backup integrity verification.
+- [ ] `P1` Add backup cost monitoring.
+
+## 13.2 Restore tests
+
+- [ ] `P0` Perform restore test into clean environment.
+- [ ] `P0` Validate guardian records after restore.
+- [ ] `P0` Validate learner records after restore.
+- [ ] `P0` Validate consent states after restore.
+- [ ] `P0` Validate audit records after restore.
+- [ ] `P0` Validate billing states after restore.
+- [ ] `P0` Validate diagnostic records after restore.
+- [ ] `P0` Validate lesson metadata after restore.
+- [ ] `P0` Validate Alembic version after restore.
+- [ ] `P0` Record restore duration.
+- [ ] `P0` Record restore evidence.
+- [ ] `P1` Automate restore test in staging on schedule.
+
+## 13.3 RPO/RTO and DR
+
+- [ ] `P0` Define RPO.
+- [ ] `P0` Define RTO.
+- [ ] `P0` Create `docs/disaster_recovery.md`.
+- [ ] `P0` Add restore runbook.
+- [ ] `P0` Add failover runbook.
+- [ ] `P0` Add rollback runbook.
+- [ ] `P0` Add emergency contacts.
+- [ ] `P0` Add disaster declaration criteria.
+- [ ] `P1` Run disaster recovery tabletop exercise.
+- [ ] `P1` Add post-DR validation checklist.
+- [ ] `P2` Add cross-region recovery plan if required.
+
+## 13.4 Redis recoverability
+
+- [ ] `P1` Decide Redis recoverability model.
+- [ ] `P1` Document whether Redis is disposable.
+- [ ] `P1` Document token revocation impact if Redis is lost.
+- [ ] `P1` Document cache impact if Redis is lost.
+- [ ] `P1` Document job status impact if Redis is lost.
+- [ ] `P1` Document rate-limit impact if Redis is lost.
+- [ ] `P1` Add Redis outage test.
+- [ ] `P1` Add degraded-mode behavior for Redis outage.
+- [ ] `P2` Add Redis failover test if using managed failover.
 
 ---
 
-# 29. Strategic Product Direction
+# 14. Testing, release evidence, and quality gates
 
-EduBoost should position itself as:
+## 14.1 Backend tests
 
-> **A privacy-first, CAPS-aligned adaptive learning platform for South African primary learners, combining diagnostic precision, AI-assisted remediation, parent visibility, and low-bandwidth accessibility.**
+- [ ] `P0` Maintain backend unit coverage at or above 80%.
+- [ ] `P0` Add unit tests for API envelope.
+- [ ] `P0` Add unit tests for error contract.
+- [ ] `P0` Add unit tests for auth security helpers.
+- [ ] `P0` Add unit tests for token revocation.
+- [ ] `P0` Add unit tests for consent policy.
+- [ ] `P0` Add unit tests for LLM PII redaction.
+- [ ] `P0` Add unit tests for CAPS validator.
+- [ ] `P0` Add unit tests for IRT engine.
+- [ ] `P0` Add unit tests for repository layer.
+- [ ] `P0` Add integration tests for auth flows.
+- [ ] `P0` Add integration tests for consent flows.
+- [ ] `P0` Add integration tests for POPIA workflows.
+- [ ] `P0` Add integration tests for diagnostics.
+- [ ] `P0` Add integration tests for lesson generation.
+- [ ] `P0` Add integration tests for billing webhooks.
+- [ ] `P0` Add integration tests for audit trail.
+- [ ] `P0` Add smoke tests for `/health`.
+- [ ] `P0` Add smoke tests for `/ready`.
+- [ ] `P0` Add smoke tests for `/metrics`.
+- [ ] `P0` Add smoke tests for `/docs`.
+- [ ] `P0` Add smoke tests for `/openapi.json`.
 
-The defensible advantage is not simply “AI lessons.” The moat should be:
+## 14.2 Frontend tests
 
-1. Consent-safe learner data handling.
-2. CAPS-grounded content and diagnostics.
-3. Adaptive remediation from measured learning gaps.
-4. Parent and teacher visibility.
-5. South African languages, context, and infrastructure realism.
-6. Transparent AI with validation, review, and accountability.
+- [ ] `P0` Maintain frontend coverage at or above agreed threshold.
+- [ ] `P0` Add component tests for signup.
+- [ ] `P0` Add component tests for login.
+- [ ] `P0` Add component tests for consent.
+- [ ] `P0` Add component tests for diagnostic.
+- [ ] `P0` Add component tests for lesson view.
+- [ ] `P0` Add component tests for parent dashboard.
+- [ ] `P0` Add tests for API client envelope parsing.
+- [ ] `P0` Add tests for API client error parsing.
+- [ ] `P0` Add tests for route guards.
+- [ ] `P1` Add tests for loading states.
+- [ ] `P1` Add tests for empty states.
+- [ ] `P1` Add tests for failure states.
+- [ ] `P1` Add tests for retry states.
+- [ ] `P1` Add mobile viewport tests.
+- [ ] `P1` Add accessibility tests.
+- [ ] `P1` Add PWA/offline tests.
 
-Build toward that, and EduBoost becomes more than another education app. It becomes trustworthy localized learning infrastructure.
+## 14.3 E2E tests
 
-## Notes
+- [ ] `P0` Add Playwright E2E for guardian signup.
+- [ ] `P0` Add Playwright E2E for learner profile creation.
+- [ ] `P0` Add Playwright E2E for consent capture.
+- [ ] `P0` Add Playwright E2E for diagnostic session.
+- [ ] `P0` Add Playwright E2E for study plan.
+- [ ] `P0` Add Playwright E2E for lesson completion.
+- [ ] `P0` Add Playwright E2E for parent report.
+- [ ] `P0` Add Playwright E2E for POPIA export request.
+- [ ] `P0` Add Playwright E2E for erasure request.
+- [ ] `P1` Add Playwright E2E for billing subscription if billing in beta scope.
+- [ ] `P1` Add Playwright E2E for password reset.
+- [ ] `P1` Add Playwright E2E for session expiry.
+- [ ] `P1` Add Playwright E2E for mobile viewport.
 
-- This tracker replaces the earlier stale TODO that described a different and
-  much older migration state.
-- The comparative audit raised several issues that are already obsolete in the
-  current working repository; those are marked `[done]` above so they remain
-  visible without pretending they still need action.
+## 14.4 Security tests
+
+- [ ] `P0` Run SAST.
+- [ ] `P0` Run Python dependency audit.
+- [ ] `P0` Run npm dependency audit.
+- [ ] `P0` Run Docker image scan.
+- [ ] `P0` Run secrets scan.
+- [ ] `P0` Add CORS tests.
+- [ ] `P0` Add CSRF tests.
+- [ ] `P0` Add cookie policy tests.
+- [ ] `P0` Add rate-limit tests.
+- [ ] `P0` Add object-authorization tests.
+- [ ] `P0` Add consent-bypass tests.
+- [ ] `P1` Run penetration-test checklist.
+- [ ] `P1` Add abuse-case tests.
+
+## 14.5 Release evidence
+
+- [ ] `P0` Generate backend image digest.
+- [ ] `P0` Generate frontend build/image digest.
+- [ ] `P0` Record migration revision.
+- [ ] `P0` Generate changelog entry.
+- [ ] `P0` Generate SBOM.
+- [ ] `P0` Attach backend test reports.
+- [ ] `P0` Attach frontend test reports.
+- [ ] `P0` Attach coverage reports.
+- [ ] `P0` Attach security scan reports.
+- [ ] `P0` Attach OpenAPI schema hash.
+- [ ] `P0` Attach deployment manifest.
+- [ ] `P0` Attach rollback plan.
+- [ ] `P0` Attach repo-state verification.
+- [ ] `P0` Attach staging acceptance report.
+- [ ] `P0` Block production promotion if evidence bundle missing.
+- [ ] `P1` Add `scripts/build_release_evidence.py` if not complete.
+- [ ] `P1` Add release evidence validation script.
+
+---
+
+# 15. Security posture and threat modeling
+
+## 15.1 Security headers, CORS, and CSRF
+
+- [ ] `P0` Verify security headers in staging.
+- [ ] `P0` Verify HSTS where TLS is terminated.
+- [ ] `P0` Verify `X-Content-Type-Options`.
+- [ ] `P0` Verify frame-ancestors or X-Frame-Options.
+- [ ] `P0` Verify CSP if feasible.
+- [ ] `P0` Verify production CORS allowlist.
+- [ ] `P0` Remove wildcard origins in production.
+- [ ] `P0` Define CSRF strategy for cookie-based auth.
+- [ ] `P0` Add CSRF tests.
+- [ ] `P1` Add security-header tests.
+- [ ] `P1` Document browser security model.
+
+## 15.2 Secrets
+
+- [ ] `P0` Run gitleaks on full history.
+- [ ] `P0` Run detect-secrets or equivalent.
+- [ ] `P0` Verify no real secrets remain active from git history.
+- [ ] `P0` Rotate any exposed or possibly exposed secrets.
+- [ ] `P0` Store production secrets in Key Vault or equivalent.
+- [ ] `P0` Ensure local `.env` is ignored.
+- [ ] `P0` Ensure `.env.example` has no real secrets.
+- [ ] `P1` Add secret rotation schedule.
+- [ ] `P1` Add secret access audit.
+- [ ] `P1` Add emergency secret rotation runbook.
+
+## 15.3 Threat model
+
+- [ ] `P1` Create `docs/threat_model.md`.
+- [ ] `P1` Model learner data exposure.
+- [ ] `P1` Model consent bypass.
+- [ ] `P1` Model account takeover.
+- [ ] `P1` Model prompt injection.
+- [ ] `P1` Model LLM PII leakage.
+- [ ] `P1` Model billing webhook replay.
+- [ ] `P1` Model data export abuse.
+- [ ] `P1` Model admin misuse.
+- [ ] `P1` Model audit tampering.
+- [ ] `P1` Model dependency supply-chain compromise.
+- [ ] `P1` Add mitigations for each threat.
+- [ ] `P1` Add tests or controls for high-risk threats.
+- [ ] `P2` Review threat model every release.
+
+## 15.4 Pen-test readiness
+
+- [ ] `P1` Finalize penetration-test checklist.
+- [ ] `P1` Run auth pen-test checks.
+- [ ] `P1` Run authorization pen-test checks.
+- [ ] `P1` Run POPIA workflow abuse checks.
+- [ ] `P1` Run API input validation checks.
+- [ ] `P1` Run rate-limit abuse checks.
+- [ ] `P1` Run LLM prompt-injection checks.
+- [ ] `P1` Run file/export abuse checks.
+- [ ] `P1` Run admin access checks.
+- [ ] `P1` Record findings.
+- [ ] `P1` Fix critical/high findings before beta.
+- [ ] `P2` Schedule recurring security scans.
+
+---
+
+# 16. Incident response, operations, and support
+
+## 16.1 Incident response docs
+
+- [ ] `P0` Create `docs/incident_response.md`.
+- [ ] `P0` Define incident severity levels.
+- [ ] `P0` Define incident commander role.
+- [ ] `P0` Define escalation contacts.
+- [ ] `P0` Define security incident workflow.
+- [ ] `P0` Define learner data exposure workflow.
+- [ ] `P0` Define auth outage workflow.
+- [ ] `P0` Define billing outage workflow.
+- [ ] `P0` Define AI content safety incident workflow.
+- [ ] `P0` Define data corruption workflow.
+- [ ] `P0` Define availability outage workflow.
+- [ ] `P0` Define compliance request failure workflow.
+- [ ] `P0` Add breach response procedure.
+- [ ] `P0` Add postmortem template.
+- [ ] `P1` Run incident tabletop exercise.
+- [ ] `P1` Record tabletop results.
+- [ ] `P1` Fix gaps found in tabletop.
+
+## 16.2 Emergency controls
+
+- [ ] `P0` Add ability to disable lesson generation.
+- [ ] `P0` Add ability to revoke all sessions.
+- [ ] `P0` Add ability to disable an LLM provider.
+- [ ] `P0` Add ability to freeze billing webhooks.
+- [ ] `P0` Add maintenance mode.
+- [ ] `P0` Add ability to pause data exports during incident if legally permissible.
+- [ ] `P0` Add ability to disable new signups.
+- [ ] `P0` Audit all emergency actions.
+- [ ] `P1` Add admin UI or runbook commands for emergency actions.
+- [ ] `P1` Test emergency actions in staging.
+
+## 16.3 Support workflows
+
+- [ ] `P1` Create support runbook for failed login.
+- [ ] `P1` Create support runbook for consent issue.
+- [ ] `P1` Create support runbook for data export request.
+- [ ] `P1` Create support runbook for erasure request.
+- [ ] `P1` Create support runbook for lesson quality complaint.
+- [ ] `P1` Create support runbook for billing dispute.
+- [ ] `P1` Create support runbook for parent account recovery.
+- [ ] `P1` Add support escalation labels.
+- [ ] `P1` Add support SLA targets.
+- [ ] `P2` Build support dashboard.
+
+---
+
+# 17. Documentation, ADRs, and claim discipline
+
+## 17.1 Required production docs
+
+- [ ] `P0` Update `README.md`.
+- [ ] `P0` Update `docs/project_status.md`.
+- [ ] `P0` Add or update `docs/api_v2.md`.
+- [ ] `P0` Commit `docs/openapi.json`.
+- [ ] `P0` Add or update `docs/environment_variables.md`.
+- [ ] `P0` Add or update `docs/release_checklist.md`.
+- [ ] `P0` Add or update `docs/repository_governance.md`.
+- [ ] `P0` Add or update `SECURITY.md`.
+- [ ] `P0` Add or update `docs/incident_response.md`.
+- [ ] `P0` Add or update `docs/disaster_recovery.md`.
+- [ ] `P0` Add or update `docs/popia_compliance.md`.
+- [ ] `P0` Add or update `docs/data_inventory.md`.
+- [ ] `P0` Add or update `docs/data_retention_policy.md`.
+- [ ] `P0` Add or update `docs/subprocessor_register.md`.
+- [ ] `P1` Add or update `docs/testing_strategy.md`.
+- [ ] `P1` Add or update `docs/deployment.md`.
+- [ ] `P1` Add or update `docs/observability.md`.
+
+## 17.2 ADRs
+
+- [ ] `P1` Write ADR for modular monolith.
+- [ ] `P1` Write ADR for FastAPI V2.
+- [ ] `P1` Write ADR for Next.js frontend.
+- [ ] `P1` Write ADR for PostgreSQL audit ledger.
+- [ ] `P1` Write ADR for Redis revocation/job state.
+- [ ] `P1` Write ADR for LLM provider abstraction.
+- [ ] `P1` Write ADR for POPIA-first design.
+- [ ] `P1` Write ADR for CAPS alignment.
+- [ ] `P1` Write ADR for production deployment target.
+- [ ] `P1` Write ADR for billing provider.
+- [ ] `P1` Write ADR for notification provider.
+- [ ] `P1` Write ADR for observability stack.
+- [ ] `P1` Write ADR for business-logic location.
+- [ ] `P1` Write ADR for API envelope.
+- [ ] `P1` Write ADR for OpenAPI contract governance.
+
+## 17.3 Claim discipline
+
+- [ ] `P0` Remove or correct “V1 fully deleted” if legacy shims/archive remain.
+- [ ] `P0` Remove or correct “no microservices” if inference sidecar remains.
+- [ ] `P0` Remove or correct “ACA target” vs Kubernetes deployment mismatch.
+- [ ] `P0` Remove or correct “production-ready” unless all release gates pass.
+- [ ] `P0` Avoid claiming full CAPS coverage until validated.
+- [ ] `P0` Avoid claiming full POPIA compliance until tests/legal docs pass.
+- [ ] `P0` Label claims as `implemented`.
+- [ ] `P0` Label claims as `tested`.
+- [ ] `P0` Label claims as `CI verified`.
+- [ ] `P0` Label claims as `staging verified`.
+- [ ] `P0` Label claims as `production verified`.
+- [ ] `P0` Label claims as `planned`.
+- [ ] `P0` Label claims as `blocked`.
+- [ ] `P1` Add docs linting to CI.
+- [ ] `P1` Add docs link checker to CI.
+- [ ] `P1` Add docs owner review requirement.
+
+---
+
+# 18. Beta launch, staging acceptance, and product scope
+
+## 18.1 Staging acceptance
+
+- [ ] `P0` Deploy staging environment.
+- [ ] `P0` Use synthetic data only in staging.
+- [ ] `P0` Run backend smoke tests against staging.
+- [ ] `P0` Run frontend Playwright tests against staging.
+- [ ] `P0` Run POPIA workflows against staging.
+- [ ] `P0` Run backup/restore drill against staging.
+- [ ] `P0` Run security scan against staging.
+- [ ] `P0` Run load smoke test against staging.
+- [ ] `P0` Verify dashboards in staging.
+- [ ] `P0` Verify alerts in staging.
+- [ ] `P0` Verify incident runbook against staging.
+- [ ] `P0` Produce staging acceptance report.
+- [ ] `P0` Add staging acceptance report to release evidence bundle.
+
+## 18.2 Public beta scope
+
+- [ ] `P0` Define supported grades.
+- [ ] `P0` Define supported subjects.
+- [ ] `P0` Define supported languages.
+- [ ] `P0` Define supported lesson types.
+- [ ] `P0` Define supported diagnostic flows.
+- [ ] `P0` Define supported payment modes.
+- [ ] `P0` Define unsupported features.
+- [ ] `P0` Define pilot user count.
+- [ ] `P0` Define parent consent onboarding script.
+- [ ] `P0` Define support escalation path.
+- [ ] `P0` Define feedback collection process.
+- [ ] `P0` Define AI-content issue-reporting flow.
+- [ ] `P0` Define manual content review SLA.
+- [ ] `P0` Define go/no-go criteria.
+- [ ] `P0` Hold go/no-go review.
+- [ ] `P0` Record go/no-go decision.
+
+## 18.3 Release and rollback
+
+- [ ] `P0` Generate release evidence bundle.
+- [ ] `P0` Create signed release tag.
+- [ ] `P0` Deploy release candidate to staging.
+- [ ] `P0` Run smoke tests.
+- [ ] `P0` Test rollback.
+- [ ] `P0` Document rollback result.
+- [ ] `P0` Approve production promotion only if all release blockers pass.
+- [ ] `P1` Add post-release monitoring checklist.
+- [ ] `P1` Add first-24-hours monitoring schedule.
+
+---
+
+# 19. Roadmap after production-readiness baseline
+
+## 19.1 Product expansion
+
+- [ ] `P2` Add teacher dashboard if not in beta scope.
+- [ ] `P2` Add classroom diagnostics.
+- [ ] `P2` Add class intervention groups.
+- [ ] `P2` Add teacher-facing CAPS coverage export.
+- [ ] `P2` Add parent co-pilot weekly guidance.
+- [ ] `P2` Add sponsored learner model.
+- [ ] `P2` Add NGO/community partnership workflows.
+- [ ] `P2` Add printable worksheets.
+- [ ] `P2` Add offline lesson packs.
+- [ ] `P3` Add all 11 official South African languages.
+- [ ] `P3` Add advanced analytics for learning velocity.
+- [ ] `P3` Add curriculum graph visualization.
+
+## 19.2 Technical scale
+
+- [ ] `P2` Add load testing suite.
+- [ ] `P2` Define concurrency targets.
+- [ ] `P2` Define learner journey SLOs.
+- [ ] `P2` Define LLM latency SLOs.
+- [ ] `P2` Define diagnostic latency SLOs.
+- [ ] `P2` Add autoscaling policy.
+- [ ] `P2` Add cache hit-rate goals.
+- [ ] `P2` Add cost-per-lesson metric.
+- [ ] `P3` Split inference service only if load evidence demands it.
+- [ ] `P3` Consider diagnostics service split only if load evidence demands it.
+
+## 19.3 Research
+
+- [ ] `Research` Investigate retrieval-augmented generation using approved CAPS content only.
+- [ ] `Research` Investigate local/smaller models.
+- [ ] `Research` Investigate Bayesian Knowledge Tracing.
+- [ ] `Research` Investigate Deep Knowledge Tracing.
+- [ ] `Research` Conduct educator review of generated lessons.
+- [ ] `Research` Conduct parent usability interviews.
+- [ ] `Research` Conduct learner usability testing with consent.
+- [ ] `Research` Conduct low-bandwidth UX testing.
+
+---
+
+# 20. Final release-blocker checklist
+
+All items below must be complete before public beta or production use with real learner data.
+
+```text
+[ ] Latest repo head verified by merge marker and SHA
+[ ] Canonical repo/branch/release authority documented
+[ ] PR-002R implemented and verified
+[ ] app.api_v2 imports cleanly
+[ ] app/api_v2.py router-registration defect fixed
+[ ] /health passes
+[ ] /ready passes with real dependencies
+[ ] /metrics exposes Prometheus metrics
+[ ] /docs loads
+[ ] /openapi.json loads
+[ ] OpenAPI schema committed
+[ ] OpenAPI drift check passes
+[ ] API response envelope standardized
+[ ] API error envelope standardized
+[ ] Legacy routes excluded
+[ ] Auth flows pass
+[ ] Token rotation/revocation verified
+[ ] Cookie policy verified
+[ ] Object-level authorization tests pass
+[ ] Consent gate check script passes
+[ ] Consent bypass negative tests pass
+[ ] POPIA export workflow tested
+[ ] POPIA erasure workflow tested
+[ ] POPIA correction workflow tested
+[ ] POPIA restriction workflow tested
+[ ] Audit chain verified
+[ ] Audit completeness tests pass
+[ ] LLM PII sweep passes
+[ ] AI output validators pass
+[ ] Independent answer-key checking implemented
+[ ] CAPS topic map MVP validated
+[ ] CAPS claims reviewed and limited to evidence
+[ ] Diagnostic IRT tests pass
+[ ] Minimum item bank exists for launch scope
+[ ] Database migrations pass from empty DB
+[ ] Schema integrity validation passes
+[ ] Backup/restore drill completed
+[ ] RPO/RTO documented
+[ ] CI branch/deployment contradictions resolved
+[ ] Docker images build cleanly
+[ ] Docker images run as non-root
+[ ] Production secrets stored outside repo
+[ ] Security scans pass or have accepted risk records
+[ ] Staging deployment completed
+[ ] Staging smoke tests pass
+[ ] Playwright E2E passes against staging
+[ ] Dashboards live
+[ ] Alerts live
+[ ] Incident response runbook complete
+[ ] Tabletop exercise completed
+[ ] Privacy Policy drafted and reviewed
+[ ] Terms of Service drafted and reviewed
+[ ] Parent Consent Notice drafted and reviewed
+[ ] Child-friendly Privacy Notice drafted and reviewed
+[ ] Release evidence bundle generated
+[ ] Rollback tested
+[ ] Go/no-go review completed
+```
+
+---
+
+## Execution recommendation
+
+Execute in this order:
+
+1. **PR-002R runtime/API contract baseline**
+2. **Security and POPIA negative tests**
+3. **CI/CD and deployment target alignment**
+4. **Database migration and backup/restore proof**
+5. **AI/CAPS validation and diagnostic item-bank proof**
+6. **Frontend E2E, accessibility, and parent/learner journeys**
+7. **Staging acceptance, incident response, and release evidence**
+8. **Controlled public beta**
+
+This TODO intentionally favors evidence over optimism. EduBoost V2 should only claim production readiness where code, tests, CI, staging, and operational runbooks prove it.

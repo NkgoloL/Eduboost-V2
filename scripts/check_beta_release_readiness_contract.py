@@ -30,6 +30,9 @@ REQUIRED_SNIPPETS = (
     "rollback procedure",
     "privacy/POPIA sign-off",
     "make beta-release-readiness-contract-check",
+    "documentation contract",
+    "not, by itself, a release go/no-go decision",
+    "checks the document contract only",
 )
 
 
@@ -59,6 +62,7 @@ def run_checks() -> list[BetaReleaseReadinessResult]:
 def main() -> int:
     results = run_checks()
     print("Beta release readiness contract check")
+    print("Scope: documentation contract only; not a release go/no-go decision")
     for result in results:
         status = "PASS" if result.ok else "FAIL"
         print(f"- {status}: {result.detail}")

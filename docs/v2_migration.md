@@ -21,7 +21,7 @@ not so complete that every historical surface has vanished.
 
 The repository still keeps:
 
-- [`app/api/main.py`](/app/api/main.py) as a compatibility import shim
+- [`app/legacy/api/main.py`](/app/legacy/api/main.py) as a compatibility import shim
 - archived legacy runtime code under [`app/legacy`](/app/legacy/DEPRECATED.md)
 - a narrow set of migration-era compatibility behaviors instead of a total
   hard delete of every old path

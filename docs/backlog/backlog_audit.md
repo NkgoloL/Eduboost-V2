@@ -104,7 +104,7 @@ Open items: 22 — Partial 19, Missing 2, Blocked 0, Human-decision 1.
 | TODO-042 | high | Partial | Define service contracts for auth, learners, guardians, consent, diagnostics, lessons, study plans, gamification, billing, audit, POPIA export, and erasure. | app/services; app/modules |
 | TODO-190 | critical | Partial | Standardize response envelopes: `data`, `error`, `meta`, and `request_id`. | app/core/exceptions.py; app/domain/api_v2_models.py |
 | TODO-191 | critical | Partial | Standardize error shape: machine code, human message, field errors, request ID, and remediation hint. | app/core/exceptions.py |
-| TODO-035 | critical | Missing | Ensure `app/api/main.py` remains a compatibility shim only and cannot diverge from V2 behavior. | — |
+| TODO-035 | critical | Missing | Ensure `app/legacy/api/main.py` remains a compatibility shim only and cannot diverge from V2 behavior. | — |
 | TODO-048 | high | Partial | Standardize FastAPI dependencies for current user, current learner, guardian relationship, role checks, consent checks, DB session, audit context, request ID, and rate-limit identity. | app/core/dependencies.py; app/core/security.py |
 | TODO-037 | high | Partial | Add tests proving legacy-only routes are not accidentally exposed as production APIs. | tests/legacy |
 | TODO-036 | high | Partial | Add a regression test that imports the V2 app using every documented deployment command. | tests/test_entrypoints.py; .github/workflows/ci-cd.yml |

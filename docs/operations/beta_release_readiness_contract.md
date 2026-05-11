@@ -5,6 +5,12 @@
 Cluster H defines the minimum evidence required before EduBoost V2 can be
 considered ready for a controlled staging or beta release.
 
+This is a **documentation contract**. `make beta-release-readiness-contract-check`
+verifies that the required evidence categories and governance language are
+present; it is not, by itself, a release go/no-go decision. A release decision
+also requires the runtime, OpenAPI, smoke, frontend, migration, backup/restore,
+staging, and approval checks listed below to pass on the current commit.
+
 ## Required Evidence Clusters
 
 - PR-002R backend runtime and API contract closure
@@ -47,6 +53,9 @@ backup/restore readiness, and documented release evidence.
 ```bash
 make beta-release-readiness-contract-check
 ```
+
+This command checks the document contract only. Use it as one input to release
+readiness, not as proof that the release is ready.
 
 ## Operational Release Control Evidence
 

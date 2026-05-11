@@ -10,6 +10,7 @@ from typing import Any
 from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 from jose import JWTError
 from sqlalchemy.exc import IntegrityError
 from slowapi.errors import RateLimitExceeded
@@ -177,7 +178,7 @@ def register_exception_handlers(app: FastAPI) -> None:
             status.HTTP_422_UNPROCESSABLE_ENTITY,
             "validation_error",
             "Request validation failed",
-            {"errors": exc.errors()},
+            {"errors": jsonable_encoder(exc.errors())},
             _request_id(request),
             field_errors=_validation_field_errors(exc),
         )
