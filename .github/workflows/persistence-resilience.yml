@@ -1,0 +1,77 @@
+name: Persistence Resilience
+
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+      - "release/**"
+    paths:
+      - "alembic/**"
+      - "app/models/**"
+      - "app/repositories/**"
+      - "docs/database/**"
+      - "docs/operations/**"
+      - "scripts/*migration*"
+      - "scripts/*database*"
+      - "scripts/*backup*"
+      - "scripts/*restore*"
+      - "scripts/check_persistence_resilience_evidence.py"
+      - "tests/unit/test_persistence_resilience_evidence.py"
+      - "Makefile"
+      - ".github/workflows/persistence-resilience.yml"
+  push:
+    branches:
+      - master
+      - main
+      - "release/**"
+    paths:
+      - "alembic/**"
+      - "app/models/**"
+      - "app/repositories/**"
+      - "docs/database/**"
+      - "docs/operations/**"
+      - "scripts/*migration*"
+      - "scripts/*database*"
+      - "scripts/*backup*"
+      - "scripts/*restore*"
+      - "scripts/check_persistence_resilience_evidence.py"
+      - "tests/unit/test_persistence_resilience_evidence.py"
+      - "Makefile"
+      - ".github/workflows/persistence-resilience.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  persistence-resilience-check:
+    name: Check persistence resilience evidence
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt
+          fi
+          if [ -f requirements-dev.txt ]; then
+            python -m pip install -r requirements-dev.txt
+          fi
+
+      - name: Run persistence resilience evidence tests
+        run: pytest tests/unit/test_persistence_resilience_evidence.py -q --no-cov
+
+      - name: Run aggregate persistence resilience check
+        run: make persistence-resilience-check

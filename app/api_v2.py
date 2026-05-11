@@ -102,22 +102,28 @@ from app.api_v2_routers import (  # noqa: E402
 )
 
 API_V2 = "/api/v2"
-for prefix in (API_V2, "/v2"):
-    app.include_router(auth.router, prefix=prefix)
-    app.include_router(learners.router, prefix=prefix)
-    app.include_router(lessons.router, prefix=prefix)
-    app.include_router(study_plans.router, prefix=prefix)
-    app.include_router(diagnostics.router, prefix=prefix)
-    app.include_router(practice_router.router, prefix=prefix)
-    app.include_router(gamification.router, prefix=prefix)
-    app.include_router(onboarding.router, prefix=prefix)
-    app.include_router(parents.router, prefix=prefix)
-    app.include_router(billing.router, prefix=prefix)
-    app.include_router(consent.router, prefix=prefix)
-    app.include_router(consent_renewal.router, prefix=prefix)
-    app.include_router(popia.router, prefix=prefix)
-    app.include_router(jobs.router, prefix=prefix)
-    app.include_router(system.router, prefix=prefix)
+API_PREFIXES = (API_V2, "/v2")
+ROUTER_REGISTRY = (
+    ("auth", auth.router),
+    ("learners", learners.router),
+    ("lessons", lessons.router),
+    ("study_plans", study_plans.router),
+    ("diagnostics", diagnostics.router),
+    ("practice", practice_router.router),
+    ("gamification", gamification.router),
+    ("onboarding", onboarding.router),
+    ("parents", parents.router),
+    ("billing", billing.router),
+    ("consent", consent.router),
+    ("consent_renewal", consent_renewal.router),
+    ("popia", popia.router),
+    ("jobs", jobs.router),
+    ("system", system.router),
+)
+
+for prefix in API_PREFIXES:
+    for _router_name, router in ROUTER_REGISTRY:
+        app.include_router(router, prefix=prefix)
 
 
 @app.get("/health", tags=["ops"])

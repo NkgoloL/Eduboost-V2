@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 PYTHON ?= python3
 
-.PHONY: help dev test lint typecheck migrate docs clean migration-check schema-integrity migration-smoke openapi openapi-check route-inventory route-inventory-check runtime-check pr002r-check beta-release-readiness-contract-check phase2-authz-check
+.PHONY: help dev test lint typecheck migrate docs clean migration-check schema-integrity migration-smoke openapi openapi-check route-inventory route-inventory-check runtime-check verify-repo-state pr002r-check beta-release-readiness-contract-check phase2-authz-check
 
 help:
 	@echo "Available commands:"
@@ -16,6 +16,7 @@ help:
 	@echo "  route-inventory - Generate docs/route_inventory.md"
 	@echo "  route-inventory-check - Verify docs/route_inventory.md is current"
 	@echo "  runtime-check   - Verify FastAPI runtime entrypoints"
+	@echo "  verify-repo-state - Verify repository provenance and release branch expectations"
 	@echo "  pr002r-check   - Verify PR-002R evidence bundle"
 	@echo "  beta-release-readiness-contract-check - Verify release-readiness docs contract wording"
 	@echo "  clean           - Remove temporary files"
@@ -53,6 +54,9 @@ route-inventory-check:
 
 runtime-check:
 	$(PYTHON) scripts/check_runtime_entrypoints.py
+
+verify-repo-state:
+	$(PYTHON) scripts/verify_repo_state.py --expected-branch "$${EXPECTED_RELEASE_BRANCH:-master}" $${VERIFY_REPO_STATE_ARGS:-}
 
 pr002r-check:
 	$(PYTHON) scripts/check_pr002r_evidence.py
@@ -95,6 +99,9 @@ phase2-authz-closure:
 audit-contract-check:
 	$(PYTHON) scripts/check_audit_event_contracts.py
 
+auth-boundary-check:
+	$(PYTHON) scripts/check_auth_boundary_evidence.py
+
 popia-consent-gate-check:
 	$(PYTHON) scripts/generate_consent_gate_inventory.py
 	$(PYTHON) scripts/check_consent_gate_inventory.py
@@ -117,6 +124,9 @@ popia-consent-source-check:
 
 popia-consent-closure-check:
 	$(PYTHON) scripts/check_popia_consent_closure.py
+
+privacy-boundary-check:
+	$(PYTHON) scripts/check_privacy_boundary_evidence.py
 
 environment-security-check:
 	$(PYTHON) scripts/check_environment_security_contract.py
@@ -178,6 +188,9 @@ database-resilience-env-matrix-check:
 production-restore-approval-check:
 	$(PYTHON) scripts/check_production_restore_approval.py
 
+persistence-resilience-check:
+	$(PYTHON) scripts/check_persistence_resilience_evidence.py
+
 caps-alignment-contract-check:
 	$(PYTHON) scripts/check_caps_alignment_contract.py
 
@@ -223,3 +236,6 @@ lesson-bank-check:
 diagnostics-assessment-check:
 	$(PYTHON) scripts/ci/check_diagnostics_assessment.py
 	pytest tests/unit/modules/diagnostics/test_irt_engine_hardening.py tests/unit/modules/diagnostics/test_session_lifecycle.py tests/unit/modules/progress/test_mastery_model.py tests/unit/modules/practice/test_practice_and_calibration.py --no-cov
+
+learning-evidence-check:
+	$(PYTHON) scripts/check_learning_evidence.py
