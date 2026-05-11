@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 PYTHON ?= python3
 
-.PHONY: help dev test lint typecheck migrate docs clean migration-check schema-integrity migration-smoke openapi openapi-check route-inventory route-inventory-check runtime-check verify-repo-state pr002r-check beta-release-readiness-contract-check api-envelope-error-contract-check release-candidate-evidence-sweep-check frontend-verification-evidence-check database-resilience-evidence-check phase2-authz-check popia-legal-check caps-learning-proof-check frontend-journey-check accessibility-pwa-e2e-check observability-ops-check
+.PHONY: help dev test lint typecheck migrate docs clean migration-check schema-integrity migration-smoke openapi openapi-check route-inventory route-inventory-check runtime-check verify-repo-state pr002r-check beta-release-readiness-contract-check api-envelope-error-contract-check release-candidate-evidence-sweep-check frontend-verification-evidence-check database-resilience-evidence-check privacy-legal-evidence-check phase2-authz-check popia-legal-check caps-learning-proof-check frontend-journey-check accessibility-pwa-e2e-check observability-ops-check
 
 help:
 	@echo "Available commands:"
@@ -22,6 +22,7 @@ help:
 	@echo "  release-candidate-evidence-sweep-check - Verify release-candidate evidence sweep"
 	@echo "  frontend-verification-evidence-check - Verify frontend verification evidence"
 	@echo "  database-resilience-evidence-check - Verify database resilience evidence"
+	@echo "  privacy-legal-evidence-check - Verify privacy and legal evidence"
 	@echo "  clean           - Remove temporary files"
 
 dev:
@@ -75,6 +76,9 @@ frontend-verification-evidence-check:
 
 database-resilience-evidence-check:
 	$(PYTHON) scripts/check_database_resilience_evidence.py
+
+privacy-legal-evidence-check:
+	$(PYTHON) scripts/check_privacy_legal_release_evidence.py
 
 api-envelope-error-contract-check:
 	$(PYTHON) scripts/check_api_envelope_error_contract.py
@@ -383,7 +387,7 @@ cluster-h-closure-check:
 	$(PYTHON) scripts/check_cluster_h_closure.py
 
 cluster-h-final-closeout-rollup-check:
-	$(PYTHON) scripts/check_cluster_h_final_closeout_rollup.py
+	$(PYTHON) scripts/check_final_closeout_rollup.py
 
 cluster-h-release-evidence-checksum-index-check:
 	$(PYTHON) scripts/check_cluster_h_release_evidence_checksum_index.py
