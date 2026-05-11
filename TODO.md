@@ -69,6 +69,17 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 
 ## Documentation drift correction plan
 
+## Batch evidence update: PR12 CAPS learning proof
+
+- [verify] `P0` Add an aggregate CAPS/learning proof gate for Grade 4
+  Mathematics scope, item schema, item-bank approval status, diagnostics, IRT,
+  and mastery evidence. Evidence: `docs/caps/caps_learning_proof.md`,
+  `scripts/check_caps_learning_proof.py`,
+  `tests/unit/test_caps_learning_proof.py`, and
+  `make caps-learning-proof-check` passed on 2026-05-11. Verification gap:
+  the item bank still has 14 approved starter items; generated candidates must
+  pass human approval before full production CAPS coverage can be claimed.
+
 - [x] `P0` Split status documentation into "Implemented in code" and
   "Verified by green runtime/CI evidence" categories. Evidence:
   `TODO.md`, `docs/current_state.md`.
