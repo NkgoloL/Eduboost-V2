@@ -36,12 +36,18 @@ Exit codes:
 from __future__ import annotations
 
 import argparse
+import asyncio
 import os
 import sys
 import json
 import logging
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 # ---------------------------------------------------------------------------
 # Logging setup — GitHub Actions compatible (::error:: annotations)
@@ -147,14 +153,14 @@ class IntegrityResult:
 # Job A: Threshold check (L5-04)
 # ---------------------------------------------------------------------------
 
-def run_threshold_check(repo: Any, dry_run: bool = False) -> list[ThresholdResult]:
+async def run_threshold_check(repo: Any, dry_run: bool = False) -> list[ThresholdResult]:
     """
     Query the lesson repository for approved lesson counts per caps_ref.
     Returns one ThresholdResult per launch caps_ref.
     """
     results: list[ThresholdResult] = []
     for caps_ref in LAUNCH_CAPS_REFS:
-        count = repo.count_approved_by_caps_ref(caps_ref)
+        count = await repo.count_approved_by_caps_ref_async(caps_ref)
         result = ThresholdResult(
             caps_ref=caps_ref,
             approved_count=count,
@@ -179,7 +185,7 @@ def run_threshold_check(repo: Any, dry_run: bool = False) -> list[ThresholdResul
 # Job B: Approved lesson integrity (L5-05)
 # ---------------------------------------------------------------------------
 
-def run_integrity_check(
+async def run_integrity_check(
     repo: Any,
     validator_cls: Any,
     caps_map_service_cls: Any,
@@ -192,7 +198,7 @@ def run_integrity_check(
     caps_svc = caps_map_service_cls()
     validator = validator_cls(caps_topic_map_service=caps_svc)
 
-    approved_lessons: list[dict[str, Any]] = repo.list_approved_lessons()
+    approved_lessons: list[dict[str, Any]] = await repo.list_approved_lessons_async()
     total = len(approved_lessons)
     violations: list[IntegrityViolation] = []
 
@@ -203,16 +209,16 @@ def run_integrity_check(
         caps_ref = str(lesson.get("caps_ref", "unknown"))
 
         result = validator.validate(lesson)
-        if not result.is_valid:
+        if not result.passed:
             violation = IntegrityViolation(
                 lesson_id=lesson_id,
                 caps_ref=caps_ref,
-                failed_rules=result.failed_rules,
+                failed_rules=result.failures,
             )
             violations.append(violation)
             _ci_error(
                 f"[INTEGRITY ✗] lesson_id={lesson_id} caps_ref={caps_ref} "
-                f"failed rules: {', '.join(result.failed_rules)}"
+                f"failed rules: {', '.join(result.failures)}"
             )
         else:
             log.debug("  ✓ lesson_id=%s caps_ref=%s", lesson_id, caps_ref)
@@ -269,7 +275,7 @@ def print_summary(
 # Entry point
 # ---------------------------------------------------------------------------
 
-def main() -> int:
+async def async_main() -> int:
     parser = argparse.ArgumentParser(description="EduBoost CI Lesson Bank Check")
     parser.add_argument(
         "--job",
@@ -291,21 +297,24 @@ def main() -> int:
 
     LessonValidator, CapsTopicMapService = _import_app_dependencies()
     LessonRepository = _import_db()
+    from app.core.database import AsyncSessionLocal
 
-    repo = LessonRepository()
     threshold_results: list[ThresholdResult] | None = None
     integrity_result: IntegrityResult | None = None
 
-    if args.job in ("threshold", "both"):
-        threshold_results = run_threshold_check(repo, dry_run=args.dry_run)
+    async with AsyncSessionLocal() as db:
+        repo = LessonRepository(db)
 
-    if args.job in ("validate", "both"):
-        integrity_result = run_integrity_check(
-            repo,
-            LessonValidator,
-            CapsTopicMapService,
-            dry_run=args.dry_run,
-        )
+        if args.job in ("threshold", "both"):
+            threshold_results = await run_threshold_check(repo, dry_run=args.dry_run)
+
+        if args.job in ("validate", "both"):
+            integrity_result = await run_integrity_check(
+                repo,
+                LessonValidator,
+                CapsTopicMapService,
+                dry_run=args.dry_run,
+            )
 
     print_summary(threshold_results, integrity_result)
 
@@ -350,6 +359,10 @@ def main() -> int:
     if threshold_ok and integrity_ok:
         return 0
     return 1
+
+
+def main() -> int:
+    return asyncio.run(async_main())
 
 
 if __name__ == "__main__":

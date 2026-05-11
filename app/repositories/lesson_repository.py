@@ -136,6 +136,33 @@ class LessonRepository:
         )
         return int(result.scalar_one())
 
+    async def list_approved_lessons_async(self) -> list[dict[str, Any]]:
+        result = await self._db().execute(
+            select(Lesson).where(Lesson.review_status == "approved").order_by(Lesson.caps_ref.asc(), Lesson.created_at.asc())
+        )
+        return [self._to_validator_payload(lesson) for lesson in result.scalars().all()]
+
+    @staticmethod
+    def _to_validator_payload(lesson: Lesson) -> dict[str, Any]:
+        return {
+            "lesson_id": lesson.id,
+            "grade": lesson.grade,
+            "subject": lesson.subject,
+            "topic": lesson.topic,
+            "caps_ref": lesson.caps_ref,
+            "explanation": lesson.explanation or lesson.content,
+            "worked_examples": lesson.worked_examples or [],
+            "practice_questions": lesson.practice_questions or [],
+            "answer_key": lesson.answer_key or [],
+            "answer_key_verified": lesson.answer_key_verified,
+            "provider": lesson.provider or lesson.llm_provider or "unknown",
+            "model_version": lesson.model_version or "unknown",
+            "generation_latency_ms": lesson.generation_latency_ms,
+            "token_usage": lesson.token_usage or {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0},
+            "prompt_template_version": lesson.prompt_template_version or "lesson_generation_v1",
+            "variant_type": lesson.variant_type or "standard",
+        }
+
 
 def get_lesson_repository(db: AsyncSession = Depends(get_db)) -> LessonRepository:
     return LessonRepository(db)
