@@ -181,6 +181,26 @@ cicd-staging-check:
 release-evidence-artifacts-check:
 	$(PYTHON) scripts/check_release_evidence_artifacts.py
 
+post-deploy-staging-smoke-checklist-check:
+	$(PYTHON) scripts/check_post_deploy_staging_smoke_checklist.py
+
+post-deploy-staging-smoke-check: post-deploy-staging-smoke-checklist-check
+
+staging-smoke-evidence-manifest-check:
+	$(PYTHON) scripts/check_staging_smoke_evidence_manifest.py
+
+observability-ops-check:
+	$(PYTHON) scripts/check_observability_ops_evidence.py
+
+release-state-snapshot-check:
+	$(PYTHON) scripts/check_release_state_snapshot.py
+
+release-candidate-tag-manifest-check:
+	$(PYTHON) scripts/check_release_candidate_tag_manifest.py
+
+staging-operations-release-evidence-check:
+	$(PYTHON) scripts/check_staging_operations_release_evidence.py
+
 database-backup-contract-check:
 	$(PYTHON) scripts/check_database_backup_contract.py
 
