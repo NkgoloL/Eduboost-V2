@@ -1,11 +1,13 @@
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 from collections.abc import AsyncGenerator
 
 import pytest
 import pytest_asyncio
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -20,12 +22,25 @@ ensure_repo_root_on_path()
 
 from app.core.database import AsyncSessionFactory, create_all_tables, drop_all_tables, engine
 
+
+def _require_test_database() -> bool:
+    return os.environ.get("EDUBOOST_REQUIRE_TEST_DB", "").lower() in {"1", "true", "yes"}
+
+
 @pytest_asyncio.fixture(scope="session")
 async def test_db_setup():
     """Create database tables only for tests that request database access."""
-    await create_all_tables()
-    yield
-    await drop_all_tables()
+    try:
+        await create_all_tables()
+    except (OSError, SQLAlchemyError) as exc:
+        if _require_test_database():
+            raise
+        pytest.skip(f"test database is unavailable: {exc}")
+
+    try:
+        yield
+    finally:
+        await drop_all_tables()
 
 
 @pytest_asyncio.fixture
