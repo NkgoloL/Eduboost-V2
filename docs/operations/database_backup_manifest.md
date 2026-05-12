@@ -1,9 +1,9 @@
 # Database Backup Manifest
 
-Manifest ID: `8f18edce062f0639`
-Generated: `2026-05-10T13:54:21Z`
-Branch: `codex/cluster-c-popia-consent-audi`
-Commit: `95e4e60b5374c33f492aed2f683305cd5f0a169a`
+Manifest ID: `42855f11d9fc6dc8`
+Generated: `2026-05-12T11:14:44Z`
+Branch: `codex/sync-frontend-lockfile-local`
+Commit: `b7ef0eb83946b356402c33b69a8b905c8fbac2bd`
 
 ## Backup Metadata
 

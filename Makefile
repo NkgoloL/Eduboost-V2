@@ -411,13 +411,13 @@ cluster-h-closure-check:
 	$(PYTHON) scripts/check_cluster_h_closure.py
 
 cluster-h-final-closeout-rollup-check:
-	$(PYTHON) scripts/check_final_closeout_rollup.py
+	$(PYTHON) scripts/check_cluster_h_final_closeout_rollup.py
 
 cluster-h-release-evidence-checksum-index-check:
 	$(PYTHON) scripts/check_cluster_h_release_evidence_checksum_index.py
 
 cluster-h-terminal-closure-assertion-check:
-	$(PYTHON) scripts/check_terminal_closure_assertion.py
+	$(PYTHON) scripts/check_cluster_h_terminal_closure_assertion.py
 
 evidence-archive-completeness-guard-check:
 	$(PYTHON) scripts/check_evidence_archive_completeness_guard.py

@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-05-10T19:43:51.262022+00:00`
-- branch: `codex/cluster-c-popia-consent-audi`
-- commit: `55ebd26af86cac0d2d87db335e2f545ec1d74127`
+- generated_at_utc: `2026-05-12T11:14:36.396397+00:00`
+- branch: `codex/sync-frontend-lockfile-local`
+- commit: `b7ef0eb83946b356402c33b69a8b905c8fbac2bd`
 - release_candidate: `unset`
 
 ## Required Sign-Off Areas

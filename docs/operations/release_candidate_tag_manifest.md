@@ -2,10 +2,10 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-05-10T19:43:51.508727+00:00`
-- branch: `codex/cluster-c-popia-consent-audi`
-- commit: `55ebd26af86cac0d2d87db335e2f545ec1d74127`
-- release_candidate: `beta-55ebd26`
+- generated_at_utc: `2026-05-12T11:15:44.237413+00:00`
+- branch: `codex/sync-frontend-lockfile-local`
+- commit: `b7ef0eb83946b356402c33b69a8b905c8fbac2bd`
+- release_candidate: `beta-b7ef0eb`
 
 ## Tagging Convention
 
@@ -26,8 +26,8 @@
 ## Example Commands
 
 ```bash
-git tag -a beta-55ebd26 -m "Beta release candidate beta-55ebd26"
-git push origin beta-55ebd26
+git tag -a beta-b7ef0eb -m "Beta release candidate beta-b7ef0eb"
+git push origin beta-b7ef0eb
 ```
 
 ## Safety Boundary

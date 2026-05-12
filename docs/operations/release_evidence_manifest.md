@@ -1,8 +1,8 @@
 # Release Evidence Manifest
 
-Generated: `2026-05-10T16:57:28Z`
-Branch: `codex/cluster-c-popia-consent-audi`
-Commit: `b737f9e8e5d07e423e7052aff469a023b60c8143`
+Generated: `2026-05-12T11:13:17Z`
+Branch: `codex/sync-frontend-lockfile-local`
+Commit: `b7ef0eb83946b356402c33b69a8b905c8fbac2bd`
 
 ## Required Evidence Commands
 

@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-05-11T00:17:26.476763+00:00`
-- branch: `codex/cluster-c-popia-consent-audi`
-- commit: `74a00f2a580d2ffb45ff477565f62317cc8c8b66`
+- generated_at_utc: `2026-05-12T11:15:45.139197+00:00`
+- branch: `codex/sync-frontend-lockfile-local`
+- commit: `b7ef0eb83946b356402c33b69a8b905c8fbac2bd`
 - target_environment: `staging`
 
 ## Required Smoke Checks

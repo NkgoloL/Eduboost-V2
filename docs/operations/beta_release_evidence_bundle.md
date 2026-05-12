@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-05-10T19:43:51.377660+00:00`
-- branch: `codex/cluster-c-popia-consent-audi`
-- commit: `55ebd26af86cac0d2d87db335e2f545ec1d74127`
+- generated_at_utc: `2026-05-12T11:14:35.953033+00:00`
+- branch: `codex/sync-frontend-lockfile-local`
+- commit: `b7ef0eb83946b356402c33b69a8b905c8fbac2bd`
 - release_candidate: `unset`
 
 ## Evidence Artifacts
@@ -36,9 +36,3 @@ The beta release evidence bundle indexes release artifacts. It does not replace 
 ```bash
 make beta-release-evidence-bundle
 ```
-
-## Final Project Closure Evidence
-
-- `docs/operations/release_artifact_retention_contract.md`
-- `docs/operations/beta_release_final_checklist.md`
-- `docs/operations/project_release_closure_index.md`

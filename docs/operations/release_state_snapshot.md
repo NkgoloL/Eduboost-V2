@@ -2,44 +2,26 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-05-10T20:08:26.310509+00:00`
-- branch: `codex/cluster-c-popia-consent-audi`
-- commit: `a4775c2a65e997426272ae86ec34648d84a98a9a`
+- generated_at_utc: `2026-05-12T11:15:44.727104+00:00`
+- branch: `codex/sync-frontend-lockfile-local`
+- commit: `b7ef0eb83946b356402c33b69a8b905c8fbac2bd`
 - release_candidate: `unset`
 
 ## Working Tree Status
 
 ```text
-M Makefile
- D OUTSTANDING_TODO_ITEMS.md
- M TODO.md
+M TODO.md
  M docs/ai/ai_prompt_surface_inventory.md
+ M docs/frontend/frontend_route_inventory.md
+ M docs/operations/beta_release_evidence_bundle.md
+ M docs/operations/beta_release_pr_body.md
+ M docs/operations/beta_signoff_manifest.md
  M docs/operations/database_backup_manifest.md
  M docs/operations/database_restore_evidence.md
+ M docs/operations/release_candidate_tag_manifest.md
+ M docs/operations/release_evidence_manifest.md
  M docs/operations/staging_smoke_evidence_manifest.md
-?? .github/pull_request_template.md
-?? .github/workflows/runtime-contract.yml
-?? OUTSTANDING_TODO_ITEMS.md.bak
-?? docs/operations/beta_evidence_consistency_guard.md
-?? docs/operations/release_state_snapshot.md
-?? docs/security/popia_consent_boundary_check.md
-?? docs/testing/pr002r_evidence_check.md
-?? scripts/check_beta_evidence_consistency.py
-?? scripts/check_popia_consent_boundary_matrix.py
-?? scripts/check_pr002r_evidence.py
-?? scripts/check_release_state_snapshot.py
-?? scripts/check_runtime_entrypoints.py
-?? scripts/generate_release_state_snapshot.py
-?? scripts/generate_route_inventory.py
-?? tests/unit/test_beta_evidence_consistency.py
-?? tests/unit/test_check_runtime_entrypoints.py
-?? tests/unit/test_generate_popia_consent_boundary_matrix.py
-?? tests/unit/test_generate_route_inventory.py
-?? tests/unit/test_popia_consent_boundary_matrix_check.py
-?? tests/unit/test_popia_consent_gate_closure_report.py
-?? tests/unit/test_pr002r_evidence_check.py
-?? tests/unit/test_pr002r_governance_contract.py
-?? tests/unit/test_release_state_snapshot.py
+ M tests/conftest.py
 ```
 
 ## State Artifacts

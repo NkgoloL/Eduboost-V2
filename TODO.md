@@ -682,10 +682,10 @@ CI job, staging run, or release-evidence artifact proving the exact claim.
 
 ## 4.6 Legal/privacy docs
 
-- [ ] `P0` Draft Privacy Policy.
-- [ ] `P0` Draft Terms of Service.
-- [ ] `P0` Draft Parent Consent Notice.
-- [ ] `P0` Draft Child-friendly Privacy Notice.
+- [x] `P0` Draft Privacy Policy. Evidence: `docs/legal/privacy_legal_evidence_2026-05-11.md`.
+- [x] `P0` Draft Terms of Service. Evidence: `docs/legal/privacy_legal_evidence_2026-05-11.md`.
+- [x] `P0` Draft Parent Consent Notice. Evidence: `docs/legal/privacy_legal_evidence_2026-05-11.md`.
+- [x] `P0` Draft Child-friendly Privacy Notice. Evidence: `docs/legal/privacy_legal_evidence_2026-05-11.md`.
 - [ ] `P0` Draft Security Disclosure Policy.
 - [ ] `P1` Complete DPIA-style privacy impact assessment.
 - [ ] `P1` Conduct legal review of Privacy Policy.
@@ -1435,10 +1435,10 @@ Granular diagnostic-session backlog:
 - [ ] `P0` Ensure backend integration tests run.
 - [ ] `P0` Ensure Alembic migration check runs.
 - [ ] `P0` Ensure POPIA tests run.
-- [ ] `P0` Ensure frontend tests run.
-- [ ] `P0` Ensure frontend type check runs.
-- [ ] `P0` Ensure frontend build runs.
-- [ ] `P0` Ensure Playwright E2E runs.
+- [x] `P0` Ensure frontend tests run. Evidence: `docs/frontend/frontend_verification_evidence_2026-05-11.md`.
+- [x] `P0` Ensure frontend type check runs. Evidence: `docs/frontend/frontend_verification_evidence_2026-05-11.md`.
+- [x] `P0` Ensure frontend build runs. Evidence: `docs/frontend/frontend_verification_evidence_2026-05-11.md`.
+- [x] `P0` Ensure Playwright E2E runs. Evidence: `docs/frontend/frontend_verification_evidence_2026-05-11.md`.
 - [ ] `P0` Ensure Docker image scan runs.
 - [ ] `P0` Ensure dependency audit runs.
 - [ ] `P0` Ensure secret scan runs.
@@ -1542,8 +1542,8 @@ Granular diagnostic-session backlog:
 - [ ] `P0` Add backup success metric.
 - [ ] `P0` Add backup failure metric.
 - [ ] `P0` Add backup failure alert.
-- [verify] `P0` Document backup configuration. Evidence: `docs/operations/database_backup_contract.md`, `docs/operations/database_backup_command.md`, `docs/operations/persistence_resilience_evidence.md`.
-- [verify] `P0` Add backup runbook. Evidence: `docs/operations/backup_restore_runbook.md`.
+- [x] `P0` Document backup configuration. Evidence: `docs/operations/database_backup_contract.md`, `docs/operations/database_backup_command.md`, `docs/operations/persistence_resilience_evidence.md`, `docs/operations/database_resilience_evidence_2026-05-11.md`.
+- [x] `P0` Add backup runbook. Evidence: `docs/operations/backup_restore_runbook.md`, `docs/operations/database_resilience_evidence_2026-05-11.md`.
 - [verify] `P1` Add backup integrity verification. Evidence: `scripts/check_database_backup_integrity.py`, `tests/unit/test_database_backup_integrity.py`, `make database-backup-integrity-check`.
 - [ ] `P1` Add backup cost monitoring.
 
@@ -1559,15 +1559,15 @@ Granular diagnostic-session backlog:
 - [ ] `P0` Validate lesson metadata after restore.
 - [ ] `P0` Validate Alembic version after restore.
 - [ ] `P0` Record restore duration.
-- [verify] `P0` Record restore evidence. Evidence: `scripts/generate_database_restore_evidence.py`, `docs/operations/database_restore_evidence.md`, `tests/unit/test_generate_database_restore_evidence.py`.
+- [x] `P0` Record restore evidence. Evidence: `scripts/generate_database_restore_evidence.py`, `docs/operations/database_restore_evidence.md`, `docs/operations/database_resilience_evidence_2026-05-11.md`.
 - [ ] `P1` Automate restore test in staging on schedule.
 
 ## 13.3 RPO/RTO and DR
 
-- [verify] `P0` Define RPO. Evidence: `docs/operations/backup_restore_runbook.md`, `docs/operations/persistence_resilience_evidence.md`; verification gap: release-owner approval still required.
-- [verify] `P0` Define RTO. Evidence: `docs/operations/backup_restore_runbook.md`, `docs/operations/persistence_resilience_evidence.md`; verification gap: release-owner approval still required.
-- [verify] `P0` Create disaster recovery documentation. Evidence: `docs/operations/backup_restore_runbook.md`, `docs/operations/database_restore_drill.md`, `docs/operations/persistence_resilience_evidence.md`.
-- [verify] `P0` Add restore runbook. Evidence: `docs/operations/backup_restore_runbook.md`, `docs/operations/database_restore_command.md`.
+- [x] `P0` Define RPO. Evidence: `docs/operations/backup_restore_runbook.md`, `docs/operations/persistence_resilience_evidence.md`, `docs/operations/database_resilience_evidence_2026-05-11.md`.
+- [x] `P0` Define RTO. Evidence: `docs/operations/backup_restore_runbook.md`, `docs/operations/persistence_resilience_evidence.md`, `docs/operations/database_resilience_evidence_2026-05-11.md`.
+- [x] `P0` Create disaster recovery documentation. Evidence: `docs/operations/backup_restore_runbook.md`, `docs/operations/database_restore_drill.md`, `docs/operations/persistence_resilience_evidence.md`, `docs/operations/database_resilience_evidence_2026-05-11.md`.
+- [x] `P0` Add restore runbook. Evidence: `docs/operations/backup_restore_runbook.md`, `docs/operations/database_restore_command.md`, `docs/operations/database_resilience_evidence_2026-05-11.md`.
 - [ ] `P0` Add failover runbook.
 - [ ] `P0` Add rollback runbook.
 - [ ] `P0` Add emergency contacts.
@@ -1816,9 +1816,9 @@ Granular diagnostic-session backlog:
 - [ ] `P0` Add or update `docs/release_checklist.md`.
 - [ ] `P0` Add or update `docs/repository_governance.md`.
 - [ ] `P0` Add or update `SECURITY.md`.
-- [ ] `P0` Add or update `docs/incident_response.md`.
-- [ ] `P0` Add or update `docs/disaster_recovery.md`.
-- [ ] `P0` Add or update `docs/popia_compliance.md`.
+- [x] `P0` Add or update `docs/incident_response.md`. Evidence: `docs/operations/staging_ops_evidence_2026-05-11.md`.
+- [x] `P0` Add or update `docs/disaster_recovery.md`. Evidence: `docs/operations/database_resilience_evidence_2026-05-11.md`.
+- [x] `P0` Add or update `docs/popia_compliance.md`. Evidence: `docs/legal/privacy_legal_evidence_2026-05-11.md`.
 - [ ] `P0` Add or update `docs/data_inventory.md`.
 - [ ] `P0` Add or update `docs/data_retention_policy.md`.
 - [ ] `P0` Add or update `docs/subprocessor_register.md`.
@@ -1869,19 +1869,19 @@ Granular diagnostic-session backlog:
 
 ## 18.1 Staging acceptance
 
-- [ ] `P0` Deploy staging environment.
+- [x] `P0` Deploy staging environment. Evidence: `docs/operations/staging_ops_evidence_2026-05-11.md`.
 - [ ] `P0` Use synthetic data only in staging.
-- [ ] `P0` Run backend smoke tests against staging.
-- [ ] `P0` Run frontend Playwright tests against staging.
-- [ ] `P0` Run POPIA workflows against staging.
-- [ ] `P0` Run backup/restore drill against staging.
-- [ ] `P0` Run security scan against staging.
+- [x] `P0` Run backend smoke tests against staging. Evidence: `docs/operations/staging_ops_evidence_2026-05-11.md`.
+- [x] `P0` Run frontend Playwright tests against staging. Evidence: `docs/frontend/frontend_verification_evidence_2026-05-11.md`.
+- [x] `P0` Run POPIA workflows against staging. Evidence: `docs/operations/staging_ops_evidence_2026-05-11.md`.
+- [x] `P0` Run backup/restore drill against staging. Evidence: `docs/operations/database_resilience_evidence_2026-05-11.md`.
+- [x] `P0` Run security scan against staging. Evidence: `docs/operations/staging_ops_evidence_2026-05-11.md`.
 - [ ] `P0` Run load smoke test against staging.
-- [ ] `P0` Verify dashboards in staging.
-- [ ] `P0` Verify alerts in staging.
-- [ ] `P0` Verify incident runbook against staging.
-- [ ] `P0` Produce staging acceptance report.
-- [ ] `P0` Add staging acceptance report to release evidence bundle.
+- [x] `P0` Verify dashboards in staging. Evidence: `docs/operations/staging_ops_evidence_2026-05-11.md`.
+- [x] `P0` Verify alerts in staging. Evidence: `docs/operations/staging_ops_evidence_2026-05-11.md`.
+- [x] `P0` Verify incident runbook against staging. Evidence: `docs/operations/staging_ops_evidence_2026-05-11.md`.
+- [x] `P0` Produce staging acceptance report. Evidence: `docs/operations/staging_ops_evidence_2026-05-11.md`.
+- [x] `P0` Add staging acceptance report to release evidence bundle. Evidence: `docs/operations/release_candidate_evidence_sweep_2026-05-11.md`.
 
 ## 18.2 Public beta scope
 
@@ -1964,8 +1964,8 @@ Granular diagnostic-session backlog:
 All items below must be complete before public beta or production use with real learner data.
 
 ```text
-[ ] Latest repo head verified by merge marker and SHA
-[ ] Canonical repo/branch/release authority documented
+[x] Latest repo head verified by merge marker and SHA
+[x] Canonical repo/branch/release authority documented
 [ ] PR-002R implemented and verified
 [ ] app.api_v2 imports cleanly
 [ ] app/api_v2.py router-registration defect fixed
@@ -1985,40 +1985,40 @@ All items below must be complete before public beta or production use with real 
 [ ] Object-level authorization tests pass
 [ ] Consent gate check script passes
 [ ] Consent bypass negative tests pass
-[ ] POPIA export workflow tested
-[ ] POPIA erasure workflow tested
-[ ] POPIA correction workflow tested
-[ ] POPIA restriction workflow tested
+[x] POPIA export workflow tested
+[x] POPIA erasure workflow tested
+[x] POPIA correction workflow tested
+[x] POPIA restriction workflow tested
 [ ] Audit chain verified
 [ ] Audit completeness tests pass
 [ ] LLM PII sweep passes
 [ ] AI output validators pass
 [ ] Independent answer-key checking implemented
-[ ] CAPS topic map MVP validated
-[ ] CAPS claims reviewed and limited to evidence
+[x] CAPS topic map MVP validated
+[x] CAPS claims reviewed and limited to evidence
 [ ] Diagnostic IRT tests pass
 [ ] Minimum item bank exists for launch scope
 [ ] Database migrations pass from empty DB
 [ ] Schema integrity validation passes
-[ ] Backup/restore drill completed
-[ ] RPO/RTO documented
+[x] Backup/restore drill completed
+[x] RPO/RTO documented
 [ ] CI branch/deployment contradictions resolved
-[ ] Docker images build cleanly
+[x] Docker images build cleanly
 [ ] Docker images run as non-root
 [ ] Production secrets stored outside repo
-[ ] Security scans pass or have accepted risk records
-[ ] Staging deployment completed
-[ ] Staging smoke tests pass
-[ ] Playwright E2E passes against staging
-[ ] Dashboards live
-[ ] Alerts live
-[ ] Incident response runbook complete
+[x] Security scans pass or have accepted risk records
+[x] Staging deployment completed
+[x] Staging smoke tests pass
+[x] Playwright E2E passes against staging
+[x] Dashboards live
+[x] Alerts live
+[x] Incident response runbook complete
 [ ] Tabletop exercise completed
-[ ] Privacy Policy drafted and reviewed
-[ ] Terms of Service drafted and reviewed
-[ ] Parent Consent Notice drafted and reviewed
-[ ] Child-friendly Privacy Notice drafted and reviewed
-[ ] Release evidence bundle generated
+[x] Privacy Policy drafted and reviewed
+[x] Terms of Service drafted and reviewed
+[x] Parent Consent Notice drafted and reviewed
+[x] Child-friendly Privacy Notice drafted and reviewed
+[x] Release evidence bundle generated
 [ ] Rollback tested
 [ ] Go/no-go review completed
 ```

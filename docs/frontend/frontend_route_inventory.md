@@ -82,7 +82,7 @@ This inventory records frontend route, page, and journey-related surfaces.
 | `app/frontend/__tests__/FeaturePanels.test.tsx` | `_none_` | `learner, dashboard, lesson, diagnostic` |
 | `app/frontend/__tests__/InteractiveDiagnosticFlow.test.tsx` | `_none_` | `learner, diagnostic, assessment` |
 | `app/frontend/__tests__/LegacyApiHelpers.test.ts` | `_none_` | `learner, diagnostic` |
-| `app/frontend/__tests__/RoutingIntegration.test.tsx` | `Route, Routes` | `learner, dashboard, lesson, diagnostic` |
+| `app/frontend/__tests__/RoutingIntegration.test.tsx` | `Route, Routes` | `learner, dashboard, lesson, diagnostic, assessment` |
 | `app/frontend/__tests__/setup.ts` | `_none_` | `diagnostic, progress` |
 | `app/frontend/coverage/prettify.js` | `_none_` | `parent` |
 | `app/frontend/coverage/sorter.js` | `_none_` | `parent` |
@@ -119,6 +119,7 @@ This inventory records frontend route, page, and journey-related surfaces.
 | `app/frontend/src/components/eduboost/api.ts` | `_none_` | `learner, diagnostic` |
 | `app/frontend/src/components/eduboost/constants.ts` | `_none_` | `lesson` |
 | `app/frontend/src/components/eduboost/styles.ts` | `_none_` | `parent, consent, onboarding` |
+| `app/frontend/src/components/lessons/LessonTrustLabel.tsx` | `Link` | `parent, lesson` |
 | `app/frontend/src/context/LearnerContext.tsx` | `_none_` | `learner` |
 | `app/frontend/src/lib/api/client.ts` | `_none_` | `learner, parent, consent` |
 | `app/frontend/src/lib/api/offlineSync.ts` | `_none_` | `learner, lesson` |
