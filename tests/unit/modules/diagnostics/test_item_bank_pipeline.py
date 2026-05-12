@@ -62,9 +62,9 @@ SAMPLE_PIPELINE_CONFIG: dict[str, Any] = {
 def _make_mock_repository(items: list[dict] | None = None) -> MagicMock:
     """Return a mock ItemBankRepository pre-loaded with *items*."""
     repo = MagicMock()
-    repo.get_approved_items = AsyncMock(return_value=items or [SAMPLE_ITEM])
-    repo.get_items_by_topic = AsyncMock(return_value=items or [SAMPLE_ITEM])
-    repo.count_approved_items = AsyncMock(return_value=len(items or [SAMPLE_ITEM]))
+    repo.get_approved_items = AsyncMock(return_value=items if items is not None else [SAMPLE_ITEM])
+    repo.get_items_by_topic = AsyncMock(return_value=items if items is not None else [SAMPLE_ITEM])
+    repo.count_approved_items = AsyncMock(return_value=len(items if items is not None else [SAMPLE_ITEM]))
     return repo
 
 

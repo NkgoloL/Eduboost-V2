@@ -2,18 +2,15 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-05-12T19:11:28.710845+00:00`
-- branch: `master`
-- commit: `e8ac491be7bc3f61cd12ebd08d649f8e8cdcaa10`
+- generated_at_utc: `2026-05-12T19:37:52.490058+00:00`
+- branch: `fix/technical-state-report-implementation`
+- commit: `c03514093a76ed6b1f54271af645e3fb57588eae`
 - release_candidate: `unset`
 
 ## Working Tree Status
 
 ```text
-D .github/workflows/frontend-e2e-opt-in.yml
- M Makefile
- M docs/ai/ai_prompt_surface_inventory.md
- M docs/current_state.md
+M docs/ai/ai_prompt_surface_inventory.md
  M docs/operations/beta_release_evidence_bundle.md
  M docs/operations/beta_release_pr_body.md
  M docs/operations/beta_signoff_manifest.md
@@ -23,18 +20,9 @@ D .github/workflows/frontend-e2e-opt-in.yml
  M docs/operations/release_evidence_manifest.md
  M docs/operations/release_state_snapshot.md
  M docs/operations/staging_smoke_evidence_manifest.md
- M scripts/check_cluster_g_frontend_evidence.py
- M scripts/check_frontend_e2e_opt_in_workflow.py
+ M docs/security/popia_consent_gate_inventory.md
  M tests/unit/modules/diagnostics/test_item_bank_pipeline.py
- M tests/unit/test_frontend_e2e_opt_in_workflow.py
-?? .github/workflows/frontend-e2e.yml
-?? PR_INTEGRATION_SUMMARY.md
-?? docs/patches/
-?? scripts/deduplicate_makefile_targets.py
-?? scripts/refresh_current_state_doc.py
-?? scripts/sync_check_origin.sh
-?? tests/integration/modules/
-?? tests/unit/modules/diagnostics/conftest.py
+?? app/modules/diagnostics/item_bank_pipeline.py
 ```
 
 ## State Artifacts

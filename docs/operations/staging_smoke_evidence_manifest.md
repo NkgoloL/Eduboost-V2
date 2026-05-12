@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-05-12T19:11:29.173142+00:00`
-- branch: `master`
-- commit: `e8ac491be7bc3f61cd12ebd08d649f8e8cdcaa10`
+- generated_at_utc: `2026-05-12T19:37:52.947758+00:00`
+- branch: `fix/technical-state-report-implementation`
+- commit: `c03514093a76ed6b1f54271af645e3fb57588eae`
 - target_environment: `staging`
 
 ## Required Smoke Checks
