@@ -676,3 +676,6 @@ terminal-pr-evidence-index-check:
 
 terminal-review-index-check:
 	$(PYTHON) scripts/check_terminal_review_index.py
+
+domain-09-testing-quality-evidence-check:
+	$(PYTHON) scripts/check_domain_09_testing_quality_evidence.py
