@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 PYTHON ?= python3
 
-.PHONY: help dev test lint typecheck migrate docs clean migration-check schema-integrity migration-smoke openapi openapi-check route-inventory route-inventory-check runtime-check verify-repo-state pr002r-check beta-release-readiness-contract-check api-envelope-error-contract-check release-candidate-evidence-sweep-check frontend-verification-evidence-check database-resilience-evidence-check privacy-legal-evidence-check caps-ai-safety-evidence-check phase2-authz-check popia-legal-check caps-learning-proof-check frontend-journey-check accessibility-pwa-e2e-check observability-ops-check
+.PHONY: accessibility-pwa-e2e-check ai-fixture-coverage-check ai-output-fixture-validation-check ai-output-schema-contract-check ai-prompt-input-contract-check ai-prompt-secret-leakage-check ai-prompt-surface-inventory ai-prompt-surface-inventory-check ai-refusal-fixture-check ai-safety-boundary-check ai-safety-release-check api-envelope-error-contract-check archival-lock-assertion-check audit-contract-check audit-review-closeout-certificate-check auth-boundary-check backup-redis-dr-check beta-acceptance-exit-criteria-check beta-evidence-consistency-check beta-feedback-intake-contract-check beta-governance-seal-check beta-known-issues-register-check beta-monitoring-incident-trigger-check beta-outcome-report-template-check beta-participant-support-handoff-check beta-pr-body beta-pr-body-check beta-release-closure-attestation-check beta-release-communications-plan-check beta-release-decision-log-check beta-release-evidence-bundle beta-release-evidence-bundle-check beta-release-execution-plan-check beta-release-final-checklist-check beta-release-final-index-check beta-release-freeze-window-check beta-release-readiness-contract-check beta-retrospective-action-register-check beta-rollback-runbook-check beta-signoff-manifest beta-signoff-manifest-check branch-handoff-proof-record-check branch-sync-rebase-checklist-check caps-ai-safety-evidence-check caps-alignment-contract-check caps-learning-proof-check cicd-staging-check clean cluster-d-ci-check cluster-d-closure-check cluster-e-closure-check cluster-e-data-resilience-check cluster-f-ai-safety-check cluster-f-closure-check cluster-g-closure-check cluster-g-frontend-check cluster-h-closure-check cluster-h-final-closeout-rollup-check cluster-h-release-evidence-checksum-index-check cluster-h-release-readiness-check cluster-h-terminal-closure-assertion-check database-backup-contract-check database-backup-dry-run database-backup-integrity-check database-backup-manifest database-resilience-env-matrix-check database-resilience-evidence-check database-restore-drill-docs-check database-restore-dry-run database-restore-evidence database-restore-integrity-check db-repository-check deployment-readiness-docs-check dev dev-only-endpoint-check diagnostic-generation-safety-check diagnostics-assessment-check docs domain-01-repository-governance-ci-evidence-check environment-security-check evidence-archive-completeness-guard-check evidence-freeze-confirmation-record-check final-acceptance-memo-check final-acceptance-packet-index-check final-archive-accession-record-check final-audit-handoff-register-check final-beta-operator-packet-check final-closure-manifest-check final-evidence-noop-execution-assertion-check final-merge-signoff-lock-check final-pr-handoff-summary-check final-pr-merge-readiness-check final-project-closeout-attestation-check final-release-evidence-ledger-check final-release-evidence-toc-check final-release-handoff-package-check final-release-operator-brief-check final-release-readiness-rollup-check final-release-verification final-release-verification-check final-reviewer-disposition-record-check final-reviewer-pack-checklist-check final-sealed-package-manifest-check frontend-accessibility-contract-check frontend-accessibility-static-check frontend-api-client-inventory frontend-api-client-inventory-check frontend-auth-consent-denial-check frontend-build-test-lint-contract-check frontend-e2e frontend-e2e-env-contract-check frontend-e2e-mocked frontend-e2e-opt-in-workflow-check frontend-e2e-runtime-command-check frontend-e2e-smoke frontend-journey-check frontend-journey-fixture-check frontend-mock-api-fixture-check frontend-playwright-mock-helper-check frontend-playwright-mocked-specs-check frontend-playwright-scaffold-check frontend-playwright-specs-check frontend-route-inventory frontend-route-inventory-check frontend-runtime-inventory frontend-runtime-inventory-check frontend-verification-evidence-check frozen-scope-variance-register-check generated-artifact-hygiene-check learner-authz-check learner-authz-matrix learner-vertical-journey-contract-check learning-evidence-check lesson-bank-check lesson-generation-safety-check lint llm-provider-fallback-contract-check merge-control-evidence-gate-check migrate migration-check migration-smoke observability-ops-check openapi openapi-check parent-vertical-journey-contract-check persistence-resilience-check phase2-authz-check phase2-authz-closure popia-consent-audit-check popia-consent-boundary-check popia-consent-closure-check popia-consent-gate-check popia-consent-order-check popia-consent-rejection-audit-check popia-consent-source-check popia-legal-check post-beta-evidence-archive-manifest-check post-closeout-custody-register-check post-closeout-evidence-access-policy-check post-closeout-maintenance-boundary-check post-deploy-staging-smoke-check post-deploy-staging-smoke-checklist-check post-merge-evidence-continuity-note-check post-merge-release-handoff-check post-terminal-audit-readiness-check pr-closeout-evidence-checklist-check pr-merge-evidence-summary-check pr-ready-final-closure-certificate-check pr002r-check privacy-boundary-check privacy-legal-evidence-check production-restore-approval-check production-secret-placeholder-check project-release-closure-index-check release-approval-workflow-contract-check release-artifact-retention-contract-check release-audit-trail-index-check release-candidate-evidence-sweep-check release-candidate-tag-manifest release-candidate-tag-manifest-check release-change-control-exception-log-check release-evidence-artifacts-check release-evidence-retention-finalization-check release-handoff-freeze-assertion-check release-owner-accountability-check release-owner-execution-guardrail-check release-owner-post-closeout-decision-record-check release-record-closure-ledger-check release-state-snapshot release-state-snapshot-check remediation-safety-contract-check reviewer-decision-capture-template-check route-inventory route-inventory-check runtime-check schema-integrity sealed-evidence-access-handoff-check sealed-reviewer-closeout-packet-check staging-operations-release-evidence-check staging-release-gate-check staging-smoke-evidence-manifest staging-smoke-evidence-manifest-check terminal-evidence-retrieval-guide-check terminal-evidence-seal-check terminal-handoff-closure-note-check terminal-pr-evidence-index-check terminal-review-index-check test typecheck verify-repo-state
 
 help:
 	@echo "Available commands:"
@@ -181,22 +181,7 @@ cicd-staging-check:
 release-evidence-artifacts-check:
 	$(PYTHON) scripts/check_release_evidence_artifacts.py
 
-post-deploy-staging-smoke-checklist-check:
-	$(PYTHON) scripts/check_post_deploy_staging_smoke_checklist.py
-
 post-deploy-staging-smoke-check: post-deploy-staging-smoke-checklist-check
-
-staging-smoke-evidence-manifest-check:
-	$(PYTHON) scripts/check_staging_smoke_evidence_manifest.py
-
-observability-ops-check:
-	$(PYTHON) scripts/check_observability_ops_evidence.py
-
-release-state-snapshot-check:
-	$(PYTHON) scripts/check_release_state_snapshot.py
-
-release-candidate-tag-manifest-check:
-	$(PYTHON) scripts/check_release_candidate_tag_manifest.py
 
 staging-operations-release-evidence-check:
 	$(PYTHON) scripts/check_staging_operations_release_evidence.py
@@ -679,3 +664,70 @@ terminal-review-index-check:
 
 domain-01-repository-governance-ci-evidence-check:
 	$(PYTHON) scripts/check_domain_01_repository_governance_ci_evidence.py
+# =============================================================================
+# Makefile additions – paste these into the existing Makefile
+# (or apply via: patch -p0 < docs/patches/makefile_additions.patch)
+#
+# These additions address Recommendations 4 and 6 from the 2026-05-12
+# technical state report.
+# =============================================================================
+
+# Add to the existing .PHONY line (or replace the line entirely):
+# .PHONY: ... deduplicate-check refresh-current-state refresh-current-state-report sync-check-origin
+
+# ---------------------------------------------------------------------------
+# Recommendation 4: Makefile hygiene – detect duplicate targets
+# ---------------------------------------------------------------------------
+
+deduplicate-check:
+	$(PYTHON) scripts/deduplicate_makefile_targets.py
+
+deduplicate-fix:
+	$(PYTHON) scripts/deduplicate_makefile_targets.py --fix
+
+deduplicate-fix-dry-run:
+	$(PYTHON) scripts/deduplicate_makefile_targets.py --fix --dry-run
+
+
+# ---------------------------------------------------------------------------
+# Recommendation 5: Sync check – verify local branch is up to date
+# ---------------------------------------------------------------------------
+
+sync-check-origin:
+	./scripts/sync_check_origin.sh
+
+sync-and-verify:
+	./scripts/sync_check_origin.sh --sync
+
+
+# ---------------------------------------------------------------------------
+# Recommendation 6: Refresh current state documentation
+# ---------------------------------------------------------------------------
+
+refresh-current-state:
+	$(PYTHON) scripts/refresh_current_state_doc.py
+
+refresh-current-state-report:
+	$(PYTHON) scripts/refresh_current_state_doc.py --dated-report
+
+refresh-current-state-dry-run:
+	$(PYTHON) scripts/refresh_current_state_doc.py --dry-run --dated-report
+
+
+# ---------------------------------------------------------------------------
+# Omnibus: run all six recommendation fixes in sequence
+# ---------------------------------------------------------------------------
+# Intended for use after applying all code changes from the 2026-05-12
+# technical report.  Run this once to verify everything is clean.
+
+rec-all-checks: deduplicate-check \
+                frontend-e2e-opt-in-workflow-check \
+                pr002r-check \
+                runtime-check \
+                openapi-check \
+                route-inventory-check
+	$(PYTHON) -m pytest tests/unit -m "not llm and not e2e" --tb=short --no-cov -q
+	$(PYTHON) scripts/refresh_current_state_doc.py --dated-report
+	@echo ""
+	@echo "All recommendation checks passed."
+	@echo "Review docs/current_state.md and commit."

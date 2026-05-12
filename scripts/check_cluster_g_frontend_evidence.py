@@ -19,7 +19,7 @@ REQUIRED_FILES = (
     "tests/unit/test_cluster_g_build_e2e_workflow_evidence.py",
     "tests/unit/test_frontend_e2e_opt_in_workflow.py",
     "tests/unit/test_frontend_build_test_lint_contract.py",
-    ".github/workflows/frontend-e2e-opt-in.yml",
+    ".github/workflows/frontend-e2e.yml",
     "docs/frontend/frontend_e2e_opt_in_workflow.md",
     "docs/frontend/frontend_build_test_lint_contract.md",
     "scripts/check_frontend_e2e_opt_in_workflow.py",
@@ -122,10 +122,10 @@ CONTENT_REQUIREMENTS = {
         "Cluster G Closure",
         "make cluster-g-closure-check",
     ),
-    ".github/workflows/frontend-e2e-opt-in.yml": (
+    ".github/workflows/frontend-e2e.yml": (
         "workflow_dispatch:",
-        "make frontend-e2e-mocked",
-        "make frontend-e2e-smoke",
+        "npx playwright test",
+        "PLAYWRIGHT_MOCK_API",
     ),
     "docs/frontend/frontend_e2e_opt_in_workflow.md": (
         "Frontend E2E Opt-In Workflow",
