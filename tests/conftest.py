@@ -20,16 +20,16 @@ ensure_repo_root_on_path()
 
 from app.core.database import AsyncSessionFactory, create_all_tables, drop_all_tables, engine
 
-@pytest_asyncio.fixture(scope="session", autouse=True)
+@pytest_asyncio.fixture(scope="session")
 async def test_db_setup():
-    """Create all tables at the start of the test session and drop them at the end."""
+    """Create database tables only for tests that request database access."""
     await create_all_tables()
     yield
     await drop_all_tables()
 
 
 @pytest_asyncio.fixture
-async def db_session() -> AsyncGenerator[AsyncSession, None]:
+async def db_session(test_db_setup) -> AsyncGenerator[AsyncSession, None]:
     """Provide a fresh async database session for each test."""
     async with AsyncSessionFactory() as session:
         yield session
