@@ -676,3 +676,6 @@ terminal-pr-evidence-index-check:
 
 terminal-review-index-check:
 	$(PYTHON) scripts/check_terminal_review_index.py
+
+domain-07-diagnostics-assessment-evidence-check:
+	$(PYTHON) scripts/check_domain_07_diagnostics_assessment_evidence.py
