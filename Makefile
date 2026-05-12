@@ -676,3 +676,6 @@ terminal-pr-evidence-index-check:
 
 terminal-review-index-check:
 	$(PYTHON) scripts/check_terminal_review_index.py
+
+domain-02-backend-api-contract-evidence-check:
+	$(PYTHON) scripts/check_domain_02_backend_api_contract_evidence.py
