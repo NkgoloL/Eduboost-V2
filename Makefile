@@ -797,3 +797,6 @@ beta-launch-staging-acceptance-production-readiness-check:
 
 roadmap-after-production-readiness-baseline-check:
 	$(PYTHON) scripts/check_roadmap_after_production_readiness_baseline.py
+
+final-release-blocker-checklist-check:
+	$(PYTHON) scripts/check_final_release_blocker_checklist.py
