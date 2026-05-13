@@ -1,0 +1,209 @@
+"""
+app/services/consent_service.py
+Orchestrates all §4.1 consent lifecycle flows.
+Every state transition is audited (§4.5).
+"""
+from __future__ import annotations
+
+import uuid
+from datetime import datetime, timezone
+from typing import Optional
+
+from app.domain.consent import (
+    AuditEventType,
+    ConsentRecord,
+    ConsentState,
+    RENEWAL_WARNING_DAYS,
+)
+from app.repositories.audit_repository import AuditRepository
+from app.repositories.consent_repository import ConsentRepository
+
+
+class ConsentService:
+    def __init__(
+        self,
+        consent_repo: ConsentRepository,
+        audit_repo: AuditRepository,
+    ) -> None:
+        self._consent = consent_repo
+        self._audit = audit_repo
+
+    # ------------------------------------------------------------------
+    # §4.1 Grant
+    # ------------------------------------------------------------------
+
+    async def grant(
+        self,
+        learner_id: uuid.UUID,
+        guardian_id: uuid.UUID,
+        privacy_notice_version: str,
+        actor_id: uuid.UUID,
+    ) -> ConsentRecord:
+        existing = await self._consent.get_active_for_learner(learner_id)
+        if existing:
+            updated = existing.grant(privacy_notice_version)
+            record = await self._consent.update(updated)
+        else:
+            new_record = ConsentRecord(
+                learner_id=learner_id,
+                guardian_id=guardian_id,
+                privacy_notice_version=privacy_notice_version,
+                state=ConsentState.PENDING,
+            ).grant(privacy_notice_version)
+            record = await self._consent.create(new_record)
+
+        await self._audit.record(
+            AuditEventType.CONSENT_GRANT,
+            actor_id=actor_id,
+            learner_id=learner_id,
+            payload={
+                "consent_id": str(record.id),
+                "privacy_notice_version": privacy_notice_version,
+                "expires_at": record.expires_at.isoformat() if record.expires_at else None,
+            },
+        )
+        return record
+
+    # ------------------------------------------------------------------
+    # §4.1 Denial
+    # ------------------------------------------------------------------
+
+    async def deny(
+        self,
+        learner_id: uuid.UUID,
+        guardian_id: uuid.UUID,
+        privacy_notice_version: str,
+        actor_id: uuid.UUID,
+        reason: Optional[str] = None,
+    ) -> ConsentRecord:
+        existing = await self._consent.get_active_for_learner(learner_id)
+        if existing:
+            updated = existing.deny(reason)
+            record = await self._consent.update(updated)
+        else:
+            new_record = ConsentRecord(
+                learner_id=learner_id,
+                guardian_id=guardian_id,
+                privacy_notice_version=privacy_notice_version,
+            ).deny(reason)
+            record = await self._consent.create(new_record)
+
+        await self._audit.record(
+            AuditEventType.CONSENT_DENIAL,
+            actor_id=actor_id,
+            learner_id=learner_id,
+            payload={"consent_id": str(record.id), "reason": reason},
+        )
+        return record
+
+    # ------------------------------------------------------------------
+    # §4.1 Withdrawal
+    # ------------------------------------------------------------------
+
+    async def withdraw(
+        self,
+        learner_id: uuid.UUID,
+        actor_id: uuid.UUID,
+    ) -> ConsentRecord:
+        record = await self._require_consent_record(learner_id)
+        updated = record.withdraw()
+        saved = await self._consent.update(updated)
+        await self._audit.record(
+            AuditEventType.CONSENT_WITHDRAWAL,
+            actor_id=actor_id,
+            learner_id=learner_id,
+            payload={"consent_id": str(saved.id)},
+        )
+        return saved
+
+    # ------------------------------------------------------------------
+    # §4.1 Renewal
+    # ------------------------------------------------------------------
+
+    async def renew(
+        self,
+        learner_id: uuid.UUID,
+        actor_id: uuid.UUID,
+        privacy_notice_version: str,
+    ) -> ConsentRecord:
+        record = await self._require_consent_record(learner_id)
+        updated = record.renew(privacy_notice_version)
+        saved = await self._consent.update(updated)
+        await self._audit.record(
+            AuditEventType.CONSENT_RENEWAL,
+            actor_id=actor_id,
+            learner_id=learner_id,
+            payload={
+                "consent_id": str(saved.id),
+                "new_expires_at": saved.expires_at.isoformat() if saved.expires_at else None,
+            },
+        )
+        return saved
+
+    # ------------------------------------------------------------------
+    # §4.1 Expiry handling (called by scheduled job)
+    # ------------------------------------------------------------------
+
+    async def process_expiry(self, learner_id: uuid.UUID) -> ConsentRecord:
+        record = await self._require_consent_record(learner_id)
+        updated = record.mark_expired()
+        saved = await self._consent.update(updated)
+        await self._audit.record(
+            AuditEventType.CONSENT_EXPIRY,
+            actor_id=None,
+            learner_id=learner_id,
+            payload={"consent_id": str(saved.id)},
+        )
+        return saved
+
+    # ------------------------------------------------------------------
+    # §4.1 Restricted mode check
+    # ------------------------------------------------------------------
+
+    async def assert_active_consent(self, learner_id: uuid.UUID) -> ConsentRecord:
+        """
+        Raises PermissionError if consent is not active.
+        Used by §4.2 declarative dependency.
+        """
+        record = await self._consent.get_active_for_learner(learner_id)
+        if record is None or not record.is_active():
+            raise PermissionError(
+                f"No active POPIA consent for learner {learner_id}. "
+                "Access is restricted until consent is granted."
+            )
+        return record
+
+    # ------------------------------------------------------------------
+    # §4.1 P1 – expiry notification schedule
+    # ------------------------------------------------------------------
+
+    async def flag_approaching_renewals(self) -> list[ConsentRecord]:
+        """
+        Called by a scheduler.  Marks GRANTED records approaching expiry
+        as RENEWAL_REQUIRED so guardians can be notified.
+        """
+        candidates = await self._consent.list_expiring_soon(within_days=RENEWAL_WARNING_DAYS)
+        flagged: list[ConsentRecord] = []
+        for record in candidates:
+            if record.days_until_expiry() is not None:
+                updated = record.mark_renewal_required()
+                saved = await self._consent.update(updated)
+                await self._audit.record(
+                    AuditEventType.CONSENT_EXPIRY,
+                    actor_id=None,
+                    learner_id=record.learner_id,
+                    payload={
+                        "consent_id": str(saved.id),
+                        "note": "renewal_required flagged by scheduler",
+                    },
+                )
+                flagged.append(saved)
+        return flagged
+
+    # ------------------------------------------------------------------
+
+    async def _require_consent_record(self, learner_id: uuid.UUID) -> ConsentRecord:
+        record = await self._consent.get_active_for_learner(learner_id)
+        if record is None:
+            raise ValueError(f"No consent record found for learner {learner_id}")
+        return record

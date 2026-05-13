@@ -1,208 +1,185 @@
-"""Append-only audit repository for EduBoost V2."""
-
+"""
+app/repositories/audit_repository.py
+Append-only PostgreSQL audit repository.
+Implements §4.5: event hash, previous-hash chain, HMAC signature.
+The DB role used at runtime must NOT have UPDATE/DELETE on this table.
+"""
 from __future__ import annotations
 
 import hashlib
 import hmac
 import json
 import uuid
-from typing import Any
+from datetime import datetime, timezone
+from typing import Any, Optional
 
-from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncSession
+import asyncpg
 
-from app.core.config import settings
-from app.models import AuditEvent
-
+from app.domain.consent import AuditEventType
 
 
-
-def _stable_json(data: dict[str, Any]) -> str:
-    return json.dumps(data, sort_keys=True, separators=(",", ":"), default=str)
+_HMAC_SECRET: bytes = b""   # injected at startup from settings.AUDIT_HMAC_SECRET
 
 
-def compute_audit_hash(
-    *,
-    event_id: uuid.UUID,
-    event_type: str,
-    actor_id: uuid.UUID | None,
-    resource_id: uuid.UUID | None,
-    payload: dict[str, Any],
-    previous_event_hash: str | None,
-) -> str:
-    material = {
-        "id": str(event_id),
-        "event_type": event_type,
-        "actor_id": str(actor_id) if actor_id else None,
-        "resource_id": str(resource_id) if resource_id else None,
-        "payload": payload,
-        "previous_event_hash": previous_event_hash,
-    }
-    return hashlib.sha256(_stable_json(material).encode("utf-8")).hexdigest()
+def configure_hmac_secret(secret: bytes) -> None:
+    global _HMAC_SECRET
+    _HMAC_SECRET = secret
 
 
-def sign_audit_hash(event_hash: str, secret: str | None = None) -> str:
-    key = (secret or settings.AUDIT_HMAC_SECRET or settings.JWT_SECRET).encode("utf-8")
-    return hmac.new(key, event_hash.encode("utf-8"), hashlib.sha256).hexdigest()
+def _compute_hash(payload: dict[str, Any]) -> str:
+    """SHA-256 of the canonical JSON payload."""
+    canonical = json.dumps(payload, sort_keys=True, default=str)
+    return hashlib.sha256(canonical.encode()).hexdigest()
 
 
-def _as_uuid(value: str | uuid.UUID | None) -> uuid.UUID | None:
-    if value is None:
-        return None
-    if isinstance(value, uuid.UUID):
-        return value
-    return uuid.UUID(str(value))
+def _compute_hmac(event_hash: str, previous_hash: str) -> str:
+    """HMAC-SHA256 over '{event_hash}:{previous_hash}'."""
+    message = f"{event_hash}:{previous_hash}".encode()
+    return hmac.new(_HMAC_SECRET, message, hashlib.sha256).hexdigest()
 
 
 class AuditRepository:
-    def __init__(self, session: AsyncSession) -> None:
-        self._session = session
+    """
+    §4.5 – append-only audit log.
+    Every INSERT chains hashes to form a tamper-evident log.
+    The underlying table must have:
+      - NO DELETE privilege for the app role
+      - NO UPDATE privilege for the app role
+      - A row-level trigger that raises on UPDATE/DELETE as a belt-and-suspenders guard
+    """
 
-    async def append(
+    def __init__(self, pool: asyncpg.Pool) -> None:
+        self._pool = pool
+
+    # ------------------------------------------------------------------
+    # Public write API (INSERT only)
+    # ------------------------------------------------------------------
+
+    async def record(
         self,
-        event_type: str,
+        event_type: AuditEventType,
+        actor_id: Optional[uuid.UUID],
+        learner_id: Optional[uuid.UUID],
         payload: dict[str, Any],
-        actor_id: str | uuid.UUID | None = None,
-        resource_id: str | uuid.UUID | None = None,
-    ) -> AuditEvent:
-        if not event_type or not event_type.strip():
-            raise ValueError("event_type must be a non-empty string")
-        self._validate_payload_no_pii(payload)
-
+        *,
+        conn: Optional[asyncpg.Connection] = None,
+    ) -> uuid.UUID:
+        """
+        Append one audit event.  Returns the new event's UUID.
+        Automatically chains the hash to the previous event for the learner
+        (or global tail if learner_id is None).
+        """
         event_id = uuid.uuid4()
-        normalized_actor_id = _as_uuid(actor_id)
-        normalized_resource_id = _as_uuid(resource_id)
-        previous_event_hash = await self._latest_event_hash()
-        event_hash = compute_audit_hash(
-            event_id=event_id,
-            event_type=event_type.strip(),
-            actor_id=normalized_actor_id,
-            resource_id=normalized_resource_id,
-            payload=payload,
-            previous_event_hash=previous_event_hash,
-        )
-        audit_event = AuditEvent(
-            id=event_id,
-            event_type=event_type.strip(),
-            actor_id=normalized_actor_id,
-            resource_id=normalized_resource_id,
-            payload=payload,
-            previous_event_hash=previous_event_hash,
-            event_hash=event_hash,
-            hmac_signature=sign_audit_hash(event_hash),
-        )
-        self._session.add(audit_event)
-        await self._session.flush()
-        await self._session.refresh(audit_event)
-        return audit_event
+        occurred_at = datetime.now(timezone.utc)
 
-    async def log(
-        self,
-        event_type: str,
-        actor_id: str | uuid.UUID | None = None,
-        learner_pseudonym: str | None = None,
-        payload: dict[str, Any] | None = None,
-        constitutional_outcome: str | None = None,
-    ) -> AuditEvent:
-        data = dict(payload or {})
-        if learner_pseudonym is not None:
-            data.setdefault("learner_pseudonym", learner_pseudonym)
-        if constitutional_outcome is not None:
-            data.setdefault("constitutional_outcome", constitutional_outcome)
-        return await self.append(
-            event_type=event_type,
-            actor_id=actor_id,
-            payload=data,
-        )
-
-    async def latest(self, limit: int = 20) -> list[AuditEvent]:
-        result = await self._session.execute(
-            select(AuditEvent).order_by(AuditEvent.created_at.desc()).limit(limit)
-        )
-        return list(result.scalars().all())
-
-    async def get_by_id(self, audit_id: str | uuid.UUID) -> AuditEvent | None:
-        result = await self._session.execute(
-            select(AuditEvent).where(AuditEvent.id == _as_uuid(audit_id))
-        )
-        return result.scalar_one_or_none()
-
-    async def get_by_resource(
-        self,
-        resource_id: str | uuid.UUID,
-        event_type: str | None = None,
-        limit: int = 100,
-    ) -> list[AuditEvent]:
-        stmt = select(AuditEvent).where(AuditEvent.resource_id == _as_uuid(resource_id))
-        if event_type:
-            stmt = stmt.where(AuditEvent.event_type == event_type)
-        stmt = stmt.order_by(AuditEvent.created_at.desc()).limit(limit)
-        result = await self._session.execute(stmt)
-        return list(result.scalars().all())
-
-    async def _latest_event_hash(self) -> str | None:
-        result = await self._session.execute(
-            select(AuditEvent.event_hash).order_by(AuditEvent.created_at.desc()).limit(1)
-        )
-        return result.scalar_one_or_none()
-
-    async def verify_chain(self, limit: int = 1000) -> bool:
-        result = await self._session.execute(
-            select(AuditEvent).order_by(AuditEvent.created_at.asc()).limit(limit)
-        )
-        previous_hash: str | None = None
-        for event in result.scalars().all():
-            expected_hash = compute_audit_hash(
-                event_id=event.id,
-                event_type=event.event_type,
-                actor_id=event.actor_id,
-                resource_id=event.resource_id,
-                payload=event.payload,
-                previous_event_hash=previous_hash,
-            )
-            if event.previous_event_hash != previous_hash:
-                return False
-            if event.event_hash != expected_hash:
-                return False
-            if event.hmac_signature != sign_audit_hash(event.event_hash):
-                return False
-            previous_hash = event.event_hash
-        return True
-
-    async def get_by_actor(
-        self,
-        actor_id: str | uuid.UUID,
-        event_type: str | None = None,
-        limit: int = 100,
-    ) -> list[AuditEvent]:
-        stmt = select(AuditEvent).where(AuditEvent.actor_id == _as_uuid(actor_id))
-        if event_type:
-            stmt = stmt.where(AuditEvent.event_type == event_type)
-        stmt = stmt.order_by(AuditEvent.created_at.desc()).limit(limit)
-        result = await self._session.execute(stmt)
-        return list(result.scalars().all())
-
-    _PII_FIELD_NAMES = frozenset(
-        {
-            "email",
-            "email_address",
-            "full_name",
-            "display_name",
-            "date_of_birth",
-            "dob",
-            "phone",
-            "phone_number",
-            "id_number",
-            "sa_id",
-            "national_id",
-            "address",
-            "physical_address",
-            "street_address",
+        # Build the hashable payload
+        hash_payload = {
+            "event_id": str(event_id),
+            "event_type": event_type.value,
+            "actor_id": str(actor_id) if actor_id else None,
+            "learner_id": str(learner_id) if learner_id else None,
+            "occurred_at": occurred_at.isoformat(),
+            "payload": payload,
         }
-    )
+        event_hash = _compute_hash(hash_payload)
 
-    def _validate_payload_no_pii(self, payload: dict[str, Any]) -> None:
-        payload_keys = {str(key).lower() for key in payload.keys()}
-        pii_found = payload_keys & self._PII_FIELD_NAMES
-        if pii_found:
-            raise ValueError(f"PII-like fields not allowed in audit payload: {sorted(pii_found)}")
+        # Fetch previous hash (chain tail) – GENESIS sentinel for first record
+        previous_hash = await self._latest_hash(learner_id, conn=conn)
+
+        signature = _compute_hmac(event_hash, previous_hash)
+
+        sql = """
+            INSERT INTO audit_events (
+                id, event_type, actor_id, learner_id,
+                payload, occurred_at,
+                event_hash, previous_hash, hmac_signature
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+        """
+        execute = (conn or self._pool).execute
+        await execute(
+            sql,
+            event_id,
+            event_type.value,
+            actor_id,
+            learner_id,
+            json.dumps(payload, default=str),
+            occurred_at,
+            event_hash,
+            previous_hash,
+            signature,
+        )
+        return event_id
+
+    # ------------------------------------------------------------------
+    # Chain verification (§4.5 – audit-chain verification script)
+    # ------------------------------------------------------------------
+
+    async def verify_chain(
+        self,
+        learner_id: Optional[uuid.UUID] = None,
+        limit: int = 10_000,
+    ) -> tuple[bool, list[str]]:
+        """
+        Walk the audit chain for a learner (or globally) and verify:
+          1. event_hash matches re-computed hash of payload columns
+          2. hmac_signature matches re-computed HMAC
+          3. previous_hash equals prior row's event_hash
+        Returns (ok, list_of_errors).
+        """
+        sql = """
+            SELECT id, event_type, actor_id, learner_id, payload,
+                   occurred_at, event_hash, previous_hash, hmac_signature
+            FROM audit_events
+            WHERE ($1::uuid IS NULL OR learner_id = $1)
+            ORDER BY occurred_at ASC, id ASC
+            LIMIT $2
+        """
+        rows = await self._pool.fetch(sql, learner_id, limit)
+        errors: list[str] = []
+        prev_hash = "GENESIS"
+
+        for row in rows:
+            eid = str(row["id"])
+            hash_payload = {
+                "event_id": eid,
+                "event_type": row["event_type"],
+                "actor_id": str(row["actor_id"]) if row["actor_id"] else None,
+                "learner_id": str(row["learner_id"]) if row["learner_id"] else None,
+                "occurred_at": row["occurred_at"].isoformat(),
+                "payload": json.loads(row["payload"]),
+            }
+            expected_hash = _compute_hash(hash_payload)
+            expected_hmac = _compute_hmac(expected_hash, row["previous_hash"])
+
+            if row["event_hash"] != expected_hash:
+                errors.append(f"[{eid}] event_hash mismatch")
+            if row["hmac_signature"] != expected_hmac:
+                errors.append(f"[{eid}] HMAC mismatch")
+            if row["previous_hash"] != prev_hash:
+                errors.append(
+                    f"[{eid}] chain broken: expected previous_hash={prev_hash!r}, "
+                    f"got {row['previous_hash']!r}"
+                )
+            prev_hash = row["event_hash"]
+
+        return (len(errors) == 0, errors)
+
+    # ------------------------------------------------------------------
+    # Read helpers
+    # ------------------------------------------------------------------
+
+    async def _latest_hash(
+        self,
+        learner_id: Optional[uuid.UUID],
+        *,
+        conn: Optional[asyncpg.Connection] = None,
+    ) -> str:
+        sql = """
+            SELECT event_hash FROM audit_events
+            WHERE ($1::uuid IS NULL OR learner_id = $1)
+            ORDER BY occurred_at DESC, id DESC
+            LIMIT 1
+        """
+        fetch_one = (conn or self._pool).fetchrow
+        row = await fetch_one(sql, learner_id)
+        return row["event_hash"] if row else "GENESIS"
