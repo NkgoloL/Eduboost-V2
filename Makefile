@@ -791,3 +791,6 @@ incident-response-operations-support-production-readiness-check:
 
 documentation-adrs-claim-discipline-production-readiness-check:
 	$(PYTHON) scripts/check_documentation_adrs_claim_discipline_production_readiness.py
+
+beta-launch-staging-acceptance-production-readiness-check:
+	$(PYTHON) scripts/check_beta_launch_staging_acceptance_production_readiness.py
