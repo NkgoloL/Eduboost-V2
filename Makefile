@@ -761,3 +761,6 @@ diagnostics-assessment-production-readiness-check:
 
 domain-07-diagnostics-assessment-evidence-check:
 	$(PYTHON) scripts/check_domain_07_diagnostics_assessment_evidence.py
+
+frontend-production-readiness-check:
+	$(PYTHON) scripts/check_frontend_production_readiness.py
