@@ -752,3 +752,6 @@ pr-002r-check: runtime-check openapi-check legacy-route-guard
 
 database-persistence-production-readiness-check:
 	$(PYTHON) scripts/check_database_persistence_production_readiness.py
+
+ai-llm-safety-caps-production-readiness-check:
+	$(PYTHON) scripts/check_ai_llm_safety_caps_production_readiness.py
