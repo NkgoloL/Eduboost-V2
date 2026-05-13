@@ -731,3 +731,19 @@ rec-all-checks: deduplicate-check \
 	@echo ""
 	@echo "All recommendation checks passed."
 	@echo "Review docs/current_state.md and commit."
+
+legacy-route-guard:
+	pytest tests/unit/test_api_v2_router_contract.py tests/test_entrypoints.py \
+		-v -k "legacy" --tb=short --no-cov
+	$(PYTHON) scripts/check_runtime_entrypoints.py
+
+pr-002r-check: runtime-check openapi-check legacy-route-guard
+	pytest \
+		tests/test_entrypoints.py \
+		tests/unit/test_api_v2_router_contract.py \
+		tests/unit/test_api_v2_envelope.py \
+		tests/unit/test_exception_envelopes.py \
+		tests/unit/test_no_raw_dict_responses.py \
+		-v --tb=short --no-cov
+	@echo ""
+	@echo "PR-002R acceptance checks passed."

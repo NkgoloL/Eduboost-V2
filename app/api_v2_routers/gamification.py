@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException, status
+from app.core.envelope_route import EnvelopedRoute
 from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -14,7 +15,7 @@ from app.repositories.repositories import LearnerRepository, LessonRepository
 from app.services.fourth_estate import FourthEstateService
 from app.services.gamification_service_v2 import GamificationServiceV2
 
-router = APIRouter(prefix="/gamification", tags=["V2 Gamification"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/gamification", tags=["V2 Gamification"])
 
 
 class AwardXPRequest(BaseModel):

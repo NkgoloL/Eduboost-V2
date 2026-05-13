@@ -4,6 +4,7 @@ from __future__ import annotations
 from datetime import UTC, datetime, timedelta
 
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request, Response, status
+from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -23,7 +24,7 @@ from app.services.consent import ConsentService
 from app.services.executive import ExecutiveService
 from app.services.fourth_estate import FourthEstateService
 
-router = APIRouter(prefix="/parents", tags=["parents"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/parents", tags=["parents"])
 _executive = ExecutiveService()
 
 

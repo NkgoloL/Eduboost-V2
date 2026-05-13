@@ -2,12 +2,13 @@
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException, status
+from app.core.envelope_route import EnvelopedRoute
 
 from app.core.jobs import get_job
 from app.core.security import get_current_user
 from app.domain.api_v2_models import JobStatusResponse
 
-router = APIRouter(prefix="/jobs", tags=["jobs"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/jobs", tags=["jobs"])
 
 
 @router.get("/{job_id}", response_model=JobStatusResponse)

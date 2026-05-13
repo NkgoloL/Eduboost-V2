@@ -4,6 +4,7 @@ from __future__ import annotations
 from typing import Any, Literal
 
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, status
+from app.core.envelope_route import EnvelopedRoute
 from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -19,7 +20,7 @@ from app.services.fourth_estate import FourthEstateService
 from app.services.popia_service import POPIA_ERASURE_GRACE_DAYS, POPIADataRightsService
 from app.services.rlhf_service import RLHFService
 
-router = APIRouter(prefix="/popia", tags=["compliance"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/popia", tags=["compliance"])
 
 
 class ErasureRequest(BaseModel):

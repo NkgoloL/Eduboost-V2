@@ -3,11 +3,12 @@
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException
+from app.core.envelope_route import EnvelopedRoute
 
 from app.core.dependencies import get_current_user, RequireRole
 from app.services.judiciary_service_v2 import JudiciaryServiceV2
 
-router = APIRouter(prefix="/api/v2/judiciary", tags=["V2 Judiciary"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/api/v2/judiciary", tags=["V2 Judiciary"])
 
 
 @router.post("/screen")

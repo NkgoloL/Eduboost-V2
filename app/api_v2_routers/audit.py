@@ -1,10 +1,11 @@
 """Audit routes for EduBoost V2."""
 
 from fastapi import APIRouter
+from app.core.envelope_route import EnvelopedRoute
 
 from app.services.audit_service import AuditService
 
-router = APIRouter(prefix="/audit", tags=["V2 Audit"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/audit", tags=["V2 Audit"])
 
 
 @router.get("")

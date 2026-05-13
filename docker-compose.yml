@@ -8,6 +8,11 @@ services:
       target: production
     ports:
       - "8000:8000"
+    command: >
+      uvicorn app.api_v2:app
+      --host 0.0.0.0
+      --port 8000
+      --reload
     environment:
       - APP_ENV=development
       - DATABASE_URL=postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}

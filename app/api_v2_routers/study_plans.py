@@ -1,6 +1,7 @@
 """Study plan routes for EduBoost V2."""
 
 from fastapi import APIRouter, BackgroundTasks, Depends
+from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import AsyncSessionLocal, get_db
@@ -13,7 +14,7 @@ from app.services.audit_service import AuditService
 from app.services.study_plan_service_v2 import StudyPlanServiceV2
 from app.services.telemetry import TelemetryService
 
-router = APIRouter(prefix="/study-plans", tags=["V2 Study Plans"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/study-plans", tags=["V2 Study Plans"])
 
 
 @router.post("/{learner_id}", response_model=JobAcceptedResponse, status_code=202)

@@ -258,8 +258,10 @@ jobs:
           cache: "pip"
       - name: Install dependencies
         run: pip install -r requirements/dev.txt
-      - name: Import V2 entrypoint
-        run: python -c "import importlib; importlib.import_module('app.api_v2')"
+      - name: Smoke-import app.api_v2
+        run: python -c "from app.api_v2 import app; print(app.title)"
+      - name: Runtime entrypoint check
+        run: python scripts/check_runtime_entrypoints.py
       - name: Import V2 repositories
         run: python -c "import importlib; [importlib.import_module(m) for m in ['app.repositories.diagnostic_repository','app.repositories.lesson_repository','app.repositories.gamification_repository','app.repositories.assessment_repository']]"
 

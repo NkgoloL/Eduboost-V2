@@ -7,6 +7,7 @@ reminder job on-demand (in addition to the daily arq schedule).
 from __future__ import annotations
 
 from fastapi import APIRouter, BackgroundTasks, Depends, status
+from app.core.envelope_route import EnvelopedRoute
 
 from app.core.config import settings
 from app.core.database import AsyncSessionLocal
@@ -15,7 +16,7 @@ from app.core.security import require_admin
 from app.domain.api_v2_models import JobAcceptedResponse
 from app.services.consent_renewal_service import ConsentRenewalService, SendGridEmailGateway
 
-router = APIRouter(prefix="/admin/consent", tags=["V2 Admin – Consent"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/admin/consent", tags=["V2 Admin – Consent"])
 
 
 @router.post(

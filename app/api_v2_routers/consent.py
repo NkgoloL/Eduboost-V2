@@ -7,6 +7,7 @@ from __future__ import annotations
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
+from app.core.envelope_route import EnvelopedRoute
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -18,7 +19,7 @@ from app.modules.consent.service import ConsentService
 from app.security.dependencies import require_learner_write_for_current_user
 from app.security.dependencies import require_learner_read_for_current_user
 
-router = APIRouter(prefix="/consent", tags=["POPIA Consent"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/consent", tags=["POPIA Consent"])
 
 
 class ConsentGrantRequest(BaseModel):

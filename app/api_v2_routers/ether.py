@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException
+from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.dependencies import get_current_user
@@ -10,7 +11,7 @@ from app.services.ether_service import EtherService, OnboardingResponse
 from app.security.dependencies import require_active_consent_for_current_user
 from app.core.database import get_db
 
-router = APIRouter(prefix="/api/v2/ether", tags=["V2 Ether"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/api/v2/ether", tags=["V2 Ether"])
 
 
 @router.get("/onboarding/questions")

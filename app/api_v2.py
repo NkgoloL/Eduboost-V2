@@ -45,9 +45,27 @@ async def lifespan(app: FastAPI):
     log.info("eduboost_v2_shutdown")
 
 
+OPENAPI_TAGS = [
+    {"name": "ops", "description": "Health, readiness, and system status"},
+    {"name": "auth", "description": "Authentication and token management"},
+    {"name": "learners", "description": "Learner profiles and progress"},
+    {"name": "lessons", "description": "CAPS-aligned lesson content"},
+    {"name": "study_plans", "description": "Personalised study plans"},
+    {"name": "diagnostics", "description": "Diagnostic assessments"},
+    {"name": "practice", "description": "Practice activities and attempts"},
+    {"name": "gamification", "description": "Points, badges, and streaks"},
+    {"name": "onboarding", "description": "New learner and parent onboarding"},
+    {"name": "parents", "description": "Parent/guardian management"},
+    {"name": "billing", "description": "Subscription and payment"},
+    {"name": "consent", "description": "POPIA consent collection"},
+    {"name": "popia", "description": "POPIA data subject rights"},
+    {"name": "jobs", "description": "Background job status"},
+]
+
 app = FastAPI(
     title="EduBoost SA V2",
     version=settings.APP_VERSION,
+    openapi_tags=OPENAPI_TAGS,
     description="AI-powered adaptive learning platform — Grade R to 7. CAPS-aligned. POPIA-compliant.",
     lifespan=lifespan,
     docs_url="/docs",

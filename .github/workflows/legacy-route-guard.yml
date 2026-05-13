@@ -1,0 +1,46 @@
+# .github/workflows/legacy-route-guard.yml
+# ─────────────────────────────────────────
+# Ensures that no legacy/V1 routes are accidentally exposed by app.api_v2:app.
+# Runs the route-contract unit tests that cover legacy exclusion.
+
+name: legacy-route-guard
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - "app/**"
+  pull_request:
+    paths:
+      - "app/**"
+
+jobs:
+  legacy-route-guard:
+    name: Legacy route exclusion guard
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements/dev.txt
+
+      - name: Copy env
+        run: cp .env.example .env
+
+      - name: Run legacy-route-guard tests
+        run: |
+          pytest \
+            tests/unit/test_api_v2_router_contract.py \
+            tests/test_entrypoints.py \
+            -v \
+            -k "legacy" \
+            --tb=short
+
+      - name: Run runtime entrypoint check
+        run: python scripts/check_runtime_entrypoints.py

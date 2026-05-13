@@ -16,6 +16,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 DEFAULT_ENTRYPOINTS = (
     "app.api_v2:app",
+    "app.api.main:app",
     "app.legacy.api.main:app",
 )
 

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Response, status
+from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.authorization import assert_can_access_learner
@@ -15,7 +16,7 @@ from app.modules.progress.progress_timeline_service import ProgressTimelineServi
 from app.security.dependencies import require_active_consent_for_current_user, require_learner_read_for_current_user
 from app.services.fourth_estate import FourthEstateService
 
-router = APIRouter(prefix="/learners", tags=["learners"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/learners", tags=["learners"])
 log = get_logger(__name__)
 
 

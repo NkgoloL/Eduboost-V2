@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException, status
+from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
@@ -11,7 +12,7 @@ from app.repositories.repositories import LearnerRepository
 from app.services.ether import EtherService
 from app.security.dependencies import require_active_consent_for_current_user, require_learner_write_for_current_user
 
-router = APIRouter(prefix="/onboarding", tags=["onboarding"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/onboarding", tags=["onboarding"])
 _ether = EtherService()
 
 

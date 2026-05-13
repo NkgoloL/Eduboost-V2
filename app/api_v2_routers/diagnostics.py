@@ -4,6 +4,7 @@ from __future__ import annotations
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
+from app.core.envelope_route import EnvelopedRoute
 from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -32,7 +33,7 @@ from app.modules.diagnostics.session_recovery_service import SessionRecoveryServ
 from app.repositories.diagnostic_session_repository import DiagnosticSessionRepository
 from app.repositories.mastery_repository import MasteryRepository
 
-router = APIRouter(prefix="/diagnostics", tags=["diagnostics"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/diagnostics", tags=["diagnostics"])
 router.include_router(bias_review_router.router)
 _engine = DiagnosticEngine()
 _caps_validator = CAPSAlignmentValidator()

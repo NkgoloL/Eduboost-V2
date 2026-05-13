@@ -1,6 +1,7 @@
 """Assessment routes for EduBoost V2."""
 
 from fastapi import APIRouter, Depends
+from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
@@ -10,7 +11,7 @@ from app.domain.api_v2_models import AssessmentAttemptRequest
 from app.services.assessment_service_v2 import AssessmentServiceV2
 from app.security.dependencies import require_active_consent_for_current_user, require_learner_write_for_current_user
 
-router = APIRouter(prefix="/api/v2/assessments", tags=["V2 Assessments"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/api/v2/assessments", tags=["V2 Assessments"])
 
 
 @router.get("")

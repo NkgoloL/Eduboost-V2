@@ -115,3 +115,23 @@ def test_legacy_routes_hidden_from_v2_openapi_schema() -> None:
     paths: dict[str, Any] = app.openapi().get("paths", {})
 
     assert "/api/v1/lessons/generate" not in paths
+
+
+@pytest.mark.unit
+def test_api_main_compatibility_shim_import_contract() -> None:
+    """The compatibility shim must expose the canonical V2 FastAPI app."""
+    shim_app = _load_app("app.api.main:app")
+    canonical_app = _load_app("app.api_v2:app")
+
+    assert shim_app is canonical_app
+    assert shim_app.title == canonical_app.title
+
+
+@pytest.mark.unit
+def test_api_main_compatibility_shim_exposes_health_and_ready() -> None:
+    """Smoke checks can keep using app.api.main while resolving to V2 routes."""
+    app = _load_app("app.api.main:app")
+    route_paths = {route.path for route in app.routes}
+
+    assert "/health" in route_paths
+    assert "/ready" in route_paths

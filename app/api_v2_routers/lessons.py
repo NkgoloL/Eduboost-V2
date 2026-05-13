@@ -3,6 +3,7 @@
 import json
 
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request, status
+from app.core.envelope_route import EnvelopedRoute
 from fastapi.responses import StreamingResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from uuid import UUID
@@ -18,7 +19,7 @@ from app.modules.lessons.service import LessonService
 from app.modules.lessons import lesson_coverage_router, lesson_review_router
 from app.security.dependencies import require_learner_write_for_current_user, require_active_consent_for_current_user
 
-router = APIRouter(prefix="/lessons", tags=["lessons"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/lessons", tags=["lessons"])
 router.include_router(lesson_review_router.router)
 router.include_router(lesson_coverage_router.router)
 

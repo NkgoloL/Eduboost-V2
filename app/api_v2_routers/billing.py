@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, Header, Request, status
+from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
@@ -10,7 +11,7 @@ from app.domain.schemas import CheckoutSessionResponse
 from app.services.fourth_estate import FourthEstateService
 from app.services.stripe_service import StripeService
 
-router = APIRouter(prefix="/billing", tags=["billing"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/billing", tags=["billing"])
 
 
 @router.post("/checkout", response_model=CheckoutSessionResponse)
