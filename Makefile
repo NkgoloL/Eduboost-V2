@@ -776,3 +776,6 @@ observability-production-readiness-check:
 
 ci-cd-deployment-production-readiness-check:
 	$(PYTHON) scripts/check_ci_cd_deployment_production_readiness.py
+
+backup-restore-disaster-recovery-production-readiness-check:
+	$(PYTHON) scripts/check_backup_restore_disaster_recovery_production_readiness.py
