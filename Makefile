@@ -767,3 +767,6 @@ frontend-production-readiness-check:
 
 billing-monetization-production-readiness-check:
 	$(PYTHON) scripts/check_billing_monetization_production_readiness.py
+
+notifications-communication-production-readiness-check:
+	$(PYTHON) scripts/check_notifications_communication_production_readiness.py
