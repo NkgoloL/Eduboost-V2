@@ -1,0 +1,140 @@
+"""
+alembic/versions/0010_popia_consent_audit_dsr.py
+Creates all POPIA-related tables (§4.1 §4.3 §4.5).
+Sets up row-level trigger to prevent UPDATE/DELETE on audit_events.
+"""
+from alembic import op
+import sqlalchemy as sa
+from sqlalchemy.dialects.postgresql import UUID, JSONB
+
+revision = "0010_popia"
+down_revision = "0009"      # adjust to actual previous revision
+branch_labels = None
+depends_on = None
+
+
+def upgrade() -> None:
+    # ----------------------------------------------------------------
+    # §4.5 – append-only audit table
+    # ----------------------------------------------------------------
+    op.create_table(
+        "audit_events",
+        sa.Column("id", UUID(as_uuid=True), primary_key=True),
+        sa.Column("event_type", sa.String(64), nullable=False),
+        sa.Column("actor_id", UUID(as_uuid=True), nullable=True),
+        sa.Column("learner_id", UUID(as_uuid=True), nullable=True),
+        sa.Column("payload", JSONB, nullable=False, server_default="{}"),
+        sa.Column("occurred_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("event_hash", sa.String(64), nullable=False),
+        sa.Column("previous_hash", sa.String(64), nullable=False),
+        sa.Column("hmac_signature", sa.String(64), nullable=False),
+    )
+    op.create_index("ix_audit_events_learner_id", "audit_events", ["learner_id"])
+    op.create_index("ix_audit_events_occurred_at", "audit_events", ["occurred_at"])
+
+    # Row-level trigger: prevent UPDATE/DELETE on audit_events (§4.5)
+    op.execute("""
+        CREATE OR REPLACE FUNCTION audit_events_immutable()
+        RETURNS TRIGGER LANGUAGE plpgsql AS $$
+        BEGIN
+            RAISE EXCEPTION 'audit_events is append-only – modifications are forbidden';
+        END;
+        $$;
+    """)
+    op.execute("""
+        CREATE TRIGGER trg_audit_events_immutable
+        BEFORE UPDATE OR DELETE ON audit_events
+        FOR EACH ROW EXECUTE FUNCTION audit_events_immutable();
+    """)
+
+    # ----------------------------------------------------------------
+    # §4.1 – consent records
+    # ----------------------------------------------------------------
+    op.create_table(
+        "consent_records",
+        sa.Column("id", UUID(as_uuid=True), primary_key=True),
+        sa.Column("learner_id", UUID(as_uuid=True), nullable=False),
+        sa.Column("guardian_id", UUID(as_uuid=True), nullable=False),
+        sa.Column("privacy_notice_version", sa.String(32), nullable=False),
+        sa.Column("state", sa.String(32), nullable=False, server_default="pending"),
+        sa.Column("granted_at", sa.DateTime(timezone=True), nullable=True),
+        sa.Column("expires_at", sa.DateTime(timezone=True), nullable=True),
+        sa.Column("withdrawn_at", sa.DateTime(timezone=True), nullable=True),
+        sa.Column("denial_reason", sa.Text, nullable=True),
+        sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("updated_at", sa.DateTime(timezone=True), nullable=False),
+    )
+    op.create_index("ix_consent_records_learner_id", "consent_records", ["learner_id"])
+
+    # ----------------------------------------------------------------
+    # §4.3 – Data Subject Rights tables
+    # ----------------------------------------------------------------
+    op.create_table(
+        "data_export_requests",
+        sa.Column("id", UUID(as_uuid=True), primary_key=True),
+        sa.Column("learner_id", UUID(as_uuid=True), nullable=False),
+        sa.Column("requested_by", UUID(as_uuid=True), nullable=False),
+        sa.Column("status", sa.String(32), nullable=False, server_default="pending"),
+        sa.Column("format", sa.String(8), nullable=False, server_default="json"),
+        sa.Column("download_url", sa.Text, nullable=True),
+        sa.Column("artifact_path", sa.Text, nullable=True),
+        sa.Column("sla_deadline", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("completed_at", sa.DateTime(timezone=True), nullable=True),
+    )
+    op.create_index("ix_export_requests_learner_id", "data_export_requests", ["learner_id"])
+
+    op.create_table(
+        "erasure_requests",
+        sa.Column("id", UUID(as_uuid=True), primary_key=True),
+        sa.Column("learner_id", UUID(as_uuid=True), nullable=False),
+        sa.Column("requested_by", UUID(as_uuid=True), nullable=False),
+        sa.Column("status", sa.String(32), nullable=False, server_default="pending"),
+        sa.Column("review_notes", sa.Text, nullable=True),
+        sa.Column("legal_hold", sa.Boolean, nullable=False, server_default="false"),
+        sa.Column("sla_deadline", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("approved_at", sa.DateTime(timezone=True), nullable=True),
+        sa.Column("executed_at", sa.DateTime(timezone=True), nullable=True),
+    )
+
+    op.create_table(
+        "correction_requests",
+        sa.Column("id", UUID(as_uuid=True), primary_key=True),
+        sa.Column("learner_id", UUID(as_uuid=True), nullable=False),
+        sa.Column("requested_by", UUID(as_uuid=True), nullable=False),
+        sa.Column("field_name", sa.String(128), nullable=False),
+        sa.Column("old_value", sa.Text, nullable=True),
+        sa.Column("new_value", sa.Text, nullable=False),
+        sa.Column("status", sa.String(32), nullable=False, server_default="pending"),
+        sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("completed_at", sa.DateTime(timezone=True), nullable=True),
+    )
+
+    op.create_table(
+        "restriction_requests",
+        sa.Column("id", UUID(as_uuid=True), primary_key=True),
+        sa.Column("learner_id", UUID(as_uuid=True), nullable=False),
+        sa.Column("requested_by", UUID(as_uuid=True), nullable=False),
+        sa.Column("reason", sa.Text, nullable=False),
+        sa.Column("status", sa.String(32), nullable=False, server_default="pending"),
+        sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("lifted_at", sa.DateTime(timezone=True), nullable=True),
+    )
+
+    # ----------------------------------------------------------------
+    # §4.5 – revoke UPDATE/DELETE from app role on audit_events
+    # (run as superuser during migration)
+    # ----------------------------------------------------------------
+    op.execute("REVOKE UPDATE, DELETE ON audit_events FROM eduboost_app;")
+
+
+def downgrade() -> None:
+    op.execute("DROP TRIGGER IF EXISTS trg_audit_events_immutable ON audit_events;")
+    op.execute("DROP FUNCTION IF EXISTS audit_events_immutable;")
+    for table in [
+        "restriction_requests", "correction_requests",
+        "erasure_requests", "data_export_requests",
+        "consent_records", "audit_events",
+    ]:
+        op.drop_table(table)

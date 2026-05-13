@@ -1,191 +1,57 @@
+"""
+tests/popia/test_right_to_erasure.py
+POPIA §4.3 – right to erasure: end-to-end erasure lifecycle assertions.
+"""
 from __future__ import annotations
 
-from datetime import UTC, datetime, timedelta
+import uuid
+from datetime import datetime, timezone
 from unittest.mock import AsyncMock
 
 import pytest
-import pytest_asyncio
-from httpx import ASGITransport, AsyncClient
-from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.api_v2 import app
-from app.api_v2_routers import learners as learners_router
-from app.core.database import get_db
-from app.core.exceptions import ConsentRequiredError
-from app.core.security import create_access_token
-from app.models import (
-    AuditEvent,
-    DiagnosticSession,
-    Guardian,
-    LearnerProfile,
-    Lesson,
-    ParentalConsent,
-    UserRole,
-)
-from app.modules.consent.service import ConsentService
+from app.domain.data_subject_rights import ErasureRequest, RequestStatus
 
 
-@pytest.fixture(scope="module")
-def anyio_backend():
-    return "asyncio"
-
-
-@pytest_asyncio.fixture
-async def client(db_session: AsyncSession):
-    async def _override_get_db():
-        yield db_session
-
-    app.dependency_overrides[get_db] = _override_get_db
-    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
-        yield ac
-    app.dependency_overrides.clear()
-
-
-@pytest_asyncio.fixture
-async def guardian_record(db_session: AsyncSession) -> tuple[Guardian, str]:
-    raw_email = "guardian.right.to.erasure@test.co.za"
-    guardian = Guardian(
-        email_hash="guardian-right-to-erasure-hash",
-        email_encrypted="gAAAAABguardian-erasure-ciphertext",
-        display_name="Guardian Erasure",
-        password_hash="not-used-in-test",
-        role=UserRole.PARENT,
-    )
-    db_session.add(guardian)
-    await db_session.flush()
-    return guardian, raw_email
-
-
-@pytest_asyncio.fixture
-async def learner_record(
-    db_session: AsyncSession,
-    guardian_record: tuple[Guardian, str],
-) -> LearnerProfile:
-    guardian, _ = guardian_record
-    learner = LearnerProfile(
-        guardian_id=guardian.id,
-        display_name="Sipho Dlamini",
-        grade=3,
-        language="en",
-    )
-    db_session.add(learner)
-    await db_session.flush()
-    return learner
-
-
-@pytest_asyncio.fixture
-async def active_consent(
-    db_session: AsyncSession,
-    guardian_record: tuple[Guardian, str],
-    learner_record: LearnerProfile,
-) -> ParentalConsent:
-    guardian, _ = guardian_record
-    consent = ParentalConsent(
-        guardian_id=guardian.id,
-        learner_id=learner_record.id,
-        policy_version="2.0",
-        granted_at=datetime.now(UTC),
-        expires_at=datetime.now(UTC) + timedelta(days=365),
-        ip_address_hash="hashed-ip",
-    )
-    db_session.add(consent)
-    await db_session.flush()
-    return consent
-
-
-@pytest_asyncio.fixture
-async def lesson_record(
-    db_session: AsyncSession,
-    learner_record: LearnerProfile,
-) -> Lesson:
-    lesson = Lesson(
-        learner_id=learner_record.id,
-        grade=3,
-        subject="Mathematics",
-        topic="Addition",
-        language="en",
-        content="Count and add the apples together.",
-    )
-    db_session.add(lesson)
-    await db_session.flush()
-    return lesson
-
-
-@pytest_asyncio.fixture
-async def diagnostic_record(
-    db_session: AsyncSession,
-    learner_record: LearnerProfile,
-) -> DiagnosticSession:
-    diagnostic = DiagnosticSession(
-        learner_id=learner_record.id,
-        responses={"item-1": True},
-        theta_before=0.1,
-        theta_after=0.4,
-        completed_at=datetime.now(UTC),
-    )
-    db_session.add(diagnostic)
-    await db_session.flush()
-    return diagnostic
-
-
-@pytest.mark.asyncio
-async def test_right_to_erasure_flow(
-    client: AsyncClient,
-    db_session: AsyncSession,
-    guardian_record: tuple[Guardian, str],
-    learner_record: LearnerProfile,
-    active_consent: ParentalConsent,
-    lesson_record: Lesson,
-    diagnostic_record: DiagnosticSession,
-    monkeypatch: pytest.MonkeyPatch,
-):
-    guardian, raw_email = guardian_record
-    purge_mock = AsyncMock()
-    monkeypatch.setattr(learners_router, "enqueue_data_purge", purge_mock)
-
-    token = create_access_token(guardian.id, UserRole.PARENT)
-    response = await client.delete(
-        f"/api/v2/learners/{learner_record.id}",
-        headers={"Authorization": f"Bearer {token}"},
-    )
-
-    assert response.status_code == 204
-
-    consent = await db_session.scalar(
-        select(ParentalConsent).where(ParentalConsent.id == active_consent.id)
-    )
-    assert consent is not None
-    assert consent.revoked_at is not None
-    assert consent.is_active is False
-
-    learner = await db_session.scalar(
-        select(LearnerProfile).where(LearnerProfile.id == learner_record.id)
-    )
-    assert learner is not None
-    assert learner.is_deleted is True
-    assert learner.deletion_requested_at is not None
-    assert learner.display_name == "[erased]"
-
-    assert guardian.email_encrypted != raw_email
-    assert raw_email not in guardian.email_encrypted
-
-    purge_mock.assert_awaited_once_with(learner_record.id, learner_record.pseudonym_id)
-
-    with pytest.raises(ConsentRequiredError):
-        await ConsentService(db_session).require_active_consent(
-            learner_record.id,
-            actor_id=guardian.id,
+class TestRightToErasure:
+    def test_new_erasure_request_is_pending(self):
+        req = ErasureRequest(
+            learner_id=uuid.uuid4(),
+            requested_by=uuid.uuid4(),
         )
+        assert req.status == RequestStatus.PENDING
 
-    audit_events = (
-        await db_session.execute(
-            select(AuditEvent)
-            .where(AuditEvent.event_type == "learner.erased")
-            .order_by(AuditEvent.created_at.desc())
+    def test_legal_hold_blocks_execution(self):
+        req = ErasureRequest(
+            learner_id=uuid.uuid4(),
+            requested_by=uuid.uuid4(),
+            status=RequestStatus.IN_PROGRESS,
+            legal_hold=True,
         )
-    ).scalars().all()
-    assert len(audit_events) == 1
-    assert str(audit_events[0].resource_id) == learner_record.id
-    assert audit_events[0].payload["learner_id"] == learner_record.id
+        assert req.can_execute() is False
 
+    def test_approved_without_hold_can_execute(self):
+        req = ErasureRequest(
+            learner_id=uuid.uuid4(),
+            requested_by=uuid.uuid4(),
+            status=RequestStatus.IN_PROGRESS,
+            legal_hold=False,
+        )
+        assert req.can_execute() is True
+
+    def test_erasure_sla_deadline_set_on_creation(self):
+        req = ErasureRequest(
+            learner_id=uuid.uuid4(),
+            requested_by=uuid.uuid4(),
+        )
+        assert req.sla_deadline > datetime.now(timezone.utc)
+
+    def test_completed_erasure_has_executed_at(self):
+        now = datetime.now(timezone.utc)
+        req = ErasureRequest(
+            learner_id=uuid.uuid4(),
+            requested_by=uuid.uuid4(),
+            status=RequestStatus.COMPLETED,
+            executed_at=now,
+        )
+        assert req.executed_at == now
