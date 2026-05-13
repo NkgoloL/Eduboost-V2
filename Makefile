@@ -788,3 +788,6 @@ security-posture-threat-modeling-production-readiness-check:
 
 incident-response-operations-support-production-readiness-check:
 	$(PYTHON) scripts/check_incident_response_operations_support_production_readiness.py
+
+documentation-adrs-claim-discipline-production-readiness-check:
+	$(PYTHON) scripts/check_documentation_adrs_claim_discipline_production_readiness.py
