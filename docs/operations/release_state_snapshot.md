@@ -2,15 +2,20 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-05-12T20:04:05.506599+00:00`
-- branch: `fix/technical-state-report-implementation`
-- commit: `84cad7993ac942ee5a2d0c8fb011dc0aee1301eb`
+- generated_at_utc: `2026-05-13T22:04:10.522522+00:00`
+- branch: `codex/production_readiness`
+- commit: `ab75ab181e3328954bf1c0544237166ab5bcc8fb`
 - release_candidate: `unset`
 
 ## Working Tree Status
 
 ```text
-M docs/current_state.md
+D alembic/versions/0010_popia_consent_audit_dsr.py
+ M app/core/authorization.py
+ M app/core/token_config.py
+ M app/repositories/audit_repository.py
+ M docs/ai/ai_prompt_surface_inventory.md
+ M docs/frontend/frontend_route_inventory.md
  M docs/operations/beta_release_evidence_bundle.md
  M docs/operations/beta_release_pr_body.md
  M docs/operations/beta_signoff_manifest.md
@@ -20,8 +25,10 @@ M docs/current_state.md
  M docs/operations/release_evidence_manifest.md
  M docs/operations/release_state_snapshot.md
  M docs/operations/staging_smoke_evidence_manifest.md
- M docs/security/learner_authz_matrix.md
- M docs/technical_state_report_2026-05-12.md
+ M docs/security/PHASE2_AUTHORIZATION_CLOSURE.md
+ M scripts/generate_consent_gate_inventory.py
+?? alembic/versions/20260510_0300_popia_consent_audit_dsr.py
+?? repro_error.py
 ```
 
 ## State Artifacts

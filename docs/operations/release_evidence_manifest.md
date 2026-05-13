@@ -1,23 +1,23 @@
 # Release Evidence Manifest
 
-Generated: `2026-05-12T20:06:44Z`
-Branch: `fix/technical-state-report-implementation`
-Commit: `84cad7993ac942ee5a2d0c8fb011dc0aee1301eb`
+Generated: `2026-05-13T22:02:24Z`
+Branch: `codex/production_readiness`
+Commit: `ab75ab181e3328954bf1c0544237166ab5bcc8fb`
 
 ## Required Evidence Commands
 
 | Area | Command | Evidence Status |
 | --- | --- | --- |
-| Runtime contract | `make runtime-check` | PASS |
-| OpenAPI drift | `make openapi-check` | PASS |
-| Route inventory | `make route-inventory-check` | PASS |
-| PR-002R evidence | `make pr002r-check` | PASS |
-| Phase 2 authorization | `make phase2-authz-closure` | PASS |
-| POPIA consent/audit | `make popia-consent-closure-check` | PASS |
-| Cluster D environment/deployment | `make cluster-d-closure-check` | PASS |
-| Cluster E data resilience | `make cluster-e-closure-check` | PASS |
-| Cluster F AI safety | `make cluster-f-closure-check` | PASS |
-| Cluster G frontend journey | `make cluster-g-closure-check` | PASS |
+| Runtime contract | `make runtime-check` | pending |
+| OpenAPI drift | `make openapi-check` | pending |
+| Route inventory | `make route-inventory-check` | pending |
+| PR-002R evidence | `make pr002r-check` | pending |
+| Phase 2 authorization | `make phase2-authz-closure` | pending |
+| POPIA consent/audit | `make popia-consent-closure-check` | pending |
+| Cluster D environment/deployment | `make cluster-d-closure-check` | pending |
+| Cluster E data resilience | `make cluster-e-closure-check` | pending |
+| Cluster F AI safety | `make cluster-f-closure-check` | pending |
+| Cluster G frontend journey | `make cluster-g-closure-check` | pending |
 
 ## Release Evidence Notes
 

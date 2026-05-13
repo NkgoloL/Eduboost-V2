@@ -125,6 +125,7 @@ This inventory records frontend route, page, and journey-related surfaces.
 | `app/frontend/src/lib/api/offlineSync.ts` | `_none_` | `learner, lesson` |
 | `app/frontend/src/lib/api/services.ts` | `_none_` | `learner, parent, dashboard, lesson, diagnostic, progress, consent` |
 | `app/frontend/src/lib/api/types.ts` | `_none_` | `learner, parent, dashboard, lesson, diagnostic, progress, consent` |
+| `app/frontend/src/lib/productionReadiness/contracts.ts` | `Route` | `learner, parent, dashboard, lesson, diagnostic, consent, onboarding` |
 
 ## Command
 

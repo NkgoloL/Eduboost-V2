@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-05-12T20:04:05.982365+00:00`
-- branch: `fix/technical-state-report-implementation`
-- commit: `84cad7993ac942ee5a2d0c8fb011dc0aee1301eb`
+- generated_at_utc: `2026-05-13T22:04:10.912169+00:00`
+- branch: `codex/production_readiness`
+- commit: `ab75ab181e3328954bf1c0544237166ab5bcc8fb`
 - target_environment: `staging`
 
 ## Required Smoke Checks
