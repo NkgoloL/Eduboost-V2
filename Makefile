@@ -749,3 +749,54 @@ pr-002r-check: runtime-check openapi-check legacy-route-guard
 		-v --tb=short --no-cov
 	@echo ""
 	@echo "PR-002R acceptance checks passed."
+
+database-persistence-production-readiness-check:
+	$(PYTHON) scripts/check_database_persistence_production_readiness.py
+
+ai-llm-safety-caps-production-readiness-check:
+	$(PYTHON) scripts/check_ai_llm_safety_caps_production_readiness.py
+
+diagnostics-assessment-production-readiness-check:
+	$(PYTHON) scripts/check_diagnostics_assessment_production_readiness.py
+
+domain-07-diagnostics-assessment-evidence-check:
+	$(PYTHON) scripts/check_domain_07_diagnostics_assessment_evidence.py
+
+frontend-production-readiness-check:
+	$(PYTHON) scripts/check_frontend_production_readiness.py
+
+billing-monetization-production-readiness-check:
+	$(PYTHON) scripts/check_billing_monetization_production_readiness.py
+
+notifications-communication-production-readiness-check:
+	$(PYTHON) scripts/check_notifications_communication_production_readiness.py
+
+observability-production-readiness-check:
+	$(PYTHON) scripts/check_observability_production_readiness.py
+
+ci-cd-deployment-production-readiness-check:
+	$(PYTHON) scripts/check_ci_cd_deployment_production_readiness.py
+
+backup-restore-disaster-recovery-production-readiness-check:
+	$(PYTHON) scripts/check_backup_restore_disaster_recovery_production_readiness.py
+
+testing-release-quality-gates-production-readiness-check:
+	$(PYTHON) scripts/check_testing_release_quality_gates_production_readiness.py
+
+security-posture-threat-modeling-production-readiness-check:
+	$(PYTHON) scripts/check_security_posture_threat_modeling_production_readiness.py
+
+incident-response-operations-support-production-readiness-check:
+	$(PYTHON) scripts/check_incident_response_operations_support_production_readiness.py
+
+documentation-adrs-claim-discipline-production-readiness-check:
+	$(PYTHON) scripts/check_documentation_adrs_claim_discipline_production_readiness.py
+
+beta-launch-staging-acceptance-production-readiness-check:
+	$(PYTHON) scripts/check_beta_launch_staging_acceptance_production_readiness.py
+
+roadmap-after-production-readiness-baseline-check:
+	$(PYTHON) scripts/check_roadmap_after_production_readiness_baseline.py
+
+final-release-blocker-checklist-check:
+	$(PYTHON) scripts/check_final_release_blocker_checklist.py
