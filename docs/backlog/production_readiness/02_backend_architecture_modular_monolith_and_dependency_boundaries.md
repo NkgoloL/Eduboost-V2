@@ -27,9 +27,9 @@
 
 ## 2.2 Business logic location
 
-- [ ] `P0` Decide canonical business-logic location.
-- [ ] `P0` Choose between `app/services` and `app/modules/<context>/service.py`.
-- [ ] `P0` Write ADR `docs/adr/0010-business-logic-location.md`.
+- [x] `P0` Decide canonical business-logic location. Evidence: ADR 0010.
+- [x] `P0` Choose between `app/services` and `app/modules/<context>/service.py`. Evidence: ADR 0010.
+- [x] `P0` Write ADR `docs/adr/0010-business-logic-location.md`. Evidence: `docs/adr/0010-business-logic-location.md`.
 - [ ] `P1` Inventory all files in `app/services`.
 - [ ] `P1` Inventory all files in `app/modules`.
 - [ ] `P1` Identify duplicate service concepts.
@@ -65,12 +65,12 @@
 
 ## 2.4 Import boundaries
 
-- [ ] `P1` Add `import-linter` configuration.
-- [ ] `P1` Enforce `routers -> services/modules`.
-- [ ] `P1` Enforce `services/modules -> repositories`.
-- [ ] `P1` Enforce `repositories -> models/database`.
+- [x] `P1` Add `import-linter` configuration. Evidence: `.importlinter`.
+- [x] `P1` Enforce `routers -> services/modules`. Evidence: `.importlinter`.
+- [x] `P1` Enforce `services/modules -> repositories`. Evidence: `.importlinter`.
+- [x] `P1` Enforce `repositories -> models/database`. Evidence: `.importlinter`.
 - [ ] `P1` Enforce `domain` has no infrastructure imports.
-- [ ] `P1` Enforce repositories never import routers.
+- [x] `P1` Enforce repositories never import routers. Evidence: `.importlinter`.
 - [ ] `P1` Enforce services never depend on FastAPI `Request` unless explicitly justified.
 - [ ] `P1` Add `lint-imports` to CI.
 - [ ] `P1` Add import boundary check to required branch protection.
@@ -78,10 +78,10 @@
 
 ## 2.5 Metaphor-layer cleanup
 
-- [ ] `P1` Inventory active-code references to `executive`.
-- [ ] `P1` Inventory active-code references to `judiciary`.
-- [ ] `P1` Inventory active-code references to `fourth_estate`.
-- [ ] `P1` Inventory active-code references to `ether`.
+- [x] `P1` Inventory active-code references to `executive`. Evidence: `scripts/inventory_services.py`, `scripts/rename_metaphor_layers.py`.
+- [x] `P1` Inventory active-code references to `judiciary`. Evidence: `scripts/inventory_services.py`, `scripts/rename_metaphor_layers.py`.
+- [x] `P1` Inventory active-code references to `fourth_estate`. Evidence: `scripts/inventory_services.py`, `scripts/rename_metaphor_layers.py`.
+- [x] `P1` Inventory active-code references to `ether`. Evidence: `scripts/inventory_services.py`, `scripts/rename_metaphor_layers.py`.
 - [ ] `P1` Rename active engineering boundaries to domain names.
 - [ ] `P1` Move metaphor language to product/storytelling docs only, if retained.
 - [ ] `P2` Add glossary mapping old metaphor names to new domain names.
