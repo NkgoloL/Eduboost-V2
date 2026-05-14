@@ -57,6 +57,12 @@ cp .env.example .env
 docker compose up --build
 ```
 
+If the local PostgreSQL migration fails with a missing role error like `role "eduboost_app" does not exist`, create the role before re-running migrations:
+
+```bash
+docker exec -it eduboost-v2-postgres-1 psql -U eduboost_user -d eduboost -c "CREATE ROLE eduboost_app NOLOGIN;"
+```
+
 Useful URLs:
 
 - Frontend: `http://localhost:3050`
