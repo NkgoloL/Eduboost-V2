@@ -20,7 +20,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/api_v2_routers/api_v2.py` | `diagnostic` |
 | `app/api_v2_routers/auth.py` | `remediation` |
 | `app/api_v2_routers/diagnostics.py` | `diagnostic` |
-| `app/api_v2_routers/lessons.py` | `generate_lesson` |
+| `app/api_v2_routers/lessons.py` | `llm, generate_lesson` |
 | `app/api_v2_routers/test_services.py` | `prompt, diagnostic` |
 | `app/core/analytics.py` | `diagnostic` |
 | `app/core/authorization.py` | `generate_lesson, diagnostic` |

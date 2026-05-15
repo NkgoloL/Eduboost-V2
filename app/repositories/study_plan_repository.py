@@ -20,7 +20,7 @@ class StudyPlan(Base):
     __tablename__ = "study_plan"
     plan_id = Column(String, primary_key=True)
     learner_id = Column(String, nullable=False)
-    week_start = Column(DateTime, nullable=False)
+    week_start = Column(DateTime(timezone=True), nullable=False)
     schedule = Column(JSON, nullable=False)
     gap_ratio = Column(Float, nullable=False)
     week_focus = Column(Text)
@@ -47,8 +47,8 @@ class StudyPlanRepository:
         now = datetime.now(timezone.utc)
         async with AsyncSessionFactory() as session:
             plan = StudyPlan(
-                plan_id=plan_id,
-                learner_id=uuid.UUID(learner_id),
+                plan_id=str(plan_id),
+                learner_id=str(learner_id),
                 week_start=now,
                 schedule=schedule,
                 gap_ratio=gap_ratio,
@@ -72,7 +72,7 @@ class StudyPlanRepository:
         """Fetch a single study plan by its UUID."""
         async with AsyncSessionFactory() as session:
             result = await session.execute(
-                select(StudyPlan).where(StudyPlan.plan_id == uuid.UUID(plan_id))
+                select(StudyPlan).where(StudyPlan.plan_id == str(plan_id))
             )
             plan = result.scalar_one_or_none()
             if plan is None:
@@ -92,7 +92,7 @@ class StudyPlanRepository:
         async with AsyncSessionFactory() as session:
             result = await session.execute(
                 select(StudyPlan)
-                .where(StudyPlan.learner_id == uuid.UUID(learner_id))
+                .where(StudyPlan.learner_id == str(learner_id))
                 .order_by(StudyPlan.week_start.desc())
                 .limit(limit)
             )

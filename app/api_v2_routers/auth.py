@@ -174,7 +174,21 @@ async def create_dev_session(response: Response, db: AsyncSession = Depends(get_
 
     refresh = create_refresh_token(guardian.id, guardian.role)
     refresh_payload = decode_token(refresh)
-    access = create_access_token(guardian.id, guardian.role, {"refresh_jti": refresh_payload.get("jti"), "refresh_family": refresh_payload.get("family")})
+    
+    # Include the learner IDs in the access token so authorization logic works
+    learner_ids = [str(l.id) for l in learners]
+    if learner.id not in learner_ids:
+        learner_ids.append(str(learner.id))
+        
+    access = create_access_token(
+        guardian.id, 
+        guardian.role, 
+        {
+            "refresh_jti": refresh_payload.get("jti"), 
+            "refresh_family": refresh_payload.get("family"),
+            "guardian_learner_ids": learner_ids
+        }
+    )
     await store_refresh_token(refresh)
     _set_refresh_cookie(response, refresh)
     await audit.auth_event("DEV_SESSION_BOOTSTRAPPED", guardian.id, {"learner_id": learner.id})

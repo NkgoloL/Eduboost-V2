@@ -39,7 +39,7 @@ class TelemetryService:
         payload = validate_event_payload(event_name, pseudonym_id, properties or {})
         capability = get_runtime_capabilities()["analytics"]
         if capability.status != "available":
-            log.info("telemetry_noop", event=event_name, distinct_id=pseudonym_id, reason=capability.reason)
+            log.info("telemetry_noop", event_name=event_name, distinct_id=pseudonym_id, reason=capability.reason)
             return
         try:
             import posthog  # type: ignore
@@ -48,7 +48,7 @@ class TelemetryService:
             posthog.host = settings.POSTHOG_HOST
             posthog.capture(payload["distinct_id"], payload["event"], payload["properties"])
         except Exception as exc:  # noqa: BLE001 - telemetry must never break learner flows
-            log.warning("telemetry_dispatch_failed", event=event_name, error=exc.__class__.__name__)
+            log.warning("telemetry_dispatch_failed", event_name=event_name, error=exc.__class__.__name__)
 
     @staticmethod
     def sanitize_properties(properties: dict[str, Any]) -> dict[str, Any]:

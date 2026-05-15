@@ -5,6 +5,7 @@ pytestmark = pytest.mark.integration
 """HTTP contract tests for lesson generation write authorization."""
 
 from typing import Any
+from unittest.mock import AsyncMock
 from uuid import UUID
 
 import pytest
@@ -47,6 +48,11 @@ def override_user(payload: dict[str, Any]):
 @pytest.fixture(autouse=True)
 def lesson_overrides(monkeypatch: pytest.MonkeyPatch):
     monkeypatch.setattr(lessons_router, "enqueue_job", fake_enqueue_job)
+    monkeypatch.setattr(
+        lessons_router,
+        "require_active_consent_for_current_user",
+        AsyncMock(return_value=None),
+    )
     app.dependency_overrides[lessons_router.get_lesson_service] = fake_lesson_service
     yield
     app.dependency_overrides.clear()

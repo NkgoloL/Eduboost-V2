@@ -186,6 +186,26 @@ class LessonService:
             from_cache,
             provider,
         )
+    async def complete_lesson(self, lesson_id: str) -> None:
+        """Mark a lesson as completed.
+
+        Args:
+            lesson_id: UUID of the lesson to complete.
+        """
+        await self._lesson_repo.mark_completed(lesson_id)
+        await self.db.commit()
+
+    async def get_lesson_by_id(self, lesson_id: str) -> Lesson | None:
+        """Fetch a single lesson by its UUID.
+
+        Args:
+            lesson_id: UUID of the lesson to fetch.
+
+        Returns:
+            Lesson | None: The lesson model if found, else None.
+        """
+        result = await self.db.execute(select(Lesson).where(Lesson.id == lesson_id))
+        return result.scalar_one_or_none()
 
     async def _build_learner_context(self, learner_id: str, subject: str) -> dict:
         """Build learner context from recent lessons and unresolved knowledge gaps.

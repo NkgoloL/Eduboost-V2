@@ -49,6 +49,40 @@ def fake_redis():
             async def ttl(self, key):
                 return -1
 
+            def pipeline(self):
+                self._queue = []
+                return self
+
+            async def execute(self):
+                results = []
+                for cmd, args in self._queue:
+                    if cmd == "incr":
+                        results.append(await self._incr_immediate(*args))
+                    elif cmd == "expire":
+                        results.append(await self._expire_immediate(*args))
+                self._queue = []
+                return results
+
+            def incr(self, key):
+                if hasattr(self, "_queue") and self._queue is not None:
+                    self._queue.append(("incr", (key,)))
+                    return self
+                return self._incr_immediate(key)
+
+            async def _incr_immediate(self, key):
+                val = int(store.get(key, 0)) + 1
+                store[key] = str(val)
+                return val
+
+            def expire(self, key, seconds):
+                if hasattr(self, "_queue") and self._queue is not None:
+                    self._queue.append(("expire", (key, seconds)))
+                    return self
+                return self._expire_immediate(key, seconds)
+
+            async def _expire_immediate(self, key, seconds):
+                return True
+
         return _FakeRedis()
 
 
