@@ -65,6 +65,14 @@ runtime-check:
 verify-repo-state:
 	$(PYTHON) scripts/verify_repo_state.py --expected-branch "$${EXPECTED_RELEASE_BRANCH:-master}" $${VERIFY_REPO_STATE_ARGS:-}
 
+test-env-check:
+	@echo "Checking test environment safety..."
+	@if echo "$$DATABASE_URL" | grep -qi -e "prod" -e "staging" -e "eduboost.cluster"; then \
+		echo "ERROR: DATABASE_URL points to a protected environment. Refusing to continue."; \
+		exit 1; \
+	fi
+	@echo "Test environment appears safe."
+
 pr002r-check:
 	$(PYTHON) scripts/check_pr002r_evidence.py
 

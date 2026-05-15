@@ -3,7 +3,7 @@
 **Purpose:** Execution-focused North Star for the next phase. This reflects the current green local backend unit baseline and separates repository-side completion from CI, runtime, external, legal, security, product, and beta-launch evidence.
 
 **Last updated:** 2026-05-14  
-**Latest local backend unit result:** `1447 passed, 13 skipped, 4 warnings in 115.74s`
+**Latest local backend unit result:** `1702 passed, 29 skipped, 0 warnings`
 
 ## Status vocabulary
 
@@ -23,7 +23,7 @@
 - [x] POPIA/consent/audit/source-evidence repairs integrated.
 - [x] AuthService and legacy unit-test compatibility repairs integrated.
 - [x] Alembic migration graph repair from `code_338` integrated.
-- [x] Full backend unit suite locally green: `1447 passed, 13 skipped, 4 warnings`.
+- [x] Full backend unit suite locally green: `1702 passed, 29 skipped, 0 warnings`.
 - [x] Cluster H phantom-entry problem identified and converted into concrete remediation tasks.
 - [x] Documentation claim discipline established: repository evidence must not be represented as legal, runtime, deployment, or launch approval.
 - [ ] EduBoost is **not public-beta-ready** with real learner data.
@@ -39,7 +39,7 @@
 | ID | Task | Evidence required | Status |
 |---|---|---|---|
 | NS-01 | Apply Alembic migration graph repair. | Migration graph test passes. | [x] |
-| NS-02 | Rerun full unit suite. | `pytest -c pytest.ini tests/unit -q --no-cov` shows `1447 passed, 13 skipped`. | [x] |
+| NS-02 | Rerun full unit suite. | `pytest -c pytest.ini tests/unit -q --no-cov` shows `1702 passed, 29 skipped`. | [x] |
 | NS-03 | Commit migration graph repair and related POPIA/AuthService repairs. | Git commit containing repair files. | [ ] |
 | NS-04 | Record local test evidence. | `docs/release/unit_test_evidence.md` contains full output. | [ ] |
 | NS-05 | Triage non-failing warnings. | Warnings documented as accepted, fixed, or tracked. | [ ] |
@@ -181,7 +181,7 @@ Current warnings to track:
 | Area | Status |
 |---|---|
 | Repository-side production-readiness baseline | [x] complete |
-| Full local backend test baseline | [x] green: `1447 passed, 13 skipped` |
+| Full local backend test baseline | [x] green: `1702 passed, 29 skipped` |
 | CI on this fork | [ ] open |
 | Branch protection | [external] open |
 | Staging execution | [ ] open |

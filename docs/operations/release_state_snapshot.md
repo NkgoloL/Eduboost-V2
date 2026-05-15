@@ -2,15 +2,17 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-05-15T19:50:13.193055+00:00`
+- generated_at_utc: `2026-05-15T20:11:20.658781+00:00`
 - branch: `codex/production_readiness`
-- commit: `3722ce2e590e30578a0ffad4cfb5c81bd0555b0b`
+- commit: `29a82791fcdd57406da52160d1431d6cf54299bf`
 - release_candidate: `unset`
 
 ## Working Tree Status
 
 ```text
-M docs/openapi.json
+M Makefile
+ M TODO.md
+ M app/services/auth_service.py
  M docs/operations/beta_release_evidence_bundle.md
  M docs/operations/beta_release_pr_body.md
  M docs/operations/beta_signoff_manifest.md
@@ -18,8 +20,12 @@ M docs/openapi.json
  M docs/operations/database_restore_evidence.md
  M docs/operations/release_candidate_tag_manifest.md
  M docs/operations/release_evidence_manifest.md
+ M docs/operations/release_state_snapshot.md
  M docs/operations/staging_smoke_evidence_manifest.md
- M docs/route_inventory.md
+ M tests/conftest.py
+ M tests/unit/test_v2_repositories_full.py
+ M tests/unit/test_v2_services_full.py
+?? docs/release/full_pytest_latest_green.txt
 ```
 
 ## State Artifacts
