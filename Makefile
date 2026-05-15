@@ -808,3 +808,25 @@ roadmap-after-production-readiness-baseline-check:
 
 final-release-blocker-checklist-check:
 	$(PYTHON) scripts/check_final_release_blocker_checklist.py
+
+.PHONY: test-env-check route-alias-matrix route-alias-matrix-check release-evidence-index-check release-hygiene-check reset-test-db
+
+test-env-check:
+	python3 scripts/check_test_environment.py
+
+route-alias-matrix:
+	python3 scripts/generate_route_alias_matrix.py
+
+route-alias-matrix-check: route-alias-matrix
+	test -f docs/release/route_alias_matrix.md
+
+release-evidence-index-check:
+	python3 scripts/check_release_evidence_index.py
+
+release-hygiene-check: test-env-check route-alias-matrix-check release-evidence-index-check
+
+reset-test-db:
+	python3 scripts/check_test_environment.py --strict
+	@echo "Refusing to reset automatically from Makefile. Use the project-approved DB reset script only after verifying DATABASE_URL targets a disposable test database."
+	@exit 1
+
