@@ -830,3 +830,11 @@ reset-test-db:
 	@echo "Refusing to reset automatically from Makefile. Use the project-approved DB reset script only after verifying DATABASE_URL targets a disposable test database."
 	@exit 1
 
+.PHONY: warning-cleanup-check test-env-strict-check
+
+warning-cleanup-check:
+	python3 scripts/check_warning_cleanup.py
+
+test-env-strict-check:
+	python3 scripts/check_test_environment.py --strict
+
