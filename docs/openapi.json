@@ -195,23 +195,155 @@
         "title": "CheckoutSessionResponse",
         "type": "object"
       },
-      "ConsentGrantRequest": {
+      "ConsentDenyRequest": {
         "properties": {
-          "consent_version": {
-            "default": "1.0",
-            "title": "Consent Version",
+          "guardian_id": {
+            "format": "uuid",
+            "title": "Guardian Id",
             "type": "string"
           },
           "learner_id": {
             "format": "uuid",
             "title": "Learner Id",
             "type": "string"
+          },
+          "privacy_notice_version": {
+            "title": "Privacy Notice Version",
+            "type": "string"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
           }
         },
         "required": [
-          "learner_id"
+          "learner_id",
+          "guardian_id",
+          "privacy_notice_version"
         ],
-        "title": "ConsentGrantRequest",
+        "title": "ConsentDenyRequest",
+        "type": "object"
+      },
+      "ConsentRecord": {
+        "description": "Immutable value-object representing one consent snapshot.",
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "denial_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Denial Reason"
+          },
+          "expires_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expires At"
+          },
+          "granted_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Granted At"
+          },
+          "guardian_id": {
+            "format": "uuid",
+            "title": "Guardian Id",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "learner_id": {
+            "format": "uuid",
+            "title": "Learner Id",
+            "type": "string"
+          },
+          "privacy_notice_version": {
+            "title": "Privacy Notice Version",
+            "type": "string"
+          },
+          "state": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ConsentState"
+              }
+            ],
+            "default": "pending"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          },
+          "withdrawn_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Withdrawn At"
+          }
+        },
+        "required": [
+          "learner_id",
+          "guardian_id",
+          "privacy_notice_version"
+        ],
+        "title": "ConsentRecord",
+        "type": "object"
+      },
+      "ConsentRenewRequest": {
+        "properties": {
+          "learner_id": {
+            "format": "uuid",
+            "title": "Learner Id",
+            "type": "string"
+          },
+          "privacy_notice_version": {
+            "title": "Privacy Notice Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "learner_id",
+          "privacy_notice_version"
+        ],
+        "title": "ConsentRenewRequest",
         "type": "object"
       },
       "ConsentRevokeRequest": {
@@ -233,23 +365,54 @@
         "title": "ConsentRevokeRequest",
         "type": "object"
       },
-      "CorrectionRequest": {
+      "ConsentState": {
+        "enum": [
+          "pending",
+          "granted",
+          "denied",
+          "expired",
+          "withdrawn",
+          "renewal_required"
+        ],
+        "title": "ConsentState",
+        "type": "string"
+      },
+      "ConsentWithdrawRequest": {
+        "properties": {
+          "learner_id": {
+            "format": "uuid",
+            "title": "Learner Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "learner_id"
+        ],
+        "title": "ConsentWithdrawRequest",
+        "type": "object"
+      },
+      "CorrectionRequestLegacyBody": {
         "properties": {
           "fields": {
             "title": "Fields",
             "type": "object"
           },
+          "learner_id": {
+            "format": "uuid",
+            "title": "Learner Id",
+            "type": "string"
+          },
           "reason": {
-            "maxLength": 300,
-            "minLength": 3,
             "title": "Reason",
             "type": "string"
           }
         },
         "required": [
+          "learner_id",
+          "fields",
           "reason"
         ],
-        "title": "CorrectionRequest",
+        "title": "CorrectionRequestLegacyBody",
         "type": "object"
       },
       "CoverageResponse": {
@@ -514,17 +677,42 @@
         "title": "DiagnosticSubmit",
         "type": "object"
       },
-      "ErasureRequest": {
+      "ErasureRequestBody": {
         "properties": {
+          "learner_id": {
+            "format": "uuid",
+            "title": "Learner Id",
+            "type": "string"
+          },
           "reason": {
             "default": "guardian_request",
-            "maxLength": 200,
-            "minLength": 3,
             "title": "Reason",
             "type": "string"
           }
         },
-        "title": "ErasureRequest",
+        "required": [
+          "learner_id"
+        ],
+        "title": "ErasureRequestBody",
+        "type": "object"
+      },
+      "ExportRequestBody": {
+        "properties": {
+          "format": {
+            "default": "json",
+            "title": "Format",
+            "type": "string"
+          },
+          "learner_id": {
+            "format": "uuid",
+            "title": "Learner Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "learner_id"
+        ],
+        "title": "ExportRequestBody",
         "type": "object"
       },
       "HTTPValidationError": {
@@ -748,6 +936,77 @@
         "title": "LessonRequest",
         "type": "object"
       },
+      "LessonResponse": {
+        "properties": {
+          "archetype": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Archetype"
+          },
+          "cache_hit": {
+            "default": false,
+            "title": "Cache Hit",
+            "type": "boolean"
+          },
+          "caps_aligned": {
+            "default": true,
+            "title": "Caps Aligned",
+            "type": "boolean"
+          },
+          "content": {
+            "title": "Content",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "grade": {
+            "title": "Grade",
+            "type": "integer"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "language": {
+            "title": "Language",
+            "type": "string"
+          },
+          "served_from_cache": {
+            "title": "Served From Cache",
+            "type": "boolean"
+          },
+          "subject": {
+            "title": "Subject",
+            "type": "string"
+          },
+          "topic": {
+            "title": "Topic",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "grade",
+          "subject",
+          "topic",
+          "language",
+          "content",
+          "archetype",
+          "served_from_cache",
+          "created_at"
+        ],
+        "title": "LessonResponse",
+        "type": "object"
+      },
       "LessonReviewRequest": {
         "properties": {
           "decision": {
@@ -770,6 +1029,70 @@
           "decision"
         ],
         "title": "LessonReviewRequest",
+        "type": "object"
+      },
+      "LessonSyncEvent": {
+        "properties": {
+          "completed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Completed At"
+          },
+          "event_type": {
+            "enum": [
+              "complete",
+              "feedback"
+            ],
+            "title": "Event Type",
+            "type": "string"
+          },
+          "lesson_id": {
+            "title": "Lesson Id",
+            "type": "string"
+          },
+          "metadata": {
+            "title": "Metadata",
+            "type": "object"
+          },
+          "score": {
+            "anyOf": [
+              {
+                "maximum": 5.0,
+                "minimum": 1.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score"
+          }
+        },
+        "required": [
+          "lesson_id",
+          "event_type"
+        ],
+        "title": "LessonSyncEvent",
+        "type": "object"
+      },
+      "LessonSyncRequest": {
+        "properties": {
+          "responses": {
+            "items": {
+              "$ref": "#/components/schemas/LessonSyncEvent"
+            },
+            "title": "Responses",
+            "type": "array"
+          }
+        },
+        "title": "LessonSyncRequest",
         "type": "object"
       },
       "LoginRequest": {
@@ -1301,19 +1624,6 @@
         "title": "QueuedLessonSummary",
         "type": "object"
       },
-      "RLHFExportRequest": {
-        "properties": {
-          "records": {
-            "items": {
-              "type": "object"
-            },
-            "title": "Records",
-            "type": "array"
-          }
-        },
-        "title": "RLHFExportRequest",
-        "type": "object"
-      },
       "RefreshRequest": {
         "properties": {
           "refresh_token": {
@@ -1368,19 +1678,23 @@
         "title": "RegisterRequest",
         "type": "object"
       },
-      "RestrictionRequest": {
+      "RestrictionRequestLegacyBody": {
         "properties": {
+          "learner_id": {
+            "format": "uuid",
+            "title": "Learner Id",
+            "type": "string"
+          },
           "reason": {
-            "maxLength": 300,
-            "minLength": 3,
             "title": "Reason",
             "type": "string"
           }
         },
         "required": [
+          "learner_id",
           "reason"
         ],
-        "title": "RestrictionRequest",
+        "title": "RestrictionRequestLegacyBody",
         "type": "object"
       },
       "ReviewActionResponse": {
@@ -1560,6 +1874,50 @@
         ],
         "title": "ValidationError",
         "type": "object"
+      },
+      "app__api_v2_routers__consent__ConsentGrantRequest": {
+        "properties": {
+          "consent_version": {
+            "default": "1.0",
+            "title": "Consent Version",
+            "type": "string"
+          },
+          "learner_id": {
+            "format": "uuid",
+            "title": "Learner Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "learner_id"
+        ],
+        "title": "ConsentGrantRequest",
+        "type": "object"
+      },
+      "app__api_v2_routers__popia__ConsentGrantRequest": {
+        "properties": {
+          "guardian_id": {
+            "format": "uuid",
+            "title": "Guardian Id",
+            "type": "string"
+          },
+          "learner_id": {
+            "format": "uuid",
+            "title": "Learner Id",
+            "type": "string"
+          },
+          "privacy_notice_version": {
+            "title": "Privacy Notice Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "learner_id",
+          "guardian_id",
+          "privacy_notice_version"
+        ],
+        "title": "ConsentGrantRequest",
+        "type": "object"
       }
     },
     "securitySchemes": {
@@ -1572,7 +1930,7 @@
   "info": {
     "description": "AI-powered adaptive learning platform — Grade R to 7. CAPS-aligned. POPIA-compliant.",
     "title": "EduBoost SA V2",
-    "version": "1.0.0-rc1"
+    "version": "0.1.0"
   },
   "openapi": "3.1.0",
   "paths": {
@@ -1638,6 +1996,98 @@
         "summary": "Trigger POPIA consent renewal reminder emails (Admin only)",
         "tags": [
           "V2 Admin – Consent"
+        ]
+      }
+    },
+    "/api/v2/audit": {
+      "get": {
+        "operationId": "get_audit_feed_api_v2_audit_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Audit Feed",
+        "tags": [
+          "V2 Audit"
+        ]
+      }
+    },
+    "/api/v2/audit/feed": {
+      "get": {
+        "operationId": "get_audit_feed_alias_api_v2_audit_feed_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Audit Feed Alias",
+        "tags": [
+          "V2 Audit"
         ]
       }
     },
@@ -2053,7 +2503,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ConsentGrantRequest"
+                "$ref": "#/components/schemas/app__api_v2_routers__consent__ConsentGrantRequest"
               }
             }
           },
@@ -2859,6 +3309,25 @@
         ]
       }
     },
+    "/api/v2/health/deep": {
+      "get": {
+        "operationId": "deep_health_api_v2_health_deep_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Deep Health",
+        "tags": [
+          "ops"
+        ]
+      }
+    },
     "/api/v2/jobs/{job_id}": {
       "get": {
         "operationId": "get_job_status_api_v2_jobs__job_id__get",
@@ -3498,6 +3967,143 @@
         ]
       }
     },
+    "/api/v2/lessons/sync": {
+      "post": {
+        "description": "Batch sync lesson events (completion, feedback) from the client.",
+        "operationId": "sync_lessons_api_v2_lessons_sync_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LessonSyncRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Sync Lessons",
+        "tags": [
+          "lessons"
+        ]
+      }
+    },
+    "/api/v2/lessons/{lesson_id}": {
+      "get": {
+        "operationId": "get_lesson_api_v2_lessons__lesson_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "lesson_id",
+            "required": true,
+            "schema": {
+              "title": "Lesson Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LessonResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Lesson",
+        "tags": [
+          "lessons"
+        ]
+      }
+    },
+    "/api/v2/lessons/{lesson_id}/complete": {
+      "post": {
+        "operationId": "complete_lesson_api_v2_lessons__lesson_id__complete_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "lesson_id",
+            "required": true,
+            "schema": {
+              "title": "Lesson Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Complete Lesson",
+        "tags": [
+          "lessons"
+        ]
+      }
+    },
     "/api/v2/lessons/{lesson_id}/review": {
       "post": {
         "operationId": "review_lesson_api_v2_lessons__lesson_id__review_post",
@@ -3879,26 +4485,14 @@
         ]
       }
     },
-    "/api/v2/popia/correction-request/{learner_id}": {
+    "/api/v2/popia/consent/deny": {
       "post": {
-        "description": "Correct inaccurate learner personal information.",
-        "operationId": "request_correction_api_v2_popia_correction_request__learner_id__post",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "learner_id",
-            "required": true,
-            "schema": {
-              "title": "Learner Id",
-              "type": "string"
-            }
-          }
-        ],
+        "operationId": "deny_consent_api_v2_popia_consent_deny_post",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CorrectionRequest"
+                "$ref": "#/components/schemas/ConsentDenyRequest"
               }
             }
           },
@@ -3908,7 +4502,9 @@
           "200": {
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "$ref": "#/components/schemas/ConsentRecord"
+                }
               }
             },
             "description": "Successful Response"
@@ -3924,298 +4520,20 @@
             "description": "Validation Error"
           }
         },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Request Correction",
+        "summary": "Deny Consent",
         "tags": [
-          "compliance"
+          "popia"
         ]
       }
     },
-    "/api/v2/popia/data-export/{learner_id}": {
-      "get": {
-        "description": "POPIA right-to-access export for an authorised learner.",
-        "operationId": "export_learner_data_api_v2_popia_data_export__learner_id__get",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "learner_id",
-            "required": true,
-            "schema": {
-              "title": "Learner Id",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "export_format",
-            "required": false,
-            "schema": {
-              "default": "json",
-              "enum": [
-                "json",
-                "csv"
-              ],
-              "title": "Export Format",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Export Learner Data",
-        "tags": [
-          "compliance"
-        ]
-      }
-    },
-    "/api/v2/popia/deletion-cancel/{learner_id}": {
+    "/api/v2/popia/consent/grant": {
       "post": {
-        "description": "Cancel a pending POPIA erasure request.",
-        "operationId": "cancel_learner_deletion_api_v2_popia_deletion_cancel__learner_id__post",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "learner_id",
-            "required": true,
-            "schema": {
-              "title": "Learner Id",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Cancel Learner Deletion",
-        "tags": [
-          "compliance"
-        ]
-      }
-    },
-    "/api/v2/popia/deletion-execute/{learner_id}": {
-      "post": {
-        "operationId": "execute_learner_deletion_api_v2_popia_deletion_execute__learner_id__post",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "learner_id",
-            "required": true,
-            "schema": {
-              "title": "Learner Id",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/JobAcceptedResponse"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Execute Learner Deletion",
-        "tags": [
-          "compliance"
-        ]
-      }
-    },
-    "/api/v2/popia/deletion-request/{learner_id}": {
-      "post": {
-        "description": "Request POPIA erasure with audit-retention exceptions preserved.",
-        "operationId": "request_learner_deletion_api_v2_popia_deletion_request__learner_id__post",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "learner_id",
-            "required": true,
-            "schema": {
-              "title": "Learner Id",
-              "type": "string"
-            }
-          }
-        ],
+        "operationId": "grant_consent_api_v2_popia_consent_grant_post",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "anyOf": [
-                  {
-                    "$ref": "#/components/schemas/ErasureRequest"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ],
-                "title": "Body"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Request Learner Deletion",
-        "tags": [
-          "compliance"
-        ]
-      }
-    },
-    "/api/v2/popia/deletion-status/{learner_id}": {
-      "get": {
-        "operationId": "get_deletion_status_api_v2_popia_deletion_status__learner_id__get",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "learner_id",
-            "required": true,
-            "schema": {
-              "title": "Learner Id",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Get Deletion Status",
-        "tags": [
-          "compliance"
-        ]
-      }
-    },
-    "/api/v2/popia/restriction-request/{learner_id}": {
-      "post": {
-        "description": "Restrict learner processing by withdrawing active consent.",
-        "operationId": "request_processing_restriction_api_v2_popia_restriction_request__learner_id__post",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "learner_id",
-            "required": true,
-            "schema": {
-              "title": "Learner Id",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RestrictionRequest"
+                "$ref": "#/components/schemas/app__api_v2_routers__popia__ConsentGrantRequest"
               }
             }
           },
@@ -4225,7 +4543,9 @@
           "200": {
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "$ref": "#/components/schemas/ConsentRecord"
+                }
               }
             },
             "description": "Successful Response"
@@ -4241,47 +4561,114 @@
             "description": "Validation Error"
           }
         },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Request Processing Restriction",
+        "summary": "Grant Consent",
         "tags": [
-          "compliance"
+          "popia"
         ]
       }
     },
-    "/api/v2/popia/rlhf-export/{export_format}": {
+    "/api/v2/popia/consent/renew": {
       "post": {
-        "operationId": "export_rlhf_dataset_api_v2_popia_rlhf_export__export_format__post",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "export_format",
-            "required": true,
-            "schema": {
-              "title": "Export Format",
-              "type": "string"
-            }
-          }
-        ],
+        "operationId": "renew_consent_api_v2_popia_consent_renew_post",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RLHFExportRequest"
+                "$ref": "#/components/schemas/ConsentRenewRequest"
               }
             }
           },
           "required": true
         },
         "responses": {
-          "202": {
+          "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                  "$ref": "#/components/schemas/ConsentRecord"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Renew Consent",
+        "tags": [
+          "popia"
+        ]
+      }
+    },
+    "/api/v2/popia/consent/withdraw": {
+      "post": {
+        "operationId": "withdraw_consent_api_v2_popia_consent_withdraw_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsentWithdrawRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsentRecord"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Withdraw Consent",
+        "tags": [
+          "popia"
+        ]
+      }
+    },
+    "/api/v2/popia/correction": {
+      "post": {
+        "description": "Creates a correction request (§4.3).",
+        "operationId": "create_correction_request_api_v2_popia_correction_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CorrectionRequestLegacyBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Create Correction Request Api V2 Popia Correction Post"
                 }
               }
             },
@@ -4303,9 +4690,199 @@
             "HTTPBearer": []
           }
         ],
-        "summary": "Export Rlhf Dataset",
+        "summary": "Create Correction Request",
         "tags": [
-          "compliance"
+          "popia"
+        ]
+      }
+    },
+    "/api/v2/popia/erasure": {
+      "post": {
+        "description": "Creates a new erasure request (§4.3).",
+        "operationId": "create_erasure_request_api_v2_popia_erasure_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ErasureRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Create Erasure Request Api V2 Popia Erasure Post"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Erasure Request",
+        "tags": [
+          "popia"
+        ]
+      }
+    },
+    "/api/v2/popia/erasure/{learner_id}/cancel": {
+      "post": {
+        "description": "Cancels a pending erasure request.",
+        "operationId": "cancel_erasure_api_v2_popia_erasure__learner_id__cancel_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Cancel Erasure Api V2 Popia Erasure  Learner Id  Cancel Post"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Cancel Erasure",
+        "tags": [
+          "popia"
+        ]
+      }
+    },
+    "/api/v2/popia/exports": {
+      "post": {
+        "description": "Creates a new data export request (§4.3).",
+        "operationId": "create_export_request_api_v2_popia_exports_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExportRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Create Export Request Api V2 Popia Exports Post"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Export Request",
+        "tags": [
+          "popia"
+        ]
+      }
+    },
+    "/api/v2/popia/restriction": {
+      "post": {
+        "description": "Creates a processing restriction request (§4.3).",
+        "operationId": "create_restriction_request_api_v2_popia_restriction_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RestrictionRequestLegacyBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Create Restriction Request Api V2 Popia Restriction Post"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Restriction Request",
+        "tags": [
+          "popia"
         ]
       }
     },
@@ -4714,6 +5291,98 @@
         "summary": "Trigger POPIA consent renewal reminder emails (Admin only)",
         "tags": [
           "V2 Admin – Consent"
+        ]
+      }
+    },
+    "/v2/audit": {
+      "get": {
+        "operationId": "get_audit_feed_v2_audit_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Audit Feed",
+        "tags": [
+          "V2 Audit"
+        ]
+      }
+    },
+    "/v2/audit/feed": {
+      "get": {
+        "operationId": "get_audit_feed_alias_v2_audit_feed_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Audit Feed Alias",
+        "tags": [
+          "V2 Audit"
         ]
       }
     },
@@ -5129,7 +5798,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ConsentGrantRequest"
+                "$ref": "#/components/schemas/app__api_v2_routers__consent__ConsentGrantRequest"
               }
             }
           },
@@ -6593,6 +7262,143 @@
         ]
       }
     },
+    "/v2/lessons/sync": {
+      "post": {
+        "description": "Batch sync lesson events (completion, feedback) from the client.",
+        "operationId": "sync_lessons_v2_lessons_sync_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LessonSyncRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Sync Lessons",
+        "tags": [
+          "lessons"
+        ]
+      }
+    },
+    "/v2/lessons/{lesson_id}": {
+      "get": {
+        "operationId": "get_lesson_v2_lessons__lesson_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "lesson_id",
+            "required": true,
+            "schema": {
+              "title": "Lesson Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LessonResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Lesson",
+        "tags": [
+          "lessons"
+        ]
+      }
+    },
+    "/v2/lessons/{lesson_id}/complete": {
+      "post": {
+        "operationId": "complete_lesson_v2_lessons__lesson_id__complete_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "lesson_id",
+            "required": true,
+            "schema": {
+              "title": "Lesson Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Complete Lesson",
+        "tags": [
+          "lessons"
+        ]
+      }
+    },
     "/v2/lessons/{lesson_id}/review": {
       "post": {
         "operationId": "review_lesson_v2_lessons__lesson_id__review_post",
@@ -6974,26 +7780,14 @@
         ]
       }
     },
-    "/v2/popia/correction-request/{learner_id}": {
+    "/v2/popia/consent/deny": {
       "post": {
-        "description": "Correct inaccurate learner personal information.",
-        "operationId": "request_correction_v2_popia_correction_request__learner_id__post",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "learner_id",
-            "required": true,
-            "schema": {
-              "title": "Learner Id",
-              "type": "string"
-            }
-          }
-        ],
+        "operationId": "deny_consent_v2_popia_consent_deny_post",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CorrectionRequest"
+                "$ref": "#/components/schemas/ConsentDenyRequest"
               }
             }
           },
@@ -7003,7 +7797,9 @@
           "200": {
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "$ref": "#/components/schemas/ConsentRecord"
+                }
               }
             },
             "description": "Successful Response"
@@ -7019,298 +7815,20 @@
             "description": "Validation Error"
           }
         },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Request Correction",
+        "summary": "Deny Consent",
         "tags": [
-          "compliance"
+          "popia"
         ]
       }
     },
-    "/v2/popia/data-export/{learner_id}": {
-      "get": {
-        "description": "POPIA right-to-access export for an authorised learner.",
-        "operationId": "export_learner_data_v2_popia_data_export__learner_id__get",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "learner_id",
-            "required": true,
-            "schema": {
-              "title": "Learner Id",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "export_format",
-            "required": false,
-            "schema": {
-              "default": "json",
-              "enum": [
-                "json",
-                "csv"
-              ],
-              "title": "Export Format",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Export Learner Data",
-        "tags": [
-          "compliance"
-        ]
-      }
-    },
-    "/v2/popia/deletion-cancel/{learner_id}": {
+    "/v2/popia/consent/grant": {
       "post": {
-        "description": "Cancel a pending POPIA erasure request.",
-        "operationId": "cancel_learner_deletion_v2_popia_deletion_cancel__learner_id__post",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "learner_id",
-            "required": true,
-            "schema": {
-              "title": "Learner Id",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Cancel Learner Deletion",
-        "tags": [
-          "compliance"
-        ]
-      }
-    },
-    "/v2/popia/deletion-execute/{learner_id}": {
-      "post": {
-        "operationId": "execute_learner_deletion_v2_popia_deletion_execute__learner_id__post",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "learner_id",
-            "required": true,
-            "schema": {
-              "title": "Learner Id",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/JobAcceptedResponse"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Execute Learner Deletion",
-        "tags": [
-          "compliance"
-        ]
-      }
-    },
-    "/v2/popia/deletion-request/{learner_id}": {
-      "post": {
-        "description": "Request POPIA erasure with audit-retention exceptions preserved.",
-        "operationId": "request_learner_deletion_v2_popia_deletion_request__learner_id__post",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "learner_id",
-            "required": true,
-            "schema": {
-              "title": "Learner Id",
-              "type": "string"
-            }
-          }
-        ],
+        "operationId": "grant_consent_v2_popia_consent_grant_post",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "anyOf": [
-                  {
-                    "$ref": "#/components/schemas/ErasureRequest"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ],
-                "title": "Body"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Request Learner Deletion",
-        "tags": [
-          "compliance"
-        ]
-      }
-    },
-    "/v2/popia/deletion-status/{learner_id}": {
-      "get": {
-        "operationId": "get_deletion_status_v2_popia_deletion_status__learner_id__get",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "learner_id",
-            "required": true,
-            "schema": {
-              "title": "Learner Id",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Get Deletion Status",
-        "tags": [
-          "compliance"
-        ]
-      }
-    },
-    "/v2/popia/restriction-request/{learner_id}": {
-      "post": {
-        "description": "Restrict learner processing by withdrawing active consent.",
-        "operationId": "request_processing_restriction_v2_popia_restriction_request__learner_id__post",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "learner_id",
-            "required": true,
-            "schema": {
-              "title": "Learner Id",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RestrictionRequest"
+                "$ref": "#/components/schemas/app__api_v2_routers__popia__ConsentGrantRequest"
               }
             }
           },
@@ -7320,7 +7838,9 @@
           "200": {
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "$ref": "#/components/schemas/ConsentRecord"
+                }
               }
             },
             "description": "Successful Response"
@@ -7336,47 +7856,114 @@
             "description": "Validation Error"
           }
         },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Request Processing Restriction",
+        "summary": "Grant Consent",
         "tags": [
-          "compliance"
+          "popia"
         ]
       }
     },
-    "/v2/popia/rlhf-export/{export_format}": {
+    "/v2/popia/consent/renew": {
       "post": {
-        "operationId": "export_rlhf_dataset_v2_popia_rlhf_export__export_format__post",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "export_format",
-            "required": true,
-            "schema": {
-              "title": "Export Format",
-              "type": "string"
-            }
-          }
-        ],
+        "operationId": "renew_consent_v2_popia_consent_renew_post",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RLHFExportRequest"
+                "$ref": "#/components/schemas/ConsentRenewRequest"
               }
             }
           },
           "required": true
         },
         "responses": {
-          "202": {
+          "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                  "$ref": "#/components/schemas/ConsentRecord"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Renew Consent",
+        "tags": [
+          "popia"
+        ]
+      }
+    },
+    "/v2/popia/consent/withdraw": {
+      "post": {
+        "operationId": "withdraw_consent_v2_popia_consent_withdraw_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsentWithdrawRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsentRecord"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Withdraw Consent",
+        "tags": [
+          "popia"
+        ]
+      }
+    },
+    "/v2/popia/correction": {
+      "post": {
+        "description": "Creates a correction request (§4.3).",
+        "operationId": "create_correction_request_v2_popia_correction_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CorrectionRequestLegacyBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Create Correction Request V2 Popia Correction Post"
                 }
               }
             },
@@ -7398,9 +7985,199 @@
             "HTTPBearer": []
           }
         ],
-        "summary": "Export Rlhf Dataset",
+        "summary": "Create Correction Request",
         "tags": [
-          "compliance"
+          "popia"
+        ]
+      }
+    },
+    "/v2/popia/erasure": {
+      "post": {
+        "description": "Creates a new erasure request (§4.3).",
+        "operationId": "create_erasure_request_v2_popia_erasure_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ErasureRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Create Erasure Request V2 Popia Erasure Post"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Erasure Request",
+        "tags": [
+          "popia"
+        ]
+      }
+    },
+    "/v2/popia/erasure/{learner_id}/cancel": {
+      "post": {
+        "description": "Cancels a pending erasure request.",
+        "operationId": "cancel_erasure_v2_popia_erasure__learner_id__cancel_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Cancel Erasure V2 Popia Erasure  Learner Id  Cancel Post"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Cancel Erasure",
+        "tags": [
+          "popia"
+        ]
+      }
+    },
+    "/v2/popia/exports": {
+      "post": {
+        "description": "Creates a new data export request (§4.3).",
+        "operationId": "create_export_request_v2_popia_exports_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExportRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Create Export Request V2 Popia Exports Post"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Export Request",
+        "tags": [
+          "popia"
+        ]
+      }
+    },
+    "/v2/popia/restriction": {
+      "post": {
+        "description": "Creates a processing restriction request (§4.3).",
+        "operationId": "create_restriction_request_v2_popia_restriction_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RestrictionRequestLegacyBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Create Restriction Request V2 Popia Restriction Post"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Restriction Request",
+        "tags": [
+          "popia"
         ]
       }
     },
@@ -7726,43 +8503,6 @@
         "tags": [
           "V2 System"
         ]
-      }
-    },
-    "/{full_path}": {
-      "options": {
-        "operationId": "generic_options__full_path__options",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "full_path",
-            "required": true,
-            "schema": {
-              "title": "Full Path",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "summary": "Generic Options"
       }
     }
   },
