@@ -6,6 +6,7 @@ Register, login, and JWT refresh with HTTP-only cookie for refresh token.
 # from __future__ import annotations
 
 from fastapi import APIRouter, Cookie, Depends, HTTPException, Request, Response, status
+from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
@@ -60,7 +61,7 @@ def _legacy_refresh_error_response(message: str, status_code: int = 401) -> JSON
         },
     )
 
-router = APIRouter(prefix="/auth", tags=["auth"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/auth", tags=["auth"])
 
 REFRESH_COOKIE = "eduboost_refresh"
 DEV_GUARDIAN_EMAIL = "dev.guardian@eduboost.local"

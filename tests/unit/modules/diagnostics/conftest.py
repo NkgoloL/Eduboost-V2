@@ -24,8 +24,11 @@ from __future__ import annotations
 
 import socket
 import os
+from typing import AsyncGenerator
 
 import pytest
+from sqlalchemy import text
+from sqlalchemy.ext.asyncio import AsyncSession
 
 
 # ---------------------------------------------------------------------------
@@ -85,30 +88,21 @@ def skip_if_no_db(db_available: bool) -> None:
 
 
 @pytest.fixture(scope="function")
-def db_session(skip_if_no_db):  # noqa: F811
-    """Function-scoped SQLAlchemy session backed by a real Postgres DB.
+async def db_session(skip_if_no_db) -> AsyncGenerator[AsyncSession, None]:
+    """Function-scoped AsyncSession backed by the project's async engine.
 
-    Rolls back after every test to keep the DB clean without truncating
-    tables.  Skips automatically when Postgres is unavailable.
-
-    Replace the engine/session construction below with your project's
-    actual session factory (e.g. from app.core.database).
+    Skips automatically when Postgres is unreachable or authentication fails.
     """
-    from sqlalchemy import create_engine, text
-    from sqlalchemy.orm import sessionmaker
+    from sqlalchemy.exc import OperationalError
+    from app.core.database import AsyncSessionLocal
 
-    database_url = os.environ.get(
-        "DATABASE_URL",
-        "postgresql://postgres:postgres@127.0.0.1:5432/eduboost_test",
-    )
-
-    engine = create_engine(database_url, pool_pre_ping=True)
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    session.begin_nested()          # savepoint so rollback is cheap
-
-    yield session
-
-    session.rollback()
-    session.close()
-    engine.dispose()
+    try:
+        async with AsyncSessionLocal() as session:
+            # Verify connectivity/auth by executing a simple query
+            await session.execute(text("SELECT 1"))
+            yield session
+            await session.rollback()
+    except OperationalError as exc:
+        pytest.skip(f"Postgres operational error (unreachable or auth failed): {exc}")
+    finally:
+        pass
