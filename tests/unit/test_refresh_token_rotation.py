@@ -12,6 +12,21 @@ from app.models import UserRole
 
 
 class FakeRedis:
+
+    async def setex(self, key, ttl, value):
+        """Compatibility method for Redis SETEX used by token revocation."""
+        if hasattr(self, "set"):
+            result = self.set(key, value)
+            if hasattr(result, "__await__"):
+                await result
+        elif hasattr(self, "_data"):
+            self._data[key] = value
+        elif hasattr(self, "store"):
+            self.store[key] = value
+        else:
+            setattr(self, str(key), value)
+        return True
+
     def __init__(self) -> None:
         self.values: dict[str, str] = {}
         self.ttls: dict[str, int] = {}

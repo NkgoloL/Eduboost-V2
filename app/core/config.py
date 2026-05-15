@@ -128,7 +128,16 @@ class Settings(BaseSettings):
     ARQ_JOB_TIMEOUT: int = 300
 
     # ── CORS ──────────────────────────────────────────────────────────────────
-    ALLOWED_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:3002", "http://localhost:3050"]
+    ALLOWED_ORIGINS: Any = ["http://localhost:3000", "http://localhost:3002", "http://localhost:3050"]
+
+    @field_validator("ALLOWED_ORIGINS", mode="before")
+    @classmethod
+    def parse_allowed_origins(cls, v: Any) -> list[str]:
+        if isinstance(v, str):
+            return [origin.strip() for origin in v.split(",") if origin.strip()]
+        if isinstance(v, list):
+            return [str(origin).strip() for origin in v if str(origin).strip()]
+        raise TypeError("ALLOWED_ORIGINS must be a string or list of strings")
 
     # ── Validation ───────────────────────────────────────────────────────────
     @field_validator("JWT_SECRET")

@@ -46,7 +46,7 @@ services:
     build:
       context: ./app/frontend
       dockerfile: ../../docker/Dockerfile.frontend
-      target: development
+      target: builder
     command: npm run dev
     ports:
       - "3050:3050"

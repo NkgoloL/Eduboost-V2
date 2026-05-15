@@ -1,4 +1,5 @@
 from __future__ import annotations
+from unittest.mock import AsyncMock
 import pytest
 pytestmark = pytest.mark.integration
 
@@ -13,6 +14,7 @@ from fastapi.testclient import TestClient
 
 from app.api_v2 import app
 from app.api_v2_routers import parents as parents_router
+from app.core.security import require_parent_or_admin
 
 
 class FakeScalarResult:
@@ -43,6 +45,11 @@ class FakeDB:
         if self.calls == 1:
             return FakeExecuteResult([(datetime(2026, 1, 1, tzinfo=UTC), "MATH")])
         return FakeExecuteResult([("MATH", False), ("ENG", True)])
+    async def commit(self) -> None:
+        return None
+
+    def expire_all(self) -> None:
+        return None
 
 
 class FakeLearnerRepository:
@@ -85,7 +92,7 @@ def override_user(payload: dict[str, Any]):
 @pytest.fixture(autouse=True)
 def parent_progress_overrides(monkeypatch: pytest.MonkeyPatch):
     monkeypatch.setattr(parents_router, "LearnerRepository", FakeLearnerRepository)
-    monkeypatch.setattr(parents_router, "ConsentService", FakeConsentService)
+    monkeypatch.setattr(parents_router, "require_active_consent_for_current_user", AsyncMock(return_value=None))
     app.dependency_overrides[parents_router.get_db] = override_db
     yield
     app.dependency_overrides.clear()
@@ -93,7 +100,7 @@ def parent_progress_overrides(monkeypatch: pytest.MonkeyPatch):
 
 @pytest.mark.integration
 def test_parent_progress_allows_admin_read() -> None:
-    app.dependency_overrides[parents_router.require_parent_or_admin] = override_user(
+    app.dependency_overrides[require_parent_or_admin] = override_user(
         {"sub": "admin-1", "role": "admin"}
     )
 
@@ -107,7 +114,7 @@ def test_parent_progress_allows_admin_read() -> None:
 
 @pytest.mark.integration
 def test_parent_progress_allows_assigned_guardian_read() -> None:
-    app.dependency_overrides[parents_router.require_parent_or_admin] = override_user(
+    app.dependency_overrides[require_parent_or_admin] = override_user(
         {"sub": "guardian-1", "role": "parent"}
     )
 
@@ -118,14 +125,14 @@ def test_parent_progress_allows_assigned_guardian_read() -> None:
 
 @pytest.mark.integration
 def test_parent_progress_rejects_unrelated_guardian() -> None:
-    app.dependency_overrides[parents_router.require_parent_or_admin] = override_user(
+    app.dependency_overrides[require_parent_or_admin] = override_user(
         {"sub": "guardian-2", "role": "parent"}
     )
 
     response = TestClient(app).get("/api/v2/parents/learners/learner-1/progress")
 
     assert response.status_code == 403
-    assert "object_forbidden" in str(response.json())
+    assert "object_forbidden" in str(response.json()["error"])
 
 
 @pytest.mark.integration
@@ -137,7 +144,7 @@ def test_parent_progress_rejects_missing_auth() -> None:
 
 @pytest.mark.integration
 def test_parent_progress_preserves_not_found() -> None:
-    app.dependency_overrides[parents_router.require_parent_or_admin] = override_user(
+    app.dependency_overrides[require_parent_or_admin] = override_user(
         {"sub": "admin-1", "role": "admin"}
     )
 

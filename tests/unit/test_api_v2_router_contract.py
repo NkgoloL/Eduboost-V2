@@ -31,6 +31,7 @@ def test_registered_router_fragments_are_exposed_under_each_v2_prefix() -> None:
         "billing": "/billing",
         "consent": "/consent",
         "consent_renewal": "/consent",
+        "audit": "/audit",
         "popia": "/popia",
         "jobs": "/jobs",
         "system": "/system",

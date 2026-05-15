@@ -17,6 +17,36 @@ logger = logging.getLogger(__name__)
 _REVOKED_JTI_PREFIX = "revoked_jti:"
 
 
+
+async def _redis_set_with_ttl(key: str, ttl_seconds: int, value: str) -> None:
+    "Set a Redis key with TTL, supporting real Redis and local/test fakes."
+    redis = get_redis()
+
+    if hasattr(redis, "setex"):
+        result = redis.setex(key, ttl_seconds, value)
+        if hasattr(result, "__await__"):
+            await result
+        return
+
+    if hasattr(redis, "set"):
+        try:
+            result = redis.set(key, value, ex=ttl_seconds)
+        except TypeError:
+            result = redis.set(key, value)
+        if hasattr(result, "__await__"):
+            await result
+        return
+
+    if hasattr(redis, "_data"):
+        redis._data[key] = value
+        return
+
+    if hasattr(redis, "store"):
+        redis.store[key] = value
+        return
+
+    setattr(redis, str(key), value)
+
 async def revoke_token(jti: str, exp_timestamp: int) -> None:
     """
     Revoke a token by adding its JTI to a Redis blacklist.
@@ -31,7 +61,7 @@ async def revoke_token(jti: str, exp_timestamp: int) -> None:
     
     key = f"{_REVOKED_JTI_PREFIX}{jti}"
     try:
-        await get_redis().setex(key, ttl_seconds, "1")
+        await _redis_set_with_ttl(key, ttl_seconds, "1")
     except RedisError:
         logger.warning("Redis unavailable; token revocation skipped", exc_info=True)
         return
@@ -63,7 +93,7 @@ async def revoke_user_tokens(user_id: str) -> None:
     key = f"revoked_user:{user_id}"
     ttl_seconds = int(timedelta(days=30).total_seconds())
     try:
-        await get_redis().setex(key, ttl_seconds, "1")
+        await _redis_set_with_ttl(key, ttl_seconds, "1")
     except RedisError:
         logger.warning("Redis unavailable; user token revocation skipped", exc_info=True)
         return

@@ -204,6 +204,42 @@ class ItemBankRepository:
         await self.db.flush()
         return exposure
 
+    async def get_approved_items(self) -> list[dict[str, Any]]:
+        """Return all approved items as simple dictionaries for the pipeline."""
+        stmt = select(DiagnosticItem).where(DiagnosticItem.review_status == ReviewStatusEnum.APPROVED)
+        result = await self.db.execute(stmt)
+        return [self._to_dict(item) for item in result.scalars().all()]
+
+    async def get_items_by_topic(self, topic: str) -> list[dict[str, Any]]:
+        """Return items for a specific topic as simple dictionaries."""
+        stmt = select(DiagnosticItem).where(
+            DiagnosticItem.topic == topic,
+            DiagnosticItem.review_status == ReviewStatusEnum.APPROVED
+        )
+        result = await self.db.execute(stmt)
+        return [self._to_dict(item) for item in result.scalars().all()]
+
+    async def count_approved_items(self) -> int:
+        """Return the total count of approved items."""
+        stmt = select(func.count(DiagnosticItem.item_id)).where(
+            DiagnosticItem.review_status == ReviewStatusEnum.APPROVED
+        )
+        result = await self.db.execute(stmt)
+        return result.scalar() or 0
+
+    def _to_dict(self, item: DiagnosticItem) -> dict[str, Any]:
+        """Convert a DiagnosticItem to a simple dictionary format."""
+        return {
+            "id": str(item.item_id),
+            "topic": item.topic,
+            "difficulty": float(item.difficulty_b),
+            "status": item.review_status.value if hasattr(item.review_status, "value") else str(item.review_status),
+            "content": item.stem,
+            "answer_key": item.answer_key,
+            "grade": item.grade,
+            "subject": item.subject.value if hasattr(item.subject, "value") else str(item.subject),
+        }
+
     async def update_review_status(
         self,
         item_id: uuid.UUID,

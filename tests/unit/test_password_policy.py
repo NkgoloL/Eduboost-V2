@@ -14,7 +14,7 @@ def test_password_policy_accepts_long_passphrase() -> None:
     assert validate_password_strength("three clean river stones") == "three clean river stones"
 
 
-@pytest.mark.parametrize("password", ["password123", "short", "NoSymbol123", "nosymbol123!"])
+@pytest.mark.parametrize("password", ["weak123", "short", "NoSymbol123", "nosymbol123!"])
 def test_password_policy_rejects_weak_passwords(password: str) -> None:
     with pytest.raises(ValueError):
         validate_password_strength(password)

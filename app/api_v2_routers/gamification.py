@@ -73,6 +73,8 @@ async def award_xp(
         constitutional_outcome="APPROVED",
     )
     await db.commit()
+    # Expire objects to ensure get_profile fetches fresh data from DB
+    db.expire_all()
     updated_profile = await GamificationServiceV2(GamificationRepository(db)).get_profile(body.learner_id)
     return {
         "awarded": True,

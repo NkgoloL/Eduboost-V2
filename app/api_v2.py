@@ -92,18 +92,11 @@ app.add_middleware(RequestIDMiddleware)
 app.middleware("http")(analytics_middleware)
 
 
-# Generic OPTIONS handler to improve CORS preflight handling in tests
-@app.options("/{full_path:path}")
-async def generic_options(full_path: str):
-    # Return an empty successful response so CORSMiddleware can attach
-    # Access-Control-* headers for preflight requests during test runs.
-    return Response(status_code=204)
-
-
 # ── Routers ───────────────────────────────────────────────────────────────────
 from app.modules.practice import router as practice_router  # noqa: E402
 from app.api_v2_routers import (  # noqa: E402
     auth,
+    audit,
     billing,
     consent,
     consent_renewal,
@@ -123,6 +116,7 @@ API_V2 = "/api/v2"
 API_PREFIXES = (API_V2, "/v2")
 ROUTER_REGISTRY = (
     ("auth", auth.router),
+    ("audit", audit.router),
     ("learners", learners.router),
     ("lessons", lessons.router),
     ("study_plans", study_plans.router),
@@ -164,6 +158,7 @@ async def ready():
 
 
 @app.get("/v2/health/deep", tags=["ops"])
+@app.get("/api/v2/health/deep", tags=["ops"])
 async def deep_health():
     payload = await gather_deep_health()
     status_code = 200 if payload["status"] in ("ok", "degraded") else 503

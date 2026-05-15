@@ -148,10 +148,69 @@ class ConsentRepository:
         )
         return result.scalar_one_or_none()
 
-    async def revoke(self, consent_id: str) -> None:
-        await self.db.execute(
-            update(ParentalConsent).where(ParentalConsent.id == consent_id).values(revoked_at=datetime.now(UTC))
+    async def get_latest_for_learner(self, learner_id: str) -> ParentalConsent | None:
+        result = await self.db.execute(
+            select(ParentalConsent)
+            .where(ParentalConsent.learner_id == learner_id)
+            .order_by(ParentalConsent.created_at.desc())
+            .limit(1)
         )
+        return result.scalar_one_or_none()
+
+    async def grant(
+        self,
+        learner_id: str,
+        guardian_id: str,
+        consent_version: str,
+        ip_address: str | None = None,
+        user_agent: str | None = None,
+        state: str = "granted",
+    ) -> ParentalConsent:
+        consent = ParentalConsent(
+            learner_id=learner_id,
+            guardian_id=guardian_id,
+            policy_version=consent_version,
+            ip_address_hash=ip_address,
+            status=state,
+        )
+        self.db.add(consent)
+        await self.db.flush()
+        return consent
+
+    async def revoke(self, learner_id: str, reason: str = "revoked") -> int:
+        result = await self.db.execute(
+            update(ParentalConsent)
+            .where(
+                ParentalConsent.learner_id == learner_id,
+                ParentalConsent.revoked_at == None,
+            )
+            .values(status="withdrawn", revoked_at=datetime.now(UTC))
+        )
+        return result.rowcount
+
+    async def renew(self, learner_id: str, guardian_id: str, consent_version: str) -> tuple[ParentalConsent | None, ParentalConsent]:
+        previous = await self.get_active(learner_id)
+        if previous:
+            await self.revoke(learner_id, reason="renewed")
+        renewed = await self.grant(
+            learner_id=learner_id,
+            guardian_id=guardian_id,
+            consent_version=consent_version,
+            state="granted",
+        )
+        return previous, renewed
+
+    async def get_expiring_soon(self, db: AsyncSession | None = None, days: int = 30) -> list[ParentalConsent]:
+        from datetime import timedelta
+        session = db or self.db
+        result = await session.execute(
+            select(ParentalConsent).where(
+                ParentalConsent.status == "granted",
+                ParentalConsent.expires_at <= datetime.now(UTC) + timedelta(days=days),
+                ParentalConsent.expires_at > datetime.now(UTC)
+            )
+        )
+        return list(result.scalars().all())
 
 
 class IRTRepository:

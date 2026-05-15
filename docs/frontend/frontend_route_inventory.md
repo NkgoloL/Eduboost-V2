@@ -18,66 +18,8 @@ This inventory records frontend route, page, and journey-related surfaces.
 
 | Path | Route markers | Journey markers |
 | --- | --- | --- |
-| `app/frontend/.next/server/app/(auth)/login/page.js` | `Route, path:` | `learner, parent, dashboard, lesson, diagnostic, progress` |
-| `app/frontend/.next/server/app/(auth)/login/page_client-reference-manifest.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic` |
-| `app/frontend/.next/server/app/(learner)/badges/page.js` | `Route, path:` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
-| `app/frontend/.next/server/app/(learner)/badges/page_client-reference-manifest.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic` |
-| `app/frontend/.next/server/app/(learner)/dashboard/page.js` | `Route, path:` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
-| `app/frontend/.next/server/app/(learner)/dashboard/page_client-reference-manifest.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic` |
-| `app/frontend/.next/server/app/(learner)/diagnostic/page.js` | `Route, path:` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent, onboarding` |
-| `app/frontend/.next/server/app/(learner)/diagnostic/page_client-reference-manifest.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic` |
-| `app/frontend/.next/server/app/(learner)/lesson/page.js` | `Route, path:` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
-| `app/frontend/.next/server/app/(learner)/lesson/page_client-reference-manifest.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic` |
-| `app/frontend/.next/server/app/(learner)/parent/page.js` | `Route, path:, Link` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
-| `app/frontend/.next/server/app/(learner)/parent/page_client-reference-manifest.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic` |
-| `app/frontend/.next/server/app/(learner)/plan/page.js` | `Route, path:` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
-| `app/frontend/.next/server/app/(learner)/plan/page_client-reference-manifest.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic` |
-| `app/frontend/.next/server/app/(parent)/parent-dashboard/page.js` | `Route, path:, Link` | `learner, parent, dashboard, lesson, diagnostic, progress, consent, onboarding` |
-| `app/frontend/.next/server/app/(parent)/parent-dashboard/page_client-reference-manifest.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic` |
-| `app/frontend/.next/server/app/_not-found/page.js` | `Route, path:` | `learner, parent, dashboard, lesson, diagnostic, progress` |
-| `app/frontend/.next/server/app/_not-found/page_client-reference-manifest.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic` |
-| `app/frontend/.next/server/app/page.js` | `Route, path:` | `learner, parent, dashboard, lesson, diagnostic, progress` |
-| `app/frontend/.next/server/app/page_client-reference-manifest.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic` |
-| `app/frontend/.next/server/app/parent-portal/page.js` | `Route, path:, Link` | `learner, parent, dashboard, lesson, diagnostic, progress, consent, onboarding` |
-| `app/frontend/.next/server/app/parent-portal/page_client-reference-manifest.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic` |
 | `app/frontend/.next/server/interception-route-rewrite-manifest.js` | `Route` | `_none_` |
-| `app/frontend/.next/server/vendor-chunks/d3-color.js` | `_none_` | `parent` |
-| `app/frontend/.next/server/vendor-chunks/d3-path.js` | `path:` | `_none_` |
-| `app/frontend/.next/server/vendor-chunks/d3-shape.js` | `path:, Link` | `_none_` |
-| `app/frontend/.next/server/vendor-chunks/fast-equals.js` | `_none_` | `parent` |
-| `app/frontend/.next/server/vendor-chunks/lodash.js` | `_none_` | `parent, progress` |
-| `app/frontend/.next/server/vendor-chunks/next.js` | `Route, Routes, path:, href=, Link, useNavigate` | `parent, dashboard, progress` |
-| `app/frontend/.next/server/vendor-chunks/prop-types.js` | `Link` | `_none_` |
-| `app/frontend/.next/server/vendor-chunks/react-smooth.js` | `Route` | `_none_` |
-| `app/frontend/.next/server/vendor-chunks/react-transition-group.js` | `Route, Routes` | `parent` |
-| `app/frontend/.next/server/vendor-chunks/recharts.js` | `Route, path:, Link` | `parent, progress` |
-| `app/frontend/.next/server/vendor-chunks/victory-vendor.js` | `Link` | `_none_` |
-| `app/frontend/.next/static/chunks/app/(auth)/layout.js` | `Link` | `parent` |
-| `app/frontend/.next/static/chunks/app/(auth)/login/page.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, progress, consent` |
-| `app/frontend/.next/static/chunks/app/(learner)/badges/page.js` | `Link` | `learner, parent, dashboard, lesson, diagnostic, progress, consent` |
-| `app/frontend/.next/static/chunks/app/(learner)/dashboard/page.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
-| `app/frontend/.next/static/chunks/app/(learner)/diagnostic/page.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent, onboarding` |
-| `app/frontend/.next/static/chunks/app/(learner)/layout.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
-| `app/frontend/.next/static/chunks/app/(learner)/lesson/page.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, progress, consent` |
-| `app/frontend/.next/static/chunks/app/(learner)/parent/page.js` | `Link` | `learner, parent, dashboard, lesson, diagnostic, progress, consent` |
-| `app/frontend/.next/static/chunks/app/(learner)/plan/page.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
-| `app/frontend/.next/static/chunks/app/(parent)/parent-dashboard/page.js` | `Route, Routes, path:, Link` | `learner, parent, dashboard, lesson, diagnostic, progress, consent, onboarding` |
-| `app/frontend/.next/static/chunks/app/layout.js` | `Link` | `learner, parent, dashboard, lesson, diagnostic, progress, consent` |
-| `app/frontend/.next/static/chunks/app/page.js` | `Route, Link` | `learner, parent` |
-| `app/frontend/.next/static/chunks/app/parent-portal/page.js` | `Route, Routes, path:, Link` | `learner, parent, dashboard, lesson, diagnostic, progress, consent, onboarding` |
-| `app/frontend/.next/static/chunks/app-pages-internals.js` | `Route, Routes, path:, Link` | `parent` |
-| `app/frontend/.next/static/chunks/main-app.js` | `Route, Routes, path:, href=, Link, useNavigate` | `parent, dashboard, progress` |
-| `app/frontend/.next/static/chunks/polyfills.js` | `href=` | `parent` |
-| `app/frontend/.next/static/chunks/webpack.js` | `Link` | `parent, progress` |
-| `app/frontend/.next/types/app/(learner)/badges/page.ts` | `_none_` | `learner` |
-| `app/frontend/.next/types/app/(learner)/dashboard/page.ts` | `_none_` | `learner, dashboard` |
-| `app/frontend/.next/types/app/(learner)/diagnostic/page.ts` | `_none_` | `learner, diagnostic` |
-| `app/frontend/.next/types/app/(learner)/layout.ts` | `_none_` | `learner` |
-| `app/frontend/.next/types/app/(learner)/lesson/page.ts` | `_none_` | `learner, lesson` |
-| `app/frontend/.next/types/app/(learner)/parent/page.ts` | `_none_` | `learner, parent` |
-| `app/frontend/.next/types/app/(learner)/plan/page.ts` | `_none_` | `learner` |
-| `app/frontend/.next/types/app/(parent)/parent-dashboard/page.ts` | `_none_` | `parent, dashboard` |
-| `app/frontend/.next/types/app/parent-portal/page.ts` | `_none_` | `parent` |
+| `app/frontend/.next/static/chunks/polyfills.js` | `path:, href=` | `parent` |
 | `app/frontend/__tests__/EntryAndPortal.test.tsx` | `_none_` | `learner, parent, dashboard, lesson, progress, onboarding` |
 | `app/frontend/__tests__/FeaturePanels.test.tsx` | `_none_` | `learner, dashboard, lesson, diagnostic` |
 | `app/frontend/__tests__/InteractiveDiagnosticFlow.test.tsx` | `_none_` | `learner, diagnostic, assessment` |

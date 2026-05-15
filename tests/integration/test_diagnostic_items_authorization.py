@@ -1,4 +1,5 @@
 from __future__ import annotations
+from unittest.mock import AsyncMock
 import pytest
 pytestmark = pytest.mark.integration
 
@@ -77,7 +78,7 @@ def override_user(payload: dict[str, Any]):
 
 @pytest.fixture(autouse=True)
 def diagnostic_items_overrides(monkeypatch: pytest.MonkeyPatch):
-    monkeypatch.setattr(diagnostics_router, "ConsentService", FakeConsentService)
+    monkeypatch.setattr(diagnostics_router, "require_active_consent_for_current_user", AsyncMock(return_value=None))
     monkeypatch.setattr(diagnostics_router, "LearnerRepository", FakeLearnerRepository)
     monkeypatch.setattr(diagnostics_router, "IRTRepository", FakeIRTRepository)
     monkeypatch.setattr(diagnostics_router, "_caps_validator", FakeCAPSValidator())

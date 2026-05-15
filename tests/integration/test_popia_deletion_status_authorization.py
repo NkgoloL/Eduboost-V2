@@ -13,6 +13,7 @@ from fastapi.testclient import TestClient
 
 from app.api_v2 import app
 from app.api_v2_routers import popia as popia_router
+from app.core.security import get_current_user
 
 
 class FakeLearnerRepository:
@@ -45,26 +46,26 @@ def override_user(payload: dict[str, Any]):
 @pytest.fixture(autouse=True)
 def popia_deletion_status_overrides(monkeypatch: pytest.MonkeyPatch):
     monkeypatch.setattr(popia_router, "LearnerRepository", FakeLearnerRepository)
-    app.dependency_overrides[popia_router.get_db] = override_db
+    app.dependency_overrides[get_current_user] = override_user({"sub": "none"})
     yield
     app.dependency_overrides.clear()
 
 
 @pytest.mark.integration
 def test_popia_deletion_status_allows_admin_read() -> None:
-    app.dependency_overrides[popia_router.get_current_user] = override_user(
+    app.dependency_overrides[get_current_user] = override_user(
         {"sub": "admin-1", "role": "admin"}
     )
 
     response = TestClient(app).get("/api/v2/popia/deletion-status/learner-1")
 
     assert response.status_code == 200
-    assert "deletion_pending" in response.json()
+    assert "deletion_pending" in response.json()["data"]
 
 
 @pytest.mark.integration
 def test_popia_deletion_status_allows_guardian_read() -> None:
-    app.dependency_overrides[popia_router.get_current_user] = override_user(
+    app.dependency_overrides[get_current_user] = override_user(
         {"sub": "guardian-1", "role": "parent"}
     )
 
@@ -75,7 +76,7 @@ def test_popia_deletion_status_allows_guardian_read() -> None:
 
 @pytest.mark.integration
 def test_popia_deletion_status_allows_learner_self_read() -> None:
-    app.dependency_overrides[popia_router.get_current_user] = override_user(
+    app.dependency_overrides[get_current_user] = override_user(
         {"sub": "learner-1", "role": "student"}
     )
 
@@ -86,14 +87,14 @@ def test_popia_deletion_status_allows_learner_self_read() -> None:
 
 @pytest.mark.integration
 def test_popia_deletion_status_rejects_unrelated_guardian() -> None:
-    app.dependency_overrides[popia_router.get_current_user] = override_user(
+    app.dependency_overrides[get_current_user] = override_user(
         {"sub": "guardian-2", "role": "parent"}
     )
 
     response = TestClient(app).get("/api/v2/popia/deletion-status/learner-1")
 
     assert response.status_code == 403
-    assert "object_forbidden" in str(response.json())
+    assert "object_forbidden" in str(response.json()["error"])
 
 
 @pytest.mark.integration
@@ -105,7 +106,7 @@ def test_popia_deletion_status_rejects_missing_auth() -> None:
 
 @pytest.mark.integration
 def test_popia_deletion_status_preserves_not_found() -> None:
-    app.dependency_overrides[popia_router.get_current_user] = override_user(
+    app.dependency_overrides[get_current_user] = override_user(
         {"sub": "admin-1", "role": "admin"}
     )
 

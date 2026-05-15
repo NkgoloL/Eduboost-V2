@@ -8,7 +8,7 @@ from __future__ import annotations
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.logging import get_logger
-from app.repositories.audit_repository import AuditRepository
+from app.repositories.repositories import AuditRepository
 
 log = get_logger(__name__)
 
@@ -31,15 +31,14 @@ class FourthEstateService:
         payload: dict | None = None,
         constitutional_outcome: str | None = None,
     ) -> None:
-        entry = await self._repo.append(
+        entry = await self._repo.log(
             event_type=event_type,
             actor_id=actor_id,
-            resource_id=resource_id,
+            learner_pseudonym=learner_pseudonym,
             payload={
                 **(payload or {}),
-                **({"learner_pseudonym": learner_pseudonym} if learner_pseudonym else {}),
-                **({"constitutional_outcome": constitutional_outcome} if constitutional_outcome else {}),
             },
+            constitutional_outcome=constitutional_outcome,
         )
         try:
             log.info(

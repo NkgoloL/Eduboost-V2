@@ -12,10 +12,14 @@ from fastapi.testclient import TestClient
 
 from app.api_v2 import app
 from app.api_v2_routers import popia as popia_router
+from app.core.security import get_current_user
 
 
 class FakeDB:
     async def commit(self) -> None:
+        return None
+
+    def expire_all(self) -> None:
         return None
 
 
@@ -63,7 +67,7 @@ def restriction_payload() -> dict[str, Any]:
 
 @pytest.mark.integration
 def test_popia_restriction_request_allows_admin_write() -> None:
-    app.dependency_overrides[popia_router.get_current_user] = override_user(
+    app.dependency_overrides[get_current_user] = override_user(
         {"sub": "admin-1", "role": "admin"}
     )
 
@@ -73,12 +77,12 @@ def test_popia_restriction_request_allows_admin_write() -> None:
     )
 
     assert response.status_code == 200
-    assert "restricted" in str(response.json())
+    assert "restricted" in str(response.json()["data"])
 
 
 @pytest.mark.integration
 def test_popia_restriction_request_allows_guardian_with_claim() -> None:
-    app.dependency_overrides[popia_router.get_current_user] = override_user(
+    app.dependency_overrides[get_current_user] = override_user(
         {"sub": "guardian-1", "role": "parent", "guardian_learner_ids": ["learner-1"]}
     )
 
@@ -92,7 +96,7 @@ def test_popia_restriction_request_allows_guardian_with_claim() -> None:
 
 @pytest.mark.integration
 def test_popia_restriction_request_allows_learner_self_write() -> None:
-    app.dependency_overrides[popia_router.get_current_user] = override_user(
+    app.dependency_overrides[get_current_user] = override_user(
         {"sub": "learner-1", "role": "student"}
     )
 
@@ -106,7 +110,7 @@ def test_popia_restriction_request_allows_learner_self_write() -> None:
 
 @pytest.mark.integration
 def test_popia_restriction_request_rejects_unrelated_guardian() -> None:
-    app.dependency_overrides[popia_router.get_current_user] = override_user(
+    app.dependency_overrides[get_current_user] = override_user(
         {"sub": "guardian-2", "role": "parent", "guardian_learner_ids": ["learner-2"]}
     )
 
@@ -116,7 +120,7 @@ def test_popia_restriction_request_rejects_unrelated_guardian() -> None:
     )
 
     assert response.status_code == 403
-    assert "object_forbidden" in str(response.json())
+    assert "object_forbidden" in str(response.json()["error"])
 
 
 @pytest.mark.integration
@@ -131,7 +135,7 @@ def test_popia_restriction_request_rejects_missing_auth() -> None:
 
 @pytest.mark.integration
 def test_popia_restriction_request_preserves_not_found() -> None:
-    app.dependency_overrides[popia_router.get_current_user] = override_user(
+    app.dependency_overrides[get_current_user] = override_user(
         {"sub": "admin-1", "role": "admin"}
     )
 

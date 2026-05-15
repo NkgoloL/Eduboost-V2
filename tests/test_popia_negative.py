@@ -1,3 +1,4 @@
+from unittest.mock import AsyncMock
 import pytest
 pytestmark = pytest.mark.integration
 
@@ -53,7 +54,7 @@ class FakeFourthEstate:
 def patch_repos_and_services(monkeypatch):
     # Patch LearnerRepository, ConsentService, FourthEstateService and current user dependency
     monkeypatch.setattr("app.api_v2_routers.popia.LearnerRepository", FakeLearnerRepo)
-    monkeypatch.setattr("app.api_v2_routers.popia.ConsentService", FakeConsentService)
+    monkeypatch.setattr("app.api_v2_routers.popia.require_active_consent_for_current_user", AsyncMock(return_value=None))
     monkeypatch.setattr("app.api_v2_routers.popia.FourthEstateService", FakeFourthEstate)
     yield
 

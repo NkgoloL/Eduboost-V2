@@ -29,8 +29,9 @@ def _require_test_database() -> bool:
 
 @pytest_asyncio.fixture(scope="session")
 async def test_db_setup():
-    """Create database tables only for tests that request database access."""
+    """Ensure a clean database schema for tests that request database access."""
     try:
+        await drop_all_tables()
         await create_all_tables()
     except (OSError, SQLAlchemyError) as exc:
         if _require_test_database():

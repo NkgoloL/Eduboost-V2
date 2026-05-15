@@ -39,6 +39,7 @@ def test_production_settings_require_key_vault_url() -> None:
         config_module.Settings(
             APP_ENV="production",
             ENVIRONMENT="production",
+            AZURE_KEY_VAULT_URL="",
             JWT_SECRET="x" * 32,
             ENCRYPTION_KEY="A" * 44,
             ENCRYPTION_SALT="salt",

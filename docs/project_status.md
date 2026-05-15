@@ -108,7 +108,7 @@ There are no remaining architectural or technical blockers for the v1.0.0-rc2 re
 
 ## Audit Tracker
 
-The root [`TODO.md`](/TODO.md) remains the live production-readiness backlog.
+The root [`TODO.md`](/TODO.md) is the live production-readiness tracker and current North Star execution plan for the repository.
 
 ## Lesson Generation Authorization
 

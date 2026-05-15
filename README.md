@@ -35,7 +35,7 @@ imports and controlled migration behavior.
 
 For the current documentation sync status, see
 [`docs/current_state.md`](/docs/current_state.md), [`docs/project_status.md`](/docs/project_status.md), and the root
-[`TODO.md`](/TODO.md).
+[`TODO.md`](/TODO.md) live tracker.
 
 Item-bank coverage details live in
 [`docs/caps/grade4_maths_coverage_matrix.md`](/docs/caps/grade4_maths_coverage_matrix.md).
@@ -55,6 +55,12 @@ The remaining 106-item content plan lives in
 ```bash
 cp .env.example .env
 docker compose up --build
+```
+
+If the local PostgreSQL migration fails with a missing role error like `role "eduboost_app" does not exist`, create the role before re-running migrations:
+
+```bash
+docker exec -it eduboost-v2-postgres-1 psql -U eduboost_user -d eduboost -c "CREATE ROLE eduboost_app NOLOGIN;"
 ```
 
 Useful URLs:

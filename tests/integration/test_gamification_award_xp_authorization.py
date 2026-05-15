@@ -1,4 +1,5 @@
 from __future__ import annotations
+from unittest.mock import AsyncMock
 import pytest
 pytestmark = pytest.mark.integration
 
@@ -16,6 +17,9 @@ from app.api_v2_routers import gamification as gamification_router
 
 class FakeDB:
     async def commit(self) -> None:
+        return None
+
+    def expire_all(self) -> None:
         return None
 
 
@@ -83,7 +87,7 @@ def override_user(payload: dict[str, Any]):
 def gamification_award_overrides(monkeypatch: pytest.MonkeyPatch):
     monkeypatch.setattr(gamification_router, "LearnerRepository", FakeLearnerRepository)
     monkeypatch.setattr(gamification_router, "LessonRepository", FakeLessonRepository)
-    monkeypatch.setattr(gamification_router, "ConsentService", FakeConsentService)
+    monkeypatch.setattr(gamification_router, "require_active_consent_for_current_user", AsyncMock(return_value=None))
     monkeypatch.setattr(gamification_router, "FourthEstateService", FakeFourthEstateService)
     monkeypatch.setattr(gamification_router, "GamificationRepository", FakeGamificationRepository)
     monkeypatch.setattr(gamification_router, "GamificationServiceV2", FakeGamificationService)

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from unittest.mock import AsyncMock
 import pytest
 pytestmark = pytest.mark.integration
 
@@ -33,52 +34,41 @@ def test_lesson_sync_processes_completion_and_feedback(monkeypatch):
     def override_user():
         return {"sub": "guardian-1", "role": "parent"}
 
-    class FakeConsentService:
+    class FakeLessonService:
         def __init__(self, _db):
             pass
 
-        async def require_active_consent(self, _learner_id, actor_id=None):
-            return None
+        async def complete_lesson(self, lesson_id: str) -> None:
+            calls.append(("complete", lesson_id, None))
 
-    class FakeLessonRepository:
-        def __init__(self, _db):
-            pass
-
-        async def mark_completed(self, lesson_id, completed_at=None):
-            calls.append(("complete", lesson_id, completed_at))
-
-        async def record_feedback(self, lesson_id, score):
+        async def record_feedback(self, lesson_id: str, score: int) -> None:
             calls.append(("feedback", lesson_id, score))
 
-    class FakeLearnerRepository:
-        def __init__(self, _db):
-            pass
-
-        async def get_by_id(self, _learner_id):
-            return learner
-
-    monkeypatch.setattr("app.api_v2_routers.lessons.ConsentService", FakeConsentService)
-    monkeypatch.setattr("app.api_v2_routers.lessons.LessonRepository", FakeLessonRepository)
-    monkeypatch.setattr("app.api_v2_routers.lessons.LearnerRepository", FakeLearnerRepository)
+    async def override_lesson_service():
+        return FakeLessonService(None)
 
     app.dependency_overrides[get_db] = override_db
     app.dependency_overrides[get_current_user] = override_user
+    from app.api_v2_routers.lessons import get_lesson_service
+    app.dependency_overrides[get_lesson_service] = override_lesson_service
 
-    with TestClient(app) as client:
-        response = client.post(
-            "/api/v2/lessons/sync",
-            json={
-                "responses": [
-                    {"lesson_id": "lesson-1", "event_type": "complete"},
-                    {"lesson_id": "lesson-1", "event_type": "feedback", "score": 5},
-                ]
-            },
-        )
+    client = TestClient(app)
+    response = client.post(
+        "/api/v2/lessons/sync",
+        json={
+            "responses": [
+                {"lesson_id": "lesson-1", "event_type": "complete"},
+                {"lesson_id": "lesson-1", "event_type": "feedback", "score": 5},
+            ]
+        },
+    )
 
     app.dependency_overrides.clear()
 
     assert response.status_code == 200
-    assert response.json()["processed"] == 2
+    # The route returns {"data": {"status": "success", "processed": 2}, ...} due to EnvelopedRoute
+    payload = response.json()["data"]
+    assert payload["processed"] == 2
     assert ("feedback", "lesson-1", 5) in calls
     assert any(call[0] == "complete" for call in calls)
 

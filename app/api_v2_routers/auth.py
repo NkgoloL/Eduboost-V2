@@ -1,3 +1,4 @@
+from fastapi.responses import JSONResponse
 """
 EduBoost V2 — Auth Router
 Register, login, and JWT refresh with HTTP-only cookie for refresh token.
@@ -36,6 +37,29 @@ from app.models import UserRole
 from app.repositories.repositories import ConsentRepository, GuardianRepository, LearnerRepository
 from app.core.rate_limit import limiter
 
+
+
+def _legacy_refresh_error_response(message: str, status_code: int = 401) -> JSONResponse:
+    """Return v2-compatible error with legacy top-level detail for integration tests."""
+    return JSONResponse(
+        status_code=status_code,
+        content={
+            "detail": message,
+            "data": None,
+            "error": {
+                "code": "invalid_refresh_token",
+                "message": message,
+                "field_errors": [],
+                "remediation": None,
+                "details": None,
+            },
+            "meta": {
+                "api_version": "v2",
+                "request_id": None,
+                "pagination": None,
+            },
+        },
+    )
 
 router = APIRouter(route_class=EnvelopedRoute, prefix="/auth", tags=["auth"])
 
@@ -151,7 +175,21 @@ async def create_dev_session(response: Response, db: AsyncSession = Depends(get_
 
     refresh = create_refresh_token(guardian.id, guardian.role)
     refresh_payload = decode_token(refresh)
-    access = create_access_token(guardian.id, guardian.role, {"refresh_jti": refresh_payload.get("jti"), "refresh_family": refresh_payload.get("family")})
+    
+    # Include the learner IDs in the access token so authorization logic works
+    learner_ids = [str(l.id) for l in learners]
+    if learner.id not in learner_ids:
+        learner_ids.append(str(learner.id))
+        
+    access = create_access_token(
+        guardian.id, 
+        guardian.role, 
+        {
+            "refresh_jti": refresh_payload.get("jti"), 
+            "refresh_family": refresh_payload.get("family"),
+            "guardian_learner_ids": learner_ids
+        }
+    )
     await store_refresh_token(refresh)
     _set_refresh_cookie(response, refresh)
     await audit.auth_event("DEV_SESSION_BOOTSTRAPPED", guardian.id, {"learner_id": learner.id})

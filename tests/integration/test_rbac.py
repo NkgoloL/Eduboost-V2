@@ -1,30 +1,34 @@
 import pytest
+import uuid
+from httpx import ASGITransport, AsyncClient
+from app.api_v2 import app
+
 pytestmark = pytest.mark.integration
 
 """Integration tests for Role-Based Access Control (RBAC)."""
-import pytest
-from httpx import ASGITransport, AsyncClient
 
-from app.api_v2 import app
-
+def get_unique_email(prefix: str) -> str:
+    return f"{prefix}_{uuid.uuid4().hex[:8]}@example.com"
 
 @pytest.mark.asyncio
 @pytest.mark.integration
 async def test_parent_can_create_learner():
     """Test that parent role can create learners."""
+    email = get_unique_email("parent")
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         # Register as parent
         register_response = await client.post(
             "/api/v2/auth/register",
             json={
-                "email": "parent@example.com",
+                "email": email,
                 "display_name": "Parent User",
-                "password": "password123",
+                "password": "Complex_Pass_2026!",
                 "role": "parent"
             }
         )
         assert register_response.status_code == 201
-        access_token = register_response.json()["access_token"]
+        # V2 API uses EnvelopedRoute, so we access through ["data"]
+        access_token = register_response.json()["data"]["access_token"]
 
         # Create learner
         create_response = await client.post(
@@ -38,24 +42,24 @@ async def test_parent_can_create_learner():
         )
         assert create_response.status_code == 201
 
-
 @pytest.mark.asyncio
 @pytest.mark.integration
-async def test_student_cannot_create_learner():
-    """Test that student role cannot create learners."""
+async def test_teacher_cannot_create_learner():
+    """Test that teacher role cannot create learners (only parents/admins can)."""
+    email = get_unique_email("teacher")
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
-        # Register as student
+        # Register as teacher
         register_response = await client.post(
             "/api/v2/auth/register",
             json={
-                "email": "student@example.com",
-                "display_name": "Student User",
-                "password": "password123",
-                "role": "student"
+                "email": email,
+                "display_name": "Teacher User",
+                "password": "Complex_Pass_2026!",
+                "role": "teacher"
             }
         )
         assert register_response.status_code == 201
-        access_token = register_response.json()["access_token"]
+        access_token = register_response.json()["data"]["access_token"]
 
         # Try to create learner
         create_response = await client.post(
@@ -67,35 +71,13 @@ async def test_student_cannot_create_learner():
                 "language": "en"
             }
         )
+        # Should be 403 because learners belong to parents/admins
         assert create_response.status_code == 403
 
-
 @pytest.mark.asyncio
 @pytest.mark.integration
-async def test_admin_can_access_all_endpoints():
-    """Test that admin role can access all endpoints."""
+async def test_unauthorized_access_is_blocked():
+    """Test that requests without valid tokens are blocked."""
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
-        # Register as admin
-        register_response = await client.post(
-            "/api/v2/auth/register",
-            json={
-                "email": "admin@example.com",
-                "display_name": "Admin User",
-                "password": "password123",
-                "role": "admin"
-            }
-        )
-        assert register_response.status_code == 201
-        access_token = register_response.json()["access_token"]
-
-        # Try admin-only endpoint (assuming one exists, e.g., system status)
-        # For now, just check that registration worked
-        assert access_token is not None
-
-
-@pytest.mark.asyncio
-@pytest.mark.integration
-async def test_teacher_can_access_analytics():
-    """Test that teacher role can access anonymized analytics."""
-    # Assuming there's an analytics endpoint for teachers
-    pass
+        response = await client.get("/api/v2/auth/me")
+        assert response.status_code == 401

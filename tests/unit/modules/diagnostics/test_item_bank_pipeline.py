@@ -30,8 +30,10 @@ from __future__ import annotations
 
 from unittest.mock import AsyncMock, MagicMock, patch
 from typing import Any
+from datetime import datetime, timezone
 
 import pytest
+from sqlalchemy import text
 
 
 # ---------------------------------------------------------------------------
@@ -210,28 +212,44 @@ class TestItemBankPipelineIntegration:
         from app.modules.diagnostics.item_bank_pipeline import ItemBankPipeline
         from app.repositories.item_bank_repository import ItemBankRepository
 
-        # Seed a single approved item via the real session.
-        db_session.execute(
-            "INSERT INTO item_bank (id, topic, difficulty, status) "
-            "VALUES (:id, :topic, :difficulty, 'approved')",
-            {"id": "rt-001", "topic": "whole_numbers", "difficulty": 0.5},
-        )
-        db_session.flush()
+        import uuid
+        repo = ItemBankRepository(db=db_session)
+        item_id = str(uuid.uuid4())
+        reviewer_id = uuid.uuid4()
+        await repo.upsert({
+            "item_id": item_id,
+            "topic": "whole_numbers",
+            "difficulty_b": 0.5,
+            "review_status": "approved",
+            "reviewer_id": reviewer_id,
+            "reviewed_at": datetime.now(tz=timezone.utc),
+            "caps_ref": "CAPS-TEST-001",
+            "grade": 4,
+            "subject": "Mathematics",
+            "term": 1,
+            "subtopic": "arithmetic",
+            "skill": "addition",
+            "stem": "What is 7 + 8?",
+            "answer_key": "15",
+            "explanation": "Simple addition.",
+            "safety_passed": True,
+        })
+        await db_session.commit()
 
-        repo = ItemBankRepository(session=db_session)
+        repo = ItemBankRepository(db=db_session)
         pipeline = ItemBankPipeline(
             config=SAMPLE_PIPELINE_CONFIG, repository=repo
         )
         items = await pipeline.fetch_items()
 
-        assert any(item["id"] == "rt-001" for item in items)
+        assert any(item["id"] == item_id for item in items)
 
     @pytest.mark.asyncio
     async def test_count_reflects_seeded_items(self, db_session) -> None:
         """Repository count matches the number of approved rows in the DB."""
         from app.repositories.item_bank_repository import ItemBankRepository
 
-        repo = ItemBankRepository(session=db_session)
+        repo = ItemBankRepository(db=db_session)
         count = await repo.count_approved_items()
 
         # We can't know the exact count without controlling DB state fully,

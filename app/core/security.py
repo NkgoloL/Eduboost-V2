@@ -119,6 +119,12 @@ async def get_current_user(credentials: HTTPAuthorizationCredentials | None = De
     return payload
 
 
+async def get_current_user_optional(credentials: HTTPAuthorizationCredentials | None = Depends(_bearer)) -> dict[str, Any] | None:
+    if credentials is None:
+        return None
+    return await get_current_user(credentials)
+
+
 def require_roles(*roles: UserRole):
     """Dependency factory: enforce that the caller has one of the specified roles."""
 
@@ -145,6 +151,7 @@ __all__ = [
     "create_refresh_token",
     "decode_token",
     "get_current_user",
+    "get_current_user_optional",
     "hash_email",
     "hash_password",
     "require_admin",

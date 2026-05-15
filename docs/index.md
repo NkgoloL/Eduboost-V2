@@ -17,4 +17,4 @@ The most useful starting points are:
 The repository is V2-first, but a small compatibility boundary still exists for
 migration support. When in doubt, prefer the docs that describe the active V2
 surface and check the root [`TODO.md`](/TODO.md) for audit-tracked follow-up
-work.
+work and the current North Star execution state.

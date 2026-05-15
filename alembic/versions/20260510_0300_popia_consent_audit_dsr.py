@@ -14,25 +14,14 @@ depends_on = None
 
 
 def upgrade() -> None:
-    # ----------------------------------------------------------------
-    # §4.5 – append-only audit table
-    # ----------------------------------------------------------------
-    op.create_table(
-        "audit_events",
-        sa.Column("id", UUID(as_uuid=True), primary_key=True),
-        sa.Column("event_type", sa.String(64), nullable=False),
-        sa.Column("actor_id", UUID(as_uuid=True), nullable=True),
-        sa.Column("learner_id", UUID(as_uuid=True), nullable=True),
-        sa.Column("payload", JSONB, nullable=False, server_default="{}"),
-        sa.Column("occurred_at", sa.DateTime(timezone=True), nullable=False),
-        sa.Column("event_hash", sa.String(64), nullable=False),
-        sa.Column("previous_hash", sa.String(64), nullable=False),
-        sa.Column("hmac_signature", sa.String(64), nullable=False),
-    )
-    op.create_index("ix_audit_events_learner_id", "audit_events", ["learner_id"])
-    op.create_index("ix_audit_events_occurred_at", "audit_events", ["occurred_at"])
+    # ================================================================
+    # NOTE: The audit_events table and its append-only rules are 
+    # ALREADY CREATED in migration 0006_v2_audit_events.py.
+    # This migration only adds POPIA consent and data-subject-rights tables.
+    # ================================================================
 
     # Row-level trigger: prevent UPDATE/DELETE on audit_events (§4.5)
+    # This ensures the table remains append-only at the database level.
     op.execute("""
         CREATE OR REPLACE FUNCTION audit_events_immutable()
         RETURNS TRIGGER LANGUAGE plpgsql AS $$
@@ -47,9 +36,9 @@ def upgrade() -> None:
         FOR EACH ROW EXECUTE FUNCTION audit_events_immutable();
     """)
 
-    # ----------------------------------------------------------------
+    # ================================================================
     # §4.1 – consent records
-    # ----------------------------------------------------------------
+    # ================================================================
     op.create_table(
         "consent_records",
         sa.Column("id", UUID(as_uuid=True), primary_key=True),

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from unittest.mock import AsyncMock
 import pytest
 pytestmark = pytest.mark.integration
 
@@ -59,7 +60,7 @@ def override_user(payload: dict[str, Any]):
 @pytest.fixture(autouse=True)
 def gamification_profile_overrides(monkeypatch: pytest.MonkeyPatch):
     monkeypatch.setattr(gamification_router, "LearnerRepository", FakeLearnerRepository)
-    monkeypatch.setattr(gamification_router, "ConsentService", FakeConsentService)
+    monkeypatch.setattr(gamification_router, "require_active_consent_for_current_user", AsyncMock(return_value=None))
     monkeypatch.setattr(gamification_router, "GamificationServiceV2", FakeGamificationService)
     monkeypatch.setattr(gamification_router, "GamificationRepository", FakeGamificationRepository)
     app.dependency_overrides[gamification_router.get_db] = override_db

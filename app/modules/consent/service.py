@@ -26,7 +26,7 @@ from app.core.audit import FourthEstateService
 from app.core.consent_policy import ConsentPolicyDecision, derive_consent_state
 from app.core.exceptions import ConsentExpiredError, ConsentRequiredError
 from app.repositories.audit_repository import AuditRepository
-from app.repositories.consent_repository import ConsentRepository
+from app.repositories.repositories import ConsentRepository
 
 
 class ConsentService:

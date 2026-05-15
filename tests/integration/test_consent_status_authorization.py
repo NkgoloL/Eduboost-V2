@@ -1,4 +1,5 @@
 from __future__ import annotations
+from unittest.mock import AsyncMock
 import pytest
 pytestmark = pytest.mark.integration
 
@@ -69,7 +70,9 @@ def test_consent_status_allows_admin_read() -> None:
     response = TestClient(app).get(f"/api/v2/consent/status/{LEARNER_ID}")
 
     assert response.status_code == 200
-    assert "active" in response.json()
+    body = response.json()
+    payload = body.get("data") if "data" in body else body
+    assert "active" in payload
 
 
 @pytest.mark.integration
