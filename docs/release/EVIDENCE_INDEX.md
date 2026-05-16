@@ -241,3 +241,14 @@ make backend-runtime-wiring-preflight-check
 make backend-runtime-wiring-preflight-report
 make backend-implementation-376-382-full-check
 ```
+
+
+## Backend implementation slice 383-390
+
+Validate fixture-backed runtime wiring cases before actual route/service wiring:
+
+```bash
+make backend-runtime-wiring-cases-check
+make backend-runtime-wiring-cases-report
+make backend-implementation-383-390-full-check
+```

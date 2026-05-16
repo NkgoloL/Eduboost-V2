@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "boundary": "deep-readiness route wiring cases; public checks must be read-only",
+  "cases": [
+    {
+      "name": "database_connectivity",
+      "required_for_release": true,
+      "public_safe": true,
+      "mutates_state": false
+    },
+    {
+      "name": "alembic_revision",
+      "required_for_release": true,
+      "public_safe": true,
+      "mutates_state": false
+    },
+    {
+      "name": "required_table_presence",
+      "required_for_release": true,
+      "public_safe": true,
+      "mutates_state": false
+    },
+    {
+      "name": "mutating_audit_probe",
+      "required_for_release": false,
+      "public_safe": false,
+      "mutates_state": true
+    }
+  ]
+}

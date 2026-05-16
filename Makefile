@@ -1063,3 +1063,14 @@ backend-runtime-wiring-preflight-report:
 backend-implementation-376-382-full-check: backend-runtime-wiring-preflight-check backend-runtime-wiring-preflight-report backend-implementation-371-375-full-check backend-implementation-367-370-full-check
 	pytest -c pytest.ini tests/unit/test_backend_runtime_wiring_preflight.py -q --no-cov
 
+.PHONY: backend-runtime-wiring-cases-check backend-runtime-wiring-cases-report backend-implementation-383-390-full-check
+
+backend-runtime-wiring-cases-check:
+	PYTHONPATH=. python3 scripts/check_backend_runtime_wiring_cases.py
+
+backend-runtime-wiring-cases-report:
+	PYTHONPATH=. python3 scripts/generate_backend_runtime_wiring_cases_report.py
+
+backend-implementation-383-390-full-check: backend-runtime-wiring-cases-check backend-runtime-wiring-cases-report backend-implementation-376-382-full-check backend-implementation-371-375-full-check
+	pytest -c pytest.ini tests/unit/test_backend_runtime_wiring_cases.py -q --no-cov
+
