@@ -207,3 +207,15 @@ make deep-readiness-readonly-check
 make audit-canonicalization-slice-check
 make backend-implementation-364-366-full-check
 ```
+
+
+## Backend implementation progress slice 367-370
+
+Track consent runtime compatibility and audit canonicalization registry:
+
+```bash
+make consent-runtime-compatibility-slice-check
+make audit-canonicalization-registry-check
+make backend-consolidation-progress-report
+make backend-implementation-367-370-full-check
+```

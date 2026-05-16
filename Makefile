@@ -1027,3 +1027,17 @@ audit-canonicalization-slice-check:
 backend-implementation-364-366-full-check: deep-readiness-readonly-check audit-canonicalization-slice-check backend-consolidation-implementation-foundation-full-check
 	pytest -c pytest.ini tests/unit/test_schema_drift_deep_readiness_audit_slice.py -q --no-cov
 
+.PHONY: consent-runtime-compatibility-slice-check audit-canonicalization-registry-check backend-consolidation-progress-report backend-implementation-367-370-full-check
+
+consent-runtime-compatibility-slice-check:
+	PYTHONPATH=. python3 scripts/check_consent_runtime_compatibility_slice.py
+
+audit-canonicalization-registry-check:
+	PYTHONPATH=. python3 scripts/check_audit_canonicalization_registry.py
+
+backend-consolidation-progress-report:
+	PYTHONPATH=. python3 scripts/generate_backend_consolidation_progress_report.py
+
+backend-implementation-367-370-full-check: consent-runtime-compatibility-slice-check audit-canonicalization-registry-check backend-consolidation-progress-report backend-implementation-364-366-full-check backend-consolidation-implementation-foundation-full-check
+	pytest -c pytest.ini tests/unit/test_consent_runtime_audit_registry_progress.py -q --no-cov
+
