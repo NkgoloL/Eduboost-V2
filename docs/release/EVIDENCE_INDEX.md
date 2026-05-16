@@ -184,3 +184,14 @@ make backend-consolidation-terminal-check
 make backend-consolidation-terminal-report
 make backend-consolidation-terminal-full-check
 ```
+
+
+## Backend consolidation implementation foundation
+
+Merged code_361-code_363 foundation before runtime rewiring:
+
+```bash
+make backend-consolidation-implementation-foundation-check
+make backend-consolidation-implementation-foundation-report
+make backend-consolidation-implementation-foundation-full-check
+```

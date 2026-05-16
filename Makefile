@@ -996,3 +996,14 @@ backend-consolidation-terminal-report:
 backend-consolidation-terminal-full-check: backend-consolidation-terminal-report backend-consolidation-terminal-check backend-consolidation-execution-full-check backend-runtime-probe-full-check
 	pytest -c pytest.ini tests/unit/test_backend_consolidation_terminal_packet.py -q --no-cov
 
+.PHONY: backend-consolidation-implementation-foundation-check backend-consolidation-implementation-foundation-report backend-consolidation-implementation-foundation-full-check
+
+backend-consolidation-implementation-foundation-check:
+	PYTHONPATH=. python3 scripts/check_backend_consolidation_implementation_foundation.py
+
+backend-consolidation-implementation-foundation-report:
+	PYTHONPATH=. python3 scripts/generate_backend_consolidation_implementation_report.py
+
+backend-consolidation-implementation-foundation-full-check: backend-consolidation-implementation-foundation-check backend-consolidation-implementation-foundation-report backend-consolidation-terminal-full-check
+	pytest -c pytest.ini tests/unit/test_backend_consolidation_implementation_foundation.py -q --no-cov
+
