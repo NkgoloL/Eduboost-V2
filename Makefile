@@ -860,3 +860,13 @@ runtime-release-evidence-check:
 release-readiness-local-check: release-hygiene-check runtime-release-evidence-check ci-contract-check
 	pytest -c pytest.ini tests/unit/test_runtime_release_evidence_contract.py tests/unit/test_release_hygiene_tooling.py tests/unit/test_ci_route_alias_policy.py -q --no-cov
 
+.PHONY: capture-pytest-release-evidence pytest-release-evidence-check local-release-evidence-check
+
+capture-pytest-release-evidence:
+	PYTHONPATH=. python3 scripts/capture_pytest_release_evidence.py all
+
+pytest-release-evidence-check:
+	PYTHONPATH=. python3 scripts/check_pytest_release_evidence.py
+
+local-release-evidence-check: pytest-release-evidence-check runtime-release-evidence-check release-evidence-index-check
+

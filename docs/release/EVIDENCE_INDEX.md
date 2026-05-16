@@ -43,3 +43,13 @@ Validate release evidence files:
 ```bash
 make release-evidence-index-check
 ```
+
+
+## Local pytest evidence capture
+
+Capture current local pytest evidence:
+
+```bash
+make capture-pytest-release-evidence
+make pytest-release-evidence-check
+```
