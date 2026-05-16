@@ -1085,3 +1085,17 @@ backend-first-wiring-candidates-report:
 backend-implementation-391-400-full-check: backend-first-wiring-candidates-check backend-first-wiring-candidates-report backend-implementation-383-390-full-check backend-implementation-376-382-full-check
 	pytest -c pytest.ini tests/unit/test_backend_first_wiring_candidates.py -q --no-cov
 
+.PHONY: backend-runtime-enablement-guard backend-destructive-action-blocklist-check backend-runtime-enablement-report backend-runtime-enablement-full-check
+
+backend-runtime-enablement-guard:
+	PYTHONPATH=. python3 scripts/check_backend_runtime_enablement_guard.py
+
+backend-destructive-action-blocklist-check:
+	PYTHONPATH=. python3 scripts/check_backend_destructive_action_blocklist.py
+
+backend-runtime-enablement-report:
+	PYTHONPATH=. python3 scripts/generate_backend_runtime_enablement_report.py
+
+backend-runtime-enablement-full-check: backend-runtime-enablement-guard backend-destructive-action-blocklist-check backend-runtime-enablement-report backend-implementation-391-400-full-check backend-implementation-383-390-full-check
+	pytest -c pytest.ini tests/unit/test_backend_runtime_enablement_pack.py -q --no-cov
+

@@ -263,3 +263,15 @@ make backend-first-wiring-candidates-check
 make backend-first-wiring-candidates-report
 make backend-implementation-391-400-full-check
 ```
+
+
+## Backend runtime enablement 401-420
+
+Close the non-destructive implementation runway before scoped runtime PRs:
+
+```bash
+make backend-runtime-enablement-guard
+make backend-destructive-action-blocklist-check
+make backend-runtime-enablement-report
+make backend-runtime-enablement-full-check
+```

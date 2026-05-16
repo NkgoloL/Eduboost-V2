@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "boundary": "runtime enablement required artifacts; no destructive action approval",
+  "required_artifacts": [
+    "docs/release/backend_first_wiring_candidate_registry.md",
+    "docs/release/backend_adapter_wiring_service_contract.md",
+    "docs/release/backend_runtime_wiring_cases_report.md",
+    "docs/release/backend_runtime_wiring_preflight_report.md",
+    "docs/release/backend_implementation_decision_ledger.md",
+    "docs/release/schema_drift_real_db_execution_blocker.md",
+    "docs/release/backend_runtime_enablement_packet.md"
+  ],
+  "blocked_actions": [
+    "audit repository deletion",
+    "audit_logs drop",
+    "consent table merge",
+    "alembic stamp head",
+    "production DB mutation",
+    "public mutating health check"
+  ]
+}
