@@ -133,10 +133,7 @@ ROUTER_REGISTRY = (
     ("system", system.router),
 )
 
-for prefix in API_PREFIXES:
-    for _router_name, router in ROUTER_REGISTRY:
-        app.include_router(router, prefix=prefix)
-
+# ── Operational Routes ─────────────────────────────────────────────────────────
 
 @app.get("/health", tags=["ops"])
 async def health():
@@ -149,20 +146,14 @@ async def health():
 
 
 @app.get("/ready", tags=["ops"])
+@app.get("/v2/health/deep", tags=["ops"])
+@app.get("/api/v2/health/deep", tags=["ops"])
 async def ready():
     # Perform deep health checks and return appropriate status.
     # 'ok' or 'degraded' returns 200, 'error' returns 503.
     health_data = await gather_deep_health()
     status_code = 200 if health_data["status"] in ("ok", "degraded") else 503
     return JSONResponse(status_code=status_code, content=health_data)
-
-
-@app.get("/v2/health/deep", tags=["ops"])
-@app.get("/api/v2/health/deep", tags=["ops"])
-async def deep_health():
-    payload = await gather_deep_health()
-    status_code = 200 if payload["status"] in ("ok", "degraded") else 503
-    return JSONResponse(status_code=status_code, content=payload)
 
 
 @app.get("/metrics", tags=["ops"])
@@ -173,6 +164,13 @@ async def metrics():
 @app.get("/", tags=["ops"])
 async def root():
     return JSONResponse({"message": "EduBoost SA V2 — Ngiyabonga! 🦁", "docs": "/docs"})
+
+
+# ── Router Registration ───────────────────────────────────────────────────────
+
+for prefix in API_PREFIXES:
+    for _router_name, router in ROUTER_REGISTRY:
+        app.include_router(router, prefix=prefix)
 
 
 # Dev-only helper to simulate a slow DB query for testing slow-query logging.
