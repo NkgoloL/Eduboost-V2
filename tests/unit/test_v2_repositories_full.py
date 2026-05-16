@@ -30,6 +30,7 @@ class TestStudyPlanRepository:
         session = AsyncMock()
         session.__aenter__ = AsyncMock(return_value=session)
         session.__aexit__ = AsyncMock(return_value=False)
+        session.add = MagicMock()
         return session
 
     @pytest.mark.asyncio
@@ -111,6 +112,7 @@ class TestParentReportRepository:
         s = AsyncMock()
         s.__aenter__ = AsyncMock(return_value=s)
         s.__aexit__ = AsyncMock(return_value=False)
+        s.add = MagicMock()
         return s
 
     @pytest.mark.asyncio
@@ -175,6 +177,7 @@ class TestAuthRepository:
         s = AsyncMock()
         s.__aenter__ = AsyncMock(return_value=s)
         s.__aexit__ = AsyncMock(return_value=False)
+        s.add = MagicMock()
         return s
 
     @pytest.mark.asyncio
@@ -220,6 +223,7 @@ class TestLessonRepository:
         s = AsyncMock()
         s.__aenter__ = AsyncMock(return_value=s)
         s.__aexit__ = AsyncMock(return_value=False)
+        s.add = MagicMock()
         return s
 
     @pytest.mark.asyncio
@@ -257,6 +261,7 @@ class TestDiagnosticRepository:
         s = AsyncMock()
         s.__aenter__ = AsyncMock(return_value=s)
         s.__aexit__ = AsyncMock(return_value=False)
+        s.add = MagicMock()
         return s
 
     @pytest.mark.asyncio

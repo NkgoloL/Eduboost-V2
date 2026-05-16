@@ -98,17 +98,32 @@ async def check_required_secrets() -> dict[str, Any]:
 async def check_migrations() -> dict[str, Any]:
     """Verify that alembic migrations have been applied (best-effort).
 
-    This performs a lightweight query against the `alembic_version` table and
-    returns a safe diagnostic without raising to avoid failing readiness
-    probes in ephemeral test environments.
+    Queries ``alembic_version`` and returns the active head revision.
+    The sentinel value ``'base'`` is excluded because it is not a real
+    migration revision — it is a placeholder that Alembic inserts when a
+    database is stamped without running migrations.  When multiple rows
+    exist (split-head state) a warning is included in the response so
+    operators can investigate, but the check does not fail provided at
+    least one real revision is present.
     """
     try:
         async with AsyncSessionLocal() as session:
-            result = await session.execute(text("SELECT version_num FROM alembic_version LIMIT 1"))
-            row = result.first()
-            if row:
-                return {"status": "ok", "revision": row[0]}
-            return {"status": "error", "detail": "alembic_version table empty"}
+            result = await session.execute(
+                text(
+                    "SELECT version_num FROM alembic_version"
+                    " WHERE version_num != 'base'"
+                    " ORDER BY version_num DESC"
+                    " LIMIT 10"
+                )
+            )
+            rows = result.fetchall()
+            if not rows:
+                return {"status": "error", "detail": "alembic_version table empty or contains only sentinel 'base' row"}
+            revisions = [r[0] for r in rows]
+            result_dict: dict[str, Any] = {"status": "ok", "revision": revisions[0]}
+            if len(revisions) > 1:
+                result_dict["warning"] = f"Multiple revisions in alembic_version: {revisions}"
+            return result_dict
     except Exception as exc:  # noqa: BLE001
         return {"status": "error", "detail": _safe_error(exc)}
 

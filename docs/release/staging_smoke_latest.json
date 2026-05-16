@@ -1,0 +1,79 @@
+{
+  "base_url": "https://staging.example.com",
+  "captured_at": "2026-05-16T07:15:14Z",
+  "passed": false,
+  "results": [
+    {
+      "actual_status": null,
+      "duration_ms": 224.38,
+      "error": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
+      "expected_statuses": [
+        200,
+        503
+      ],
+      "headers": {},
+      "method": "GET",
+      "name": "health_deep",
+      "passed": false,
+      "path": "/api/v2/health/deep"
+    },
+    {
+      "actual_status": null,
+      "duration_ms": 318.65,
+      "error": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
+      "expected_statuses": [
+        200
+      ],
+      "headers": {},
+      "method": "GET",
+      "name": "openapi",
+      "passed": false,
+      "path": "/openapi.json"
+    },
+    {
+      "actual_status": null,
+      "duration_ms": 254.82,
+      "error": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
+      "expected_statuses": [
+        200,
+        404
+      ],
+      "headers": {},
+      "method": "GET",
+      "name": "security_headers",
+      "passed": false,
+      "path": "/api/v2/health"
+    },
+    {
+      "actual_status": null,
+      "duration_ms": 299.63,
+      "error": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
+      "expected_statuses": [
+        201,
+        400,
+        409,
+        422
+      ],
+      "headers": {},
+      "method": "POST",
+      "name": "auth_register_shape",
+      "passed": false,
+      "path": "/api/v2/auth/register"
+    },
+    {
+      "actual_status": null,
+      "duration_ms": 323.86,
+      "error": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
+      "expected_statuses": [
+        401,
+        403,
+        404
+      ],
+      "headers": {},
+      "method": "GET",
+      "name": "popia_export_requires_auth",
+      "passed": false,
+      "path": "/api/v2/popia/data-export/smoke-learner"
+    }
+  ]
+}

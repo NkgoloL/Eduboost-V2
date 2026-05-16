@@ -135,5 +135,16 @@
 - [ ] `P1` Conduct legal review of data retention policy.
 - [ ] `P1` Conduct legal review of subprocessor register.
 
+## 4.7 Backend Consolidation Diagnostics
+
+- [verify] `P0` Inventory all legacy audit call sites. Evidence: `docs/release/audit_callsite_inventory.md`, `scripts/generate_audit_callsite_inventory.py`, `make audit-compatibility-check`.
+- [verify] `P0` Inventory all legacy consent call sites. Evidence: `docs/release/consent_callsite_inventory.md`, `scripts/generate_consent_callsite_inventory.py`, `make consent-compatibility-check`.
+- [verify] `P0` Implement audit compatibility adapter. Evidence: `app/repositories/audit_compat.py`, `tests/unit/test_audit_callsite_inventory_and_compat.py`.
+- [verify] `P0` Implement consent normalization service. Evidence: `app/services/consent_compat.py`, `tests/unit/test_consent_callsite_inventory_and_compat.py`.
+- [verify] `P0` Establish backend consolidation readiness matrix. Evidence: `docs/release/backend_consolidation_readiness_matrix.md`, `make backend-consolidation-readiness-check`.
+- [verify] `P0` Establish backend consolidation execution sequence. Evidence: `docs/release/backend_consolidation_execution_packet.md`, `make backend-consolidation-execution-packet-check`.
+- [verify] `P0` Implement runtime compatibility probes. Evidence: `scripts/check_backend_runtime_probe_fixtures.py`, `make backend-runtime-probe-check`.
+- [verify] `P0` Finalize terminal consolidation diagnostics. Evidence: `docs/release/backend_consolidation_terminal_report.md`, `make backend-consolidation-terminal-full-check`.
+
 ---
 

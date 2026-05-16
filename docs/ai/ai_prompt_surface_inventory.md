@@ -129,6 +129,9 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/check_ai_refusal_fixtures.py` | `prompt` |
 | `scripts/check_ai_safety_boundary_contract.py` | `prompt` |
 | `scripts/check_ai_safety_release_evidence.py` | `prompt, llm, remediation` |
+| `scripts/check_backend_consolidation_dragons.py` | `diagnostic` |
+| `scripts/check_backend_consolidation_release_guard.py` | `diagnostic` |
+| `scripts/check_backend_runtime_compatibility.py` | `diagnostic` |
 | `scripts/check_beta_known_issues_register.py` | `remediation` |
 | `scripts/check_beta_launch_staging_acceptance_production_readiness.py` | `diagnostic` |
 | `scripts/check_beta_release_readiness_contract.py` | `prompt` |
@@ -152,6 +155,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/check_frontend_mock_api_fixtures.py` | `diagnostic` |
 | `scripts/check_frontend_production_readiness.py` | `diagnostic` |
 | `scripts/check_frontend_route_inventory.py` | `diagnostic` |
+| `scripts/check_health_readiness_contract.py` | `diagnostic` |
 | `scripts/check_learner_vertical_journey_contract.py` | `diagnostic` |
 | `scripts/check_learning_evidence.py` | `diagnostic` |
 | `scripts/check_llm_provider_fallback_contract.py` | `prompt, llm, anthropic` |
@@ -165,9 +169,16 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/check_remediation_safety_contract.py` | `remediation` |
 | `scripts/check_security_posture_threat_modeling_production_readiness.py` | `prompt, remediation` |
 | `scripts/ci/check_diagnostics_assessment.py` | `diagnostic` |
+| `scripts/compare_orm_tables_to_database.py` | `diagnostic` |
 | `scripts/evaluate_pedagogy.py` | `prompt, llm` |
 | `scripts/generate_ai_prompt_surface_inventory.py` | `prompt, system_message, user_message, llm, anthropic, groq, generate_lesson, diagnostic, remediation` |
+| `scripts/generate_audit_callsite_inventory.py` | `diagnostic` |
+| `scripts/generate_backend_consolidation_evidence_manifest.py` | `diagnostic` |
+| `scripts/generate_backend_consolidation_report.py` | `diagnostic` |
+| `scripts/generate_backend_consolidation_terminal_report.py` | `diagnostic` |
+| `scripts/generate_backend_deletion_candidate_inventory.py` | `diagnostic` |
 | `scripts/generate_beta_signoff_manifest.py` | `prompt` |
+| `scripts/generate_consent_callsite_inventory.py` | `diagnostic` |
 | `scripts/generate_consent_gate_inventory.py` | `diagnostic` |
 | `scripts/generate_coverage_matrix.py` | `diagnostic` |
 | `scripts/generate_frontend_api_client_inventory.py` | `diagnostic` |

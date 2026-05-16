@@ -1,0 +1,49 @@
+# EduBoost release pytest evidence: full
+# Captured at: 2026-05-16T07:08:33Z
+# Command: pytest -c pytest.ini -q --no-cov
+# Return code: 0
+
+sssssssssssssssssssssssssss............................................. [  4%]
+........................................................................ [  8%]
+........................................................................ [ 12%]
+.........................s.............................................. [ 16%]
+........................................................................ [ 20%]
+.................................................................s...... [ 24%]
+........................................................................ [ 28%]
+........................................................................ [ 32%]
+........................................................................ [ 37%]
+........................................................................ [ 41%]
+........................................................................ [ 45%]
+........................................................................ [ 49%]
+........................................................................ [ 53%]
+........................................................................ [ 57%]
+........................................................................ [ 61%]
+........................................................................ [ 65%]
+........................................................................ [ 69%]
+........................................................................ [ 74%]
+........................................................................ [ 78%]
+........................................................................ [ 82%]
+........................................................................ [ 86%]
+........................................................................ [ 90%]
+........................................................................ [ 94%]
+........................................................................ [ 98%]
+.....................                                                    [100%]
+=============================== warnings summary ===============================
+tests/unit/test_v2_services_full.py::TestLessonServiceV2::test_get_lesson_falls_back_to_db
+  /usr/lib/python3.12/unittest/mock.py:2188: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    def __init__(self, name, parent):
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1720 passed, 29 skipped, 1 warning in 115.26s (0:01:55)
+Exception ignored in: <function AbstractConnection.__del__ at 0x71b8914c7c40>
+Traceback (most recent call last):
+  File "/home/nkgolol/.local/lib/python3.12/site-packages/redis/asyncio/connection.py", line 216, in __del__
+  File "/home/nkgolol/.local/lib/python3.12/site-packages/redis/asyncio/connection.py", line 223, in _close
+  File "/usr/lib/python3.12/asyncio/streams.py", line 358, in close
+  File "/usr/lib/python3.12/asyncio/selector_events.py", line 1211, in close
+  File "/usr/lib/python3.12/asyncio/selector_events.py", line 875, in close
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 795, in call_soon
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 541, in _check_closed
+RuntimeError: Event loop is closed

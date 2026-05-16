@@ -6,8 +6,8 @@
 
 - Canonical runtime: `app.api_v2:app`
 - Application title: `EduBoost SA V2`
-- Application version: `1.0.0-rc1`
-- Total route entries: `145`
+- Application version: `0.1.0`
+- Total route entries: `157`
 
 ## Contract Checks
 
@@ -83,6 +83,8 @@ Archived compatibility routes:
 | `/` | `GET` | `root` | yes | `app.api_v2.root` |
 | `/__dev/slow_query` | `GET` | `dev_slow_query` | yes | `app.api_v2.dev_slow_query` |
 | `/api/v2/admin/consent/trigger-renewal-reminders` | `POST` | `trigger_renewal_reminders` | yes | `app.api_v2_routers.consent_renewal.trigger_renewal_reminders` |
+| `/api/v2/audit` | `GET` | `get_audit_feed` | yes | `app.api_v2_routers.audit.get_audit_feed` |
+| `/api/v2/audit/feed` | `GET` | `get_audit_feed_alias` | yes | `app.api_v2_routers.audit.get_audit_feed_alias` |
 | `/api/v2/auth/dev-session` | `POST` | `create_dev_session` | yes | `app.api_v2_routers.auth.create_dev_session` |
 | `/api/v2/auth/login` | `POST` | `login` | yes | `app.api_v2_routers.auth.login` |
 | `/api/v2/auth/logout` | `POST` | `logout` | yes | `app.api_v2_routers.auth.logout` |
@@ -111,6 +113,7 @@ Archived compatibility routes:
 | `/api/v2/gamification/award-xp` | `POST` | `award_xp` | yes | `app.api_v2_routers.gamification.award_xp` |
 | `/api/v2/gamification/leaderboard` | `GET` | `get_leaderboard` | yes | `app.api_v2_routers.gamification.get_leaderboard` |
 | `/api/v2/gamification/profile/{learner_id}` | `GET` | `get_profile` | yes | `app.api_v2_routers.gamification.get_profile` |
+| `/api/v2/health/deep` | `GET` | `deep_health` | yes | `app.api_v2.deep_health` |
 | `/api/v2/jobs/{job_id}` | `GET` | `get_job_status` | yes | `app.api_v2_routers.jobs.get_job_status` |
 | `/api/v2/learners/` | `POST` | `create_learner` | yes | `app.api_v2_routers.learners.create_learner` |
 | `/api/v2/learners/{learner_id}` | `DELETE` | `request_erasure` | yes | `app.api_v2_routers.learners.request_erasure` |
@@ -123,6 +126,9 @@ Archived compatibility routes:
 | `/api/v2/lessons/generate` | `POST` | `generate_lesson` | yes | `app.api_v2_routers.lessons.generate_lesson` |
 | `/api/v2/lessons/generate/stream` | `POST` | `generate_lesson_stream` | yes | `app.api_v2_routers.lessons.generate_lesson_stream` |
 | `/api/v2/lessons/review/queue` | `GET` | `get_review_queue` | yes | `app.modules.lessons.lesson_review_router.get_review_queue` |
+| `/api/v2/lessons/sync` | `POST` | `sync_lessons` | yes | `app.api_v2_routers.lessons.sync_lessons` |
+| `/api/v2/lessons/{lesson_id}` | `GET` | `get_lesson` | yes | `app.api_v2_routers.lessons.get_lesson` |
+| `/api/v2/lessons/{lesson_id}/complete` | `POST` | `complete_lesson` | yes | `app.api_v2_routers.lessons.complete_lesson` |
 | `/api/v2/lessons/{lesson_id}/review` | `POST` | `review_lesson` | yes | `app.modules.lessons.lesson_review_router.review_lesson` |
 | `/api/v2/onboarding/archetype` | `POST` | `submit_onboarding` | yes | `app.api_v2_routers.onboarding.submit_onboarding` |
 | `/api/v2/onboarding/questions` | `GET` | `get_onboarding_questions` | yes | `app.api_v2_routers.onboarding.get_onboarding_questions` |
@@ -132,14 +138,15 @@ Archived compatibility routes:
 | `/api/v2/parents/learners/{learner_id}/progress` | `GET` | `get_learner_progress` | yes | `app.api_v2_routers.parents.get_learner_progress` |
 | `/api/v2/parents/{guardian_id}/dashboard` | `GET` | `get_parent_trust_dashboard` | yes | `app.api_v2_routers.parents.get_parent_trust_dashboard` |
 | `/api/v2/parents/{guardian_id}/export` | `GET` | `export_parent_access_bundle` | yes | `app.api_v2_routers.parents.export_parent_access_bundle` |
-| `/api/v2/popia/correction-request/{learner_id}` | `POST` | `request_correction` | yes | `app.api_v2_routers.popia.request_correction` |
-| `/api/v2/popia/data-export/{learner_id}` | `GET` | `export_learner_data` | yes | `app.api_v2_routers.popia.export_learner_data` |
-| `/api/v2/popia/deletion-cancel/{learner_id}` | `POST` | `cancel_learner_deletion` | yes | `app.api_v2_routers.popia.cancel_learner_deletion` |
-| `/api/v2/popia/deletion-execute/{learner_id}` | `POST` | `execute_learner_deletion` | yes | `app.api_v2_routers.popia.execute_learner_deletion` |
-| `/api/v2/popia/deletion-request/{learner_id}` | `POST` | `request_learner_deletion` | yes | `app.api_v2_routers.popia.request_learner_deletion` |
-| `/api/v2/popia/deletion-status/{learner_id}` | `GET` | `get_deletion_status` | yes | `app.api_v2_routers.popia.get_deletion_status` |
-| `/api/v2/popia/restriction-request/{learner_id}` | `POST` | `request_processing_restriction` | yes | `app.api_v2_routers.popia.request_processing_restriction` |
-| `/api/v2/popia/rlhf-export/{export_format}` | `POST` | `export_rlhf_dataset` | yes | `app.api_v2_routers.popia.export_rlhf_dataset` |
+| `/api/v2/popia/consent/deny` | `POST` | `deny_consent` | yes | `app.api_v2_routers.popia.deny_consent` |
+| `/api/v2/popia/consent/grant` | `POST` | `grant_consent` | yes | `app.api_v2_routers.popia.grant_consent` |
+| `/api/v2/popia/consent/renew` | `POST` | `renew_consent` | yes | `app.api_v2_routers.popia.renew_consent` |
+| `/api/v2/popia/consent/withdraw` | `POST` | `withdraw_consent` | yes | `app.api_v2_routers.popia.withdraw_consent` |
+| `/api/v2/popia/correction` | `POST` | `create_correction_request` | yes | `app.api_v2_routers.popia.create_correction_request` |
+| `/api/v2/popia/erasure` | `POST` | `create_erasure_request` | yes | `app.api_v2_routers.popia.create_erasure_request` |
+| `/api/v2/popia/erasure/{learner_id}/cancel` | `POST` | `cancel_erasure` | yes | `app.api_v2_routers.popia.cancel_erasure` |
+| `/api/v2/popia/exports` | `POST` | `create_export_request` | yes | `app.api_v2_routers.popia.create_export_request` |
+| `/api/v2/popia/restriction` | `POST` | `create_restriction_request` | yes | `app.api_v2_routers.popia.create_restriction_request` |
 | `/api/v2/practice/sessions` | `POST` | `create_practice_session` | yes | `app.modules.practice.router.create_practice_session` |
 | `/api/v2/practice/sessions/{session_id}/next-item` | `GET` | `next_practice_item` | yes | `app.modules.practice.router.next_practice_item` |
 | `/api/v2/practice/sessions/{session_id}/respond` | `POST` | `respond_practice` | yes | `app.modules.practice.router.respond_practice` |
@@ -157,6 +164,8 @@ Archived compatibility routes:
 | `/ready` | `GET` | `ready` | yes | `app.api_v2.ready` |
 | `/redoc` | `GET,HEAD` | `redoc_html` | no | `Route` |
 | `/v2/admin/consent/trigger-renewal-reminders` | `POST` | `trigger_renewal_reminders` | yes | `app.api_v2_routers.consent_renewal.trigger_renewal_reminders` |
+| `/v2/audit` | `GET` | `get_audit_feed` | yes | `app.api_v2_routers.audit.get_audit_feed` |
+| `/v2/audit/feed` | `GET` | `get_audit_feed_alias` | yes | `app.api_v2_routers.audit.get_audit_feed_alias` |
 | `/v2/auth/dev-session` | `POST` | `create_dev_session` | yes | `app.api_v2_routers.auth.create_dev_session` |
 | `/v2/auth/login` | `POST` | `login` | yes | `app.api_v2_routers.auth.login` |
 | `/v2/auth/logout` | `POST` | `logout` | yes | `app.api_v2_routers.auth.logout` |
@@ -198,6 +207,9 @@ Archived compatibility routes:
 | `/v2/lessons/generate` | `POST` | `generate_lesson` | yes | `app.api_v2_routers.lessons.generate_lesson` |
 | `/v2/lessons/generate/stream` | `POST` | `generate_lesson_stream` | yes | `app.api_v2_routers.lessons.generate_lesson_stream` |
 | `/v2/lessons/review/queue` | `GET` | `get_review_queue` | yes | `app.modules.lessons.lesson_review_router.get_review_queue` |
+| `/v2/lessons/sync` | `POST` | `sync_lessons` | yes | `app.api_v2_routers.lessons.sync_lessons` |
+| `/v2/lessons/{lesson_id}` | `GET` | `get_lesson` | yes | `app.api_v2_routers.lessons.get_lesson` |
+| `/v2/lessons/{lesson_id}/complete` | `POST` | `complete_lesson` | yes | `app.api_v2_routers.lessons.complete_lesson` |
 | `/v2/lessons/{lesson_id}/review` | `POST` | `review_lesson` | yes | `app.modules.lessons.lesson_review_router.review_lesson` |
 | `/v2/onboarding/archetype` | `POST` | `submit_onboarding` | yes | `app.api_v2_routers.onboarding.submit_onboarding` |
 | `/v2/onboarding/questions` | `GET` | `get_onboarding_questions` | yes | `app.api_v2_routers.onboarding.get_onboarding_questions` |
@@ -207,14 +219,15 @@ Archived compatibility routes:
 | `/v2/parents/learners/{learner_id}/progress` | `GET` | `get_learner_progress` | yes | `app.api_v2_routers.parents.get_learner_progress` |
 | `/v2/parents/{guardian_id}/dashboard` | `GET` | `get_parent_trust_dashboard` | yes | `app.api_v2_routers.parents.get_parent_trust_dashboard` |
 | `/v2/parents/{guardian_id}/export` | `GET` | `export_parent_access_bundle` | yes | `app.api_v2_routers.parents.export_parent_access_bundle` |
-| `/v2/popia/correction-request/{learner_id}` | `POST` | `request_correction` | yes | `app.api_v2_routers.popia.request_correction` |
-| `/v2/popia/data-export/{learner_id}` | `GET` | `export_learner_data` | yes | `app.api_v2_routers.popia.export_learner_data` |
-| `/v2/popia/deletion-cancel/{learner_id}` | `POST` | `cancel_learner_deletion` | yes | `app.api_v2_routers.popia.cancel_learner_deletion` |
-| `/v2/popia/deletion-execute/{learner_id}` | `POST` | `execute_learner_deletion` | yes | `app.api_v2_routers.popia.execute_learner_deletion` |
-| `/v2/popia/deletion-request/{learner_id}` | `POST` | `request_learner_deletion` | yes | `app.api_v2_routers.popia.request_learner_deletion` |
-| `/v2/popia/deletion-status/{learner_id}` | `GET` | `get_deletion_status` | yes | `app.api_v2_routers.popia.get_deletion_status` |
-| `/v2/popia/restriction-request/{learner_id}` | `POST` | `request_processing_restriction` | yes | `app.api_v2_routers.popia.request_processing_restriction` |
-| `/v2/popia/rlhf-export/{export_format}` | `POST` | `export_rlhf_dataset` | yes | `app.api_v2_routers.popia.export_rlhf_dataset` |
+| `/v2/popia/consent/deny` | `POST` | `deny_consent` | yes | `app.api_v2_routers.popia.deny_consent` |
+| `/v2/popia/consent/grant` | `POST` | `grant_consent` | yes | `app.api_v2_routers.popia.grant_consent` |
+| `/v2/popia/consent/renew` | `POST` | `renew_consent` | yes | `app.api_v2_routers.popia.renew_consent` |
+| `/v2/popia/consent/withdraw` | `POST` | `withdraw_consent` | yes | `app.api_v2_routers.popia.withdraw_consent` |
+| `/v2/popia/correction` | `POST` | `create_correction_request` | yes | `app.api_v2_routers.popia.create_correction_request` |
+| `/v2/popia/erasure` | `POST` | `create_erasure_request` | yes | `app.api_v2_routers.popia.create_erasure_request` |
+| `/v2/popia/erasure/{learner_id}/cancel` | `POST` | `cancel_erasure` | yes | `app.api_v2_routers.popia.cancel_erasure` |
+| `/v2/popia/exports` | `POST` | `create_export_request` | yes | `app.api_v2_routers.popia.create_export_request` |
+| `/v2/popia/restriction` | `POST` | `create_restriction_request` | yes | `app.api_v2_routers.popia.create_restriction_request` |
 | `/v2/practice/sessions` | `POST` | `create_practice_session` | yes | `app.modules.practice.router.create_practice_session` |
 | `/v2/practice/sessions/{session_id}/next-item` | `GET` | `next_practice_item` | yes | `app.modules.practice.router.next_practice_item` |
 | `/v2/practice/sessions/{session_id}/respond` | `POST` | `respond_practice` | yes | `app.modules.practice.router.respond_practice` |
@@ -224,4 +237,3 @@ Archived compatibility routes:
 | `/v2/system/health` | `GET` | `get_health` | yes | `app.api_v2_routers.system.get_health` |
 | `/v2/system/pillars` | `GET` | `get_pillars` | yes | `app.api_v2_routers.system.get_pillars` |
 | `/v2/system/schema-status` | `GET` | `get_schema_status` | yes | `app.api_v2_routers.system.get_schema_status` |
-| `/{full_path:path}` | `OPTIONS` | `generic_options` | yes | `app.api_v2.generic_options` |

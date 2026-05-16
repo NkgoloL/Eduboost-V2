@@ -28,6 +28,10 @@ All items below must be complete before public beta or production use with real 
 [x] POPIA erasure workflow tested
 [x] POPIA correction workflow tested
 [x] POPIA restriction workflow tested
+[ ] Backend consolidation diagnostics green
+[ ] Audit call-site inventory reviewed
+[ ] Consent call-site inventory reviewed
+[ ] Runtime compatibility probes pass
 [ ] Audit chain verified
 [ ] Audit completeness tests pass
 [ ] LLM PII sweep passes

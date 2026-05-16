@@ -1,0 +1,59 @@
+{
+  "captured_at": "2026-05-16T12:48:25Z",
+  "database_url_redacted": "postgresql+asyncpg://eduboost_user:***@localhost:5432/eduboost_test",
+  "include_downgrade": false,
+  "passed": true,
+  "results": [
+    {
+      "command": [
+        "alembic",
+        "current"
+      ],
+      "name": "alembic_current_before",
+      "passed": true,
+      "return_code": 0,
+      "stdout": "INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.\nINFO  [alembic.runtime.migration] Context impl PostgresqlImpl.\nINFO  [alembic.runtime.migration] Will assume transactional DDL.\nINFO  [alembic.runtime.migration] Will assume transactional DDL.\n"
+    },
+    {
+      "command": [
+        "alembic",
+        "upgrade",
+        "head"
+      ],
+      "name": "alembic_upgrade_head",
+      "passed": true,
+      "return_code": 0,
+      "stdout": "INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.\nINFO  [alembic.runtime.migration] Context impl PostgresqlImpl.\nINFO  [alembic.runtime.migration] Will assume transactional DDL.\nINFO  [alembic.runtime.migration] Will assume transactional DDL.\nINFO  [alembic.runtime.migration] Running upgrade  -> 0001_v2_consolidated, Initial V2 Consolidated Schema Migration\nINFO  [alembic.runtime.migration] Running upgrade  -> 0001_v2_consolidated, Initial V2 Consolidated Schema Migration\nINFO  [alembic.runtime.migration] Running upgrade 0001_v2_consolidated -> merge_2026_05_01, Merge Alembic heads into a single linear graph.\nINFO  [alembic.runtime.migration] Running upgrade 0001_v2_consolidated -> merge_2026_05_01, Merge Alembic heads into a single linear graph.\nINFO  [alembic.runtime.migration] Running upgrade merge_2026_05_01 -> 0005_seed_irt_items, Seed V2 IRT item bank with calibrated starter items.\nINFO  [alembic.runtime.migration] Running upgrade merge_2026_05_01 -> 0005_seed_irt_items, Seed V2 IRT item bank with calibrated starter items.\nINFO  [alembic.runtime.migration] Running upgrade merge_2026_05_01 -> 0002_add_missing_tables, Retire legacy missing-table migration in favour of canonical V2 schema.\nINFO  [alembic.runtime.migration] Running upgrade merge_2026_05_01 -> 0002_add_missing_tables, Retire legacy missing-table migration in favour of canonical V2 schema.\nINFO  [alembic.runtime.migration] Running upgrade 0002_add_missing_tables -> 0003_add_items_correct, Add items_correct to DiagnosticSession\nINFO  [alembic.runtime.migration] Running upgrade 0002_add_missing_tables -> 0003_add_items_correct, Add items_correct to DiagnosticSession\nINFO  [alembic.runtime.migration] Running upgrade 0003_add_items_correct -> 0004_add_rlhf_pipeline, Add RLHF pipeline tables\nINFO  [alembic.runtime.migration] Running upgrade 0003_add_items_correct -> 0004_add_rlhf_pipeline, Add RLHF pipeline tables\nINFO  [alembic.runtime.migration] Running upgrade 0004_add_rlhf_pipeline, 0005_seed_irt_items -> 94b628483fa7, Merge remaining heads 0004 and 0005\nINFO  [alembic.runtime.migration] Running upgrade 0004_add_rlhf_pipeline, 0005_seed_irt_items -> 94b628483fa7, Merge remaining heads 0004 and 0005\nINFO  [alembic.runtime.migration] Running upgrade 94b628483fa7 -> 0006, alembic/versions/0006_v2_audit_events.py\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTask 23: V2 Append-Only PostgreSQL Audit Service\nINFO  [alembic.runtime.migration] Running upgrade 94b628483fa7 -> 0006, alembic/versions/0006_v2_audit_events.py\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTask 23: V2 Append-Only PostgreSQL Audit Service\nINFO  [alembic.runtime.migration] Running upgrade 0006 -> 0007_caps_irt_item_bank, Expand the CAPS-aligned IRT item bank across Grades R-7 and core subjects.\nINFO  [alembic.runtime.migration] Running upgrade 0006 -> 0007_caps_irt_item_bank, Expand the CAPS-aligned IRT item bank across Grades R-7 and core subjects.\nINFO  [alembic.runtime.migration] Running upgrade 0007_caps_irt_item_bank -> 0008_lesson_completion_tracking, Track lesson completion timestamps for parent reporting and offline sync.\nINFO  [alembic.runtime.migration] Running upgrade 0007_caps_irt_item_bank -> 0008_lesson_completion_tracking, Track lesson completion timestamps for parent reporting and offline sync.\nINFO  [alembic.runtime.migration] Running upgrade 0008_lesson_completion_tracking -> 771fb3ac38b8, add missing production indexes and partial indexes\nINFO  [alembic.runtime.migration] Running upgrade 0008_lesson_completion_tracking -> 771fb3ac38b8, add missing production indexes and partial indexes\nINFO  [alembic.runtime.migration] Running upgrade 771fb3ac38b8 -> 0009_add_subject_mastery, Add subject_mastery table\nINFO  [alembic.runtime.migration] Running upgrade 771fb3ac38b8 -> 0009_add_subject_mastery, Add subject_mastery table\nINFO  [alembic.runtime.migration] Running upgrade 0009_add_subject_mastery -> 20260507_1200, POPIA consent states and tamper-evident audit chain.\nINFO  [alembic.runtime.migration] Running upgrade 0009_add_subject_mastery -> 20260507_1200, POPIA consent states and tamper-evident audit chain.\nINFO  [alembic.runtime.migration] Running upgrade 20260507_1200 -> 20260507_1330, database integrity constraints and production indexes.\nINFO  [alembic.runtime.migration] Running upgrade 20260507_1200 -> 20260507_1330, database integrity constraints and production indexes.\nINFO  [alembic.runtime.migration] Running upgrade 20260507_1330 -> 20260507_1500, Add AI/CAPS diagnostics safety metadata.\nINFO  [alembic.runtime.migration] Running upgrade 20260507_1330 -> 20260507_1500, Add AI/CAPS diagnostics safety metadata.\nINFO  [alembic.runtime.migration] Running upgrade 20260507_1500 -> 20260509_01, P1-02 \u2014 Alembic migration 0009: diagnostic_items table\n=======================================================\nPlace this file at:\n    alembic/versions/0009_add_diagnostic_items_table.py\nINFO  [alembic.runtime.migration] Running upgrade 20260507_1500 -> 20260509_01, P1-02 \u2014 Alembic migration 0009: diagnostic_items table\n=======================================================\nPlace this file at:\n    alembic/versions/0009_add_diagnostic_items_table.py\nINFO  [alembic.runtime.migration] Running upgrade 20260509_01 -> 20260509_02, P1-03 \u2014 Alembic migration 0010: item_exposures table\n=====================================================\nPlace this file at:\n    alembic/versions/0010_add_item_exposures_table.py\nINFO  [alembic.runtime.migration] Running upgrade 20260509_01 -> 20260509_02, P1-03 \u2014 Alembic migration 0010: item_exposures table\n=====================================================\nPlace this file at:\n    alembic/versions/0010_add_item_exposures_table.py\nINFO  [alembic.runtime.migration] Running upgrade 20260509_02 -> 20260510_0100, Add AL LLM safety fields to lessons.\nINFO  [alembic.runtime.migration] Running upgrade 20260509_02 -> 20260510_0100, Add AL LLM safety fields to lessons.\nINFO  [alembic.runtime.migration] Running upgrade 20260510_0100 -> 20260510_0200, Add diagnostics assessment lifecycle and mastery tables.\nINFO  [alembic.runtime.migration] Running upgrade 20260510_0100 -> 20260510_0200, Add diagnostics assessment lifecycle and mastery tables.\nINFO  [alembic.runtime.migration] Running upgrade 20260510_0200 -> 20260510_0300, alembic/versions/0010_popia_consent_audit_dsr.py\nCreates all POPIA-related tables (\u00a74.1 \u00a74.3 \u00a74.5).\nSets up row-level trigger to prevent UPDATE/DELETE on audit_events.\nINFO  [alembic.runtime.migration] Running upgrade 20260510_0200 -> 20260510_0300, alembic/versions/0010_popia_consent_audit_dsr.py\nCreates all POPIA-related tables (\u00a74.1 \u00a74.3 \u00a74.5).\nSets up row-level trigger to prevent UPDATE/DELETE on audit_events.\nINFO  [alembic.runtime.migration] Running upgrade 20260510_0300 -> 20260516_0100, alembic/versions/20260516_0100_remove_base_sentinel.py\nINFO  [alembic.runtime.migration] Running upgrade 20260510_0300 -> 20260516_0100, alembic/versions/20260516_0100_remove_base_sentinel.py\nDEBUG: Creating enum itemtype\nDEBUG: Creating enum subjectcode\nDEBUG: Creating enum language\nDEBUG: Creating enum reviewstatus\nDEBUG: Creating enum itemsource\nDEBUG: Creating enum difficultyband\n"
+    },
+    {
+      "command": [
+        "alembic",
+        "current"
+      ],
+      "name": "alembic_current_after",
+      "passed": true,
+      "return_code": 0,
+      "stdout": "INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.\nINFO  [alembic.runtime.migration] Context impl PostgresqlImpl.\nINFO  [alembic.runtime.migration] Will assume transactional DDL.\nINFO  [alembic.runtime.migration] Will assume transactional DDL.\n20260516_0100 (head)\n"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "scripts/verify_migration_graph.py"
+      ],
+      "name": "migration_graph_check",
+      "passed": true,
+      "return_code": 0,
+      "stdout": "Migration graph OK: 21 revisions, head=20260516_0100\n"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "scripts/validate_schema_integrity.py"
+      ],
+      "name": "schema_integrity_check",
+      "passed": true,
+      "return_code": 0,
+      "stdout": "Schema integrity OK\n"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "events": [
+    {
+      "name": "consent_status_read",
+      "input": {
+        "action": "consent.status.read",
+        "actor_id": "guardian-1",
+        "learner_id": "learner-1",
+        "metadata": {"surface": "status"}
+      },
+      "expected_classification": "read",
+      "expected_resource_type": "learner_consent"
+    },
+    {
+      "name": "consent_revoked",
+      "input": {
+        "action": "consent.revoked",
+        "actor_id": "guardian-1",
+        "learner_id": "learner-1",
+        "metadata": {"reason": "guardian_request"}
+      },
+      "expected_classification": "write",
+      "expected_resource_type": "learner_consent"
+    }
+  ]
+}

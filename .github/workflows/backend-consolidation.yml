@@ -1,0 +1,49 @@
+name: Backend Consolidation Evidence
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+      - codex/production_readiness
+  push:
+    branches:
+      - main
+      - master
+      - codex/production_readiness
+  workflow_dispatch:
+
+jobs:
+  backend-consolidation-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+
+      - name: Run backend consolidation diagnostics
+        run: |
+          make backend-consolidation-terminal-check
+
+      - name: Upload backend consolidation reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: backend-consolidation-reports
+          path: |
+            docs/release/backend_*consolidation*.md
+            docs/release/*audit*inventory*.md
+            docs/release/*consent*inventory*.md
+            docs/release/backend_runtime_probe_report.md

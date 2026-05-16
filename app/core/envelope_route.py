@@ -93,11 +93,15 @@ class EnvelopedRoute(APIRoute):
                 getattr(request, "state", None), "request_id", None
             )
 
+            headers = dict(response.headers)
+            headers.pop("content-length", None)
+            headers.pop("Content-Length", None)
+
             wrapped = _wrap(body, request_id, response.status_code)
             return JSONResponse(
                 content=wrapped,
                 status_code=response.status_code,
-                headers=dict(response.headers),
+                headers=headers,
                 media_type=response.media_type,
             )
 

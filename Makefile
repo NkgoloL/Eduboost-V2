@@ -800,3 +800,199 @@ roadmap-after-production-readiness-baseline-check:
 
 final-release-blocker-checklist-check:
 	$(PYTHON) scripts/check_final_release_blocker_checklist.py
+
+.PHONY: test-env-check route-alias-matrix route-alias-matrix-check release-evidence-index-check release-hygiene-check reset-test-db
+
+test-env-check:
+	PYTHONPATH=. python3 scripts/check_test_environment.py
+
+route-alias-matrix:
+	PYTHONPATH=. python3 scripts/generate_route_alias_matrix.py
+
+route-alias-matrix-check: route-alias-matrix
+	test -f docs/release/route_alias_matrix.md
+
+release-evidence-index-check:
+	PYTHONPATH=. python3 scripts/check_release_evidence_index.py
+
+release-hygiene-check: test-env-check route-alias-matrix-check release-evidence-index-check
+
+reset-test-db:
+	PYTHONPATH=. python3 scripts/check_test_environment.py --strict
+	@echo "Refusing to reset automatically from Makefile. Use the project-approved DB reset script only after verifying DATABASE_URL targets a disposable test database."
+	@exit 1
+
+.PHONY: warning-cleanup-check test-env-strict-check
+
+warning-cleanup-check:
+	python3 scripts/check_warning_cleanup.py
+
+test-env-strict-check:
+	PYTHONPATH=. python3 scripts/check_test_environment.py --strict
+
+.PHONY: route-alias-policy-check ci-workflow-consolidation-check ci-core-local ci-contract-check
+
+route-alias-policy-check:
+	PYTHONPATH=. python3 scripts/check_route_alias_matrix.py
+
+ci-workflow-consolidation-check:
+	PYTHONPATH=. python3 scripts/check_ci_workflow_consolidation.py
+
+ci-contract-check: ci-workflow-consolidation-check route-alias-policy-check
+
+ci-core-local: release-hygiene-check route-alias-policy-check openapi-check
+	pytest -c pytest.ini tests/unit -q --no-cov
+	pytest -c pytest.ini tests/integration -q --no-cov
+
+.PHONY: runtime-release-evidence-check release-readiness-local-check
+
+runtime-release-evidence-check:
+	PYTHONPATH=. python3 scripts/check_runtime_release_evidence.py
+
+release-readiness-local-check: release-hygiene-check runtime-release-evidence-check ci-contract-check
+	pytest -c pytest.ini tests/unit/test_runtime_release_evidence_contract.py tests/unit/test_release_hygiene_tooling.py tests/unit/test_ci_route_alias_policy.py -q --no-cov
+
+.PHONY: capture-pytest-release-evidence pytest-release-evidence-check local-release-evidence-check
+
+capture-pytest-release-evidence:
+	PYTHONPATH=. python3 scripts/capture_pytest_release_evidence.py all
+
+pytest-release-evidence-check:
+	PYTHONPATH=. python3 scripts/check_pytest_release_evidence.py
+
+local-release-evidence-check: pytest-release-evidence-check runtime-release-evidence-check release-evidence-index-check
+
+.PHONY: staging-smoke staging-smoke-check
+
+staging-smoke:
+	PYTHONPATH=. python3 scripts/run_staging_smoke.py
+staging-smoke-check:
+	PYTHONPATH=. python3 scripts/run_staging_smoke.py --validate --require-pass
+staging-smoke-schema-check:
+	PYTHONPATH=. python3 scripts/run_staging_smoke.py --validate
+.PHONY: staging-smoke staging-smoke-check staging-smoke-schema-check
+
+.PHONY: migration-evidence-capture migration-evidence-check migration-evidence-schema-check
+
+migration-evidence-capture:
+	PYTHONPATH=. python3 scripts/capture_migration_evidence.py
+
+migration-evidence-check:
+	PYTHONPATH=. python3 scripts/capture_migration_evidence.py --validate --require-pass
+
+migration-evidence-schema-check:
+	PYTHONPATH=. python3 scripts/capture_migration_evidence.py --validate
+
+.PHONY: backend-consolidation-dragons-check schema-drift-check backend-consolidation-diagnostics-check
+
+backend-consolidation-dragons-check:
+	PYTHONPATH=. python3 scripts/check_backend_consolidation_dragons.py
+
+schema-drift-check:
+	PYTHONPATH=. python3 scripts/compare_orm_tables_to_database.py
+
+backend-consolidation-diagnostics-check: backend-consolidation-dragons-check schema-drift-check
+	pytest -c pytest.ini tests/unit/test_backend_consolidation_dragon_diagnostics.py -q --no-cov
+
+.PHONY: audit-callsite-inventory audit-compatibility-check
+
+audit-callsite-inventory:
+	PYTHONPATH=. python3 scripts/generate_audit_callsite_inventory.py --fail-empty
+
+audit-compatibility-check: audit-callsite-inventory
+	pytest -c pytest.ini tests/unit/test_audit_callsite_inventory_and_adapter.py -q --no-cov
+
+.PHONY: consent-callsite-inventory consent-compatibility-check
+
+consent-callsite-inventory:
+	PYTHONPATH=. python3 scripts/generate_consent_callsite_inventory.py --fail-empty
+
+consent-compatibility-check: consent-callsite-inventory
+	pytest -c pytest.ini tests/unit/test_consent_callsite_inventory_and_compat.py -q --no-cov
+
+.PHONY: health-readiness-contract-check schema-drift-contract-check schema-drift-check-db backend-runtime-diagnostics-check
+
+health-readiness-contract-check:
+	PYTHONPATH=. python3 scripts/check_health_readiness_contract.py
+
+schema-drift-contract-check:
+	PYTHONPATH=. python3 scripts/check_schema_drift_contract.py
+
+schema-drift-check-db:
+	PYTHONPATH=. python3 scripts/compare_orm_tables_to_database.py --require-db --fail-on-drift
+
+backend-runtime-diagnostics-check: health-readiness-contract-check schema-drift-contract-check backend-consolidation-diagnostics-check
+	pytest -c pytest.ini tests/unit/test_health_readiness_schema_drift_guards.py -q --no-cov
+
+.PHONY: backend-consolidation-report backend-consolidation-release-guard backend-consolidation-full-check
+
+backend-consolidation-report:
+	PYTHONPATH=. python3 scripts/generate_backend_consolidation_report.py
+
+backend-consolidation-release-guard:
+	PYTHONPATH=. python3 scripts/check_backend_consolidation_release_guard.py
+
+backend-consolidation-full-check: backend-consolidation-report backend-consolidation-release-guard audit-compatibility-check consent-compatibility-check backend-runtime-diagnostics-check
+	pytest -c pytest.ini tests/unit/test_backend_consolidation_rollup_and_guard.py -q --no-cov
+
+.PHONY: backend-runtime-compatibility-check backend-runtime-compatibility-report backend-runtime-compatibility-full-check
+
+backend-runtime-compatibility-check:
+	PYTHONPATH=. python3 scripts/check_backend_runtime_compatibility.py
+
+backend-runtime-compatibility-report:
+	PYTHONPATH=. python3 scripts/generate_backend_runtime_compatibility_report.py
+
+backend-runtime-compatibility-full-check: backend-runtime-compatibility-check backend-runtime-compatibility-report audit-compatibility-check consent-compatibility-check health-readiness-contract-check
+	pytest -c pytest.ini tests/unit/test_backend_runtime_compatibility_contracts.py -q --no-cov
+
+.PHONY: backend-deletion-candidate-inventory backend-consolidation-noop-guard backend-consolidation-readiness-report backend-consolidation-readiness-full-check
+
+backend-deletion-candidate-inventory:
+	PYTHONPATH=. python3 scripts/generate_backend_deletion_candidate_inventory.py --fail-empty
+
+backend-consolidation-noop-guard: backend-deletion-candidate-inventory
+	PYTHONPATH=. python3 scripts/check_backend_consolidation_noop_guard.py
+
+backend-consolidation-readiness-report:
+	PYTHONPATH=. python3 scripts/generate_backend_consolidation_readiness_report.py
+
+backend-consolidation-readiness-full-check: backend-consolidation-readiness-report backend-consolidation-noop-guard backend-consolidation-full-check backend-runtime-compatibility-full-check
+	pytest -c pytest.ini tests/unit/test_backend_consolidation_readiness_and_noop_guard.py -q --no-cov
+
+.PHONY: backend-consolidation-execution-packet-check backend-consolidation-execution-report backend-consolidation-execution-full-check
+
+backend-consolidation-execution-packet-check:
+	PYTHONPATH=. python3 scripts/check_backend_consolidation_execution_packet.py
+
+backend-consolidation-execution-report:
+	PYTHONPATH=. python3 scripts/generate_backend_consolidation_execution_report.py
+
+backend-consolidation-execution-full-check: backend-consolidation-execution-packet-check backend-consolidation-execution-report backend-consolidation-readiness-full-check
+	pytest -c pytest.ini tests/unit/test_backend_consolidation_execution_packet.py -q --no-cov
+
+.PHONY: backend-runtime-probe-fixtures-check backend-runtime-probe-report backend-runtime-probe-full-check
+
+backend-runtime-probe-fixtures-check:
+	PYTHONPATH=. python3 scripts/check_backend_runtime_probe_fixtures.py
+
+backend-runtime-probe-report:
+	PYTHONPATH=. python3 scripts/generate_backend_runtime_probe_report.py
+
+backend-runtime-probe-full-check: backend-runtime-probe-fixtures-check backend-runtime-probe-report backend-consolidation-execution-full-check
+	pytest -c pytest.ini tests/unit/test_backend_runtime_probe_fixtures.py -q --no-cov
+
+.PHONY: backend-consolidation-evidence-manifest backend-consolidation-terminal-check backend-consolidation-terminal-report backend-consolidation-terminal-full-check
+
+backend-consolidation-evidence-manifest:
+	PYTHONPATH=. python3 scripts/generate_backend_consolidation_evidence_manifest.py
+
+backend-consolidation-terminal-check: backend-consolidation-evidence-manifest
+	PYTHONPATH=. python3 scripts/check_backend_consolidation_terminal_packet.py
+
+backend-consolidation-terminal-report:
+	PYTHONPATH=. python3 scripts/generate_backend_consolidation_terminal_report.py
+
+backend-consolidation-terminal-full-check: backend-consolidation-terminal-report backend-consolidation-terminal-check backend-consolidation-execution-full-check backend-runtime-probe-full-check
+	pytest -c pytest.ini tests/unit/test_backend_consolidation_terminal_packet.py -q --no-cov
+
