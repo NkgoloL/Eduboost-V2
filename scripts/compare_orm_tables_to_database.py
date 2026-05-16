@@ -56,14 +56,18 @@ async def collect_database_tables(database_url: str) -> set[str]:
         await engine.dispose()
 
 
-async def compare(database_url: str) -> SchemaComparison:
+async def compare(database_url: str, ignore_tables: set[str] | None = None) -> SchemaComparison:
     orm_tables = collect_orm_tables()
     database_tables = await collect_database_tables(database_url)
+    
+    ignored = ignore_tables or set()
+    filtered_db_tables = database_tables - ignored
+    
     return SchemaComparison(
         orm_tables=orm_tables,
         database_tables=database_tables,
-        missing_in_database=orm_tables - database_tables,
-        extra_in_database=database_tables - orm_tables,
+        missing_in_database=orm_tables - filtered_db_tables,
+        extra_in_database=filtered_db_tables - orm_tables,
     )
 
 
@@ -84,8 +88,21 @@ async def _async_main(args: argparse.Namespace) -> int:
         print("DATABASE_URL not supplied; database comparison skipped.")
         return 1 if args.require_db else 0
 
-    comparison = await compare(args.database_url)
+    ignore = {"alembic_version"}
+    if args.ignore_consolidation_tables:
+        ignore.update({
+            "consent_records",
+            "correction_requests",
+            "data_export_requests",
+            "erasure_requests",
+            "restriction_requests",
+        })
+
+    comparison = await compare(args.database_url, ignore_tables=ignore)
     _print_table_list("Database tables", comparison.database_tables)
+    if ignore & comparison.database_tables:
+        _print_table_list("Ignored database tables", ignore & comparison.database_tables)
+    
     _print_table_list("Missing in database", comparison.missing_in_database)
     _print_table_list("Extra in database", comparison.extra_in_database)
 
@@ -99,6 +116,7 @@ def main() -> int:
     parser.add_argument("--database-url", default=os.getenv("DATABASE_URL", ""))
     parser.add_argument("--require-db", action="store_true")
     parser.add_argument("--fail-on-drift", action="store_true")
+    parser.add_argument("--ignore-consolidation-tables", action="store_true", help="Ignore known unmapped POPIA/Consolidation tables")
     args = parser.parse_args()
 
     return asyncio.run(_async_main(args))

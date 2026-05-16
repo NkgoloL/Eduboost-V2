@@ -1,41 +1,40 @@
 {
-  "captured_at": "2026-05-16T18:13:38Z",
-  "database_url_redacted": "postgresql+asyncpg://eduboost_user:***@localhost:5432/eduboost_test",
-  "dry_run": false,
+  "captured_at": "2026-05-16T18:45:48Z",
+  "database_url_redacted": "postgresql+asyncpg://real_user:***@localhost:5432/eduboost_test",
+  "dry_run": true,
   "passed": true,
   "results": [
     {
       "command": [
-        "/usr/bin/python3",
+        "/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python",
         "scripts/capture_migration_evidence.py"
       ],
       "name": "migration_evidence_capture",
-      "output": "{\n  \"captured_at\": \"2026-05-16T18:13:36Z\",\n  \"database_url_redacted\": \"postgresql+asyncpg://eduboost_user:***@localhost:5432/eduboost_test\",\n  \"include_downgrade\": false,\n  \"passed\": true,\n  \"results\": [\n    {\n      \"command\": [\n        \"alembic\",\n        \"current\"\n      ],\n      \"name\": \"alembic_current_before\",\n      \"passed\": true,\n      \"return_code\": 0,\n      \"stdout\": \"INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.\\nINFO  [alembic.runtime.migration] Context impl PostgresqlImpl.\\nINFO  [alembic.runtime.migration] Will assume transactional DDL.\\nINFO  [alembic.runtime.migration] Will assume transactional DDL.\\n20260516_0100 (head)\\n\"\n    },\n    {\n      \"command\": [\n        \"alembic\",\n        \"upgrade\",\n        \"head\"\n      ],\n      \"name\": \"alembic_upgrade_head\",\n      \"passed\": true,\n      \"return_code\": 0,\n      \"stdout\": \"INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.\\nINFO  [alembic.runtime.migration] Context impl PostgresqlImpl.\\nINFO  [alembic.runtime.migration] Will assume transactional DDL.\\nINFO  [alembic.runtime.migration] Will assume transactional DDL.\\n\"\n    },\n    {\n      \"command\": [\n        \"alembic\",\n        \"current\"\n      ],\n      \"name\": \"alembic_current_after\",\n      \"passed\": true,\n      \"return_code\": 0,\n      \"stdout\": \"INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.\\nINFO  [alembic.runtime.migration] Context impl PostgresqlImpl.\\nINFO  [alembic.runtime.migration] Will assume transactional DDL.\\nINFO  [alembic.runtime.migration] Will assume transactional DDL.\\n20260516_0100 (head)\\n\"\n    },\n    {\n      \"command\": [\n        \"/usr/bin/python3\",\n        \"scripts/verify_migration_graph.py\"\n      ],\n      \"name\": \"migration_graph_check\",\n      \"passed\": true,\n      \"return_code\": 0,\n      \"stdout\": \"Migration graph OK: 21 revisions, head=20260516_0100\\n\"\n    },\n    {\n      \"command\": [\n        \"/usr/bin/python3\",\n        \"scripts/validate_schema_integrity.py\"\n      ],\n      \"name\": \"schema_integrity_check\",\n      \"passed\": true,\n      \"return_code\": 0,\n      \"stdout\": \"Schema integrity OK\\n\"\n    }\n  ]\n}\n",
+      "output": "dry-run",
       "passed": true,
       "return_code": 0
     },
     {
       "command": [
-        "/usr/bin/python3",
+        "/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python",
         "scripts/capture_migration_evidence.py",
         "--validate",
         "--require-pass"
       ],
       "name": "migration_evidence_check",
-      "output": "- PASS [json] /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/migration_latest.json: 5 migration result(s), passed=True\n",
+      "output": "dry-run",
       "passed": true,
       "return_code": 0
     },
     {
       "command": [
-        "/usr/bin/python3",
+        "/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python",
         "scripts/compare_orm_tables_to_database.py",
         "--require-db",
-        "--fail-on-drift",
-        "--ignore-consolidation-tables"
+        "--fail-on-drift"
       ],
       "name": "schema_drift_db",
-      "output": "ORM tables\n- audit_events\n- audit_logs\n- calibration_audits\n- diagnostic_items\n- diagnostic_sessions\n- guardians\n- irt_items\n- item_exposures\n- knowledge_gaps\n- learner_profiles\n- lesson_feedback\n- lessons\n- mastery_snapshots\n- parental_consents\n- practice_queue\n- rlhf_exports\n- spaced_review_schedule\n- stripe_webhook_events\n- subject_mastery\n- topic_mastery\nDatabase tables\n- alembic_version\n- audit_events\n- audit_logs\n- calibration_audits\n- consent_records\n- correction_requests\n- data_export_requests\n- diagnostic_items\n- diagnostic_sessions\n- erasure_requests\n- guardians\n- irt_items\n- item_exposures\n- knowledge_gaps\n- learner_profiles\n- lesson_feedback\n- lessons\n- mastery_snapshots\n- parental_consents\n- practice_queue\n- restriction_requests\n- rlhf_exports\n- spaced_review_schedule\n- stripe_webhook_events\n- subject_mastery\n- topic_mastery\nIgnored database tables\n- alembic_version\n- consent_records\n- correction_requests\n- data_export_requests\n- erasure_requests\n- restriction_requests\nMissing in database\n- none\nExtra in database\n- none\n",
+      "output": "dry-run",
       "passed": true,
       "return_code": 0
     }

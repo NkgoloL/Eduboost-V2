@@ -198,6 +198,8 @@ This inventory supports consent service/table consolidation. It is diagnostic on
 | `app/services/consent_renewal_service.py` | 291 | parental_consent_model | `ParentalConsent.revoked_at.is_(None),` |
 | `app/services/consent_renewal_service.py` | 292 | parental_consent_model | `ParentalConsent.expires_at > datetime.now(tz=timezone.utc),` |
 | `app/services/consent_renewal_service.py` | 294 | parental_consent_model | `ParentalConsent.expires_at <= cutoff,` |
+| `app/services/consent_runtime_compatibility.py` | 10 | consent_service | `"app.services.consent_service.ConsentService",` |
+| `app/services/consent_runtime_compatibility.py` | 11 | consent_service | `"app.modules.consent.service.ConsentService",` |
 | `app/services/consent_service.py` | 19 | consent_repository | `from app.repositories.consent_repository import ConsentRepository` |
 | `app/services/consent_service.py` | 22 | consent_service | `class ConsentService:` |
 | `app/services/consent_service.py` | 25 | consent_repository | `consent_repo: ConsentRepository,` |
@@ -233,6 +235,7 @@ This inventory supports consent service/table consolidation. It is diagnostic on
 | `scripts/check_popia_consent_audit_evidence.py` | 149 | require_active_consent | `"require_active_consent",` |
 | `scripts/check_popia_consent_audit_evidence.py` | 150 | require_active_consent | `"await self.consent.require_active_consent(learner_id, actor_id=requester_id)",` |
 | `scripts/check_popia_consent_boundary_matrix.py` | 39 | require_active_consent | `row.marker in {"require_active_consent_for_current_user", "require_active_consent"},` |
+| `scripts/compare_orm_tables_to_database.py` | 94 | consent_records_table | `"consent_records",` |
 | `scripts/generate_backend_deletion_candidate_inventory.py` | 14 | parental_consents_table | `("legacy_consent", re.compile(r"parental_consents\|ParentalConsent\|legacy consent", re.IGNORECASE)),` |
 | `scripts/generate_backend_deletion_candidate_inventory.py` | 14 | parental_consent_model | `("legacy_consent", re.compile(r"parental_consents\|ParentalConsent\|legacy consent", re.IGNORECASE)),` |
 | `scripts/generate_backend_deletion_candidate_inventory.py` | 15 | consent_repository | `("duplicate_repository", re.compile(r"class\s+\w*Repository\|AuditRepository\|ConsentRepository")),` |

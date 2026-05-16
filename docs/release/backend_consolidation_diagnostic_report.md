@@ -1,6 +1,6 @@
 # Backend Consolidation Diagnostic Report
 
-Generated at: `2026-05-16T17:31:10Z`
+Generated at: `2026-05-16T18:30:29Z`
 
 | Check | Return code | Command |
 |---|---:|---|
@@ -39,7 +39,7 @@ Backend consolidation dragon diagnostic
   - scripts/check_database_persistence_production_readiness.py
   - scripts/generate_backend_deletion_candidate_inventory.py
   - ... 3 more file(s)
-- audit_events: 106 match(es)
+- audit_events: 108 match(es)
   - alembic/versions/0006_v2_audit_events.py
   - alembic/versions/20260507_1200_popia_consent_audit_hardening.py
   - alembic/versions/20260507_1330_database_integrity_constraints.py
@@ -52,19 +52,21 @@ Backend consolidation dragon diagnostic
   - app/models/__init__.py
   - app/repositories/audit_repository.py
   - app/services/data_subject_rights_service.py
-  - ... 8 more file(s)
-- audit_logs: 16 match(es)
+  - ... 10 more file(s)
+- audit_logs: 17 match(es)
   - alembic/versions/0001_v2_consolidated_schema.py
   - app/models/__init__.py
   - app/modules/disaster_recovery/production_readiness_contracts.py
+  - app/services/audit_canonicalization_registry.py
   - scripts/check_backend_consolidation_dragons.py
   - scripts/generate_audit_callsite_inventory.py
   - scripts/generate_backend_deletion_candidate_inventory.py
-- consent_records: 15 match(es)
+- consent_records: 16 match(es)
   - alembic/versions/20260510_0300_popia_consent_audit_dsr.py
   - app/repositories/consent_repository.py
   - app/services/data_subject_rights_service.py
   - scripts/check_backend_consolidation_dragons.py
+  - scripts/compare_orm_tables_to_database.py
   - scripts/generate_consent_callsite_inventory.py
   - tests/legacy/integration/test_api_contracts.py
   - tests/legacy/integration/test_parent_portal_integration.py
@@ -81,7 +83,7 @@ Backend consolidation dragon diagnostic
   - scripts/generate_backend_deletion_candidate_inventory.py
   - scripts/generate_consent_callsite_inventory.py
   - scripts/validate_schema_integrity.py
-- consent_service: 83 match(es)
+- consent_service: 85 match(es)
   - app/api_v2_routers/consent.py
   - app/api_v2_routers/learners.py
   - app/api_v2_routers/parents.py
@@ -94,7 +96,7 @@ Backend consolidation dragon diagnostic
   - app/modules/lessons/service.py
   - app/security/dependencies.py
   - app/services/consent.py
-  - ... 23 more file(s)
+  - ... 24 more file(s)
 - deep_health: 29 match(es)
   - app/api_v2.py
   - app/core/health.py
@@ -118,7 +120,7 @@ Command: `/usr/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-e
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/audit_callsite_inventory.md (1623 row(s))
+Wrote /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/audit_callsite_inventory.md (1650 row(s))
 ```
 
 ## consent inventory
@@ -128,7 +130,7 @@ Command: `/usr/bin/python3 scripts/generate_consent_callsite_inventory.py --fail
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/consent_callsite_inventory.md (334 row(s))
+Wrote /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/consent_callsite_inventory.md (337 row(s))
 ```
 
 ## health readiness contract
@@ -214,10 +216,11 @@ Database tables
 - study_plan
 - subject_mastery
 - topic_mastery
+Ignored database tables
+- alembic_version
 Missing in database
 - none
 Extra in database
-- alembic_version
 - consent_records
 - correction_requests
 - data_export_requests
