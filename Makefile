@@ -946,3 +946,17 @@ backend-runtime-compatibility-report:
 backend-runtime-compatibility-full-check: backend-runtime-compatibility-check backend-runtime-compatibility-report audit-compatibility-check consent-compatibility-check health-readiness-contract-check
 	pytest -c pytest.ini tests/unit/test_backend_runtime_compatibility_contracts.py -q --no-cov
 
+.PHONY: backend-deletion-candidate-inventory backend-consolidation-noop-guard backend-consolidation-readiness-report backend-consolidation-readiness-full-check
+
+backend-deletion-candidate-inventory:
+	PYTHONPATH=. python3 scripts/generate_backend_deletion_candidate_inventory.py --fail-empty
+
+backend-consolidation-noop-guard: backend-deletion-candidate-inventory
+	PYTHONPATH=. python3 scripts/check_backend_consolidation_noop_guard.py
+
+backend-consolidation-readiness-report:
+	PYTHONPATH=. python3 scripts/generate_backend_consolidation_readiness_report.py
+
+backend-consolidation-readiness-full-check: backend-consolidation-readiness-report backend-consolidation-noop-guard backend-consolidation-full-check backend-runtime-compatibility-full-check
+	pytest -c pytest.ini tests/unit/test_backend_consolidation_readiness_and_noop_guard.py -q --no-cov
+

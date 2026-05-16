@@ -138,3 +138,15 @@ make backend-runtime-compatibility-check
 make backend-runtime-compatibility-report
 make backend-runtime-compatibility-full-check
 ```
+
+
+## Backend consolidation readiness and no-op guard
+
+Prevent premature destructive consolidation:
+
+```bash
+make backend-deletion-candidate-inventory
+make backend-consolidation-noop-guard
+make backend-consolidation-readiness-report
+make backend-consolidation-readiness-full-check
+```
