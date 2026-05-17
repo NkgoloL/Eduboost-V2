@@ -1,6 +1,6 @@
 # Backend Consolidation Diagnostic Report
 
-Generated at: `2026-05-16T21:05:44Z`
+Generated at: `2026-05-17T08:26:11Z`
 
 | Check | Return code | Command |
 |---|---:|---|
@@ -127,7 +127,7 @@ Command: `/usr/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-e
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/audit_callsite_inventory.md (1745 row(s))
+Wrote /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/audit_callsite_inventory.md (1749 row(s))
 ```
 
 ## consent inventory

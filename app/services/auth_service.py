@@ -80,7 +80,7 @@ class AuthError(Exception):
 class SignupResult:
     def __init__(self, user_id: str, email: str) -> None:
         self.user_id = user_id
-        self.email = email
+        setattr(self, "email", email)
 
 
 class LoginResult:

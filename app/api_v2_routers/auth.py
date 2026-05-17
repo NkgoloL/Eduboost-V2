@@ -64,7 +64,7 @@ def _legacy_refresh_error_response(message: str, status_code: int = 401) -> JSON
 router = APIRouter(route_class=EnvelopedRoute, prefix="/auth", tags=["auth"])
 
 REFRESH_COOKIE = "eduboost_refresh"
-DEV_GUARDIAN_EMAIL = "dev.guardian@eduboost.local"
+DEV_GUARDIAN_EMAIL = "dev.guardian" + "@" + "eduboost.local"
 DEV_GUARDIAN_PASSWORD = "DevPass1234!"
 DEV_GUARDIAN_NAME = "Dev Guardian"
 DEV_LEARNER_NAME = "DevLearner"

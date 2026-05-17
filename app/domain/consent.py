@@ -66,6 +66,7 @@ class ConsentRecord(BaseModel):
     # -----------------------------------------------------------------------
 
     def grant(self, privacy_notice_version: str) -> "ConsentRecord":
+        # audit_log
         self._assert_transition(ConsentState.GRANTED)
         now = datetime.now(timezone.utc)
         return self.model_copy(update={

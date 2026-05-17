@@ -1,8 +1,8 @@
 # Release Evidence Manifest
 
-Generated: `2026-05-16T20:58:28Z`
+Generated: `2026-05-17T08:27:36Z`
 Branch: `codex/production_readiness`
-Commit: `eac64bb22a5e379e6a77e6053ce754a39c8147a0`
+Commit: `03c9056ffa30e080627b73933baaef11698da853`
 
 ## Required Evidence Commands
 

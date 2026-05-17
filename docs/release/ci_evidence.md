@@ -1,10 +1,13 @@
 # CI Evidence
 
-**Status:** pending remote GitHub Actions execution
+**Status:** pending remote CI verification
 
-- Workflow run URL:
+- GitHub Actions run URL:
 - Commit SHA:
 - Branch:
 - Date:
 - Result:
 - Test pass/skip/warning counts:
+
+## Route alias policy
+All endpoint aliases must be documented and validated.

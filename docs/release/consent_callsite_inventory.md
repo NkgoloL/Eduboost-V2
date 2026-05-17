@@ -205,8 +205,8 @@ This inventory supports consent service/table consolidation. It is diagnostic on
 | `app/services/consent_service.py` | 27 | consent_repository | `consent_repo: ConsentRepository,` |
 | `app/services/consent_service.py` | 30 | consent_repository | `self._consent = consent_repo` |
 | `app/services/consent_service.py` | 37 | consent_grant | `async def grant(` |
-| `app/services/consent_service.py` | 50 | consent_grant | `updated = existing.grant(privacy_notice_version)` |
-| `app/services/consent_service.py` | 58 | consent_grant | `).grant(privacy_notice_version)` |
+| `app/services/consent_service.py` | 51 | consent_grant | `updated = existing.grant(privacy_notice_version)` |
+| `app/services/consent_service.py` | 59 | consent_grant | `).grant(privacy_notice_version)` |
 | `app/services/data_subject_rights_service.py` | 220 | consent_records_table | `"DELETE FROM consent_records WHERE learner_id = $1", learner_id` |
 | `app/services/data_subject_rights_service.py` | 379 | consent_records_table | `"FROM consent_records WHERE learner_id=$1",` |
 | `app/services/popia_service.py` | 21 | parental_consent_model | `from app.models import DiagnosticSession, KnowledgeGap, LearnerProfile, Lesson, ParentalConsent` |

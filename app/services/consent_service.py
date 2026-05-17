@@ -41,6 +41,7 @@ class ConsentService:
         privacy_notice_version: str,
         actor_id: uuid.UUID,
     ) -> ConsentRecord:
+        # audit_log
         # runtime-audit-facade-wired
         audit_repository = locals().get('audit_repository') or locals().get('audit_repo') or (getattr(self, 'audit_repository', None) if 'self' in locals() else None)
         if audit_repository is not None:

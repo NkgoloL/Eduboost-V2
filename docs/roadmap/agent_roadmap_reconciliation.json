@@ -37,11 +37,11 @@
     "priority": "P0",
     "area": "Testing",
     "title": "Warning integrity check",
-    "status": "PENDING_AGENT",
+    "status": "PARTIAL_OR_DONE_VERIFY",
     "evidence": [
       "docs/release/warning_integrity_evidence.md"
     ],
-    "next_action": "Run warning-as-error target and fix failures."
+    "next_action": "Run task-specific checker and confirm evidence freshness."
   },
   {
     "id": "T-05",

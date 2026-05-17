@@ -7,7 +7,7 @@
 | T-01 | P0 | CI/CD | PENDING_HUMAN | Trigger GitHub Actions CI on fork | Enable Actions and archive first green run URL. |
 | T-02 | P0 | CI/CD | PARTIAL_OR_DONE_VERIFY | Fix README CI badge | Run task-specific checker and confirm evidence freshness. |
 | T-03 | P0 | CI/CD | PENDING_HUMAN | Enable branch protection | Configure branch protection and archive evidence. |
-| T-04 | P0 | Testing | PENDING_AGENT | Warning integrity check | Run warning-as-error target and fix failures. |
+| T-04 | P0 | Testing | PARTIAL_OR_DONE_VERIFY | Warning integrity check | Run task-specific checker and confirm evidence freshness. |
 | T-05 | P1 | Content | PARTIAL_OR_DONE_VERIFY | Educator item review and beta content gate | Run task-specific checker and confirm evidence freshness. |
 | T-06 | P1 | Docker | PARTIAL_OR_DONE_VERIFY | Remove --reload from base Compose | Run task-specific checker and confirm evidence freshness. |
 | T-07 | P1 | Docker | PARTIAL_OR_DONE_VERIFY | Frontend production build | Run task-specific checker and confirm evidence freshness. |

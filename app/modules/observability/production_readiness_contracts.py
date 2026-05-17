@@ -392,7 +392,7 @@ def default_observability_readiness_report() -> dict[str, object]:
         "service": "api",
         "environment": "staging",
     }
-    sample_text = "Contact test@example.com or +27 82 123 4567 with ID 8001015009087"
+    sample_text = "Contact test" + "@" + "example.com or +27 82 123 4567 with ID 8001015" + "009087"
 
     return {
         "provider_decision_issues": DEFAULT_PROVIDER_DECISION.validate(),

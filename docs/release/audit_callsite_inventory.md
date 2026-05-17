@@ -159,6 +159,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/core/password_policy.py` | 87 | audit_append_call | `errors.append("must contain at least one symbol")` |
 | `app/core/refresh_tokens.py` | 137 | audit_append_call | `sessions.append({"jti": jti, "family_id": family_id, "ttl_seconds": ttl})` |
 | `app/core/stripe_client.py` | 67 | audit_record_call | `await self._event_repo.record(event["id"], event["type"], dict(event))` |
+| `app/domain/consent.py` | 69 | audit_log_identifier | `# audit_log` |
 | `app/domain/entities.py` | 18 | audit_log_identifier | `class AuditLog:` |
 | `app/frontend/node_modules/combined-stream/Readme.md` | 27 | audit_append_call | `combinedStream.append(fs.createReadStream('file1.txt'));` |
 | `app/frontend/node_modules/combined-stream/Readme.md` | 28 | audit_append_call | `combinedStream.append(fs.createReadStream('file2.txt'));` |
@@ -939,13 +940,14 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/consent_runtime_compatibility.py` | 94 | audit_append_call | `required.append(name)` |
 | `app/services/consent_service.py` | 20 | audit_repository | `from app.repositories.audit_repository import AuditRepository` |
 | `app/services/consent_service.py` | 28 | audit_repository | `audit_repo: AuditRepository,` |
-| `app/services/consent_service.py` | 61 | audit_record_call | `await self._audit.record(` |
-| `app/services/consent_service.py` | 97 | audit_record_call | `await self._audit.record(` |
-| `app/services/consent_service.py` | 117 | audit_record_call | `await self._audit.record(` |
-| `app/services/consent_service.py` | 138 | audit_record_call | `await self._audit.record(` |
-| `app/services/consent_service.py` | 157 | audit_record_call | `await self._audit.record(` |
-| `app/services/consent_service.py` | 197 | audit_record_call | `await self._audit.record(` |
-| `app/services/consent_service.py` | 206 | audit_append_call | `flagged.append(saved)` |
+| `app/services/consent_service.py` | 44 | audit_log_identifier | `# audit_log` |
+| `app/services/consent_service.py` | 62 | audit_record_call | `await self._audit.record(` |
+| `app/services/consent_service.py` | 98 | audit_record_call | `await self._audit.record(` |
+| `app/services/consent_service.py` | 118 | audit_record_call | `await self._audit.record(` |
+| `app/services/consent_service.py` | 139 | audit_record_call | `await self._audit.record(` |
+| `app/services/consent_service.py` | 158 | audit_record_call | `await self._audit.record(` |
+| `app/services/consent_service.py` | 198 | audit_record_call | `await self._audit.record(` |
+| `app/services/consent_service.py` | 207 | audit_append_call | `flagged.append(saved)` |
 | `app/services/content_safety/lesson_contracts.py` | 99 | audit_append_call | `reasons.append("topic missing")` |
 | `app/services/content_safety/lesson_contracts.py` | 101 | audit_append_call | `reasons.append("CAPS alignment invalid")` |
 | `app/services/content_safety/lesson_contracts.py` | 103 | audit_append_call | `reasons.append("unsafe content")` |
@@ -1210,6 +1212,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_diagnostic_generation_safety_contract.py` | 40 | audit_append_call | `results.append(` |
 | `scripts/check_diagnostics_assessment_production_readiness.py` | 113 | audit_append_call | `results.append(CheckResult(rel_path, path.exists(), "present" if path.exists() else "missing"))` |
 | `scripts/check_diagnostics_assessment_production_readiness.py` | 117 | audit_append_call | `results.append(` |
+| `scripts/check_docker_production_hardening.py` | 27 | audit_append_call | `failures.append(msg)` |
 | `scripts/check_documentation_adrs_claim_discipline_production_readiness.py` | 109 | audit_append_call | `results.append(DocumentationGovernanceReadinessResult(rel_path, path.exists(), "file present" if path.exists() else "file missing"))` |
 | `scripts/check_documentation_adrs_claim_discipline_production_readiness.py` | 113 | audit_append_call | `results.append(DocumentationGovernanceReadinessResult(rel_path, snippet in text, f"contains {snippet!r}" if snippet in text else f"missing {snippet!r}"))` |
 | `scripts/check_documentation_adrs_claim_discipline_production_readiness.py` | 131 | audit_append_call | `results.append(DocumentationGovernanceReadinessResult("documentation_governance_contracts", False, f"contract check failed: {exc}"))` |
@@ -1591,6 +1594,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/prepare_training_data.py` | 105 | audit_append_call | `pairs.append({` |
 | `scripts/prepare_training_data.py` | 117 | audit_append_call | `pairs.append({` |
 | `scripts/prepare_training_data.py` | 125 | audit_append_call | `pairs.append({` |
+| `scripts/reconcile_agent_roadmap.py` | 68 | audit_append_call | `lines.append(f"\| {task.id} \| {task.priority} \| {task.area} \| {task.status} \| {task.title} \| {task.next_action} \|")` |
 | `scripts/refresh_current_state_doc.py` | 341 | audit_append_call | `results.append(r)` |
 | `scripts/remove_proven_dead_backend_consolidation_artifacts.py` | 9 | audit_append_call | `skipped.append(f"{p.relative_to(ROOT)}: active/protected"); continue` |
 | `scripts/remove_proven_dead_backend_consolidation_artifacts.py` | 12 | audit_append_call | `skipped.append(f"{p.relative_to(ROOT)}: referenced"); continue` |
