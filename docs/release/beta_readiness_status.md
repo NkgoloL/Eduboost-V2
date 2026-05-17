@@ -4,7 +4,7 @@
 
 | Gate | Status |
 |---|---|
-| remote_ci | pending_remote_ci_evidence |
+| remote_ci | green |
 | branch_protection | pending_branch_protection_evidence |
 | content_gate | blocked |
 | staging_smoke | fail |
@@ -14,7 +14,6 @@
 
 ## Blockers
 
-- remote_ci
 - branch_protection
 - content_gate
 - staging_smoke

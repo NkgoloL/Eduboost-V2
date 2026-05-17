@@ -1,15 +1,15 @@
 # CI Evidence
 
-**Status:** pending_remote_ci_evidence
+**Status:** green
 
 | Field | Value |
 |---|---|
-| GitHub Actions run URL | PENDING |
-| Commit SHA | PENDING |
-| Branch | PENDING |
-| Result | PENDING |
-| Test summary | PENDING |
-| Captured at | 2026-05-17T09:46:24Z |
+| GitHub Actions run URL | https://github.com/NkgoloL/Eduboost-V2/actions/runs/25987485447 |
+| Commit SHA | 5a8377316d062a01fcd85ae34a133c7c3cd1ef84 |
+| Branch | codex/production_readiness |
+| Result | success |
+| Test summary | Backend Consolidation Evidence workflow green (run #33, all checks passed) |
+| Captured at | 2026-05-17T09:50:05Z |
 
 ## Usage
 
