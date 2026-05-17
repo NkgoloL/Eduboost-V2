@@ -2,28 +2,21 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-05-17T08:30:06.993867+00:00`
+- generated_at_utc: `2026-05-17T09:37:01.205753+00:00`
 - branch: `codex/production_readiness`
-- commit: `03c9056ffa30e080627b73933baaef11698da853`
+- commit: `7edd5965c75337cddf07bac3852e53bc4ff5f689`
 - release_candidate: `unset`
 
 ## Working Tree Status
 
 ```text
-M app/api_v2_routers/auth.py
- M app/domain/consent.py
- M app/modules/auth/service.py
- M app/modules/observability/production_readiness_contracts.py
- M app/services/auth_service.py
- M app/services/consent_service.py
- M docs/operations/beta_release_evidence_bundle.md
+M docs/operations/beta_release_evidence_bundle.md
  M docs/operations/beta_release_pr_body.md
  M docs/operations/beta_signoff_manifest.md
  M docs/operations/database_backup_manifest.md
  M docs/operations/database_restore_evidence.md
  M docs/operations/release_candidate_tag_manifest.md
  M docs/operations/release_evidence_manifest.md
- M docs/operations/release_state_snapshot.md
  M docs/operations/staging_smoke_evidence_manifest.md
  M docs/release/audit_callsite_inventory.md
  M docs/release/backend_consolidation_diagnostic_report.md
@@ -42,17 +35,11 @@ M app/api_v2_routers/auth.py
  M docs/release/backend_runtime_probe_report.md
  M docs/release/backend_runtime_wiring_cases_report.md
  M docs/release/backend_runtime_wiring_preflight_report.md
- M docs/release/ci_evidence.md
- M docs/release/consent_callsite_inventory.md
  M docs/release/disposable_db_schema_proof_execution_report.md
  M docs/release/first_audit_runtime_wiring_report.md
  M docs/release/runtime_wiring_431_450_report.md
  M docs/release/schema_drift_disposable_latest.json
  M docs/release/schema_drift_disposable_latest.md
- M docs/roadmap/agent_roadmap_reconciliation.json
- M docs/roadmap/agent_roadmap_reconciliation.md
-?? docs/release/popia_sweep_evidence.md
-?? docs/release/warning_integrity_evidence.md
 ```
 
 ## State Artifacts
