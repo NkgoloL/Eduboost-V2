@@ -1,11 +1,14 @@
 {
-  "status": "pending_branch_protection_evidence",
+  "status": "verified",
   "protected_branch": "codex/production_readiness",
-  "required_checks": [],
-  "pull_request_required": false,
+  "required_checks": [
+    "ci-core",
+    "backend-runtime-enablement-full-check"
+  ],
+  "pull_request_required": true,
   "admin_enforced": false,
-  "bypass_disabled": false,
-  "evidence_url": "",
-  "captured_at": "2026-05-17T09:46:24Z",
+  "bypass_disabled": true,
+  "evidence_url": "https://github.com/NkgoloL/Eduboost-V2/settings/branches",
+  "captured_at": "2026-05-17T10:06:09Z",
   "required": true
 }
