@@ -2,6 +2,14 @@ version: '3.8'
 
 services:
   nginx:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.10'
+          memory: 128M
     image: nginx:alpine
     ports:
       - "80:80"
@@ -15,6 +23,14 @@ services:
     restart: unless-stopped
 
   api:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.10'
+          memory: 128M
     build:
       context: .
       dockerfile: docker/Dockerfile.v2
@@ -35,6 +51,14 @@ services:
     restart: unless-stopped
 
   postgres:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.10'
+          memory: 128M
     image: postgres:16-alpine
     environment:
       - POSTGRES_DB=${POSTGRES_DB}
@@ -50,6 +74,14 @@ services:
     restart: unless-stopped
 
   redis:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.10'
+          memory: 128M
     image: redis:7-alpine
     volumes:
       - redis_data:/data
@@ -61,6 +93,14 @@ services:
     restart: unless-stopped
 
   certbot:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.10'
+          memory: 128M
     image: certbot/certbot
     volumes:
       - ./nginx/ssl:/etc/letsencrypt

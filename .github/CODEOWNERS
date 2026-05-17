@@ -1,97 +1,12 @@
-# EduBoost V2 Code Owners
-#
-# CODEOWNERS is a review-routing map. The current single maintainer is kept as
-# the default owner until additional GitHub teams/users are created. When teams
-# exist, replace the repeated owner with scoped teams such as:
-#   @eduboost/backend @eduboost/security @eduboost/compliance
-
-# Global fallback
-* @NkgoloL
-
-# Repository governance and project hygiene
-/.github/ @NkgoloL
-/.github/workflows/ @NkgoloL
-/.github/ISSUE_TEMPLATE/ @NkgoloL
-/.github/CODEOWNERS @NkgoloL
-/.github/PULL_REQUEST_TEMPLATE.md @NkgoloL
-/CONTRIBUTING.md @NkgoloL
-/SECURITY.md @NkgoloL
-/TODO.md @NkgoloL
-/docs/backlog/ @NkgoloL
-/docs/repository_governance.md @NkgoloL
-/docs/dependency_management.md @NkgoloL
-/docs/adr/ @NkgoloL
-
-# Backend API, domain, data, and service layers
-/app/api_v2.py @NkgoloL
-/app/api/ @NkgoloL
-/app/api_v2_routers/ @NkgoloL
-/app/core/ @NkgoloL
-/app/domain/ @NkgoloL
-/app/modules/ @NkgoloL
-/app/repositories/ @NkgoloL
-/app/services/ @NkgoloL
-/app/schemas/ @NkgoloL
-/alembic/ @NkgoloL
-/alembic.ini @NkgoloL
-
-# Frontend application
-/app/frontend/ @NkgoloL
-/package.json @NkgoloL
-/package-lock.json @NkgoloL
-/playwright.config.ts @NkgoloL
-
-# Security, privacy, and compliance
-/app/core/security.py @NkgoloL
-/app/middleware/security_headers.py @NkgoloL
-/app/modules/popia/ @NkgoloL
-/app/services/popia/ @NkgoloL
-/audits/ @NkgoloL
-/docs/POPIA_COMPLIANCE.md @NkgoloL
-/docs/data_inventory.md @NkgoloL
-/docs/incident_response.md @NkgoloL
-/docs/popia_erasure.md @NkgoloL
-/docs/DOC/Tier\ 6\ -\ Security\ &\ Compliance/ @NkgoloL
-
-# Curriculum, diagnostics, lessons, and AI safety
-/app/modules/diagnostics/ @NkgoloL
-/app/modules/lessons/ @NkgoloL
-/app/services/llm/ @NkgoloL
-/app/services/content_safety/ @NkgoloL
-/data/ @NkgoloL
-/docs/llm/ @NkgoloL
-/docs/LLM_Phase3_Finetuning.md @NkgoloL
-/docs/LLM_Test_Gating.md @NkgoloL
-/LLM_Integration_Roadmap.md @NkgoloL
-/scripts/*caps* @NkgoloL
-/scripts/*textbook* @NkgoloL
-/scripts/*training* @NkgoloL
-/scripts/*qlora* @NkgoloL
-
-# Infrastructure, deployment, observability, and operations
-/.dockerignore @NkgoloL
-/docker/ @NkgoloL
-/docker-compose.yml @NkgoloL
-/docker-compose.prod.yml @NkgoloL
-/deployment/ @NkgoloL
-/bicep/ @NkgoloL
-/k8s/ @NkgoloL
-/prometheus.yml @NkgoloL
-/prometheus/ @NkgoloL
-/grafana/ @NkgoloL
-/alertmanager/ @NkgoloL
-/docs/release/ @NkgoloL
-/docs/release_checklist.md @NkgoloL
-/docs/db_rollback.md @NkgoloL
-
-# Dependency surfaces
-/requirements*.txt @NkgoloL
-/requirements/ @NkgoloL
-/app/frontend/package.json @NkgoloL
-/app/frontend/package-lock.json @NkgoloL
-
-# Tests and quality gates
-/tests/ @NkgoloL
-/pytest.ini @NkgoloL
-/.pre-commit-config.yaml @NkgoloL
-/.importlinter @NkgoloL
+* @nkgolomatjila-svg
+app/modules/auth/ @nkgolomatjila-svg
+app/core/security.py @nkgolomatjila-svg
+app/core/password_policy.py @nkgolomatjila-svg
+app/modules/consent/ @nkgolomatjila-svg
+app/services/*consent* @nkgolomatjila-svg
+app/services/*audit* @nkgolomatjila-svg
+scripts/popia_sweep.py @nkgolomatjila-svg
+docs/caps/ @nkgolomatjila-svg
+data/ @nkgolomatjila-svg
+.github/ @nkgolomatjila-svg
+docs/release/ @nkgolomatjila-svg

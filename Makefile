@@ -1175,3 +1175,36 @@ post-migration-cleanup-check:
 	PYTHONPATH=. python3 scripts/check_post_migration_cleanup.py
 backend-implementation-521-530-full-check: post-migration-cleanup post-migration-cleanup-check
 	pytest -c pytest.ini tests/unit/test_post_migration_cleanup.py -q --no-cov
+
+.PHONY: roadmap-reconciliation-check readme-ci-badge-patch docker-production-hardening-patch docker-production-hardening-check warning-integrity-check popia-sweep-evidence beta-content-threshold-check beta-content-threshold-schema-check auth-hardening-status backend-implementation-531-560-full-check
+
+roadmap-reconciliation-check:
+	PYTHONPATH=. python3 scripts/reconcile_agent_roadmap.py
+
+readme-ci-badge-patch:
+	PYTHONPATH=. python3 scripts/patch_readme_ci_badge.py
+
+docker-production-hardening-patch:
+	PYTHONPATH=. python3 scripts/harden_docker_compose.py
+
+docker-production-hardening-check:
+	PYTHONPATH=. python3 scripts/check_docker_production_hardening.py
+
+warning-integrity-check:
+	PYTHONPATH=. python3 scripts/run_warning_integrity_check.py
+
+popia-sweep-evidence:
+	PYTHONPATH=. python3 scripts/run_popia_sweep_evidence.py
+
+beta-content-threshold-check:
+	PYTHONPATH=. python3 scripts/check_beta_content_threshold.py
+
+beta-content-threshold-schema-check:
+	PYTHONPATH=. python3 scripts/check_beta_content_threshold_schema.py
+
+auth-hardening-status:
+	PYTHONPATH=. python3 scripts/check_auth_hardening_status.py
+
+backend-implementation-531-560-full-check: roadmap-reconciliation-check readme-ci-badge-patch docker-production-hardening-patch docker-production-hardening-check auth-hardening-status beta-content-threshold-schema-check
+	pytest -c pytest.ini tests/unit/test_roadmap_production_hardening.py -q --no-cov
+

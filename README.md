@@ -1,6 +1,6 @@
 # EduBoost SA
 
-[![CI/CD](https://github.com/NkgoloL/Eduboost-V2/actions/workflows/ci-cd.yml/badge.svg?branch=master)](https://github.com/NkgoloL/Eduboost-V2/actions/workflows/ci-cd.yml)
+[![CI/CD](https://github.com/nkgolomatjila-svg/Eduboost_V.2/actions/workflows/ci-cd.yml/badge.svg?branch=master)](https://github.com/nkgolomatjila-svg/Eduboost_V.2/actions/workflows/ci-cd.yml)
 [![Security Scans](https://img.shields.io/badge/Security-Scanned-blue)](/SECURITY.md)
 [![POPIA](https://img.shields.io/badge/POPIA-Tracked-success)](/docs/POPIA_COMPLIANCE.md)
 [![CAPS](https://img.shields.io/badge/CAPS-Aligned-00897B)](https://www.education.gov.za)

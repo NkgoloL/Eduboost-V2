@@ -311,3 +311,23 @@ make backend-runtime-integration-blocklists-check
 make backend-runtime-integration-readiness-report
 make backend-runtime-integration-readiness-full-check
 ```
+
+
+## Backend implementation 531-560 — Roadmap reconciliation and production hardening
+
+```bash
+make roadmap-reconciliation-check
+make docker-production-hardening-check
+make auth-hardening-status
+make beta-content-threshold-check
+make beta-content-threshold-schema-check
+make backend-implementation-531-560-full-check
+```
+
+Human/infrastructure evidence still required:
+
+- `docs/release/ci_evidence.md`
+- `docs/release/branch_protection_evidence.md`
+- `docs/release/popia_sweep_evidence.md`
+- `docs/release/backup_restore_evidence.md`
+- staging smoke evidence
