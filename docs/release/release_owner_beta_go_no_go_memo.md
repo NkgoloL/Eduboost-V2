@@ -1,6 +1,6 @@
 # Release-Owner Beta Go/No-Go Memo
 
-Generated at: `2026-05-17T11:10:26Z`
+Generated at: `2026-05-17T12:12:51Z`
 
 ## Recommendation: NO-GO
 
@@ -8,20 +8,18 @@ Generated at: `2026-05-17T11:10:26Z`
 
 Beta readiness status: `blocked`
 
-This memo rejects placeholder, local mock, synthetic, and manual-bypass evidence for required beta gates.
-
 ## Blockers
 
+- remote_ci
 - branch_protection
-- staging_smoke
+- content_gate
 - backup_drill
 - restore_drill
 - rollback_drill
-- alertmanager_drill
 
 ## Explicit non-approvals
 
-This memo does not approve production launch, destructive database changes, consent-table merge, audit_logs drop, public mutating health probes, or synthetic evidence substitution.
+This memo does not approve production launch, destructive database changes, consent-table merge, audit_logs drop, or public mutating health probes.
 
 ## Release-owner decision
 

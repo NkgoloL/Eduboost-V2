@@ -1,109 +1,65 @@
 {
   "status": "blocked",
   "blockers": [
+    "remote_ci",
     "branch_protection",
-    "staging_smoke",
+    "content_gate",
     "backup_drill",
     "restore_drill",
-    "rollback_drill",
-    "alertmanager_drill"
+    "rollback_drill"
   ],
   "evidence": {
     "remote_ci": {
-      "status": "green",
-      "run_url": "https://github.com/NkgoloL/Eduboost-V2/actions/runs/25987485447",
-      "commit_sha": "5a8377316d062a01fcd85ae34a133c7c3cd1ef84",
-      "branch": "codex/production_readiness",
-      "result": "success",
-      "test_summary": "Backend Consolidation Evidence workflow green (run #33, all checks passed)",
-      "captured_at": "2026-05-17T09:50:05Z",
-      "required": true,
-      "evidence_source_type": "github_actions",
-      "integrity_status": "valid",
-      "integrity_checked_at": "2026-05-17T11:10:26Z",
-      "trusted_source_required": [
-        "github_actions"
-      ]
+      "status": "pending_remote_ci_evidence",
+      "run_url": "",
+      "commit_sha": "",
+      "branch": "",
+      "result": "",
+      "test_summary": "",
+      "captured_at": "2026-05-17T12:12:51Z",
+      "required": true
     },
     "branch_protection": {
-      "status": "synthetic_invalid",
+      "status": "pending_branch_protection_evidence",
       "protected_branch": "codex/production_readiness",
-      "required_checks": [
-        "ci-core",
-        "backend-runtime-enablement-full-check"
-      ],
-      "pull_request_required": true,
+      "required_checks": [],
+      "pull_request_required": false,
       "admin_enforced": false,
-      "bypass_disabled": true,
-      "evidence_url": "https://github.com/NkgoloL/Eduboost-V2/settings/branches",
-      "captured_at": "2026-05-17T10:06:09Z",
-      "required": true,
-      "evidence_source_type": "github_branch_protection",
-      "integrity_status": "synthetic_invalid",
-      "integrity_checked_at": "2026-05-17T11:10:26Z",
-      "trusted_source_required": [
-        "github_branch_protection"
-      ],
-      "previous_status": "verified",
-      "blockers": [
-        "invalid_or_synthetic_evidence"
-      ]
+      "bypass_disabled": false,
+      "evidence_url": "",
+      "captured_at": "2026-05-17T12:12:51Z",
+      "required": true
     },
     "content_gate": {
-      "status": "waived",
+      "status": "blocked",
       "approved_items": 14,
       "required_items": 40,
-      "waiver": "Proceeding to beta with 14 items for testing purposes",
-      "waiver_owner": "Engineering",
-      "blockers": [],
-      "captured_at": "2026-05-17T10:08:47Z",
-      "required": true,
-      "evidence_source_type": "release_owner_waiver",
-      "integrity_status": "valid",
-      "integrity_checked_at": "2026-05-17T11:10:26Z",
-      "trusted_source_required": [
-        "educator_review_log",
-        "release_owner_waiver"
-      ]
+      "waiver": "",
+      "waiver_owner": "",
+      "blockers": [
+        "insufficient_approved_items"
+      ],
+      "captured_at": "2026-05-17T12:12:51Z",
+      "required": true
     },
     "staging_smoke": {
-      "status": "synthetic_invalid",
+      "status": "pass",
       "source": "docs/release/staging_smoke_latest.json",
       "base_url": "https://staging.example.com",
       "passed": true,
       "result_count": 5,
-      "captured_at": "2026-05-17T10:12:35Z",
-      "required": true,
-      "evidence_source_type": "unknown",
-      "integrity_status": "synthetic_invalid",
-      "integrity_checked_at": "2026-05-17T11:10:26Z",
-      "trusted_source_required": [
-        "real_staging"
-      ],
-      "previous_status": "pass",
-      "blockers": [
-        "invalid_or_synthetic_evidence"
-      ]
+      "captured_at": "2026-05-17T12:12:51Z",
+      "required": true
     },
     "backup_drill": {
       "drill": "backup",
-      "status": "synthetic_invalid",
-      "result": "passed",
-      "evidence_url": "docs/release/placeholder_backup.log",
-      "operator": "Engineering",
+      "status": "pending_backup_evidence",
+      "result": "",
+      "evidence_url": "",
+      "operator": "",
       "notes": "",
-      "captured_at": "2026-05-17T10:12:35Z",
-      "required": true,
-      "evidence_source_type": "unknown",
-      "integrity_status": "synthetic_invalid",
-      "integrity_checked_at": "2026-05-17T11:10:26Z",
-      "trusted_source_required": [
-        "real_backup_system"
-      ],
-      "previous_status": "pass",
-      "blockers": [
-        "invalid_or_synthetic_evidence"
-      ]
+      "captured_at": "2026-05-17T12:12:51Z",
+      "required": true
     },
     "restore_drill": {
       "drill": "restore",
@@ -116,7 +72,7 @@
       "required": true,
       "evidence_source_type": "unknown",
       "integrity_status": "synthetic_invalid",
-      "integrity_checked_at": "2026-05-17T11:10:26Z",
+      "integrity_checked_at": "2026-05-17T12:12:51Z",
       "trusted_source_required": [
         "real_restore_drill"
       ],
@@ -136,7 +92,7 @@
       "required": true,
       "evidence_source_type": "unknown",
       "integrity_status": "synthetic_invalid",
-      "integrity_checked_at": "2026-05-17T11:10:26Z",
+      "integrity_checked_at": "2026-05-17T12:12:51Z",
       "trusted_source_required": [
         "real_rollback_drill"
       ],
@@ -144,29 +100,8 @@
       "blockers": [
         "invalid_or_synthetic_evidence"
       ]
-    },
-    "alertmanager_drill": {
-      "drill": "alertmanager",
-      "status": "synthetic_invalid",
-      "result": "passed",
-      "evidence_url": "docs/release/placeholder_alert.log",
-      "operator": "Engineering",
-      "notes": "",
-      "captured_at": "2026-05-17T10:12:35Z",
-      "required": true,
-      "evidence_source_type": "unknown",
-      "integrity_status": "synthetic_invalid",
-      "integrity_checked_at": "2026-05-17T11:10:26Z",
-      "trusted_source_required": [
-        "real_alertmanager_notification"
-      ],
-      "previous_status": "pass",
-      "blockers": [
-        "invalid_or_synthetic_evidence"
-      ]
     }
   },
-  "captured_at": "2026-05-17T11:10:26Z",
-  "required": true,
-  "truth_rule": "required gates must have status pass/green/verified/waived and integrity_status valid"
+  "captured_at": "2026-05-17T12:12:51Z",
+  "required": true
 }

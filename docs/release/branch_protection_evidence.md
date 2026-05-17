@@ -1,16 +1,16 @@
 # Branch Protection Evidence
 
-**Status:** verified
+**Status:** pending_branch_protection_evidence
 
 | Field | Value |
 |---|---|
 | Protected branch | codex/production_readiness |
-| Required checks | ci-core, backend-runtime-enablement-full-check |
-| Pull request required | True |
+| Required checks | PENDING |
+| Pull request required | False |
 | Admin enforced | False |
-| Bypass disabled | True |
-| Evidence URL/path | https://github.com/NkgoloL/Eduboost-V2/settings/branches |
-| Captured at | 2026-05-17T10:06:09Z |
+| Bypass disabled | False |
+| Evidence URL/path | PENDING |
+| Captured at | 2026-05-17T12:12:51Z |
 
 ## Usage
 

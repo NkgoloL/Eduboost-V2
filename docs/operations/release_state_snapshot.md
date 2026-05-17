@@ -2,15 +2,20 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-05-17T09:37:01.205753+00:00`
+- generated_at_utc: `2026-05-17T12:15:08.117377+00:00`
 - branch: `codex/production_readiness`
-- commit: `7edd5965c75337cddf07bac3852e53bc4ff5f689`
+- commit: `859695dac8184e8d9696272ed9f74aecdd267ef0`
 - release_candidate: `unset`
 
 ## Working Tree Status
 
 ```text
-M docs/operations/beta_release_evidence_bundle.md
+M .importlinter
+ M docs/beta/beta_content_hard_gate.json
+ M docs/beta/beta_content_hard_gate.md
+ M docs/current_state.md
+ M docs/openapi.json
+ M docs/operations/beta_release_evidence_bundle.md
  M docs/operations/beta_release_pr_body.md
  M docs/operations/beta_signoff_manifest.md
  M docs/operations/database_backup_manifest.md
@@ -18,6 +23,7 @@ M docs/operations/beta_release_evidence_bundle.md
  M docs/operations/release_candidate_tag_manifest.md
  M docs/operations/release_evidence_manifest.md
  M docs/operations/staging_smoke_evidence_manifest.md
+ M docs/release/alertmanager_drill_evidence.json
  M docs/release/audit_callsite_inventory.md
  M docs/release/backend_consolidation_diagnostic_report.md
  M docs/release/backend_consolidation_evidence_manifest.md
@@ -35,11 +41,30 @@ M docs/operations/beta_release_evidence_bundle.md
  M docs/release/backend_runtime_probe_report.md
  M docs/release/backend_runtime_wiring_cases_report.md
  M docs/release/backend_runtime_wiring_preflight_report.md
+ M docs/release/backup_drill_evidence.json
+ M docs/release/backup_drill_evidence.md
+ M docs/release/beta_evidence_integrity_repair_report.json
+ M docs/release/beta_evidence_integrity_repair_report.md
+ M docs/release/beta_readiness_status.json
+ M docs/release/beta_readiness_status.md
+ M docs/release/branch_protection_evidence.json
+ M docs/release/branch_protection_evidence.md
+ M docs/release/ci_evidence.json
+ M docs/release/ci_evidence.md
  M docs/release/disposable_db_schema_proof_execution_report.md
  M docs/release/first_audit_runtime_wiring_report.md
+ M docs/release/release_owner_beta_go_no_go_memo.md
+ M docs/release/restore_drill_evidence.json
+ M docs/release/rollback_drill_evidence.json
  M docs/release/runtime_wiring_431_450_report.md
  M docs/release/schema_drift_disposable_latest.json
  M docs/release/schema_drift_disposable_latest.md
+ M docs/release/staging_smoke_final_evidence.json
+ M docs/release/staging_smoke_final_evidence.md
+ M docs/route_inventory.md
+ M scripts/deduplicate_makefile_targets.py
+ M scripts/refresh_current_state_doc.py
+?? docs/technical_state_report_2026-05-17.md
 ```
 
 ## State Artifacts

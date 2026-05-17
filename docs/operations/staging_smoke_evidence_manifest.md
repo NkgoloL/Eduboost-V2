@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-05-17T09:37:03.780839+00:00`
+- generated_at_utc: `2026-05-17T12:15:10.964295+00:00`
 - branch: `codex/production_readiness`
-- commit: `7edd5965c75337cddf07bac3852e53bc4ff5f689`
+- commit: `859695dac8184e8d9696272ed9f74aecdd267ef0`
 - target_environment: `test`
 
 ## Required Smoke Checks

@@ -1,11 +1,11 @@
 # Backup Drill Evidence
 
-**Status:** pass
+**Status:** pending_backup_evidence
 
 | Field | Value |
 |---|---|
-| Result | passed |
-| Evidence URL/path | docs/release/placeholder_backup.log |
-| Operator | Engineering |
+| Result | PENDING |
+| Evidence URL/path | PENDING |
+| Operator | PENDING |
 | Notes | PENDING |
-| Captured at | 2026-05-17T10:12:35Z |
+| Captured at | 2026-05-17T12:12:51Z |

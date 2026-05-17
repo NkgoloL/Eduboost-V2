@@ -1,35 +1,35 @@
 {
-  "generated_at": "2026-05-17T11:10:26Z",
+  "generated_at": "2026-05-17T12:12:51Z",
   "results": [
     {
       "gate": "remote_ci",
       "path": "docs/release/ci_evidence.json",
-      "original_status": "green",
-      "repaired_status": "green",
-      "evidence_source_type": "github_actions",
-      "integrity_status": "valid",
+      "original_status": "pending_remote_ci_evidence",
+      "repaired_status": "pending_remote_ci_evidence",
+      "evidence_source_type": "unknown",
+      "integrity_status": "pending_real_evidence",
       "marker_invalid": false,
-      "source_trusted": true
+      "source_trusted": false
     },
     {
       "gate": "branch_protection",
       "path": "docs/release/branch_protection_evidence.json",
-      "original_status": "synthetic_invalid",
-      "repaired_status": "synthetic_invalid",
-      "evidence_source_type": "github_branch_protection",
+      "original_status": "pending_branch_protection_evidence",
+      "repaired_status": "pending_branch_protection_evidence",
+      "evidence_source_type": "unknown",
       "integrity_status": "synthetic_invalid",
       "marker_invalid": true,
-      "source_trusted": true
+      "source_trusted": false
     },
     {
       "gate": "content_gate",
       "path": "docs/beta/beta_content_hard_gate.json",
-      "original_status": "waived",
-      "repaired_status": "waived",
-      "evidence_source_type": "release_owner_waiver",
-      "integrity_status": "valid",
+      "original_status": "blocked",
+      "repaired_status": "blocked",
+      "evidence_source_type": "unknown",
+      "integrity_status": "pending_real_evidence",
       "marker_invalid": false,
-      "source_trusted": true
+      "source_trusted": false
     },
     {
       "gate": "staging_smoke",
@@ -44,11 +44,11 @@
     {
       "gate": "backup_drill",
       "path": "docs/release/backup_drill_evidence.json",
-      "original_status": "synthetic_invalid",
-      "repaired_status": "synthetic_invalid",
+      "original_status": "pending_backup_evidence",
+      "repaired_status": "pending_backup_evidence",
       "evidence_source_type": "unknown",
-      "integrity_status": "synthetic_invalid",
-      "marker_invalid": true,
+      "integrity_status": "pending_real_evidence",
+      "marker_invalid": false,
       "source_trusted": false
     },
     {

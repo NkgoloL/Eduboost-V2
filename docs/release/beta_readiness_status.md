@@ -2,22 +2,21 @@
 
 **Status:** blocked
 
-| Gate | Status | Integrity | Source type |
-|---|---|---|---|
-| remote_ci | green | valid | github_actions |
-| branch_protection | synthetic_invalid | synthetic_invalid | github_branch_protection |
-| content_gate | waived | valid | release_owner_waiver |
-| staging_smoke | synthetic_invalid | synthetic_invalid | unknown |
-| backup_drill | synthetic_invalid | synthetic_invalid | unknown |
-| restore_drill | synthetic_invalid | synthetic_invalid | unknown |
-| rollback_drill | synthetic_invalid | synthetic_invalid | unknown |
-| alertmanager_drill | synthetic_invalid | synthetic_invalid | unknown |
+| Gate | Status |
+|---|---|
+| remote_ci | pending_remote_ci_evidence |
+| branch_protection | pending_branch_protection_evidence |
+| content_gate | blocked |
+| staging_smoke | pass |
+| backup_drill | pending_backup_evidence |
+| restore_drill | synthetic_invalid |
+| rollback_drill | synthetic_invalid |
 
 ## Blockers
 
+- remote_ci
 - branch_protection
-- staging_smoke
+- content_gate
 - backup_drill
 - restore_drill
 - rollback_drill
-- alertmanager_drill

@@ -1136,6 +1136,9 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_beta_evidence_consistency.py` | 98 | audit_append_call | `results.append(` |
 | `scripts/check_beta_evidence_consistency.py` | 113 | audit_append_call | `results.append(` |
 | `scripts/check_beta_evidence_consistency.py` | 128 | audit_append_call | `results.append(` |
+| `scripts/check_beta_evidence_integrity.py` | 41 | audit_append_call | `failures.append(f"{gate}: missing evidence_source_type")` |
+| `scripts/check_beta_evidence_integrity.py` | 46 | audit_append_call | `failures.append(f"{gate}: pass-like status without valid integrity")` |
+| `scripts/check_beta_evidence_integrity.py` | 55 | audit_append_call | `failures.append(f"readiness marked beta_ready with invalid gate {gate}")` |
 | `scripts/check_beta_feedback_intake_contract.py` | 53 | audit_append_call | `results.append(` |
 | `scripts/check_beta_governance_seal.py` | 53 | audit_append_call | `results.append(BetaGovernanceSealResult(snippet in text, f"contains {snippet!r}" if snippet in text else f"missing {snippet!r}"))` |
 | `scripts/check_beta_known_issues_register.py` | 55 | audit_append_call | `results.append(` |
@@ -1484,6 +1487,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/generate_backend_runtime_wiring_cases_report.py` | 53 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
 | `scripts/generate_backend_runtime_wiring_preflight_report.py` | 42 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
 | `scripts/generate_backend_runtime_wiring_preflight_report.py` | 54 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_beta_readiness_status.py` | 40 | audit_append_call | `lines.append(f"\| {name} \| {item.get('status')} \|")` |
 | `scripts/generate_beta_release_evidence_bundle.py` | 71 | audit_append_call | `lines.append(f"\| {artifact.category} \| `{artifact.path}` \| `{present}` \|")` |
 | `scripts/generate_beta_signoff_manifest.py` | 69 | audit_append_call | `lines.append(f"\| {area.name} \| {area.evidence} \| _pending_ \| _pending_ \|")` |
 | `scripts/generate_beta_signoff_manifest.py` | 79 | audit_append_call | `lines.append(f"- `{rel_path}`")` |
@@ -1532,6 +1536,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/generate_popia_consent_boundary_matrix.py` | 142 | audit_append_call | `lines.append(f"- `{decision}`: {counts[decision]}")` |
 | `scripts/generate_popia_consent_boundary_matrix.py` | 151 | audit_append_call | `lines.append(f"\| `{row.router}` \| `{row.method}` \| `{row.route}` \| `{row.function}` \| `{row.decision}` \| `{row.marker}` \|")` |
 | `scripts/generate_release_evidence_manifest.py` | 69 | audit_append_call | `lines.append(f"\| {item.name} \| `{item.command}` \| pending \|")` |
+| `scripts/generate_release_owner_beta_go_no_go.py` | 27 | audit_logs_table | `"This memo does not approve production launch, destructive database changes, consent-table merge, audit_logs drop, or public mutating health probes.", "",` |
 | `scripts/generate_release_state_snapshot.py` | 69 | audit_append_call | `lines.append(f"\| `{rel_path}` \| `{present}` \|")` |
 | `scripts/generate_route_alias_matrix.py` | 47 | audit_append_call | `rows.append(` |
 | `scripts/generate_route_alias_matrix.py` | 72 | audit_append_call | `rendered.append(f"\| {row.method} \| `{row.canonical_path}` \| `{row.alias_path}` \| {status} \| {row.note} \|")` |
@@ -1547,6 +1552,10 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/generate_runtime_wiring_431_450_report.py` | 42 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
 | `scripts/generate_runtime_wiring_431_450_report.py` | 54 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
 | `scripts/generate_staging_smoke_evidence_manifest.py` | 63 | audit_append_call | `lines.append(f"\| {entry.name} \| `{entry.command}` \|")` |
+| `scripts/generate_truthful_beta_readiness_status.py` | 71 | audit_append_call | `lines.append(f"\| {gate} \| {data.get('status')} \| {data.get('integrity_status')} \| {data.get('evidence_source_type', 'unknown')} \|")` |
+| `scripts/generate_truthful_beta_readiness_status.py` | 76 | audit_append_call | `lines.append("- None")` |
+| `scripts/generate_truthful_release_owner_beta_go_no_go.py` | 38 | audit_append_call | `lines.append("- None")` |
+| `scripts/generate_truthful_release_owner_beta_go_no_go.py` | 43 | audit_logs_table | `"This memo does not approve production launch, destructive database changes, consent-table merge, audit_logs drop, public mutating health probes, or synthetic evidence substitution.",` |
 | `scripts/inspect_learner_routes.py` | 106 | audit_append_call | `candidates.append(` |
 | `scripts/inspect_learner_routes.py` | 128 | audit_append_call | `references.append(` |
 | `scripts/inspect_learner_routes.py` | 156 | audit_append_call | `lines.append(` |
@@ -1595,11 +1604,13 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/prepare_training_data.py` | 117 | audit_append_call | `pairs.append({` |
 | `scripts/prepare_training_data.py` | 125 | audit_append_call | `pairs.append({` |
 | `scripts/reconcile_agent_roadmap.py` | 69 | audit_append_call | `lines.append(f"\| {task.id} \| {task.priority} \| {task.area} \| {task.status} \| {task.title} \| {task.next_action} \|")` |
-| `scripts/refresh_current_state_doc.py` | 341 | audit_append_call | `results.append(r)` |
+| `scripts/refresh_current_state_doc.py` | 356 | audit_append_call | `results.append(r)` |
 | `scripts/remove_proven_dead_backend_consolidation_artifacts.py` | 9 | audit_append_call | `skipped.append(f"{p.relative_to(ROOT)}: active/protected"); continue` |
 | `scripts/remove_proven_dead_backend_consolidation_artifacts.py` | 12 | audit_append_call | `skipped.append(f"{p.relative_to(ROOT)}: referenced"); continue` |
 | `scripts/remove_proven_dead_backend_consolidation_artifacts.py` | 13 | audit_append_call | `p.unlink(); removed.append(str(p.relative_to(ROOT)))` |
 | `scripts/rename_metaphor_layers.py` | 85 | audit_append_call | `hits.append((path, lineno, match.group(0).lower(), line.rstrip()))` |
+| `scripts/repair_beta_evidence_integrity.py` | 129 | audit_append_call | `blockers.append("invalid_or_synthetic_evidence")` |
+| `scripts/repair_beta_evidence_integrity.py` | 164 | audit_append_call | `lines.append(` |
 | `scripts/run_database_backup.py` | 37 | audit_append_call | `results.append(` |
 | `scripts/run_database_backup.py` | 60 | audit_append_call | `lines.append(f"- `{name}`")` |
 | `scripts/run_database_restore.py` | 36 | audit_append_call | `results.append(` |

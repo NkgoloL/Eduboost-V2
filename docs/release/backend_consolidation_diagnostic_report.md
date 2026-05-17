@@ -1,6 +1,6 @@
 # Backend Consolidation Diagnostic Report
 
-Generated at: `2026-05-17T09:33:20Z`
+Generated at: `2026-05-17T12:11:48Z`
 
 | Check | Return code | Command |
 |---|---:|---|
@@ -53,7 +53,7 @@ Backend consolidation dragon diagnostic
   - app/repositories/audit_repository.py
   - app/services/data_subject_rights_service.py
   - ... 10 more file(s)
-- audit_logs: 21 match(es)
+- audit_logs: 23 match(es)
   - alembic/versions/0001_v2_consolidated_schema.py
   - app/models/__init__.py
   - app/modules/disaster_recovery/production_readiness_contracts.py
@@ -63,8 +63,10 @@ Backend consolidation dragon diagnostic
   - scripts/check_first_audit_runtime_wiring_no_destructive_actions.py
   - scripts/generate_audit_callsite_inventory.py
   - scripts/generate_backend_deletion_candidate_inventory.py
+  - scripts/generate_release_owner_beta_go_no_go.py
+  - scripts/generate_truthful_release_owner_beta_go_no_go.py
   - tests/unit/test_backend_runtime_enablement_pack.py
-  - tests/unit/test_backend_runtime_wiring_preflight.py
+  - ... 1 more file(s)
 - consent_records: 18 match(es)
   - alembic/versions/20260510_0300_popia_consent_audit_dsr.py
   - app/repositories/consent_repository.py
@@ -127,7 +129,7 @@ Command: `/usr/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-e
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/audit_callsite_inventory.md (1749 row(s))
+Wrote /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/audit_callsite_inventory.md (1760 row(s))
 ```
 
 ## consent inventory
