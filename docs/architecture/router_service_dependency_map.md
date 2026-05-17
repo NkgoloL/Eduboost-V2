@@ -1,6 +1,6 @@
 # Router Service Dependency Map
 
-Generated at: `2026-05-17T21:40:24Z`
+Generated at: `2026-05-17T22:07:36Z`
 
 | Router | Dependencies | Services/modules | Repositories | Database imports |
 |---|---|---|---|---|
@@ -13,7 +13,7 @@ Generated at: `2026-05-17T21:40:24Z`
 | `app/api_v2_routers/billing.py` | - | `app.services.fourth_estate`, `app.services.stripe_service` | - | `app.core.database`, `sqlalchemy.ext.asyncio` |
 | `app/api_v2_routers/consent.py` | - | `app.modules.consent.service` | `app.repositories.repositories` | `app.core.database`, `sqlalchemy.ext.asyncio` |
 | `app/api_v2_routers/consent_renewal.py` | - | `app.services.consent_renewal_service` | - | `app.core.database` |
-| `app/api_v2_routers/diagnostics.py` | - | `app.modules.diagnostics`, `app.modules.diagnostics.diagnostic_session_service`, `app.modules.diagnostics.item_bank_service`, `app.modules.diagnostics.session_recovery_service`, `app.services.caps_validator`, `app.services.diagnostic` | `app.repositories.diagnostic_session_repository`, `app.repositories.item_bank_repository`, `app.repositories.mastery_repository`, `app.repositories.repositories` | `app.core.database`, `sqlalchemy.ext.asyncio` |
+| `app/api_v2_routers/diagnostics.py` | - | `app.modules.diagnostics`, `app.modules.diagnostics.diagnostic_session_service`, `app.modules.diagnostics.item_bank_service`, `app.modules.diagnostics.session_recovery_service`, `app.services.caps_validator`, `app.services.diagnostic`, `app.services.diagnostic_data_integrity` | `app.repositories.diagnostic_session_repository`, `app.repositories.item_bank_repository`, `app.repositories.mastery_repository`, `app.repositories.repositories` | `app.core.database`, `sqlalchemy.ext.asyncio` |
 | `app/api_v2_routers/ether.py` | - | `app.services.ether_service` | - | `app.core.database`, `sqlalchemy.ext.asyncio` |
 | `app/api_v2_routers/gamification.py` | - | `app.services.fourth_estate`, `app.services.gamification_service_v2` | `app.repositories.gamification_repository`, `app.repositories.repositories` | `app.core.database`, `sqlalchemy.ext.asyncio` |
 | `app/api_v2_routers/jobs.py` | - | - | - | - |

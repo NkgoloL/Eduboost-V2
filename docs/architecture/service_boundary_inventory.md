@@ -1,6 +1,6 @@
 # Service Boundary Inventory
 
-Generated at: `2026-05-17T21:42:54Z`
+Generated at: `2026-05-17T22:10:22Z`
 
 | Path | Classification |
 |---|---|
@@ -36,6 +36,7 @@ Generated at: `2026-05-17T21:42:54Z`
 | `app/services/deep_readiness_route_contracts.py` | unclassified |
 | `app/services/deep_readiness_runtime.py` | active_runtime_facade |
 | `app/services/diagnostic.py` | unclassified |
+| `app/services/diagnostic_data_integrity.py` | unclassified |
 | `app/services/diagnostic_safety.py` | unclassified |
 | `app/services/diagnostic_service_v2.py` | domain_or_cross_cutting_service |
 | `app/services/diagnostic_session_service.py` | domain_or_cross_cutting_service |
@@ -47,6 +48,7 @@ Generated at: `2026-05-17T21:42:54Z`
 | `app/services/first_deep_readiness_runtime_wiring.py` | active_runtime_facade |
 | `app/services/fourth_estate.py` | unclassified |
 | `app/services/gamification_service_v2.py` | domain_or_cross_cutting_service |
+| `app/services/job_runtime_integrity.py` | active_runtime_facade |
 | `app/services/judiciary.py` | unclassified |
 | `app/services/learner_service.py` | domain_or_cross_cutting_service |
 | `app/services/lesson_authorization.py` | unclassified |

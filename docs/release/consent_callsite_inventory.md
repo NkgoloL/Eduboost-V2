@@ -143,10 +143,13 @@ This inventory supports consent service/table consolidation. It is diagnostic on
 | `app/modules/diagnostics/service.py` | 184 | require_active_consent | `consent = await svc.require_active_consent(learner_id, db)` |
 | `app/modules/diagnostics/service.py` | 195 | parental_consent_model | `) -> list[ParentalConsent]:` |
 | `app/modules/diagnostics/service.py` | 206 | parental_consent_model | `list[ParentalConsent]: Consent records expiring within the` |
-| `app/modules/jobs.py` | 44 | consent_service | `:meth:`~app.modules.consent.service.ConsentService.get_expiring_consents`` |
-| `app/modules/jobs.py` | 63 | consent_service | `from app.modules.consent.service import ConsentService` |
-| `app/modules/jobs.py` | 65 | consent_service | `consent_service = ConsentService()` |
-| `app/modules/jobs.py` | 244 | parental_consent_model | `consent: A :class:`~app.models.ParentalConsent` record with` |
+| `app/modules/jobs.py` | 25 | consent_repository | `from app.repositories.consent_repository import ConsentRepository` |
+| `app/modules/jobs.py` | 48 | consent_repository | `repo = ConsentRepository(session)` |
+| `app/modules/jobs.py` | 49 | consent_service | `params = inspect.signature(ConsentService).parameters` |
+| `app/modules/jobs.py` | 51 | consent_repository | `if "consent_repo" in params:` |
+| `app/modules/jobs.py` | 52 | consent_repository | `kwargs["consent_repo"] = repo` |
+| `app/modules/jobs.py` | 59 | consent_service | `service = ConsentService(**kwargs) if kwargs else ConsentService(session)` |
+| `app/modules/jobs.py` | 230 | parental_consent_model | `consent: A :class:`~app.models.ParentalConsent` record with` |
 | `app/modules/lessons/service.py` | 11 | consent_service | `:meth:`~app.modules.consent.service.ConsentService.require_active_consent`` |
 | `app/modules/lessons/service.py` | 11 | require_active_consent | `:meth:`~app.modules.consent.service.ConsentService.require_active_consent`` |
 | `app/modules/lessons/service.py` | 39 | consent_service | `from app.services.consent import ConsentService` |
@@ -241,6 +244,11 @@ This inventory supports consent service/table consolidation. It is diagnostic on
 | `scripts/check_backend_consolidation_execution_packet.py` | 20 | consent_service | `"ConsentService",` |
 | `scripts/check_consent_rejection_audit.py` | 12 | require_active_consent | `"require_active_consent",` |
 | `scripts/check_database_persistence_production_readiness.py` | 106 | consent_repository | `"class ConsentRepository",` |
+| `scripts/check_diagnostics_jobs_integrity.py` | 46 | consent_service | `if "ConsentService()" in jobs_text:` |
+| `scripts/check_diagnostics_jobs_integrity.py` | 47 | consent_service | `failures.append("ConsentService empty constructor")` |
+| `scripts/check_diagnostics_jobs_integrity.py` | 48 | consent_service | `print("- FAIL jobs module still contains ConsentService()")` |
+| `scripts/check_diagnostics_jobs_integrity.py` | 50 | consent_service | `print("- PASS no ConsentService() empty constructor in jobs module")` |
+| `scripts/check_diagnostics_jobs_integrity.py` | 52 | consent_repository | `for token in ("AsyncSessionLocal", "ConsentRepository", "validate_arq_job_payload"):` |
 | `scripts/check_first_audit_runtime_wiring_no_destructive_actions.py` | 19 | consent_records_table | `"merge consent_records",` |
 | `scripts/check_first_audit_runtime_wiring_no_destructive_actions.py` | 20 | parental_consents_table | `"merge parental_consents",` |
 | `scripts/check_popia_consent_audit_evidence.py` | 95 | consent_service | `"ConsentService(db).require_active_consent",` |
@@ -264,6 +272,8 @@ This inventory supports consent service/table consolidation. It is diagnostic on
 | `scripts/generate_consent_gate_inventory.py` | 78 | require_active_consent | `marker="ConsentService require_active_consent",` |
 | `scripts/generate_popia_consent_boundary_matrix.py` | 92 | require_active_consent | `if "require_active_consent" in source:` |
 | `scripts/generate_popia_consent_boundary_matrix.py` | 93 | require_active_consent | `return "require_active_consent"` |
+| `scripts/inspect_diagnostics_and_jobs_integrity.py` | 52 | consent_service | `"consent_service_empty_constructor_count": jobs_text.count("ConsentService()"),` |
+| `scripts/inspect_diagnostics_and_jobs_integrity.py` | 69 | consent_service | `f"\| ConsentService() empty constructor count in jobs \| {payload['consent_service_empty_constructor_count']} \|",` |
 | `scripts/patch_popia_router_boundary.py` | 23 | consent_repository | `"from app.repositories.consent_repository import ConsentRepository",` |
 | `scripts/popia_sweep.py` | 12 | consent_service | `ConsentService.require_active_consent() before any DB access.` |
 | `scripts/popia_sweep.py` | 12 | require_active_consent | `ConsentService.require_active_consent() before any DB access.` |
@@ -275,6 +285,18 @@ This inventory supports consent service/table consolidation. It is diagnostic on
 | `scripts/popia_sweep.py` | 273 | require_active_consent | `"calling ConsentService.require_active_consent(). "` |
 | `scripts/popia_sweep.py` | 297 | consent_grant | `kw in func_source for kw in ["mark_granted", "mark_revoked", "execute_erasure", "grant(", "revoke("]` |
 | `scripts/popia_sweep.py` | 297 | consent_revoke | `kw in func_source for kw in ["mark_granted", "mark_revoked", "execute_erasure", "grant(", "revoke("]` |
+| `scripts/repair_arq_consent_reminder_job.py` | 42 | consent_repository | `repo = ConsentRepository(session)` |
+| `scripts/repair_arq_consent_reminder_job.py` | 43 | consent_service | `params = inspect.signature(ConsentService).parameters` |
+| `scripts/repair_arq_consent_reminder_job.py` | 45 | consent_repository | `if "consent_repo" in params:` |
+| `scripts/repair_arq_consent_reminder_job.py` | 46 | consent_repository | `kwargs["consent_repo"] = repo` |
+| `scripts/repair_arq_consent_reminder_job.py` | 53 | consent_service | `service = ConsentService(**kwargs) if kwargs else ConsentService(session)` |
+| `scripts/repair_arq_consent_reminder_job.py` | 114 | consent_service | `text = _ensure_import(text, "from app.modules.consent.service import ConsentService")` |
+| `scripts/repair_arq_consent_reminder_job.py` | 115 | consent_repository | `text = _ensure_import(text, "from app.repositories.consent_repository import ConsentRepository")` |
+| `scripts/repair_arq_consent_reminder_job.py` | 119 | consent_service | `if "ConsentService()" in text:` |
+| `scripts/repair_arq_consent_reminder_job.py` | 121 | consent_service | `"# ARQ Consent Job Repair Blocker\n\n`ConsentService()` empty constructor still appears in `app/modules/jobs.py`.\n",` |
+| `scripts/repair_arq_consent_reminder_job.py` | 124 | consent_service | `print("ConsentService() empty constructor remains")` |
+| `scripts/repair_arq_consent_reminder_job.py` | 141 | consent_repository | `"- Consent reminder job constructs `ConsentRepository(session)`.",` |
+| `scripts/repair_arq_consent_reminder_job.py` | 142 | consent_service | `"- Consent reminder job constructs `ConsentService` with explicit dependencies.",` |
 | `scripts/repair_popia_consent_lifecycle.py` | 126 | consent_service | `"from app.services.consent_service import ConsentService",` |
 | `scripts/repair_popia_consent_lifecycle.py` | 127 | consent_service | `"from app.modules.consent.service import ConsentService",` |
 | `scripts/repair_popia_consent_lifecycle.py` | 184 | consent_service | `def get_canonical_consent_service(db: AsyncSession = Depends(get_db)) -> ConsentService:` |
@@ -367,6 +389,8 @@ This inventory supports consent service/table consolidation. It is diagnostic on
 | `tests/unit/test_diagnostics_central_consent_source.py` | 17 | consent_service | `assert "ConsentService(db).require_active_consent" not in source` |
 | `tests/unit/test_diagnostics_central_consent_source.py` | 17 | require_active_consent | `assert "ConsentService(db).require_active_consent" not in source` |
 | `tests/unit/test_diagnostics_central_consent_source.py` | 18 | consent_service | `assert "from app.services.consent import ConsentService" not in source` |
+| `tests/unit/test_diagnostics_jobs_integrity_contracts.py` | 69 | consent_service | `assert "ConsentService()" not in source` |
+| `tests/unit/test_diagnostics_jobs_integrity_contracts.py` | 71 | consent_repository | `assert "ConsentRepository" in source` |
 | `tests/unit/test_gamification_consent_gate_wiring.py` | 17 | consent_service | `assert "from app.services.consent import ConsentService" not in source` |
 | `tests/unit/test_generate_consent_gate_inventory.py` | 14 | consent_service | `assert any("ConsentService" in row.marker for row in rows)` |
 | `tests/unit/test_learner_read_consent_gate_wiring.py` | 17 | consent_service | `assert "from app.services.consent import ConsentService" not in source` |

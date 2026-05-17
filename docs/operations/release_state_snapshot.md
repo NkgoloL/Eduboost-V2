@@ -2,24 +2,31 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-05-17T21:44:46.613621+00:00`
+- generated_at_utc: `2026-05-17T22:12:28.718701+00:00`
 - branch: `codex/production_readiness`
-- commit: `2c2bd7fae4167979241dd5aedac5643ec1f1e461`
+- commit: `02f3babd855703460eefc1727f5fdc71f44d2a60`
 - release_candidate: `unset`
 
 ## Working Tree Status
 
 ```text
-M .importlinter
- M Makefile
+M Makefile
+ M app/api_v2_routers/diagnostics.py
+ M app/core/jobs.py
+ M app/modules/jobs.py
  M docs/ai/ai_prompt_surface_inventory.md
  M docs/architecture/import_linter_availability.md
+ M docs/architecture/import_linter_contract_run.md
  M docs/architecture/legacy_learner_access_guard_report.json
  M docs/architecture/legacy_learner_access_guard_report.md
  M docs/architecture/router_repository_boundary_matrix.json
  M docs/architecture/router_repository_boundary_matrix.md
+ M docs/architecture/router_service_dependency_map.json
+ M docs/architecture/router_service_dependency_map.md
  M docs/architecture/service_boundary_inventory.json
  M docs/architecture/service_boundary_inventory.md
+ M docs/architecture/service_family_map.json
+ M docs/architecture/service_family_map.md
  M docs/beta/beta_content_hard_gate.json
  M docs/beta/beta_content_hard_gate.md
  M docs/operations/beta_release_evidence_bundle.md
@@ -58,6 +65,7 @@ M .importlinter
  M docs/release/branch_protection_evidence.md
  M docs/release/ci_evidence.json
  M docs/release/ci_evidence.md
+ M docs/release/consent_callsite_inventory.md
  M docs/release/disposable_db_schema_proof_execution_report.md
  M docs/release/first_audit_runtime_wiring_report.md
  M docs/release/release_owner_beta_go_no_go_memo.md
@@ -68,19 +76,18 @@ M .importlinter
  M docs/release/schema_drift_disposable_latest.md
  M docs/release/staging_smoke_final_evidence.json
  M docs/release/staging_smoke_final_evidence.md
-?? docs/architecture/boundary_debt_queue.md
-?? docs/architecture/import_linter_contract_run.md
-?? docs/architecture/router_service_dependency_map.json
-?? docs/architecture/router_service_dependency_map.md
-?? docs/architecture/service_boundary_classification_policy.md
-?? docs/architecture/service_family_map.json
-?? docs/architecture/service_family_map.md
-?? docs/release/phase2_data_integrity_blockers.md
-?? scripts/check_architecture_boundary_contracts.py
-?? scripts/generate_router_service_dependency_map.py
-?? scripts/generate_service_family_map.py
-?? scripts/run_import_linter_contracts.py
-?? tests/unit/test_architecture_boundary_contracts.py
+?? app/services/diagnostic_data_integrity.py
+?? app/services/job_runtime_integrity.py
+?? docs/release/arq_consent_job_repair_report.md
+?? docs/release/diagnostics_data_integrity_repair_report.md
+?? docs/release/diagnostics_jobs_integrity_introspection.json
+?? docs/release/diagnostics_jobs_integrity_introspection.md
+?? docs/release/diagnostics_jobs_remaining_blockers.md
+?? scripts/check_diagnostics_jobs_integrity.py
+?? scripts/inspect_diagnostics_and_jobs_integrity.py
+?? scripts/repair_arq_consent_reminder_job.py
+?? scripts/repair_diagnostics_data_integrity.py
+?? tests/unit/test_diagnostics_jobs_integrity_contracts.py
 ```
 
 ## State Artifacts

@@ -970,6 +970,9 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/deep_readiness_runtime.py` | 41 | audit_append_call | `checks.append(DeepReadinessCheckResult(f"table:{table}","pass","read-only table presence query completed"))` |
 | `app/services/deep_readiness_runtime.py` | 43 | audit_append_call | `checks.append(DeepReadinessCheckResult(f"table:{table}","warn",f"{type(exc).__name__}: {exc}"))` |
 | `app/services/deep_readiness_runtime.py` | 49 | audit_append_call | `checks.append(DeepReadinessCheckResult("cache_ping","pass","cache ping completed"))` |
+| `app/services/diagnostic_data_integrity.py` | 39 | audit_append_call | `found.append(item)` |
+| `app/services/diagnostic_data_integrity.py` | 52 | audit_append_call | `found.append(item)` |
+| `app/services/diagnostic_data_integrity.py` | 78 | audit_append_call | `duplicates.append(item_id)` |
 | `app/services/diagnostic_safety.py` | 30 | audit_append_call | `reasons.append(caps.reason)` |
 | `app/services/diagnostic_safety.py` | 32 | audit_append_call | `reasons.append("difficulty must be finite and between -4 and 4")` |
 | `app/services/diagnostic_safety.py` | 34 | audit_append_call | `reasons.append("discrimination must be finite and between 0 and 4")` |
@@ -1229,6 +1232,13 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_diagnostic_generation_safety_contract.py` | 40 | audit_append_call | `results.append(` |
 | `scripts/check_diagnostics_assessment_production_readiness.py` | 113 | audit_append_call | `results.append(CheckResult(rel_path, path.exists(), "present" if path.exists() else "missing"))` |
 | `scripts/check_diagnostics_assessment_production_readiness.py` | 117 | audit_append_call | `results.append(` |
+| `scripts/check_diagnostics_jobs_integrity.py` | 23 | audit_append_call | `failures.append("missing diagnostic helper")` |
+| `scripts/check_diagnostics_jobs_integrity.py` | 29 | audit_append_call | `failures.append("missing job runtime helper")` |
+| `scripts/check_diagnostics_jobs_integrity.py` | 36 | audit_append_call | `failures.append("diagnostics helper import")` |
+| `scripts/check_diagnostics_jobs_integrity.py` | 42 | audit_append_call | `failures.append("diagnostics markers")` |
+| `scripts/check_diagnostics_jobs_integrity.py` | 47 | audit_append_call | `failures.append("ConsentService empty constructor")` |
+| `scripts/check_diagnostics_jobs_integrity.py` | 56 | audit_append_call | `failures.append(f"jobs missing {token}")` |
+| `scripts/check_diagnostics_jobs_integrity.py` | 63 | audit_append_call | `failures.append("background task policy")` |
 | `scripts/check_docker_production_hardening.py` | 27 | audit_append_call | `failures.append(msg)` |
 | `scripts/check_documentation_adrs_claim_discipline_production_readiness.py` | 109 | audit_append_call | `results.append(DocumentationGovernanceReadinessResult(rel_path, path.exists(), "file present" if path.exists() else "file missing"))` |
 | `scripts/check_documentation_adrs_claim_discipline_production_readiness.py` | 113 | audit_append_call | `results.append(DocumentationGovernanceReadinessResult(rel_path, snippet in text, f"contains {snippet!r}" if snippet in text else f"missing {snippet!r}"))` |
@@ -1602,6 +1612,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/generate_truthful_release_owner_beta_go_no_go.py` | 38 | audit_append_call | `lines.append("- None")` |
 | `scripts/generate_truthful_release_owner_beta_go_no_go.py` | 43 | audit_logs_table | `"This memo does not approve production launch, destructive database changes, consent-table merge, audit_logs drop, public mutating health probes, or synthetic evidence substitution.",` |
 | `scripts/inspect_auth_token_claims.py` | 35 | audit_append_call | `rows.append(node.module or "")` |
+| `scripts/inspect_diagnostics_and_jobs_integrity.py` | 32 | audit_append_call | `modules.append(node.module or "")` |
 | `scripts/inspect_learner_routes.py` | 106 | audit_append_call | `candidates.append(` |
 | `scripts/inspect_learner_routes.py` | 128 | audit_append_call | `references.append(` |
 | `scripts/inspect_learner_routes.py` | 156 | audit_append_call | `lines.append(` |
@@ -1660,6 +1671,9 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/rename_metaphor_layers.py` | 85 | audit_append_call | `hits.append((path, lineno, match.group(0).lower(), line.rstrip()))` |
 | `scripts/repair_beta_evidence_integrity.py` | 129 | audit_append_call | `blockers.append("invalid_or_synthetic_evidence")` |
 | `scripts/repair_beta_evidence_integrity.py` | 164 | audit_append_call | `lines.append(` |
+| `scripts/repair_diagnostics_data_integrity.py` | 114 | audit_append_call | `insertions.append((first.lineno - 1, snippet))` |
+| `scripts/repair_diagnostics_data_integrity.py` | 118 | audit_append_call | `insertions.append((first.lineno - 1, snippet))` |
+| `scripts/repair_diagnostics_data_integrity.py` | 121 | audit_append_call | `blockers.append("No diagnostics submit/answer/response/mastery candidate function with payload-like argument was found.")` |
 | `scripts/repair_lesson_object_authorization.py` | 110 | audit_append_call | `blockers.append(f"{node.name}: missing db/session or current_user-like argument for read authz")` |
 | `scripts/repair_lesson_object_authorization.py` | 112 | audit_append_call | `insertions.append((node.body[0].lineno - 1, f"{indent}{MARKER_READ}\n{indent}await require_lesson_read_access_for_current_user({db}, {user}, lesson_id)"))` |
 | `scripts/repair_lesson_object_authorization.py` | 115 | audit_append_call | `blockers.append(f"{node.name}: missing db/session or current_user-like argument for write authz")` |

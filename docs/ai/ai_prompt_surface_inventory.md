@@ -103,6 +103,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/services/curriculum/coverage.py` | `diagnostic` |
 | `app/services/data_subject_rights_service.py` | `prompt, llm, diagnostic` |
 | `app/services/diagnostic.py` | `diagnostic` |
+| `app/services/diagnostic_data_integrity.py` | `diagnostic` |
 | `app/services/diagnostic_safety.py` | `llm, diagnostic` |
 | `app/services/diagnostic_service_v2.py` | `diagnostic` |
 | `app/services/diagnostic_session_service.py` | `diagnostic` |
@@ -148,6 +149,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/check_database_persistence_production_readiness.py` | `diagnostic` |
 | `scripts/check_diagnostic_generation_safety_contract.py` | `diagnostic` |
 | `scripts/check_diagnostics_assessment_production_readiness.py` | `diagnostic, remediation` |
+| `scripts/check_diagnostics_jobs_integrity.py` | `diagnostic` |
 | `scripts/check_domain_06_ai_llm_pipeline_evidence.py` | `llm` |
 | `scripts/check_domain_07_diagnostics_assessment_evidence.py` | `diagnostic` |
 | `scripts/check_environment_security_contract.py` | `anthropic, groq` |
@@ -189,6 +191,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/generate_popia_consent_boundary_matrix.py` | `generate_lesson, diagnostic` |
 | `scripts/generate_route_inventory.py` | `diagnostic` |
 | `scripts/generate_service_family_map.py` | `diagnostic` |
+| `scripts/inspect_diagnostics_and_jobs_integrity.py` | `diagnostic` |
 | `scripts/inventory_services.py` | `diagnostic` |
 | `scripts/lessons/generate_lessons.py` | `llm, generate_lesson, remediation` |
 | `scripts/lessons/validate_lessons.py` | `prompt, llm, groq` |
@@ -197,6 +200,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/popia_sweep.py` | `prompt, llm, anthropic, groq, diagnostic` |
 | `scripts/prepare_training_data.py` | `llm` |
 | `scripts/refresh_current_state_doc.py` | `llm` |
+| `scripts/repair_diagnostics_data_integrity.py` | `diagnostic` |
 | `scripts/seed_irt_items.py` | `diagnostic` |
 | `scripts/seed_item_bank.py` | `diagnostic` |
 | `scripts/sync_git_to_redmine.py` | `diagnostic` |

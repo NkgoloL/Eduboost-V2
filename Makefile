@@ -1362,3 +1362,21 @@ backend-implementation-671-690-full-check: service-family-map router-service-dep
 	python3 -m compileall -q app/api_v2_deps app/api_v2_routers app/services scripts
 	pytest -c pytest.ini tests/unit/test_architecture_boundary_contracts.py -q --no-cov --tb=short
 
+.PHONY: diagnostics-jobs-integrity-inspect diagnostics-data-integrity-repair arq-consent-job-repair diagnostics-jobs-integrity-check backend-implementation-691-720-full-check
+
+diagnostics-jobs-integrity-inspect:
+	PYTHONPATH=. python3 scripts/inspect_diagnostics_and_jobs_integrity.py
+
+diagnostics-data-integrity-repair:
+	PYTHONPATH=. python3 scripts/repair_diagnostics_data_integrity.py
+
+arq-consent-job-repair:
+	PYTHONPATH=. python3 scripts/repair_arq_consent_reminder_job.py
+
+diagnostics-jobs-integrity-check:
+	PYTHONPATH=. python3 scripts/check_diagnostics_jobs_integrity.py
+
+backend-implementation-691-720-full-check: diagnostics-jobs-integrity-inspect diagnostics-data-integrity-repair arq-consent-job-repair diagnostics-jobs-integrity-check
+	python3 -m compileall -q app/api_v2_routers app/modules app/services scripts
+	pytest -c pytest.ini tests/unit/test_diagnostics_jobs_integrity_contracts.py -q --no-cov --tb=short
+

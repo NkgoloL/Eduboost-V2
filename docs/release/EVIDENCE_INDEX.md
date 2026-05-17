@@ -454,3 +454,22 @@ make import-linter-contracts-run
 make backend-implementation-671-690-full-check
 ```
 
+## Backend implementation 691-720 — Diagnostics and durable jobs data integrity
+
+Audit drivers:
+
+- Diagnostic submissions must reject malformed, duplicate, or unserved item payloads.
+- Theta/mastery updates must reject non-finite, out-of-range, or excessive-delta values.
+- ARQ consent reminder job must construct ConsentService with an explicit DB session/repository.
+- FastAPI BackgroundTasks must remain limited to non-critical request-adjacent work.
+
+Commands:
+
+```bash
+make diagnostics-jobs-integrity-inspect
+make diagnostics-data-integrity-repair
+make arq-consent-job-repair
+make diagnostics-jobs-integrity-check
+make backend-implementation-691-720-full-check
+```
+

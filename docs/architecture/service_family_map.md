@@ -1,6 +1,6 @@
 # Service Family Map
 
-Generated at: `2026-05-17T21:40:24Z`
+Generated at: `2026-05-17T22:07:36Z`
 
 | Domain | Path | Classification | Classes |
 |---|---|---|---|
@@ -36,6 +36,7 @@ Generated at: `2026-05-17T21:40:24Z`
 | other | `app/services/deep_readiness_route_contracts.py` | unclassified | `DeepReadinessRouteCheck`, `ReadinessCheckMode` |
 | other | `app/services/deep_readiness_runtime.py` | active_runtime_facade | `DeepReadinessCheckResult`, `DeepReadinessRuntimeResult` |
 | diagnostic | `app/services/diagnostic.py` | unclassified | - |
+| diagnostic | `app/services/diagnostic_data_integrity.py` | unclassified | `DiagnosticIntegrityError`, `DiagnosticSubmissionIntegrityResult` |
 | diagnostic | `app/services/diagnostic_safety.py` | unclassified | `DiagnosticItemValidation`, `DiagnosticItemValidator` |
 | diagnostic | `app/services/diagnostic_service_v2.py` | duplicate_domain_service | `DiagnosticServiceV2` |
 | diagnostic | `app/services/diagnostic_session_service.py` | duplicate_domain_service | `DiagnosticSessionNotFoundError`, `DiagnosticSessionService` |
@@ -47,6 +48,7 @@ Generated at: `2026-05-17T21:40:24Z`
 | other | `app/services/first_deep_readiness_runtime_wiring.py` | active_runtime_facade | `DeepReadinessRuntimePlan`, `FirstDeepReadinessRuntimeCandidate` |
 | other | `app/services/fourth_estate.py` | unclassified | - |
 | gamification | `app/services/gamification_service_v2.py` | duplicate_domain_service | `GamificationServiceV2`, `_EmptyGamificationRepository` |
+| other | `app/services/job_runtime_integrity.py` | active_runtime_facade | `JobRuntimeIntegrityError` |
 | other | `app/services/judiciary.py` | unclassified | - |
 | learner | `app/services/learner_service.py` | duplicate_domain_service | `LearnerService` |
 | auth | `app/services/lesson_authorization.py` | authorization_helper | - |

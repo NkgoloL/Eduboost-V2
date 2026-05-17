@@ -1,6 +1,6 @@
 # Backend Consolidation Diagnostic Report
 
-Generated at: `2026-05-17T21:41:50Z`
+Generated at: `2026-05-17T22:09:12Z`
 
 | Check | Return code | Command |
 |---|---:|---|
@@ -92,7 +92,7 @@ Backend consolidation dragon diagnostic
   - scripts/check_runtime_wiring_no_destructive_actions.py
   - scripts/generate_backend_deletion_candidate_inventory.py
   - ... 2 more file(s)
-- consent_service: 109 match(es)
+- consent_service: 124 match(es)
   - app/api_v2_deps/consent_lifecycle.py
   - app/api_v2_routers/consent.py
   - app/api_v2_routers/learners.py
@@ -105,7 +105,7 @@ Backend consolidation dragon diagnostic
   - app/modules/jobs.py
   - app/modules/lessons/service.py
   - app/security/dependencies.py
-  - ... 26 more file(s)
+  - ... 30 more file(s)
 - deep_health: 29 match(es)
   - app/api_v2.py
   - app/core/health.py
@@ -129,7 +129,7 @@ Command: `/usr/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-e
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/audit_callsite_inventory.md (1819 row(s))
+Wrote /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/audit_callsite_inventory.md (1833 row(s))
 ```
 
 ## consent inventory
@@ -139,7 +139,7 @@ Command: `/usr/bin/python3 scripts/generate_consent_callsite_inventory.py --fail
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/consent_callsite_inventory.md (372 row(s))
+Wrote /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/consent_callsite_inventory.md (396 row(s))
 ```
 
 ## health readiness contract

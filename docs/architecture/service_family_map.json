@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-17T21:40:24Z",
+  "generated_at": "2026-05-17T22:07:36Z",
   "domains": {
     "other": [
       {
@@ -178,6 +178,14 @@
         "domain": "other",
         "classification": "unclassified",
         "classes": []
+      },
+      {
+        "path": "app/services/job_runtime_integrity.py",
+        "domain": "other",
+        "classification": "active_runtime_facade",
+        "classes": [
+          "JobRuntimeIntegrityError"
+        ]
       },
       {
         "path": "app/services/judiciary.py",
@@ -970,6 +978,15 @@
         "classes": []
       },
       {
+        "path": "app/services/diagnostic_data_integrity.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": [
+          "DiagnosticIntegrityError",
+          "DiagnosticSubmissionIntegrityResult"
+        ]
+      },
+      {
         "path": "app/services/diagnostic_safety.py",
         "domain": "diagnostic",
         "classification": "unclassified",
@@ -1488,6 +1505,15 @@
       "classes": []
     },
     {
+      "path": "app/services/diagnostic_data_integrity.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": [
+        "DiagnosticIntegrityError",
+        "DiagnosticSubmissionIntegrityResult"
+      ]
+    },
+    {
       "path": "app/services/diagnostic_safety.py",
       "domain": "diagnostic",
       "classification": "unclassified",
@@ -1575,6 +1601,14 @@
       "classes": [
         "GamificationServiceV2",
         "_EmptyGamificationRepository"
+      ]
+    },
+    {
+      "path": "app/services/job_runtime_integrity.py",
+      "domain": "other",
+      "classification": "active_runtime_facade",
+      "classes": [
+        "JobRuntimeIntegrityError"
       ]
     },
     {

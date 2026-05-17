@@ -1,4 +1,12 @@
-"""Redis-backed background job tracking for V2 async operations."""
+"""
+FastAPI BackgroundTasks wrapper.
+
+Policy: Use FastAPI BackgroundTasks for non-critical, request-adjacent work only.
+Do NOT use this module for durable workflows such as consent reminders, report
+generation, erasure execution, or long-running jobs. Durable workflows belong in
+`app/modules/jobs.py` and should run through ARQ or an equivalent worker.
+"""
+
 from __future__ import annotations
 
 import json

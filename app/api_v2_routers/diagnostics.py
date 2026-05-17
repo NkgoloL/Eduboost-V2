@@ -96,6 +96,8 @@ async def submit_diagnostic(
     db: AsyncSession = Depends(get_db),
     current_user: dict = Depends(get_current_user),
 ):
+    # code_691_720_diagnostic_submission_integrity
+    validate_diagnostic_submission_payload(body, require_items=False)
     learner = await LearnerRepository(db).get_by_id(body.learner_id)
     if not learner:
         raise HTTPException(status_code=404, detail="Learner not found")
@@ -326,3 +328,4 @@ async def diagnostic_respond(
         raise HTTPException(status_code=404, detail="Diagnostic item not found")
     result = await session_service.submit_response(session_id, item, correct=body.correct, response=body.response)
     return result.__dict__
+from app.services.diagnostic_data_integrity import validate_diagnostic_submission_payload, validate_mastery_update_payload
