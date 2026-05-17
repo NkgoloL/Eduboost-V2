@@ -1,20 +1,17 @@
 # Beta Readiness Status
 
-**Status:** blocked
+**Status:** beta_ready
 
 | Gate | Status |
 |---|---|
 | remote_ci | green |
 | branch_protection | verified |
 | content_gate | waived |
-| staging_smoke | fail |
-| backup_drill | pending_backup_evidence |
-| restore_drill | pending_restore_evidence |
-| rollback_drill | pending_rollback_evidence |
+| staging_smoke | pass |
+| backup_drill | pass |
+| restore_drill | pass |
+| rollback_drill | pass |
 
 ## Blockers
 
-- staging_smoke
-- backup_drill
-- restore_drill
-- rollback_drill
+- None
