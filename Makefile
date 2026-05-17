@@ -1290,3 +1290,18 @@ backend-implementation-591-610-full-check: popia-consent-lifecycle-inspect popia
 	python3 -m compileall -q app/api_v2_routers app/modules/consent app/services app/repositories
 	pytest -c pytest.ini tests/unit/test_popia_consent_lifecycle_contracts.py -q --no-cov --tb=short
 
+.PHONY: lesson-object-authorization-inspect lesson-object-authorization-repair lesson-object-authorization-check backend-implementation-611-630-full-check
+
+lesson-object-authorization-inspect:
+	PYTHONPATH=. python3 scripts/inspect_lesson_object_authorization.py
+
+lesson-object-authorization-repair:
+	PYTHONPATH=. python3 scripts/repair_lesson_object_authorization.py
+
+lesson-object-authorization-check:
+	PYTHONPATH=. python3 scripts/check_lesson_object_authorization_repair.py
+
+backend-implementation-611-630-full-check: lesson-object-authorization-inspect lesson-object-authorization-repair lesson-object-authorization-check
+	python3 -m compileall -q app/api_v2_routers app/modules/lessons app/services app/repositories
+	pytest -c pytest.ini tests/unit/test_lesson_object_authorization_contracts.py -q --no-cov --tb=short
+

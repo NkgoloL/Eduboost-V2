@@ -382,3 +382,20 @@ make popia-consent-lifecycle-check
 make backend-implementation-591-610-full-check
 ```
 
+## Backend implementation 611-630 — Lesson object authorization repair
+
+Audit drivers:
+
+- Lesson read routes must enforce learner-read authorization based on the lesson owner learner_id.
+- Lesson completion routes must enforce learner-write authorization based on the lesson owner learner_id.
+- Lesson sync routes must validate every submitted lesson_id before applying mutations.
+
+Commands:
+
+```bash
+make lesson-object-authorization-inspect
+make lesson-object-authorization-repair
+make lesson-object-authorization-check
+make backend-implementation-611-630-full-check
+```
+

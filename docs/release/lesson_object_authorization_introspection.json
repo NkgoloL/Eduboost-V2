@@ -1,0 +1,79 @@
+{
+  "generated_at": "2026-05-17T20:18:03Z",
+  "router_exists": true,
+  "helper_import_present": true,
+  "read_helper_calls": 2,
+  "write_helper_calls": 3,
+  "sync_extractor_calls": 2,
+  "functions": [
+    {
+      "name": "get_lesson_service",
+      "args": [
+        "db"
+      ],
+      "lineno": 28
+    },
+    {
+      "name": "generate_lesson",
+      "args": [
+        "request",
+        "body",
+        "background_tasks",
+        "current_user",
+        "db",
+        "service"
+      ],
+      "lineno": 34
+    },
+    {
+      "name": "_run",
+      "args": [],
+      "lineno": 45
+    },
+    {
+      "name": "generate_lesson_stream",
+      "args": [
+        "body",
+        "current_user",
+        "db",
+        "service"
+      ],
+      "lineno": 59
+    },
+    {
+      "name": "_events",
+      "args": [],
+      "lineno": 68
+    },
+    {
+      "name": "get_lesson",
+      "args": [
+        "lesson_id",
+        "current_user",
+        "service",
+        "db"
+      ],
+      "lineno": 82
+    },
+    {
+      "name": "complete_lesson",
+      "args": [
+        "lesson_id",
+        "current_user",
+        "service",
+        "db"
+      ],
+      "lineno": 103
+    },
+    {
+      "name": "sync_lessons",
+      "args": [
+        "body",
+        "current_user",
+        "service",
+        "db"
+      ],
+      "lineno": 120
+    }
+  ]
+}

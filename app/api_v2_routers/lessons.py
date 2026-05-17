@@ -18,6 +18,7 @@ from app.domain.api_v2_models import JobAcceptedResponse
 from app.domain.schemas import LessonFeedback, LessonRequest, LessonResponse, LessonSyncRequest
 from app.modules.lessons.service import LessonService
 from app.modules.lessons import lesson_coverage_router, lesson_review_router
+from app.services.lesson_authorization import iter_sync_lesson_ids, require_lesson_read_access_for_current_user, require_lesson_write_access_for_current_user
 from app.security.dependencies import require_learner_write_for_current_user, require_active_consent_for_current_user
 
 router = APIRouter(route_class=EnvelopedRoute, prefix="/lessons", tags=["lessons"])
@@ -82,7 +83,10 @@ async def get_lesson(
     lesson_id: str,
     current_user: dict = Depends(get_current_user),
     service: LessonService = Depends(get_lesson_service),
+    db: AsyncSession = Depends(get_db),
 ):
+    # code_611_630_lesson_read_authz
+    await require_lesson_read_access_for_current_user(db, current_user, lesson_id)
     lesson = await service.get_lesson_by_id(lesson_id)
     if not lesson:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Lesson not found")
@@ -100,7 +104,10 @@ async def complete_lesson(
     lesson_id: str,
     current_user: dict = Depends(get_current_user),
     service: LessonService = Depends(get_lesson_service),
+    db: AsyncSession = Depends(get_db),
 ):
+    # code_611_630_lesson_write_authz
+    await require_lesson_write_access_for_current_user(db, current_user, lesson_id)
     lesson = await service.get_lesson_by_id(lesson_id)
     if not lesson:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Lesson not found")
@@ -114,7 +121,11 @@ async def sync_lessons(
     body: LessonSyncRequest,
     current_user: dict = Depends(get_current_user),
     service: LessonService = Depends(get_lesson_service),
+    db: AsyncSession = Depends(get_db),
 ):
+    # code_611_630_lesson_sync_authz
+    for _lesson_id in iter_sync_lesson_ids(body):
+        await require_lesson_write_access_for_current_user(db, current_user, _lesson_id)
     """
     Batch sync lesson events (completion, feedback) from the client.
     """
