@@ -1,6 +1,7 @@
 {
   "status": "blocked",
   "blockers": [
+    "remote_ci",
     "branch_protection",
     "content_gate",
     "staging_smoke",
@@ -10,13 +11,13 @@
   ],
   "evidence": {
     "remote_ci": {
-      "status": "green",
-      "run_url": "https://github.com/NkgoloL/Eduboost-V2/actions/runs/25987485447",
-      "commit_sha": "5a8377316d062a01fcd85ae34a133c7c3cd1ef84",
-      "branch": "codex/production_readiness",
-      "result": "success",
-      "test_summary": "Backend Consolidation Evidence workflow green (run #33, all checks passed)",
-      "captured_at": "2026-05-17T09:50:05Z",
+      "status": "pending_remote_ci_evidence",
+      "run_url": "",
+      "commit_sha": "",
+      "branch": "",
+      "result": "",
+      "test_summary": "",
+      "captured_at": "2026-05-17T14:31:35Z",
       "required": true
     },
     "branch_protection": {
@@ -27,7 +28,7 @@
       "admin_enforced": false,
       "bypass_disabled": false,
       "evidence_url": "",
-      "captured_at": "2026-05-17T09:46:24Z",
+      "captured_at": "2026-05-17T14:31:35Z",
       "required": true
     },
     "content_gate": {
@@ -39,7 +40,7 @@
       "blockers": [
         "insufficient_approved_items"
       ],
-      "captured_at": "2026-05-17T09:46:24Z",
+      "captured_at": "2026-05-17T14:31:35Z",
       "required": true
     },
     "staging_smoke": {
@@ -48,7 +49,7 @@
       "base_url": "https://staging.example.com",
       "passed": false,
       "result_count": 5,
-      "captured_at": "2026-05-17T09:46:24Z",
+      "captured_at": "2026-05-17T14:31:35Z",
       "required": true
     },
     "backup_drill": {
@@ -58,7 +59,7 @@
       "evidence_url": "",
       "operator": "",
       "notes": "",
-      "captured_at": "2026-05-17T09:46:24Z",
+      "captured_at": "2026-05-17T14:31:35Z",
       "required": true
     },
     "restore_drill": {
@@ -82,6 +83,6 @@
       "required": true
     }
   },
-  "captured_at": "2026-05-17T09:50:16Z",
+  "captured_at": "2026-05-17T14:31:35Z",
   "required": true
 }

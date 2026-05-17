@@ -1,13 +1,13 @@
 # Backend Consolidation Implementation Foundation Report
 
-Generated at: `2026-05-17T09:32:15Z`
+Generated at: `2026-05-17T14:29:42Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| implementation foundation | 0 | `/usr/bin/python3 scripts/check_backend_consolidation_implementation_foundation.py` |
-| runtime compatibility | 0 | `/usr/bin/python3 scripts/check_backend_runtime_compatibility.py` |
-| execution packet | 0 | `/usr/bin/python3 scripts/check_backend_consolidation_execution_packet.py` |
-| terminal packet | 0 | `/usr/bin/python3 scripts/check_backend_consolidation_terminal_packet.py` |
+| implementation foundation | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_consolidation_implementation_foundation.py` |
+| runtime compatibility | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_runtime_compatibility.py` |
+| execution packet | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_consolidation_execution_packet.py` |
+| terminal packet | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_consolidation_terminal_packet.py` |
 
 ## Boundary
 
@@ -15,7 +15,7 @@ This report confirms implementation foundation readiness only. It does not appro
 
 ## implementation foundation
 
-Command: `/usr/bin/python3 scripts/check_backend_consolidation_implementation_foundation.py`
+Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_consolidation_implementation_foundation.py`
 
 Return code: `0`
 
@@ -40,7 +40,7 @@ Backend consolidation implementation foundation check
 
 ## runtime compatibility
 
-Command: `/usr/bin/python3 scripts/check_backend_runtime_compatibility.py`
+Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_runtime_compatibility.py`
 
 Return code: `0`
 
@@ -66,7 +66,7 @@ Deep-health compatibility surface
 
 ## execution packet
 
-Command: `/usr/bin/python3 scripts/check_backend_consolidation_execution_packet.py`
+Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_consolidation_execution_packet.py`
 
 Return code: `0`
 
@@ -97,7 +97,7 @@ Backend consolidation execution packet check
 
 ## terminal packet
 
-Command: `/usr/bin/python3 scripts/check_backend_consolidation_terminal_packet.py`
+Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_consolidation_terminal_packet.py`
 
 Return code: `0`
 

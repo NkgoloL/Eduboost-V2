@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-05-17T09:35:46.247050+00:00`
-- branch: `codex/production_readiness`
-- commit: `7edd5965c75337cddf07bac3852e53bc4ff5f689`
+- generated_at_utc: `2026-05-17T14:32:30.369608+00:00`
+- branch: `fix/github-ci-cd-errors`
+- commit: `b5eb28226e73bc462ade0ff52d80b97ecdaf0621`
 - release_candidate: `unset`
 
 ## Evidence Artifacts

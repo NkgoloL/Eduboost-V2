@@ -1,14 +1,14 @@
 # Backend Consolidation Diagnostic Report
 
-Generated at: `2026-05-17T09:33:20Z`
+Generated at: `2026-05-17T14:30:30Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| backend dragons | 0 | `/usr/bin/python3 scripts/check_backend_consolidation_dragons.py` |
-| audit inventory | 0 | `/usr/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-empty` |
-| consent inventory | 0 | `/usr/bin/python3 scripts/generate_consent_callsite_inventory.py --fail-empty` |
-| health readiness contract | 0 | `/usr/bin/python3 scripts/check_health_readiness_contract.py` |
-| schema drift contract | 0 | `/usr/bin/python3 scripts/check_schema_drift_contract.py` |
+| backend dragons | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_consolidation_dragons.py` |
+| audit inventory | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-empty` |
+| consent inventory | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/generate_consent_callsite_inventory.py --fail-empty` |
+| health readiness contract | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_health_readiness_contract.py` |
+| schema drift contract | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_schema_drift_contract.py` |
 
 ## Interpretation
 
@@ -19,7 +19,7 @@ Generated at: `2026-05-17T09:33:20Z`
 
 ## backend dragons
 
-Command: `/usr/bin/python3 scripts/check_backend_consolidation_dragons.py`
+Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_consolidation_dragons.py`
 
 Return code: `0`
 
@@ -53,7 +53,7 @@ Backend consolidation dragon diagnostic
   - app/repositories/audit_repository.py
   - app/services/data_subject_rights_service.py
   - ... 10 more file(s)
-- audit_logs: 21 match(es)
+- audit_logs: 22 match(es)
   - alembic/versions/0001_v2_consolidated_schema.py
   - app/models/__init__.py
   - app/modules/disaster_recovery/production_readiness_contracts.py
@@ -63,6 +63,7 @@ Backend consolidation dragon diagnostic
   - scripts/check_first_audit_runtime_wiring_no_destructive_actions.py
   - scripts/generate_audit_callsite_inventory.py
   - scripts/generate_backend_deletion_candidate_inventory.py
+  - scripts/generate_release_owner_beta_go_no_go.py
   - tests/unit/test_backend_runtime_enablement_pack.py
   - tests/unit/test_backend_runtime_wiring_preflight.py
 - consent_records: 18 match(es)
@@ -122,27 +123,27 @@ Backend consolidation dragon diagnostic
 
 ## audit inventory
 
-Command: `/usr/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-empty`
+Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-empty`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/audit_callsite_inventory.md (1749 row(s))
+Wrote /home/nkgolol/Dev/Development/Eduboost-V2/docs/release/audit_callsite_inventory.md (1751 row(s))
 ```
 
 ## consent inventory
 
-Command: `/usr/bin/python3 scripts/generate_consent_callsite_inventory.py --fail-empty`
+Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/generate_consent_callsite_inventory.py --fail-empty`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/consent_callsite_inventory.md (341 row(s))
+Wrote /home/nkgolol/Dev/Development/Eduboost-V2/docs/release/consent_callsite_inventory.md (341 row(s))
 ```
 
 ## health readiness contract
 
-Command: `/usr/bin/python3 scripts/check_health_readiness_contract.py`
+Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_health_readiness_contract.py`
 
 Return code: `0`
 
@@ -166,7 +167,7 @@ Health/readiness diagnostic contract check
 
 ## schema drift contract
 
-Command: `/usr/bin/python3 scripts/check_schema_drift_contract.py`
+Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_schema_drift_contract.py`
 
 Return code: `0`
 

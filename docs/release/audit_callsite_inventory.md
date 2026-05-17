@@ -1484,6 +1484,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/generate_backend_runtime_wiring_cases_report.py` | 53 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
 | `scripts/generate_backend_runtime_wiring_preflight_report.py` | 42 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
 | `scripts/generate_backend_runtime_wiring_preflight_report.py` | 54 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_beta_readiness_status.py` | 40 | audit_append_call | `lines.append(f"\| {name} \| {item.get('status')} \|")` |
 | `scripts/generate_beta_release_evidence_bundle.py` | 71 | audit_append_call | `lines.append(f"\| {artifact.category} \| `{artifact.path}` \| `{present}` \|")` |
 | `scripts/generate_beta_signoff_manifest.py` | 69 | audit_append_call | `lines.append(f"\| {area.name} \| {area.evidence} \| _pending_ \| _pending_ \|")` |
 | `scripts/generate_beta_signoff_manifest.py` | 79 | audit_append_call | `lines.append(f"- `{rel_path}`")` |
@@ -1532,6 +1533,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/generate_popia_consent_boundary_matrix.py` | 142 | audit_append_call | `lines.append(f"- `{decision}`: {counts[decision]}")` |
 | `scripts/generate_popia_consent_boundary_matrix.py` | 151 | audit_append_call | `lines.append(f"\| `{row.router}` \| `{row.method}` \| `{row.route}` \| `{row.function}` \| `{row.decision}` \| `{row.marker}` \|")` |
 | `scripts/generate_release_evidence_manifest.py` | 69 | audit_append_call | `lines.append(f"\| {item.name} \| `{item.command}` \| pending \|")` |
+| `scripts/generate_release_owner_beta_go_no_go.py` | 27 | audit_logs_table | `"This memo does not approve production launch, destructive database changes, consent-table merge, audit_logs drop, or public mutating health probes.", "",` |
 | `scripts/generate_release_state_snapshot.py` | 69 | audit_append_call | `lines.append(f"\| `{rel_path}` \| `{present}` \|")` |
 | `scripts/generate_route_alias_matrix.py` | 47 | audit_append_call | `rows.append(` |
 | `scripts/generate_route_alias_matrix.py` | 72 | audit_append_call | `rendered.append(f"\| {row.method} \| `{row.canonical_path}` \| `{row.alias_path}` \| {status} \| {row.note} \|")` |

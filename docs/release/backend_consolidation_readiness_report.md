@@ -1,13 +1,13 @@
 # Backend Consolidation Readiness Report
 
-Generated at: `2026-05-17T09:33:46Z`
+Generated at: `2026-05-17T14:30:47Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| backend consolidation report | 0 | `/usr/bin/python3 scripts/generate_backend_consolidation_report.py` |
-| runtime compatibility report | 0 | `/usr/bin/python3 scripts/generate_backend_runtime_compatibility_report.py` |
-| deletion candidate inventory | 0 | `/usr/bin/python3 scripts/generate_backend_deletion_candidate_inventory.py --fail-empty` |
-| no-op guard | 0 | `/usr/bin/python3 scripts/check_backend_consolidation_noop_guard.py` |
+| backend consolidation report | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/generate_backend_consolidation_report.py` |
+| runtime compatibility report | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/generate_backend_runtime_compatibility_report.py` |
+| deletion candidate inventory | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/generate_backend_deletion_candidate_inventory.py --fail-empty` |
+| no-op guard | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_consolidation_noop_guard.py` |
 
 ## Boundary
 
@@ -15,37 +15,37 @@ This report does not approve deletion, table merging, Alembic stamping, or runti
 
 ## backend consolidation report
 
-Command: `/usr/bin/python3 scripts/generate_backend_consolidation_report.py`
+Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/generate_backend_consolidation_report.py`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/backend_consolidation_diagnostic_report.md
+Wrote /home/nkgolol/Dev/Development/Eduboost-V2/docs/release/backend_consolidation_diagnostic_report.md
 ```
 
 ## runtime compatibility report
 
-Command: `/usr/bin/python3 scripts/generate_backend_runtime_compatibility_report.py`
+Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/generate_backend_runtime_compatibility_report.py`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/backend_runtime_compatibility_report.md
+Wrote /home/nkgolol/Dev/Development/Eduboost-V2/docs/release/backend_runtime_compatibility_report.md
 ```
 
 ## deletion candidate inventory
 
-Command: `/usr/bin/python3 scripts/generate_backend_deletion_candidate_inventory.py --fail-empty`
+Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/generate_backend_deletion_candidate_inventory.py --fail-empty`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/docs/release/backend_deletion_candidate_inventory.md (164317 candidate row(s))
+Wrote /home/nkgolol/Dev/Development/Eduboost-V2/docs/release/backend_deletion_candidate_inventory.md (168934 candidate row(s))
 ```
 
 ## no-op guard
 
-Command: `/usr/bin/python3 scripts/check_backend_consolidation_noop_guard.py`
+Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_consolidation_noop_guard.py`
 
 Return code: `0`
 
