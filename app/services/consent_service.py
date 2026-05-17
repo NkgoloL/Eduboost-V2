@@ -1,3 +1,8 @@
+# DEPRECATED: This asyncpg-style consent service is no longer wired to FastAPI v2 routers.
+# Canonical consent service: app.modules.consent.service.ConsentService
+# This file will be removed after all call sites are migrated. See roadmap P0-01.
+# Do not emit an import-time DeprecationWarning here; tests may run with warnings as errors.
+
 """
 app/services/consent_service.py
 Orchestrates all §4.1 consent lifecycle flows.

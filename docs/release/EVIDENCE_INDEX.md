@@ -364,3 +364,21 @@ make backend-implementation-581-590-full-check
 ```
 
 Synthetic/local/mock/manual-bypass evidence cannot satisfy beta readiness gates.
+
+## Backend implementation 591-610 — POPIA consent lifecycle repair
+
+Audit drivers:
+
+- POPIA lifecycle endpoints must use the canonical SQLAlchemy-compatible consent service.
+- Consent lifecycle actor attribution must come from the authenticated principal, not generated UUIDs.
+- Consent lifecycle mutations must enforce learner-write authorization.
+
+Commands:
+
+```bash
+make popia-consent-lifecycle-inspect
+make popia-consent-lifecycle-repair
+make popia-consent-lifecycle-check
+make backend-implementation-591-610-full-check
+```
+

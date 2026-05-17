@@ -1275,3 +1275,18 @@ backend-implementation-581-590-full-check: beta-evidence-integrity-repair truthf
 	PYTHONPATH=. python3 scripts/generate_truthful_release_owner_beta_go_no_go.py
 	pytest -c pytest.ini tests/unit/test_beta_evidence_integrity_repair.py -q --no-cov
 
+.PHONY: popia-consent-lifecycle-inspect popia-consent-lifecycle-repair popia-consent-lifecycle-check backend-implementation-591-610-full-check
+
+popia-consent-lifecycle-inspect:
+	PYTHONPATH=. python3 scripts/inspect_popia_consent_lifecycle.py
+
+popia-consent-lifecycle-repair:
+	PYTHONPATH=. python3 scripts/repair_popia_consent_lifecycle.py
+
+popia-consent-lifecycle-check:
+	PYTHONPATH=. python3 scripts/check_popia_consent_lifecycle_repair.py
+
+backend-implementation-591-610-full-check: popia-consent-lifecycle-inspect popia-consent-lifecycle-repair popia-consent-lifecycle-check
+	python3 -m compileall -q app/api_v2_routers app/modules/consent app/services app/repositories
+	pytest -c pytest.ini tests/unit/test_popia_consent_lifecycle_contracts.py -q --no-cov --tb=short
+

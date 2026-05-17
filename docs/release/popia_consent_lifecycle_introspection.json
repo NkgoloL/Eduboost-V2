@@ -1,0 +1,78 @@
+{
+  "generated_at": "2026-05-17T17:19:48Z",
+  "files": {
+    "router": "app/api_v2_routers/popia.py",
+    "canonical_service": "app/modules/consent/service.py",
+    "deprecated_service": "app/services/consent_service.py",
+    "standalone_consent_repo": "app/repositories/consent_repository.py",
+    "aggregate_repositories": "app/repositories/repositories.py"
+  },
+  "exists": {
+    "router": true,
+    "canonical_service": true,
+    "deprecated_service": true,
+    "standalone_consent_repo": true,
+    "aggregate_repositories": true
+  },
+  "router_imports": [
+    "__future__",
+    "app.core.consent_gate",
+    "app.core.database",
+    "app.core.envelope_route",
+    "app.core.jobs",
+    "app.core.security",
+    "app.domain.consent",
+    "app.domain.data_subject_rights",
+    "app.modules.consent.service",
+    "app.repositories.consent_repository",
+    "app.repositories.learner_repository",
+    "app.repositories.repositories",
+    "app.security.dependencies",
+    "app.services.fourth_estate",
+    "app.services.popia_service",
+    "asyncio",
+    "fastapi",
+    "inspect",
+    "pydantic",
+    "sqlalchemy.ext.asyncio",
+    "typing",
+    "uuid"
+  ],
+  "router_functions": [
+    "_authenticated_actor_id",
+    "_enforce_popia_learner_write",
+    "cancel_erasure",
+    "create_correction_request",
+    "create_erasure_request",
+    "create_export_request",
+    "create_restriction_request",
+    "deny_consent",
+    "get_canonical_consent_service",
+    "get_consent_service_for_router",
+    "get_data_subject_rights_service_for_router",
+    "grant_consent",
+    "renew_consent",
+    "withdraw_consent"
+  ],
+  "canonical_service_classes": [
+    "ConsentService"
+  ],
+  "canonical_service_functions": [
+    "__init__",
+    "_append_audit",
+    "consent_decision",
+    "execute_erasure",
+    "get_expiring_consents",
+    "get_status",
+    "grant",
+    "renew",
+    "require_active_consent",
+    "revoke"
+  ],
+  "deprecated_service_classes": [
+    "ConsentService"
+  ],
+  "generated_uuid_dependency_count": 0,
+  "deprecated_service_imported_by_router": false,
+  "canonical_service_imported_by_router": true
+}
