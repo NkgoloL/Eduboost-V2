@@ -6,10 +6,8 @@ from fastapi import APIRouter, Cookie, Depends, HTTPException, Request, Response
 from fastapi.responses import JSONResponse
 from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.api_v2_deps.auth_service import (  # noqa: F401
-    AuthApplicationService,
-    get_auth_application_service,
-)
+from app.services.auth_application_service import AuthApplicationService  # noqa: F401
+from app.api_v2_deps.auth_service import get_auth_application_service  # noqa: F401
 
 from app.api_v2_deps.auth_runtime import AuthRuntimeContext, get_auth_runtime_context
 from app.core.config import settings
@@ -94,6 +92,26 @@ async def register(
     response: Response,
     db: AsyncSession = Depends(get_db),
     auth_runtime: AuthRuntimeContext = Depends(get_auth_runtime_context),
+    auth_service: AuthApplicationService = Depends(get_auth_application_service),
+):
+    # code_911_950_auth_lifecycle_delegate
+    return await auth_service.register(
+        legacy_impl=_auth_lifecycle_legacy_register_impl,
+            request=request,
+            body=body,
+            response=response,
+            db=db,
+            auth_runtime=auth_runtime,
+            auth_service=auth_service,
+    )
+
+async def _auth_lifecycle_legacy_register_impl(
+    request: Request,
+    body: RegisterRequest,
+    response: Response,
+    db: AsyncSession = Depends(get_db),
+    auth_runtime: AuthRuntimeContext = Depends(get_auth_runtime_context),
+    auth_service: AuthApplicationService = Depends(get_auth_application_service),
 ):
     repo = auth_runtime.guardian_repo
     audit = FourthEstateService(db)
@@ -135,6 +153,26 @@ async def login(
     response: Response,
     db: AsyncSession = Depends(get_db),
     auth_runtime: AuthRuntimeContext = Depends(get_auth_runtime_context),
+    auth_service: AuthApplicationService = Depends(get_auth_application_service),
+):
+    # code_911_950_auth_lifecycle_delegate
+    return await auth_service.login(
+        legacy_impl=_auth_lifecycle_legacy_login_impl,
+            request=request,
+            body=body,
+            response=response,
+            db=db,
+            auth_runtime=auth_runtime,
+            auth_service=auth_service,
+    )
+
+async def _auth_lifecycle_legacy_login_impl(
+    request: Request,
+    body: LoginRequest,
+    response: Response,
+    db: AsyncSession = Depends(get_db),
+    auth_runtime: AuthRuntimeContext = Depends(get_auth_runtime_context),
+    auth_service: AuthApplicationService = Depends(get_auth_application_service),
 ):
     repo = auth_runtime.guardian_repo
     audit = FourthEstateService(db)
@@ -162,7 +200,17 @@ async def login(
 
 
 @router.post("/dev-session")
-async def create_dev_session(response: Response, db: AsyncSession = Depends(get_db), auth_runtime: AuthRuntimeContext = Depends(get_auth_runtime_context)):
+async def create_dev_session(response: Response, db: AsyncSession = Depends(get_db), auth_runtime: AuthRuntimeContext = Depends(get_auth_runtime_context), auth_service: AuthApplicationService = Depends(get_auth_application_service)):
+    # code_911_950_auth_lifecycle_delegate
+    return await auth_service.create_dev_session(
+        legacy_impl=_auth_lifecycle_legacy_create_dev_session_impl,
+            response=response,
+            db=db,
+            auth_runtime=auth_runtime,
+            auth_service=auth_service,
+    )
+
+async def _auth_lifecycle_legacy_create_dev_session_impl(response: Response, db: AsyncSession = Depends(get_db), auth_runtime: AuthRuntimeContext = Depends(get_auth_runtime_context), auth_service: AuthApplicationService = Depends(get_auth_application_service)):
     """
     Non-production bootstrap endpoint for the local learner flow.
     Creates or reuses a guardian, learner, and active consent so the frontend
@@ -253,6 +301,28 @@ async def refresh_token(
     db: AsyncSession = Depends(get_db),
     cookie_refresh: str | None = Cookie(default=None, alias=REFRESH_COOKIE),
     auth_runtime: AuthRuntimeContext = Depends(get_auth_runtime_context),
+    auth_service: AuthApplicationService = Depends(get_auth_application_service),
+):
+    # code_911_950_auth_lifecycle_delegate
+    return await auth_service.refresh(
+        legacy_impl=_auth_lifecycle_legacy_refresh_impl,
+            request=request,
+            response=response,
+            body=body,
+            db=db,
+            cookie_refresh=cookie_refresh,
+            auth_runtime=auth_runtime,
+            auth_service=auth_service,
+    )
+
+async def _auth_lifecycle_legacy_refresh_impl(
+    request: Request,
+    response: Response,
+    body: RefreshRequest | None = None,
+    db: AsyncSession = Depends(get_db),
+    cookie_refresh: str | None = Cookie(default=None, alias=REFRESH_COOKIE),
+    auth_runtime: AuthRuntimeContext = Depends(get_auth_runtime_context),
+    auth_service: AuthApplicationService = Depends(get_auth_application_service),
 ):
     token = (body.refresh_token if body else None) or cookie_refresh
     if not token:

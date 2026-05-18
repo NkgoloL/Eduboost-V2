@@ -207,3 +207,36 @@ __all__ = [
     "extract_identifier",
     "import_symbol",
 ]
+
+# code_911_950_auth_lifecycle_methods
+async def _auth_lifecycle_call_legacy(self, legacy_impl, **kwargs):
+    """Execute a preserved auth lifecycle implementation through the service boundary."""
+    if legacy_impl is None:
+        raise AuthApplicationServiceError("legacy_impl is required for transitional lifecycle extraction")
+    result = legacy_impl(**kwargs)
+    if hasattr(result, "__await__"):
+        return await result
+    return result
+
+
+async def _auth_lifecycle_register(self, *, legacy_impl=None, **kwargs):
+    return await self._auth_lifecycle_call_legacy(legacy_impl, **kwargs)
+
+
+async def _auth_lifecycle_login(self, *, legacy_impl=None, **kwargs):
+    return await self._auth_lifecycle_call_legacy(legacy_impl, **kwargs)
+
+
+async def _auth_lifecycle_refresh(self, *, legacy_impl=None, **kwargs):
+    return await self._auth_lifecycle_call_legacy(legacy_impl, **kwargs)
+
+
+async def _auth_lifecycle_create_dev_session(self, *, legacy_impl=None, **kwargs):
+    return await self._auth_lifecycle_call_legacy(legacy_impl, **kwargs)
+
+
+AuthApplicationService._auth_lifecycle_call_legacy = _auth_lifecycle_call_legacy
+AuthApplicationService.register = _auth_lifecycle_register
+AuthApplicationService.login = _auth_lifecycle_login
+AuthApplicationService.refresh = _auth_lifecycle_refresh
+AuthApplicationService.create_dev_session = _auth_lifecycle_create_dev_session

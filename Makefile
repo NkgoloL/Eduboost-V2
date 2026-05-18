@@ -1482,3 +1482,24 @@ backend-implementation-871-910-full-check: auth-service-extraction-repair auth-s
 	python3 -m compileall -q app/api_v2_deps app/api_v2_routers app/services scripts tests/unit/test_auth_service_extraction_contracts.py
 	pytest -c pytest.ini tests/unit/test_auth_service_extraction_contracts.py -q --no-cov --tb=short
 
+.PHONY: auth-lifecycle-method-extraction-repair auth-lifecycle-method-extraction-check auth-lifecycle-extraction-report auth-lifecycle-method-tests auth-lifecycle-route-registration-tests backend-implementation-911-950-full-check
+
+auth-lifecycle-method-extraction-repair:
+	PYTHONPATH=. python3 scripts/repair_auth_lifecycle_method_extraction.py
+
+auth-lifecycle-method-extraction-check:
+	PYTHONPATH=. python3 scripts/check_auth_lifecycle_method_extraction.py
+
+auth-lifecycle-extraction-report:
+	PYTHONPATH=. python3 scripts/generate_auth_lifecycle_extraction_report.py
+
+auth-lifecycle-method-tests:
+	pytest -c pytest.ini tests/unit/test_auth_lifecycle_service_methods.py -q --no-cov --tb=short
+
+auth-lifecycle-route-registration-tests:
+	pytest -c pytest.ini tests/integration/test_auth_lifecycle_route_registration.py -q --no-cov --tb=short
+
+backend-implementation-911-950-full-check: auth-lifecycle-method-extraction-repair auth-lifecycle-method-extraction-check auth-lifecycle-extraction-report auth-lifecycle-method-tests auth-lifecycle-route-registration-tests
+	python3 -m compileall -q app/api_v2_deps app/api_v2_routers app/services scripts tests
+	python3 -m ruff check app/api_v2_routers/auth.py app/services/auth_application_service.py app/api_v2_deps/auth_service.py --select F821,F401,F811,E402
+

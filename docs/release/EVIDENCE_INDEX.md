@@ -580,3 +580,23 @@ make auth-service-extraction-report
 make backend-implementation-871-910-full-check
 ```
 
+## Backend implementation 911-950 — Auth service method extraction and lifecycle integration tests
+
+Audit drivers:
+
+- Auth lifecycle routes should delegate through AuthApplicationService methods.
+- auth.py must remain import-safe for FastAPI route registration.
+- auth.py must not reintroduce direct repository imports or future annotations.
+- Route registration should be covered by runtime-shaped tests.
+
+Commands:
+
+```bash
+make auth-lifecycle-method-extraction-repair
+make auth-lifecycle-method-extraction-check
+make auth-lifecycle-extraction-report
+make auth-lifecycle-method-tests
+make auth-lifecycle-route-registration-tests
+make backend-implementation-911-950-full-check
+```
+
