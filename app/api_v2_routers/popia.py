@@ -1,41 +1,29 @@
-from app.security.dependencies import require_learner_read_for_current_user, require_learner_write_for_current_user
-from app.security.dependencies import require_active_consent_for_current_user
-from typing import Any
-from fastapi import Depends, HTTPException
-from app.security.dependencies import require_learner_write_for_current_user
-from app.api_v2_deps.consent_lifecycle import authenticated_actor_id as _authenticated_actor_id, enforce_popia_learner_write as _enforce_popia_learner_write, get_canonical_consent_service, get_canonical_data_rights_service
 """
 app/api_v2_routers/popia.py
 POPIA endpoints: consent lifecycle (§4.1) and data-subject rights (§4.3).
 All learner-data routes use the require_active_consent dependency (§4.2).
 """
+from __future__ import annotations
 
-import asyncio
 import uuid
-from typing import Optional
+from typing import Any, Optional
 
-from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, status
 from pydantic import BaseModel
 
-from app.core.consent_gate import ActiveConsent, require_active_consent
-from app.domain.consent import ConsentRecord
-from app.domain.data_subject_rights import (
-    CorrectionRequest,
-    DataExportRequest,
-    ErasureRequest,
-    RestrictionRequest,
+from app.api_v2_deps.consent_lifecycle import (
+    authenticated_actor_id as _authenticated_actor_id,
+    enforce_popia_learner_write as _enforce_popia_learner_write,
+    get_canonical_consent_service,
+    get_canonical_data_rights_service,
 )
+from app.core.envelope_route import EnvelopedRoute
+from app.core.security import get_current_user
+from app.domain.consent import ConsentRecord
 from app.modules.consent.service import ConsentService
 from app.services.popia_service import POPIADataRightsService
 
-from app.core.envelope_route import EnvelopedRoute
-
 router = APIRouter(route_class=EnvelopedRoute, prefix="/popia", tags=["popia"])
-
-
-from app.core.jobs import enqueue_job
-from app.core.security import get_current_user, require_parent_or_admin
-from app.services.fourth_estate import FourthEstateService
 
 
 # ---------------------------------------------------------------------------

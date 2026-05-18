@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-05-18T10:13:21Z",
+  "security_exists": true,
+  "auth_router_exists": true,
+  "security_functions": [
+    "_get_fernet",
+    "_inner",
+    "create_access_token",
+    "create_refresh_token",
+    "decode_token",
+    "decrypt_pii",
+    "encrypt_pii",
+    "get_current_user",
+    "get_current_user_optional",
+    "hash_email",
+    "hash_password",
+    "require_roles",
+    "verify_password"
+  ],
+  "jwt_encode_count_security": 2,
+  "jwt_decode_count_security": 0,
+  "jwt_keyring_imported_security": true,
+  "jwt_keyring_imported_auth": false,
+  "kid_header_reference_count": 3,
+  "decode_keyring_reference_count": 2
+}

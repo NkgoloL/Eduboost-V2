@@ -3,6 +3,7 @@ EduBoost V2 — Security Helpers
 JWT creation/verification, bcrypt password hashing, RBAC role enforcement.
 """
 from __future__ import annotations
+from app.services.jwt_keyring import current_jwt_algorithm, current_jwt_headers, current_jwt_signing_key, decode_jwt_with_keyring
 
 import base64
 import hashlib
@@ -57,7 +58,7 @@ def create_access_token(subject: str, role: UserRole, extra: dict[str, Any] | No
         "type": "access",
         **(extra or {}),
     }
-    return jwt.encode(payload, settings.JWT_SECRET, algorithm=settings.JWT_ALGORITHM)
+    return jwt.encode(payload, current_jwt_signing_key(), algorithm=current_jwt_algorithm(settings.JWT_ALGORITHM), headers=current_jwt_headers())
 
 
 def create_refresh_token(subject: str, role: UserRole, family_id: str | None = None) -> str:
@@ -71,12 +72,12 @@ def create_refresh_token(subject: str, role: UserRole, family_id: str | None = N
         "type": "refresh",
         "family": family_id or str(uuid.uuid4()),
     }
-    return jwt.encode(payload, settings.JWT_SECRET, algorithm=settings.JWT_ALGORITHM)
+    return jwt.encode(payload, current_jwt_signing_key(), algorithm=current_jwt_algorithm(settings.JWT_ALGORITHM), headers=current_jwt_headers())
 
 
 def decode_token(token: str) -> dict[str, Any]:
     try:
-        return jwt.decode(token, settings.JWT_SECRET, algorithms=[settings.JWT_ALGORITHM])
+        return decode_jwt_with_keyring(token)
     except JWTError as exc:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
