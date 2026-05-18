@@ -639,3 +639,21 @@ make auth-http-success-scope-contracts
 make backend-implementation-991-1030-full-check
 ```
 
+## Backend implementation 1031-1070 — Transactional auth repository/DB proof
+
+Audit drivers:
+
+- Auth lifecycle behavior should be proven beyond dependency-override stubs.
+- Register/login/refresh must exercise persistence, duplicate detection, password hash verification, refresh replay rejection, and guardian learner scope.
+- This batch uses an isolated SQLite proof store and does not claim production repository conformance.
+
+Commands:
+
+```bash
+make auth-db-lifecycle-proof-report
+make auth-db-lifecycle-proof-test
+make auth-db-lifecycle-proof-check
+make auth-db-lifecycle-proof-contracts
+make backend-implementation-1031-1070-full-check
+```
+

@@ -1542,3 +1542,21 @@ backend-implementation-991-1030-full-check: auth-http-success-scope-report auth-
 	python3 -m compileall -q app/api_v2_deps app/api_v2_routers app/services scripts tests
 	python3 -m ruff check app/api_v2_routers/auth.py app/services/auth_application_service.py app/services/auth_lifecycle_impl.py app/api_v2_deps/auth_service.py tests/integration/test_auth_lifecycle_http_success_scope.py --select F821,F401,F811,E402
 
+.PHONY: auth-db-lifecycle-proof-report auth-db-lifecycle-proof-test auth-db-lifecycle-proof-check auth-db-lifecycle-proof-contracts backend-implementation-1031-1070-full-check
+
+auth-db-lifecycle-proof-report:
+	PYTHONPATH=. python3 scripts/generate_auth_db_lifecycle_proof_report.py
+
+auth-db-lifecycle-proof-test:
+	pytest -c pytest.ini tests/integration/test_auth_transactional_db_lifecycle_proof.py -q --no-cov --tb=short
+
+auth-db-lifecycle-proof-check:
+	PYTHONPATH=. python3 scripts/check_auth_db_lifecycle_proof.py
+
+auth-db-lifecycle-proof-contracts:
+	pytest -c pytest.ini tests/unit/test_auth_db_lifecycle_proof_contracts.py -q --no-cov --tb=short
+
+backend-implementation-1031-1070-full-check: auth-db-lifecycle-proof-report auth-db-lifecycle-proof-check auth-db-lifecycle-proof-contracts
+	python3 -m compileall -q app/services scripts tests
+	python3 -m ruff check app/services/auth_db_lifecycle_proof.py scripts/generate_auth_db_lifecycle_proof_report.py scripts/check_auth_db_lifecycle_proof.py tests/integration/test_auth_transactional_db_lifecycle_proof.py tests/unit/test_auth_db_lifecycle_proof_contracts.py --select F821,F401,F811,E402
+

@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-05-18T20:02:52Z",
+  "status": "transactional_sqlite_auth_lifecycle_proof",
+  "registered_guardian_learner_ids": [
+    "learner-1"
+  ],
+  "login_guardian_learner_ids": [
+    "learner-1"
+  ],
+  "refresh_guardian_learner_ids": [
+    "learner-1"
+  ],
+  "duplicate_registration_rejected": true,
+  "refresh_replay_rejected": true,
+  "proofs": [
+    "register persists user, guardian and learner rows",
+    "duplicate registration is rejected by DB-backed lookup",
+    "login verifies stored password hash",
+    "wrong password is rejected",
+    "refresh token is persisted and consumed",
+    "refresh replay is rejected",
+    "guardian_learner_ids are loaded from DB learner rows"
+  ]
+}
