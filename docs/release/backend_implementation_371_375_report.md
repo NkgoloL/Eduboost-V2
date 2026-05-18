@@ -1,13 +1,13 @@
 # Backend Implementation 371-375 Report
 
-Generated at: `2026-05-17T14:31:02Z`
+Generated at: `2026-05-18T08:35:50Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| backend implementation 371-375 | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_implementation_371_375.py` |
-| audit registry | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_audit_canonicalization_registry.py` |
-| consent runtime | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_consent_runtime_compatibility_slice.py` |
-| deep readiness | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_deep_readiness_readonly_guard.py` |
+| backend implementation 371-375 | 0 | `/usr/bin/python3 scripts/check_backend_implementation_371_375.py` |
+| audit registry | 0 | `/usr/bin/python3 scripts/check_audit_canonicalization_registry.py` |
+| consent runtime | 0 | `/usr/bin/python3 scripts/check_consent_runtime_compatibility_slice.py` |
+| deep readiness | 0 | `/usr/bin/python3 scripts/check_deep_readiness_readonly_guard.py` |
 
 ## Boundary
 
@@ -15,7 +15,7 @@ This report proves non-destructive implementation progress only.
 
 ## backend implementation 371-375
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_implementation_371_375.py`
+Command: `/usr/bin/python3 scripts/check_backend_implementation_371_375.py`
 
 Return code: `0`
 
@@ -36,7 +36,7 @@ Backend implementation 371-375 check
 
 ## audit registry
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_audit_canonicalization_registry.py`
+Command: `/usr/bin/python3 scripts/check_audit_canonicalization_registry.py`
 
 Return code: `0`
 
@@ -51,7 +51,7 @@ Audit canonicalization migration registry check
 
 ## consent runtime
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_consent_runtime_compatibility_slice.py`
+Command: `/usr/bin/python3 scripts/check_consent_runtime_compatibility_slice.py`
 
 Return code: `0`
 
@@ -67,7 +67,7 @@ Consent runtime compatibility slice check
 
 ## deep readiness
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_deep_readiness_readonly_guard.py`
+Command: `/usr/bin/python3 scripts/check_deep_readiness_readonly_guard.py`
 
 Return code: `0`
 

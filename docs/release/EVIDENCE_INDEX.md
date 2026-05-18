@@ -349,3 +349,25 @@ make backend-implementation-561-580-full-check
 ```
 
 Evidence remains blocked until real external CI, branch-protection, content, staging, and operational drill artifacts are supplied.
+
+## Backend implementation 751-780 — JWT rotation and dependency security hardening
+
+Audit drivers:
+
+- JWTs should support `kid` headers and current/previous key verification.
+- Dependency pinning gaps must be visible before beta.
+- Remaining auth service extraction debt must remain explicit after auth router boundary closure.
+
+Commands:
+
+```bash
+make jwt-rotation-inspect
+make jwt-rotation-repair
+make jwt-rotation-check
+make dependency-pin-report
+make dependency-constraints-snapshot
+make optional-pip-audit
+make auth-extraction-followup
+make backend-implementation-751-780-full-check
+```
+

@@ -1,12 +1,12 @@
 # Backend Runtime Wiring Cases Report
 
-Generated at: `2026-05-17T14:31:29Z`
+Generated at: `2026-05-18T08:36:22Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| runtime wiring cases | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_runtime_wiring_cases.py` |
-| runtime wiring preflight | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_runtime_wiring_preflight.py` |
-| implementation 376-382 | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/generate_backend_runtime_wiring_preflight_report.py` |
+| runtime wiring cases | 0 | `/usr/bin/python3 scripts/check_backend_runtime_wiring_cases.py` |
+| runtime wiring preflight | 0 | `/usr/bin/python3 scripts/check_backend_runtime_wiring_preflight.py` |
+| implementation 376-382 | 0 | `/usr/bin/python3 scripts/generate_backend_runtime_wiring_preflight_report.py` |
 
 ## Boundary
 
@@ -14,7 +14,7 @@ This report proves fixture-backed runtime wiring readiness only.
 
 ## runtime wiring cases
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_runtime_wiring_cases.py`
+Command: `/usr/bin/python3 scripts/check_backend_runtime_wiring_cases.py`
 
 Return code: `0`
 
@@ -38,7 +38,7 @@ Backend runtime wiring fixture case check
 
 ## runtime wiring preflight
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_runtime_wiring_preflight.py`
+Command: `/usr/bin/python3 scripts/check_backend_runtime_wiring_preflight.py`
 
 Return code: `0`
 
@@ -60,7 +60,7 @@ Backend runtime wiring preflight check
 
 ## implementation 376-382
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/generate_backend_runtime_wiring_preflight_report.py`
+Command: `/usr/bin/python3 scripts/generate_backend_runtime_wiring_preflight_report.py`
 
 Return code: `0`
 

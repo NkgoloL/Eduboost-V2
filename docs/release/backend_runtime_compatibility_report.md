@@ -1,13 +1,13 @@
 # Backend Runtime Compatibility Report
 
-Generated at: `2026-05-17T14:30:34Z`
+Generated at: `2026-05-18T08:35:03Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| runtime compatibility | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_runtime_compatibility.py` |
-| audit compatibility | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-empty` |
-| consent compatibility | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/generate_consent_callsite_inventory.py --fail-empty` |
-| health readiness | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_health_readiness_contract.py` |
+| runtime compatibility | 0 | `/usr/bin/python3 scripts/check_backend_runtime_compatibility.py` |
+| audit compatibility | 0 | `/usr/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-empty` |
+| consent compatibility | 0 | `/usr/bin/python3 scripts/generate_consent_callsite_inventory.py --fail-empty` |
+| health readiness | 0 | `/usr/bin/python3 scripts/check_health_readiness_contract.py` |
 
 ## Boundary
 
@@ -15,7 +15,7 @@ This report proves compatibility surfaces exist. It does not approve deletion, t
 
 ## runtime compatibility
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_runtime_compatibility.py`
+Command: `/usr/bin/python3 scripts/check_backend_runtime_compatibility.py`
 
 Return code: `0`
 
@@ -41,17 +41,17 @@ Deep-health compatibility surface
 
 ## audit compatibility
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-empty`
+Command: `/usr/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-empty`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/Development/Eduboost-V2/docs/release/audit_callsite_inventory.md (1751 row(s))
+Wrote /home/nkgolol/Dev/Development/Eduboost-V2/docs/release/audit_callsite_inventory.md (1759 row(s))
 ```
 
 ## consent compatibility
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/generate_consent_callsite_inventory.py --fail-empty`
+Command: `/usr/bin/python3 scripts/generate_consent_callsite_inventory.py --fail-empty`
 
 Return code: `0`
 
@@ -61,7 +61,7 @@ Wrote /home/nkgolol/Dev/Development/Eduboost-V2/docs/release/consent_callsite_in
 
 ## health readiness
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_health_readiness_contract.py`
+Command: `/usr/bin/python3 scripts/check_health_readiness_contract.py`
 
 Return code: `0`
 

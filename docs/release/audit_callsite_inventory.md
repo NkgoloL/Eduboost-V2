@@ -980,6 +980,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/first_audit_runtime_wiring.py` | 60 | audit_append_call | `self.events.append(kwargs)` |
 | `app/services/first_audit_runtime_wiring.py` | 132 | audit_record_call | `response = await adapter.record(` |
 | `app/services/first_deep_readiness_runtime_wiring.py` | 85 | audit_append_call | `selected_checks.append(name)` |
+| `app/services/jwt_keyring.py` | 75 | audit_append_call | `keys.append(JWTKey(kid=kid, secret=secret, algorithm=algorithm, status=status))` |
 | `app/services/lesson_context_builder.py` | 217 | audit_append_call | `parts.append(f"({subtopic})")` |
 | `app/services/lesson_context_builder.py` | 221 | audit_append_call | `parts.append(f"with emphasis on correcting: {tags_str}")` |
 | `app/services/lesson_context_builder.py` | 231 | audit_append_call | `parts.append(severity_hints.get(severity, ""))` |
@@ -1305,6 +1306,9 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_incident_response_operations_support_production_readiness.py` | 148 | audit_append_call | `results.append(` |
 | `scripts/check_incident_response_operations_support_production_readiness.py` | 159 | audit_append_call | `results.append(` |
 | `scripts/check_incident_response_operations_support_production_readiness.py` | 191 | audit_append_call | `results.append(OperationsSupportReadinessResult("operations_support_contracts", False, f"contract check failed: {exc}"))` |
+| `scripts/check_jwt_rotation.py` | 21 | audit_append_call | `failures.append("missing keyring helper")` |
+| `scripts/check_jwt_rotation.py` | 27 | audit_append_call | `failures.append("security.py missing keyring import")` |
+| `scripts/check_jwt_rotation.py` | 33 | audit_append_call | `failures.append("no kid header path or blocker")` |
 | `scripts/check_learner_vertical_journey_contract.py` | 49 | audit_append_call | `results.append(` |
 | `scripts/check_learner_vertical_journey_contract.py` | 54 | audit_append_call | `results.append(` |
 | `scripts/check_learner_vertical_journey_contract.py` | 62 | audit_append_call | `results.append(` |
@@ -1444,6 +1448,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/generate_audit_callsite_inventory.py` | 57 | audit_append_call | `rows.append(` |
 | `scripts/generate_audit_callsite_inventory.py` | 79 | audit_append_call | `output.append(f"\| `{row.path}` \| {row.line} \| {row.category} \| `{text}` \|")` |
 | `scripts/generate_audit_callsite_inventory.py` | 89 | audit_logs_table | `"- [ ] Identify any `audit_logs` data-retention requirement.",` |
+| `scripts/generate_auth_extraction_followup.py` | 22 | audit_append_call | `modules.append(node.module or "")` |
 | `scripts/generate_backend_consolidation_evidence_manifest.py` | 62 | audit_append_call | `rows.append(ManifestRow(relative, True, path.stat().st_size, _sha256(path)))` |
 | `scripts/generate_backend_consolidation_evidence_manifest.py` | 64 | audit_append_call | `rows.append(ManifestRow(relative, False, 0, ""))` |
 | `scripts/generate_backend_consolidation_evidence_manifest.py` | 80 | audit_append_call | `lines.append(` |
@@ -1500,6 +1505,9 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/generate_dep_graph.py` | 99 | audit_append_call | `lines.append(f'    {src_id}["{src_label}"] --> {tgt_id}["{tgt_label}"]')` |
 | `scripts/generate_dep_graph.py` | 111 | audit_append_call | `lines.append(f'    "{source}" -> "{target}";')` |
 | `scripts/generate_dep_graph.py` | 112 | audit_append_call | `lines.append("}")` |
+| `scripts/generate_dependency_pin_report.py` | 46 | audit_append_call | `blockers.append(f"{path.relative_to(ROOT)}:{lineno}: {line.strip()}")` |
+| `scripts/generate_dependency_pin_report.py` | 47 | audit_append_call | `rows.append({"file": str(path.relative_to(ROOT)), "line": lineno, "classification": classification, "text": line.strip()})` |
+| `scripts/generate_dependency_pin_report.py` | 59 | audit_append_call | `lines.append("- None")` |
 | `scripts/generate_first_audit_runtime_wiring_report.py` | 42 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
 | `scripts/generate_first_audit_runtime_wiring_report.py` | 54 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
 | `scripts/generate_frontend_api_client_inventory.py` | 73 | audit_append_call | `surfaces.append(` |

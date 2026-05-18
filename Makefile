@@ -1256,3 +1256,30 @@ backend-implementation-561-580-full-check:
 	PYTHONPATH=. python3 scripts/check_evidence_json_schema.py docs/release/ci_evidence.json docs/release/branch_protection_evidence.json docs/beta/beta_content_hard_gate.json docs/release/staging_smoke_final_evidence.json docs/release/backup_drill_evidence.json docs/release/restore_drill_evidence.json docs/release/rollback_drill_evidence.json docs/release/beta_readiness_status.json
 	pytest -c pytest.ini tests/unit/test_beta_evidence_release_gating.py -q --no-cov
 
+.PHONY: jwt-rotation-inspect jwt-rotation-repair jwt-rotation-check dependency-pin-report dependency-constraints-snapshot optional-pip-audit auth-extraction-followup backend-implementation-751-780-full-check
+
+jwt-rotation-inspect:
+	PYTHONPATH=. python3 scripts/inspect_jwt_rotation.py
+
+jwt-rotation-repair:
+	PYTHONPATH=. python3 scripts/repair_jwt_rotation.py
+
+jwt-rotation-check:
+	PYTHONPATH=. python3 scripts/check_jwt_rotation.py
+
+dependency-pin-report:
+	PYTHONPATH=. python3 scripts/generate_dependency_pin_report.py || true
+
+dependency-constraints-snapshot:
+	PYTHONPATH=. python3 scripts/generate_constraints_snapshot.py
+
+optional-pip-audit:
+	PYTHONPATH=. python3 scripts/run_optional_pip_audit.py || true
+
+auth-extraction-followup:
+	PYTHONPATH=. python3 scripts/generate_auth_extraction_followup.py
+
+backend-implementation-751-780-full-check: jwt-rotation-inspect jwt-rotation-repair jwt-rotation-check dependency-pin-report dependency-constraints-snapshot optional-pip-audit auth-extraction-followup
+	python3 -m compileall -q app/services app/core scripts
+	pytest -c pytest.ini tests/unit/test_jwt_rotation_dependency_security.py -q --no-cov --tb=short
+

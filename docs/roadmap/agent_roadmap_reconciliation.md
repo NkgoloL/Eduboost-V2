@@ -19,7 +19,7 @@
 | T-13 | P1 | Governance | PARTIAL_OR_DONE_VERIFY | PR template and CODEOWNERS | Run task-specific checker and confirm evidence freshness. |
 | T-14 | P1 | POPIA | PARTIAL_OR_DONE_VERIFY | Run POPIA sweep and archive evidence | Run task-specific checker and confirm evidence freshness. |
 | T-15 | P2 | Dependencies | PARTIAL_OR_DONE_VERIFY | Pin Python dependencies | Run task-specific checker and confirm evidence freshness. |
-| T-16 | P2 | Security | PENDING_AGENT | JWT key rotation | Implement kid/current/previous strategy and revoke-all. |
+| T-16 | P2 | Security | PARTIAL_OR_DONE_VERIFY | JWT key rotation | Run task-specific checker and confirm evidence freshness. |
 | T-17 | P2 | Testing | PARTIAL_OR_DONE_VERIFY | Object-level authz for every router | Run task-specific checker and confirm evidence freshness. |
 | T-18 | P2 | Observability | PENDING_INFRA | Alertmanager live notification | Wire notification secret and fire test alert. |
 | T-19 | P2 | Operations | PENDING_INFRA | Backup/restore drill | Execute real drill and archive output. |

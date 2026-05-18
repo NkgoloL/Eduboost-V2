@@ -1,13 +1,13 @@
 # Backend Runtime Enablement Report
 
-Generated at: `2026-05-17T14:31:08Z`
+Generated at: `2026-05-18T08:35:59Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| runtime enablement guard | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_runtime_enablement_guard.py` |
-| destructive action blocklist | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_destructive_action_blocklist.py` |
-| first wiring candidates | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_first_wiring_candidates.py` |
-| runtime wiring cases | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_runtime_wiring_cases.py` |
+| runtime enablement guard | 0 | `/usr/bin/python3 scripts/check_backend_runtime_enablement_guard.py` |
+| destructive action blocklist | 0 | `/usr/bin/python3 scripts/check_backend_destructive_action_blocklist.py` |
+| first wiring candidates | 0 | `/usr/bin/python3 scripts/check_backend_first_wiring_candidates.py` |
+| runtime wiring cases | 0 | `/usr/bin/python3 scripts/check_backend_runtime_wiring_cases.py` |
 
 ## Boundary
 
@@ -15,7 +15,7 @@ This report enables a scoped runtime PR only. It does not approve destructive co
 
 ## runtime enablement guard
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_runtime_enablement_guard.py`
+Command: `/usr/bin/python3 scripts/check_backend_runtime_enablement_guard.py`
 
 Return code: `0`
 
@@ -42,7 +42,7 @@ Backend runtime enablement guard
 
 ## destructive action blocklist
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_destructive_action_blocklist.py`
+Command: `/usr/bin/python3 scripts/check_backend_destructive_action_blocklist.py`
 
 Return code: `0`
 
@@ -57,7 +57,7 @@ Backend destructive action blocklist check
 
 ## first wiring candidates
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_first_wiring_candidates.py`
+Command: `/usr/bin/python3 scripts/check_backend_first_wiring_candidates.py`
 
 Return code: `0`
 
@@ -77,7 +77,7 @@ Backend first wiring candidate check
 
 ## runtime wiring cases
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python3 scripts/check_backend_runtime_wiring_cases.py`
+Command: `/usr/bin/python3 scripts/check_backend_runtime_wiring_cases.py`
 
 Return code: `0`
 

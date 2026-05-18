@@ -1,8 +1,8 @@
 # Release Evidence Manifest
 
-Generated: `2026-05-17T14:31:44Z`
+Generated: `2026-05-18T08:36:42Z`
 Branch: `fix/github-ci-cd-errors`
-Commit: `b5eb28226e73bc462ade0ff52d80b97ecdaf0621`
+Commit: `996786f9faffec5ada9651e9637d40c3ce574e97`
 
 ## Required Evidence Commands
 

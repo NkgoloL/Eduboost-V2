@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-05-18T08:39:27Z",
+  "security_exists": true,
+  "auth_router_exists": true,
+  "security_functions": [
+    "_inner",
+    "create_access_token",
+    "create_refresh_token",
+    "decode_token",
+    "get_current_user",
+    "get_current_user_optional",
+    "hash_email",
+    "hash_password",
+    "require_roles",
+    "verify_password"
+  ],
+  "jwt_encode_count_security": 2,
+  "jwt_decode_count_security": 0,
+  "jwt_keyring_imported_security": true,
+  "jwt_keyring_imported_auth": false,
+  "kid_header_reference_count": 3,
+  "decode_keyring_reference_count": 2
+}

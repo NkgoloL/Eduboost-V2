@@ -174,11 +174,11 @@
     "priority": "P2",
     "area": "Security",
     "title": "JWT key rotation",
-    "status": "PENDING_AGENT",
+    "status": "PARTIAL_OR_DONE_VERIFY",
     "evidence": [
       "docs/security/jwt_rotation_plan.md"
     ],
-    "next_action": "Implement kid/current/previous strategy and revoke-all."
+    "next_action": "Run task-specific checker and confirm evidence freshness."
   },
   {
     "id": "T-17",
