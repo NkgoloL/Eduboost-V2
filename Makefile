@@ -1839,3 +1839,24 @@ backend-implementation-1751-1790-full-check: tx-route-wiring-inventory tx-route-
 	python3 -m compileall -q scripts tests
 	python3 -m ruff check scripts/tx_route_wiring_inventory.py scripts/check_tx_route_wiring.py tests/unit/test_tx_route_wiring_inventory.py --select F821,F401,F811,E402
 
+.PHONY: external-approval-registry-patch external-approval-status external-approval-local-check external-approval-release-check external-approval-test backend-implementation-1791-1830-full-check
+
+external-approval-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_external_approval_registry.py
+
+external-approval-status:
+	PYTHONPATH=. python3 -c "from scripts.external_approval_gate import write_status; s = write_status(); print(s.status)"
+
+external-approval-local-check: external-approval-registry-patch
+	PYTHONPATH=. python3 scripts/check_external_approval_gate.py
+
+external-approval-release-check:
+	PYTHONPATH=. python3 scripts/check_external_approval_gate.py --release
+
+external-approval-test:
+	pytest -c pytest.ini tests/unit/test_external_approval_gate.py -q --no-cov --tb=short
+
+backend-implementation-1791-1830-full-check: external-approval-status external-approval-local-check external-approval-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/external_approval_gate.py scripts/patch_external_approval_registry.py scripts/check_external_approval_gate.py tests/unit/test_external_approval_gate.py --select F821,F401,F811,E402
+

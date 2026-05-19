@@ -966,3 +966,21 @@ make tx-route-wiring-test
 make backend-implementation-1751-1790-full-check
 ```
 
+## EXT-GATE-001 / Backend implementation 1791-1830 — External approval tracking gate
+
+Audit drivers:
+
+- External legal, security, content, and staging approvals are release blockers.
+- Local engineering proof must not be mistaken for external approval.
+- Release mode must fail while approval metadata remains pending.
+
+Commands:
+
+```bash
+make external-approval-status
+make external-approval-local-check
+make external-approval-release-check
+make external-approval-test
+make backend-implementation-1791-1830-full-check
+```
+

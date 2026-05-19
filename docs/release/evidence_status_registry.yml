@@ -114,47 +114,44 @@ findings:
     blocks_beta: true
     external_dependency: true
   - id: LEGAL-001
-    title: POPIA legal review
-    severity: release-blocker
-    gate: 6
-    owner: external-legal
-    implementation_batch: external
+    title: POPIA/legal release approval
+    severity: P1
+    gate: 5
+    owner: legal
+    implementation_batch: code_1791_1830
     proof_status: external-blocked
-    proof_command: attach legal review sign-off
-    evidence_file: docs/release/legal_popia_review.md
+    proof_command: make external-approval-release-check after approval metadata is attached
+    evidence_file: docs/release/external_approvals/legal_approval.md
     last_verified_commit: null
-    closure_blocker: independent POPIA legal review not yet attached
+    closure_blocker: external approval sign-off metadata required
     blocks_beta: true
     external_dependency: true
-
   - id: SEC-001
-    title: Security review or scoped penetration test
-    severity: release-blocker
-    gate: 6
-    owner: external-security
-    implementation_batch: external
+    title: Security release approval
+    severity: P1
+    gate: 5
+    owner: security
+    implementation_batch: code_1791_1830
     proof_status: external-blocked
-    proof_command: attach security review or pen-test report
-    evidence_file: docs/release/security_review.md
+    proof_command: make external-approval-release-check after approval metadata is attached
+    evidence_file: docs/release/external_approvals/security_approval.md
     last_verified_commit: null
-    closure_blocker: external security review not yet attached
+    closure_blocker: external approval sign-off metadata required
     blocks_beta: true
     external_dependency: true
-
   - id: CONTENT-001
-    title: Educator item-bank approval
-    severity: release-blocker
-    gate: 6
+    title: Educator/content release approval
+    severity: P1
+    gate: 5
     owner: content
-    implementation_batch: external
+    implementation_batch: code_1791_1830
     proof_status: external-blocked
-    proof_command: attach educator sign-off and item-bank approval count
-    evidence_file: docs/release/item_bank_educator_signoff.md
+    proof_command: make external-approval-release-check after approval metadata is attached
+    evidence_file: docs/release/external_approvals/content_approval.md
     last_verified_commit: null
-    closure_blocker: production item-bank approval target not yet met
+    closure_blocker: external approval sign-off metadata required
     blocks_beta: true
     external_dependency: true
-
   - id: LESSON-AUTH-001
     title: Lesson object authorization hardening and negative tests
     severity: P1
@@ -294,3 +291,29 @@ findings:
     closure_blocker: production route transactional rewiring and live database proof still pending
     blocks_beta: false
     external_dependency: false
+  - id: STAGING-001
+    title: Staging acceptance approval
+    severity: P1
+    gate: 5
+    owner: release
+    implementation_batch: code_1791_1830
+    proof_status: external-blocked
+    proof_command: make external-approval-release-check after approval metadata is attached
+    evidence_file: docs/release/external_approvals/staging_acceptance.md
+    last_verified_commit: null
+    closure_blocker: external approval sign-off metadata required
+    blocks_beta: true
+    external_dependency: true
+  - id: EXT-GATE-001
+    title: External approval tracking gate
+    severity: P1
+    gate: 5
+    owner: release
+    implementation_batch: code_1791_1830
+    proof_status: runtime-passing
+    proof_command: make backend-implementation-1791-1830-full-check
+    evidence_file: docs/release/external_approval_status.md
+    last_verified_commit: cdf73992b924527830821b8c09f2bae29776dbad
+    closure_blocker: required external approval items remain external-blocked until signed off
+    blocks_beta: true
+    external_dependency: true

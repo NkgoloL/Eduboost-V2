@@ -2,13 +2,13 @@
   "categories": {
     "adr": 25,
     "api": 6,
-    "architecture": 33,
+    "architecture": 35,
     "general": 476,
-    "release": 245,
+    "release": 255,
     "security": 98
   },
-  "commit": "f9641e4f950c316ba2b56d31f4f122b211755326",
-  "document_count": 883,
+  "commit": "cdf73992b924527830821b8c09f2bae29776dbad",
+  "document_count": 895,
   "documents": [
     {
       "category": "general",
@@ -1033,6 +1033,22 @@
       "sha256": "4daaf032877618c576590cd719169237fe055035fa352824cf3c6cac4e4b252e",
       "size_bytes": 14023,
       "title": "Transaction Boundary Inventory"
+    },
+    {
+      "category": "architecture",
+      "generated": false,
+      "path": "docs/architecture/tx_route_wiring_inventory.json",
+      "sha256": "e4ce75b6c1723e2ecf031634c7a68d3036c9a30522835829609ac2da3203b467",
+      "size_bytes": 9753,
+      "title": "tx_route_wiring_inventory.json"
+    },
+    {
+      "category": "architecture",
+      "generated": false,
+      "path": "docs/architecture/tx_route_wiring_inventory.md",
+      "sha256": "1aa40098da7e97a69c3e0b312f1f9631007370592dd5ad401a3637e99ab1f290",
+      "size_bytes": 4529,
+      "title": "Transaction Route Wiring Inventory"
     },
     {
       "category": "general",
@@ -3870,8 +3886,8 @@
       "category": "release",
       "generated": false,
       "path": "docs/release/EVIDENCE_INDEX.md",
-      "sha256": "593cf8ad906c8d9c5d87893dc11f40bc0c781d45e801823b53fd251684ff8617",
-      "size_bytes": 30438,
+      "sha256": "a003cc9913c386ae058bde138f7cab2df3a7abdea5a39dd180f8526bd8e6be76",
+      "size_bytes": 31480,
       "title": "EduBoost V2 Release Evidence Index"
     },
     {
@@ -4870,9 +4886,57 @@
       "category": "release",
       "generated": false,
       "path": "docs/release/evidence_status_registry.yml",
-      "sha256": "8ef048577eadd5c15324d98fe09f94071c10725da7eb9a2a046e8ccd2e98327f",
-      "size_bytes": 10210,
+      "sha256": "3de7d5b6e8da7f242f296f7ffa7c167163dab3cc76cfa3d84b7445166b876088",
+      "size_bytes": 11848,
       "title": "evidence_status_registry.yml"
+    },
+    {
+      "category": "release",
+      "generated": false,
+      "path": "docs/release/external_approval_status.json",
+      "sha256": "373fb43708ab9903f8b7b427c9e68b46754e2d16d7250b797d6d09163572c422",
+      "size_bytes": 3030,
+      "title": "external_approval_status.json"
+    },
+    {
+      "category": "release",
+      "generated": false,
+      "path": "docs/release/external_approval_status.md",
+      "sha256": "f02f290437052aad1cbb7084e831b97b2b93377051f93052c9700d139938e5af",
+      "size_bytes": 1584,
+      "title": "External Approval Status"
+    },
+    {
+      "category": "release",
+      "generated": false,
+      "path": "docs/release/external_approvals/content_approval.md",
+      "sha256": "6d0954064c41723bc95c9d2777c3272f1a0c79225d9e2ff1e5782268bc5e6362",
+      "size_bytes": 522,
+      "title": "Educator/content release approval"
+    },
+    {
+      "category": "release",
+      "generated": false,
+      "path": "docs/release/external_approvals/legal_approval.md",
+      "sha256": "a8ae6eb632d6bd506865b2680ec9037ac44dfeb495cf8aefa612893f5bd03554",
+      "size_bytes": 515,
+      "title": "POPIA/legal release approval"
+    },
+    {
+      "category": "release",
+      "generated": false,
+      "path": "docs/release/external_approvals/security_approval.md",
+      "sha256": "5598b6f80f68368fce74858fec4ddfc765b11dc8e48dd52d37f36737e6341130",
+      "size_bytes": 510,
+      "title": "Security release approval"
+    },
+    {
+      "category": "release",
+      "generated": false,
+      "path": "docs/release/external_approvals/staging_acceptance.md",
+      "sha256": "1e121e78bb53fc48c6b0faf871b68eb3d1a657a626211e9b4befd7e2ae2b204e",
+      "size_bytes": 516,
+      "title": "Staging acceptance approval"
     },
     {
       "category": "release",
@@ -5181,6 +5245,22 @@
     {
       "category": "release",
       "generated": false,
+      "path": "docs/release/next_execution_queue_after_1751_1790.md",
+      "sha256": "a08c71453d5199c68801ad43a9d8247bcafcef81c5e53a76cbf5fbaf1155e0f4",
+      "size_bytes": 429,
+      "title": "Next Execution Queue After TX-ROUTE-001 / code_1751_1790"
+    },
+    {
+      "category": "release",
+      "generated": false,
+      "path": "docs/release/next_execution_queue_after_1791_1830.md",
+      "sha256": "08112f68d0e62a9a4d475debc37e5136443814a750b71de420594221dd65af26",
+      "size_bytes": 485,
+      "title": "Next Execution Queue After EXT-GATE-001 / code_1791_1830"
+    },
+    {
+      "category": "release",
+      "generated": false,
       "path": "docs/release/next_execution_queue_after_831_870.md",
       "sha256": "4ec28450d1d3e3c53f507f5d2453a6add5ce4528b74982ec076a2072167f78ac",
       "size_bytes": 434,
@@ -5369,6 +5449,22 @@
       "sha256": "ff17dc728802b7d6f15c8dc49ec5a038e6944be9d8d208bdfc859ea153ba5fac",
       "size_bytes": 624,
       "title": "No False-Closure Status After DOCS-INTEL-001 / code_1711_1750"
+    },
+    {
+      "category": "release",
+      "generated": false,
+      "path": "docs/release/no_false_closure_status_after_1751_1790.md",
+      "sha256": "87e1403bea5fad76c8171124df17d5e69ff2a8be3c0ed95f3c25b8968fdafedd",
+      "size_bytes": 629,
+      "title": "No False-Closure Status After TX-ROUTE-001 / code_1751_1790"
+    },
+    {
+      "category": "release",
+      "generated": false,
+      "path": "docs/release/no_false_closure_status_after_1791_1830.md",
+      "sha256": "a56d8190f6961487dff88e0123ea6238b778866dec4cf77c1001e4d7113e1af2",
+      "size_bytes": 605,
+      "title": "No False-Closure Status After EXT-GATE-001 / code_1791_1830"
     },
     {
       "category": "release",
@@ -7075,7 +7171,7 @@
       "title": "V2 Migration Guide"
     }
   ],
-  "generated_at": "2026-05-19T12:56:27Z",
+  "generated_at": "2026-05-19T13:45:59Z",
   "generated_count": 3,
   "missing_important_docs": []
 }

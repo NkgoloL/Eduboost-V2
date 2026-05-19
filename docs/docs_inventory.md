@@ -1,9 +1,9 @@
 # Documentation Inventory
 
-Generated at: `2026-05-19T12:56:27Z`
-Commit: `f9641e4f950c316ba2b56d31f4f122b211755326`
+Generated at: `2026-05-19T13:45:59Z`
+Commit: `cdf73992b924527830821b8c09f2bae29776dbad`
 
-- Documents: `883`
+- Documents: `895`
 - Generated docs: `3`
 
 ## Categories
@@ -12,9 +12,9 @@ Commit: `f9641e4f950c316ba2b56d31f4f122b211755326`
 |---|---:|
 | `adr` | 25 |
 | `api` | 6 |
-| `architecture` | 33 |
+| `architecture` | 35 |
 | `general` | 476 |
-| `release` | 245 |
+| `release` | 255 |
 | `security` | 98 |
 
 ## Documents
@@ -149,6 +149,8 @@ Commit: `f9641e4f950c316ba2b56d31f4f122b211755326`
 | `docs/architecture/service_family_map.md` | `architecture` | Service Family Map | 18386 | False |
 | `docs/architecture/transaction_boundary_inventory.json` | `architecture` | transaction_boundary_inventory.json | 31676 | False |
 | `docs/architecture/transaction_boundary_inventory.md` | `architecture` | Transaction Boundary Inventory | 14023 | False |
+| `docs/architecture/tx_route_wiring_inventory.json` | `architecture` | tx_route_wiring_inventory.json | 9753 | False |
+| `docs/architecture/tx_route_wiring_inventory.md` | `architecture` | Transaction Route Wiring Inventory | 4529 | False |
 | `docs/architecture.md` | `general` | Architecture | 1189 | False |
 | `docs/archive/EduBoost_Technical_Status_Report.md` | `general` | EduBoost V2 — Comprehensive Technical Status Report | 24010 | False |
 | `docs/archive/INTEGRATION_COMPLETE.md` | `general` | EduBoost V2 PR Integration Complete ✅ | 11273 | False |
@@ -503,7 +505,7 @@ Commit: `f9641e4f950c316ba2b56d31f4f122b211755326`
 | `docs/reference/modules.md` | `general` | Learning Engines | 436 | False |
 | `docs/reference/repositories.md` | `general` | Repositories | 488 | False |
 | `docs/reference/services.md` | `general` | Services | 807 | False |
-| `docs/release/EVIDENCE_INDEX.md` | `release` | EduBoost V2 Release Evidence Index | 30438 | False |
+| `docs/release/EVIDENCE_INDEX.md` | `release` | EduBoost V2 Release Evidence Index | 31480 | False |
 | `docs/release/EduBoost_V2_Comparative_Audit_Report.md` | `release` | EduBoost SA V2 — Comparative Technical Audit Report | 18013 | False |
 | `docs/release/EduBoost_V2_Final_Technical_Assessment.md` | `release` | EduBoost V2 Final Technical Assessment | 2216 | False |
 | `docs/release/EduBoost_V2_North_Star_TODO.md` | `release` | EduBoost V2 North-Star TODO | 2540 | False |
@@ -628,7 +630,13 @@ Commit: `f9641e4f950c316ba2b56d31f4f122b211755326`
 | `docs/release/diagnostics_session_binding_repair_report.md` | `release` | Diagnostics Session Binding Repair Report | 452 | False |
 | `docs/release/disposable_db_schema_proof_execution_report.md` | `release` | Disposable DB Schema Proof Execution Report | 168 | False |
 | `docs/release/docker_hardening_status.md` | `release` | Docker Hardening Status | 122 | False |
-| `docs/release/evidence_status_registry.yml` | `release` | evidence_status_registry.yml | 10210 | False |
+| `docs/release/evidence_status_registry.yml` | `release` | evidence_status_registry.yml | 11848 | False |
+| `docs/release/external_approval_status.json` | `release` | external_approval_status.json | 3030 | False |
+| `docs/release/external_approval_status.md` | `release` | External Approval Status | 1584 | False |
+| `docs/release/external_approvals/content_approval.md` | `release` | Educator/content release approval | 522 | False |
+| `docs/release/external_approvals/legal_approval.md` | `release` | POPIA/legal release approval | 515 | False |
+| `docs/release/external_approvals/security_approval.md` | `release` | Security release approval | 510 | False |
+| `docs/release/external_approvals/staging_acceptance.md` | `release` | Staging acceptance approval | 516 | False |
 | `docs/release/final_go_no_go_evidence.md` | `release` | Final Go/No-Go Evidence | 1358 | False |
 | `docs/release/first_audit_runtime_wiring_evidence.md` | `release` | First Audit Runtime Wiring Evidence | 465 | False |
 | `docs/release/first_audit_runtime_wiring_pr.md` | `release` | First Audit Runtime Wiring PR | 677 | False |
@@ -667,6 +675,8 @@ Commit: `f9641e4f950c316ba2b56d31f4f122b211755326`
 | `docs/release/next_execution_queue_after_1631_1670.md` | `release` | Next Execution Queue After EVID-001R + DIAG-SCORE-001 / code_1631_1670 | 424 | False |
 | `docs/release/next_execution_queue_after_1671_1710.md` | `release` | Next Execution Queue After CI-001 / code_1671_1710 | 403 | False |
 | `docs/release/next_execution_queue_after_1711_1750.md` | `release` | Next Execution Queue After DOCS-INTEL-001 / code_1711_1750 | 450 | False |
+| `docs/release/next_execution_queue_after_1751_1790.md` | `release` | Next Execution Queue After TX-ROUTE-001 / code_1751_1790 | 429 | False |
+| `docs/release/next_execution_queue_after_1791_1830.md` | `release` | Next Execution Queue After EXT-GATE-001 / code_1791_1830 | 485 | False |
 | `docs/release/next_execution_queue_after_831_870.md` | `release` | Next Execution Queue After code_831_870 | 434 | False |
 | `docs/release/next_execution_queue_after_871_910.md` | `release` | Next Execution Queue After code_871_910 | 622 | False |
 | `docs/release/next_execution_queue_after_911_950.md` | `release` | Next Execution Queue After code_911_950 | 610 | False |
@@ -691,6 +701,8 @@ Commit: `f9641e4f950c316ba2b56d31f4f122b211755326`
 | `docs/release/no_false_closure_status_after_1631_1670.md` | `release` | No False-Closure Status After EVID-001R + DIAG-SCORE-001 / code_1631_1670 | 771 | False |
 | `docs/release/no_false_closure_status_after_1671_1710.md` | `release` | No False-Closure Status After CI-001 / code_1671_1710 | 531 | False |
 | `docs/release/no_false_closure_status_after_1711_1750.md` | `release` | No False-Closure Status After DOCS-INTEL-001 / code_1711_1750 | 624 | False |
+| `docs/release/no_false_closure_status_after_1751_1790.md` | `release` | No False-Closure Status After TX-ROUTE-001 / code_1751_1790 | 629 | False |
+| `docs/release/no_false_closure_status_after_1791_1830.md` | `release` | No False-Closure Status After EXT-GATE-001 / code_1791_1830 | 605 | False |
 | `docs/release/no_false_closure_status_after_831_870.md` | `release` | No False-Closure Status After code_831_870 | 509 | False |
 | `docs/release/no_false_closure_status_after_871_910.md` | `release` | No False-Closure Status After code_871_910 | 645 | False |
 | `docs/release/no_false_closure_status_after_911_950.md` | `release` | No False-Closure Status After code_911_950 | 673 | False |
