@@ -17,6 +17,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | Path | Markers |
 | --- | --- |
 | `app/api_v2.py` | `diagnostic` |
+| `app/api_v2_deps/diagnostic_repositories.py` | `diagnostic` |
 | `app/api_v2_routers/api_v2.py` | `diagnostic` |
 | `app/api_v2_routers/auth.py` | `remediation` |
 | `app/api_v2_routers/diagnostics.py` | `diagnostic` |
@@ -104,10 +105,13 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/services/data_subject_rights_service.py` | `prompt, llm, diagnostic` |
 | `app/services/diagnostic.py` | `diagnostic` |
 | `app/services/diagnostic_data_integrity.py` | `diagnostic` |
+| `app/services/diagnostic_route_integrity.py` | `diagnostic` |
 | `app/services/diagnostic_safety.py` | `llm, diagnostic` |
+| `app/services/diagnostic_scoring_snapshot.py` | `diagnostic` |
 | `app/services/diagnostic_service_v2.py` | `diagnostic` |
 | `app/services/diagnostic_session_integrity.py` | `diagnostic` |
 | `app/services/diagnostic_session_service.py` | `diagnostic` |
+| `app/services/diagnostic_transactional_response.py` | `diagnostic` |
 | `app/services/executive.py` | `llm` |
 | `app/services/lesson_context_builder.py` | `prompt, diagnostic, remediation` |
 | `app/services/lesson_service_v2.py` | `llm, generate_lesson` |
@@ -150,7 +154,11 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/check_database_persistence_production_readiness.py` | `diagnostic` |
 | `scripts/check_diagnostic_generation_safety_contract.py` | `diagnostic` |
 | `scripts/check_diagnostics_assessment_production_readiness.py` | `diagnostic, remediation` |
+| `scripts/check_diagnostics_dynamic_repository_boundary.py` | `diagnostic` |
 | `scripts/check_diagnostics_jobs_integrity.py` | `diagnostic` |
+| `scripts/check_diagnostics_scoring_snapshot.py` | `diagnostic` |
+| `scripts/check_diagnostics_session_binding.py` | `diagnostic` |
+| `scripts/check_diagnostics_transaction_rollback_proof.py` | `diagnostic` |
 | `scripts/check_domain_06_ai_llm_pipeline_evidence.py` | `llm` |
 | `scripts/check_domain_07_diagnostics_assessment_evidence.py` | `diagnostic` |
 | `scripts/check_environment_security_contract.py` | `anthropic, groq` |
@@ -174,6 +182,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/check_runtime_blockers_after_followup_audit.py` | `diagnostic` |
 | `scripts/check_runtime_integration_proof.py` | `diagnostic` |
 | `scripts/check_security_posture_threat_modeling_production_readiness.py` | `prompt, remediation` |
+| `scripts/check_transaction_boundary_guardrails.py` | `diagnostic` |
 | `scripts/ci/check_diagnostics_assessment.py` | `diagnostic` |
 | `scripts/compare_orm_tables_to_database.py` | `diagnostic` |
 | `scripts/evaluate_pedagogy.py` | `prompt, llm` |
@@ -201,15 +210,26 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/lessons/validate_lessons.py` | `prompt, llm, groq` |
 | `scripts/maintenance/audit_todo_backlog.py` | `prompt, llm, diagnostic, remediation` |
 | `scripts/merge_lora.py` | `llm` |
+| `scripts/patch_diagnostics_dynamic_repository_boundary.py` | `diagnostic` |
+| `scripts/patch_diagnostics_scoring_snapshot.py` | `diagnostic` |
+| `scripts/patch_diagnostics_session_binding.py` | `diagnostic` |
 | `scripts/popia_sweep.py` | `prompt, llm, anthropic, groq, diagnostic` |
 | `scripts/prepare_training_data.py` | `llm` |
 | `scripts/refresh_current_state_doc.py` | `llm` |
+| `scripts/repair_arq_dependency_worker_import.py` | `diagnostic` |
 | `scripts/repair_diagnostics_data_integrity.py` | `diagnostic` |
 | `scripts/repair_runtime_blockers_after_followup_audit.py` | `diagnostic` |
+| `scripts/route_tx_auth_slice.py` | `llm` |
+| `scripts/route_tx_impl_plan.py` | `diagnostic` |
+| `scripts/route_tx_popia_slice.py` | `llm` |
 | `scripts/seed_irt_items.py` | `diagnostic` |
 | `scripts/seed_item_bank.py` | `diagnostic` |
+| `scripts/staging_acceptance_evidence.py` | `llm` |
 | `scripts/sync_git_to_redmine.py` | `diagnostic` |
 | `scripts/train_qlora.py` | `prompt, llm` |
+| `scripts/transaction_boundary_inventory.py` | `diagnostic` |
+| `scripts/transaction_rollback_rollup.py` | `diagnostic` |
+| `scripts/tx_route_wiring_inventory.py` | `diagnostic` |
 | `scripts/validate_ai_output_fixtures.py` | `prompt, diagnostic, remediation` |
 | `scripts/validate_focused_adapter.py` | `llm` |
 | `scripts/validate_item_bank.py` | `diagnostic` |

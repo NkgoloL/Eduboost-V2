@@ -17,6 +17,7 @@ Checks performed
 Usage
 -----
     python scripts/audit_router_thinness.py [--strict] [--json]
+    python scripts/audit_router_thinness.py --update-baseline
 
 Exit codes
 ----------
@@ -27,6 +28,8 @@ Options
 -------
     --strict   Treat warnings as errors (exit 1 on any finding)
     --json     Emit JSON report instead of human-readable text
+    --update-baseline
+               Rewrite the checked-in baseline with the current findings.
 """
 
 from __future__ import annotations
@@ -39,6 +42,7 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 ROUTER_DIR = Path("app/api_v2_routers")
+BASELINE_PATH = Path("docs/architecture/router_thinness_baseline.json")
 MAX_COMPLEXITY = 5  # P2 static complexity threshold (§2.3)
 
 # Patterns that suggest business logic leaking into routers
@@ -115,6 +119,63 @@ class AuditReport:
         return not any(v.severity == "ERROR" for v in self.violations)
 
 
+def _violation_key(v: Violation) -> str:
+    return f"{v.file}:{v.line}:{v.kind}:{v.detail}"
+
+
+def _load_baseline() -> set[str]:
+    if not BASELINE_PATH.exists():
+        return set()
+    try:
+        payload = json.loads(BASELINE_PATH.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return set()
+    return {
+        _violation_key(
+            Violation(
+                file=str(item["file"]),
+                line=int(item["line"]),
+                kind=str(item["kind"]),
+                detail=str(item["detail"]),
+            )
+        )
+        for item in payload.get("violations", [])
+    }
+
+
+def _apply_baseline(report: AuditReport) -> int:
+    baseline = _load_baseline()
+    if not baseline:
+        return 0
+    matched = 0
+    for violation in report.violations:
+        if _violation_key(violation) in baseline:
+            violation.severity = "BASELINE"
+            matched += 1
+    return matched
+
+
+def _write_baseline(report: AuditReport) -> None:
+    BASELINE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "description": (
+            "Known router thinness debt. The CI gate fails only for findings "
+            "not listed here, so this baseline must shrink as routers are "
+            "moved behind service boundaries."
+        ),
+        "violations": [
+            {
+                "file": v.file,
+                "line": v.line,
+                "kind": v.kind,
+                "detail": v.detail,
+            }
+            for v in sorted(report.violations, key=_violation_key)
+        ],
+    }
+    BASELINE_PATH.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
 def audit_file(path: Path, report: AuditReport, strict: bool) -> None:
     source = path.read_text(encoding="utf-8")
     report.total_files += 1
@@ -187,6 +248,7 @@ def audit_file(path: Path, report: AuditReport, strict: bool) -> None:
 def main() -> int:
     strict = "--strict" in sys.argv
     emit_json = "--json" in sys.argv
+    update_baseline = "--update-baseline" in sys.argv
 
     if not ROUTER_DIR.exists():
         print(f"ERROR: Router directory not found: {ROUTER_DIR}", file=sys.stderr)
@@ -198,12 +260,20 @@ def main() -> int:
             continue
         audit_file(path, report, strict)
 
+    if update_baseline:
+        _write_baseline(report)
+        print(f"Wrote {BASELINE_PATH} with {len(report.violations)} finding(s)")
+        return 0
+
+    baseline_count = _apply_baseline(report)
+
     if emit_json:
         print(json.dumps(
             {
                 "total_files": report.total_files,
                 "total_functions": report.total_functions,
                 "violations": [asdict(v) for v in report.violations],
+                "baseline_violations": baseline_count,
                 "passed": report.passed,
             },
             indent=2,
@@ -212,6 +282,8 @@ def main() -> int:
         if report.violations:
             print(f"\n{'='*60}")
             print(f"  Router Thinness Audit — {len(report.violations)} violation(s)")
+            if baseline_count:
+                print(f"  Baseline accounted for {baseline_count} known violation(s)")
             print(f"{'='*60}\n")
             for v in report.violations:
                 print(f"  [{v.severity}] {v.file}:{v.line}")

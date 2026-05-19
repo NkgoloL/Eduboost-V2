@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-19T16:48:23Z",
-  "current_commit": "5487eeab0a9accf09d52ccf127fffcdbc2a2e002",
+  "generated_at": "2026-05-19T18:45:36Z",
+  "current_commit": "2a9ad9e37ede787422d202cd0fde4fb71b28e15d",
   "decision": "NO-GO",
-  "beta_blocker_count": 6,
-  "engineering_blocker_count": 0,
+  "beta_blocker_count": 7,
+  "engineering_blocker_count": 1,
   "external_blocker_count": 6,
   "ci_blocker_count": 1,
   "findings": [
@@ -103,13 +103,13 @@
       "title": "POPIA lifecycle HTTP response-contract proof",
       "severity": "P0",
       "gate": "3",
-      "proof_status": "integration-passing",
+      "proof_status": "not-proven",
       "blocks_beta": true,
       "external_dependency": false,
       "evidence_file": "docs/release/no_false_closure_status_after_1151_1190.md",
       "closure_blocker": "focused response-contract test output still includes skipped cases; skipped tests are not proof",
-      "go_eligible": true,
-      "reason": "beta-blocking evidence is present"
+      "go_eligible": false,
+      "reason": "proof_status is not-proven"
     },
     {
       "id": "CONTENT-001",
@@ -229,6 +229,19 @@
       "reason": "non-beta-blocking item"
     },
     {
+      "id": "ROUTE-TX-AUTH-001",
+      "title": "First production route transaction wiring slice for auth routes",
+      "severity": "P1",
+      "gate": "4",
+      "proof_status": "runtime-passing",
+      "blocks_beta": false,
+      "external_dependency": false,
+      "evidence_file": "docs/release/auth_route_transaction_slice_report.md",
+      "closure_blocker": "live DB rollback proof remains external-blocked for this slice",
+      "go_eligible": true,
+      "reason": "non-beta-blocking item"
+    },
+    {
       "id": "ROUTE-TX-IMPL-001",
       "title": "Production transaction route wiring implementation plan",
       "severity": "P1",
@@ -238,6 +251,32 @@
       "external_dependency": false,
       "evidence_file": "docs/release/route_transaction_implementation_plan.md",
       "closure_blocker": "plan only; 15 route transaction wiring actions remain until implemented and proven",
+      "go_eligible": true,
+      "reason": "non-beta-blocking item"
+    },
+    {
+      "id": "ROUTE-TX-POPIA-001",
+      "title": "POPIA route transaction slice",
+      "severity": "P1",
+      "gate": "4",
+      "proof_status": "runtime-passing",
+      "blocks_beta": false,
+      "external_dependency": false,
+      "evidence_file": "docs/release/popia_route_transaction_gap_plan.md",
+      "closure_blocker": "live DB rollback proof remains external-blocked for this slice",
+      "go_eligible": true,
+      "reason": "non-beta-blocking item"
+    },
+    {
+      "id": "ROUTE-TX-POPIA-001R",
+      "title": "POPIA route transaction no-false-closure repair",
+      "severity": "P1",
+      "gate": "4",
+      "proof_status": "runtime-passing",
+      "blocks_beta": false,
+      "external_dependency": false,
+      "evidence_file": "docs/release/popia_route_transaction_gap_plan.md",
+      "closure_blocker": "repair only; implementation gaps remain until source local status passes",
       "go_eligible": true,
       "reason": "non-beta-blocking item"
     },
@@ -373,6 +412,7 @@
     }
   ],
   "blockers": [
+    "POPIA-001: proof_status is not-proven",
     "CI-001: remote CI run URL not attached",
     "LEGAL-001: external approval remains incomplete",
     "SEC-001: external approval remains incomplete",
@@ -382,6 +422,7 @@
   ],
   "required_next_actions": [
     "Attach a passing GitHub Actions run URL for CI-001.",
-    "Complete external approval files for legal, security, content, and staging gates."
+    "Complete external approval files for legal, security, content, and staging gates.",
+    "Resolve remaining beta-blocking engineering evidence items."
   ]
 }

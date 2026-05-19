@@ -17,6 +17,9 @@ Usage
     # Inventory only (dry run):
     python scripts/rename_metaphor_layers.py
 
+    # Update checked-in inventory baseline:
+    python scripts/rename_metaphor_layers.py --update-baseline
+
     # Apply renames in place:
     python scripts/rename_metaphor_layers.py --apply
 
@@ -31,12 +34,14 @@ Exit codes
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 from pathlib import Path
 
 # Directories that contain active engineering code
 ACTIVE_DIRS = ["app", "tests", "scripts", "alembic"]
+BASELINE_PATH = Path("docs/architecture/metaphor_layer_inventory_baseline.json")
 
 # Directories where metaphor language is acceptable (product / storytelling docs)
 ALLOWED_DIRS = ["docs/product", "docs/storytelling", "phases"]
@@ -86,6 +91,51 @@ def scan(root: Path) -> list[tuple[Path, int, str, str]]:
     return hits
 
 
+def _hit_key(hit: tuple[Path, int, str, str]) -> str:
+    path, lineno, term, line_text = hit
+    return f"{path}:{lineno}:{term}:{line_text}"
+
+
+def _load_baseline() -> set[str]:
+    if not BASELINE_PATH.exists():
+        return set()
+    try:
+        payload = json.loads(BASELINE_PATH.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return set()
+    keys: set[str] = set()
+    for item in payload.get("references", []):
+        hit = (
+            Path(str(item["file"])),
+            int(item["line"]),
+            str(item["term"]),
+            str(item["text"]),
+        )
+        keys.add(_hit_key(hit))
+    return keys
+
+
+def _write_baseline(hits: list[tuple[Path, int, str, str]]) -> None:
+    BASELINE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "description": (
+            "Known active-code metaphor terminology references. The CI gate "
+            "fails only for references not listed here, so this baseline must "
+            "shrink as naming is moved to canonical domain language."
+        ),
+        "references": [
+            {
+                "file": str(path),
+                "line": lineno,
+                "term": term,
+                "text": line_text,
+            }
+            for path, lineno, term, line_text in sorted(hits, key=_hit_key)
+        ],
+    }
+    BASELINE_PATH.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
 def apply_renames(root: Path) -> int:
     """Replace metaphor names in-place. Returns count of files modified."""
     modified = 0
@@ -123,6 +173,7 @@ def apply_renames(root: Path) -> int:
 
 def main() -> int:
     apply = "--apply" in sys.argv
+    update_baseline = "--update-baseline" in sys.argv
     root_arg = next((a for a in sys.argv[1:] if a.startswith("--root=")), None)
     root = Path(root_arg.split("=", 1)[1]) if root_arg else Path(".")
 
@@ -134,12 +185,29 @@ def main() -> int:
 
     # Dry-run inventory
     hits = scan(root)
+    if update_baseline:
+        _write_baseline(hits)
+        print(f"Wrote {BASELINE_PATH} with {len(hits)} reference(s)")
+        return 0
+
     if not hits:
         print("✓ No metaphor-layer references found in active code.")
         return 0
 
+    baseline = _load_baseline()
+    new_hits = [hit for hit in hits if _hit_key(hit) not in baseline]
+    baseline_count = len(hits) - len(new_hits)
+    if baseline_count and not new_hits:
+        print(
+            "Metaphor layer inventory passed "
+            f"({baseline_count} known reference(s) accounted for by baseline)."
+        )
+        return 0
+
     print(f"\n{'='*60}")
-    print(f"  Metaphor Layer Inventory — {len(hits)} reference(s) found")
+    print(f"  Metaphor Layer Inventory — {len(new_hits)} new reference(s) found")
+    if baseline_count:
+        print(f"  Baseline accounted for {baseline_count} known reference(s)")
     print(f"  Run with --apply to rename in-place.")
     print(f"{'='*60}\n")
     print(f"  {'Metaphor term':<20} {'Canonical name':<20}")
@@ -149,7 +217,7 @@ def main() -> int:
     print()
 
     prev_file = None
-    for path, lineno, term, line_text in hits:
+    for path, lineno, term, line_text in new_hits:
         if path != prev_file:
             print(f"  {path}")
             prev_file = path

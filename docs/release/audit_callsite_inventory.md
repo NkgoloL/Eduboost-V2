@@ -101,6 +101,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `alembic/versions/_deprecated/0001_schema_from_technical_report.py` | 139 | audit_events_table | `op.create_index("ix_audit_events_resource", "audit_events", ["resource_type", "resource_id"])` |
 | `alembic/versions/_deprecated/0001_schema_from_technical_report.py` | 140 | audit_events_table | `op.create_index("ix_audit_events_created_at", "audit_events", ["created_at"])` |
 | `alembic/versions/_deprecated/0001_schema_from_technical_report.py` | 183 | audit_events_table | `"audit_events",` |
+| `app/api_v2_deps/diagnostic_repositories.py` | 77 | audit_append_call | `failures.append(f"{dotted_path}: {type(exc).__name__}: {exc}")` |
 | `app/api_v2_routers/0005_irt_seed.py` | 41 | audit_append_call | `_ITEMS.append(_make(0, "Mathematics", "Number Sense", q, opts, c, a, b))` |
 | `app/api_v2_routers/0005_irt_seed.py` | 58 | audit_append_call | `_ITEMS.append(_make(1, "Mathematics", "Operations", q, opts, c, a, b))` |
 | `app/api_v2_routers/0005_irt_seed.py` | 73 | audit_append_call | `_ITEMS.append(_make(2, "Mathematics", "Operations & Measurement", q, opts, c, a, b))` |
@@ -356,10 +357,10 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/modules/deployment/production_readiness_contracts.py` | 309 | audit_append_call | `issues.append(f"missing required environment variable {variable}")` |
 | `app/modules/deployment/production_readiness_contracts.py` | 312 | audit_append_call | `issues.append(f"secret-like variable {key} has placeholder value")` |
 | `app/modules/deployment/production_readiness_contracts.py` | 314 | audit_append_call | `issues.append("production manifest must set ENVIRONMENT=production")` |
-| `app/modules/diagnostics/diagnostic_session_service.py` | 68 | audit_append_call | `snap.served_item_ids.append(item_id)` |
-| `app/modules/diagnostics/diagnostic_session_service.py` | 77 | audit_append_call | `snap.responses.append({"item_id": item_id, "correct": correct, "response": response})` |
-| `app/modules/diagnostics/diagnostic_session_service.py` | 84 | audit_append_call | `snap.gap_topics.append(caps_ref)` |
-| `app/modules/diagnostics/diagnostic_session_service.py` | 87 | audit_append_call | `snap.misconception_tags.append(tag)` |
+| `app/modules/diagnostics/diagnostic_session_service.py` | 69 | audit_append_call | `snap.served_item_ids.append(item_id)` |
+| `app/modules/diagnostics/diagnostic_session_service.py` | 78 | audit_append_call | `snap.responses.append({**diagnostic_response_snapshot(item, item_id=item_id), "correct": correct, "response": response})` |
+| `app/modules/diagnostics/diagnostic_session_service.py` | 85 | audit_append_call | `snap.gap_topics.append(caps_ref)` |
+| `app/modules/diagnostics/diagnostic_session_service.py` | 88 | audit_append_call | `snap.misconception_tags.append(tag)` |
 | `app/modules/diagnostics/irt_engine.py` | 256 | audit_append_call | `grid.append(round(value, 4))` |
 | `app/modules/diagnostics/irt_engine.py` | 268 | audit_append_call | `posterior_weights.append(prior * likelihood)` |
 | `app/modules/diagnostics/irt_engine.py` | 497 | audit_append_call | `weights.append(prior * likelihood)` |
@@ -919,8 +920,8 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/audit_canonicalization_slice.py` | 71 | audit_record_call | `return await adapter.record(command.to_event_input())` |
 | `app/services/audit_migration_orchestrator.py` | 73 | audit_record_call | `return await adapter.record(envelope.to_event_input())` |
 | `app/services/audit_service.py` | 21 | audit_append_call | `row = await self.repository.append(` |
-| `app/services/auth_application_service.py` | 26 | audit_repository | `"app.repositories.audit_repository.AuditRepository",` |
 | `app/services/auth_application_service.py` | 27 | audit_repository | `"app.repositories.repositories.AuditRepository",` |
+| `app/services/auth_application_service.py` | 28 | audit_repository | `"app.repositories.audit_repository.AuditRepository",` |
 | `app/services/auth_lifecycle_impl.py` | 106 | audit_append_call | `learner_ids.append(str(learner.id))` |
 | `app/services/backend_adapter_wiring_service.py` | 28 | audit_append_call | `self.events.append(kwargs)` |
 | `app/services/backend_adapter_wiring_service.py` | 36 | audit_record_call | `response = await adapter.record(` |
@@ -985,8 +986,8 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/first_deep_readiness_runtime_wiring.py` | 85 | audit_append_call | `selected_checks.append(name)` |
 | `app/services/job_dependency_factory.py` | 58 | audit_repository | `audit_repo_cls = _import_symbol("app.repositories.audit_repository.AuditRepository") or _import_symbol("app.repositories.repositories.AuditRepository")` |
 | `app/services/jwt_keyring.py` | 165 | audit_append_call | `keys.append(JWTKey(kid=kid, secret=secret, algorithm=algorithm, status=status))` |
-| `app/services/lesson_authorization.py` | 174 | audit_append_call | `found.append(item)` |
-| `app/services/lesson_authorization.py` | 187 | audit_append_call | `found.append(item)` |
+| `app/services/lesson_authorization.py` | 177 | audit_append_call | `found.append(item)` |
+| `app/services/lesson_authorization.py` | 190 | audit_append_call | `found.append(item)` |
 | `app/services/lesson_context_builder.py` | 217 | audit_append_call | `parts.append(f"({subtopic})")` |
 | `app/services/lesson_context_builder.py` | 221 | audit_append_call | `parts.append(f"with emphasis on correcting: {tags_str}")` |
 | `app/services/lesson_context_builder.py` | 231 | audit_append_call | `parts.append(severity_hints.get(severity, ""))` |
@@ -995,11 +996,11 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/llm/gateway.py` | 186 | audit_append_call | `failures.append(f"{provider.provider_name}:{exc}")` |
 | `app/services/pii_sweep.py` | 105 | audit_append_call | `self.findings.append(finding)` |
 | `app/services/pii_sweep.py` | 250 | audit_append_call | `all_findings.append({` |
-| `app/services/popia_consent_lifecycle_adapter.py` | 35 | audit_append_call | `missing.append(method_name)` |
-| `app/services/popia_consent_lifecycle_adapter.py` | 56 | audit_append_call | `positional.append(_value(kwargs, "guardian_id", "parent_id", "actor_id"))` |
-| `app/services/popia_consent_lifecycle_adapter.py` | 58 | audit_append_call | `positional.append(kwargs.get("learner_id"))` |
-| `app/services/popia_consent_lifecycle_adapter.py` | 60 | audit_append_call | `positional.append(_value(kwargs, "consent_version", "privacy_notice_version"))` |
-| `app/services/popia_consent_lifecycle_adapter.py` | 62 | audit_append_call | `positional.append(_value(kwargs, "actor_id", "guardian_id"))` |
+| `app/services/popia_consent_lifecycle_adapter.py` | 169 | audit_append_call | `missing.append(method_name)` |
+| `app/services/popia_consent_lifecycle_adapter.py` | 190 | audit_append_call | `positional.append(_value(kwargs, "guardian_id", "parent_id", "actor_id"))` |
+| `app/services/popia_consent_lifecycle_adapter.py` | 192 | audit_append_call | `positional.append(kwargs.get("learner_id"))` |
+| `app/services/popia_consent_lifecycle_adapter.py` | 194 | audit_append_call | `positional.append(_value(kwargs, "consent_version", "privacy_notice_version"))` |
+| `app/services/popia_consent_lifecycle_adapter.py` | 196 | audit_append_call | `positional.append(_value(kwargs, "actor_id", "guardian_id"))` |
 | `app/services/popia_service.py` | 22 | audit_repository | `from app.repositories.audit_repository import AuditRepository` |
 | `app/services/popia_service.py` | 55 | audit_repository | `self.audit = AuditRepository(db)` |
 | `app/services/popia_service.py` | 84 | audit_append_call | `await self.audit.append(` |
@@ -1007,15 +1008,28 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/popia_service.py` | 156 | audit_append_call | `await self.audit.append(` |
 | `app/services/popia_service.py` | 183 | audit_append_call | `await self.audit.append(` |
 | `app/services/popia_service.py` | 202 | audit_append_call | `await self.audit.append(` |
+| `app/services/popia_transactional_lifecycle.py` | 60 | audit_append_call | `missing.append(method_name)` |
 | `app/services/runtime_audit_facade.py` | 25 | audit_record_call | `await AuditRepositoryCompatAdapter(repository).record(` |
+| `scripts/approval_evidence.py` | 170 | audit_append_call | `blockers.append("decision must be approved/accepted/pass")` |
+| `scripts/approval_evidence.py` | 172 | audit_append_call | `blockers.append("approver is pending")` |
+| `scripts/approval_evidence.py` | 174 | audit_append_call | `blockers.append("evidence URL is pending or invalid")` |
+| `scripts/approval_evidence.py` | 176 | audit_append_call | `blockers.append("date verified is pending")` |
+| `scripts/approval_evidence.py` | 178 | audit_append_call | `blockers.append("scope is pending")` |
+| `scripts/approval_evidence.py` | 287 | audit_append_call | `lines.append(` |
+| `scripts/approval_evidence.py` | 296 | audit_append_call | `lines.append("- None")` |
 | `scripts/archive/db_migration_phase2.sql` | 205 | audit_events_table | `CREATE TABLE IF NOT EXISTS audit_events (` |
 | `scripts/archive/db_migration_phase2.sql` | 219 | audit_events_table | `CREATE INDEX IF NOT EXISTS ix_audit_events_learner ON audit_events(learner_id);` |
 | `scripts/archive/db_migration_phase2.sql` | 220 | audit_events_table | `CREATE INDEX IF NOT EXISTS ix_audit_events_occurred ON audit_events(occurred_at);` |
 | `scripts/archive/db_migration_phase2.sql` | 221 | audit_events_table | `CREATE INDEX IF NOT EXISTS ix_audit_events_type ON audit_events(event_type);` |
-| `scripts/audit_router_thinness.py` | 126 | audit_append_call | `report.violations.append(` |
-| `scripts/audit_router_thinness.py` | 137 | audit_append_call | `report.violations.append(` |
-| `scripts/audit_router_thinness.py` | 151 | audit_append_call | `report.violations.append(` |
-| `scripts/audit_router_thinness.py` | 173 | audit_append_call | `report.violations.append(` |
+| `scripts/audit_router_thinness.py` | 187 | audit_append_call | `report.violations.append(` |
+| `scripts/audit_router_thinness.py` | 198 | audit_append_call | `report.violations.append(` |
+| `scripts/audit_router_thinness.py` | 212 | audit_append_call | `report.violations.append(` |
+| `scripts/audit_router_thinness.py` | 234 | audit_append_call | `report.violations.append(` |
+| `scripts/beta_blocker_burndown.py` | 86 | audit_append_call | `items.append(current)` |
+| `scripts/beta_blocker_burndown.py` | 97 | audit_append_call | `items.append(current)` |
+| `scripts/beta_blocker_burndown.py` | 174 | audit_append_call | `actions.append(make_action(item_id, reason.strip(), findings.get(item_id, {}), registry.get(item_id, {})))` |
+| `scripts/beta_blocker_burndown.py` | 179 | audit_append_call | `actions.append(make_action(item_id, str(registry_item.get("closure_blocker") or "release-critical blocker"), findings.get(item_id, {}), registry_item))` |
+| `scripts/beta_blocker_burndown.py` | 220 | audit_append_call | `lines.append(` |
 | `scripts/build_corrective_caps_v2.py` | 111 | audit_append_call | `records.append(` |
 | `scripts/build_corrective_caps_v2.py` | 132 | audit_append_call | `records.append(` |
 | `scripts/build_corrective_caps_v2.py` | 153 | audit_append_call | `records.append(` |
@@ -1057,6 +1071,11 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_api_envelope_error_contract.py` | 91 | audit_append_call | `results.append(EvidenceResult(rel_path, path.exists(), "present" if path.exists() else "missing"))` |
 | `scripts/check_api_envelope_error_contract.py` | 97 | audit_append_call | `results.append(` |
 | `scripts/check_api_envelope_error_contract.py` | 107 | audit_append_call | `results.append(` |
+| `scripts/check_approval_evidence.py` | 39 | audit_append_call | `failures.append("not all approval records evaluated")` |
+| `scripts/check_approval_evidence.py` | 46 | audit_append_call | `failures.append(f"unexpected approval evidence status: {status.status}")` |
+| `scripts/check_approval_evidence.py` | 49 | audit_append_call | `failures.append("release mode requires all legal/security/content approvals complete")` |
+| `scripts/check_approval_evidence.py` | 80 | audit_append_call | `failures.append("approval evidence tests failed")` |
+| `scripts/check_approval_evidence.py` | 101 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_architecture_boundary_contracts.py` | 32 | audit_append_call | `modules.append(node.module or "")` |
 | `scripts/check_architecture_boundary_contracts.py` | 50 | audit_append_call | `failures.append(f"{' '.join(command)} failed: {result.stdout}")` |
 | `scripts/check_architecture_boundary_contracts.py` | 55 | audit_append_call | `failures.append(f"{router} missing")` |
@@ -1066,6 +1085,14 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_architecture_boundary_contracts.py` | 86 | audit_append_call | `failures.append(".importlinter missing")` |
 | `scripts/check_architecture_boundary_contracts.py` | 93 | audit_append_call | `failures.append("service boundary classification policy missing")` |
 | `scripts/check_archival_lock_assertion.py` | 51 | audit_append_call | `results.append(` |
+| `scripts/check_arq_worker_import.py` | 39 | audit_append_call | `found.append(item)` |
+| `scripts/check_arq_worker_import.py` | 59 | audit_append_call | `failures.append("arq not pinned in dependency files")` |
+| `scripts/check_arq_worker_import.py` | 65 | audit_append_call | `failures.append(f"app.modules.jobs import failed: {exc!r}")` |
+| `scripts/check_arq_worker_import.py` | 73 | audit_append_call | `failures.append(f"arq compat import failed: {exc!r}")` |
+| `scripts/check_arq_worker_import.py` | 81 | audit_append_call | `failures.append(f"WorkerSettings/functions missing {expected}")` |
+| `scripts/check_arq_worker_import.py` | 87 | audit_append_call | `failures.append("jobs.py missing run_consent_reminder_cycle")` |
+| `scripts/check_arq_worker_import.py` | 115 | audit_append_call | `failures.append("ARQ worker import contract tests failed")` |
+| `scripts/check_arq_worker_import.py` | 136 | audit_append_call | `failures.append("focused ruff failed")` |
 | `scripts/check_audit_canonicalization_registry.py` | 25 | audit_append_call | `failures.append("no ready candidates")` |
 | `scripts/check_audit_canonicalization_registry.py` | 38 | audit_append_call | `failures.append("registry doc missing")` |
 | `scripts/check_audit_canonicalization_slice.py` | 18 | audit_append_call | `failures.append("action mismatch")` |
@@ -1103,6 +1130,9 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_auth_lifecycle_method_extraction.py` | 68 | audit_append_call | `failures.append(f"auth import failed: {exc!r}")` |
 | `scripts/check_auth_lifecycle_method_extraction.py` | 75 | audit_append_call | `failures.append(f"app.api_v2 import failed: {exc!r}")` |
 | `scripts/check_auth_lifecycle_method_extraction.py` | 101 | audit_append_call | `failures.append("focused ruff failed")` |
+| `scripts/check_auth_repository_fixture_proof.py` | 43 | audit_append_call | `failures.append(f"{source_name} does not prefer {canonical}")` |
+| `scripts/check_auth_repository_fixture_proof.py` | 72 | audit_append_call | `failures.append("auth repository fixture proof tests failed")` |
+| `scripts/check_auth_repository_fixture_proof.py` | 93 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_auth_router_boundary.py` | 26 | audit_append_call | `failures.append("missing auth runtime dependency import")` |
 | `scripts/check_auth_router_boundary.py` | 32 | audit_append_call | `failures.append("LearnerRepository remains in auth router")` |
 | `scripts/check_auth_router_boundary.py` | 38 | audit_append_call | `failures.append("direct get_by_guardian remains")` |
@@ -1136,6 +1166,10 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_auth_token_claims_repair.py` | 56 | audit_append_call | `failures.append("helper marker missing")` |
 | `scripts/check_auth_token_claims_repair.py` | 59 | audit_append_call | `failures.append("raw email_encrypted")` |
 | `scripts/check_auth_token_claims_repair.py` | 67 | audit_append_call | `failures.append("report missing")` |
+| `scripts/check_auth_transaction_rollback_proof.py` | 39 | audit_append_call | `failures.append(f"service missing {token}")` |
+| `scripts/check_auth_transaction_rollback_proof.py` | 51 | audit_append_call | `failures.append(f"test missing {token}")` |
+| `scripts/check_auth_transaction_rollback_proof.py` | 83 | audit_append_call | `failures.append("auth transaction rollback proof tests failed")` |
+| `scripts/check_auth_transaction_rollback_proof.py` | 104 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_backend_consolidation_dragons.py` | 28 | audit_append_call | `paths.append(path)` |
 | `scripts/check_backend_consolidation_dragons.py` | 44 | audit_append_call | `matched_paths.append(str(path.relative_to(REPO_ROOT)))` |
 | `scripts/check_backend_consolidation_dragons.py` | 51 | audit_events_table | `"audit_events": _scan(r"\baudit_events\b"),` |
@@ -1209,6 +1243,11 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_backup_restore_disaster_recovery_production_readiness.py` | 156 | audit_append_call | `results.append(` |
 | `scripts/check_backup_restore_disaster_recovery_production_readiness.py` | 180 | audit_append_call | `results.append(DisasterRecoveryReadinessResult("disaster_recovery_contracts", False, f"contract check failed: {exc}"))` |
 | `scripts/check_beta_acceptance_exit_criteria.py` | 53 | audit_append_call | `results.append(` |
+| `scripts/check_beta_blocker_burndown.py` | 35 | audit_append_call | `failures.append("NO-GO source decision must have blocker actions")` |
+| `scripts/check_beta_blocker_burndown.py` | 39 | audit_append_call | `failures.append("release mode cannot be allowed while blocker actions exist")` |
+| `scripts/check_beta_blocker_burndown.py` | 43 | audit_append_call | `failures.append("release mode requires blocker burn-down status clear")` |
+| `scripts/check_beta_blocker_burndown.py` | 62 | audit_append_call | `failures.append("beta blocker burn-down tests failed")` |
+| `scripts/check_beta_blocker_burndown.py` | 74 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_beta_evidence_consistency.py` | 55 | audit_append_call | `results.append(` |
 | `scripts/check_beta_evidence_consistency.py` | 71 | audit_append_call | `results.append(` |
 | `scripts/check_beta_evidence_consistency.py` | 83 | audit_append_call | `results.append(` |
@@ -1250,9 +1289,21 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_branch_sync_rebase_checklist.py` | 43 | audit_append_call | `results.append(` |
 | `scripts/check_caps_alignment_contract.py` | 36 | audit_append_call | `results.append(` |
 | `scripts/check_caps_learning_proof.py` | 33 | audit_append_call | `results.append(Result("docs/caps/grade4_maths_coverage_matrix.md", snippet in matrix, f"contains {snippet!r}"))` |
+| `scripts/check_ci_authority.py` | 39 | audit_append_call | `failures.append("No GitHub workflow file found")` |
+| `scripts/check_ci_authority.py` | 44 | audit_append_call | `failures.append("No required local CI-equivalent targets found")` |
+| `scripts/check_ci_authority.py` | 49 | audit_append_call | `failures.append("ci_evidence.md missing")` |
+| `scripts/check_ci_authority.py` | 57 | audit_append_call | `failures.append(f"Unexpected CI-001 registry proof_status: {registry_status}")` |
+| `scripts/check_ci_authority.py` | 65 | audit_append_call | `failures.append("release mode requires real GitHub Actions run URL")` |
+| `scripts/check_ci_authority.py` | 96 | audit_append_call | `failures.append("CI authority unit tests failed")` |
+| `scripts/check_ci_authority.py` | 117 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_ci_cd_deployment_production_readiness.py` | 147 | audit_append_call | `results.append(` |
 | `scripts/check_ci_cd_deployment_production_readiness.py` | 158 | audit_append_call | `results.append(` |
 | `scripts/check_ci_cd_deployment_production_readiness.py` | 183 | audit_append_call | `results.append(DeploymentReadinessResult("deployment_contracts", False, f"contract check failed: {exc}"))` |
+| `scripts/check_ci_run_evidence.py` | 39 | audit_append_call | `failures.append("GitHub Actions run URL validator rejected canonical URL")` |
+| `scripts/check_ci_run_evidence.py` | 46 | audit_append_call | `failures.append(f"unexpected CI run evidence status: {status.status}")` |
+| `scripts/check_ci_run_evidence.py` | 49 | audit_append_call | `failures.append("release mode requires accepted CI run evidence")` |
+| `scripts/check_ci_run_evidence.py` | 70 | audit_append_call | `failures.append("CI run evidence tests failed")` |
+| `scripts/check_ci_run_evidence.py` | 83 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_ci_workflow_consolidation.py` | 45 | audit_append_call | `failures.append(f"missing file {path}")` |
 | `scripts/check_ci_workflow_consolidation.py` | 54 | audit_append_call | `failures.append(f"{path} missing {needle!r}")` |
 | `scripts/check_cluster_d_ci_evidence.py` | 117 | audit_append_call | `results.append(` |
@@ -1294,6 +1345,12 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_diagnostic_generation_safety_contract.py` | 40 | audit_append_call | `results.append(` |
 | `scripts/check_diagnostics_assessment_production_readiness.py` | 113 | audit_append_call | `results.append(CheckResult(rel_path, path.exists(), "present" if path.exists() else "missing"))` |
 | `scripts/check_diagnostics_assessment_production_readiness.py` | 117 | audit_append_call | `results.append(` |
+| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 51 | audit_append_call | `failures.append(f"diagnostics.py still contains disallowed token: {token}")` |
+| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 57 | audit_append_call | `failures.append(f"diagnostics.py still directly constructs/resolves repository: {call}")` |
+| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 70 | audit_append_call | `failures.append(f"diagnostics.py missing required boundary token: {token}")` |
+| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 83 | audit_append_call | `failures.append(f"diagnostic_repositories.py missing {token}")` |
+| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 111 | audit_append_call | `failures.append("diagnostics dynamic boundary unit tests failed")` |
+| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 132 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_diagnostics_jobs_integrity.py` | 23 | audit_append_call | `failures.append("missing diagnostic helper")` |
 | `scripts/check_diagnostics_jobs_integrity.py` | 29 | audit_append_call | `failures.append("missing job runtime helper")` |
 | `scripts/check_diagnostics_jobs_integrity.py` | 36 | audit_append_call | `failures.append("diagnostics helper import")` |
@@ -1301,13 +1358,40 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_diagnostics_jobs_integrity.py` | 47 | audit_append_call | `failures.append("ConsentService empty constructor")` |
 | `scripts/check_diagnostics_jobs_integrity.py` | 56 | audit_append_call | `failures.append(f"jobs missing {token}")` |
 | `scripts/check_diagnostics_jobs_integrity.py` | 63 | audit_append_call | `failures.append("background task policy")` |
+| `scripts/check_diagnostics_scoring_snapshot.py` | 28 | audit_append_call | `failures.append("diagnostic session service still scores all history with current item")` |
+| `scripts/check_diagnostics_scoring_snapshot.py` | 32 | audit_append_call | `failures.append("diagnostic item reconstruction missing")` |
+| `scripts/check_diagnostics_scoring_snapshot.py` | 36 | audit_append_call | `failures.append("diagnostic response scoring snapshot missing")` |
+| `scripts/check_diagnostics_scoring_snapshot.py` | 63 | audit_append_call | `failures.append("diagnostics scoring snapshot tests failed")` |
+| `scripts/check_diagnostics_scoring_snapshot.py` | 76 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_diagnostics_session_binding.py` | 39 | audit_append_call | `failures.append(f"diagnostics.py missing {token}")` |
+| `scripts/check_diagnostics_session_binding.py` | 63 | audit_append_call | `failures.append(str(exc))` |
+| `scripts/check_diagnostics_session_binding.py` | 76 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_diagnostics_transaction_rollback_proof.py` | 40 | audit_append_call | `failures.append(f"service missing {token}")` |
+| `scripts/check_diagnostics_transaction_rollback_proof.py` | 53 | audit_append_call | `failures.append(f"test missing {token}")` |
+| `scripts/check_diagnostics_transaction_rollback_proof.py` | 85 | audit_append_call | `failures.append("diagnostic transaction rollback proof tests failed")` |
+| `scripts/check_diagnostics_transaction_rollback_proof.py` | 106 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_docker_production_hardening.py` | 27 | audit_append_call | `failures.append(msg)` |
+| `scripts/check_docs_intelligence.py` | 39 | audit_append_call | `failures.append("docs inventory generation failed")` |
+| `scripts/check_docs_intelligence.py` | 53 | audit_append_call | `failures.append("docs inventory check failed")` |
+| `scripts/check_docs_intelligence.py` | 84 | audit_append_call | `failures.append("docs intelligence unit tests failed")` |
+| `scripts/check_docs_intelligence.py` | 105 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_documentation_adrs_claim_discipline_production_readiness.py` | 109 | audit_append_call | `results.append(DocumentationGovernanceReadinessResult(rel_path, path.exists(), "file present" if path.exists() else "file missing"))` |
 | `scripts/check_documentation_adrs_claim_discipline_production_readiness.py` | 113 | audit_append_call | `results.append(DocumentationGovernanceReadinessResult(rel_path, snippet in text, f"contains {snippet!r}" if snippet in text else f"missing {snippet!r}"))` |
 | `scripts/check_documentation_adrs_claim_discipline_production_readiness.py` | 131 | audit_append_call | `results.append(DocumentationGovernanceReadinessResult("documentation_governance_contracts", False, f"contract check failed: {exc}"))` |
 | `scripts/check_environment_security_contract.py` | 41 | audit_append_call | `results.append(` |
 | `scripts/check_evidence_archive_completeness_guard.py` | 58 | audit_append_call | `results.append(EvidenceArchiveCompletenessGuardResult(snippet in text, f"contains {snippet!r}" if snippet in text else f"missing {snippet!r}"))` |
 | `scripts/check_evidence_freeze_confirmation_record.py` | 55 | audit_append_call | `results.append(` |
+| `scripts/check_evidence_registry_commit_provenance.py` | 39 | audit_append_call | `failures.append(f"{finding.id} missing last_verified_commit")` |
+| `scripts/check_evidence_registry_commit_provenance.py` | 66 | audit_append_call | `failures.append("evidence registry commit provenance tests failed")` |
+| `scripts/check_evidence_status_registry.py` | 51 | audit_append_call | `failures.append("POPIA-001 must remain not-proven while focused tests skip cases")` |
+| `scripts/check_evidence_status_registry.py` | 79 | audit_append_call | `failures.append("evidence registry unit tests failed")` |
+| `scripts/check_evidence_status_registry.py` | 100 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_external_approval_gate.py` | 39 | audit_append_call | `failures.append("not all approval records evaluated")` |
+| `scripts/check_external_approval_gate.py` | 45 | audit_append_call | `failures.append(f"{approval.id} evidence file missing")` |
+| `scripts/check_external_approval_gate.py` | 59 | audit_append_call | `failures.append(f"{approval_id} registry status is unexpected: {registry_status}")` |
+| `scripts/check_external_approval_gate.py` | 62 | audit_append_call | `failures.append("release mode requires all external approvals to be complete")` |
+| `scripts/check_external_approval_gate.py` | 93 | audit_append_call | `failures.append("external approval gate tests failed")` |
+| `scripts/check_external_approval_gate.py` | 114 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_final_acceptance_memo.py` | 55 | audit_append_call | `results.append(` |
 | `scripts/check_final_acceptance_packet_index.py` | 57 | audit_append_call | `results.append(` |
 | `scripts/check_final_archive_accession_record.py` | 55 | audit_append_call | `results.append(` |
@@ -1408,6 +1492,15 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_learner_vertical_journey_contract.py` | 71 | audit_append_call | `results.append(` |
 | `scripts/check_learning_evidence.py` | 74 | audit_append_call | `results.append(EvidenceResult(rel_path, path.exists(), "present" if path.exists() else "missing"))` |
 | `scripts/check_learning_evidence.py` | 80 | audit_append_call | `results.append(` |
+| `scripts/check_lesson_authorization_hardening.py` | 43 | audit_append_call | `failures.append("lesson_owner_learner_id still swallows broad Exception")` |
+| `scripts/check_lesson_authorization_hardening.py` | 51 | audit_append_call | `failures.append("expected narrowed compatibility exceptions missing")` |
+| `scripts/check_lesson_authorization_hardening.py` | 67 | audit_append_call | `failures.append(f"missing router token {token}")` |
+| `scripts/check_lesson_authorization_hardening.py` | 96 | audit_append_call | `failures.append("lesson authorization hardening tests failed")` |
+| `scripts/check_lesson_authorization_hardening.py` | 110 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_lesson_gamification_transaction_rollback_proof.py` | 39 | audit_append_call | `failures.append(f"service missing {token}")` |
+| `scripts/check_lesson_gamification_transaction_rollback_proof.py` | 52 | audit_append_call | `failures.append(f"test missing {token}")` |
+| `scripts/check_lesson_gamification_transaction_rollback_proof.py` | 84 | audit_append_call | `failures.append("lesson gamification transaction rollback proof tests failed")` |
+| `scripts/check_lesson_gamification_transaction_rollback_proof.py` | 105 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_lesson_generation_safety_contract.py` | 41 | audit_append_call | `results.append(` |
 | `scripts/check_lesson_object_authorization_repair.py` | 34 | audit_append_call | `failures.append("helper import")` |
 | `scripts/check_lesson_object_authorization_repair.py` | 45 | audit_append_call | `failures.append(f"{node.name} read")` |
@@ -1452,6 +1545,16 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_popia_consent_lifecycle_repair.py` | 77 | audit_append_call | `failures.append(f"{node.name} actor")` |
 | `scripts/check_popia_consent_lifecycle_repair.py` | 85 | audit_append_call | `failures.append("repair report")` |
 | `scripts/check_popia_legal_evidence.py` | 34 | audit_append_call | `results.append(Result("docs/legal/legal_documents_index.md", snippet.lower() in text.lower(), f"contains {snippet!r}"))` |
+| `scripts/check_popia_lifecycle_response_contract.py` | 38 | audit_append_call | `failures.append(f"adapter missing {token}")` |
+| `scripts/check_popia_lifecycle_response_contract.py` | 62 | audit_append_call | `failures.append(str(exc))` |
+| `scripts/check_popia_lifecycle_response_contract.py` | 75 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_popia_route_tx_no_false_closure.py` | 64 | audit_append_call | `failures.append(` |
+| `scripts/check_popia_route_tx_no_false_closure.py` | 73 | audit_append_call | `failures.append("gap plan with actions must remain blocked")` |
+| `scripts/check_popia_route_tx_no_false_closure.py` | 106 | audit_append_call | `failures.append("POPIA route transaction gap-plan tests failed")` |
+| `scripts/check_popia_route_tx_no_false_closure.py` | 127 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_popia_transaction_rollback_proof.py` | 41 | audit_append_call | `failures.append(f"service missing {token}")` |
+| `scripts/check_popia_transaction_rollback_proof.py` | 73 | audit_append_call | `failures.append("POPIA transaction rollback proof tests failed")` |
+| `scripts/check_popia_transaction_rollback_proof.py` | 88 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_post_beta_evidence_archive_manifest.py` | 59 | audit_append_call | `results.append(` |
 | `scripts/check_post_closeout_custody_register.py` | 55 | audit_append_call | `results.append(` |
 | `scripts/check_post_closeout_evidence_access_policy.py` | 50 | audit_append_call | `results.append(` |
@@ -1488,6 +1591,10 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_release_evidence_index.py` | 41 | audit_append_call | `failures.append(f"missing file {path}")` |
 | `scripts/check_release_evidence_index.py` | 50 | audit_append_call | `failures.append(f"{path} missing {needle!r}")` |
 | `scripts/check_release_evidence_retention_finalization.py` | 53 | audit_append_call | `results.append(` |
+| `scripts/check_release_go_no_go.py` | 42 | audit_append_call | `failures.append(f"unexpected decision: {status.decision}")` |
+| `scripts/check_release_go_no_go.py` | 45 | audit_append_call | `failures.append("release mode requires generated decision GO")` |
+| `scripts/check_release_go_no_go.py` | 76 | audit_append_call | `failures.append("release go/no-go unit tests failed")` |
+| `scripts/check_release_go_no_go.py` | 97 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_release_handoff_freeze_assertion.py` | 50 | audit_append_call | `results.append(` |
 | `scripts/check_release_owner_accountability.py` | 52 | audit_append_call | `results.append(` |
 | `scripts/check_release_owner_execution_guardrail.py` | 50 | audit_append_call | `results.append(` |
@@ -1501,6 +1608,22 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_roadmap_after_production_readiness_baseline.py` | 161 | audit_append_call | `results.append(` |
 | `scripts/check_roadmap_after_production_readiness_baseline.py` | 187 | audit_append_call | `results.append(RoadmapReadinessResult("roadmap_contracts", False, f"contract check failed: {exc}"))` |
 | `scripts/check_route_alias_matrix.py` | 73 | audit_append_call | `lines.append(f"{row.method.upper()} {row.canonical_path} -- baseline exception; review before release")` |
+| `scripts/check_route_tx_auth_slice.py` | 40 | audit_append_call | `failures.append("auth route delegation slice is not locally proven")` |
+| `scripts/check_route_tx_auth_slice.py` | 47 | audit_append_call | `failures.append(f"unexpected live DB status: {report.live_db_status}")` |
+| `scripts/check_route_tx_auth_slice.py` | 50 | audit_append_call | `failures.append("release mode requires live DB auth route transaction evidence")` |
+| `scripts/check_route_tx_auth_slice.py` | 81 | audit_append_call | `failures.append("auth route transaction slice tests failed")` |
+| `scripts/check_route_tx_auth_slice.py` | 102 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_route_tx_impl_plan.py` | 38 | audit_append_call | `failures.append("TX route inventory is missing")` |
+| `scripts/check_route_tx_impl_plan.py` | 50 | audit_append_call | `failures.append("route transaction actions must not be closable by static marker")` |
+| `scripts/check_route_tx_impl_plan.py` | 55 | audit_append_call | `failures.append("release mode requires route transaction implementation actions to be zero")` |
+| `scripts/check_route_tx_impl_plan.py` | 86 | audit_append_call | `failures.append("route transaction implementation plan tests failed")` |
+| `scripts/check_route_tx_impl_plan.py` | 107 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_route_tx_popia_slice.py` | 41 | audit_append_call | `failures.append("no POPIA routes selected for slice")` |
+| `scripts/check_route_tx_popia_slice.py` | 46 | audit_append_call | `failures.append("POPIA route delegation slice is not locally proven")` |
+| `scripts/check_route_tx_popia_slice.py` | 53 | audit_append_call | `failures.append(f"unexpected live DB status: {report.live_db_status}")` |
+| `scripts/check_route_tx_popia_slice.py` | 56 | audit_append_call | `failures.append("release mode requires live DB POPIA route transaction evidence")` |
+| `scripts/check_route_tx_popia_slice.py` | 87 | audit_append_call | `failures.append("POPIA route transaction slice tests failed")` |
+| `scripts/check_route_tx_popia_slice.py` | 108 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_router_boundary_enforcement.py` | 24 | audit_append_call | `failures.append(f"{router}: {violations}")` |
 | `scripts/check_runtime_blockers_after_followup_audit.py` | 23 | audit_append_call | `failures.append(f"POPIA adapter missing {method}")` |
 | `scripts/check_runtime_blockers_after_followup_audit.py` | 26 | audit_append_call | `failures.append("consent dependency missing POPIA adapter")` |
@@ -1534,6 +1657,11 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_security_posture_threat_modeling_production_readiness.py` | 172 | audit_append_call | `results.append(` |
 | `scripts/check_security_posture_threat_modeling_production_readiness.py` | 183 | audit_append_call | `results.append(` |
 | `scripts/check_security_posture_threat_modeling_production_readiness.py` | 211 | audit_append_call | `results.append(SecurityPostureReadinessResult("security_posture_contracts", False, f"contract check failed: {exc}"))` |
+| `scripts/check_staging_acceptance.py` | 41 | audit_append_call | `failures.append(f"unexpected staging status: {status.status}")` |
+| `scripts/check_staging_acceptance.py` | 49 | audit_append_call | `failures.append(f"unexpected STAGING-001 registry status: {registry_status}")` |
+| `scripts/check_staging_acceptance.py` | 52 | audit_append_call | `failures.append("release mode requires accepted staging evidence")` |
+| `scripts/check_staging_acceptance.py` | 83 | audit_append_call | `failures.append("staging acceptance evidence tests failed")` |
+| `scripts/check_staging_acceptance.py` | 104 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_staging_release_gate.py` | 45 | audit_append_call | `results.append(StagingGateResult("file", str(DOC.relative_to(REPO_ROOT)), DOC.exists(), "present" if DOC.exists() else "missing"))` |
 | `scripts/check_staging_release_gate.py` | 48 | audit_append_call | `results.append(` |
 | `scripts/check_staging_release_gate.py` | 59 | audit_append_call | `results.append(` |
@@ -1548,19 +1676,87 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_testing_release_quality_gates_production_readiness.py` | 141 | audit_append_call | `results.append(` |
 | `scripts/check_testing_release_quality_gates_production_readiness.py` | 152 | audit_append_call | `results.append(` |
 | `scripts/check_testing_release_quality_gates_production_readiness.py` | 177 | audit_append_call | `results.append(QualityGateReadinessResult("quality_gate_contracts", False, f"contract check failed: {exc}"))` |
+| `scripts/check_transaction_boundary_guardrails.py` | 43 | audit_append_call | `failures.append("transaction boundary inventory generation failed")` |
+| `scripts/check_transaction_boundary_guardrails.py` | 56 | audit_append_call | `failures.append("inventory contains no findings")` |
+| `scripts/check_transaction_boundary_guardrails.py` | 63 | audit_append_call | `failures.append(f"inventory missing expected term: {term}")` |
+| `scripts/check_transaction_boundary_guardrails.py` | 68 | audit_append_call | `failures.append("evidence registry missing TX-001")` |
+| `scripts/check_transaction_boundary_guardrails.py` | 97 | audit_append_call | `failures.append("transaction boundary guardrail unit tests failed")` |
+| `scripts/check_transaction_boundary_guardrails.py` | 120 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_transaction_rollback_rollup.py` | 37 | audit_append_call | `failures.append("isolated rollback coverage incomplete")` |
+| `scripts/check_transaction_rollback_rollup.py` | 43 | audit_append_call | `failures.append(f"{proof.id} missing from registry")` |
+| `scripts/check_transaction_rollback_rollup.py` | 47 | audit_append_call | `failures.append(f"{proof.id} is not integration-passing")` |
+| `scripts/check_transaction_rollback_rollup.py` | 51 | audit_append_call | `failures.append(f"{proof.id} evidence file missing: {proof.evidence_file}")` |
+| `scripts/check_transaction_rollback_rollup.py` | 56 | audit_append_call | `failures.append(f"registry missing {proof_id}")` |
+| `scripts/check_transaction_rollback_rollup.py` | 61 | audit_append_call | `failures.append("TX-001 must not be marked production-ready by this rollup")` |
+| `scripts/check_transaction_rollback_rollup.py` | 92 | audit_append_call | `failures.append("transaction rollback rollup tests failed")` |
+| `scripts/check_transaction_rollback_rollup.py` | 113 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_tx_route_wiring.py` | 37 | audit_append_call | `failures.append("no route functions scanned")` |
+| `scripts/check_tx_route_wiring.py` | 81 | audit_append_call | `failures.append("TX route wiring inventory tests failed")` |
+| `scripts/check_tx_route_wiring.py` | 102 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_warning_cleanup.py` | 36 | audit_append_call | `failures.append("pytest.ini norecursedirs missing: " + ", ".join(sorted(missing)))` |
 | `scripts/check_warning_cleanup.py` | 45 | audit_append_call | `failures.append(f"{repo_test} _mock_session block {idx} lacks synchronous add MagicMock")` |
 | `scripts/check_warning_cleanup.py` | 49 | audit_append_call | `failures.append(f"missing {repo_test}")` |
 | `scripts/check_warning_cleanup.py` | 55 | audit_append_call | `failures.append(f"{register} missing or incomplete")` |
 | `scripts/ci/ci_lesson_bank_check.py` | 169 | audit_append_call | `results.append(result)` |
 | `scripts/ci/ci_lesson_bank_check.py` | 218 | audit_append_call | `violations.append(violation)` |
+| `scripts/ci_authority.py` | 106 | audit_append_call | `blockers.append("No GitHub Actions workflow file found under .github/workflows")` |
+| `scripts/ci_authority.py` | 108 | audit_append_call | `blockers.append("Workflow file does not mention every required local CI-equivalent command family")` |
+| `scripts/ci_authority.py` | 110 | audit_append_call | `blockers.append("Missing local CI-equivalent Makefile targets: " + ", ".join(missing_targets))` |
+| `scripts/ci_authority.py` | 112 | audit_append_call | `blockers.append("No GitHub Actions run URL recorded in docs/release/ci_evidence.md")` |
+| `scripts/ci_authority.py` | 205 | audit_append_call | `lines.append(f"\| `{target}` \| {target in present} \|")` |
+| `scripts/ci_authority.py` | 211 | audit_append_call | `lines.append("- None")` |
+| `scripts/ci_run_evidence.py` | 160 | audit_append_call | `blockers.append("repository is pending")` |
+| `scripts/ci_run_evidence.py` | 162 | audit_append_call | `blockers.append("branch is pending")` |
+| `scripts/ci_run_evidence.py` | 164 | audit_append_call | `blockers.append("commit SHA is pending or invalid")` |
+| `scripts/ci_run_evidence.py` | 166 | audit_append_call | `blockers.append("GitHub Actions run URL is pending or invalid")` |
+| `scripts/ci_run_evidence.py` | 168 | audit_append_call | `blockers.append("result must be pass/passed/success/successful/green/ok")` |
+| `scripts/ci_run_evidence.py` | 170 | audit_append_call | `blockers.append("workflow is pending")` |
+| `scripts/ci_run_evidence.py` | 172 | audit_append_call | `blockers.append("verified by is pending")` |
+| `scripts/ci_run_evidence.py` | 174 | audit_append_call | `blockers.append("date verified is pending")` |
+| `scripts/ci_run_evidence.py` | 249 | audit_append_call | `lines.extend(f"- {b}" for b in status.blockers) if status.blockers else lines.append("- None")` |
 | `scripts/deduplicate_makefile_targets.py` | 64 | audit_append_call | `occurrences[m.group(1)].append(i)` |
 | `scripts/deduplicate_makefile_targets.py` | 89 | audit_append_call | `block.append(i)` |
 | `scripts/deduplicate_makefile_targets.py` | 149 | audit_append_call | `new_lines.append(phony_line)` |
 | `scripts/deduplicate_makefile_targets.py` | 152 | audit_append_call | `new_lines.append(line)` |
+| `scripts/docs_inventory.py` | 84 | audit_append_call | `headings.append(` |
+| `scripts/docs_inventory.py` | 124 | audit_append_call | `statuses.append(status)` |
+| `scripts/docs_inventory.py` | 133 | audit_append_call | `dates.append(value)` |
+| `scripts/docs_inventory.py` | 142 | audit_append_call | `markdown_spans.append(match.span(2))` |
+| `scripts/docs_inventory.py` | 143 | audit_append_call | `links.append(` |
+| `scripts/docs_inventory.py` | 154 | audit_append_call | `links.append({"text": match.group(0), "target": match.group(0), "kind": "external"})` |
+| `scripts/docs_inventory.py` | 163 | audit_append_call | `references.append(value)` |
+| `scripts/docs_inventory.py` | 174 | audit_append_call | `refs.append(candidate)` |
+| `scripts/docs_inventory.py` | 217 | audit_append_call | `paths.append(resolved)` |
+| `scripts/docs_inventory.py` | 251 | audit_append_call | `items.append(` |
+| `scripts/docs_inventory.py` | 308 | audit_append_call | `lines.append(f"\| `{category}` \| {count} \|")` |
+| `scripts/docs_inventory.py` | 312 | audit_append_call | `lines.append(f"\| `{item.path}` \| `{item.category}` \| {item.title} \| {item.size_bytes} \| {item.generated} \|")` |
+| `scripts/docs_inventory.py` | 331 | audit_append_call | `lines.append(f"\| `{path}` \| {path not in missing} \|")` |
+| `scripts/docs_inventory.py` | 337 | audit_append_call | `lines.append("- No required documentation intelligence gaps detected.")` |
+| `scripts/docs_inventory.py` | 405 | audit_append_call | `errors.append("docs/docs_inventory.json is stale")` |
+| `scripts/docs_inventory.py` | 407 | audit_append_call | `errors.append("docs/docs_inventory.json is missing")` |
+| `scripts/docs_inventory.py` | 410 | audit_append_call | `errors.append("docs/docs_inventory.md is missing")` |
+| `scripts/docs_inventory.py` | 412 | audit_append_call | `errors.append("docs/docs_gap_report.md is missing")` |
+| `scripts/docs_inventory.py` | 414 | audit_append_call | `errors.append("docs/docs_generation_plan.md is missing")` |
+| `scripts/docs_inventory.py` | 417 | audit_append_call | `errors.append("Missing important docs: " + ", ".join(expected.missing_important_docs))` |
 | `scripts/evaluate_pedagogy.py` | 88 | audit_append_call | `cases.append(BenchmarkCase(**record))` |
 | `scripts/evaluate_pedagogy.py` | 171 | audit_append_call | `case_results.append(result)` |
+| `scripts/evidence_registry.py` | 64 | audit_append_call | `findings.append(current)` |
+| `scripts/evidence_registry.py` | 76 | audit_append_call | `findings.append(current)` |
+| `scripts/evidence_registry.py` | 86 | audit_append_call | `errors.append(f"duplicate finding id: {finding.id}")` |
+| `scripts/evidence_registry.py` | 90 | audit_append_call | `errors.append(f"{finding.id}: invalid proof_status {finding.proof_status!r}")` |
+| `scripts/evidence_registry.py` | 93 | audit_append_call | `errors.append(f"{finding.id}: P0/P1 item cannot close on static-passing proof")` |
+| `scripts/evidence_registry.py` | 96 | audit_append_call | `errors.append(f"{finding.id}: {finding.proof_status} requires last_verified_commit")` |
+| `scripts/evidence_registry.py` | 100 | audit_append_call | `errors.append(f"{finding.id}: production-ready requires evidence_file")` |
+| `scripts/evidence_registry.py` | 102 | audit_append_call | `errors.append(f"{finding.id}: production-ready cannot have closure_blocker")` |
+| `scripts/evidence_registry.py` | 106 | audit_append_call | `errors.append(f"{finding.id}: beta-blocking incomplete item must name closure_blocker")` |
+| `scripts/evidence_registry.py` | 115 | audit_append_call | `errors.append(f"{finding.id}: evidence_file missing: {finding.evidence_file}")` |
 | `scripts/execute_disposable_db_schema_proof.py` | 26 | audit_append_call | `code,out=run(cmd); overall=max(overall,code); lines.append(f"\| `{' '.join(cmd).replace(url,'<DATABASE_URL>')}` \| {code} \|"); lines+=["","```text",out.rstrip(),"```"]` |
+| `scripts/external_approval_gate.py` | 167 | audit_append_call | `blockers.append(f"decision must be {meta['required_decision']}")` |
+| `scripts/external_approval_gate.py` | 169 | audit_append_call | `blockers.append("approver is pending")` |
+| `scripts/external_approval_gate.py` | 171 | audit_append_call | `blockers.append("evidence URL is pending or invalid")` |
+| `scripts/external_approval_gate.py` | 173 | audit_append_call | `blockers.append("date verified is pending")` |
+| `scripts/external_approval_gate.py` | 222 | audit_append_call | `lines.append(` |
+| `scripts/external_approval_gate.py` | 231 | audit_append_call | `lines.append("- None")` |
 | `scripts/generate_ai_prompt_surface_inventory.py` | 49 | audit_append_call | `surfaces.append(PromptSurface(str(path.relative_to(REPO_ROOT)), markers))` |
 | `scripts/generate_ai_prompt_surface_inventory.py` | 76 | audit_append_call | `lines.append("\| _none found_ \| _none_ \|")` |
 | `scripts/generate_ai_prompt_surface_inventory.py` | 79 | audit_append_call | `lines.append(f"\| `{surface.path}` \| `{', '.join(surface.markers)}` \|")` |
@@ -1745,7 +1941,15 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/migrate_auth_lifecycle_helpers_to_service.py` | 87 | audit_append_call | `helpers.append((node.name, method, start, end))` |
 | `scripts/migrate_auth_lifecycle_helpers_to_service.py` | 99 | audit_append_call | `extracted.append((method, block))` |
 | `scripts/migrate_auth_lifecycle_helpers_to_service.py` | 132 | audit_append_call | `exported.append(f"{method}_impl")` |
+| `scripts/patch_diagnostics_scoring_snapshot.py` | 26 | audit_append_call | `old_append = 'snap.responses.append({"item_id": item_id, "correct": correct, "response": response})'` |
+| `scripts/patch_diagnostics_scoring_snapshot.py` | 28 | audit_append_call | `'snap.responses.append({**diagnostic_response_snapshot(item, item_id=item_id), '` |
 | `scripts/patch_popia_router_boundary.py` | 50 | audit_append_call | `lines.append(line)` |
+| `scripts/popia_route_tx_gap_plan.py` | 73 | audit_append_call | `problems.append("no POPIA service delegate call found")` |
+| `scripts/popia_route_tx_gap_plan.py` | 75 | audit_append_call | `problems.append("direct DB mutations present")` |
+| `scripts/popia_route_tx_gap_plan.py` | 91 | audit_append_call | `actions.append(` |
+| `scripts/popia_route_tx_gap_plan.py` | 154 | audit_append_call | `lines.append(` |
+| `scripts/popia_route_tx_gap_plan.py` | 159 | audit_append_call | `lines.append("\| `-` \| 0 \| `none` \| No local source gaps detected \| False \|")` |
+| `scripts/popia_route_tx_gap_plan.py` | 174 | audit_append_call | `lines.append("- No POPIA route-source implementation gaps detected by the current report.")` |
 | `scripts/popia_sweep.py` | 113 | audit_append_call | `self.issues.append(issue)` |
 | `scripts/popia_sweep.py` | 133 | audit_append_call | `files.append(path)` |
 | `scripts/popia_sweep.py` | 230 | audit_append_call | `decorator_names.append(decorator.attr)` |
@@ -1763,10 +1967,23 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/prepare_training_data.py` | 125 | audit_append_call | `pairs.append({` |
 | `scripts/reconcile_agent_roadmap.py` | 69 | audit_append_call | `lines.append(f"\| {task.id} \| {task.priority} \| {task.area} \| {task.status} \| {task.title} \| {task.next_action} \|")` |
 | `scripts/refresh_current_state_doc.py` | 358 | audit_append_call | `results.append(r)` |
+| `scripts/release_go_no_go.py` | 88 | audit_append_call | `items.append(current)` |
+| `scripts/release_go_no_go.py` | 99 | audit_append_call | `items.append(current)` |
+| `scripts/release_go_no_go.py` | 160 | audit_append_call | `findings.append(finding)` |
+| `scripts/release_go_no_go.py` | 162 | audit_append_call | `blockers.append(f"{finding.id}: {finding.reason}")` |
+| `scripts/release_go_no_go.py` | 171 | audit_append_call | `actions.append("Attach a passing GitHub Actions run URL for CI-001.")` |
+| `scripts/release_go_no_go.py` | 173 | audit_append_call | `actions.append("Complete external approval files for legal, security, content, and staging gates.")` |
+| `scripts/release_go_no_go.py` | 175 | audit_append_call | `actions.append("Resolve remaining beta-blocking engineering evidence items.")` |
+| `scripts/release_go_no_go.py` | 177 | audit_append_call | `actions.append("Review release_decision_log.md and obtain explicit release-owner sign-off.")` |
+| `scripts/release_go_no_go.py` | 258 | audit_append_call | `lines.append(` |
+| `scripts/release_go_no_go.py` | 267 | audit_append_call | `lines.append("- None")` |
 | `scripts/remove_proven_dead_backend_consolidation_artifacts.py` | 9 | audit_append_call | `skipped.append(f"{p.relative_to(ROOT)}: active/protected"); continue` |
 | `scripts/remove_proven_dead_backend_consolidation_artifacts.py` | 12 | audit_append_call | `skipped.append(f"{p.relative_to(ROOT)}: referenced"); continue` |
 | `scripts/remove_proven_dead_backend_consolidation_artifacts.py` | 13 | audit_append_call | `p.unlink(); removed.append(str(p.relative_to(ROOT)))` |
-| `scripts/rename_metaphor_layers.py` | 85 | audit_append_call | `hits.append((path, lineno, match.group(0).lower(), line.rstrip()))` |
+| `scripts/rename_metaphor_layers.py` | 90 | audit_append_call | `hits.append((path, lineno, match.group(0).lower(), line.rstrip()))` |
+| `scripts/repair_arq_dependency_worker_import.py` | 46 | audit_append_call | `changed.append(str(path.relative_to(ROOT)))` |
+| `scripts/repair_arq_dependency_worker_import.py` | 53 | audit_append_call | `changed.append(str(path.relative_to(ROOT)))` |
+| `scripts/repair_arq_dependency_worker_import.py` | 98 | audit_append_call | `changed.append(str(path.relative_to(ROOT)))` |
 | `scripts/repair_auth_forward_refs.py` | 72 | audit_append_call | `chunks.append("\n".join(lines[start:end]))` |
 | `scripts/repair_auth_forward_refs.py` | 125 | audit_append_call | `candidates.append(base)` |
 | `scripts/repair_auth_forward_refs.py` | 191 | audit_append_call | `unresolved.append(symbol)` |
@@ -1779,6 +1996,8 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/repair_auth_lifecycle_method_extraction.py` | 211 | audit_append_call | `replacements.append((start, end, _route_replacement(lines, node, method)))` |
 | `scripts/repair_auth_lifecycle_method_extraction.py` | 282 | audit_append_call | `failures.append(f"auth.py does not delegate {method}")` |
 | `scripts/repair_auth_lifecycle_method_extraction.py` | 284 | audit_append_call | `failures.append(f"AuthApplicationService missing assigned {method} method")` |
+| `scripts/repair_auth_repository_fixture_proof.py` | 32 | audit_repository | `"app.repositories.repositories.AuditRepository",` |
+| `scripts/repair_auth_repository_fixture_proof.py` | 33 | audit_repository | `"app.repositories.audit_repository.AuditRepository",` |
 | `scripts/repair_auth_router_boundary.py` | 60 | audit_append_call | `updated_lines.append(line.split("import", 1)[0] + "import " + ", ".join(kept) + "\n")` |
 | `scripts/repair_auth_router_boundary.py` | 67 | audit_append_call | `updated_lines.append(line.split("import", 1)[0] + "import " + ", ".join(kept) + "\n")` |
 | `scripts/repair_auth_router_boundary.py` | 70 | audit_append_call | `updated_lines.append(line)` |
@@ -1810,6 +2029,50 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/repair_runtime_blockers_after_followup_audit.py` | 145 | audit_append_call | `ranges.append((node.lineno - 1, node.end_lineno or node.lineno))` |
 | `scripts/repair_runtime_blockers_after_followup_audit.py` | 156 | audit_repository | `if stripped.startswith("from app.repositories") and any(name in line for name in ("ConsentRepository", "AuditRepository")):` |
 | `scripts/repair_runtime_blockers_after_followup_audit.py` | 158 | audit_append_call | `new_lines.append(line)` |
+| `scripts/route_tx_auth_slice.py` | 107 | audit_append_call | `parts.append(value.attr)` |
+| `scripts/route_tx_auth_slice.py` | 110 | audit_append_call | `parts.append(value.id)` |
+| `scripts/route_tx_auth_slice.py` | 130 | audit_append_call | `mutations.append(name)` |
+| `scripts/route_tx_auth_slice.py` | 142 | audit_append_call | `chunks.append(path.read_text(encoding="utf-8", errors="ignore"))` |
+| `scripts/route_tx_auth_slice.py` | 219 | audit_append_call | `blockers.append(f"{name} is pending")` |
+| `scripts/route_tx_auth_slice.py` | 221 | audit_append_call | `blockers.append("Live DB evidence URL must be a URL")` |
+| `scripts/route_tx_auth_slice.py` | 223 | audit_append_call | `blockers.append("Test result must be passed/pass/green/ok")` |
+| `scripts/route_tx_auth_slice.py` | 225 | audit_append_call | `blockers.append("Commit SHA must look like a git SHA")` |
+| `scripts/route_tx_auth_slice.py` | 234 | audit_append_call | `blockers.append("auth router file missing")` |
+| `scripts/route_tx_auth_slice.py` | 254 | audit_append_call | `findings.append(finding)` |
+| `scripts/route_tx_auth_slice.py` | 255 | audit_append_call | `blockers.append(f"{route_name}: route function missing")` |
+| `scripts/route_tx_auth_slice.py` | 268 | audit_append_call | `missing.append(f"expected delegate {expected_delegate} missing")` |
+| `scripts/route_tx_auth_slice.py` | 270 | audit_append_call | `missing.append("auth_service dependency missing")` |
+| `scripts/route_tx_auth_slice.py` | 272 | audit_append_call | `missing.append("direct db mutations present: " + ", ".join(mutations))` |
+| `scripts/route_tx_auth_slice.py` | 274 | audit_append_call | `blockers.append(f"{route_name}: {reason}")` |
+| `scripts/route_tx_auth_slice.py` | 276 | audit_append_call | `findings.append(` |
+| `scripts/route_tx_auth_slice.py` | 291 | audit_append_call | `blockers.append("no auth transactional service markers found in app/services")` |
+| `scripts/route_tx_auth_slice.py` | 334 | audit_append_call | `lines.append(` |
+| `scripts/route_tx_auth_slice.py` | 344 | audit_append_call | `lines.append("- None")` |
+| `scripts/route_tx_auth_slice.py` | 350 | audit_append_call | `lines.append("- None")` |
+| `scripts/route_tx_impl_plan.py` | 143 | audit_append_call | `actions.append(` |
+| `scripts/route_tx_impl_plan.py` | 206 | audit_append_call | `lines.append(` |
+| `scripts/route_tx_impl_plan.py` | 226 | audit_append_call | `lines.append("- No unproven mutation routes detected by the current inventory.")` |
+| `scripts/route_tx_popia_slice.py` | 131 | audit_append_call | `chunks.append("\n".join(lines[start:end]))` |
+| `scripts/route_tx_popia_slice.py` | 145 | audit_append_call | `parts.append(value.attr)` |
+| `scripts/route_tx_popia_slice.py` | 148 | audit_append_call | `parts.append(value.id)` |
+| `scripts/route_tx_popia_slice.py` | 161 | audit_append_call | `mutations.append(name)` |
+| `scripts/route_tx_popia_slice.py` | 172 | audit_append_call | `calls.append(name)` |
+| `scripts/route_tx_popia_slice.py` | 186 | audit_append_call | `chunks.append(path.read_text(encoding="utf-8", errors="ignore"))` |
+| `scripts/route_tx_popia_slice.py` | 263 | audit_append_call | `blockers.append(f"{name} is pending")` |
+| `scripts/route_tx_popia_slice.py` | 265 | audit_append_call | `blockers.append("Live DB evidence URL must be a URL")` |
+| `scripts/route_tx_popia_slice.py` | 267 | audit_append_call | `blockers.append("Test result must be passed/pass/green/ok")` |
+| `scripts/route_tx_popia_slice.py` | 269 | audit_append_call | `blockers.append("Commit SHA must look like a git SHA")` |
+| `scripts/route_tx_popia_slice.py` | 277 | audit_append_call | `funcs.append(node)` |
+| `scripts/route_tx_popia_slice.py` | 287 | audit_append_call | `blockers.append("POPIA router file missing")` |
+| `scripts/route_tx_popia_slice.py` | 316 | audit_append_call | `reasons.append("no POPIA service delegate call found")` |
+| `scripts/route_tx_popia_slice.py` | 318 | audit_append_call | `reasons.append("direct db mutations present: " + ", ".join(mutations))` |
+| `scripts/route_tx_popia_slice.py` | 320 | audit_append_call | `blockers.append(f"{node.name}: {reason}")` |
+| `scripts/route_tx_popia_slice.py` | 322 | audit_append_call | `findings.append(` |
+| `scripts/route_tx_popia_slice.py` | 335 | audit_append_call | `blockers.append("selected POPIA routes were not found in router source")` |
+| `scripts/route_tx_popia_slice.py` | 339 | audit_append_call | `blockers.append("no POPIA transactional service markers found")` |
+| `scripts/route_tx_popia_slice.py` | 385 | audit_append_call | `lines.append(` |
+| `scripts/route_tx_popia_slice.py` | 395 | audit_append_call | `lines.append("- None")` |
+| `scripts/route_tx_popia_slice.py` | 401 | audit_append_call | `lines.append("- None")` |
 | `scripts/run_database_backup.py` | 37 | audit_append_call | `results.append(` |
 | `scripts/run_database_backup.py` | 60 | audit_append_call | `lines.append(f"- `{name}`")` |
 | `scripts/run_database_restore.py` | 36 | audit_append_call | `results.append(` |
@@ -1834,12 +2097,27 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/scrape_teaching_materials.py` | 41 | audit_append_call | `links.append({"url": full_url, "text": text})` |
 | `scripts/seed_item_bank.py` | 99 | audit_append_call | `failing.append({"item": item, "errors": errors})` |
 | `scripts/seed_item_bank.py` | 109 | audit_append_call | `passing.append(item)` |
+| `scripts/staging_acceptance_evidence.py` | 192 | audit_append_call | `lines.append(f"\| `{field.name}` \| `{field.value}` \| {field.valid} \| {field.reason} \|")` |
+| `scripts/staging_acceptance_evidence.py` | 198 | audit_append_call | `lines.append("- None")` |
 | `scripts/staging_smoke.py` | 61 | audit_append_call | `results.append({"path": check.path, "status": status, "passed": passed})` |
+| `scripts/stamp_evidence_registry_commit.py` | 34 | audit_append_call | `output.append(line)` |
+| `scripts/stamp_evidence_registry_commit.py` | 37 | audit_append_call | `output.append(f"    last_verified_commit: {sha}")` |
+| `scripts/stamp_evidence_registry_commit.py` | 39 | audit_append_call | `output.append(line)` |
 | `scripts/sync_caps_r2.py` | 58 | audit_append_call | `items.append(SyncItem(path, f"{prefix.rstrip('/')}/{rel}"))` |
 | `scripts/sync_caps_r2.py` | 95 | audit_append_call | `synced.append({"local_path": str(item.local_path), "key": item.key})` |
 | `scripts/sync_caps_r2.py` | 112 | audit_append_call | `synced.append({"local_path": str(local_path), "key": key})` |
 | `scripts/sync_git_to_redmine.py` | 15 | audit_events_table | `"fourth estate": 5, "estate": 5, "audit_events": 5,` |
 | `scripts/train_qlora.py` | 41 | audit_append_call | `records.append(json.loads(line))` |
+| `scripts/transaction_boundary_inventory.py` | 102 | audit_append_call | `found.append(marker)` |
+| `scripts/transaction_boundary_inventory.py` | 111 | audit_append_call | `areas.append(area)` |
+| `scripts/transaction_boundary_inventory.py` | 128 | audit_append_call | `calls.append(name)` |
+| `scripts/transaction_boundary_inventory.py` | 169 | audit_append_call | `findings.append(finding)` |
+| `scripts/transaction_boundary_inventory.py` | 199 | audit_append_call | `lines.append(` |
+| `scripts/transaction_rollback_rollup.py` | 73 | audit_append_call | `proofs.append(` |
+| `scripts/transaction_rollback_rollup.py` | 116 | audit_append_call | `lines.append(` |
+| `scripts/tx_route_wiring_inventory.py` | 63 | audit_append_call | `chunks.append("\n".join(lines[start:end]))` |
+| `scripts/tx_route_wiring_inventory.py` | 109 | audit_append_call | `rows.append(` |
+| `scripts/tx_route_wiring_inventory.py` | 160 | audit_append_call | `lines.append(` |
 | `scripts/validate_ai_output_fixtures.py` | 50 | audit_append_call | `results.append(` |
 | `scripts/validate_ai_output_fixtures.py` | 58 | audit_append_call | `results.append(` |
 | `scripts/validate_ai_output_fixtures.py` | 67 | audit_append_call | `results.append(` |
@@ -1891,12 +2169,27 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `tests/integration/test_auth_lifecycle_http_success_scope.py` | 207 | audit_append_call | `self.calls.append(("login", kwargs))` |
 | `tests/integration/test_auth_lifecycle_http_success_scope.py` | 213 | audit_append_call | `self.calls.append(("refresh", kwargs))` |
 | `tests/integration/test_auth_lifecycle_http_success_scope.py` | 222 | audit_append_call | `self.calls.append(("create_dev_session", kwargs))` |
+| `tests/integration/test_auth_repository_fixture_proof.py` | 47 | audit_append_call | `stored_tokens.append(token)` |
 | `tests/integration/test_auth_transactional_db_lifecycle_proof.py` | 105 | audit_append_call | `rows.append((f"{lowered} {endpoint} {route_name}", route))` |
 | `tests/integration/test_diagnostic_session.py` | 91 | audit_append_call | `items.append(_make_item(difficulty_b=b, caps_ref=caps_ref))` |
 | `tests/integration/test_diagnostic_session.py` | 194 | audit_append_call | `served_item_ids.append(item.item_id)` |
 | `tests/integration/test_diagnostic_session.py` | 250 | audit_append_call | `served_ids.append(item.item_id)` |
+| `tests/integration/test_diagnostics_transaction_rollback_proof.py` | 44 | audit_events_table | `audit_events = __import__("sqlalchemy").Table(` |
+| `tests/integration/test_diagnostics_transaction_rollback_proof.py` | 78 | audit_events_table | `audit_events_table=audit_events,` |
+| `tests/integration/test_diagnostics_transaction_rollback_proof.py` | 103 | audit_events_table | `assert await _count(session, audit_events) == 1` |
+| `tests/integration/test_diagnostics_transaction_rollback_proof.py` | 118 | audit_events_table | `assert await _count(session, audit_events) == 0` |
+| `tests/integration/test_diagnostics_transaction_rollback_proof.py` | 131 | audit_events_table | `assert await _count(session, audit_events) == 1` |
+| `tests/integration/test_lesson_authorization_negative_contract.py` | 39 | audit_append_call | `read_routes.append(block)` |
+| `tests/integration/test_lesson_authorization_negative_contract.py` | 41 | audit_append_call | `write_routes.append(block)` |
+| `tests/integration/test_lesson_authorization_negative_contract.py` | 43 | audit_append_call | `sync_routes.append(block)` |
+| `tests/integration/test_lesson_gamification_transaction_rollback_proof.py` | 36 | audit_events_table | `audit_events = __import__("sqlalchemy").Table(` |
+| `tests/integration/test_lesson_gamification_transaction_rollback_proof.py` | 80 | audit_events_table | `result = await session.execute(select(func.count()).select_from(audit_events))` |
+| `tests/integration/test_lesson_gamification_transaction_rollback_proof.py` | 89 | audit_events_table | `audit_events_table=audit_events,` |
 | `tests/integration/test_lesson_sync.py` | 42 | audit_append_call | `calls.append(("complete", lesson_id, None))` |
 | `tests/integration/test_lesson_sync.py` | 45 | audit_append_call | `calls.append(("feedback", lesson_id, score))` |
+| `tests/integration/test_popia_lifecycle_response_contract.py` | 35 | audit_append_call | `self.events.append("consent.granted")` |
+| `tests/integration/test_popia_lifecycle_response_contract.py` | 47 | audit_append_call | `self.events.append(f"consent.{reason}")` |
+| `tests/integration/test_popia_lifecycle_response_contract.py` | 51 | audit_append_call | `self.events.append("consent.renewed")` |
 | `tests/integration/test_popia_lifecycle_runtime_contract.py` | 14 | audit_append_call | `self.calls.append(("grant", guardian_id, learner_id, consent_version, actor_id))` |
 | `tests/integration/test_popia_lifecycle_runtime_contract.py` | 18 | audit_append_call | `self.calls.append(("revoke", guardian_id, learner_id, actor_id, reason))` |
 | `tests/integration/test_stripe_webhooks.py` | 32 | audit_append_call | `calls.append(guardian_id)` |
@@ -1915,6 +2208,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `tests/unit/modules/lessons/test_lesson_generation_perf.py` | 229 | audit_append_call | `latencies.append(elapsed * 1000)  # convert to ms` |
 | `tests/unit/modules/lessons/test_lesson_generation_perf.py` | 270 | audit_append_call | `latencies.append((time.perf_counter() - start) * 1000)` |
 | `tests/unit/test_api_v2_router_contract.py` | 46 | audit_append_call | `missing.append(f"{router_name}:{expected_prefix}")` |
+| `tests/unit/test_arq_worker_import_contract.py` | 22 | audit_append_call | `matching.append(path)` |
 | `tests/unit/test_audit_callsite_inventory_and_adapter.py` | 44 | audit_append_call | `self.calls.append(kwargs)` |
 | `tests/unit/test_audit_callsite_inventory_and_adapter.py` | 50 | audit_append_call | `result = await adapter.append(action="x", resource_id="r1")` |
 | `tests/unit/test_audit_integrity.py` | 15 | audit_repository | `AuditRepository,` |
@@ -1959,6 +2253,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `tests/unit/test_billing_monetization_production_readiness.py` | 69 | audit_log_identifier | `assert "processed:evt_1:invoice.created:1" in store.audit_log` |
 | `tests/unit/test_billing_monetization_production_readiness.py` | 70 | audit_log_identifier | `assert "duplicate:evt_1:invoice.created" in store.audit_log` |
 | `tests/unit/test_consent_policy.py` | 75 | audit_append_call | `self.events.append(kwargs)` |
+| `tests/unit/test_diagnostics_scoring_snapshot.py` | 67 | audit_append_call | `captured.append([float(getattr(item, "difficulty_b", getattr(item, "b_param", 0.0))) for item, _ in responses])` |
 | `tests/unit/test_lesson_object_authorization_contracts.py` | 48 | audit_append_call | `candidates.append(node)` |
 | `tests/unit/test_lesson_object_authorization_contracts.py` | 62 | audit_append_call | `candidates.append(node)` |
 | `tests/unit/test_no_raw_dict_responses.py` | 74 | audit_append_call | `violations.append(` |

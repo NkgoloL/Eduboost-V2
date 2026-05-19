@@ -1,6 +1,6 @@
 # Auth HTTP Success Scope Report
 
-Generated at: `2026-05-18T23:19:17Z`
+Generated at: `2026-05-19T18:43:57Z`
 
 **Status:** controlled_dependency_override_success_scope_proof
 

@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-05-19T18:45:35Z",
+  "current_commit": "2a9ad9e37ede787422d202cd0fde4fb71b28e15d",
+  "source_report": "docs/release/popia_route_transaction_slice_report.json",
+  "source_local_status": "route-popia-delegation-passing",
+  "source_live_db_status": "external-blocked",
+  "status": "local-source-clear-live-db-still-required",
+  "action_count": 0,
+  "actions": [],
+  "no_false_closure_rules": [
+    "Do not mark ROUTE-TX-POPIA-001 runtime-passing while local_status is route-popia-delegation-not-proven.",
+    "Do not proceed to diagnostics route transaction slices as if POPIA were closed.",
+    "Do not close live DB proof from local source reports.",
+    "Do not use generated plans as implementation evidence."
+  ]
+}

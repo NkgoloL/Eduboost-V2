@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-18T23:19:06Z",
+  "generated_at": "2026-05-19T18:43:45Z",
   "rows": [
     {
       "router": "app/api_v2_routers/0005_irt_seed.py",
@@ -107,15 +107,13 @@
         "app.modules.diagnostics.session_recovery_service",
         "app.services.caps_validator",
         "app.services.diagnostic",
-        "app.services.diagnostic_data_integrity"
+        "app.services.diagnostic_data_integrity",
+        "app.services.diagnostic_route_integrity"
       ],
-      "dependency_imports": [],
-      "repository_imports": [
-        "app.repositories.diagnostic_session_repository",
-        "app.repositories.item_bank_repository",
-        "app.repositories.mastery_repository",
-        "app.repositories.repositories"
+      "dependency_imports": [
+        "app.api_v2_deps"
       ],
+      "repository_imports": [],
       "database_imports": [
         "app.core.database",
         "sqlalchemy.ext.asyncio"

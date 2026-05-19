@@ -2052,3 +2052,22 @@ route-tx-popia-slice-test:
 backend-implementation-2111-2150-full-check: route-tx-popia-slice-report route-tx-popia-slice-check route-tx-popia-slice-test
 	python3 -m compileall -q scripts tests
 	python3 -m ruff check scripts/route_tx_popia_slice.py scripts/patch_route_tx_popia_slice_registry.py scripts/check_route_tx_popia_slice.py tests/unit/test_route_tx_popia_slice.py --select F821,F401,F811,E402
+
+.PHONY: popia-route-tx-gap-plan popia-route-tx-not-proven-registry-patch popia-route-tx-no-false-closure-check popia-route-tx-gap-test backend-implementation-2111-2150R-full-check
+
+popia-route-tx-gap-plan:
+	PYTHONPATH=. python3 -c "from scripts.popia_route_tx_gap_plan import write_plan; p = write_plan(); print(p.status)"
+
+popia-route-tx-not-proven-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_popia_route_tx_not_proven_registry.py
+
+popia-route-tx-no-false-closure-check: popia-route-tx-not-proven-registry-patch
+	PYTHONPATH=. python3 scripts/check_popia_route_tx_no_false_closure.py
+
+popia-route-tx-gap-test:
+	pytest -c pytest.ini tests/unit/test_popia_route_tx_gap_plan.py -q --no-cov --tb=short
+
+backend-implementation-2111-2150R-full-check: popia-route-tx-gap-plan popia-route-tx-no-false-closure-check popia-route-tx-gap-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/popia_route_tx_gap_plan.py scripts/check_popia_route_tx_no_false_closure.py scripts/patch_popia_route_tx_not_proven_registry.py tests/unit/test_popia_route_tx_gap_plan.py --select F821,F401,F811,E402
+

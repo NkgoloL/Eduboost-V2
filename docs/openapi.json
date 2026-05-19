@@ -604,6 +604,17 @@
       },
       "DiagnosticSessionResponseRequest": {
         "properties": {
+          "caps_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Caps Ref"
+          },
           "correct": {
             "title": "Correct",
             "type": "boolean"
@@ -2093,7 +2104,7 @@
     },
     "/api/v2/auth/dev-session": {
       "post": {
-        "description": "Non-production bootstrap endpoint for the local learner flow.\nCreates or reuses a guardian, learner, and active consent so the frontend\ncan exercise authenticated V2 routes without hand-editing localStorage.",
+        "description": "Non-production bootstrap endpoint for the local learner flow.\nCreates or reuses a guardian, learner, and active consent so the frontend\ncan exercise authenticated V2 routes without hand-editing localStorage.\nDEV_SESSION_BOOTSTRAPPED",
         "operationId": "create_dev_session_api_v2_auth_dev_session_post",
         "responses": {
           "200": {
@@ -3969,7 +3980,6 @@
     },
     "/api/v2/lessons/sync": {
       "post": {
-        "description": "Batch sync lesson events (completion, feedback) from the client.",
         "operationId": "sync_lessons_api_v2_lessons_sync_post",
         "requestBody": {
           "content": {
@@ -4520,6 +4530,11 @@
             "description": "Validation Error"
           }
         },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
         "summary": "Deny Consent",
         "tags": [
           "popia"
@@ -4561,6 +4576,11 @@
             "description": "Validation Error"
           }
         },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
         "summary": "Grant Consent",
         "tags": [
           "popia"
@@ -4602,6 +4622,11 @@
             "description": "Validation Error"
           }
         },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
         "summary": "Renew Consent",
         "tags": [
           "popia"
@@ -4643,6 +4668,11 @@
             "description": "Validation Error"
           }
         },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
         "summary": "Withdraw Consent",
         "tags": [
           "popia"
@@ -5388,7 +5418,7 @@
     },
     "/v2/auth/dev-session": {
       "post": {
-        "description": "Non-production bootstrap endpoint for the local learner flow.\nCreates or reuses a guardian, learner, and active consent so the frontend\ncan exercise authenticated V2 routes without hand-editing localStorage.",
+        "description": "Non-production bootstrap endpoint for the local learner flow.\nCreates or reuses a guardian, learner, and active consent so the frontend\ncan exercise authenticated V2 routes without hand-editing localStorage.\nDEV_SESSION_BOOTSTRAPPED",
         "operationId": "create_dev_session_v2_auth_dev_session_post",
         "responses": {
           "200": {
@@ -7264,7 +7294,6 @@
     },
     "/v2/lessons/sync": {
       "post": {
-        "description": "Batch sync lesson events (completion, feedback) from the client.",
         "operationId": "sync_lessons_v2_lessons_sync_post",
         "requestBody": {
           "content": {
@@ -7815,6 +7844,11 @@
             "description": "Validation Error"
           }
         },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
         "summary": "Deny Consent",
         "tags": [
           "popia"
@@ -7856,6 +7890,11 @@
             "description": "Validation Error"
           }
         },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
         "summary": "Grant Consent",
         "tags": [
           "popia"
@@ -7897,6 +7936,11 @@
             "description": "Validation Error"
           }
         },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
         "summary": "Renew Consent",
         "tags": [
           "popia"
@@ -7938,6 +7982,11 @@
             "description": "Validation Error"
           }
         },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
         "summary": "Withdraw Consent",
         "tags": [
           "popia"

@@ -1152,3 +1152,20 @@ make route-tx-popia-slice-test
 make backend-implementation-2111-2150-full-check
 ```
 
+## ROUTE-TX-POPIA-001R / Backend implementation 2111-2150R — POPIA route transaction no-false-closure repair
+
+Audit drivers:
+
+- `ROUTE-TX-POPIA-001` produced `route-popia-delegation-not-proven`.
+- That status must not be treated as a closed route transaction proof.
+- The next execution queue must repair POPIA route source delegation before moving to diagnostics.
+
+Commands:
+
+```bash
+make popia-route-tx-gap-plan
+make popia-route-tx-no-false-closure-check
+make popia-route-tx-gap-test
+make backend-implementation-2111-2150R-full-check
+```
+

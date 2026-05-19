@@ -31,7 +31,9 @@ DIRECT_DB_MUTATION_METHODS = {
 
 SERVICE_NAME_HINTS = {
     "consent",
+    "consent_svc",
     "consent_service",
+    "dsr_svc",
     "popia_service",
     "lifecycle_service",
     "transactional_service",

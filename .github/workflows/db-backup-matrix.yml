@@ -32,7 +32,7 @@ jobs:
           chmod +x scripts/ci/mock_pg_dump.sh scripts/ci/mock_age.sh scripts/ci/mock_gpg.sh scripts/db_backup.sh
 
       - name: Show scenario
-        run: 'echo "Running scenario: ${{ matrix.include.name }}"'
+        run: 'echo "Running scenario: ${{ matrix.name }}"'
 
       - name: Run backup script (scenario)
         shell: bash -l {0}
@@ -41,7 +41,7 @@ jobs:
           RETENTION_DAYS: 1
         run: |
           # apply scenario envs from matrix
-          eval "${{ matrix.include.env }}"
+          eval "${{ matrix.env }}"
           # make mock encryptors available on PATH if requested
           if [[ "${ENCRYPTION_TOOL:-}" == "age" ]]; then
             export PATH="./scripts/ci:$PATH"
@@ -61,5 +61,5 @@ jobs:
       - name: Upload backups artifact
         uses: actions/upload-artifact@v4
         with:
-          name: eduboost-db-backups-${{ matrix.include.name }}
+          name: eduboost-db-backups-${{ matrix.name }}
           path: backups-matrix

@@ -2,6 +2,8 @@
 
 **Item:** CI-001
 
+Status: pending remote CI verification
+
 **Status:** external-blocked
 
 This file must be updated with an actual GitHub Actions run URL before CI-001 can move beyond `external-blocked`.
@@ -14,6 +16,7 @@ This file must be updated with an actual GitHub Actions run URL before CI-001 ca
 - GitHub Actions run URL: `PENDING`
 - Result: `PENDING`
 - Date verified: `PENDING`
+- Route alias policy: `PENDING`
 
 ## Local CI-equivalent commands
 

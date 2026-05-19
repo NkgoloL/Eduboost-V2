@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-18T23:19:06Z",
+  "generated_at": "2026-05-19T18:43:45Z",
   "domains": {
     "other": [
       {
@@ -8,6 +8,14 @@
         "classification": "unclassified",
         "classes": [
           "ContentQualityScore"
+        ]
+      },
+      {
+        "path": "app/services/arq_import_compat.py",
+        "domain": "other",
+        "classification": "migration_or_compat_helper",
+        "classes": [
+          "RedisSettings"
         ]
       },
       {
@@ -694,6 +702,17 @@
         ]
       },
       {
+        "path": "app/services/auth_transactional_registration.py",
+        "domain": "auth",
+        "classification": "unclassified",
+        "classes": [
+          "AuthRegistrationInput",
+          "AuthRegistrationResult",
+          "AuthRegistrationTransactionError",
+          "TransactionalAuthRegistrationService"
+        ]
+      },
+      {
         "path": "app/services/lesson_authorization.py",
         "domain": "auth",
         "classification": "authorization_helper",
@@ -825,6 +844,18 @@
         "classification": "duplicate_domain_service",
         "classes": [
           "LessonServiceV2"
+        ]
+      },
+      {
+        "path": "app/services/lesson_transactional_completion.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "LessonCompletionInput",
+          "LessonCompletionNotFoundError",
+          "LessonCompletionResult",
+          "LessonCompletionTransactionError",
+          "TransactionalLessonCompletionService"
         ]
       },
       {
@@ -1044,6 +1075,12 @@
         ]
       },
       {
+        "path": "app/services/diagnostic_route_integrity.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": []
+      },
+      {
         "path": "app/services/diagnostic_safety.py",
         "domain": "diagnostic",
         "classification": "unclassified",
@@ -1051,6 +1088,12 @@
           "DiagnosticItemValidation",
           "DiagnosticItemValidator"
         ]
+      },
+      {
+        "path": "app/services/diagnostic_scoring_snapshot.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": []
       },
       {
         "path": "app/services/diagnostic_service_v2.py",
@@ -1075,6 +1118,17 @@
         "classes": [
           "DiagnosticSessionNotFoundError",
           "DiagnosticSessionService"
+        ]
+      },
+      {
+        "path": "app/services/diagnostic_transactional_response.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": [
+          "DiagnosticTransactionError",
+          "DiagnosticTransactionInput",
+          "DiagnosticTransactionResult",
+          "TransactionalDiagnosticResponseService"
         ]
       },
       {
@@ -1250,6 +1304,16 @@
           "POPIADataRightsService",
           "RightsRequestStatus"
         ]
+      },
+      {
+        "path": "app/services/popia_transactional_lifecycle.py",
+        "domain": "popia",
+        "classification": "unclassified",
+        "classes": [
+          "POPIATransactionError",
+          "TransactionalPOPIAConsentLifecycleService",
+          "_NullAsyncContext"
+        ]
       }
     ],
     "billing": [
@@ -1299,6 +1363,14 @@
       "classification": "unclassified",
       "classes": [
         "ContentQualityScore"
+      ]
+    },
+    {
+      "path": "app/services/arq_import_compat.py",
+      "domain": "other",
+      "classification": "migration_or_compat_helper",
+      "classes": [
+        "RedisSettings"
       ]
     },
     {
@@ -1395,6 +1467,17 @@
       "classification": "unclassified",
       "classes": [
         "AuthTokenClaims"
+      ]
+    },
+    {
+      "path": "app/services/auth_transactional_registration.py",
+      "domain": "auth",
+      "classification": "unclassified",
+      "classes": [
+        "AuthRegistrationInput",
+        "AuthRegistrationResult",
+        "AuthRegistrationTransactionError",
+        "TransactionalAuthRegistrationService"
       ]
     },
     {
@@ -1613,6 +1696,12 @@
       ]
     },
     {
+      "path": "app/services/diagnostic_route_integrity.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": []
+    },
+    {
       "path": "app/services/diagnostic_safety.py",
       "domain": "diagnostic",
       "classification": "unclassified",
@@ -1620,6 +1709,12 @@
         "DiagnosticItemValidation",
         "DiagnosticItemValidator"
       ]
+    },
+    {
+      "path": "app/services/diagnostic_scoring_snapshot.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": []
     },
     {
       "path": "app/services/diagnostic_service_v2.py",
@@ -1644,6 +1739,17 @@
       "classes": [
         "DiagnosticSessionNotFoundError",
         "DiagnosticSessionService"
+      ]
+    },
+    {
+      "path": "app/services/diagnostic_transactional_response.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": [
+        "DiagnosticTransactionError",
+        "DiagnosticTransactionInput",
+        "DiagnosticTransactionResult",
+        "TransactionalDiagnosticResponseService"
       ]
     },
     {
@@ -1771,6 +1877,18 @@
       ]
     },
     {
+      "path": "app/services/lesson_transactional_completion.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "LessonCompletionInput",
+        "LessonCompletionNotFoundError",
+        "LessonCompletionResult",
+        "LessonCompletionTransactionError",
+        "TransactionalLessonCompletionService"
+      ]
+    },
+    {
       "path": "app/services/llm/gateway.py",
       "domain": "other",
       "classification": "unclassified",
@@ -1821,6 +1939,16 @@
       "classes": [
         "POPIADataRightsService",
         "RightsRequestStatus"
+      ]
+    },
+    {
+      "path": "app/services/popia_transactional_lifecycle.py",
+      "domain": "popia",
+      "classification": "unclassified",
+      "classes": [
+        "POPIATransactionError",
+        "TransactionalPOPIAConsentLifecycleService",
+        "_NullAsyncContext"
       ]
     },
     {
