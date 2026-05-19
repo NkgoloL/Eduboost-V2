@@ -1,9 +1,9 @@
 # Documentation Inventory
 
-Generated at: `2026-05-19T16:48:24Z`
-Commit: `5487eeab0a9accf09d52ccf127fffcdbc2a2e002`
+Generated at: `2026-05-19T17:43:13Z`
+Commit: `cf485a28ac490aa0cfe70fbf320d43e69270c50c`
 
-- Documents: `920`
+- Documents: `936`
 - Generated docs: `3`
 
 ## Categories
@@ -13,8 +13,8 @@ Commit: `5487eeab0a9accf09d52ccf127fffcdbc2a2e002`
 | `adr` | 25 |
 | `api` | 6 |
 | `architecture` | 35 |
-| `general` | 476 |
-| `release` | 280 |
+| `general` | 482 |
+| `release` | 290 |
 | `security` | 98 |
 
 ## Documents
@@ -303,10 +303,16 @@ Commit: `5487eeab0a9accf09d52ccf127fffcdbc2a2e002`
 | `docs/frontend/production_parent_privacy_controls_contract.md` | `general` | Production Parent Privacy Controls Contract | 756 | False |
 | `docs/frontend/production_protected_route_guard_contract.md` | `general` | Production Protected Route Guard Contract | 948 | False |
 | `docs/frontend/production_teacher_admin_scope_contract.md` | `general` | Production Teacher/Admin Scope Contract | 862 | False |
+| `docs/generated/documentation_intelligence/classifier_suggestions.md` | `general` | Classifier Suggestions | 7262 | False |
 | `docs/generated/documentation_intelligence/docs_gap_report.md` | `general` | Documentation Gap Report | 31221 | False |
 | `docs/generated/documentation_intelligence/docs_generation_plan.md` | `general` | Documentation Generation Plan | 10022 | False |
 | `docs/generated/documentation_intelligence/docs_inventory.json` | `general` | docs_inventory.json | 1842246 | False |
 | `docs/generated/documentation_intelligence/docs_inventory.md` | `general` | Documentation Inventory | 125504 | False |
+| `docs/generated/documentation_intelligence/gap_fixes.md` | `general` | Gap Fixes & Proposed Evidence Links | 1749 | False |
+| `docs/generated/documentation_intelligence/review_request.md` | `general` | Review Request: System Overview | 1202 | False |
+| `docs/generated/documentation_intelligence/sanity_checks.json` | `general` | sanity_checks.json | 3293824 | False |
+| `docs/generated/documentation_intelligence/sanity_checks.md` | `general` | Docs Sanity Checks | 59756 | False |
+| `docs/generated/documentation_intelligence/system_overview.md` | `general` | System Overview | 5650 | False |
 | `docs/incident_response.md` | `general` | Incident Response Playbook | 2260 | False |
 | `docs/index.md` | `general` | EduBoost V2 | 916 | False |
 | `docs/launch_scope.md` | `general` | Production Launch Scope (v1.0) | 1652 | False |
@@ -505,7 +511,7 @@ Commit: `5487eeab0a9accf09d52ccf127fffcdbc2a2e002`
 | `docs/reference/modules.md` | `general` | Learning Engines | 436 | False |
 | `docs/reference/repositories.md` | `general` | Repositories | 488 | False |
 | `docs/reference/services.md` | `general` | Services | 807 | False |
-| `docs/release/EVIDENCE_INDEX.md` | `release` | EduBoost V2 Release Evidence Index | 35306 | False |
+| `docs/release/EVIDENCE_INDEX.md` | `release` | EduBoost V2 Release Evidence Index | 36462 | False |
 | `docs/release/EduBoost_V2_Comparative_Audit_Report.md` | `release` | EduBoost SA V2 — Comparative Technical Audit Report | 18013 | False |
 | `docs/release/EduBoost_V2_Final_Technical_Assessment.md` | `release` | EduBoost V2 Final Technical Assessment | 2216 | False |
 | `docs/release/EduBoost_V2_North_Star_TODO.md` | `release` | EduBoost V2 North-Star TODO | 2540 | False |
@@ -540,6 +546,9 @@ Commit: `5487eeab0a9accf09d52ccf127fffcdbc2a2e002`
 | `docs/release/auth_lifecycle_service_ownership_report.md` | `release` | Auth Lifecycle Service Ownership Report | 110 | False |
 | `docs/release/auth_repository_fixture_proof_report.json` | `release` | auth_repository_fixture_proof_report.json | 524 | False |
 | `docs/release/auth_repository_fixture_proof_report.md` | `release` | Auth Repository Fixture Proof Report | 631 | False |
+| `docs/release/auth_route_transaction_live_db_evidence.md` | `release` | Auth Route Transaction Live DB Evidence | 623 | False |
+| `docs/release/auth_route_transaction_slice_report.json` | `release` | auth_route_transaction_slice_report.json | 1944 | False |
+| `docs/release/auth_route_transaction_slice_report.md` | `release` | Auth Route Transaction Slice Report | 1572 | False |
 | `docs/release/auth_router_boundary_introspection.json` | `release` | auth_router_boundary_introspection.json | 2710 | False |
 | `docs/release/auth_router_boundary_introspection.md` | `release` | Auth Router Boundary Introspection | 1150 | False |
 | `docs/release/auth_router_boundary_repair_report.md` | `release` | Auth Router Boundary Repair Report | 577 | False |
@@ -636,7 +645,7 @@ Commit: `5487eeab0a9accf09d52ccf127fffcdbc2a2e002`
 | `docs/release/diagnostics_session_binding_repair_report.md` | `release` | Diagnostics Session Binding Repair Report | 452 | False |
 | `docs/release/disposable_db_schema_proof_execution_report.md` | `release` | Disposable DB Schema Proof Execution Report | 168 | False |
 | `docs/release/docker_hardening_status.md` | `release` | Docker Hardening Status | 122 | False |
-| `docs/release/evidence_status_registry.yml` | `release` | evidence_status_registry.yml | 15030 | False |
+| `docs/release/evidence_status_registry.yml` | `release` | evidence_status_registry.yml | 16093 | False |
 | `docs/release/external_approval_status.json` | `release` | external_approval_status.json | 3030 | False |
 | `docs/release/external_approval_status.md` | `release` | External Approval Status | 1584 | False |
 | `docs/release/external_approvals/content_approval.md` | `release` | Educator/content release approval | 522 | False |
@@ -689,6 +698,8 @@ Commit: `5487eeab0a9accf09d52ccf127fffcdbc2a2e002`
 | `docs/release/next_execution_queue_after_1951_1990.md` | `release` | Next Execution Queue After CI-RUN-001 / code_1951_1990 | 553 | False |
 | `docs/release/next_execution_queue_after_1991_2030.md` | `release` | Next Execution Queue After APPROVAL-EVID-001 / code_1991_2030 | 493 | False |
 | `docs/release/next_execution_queue_after_2031_2070.md` | `release` | Next Execution Queue After ROUTE-TX-IMPL-001 / code_2031_2070 | 565 | False |
+| `docs/release/next_execution_queue_after_2071_2110.md` | `release` | Next Execution Queue After ROUTE-TX-AUTH-001 / code_2071_2110 | 494 | False |
+| `docs/release/next_execution_queue_after_2111_2150.md` | `release` | Next Execution Queue After ROUTE-TX-POPIA-001 / code_2111_2150 | 508 | False |
 | `docs/release/next_execution_queue_after_831_870.md` | `release` | Next Execution Queue After code_831_870 | 434 | False |
 | `docs/release/next_execution_queue_after_871_910.md` | `release` | Next Execution Queue After code_871_910 | 622 | False |
 | `docs/release/next_execution_queue_after_911_950.md` | `release` | Next Execution Queue After code_911_950 | 610 | False |
@@ -721,6 +732,8 @@ Commit: `5487eeab0a9accf09d52ccf127fffcdbc2a2e002`
 | `docs/release/no_false_closure_status_after_1951_1990.md` | `release` | No False-Closure Status After CI-RUN-001 / code_1951_1990 | 541 | False |
 | `docs/release/no_false_closure_status_after_1991_2030.md` | `release` | No False-Closure Status After APPROVAL-EVID-001 / code_1991_2030 | 555 | False |
 | `docs/release/no_false_closure_status_after_2031_2070.md` | `release` | No False-Closure Status After ROUTE-TX-IMPL-001 / code_2031_2070 | 645 | False |
+| `docs/release/no_false_closure_status_after_2071_2110.md` | `release` | No False-Closure Status After ROUTE-TX-AUTH-001 / code_2071_2110 | 593 | False |
+| `docs/release/no_false_closure_status_after_2111_2150.md` | `release` | No False-Closure Status After ROUTE-TX-POPIA-001 / code_2111_2150 | 565 | False |
 | `docs/release/no_false_closure_status_after_831_870.md` | `release` | No False-Closure Status After code_831_870 | 509 | False |
 | `docs/release/no_false_closure_status_after_871_910.md` | `release` | No False-Closure Status After code_871_910 | 645 | False |
 | `docs/release/no_false_closure_status_after_911_950.md` | `release` | No False-Closure Status After code_911_950 | 673 | False |
@@ -735,6 +748,9 @@ Commit: `5487eeab0a9accf09d52ccf127fffcdbc2a2e002`
 | `docs/release/popia_evidence_status.md` | `release` | POPIA Evidence Status | 62 | False |
 | `docs/release/popia_lifecycle_runtime_proof.json` | `release` | popia_lifecycle_runtime_proof.json | 379 | False |
 | `docs/release/popia_lifecycle_runtime_proof.md` | `release` | POPIA Lifecycle Runtime Proof | 405 | False |
+| `docs/release/popia_route_transaction_live_db_evidence.md` | `release` | POPIA Route Transaction Live DB Evidence | 646 | False |
+| `docs/release/popia_route_transaction_slice_report.json` | `release` | popia_route_transaction_slice_report.json | 2899 | False |
+| `docs/release/popia_route_transaction_slice_report.md` | `release` | POPIA Route Transaction Slice Report | 1886 | False |
 | `docs/release/popia_router_boundary_repair_report.md` | `release` | POPIA Router Boundary Repair Report | 368 | False |
 | `docs/release/popia_sweep_evidence.md` | `release` | POPIA Sweep Evidence | 848 | False |
 | `docs/release/post_migration_cleanup_report.md` | `release` | Post-Migration Cleanup Report | 119 | False |

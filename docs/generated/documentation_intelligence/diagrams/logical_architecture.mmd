@@ -1,0 +1,22 @@
+%% Logical architecture (Mermaid)
+graph TD
+  subgraph Edge
+    User[User (Web / Mobile)] -->|HTTPS| CDN[CDN / Edge]
+  end
+
+  subgraph App
+    CDN --> Frontend[Frontend (Next.js / Static)]
+    Frontend --> API[API Gateway / FastAPI]
+    API --> Auth[Auth Service (JWT / OAuth)]
+    API --> Services[Backend Services (domain modules)]
+    Services --> Postgres[(Postgres DB)]
+    Services --> Redis[(Redis cache)]
+    Services --> Queue[(Task queue / Celery / RabbitMQ)]
+    Services --> Storage[(Object storage / S3-compatible)]
+    Services -->|events| EventBus[(Event Bus / PubSub)]
+  end
+
+  Auth --> Postgres
+  Observability[(Prometheus / Grafana / Loki)] <-- Services
+  Observability <-- API
+  CI[CI/CD] -->|deploy| Cluster[Kubernetes / Container Apps]

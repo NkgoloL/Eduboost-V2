@@ -3,12 +3,12 @@
     "adr": 25,
     "api": 6,
     "architecture": 35,
-    "general": 476,
-    "release": 280,
+    "general": 482,
+    "release": 290,
     "security": 98
   },
-  "commit": "5487eeab0a9accf09d52ccf127fffcdbc2a2e002",
-  "document_count": 920,
+  "commit": "cf485a28ac490aa0cfe70fbf320d43e69270c50c",
+  "document_count": 936,
   "documents": [
     {
       "category": "general",
@@ -2269,6 +2269,14 @@
     {
       "category": "general",
       "generated": false,
+      "path": "docs/generated/documentation_intelligence/classifier_suggestions.md",
+      "sha256": "89644aff92e5da05e610bc3ab34e98f17b285fde8aa0f98c912fb7c7f35cc965",
+      "size_bytes": 7262,
+      "title": "Classifier Suggestions"
+    },
+    {
+      "category": "general",
+      "generated": false,
       "path": "docs/generated/documentation_intelligence/docs_gap_report.md",
       "sha256": "6f51f8da7e9019f324fd49f06c85236f1a08ddc255827154cbeb811f7e8e3f3a",
       "size_bytes": 31221,
@@ -2297,6 +2305,46 @@
       "sha256": "60d273a283ffc51df4f6feda888a026d6371fdd3d51f9f13a748fe8b6a3061a9",
       "size_bytes": 125504,
       "title": "Documentation Inventory"
+    },
+    {
+      "category": "general",
+      "generated": false,
+      "path": "docs/generated/documentation_intelligence/gap_fixes.md",
+      "sha256": "375f1b6cdea6df1b2ff14d5ed5da91d2631daa5f23f633b56993ae8bdbf22865",
+      "size_bytes": 1749,
+      "title": "Gap Fixes & Proposed Evidence Links"
+    },
+    {
+      "category": "general",
+      "generated": false,
+      "path": "docs/generated/documentation_intelligence/review_request.md",
+      "sha256": "00fea8d3cc71a07e4a6cfbfd9be790791913cfcce8e72bee394e563ab9a9ed37",
+      "size_bytes": 1202,
+      "title": "Review Request: System Overview"
+    },
+    {
+      "category": "general",
+      "generated": false,
+      "path": "docs/generated/documentation_intelligence/sanity_checks.json",
+      "sha256": "ea7c738f66033342eb0ebfe979dd9554f52d2ed7187d06b69d40c2f8003ae6b5",
+      "size_bytes": 3293824,
+      "title": "sanity_checks.json"
+    },
+    {
+      "category": "general",
+      "generated": false,
+      "path": "docs/generated/documentation_intelligence/sanity_checks.md",
+      "sha256": "e9c76ac0d0c1f642355ea83a0c2ff64a88445e1d68b10e7c9c77e077778c1ffe",
+      "size_bytes": 59756,
+      "title": "Docs Sanity Checks"
+    },
+    {
+      "category": "general",
+      "generated": false,
+      "path": "docs/generated/documentation_intelligence/system_overview.md",
+      "sha256": "08c82ea99279932d4884ec0eca00e13001172f4520d248956105e9436f631ba1",
+      "size_bytes": 5650,
+      "title": "System Overview"
     },
     {
       "category": "general",
@@ -3886,8 +3934,8 @@
       "category": "release",
       "generated": false,
       "path": "docs/release/EVIDENCE_INDEX.md",
-      "sha256": "c3c28c8e967e0f81e070f4edd770911727306317e1fcfd95e02bf103c353e30a",
-      "size_bytes": 35306,
+      "sha256": "bd46452edb91ecd2d6e639fd30b8a64d39c7383a67dcc5807d300e2f18f7a87f",
+      "size_bytes": 36462,
       "title": "EduBoost V2 Release Evidence Index"
     },
     {
@@ -4161,6 +4209,30 @@
       "sha256": "8031800cf51869f3c49203b1189bedd54dec1dabed5bc0033b077ce32ff182d3",
       "size_bytes": 631,
       "title": "Auth Repository Fixture Proof Report"
+    },
+    {
+      "category": "release",
+      "generated": false,
+      "path": "docs/release/auth_route_transaction_live_db_evidence.md",
+      "sha256": "b30c0feed06652cd8df26b080369fad3999b7aa07e5b9c52aa0e58da4d32add6",
+      "size_bytes": 623,
+      "title": "Auth Route Transaction Live DB Evidence"
+    },
+    {
+      "category": "release",
+      "generated": false,
+      "path": "docs/release/auth_route_transaction_slice_report.json",
+      "sha256": "9763712499e0804e8b759037339b083ee8d5db08dc65fa90f9e1e75e63b6578d",
+      "size_bytes": 1944,
+      "title": "auth_route_transaction_slice_report.json"
+    },
+    {
+      "category": "release",
+      "generated": false,
+      "path": "docs/release/auth_route_transaction_slice_report.md",
+      "sha256": "6aaf4178508535e41c233e001019b6625dce174412b1a269e4626c82b16fed8c",
+      "size_bytes": 1572,
+      "title": "Auth Route Transaction Slice Report"
     },
     {
       "category": "release",
@@ -4934,8 +5006,8 @@
       "category": "release",
       "generated": false,
       "path": "docs/release/evidence_status_registry.yml",
-      "sha256": "0a6c77815809d5e947801a1bf0454fe35d12f2cccdcbaa03389e3ddda2533c66",
-      "size_bytes": 15030,
+      "sha256": "73f61ba4099b7ab9c50c4dc225c1838114440591958df6f7f58a9358063f58a7",
+      "size_bytes": 16093,
       "title": "evidence_status_registry.yml"
     },
     {
@@ -5357,6 +5429,22 @@
     {
       "category": "release",
       "generated": false,
+      "path": "docs/release/next_execution_queue_after_2071_2110.md",
+      "sha256": "166752dbdb6b5cc38e637180ea2c42c5c0248d6f3ef593ca4f015fa6a87c9d38",
+      "size_bytes": 494,
+      "title": "Next Execution Queue After ROUTE-TX-AUTH-001 / code_2071_2110"
+    },
+    {
+      "category": "release",
+      "generated": false,
+      "path": "docs/release/next_execution_queue_after_2111_2150.md",
+      "sha256": "f36d2822e0ace6d8d431af4cf5ad300cace68c6fa72a8e164a2d975a2e166ec3",
+      "size_bytes": 508,
+      "title": "Next Execution Queue After ROUTE-TX-POPIA-001 / code_2111_2150"
+    },
+    {
+      "category": "release",
+      "generated": false,
       "path": "docs/release/next_execution_queue_after_831_870.md",
       "sha256": "4ec28450d1d3e3c53f507f5d2453a6add5ce4528b74982ec076a2072167f78ac",
       "size_bytes": 434,
@@ -5613,6 +5701,22 @@
     {
       "category": "release",
       "generated": false,
+      "path": "docs/release/no_false_closure_status_after_2071_2110.md",
+      "sha256": "7c001e28ab847289e5206cc4192d625e32da97546a4b3e15634724a7a08d70ba",
+      "size_bytes": 593,
+      "title": "No False-Closure Status After ROUTE-TX-AUTH-001 / code_2071_2110"
+    },
+    {
+      "category": "release",
+      "generated": false,
+      "path": "docs/release/no_false_closure_status_after_2111_2150.md",
+      "sha256": "2e96bb43aa3795c03ea3a90e3209ff9411f9d919b639a597e115a0622cfe6e80",
+      "size_bytes": 565,
+      "title": "No False-Closure Status After ROUTE-TX-POPIA-001 / code_2111_2150"
+    },
+    {
+      "category": "release",
+      "generated": false,
       "path": "docs/release/no_false_closure_status_after_831_870.md",
       "sha256": "28c1d54ed6443d5a24051524023c79a1fd029c9870350f8c7bbff5fd64190dd3",
       "size_bytes": 509,
@@ -5721,6 +5825,30 @@
       "sha256": "ce1d2f00b9446793e3cbfed45fd147f72a36b4a14bff658631a167e2e9686ce2",
       "size_bytes": 405,
       "title": "POPIA Lifecycle Runtime Proof"
+    },
+    {
+      "category": "release",
+      "generated": false,
+      "path": "docs/release/popia_route_transaction_live_db_evidence.md",
+      "sha256": "ef8c94ae32ccfdf9980157f077210b30ca5fb729e74c3dbd56754e06e24fbb12",
+      "size_bytes": 646,
+      "title": "POPIA Route Transaction Live DB Evidence"
+    },
+    {
+      "category": "release",
+      "generated": false,
+      "path": "docs/release/popia_route_transaction_slice_report.json",
+      "sha256": "ac7973a46baecf165cc9eeb1b055a161236d26750def825eabd6501b0e1b5880",
+      "size_bytes": 2899,
+      "title": "popia_route_transaction_slice_report.json"
+    },
+    {
+      "category": "release",
+      "generated": false,
+      "path": "docs/release/popia_route_transaction_slice_report.md",
+      "sha256": "ce819c5dc59b68e8ca5e831e87544ad67ae56a832769cacafb93e506e9c75eec",
+      "size_bytes": 1886,
+      "title": "POPIA Route Transaction Slice Report"
     },
     {
       "category": "release",
@@ -7371,7 +7499,7 @@
       "title": "V2 Migration Guide"
     }
   ],
-  "generated_at": "2026-05-19T16:48:24Z",
+  "generated_at": "2026-05-19T17:43:13Z",
   "generated_count": 3,
   "missing_important_docs": []
 }

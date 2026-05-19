@@ -49,12 +49,6 @@ migrate:
 docs:
 	mkdocs serve
 
-docs-inventory:
-	$(PYTHON) scripts/docs_inventory.py
-
-docs-inventory-check:
-	$(PYTHON) scripts/docs_inventory.py --check
-
 openapi:
 	$(PYTHON) scripts/generate_openapi.py
 
@@ -2058,4 +2052,3 @@ route-tx-popia-slice-test:
 backend-implementation-2111-2150-full-check: route-tx-popia-slice-report route-tx-popia-slice-check route-tx-popia-slice-test
 	python3 -m compileall -q scripts tests
 	python3 -m ruff check scripts/route_tx_popia_slice.py scripts/patch_route_tx_popia_slice_registry.py scripts/check_route_tx_popia_slice.py tests/unit/test_route_tx_popia_slice.py --select F821,F401,F811,E402
-
