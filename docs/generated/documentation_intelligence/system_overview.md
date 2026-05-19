@@ -73,3 +73,82 @@ Referenced source documents:
 - Add architecture diagrams (deployment & logical)
 - Create or link ADRs for major decisions
 - Fill gaps identified in `docs_gap_report.md` and link evidence artifacts
+
+## Architecture Diagrams
+
+Below are starter diagrams (Mermaid) capturing a logical component view and a deployment view. These are intentionally high-level — please iterate during review.
+
+### Logical Architecture (Mermaid)
+
+```mermaid
+graph TD
+	User[User (Web / Mobile)] -->|HTTPS| CDN[CDN / Edge]
+	CDN --> Frontend[Frontend (Next.js)]
+	Frontend --> API[API Gateway / FastAPI]
+	API --> Auth[Auth Service]
+	API --> Services[Backend Services]
+	Services --> Postgres[(Postgres)]
+	Services --> Redis[(Redis cache)]
+	Services --> Queue[(Task queue / Celery)]
+	Services --> Storage[(Object storage)]
+	Auth --> Postgres
+	Services -->|events| EventBus[(Event Bus / pubsub)]
+```
+
+### Deployment Architecture (Mermaid)
+
+```mermaid
+flowchart LR
+	User --> LB[Load Balancer / Ingress]
+	LB --> FrontendPods[Frontend Pods]
+	LB --> BackendPods[Backend Pods]
+	BackendPods --> PostgresDB[(Managed Postgres Cluster)]
+	BackendPods --> RedisCache[(Managed Redis)]
+	BackendPods --> ObjectStore[(Cloud Object Storage)]
+	CI[CI/CD Pipeline] -->|deploy| Cluster[Kubernetes Cluster]
+	Monitoring -->|metrics/logs| Observability[(Prometheus / Grafana / Loki)]
+```
+
+Files with source infra to refine diagrams:
+
+- `bicep/main.bicep`
+- `bicep/container_apps.bicep`
+- `k8s/`
+- `docker-compose.yml`
+
+## Linked ADRs
+
+Key Architecture Decision Records relevant to this overview (add more links where appropriate):
+
+- [0001 - Modular Monolith](../../docs/adr/0001-modular-monolith.md)
+- [0003 - LLM Provider Abstraction](../../docs/adr/0003-llm-provider-abstraction.md)
+- [0005 - FastAPI v2 Entrypoint](../../docs/adr/0005-fastapi-v2-entrypoint.md)
+- [0006 - Next.js Frontend](../../docs/adr/0006-nextjs-frontend.md)
+- [0007 - PostgreSQL Audit Ledger](../../docs/adr/0007-postgresql-audit-ledger.md)
+- [0002 - POPIA First Design](../../docs/adr/0002-popia-first-design.md)
+- [ADR-011 - Observability Stack](../../docs/adr/ADR-011-observability-stack.md)
+- [ADR-013 - Backup / Restore / DR](../../docs/adr/ADR-013-backup-restore-disaster-recovery.md)
+- [ADR-014 - Testing & Release Evidence Quality Gates](../../docs/adr/ADR-014-testing-release-evidence-quality-gates.md)
+- [ADR-020 - Final Release Blocker Checklist](../../docs/adr/ADR-020-final-release-blocker-checklist.md)
+
+If a decision mentioned in this overview lacks an ADR link, please add a short ADR under `docs/adr/` and ping the docs owner to include it here.
+
+## Validation Checklist (for product & tech leads)
+
+- [ ] Confirm the list of Key Components is complete and accurate.
+- [ ] Validate ownership and responsibilities for each component.
+- [ ] Review and correct the Logical and Deployment diagrams.
+- [ ] Ensure ADRs cover major decisions; create ADRs for any missing decisions.
+- [ ] Attach or link evidence artifacts (runbooks, infra manifests, release notes) for Production Readiness items.
+
+## Proposed Evidence (quick mapping)
+
+- System Overview sources: `docs_inventory.md`, `docs/generated/documentation_intelligence/docs_inventory.md`
+- Deployment infra: `bicep/main.bicep`, `bicep/container_apps.bicep`, `k8s/`, `docker-compose.yml`
+- Privacy & consent design: `docs/adr/0002-popia-first-design.md`
+- Observability & backups: `docs/adr/ADR-011-observability-stack.md`, `docs/adr/ADR-013-backup-restore-disaster-recovery.md`
+- Release readiness & testing evidence: `docs/adr/ADR-014-testing-release-evidence-quality-gates.md`, `docs/adr/ADR-020-final-release-blocker-checklist.md`
+
+---
+
+_Generated: 2026-05-19T08:40:00Z_

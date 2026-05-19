@@ -1,0 +1,13 @@
+%% Deployment architecture (Mermaid)
+flowchart LR
+  User --> LB[Load Balancer / Ingress]
+  LB --> IngressController[Ingress Controller / NGINX]
+  IngressController --> FrontendSvc[Frontend Service (K8s)]
+  IngressController --> BackendSvc[Backend Service (K8s)]
+  BackendSvc --> PostgresDB[(Managed Postgres Cluster)]
+  BackendSvc --> RedisCache[(Managed Redis / Memorystore)]
+  BackendSvc --> MinIO[(Object Storage / Cloud Storage)]
+  BackendSvc --> MessageBroker[(RabbitMQ / PubSub)]
+  CI[CI/CD Pipeline] -->|deploy| K8sCluster[Kubernetes Cluster / Container Apps]
+  K8sCluster --> Monitoring[(Prometheus / Grafana / Loki)]
+  K8sCluster --> Logging[(ELK / Loki)]
