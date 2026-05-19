@@ -913,3 +913,21 @@ make evidence-registry-commit-provenance-check
 make backend-implementation-1631-1670-full-check
 ```
 
+## CI-001 / Backend implementation 1671-1710 — CI authority and release evidence gate
+
+Audit drivers:
+
+- Local tests are not remote CI authority.
+- CI-001 must remain `external-blocked` without a real GitHub Actions run URL.
+- Release mode must fail unless the run URL is attached.
+
+Commands:
+
+```bash
+make ci-authority-status
+make ci-authority-local-check
+make ci-authority-release-check
+make ci-authority-test
+make backend-implementation-1671-1710-full-check
+```
+

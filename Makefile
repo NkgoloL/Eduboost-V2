@@ -1785,3 +1785,24 @@ backend-implementation-1631-1670-full-check: proof-no-skips-check diagnostics-sc
 	python3 -m compileall -q app/services app/modules/diagnostics scripts tests
 	python3 -m ruff check app/services/diagnostic_scoring_snapshot.py app/modules/diagnostics/diagnostic_session_service.py scripts/proof_pytest.py scripts/patch_diagnostics_scoring_snapshot.py scripts/check_diagnostics_scoring_snapshot.py scripts/check_popia_lifecycle_response_contract.py scripts/check_diagnostics_session_binding.py scripts/evidence_registry.py scripts/stamp_evidence_registry_commit.py scripts/check_evidence_registry_commit_provenance.py tests/unit/test_diagnostics_scoring_snapshot.py tests/unit/test_proof_pytest_no_skips.py tests/unit/test_evidence_registry_commit_provenance.py tests/integration/test_popia_lifecycle_response_contract.py tests/integration/test_diagnostics_session_binding_routes.py --select F821,F401,F811,E402
 
+.PHONY: ci-authority-registry-patch ci-authority-status ci-authority-local-check ci-authority-release-check ci-authority-test backend-implementation-1671-1710-full-check
+
+ci-authority-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_ci_authority_registry.py
+
+ci-authority-status:
+	PYTHONPATH=. python3 -c "from scripts.ci_authority import write_status; s = write_status(); print(s.ci_status)"
+
+ci-authority-local-check: ci-authority-registry-patch
+	PYTHONPATH=. python3 scripts/check_ci_authority.py
+
+ci-authority-release-check:
+	PYTHONPATH=. python3 scripts/check_ci_authority.py --release
+
+ci-authority-test:
+	pytest -c pytest.ini tests/unit/test_ci_authority.py -q --no-cov --tb=short
+
+backend-implementation-1671-1710-full-check: ci-authority-status ci-authority-local-check ci-authority-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/ci_authority.py scripts/patch_ci_authority_registry.py scripts/check_ci_authority.py tests/unit/test_ci_authority.py --select F821,F401,F811,E402
+

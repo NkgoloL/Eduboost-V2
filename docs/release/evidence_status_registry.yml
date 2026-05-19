@@ -105,15 +105,14 @@ findings:
     severity: P1
     gate: 2
     owner: release
-    implementation_batch: external
+    implementation_batch: code_1671_1710
     proof_status: external-blocked
-    proof_command: capture passing GitHub Actions run URL for release branch
+    proof_command: attach passing GitHub Actions run URL and run make ci-authority-release-check
     evidence_file: docs/release/ci_evidence.md
     last_verified_commit: null
-    closure_blocker: CI run URL required
+    closure_blocker: GitHub Actions run URL required for codex/production_readiness
     blocks_beta: true
     external_dependency: true
-
   - id: LEGAL-001
     title: POPIA legal review
     severity: release-blocker
