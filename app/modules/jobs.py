@@ -23,13 +23,11 @@ Example:
 from __future__ import annotations
 from app.services.job_runtime_integrity import validate_arq_job_payload
 from app.services.job_dependency_factory import durable_job_session, run_consent_reminder_cycle
+from app.services.arq_import_compat import RedisSettings, cron
 
 import logging
 from datetime import datetime
 from typing import Any
-
-from arq import cron  # type: ignore[import-untyped]
-from arq.connections import RedisSettings  # type: ignore[import-untyped]
 
 from app.core.config import get_settings
 from app.core.metrics import arq_job_duration_seconds, arq_jobs_total

@@ -1575,3 +1575,18 @@ backend-implementation-1071-1110-full-check: jwt-production-guard-repair jwt-pro
 	python3 -m compileall -q app/services app/core scripts tests
 	python3 -m ruff check app/services/jwt_keyring.py scripts/repair_jwt_production_guard.py scripts/check_jwt_production_guard.py tests/unit/test_jwt_keyring_production_guard.py --select F821,F401,F811,E402
 
+.PHONY: arq-dependency-worker-repair arq-worker-import-test arq-worker-import-check backend-implementation-1111-1150-full-check
+
+arq-dependency-worker-repair:
+	PYTHONPATH=. python3 scripts/repair_arq_dependency_worker_import.py
+
+arq-worker-import-test:
+	pytest -c pytest.ini tests/unit/test_arq_worker_import_contract.py -q --no-cov --tb=short
+
+arq-worker-import-check:
+	PYTHONPATH=. python3 scripts/check_arq_worker_import.py
+
+backend-implementation-1111-1150-full-check: arq-dependency-worker-repair arq-worker-import-check
+	python3 -m compileall -q app/services app/modules scripts tests
+	python3 -m ruff check app/services/arq_import_compat.py app/services/job_dependency_factory.py app/modules/jobs.py scripts/repair_arq_dependency_worker_import.py scripts/check_arq_worker_import.py tests/unit/test_arq_worker_import_contract.py --select F821,F401,F811,E402
+

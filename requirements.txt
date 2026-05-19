@@ -1,2 +1,4 @@
 # Compatibility alias. Canonical runtime dependencies live in requirements/base.txt.
 -r requirements/base.txt
+# ARQ worker dependency — ARQ-001 / code_1111_1150
+arq>=0.25.0

@@ -675,3 +675,21 @@ make jwt-production-guard-check
 make backend-implementation-1071-1110-full-check
 ```
 
+## ARQ-001 / Backend implementation 1111-1150 — ARQ dependency pin and worker import proof
+
+Audit drivers:
+
+- `app.modules.jobs` must import from a clean project environment.
+- `arq` must be pinned in dependency files.
+- WorkerSettings must expose consent reminder job entrypoints.
+- Stale jobs checks must validate `job_dependency_factory`, not old direct constructor text.
+
+Commands:
+
+```bash
+make arq-dependency-worker-repair
+make arq-worker-import-test
+make arq-worker-import-check
+make backend-implementation-1111-1150-full-check
+```
+
