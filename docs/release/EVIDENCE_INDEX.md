@@ -845,3 +845,19 @@ make auth-transaction-rollback-proof-check
 make backend-implementation-1471-1510-full-check
 ```
 
+## TX-DIAG-001 / Backend implementation 1511-1550 — Diagnostic response transaction rollback proof
+
+Audit drivers:
+
+- Diagnostic response submission must not partially persist response, mastery, or audit/event state.
+- Response, mastery, and audit event writes must commit or roll back together.
+- Broader TX-001 stays open until every high-risk multi-write domain has rollback proof.
+
+Commands:
+
+```bash
+make diagnostics-transaction-rollback-proof-test
+make diagnostics-transaction-rollback-proof-check
+make backend-implementation-1511-1550-full-check
+```
+

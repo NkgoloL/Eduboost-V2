@@ -1724,3 +1724,15 @@ backend-implementation-1471-1510-full-check: auth-transaction-rollback-proof-tes
 	python3 -m compileall -q app/services scripts tests
 	python3 -m ruff check app/services/auth_transactional_registration.py scripts/check_auth_transaction_rollback_proof.py tests/integration/test_auth_transaction_rollback_proof.py tests/unit/test_auth_transactional_registration_contracts.py --select F821,F401,F811,E402
 
+.PHONY: diagnostics-transaction-rollback-proof-test diagnostics-transaction-rollback-proof-check backend-implementation-1511-1550-full-check
+
+diagnostics-transaction-rollback-proof-test:
+	pytest -c pytest.ini tests/integration/test_diagnostics_transaction_rollback_proof.py tests/unit/test_diagnostic_transactional_response_contracts.py -q --no-cov --tb=short
+
+diagnostics-transaction-rollback-proof-check:
+	PYTHONPATH=. python3 scripts/check_diagnostics_transaction_rollback_proof.py
+
+backend-implementation-1511-1550-full-check: diagnostics-transaction-rollback-proof-test diagnostics-transaction-rollback-proof-check
+	python3 -m compileall -q app/services scripts tests
+	python3 -m ruff check app/services/diagnostic_transactional_response.py scripts/check_diagnostics_transaction_rollback_proof.py tests/integration/test_diagnostics_transaction_rollback_proof.py tests/unit/test_diagnostic_transactional_response_contracts.py --select F821,F401,F811,E402
+

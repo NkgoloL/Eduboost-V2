@@ -225,3 +225,17 @@ findings:
     closure_blocker: live Postgres and production route transaction proof still pending
     blocks_beta: false
     external_dependency: false
+
+  - id: TX-DIAG-001
+    title: Diagnostic response and mastery transaction rollback proof
+    severity: P1
+    gate: 4
+    owner: backend
+    implementation_batch: code_1511_1550
+    proof_status: integration-passing
+    proof_command: make backend-implementation-1511-1550-full-check
+    evidence_file: docs/release/no_false_closure_status_after_1511_1550.md
+    last_verified_commit: null
+    closure_blocker: live Postgres and production route transaction proof still pending
+    blocks_beta: false
+    external_dependency: false
