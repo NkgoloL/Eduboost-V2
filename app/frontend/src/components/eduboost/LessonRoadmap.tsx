@@ -599,6 +599,7 @@ export default function LessonRoadmap() {
   const totalTasks = allTaskIds.length;
   const itemBankPct = Math.round((APPROVED_ITEMS / PRODUCTION_TARGET) * 100);
   const taskPct = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+  const taskPctFloat = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
 
   return (
     <section aria-labelledby="roadmap-heading" className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
@@ -624,44 +625,22 @@ export default function LessonRoadmap() {
         <StatCard value={PRODUCTION_TARGET} label="Production target" variant="ok" />
       </div>
 
-      {/* Global progress bars */}
-      <div className="mb-6 space-y-3 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900 px-4 py-4">
-        {/* Item bank approval */}
-        <div>
-          <div className="flex justify-between text-xs text-stone-500 dark:text-stone-400 mb-1.5">
-            <span>Item bank approval progress</span>
-            <span>{itemBankPct}% ({APPROVED_ITEMS} / {PRODUCTION_TARGET})</span>
-          </div>
-          <div className="h-2 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700">
-            <div
-              className="h-full rounded-full bg-blue-500 transition-[width] duration-500"
-              style={{ width: `${itemBankPct}%` }}
-              role="progressbar"
-              aria-valuenow={itemBankPct}
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-label={`Item bank approval: ${APPROVED_ITEMS} of ${PRODUCTION_TARGET} items`}
-            />
-          </div>
+      {/* Overall approval progress (single concise bar) */}
+      <div className="mb-6 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900 px-4 py-4">
+        <div className="flex items-center justify-between text-xs text-stone-500 dark:text-stone-400 mb-3">
+          <div>Overall approval progress</div>
+          <div>{taskPctFloat.toFixed(1)}% ({completedTasks} / {totalTasks} tasks)</div>
         </div>
-
-        {/* Roadmap task completion */}
-        <div>
-          <div className="flex justify-between text-xs text-stone-500 dark:text-stone-400 mb-1.5">
-            <span>Roadmap tasks completed</span>
-            <span>{taskPct}% ({completedTasks} / {totalTasks})</span>
-          </div>
-          <div className="h-2 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700">
-            <div
-              className="h-full rounded-full bg-green-500 transition-[width] duration-500"
-              style={{ width: `${taskPct}%` }}
-              role="progressbar"
-              aria-valuenow={taskPct}
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-label={`Roadmap tasks: ${completedTasks} of ${totalTasks} complete`}
-            />
-          </div>
+        <div className="h-2 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700">
+          <div
+            className="h-full rounded-full bg-blue-500 transition-[width] duration-500"
+            style={{ width: `${taskPct}%` }}
+            role="progressbar"
+            aria-valuenow={taskPct}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label={`Overall approval progress: ${completedTasks} of ${totalTasks} tasks`}
+          />
         </div>
       </div>
 
