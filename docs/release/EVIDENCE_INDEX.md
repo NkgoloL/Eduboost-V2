@@ -829,3 +829,19 @@ make popia-transaction-rollback-proof-check
 make backend-implementation-1431-1470-full-check
 ```
 
+## TX-AUTH-001 / Backend implementation 1471-1510 — Auth registration transaction rollback proof
+
+Audit drivers:
+
+- Auth register/dev-bootstrap style multi-write flows need atomicity proof.
+- User, guardian, and learner writes must commit or roll back together.
+- Broader TX-001 stays open until every high-risk multi-write domain has rollback proof.
+
+Commands:
+
+```bash
+make auth-transaction-rollback-proof-test
+make auth-transaction-rollback-proof-check
+make backend-implementation-1471-1510-full-check
+```
+

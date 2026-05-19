@@ -212,3 +212,16 @@ findings:
     blocks_beta: false
     external_dependency: false
 
+  - id: TX-AUTH-001
+    title: Auth register multi-write transaction rollback proof
+    severity: P1
+    gate: 4
+    owner: backend
+    implementation_batch: code_1471_1510
+    proof_status: integration-passing
+    proof_command: make backend-implementation-1471-1510-full-check
+    evidence_file: docs/release/no_false_closure_status_after_1471_1510.md
+    last_verified_commit: null
+    closure_blocker: live Postgres and production route transaction proof still pending
+    blocks_beta: false
+    external_dependency: false

@@ -1712,3 +1712,15 @@ backend-implementation-1431-1470-full-check: popia-transaction-rollback-proof-ch
 	python3 -m compileall -q app/services scripts tests
 	python3 -m ruff check app/services/popia_transactional_lifecycle.py scripts/check_popia_transaction_rollback_proof.py tests/integration/test_popia_transaction_rollback_proof.py tests/unit/test_popia_transactional_lifecycle_contracts.py --select F821,F401,F811,E402
 
+.PHONY: auth-transaction-rollback-proof-test auth-transaction-rollback-proof-check backend-implementation-1471-1510-full-check
+
+auth-transaction-rollback-proof-test:
+	pytest -c pytest.ini tests/integration/test_auth_transaction_rollback_proof.py tests/unit/test_auth_transactional_registration_contracts.py -q --no-cov --tb=short
+
+auth-transaction-rollback-proof-check:
+	PYTHONPATH=. python3 scripts/check_auth_transaction_rollback_proof.py
+
+backend-implementation-1471-1510-full-check: auth-transaction-rollback-proof-test auth-transaction-rollback-proof-check
+	python3 -m compileall -q app/services scripts tests
+	python3 -m ruff check app/services/auth_transactional_registration.py scripts/check_auth_transaction_rollback_proof.py tests/integration/test_auth_transaction_rollback_proof.py tests/unit/test_auth_transactional_registration_contracts.py --select F821,F401,F811,E402
+
