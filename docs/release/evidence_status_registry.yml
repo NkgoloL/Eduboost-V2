@@ -266,3 +266,17 @@ findings:
     closure_blocker: live DB and full scoring audit still pending
     blocks_beta: true
     external_dependency: false
+
+  - id: DOCS-INTEL-001
+    title: Documentation intelligence refresh
+    severity: P2
+    gate: 2
+    owner: release
+    implementation_batch: code_1711_1750
+    proof_status: runtime-passing
+    proof_command: make backend-implementation-1711-1750-full-check
+    evidence_file: docs/docs_inventory.md
+    last_verified_commit: null
+    closure_blocker: CI authority and external approvals remain separate release blockers
+    blocks_beta: false
+    external_dependency: false

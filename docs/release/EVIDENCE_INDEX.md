@@ -931,3 +931,21 @@ make ci-authority-test
 make backend-implementation-1671-1710-full-check
 ```
 
+## DOCS-INTEL-001 / Backend implementation 1711-1750 — Documentation intelligence refresh
+
+Audit drivers:
+
+- `python3 scripts/docs_inventory.py --check` was failing because generated docs intelligence was stale.
+- Recent transaction/evidence artifacts must be represented in generated documentation inventory.
+- Documentation intelligence must not be confused with runtime, CI, or external approval proof.
+
+Commands:
+
+```bash
+make docs-inventory
+make docs-inventory-check
+make docs-intelligence-check
+make docs-intelligence-test
+make backend-implementation-1711-1750-full-check
+```
+

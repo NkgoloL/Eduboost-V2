@@ -1806,3 +1806,21 @@ backend-implementation-1671-1710-full-check: ci-authority-status ci-authority-lo
 	python3 -m compileall -q scripts tests
 	python3 -m ruff check scripts/ci_authority.py scripts/patch_ci_authority_registry.py scripts/check_ci_authority.py tests/unit/test_ci_authority.py --select F821,F401,F811,E402
 
+.PHONY: docs-inventory docs-inventory-check docs-intelligence-check docs-intelligence-test backend-implementation-1711-1750-full-check
+
+docs-inventory:
+	PYTHONPATH=. python3 scripts/docs_inventory.py --write
+
+docs-inventory-check:
+	PYTHONPATH=. python3 scripts/docs_inventory.py --check
+
+docs-intelligence-check:
+	PYTHONPATH=. python3 scripts/check_docs_intelligence.py
+
+docs-intelligence-test:
+	pytest -c pytest.ini tests/unit/test_docs_intelligence.py -q --no-cov --tb=short
+
+backend-implementation-1711-1750-full-check: docs-inventory docs-inventory-check docs-intelligence-check docs-intelligence-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/docs_inventory.py scripts/check_docs_intelligence.py tests/unit/test_docs_intelligence.py --select F821,F401,F811,E402
+
