@@ -197,3 +197,18 @@ findings:
     closure_blocker: multi-write candidates require targeted rollback and integration proof before atomicity can be claimed
     blocks_beta: false
     external_dependency: false
+
+  - id: TX-POPIA-001
+    title: POPIA lifecycle transition and audit rollback proof
+    severity: P1
+    gate: 4
+    owner: backend
+    implementation_batch: code_1431_1470
+    proof_status: integration-passing
+    proof_command: make backend-implementation-1431-1470-full-check
+    evidence_file: docs/release/no_false_closure_status_after_1431_1470.md
+    last_verified_commit: null
+    closure_blocker: production route wiring and live Postgres rollback evidence still required for production-ready
+    blocks_beta: false
+    external_dependency: false
+

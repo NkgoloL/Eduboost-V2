@@ -813,3 +813,19 @@ make transaction-boundary-guardrail-test
 make backend-implementation-1391-1430-full-check
 ```
 
+## TX-001B / Backend implementation 1431-1470 — POPIA transaction rollback proof
+
+Audit drivers:
+
+- POPIA lifecycle transition and audit event writes are compliance-sensitive multi-write flows.
+- If audit write fails, consent transition must roll back.
+- If consent write fails, no audit orphan may be created.
+
+Commands:
+
+```bash
+make popia-transaction-rollback-proof-test
+make popia-transaction-rollback-proof-check
+make backend-implementation-1431-1470-full-check
+```
+

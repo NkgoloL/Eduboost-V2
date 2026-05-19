@@ -1700,3 +1700,15 @@ backend-implementation-1391-1430-full-check: transaction-boundary-inventory tran
 	python3 -m compileall -q scripts tests
 	python3 -m ruff check scripts/transaction_boundary_inventory.py scripts/check_transaction_boundary_guardrails.py tests/unit/test_transaction_boundary_guardrails.py --select F821,F401,F811,E402
 
+.PHONY: popia-transaction-rollback-proof-test popia-transaction-rollback-proof-check backend-implementation-1431-1470-full-check
+
+popia-transaction-rollback-proof-test:
+	pytest -c pytest.ini tests/integration/test_popia_transaction_rollback_proof.py tests/unit/test_popia_transactional_lifecycle_contracts.py -q --no-cov --tb=short
+
+popia-transaction-rollback-proof-check:
+	PYTHONPATH=. python3 scripts/check_popia_transaction_rollback_proof.py
+
+backend-implementation-1431-1470-full-check: popia-transaction-rollback-proof-check popia-transaction-rollback-proof-test
+	python3 -m compileall -q app/services scripts tests
+	python3 -m ruff check app/services/popia_transactional_lifecycle.py scripts/check_popia_transaction_rollback_proof.py tests/integration/test_popia_transaction_rollback_proof.py tests/unit/test_popia_transactional_lifecycle_contracts.py --select F821,F401,F811,E402
+
