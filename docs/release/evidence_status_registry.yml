@@ -283,12 +283,12 @@ findings:
     severity: P1
     gate: 4
     owner: backend
-    implementation_batch: code_2031_2070
-    proof_status: runtime-passing
-    proof_command: make tx-route-impl-plan-check
-    evidence_file: docs/release/route_transaction_implementation_plan.md
-    last_verified_commit: e6b24b9d4c950c4d04681de5327a75cda597af02
-    closure_blocker: 15 production mutation route transaction wiring actions remain pending
+    implementation_batch: code_2191_2230
+    proof_status: not-proven
+    proof_command: make route-tx-slice-rollup-release-check
+    evidence_file: docs/release/route_transaction_slice_rollup.md
+    last_verified_commit: null
+    closure_blocker: local_gaps=1; live_db_gaps=3; inventory_unproven=15
     blocks_beta: false
     external_dependency: false
   - id: STAGING-001
@@ -445,5 +445,18 @@ findings:
     evidence_file: docs/release/diagnostics_route_transaction_slice_report.md
     last_verified_commit: null
     closure_blocker: diagnostics route source delegation not proven; 1 gap actions remain
+    blocks_beta: false
+    external_dependency: false
+  - id: ROUTE-TX-ROLLUP-001
+    title: Route transaction slice rollup and remaining-gap reconciliation
+    severity: P1
+    gate: 4
+    owner: backend
+    implementation_batch: code_2191_2230
+    proof_status: runtime-passing
+    proof_command: make backend-implementation-2191-2230-full-check
+    evidence_file: docs/release/route_transaction_slice_rollup.md
+    last_verified_commit: aae05b3af3c94d99539d9d7fa3b98494eb442f93
+    closure_blocker: rollup only; TX-ROUTE-001 remains blocked while local/live DB gaps remain
     blocks_beta: false
     external_dependency: false

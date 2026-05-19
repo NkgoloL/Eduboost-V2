@@ -4,11 +4,11 @@
     "api": 6,
     "architecture": 37,
     "general": 483,
-    "release": 301,
+    "release": 305,
     "security": 98
   },
-  "commit": "e6b24b9d4c950c4d04681de5327a75cda597af02",
-  "document_count": 950,
+  "commit": "aae05b3af3c94d99539d9d7fa3b98494eb442f93",
+  "document_count": 954,
   "documents": [
     {
       "category": "general",
@@ -34083,6 +34083,11 @@
           "level": 2,
           "line": 1172,
           "text": "ROUTE-TX-DIAG-001 / Backend implementation 2151-2190 \u2014 Diagnostics route transaction slice"
+        },
+        {
+          "level": 2,
+          "line": 1190,
+          "text": "ROUTE-TX-ROLLUP-001 / Backend implementation 2191-2230 \u2014 Route transaction slice rollup"
         }
       ],
       "links": [
@@ -34103,8 +34108,8 @@
         }
       ],
       "path": "docs/release/EVIDENCE_INDEX.md",
-      "sha256": "290ba2342137b0a2673fac34bfe5b315c1dff09fb379fc43b1df2ea8ca60b52e",
-      "size_bytes": 37604,
+      "sha256": "68b3be507128817aeac276e8dce069ffa812422f6b350354688a6dde0c56639c",
+      "size_bytes": 38151,
       "statuses": [
         "todo",
         "passed",
@@ -39456,7 +39461,7 @@
       "headings": [],
       "links": [],
       "path": "docs/release/beta_blocker_burndown_plan.json",
-      "sha256": "269933d4b67660a824b0705f59ff328b0e894ddfbf744f97f4927c2c8f4f7a9b",
+      "sha256": "14642cba201b4ac2014be8abc8ff563bdb32b0596991fa2de38026c9de030449",
       "size_bytes": 4049,
       "statuses": [
         "blocked",
@@ -39495,7 +39500,7 @@
       ],
       "links": [],
       "path": "docs/release/beta_blocker_burndown_plan.md",
-      "sha256": "eb2a3dcd6321753841d59f371e3572ebeb6892fbf79d9db1fe0baa7af6b86589",
+      "sha256": "150ba31deae0dd899c7b0ba9113909f463771f25046aff2432c0254d6a245d17",
       "size_bytes": 2225,
       "statuses": [
         "blocked",
@@ -40724,7 +40729,7 @@
         "docs/release/no_false_closure_status_after_1511_1550.md",
         "docs/release/no_false_closure_status_after_1551_1590.md",
         "docs/release/diagnostics_scoring_snapshot_repair_report.md",
-        "docs/release/route_transaction_implementation_plan.md",
+        "docs/release/route_transaction_slice_rollup.md",
         "docs/release/staging_smoke_evidence.md",
         "docs/release/external_approval_status.md",
         "docs/release/release_go_no_go_status.md",
@@ -40732,6 +40737,7 @@
         "docs/release/staging_acceptance_status.md",
         "docs/release/ci_run_evidence_status.md",
         "docs/release/approval_evidence_status.md",
+        "docs/release/route_transaction_implementation_plan.md",
         "docs/release/auth_route_transaction_slice_report.md",
         "docs/release/popia_route_transaction_slice_report.md",
         "docs/release/popia_route_transaction_gap_plan.md",
@@ -40812,13 +40818,14 @@
       ],
       "links": [],
       "path": "docs/release/evidence_status_registry.yml",
-      "sha256": "3d0ae1fd09a8eba3b1365f1f4754f74202bb2f959540046c57861ae765492f7d",
-      "size_bytes": 17344,
+      "sha256": "ab084c09ddac880e9d01b21b0f2fa37ae5d717a5b02da47911091a6429548705",
+      "size_bytes": 17864,
       "statuses": [
         "external-blocked",
         "not-proven",
         "pending",
-        "pass"
+        "pass",
+        "blocked"
       ],
       "title": "EduBoost V2 Evidence Status Registry"
     },
@@ -42590,6 +42597,37 @@
         {
           "level": 1,
           "line": 1,
+          "text": "Next Execution Queue After ROUTE-TX-ROLLUP-001 / code_2191_2230"
+        },
+        {
+          "level": 2,
+          "line": 3,
+          "text": "Recommended next batch"
+        },
+        {
+          "level": 2,
+          "line": 7,
+          "text": "Scope candidates"
+        }
+      ],
+      "links": [],
+      "path": "docs/release/next_execution_queue_after_2191_2230.md",
+      "sha256": "92f160f5c2d30b1b0422b3b9cff07d5e6d8af34ed76e39b9547334e900de03f4",
+      "size_bytes": 579,
+      "statuses": [
+        "blocked"
+      ],
+      "title": "Next Execution Queue After ROUTE-TX-ROLLUP-001 / code_2191_2230"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
           "text": "Next Execution Queue After code_831_870"
         },
         {
@@ -43688,6 +43726,35 @@
         {
           "level": 1,
           "line": 1,
+          "text": "No False-Closure Status After ROUTE-TX-ROLLUP-001 / code_2191_2230"
+        },
+        {
+          "level": 2,
+          "line": 5,
+          "text": "Proven"
+        },
+        {
+          "level": 2,
+          "line": 12,
+          "text": "Not claimed"
+        }
+      ],
+      "links": [],
+      "path": "docs/release/no_false_closure_status_after_2191_2230.md",
+      "sha256": "92d5ef091ec036f9a5640e2ef769be18b157d111db13593a800e65100e68e043",
+      "size_bytes": 615,
+      "statuses": [],
+      "title": "No False-Closure Status After ROUTE-TX-ROLLUP-001 / code_2191_2230"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
           "text": "No False-Closure Status After code_831_870"
         },
         {
@@ -44366,6 +44433,7 @@
         "docs/release/route_transaction_implementation_plan.md",
         "docs/release/popia_route_transaction_slice_report.md",
         "docs/release/popia_route_transaction_gap_plan.md",
+        "docs/release/route_transaction_slice_rollup.md",
         "docs/release/no_false_closure_status_after_1471_1510.md",
         "docs/release/no_false_closure_status_after_1511_1550.md",
         "docs/release/no_false_closure_status_after_1551_1590.md",
@@ -44379,12 +44447,13 @@
       "headings": [],
       "links": [],
       "path": "docs/release/release_go_no_go_status.json",
-      "sha256": "54602e96a8ffc02795754b5dc0892a4d12aaf685850973d0e0d64d2d3ffdf49b",
-      "size_bytes": 16874,
+      "sha256": "a22eff5eb1f26c795d43c55fdef6b0515953e8a5f2bb7fd097fa48efb73c1f19",
+      "size_bytes": 17364,
       "statuses": [
         "external-blocked",
         "pending",
         "not-proven",
+        "blocked",
         "pass"
       ],
       "title": "Release Go No Go Status"
@@ -44437,7 +44506,7 @@
       ],
       "links": [],
       "path": "docs/release/release_go_no_go_status.md",
-      "sha256": "2945dc1ca5a0000f35a028d444b339d2f2462af078cc02f4f89488611b75936c",
+      "sha256": "538c35a1f6808850f81760fc60aa9a7ad2301fc94fc672b21ea4b1042efd9d62",
       "size_bytes": 2905,
       "statuses": [
         "external-blocked",
@@ -44831,6 +44900,73 @@
         "fail"
       ],
       "title": "Route Transaction Implementation Plan"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [
+        "docs/release/auth_route_transaction_slice_report.json",
+        "docs/release/popia_route_transaction_slice_report.json",
+        "docs/release/diagnostics_route_transaction_slice_report.json"
+      ],
+      "generated": false,
+      "headings": [],
+      "links": [],
+      "path": "docs/release/route_transaction_slice_rollup.json",
+      "sha256": "c4d054ade2d77af942cb3a265c5c2c178a6505f8319aee1618e5f0bd9fc6c57b",
+      "size_bytes": 3628,
+      "statuses": [
+        "blocked",
+        "external-blocked",
+        "pending",
+        "passed",
+        "pass",
+        "not-proven"
+      ],
+      "title": "Route Transaction Slice Rollup"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "Route Transaction Slice Rollup"
+        },
+        {
+          "level": 2,
+          "line": 15,
+          "text": "Slice status"
+        },
+        {
+          "level": 2,
+          "line": 23,
+          "text": "Blockers"
+        },
+        {
+          "level": 2,
+          "line": 29,
+          "text": "No false-closure rules"
+        },
+        {
+          "level": 2,
+          "line": 36,
+          "text": "Interpretation"
+        }
+      ],
+      "links": [],
+      "path": "docs/release/route_transaction_slice_rollup.md",
+      "sha256": "09f3c6014cbe32f6c89b1ddca29107765a34cd96a522a702d3863f202a337082",
+      "size_bytes": 1403,
+      "statuses": [
+        "blocked",
+        "external-blocked",
+        "not-proven"
+      ],
+      "title": "Route Transaction Slice Rollup"
     },
     {
       "category": "release",
@@ -51713,8 +51849,8 @@
       "title": "V2 Migration Guide"
     }
   ],
-  "files_scanned": 950,
-  "generated_at": "2026-05-19T20:57:31Z",
+  "files_scanned": 954,
+  "generated_at": "2026-05-19T21:07:32Z",
   "generated_count": 4,
   "missing_important_docs": []
 }

@@ -1187,3 +1187,21 @@ make route-tx-diagnostics-slice-test
 make backend-implementation-2151-2190-full-check
 ```
 
+## ROUTE-TX-ROLLUP-001 / Backend implementation 2191-2230 — Route transaction slice rollup
+
+Audit drivers:
+
+- Auth, POPIA, and diagnostics route transaction slices need a single reconciliation surface.
+- Local source proof and live DB evidence must remain distinct.
+- TX-ROUTE-001 must remain blocked until every route slice is complete.
+
+Commands:
+
+```bash
+make route-tx-slice-rollup
+make route-tx-slice-rollup-check
+make route-tx-slice-rollup-release-check
+make route-tx-slice-rollup-test
+make backend-implementation-2191-2230-full-check
+```
+

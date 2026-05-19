@@ -1,9 +1,9 @@
 # Documentation Inventory
 
-Generated at: `2026-05-19T20:57:31Z`
-Commit: `e6b24b9d4c950c4d04681de5327a75cda597af02`
+Generated at: `2026-05-19T21:07:32Z`
+Commit: `aae05b3af3c94d99539d9d7fa3b98494eb442f93`
 
-- Documents: `950`
+- Documents: `954`
 - Generated docs: `4`
 
 ## Categories
@@ -14,7 +14,7 @@ Commit: `e6b24b9d4c950c4d04681de5327a75cda597af02`
 | `api` | 6 |
 | `architecture` | 37 |
 | `general` | 483 |
-| `release` | 301 |
+| `release` | 305 |
 | `security` | 98 |
 
 ## Documents
@@ -514,7 +514,7 @@ Commit: `e6b24b9d4c950c4d04681de5327a75cda597af02`
 | `docs/reference/modules.md` | `general` | Learning Engines | 436 | False |
 | `docs/reference/repositories.md` | `general` | Repositories | 488 | False |
 | `docs/reference/services.md` | `general` | Services | 807 | False |
-| `docs/release/EVIDENCE_INDEX.md` | `release` | EduBoost V2 Release Evidence Index | 37604 | False |
+| `docs/release/EVIDENCE_INDEX.md` | `release` | EduBoost V2 Release Evidence Index | 38151 | False |
 | `docs/release/EduBoost_V2_Comparative_Audit_Report.md` | `release` | EduBoost SA V2 — Comparative Technical Audit Report | 18013 | False |
 | `docs/release/EduBoost_V2_Final_Technical_Assessment.md` | `release` | EduBoost V2 Final Technical Assessment | 2216 | False |
 | `docs/release/EduBoost_V2_North_Star_TODO.md` | `release` | EduBoost V2 North-Star TODO | 2540 | False |
@@ -653,7 +653,7 @@ Commit: `e6b24b9d4c950c4d04681de5327a75cda597af02`
 | `docs/release/diagnostics_session_binding_repair_report.md` | `release` | Diagnostics Session Binding Repair Report | 452 | False |
 | `docs/release/disposable_db_schema_proof_execution_report.md` | `release` | Disposable DB Schema Proof Execution Report | 168 | False |
 | `docs/release/docker_hardening_status.md` | `release` | Docker Hardening Status | 122 | False |
-| `docs/release/evidence_status_registry.yml` | `release` | EduBoost V2 Evidence Status Registry | 17344 | False |
+| `docs/release/evidence_status_registry.yml` | `release` | EduBoost V2 Evidence Status Registry | 17864 | False |
 | `docs/release/external_approval_status.json` | `release` | External Approval Status | 3030 | False |
 | `docs/release/external_approval_status.md` | `release` | External Approval Status | 1584 | False |
 | `docs/release/external_approvals/content_approval.md` | `release` | Educator/content release approval | 522 | False |
@@ -710,6 +710,7 @@ Commit: `e6b24b9d4c950c4d04681de5327a75cda597af02`
 | `docs/release/next_execution_queue_after_2111_2150.md` | `release` | Next Execution Queue After ROUTE-TX-POPIA-001 / code_2111_2150 | 508 | False |
 | `docs/release/next_execution_queue_after_2111_2150R.md` | `release` | Next Execution Queue After ROUTE-TX-POPIA-001R / code_2111_2150R | 608 | False |
 | `docs/release/next_execution_queue_after_2151_2190.md` | `release` | Next Execution Queue After ROUTE-TX-DIAG-001 / code_2151_2190 | 524 | False |
+| `docs/release/next_execution_queue_after_2191_2230.md` | `release` | Next Execution Queue After ROUTE-TX-ROLLUP-001 / code_2191_2230 | 579 | False |
 | `docs/release/next_execution_queue_after_831_870.md` | `release` | Next Execution Queue After code_831_870 | 434 | False |
 | `docs/release/next_execution_queue_after_871_910.md` | `release` | Next Execution Queue After code_871_910 | 622 | False |
 | `docs/release/next_execution_queue_after_911_950.md` | `release` | Next Execution Queue After code_911_950 | 610 | False |
@@ -746,6 +747,7 @@ Commit: `e6b24b9d4c950c4d04681de5327a75cda597af02`
 | `docs/release/no_false_closure_status_after_2111_2150.md` | `release` | No False-Closure Status After ROUTE-TX-POPIA-001 / code_2111_2150 | 565 | False |
 | `docs/release/no_false_closure_status_after_2111_2150R.md` | `release` | No False-Closure Status After ROUTE-TX-POPIA-001R / code_2111_2150R | 691 | False |
 | `docs/release/no_false_closure_status_after_2151_2190.md` | `release` | No False-Closure Status After ROUTE-TX-DIAG-001 / code_2151_2190 | 684 | False |
+| `docs/release/no_false_closure_status_after_2191_2230.md` | `release` | No False-Closure Status After ROUTE-TX-ROLLUP-001 / code_2191_2230 | 615 | False |
 | `docs/release/no_false_closure_status_after_831_870.md` | `release` | No False-Closure Status After code_831_870 | 509 | False |
 | `docs/release/no_false_closure_status_after_871_910.md` | `release` | No False-Closure Status After code_871_910 | 645 | False |
 | `docs/release/no_false_closure_status_after_911_950.md` | `release` | No False-Closure Status After code_911_950 | 673 | False |
@@ -772,7 +774,7 @@ Commit: `e6b24b9d4c950c4d04681de5327a75cda597af02`
 | `docs/release/real_audit_runtime_integration_report.md` | `release` | Real Audit Runtime Integration Report | 166 | False |
 | `docs/release/real_consent_runtime_repair_report.md` | `release` | Real Consent Runtime Repair Report | 158 | False |
 | `docs/release/release_decision_log.md` | `release` | Release Decision Log | 591 | False |
-| `docs/release/release_go_no_go_status.json` | `release` | Release Go No Go Status | 16874 | False |
+| `docs/release/release_go_no_go_status.json` | `release` | Release Go No Go Status | 17364 | False |
 | `docs/release/release_go_no_go_status.md` | `release` | Release Go/No-Go Status | 2905 | False |
 | `docs/release/release_owner_beta_go_no_go_memo.md` | `release` | Release-Owner Beta Go/No-Go Memo | 556 | False |
 | `docs/release/release_owner_runtime_wiring_signoff_template.md` | `release` | Release Owner Runtime Wiring Signoff Template | 468 | False |
@@ -785,6 +787,8 @@ Commit: `e6b24b9d4c950c4d04681de5327a75cda597af02`
 | `docs/release/route_alias_policy.md` | `release` | EduBoost V2 Route Alias Policy | 754 | False |
 | `docs/release/route_transaction_implementation_plan.json` | `release` | Route Transaction Implementation Plan | 13056 | False |
 | `docs/release/route_transaction_implementation_plan.md` | `release` | Route Transaction Implementation Plan | 10909 | False |
+| `docs/release/route_transaction_slice_rollup.json` | `release` | Route Transaction Slice Rollup | 3628 | False |
+| `docs/release/route_transaction_slice_rollup.md` | `release` | Route Transaction Slice Rollup | 1403 | False |
 | `docs/release/runtime_blocker_repair_after_followup_audit.md` | `release` | Runtime Blocker Repair After Follow-up Audit | 393 | False |
 | `docs/release/runtime_integration_boundary_policy.md` | `release` | Runtime Integration Boundary Policy | 369 | False |
 | `docs/release/runtime_integration_rollback_checklist.md` | `release` | Runtime Integration Rollback Checklist | 296 | False |

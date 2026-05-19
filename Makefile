@@ -2092,3 +2092,24 @@ backend-implementation-2151-2190-full-check: route-tx-diagnostics-slice-report r
 	python3 -m compileall -q scripts tests
 	python3 -m ruff check scripts/route_tx_diagnostics_slice.py scripts/patch_route_tx_diagnostics_slice_registry.py scripts/check_route_tx_diagnostics_slice.py tests/unit/test_route_tx_diagnostics_slice.py --select F821,F401,F811,E402
 
+.PHONY: route-tx-slice-rollup route-tx-slice-rollup-registry-patch route-tx-slice-rollup-check route-tx-slice-rollup-release-check route-tx-slice-rollup-test backend-implementation-2191-2230-full-check
+
+route-tx-slice-rollup:
+	PYTHONPATH=. python3 -c "from scripts.route_tx_slice_rollup import write_rollup; r = write_rollup(); print(r.status)"
+
+route-tx-slice-rollup-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_route_tx_slice_rollup_registry.py
+
+route-tx-slice-rollup-check: route-tx-slice-rollup-registry-patch
+	PYTHONPATH=. python3 scripts/check_route_tx_slice_rollup.py
+
+route-tx-slice-rollup-release-check:
+	PYTHONPATH=. python3 scripts/check_route_tx_slice_rollup.py --release
+
+route-tx-slice-rollup-test:
+	pytest -c pytest.ini tests/unit/test_route_tx_slice_rollup.py -q --no-cov --tb=short
+
+backend-implementation-2191-2230-full-check: route-tx-slice-rollup route-tx-slice-rollup-check route-tx-slice-rollup-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/route_tx_slice_rollup.py scripts/patch_route_tx_slice_rollup_registry.py scripts/check_route_tx_slice_rollup.py tests/unit/test_route_tx_slice_rollup.py --select F821,F401,F811,E402
+
