@@ -2285,3 +2285,24 @@ backend-implementation-2511-2550-full-check: auth-service-cleanup-repair auth-se
 	python3 -m compileall -q app/services app/api_v2_routers scripts tests
 	python3 -m ruff check scripts/auth_service_cleanup.py scripts/repair_auth_service_cleanup.py scripts/check_auth_service_cleanup.py scripts/patch_auth_service_cleanup_registry.py tests/unit/test_auth_service_cleanup.py app/services/auth_application_service.py --select F821,F401,F811,E402
 
+.PHONY: auth-route-logout-delegate-repair auth-route-logout-delegate-status auth-route-logout-delegate-registry-patch auth-route-logout-delegate-check auth-route-logout-delegate-test backend-implementation-2551-2590-full-check
+
+auth-route-logout-delegate-repair:
+	PYTHONPATH=. python3 scripts/repair_auth_route_logout_delegate.py
+
+auth-route-logout-delegate-status:
+	PYTHONPATH=. python3 -c "from scripts.auth_route_logout_delegate import write_status; s = write_status(); print(s.status)"
+
+auth-route-logout-delegate-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_auth_route_logout_delegate_registry.py
+
+auth-route-logout-delegate-check: auth-route-logout-delegate-repair auth-route-logout-delegate-registry-patch
+	PYTHONPATH=. python3 scripts/check_auth_route_logout_delegate.py
+
+auth-route-logout-delegate-test:
+	pytest -c pytest.ini tests/unit/test_auth_route_logout_delegate.py -q --no-cov --tb=short
+
+backend-implementation-2551-2590-full-check: auth-route-logout-delegate-repair auth-route-logout-delegate-status auth-route-logout-delegate-check auth-route-logout-delegate-test
+	python3 -m compileall -q app/services app/api_v2_routers scripts tests
+	python3 -m ruff check scripts/auth_route_logout_delegate.py scripts/repair_auth_route_logout_delegate.py scripts/check_auth_route_logout_delegate.py scripts/patch_auth_route_logout_delegate_registry.py tests/unit/test_auth_route_logout_delegate.py app/api_v2_routers/auth.py --select F821,F401,F811,E402
+

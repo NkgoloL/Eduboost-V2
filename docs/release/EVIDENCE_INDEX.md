@@ -1339,3 +1339,15 @@ make auth-service-cleanup-test
 make backend-implementation-2511-2550-full-check
 ```
 
+## AUTH-ROUTE-LOGOUT-DELEGATE-001 / Backend implementation 2551-2590 — Auth logout/revoke route delegation
+
+Commands:
+
+```bash
+make auth-route-logout-delegate-repair
+make auth-route-logout-delegate-status
+make auth-route-logout-delegate-check
+make auth-route-logout-delegate-test
+make backend-implementation-2551-2590-full-check
+```
+
