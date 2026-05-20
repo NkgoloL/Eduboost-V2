@@ -41,7 +41,9 @@ jobs:
           RETENTION_DAYS: 1
         run: |
           # apply scenario envs from matrix
+          set -a
           eval "${{ matrix.env }}"
+          set +a
           # make mock encryptors available on PATH if requested
           if [[ "${ENCRYPTION_TOOL:-}" == "age" ]]; then
             export PATH="./scripts/ci:$PATH"

@@ -27,7 +27,7 @@ def main() -> int:
             failures.append(f"missing {path}")
 
     result = subprocess.run(
-        [sys.executable, "scripts/compare_orm_tables_to_database.py"],
+        [sys.executable, "scripts/compare_orm_tables_to_database.py", "--database-url", ""],
         cwd=REPO_ROOT,
         env={**os.environ, "PYTHONPATH": str(REPO_ROOT)},
         text=True,

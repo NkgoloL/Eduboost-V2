@@ -51,8 +51,8 @@ jobs:
       REDIS_URL: redis://localhost:6379/0
       ALLOWED_ORIGINS: '["http://localhost:3000","http://localhost:8000","http://test"]'
       ENCRYPTION_KEY: MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=
-      JWT_SECRET: local-ci-test-secret-value
-      JWT_SECRET_KEY: local-ci-test-secret-value
+      JWT_SECRET: local-ci-test-secret-value-32chars-minimum
+      JWT_SECRET_KEY: local-ci-test-secret-value-32chars-minimum
       PYTHONPATH: .
 
     steps:

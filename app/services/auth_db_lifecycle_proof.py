@@ -37,7 +37,7 @@ class SQLiteAuthLifecycleProofStore:
     """
 
     def __init__(self, connection: sqlite3.Connection | None = None):
-        self.connection = connection or sqlite3.connect(":memory:")
+        self.connection = connection or sqlite3.connect(":memory:", check_same_thread=False)
         self.connection.row_factory = sqlite3.Row
         self._create_schema()
 
@@ -237,6 +237,7 @@ def token_response(tokens: AuthDBProofTokens) -> dict[str, Any]:
         "access_token": tokens.access_token,
         "refresh_token": tokens.refresh_token,
         "token_type": tokens.token_type,
+        "expires_in": 3600,
         "guardian_learner_ids": tokens.guardian_learner_ids,
         "permissions": tokens.permissions,
         "user_id": tokens.user_id,

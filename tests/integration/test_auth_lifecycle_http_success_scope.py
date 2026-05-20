@@ -76,9 +76,9 @@ def _sample_value(name: str, annotation: Any = None) -> Any:
     if "email" in lowered:
         return "guardian.success@example.com"
     if "password" in lowered:
-        return "Password123!"
+        return "Violet-Quartz-Mango-42!"
     if "confirm" in lowered and "password" in lowered:
-        return "Password123!"
+        return "Violet-Quartz-Mango-42!"
     if lowered in {"name", "full_name", "guardian_name", "display_name"}:
         return "Guardian Success"
     if "first_name" in lowered:
@@ -101,7 +101,9 @@ def _sample_value(name: str, annotation: Any = None) -> Any:
         return "guardian-1"
     if lowered in {"user_id", "id", "sub"}:
         return "user-1"
-    if lowered in {"role", "user_role", "account_type", "user_type"}:
+    if lowered == "role":
+        return "parent"
+    if lowered in {"user_role", "account_type", "user_type"}:
         return "guardian"
     if "permission" in lowered or "scope" in lowered:
         return ["learner:read", "learner:write"]
@@ -196,18 +198,23 @@ class FakeAuthApplicationService:
     def __init__(self):
         self.calls: list[tuple[str, dict[str, Any]]] = []
         self.failures: dict[str, Exception] = {}
+        self.results: dict[str, dict[str, Any]] = {}
 
     async def register(self, **kwargs):
         self.calls.append(("register", kwargs))
         if "register" in self.failures:
             raise self.failures["register"]
-        return _universal_token_payload()
+        payload = _universal_token_payload()
+        self.results["register"] = payload
+        return payload
 
     async def login(self, **kwargs):
         self.calls.append(("login", kwargs))
         if "login" in self.failures:
             raise self.failures["login"]
-        return _universal_token_payload()
+        payload = _universal_token_payload()
+        self.results["login"] = payload
+        return payload
 
     async def refresh(self, **kwargs):
         self.calls.append(("refresh", kwargs))
@@ -216,6 +223,7 @@ class FakeAuthApplicationService:
         payload = _universal_token_payload()
         payload["guardian_learner_ids"] = ["learner-1", "learner-2"]
         payload["permissions"] = ["learner:read", "learner:write"]
+        self.results["refresh"] = payload
         return payload
 
     async def create_dev_session(self, **kwargs):
@@ -237,8 +245,10 @@ def _assert_success_response(response):
     assert response.status_code < 500
     assert response.status_code in {200, 201}
     body = response.json()
-    assert "access_token" in body or "message" in body or "success" in body
-    return body
+    data = body.get("data") if isinstance(body, dict) else None
+    payload = data if isinstance(data, dict) else body
+    assert "access_token" in payload or "message" in payload or "success" in payload
+    return payload
 
 
 def test_register_http_success_path_uses_service_override(fake_service):
@@ -268,9 +278,9 @@ def test_refresh_http_success_path_preserves_guardian_scope(fake_service):
     client.cookies.set("refresh_token", "refresh-token-success")
     response = client.post(route.path, json=payload)
 
-    body = _assert_success_response(response)
+    _assert_success_response(response)
     assert fake_service.calls and fake_service.calls[0][0] == "refresh"
-    joined = str(body)
+    joined = str(fake_service.results["refresh"])
     assert "learner-1" in joined
     assert "learner-2" in joined
 

@@ -1,15 +1,15 @@
 from __future__ import annotations
-import pytest
-pytestmark = pytest.mark.integration
-
 
 from types import SimpleNamespace
 from unittest.mock import AsyncMock
 
+import pytest
 from fastapi.testclient import TestClient
 
 from app.api_v2 import app
 from app.core.security import get_current_user
+
+pytestmark = pytest.mark.integration
 
 
 def test_diagnostic_submit_consumes_ai_quota(monkeypatch):
@@ -73,11 +73,11 @@ def test_diagnostic_submit_consumes_ai_quota(monkeypatch):
 
     quota_mock = AsyncMock()
     monkeypatch.setattr("app.api_v2_routers.diagnostics.require_active_consent_for_current_user", AsyncMock(return_value=None))
-    monkeypatch.setattr("app.api_v2_routers.diagnostics.LearnerRepository", FakeLearnerRepository)
-    monkeypatch.setattr("app.api_v2_routers.diagnostics.GuardianRepository", FakeGuardianRepository)
-    monkeypatch.setattr("app.api_v2_routers.diagnostics.IRTRepository", FakeIRTRepository)
-    monkeypatch.setattr("app.api_v2_routers.diagnostics.DiagnosticRepository", FakeDiagnosticRepository)
-    monkeypatch.setattr("app.api_v2_routers.diagnostics.KnowledgeGapRepository", FakeGapRepository)
+    monkeypatch.setattr("app.api_v2_routers.diagnostics.diagnostic_repositories.learner", lambda db: FakeLearnerRepository(db))
+    monkeypatch.setattr("app.api_v2_routers.diagnostics.diagnostic_repositories.guardian", lambda db: FakeGuardianRepository(db))
+    monkeypatch.setattr("app.api_v2_routers.diagnostics.diagnostic_repositories.irt", lambda db: FakeIRTRepository(db))
+    monkeypatch.setattr("app.api_v2_routers.diagnostics.diagnostic_repositories.diagnostic", lambda db: FakeDiagnosticRepository(db))
+    monkeypatch.setattr("app.api_v2_routers.diagnostics.diagnostic_repositories.knowledge_gap", lambda db: FakeGapRepository(db))
     monkeypatch.setattr("app.api_v2_routers.diagnostics.check_ai_quota", quota_mock)
 
     def override_user():

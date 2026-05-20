@@ -64,7 +64,7 @@ jobs:
       # Synchronous URL used by alembic env.py and seed script
       SYNC_DATABASE_URL: postgresql://eduboost_ci:ci_password@localhost:5432/eduboost_test
       REDIS_URL: redis://localhost:6379/0
-      JWT_SECRET: ci-test-secret-not-production
+      JWT_SECRET: ci-test-secret-not-production-32chars
       ENCRYPTION_KEY: ci-test-encryption-key-32bytes!!
 
     steps:

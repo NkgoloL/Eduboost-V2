@@ -11,6 +11,7 @@ from jose import jwt
 PLACEHOLDER_JWT_SECRETS = {
     "",
     "dev-insecure-secret-change-me",
+    "change_me_in_production_at_least_32_chars",
     "changeme",
     "change-me",
     "secret",
@@ -38,8 +39,9 @@ def _env(name: str, default: str = "") -> str:
 
 def _settings() -> Any | None:
     try:
-        from app.core.config import settings
-        return settings
+        from app.core.config import get_settings
+        get_settings.cache_clear()
+        return get_settings()
     except Exception:
         return None
 
@@ -84,8 +86,8 @@ def _configured_legacy_secret() -> str:
     """
     candidates = [
         _env("JWT_SECRET"),
-        _settings_value("JWT_SECRET"),
         _env("JWT_SECRET_KEY"),
+        _settings_value("JWT_SECRET"),
         _settings_value("JWT_SECRET_KEY"),
         _env("SECRET_KEY"),
         _settings_value("SECRET_KEY"),
