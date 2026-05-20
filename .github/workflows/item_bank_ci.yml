@@ -94,7 +94,7 @@ jobs:
 
       - name: Upload validation report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: item-bank-validation-report
           path: reports/validation/
@@ -165,7 +165,7 @@ jobs:
 
       - name: Publish coverage assertion results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: coverage-assertion-results
           path: reports/ci/

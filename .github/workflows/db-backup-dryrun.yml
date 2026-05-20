@@ -29,7 +29,7 @@ jobs:
           ./scripts/db_backup.sh
 
       - name: Upload backups artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: eduboost-db-backups-dryrun
           path: backups-ci
