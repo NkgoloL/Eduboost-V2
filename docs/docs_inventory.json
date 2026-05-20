@@ -4,11 +4,11 @@
     "api": 6,
     "architecture": 37,
     "general": 483,
-    "release": 321,
+    "release": 336,
     "security": 98
   },
-  "commit": "9e706b9e0b787b0e4fb7324c9beefeb3fe35d2a4",
-  "document_count": 970,
+  "commit": "629906580bd58863ec4a55ab9cdbe93f600f3951",
+  "document_count": 985,
   "documents": [
     {
       "category": "general",
@@ -23977,7 +23977,7 @@
       "headings": [],
       "links": [],
       "path": "docs/openapi.json",
-      "sha256": "e87fcf15d52a682d0bc190d8645ee166b2bdac5e186cac7736c8d3f5ea4cdb39",
+      "sha256": "b9ad4be7013d2d08de2d21c68a4dd487c6549a5205d07aa45bafc7581ff6fc79",
       "size_bytes": 216444,
       "statuses": [
         "pending"
@@ -34127,6 +34127,21 @@
           "level": 2,
           "line": 1273,
           "text": "BETA-NO-GO-HANDOFF-001 / Backend implementation 2351-2390 \u2014 Beta NO-GO handoff packet"
+        },
+        {
+          "level": 2,
+          "line": 1290,
+          "text": "DEPLOY-FE-001 / Backend implementation 2431-2470 \u2014 Production frontend container and E2E port alignment"
+        },
+        {
+          "level": 2,
+          "line": 1309,
+          "text": "DEPLOY-FE-RUNTIME-001 / Backend implementation 2471-2510 \u2014 Production frontend runtime proof guardrails"
+        },
+        {
+          "level": 2,
+          "line": 1329,
+          "text": "AUTH-SERVICE-CLEANUP-001 / Backend implementation 2511-2550 \u2014 Auth service monkey-patch cleanup and route ownership guardrails"
         }
       ],
       "links": [
@@ -34152,8 +34167,8 @@
         }
       ],
       "path": "docs/release/EVIDENCE_INDEX.md",
-      "sha256": "95f640205da1fa1a175fe7d89521eca0ac7cb033e020e1f1c6e49b1d14376fea",
-      "size_bytes": 40669,
+      "sha256": "47132e13fbb8ba407a392c686ed949ea3125888887cc396147f0409a8949eda7",
+      "size_bytes": 42374,
       "statuses": [
         "todo",
         "passed",
@@ -35672,7 +35687,7 @@
       "headings": [],
       "links": [],
       "path": "docs/release/approval_evidence_status.json",
-      "sha256": "0d5fbfce7ee22652b07aa613ce7d851855b76ceba57a11da5a7a224fea2afa45",
+      "sha256": "715b693a1c59aa9748ef22e6d702186f9f11649df3cb79fc4fad659b004169d8",
       "size_bytes": 2800,
       "statuses": [
         "external-blocked",
@@ -35705,7 +35720,7 @@
       ],
       "links": [],
       "path": "docs/release/approval_evidence_status.md",
-      "sha256": "4995233e6d23183cf2d39e618bed9388b2bffc43d717a8c0ebca9eb916c7f3a7",
+      "sha256": "576ab73465614d7dee500d0fbbf199207792641b78780ea4a40ca906bc49fe1d",
       "size_bytes": 1296,
       "statuses": [
         "external-blocked",
@@ -36475,6 +36490,67 @@
       "size_bytes": 577,
       "statuses": [],
       "title": "Auth Router Boundary Repair Report"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [],
+      "links": [],
+      "path": "docs/release/auth_service_cleanup_status.json",
+      "sha256": "5511962a965b9e15cf97023eb95d55dafdc42a558a6a1e52b10e9e081bbe8521",
+      "size_bytes": 636,
+      "statuses": [
+        "pending"
+      ],
+      "title": "Auth Service Cleanup Status"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "Auth Service Cleanup Status"
+        },
+        {
+          "level": 2,
+          "line": 8,
+          "text": "Service methods present"
+        },
+        {
+          "level": 2,
+          "line": 17,
+          "text": "Route delegation"
+        },
+        {
+          "level": 2,
+          "line": 22,
+          "text": "Monkey patches"
+        },
+        {
+          "level": 2,
+          "line": 26,
+          "text": "Blockers"
+        },
+        {
+          "level": 2,
+          "line": 31,
+          "text": "No false-closure rules"
+        }
+      ],
+      "links": [],
+      "path": "docs/release/auth_service_cleanup_status.md",
+      "sha256": "0aa6bfbe38ebe1ca5dd36a4249f92483093b18f9c26e308a93190aba8d829185",
+      "size_bytes": 867,
+      "statuses": [
+        "pending"
+      ],
+      "title": "Auth Service Cleanup Status"
     },
     {
       "category": "release",
@@ -39509,7 +39585,7 @@
       "headings": [],
       "links": [],
       "path": "docs/release/beta_blocker_burndown_plan.json",
-      "sha256": "90e09e50e3cfda5d3546818d265eb17ea907d590f4ebfa5ae3f9c069b079a39a",
+      "sha256": "6d2c5654e6188f5fda553393aac7dd297aab87922869340913b1d6190c683b19",
       "size_bytes": 4049,
       "statuses": [
         "blocked",
@@ -39548,7 +39624,7 @@
       ],
       "links": [],
       "path": "docs/release/beta_blocker_burndown_plan.md",
-      "sha256": "c0e95746953929fd1f2899019dc6d9b914845190b2343c1177af06971d563410",
+      "sha256": "56417cf1e5870830190a229235a57720c536a5950e9ec07c9b06d8ca581c05c1",
       "size_bytes": 2225,
       "statuses": [
         "blocked",
@@ -39968,7 +40044,7 @@
       "headings": [],
       "links": [],
       "path": "docs/release/ci_run_evidence_status.json",
-      "sha256": "7e77c8bf69e8ad2fea90a512266abd7284fd068b4c4ca9be00d4dfe67e3a1fbc",
+      "sha256": "b2aaaaaa3e689d07c29c59f57e7f90ee891969a5713c185a8a8024a33287d830",
       "size_bytes": 766,
       "statuses": [
         "external-blocked",
@@ -40002,7 +40078,7 @@
       ],
       "links": [],
       "path": "docs/release/ci_run_evidence_status.md",
-      "sha256": "94839e001deb9c0cec602fe33a9dca3a3b72df8f9c2a34bdd2025948b6d34411",
+      "sha256": "6128b14bc5843931c3d6e3ec82a287dd4eefb5fe81b2adb8be6a384bd2d6cc62",
       "size_bytes": 801,
       "statuses": [
         "external-blocked",
@@ -41025,7 +41101,10 @@
         "docs/release/live_db_transaction_evidence_status.md",
         "docs/release/final_beta_gate_refresh.md",
         "docs/release/evidence_attachment_runbook.md",
-        "docs/release/beta_no_go_handoff_packet.md"
+        "docs/release/beta_no_go_handoff_packet.md",
+        "docs/release/production_frontend_deployment_status.md",
+        "docs/release/production_frontend_runtime_status.md",
+        "docs/release/auth_service_cleanup_status.md"
       ],
       "generated": false,
       "headings": [
@@ -41102,8 +41181,8 @@
       ],
       "links": [],
       "path": "docs/release/evidence_status_registry.yml",
-      "sha256": "abf5d8be694b257043342d0b75ac3c3c2d809aa41edebe9d8461b500139896e9",
-      "size_bytes": 20044,
+      "sha256": "57c96a952e6c8af1e93bdd06afcccf72c8a3783128520e932a8311ff62714890",
+      "size_bytes": 21798,
       "statuses": [
         "external-blocked",
         "not-proven",
@@ -41126,7 +41205,7 @@
       "headings": [],
       "links": [],
       "path": "docs/release/external_approval_status.json",
-      "sha256": "55ba6dbe783055fbd9e36b68c2208fff67801be8c23b975b15bc53c879b6081c",
+      "sha256": "c137bc4adc031debf7523ae305a93692c76a715676a1ab6987cd04b24a8f25d4",
       "size_bytes": 3030,
       "statuses": [
         "external-blocked",
@@ -41158,7 +41237,7 @@
       ],
       "links": [],
       "path": "docs/release/external_approval_status.md",
-      "sha256": "7e3dc300ccb8506cd947c1cbf9d3852b511cc51e78e3bdd2b27f2433d15c78ad",
+      "sha256": "d2b5a0391a3a7cddd829afd8bc754f433e834e9476c5417f5f99b424dd45cbb8",
       "size_bytes": 1584,
       "statuses": [
         "external-blocked",
@@ -41312,7 +41391,7 @@
       "headings": [],
       "links": [],
       "path": "docs/release/final_beta_gate_refresh.json",
-      "sha256": "7b64a5c5ad76cb0d4cc70fcfd220d74bcceddfba0bf33642f6c425d1ebd2de96",
+      "sha256": "510bd6d80a1be3e6519385aad03d7a08f95157cd1d7a4a7960d4d0d02212abe5",
       "size_bytes": 10261,
       "statuses": [
         "external-blocked",
@@ -41375,7 +41454,7 @@
       ],
       "links": [],
       "path": "docs/release/final_beta_gate_refresh.md",
-      "sha256": "4265ab1872571895a9202677b6dae874470df76033b9241fe714911d44eded30",
+      "sha256": "b0a7802146976b77036b99399f08c79fdbf04ae3c3d81cd914c0f531edc4373f",
       "size_bytes": 3578,
       "statuses": [
         "external-blocked",
@@ -41840,7 +41919,7 @@
       "headings": [],
       "links": [],
       "path": "docs/release/live_db_transaction_evidence_status.json",
-      "sha256": "fd754f4e6918a6f607170ca4bd8455279d83ffd54a72f9fbe2bee1caf8805a4b",
+      "sha256": "804b84596124a583e4d8711343f342c7a4870fffaa75b252e6acf06cbb302c2f",
       "size_bytes": 3527,
       "statuses": [
         "external-blocked",
@@ -41874,7 +41953,7 @@
       ],
       "links": [],
       "path": "docs/release/live_db_transaction_evidence_status.md",
-      "sha256": "5ddae6f04676d4b4c125ae4e8849c8f791b35e9a381593b7365a78adfe36f952",
+      "sha256": "6381822c6f2773f2038fa8f52723046e6b335bb8a3fe0c85b268069584f99706",
       "size_bytes": 1534,
       "statuses": [
         "external-blocked",
@@ -43190,6 +43269,117 @@
         {
           "level": 1,
           "line": 1,
+          "text": "Next Execution Queue After DEPLOY-FE-001 / code_2431_2470"
+        },
+        {
+          "level": 2,
+          "line": 3,
+          "text": "Recommended next batch"
+        },
+        {
+          "level": 2,
+          "line": 7,
+          "text": "Why"
+        },
+        {
+          "level": 2,
+          "line": 11,
+          "text": "Boundary"
+        }
+      ],
+      "links": [],
+      "path": "docs/release/next_execution_queue_after_2431_2470.md",
+      "sha256": "90e1c0ea93d10e4e590ed31e1abca070bd2de44626d343fbdb4673a596a1d6a5",
+      "size_bytes": 510,
+      "statuses": [],
+      "title": "Next Execution Queue After DEPLOY-FE-001 / code_2431_2470"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "Next Execution Queue After DEPLOY-FE-RUNTIME-001 / code_2471_2510"
+        },
+        {
+          "level": 2,
+          "line": 3,
+          "text": "Recommended next batch"
+        },
+        {
+          "level": 2,
+          "line": 7,
+          "text": "Why"
+        }
+      ],
+      "links": [],
+      "path": "docs/release/next_execution_queue_after_2471_2510.md",
+      "sha256": "c784a9414602aa61fee30a91500a6305fccbcfd5a99fb89e837893bd59337327",
+      "size_bytes": 472,
+      "statuses": [],
+      "title": "Next Execution Queue After DEPLOY-FE-RUNTIME-001 / code_2471_2510"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "Next Execution Queue After DEPLOY-FE-RUNTIME-001R / code_2471_2510R"
+        },
+        {
+          "level": 2,
+          "line": 3,
+          "text": "Recommended next batch"
+        },
+        {
+          "level": 2,
+          "line": 7,
+          "text": "Runtime deployment evidence remains separate"
+        }
+      ],
+      "links": [],
+      "path": "docs/release/next_execution_queue_after_2471_2510R.md",
+      "sha256": "4fef9918d42b36d2808daee8d208b7237e20bb980093adab1aa319195b8e18e6",
+      "size_bytes": 410,
+      "statuses": [],
+      "title": "Next Execution Queue After DEPLOY-FE-RUNTIME-001R / code_2471_2510R"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "Next Execution Queue After AUTH-SERVICE-CLEANUP-001 / code_2511_2550"
+        }
+      ],
+      "links": [],
+      "path": "docs/release/next_execution_queue_after_2511_2550.md",
+      "sha256": "cb3e56e23ee6b2e865455918a191b42f39f1b6f9b29b7242e349efb43846562a",
+      "size_bytes": 255,
+      "statuses": [],
+      "title": "Next Execution Queue After AUTH-SERVICE-CLEANUP-001 / code_2511_2550"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
           "text": "Next Execution Queue After code_831_870"
         },
         {
@@ -44438,6 +44628,129 @@
         {
           "level": 1,
           "line": 1,
+          "text": "No False-Closure Status After DEPLOY-FE-001 / code_2431_2470"
+        },
+        {
+          "level": 2,
+          "line": 5,
+          "text": "Proven"
+        },
+        {
+          "level": 2,
+          "line": 13,
+          "text": "Not claimed"
+        }
+      ],
+      "links": [],
+      "path": "docs/release/no_false_closure_status_after_2431_2470.md",
+      "sha256": "1a762c627df49b118bce4fffc7d6f2255f7a6f85be717c69991fb2519f3258ca",
+      "size_bytes": 678,
+      "statuses": [
+        "passed"
+      ],
+      "title": "No False-Closure Status After DEPLOY-FE-001 / code_2431_2470"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "No False-Closure Status After DEPLOY-FE-RUNTIME-001 / code_2471_2510"
+        },
+        {
+          "level": 2,
+          "line": 5,
+          "text": "Proven"
+        },
+        {
+          "level": 2,
+          "line": 13,
+          "text": "Not claimed"
+        }
+      ],
+      "links": [],
+      "path": "docs/release/no_false_closure_status_after_2471_2510.md",
+      "sha256": "1725a2a17acb70df75610d4e8fce32a3391ac1c79fa1263cdb1be5ef573efb52",
+      "size_bytes": 690,
+      "statuses": [
+        "pending",
+        "passed"
+      ],
+      "title": "No False-Closure Status After DEPLOY-FE-RUNTIME-001 / code_2471_2510"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "No False-Closure Status After DEPLOY-FE-RUNTIME-001R / code_2471_2510R"
+        },
+        {
+          "level": 2,
+          "line": 5,
+          "text": "Proven"
+        },
+        {
+          "level": 2,
+          "line": 11,
+          "text": "Not claimed"
+        }
+      ],
+      "links": [],
+      "path": "docs/release/no_false_closure_status_after_2471_2510R.md",
+      "sha256": "7f5fdc5097cfd76eedb0e4a11325f2750fd5f2db75cc48aa040b5697dcde559c",
+      "size_bytes": 573,
+      "statuses": [],
+      "title": "No False-Closure Status After DEPLOY-FE-RUNTIME-001R / code_2471_2510R"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "No False-Closure Status After AUTH-SERVICE-CLEANUP-001 / code_2511_2550"
+        },
+        {
+          "level": 2,
+          "line": 5,
+          "text": "Proven"
+        },
+        {
+          "level": 2,
+          "line": 12,
+          "text": "Not claimed"
+        }
+      ],
+      "links": [],
+      "path": "docs/release/no_false_closure_status_after_2511_2550.md",
+      "sha256": "4c80f952fa9dc408b15a36af3fe3a94f8d6f56875de52effa615617121493ca4",
+      "size_bytes": 517,
+      "statuses": [
+        "pending"
+      ],
+      "title": "No False-Closure Status After AUTH-SERVICE-CLEANUP-001 / code_2511_2550"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
           "text": "No False-Closure Status After code_831_870"
         },
         {
@@ -45006,6 +45319,154 @@
       "dates": [],
       "evidence_references": [],
       "generated": false,
+      "headings": [],
+      "links": [],
+      "path": "docs/release/production_frontend_deployment_status.json",
+      "sha256": "2f62ebe27535e452a252057348f30d6c15993a254f800746146a8f66d2375fe9",
+      "size_bytes": 1249,
+      "statuses": [
+        "passed"
+      ],
+      "title": "Production Frontend Deployment Status"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "Production Frontend Deployment Status"
+        },
+        {
+          "level": 2,
+          "line": 19,
+          "text": "Blockers"
+        },
+        {
+          "level": 2,
+          "line": 23,
+          "text": "Interpretation"
+        }
+      ],
+      "links": [],
+      "path": "docs/release/production_frontend_deployment_status.md",
+      "sha256": "9abb56e04c1f31b6aa2026c5d257dfd68d134d5f69652bae0668665ea1b9a200",
+      "size_bytes": 999,
+      "statuses": [
+        "passed"
+      ],
+      "title": "Production Frontend Deployment Status"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "Production Frontend Runtime Evidence"
+        },
+        {
+          "level": 2,
+          "line": 23,
+          "text": "Required proof"
+        },
+        {
+          "level": 2,
+          "line": 31,
+          "text": "No false-closure rule"
+        }
+      ],
+      "links": [],
+      "path": "docs/release/production_frontend_runtime_evidence.md",
+      "sha256": "5ebf5990c17623b848fb7179a7093d875e7580fffbcad9095109cd505a2d5bf3",
+      "size_bytes": 799,
+      "statuses": [
+        "pending",
+        "passed"
+      ],
+      "title": "Production Frontend Runtime Evidence"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [],
+      "links": [],
+      "path": "docs/release/production_frontend_runtime_status.json",
+      "sha256": "e042ec3434fc693e52d6ab81d7dbb2690c1e22ea3d7ad76df30a71918dcaa7ad",
+      "size_bytes": 3914,
+      "statuses": [
+        "passed",
+        "pending",
+        "pass"
+      ],
+      "title": "Production Frontend Runtime Status"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "Production Frontend Runtime Status"
+        },
+        {
+          "level": 2,
+          "line": 8,
+          "text": "Compose config preflight"
+        },
+        {
+          "level": 2,
+          "line": 14,
+          "text": "Local runtime-preflight checks"
+        },
+        {
+          "level": 2,
+          "line": 32,
+          "text": "Runtime evidence fields"
+        },
+        {
+          "level": 2,
+          "line": 46,
+          "text": "Blockers"
+        },
+        {
+          "level": 2,
+          "line": 58,
+          "text": "No false-closure rules"
+        },
+        {
+          "level": 2,
+          "line": 65,
+          "text": "Interpretation"
+        }
+      ],
+      "links": [],
+      "path": "docs/release/production_frontend_runtime_status.md",
+      "sha256": "309c49d2cc4053a091de8f91cdf753501e9aa3ce3e2fdd65a13d5883b7f9db5f",
+      "size_bytes": 2779,
+      "statuses": [
+        "passed",
+        "pending",
+        "pass"
+      ],
+      "title": "Production Frontend Runtime Status"
+    },
+    {
+      "category": "release",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
       "headings": [
         {
           "level": 1,
@@ -45109,6 +45570,7 @@
         "docs/release/external_approvals/security_approval.md",
         "docs/release/staging_smoke_evidence.md",
         "docs/release/ci_run_evidence_status.md",
+        "docs/release/auth_service_cleanup_status.md",
         "docs/release/diagnostics_dynamic_repository_boundary_repair_report.md",
         "docs/release/auth_repository_fixture_proof_report.md",
         "docs/release/live_db_transaction_evidence_status.md",
@@ -45123,6 +45585,8 @@
         "docs/release/no_false_closure_status_after_1551_1590.md",
         "docs/release/no_false_closure_status_after_1431_1470.md",
         "docs/release/approval_evidence_status.md",
+        "docs/release/production_frontend_deployment_status.md",
+        "docs/release/production_frontend_runtime_status.md",
         "docs/release/staging_acceptance_status.md",
         "docs/release/beta_no_go_handoff_packet.md",
         "docs/release/beta_blocker_burndown_plan.md",
@@ -45134,8 +45598,8 @@
       "headings": [],
       "links": [],
       "path": "docs/release/release_go_no_go_status.json",
-      "sha256": "a1b020530efb1454486a6703bf79abb47cd4ff0831b8e7afbe986923c90928e4",
-      "size_bytes": 19324,
+      "sha256": "c7415f8e6353e225e268493d9c80e6f6390282d787c1e694247170152a9ac36a",
+      "size_bytes": 20911,
       "statuses": [
         "external-blocked",
         "pending",
@@ -45193,7 +45657,7 @@
       ],
       "links": [],
       "path": "docs/release/release_go_no_go_status.md",
-      "sha256": "6c7ff963721896b11b7ea89c0342a88492bb6b2d7a73ebbb3a500d7bcb9d2811",
+      "sha256": "2133653939bbcd7dc1639d44ab31f91230d448b23cb6c93bf173d5a3816217f5",
       "size_bytes": 2905,
       "statuses": [
         "external-blocked",
@@ -45600,7 +46064,7 @@
       "headings": [],
       "links": [],
       "path": "docs/release/route_transaction_slice_rollup.json",
-      "sha256": "4afb34a37268e036055b5bf432f198fe9201079d180a33e66ba0d03a413a167e",
+      "sha256": "c9d333a31cd074fd03d70961e84e563e1c2c836f204778d58504988fcd134bd8",
       "size_bytes": 3628,
       "statuses": [
         "blocked",
@@ -45646,7 +46110,7 @@
       ],
       "links": [],
       "path": "docs/release/route_transaction_slice_rollup.md",
-      "sha256": "9e9eebbcc83368d9663b4ea812117a57324312c8553e6f5cff96a7941ab7b30e",
+      "sha256": "ec9c452ec7debea1cca432bac67ba83ecca74c49c1d9e2992dd01ff9d1de6d1b",
       "size_bytes": 1403,
       "statuses": [
         "blocked",
@@ -46162,7 +46626,7 @@
       "headings": [],
       "links": [],
       "path": "docs/release/staging_acceptance_status.json",
-      "sha256": "e55986c1474a2b0807a32ef907703929204e8da33e040600db6529da9b1b08d6",
+      "sha256": "dc001b03861323f84515c0e0cb88dc2b89f46bc595df8134997c2d3e2e32c23e",
       "size_bytes": 1913,
       "statuses": [
         "external-blocked",
@@ -46194,7 +46658,7 @@
       ],
       "links": [],
       "path": "docs/release/staging_acceptance_status.md",
-      "sha256": "4fc93d90decead002f9e6850b12d88fde879b2bb2aa19cde3674b0abb645034c",
+      "sha256": "e8b6b60de6e48b78e6bcedb6dd7b8013e84be012e292b3a1fbd10bd22cbb06a5",
       "size_bytes": 1227,
       "statuses": [
         "external-blocked",
@@ -52536,8 +53000,8 @@
       "title": "V2 Migration Guide"
     }
   ],
-  "files_scanned": 970,
-  "generated_at": "2026-05-20T07:01:30Z",
+  "files_scanned": 985,
+  "generated_at": "2026-05-20T15:13:50Z",
   "generated_count": 4,
   "missing_important_docs": []
 }

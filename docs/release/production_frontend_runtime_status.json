@@ -1,0 +1,150 @@
+{
+  "generated_at": "2026-05-20T14:02:52Z",
+  "current_commit": "629906580bd58863ec4a55ab9cdbe93f600f3951",
+  "status": "runtime-preflight-passing",
+  "compose_config": {
+    "status": "passed",
+    "return_code": 0,
+    "detail": "docker compose -f docker-compose.prod.yml config succeeded"
+  },
+  "checks": [
+    {
+      "name": "docker-compose.prod.yml exists",
+      "passed": true,
+      "detail": "docker-compose.prod.yml"
+    },
+    {
+      "name": "Dockerfile.frontend exists",
+      "passed": true,
+      "detail": "docker/Dockerfile.frontend"
+    },
+    {
+      "name": "frontend service exists in production compose",
+      "passed": true,
+      "detail": "frontend service"
+    },
+    {
+      "name": "frontend compose target is production",
+      "passed": true,
+      "detail": "target production + port 3050"
+    },
+    {
+      "name": "nginx depends on frontend",
+      "passed": true,
+      "detail": "depends_on frontend"
+    },
+    {
+      "name": "compose cert mount uses /etc/letsencrypt",
+      "passed": true,
+      "detail": "shared certbot/nginx cert path"
+    },
+    {
+      "name": "Dockerfile has production stage",
+      "passed": true,
+      "detail": "FROM ... AS production"
+    },
+    {
+      "name": "Dockerfile contains standalone runtime copy",
+      "passed": true,
+      "detail": ".next/standalone"
+    },
+    {
+      "name": "Dockerfile uses port 3050",
+      "passed": true,
+      "detail": "EXPOSE/PORT 3050"
+    },
+    {
+      "name": "Next config exists",
+      "passed": true,
+      "detail": "app/frontend/next.config.js"
+    },
+    {
+      "name": "Next config output standalone",
+      "passed": true,
+      "detail": "output: 'standalone'"
+    },
+    {
+      "name": "nginx proxies to frontend:3050",
+      "passed": true,
+      "detail": "proxy_pass frontend:3050"
+    },
+    {
+      "name": "nginx cert paths use /etc/letsencrypt",
+      "passed": true,
+      "detail": "ssl_certificate path"
+    }
+  ],
+  "evidence_fields": [
+    {
+      "name": "Docker compose config result",
+      "value": "pending",
+      "valid": false,
+      "reason": "pending"
+    },
+    {
+      "name": "Frontend image build result",
+      "value": "pending",
+      "valid": false,
+      "reason": "pending"
+    },
+    {
+      "name": "Runtime container result",
+      "value": "pending",
+      "valid": false,
+      "reason": "pending"
+    },
+    {
+      "name": "Nginx proxy smoke result",
+      "value": "pending",
+      "valid": false,
+      "reason": "pending"
+    },
+    {
+      "name": "Browser smoke result",
+      "value": "pending",
+      "valid": false,
+      "reason": "pending"
+    },
+    {
+      "name": "Evidence URL",
+      "value": "pending",
+      "valid": false,
+      "reason": "pending"
+    },
+    {
+      "name": "Commit SHA",
+      "value": "pending",
+      "valid": false,
+      "reason": "pending"
+    },
+    {
+      "name": "Verified by",
+      "value": "pending",
+      "valid": false,
+      "reason": "pending"
+    },
+    {
+      "name": "Date verified",
+      "value": "pending",
+      "valid": false,
+      "reason": "pending"
+    }
+  ],
+  "blockers": [
+    "runtime evidence: Docker compose config result pending",
+    "runtime evidence: Frontend image build result pending",
+    "runtime evidence: Runtime container result pending",
+    "runtime evidence: Nginx proxy smoke result pending",
+    "runtime evidence: Browser smoke result pending",
+    "runtime evidence: Evidence URL pending",
+    "runtime evidence: Commit SHA pending",
+    "runtime evidence: Verified by pending",
+    "runtime evidence: Date verified pending"
+  ],
+  "no_false_closure_rules": [
+    "Static Docker/compose checks do not prove a live deployment.",
+    "docker compose config does not prove image build success.",
+    "runtime evidence is required before release-mode deployment proof can pass.",
+    "staging smoke and browser evidence remain separate beta blockers."
+  ]
+}

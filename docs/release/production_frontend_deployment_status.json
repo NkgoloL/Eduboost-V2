@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-05-20T09:14:24Z",
+  "current_commit": "7820a21b5d58d89b8ba3580af560b088eb806e03",
+  "status": "production-frontend-configured",
+  "checks": [
+    {
+      "name": "docker-compose.prod.yml exists",
+      "passed": true,
+      "detail": "docker-compose.prod.yml"
+    },
+    {
+      "name": "production frontend service exists",
+      "passed": true,
+      "detail": "service key `frontend`"
+    },
+    {
+      "name": "frontend uses production Docker target",
+      "passed": true,
+      "detail": "target: production + Dockerfile.frontend"
+    },
+    {
+      "name": "nginx depends on frontend",
+      "passed": true,
+      "detail": "nginx depends_on includes frontend"
+    },
+    {
+      "name": "nginx cert mount aligned to /etc/letsencrypt",
+      "passed": true,
+      "detail": "nginx reads same cert path certbot writes"
+    },
+    {
+      "name": "certbot writes to /etc/letsencrypt",
+      "passed": true,
+      "detail": "certbot volume target"
+    },
+    {
+      "name": "playwright defaults to Next.js port 3050",
+      "passed": true,
+      "detail": "baseURL fallback"
+    },
+    {
+      "name": "playwright timeout hardened",
+      "passed": true,
+      "detail": "timeout >= 60s"
+    }
+  ],
+  "blockers": []
+}

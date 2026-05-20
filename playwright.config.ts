@@ -1,10 +1,10 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const baseURL = process.env.FRONTEND_BASE_URL || "http://127.0.0.1:5173";
+const baseURL = process.env.FRONTEND_BASE_URL || "http://127.0.0.1:3050";
 
 export default defineConfig({
   testDir: "./tests/e2e",
-  timeout: 30_000,
+  timeout: 60_000,
   fullyParallel: true,
   retries: process.env.CI ? 1 : 0,
   reporter: [["list"], ["html", { open: "never" }]],

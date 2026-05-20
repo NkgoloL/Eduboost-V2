@@ -512,3 +512,42 @@ findings:
     closure_blocker: handoff only; beta decision remains NO-GO
     blocks_beta: false
     external_dependency: false
+  - id: DEPLOY-FE-001
+    title: Production frontend container and E2E port alignment
+    severity: P1
+    gate: 5
+    owner: platform
+    implementation_batch: code_2431_2470
+    proof_status: runtime-passing
+    proof_command: make backend-implementation-2431-2470-full-check
+    evidence_file: docs/release/production_frontend_deployment_status.md
+    last_verified_commit: 7820a21b5d58d89b8ba3580af560b088eb806e03
+    closure_blocker: config only; real staging deployment/browser smoke still required
+    blocks_beta: false
+    external_dependency: false
+  - id: DEPLOY-FE-RUNTIME-001
+    title: Production frontend runtime proof guardrails
+    severity: P1
+    gate: 5
+    owner: platform
+    implementation_batch: code_2471_2510
+    proof_status: runtime-passing
+    proof_command: make backend-implementation-2471-2510-full-check
+    evidence_file: docs/release/production_frontend_runtime_status.md
+    last_verified_commit: 629906580bd58863ec4a55ab9cdbe93f600f3951
+    closure_blocker: local preflight only unless runtime evidence is accepted
+    blocks_beta: false
+    external_dependency: false
+  - id: AUTH-SERVICE-CLEANUP-001
+    title: Auth service monkey-patch cleanup and route ownership guardrails
+    severity: P1
+    gate: 3
+    owner: backend
+    implementation_batch: code_2511_2550
+    proof_status: runtime-passing
+    proof_command: make backend-implementation-2511-2550-full-check
+    evidence_file: docs/release/auth_service_cleanup_status.md
+    last_verified_commit: 629906580bd58863ec4a55ab9cdbe93f600f3951
+    closure_blocker: auth router does not delegate logout to auth_service.logout; auth router does not delegate revoke_all_tokens to auth_service.revoke_all_tokens
+    blocks_beta: false
+    external_dependency: false

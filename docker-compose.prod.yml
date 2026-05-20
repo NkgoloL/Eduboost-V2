@@ -15,11 +15,12 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/ssl:/etc/ssl/certs
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/letsencrypt:ro
       - ./nginx/logs:/var/log/nginx
     depends_on:
       - api
+      - frontend
     restart: unless-stopped
 
   api:
@@ -48,6 +49,32 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+    restart: unless-stopped
+
+  frontend:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.10'
+          memory: 128M
+    build:
+      context: ./app/frontend
+      dockerfile: ../../docker/Dockerfile.frontend
+      target: production
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+      - PORT=3050
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-/api/v2}
+      - NEXT_PUBLIC_APP_ENV=production
+      - NEXT_PUBLIC_ENABLE_DEV_SESSION=false
+    expose:
+      - "3050"
+    depends_on:
+      - api
     restart: unless-stopped
 
   postgres:

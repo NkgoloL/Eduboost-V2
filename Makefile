@@ -2206,3 +2206,82 @@ backend-implementation-2351-2390-full-check: beta-no-go-handoff-packet beta-no-g
 	python3 -m compileall -q scripts tests
 	python3 -m ruff check scripts/beta_no_go_handoff_packet.py scripts/check_beta_no_go_handoff_packet.py scripts/patch_beta_no_go_handoff_registry.py tests/unit/test_beta_no_go_handoff_packet.py --select F821,F401,F811,E402
 
+.PHONY: prod-frontend-deployment-repair prod-frontend-deployment-status prod-frontend-deployment-registry-patch prod-frontend-deployment-check prod-frontend-deployment-test backend-implementation-2431-2470-full-check
+
+prod-frontend-deployment-repair:
+	PYTHONPATH=. python3 scripts/repair_prod_frontend_deployment.py
+
+prod-frontend-deployment-status:
+	PYTHONPATH=. python3 -c "from scripts.prod_frontend_deployment import write_status; s = write_status(); print(s.status)"
+
+prod-frontend-deployment-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_prod_frontend_deployment_registry.py
+
+prod-frontend-deployment-check: prod-frontend-deployment-repair prod-frontend-deployment-registry-patch
+	PYTHONPATH=. python3 scripts/check_prod_frontend_deployment.py
+
+prod-frontend-deployment-test:
+	pytest -c pytest.ini tests/unit/test_prod_frontend_deployment.py -q --no-cov --tb=short
+
+backend-implementation-2431-2470-full-check: prod-frontend-deployment-repair prod-frontend-deployment-status prod-frontend-deployment-check prod-frontend-deployment-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/prod_frontend_deployment.py scripts/repair_prod_frontend_deployment.py scripts/check_prod_frontend_deployment.py scripts/patch_prod_frontend_deployment_registry.py tests/unit/test_prod_frontend_deployment.py --select F821,F401,F811,E402
+
+.PHONY: prod-frontend-runtime-repair prod-frontend-runtime-status prod-frontend-runtime-registry-patch prod-frontend-runtime-check prod-frontend-runtime-release-check prod-frontend-runtime-test backend-implementation-2471-2510-full-check
+
+prod-frontend-runtime-repair:
+	PYTHONPATH=. python3 scripts/repair_prod_frontend_runtime.py
+
+prod-frontend-runtime-status:
+	PYTHONPATH=. python3 -c "from scripts.prod_frontend_runtime import write_status; s = write_status(); print(s.status)"
+
+prod-frontend-runtime-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_prod_frontend_runtime_registry.py
+
+prod-frontend-runtime-check: prod-frontend-runtime-repair prod-frontend-runtime-registry-patch
+	PYTHONPATH=. python3 scripts/check_prod_frontend_runtime.py
+
+prod-frontend-runtime-release-check:
+	PYTHONPATH=. python3 scripts/check_prod_frontend_runtime.py --release
+
+prod-frontend-runtime-test:
+	pytest -c pytest.ini tests/unit/test_prod_frontend_runtime.py -q --no-cov --tb=short
+
+backend-implementation-2471-2510-full-check: prod-frontend-runtime-repair prod-frontend-runtime-status prod-frontend-runtime-check prod-frontend-runtime-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/prod_frontend_runtime.py scripts/repair_prod_frontend_runtime.py scripts/check_prod_frontend_runtime.py scripts/patch_prod_frontend_runtime_registry.py tests/unit/test_prod_frontend_runtime.py --select F821,F401,F811,E402
+
+.PHONY: prod-frontend-runtime-cert-path-repair backend-implementation-2471-2510R-full-check
+
+prod-frontend-runtime-cert-path-repair:
+	PYTHONPATH=. python3 scripts/repair_nginx_letsencrypt_paths.py
+
+backend-implementation-2471-2510R-full-check: prod-frontend-runtime-cert-path-repair prod-frontend-runtime-check prod-frontend-runtime-test
+	pytest -c pytest.ini tests/unit/test_nginx_letsencrypt_path_repair.py -q --no-cov --tb=short
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/repair_nginx_letsencrypt_paths.py tests/unit/test_nginx_letsencrypt_path_repair.py --select F821,F401,F811,E402
+
+.PHONY: auth-service-cleanup-repair auth-service-cleanup-status auth-service-cleanup-registry-patch auth-service-cleanup-check auth-service-cleanup-release-check auth-service-cleanup-test backend-implementation-2511-2550-full-check
+
+auth-service-cleanup-repair:
+	PYTHONPATH=. python3 scripts/repair_auth_service_cleanup.py
+
+auth-service-cleanup-status:
+	PYTHONPATH=. python3 -c "from scripts.auth_service_cleanup import write_status; s = write_status(); print(s.status)"
+
+auth-service-cleanup-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_auth_service_cleanup_registry.py
+
+auth-service-cleanup-check: auth-service-cleanup-repair auth-service-cleanup-registry-patch
+	PYTHONPATH=. python3 scripts/check_auth_service_cleanup.py
+
+auth-service-cleanup-release-check:
+	PYTHONPATH=. python3 scripts/check_auth_service_cleanup.py --release
+
+auth-service-cleanup-test:
+	pytest -c pytest.ini tests/unit/test_auth_service_cleanup.py -q --no-cov --tb=short
+
+backend-implementation-2511-2550-full-check: auth-service-cleanup-repair auth-service-cleanup-status auth-service-cleanup-check auth-service-cleanup-test
+	python3 -m compileall -q app/services app/api_v2_routers scripts tests
+	python3 -m ruff check scripts/auth_service_cleanup.py scripts/repair_auth_service_cleanup.py scripts/check_auth_service_cleanup.py scripts/patch_auth_service_cleanup_registry.py tests/unit/test_auth_service_cleanup.py app/services/auth_application_service.py --select F821,F401,F811,E402
+

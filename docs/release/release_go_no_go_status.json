@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-20T07:01:11Z",
-  "current_commit": "9e706b9e0b787b0e4fb7324c9beefeb3fe35d2a4",
+  "generated_at": "2026-05-20T15:13:27Z",
+  "current_commit": "629906580bd58863ec4a55ab9cdbe93f600f3951",
   "decision": "NO-GO",
   "beta_blocker_count": 7,
   "engineering_blocker_count": 1,
@@ -199,6 +199,19 @@
       "external_dependency": false,
       "evidence_file": "docs/docs_inventory.md",
       "closure_blocker": "CI authority and external approvals remain separate release blockers",
+      "go_eligible": true,
+      "reason": "non-beta-blocking item"
+    },
+    {
+      "id": "AUTH-SERVICE-CLEANUP-001",
+      "title": "Auth service monkey-patch cleanup and route ownership guardrails",
+      "severity": "P1",
+      "gate": "3",
+      "proof_status": "runtime-passing",
+      "blocks_beta": false,
+      "external_dependency": false,
+      "evidence_file": "docs/release/auth_service_cleanup_status.md",
+      "closure_blocker": "auth router does not delegate logout to auth_service.logout; auth router does not delegate revoke_all_tokens to auth_service.revoke_all_tokens",
       "go_eligible": true,
       "reason": "non-beta-blocking item"
     },
@@ -407,6 +420,32 @@
       "external_dependency": false,
       "evidence_file": "docs/release/approval_evidence_status.md",
       "closure_blocker": "scaffold only; individual approvals remain external-blocked until accepted metadata is attached",
+      "go_eligible": true,
+      "reason": "non-beta-blocking item"
+    },
+    {
+      "id": "DEPLOY-FE-001",
+      "title": "Production frontend container and E2E port alignment",
+      "severity": "P1",
+      "gate": "5",
+      "proof_status": "runtime-passing",
+      "blocks_beta": false,
+      "external_dependency": false,
+      "evidence_file": "docs/release/production_frontend_deployment_status.md",
+      "closure_blocker": "config only; real staging deployment/browser smoke still required",
+      "go_eligible": true,
+      "reason": "non-beta-blocking item"
+    },
+    {
+      "id": "DEPLOY-FE-RUNTIME-001",
+      "title": "Production frontend runtime proof guardrails",
+      "severity": "P1",
+      "gate": "5",
+      "proof_status": "runtime-passing",
+      "blocks_beta": false,
+      "external_dependency": false,
+      "evidence_file": "docs/release/production_frontend_runtime_status.md",
+      "closure_blocker": "local preflight only unless runtime evidence is accepted",
       "go_eligible": true,
       "reason": "non-beta-blocking item"
     },

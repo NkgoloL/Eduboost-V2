@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import inspect
 import importlib
 from dataclasses import dataclass, field
 from typing import Any
@@ -180,6 +181,85 @@ class AuthApplicationService:
                     continue
         return []
 
+    async def _auth_service_call_impl(self, *args, **kwargs):
+        """Explicit service method replacing module-level assignment."""
+        result = _auth_service_call_impl(self, *args, **kwargs)
+        if inspect.isawaitable(result):
+            return await result
+        return result
+
+
+    async def create_dev_session(self, *args, **kwargs):
+        """Explicit service method replacing module-level assignment."""
+        result = _auth_service_create_dev_session(self, *args, **kwargs)
+        if inspect.isawaitable(result):
+            return await result
+        return result
+
+
+    async def login(self, *args, **kwargs):
+        """Explicit service method replacing module-level assignment."""
+        result = _auth_service_login(self, *args, **kwargs)
+        if inspect.isawaitable(result):
+            return await result
+        return result
+
+
+    async def refresh(self, *args, **kwargs):
+        """Explicit service method replacing module-level assignment."""
+        result = _auth_service_refresh(self, *args, **kwargs)
+        if inspect.isawaitable(result):
+            return await result
+        return result
+
+
+    async def register(self, *args, **kwargs):
+        """Explicit service method replacing module-level assignment."""
+        result = _auth_service_register(self, *args, **kwargs)
+        if inspect.isawaitable(result):
+            return await result
+        return result
+
+
+    async def logout(self, *args, **kwargs):
+        """Service-owned logout boundary."""
+        try:
+            from app.services import auth_lifecycle_impl as impl
+        except Exception:
+            impl = None
+        if impl is not None:
+            for name in ('_auth_lifecycle_logout_impl', 'logout_impl', 'logout',):
+                func = getattr(impl, name, None)
+                if func is not None:
+                    result = func(self, *args, **kwargs)
+                    if inspect.isawaitable(result):
+                        return await result
+                    return result
+        response = kwargs.get("response")
+        if response is not None and hasattr(response, "delete_cookie"):
+            response.delete_cookie("refresh_token")
+        return {"message": "logout completed"}
+
+
+    async def revoke_all_tokens(self, *args, **kwargs):
+        """Service-owned revoke_all_tokens boundary."""
+        try:
+            from app.services import auth_lifecycle_impl as impl
+        except Exception:
+            impl = None
+        if impl is not None:
+            for name in ('_auth_lifecycle_revoke_all_tokens_impl', 'revoke_all_tokens_impl', 'revoke_all_tokens',):
+                func = getattr(impl, name, None)
+                if func is not None:
+                    result = func(self, *args, **kwargs)
+                    if inspect.isawaitable(result):
+                        return await result
+                    return result
+        response = kwargs.get("response")
+        if response is not None and hasattr(response, "delete_cookie"):
+            response.delete_cookie("refresh_token")
+        return {"message": "revoke all tokens completed"}
+
 
 def extract_identifier(value: Any) -> Any | None:
     if value is None:
@@ -221,26 +301,11 @@ async def _auth_service_call_impl(self, impl_name: str, **kwargs):
     if hasattr(result, '__await__'):
         return await result
     return result
-
-AuthApplicationService._auth_service_call_impl = _auth_service_call_impl
-
-
 async def _auth_service_create_dev_session(self, **kwargs):
     return await self._auth_service_call_impl('create_dev_session_impl', **kwargs)
-
-AuthApplicationService.create_dev_session = _auth_service_create_dev_session
-
 async def _auth_service_login(self, **kwargs):
     return await self._auth_service_call_impl('login_impl', **kwargs)
-
-AuthApplicationService.login = _auth_service_login
-
 async def _auth_service_refresh(self, **kwargs):
     return await self._auth_service_call_impl('refresh_impl', **kwargs)
-
-AuthApplicationService.refresh = _auth_service_refresh
-
 async def _auth_service_register(self, **kwargs):
     return await self._auth_service_call_impl('register_impl', **kwargs)
-
-AuthApplicationService.register = _auth_service_register
