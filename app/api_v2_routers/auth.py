@@ -145,7 +145,7 @@ async def create_dev_session(
 
 @router.post("/refresh", response_model=TokenResponse)
 @limiter.limit(settings.RATE_LIMIT_AUTH)
-async def refresh_token(
+async def refresh(
     request: Request,
     response: Response,
     body: RefreshRequest | None = None,
@@ -156,12 +156,12 @@ async def refresh_token(
 ):
     # code_911_950_auth_lifecycle_delegate
     return await auth_service.refresh(
-            request=request,
-            response=response,
-            body=body,
-            db=db,
-            cookie_refresh=cookie_refresh,
-            auth_runtime=auth_runtime,
+        request=request,
+        response=response,
+        body=body,
+        db=db,
+        cookie_refresh=cookie_refresh,
+        auth_runtime=auth_runtime,
     )
 
 def _set_refresh_cookie(response: Response, token: str) -> None:

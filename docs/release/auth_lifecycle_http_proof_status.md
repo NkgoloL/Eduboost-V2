@@ -1,9 +1,9 @@
 # Auth Lifecycle HTTP Route Proof Status
 
-Generated at: `2026-05-20T18:55:16Z`
-Commit: `4c984e5c7af26190e24cfedd880b7ba8b513bedc`
+Generated at: `2026-05-20T18:57:05Z`
+Commit: `097678b5e87053ebc199235d9eb5e1e202354426`
 
-**Status:** `auth-lifecycle-http-route-proof-not-proven`
+**Status:** `auth-lifecycle-http-route-proof-passing`
 **Router import OK:** `True`
 **Synthetic app registration OK:** `True`
 
@@ -11,13 +11,13 @@ Commit: `4c984e5c7af26190e24cfedd880b7ba8b513bedc`
 |---|---|---:|---:|---:|---:|---:|---|---|---:|
 | `register` | `register` | True | True | True | True | True | `POST` | `/auth/register` | True |
 | `login` | `login` | True | True | True | True | True | `POST` | `/auth/login` | True |
-| `refresh` | `refresh` | False | False | True | False | False | `-` | `-` | False |
+| `refresh` | `refresh` | True | True | True | True | True | `POST` | `/auth/refresh` | True |
 | `logout` | `logout` | True | True | True | True | True | `POST` | `/auth/logout` | True |
 | `revoke_all_tokens` | `revoke_all_tokens` | True | True | True | True | True | `POST` | `/auth/revoke-all` | True |
 
 ## Blockers
 
-- refresh HTTP route/service proof incomplete
+- None
 
 ## No false-closure rules
 

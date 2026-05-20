@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-20T18:55:16Z",
-  "current_commit": "4c984e5c7af26190e24cfedd880b7ba8b513bedc",
-  "status": "auth-lifecycle-http-route-proof-not-proven",
+  "generated_at": "2026-05-20T18:57:05Z",
+  "current_commit": "097678b5e87053ebc199235d9eb5e1e202354426",
+  "status": "auth-lifecycle-http-route-proof-passing",
   "router_import_ok": true,
   "synthetic_app_registration_ok": true,
   "proofs": [
@@ -40,14 +40,18 @@
     {
       "function": "refresh",
       "service_method": "refresh",
-      "source_route_exists": false,
-      "registered_route_exists": false,
+      "source_route_exists": true,
+      "registered_route_exists": true,
       "service_method_exists": true,
-      "has_auth_service_dependency": false,
-      "delegates_to_service": false,
-      "methods": [],
-      "paths": [],
-      "passed": false
+      "has_auth_service_dependency": true,
+      "delegates_to_service": true,
+      "methods": [
+        "POST"
+      ],
+      "paths": [
+        "/auth/refresh"
+      ],
+      "passed": true
     },
     {
       "function": "logout",
@@ -82,7 +86,5 @@
       "passed": true
     }
   ],
-  "blockers": [
-    "refresh HTTP route/service proof incomplete"
-  ]
+  "blockers": []
 }
