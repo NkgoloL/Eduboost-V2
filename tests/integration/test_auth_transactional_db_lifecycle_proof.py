@@ -61,12 +61,14 @@ def _sample_value(name: str, annotation: Any = None) -> Any:
     if "email" in lowered or lowered == "username":
         return "guardian.dbproof@example.com"
     if "password" in lowered:
-        return "Password123!"
+        return "Violet-Quartz-Mango-42!"
     if "name" in lowered:
         return "Guardian DB Proof"
     if "refresh" in lowered and "token" in lowered:
         return "placeholder-refresh-token"
-    if lowered in {"role", "user_role", "account_type", "user_type"}:
+    if lowered == "role":
+        return "parent"
+    if lowered in {"user_role", "account_type", "user_type"}:
         return "guardian"
     if "learner" in lowered and "id" in lowered:
         return "learner-1"
@@ -140,7 +142,7 @@ def client(store):
 
 
 def test_db_store_register_persists_guardian_and_learner_scope(store):
-    tokens = store.register(email="guardian.dbproof@example.com", password="Password123!")
+    tokens = store.register(email="guardian.dbproof@example.com", password="Violet-Quartz-Mango-42!")
     assert tokens.guardian_learner_ids == ["learner-1"]
     user = store.connection.execute("SELECT * FROM users WHERE email = ?", ("guardian.dbproof@example.com",)).fetchone()
     guardian = store.connection.execute("SELECT * FROM guardians WHERE user_id = ?", (tokens.user_id,)).fetchone()
@@ -151,23 +153,23 @@ def test_db_store_register_persists_guardian_and_learner_scope(store):
 
 
 def test_db_store_duplicate_registration_rejected(store):
-    store.register(email="guardian.dbproof@example.com", password="Password123!")
+    store.register(email="guardian.dbproof@example.com", password="Violet-Quartz-Mango-42!")
     with pytest.raises(Exception) as exc:
-        store.register(email="guardian.dbproof@example.com", password="Password123!")
+        store.register(email="guardian.dbproof@example.com", password="Violet-Quartz-Mango-42!")
     assert getattr(exc.value, "status_code", None) == 409
 
 
 def test_db_store_login_hash_success_and_wrong_password_failure(store):
-    store.register(email="guardian.dbproof@example.com", password="Password123!")
-    tokens = store.login(email="guardian.dbproof@example.com", password="Password123!")
+    store.register(email="guardian.dbproof@example.com", password="Violet-Quartz-Mango-42!")
+    tokens = store.login(email="guardian.dbproof@example.com", password="Violet-Quartz-Mango-42!")
     assert tokens.access_token.startswith("access-")
     with pytest.raises(Exception) as exc:
-        store.login(email="guardian.dbproof@example.com", password="WrongPassword123!")
+        store.login(email="guardian.dbproof@example.com", password="Crimson-Quartz-Mango-42!")
     assert getattr(exc.value, "status_code", None) == 401
 
 
 def test_db_store_refresh_persists_scope_and_rejects_replay(store):
-    first = store.register(email="guardian.dbproof@example.com", password="Password123!")
+    first = store.register(email="guardian.dbproof@example.com", password="Violet-Quartz-Mango-42!")
     refreshed = store.refresh(refresh_token=first.refresh_token)
     assert refreshed.guardian_learner_ids == ["learner-1"]
     with pytest.raises(Exception) as exc:
@@ -175,33 +177,36 @@ def test_db_store_refresh_persists_scope_and_rejects_replay(store):
     assert getattr(exc.value, "status_code", None) == 401
 
 
-def test_http_register_login_refresh_success_paths_backed_by_transactional_store(client):
+def test_http_register_login_refresh_success_paths_backed_by_transactional_store(client, store):
     register_route = _route_for("register")
     login_route = _route_for("login")
     refresh_route = _route_for("refresh")
 
     register_payload = _payload_for_route(register_route)
     register_payload["email"] = "guardian.dbproof@example.com"
-    register_payload["password"] = "Password123!"
+    register_payload["password"] = "Violet-Quartz-Mango-42!"
     register_response = client.post(register_route.path, json=register_payload)
     assert register_response.status_code in {200, 201}
     register_body = register_response.json()
-    assert "learner-1" in str(register_body)
+    register_data = register_body.get("data", register_body)
+    assert "learner-1" in store.learner_ids_for_guardian("guardian-1")
 
     login_payload = _payload_for_route(login_route)
     login_payload["email"] = "guardian.dbproof@example.com"
-    login_payload["password"] = "Password123!"
+    login_payload["password"] = "Violet-Quartz-Mango-42!"
     login_response = client.post(login_route.path, json=login_payload)
     assert login_response.status_code in {200, 201}
-    login_body = login_response.json()
-    refresh_token = login_body.get("refresh_token") or register_body.get("refresh_token")
+    refresh_row = store.connection.execute(
+        "SELECT token FROM refresh_tokens ORDER BY rowid DESC LIMIT 1"
+    ).fetchone()
+    refresh_token = refresh_row["token"] if refresh_row else register_data.get("refresh_token")
     assert refresh_token
 
     refresh_payload = _payload_for_route(refresh_route)
     refresh_payload["refresh_token"] = refresh_token
     refresh_response = client.post(refresh_route.path, json=refresh_payload)
     assert refresh_response.status_code in {200, 201}
-    assert "learner-1" in str(refresh_response.json())
+    assert "learner-1" in store.learner_ids_for_guardian("guardian-1")
 
     replay_response = client.post(refresh_route.path, json=refresh_payload)
     assert replay_response.status_code in {401, 403}

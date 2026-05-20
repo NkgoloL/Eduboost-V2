@@ -1,18 +1,17 @@
-from __future__ import annotations
-from unittest.mock import AsyncMock
-import pytest
-pytestmark = pytest.mark.integration
-
 """HTTP contract tests for diagnostic items read authorization."""
+from __future__ import annotations
 
 from types import SimpleNamespace
 from typing import Any
+from unittest.mock import AsyncMock
 
 import pytest
 from fastapi.testclient import TestClient
 
 from app.api_v2 import app
 from app.api_v2_routers import diagnostics as diagnostics_router
+
+pytestmark = pytest.mark.integration
 
 
 class FakeConsentService:
@@ -79,8 +78,16 @@ def override_user(payload: dict[str, Any]):
 @pytest.fixture(autouse=True)
 def diagnostic_items_overrides(monkeypatch: pytest.MonkeyPatch):
     monkeypatch.setattr(diagnostics_router, "require_active_consent_for_current_user", AsyncMock(return_value=None))
-    monkeypatch.setattr(diagnostics_router, "LearnerRepository", FakeLearnerRepository)
-    monkeypatch.setattr(diagnostics_router, "IRTRepository", FakeIRTRepository)
+    monkeypatch.setattr(
+        diagnostics_router.diagnostic_repositories,
+        "learner",
+        lambda db: FakeLearnerRepository(db),
+    )
+    monkeypatch.setattr(
+        diagnostics_router.diagnostic_repositories,
+        "irt",
+        lambda db: FakeIRTRepository(db),
+    )
     monkeypatch.setattr(diagnostics_router, "_caps_validator", FakeCAPSValidator())
     app.dependency_overrides[diagnostics_router.get_db] = override_db
     yield

@@ -41,11 +41,6 @@ def extract_diagnostic_item_ids(payload: Any) -> list[Any]:
                     walk(item)
             return
 
-        if isinstance(value, Iterable) and not isinstance(value, (str, bytes, bytearray)):
-            for item in value:
-                walk(item)
-            return
-
         for attr in ("item_id", "itemId", "diagnostic_item_id", "question_id", "questionId"):
             item = getattr(value, attr, None)
             if item is not None:
@@ -55,6 +50,10 @@ def extract_diagnostic_item_ids(payload: Any) -> list[Any]:
             child = getattr(value, attr, None)
             if child is not None:
                 walk(child)
+
+        if isinstance(value, Iterable) and not isinstance(value, (str, bytes, bytearray)):
+            for item in value:
+                walk(item)
 
     walk(payload)
     return found
