@@ -1152,3 +1152,138 @@ make route-tx-popia-slice-test
 make backend-implementation-2111-2150-full-check
 ```
 
+## ROUTE-TX-POPIA-001R / Backend implementation 2111-2150R — POPIA route transaction no-false-closure repair
+
+Audit drivers:
+
+- `ROUTE-TX-POPIA-001` produced `route-popia-delegation-not-proven`.
+- That status must not be treated as a closed route transaction proof.
+- The next execution queue must repair POPIA route source delegation before moving to diagnostics.
+
+Commands:
+
+```bash
+make popia-route-tx-gap-plan
+make popia-route-tx-no-false-closure-check
+make popia-route-tx-gap-test
+make backend-implementation-2111-2150R-full-check
+```
+
+## ROUTE-TX-DIAG-001 / Backend implementation 2151-2190 — Diagnostics route transaction slice
+
+Audit drivers:
+
+- Diagnostics routes remain part of the production route transaction wiring queue.
+- Local source proof must be classified honestly as passing or not-proven.
+- Live DB rollback proof remains separate and cannot be replaced by local route-source scans.
+
+Commands:
+
+```bash
+make route-tx-diagnostics-slice-report
+make route-tx-diagnostics-slice-check
+make route-tx-diagnostics-slice-release-check
+make route-tx-diagnostics-slice-test
+make backend-implementation-2151-2190-full-check
+```
+
+## ROUTE-TX-ROLLUP-001 / Backend implementation 2191-2230 — Route transaction slice rollup
+
+Audit drivers:
+
+- Auth, POPIA, and diagnostics route transaction slices need a single reconciliation surface.
+- Local source proof and live DB evidence must remain distinct.
+- TX-ROUTE-001 must remain blocked until every route slice is complete.
+
+Commands:
+
+```bash
+make route-tx-slice-rollup
+make route-tx-slice-rollup-check
+make route-tx-slice-rollup-release-check
+make route-tx-slice-rollup-test
+make backend-implementation-2191-2230-full-check
+```
+
+## LIVE-DB-TX-EVID-001 / Backend implementation 2231-2270 — Live DB transaction evidence attachment support
+
+Audit drivers:
+
+- Auth, POPIA, and diagnostics route slices still need live DB rollback evidence.
+- Local route-source proof cannot substitute for live DB rollback proof.
+- Evidence attachment must regenerate route transaction rollup and release status.
+
+Commands:
+
+```bash
+make live-db-tx-evidence-templates
+make live-db-tx-evidence-status
+make live-db-tx-evidence-local-check
+make live-db-tx-evidence-release-check
+make live-db-tx-evidence-test
+make backend-implementation-2231-2270-full-check
+```
+
+Attachment command:
+
+```bash
+TX_SLICE="auth" \
+TX_EVIDENCE_URL="https://example.com/auth-live-db-proof" \
+TX_TEST_RESULT="passed" \
+TX_DATABASE="postgresql-staging" \
+TX_VERIFIED_BY="release-owner" \
+make live-db-tx-evidence-attach
+```
+
+## FINAL-GATE-REFRESH-001 / Backend implementation 2271-2310 — Final release gate refresh
+
+Audit drivers:
+
+- Evidence attachment scaffolds need one consolidated refresh surface.
+- Beta-critical blockers must remain visible after all generated reports are updated.
+- Release-mode checks must fail while generated beta decision is `NO-GO`.
+
+Commands:
+
+```bash
+make final-gate-refresh
+make final-gate-refresh-check
+make final-gate-refresh-release-check
+make final-gate-refresh-test
+make backend-implementation-2271-2310-full-check
+```
+
+## EVIDENCE-ATTACHMENT-RUNBOOK-001 / Backend implementation 2311-2350 — Operator runbook for attaching real release evidence
+
+Audit drivers:
+
+- Evidence scaffolds are now in place, but real evidence remains external.
+- Operators need one exact command surface for attaching CI, staging, approval, and live DB evidence.
+- The runbook must preserve NO-GO posture until real evidence and release-owner sign-off exist.
+
+Commands:
+
+```bash
+make evidence-attachment-runbook
+make evidence-attachment-runbook-check
+make evidence-attachment-runbook-test
+make backend-implementation-2311-2350-full-check
+```
+
+## BETA-NO-GO-HANDOFF-001 / Backend implementation 2351-2390 — Beta NO-GO handoff packet
+
+Audit drivers:
+
+- Evidence scaffolds and operator runbook are complete enough to switch from local scaffold work to real evidence capture.
+- Release owners need a compact NO-GO packet showing what remains.
+- Required external/live evidence items must not be locally closeable.
+
+Commands:
+
+```bash
+make beta-no-go-handoff-packet
+make beta-no-go-handoff-check
+make beta-no-go-handoff-test
+make backend-implementation-2351-2390-full-check
+```
+

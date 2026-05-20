@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-05-19T23:09:24Z",
+  "current_commit": "9e706b9e0b787b0e4fb7324c9beefeb3fe35d2a4",
+  "source_report": "docs/release/diagnostics_route_transaction_slice_report.json",
+  "source_local_status": "route-diagnostics-delegation-not-proven",
+  "source_live_db_status": "external-blocked",
+  "status": "blocked",
+  "action_count": 1,
+  "actions": [
+    {
+      "route_function": "submit_diagnostic",
+      "line": 81,
+      "current_status": "not-proven",
+      "blocker_reason": "no diagnostics service delegate call found",
+      "implementation_action": "Refactor diagnostics route `submit_diagnostic` to delegate mutation work to a diagnostics application/service boundary that owns the transaction.",
+      "verification_action": "Rerun `make route-tx-diagnostics-slice-check` and add a route-level negative test for `submit_diagnostic` before accepting local source proof.",
+      "can_be_closed_by_current_report": false
+    }
+  ],
+  "no_false_closure_rules": [
+    "Do not mark ROUTE-TX-DIAG-001 proven while local_status is route-diagnostics-delegation-not-proven.",
+    "Do not close live DB proof from local source reports.",
+    "Do not use generated gap plans as implementation evidence."
+  ]
+}

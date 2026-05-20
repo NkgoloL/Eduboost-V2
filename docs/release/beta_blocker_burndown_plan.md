@@ -1,10 +1,10 @@
 # Beta Blocker Burn-Down Plan
 
-Generated at: `2026-05-19T16:48:23Z`
-Commit: `5487eeab0a9accf09d52ccf127fffcdbc2a2e002`
+Generated at: `2026-05-20T07:01:11Z`
+Commit: `9e706b9e0b787b0e4fb7324c9beefeb3fe35d2a4`
 
 - Source decision: `NO-GO`
-- Source beta blocker count: `6`
+- Source beta blocker count: `7`
 - Burn-down status: `blocked`
 - Release mode allowed: `False`
 
@@ -18,6 +18,7 @@ Commit: `5487eeab0a9accf09d52ccf127fffcdbc2a2e002`
 | `P0` | `LEGAL-001` | `legal` | `legal` | `external-blocked` | False | Obtain POPIA/legal approval and replace pending metadata in legal_approval.md. | `make external-approval-release-check` |
 | `P0` | `SEC-001` | `security` | `security` | `external-blocked` | False | Obtain security approval or pen-test sign-off and replace pending metadata in security_approval.md. | `make external-approval-release-check` |
 | `P0` | `STAGING-001` | `staging` | `release` | `external-blocked` | False | Run staging acceptance, attach evidence URL, and replace pending metadata in staging_acceptance.md. | `make external-approval-release-check` |
+| `P1` | `POPIA-001` | `engineering` | `backend` | `not-proven` | True | Resolve registry blocker: proof_status is not-proven | `make release-go-no-go-local-check` |
 
 ## No false-closure rules
 

@@ -38,7 +38,7 @@ def main() -> int:
     }
     JSON_OUT.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     MD.write_text("\n".join([
-        "# CI Evidence", "", f"**Status:** {status_md}", "",
+        "# CI Evidence", "", f"Status: {status_md}", "", f"**Status:** {status_md}", "",
         "| Field | Value |", "|---|---|",
         f"| GitHub Actions run URL | {run_url or 'PENDING'} |",
         f"| Commit SHA | {commit_sha or 'PENDING'} |",

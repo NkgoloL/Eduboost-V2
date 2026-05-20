@@ -1,13 +1,13 @@
 # Backend Runtime Probe Report
 
-Generated at: `2026-05-18T23:22:04Z`
+Generated at: `2026-05-19T23:01:11Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| runtime probe fixtures | 0 | `/usr/bin/python3 scripts/check_backend_runtime_probe_fixtures.py` |
-| runtime compatibility | 0 | `/usr/bin/python3 scripts/check_backend_runtime_compatibility.py` |
-| execution packet | 0 | `/usr/bin/python3 scripts/check_backend_consolidation_execution_packet.py` |
-| no-op guard | 0 | `/usr/bin/python3 scripts/check_backend_consolidation_noop_guard.py` |
+| runtime probe fixtures | 0 | `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_probe_fixtures.py` |
+| runtime compatibility | 0 | `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_compatibility.py` |
+| execution packet | 0 | `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_backend_consolidation_execution_packet.py` |
+| no-op guard | 0 | `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_backend_consolidation_noop_guard.py` |
 
 ## Boundary
 
@@ -15,7 +15,7 @@ This report validates fixture-based compatibility probes only. It does not appro
 
 ## runtime probe fixtures
 
-Command: `/usr/bin/python3 scripts/check_backend_runtime_probe_fixtures.py`
+Command: `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_probe_fixtures.py`
 
 Return code: `0`
 
@@ -43,7 +43,7 @@ Deep-readiness fixture probe: 7 check(s)
 
 ## runtime compatibility
 
-Command: `/usr/bin/python3 scripts/check_backend_runtime_compatibility.py`
+Command: `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_compatibility.py`
 
 Return code: `0`
 
@@ -69,7 +69,7 @@ Deep-health compatibility surface
 
 ## execution packet
 
-Command: `/usr/bin/python3 scripts/check_backend_consolidation_execution_packet.py`
+Command: `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_backend_consolidation_execution_packet.py`
 
 Return code: `0`
 
@@ -100,7 +100,7 @@ Backend consolidation execution packet check
 
 ## no-op guard
 
-Command: `/usr/bin/python3 scripts/check_backend_consolidation_noop_guard.py`
+Command: `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_backend_consolidation_noop_guard.py`
 
 Return code: `0`
 

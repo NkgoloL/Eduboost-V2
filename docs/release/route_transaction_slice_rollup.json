@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-05-20T07:01:11Z",
+  "current_commit": "9e706b9e0b787b0e4fb7324c9beefeb3fe35d2a4",
+  "status": "blocked",
+  "total_selected_routes": 10,
+  "local_source_gap_count": 1,
+  "live_db_gap_count": 3,
+  "inventory_unproven_route_count": 15,
+  "slices": [
+    {
+      "id": "ROUTE-TX-AUTH-001",
+      "domain": "auth",
+      "report_file": "docs/release/auth_route_transaction_slice_report.json",
+      "exists": true,
+      "local_status": "route-auth-delegation-passing",
+      "live_db_status": "external-blocked",
+      "selected_route_count": 2,
+      "local_gap_count": 0,
+      "live_db_gap_count": 1,
+      "blockers": [
+        "live-db: Live DB evidence URL is pending",
+        "live-db: Test result is pending",
+        "live-db: Database is pending",
+        "live-db: Commit SHA is pending",
+        "live-db: Verified by is pending",
+        "live-db: Date verified is pending",
+        "live-db: Live DB evidence URL must be a URL",
+        "live-db: Test result must be passed/pass/green/ok",
+        "live-db: Commit SHA must look like a git SHA",
+        "live DB rollback evidence missing"
+      ],
+      "release_ready": false
+    },
+    {
+      "id": "ROUTE-TX-POPIA-001",
+      "domain": "popia",
+      "report_file": "docs/release/popia_route_transaction_slice_report.json",
+      "exists": true,
+      "local_status": "route-popia-delegation-passing",
+      "live_db_status": "external-blocked",
+      "selected_route_count": 5,
+      "local_gap_count": 0,
+      "live_db_gap_count": 1,
+      "blockers": [
+        "live-db: Live DB evidence URL is pending",
+        "live-db: Test result is pending",
+        "live-db: Database is pending",
+        "live-db: Commit SHA is pending",
+        "live-db: Verified by is pending",
+        "live-db: Date verified is pending",
+        "live-db: Live DB evidence URL must be a URL",
+        "live-db: Test result must be passed/pass/green/ok",
+        "live-db: Commit SHA must look like a git SHA",
+        "live DB rollback evidence missing"
+      ],
+      "release_ready": false
+    },
+    {
+      "id": "ROUTE-TX-DIAG-001",
+      "domain": "diagnostics",
+      "report_file": "docs/release/diagnostics_route_transaction_slice_report.json",
+      "exists": true,
+      "local_status": "route-diagnostics-delegation-not-proven",
+      "live_db_status": "external-blocked",
+      "selected_route_count": 3,
+      "local_gap_count": 1,
+      "live_db_gap_count": 1,
+      "blockers": [
+        "submit_diagnostic: no diagnostics service delegate call found",
+        "live-db: Live DB evidence URL is pending",
+        "live-db: Test result is pending",
+        "live-db: Database is pending",
+        "live-db: Commit SHA is pending",
+        "live-db: Verified by is pending",
+        "live-db: Date verified is pending",
+        "live-db: Live DB evidence URL must be a URL",
+        "live-db: Test result must be passed/pass/green/ok",
+        "live-db: Commit SHA must look like a git SHA",
+        "1 local route-source gap(s) remain",
+        "live DB rollback evidence missing"
+      ],
+      "release_ready": false
+    }
+  ],
+  "blockers": [
+    "ROUTE-TX-AUTH-001: not release-ready",
+    "ROUTE-TX-POPIA-001: not release-ready",
+    "ROUTE-TX-DIAG-001: not release-ready"
+  ],
+  "no_false_closure_rules": [
+    "Do not close TX-ROUTE-001 while any slice local source gap remains.",
+    "Do not close TX-ROUTE-001 while any live DB evidence gap remains.",
+    "Do not treat slice source scans as live transaction rollback proof.",
+    "Do not mark production route transaction proof complete from documentation rollups alone."
+  ]
+}

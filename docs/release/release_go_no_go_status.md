@@ -1,14 +1,14 @@
 # Release Go/No-Go Status
 
-Generated at: `2026-05-19T16:48:23Z`
-Commit: `5487eeab0a9accf09d52ccf127fffcdbc2a2e002`
+Generated at: `2026-05-20T07:01:11Z`
+Commit: `9e706b9e0b787b0e4fb7324c9beefeb3fe35d2a4`
 
 **Decision:** `NO-GO`
 
 | Metric | Count |
 |---|---:|
-| Beta blockers | 6 |
-| Engineering blockers | 0 |
+| Beta blockers | 7 |
+| Engineering blockers | 1 |
 | CI blockers | 1 |
 | External blockers | 6 |
 
@@ -23,7 +23,7 @@ Commit: `5487eeab0a9accf09d52ccf127fffcdbc2a2e002`
 | `DIAG-001` | `runtime-passing` | False | True | beta-blocking evidence is present | `docs/release/diagnostics_session_binding_repair_report.md` |
 | `DIAG-SCORE-001` | `integration-passing` | False | True | beta-blocking evidence is present | `docs/release/diagnostics_scoring_snapshot_repair_report.md` |
 | `LESSON-AUTH-001` | `runtime-passing` | False | True | beta-blocking evidence is present | `docs/release/lesson_authorization_hardening_report.md` |
-| `POPIA-001` | `integration-passing` | False | True | beta-blocking evidence is present | `docs/release/no_false_closure_status_after_1151_1190.md` |
+| `POPIA-001` | `not-proven` | False | False | proof_status is not-proven | `docs/release/no_false_closure_status_after_1151_1190.md` |
 | `CONTENT-001` | `external-blocked` | True | False | external approval remains incomplete | `docs/release/external_approvals/content_approval.md` |
 | `EXT-GATE-001` | `runtime-passing` | True | False | external approval remains incomplete | `docs/release/external_approval_status.md` |
 | `LEGAL-001` | `external-blocked` | True | False | external approval remains incomplete | `docs/release/external_approvals/legal_approval.md` |
@@ -32,6 +32,7 @@ Commit: `5487eeab0a9accf09d52ccf127fffcdbc2a2e002`
 
 ## Blockers
 
+- POPIA-001: proof_status is not-proven
 - CI-001: remote CI run URL not attached
 - LEGAL-001: external approval remains incomplete
 - SEC-001: external approval remains incomplete
@@ -43,6 +44,7 @@ Commit: `5487eeab0a9accf09d52ccf127fffcdbc2a2e002`
 
 - Attach a passing GitHub Actions run URL for CI-001.
 - Complete external approval files for legal, security, content, and staging gates.
+- Resolve remaining beta-blocking engineering evidence items.
 
 ## Interpretation
 

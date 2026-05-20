@@ -1,9 +1,13 @@
 {
-  "generated_at": "2026-05-18T23:22:22Z",
+  "generated_at": "2026-05-19T23:01:52Z",
   "rows": [
     {
       "path": "app/services/ai_safety.py",
       "classification": "unclassified"
+    },
+    {
+      "path": "app/services/arq_import_compat.py",
+      "classification": "migration_or_compat_helper"
     },
     {
       "path": "app/services/assessment_service_v2.py",
@@ -47,6 +51,10 @@
     },
     {
       "path": "app/services/auth_token_claims.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/auth_transactional_registration.py",
       "classification": "unclassified"
     },
     {
@@ -150,7 +158,15 @@
       "classification": "unclassified"
     },
     {
+      "path": "app/services/diagnostic_route_integrity.py",
+      "classification": "unclassified"
+    },
+    {
       "path": "app/services/diagnostic_safety.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/diagnostic_scoring_snapshot.py",
       "classification": "unclassified"
     },
     {
@@ -164,6 +180,10 @@
     {
       "path": "app/services/diagnostic_session_service.py",
       "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/diagnostic_transactional_response.py",
+      "classification": "unclassified"
     },
     {
       "path": "app/services/ether.py",
@@ -230,6 +250,10 @@
       "classification": "domain_or_cross_cutting_service"
     },
     {
+      "path": "app/services/lesson_transactional_completion.py",
+      "classification": "unclassified"
+    },
+    {
       "path": "app/services/llm/gateway.py",
       "classification": "unclassified"
     },
@@ -248,6 +272,10 @@
     {
       "path": "app/services/popia_service.py",
       "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/popia_transactional_lifecycle.py",
+      "classification": "unclassified"
     },
     {
       "path": "app/services/quota_service.py",

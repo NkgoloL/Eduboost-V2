@@ -1,10 +1,11 @@
 # Service Family Map
 
-Generated at: `2026-05-18T23:19:06Z`
+Generated at: `2026-05-19T22:55:21Z`
 
 | Domain | Path | Classification | Classes |
 |---|---|---|---|
 | other | `app/services/ai_safety.py` | unclassified | `ContentQualityScore` |
+| other | `app/services/arq_import_compat.py` | migration_or_compat_helper | `RedisSettings` |
 | assessment | `app/services/assessment_service_v2.py` | duplicate_domain_service | `AssessmentServiceV2` |
 | audit | `app/services/audit_canonicalization_registry.py` | unclassified | `AuditMigrationCandidate`, `MigrationStatus` |
 | audit | `app/services/audit_canonicalization_slice.py` | unclassified | `CanonicalAuditCommand` |
@@ -16,6 +17,7 @@ Generated at: `2026-05-18T23:19:06Z`
 | auth | `app/services/auth_runtime_boundary.py` | active_runtime_facade | `AuthRuntimeContext` |
 | auth | `app/services/auth_service.py` | duplicate_domain_service | `AuthError`, `AuthService`, `CompatSession`, `CompatSession`, `LoginResult`, `SignupResult` |
 | auth | `app/services/auth_token_claims.py` | unclassified | `AuthTokenClaims` |
+| auth | `app/services/auth_transactional_registration.py` | unclassified | `AuthRegistrationInput`, `AuthRegistrationResult`, `AuthRegistrationTransactionError`, `TransactionalAuthRegistrationService` |
 | other | `app/services/backend_adapter_wiring_service.py` | duplicate_domain_service | `AdapterWiringResult`, `InMemoryAuditSink` |
 | other | `app/services/backend_candidate_execution_harness.py` | unclassified | `HarnessResult` |
 | other | `app/services/backend_consolidation_runtime.py` | active_runtime_facade | `CanonicalAuditWrite`, `ConstructorProbeResult` |
@@ -41,10 +43,13 @@ Generated at: `2026-05-18T23:19:06Z`
 | other | `app/services/deep_readiness_runtime.py` | active_runtime_facade | `DeepReadinessCheckResult`, `DeepReadinessRuntimeResult` |
 | diagnostic | `app/services/diagnostic.py` | unclassified | - |
 | diagnostic | `app/services/diagnostic_data_integrity.py` | unclassified | `DiagnosticIntegrityError`, `DiagnosticSubmissionIntegrityResult` |
+| diagnostic | `app/services/diagnostic_route_integrity.py` | unclassified | - |
 | diagnostic | `app/services/diagnostic_safety.py` | unclassified | `DiagnosticItemValidation`, `DiagnosticItemValidator` |
+| diagnostic | `app/services/diagnostic_scoring_snapshot.py` | unclassified | - |
 | diagnostic | `app/services/diagnostic_service_v2.py` | duplicate_domain_service | `DiagnosticServiceV2` |
 | diagnostic | `app/services/diagnostic_session_integrity.py` | unclassified | `ServedDiagnosticItem` |
 | diagnostic | `app/services/diagnostic_session_service.py` | duplicate_domain_service | `DiagnosticSessionNotFoundError`, `DiagnosticSessionService` |
+| diagnostic | `app/services/diagnostic_transactional_response.py` | unclassified | `DiagnosticTransactionError`, `DiagnosticTransactionInput`, `DiagnosticTransactionResult`, `TransactionalDiagnosticResponseService` |
 | other | `app/services/ether.py` | unclassified | - |
 | other | `app/services/ether_service.py` | duplicate_domain_service | `OnboardingResponse` |
 | other | `app/services/executive.py` | unclassified | - |
@@ -61,11 +66,13 @@ Generated at: `2026-05-18T23:19:06Z`
 | auth | `app/services/lesson_authorization.py` | authorization_helper | - |
 | lesson | `app/services/lesson_context_builder.py` | unclassified | `LessonContext`, `LessonContextBuilder` |
 | lesson | `app/services/lesson_service_v2.py` | duplicate_domain_service | `LessonServiceV2` |
+| lesson | `app/services/lesson_transactional_completion.py` | unclassified | `LessonCompletionInput`, `LessonCompletionNotFoundError`, `LessonCompletionResult`, `LessonCompletionTransactionError`, `TransactionalLessonCompletionService` |
 | other | `app/services/llm/gateway.py` | unclassified | `CanonicalLLMGateway`, `DeterministicMockProvider`, `LLMGatewayMetadata`, `LLMGatewayRequest`, `LLMGatewayResponse`, `LLMProvider`, `ProviderHealth`, `ProviderPolicy`, `ProviderResult`, `TokenUsage` |
 | other | `app/services/parent_report_service_v2.py` | duplicate_domain_service | `ParentReportServiceV2` |
 | other | `app/services/pii_sweep.py` | unclassified | `PIIFinding`, `PIIScanner`, `PIISweepError`, `SweepResult` |
 | consent | `app/services/popia_consent_lifecycle_adapter.py` | unclassified | `POPIAConsentLifecycleAdapter` |
 | popia | `app/services/popia_service.py` | duplicate_domain_service | `POPIADataRightsService`, `RightsRequestStatus` |
+| popia | `app/services/popia_transactional_lifecycle.py` | unclassified | `POPIATransactionError`, `TransactionalPOPIAConsentLifecycleService`, `_NullAsyncContext` |
 | other | `app/services/quota_service.py` | duplicate_domain_service | `QuotaExceededError`, `QuotaService`, `SemanticCacheService` |
 | other | `app/services/rlhf_service.py` | duplicate_domain_service | `RLHFService` |
 | audit | `app/services/runtime_audit_facade.py` | active_runtime_facade | `AuditRecordRepository`, `RuntimeAuditRecord` |

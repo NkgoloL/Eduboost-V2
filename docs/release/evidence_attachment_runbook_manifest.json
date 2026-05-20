@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-05-19T23:05:53Z",
+  "current_commit": "9e706b9e0b787b0e4fb7324c9beefeb3fe35d2a4",
+  "runbook_file": "docs/release/evidence_attachment_runbook.md",
+  "command_count": 8,
+  "commands": [
+    {
+      "id": "CI-001",
+      "category": "ci",
+      "purpose": "Attach authoritative GitHub Actions run metadata.",
+      "command": "CI_RUN_URL=\"https://github.com/NkgoloL/Eduboost-V2/actions/runs/<run_id>\" CI_RESULT=\"passed\" CI_WORKFLOW=\"release\" CI_VERIFIED_BY=\"<name>\" make ci-run-evidence-attach",
+      "expected_until_evidence": "make ci-run-evidence-release-check fails until accepted CI metadata is recorded"
+    },
+    {
+      "id": "LEGAL-001",
+      "category": "approval",
+      "purpose": "Attach POPIA/legal approval metadata.",
+      "command": "APPROVAL_ID=\"LEGAL-001\" APPROVAL_DECISION=\"approved\" APPROVAL_APPROVER=\"<legal-owner>\" APPROVAL_EVIDENCE_URL=\"https://<approval-record>\" APPROVAL_SCOPE=\"beta release POPIA/legal review\" make approval-evidence-attach",
+      "expected_until_evidence": "make approval-evidence-release-check fails until all legal/security/content approvals are complete"
+    },
+    {
+      "id": "SEC-001",
+      "category": "approval",
+      "purpose": "Attach security approval metadata.",
+      "command": "APPROVAL_ID=\"SEC-001\" APPROVAL_DECISION=\"approved\" APPROVAL_APPROVER=\"<security-owner>\" APPROVAL_EVIDENCE_URL=\"https://<security-report>\" APPROVAL_SCOPE=\"beta release security review\" make approval-evidence-attach",
+      "expected_until_evidence": "make approval-evidence-release-check fails until all legal/security/content approvals are complete"
+    },
+    {
+      "id": "CONTENT-001",
+      "category": "approval",
+      "purpose": "Attach educator/content approval metadata.",
+      "command": "APPROVAL_ID=\"CONTENT-001\" APPROVAL_DECISION=\"approved\" APPROVAL_APPROVER=\"<content-owner>\" APPROVAL_EVIDENCE_URL=\"https://<content-signoff>\" APPROVAL_SCOPE=\"beta release content review\" make approval-evidence-attach",
+      "expected_until_evidence": "make approval-evidence-release-check fails until all legal/security/content approvals are complete"
+    },
+    {
+      "id": "STAGING-001",
+      "category": "staging",
+      "purpose": "Attach staging smoke evidence by editing docs/release/staging_smoke_evidence.md and rerunning checks.",
+      "command": "make staging-acceptance-status && make staging-acceptance-local-check",
+      "expected_until_evidence": "make staging-acceptance-release-check fails until staging evidence fields contain real accepted metadata"
+    },
+    {
+      "id": "ROUTE-TX-AUTH-001",
+      "category": "live-db",
+      "purpose": "Attach auth route live DB rollback evidence.",
+      "command": "TX_SLICE=\"auth\" TX_EVIDENCE_URL=\"https://<auth-live-db-proof>\" TX_TEST_RESULT=\"passed\" TX_DATABASE=\"postgresql-staging\" TX_VERIFIED_BY=\"<name>\" make live-db-tx-evidence-attach",
+      "expected_until_evidence": "make live-db-tx-evidence-release-check fails until all route transaction slices have accepted live DB evidence"
+    },
+    {
+      "id": "ROUTE-TX-POPIA-001",
+      "category": "live-db",
+      "purpose": "Attach POPIA route live DB rollback evidence.",
+      "command": "TX_SLICE=\"popia\" TX_EVIDENCE_URL=\"https://<popia-live-db-proof>\" TX_TEST_RESULT=\"passed\" TX_DATABASE=\"postgresql-staging\" TX_VERIFIED_BY=\"<name>\" make live-db-tx-evidence-attach",
+      "expected_until_evidence": "make live-db-tx-evidence-release-check fails until all route transaction slices have accepted live DB evidence"
+    },
+    {
+      "id": "ROUTE-TX-DIAG-001",
+      "category": "live-db",
+      "purpose": "Attach diagnostics route live DB rollback evidence.",
+      "command": "TX_SLICE=\"diagnostics\" TX_EVIDENCE_URL=\"https://<diagnostics-live-db-proof>\" TX_TEST_RESULT=\"passed\" TX_DATABASE=\"postgresql-staging\" TX_VERIFIED_BY=\"<name>\" make live-db-tx-evidence-attach",
+      "expected_until_evidence": "make live-db-tx-evidence-release-check fails until all route transaction slices have accepted live DB evidence"
+    }
+  ],
+  "release_mode_sequence": [
+    "make ci-run-evidence-release-check",
+    "make approval-evidence-release-check",
+    "make external-approval-release-check",
+    "make staging-acceptance-release-check",
+    "make live-db-tx-evidence-release-check",
+    "make route-tx-slice-rollup-release-check",
+    "make beta-blocker-burndown-release-check",
+    "make release-go-no-go-release-check",
+    "make final-gate-refresh-release-check"
+  ],
+  "no_false_closure_rules": [
+    "Do not replace real GitHub Actions evidence with local pytest or Make output.",
+    "Do not replace legal, security, or content sign-off with generated templates.",
+    "Do not replace staging acceptance with local smoke checks.",
+    "Do not replace live DB rollback proof with route-source scans.",
+    "Do not change the beta decision to GO without release-owner sign-off after all release-mode checks pass."
+  ]
+}

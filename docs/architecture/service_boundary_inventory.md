@@ -1,10 +1,11 @@
 # Service Boundary Inventory
 
-Generated at: `2026-05-18T23:22:22Z`
+Generated at: `2026-05-19T23:01:52Z`
 
 | Path | Classification |
 |---|---|
 | `app/services/ai_safety.py` | unclassified |
+| `app/services/arq_import_compat.py` | migration_or_compat_helper |
 | `app/services/assessment_service_v2.py` | domain_or_cross_cutting_service |
 | `app/services/audit_canonicalization_registry.py` | unclassified |
 | `app/services/audit_canonicalization_slice.py` | unclassified |
@@ -16,6 +17,7 @@ Generated at: `2026-05-18T23:22:22Z`
 | `app/services/auth_runtime_boundary.py` | active_runtime_facade |
 | `app/services/auth_service.py` | domain_or_cross_cutting_service |
 | `app/services/auth_token_claims.py` | unclassified |
+| `app/services/auth_transactional_registration.py` | unclassified |
 | `app/services/backend_adapter_wiring_service.py` | domain_or_cross_cutting_service |
 | `app/services/backend_candidate_execution_harness.py` | unclassified |
 | `app/services/backend_consolidation_runtime.py` | active_runtime_facade |
@@ -41,10 +43,13 @@ Generated at: `2026-05-18T23:22:22Z`
 | `app/services/deep_readiness_runtime.py` | active_runtime_facade |
 | `app/services/diagnostic.py` | unclassified |
 | `app/services/diagnostic_data_integrity.py` | unclassified |
+| `app/services/diagnostic_route_integrity.py` | unclassified |
 | `app/services/diagnostic_safety.py` | unclassified |
+| `app/services/diagnostic_scoring_snapshot.py` | unclassified |
 | `app/services/diagnostic_service_v2.py` | domain_or_cross_cutting_service |
 | `app/services/diagnostic_session_integrity.py` | unclassified |
 | `app/services/diagnostic_session_service.py` | domain_or_cross_cutting_service |
+| `app/services/diagnostic_transactional_response.py` | unclassified |
 | `app/services/ether.py` | unclassified |
 | `app/services/ether_service.py` | domain_or_cross_cutting_service |
 | `app/services/executive.py` | unclassified |
@@ -61,11 +66,13 @@ Generated at: `2026-05-18T23:22:22Z`
 | `app/services/lesson_authorization.py` | unclassified |
 | `app/services/lesson_context_builder.py` | unclassified |
 | `app/services/lesson_service_v2.py` | domain_or_cross_cutting_service |
+| `app/services/lesson_transactional_completion.py` | unclassified |
 | `app/services/llm/gateway.py` | unclassified |
 | `app/services/parent_report_service_v2.py` | domain_or_cross_cutting_service |
 | `app/services/pii_sweep.py` | unclassified |
 | `app/services/popia_consent_lifecycle_adapter.py` | unclassified |
 | `app/services/popia_service.py` | domain_or_cross_cutting_service |
+| `app/services/popia_transactional_lifecycle.py` | unclassified |
 | `app/services/quota_service.py` | domain_or_cross_cutting_service |
 | `app/services/rlhf_service.py` | domain_or_cross_cutting_service |
 | `app/services/runtime_audit_facade.py` | active_runtime_facade |

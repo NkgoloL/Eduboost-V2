@@ -2052,3 +2052,157 @@ route-tx-popia-slice-test:
 backend-implementation-2111-2150-full-check: route-tx-popia-slice-report route-tx-popia-slice-check route-tx-popia-slice-test
 	python3 -m compileall -q scripts tests
 	python3 -m ruff check scripts/route_tx_popia_slice.py scripts/patch_route_tx_popia_slice_registry.py scripts/check_route_tx_popia_slice.py tests/unit/test_route_tx_popia_slice.py --select F821,F401,F811,E402
+
+.PHONY: popia-route-tx-gap-plan popia-route-tx-not-proven-registry-patch popia-route-tx-no-false-closure-check popia-route-tx-gap-test backend-implementation-2111-2150R-full-check
+
+popia-route-tx-gap-plan:
+	PYTHONPATH=. python3 -c "from scripts.popia_route_tx_gap_plan import write_plan; p = write_plan(); print(p.status)"
+
+popia-route-tx-not-proven-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_popia_route_tx_not_proven_registry.py
+
+popia-route-tx-no-false-closure-check: popia-route-tx-not-proven-registry-patch
+	PYTHONPATH=. python3 scripts/check_popia_route_tx_no_false_closure.py
+
+popia-route-tx-gap-test:
+	pytest -c pytest.ini tests/unit/test_popia_route_tx_gap_plan.py -q --no-cov --tb=short
+
+backend-implementation-2111-2150R-full-check: popia-route-tx-gap-plan popia-route-tx-no-false-closure-check popia-route-tx-gap-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/popia_route_tx_gap_plan.py scripts/check_popia_route_tx_no_false_closure.py scripts/patch_popia_route_tx_not_proven_registry.py tests/unit/test_popia_route_tx_gap_plan.py --select F821,F401,F811,E402
+
+.PHONY: route-tx-diagnostics-slice-report route-tx-diagnostics-slice-registry-patch route-tx-diagnostics-slice-check route-tx-diagnostics-slice-release-check route-tx-diagnostics-slice-test backend-implementation-2151-2190-full-check
+
+route-tx-diagnostics-slice-report:
+	PYTHONPATH=. python3 -c "from scripts.route_tx_diagnostics_slice import write_report, write_gap_plan; r = write_report(); p = write_gap_plan(); print(r.local_status); print(p.status)"
+
+route-tx-diagnostics-slice-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_route_tx_diagnostics_slice_registry.py
+
+route-tx-diagnostics-slice-check: route-tx-diagnostics-slice-registry-patch
+	PYTHONPATH=. python3 scripts/check_route_tx_diagnostics_slice.py
+
+route-tx-diagnostics-slice-release-check:
+	PYTHONPATH=. python3 scripts/check_route_tx_diagnostics_slice.py --release
+
+route-tx-diagnostics-slice-test:
+	pytest -c pytest.ini tests/unit/test_route_tx_diagnostics_slice.py -q --no-cov --tb=short
+
+backend-implementation-2151-2190-full-check: route-tx-diagnostics-slice-report route-tx-diagnostics-slice-check route-tx-diagnostics-slice-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/route_tx_diagnostics_slice.py scripts/patch_route_tx_diagnostics_slice_registry.py scripts/check_route_tx_diagnostics_slice.py tests/unit/test_route_tx_diagnostics_slice.py --select F821,F401,F811,E402
+
+.PHONY: route-tx-slice-rollup route-tx-slice-rollup-registry-patch route-tx-slice-rollup-check route-tx-slice-rollup-release-check route-tx-slice-rollup-test backend-implementation-2191-2230-full-check
+
+route-tx-slice-rollup:
+	PYTHONPATH=. python3 -c "from scripts.route_tx_slice_rollup import write_rollup; r = write_rollup(); print(r.status)"
+
+route-tx-slice-rollup-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_route_tx_slice_rollup_registry.py
+
+route-tx-slice-rollup-check: route-tx-slice-rollup-registry-patch
+	PYTHONPATH=. python3 scripts/check_route_tx_slice_rollup.py
+
+route-tx-slice-rollup-release-check:
+	PYTHONPATH=. python3 scripts/check_route_tx_slice_rollup.py --release
+
+route-tx-slice-rollup-test:
+	pytest -c pytest.ini tests/unit/test_route_tx_slice_rollup.py -q --no-cov --tb=short
+
+backend-implementation-2191-2230-full-check: route-tx-slice-rollup route-tx-slice-rollup-check route-tx-slice-rollup-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/route_tx_slice_rollup.py scripts/patch_route_tx_slice_rollup_registry.py scripts/check_route_tx_slice_rollup.py tests/unit/test_route_tx_slice_rollup.py --select F821,F401,F811,E402
+
+.PHONY: live-db-tx-evidence-templates live-db-tx-evidence-status live-db-tx-evidence-registry-patch live-db-tx-evidence-local-check live-db-tx-evidence-release-check live-db-tx-evidence-test live-db-tx-evidence-attach backend-implementation-2231-2270-full-check
+
+live-db-tx-evidence-templates:
+	PYTHONPATH=. python3 scripts/live_db_tx_evidence.py --templates
+
+live-db-tx-evidence-status:
+	PYTHONPATH=. python3 scripts/live_db_tx_evidence.py --status
+
+live-db-tx-evidence-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_live_db_tx_evidence_registry.py
+
+live-db-tx-evidence-local-check: live-db-tx-evidence-registry-patch
+	PYTHONPATH=. python3 scripts/check_live_db_tx_evidence.py
+
+live-db-tx-evidence-release-check:
+	PYTHONPATH=. python3 scripts/check_live_db_tx_evidence.py --release
+
+live-db-tx-evidence-test:
+	pytest -c pytest.ini tests/unit/test_live_db_tx_evidence.py -q --no-cov --tb=short
+
+live-db-tx-evidence-attach:
+	@test -n "$$TX_SLICE" || (echo "TX_SLICE is required: auth, popia, or diagnostics"; exit 1)
+	@test -n "$$TX_EVIDENCE_URL" || (echo "TX_EVIDENCE_URL is required"; exit 1)
+	@test -n "$$TX_TEST_RESULT" || (echo "TX_TEST_RESULT is required"; exit 1)
+	@test -n "$$TX_DATABASE" || (echo "TX_DATABASE is required"; exit 1)
+	@test -n "$$TX_VERIFIED_BY" || (echo "TX_VERIFIED_BY is required"; exit 1)
+	PYTHONPATH=. python3 scripts/live_db_tx_evidence.py --attach "$$TX_SLICE" --evidence-url "$$TX_EVIDENCE_URL" --test-result "$$TX_TEST_RESULT" --database "$$TX_DATABASE" --commit-sha "$${TX_COMMIT_SHA:-$$(git rev-parse HEAD)}" --verified-by "$$TX_VERIFIED_BY" --date-verified "$${TX_DATE_VERIFIED:-$$(date -u +%Y-%m-%d)}" --notes "$${TX_NOTES:-attached through LIVE-DB-TX-EVID-001 helper}"
+	PYTHONPATH=. python3 scripts/patch_live_db_tx_evidence_registry.py
+	@if [ -f scripts/route_tx_slice_rollup.py ]; then PYTHONPATH=. python3 -c "from scripts.route_tx_slice_rollup import write_rollup; r = write_rollup(); print(r.status)"; fi
+	@if [ -f scripts/release_go_no_go.py ]; then PYTHONPATH=. python3 -c "from scripts.release_go_no_go import write_status; s = write_status(); print(s.decision)"; fi
+	@if [ -f scripts/beta_blocker_burndown.py ]; then PYTHONPATH=. python3 -c "from scripts.beta_blocker_burndown import write_plan; p = write_plan(); print(p.burn_down_status)"; fi
+
+backend-implementation-2231-2270-full-check: live-db-tx-evidence-templates live-db-tx-evidence-status live-db-tx-evidence-local-check live-db-tx-evidence-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/live_db_tx_evidence.py scripts/patch_live_db_tx_evidence_registry.py scripts/check_live_db_tx_evidence.py tests/unit/test_live_db_tx_evidence.py --select F821,F401,F811,E402
+
+.PHONY: final-gate-refresh final-gate-refresh-registry-patch final-gate-refresh-check final-gate-refresh-release-check final-gate-refresh-test backend-implementation-2271-2310-full-check
+
+final-gate-refresh:
+	PYTHONPATH=. python3 -c "from scripts.final_gate_refresh import write_refresh; r = write_refresh(); print(r.beta_decision)"
+
+final-gate-refresh-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_final_gate_refresh_registry.py
+
+final-gate-refresh-check: final-gate-refresh-registry-patch
+	PYTHONPATH=. python3 scripts/check_final_gate_refresh.py
+
+final-gate-refresh-release-check:
+	PYTHONPATH=. python3 scripts/check_final_gate_refresh.py --release
+
+final-gate-refresh-test:
+	pytest -c pytest.ini tests/unit/test_final_gate_refresh.py -q --no-cov --tb=short
+
+backend-implementation-2271-2310-full-check: final-gate-refresh final-gate-refresh-check final-gate-refresh-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/final_gate_refresh.py scripts/patch_final_gate_refresh_registry.py scripts/check_final_gate_refresh.py tests/unit/test_final_gate_refresh.py --select F821,F401,F811,E402
+
+.PHONY: evidence-attachment-runbook evidence-attachment-runbook-registry-patch evidence-attachment-runbook-check evidence-attachment-runbook-test backend-implementation-2311-2350-full-check
+
+evidence-attachment-runbook:
+	PYTHONPATH=. python3 -c "from scripts.evidence_attachment_runbook import write_runbook; r = write_runbook(); print(r.command_count)"
+
+evidence-attachment-runbook-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_evidence_attachment_runbook_registry.py
+
+evidence-attachment-runbook-check: evidence-attachment-runbook-registry-patch
+	PYTHONPATH=. python3 scripts/check_evidence_attachment_runbook.py
+
+evidence-attachment-runbook-test:
+	pytest -c pytest.ini tests/unit/test_evidence_attachment_runbook.py -q --no-cov --tb=short
+
+backend-implementation-2311-2350-full-check: evidence-attachment-runbook evidence-attachment-runbook-check evidence-attachment-runbook-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/evidence_attachment_runbook.py scripts/check_evidence_attachment_runbook.py scripts/patch_evidence_attachment_runbook_registry.py tests/unit/test_evidence_attachment_runbook.py --select F821,F401,F811,E402
+
+.PHONY: beta-no-go-handoff-packet beta-no-go-handoff-registry-patch beta-no-go-handoff-check beta-no-go-handoff-test backend-implementation-2351-2390-full-check
+
+beta-no-go-handoff-packet:
+	PYTHONPATH=. python3 -c "from scripts.beta_no_go_handoff_packet import write_packet; p = write_packet(); print(p.handoff_status)"
+
+beta-no-go-handoff-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_beta_no_go_handoff_registry.py
+
+beta-no-go-handoff-check: beta-no-go-handoff-registry-patch
+	PYTHONPATH=. python3 scripts/check_beta_no_go_handoff_packet.py
+
+beta-no-go-handoff-test:
+	pytest -c pytest.ini tests/unit/test_beta_no_go_handoff_packet.py -q --no-cov --tb=short
+
+backend-implementation-2351-2390-full-check: beta-no-go-handoff-packet beta-no-go-handoff-check beta-no-go-handoff-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/beta_no_go_handoff_packet.py scripts/check_beta_no_go_handoff_packet.py scripts/patch_beta_no_go_handoff_registry.py tests/unit/test_beta_no_go_handoff_packet.py --select F821,F401,F811,E402
+

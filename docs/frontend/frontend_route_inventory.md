@@ -20,11 +20,20 @@ This inventory records frontend route, page, and journey-related surfaces.
 | --- | --- | --- |
 | `app/frontend/.next/server/interception-route-rewrite-manifest.js` | `Route` | `_none_` |
 | `app/frontend/.next/static/chunks/polyfills.js` | `path:, href=` | `parent` |
+| `app/frontend/__tests__/BetaAndFeedback.test.tsx` | `Link` | `_none_` |
 | `app/frontend/__tests__/EntryAndPortal.test.tsx` | `_none_` | `learner, parent, dashboard, lesson, progress, onboarding` |
+| `app/frontend/__tests__/EntryScreens.test.tsx` | `_none_` | `learner, parent, onboarding` |
 | `app/frontend/__tests__/FeaturePanels.test.tsx` | `_none_` | `learner, dashboard, lesson, diagnostic` |
+| `app/frontend/__tests__/InteractiveDiagnostic.test.tsx` | `_none_` | `learner, diagnostic, assessment` |
 | `app/frontend/__tests__/InteractiveDiagnosticFlow.test.tsx` | `_none_` | `learner, diagnostic, assessment` |
 | `app/frontend/__tests__/LegacyApiHelpers.test.ts` | `_none_` | `learner, diagnostic` |
+| `app/frontend/__tests__/ParentDashboard.test.tsx` | `_none_` | `learner, parent, dashboard, lesson, progress` |
+| `app/frontend/__tests__/RouteGuard.test.tsx` | `Route` | `learner, parent` |
 | `app/frontend/__tests__/RoutingIntegration.test.tsx` | `Route, Routes` | `learner, dashboard, lesson, diagnostic, assessment` |
+| `app/frontend/__tests__/client.api.test.ts` | `_none_` | `learner, lesson` |
+| `app/frontend/__tests__/offlineSync.test.ts` | `_none_` | `learner, lesson` |
+| `app/frontend/__tests__/services.coverage.test.ts` | `_none_` | `learner, parent, dashboard, lesson, diagnostic, consent` |
+| `app/frontend/__tests__/services.smoke.test.ts` | `_none_` | `learner, lesson, diagnostic, consent` |
 | `app/frontend/__tests__/setup.ts` | `_none_` | `diagnostic, progress` |
 | `app/frontend/coverage/prettify.js` | `_none_` | `parent` |
 | `app/frontend/coverage/sorter.js` | `_none_` | `parent` |

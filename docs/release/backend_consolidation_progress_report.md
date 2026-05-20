@@ -1,13 +1,13 @@
 # Backend Consolidation Progress Report
 
-Generated at: `2026-05-18T23:23:30Z`
+Generated at: `2026-05-19T23:04:52Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| consent runtime compatibility | 0 | `/usr/bin/python3 scripts/check_consent_runtime_compatibility_slice.py` |
-| audit registry | 0 | `/usr/bin/python3 scripts/check_audit_canonicalization_registry.py` |
-| implementation foundation | 0 | `/usr/bin/python3 scripts/check_backend_consolidation_implementation_foundation.py` |
-| schema/deep/audit slice | 0 | `/usr/bin/python3 scripts/check_audit_canonicalization_slice.py` |
+| consent runtime compatibility | 0 | `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_consent_runtime_compatibility_slice.py` |
+| audit registry | 0 | `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_audit_canonicalization_registry.py` |
+| implementation foundation | 0 | `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_backend_consolidation_implementation_foundation.py` |
+| schema/deep/audit slice | 0 | `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_audit_canonicalization_slice.py` |
 
 ## Boundary
 
@@ -15,7 +15,7 @@ This report tracks non-destructive implementation progress only.
 
 ## consent runtime compatibility
 
-Command: `/usr/bin/python3 scripts/check_consent_runtime_compatibility_slice.py`
+Command: `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_consent_runtime_compatibility_slice.py`
 
 Return code: `0`
 
@@ -31,7 +31,7 @@ Consent runtime compatibility slice check
 
 ## audit registry
 
-Command: `/usr/bin/python3 scripts/check_audit_canonicalization_registry.py`
+Command: `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_audit_canonicalization_registry.py`
 
 Return code: `0`
 
@@ -46,7 +46,7 @@ Audit canonicalization migration registry check
 
 ## implementation foundation
 
-Command: `/usr/bin/python3 scripts/check_backend_consolidation_implementation_foundation.py`
+Command: `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_backend_consolidation_implementation_foundation.py`
 
 Return code: `0`
 
@@ -71,7 +71,7 @@ Backend consolidation implementation foundation check
 
 ## schema/deep/audit slice
 
-Command: `/usr/bin/python3 scripts/check_audit_canonicalization_slice.py`
+Command: `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_audit_canonicalization_slice.py`
 
 Return code: `0`
 

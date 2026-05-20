@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-19T17:34:27Z",
-  "current_commit": "688de8837d4e7991aa0dedf0b249fca78739a98b",
+  "generated_at": "2026-05-19T23:09:26Z",
+  "current_commit": "9e706b9e0b787b0e4fb7324c9beefeb3fe35d2a4",
   "route_file": "app/api_v2_routers/popia.py",
-  "local_status": "route-popia-delegation-not-proven",
+  "local_status": "route-popia-delegation-passing",
   "live_db_status": "external-blocked",
   "selected_route_count": 5,
   "transaction_service_markers_found": [
@@ -15,54 +15,59 @@
       "route_function": "grant_consent",
       "line": 102,
       "selected_from_inventory": true,
-      "service_delegate_calls": [],
+      "service_delegate_calls": [
+        "consent_svc.grant"
+      ],
       "direct_db_mutations": [],
-      "route_source_status": "not-proven",
-      "reason": "no POPIA service delegate call found"
+      "route_source_status": "route-delegates-to-service-boundary",
+      "reason": "route delegates to service boundary and has no direct db mutation calls"
     },
     {
       "route_function": "deny_consent",
       "line": 120,
       "selected_from_inventory": true,
-      "service_delegate_calls": [],
+      "service_delegate_calls": [
+        "consent_svc.deny"
+      ],
       "direct_db_mutations": [],
-      "route_source_status": "not-proven",
-      "reason": "no POPIA service delegate call found"
+      "route_source_status": "route-delegates-to-service-boundary",
+      "reason": "route delegates to service boundary and has no direct db mutation calls"
     },
     {
       "route_function": "withdraw_consent",
       "line": 138,
       "selected_from_inventory": true,
-      "service_delegate_calls": [],
+      "service_delegate_calls": [
+        "consent_svc.withdraw"
+      ],
       "direct_db_mutations": [],
-      "route_source_status": "not-proven",
-      "reason": "no POPIA service delegate call found"
+      "route_source_status": "route-delegates-to-service-boundary",
+      "reason": "route delegates to service boundary and has no direct db mutation calls"
     },
     {
       "route_function": "renew_consent",
       "line": 153,
       "selected_from_inventory": true,
-      "service_delegate_calls": [],
+      "service_delegate_calls": [
+        "consent_svc.renew"
+      ],
       "direct_db_mutations": [],
-      "route_source_status": "not-proven",
-      "reason": "no POPIA service delegate call found"
+      "route_source_status": "route-delegates-to-service-boundary",
+      "reason": "route delegates to service boundary and has no direct db mutation calls"
     },
     {
       "route_function": "create_export_request",
       "line": 173,
       "selected_from_inventory": true,
-      "service_delegate_calls": [],
+      "service_delegate_calls": [
+        "dsr_svc.build_learner_export"
+      ],
       "direct_db_mutations": [],
-      "route_source_status": "not-proven",
-      "reason": "no POPIA service delegate call found"
+      "route_source_status": "route-delegates-to-service-boundary",
+      "reason": "route delegates to service boundary and has no direct db mutation calls"
     }
   ],
   "blockers": [
-    "grant_consent: no POPIA service delegate call found",
-    "deny_consent: no POPIA service delegate call found",
-    "withdraw_consent: no POPIA service delegate call found",
-    "renew_consent: no POPIA service delegate call found",
-    "create_export_request: no POPIA service delegate call found",
     "live-db: Live DB evidence URL is pending",
     "live-db: Test result is pending",
     "live-db: Database is pending",

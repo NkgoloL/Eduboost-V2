@@ -1,7 +1,11 @@
 {
-  "generated_at": "2026-05-18T23:24:25Z",
-  "status": "pass",
-  "blockers": [],
+  "generated_at": "2026-05-19T23:08:51Z",
+  "status": "blocked_unpinned_dependencies",
+  "blockers": [
+    "requirements.txt:4: arq>=0.25.0",
+    "requirements/base.txt:385: arq>=0.25.0",
+    "requirements/dev.txt:497: arq>=0.25.0"
+  ],
   "rows": [
     {
       "file": "requirements.txt",
@@ -14,6 +18,18 @@
       "line": 2,
       "classification": "ignored",
       "text": "-r requirements/base.txt"
+    },
+    {
+      "file": "requirements.txt",
+      "line": 3,
+      "classification": "ignored",
+      "text": "# ARQ worker dependency \u2014 ARQ-001 / code_1111_1150"
+    },
+    {
+      "file": "requirements.txt",
+      "line": 4,
+      "classification": "range_or_unpinned",
+      "text": "arq>=0.25.0"
     },
     {
       "file": "requirements/base.txt",
@@ -2312,6 +2328,18 @@
       "line": 383,
       "classification": "ignored",
       "text": "# via deprecated"
+    },
+    {
+      "file": "requirements/base.txt",
+      "line": 384,
+      "classification": "ignored",
+      "text": "# ARQ worker dependency \u2014 ARQ-001 / code_1111_1150"
+    },
+    {
+      "file": "requirements/base.txt",
+      "line": 385,
+      "classification": "range_or_unpinned",
+      "text": "arq>=0.25.0"
     },
     {
       "file": "requirements/dev.txt",
@@ -5282,6 +5310,18 @@
       "line": 495,
       "classification": "ignored",
       "text": "# via -r requirements/dev.in"
+    },
+    {
+      "file": "requirements/dev.txt",
+      "line": 496,
+      "classification": "ignored",
+      "text": "# ARQ worker dependency \u2014 ARQ-001 / code_1111_1150"
+    },
+    {
+      "file": "requirements/dev.txt",
+      "line": 497,
+      "classification": "range_or_unpinned",
+      "text": "arq>=0.25.0"
     }
   ]
 }

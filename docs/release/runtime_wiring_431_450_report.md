@@ -1,13 +1,13 @@
 # Runtime Wiring 431-450 Report
 
-Generated at: `2026-05-18T23:23:26Z`
+Generated at: `2026-05-19T23:04:44Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| consent/deep readiness wiring | 0 | `/usr/bin/python3 scripts/check_first_consent_and_deep_readiness_runtime_wiring.py` |
-| destructive-action scan | 0 | `/usr/bin/python3 scripts/check_runtime_wiring_no_destructive_actions.py` |
-| first audit runtime wiring | 0 | `/usr/bin/python3 scripts/check_first_audit_runtime_wiring.py` |
-| runtime enablement | 0 | `/usr/bin/python3 scripts/check_backend_runtime_enablement_guard.py` |
+| consent/deep readiness wiring | 0 | `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_first_consent_and_deep_readiness_runtime_wiring.py` |
+| destructive-action scan | 0 | `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_runtime_wiring_no_destructive_actions.py` |
+| first audit runtime wiring | 0 | `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_first_audit_runtime_wiring.py` |
+| runtime enablement | 0 | `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_enablement_guard.py` |
 
 ## Boundary
 
@@ -15,7 +15,7 @@ This report covers non-destructive consent/deep-readiness wiring helpers only.
 
 ## consent/deep readiness wiring
 
-Command: `/usr/bin/python3 scripts/check_first_consent_and_deep_readiness_runtime_wiring.py`
+Command: `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_first_consent_and_deep_readiness_runtime_wiring.py`
 
 Return code: `0`
 
@@ -36,7 +36,7 @@ First consent and deep-readiness runtime wiring check
 
 ## destructive-action scan
 
-Command: `/usr/bin/python3 scripts/check_runtime_wiring_no_destructive_actions.py`
+Command: `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_runtime_wiring_no_destructive_actions.py`
 
 Return code: `0`
 
@@ -52,7 +52,7 @@ Runtime wiring destructive-action scan
 
 ## first audit runtime wiring
 
-Command: `/usr/bin/python3 scripts/check_first_audit_runtime_wiring.py`
+Command: `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_first_audit_runtime_wiring.py`
 
 Return code: `0`
 
@@ -70,7 +70,7 @@ First audit runtime wiring check
 
 ## runtime enablement
 
-Command: `/usr/bin/python3 scripts/check_backend_runtime_enablement_guard.py`
+Command: `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_enablement_guard.py`
 
 Return code: `0`
 

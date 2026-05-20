@@ -80,6 +80,8 @@ def evidence_template() -> str:
 
 **Item:** CI-001
 
+Status: pending remote CI verification
+
 **Status:** external-blocked
 
 This file must be updated with an actual GitHub Actions run URL before CI-001 can move beyond `external-blocked`.
@@ -101,6 +103,8 @@ This file must be updated with an actual GitHub Actions run URL before CI-001 ca
 **Verified by:** pending
 
 **Date verified:** pending
+
+**Route alias policy:** pending
 
 **Notes:** pending
 
@@ -193,6 +197,8 @@ def render_evidence(evidence: CIRunEvidence, status: str) -> str:
 
 **Item:** CI-001
 
+Status: {'accepted' if status == 'ci-evidence-accepted' else 'pending remote CI verification'}
+
 **Status:** {'accepted' if status == 'ci-evidence-accepted' else 'external-blocked'}
 
 ## Required evidence
@@ -212,6 +218,8 @@ def render_evidence(evidence: CIRunEvidence, status: str) -> str:
 **Verified by:** {evidence.verified_by}
 
 **Date verified:** {evidence.date_verified}
+
+**Route alias policy:** pending
 
 **Notes:** {evidence.notes or 'none'}
 

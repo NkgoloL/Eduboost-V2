@@ -1,6 +1,6 @@
 # Diagnostics Session Binding Repair Report
 
-Generated at: `2026-05-19T11:16:59Z`
+Generated at: `2026-05-19T19:36:16Z`
 
 **Status:** implemented at route-runtime level
 

@@ -1,0 +1,99 @@
+{
+  "generated_at": "2026-05-20T07:01:11Z",
+  "current_commit": "9e706b9e0b787b0e4fb7324c9beefeb3fe35d2a4",
+  "status": "external-blocked",
+  "records": [
+    {
+      "evidence": {
+        "slice": "auth",
+        "item": "ROUTE-TX-AUTH-001",
+        "route_slice": "auth/register and auth/dev-session",
+        "live_db_evidence_url": "pending",
+        "test_result": "pending",
+        "database": "pending",
+        "commit_sha": "pending",
+        "verified_by": "pending",
+        "date_verified": "pending",
+        "notes": "",
+        "evidence_file": "docs/release/auth_route_transaction_live_db_evidence.md"
+      },
+      "status": "external-blocked",
+      "blockers": [
+        "live DB evidence URL is pending or invalid",
+        "test result must be pass/passed/success/successful/green/ok",
+        "database is pending",
+        "commit SHA is pending or invalid",
+        "verified by is pending",
+        "date verified is pending"
+      ]
+    },
+    {
+      "evidence": {
+        "slice": "popia",
+        "item": "ROUTE-TX-POPIA-001",
+        "route_slice": "selected POPIA mutation routes",
+        "live_db_evidence_url": "pending",
+        "test_result": "pending",
+        "database": "pending",
+        "commit_sha": "pending",
+        "verified_by": "pending",
+        "date_verified": "pending",
+        "notes": "",
+        "evidence_file": "docs/release/popia_route_transaction_live_db_evidence.md"
+      },
+      "status": "external-blocked",
+      "blockers": [
+        "live DB evidence URL is pending or invalid",
+        "test result must be pass/passed/success/successful/green/ok",
+        "database is pending",
+        "commit SHA is pending or invalid",
+        "verified by is pending",
+        "date verified is pending"
+      ]
+    },
+    {
+      "evidence": {
+        "slice": "diagnostics",
+        "item": "ROUTE-TX-DIAG-001",
+        "route_slice": "selected diagnostics mutation routes",
+        "live_db_evidence_url": "pending",
+        "test_result": "pending",
+        "database": "pending",
+        "commit_sha": "pending",
+        "verified_by": "pending",
+        "date_verified": "pending",
+        "notes": "",
+        "evidence_file": "docs/release/diagnostics_route_transaction_live_db_evidence.md"
+      },
+      "status": "external-blocked",
+      "blockers": [
+        "live DB evidence URL is pending or invalid",
+        "test result must be pass/passed/success/successful/green/ok",
+        "database is pending",
+        "commit SHA is pending or invalid",
+        "verified by is pending",
+        "date verified is pending"
+      ]
+    }
+  ],
+  "blockers": [
+    "auth: live DB evidence URL is pending or invalid",
+    "auth: test result must be pass/passed/success/successful/green/ok",
+    "auth: database is pending",
+    "auth: commit SHA is pending or invalid",
+    "auth: verified by is pending",
+    "auth: date verified is pending",
+    "popia: live DB evidence URL is pending or invalid",
+    "popia: test result must be pass/passed/success/successful/green/ok",
+    "popia: database is pending",
+    "popia: commit SHA is pending or invalid",
+    "popia: verified by is pending",
+    "popia: date verified is pending",
+    "diagnostics: live DB evidence URL is pending or invalid",
+    "diagnostics: test result must be pass/passed/success/successful/green/ok",
+    "diagnostics: database is pending",
+    "diagnostics: commit SHA is pending or invalid",
+    "diagnostics: verified by is pending",
+    "diagnostics: date verified is pending"
+  ]
+}

@@ -1,13 +1,13 @@
 # Backend Runtime Integration Readiness Report
 
-Generated at: `2026-05-18T23:21:58Z`
+Generated at: `2026-05-19T23:01:02Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| runtime integration readiness | 0 | `/usr/bin/python3 scripts/check_backend_runtime_integration_readiness.py` |
-| runtime integration blocklists | 0 | `/usr/bin/python3 scripts/check_backend_runtime_integration_blocklists.py` |
-| 431-450 wiring | 0 | `/usr/bin/python3 scripts/check_first_consent_and_deep_readiness_runtime_wiring.py` |
-| 421-430 wiring | 0 | `/usr/bin/python3 scripts/check_first_audit_runtime_wiring.py` |
+| runtime integration readiness | 0 | `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_integration_readiness.py` |
+| runtime integration blocklists | 0 | `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_integration_blocklists.py` |
+| 431-450 wiring | 0 | `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_first_consent_and_deep_readiness_runtime_wiring.py` |
+| 421-430 wiring | 0 | `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_first_audit_runtime_wiring.py` |
 
 ## Boundary
 
@@ -15,7 +15,7 @@ This report authorizes PR planning only, not runtime route registration or destr
 
 ## runtime integration readiness
 
-Command: `/usr/bin/python3 scripts/check_backend_runtime_integration_readiness.py`
+Command: `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_integration_readiness.py`
 
 Return code: `0`
 
@@ -44,7 +44,7 @@ Backend runtime integration readiness check
 
 ## runtime integration blocklists
 
-Command: `/usr/bin/python3 scripts/check_backend_runtime_integration_blocklists.py`
+Command: `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_integration_blocklists.py`
 
 Return code: `0`
 
@@ -59,7 +59,7 @@ Backend runtime integration blocklist check
 
 ## 431-450 wiring
 
-Command: `/usr/bin/python3 scripts/check_first_consent_and_deep_readiness_runtime_wiring.py`
+Command: `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_first_consent_and_deep_readiness_runtime_wiring.py`
 
 Return code: `0`
 
@@ -80,7 +80,7 @@ First consent and deep-readiness runtime wiring check
 
 ## 421-430 wiring
 
-Command: `/usr/bin/python3 scripts/check_first_audit_runtime_wiring.py`
+Command: `/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/.venv/bin/python scripts/check_first_audit_runtime_wiring.py`
 
 Return code: `0`
 

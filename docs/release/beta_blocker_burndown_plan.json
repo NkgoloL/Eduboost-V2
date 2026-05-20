@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-19T16:48:23Z",
-  "current_commit": "5487eeab0a9accf09d52ccf127fffcdbc2a2e002",
+  "generated_at": "2026-05-20T07:01:11Z",
+  "current_commit": "9e706b9e0b787b0e4fb7324c9beefeb3fe35d2a4",
   "source_decision": "NO-GO",
-  "source_beta_blocker_count": 6,
+  "source_beta_blocker_count": 7,
   "burn_down_status": "blocked",
   "actions": [
     {
@@ -76,6 +76,18 @@
       "verification_command": "make external-approval-release-check",
       "priority": "P0",
       "can_be_closed_locally": false
+    },
+    {
+      "id": "POPIA-001",
+      "category": "engineering",
+      "status": "not-proven",
+      "reason": "proof_status is not-proven",
+      "owner": "backend",
+      "evidence_file": "docs/release/no_false_closure_status_after_1151_1190.md",
+      "next_action": "Resolve registry blocker: proof_status is not-proven",
+      "verification_command": "make release-go-no-go-local-check",
+      "priority": "P1",
+      "can_be_closed_locally": true
     }
   ],
   "release_mode_allowed": false,

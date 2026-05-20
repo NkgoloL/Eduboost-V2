@@ -1,7 +1,7 @@
 # Auth Route Transaction Slice Report
 
-Generated at: `2026-05-19T17:25:14Z`
-Commit: `5487eeab0a9accf09d52ccf127fffcdbc2a2e002`
+Generated at: `2026-05-19T23:09:22Z`
+Commit: `9e706b9e0b787b0e4fb7324c9beefeb3fe35d2a4`
 
 - Route file: `app/api_v2_routers/auth.py`
 - Local status: `route-auth-delegation-passing`

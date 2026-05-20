@@ -1,6 +1,6 @@
 # Auth Repository Fixture Proof Report
 
-Generated at: `2026-05-19T07:27:18Z`
+Generated at: `2026-05-19T19:36:21Z`
 
 **Status:** implemented
 

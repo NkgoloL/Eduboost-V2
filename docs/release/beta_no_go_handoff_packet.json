@@ -1,0 +1,110 @@
+{
+  "generated_at": "2026-05-20T07:01:10Z",
+  "current_commit": "9e706b9e0b787b0e4fb7324c9beefeb3fe35d2a4",
+  "handoff_status": "handoff-ready-no-go",
+  "beta_decision": "NO-GO",
+  "blocker_count": 7,
+  "sources": [
+    {
+      "name": "final_beta_gate_refresh",
+      "path": "docs/release/final_beta_gate_refresh.json",
+      "exists": true,
+      "status": "NO-GO"
+    },
+    {
+      "name": "release_go_no_go_status",
+      "path": "docs/release/release_go_no_go_status.json",
+      "exists": true,
+      "status": "NO-GO"
+    },
+    {
+      "name": "beta_blocker_burndown_plan",
+      "path": "docs/release/beta_blocker_burndown_plan.json",
+      "exists": true,
+      "status": "blocked"
+    },
+    {
+      "name": "evidence_attachment_runbook",
+      "path": "docs/release/evidence_attachment_runbook.md",
+      "exists": true,
+      "status": "present"
+    }
+  ],
+  "required_items": [
+    {
+      "id": "CI-001",
+      "category": "ci",
+      "current_status": "external-blocked",
+      "required_action": "Attach accepted GitHub Actions run metadata using `make ci-run-evidence-attach`.",
+      "local_close_allowed": false
+    },
+    {
+      "id": "LEGAL-001",
+      "category": "external-approval",
+      "current_status": "external-blocked",
+      "required_action": "Attach legal/POPIA approval metadata using `make approval-evidence-attach`.",
+      "local_close_allowed": false
+    },
+    {
+      "id": "SEC-001",
+      "category": "external-approval",
+      "current_status": "external-blocked",
+      "required_action": "Attach security approval metadata using `make approval-evidence-attach`.",
+      "local_close_allowed": false
+    },
+    {
+      "id": "CONTENT-001",
+      "category": "external-approval",
+      "current_status": "external-blocked",
+      "required_action": "Attach educator/content approval metadata using `make approval-evidence-attach`.",
+      "local_close_allowed": false
+    },
+    {
+      "id": "STAGING-001",
+      "category": "staging",
+      "current_status": "external-blocked",
+      "required_action": "Populate real staging smoke evidence and rerun staging release checks.",
+      "local_close_allowed": false
+    },
+    {
+      "id": "ROUTE-TX-AUTH-001",
+      "category": "live-db-transaction",
+      "current_status": "pending-or-not-recorded",
+      "required_action": "Attach accepted auth live DB rollback evidence using `make live-db-tx-evidence-attach`.",
+      "local_close_allowed": false
+    },
+    {
+      "id": "ROUTE-TX-POPIA-001",
+      "category": "live-db-transaction",
+      "current_status": "pending-or-not-recorded",
+      "required_action": "Attach accepted POPIA live DB rollback evidence using `make live-db-tx-evidence-attach`.",
+      "local_close_allowed": false
+    },
+    {
+      "id": "ROUTE-TX-DIAG-001",
+      "category": "live-db-transaction",
+      "current_status": "pending-or-not-recorded",
+      "required_action": "Attach accepted diagnostics live DB rollback evidence using `make live-db-tx-evidence-attach`.",
+      "local_close_allowed": false
+    }
+  ],
+  "operator_next_steps": [
+    "Stop adding release scaffolds unless a concrete evidence gap is found.",
+    "Attach real CI, approval, staging, and live DB evidence using the evidence attachment runbook.",
+    "Run `make final-gate-refresh` after each evidence attachment.",
+    "Run all release-mode checks only after the final refresh reports GO.",
+    "Obtain release-owner sign-off after all release-mode checks pass."
+  ],
+  "freeze_rules": [
+    "Treat the local scaffold phase as frozen.",
+    "Prioritize real evidence capture over additional local documentation gates.",
+    "Only add new scripts if an existing evidence attachment path is objectively blocked."
+  ],
+  "no_false_closure_rules": [
+    "Do not mark beta GO from this handoff packet.",
+    "Do not close external approvals without approver, date, decision, and evidence URL.",
+    "Do not close CI without a real GitHub Actions run URL.",
+    "Do not close staging without real staging smoke evidence.",
+    "Do not close live DB transaction proof without accepted live DB evidence metadata."
+  ]
+}

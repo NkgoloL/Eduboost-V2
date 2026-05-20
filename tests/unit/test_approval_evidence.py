@@ -22,13 +22,14 @@ def test_approval_evidence_tracks_legal_security_content_only():
     assert set(APPROVALS) == {"LEGAL-001", "SEC-001", "CONTENT-001"}
 
 
-def test_approval_templates_are_pending_by_default():
-    write_templates()
+def test_approval_template_text_is_pending_by_default():
+    from scripts.approval_evidence import template_for
 
-    for meta in APPROVALS.values():
-        text = (ROOT / "docs/release/external_approvals" / meta["file"]).read_text(encoding="utf-8").lower()
+    for approval_id in APPROVALS:
+        text = template_for(approval_id).lower()
         assert "**decision:** pending" in text
         assert "**approver:** pending" in text
+        assert "**evidence url:** pending" in text
 
 
 def test_valid_approval_evidence_has_no_blockers():
@@ -38,7 +39,7 @@ def test_valid_approval_evidence_has_no_blockers():
         owner="security",
         decision="approved",
         approver="security-owner",
-        evidence_url="https://example.com/security-report",
+        evidence_url="https://security-proof.internal/security-report",
         date_verified="2026-05-19",
         scope="beta release security review",
         notes="fixture",

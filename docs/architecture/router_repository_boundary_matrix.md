@@ -1,6 +1,6 @@
 # Router Repository Boundary Matrix
 
-Generated at: `2026-05-18T23:22:22Z`
+Generated at: `2026-05-19T23:01:51Z`
 
 | Router | P0 | Repository imports | Transition allowed | Violations |
 |---|---:|---|---|---|
@@ -13,7 +13,7 @@ Generated at: `2026-05-18T23:22:22Z`
 | `app/api_v2_routers/billing.py` | False | - | - | - |
 | `app/api_v2_routers/consent.py` | False | `app.repositories.repositories` | - | `app.repositories.repositories` |
 | `app/api_v2_routers/consent_renewal.py` | False | - | - | - |
-| `app/api_v2_routers/diagnostics.py` | False | `app.repositories.diagnostic_session_repository`, `app.repositories.item_bank_repository`, `app.repositories.mastery_repository`, `app.repositories.repositories` | - | `app.repositories.diagnostic_session_repository`, `app.repositories.item_bank_repository`, `app.repositories.mastery_repository`, `app.repositories.repositories` |
+| `app/api_v2_routers/diagnostics.py` | False | - | - | - |
 | `app/api_v2_routers/ether.py` | False | - | - | - |
 | `app/api_v2_routers/gamification.py` | False | `app.repositories.gamification_repository`, `app.repositories.repositories` | - | `app.repositories.gamification_repository`, `app.repositories.repositories` |
 | `app/api_v2_routers/jobs.py` | False | - | - | - |
