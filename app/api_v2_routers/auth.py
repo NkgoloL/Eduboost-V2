@@ -32,8 +32,6 @@ from app.core.security import (  # noqa: F401
     require_parent_or_admin,
     verify_password,
 )
-from app.core.token_revocation import revoke_token, revoke_user_tokens
-from app.services.fourth_estate import FourthEstateService
 from app.services.auth_token_claims import build_access_token_claims, merge_refresh_claims
 from app.domain.schemas import LoginRequest, RefreshRequest, RegisterRequest, TokenResponse
 from app.models import UserRole  # noqa: F401
