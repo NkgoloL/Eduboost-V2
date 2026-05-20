@@ -4,7 +4,7 @@
 # [IMMEDIATE FIX 3] Inference-service-only dependencies.
 #
 # These packages are REMOVED from the main requirements.txt:
-#   - torch==2.3.0        (~2.3 GB CPU / much more with CUDA)
+#   - torch==2.11.0        (~2.3 GB CPU / much more with CUDA)
 #   - transformers==4.40.0
 #   - huggingface-hub==0.23.2
 #
@@ -12,7 +12,7 @@
 # ─────────────────────────────────────────────────────────────────────────────
 
 # ── Inference runtime ──────────────────────────────────────────────────────────
-torch==2.3.0
+torch==2.11.0
 transformers==4.40.0
 huggingface-hub==0.23.2
 sentencepiece==0.2.0        # required by some tokenizers (flan-t5, mT5)
