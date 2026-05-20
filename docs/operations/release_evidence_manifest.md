@@ -1,8 +1,8 @@
 # Release Evidence Manifest
 
-Generated: `2026-05-19T23:02:13Z`
-Branch: `codex/production_readiness`
-Commit: `9e706b9e0b787b0e4fb7324c9beefeb3fe35d2a4`
+Generated: `2026-05-20T18:18:57Z`
+Branch: `fix/master-ci-cd-repair`
+Commit: `4c0297e85f4a77147e22af491f7bcbe281b99bfc`
 
 ## Required Evidence Commands
 

@@ -21,7 +21,7 @@ from __future__ import annotations
 
 import logging
 from dataclasses import dataclass
-from typing import Protocol
+from typing import Any, Protocol
 
 from app.domain.roles import Role
 
@@ -235,8 +235,6 @@ def assert_can_access_learner(actor: dict | CurrentUser, learner: Any) -> None:
     Raises HTTPException 403 if access is denied. Handles both legacy dict payloads
     and the new CurrentUser dataclass.
     """
-    from typing import Any as AnyType
-
     # 1. Resolve actor attributes
     if isinstance(actor, dict):
         role_val = actor.get("role", "")
@@ -324,4 +322,3 @@ def assert_can_access_learner(actor: object, learner: object) -> None:
     if not can_access_learner(actor, learner):
         from fastapi import HTTPException  # noqa: PLC0415
         raise HTTPException(status_code=403, detail="Access denied")
-

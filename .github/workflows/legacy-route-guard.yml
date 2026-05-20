@@ -18,6 +18,15 @@ jobs:
   legacy-route-guard:
     name: Legacy route exclusion guard
     runs-on: ubuntu-latest
+    env:
+      APP_ENV: test
+      ENVIRONMENT: test
+      DATABASE_URL: sqlite+aiosqlite:///./eduboost_test.db
+      REDIS_URL: redis://localhost:6379/0
+      ALLOWED_ORIGINS: http://localhost:3000,http://localhost:8000,http://test
+      ENCRYPTION_KEY: MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=
+      JWT_SECRET: legacy-route-ci-test-secret-32chars
+      JWT_SECRET_KEY: legacy-route-ci-test-secret-32chars
 
     steps:
       - uses: actions/checkout@v4
@@ -30,9 +39,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements/dev.txt
 
-      - name: Copy env
-        run: cp .env.example .env
-
       - name: Run legacy-route-guard tests
         run: |
           pytest \
@@ -40,7 +46,8 @@ jobs:
             tests/test_entrypoints.py \
             -v \
             -k "legacy" \
+            --no-cov \
             --tb=short
 
       - name: Run runtime entrypoint check
-        run: python scripts/check_runtime_entrypoints.py
+        run: python3 scripts/check_runtime_entrypoints.py

@@ -28,7 +28,7 @@ from __future__ import annotations
 import enum
 import uuid
 from datetime import datetime
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from sqlalchemy import (
     BigInteger,
@@ -49,6 +49,9 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 # Import Base from the project's shared declarative base
 # (app/core/database.py exports `Base = declarative_base()`)
 from app.core.database import Base
+
+if TYPE_CHECKING:
+    from app.models.item_exposure import ItemExposure
 
 
 # ---------------------------------------------------------------------------
@@ -262,5 +265,4 @@ class DiagnosticItem(Base):
             f"caps_ref={self.caps_ref!r} "
             f"status={self.review_status.value!r}>"
         )
-
 

@@ -5,7 +5,7 @@ Sets up row-level trigger to prevent UPDATE/DELETE on audit_events.
 """
 from alembic import op
 import sqlalchemy as sa
-from sqlalchemy.dialects.postgresql import UUID, JSONB
+from sqlalchemy.dialects.postgresql import UUID
 
 revision = "20260510_0300"
 down_revision = "20260510_0200"
@@ -115,7 +115,14 @@ def upgrade() -> None:
     # §4.5 – revoke UPDATE/DELETE from app role on audit_events
     # (run as superuser during migration)
     # ----------------------------------------------------------------
-    op.execute("REVOKE UPDATE, DELETE ON audit_events FROM eduboost_app;")
+    op.execute("""
+        DO $$
+        BEGIN
+            IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'eduboost_app') THEN
+                REVOKE UPDATE, DELETE ON audit_events FROM eduboost_app;
+            END IF;
+        END $$;
+    """)
 
 
 def downgrade() -> None:
@@ -124,6 +131,6 @@ def downgrade() -> None:
     for table in [
         "restriction_requests", "correction_requests",
         "erasure_requests", "data_export_requests",
-        "consent_records", "audit_events",
+        "consent_records",
     ]:
         op.drop_table(table)

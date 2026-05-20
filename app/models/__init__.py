@@ -314,7 +314,7 @@ class DiagnosticSession(Base):
     misconception_tags: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
     items_served: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     theta_history: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
-    items_correct: Mapped[int] = mapped_column(Integer, default=0)
+    items_correct: Mapped[int | None] = mapped_column(Integer, nullable=True, default=0)
     completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
 

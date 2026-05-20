@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import uuid
 from datetime import datetime
+from typing import TYPE_CHECKING
 
 from sqlalchemy import (
     BigInteger,
@@ -19,6 +20,9 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 # Import Base from the project's shared declarative base
 from app.core.database import Base
+
+if TYPE_CHECKING:
+    from app.models.diagnostic_item import DiagnosticItem
 
 class ItemExposure(Base):
     """

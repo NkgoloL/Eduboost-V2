@@ -14,6 +14,7 @@ from fastapi.testclient import TestClient
 from app.api_v2 import app
 from app.core import security as core_security
 from app.api_v2_deps.consent_lifecycle import get_canonical_data_rights_service
+from app.services.popia_service import POPIADataRightsService
 
 client = TestClient(app)
 

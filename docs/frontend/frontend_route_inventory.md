@@ -18,8 +18,6 @@ This inventory records frontend route, page, and journey-related surfaces.
 
 | Path | Route markers | Journey markers |
 | --- | --- | --- |
-| `app/frontend/.next/server/interception-route-rewrite-manifest.js` | `Route` | `_none_` |
-| `app/frontend/.next/static/chunks/polyfills.js` | `path:, href=` | `parent` |
 | `app/frontend/__tests__/BetaAndFeedback.test.tsx` | `Link` | `_none_` |
 | `app/frontend/__tests__/EntryAndPortal.test.tsx` | `_none_` | `learner, parent, dashboard, lesson, progress, onboarding` |
 | `app/frontend/__tests__/EntryScreens.test.tsx` | `_none_` | `learner, parent, onboarding` |
@@ -35,8 +33,6 @@ This inventory records frontend route, page, and journey-related surfaces.
 | `app/frontend/__tests__/services.coverage.test.ts` | `_none_` | `learner, parent, dashboard, lesson, diagnostic, consent` |
 | `app/frontend/__tests__/services.smoke.test.ts` | `_none_` | `learner, lesson, diagnostic, consent` |
 | `app/frontend/__tests__/setup.ts` | `_none_` | `diagnostic, progress` |
-| `app/frontend/coverage/prettify.js` | `_none_` | `parent` |
-| `app/frontend/coverage/sorter.js` | `_none_` | `parent` |
 | `app/frontend/public/service-worker.js` | `_none_` | `parent, dashboard, lesson, diagnostic` |
 | `app/frontend/src/__tests__/AccessibilityContracts.test.tsx` | `Route, Link` | `learner, parent, dashboard, diagnostic, progress, consent` |
 | `app/frontend/src/__tests__/ApiLayer.test.ts` | `_none_` | `learner, parent, dashboard, lesson, diagnostic` |

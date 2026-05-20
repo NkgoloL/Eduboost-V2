@@ -10,6 +10,7 @@ from app.core.database import get_db
 from app.core.logging import get_logger
 from app.core.security import get_current_user, require_parent_or_admin
 from app.domain.schemas import LearnerCreate, LearnerResponse
+from app.modules.consent.service import ConsentService
 from app.repositories.repositories import KnowledgeGapRepository, LearnerRepository
 from app.repositories.mastery_repository import MasteryRepository
 from app.modules.progress.progress_timeline_service import ProgressTimelineService

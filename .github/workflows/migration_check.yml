@@ -64,8 +64,12 @@ jobs:
       # Synchronous URL used by alembic env.py and seed script
       SYNC_DATABASE_URL: postgresql://eduboost_ci:ci_password@localhost:5432/eduboost_test
       REDIS_URL: redis://localhost:6379/0
+      APP_ENV: test
+      ENVIRONMENT: test
+      ALLOWED_ORIGINS: http://localhost:3000,http://localhost:8000,http://test
       JWT_SECRET: ci-test-secret-not-production-32chars
-      ENCRYPTION_KEY: ci-test-encryption-key-32bytes!!
+      JWT_SECRET_KEY: ci-test-secret-not-production-32chars
+      ENCRYPTION_KEY: MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=
 
     steps:
       - name: Checkout
@@ -113,7 +117,7 @@ jobs:
       - name: Validate seed file (dry run)
         run: |
           python scripts/seed_item_bank.py \
-            --seed-file data/caps/grade4_maths_item_bank.json \
+            --input data/caps/grade4_maths_item_bank.json \
             --dry-run
         env:
           DATABASE_URL: ${{ env.DATABASE_URL }}

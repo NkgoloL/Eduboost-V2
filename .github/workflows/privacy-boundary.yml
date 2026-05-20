@@ -6,6 +6,16 @@ on:
   pull_request:
     branches: [master, main]
 
+env:
+  APP_ENV: test
+  ENVIRONMENT: test
+  DATABASE_URL: sqlite+aiosqlite:///./eduboost_test.db
+  REDIS_URL: redis://localhost:6379/0
+  ALLOWED_ORIGINS: http://localhost:3000,http://localhost:8000,http://test
+  ENCRYPTION_KEY: MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=
+  JWT_SECRET: privacy-boundary-ci-secret-32chars
+  JWT_SECRET_KEY: privacy-boundary-ci-secret-32chars
+
 jobs:
   popia-consent-gate-check:
     name: "§4.2 Consent Gate Inventory"
@@ -49,7 +59,7 @@ jobs:
         run: pip install -r requirements/dev.txt --break-system-packages
 
       - name: Run audit contract tests
-        run: pytest tests/unit/test_audit_integrity.py -v
+        run: pytest tests/unit/test_audit_integrity.py -v --no-cov
 
   popia-consent-lifecycle:
     name: "§4.1 Consent Lifecycle Tests"
@@ -66,7 +76,7 @@ jobs:
         run: pip install -r requirements/dev.txt --break-system-packages
 
       - name: Run consent lifecycle + negative gate tests
-        run: pytest tests/unit/test_consent_lifecycle.py tests/popia/ -v
+        run: pytest tests/unit/test_consent_lifecycle.py tests/popia/ -v --no-cov
 
   popia-dsr-tests:
     name: "§4.3 Data Subject Rights Tests"
@@ -83,4 +93,4 @@ jobs:
         run: pip install -r requirements/dev.txt --break-system-packages
 
       - name: Run DSR integration tests
-        run: pytest tests/integration/test_popia_data_subject_rights.py -v
+        run: pytest tests/integration/test_popia_data_subject_rights.py -v --no-cov

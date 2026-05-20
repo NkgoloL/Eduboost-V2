@@ -124,6 +124,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/services/study_plan_updater.py` | `diagnostic, remediation` |
 | `app/services/system_service_v2.py` | `diagnostic` |
 | `scripts/assign_irt_params.py` | `diagnostic` |
+| `scripts/beta_no_go_handoff_packet.py` | `diagnostic` |
 | `scripts/build_corrective_caps_v2.py` | `prompt, llm, remediation` |
 | `scripts/build_focused_caps_dataset.py` | `remediation` |
 | `scripts/build_guardrails_dataset.py` | `remediation` |

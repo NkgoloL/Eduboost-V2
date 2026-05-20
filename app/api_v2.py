@@ -3,29 +3,29 @@ EduBoost V2 — FastAPI Application Entrypoint
 Strict Modular Monolith. No Celery, no RabbitMQ, no microservices.
 """
 from __future__ import annotations
-from app.services.jwt_keyring import validate_jwt_keyring_environment
-
-validate_jwt_keyring_environment()
 
 import asyncio
 from contextlib import asynccontextmanager
 
+from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, Response
 
-from app.middleware.security_headers import SecurityHeadersMiddleware
 from app.core.analytics import analytics_middleware
 from app.core.config import settings
-from app.core.health import gather_deep_health
 from app.core.exceptions import register_exception_handlers
+from app.core.health import gather_deep_health
 from app.core.logging import configure_logging, get_logger
 from app.core.metrics import REGISTRY
 from app.core.middleware import RequestIDMiddleware, StructuredLoggingMiddleware, TimingMiddleware
 from app.core.rate_limit import limiter
 from app.core.secret_rotation import key_vault_rotation_loop
+from app.middleware.security_headers import SecurityHeadersMiddleware
 from app.services.consent_expiry_service import consent_expiry_loop
-from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
+from app.services.jwt_keyring import validate_jwt_keyring_environment
+
+validate_jwt_keyring_environment()
 
 configure_logging()
 log = get_logger(__name__)

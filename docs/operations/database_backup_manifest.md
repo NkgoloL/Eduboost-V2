@@ -1,9 +1,9 @@
 # Database Backup Manifest
 
-Manifest ID: `2a72d2dfae2434b8`
-Generated: `2026-05-19T23:07:25Z`
-Branch: `codex/production_readiness`
-Commit: `9e706b9e0b787b0e4fb7324c9beefeb3fe35d2a4`
+Manifest ID: `433b010c828b13ce`
+Generated: `2026-05-20T18:19:21Z`
+Branch: `fix/master-ci-cd-repair`
+Commit: `4c0297e85f4a77147e22af491f7bcbe281b99bfc`
 
 ## Backup Metadata
 

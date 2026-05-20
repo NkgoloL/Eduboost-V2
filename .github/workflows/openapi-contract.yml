@@ -46,6 +46,16 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
+    env:
+      APP_ENV: test
+      ENVIRONMENT: test
+      DATABASE_URL: postgresql+asyncpg://eduboost:eduboost@localhost:5432/eduboost_test
+      REDIS_URL: redis://localhost:6379/0
+      ALLOWED_ORIGINS: http://localhost:3000,http://localhost:8000,http://test
+      ENCRYPTION_KEY: MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=
+      JWT_SECRET: openapi-ci-test-secret-32chars-min
+      JWT_SECRET_KEY: openapi-ci-test-secret-32chars-min
+
     steps:
       - uses: actions/checkout@v4
 
@@ -56,9 +66,6 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements/dev.txt
-
-      - name: Copy env
-        run: cp .env.example .env
 
       - name: Smoke-import app.api_v2
         run: python -c "from app.api_v2 import app; print(app.title)"
