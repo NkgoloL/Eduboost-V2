@@ -230,3 +230,38 @@ def record_llm_tokens(
 def make_metrics_app() -> object:
     """Returns an ASGI app that serves /metrics for Prometheus scraping."""
     return make_asgi_app(registry=REGISTRY)
+
+# ── Phase 3 Content Review Governance ───────────────────────────────────────
+content_review_decisions_total = Counter(
+    "eduboost_content_review_decisions_total",
+    "Educator content-review decisions",
+    ["action", "result"],
+    registry=REGISTRY,
+)
+
+content_review_state_transitions_total = Counter(
+    "eduboost_content_review_state_transitions_total",
+    "Content-governance state transitions",
+    ["from_status", "to_status"],
+    registry=REGISTRY,
+)
+
+content_review_stale_assignments = Gauge(
+    "eduboost_content_review_stale_assignments",
+    "Current number of stale content-review assignments",
+    registry=REGISTRY,
+)
+
+content_review_reminders_total = Counter(
+    "eduboost_content_review_reminders_total",
+    "Stale content-review reminder and escalation actions",
+    ["action"],
+    registry=REGISTRY,
+)
+
+content_review_authorization_failures_total = Counter(
+    "eduboost_content_review_authorization_failures_total",
+    "Authorization failures on content-review operations",
+    ["permission"],
+    registry=REGISTRY,
+)

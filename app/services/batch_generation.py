@@ -800,7 +800,10 @@ class BatchGenerationEngine:
                 "provider": generation.provider,
             },
             safety_status="pass",
-            answer_key_verified=content_type == "diagnostic_item",
+            answer_key_verified=False,
+            created_by_actor_id=task.admin_actor_id,
+            review_policy_version="phase3-v1",
+            rubric_version="1.0",
         )
         db.add(artifact)
         await db.flush()

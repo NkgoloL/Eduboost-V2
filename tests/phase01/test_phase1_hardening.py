@@ -6,7 +6,7 @@ import json
 import uuid
 from datetime import UTC, datetime
 from types import SimpleNamespace
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock, patch
 
 import pytest
 from fastapi import HTTPException
@@ -15,7 +15,6 @@ from pydantic import ValidationError
 from app.api_v2_deps.auth import require_admin
 from app.api_v2_routers import generation
 from app.models.content_factory import (
-    ContentGenerationRun,
     ContentGenerationTask,
     ContentLayer,
     ContentValidationReport,
@@ -186,9 +185,22 @@ async def test_queue_failure_fails_closed_without_inline_execution() -> None:
         updated_at=now,
     )
     engine = SimpleNamespace(create_run=AsyncMock(return_value=run))
-    db = AsyncMock()
-    db.execute = AsyncMock()
-    db.commit = AsyncMock()
+    class QueueResult:
+        def scalar_one_or_none(self):
+            return "queued"
+
+    class QueueDB:
+        async def execute(self, statement):
+            del statement
+            return QueueResult()
+
+        async def commit(self):
+            return None
+
+        async def rollback(self):
+            return None
+
+    db = QueueDB()
     context = SourceContextResult(
         passed=True,
         errors=[],
@@ -241,45 +253,90 @@ async def test_queue_failure_fails_closed_without_inline_execution() -> None:
 async def test_engine_fails_before_provider_when_source_provenance_missing() -> None:
     provider = DeterministicProvider()
     provider.register_default(json.dumps([VALID_DIAGNOSTIC_ITEM]))
-    provider.generate = AsyncMock(wraps=provider.generate)
+    provider_called = False
+
+    async def should_not_generate(**kwargs):
+        nonlocal provider_called
+        provider_called = True
+        raise AssertionError(f"provider should not be called: {kwargs}")
+
+    provider.generate = should_not_generate
     engine = BatchGenerationEngine(provider_router=ProviderRouter([provider]))
 
-    run = MagicMock(spec=ContentGenerationRun)
-    run.run_id = uuid.uuid4()
-    run.run_metadata = {}
-    task = MagicMock(spec=ContentGenerationTask)
-    task.task_id = uuid.uuid4()
-    task.run_id = run.run_id
-    task.scope_id = "grade4-maths-en"
-    task.caps_ref = "4.M.1.1"
-    task.task_metadata = {
-        "content_type": "diagnostic_item",
-        "grade": 4,
-        "subject": "Mathematics",
-        "subject_code": "MATHS",
-        "language": "en",
-    }
-    result_proxy = MagicMock()
-    result_proxy.scalar_one_or_none.return_value = run
-    result_proxy.scalars.return_value.all.return_value = [task]
-    db = AsyncMock()
-    db.execute = AsyncMock(return_value=result_proxy)
-    db.add = MagicMock()
-    db.flush = AsyncMock()
-    db.commit = AsyncMock()
-    db.rollback = AsyncMock()
+    run = SimpleNamespace(run_id=uuid.uuid4(), run_metadata={})
+    task = SimpleNamespace(
+        task_id=uuid.uuid4(),
+        run_id=run.run_id,
+        scope_id="grade4-maths-en",
+        caps_ref="4.M.1.1",
+        task_metadata={
+            "content_type": "diagnostic_item",
+            "grade": 4,
+            "subject": "Mathematics",
+            "subject_code": "MATHS",
+            "language": "en",
+        },
+        status="queued",
+        attempt_number=1,
+        max_attempts=3,
+        validation_failures=[],
+        artifact_paths=[],
+        output_artifact_ids=[],
+        locked_by=None,
+        lock_expires_at=None,
+        started_at=None,
+        finished_at=None,
+        provider=None,
+        model=None,
+        prompt_version=None,
+        token_usage=None,
+        cost_metadata=None,
+        admin_actor_id=None,
+    )
+    class ResultProxy:
+        def scalar_one_or_none(self):
+            return run
+
+        class Scalars:
+            @staticmethod
+            def all():
+                return [task]
+
+        def scalars(self):
+            return self.Scalars()
+
+    class FakeDB:
+        def __init__(self):
+            self.added = []
+
+        async def execute(self, statement):
+            del statement
+            return ResultProxy()
+
+        def add(self, obj):
+            self.added.append(obj)
+
+        async def flush(self):
+            return None
+
+        async def commit(self):
+            return None
+
+        async def rollback(self):
+            return None
+
+    db = FakeDB()
 
     with patch(
         "app.services.batch_generation._acquire_task_lock",
         new=AsyncMock(return_value=True),
     ):
-        result = await engine.process_run(run.run_id, {}, db, worker_id="worker")
+        with pytest.raises(ValueError, match="source_snapshot_hash"):
+            await engine.process_run(run.run_id, {}, db, worker_id="worker")
 
-    assert result.failed == 1
-    provider.generate.assert_not_awaited()
-    reports = [obj for obj in db.add.call_args_list if isinstance(obj.args[0], ContentValidationReport)]
-    assert reports and reports[0].args[0].task_id == task.task_id
-    assert reports[0].args[0].artifact_id is None
+    assert provider_called is False
+    assert task.status == "failed"
+    assert "source_snapshot_hash_missing" in task.validation_failures
 
 
 @pytest.mark.asyncio
@@ -295,10 +352,17 @@ async def test_create_run_idempotency_keys_are_run_scoped() -> None:
 
     async def one_run() -> str:
         added: list[object] = []
-        db = AsyncMock()
-        db.add = MagicMock(side_effect=added.append)
-        db.flush = AsyncMock()
-        db.commit = AsyncMock()
+        class CreateRunDB:
+            def add(self, obj):
+                added.append(obj)
+
+            async def flush(self):
+                return None
+
+            async def commit(self):
+                return None
+
+        db = CreateRunDB()
         await engine.create_run(
             scope_id="grade4-maths-en",
             task_specs=[spec],

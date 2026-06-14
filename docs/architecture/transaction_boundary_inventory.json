@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T17:41:14Z",
+  "generated_at": "2026-06-14T22:19:53Z",
   "scan_roots": [
     "app/api_v2_routers",
     "app/services",
@@ -305,7 +305,7 @@
     },
     {
       "file": "app/api_v2_routers/content_factory.py",
-      "function": "approve_artifact",
+      "function": "reject_artifact",
       "lineno": 475,
       "mutation_calls": [
         "commit"
@@ -316,19 +316,8 @@
     },
     {
       "file": "app/api_v2_routers/content_factory.py",
-      "function": "reject_artifact",
-      "lineno": 485,
-      "mutation_calls": [
-        "commit"
-      ],
-      "transaction_markers": [],
-      "critical_areas": [],
-      "status": "single-mutation-candidate"
-    },
-    {
-      "file": "app/api_v2_routers/content_factory.py",
       "function": "quarantine_artifact",
-      "lineno": 492,
+      "lineno": 482,
       "mutation_calls": [
         "commit"
       ],
@@ -339,7 +328,7 @@
     {
       "file": "app/api_v2_routers/content_factory.py",
       "function": "assign_reviewer",
-      "lineno": 547,
+      "lineno": 537,
       "mutation_calls": [
         "commit"
       ],
@@ -350,7 +339,7 @@
     {
       "file": "app/api_v2_routers/content_factory.py",
       "function": "bulk_assign_reviewer",
-      "lineno": 562,
+      "lineno": 552,
       "mutation_calls": [
         "commit"
       ],
@@ -361,7 +350,7 @@
     {
       "file": "app/api_v2_routers/content_factory.py",
       "function": "bulk_approve_review",
-      "lineno": 594,
+      "lineno": 584,
       "mutation_calls": [
         "commit"
       ],
@@ -372,7 +361,7 @@
     {
       "file": "app/api_v2_routers/content_factory.py",
       "function": "bulk_reject_review",
-      "lineno": 609,
+      "lineno": 599,
       "mutation_calls": [
         "commit"
       ],
@@ -383,7 +372,7 @@
     {
       "file": "app/api_v2_routers/content_factory.py",
       "function": "bulk_quarantine_review",
-      "lineno": 624,
+      "lineno": 614,
       "mutation_calls": [
         "commit"
       ],
@@ -394,7 +383,7 @@
     {
       "file": "app/api_v2_routers/content_factory.py",
       "function": "run_all_scope_staging_verification",
-      "lineno": 639,
+      "lineno": 629,
       "mutation_calls": [
         "commit"
       ],
@@ -405,7 +394,7 @@
     {
       "file": "app/api_v2_routers/content_factory.py",
       "function": "seed_scope_staging",
-      "lineno": 738,
+      "lineno": 728,
       "mutation_calls": [
         "commit"
       ],
@@ -416,7 +405,7 @@
     {
       "file": "app/api_v2_routers/content_factory.py",
       "function": "rollback_seed_run",
-      "lineno": 813,
+      "lineno": 803,
       "mutation_calls": [
         "commit"
       ],
@@ -429,7 +418,7 @@
     {
       "file": "app/api_v2_routers/content_factory.py",
       "function": "promote_production",
-      "lineno": 877,
+      "lineno": 867,
       "mutation_calls": [
         "commit"
       ],
@@ -440,7 +429,7 @@
     {
       "file": "app/api_v2_routers/content_factory.py",
       "function": "get_promotion_event_items",
-      "lineno": 934,
+      "lineno": 924,
       "mutation_calls": [
         "execute"
       ],
@@ -451,7 +440,7 @@
     {
       "file": "app/api_v2_routers/content_factory.py",
       "function": "rollback_promotion_event",
-      "lineno": 983,
+      "lineno": 973,
       "mutation_calls": [
         "commit"
       ],
@@ -464,7 +453,7 @@
     {
       "file": "app/api_v2_routers/content_factory.py",
       "function": "get_content_factory_report",
-      "lineno": 1020,
+      "lineno": 1010,
       "mutation_calls": [
         "execute"
       ],
@@ -475,7 +464,7 @@
     {
       "file": "app/api_v2_routers/content_factory.py",
       "function": "plan_full_generation",
-      "lineno": 1097,
+      "lineno": 1087,
       "mutation_calls": [
         "add",
         "flush"
@@ -487,7 +476,7 @@
     {
       "file": "app/api_v2_routers/content_factory.py",
       "function": "start_full_generation",
-      "lineno": 1131,
+      "lineno": 1121,
       "mutation_calls": [
         "flush"
       ],
@@ -498,7 +487,7 @@
     {
       "file": "app/api_v2_routers/content_factory.py",
       "function": "list_full_generation_runs",
-      "lineno": 1166,
+      "lineno": 1156,
       "mutation_calls": [
         "execute"
       ],
@@ -509,7 +498,7 @@
     {
       "file": "app/api_v2_routers/content_factory.py",
       "function": "cancel_full_generation_run",
-      "lineno": 1225,
+      "lineno": 1215,
       "mutation_calls": [
         "execute",
         "flush"
@@ -521,13 +510,116 @@
     {
       "file": "app/api_v2_routers/content_factory.py",
       "function": "resume_full_generation_run",
-      "lineno": 1260,
+      "lineno": 1250,
       "mutation_calls": [
         "flush"
       ],
       "transaction_markers": [],
       "critical_areas": [],
       "status": "single-mutation-candidate"
+    },
+    {
+      "file": "app/api_v2_routers/content_review.py",
+      "function": "get_review_actor",
+      "lineno": 62,
+      "mutation_calls": [
+        "add",
+        "update"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/api_v2_routers/content_review.py",
+      "function": "assign_reviewers",
+      "lineno": 114,
+      "mutation_calls": [
+        "commit"
+      ],
+      "transaction_markers": [
+        "rollback"
+      ],
+      "critical_areas": [],
+      "status": "transaction-marker-present"
+    },
+    {
+      "file": "app/api_v2_routers/content_review.py",
+      "function": "accept_assignment",
+      "lineno": 144,
+      "mutation_calls": [
+        "commit"
+      ],
+      "transaction_markers": [
+        "rollback"
+      ],
+      "critical_areas": [],
+      "status": "transaction-marker-present"
+    },
+    {
+      "file": "app/api_v2_routers/content_review.py",
+      "function": "reassign_review",
+      "lineno": 178,
+      "mutation_calls": [
+        "commit"
+      ],
+      "transaction_markers": [
+        "rollback"
+      ],
+      "critical_areas": [],
+      "status": "transaction-marker-present"
+    },
+    {
+      "file": "app/api_v2_routers/content_review.py",
+      "function": "submit_review_decision",
+      "lineno": 211,
+      "mutation_calls": [
+        "commit"
+      ],
+      "transaction_markers": [
+        "rollback"
+      ],
+      "critical_areas": [],
+      "status": "transaction-marker-present"
+    },
+    {
+      "file": "app/api_v2_routers/content_review.py",
+      "function": "quarantine_artifact",
+      "lineno": 251,
+      "mutation_calls": [
+        "commit"
+      ],
+      "transaction_markers": [
+        "rollback"
+      ],
+      "critical_areas": [],
+      "status": "transaction-marker-present"
+    },
+    {
+      "file": "app/api_v2_routers/content_review.py",
+      "function": "create_artifact_revision",
+      "lineno": 283,
+      "mutation_calls": [
+        "commit"
+      ],
+      "transaction_markers": [
+        "rollback"
+      ],
+      "critical_areas": [],
+      "status": "transaction-marker-present"
+    },
+    {
+      "file": "app/api_v2_routers/content_review.py",
+      "function": "publish_artifact",
+      "lineno": 315,
+      "mutation_calls": [
+        "commit"
+      ],
+      "transaction_markers": [
+        "rollback"
+      ],
+      "critical_areas": [],
+      "status": "transaction-marker-present"
     },
     {
       "file": "app/api_v2_routers/diagnostics.py",
@@ -553,6 +645,56 @@
       "critical_areas": [
         "lesson_completion"
       ],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/api_v2_routers/generation.py",
+      "function": "start_generation_run",
+      "lineno": 99,
+      "mutation_calls": [
+        "commit",
+        "execute",
+        "update"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [
+        "lesson_completion"
+      ],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/api_v2_routers/generation.py",
+      "function": "get_generation_run",
+      "lineno": 227,
+      "mutation_calls": [
+        "execute"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
+    },
+    {
+      "file": "app/api_v2_routers/generation.py",
+      "function": "list_run_tasks",
+      "lineno": 242,
+      "mutation_calls": [
+        "execute"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
+    },
+    {
+      "file": "app/api_v2_routers/generation.py",
+      "function": "cancel_generation_run",
+      "lineno": 275,
+      "mutation_calls": [
+        "commit",
+        "execute",
+        "update"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
       "status": "multi-write-candidate-not-proven"
     },
     {
@@ -867,7 +1009,7 @@
     {
       "file": "app/modules/jobs.py",
       "function": "expire_stale_diagnostic_sessions",
-      "lineno": 263,
+      "lineno": 269,
       "mutation_calls": [
         "commit",
         "execute",
@@ -879,8 +1021,30 @@
     },
     {
       "file": "app/modules/jobs.py",
+      "function": "process_stale_content_reviews",
+      "lineno": 319,
+      "mutation_calls": [
+        "commit"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
+    },
+    {
+      "file": "app/modules/jobs.py",
+      "function": "_run",
+      "lineno": 328,
+      "mutation_calls": [
+        "commit"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
+    },
+    {
+      "file": "app/modules/jobs.py",
       "function": "startup",
-      "lineno": 424,
+      "lineno": 455,
       "mutation_calls": [
         "execute"
       ],
@@ -1259,7 +1423,7 @@
     {
       "file": "app/services/auth_service.py",
       "function": "guardian_signup",
-      "lineno": 143,
+      "lineno": 144,
       "mutation_calls": [
         "create"
       ],
@@ -1280,6 +1444,108 @@
       ],
       "critical_areas": [],
       "status": "transaction-marker-present"
+    },
+    {
+      "file": "app/services/batch_generation.py",
+      "function": "_acquire_task_lock",
+      "lineno": 97,
+      "mutation_calls": [
+        "commit",
+        "execute",
+        "update"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/services/batch_generation.py",
+      "function": "create_run",
+      "lineno": 153,
+      "mutation_calls": [
+        "add",
+        "commit",
+        "flush"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/services/batch_generation.py",
+      "function": "process_run",
+      "lineno": 244,
+      "mutation_calls": [
+        "commit",
+        "execute",
+        "update"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/services/batch_generation.py",
+      "function": "_verify_source_snapshot",
+      "lineno": 346,
+      "mutation_calls": [
+        "commit"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
+    },
+    {
+      "file": "app/services/batch_generation.py",
+      "function": "_execute_task",
+      "lineno": 473,
+      "mutation_calls": [
+        "commit",
+        "execute",
+        "update"
+      ],
+      "transaction_markers": [
+        "rollback"
+      ],
+      "critical_areas": [],
+      "status": "transaction-marker-present"
+    },
+    {
+      "file": "app/services/batch_generation.py",
+      "function": "_fail_task",
+      "lineno": 695,
+      "mutation_calls": [
+        "commit",
+        "execute",
+        "update"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/services/batch_generation.py",
+      "function": "_save_validation_report",
+      "lineno": 729,
+      "mutation_calls": [
+        "add",
+        "flush"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/services/batch_generation.py",
+      "function": "_persist_artifact",
+      "lineno": 750,
+      "mutation_calls": [
+        "add",
+        "flush"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "multi-write-candidate-not-proven"
     },
     {
       "file": "app/services/consent_compat.py",
@@ -1416,7 +1682,7 @@
     {
       "file": "app/services/content_artifact_lifecycle.py",
       "function": "submit_for_review",
-      "lineno": 33,
+      "lineno": 47,
       "mutation_calls": [
         "flush"
       ],
@@ -1426,32 +1692,8 @@
     },
     {
       "file": "app/services/content_artifact_lifecycle.py",
-      "function": "approve_artifact",
-      "lineno": 46,
-      "mutation_calls": [
-        "add",
-        "flush"
-      ],
-      "transaction_markers": [],
-      "critical_areas": [],
-      "status": "multi-write-candidate-not-proven"
-    },
-    {
-      "file": "app/services/content_artifact_lifecycle.py",
-      "function": "quarantine_artifact",
-      "lineno": 62,
-      "mutation_calls": [
-        "add",
-        "flush"
-      ],
-      "transaction_markers": [],
-      "critical_areas": [],
-      "status": "multi-write-candidate-not-proven"
-    },
-    {
-      "file": "app/services/content_artifact_lifecycle.py",
       "function": "mark_seeded_staging",
-      "lineno": 79,
+      "lineno": 144,
       "mutation_calls": [
         "flush"
       ],
@@ -1462,7 +1704,7 @@
     {
       "file": "app/services/content_artifact_lifecycle.py",
       "function": "mark_promoted_production",
-      "lineno": 88,
+      "lineno": 171,
       "mutation_calls": [
         "flush"
       ],
@@ -1473,14 +1715,13 @@
     {
       "file": "app/services/content_artifact_lifecycle.py",
       "function": "_set_status",
-      "lineno": 97,
+      "lineno": 198,
       "mutation_calls": [
-        "add",
         "flush"
       ],
       "transaction_markers": [],
       "critical_areas": [],
-      "status": "multi-write-candidate-not-proven"
+      "status": "single-mutation-candidate"
     },
     {
       "file": "app/services/content_coverage_service.py",
@@ -1731,7 +1972,7 @@
     {
       "file": "app/services/content_generation_executor.py",
       "function": "execute_run",
-      "lineno": 173,
+      "lineno": 177,
       "mutation_calls": [
         "flush"
       ],
@@ -1742,7 +1983,7 @@
     {
       "file": "app/services/content_generation_executor.py",
       "function": "_existing_hashes",
-      "lineno": 283,
+      "lineno": 287,
       "mutation_calls": [
         "execute"
       ],
@@ -1753,7 +1994,7 @@
     {
       "file": "app/services/content_generation_executor.py",
       "function": "_fail_task",
-      "lineno": 287,
+      "lineno": 291,
       "mutation_calls": [
         "flush"
       ],
@@ -2062,6 +2303,112 @@
       "status": "single-mutation-candidate"
     },
     {
+      "file": "app/services/content_review_governance.py",
+      "function": "assign_reviewers",
+      "lineno": 152,
+      "mutation_calls": [
+        "add",
+        "flush"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/services/content_review_governance.py",
+      "function": "accept_assignment",
+      "lineno": 212,
+      "mutation_calls": [
+        "flush"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
+    },
+    {
+      "file": "app/services/content_review_governance.py",
+      "function": "submit_decision",
+      "lineno": 237,
+      "mutation_calls": [
+        "add",
+        "flush"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [
+        "diagnostics_response"
+      ],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/services/content_review_governance.py",
+      "function": "quarantine_artifact",
+      "lineno": 375,
+      "mutation_calls": [
+        "flush"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
+    },
+    {
+      "file": "app/services/content_review_governance.py",
+      "function": "create_revision",
+      "lineno": 407,
+      "mutation_calls": [
+        "flush"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
+    },
+    {
+      "file": "app/services/content_review_governance.py",
+      "function": "publish_artifact",
+      "lineno": 497,
+      "mutation_calls": [
+        "add",
+        "flush"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/services/content_review_governance.py",
+      "function": "reassign_assignment",
+      "lineno": 556,
+      "mutation_calls": [
+        "add",
+        "flush"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/services/content_review_governance.py",
+      "function": "process_stale_assignments",
+      "lineno": 617,
+      "mutation_calls": [
+        "flush"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
+    },
+    {
+      "file": "app/services/content_review_governance.py",
+      "function": "_record_transition",
+      "lineno": 783,
+      "mutation_calls": [
+        "add",
+        "flush"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
       "file": "app/services/content_review_queue.py",
       "function": "list_queue",
       "lineno": 73,
@@ -2097,7 +2444,7 @@
     {
       "file": "app/services/content_reviewer_assignment.py",
       "function": "assign_artifact",
-      "lineno": 27,
+      "lineno": 32,
       "mutation_calls": [
         "add",
         "flush"
@@ -2109,7 +2456,7 @@
     {
       "file": "app/services/content_reviewer_assignment.py",
       "function": "unassign_artifact",
-      "lineno": 74,
+      "lineno": 103,
       "mutation_calls": [
         "flush"
       ],
@@ -2120,7 +2467,7 @@
     {
       "file": "app/services/content_reviewer_assignment.py",
       "function": "get_reviewer_workload",
-      "lineno": 83,
+      "lineno": 122,
       "mutation_calls": [
         "execute"
       ],
@@ -2131,7 +2478,18 @@
     {
       "file": "app/services/content_reviewer_assignment.py",
       "function": "list_assignments",
-      "lineno": 95,
+      "lineno": 151,
+      "mutation_calls": [
+        "execute"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
+    },
+    {
+      "file": "app/services/content_reviewer_assignment.py",
+      "function": "_reviewer_assignment",
+      "lineno": 171,
       "mutation_calls": [
         "execute"
       ],
@@ -2142,7 +2500,7 @@
     {
       "file": "app/services/content_reviewer_assignment.py",
       "function": "_open_assignment",
-      "lineno": 104,
+      "lineno": 189,
       "mutation_calls": [
         "execute"
       ],
@@ -3464,6 +3822,39 @@
       "status": "single-mutation-candidate"
     },
     {
+      "file": "app/services/llm_provider.py",
+      "function": "generate",
+      "lineno": 130,
+      "mutation_calls": [
+        "create"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
+    },
+    {
+      "file": "app/services/llm_provider.py",
+      "function": "generate",
+      "lineno": 227,
+      "mutation_calls": [
+        "create"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
+    },
+    {
+      "file": "app/services/llm_provider.py",
+      "function": "generate",
+      "lineno": 658,
+      "mutation_calls": [
+        "create"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
+    },
+    {
       "file": "app/services/pii_sweep.py",
       "function": "scan_record",
       "lineno": 132,
@@ -3532,7 +3923,7 @@
     {
       "file": "app/services/popia_service.py",
       "function": "request_erasure",
-      "lineno": 137,
+      "lineno": 160,
       "mutation_calls": [
         "add",
         "flush"
@@ -3546,7 +3937,7 @@
     {
       "file": "app/services/popia_service.py",
       "function": "cancel_erasure",
-      "lineno": 213,
+      "lineno": 236,
       "mutation_calls": [
         "add",
         "flush"
@@ -3558,7 +3949,7 @@
     {
       "file": "app/services/popia_service.py",
       "function": "request_correction",
-      "lineno": 263,
+      "lineno": 286,
       "mutation_calls": [
         "add",
         "flush"
@@ -3570,7 +3961,7 @@
     {
       "file": "app/services/popia_service.py",
       "function": "restrict_processing",
-      "lineno": 290,
+      "lineno": 313,
       "mutation_calls": [
         "flush",
         "revoke"
@@ -3584,7 +3975,7 @@
     {
       "file": "app/services/popia_service.py",
       "function": "execute_erasure",
-      "lineno": 329,
+      "lineno": 352,
       "mutation_calls": [
         "add",
         "flush"
@@ -3592,6 +3983,121 @@
       "transaction_markers": [],
       "critical_areas": [],
       "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/services/semantic_retrieval/embedding.py",
+      "function": "embed",
+      "lineno": 112,
+      "mutation_calls": [
+        "create"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
+    },
+    {
+      "file": "app/services/semantic_retrieval/indexing.py",
+      "function": "upsert_document",
+      "lineno": 67,
+      "mutation_calls": [
+        "execute"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
+    },
+    {
+      "file": "app/services/semantic_retrieval/indexing.py",
+      "function": "reindex_document",
+      "lineno": 165,
+      "mutation_calls": [
+        "execute"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
+    },
+    {
+      "file": "app/services/semantic_retrieval/indexing.py",
+      "function": "_delete_stale_chunks",
+      "lineno": 212,
+      "mutation_calls": [
+        "execute",
+        "update"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/services/semantic_retrieval/indexing.py",
+      "function": "_upsert_chunk",
+      "lineno": 234,
+      "mutation_calls": [
+        "execute"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
+    },
+    {
+      "file": "app/services/semantic_retrieval/repository.py",
+      "function": "semantic_search",
+      "lineno": 61,
+      "mutation_calls": [
+        "execute",
+        "update"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/services/semantic_retrieval/repository.py",
+      "function": "full_text_search",
+      "lineno": 98,
+      "mutation_calls": [
+        "execute",
+        "update"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/services/semantic_retrieval/repository.py",
+      "function": "fetch_approved_chunks",
+      "lineno": 125,
+      "mutation_calls": [
+        "execute",
+        "update"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/services/semantic_retrieval/repository.py",
+      "function": "explain_semantic_search",
+      "lineno": 151,
+      "mutation_calls": [
+        "execute",
+        "update"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/services/semantic_retrieval/repository.py",
+      "function": "explain_hnsw_probe",
+      "lineno": 186,
+      "mutation_calls": [
+        "execute"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "single-mutation-candidate"
     },
     {
       "file": "app/services/study_plan_service_v2.py",
@@ -3616,7 +4122,7 @@
       "status": "single-mutation-candidate"
     }
   ],
-  "candidate_count": 292,
-  "critical_candidate_count": 55,
+  "candidate_count": 326,
+  "critical_candidate_count": 57,
   "policy": "Multi-write candidates remain not-proven until rollback/integration tests demonstrate atomicity."
 }

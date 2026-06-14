@@ -64,6 +64,99 @@
         "title": "AllScopeStagingVerificationReport",
         "type": "object"
       },
+      "ArtifactGovernanceStatusResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "approval_count": {
+            "title": "Approval Count",
+            "type": "integer"
+          },
+          "approved_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approved At"
+          },
+          "artifact_id": {
+            "format": "uuid",
+            "title": "Artifact Id",
+            "type": "string"
+          },
+          "publication_eligible": {
+            "title": "Publication Eligible",
+            "type": "boolean"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Published At"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "version_number": {
+            "title": "Version Number",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "artifact_id",
+          "version_number",
+          "status",
+          "approval_count",
+          "publication_eligible"
+        ],
+        "title": "ArtifactGovernanceStatusResponse",
+        "type": "object"
+      },
+      "ArtifactPublishRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "correlation_id": {
+            "anyOf": [
+              {
+                "maxLength": 120,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Correlation Id"
+          },
+          "expected_version": {
+            "minimum": 1.0,
+            "title": "Expected Version",
+            "type": "integer"
+          },
+          "reason": {
+            "maxLength": 4000,
+            "minLength": 3,
+            "title": "Reason",
+            "type": "string"
+          }
+        },
+        "required": [
+          "expected_version",
+          "reason"
+        ],
+        "title": "ArtifactPublishRequest",
+        "type": "object"
+      },
       "ArtifactReviewBundleResponse": {
         "properties": {
           "artifact": {
@@ -120,6 +213,101 @@
           "review_risk"
         ],
         "title": "ArtifactReviewBundleResponse",
+        "type": "object"
+      },
+      "ArtifactReviewHistoryResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "decisions": {
+            "items": {
+              "$ref": "#/components/schemas/ReviewDecisionHistoryItem"
+            },
+            "title": "Decisions",
+            "type": "array"
+          },
+          "transitions": {
+            "items": {
+              "$ref": "#/components/schemas/StateTransitionHistoryItem"
+            },
+            "title": "Transitions",
+            "type": "array"
+          }
+        },
+        "required": [
+          "decisions",
+          "transitions"
+        ],
+        "title": "ArtifactReviewHistoryResponse",
+        "type": "object"
+      },
+      "ArtifactRevisionRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "artifact_json": {
+            "title": "Artifact Json",
+            "type": "object"
+          },
+          "correlation_id": {
+            "anyOf": [
+              {
+                "maxLength": 120,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Correlation Id"
+          },
+          "expected_version": {
+            "minimum": 1.0,
+            "title": "Expected Version",
+            "type": "integer"
+          },
+          "reason": {
+            "maxLength": 4000,
+            "minLength": 3,
+            "title": "Reason",
+            "type": "string"
+          }
+        },
+        "required": [
+          "expected_version",
+          "artifact_json",
+          "reason"
+        ],
+        "title": "ArtifactRevisionRequest",
+        "type": "object"
+      },
+      "ArtifactRevisionResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "new_artifact_id": {
+            "format": "uuid",
+            "title": "New Artifact Id",
+            "type": "string"
+          },
+          "previous_artifact_id": {
+            "format": "uuid",
+            "title": "Previous Artifact Id",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "version_number": {
+            "title": "Version Number",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "previous_artifact_id",
+          "new_artifact_id",
+          "version_number",
+          "status"
+        ],
+        "title": "ArtifactRevisionResponse",
         "type": "object"
       },
       "AssessmentAttemptRequest": {
@@ -1481,6 +1669,16 @@
           "study_plan_templates"
         ],
         "title": "ContentLayer",
+        "type": "string"
+      },
+      "ContentReviewAction": {
+        "enum": [
+          "approve",
+          "reject",
+          "quarantine",
+          "request_changes"
+        ],
+        "title": "ContentReviewAction",
         "type": "string"
       },
       "ContentScope": {
@@ -3706,6 +3904,41 @@
         "title": "QualityScoreDistribution",
         "type": "object"
       },
+      "QuarantineRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "correlation_id": {
+            "anyOf": [
+              {
+                "maxLength": 120,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Correlation Id"
+          },
+          "reason": {
+            "maxLength": 4000,
+            "minLength": 3,
+            "title": "Reason",
+            "type": "string"
+          },
+          "reason_code": {
+            "maxLength": 80,
+            "minLength": 2,
+            "title": "Reason Code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "reason_code",
+          "reason"
+        ],
+        "title": "QuarantineRequest",
+        "type": "object"
+      },
       "QueuedLessonSummary": {
         "properties": {
           "answer_key_verified": {
@@ -3945,6 +4178,274 @@
         "title": "ReviewActionResponse",
         "type": "object"
       },
+      "ReviewAssignmentAcceptRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "conflict_of_interest": {
+            "default": false,
+            "title": "Conflict Of Interest",
+            "type": "boolean"
+          }
+        },
+        "title": "ReviewAssignmentAcceptRequest",
+        "type": "object"
+      },
+      "ReviewAssignmentCreateRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "due_by": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Due By"
+          },
+          "idempotency_key": {
+            "anyOf": [
+              {
+                "maxLength": 120,
+                "minLength": 8,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency Key"
+          },
+          "priority": {
+            "default": "normal",
+            "enum": [
+              "low",
+              "normal",
+              "high",
+              "urgent"
+            ],
+            "title": "Priority",
+            "type": "string"
+          },
+          "reviewer_competencies": {
+            "additionalProperties": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "title": "Reviewer Competencies",
+            "type": "object"
+          },
+          "reviewer_ids": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 10,
+            "minItems": 2,
+            "title": "Reviewer Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "reviewer_ids"
+        ],
+        "title": "ReviewAssignmentCreateRequest",
+        "type": "object"
+      },
+      "ReviewAssignmentGovernanceResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "artifact_id": {
+            "format": "uuid",
+            "title": "Artifact Id",
+            "type": "string"
+          },
+          "artifact_version": {
+            "title": "Artifact Version",
+            "type": "integer"
+          },
+          "assigned_count": {
+            "title": "Assigned Count",
+            "type": "integer"
+          },
+          "assignment_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Assignment Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "assignment_ids",
+          "artifact_id",
+          "artifact_version",
+          "assigned_count"
+        ],
+        "title": "ReviewAssignmentGovernanceResponse",
+        "type": "object"
+      },
+      "ReviewAssignmentItemResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "artifact_id": {
+            "format": "uuid",
+            "title": "Artifact Id",
+            "type": "string"
+          },
+          "artifact_version": {
+            "title": "Artifact Version",
+            "type": "integer"
+          },
+          "assigned_at": {
+            "format": "date-time",
+            "title": "Assigned At",
+            "type": "string"
+          },
+          "assigned_to": {
+            "title": "Assigned To",
+            "type": "string"
+          },
+          "assignment_id": {
+            "format": "uuid",
+            "title": "Assignment Id",
+            "type": "string"
+          },
+          "due_by": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Due By"
+          },
+          "escalated_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Escalated At"
+          },
+          "last_reminded_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Reminded At"
+          },
+          "priority": {
+            "title": "Priority",
+            "type": "string"
+          },
+          "reassigned_from_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reassigned From Id"
+          },
+          "reminder_count": {
+            "default": 0,
+            "title": "Reminder Count",
+            "type": "integer"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "assignment_id",
+          "artifact_id",
+          "artifact_version",
+          "assigned_to",
+          "status",
+          "assigned_at",
+          "due_by",
+          "priority"
+        ],
+        "title": "ReviewAssignmentItemResponse",
+        "type": "object"
+      },
+      "ReviewAssignmentReassignRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "due_by": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Due By"
+          },
+          "idempotency_key": {
+            "anyOf": [
+              {
+                "maxLength": 160,
+                "minLength": 8,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency Key"
+          },
+          "new_reviewer_id": {
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "New Reviewer Id",
+            "type": "string"
+          },
+          "reason": {
+            "maxLength": 4000,
+            "minLength": 3,
+            "title": "Reason",
+            "type": "string"
+          },
+          "reviewer_competencies": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 20,
+            "title": "Reviewer Competencies",
+            "type": "array"
+          }
+        },
+        "required": [
+          "new_reviewer_id",
+          "reason"
+        ],
+        "title": "ReviewAssignmentReassignRequest",
+        "type": "object"
+      },
       "ReviewAssignmentRequest": {
         "properties": {
           "artifact_id": {
@@ -4027,6 +4528,236 @@
         ],
         "title": "ReviewDecision",
         "type": "string"
+      },
+      "ReviewDecisionHistoryItem": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "title": "Action",
+            "type": "string"
+          },
+          "artifact_id": {
+            "format": "uuid",
+            "title": "Artifact Id",
+            "type": "string"
+          },
+          "artifact_version": {
+            "title": "Artifact Version",
+            "type": "integer"
+          },
+          "comments": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Comments"
+          },
+          "correlation_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Correlation Id"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "decision_id": {
+            "format": "uuid",
+            "title": "Decision Id",
+            "type": "string"
+          },
+          "policy_version": {
+            "title": "Policy Version",
+            "type": "string"
+          },
+          "reason_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason Code"
+          },
+          "reviewer_id": {
+            "title": "Reviewer Id",
+            "type": "string"
+          },
+          "rubric_id": {
+            "title": "Rubric Id",
+            "type": "string"
+          },
+          "rubric_results": {
+            "title": "Rubric Results",
+            "type": "object"
+          },
+          "rubric_version": {
+            "title": "Rubric Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "decision_id",
+          "artifact_id",
+          "artifact_version",
+          "reviewer_id",
+          "action",
+          "reason_code",
+          "comments",
+          "rubric_id",
+          "rubric_version",
+          "rubric_results",
+          "policy_version",
+          "correlation_id",
+          "created_at"
+        ],
+        "title": "ReviewDecisionHistoryItem",
+        "type": "object"
+      },
+      "ReviewDecisionRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "$ref": "#/components/schemas/ContentReviewAction"
+          },
+          "comments": {
+            "anyOf": [
+              {
+                "maxLength": 4000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Comments"
+          },
+          "conflict_of_interest": {
+            "default": false,
+            "title": "Conflict Of Interest",
+            "type": "boolean"
+          },
+          "correlation_id": {
+            "anyOf": [
+              {
+                "maxLength": 120,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Correlation Id"
+          },
+          "expected_version": {
+            "minimum": 1.0,
+            "title": "Expected Version",
+            "type": "integer"
+          },
+          "idempotency_key": {
+            "maxLength": 160,
+            "minLength": 8,
+            "title": "Idempotency Key",
+            "type": "string"
+          },
+          "reason_code": {
+            "anyOf": [
+              {
+                "maxLength": 80,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason Code"
+          },
+          "rubric_results": {
+            "title": "Rubric Results",
+            "type": "object"
+          }
+        },
+        "required": [
+          "action",
+          "expected_version",
+          "idempotency_key"
+        ],
+        "title": "ReviewDecisionRequest",
+        "type": "object"
+      },
+      "ReviewDecisionResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "title": "Action",
+            "type": "string"
+          },
+          "approval_count": {
+            "title": "Approval Count",
+            "type": "integer"
+          },
+          "artifact_id": {
+            "format": "uuid",
+            "title": "Artifact Id",
+            "type": "string"
+          },
+          "artifact_version": {
+            "title": "Artifact Version",
+            "type": "integer"
+          },
+          "current_status": {
+            "title": "Current Status",
+            "type": "string"
+          },
+          "decision_id": {
+            "format": "uuid",
+            "title": "Decision Id",
+            "type": "string"
+          },
+          "idempotent_replay": {
+            "default": false,
+            "title": "Idempotent Replay",
+            "type": "boolean"
+          },
+          "previous_status": {
+            "title": "Previous Status",
+            "type": "string"
+          },
+          "quorum_reached": {
+            "title": "Quorum Reached",
+            "type": "boolean"
+          },
+          "quorum_threshold": {
+            "title": "Quorum Threshold",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "decision_id",
+          "artifact_id",
+          "artifact_version",
+          "action",
+          "previous_status",
+          "current_status",
+          "approval_count",
+          "quorum_threshold",
+          "quorum_reached"
+        ],
+        "title": "ReviewDecisionResponse",
+        "type": "object"
       },
       "ReviewItemRequest": {
         "properties": {
@@ -4299,6 +5030,81 @@
           "total_open"
         ],
         "title": "ReviewerWorkloadResponse",
+        "type": "object"
+      },
+      "RunResponse": {
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "durable_job_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Durable Job Id"
+          },
+          "provider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Provider"
+          },
+          "requested_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Requested By"
+          },
+          "run_id": {
+            "title": "Run Id",
+            "type": "string"
+          },
+          "run_metadata": {
+            "title": "Run Metadata",
+            "type": "object"
+          },
+          "scope_id": {
+            "title": "Scope Id",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "run_id",
+          "scope_id",
+          "status",
+          "requested_by",
+          "provider",
+          "run_metadata",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "RunResponse",
         "type": "object"
       },
       "SafetyClassification": {
@@ -4972,6 +5778,231 @@
         "title": "StagingSeedSkippedArtifactResponse",
         "type": "object"
       },
+      "StaleReviewAssignmentResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "artifact_id": {
+            "format": "uuid",
+            "title": "Artifact Id",
+            "type": "string"
+          },
+          "artifact_version": {
+            "title": "Artifact Version",
+            "type": "integer"
+          },
+          "assigned_at": {
+            "format": "date-time",
+            "title": "Assigned At",
+            "type": "string"
+          },
+          "assigned_to": {
+            "title": "Assigned To",
+            "type": "string"
+          },
+          "assignment_id": {
+            "format": "uuid",
+            "title": "Assignment Id",
+            "type": "string"
+          },
+          "due_by": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Due By"
+          },
+          "escalated_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Escalated At"
+          },
+          "last_reminded_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Reminded At"
+          },
+          "priority": {
+            "title": "Priority",
+            "type": "string"
+          },
+          "reassigned_from_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reassigned From Id"
+          },
+          "reminder_count": {
+            "default": 0,
+            "title": "Reminder Count",
+            "type": "integer"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "assignment_id",
+          "artifact_id",
+          "artifact_version",
+          "assigned_to",
+          "status",
+          "assigned_at",
+          "due_by",
+          "priority"
+        ],
+        "title": "StaleReviewAssignmentResponse",
+        "type": "object"
+      },
+      "StartRunRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "scope_id": {
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "Scope Id",
+            "type": "string"
+          },
+          "source_chunk_ids_by_caps_ref": {
+            "additionalProperties": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "title": "Source Chunk Ids By Caps Ref",
+            "type": "object"
+          },
+          "task_specs": {
+            "items": {
+              "$ref": "#/components/schemas/TaskSpecRequest"
+            },
+            "maxItems": 100,
+            "minItems": 1,
+            "title": "Task Specs",
+            "type": "array"
+          }
+        },
+        "required": [
+          "scope_id",
+          "task_specs"
+        ],
+        "title": "StartRunRequest",
+        "type": "object"
+      },
+      "StateTransitionHistoryItem": {
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": {
+            "title": "Actor Id",
+            "type": "string"
+          },
+          "artifact_id": {
+            "format": "uuid",
+            "title": "Artifact Id",
+            "type": "string"
+          },
+          "artifact_version": {
+            "title": "Artifact Version",
+            "type": "integer"
+          },
+          "correlation_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Correlation Id"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "event_id": {
+            "format": "uuid",
+            "title": "Event Id",
+            "type": "string"
+          },
+          "new_status": {
+            "title": "New Status",
+            "type": "string"
+          },
+          "policy_version": {
+            "title": "Policy Version",
+            "type": "string"
+          },
+          "previous_status": {
+            "title": "Previous Status",
+            "type": "string"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          },
+          "reason_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason Code"
+          }
+        },
+        "required": [
+          "event_id",
+          "artifact_id",
+          "artifact_version",
+          "previous_status",
+          "new_status",
+          "actor_id",
+          "reason_code",
+          "reason",
+          "policy_version",
+          "correlation_id",
+          "created_at"
+        ],
+        "title": "StateTransitionHistoryItem",
+        "type": "object"
+      },
       "StudyPlanGenerateRequest": {
         "properties": {
           "gap_ratio": {
@@ -4983,6 +6014,213 @@
           }
         },
         "title": "StudyPlanGenerateRequest",
+        "type": "object"
+      },
+      "TaskResponse": {
+        "properties": {
+          "attempt_number": {
+            "title": "Attempt Number",
+            "type": "integer"
+          },
+          "caps_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Caps Ref"
+          },
+          "content_layer": {
+            "title": "Content Layer",
+            "type": "string"
+          },
+          "cost_metadata": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cost Metadata"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "finished_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Finished At"
+          },
+          "model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model"
+          },
+          "output_artifact_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Output Artifact Ids",
+            "type": "array"
+          },
+          "prompt_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompt Version"
+          },
+          "provider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Provider"
+          },
+          "started_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Started At"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "task_id": {
+            "title": "Task Id",
+            "type": "string"
+          },
+          "token_usage": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Token Usage"
+          },
+          "validation_failures": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Validation Failures",
+            "type": "array"
+          }
+        },
+        "required": [
+          "task_id",
+          "caps_ref",
+          "content_layer",
+          "status",
+          "attempt_number",
+          "provider",
+          "model",
+          "prompt_version",
+          "token_usage",
+          "cost_metadata",
+          "validation_failures",
+          "output_artifact_ids",
+          "started_at",
+          "finished_at",
+          "created_at"
+        ],
+        "title": "TaskResponse",
+        "type": "object"
+      },
+      "TaskSpecRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "caps_ref": {
+            "pattern": "^\\d+\\.[A-Z]+\\.\\d+(\\.\\d+)?$",
+            "title": "Caps Ref",
+            "type": "string"
+          },
+          "content_type": {
+            "enum": [
+              "diagnostic_item",
+              "lesson"
+            ],
+            "title": "Content Type",
+            "type": "string"
+          },
+          "count": {
+            "default": 5,
+            "maximum": 20.0,
+            "minimum": 1.0,
+            "title": "Count",
+            "type": "integer"
+          },
+          "grade": {
+            "default": 4,
+            "maximum": 12.0,
+            "minimum": 0.0,
+            "title": "Grade",
+            "type": "integer"
+          },
+          "language": {
+            "default": "en",
+            "maxLength": 5,
+            "minLength": 2,
+            "title": "Language",
+            "type": "string"
+          },
+          "subject": {
+            "default": "Mathematics",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Subject",
+            "type": "string"
+          },
+          "subject_code": {
+            "default": "MATHS",
+            "maxLength": 20,
+            "minLength": 1,
+            "title": "Subject Code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "caps_ref",
+          "content_type"
+        ],
+        "title": "TaskSpecRequest",
         "type": "object"
       },
       "TokenResponse": {
@@ -5303,64 +6541,6 @@
           }
         ],
         "summary": "Get Artifact",
-        "tags": [
-          "admin-content-factory"
-        ]
-      }
-    },
-    "/api/v2/admin/content-factory/artifacts/{artifact_id}/approve": {
-      "post": {
-        "operationId": "approve_artifact_api_v2_admin_content_factory_artifacts__artifact_id__approve_post",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "artifact_id",
-            "required": true,
-            "schema": {
-              "format": "uuid",
-              "title": "Artifact Id",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ContentFactoryActionRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ContentFactoryActionResponse"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Approve Artifact",
         "tags": [
           "admin-content-factory"
         ]
@@ -9388,6 +10568,218 @@
         ]
       }
     },
+    "/api/v2/admin/generation/runs": {
+      "post": {
+        "description": "Create and enqueue a run using only server-resolved approved sources.",
+        "operationId": "start_generation_run_api_v2_admin_generation_runs_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartRunRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Start Generation Run",
+        "tags": [
+          "generation"
+        ]
+      }
+    },
+    "/api/v2/admin/generation/runs/{run_id}": {
+      "get": {
+        "operationId": "get_generation_run_api_v2_admin_generation_runs__run_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Generation Run",
+        "tags": [
+          "generation"
+        ]
+      }
+    },
+    "/api/v2/admin/generation/runs/{run_id}/cancel": {
+      "post": {
+        "operationId": "cancel_generation_run_api_v2_admin_generation_runs__run_id__cancel_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Cancel Generation Run Api V2 Admin Generation Runs  Run Id  Cancel Post",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Cancel Generation Run",
+        "tags": [
+          "generation"
+        ]
+      }
+    },
+    "/api/v2/admin/generation/runs/{run_id}/tasks": {
+      "get": {
+        "operationId": "list_run_tasks_api_v2_admin_generation_runs__run_id__tasks_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TaskResponse"
+                  },
+                  "title": "Response List Run Tasks Api V2 Admin Generation Runs  Run Id  Tasks Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Run Tasks",
+        "tags": [
+          "generation"
+        ]
+      }
+    },
     "/api/v2/assessments": {
       "get": {
         "operationId": "list_assessments_api_v2_assessments_get",
@@ -10513,6 +11905,514 @@
         "summary": "Consent Status",
         "tags": [
           "POPIA Consent"
+        ]
+      }
+    },
+    "/api/v2/content-review/artifacts/{artifact_id}/assignments": {
+      "post": {
+        "operationId": "assign_reviewers_api_v2_content_review_artifacts__artifact_id__assignments_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "artifact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Artifact Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewAssignmentCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewAssignmentGovernanceResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Assign Reviewers",
+        "tags": [
+          "content-review-governance"
+        ]
+      }
+    },
+    "/api/v2/content-review/artifacts/{artifact_id}/decisions": {
+      "post": {
+        "operationId": "submit_review_decision_api_v2_content_review_artifacts__artifact_id__decisions_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "artifact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Artifact Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewDecisionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewDecisionResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Submit Review Decision",
+        "tags": [
+          "content-review-governance"
+        ]
+      }
+    },
+    "/api/v2/content-review/artifacts/{artifact_id}/history": {
+      "get": {
+        "operationId": "get_review_history_api_v2_content_review_artifacts__artifact_id__history_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "artifact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Artifact Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArtifactReviewHistoryResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Review History",
+        "tags": [
+          "content-review-governance"
+        ]
+      }
+    },
+    "/api/v2/content-review/artifacts/{artifact_id}/publish": {
+      "post": {
+        "operationId": "publish_artifact_api_v2_content_review_artifacts__artifact_id__publish_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "artifact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Artifact Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ArtifactPublishRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArtifactGovernanceStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Publish Artifact",
+        "tags": [
+          "content-review-governance"
+        ]
+      }
+    },
+    "/api/v2/content-review/artifacts/{artifact_id}/quarantine": {
+      "post": {
+        "operationId": "quarantine_artifact_api_v2_content_review_artifacts__artifact_id__quarantine_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "artifact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Artifact Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuarantineRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArtifactGovernanceStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Quarantine Artifact",
+        "tags": [
+          "content-review-governance"
+        ]
+      }
+    },
+    "/api/v2/content-review/artifacts/{artifact_id}/revisions": {
+      "post": {
+        "operationId": "create_artifact_revision_api_v2_content_review_artifacts__artifact_id__revisions_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "artifact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Artifact Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ArtifactRevisionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArtifactRevisionResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Artifact Revision",
+        "tags": [
+          "content-review-governance"
+        ]
+      }
+    },
+    "/api/v2/content-review/assignments/stale": {
+      "get": {
+        "operationId": "list_stale_assignments_api_v2_content_review_assignments_stale_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 200,
+              "maximum": 1000,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/StaleReviewAssignmentResponse"
+                  },
+                  "title": "Response List Stale Assignments Api V2 Content Review Assignments Stale Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Stale Assignments",
+        "tags": [
+          "content-review-governance"
+        ]
+      }
+    },
+    "/api/v2/content-review/assignments/{assignment_id}/accept": {
+      "post": {
+        "operationId": "accept_assignment_api_v2_content_review_assignments__assignment_id__accept_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "assignment_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Assignment Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewAssignmentAcceptRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArtifactGovernanceStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Accept Assignment",
+        "tags": [
+          "content-review-governance"
+        ]
+      }
+    },
+    "/api/v2/content-review/assignments/{assignment_id}/reassign": {
+      "post": {
+        "operationId": "reassign_review_api_v2_content_review_assignments__assignment_id__reassign_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "assignment_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Assignment Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewAssignmentReassignRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewAssignmentItemResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Reassign Review",
+        "tags": [
+          "content-review-governance"
         ]
       }
     },
@@ -13655,64 +15555,6 @@
           }
         ],
         "summary": "Get Artifact",
-        "tags": [
-          "admin-content-factory"
-        ]
-      }
-    },
-    "/v2/admin/content-factory/artifacts/{artifact_id}/approve": {
-      "post": {
-        "operationId": "approve_artifact_v2_admin_content_factory_artifacts__artifact_id__approve_post",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "artifact_id",
-            "required": true,
-            "schema": {
-              "format": "uuid",
-              "title": "Artifact Id",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ContentFactoryActionRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ContentFactoryActionResponse"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Approve Artifact",
         "tags": [
           "admin-content-factory"
         ]
@@ -17740,6 +19582,218 @@
         ]
       }
     },
+    "/v2/admin/generation/runs": {
+      "post": {
+        "description": "Create and enqueue a run using only server-resolved approved sources.",
+        "operationId": "start_generation_run_v2_admin_generation_runs_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartRunRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Start Generation Run",
+        "tags": [
+          "generation"
+        ]
+      }
+    },
+    "/v2/admin/generation/runs/{run_id}": {
+      "get": {
+        "operationId": "get_generation_run_v2_admin_generation_runs__run_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Generation Run",
+        "tags": [
+          "generation"
+        ]
+      }
+    },
+    "/v2/admin/generation/runs/{run_id}/cancel": {
+      "post": {
+        "operationId": "cancel_generation_run_v2_admin_generation_runs__run_id__cancel_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Cancel Generation Run V2 Admin Generation Runs  Run Id  Cancel Post",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Cancel Generation Run",
+        "tags": [
+          "generation"
+        ]
+      }
+    },
+    "/v2/admin/generation/runs/{run_id}/tasks": {
+      "get": {
+        "operationId": "list_run_tasks_v2_admin_generation_runs__run_id__tasks_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TaskResponse"
+                  },
+                  "title": "Response List Run Tasks V2 Admin Generation Runs  Run Id  Tasks Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Run Tasks",
+        "tags": [
+          "generation"
+        ]
+      }
+    },
     "/v2/assessments": {
       "get": {
         "operationId": "list_assessments_v2_assessments_get",
@@ -18865,6 +20919,514 @@
         "summary": "Consent Status",
         "tags": [
           "POPIA Consent"
+        ]
+      }
+    },
+    "/v2/content-review/artifacts/{artifact_id}/assignments": {
+      "post": {
+        "operationId": "assign_reviewers_v2_content_review_artifacts__artifact_id__assignments_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "artifact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Artifact Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewAssignmentCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewAssignmentGovernanceResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Assign Reviewers",
+        "tags": [
+          "content-review-governance"
+        ]
+      }
+    },
+    "/v2/content-review/artifacts/{artifact_id}/decisions": {
+      "post": {
+        "operationId": "submit_review_decision_v2_content_review_artifacts__artifact_id__decisions_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "artifact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Artifact Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewDecisionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewDecisionResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Submit Review Decision",
+        "tags": [
+          "content-review-governance"
+        ]
+      }
+    },
+    "/v2/content-review/artifacts/{artifact_id}/history": {
+      "get": {
+        "operationId": "get_review_history_v2_content_review_artifacts__artifact_id__history_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "artifact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Artifact Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArtifactReviewHistoryResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Review History",
+        "tags": [
+          "content-review-governance"
+        ]
+      }
+    },
+    "/v2/content-review/artifacts/{artifact_id}/publish": {
+      "post": {
+        "operationId": "publish_artifact_v2_content_review_artifacts__artifact_id__publish_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "artifact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Artifact Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ArtifactPublishRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArtifactGovernanceStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Publish Artifact",
+        "tags": [
+          "content-review-governance"
+        ]
+      }
+    },
+    "/v2/content-review/artifacts/{artifact_id}/quarantine": {
+      "post": {
+        "operationId": "quarantine_artifact_v2_content_review_artifacts__artifact_id__quarantine_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "artifact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Artifact Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuarantineRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArtifactGovernanceStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Quarantine Artifact",
+        "tags": [
+          "content-review-governance"
+        ]
+      }
+    },
+    "/v2/content-review/artifacts/{artifact_id}/revisions": {
+      "post": {
+        "operationId": "create_artifact_revision_v2_content_review_artifacts__artifact_id__revisions_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "artifact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Artifact Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ArtifactRevisionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArtifactRevisionResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Artifact Revision",
+        "tags": [
+          "content-review-governance"
+        ]
+      }
+    },
+    "/v2/content-review/assignments/stale": {
+      "get": {
+        "operationId": "list_stale_assignments_v2_content_review_assignments_stale_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 200,
+              "maximum": 1000,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/StaleReviewAssignmentResponse"
+                  },
+                  "title": "Response List Stale Assignments V2 Content Review Assignments Stale Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Stale Assignments",
+        "tags": [
+          "content-review-governance"
+        ]
+      }
+    },
+    "/v2/content-review/assignments/{assignment_id}/accept": {
+      "post": {
+        "operationId": "accept_assignment_v2_content_review_assignments__assignment_id__accept_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "assignment_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Assignment Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewAssignmentAcceptRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArtifactGovernanceStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Accept Assignment",
+        "tags": [
+          "content-review-governance"
+        ]
+      }
+    },
+    "/v2/content-review/assignments/{assignment_id}/reassign": {
+      "post": {
+        "operationId": "reassign_review_v2_content_review_assignments__assignment_id__reassign_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "assignment_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Assignment Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewAssignmentReassignRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewAssignmentItemResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Reassign Review",
+        "tags": [
+          "content-review-governance"
         ]
       }
     },

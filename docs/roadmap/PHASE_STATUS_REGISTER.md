@@ -7,14 +7,14 @@
 
 > This register tracks the status of all 13 phases plus the audit remediation track. A phase is **Verified Complete** only when its four-artefact control set is approved: execution plan, implementation report, evidence pack/index, and passing phase audit report.
 
-> Active sprint namespace: `atlas`
+> Canonical phase-control paths do not use sprint codenames. Legacy `atlas` documents remain historical inputs until migrated.
 
 ## Programme Status Summary
 
 | Segment | Status |
 |---|---|
 | Overall programme | **Open — full lifecycle in progress** |
-| Phases 0–7 | **Open — Phase 1 and Phase 2 verified complete; remaining foundation phases open** |
+| Phases 0–7 | **Open — Phase 1 revalidation required; Phase 2 closed with Phase 3 compatibility verification pending; remaining phases open** |
 | Audit remediation | Governed by `audit_remediation_roadmap_2026-06-13.md` |
 | Phases 8–13 | In progress per individual phase status |
 | Controlled beta | Blocked until all prerequisite phases pass |
@@ -25,22 +25,22 @@
 |:---:|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | R | Audit Remediation | *See own roadmap* | — | — | — | — | Independent | 2026-06-13 |
 | 0 | Environment and Reproducibility | Not Started | — | — | — | — | None | 2026-06-14 |
-| 1 | Batch AI Content Generation | **Verified Complete** | ✅ `docs/roadmap/execution/atlas/phase_01_execution_plan.md` | ✅ `docs/roadmap/execution/atlas/phase_01_implementation_report.md` | ✅ `docs/release-evidence/atlas/phase-01/phase_01_evidence_index.md` | ✅ `docs/release-evidence/atlas/phase-01/phase_01_audit_report.md` | Phase 0 | 2026-06-14 |
+| 1 | Batch AI Content Generation | **Revalidation Required** | ✅ `docs/roadmap/execution/atlas/phase_01_execution_plan.md` | ✅ `docs/roadmap/execution/atlas/phase_01_implementation_report.md` | ✅ `docs/release-evidence/atlas/phase-01/phase_01_evidence_index.md` | ✅ `docs/release-evidence/atlas/phase-01/phase_01_audit_report.md` | Phase 0 | 2026-06-14 |
 
-> **Phase 1 Audit Outcome (2026-06-14):** Verified Complete
+> **Phase 1 Integration Audit Update (2026-06-14):** Revalidation Required
 > - Disposable PostgreSQL verification passed with `scripts/verify_phase1_postgres.sh`.
 > - Evidence index and corrective audit report are complete.
-> - Canonical branch merge remains a separate release step.
+> - The Phase 3 integration review found and corrected a broken canonical provider adapter; Phase 1 gates and audit must be refreshed against the merged corrective commit.
 | 2 | Semantic Retrieval | **Verified Complete** | ✅ `docs/roadmap/execution/phase_02_execution_plan.md` | ✅ `docs/roadmap/execution/phase_02_implementation_report.md` | ✅ `docs/release-evidence/phase-02/phase_02_evidence_index.md` | ✅ `docs/release-evidence/phase-02/phase_02_audit_report.md` | Phase 1 | 2026-06-14 |
-| 3 | Educator Consensus and Content Governance | In Progress | ✅ `phase_03_execution_plan.md` | ✅ `phase_03_implementation_report.md` | ⬜ | ⬜ | Phase 1 | 2026-06-14 |
-| 4 | IRT Quality and Self-Healing Controls | In Progress | ✅ `phase_04_execution_plan.md` | ✅ `phase_04_implementation_report.md` | ⬜ | ⬜ | Phases 2–3 | 2026-06-14 |
-| 5 | Learner AI Tutor | In Progress | ✅ `phase_05_execution_plan.md` | ✅ `phase_05_implementation_report.md` | ⬜ | ⬜ | Phases 1, 6 | 2026-06-14 |
-| 6 | Monitoring, Budget, and Production Hardening | In Progress | ✅ `phase_06_execution_plan.md` | ✅ `phase_06_implementation_report.md` | ⬜ | ⬜ | Phases 1–5 | 2026-06-14 |
-| 7 | Beta Content Coverage and Language Readiness | In Progress | ✅ `phase_07_execution_plan.md` | ✅ `phase_07_implementation_report.md` | ⬜ | ⬜ | Phases 1–6 | 2026-06-14 |
-| 8 | Architecture and Codebase Assurance | In Progress | ✅ `phase_08_execution_plan.md` | ✅ `phase_08_implementation_report.md` | ⬜ | ⬜ | Phases 0–7 | 2026-06-14 |
-| 9 | CI Authority and Reproducible Evidence | In Progress | ✅ `phase_09_execution_plan.md` | ✅ `phase_09_implementation_report.md` | ⬜ | ⬜ | Phase 8 | 2026-06-14 |
-| 10 | Product Readiness | In Progress | ✅ `phase_10_execution_plan.md` | ✅ `phase_10_implementation_report.md` | ⬜ | ⬜ | Phase 9 | 2026-06-14 |
-| 11 | Operations Readiness | In Progress | ✅ `phase_11_execution_plan.md` | ✅ `phase_11_implementation_report.md` | ⬜ | ⬜ | Phase 9 | 2026-06-14 |
+| 3 | Educator Consensus and Content Governance | **Verification Pending** | ✅ `docs/roadmap/execution/phase_03_execution_plan.md` | ✅ `docs/roadmap/execution/phase_03_implementation_report.md` | 🟡 `docs/release-evidence/phase-03/phase_03_evidence_index.md` | 🟡 `docs/release-evidence/phase-03/phase_03_audit_report.md` | Phases 1–2 | 2026-06-14 |
+| 4 | IRT Quality and Self-Healing Controls | Planning | ✅ `phase_04_execution_plan.md` | ✅ `phase_04_implementation_report.md` | ⬜ | ⬜ | Phases 2–3 | 2026-06-14 |
+| 5 | Learner AI Tutor | Planning | ✅ `phase_05_execution_plan.md` | ✅ `phase_05_implementation_report.md` | ⬜ | ⬜ | Phases 1, 6 | 2026-06-14 |
+| 6 | Monitoring, Budget, and Production Hardening | Planning | ✅ `phase_06_execution_plan.md` | ✅ `phase_06_implementation_report.md` | ⬜ | ⬜ | Phases 1–5 | 2026-06-14 |
+| 7 | Beta Content Coverage and Language Readiness | Planning | ✅ `phase_07_execution_plan.md` | ✅ `phase_07_implementation_report.md` | ⬜ | ⬜ | Phases 1–6 | 2026-06-14 |
+| 8 | Architecture and Codebase Assurance | Planning | ✅ `phase_08_execution_plan.md` | ✅ `phase_08_implementation_report.md` | ⬜ | ⬜ | Phases 0–7 | 2026-06-14 |
+| 9 | CI Authority and Reproducible Evidence | Planning | ✅ `phase_09_execution_plan.md` | ✅ `phase_09_implementation_report.md` | ⬜ | ⬜ | Phase 8 | 2026-06-14 |
+| 10 | Product Readiness | Planning | ✅ `phase_10_execution_plan.md` | ✅ `phase_10_implementation_report.md` | ⬜ | ⬜ | Phase 9 | 2026-06-14 |
+| 11 | Operations Readiness | Planning | ✅ `phase_11_execution_plan.md` | ✅ `phase_11_implementation_report.md` | ⬜ | ⬜ | Phase 9 | 2026-06-14 |
 | 12 | External Review and Governance | Not Started | ✅ `phase_12_execution_plan.md` | — | ⬜ | ⬜ | Phases 0–11 | 2026-06-14 |
 | 13 | Controlled Beta | Not Started | ✅ `phase_13_execution_plan.md` | — | ⬜ | ⬜ | Phases 0–12 | 2026-06-14 |
 
@@ -53,6 +53,7 @@
 | Ready to Start | Execution plan approved; awaiting authorization to begin |
 | In Progress | Actively executing under controlled WIP |
 | Verification Pending | Implementation frozen; preparing for verification |
+| Revalidation Required | A previously closed phase changed or a material integration defect was found; targeted gates and audit must be refreshed |
 | Evidence Complete | Evidence pack frozen; awaiting independent audit |
 | Audit Review | Independent phase audit in progress |
 | Closure Review | Audit passed; final closure review pending |
@@ -104,10 +105,10 @@ Each phase requires:
 
 | Artefact | Path Template | Purpose |
 |---|---|---|
-| Execution Plan | `docs/roadmap/execution/<codename>/phase_<NN>_execution_plan.md` | Defines scope, controls, acceptance criteria before work starts |
-| Implementation Report | `docs/roadmap/execution/<codename>/phase_<NN>_implementation_report.md` | Reconciles planned vs actual delivery |
-| Evidence Index | `docs/release-evidence/<codename>/phase-<NN>/phase_<NN>_evidence_index.md` | Attributable proof for every criterion |
-| Phase Audit Report | `docs/release-evidence/<codename>/phase-<NN>/phase_<NN>_audit_report.md` | Independent verification and closure verdict |
+| Execution Plan | `docs/roadmap/execution/phase_<NN>_execution_plan.md` | Defines scope, controls, acceptance criteria before work starts |
+| Implementation Report | `docs/roadmap/execution/phase_<NN>_implementation_report.md` | Reconciles planned vs actual delivery |
+| Evidence Index | `docs/release-evidence/phase-<NN>/phase_<NN>_evidence_index.md` | Attributable proof for every criterion |
+| Phase Audit Report | `docs/release-evidence/phase-<NN>/phase_<NN>_audit_report.md` | Independent verification and closure verdict |
 
 ## Evidence Directory Structure
 

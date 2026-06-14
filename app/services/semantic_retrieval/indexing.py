@@ -130,6 +130,7 @@ class RetrievalIndexingService:
         document_searchable = (
             document.status in SEARCHABLE_STATUSES
             and document.license_status in COMPATIBLE_LICENSE_STATUSES
+            and _metadata_allows_generated_artifact(document.metadata)
         )
         vectors: list[list[float] | None] = [None] * len(chunks)
         eligible_indexes = [
@@ -137,6 +138,7 @@ class RetrievalIndexingService:
             for index, chunk in enumerate(chunks)
             if document_searchable
             and (chunk.status or document.status) in SEARCHABLE_STATUSES
+            and _metadata_allows_generated_artifact(chunk.metadata)
         ]
         if eligible_indexes:
             embedded = await self.embedding_provider.embed(
@@ -171,6 +173,8 @@ class RetrievalIndexingService:
                     WHERE c.document_id = :document_id
                       AND c.status IN ('approved','indexed','training_ready')
                       AND d.status IN ('approved','indexed','training_ready')
+                      AND COALESCE(c.source_metadata->>'artifact_status', 'published') IN ('published','promoted_production')
+                      AND COALESCE(d.source_metadata->>'artifact_status', 'published') IN ('published','promoted_production')
                     ORDER BY c.chunk_index
                     """
                 ),
@@ -344,3 +348,13 @@ def _validate_document(document: SourceDocumentInput) -> None:
         raise ValueError("Document quality score must be between zero and one.")
     if document.status in SEARCHABLE_STATUSES and not document.license_status:
         raise ValueError("Searchable documents require an approved license status.")
+
+
+def _metadata_allows_generated_artifact(metadata: dict[str, Any] | None) -> bool:
+    """Fail closed when retrieval rows represent generated artifacts.
+
+    Ordinary curriculum sources have no ``artifact_status`` metadata and remain
+    eligible. Generated-artifact sources must be promoted or published.
+    """
+    status = str((metadata or {}).get("artifact_status") or "").strip().lower()
+    return not status or status in {"published", "promoted_production"}

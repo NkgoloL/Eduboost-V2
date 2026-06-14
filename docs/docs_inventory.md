@@ -1,19 +1,19 @@
 # Documentation Inventory
 
-Generated at: `2026-06-14T18:54:03Z`
-Commit: `7affa094d02d8060fc59b3698bf4ee13f9ea2457`
+Generated at: `2026-06-14T22:20:24Z`
+Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 
-- Documents: `1363`
+- Documents: `1370`
 - Generated docs: `4`
 
 ## Categories
 
 | Category | Count |
 |---|---:|
-| `adr` | 51 |
+| `adr` | 52 |
 | `api` | 6 |
 | `architecture` | 40 |
-| `general` | 676 |
+| `general` | 682 |
 | `release` | 488 |
 | `security` | 102 |
 
@@ -102,6 +102,7 @@ Commit: `7affa094d02d8060fc59b3698bf4ee13f9ea2457`
 | `docs/adr/ADR-027-observability-endpoint-access-control.md` | `adr` | ADR-027 — Observability Endpoint Access Control | 2183 | False |
 | `docs/adr/ADR-028-authoritative-deployment-target.md` | `adr` | ADR-028 — Authoritative Production Deployment Target | 2798 | False |
 | `docs/adr/ADR-029-supabase-auth-strategy.md` | `adr` | ADR-029: Supabase Auth Strategy | 1833 | False |
+| `docs/adr/ADR-030-content-review-governance.md` | `adr` | ADR-030 — Educator Consensus and Content Governance | 2178 | False |
 | `docs/adr/README.md` | `adr` | Architectural Decision Records (ADR) | 1203 | False |
 | `docs/adr/frontend/ADR-001-auth-model.md` | `adr` | ADR-001 — Frontend Auth Model (FastAPI JWT + httpOnly cookie) | 2813 | False |
 | `docs/adr/frontend/ADR-001-rollback.md` | `adr` | ADR-001 Rollback Plan — Supabase Auth Restoration | 2279 | False |
@@ -179,8 +180,8 @@ Commit: `7affa094d02d8060fc59b3698bf4ee13f9ea2457`
 | `docs/architecture/service_boundary_inventory.md` | `architecture` | Service Boundary Inventory | 13182 | False |
 | `docs/architecture/service_family_map.json` | `architecture` | Service Family Map | 102143 | False |
 | `docs/architecture/service_family_map.md` | `architecture` | Service Family Map | 27720 | False |
-| `docs/architecture/transaction_boundary_inventory.json` | `architecture` | Transaction Boundary Inventory | 92507 | False |
-| `docs/architecture/transaction_boundary_inventory.md` | `architecture` | Transaction Boundary Inventory | 41219 | False |
+| `docs/architecture/transaction_boundary_inventory.json` | `architecture` | Transaction Boundary Inventory | 105251 | False |
+| `docs/architecture/transaction_boundary_inventory.md` | `architecture` | Transaction Boundary Inventory | 46813 | False |
 | `docs/architecture/tx_route_wiring_inventory.json` | `architecture` | Tx Route Wiring Inventory | 9748 | False |
 | `docs/architecture/tx_route_wiring_inventory.md` | `architecture` | Transaction Route Wiring Inventory | 4524 | False |
 | `docs/architecture.md` | `general` | Architecture | 1189 | False |
@@ -475,7 +476,7 @@ Commit: `7affa094d02d8060fc59b3698bf4ee13f9ea2457`
 | `docs/observability/runbooks/notification_dead_letter_spike.md` | `general` | Runbook: notification_dead_letter_spike | 655 | False |
 | `docs/observability/runbooks/privacy_export_failure.md` | `general` | Runbook: privacy_export_failure | 639 | False |
 | `docs/observability/telemetry_privacy_retention_contract.md` | `general` | Telemetry Privacy and Retention Contract | 852 | False |
-| `docs/openapi.json` | `api` | Openapi | 566970 | False |
+| `docs/openapi.json` | `api` | Openapi | 633542 | False |
 | `docs/openapi_pr003.json` | `api` | Openapi Pr003 | 125292 | False |
 | `docs/openapi_pr004.json` | `api` | Openapi Pr004 | 132996 | False |
 | `docs/operations/CLUSTER_D_CLOSURE.md` | `general` | Cluster D CI/Deployment/Environment Closure | 1252 | False |
@@ -1121,7 +1122,7 @@ Commit: `7affa094d02d8060fc59b3698bf4ee13f9ea2457`
 | `docs/release/rollback_drill_evidence.json` | `release` | Rollback Drill Evidence | 522 | False |
 | `docs/release/rollback_drill_evidence.md` | `release` | Rollback Drill Evidence | 1292 | False |
 | `docs/release/rollback_runbook.md` | `release` | Release Rollback Runbook | 1333 | False |
-| `docs/release/route_alias_matrix.md` | `release` | EduBoost V2 Route Alias Matrix | 24158 | False |
+| `docs/release/route_alias_matrix.md` | `release` | EduBoost V2 Route Alias Matrix | 25986 | False |
 | `docs/release/route_alias_policy.md` | `release` | EduBoost V2 Route Alias Policy | 754 | False |
 | `docs/release/route_transaction_implementation_plan.json` | `release` | Route Transaction Implementation Plan | 13056 | False |
 | `docs/release/route_transaction_implementation_plan.md` | `release` | Route Transaction Implementation Plan | 10909 | False |
@@ -1174,6 +1175,9 @@ Commit: `7affa094d02d8060fc59b3698bf4ee13f9ea2457`
 | `docs/release-evidence/phase-02/phase2_live_closure_evidence.md` | `general` | Phase 2 Live Closure Evidence | 224 | False |
 | `docs/release-evidence/phase-02/phase_02_audit_report.md` | `general` | Phase 2 Independent Audit Report | 3447 | False |
 | `docs/release-evidence/phase-02/phase_02_evidence_index.md` | `general` | Phase 2 Evidence Pack and Index | 2762 | False |
+| `docs/release-evidence/phase-03/phase_01_02_integration_audit.md` | `general` | Phase 1 and Phase 2 Integration Audit | 4213 | False |
+| `docs/release-evidence/phase-03/phase_03_audit_report.md` | `general` | Phase 3 Pre-Integration Audit Report | 1924 | False |
+| `docs/release-evidence/phase-03/phase_03_evidence_index.md` | `general` | Phase 3 Evidence Index | 1919 | False |
 | `docs/release_blockers/external_manual_dependency_register.md` | `general` | External Manual Dependency Register | 941 | False |
 | `docs/release_blockers/final_go_no_go_checklist.md` | `general` | Final Go/No-Go Checklist | 717 | False |
 | `docs/release_blockers/final_launch_boundary_statement.md` | `general` | Final Launch Boundary Statement | 669 | False |
@@ -1188,7 +1192,7 @@ Commit: `7affa094d02d8060fc59b3698bf4ee13f9ea2457`
 | `docs/repository_governance.md` | `general` | Repository Governance | 6896 | False |
 | `docs/roadmap/EduBoost_Full_Lifecycle_Delivery_and_Beta_Readiness_Plan.md` | `general` | EduBoost Full-Lifecycle Delivery and Beta Readiness Plan | 114030 | False |
 | `docs/roadmap/PHASE_QUICK_REFERENCE.md` | `general` | EduBoost 13-Phase Quick Reference | 4834 | False |
-| `docs/roadmap/PHASE_STATUS_REGISTER.md` | `general` | EduBoost Phase Status Register | 10229 | False |
+| `docs/roadmap/PHASE_STATUS_REGISTER.md` | `general` | EduBoost Phase Status Register | 10762 | False |
 | `docs/roadmap/PROCESS_DISCIPLINE.md` | `general` | Process Discipline — Phase Execution Standards | 10263 | False |
 | `docs/roadmap/README.md` | `general` | EduBoost Roadmap Documentation | 4039 | False |
 | `docs/roadmap/agent_roadmap_reconciliation.json` | `general` | Agent Roadmap Reconciliation | 6769 | False |
@@ -1200,6 +1204,8 @@ Commit: `7affa094d02d8060fc59b3698bf4ee13f9ea2457`
 | `docs/roadmap/execution/audit_remediation_roadmap_2026-06-13.md` | `general` | EduBoost V2 Audit Remediation Roadmap | 57480 | False |
 | `docs/roadmap/execution/phase_02_execution_plan.md` | `general` | Phase 2 Execution Plan — Semantic Retrieval and Grounding | 7092 | False |
 | `docs/roadmap/execution/phase_02_implementation_report.md` | `general` | Phase 2 Implementation Report — Semantic Retrieval and Grounding | 5892 | False |
+| `docs/roadmap/execution/phase_03_execution_plan.md` | `general` | Phase 3 Execution Plan — Educator Consensus and Content Governance | 49112 | False |
+| `docs/roadmap/execution/phase_03_implementation_report.md` | `general` | Phase 3 Implementation Report — Educator Consensus and Content Governance | 3299 | False |
 | `docs/roadmap/execution/phase_10_execution_plan.md` | `general` | Phase 10 Execution Plan — Post-Production Product Documentation & Operational Tooling | 6196 | False |
 | `docs/roadmap/execution/phase_10_implementation_report.md` | `general` | Phase 10 Implementation Report - Post-Production Product Documentation & Operational Tooling | 4107 | False |
 | `docs/roadmap/execution/phase_11_execution_plan.md` | `general` | Phase 11 Execution Plan — Technical Debt Burn-Down | 7427 | False |
@@ -1257,6 +1263,7 @@ Commit: `7affa094d02d8060fc59b3698bf4ee13f9ea2457`
 | `docs/roadmap_domains/domain_13_infrastructure-devops_execution_report.md` | `general` | Domain 13 Infrastructure Devops Execution Report | 2238 | False |
 | `docs/roadmap_domains/domain_14_legal-privacy-documentation_execution_report.md` | `general` | Domain 14 Legal Privacy Documentation Execution Report | 2321 | False |
 | `docs/route_inventory.md` | `general` | EduBoost V2 Route Inventory | 20723 | False |
+| `docs/runbooks/content_review_governance.md` | `general` | Content Review Governance Runbook | 2006 | False |
 | `docs/safety/content_policy.md` | `general` | Content Safety Policy | 9178 | False |
 | `docs/secrets.md` | `general` | Secrets Management (starter guidance) | 1111 | False |
 | `docs/security/PHASE2_AUTHORIZATION_CLOSURE.md` | `security` | Phase 2 Authorization Closure Report | 2133 | False |
@@ -1333,7 +1340,7 @@ Commit: `7affa094d02d8060fc59b3698bf4ee13f9ea2457`
 | `docs/security/popia_consent_audit_ci.md` | `security` | POPIA Consent Audit CI | 628 | False |
 | `docs/security/popia_consent_audit_evidence_check.md` | `security` | POPIA Consent Audit Evidence Check | 888 | False |
 | `docs/security/popia_consent_boundary_check.md` | `security` | POPIA Consent Boundary Check | 555 | False |
-| `docs/security/popia_consent_boundary_matrix.md` | `security` | POPIA Consent Boundary Matrix | 19633 | False |
+| `docs/security/popia_consent_boundary_matrix.md` | `security` | POPIA Consent Boundary Matrix | 21023 | False |
 | `docs/security/popia_consent_closure_check.md` | `security` | POPIA Consent Closure Check | 678 | False |
 | `docs/security/popia_consent_closure_ci.md` | `security` | POPIA Consent Closure CI | 324 | False |
 | `docs/security/popia_consent_gate_check.md` | `security` | POPIA Consent Gate Check | 1112 | False |

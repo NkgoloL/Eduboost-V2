@@ -1,14 +1,14 @@
 {
   "categories": {
-    "adr": 51,
+    "adr": 52,
     "api": 6,
     "architecture": 40,
-    "general": 676,
+    "general": 682,
     "release": 488,
     "security": 102
   },
-  "commit": "7affa094d02d8060fc59b3698bf4ee13f9ea2457",
-  "document_count": 1363,
+  "commit": "da5706512d1db7dfad36eea166d6b2849e63f0f7",
+  "document_count": 1370,
   "documents": [
     {
       "category": "general",
@@ -7522,6 +7522,60 @@
     },
     {
       "category": "adr",
+      "dates": [
+        "2026-06-14"
+      ],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "ADR-030 \u2014 Educator Consensus and Content Governance"
+        },
+        {
+          "level": 2,
+          "line": 7,
+          "text": "Context"
+        },
+        {
+          "level": 2,
+          "line": 11,
+          "text": "Decision"
+        },
+        {
+          "level": 2,
+          "line": 36,
+          "text": "Consequences"
+        },
+        {
+          "level": 3,
+          "line": 38,
+          "text": "Positive"
+        },
+        {
+          "level": 3,
+          "line": 46,
+          "text": "Negative"
+        },
+        {
+          "level": 2,
+          "line": 52,
+          "text": "Validation"
+        }
+      ],
+      "links": [],
+      "path": "docs/adr/ADR-030-content-review-governance.md",
+      "sha256": "1f74a2a6d75b17555012a3f3fde9b987a0ca4456e2efa9f50c73038c3f01e6d7",
+      "size_bytes": 2178,
+      "statuses": [
+        "fail",
+        "pass"
+      ],
+      "title": "ADR-030 \u2014 Educator Consensus and Content Governance"
+    },
+    {
+      "category": "adr",
       "dates": [],
       "evidence_references": [],
       "generated": false,
@@ -10854,8 +10908,8 @@
       "headings": [],
       "links": [],
       "path": "docs/architecture/transaction_boundary_inventory.json",
-      "sha256": "036ca9436e06065d1e8b6bd0fb23d196c2483ed25b9ce13014d03e9f650c03d9",
-      "size_bytes": 92507,
+      "sha256": "d7a5c38007cefd863e61ebdd350546574821408ceb116ccaf6f75a976088e319",
+      "size_bytes": 105251,
       "statuses": [
         "not-proven"
       ],
@@ -10875,8 +10929,8 @@
       ],
       "links": [],
       "path": "docs/architecture/transaction_boundary_inventory.md",
-      "sha256": "365bcfa87bd8dce757eedd501d74b590ffae45eed8fb639bad2688bc61d71a47",
-      "size_bytes": 41219,
+      "sha256": "760386218725a7c12d1606bef5cd748aa93823021009c58498848ec8c0299900",
+      "size_bytes": 46813,
       "statuses": [
         "not-proven"
       ],
@@ -35850,8 +35904,8 @@
       "headings": [],
       "links": [],
       "path": "docs/openapi.json",
-      "sha256": "837597d583d709131835f78004e79deb42f9cd60b96d89b2ca4415c8a3ba72c1",
-      "size_bytes": 566970,
+      "sha256": "f57b64fe621eed35a37b37aaef12a7d703817ab3d0deca330770c824152698f2",
+      "size_bytes": 633542,
       "statuses": [
         "pending",
         "passed",
@@ -69482,8 +69536,8 @@
       ],
       "links": [],
       "path": "docs/release/route_alias_matrix.md",
-      "sha256": "ada9476eaead9be5805f4cc30e22ac3da94403e43b5bdc50f2d6a30caec64895",
-      "size_bytes": 24158,
+      "sha256": "e136a42774c85c46447373e1f722e3676a7c64f82a801ebb2b9217c6d9adcf1e",
+      "size_bytes": 25986,
       "statuses": [
         "failed"
       ],
@@ -71474,6 +71528,163 @@
     },
     {
       "category": "general",
+      "dates": [
+        "2026-06-14"
+      ],
+      "evidence_references": [
+        "docs/release-evidence/phase-NN/phase_NN_"
+      ],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "Phase 1 and Phase 2 Integration Audit"
+        },
+        {
+          "level": 2,
+          "line": 7,
+          "text": "Executive assessment"
+        },
+        {
+          "level": 2,
+          "line": 13,
+          "text": "Findings"
+        },
+        {
+          "level": 3,
+          "line": 15,
+          "text": "I-01 \u2014 Phase 1 canonical adapter was broken \u2014 High, corrected in package"
+        },
+        {
+          "level": 3,
+          "line": 23,
+          "text": "I-02 \u2014 Phase 1 warning hygiene was incomplete \u2014 Medium, corrected in package"
+        },
+        {
+          "level": 3,
+          "line": 27,
+          "text": "I-03 \u2014 Phase 1 status register contradicts programme controls \u2014 High, governance correction required"
+        },
+        {
+          "level": 3,
+          "line": 33,
+          "text": "I-04 \u2014 Phase 2 implementation is coherent \u2014 Pass with observation"
+        },
+        {
+          "level": 3,
+          "line": 37,
+          "text": "I-05 \u2014 Phase 2 needed generated-artifact governance integration \u2014 High, corrected in package"
+        },
+        {
+          "level": 3,
+          "line": 43,
+          "text": "I-06 \u2014 Phase status register overstates Phases 3\u201311 \u2014 High, governance correction required"
+        },
+        {
+          "level": 3,
+          "line": 47,
+          "text": "I-07 \u2014 Control paths are inconsistent \u2014 Medium"
+        },
+        {
+          "level": 2,
+          "line": 58,
+          "text": "Integration regression result in preparation environment"
+        },
+        {
+          "level": 2,
+          "line": 68,
+          "text": "Audit conclusion"
+        }
+      ],
+      "links": [],
+      "path": "docs/release-evidence/phase-03/phase_01_02_integration_audit.md",
+      "sha256": "2c7f29d76d1f67a779eebf12259623526f5f968b0e4115dcbaa323a99584dbf4",
+      "size_bytes": 4213,
+      "statuses": [
+        "pass",
+        "fail",
+        "pending",
+        "passed"
+      ],
+      "title": "Phase 1 and Phase 2 Integration Audit"
+    },
+    {
+      "category": "general",
+      "dates": [
+        "2026-06-14"
+      ],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "Phase 3 Pre-Integration Audit Report"
+        },
+        {
+          "level": 2,
+          "line": 7,
+          "text": "Scope"
+        },
+        {
+          "level": 2,
+          "line": 11,
+          "text": "Positive findings"
+        },
+        {
+          "level": 2,
+          "line": 26,
+          "text": "Blocking closure evidence not available in this environment"
+        },
+        {
+          "level": 2,
+          "line": 34,
+          "text": "Verdict rationale"
+        }
+      ],
+      "links": [],
+      "path": "docs/release-evidence/phase-03/phase_03_audit_report.md",
+      "sha256": "75ffa7120616efb8043165186c360697cda2531ac25bd8abbb9dda806baf1d6e",
+      "size_bytes": 1924,
+      "statuses": [
+        "pass",
+        "fail",
+        "pending"
+      ],
+      "title": "Phase 3 Pre-Integration Audit Report"
+    },
+    {
+      "category": "general",
+      "dates": [
+        "2026-06-14"
+      ],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "Phase 3 Evidence Index"
+        },
+        {
+          "level": 2,
+          "line": 25,
+          "text": "Closure rule"
+        }
+      ],
+      "links": [],
+      "path": "docs/release-evidence/phase-03/phase_03_evidence_index.md",
+      "sha256": "01b536ea8261b0ab3190643ddac4376e9380da81ded0f809e25e650500ca48c7",
+      "size_bytes": 1919,
+      "statuses": [
+        "pending",
+        "passed"
+      ],
+      "title": "Phase 3 Evidence Index"
+    },
+    {
+      "category": "general",
       "dates": [],
       "evidence_references": [],
       "generated": false,
@@ -73029,6 +73240,9 @@
         "docs/release-evidence/atlas/phase-01/phase_01_audit_report.md",
         "docs/release-evidence/phase-02/phase_02_evidence_index.md",
         "docs/release-evidence/phase-02/phase_02_audit_report.md",
+        "docs/release-evidence/phase-03/phase_03_evidence_index.md",
+        "docs/release-evidence/phase-03/phase_03_audit_report.md",
+        "docs/release-evidence/phase-",
         "docs/release-evidence/"
       ],
       "generated": false,
@@ -73055,54 +73269,54 @@
         },
         {
           "level": 2,
-          "line": 63,
+          "line": 64,
           "text": "Phase Dependencies"
         },
         {
           "level": 2,
-          "line": 101,
+          "line": 102,
           "text": "Four-Artefact Control Set Requirements"
         },
         {
           "level": 2,
-          "line": 112,
+          "line": 113,
           "text": "Evidence Directory Structure"
         },
         {
           "level": 2,
-          "line": 134,
+          "line": 135,
           "text": "Mandatory Phase Start Gate Checklist"
         },
         {
           "level": 2,
-          "line": 145,
+          "line": 146,
           "text": "Mandatory Phase Closure Gate Checklist"
         },
         {
           "level": 2,
-          "line": 157,
+          "line": 158,
           "text": "Programme-Level Controls"
         },
         {
           "level": 2,
-          "line": 168,
+          "line": 169,
           "text": "Recent Activity"
         },
         {
           "level": 2,
-          "line": 178,
+          "line": 179,
           "text": "Next Steps"
         }
       ],
       "links": [],
       "path": "docs/roadmap/PHASE_STATUS_REGISTER.md",
-      "sha256": "fbcf17d33bba4b297b491fd83761461c43e69cbbd0f0c07b2e635ab9c5c29039",
-      "size_bytes": 10229,
+      "sha256": "72e201b9e488351baa372defdfb84a10760d2ad72ad3cbcf22c34ac365942a01",
+      "size_bytes": 10762,
       "statuses": [
+        "pending",
         "blocked",
         "pass",
-        "passed",
-        "pending"
+        "passed"
       ],
       "title": "EduBoost Phase Status Register"
     },
@@ -74483,6 +74697,548 @@
         "passed"
       ],
       "title": "Phase 2 Implementation Report \u2014 Semantic Retrieval and Grounding"
+    },
+    {
+      "category": "general",
+      "dates": [
+        "2026-06-14"
+      ],
+      "evidence_references": [
+        "docs/release-evidence/phase-03/",
+        "docs/release-evidence/phase-03/baseline/phase_03_pre_execution_baseline.md",
+        "docs/release-evidence/phase-03/phase_03_evidence_index.md",
+        "docs/release-evidence/phase-03/phase_03_audit_report.md"
+      ],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "Phase 3 Execution Plan \u2014 Educator Consensus and Content Governance"
+        },
+        {
+          "level": 2,
+          "line": 26,
+          "text": "1. Objective and Measurable Outcome"
+        },
+        {
+          "level": 3,
+          "line": 28,
+          "text": "1.1 Objective"
+        },
+        {
+          "level": 3,
+          "line": 42,
+          "text": "1.2 Measurable outcome"
+        },
+        {
+          "level": 3,
+          "line": 56,
+          "text": "1.3 Risks reduced"
+        },
+        {
+          "level": 2,
+          "line": 69,
+          "text": "2. Dependencies and Preconditions"
+        },
+        {
+          "level": 3,
+          "line": 87,
+          "text": "Stop condition"
+        },
+        {
+          "level": 2,
+          "line": 93,
+          "text": "3. Pre-Execution Baseline"
+        },
+        {
+          "level": 3,
+          "line": 99,
+          "text": "3.1 Source and environment identity"
+        },
+        {
+          "level": 3,
+          "line": 115,
+          "text": "3.2 Current implementation inventory"
+        },
+        {
+          "level": 3,
+          "line": 130,
+          "text": "3.3 Current state must answer"
+        },
+        {
+          "level": 3,
+          "line": 147,
+          "text": "3.4 Baseline gates"
+        },
+        {
+          "level": 1,
+          "line": 152,
+          "text": "Phase 1 and Phase 2 regressions"
+        },
+        {
+          "level": 1,
+          "line": 157,
+          "text": "Architecture and migration state"
+        },
+        {
+          "level": 1,
+          "line": 162,
+          "text": "Current review-related tests"
+        },
+        {
+          "level": 2,
+          "line": 174,
+          "text": "4. Scope"
+        },
+        {
+          "level": 3,
+          "line": 176,
+          "text": "4.1 In scope"
+        },
+        {
+          "level": 3,
+          "line": 199,
+          "text": "4.2 Out of scope"
+        },
+        {
+          "level": 3,
+          "line": 212,
+          "text": "4.3 Non-negotiable exclusions"
+        },
+        {
+          "level": 2,
+          "line": 227,
+          "text": "5. Domain Policy and State Machine"
+        },
+        {
+          "level": 3,
+          "line": 229,
+          "text": "5.1 Proposed artifact lifecycle"
+        },
+        {
+          "level": 3,
+          "line": 251,
+          "text": "5.2 Permitted transitions"
+        },
+        {
+          "level": 3,
+          "line": 265,
+          "text": "5.3 Prohibited transitions"
+        },
+        {
+          "level": 3,
+          "line": 278,
+          "text": "5.4 State enforcement"
+        },
+        {
+          "level": 2,
+          "line": 291,
+          "text": "6. Reviewer Roles and Authorisation Policy"
+        },
+        {
+          "level": 3,
+          "line": 293,
+          "text": "6.1 Proposed roles"
+        },
+        {
+          "level": 3,
+          "line": 305,
+          "text": "6.2 Independence rules"
+        },
+        {
+          "level": 3,
+          "line": 325,
+          "text": "6.3 Auth source"
+        },
+        {
+          "level": 2,
+          "line": 331,
+          "text": "7. Versioned Review Rubric"
+        },
+        {
+          "level": 3,
+          "line": 333,
+          "text": "7.1 Required rubric areas"
+        },
+        {
+          "level": 3,
+          "line": 351,
+          "text": "7.2 Rubric versioning"
+        },
+        {
+          "level": 3,
+          "line": 366,
+          "text": "7.3 Blocking rubric results"
+        },
+        {
+          "level": 2,
+          "line": 380,
+          "text": "8. Data Model and Migration Plan"
+        },
+        {
+          "level": 3,
+          "line": 382,
+          "text": "8.1 Required entities"
+        },
+        {
+          "level": 3,
+          "line": 397,
+          "text": "8.2 Required fields"
+        },
+        {
+          "level": 4,
+          "line": 399,
+          "text": "Artifact/version"
+        },
+        {
+          "level": 4,
+          "line": 413,
+          "text": "Assignment"
+        },
+        {
+          "level": 4,
+          "line": 425,
+          "text": "Decision"
+        },
+        {
+          "level": 4,
+          "line": 439,
+          "text": "State transition"
+        },
+        {
+          "level": 3,
+          "line": 451,
+          "text": "8.3 Database constraints"
+        },
+        {
+          "level": 3,
+          "line": 471,
+          "text": "8.4 Migration safety"
+        },
+        {
+          "level": 2,
+          "line": 487,
+          "text": "9. Work Breakdown and Execution Order"
+        },
+        {
+          "level": 2,
+          "line": 521,
+          "text": "10. API and Service Contract"
+        },
+        {
+          "level": 3,
+          "line": 523,
+          "text": "10.1 Candidate operations"
+        },
+        {
+          "level": 3,
+          "line": 537,
+          "text": "10.2 API rules"
+        },
+        {
+          "level": 2,
+          "line": 552,
+          "text": "11. Concurrency and Idempotency Design"
+        },
+        {
+          "level": 3,
+          "line": 554,
+          "text": "11.1 Required protections"
+        },
+        {
+          "level": 3,
+          "line": 563,
+          "text": "11.2 Mandatory race scenarios"
+        },
+        {
+          "level": 3,
+          "line": 575,
+          "text": "11.3 Expected invariants"
+        },
+        {
+          "level": 2,
+          "line": 587,
+          "text": "12. Test and Verification Plan"
+        },
+        {
+          "level": 3,
+          "line": 589,
+          "text": "12.1 Unit and service tests"
+        },
+        {
+          "level": 3,
+          "line": 602,
+          "text": "12.2 PostgreSQL integration and concurrency"
+        },
+        {
+          "level": 3,
+          "line": 622,
+          "text": "12.3 API and OpenAPI"
+        },
+        {
+          "level": 3,
+          "line": 638,
+          "text": "12.4 Phase 2 retrieval exclusion"
+        },
+        {
+          "level": 3,
+          "line": 655,
+          "text": "12.5 Full regression"
+        },
+        {
+          "level": 3,
+          "line": 673,
+          "text": "12.6 Warning and skip policy"
+        },
+        {
+          "level": 2,
+          "line": 684,
+          "text": "13. Security, Privacy, Safety, Accessibility, Content, and Data Impact"
+        },
+        {
+          "level": 3,
+          "line": 686,
+          "text": "13.1 Security controls"
+        },
+        {
+          "level": 3,
+          "line": 705,
+          "text": "13.2 Privacy controls"
+        },
+        {
+          "level": 3,
+          "line": 715,
+          "text": "13.3 Learner safety"
+        },
+        {
+          "level": 3,
+          "line": 719,
+          "text": "13.4 Accessibility"
+        },
+        {
+          "level": 3,
+          "line": 730,
+          "text": "13.5 Content governance"
+        },
+        {
+          "level": 2,
+          "line": 744,
+          "text": "14. Migration, Deployment, Rollback, and Recovery"
+        },
+        {
+          "level": 3,
+          "line": 746,
+          "text": "14.1 Deployment strategy"
+        },
+        {
+          "level": 3,
+          "line": 754,
+          "text": "14.2 Rollback triggers"
+        },
+        {
+          "level": 3,
+          "line": 766,
+          "text": "14.3 Rollback plan"
+        },
+        {
+          "level": 3,
+          "line": 775,
+          "text": "14.4 Recovery verification"
+        },
+        {
+          "level": 2,
+          "line": 788,
+          "text": "15. Observability and Operations"
+        },
+        {
+          "level": 3,
+          "line": 790,
+          "text": "15.1 Required metrics"
+        },
+        {
+          "level": 3,
+          "line": 806,
+          "text": "15.2 Required logs"
+        },
+        {
+          "level": 3,
+          "line": 828,
+          "text": "15.3 Alerts"
+        },
+        {
+          "level": 3,
+          "line": 840,
+          "text": "15.4 Runbook requirements"
+        },
+        {
+          "level": 2,
+          "line": 860,
+          "text": "16. Risks, Assumptions, External Dependencies, and Stop Conditions"
+        },
+        {
+          "level": 2,
+          "line": 879,
+          "text": "17. Roadmap and Control-Set Traceability"
+        },
+        {
+          "level": 2,
+          "line": 898,
+          "text": "18. Evidence-Pack Plan"
+        },
+        {
+          "level": 3,
+          "line": 900,
+          "text": "18.1 Required index"
+        },
+        {
+          "level": 3,
+          "line": 906,
+          "text": "18.2 Planned evidence inventory"
+        },
+        {
+          "level": 3,
+          "line": 931,
+          "text": "18.3 Evidence quality rules"
+        },
+        {
+          "level": 2,
+          "line": 946,
+          "text": "19. Independent Phase Audit Plan"
+        },
+        {
+          "level": 3,
+          "line": 948,
+          "text": "19.1 Auditor competence"
+        },
+        {
+          "level": 3,
+          "line": 962,
+          "text": "19.2 Independence"
+        },
+        {
+          "level": 3,
+          "line": 973,
+          "text": "19.3 Mandatory audit procedures"
+        },
+        {
+          "level": 3,
+          "line": 993,
+          "text": "19.4 Audit verdict"
+        },
+        {
+          "level": 2,
+          "line": 1009,
+          "text": "20. Required Implementation Report"
+        },
+        {
+          "level": 2,
+          "line": 1036,
+          "text": "21. Change Control"
+        },
+        {
+          "level": 3,
+          "line": 1053,
+          "text": "Change log"
+        },
+        {
+          "level": 2,
+          "line": 1061,
+          "text": "22. Start-Gate Checklist"
+        },
+        {
+          "level": 3,
+          "line": 1087,
+          "text": "Start approval"
+        },
+        {
+          "level": 2,
+          "line": 1100,
+          "text": "23. Phase Completion and Closure Gate"
+        },
+        {
+          "level": 3,
+          "line": 1129,
+          "text": "Closure approval"
+        },
+        {
+          "level": 2,
+          "line": 1143,
+          "text": "24. Definition of Done"
+        }
+      ],
+      "links": [],
+      "path": "docs/roadmap/execution/phase_03_execution_plan.md",
+      "sha256": "55088080f355954ce16858944460d8af159aa599821e841058482533049cfe49",
+      "size_bytes": 49112,
+      "statuses": [
+        "fail",
+        "pass",
+        "pending",
+        "blocked",
+        "failed"
+      ],
+      "title": "Phase 3 Execution Plan \u2014 Educator Consensus and Content Governance"
+    },
+    {
+      "category": "general",
+      "dates": [
+        "2026-06-14"
+      ],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "Phase 3 Implementation Report \u2014 Educator Consensus and Content Governance"
+        },
+        {
+          "level": 2,
+          "line": 8,
+          "text": "1. Delivered scope"
+        },
+        {
+          "level": 2,
+          "line": 26,
+          "text": "2. Database changes"
+        },
+        {
+          "level": 2,
+          "line": 37,
+          "text": "3. API operations"
+        },
+        {
+          "level": 2,
+          "line": 41,
+          "text": "4. Verification completed in the preparation environment"
+        },
+        {
+          "level": 2,
+          "line": 55,
+          "text": "5. Verification not completed here"
+        },
+        {
+          "level": 2,
+          "line": 68,
+          "text": "6. Plan deviations"
+        },
+        {
+          "level": 2,
+          "line": 74,
+          "text": "7. Recommended status"
+        }
+      ],
+      "links": [],
+      "path": "docs/roadmap/execution/phase_03_implementation_report.md",
+      "sha256": "4e0f5ac1fe7719103dd82af25c9a64c85d69e206bd548cf68fd69d3a5188c7a2",
+      "size_bytes": 3299,
+      "statuses": [
+        "pending",
+        "passed",
+        "pass"
+      ],
+      "title": "Phase 3 Implementation Report \u2014 Educator Consensus and Content Governance"
     },
     {
       "category": "general",
@@ -79148,6 +79904,62 @@
     },
     {
       "category": "general",
+      "dates": [],
+      "evidence_references": [],
+      "generated": false,
+      "headings": [
+        {
+          "level": 1,
+          "line": 1,
+          "text": "Content Review Governance Runbook"
+        },
+        {
+          "level": 2,
+          "line": 3,
+          "text": "Purpose"
+        },
+        {
+          "level": 2,
+          "line": 7,
+          "text": "Stale reviews"
+        },
+        {
+          "level": 2,
+          "line": 15,
+          "text": "Incorrect approval"
+        },
+        {
+          "level": 2,
+          "line": 23,
+          "text": "Emergency quarantine"
+        },
+        {
+          "level": 2,
+          "line": 31,
+          "text": "Stuck publication"
+        },
+        {
+          "level": 2,
+          "line": 38,
+          "text": "Audit investigation"
+        },
+        {
+          "level": 2,
+          "line": 44,
+          "text": "Rollback"
+        }
+      ],
+      "links": [],
+      "path": "docs/runbooks/content_review_governance.md",
+      "sha256": "9f60ef26cb43d36c69f01c514d8d9002676c27ef4e30d45be019c1e2f00a5624",
+      "size_bytes": 2006,
+      "statuses": [
+        "passed"
+      ],
+      "title": "Content Review Governance Runbook"
+    },
+    {
+      "category": "general",
       "dates": [
         "2026-05-27"
       ],
@@ -82526,8 +83338,8 @@
       ],
       "links": [],
       "path": "docs/security/popia_consent_boundary_matrix.md",
-      "sha256": "b2176e381d7767472820c7475e7defabb61de9552fe1b4ff19e08e33145a1878",
-      "size_bytes": 19633,
+      "sha256": "e776ed55336a892f017fce42deba4e82c5b9aa604d39cd44f94db8dacbe29d9f",
+      "size_bytes": 21023,
       "statuses": [
         "failed"
       ],
@@ -84814,8 +85626,8 @@
       "title": "V2 Migration Guide"
     }
   ],
-  "files_scanned": 1363,
-  "generated_at": "2026-06-14T18:54:03Z",
+  "files_scanned": 1370,
+  "generated_at": "2026-06-14T22:20:24Z",
   "generated_count": 4,
   "missing_important_docs": []
 }

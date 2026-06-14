@@ -42,9 +42,6 @@ class FakeFactory:
 
 
 class FakeLifecycle:
-    async def approve_artifact(self, session, artifact_id, actor_id, notes=""):
-        return SimpleNamespace(artifact_id=artifact_id, previous_status="pending_review", new_status="approved", actor_id=actor_id, reason=notes)
-
     async def submit_for_review(self, session, artifact_id, actor_id):
         return SimpleNamespace(artifact_id=artifact_id, previous_status="generated", new_status="pending_review", actor_id=actor_id, reason=None)
 
@@ -100,12 +97,3 @@ def test_admin_can_fetch_provenance() -> None:
     response = TestClient(app, raise_server_exceptions=False).get(f"/api/v2/admin/content-factory/artifacts/{uuid.uuid4()}/provenance")
     assert response.status_code == 200
     assert response.json()["data"]["sources"][0]["source_document_id"] == "doc"
-
-
-def test_admin_can_approve_artifact_route() -> None:
-    app.dependency_overrides[get_current_user] = _admin_user
-    app.dependency_overrides[content_factory.get_db] = _fake_session
-    app.dependency_overrides[content_factory.get_content_artifact_lifecycle_service] = _fake_lifecycle
-    response = TestClient(app, raise_server_exceptions=False).post(f"/api/v2/admin/content-factory/artifacts/{uuid.uuid4()}/approve", json={"notes": "ok"})
-    assert response.status_code == 200
-    assert response.json()["data"]["new_status"] == "approved"
