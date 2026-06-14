@@ -46,25 +46,17 @@ jobs:
 
       - name: Run pip-audit
         run: |
-          pip-audit -r ${{ matrix.requirements }} --format=json > pip-audit.json || true
-          
-          # Check for vulnerabilities
-          VULNS=$(python3 -c "import json; d=json.load(open('pip-audit.json')); print(len(d.get('vulnerabilities', {})))")
-          echo "Found $VULNS vulnerabilities in ${{ matrix.requirements }}"
-          
-          if [ "$VULNS" -gt 0 ]; then
-            echo "::warning::Found $VULNS vulnerabilities in ${{ matrix.requirements }}"
-            python3 -m json.tool pip-audit.json 2>/dev/null || cat pip-audit.json
-          fi
+          set -o pipefail
+          pip-audit -r ${{ matrix.requirements }} --format=json \
+            | tee pip-audit.json \
+            | python3 -m json.tool
 
-      - name: Upload SARIF
+      - name: Upload pip-audit report
         if: always()
-        uses: github/codeql-action/upload-security-results@v3
+        uses: actions/upload-artifact@v7
         with:
-          type: 'pip'
-          category: 'pip-audit'
-          upload_url: ${{ steps.publish.outputs.result_url }}
-          security_results: pip-audit.json
+          name: pip-audit-${{ strategy.job-index }}
+          path: pip-audit.json
 
   pnpm-audit:
     name: pnpm audit (Frontend)
@@ -92,20 +84,25 @@ jobs:
 
       - name: Run pnpm audit
         working-directory: app/frontend
-        run: pnpm audit --json > pnpm-audit.json || true
+        run: |
+          pnpm audit --audit-level=critical --json | tee pnpm-audit.json
 
       - name: Check pnpm audit results
         run: |
           VULNS=$(node -e "const d=require('./app/frontend/pnpm-audit.json'); console.log(d.metadata?.vulnerabilities?.total || 0)" 2>/dev/null || echo "0")
           echo "Found $VULNS pnpm vulnerabilities"
-          
-          if [ "$VULNS" -gt 0 ]; then
-            echo "::warning::Found $VULNS pnpm vulnerabilities"
-          fi
+
+      - name: Upload pnpm audit report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: pnpm-audit
+          path: app/frontend/pnpm-audit.json
 
   dependency-review:
     name: Dependency Review
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

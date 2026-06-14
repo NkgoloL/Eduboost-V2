@@ -1,9 +1,26 @@
 # Phase 12 Implementation Report — Security Posture Deepening
 
-**Date**: 2026-06-12  
-**Status**: ✅ Complete (J.1, J.2, J.3, J.4, J.5)  
-**Branch**: `phase-12/security-posture-deepening`  
+**Date**: 2026-06-12
+**Updated**: 2026-06-14
+**Status**: Complete for static security-gate configuration; live CI proof pending
+**Branch**: `phase-12/security-posture-deepening`
 **Base**: `origin/master`
+
+---
+
+## 2026-06-14 Remediation Note
+
+The original dependency scan workflow was warning-only and referenced a missing
+publish step. The audit remediation:
+
+- Removed warning-only dependency audit behavior.
+- Removed the invalid `steps.publish.outputs.result_url` reference.
+- Added audit JSON artifact uploads.
+- Runs pnpm audit with `--audit-level=critical`.
+- Removed unsupported `review-before-merging` keys from Dependabot config.
+- Added `.gitleaks.toml`.
+
+No live GitHub Actions run was captured in this local audit.
 
 ---
 
@@ -119,7 +136,7 @@ pip-audit>=2.7.0
 - Fixed duplicate YAML keys (was invalid)
 - Added `open-pull-requests-limit` per ecosystem
 - Added labels (`dependencies`, `security`, `frontend`)
-- Added `review-before-merging: true`
+- Kept human review expectations in documentation instead of unsupported Dependabot keys
 - Added dependency grouping for production vs dev
 - Set monthly schedule for actions/docker (reduces noise)
 
@@ -160,7 +177,7 @@ pip-audit>=2.7.0
 | Secrets Scanning (pre-commit) | ✅ | Verified working |
 | Dependency Scanning (CI) | ✅ | pip-audit + npm audit |
 | Dependabot | ✅ | Weekly pip/npm, monthly actions |
-| Gitleaks config | ⚠️ Not done | Could be added later |
+| Gitleaks config | ✅ | `.gitleaks.toml` added |
 
 ---
 
@@ -180,6 +197,7 @@ Detect secrets...........................................................Passed
 - `docs/security/threat_model_v2.md` — V2 threat model
 - `.github/workflows/secrets-scan.yml` — Secrets CI
 - `.github/workflows/dependency-scan.yml` — Dependency scanning CI
+- `.gitleaks.toml` — Gitleaks configuration
 
 **Updated Files**:
 - `audits/security/pen_test_checklist.md` — V2 checklist
@@ -206,3 +224,5 @@ Detect secrets...........................................................Passed
 ---
 
 **All Phase 12 deliverables complete. PR ready for merge.**
+
+**Residual proof limit:** live CI execution is still required to prove external enforcement.

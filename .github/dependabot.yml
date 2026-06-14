@@ -9,7 +9,6 @@ updates:
     labels:
       - "dependencies"
       - "security"
-    review-before-merging: true
     groups:
       production:
         patterns:
@@ -31,7 +30,6 @@ updates:
     labels:
       - "dependencies"
       - "frontend"
-    review-before-merging: true
 
   # GitHub Actions
   - package-ecosystem: "github-actions"
