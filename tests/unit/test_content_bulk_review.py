@@ -31,9 +31,6 @@ class Lifecycle:
         self.approved = []
         self.rejected = []
         self.quarantined = []
-    async def approve_artifact(self, session, artifact_id, actor_id, notes=""):
-        self.approved.append(artifact_id)
-        return SimpleNamespace(artifact_id=artifact_id)
     async def reject_artifact(self, session, artifact_id, actor_id, reason):
         self.rejected.append(artifact_id)
         session.add(SimpleNamespace(kind="review", artifact_id=artifact_id, reason=reason))
@@ -59,7 +56,7 @@ async def test_bulk_approve_rejects_high_risk_artifacts() -> None:
     artifact = _artifact()
     service = ContentBulkReviewService(lifecycle_service=Lifecycle(), factory_service=Factory(artifact), queue_service=Queue(risk="high"))
 
-    with pytest.raises(ValueError, match="high-risk"):
+    with pytest.raises(ValueError, match="Bulk approval is disabled"):
         await service.bulk_approve(Session(), [artifact.artifact_id], reviewer_id="admin", notes="reviewed")
 
 
@@ -68,7 +65,7 @@ async def test_bulk_approve_rejects_invalid_provenance() -> None:
     artifact = _artifact()
     service = ContentBulkReviewService(lifecycle_service=Lifecycle(), factory_service=Factory(artifact), queue_service=Queue(provenance=False))
 
-    with pytest.raises(ValueError, match="provenance"):
+    with pytest.raises(ValueError, match="Bulk approval is disabled"):
         await service.bulk_approve(Session(), [artifact.artifact_id], reviewer_id="admin", notes="reviewed")
 
 
@@ -78,7 +75,7 @@ async def test_bulk_approve_enforces_max_batch_size(monkeypatch) -> None:
     artifact = _artifact()
     service = ContentBulkReviewService(lifecycle_service=Lifecycle(), factory_service=Factory(artifact), queue_service=Queue())
 
-    with pytest.raises(ValueError, match="limited"):
+    with pytest.raises(ValueError, match="Bulk approval is disabled"):
         await service.bulk_approve(Session(), [artifact.artifact_id, uuid.uuid4()], reviewer_id="admin", notes="reviewed")
 
 
@@ -87,7 +84,7 @@ async def test_bulk_approve_requires_notes() -> None:
     artifact = _artifact()
     service = ContentBulkReviewService(lifecycle_service=Lifecycle(), factory_service=Factory(artifact), queue_service=Queue())
 
-    with pytest.raises(ValueError, match="notes"):
+    with pytest.raises(ValueError, match="Bulk approval is disabled"):
         await service.bulk_approve(Session(), [artifact.artifact_id], reviewer_id="admin", notes="")
 
 

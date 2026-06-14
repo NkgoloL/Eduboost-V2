@@ -39,26 +39,10 @@ class ContentBulkReviewService:
         self.assignment_service = assignment_service or ContentReviewerAssignmentService()
 
     async def bulk_approve(self, session: AsyncSession, artifact_ids: list[str | uuid.UUID], *, reviewer_id: str, notes: str) -> BulkReviewResult:
-        max_batch = int(os.getenv("CONTENT_REVIEW_BULK_APPROVE_MAX", "25"))
-        if not notes or not notes.strip():
-            raise ValueError("Bulk approval requires reviewer notes.")
-        if len(artifact_ids) > max_batch:
-            raise ValueError(f"Bulk approval is limited to {max_batch} artifacts.")
-        approved: list[uuid.UUID] = []
-        for artifact_id in artifact_ids:
-            artifact = await self.factory_service.get_artifact(session, uuid.UUID(str(artifact_id)))
-            if _value(artifact.status) != ContentArtifactStatus.PENDING_REVIEW.value:
-                raise ValueError("Bulk approval requires all artifacts to be pending_review.")
-            bundle = await self.queue_service.get_artifact_review_bundle(session, artifact.artifact_id)
-            if not bundle.provenance["passed"]:
-                raise ValueError("Bulk approval blocked by invalid provenance.")
-            if not bundle.validation_report or not bundle.validation_report.get("passed"):
-                raise ValueError("Bulk approval blocked by validation failures.")
-            if bundle.review_risk.level in {"high", "critical"}:
-                raise ValueError("Bulk approval blocked by high-risk artifact.")
-            transition = await self.lifecycle_service.approve_artifact(session, artifact.artifact_id, reviewer_id, notes)
-            approved.append(transition.artifact_id)
-        return BulkReviewResult(status="approved", artifact_ids=approved, summary={"approved": len(approved)})
+        del session, artifact_ids, reviewer_id, notes
+        raise ValueError(
+            "Bulk approval is disabled by Phase 3 governance. Each distinct reviewer must submit an attributable rubric decision for each artifact version."
+        )
 
     async def bulk_reject(self, session: AsyncSession, artifact_ids: list[str | uuid.UUID], *, reviewer_id: str, reason: str) -> BulkReviewResult:
         max_batch = int(os.getenv("CONTENT_REVIEW_BULK_REJECT_MAX", "100"))

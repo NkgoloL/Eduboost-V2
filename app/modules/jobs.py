@@ -33,7 +33,12 @@ from urllib.parse import urlparse
 from uuid import UUID
 
 from app.core.config import get_settings
-from app.core.metrics import arq_job_duration_seconds, arq_jobs_total
+from app.core.metrics import (
+    arq_job_duration_seconds,
+    arq_jobs_total,
+    content_review_reminders_total,
+    content_review_stale_assignments,
+)
 from app.jobs.practice_session_cleanup_job import run_practice_session_cleanup
 from app.jobs.batch_generation_job import generate_content_batch
 
@@ -311,6 +316,31 @@ async def expire_stale_diagnostic_sessions(ctx: dict[str, Any]) -> dict[str, Any
         raise
 
 
+async def process_stale_content_reviews(
+    ctx: dict[str, Any] | None = None, job_id: str | None = None
+) -> dict[str, int]:
+    """Detect stale educator reviews and record reminder/escalation state.
+
+    This job never approves content. It only updates reminder metadata and
+    metrics so curriculum leads can reassign or escalate overdue work.
+    """
+
+    async def _run() -> dict[str, int]:
+        from app.services.content_review_governance import ContentReviewGovernanceService
+
+        async with durable_job_session() as db:
+            result = await ContentReviewGovernanceService().process_stale_assignments(db)
+            await db.commit()
+        content_review_stale_assignments.set(result["stale"])
+        if result["reminded"]:
+            content_review_reminders_total.labels(action="reminded").inc(result["reminded"])
+        if result["escalated"]:
+            content_review_reminders_total.labels(action="escalated").inc(result["escalated"])
+        return result
+
+    return await _execute_durable_job(job_id, _run)
+
+
 async def run_database_backup(ctx: dict[str, Any]) -> dict[str, Any]:
     """Execute automated encrypted PostgreSQL backup.
 
@@ -480,6 +510,7 @@ class WorkerSettings:
         expire_stale_diagnostic_sessions,
         run_database_backup,
         generate_content_batch,
+        process_stale_content_reviews,
     ]
 
     cron_jobs = [
@@ -491,6 +522,8 @@ class WorkerSettings:
         cron(run_practice_session_cleanup, hour=1, minute=0),
         # Hourly
         cron(expire_stale_diagnostic_sessions, minute=0),
+        # Every 30 minutes; stale review handling never auto-approves content.
+        cron(process_stale_content_reviews, minute={0, 30}),
     ]
 
     on_startup = startup

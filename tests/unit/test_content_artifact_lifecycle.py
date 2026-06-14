@@ -48,12 +48,3 @@ async def test_submit_for_review_requires_validation_pass() -> None:
     assert transition.new_status == ContentArtifactStatus.PENDING_REVIEW.value
     assert artifact.status == ContentArtifactStatus.PENDING_REVIEW
 
-
-@pytest.mark.asyncio
-async def test_approve_requires_pending_review_and_sources() -> None:
-    artifact = Artifact("pending_review")
-    factory = FakeFactory(artifact)
-    service = ContentArtifactLifecycleService(factory)
-    transition = await service.approve_artifact(Session(), artifact.artifact_id, "admin")
-    assert transition.new_status == ContentArtifactStatus.APPROVED.value
-    assert factory.asserted is True

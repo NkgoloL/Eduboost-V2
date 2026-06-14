@@ -76,6 +76,7 @@ class ContentGenerationExecutor:
 
         task.status = "running"
         task.locked_by = actor_id
+        task.admin_actor_id = actor_id
         task.lock_expires_at = datetime.now(timezone.utc) + timedelta(minutes=10)
         task.started_at = datetime.now(timezone.utc)
         await session.flush()
@@ -128,7 +129,10 @@ class ContentGenerationExecutor:
                     "cost_metadata": {"estimated_cost_usd": 0},
                     "quality_score": 0.9,
                     "safety_status": "passed",
-                    "answer_key_verified": True,
+                    "answer_key_verified": False,
+                    "created_by_actor_id": actor_id,
+                    "review_policy_version": "phase3-v1",
+                    "rubric_version": "1.0",
                     "caps_alignment_score": 1.0,
                     "sources": source_rows_for_chunks(context.chunks, caps_ref=task.caps_ref or "", grade=payload["grade"], subject_code=payload["subject_code"], language=payload["language"]),
                 }

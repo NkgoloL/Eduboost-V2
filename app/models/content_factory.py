@@ -43,7 +43,10 @@ class ContentArtifactStatus(str, enum.Enum):
     GENERATED = "generated"
     VALIDATION_FAILED = "validation_failed"
     PENDING_REVIEW = "pending_review"
+    REVISION_REQUIRED = "revision_required"
     APPROVED = "approved"
+    PUBLISHED = "published"
+    SUPERSEDED = "superseded"
     SEEDED_STAGING = "seeded_staging"
     PROMOTED_PRODUCTION = "promoted_production"
     RETIRED = "retired"
@@ -202,6 +205,24 @@ class ContentGenerationArtifact(Base):
     artifact_hash: Mapped[str] = mapped_column(String(80), nullable=False, unique=True)
     schema_version: Mapped[str] = mapped_column(String(40), nullable=False, server_default="1.0")
     source_snapshot_hash: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    root_artifact_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("content_generation_artifacts.artifact_id", ondelete="RESTRICT"), nullable=True
+    )
+    supersedes_artifact_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("content_generation_artifacts.artifact_id", ondelete="RESTRICT"), nullable=True
+    )
+    superseded_by_artifact_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("content_generation_artifacts.artifact_id", ondelete="RESTRICT"), nullable=True
+    )
+    version_number: Mapped[int] = mapped_column(Integer, nullable=False, server_default="1")
+    row_version: Mapped[int] = mapped_column(Integer, nullable=False, server_default="1")
+    created_by_actor_id: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    approval_count: Mapped[int] = mapped_column(Integer, nullable=False, server_default="0")
+    review_policy_version: Mapped[str] = mapped_column(String(40), nullable=False, server_default="phase3-v1")
+    rubric_version: Mapped[str] = mapped_column(String(40), nullable=False, server_default="1.0")
+    publication_eligible: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default="false")
+    approved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    published_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     provider: Mapped[str | None] = mapped_column(String(80), nullable=True)
     model: Mapped[str | None] = mapped_column(String(120), nullable=True)
     prompt_version: Mapped[str | None] = mapped_column(String(80), nullable=True)
@@ -221,6 +242,9 @@ class ContentGenerationArtifact(Base):
         CheckConstraint("grade IS NULL OR (grade >= 0 AND grade <= 12)", name="ck_content_artifacts_grade_range"),
         CheckConstraint("quality_score IS NULL OR (quality_score >= 0 AND quality_score <= 1)", name="ck_content_artifacts_quality_range"),
         CheckConstraint("caps_alignment_score IS NULL OR (caps_alignment_score >= 0 AND caps_alignment_score <= 1)", name="ck_content_artifacts_caps_alignment_range"),
+        CheckConstraint("version_number > 0", name="ck_content_artifacts_version_positive"),
+        CheckConstraint("row_version > 0", name="ck_content_artifacts_row_version_positive"),
+        CheckConstraint("approval_count >= 0", name="ck_content_artifacts_approval_count_non_negative"),
         Index("ix_content_artifacts_scope_caps_layer", "scope_id", "caps_ref", "content_layer"),
     )
 
@@ -305,6 +329,17 @@ class ContentReviewAssignment(Base):
     due_by: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     priority: Mapped[str] = mapped_column(String(20), nullable=False, server_default="normal")
     status: Mapped[str] = mapped_column(String(20), nullable=False, server_default="assigned")
+    artifact_version: Mapped[int] = mapped_column(Integer, nullable=False, server_default="1")
+    accepted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    reminder_count: Mapped[int] = mapped_column(Integer, nullable=False, server_default="0")
+    last_reminded_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    escalated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    reassigned_from_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), ForeignKey("content_review_assignments.id", ondelete="RESTRICT"), nullable=True)
+    conflict_of_interest: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default="false")
+    reviewer_competencies: Mapped[list[str]] = mapped_column(JSONB, nullable=False, default=list)
+    policy_version: Mapped[str] = mapped_column(String(40), nullable=False, server_default="phase3-v1")
+    idempotency_key: Mapped[str | None] = mapped_column(String(160), nullable=True)
     resolved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now(), onupdate=func.now())
@@ -312,6 +347,62 @@ class ContentReviewAssignment(Base):
     __table_args__ = (
         Index("ix_content_review_assignments_reviewer_status", "assigned_to", "status"),
         Index("ix_content_review_assignments_artifact_status", "artifact_id", "status"),
+        CheckConstraint("reminder_count >= 0", name="ck_content_review_assignments_reminders_non_negative"),
+        UniqueConstraint("artifact_id", "artifact_version", "assigned_to", name="uq_content_review_assignment_artifact_version_reviewer"),
+        UniqueConstraint("assigned_to", "idempotency_key", name="uq_content_review_assignment_reviewer_idempotency"),
+    )
+
+
+class ContentReviewDecision(Base):
+    __tablename__ = "content_review_decisions"
+
+    decision_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, server_default=func.gen_random_uuid())
+    artifact_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("content_generation_artifacts.artifact_id", ondelete="RESTRICT"), nullable=False)
+    artifact_version: Mapped[int] = mapped_column(Integer, nullable=False)
+    reviewer_id: Mapped[str] = mapped_column(String(80), nullable=False)
+    review_action: Mapped[ContentReviewAction] = mapped_column(
+        Enum(ContentReviewAction, name="content_review_action", values_callable=lambda x: [e.value for e in x], create_type=False),
+        nullable=False,
+    )
+    reason_code: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    comments: Mapped[str | None] = mapped_column(Text, nullable=True)
+    rubric_id: Mapped[str] = mapped_column(String(80), nullable=False, server_default="educator-content-review")
+    rubric_version: Mapped[str] = mapped_column(String(40), nullable=False, server_default="1.0")
+    rubric_results: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False, default=dict)
+    policy_version: Mapped[str] = mapped_column(String(40), nullable=False, server_default="phase3-v1")
+    idempotency_key: Mapped[str] = mapped_column(String(160), nullable=False)
+    conflict_of_interest: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default="false")
+    reviewer_competencies: Mapped[list[str]] = mapped_column(JSONB, nullable=False, default=list)
+    correlation_id: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+
+    __table_args__ = (
+        CheckConstraint("artifact_version > 0", name="ck_content_review_decisions_version_positive"),
+        UniqueConstraint("artifact_id", "artifact_version", "reviewer_id", name="uq_content_review_decision_artifact_version_reviewer"),
+        UniqueConstraint("reviewer_id", "idempotency_key", name="uq_content_review_decision_reviewer_idempotency"),
+        Index("ix_content_review_decisions_artifact_created", "artifact_id", "created_at"),
+    )
+
+
+class ContentStateTransitionEvent(Base):
+    __tablename__ = "content_state_transition_events"
+
+    event_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, server_default=func.gen_random_uuid())
+    artifact_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("content_generation_artifacts.artifact_id", ondelete="RESTRICT"), nullable=False)
+    artifact_version: Mapped[int] = mapped_column(Integer, nullable=False)
+    previous_status: Mapped[str] = mapped_column(String(40), nullable=False)
+    new_status: Mapped[str] = mapped_column(String(40), nullable=False)
+    actor_id: Mapped[str] = mapped_column(String(80), nullable=False)
+    reason_code: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    reason: Mapped[str | None] = mapped_column(Text, nullable=True)
+    triggering_decision_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("content_review_decisions.decision_id", ondelete="RESTRICT"), nullable=True)
+    policy_version: Mapped[str] = mapped_column(String(40), nullable=False, server_default="phase3-v1")
+    correlation_id: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+
+    __table_args__ = (
+        CheckConstraint("artifact_version > 0", name="ck_content_state_events_version_positive"),
+        Index("ix_content_state_events_artifact_created", "artifact_id", "created_at"),
     )
 
 

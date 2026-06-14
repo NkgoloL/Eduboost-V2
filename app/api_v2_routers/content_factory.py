@@ -471,16 +471,6 @@ async def submit_artifact_for_review(artifact_id: uuid.UUID, session: AsyncSessi
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=str(exc)) from exc
 
 
-@router.post("/artifacts/{artifact_id}/approve", response_model=ContentFactoryActionResponse)
-async def approve_artifact(artifact_id: uuid.UUID, request: ContentFactoryActionRequest, session: AsyncSession = Depends(get_db), lifecycle: ContentArtifactLifecycleService = Depends(get_content_artifact_lifecycle_service), current_user: AuthContext = Depends(require_auth_context)) -> ContentFactoryActionResponse:
-    try:
-        transition = await lifecycle.approve_artifact(session, artifact_id, current_user.user_id, request.notes or "")
-        await session.commit()
-        return ContentFactoryActionResponse(**transition.__dict__)
-    except (LookupError, ValueError) as exc:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=str(exc)) from exc
-
-
 @router.post("/artifacts/{artifact_id}/reject", response_model=ContentFactoryActionResponse)
 async def reject_artifact(artifact_id: uuid.UUID, request: ContentFactoryActionRequest, session: AsyncSession = Depends(get_db), lifecycle: ContentArtifactLifecycleService = Depends(get_content_artifact_lifecycle_service), current_user: AuthContext = Depends(require_auth_context)) -> ContentFactoryActionResponse:
     transition = await lifecycle.reject_artifact(session, artifact_id, current_user.user_id, request.reason or "Rejected by admin")

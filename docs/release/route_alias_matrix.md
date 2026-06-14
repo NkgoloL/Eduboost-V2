@@ -57,6 +57,8 @@
 | GET | `/api/v2/admin/etl/review-queue` | `/v2/admin/etl/review-queue` | present | compatibility alias present |
 | GET | `/api/v2/admin/etl/search` | `/v2/admin/etl/search` | present | compatibility alias present |
 | GET | `/api/v2/admin/etl/status` | `/v2/admin/etl/status` | present | compatibility alias present |
+| GET | `/api/v2/admin/generation/runs/{run_id}` | `/v2/admin/generation/runs/{run_id}` | present | compatibility alias present |
+| GET | `/api/v2/admin/generation/runs/{run_id}/tasks` | `/v2/admin/generation/runs/{run_id}/tasks` | present | compatibility alias present |
 | GET | `/api/v2/assessments` | `/v2/assessments` | present | compatibility alias present |
 | GET | `/api/v2/audit` | `/v2/audit` | present | compatibility alias present |
 | GET | `/api/v2/audit/feed` | `/v2/audit/feed` | present | compatibility alias present |
@@ -66,6 +68,8 @@
 | GET | `/api/v2/auth/sessions` | `/v2/auth/sessions` | present | compatibility alias present |
 | GET | `/api/v2/auth/verify-email` | `/v2/auth/verify-email` | present | compatibility alias present |
 | GET | `/api/v2/consent/status/{learner_id}` | `/v2/consent/status/{learner_id}` | present | compatibility alias present |
+| GET | `/api/v2/content-review/artifacts/{artifact_id}/history` | `/v2/content-review/artifacts/{artifact_id}/history` | present | compatibility alias present |
+| GET | `/api/v2/content-review/assignments/stale` | `/v2/content-review/assignments/stale` | present | compatibility alias present |
 | GET | `/api/v2/diagnostics/admin/items/bias-review-queue` | `/v2/diagnostics/admin/items/bias-review-queue` | present | compatibility alias present |
 | GET | `/api/v2/diagnostics/coverage` | `/v2/diagnostics/coverage` | present | compatibility alias present |
 | GET | `/api/v2/diagnostics/item-bank/items/{item_id}` | `/v2/diagnostics/item-bank/items/{item_id}` | present | compatibility alias present |
@@ -102,7 +106,6 @@
 | PATCH | `/api/v2/auth/onboarding/step` | `/v2/auth/onboarding/step` | present | compatibility alias present |
 | PATCH | `/api/v2/auth/privacy` | `/v2/auth/privacy` | present | compatibility alias present |
 | POST | `/api/v2/admin/consent/trigger-renewal-reminders` | `/v2/admin/consent/trigger-renewal-reminders` | present | compatibility alias present |
-| POST | `/api/v2/admin/content-factory/artifacts/{artifact_id}/approve` | `/v2/admin/content-factory/artifacts/{artifact_id}/approve` | present | compatibility alias present |
 | POST | `/api/v2/admin/content-factory/artifacts/{artifact_id}/quarantine` | `/v2/admin/content-factory/artifacts/{artifact_id}/quarantine` | present | compatibility alias present |
 | POST | `/api/v2/admin/content-factory/artifacts/{artifact_id}/reject` | `/v2/admin/content-factory/artifacts/{artifact_id}/reject` | present | compatibility alias present |
 | POST | `/api/v2/admin/content-factory/artifacts/{artifact_id}/submit-review` | `/v2/admin/content-factory/artifacts/{artifact_id}/submit-review` | present | compatibility alias present |
@@ -132,6 +135,8 @@
 | POST | `/api/v2/admin/content-factory/staging-verification/all-scopes` | `/v2/admin/content-factory/staging-verification/all-scopes` | present | compatibility alias present |
 | POST | `/api/v2/admin/content-factory/tasks/{task_id}/execute` | `/v2/admin/content-factory/tasks/{task_id}/execute` | present | compatibility alias present |
 | POST | `/api/v2/admin/content-factory/validate-artifact` | `/v2/admin/content-factory/validate-artifact` | present | compatibility alias present |
+| POST | `/api/v2/admin/generation/runs` | `/v2/admin/generation/runs` | present | compatibility alias present |
+| POST | `/api/v2/admin/generation/runs/{run_id}/cancel` | `/v2/admin/generation/runs/{run_id}/cancel` | present | compatibility alias present |
 | POST | `/api/v2/assessments/{assessment_id}/attempt` | `/v2/assessments/{assessment_id}/attempt` | present | compatibility alias present |
 | POST | `/api/v2/auth/dev-session` | `/v2/auth/dev-session` | present | compatibility alias present |
 | POST | `/api/v2/auth/forgot-password` | `/v2/auth/forgot-password` | present | compatibility alias present |
@@ -149,6 +154,13 @@
 | POST | `/api/v2/billing/webhook` | `/v2/billing/webhook` | present | compatibility alias present |
 | POST | `/api/v2/consent/grant` | `/v2/consent/grant` | present | compatibility alias present |
 | POST | `/api/v2/consent/revoke` | `/v2/consent/revoke` | present | compatibility alias present |
+| POST | `/api/v2/content-review/artifacts/{artifact_id}/assignments` | `/v2/content-review/artifacts/{artifact_id}/assignments` | present | compatibility alias present |
+| POST | `/api/v2/content-review/artifacts/{artifact_id}/decisions` | `/v2/content-review/artifacts/{artifact_id}/decisions` | present | compatibility alias present |
+| POST | `/api/v2/content-review/artifacts/{artifact_id}/publish` | `/v2/content-review/artifacts/{artifact_id}/publish` | present | compatibility alias present |
+| POST | `/api/v2/content-review/artifacts/{artifact_id}/quarantine` | `/v2/content-review/artifacts/{artifact_id}/quarantine` | present | compatibility alias present |
+| POST | `/api/v2/content-review/artifacts/{artifact_id}/revisions` | `/v2/content-review/artifacts/{artifact_id}/revisions` | present | compatibility alias present |
+| POST | `/api/v2/content-review/assignments/{assignment_id}/accept` | `/v2/content-review/assignments/{assignment_id}/accept` | present | compatibility alias present |
+| POST | `/api/v2/content-review/assignments/{assignment_id}/reassign` | `/v2/content-review/assignments/{assignment_id}/reassign` | present | compatibility alias present |
 | POST | `/api/v2/diagnostics/admin/items/{item_id}/bias-review` | `/v2/diagnostics/admin/items/{item_id}/bias-review` | present | compatibility alias present |
 | POST | `/api/v2/diagnostics/item-bank/items/{item_id}/review` | `/v2/diagnostics/item-bank/items/{item_id}/review` | present | compatibility alias present |
 | POST | `/api/v2/diagnostics/sessions` | `/v2/diagnostics/sessions` | present | compatibility alias present |

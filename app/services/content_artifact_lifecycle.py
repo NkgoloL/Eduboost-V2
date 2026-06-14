@@ -1,4 +1,8 @@
-"""Centralized Content Factory artifact lifecycle transitions."""
+"""Centralized Content Factory artifact lifecycle transitions.
+
+Phase 3 disables direct single-review approval. Approval is now derived from
+append-only educator decisions in :mod:`content_review_governance`.
+"""
 from __future__ import annotations
 
 import uuid
@@ -7,8 +11,9 @@ from typing import Any
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models.content_factory import ContentArtifactReview, ContentArtifactStatus, ContentGenerationArtifact, ContentReviewAction
+from app.models.content_factory import ContentArtifactStatus, ContentGenerationArtifact
 from app.services.content_factory import ContentFactoryService
+from app.services.content_review_governance import ContentReviewGovernanceService
 
 
 @dataclass(frozen=True)
@@ -21,89 +26,202 @@ class ArtifactStatusTransition:
 
 
 class ContentArtifactLifecycleService:
-    def __init__(self, factory_service: ContentFactoryService | None = None) -> None:
+    def __init__(
+        self,
+        factory_service: ContentFactoryService | None = None,
+        governance_service: ContentReviewGovernanceService | None = None,
+    ) -> None:
         self.factory_service = factory_service or ContentFactoryService()
+        self.governance_service = governance_service or ContentReviewGovernanceService(
+            factory_service=self.factory_service
+        )
 
-    async def create_artifact(self, session: AsyncSession, *, payload: dict[str, Any]) -> ContentGenerationArtifact:
+    async def create_artifact(
+        self, session: AsyncSession, *, payload: dict[str, Any]
+    ) -> ContentGenerationArtifact:
         return await self.factory_service.create_artifact(session, payload=payload)
 
     async def validate_for_review(self, session: AsyncSession, artifact_id: uuid.UUID):
         return await self.factory_service.validate_existing_artifact(session, artifact_id)
 
-    async def submit_for_review(self, session: AsyncSession, artifact_id: uuid.UUID, actor_id: str) -> ArtifactStatusTransition:
+    async def submit_for_review(
+        self, session: AsyncSession, artifact_id: uuid.UUID, actor_id: str
+    ) -> ArtifactStatusTransition:
         artifact = await self.factory_service.get_artifact(session, artifact_id)
         previous = _value(artifact.status)
-        if previous not in {ContentArtifactStatus.GENERATED.value, ContentArtifactStatus.VALIDATION_FAILED.value}:
-            raise ValueError("Only generated or validation_failed artifacts can be submitted for review.")
+        if previous not in {
+            ContentArtifactStatus.GENERATED.value,
+            ContentArtifactStatus.VALIDATION_FAILED.value,
+            ContentArtifactStatus.REVISION_REQUIRED.value,
+        }:
+            raise ValueError(
+                "Only generated, validation_failed, or revision_required artifacts can be submitted for review."
+            )
         report = await self.validate_for_review(session, artifact_id)
         if not report.passed:
             artifact.status = ContentArtifactStatus.VALIDATION_FAILED
             raise ValueError("Artifact validation failed: " + "; ".join(report.errors))
         artifact.status = ContentArtifactStatus.PENDING_REVIEW
+        artifact.approval_count = 0
+        artifact.publication_eligible = False
+        artifact.row_version = int(getattr(artifact, "row_version", 1) or 1) + 1
+        await self.governance_service.record_external_transition(
+            session,
+            artifact=artifact,
+            previous_status=previous,
+            new_status=ContentArtifactStatus.PENDING_REVIEW.value,
+            actor_id=actor_id,
+            reason_code="submitted_for_review",
+        )
         await session.flush()
-        return ArtifactStatusTransition(artifact.artifact_id, previous, ContentArtifactStatus.PENDING_REVIEW.value, actor_id)
+        return ArtifactStatusTransition(
+            artifact.artifact_id,
+            previous,
+            ContentArtifactStatus.PENDING_REVIEW.value,
+            actor_id,
+        )
 
-    async def approve_artifact(self, session: AsyncSession, artifact_id: uuid.UUID, actor_id: str, notes: str = "") -> ArtifactStatusTransition:
-        artifact = await self.factory_service.get_artifact(session, artifact_id)
-        previous = _value(artifact.status)
-        if previous != ContentArtifactStatus.PENDING_REVIEW.value:
-            raise ValueError("Only pending_review artifacts can be approved.")
-        await self.factory_service.assert_artifact_has_approved_sources(session, artifact_id)
-        artifact.status = ContentArtifactStatus.APPROVED
-        session.add(ContentArtifactReview(artifact_id=artifact.artifact_id, reviewer_id=actor_id, review_action=ContentReviewAction.APPROVE, review_reason=notes or None))
-        await session.flush()
-        return ArtifactStatusTransition(artifact.artifact_id, previous, ContentArtifactStatus.APPROVED.value, actor_id, notes or None)
-
-    async def reject_artifact(self, session: AsyncSession, artifact_id: uuid.UUID, actor_id: str, reason: str) -> ArtifactStatusTransition:
-        if not reason:
+    async def reject_artifact(
+        self,
+        session: AsyncSession,
+        artifact_id: uuid.UUID,
+        actor_id: str,
+        reason: str,
+    ) -> ArtifactStatusTransition:
+        if not reason.strip():
             raise ValueError("Rejecting an artifact requires a reason.")
-        return await self._set_status(session, artifact_id, actor_id, ContentArtifactStatus.REJECTED, reason)
+        return await self._set_status(
+            session,
+            artifact_id,
+            actor_id,
+            ContentArtifactStatus.REJECTED,
+            reason,
+            "legacy_reject",
+        )
 
-    async def quarantine_artifact(self, session: AsyncSession, artifact_id: uuid.UUID, actor_id: str, reason: str) -> ArtifactStatusTransition:
-        if not reason:
-            raise ValueError("Quarantining an artifact requires a reason.")
-        artifact = await self.factory_service.get_artifact(session, artifact_id)
-        if _value(artifact.status) == ContentArtifactStatus.PROMOTED_PRODUCTION.value:
-            raise ValueError("Promoted production artifacts must be retired rather than quarantined.")
-        previous = _value(artifact.status)
-        artifact.status = ContentArtifactStatus.QUARANTINED
-        session.add(ContentArtifactReview(artifact_id=artifact.artifact_id, reviewer_id=actor_id, review_action=ContentReviewAction.QUARANTINE, review_reason=reason))
-        await session.flush()
-        return ArtifactStatusTransition(artifact.artifact_id, previous, ContentArtifactStatus.QUARANTINED.value, actor_id, reason)
+    async def quarantine_artifact(
+        self,
+        session: AsyncSession,
+        artifact_id: uuid.UUID,
+        actor_id: str,
+        reason: str,
+    ) -> ArtifactStatusTransition:
+        current = await self.factory_service.get_artifact(session, artifact_id)
+        previous = _value(current.status)
+        artifact = await self.governance_service.quarantine_artifact(
+            session,
+            artifact_id=artifact_id,
+            actor_id=actor_id,
+            reason_code="manual_quarantine",
+            reason=reason,
+        )
+        return ArtifactStatusTransition(
+            artifact.artifact_id,
+            previous,
+            ContentArtifactStatus.QUARANTINED.value,
+            actor_id,
+            reason,
+        )
 
-    async def retire_artifact(self, session: AsyncSession, artifact_id: uuid.UUID, actor_id: str, reason: str) -> ArtifactStatusTransition:
-        if not reason:
+    async def retire_artifact(
+        self,
+        session: AsyncSession,
+        artifact_id: uuid.UUID,
+        actor_id: str,
+        reason: str,
+    ) -> ArtifactStatusTransition:
+        if not reason.strip():
             raise ValueError("Retiring an artifact requires a reason.")
-        return await self._set_status(session, artifact_id, actor_id, ContentArtifactStatus.RETIRED, reason)
+        return await self._set_status(
+            session,
+            artifact_id,
+            actor_id,
+            ContentArtifactStatus.RETIRED,
+            reason,
+            "retired",
+        )
 
-    async def mark_seeded_staging(self, session: AsyncSession, artifact_id: uuid.UUID, actor_id: str) -> ArtifactStatusTransition:
+    async def mark_seeded_staging(
+        self, session: AsyncSession, artifact_id: uuid.UUID, actor_id: str
+    ) -> ArtifactStatusTransition:
         artifact = await self.factory_service.get_artifact(session, artifact_id)
         previous = _value(artifact.status)
         if previous != ContentArtifactStatus.APPROVED.value:
-            raise ValueError("Only approved artifacts can be seeded to staging.")
+            raise ValueError("Only quorum-approved artifacts can be seeded to staging.")
+        if not artifact.publication_eligible:
+            raise ValueError("Artifact is not publication eligible.")
         artifact.status = ContentArtifactStatus.SEEDED_STAGING
+        artifact.row_version = int(getattr(artifact, "row_version", 1) or 1) + 1
+        await self.governance_service.record_external_transition(
+            session,
+            artifact=artifact,
+            previous_status=previous,
+            new_status=ContentArtifactStatus.SEEDED_STAGING.value,
+            actor_id=actor_id,
+            reason_code="seeded_staging",
+        )
         await session.flush()
-        return ArtifactStatusTransition(artifact.artifact_id, previous, ContentArtifactStatus.SEEDED_STAGING.value, actor_id)
+        return ArtifactStatusTransition(
+            artifact.artifact_id,
+            previous,
+            ContentArtifactStatus.SEEDED_STAGING.value,
+            actor_id,
+        )
 
-    async def mark_promoted_production(self, session: AsyncSession, artifact_id: uuid.UUID, actor_id: str) -> ArtifactStatusTransition:
+    async def mark_promoted_production(
+        self, session: AsyncSession, artifact_id: uuid.UUID, actor_id: str
+    ) -> ArtifactStatusTransition:
         artifact = await self.factory_service.get_artifact(session, artifact_id)
         previous = _value(artifact.status)
         if previous != ContentArtifactStatus.SEEDED_STAGING.value:
             raise ValueError("Only seeded_staging artifacts can be promoted to production.")
+        if not artifact.publication_eligible:
+            raise ValueError("Artifact is not publication eligible.")
         artifact.status = ContentArtifactStatus.PROMOTED_PRODUCTION
+        artifact.row_version = int(getattr(artifact, "row_version", 1) or 1) + 1
+        await self.governance_service.record_external_transition(
+            session,
+            artifact=artifact,
+            previous_status=previous,
+            new_status=ContentArtifactStatus.PROMOTED_PRODUCTION.value,
+            actor_id=actor_id,
+            reason_code="promoted_production",
+        )
         await session.flush()
-        return ArtifactStatusTransition(artifact.artifact_id, previous, ContentArtifactStatus.PROMOTED_PRODUCTION.value, actor_id)
+        return ArtifactStatusTransition(
+            artifact.artifact_id,
+            previous,
+            ContentArtifactStatus.PROMOTED_PRODUCTION.value,
+            actor_id,
+        )
 
-    async def _set_status(self, session: AsyncSession, artifact_id: uuid.UUID, actor_id: str, status: ContentArtifactStatus, reason: str | None) -> ArtifactStatusTransition:
+    async def _set_status(
+        self,
+        session: AsyncSession,
+        artifact_id: uuid.UUID,
+        actor_id: str,
+        status: ContentArtifactStatus,
+        reason: str | None,
+        reason_code: str,
+    ) -> ArtifactStatusTransition:
         artifact = await self.factory_service.get_artifact(session, artifact_id)
         previous = _value(artifact.status)
-        if previous == ContentArtifactStatus.QUARANTINED.value and status == ContentArtifactStatus.APPROVED:
-            raise ValueError("Quarantined artifacts require explicit revalidation before approval.")
         artifact.status = status
-        action = ContentReviewAction.REJECT if status == ContentArtifactStatus.REJECTED else ContentReviewAction.REQUEST_CHANGES
-        session.add(ContentArtifactReview(artifact_id=artifact.artifact_id, reviewer_id=actor_id, review_action=action, review_reason=reason))
+        artifact.publication_eligible = False
+        artifact.row_version = int(getattr(artifact, "row_version", 1) or 1) + 1
+        await self.governance_service.record_external_transition(
+            session,
+            artifact=artifact,
+            previous_status=previous,
+            new_status=status.value,
+            actor_id=actor_id,
+            reason_code=reason_code,
+            reason=reason,
+        )
         await session.flush()
-        return ArtifactStatusTransition(artifact.artifact_id, previous, status.value, actor_id, reason)
+        return ArtifactStatusTransition(
+            artifact.artifact_id, previous, status.value, actor_id, reason
+        )
 
 
 def _value(value: Any) -> str:
