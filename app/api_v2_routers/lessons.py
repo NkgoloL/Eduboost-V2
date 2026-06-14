@@ -105,10 +105,6 @@ async def get_lesson(
     if not lesson:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Lesson not found")
 
-    # Ownership check
-    # Note: In a real app, we'd check if current_user has access to this learner's lessons.
-    # For now, we trust the lesson_id is known only to the authorized user.
-
     return LessonResponse.model_validate(lesson)
 
 

@@ -1,27 +1,43 @@
 # Phase 11 Evidence - Technical Debt Burn-Down
 
-**Evidence date:** 2026-06-13  
-**Status:** Partial; report self-identifies deferred work and missed Ruff target
+**Evidence date:** 2026-06-14
+**Status:** Partial against Ruff target; route comment and migration audit gaps closed
 
 ## Evidence Sources
 
 - `docs/roadmap/execution/phase_11_execution_plan.md`
 - `docs/roadmap/execution/phase_11_implementation_report.md`
+- `docs/backlog/ruff_debt.md`
+- `docs/database/migration_audit.md`
+- `docs/release/phase_11_route_comment_audit.md`
 - current Ruff statistics
 - current import-linter result
 
 ## Current Passing Evidence
 
 ```text
-.venv/bin/lint-imports
-# passed, 3 contracts kept
+lint-imports
+# Contracts: 3 kept, 0 broken.
 ```
 
-Release-blocking Ruff subset also passed during the wider 2026-06-13 traceability audit:
+```text
+ruff check app tests scripts --select E9,F63,F7,F82,F821,F601
+# All checks passed.
+```
 
 ```text
-.venv/bin/ruff check app tests scripts --select E9,F63,F7,F82,F821
-# passed
+python3 scripts/verify_migration_graph.py
+# Migration graph OK: 34 revisions, head=20260609_0800_practice_sessions
+
+python3 scripts/validate_schema_integrity.py
+# Schema integrity OK
+```
+
+```text
+python3 -c "from app.api_v2 import app; ..."
+# 355 routes
+# /api/v2/ether registered: False
+# /api/v2/judiciary registered: False
 ```
 
 ## Current Ruff Debt
@@ -29,25 +45,24 @@ Release-blocking Ruff subset also passed during the wider 2026-06-13 traceabilit
 Current `ruff check app tests scripts --statistics` output:
 
 ```text
-396 E402
+402 E402
 137 E701
  94 E702
  10 E741
   7 E712
-  1 F601
 ```
 
-Total: 645 findings.
+Total: 650 findings.
 
-## Deferred Work
+## Closed During Audit
 
-The implementation report explicitly marks:
-
-- I.3 route comment hygiene: deferred
-- I.4 migration audit: deferred
-
-It also records a definition-of-done target of `<=100` Ruff findings with an actual result of `645`.
+- Added `docs/database/migration_audit.md`.
+- Added `docs/release/phase_11_route_comment_audit.md`.
+- Removed the stale lesson route comment that said the API trusted `lesson_id` knowledge.
+- Fixed the remaining `F601` duplicate dictionary key in `scripts/sync_git_to_redmine.py`.
 
 ## Verdict
 
-Phase 11 reduced debt and fixed/import-linter evidence is strong, but the phase is not complete against its own definition of done.
+Phase 11 is materially improved but still partial against its original Ruff
+definition of done. The remaining 650 findings are import-order and style debt,
+not release-blocking correctness findings.

@@ -3,24 +3,25 @@
 **Date:** 2026-06-09
 **Baseline:** Phase 1.2 completion; correctness gates (E9, F63, F7, F82, F821) all pass
 
-**Current checkpoint:** 2026-06-13 traceability closeout; correctness gates still pass and non-blocking debt is now 645 findings by `ruff check app tests scripts --statistics`.
+**Current checkpoint:** 2026-06-14 traceability closeout; correctness gates still pass and non-blocking debt is now 650 findings by `ruff check app tests scripts --statistics`.
 
 ## Summary
 
 As of 2026-06-09, the codebase contains approximately **1,000 Ruff findings** beyond the release-blocking correctness checks. These are organized by severity category below. Correctness-blocking errors (E9, F63, F7, F82, F821) are **zero** and gated in CI.
 
-As of the 2026-06-13 refresh, remaining non-blocking findings are:
+As of the 2026-06-14 refresh, remaining non-blocking findings are:
 
 | Code | Count | Description |
 |------|------:|-------------|
-| E402 | 396 | Module level import not at top of file |
+| E402 | 402 | Module level import not at top of file |
 | E701 | 137 | Multiple statements on one line (colon) |
 | E702 | 94 | Multiple statements on one line (semicolon) |
 | E741 | 10 | Ambiguous variable name |
 | E712 | 7 | Equality comparison to false |
-| F601 | 1 | Repeated dictionary key literal |
 
-The original 2026-06-09 baseline remains below for historical comparison.
+The 2026-06-14 pass removed the remaining `F601` duplicate dictionary-key
+finding in `scripts/sync_git_to_redmine.py`. The original 2026-06-09 baseline
+remains below for historical comparison.
 
 ## Release-Blocking Correctness Gate ✅
 

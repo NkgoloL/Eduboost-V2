@@ -8,7 +8,7 @@ USER_ID = 5
 ISSUE_MAP = {
     "gamification": 1, "badge": 1, "xp": 1, "streak": 1, "reward": 1,
     "parent": 2, "guardian": 2, "consent": 2, "family": 2, "verification": 2,
-    "diagnostic": 3, "irt": 3, "assessment": 3, "item": 3, "test": 3,
+    "diagnostic": 3, "irt": 3, "assessment": 3, "item": 3,
     "study plan": 4, "plan": 4, "refresh": 4, "rationale": 4,
     "fourth estate": 5, "estate": 5, "audit_events": 5,
     "judiciary": 6, "compliance": 6, "policy": 6,
