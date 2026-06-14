@@ -1,0 +1,41 @@
+{
+  "dataset_id": "phase2-technical-acceptance-v1",
+  "status": "approved",
+  "thresholds": {
+    "recall_at_k": 0.8,
+    "mean_reciprocal_rank": 0.6,
+    "unsafe_hit_count": 0
+  },
+  "cases": [
+    {
+      "case_id": "whole-numbers",
+      "query": "whole numbers place value",
+      "expected_chunk_ids": ["whole-numbers"],
+      "k": 3,
+      "filters": {
+        "scope_id": "g4-math",
+        "caps_ref": "4.M.1.1",
+        "grade": 4,
+        "subject_code": "MATH",
+        "language": "en",
+        "permission_scope": "public",
+        "min_quality_score": 0.5
+      }
+    },
+    {
+      "case_id": "geometry",
+      "query": "triangles angles and symmetry",
+      "expected_chunk_ids": ["geometry"],
+      "k": 3,
+      "filters": {
+        "scope_id": "g4-math",
+        "caps_ref": "4.M.1.1",
+        "grade": 4,
+        "subject_code": "MATH",
+        "language": "en",
+        "permission_scope": "public",
+        "min_quality_score": 0.5
+      }
+    }
+  ]
+}

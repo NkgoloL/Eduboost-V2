@@ -765,3 +765,10 @@ from app.models.auth_extensions import (  # noqa: F401  (re-export)
     SecureToken,
     TokenPurpose,
 )
+
+# Phase 2 semantic-retrieval corpus models
+from app.models.retrieval import (  # noqa: F401  (re-export)
+    RetrievalSourceChunk,
+    RetrievalSourceDocument,
+    Vector1536,
+)
