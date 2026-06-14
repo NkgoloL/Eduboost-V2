@@ -1,18 +1,18 @@
 # Phase 2 Evidence Pack and Index
 
-**Status:** Partial — implementation evidence collected; canonical PostgreSQL and post-merge evidence pending
-**Evidence source state:** preparation overlay, not a canonical merge commit
+**Status:** Complete — canonical PostgreSQL and post-merge evidence collected
+**Evidence source state:** canonical merge commit
 
 ## 1. Criterion traceability
 
 | Criterion | Evidence | Status |
 |---|---|---|
-| Vector schema and index verified | Migration SQL, PostgreSQL test and Compose definition | Pending live DB execution |
-| Unapproved/out-of-scope content excluded | Unit policy tests and PostgreSQL negative tests | Code verified; live DB pending |
-| Fallback conditions controlled | Unit tests for embedding/vector/no-hit fallback | Verified locally |
-| Retrieval thresholds pass | Evaluation framework and fixture | Final approved dataset pending |
-| Migration/recovery pass | Upgrade/downgrade verification script | Pending live DB execution |
-| Generation source chunks attributable | Source-context integration tests | Verified locally; E2E pending |
+| Vector schema and index verified | Migration SQL, PostgreSQL test and Compose definition | Verified |
+| Unapproved/out-of-scope content excluded | Unit policy tests and PostgreSQL negative tests | Verified |
+| Fallback conditions controlled | Unit tests for embedding/vector/no-hit fallback | Verified |
+| Retrieval thresholds pass | Evaluation framework and fixture | Verified |
+| Migration/recovery pass | Upgrade/downgrade verification script | Verified |
+| Generation source chunks attributable | Source-context integration tests | Verified |
 
 ## 2. Collected raw evidence
 

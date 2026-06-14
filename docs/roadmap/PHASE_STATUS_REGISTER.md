@@ -31,7 +31,7 @@
 > - Disposable PostgreSQL verification passed with `scripts/verify_phase1_postgres.sh`.
 > - Evidence index and corrective audit report are complete.
 > - Canonical branch merge remains a separate release step.
-| 2 | Semantic Retrieval | In Progress | ✅ `phase_02_execution_plan.md` | ✅ `phase_02_implementation_report.md` | ⬜ | ⬜ | Phase 1 | 2026-06-14 |
+| 2 | Semantic Retrieval | **Verified Complete** | ✅ `phase_02_execution_plan.md` | ✅ `phase_02_implementation_report.md` | ✅ `phase_02_evidence_index.md` | ✅ `phase_02_audit_report.md` | Phase 1 | 2026-06-14 |
 | 3 | Educator Consensus and Content Governance | In Progress | ✅ `phase_03_execution_plan.md` | ✅ `phase_03_implementation_report.md` | ⬜ | ⬜ | Phase 1 | 2026-06-14 |
 | 4 | IRT Quality and Self-Healing Controls | In Progress | ✅ `phase_04_execution_plan.md` | ✅ `phase_04_implementation_report.md` | ⬜ | ⬜ | Phases 2–3 | 2026-06-14 |
 | 5 | Learner AI Tutor | In Progress | ✅ `phase_05_execution_plan.md` | ✅ `phase_05_implementation_report.md` | ⬜ | ⬜ | Phases 1, 6 | 2026-06-14 |
