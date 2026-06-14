@@ -1,9 +1,9 @@
 # Documentation Inventory
 
-Generated at: `2026-06-13T13:48:41Z`
-Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
+Generated at: `2026-06-14T18:54:03Z`
+Commit: `7affa094d02d8060fc59b3698bf4ee13f9ea2457`
 
-- Documents: `1319`
+- Documents: `1363`
 - Generated docs: `4`
 
 ## Categories
@@ -13,8 +13,8 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `adr` | 51 |
 | `api` | 6 |
 | `architecture` | 40 |
-| `general` | 650 |
-| `release` | 470 |
+| `general` | 676 |
+| `release` | 488 |
 | `security` | 102 |
 
 ## Documents
@@ -232,7 +232,7 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/backlog/production_readiness/18_beta_launch_staging_acceptance_and_product_scope.md` | `general` | 18. Beta launch, staging acceptance, and product scope | 4796 | False |
 | `docs/backlog/production_readiness/19_roadmap_after_production-readiness_baseline.md` | `general` | 19. Roadmap after production-readiness baseline | 3816 | False |
 | `docs/backlog/production_readiness/20_final_release-blocker_checklist.md` | `general` | 20. Final release-blocker checklist | 6391 | False |
-| `docs/backlog/ruff_debt.md` | `general` | Ruff Debt Inventory | 4269 | False |
+| `docs/backlog/ruff_debt.md` | `general` | Ruff Debt Inventory | 5029 | False |
 | `docs/beta/beta_content_hard_gate.json` | `general` | Beta Content Hard Gate | 187 | False |
 | `docs/beta/beta_content_hard_gate.md` | `general` | Beta Content Hard Gate | 221 | False |
 | `docs/beta/beta_content_threshold_status.json` | `general` | Beta Content Threshold Status | 90 | False |
@@ -260,7 +260,7 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/caps/grade4_maths_120_item_production_plan.md` | `general` | Grade 4 Mathematics 120-Item Production Plan | 1648 | False |
 | `docs/caps/grade4_maths_coverage_matrix.md` | `general` | Grade 4 Mathematics - CAPS Item Bank Coverage Matrix | 1872 | False |
 | `docs/caps/grade4_maths_lesson_coverage_matrix.md` | `general` | Grade 4 Mathematics - Lesson Coverage Matrix | 1546 | False |
-| `docs/caps/multilingual_status.md` | `general` | Multilingual Lesson Generation Status | 3568 | False |
+| `docs/caps/multilingual_status.md` | `general` | Multilingual Lesson Generation Status | 4033 | False |
 | `docs/codemaps/README.md` | `general` | Codemaps Documentation | 21559 | False |
 | `docs/codemaps/alembic_migration_and_ddl_management_startup_ddl_repairs_migration_integrity_and_alembic_workflow.md` | `general` | Alembic Migration and DDL Management: Startup DDL Repairs, Migration Integrity, and Alembic Workflow | 51387 | False |
 | `docs/codemaps/api_documentation_structure_sphinx_mkdocs_generation_pipeline.md` | `general` | API Documentation Structure: Sphinx & MkDocs Generation Pipeline | 39559 | False |
@@ -312,6 +312,7 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/data_inventory.md` | `general` | Data Inventory | 3778 | False |
 | `docs/data_retention_policy.md` | `general` | Data retention policy | 1365 | False |
 | `docs/database/db_repository_evidence.md` | `general` | Database Repository Evidence | 681 | False |
+| `docs/database/migration_audit.md` | `general` | Migration Audit | 1410 | False |
 | `docs/database/migration_discipline.md` | `general` | Database migration discipline | 2598 | False |
 | `docs/database/migration_release_discipline_contract.md` | `general` | Migration Release Discipline Contract | 1749 | False |
 | `docs/database/repository_transaction_performance_contract.md` | `general` | Repository, Transaction, and Performance Contract | 2465 | False |
@@ -326,7 +327,7 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/deployment/docker_runtime_hardening_contract.md` | `general` | Docker Runtime Hardening Contract | 672 | False |
 | `docs/deployment/environment_configuration_contract.md` | `general` | Environment Configuration Contract | 922 | False |
 | `docs/deployment/production_deployment_architecture_contract.md` | `general` | Production Deployment Architecture Contract | 883 | False |
-| `docs/development/e2e_testing.md` | `general` | E2E Testing Guide | 3828 | False |
+| `docs/development/e2e_testing.md` | `general` | E2E Testing Guide | 4439 | False |
 | `docs/development/pwa_offline_plan.md` | `general` | PWA Offline Behavior Plan | 3340 | False |
 | `docs/diagnostics/README.md` | `general` | Diagnostics And Assessment | 1134 | False |
 | `docs/diagnostics/assessment_quality_fairness_contract.md` | `general` | Assessment Quality and Fairness Contract | 1229 | False |
@@ -474,7 +475,7 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/observability/runbooks/notification_dead_letter_spike.md` | `general` | Runbook: notification_dead_letter_spike | 655 | False |
 | `docs/observability/runbooks/privacy_export_failure.md` | `general` | Runbook: privacy_export_failure | 639 | False |
 | `docs/observability/telemetry_privacy_retention_contract.md` | `general` | Telemetry Privacy and Retention Contract | 852 | False |
-| `docs/openapi.json` | `api` | Openapi | 564807 | False |
+| `docs/openapi.json` | `api` | Openapi | 566970 | False |
 | `docs/openapi_pr003.json` | `api` | Openapi Pr003 | 125292 | False |
 | `docs/openapi_pr004.json` | `api` | Openapi Pr004 | 132996 | False |
 | `docs/operations/CLUSTER_D_CLOSURE.md` | `general` | Cluster D CI/Deployment/Environment Closure | 1252 | False |
@@ -503,7 +504,7 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/operations/beta_release_final_checklist.md` | `general` | Beta Release Final Checklist | 1981 | False |
 | `docs/operations/beta_release_final_index.md` | `general` | Beta Release Final Index | 3193 | False |
 | `docs/operations/beta_release_freeze_window_contract.md` | `general` | Beta Release Freeze Window Contract | 1753 | False |
-| `docs/operations/beta_release_pr_body.md` | `general` | Beta Release PR Body | 1393 | False |
+| `docs/operations/beta_release_pr_body.md` | `general` | Beta Release PR Body | 1366 | False |
 | `docs/operations/beta_release_readiness_contract.md` | `general` | Beta Release Readiness Contract | 2539 | False |
 | `docs/operations/beta_retrospective_action_register.md` | `general` | Beta Retrospective Action Register | 1855 | False |
 | `docs/operations/beta_rollback_runbook.md` | `general` | Beta Rollback Runbook | 1541 | False |
@@ -615,6 +616,7 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/operations/terminal_pr_evidence_index.md` | `general` | Terminal PR Evidence Index | 2248 | False |
 | `docs/operations/terminal_review_index.md` | `general` | Terminal Review Index | 1977 | False |
 | `docs/operations/todo_implementation_plan.md` | `general` | TODO Implementation Plan | 20686 | False |
+| `docs/operations/workspace_source_of_truth.md` | `general` | Workspace Source Of Truth | 1154 | False |
 | `docs/operations_support/incident_classification_matrix.md` | `general` | Incident Classification Matrix | 751 | False |
 | `docs/operations_support/incident_response_operations_support_architecture_contract.md` | `general` | Incident Response Operations Support Architecture Contract | 814 | False |
 | `docs/operations_support/incidents/INC-001.md` | `general` | Incident Record INC-001 | 365 | False |
@@ -679,7 +681,7 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/release/EVIDENCE_INDEX.md` | `release` | EduBoost V2 Release Evidence Index | 51990 | False |
 | `docs/release/EduBoost_V2_Comparative_Audit_Report.md` | `release` | EduBoost SA V2 — Comparative Technical Audit Report | 18013 | False |
 | `docs/release/EduBoost_V2_Final_Technical_Assessment.md` | `release` | EduBoost V2 Final Technical Assessment | 2216 | False |
-| `docs/release/EduBoost_V2_North_Star_TODO.md` | `release` | EduBoost V2 North-Star TODO | 2540 | False |
+| `docs/release/EduBoost_V2_North_Star_TODO.md` | `release` | EduBoost V2 North-Star TODO | 2651 | False |
 | `docs/release/EduBoost_V2_North_Star_TODO_2026-05-22.md` | `release` | EduBoost V2 North Star TODO - 2026-05-22 | 12744 | False |
 | `docs/release/EduBoost_V2_Post_Baseline_Remediation_Roadmap.md` | `release` | EduBoost V2 — Post-Baseline Remediation and Execution Roadmap | 14566 | False |
 | `docs/release/EduBoost_V2_Production_Readiness_Status_Report.md` | `release` | EduBoost V2 Production-Readiness Status Report | 1078 | False |
@@ -706,8 +708,8 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/release/approval_evidence_status.md` | `release` | Approval Evidence Status | 1296 | False |
 | `docs/release/arq_consent_job_repair_report.md` | `release` | ARQ Consent Job Repair Report | 340 | False |
 | `docs/release/arq_dependency_worker_import_repair_report.md` | `release` | ARQ Dependency and Worker Import Repair Report | 520 | False |
-| `docs/release/audit_baseline_refresh_status.json` | `release` | Audit Baseline Refresh Status | 6412 | False |
-| `docs/release/audit_baseline_refresh_status.md` | `release` | Audit Baseline Refresh Status | 3618 | False |
+| `docs/release/audit_baseline_refresh_status.json` | `release` | Audit Baseline Refresh Status | 6535 | False |
+| `docs/release/audit_baseline_refresh_status.md` | `release` | Audit Baseline Refresh Status | 3596 | False |
 | `docs/release/audit_callsite_inventory.md` | `release` | Audit Call-Site Inventory | 422988 | False |
 | `docs/release/audit_callsite_migration_slice_002.md` | `release` | Audit Call-Site Migration Slice 002 | 482 | False |
 | `docs/release/audit_candidate_execution_ledger.md` | `release` | Audit Candidate Execution Ledger | 451 | False |
@@ -770,7 +772,7 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/release/backend_consolidation_terminal_report.md` | `release` | Backend Consolidation Terminal Report | 9156 | False |
 | `docs/release/backend_data_retention_approval_update.md` | `release` | Backend Data Retention Approval Update | 402 | False |
 | `docs/release/backend_data_retention_decision_checklist.md` | `release` | Backend Data Retention Decision Checklist | 1404 | False |
-| `docs/release/backend_deletion_candidate_inventory.md` | `release` | Backend Deletion Candidate Inventory | 103028900 | False |
+| `docs/release/backend_deletion_candidate_inventory.md` | `release` | Backend Deletion Candidate Inventory | 105050098 | False |
 | `docs/release/backend_first_wiring_candidate_registry.md` | `release` | Backend First Wiring Candidate Registry | 372 | False |
 | `docs/release/backend_first_wiring_candidates_report.md` | `release` | Backend First Wiring Candidates Report | 5947 | False |
 | `docs/release/backend_implementation_371_375_report.md` | `release` | Backend Implementation 371-375 Report | 3408 | False |
@@ -825,7 +827,7 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/release/ci_run_evidence_status.json` | `release` | Ci Run Evidence Status | 766 | False |
 | `docs/release/ci_run_evidence_status.md` | `release` | CI Run Evidence Status | 801 | False |
 | `docs/release/ci_workflow_consolidation.md` | `release` | EduBoost V2 CI Workflow Consolidation Plan | 1293 | False |
-| `docs/release/consent_callsite_inventory.md` | `release` | Consent Call-Site Inventory | 82733 | False |
+| `docs/release/consent_callsite_inventory.md` | `release` | Consent Call-Site Inventory | 82761 | False |
 | `docs/release/consent_candidate_execution_ledger.md` | `release` | Consent Candidate Execution Ledger | 428 | False |
 | `docs/release/consent_runtime_compatibility_slice_001.md` | `release` | Consent Runtime Compatibility Slice 001 | 640 | False |
 | `docs/release/consent_runtime_integration_target_map.md` | `release` | Consent Runtime Integration Target Map | 365 | False |
@@ -870,7 +872,7 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/release/eduboost-v2-technical-audit-2026-06-02.md` | `release` | EduBoost V2 Technical Audit | 20636 | False |
 | `docs/release/evidence_attachment_runbook.md` | `release` | Evidence Attachment Runbook | 5177 | False |
 | `docs/release/evidence_attachment_runbook_manifest.json` | `release` | Evidence Attachment Runbook Manifest | 4984 | False |
-| `docs/release/evidence_status_registry.yml` | `release` | EduBoost V2 Evidence Status Registry | 34308 | False |
+| `docs/release/evidence_status_registry.yml` | `release` | EduBoost V2 Evidence Status Registry | 34339 | False |
 | `docs/release/external_approval_status.json` | `release` | External Approval Status | 3030 | False |
 | `docs/release/external_approval_status.md` | `release` | External Approval Status | 1584 | False |
 | `docs/release/external_approvals/content_approval.md` | `release` | Educator/content release approval | 522 | False |
@@ -1052,16 +1054,34 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/release/operator_runbook.md` | `release` | Beta Operator Runbook | 2555 | False |
 | `docs/release/phase2_data_integrity_blockers.md` | `release` | Phase 2 Data Integrity Blockers | 768 | False |
 | `docs/release/phase3_implementation_audit.md` | `release` | Phase 3 Implementation Audit | 3655 | False |
-| `docs/release/phase_1_evidence.md` | `release` | Phase 1 - Release-Blocking Correctness Fixes | 3608 | False |
+| `docs/release/phase_10_evidence.md` | `release` | Phase 10 Evidence - Post-Production Docs, Tooling, and Hygiene | 2350 | False |
+| `docs/release/phase_10_implementation_audit.md` | `release` | Phase 10 Implementation Audit - Post-Production Docs, Tooling, and Hygiene | 2037 | False |
+| `docs/release/phase_11_evidence.md` | `release` | Phase 11 Evidence - Technical Debt Burn-Down | 1677 | False |
+| `docs/release/phase_11_implementation_audit.md` | `release` | Phase 11 Implementation Audit - Technical Debt Burn-Down | 1656 | False |
+| `docs/release/phase_11_route_comment_audit.md` | `release` | Phase 11 Route Comment Audit | 917 | False |
+| `docs/release/phase_12_evidence.md` | `release` | Phase 12 Evidence - Security Posture Deepening | 2208 | False |
+| `docs/release/phase_12_implementation_audit.md` | `release` | Phase 12 Implementation Audit - Security Posture Deepening | 1844 | False |
+| `docs/release/phase_13_evidence.md` | `release` | Phase 13 Evidence - Frontend and Product Completeness | 5126 | False |
+| `docs/release/phase_13_implementation_audit.md` | `release` | Phase 13 Implementation Audit - Frontend and Product Completeness | 3571 | False |
+| `docs/release/phase_1_evidence.md` | `release` | Phase 1 - Release-Blocking Correctness Fixes | 4829 | False |
+| `docs/release/phase_1_implementation_audit.md` | `release` | Phase 1 Implementation Audit - Release-Blocking Correctness Fixes | 1864 | False |
 | `docs/release/phase_2_1_evidence.md` | `release` | Phase 2.1 — Route Authentication and Authorization Hardening | 8169 | False |
-| `docs/release/phase_2_evidence.md` | `release` | Phase 2.2 — Durable Practice Session Storage | 9434 | False |
+| `docs/release/phase_2_evidence.md` | `release` | Phase 2.2 — Durable Practice Session Storage | 13319 | False |
 | `docs/release/phase_2_review.md` | `release` | Phase 2 Evidence Review | 6235 | False |
-| `docs/release/phase_3_evidence.md` | `release` | Phase 3 Evidence — Frontend Build and Test Health | 6721 | False |
-| `docs/release/phase_5_evidence.md` | `release` | Phase 5 Evidence | 1030 | False |
-| `docs/release/phase_5_implementation_audit.md` | `release` | Phase 5 Implementation Audit | 1427 | False |
-| `docs/release/phase_6_evidence.md` | `release` | Phase 6 Evidence — Durable Background Jobs | 5027 | False |
-| `docs/release/phase_6_implementation_audit.md` | `release` | Phase 6 Implementation Audit — Durable Background Jobs | 5159 | False |
-| `docs/release/phase_7_evidence.md` | `release` | Phase 7 Evidence — Deployment and Security Hardening | 5310 | False |
+| `docs/release/phase_3_evidence.md` | `release` | Phase 3 Evidence — Frontend Build and Test Health | 7111 | False |
+| `docs/release/phase_3_implementation_audit.md` | `release` | Phase 3 Implementation Audit - Frontend Build and Test Health | 2118 | False |
+| `docs/release/phase_4_evidence.md` | `release` | Phase 4 Evidence - Runtime and Environment Alignment | 1553 | False |
+| `docs/release/phase_4_implementation_audit.md` | `release` | Phase 4 Implementation Audit - Runtime and Environment Alignment | 1413 | False |
+| `docs/release/phase_5_evidence.md` | `release` | Phase 5 Evidence | 1923 | False |
+| `docs/release/phase_5_implementation_audit.md` | `release` | Phase 5 Implementation Audit | 2052 | False |
+| `docs/release/phase_6_evidence.md` | `release` | Phase 6 Evidence — Durable Background Jobs | 5731 | False |
+| `docs/release/phase_6_implementation_audit.md` | `release` | Phase 6 Implementation Audit — Durable Background Jobs | 5853 | False |
+| `docs/release/phase_7_evidence.md` | `release` | Phase 7 Evidence — Deployment and Security Hardening | 6655 | False |
+| `docs/release/phase_7_implementation_audit.md` | `release` | Phase 7 Implementation Audit - Deployment and Security Hardening | 3646 | False |
+| `docs/release/phase_8_evidence.md` | `release` | Phase 8 Evidence - Privacy and Authorization Completion | 4046 | False |
+| `docs/release/phase_8_implementation_audit.md` | `release` | Phase 8 Implementation Audit - Privacy and Authorization Completion | 4059 | False |
+| `docs/release/phase_9_evidence.md` | `release` | Phase 9 Evidence - Release-Blocker Checklist | 3769 | False |
+| `docs/release/phase_9_implementation_audit.md` | `release` | Phase 9 Implementation Audit - Release-Blocker Checklist | 2997 | False |
 | `docs/release/popia_consent_lifecycle_introspection.json` | `release` | Popia Consent Lifecycle Introspection | 2105 | False |
 | `docs/release/popia_consent_lifecycle_introspection.md` | `release` | POPIA Consent Lifecycle Introspection | 799 | False |
 | `docs/release/popia_consent_lifecycle_repair_report.md` | `release` | POPIA Consent Lifecycle Repair Report | 660 | False |
@@ -1101,7 +1121,7 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/release/rollback_drill_evidence.json` | `release` | Rollback Drill Evidence | 522 | False |
 | `docs/release/rollback_drill_evidence.md` | `release` | Rollback Drill Evidence | 1292 | False |
 | `docs/release/rollback_runbook.md` | `release` | Release Rollback Runbook | 1333 | False |
-| `docs/release/route_alias_matrix.md` | `release` | EduBoost V2 Route Alias Matrix | 8744 | False |
+| `docs/release/route_alias_matrix.md` | `release` | EduBoost V2 Route Alias Matrix | 24158 | False |
 | `docs/release/route_alias_policy.md` | `release` | EduBoost V2 Route Alias Policy | 754 | False |
 | `docs/release/route_transaction_implementation_plan.json` | `release` | Route Transaction Implementation Plan | 13056 | False |
 | `docs/release/route_transaction_implementation_plan.md` | `release` | Route Transaction Implementation Plan | 10909 | False |
@@ -1145,6 +1165,15 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/release/unit_test_evidence.md` | `release` | Unit Test Evidence | 4139 | False |
 | `docs/release/warning_cleanup_register.md` | `release` | Warning Cleanup Register — NS-05 | 2373 | False |
 | `docs/release/warning_integrity_evidence.md` | `release` | Warning Integrity Evidence | 3053 | False |
+| `docs/release-evidence/README.md` | `general` | EduBoost Release Evidence Repository | 3570 | False |
+| `docs/release-evidence/atlas/README.md` | `general` | Atlas Evidence Namespace | 505 | False |
+| `docs/release-evidence/atlas/phase-01/phase_01_audit_report.md` | `general` | Phase 1 Corrective Audit Report | 3037 | False |
+| `docs/release-evidence/atlas/phase-01/phase_01_evidence_index.md` | `general` | Phase 1 Corrective Evidence Pack | 3436 | False |
+| `docs/release-evidence/atlas/phase-01/phase_01_remediation_tracker.md` | `general` | Phase 1 Remediation Tracker | 5652 | False |
+| `docs/release-evidence/phase-02/phase2_live_closure_evidence.json` | `general` | Phase2 Live Closure Evidence | 11709 | False |
+| `docs/release-evidence/phase-02/phase2_live_closure_evidence.md` | `general` | Phase 2 Live Closure Evidence | 224 | False |
+| `docs/release-evidence/phase-02/phase_02_audit_report.md` | `general` | Phase 2 Independent Audit Report | 3447 | False |
+| `docs/release-evidence/phase-02/phase_02_evidence_index.md` | `general` | Phase 2 Evidence Pack and Index | 2762 | False |
 | `docs/release_blockers/external_manual_dependency_register.md` | `general` | External Manual Dependency Register | 941 | False |
 | `docs/release_blockers/final_go_no_go_checklist.md` | `general` | Final Go/No-Go Checklist | 717 | False |
 | `docs/release_blockers/final_launch_boundary_statement.md` | `general` | Final Launch Boundary Statement | 669 | False |
@@ -1157,33 +1186,48 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/release_checklist.md` | `general` | Release Checklist | 2775 | False |
 | `docs/repository/governance.md` | `general` | Repository Governance — EduBoost | 3947 | False |
 | `docs/repository_governance.md` | `general` | Repository Governance | 6896 | False |
+| `docs/roadmap/EduBoost_Full_Lifecycle_Delivery_and_Beta_Readiness_Plan.md` | `general` | EduBoost Full-Lifecycle Delivery and Beta Readiness Plan | 114030 | False |
+| `docs/roadmap/PHASE_QUICK_REFERENCE.md` | `general` | EduBoost 13-Phase Quick Reference | 4834 | False |
+| `docs/roadmap/PHASE_STATUS_REGISTER.md` | `general` | EduBoost Phase Status Register | 10229 | False |
 | `docs/roadmap/PROCESS_DISCIPLINE.md` | `general` | Process Discipline — Phase Execution Standards | 10263 | False |
-| `docs/roadmap/README.md` | `general` | Roadmap Index | 926 | False |
+| `docs/roadmap/README.md` | `general` | EduBoost Roadmap Documentation | 4039 | False |
 | `docs/roadmap/agent_roadmap_reconciliation.json` | `general` | Agent Roadmap Reconciliation | 6769 | False |
 | `docs/roadmap/agent_roadmap_reconciliation.md` | `general` | Agent Roadmap Reconciliation | 3379 | False |
 | `docs/roadmap/deferred_scope_register.md` | `general` | Deferred Scope Register | 847 | False |
-| `docs/roadmap/execution/phase_10_execution_plan.md` | `general` | Phase 10 Execution Plan — Post-Production Product Documentation & Operational Tooling | 5664 | False |
-| `docs/roadmap/execution/phase_10_implementation_report.md` | `general` | Phase 10 Implementation Report — Post-Production Product Documentation & Operational Tooling | 5932 | False |
-| `docs/roadmap/execution/phase_11_execution_plan.md` | `general` | Phase 11 Execution Plan — Technical Debt Burn-Down | 6824 | False |
-| `docs/roadmap/execution/phase_11_implementation_report.md` | `general` | Phase 11 Implementation Report — Technical Debt Burn-Down | 7064 | False |
-| `docs/roadmap/execution/phase_12_execution_plan.md` | `general` | Phase 12 Execution Plan — Security Posture Deepening | 5986 | False |
-| `docs/roadmap/execution/phase_12_implementation_report.md` | `general` | Phase 12 Implementation Report — Security Posture Deepening | 6208 | False |
-| `docs/roadmap/execution/phase_13_execution_plan.md` | `general` | Phase 13 Execution Plan — Frontend and Product Completeness | 8192 | False |
-| `docs/roadmap/execution/phase_13_implementation_report.md` | `general` | Phase 13 Implementation Report — Frontend and Product Completeness | 6653 | False |
-| `docs/roadmap/execution/phase_2_execution_plan.md` | `general` | Phase 2: Content Generation & Topic Map Approval | 10661 | False |
-| `docs/roadmap/execution/phase_2_implementation_report.md` | `general` | Data Ingestion Pipeline — Phase 2 Implementation Report | 12450 | False |
-| `docs/roadmap/execution/phase_2_readiness_report.md` | `general` | Phase 2 Readiness Status Report | 13292 | False |
-| `docs/roadmap/execution/phase_3_execution_plan.md` | `general` | Phase 3 Execution Plan — Frontend Build and Test Health | 7886 | False |
-| `docs/roadmap/execution/phase_5_execution_plan.md` | `general` | Phase 5 Execution Plan — Migrations and Schema Management | 8974 | False |
-| `docs/roadmap/execution/phase_5_implementation_report.md` | `general` | Phase 5 Implementation Report | 5210 | False |
-| `docs/roadmap/execution/phase_6_execution_plan.md` | `general` | Phase 6 Execution Plan — Durable Background Jobs | 11331 | False |
-| `docs/roadmap/execution/phase_6_implementation_report.md` | `general` | Phase 6 Implementation Report — Durable Background Jobs | 6881 | False |
-| `docs/roadmap/execution/phase_7_execution_plan.md` | `general` | Phase 7 Execution Plan — Deployment and Security Hardening | 12753 | False |
-| `docs/roadmap/execution/phase_7_implementation_report.md` | `general` | Phase 7 Implementation Report — Deployment and Security Hardening | 5862 | False |
-| `docs/roadmap/execution/phase_8_execution_plan.md` | `general` | Phase 8 Execution Plan — Privacy and Authorization Completion | 19677 | False |
-| `docs/roadmap/execution/phase_8_implementation_report.md` | `general` | Phase 8 Implementation Report — Privacy and Authorization Completion | 6910 | False |
-| `docs/roadmap/execution/phase_9_execution_plan.md` | `general` | Phase 9 Execution Plan — Release-Blocker Checklist | 9585 | False |
-| `docs/roadmap/execution/phase_9_implementation_report.md` | `general` | Phase 9 Implementation Report — Release-Blocker Checklist | 9882 | False |
+| `docs/roadmap/execution/atlas/README.md` | `general` | Atlas Sprint Namespace | 584 | False |
+| `docs/roadmap/execution/atlas/phase_01_execution_plan.md` | `general` | Phase 1 Corrective Execution Plan — Grounded LLM Generation | 7762 | False |
+| `docs/roadmap/execution/atlas/phase_01_implementation_report.md` | `general` | Phase 1 Corrective Implementation Report | 5808 | False |
+| `docs/roadmap/execution/audit_remediation_roadmap_2026-06-13.md` | `general` | EduBoost V2 Audit Remediation Roadmap | 57480 | False |
+| `docs/roadmap/execution/phase_02_execution_plan.md` | `general` | Phase 2 Execution Plan — Semantic Retrieval and Grounding | 7092 | False |
+| `docs/roadmap/execution/phase_02_implementation_report.md` | `general` | Phase 2 Implementation Report — Semantic Retrieval and Grounding | 5892 | False |
+| `docs/roadmap/execution/phase_10_execution_plan.md` | `general` | Phase 10 Execution Plan — Post-Production Product Documentation & Operational Tooling | 6196 | False |
+| `docs/roadmap/execution/phase_10_implementation_report.md` | `general` | Phase 10 Implementation Report - Post-Production Product Documentation & Operational Tooling | 4107 | False |
+| `docs/roadmap/execution/phase_11_execution_plan.md` | `general` | Phase 11 Execution Plan — Technical Debt Burn-Down | 7427 | False |
+| `docs/roadmap/execution/phase_11_implementation_report.md` | `general` | Phase 11 Implementation Report - Technical Debt Burn-Down | 2693 | False |
+| `docs/roadmap/execution/phase_12_execution_plan.md` | `general` | Phase 12 Execution Plan — Security Posture Deepening | 6477 | False |
+| `docs/roadmap/execution/phase_12_implementation_report.md` | `general` | Phase 12 Implementation Report — Security Posture Deepening | 6963 | False |
+| `docs/roadmap/execution/phase_13_execution_plan.md` | `general` | Phase 13 Execution Plan — Frontend and Product Completeness | 9348 | False |
+| `docs/roadmap/execution/phase_13_implementation_report.md` | `general` | Phase 13 Implementation Report — Frontend and Product Completeness | 9140 | False |
+| `docs/roadmap/execution/phase_1_execution_plan.md` | `general` | Phase 1 Execution Plan - Release-Blocking Correctness Fixes | 2045 | False |
+| `docs/roadmap/execution/phase_1_implementation_report.md` | `general` | Phase 1 Implementation Report - Release-Blocking Correctness Fixes | 2718 | False |
+| `docs/roadmap/execution/phase_3_execution_plan.md` | `general` | Phase 3 Execution Plan — Frontend Build and Test Health | 8261 | False |
+| `docs/roadmap/execution/phase_3_implementation_report.md` | `general` | Phase 3 Implementation Report - Frontend Build and Test Health | 3512 | False |
+| `docs/roadmap/execution/phase_4_execution_plan.md` | `general` | Phase 4 Execution Plan - Runtime and Environment Alignment | 2071 | False |
+| `docs/roadmap/execution/phase_4_implementation_report.md` | `general` | Phase 4 Implementation Report - Runtime and Environment Alignment | 2476 | False |
+| `docs/roadmap/execution/phase_5_execution_plan.md` | `general` | Phase 5 Execution Plan — Migrations and Schema Management | 9356 | False |
+| `docs/roadmap/execution/phase_5_implementation_report.md` | `general` | Phase 5 Implementation Report | 5677 | False |
+| `docs/roadmap/execution/phase_6_execution_plan.md` | `general` | Phase 6 Execution Plan — Durable Background Jobs | 11411 | False |
+| `docs/roadmap/execution/phase_6_implementation_report.md` | `general` | Phase 6 Implementation Report — Durable Background Jobs | 7709 | False |
+| `docs/roadmap/execution/phase_7_execution_plan.md` | `general` | Phase 7 Execution Plan — Deployment and Security Hardening | 12788 | False |
+| `docs/roadmap/execution/phase_7_implementation_report.md` | `general` | Phase 7 Implementation Report — Deployment and Security Hardening | 7131 | False |
+| `docs/roadmap/execution/phase_8_execution_plan.md` | `general` | Phase 8 Execution Plan — Privacy and Authorization Completion | 20396 | False |
+| `docs/roadmap/execution/phase_8_implementation_report.md` | `general` | Phase 8 Implementation Report — Privacy and Authorization Completion | 9339 | False |
+| `docs/roadmap/execution/phase_9_execution_plan.md` | `general` | Phase 9 Execution Plan — Release-Blocker Checklist | 10610 | False |
+| `docs/roadmap/execution/phase_9_implementation_report.md` | `general` | Phase 9 Implementation Report — Release-Blocker Checklist | 10868 | False |
+| `docs/roadmap/execution/phase_audit_report_template.md` | `general` | Phase <NN> Audit Report — <Phase Title> | 5081 | False |
+| `docs/roadmap/execution/phase_evidence_pack_template.md` | `general` | Phase <NN> Evidence Index — <Phase Title> | 4060 | False |
+| `docs/roadmap/execution/phase_execution_plan_template.md` | `general` | Phase <NN> Execution Plan — <Phase Title> | 7298 | False |
+| `docs/roadmap/execution/phase_implementation_report_template.md` | `general` | Phase <NN> Implementation Report — <Phase Title> | 7034 | False |
 | `docs/roadmap/ga_graduation_boundary_contract.md` | `general` | GA Graduation Boundary Contract | 576 | False |
 | `docs/roadmap/post_530_north_star_execution_board.md` | `general` | Post-530 North-Star Execution Board | 494 | False |
 | `docs/roadmap/post_baseline_risk_register.md` | `general` | Post-Baseline Risk Register | 451 | False |
@@ -1192,7 +1236,7 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/roadmap/production_grade.md` | `general` | Todo Production Grade | 3651 | False |
 | `docs/roadmap/production_grade_p0_blockers_2026_06_01.md` | `general` | EduBoost V2 Production Grade P0 Blocker Tracker | 7153 | False |
 | `docs/roadmap/production_readiness_baseline_boundary_contract.md` | `general` | Production Readiness Baseline Boundary Contract | 3451 | False |
-| `docs/roadmap/roadmap.md` | `general` | EduBoost V2 Remediation Roadmap | 25440 | False |
+| `docs/roadmap/roadmap.md` | `general` | EduBoost V2 Remediation Roadmap | 25783 | False |
 | `docs/roadmap/roadmap_dependency_register.md` | `general` | Roadmap Dependency Register | 501 | False |
 | `docs/roadmap/roadmap_graduation_criteria.md` | `general` | Roadmap Graduation Criteria | 548 | False |
 | `docs/roadmap/roadmap_review_cadence_contract.md` | `general` | Roadmap Review Cadence Contract | 494 | False |
@@ -1337,6 +1381,6 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `docs/testing/test_strategy_matrix_contract.md` | `general` | Test Strategy Matrix Contract | 769 | False |
 | `docs/testing/testing_release_evidence_architecture_contract.md` | `general` | Testing Release Evidence Architecture Contract | 924 | False |
 | `docs/todos/data_generator_todo.md` | `general` | Data Generator Remediation TODO | 9526 | False |
-| `docs/todos/todo.md` | `general` | EduBoost V2 -- North Star TODO | 18333 | False |
+| `docs/todos/todo.md` | `general` | EduBoost V2 -- North Star TODO | 18520 | False |
 | `docs/v2_handoff.md` | `general` | V2 Handoff Guide for Less Capable Agents | 906 | False |
 | `docs/v2_migration.md` | `general` | V2 Migration Guide | 2595 | False |

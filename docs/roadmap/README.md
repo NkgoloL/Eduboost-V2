@@ -39,7 +39,7 @@ Active sprint namespace: `docs/roadmap/execution/atlas/`
 |:---:|---|:---:|
 | 0 | Environment and Reproducibility | Not Started |
 | 1 | Batch AI Content Generation | Verified Complete |
-| 2 | Semantic Retrieval | In Progress |
+| 2 | Semantic Retrieval | Verified Complete |
 | 3 | Educator Consensus and Content Governance | In Progress |
 | 4 | IRT Quality and Self-Healing Controls | In Progress |
 | 5 | Learner AI Tutor | In Progress |

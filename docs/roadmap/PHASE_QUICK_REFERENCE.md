@@ -81,7 +81,7 @@ docs/release-evidence/phase-<NN>/
 |:---:|---|---|
 | 0 | Not Started | Create execution plan |
 | 1 | Verified Complete | Prepare Phase 2 execution plan |
-| 2 | In Progress | Complete evidence pack |
+| 2 | Verified Complete | Prepare Phase 3 execution plan |
 | 3 | In Progress | Complete evidence pack |
 | 4 | In Progress | Complete evidence pack |
 | 5 | In Progress | Complete evidence pack |

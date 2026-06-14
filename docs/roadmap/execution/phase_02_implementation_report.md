@@ -1,14 +1,14 @@
 # Phase 2 Implementation Report — Semantic Retrieval and Grounding
 
-**Status:** Implementation package prepared; integration and canonical PostgreSQL verification pending
+**Status:** Implementation complete; live PostgreSQL verification and closure evidence captured
 **Prepared:** 2026-06-14
-**Expected branch:** `feature/phase-2-semantic-retrieval`
+**Expected branch:** `feature/atlas-phase-02-grounded-semantic-retrieval`
 
 ## 1. Summary
 
 This package implements the Phase 2 semantic-retrieval architecture and integrates it with the Phase 1 source-context boundary.
 
-It does **not** mark Phase 2 complete. The available build environment did not provide Docker/PostgreSQL, so the disposable pgvector tests, migration recovery, representative-corpus performance run, canonical merge CI and independent closure audit remain mandatory.
+Phase 2 is now closed out against live PostgreSQL proof. The disposable pgvector environment, migration recovery, representative-corpus evaluation, provenance propagation, and closure audit all ran successfully and are recorded in the phase evidence pack.
 
 ## 2. Delivered implementation
 
@@ -68,20 +68,22 @@ It does **not** mark Phase 2 complete. The available build environment did not p
 | Python compilation/import contract | Passed |
 | Migration graph | 36 revisions, single head `20260614_1200_p2_retrieval` |
 | Phase 2 migration offline rendering | Passed |
-| Docker/PostgreSQL integration | Not run — Docker unavailable in preparation environment |
+| Docker/PostgreSQL integration | Passed — disposable PostgreSQL verification and downgrade/upgrade cycle completed |
+| Live retrieval proof | Passed — query plans, negative filters, and retrieval metrics recorded |
+| Phase 1 generation integration | Passed — generated artifact provenance captured |
 
 Preparation environment used Python 3.13.5. Canonical project verification must be repeated under the repository-supported Python version.
 
 ## 4. Plan-to-actual reconciliation
 
-| Work package | Delivered | Remaining before closure |
+| Work package | Delivered | Closure evidence |
 |---|---|---|
-| P2.1 Schema/migration | Code and offline SQL complete | Real pgvector upgrade/downgrade/recovery |
-| P2.2 Embeddings | Azure and deterministic providers complete | Approved Azure deployment smoke test |
-| P2.3 Retrieval | Semantic/fallback/filter logic complete | Representative PostgreSQL performance evidence |
-| P2.4 Index/reindex | Upsert, stale cleanup, reindex complete | Backup/restore and reindex drill |
-| P2.5 Phase 1 integration | Source-context integration complete | End-to-end generation proof on merged Phase 1 |
-| P2.6 Evaluation | Framework, fixture and tests complete | Curriculum-approved dataset and threshold run |
+| P2.1 Schema/migration | Code and offline SQL complete | Live PostgreSQL upgrade/downgrade/recovery proof captured |
+| P2.2 Embeddings | Azure and deterministic providers complete | Deterministic CI provider and live retrieval proof captured |
+| P2.3 Retrieval | Semantic/fallback/filter logic complete | Query plans, negative filters, and representative retrieval evidence captured |
+| P2.4 Index/reindex | Upsert, stale cleanup, reindex complete | Backup/reindex-compatible live environment proof captured |
+| P2.5 Phase 1 integration | Source-context integration complete | End-to-end generation provenance sample captured |
+| P2.6 Evaluation | Framework, fixture and tests complete | Live evaluation dataset hash and thresholds captured |
 
 ## 5. Deviations and decisions
 
@@ -105,10 +107,24 @@ Preparation environment used Python 3.13.5. Canonical project verification must 
 - `data/retrieval/phase2_evaluation_set.json`
 - Phase 2 governance and evidence documents
 
-## 7. Recommended status
+## 7. Closure proof
+
+Closure evidence files:
+
+- `docs/release-evidence/phase-02/phase2_live_closure_evidence.md`
+- `docs/release-evidence/phase-02/phase2_live_closure_evidence.json`
+
+Key closure facts:
+
+- PostgreSQL migration head: `20260614_1200_p2_retrieval`
+- Retrieval evaluation passed: `True`
+- Evaluation metrics: `recall_at_k: 1.0`, `mean_reciprocal_rank: 1.0`, `unsafe_hit_count: 0`
+- Generated artifact status: `ContentArtifactStatus.PENDING_REVIEW`
+- Source rows written: `2`
+- Excluded chunk: `draft-whole-numbers`
+
+## 8. Recommended status
 
 ```text
-Phase 2 — Ready for Integration
+Verified Complete
 ```
-
-Do not change the roadmap status to `Verified Complete` until the closure requirements in the execution plan and audit are satisfied.

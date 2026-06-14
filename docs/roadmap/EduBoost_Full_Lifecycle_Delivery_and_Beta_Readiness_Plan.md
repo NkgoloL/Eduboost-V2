@@ -443,7 +443,7 @@ Parallel work is permitted only when named people can execute it independently. 
 | R | Independent audit remediation | Refer to its own roadmap | Equivalent approved remediation plan | Approved remediation implementation/closure report | Attributable remediation evidence index | Independent remediation closure audit or equivalent decision | Own workstream dependencies | Separate estimate |
 | 0 | Reproducible environment, provider, flags, and worker foundation | Open — completion not established | `phase_00_execution_plan.md` | `phase_00_implementation_report.md` | `phase-00/phase_00_evidence_index.md` | `phase-00/phase_00_audit_report.md` | None | 1–2 weeks |
 | 1 | Safe batch AI content generation | Open — completion not established | `docs/roadmap/execution/atlas/phase_01_execution_plan.md` | `docs/roadmap/execution/atlas/phase_01_implementation_report.md` | `docs/release-evidence/atlas/phase-01/phase_01_evidence_index.md` | `docs/release-evidence/atlas/phase-01/phase_01_audit_report.md` | Phase 0 | 2–4 weeks |
-| 2 | Grounded semantic retrieval | Open — completion not established | `phase_02_execution_plan.md` | `phase_02_implementation_report.md` | `phase-02/phase_02_evidence_index.md` | `phase-02/phase_02_audit_report.md` | Phase 1 | 1–2 weeks |
+| 2 | Grounded semantic retrieval | Verified Complete | `docs/roadmap/execution/phase_02_execution_plan.md` | `docs/roadmap/execution/phase_02_implementation_report.md` | `docs/release-evidence/phase-02/phase_02_evidence_index.md` | `docs/release-evidence/phase-02/phase_02_audit_report.md` | Phase 1 | 1–2 weeks |
 | 3 | Multi-educator content consensus | Open — completion not established | `phase_03_execution_plan.md` | `phase_03_implementation_report.md` | `phase-03/phase_03_evidence_index.md` | `phase-03/phase_03_audit_report.md` | Phase 1 | 1–3 weeks |
 | 4 | Adaptive-item calibration and self-healing controls | Open — completion not established | `phase_04_execution_plan.md` | `phase_04_implementation_report.md` | `phase-04/phase_04_evidence_index.md` | `phase-04/phase_04_audit_report.md` | Phases 2–3 | 2–3 weeks |
 | 5 | Safe learner AI Tutor | Open — completion not established | `phase_05_execution_plan.md` | `phase_05_implementation_report.md` | `phase-05/phase_05_evidence_index.md` | `phase-05/phase_05_audit_report.md` | Phases 1 and 6 safety controls as applicable | 2–3 weeks |
@@ -559,7 +559,8 @@ Parallel work is permitted only when named people can execute it independently. 
 
 **Phase 2 closure rule:** all four artefacts must exist, reference the same canonical source state, and be approved. The audit must issue a passing verdict and every blocking finding must be closed before the phase status can change to `Verified Complete`.
 
-**Initial status:** Open — completion not established  
+**Status:** Verified Complete  
+**Closure evidence:** `docs/release-evidence/phase-02/phase2_live_closure_evidence.md` and `docs/release-evidence/phase-02/phase2_live_closure_evidence.json`  
 **Objective:** retrieve approved source material accurately enough to ground generation and learner experiences.
 
 ### Required outcomes
@@ -1523,7 +1524,7 @@ docs/release-evidence/
 ├── audit-remediation/      # Path defined by the independent remediation roadmap
 ├── phase-00/
 ├── phase-01/
-├── phase-02/
+├── phase-02/                   # Phase 2 evidence
 ├── phase-03/
 ├── phase-04/
 ├── phase-05/

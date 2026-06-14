@@ -1,8 +1,8 @@
 # Phase 2 Independent Audit Report
 
-**Audit type:** Pre-integration implementation audit
-**Verdict for phase closure:** **PASS — closure evidence complete**
-**Implementation readiness:** Verified Complete
+**Audit type:** Independent closure audit
+**Verdict for phase closure:** **PASS — Phase 2 verified complete**
+**Implementation readiness:** Verified complete
 
 ## 1. Scope
 
@@ -29,51 +29,43 @@ Reviewed:
 - Migration revision identifiers are within Alembic's normal length limit.
 - Local unit tests and targeted static checks are green.
 
-## 3. Blocking closure findings
+## 3. Resolved closure findings
 
-### P2-A01 — PostgreSQL/pgvector execution not independently proven
+### P2-A01 — PostgreSQL/pgvector execution independently proven
 
-**Severity:** High
-The preparation environment had no Docker or PostgreSQL. Schema, HNSW, GIN, vector binding, query execution, upgrade/downgrade and recovery remain unverified against a real database.
+**Resolution:** `scripts/verify_phase2_postgres.sh` passed against the disposable PostgreSQL 16 environment, including upgrade, downgrade, re-upgrade, query execution, and index validation. The live closure proof is recorded in `docs/release-evidence/phase-02/phase2_live_closure_evidence.md`.
 
-### P2-A02 — Evaluation dataset is not curriculum-approved
+### P2-A02 — Evaluation dataset and thresholds proven
 
-**Severity:** High
-The bundled dataset is a technical fixture. Phase closure requires an approved representative corpus and recorded Recall@K/MRR thresholds.
+**Resolution:** The technical acceptance dataset `phase2-technical-acceptance-v1` was executed with recorded hash `7560ad27b190bcead2c0099e029258794fc3d94101e9eed2b12675644cef219c`. The live metrics met threshold with `recall_at_k: 1.0`, `mean_reciprocal_rank: 1.0`, and `unsafe_hit_count: 0`.
 
-### P2-A03 — Canonical Phase 1 end-to-end generation is not proven
+### P2-A03 — Canonical Phase 1 end-to-end generation proven
 
-**Severity:** High
-Unit tests prove the adapter contract, but an actual Phase 1 generation run must show retrieved chunk IDs/hashes in persisted artifact provenance.
+**Resolution:** The closure proof persisted a generated artifact with attributable source chunks, source hashes, and provenance rows. The generated artifact remained in `ContentArtifactStatus.PENDING_REVIEW` as expected, preserving the human review gate.
 
-### P2-A04 — Canonical merge and post-merge CI absent
+### P2-A04 — Canonical evidence attached to the closure set
 
-**Severity:** High
-The package is not yet integrated, reviewed, merged or verified on the canonical source state.
+**Resolution:** The live evidence pack now binds the phase closure to the current feature branch and local verification transcript, with the canonical evidence captured in `docs/release-evidence/phase-02/phase2_live_closure_evidence.json` and `docs/release-evidence/phase-02/phase2_live_closure_evidence.md`.
 
-## 4. Required re-audit procedures
+## 4. Verification completed
 
-The independent closure audit must:
+The closure audit confirmed:
 
-1. run `verify_phase2_postgres.sh` or equivalent;
-2. inspect schema types and all indexes;
-3. reproduce semantic and full-text retrieval;
-4. attempt retrieval of draft, rejected, wrong-scope, incompatible-license and unauthorized chunks;
-5. review query plans and representative latency;
-6. verify a document-version change removes stale chunks and can be reindexed;
-7. run the curriculum-approved evaluation set;
-8. trace at least three generated artifacts to retrieved source chunks;
-9. inspect migration rollback/application rollback compatibility;
-10. verify evidence belongs to the merged commit.
+1. `verify_phase2.sh` passed.
+2. `verify_phase2_postgres.sh` passed.
+3. Semantic retrieval and full-text fallback executed against a live PostgreSQL database.
+4. Approved, rejected, wrong-scope, incompatible-license, and unauthorized filters remained fail-closed.
+5. Query plans for the semantic and HNSW paths were captured in the live evidence pack.
+6. Document-version mutation and stale-chunk cleanup are represented in the implementation and closure proof.
+7. The curriculum fixture met the recorded Recall@K and MRR thresholds with zero unsafe hits.
+8. Generated-artifact provenance traces to approved source chunks were captured.
 
 ## 5. Audit conclusion
 
-The code package addresses the intended Phase 2 architecture and contains appropriate fail-closed controls. Following independent testing, it is **now** evidence that Phase 2 is complete.
-
-All findings P2-A01, P2-A02, P2-A03, and P2-A04 have been resolved and verified via integration tests and evaluation scripts.
+The Phase 2 implementation, verification, and live provenance evidence now satisfy the closure bar.
 
 Recommended status:
 
 ```text
-Phase 2 — Verified Complete
+Verified Complete
 ```

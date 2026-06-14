@@ -1,7 +1,7 @@
 # Phase 2 Execution Plan — Semantic Retrieval and Grounding
 
 **Status:** Ready for integration; execution approval required before branch work begins
-**Target branch:** `feature/phase-2-semantic-retrieval`
+**Target branch:** `feature/atlas-phase-02-grounded-semantic-retrieval`
 **Depends on:** Phase 1 merged and post-merge verified, migration head `20260614_0900_p1_validation`
 **Objective:** retrieve only approved, correctly scoped source chunks and propagate immutable provenance into Phase 1 generation.
 

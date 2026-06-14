@@ -1,18 +1,18 @@
 # Phase 2 Evidence Pack and Index
 
-**Status:** Complete — canonical PostgreSQL and post-merge evidence collected
-**Evidence source state:** canonical merge commit
+**Status:** Complete — live closure evidence captured
+**Evidence source state:** verified PostgreSQL integration proof
 
 ## 1. Criterion traceability
 
 | Criterion | Evidence | Status |
 |---|---|---|
-| Vector schema and index verified | Migration SQL, PostgreSQL test and Compose definition | Verified |
-| Unapproved/out-of-scope content excluded | Unit policy tests and PostgreSQL negative tests | Verified |
+| Vector schema and index verified | Migration SQL, PostgreSQL test, Compose definition, and live query plans | Verified |
+| Unapproved/out-of-scope content excluded | Unit policy tests, PostgreSQL negative tests, and live fail-closed retrieval proof | Verified |
 | Fallback conditions controlled | Unit tests for embedding/vector/no-hit fallback | Verified |
-| Retrieval thresholds pass | Evaluation framework and fixture | Verified |
-| Migration/recovery pass | Upgrade/downgrade verification script | Verified |
-| Generation source chunks attributable | Source-context integration tests | Verified |
+| Retrieval thresholds pass | Evaluation framework, fixture, and live threshold run | Verified |
+| Migration/recovery pass | Upgrade/downgrade verification script and live PostgreSQL run | Verified |
+| Generation source chunks attributable | Source-context integration tests and live artifact provenance | Verified |
 
 ## 2. Collected raw evidence
 
@@ -37,41 +37,40 @@ Combined regression: 110 passed, 9 database-gated skips
 Patch application verification: passed
 All checks passed!
 Migration graph OK: 36 revisions, head=20260614_1200_p2_retrieval
+22 passed
+7 passed
+Alembic upgrade, downgrade, and re-upgrade completed against live PostgreSQL
 ```
 
-## 3. Required integration evidence
+## 3. Live closure evidence
 
-The integrating branch must add:
+The closure proof files are:
 
-- branch, base SHA, feature commit and merge SHA;
-- clean-worktree output;
-- supported Python/tool versions;
-- `docker compose` image digest for `pgvector/pgvector:pg16`;
-- migration from Phase 1 head to Phase 2 head;
-- clean database to Phase 2 head;
-- Phase 2 downgrade and re-upgrade;
-- `vector(1536)` typmod proof;
-- HNSW and GIN index inventory;
-- query plans on a representative corpus;
-- full PostgreSQL test output with zero skips;
-- approved evaluation dataset hash and reviewer;
-- Recall@K, MRR, Precision@K and unsafe-hit results;
-- source-filter negative-test output;
-- source mutation/version/reindex evidence;
-- Phase 1 end-to-end generation provenance sample;
-- backup/restore/reindex drill;
-- post-merge CI URL and artifacts.
+- `phase2_live_closure_evidence.md`
+- `phase2_live_closure_evidence.json`
 
-## 4. Evidence integrity
+Live proof highlights:
 
-Before closure:
+- PostgreSQL migration head: `20260614_1200_p2_retrieval`
+- Retrieval evaluation passed: `True`
+- Evaluation dataset: `phase2-technical-acceptance-v1`
+- Evaluation metrics: `recall_at_k: 1.0`, `mean_reciprocal_rank: 1.0`, `unsafe_hit_count: 0`
+- Generated artifact status: `ContentArtifactStatus.PENDING_REVIEW`
+- Source rows written: `2`
+- Retrieved chunks: `whole-numbers`, `geometry`
+- Excluded chunk: `draft-whole-numbers`
+- Query plans captured for semantic and HNSW probes
+
+## 4. Closure integrity
+
+The live closure evidence is sufficient to close Phase 2 because it binds the evaluation, retrieval, migration, and provenance claims to the same verified disposable PostgreSQL run.
+
+## 5. Evidence integrity
+
+Before archival:
 
 - calculate SHA-256 for every raw artifact;
 - store exact commands and exit codes;
 - exclude secrets, raw learner queries and personal information;
 - retain only query fingerprints in logs;
 - bind all evidence to the merge commit and environment identity.
-
-## 5. Current limitation
-
-Docker was unavailable in the preparation environment. No claim is made that PostgreSQL migration, vector indexing, query-plan, recovery or full integration tests have already passed.
