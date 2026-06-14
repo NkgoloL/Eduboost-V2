@@ -14,7 +14,7 @@
 | Segment | Status |
 |---|---|
 | Overall programme | **Open — full lifecycle in progress** |
-| Phases 0–7 | **Open — Phase 1 revalidation required; Phase 2 closed with Phase 3 compatibility verification pending; remaining phases open** |
+| Phases 0–7 | **Open — Phase 1 revalidation required; Phase 2 closed; Phase 3 verified complete; remaining phases open** |
 | Audit remediation | Governed by `audit_remediation_roadmap_2026-06-13.md` |
 | Phases 8–13 | In progress per individual phase status |
 | Controlled beta | Blocked until all prerequisite phases pass |
@@ -32,7 +32,7 @@
 > - Evidence index and corrective audit report are complete.
 > - The Phase 3 integration review found and corrected a broken canonical provider adapter; Phase 1 gates and audit must be refreshed against the merged corrective commit.
 | 2 | Semantic Retrieval | **Verified Complete** | ✅ `docs/roadmap/execution/phase_02_execution_plan.md` | ✅ `docs/roadmap/execution/phase_02_implementation_report.md` | ✅ `docs/release-evidence/phase-02/phase_02_evidence_index.md` | ✅ `docs/release-evidence/phase-02/phase_02_audit_report.md` | Phase 1 | 2026-06-14 |
-| 3 | Educator Consensus and Content Governance | **Verification Pending** | ✅ `docs/roadmap/execution/phase_03_execution_plan.md` | ✅ `docs/roadmap/execution/phase_03_implementation_report.md` | 🟡 `docs/release-evidence/phase-03/phase_03_evidence_index.md` | 🟡 `docs/release-evidence/phase-03/phase_03_audit_report.md` | Phases 1–2 | 2026-06-14 |
+| 3 | Educator Consensus and Content Governance | **Verified Complete** | ✅ `docs/roadmap/execution/phase_03_execution_plan.md` | ✅ `docs/roadmap/execution/phase_03_implementation_report.md` | ✅ `docs/release-evidence/phase-03/phase_03_evidence_index.md` | ✅ `docs/release-evidence/phase-03/phase_03_audit_report.md` | Phases 1–2 | 2026-06-15 |
 | 4 | IRT Quality and Self-Healing Controls | Planning | ✅ `phase_04_execution_plan.md` | ✅ `phase_04_implementation_report.md` | ⬜ | ⬜ | Phases 2–3 | 2026-06-14 |
 | 5 | Learner AI Tutor | Planning | ✅ `phase_05_execution_plan.md` | ✅ `phase_05_implementation_report.md` | ⬜ | ⬜ | Phases 1, 6 | 2026-06-14 |
 | 6 | Monitoring, Budget, and Production Hardening | Planning | ✅ `phase_06_execution_plan.md` | ✅ `phase_06_implementation_report.md` | ⬜ | ⬜ | Phases 1–5 | 2026-06-14 |
@@ -172,6 +172,7 @@ Before any phase may be marked `Verified Complete`:
 |---|---|---|
 | 2026-06-14 | 1 | Disposable PostgreSQL verification and corrective audit completed; phase marked Verified Complete |
 | 2026-06-14 | 2 | Live PostgreSQL closure evidence captured; phase marked Verified Complete |
+| 2026-06-15 | 3 | Phase 3 merged to master, evidence frozen against merge commit, and phase marked Verified Complete |
 | 2026-06-14 | All | Phase status register created; roadmap integrated as North-star |
 | 2026-06-13 | All | Full-lifecycle delivery plan v5 approved |
 | 2026-06-13 | R | Audit remediation roadmap established |

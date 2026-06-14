@@ -1,12 +1,13 @@
-# Phase 3 Pre-Integration Audit Report
+# Phase 3 Final Audit Report
 
-**Audit date:** 2026-06-14  
-**Audit type:** Independent code-package review  
-**Verdict:** **PASS FOR INTEGRATION; NOT A PHASE-CLOSURE PASS**
+**Audit date:** 2026-06-15
+**Audit type:** Independent code-package review
+**Reviewed commit:** `47504c2b678126cc6899533d04116efdcb4fbcf1`
+**Verdict:** **PASS FOR CLOSURE**
 
 ## Scope
 
-Reviewed the Phase 3 models, migration, lifecycle service, governance service, authorization boundary, APIs, Phase 2 retrieval integration, stale-review job, metrics, tests, scripts, and control artifacts.
+Reviewed the merged Phase 3 models, migration, lifecycle service, governance service, authorization boundary, APIs, Phase 2 retrieval integration, stale-review job, metrics, tests, scripts, control artifacts, and the legacy-route removal cleanup.
 
 ## Positive findings
 
@@ -21,16 +22,19 @@ Reviewed the Phase 3 models, migration, lifecycle service, governance service, a
 - Quarantine is fail-closed for learner and semantic-retrieval eligibility.
 - Stale automation records reminders/escalation and never approves content.
 - Reviewer identity and permissions derive from the authenticated context.
-- Phase 1 and Phase 2 focused regressions are green.
+- The legacy single-review approval route and its stale evidence traces were removed.
+- Phase 1, Phase 2, and Phase 3 focused regressions are green on the merged canonical branch.
 
-## Blocking closure evidence not available in this environment
+## Closure evidence
 
-1. Docker/PostgreSQL execution was unavailable.
-2. Migration upgrade from the actual Phase 2 database head was not executed here.
-3. Concurrent final approval and append-only trigger tests were not executed here.
-4. The uploaded archive contained no Git metadata, so merge and post-merge CI cannot be audited.
-5. Python 3.12.3 canonical execution remains required.
+1. Merge commit recorded on `master`: `47504c2b678126cc6899533d04116efdcb4fbcf1`.
+2. Phase 3 verification reran successfully on clean `master`.
+3. Phase 1 regression reran successfully using a pgvector-backed test database URL.
+4. Phase 2 regression reran successfully on clean `master`.
+5. Migration graph still has one head.
+6. Targeted lint is clean.
+7. The final `git grep` over `app`, `docs`, `tests`, and `audits` returns no legacy approval-route matches.
 
 ## Verdict rationale
 
-The package is suitable for controlled integration and database verification. It must remain `Verification Pending`; marking it `Verified Complete` before the included PostgreSQL and canonical merge gates pass would violate the programme control model.
+The package is now integrated into `master`, the legacy approval route has been removed, the evidence pack is frozen against the merge commit, and the required verification gates all pass. Phase 3 can be marked `Verified Complete`.

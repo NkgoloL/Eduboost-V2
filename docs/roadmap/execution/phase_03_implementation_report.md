@@ -1,7 +1,7 @@
 # Phase 3 Implementation Report — Educator Consensus and Content Governance
 
-**Date:** 2026-06-14  
-**Status:** Implementation complete; PostgreSQL and canonical merge verification pending  
+**Date:** 2026-06-15
+**Status:** Verified Complete on merge commit `47504c2b678126cc6899533d04116efdcb4fbcf1`
 **Execution plan:** `docs/roadmap/execution/phase_03_execution_plan.md`  
 **Source package:** uploaded repository archive; no Git metadata was present in the archive
 
@@ -16,6 +16,7 @@
 - Transactional review decisions with row locking.
 - Rejection, quarantine, revision-required, supersession, approved, promoted, and published states.
 - Separate approval and publication gates.
+- Legacy single-review approval route removed from the content-factory API surface.
 - Phase 2 generated-artifact retrieval exclusion.
 - Protected content-review API and OpenAPI schemas.
 - ARQ stale-review job that never auto-approves.
@@ -38,10 +39,10 @@ Migration `20260614_1500_p3_consensus` extends the Phase 2 head and adds:
 
 Nine Phase 3 operations are registered under `/content-review`, covering assignments, acceptance, reassignment, decisions, quarantine, revisions, publication, history, and stale assignments.
 
-## 4. Verification completed in the preparation environment
+## 4. Verification completed on the merged canonical branch
 
 ```text
-Phase 3 focused tests: 10 passed
+Phase 3 focused tests: 9 passed
 Phase 1 regression:    95 passed
 Phase 2 regression:    15 passed
 Migration graph:       37 revisions, one head
@@ -50,11 +51,11 @@ Targeted Ruff:         pass
 Runtime warnings:      none in focused Phase 1–3 gate
 ```
 
-The preparation environment used Python 3.13.5 rather than the canonical Python 3.12.3.
+The merged checkout is on `master` at `47504c2b678126cc6899533d04116efdcb4fbcf1`.
 
-## 5. Verification not completed here
+## 5. Verification completed after integration
 
-Docker was not installed in the preparation environment. The following must run after integration:
+The post-merge closeout ran the PostgreSQL-backed verification gates, the migration graph check, and the Phase 1 and Phase 2 regression gates from a clean `master` checkout. The pgvector-backed Phase 1 test database was used to complete the PostgreSQL closeout.
 
 - upgrade from Phase 2 head to Phase 3 head on PostgreSQL/pgvector;
 - clean-database migration;
@@ -70,7 +71,8 @@ Docker was not installed in the preparation environment. The following must run 
 - No broad reviewer frontend was implemented; the approved plan treats this as out of scope.
 - Reminder delivery records and metrics are implemented; external email delivery is not required for correctness and remains an operations integration decision.
 - The Phase 1 canonical provider defect was repaired as a prerequisite integration correction.
+- The legacy single-review approval route was removed after audit review so the API surface now only exposes the versioned review flow.
 
 ## 7. Recommended status
 
-`Verification Pending` until PostgreSQL, canonical merge, evidence-freeze, and independent audit gates pass.
+`Verified Complete`

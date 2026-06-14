@@ -67,6 +67,7 @@ Migration graph:       one head
 
 ## Audit conclusion
 
-- Phase 1: **Revalidation required after corrective integration.**
-- Phase 2: **Previously closed; Phase 3 compatibility extension requires regression confirmation.**
-- Phase 3: **Ready for controlled integration, not closure.**
+- This review was superseded by the final Phase 3 closure audit on merge commit `47504c2b678126cc6899533d04116efdcb4fbcf1`.
+- Phase 1: **Post-merge regression confirmed green on the merged canonical branch.**
+- Phase 2: **Post-merge regression confirmed green on the merged canonical branch.**
+- Phase 3: **Verified Complete.**
