@@ -130,3 +130,11 @@ def _quality(source: Any, metadata: dict[str, Any]) -> float | None:
     if value is None:
         value = metadata.get("source_quality_score") or metadata.get("chunk_quality_score")
     return float(value) if value is not None else None
+
+# Phase 2 switches the canonical generation context to the approved semantic corpus.
+# The original validation helpers remain available for migration/compatibility tests.
+from app.services.semantic_retrieval.generation_context import (  # noqa: E402
+    SemanticContentGenerationSourceContextService,
+)
+
+ContentGenerationSourceContextService = SemanticContentGenerationSourceContextService  # noqa: F811
