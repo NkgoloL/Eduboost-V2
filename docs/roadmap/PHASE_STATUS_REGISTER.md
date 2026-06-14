@@ -23,12 +23,14 @@
 |:---:|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | R | Audit Remediation | *See own roadmap* | — | — | — | — | Independent | 2026-06-13 |
 | 0 | Environment and Reproducibility | Not Started | — | — | — | — | None | 2026-06-14 |
-| 1 | Batch AI Content Generation | **Verification Failed — Remediation Required** | ✅ `phase_01_execution_plan.md` | ✅ `phase_01_implementation_report.md` | ⬜ | ⚠️ Audit: Fail (see findings) | Phase 0 | 2026-06-14 |
+| 1 | Batch AI Content Generation | **Closure Review Pending** | ✅ `phase_01_execution_plan.md` | ✅ `phase_01_implementation_report.md` | ⬜ | 🔄 Re-audit pending | Phase 0 | 2026-06-14 |
 
-> **Phase 1 Audit Outcome (2026-06-14):** Verification Failed / Remediation Required
-> - Critical findings: P1-R01 (canonical provider stub), P1-R02 (unsafe Alembic monkeypatch)
-> - High findings: P1-R03 (not merged to canonical), P1-R04-R08 (architecture/operational issues)
-> - See: `docs/release-evidence/phase-01/phase_01_audit_report.md` (when published)
+> **Phase 1 Audit Outcome (2026-06-14):** Closure Review Pending (was Verification Failed → Remediation → Merged)
+> - Critical findings: ✅ P1-R01 (canonical provider), P1-R02 (migration ID) - RESOLVED
+> - High findings: ✅ P1-R04-P1-R08 - RESOLVED  
+> - P1-R03: ⚠️ MERGED (commit `bf9e71ab`) - post-merge CI pending, re-audit pending
+> - Medium findings: P1-R09-P1-R12 remain open
+> - See: `docs/release-evidence/phase-01/phase_01_remediation_tracker.md`
 | 2 | Semantic Retrieval | In Progress | ✅ `phase_02_execution_plan.md` | ✅ `phase_02_implementation_report.md` | ⬜ | ⬜ | Phase 1 | 2026-06-14 |
 | 3 | Educator Consensus and Content Governance | In Progress | ✅ `phase_03_execution_plan.md` | ✅ `phase_03_implementation_report.md` | ⬜ | ⬜ | Phase 1 | 2026-06-14 |
 | 4 | IRT Quality and Self-Healing Controls | In Progress | ✅ `phase_04_execution_plan.md` | ✅ `phase_04_implementation_report.md` | ⬜ | ⬜ | Phases 2–3 | 2026-06-14 |
