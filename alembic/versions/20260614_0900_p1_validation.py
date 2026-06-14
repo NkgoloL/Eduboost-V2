@@ -1,13 +1,13 @@
 """Allow validation reports to reference a task before an artifact exists.
 
-Revision ID: 20260614_0900_phase1_validation_reports
+Revision ID: 20260614_0900_p1_validation
 Revises: 20260609_0800_practice_sessions
 """
 from alembic import op
 import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
-revision = "20260614_0900_phase1_validation_reports"
+revision = "20260614_0900_p1_validation"
 down_revision = "20260609_0800_practice_sessions"
 branch_labels = None
 depends_on = None

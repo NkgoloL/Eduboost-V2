@@ -36,9 +36,11 @@ async def generate_content_batch(
     router = build_provider_router(get_settings())
     engine = BatchGenerationEngine(provider_router=router)
     async with AsyncSessionFactory() as db:
+        # P1-R07 & P1-R08: process_run now takes only run_id and db
+        # - Source snapshot verification happens inside process_run
+        # - sources_by_caps_ref bypass is removed
         result = await engine.process_run(
             uuid.UUID(run_id),
-            None,
             db,
             worker_id=worker_id,
         )

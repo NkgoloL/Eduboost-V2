@@ -244,11 +244,19 @@ class BatchGenerationEngine:
     async def process_run(
         self,
         run_id: uuid.UUID,
-        sources_by_caps_ref: dict[str, list[dict[str, Any]]] | None,
         db: AsyncSession,
         *,
         worker_id: str | None = None,
     ) -> RunResult:
+        """Process a generation run.
+        
+        IMPORTANT: sources_by_caps_ref is no longer accepted as a parameter.
+        Sources must be resolved from the approved source context to maintain
+        server-authority over content provenance (P1-R08).
+        
+        Source snapshot hashes are verified during execution to ensure
+        reproducibility (P1-R07).
+        """
         worker_id = worker_id or str(uuid.uuid4())
         result_row = await db.execute(
             select(ContentGenerationRun).where(ContentGenerationRun.run_id == run_id)
@@ -274,7 +282,11 @@ class BatchGenerationEngine:
         await db.commit()
 
         for task in tasks:
-            task_sources = await self._resolve_sources(task, sources_by_caps_ref, db)
+            # P1-R07: Verify source snapshot hash before execution
+            await self._verify_source_snapshot(task, db)
+            
+            # Resolve sources from approved context only (no bypass)
+            task_sources = await self._resolve_sources(task, None, db)
             outcome = await self._execute_task(
                 task,
                 {str(task.caps_ref or ""): task_sources},
@@ -323,16 +335,112 @@ class BatchGenerationEngine:
         )
         return stats
 
+    async def _verify_source_snapshot(
+        self,
+        task: ContentGenerationTask,
+        db: AsyncSession,
+    ) -> None:
+        """Verify that the source snapshot has not changed since run creation.
+        
+        P1-R07: This ensures reproducibility - if sources have been modified,
+        removed, or re-approved after queueing, the task fails rather than
+        generating content from an unapproved source state.
+        """
+        metadata = task.task_metadata or {}
+        expected_hash = metadata.get("source_snapshot_hash")
+        if not expected_hash:
+            log.warning(
+                "task_missing_source_hash",
+                task_id=str(task.task_id),
+                caps_ref=task.caps_ref,
+            )
+            # Fail closed: treat missing hash as verification failure
+            task.status = "failed"
+            task.validation_failures = (task.validation_failures or []) + ["source_snapshot_hash_missing"]
+            await db.commit()
+            raise ValueError(
+                f"Task {task.task_id} has no source_snapshot_hash - "
+                "cannot verify reproducibility"
+            )
+        
+        # Resolve current sources and compute their hash
+        caps_ref = str(task.caps_ref or "")
+        context = await self._source_context.build_context(
+            db,
+            scope_id=task.scope_id,
+            caps_ref=caps_ref,
+            requested_chunk_ids=list(metadata.get("source_chunk_ids") or []),
+        )
+        
+        if not context.passed:
+            log.warning(
+                "source_context_failed_verification",
+                task_id=str(task.task_id),
+                caps_ref=caps_ref,
+                errors=context.errors,
+            )
+            task.status = "failed"
+            task.validation_failures = (task.validation_failures or []) + ["source_context_not_approved"]
+            await db.commit()
+            raise ValueError(f"Source context failed for {caps_ref}: {context.errors}")
+        
+        current_sources = source_rows_for_chunks(
+            context.chunks,
+            caps_ref=caps_ref,
+            grade=int(metadata.get("grade", 4)),
+            subject_code=str(metadata.get("subject_code", "MATHS")),
+            language=str(metadata.get("language", "en")),
+        )
+        current_hash = stable_json_hash(current_sources)
+        
+        if current_hash != expected_hash:
+            log.error(
+                "source_snapshot_mismatch",
+                task_id=str(task.task_id),
+                expected_hash=expected_hash,
+                current_hash=current_hash,
+                caps_ref=caps_ref,
+            )
+            task.status = "failed"
+            task.validation_failures = (task.validation_failures or []) + [
+                f"source_snapshot_mismatch: expected {expected_hash}, got {current_hash}"
+            ]
+            await db.commit()
+            raise ValueError(
+                f"Source snapshot mismatch for {caps_ref}: "
+                f"expected {expected_hash}, got {current_hash}. "
+                "Source may have been modified after queueing."
+            )
+        
+        log.info(
+            "source_snapshot_verified",
+            task_id=str(task.task_id),
+            hash=current_hash,
+        )
+
     async def _resolve_sources(
         self,
         task: ContentGenerationTask,
         supplied: dict[str, list[dict[str, Any]]] | None,
         db: AsyncSession,
     ) -> list[dict[str, Any]]:
+        """Resolve sources for a task.
+        
+        P1-R08: The supplied parameter is deprecated and ignored.
+        Sources must always be resolved from the approved source context
+        to maintain server-authority over content provenance.
+        """
         caps_ref = str(task.caps_ref or "")
-        if supplied and caps_ref in supplied:
-            return supplied[caps_ref]
-
+        
+        # P1-R08: Reject supplied sources - must use approved context
+        if supplied is not None:
+            log.warning(
+                "supplied_sources_rejected",
+                task_id=str(task.task_id),
+                message="Using approved source context instead of supplied sources",
+            )
+        
+        # Always resolve from approved source context
         metadata = task.task_metadata or {}
         context = await self._source_context.build_context(
             db,

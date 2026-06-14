@@ -545,7 +545,12 @@ class ProviderRouter:
 
 
 def build_provider_router(settings: Any) -> ProviderRouter:
-    """Build an ordered, fail-closed provider chain from application settings."""
+    """Build an ordered, fail-closed provider chain from application settings.
+    
+    Provider strategy (per accepted ADR):
+    - Primary: Azure OpenAI
+    - Fallback: Anthropic -> Groq
+    """
     env = str(
         getattr(settings, "APP_ENV", None)
         or getattr(settings, "ENVIRONMENT", "development")
@@ -568,7 +573,19 @@ def build_provider_router(settings: Any) -> ProviderRouter:
     configured: dict[str, LLMProvider] = {}
     anthropic_key = getattr(settings, "ANTHROPIC_API_KEY", "")
     groq_key = getattr(settings, "GROQ_API_KEY", "")
+    azure_endpoint = getattr(settings, "AZURE_OPENAI_ENDPOINT", "")
+    azure_key = getattr(settings, "AZURE_OPENAI_API_KEY", "")
     timeout = float(getattr(settings, "LLM_TIMEOUT_SECONDS", 30))
+
+    # Azure OpenAI - primary provider per ADR
+    if azure_endpoint and azure_key:
+        configured["azure"] = AzureOpenAIProvider(
+            endpoint=azure_endpoint,
+            api_key=azure_key,
+            model=getattr(settings, "AZURE_OPENAI_MODEL", "gpt-4o"),
+            api_version=getattr(settings, "AZURE_OPENAI_API_VERSION", "2024-02-01"),
+            timeout_seconds=timeout,
+        )
 
     if anthropic_key:
         configured["anthropic"] = AnthropicProvider(
@@ -583,18 +600,26 @@ def build_provider_router(settings: Any) -> ProviderRouter:
             timeout_seconds=timeout,
         )
 
-    if requested and requested not in {"anthropic", "groq"}:
+    # Validate requested provider
+    valid_providers = {"azure", "anthropic", "groq", "deterministic"}
+    if requested and requested not in valid_providers:
         raise RuntimeError(f"Unsupported LLM_PROVIDER: {requested!r}")
     if requested and requested not in configured:
         raise RuntimeError(f"LLM_PROVIDER={requested!r} is selected but its API key is missing")
     if not configured:
         raise RuntimeError(
-            "No LLM provider configured. Set ANTHROPIC_API_KEY or GROQ_API_KEY; "
-            "deterministic mode is test-only."
+            "No LLM provider configured. Set AZURE_OPENAI_ENDPOINT+AZURE_OPENAI_API_KEY, "
+            "ANTHROPIC_API_KEY, or GROQ_API_KEY; deterministic mode is test-only."
         )
 
-    order = [requested] if requested else []
-    order.extend(name for name in ("anthropic", "groq") if name not in order)
+    # Build provider chain: Azure (primary) -> Anthropic -> Groq (fallbacks)
+    if requested:
+        # User-specified provider only
+        order = [requested]
+    else:
+        # Default chain: Azure -> Anthropic -> Groq
+        order = ["azure", "anthropic", "groq"]
+    
     providers = [configured[name] for name in order if name in configured]
     return ProviderRouter(
         providers,
@@ -602,3 +627,112 @@ def build_provider_router(settings: Any) -> ProviderRouter:
         request_timeout_seconds=timeout,
     )
 
+
+
+# ---------------------------------------------------------------------------
+# Azure OpenAI implementation
+# ---------------------------------------------------------------------------
+
+
+class AzureOpenAIProvider(LLMProvider):
+    """Azure OpenAI provider with structured output support."""
+    
+    name = "azure"
+
+    def __init__(
+        self,
+        endpoint: str,
+        api_key: str,
+        model: str,
+        api_version: str = "2024-02-01",
+        timeout_seconds: float = 60.0,
+    ):
+        if not endpoint:
+            raise ValueError("AZURE_OPENAI_ENDPOINT is required for AzureOpenAIProvider")
+        if not api_key:
+            raise ValueError("AZURE_OPENAI_API_KEY is required for AzureOpenAIProvider")
+        self._endpoint = endpoint.rstrip("/")
+        self._api_key = api_key
+        self._model = model
+        self._api_version = api_version
+        self._timeout = timeout_seconds
+
+    async def generate(
+        self,
+        *,
+        system: str,
+        user: str,
+        temperature: float = 0.3,
+        max_tokens: int = 2048,
+    ) -> GenerationResult:
+        try:
+            from openai import AsyncAzureOpenAI
+        except ImportError as exc:
+            raise ProviderError(
+                "openai SDK not installed", self.name, retryable=False
+            ) from exc
+
+        client = AsyncAzureOpenAI(
+            api_key=self._api_key,
+            azure_endpoint=self._endpoint,
+            api_version=self._api_version,
+        )
+        t0 = time.monotonic()
+        try:
+            async with asyncio.timeout(self._timeout):
+                msg = await client.chat.completions.create(
+                    model=self._model,
+                    max_tokens=max_tokens,
+                    temperature=temperature,
+                    messages=[
+                        {"role": "system", "content": system},
+                        {"role": "user", "content": user},
+                    ],
+                )
+        except TimeoutError as exc:
+            raise ProviderTimeoutError(
+                f"Azure OpenAI timed out after {self._timeout}s", self.name
+            ) from exc
+        except Exception as exc:
+            raise ProviderError(f"Azure OpenAI request failed: {exc}", self.name) from exc
+
+        latency_ms = (time.monotonic() - t0) * 1000
+        choice = msg.choices[0]
+        text = choice.message.content or ""
+        usage = msg.usage
+        total = usage.total_tokens if usage else 0
+        prompt_t = usage.prompt_tokens if usage else 0
+        comp_t = usage.completion_tokens if usage else 0
+        
+        # Azure pricing varies; estimate based on model family
+        estimated_cost = self._estimate_cost(prompt_t, comp_t)
+        
+        return GenerationResult(
+            text=text,
+            provider=self.name,
+            model=self._model,
+            usage=TokenUsage(
+                prompt_tokens=prompt_t,
+                completion_tokens=comp_t,
+                total_tokens=total,
+                estimated_cost_usd=estimated_cost,
+            ),
+            latency_ms=latency_ms,
+        )
+
+    def _estimate_cost(self, prompt_tokens: int, completion_tokens: int) -> float:
+        """Estimate cost in USD. Azure pricing varies by deployment."""
+        # Conservative estimate - actual costs depend on deployment
+        rate_per_1k = 0.002  # Approximate for GPT-4o
+        return (prompt_tokens + completion_tokens) / 1000 * rate_per_1k
+
+    async def health_check(self) -> bool:
+        try:
+            result = await self.generate(
+                system="You are a health-check probe.",
+                user="Reply with the single word OK.",
+                max_tokens=10,
+            )
+            return "ok" in result.text.lower()
+        except ProviderError:
+            return False

@@ -157,6 +157,31 @@ async def start_generation_run(
         db=db,
     )
 
+    # Set status to queued BEFORE enqueueing to prevent race condition.
+    # Use conditional update to avoid overwriting terminal states (completed/failed).
+    result = await db.execute(
+        update(ContentGenerationRun)
+        .where(
+            ContentGenerationRun.run_id == run.run_id,
+            ContentGenerationRun.status == "created",  # Only update if still in created state
+        )
+        .values(status="queued")
+        .returning(ContentGenerationRun.status)
+    )
+    updated_status = result.scalar_one_or_none()
+    if updated_status is None:
+        # Run was already processed - fetch current state
+        await db.refresh(run)
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail={
+                "error": "run_already_processed",
+                "run_id": str(run.run_id),
+                "current_status": run.status,
+            },
+        )
+
+    # Now enqueue the job - if this fails, set status to enqueue_failed
     try:
         durable_job_id = await enqueue_durable(
             "generate_content_batch",
@@ -165,6 +190,7 @@ async def start_generation_run(
             args=(str(run.run_id),),
         )
     except Exception as exc:
+        # Revert to enqueue_failed on error
         await db.execute(
             update(ContentGenerationRun)
             .where(ContentGenerationRun.run_id == run.run_id)
@@ -190,6 +216,7 @@ async def start_generation_run(
             },
         ) from exc
 
+    # Store the job ID
     run.status = "queued"
     run.run_metadata = {**(run.run_metadata or {}), "durable_job_id": durable_job_id}
     await db.commit()
