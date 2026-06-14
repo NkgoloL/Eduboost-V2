@@ -35,6 +35,7 @@ from uuid import UUID
 from app.core.config import get_settings
 from app.core.metrics import arq_job_duration_seconds, arq_jobs_total
 from app.jobs.practice_session_cleanup_job import run_practice_session_cleanup
+from app.jobs.batch_generation_job import generate_content_batch
 
 logger = logging.getLogger(__name__)
 _ARQ_POOL: Any | None = None
@@ -478,6 +479,7 @@ class WorkerSettings:
         process_rlhf_feedback_batch,
         expire_stale_diagnostic_sessions,
         run_database_backup,
+        generate_content_batch,
     ]
 
     cron_jobs = [

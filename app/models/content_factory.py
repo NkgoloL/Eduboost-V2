@@ -260,13 +260,21 @@ class ContentValidationReport(Base):
     __tablename__ = "content_validation_reports"
 
     validation_report_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, server_default=func.gen_random_uuid())
-    artifact_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("content_generation_artifacts.artifact_id", ondelete="CASCADE"), nullable=False)
+    artifact_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("content_generation_artifacts.artifact_id", ondelete="CASCADE"), nullable=True)
+    task_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("content_generation_tasks.task_id", ondelete="CASCADE"), nullable=True)
     passed: Mapped[bool] = mapped_column(Boolean, nullable=False)
     checks: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False, default=dict)
     errors: Mapped[list[str]] = mapped_column(JSONB, nullable=False, default=list)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
 
-    __table_args__ = (Index("ix_content_validation_reports_artifact", "artifact_id", "created_at"),)
+    __table_args__ = (
+        CheckConstraint(
+            "artifact_id IS NOT NULL OR task_id IS NOT NULL",
+            name="ck_content_validation_reports_subject_present",
+        ),
+        Index("ix_content_validation_reports_artifact", "artifact_id", "created_at"),
+        Index("ix_content_validation_reports_task", "task_id", "created_at"),
+    )
 
 
 class ContentArtifactReview(Base):

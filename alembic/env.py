@@ -13,6 +13,11 @@ from alembic import context
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
+import alembic.runtime.migration
+import sqlalchemy as sa
+
+# Monkeypatch Alembic to support migration version names longer than 32 characters in Postgres
+alembic.runtime.migration.String = lambda length, *args, **kwargs: sa.String(64)
 
 # ── Alembic Config object ─────────────────────────────────────────────────
 config = context.config
@@ -71,6 +76,7 @@ def run_migrations_offline() -> None:
         include_object=_include_object,
         compare_type=False,
         compare_server_default=False,
+        version_table_col_length=64,
     )
     with context.begin_transaction():
         context.run_migrations()
@@ -85,6 +91,7 @@ def do_run_migrations(connection: Connection) -> None:
         include_object=_include_object,
         compare_type=False,
         compare_server_default=False,
+        version_table_col_length=64,
     )
     with context.begin_transaction():
         context.run_migrations()

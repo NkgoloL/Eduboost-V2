@@ -31,15 +31,36 @@ class ContentGenerationSourceContextService:
         scope_id: str,
         caps_ref: str,
         limit: int = 8,
+        requested_chunk_ids: list[str] | None = None,
     ) -> SourceContextResult:
-        result = await session.execute(
+        query = (
             select(ContentArtifactSource)
-            .join(ContentGenerationArtifact, ContentGenerationArtifact.artifact_id == ContentArtifactSource.artifact_id)
-            .where(ContentGenerationArtifact.scope_id == scope_id, ContentArtifactSource.caps_ref == caps_ref)
-            .order_by(ContentArtifactSource.created_at.desc())
-            .limit(limit)
+            .join(
+                ContentGenerationArtifact,
+                ContentGenerationArtifact.artifact_id == ContentArtifactSource.artifact_id,
+            )
+            .where(
+                ContentGenerationArtifact.scope_id == scope_id,
+                ContentArtifactSource.caps_ref == caps_ref,
+            )
         )
-        return self.validate_source_rows(list(result.scalars().all()), caps_ref=caps_ref)
+        if requested_chunk_ids:
+            query = query.where(ContentArtifactSource.source_chunk_id.in_(requested_chunk_ids))
+        result = await session.execute(
+            query.order_by(ContentArtifactSource.created_at.desc()).limit(limit)
+        )
+        rows = list(result.scalars().all())
+        validated = self.validate_source_rows(rows, caps_ref=caps_ref)
+        if requested_chunk_ids:
+            found = {str(getattr(row, "source_chunk_id", "")) for row in rows}
+            missing = sorted(set(requested_chunk_ids) - found)
+            if missing:
+                return SourceContextResult(
+                    passed=False,
+                    errors=[*validated.errors, f"Requested source chunks were not found: {missing}"],
+                    chunks=validated.chunks,
+                )
+        return validated
 
     def validate_source_rows(self, sources: list[Any], *, caps_ref: str) -> SourceContextResult:
         errors: list[str] = []
