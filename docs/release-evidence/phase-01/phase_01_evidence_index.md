@@ -39,7 +39,7 @@
 $ PATH=".venv/bin:$PATH" ./scripts/verify_phase1_postgres.sh
 ...
 97 passed in 0.98s
-20260614_0900_phase1_validation_reports (head)
+20260614_0900_p1_validation (head)
 ```
 
 ### 3.2 Full Phase 1 Ruff check
@@ -53,7 +53,7 @@ All checks passed!
 
 ```text
 $ python scripts/verify_migration_graph.py
-Migration graph OK: 35 revisions, head=20260614_0900_phase1_validation_reports
+Migration graph OK: 35 revisions, head=20260614_0900_p1_validation
 ```
 
 ### 3.4 Router and worker module verification

@@ -78,7 +78,7 @@ docs/release-evidence/phase-<NN>/
 | Phase | Status | Next Milestone |
 |:---:|---|---|
 | 0 | Not Started | Create execution plan |
-| 1 | In Progress | Complete evidence pack |
+| 1 | Verified Complete | Prepare Phase 2 execution plan |
 | 2 | In Progress | Complete evidence pack |
 | 3 | In Progress | Complete evidence pack |
 | 4 | In Progress | Complete evidence pack |

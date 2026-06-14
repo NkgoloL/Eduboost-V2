@@ -2,7 +2,7 @@
 
 **Purpose:** Execution-focused North Star for the next phase. This reflects the current green local backend unit baseline and separates repository-side completion from CI, runtime, external, legal, security, product, and beta-launch evidence.
 
-**Last updated:** 2026-06-12 (Phase 7 complete — deployment and security hardening done)
+**Last updated:** 2026-06-14 (Phase 1 corrective package verified complete; Phase 7 complete — deployment and security hardening done)
 **Latest local backend unit result:** 2051 passed, 1 skipped, 1 warning
 **Gap analysis:** Eduboost-V2_Gap_Analysis.md (2026-06-09)
 
@@ -31,6 +31,7 @@
 - [x] Five-lane project assistance status documented and enforced by `make project-assistance-status-check`.
 - [x] Outstanding TODO implementation plan compiled.
 - [x] Phase 5 migration graph, startup DDL removal, and migration smoke verification completed locally.
+- [x] Phase 1 corrective package verified complete against disposable PostgreSQL and corrective audit.
 - [ ] EduBoost is **not public-beta-ready** with real learner data.
 - [ ] EduBoost is **not production-launch-ready**.
 - [ ] Next milestone: **CI green -> staging execution evidence -> controlled beta go/no-go -> production**.

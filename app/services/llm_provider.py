@@ -613,12 +613,10 @@ def build_provider_router(settings: Any) -> ProviderRouter:
         )
 
     # Build provider chain: Azure (primary) -> Anthropic -> Groq (fallbacks)
-    if requested:
-        # User-specified provider only
-        order = [requested]
-    else:
-        # Default chain: Azure -> Anthropic -> Groq
-        order = ["azure", "anthropic", "groq"]
+    order = [requested] if requested else []
+    for name in ("azure", "anthropic", "groq"):
+        if name not in order:
+            order.append(name)
     
     providers = [configured[name] for name in order if name in configured]
     return ProviderRouter(

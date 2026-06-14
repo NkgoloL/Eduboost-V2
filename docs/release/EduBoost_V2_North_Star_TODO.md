@@ -9,6 +9,7 @@ Ship a production-capable EduBoost V2 backend by converting repository-level com
 - Backend consolidation slices: complete through 530/530.
 - Repository implementation: green, per user-provided status.
 - Runtime-facing helpers: implemented for audit, consent, and read-only deep readiness.
+- Phase 1 corrective package: verified complete with disposable PostgreSQL evidence and corrective audit pass.
 - Production launch: pending external evidence and human signoff.
 
 ## P0 — Freeze and evidence refresh
