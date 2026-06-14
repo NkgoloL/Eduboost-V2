@@ -43,7 +43,8 @@ Acceptance checks:
 
 **Status: Verified Complete (feature branch; 2026-06-14)**  
 Priority: P0  
-Evidence: `docs/release-evidence/phase-01/phase_01_evidence_index.md`, `docs/release-evidence/phase-01/phase_01_audit_report.md`
+Evidence: `docs/release-evidence/atlas/phase-01/phase_01_evidence_index.md`, `docs/release-evidence/atlas/phase-01/phase_01_audit_report.md`
+Sprint codename: `atlas`
 
 Disposable PostgreSQL closeout verification is now complete for the phase-1 corrective package, and the corrective audit passed. Canonical merge and merge-commit CI remain separate release steps.
 

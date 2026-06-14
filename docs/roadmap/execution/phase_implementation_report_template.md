@@ -9,9 +9,10 @@
 **Release manager:** <name/role>  
 **Evidence custodian:** <name/role>  
 **Phase auditor:** <name/role>  
-**Execution plan:** `docs/roadmap/execution/phase_<NN>_execution_plan.md`, version <x>  
-**Evidence index:** `docs/release-evidence/phase-<NN>/phase_<NN>_evidence_index.md`, version <x>  
-**Audit report:** `docs/release-evidence/phase-<NN>/phase_<NN>_audit_report.md`, version <x or Pending>  
+**Sprint codename:** `<codename>`  
+**Execution plan:** `docs/roadmap/execution/<codename>/phase_<NN>_execution_plan.md`, version <x>  
+**Evidence index:** `docs/release-evidence/<codename>/phase-<NN>/phase_<NN>_evidence_index.md`, version <x>  
+**Audit report:** `docs/release-evidence/<codename>/phase-<NN>/phase_<NN>_audit_report.md`, version <x or Pending>  
 **Branch:** `<phase branch>`  
 **Base commit:** `<SHA>`  
 **Merge commit:** `<SHA — required before closure>`  

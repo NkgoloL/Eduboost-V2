@@ -1,5 +1,7 @@
 # EduBoost 13-Phase Quick Reference
 
+Active sprint namespace: `atlas`
+
 ## Phase Sequence
 
 ```

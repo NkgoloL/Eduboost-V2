@@ -1,5 +1,7 @@
 # Phase 1 Remediation Tracker
 
+**Sprint codename:** atlas
+
 **Phase:** 1 — Batch AI Content Generation  
 **Audit Date:** 2026-06-14  
 **Verdict:** Verification Failed / Remediation Required  

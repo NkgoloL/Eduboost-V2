@@ -3,6 +3,7 @@
 **Audit date:** 2026-06-14  
 **Audit type:** Independent corrective implementation review  
 **Verdict:** **Pass**
+**Sprint codename:** atlas
 
 ## 1. Scope
 

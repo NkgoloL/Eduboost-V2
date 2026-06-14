@@ -4,6 +4,7 @@
 **Date:** 2026-06-14  
 **Status:** Executed; corrective verification complete; canonical merge pending  
 **Phase status:** Verified Complete on feature branch; canonical merge pending  
+**Sprint codename:** atlas  
 **Source package:** `files.zip` SHA-256 `6b27b9259e2f8786fa533c3420e10210996fb2a91dba59fae201352e9062e7a3`
 
 > This corrective plan does not retroactively cure the original start-gate breach. The supplied implementation began without an approved, complete four-artifact control set. This plan records and governs the remediation performed after review.

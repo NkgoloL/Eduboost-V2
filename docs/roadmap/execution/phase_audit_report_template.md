@@ -11,6 +11,7 @@
 **Execution plan audited:** <path/version>  
 **Implementation report audited:** <path/version>  
 **Evidence index audited:** <path/version>  
+**Sprint codename:** `<codename>`  
 **Canonical merge commit:** <SHA>  
 **Environment/artifact identity:** <identity/digest>  
 **Audit dates:** <UTC start–end>

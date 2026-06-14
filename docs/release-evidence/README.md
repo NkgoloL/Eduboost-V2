@@ -8,8 +8,10 @@
 release-evidence/
 ├── programme-baseline/     # Programme-level baseline documents
 ├── audit-remediation/       # Independent audit remediation evidence
+├── atlas/                   # Active sprint evidence namespace
+│   └── phase-01/            # Phase 1 corrective evidence
 ├── phase-00/               # Environment and Reproducibility
-├── phase-01/               # Batch AI Content Generation
+├── phase-01/               # Legacy / historical phase evidence (use atlas/phase-01 for active sprint)
 ├── phase-02/               # Semantic Retrieval
 ├── phase-03/               # Educator Consensus and Content Governance
 ├── phase-04/               # IRT Quality and Self-Healing Controls
@@ -74,3 +76,4 @@ Programme-level baseline documents (this plan, programme-level ADRs, risk regist
 - Full lifecycle roadmap: `docs/roadmap/EduBoost_Full_Lifecycle_Delivery_and_Beta_Readiness_Plan.md`
 - Phase status register: `docs/roadmap/PHASE_STATUS_REGISTER.md`
 - Execution templates: `docs/roadmap/execution/phase_*_template.md`
+- Active sprint namespace: `docs/roadmap/execution/atlas/` and `docs/release-evidence/atlas/`

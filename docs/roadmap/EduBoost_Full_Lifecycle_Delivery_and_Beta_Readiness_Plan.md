@@ -442,7 +442,7 @@ Parallel work is permitted only when named people can execute it independently. 
 |---|---|---|---|---|---|---|---|---:|
 | R | Independent audit remediation | Refer to its own roadmap | Equivalent approved remediation plan | Approved remediation implementation/closure report | Attributable remediation evidence index | Independent remediation closure audit or equivalent decision | Own workstream dependencies | Separate estimate |
 | 0 | Reproducible environment, provider, flags, and worker foundation | Open — completion not established | `phase_00_execution_plan.md` | `phase_00_implementation_report.md` | `phase-00/phase_00_evidence_index.md` | `phase-00/phase_00_audit_report.md` | None | 1–2 weeks |
-| 1 | Safe batch AI content generation | Open — completion not established | `phase_01_execution_plan.md` | `phase_01_implementation_report.md` | `phase-01/phase_01_evidence_index.md` | `phase-01/phase_01_audit_report.md` | Phase 0 | 2–4 weeks |
+| 1 | Safe batch AI content generation | Open — completion not established | `docs/roadmap/execution/atlas/phase_01_execution_plan.md` | `docs/roadmap/execution/atlas/phase_01_implementation_report.md` | `docs/release-evidence/atlas/phase-01/phase_01_evidence_index.md` | `docs/release-evidence/atlas/phase-01/phase_01_audit_report.md` | Phase 0 | 2–4 weeks |
 | 2 | Grounded semantic retrieval | Open — completion not established | `phase_02_execution_plan.md` | `phase_02_implementation_report.md` | `phase-02/phase_02_evidence_index.md` | `phase-02/phase_02_audit_report.md` | Phase 1 | 1–2 weeks |
 | 3 | Multi-educator content consensus | Open — completion not established | `phase_03_execution_plan.md` | `phase_03_implementation_report.md` | `phase-03/phase_03_evidence_index.md` | `phase-03/phase_03_audit_report.md` | Phase 1 | 1–3 weeks |
 | 4 | Adaptive-item calibration and self-healing controls | Open — completion not established | `phase_04_execution_plan.md` | `phase_04_implementation_report.md` | `phase-04/phase_04_evidence_index.md` | `phase-04/phase_04_audit_report.md` | Phases 2–3 | 2–3 weeks |
@@ -504,16 +504,16 @@ Parallel work is permitted only when named people can execute it independently. 
 ## Phase 1 — Batch AI Content Generation
 
 
-> **Mandatory phase control:** Phase 1 may not start until `docs/roadmap/execution/phase_01_execution_plan.md` is approved for execution. It may not be marked `Verified Complete` until its implementation report and evidence index are complete, its audit report has a passing verdict, and the full control set is approved against canonical post-merge evidence.
+> **Mandatory phase control:** Phase 1 may not start until `docs/roadmap/execution/atlas/phase_01_execution_plan.md` is approved for execution. It may not be marked `Verified Complete` until its implementation report and evidence index are complete, its audit report has a passing verdict, and the full control set is approved against canonical post-merge evidence.
 
 ### Phase 1 required plan/report/evidence/audit set
 
 | Control artefact | Phase-specific minimum requirements | Canonical path |
 |---|---|---|
-| Execution plan | Define provider abstraction, prompt/version ownership, approved-source flow, output schemas, retry/fallback policy, safety and PII controls, deterministic CI provider, cost limits, telemetry, and generation acceptance dataset. | `docs/roadmap/execution/phase_01_execution_plan.md` |
-| Implementation report | Record implemented providers, prompts, schema validators, safety controls, provenance, telemetry, generation runs, rejected outputs, fallback behaviour, costs, and all deviations from the approved design. | `docs/roadmap/execution/phase_01_implementation_report.md` |
-| Evidence pack and index | Typed output test results; prompt and schema versions; source-provenance records; PII and unsafe-output tests; timeout/retry/fallback logs; deterministic CI results; complete generation-run output; token/cost telemetry; sampled rejected artefacts. | `docs/release-evidence/phase-01/phase_01_evidence_index.md` |
-| Independent phase audit | Reproduce critical generation and failure paths, sample generated artefacts against their sources, verify PII/safety controls and publication fail-closed behaviour, and assess whether report claims match raw provider and validation evidence. | `docs/release-evidence/phase-01/phase_01_audit_report.md` |
+| Execution plan | Define provider abstraction, prompt/version ownership, approved-source flow, output schemas, retry/fallback policy, safety and PII controls, deterministic CI provider, cost limits, telemetry, and generation acceptance dataset. | `docs/roadmap/execution/atlas/phase_01_execution_plan.md` |
+| Implementation report | Record implemented providers, prompts, schema validators, safety controls, provenance, telemetry, generation runs, rejected outputs, fallback behaviour, costs, and all deviations from the approved design. | `docs/roadmap/execution/atlas/phase_01_implementation_report.md` |
+| Evidence pack and index | Typed output test results; prompt and schema versions; source-provenance records; PII and unsafe-output tests; timeout/retry/fallback logs; deterministic CI results; complete generation-run output; token/cost telemetry; sampled rejected artefacts. | `docs/release-evidence/atlas/phase-01/phase_01_evidence_index.md` |
+| Independent phase audit | Reproduce critical generation and failure paths, sample generated artefacts against their sources, verify PII/safety controls and publication fail-closed behaviour, and assess whether report claims match raw provider and validation evidence. | `docs/release-evidence/atlas/phase-01/phase_01_audit_report.md` |
 
 **Phase 1 closure rule:** all four artefacts must exist, reference the same canonical source state, and be approved. The audit must issue a passing verdict and every blocking finding must be closed before the phase status can change to `Verified Complete`.
 
@@ -1809,7 +1809,7 @@ During the beta:
 ### Week 3 — Activate the first incomplete phase
 
 - Create `phase_00_implementation_report.md`, freeze `phase_00_evidence_index.md`, and complete `phase_00_audit_report.md`; close Phase 0 only if the report reconciles the approved plan, all evidence passes on the canonical merge commit, the audit verdict passes, and closure approval is recorded.
-- Draft and approve `phase_01_execution_plan.md` before activating Phase 1 as the sole engineering WIP item; otherwise retain Phase 0 if it remains open.
+- Draft and approve `docs/roadmap/execution/atlas/phase_01_execution_plan.md` before activating Phase 1 as the sole engineering WIP item; otherwise retain Phase 0 if it remains open.
 - Start external Phase 12 procurement and educator-review preparation where it does not interrupt engineering WIP.
 - Finalise the beta measurement plan, content-review rubric, and supported-language decision.
 - Review all exposure-15+ risks, especially R-000 and R-004.

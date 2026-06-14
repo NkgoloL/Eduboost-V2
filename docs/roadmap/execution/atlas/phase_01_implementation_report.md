@@ -3,6 +3,7 @@
 **Date:** 2026-06-14  
 **Status:** Remediation implemented; verification completed successfully  
 **Verdict:** Verified Complete
+**Sprint codename:** atlas
 
 ## 1. Summary
 
@@ -58,10 +59,10 @@ This corrective implementation addresses those defects in code and expands the r
 
 ### Governance
 
-- `docs/roadmap/execution/phase_01_execution_plan.md`
-- `docs/roadmap/execution/phase_01_implementation_report.md`
-- `docs/release-evidence/phase-01/phase_01_evidence_index.md`
-- `docs/release-evidence/phase-01/phase_01_audit_report.md`
+- `docs/roadmap/execution/atlas/phase_01_execution_plan.md`
+- `docs/roadmap/execution/atlas/phase_01_implementation_report.md`
+- `docs/release-evidence/atlas/phase-01/phase_01_evidence_index.md`
+- `docs/release-evidence/atlas/phase-01/phase_01_audit_report.md`
 
 ## 4. Detailed changes
 

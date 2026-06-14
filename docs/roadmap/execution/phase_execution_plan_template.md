@@ -15,7 +15,8 @@
 **Base commit:** `<SHA>`  
 **Target milestone/date:** <value>  
 **Governing roadmap:** `<version/path>`  
-**Evidence directory:** `docs/release-evidence/phase-<NN>/`
+**Evidence directory:** `docs/release-evidence/<codename>/phase-<NN>/`
+**Sprint codename:** `<codename>`
 
 > Substantive phase execution may not begin until this plan is approved and committed. The plan must define the complete plan/report/evidence/audit closure set before implementation starts.
 
@@ -89,7 +90,7 @@ Define logs, metrics, traces, dashboards, alerts, runbooks, support impact, on-c
 
 The phase must produce:
 
-`docs/release-evidence/phase-<NN>/phase_<NN>_evidence_index.md`
+`docs/release-evidence/<codename>/phase-<NN>/phase_<NN>_evidence_index.md`
 
 ### 12.2 Planned evidence inventory
 

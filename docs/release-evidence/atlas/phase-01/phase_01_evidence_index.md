@@ -2,6 +2,7 @@
 
 **Evidence date:** 2026-06-14  
 **Evidence status:** Complete and verified on PostgreSQL and Python 3.12.3  
+**Sprint codename:** atlas  
 **Base source archive SHA-256:** `255b2f5a57445207bd4e70d69055742dbfb2fa806f807b2ed5974e6cf0fd3630`  
 
 ## 1. Environment identity

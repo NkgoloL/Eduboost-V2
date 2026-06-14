@@ -20,14 +20,18 @@ docs/roadmap/
 │   ├── phase_implementation_report_template.md
 │   ├── phase_audit_report_template.md
 │   ├── phase_evidence_pack_template.md
+│   ├── atlas/                                                   # Active sprint namespace
+│   │   ├── phase_01_execution_plan.md
+│   │   ├── phase_01_implementation_report.md
+│   │   └── ...
 │   ├── phase_00_execution_plan.md                             # (to be created)
 │   ├── phase_00_implementation_report.md                       # (to be created)
-│   ├── phase_01_execution_plan.md
-│   ├── phase_01_implementation_report.md
 │   └── ... (phases 1-13)
 ├── domains/                                                     # Domain-specific roadmaps
 └── *.md                                                         # Supporting documents
 ```
+
+Active sprint namespace: `docs/roadmap/execution/atlas/`
 
 ## Phase Overview
 

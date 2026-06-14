@@ -7,6 +7,8 @@
 
 > This register tracks the status of all 13 phases plus the audit remediation track. A phase is **Verified Complete** only when its four-artefact control set is approved: execution plan, implementation report, evidence pack/index, and passing phase audit report.
 
+> Active sprint namespace: `atlas`
+
 ## Programme Status Summary
 
 | Segment | Status |
@@ -23,7 +25,7 @@
 |:---:|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | R | Audit Remediation | *See own roadmap* | — | — | — | — | Independent | 2026-06-13 |
 | 0 | Environment and Reproducibility | Not Started | — | — | — | — | None | 2026-06-14 |
-| 1 | Batch AI Content Generation | **Verified Complete** | ✅ `phase_01_execution_plan.md` | ✅ `phase_01_implementation_report.md` | ✅ `phase_01_evidence_index.md` | ✅ `phase_01_audit_report.md` | Phase 0 | 2026-06-14 |
+| 1 | Batch AI Content Generation | **Verified Complete** | ✅ `docs/roadmap/execution/atlas/phase_01_execution_plan.md` | ✅ `docs/roadmap/execution/atlas/phase_01_implementation_report.md` | ✅ `docs/release-evidence/atlas/phase-01/phase_01_evidence_index.md` | ✅ `docs/release-evidence/atlas/phase-01/phase_01_audit_report.md` | Phase 0 | 2026-06-14 |
 
 > **Phase 1 Audit Outcome (2026-06-14):** Verified Complete
 > - Disposable PostgreSQL verification passed with `scripts/verify_phase1_postgres.sh`.
@@ -102,10 +104,10 @@ Each phase requires:
 
 | Artefact | Path Template | Purpose |
 |---|---|---|
-| Execution Plan | `docs/roadmap/execution/phase_<NN>_execution_plan.md` | Defines scope, controls, acceptance criteria before work starts |
-| Implementation Report | `docs/roadmap/execution/phase_<NN>_implementation_report.md` | Reconciles planned vs actual delivery |
-| Evidence Index | `docs/release-evidence/phase-<NN>/phase_<NN>_evidence_index.md` | Attributable proof for every criterion |
-| Phase Audit Report | `docs/release-evidence/phase-<NN>/phase_<NN>_audit_report.md` | Independent verification and closure verdict |
+| Execution Plan | `docs/roadmap/execution/<codename>/phase_<NN>_execution_plan.md` | Defines scope, controls, acceptance criteria before work starts |
+| Implementation Report | `docs/roadmap/execution/<codename>/phase_<NN>_implementation_report.md` | Reconciles planned vs actual delivery |
+| Evidence Index | `docs/release-evidence/<codename>/phase-<NN>/phase_<NN>_evidence_index.md` | Attributable proof for every criterion |
+| Phase Audit Report | `docs/release-evidence/<codename>/phase-<NN>/phase_<NN>_audit_report.md` | Independent verification and closure verdict |
 
 ## Evidence Directory Structure
 
