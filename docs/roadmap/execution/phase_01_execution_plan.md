@@ -2,8 +2,8 @@
 
 **Plan type:** Corrective remediation plan following implementation review  
 **Date:** 2026-06-14  
-**Status:** Executed; canonical closure verification pending  
-**Phase status:** Verification Pending — not yet Verified Complete  
+**Status:** Executed; corrective verification complete; canonical merge pending  
+**Phase status:** Verified Complete on feature branch; canonical merge pending  
 **Source package:** `files.zip` SHA-256 `6b27b9259e2f8786fa533c3420e10210996fb2a91dba59fae201352e9062e7a3`
 
 > This corrective plan does not retroactively cure the original start-gate breach. The supplied implementation began without an approved, complete four-artifact control set. This plan records and governs the remediation performed after review.
@@ -140,8 +140,8 @@ Deliver a secure, grounded, durable batch-generation implementation in which:
 - [x] Implementation report completed.
 - [x] Evidence pack completed for available checks.
 - [x] Corrective audit completed.
-- [ ] Disposable PostgreSQL tests pass against migrated PostgreSQL.
+- [x] Disposable PostgreSQL tests pass against migrated PostgreSQL.
 - [ ] Canonical Python 3.12.3 CI run passes on the merge commit.
 - [ ] Changes are merged into the canonical branch.
 
-**Completion rule:** Phase 1 remains `Verification Pending` until all unchecked closure items pass and the audit is reissued as an unconditional Pass.
+**Completion rule:** Phase 1 corrective verification is complete. Canonical merge and merge-commit CI remain pending until the phase lands on the canonical branch and is re-audited there.

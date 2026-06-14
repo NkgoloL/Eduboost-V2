@@ -41,9 +41,11 @@ Acceptance checks:
 
 ## Phase 1 - Release-Blocking Correctness Fixes
 
-**Status: Complete (2026-06-09)**  
+**Status: Verified Complete (feature branch; 2026-06-14)**  
 Priority: P0  
-Evidence: `docs/release/phase_1_evidence.md`
+Evidence: `docs/release-evidence/phase-01/phase_01_evidence_index.md`, `docs/release-evidence/phase-01/phase_01_audit_report.md`
+
+Disposable PostgreSQL closeout verification is now complete for the phase-1 corrective package, and the corrective audit passed. Canonical merge and merge-commit CI remain separate release steps.
 
 ### 1.1 Fix Python Syntax and Compile Gates
 

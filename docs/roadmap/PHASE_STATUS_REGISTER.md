@@ -12,7 +12,7 @@
 | Segment | Status |
 |---|---|
 | Overall programme | **Open — full lifecycle in progress** |
-| Phases 0–7 | **Open — completion being verified** |
+| Phases 0–7 | **Open — Phase 1 verified complete; remaining foundation phases open** |
 | Audit remediation | Governed by `audit_remediation_roadmap_2026-06-13.md` |
 | Phases 8–13 | In progress per individual phase status |
 | Controlled beta | Blocked until all prerequisite phases pass |
@@ -23,14 +23,12 @@
 |:---:|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | R | Audit Remediation | *See own roadmap* | — | — | — | — | Independent | 2026-06-13 |
 | 0 | Environment and Reproducibility | Not Started | — | — | — | — | None | 2026-06-14 |
-| 1 | Batch AI Content Generation | **Closure Review Pending** | ✅ `phase_01_execution_plan.md` | ✅ `phase_01_implementation_report.md` | ⬜ | 🔄 Re-audit pending | Phase 0 | 2026-06-14 |
+| 1 | Batch AI Content Generation | **Verified Complete** | ✅ `phase_01_execution_plan.md` | ✅ `phase_01_implementation_report.md` | ✅ `phase_01_evidence_index.md` | ✅ `phase_01_audit_report.md` | Phase 0 | 2026-06-14 |
 
-> **Phase 1 Audit Outcome (2026-06-14):** Closure Review Pending (was Verification Failed → Remediation → Merged)
-> - Critical findings: ✅ P1-R01 (canonical provider), P1-R02 (migration ID) - RESOLVED
-> - High findings: ✅ P1-R04-P1-R08 - RESOLVED  
-> - P1-R03: ⚠️ MERGED (commit `bf9e71ab`) - post-merge CI pending, re-audit pending
-> - Medium findings: P1-R09-P1-R12 remain open
-> - See: `docs/release-evidence/phase-01/phase_01_remediation_tracker.md`
+> **Phase 1 Audit Outcome (2026-06-14):** Verified Complete
+> - Disposable PostgreSQL verification passed with `scripts/verify_phase1_postgres.sh`.
+> - Evidence index and corrective audit report are complete.
+> - Canonical branch merge remains a separate release step.
 | 2 | Semantic Retrieval | In Progress | ✅ `phase_02_execution_plan.md` | ✅ `phase_02_implementation_report.md` | ⬜ | ⬜ | Phase 1 | 2026-06-14 |
 | 3 | Educator Consensus and Content Governance | In Progress | ✅ `phase_03_execution_plan.md` | ✅ `phase_03_implementation_report.md` | ⬜ | ⬜ | Phase 1 | 2026-06-14 |
 | 4 | IRT Quality and Self-Healing Controls | In Progress | ✅ `phase_04_execution_plan.md` | ✅ `phase_04_implementation_report.md` | ⬜ | ⬜ | Phases 2–3 | 2026-06-14 |
@@ -169,6 +167,7 @@ Before any phase may be marked `Verified Complete`:
 
 | Date | Phase | Activity |
 |---|---|---|
+| 2026-06-14 | 1 | Disposable PostgreSQL verification and corrective audit completed; phase marked Verified Complete |
 | 2026-06-14 | All | Phase status register created; roadmap integrated as North-star |
 | 2026-06-13 | All | Full-lifecycle delivery plan v5 approved |
 | 2026-06-13 | R | Audit remediation roadmap established |
@@ -176,7 +175,7 @@ Before any phase may be marked `Verified Complete`:
 ## Next Steps
 
 1. **Phase 0**: Create and approve `phase_00_execution_plan.md`
-2. **Phase 1–7**: Complete evidence packs and initiate phase audits
+2. **Phase 2–7**: Continue implementation, evidence capture, and audits for the remaining foundation phases
 3. **Phase 8–13**: Continue implementation per individual phase plans
 4. **Evidence directories**: Create `phase-<NN>/` directories and evidence indices
 5. **CI automation**: Implement automated phase gate checks

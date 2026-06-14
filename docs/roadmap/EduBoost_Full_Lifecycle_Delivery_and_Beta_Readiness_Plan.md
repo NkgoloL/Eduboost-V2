@@ -8,7 +8,7 @@
 
 > This plan corrects a lifecycle omission introduced when later planning documents began at Phase 8 and implicitly treated Phases 0–7 as completed.
 >
-> Phases 0–7 are not accepted as complete. Existing implementation may be credited only after the current phase exit criteria pass and attributable evidence is approved.
+> Phases 0–7 are not all accepted as complete. Phase 1 now has a verified control set; existing implementation in the remaining phases may be credited only after the current phase exit criteria pass and attributable evidence is approved.
 >
 > The technical audit remains outside this document. Its corrective work is governed by `audit_remediation_roadmap_2026-06-13.md`, which is independently authoritative and does not replace any roadmap phase.
 
@@ -24,7 +24,7 @@ This plan adopts one controlling rule:
 
 > **A phase is complete only when its current exit criteria pass for an identified source state and environment, and the evidence is approved.**
 
-Accordingly, all phases begin with an evidence-based status. Phases 0–7 are initially classified as **Open — completion not established**. Existing code and tests may reduce the remaining work, but they do not bypass the phase gates.
+Accordingly, all phases begin with an evidence-based status. Phase 1 has now moved to verified complete status; the remaining foundation phases remain open until their own gates pass. Existing code and tests may reduce the remaining work, but they do not bypass the phase gates.
 
 ### Full delivery sequence
 
@@ -71,10 +71,12 @@ Phase 13 Controlled Beta
 | Item | Baseline status |
 |---|---|
 | Overall programme | **Open — full lifecycle not yet accepted** |
-| Phases 0–7 | **Open — completion not established** |
+| Phases 0–7 | **Open — Phase 1 verified complete; remaining foundation phases open** |
 | Audit remediation | Governed separately; status taken only from its own decision record |
 | Phases 8–13 | Open; blocked by earlier phase gates and stated dependencies |
 | Controlled beta | No-Go until every mandatory entry gate passes |
+
+Phase 1 now has a verified four-artefact control set and disposable PostgreSQL closeout evidence. The remaining foundation phases still require their own plan, evidence, and audit chain before they can be counted complete.
 
 ### Planning range
 
