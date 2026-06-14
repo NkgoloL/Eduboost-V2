@@ -14,7 +14,7 @@ PHASE1_PYTHON_PATHS=(
   app/models/content_factory.py
   app/modules/jobs.py
   app/api_v2.py
-  alembic/versions/20260614_0900_phase1_validation_reports.py
+  alembic/versions/20260614_0900_p1_validation.py
   tests/phase01
 )
 

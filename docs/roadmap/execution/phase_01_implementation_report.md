@@ -41,7 +41,7 @@ This corrective implementation addresses those defects in code and expands the r
 
 ### Database
 
-- `alembic/versions/20260614_0900_phase1_validation_reports.py`
+- `alembic/versions/20260614_0900_p1_validation.py`
 
 ### Tests and verification
 
@@ -117,6 +117,6 @@ This corrective implementation addresses those defects in code and expands the r
 ## 6. Closeout Sign-off
 
 The Phase 1 exit gates are complete:
-1. Alembic migrations successfully upgrade to `20260614_0900_phase1_validation_reports` on PostgreSQL.
+1. Alembic migrations successfully upgrade to `20260614_0900_p1_validation` on PostgreSQL.
 2. The verification script `verify_phase1_postgres.sh` executes with 97 passed and 0 skips under Python 3.12.3.
 3. The implementation is successfully integrated and verified against the repository baseline.
