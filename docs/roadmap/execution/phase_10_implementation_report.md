@@ -1,130 +1,105 @@
-# Phase 10 Implementation Report — Post-Production Product Documentation & Operational Tooling
+# Phase 10 Implementation Report - Post-Production Product Documentation & Operational Tooling
 
-**Date**: 2026-06-12  
-**Status**: ✅ Complete  
-**Branch**: `phase-10/post-production-product-docs`  
+**Date**: 2026-06-12
+**Updated**: 2026-06-14
+**Status**: Complete for documentation and workspace hygiene; dependency conflicts recorded
+**Branch**: `phase-10/post-production-product-docs`
 **Base**: `origin/master`
 
 ---
 
-## 1. Objective
+## 2026-06-14 Remediation Note
 
-Complete the remaining high-priority non-human-decision items from the critical path and post-baseline roadmap, focusing on product documentation, dependency hygiene, ADR consolidation, and operational tooling.
+The original report documented useful product, ADR, governance, and runbook
+deliverables, but it did not prove the workspace-hygiene acceptance criteria and
+it referenced dependency Make targets that were not present. The remediation:
 
----
+- Ran `python3 scripts/maintenance/check_repo_hygiene.py`; it passed.
+- Ran `make generated-artifact-hygiene-check`; it passed.
+- Added `deps-check`, `deps-outdated`, `deps-vulnerable`, and `deps-conflicts` Make targets.
+- Captured current dependency conflicts in `docs/release/phase_10_evidence.md`.
 
-## 2. Delivery Summary
-
-| Category | Files | Lines | Type |
-|----------|-------|-------|------|
-| Product documentation | 7 | 828 | New |
-| Operations documentation | 6 | 751 | New |
-| ADR/Architecture | 3 | 286 | New |
-| Repository governance | 1 | 197 | New |
-| Execution plan updates | 1 | 124 | Updated |
-| **Total** | **18 files** | **2,186** | |
+Dependency hygiene remains partial until the local package-version conflicts are
+resolved or isolated in a clean environment.
 
 ---
 
-## 3. Detailed Deliverables
+## Objective
 
-### H.1 — Product Documentation (7 new files)
+Complete the remaining high-priority non-human-decision items from the critical
+path and post-baseline roadmap, focusing on product documentation, dependency
+hygiene, ADR consolidation, operational tooling, and repository hygiene.
 
-| File | Lines | Description |
-|------|-------|-------------|
-| `docs/product/product_overview.md` | 119 | What EduBoost is, who it serves, core features |
-| `docs/product/parent_guide.md` | 164 | How guardians manage consent, monitor progress, export data |
-| `docs/product/learner_guide.md` | 154 | How learners take diagnostics, access lessons, practice |
-| `docs/product/teacher_guide.md` | 168 | How teachers view assigned learners, review progress |
-| `docs/product/faq.md` | 147 | General FAQ covering pricing, data privacy, technical requirements |
-| `docs/product/pricing_faq.md` | 132 | Free tier, parent plan, school plan details |
-| `docs/product/ai_transparency_faq.md` | 156 | How AI is used, what data is sent to LLMs, safety measures |
+## Delivery Summary
 
-### H.2 — Dependency Hygiene (1 new file)
+| Category | Files | Status |
+|---|---:|---|
+| Product documentation | 7 | Complete |
+| Operations documentation | 6 | Complete |
+| ADR/architecture | 3 | Complete |
+| Repository governance | 1 | Complete |
+| Hygiene tooling/evidence | 4 | Complete for hygiene; dependency conflicts recorded |
 
-| File | Lines | Description |
-|------|-------|-------------|
-| `docs/operations/dependency_management.md` | 164 | Canonical dependency paths, separation of concerns, audit commands |
-
-### H.3 — Post-Baseline ADR & Architecture (3 new files)
-
-| File | Lines | Description |
-|------|-------|-------------|
-| `docs/adr/ADR-019-roadmap-after-production-readiness-baseline.md` | 65 | Strategic direction for post-baseline development |
-| `docs/roadmap/post_baseline_roadmap_architecture_contract.md` | 102 | Architecture implications of post-baseline roadmap |
-| `docs/roadmap/production_readiness_baseline_boundary_contract.md` | 119 | What's included/not included in baseline |
-
-### H.4 — Branch Protection Documentation (1 new file)
-
-| File | Lines | Description |
-|------|-------|-------------|
-| `docs/repository/governance.md` | 197 | Branch protection settings, PR requirements, commit guidelines |
-
-### H.5 — Operational Runbooks (4 new files)
-
-| File | Lines | Description |
-|------|-------|-------------|
-| `docs/operations/runbooks/database_outage.md` | 155 | Step-by-step for DB failure recovery |
-| `docs/operations/runbooks/llm_provider_outage.md` | 155 | Fallback provider activation procedure |
-| `docs/operations/runbooks/security_incident.md` | 166 | Breach detection and containment steps |
-| `docs/operations/runbooks/consent_sla_breach.md` | 186 | Erasure/export SLA escalation procedure |
-
----
-
-## 4. Work Group Status
+## Work Group Status
 
 | Group | Status | Evidence |
-|-------|--------|----------|
-| H.1 Product Documentation | ✅ Complete | 7 files in `docs/product/` |
-| H.2 Dependency Hygiene | ✅ Complete | `docs/operations/dependency_management.md` |
-| H.3 Post-Baseline ADR | ✅ Complete | 3 ADR/roadmap documents |
-| H.4 Branch Protection | ✅ Complete | `docs/repository/governance.md` |
-| H.5 Operational Runbooks | ✅ Complete | 4 files in `docs/operations/runbooks/` |
-| H.6 Evidence Update | ✅ Complete | Checkboxes marked in execution plan |
+|---|---|---|
+| H.1 Product Documentation | Complete | 7 files in `docs/product/` |
+| H.2 Dependency Hygiene | Partial | `docs/operations/dependency_management.md`; Make targets added; local conflicts recorded |
+| H.3 Post-Baseline ADR | Complete | 3 ADR/roadmap documents |
+| H.4 Branch Protection | Complete | `docs/repository/governance.md` |
+| H.5 Operational Runbooks | Complete | 4 files in `docs/operations/runbooks/` |
+| H.6 Evidence Update | Complete | Phase 10 evidence and audit refreshed |
 
----
+## Key Artifacts
 
-## 5. Files Changed
+- `docs/product/product_overview.md`
+- `docs/product/parent_guide.md`
+- `docs/product/learner_guide.md`
+- `docs/product/teacher_guide.md`
+- `docs/product/faq.md`
+- `docs/product/pricing_faq.md`
+- `docs/product/ai_transparency_faq.md`
+- `docs/operations/dependency_management.md`
+- `docs/adr/ADR-019-roadmap-after-production-readiness-baseline.md`
+- `docs/roadmap/post_baseline_roadmap_architecture_contract.md`
+- `docs/roadmap/production_readiness_baseline_boundary_contract.md`
+- `docs/repository/governance.md`
+- `docs/operations/runbooks/database_outage.md`
+- `docs/operations/runbooks/llm_provider_outage.md`
+- `docs/operations/runbooks/security_incident.md`
+- `docs/operations/runbooks/consent_sla_breach.md`
 
-| File | Type | Lines | Description |
-|------|------|-------|--------------|
-| `docs/product/product_overview.md` | New | 119 | Product overview |
-| `docs/product/parent_guide.md` | New | 164 | Parent guide |
-| `docs/product/learner_guide.md` | New | 154 | Learner guide |
-| `docs/product/teacher_guide.md` | New | 168 | Teacher guide |
-| `docs/product/faq.md` | New | 147 | FAQ |
-| `docs/product/pricing_faq.md` | New | 132 | Pricing FAQ |
-| `docs/product/ai_transparency_faq.md` | New | 156 | AI transparency FAQ |
-| `docs/operations/dependency_management.md` | New | 164 | Dependency management |
-| `docs/adr/ADR-019-roadmap-after-production-readiness-baseline.md` | Updated | 65 | Post-baseline ADR |
-| `docs/roadmap/post_baseline_roadmap_architecture_contract.md` | New | 102 | Architecture contract |
-| `docs/roadmap/production_readiness_baseline_boundary_contract.md` | New | 119 | Baseline boundary |
-| `docs/repository/governance.md` | New | 197 | Repository governance |
-| `docs/operations/runbooks/database_outage.md` | New | 155 | DB outage runbook |
-| `docs/operations/runbooks/llm_provider_outage.md` | New | 155 | LLM provider runbook |
-| `docs/operations/runbooks/security_incident.md` | New | 166 | Security incident runbook |
-| `docs/operations/runbooks/consent_sla_breach.md` | New | 186 | Consent SLA runbook |
-| `docs/roadmap/execution/phase_10_execution_plan.md` | Updated | 124 | Execution plan with checkboxes |
+## Evidence Gates
 
----
+```bash
+python3 scripts/maintenance/check_repo_hygiene.py
+make generated-artifact-hygiene-check
+make -n deps-check deps-outdated deps-vulnerable deps-conflicts
+make deps-conflicts
+```
 
-## 6. Sign-off Checklist
+`make deps-conflicts` currently reports installed-environment conflicts:
+
+- `realtime 2.29.0` requires newer `pydantic` and older `websockets`.
+- `storage3 2.29.0` requires newer `pydantic`.
+- `pyiceberg 0.11.1` requires older `rich`.
+
+## Sign-Off Checklist
 
 - [x] 7 product documentation files created in `docs/product/`
-- [x] Dependency audit completed, findings documented
+- [x] Dependency audit command targets added
+- [x] Dependency conflicts captured as residual evidence
 - [x] 3 ADR/roadmap documents created for post-baseline strategy
 - [x] Branch protection requirements documented in `docs/repository/governance.md`
 - [x] 4 operational runbooks created in `docs/operations/runbooks/`
-- [x] Execution plan checkboxes updated with evidence references
-- [x] All files committed and pushed to `phase-10/post-production-product-docs`
-- [x] Implementation report written
-- [ ] PR merged to `master` (pending)
+- [x] Repository hygiene command passes
+- [x] Generated-artifact hygiene command passes
+- [x] Implementation report refreshed
+- [x] PR merged to `master`
 
----
+## Next Steps
 
-## 7. Next Steps
-
-1. Commit all changes and create PR to merge to `master`
-2. Verify all documentation renders correctly
-3. Review governance settings with team
-4. Schedule runbook review with operations team
+1. Resolve or isolate the pydantic, websockets, and rich dependency conflicts.
+2. Re-run `make deps-conflicts` in a clean project environment after dependency changes.
+3. Keep generated artifact hygiene in the release gate.

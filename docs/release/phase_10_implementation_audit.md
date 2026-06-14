@@ -1,38 +1,47 @@
-# Phase 10 Implementation Audit - Workspace Hygiene and Auditability
+# Phase 10 Implementation Audit - Post-Production Docs, Tooling, and Hygiene
 
-**Audit date:** 2026-06-13  
-**Auditor:** Codex  
-**Status:** Partial; scope drift from original roadmap
+**Audit date:** 2026-06-14
+**Auditor:** Codex
+**Status:** Supported after remediation, with dependency conflicts recorded
 
 ## Artifact Check
 
 | Artifact | Status |
 |---|---|
-| `docs/roadmap/execution/phase_10_execution_plan.md` | Present |
-| `docs/roadmap/execution/phase_10_implementation_report.md` | Present |
-| `docs/release/phase_10_evidence.md` | Present after 2026-06-13 backfill |
+| `docs/roadmap/execution/phase_10_execution_plan.md` | Present; refreshed 2026-06-14 |
+| `docs/roadmap/execution/phase_10_implementation_report.md` | Present; refreshed 2026-06-14 |
+| `docs/release/phase_10_evidence.md` | Present; refreshed 2026-06-14 |
 | `docs/release/phase_10_implementation_audit.md` | Present |
 
 ## Acceptance Criteria Audit
 
 | Criterion | Evidence | Verdict |
 |---|---|---|
-| Product documentation exists | Implementation report lists product docs | Pass for delivered doc scope |
-| Operational runbooks exist | Implementation report lists runbooks | Pass for delivered doc scope |
-| Dependency hygiene documented | `docs/operations/dependency_management.md` referenced | Pass by documentation |
-| Clean-checkout audit counts are reproducible | No current command output captured in Phase 10 evidence | Not proven |
-| Scanners run on tracked files without timing out | Supporting scripts exist, but no current proof captured | Partial |
+| Product documentation exists | 7 expected files under `docs/product/` | Pass |
+| Operational runbooks exist | 4 expected files under `docs/operations/runbooks/` | Pass |
+| Dependency hygiene documented | `docs/operations/dependency_management.md` and Make targets present | Partial |
+| Clean-checkout audit counts are reproducible | `python3 scripts/maintenance/check_repo_hygiene.py` passed | Pass |
+| Scanners run on tracked files without timing out | `make generated-artifact-hygiene-check` passed | Pass |
 
-## Discrepancies
+## Discrepancies Found and Corrected
 
-The roadmap Phase 10 scope was workspace hygiene and auditability. The implementation report reframed the phase around product documentation and operational tooling. Those artifacts are useful, but they do not fully prove the original clean-checkout/scanner acceptance criteria.
+- Phase 10 evidence previously did not include current command output for repository hygiene.
+- The execution plan promised dependency Make targets, but `deps-check`/`deps-outdated` were missing.
+- Dependency conflict checking now exists, but current local environment conflicts remain and are reported rather than hidden.
 
-## Required Remediation
+## Verification Run
 
-1. Add a tracked-file-only audit command or document the existing command.
-2. Capture current output proving it runs on a clean checkout.
-3. Update Phase 10 evidence with the output and thresholds.
+```text
+python3 scripts/maintenance/check_repo_hygiene.py
+# Repository hygiene check passed.
+
+make generated-artifact-hygiene-check
+# passed
+
+make deps-conflicts
+# reports realtime/pydantic, realtime/websockets, pyiceberg/rich, storage3/pydantic conflicts
+```
 
 ## Result
 
-Phase 10 is document-complete after this backfill, but implementation remains partial against the original roadmap acceptance checks.
+Phase 10 is supported for documentation delivery and workspace hygiene after remediation. Dependency hygiene remains partial until the package-version conflicts are resolved in the project environment or dependency set.

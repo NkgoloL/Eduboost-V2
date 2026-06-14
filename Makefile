@@ -1463,7 +1463,7 @@ backend-implementation-721-750-full-check: auth-router-boundary-inspect auth-rou
 	python3 -m compileall -q app/api_v2_deps app/api_v2_routers app/services scripts
 	pytest -c pytest.ini tests/unit/test_auth_router_boundary_contracts.py -q --no-cov --tb=short
 
-.PHONY: jwt-rotation-inspect jwt-rotation-repair jwt-rotation-check dependency-pin-report dependency-constraints-snapshot optional-pip-audit auth-extraction-followup backend-implementation-751-780-full-check
+.PHONY: jwt-rotation-inspect jwt-rotation-repair jwt-rotation-check dependency-pin-report dependency-constraints-snapshot optional-pip-audit deps-check deps-outdated deps-vulnerable deps-conflicts auth-extraction-followup backend-implementation-751-780-full-check
 
 jwt-rotation-inspect:
 	PYTHONPATH=. python3 scripts/inspect_jwt_rotation.py
@@ -1482,6 +1482,16 @@ dependency-constraints-snapshot:
 
 optional-pip-audit:
 	PYTHONPATH=. python3 scripts/run_optional_pip_audit.py || true
+
+deps-check: dependency-pin-report deps-conflicts optional-pip-audit
+
+deps-outdated:
+	python3 -m pip list --outdated --format=columns
+
+deps-vulnerable: optional-pip-audit
+
+deps-conflicts:
+	python3 -m pip check || true
 
 auth-extraction-followup:
 	PYTHONPATH=. python3 scripts/generate_auth_extraction_followup.py
