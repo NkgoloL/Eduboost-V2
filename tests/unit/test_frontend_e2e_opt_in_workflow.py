@@ -10,7 +10,7 @@ after the workflow was updated to use direct npm/Playwright invocations.
 Fix (Recommendation 2)
 -----------------------
 The assertions now match the *actual* workflow implementation:
-  - `npx playwright test` from `app/frontend`
+  - `pnpm exec playwright test` from the repository root
   - `PLAYWRIGHT_MOCK_API` env var for the mocked run
 
 The old `make` command strings are no longer required in the workflow
@@ -45,24 +45,20 @@ def workflow_content() -> str:
 # ---------------------------------------------------------------------------
 
 class TestFrontendE2EWorkflowNewContract:
-    """Assert the workflow uses the current npm/Playwright invocation form."""
+    """Assert the workflow uses the current pnpm/Playwright invocation form."""
 
     def test_workflow_file_exists(self) -> None:
         assert WORKFLOW_PATH.exists(), (
             f"Expected frontend E2E workflow at {WORKFLOW_PATH}"
         )
 
-    def test_working_directory_is_app_frontend(self, workflow_content: str) -> None:
-        assert re.search(
-            r"working-directory\s*:\s*app/frontend", workflow_content, re.MULTILINE
-        ), (
-            "Workflow must declare `working-directory: app/frontend` so that "
-            "npx and npm commands resolve correctly."
-        )
+    def test_root_and_frontend_dependencies_are_installed(self, workflow_content: str) -> None:
+        assert "pnpm install --frozen-lockfile" in workflow_content
+        assert "pnpm --dir app/frontend install --frozen-lockfile" in workflow_content
 
-    def test_playwright_invoked_via_npx(self, workflow_content: str) -> None:
-        assert "npx playwright test" in workflow_content, (
-            "Workflow must invoke Playwright via `npx playwright test` "
+    def test_playwright_invoked_via_pnpm_exec(self, workflow_content: str) -> None:
+        assert "pnpm exec playwright test" in workflow_content, (
+            "Workflow must invoke Playwright via `pnpm exec playwright test` "
             "(not via a Makefile wrapper)."
         )
 
@@ -119,8 +115,8 @@ class TestFrontendE2EWorkflowNoLegacyMakeCommands:
         )
         assert not match, (
             "Workflow `run:` step must not call `make frontend-e2e-mocked`. "
-            "Inline the npx playwright command instead:\n"
-            "  cd app/frontend && PLAYWRIGHT_MOCK_API=1 npx playwright test "
+            "Inline the pnpm Playwright command instead:\n"
+            "  PLAYWRIGHT_MOCK_API=1 pnpm exec playwright test "
             "tests/e2e/learner-mocked-api-journey.spec.ts"
         )
 
@@ -134,8 +130,8 @@ class TestFrontendE2EWorkflowNoLegacyMakeCommands:
         )
         assert not match, (
             "Workflow `run:` step must not call `make frontend-e2e-smoke`. "
-            "Inline the npx playwright command instead:\n"
-            "  cd app/frontend && npx playwright test "
+            "Inline the pnpm Playwright command instead:\n"
+            "  pnpm exec playwright test "
             "tests/e2e/learner-vertical-journey.spec.ts "
             "tests/e2e/parent-vertical-journey.spec.ts"
         )

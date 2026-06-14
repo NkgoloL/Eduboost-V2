@@ -1,15 +1,16 @@
 # Phase 13 Implementation Report — Frontend and Product Completeness
 
-**Date**: 2026-06-12  
-**Status**: ✅ Complete  
-**Branch**: `phase-13/frontend-product-completeness`  
+**Date**: 2026-06-12
+**Updated**: 2026-06-14
+**Status**: Substantially remediated locally; live full-stack proof pending
+**Branch**: `master`
 **Base**: `origin/master`
 
 ---
 
 ## 1. Objective
 
-Complete frontend and product-related tasks: E2E suite fix, content roadmap, load testing, a11y/PWA verification, multilingual verification, and Supabase ADR.
+Complete frontend and product-related tasks: E2E suite fix, content roadmap, load testing, a11y/PWA verification, multilingual verification, and Supabase ADR. The 2026-06-14 audit found that the original report overstated proof quality; this report now distinguishes implemented scaffolding from verified local runtime evidence and remaining live proof gaps.
 
 ---
 
@@ -17,11 +18,11 @@ Complete frontend and product-related tasks: E2E suite fix, content roadmap, loa
 
 | Category | Status | Files |
 |---------|--------|-------|
-| K.1 E2E Suite Fix & CI | ✅ | 2 files |
+| K.1 E2E Suite Fix & CI | ✅ local mocked/smoke proof; CI run pending | workflow, config, Makefile, docs |
 | K.2 Content Roadmap | ✅ | 1 file |
 | K.3 Load Testing | ✅ | 2 files |
-| K.4 A11y/PWA Verification | ✅ | 1 file |
-| K.5 Multilingual Verification | ✅ | 1 file |
+| K.4 A11y/PWA Verification | ⚠️ a11y/local PWA evidence; Lighthouse/offline lesson proof pending | docs/tests |
+| K.5 Multilingual Verification | ✅ mock generation smoke; human quality review pending | docs/tests |
 | K.6 Supabase ADR | ✅ | 1 file |
 | **Total** | | **9 files** |
 
@@ -42,6 +43,11 @@ Complete frontend and product-related tasks: E2E suite fix, content roadmap, loa
 - Uploads failure screenshots as artifacts
 
 **Evidence**: `.github/workflows/e2e.yml`, `docs/development/e2e_testing.md`
+
+**2026-06-14 verification**:
+- `make frontend-e2e-mocked` passed 20 tests across chromium, firefox, webkit, Mobile Chrome, and Mobile Safari.
+- `make frontend-e2e-smoke` passed 10 tests across the same projects.
+- `.github/workflows/frontend-e2e.yml` and `.github/workflows/e2e.yml` now install root/frontend dependencies and invoke `pnpm exec playwright` from the repo root.
 
 ---
 
@@ -80,6 +86,8 @@ Complete frontend and product-related tasks: E2E suite fix, content roadmap, loa
 
 **Evidence**: `locust/locustfile.py`, `locust/README.md`
 
+**2026-06-14 verification**: `python3 -m py_compile locust/locustfile.py` passed. A live load run against Docker Compose remains pending.
+
 ---
 
 ### K.4 — Accessibility & PWA Verification ✅
@@ -94,6 +102,11 @@ Complete frontend and product-related tasks: E2E suite fix, content roadmap, loa
 
 **Evidence**: `docs/development/pwa_offline_plan.md`
 
+**2026-06-14 verification**:
+- `cd app/frontend && pnpm run a11y-check` passed 6 accessibility contract tests.
+- `cd app/frontend && pnpm run build` passed and bundled the service worker.
+- Full Lighthouse score and cached-lesson offline browser proof remain pending.
+
 ---
 
 ### K.5 — Multilingual Lesson Generation Verification ✅
@@ -107,6 +120,8 @@ Complete frontend and product-related tasks: E2E suite fix, content roadmap, loa
 - isiXhosa (xh) ⚠️ — Basic, vocabulary incomplete
 
 **Evidence**: `docs/caps/multilingual_status.md`
+
+**2026-06-14 verification**: Added and ran deterministic provider smoke coverage proving one generated lesson per `en`, `zu`, `af`, and `xh`. Native-speaker quality review remains pending for Afrikaans and isiXhosa.
 
 ---
 
@@ -172,6 +187,11 @@ Complete frontend and product-related tasks: E2E suite fix, content roadmap, loa
 | E2E CI: missing pnpm cache config | Added `cache: pnpm` + `cache-dependency-path: app/frontend/pnpm-lock.yaml` |
 | E2E CI: root deps not installed (Playwright) | Added explicit root `pnpm install` step |
 | `.env.example` referenced old ADR | Updated to point to `docs/adr/ADR-029-supabase-auth-strategy.md` |
+| E2E Makefile targets ran from `app/frontend` while specs live under repo-root `tests/e2e/` | Updated targets to run `pnpm exec playwright` from the repo root |
+| Frontend E2E workflow referenced nonexistent frontend Playwright binary | Updated workflow to install root dependencies and run `pnpm exec playwright` |
+| Root Playwright install had no lockfile | Added root `pnpm-lock.yaml` |
+| Default Playwright web server used Next dev/Turbopack path that returned HTTP 500 locally | Switched default web server command to Next dev webpack mode |
+| Multilingual verification was documentation-only | Added deterministic lesson-generation smoke test for `en`, `zu`, `af`, `xh` |
 
 ### Cross-Phase Fixes (Phase 12 workflows on `master`)
 
@@ -188,17 +208,19 @@ Complete frontend and product-related tasks: E2E suite fix, content roadmap, loa
 | Item | Reason |
 |------|--------|
 | a11y axe-core assertions in Playwright | Requires frontend coordination |
-| Full language verification (Afrikaans/isiXhosa) | Needs native speaker review |
-| E2E suite execution | Requires running backend; not blocking for docs work |
+| Full backend-backed E2E suite execution | Requires complete backend/database stack and seeded data |
+| Full language quality verification (Afrikaans/isiXhosa) | Needs native speaker review |
+| Lighthouse numeric score | Not captured in this audit turn |
+| Cached-lesson offline browser proof | Requires real cached lesson/download UX |
 
 ---
 
 ## 8. Notes
 
-- **E2E suite**: Existing 15 spec files verified present. CI workflow created but not executed (requires backend to be running).
-- **A11y assertions**: Added to documentation; actual axe-core assertions not yet added to tests.
-- **PWA**: Current state is "unverified" — plan documents recommended improvements.
+- **E2E suite**: Local mocked/smoke browser execution now passes. Full backend-backed suite and live Actions run remain pending.
+- **A11y assertions**: Frontend accessibility contract tests pass; Lighthouse score remains pending.
+- **PWA**: Service worker bundles during build and offline sync tests pass; cached-lesson browser behavior remains pending.
 
 ---
 
-**All Phase 13 deliverables complete with audit fixes. PR ready for merge.**
+**Phase 13 is locally remediated for tooling, scaffold, smoke, and documentation evidence. It should not be called fully product-complete until full-stack CI, Lighthouse/PWA browser proof, and language quality review are captured.**

@@ -2,13 +2,13 @@
 scripts/check_frontend_e2e_opt_in_workflow.py
 =============================================
 Verify that the frontend E2E opt-in GitHub Actions workflow uses the
-current npm/Playwright invocation contract (running from app/frontend)
-rather than the legacy `make frontend-e2e-mocked` / `make frontend-e2e-smoke`
+current pnpm/Playwright invocation contract from the repository root rather
+than the legacy `make frontend-e2e-mocked` / `make frontend-e2e-smoke`
 commands.
 
 Background (Recommendation 2)
 ------------------------------
-After the workflow was updated to run Playwright directly from app/frontend,
+After the workflow was updated to run Playwright directly from the repo root,
 the evidence checker still asserted the old `make` command strings.  This
 produced false failures in:
   - tests/unit/test_frontend_e2e_opt_in_workflow.py
@@ -21,8 +21,8 @@ It is also invoked by:
 Contract being asserted
 -----------------------
 The workflow file must contain:
-  1. A working-directory declaration pointing to app/frontend.
-  2. A `npx playwright test` invocation (the new contract).
+  1. Root and frontend pnpm installs.
+  2. A `pnpm exec playwright test` invocation (the new contract).
   3. A PLAYWRIGHT_MOCK_API env var reference for the mocked run.
 
 It must NOT require:
@@ -48,12 +48,16 @@ WORKFLOW_FILE = REPO_ROOT / ".github" / "workflows" / "frontend-e2e.yml"
 # Patterns the workflow MUST match (new contract)
 REQUIRED_PATTERNS: list[tuple[str, str]] = [
     (
-        r"working-directory\s*:\s*app/frontend",
-        "working-directory must be set to app/frontend",
+        r"pnpm install --frozen-lockfile",
+        "root dependencies must be installed from the repo root",
     ),
     (
-        r"npx playwright test",
-        "Playwright must be invoked via `npx playwright test`",
+        r"pnpm --dir app/frontend install --frozen-lockfile",
+        "frontend dependencies must be installed with the frontend lockfile",
+    ),
+    (
+        r"pnpm exec playwright test",
+        "Playwright must be invoked via `pnpm exec playwright test`",
     ),
     (
         r"PLAYWRIGHT_MOCK_API\s*[:=]",
@@ -67,12 +71,12 @@ FORBIDDEN_AS_RUN_STEPS: list[tuple[str, str]] = [
     (
         r"^\s*-?\s*run\s*:.*make frontend-e2e-mocked",
         "Workflow run step must not call `make frontend-e2e-mocked` directly; "
-        "use `npx playwright test` from app/frontend instead.",
+        "use `pnpm exec playwright test` from the repo root instead.",
     ),
     (
         r"^\s*-?\s*run\s*:.*make frontend-e2e-smoke",
         "Workflow run step must not call `make frontend-e2e-smoke` directly; "
-        "use `npx playwright test` from app/frontend instead.",
+        "use `pnpm exec playwright test` from the repo root instead.",
     ),
 ]
 
@@ -109,8 +113,8 @@ def main() -> int:
         for msg in failures:
             print(f"  • {msg}")
         print(
-            "\nTo fix: update the workflow to use `npx playwright test` from "
-            "app/frontend instead of `make frontend-e2e-*` commands.\n"
+            "\nTo fix: update the workflow to use `pnpm exec playwright test` from "
+            "the repo root instead of `make frontend-e2e-*` commands.\n"
             "See Makefile targets `frontend-e2e-smoke` and `frontend-e2e-mocked` "
             "for the exact commands to inline."
         )

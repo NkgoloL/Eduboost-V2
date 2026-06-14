@@ -49,14 +49,14 @@ jobs:
           pip install -r requirements-dev.txt
 
       - name: Install root dependencies (Playwright, Supabase)
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Install frontend dependencies
         working-directory: app/frontend
         run: pnpm install --frozen-lockfile
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+        run: pnpm exec playwright install --with-deps chromium
 
       - name: Start Docker Compose stack
         run: |
@@ -75,11 +75,12 @@ jobs:
       - name: Run Playwright tests
         env:
           PLAYWRIGHT_BASE_URL: http://localhost:3050
+          PLAYWRIGHT_SKIP_WEB_SERVER: "1"
           CI: true
         run: |
           source .venv/bin/activate
           # Run from project root where playwright.config.ts lives
-          npx playwright test --reporter=list --project=chromium
+          pnpm exec playwright test --reporter=list --project=chromium
 
       - name: Upload screenshots on failure
         if: failure()

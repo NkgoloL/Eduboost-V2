@@ -1,6 +1,7 @@
 # E2E Testing Guide
 
-**Date**: 2026-06-12  
+**Date**: 2026-06-12
+**Updated**: 2026-06-14
 **Scope**: Running and maintaining Playwright E2E tests for EduBoost V2
 
 ---
@@ -9,7 +10,8 @@
 
 - Node.js 20+
 - Python 3.12+ with `.venv` activated
-- Docker Compose running (for full integration tests)
+- Docker Compose running (for full backend integration tests)
+- `pnpm` 9.x (`corepack pnpm@9.14.4` or the WSL user-local shim)
 
 ---
 
@@ -18,13 +20,14 @@
 ### 1. Install Dependencies
 
 ```bash
-# Install Node dependencies
-cd app/frontend
-npm install
-cd ../..
+# Install root Playwright dependencies
+pnpm install --frozen-lockfile
+
+# Install frontend dependencies
+pnpm --dir app/frontend install --frozen-lockfile
 
 # Install Playwright browsers
-npx playwright install --with-deps chromium firefox
+pnpm exec playwright install --with-deps chromium firefox webkit
 
 # Activate Python venv
 source .venv/bin/activate
@@ -44,16 +47,20 @@ sleep 10
 
 ```bash
 # Run all E2E tests
-npx playwright test
+pnpm exec playwright test
 
 # Run specific suite
-npx playwright test tests/e2e/auth.spec.ts
+pnpm exec playwright test tests/e2e/auth.spec.ts
 
 # Run with UI (interactive mode)
-npx playwright test --ui
+pnpm exec playwright test --ui
 
 # Run specific browser only
-npx playwright test --project=chromium
+pnpm exec playwright test --project=chromium
+
+# Run local smoke and mocked journeys
+make frontend-e2e-smoke
+make frontend-e2e-mocked
 ```
 
 ---
@@ -78,11 +85,14 @@ npx playwright test --project=chromium
 ### Environment Variables
 
 ```bash
-# Frontend URL (default: http://127.0.0.1:3050)
-export PLAYWRIGHT_BASE_URL=http://localhost:3000
+# Frontend URL (default: http://localhost:3050)
+export PLAYWRIGHT_BASE_URL=http://localhost:3050
 
 # Backend URL (for API checks)
 export API_BASE_URL=http://localhost:8000
+
+# Skip Playwright's auto-started frontend when an external stack is already running
+export PLAYWRIGHT_SKIP_WEB_SERVER=1
 ```
 
 ### playwright.config.ts
@@ -92,6 +102,7 @@ Key settings:
 - `timeout: 60_000` — Per-test timeout
 - `retries: 2` — Retry on CI
 - `workers: 2` — Parallelism on CI
+- `webServer` — Starts `pnpm --dir app/frontend exec next dev --webpack -p 3050` unless `PLAYWRIGHT_SKIP_WEB_SERVER=1`
 
 ---
 
@@ -109,7 +120,7 @@ See: `.github/workflows/e2e.yml`
 
 ```bash
 # Run with CI-like settings
-CI=true npx playwright test
+CI=true pnpm exec playwright test
 ```
 
 ---
@@ -128,14 +139,14 @@ ls test-results/
 
 ```bash
 # Open trace in Playwright UI
-npx playwright show-trace test-results/<trace-file>.zip
+pnpm exec playwright show-trace test-results/<trace-file>.zip
 ```
 
 ### Verbose Logging
 
 ```bash
 # Run with debug output
-DEBUG=pw:api npx playwright test
+DEBUG=pw:api pnpm exec playwright test
 ```
 
 ---
@@ -186,7 +197,7 @@ test('should have no a11y violations', async ({ page }) => {
 | Test hangs | Check backend is running, increase `navigationTimeout` |
 | Auth fails | Update credentials in `auth.setup.ts` |
 | Flaky tests | Increase wait times, use `expect.toBeVisible()` with timeout |
-| Browser not found | Run `npx playwright install` |
+| Browser not found | Run `pnpm exec playwright install --with-deps chromium firefox webkit` |
 
 ---
 

@@ -570,13 +570,13 @@ frontend-e2e-runtime-command-check:
 	$(PYTHON) scripts/check_frontend_e2e_runtime_commands.py
 
 frontend-e2e-smoke:
-	cd app/frontend && npx playwright test tests/e2e/learner-vertical-journey.spec.ts tests/e2e/parent-vertical-journey.spec.ts
+	pnpm exec playwright test tests/e2e/learner-vertical-journey.spec.ts tests/e2e/parent-vertical-journey.spec.ts
 
 frontend-e2e-mocked:
-	cd app/frontend && PLAYWRIGHT_MOCK_API=1 npx playwright test tests/e2e/learner-mocked-api-journey.spec.ts tests/e2e/parent-mocked-api-journey.spec.ts
+	PLAYWRIGHT_MOCK_API=1 pnpm exec playwright test tests/e2e/learner-mocked-api-journey.spec.ts tests/e2e/parent-mocked-api-journey.spec.ts
 
 frontend-e2e:
-	cd app/frontend && npx playwright test
+	pnpm exec playwright test
 
 frontend-journey-fixture-check:
 	$(PYTHON) scripts/check_frontend_journey_fixtures.py

@@ -6,7 +6,7 @@ on:
       frontend_base_url:
         description: "Frontend base URL"
         required: true
-        default: "http://127.0.0.1:5173"
+        default: "http://localhost:3050"
       learner_path:
         description: "Learner journey path"
         required: false
@@ -23,11 +23,9 @@ on:
 jobs:
   frontend-e2e-opt-in:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: app/frontend
     env:
       FRONTEND_BASE_URL: ${{ inputs.frontend_base_url }}
+      PLAYWRIGHT_BASE_URL: ${{ inputs.frontend_base_url }}
       LEARNER_JOURNEY_PATH: ${{ inputs.learner_path }}
       PARENT_JOURNEY_PATH: ${{ inputs.parent_path }}
       PLAYWRIGHT_WEB_SERVER_COMMAND: ${{ inputs.web_server_command }}
@@ -41,14 +39,13 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 9.14.4
-      - name: Install Node dependencies
+      - name: Install root Node dependencies
         run: pnpm install --frozen-lockfile
+      - name: Install frontend Node dependencies
+        run: pnpm --dir app/frontend install --frozen-lockfile
       - name: Install Playwright browsers
-        working-directory: ${{ github.workspace }}
-        run: app/frontend/node_modules/.bin/playwright install --with-deps chromium
+        run: pnpm exec playwright install --with-deps chromium
       - name: Run mocked frontend E2E
-        working-directory: ${{ github.workspace }}
-        run: PLAYWRIGHT_MOCK_API=1 app/frontend/node_modules/.bin/playwright test tests/e2e/learner-mocked-api-journey.spec.ts tests/e2e/parent-mocked-api-journey.spec.ts
+        run: PLAYWRIGHT_MOCK_API=1 pnpm exec playwright test tests/e2e/learner-mocked-api-journey.spec.ts tests/e2e/parent-mocked-api-journey.spec.ts
       - name: Run smoke frontend E2E
-        working-directory: ${{ github.workspace }}
-        run: app/frontend/node_modules/.bin/playwright test tests/e2e/learner-vertical-journey.spec.ts tests/e2e/parent-vertical-journey.spec.ts
+        run: pnpm exec playwright test tests/e2e/learner-vertical-journey.spec.ts tests/e2e/parent-vertical-journey.spec.ts
