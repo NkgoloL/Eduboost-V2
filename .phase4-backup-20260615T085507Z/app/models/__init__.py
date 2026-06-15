@@ -731,7 +731,6 @@ LessonRecord = Lesson
 # ── CAPS Diagnostic Items ────────────────────────────────────────────────────
 from app.models.diagnostic_item import DiagnosticItem  # noqa: F401  (re-export)
 from app.models.item_exposure import ItemExposure  # noqa: F401  (re-export)
-from app.models.irt_quality import IRTCalibrationEvent, IRTCalibrationRun  # noqa: F401
 from app.models.content_factory import (  # noqa: F401  (re-export)
     AssessmentBlueprint,
     ContentArtifactReview,

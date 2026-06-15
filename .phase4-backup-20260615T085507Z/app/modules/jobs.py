@@ -41,7 +41,6 @@ from app.core.metrics import (
 )
 from app.jobs.practice_session_cleanup_job import run_practice_session_cleanup
 from app.jobs.batch_generation_job import generate_content_batch
-from app.jobs.irt_quality_job import run_irt_quality_watchdog
 
 logger = logging.getLogger(__name__)
 _ARQ_POOL: Any | None = None
@@ -512,7 +511,6 @@ class WorkerSettings:
         run_database_backup,
         generate_content_batch,
         process_stale_content_reviews,
-        run_irt_quality_watchdog,
     ]
 
     cron_jobs = [
@@ -526,8 +524,6 @@ class WorkerSettings:
         cron(expire_stale_diagnostic_sessions, minute=0),
         # Every 30 minutes; stale review handling never auto-approves content.
         cron(process_stale_content_reviews, minute={0, 30}),
-        # Nightly at 02:00 UTC. Rewritten content returns to Phase 3 review.
-        cron(run_irt_quality_watchdog, hour=2, minute=0),
     ]
 
     on_startup = startup

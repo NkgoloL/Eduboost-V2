@@ -94,12 +94,7 @@ class ItemBankService:
             )
 
         exclude_ids = exclude_ids or set()
-        eligible_irt_states = {"uncalibrated", "healthy", "monitor", "overridden"}
-        candidates = [
-            item for item in candidates
-            if item.item_id not in exclude_ids
-            and str(getattr(item, "irt_quality_state", "uncalibrated")) in eligible_irt_states
-        ]
+        candidates = [item for item in candidates if item.item_id not in exclude_ids]
 
         if not candidates:
             return None
