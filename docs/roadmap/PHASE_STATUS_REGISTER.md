@@ -14,7 +14,7 @@
 | Segment | Status |
 |---|---|
 | Overall programme | **Open — full lifecycle in progress** |
-| Phases 0–7 | **Open — Phase 1 revalidation required; Phase 2 closed; Phase 3 verified complete; remaining phases open** |
+| Phases 0–7 | **Open — Phase 1 revalidation required; Phase 2 closed; Phases 3–4 verified complete; remaining phases open** |
 | Audit remediation | Governed by `audit_remediation_roadmap_2026-06-13.md` |
 | Phases 8–13 | In progress per individual phase status |
 | Controlled beta | Blocked until all prerequisite phases pass |
@@ -33,7 +33,7 @@
 > - The Phase 3 integration review found and corrected a broken canonical provider adapter; Phase 1 gates and audit must be refreshed against the merged corrective commit.
 | 2 | Semantic Retrieval | **Verified Complete** | ✅ `docs/roadmap/execution/phase_02_execution_plan.md` | ✅ `docs/roadmap/execution/phase_02_implementation_report.md` | ✅ `docs/release-evidence/phase-02/phase_02_evidence_index.md` | ✅ `docs/release-evidence/phase-02/phase_02_audit_report.md` | Phase 1 | 2026-06-14 |
 | 3 | Educator Consensus and Content Governance | **Verified Complete** | ✅ `docs/roadmap/execution/phase_03_execution_plan.md` | ✅ `docs/roadmap/execution/phase_03_implementation_report.md` | ✅ `docs/release-evidence/phase-03/phase_03_evidence_index.md` | ✅ `docs/release-evidence/phase-03/phase_03_audit_report.md` | Phases 1–2 | 2026-06-15 |
-| 4 | IRT Quality and Self-Healing Controls | **In Progress** | ✅ `docs/roadmap/execution/phase_04_execution_plan.md` | 🟡 `docs/roadmap/execution/phase_04_implementation_report.md` | 🟡 `docs/release-evidence/phase-04/phase_04_evidence_index.md` | 🟡 `docs/release-evidence/phase-04/phase_04_audit_report.md` | Phases 2–3 | 2026-06-15 |
+| 4 | IRT Quality and Self-Healing Controls | **Verified Complete** | ✅ `docs/roadmap/execution/atlas/phase_04_execution_plan.md` | ✅ `docs/roadmap/execution/atlas/phase_04_implementation_report.md` | ✅ `docs/release-evidence/atlas/phase-04/phase_04_evidence_index.md` | ✅ `docs/release-evidence/atlas/phase-04/phase_04_audit_report.md` | Phases 2–3 | 2026-06-15 |
 | 5 | Learner AI Tutor | Planning | ✅ `phase_05_execution_plan.md` | ✅ `phase_05_implementation_report.md` | ⬜ | ⬜ | Phases 1, 6 | 2026-06-14 |
 | 6 | Monitoring, Budget, and Production Hardening | Planning | ✅ `phase_06_execution_plan.md` | ✅ `phase_06_implementation_report.md` | ⬜ | ⬜ | Phases 1–5 | 2026-06-14 |
 | 7 | Beta Content Coverage and Language Readiness | Planning | ✅ `phase_07_execution_plan.md` | ✅ `phase_07_implementation_report.md` | ⬜ | ⬜ | Phases 1–6 | 2026-06-14 |
