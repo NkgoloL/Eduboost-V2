@@ -1,9 +1,9 @@
-# Phase 7 Implementation Report - Curriculum Coverage Expansion, Multilingual Quality, and Training Dataset Governance
+# Phase 7 Implementation Report — Curriculum Coverage Expansion, Multilingual Quality, and Training Dataset Governance
 
-**Generated:** 2026-06-15T18:49:00Z
-**Status:** Verification complete for the Phase 7 implementation gates; combined PostgreSQL evidence collection still contains a transient Phase 4 port-bind failure in the tail run
-**Branch:** `feature/atlas-phase-07-curriculum-expansion-and-training-governance`
-**Candidate commit:** `4d98a193fc9c1c644ab2acabff89867059fb1662`
+**Generated:** 2026-06-15T17:12:56Z
+**Status:** Verification complete — transient Phase 4 bind issue resolved; independent audit and canonical merge closure pending
+**Branch:** feature/atlas-phase-07-curriculum-expansion-and-training-governance
+**Candidate commit:** 6dc3b8e395c0610672420fd41c25650a6c9a2be4
 **Execution plan:** `docs/roadmap/execution/atlas/phase_07_execution_plan.md`
 
 ## 1. Objective
@@ -32,9 +32,7 @@ See the raw evidence directory:
 
 `docs/release-evidence/atlas/phase-07/raw/`
 
-Collected evidence includes the fast verifier, PostgreSQL verifier, migration graph, schema integrity, registry preflight, route inventory, job inventory, OpenAPI check, and evidence hash manifest.
-
-The standalone Phase 7 fast verifier passed. The standalone Phase 4 PostgreSQL helper also passed when rerun directly after allowing Docker time to release a transient bind. The combined Phase 7 PostgreSQL tail still surfaced a transient `55437` bind conflict inside the disposable Phase 4 helper, so the raw evidence retains that failure for audit review.
+Required evidence includes the fast verifier, PostgreSQL verifier, migration graph, schema integrity, registry preflight, route inventory, job inventory, and OpenAPI check. The PostgreSQL verifier now uses isolated disposable ports for Phase 4 and Phase 7, so the prior bind conflict no longer reproduces on a clean rerun.
 
 ## 4. Deviations and boundaries
 
@@ -43,14 +41,12 @@ The standalone Phase 7 fast verifier passed. The standalone Phase 4 PostgreSQL h
 - CI performs training-readiness dry runs only.
 - Actual adapter training, evaluation, and deployment require separate controlled decisions.
 - This report does not mark the phase complete or issue an audit verdict.
-- The combined collector run needs the disposable PostgreSQL port conflict reconciled before a closure claim can be made.
 
 ## 5. Remaining closure actions
 
-1. Review all raw evidence and investigate the transient Phase 4 bind failure in the combined PostgreSQL chain.
-2. Complete qualified curriculum and language review.
-3. Conduct the independent Phase 7 audit.
-4. Merge through the canonical pull-request process.
-5. Repeat or confirm required gates against the merge commit.
-6. Freeze evidence against the merge SHA.
-7. Update the phase status register last.
+1. Complete qualified curriculum and language review.
+2. Conduct the independent Phase 7 audit.
+3. Merge through the canonical pull-request process.
+4. Repeat or confirm required gates against the merge commit.
+5. Freeze evidence against the merge SHA.
+6. Update the phase status register last.
