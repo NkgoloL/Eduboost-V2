@@ -10,8 +10,9 @@ PYTHON_BIN="${PYTHON_BIN:-.venv/bin/python}"
 command -v docker >/dev/null 2>&1 || { echo "Docker is required." >&2; exit 3; }
 
 COMPOSE_FILE="tests/phase07/docker-compose.postgres.yml"
-PROJECT="eduboost-phase7-$RANDOM"
-DATABASE_URL="postgresql+asyncpg://eduboost:phase7-test-password@127.0.0.1:55437/eduboost_phase7_test"
+PROJECT="eduboost-phase7-verification"
+PHASE7_POSTGRES_PORT="${PHASE7_POSTGRES_PORT:-55439}"
+DATABASE_URL="postgresql+asyncpg://eduboost:phase7-test-password@127.0.0.1:${PHASE7_POSTGRES_PORT}/eduboost_phase7_test"
 export PHASE7_TEST_DATABASE_URL="$DATABASE_URL"
 export DATABASE_URL
 
@@ -19,7 +20,9 @@ cleanup() {
   docker compose -p "$PROJECT" -f "$COMPOSE_FILE" down -v --remove-orphans >/dev/null 2>&1 || true
 }
 trap cleanup EXIT
+cleanup
 
+export PHASE7_POSTGRES_PORT
 docker compose -p "$PROJECT" -f "$COMPOSE_FILE" up -d
 
 for _ in $(seq 1 60); do
@@ -62,7 +65,11 @@ echo "== Prior-phase PostgreSQL regressions =="
 for phase in 1 2 3 4 5 6; do
   script="scripts/verify_phase${phase}_postgres.sh"
   [[ -f "$script" ]] || { echo "Missing $script" >&2; exit 4; }
-  bash "$script"
+  if [[ "$phase" == "4" ]]; then
+    PHASE4_POSTGRES_PORT=55438 bash "$script"
+  else
+    bash "$script"
+  fi
 done
 
 echo "== Final migration and schema gates =="

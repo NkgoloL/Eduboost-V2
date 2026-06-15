@@ -7,6 +7,7 @@ COMPOSE_FILE="tests/phase04/docker-compose.postgres.yml"
 PROJECT_NAME="eduboost-phase4-verification"
 PYTHON_BIN="${PYTHON_BIN:-.venv/bin/python}"
 if [[ ! -x "$PYTHON_BIN" ]]; then PYTHON_BIN="python3"; fi
+PHASE4_POSTGRES_PORT="${PHASE4_POSTGRES_PORT:-55437}"
 
 cleanup() {
   docker compose -p "$PROJECT_NAME" -f "$COMPOSE_FILE" down -v --remove-orphans >/dev/null 2>&1 || true
@@ -14,12 +15,13 @@ cleanup() {
 trap cleanup EXIT
 cleanup
 
+export PHASE4_POSTGRES_PORT
 docker compose -p "$PROJECT_NAME" -f "$COMPOSE_FILE" up -d --wait
 
 export APP_ENV=test ENVIRONMENT=test
 export JWT_SECRET="${JWT_SECRET:-test-jwt-secret-test-jwt-secret-1234}"
 export ENCRYPTION_KEY="${ENCRYPTION_KEY:-MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=}"
-export DATABASE_URL="postgresql+asyncpg://phase4:phase4@127.0.0.1:55437/eduboost_phase4_test"
+export DATABASE_URL="postgresql+asyncpg://phase4:phase4@127.0.0.1:${PHASE4_POSTGRES_PORT}/eduboost_phase4_test"
 export PHASE1_TEST_DATABASE_URL="$DATABASE_URL"
 export PHASE2_TEST_DATABASE_URL="$DATABASE_URL"
 export PHASE3_TEST_DATABASE_URL="$DATABASE_URL"
