@@ -7,7 +7,6 @@ import { LoadingSpinner } from "../ui/LoadingSpinner";
 import { ErrorMessage } from "../ui/ErrorMessage";
 import { SUBJECTS } from "./constants";
 import { useLearner } from "../../context/LearnerContext";
-import { AiTutorChat } from "../learner/AiTutorChat";
 import type { LessonPayload, LessonSection, SubjectCode } from "../../lib/api/types";
 
 export interface LessonCompletionState {
@@ -129,15 +128,6 @@ export default function InteractiveLesson({
               </div>
             </div>
           </div>
-
-          {lesson.id && (
-            <AiTutorChat
-              learnerId={learner.id || learner.learner_id}
-              lessonId={lesson.id}
-              topic={topic}
-              language={learner.language || "en"}
-            />
-          )}
 
           {renderCompletionBanner()}
 

@@ -125,10 +125,6 @@ class Settings(BaseSettings):
     RATE_LIMIT_DEFAULT: str = "100/minute"
     RATE_LIMIT_AUTH: str = "10/minute"
     RATE_LIMIT_LLM: str = "20/minute"
-    RATE_LIMIT_TUTOR: str = "12/minute"
-    USER_DAILY_TOKEN_LIMIT: int = 50_000
-    TENANT_MONTHLY_TOKEN_LIMIT: int = 10_000_000
-    TENANT_BUDGET_ALERT_PCT: float = 0.80
     ARQ_MAX_JOBS: int = 10
     ARQ_JOB_TIMEOUT: int = 300
     PASSWORD_MIN_LENGTH: int = 12

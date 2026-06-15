@@ -773,6 +773,3 @@ from app.models.retrieval import (  # noqa: F401  (re-export)
     RetrievalSourceDocument,
     Vector1536,
 )
-
-# Phase 5 learner tutor models are imported so Base.metadata includes them.
-from app.models.tutor import TutorEscalation, TutorMessage, TutorSession  # noqa: E402,F401

@@ -55,7 +55,6 @@ OPENAPI_TAGS = [
     {"name": "auth", "description": "Authentication and token management"},
     {"name": "learners", "description": "Learner profiles and progress"},
     {"name": "lessons", "description": "CAPS-aligned lesson content"},
-    {"name": "learner-tutor", "description": "Safe lesson-scoped learner tutor"},
     {"name": "study_plans", "description": "Personalised study plans"},
     {"name": "diagnostics", "description": "Diagnostic assessments"},
     {"name": "practice", "description": "Practice activities and attempts"},
@@ -128,7 +127,6 @@ from app.api_v2_routers import (  # noqa: E402
     popia,
     study_plans,
     system,
-    tutor,
 )
 
 API_V2 = "/api/v2"
@@ -140,7 +138,6 @@ ROUTER_REGISTRY = (
     ("audit", audit.router),
     ("learners", learners.router),
     ("lessons", lessons.router),
-    ("tutor", tutor.router),
     ("study_plans", study_plans.router),
     ("diagnostics", diagnostics.router),
     ("practice", practice_router.router),
