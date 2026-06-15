@@ -8,7 +8,7 @@ All checks passed!
 
 [3/8] Phase 5 focused backend tests
 .............                                                            [100%]
-13 passed in 2.78s
+13 passed in 3.10s
 
 [4/8] Router, context, and migration contracts
 Tutor router registration OK: 5 canonical paths
@@ -24,12 +24,12 @@ Migration graph OK: 39 revisions, head=20260615_1200_p5_tutor
 
 [1m[30m[46m RUN [49m[39m[22m [36mv4.1.7 [39m[90m/home/nkgolol/Dev/SandBox/Eduboost-V2/app/frontend[39m
 
- [32m✓[39m src/components/learner/__tests__/AiTutorChat.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 131[2mms[22m[39m
+ [32m✓[39m src/components/learner/__tests__/AiTutorChat.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 148[2mms[22m[39m
 
 [2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
 [2m      Tests [22m [1m[32m2 passed[39m[22m[90m (2)[39m
-[2m   Start at [22m 13:43:49
-[2m   Duration [22m 1.16s[2m (transform 56ms, setup 78ms, import 89ms, tests 131ms, environment 512ms)[22m
+[2m   Start at [22m 13:49:15
+[2m   Duration [22m 2.06s[2m (transform 87ms, setup 101ms, import 149ms, tests 148ms, environment 1.20s)[22m
 
 
 [7/8] Architecture, schema, and prior-phase regressions
@@ -61,7 +61,7 @@ All checks passed!
 Migration graph OK: 39 revisions, head=20260615_1200_p5_tutor
 ........................................................................ [ 74%]
 ss.......................                                                [100%]
-95 passed, 2 skipped in 0.89s
+95 passed, 2 skipped in 0.98s
 Phase 1 registration OK: 8 mounted paths
 NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
 ...............                                                          [100%]
@@ -69,12 +69,12 @@ NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pen
 Migration graph OK: 39 revisions, head=20260615_1200_p5_tutor
 Phase 2 import/dimension contract OK
 .........                                                                [100%]
-9 passed in 0.80s
+9 passed in 0.76s
 ........................................................................ [ 75%]
 .......................                                                  [100%]
-95 passed in 0.87s
+95 passed in 0.86s
 ...............                                                          [100%]
-15 passed in 0.39s
+15 passed in 0.41s
 Migration graph OK: 39 revisions, head=20260615_1200_p5_tutor
 Phase 3 route/policy contract OK: 9 routes
 
@@ -85,7 +85,7 @@ All checks passed!
 
 [3/8] Phase 4 unit, route, state-machine, and selection tests
 ..........                                                               [100%]
-10 passed in 2.58s
+10 passed in 4.71s
 
 [4/8] Migration graph and schema model integrity
 Migration graph OK: 39 revisions, head=20260615_1200_p5_tutor
@@ -103,20 +103,20 @@ All checks passed!
 Migration graph OK: 39 revisions, head=20260615_1200_p5_tutor
 ........................................................................ [ 74%]
 ss.......................                                                [100%]
-95 passed, 2 skipped in 1.12s
+95 passed, 2 skipped in 1.11s
 Phase 1 registration OK: 8 mounted paths
 NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
 ...............                                                          [100%]
-15 passed in 0.51s
+15 passed in 0.47s
 Migration graph OK: 39 revisions, head=20260615_1200_p5_tutor
 Phase 2 import/dimension contract OK
 .........                                                                [100%]
-9 passed in 0.75s
+9 passed in 0.88s
 ........................................................................ [ 75%]
 .......................                                                  [100%]
-95 passed in 0.86s
+95 passed in 1.25s
 ...............                                                          [100%]
-15 passed in 0.41s
+15 passed in 0.52s
 Migration graph OK: 39 revisions, head=20260615_1200_p5_tutor
 Phase 3 route/policy contract OK: 9 routes
 
