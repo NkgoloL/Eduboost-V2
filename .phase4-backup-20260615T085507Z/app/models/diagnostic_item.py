@@ -35,7 +35,6 @@ from sqlalchemy import (
     CheckConstraint,
     DateTime,
     Enum,
-    ForeignKey,
     Integer,
     Numeric,
     SmallInteger,
@@ -238,27 +237,6 @@ class DiagnosticItem(Base):
         onupdate=func.now(),
     )
 
-    # --- Phase 4 IRT quality governance ---------------------------------
-    irt_quality_state: Mapped[str] = mapped_column(
-        String(32), nullable=False, server_default="uncalibrated", index=True
-    )
-    irt_model_version: Mapped[str | None] = mapped_column(String(64), nullable=True)
-    irt_policy_version: Mapped[str | None] = mapped_column(String(64), nullable=True)
-    irt_response_count: Mapped[int] = mapped_column(Integer, nullable=False, server_default="0")
-    irt_unique_learners: Mapped[int] = mapped_column(Integer, nullable=False, server_default="0")
-    irt_strike_count: Mapped[int] = mapped_column(Integer, nullable=False, server_default="0")
-    irt_last_calibrated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
-    irt_last_run_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
-    irt_intervention_reason: Mapped[str | None] = mapped_column(String(500), nullable=True)
-    irt_manual_override_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
-    irt_manual_override_reason: Mapped[str | None] = mapped_column(String(500), nullable=True)
-    irt_rewrite_artifact_id: Mapped[uuid.UUID | None] = mapped_column(
-        UUID(as_uuid=True),
-        ForeignKey("content_generation_artifacts.artifact_id", ondelete="SET NULL"),
-        nullable=True,
-    )
-    irt_row_version: Mapped[int] = mapped_column(Integer, nullable=False, server_default="1")
-
     # --- Relationships ---------------------------------------------------
     exposures: Mapped[list["ItemExposure"]] = relationship(
         "ItemExposure",
@@ -274,7 +252,6 @@ class DiagnosticItem(Base):
         return (
             self.review_status == ReviewStatusEnum.APPROVED
             and self.exposure_count < self.max_exposure
-            and self.irt_quality_state in {"uncalibrated", "healthy", "monitor", "overridden"}
         )
 
     @property

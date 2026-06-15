@@ -68,7 +68,6 @@ OPENAPI_TAGS = [
     {"name": "admin-content-factory", "description": "Admin-only content factory and ETL provenance controls"},
     {"name": "admin-etl", "description": "Admin-only read visibility into ETL source material"},
     {"name": "learner-content", "description": "Learner-facing production content from Content Factory"},
-    {"name": "admin-irt-quality", "description": "Admin-only IRT calibration and intervention controls"},
 ]
 
 app = FastAPI(
@@ -119,7 +118,6 @@ from app.api_v2_routers import (  # noqa: E402
     generation,
     jobs,
     learner_content,
-    irt_quality,
     learners,
     lessons,
     onboarding,
@@ -150,7 +148,6 @@ ROUTER_REGISTRY = (
     ("consent_renewal", consent_renewal.router),
     ("content_factory", content_factory.router),
     ("content_review", content_review.router),
-    ("irt_quality", irt_quality.router),
     ("admin_etl", admin_etl.router),
     ("popia", popia.router),
     ("jobs", jobs.router),

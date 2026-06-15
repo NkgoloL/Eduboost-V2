@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+PYTHON_BIN="${PYTHON_BIN:-.venv/bin/python}"
+if [[ ! -x "$PYTHON_BIN" ]]; then PYTHON_BIN="python3"; fi
+RUFF_BIN="${RUFF_BIN:-.venv/bin/ruff}"
+if [[ ! -x "$RUFF_BIN" ]]; then RUFF_BIN="ruff"; fi
+
 PHASE1_PYTHON_PATHS=(
   app/services/llm_provider.py
   app/services/prompt_registry.py
@@ -18,12 +23,12 @@ PHASE1_PYTHON_PATHS=(
   tests/phase01
 )
 
-python -m compileall -q "${PHASE1_PYTHON_PATHS[@]}"
-ruff check "${PHASE1_PYTHON_PATHS[@]}"
-python scripts/verify_migration_graph.py
-python -m pytest -q tests/phase01 --disable-warnings
+"$PYTHON_BIN" -m compileall -q "${PHASE1_PYTHON_PATHS[@]}"
+"$RUFF_BIN" check "${PHASE1_PYTHON_PATHS[@]}"
+"$PYTHON_BIN" scripts/verify_migration_graph.py
+"$PYTHON_BIN" -m pytest -q tests/phase01 --disable-warnings
 
-python - <<'PY'
+"$PYTHON_BIN" - <<'PY'
 from app.api_v2 import ROUTER_REGISTRY, app
 from app.modules.jobs import WorkerSettings
 

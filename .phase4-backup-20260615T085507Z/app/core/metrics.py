@@ -265,31 +265,3 @@ content_review_authorization_failures_total = Counter(
     ["permission"],
     registry=REGISTRY,
 )
-
-
-# ── Phase 4 IRT Quality Governance ─────────────────────────────────────────
-irt_calibration_runs_total = Counter(
-    "eduboost_irt_calibration_runs_total",
-    "IRT calibration run outcomes",
-    ["status"],
-    registry=REGISTRY,
-)
-
-irt_item_interventions_total = Counter(
-    "eduboost_irt_item_interventions_total",
-    "IRT item intervention decisions",
-    ["action"],
-    registry=REGISTRY,
-)
-
-irt_rewrite_requests_total = Counter(
-    "eduboost_irt_rewrite_requests_total",
-    "Governed item rewrite requests created by the IRT watchdog",
-    registry=REGISTRY,
-)
-
-irt_answer_position_bias = Gauge(
-    "eduboost_irt_answer_position_max_share",
-    "Maximum share of the correct answer in one option position",
-    registry=REGISTRY,
-)
