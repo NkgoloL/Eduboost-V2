@@ -68,7 +68,6 @@ OPENAPI_TAGS = [
     {"name": "jobs", "description": "Background job status"},
     {"name": "admin-content-factory", "description": "Admin-only content factory and ETL provenance controls"},
     {"name": "admin-etl", "description": "Admin-only read visibility into ETL source material"},
-    {"name": "admin-ai-operations", "description": "Admin-only AI usage, budget, and provider operations"},
     {"name": "learner-content", "description": "Learner-facing production content from Content Factory"},
     {"name": "admin-irt-quality", "description": "Admin-only IRT calibration and intervention controls"},
 ]
@@ -106,7 +105,6 @@ app.middleware("http")(analytics_middleware)
 # ── Routers ───────────────────────────────────────────────────────────────────
 from app.modules.practice import router as practice_router  # noqa: E402
 from app.api_v2_routers import (  # noqa: E402
-    ai_operations,
     assessments,
     auth,
     auth_extended,
@@ -136,7 +134,6 @@ from app.api_v2_routers import (  # noqa: E402
 API_V2 = "/api/v2"
 API_PREFIXES = (API_V2, "/v2")
 ROUTER_REGISTRY = (
-    ("ai_operations", ai_operations.router),
     ("assessments", assessments.router),
     ("auth", auth.router),
     ("auth_extended", auth_extended.router),

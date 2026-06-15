@@ -22,8 +22,7 @@ from app.core.metrics import (
 from app.core.redis import get_redis
 from app.models import KnowledgeGap, LearnerProfile, Lesson
 from app.models.tutor import TutorEscalation, TutorMessage, TutorSession
-from app.modules.lessons.budget_guardrails import BudgetGuardrails
-from app.services.ai_operations import AIBudgetExceededError, AIOperationsService
+from app.modules.lessons.budget_guardrails import BudgetExceededError, BudgetGuardrails
 from app.services.llm_provider import (
     AllProvidersFailedError,
     GenerationResult,
@@ -79,7 +78,6 @@ class LearnerTutorService:
                 redis = None
             budget_guardrails = BudgetGuardrails.from_settings(settings, redis)
         self.budget = budget_guardrails
-        self.ai_operations = AIOperationsService(db)
 
     async def create_session(
         self,
@@ -234,39 +232,35 @@ class LearnerTutorService:
             return self._result(session, learner_message, assistant, True, escalation is not None)
 
         tenant_id = str(getattr(learner, "guardian_id", session.learner_id))
-        # Redis remains a non-authoritative fast signal. PostgreSQL below is
-        # the durable budget authority, so Redis loss or drift cannot decide access.
         try:
             await self.budget.assert_budget(
                 str(session.learner_id), tenant_id, estimated_tokens=700
             )
-        except Exception:
-            pass
-
-        operation_id = f"tutor:{session_id}:{client_message_id}"
-        try:
-            await self.ai_operations.reserve(
-                operation_id=operation_id,
-                user_id=str(session.learner_id),
-                tenant_id=tenant_id,
-                purpose="learner_tutor",
-                estimated_tokens=700,
-                metadata={"session_id": str(session_id)},
-            )
-        except AIBudgetExceededError as exc:
+        except BudgetExceededError as exc:
             assistant, _ = await self._safe_fallback(
                 session=session,
                 client_message_id=client_message_id,
                 learner_message=learner_message,
-                reason="durable_budget_exhausted",
+                reason="budget_exhausted",
                 severity="low",
                 create_escalation=False,
             )
             assistant.metadata_json = {
-                "reason": "durable_budget_exhausted",
+                "reason": "budget_exhausted",
                 "budget_scope": exc.scope,
                 "non_deceptive": True,
             }
+            await self.db.commit()
+            return self._result(session, learner_message, assistant, True, False)
+        except Exception:
+            assistant, _ = await self._safe_fallback(
+                session=session,
+                client_message_id=client_message_id,
+                learner_message=learner_message,
+                reason="budget_service_unavailable",
+                severity="low",
+                create_escalation=False,
+            )
             await self.db.commit()
             return self._result(session, learner_message, assistant, True, False)
 
@@ -279,7 +273,6 @@ class LearnerTutorService:
                 max_tokens=500,
             )
         except ProviderContentPolicyError:
-            await self.ai_operations.cancel(operation_id, "provider_policy")
             assistant, escalation = await self._safe_fallback(
                 session=session,
                 client_message_id=client_message_id,
@@ -290,7 +283,6 @@ class LearnerTutorService:
             await self.db.commit()
             return self._result(session, learner_message, assistant, True, escalation is not None)
         except AllProvidersFailedError:
-            await self.ai_operations.cancel(operation_id, "providers_failed")
             assistant, _ = await self._safe_fallback(
                 session=session,
                 client_message_id=client_message_id,
@@ -302,7 +294,6 @@ class LearnerTutorService:
             await self.db.commit()
             return self._result(session, learner_message, assistant, True, False)
         except Exception:
-            await self.ai_operations.cancel(operation_id, "provider_error")
             assistant, _ = await self._safe_fallback(
                 session=session,
                 client_message_id=client_message_id,
@@ -316,7 +307,6 @@ class LearnerTutorService:
 
         validated = validate_tutor_output(result.text, lesson_topic=lesson.topic)
         if validated.blocked_reason:
-            await self.ai_operations.cancel(operation_id, f"output_{validated.blocked_reason}")
             severity = "medium" if validated.blocked_reason == "low_quality" else "high"
             assistant, escalation = await self._safe_fallback(
                 session=session,
@@ -328,16 +318,6 @@ class LearnerTutorService:
             await self.db.commit()
             return self._result(session, learner_message, assistant, True, escalation is not None)
 
-        await self.ai_operations.finalize(
-            operation_id=operation_id,
-            provider=result.provider,
-            model=result.model,
-            prompt_tokens=result.usage.prompt_tokens,
-            completion_tokens=result.usage.completion_tokens,
-            outcome="success",
-            metadata={"session_id": str(session_id)},
-        )
-
         try:
             await self.budget.record_usage(
                 str(session.learner_id),
@@ -347,9 +327,15 @@ class LearnerTutorService:
                 "learner_tutor",
             )
         except Exception:
-            # Durable PostgreSQL accounting already succeeded.
-            # Redis is defence-in-depth and may recover asynchronously.
-            pass
+            assistant, escalation = await self._safe_fallback(
+                session=session,
+                client_message_id=client_message_id,
+                learner_message=learner_message,
+                reason="budget_accounting_failure",
+                severity="medium",
+            )
+            await self.db.commit()
+            return self._result(session, learner_message, assistant, True, escalation is not None)
 
         assistant = self._assistant_message(
             session_id, client_message_id, validated.text, validated, result

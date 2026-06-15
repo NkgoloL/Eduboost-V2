@@ -47,7 +47,7 @@ print(f"Phase 1 registration OK: {len(paths)} mounted paths")
 PY
 
 if [[ -n "${PHASE1_TEST_DATABASE_URL:-}" ]]; then
-  python -m pytest -q tests/phase01/test_phase1_postgres_integration.py
+  .venv/bin/python -m pytest -q tests/phase01/test_phase1_postgres_integration.py
 else
   echo "NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending." >&2
 fi
