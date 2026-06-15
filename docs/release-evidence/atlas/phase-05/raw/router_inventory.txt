@@ -1,0 +1,10 @@
+POST                 /api/v2/tutor/sessions
+GET                  /api/v2/tutor/sessions/{session_id}
+POST                 /api/v2/tutor/sessions/{session_id}/cancel
+POST                 /api/v2/tutor/sessions/{session_id}/messages
+POST                 /api/v2/tutor/sessions/{session_id}/messages/stream
+POST                 /v2/tutor/sessions
+GET                  /v2/tutor/sessions/{session_id}
+POST                 /v2/tutor/sessions/{session_id}/cancel
+POST                 /v2/tutor/sessions/{session_id}/messages
+POST                 /v2/tutor/sessions/{session_id}/messages/stream

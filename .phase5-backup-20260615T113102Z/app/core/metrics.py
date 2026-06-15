@@ -293,33 +293,3 @@ irt_answer_position_bias = Gauge(
     "Maximum share of the correct answer in one option position",
     registry=REGISTRY,
 )
-
-
-# ── Phase 5 Learner Tutor ─────────────────────────────────────────────────
-tutor_messages_total = Counter(
-    "eduboost_tutor_messages_total",
-    "Learner tutor message outcomes",
-    ["status", "provider"],
-    registry=REGISTRY,
-)
-
-tutor_fallback_total = Counter(
-    "eduboost_tutor_fallback_total",
-    "Learner tutor safe fallbacks",
-    ["reason"],
-    registry=REGISTRY,
-)
-
-tutor_escalations_total = Counter(
-    "eduboost_tutor_escalations_total",
-    "Learner tutor educator/safeguarding escalations",
-    ["reason", "severity"],
-    registry=REGISTRY,
-)
-
-tutor_quality_score = Histogram(
-    "eduboost_tutor_quality_score",
-    "Validated learner tutor quality score",
-    buckets=[0.0, 0.4, 0.6, 0.7, 0.8, 0.9, 1.0],
-    registry=REGISTRY,
-)

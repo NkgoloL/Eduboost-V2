@@ -51,6 +51,7 @@
             "type": "string"
           },
           "summary": {
+            "additionalProperties": true,
             "title": "Summary",
             "type": "object"
           }
@@ -160,21 +161,25 @@
       "ArtifactReviewBundleResponse": {
         "properties": {
           "artifact": {
+            "additionalProperties": true,
             "title": "Artifact",
             "type": "object"
           },
           "generation_metadata": {
+            "additionalProperties": true,
             "title": "Generation Metadata",
             "type": "object"
           },
           "prior_review_events": {
             "items": {
+              "additionalProperties": true,
               "type": "object"
             },
             "title": "Prior Review Events",
             "type": "array"
           },
           "provenance": {
+            "additionalProperties": true,
             "title": "Provenance",
             "type": "object"
           },
@@ -183,6 +188,7 @@
           },
           "similar_artifacts": {
             "items": {
+              "additionalProperties": true,
               "type": "object"
             },
             "title": "Similar Artifacts",
@@ -190,6 +196,7 @@
           },
           "sources": {
             "items": {
+              "additionalProperties": true,
               "type": "object"
             },
             "title": "Sources",
@@ -198,6 +205,7 @@
           "validation_report": {
             "anyOf": [
               {
+                "additionalProperties": true,
                 "type": "object"
               },
               {
@@ -244,6 +252,7 @@
         "additionalProperties": false,
         "properties": {
           "artifact_json": {
+            "additionalProperties": true,
             "title": "Artifact Json",
             "type": "object"
           },
@@ -354,6 +363,7 @@
             "type": "string"
           },
           "metadata": {
+            "additionalProperties": true,
             "title": "Metadata",
             "type": "object"
           },
@@ -675,6 +685,9 @@
             "additionalProperties": {
               "$ref": "#/components/schemas/CoverageLayerCounts"
             },
+            "propertyNames": {
+              "$ref": "#/components/schemas/ContentLayer-Output"
+            },
             "title": "Layers",
             "type": "object"
           },
@@ -803,11 +816,7 @@
             "type": "string"
           },
           "state": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ConsentState"
-              }
-            ],
+            "$ref": "#/components/schemas/ConsentState",
             "default": "pending"
           },
           "updated_at": {
@@ -994,6 +1003,7 @@
             "title": "Source Hash"
           },
           "source_metadata": {
+            "additionalProperties": true,
             "title": "Source Metadata",
             "type": "object"
           },
@@ -1091,6 +1101,7 @@
       "ContentArtifactValidationRequest": {
         "properties": {
           "artifact_json": {
+            "additionalProperties": true,
             "title": "Artifact Json",
             "type": "object"
           },
@@ -1133,6 +1144,7 @@
       "ContentArtifactValidationResponse": {
         "properties": {
           "checks": {
+            "additionalProperties": true,
             "title": "Checks",
             "type": "object"
           },
@@ -1251,6 +1263,7 @@
             "title": "Status"
           },
           "summary": {
+            "additionalProperties": true,
             "title": "Summary",
             "type": "object"
           }
@@ -1314,6 +1327,7 @@
       "ContentFactoryReportResponse": {
         "properties": {
           "coverage": {
+            "additionalProperties": true,
             "title": "Coverage",
             "type": "object"
           },
@@ -1448,6 +1462,7 @@
             "type": "string"
           },
           "summary": {
+            "additionalProperties": true,
             "title": "Summary",
             "type": "object"
           },
@@ -1482,6 +1497,7 @@
           },
           "missing": {
             "items": {
+              "additionalProperties": true,
               "type": "object"
             },
             "title": "Missing",
@@ -1494,6 +1510,7 @@
           },
           "skipped": {
             "items": {
+              "additionalProperties": true,
               "type": "object"
             },
             "title": "Skipped",
@@ -1569,6 +1586,7 @@
             "type": "string"
           },
           "run_metadata": {
+            "additionalProperties": true,
             "title": "Run Metadata",
             "type": "object"
           },
@@ -1868,6 +1886,7 @@
             "type": "string"
           },
           "summary": {
+            "additionalProperties": true,
             "title": "Summary",
             "type": "object"
           }
@@ -1882,6 +1901,7 @@
       "CorrectionRequestLegacyBody": {
         "properties": {
           "fields": {
+            "additionalProperties": true,
             "title": "Fields",
             "type": "object"
           },
@@ -2133,6 +2153,7 @@
           },
           "ranked_gaps": {
             "items": {
+              "additionalProperties": true,
               "type": "object"
             },
             "title": "Ranked Gaps",
@@ -2418,6 +2439,281 @@
         "title": "HTTPValidationError",
         "type": "object"
       },
+      "IRTCalibrationRunRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "dry_run": {
+            "default": false,
+            "title": "Dry Run",
+            "type": "boolean"
+          },
+          "idempotency_key": {
+            "anyOf": [
+              {
+                "maxLength": 160,
+                "minLength": 8,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency Key"
+          },
+          "item_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Item Ids"
+          }
+        },
+        "title": "IRTCalibrationRunRequest",
+        "type": "object"
+      },
+      "IRTCalibrationRunResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "job_id": {
+            "title": "Job Id",
+            "type": "string"
+          },
+          "status": {
+            "default": "queued",
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id"
+        ],
+        "title": "IRTCalibrationRunResponse",
+        "type": "object"
+      },
+      "IRTItemQualityResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "item_id": {
+            "format": "uuid",
+            "title": "Item Id",
+            "type": "string"
+          },
+          "last_calibrated_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Calibrated At"
+          },
+          "last_run_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Run Id"
+          },
+          "manual_override_until": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Manual Override Until"
+          },
+          "model_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Version"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          },
+          "response_count": {
+            "title": "Response Count",
+            "type": "integer"
+          },
+          "rewrite_artifact_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rewrite Artifact Id"
+          },
+          "state": {
+            "$ref": "#/components/schemas/IRTQualityState"
+          },
+          "strike_count": {
+            "title": "Strike Count",
+            "type": "integer"
+          },
+          "unique_learners": {
+            "title": "Unique Learners",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "item_id",
+          "state",
+          "strike_count",
+          "response_count",
+          "unique_learners",
+          "model_version",
+          "last_calibrated_at",
+          "last_run_id",
+          "reason",
+          "manual_override_until",
+          "rewrite_artifact_id"
+        ],
+        "title": "IRTItemQualityResponse",
+        "type": "object"
+      },
+      "IRTManualOverrideRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "expires_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expires At"
+          },
+          "reason": {
+            "maxLength": 500,
+            "minLength": 12,
+            "title": "Reason",
+            "type": "string"
+          },
+          "state": {
+            "$ref": "#/components/schemas/IRTQualityState"
+          }
+        },
+        "required": [
+          "state",
+          "reason"
+        ],
+        "title": "IRTManualOverrideRequest",
+        "type": "object"
+      },
+      "IRTQualityState": {
+        "enum": [
+          "uncalibrated",
+          "healthy",
+          "monitor",
+          "review_required",
+          "quarantined",
+          "retired",
+          "rewrite_review",
+          "overridden"
+        ],
+        "title": "IRTQualityState",
+        "type": "string"
+      },
+      "IRTRunStatusResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "dry_run": {
+            "title": "Dry Run",
+            "type": "boolean"
+          },
+          "finished_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Finished At"
+          },
+          "model_version": {
+            "title": "Model Version",
+            "type": "string"
+          },
+          "policy_version": {
+            "title": "Policy Version",
+            "type": "string"
+          },
+          "run_id": {
+            "format": "uuid",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "started_at": {
+            "format": "date-time",
+            "title": "Started At",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "summary": {
+            "additionalProperties": true,
+            "title": "Summary",
+            "type": "object"
+          }
+        },
+        "required": [
+          "run_id",
+          "status",
+          "dry_run",
+          "model_version",
+          "policy_version",
+          "summary",
+          "started_at",
+          "finished_at"
+        ],
+        "title": "IRTRunStatusResponse",
+        "type": "object"
+      },
       "JobAcceptedResponse": {
         "properties": {
           "job_id": {
@@ -2450,6 +2746,7 @@
           "error": {
             "anyOf": [
               {
+                "additionalProperties": true,
                 "type": "object"
               },
               {
@@ -2467,6 +2764,7 @@
             "type": "string"
           },
           "payload": {
+            "additionalProperties": true,
             "title": "Payload",
             "type": "object"
           },
@@ -2613,6 +2911,7 @@
         "type": "object"
       },
       "LearnerDiagnosticItem": {
+        "description": "Learner-facing diagnostic item.",
         "properties": {
           "artifact_id": {
             "title": "Artifact Id",
@@ -2649,6 +2948,7 @@
             "type": "string"
           },
           "payload": {
+            "additionalProperties": true,
             "title": "Payload",
             "type": "object"
           },
@@ -2711,6 +3011,7 @@
         "type": "object"
       },
       "LearnerLesson": {
+        "description": "Learner-facing lesson.",
         "properties": {
           "artifact_id": {
             "title": "Artifact Id",
@@ -2747,6 +3048,7 @@
             "type": "string"
           },
           "payload": {
+            "additionalProperties": true,
             "title": "Payload",
             "type": "object"
           },
@@ -2875,6 +3177,7 @@
         "type": "object"
       },
       "LearnerScopeContentSummary": {
+        "description": "Summary of learner-visible content for a scope.",
         "properties": {
           "diagnostic_items_count": {
             "title": "Diagnostic Items Count",
@@ -3071,6 +3374,7 @@
             "type": "string"
           },
           "metadata": {
+            "additionalProperties": true,
             "title": "Metadata",
             "type": "object"
           },
@@ -3578,6 +3882,7 @@
             "type": "array"
           },
           "coverage_summary": {
+            "additionalProperties": true,
             "title": "Coverage Summary",
             "type": "object"
           },
@@ -3586,6 +3891,7 @@
             "type": "string"
           },
           "staging_summary": {
+            "additionalProperties": true,
             "title": "Staging Summary",
             "type": "object"
           },
@@ -3650,6 +3956,7 @@
           },
           "skipped": {
             "items": {
+              "additionalProperties": true,
               "type": "object"
             },
             "title": "Skipped",
@@ -4601,6 +4908,7 @@
             "type": "string"
           },
           "rubric_results": {
+            "additionalProperties": true,
             "title": "Rubric Results",
             "type": "object"
           },
@@ -4686,6 +4994,7 @@
             "title": "Reason Code"
           },
           "rubric_results": {
+            "additionalProperties": true,
             "title": "Rubric Results",
             "type": "object"
           }
@@ -5077,6 +5386,7 @@
             "type": "string"
           },
           "run_metadata": {
+            "additionalProperties": true,
             "title": "Run Metadata",
             "type": "object"
           },
@@ -5245,11 +5555,7 @@
             "title": "Seeded Staging"
           },
           "severity": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/BlockerSeverity"
-              }
-            ],
+            "$ref": "#/components/schemas/BlockerSeverity",
             "default": "blocking"
           },
           "validation_failed": {
@@ -5306,6 +5612,9 @@
           "layers": {
             "additionalProperties": {
               "$ref": "#/components/schemas/ScopeCoverageLayerSummary"
+            },
+            "propertyNames": {
+              "$ref": "#/components/schemas/ContentLayer-Output"
             },
             "title": "Layers",
             "type": "object"
@@ -5437,6 +5746,7 @@
             "$ref": "#/components/schemas/StagingReadinessStatus"
           },
           "summary": {
+            "additionalProperties": true,
             "title": "Summary",
             "type": "object"
           }
@@ -6040,6 +6350,7 @@
           "cost_metadata": {
             "anyOf": [
               {
+                "additionalProperties": true,
                 "type": "object"
               },
               {
@@ -6128,6 +6439,7 @@
           "token_usage": {
             "anyOf": [
               {
+                "additionalProperties": true,
                 "type": "object"
               },
               {
@@ -6244,6 +6556,240 @@
           "expires_in"
         ],
         "title": "TokenResponse",
+        "type": "object"
+      },
+      "TutorCancelResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "session_id": {
+            "format": "uuid",
+            "title": "Session Id",
+            "type": "string"
+          },
+          "status": {
+            "const": "cancelled",
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "session_id",
+          "status"
+        ],
+        "title": "TutorCancelResponse",
+        "type": "object"
+      },
+      "TutorMessageView": {
+        "additionalProperties": false,
+        "properties": {
+          "content": {
+            "title": "Content",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "message_id": {
+            "format": "uuid",
+            "title": "Message Id",
+            "type": "string"
+          },
+          "provider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Provider"
+          },
+          "quality_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quality Score"
+          },
+          "role": {
+            "enum": [
+              "learner",
+              "assistant",
+              "system"
+            ],
+            "title": "Role",
+            "type": "string"
+          },
+          "safety_status": {
+            "title": "Safety Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "message_id",
+          "role",
+          "content",
+          "safety_status",
+          "created_at"
+        ],
+        "title": "TutorMessageView",
+        "type": "object"
+      },
+      "TutorQuestion": {
+        "additionalProperties": false,
+        "properties": {
+          "client_message_id": {
+            "maxLength": 80,
+            "minLength": 8,
+            "pattern": "^[A-Za-z0-9._:-]+$",
+            "title": "Client Message Id",
+            "type": "string"
+          },
+          "text": {
+            "maxLength": 600,
+            "minLength": 2,
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "client_message_id"
+        ],
+        "title": "TutorQuestion",
+        "type": "object"
+      },
+      "TutorReply": {
+        "additionalProperties": false,
+        "properties": {
+          "assistant_message": {
+            "$ref": "#/components/schemas/TutorMessageView"
+          },
+          "escalation_created": {
+            "default": false,
+            "title": "Escalation Created",
+            "type": "boolean"
+          },
+          "fallback": {
+            "default": false,
+            "title": "Fallback",
+            "type": "boolean"
+          },
+          "learner_message": {
+            "$ref": "#/components/schemas/TutorMessageView"
+          },
+          "session_id": {
+            "format": "uuid",
+            "title": "Session Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "session_id",
+          "learner_message",
+          "assistant_message"
+        ],
+        "title": "TutorReply",
+        "type": "object"
+      },
+      "TutorSessionCreate": {
+        "additionalProperties": false,
+        "properties": {
+          "language": {
+            "default": "en",
+            "pattern": "^[a-z]{2}$",
+            "title": "Language",
+            "type": "string"
+          },
+          "learner_id": {
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "Learner Id",
+            "type": "string"
+          },
+          "lesson_id": {
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "Lesson Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "learner_id",
+          "lesson_id"
+        ],
+        "title": "TutorSessionCreate",
+        "type": "object"
+      },
+      "TutorSessionView": {
+        "additionalProperties": false,
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "escalation_count": {
+            "title": "Escalation Count",
+            "type": "integer"
+          },
+          "language": {
+            "title": "Language",
+            "type": "string"
+          },
+          "last_activity_at": {
+            "format": "date-time",
+            "title": "Last Activity At",
+            "type": "string"
+          },
+          "learner_id": {
+            "title": "Learner Id",
+            "type": "string"
+          },
+          "lesson_id": {
+            "title": "Lesson Id",
+            "type": "string"
+          },
+          "message_count": {
+            "title": "Message Count",
+            "type": "integer"
+          },
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/TutorMessageView"
+            },
+            "title": "Messages",
+            "type": "array"
+          },
+          "session_id": {
+            "format": "uuid",
+            "title": "Session Id",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "session_id",
+          "learner_id",
+          "lesson_id",
+          "language",
+          "status",
+          "message_count",
+          "escalation_count",
+          "created_at",
+          "last_activity_at"
+        ],
+        "title": "TutorSessionView",
         "type": "object"
       },
       "ValidationError": {
@@ -7074,6 +7620,7 @@
           "content": {
             "application/json": {
               "schema": {
+                "additionalProperties": true,
                 "title": "Request",
                 "type": "object"
               }
@@ -7381,6 +7928,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Promotion Event Items Api V2 Admin Content Factory Promotion Events  Promotion Event Id  Items Get",
                   "type": "object"
                 }
@@ -10186,6 +10734,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response List Etl Datasets Api V2 Admin Etl Datasets Get",
@@ -10216,6 +10765,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response List Etl Documents Api V2 Admin Etl Documents Get",
@@ -10256,6 +10806,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Etl Document Api V2 Admin Etl Documents  Document Id  Get",
                   "type": "object"
                 }
@@ -10305,6 +10856,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Document Audit Api V2 Admin Etl Documents  Document Id  Audit Get",
@@ -10356,6 +10908,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Document Chunks Api V2 Admin Etl Documents  Document Id  Chunks Get",
@@ -10395,6 +10948,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Etl Metrics Api V2 Admin Etl Metrics Get",
                   "type": "object"
                 }
@@ -10433,6 +10987,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Etl Quality Api V2 Admin Etl Quality  Document Id  Get",
                   "type": "object"
                 }
@@ -10471,6 +11026,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Review Queue Api V2 Admin Etl Review Queue Get",
@@ -10512,6 +11068,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Search Etl Api V2 Admin Etl Search Get",
                   "type": "object"
                 }
@@ -10549,6 +11106,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Etl Admin Status Api V2 Admin Etl Status Get",
                   "type": "object"
                 }
@@ -10683,6 +11241,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Cancel Generation Run Api V2 Admin Generation Runs  Run Id  Cancel Post",
                   "type": "object"
                 }
@@ -10777,6 +11336,254 @@
         "summary": "List Run Tasks",
         "tags": [
           "generation"
+        ]
+      }
+    },
+    "/api/v2/admin/irt-quality/items/{item_id}": {
+      "get": {
+        "operationId": "get_item_quality_api_v2_admin_irt_quality_items__item_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IRTItemQualityResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Item Quality",
+        "tags": [
+          "admin-irt-quality"
+        ]
+      }
+    },
+    "/api/v2/admin/irt-quality/items/{item_id}/override": {
+      "post": {
+        "operationId": "set_manual_override_api_v2_admin_irt_quality_items__item_id__override_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IRTManualOverrideRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IRTItemQualityResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set Manual Override",
+        "tags": [
+          "admin-irt-quality"
+        ]
+      }
+    },
+    "/api/v2/admin/irt-quality/items/{item_id}/override/clear": {
+      "post": {
+        "operationId": "clear_manual_override_api_v2_admin_irt_quality_items__item_id__override_clear_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IRTItemQualityResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Clear Manual Override",
+        "tags": [
+          "admin-irt-quality"
+        ]
+      }
+    },
+    "/api/v2/admin/irt-quality/runs": {
+      "post": {
+        "operationId": "create_calibration_run_api_v2_admin_irt_quality_runs_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IRTCalibrationRunRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IRTCalibrationRunResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Calibration Run",
+        "tags": [
+          "admin-irt-quality"
+        ]
+      }
+    },
+    "/api/v2/admin/irt-quality/runs/{run_id}": {
+      "get": {
+        "operationId": "get_calibration_run_api_v2_admin_irt_quality_runs__run_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IRTRunStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Calibration Run",
+        "tags": [
+          "admin-irt-quality"
         ]
       }
     },
@@ -11783,6 +12590,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Grant Consent Api V2 Consent Grant Post",
                   "type": "object"
                 }
@@ -11830,6 +12638,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Revoke Consent Api V2 Consent Revoke Post",
                   "type": "object"
                 }
@@ -11879,6 +12688,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Consent Status Api V2 Consent Status  Learner Id  Get",
                   "type": "object"
                 }
@@ -14497,6 +15307,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Learner Progress Api V2 Parents Learners  Learner Id  Progress Get",
                   "type": "object"
                 }
@@ -15373,6 +16184,262 @@
         ]
       }
     },
+    "/api/v2/tutor/sessions": {
+      "post": {
+        "operationId": "create_tutor_session_api_v2_tutor_sessions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TutorSessionCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TutorSessionView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Tutor Session",
+        "tags": [
+          "learner-tutor"
+        ]
+      }
+    },
+    "/api/v2/tutor/sessions/{session_id}": {
+      "get": {
+        "operationId": "get_tutor_session_api_v2_tutor_sessions__session_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TutorSessionView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Tutor Session",
+        "tags": [
+          "learner-tutor"
+        ]
+      }
+    },
+    "/api/v2/tutor/sessions/{session_id}/cancel": {
+      "post": {
+        "operationId": "cancel_tutor_session_api_v2_tutor_sessions__session_id__cancel_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TutorCancelResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Cancel Tutor Session",
+        "tags": [
+          "learner-tutor"
+        ]
+      }
+    },
+    "/api/v2/tutor/sessions/{session_id}/messages": {
+      "post": {
+        "operationId": "ask_tutor_api_v2_tutor_sessions__session_id__messages_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TutorQuestion"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TutorReply"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Ask Tutor",
+        "tags": [
+          "learner-tutor"
+        ]
+      }
+    },
+    "/api/v2/tutor/sessions/{session_id}/messages/stream": {
+      "post": {
+        "operationId": "stream_tutor_reply_api_v2_tutor_sessions__session_id__messages_stream_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TutorQuestion"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Stream Tutor Reply",
+        "tags": [
+          "learner-tutor"
+        ]
+      }
+    },
     "/health": {
       "get": {
         "operationId": "health_health_get",
@@ -16088,6 +17155,7 @@
           "content": {
             "application/json": {
               "schema": {
+                "additionalProperties": true,
                 "title": "Request",
                 "type": "object"
               }
@@ -16395,6 +17463,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Promotion Event Items V2 Admin Content Factory Promotion Events  Promotion Event Id  Items Get",
                   "type": "object"
                 }
@@ -19200,6 +20269,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response List Etl Datasets V2 Admin Etl Datasets Get",
@@ -19230,6 +20300,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response List Etl Documents V2 Admin Etl Documents Get",
@@ -19270,6 +20341,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Etl Document V2 Admin Etl Documents  Document Id  Get",
                   "type": "object"
                 }
@@ -19319,6 +20391,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Document Audit V2 Admin Etl Documents  Document Id  Audit Get",
@@ -19370,6 +20443,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Document Chunks V2 Admin Etl Documents  Document Id  Chunks Get",
@@ -19409,6 +20483,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Etl Metrics V2 Admin Etl Metrics Get",
                   "type": "object"
                 }
@@ -19447,6 +20522,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Etl Quality V2 Admin Etl Quality  Document Id  Get",
                   "type": "object"
                 }
@@ -19485,6 +20561,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Review Queue V2 Admin Etl Review Queue Get",
@@ -19526,6 +20603,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Search Etl V2 Admin Etl Search Get",
                   "type": "object"
                 }
@@ -19563,6 +20641,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Etl Admin Status V2 Admin Etl Status Get",
                   "type": "object"
                 }
@@ -19697,6 +20776,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Cancel Generation Run V2 Admin Generation Runs  Run Id  Cancel Post",
                   "type": "object"
                 }
@@ -19791,6 +20871,254 @@
         "summary": "List Run Tasks",
         "tags": [
           "generation"
+        ]
+      }
+    },
+    "/v2/admin/irt-quality/items/{item_id}": {
+      "get": {
+        "operationId": "get_item_quality_v2_admin_irt_quality_items__item_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IRTItemQualityResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Item Quality",
+        "tags": [
+          "admin-irt-quality"
+        ]
+      }
+    },
+    "/v2/admin/irt-quality/items/{item_id}/override": {
+      "post": {
+        "operationId": "set_manual_override_v2_admin_irt_quality_items__item_id__override_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IRTManualOverrideRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IRTItemQualityResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set Manual Override",
+        "tags": [
+          "admin-irt-quality"
+        ]
+      }
+    },
+    "/v2/admin/irt-quality/items/{item_id}/override/clear": {
+      "post": {
+        "operationId": "clear_manual_override_v2_admin_irt_quality_items__item_id__override_clear_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IRTItemQualityResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Clear Manual Override",
+        "tags": [
+          "admin-irt-quality"
+        ]
+      }
+    },
+    "/v2/admin/irt-quality/runs": {
+      "post": {
+        "operationId": "create_calibration_run_v2_admin_irt_quality_runs_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IRTCalibrationRunRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IRTCalibrationRunResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Calibration Run",
+        "tags": [
+          "admin-irt-quality"
+        ]
+      }
+    },
+    "/v2/admin/irt-quality/runs/{run_id}": {
+      "get": {
+        "operationId": "get_calibration_run_v2_admin_irt_quality_runs__run_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IRTRunStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Calibration Run",
+        "tags": [
+          "admin-irt-quality"
         ]
       }
     },
@@ -20797,6 +22125,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Grant Consent V2 Consent Grant Post",
                   "type": "object"
                 }
@@ -20844,6 +22173,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Revoke Consent V2 Consent Revoke Post",
                   "type": "object"
                 }
@@ -20893,6 +22223,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Consent Status V2 Consent Status  Learner Id  Get",
                   "type": "object"
                 }
@@ -23511,6 +24842,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Learner Progress V2 Parents Learners  Learner Id  Progress Get",
                   "type": "object"
                 }
@@ -24386,6 +25718,262 @@
           "V2 System"
         ]
       }
+    },
+    "/v2/tutor/sessions": {
+      "post": {
+        "operationId": "create_tutor_session_v2_tutor_sessions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TutorSessionCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TutorSessionView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Tutor Session",
+        "tags": [
+          "learner-tutor"
+        ]
+      }
+    },
+    "/v2/tutor/sessions/{session_id}": {
+      "get": {
+        "operationId": "get_tutor_session_v2_tutor_sessions__session_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TutorSessionView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Tutor Session",
+        "tags": [
+          "learner-tutor"
+        ]
+      }
+    },
+    "/v2/tutor/sessions/{session_id}/cancel": {
+      "post": {
+        "operationId": "cancel_tutor_session_v2_tutor_sessions__session_id__cancel_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TutorCancelResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Cancel Tutor Session",
+        "tags": [
+          "learner-tutor"
+        ]
+      }
+    },
+    "/v2/tutor/sessions/{session_id}/messages": {
+      "post": {
+        "operationId": "ask_tutor_v2_tutor_sessions__session_id__messages_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TutorQuestion"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TutorReply"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Ask Tutor",
+        "tags": [
+          "learner-tutor"
+        ]
+      }
+    },
+    "/v2/tutor/sessions/{session_id}/messages/stream": {
+      "post": {
+        "operationId": "stream_tutor_reply_v2_tutor_sessions__session_id__messages_stream_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TutorQuestion"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Stream Tutor Reply",
+        "tags": [
+          "learner-tutor"
+        ]
+      }
     }
   },
   "tags": [
@@ -24404,6 +25992,10 @@
     {
       "description": "CAPS-aligned lesson content",
       "name": "lessons"
+    },
+    {
+      "description": "Safe lesson-scoped learner tutor",
+      "name": "learner-tutor"
     },
     {
       "description": "Personalised study plans",
@@ -24456,6 +26048,10 @@
     {
       "description": "Learner-facing production content from Content Factory",
       "name": "learner-content"
+    },
+    {
+      "description": "Admin-only IRT calibration and intervention controls",
+      "name": "admin-irt-quality"
     }
   ]
 }
