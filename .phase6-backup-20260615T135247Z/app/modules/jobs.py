@@ -40,7 +40,6 @@ from app.core.metrics import (
     content_review_stale_assignments,
 )
 from app.jobs.practice_session_cleanup_job import run_practice_session_cleanup
-from app.jobs.ai_operations_job import expire_ai_usage_reservations
 from app.jobs.batch_generation_job import generate_content_batch
 from app.jobs.irt_quality_job import run_irt_quality_watchdog
 
@@ -503,7 +502,6 @@ class WorkerSettings:
         keep_result: Seconds to retain job results (default ``3600``).
     """
     functions = [
-        expire_ai_usage_reservations,
         send_consent_reminders,
         send_consent_renewal_reminders,
         generate_lesson_job,
@@ -518,7 +516,6 @@ class WorkerSettings:
     ]
 
     cron_jobs = [
-        cron(expire_ai_usage_reservations, minute={0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55}),
         # Daily at 00:00 timezone.utc (02:00 SAST)
         cron(run_database_backup, hour=0, minute=0),
         # Daily at 06:00 timezone.utc (08:00 SAST)

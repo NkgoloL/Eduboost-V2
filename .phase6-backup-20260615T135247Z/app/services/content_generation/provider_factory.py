@@ -29,9 +29,6 @@ def get_generation_settings() -> GenerationSettings:
 def get_content_generation_provider(settings: GenerationSettings | None = None) -> ContentGenerationProvider:
     settings = settings or get_generation_settings()
     if settings.provider == "deterministic":
-        env = (os.environ.get("APP_ENV") or os.environ.get("ENVIRONMENT") or "development").lower()
-        if env == "production":
-            raise RuntimeError("DeterministicContentGenerationProvider is forbidden in production")
         return DeterministicContentGenerationProvider()
     if settings.provider == "llm":
         if not settings.enabled:

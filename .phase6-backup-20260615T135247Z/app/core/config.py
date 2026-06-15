@@ -117,12 +117,6 @@ class Settings(BaseSettings):
     GRAFANA_CLOUD_LOKI_URL: str = ""
     GRAFANA_CLOUD_API_KEY: str = ""
     PROMETHEUS_METRICS_PATH: str = "/metrics"
-
-    # Phase 6 durable AI operations
-    USER_DAILY_TOKEN_LIMIT: int = 50_000
-    TENANT_MONTHLY_TOKEN_LIMIT: int = 10_000_000
-    TENANT_BUDGET_ALERT_PCT: float = 0.80
-    AI_USAGE_RESERVATION_TTL_SECONDS: int = 300
     LOG_LEVEL: str = "INFO"
     SENTRY_DSN: str = ""
     KEY_VAULT_REFRESH_INTERVAL_HOURS: int = 6

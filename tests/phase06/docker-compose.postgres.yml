@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: eduboost
+      POSTGRES_PASSWORD: phase6-test-password
+      POSTGRES_DB: eduboost_phase6_test
+    ports:
+      - "55446:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U eduboost -d eduboost_phase6_test"]
+      interval: 2s
+      timeout: 2s
+      retries: 30

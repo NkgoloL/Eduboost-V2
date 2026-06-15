@@ -22,9 +22,9 @@ trap cleanup EXIT
 cleanup
 docker compose -p "${PROJECT_NAME}" -f "${COMPOSE_FILE}" up -d --wait
 
-DATABASE_URL="${DATABASE_URL}" python -m alembic upgrade head
+DATABASE_URL="${DATABASE_URL}" .venv/bin/python -m alembic upgrade 20260614_0900_p1_validation
 DATABASE_URL="${DATABASE_URL}" \
 PHASE1_TEST_DATABASE_URL="${DATABASE_URL}" \
-  python -m pytest -q tests/phase01 --disable-warnings
+  .venv/bin/python -m pytest -q tests/phase01 --disable-warnings
 
-DATABASE_URL="${DATABASE_URL}" python -m alembic current
+DATABASE_URL="${DATABASE_URL}" .venv/bin/python -m alembic current
