@@ -123,12 +123,6 @@ class Settings(BaseSettings):
     TENANT_MONTHLY_TOKEN_LIMIT: int = 10_000_000
     TENANT_BUDGET_ALERT_PCT: float = 0.80
     AI_USAGE_RESERVATION_TTL_SECONDS: int = 300
-
-    # Phase 7 curriculum expansion and training-data governance
-    PHASE7_TRAINING_MIN_QUALITY_SCORE: float = 0.80
-    PHASE7_TRAINING_MIN_CAPS_ALIGNMENT_SCORE: float = 0.80
-    PHASE7_REQUIRE_PUBLISHED: bool = True
-    PHASE7_TRAINING_ARTIFACT_ROOT: str = "artifacts/training"
     LOG_LEVEL: str = "INFO"
     SENTRY_DSN: str = ""
     KEY_VAULT_REFRESH_INTERVAL_HOURS: int = 6

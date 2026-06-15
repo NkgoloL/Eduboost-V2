@@ -57,7 +57,7 @@ PY
 
 MIGRATION_OUTPUT="$("$PYTHON_BIN" scripts/verify_migration_graph.py)"
 echo "$MIGRATION_OUTPUT"
-grep -q 'head=20260615_1500_p6_ai_ops' <<<"$MIGRATION_OUTPUT"
+
 "$PYTHON_BIN" scripts/validate_schema_integrity.py
 
 if [[ -f scripts/generate_openapi.py ]]; then

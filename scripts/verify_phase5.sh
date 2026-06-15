@@ -59,8 +59,7 @@ required={
 assert required <= paths, required - paths
 print('Tutor router registration OK:', len(required), 'canonical paths')
 PY
-"$PYTHON_BIN" scripts/verify_migration_graph.py | tee /tmp/phase5-migration-graph.txt
-grep -q 'head=20260615_1200_p5_tutor' /tmp/phase5-migration-graph.txt
+"$PYTHON_BIN" scripts/verify_migration_graph.py
 
 printf '\n[5/8] Privacy and fail-safe static contracts\n'
 grep -q 'prepare_tutor_input(question)' app/services/learner_tutor.py

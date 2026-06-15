@@ -777,4 +777,3 @@ from app.models.retrieval import (  # noqa: F401  (re-export)
 # Phase 5 learner tutor models are imported so Base.metadata includes them.
 from app.models.tutor import TutorEscalation, TutorMessage, TutorSession  # noqa: E402,F401
 from app.models.ai_operations import AIBudgetCounter, AIUsageEvent, AIUsageReservation
-from app.models.curriculum_expansion import CurriculumCoverageSnapshot, CurriculumExpansionRun, TrainingDatasetEntry, TrainingDatasetManifest

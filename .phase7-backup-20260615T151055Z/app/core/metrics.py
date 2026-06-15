@@ -360,33 +360,3 @@ ai_budget_usage_ratio = Gauge(
     ["scope"],
     registry=REGISTRY,
 )
-
-
-# ── Phase 7 Curriculum Expansion and Training Governance ───────────────────
-curriculum_coverage_gap_total = Gauge(
-    "eduboost_curriculum_coverage_gap_total",
-    "Current configured content gap count",
-    ["scope_id", "language"],
-    registry=REGISTRY,
-)
-
-curriculum_coverage_snapshots_total = Counter(
-    "eduboost_curriculum_coverage_snapshots_total",
-    "Durable curriculum coverage snapshots",
-    ["status"],
-    registry=REGISTRY,
-)
-
-training_dataset_artifacts_total = Gauge(
-    "eduboost_training_dataset_artifacts_total",
-    "Eligible artifacts in a governed training dataset manifest",
-    ["dataset_version", "language"],
-    registry=REGISTRY,
-)
-
-training_dataset_exclusions_total = Counter(
-    "eduboost_training_dataset_exclusions_total",
-    "Artifacts excluded from governed training datasets",
-    ["reason"],
-    registry=REGISTRY,
-)
