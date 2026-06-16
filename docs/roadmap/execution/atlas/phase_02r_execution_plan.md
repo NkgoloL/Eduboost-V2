@@ -2139,7 +2139,7 @@ PHASE_02R_START_APPROVED=true
 | Release manager | Nkgolo Lebelo | Start gate failed | 2026-06-16 | Gate 2R.0 closure report |
 | Final phase approver | Nkgolo Lebelo | Reject execution authorisation until blockers close | 2026-06-16 | Gate 2R.0 closure report |
 
-**Current decision:** Gate 2R.1 is authorised by the dedicated approval-transition commit. `PHASE_02R_START_APPROVED` is `true` and `phase_02r_start_gate_control.json.start_approved` is `true`.
+**Current decision:** Gate 2R.1 is Verified Complete. Gate 2R.2 is Authorised. `PHASE_02R_START_APPROVED` is `true` and `phase_02r_start_gate_control.json.start_approved` is `true`.
 
 ---
 
