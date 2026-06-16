@@ -1,0 +1,73 @@
++ env PHASE_RECONCILIATION_MODE=closure bash scripts/verify_phases_01_07_reconciliation.sh
+
+[1/10] Python and source-state identity
+Python 3.12.3
+feature/atlas-phase-02r-authoritative-caps-corpus
+021c688ccb19a9c6baa874e4155c2dc6551bfce5
+
+[2/10] Compile reconciliation modules
+
+[3/10] Release-blocking Ruff rules
+All checks passed!
+
+[4/10] Focused reconciliation tests
+.....                                                                    [100%]
+5 passed in 2.76s
+
+[5/10] Migration and schema gates
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Schema integrity OK
+
+[6/10] Atlas control-set and evidence integrity
+Atlas phase-control validation passed
+
+[7/10] Static safety contracts
+
+[8/10] Phase 2 evaluation claim guard
+Phase 2 smoke dataset correctly rejected for closure.
+
+[9/10] Prior-phase fast regression
+All checks passed!
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 4.04s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+................                                                         [100%]
+16 passed in 1.92s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 2.95s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 4.36s
+................                                                         [100%]
+16 passed in 1.47s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 3 route/policy contract OK: 10 routes
+
+[1/8] Compile Phase 4 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 4 unit, route, state-machine, and selection tests
+..........                                                               [100%]
+10 passed in 11.62s
+
+[4/8] Migration graph and schema model integrity
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Schema integrity OK
+
+[5/8] Router and ARQ registration
+Phase 4 routes OK: 10
+IRT watchdog registered as durable function and nightly cron
+
+[6/8] Fail-closed serving and rewrite-review contracts
+Traceback (most recent call last):
+  File "<stdin>", line 8, in <module>
+AssertionError
+
+exit_code=1

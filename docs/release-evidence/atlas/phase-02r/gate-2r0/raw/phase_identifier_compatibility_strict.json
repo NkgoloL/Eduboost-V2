@@ -1,5 +1,7 @@
 {
-  "errors": [],
+  "errors": [
+    "strict compatibility warning: validate_phase_control_sets.py remains numeric Phase 1-7 specific; 02R is handled by this validator"
+  ],
   "full_programme_tool_compatibility": false,
   "identifiers": [
     "02R",
@@ -7,14 +9,14 @@
     "phase_02r"
   ],
   "local_identifier_smoke_passed": true,
-  "mode": "discovery",
+  "mode": "strict",
   "natural_sort": [
     "phase-01",
     "phase-02",
     "phase-02r",
     "phase-03"
   ],
-  "passed": true,
+  "passed": false,
   "warnings": [
     "validate_phase_control_sets.py remains numeric Phase 1-7 specific; 02R is handled by this validator"
   ]

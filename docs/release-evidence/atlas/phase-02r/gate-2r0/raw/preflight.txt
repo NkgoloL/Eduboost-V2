@@ -6,7 +6,9 @@ Phase 0 equivalent baseline
 WARNING: required runtime env vars are unset for local proof: DATABASE_URL, JWT_SECRET, ENCRYPTION_KEY
 WARNING: Redis CLI/server not found on PATH; Docker-backed Redis may still be available in later gates
 FAIL
-- worktree is not clean
-- non-production object-storage configuration is not present
+- PHASE02R_OBJECT_STORAGE_BACKEND is not configured
+- PHASE02R_OBJECT_STORAGE_PROBE_DIR is not configured
+- PHASE02R_OBJECT_STORAGE_BACKUP_DIR is not configured
+- PHASE02R_OBJECT_STORAGE_SCOPED_TOKEN is not configured
 
 exit_code=1

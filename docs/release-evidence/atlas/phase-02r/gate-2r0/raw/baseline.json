@@ -8,7 +8,13 @@
     "git_status_porcelain": "",
     "migration_graph": "Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile",
     "node": "v22.22.3",
-    "object_storage_config_present": false,
+    "object_storage": {
+      "backend": null,
+      "backup_dir_configured": false,
+      "functional_contract": false,
+      "probe_dir_configured": false,
+      "scoped_credentials_configured": false
+    },
     "pnpm": "9.14.4",
     "python": "3.12.3",
     "redis_available": false,
@@ -20,7 +26,10 @@
     "schema_integrity": "Schema integrity OK"
   },
   "errors": [
-    "non-production object-storage configuration is not present"
+    "PHASE02R_OBJECT_STORAGE_BACKEND is not configured",
+    "PHASE02R_OBJECT_STORAGE_PROBE_DIR is not configured",
+    "PHASE02R_OBJECT_STORAGE_BACKUP_DIR is not configured",
+    "PHASE02R_OBJECT_STORAGE_SCOPED_TOKEN is not configured"
   ],
   "passed": false,
   "warnings": [

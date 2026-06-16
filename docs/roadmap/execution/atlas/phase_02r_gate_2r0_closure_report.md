@@ -1,18 +1,22 @@
 # Phase 2R Gate 2R.0 Closure Report
 
-**Generated:** 2026-06-16T11:17:49Z
+**Generated:** 2026-06-16T12:37:32Z
 **Status:** Failed / remediation required
 **Branch:** `feature/atlas-phase-02r-authoritative-caps-corpus`
-**baseline_capture_sha:** `9a1e5048c08d36a9b8e90f45c27927b9bb91c6ef`
+**evidence_run_source_sha:** `021c688ccb19a9c6baa874e4155c2dc6551bfce5`
 **base_against_origin_master:** `4b3805b700869aaeacce4141bb565e1963777163`
-**gate_report_commit_sha:** pending until this report is committed
+**initial_gate_report_commit_sha:** `8d972b5f`
+**remediation_code_commit_sha:** `021c688ccb19a9c6baa874e4155c2dc6551bfce5`
+**evidence_commit_sha:** pending until this evidence pack is committed
 **eventual_gate_approval_commit_sha:** not issued
 
 ## Result
 
-Gate 2R.0 closure evidence was collected. The approval flag must remain
-`PHASE_02R_START_APPROVED=false` unless every raw command exits zero and the
-worktree is clean.
+Gate 2R.0 closure evidence was collected into a temporary directory before it
+was copied into the repository. The approval flag must remain
+`PHASE_02R_START_APPROVED=false` and
+`phase_02r_start_gate_control.json.start_approved=false` unless every raw
+command exits zero and the worktree is clean before evidence copy.
 
 ## Source State
 
