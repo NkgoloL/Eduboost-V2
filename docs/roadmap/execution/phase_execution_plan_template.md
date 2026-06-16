@@ -132,7 +132,7 @@ State the planned auditor, competence needed, independence level, conflicts, and
 
 The phase must produce:
 
-`docs/roadmap/execution/phase_<NN>_implementation_report.md`
+`docs/roadmap/execution/atlas/phase_<NN>_implementation_report.md`
 
 The report must reconcile every task, criterion, amendment, evidence item, defect, exception, and audit-readiness requirement in this plan.
 

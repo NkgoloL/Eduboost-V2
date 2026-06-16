@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import math
 import uuid
+from datetime import UTC, datetime
 from typing import Sequence, Optional
 
 from app.domain.content_coverage import ContentLayer
@@ -25,6 +26,25 @@ _THETA_WINDOW = 1.0
 
 class ItemSelectionError(Exception):
     """Raised when no eligible item can be found for a learner."""
+
+
+def _irt_item_is_learner_eligible(
+    item: DiagnosticItem,
+    *,
+    now: datetime | None = None,
+) -> bool:
+    state = str(getattr(item, "irt_quality_state", "uncalibrated"))
+    if state in {"uncalibrated", "healthy", "monitor"}:
+        return True
+    if state != "overridden":
+        return False
+    expires_at = getattr(item, "irt_manual_override_until", None)
+    if expires_at is None:
+        return False
+    current = now or datetime.now(UTC)
+    if expires_at.tzinfo is None:
+        expires_at = expires_at.replace(tzinfo=UTC)
+    return expires_at > current
 
 
 def _3pl_probability(theta: float, a: float, b: float, c: float) -> float:
@@ -94,11 +114,10 @@ class ItemBankService:
             )
 
         exclude_ids = exclude_ids or set()
-        eligible_irt_states = {"uncalibrated", "healthy", "monitor", "overridden"}
         candidates = [
             item for item in candidates
             if item.item_id not in exclude_ids
-            and str(getattr(item, "irt_quality_state", "uncalibrated")) in eligible_irt_states
+            and _irt_item_is_learner_eligible(item)
         ]
 
         if not candidates:

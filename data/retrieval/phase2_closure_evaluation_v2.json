@@ -1,0 +1,18 @@
+{
+  "dataset_id": "phase2-closure-evaluation-v2",
+  "status": "draft",
+  "closure_eligible": true,
+  "minimum_requirements": {
+    "case_count": 12,
+    "caps_strands": 5,
+    "languages": 3,
+    "negative_cases": 3
+  },
+  "thresholds": {
+    "recall_at_k": 0.8,
+    "mean_reciprocal_rank": 0.6,
+    "unsafe_hit_count": 0
+  },
+  "cases": [],
+  "authoring_note": "Populate with approved expected chunk ids from the canonical evaluation corpus before approval."
+}

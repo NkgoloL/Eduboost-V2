@@ -52,8 +52,18 @@ _FILTER_SQL = f"""
     AND (c.permission_scope = 'public' OR c.permission_scope = :permission_scope)
     AND (d.permission_scope = 'public' OR d.permission_scope = :permission_scope)
     AND COALESCE(c.quality_score, d.quality_score, 0) >= :min_quality_score
-    AND COALESCE(c.source_metadata->>'artifact_status', 'published') IN ('published','promoted_production')
-    AND COALESCE(d.source_metadata->>'artifact_status', 'published') IN ('published','promoted_production')
+    AND (
+        NOT (
+            c.source_metadata ? 'artifact_status'
+            OR d.source_metadata ? 'artifact_status'
+            OR c.source_metadata ? 'artifact_id'
+            OR d.source_metadata ? 'artifact_id'
+            OR COALESCE(c.source_metadata->>'source_origin', '') IN ('generated','generated_artifact','content_factory')
+            OR COALESCE(d.source_metadata->>'source_origin', '') IN ('generated','generated_artifact','content_factory')
+        )
+        OR COALESCE(c.source_metadata->>'artifact_status', d.source_metadata->>'artifact_status')
+            IN ('published','promoted_production')
+    )
 """
 
 

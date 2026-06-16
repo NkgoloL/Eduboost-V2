@@ -13,6 +13,8 @@ from app.core.database import get_db
 from app.core.metrics import content_review_authorization_failures_total
 from app.core.envelope_route import EnvelopedRoute
 from app.domain.content_review_schemas import (
+    AnswerKeyVerificationRequest,
+    AnswerKeyVerificationResponse,
     ArtifactGovernanceStatusResponse,
     ArtifactPublishRequest,
     ArtifactReviewHistoryResponse,
@@ -31,6 +33,7 @@ from app.domain.content_review_schemas import (
     StateTransitionHistoryItem,
 )
 from app.models.content_factory import ContentGenerationArtifact
+from app.services.content_answer_key_verification import ContentAnswerKeyVerificationService
 from app.services.content_review_governance import (
     ContentReviewGovernanceService,
     ReviewConflictError,
@@ -85,7 +88,7 @@ async def get_review_actor(
     if raw_role in {"senior_reviewer", "curriculum_lead"}:
         permissions.update({"assign", "quarantine", "revise", "stale_read"})
     if raw_role == "curriculum_lead":
-        permissions.add("publish")
+        permissions.update({"publish", "answer_key_verify"})
 
     if not permissions:
         raise HTTPException(
@@ -304,6 +307,43 @@ async def create_artifact_revision(
         await session.rollback()
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
     except (ValueError, ReviewConflictError) as exc:
+        await session.rollback()
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=str(exc)) from exc
+
+
+@router.post(
+    "/artifacts/{artifact_id}/answer-key-verifications",
+    response_model=AnswerKeyVerificationResponse,
+    status_code=status.HTTP_201_CREATED,
+)
+async def record_answer_key_verification(
+    artifact_id: uuid.UUID,
+    request: AnswerKeyVerificationRequest,
+    session: AsyncSession = Depends(get_db),
+    actor: ReviewActor = Depends(get_review_actor),
+) -> AnswerKeyVerificationResponse:
+    actor.require("answer_key_verify")
+    service = ContentAnswerKeyVerificationService()
+    try:
+        result = await service.record(
+            session,
+            artifact_id=artifact_id,
+            expected_version=request.expected_version,
+            expected_artifact_hash=request.artifact_hash,
+            method=request.method,
+            passed=request.passed,
+            verifier_actor_id=actor.user_id,
+            idempotency_key=request.idempotency_key,
+            details=request.details,
+            verifier_provider=request.verifier_provider,
+            verifier_model=request.verifier_model,
+        )
+        await session.commit()
+        return AnswerKeyVerificationResponse(**result.__dict__)
+    except LookupError as exc:
+        await session.rollback()
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
+    except ValueError as exc:
         await session.rollback()
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=str(exc)) from exc
 

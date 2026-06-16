@@ -18,6 +18,9 @@
 **Actual Alembic head:** `20260615_2100_p17_reconcile`
 **Source baseline reviewed:** `Eduboost-V2-master(6).zip` plus the Phase 2R handover and review memorandum
 **Gate 2R.0 report:** `docs/roadmap/execution/atlas/phase_02r_gate_2r0_report.md`
+**baseline_capture_sha:** `81735c51a7cf71c8b9fa110d1d152fb8d7103278`
+**gate_report_commit_sha:** `8d972b5f`
+**eventual_gate_approval_commit_sha:** Not issued; Gate 2R.1 remains blocked
 **Phase owner:** Nkgolo Lebelo
 **Engineering owner:** Nkgolo Lebelo
 **Curriculum owner/reviewer:** Nkgolo Lebelo — self-review conflict disclosed; independent reproduction/review remains a closure compensating control

@@ -22,6 +22,7 @@ class CurriculumCoverageSnapshot(Base):
     source_commit_sha: Mapped[str | None] = mapped_column(String(64), nullable=True)
     target_total: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default="0")
     approved_total: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default="0")
+    published_total: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default="0")
     gap_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default="0")
     status: Mapped[str] = mapped_column(String(24), nullable=False)
     coverage_json: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False, default=dict)
@@ -30,6 +31,7 @@ class CurriculumCoverageSnapshot(Base):
     __table_args__ = (
         CheckConstraint("target_total >= 0", name="ck_p7_snapshot_target_nonnegative"),
         CheckConstraint("approved_total >= 0", name="ck_p7_snapshot_approved_nonnegative"),
+        CheckConstraint("published_total >= 0", name="ck_p7_snapshot_published_nonnegative"),
         CheckConstraint("gap_count >= 0", name="ck_p7_snapshot_gap_nonnegative"),
         Index("ix_p7_snapshot_scope_captured", "scope_id", "captured_at"),
     )

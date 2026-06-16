@@ -161,3 +161,27 @@ class ReviewAssignmentItemResponse(StrictReviewModel):
 
 class StaleReviewAssignmentResponse(ReviewAssignmentItemResponse):
     pass
+
+class AnswerKeyVerificationRequest(StrictReviewModel):
+    expected_version: int = Field(ge=1)
+    artifact_hash: str = Field(min_length=16, max_length=80)
+    method: Literal[
+        "deterministic_recompute",
+        "independent_model",
+        "educator_recalculation",
+    ]
+    passed: bool
+    idempotency_key: str = Field(min_length=8, max_length=160)
+    details: dict[str, Any]
+    verifier_provider: str | None = Field(default=None, max_length=80)
+    verifier_model: str | None = Field(default=None, max_length=120)
+
+
+class AnswerKeyVerificationResponse(StrictReviewModel):
+    verification_id: uuid.UUID
+    artifact_id: uuid.UUID
+    artifact_version: int
+    artifact_hash: str
+    method: str
+    passed: bool
+    idempotent_replay: bool = False

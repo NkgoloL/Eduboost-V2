@@ -265,7 +265,7 @@ class ContentFileArtifactImportService:
                     prompt_version="scope_scaffold_v1",
                     quality_score=0.9,
                     safety_status="passed",
-                    answer_key_verified=True,
+                    answer_key_verified=False,
                     caps_alignment_score=1.0,
                 )
                 session.add(artifact)
@@ -279,7 +279,7 @@ class ContentFileArtifactImportService:
                 artifact.prompt_version = "scope_scaffold_v1"
                 artifact.quality_score = 0.9
                 artifact.safety_status = "passed"
-                artifact.answer_key_verified = True
+                artifact.answer_key_verified = False
                 artifact.caps_alignment_score = 1.0
                 updated_count += 1
 

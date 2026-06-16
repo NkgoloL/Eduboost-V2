@@ -71,3 +71,7 @@ logs/seed_run_*.json
 # Large files tracked via Git LFS (see docs/release/README_LFS.md)
 # docs/release/backend_deletion_candidate_inventory.md is in LFS
 NUL
+# Local phase/reconciliation backups must not enter source archives
+.phase*-backup-*
+.reconciliation-backup-*
+.eduboost-reconciliation-backups/

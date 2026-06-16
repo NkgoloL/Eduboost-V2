@@ -12,7 +12,9 @@
 |---|---|
 | Canonical remote | `origin https://github.com/NkgoloL/Eduboost-V2.git` |
 | Canonical branch | `feature/atlas-phase-02r-authoritative-caps-corpus` |
-| Current HEAD | `81735c51a7cf71c8b9fa110d1d152fb8d7103278` |
+| baseline_capture_sha | `81735c51a7cf71c8b9fa110d1d152fb8d7103278` |
+| gate_report_commit_sha | `8d972b5f` |
+| eventual_gate_approval_commit_sha | Not issued; Gate 2R.1 remains blocked |
 | Base branch merge-base with `origin/master` | `4b3805b700869aaeacce4141bb565e1963777163` |
 | Worktree baseline | Dirty; existing reconciliation/source/evidence changes are present and must be reconciled before an immutable approval claim |
 | Actual Alembic head | `20260615_2100_p17_reconcile` |
@@ -50,7 +52,7 @@ The active checkout is not clean. Phase 2R may use the Phase 0 compensating rout
 | Phase 7 | Verification pending; isolated-port evidence exists but final audit/merge closure is still pending |
 | Combined Phase 1-7 gate | Not proven complete |
 
-`scripts/verify_phases_01_07_reconciliation.sh` compiled reconciliation modules, passed focused tests, Ruff, migration graph, schema integrity, control-set validation, static checks, and the Phase 2 smoke claim guard. It then exited after step 8 without running the advertised prior-phase fast regressions, OpenAPI check, import boundary check, or final pass banner. This is a Gate 2R.0 blocker for claiming combined Phase 1-7 reconciliation as passed.
+`scripts/verify_phases_01_07_reconciliation.sh` compiled reconciliation modules, passed focused tests, Ruff, migration graph, schema integrity, control-set validation, static checks, and the Phase 2 smoke claim guard at the original Gate 2R.0 capture. A remediation patch now makes the Phase 2 smoke claim guard explicit and allows later advertised steps to run. Full Phase 1-7 reconciliation still must be regenerated from a clean remediation candidate before it can be claimed as passing.
 
 ## 4. `02R` programme-tool compatibility findings
 
@@ -192,3 +194,15 @@ Gate 2R.0 produced the required discovery outputs, but the start gate is not clo
 - rights and language review remain self-reviewed with disclosed conflicts.
 
 The immutable approval transition must wait until these blockers are resolved and committed.
+
+## 14. Source-state clarification
+
+Future Gate 2R.0 closure evidence must be generated from a clean checkout of the remediation candidate. It must not be retrospectively attributed to `81735c51a7cf71c8b9fa110d1d152fb8d7103278`.
+
+Definitions:
+
+| Field | Meaning |
+|---|---|
+| `baseline_capture_sha` | Source state used for the first failed Gate 2R.0 discovery capture |
+| `gate_report_commit_sha` | Commit that recorded the failed Gate 2R.0 report |
+| `eventual_gate_approval_commit_sha` | Future dedicated approval commit that may set `PHASE_02R_START_APPROVED=true` only after all start-gate blockers close |

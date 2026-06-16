@@ -14,7 +14,7 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
-from app.models.content_factory import ContentArtifactSource, ContentGenerationArtifact
+from app.models.content_factory import ContentArtifactSource, ContentArtifactStatus, ContentGenerationArtifact
 from app.models.curriculum_expansion import (
     CurriculumCoverageSnapshot,
     CurriculumExpansionRun,
@@ -208,12 +208,13 @@ class CurriculumExpansionService:
         details: list[dict[str, Any]] = []
         target_total = 0
         approved_total = 0
+        published_total = 0
         for target in self.registry.get_scope_targets(scope_id):
             for key, target_count in sorted(target.targets.items()):
                 if not key.endswith(".approved"):
                     continue
                 layer = key.rsplit(".", 1)[0]
-                count = await self.db.scalar(
+                pipeline_count = await self.db.scalar(
                     select(func.count(ContentGenerationArtifact.artifact_id)).where(
                         ContentGenerationArtifact.scope_id == scope_id,
                         ContentGenerationArtifact.caps_ref == target.caps_ref,
@@ -221,27 +222,41 @@ class CurriculumExpansionService:
                         ContentGenerationArtifact.status.in_(self._eligible_statuses()),
                     )
                 )
-                count = int(count or 0)
+                published_count = await self.db.scalar(
+                    select(func.count(ContentGenerationArtifact.artifact_id)).where(
+                        ContentGenerationArtifact.scope_id == scope_id,
+                        ContentGenerationArtifact.caps_ref == target.caps_ref,
+                        ContentGenerationArtifact.content_layer == layer,
+                        ContentGenerationArtifact.status == ContentArtifactStatus.PUBLISHED,
+                    )
+                )
+                pipeline_count = int(pipeline_count or 0)
+                published_count = int(published_count or 0)
                 target_total += int(target_count)
-                approved_total += count
+                approved_total += pipeline_count
+                published_total += published_count
                 details.append(
                     {
                         "caps_ref": target.caps_ref,
                         "layer": layer,
                         "target": int(target_count),
-                        "approved_or_published": count,
-                        "gap": max(0, int(target_count) - count),
+                        "pipeline_ready": pipeline_count,
+                        "published": published_count,
+                        "pipeline_gap": max(0, int(target_count) - pipeline_count),
+                        "beta_gap": max(0, int(target_count) - published_count),
                     }
                 )
-        gap_count = sum(item["gap"] for item in details)
-        status = "green" if gap_count == 0 else ("amber" if approved_total else "red")
+        gap_count = sum(item["beta_gap"] for item in details)
+        status = "green" if gap_count == 0 else ("amber" if published_total else "red")
         return {
             "scope_id": scope_id,
             "language": scope.language,
             "target_total": target_total,
             "approved_total": approved_total,
+            "published_total": published_total,
             "gap_count": gap_count,
             "status": status,
+            "coverage_semantics": "beta readiness is based on published learner-eligible artifacts",
             "details": details,
         }
 
@@ -253,6 +268,7 @@ class CurriculumExpansionService:
             source_commit_sha=source_commit_sha,
             target_total=coverage["target_total"],
             approved_total=coverage["approved_total"],
+            published_total=coverage["published_total"],
             gap_count=coverage["gap_count"],
             status=coverage["status"],
             coverage_json=coverage,

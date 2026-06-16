@@ -70,7 +70,7 @@ docs/roadmap/execution/
 ├── phase_<NN>_execution_plan.md      # Before starting
 ├── phase_<NN>_implementation_report.md  # Before closure
 
-docs/release-evidence/phase-<NN>/
+docs/release-evidence/atlas/phase-<NN>/
 ├── phase_<NN>_evidence_index.md     # Before audit
 └── phase_<NN>_audit_report.md        # Independent verification
 ```

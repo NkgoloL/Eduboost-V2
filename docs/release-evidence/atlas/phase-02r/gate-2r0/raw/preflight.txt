@@ -1,0 +1,12 @@
++ bash scripts/preflight_phase02r.sh --gate 2R.0 --mode discovery
+Phase 02R identifier compatibility
+WARNING: validate_phase_control_sets.py remains numeric Phase 1-7 specific; 02R is handled by this validator
+PASS
+Phase 0 equivalent baseline
+WARNING: required runtime env vars are unset for local proof: DATABASE_URL, JWT_SECRET, ENCRYPTION_KEY
+WARNING: Redis CLI/server not found on PATH; Docker-backed Redis may still be available in later gates
+FAIL
+- worktree is not clean
+- non-production object-storage configuration is not present
+
+exit_code=1

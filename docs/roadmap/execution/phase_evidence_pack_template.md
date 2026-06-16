@@ -14,7 +14,7 @@
 **Environment identity:** <environment/version>  
 **Collection window:** <UTC start–end>  
 **Freeze timestamp:** <UTC>  
-**Evidence directory:** `docs/release-evidence/phase-<NN>/`
+**Evidence directory:** `docs/release-evidence/atlas/phase-<NN>/`
 
 > This index is the authoritative manifest for the phase evidence pack. Evidence not listed here is contextual only and cannot close a mandatory criterion.
 

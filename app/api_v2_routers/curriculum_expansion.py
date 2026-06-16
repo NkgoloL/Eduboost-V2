@@ -53,6 +53,7 @@ async def capture_snapshots(
             "language": row.language,
             "target_total": row.target_total,
             "approved_total": row.approved_total,
+            "published_total": row.published_total,
             "gap_count": row.gap_count,
             "status": row.status,
             "captured_at": row.captured_at,

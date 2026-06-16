@@ -23,6 +23,7 @@ from app.core.metrics import (
     content_review_state_transitions_total,
 )
 from app.models.content_factory import (
+    ContentAnswerKeyVerification,
     ContentArtifactSource,
     ContentArtifactStatus,
     ContentGenerationArtifact,
@@ -351,9 +352,12 @@ class ContentReviewGovernanceService:
                 self._assert_approval_competencies(artifact, approvals)
                 new_status = ContentArtifactStatus.APPROVED.value
                 artifact.approved_at = datetime.now(timezone.utc)
-                artifact.publication_eligible = True
-                if _value(artifact.artifact_type) == "diagnostic_item":
-                    artifact.answer_key_verified = True
+                if _value(artifact.artifact_type) == "diagnostic_item" or _value(artifact.content_layer) == "diagnostic_items":
+                    latest_verification = await self._latest_answer_key_verification(session, artifact)
+                    artifact.answer_key_verified = bool(latest_verification and latest_verification.passed)
+                    artifact.publication_eligible = artifact.answer_key_verified
+                else:
+                    artifact.publication_eligible = True
 
         if new_status != previous_status:
             artifact.status = ContentArtifactStatus(new_status)
@@ -371,6 +375,25 @@ class ContentReviewGovernanceService:
             )
         await session.flush()
         return self._decision_result(decision, artifact)
+
+    async def _latest_answer_key_verification(
+        self,
+        session: AsyncSession,
+        artifact: ContentGenerationArtifact,
+    ) -> ContentAnswerKeyVerification | None:
+        return await session.scalar(
+            select(ContentAnswerKeyVerification)
+            .where(
+                ContentAnswerKeyVerification.artifact_id == artifact.artifact_id,
+                ContentAnswerKeyVerification.artifact_version == artifact.version_number,
+                ContentAnswerKeyVerification.artifact_hash == artifact.artifact_hash,
+            )
+            .order_by(
+                ContentAnswerKeyVerification.created_at.desc(),
+                ContentAnswerKeyVerification.verification_id.desc(),
+            )
+            .limit(1)
+        )
 
     async def quarantine_artifact(
         self,
@@ -517,6 +540,11 @@ class ContentReviewGovernanceService:
             )
         if not artifact.publication_eligible:
             raise ReviewConflictError("Artifact is not publication eligible.")
+        if (
+            _value(artifact.artifact_type) == "diagnostic_item"
+            or _value(artifact.content_layer) == "diagnostic_items"
+        ) and not artifact.answer_key_verified:
+            raise ReviewConflictError("Diagnostic publication requires independent answer-key verification.")
         if artifact.approval_count < self.policy.quorum_threshold:
             raise ReviewConflictError("Publication requires the configured educator quorum.")
         blocking_count = await session.scalar(
