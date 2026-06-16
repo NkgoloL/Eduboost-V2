@@ -1,6 +1,6 @@
 # Phases 1–7 Reconciliation Plan
 
-**Status:** Active  
+**Status:** Active
 **Purpose:** Correct integration, evidence and governance defects identified by the 2026-06-15 review.
 
 ## Required sequence

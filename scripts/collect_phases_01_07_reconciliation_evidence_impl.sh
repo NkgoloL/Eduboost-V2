@@ -72,7 +72,7 @@ fi
 cat > "$REPORT" <<EOF
 # Phases 1–7 Reconciliation Implementation Report
 
-**Generated:** $(date -u +'%Y-%m-%dT%H:%M:%SZ')  
+**Generated:** $(date -u +'%Y-%m-%dT%H:%M:%SZ')
 **Status:** Verification and independent closure review required
 
 ## Changes applied
@@ -109,7 +109,7 @@ EOF
 cat > "$EVIDENCE_ROOT/evidence_index.md" <<EOF
 # Phases 1–7 Reconciliation Evidence Index
 
-**Generated:** $(date -u +'%Y-%m-%dT%H:%M:%SZ')  
+**Generated:** $(date -u +'%Y-%m-%dT%H:%M:%SZ')
 **Status:** Evidence collected; independent audit pending
 
 | Evidence | Path | Status |

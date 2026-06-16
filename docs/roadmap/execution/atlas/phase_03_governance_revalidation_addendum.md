@@ -1,6 +1,6 @@
 # Phase 3 Governance Revalidation Addendum
 
-**Status:** Required compensating review  
+**Status:** Required compensating review
 **Reason:** The Phase 3 execution plan remained Draft/TBD when substantive implementation began.
 
 This addendum does not retroactively claim that the start gate was satisfied. Before Phase 3 can return to `Verified Complete`, the programme must:

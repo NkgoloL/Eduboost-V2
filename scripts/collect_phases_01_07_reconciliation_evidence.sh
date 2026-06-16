@@ -35,10 +35,10 @@ if [[ ! -f "$REPORT" ]]; then
   cat > "$REPORT" <<EOF
 # Phases 1–7 Reconciliation Report
 
-**Generated:** $timestamp  
-**Branch:** \`$branch\`  
-**Source commit:** \`$commit\`  
-**Status:** Verification Failed — evidence collection incomplete  
+**Generated:** $timestamp
+**Branch:** \`$branch\`
+**Source commit:** \`$commit\`
+**Status:** Verification Failed — evidence collection incomplete
 **Collector exit code:** \`$collector_rc\`
 
 ## Summary
@@ -74,10 +74,10 @@ fi
 cat > "$INDEX" <<EOF
 # Phases 1–7 Reconciliation Evidence Index
 
-**Generated:** $timestamp  
-**Branch:** \`$branch\`  
-**Source commit:** \`$commit\`  
-**Status:** Incomplete — verification failed  
+**Generated:** $timestamp
+**Branch:** \`$branch\`
+**Source commit:** \`$commit\`
+**Status:** Incomplete — verification failed
 **Collector exit code:** \`$collector_rc\`
 
 | Evidence | Path | Status |
@@ -94,9 +94,9 @@ EOF
 cat > "$AUDIT" <<EOF
 # Phases 1–7 Reconciliation Audit
 
-**Generated:** $timestamp  
-**Source commit:** \`$commit\`  
-**Verdict:** Fail — mandatory verification did not complete  
+**Generated:** $timestamp
+**Source commit:** \`$commit\`
+**Verdict:** Fail — mandatory verification did not complete
 **Collector exit code:** \`$collector_rc\`
 
 The evidence collector terminated because a mandatory verification gate failed.

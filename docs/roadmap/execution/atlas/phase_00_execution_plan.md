@@ -1,7 +1,7 @@
 # Phase 0 Execution Plan — Environment and Reproducibility
 
-**Document version:** 1.0  
-**Status:** Draft — approval required before execution  
+**Document version:** 1.0
+**Status:** Draft — approval required before execution
 **Canonical path:** `docs/roadmap/execution/atlas/phase_00_execution_plan.md`
 
 `PHASE_00_START_APPROVED=false`
