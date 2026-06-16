@@ -1,34 +1,71 @@
 {
+  "authority_category": "Tier 1 official curriculum source",
+  "bounded_sample": {
+    "page_count": 3,
+    "pages": [
+      {
+        "char_count": 2370,
+        "page_number": 40,
+        "text_sha256": "be7291341c7a30b7fb1a149719da772520d41394ed1e5e243bdc3e62785a5f8f",
+        "warnings": [
+          "formula_or_arithmetic_expression_detected"
+        ]
+      },
+      {
+        "char_count": 1382,
+        "page_number": 41,
+        "text_sha256": "62af5bd6fbe90d361d8cbcb2361599e2d4f8f1ab2f2c17662dfed7bfdd0ecb07",
+        "warnings": [
+          "formula_or_arithmetic_expression_detected"
+        ]
+      },
+      {
+        "char_count": 1656,
+        "page_number": 42,
+        "text_sha256": "c52509cf523e9d24460071a32a9790b668a2c9a807467fe2728e0cd664dd5c90",
+        "warnings": [
+          "formula_or_arithmetic_expression_detected"
+        ]
+      }
+    ],
+    "start_page": 40,
+    "warnings": [
+      "page_40:formula_or_arithmetic_expression_detected",
+      "page_41:formula_or_arithmetic_expression_detected",
+      "page_42:formula_or_arithmetic_expression_detected"
+    ]
+  },
+  "canonical_source_url": "https://www.education.gov.za/LinkClick.aspx?fileticket=dr7zg3CFCr8%3d&tabid=572&portalid=0&mid=1568&forcedownload=true",
+  "controls": {
+    "corpus_activation_created": false,
+    "generated_or_published_lesson_created": false,
+    "production_retrieval_membership_created": false
+  },
+  "document_id": "caps_intermediate_phase_mathematics_grade4_6",
+  "extraction_engine": "pypdf",
+  "extraction_engine_identity": "5.4.0",
+  "generated_at": "2026-06-16T14:18:52Z",
+  "hash_verified": true,
+  "manifest_sha256": "7fec668a6d3b0ed4ae6974a9739970a2128a80553589f682ff5d5bffc02a783e",
+  "object_store_uri": "https://eduboostcaps06022047.blob.core.windows.net/caps-sources/intermediate/mathematics/en/caps_intermediate_phase_mathematics_grade4_6-7fec668a6d3b0ed4.pdf",
+  "original_sha256": "7fec668a6d3b0ed4ae6974a9739970a2128a80553589f682ff5d5bffc02a783e",
+  "passed": true,
+  "rights_exclusions": [
+    "embeddings",
+    "production_retrieval",
+    "derivative_generation",
+    "translation",
+    "redistribution",
+    "commercial_use"
+  ],
+  "rights_scope": [
+    "acquisition_for_controlled_review",
+    "secure_storage",
+    "bounded_extraction_test"
+  ],
   "schema_version": "1.0",
-  "validation_passed": false,
-  "validation_errors": [
-    "scope grade4_mathematics_en does not reference a source document"
-  ],
-  "documents_extracted": 0,
-  "errors": [
-    "caps_foundation_coding_and_robotics_en: caps_foundation_coding_and_robotics_en source file missing: data/caps/source_documents/raw/caps_foundation_coding_and_robotics_en.pdf",
-    "caps_foundation_home_language_en: caps_foundation_home_language_en source file missing: data/caps/source_documents/raw/caps_foundation_home_language_en.pdf",
-    "caps_foundation_life_skills_en: caps_foundation_life_skills_en source file missing: data/caps/source_documents/raw/caps_foundation_life_skills_en.pdf",
-    "caps_foundation_mathematics_en: caps_foundation_mathematics_en source file missing: data/caps/source_documents/raw/caps_foundation_mathematics_en.pdf",
-    "caps_foundation_mathematics_grade_r_en: caps_foundation_mathematics_grade_r_en source file missing: data/caps/source_documents/raw/caps_foundation_mathematics_grade_r_en.pdf",
-    "caps_foundation_sepedi_first_additional_language_en: caps_foundation_sepedi_first_additional_language_en source file missing: data/caps/source_documents/raw/caps_foundation_sepedi_first_additional_language_en.pdf",
-    "caps_intermediate_coding_and_robotics_en: caps_intermediate_coding_and_robotics_en source file missing: data/caps/source_documents/raw/caps_intermediate_coding_and_robotics_en.pdf",
-    "caps_intermediate_home_language_en: caps_intermediate_home_language_en source file missing: data/caps/source_documents/raw/caps_intermediate_home_language_en.pdf",
-    "caps_intermediate_life_skills_en: caps_intermediate_life_skills_en source file missing: data/caps/source_documents/raw/caps_intermediate_life_skills_en.pdf",
-    "caps_intermediate_natural_sciences_and_technology_en: caps_intermediate_natural_sciences_and_technology_en source file missing: data/caps/source_documents/raw/caps_intermediate_natural_sciences_and_technology_en.pdf",
-    "caps_intermediate_phase_mathematics_grade4_6: caps_intermediate_phase_mathematics_grade4_6 source file missing: data/caps/source_documents/raw/caps_intermediate_phase_mathematics_grade4_6.pdf",
-    "caps_intermediate_sepedi_first_additional_language_en: caps_intermediate_sepedi_first_additional_language_en source file missing: data/caps/source_documents/raw/caps_intermediate_sepedi_first_additional_language_en.pdf",
-    "caps_intermediate_social_sciences_en: caps_intermediate_social_sciences_en source file missing: data/caps/source_documents/raw/caps_intermediate_social_sciences_en.pdf",
-    "caps_senior_coding_and_robotics_en: caps_senior_coding_and_robotics_en source file missing: data/caps/source_documents/raw/caps_senior_coding_and_robotics_en.pdf",
-    "caps_senior_creative_arts_en: caps_senior_creative_arts_en source file missing: data/caps/source_documents/raw/caps_senior_creative_arts_en.pdf",
-    "caps_senior_economic_management_sciences_en: caps_senior_economic_management_sciences_en source file missing: data/caps/source_documents/raw/caps_senior_economic_management_sciences_en.pdf",
-    "caps_senior_home_language_en: caps_senior_home_language_en source file missing: data/caps/source_documents/raw/caps_senior_home_language_en.pdf",
-    "caps_senior_life_orientation_en: caps_senior_life_orientation_en source file missing: data/caps/source_documents/raw/caps_senior_life_orientation_en.pdf",
-    "caps_senior_mathematics_en: caps_senior_mathematics_en source file missing: data/caps/source_documents/raw/caps_senior_mathematics_en.pdf",
-    "caps_senior_natural_sciences_en: caps_senior_natural_sciences_en source file missing: data/caps/source_documents/raw/caps_senior_natural_sciences_en.pdf",
-    "caps_senior_sepedi_first_additional_language_en: caps_senior_sepedi_first_additional_language_en source file missing: data/caps/source_documents/raw/caps_senior_sepedi_first_additional_language_en.pdf",
-    "caps_senior_social_sciences_en: caps_senior_social_sciences_en source file missing: data/caps/source_documents/raw/caps_senior_social_sciences_en.pdf",
-    "caps_senior_technology_en: caps_senior_technology_en source file missing: data/caps/source_documents/raw/caps_senior_technology_en.pdf"
-  ],
-  "records": []
+  "source_path": "data/caps/source_documents/raw/caps_intermediate_phase_mathematics_grade4_6.pdf",
+  "title": "CAPS Intermediate Phase Mathematics",
+  "validation_errors": [],
+  "validation_warnings": []
 }

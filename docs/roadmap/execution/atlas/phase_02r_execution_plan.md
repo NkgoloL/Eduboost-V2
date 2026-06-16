@@ -22,9 +22,11 @@
 **Start-gate control:** `docs/roadmap/execution/atlas/phase_02r_start_gate_control.json`
 **baseline_capture_sha:** `81735c51a7cf71c8b9fa110d1d152fb8d7103278`
 **initial_gate_report_commit_sha:** `8d972b5f`
-**remediation_code_commit_sha:** `021c688ccb19a9c6baa874e4155c2dc6551bfce5`
-**evidence_run_source_sha:** `021c688ccb19a9c6baa874e4155c2dc6551bfce5`
+**remediation_candidate_sha:** `f039d523fe9c771383c36d61028297a6a808e820`
+**remediation_code_commit_sha:** `f039d523fe9c771383c36d61028297a6a808e820`
+**evidence_run_source_sha:** `f039d523fe9c771383c36d61028297a6a808e820`
 **evidence_commit_sha:** pending until the next evidence pack is committed
+**remote_branch_sha:** pending until pushed
 **eventual_gate_approval_commit_sha:** Not issued; Gate 2R.1 remains blocked
 **Phase owner:** Nkgolo Lebelo
 **Engineering owner:** Nkgolo Lebelo

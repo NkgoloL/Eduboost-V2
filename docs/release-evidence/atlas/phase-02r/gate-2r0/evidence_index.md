@@ -1,8 +1,8 @@
 # Phase 2R Gate 2R.0 Evidence Index
 
-**Generated:** 2026-06-16T12:37:32Z
-**Status:** Failed / remediation required
-**Source commit:** `021c688ccb19a9c6baa874e4155c2dc6551bfce5`
+**Generated:** 2026-06-16T14:08:07Z
+**Status:** Closed
+**Source commit:** `f039d523fe9c771383c36d61028297a6a808e820`
 
 | Evidence | Path |
 |---|---|

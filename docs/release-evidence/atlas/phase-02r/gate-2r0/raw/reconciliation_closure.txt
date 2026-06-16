@@ -3,7 +3,7 @@
 [1/10] Python and source-state identity
 Python 3.12.3
 feature/atlas-phase-02r-authoritative-caps-corpus
-021c688ccb19a9c6baa874e4155c2dc6551bfce5
+f039d523fe9c771383c36d61028297a6a808e820
 
 [2/10] Compile reconciliation modules
 
@@ -12,7 +12,7 @@ All checks passed!
 
 [4/10] Focused reconciliation tests
 .....                                                                    [100%]
-5 passed in 2.76s
+5 passed in 0.96s
 
 [5/10] Migration and schema gates
 Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
@@ -31,20 +31,20 @@ All checks passed!
 Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
 ........................................................................ [ 74%]
 ss.......................                                                [100%]
-95 passed, 2 skipped in 4.04s
+95 passed, 2 skipped in 1.49s
 Phase 1 registration OK: 8 mounted paths
 NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
 ................                                                         [100%]
-16 passed in 1.92s
+16 passed in 0.66s
 Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
 Phase 2 import/dimension contract OK
 .........                                                                [100%]
-9 passed in 2.95s
+9 passed in 1.63s
 ........................................................................ [ 75%]
 .......................                                                  [100%]
-95 passed in 4.36s
+95 passed in 1.48s
 ................                                                         [100%]
-16 passed in 1.47s
+16 passed in 0.70s
 Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
 Phase 3 route/policy contract OK: 10 routes
 
@@ -55,7 +55,7 @@ All checks passed!
 
 [3/8] Phase 4 unit, route, state-machine, and selection tests
 ..........                                                               [100%]
-10 passed in 11.62s
+10 passed in 4.19s
 
 [4/8] Migration graph and schema model integrity
 Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
@@ -66,8 +66,841 @@ Phase 4 routes OK: 10
 IRT watchdog registered as durable function and nightly cron
 
 [6/8] Fail-closed serving and rewrite-review contracts
-Traceback (most recent call last):
-  File "<stdin>", line 8, in <module>
-AssertionError
+No automatic answer-option mutation; rewrites return to Phase 3 review
 
-exit_code=1
+[7/8] Phase 1-3 fast regressions
+All checks passed!
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.41s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+................                                                         [100%]
+16 passed in 0.86s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 1.23s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 1.40s
+................                                                         [100%]
+16 passed in 0.68s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 3 route/policy contract OK: 10 routes
+
+[8/8] Legacy single-review path remains absent
+PHASE 4 FAST VERIFICATION PASSED
+Python: 3.12.3
+
+[1/8] Compile Phase 5 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 5 focused backend tests
+.............                                                            [100%]
+13 passed in 4.72s
+
+[4/8] Router, context, and migration contracts
+Tutor router registration OK: 5 canonical paths
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+
+[5/8] Privacy and fail-safe static contracts
+
+[6/8] Frontend type and component tests
+
+> eduboost-sa-frontend@1.0.0 type-check /home/nkgolol/Dev/SandBox/Eduboost-V2/app/frontend
+> tsc --noEmit
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.7 [39m[90m/home/nkgolol/Dev/SandBox/Eduboost-V2/app/frontend[39m
+
+ [32m✓[39m src/components/learner/__tests__/AiTutorChat.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 240[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m   Start at [22m 16:20:09
+[2m   Duration [22m 2.60s[2m (transform 121ms, setup 137ms, import 208ms, tests 240ms, environment 1.26s)[22m
+
+
+[7/8] Architecture, schema, and prior-phase regressions
+
+╔══╗─────────▶╔╗ ╔╗      ╔╗◀───┐
+╚╣╠╝◀─────┐  ╔╝╚╗║║────▶╔╝╚╗   │
+ ║║   ╔══╦══╦╩╗╔╝║║  ╔╦═╩╗╔╝╔═╦══╗
+ ║║╔══╣╔╗║╔╗║╔╣║ ║║ ╔╬╣╔╗║║ ║│║╔═╝
+╔╣╠╣║║║╚╝║╚╝║║║╚╗║╚═╝║║║║║╚╗║═╣║
+╚══╩╩╩╣╔═╩══╩╝╚═╝╚═══╩╩╝╚╩═╩╩═╩╝
+  └──▶║║                    ▲
+      ╚╝────────────────────┘
+
+
+---------
+Contracts
+---------
+
+Analyzed 434 files, 2261 dependencies.
+--------------------------------------
+
+FastAPI v2 routers should not import repositories directly KEPT
+POPIA router uses dependency layer rather than repository construction KEPT
+Lessons router uses authorization service layer rather than repositories KEPT
+
+Contracts: 3 kept, 0 broken.
+Schema integrity OK
+All checks passed!
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.43s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+................                                                         [100%]
+16 passed in 0.67s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 1.23s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 1.36s
+................                                                         [100%]
+16 passed in 0.66s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 3 route/policy contract OK: 10 routes
+
+[1/8] Compile Phase 4 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 4 unit, route, state-machine, and selection tests
+..........                                                               [100%]
+10 passed in 4.71s
+
+[4/8] Migration graph and schema model integrity
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Schema integrity OK
+
+[5/8] Router and ARQ registration
+Phase 4 routes OK: 10
+IRT watchdog registered as durable function and nightly cron
+
+[6/8] Fail-closed serving and rewrite-review contracts
+No automatic answer-option mutation; rewrites return to Phase 3 review
+
+[7/8] Phase 1-3 fast regressions
+All checks passed!
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.38s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+................                                                         [100%]
+16 passed in 0.88s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 1.51s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 1.32s
+................                                                         [100%]
+16 passed in 0.94s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 3 route/policy contract OK: 10 routes
+
+[8/8] Legacy single-review path remains absent
+PHASE 4 FAST VERIFICATION PASSED
+
+[8/8] Atlas governance paths
+PHASE 5 FAST VERIFICATION PASSED
+== Phase 6 fast verification ==
+Python 3.12.3
+All checks passed!
+......                                                                   [100%]
+6 passed in 4.06s
+Phase 6 router/job registration OK: 3 key paths
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Schema integrity OK
+All checks passed!
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.30s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+................                                                         [100%]
+16 passed in 0.67s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 1.21s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 1.54s
+................                                                         [100%]
+16 passed in 0.74s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 3 route/policy contract OK: 10 routes
+
+[1/8] Compile Phase 4 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 4 unit, route, state-machine, and selection tests
+..........                                                               [100%]
+10 passed in 4.22s
+
+[4/8] Migration graph and schema model integrity
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Schema integrity OK
+
+[5/8] Router and ARQ registration
+Phase 4 routes OK: 10
+IRT watchdog registered as durable function and nightly cron
+
+[6/8] Fail-closed serving and rewrite-review contracts
+No automatic answer-option mutation; rewrites return to Phase 3 review
+
+[7/8] Phase 1-3 fast regressions
+All checks passed!
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.77s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+................                                                         [100%]
+16 passed in 0.71s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 1.25s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 1.40s
+................                                                         [100%]
+16 passed in 0.72s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 3 route/policy contract OK: 10 routes
+
+[8/8] Legacy single-review path remains absent
+PHASE 4 FAST VERIFICATION PASSED
+Python: 3.12.3
+
+[1/8] Compile Phase 5 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 5 focused backend tests
+.............                                                            [100%]
+13 passed in 4.13s
+
+[4/8] Router, context, and migration contracts
+Tutor router registration OK: 5 canonical paths
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+
+[5/8] Privacy and fail-safe static contracts
+
+[6/8] Frontend type and component tests
+
+> eduboost-sa-frontend@1.0.0 type-check /home/nkgolol/Dev/SandBox/Eduboost-V2/app/frontend
+> tsc --noEmit
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.7 [39m[90m/home/nkgolol/Dev/SandBox/Eduboost-V2/app/frontend[39m
+
+ [32m✓[39m src/components/learner/__tests__/AiTutorChat.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 256[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m   Start at [22m 16:22:40
+[2m   Duration [22m 2.40s[2m (transform 142ms, setup 179ms, import 271ms, tests 256ms, environment 1.12s)[22m
+
+
+[7/8] Architecture, schema, and prior-phase regressions
+
+╔══╗─────────▶╔╗ ╔╗      ╔╗◀───┐
+╚╣╠╝◀─────┐  ╔╝╚╗║║────▶╔╝╚╗   │
+ ║║   ╔══╦══╦╩╗╔╝║║  ╔╦═╩╗╔╝╔═╦══╗
+ ║║╔══╣╔╗║╔╗║╔╣║ ║║ ╔╬╣╔╗║║ ║│║╔═╝
+╔╣╠╣║║║╚╝║╚╝║║║╚╗║╚═╝║║║║║╚╗║═╣║
+╚══╩╩╩╣╔═╩══╩╝╚═╝╚═══╩╩╝╚╩═╩╩═╩╝
+  └──▶║║                    ▲
+      ╚╝────────────────────┘
+
+
+---------
+Contracts
+---------
+
+Analyzed 434 files, 2261 dependencies.
+--------------------------------------
+
+FastAPI v2 routers should not import repositories directly KEPT
+POPIA router uses dependency layer rather than repository construction KEPT
+Lessons router uses authorization service layer rather than repositories KEPT
+
+Contracts: 3 kept, 0 broken.
+Schema integrity OK
+All checks passed!
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.50s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+................                                                         [100%]
+16 passed in 0.70s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 1.29s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 1.39s
+................                                                         [100%]
+16 passed in 0.64s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 3 route/policy contract OK: 10 routes
+
+[1/8] Compile Phase 4 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 4 unit, route, state-machine, and selection tests
+..........                                                               [100%]
+10 passed in 4.23s
+
+[4/8] Migration graph and schema model integrity
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Schema integrity OK
+
+[5/8] Router and ARQ registration
+Phase 4 routes OK: 10
+IRT watchdog registered as durable function and nightly cron
+
+[6/8] Fail-closed serving and rewrite-review contracts
+No automatic answer-option mutation; rewrites return to Phase 3 review
+
+[7/8] Phase 1-3 fast regressions
+All checks passed!
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.27s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+................                                                         [100%]
+16 passed in 0.61s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 1.23s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 1.46s
+................                                                         [100%]
+16 passed in 0.78s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 3 route/policy contract OK: 10 routes
+
+[8/8] Legacy single-review path remains absent
+PHASE 4 FAST VERIFICATION PASSED
+
+[8/8] Atlas governance paths
+PHASE 5 FAST VERIFICATION PASSED
+PHASE 6 FAST VERIFICATION PASSED
+python=/home/nkgolol/Dev/SandBox/Eduboost-V2/.venv/bin/python
+version=3.12.3
+== compile ==
+== release-blocking ruff ==
+All checks passed!
+== Phase 7 focused tests ==
+.................                                                        [100%]
+17 passed in 4.06s
+== registry ==
+{
+  "active_scopes": 1,
+  "scopes": 1,
+  "scopes_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/data/content_factory/scopes.json",
+  "targets": 3,
+  "targets_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/data/content_factory/coverage_targets.json"
+}
+== router and ARQ registration ==
+routes=7
+/admin/curriculum-expansion/coverage/snapshots
+/admin/curriculum-expansion/coverage/{scope_id}
+/admin/curriculum-expansion/plans
+/admin/curriculum-expansion/training-manifests
+/admin/curriculum-expansion/training-manifests/{manifest_id}
+/admin/curriculum-expansion/training-manifests/{manifest_id}/decision
+/admin/curriculum-expansion/training-manifests/{manifest_id}/export
+weekly_snapshot_job=registered
+== deterministic training-readiness dry run ==
+{
+  "artifact_count": 1,
+  "dataset": "/tmp/tmp.UCYPvbgtoN/dataset.jsonl",
+  "dataset_version": "phase7-synthetic-v1",
+  "dry_run": true,
+  "status": "ready",
+  "training_executed": false
+}
+== migration graph ==
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+== schema integrity ==
+Schema integrity OK
+== OpenAPI drift ==
+== import boundaries ==
+
+╔══╗─────────▶╔╗ ╔╗      ╔╗◀───┐
+╚╣╠╝◀─────┐  ╔╝╚╗║║────▶╔╝╚╗   │
+ ║║   ╔══╦══╦╩╗╔╝║║  ╔╦═╩╗╔╝╔═╦══╗
+ ║║╔══╣╔╗║╔╗║╔╣║ ║║ ╔╬╣╔╗║║ ║│║╔═╝
+╔╣╠╣║║║╚╝║╚╝║║║╚╗║╚═╝║║║║║╚╗║═╣║
+╚══╩╩╩╣╔═╩══╩╝╚═╝╚═══╩╩╝╚╩═╩╩═╩╝
+  └──▶║║                    ▲
+      ╚╝────────────────────┘
+
+
+---------
+Contracts
+---------
+
+Analyzed 434 files, 2261 dependencies.
+--------------------------------------
+
+FastAPI v2 routers should not import repositories directly KEPT
+POPIA router uses dependency layer rather than repository construction KEPT
+Lessons router uses authorization service layer rather than repositories KEPT
+
+Contracts: 3 kept, 0 broken.
+== Atlas governance paths ==
+== prior-phase fast regressions ==
+All checks passed!
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.45s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+................                                                         [100%]
+16 passed in 0.86s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 1.24s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 1.39s
+................                                                         [100%]
+16 passed in 0.69s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 3 route/policy contract OK: 10 routes
+
+[1/8] Compile Phase 4 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 4 unit, route, state-machine, and selection tests
+..........                                                               [100%]
+10 passed in 4.48s
+
+[4/8] Migration graph and schema model integrity
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Schema integrity OK
+
+[5/8] Router and ARQ registration
+Phase 4 routes OK: 10
+IRT watchdog registered as durable function and nightly cron
+
+[6/8] Fail-closed serving and rewrite-review contracts
+No automatic answer-option mutation; rewrites return to Phase 3 review
+
+[7/8] Phase 1-3 fast regressions
+All checks passed!
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.52s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+................                                                         [100%]
+16 passed in 0.68s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 1.15s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 1.31s
+................                                                         [100%]
+16 passed in 0.78s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 3 route/policy contract OK: 10 routes
+
+[8/8] Legacy single-review path remains absent
+PHASE 4 FAST VERIFICATION PASSED
+Python: 3.12.3
+
+[1/8] Compile Phase 5 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 5 focused backend tests
+.............                                                            [100%]
+13 passed in 3.91s
+
+[4/8] Router, context, and migration contracts
+Tutor router registration OK: 5 canonical paths
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+
+[5/8] Privacy and fail-safe static contracts
+
+[6/8] Frontend type and component tests
+
+> eduboost-sa-frontend@1.0.0 type-check /home/nkgolol/Dev/SandBox/Eduboost-V2/app/frontend
+> tsc --noEmit
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.7 [39m[90m/home/nkgolol/Dev/SandBox/Eduboost-V2/app/frontend[39m
+
+ [32m✓[39m src/components/learner/__tests__/AiTutorChat.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 243[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m   Start at [22m 16:25:11
+[2m   Duration [22m 2.31s[2m (transform 132ms, setup 163ms, import 239ms, tests 243ms, environment 1.11s)[22m
+
+
+[7/8] Architecture, schema, and prior-phase regressions
+
+╔══╗─────────▶╔╗ ╔╗      ╔╗◀───┐
+╚╣╠╝◀─────┐  ╔╝╚╗║║────▶╔╝╚╗   │
+ ║║   ╔══╦══╦╩╗╔╝║║  ╔╦═╩╗╔╝╔═╦══╗
+ ║║╔══╣╔╗║╔╗║╔╣║ ║║ ╔╬╣╔╗║║ ║│║╔═╝
+╔╣╠╣║║║╚╝║╚╝║║║╚╗║╚═╝║║║║║╚╗║═╣║
+╚══╩╩╩╣╔═╩══╩╝╚═╝╚═══╩╩╝╚╩═╩╩═╩╝
+  └──▶║║                    ▲
+      ╚╝────────────────────┘
+
+
+---------
+Contracts
+---------
+
+Analyzed 434 files, 2261 dependencies.
+--------------------------------------
+
+FastAPI v2 routers should not import repositories directly KEPT
+POPIA router uses dependency layer rather than repository construction KEPT
+Lessons router uses authorization service layer rather than repositories KEPT
+
+Contracts: 3 kept, 0 broken.
+Schema integrity OK
+All checks passed!
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.36s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+................                                                         [100%]
+16 passed in 0.66s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 1.24s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 1.54s
+................                                                         [100%]
+16 passed in 0.64s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 3 route/policy contract OK: 10 routes
+
+[1/8] Compile Phase 4 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 4 unit, route, state-machine, and selection tests
+..........                                                               [100%]
+10 passed in 4.19s
+
+[4/8] Migration graph and schema model integrity
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Schema integrity OK
+
+[5/8] Router and ARQ registration
+Phase 4 routes OK: 10
+IRT watchdog registered as durable function and nightly cron
+
+[6/8] Fail-closed serving and rewrite-review contracts
+No automatic answer-option mutation; rewrites return to Phase 3 review
+
+[7/8] Phase 1-3 fast regressions
+All checks passed!
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.31s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+................                                                         [100%]
+16 passed in 0.71s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 1.34s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 1.62s
+................                                                         [100%]
+16 passed in 0.70s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 3 route/policy contract OK: 10 routes
+
+[8/8] Legacy single-review path remains absent
+PHASE 4 FAST VERIFICATION PASSED
+
+[8/8] Atlas governance paths
+PHASE 5 FAST VERIFICATION PASSED
+== Phase 6 fast verification ==
+Python 3.12.3
+All checks passed!
+......                                                                   [100%]
+6 passed in 4.12s
+Phase 6 router/job registration OK: 3 key paths
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Schema integrity OK
+All checks passed!
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.42s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+................                                                         [100%]
+16 passed in 0.74s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 1.20s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 1.16s
+................                                                         [100%]
+16 passed in 0.70s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 3 route/policy contract OK: 10 routes
+
+[1/8] Compile Phase 4 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 4 unit, route, state-machine, and selection tests
+..........                                                               [100%]
+10 passed in 5.22s
+
+[4/8] Migration graph and schema model integrity
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Schema integrity OK
+
+[5/8] Router and ARQ registration
+Phase 4 routes OK: 10
+IRT watchdog registered as durable function and nightly cron
+
+[6/8] Fail-closed serving and rewrite-review contracts
+No automatic answer-option mutation; rewrites return to Phase 3 review
+
+[7/8] Phase 1-3 fast regressions
+All checks passed!
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.35s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+................                                                         [100%]
+16 passed in 0.58s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 0.97s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 1.07s
+................                                                         [100%]
+16 passed in 0.54s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 3 route/policy contract OK: 10 routes
+
+[8/8] Legacy single-review path remains absent
+PHASE 4 FAST VERIFICATION PASSED
+Python: 3.12.3
+
+[1/8] Compile Phase 5 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 5 focused backend tests
+.............                                                            [100%]
+13 passed in 3.19s
+
+[4/8] Router, context, and migration contracts
+Tutor router registration OK: 5 canonical paths
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+
+[5/8] Privacy and fail-safe static contracts
+
+[6/8] Frontend type and component tests
+
+> eduboost-sa-frontend@1.0.0 type-check /home/nkgolol/Dev/SandBox/Eduboost-V2/app/frontend
+> tsc --noEmit
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.7 [39m[90m/home/nkgolol/Dev/SandBox/Eduboost-V2/app/frontend[39m
+
+ [32m✓[39m src/components/learner/__tests__/AiTutorChat.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 233[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m   Start at [22m 16:27:34
+[2m   Duration [22m 1.79s[2m (transform 110ms, setup 121ms, import 180ms, tests 233ms, environment 772ms)[22m
+
+
+[7/8] Architecture, schema, and prior-phase regressions
+
+╔══╗─────────▶╔╗ ╔╗      ╔╗◀───┐
+╚╣╠╝◀─────┐  ╔╝╚╗║║────▶╔╝╚╗   │
+ ║║   ╔══╦══╦╩╗╔╝║║  ╔╦═╩╗╔╝╔═╦══╗
+ ║║╔══╣╔╗║╔╗║╔╣║ ║║ ╔╬╣╔╗║║ ║│║╔═╝
+╔╣╠╣║║║╚╝║╚╝║║║╚╗║╚═╝║║║║║╚╗║═╣║
+╚══╩╩╩╣╔═╩══╩╝╚═╝╚═══╩╩╝╚╩═╩╩═╩╝
+  └──▶║║                    ▲
+      ╚╝────────────────────┘
+
+
+---------
+Contracts
+---------
+
+Analyzed 434 files, 2261 dependencies.
+--------------------------------------
+
+FastAPI v2 routers should not import repositories directly KEPT
+POPIA router uses dependency layer rather than repository construction KEPT
+Lessons router uses authorization service layer rather than repositories KEPT
+
+Contracts: 3 kept, 0 broken.
+Schema integrity OK
+All checks passed!
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.77s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+................                                                         [100%]
+16 passed in 0.93s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 1.29s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 1.29s
+................                                                         [100%]
+16 passed in 0.77s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 3 route/policy contract OK: 10 routes
+
+[1/8] Compile Phase 4 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 4 unit, route, state-machine, and selection tests
+..........                                                               [100%]
+10 passed in 4.64s
+
+[4/8] Migration graph and schema model integrity
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Schema integrity OK
+
+[5/8] Router and ARQ registration
+Phase 4 routes OK: 10
+IRT watchdog registered as durable function and nightly cron
+
+[6/8] Fail-closed serving and rewrite-review contracts
+No automatic answer-option mutation; rewrites return to Phase 3 review
+
+[7/8] Phase 1-3 fast regressions
+All checks passed!
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.65s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+................                                                         [100%]
+16 passed in 0.88s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 1.95s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 1.83s
+................                                                         [100%]
+16 passed in 0.76s
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Phase 3 route/policy contract OK: 10 routes
+
+[8/8] Legacy single-review path remains absent
+PHASE 4 FAST VERIFICATION PASSED
+
+[8/8] Atlas governance paths
+PHASE 5 FAST VERIFICATION PASSED
+PHASE 6 FAST VERIFICATION PASSED
+PHASE 7 FAST VERIFICATION PASSED
+
+[10/10] OpenAPI and import boundaries
+
+╔══╗─────────▶╔╗ ╔╗      ╔╗◀───┐
+╚╣╠╝◀─────┐  ╔╝╚╗║║────▶╔╝╚╗   │
+ ║║   ╔══╦══╦╩╗╔╝║║  ╔╦═╩╗╔╝╔═╦══╗
+ ║║╔══╣╔╗║╔╗║╔╣║ ║║ ╔╬╣╔╗║║ ║│║╔═╝
+╔╣╠╣║║║╚╝║╚╝║║║╚╗║╚═╝║║║║║╚╗║═╣║
+╚══╩╩╩╣╔═╩══╩╝╚═╝╚═══╩╩╝╚╩═╩╩═╩╝
+  └──▶║║                    ▲
+      ╚╝────────────────────┘
+
+
+---------
+Contracts
+---------
+
+Analyzed 434 files, 2261 dependencies.
+--------------------------------------
+
+FastAPI v2 routers should not import repositories directly KEPT
+POPIA router uses dependency layer rather than repository construction KEPT
+Lessons router uses authorization service layer rather than repositories KEPT
+
+Contracts: 3 kept, 0 broken.
+PHASES 1-7 RECONCILIATION FAST VERIFICATION PASSED
+
+exit_code=0

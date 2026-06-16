@@ -1,14 +1,10 @@
 + bash scripts/preflight_phase02r.sh --gate 2R.0 --mode discovery
 Phase 02R identifier compatibility
-WARNING: validate_phase_control_sets.py remains numeric Phase 1-7 specific; 02R is handled by this validator
 PASS
 Phase 0 equivalent baseline
 WARNING: required runtime env vars are unset for local proof: DATABASE_URL, JWT_SECRET, ENCRYPTION_KEY
 WARNING: Redis CLI/server not found on PATH; Docker-backed Redis may still be available in later gates
-FAIL
-- PHASE02R_OBJECT_STORAGE_BACKEND is not configured
-- PHASE02R_OBJECT_STORAGE_PROBE_DIR is not configured
-- PHASE02R_OBJECT_STORAGE_BACKUP_DIR is not configured
-- PHASE02R_OBJECT_STORAGE_SCOPED_TOKEN is not configured
+PASS
+PHASE 02R GATE 2R.0 PREFLIGHT PASSED
 
-exit_code=1
+exit_code=0

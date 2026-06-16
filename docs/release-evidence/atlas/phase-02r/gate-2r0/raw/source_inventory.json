@@ -1,14 +1,12 @@
 {
   "schema_version": "1.0",
-  "validation_passed": false,
-  "validation_errors": [
-    "scope grade4_mathematics_en does not reference a source document"
-  ],
+  "validation_passed": true,
+  "validation_errors": [],
   "summary": {
-    "missing_source_document": 1
+    "ok": 1
   },
   "status_summary": {
-    "missing": 1
+    "topic_map_approved": 1
   },
   "rows": [
     {
@@ -16,14 +14,14 @@
       "grade": 4,
       "phase": "Intermediate",
       "subject": "Mathematics",
-      "document_id": null,
-      "source_status": "missing",
-      "has_url": false,
-      "has_hash": false,
-      "has_object_uri": false,
-      "has_reviewed_topic_map": false,
-      "is_generation_ready": false,
-      "gap_reason": "missing_source_document"
+      "document_id": "caps_intermediate_phase_mathematics_grade4_6",
+      "source_status": "topic_map_approved",
+      "has_url": true,
+      "has_hash": true,
+      "has_object_uri": true,
+      "has_reviewed_topic_map": true,
+      "is_generation_ready": true,
+      "gap_reason": "ok"
     }
   ]
 }
