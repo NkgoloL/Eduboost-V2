@@ -12,6 +12,7 @@ import hashlib
 import json
 import os
 import sys
+import uuid
 from datetime import UTC, datetime
 from pathlib import Path
 from urllib.parse import urlparse
@@ -85,7 +86,7 @@ def prove() -> dict[str, object]:
         config=Config(signature_version="s3v4", s3={"addressing_style": "path"}),
     )
 
-    run_id = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
+    run_id = f"{datetime.now(UTC).strftime('%Y%m%dT%H%M%SZ')}-{uuid.uuid4().hex[:8]}"
     key = f"phase02r/gate-2r0/{run_id}/original.txt"
     manifest_key = f"phase02r/gate-2r0/{run_id}/manifest.json"
     original = b"phase02r official-source storage feasibility proof\n"

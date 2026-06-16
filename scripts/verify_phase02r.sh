@@ -38,7 +38,7 @@ echo "== Source manifest and inventory sample =="
 "$PYTHON_BIN" scripts/curriculum/source_inventory.py --json
 
 echo "== Non-production extraction sample =="
-"$PYTHON_BIN" scripts/curriculum/extract_caps_source_text.py --json
+"$PYTHON_BIN" scripts/curriculum/extract_caps_source_sample.py --json
 
 echo "== Phase 1-7 reconciliation fast gate =="
 bash scripts/verify_phases_01_07_reconciliation.sh
