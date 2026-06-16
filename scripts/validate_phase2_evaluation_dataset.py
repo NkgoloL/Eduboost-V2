@@ -7,11 +7,7 @@ import json
 from pathlib import Path
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("dataset")
-    args = parser.parse_args()
-    payload = json.loads(Path(args.dataset).read_text(encoding="utf-8"))
+def validate_dataset_payload(payload: dict) -> list[str]:
     cases = payload.get("cases") or []
     errors: list[str] = []
     if payload.get("status") != "approved":
@@ -29,6 +25,18 @@ def main() -> int:
     negative = sum(1 for case in cases if not (case.get("expected_chunk_ids") or []))
     if negative < 3:
         errors.append("at least 3 negative/exclusion cases are required")
+    return errors
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("dataset")
+    args = parser.parse_args()
+    payload = json.loads(Path(args.dataset).read_text(encoding="utf-8"))
+    errors = validate_dataset_payload(payload)
+    cases = payload.get("cases") or []
+    languages = {str((case.get("filters") or {}).get("language") or "") for case in cases}
+    negative = sum(1 for case in cases if not (case.get("expected_chunk_ids") or []))
     if errors:
         print("Phase 2 closure dataset invalid:")
         for error in errors:

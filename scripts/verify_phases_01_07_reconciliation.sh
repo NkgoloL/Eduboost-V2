@@ -4,6 +4,8 @@ set -euo pipefail
 ROOT="${1:-.}"
 ROOT="$(cd "$ROOT" && pwd)"
 cd "$ROOT"
+MODE="${PHASE_RECONCILIATION_MODE:-closure}"
+[[ "$MODE" == "closure" || "$MODE" == "discovery" ]] || { echo "PHASE_RECONCILIATION_MODE must be closure or discovery." >&2; exit 2; }
 
 PYTHON_BIN="${PYTHON_BIN:-$ROOT/.venv/bin/python}"
 if [[ ! -x "$PYTHON_BIN" ]]; then
@@ -63,6 +65,10 @@ if "$PYTHON_BIN" -m ruff --version >/dev/null 2>&1; then
     tests/reconciliation \
     --select E9,F63,F7,F82,F821
 else
+  if [[ "$MODE" == "closure" ]]; then
+    echo "Ruff is required for closure reconciliation." >&2
+    exit 3
+  fi
   echo "WARNING: Ruff is not installed; canonical CI must run this gate." >&2
 fi
 
@@ -114,18 +120,31 @@ if [[ "${RUN_PHASE_REGRESSION:-1}" == "1" ]]; then
     bash "$script"
   done
 else
+  if [[ "$MODE" == "closure" ]]; then
+    echo "RUN_PHASE_REGRESSION=0 is prohibited for closure reconciliation." >&2
+    exit 9
+  fi
   echo "RUN_PHASE_REGRESSION=0: prior-phase fast gates skipped by operator."
 fi
 
 printf '\n[10/10] OpenAPI and import boundaries\n'
 if [[ -f scripts/generate_openapi.py ]]; then
   "$PYTHON_BIN" scripts/generate_openapi.py --check
+else
+  if [[ "$MODE" == "closure" ]]; then
+    echo "scripts/generate_openapi.py is required for closure reconciliation." >&2
+    exit 10
+  fi
 fi
 if "$PYTHON_BIN" -m importlinter --version >/dev/null 2>&1; then
   "$PYTHON_BIN" -m importlinter --config .importlinter
 elif command -v lint-imports >/dev/null 2>&1; then
   lint-imports
 else
+  if [[ "$MODE" == "closure" ]]; then
+    echo "import-linter/lint-imports is required for closure reconciliation." >&2
+    exit 10
+  fi
   echo "WARNING: import-linter unavailable; canonical CI must run this gate." >&2
 fi
 

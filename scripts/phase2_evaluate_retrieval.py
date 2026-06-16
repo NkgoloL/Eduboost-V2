@@ -18,6 +18,7 @@ from app.core.config import settings
 from app.services.semantic_retrieval import SemanticRetrievalService, build_embedding_provider
 from app.services.semantic_retrieval.evaluation import evaluate_retrieval
 from app.services.semantic_retrieval.types import EvaluationCase
+from scripts.validate_phase2_evaluation_dataset import validate_dataset_payload
 
 
 def parse_args() -> argparse.Namespace:
@@ -36,10 +37,12 @@ async def main() -> int:
     args = parse_args()
     payload = json.loads(Path(args.dataset).read_text(encoding="utf-8"))
     if not args.allow_smoke:
-        if payload.get("status") != "approved" or payload.get("closure_eligible") is False:
+        if payload.get("status") != "approved" or payload.get("closure_eligible") is not True:
             raise SystemExit("Dataset is not approved for retrieval closure; use --allow-smoke only for diagnostics.")
-        if len(payload.get("cases") or []) < 12:
-            raise SystemExit("Closure retrieval evaluation requires at least 12 approved cases.")
+        validation_errors = validate_dataset_payload(payload)
+        if validation_errors:
+            details = "; ".join(validation_errors)
+            raise SystemExit(f"Dataset failed canonical retrieval closure validation: {details}")
     cases = [EvaluationCase.model_validate(case) for case in payload["cases"]]
     thresholds = payload.get("thresholds") or {}
     engine = create_async_engine(settings.DATABASE_URL, pool_pre_ping=True)

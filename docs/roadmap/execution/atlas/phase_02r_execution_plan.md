@@ -17,9 +17,14 @@
 **Base commit SHA:** `4b3805b700869aaeacce4141bb565e1963777163`
 **Actual Alembic head:** `20260615_2100_p17_reconcile`
 **Source baseline reviewed:** `Eduboost-V2-master(6).zip` plus the Phase 2R handover and review memorandum
-**Gate 2R.0 report:** `docs/roadmap/execution/atlas/phase_02r_gate_2r0_report.md`
+**Gate 2R.0 initial report:** `docs/roadmap/execution/atlas/phase_02r_gate_2r0_initial_report.md`
+**Gate 2R.0 closure report:** `docs/roadmap/execution/atlas/phase_02r_gate_2r0_closure_report.md`
+**Start-gate control:** `docs/roadmap/execution/atlas/phase_02r_start_gate_control.json`
 **baseline_capture_sha:** `81735c51a7cf71c8b9fa110d1d152fb8d7103278`
-**gate_report_commit_sha:** `8d972b5f`
+**initial_gate_report_commit_sha:** `8d972b5f`
+**remediation_code_commit_sha:** pending until this remediation is committed
+**evidence_run_source_sha:** pending until the next collector run
+**evidence_commit_sha:** pending until the next evidence pack is committed
 **eventual_gate_approval_commit_sha:** Not issued; Gate 2R.1 remains blocked
 **Phase owner:** Nkgolo Lebelo
 **Engineering owner:** Nkgolo Lebelo
@@ -37,7 +42,7 @@
 PHASE_02R_START_APPROVED=false
 ```
 
-> **Control statement:** Read-only discovery and planning work in Gate 2R.0 is permitted while `PHASE_02R_START_APPROVED=false`. No substantive production implementation in Gates 2R.1–2R.8 may begin until Gate 2R.0 is complete, this plan is reviewed and approved, the approved plan is committed to the canonical repository, and the immutable approval commit is recorded. The scripts, schema, services, corpus, generated content, evidence, audit, merge, and closure described here are planned deliverables—not completed work.
+> **Control statement:** Read-only discovery and planning work in Gate 2R.0 is permitted while `PHASE_02R_START_APPROVED=false` and `phase_02r_start_gate_control.json.start_approved=false`. No substantive production implementation in Gates 2R.1–2R.8 may begin until Gate 2R.0 is complete, this plan is reviewed and approved, the approved plan is committed to the canonical repository, and the immutable approval commit is recorded. The scripts, schema, services, corpus, generated content, evidence, audit, merge, and closure described here are planned deliverables—not completed work.
 
 
 ## Document amendments
@@ -2088,7 +2093,7 @@ Documentation Complete
 - [x] `PHASE_02R_START_APPROVED=false` has not been changed prematurely.
 - [ ] Canonical branch, remote, base SHA, and clean worktree are recorded. Branch/remote/base are recorded; clean worktree is blocked by existing dirty reconciliation/source/evidence changes.
 - [x] Actual Alembic head and migration graph are recorded.
-- [ ] Phase 1–7 actual state and relevant audit blockers are reconciled. Actual state is recorded in the Gate 2R.0 report; the combined verifier does not yet prove advertised steps 9-10.
+- [ ] Phase 1–7 actual state and relevant audit blockers are reconciled. Actual state is recorded in the Gate 2R.0 initial report and rerun closure report; the combined verifier is now fail-closed for closure mode but still must pass from a clean source state.
 - [ ] Phase 0 is `Verified Complete` or equivalent reproducibility controls are formally absorbed into Gate 2R.0 and evidenced. Phase 0 is planning only and equivalent clean-checkout evidence is not yet complete.
 - [ ] `02R` identifier compatibility passes across status, Atlas, evidence, templates, CI, sorting, and collectors. The planned compatibility validator does not exist yet.
 - [x] Source scope and completeness-register categories are proposed for approval.
@@ -2120,16 +2125,16 @@ PHASE_02R_START_APPROVED=true
 
 | Role | Name | Decision | Date | Signature / immutable reference |
 |---|---|---|---|---|
-| Phase owner | Nkgolo Lebelo | Accept planning scope; block implementation start | 2026-06-16 | Gate 2R.0 report |
-| Engineering approver | Nkgolo Lebelo | Reject execution until blockers close | 2026-06-16 | Gate 2R.0 report |
-| Curriculum owner/reviewer | Nkgolo Lebelo | Accept proposed source scope; block on missing source document | 2026-06-16 | Gate 2R.0 report |
-| Rights reviewer | Nkgolo Lebelo | Accept fail-closed framework; block active use until rights decisions exist | 2026-06-16 | Gate 2R.0 report |
-| Language-quality owner | Nkgolo Lebelo | Accept review plan; disclose self-review limitation | 2026-06-16 | Gate 2R.0 report |
-| Security/privacy/safeguarding reviewer | Nkgolo Lebelo | Accept planned controls; block until validators exist | 2026-06-16 | Gate 2R.0 report |
-| Evidence custodian | Nkgolo Lebelo | Accept evidence plan; block on missing Phase 02R collector/validator scripts | 2026-06-16 | Gate 2R.0 report |
-| Independent auditor | Nkgolo Lebelo | Accept audit scope as self-audit only; independence conflict disclosed | 2026-06-16 | Gate 2R.0 report |
-| Release manager | Nkgolo Lebelo | Start gate failed | 2026-06-16 | Gate 2R.0 report |
-| Final phase approver | Nkgolo Lebelo | Reject execution authorisation until blockers close | 2026-06-16 | Gate 2R.0 report |
+| Phase owner | Nkgolo Lebelo | Accept planning scope; block implementation start | 2026-06-16 | Gate 2R.0 initial report |
+| Engineering approver | Nkgolo Lebelo | Reject execution until blockers close | 2026-06-16 | Gate 2R.0 initial report |
+| Curriculum owner/reviewer | Nkgolo Lebelo | Accept proposed source scope; block on missing source document | 2026-06-16 | Gate 2R.0 initial report |
+| Rights reviewer | Nkgolo Lebelo | Accept fail-closed framework; block active use until rights decisions exist | 2026-06-16 | Gate 2R.0 initial report |
+| Language-quality owner | Nkgolo Lebelo | Accept review plan; disclose self-review limitation | 2026-06-16 | Gate 2R.0 initial report |
+| Security/privacy/safeguarding reviewer | Nkgolo Lebelo | Accept planned controls; block until validators exist | 2026-06-16 | Gate 2R.0 initial report |
+| Evidence custodian | Nkgolo Lebelo | Accept evidence plan; block until collector exits nonzero on failures and captures all blockers | 2026-06-16 | Gate 2R.0 remediation |
+| Independent auditor | Nkgolo Lebelo | Accept audit scope as self-audit only; independence conflict disclosed | 2026-06-16 | Gate 2R.0 initial report |
+| Release manager | Nkgolo Lebelo | Start gate failed | 2026-06-16 | Gate 2R.0 closure report |
+| Final phase approver | Nkgolo Lebelo | Reject execution authorisation until blockers close | 2026-06-16 | Gate 2R.0 closure report |
 
 **Current decision:** Execution not authorised. `PHASE_02R_START_APPROVED` remains `false`.
 

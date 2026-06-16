@@ -1,4 +1,10 @@
-# Phase 2R Gate 2R.0 Start-Gate Report
+# Phase 2R Gate 2R.0 Initial Start-Gate Report
+
+> Historical initial discovery report. This report records the first failed Gate
+> 2R.0 capture and must not be treated as closure evidence. Current remediation
+> and closure evidence belongs in
+> `docs/roadmap/execution/atlas/phase_02r_gate_2r0_closure_report.md` and
+> `docs/release-evidence/atlas/phase-02r/gate-2r0/`.
 
 **Generated:** 2026-06-16
 **Gate:** 2R.0 read-only discovery and approval review
@@ -13,7 +19,7 @@
 | Canonical remote | `origin https://github.com/NkgoloL/Eduboost-V2.git` |
 | Canonical branch | `feature/atlas-phase-02r-authoritative-caps-corpus` |
 | baseline_capture_sha | `81735c51a7cf71c8b9fa110d1d152fb8d7103278` |
-| gate_report_commit_sha | `8d972b5f` |
+| initial_gate_report_commit_sha | `8d972b5f` |
 | eventual_gate_approval_commit_sha | Not issued; Gate 2R.1 remains blocked |
 | Base branch merge-base with `origin/master` | `4b3805b700869aaeacce4141bb565e1963777163` |
 | Worktree baseline | Dirty; existing reconciliation/source/evidence changes are present and must be reconciled before an immutable approval claim |
@@ -204,5 +210,8 @@ Definitions:
 | Field | Meaning |
 |---|---|
 | `baseline_capture_sha` | Source state used for the first failed Gate 2R.0 discovery capture |
-| `gate_report_commit_sha` | Commit that recorded the failed Gate 2R.0 report |
+| `initial_gate_report_commit_sha` | Commit that recorded the failed initial Gate 2R.0 report |
+| `remediation_code_commit_sha` | Future commit that records start-gate remediation code and docs |
+| `evidence_run_source_sha` | Future clean source state used to generate closure evidence |
+| `evidence_commit_sha` | Future commit that freezes the generated closure evidence |
 | `eventual_gate_approval_commit_sha` | Future dedicated approval commit that may set `PHASE_02R_START_APPROVED=true` only after all start-gate blockers close |

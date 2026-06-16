@@ -25,11 +25,14 @@ PYTHON_BIN="${PYTHON_BIN:-.venv/bin/python}"
 [[ -n "$PYTHON_BIN" ]] || { echo "Python 3 is required." >&2; exit 2; }
 
 EVIDENCE_ROOT="docs/release-evidence/atlas/phase-02r/gate-2r0"
-RAW="$EVIDENCE_ROOT/raw"
 REPORT="docs/roadmap/execution/atlas/phase_02r_gate_2r0_closure_report.md"
-INDEX="$EVIDENCE_ROOT/evidence_index.md"
-AUDIT="$EVIDENCE_ROOT/audit_report.md"
-mkdir -p "$RAW" "$(dirname "$REPORT")"
+WORKDIR="$(mktemp -d)"
+WORK_EVIDENCE_ROOT="$WORKDIR/evidence"
+RAW="$WORK_EVIDENCE_ROOT/raw"
+WORK_REPORT="$WORKDIR/phase_02r_gate_2r0_closure_report.md"
+INDEX="$WORK_EVIDENCE_ROOT/evidence_index.md"
+AUDIT="$WORK_EVIDENCE_ROOT/audit_report.md"
+mkdir -p "$RAW"
 
 timestamp="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 branch="$(git branch --show-current 2>/dev/null || printf unknown)"
@@ -76,11 +79,15 @@ capture_json() {
 overall_rc=0
 capture_json baseline.json "$PYTHON_BIN" scripts/verify_phase0_or_equivalent_baseline.py --json || overall_rc=1
 capture_json phase_identifier_compatibility.json "$PYTHON_BIN" scripts/validate_phase_identifier_compatibility.py --json 02R phase-02r phase_02r || overall_rc=1
+capture_json phase_identifier_compatibility_strict.json "$PYTHON_BIN" scripts/validate_phase_identifier_compatibility.py --strict --json 02R phase-02r phase_02r || overall_rc=1
 capture preflight.txt bash scripts/preflight_phase02r.sh --gate 2R.0 --mode discovery || overall_rc=1
 capture verify_phase02r.txt bash scripts/verify_phase02r.sh --gate 2R.0 --mode discovery || overall_rc=1
 capture_json source_manifest.json "$PYTHON_BIN" scripts/curriculum/validate_source_manifest.py --json || overall_rc=1
 capture_json source_inventory.json "$PYTHON_BIN" scripts/curriculum/source_inventory.py --json || overall_rc=1
 capture_json extraction_sample.json "$PYTHON_BIN" scripts/curriculum/extract_caps_source_text.py --json || overall_rc=1
+capture reconciliation_closure.txt env PHASE_RECONCILIATION_MODE=closure bash scripts/verify_phases_01_07_reconciliation.sh || overall_rc=1
+capture openapi_check.txt "$PYTHON_BIN" scripts/generate_openapi.py --check || overall_rc=1
+capture import_boundaries.txt bash -lc 'if command -v lint-imports >/dev/null 2>&1; then lint-imports; else python -m importlinter --config .importlinter; fi' || overall_rc=1
 capture migration_graph.txt "$PYTHON_BIN" scripts/verify_migration_graph.py || overall_rc=1
 capture schema_integrity.txt "$PYTHON_BIN" scripts/validate_schema_integrity.py || overall_rc=1
 
@@ -91,22 +98,26 @@ if [[ "$overall_rc" -eq 0 ]]; then
   status="Closed"
 fi
 
-cat > "$REPORT" <<EOF
+cat > "$WORK_REPORT" <<EOF
 # Phase 2R Gate 2R.0 Closure Report
 
 **Generated:** $timestamp
 **Status:** $status
 **Branch:** \`$branch\`
-**baseline_capture_sha:** \`$head_sha\`
+**evidence_run_source_sha:** \`$head_sha\`
 **base_against_origin_master:** \`$base_sha\`
-**gate_report_commit_sha:** pending until this report is committed
+**initial_gate_report_commit_sha:** \`8d972b5f\`
+**remediation_code_commit_sha:** pending until this remediation is committed
+**evidence_commit_sha:** pending until this evidence pack is committed
 **eventual_gate_approval_commit_sha:** not issued
 
 ## Result
 
-Gate 2R.0 closure evidence was collected. The approval flag must remain
-\`PHASE_02R_START_APPROVED=false\` unless every raw command exits zero and the
-worktree is clean.
+Gate 2R.0 closure evidence was collected into a temporary directory before it
+was copied into the repository. The approval flag must remain
+\`PHASE_02R_START_APPROVED=false\` and
+\`phase_02r_start_gate_control.json.start_approved=false\` unless every raw
+command exits zero and the worktree is clean before evidence copy.
 
 ## Source State
 
@@ -134,11 +145,15 @@ cat > "$INDEX" <<EOF
 |---|---|
 | Phase 0 equivalent baseline | \`raw/baseline.json\` |
 | 02R compatibility | \`raw/phase_identifier_compatibility.json\` |
+| Strict 02R compatibility | \`raw/phase_identifier_compatibility_strict.json\` |
 | Preflight | \`raw/preflight.txt\` |
 | Discovery verification | \`raw/verify_phase02r.txt\` |
 | Source manifest | \`raw/source_manifest.json\` |
 | Source inventory | \`raw/source_inventory.json\` |
 | Extraction sample | \`raw/extraction_sample.json\` |
+| Phase 1-7 closure reconciliation | \`raw/reconciliation_closure.txt\` |
+| OpenAPI drift check | \`raw/openapi_check.txt\` |
+| Import boundaries | \`raw/import_boundaries.txt\` |
 | Migration graph | \`raw/migration_graph.txt\` |
 | Schema integrity | \`raw/schema_integrity.txt\` |
 | Raw hashes | \`raw/SHA256SUMS.txt\` |
@@ -165,9 +180,15 @@ EOF
     > SHA256SUMS.txt
 )
 
+mkdir -p "$EVIDENCE_ROOT/raw" "$(dirname "$REPORT")"
+cp "$WORK_REPORT" "$REPORT"
+cp "$INDEX" "$EVIDENCE_ROOT/evidence_index.md"
+cp "$AUDIT" "$EVIDENCE_ROOT/audit_report.md"
+cp "$RAW"/* "$EVIDENCE_ROOT/raw/"
+
 echo "PHASE 02R GATE 2R.0 EVIDENCE COLLECTED"
 echo "status=$status"
 echo "report=$REPORT"
 echo "evidence=$INDEX"
 echo "audit=$AUDIT"
-exit 0
+exit "$overall_rc"
