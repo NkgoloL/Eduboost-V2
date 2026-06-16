@@ -466,7 +466,7 @@ A machine-translated or LLM-generated passage is never promoted to official curr
 |---|---|---|---|---|
 | Canonical repository identity | Canonical branch and remote confirmed | E-02R-001 | Nkgolo Lebelo | Recorded |
 | Phase 0 reproducibility foundation | Phase 0 is `Verified Complete`, or its clean-checkout, exact-toolchain, environment-validation, CI-baseline, and setup controls are formally absorbed into Gate 2R.0 with equivalent evidence | E-02R-014 | Nkgolo Lebelo | Blocked: clean-checkout evidence incomplete |
-| Phase identifier compatibility | Status-register, path, evidence, template, sorting, and automation tooling supports `02R`, `phase-02r`, and `phase_02r` without integer conversion or ordering defects | E-02R-015 | Nkgolo Lebelo | Blocked: validator missing |
+| Phase identifier compatibility | Status-register, path, evidence, template, sorting, and automation tooling supports `02R`, `phase-02r`, and `phase_02r` without integer conversion or ordering defects | E-02R-015 | Nkgolo Lebelo | Partially proven: validator installed and passing locally; broader CI/template proof pending |
 | Clean worktree | No uncommitted implementation changes | E-02R-002 | Nkgolo Lebelo | Blocked: active worktree dirty |
 | Plan approval | This plan approved and committed | E-02R-003 | Nkgolo Lebelo | Blocked: start gate failed |
 | Baseline commit | Base SHA and plan commit SHA recorded | E-02R-004 | Nkgolo Lebelo | Base SHA recorded; plan commit pending |
@@ -1606,7 +1606,7 @@ The Gate 2R.0–2R.8 engineering ranges total **72–108 person-days**, matching
 | P02R-0003 | Approve ADR-02R-001 through ADR-02R-013 | All ADRs reviewed and committed | Engineering approver | P02R-0001 | Not started |
 | P02R-0004 | Freeze first-closure source inventory | Signed completeness-register scope and amendment rule | Curriculum + rights owners | P02R-0003 | Not started |
 | P02R-0005 | Verify Phase 0 or equivalent reproducibility controls | Clean-checkout/toolchain/environment/CI baseline evidenced | Programme + engineering owners | P02R-0001 | Not started |
-| P02R-0006 | Verify `02R` identifier compatibility | Status, Atlas, evidence, sorting, CI, and templates support `02R` forms | Evidence custodian + engineering | P02R-0001 | Not started |
+| P02R-0006 | Verify `02R` identifier compatibility | Status, Atlas, evidence, sorting, CI, and templates support `02R` forms | Evidence custodian + engineering | P02R-0001 | In progress: local validator installed; CI/template proof pending |
 | P02R-0101 | Add authoritative source catalogue schema | Migration/model constraints pass | Database owner | P02R-0003 | Not started |
 | P02R-0102 | Add per-use rights decision schema and policy engine | Missing/expired/denied use fails closed; translation/publication permissions and structured conditions are machine-enforced | Rights + engineering owners | P02R-0101 | Not started |
 | P02R-0103 | Implement completeness register and validator | All mandatory inventory rows deterministically validated | Curriculum owner | P02R-0004 | Not started |
