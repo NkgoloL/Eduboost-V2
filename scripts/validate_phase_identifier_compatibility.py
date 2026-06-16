@@ -5,6 +5,8 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,6 +24,25 @@ def _natural_phase_key(value: str) -> tuple[int, str]:
     number = int(match.group(1))
     suffix = match.group(2)
     return (number, suffix)
+
+
+def _run(args: list[str]) -> tuple[int, str]:
+    completed = subprocess.run(
+        args,
+        cwd=ROOT,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    return completed.returncode, completed.stdout.strip()
+
+
+RESERVED_PHASE02R_FUTURE_ARTIFACTS = {
+    "docs/roadmap/execution/atlas/phase_02r_implementation_report.md",
+    "docs/release-evidence/atlas/phase-02r/phase_02r_evidence_index.md",
+    "docs/release-evidence/atlas/phase-02r/phase_02r_audit_report.md",
+}
 
 
 def main() -> int:
@@ -73,9 +94,47 @@ def main() -> int:
 
     phase_control = ROOT / "scripts/validate_phase_control_sets.py"
     text = _read(phase_control)
-    if "range(1, 8)" in text and "phase_02r" not in text:
-        warnings.append("validate_phase_control_sets.py remains numeric Phase 1-7 specific; 02R is handled by this validator")
+    if "phase_02r" not in text or "phase-02r" not in text:
+        warnings.append("validate_phase_control_sets.py does not include Phase 02R canonical artifacts")
     if args.strict:
+        rc, output = _run(["python3", "scripts/validate_phase_control_sets.py"])
+        if rc != 0:
+            errors.append(f"Atlas control-set validation failed: {output}")
+        with tempfile.TemporaryDirectory(prefix="phase-02r-evidence-") as tmp:
+            probe = Path(tmp) / "docs" / "release-evidence" / "atlas" / "phase-02r" / "gate-2r0"
+            probe.mkdir(parents=True)
+            if probe.name != "gate-2r0":
+                errors.append("evidence path creation failed for phase-02r/gate-2r0")
+        template_requirements = {
+            "docs/roadmap/execution/phase_execution_plan_template.md": ["phase-<NN>", "docs/release-evidence/<codename>/phase-<NN>/"],
+            "docs/roadmap/execution/phase_evidence_pack_template.md": ["phase-<NN>", "docs/release-evidence/atlas/phase-<NN>/"],
+        }
+        for relative, snippets in template_requirements.items():
+            body = _read(ROOT / relative)
+            for snippet in snippets:
+                if snippet not in body:
+                    errors.append(f"{relative} missing template snippet {snippet!r}")
+        execution_plan = _read(ROOT / "docs/roadmap/execution/atlas/phase_02r_execution_plan.md")
+        for relative in re.findall(r"`(docs/[^`]+)`", execution_plan):
+            if relative in RESERVED_PHASE02R_FUTURE_ARTIFACTS:
+                continue
+            if relative.startswith("docs/") and not (ROOT / relative).exists():
+                errors.append(f"Phase 02R plan references missing report/evidence path: {relative}")
+        workflows = list((ROOT / ".github" / "workflows").glob("*.yml")) + list((ROOT / ".github" / "workflows").glob("*.yaml"))
+        if not workflows:
+            errors.append("CI workflow directory has no YAML workflows to inspect")
+        shell_scripts = [
+            ROOT / "scripts/preflight_phase02r.sh",
+            ROOT / "scripts/verify_phase02r.sh",
+            ROOT / "scripts/collect_phase02r_evidence.sh",
+            ROOT / "scripts/apply_phase02r_patch.sh",
+        ]
+        for path in shell_scripts:
+            body = _read(path)
+            if "2R.0" not in body and path.name != "apply_phase02r_patch.sh":
+                errors.append(f"{path.relative_to(ROOT)} does not gate on 2R.0")
+            if path.name == "apply_phase02r_patch.sh" and "Gate 2R.0 is read-only discovery" not in body:
+                errors.append("apply_phase02r_patch.sh does not explicitly reject Gate 2R.0")
         for path in scanned_files:
             if path.exists() and not _read(path):
                 warnings.append(f"strict scan target is empty: {path.relative_to(ROOT)}")

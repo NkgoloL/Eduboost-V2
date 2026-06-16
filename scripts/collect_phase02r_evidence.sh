@@ -84,7 +84,7 @@ capture preflight.txt bash scripts/preflight_phase02r.sh --gate 2R.0 --mode disc
 capture verify_phase02r.txt bash scripts/verify_phase02r.sh --gate 2R.0 --mode discovery || overall_rc=1
 capture_json source_manifest.json "$PYTHON_BIN" scripts/curriculum/validate_source_manifest.py --json || overall_rc=1
 capture_json source_inventory.json "$PYTHON_BIN" scripts/curriculum/source_inventory.py --json || overall_rc=1
-capture_json extraction_sample.json "$PYTHON_BIN" scripts/curriculum/extract_caps_source_text.py --json || overall_rc=1
+capture_json extraction_sample.json "$PYTHON_BIN" scripts/curriculum/extract_caps_source_sample.py --json || overall_rc=1
 capture reconciliation_closure.txt env PHASE_RECONCILIATION_MODE=closure bash scripts/verify_phases_01_07_reconciliation.sh || overall_rc=1
 capture openapi_check.txt "$PYTHON_BIN" scripts/generate_openapi.py --check || overall_rc=1
 capture import_boundaries.txt bash -lc 'if command -v lint-imports >/dev/null 2>&1; then lint-imports; else python -m importlinter --config .importlinter; fi' || overall_rc=1

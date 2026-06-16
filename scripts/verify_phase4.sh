@@ -66,9 +66,11 @@ service=Path('app/services/irt_quality_service.py').read_text()
 selection=Path('app/modules/diagnostics/item_bank_service.py').read_text()
 assert 'random.shuffle' not in service
 assert 'ContentArtifactStatus.PENDING_REVIEW' in service
+assert 'IRTQualityState.REWRITE_REVIEW: "retired"' in service
+assert '_irt_item_is_learner_eligible' in selection
+assert 'state in {"uncalibrated", "healthy", "monitor"}' in selection
 for state in ('quarantined','retired','review_required','rewrite_review'):
-    assert state not in '{"uncalibrated", "healthy", "monitor", "overridden"}'
-assert 'eligible_irt_states' in selection
+    assert f'state in {state!r}' not in selection
 print('No automatic answer-option mutation; rewrites return to Phase 3 review')
 PY
 

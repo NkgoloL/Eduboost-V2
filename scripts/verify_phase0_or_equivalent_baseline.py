@@ -54,6 +54,14 @@ def probe_object_storage() -> tuple[bool, dict[str, object], list[str]]:
     """
     errors: list[str] = []
     backend = os.getenv("PHASE02R_OBJECT_STORAGE_BACKEND", "").strip().lower()
+    if backend in {"s3", "minio"}:
+        rc, output = run([sys.executable, "scripts/prove_phase02r_object_storage.py", "--json"], timeout=120)
+        try:
+            payload = json.loads(output)
+        except json.JSONDecodeError:
+            return False, {"backend": backend, "raw_output": output}, ["object-storage proof did not emit valid JSON"]
+        return rc == 0 and bool(payload.get("passed")), payload.get("checks", {}), list(payload.get("errors") or [])
+
     probe_dir_value = os.getenv("PHASE02R_OBJECT_STORAGE_PROBE_DIR", "").strip()
     backup_dir_value = os.getenv("PHASE02R_OBJECT_STORAGE_BACKUP_DIR", "").strip()
     scoped_token = os.getenv("PHASE02R_OBJECT_STORAGE_SCOPED_TOKEN", "").strip()
