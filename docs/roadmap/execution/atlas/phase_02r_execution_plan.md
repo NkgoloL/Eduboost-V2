@@ -25,7 +25,7 @@
 **remediation_candidate_sha:** `f039d523fe9c771383c36d61028297a6a808e820`
 **remediation_code_commit_sha:** `f039d523fe9c771383c36d61028297a6a808e820`
 **evidence_run_source_sha:** `f039d523fe9c771383c36d61028297a6a808e820`
-**evidence_commit_sha:** pending until the next evidence pack is committed
+**evidence_commit_sha:** `851f3e16b83d8d1cd9b531ed29dbfe2f5b278e73`
 **remote_branch_sha:** pending until pushed
 **eventual_gate_approval_commit_sha:** Not issued; Gate 2R.1 remains blocked
 **Phase owner:** Nkgolo Lebelo

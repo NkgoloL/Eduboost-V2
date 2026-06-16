@@ -8,7 +8,7 @@
 **initial_gate_report_commit_sha:** `8d972b5f`
 **remediation_candidate_sha:** `f039d523fe9c771383c36d61028297a6a808e820`
 **remediation_code_commit_sha:** `f039d523fe9c771383c36d61028297a6a808e820`
-**evidence_commit_sha:** pending until this evidence pack is committed
+**evidence_commit_sha:** `851f3e16b83d8d1cd9b531ed29dbfe2f5b278e73`
 **eventual_gate_approval_commit_sha:** not issued
 
 ## Result
