@@ -26,8 +26,9 @@
 **remediation_code_commit_sha:** `f039d523fe9c771383c36d61028297a6a808e820`
 **evidence_run_source_sha:** `f039d523fe9c771383c36d61028297a6a808e820`
 **evidence_commit_sha:** `851f3e16b83d8d1cd9b531ed29dbfe2f5b278e73`
-**remote_branch_sha:** pending until pushed
-**eventual_gate_approval_commit_sha:** Not issued; Gate 2R.1 remains blocked
+**remote_branch_sha:** `d2b243ca4a3f75e4b50a0afaed046bacabf7c7b9`
+**approval_authority_rule:** The approval commit containing the start-gate transition is the immutable authority; it records parent evidence commit `d2b243ca4a3f75e4b50a0afaed046bacabf7c7b9`.
+**eventual_gate_approval_commit_sha:** `approval_commit_is_authority`
 **Phase owner:** Nkgolo Lebelo
 **Engineering owner:** Nkgolo Lebelo
 **Curriculum owner/reviewer:** Nkgolo Lebelo — self-review conflict disclosed; independent reproduction/review remains a closure compensating control
@@ -41,10 +42,10 @@
 **Planning estimate:** 79–121 engineering person-days plus curriculum, rights, language, security, legal, operational, accessibility, and audit review time; re-estimated after Gate 2R.0
 
 ```text
-PHASE_02R_START_APPROVED=false
+PHASE_02R_START_APPROVED=true
 ```
 
-> **Control statement:** Read-only discovery and planning work in Gate 2R.0 is permitted while `PHASE_02R_START_APPROVED=false` and `phase_02r_start_gate_control.json.start_approved=false`. No substantive production implementation in Gates 2R.1–2R.8 may begin until Gate 2R.0 is complete, this plan is reviewed and approved, the approved plan is committed to the canonical repository, and the immutable approval commit is recorded. The scripts, schema, services, corpus, generated content, evidence, audit, merge, and closure described here are planned deliverables—not completed work.
+> **Control statement:** Gate 2R.0 has passed and this approval-transition commit authorises Gate 2R.1. No substantive production implementation in Gates 2R.2–2R.8 may begin until its preceding gate is complete, verified, evidenced, and recorded.
 
 
 ## Document amendments
@@ -2138,7 +2139,7 @@ PHASE_02R_START_APPROVED=true
 | Release manager | Nkgolo Lebelo | Start gate failed | 2026-06-16 | Gate 2R.0 closure report |
 | Final phase approver | Nkgolo Lebelo | Reject execution authorisation until blockers close | 2026-06-16 | Gate 2R.0 closure report |
 
-**Current decision:** Execution not authorised. `PHASE_02R_START_APPROVED` remains `false`.
+**Current decision:** Gate 2R.1 is authorised by the dedicated approval-transition commit. `PHASE_02R_START_APPROVED` is `true` and `phase_02r_start_gate_control.json.start_approved` is `true`.
 
 ---
 

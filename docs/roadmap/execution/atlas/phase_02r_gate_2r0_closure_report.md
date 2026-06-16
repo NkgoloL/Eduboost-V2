@@ -9,7 +9,9 @@
 **remediation_candidate_sha:** `f039d523fe9c771383c36d61028297a6a808e820`
 **remediation_code_commit_sha:** `f039d523fe9c771383c36d61028297a6a808e820`
 **evidence_commit_sha:** `851f3e16b83d8d1cd9b531ed29dbfe2f5b278e73`
-**eventual_gate_approval_commit_sha:** not issued
+**remote_branch_sha:** `d2b243ca4a3f75e4b50a0afaed046bacabf7c7b9`
+**approval_authority_rule:** The approval commit containing the start-gate transition is the immutable authority; it records parent evidence commit `d2b243ca4a3f75e4b50a0afaed046bacabf7c7b9`.
+**eventual_gate_approval_commit_sha:** `approval_commit_is_authority`
 
 ## Result
 
@@ -31,4 +33,4 @@ See `docs/release-evidence/atlas/phase-02r/gate-2r0/`.
 
 ## Recommendation
 
-Gate 2R.0 may proceed to approval review.
+Gate 2R.0 passed approval review and may proceed to the dedicated approval-transition commit.
