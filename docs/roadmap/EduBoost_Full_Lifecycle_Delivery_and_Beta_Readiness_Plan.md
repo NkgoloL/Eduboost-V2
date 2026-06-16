@@ -1,10 +1,10 @@
 # EduBoost Full-Lifecycle Delivery and Beta Readiness Plan
 
-**Document owner:** NkgoloL  
-**Version:** 5.0  
-**Date:** 2026-06-13  
-**Status:** Proposed authoritative programme baseline  
-**Applies to:** EduBoost V2, Phases 0–13, through controlled beta  
+**Document owner:** NkgoloL
+**Version:** 5.0
+**Date:** 2026-06-13
+**Status:** Proposed authoritative programme baseline
+**Applies to:** EduBoost V2, Phases 0–13, through controlled beta
 
 > This plan corrects a lifecycle omission introduced when later planning documents began at Phase 8 and implicitly treated Phases 0–7 as completed.
 >
@@ -197,10 +197,10 @@ The roadmap status register is controlled by this rule. A checkbox, code commit,
 Every phase must produce and obtain approval for a complete four-artefact control set:
 
 ```text
-docs/roadmap/execution/phase_<NN>_execution_plan.md
-docs/roadmap/execution/phase_<NN>_implementation_report.md
-docs/release-evidence/phase-<NN>/phase_<NN>_evidence_index.md
-docs/release-evidence/phase-<NN>/phase_<NN>_audit_report.md
+docs/roadmap/execution/atlas/phase_<NN>_execution_plan.md
+docs/roadmap/execution/atlas/phase_<NN>_implementation_report.md
+docs/release-evidence/atlas/phase-<NN>/phase_<NN>_evidence_index.md
+docs/release-evidence/atlas/phase-<NN>/phase_<NN>_audit_report.md
 ```
 
 The evidence directory may contain raw logs, machine-readable test results, screenshots, signed reviews, scan outputs, reports, manifests, hashes, and external-review documents. The evidence index is the authoritative manifest for that directory.
@@ -443,7 +443,7 @@ Parallel work is permitted only when named people can execute it independently. 
 | R | Independent audit remediation | Refer to its own roadmap | Equivalent approved remediation plan | Approved remediation implementation/closure report | Attributable remediation evidence index | Independent remediation closure audit or equivalent decision | Own workstream dependencies | Separate estimate |
 | 0 | Reproducible environment, provider, flags, and worker foundation | Open — completion not established | `phase_00_execution_plan.md` | `phase_00_implementation_report.md` | `phase-00/phase_00_evidence_index.md` | `phase-00/phase_00_audit_report.md` | None | 1–2 weeks |
 | 1 | Safe batch AI content generation | Open — completion not established | `docs/roadmap/execution/atlas/phase_01_execution_plan.md` | `docs/roadmap/execution/atlas/phase_01_implementation_report.md` | `docs/release-evidence/atlas/phase-01/phase_01_evidence_index.md` | `docs/release-evidence/atlas/phase-01/phase_01_audit_report.md` | Phase 0 | 2–4 weeks |
-| 2 | Grounded semantic retrieval | Verified Complete | `docs/roadmap/execution/phase_02_execution_plan.md` | `docs/roadmap/execution/phase_02_implementation_report.md` | `docs/release-evidence/phase-02/phase_02_evidence_index.md` | `docs/release-evidence/phase-02/phase_02_audit_report.md` | Phase 1 | 1–2 weeks |
+| 2 | Grounded semantic retrieval | Verified Complete | `docs/roadmap/execution/atlas/phase_02_execution_plan.md` | `docs/roadmap/execution/atlas/phase_02_implementation_report.md` | `docs/release-evidence/atlas/phase-02/phase_02_evidence_index.md` | `docs/release-evidence/atlas/phase-02/phase_02_audit_report.md` | Phase 1 | 1–2 weeks |
 | 3 | Multi-educator content consensus | Open — completion not established | `phase_03_execution_plan.md` | `phase_03_implementation_report.md` | `phase-03/phase_03_evidence_index.md` | `phase-03/phase_03_audit_report.md` | Phase 1 | 1–3 weeks |
 | 4 | Adaptive-item calibration and self-healing controls | Open — completion not established | `phase_04_execution_plan.md` | `phase_04_implementation_report.md` | `phase-04/phase_04_evidence_index.md` | `phase-04/phase_04_audit_report.md` | Phases 2–3 | 2–3 weeks |
 | 5 | Safe learner AI Tutor | Open — completion not established | `phase_05_execution_plan.md` | `phase_05_implementation_report.md` | `phase-05/phase_05_evidence_index.md` | `phase-05/phase_05_audit_report.md` | Phases 1 and 6 safety controls as applicable | 2–3 weeks |
@@ -476,7 +476,7 @@ Parallel work is permitted only when named people can execute it independently. 
 
 **Phase 0 closure rule:** all four artefacts must exist, reference the same canonical source state, and be approved. The audit must issue a passing verdict and every blocking finding must be closed before the phase status can change to `Verified Complete`.
 
-**Initial status:** Open — completion not established  
+**Initial status:** Open — completion not established
 **Objective:** establish a reproducible, fail-closed environment for all later work.
 
 ### Required outcomes
@@ -517,7 +517,7 @@ Parallel work is permitted only when named people can execute it independently. 
 
 **Phase 1 closure rule:** all four artefacts must exist, reference the same canonical source state, and be approved. The audit must issue a passing verdict and every blocking finding must be closed before the phase status can change to `Verified Complete`.
 
-**Initial status:** Open — completion not established  
+**Initial status:** Open — completion not established
 **Objective:** generate structured, grounded, CAPS-aligned content through a production-safe provider abstraction.
 
 ### Required outcomes
@@ -546,21 +546,21 @@ Parallel work is permitted only when named people can execute it independently. 
 ## Phase 2 — Semantic Retrieval and Grounding
 
 
-> **Mandatory phase control:** Phase 2 may not start until `docs/roadmap/execution/phase_02_execution_plan.md` is approved for execution. It may not be marked `Verified Complete` until its implementation report and evidence index are complete, its audit report has a passing verdict, and the full control set is approved against canonical post-merge evidence.
+> **Mandatory phase control:** Phase 2 may not start until `docs/roadmap/execution/atlas/phase_02_execution_plan.md` is approved for execution. It may not be marked `Verified Complete` until its implementation report and evidence index are complete, its audit report has a passing verdict, and the full control set is approved against canonical post-merge evidence.
 
 ### Phase 2 required plan/report/evidence/audit set
 
 | Control artefact | Phase-specific minimum requirements | Canonical path |
 |---|---|---|
-| Execution plan | Define embedding model/version and dimensions, approved corpus and filters, index and migration design, fallback conditions, retrieval evaluation dataset, quality thresholds, provenance propagation, backup, rollback, and reindex strategy. | `docs/roadmap/execution/phase_02_execution_plan.md` |
-| Implementation report | Record schema/index changes, migration results, retrieval implementation, evaluation scores, filter behaviour, fallback activations, provenance propagation, performance, and recovery outcomes. | `docs/roadmap/execution/phase_02_implementation_report.md` |
-| Evidence pack and index | Disposable-database schema and index proof; query plans; retrieval-quality dataset and metrics; unapproved-content exclusion tests; fallback tests; migration/restore/reindex logs; source-chunk provenance samples; performance results. | `docs/release-evidence/phase-02/phase_02_evidence_index.md` |
-| Independent phase audit | Validate evaluation-dataset integrity and thresholds, reproduce retrieval and filtering, inspect query/index evidence, verify fallback cannot bypass approval rules, and trace sampled generated artefacts to source chunks. | `docs/release-evidence/phase-02/phase_02_audit_report.md` |
+| Execution plan | Define embedding model/version and dimensions, approved corpus and filters, index and migration design, fallback conditions, retrieval evaluation dataset, quality thresholds, provenance propagation, backup, rollback, and reindex strategy. | `docs/roadmap/execution/atlas/phase_02_execution_plan.md` |
+| Implementation report | Record schema/index changes, migration results, retrieval implementation, evaluation scores, filter behaviour, fallback activations, provenance propagation, performance, and recovery outcomes. | `docs/roadmap/execution/atlas/phase_02_implementation_report.md` |
+| Evidence pack and index | Disposable-database schema and index proof; query plans; retrieval-quality dataset and metrics; unapproved-content exclusion tests; fallback tests; migration/restore/reindex logs; source-chunk provenance samples; performance results. | `docs/release-evidence/atlas/phase-02/phase_02_evidence_index.md` |
+| Independent phase audit | Validate evaluation-dataset integrity and thresholds, reproduce retrieval and filtering, inspect query/index evidence, verify fallback cannot bypass approval rules, and trace sampled generated artefacts to source chunks. | `docs/release-evidence/atlas/phase-02/phase_02_audit_report.md` |
 
 **Phase 2 closure rule:** all four artefacts must exist, reference the same canonical source state, and be approved. The audit must issue a passing verdict and every blocking finding must be closed before the phase status can change to `Verified Complete`.
 
-**Status:** Verified Complete  
-**Closure evidence:** `docs/release-evidence/phase-02/phase2_live_closure_evidence.md` and `docs/release-evidence/phase-02/phase2_live_closure_evidence.json`  
+**Status:** Verified Complete
+**Closure evidence:** `docs/release-evidence/atlas/phase-02/phase2_live_closure_evidence.md` and `docs/release-evidence/atlas/phase-02/phase2_live_closure_evidence.json`
 **Objective:** retrieve approved source material accurately enough to ground generation and learner experiences.
 
 ### Required outcomes
@@ -587,20 +587,20 @@ Parallel work is permitted only when named people can execute it independently. 
 ## Phase 3 — Educator Consensus and Content Governance
 
 
-> **Mandatory phase control:** Phase 3 may not start until `docs/roadmap/execution/phase_03_execution_plan.md` is approved for execution. It may not be marked `Verified Complete` until its implementation report and evidence index are complete, its audit report has a passing verdict, and the full control set is approved against canonical post-merge evidence.
+> **Mandatory phase control:** Phase 3 may not start until `docs/roadmap/execution/atlas/phase_03_execution_plan.md` is approved for execution. It may not be marked `Verified Complete` until its implementation report and evidence index are complete, its audit report has a passing verdict, and the full control set is approved against canonical post-merge evidence.
 
 ### Phase 3 required plan/report/evidence/audit set
 
 | Control artefact | Phase-specific minimum requirements | Canonical path |
 |---|---|---|
-| Execution plan | Define reviewer roles and independence, quorum, rubric, workflow states, duplicate-review prevention, correction/re-review policy, stale-review escalation, publication gate, audit retention, and reviewer-capacity assumptions. | `docs/roadmap/execution/phase_03_execution_plan.md` |
-| Implementation report | Reconcile implemented workflow, roles, state transitions, review UI/process, approvals/rejections/quarantines, stale items, audit records, content-owner decisions, and deviations. | `docs/roadmap/execution/phase_03_implementation_report.md` |
-| Evidence pack and index | State-machine and authorization tests; duplicate-review negative tests; sampled signed review records; immutable audit-chain proof; stale-review metrics; publication-gate tests; correction and quarantine demonstrations; approved rubric. | `docs/release-evidence/phase-03/phase_03_evidence_index.md` |
-| Independent phase audit | Verify reviewer independence and role enforcement, reproduce quorum and negative paths, sample audit history and content decisions, confirm unapproved content cannot publish, and assess rubric application consistency. | `docs/release-evidence/phase-03/phase_03_audit_report.md` |
+| Execution plan | Define reviewer roles and independence, quorum, rubric, workflow states, duplicate-review prevention, correction/re-review policy, stale-review escalation, publication gate, audit retention, and reviewer-capacity assumptions. | `docs/roadmap/execution/atlas/phase_03_execution_plan.md` |
+| Implementation report | Reconcile implemented workflow, roles, state transitions, review UI/process, approvals/rejections/quarantines, stale items, audit records, content-owner decisions, and deviations. | `docs/roadmap/execution/atlas/phase_03_implementation_report.md` |
+| Evidence pack and index | State-machine and authorization tests; duplicate-review negative tests; sampled signed review records; immutable audit-chain proof; stale-review metrics; publication-gate tests; correction and quarantine demonstrations; approved rubric. | `docs/release-evidence/atlas/phase-03/phase_03_evidence_index.md` |
+| Independent phase audit | Verify reviewer independence and role enforcement, reproduce quorum and negative paths, sample audit history and content decisions, confirm unapproved content cannot publish, and assess rubric application consistency. | `docs/release-evidence/atlas/phase-03/phase_03_audit_report.md` |
 
 **Phase 3 closure rule:** all four artefacts must exist, reference the same canonical source state, and be approved. The audit must issue a passing verdict and every blocking finding must be closed before the phase status can change to `Verified Complete`.
 
-**Initial status:** Open — completion not established  
+**Initial status:** Open — completion not established
 **Objective:** ensure learner-facing generated content cannot bypass independent educational review.
 
 ### Required outcomes
@@ -641,7 +641,7 @@ Parallel work is permitted only when named people can execute it independently. 
 
 **Phase 4 closure rule:** all four artefacts must exist, reference the same canonical source state, and be approved. The audit must issue a passing verdict and every blocking finding must be closed before the phase status can change to `Verified Complete`.
 
-**Initial status:** Open — completion not established  
+**Initial status:** Open — completion not established
 **Objective:** monitor assessment-item performance and safely remove or correct low-quality items.
 
 ### Required outcomes
@@ -682,7 +682,7 @@ Parallel work is permitted only when named people can execute it independently. 
 
 **Phase 5 closure rule:** all four artefacts must exist, reference the same canonical source state, and be approved. The audit must issue a passing verdict and every blocking finding must be closed before the phase status can change to `Verified Complete`.
 
-**Initial status:** Open — completion not established  
+**Initial status:** Open — completion not established
 **Objective:** deliver safe, context-aware, resilient interactive learner support.
 
 ### Required outcomes
@@ -724,7 +724,7 @@ Parallel work is permitted only when named people can execute it independently. 
 
 **Phase 6 closure rule:** all four artefacts must exist, reference the same canonical source state, and be approved. The audit must issue a passing verdict and every blocking finding must be closed before the phase status can change to `Verified Complete`.
 
-**Initial status:** Open — completion not established  
+**Initial status:** Open — completion not established
 **Objective:** make the product observable, cost-controlled, securely configured, and operationally bounded.
 
 ### Required outcomes
@@ -766,7 +766,7 @@ Parallel work is permitted only when named people can execute it independently. 
 
 **Phase 7 closure rule:** all four artefacts must exist, reference the same canonical source state, and be approved. The audit must issue a passing verdict and every blocking finding must be closed before the phase status can change to `Verified Complete`.
 
-**Initial status:** Open — completion not established  
+**Initial status:** Open — completion not established
 **Objective:** create and approve the exact content slice required for the controlled beta.
 
 ### Beta content decision

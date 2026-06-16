@@ -6,6 +6,7 @@ import time
 from dataclasses import dataclass
 
 import structlog
+from sqlalchemy.exc import OperationalError, TimeoutError as SQLAlchemyTimeoutError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.services.semantic_retrieval.embedding import EmbeddingProvider, EmbeddingProviderError
@@ -67,10 +68,19 @@ class SemanticRetrievalService:
                     filters=filters,
                     limit=limit,
                 )
-            except Exception as exc:
+            except (OperationalError, SQLAlchemyTimeoutError, ConnectionError, TimeoutError) as exc:
                 if not self.fallback_policy.on_vector_error:
                     raise
-                fallback_reason = f"vector_query_failed:{type(exc).__name__}"
+                fallback_reason = f"vector_temporarily_unavailable:{type(exc).__name__}"
+                log.warning(
+                    "semantic_vector_fallback",
+                    query_fingerprint=fingerprint,
+                    error_type=type(exc).__name__,
+                )
+            except Exception:
+                # Programming, schema, permission, integrity, and dimension errors
+                # must fail closed rather than being hidden by full-text fallback.
+                raise
             if hits:
                 elapsed = (time.perf_counter() - started) * 1000
                 self._log_result(fingerprint, "semantic", len(hits), elapsed, None, filters)

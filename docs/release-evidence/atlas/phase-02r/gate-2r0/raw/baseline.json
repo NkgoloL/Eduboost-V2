@@ -1,0 +1,52 @@
+{
+  "checks": {
+    "backend_entrypoint": "EduBoost SA V2",
+    "docker": "Docker version 29.5.3, build d1c06ef",
+    "docker_compose": "Docker Compose version v5.1.4",
+    "frontend_package_json": "app/frontend/package.json",
+    "git": "git version 2.43.0",
+    "git_status_porcelain": "",
+    "migration_graph": "Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile",
+    "node": "v22.22.3",
+    "object_storage": {
+      "authenticated_connection": true,
+      "backend": "minio",
+      "backup_dir": "/tmp/phase02r-object-backups/phase02r/20260616T140816Z-01fb9553",
+      "backup_outside_repository": true,
+      "bucket": "phase02r-gate",
+      "bucket_versioning_status": "Enabled",
+      "credentials_exposed": false,
+      "endpoint": "http://127.0.0.1:19000",
+      "manifest_key": "phase02r/gate-2r0/20260616T140816Z-01fb9553/manifest.json",
+      "manifest_sha256": "d7ad96cdac4514a1d7a0c1b27e8e2508bf79e191fa91e5ea32f0260d6cd1c704",
+      "manifest_version_id": "acf72fe1-9cd9-44cb-b6d0-10006417dfc7",
+      "old_version_still_restores": true,
+      "overwrite_policy": "new_version_created",
+      "readback_sha256": "d0b8269af6cf5b17832945155027dcd5bb74a1c217d1b36ace96e0b5edb748bf",
+      "restore_sha256": "d0b8269af6cf5b17832945155027dcd5bb74a1c217d1b36ace96e0b5edb748bf",
+      "restore_sha256_equal": true,
+      "run_id": "20260616T140816Z-01fb9553",
+      "scoped_credentials_probe": "out_of_scope_read_denied",
+      "second_version_id": "303fa877-6c1c-4bf9-8071-a52ec2379bb3",
+      "sha256_equal": true,
+      "write_key": "phase02r/gate-2r0/20260616T140816Z-01fb9553/original.txt",
+      "write_sha256": "d0b8269af6cf5b17832945155027dcd5bb74a1c217d1b36ace96e0b5edb748bf",
+      "write_version_id": "cffbbe95-0a1f-4899-9ff4-8b01527eb552"
+    },
+    "pnpm": "9.14.4",
+    "python": "3.12.3",
+    "redis_available": false,
+    "required_env_present": {
+      "DATABASE_URL": false,
+      "ENCRYPTION_KEY": false,
+      "JWT_SECRET": false
+    },
+    "schema_integrity": "Schema integrity OK"
+  },
+  "errors": [],
+  "passed": true,
+  "warnings": [
+    "required runtime env vars are unset for local proof: DATABASE_URL, JWT_SECRET, ENCRYPTION_KEY",
+    "Redis CLI/server not found on PATH; Docker-backed Redis may still be available in later gates"
+  ]
+}

@@ -173,8 +173,18 @@ class RetrievalIndexingService:
                     WHERE c.document_id = :document_id
                       AND c.status IN ('approved','indexed','training_ready')
                       AND d.status IN ('approved','indexed','training_ready')
-                      AND COALESCE(c.source_metadata->>'artifact_status', 'published') IN ('published','promoted_production')
-                      AND COALESCE(d.source_metadata->>'artifact_status', 'published') IN ('published','promoted_production')
+                      AND (
+                        NOT (
+                          c.source_metadata ? 'artifact_status'
+                          OR d.source_metadata ? 'artifact_status'
+                          OR c.source_metadata ? 'artifact_id'
+                          OR d.source_metadata ? 'artifact_id'
+                          OR COALESCE(c.source_metadata->>'source_origin', '') IN ('generated','generated_artifact','content_factory')
+                          OR COALESCE(d.source_metadata->>'source_origin', '') IN ('generated','generated_artifact','content_factory')
+                        )
+                        OR COALESCE(c.source_metadata->>'artifact_status', d.source_metadata->>'artifact_status')
+                           IN ('published','promoted_production')
+                      )
                     ORDER BY c.chunk_index
                     """
                 ),
@@ -356,5 +366,12 @@ def _metadata_allows_generated_artifact(metadata: dict[str, Any] | None) -> bool
     Ordinary curriculum sources have no ``artifact_status`` metadata and remain
     eligible. Generated-artifact sources must be promoted or published.
     """
-    status = str((metadata or {}).get("artifact_status") or "").strip().lower()
-    return not status or status in {"published", "promoted_production"}
+    values = metadata or {}
+    status = str(values.get("artifact_status") or "").strip().lower()
+    origin = str(values.get("source_origin") or "").strip().lower()
+    generated = bool(
+        status
+        or values.get("artifact_id")
+        or origin in {"generated", "generated_artifact", "content_factory"}
+    )
+    return not generated or status in {"published", "promoted_production"}

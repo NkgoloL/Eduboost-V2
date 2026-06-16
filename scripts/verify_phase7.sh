@@ -92,7 +92,8 @@ printf '%s\n' '{"instruction":"Teach whole numbers","output":"Use place-value bl
 echo "== migration graph =="
 MIGRATION_OUTPUT="$("$PYTHON_BIN" scripts/verify_migration_graph.py)"
 echo "$MIGRATION_OUTPUT"
-grep -q 'head=20260615_1800_p7_curriculum' <<<"$MIGRATION_OUTPUT"
+grep -q 'head=20260615_2100_p17_reconcile' <<<"$MIGRATION_OUTPUT"
+test -f alembic/versions/20260615_1800_p7_curriculum.py
 
 echo "== schema integrity =="
 "$PYTHON_BIN" scripts/validate_schema_integrity.py

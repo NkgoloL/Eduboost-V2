@@ -1171,13 +1171,13 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/release-evidence/atlas/phase-01/phase_01_audit_report.md` | `general` | Phase 1 Corrective Audit Report | 3037 | False |
 | `docs/release-evidence/atlas/phase-01/phase_01_evidence_index.md` | `general` | Phase 1 Corrective Evidence Pack | 3436 | False |
 | `docs/release-evidence/atlas/phase-01/phase_01_remediation_tracker.md` | `general` | Phase 1 Remediation Tracker | 5652 | False |
-| `docs/release-evidence/phase-02/phase2_live_closure_evidence.json` | `general` | Phase2 Live Closure Evidence | 11709 | False |
-| `docs/release-evidence/phase-02/phase2_live_closure_evidence.md` | `general` | Phase 2 Live Closure Evidence | 224 | False |
-| `docs/release-evidence/phase-02/phase_02_audit_report.md` | `general` | Phase 2 Independent Audit Report | 3447 | False |
-| `docs/release-evidence/phase-02/phase_02_evidence_index.md` | `general` | Phase 2 Evidence Pack and Index | 2762 | False |
-| `docs/release-evidence/phase-03/phase_01_02_integration_audit.md` | `general` | Phase 1 and Phase 2 Integration Audit | 4213 | False |
-| `docs/release-evidence/phase-03/phase_03_audit_report.md` | `general` | Phase 3 Pre-Integration Audit Report | 1924 | False |
-| `docs/release-evidence/phase-03/phase_03_evidence_index.md` | `general` | Phase 3 Evidence Index | 1919 | False |
+| `docs/release-evidence/atlas/phase-02/phase2_live_closure_evidence.json` | `general` | Phase2 Live Closure Evidence | 11709 | False |
+| `docs/release-evidence/atlas/phase-02/phase2_live_closure_evidence.md` | `general` | Phase 2 Live Closure Evidence | 224 | False |
+| `docs/release-evidence/atlas/phase-02/phase_02_audit_report.md` | `general` | Phase 2 Independent Audit Report | 3447 | False |
+| `docs/release-evidence/atlas/phase-02/phase_02_evidence_index.md` | `general` | Phase 2 Evidence Pack and Index | 2762 | False |
+| `docs/release-evidence/atlas/phase-03/phase_01_02_integration_audit.md` | `general` | Phase 1 and Phase 2 Integration Audit | 4213 | False |
+| `docs/release-evidence/atlas/phase-03/phase_03_audit_report.md` | `general` | Phase 3 Pre-Integration Audit Report | 1924 | False |
+| `docs/release-evidence/atlas/phase-03/phase_03_evidence_index.md` | `general` | Phase 3 Evidence Index | 1919 | False |
 | `docs/release_blockers/external_manual_dependency_register.md` | `general` | External Manual Dependency Register | 941 | False |
 | `docs/release_blockers/final_go_no_go_checklist.md` | `general` | Final Go/No-Go Checklist | 717 | False |
 | `docs/release_blockers/final_launch_boundary_statement.md` | `general` | Final Launch Boundary Statement | 669 | False |
@@ -1202,10 +1202,10 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/roadmap/execution/atlas/phase_01_execution_plan.md` | `general` | Phase 1 Corrective Execution Plan — Grounded LLM Generation | 7762 | False |
 | `docs/roadmap/execution/atlas/phase_01_implementation_report.md` | `general` | Phase 1 Corrective Implementation Report | 5808 | False |
 | `docs/roadmap/execution/audit_remediation_roadmap_2026-06-13.md` | `general` | EduBoost V2 Audit Remediation Roadmap | 57480 | False |
-| `docs/roadmap/execution/phase_02_execution_plan.md` | `general` | Phase 2 Execution Plan — Semantic Retrieval and Grounding | 7092 | False |
-| `docs/roadmap/execution/phase_02_implementation_report.md` | `general` | Phase 2 Implementation Report — Semantic Retrieval and Grounding | 5892 | False |
-| `docs/roadmap/execution/phase_03_execution_plan.md` | `general` | Phase 3 Execution Plan — Educator Consensus and Content Governance | 49112 | False |
-| `docs/roadmap/execution/phase_03_implementation_report.md` | `general` | Phase 3 Implementation Report — Educator Consensus and Content Governance | 3299 | False |
+| `docs/roadmap/execution/atlas/phase_02_execution_plan.md` | `general` | Phase 2 Execution Plan — Semantic Retrieval and Grounding | 7092 | False |
+| `docs/roadmap/execution/atlas/phase_02_implementation_report.md` | `general` | Phase 2 Implementation Report — Semantic Retrieval and Grounding | 5892 | False |
+| `docs/roadmap/execution/atlas/phase_03_execution_plan.md` | `general` | Phase 3 Execution Plan — Educator Consensus and Content Governance | 49112 | False |
+| `docs/roadmap/execution/atlas/phase_03_implementation_report.md` | `general` | Phase 3 Implementation Report — Educator Consensus and Content Governance | 3299 | False |
 | `docs/roadmap/execution/phase_10_execution_plan.md` | `general` | Phase 10 Execution Plan — Post-Production Product Documentation & Operational Tooling | 6196 | False |
 | `docs/roadmap/execution/phase_10_implementation_report.md` | `general` | Phase 10 Implementation Report - Post-Production Product Documentation & Operational Tooling | 4107 | False |
 | `docs/roadmap/execution/phase_11_execution_plan.md` | `general` | Phase 11 Execution Plan — Technical Debt Burn-Down | 7427 | False |

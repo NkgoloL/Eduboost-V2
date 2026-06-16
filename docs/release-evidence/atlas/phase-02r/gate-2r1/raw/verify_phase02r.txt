@@ -1,0 +1,19 @@
++ bash scripts/verify_phase02r.sh --gate 2R.1
+== Gate 2R.1 preflight ==
+Phase 02R identifier compatibility
+PASS
+Atlas phase-control validation passed
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Schema integrity OK
+PHASE 02R GATE 2R.1 PREFLIGHT PASSED
+== Gate 2R.1 patch-application authorisation ==
+PHASE 02R GATE 2R.1 PATCH APPLICATION AUTHORISED
+== Gate 2R.1 baseline controls ==
+Phase 02R identifier compatibility
+PASS
+Atlas phase-control validation passed
+Migration graph OK: 42 revisions, head=20260615_2100_p17_reconcile
+Schema integrity OK
+PHASE 02R GATE 2R.1 VERIFICATION PASSED
+
+exit_code=0

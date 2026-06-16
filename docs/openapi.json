@@ -65,6 +65,126 @@
         "title": "AllScopeStagingVerificationReport",
         "type": "object"
       },
+      "AnswerKeyVerificationRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "artifact_hash": {
+            "maxLength": 80,
+            "minLength": 16,
+            "title": "Artifact Hash",
+            "type": "string"
+          },
+          "details": {
+            "additionalProperties": true,
+            "title": "Details",
+            "type": "object"
+          },
+          "expected_version": {
+            "minimum": 1.0,
+            "title": "Expected Version",
+            "type": "integer"
+          },
+          "idempotency_key": {
+            "maxLength": 160,
+            "minLength": 8,
+            "title": "Idempotency Key",
+            "type": "string"
+          },
+          "method": {
+            "enum": [
+              "deterministic_recompute",
+              "independent_model",
+              "educator_recalculation"
+            ],
+            "title": "Method",
+            "type": "string"
+          },
+          "passed": {
+            "title": "Passed",
+            "type": "boolean"
+          },
+          "verifier_model": {
+            "anyOf": [
+              {
+                "maxLength": 120,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Verifier Model"
+          },
+          "verifier_provider": {
+            "anyOf": [
+              {
+                "maxLength": 80,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Verifier Provider"
+          }
+        },
+        "required": [
+          "expected_version",
+          "artifact_hash",
+          "method",
+          "passed",
+          "idempotency_key",
+          "details"
+        ],
+        "title": "AnswerKeyVerificationRequest",
+        "type": "object"
+      },
+      "AnswerKeyVerificationResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "artifact_hash": {
+            "title": "Artifact Hash",
+            "type": "string"
+          },
+          "artifact_id": {
+            "format": "uuid",
+            "title": "Artifact Id",
+            "type": "string"
+          },
+          "artifact_version": {
+            "title": "Artifact Version",
+            "type": "integer"
+          },
+          "idempotent_replay": {
+            "default": false,
+            "title": "Idempotent Replay",
+            "type": "boolean"
+          },
+          "method": {
+            "title": "Method",
+            "type": "string"
+          },
+          "passed": {
+            "title": "Passed",
+            "type": "boolean"
+          },
+          "verification_id": {
+            "format": "uuid",
+            "title": "Verification Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "verification_id",
+          "artifact_id",
+          "artifact_version",
+          "artifact_hash",
+          "method",
+          "passed"
+        ],
+        "title": "AnswerKeyVerificationResponse",
+        "type": "object"
+      },
       "ArtifactGovernanceStatusResponse": {
         "additionalProperties": false,
         "properties": {
@@ -14011,6 +14131,64 @@
         ]
       }
     },
+    "/api/v2/content-review/artifacts/{artifact_id}/answer-key-verifications": {
+      "post": {
+        "operationId": "record_answer_key_verification_api_v2_content_review_artifacts__artifact_id__answer_key_verifications_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "artifact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Artifact Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnswerKeyVerificationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerKeyVerificationResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Record Answer Key Verification",
+        "tags": [
+          "content-review-governance"
+        ]
+      }
+    },
     "/api/v2/content-review/artifacts/{artifact_id}/assignments": {
       "post": {
         "operationId": "assign_reviewers_api_v2_content_review_artifacts__artifact_id__assignments_post",
@@ -24264,6 +24442,64 @@
         "summary": "Consent Status",
         "tags": [
           "POPIA Consent"
+        ]
+      }
+    },
+    "/v2/content-review/artifacts/{artifact_id}/answer-key-verifications": {
+      "post": {
+        "operationId": "record_answer_key_verification_v2_content_review_artifacts__artifact_id__answer_key_verifications_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "artifact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Artifact Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnswerKeyVerificationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerKeyVerificationResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Record Answer Key Verification",
+        "tags": [
+          "content-review-governance"
         ]
       }
     },

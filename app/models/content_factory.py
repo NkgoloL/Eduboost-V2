@@ -301,6 +301,49 @@ class ContentValidationReport(Base):
     )
 
 
+class ContentAnswerKeyVerification(Base):
+    """Append-only, independently attributable answer-key verification."""
+
+    __tablename__ = "content_answer_key_verifications"
+
+    verification_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, server_default=func.gen_random_uuid()
+    )
+    artifact_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("content_generation_artifacts.artifact_id", ondelete="RESTRICT"), nullable=False
+    )
+    artifact_version: Mapped[int] = mapped_column(Integer, nullable=False)
+    artifact_hash: Mapped[str] = mapped_column(String(80), nullable=False)
+    method: Mapped[str] = mapped_column(String(40), nullable=False)
+    passed: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    verifier_actor_id: Mapped[str] = mapped_column(String(80), nullable=False)
+    verifier_provider: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    verifier_model: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    details: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False, default=dict)
+    idempotency_key: Mapped[str] = mapped_column(String(160), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+
+    __table_args__ = (
+        CheckConstraint("artifact_version > 0", name="ck_answer_key_verification_version_positive"),
+        CheckConstraint(
+            "method IN ('deterministic_recompute','independent_model','educator_recalculation')",
+            name="ck_answer_key_verification_method",
+        ),
+        UniqueConstraint(
+            "verifier_actor_id",
+            "idempotency_key",
+            name="uq_answer_key_verification_actor_idempotency",
+        ),
+        Index(
+            "ix_answer_key_verification_artifact_version_created",
+            "artifact_id",
+            "artifact_version",
+            "created_at",
+        ),
+    )
+
 class ContentArtifactReview(Base):
     __tablename__ = "content_artifact_reviews"
 

@@ -113,9 +113,9 @@ async def test_embedding_failure_uses_fulltext_with_identical_filters() -> None:
 
 
 @pytest.mark.asyncio
-async def test_vector_query_failure_uses_fulltext_only_when_policy_allows() -> None:
+async def test_vector_query_transient_failure_uses_fulltext_only_when_policy_allows() -> None:
     repository = FakeRepository(
-        semantic_error=RuntimeError("vector unavailable"),
+        semantic_error=ConnectionError("vector unavailable"),
         fulltext_hits=[hit("chunk-1", "full_text")],
     )
     service = SemanticRetrievalService(
@@ -123,15 +123,39 @@ async def test_vector_query_failure_uses_fulltext_only_when_policy_allows() -> N
     )
     result = await service.search(object(), query="whole numbers", filters=FILTERS)
     assert result.mode == "full_text"
-    assert result.fallback_reason == "vector_query_failed:RuntimeError"
+    assert result.fallback_reason == "vector_temporarily_unavailable:ConnectionError"
+    assert [call[0] for call in repository.calls] == ["semantic", "full_text"]
 
+    strict_repository = FakeRepository(
+        semantic_error=ConnectionError("vector unavailable"),
+        fulltext_hits=[hit("chunk-1", "full_text")],
+    )
     strict = SemanticRetrievalService(
         embedding_provider=FakeProvider(),
-        repository=repository,  # type: ignore[arg-type]
+        repository=strict_repository,  # type: ignore[arg-type]
         fallback_policy=FallbackPolicy(on_vector_error=False),
     )
-    with pytest.raises(RuntimeError, match="vector unavailable"):
+    with pytest.raises(ConnectionError, match="vector unavailable"):
         await strict.search(object(), query="whole numbers", filters=FILTERS)
+    assert [call[0] for call in strict_repository.calls] == ["semantic"]
+
+
+@pytest.mark.asyncio
+async def test_vector_query_generic_runtime_error_fails_closed() -> None:
+    repository = FakeRepository(
+        semantic_error=RuntimeError("vector schema or query defect"),
+        fulltext_hits=[hit("chunk-1", "full_text")],
+    )
+    service = SemanticRetrievalService(
+        embedding_provider=FakeProvider(), repository=repository  # type: ignore[arg-type]
+    )
+
+    with pytest.raises(RuntimeError, match="schema or query defect"):
+        await service.search(object(), query="whole numbers", filters=FILTERS)
+
+    # A programming/schema/integrity-style failure must never be hidden by
+    # a full-text fallback.
+    assert [call[0] for call in repository.calls] == ["semantic"]
 
 
 @pytest.mark.asyncio

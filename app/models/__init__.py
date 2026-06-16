@@ -734,6 +734,7 @@ from app.models.item_exposure import ItemExposure  # noqa: F401  (re-export)
 from app.models.irt_quality import IRTCalibrationEvent, IRTCalibrationRun  # noqa: F401
 from app.models.content_factory import (  # noqa: F401  (re-export)
     AssessmentBlueprint,
+    ContentAnswerKeyVerification,
     ContentArtifactReview,
     ContentArtifactSource,
     ContentArtifactStatus,

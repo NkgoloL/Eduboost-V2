@@ -196,15 +196,38 @@ class AIOperationsService:
         cost = estimate_cost(provider, prompt_tokens, completion_tokens)
         user_counter = await self._locked_counter("user", reservation.user_id, _day_key(reservation.reserved_at))
         tenant_counter = await self._locked_counter("tenant", reservation.tenant_id, _month_key(reservation.reserved_at))
+        overages: list[dict[str, Any]] = []
         for counter, limit in (
             (user_counter, self.limits.user_daily_tokens),
             (tenant_counter, self.limits.tenant_monthly_tokens),
         ):
             counter.reserved_tokens = max(0, counter.reserved_tokens - reservation.estimated_tokens)
-            counter.used_tokens += total_tokens
+            projected_used = counter.used_tokens + total_tokens
+            if projected_used > limit:
+                overages.append(
+                    {
+                        "scope_type": counter.scope_type,
+                        "scope_id": counter.scope_id,
+                        "limit": limit,
+                        "used_before": counter.used_tokens,
+                        "actual_tokens": total_tokens,
+                        "overage_tokens": projected_used - limit,
+                    }
+                )
+                ai_budget_blocks_total.labels(scope=counter.scope_type, purpose=reservation.purpose).inc()
+            # Actual provider usage is always accounted, even when the estimate was low.
+            # A counter over its limit causes subsequent reservations to fail closed.
+            counter.used_tokens = projected_used
             counter.used_cost_usd += cost
             ratio = counter.used_tokens / max(1, limit)
             ai_budget_usage_ratio.labels(scope=counter.scope_type).set(ratio)
+
+        event_metadata = dict(metadata or {})
+        if overages:
+            event_metadata["budget_overage"] = overages
+            event_metadata["estimated_tokens"] = reservation.estimated_tokens
+            outcome = "blocked"
+            reservation.failure_reason = "actual_usage_exceeded_budget"
 
         event = AIUsageEvent(
             reservation_id=reservation.reservation_id,
@@ -219,7 +242,7 @@ class AIOperationsService:
             total_tokens=total_tokens,
             estimated_cost_usd=cost,
             outcome=outcome,
-            metadata_json=metadata or {},
+            metadata_json=event_metadata,
         )
         self.db.add(event)
         reservation.status = "finalized"

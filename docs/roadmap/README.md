@@ -74,7 +74,7 @@ See the North-Star document for the complete protocol.
 
 ## Evidence Repository
 
-Phase evidence is stored in: `docs/release-evidence/phase-<NN>/`
+Phase evidence is stored in: `docs/release-evidence/atlas/phase-<NN>/`
 
 ## Getting Started
 

@@ -5,7 +5,12 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import sys
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
@@ -13,6 +18,7 @@ from app.core.config import settings
 from app.services.semantic_retrieval import SemanticRetrievalService, build_embedding_provider
 from app.services.semantic_retrieval.evaluation import evaluate_retrieval
 from app.services.semantic_retrieval.types import EvaluationCase
+from scripts.validate_phase2_evaluation_dataset import validate_dataset_payload
 
 
 def parse_args() -> argparse.Namespace:
@@ -23,12 +29,20 @@ def parse_args() -> argparse.Namespace:
         help="Approved retrieval evaluation JSON file.",
     )
     parser.add_argument("--output", default="", help="Optional JSON output path.")
+    parser.add_argument("--allow-smoke", action="store_true", help="Allow a non-closure smoke dataset.")
     return parser.parse_args()
 
 
 async def main() -> int:
     args = parse_args()
     payload = json.loads(Path(args.dataset).read_text(encoding="utf-8"))
+    if not args.allow_smoke:
+        if payload.get("status") != "approved" or payload.get("closure_eligible") is not True:
+            raise SystemExit("Dataset is not approved for retrieval closure; use --allow-smoke only for diagnostics.")
+        validation_errors = validate_dataset_payload(payload)
+        if validation_errors:
+            details = "; ".join(validation_errors)
+            raise SystemExit(f"Dataset failed canonical retrieval closure validation: {details}")
     cases = [EvaluationCase.model_validate(case) for case in payload["cases"]]
     thresholds = payload.get("thresholds") or {}
     engine = create_async_engine(settings.DATABASE_URL, pool_pre_ping=True)
