@@ -1,33 +1,34 @@
 # Phase 2R Execution Plan — Authoritative CAPS Corpus, Grounded Generation, and Tutor Retrieval
 
-**Document version:** 1.4  
-**Plan date:** 2026-06-16  
-**Status:** Draft v1.4 — control-consistency and implementation-safety amendments incorporated; approval required before execution  
-**Execution authorisation:** Not granted  
-**Phase:** 02R  
-**Programme position:** Mandatory foundation reset before Phases 8–13  
-**Sprint codename / documentation namespace:** `atlas`  
-**Canonical plan path:** `docs/roadmap/execution/atlas/phase_02r_execution_plan.md`  
-**Required implementation report:** `docs/roadmap/execution/atlas/phase_02r_implementation_report.md`  
-**Evidence directory:** `docs/release-evidence/atlas/phase-02r/`  
-**Required evidence index:** `docs/release-evidence/atlas/phase-02r/phase_02r_evidence_index.md`  
-**Required audit report:** `docs/release-evidence/atlas/phase-02r/phase_02r_audit_report.md`  
-**Proposed branch:** `feature/atlas-phase-02r-authoritative-caps-corpus`  
-**Canonical base branch:** TBD from the live canonical repository at the start gate  
-**Base commit SHA:** TBD from the live canonical repository at the start gate  
-**Actual Alembic head:** TBD from the live canonical repository; the supplied archive reports `20260615_1800_p7_curriculum`  
-**Source baseline reviewed:** `Eduboost-V2-master(6).zip` plus the Phase 2R handover and review memorandum  
-**Phase owner:** TBD — must be named before approval  
-**Engineering owner:** TBD — must be named before approval  
-**Curriculum owner/reviewer:** TBD — must be independent of automated mapping approval  
-**Rights reviewer:** TBD — must be competent to decide permitted uses  
-**Security/privacy/safeguarding reviewer:** TBD  
-**Language-quality reviewers:** TBD for `en`, `af`, and `nso`  
-**Evidence custodian:** TBD  
-**Release manager:** TBD  
-**Independent technical auditor:** TBD  
-**Auditor independence:** TBD before start; compensating controls required in a single-developer context  
-**Planning estimate:** 72–108 engineering person-days plus curriculum, rights, language, security, legal, operational, accessibility, and audit review time; mandatory re-estimation after Gate 2R.0  
+**Document version:** 1.4
+**Plan date:** 2026-06-16
+**Status:** Gate 2R.0 completed with blockers; approval still required before execution
+**Execution authorisation:** Not granted
+**Phase:** 02R
+**Programme position:** Mandatory foundation reset before Phases 8–13
+**Sprint codename / documentation namespace:** `atlas`
+**Canonical plan path:** `docs/roadmap/execution/atlas/phase_02r_execution_plan.md`
+**Required implementation report:** `docs/roadmap/execution/atlas/phase_02r_implementation_report.md`
+**Evidence directory:** `docs/release-evidence/atlas/phase-02r/`
+**Required evidence index:** `docs/release-evidence/atlas/phase-02r/phase_02r_evidence_index.md`
+**Required audit report:** `docs/release-evidence/atlas/phase-02r/phase_02r_audit_report.md`
+**Proposed branch:** `feature/atlas-phase-02r-authoritative-caps-corpus`
+**Canonical base branch:** `origin/master`
+**Base commit SHA:** `4b3805b700869aaeacce4141bb565e1963777163`
+**Actual Alembic head:** `20260615_2100_p17_reconcile`
+**Source baseline reviewed:** `Eduboost-V2-master(6).zip` plus the Phase 2R handover and review memorandum
+**Gate 2R.0 report:** `docs/roadmap/execution/atlas/phase_02r_gate_2r0_report.md`
+**Phase owner:** Nkgolo Lebelo
+**Engineering owner:** Nkgolo Lebelo
+**Curriculum owner/reviewer:** Nkgolo Lebelo — self-review conflict disclosed; independent reproduction/review remains a closure compensating control
+**Rights reviewer:** Nkgolo Lebelo — legal-competence limitation disclosed; ambiguous rights require fail-closed or legal/rights-holder confirmation
+**Security/privacy/safeguarding reviewer:** Nkgolo Lebelo
+**Language-quality reviewers:** Nkgolo Lebelo for `en`, `af`, and `nso`; human-language review limitation disclosed
+**Evidence custodian:** Nkgolo Lebelo
+**Release manager:** Nkgolo Lebelo
+**Independent technical auditor:** Nkgolo Lebelo acting as self-auditor for Gate 2R.0 only
+**Auditor independence:** Independence conflict disclosed; compensating controls require clean-checkout reproduction, raw evidence hashes, post-merge CI, and explicit conflict declarations
+**Planning estimate:** 79–121 engineering person-days plus curriculum, rights, language, security, legal, operational, accessibility, and audit review time; re-estimated after Gate 2R.0
 
 ```text
 PHASE_02R_START_APPROVED=false
@@ -460,21 +461,21 @@ A machine-translated or LLM-generated passage is never promoted to official curr
 
 | Dependency / precondition | Required state before substantive work | Planned evidence | Owner | Start-gate status |
 |---|---|---|---|---|
-| Canonical repository identity | Canonical branch and remote confirmed | E-02R-001 | Release manager | Blocked/TBD |
-| Phase 0 reproducibility foundation | Phase 0 is `Verified Complete`, or its clean-checkout, exact-toolchain, environment-validation, CI-baseline, and setup controls are formally absorbed into Gate 2R.0 with equivalent evidence | E-02R-014 | Programme + engineering owners | Blocked/TBD |
-| Phase identifier compatibility | Status-register, path, evidence, template, sorting, and automation tooling supports `02R`, `phase-02r`, and `phase_02r` without integer conversion or ordering defects | E-02R-015 | Evidence custodian + engineering owner | Blocked/TBD |
-| Clean worktree | No uncommitted implementation changes | E-02R-002 | Engineering owner | Blocked/TBD |
-| Plan approval | This plan approved and committed | E-02R-003 | Phase approver | Blocked/TBD |
-| Baseline commit | Base SHA and plan commit SHA recorded | E-02R-004 | Release manager | Blocked/TBD |
-| Migration head | Actual live Alembic head recorded; no unexpected branches | E-02R-005 | Database owner | Blocked/TBD |
-| Phase 1–7 state | Actual tests, evidence, status claims, and reconciliation gaps recorded without inheriting completion claims | E-02R-006 | Engineering + evidence custodian | Blocked/TBD |
-| Audit-remediation boundary | Relevant release blockers tracked separately; Phase 2R scope not expanded silently | E-02R-007 | Programme owner | Blocked/TBD |
-| Object storage | Development/staging object storage and immutable-key policy available | E-02R-008 | Operations owner | Blocked/TBD |
-| Rights review capability | Named reviewer and decision template accepted | E-02R-009 | Rights reviewer | Blocked/TBD |
-| Curriculum review capability | Named Grade 4 Mathematics reviewer and sampling scope accepted | E-02R-010 | Curriculum owner | Blocked/TBD |
-| Language review capability | Reviewers/controls for `en`, `af`, `nso` accepted | E-02R-011 | Language owner | Blocked/TBD |
-| Auditor acceptance | Auditor accepts scope, independence statement, and sampling | E-02R-012 | Auditor | Blocked/TBD |
-| Toolchain | `.venv/bin/python` or `PYTHON_BIN`, PostgreSQL/pgvector, Redis where required, object-storage adapter, frontend package manager | E-02R-013 | Engineering owner | Blocked/TBD |
+| Canonical repository identity | Canonical branch and remote confirmed | E-02R-001 | Nkgolo Lebelo | Recorded |
+| Phase 0 reproducibility foundation | Phase 0 is `Verified Complete`, or its clean-checkout, exact-toolchain, environment-validation, CI-baseline, and setup controls are formally absorbed into Gate 2R.0 with equivalent evidence | E-02R-014 | Nkgolo Lebelo | Blocked: clean-checkout evidence incomplete |
+| Phase identifier compatibility | Status-register, path, evidence, template, sorting, and automation tooling supports `02R`, `phase-02r`, and `phase_02r` without integer conversion or ordering defects | E-02R-015 | Nkgolo Lebelo | Blocked: validator missing |
+| Clean worktree | No uncommitted implementation changes | E-02R-002 | Nkgolo Lebelo | Blocked: active worktree dirty |
+| Plan approval | This plan approved and committed | E-02R-003 | Nkgolo Lebelo | Blocked: start gate failed |
+| Baseline commit | Base SHA and plan commit SHA recorded | E-02R-004 | Nkgolo Lebelo | Base SHA recorded; plan commit pending |
+| Migration head | Actual live Alembic head recorded; no unexpected branches | E-02R-005 | Nkgolo Lebelo | Recorded |
+| Phase 1-7 state | Actual tests, evidence, status claims, and reconciliation gaps recorded without inheriting completion claims | E-02R-006 | Nkgolo Lebelo | Recorded with blocker |
+| Audit-remediation boundary | Relevant release blockers tracked separately; Phase 2R scope not expanded silently | E-02R-007 | Nkgolo Lebelo | Accepted for planning |
+| Object storage | Development/staging object storage and immutable-key policy available | E-02R-008 | Nkgolo Lebelo | Blocked: availability not proven |
+| Rights review capability | Named reviewer and decision template accepted | E-02R-009 | Nkgolo Lebelo | Accepted with fail-closed limitation |
+| Curriculum review capability | Named Grade 4 Mathematics reviewer and sampling scope accepted | E-02R-010 | Nkgolo Lebelo | Accepted with self-review limitation |
+| Language review capability | Reviewers/controls for `en`, `af`, `nso` accepted | E-02R-011 | Nkgolo Lebelo | Accepted with self-review limitation |
+| Auditor acceptance | Auditor accepts scope, independence statement, and sampling | E-02R-012 | Nkgolo Lebelo | Accepted as self-audit; independence conflict disclosed |
+| Toolchain | `.venv/bin/python` or `PYTHON_BIN`, PostgreSQL/pgvector, Redis where required, object-storage adapter, frontend package manager | E-02R-013 | Nkgolo Lebelo | Partially recorded; object-storage adapter not proven |
 
 ### 5.1 Separate audit-remediation workstream
 
@@ -2079,30 +2080,30 @@ Documentation Complete
 
 ## 39. Start-Gate Checklist
 
-- [ ] Canonical plan path is correct.
+- [x] Canonical plan path is correct.
 - [ ] This plan is reviewed and committed.
-- [ ] `PHASE_02R_START_APPROVED=false` has not been changed prematurely.
-- [ ] Canonical branch, remote, base SHA, and clean worktree are recorded.
-- [ ] Actual Alembic head and migration graph are recorded.
-- [ ] Phase 1–7 actual state and relevant audit blockers are reconciled.
-- [ ] Phase 0 is `Verified Complete` or equivalent reproducibility controls are formally absorbed into Gate 2R.0 and evidenced.
-- [ ] `02R` identifier compatibility passes across status, Atlas, evidence, templates, CI, sorting, and collectors.
-- [ ] Source scope and completeness-register categories are approved.
-- [ ] All owner and reviewer names are assigned.
-- [ ] Rights-review framework is accepted.
-- [ ] Curriculum and language review scope is accepted.
-- [ ] Auditor independence and sampling are accepted.
-- [ ] Gate 2R.0 read-only discovery is complete and all required ADRs are approved before any Gate 2R.1 schema work.
-- [ ] Corpus activation resolution key and multilingual activation model are approved.
-- [ ] Extracted-text storage model is approved.
-- [ ] Supported human-review interface/CLI approach is approved.
-- [ ] Numeric evaluation and grounding thresholds are frozen.
-- [ ] Study-plan, Phase 6 accounting, Phase 7 coverage, and provenance-display integrations are accepted.
-- [ ] Object storage and backup targets are available.
-- [ ] Work estimates, dependencies, WIP order, stop conditions, and rollback are accepted.
-- [ ] Evidence inventory and sensitivity rules are accepted.
-- [ ] Audit-remediation workstream boundary is accepted.
-- [ ] No Gate 2R.1–2R.8 production implementation has begun before approval; Gate 2R.0 activity is demonstrably read-only.
+- [x] `PHASE_02R_START_APPROVED=false` has not been changed prematurely.
+- [ ] Canonical branch, remote, base SHA, and clean worktree are recorded. Branch/remote/base are recorded; clean worktree is blocked by existing dirty reconciliation/source/evidence changes.
+- [x] Actual Alembic head and migration graph are recorded.
+- [ ] Phase 1–7 actual state and relevant audit blockers are reconciled. Actual state is recorded in the Gate 2R.0 report; the combined verifier does not yet prove advertised steps 9-10.
+- [ ] Phase 0 is `Verified Complete` or equivalent reproducibility controls are formally absorbed into Gate 2R.0 and evidenced. Phase 0 is planning only and equivalent clean-checkout evidence is not yet complete.
+- [ ] `02R` identifier compatibility passes across status, Atlas, evidence, templates, CI, sorting, and collectors. The planned compatibility validator does not exist yet.
+- [x] Source scope and completeness-register categories are proposed for approval.
+- [x] All owner and reviewer names are assigned.
+- [x] Rights-review framework is accepted as fail-closed for planning.
+- [x] Curriculum and language review scope is accepted for planning.
+- [ ] Auditor independence and sampling are accepted. Sampling is accepted; independence conflict is disclosed and requires compensating controls.
+- [ ] Gate 2R.0 read-only discovery is complete and all required ADRs are approved before any Gate 2R.1 schema work. Discovery is complete; blockers remain.
+- [x] Corpus activation resolution key and multilingual activation model are recorded.
+- [x] Extracted-text storage model is recorded.
+- [x] Supported human-review interface/CLI approach is recorded.
+- [x] Numeric evaluation and grounding thresholds are frozen in the plan.
+- [x] Study-plan, Phase 6 accounting, Phase 7 coverage, and provenance-display integrations are accepted for planning.
+- [ ] Object storage and backup targets are available. Required, but availability is not proven.
+- [x] Work estimates, dependencies, WIP order, stop conditions, and rollback are accepted for planning.
+- [x] Evidence inventory and sensitivity rules are accepted for planning.
+- [x] Audit-remediation workstream boundary is accepted.
+- [x] No Gate 2R.1–2R.8 production implementation has begun before approval; Gate 2R.0 activity is demonstrably read-only.
 
 Only after every Gate 2R.0 exit/start-gate item is satisfied may the approved Gate 2R.0 exit commit change:
 
@@ -2116,18 +2117,18 @@ PHASE_02R_START_APPROVED=true
 
 | Role | Name | Decision | Date | Signature / immutable reference |
 |---|---|---|---|---|
-| Phase owner | TBD | Accept / Reject | | |
-| Engineering approver | TBD | Approve / Reject architecture and execution | | |
-| Curriculum owner/reviewer | TBD | Accept source and mapping review scope | | |
-| Rights reviewer | TBD | Accept rights framework and review scope | | |
-| Language-quality owner | TBD | Accept `en`/`af`/`nso` review plan | | |
-| Security/privacy/safeguarding reviewer | TBD | Approve / Reject controls | | |
-| Evidence custodian | TBD | Accept evidence plan | | |
-| Independent auditor | TBD | Accept audit scope / disclose conflict | | |
-| Release manager | TBD | Start gate passed / failed | | |
-| Final phase approver | TBD | Authorise / Reject execution | | |
+| Phase owner | Nkgolo Lebelo | Accept planning scope; block implementation start | 2026-06-16 | Gate 2R.0 report |
+| Engineering approver | Nkgolo Lebelo | Reject execution until blockers close | 2026-06-16 | Gate 2R.0 report |
+| Curriculum owner/reviewer | Nkgolo Lebelo | Accept proposed source scope; block on missing source document | 2026-06-16 | Gate 2R.0 report |
+| Rights reviewer | Nkgolo Lebelo | Accept fail-closed framework; block active use until rights decisions exist | 2026-06-16 | Gate 2R.0 report |
+| Language-quality owner | Nkgolo Lebelo | Accept review plan; disclose self-review limitation | 2026-06-16 | Gate 2R.0 report |
+| Security/privacy/safeguarding reviewer | Nkgolo Lebelo | Accept planned controls; block until validators exist | 2026-06-16 | Gate 2R.0 report |
+| Evidence custodian | Nkgolo Lebelo | Accept evidence plan; block on missing Phase 02R collector/validator scripts | 2026-06-16 | Gate 2R.0 report |
+| Independent auditor | Nkgolo Lebelo | Accept audit scope as self-audit only; independence conflict disclosed | 2026-06-16 | Gate 2R.0 report |
+| Release manager | Nkgolo Lebelo | Start gate failed | 2026-06-16 | Gate 2R.0 report |
+| Final phase approver | Nkgolo Lebelo | Reject execution authorisation until blockers close | 2026-06-16 | Gate 2R.0 report |
 
-**Current decision:** Execution not authorised.
+**Current decision:** Execution not authorised. `PHASE_02R_START_APPROVED` remains `false`.
 
 ---
 
@@ -2202,16 +2203,16 @@ Phase 2R may enter `Verified Complete` only when:
 
 | Role | Required decision | Name | Date | Immutable reference |
 |---|---|---|---|---|
-| Phase owner | Recommend close | TBD | | |
-| Engineering approver | Approve implementation | TBD | | |
-| Curriculum reviewer | Approve mappings and corpus | TBD | | |
-| Rights reviewer | Approve active-source rights register | TBD | | |
-| Language reviewer(s) | Approve multilingual evaluation and derivative language quality | TBD | | |
-| Security/privacy/safeguarding reviewer | Approve | TBD | | |
-| Evidence custodian | Evidence complete and hashes valid | TBD | | |
-| Independent auditor | Pass or Pass with non-blocking observations | TBD | | |
-| Release manager | Canonical merge and post-merge CI verified | TBD | | |
-| Final phase approver | `Verified Complete` / Reject | TBD | | |
+| Phase owner | Recommend close | Nkgolo Lebelo | Not yet due | Pending closure |
+| Engineering approver | Approve implementation | Nkgolo Lebelo | Not yet due | Pending closure |
+| Curriculum reviewer | Approve mappings and corpus | Nkgolo Lebelo | Not yet due | Pending closure |
+| Rights reviewer | Approve active-source rights register | Nkgolo Lebelo | Not yet due | Pending closure |
+| Language reviewer(s) | Approve multilingual evaluation and derivative language quality | Nkgolo Lebelo | Not yet due | Pending closure |
+| Security/privacy/safeguarding reviewer | Approve | Nkgolo Lebelo | Not yet due | Pending closure |
+| Evidence custodian | Evidence complete and hashes valid | Nkgolo Lebelo | Not yet due | Pending closure |
+| Independent auditor | Pass or Pass with non-blocking observations | Nkgolo Lebelo | Not yet due | Pending closure |
+| Release manager | Canonical merge and post-merge CI verified | Nkgolo Lebelo | Not yet due | Pending closure |
+| Final phase approver | `Verified Complete` / Reject | Nkgolo Lebelo | Not yet due | Pending closure |
 
 No one person should approve every role. In a single-developer context, independent curriculum review, rights review, command reproduction, raw evidence, post-merge CI, and explicit conflict declarations are mandatory compensating controls.
 
