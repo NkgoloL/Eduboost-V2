@@ -41,12 +41,15 @@ capture() {
   local name="$1"
   shift
   local output="$RAW/$name"
-  printf '+ %s\n' "$*" > "$output"
+  local tmp
+  tmp="$(mktemp)"
+  printf '+ %s\n' "$*" > "$tmp"
   set +e
-  "$@" >> "$output" 2>&1
+  "$@" >> "$tmp" 2>&1
   local rc=$?
   set -e
-  printf '\nexit_code=%s\n' "$rc" >> "$output"
+  printf '\nexit_code=%s\n' "$rc" >> "$tmp"
+  mv "$tmp" "$output"
   return "$rc"
 }
 
@@ -55,12 +58,18 @@ capture_json() {
   shift
   local output="$RAW/$name"
   local meta="$RAW/$name.meta.txt"
-  printf '+ %s\n' "$*" > "$meta"
+  local tmp_output
+  local tmp_meta
+  tmp_output="$(mktemp)"
+  tmp_meta="$(mktemp)"
+  printf '+ %s\n' "$*" > "$tmp_meta"
   set +e
-  "$@" > "$output" 2>> "$meta"
+  "$@" > "$tmp_output" 2>> "$tmp_meta"
   local rc=$?
   set -e
-  printf 'exit_code=%s\n' "$rc" >> "$meta"
+  printf 'exit_code=%s\n' "$rc" >> "$tmp_meta"
+  mv "$tmp_output" "$output"
+  mv "$tmp_meta" "$meta"
   return "$rc"
 }
 
