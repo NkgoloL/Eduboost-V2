@@ -5,6 +5,8 @@
 **Next gate:** Blocked
 **Plan version:** 1.5
 
+**Update:** The Phase 2R Gates 2R.2-2R.8 implementation patch has now been applied on the current worktree. It adds the later-gate grounding models, services, verifier scripts, and migration scaffolding, but it does not change the Gate 2R.1 control posture.
+
 ## Gate 2R.1 implementation reconciliation
 
 | Work item | Actual implementation | Current disposition |
@@ -22,6 +24,7 @@
 - Added separate implementation and closure verification modes.
 - Added gate-state validation that prevents a transition to unsupported automation or a contradictory plan/evidence state.
 - Added a pending Gate 2R.1 approval record; no reviewer decision is fabricated by this patch.
+- Applied the later-gate implementation bundle for Gates 2R.2-2R.8 while keeping Gate 2R.1 as the only authorised gate.
 
 ## Files added
 
@@ -33,6 +36,22 @@
 - `scripts/validate_phase02r_authority_schema.py`
 - `scripts/curriculum/validate_source_completeness_register.py`
 - `tests/unit/phase02r/`
+- `alembic/versions/20260618_1200_phase02r_grounding_controls.py`
+- `app/models/curriculum_grounding.py`
+- `app/services/curriculum/acquisition.py`
+- `app/services/curriculum/answer_verification.py`
+- `app/services/curriculum/claim_validation.py`
+- `app/services/curriculum/corpus.py`
+- `app/services/curriculum/evaluation.py`
+- `app/services/curriculum/extraction.py`
+- `app/services/curriculum/graph.py`
+- `app/services/curriculum/grounding.py`
+- `app/services/curriculum/legacy.py`
+- `app/services/curriculum/phase02r_verification.py`
+- `app/services/curriculum/tutor_grounding.py`
+- `scripts/verify_phase02r_gate2r2_to_2r8.py`
+- `tests/unit/phase02r/test_gate2r2_to_2r8_services.py`
+- `tests/unit/phase02r/test_grounding_models.py`
 
 ## Remaining Gate 2R.1 closure work
 
@@ -42,6 +61,6 @@
 4. Record per-use rights decisions with evidence for every active source version.
 5. Resolve and freeze the completeness register.
 6. Record independent rights, source-authority, and inventory-completeness approvals.
-7. Commit implementation, collect candidate evidence from a clean worktree, commit evidence, then issue a separate gate-approval commit.
+7. Collect candidate evidence from a clean worktree, commit evidence, then issue a separate gate-approval commit.
 
 Gate 2R.2 remains blocked until all items above pass.

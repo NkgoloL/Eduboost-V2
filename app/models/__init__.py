@@ -789,3 +789,28 @@ from app.models.curriculum_authority import (  # noqa: F401
     CurriculumSource,
     CurriculumSourceVersion,
 )
+
+# Phase 2R gates 2R.2-2R.8 acquisition, extraction, corpus, grounding, and audit models
+from app.models.curriculum_grounding import (  # noqa: F401
+    CurriculumAnswerVerificationRecord,
+    CurriculumChunkVersion,
+    CurriculumClaimValidationRecord,
+    CurriculumCorpusActivationEvent,
+    CurriculumCorpusActiveBinding,
+    CurriculumCorpusMembership,
+    CurriculumCorpusOutboxEvent,
+    CurriculumCorpusVersion,
+    CurriculumExtractionRun,
+    CurriculumGenerationGroundingRecord,
+    CurriculumGraphNode,
+    CurriculumLegacyDisposition,
+    CurriculumMappingVersion,
+    CurriculumOriginalObject,
+    CurriculumRetrievalEvaluationCase,
+    CurriculumRetrievalEvaluationRun,
+    CurriculumSourceAcquisitionRun,
+    CurriculumSourcePage,
+    CurriculumSourceSection,
+    Phase02RAuditFinding,
+    TutorGroundingRecord,
+)

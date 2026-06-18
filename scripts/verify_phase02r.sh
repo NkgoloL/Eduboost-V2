@@ -14,25 +14,17 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-[[ "$GATE" == "2R.0" || "$GATE" == "2R.1" ]] || {
-  echo "Only Gate 2R.0 and Gate 2R.1 verification are currently supported." >&2
-  exit 2
-}
-if [[ "$GATE" == "2R.0" ]]; then
-  [[ "$MODE" == "discovery" ]] || { echo "Gate 2R.0 supports --mode discovery only." >&2; exit 2; }
-else
-  MODE="${MODE:-implementation}"
-  [[ "$MODE" == "implementation" || "$MODE" == "closure" ]] || {
-    echo "Gate 2R.1 supports --mode implementation or --mode closure." >&2
-    exit 2
-  }
-fi
+case "$GATE" in
+  2R.0|2R.1|2R.2|2R.3|2R.4|2R.5|2R.6|2R.7|2R.8) ;;
+  *) echo "Gate $GATE verification is not supported." >&2; exit 2 ;;
+esac
 
 PYTHON_BIN="${PYTHON_BIN:-.venv/bin/python}"
 [[ -x "$PYTHON_BIN" ]] || PYTHON_BIN="$(command -v python3 || true)"
 [[ -n "$PYTHON_BIN" ]] || { echo "Python 3 is required." >&2; exit 2; }
 
 if [[ "$GATE" == "2R.0" ]]; then
+  [[ "$MODE" == "discovery" ]] || { echo "Gate 2R.0 supports --mode discovery only." >&2; exit 2; }
   bash scripts/preflight_phase02r.sh --gate 2R.0 --mode discovery
   "$PYTHON_BIN" scripts/curriculum/validate_source_manifest.py --json
   "$PYTHON_BIN" scripts/curriculum/source_inventory.py --json
@@ -42,16 +34,26 @@ if [[ "$GATE" == "2R.0" ]]; then
   exit 0
 fi
 
-# Behavioral and control checks execute in a single Python process to keep
-# local and CI behavior deterministic and avoid partially reported runs.
-"$PYTHON_BIN" scripts/verify_phase02r_gate2r1.py --mode "$MODE"
+MODE="${MODE:-implementation}"
+[[ "$MODE" == "implementation" || "$MODE" == "closure" ]] || {
+  echo "Gates 2R.1-2R.8 support --mode implementation or --mode closure." >&2
+  exit 2
+}
 
+if [[ "$GATE" == "2R.1" ]]; then
+  "$PYTHON_BIN" scripts/verify_phase02r_gate2r1.py --mode "$MODE"
+  if [[ "$MODE" == "closure" ]]; then
+    bash scripts/verify_phase02r_postgres.sh
+    echo "PHASE 02R GATE 2R.1 CANDIDATE CLOSURE VERIFICATION PASSED"
+  else
+    echo "PHASE 02R GATE 2R.1 IMPLEMENTATION VERIFICATION PASSED"
+  fi
+  exit 0
+fi
+
+"$PYTHON_BIN" scripts/verify_phase02r_gate2r2_to_2r8.py --gate "$GATE" --mode "$MODE"
 if [[ "$MODE" == "closure" ]]; then
-  # Database proof is intentionally a separate gate because the static verifier
-  # cannot establish PostgreSQL triggers, append-only enforcement, or upgrade
-  # behavior. It runs only after the frozen inventory/control checks pass.
-  bash scripts/verify_phase02r_postgres.sh
-  echo "PHASE 02R GATE 2R.1 CANDIDATE CLOSURE VERIFICATION PASSED"
+  echo "PHASE 02R GATE $GATE CLOSURE REMAINS BLOCKED UNTIL LIVE EVIDENCE AND APPROVALS EXIST"
 else
-  echo "PHASE 02R GATE 2R.1 IMPLEMENTATION VERIFICATION PASSED"
+  echo "PHASE 02R GATE $GATE IMPLEMENTATION VERIFICATION PASSED"
 fi

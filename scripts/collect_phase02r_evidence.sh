@@ -11,10 +11,10 @@ while [[ $# -gt 0 ]]; do
     *) echo "Unsupported argument: $1" >&2; exit 2 ;;
   esac
 done
-[[ "$GATE" == "2R.0" || "$GATE" == "2R.1" ]] || {
-  echo "Only Gate 2R.0 and Gate 2R.1 evidence collection are currently supported." >&2
-  exit 2
-}
+case "$GATE" in
+  2R.0|2R.1|2R.2|2R.3|2R.4|2R.5|2R.6|2R.7|2R.8) ;;
+  *) echo "Gate $GATE evidence collection is not supported." >&2; exit 2 ;;
+esac
 
 PYTHON_BIN="${PYTHON_BIN:-.venv/bin/python}"
 [[ -x "$PYTHON_BIN" ]] || PYTHON_BIN="$(command -v python3 || true)"
@@ -24,10 +24,12 @@ if [[ "$GATE" == "2R.0" ]]; then
   EVIDENCE_ROOT="docs/release-evidence/atlas/phase-02r/gate-2r0"
   REPORT="docs/roadmap/execution/atlas/phase_02r_gate_2r0_closure_report.md"
 else
-  EVIDENCE_ROOT="docs/release-evidence/atlas/phase-02r/gate-2r1"
-  REPORT="docs/roadmap/execution/atlas/phase_02r_gate_2r1_closure_report.md"
+  GATE_FILE="${GATE/./}"
+  GATE_DIR="${GATE,,}"
+  GATE_DIR="${GATE_DIR/.}"
+  EVIDENCE_ROOT="docs/release-evidence/atlas/phase-02r/gate-${GATE_DIR}"
+  REPORT="docs/roadmap/execution/atlas/phase_02r_gate_${GATE_FILE}_closure_report.md"
 fi
-
 mkdir -p "$EVIDENCE_ROOT"
 timestamp="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
@@ -127,20 +129,23 @@ if [[ "$GATE" == "2R.0" ]]; then
   capture preflight.txt bash scripts/preflight_phase02r.sh --gate 2R.0 --mode discovery
   capture verification.txt bash scripts/verify_phase02r.sh --gate 2R.0 --mode discovery
 else
-  # One single-process verifier captures behavioral rights/default-deny tests,
-  # static controls, the frozen inventory, and migration/schema consistency.
-  # PostgreSQL proof runs only after every prerequisite succeeds.
-  capture gate-2r1-closure-verification.json \
-    "$PYTHON_BIN" scripts/verify_phase02r_gate2r1.py --mode closure --json
+  if [[ "$GATE" == "2R.1" ]]; then
+    capture gate-2r1-closure-verification.json \
+      "$PYTHON_BIN" scripts/verify_phase02r_gate2r1.py --mode closure --json
+  else
+    raw_gate="${GATE,,}"
+    raw_gate="${raw_gate/.}"
+    capture gate-${raw_gate}-closure-verification.json \
+      "$PYTHON_BIN" scripts/verify_phase02r_gate2r2_to_2r8.py --gate "$GATE" --mode closure --json
+  fi
   closure_static_rc="$LAST_CAPTURE_RC"
   if [[ "$closure_static_rc" -eq 0 ]]; then
     capture postgres-verification.txt bash scripts/verify_phase02r_postgres.sh
   else
     record_skipped postgres-verification.txt \
-      "PostgreSQL verification was not run because Gate 2R.1 closure prerequisites failed."
+      "PostgreSQL verification was not run because Gate $GATE closure prerequisites failed."
   fi
 fi
-
 (
   cd "$RAW"
   find . -maxdepth 1 -type f ! -name SHA256SUMS.txt -printf '%f\n' \
@@ -198,7 +203,8 @@ if [[ "$GATE" == "2R.0" ]]; then
 | Gate 2R.0 verification | `raw/verification.txt` |
 EOF
 else
-  cat >> "$INDEX" <<'EOF'
+  if [[ "$GATE" == "2R.1" ]]; then
+    cat >> "$INDEX" <<'EOF'
 | E-02R-020 — source-completeness inventory frozen | `raw/gate-2r1-closure-verification.json` |
 | E-02R-021 — authority schema and append-only controls | `raw/gate-2r1-closure-verification.json`, `raw/postgres-verification.txt` |
 | E-02R-022 — per-use rights policy tests | `raw/gate-2r1-closure-verification.json` |
@@ -206,6 +212,15 @@ else
 | Gate-state, migration, schema and control-set consistency | `raw/gate-2r1-closure-verification.json` |
 | PostgreSQL migration/append-only proof | `raw/postgres-verification.txt` |
 EOF
+  else
+    raw_gate="${GATE,,}"
+    raw_gate="${raw_gate/.}"
+    raw_name="gate-${raw_gate}-closure-verification.json"
+    cat >> "$INDEX" <<EOF
+| Gate $GATE implementation and closure controls | \`raw/$raw_name\` |
+| PostgreSQL migration/append-only proof | \`raw/postgres-verification.txt\` |
+EOF
+  fi
 fi
 cat >> "$INDEX" <<'EOF'
 | Raw evidence checksums | `raw/SHA256SUMS.txt` |
