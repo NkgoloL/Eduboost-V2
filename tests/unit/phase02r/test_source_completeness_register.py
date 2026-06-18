@@ -26,7 +26,7 @@ def test_draft_inventory_cannot_be_used_as_closure_evidence() -> None:
     document = load_register()
     errors = module.validate(document, require_frozen=True)
     assert any("status=frozen" in error for error in errors)
-    assert any("unresolved items" in error for error in errors)
+    assert any("frozen_by" in error for error in errors)
 
 
 def test_manifest_hash_detects_changes() -> None:
