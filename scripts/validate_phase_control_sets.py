@@ -4,8 +4,9 @@ from __future__ import annotations
 
 import hashlib
 import json
-import re
 from pathlib import Path
+
+from phase02r_gate_control import validate_state as validate_phase02r_gate_state
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTER = ROOT / "docs/roadmap/PHASE_STATUS_REGISTER.md"
@@ -64,9 +65,10 @@ def main() -> int:
             errors.append("Phase 02R start-gate control must expose boolean start_approved")
     else:
         errors.append(f"missing canonical control artifact: {control_path.relative_to(ROOT)}")
+    errors.extend(f"Phase 02R: {error}" for error in validate_phase02r_gate_state())
     for backup in ROOT.glob(".phase*-backup-*"):
         errors.append(f"backup directory remains inside repository: {backup.name}")
-    for manifest in (ROOT / "docs/release-evidence/atlas").glob("phase-*/raw/SHA256SUMS*"):
+    for manifest in (ROOT / "docs/release-evidence/atlas").glob("phase-*/**/raw/SHA256SUMS*"):
         for raw in manifest.read_text(encoding="utf-8").splitlines():
             line = raw.strip()
             if not line or line.startswith("#"):

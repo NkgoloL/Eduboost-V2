@@ -32,6 +32,12 @@ REQUIRED_TABLES = {
     "subject_mastery",
     "lessons",
     "stripe_webhook_events",
+    "curriculum_sources",
+    "curriculum_source_versions",
+    "curriculum_rights_decisions",
+    "curriculum_inventory_versions",
+    "curriculum_inventory_items",
+    "curriculum_review_decisions",
 }
 
 REQUIRED_INDEXES = {
@@ -52,6 +58,11 @@ REQUIRED_INDEXES = {
     "audit_events": {"idx_audit_events_ts", "idx_audit_events_actor", "idx_audit_events_hash"},
     "subject_mastery": {"ix_subject_mastery_learner_subject", "ix_subject_mastery_last_updated"},
     "stripe_webhook_events": {"ix_stripe_webhook_processed_at"},
+    "curriculum_sources": {"ix_curriculum_sources_scope"},
+    "curriculum_source_versions": {"ix_curriculum_source_versions_source_effective"},
+    "curriculum_rights_decisions": {"ix_curriculum_rights_decisions_version_reviewed"},
+    "curriculum_inventory_items": {"ix_curriculum_inventory_items_scope"},
+    "curriculum_review_decisions": {"ix_curriculum_review_decisions_subject"},
 }
 
 REQUIRED_CONSTRAINTS = {
@@ -74,6 +85,34 @@ REQUIRED_CONSTRAINTS = {
     "knowledge_gaps": {"ck_knowledge_gaps_severity_range"},
     "lessons": {"ck_lessons_grade_range", "ck_lessons_feedback_score_range"},
     "subject_mastery": {"ck_subject_mastery_standard_error_non_negative"},
+    "curriculum_sources": {
+        "ck_curriculum_sources_authority_tier",
+        "ck_curriculum_sources_grade",
+        "ck_curriculum_sources_language",
+    },
+    "curriculum_source_versions": {
+        "ck_curriculum_source_versions_sha256",
+        "ck_curriculum_source_versions_file_size",
+        "ck_curriculum_source_versions_no_self_supersession",
+    },
+    "curriculum_rights_decisions": {
+        "ck_curriculum_rights_decisions_status",
+        "ck_curriculum_rights_decisions_conditions_required",
+    },
+    "curriculum_inventory_versions": {
+        "ck_curriculum_inventory_versions_status",
+        "ck_curriculum_inventory_versions_sha256",
+        "ck_curriculum_inventory_versions_frozen_metadata",
+    },
+    "curriculum_inventory_items": {
+        "ck_curriculum_inventory_items_status",
+        "ck_curriculum_inventory_items_located_source_version",
+        "ck_curriculum_inventory_items_absence_review",
+    },
+    "curriculum_review_decisions": {
+        "ck_curriculum_review_decisions_domain",
+        "ck_curriculum_review_decisions_decision",
+    },
 }
 
 
