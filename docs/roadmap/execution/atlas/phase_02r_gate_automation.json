@@ -1,0 +1,24 @@
+{
+  "phase": "02R",
+  "schema_version": 1,
+  "supported_gates": {
+    "2R.0": {
+      "preflight": true,
+      "apply": false,
+      "verify": true,
+      "collect": true
+    },
+    "2R.1": {
+      "preflight": true,
+      "apply": true,
+      "verify": true,
+      "collect": true
+    },
+    "2R.2": {
+      "preflight": false,
+      "apply": false,
+      "verify": false,
+      "collect": false
+    }
+  }
+}

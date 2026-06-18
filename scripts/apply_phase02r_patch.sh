@@ -1,59 +1,58 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-GATE=""
-while [[ $# -gt 0 ]]; do
-  case "$1" in
-    --gate)
-      GATE="${2:-}"
-      shift 2
-      ;;
-    *)
-      echo "Unsupported argument: $1" >&2
-      exit 2
-      ;;
-  esac
-done
-
 ROOT="${ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 cd "$ROOT"
 
+GATE=""
+APPLY_DATABASE="${PHASE02R_APPLY_DATABASE:-0}"
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --gate) GATE="${2:-}"; shift 2 ;;
+    --apply-database) APPLY_DATABASE=1; shift ;;
+    --check-only) APPLY_DATABASE=0; shift ;;
+    *) echo "Unsupported argument: $1" >&2; exit 2 ;;
+  esac
+done
+
 if [[ "$GATE" == "2R.0" ]]; then
-  echo "Gate 2R.0 is read-only discovery; apply_phase02r_patch.sh is prohibited." >&2
+  echo "Gate 2R.0 is read-only discovery; patch application is prohibited." >&2
   exit 3
 fi
-
-if [[ "$GATE" != "2R.1" ]]; then
-  echo "Only Gate 2R.1 implementation patch application is currently supported." >&2
+[[ "$GATE" == "2R.1" ]] || {
+  echo "Only Gate 2R.1 implementation application is currently supported." >&2
   exit 2
-fi
+}
 
 PYTHON_BIN="${PYTHON_BIN:-.venv/bin/python}"
 [[ -x "$PYTHON_BIN" ]] || PYTHON_BIN="$(command -v python3 || true)"
 [[ -n "$PYTHON_BIN" ]] || { echo "Python 3 is required." >&2; exit 2; }
 
-"$PYTHON_BIN" - <<'PY'
-import json
-import sys
-from pathlib import Path
+"$PYTHON_BIN" scripts/phase02r_gate_control.py --expected-authorised-gate 2R.1
 
-control_path = Path("docs/roadmap/execution/atlas/phase_02r_start_gate_control.json")
-control = json.loads(control_path.read_text(encoding="utf-8"))
-errors = []
-if control.get("phase") != "02R":
-    errors.append("phase must be 02R")
-if control.get("start_approved") is not True:
-    errors.append("start_approved must be true")
-if control.get("approved_gate") != "2R.0":
-    errors.append("approved_gate must be 2R.0")
-if control.get("authorised_next_gate") != "2R.1":
-    errors.append("authorised_next_gate must be 2R.1")
-if not control.get("parent_evidence_commit_sha"):
-    errors.append("parent_evidence_commit_sha is required")
-if errors:
-    for error in errors:
-        print(f"Gate 2R.1 apply control failure: {error}", file=sys.stderr)
-    raise SystemExit(3)
-PY
+required_files=(
+  app/models/curriculum_authority.py
+  app/services/curriculum/rights_policy.py
+  alembic/versions/20260616_1200_phase02r_authority_controls.py
+  data/curriculum/registries/grade4_mathematics_caps_source_completeness.json
+  scripts/validate_phase02r_authority_schema.py
+    scripts/verify_phase02r_gate2r1.py
+  scripts/curriculum/validate_source_completeness_register.py
+  scripts/verify_phase02r_postgres.sh
+  tests/phase02r/test_phase02r_postgres_integration.py
+  tests/unit/phase02r/test_authority_schema.py
+  tests/unit/phase02r/test_rights_policy.py
+  tests/unit/phase02r/test_source_completeness_register.py
+  tests/unit/phase02r/test_gate_control.py
+)
+for file in "${required_files[@]}"; do
+  [[ -f "$file" ]] || { echo "Missing Gate 2R.1 implementation file: $file" >&2; exit 3; }
+done
 
-echo "PHASE 02R GATE 2R.1 PATCH APPLICATION AUTHORISED"
+if [[ "$APPLY_DATABASE" == "1" ]]; then
+  "$PYTHON_BIN" -m alembic upgrade head
+  echo "PHASE 02R GATE 2R.1 DATABASE MIGRATION APPLIED"
+else
+  echo "PHASE 02R GATE 2R.1 IMPLEMENTATION MANIFEST VALIDATED"
+  echo "Database migration not executed; use --apply-database in the governed target environment."
+fi

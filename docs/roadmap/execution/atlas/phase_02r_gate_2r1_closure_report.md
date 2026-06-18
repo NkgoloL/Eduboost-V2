@@ -1,30 +1,17 @@
-# Phase 2R Gate 2R.1 Closure Report
+# Phase 2R Gate 2R.1 Status Correction
 
-**Generated:** 2026-06-16T19:45:01Z
-**Status:** Closed
-**Branch:** `feature/atlas-phase-02r-authoritative-caps-corpus`
-**evidence_run_source_sha:** `a2e24f7e14a1ae979b68ae6b7c8352dd7c4f7db8`
-**base_against_origin_master:** `4b3805b700869aaeacce4141bb565e1963777163`
-**initial_gate_report_commit_sha:** `8d972b5f`
-**remediation_code_commit_sha:** pending until this remediation is committed
-**evidence_commit_sha:** pending until this evidence pack is committed
-**eventual_gate_approval_commit_sha:** not issued
+**Status:** In Progress — closure not established
 
-## Result
+The earlier Gate 2R.1 closure claim is superseded. Its evidence was collected
+from a dirty worktree and did not prove the source catalogue, per-use rights
+model, frozen completeness register, or independent review decisions.
 
-Gate 2R.1 closure evidence was collected into a temporary directory before it
-was copied into the repository.
+Gate 2R.1 implementation is now present in the repository, but closure remains
+blocked until:
 
-## Source State
-
-```text
- M scripts/collect_phase02r_evidence.sh
-```
-
-## Evidence
-
-See `docs/release-evidence/atlas/phase-02r/gate-2r1/`.
-
-## Recommendation
-
-Gate 2R.1 implementation preflight and patch-application verification passed.
+- the migration is exercised against PostgreSQL;
+- the completeness register is resolved and frozen;
+- source authority and per-use rights decisions are entered;
+- rights, curriculum, engineering, evidence, and release approvals are signed;
+- candidate evidence is collected from a clean committed source state;
+- a separate approval commit authorises Gate 2R.2.

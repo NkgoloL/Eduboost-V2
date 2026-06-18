@@ -1,9 +1,9 @@
 # Phase 2R Execution Plan — Authoritative CAPS Corpus, Grounded Generation, and Tutor Retrieval
 
-**Document version:** 1.4
+**Document version:** 1.5
 **Plan date:** 2026-06-16
-**Status:** Gate 2R.0 completed with blockers; approval still required before execution
-**Execution authorisation:** Not granted
+**Status:** Gate 2R.1 in progress; Gate 2R.2 blocked
+**Execution authorisation:** Gate 2R.1 only
 **Phase:** 02R
 **Programme position:** Mandatory foundation reset before Phases 8–13
 **Sprint codename / documentation namespace:** `atlas`
@@ -15,8 +15,8 @@
 **Proposed branch:** `feature/atlas-phase-02r-authoritative-caps-corpus`
 **Canonical base branch:** `origin/master`
 **Base commit SHA:** `4b3805b700869aaeacce4141bb565e1963777163`
-**Actual Alembic head:** `20260615_2100_p17_reconcile`
-**Source baseline reviewed:** `Eduboost-V2-master(6).zip` plus the Phase 2R handover and review memorandum
+**Actual Alembic head after this Gate 2R.1 patch:** `20260616_1200_phase02r_authority`
+**Source baseline reviewed:** corrected `Eduboost-V2-master(8).zip` plus the Phase 2R handover and review memorandum
 **Gate 2R.0 initial report:** `docs/roadmap/execution/atlas/phase_02r_gate_2r0_initial_report.md`
 **Gate 2R.0 closure report:** `docs/roadmap/execution/atlas/phase_02r_gate_2r0_closure_report.md`
 **Start-gate control:** `docs/roadmap/execution/atlas/phase_02r_start_gate_control.json`
@@ -27,8 +27,8 @@
 **evidence_run_source_sha:** `f039d523fe9c771383c36d61028297a6a808e820`
 **evidence_commit_sha:** `851f3e16b83d8d1cd9b531ed29dbfe2f5b278e73`
 **remote_branch_sha:** `d2b243ca4a3f75e4b50a0afaed046bacabf7c7b9`
-**approval_authority_rule:** The approval commit containing the start-gate transition is the immutable authority; it records parent evidence commit `d2b243ca4a3f75e4b50a0afaed046bacabf7c7b9`.
-**eventual_gate_approval_commit_sha:** `approval_commit_is_authority`
+**approval_authority_rule:** Gate 2R.0 approval commit `d2b243ca4a3f75e4b50a0afaed046bacabf7c7b9` authorises Gate 2R.1 only and records evidence commit `851f3e16b83d8d1cd9b531ed29dbfe2f5b278e73`.
+**Gate 2R.0 approval commit SHA:** `d2b243ca4a3f75e4b50a0afaed046bacabf7c7b9`
 **Phase owner:** Nkgolo Lebelo
 **Engineering owner:** Nkgolo Lebelo
 **Curriculum owner/reviewer:** Nkgolo Lebelo — self-review conflict disclosed; independent reproduction/review remains a closure compensating control
@@ -45,7 +45,7 @@
 PHASE_02R_START_APPROVED=true
 ```
 
-> **Control statement:** Gate 2R.0 has passed and this approval-transition commit authorises Gate 2R.1. No substantive production implementation in Gates 2R.2–2R.8 may begin until its preceding gate is complete, verified, evidenced, and recorded.
+> **Control statement:** Gate 2R.0 has passed and authorises Gate 2R.1 only. Gate 2R.1 is in progress. Gate 2R.2 and every later gate remain blocked until a clean evidence run, independent approvals, and a separate immutable gate-transition commit exist.
 
 
 ## Document amendments
@@ -108,6 +108,21 @@ This revision incorporates the second formal review and adds or corrects:
 
 These amendments do not authorise execution. All start-gate conditions and named approvals remain mandatory.
 
+
+### Version 1.5 Gate 2R.1 integrity-remediation amendments
+
+This revision corrects the premature Gate 2R.1 transition and adds:
+
+- an append-only authoritative source, source-version, rights, inventory, and review-ledger schema;
+- explicit `may_translate` and `may_publish_translation` permissions;
+- a fail-closed, structured-condition rights policy engine;
+- a bounded Grade 4 Mathematics completeness register and deterministic validator;
+- gate-state validation that blocks unsupported automation and contradictory plan/evidence states;
+- implementation versus closure verification modes;
+- clean-worktree evidence collection that emits candidate evidence only and never self-approves;
+- archival of the invalid dirty-worktree Gate 2R.1 evidence; and
+- restoration of the truthful state: Gate 2R.1 in progress, Gate 2R.2 blocked.
+
 ### Version 1.4 control-consistency and implementation-safety amendments incorporated
 
 This revision incorporates the third formal review and adds or corrects:
@@ -132,6 +147,7 @@ These amendments do not authorise execution. All start-gate conditions and named
 
 ## Table of Contents
 
+  - [Version 1.5 Gate 2R.1 integrity-remediation amendments](#version-15-gate-2r1-integrity-remediation-amendments)
   - [Version 1.1 amendments incorporated](#version-11-amendments-incorporated)
   - [Version 1.2 corrections applied](#version-12-corrections-applied)
   - [Version 1.3 execution-readiness amendments incorporated](#version-13-execution-readiness-amendments-incorporated)
@@ -1609,16 +1625,16 @@ The Gate 2R.0–2R.8 engineering ranges total **72–108 person-days**, matching
 
 | ID | Work item | Acceptance criteria | Owner role | Depends on | Status |
 |---|---|---|---|---|---|
-| P02R-0001 | Confirm canonical repository, branch, base SHA, worktree, toolchain | E-02R-001 through E-02R-013 complete | Release manager | None | Not started |
-| P02R-0002 | Reconcile Phase 1–7 actual state | Tests/evidence/status gaps recorded; no inherited completion claims | Evidence custodian | P02R-0001 | Not started |
-| P02R-0003 | Approve ADR-02R-001 through ADR-02R-013 | All ADRs reviewed and committed | Engineering approver | P02R-0001 | Not started |
-| P02R-0004 | Freeze first-closure source inventory | Signed completeness-register scope and amendment rule | Curriculum + rights owners | P02R-0003 | Not started |
-| P02R-0005 | Verify Phase 0 or equivalent reproducibility controls | Clean-checkout/toolchain/environment/CI baseline evidenced | Programme + engineering owners | P02R-0001 | Not started |
-| P02R-0006 | Verify `02R` identifier compatibility | Status, Atlas, evidence, sorting, CI, and templates support `02R` forms | Evidence custodian + engineering | P02R-0001 | In progress: local validator installed; CI/template proof pending |
-| P02R-0101 | Add authoritative source catalogue schema | Migration/model constraints pass | Database owner | P02R-0003 | Not started |
-| P02R-0102 | Add per-use rights decision schema and policy engine | Missing/expired/denied use fails closed; translation/publication permissions and structured conditions are machine-enforced | Rights + engineering owners | P02R-0101 | Not started |
-| P02R-0103 | Implement completeness register and validator | All mandatory inventory rows deterministically validated | Curriculum owner | P02R-0004 | Not started |
-| P02R-0104 | Implement independent review-domain ledgers | Rights/extraction/mapping/content/answer decisions cannot imply one another | Engineering owner | P02R-0101 | Not started |
+| P02R-0001 | Confirm canonical repository, branch, base SHA, worktree, toolchain | E-02R-001 through E-02R-013 complete | Release manager | None | Completed at Gate 2R.0 |
+| P02R-0002 | Reconcile Phase 1–7 actual state | Tests/evidence/status gaps recorded; no inherited completion claims | Evidence custodian | P02R-0001 | Completed at Gate 2R.0 |
+| P02R-0003 | Approve ADR-02R-001 through ADR-02R-013 | All ADRs reviewed and committed | Engineering approver | P02R-0001 | Completed at Gate 2R.0 |
+| P02R-0004 | Freeze first-closure source inventory scope | Signed completeness-register scope and amendment rule | Curriculum + rights owners | P02R-0003 | Completed at Gate 2R.0; item resolution remains Gate 2R.1 |
+| P02R-0005 | Verify Phase 0 or equivalent reproducibility controls | Clean-checkout/toolchain/environment/CI baseline evidenced | Programme + engineering owners | P02R-0001 | Completed at Gate 2R.0 |
+| P02R-0006 | Verify `02R` identifier compatibility | Status, Atlas, evidence, sorting, CI, and templates support `02R` forms | Evidence custodian + engineering | P02R-0001 | Completed at Gate 2R.0 |
+| P02R-0101 | Add authoritative source catalogue schema | Migration/model constraints pass | Database owner | P02R-0003 | Implemented; PostgreSQL verification pending |
+| P02R-0102 | Add per-use rights decision schema and policy engine | Missing/expired/denied use fails closed; translation/publication permissions and structured conditions are machine-enforced | Rights + engineering owners | P02R-0101 | Implemented; source decisions and rights approval pending |
+| P02R-0103 | Implement completeness register and validator | All mandatory inventory rows deterministically validated | Curriculum owner | P02R-0004 | Implemented; register remains draft and unfrozen |
+| P02R-0104 | Implement independent review-domain ledgers | Rights/extraction/mapping/content/answer decisions cannot imply one another | Engineering owner | P02R-0101 | Implemented; independent approvals pending |
 | P02R-0201 | Implement object-storage abstraction | Immutable keys/versions and local dev adapter pass | Operations + engineering | P02R-0101 | Not started |
 | P02R-0202 | Implement secure acquisition | Allowlist, redirects, limits, checksums, audit logs pass | Security + engineering | P02R-0201 | Not started |
 | P02R-0203 | Integrate malware scanning/quarantine | Unsafe file never reaches extraction | Security owner | P02R-0202 | Not started |
@@ -2089,7 +2105,7 @@ Documentation Complete
 
 ---
 
-## 39. Start-Gate Checklist
+## 39. Historical Gate 2R.0 Start-Gate Checklist
 
 - [x] Canonical plan path is correct.
 - [ ] This plan is reviewed and committed.
@@ -2116,7 +2132,7 @@ Documentation Complete
 - [x] Audit-remediation workstream boundary is accepted.
 - [x] No Gate 2R.1–2R.8 production implementation has begun before approval; Gate 2R.0 activity is demonstrably read-only.
 
-Only after every Gate 2R.0 exit/start-gate item is satisfied may the approved Gate 2R.0 exit commit change:
+This checklist records the pre-approval review state. The later immutable Gate 2R.0 approval transition is recorded in the start-gate control. It changed:
 
 ```text
 PHASE_02R_START_APPROVED=true
@@ -2124,22 +2140,16 @@ PHASE_02R_START_APPROVED=true
 
 ---
 
-## 40. Approval to Start
+## 40. Gate Transition Record
 
-| Role | Name | Decision | Date | Signature / immutable reference |
-|---|---|---|---|---|
-| Phase owner | Nkgolo Lebelo | Accept planning scope; block implementation start | 2026-06-16 | Gate 2R.0 initial report |
-| Engineering approver | Nkgolo Lebelo | Reject execution until blockers close | 2026-06-16 | Gate 2R.0 initial report |
-| Curriculum owner/reviewer | Nkgolo Lebelo | Accept proposed source scope; block on missing source document | 2026-06-16 | Gate 2R.0 initial report |
-| Rights reviewer | Nkgolo Lebelo | Accept fail-closed framework; block active use until rights decisions exist | 2026-06-16 | Gate 2R.0 initial report |
-| Language-quality owner | Nkgolo Lebelo | Accept review plan; disclose self-review limitation | 2026-06-16 | Gate 2R.0 initial report |
-| Security/privacy/safeguarding reviewer | Nkgolo Lebelo | Accept planned controls; block until validators exist | 2026-06-16 | Gate 2R.0 initial report |
-| Evidence custodian | Nkgolo Lebelo | Accept evidence plan; block until collector exits nonzero on failures and captures all blockers | 2026-06-16 | Gate 2R.0 remediation |
-| Independent auditor | Nkgolo Lebelo | Accept audit scope as self-audit only; independence conflict disclosed | 2026-06-16 | Gate 2R.0 initial report |
-| Release manager | Nkgolo Lebelo | Start gate failed | 2026-06-16 | Gate 2R.0 closure report |
-| Final phase approver | Nkgolo Lebelo | Reject execution authorisation until blockers close | 2026-06-16 | Gate 2R.0 closure report |
+| Transition | Decision | Immutable reference | Current effect |
+|---|---|---|---|
+| Gate 2R.0 evidence review | Accepted with disclosed single-developer compensating controls | `851f3e16b83d8d1cd9b531ed29dbfe2f5b278e73` | Eligible for start approval |
+| Gate 2R.0 approval | Approved | `d2b243ca4a3f75e4b50a0afaed046bacabf7c7b9` | Authorises Gate 2R.1 only |
+| Gate 2R.1 premature closure claim | Superseded / invalid | `docs/release-evidence/atlas/phase-02r/gate-2r1/superseded/2026-06-16-premature-transition/` | No authority |
+| Gate 2R.1 current state | In Progress | This v1.5 amendment and implementation patch | Gate 2R.2 remains blocked |
 
-**Current decision:** Gate 2R.1 is Verified Complete. Gate 2R.2 is Authorised. `PHASE_02R_START_APPROVED` is `true` and `phase_02r_start_gate_control.json.start_approved` is `true`.
+**Current decision:** Gate 2R.1 is In Progress. Gate 2R.2 is Blocked. `PHASE_02R_START_APPROVED` remains `true` because Phase 2R execution has started, while `phase_02r_start_gate_control.json` authorises only Gate 2R.1.
 
 ---
 

@@ -779,3 +779,13 @@ from app.models.retrieval import (  # noqa: F401  (re-export)
 from app.models.tutor import TutorEscalation, TutorMessage, TutorSession  # noqa: E402,F401
 from app.models.ai_operations import AIBudgetCounter, AIUsageEvent, AIUsageReservation
 from app.models.curriculum_expansion import CurriculumCoverageSnapshot, CurriculumExpansionRun, TrainingDatasetEntry, TrainingDatasetManifest
+
+# Phase 2R authoritative source, rights, inventory, and review ledgers
+from app.models.curriculum_authority import (  # noqa: F401
+    CurriculumInventoryItem,
+    CurriculumInventoryVersion,
+    CurriculumReviewDecision,
+    CurriculumRightsDecision,
+    CurriculumSource,
+    CurriculumSourceVersion,
+)

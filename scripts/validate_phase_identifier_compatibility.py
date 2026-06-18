@@ -5,7 +5,8 @@ from __future__ import annotations
 import argparse
 import json
 import re
-import subprocess
+import contextlib
+import io
 import tempfile
 from pathlib import Path
 
@@ -26,16 +27,14 @@ def _natural_phase_key(value: str) -> tuple[int, str]:
     return (number, suffix)
 
 
-def _run(args: list[str]) -> tuple[int, str]:
-    completed = subprocess.run(
-        args,
-        cwd=ROOT,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        check=False,
-    )
-    return completed.returncode, completed.stdout.strip()
+def _run_phase_control_validation() -> tuple[int, str]:
+    """Run the control validator in-process to avoid subprocess drift/hangs."""
+    from validate_phase_control_sets import main as validate_control_sets
+
+    output = io.StringIO()
+    with contextlib.redirect_stdout(output), contextlib.redirect_stderr(output):
+        rc = validate_control_sets()
+    return rc, output.getvalue().strip()
 
 
 RESERVED_PHASE02R_FUTURE_ARTIFACTS = {
@@ -97,7 +96,7 @@ def main() -> int:
     if "phase_02r" not in text or "phase-02r" not in text:
         warnings.append("validate_phase_control_sets.py does not include Phase 02R canonical artifacts")
     if args.strict:
-        rc, output = _run(["python3", "scripts/validate_phase_control_sets.py"])
+        rc, output = _run_phase_control_validation()
         if rc != 0:
             errors.append(f"Atlas control-set validation failed: {output}")
         with tempfile.TemporaryDirectory(prefix="phase-02r-evidence-") as tmp:

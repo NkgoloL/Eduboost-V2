@@ -1,0 +1,52 @@
+{
+  "phase": "02R",
+  "gate": "2R.1",
+  "decision": "pending",
+  "evidence_source_sha": null,
+  "evidence_index_sha256": null,
+  "decided_at": null,
+  "authorised_next_gate": null,
+  "decisions": [
+    {
+      "role": "engineering_approver",
+      "review_domain": "implementation",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "immutable_reference": null
+    },
+    {
+      "role": "rights_reviewer",
+      "review_domain": "rights",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "immutable_reference": null
+    },
+    {
+      "role": "curriculum_reviewer",
+      "review_domain": "inventory_completeness",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "immutable_reference": null
+    },
+    {
+      "role": "evidence_custodian",
+      "review_domain": "evidence_integrity",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "immutable_reference": null
+    },
+    {
+      "role": "release_manager",
+      "review_domain": "gate_transition",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "immutable_reference": null
+    }
+  ],
+  "evidence_commit_sha": null
+}
