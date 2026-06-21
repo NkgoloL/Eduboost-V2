@@ -1,0 +1,55 @@
+{
+  "checks": [
+    {
+      "missing": [],
+      "name": "implementation_manifest",
+      "passed": true
+    },
+    {
+      "exit_code": 0,
+      "name": "focused_unit_tests",
+      "output": ".........................                                                [100%]\n25 passed in 0.48s",
+      "passed": true
+    },
+    {
+      "errors": [],
+      "name": "gate_control",
+      "passed": true
+    },
+    {
+      "errors": [],
+      "name": "authority_schema",
+      "passed": true
+    },
+    {
+      "errors": [],
+      "manifest_sha256": "5618eee3dddae46ae4543eab45b5b4df2b560ba2bd430d1f076462d3c250e3e0",
+      "name": "source_completeness_register",
+      "passed": true,
+      "require_frozen": true,
+      "status": "frozen"
+    },
+    {
+      "exit_code": 0,
+      "name": "migration_graph",
+      "output": "Migration graph OK: 44 revisions, head=20260618_1200_phase02r_grounding",
+      "passed": true
+    },
+    {
+      "exit_code": 0,
+      "name": "schema_integrity",
+      "output": "Schema integrity OK",
+      "passed": true
+    },
+    {
+      "exit_code": 0,
+      "name": "phase_control_sets",
+      "output": "Atlas phase-control validation passed",
+      "passed": true
+    }
+  ],
+  "gate": "2R.1",
+  "mode": "candidate_closure",
+  "passed": true,
+  "phase": "02R"
+}
