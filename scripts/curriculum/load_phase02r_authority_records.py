@@ -70,6 +70,42 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def stable_value(value: Any) -> Any:
+    if isinstance(value, uuid.UUID):
+        return str(value)
+    if isinstance(value, datetime):
+        value = value.astimezone(UTC) if value.tzinfo else value.replace(tzinfo=UTC)
+        return value.replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    if isinstance(value, date):
+        return value.isoformat()
+    if isinstance(value, dict):
+        return {key: stable_value(value[key]) for key in sorted(value)}
+    if isinstance(value, list):
+        return [stable_value(item) for item in value]
+    return value
+
+
+def jsonb_value(value: Any) -> Any:
+    if isinstance(value, str):
+        return json.loads(value)
+    return value
+
+
+def field_hash(value: dict[str, Any]) -> str:
+    encoded = json.dumps(stable_value(value), sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def assert_field_match(label: str, actual: dict[str, Any], expected: dict[str, Any]) -> None:
+    normalized_actual = stable_value(actual)
+    normalized_expected = stable_value(expected)
+    if normalized_actual != normalized_expected:
+        raise RuntimeError(
+            f"{label} content mismatch after idempotent load: "
+            f"expected_hash={field_hash(expected)} actual_hash={field_hash(actual)}"
+        )
+
+
 def download_pdf(url: str, target: Path) -> int:
     target.parent.mkdir(parents=True, exist_ok=True)
     request = Request(url, headers={"User-Agent": USER_AGENT})
@@ -386,6 +422,7 @@ async def insert_records(database_url: str, records: dict[str, Any]) -> dict[str
                     item["reviewed_at"],
                 )
 
+        await verify_persisted_records(conn, records)
         counts = await conn.fetchrow(
             """
             SELECT
@@ -415,10 +452,113 @@ async def insert_records(database_url: str, records: dict[str, Any]) -> dict[str
         await conn.close()
 
 
+async def verify_persisted_records(conn: Any, records: dict[str, Any]) -> None:
+    source = records["source"]
+    persisted_source = await conn.fetchrow(
+        """
+        SELECT source_id,publisher,authority_tier,official_source_url,document_title,document_type,
+               country,curriculum,phase,grade,subject,language,created_by
+        FROM curriculum_sources
+        WHERE source_id=$1
+        """,
+        source["source_id"],
+    )
+    if persisted_source is None:
+        raise RuntimeError("loaded curriculum_sources row is missing")
+    assert_field_match("curriculum_sources", dict(persisted_source), source)
+
+    version = records["source_version"]
+    persisted_version = await conn.fetchrow(
+        """
+        SELECT source_version_id,source_id,version_label,publication_date,effective_from,effective_to,
+               copyright_owner,original_sha256,original_object_uri,media_type,file_size_bytes,
+               retrieved_at,retrieval_metadata,created_by
+        FROM curriculum_source_versions
+        WHERE source_version_id=$1
+        """,
+        version["source_version_id"],
+    )
+    if persisted_version is None:
+        raise RuntimeError("loaded curriculum_source_versions row is missing")
+    actual_version = dict(persisted_version)
+    actual_version["retrieval_metadata"] = jsonb_value(actual_version["retrieval_metadata"])
+    assert_field_match("curriculum_source_versions", actual_version, version)
+
+    decision = records["rights_decision"]
+    persisted_decision = await conn.fetchrow(
+        f"""
+        SELECT rights_decision_id,source_version_id,decision_status,{','.join(RIGHTS_FIELDS)},
+               conditions,decision_basis,evidence_uri,reviewed_by,reviewed_at,expires_at,idempotency_key
+        FROM curriculum_rights_decisions
+        WHERE rights_decision_id=$1
+        """,
+        decision["rights_decision_id"],
+    )
+    if persisted_decision is None:
+        raise RuntimeError("loaded curriculum_rights_decisions row is missing")
+    actual_decision = dict(persisted_decision)
+    actual_decision["conditions"] = jsonb_value(actual_decision["conditions"])
+    assert_field_match("curriculum_rights_decisions", actual_decision, decision)
+
+    inventory = records["inventory_version"]
+    persisted_inventory = await conn.fetchrow(
+        """
+        SELECT inventory_version_id,inventory_code,version_number,curriculum,grade,subject,
+               delivery_languages,terms,strands,status,manifest_sha256,frozen_by,frozen_at,created_by
+        FROM curriculum_inventory_versions
+        WHERE inventory_version_id=$1
+        """,
+        inventory["inventory_version_id"],
+    )
+    if persisted_inventory is None:
+        raise RuntimeError("loaded curriculum_inventory_versions row is missing")
+    actual_inventory = dict(persisted_inventory)
+    for field in ("delivery_languages", "terms", "strands"):
+        actual_inventory[field] = jsonb_value(actual_inventory[field])
+    assert_field_match("curriculum_inventory_versions", actual_inventory, inventory)
+
+    expected_items = {item["requirement_code"]: item for item in records["inventory_items"]}
+    persisted_items = await conn.fetch(
+        """
+        SELECT inventory_item_id,inventory_version_id,requirement_code,requirement_type,authority_tier,
+               term,strand,language,source_id,source_version_id,item_status,absence_reason,evidence,
+               reviewed_by,reviewed_at
+        FROM curriculum_inventory_items
+        WHERE inventory_version_id=$1
+        ORDER BY requirement_code
+        """,
+        inventory["inventory_version_id"],
+    )
+    actual_codes = {row["requirement_code"] for row in persisted_items}
+    expected_codes = set(expected_items)
+    if actual_codes != expected_codes:
+        raise RuntimeError(
+            "curriculum_inventory_items requirement-code mismatch: "
+            f"expected_hash={field_hash({'codes': sorted(expected_codes)})} "
+            f"actual_hash={field_hash({'codes': sorted(actual_codes)})}"
+        )
+    for row in persisted_items:
+        actual_item = dict(row)
+        actual_item["evidence"] = jsonb_value(actual_item["evidence"])
+        assert_field_match(
+            f"curriculum_inventory_items[{row['requirement_code']}]",
+            actual_item,
+            expected_items[row["requirement_code"]],
+        )
+
+
 def serializable_summary(records: dict[str, Any], counts: dict[str, int] | None, *, downloaded: bool) -> dict[str, Any]:
+    retrieval_metadata = records["source_version"]["retrieval_metadata"]
+    source_manifest_path = ROOT / retrieval_metadata["source_manifest_path"]
     return {
         "valid": True,
         "downloaded_source": downloaded,
+        "source_verified_at": datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        "source_manifest_sha256": sha256_file(source_manifest_path),
+        "source_manifest_path": retrieval_metadata["source_manifest_path"],
+        "source_path": retrieval_metadata["source_path"],
+        "canonical_source_url": retrieval_metadata["canonical_source_url"],
+        "object_store_uri": retrieval_metadata["object_store_uri"],
         "source_id": str(records["source"]["source_id"]),
         "source_version_id": str(records["source_version"]["source_version_id"]),
         "rights_decision_id": str(records["rights_decision"]["rights_decision_id"]),

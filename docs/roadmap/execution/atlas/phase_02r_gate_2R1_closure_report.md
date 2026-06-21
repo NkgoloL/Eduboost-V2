@@ -4,6 +4,10 @@
 **Status:** Candidate verification passed — human approval pending
 **Branch:** `feature/atlas-phase-02r-gate-2r1-remediation`
 **Source commit:** `c5a8cd829e8d5707e0f98f909b105af9b99ca903`
+**Evidence commit:** `4325a68f85597800b9741344a4a72c68f8830a73`
+**Evidence pack path:** `docs/release-evidence/atlas/phase-02r/gate-2r1/`
+**Raw artifact checksum index:** `raw/SHA256SUMS.txt`
+**Remote branch SHA at candidate-evidence handoff:** `4325a68f85597800b9741344a4a72c68f8830a73`
 **Base against origin/master:** `05bf52c31160f5a99420b4a0fdb8a12b8b970cae`
 **Clean worktree at collection start:** yes
 
