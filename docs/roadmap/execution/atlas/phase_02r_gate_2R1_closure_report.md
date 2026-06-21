@@ -1,10 +1,10 @@
 # Phase 2R Gate 2R.1 Candidate Evidence Report
 
-**Generated:** 2026-06-21T18:42:56Z
+**Generated:** 2026-06-21T18:51:03Z
 **Status:** Candidate verification passed — human approval pending
 **Branch:** `feature/atlas-phase-02r-gate-2r1-remediation`
-**Source commit:** `e893cd876e650f4d996876cfedeb203243c5f1e1`
-**Base against origin/master:** `05bf52c31160f5a99420b4a0fdb8a12b8b970cae`
+**Source commit:** `306702b9317cbf6ab57e54041abe6b44ff383caa`
+**Base against origin/master:** `e893cd876e650f4d996876cfedeb203243c5f1e1`
 **Clean worktree at collection start:** yes
 
 ## Result
