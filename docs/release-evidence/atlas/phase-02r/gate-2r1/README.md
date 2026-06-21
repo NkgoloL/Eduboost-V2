@@ -5,8 +5,8 @@ closed. Independent approvals and a separate Gate 2R.2 authorisation commit
 remain required.
 
 Current candidate evidence was collected from source commit
-`d3298ed7184b695127cc539e46482a8b16362d37` and committed separately at
-`ffb8a0d99dcdcb88f60b8eb876ae87162358673f`.
+`e6e43df45e4e990e9914a55134742b68c500ddd5` and committed separately at
+`57f8a3c4ea51a19cd3601cdf5f3ae29753548644`.
 
 If candidate evidence must be regenerated from a newer source commit, ensure
 the worktree is clean and run:

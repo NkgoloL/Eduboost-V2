@@ -12,8 +12,8 @@ remain required.
 
 Current candidate evidence:
 
-- source commit: `d3298ed7184b695127cc539e46482a8b16362d37`;
-- evidence commit: `ffb8a0d99dcdcb88f60b8eb876ae87162358673f`;
+- source commit: `e6e43df45e4e990e9914a55134742b68c500ddd5`;
+- evidence commit: `57f8a3c4ea51a19cd3601cdf5f3ae29753548644`;
 - evidence pack: `docs/release-evidence/atlas/phase-02r/gate-2r1/`;
 - raw checksum index: `docs/release-evidence/atlas/phase-02r/gate-2r1/raw/SHA256SUMS.txt`.
 
