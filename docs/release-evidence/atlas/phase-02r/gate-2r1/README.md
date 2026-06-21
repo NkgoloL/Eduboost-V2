@@ -8,6 +8,12 @@ Current candidate evidence was collected from source commit
 `e6e43df45e4e990e9914a55134742b68c500ddd5` and committed separately at
 `57f8a3c4ea51a19cd3601cdf5f3ae29753548644`.
 
+Candidate handoff metadata is recorded in
+`docs/release-evidence/atlas/phase-02r/gate-2r1/evidence_handoff_metadata.json`.
+That metadata stamps the source commit, evidence commit, current branch tip,
+remote branch SHA at handoff, and evidence-index SHA-256. It does not close
+Gate 2R.1 or authorise Gate 2R.2.
+
 If candidate evidence must be regenerated from a newer source commit, ensure
 the worktree is clean and run:
 

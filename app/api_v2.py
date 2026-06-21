@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import asyncio
 from contextlib import asynccontextmanager
+from ipaddress import ip_address, ip_network
 
 from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
 from fastapi import FastAPI, Request
@@ -30,6 +31,37 @@ validate_jwt_keyring_environment()
 
 configure_logging()
 log = get_logger(__name__)
+
+METRICS_ALLOWED_NETWORKS = tuple(
+    ip_network(network)
+    for network in (
+        "127.0.0.0/8",
+        "10.0.0.0/8",
+        "172.16.0.0/12",
+        "192.168.0.0/16",
+        "::1/128",
+        "fc00::/7",
+        "fe80::/10",
+    )
+)
+
+
+def _is_private_metrics_client(client_ip: str) -> bool:
+    """Return whether a metrics scrape originated from an allowed private range."""
+    try:
+        address = ip_address(client_ip)
+    except ValueError:
+        return False
+    return any(address in network for network in METRICS_ALLOWED_NETWORKS)
+
+
+def _metrics_client_ip(request: Request) -> str:
+    """Resolve the direct peer IP for metrics access control.
+
+    Forwarded headers are intentionally ignored here. They can only be trusted
+    after the deployment defines an explicit trusted-proxy allowlist.
+    """
+    return request.client.host if request.client else ""
 
 
 @asynccontextmanager
@@ -204,11 +236,8 @@ async def metrics(request: Request):
     See ADR-027 for the full decision rationale.
     """
     if settings.is_production():
-        client_ip = request.client.host if request.client else ""
-        # Allow: loopback, RFC-1918 private ranges, and ACA internal probes.
-        _private_prefixes = ("127.", "10.", "172.16.", "172.17.", "172.18.",
-                             "172.19.", "172.2", "172.3", "192.168.", "::1")
-        if not any(client_ip.startswith(p) for p in _private_prefixes):
+        client_ip = _metrics_client_ip(request)
+        if not _is_private_metrics_client(client_ip):
             return Response(status_code=403, content=b"Forbidden")
     return Response(generate_latest(REGISTRY), media_type=CONTENT_TYPE_LATEST)
 

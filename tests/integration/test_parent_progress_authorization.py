@@ -12,9 +12,10 @@ from typing import Any
 import pytest
 from fastapi.testclient import TestClient
 
+from app.api_v2_deps.auth import AuthContext, TokenType, require_parent_or_admin
 from app.api_v2 import app
 from app.api_v2_routers import parents as parents_router
-from app.core.security import require_parent_or_admin
+from app.models import UserRole
 
 
 class FakeScalarResult:
@@ -82,9 +83,19 @@ async def override_db() -> FakeDB:
     return FakeDB()
 
 
+def _auth_context(payload: dict[str, Any]) -> AuthContext:
+    return AuthContext(
+        user_id=payload["sub"],
+        roles=[UserRole(payload["role"])],
+        token_type=TokenType.ACCESS,
+        raw_claims=payload,
+        jti="test-jti",
+    )
+
+
 def override_user(payload: dict[str, Any]):
-    async def _override() -> dict[str, Any]:
-        return payload
+    async def _override() -> AuthContext:
+        return _auth_context(payload)
 
     return _override
 

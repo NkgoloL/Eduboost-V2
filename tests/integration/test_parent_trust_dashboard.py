@@ -8,9 +8,10 @@ from unittest.mock import AsyncMock
 
 from fastapi.testclient import TestClient
 
+from app.api_v2_deps.auth import AuthContext, TokenType, require_parent_or_admin
 from app.api_v2 import app
 from app.core.database import get_db
-from app.core.security import require_parent_or_admin
+from app.models import UserRole
 
 from app.api_v2_routers import parents as parents_router
 
@@ -67,7 +68,14 @@ def test_parent_trust_dashboard_returns_gap_summary_and_export_links(monkeypatch
         yield FakeDB()
 
     def override_user():
-        return {"sub": "guardian-1", "role": "parent"}
+        payload = {"sub": "guardian-1", "role": "parent"}
+        return AuthContext(
+            user_id=payload["sub"],
+            roles=[UserRole(payload["role"])],
+            token_type=TokenType.ACCESS,
+            raw_claims=payload,
+            jti="test-jti",
+        )
 
     class FakeLearnerRepository:
         def __init__(self, _db):
@@ -108,4 +116,3 @@ def test_parent_trust_dashboard_returns_gap_summary_and_export_links(monkeypatch
     # 3 completed / 4 generated * 100 = 75.0
     assert payload["learners"][0]["lesson_completion_rate_7d"] == 75.0
     assert payload["learners"][0]["export_url"].endswith("/api/v2/popia/data-export/learner-1")
-

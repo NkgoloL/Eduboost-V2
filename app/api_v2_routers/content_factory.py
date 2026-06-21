@@ -12,8 +12,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.core.envelope_route import EnvelopedRoute
-from app.api_v2_deps.auth import AuthContext, require_auth_context
-from app.core.security import require_admin
+from app.api_v2_deps.auth import AuthContext, require_admin, require_auth_context
 from app.core.security import get_current_user  # noqa: F401
 from app.domain.content_factory_schemas import (
     ContentArtifactProvenanceResponse,
@@ -1031,7 +1030,7 @@ def get_learner_read_service():
 async def get_staging_preview(
     scope_id: str,
     layers: list[str] | None = Query(None),
-    current_user: dict = Depends(require_admin),
+    current_user: AuthContext = Depends(require_admin),
     session: AsyncSession = Depends(get_db),
     service = Depends(get_staging_preview_service),
 ):
@@ -1045,7 +1044,7 @@ async def get_staging_preview_by_caps_ref(
     scope_id: str,
     caps_ref: str,
     layers: list[str] | None = Query(None),
-    current_user: dict = Depends(require_admin),
+    current_user: AuthContext = Depends(require_admin),
     session: AsyncSession = Depends(get_db),
     service = Depends(get_staging_preview_service),
 ):
@@ -1057,7 +1056,7 @@ async def get_staging_preview_by_caps_ref(
 @router.get("/production-preview/scopes/{scope_id}")
 async def get_production_preview(
     scope_id: str,
-    current_user: dict = Depends(require_admin),
+    current_user: AuthContext = Depends(require_admin),
     session: AsyncSession = Depends(get_db),
     service = Depends(get_learner_read_service),
 ):
@@ -1070,7 +1069,7 @@ async def get_production_preview(
 async def get_production_preview_by_caps_ref(
     scope_id: str,
     caps_ref: str,
-    current_user: dict = Depends(require_admin),
+    current_user: AuthContext = Depends(require_admin),
     session: AsyncSession = Depends(get_db),
     service = Depends(get_learner_read_service),
 ):
@@ -1085,7 +1084,7 @@ async def get_production_preview_by_caps_ref(
 
 @router.post("/full-generation/plan")
 async def plan_full_generation(
-    current_user: dict = Depends(require_admin),
+    current_user: AuthContext = Depends(require_admin),
     session: AsyncSession = Depends(get_db),
 ):
     """Plan full generation for all configured scopes (admin-only)."""
@@ -1097,7 +1096,7 @@ async def plan_full_generation(
         run_id=uuid.uuid4(),
         scope_id="all_scopes",
         status="queued",
-        requested_by=current_user.get("sub"),
+        requested_by=current_user.user_id,
         run_metadata={"layers": ["diagnostic_items", "lessons", "assessment_blueprints", "study_plan_templates"]},
     )
     session.add(run)
@@ -1106,7 +1105,7 @@ async def plan_full_generation(
     plan_result = await planner.plan_missing_for_run(
         session,
         run.run_id,
-        actor_id=current_user.get("sub"),
+        actor_id=current_user.user_id,
     )
 
     return {
@@ -1120,7 +1119,7 @@ async def plan_full_generation(
 @router.post("/full-generation/start")
 async def start_full_generation(
     request: dict,
-    current_user: dict = Depends(require_admin),
+    current_user: AuthContext = Depends(require_admin),
     session: AsyncSession = Depends(get_db),
 ):
     """Start full generation run (admin-only)."""
@@ -1154,7 +1153,7 @@ async def start_full_generation(
 
 @router.get("/full-generation/runs")
 async def list_full_generation_runs(
-    current_user: dict = Depends(require_admin),
+    current_user: AuthContext = Depends(require_admin),
     session: AsyncSession = Depends(get_db),
 ):
     """List full generation runs (admin-only)."""
@@ -1177,7 +1176,7 @@ async def list_full_generation_runs(
 @router.get("/full-generation/runs/{run_id}")
 async def get_full_generation_run(
     run_id: str,
-    current_user: dict = Depends(require_admin),
+    current_user: AuthContext = Depends(require_admin),
     session: AsyncSession = Depends(get_db),
 ):
     """Get a full generation run (admin-only)."""
@@ -1193,7 +1192,7 @@ async def get_full_generation_run(
 @router.get("/full-generation/runs/{run_id}/report")
 async def get_full_generation_run_report(
     run_id: str,
-    current_user: dict = Depends(require_admin),
+    current_user: AuthContext = Depends(require_admin),
     session: AsyncSession = Depends(get_db),
 ):
     """Get a full generation run report (admin-only)."""
@@ -1214,7 +1213,7 @@ async def get_full_generation_run_report(
 @router.post("/full-generation/runs/{run_id}/cancel")
 async def cancel_full_generation_run(
     run_id: str,
-    current_user: dict = Depends(require_admin),
+    current_user: AuthContext = Depends(require_admin),
     session: AsyncSession = Depends(get_db),
 ):
     """Cancel a full generation run (admin-only)."""
@@ -1249,7 +1248,7 @@ async def cancel_full_generation_run(
 @router.post("/full-generation/runs/{run_id}/resume")
 async def resume_full_generation_run(
     run_id: str,
-    current_user: dict = Depends(require_admin),
+    current_user: AuthContext = Depends(require_admin),
     session: AsyncSession = Depends(get_db),
 ):
     """Resume a full generation run (admin-only)."""

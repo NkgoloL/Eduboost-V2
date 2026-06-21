@@ -5,8 +5,8 @@ from fastapi import APIRouter, Depends, Header, Request, status
 from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.api_v2_deps.auth import AuthContext, require_parent_or_admin
 from app.core.database import get_db
-from app.core.security import require_parent_or_admin
 from app.domain.schemas import CheckoutSessionResponse
 from app.services.fourth_estate import FourthEstateService
 from app.services.stripe_service import StripeService
@@ -18,12 +18,12 @@ router = APIRouter(route_class=EnvelopedRoute, prefix="/billing", tags=["billing
 @router.post("/create-checkout-session", response_model=CheckoutSessionResponse)
 async def create_checkout(
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_parent_or_admin),
+    current_user: AuthContext = Depends(require_parent_or_admin),
 ):
     svc = StripeService(db)
     # Note: In production, retrieve email from encrypted field and decrypt
     url = await svc.create_checkout_session(
-        guardian_id=current_user["sub"],
+        guardian_id=current_user.user_id,
         email_plaintext="billing-placeholder",
     )
     return CheckoutSessionResponse(checkout_url=url)

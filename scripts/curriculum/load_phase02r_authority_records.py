@@ -23,10 +23,12 @@ from scripts.curriculum.validate_source_completeness_register import (  # noqa: 
 )
 
 DEFAULT_SOURCE_MANIFEST = ROOT / "data" / "caps" / "source_documents" / "manifest.json"
+RAW_SOURCE_DIR = ROOT / "data" / "caps" / "source_documents" / "raw"
 TARGET_DOCUMENT_ID = "caps_intermediate_phase_mathematics_grade4_6"
 LOADER_NAMESPACE = uuid.UUID("3f8a2067-aad1-5479-8ec6-eaf1f480b5a3")
 CREATED_BY = "phase-02r-gate2r1-authority-loader"
 USER_AGENT = "Eduboost-Phase02R-authority-loader/1.0"
+MAX_SOURCE_DOWNLOAD_BYTES = 50 * 1024 * 1024
 
 RIGHTS_FIELDS = (
     "may_store_original",
@@ -106,18 +108,47 @@ def assert_field_match(label: str, actual: dict[str, Any], expected: dict[str, A
         )
 
 
-def download_pdf(url: str, target: Path) -> int:
+def resolve_source_target(source_path: str) -> Path:
+    target = (ROOT / source_path).resolve()
+    raw_dir = RAW_SOURCE_DIR.resolve()
+    if not target.is_relative_to(raw_dir):
+        raise RuntimeError(
+            f"{source_path} is outside the controlled raw source directory: "
+            f"{RAW_SOURCE_DIR.relative_to(ROOT)}"
+        )
+    return target
+
+
+def download_pdf(url: str, target: Path, *, max_bytes: int = MAX_SOURCE_DOWNLOAD_BYTES) -> int:
     target.parent.mkdir(parents=True, exist_ok=True)
     request = Request(url, headers={"User-Agent": USER_AGENT})
-    with urlopen(request, timeout=90) as response:
-        payload = response.read()
-    if not payload.startswith(b"%PDF-"):
-        preview = payload[:120].decode("utf-8", errors="replace").replace("\n", " ")
-        raise RuntimeError(f"downloaded source is not a PDF: {preview!r}")
     tmp = target.with_suffix(target.suffix + ".part")
-    tmp.write_bytes(payload)
+    byte_count = 0
+    with urlopen(request, timeout=90) as response:
+        content_length = response.headers.get("Content-Length")
+        if content_length and int(content_length) > max_bytes:
+            raise RuntimeError(f"download exceeds max byte limit: {content_length} > {max_bytes}")
+        try:
+            with tmp.open("wb") as handle:
+                first_chunk = response.read(8192)
+                if not first_chunk.startswith(b"%PDF-"):
+                    preview = first_chunk[:120].decode("utf-8", errors="replace").replace("\n", " ")
+                    raise RuntimeError(f"downloaded source is not a PDF: {preview!r}")
+                handle.write(first_chunk)
+                byte_count += len(first_chunk)
+                while True:
+                    chunk = response.read(1024 * 1024)
+                    if not chunk:
+                        break
+                    byte_count += len(chunk)
+                    if byte_count > max_bytes:
+                        raise RuntimeError(f"download exceeds max byte limit: {byte_count} > {max_bytes}")
+                    handle.write(chunk)
+        except Exception:
+            tmp.unlink(missing_ok=True)
+            raise
     tmp.replace(target)
-    return len(payload)
+    return byte_count
 
 
 def source_manifest_document(manifest: dict[str, Any]) -> dict[str, Any]:
@@ -132,7 +163,7 @@ def ensure_verified_source_file(document: dict[str, Any], *, download_missing: b
     if not source_path:
         raise RuntimeError(f"{TARGET_DOCUMENT_ID} has no source_path")
 
-    target = ROOT / source_path
+    target = resolve_source_target(str(source_path))
     downloaded = False
     if not target.is_file():
         if not download_missing:

@@ -7,9 +7,10 @@ reminder job on-demand (in addition to the daily arq schedule).
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, status
+
+from app.api_v2_deps.auth import AuthContext, require_admin
 from app.core.envelope_route import EnvelopedRoute
 
-from app.core.security import require_admin
 from app.domain.api_v2_models import JobAcceptedResponse
 from app.modules.jobs import enqueue_durable
 
@@ -23,7 +24,7 @@ router = APIRouter(route_class=EnvelopedRoute, prefix="/admin/consent", tags=["V
     summary="Trigger POPIA consent renewal reminder emails (Admin only)",
 )
 async def trigger_renewal_reminders(
-    _: dict = Depends(require_admin),
+    _: AuthContext = Depends(require_admin),
 ) -> JobAcceptedResponse:
     """
     Queues the consent renewal reminder job on the durable ARQ worker.
