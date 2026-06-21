@@ -1,52 +1,52 @@
 {
   "phase": "02R",
   "gate": "2R.1",
-  "decision": "approved",
-  "evidence_source_sha": "e832302f7c40cd2d3125b56b9e14fda3f6f5b281",
-  "evidence_commit_sha": "05bf52c31160f5a99420b4a0fdb8a12b8b970cae",
-  "evidence_index_sha256": "8473c84995a52f61e3984d08cffa673e204f03d58eb690b3c492150aba2843b7",
-  "decided_at": "2026-06-18T13:40:00+02:00",
-  "authorised_next_gate": "2R.2",
+  "decision": "pending",
+  "evidence_source_sha": null,
+  "evidence_commit_sha": null,
+  "evidence_index_sha256": null,
+  "decided_at": null,
+  "authorised_next_gate": null,
   "decisions": [
     {
       "role": "engineering_approver",
       "review_domain": "implementation",
-      "decision": "approved",
-      "reviewer": "Nkgolo Lebelo",
-      "decided_at": "2026-06-18T13:40:00+02:00",
-      "immutable_reference": "05bf52c31160f5a99420b4a0fdb8a12b8b970cae"
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "immutable_reference": null
     },
     {
       "role": "rights_reviewer",
       "review_domain": "rights",
-      "decision": "approved",
-      "reviewer": "Nkgolo Lebelo",
-      "decided_at": "2026-06-18T13:40:01+02:00",
-      "immutable_reference": "05bf52c31160f5a99420b4a0fdb8a12b8b970cae"
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "immutable_reference": null
     },
     {
       "role": "curriculum_reviewer",
       "review_domain": "inventory_completeness",
-      "decision": "approved",
-      "reviewer": "Nkgolo Lebelo",
-      "decided_at": "2026-06-18T13:40:02+02:00",
-      "immutable_reference": "05bf52c31160f5a99420b4a0fdb8a12b8b970cae"
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "immutable_reference": null
     },
     {
       "role": "evidence_custodian",
       "review_domain": "evidence_integrity",
-      "decision": "approved",
-      "reviewer": "Nkgolo Lebelo",
-      "decided_at": "2026-06-18T13:40:03+02:00",
-      "immutable_reference": "05bf52c31160f5a99420b4a0fdb8a12b8b970cae"
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "immutable_reference": null
     },
     {
       "role": "release_manager",
       "review_domain": "gate_transition",
-      "decision": "approved",
-      "reviewer": "Nkgolo Lebelo",
-      "decided_at": "2026-06-18T13:40:04+02:00",
-      "immutable_reference": "05bf52c31160f5a99420b4a0fdb8a12b8b970cae"
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "immutable_reference": null
     }
   ]
 }
