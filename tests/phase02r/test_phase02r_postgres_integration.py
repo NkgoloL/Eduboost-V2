@@ -85,10 +85,25 @@ async def test_phase02r_tables_columns_and_append_only_triggers_exist(session):
     assert {f"trg_{name}_append_only" for name in expected_tables}.issubset(triggers)
 
 
+async def _assert_update_and_delete_are_blocked(session, table_name: str, predicate: str, params: dict[str, object]) -> None:
+    for statement in (
+        f"UPDATE {table_name} SET created_at=created_at WHERE {predicate}",
+        f"DELETE FROM {table_name} WHERE {predicate}",
+    ):
+        with pytest.raises(DBAPIError):
+            await session.execute(text(statement), params)
+            await session.flush()
+        await session.rollback()
+
+
 @pytest.mark.asyncio
-async def test_authority_rows_are_append_only(session):
+async def test_authority_rows_are_append_only_for_update_and_delete(session):
     source_id = uuid.uuid4()
     source_version_id = uuid.uuid4()
+    inventory_version_id = uuid.uuid4()
+    inventory_item_id = uuid.uuid4()
+    review_decision_id = uuid.uuid4()
+
     await session.execute(
         text(
             "INSERT INTO curriculum_sources "
@@ -117,21 +132,70 @@ async def test_authority_rows_are_append_only(session):
         ),
         {"version_id": source_version_id},
     )
+    await session.execute(
+        text(
+            "INSERT INTO curriculum_inventory_versions "
+            "(inventory_version_id,inventory_code,version_number,curriculum,grade,subject,delivery_languages,terms,strands,status,manifest_sha256,created_by) "
+            "VALUES (:inventory_version_id,'grade4-mathematics-caps',1,'CAPS',4,'Mathematics',"
+            "'[\"en\",\"af\",\"nso\"]'::jsonb,'[1,2,3,4]'::jsonb,'[\"Numbers\"]'::jsonb,'draft',:sha,'test')"
+        ),
+        {"inventory_version_id": inventory_version_id, "sha": "b" * 64},
+    )
+    await session.execute(
+        text(
+            "INSERT INTO curriculum_inventory_items "
+            "(inventory_item_id,inventory_version_id,requirement_code,requirement_type,authority_tier,term,strand,language,source_id,source_version_id,item_status,evidence,reviewed_by,reviewed_at) "
+            "VALUES (:inventory_item_id,:inventory_version_id,'tier1-policy-grade4-mathematics-en','curriculum_policy_authority','tier_1',1,'Numbers','en',"
+            ":source_id,:source_version_id,'located','{}'::jsonb,'reviewer',now())"
+        ),
+        {
+            "inventory_item_id": inventory_item_id,
+            "inventory_version_id": inventory_version_id,
+            "source_id": source_id,
+            "source_version_id": source_version_id,
+        },
+    )
+    await session.execute(
+        text(
+            "INSERT INTO curriculum_review_decisions "
+            "(review_decision_id,review_domain,subject_type,subject_id,decision,reviewer_id,reviewer_role,rationale,evidence,idempotency_key) "
+            "VALUES (:review_decision_id,'source_authority','curriculum_source',:subject_id,'approve','reviewer','source reviewer','verified source','{}'::jsonb,'review-test')"
+        ),
+        {"review_decision_id": review_decision_id, "subject_id": str(source_id)},
+    )
     await session.commit()
 
-    for table_name, predicate in (
-        ("curriculum_sources", "source_id=:id"),
-        ("curriculum_source_versions", "source_version_id=:id"),
-        ("curriculum_rights_decisions", "source_version_id=:id"),
-    ):
-        identifier = source_id if table_name == "curriculum_sources" else source_version_id
-        with pytest.raises(DBAPIError):
-            await session.execute(
-                text(f"UPDATE {table_name} SET created_at=created_at WHERE {predicate}"),
-                {"id": identifier},
-            )
-            await session.flush()
-        await session.rollback()
+    await _assert_update_and_delete_are_blocked(session, "curriculum_sources", "source_id=:id", {"id": source_id})
+    await _assert_update_and_delete_are_blocked(
+        session,
+        "curriculum_source_versions",
+        "source_version_id=:id",
+        {"id": source_version_id},
+    )
+    await _assert_update_and_delete_are_blocked(
+        session,
+        "curriculum_rights_decisions",
+        "source_version_id=:id",
+        {"id": source_version_id},
+    )
+    await _assert_update_and_delete_are_blocked(
+        session,
+        "curriculum_inventory_versions",
+        "inventory_version_id=:id",
+        {"id": inventory_version_id},
+    )
+    await _assert_update_and_delete_are_blocked(
+        session,
+        "curriculum_inventory_items",
+        "inventory_item_id=:id",
+        {"id": inventory_item_id},
+    )
+    await _assert_update_and_delete_are_blocked(
+        session,
+        "curriculum_review_decisions",
+        "review_decision_id=:id",
+        {"id": review_decision_id},
+    )
 
 
 @pytest.mark.asyncio
