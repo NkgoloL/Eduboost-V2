@@ -7,10 +7,11 @@ remain required.
 Current candidate evidence was regenerated from source commit
 `e893cd876e650f4d996876cfedeb203243c5f1e1`.
 
-Candidate handoff metadata must be generated after the refreshed evidence
-commit exists. That metadata stamps the source commit, evidence commit, current
-branch tip, remote branch SHA at handoff, and evidence-index SHA-256. It does
-not close Gate 2R.1 or authorise Gate 2R.2.
+Candidate handoff metadata is recorded in
+`docs/release-evidence/atlas/phase-02r/gate-2r1/evidence_handoff_metadata.json`.
+That metadata stamps the source commit, evidence commit, current branch tip,
+remote branch SHA at handoff, and evidence-index SHA-256. It does not close
+Gate 2R.1 or authorise Gate 2R.2.
 
 If candidate evidence must be regenerated from a newer source commit, ensure
 the worktree is clean and run:
