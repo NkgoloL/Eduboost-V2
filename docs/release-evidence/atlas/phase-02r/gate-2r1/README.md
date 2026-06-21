@@ -4,15 +4,13 @@ Gate 2R.1 has candidate evidence collected and committed. Gate 2R.1 is not
 closed. Independent approvals and a separate Gate 2R.2 authorisation commit
 remain required.
 
-Current candidate evidence was collected from source commit
-`e6e43df45e4e990e9914a55134742b68c500ddd5` and committed separately at
-`57f8a3c4ea51a19cd3601cdf5f3ae29753548644`.
+Current candidate evidence was regenerated from source commit
+`e893cd876e650f4d996876cfedeb203243c5f1e1`.
 
-Candidate handoff metadata is recorded in
-`docs/release-evidence/atlas/phase-02r/gate-2r1/evidence_handoff_metadata.json`.
-That metadata stamps the source commit, evidence commit, current branch tip,
-remote branch SHA at handoff, and evidence-index SHA-256. It does not close
-Gate 2R.1 or authorise Gate 2R.2.
+Candidate handoff metadata must be generated after the refreshed evidence
+commit exists. That metadata stamps the source commit, evidence commit, current
+branch tip, remote branch SHA at handoff, and evidence-index SHA-256. It does
+not close Gate 2R.1 or authorise Gate 2R.2.
 
 If candidate evidence must be regenerated from a newer source commit, ensure
 the worktree is clean and run:
