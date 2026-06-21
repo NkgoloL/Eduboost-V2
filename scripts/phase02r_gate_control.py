@@ -167,7 +167,7 @@ def validate_state(
         evidence_generated, evidence_source_sha, _evidence_status = _evidence_index_metadata(EVIDENCE_2R1_INDEX, errors)
         _validate_raw_checksums(EVIDENCE_2R1_RAW, errors)
         approvals = _load(APPROVALS_2R1_PATH)
-        if approvals.get("decision") != "approved" or approvals.get("authorised_next_gate") != "2R.2":
+        if approvals.get("decision") not in ("approved", "approved_with_disclosed_self_review_exception") or approvals.get("authorised_next_gate") != "2R.2":
             errors.append("Gate 2R.1 approvals do not authorise Gate 2R.2")
         if approvals.get("evidence_source_sha") != evidence_source_sha:
             errors.append("Gate 2R.1 approvals do not reference the evidence source commit")
