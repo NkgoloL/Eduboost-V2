@@ -31,8 +31,9 @@ def test_premature_gate_2r2_transition_is_rejected(tmp_path, monkeypatch) -> Non
     monkeypatch.setattr(module, "CONTROL_PATH", path)
 
     errors = module.validate_state()
-    assert any("automation for authorised gate 2R.2 is incomplete" in error for error in errors)
     assert any("post-transition statement" in error for error in errors)
+    assert any("Gate 2R.1 approvals do not authorise Gate 2R.2" in error for error in errors)
+    assert any("Gate 2R.1 approvals missing roles" in error for error in errors)
 
 
 def test_placeholder_commit_references_are_rejected(tmp_path, monkeypatch) -> None:

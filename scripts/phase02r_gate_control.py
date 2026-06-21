@@ -83,7 +83,13 @@ def _validate_raw_checksums(raw_dir: Path, errors: list[str]) -> None:
             errors.append(f"raw evidence checksum mismatch: {name}")
 
 
-def validate_state(*, expected_authorised_gate: str | None = None) -> list[str]:
+def validate_state(
+    *,
+    expected_authorised_gate: str | None = None,
+    expected_approved_gate: str | None = None,
+    require_approval_roles: bool = False,
+    require_evidence_index_sha: bool = False,
+) -> list[str]:
     errors: list[str] = []
     try:
         control = _load(CONTROL_PATH)
@@ -102,6 +108,8 @@ def validate_state(*, expected_authorised_gate: str | None = None) -> list[str]:
         errors.append("control.approved_gate is invalid")
     if authorised_gate not in GATE_ORDER:
         errors.append("control.authorised_next_gate is invalid")
+    if expected_approved_gate and approved_gate != expected_approved_gate:
+        errors.append(f"approved_gate must be {expected_approved_gate}")
     if approved_gate in GATE_ORDER and authorised_gate in GATE_ORDER:
         if GATE_ORDER.index(authorised_gate) != GATE_ORDER.index(approved_gate) + 1:
             errors.append("authorised_next_gate must be exactly one gate after approved_gate")
@@ -144,6 +152,11 @@ def validate_state(*, expected_authorised_gate: str | None = None) -> list[str]:
         for phrase in required_phrases:
             if phrase not in plan:
                 errors.append(f"execution plan is missing post-transition statement: {phrase}")
+
+    if require_approval_roles and approved_gate != "2R.1":
+        errors.append("--require-approval-roles requires approved_gate to be 2R.1")
+    if require_evidence_index_sha and approved_gate != "2R.1":
+        errors.append("--require-evidence-index-sha requires approved_gate to be 2R.1")
 
     if approved_gate == "2R.1":
         for work_item in ("P02R-0101", "P02R-0102", "P02R-0103", "P02R-0104"):
@@ -211,10 +224,18 @@ def validate_state(*, expected_authorised_gate: str | None = None) -> list[str]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
+    parser.add_argument("--expected-approved-gate")
     parser.add_argument("--expected-authorised-gate")
+    parser.add_argument("--require-approval-roles", action="store_true")
+    parser.add_argument("--require-evidence-index-sha", action="store_true")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
-    errors = validate_state(expected_authorised_gate=args.expected_authorised_gate)
+    errors = validate_state(
+        expected_authorised_gate=args.expected_authorised_gate,
+        expected_approved_gate=args.expected_approved_gate,
+        require_approval_roles=args.require_approval_roles,
+        require_evidence_index_sha=args.require_evidence_index_sha,
+    )
     if args.json:
         print(json.dumps({"valid": not errors, "errors": errors}, indent=2, sort_keys=True))
     elif errors:

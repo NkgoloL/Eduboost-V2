@@ -37,8 +37,8 @@ class TestContentFactoryRouterLevelDependency:
     """The router itself must declare require_admin as a router-level dep."""
 
     def test_router_has_require_admin_dependency(self):
+        from app.api_v2_deps.auth import require_admin
         from app.api_v2_routers.content_factory import router
-        from app.core.security import require_admin
 
         # FastAPI stores router-level dependencies in router.dependencies
         router_dep_calls = [d.dependency for d in router.dependencies]
@@ -74,8 +74,8 @@ class TestContentFactoryRouteIntrospection:
 
     @pytest.fixture(autouse=True)
     def _setup(self):
+        from app.api_v2_deps.auth import require_admin
         from app.api_v2_routers.content_factory import router
-        from app.core.security import require_admin
         self.router = router
         self.require_admin = require_admin
 

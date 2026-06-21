@@ -3,8 +3,8 @@ from __future__ import annotations
 
 from fastapi import APIRouter, Depends, Query
 
+from app.api_v2_deps.auth import require_admin
 from app.core.envelope_route import EnvelopedRoute
-from app.core.security import require_admin
 
 router = APIRouter(
     route_class=EnvelopedRoute,

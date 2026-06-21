@@ -1,14 +1,28 @@
 # Gate 2R.1 Current Evidence State
 
-No current closure evidence exists yet.
+Gate 2R.1 has candidate evidence collected and committed. Gate 2R.1 is not
+closed. Independent approvals and a separate Gate 2R.2 authorisation commit
+remain required.
 
-After the Gate 2R.1 implementation is committed, the source-completeness
-register is frozen, independent approvals are recorded, and the worktree is
-clean, run:
+Current candidate evidence was collected from source commit
+`e6e43df45e4e990e9914a55134742b68c500ddd5` and committed separately at
+`57f8a3c4ea51a19cd3601cdf5f3ae29753548644`.
+
+Candidate handoff metadata is recorded in
+`docs/release-evidence/atlas/phase-02r/gate-2r1/evidence_handoff_metadata.json`.
+That metadata stamps the source commit, evidence commit, current branch tip,
+remote branch SHA at handoff, and evidence-index SHA-256. It does not close
+Gate 2R.1 or authorise Gate 2R.2.
+
+If candidate evidence must be regenerated from a newer source commit, ensure
+the worktree is clean and run:
 
 ```bash
 bash scripts/collect_phase02r_evidence.sh --gate 2R.1
 ```
 
-The collector will create a candidate evidence pack. It will not approve or
-close the gate.
+The collector creates a candidate evidence pack. It does not approve or close
+the gate.
+
+Independent approvals remain pending after candidate evidence collection; Gate
+2R.2 remains blocked until a later approval and transition commit.

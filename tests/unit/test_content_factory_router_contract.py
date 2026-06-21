@@ -5,17 +5,28 @@ import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
+from app.api_v2_deps.auth import AuthContext, TokenType, require_admin
 from app.api_v2_routers import content_factory
-from app.core.security import require_admin
+from app.models import UserRole
 
 
 ADMIN = {"sub": "admin-1", "role": "admin"}
 
 
+def _admin_context() -> AuthContext:
+    return AuthContext(
+        user_id=ADMIN["sub"],
+        roles=[UserRole.ADMIN],
+        token_type=TokenType.ACCESS,
+        raw_claims=ADMIN,
+        jti="test-jti",
+    )
+
+
 def _client() -> TestClient:
     app = FastAPI()
     app.include_router(content_factory.router, prefix="/api/v2")
-    app.dependency_overrides[require_admin] = lambda: ADMIN
+    app.dependency_overrides[require_admin] = _admin_context
     return TestClient(app, raise_server_exceptions=True)
 
 

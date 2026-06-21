@@ -28,14 +28,13 @@ from app.core.security import (  # noqa: F401
     encrypt_pii,
     hash_email,
     hash_password,
-    require_parent_or_admin,
     verify_password,
 )
 from app.services.auth_token_claims import build_access_token_claims, merge_refresh_claims
 from app.domain.schemas import LoginRequest, RefreshRequest, RegisterRequest, TokenResponse
 from app.models import UserRole  # noqa: F401
 from app.core.rate_limit import limiter
-from app.api_v2_deps.auth import AuthContext, require_auth_context
+from app.api_v2_deps.auth import AuthContext, require_auth_context, require_parent_or_admin
 
 
 # code_631_650_auth_token_claims_repair
@@ -203,9 +202,14 @@ async def logout(
 @router.post("/revoke-all", status_code=status.HTTP_204_NO_CONTENT)
 async def revoke_all_tokens(
     response: Response,
-    current_user: dict = Depends(require_parent_or_admin),
+    current_user: AuthContext = Depends(require_parent_or_admin),
     db: AsyncSession = Depends(get_db),
     cookie_refresh: str | None = Cookie(default=None, alias=REFRESH_COOKIE),
     auth_service: AuthApplicationService = Depends(get_auth_application_service),
 ):
-    return await auth_service.revoke_all_tokens(response=response, current_user=current_user, db=db, cookie_refresh=cookie_refresh)
+    return await auth_service.revoke_all_tokens(
+        response=response,
+        current_user=current_user.raw_claims,
+        db=db,
+        cookie_refresh=cookie_refresh,
+    )

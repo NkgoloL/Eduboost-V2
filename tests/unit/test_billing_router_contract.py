@@ -8,12 +8,23 @@ import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
+from app.api_v2_deps.auth import AuthContext, TokenType, require_parent_or_admin
 from app.api_v2_routers import billing
 from app.core.database import get_db
-from app.core.security import require_parent_or_admin
+from app.models import UserRole
 
 
 PARENT = {"sub": "guardian-1", "role": "parent"}
+
+
+def _auth_context(payload: dict[str, Any]) -> AuthContext:
+    return AuthContext(
+        user_id=payload["sub"],
+        roles=[UserRole(payload["role"])],
+        token_type=TokenType.ACCESS,
+        raw_claims=payload,
+        jti="test-jti",
+    )
 
 
 @dataclass
@@ -42,7 +53,7 @@ def _client(stripe: FakeStripeService, audit: FakeFourthEstate) -> TestClient:
     app = FastAPI()
     app.include_router(billing.router, prefix="/api/v2")
 
-    app.dependency_overrides[require_parent_or_admin] = lambda: PARENT
+    app.dependency_overrides[require_parent_or_admin] = lambda: _auth_context(PARENT)
     app.dependency_overrides[get_db] = lambda: object()
 
     billing.StripeService = lambda _db: stripe  # type: ignore[misc,assignment]

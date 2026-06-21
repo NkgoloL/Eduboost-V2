@@ -707,7 +707,7 @@
 | `docs/release/frontend_backend_validation.md` | release_evidence | Frontend-Backend Validation Checklist | - | - | 1 | 3 |
 | `docs/release/full_pytest_latest.txt` | release_evidence | sssssssssssssssssssssssssss............................................. [ 4%] | fail | - | 1 | 8 |
 | `docs/release/full_pytest_latest_green.txt` | release_evidence | sssssssssssssssssssssssssss............................................. [ 3%] | - | - | 0 | 2 |
-| `docs/release/full_pytest_latest_v2.txt` | release_evidence | sssssssssssssssssssssssssss............................................. [ 4%] | fail | - | 2 | 12 |
+| `docs/release/superseded/2026-06-21-full-pytest-latest-v2/full_pytest_latest_v2.txt` | release_evidence | sssssssssssssssssssssssssss............................................. [ 4%] | fail | - | 2 | 12 |
 | `docs/release/health_readiness_diagnostic_contract.md` | compliance_popia | Health and Readiness Diagnostic Contract | - | - | 0 | 0 |
 | `docs/release/integration_full_latest.txt` | release_evidence | ........................................................................ [ 39%] | - | - | 0 | 1 |
 | `docs/release/integration_latest_after_popia_service_evidence.txt` | compliance_popia | ........................................................................ [ 51%] | - | - | 0 | 1 |

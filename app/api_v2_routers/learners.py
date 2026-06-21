@@ -7,8 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.core.logging import get_logger
-from app.core.security import require_parent_or_admin
-from app.api_v2_deps.auth import AuthContext, require_auth_context
+from app.api_v2_deps.auth import AuthContext, require_auth_context, require_parent_or_admin
 from app.core.security import get_current_user  # noqa: F401
 from app.domain.schemas import LearnerCreate, LearnerResponse
 from app.modules.consent.service import ConsentService
@@ -26,11 +25,11 @@ log = get_logger(__name__)
 async def create_learner(
     body: LearnerCreate,
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_parent_or_admin),
+    current_user: AuthContext = Depends(require_parent_or_admin),
 ):
     repo = LearnerRepository(db)
     learner = await repo.create(
-        guardian_id=current_user["sub"],
+        guardian_id=current_user.user_id,
         display_name=body.display_name,
         grade=body.grade,
         language=body.language,
@@ -125,7 +124,7 @@ async def request_erasure(
     learner_id: str,
     background_tasks: BackgroundTasks,
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_parent_or_admin),
+    current_user: AuthContext = Depends(require_parent_or_admin),
 ):
     """
     POPIA Section 24 — Right to Erasure.
@@ -136,14 +135,13 @@ async def request_erasure(
     if not learner:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
 
-    role = str(current_user.get("role", "")).lower()
-    if learner.guardian_id != current_user["sub"] and role != "admin":
+    if learner.guardian_id != current_user.user_id and not current_user.is_admin:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorised to erase this learner")
 
     learner_pseudonym = learner.pseudonym_id
 
     consent_svc = ConsentService(db)
-    await consent_svc.execute_erasure(current_user["sub"], learner_id)
+    await consent_svc.execute_erasure(current_user.user_id, learner_id)
 
     # Soft-delete immediately
     await repo.soft_delete(learner_id)
@@ -152,7 +150,7 @@ async def request_erasure(
     audit = FourthEstateService(db)
     await audit.record(
         "learner.erased",
-        actor_id=current_user["sub"],
+        actor_id=current_user.user_id,
         learner_pseudonym=learner_pseudonym,
         resource_id=learner_id,
         payload={"learner_id": learner_id},

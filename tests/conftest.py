@@ -4,11 +4,11 @@ import os
 import sys
 from pathlib import Path
 from collections.abc import AsyncGenerator
+from typing import Any
 
 import pytest
 import pytest_asyncio
 from sqlalchemy.exc import SQLAlchemyError
-from sqlalchemy.ext.asyncio import AsyncSession
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
@@ -21,8 +21,6 @@ def ensure_repo_root_on_path() -> None:
 ensure_repo_root_on_path()
 os.environ["APP_ENV"] = "test"
 os.environ["ENVIRONMENT"] = "test"
-
-from app.core.database import AsyncSessionFactory, create_all_tables, drop_all_tables, engine
 
 # Register governance auto-marking (see tests/governance_markers.py).
 from tests import governance_markers as _governance_markers  # noqa: F401
@@ -40,6 +38,13 @@ async def test_db_setup():
     if os.environ.get("AUTH_REFRESH_DB_PROOF_ENABLED") == "1":
         yield
         return
+
+    try:
+        from app.core.database import create_all_tables, drop_all_tables
+    except ModuleNotFoundError as exc:
+        if _require_test_database():
+            raise
+        pytest.skip(f"test database dependency is unavailable: {exc}")
 
     db_url = os.environ.get("DATABASE_URL", "").lower()
     if "prod" in db_url or "staging" in db_url:
@@ -60,8 +65,10 @@ async def test_db_setup():
 
 
 @pytest_asyncio.fixture
-async def db_session(test_db_setup) -> AsyncGenerator[AsyncSession, None]:
+async def db_session(test_db_setup) -> AsyncGenerator[Any, None]:
     """Provide a fresh async database session for each test."""
+    from app.core.database import AsyncSessionFactory, engine
+
     async with AsyncSessionFactory() as session:
         yield session
         async with engine.begin():

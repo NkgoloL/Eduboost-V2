@@ -89,7 +89,7 @@ No items found.
 - `docs/release/diagnostics_jobs_integrity_introspection.json`
 - `docs/release/full_pytest_latest.txt`
 - `docs/release/full_pytest_latest_green.txt`
-- `docs/release/full_pytest_latest_v2.txt`
+- `docs/release/superseded/2026-06-21-full-pytest-latest-v2/full_pytest_latest_v2.txt`
 - `docs/release/integration_full_latest.txt`
 - `docs/release/integration_latest_after_popia_service_evidence.txt`
 - `docs/release/lesson_object_authorization_introspection.json`

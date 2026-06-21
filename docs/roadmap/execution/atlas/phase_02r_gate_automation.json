@@ -3,22 +3,58 @@
   "schema_version": 1,
   "supported_gates": {
     "2R.0": {
-      "preflight": true,
       "apply": false,
-      "verify": true,
-      "collect": true
+      "collect": true,
+      "preflight": true,
+      "verify": true
     },
     "2R.1": {
-      "preflight": true,
       "apply": true,
-      "verify": true,
-      "collect": true
+      "collect": true,
+      "preflight": true,
+      "verify": true
     },
     "2R.2": {
-      "preflight": false,
-      "apply": false,
-      "verify": false,
-      "collect": false
+      "apply": true,
+      "collect": true,
+      "preflight": true,
+      "verify": true
+    },
+    "2R.3": {
+      "apply": true,
+      "collect": true,
+      "preflight": true,
+      "verify": true
+    },
+    "2R.4": {
+      "apply": true,
+      "collect": true,
+      "preflight": true,
+      "verify": true
+    },
+    "2R.5": {
+      "apply": true,
+      "collect": true,
+      "preflight": true,
+      "verify": true
+    },
+    "2R.6": {
+      "apply": true,
+      "collect": true,
+      "preflight": true,
+      "verify": true
+    },
+    "2R.7": {
+      "apply": true,
+      "collect": true,
+      "preflight": true,
+      "verify": true
+    },
+    "2R.8": {
+      "apply": true,
+      "collect": true,
+      "preflight": true,
+      "verify": true
     }
   }
 }

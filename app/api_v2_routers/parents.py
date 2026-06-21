@@ -8,8 +8,8 @@ from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.api_v2_deps.auth import AuthContext, require_parent_or_admin
 from app.core.database import get_db
-from app.core.security import require_parent_or_admin
 from app.domain.schemas import (
     ParentDashboardLearner,
     ParentDashboardResponse,
@@ -32,13 +32,13 @@ _executive = ExecutiveService()
 async def get_parent_dashboard(
     request: Request,
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_parent_or_admin),
+    current_user: AuthContext = Depends(require_parent_or_admin),
 ) -> ParentDashboardResponse:
-    guardian = await db.get(Guardian, current_user["sub"])
+    guardian = await db.get(Guardian, current_user.user_id)
     if guardian is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Guardian not found")
 
-    learners = await LearnerRepository(db).get_by_guardian(current_user["sub"])
+    learners = await LearnerRepository(db).get_by_guardian(current_user.user_id)
     one_week_ago = datetime.now(timezone.utc) - timedelta(days=7)
 
     dashboard_learners: list[ParentDashboardLearner] = []
@@ -106,9 +106,9 @@ async def get_parent_trust_dashboard(
     guardian_id: str,
     request: Request,
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_parent_or_admin),
+    current_user: AuthContext = Depends(require_parent_or_admin),
 ) -> ParentTrustDashboardResponse:
-    if guardian_id != current_user["sub"] and str(current_user.get("role", "")).lower() != "admin":
+    if guardian_id != current_user.user_id and not current_user.is_admin:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorised to view this dashboard")
 
     guardian = await db.get(Guardian, guardian_id)
@@ -187,9 +187,9 @@ async def get_parent_trust_dashboard(
 async def export_parent_access_bundle(
     guardian_id: str,
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_parent_or_admin),
+    current_user: AuthContext = Depends(require_parent_or_admin),
 ):
-    if guardian_id != current_user["sub"] and str(current_user.get("role", "")).lower() != "admin":
+    if guardian_id != current_user.user_id and not current_user.is_admin:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorised to export this data")
 
     guardian = await db.get(Guardian, guardian_id)
@@ -219,7 +219,7 @@ async def export_parent_access_bundle(
 async def get_learner_progress(
     learner_id: str,
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_parent_or_admin),
+    current_user: AuthContext = Depends(require_parent_or_admin),
 ) -> dict:
     learner = await LearnerRepository(db).get_by_id(learner_id)
     if learner is None:
@@ -272,7 +272,7 @@ async def request_erasure(
     learner_id: str,
     background_tasks: BackgroundTasks,
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_parent_or_admin),
+    current_user: AuthContext = Depends(require_parent_or_admin),
 ) -> Response:
     learner = await LearnerRepository(db).get_by_id(learner_id)
     if learner is None:
@@ -280,12 +280,12 @@ async def request_erasure(
     require_learner_write_for_current_user(current_user, learner_id)
 
     consent_service = ConsentService(db)
-    await consent_service.execute_erasure(current_user["sub"], learner_id)
+    await consent_service.execute_erasure(current_user.user_id, learner_id)
     await LearnerRepository(db).soft_delete(learner_id)
 
     await FourthEstateService(db).record(
         "learner.erasure_requested",
-        actor_id=current_user["sub"],
+        actor_id=current_user.user_id,
         learner_pseudonym=learner.pseudonym_id,
         resource_id=learner_id,
         payload={"learner_id": learner_id, "source": "parents_router"},
