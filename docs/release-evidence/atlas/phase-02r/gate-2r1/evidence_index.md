@@ -3,6 +3,10 @@
 **Generated:** 2026-06-21T09:57:15Z
 **Status:** Candidate verification passed — human approval pending
 **Source commit:** `d3298ed7184b695127cc539e46482a8b16362d37`
+**Evidence commit:** `ffb8a0d99dcdcb88f60b8eb876ae87162358673f`
+**Evidence pack path:** `docs/release-evidence/atlas/phase-02r/gate-2r1/`
+**Raw artifact checksum index:** `raw/SHA256SUMS.txt`
+**Remote branch SHA at candidate-evidence handoff:** `ffb8a0d99dcdcb88f60b8eb876ae87162358673f`
 **Environment:** see `raw/environment.txt`
 
 | Evidence ID / claim | Artifact |

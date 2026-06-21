@@ -7,7 +7,7 @@
 
 **Update:** The Phase 2R Gates 2R.2-2R.8 implementation patch has now been applied on the current worktree. It adds the later-gate grounding models, services, verifier scripts, and migration scaffolding, but it does not change the Gate 2R.1 control posture.
 
-**2026-06-21 remediation update:** Gate 2R.1 now has candidate evidence collected and committed. Candidate evidence was collected from source commit `c5a8cd829e8d5707e0f98f909b105af9b99ca903` and committed separately at `4325a68f85597800b9741344a4a72c68f8830a73`. Gate 2R.1 is not closed because independent approvals and a separate Gate 2R.2 authorisation commit are still pending.
+**2026-06-21 remediation update:** Gate 2R.1 now has candidate evidence collected and committed. Current candidate evidence was collected from source commit `d3298ed7184b695127cc539e46482a8b16362d37` and committed separately at `ffb8a0d99dcdcb88f60b8eb876ae87162358673f`. Gate 2R.1 is not closed because independent approvals and a separate Gate 2R.2 authorisation commit are still pending.
 
 ## Gate 2R.1 implementation reconciliation
 

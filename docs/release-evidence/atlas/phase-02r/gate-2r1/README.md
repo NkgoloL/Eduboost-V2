@@ -4,9 +4,9 @@ Gate 2R.1 has candidate evidence collected and committed. Gate 2R.1 is not
 closed. Independent approvals and a separate Gate 2R.2 authorisation commit
 remain required.
 
-Candidate evidence was collected from source commit
-`c5a8cd829e8d5707e0f98f909b105af9b99ca903` and committed separately at
-`4325a68f85597800b9741344a4a72c68f8830a73`.
+Current candidate evidence was collected from source commit
+`d3298ed7184b695127cc539e46482a8b16362d37` and committed separately at
+`ffb8a0d99dcdcb88f60b8eb876ae87162358673f`.
 
 If candidate evidence must be regenerated from a newer source commit, ensure
 the worktree is clean and run:
