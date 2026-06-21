@@ -30,6 +30,15 @@ def test_premature_gate_2r2_transition_is_rejected(tmp_path, monkeypatch) -> Non
     path.write_text(json.dumps(control), encoding="utf-8")
     monkeypatch.setattr(module, "CONTROL_PATH", path)
 
+    approvals_path = tmp_path / "approvals.json"
+    approvals_path.write_text(json.dumps({
+        "phase": "02R",
+        "gate": "2R.1",
+        "decision": "pending",
+        "decisions": []
+    }), encoding="utf-8")
+    monkeypatch.setattr(module, "APPROVALS_2R1_PATH", approvals_path)
+
     errors = module.validate_state()
     assert any("post-transition statement" in error for error in errors)
     assert any("Gate 2R.1 approvals do not authorise Gate 2R.2" in error for error in errors)
