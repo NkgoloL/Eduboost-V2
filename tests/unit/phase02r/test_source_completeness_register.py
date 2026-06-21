@@ -17,13 +17,22 @@ def load_register():
     return json.loads(module.DEFAULT_REGISTER.read_text(encoding="utf-8"))
 
 
-def test_draft_inventory_is_structurally_valid() -> None:
+def test_frozen_inventory_is_structurally_valid() -> None:
     document = load_register()
     assert module.validate(document, require_frozen=False) == []
 
 
-def test_draft_inventory_cannot_be_used_as_closure_evidence() -> None:
+def test_frozen_inventory_is_valid_closure_evidence() -> None:
     document = load_register()
+    assert module.validate(document, require_frozen=True) == []
+
+
+def test_missing_frozen_metadata_blocks_closure_evidence() -> None:
+    document = load_register()
+    document["status"] = "draft"
+    document["frozen_by"] = None
+    document["frozen_at"] = None
+    document["manifest_sha256"] = module.canonical_hash(document)
     errors = module.validate(document, require_frozen=True)
     assert any("status=frozen" in error for error in errors)
     assert any("frozen_by" in error for error in errors)

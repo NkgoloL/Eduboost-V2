@@ -26,6 +26,7 @@ REQUIRED_FILES = (
     "app/services/curriculum/rights_policy.py",
     "alembic/versions/20260616_1200_phase02r_authority_controls.py",
     "data/curriculum/registries/grade4_mathematics_caps_source_completeness.json",
+    "scripts/curriculum/load_phase02r_authority_records.py",
     "scripts/validate_phase02r_authority_schema.py",
     "scripts/curriculum/validate_source_completeness_register.py",
     "scripts/verify_phase02r_postgres.sh",

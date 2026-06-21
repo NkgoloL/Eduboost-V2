@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import app.models  # noqa: F401
 from app.core.database import Base
 
 

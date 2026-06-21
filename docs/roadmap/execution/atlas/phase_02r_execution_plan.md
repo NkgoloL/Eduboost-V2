@@ -15,7 +15,7 @@
 **Proposed branch:** `feature/atlas-phase-02r-authoritative-caps-corpus`
 **Canonical base branch:** `origin/master`
 **Base commit SHA:** `4b3805b700869aaeacce4141bb565e1963777163`
-**Actual Alembic head after this Gate 2R.1 patch:** `20260616_1200_phase02r_authority`
+**Actual Alembic head on the current implementation branch:** `20260618_1200_phase02r_grounding`
 **Source baseline reviewed:** corrected `Eduboost-V2-master(8).zip` plus the Phase 2R handover and review memorandum
 **Gate 2R.0 initial report:** `docs/roadmap/execution/atlas/phase_02r_gate_2r0_initial_report.md`
 **Gate 2R.0 closure report:** `docs/roadmap/execution/atlas/phase_02r_gate_2r0_closure_report.md`
@@ -1631,9 +1631,9 @@ The Gate 2R.0–2R.8 engineering ranges total **72–108 person-days**, matching
 | P02R-0004 | Freeze first-closure source inventory scope | Signed completeness-register scope and amendment rule | Curriculum + rights owners | P02R-0003 | Completed at Gate 2R.0; item resolution remains Gate 2R.1 |
 | P02R-0005 | Verify Phase 0 or equivalent reproducibility controls | Clean-checkout/toolchain/environment/CI baseline evidenced | Programme + engineering owners | P02R-0001 | Completed at Gate 2R.0 |
 | P02R-0006 | Verify `02R` identifier compatibility | Status, Atlas, evidence, sorting, CI, and templates support `02R` forms | Evidence custodian + engineering | P02R-0001 | Completed at Gate 2R.0 |
-| P02R-0101 | Add authoritative source catalogue schema | Migration/model constraints pass | Database owner | P02R-0003 | Implemented; PostgreSQL verification pending |
-| P02R-0102 | Add per-use rights decision schema and policy engine | Missing/expired/denied use fails closed; translation/publication permissions and structured conditions are machine-enforced | Rights + engineering owners | P02R-0101 | Implemented; source decisions and rights approval pending |
-| P02R-0103 | Implement completeness register and validator | All mandatory inventory rows deterministically validated | Curriculum owner | P02R-0004 | Implemented; register remains draft and unfrozen |
+| P02R-0101 | Add authoritative source catalogue schema | Migration/model constraints pass | Database owner | P02R-0003 | Implemented; disposable PostgreSQL migration, schema, and append-only proof passed. Clean candidate evidence pending |
+| P02R-0102 | Add per-use rights decision schema and policy engine | Missing/expired/denied use fails closed; translation/publication permissions and structured conditions are machine-enforced | Rights + engineering owners | P02R-0101 | Implemented; first-slice real rights decision loader passed in disposable PostgreSQL. Independent rights approval pending |
+| P02R-0103 | Implement completeness register and validator | All mandatory inventory rows deterministically validated | Curriculum owner | P02R-0004 | Implemented; source-completeness register frozen. Clean candidate evidence pending |
 | P02R-0104 | Implement independent review-domain ledgers | Rights/extraction/mapping/content/answer decisions cannot imply one another | Engineering owner | P02R-0101 | Implemented; independent approvals pending |
 | P02R-0201 | Implement object-storage abstraction | Immutable keys/versions and local dev adapter pass | Operations + engineering | P02R-0101 | Not started |
 | P02R-0202 | Implement secure acquisition | Allowlist, redirects, limits, checksums, audit logs pass | Security + engineering | P02R-0201 | Not started |

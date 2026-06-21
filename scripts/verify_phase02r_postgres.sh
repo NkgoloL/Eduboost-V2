@@ -42,6 +42,11 @@ echo "== Phase 2R PostgreSQL tests =="
 "$PYTHON_BIN" -W error::RuntimeWarning -m pytest -q \
   tests/phase02r/test_phase02r_postgres_integration.py --no-cov
 
+echo "== Load real Gate 2R.1 authority and rights records =="
+"$PYTHON_BIN" scripts/curriculum/load_phase02r_authority_records.py \
+  --download-missing \
+  --json
+
 echo "== Downgrade and re-upgrade =="
 "$PYTHON_BIN" -m alembic downgrade 20260615_2100_p17_reconcile
 CURRENT="$($PYTHON_BIN -m alembic current)"
