@@ -422,32 +422,32 @@ async def insert_records(database_url: str, records: dict[str, Any]) -> dict[str
                     item["reviewed_at"],
                 )
 
-        await verify_persisted_records(conn, records)
-        counts = await conn.fetchrow(
-            """
-            SELECT
-              (SELECT count(*) FROM curriculum_sources WHERE source_id=$1) AS sources,
-              (SELECT count(*) FROM curriculum_source_versions WHERE source_version_id=$2) AS source_versions,
-              (SELECT count(*) FROM curriculum_rights_decisions WHERE rights_decision_id=$3) AS rights_decisions,
-              (SELECT count(*) FROM curriculum_inventory_versions WHERE inventory_version_id=$4) AS inventory_versions,
-              (SELECT count(*) FROM curriculum_inventory_items WHERE inventory_version_id=$4) AS inventory_items
-            """,
-            records["source"]["source_id"],
-            records["source_version"]["source_version_id"],
-            records["rights_decision"]["rights_decision_id"],
-            records["inventory_version"]["inventory_version_id"],
-        )
-        result = dict(counts)
-        expected = {
-            "sources": 1,
-            "source_versions": 1,
-            "rights_decisions": 1,
-            "inventory_versions": 1,
-            "inventory_items": len(records["inventory_items"]),
-        }
-        if result != expected:
-            raise RuntimeError(f"authority record count mismatch: expected {expected}, got {result}")
-        return result
+            await verify_persisted_records(conn, records)
+            counts = await conn.fetchrow(
+                """
+                SELECT
+                  (SELECT count(*) FROM curriculum_sources WHERE source_id=$1) AS sources,
+                  (SELECT count(*) FROM curriculum_source_versions WHERE source_version_id=$2) AS source_versions,
+                  (SELECT count(*) FROM curriculum_rights_decisions WHERE rights_decision_id=$3) AS rights_decisions,
+                  (SELECT count(*) FROM curriculum_inventory_versions WHERE inventory_version_id=$4) AS inventory_versions,
+                  (SELECT count(*) FROM curriculum_inventory_items WHERE inventory_version_id=$4) AS inventory_items
+                """,
+                records["source"]["source_id"],
+                records["source_version"]["source_version_id"],
+                records["rights_decision"]["rights_decision_id"],
+                records["inventory_version"]["inventory_version_id"],
+            )
+            result = dict(counts)
+            expected = {
+                "sources": 1,
+                "source_versions": 1,
+                "rights_decisions": 1,
+                "inventory_versions": 1,
+                "inventory_items": len(records["inventory_items"]),
+            }
+            if result != expected:
+                raise RuntimeError(f"authority record count mismatch: expected {expected}, got {result}")
+            return result
     finally:
         await conn.close()
 
