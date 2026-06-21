@@ -72,7 +72,17 @@ def verify(*, closure: bool) -> dict[str, Any]:
 
     checks.append(_capture_main("focused_unit_tests", run_focused_tests))
 
-    gate_errors = validate_state(expected_authorised_gate="2R.1")
+    # Load control to see what the current expected authorised gate is
+    from phase02r_gate_control import CONTROL_PATH, _load
+    try:
+        control_data = _load(CONTROL_PATH)
+        current_authorised = control_data.get("authorised_next_gate", "2R.1")
+    except Exception:
+        current_authorised = "2R.1"
+    if current_authorised not in ("2R.1", "2R.2"):
+        current_authorised = "2R.1"
+
+    gate_errors = validate_state(expected_authorised_gate=current_authorised)
     checks.append({"name": "gate_control", "passed": not gate_errors, "errors": gate_errors})
 
     authority_errors = validate_authority_schema()

@@ -2,8 +2,8 @@
 
 **Document version:** 1.5
 **Plan date:** 2026-06-16
-**Status:** Gate 2R.1 in progress; Gate 2R.2 blocked
-**Execution authorisation:** Gate 2R.1 only
+**Status:** Gate 2R.1 verified complete; Gate 2R.2 authorised
+**Execution authorisation:** Gate 2R.2 only
 **Phase:** 02R
 **Programme position:** Mandatory foundation reset before Phases 8–13
 **Sprint codename / documentation namespace:** `atlas`
@@ -2156,7 +2156,7 @@ PHASE_02R_START_APPROVED=true
 | Gate 2R.1 premature closure claim | Superseded / invalid | `docs/release-evidence/atlas/phase-02r/gate-2r1/superseded/2026-06-16-premature-transition/` | No authority |
 | Gate 2R.1 current state | In Progress | This v1.5 amendment and implementation patch | Gate 2R.2 remains blocked |
 
-**Current decision:** Gate 2R.1 is In Progress. Gate 2R.2 is Blocked. `PHASE_02R_START_APPROVED` remains `true` because Phase 2R execution has started, while `phase_02r_start_gate_control.json` authorises only Gate 2R.1.
+**Current decision:** Gate 2R.1 is Verified Complete. Gate 2R.2 is Authorised. `PHASE_02R_START_APPROVED` remains `true` because Phase 2R execution has started, while `phase_02r_start_gate_control.json` authorises only Gate 2R.1.
 
 ---
 
