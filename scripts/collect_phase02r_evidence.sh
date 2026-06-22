@@ -21,6 +21,10 @@ PYTHON_BIN="${PYTHON_BIN:-.venv/bin/python}"
 [[ -n "$PYTHON_BIN" ]] || { echo "Python 3 is required." >&2; exit 2; }
 
 
+if [[ "$GATE" == "2R.5" && -x scripts/collect_phase02r_gate2r5_evidence.sh ]]; then
+  exec bash scripts/collect_phase02r_gate2r5_evidence.sh
+fi
+
 if [[ "$GATE" == "2R.4" && -x scripts/collect_phase02r_gate2r4_evidence.sh ]]; then
   exec bash scripts/collect_phase02r_gate2r4_evidence.sh
 fi
