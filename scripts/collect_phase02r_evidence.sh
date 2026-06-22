@@ -20,6 +20,15 @@ PYTHON_BIN="${PYTHON_BIN:-.venv/bin/python}"
 [[ -x "$PYTHON_BIN" ]] || PYTHON_BIN="$(command -v python3 || true)"
 [[ -n "$PYTHON_BIN" ]] || { echo "Python 3 is required." >&2; exit 2; }
 
+
+if [[ "$GATE" == "2R.5" && -x scripts/collect_phase02r_gate2r5_evidence.sh ]]; then
+  exec bash scripts/collect_phase02r_gate2r5_evidence.sh
+fi
+
+if [[ "$GATE" == "2R.4" && -x scripts/collect_phase02r_gate2r4_evidence.sh ]]; then
+  exec bash scripts/collect_phase02r_gate2r4_evidence.sh
+fi
+
 if [[ "$GATE" == "2R.0" ]]; then
   EVIDENCE_ROOT="docs/release-evidence/atlas/phase-02r/gate-2r0"
   REPORT="docs/roadmap/execution/atlas/phase_02r_gate_2r0_closure_report.md"
@@ -125,6 +134,11 @@ PYMETA
 }
 
 capture environment.txt bash -lc 'python3 --version; git --version; uname -a'
+
+if [[ "$GATE" == "2R.4" && -x scripts/collect_phase02r_gate2r4_evidence.sh ]]; then
+  exec bash scripts/collect_phase02r_gate2r4_evidence.sh
+fi
+
 if [[ "$GATE" == "2R.0" ]]; then
   capture preflight.txt bash scripts/preflight_phase02r.sh --gate 2R.0 --mode discovery
   capture verification.txt bash scripts/verify_phase02r.sh --gate 2R.0 --mode discovery
@@ -205,6 +219,11 @@ cat > "$INDEX" <<EOF
 | Evidence ID / claim | Artifact |
 |---|---|
 EOF
+
+if [[ "$GATE" == "2R.4" && -x scripts/collect_phase02r_gate2r4_evidence.sh ]]; then
+  exec bash scripts/collect_phase02r_gate2r4_evidence.sh
+fi
+
 if [[ "$GATE" == "2R.0" ]]; then
   cat >> "$INDEX" <<'EOF'
 | Gate 2R.0 preflight | `raw/preflight.txt` |

@@ -11,7 +11,7 @@ module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
 
 
-def test_current_control_authorises_gate_2r1_only(tmp_path, monkeypatch) -> None:
+def test_gate_control_can_validate_gate_2r0_to_2r1_transition(tmp_path, monkeypatch) -> None:
     import json
     control = json.loads(module.CONTROL_PATH.read_text(encoding="utf-8"))
     control.update({
@@ -37,6 +37,75 @@ def test_current_control_authorises_gate_2r1_only(tmp_path, monkeypatch) -> None
     plan_path.write_text(plan_content, encoding="utf-8")
     monkeypatch.setattr(module, "PLAN_PATH", plan_path)
     assert module.validate_state(expected_authorised_gate="2R.1") == []
+
+
+def test_gate_control_rejects_stale_gate_2r1_authorisation_language(tmp_path, monkeypatch) -> None:
+    import json
+
+    control = json.loads(module.CONTROL_PATH.read_text(encoding="utf-8"))
+    control.update({
+        "approved_gate": "2R.3",
+        "authorised_next_gate": "2R.4",
+        "start_approved": True,
+        "approval_decision_commit_sha": "a" * 40,
+        "evidence_commit_sha": "b" * 40,
+        "transition_commit_sha": "c" * 40,
+        "remote_branch_sha_at_transition": "c" * 40,
+        "approved_at": "2026-06-22T12:28:00+02:00",
+    })
+    path = tmp_path / "control.json"
+    path.write_text(json.dumps(control), encoding="utf-8")
+    monkeypatch.setattr(module, "CONTROL_PATH", path)
+
+    plan_path = tmp_path / "plan.md"
+    plan_path.write_text("\n".join([
+        "**Status:** Gate 2R.3 verified complete; Gate 2R.4 authorised",
+        "**Execution authorisation:** Gate 2R.4 only",
+        "Gate 2R.0 has passed and authorises Gate 2R.1 only.",
+        "Gate 2R.1 is in progress.",
+        "Gate 2R.2 and every later gate remain blocked.",
+    ]), encoding="utf-8")
+    monkeypatch.setattr(module, "PLAN_PATH", plan_path)
+
+    monkeypatch.setattr(module, "_validate_gate_approval", lambda **kwargs: None)
+
+    errors = module.validate_state(expected_approved_gate="2R.3", expected_authorised_gate="2R.4")
+    assert any("obsolete authorisation language" in error for error in errors)
+
+
+def test_gate_control_rejects_contradictory_stale_gate_status(tmp_path, monkeypatch) -> None:
+    import json
+
+    control = json.loads(module.CONTROL_PATH.read_text(encoding="utf-8"))
+    control.update({
+        "approved_gate": "2R.4",
+        "authorised_next_gate": "2R.5",
+        "start_approved": True,
+        "approval_decision_commit_sha": "a" * 40,
+        "evidence_commit_sha": "b" * 40,
+        "transition_commit_sha": "c" * 40,
+        "remote_branch_sha_at_transition": "c" * 40,
+        "approved_at": "2026-06-22T21:00:00+02:00",
+    })
+    path = tmp_path / "control.json"
+    path.write_text(json.dumps(control), encoding="utf-8")
+    monkeypatch.setattr(module, "CONTROL_PATH", path)
+
+    plan_path = tmp_path / "plan.md"
+    plan_path.write_text("\n".join([
+        "**Status:** Gate 2R.4 verified complete; Gate 2R.5 authorised",
+        "**Execution authorisation:** Gate 2R.5 only",
+        "**Status:** Gate 2R.3 verified complete; Gate 2R.4 authorised",
+        "**Execution authorisation:** Gate 2R.4 only",
+        "Gate 2R.5 remains blocked.",
+    ]), encoding="utf-8")
+    monkeypatch.setattr(module, "PLAN_PATH", plan_path)
+    monkeypatch.setattr(module, "_validate_gate_approval", lambda **kwargs: None)
+
+    errors = module.validate_state(expected_approved_gate="2R.4", expected_authorised_gate="2R.5")
+    assert any("obsolete execution authorisation statement" in error for error in errors)
+    assert any("obsolete gate status phrase" in error for error in errors)
+    assert any("contradicts authorised gate" in error for error in errors)
 
 
 def test_premature_gate_2r2_transition_is_rejected(tmp_path, monkeypatch) -> None:

@@ -51,6 +51,17 @@ if [[ "$GATE" == "2R.1" ]]; then
   exit 0
 fi
 
+
+if [[ "$GATE" == "2R.5" ]]; then
+  "$PYTHON_BIN" scripts/verify_phase02r_gate2r5.py --mode "$MODE"
+  exit 0
+fi
+
+if [[ "$GATE" == "2R.4" ]]; then
+  "$PYTHON_BIN" scripts/verify_phase02r_gate2r4.py --mode "$MODE"
+  exit 0
+fi
+
 "$PYTHON_BIN" scripts/verify_phase02r_gate2r2_to_2r8.py --gate "$GATE" --mode "$MODE"
 if [[ "$MODE" == "closure" ]]; then
   echo "PHASE 02R GATE $GATE CLOSURE REMAINS BLOCKED UNTIL LIVE EVIDENCE AND APPROVALS EXIST"
