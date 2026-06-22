@@ -814,3 +814,12 @@ from app.models.curriculum_grounding import (  # noqa: F401
     Phase02RAuditFinding,
     TutorGroundingRecord,
 )
+# Phase 02R Gate 2R.4 curriculum graph and reviewed mapping models
+from app.models.curriculum_graph import (  # noqa: F401
+    CurriculumEdgeVersion,
+    CurriculumLanguageLink,
+    CurriculumMappingReviewEvent,
+    CurriculumNode,
+    CurriculumNodeVersion,
+    CurriculumSourceMappingVersion,
+)
