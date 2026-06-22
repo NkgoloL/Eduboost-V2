@@ -57,7 +57,7 @@ def _behavioral_contracts() -> list[str]:
                 errors.append("PII metadata was not rejected")
             except Exception:
                 pass
-            extracted = StructuredTextExtractor(max_chunk_chars=80).extract_text_fixture(path, language="en")
+            extracted = StructuredTextExtractor(max_chunk_chars=180).extract_text_fixture(path, language="en")
             if len(extracted.pages) != 2 or not extracted.chunks:
                 errors.append("structured extraction did not preserve pages/chunks")
 
