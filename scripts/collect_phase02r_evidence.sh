@@ -138,6 +138,9 @@ else
     if [[ "$GATE" == "2R.2" ]]; then
       capture gate-${raw_gate}-closure-verification.json \
         "$PYTHON_BIN" scripts/verify_phase02r_gate2r2.py --include-real-source --json
+    elif [[ "$GATE" == "2R.3" ]]; then
+      capture gate-${raw_gate}-closure-verification.json \
+        "$PYTHON_BIN" scripts/verify_phase02r_gate2r3.py --include-real-source --json
     else
       capture gate-${raw_gate}-closure-verification.json \
         "$PYTHON_BIN" scripts/verify_phase02r_gate2r2_to_2r8.py --gate "$GATE" --mode closure --json

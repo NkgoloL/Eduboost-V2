@@ -159,17 +159,27 @@ def _validate_gate_approval(
         errors.append(f"Gate {approved_gate} approvals do not reference the evidence source commit")
 
     evidence_commit_sha = str(approvals.get("evidence_commit_sha") or "")
-    approval_commit_sha = str(control.get("approval_commit_sha") or "")
+    approval_decision_commit_sha = str(control.get("approval_decision_commit_sha") or "")
+    transition_commit_sha = str(control.get("transition_commit_sha") or "")
+    remote_branch_sha_at_transition = str(control.get("remote_branch_sha_at_transition") or "")
     if not SHA_RE.fullmatch(evidence_commit_sha):
         errors.append(f"Gate {approved_gate} approvals require a real evidence_commit_sha")
-    if not SHA_RE.fullmatch(approval_commit_sha):
-        errors.append("control.approval_commit_sha must be a real 40-character lowercase Git SHA")
-    if control.get("parent_evidence_commit_sha") != evidence_commit_sha:
-        errors.append("gate control parent_evidence_commit_sha must equal the approved evidence commit")
-    if approval_commit_sha == evidence_commit_sha:
-        errors.append("approval commit must be separate from the evidence commit")
-    if control.get("remote_branch_sha") != approval_commit_sha:
-        errors.append("remote_branch_sha must equal the immutable gate approval commit")
+    if not SHA_RE.fullmatch(approval_decision_commit_sha):
+        errors.append("control.approval_decision_commit_sha must be a real 40-character lowercase Git SHA")
+    if not SHA_RE.fullmatch(transition_commit_sha):
+        errors.append("control.transition_commit_sha must be a real 40-character lowercase Git SHA")
+    if not SHA_RE.fullmatch(remote_branch_sha_at_transition):
+        errors.append("control.remote_branch_sha_at_transition must be a real 40-character lowercase Git SHA")
+    if control.get("evidence_commit_sha") != evidence_commit_sha:
+        errors.append("gate control evidence_commit_sha must equal the approved evidence commit")
+    if approval_decision_commit_sha == evidence_commit_sha:
+        errors.append("approval decision commit must be separate from the evidence commit")
+    if transition_commit_sha == evidence_commit_sha:
+        errors.append("transition commit must be separate from the evidence commit")
+    if transition_commit_sha == approval_decision_commit_sha:
+        errors.append("transition commit must be separate from the approval decision commit")
+    if remote_branch_sha_at_transition != transition_commit_sha:
+        errors.append("remote_branch_sha_at_transition must equal the transition_commit_sha")
 
     approved_roles: set[str] = set()
     decision_times: list[datetime] = []
@@ -238,7 +248,7 @@ def validate_state(
             errors.append("authorised_next_gate must be exactly one gate after approved_gate")
 
     if control.get("start_approved") is True:
-        for field in ("approval_commit_sha", "parent_evidence_commit_sha", "remote_branch_sha"):
+        for field in ("approval_decision_commit_sha", "evidence_commit_sha", "transition_commit_sha", "remote_branch_sha_at_transition"):
             if not SHA_RE.fullmatch(str(control.get(field, ""))):
                 errors.append(f"control.{field} must be a real 40-character lowercase Git SHA")
         _parse_time(control.get("approved_at"), "control.approved_at", errors)
