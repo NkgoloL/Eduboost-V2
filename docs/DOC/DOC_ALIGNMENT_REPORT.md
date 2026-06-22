@@ -20,12 +20,12 @@ This replacement pack rewrites the controlled document set around the supplied E
 
 | File | Status |
 |---|---|
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-01_System-Requirements-Specufucation_(SRS).md` | Rewritten and aligned |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-02_System-Subsystem-Specification_(SSS).md` | Rewritten and aligned |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-03_Concept-of-Operations_(ConOps).md` | Rewritten and aligned |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-04_Stakeholder-Requirements-Definition_(StRS).md` | Rewritten and aligned |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-05_Business-Requirements-Document_(BRD).md` | Rewritten and aligned |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-06_Use-Case-Specification_(UCS).md` | Rewritten and aligned |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-01_System-Requirements-Specification_(SRS).md` | Rewritten and aligned |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-02_System-Subsystem-Specification_(SSS).md` | Rewritten and aligned |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-03_Concept-of-Operations_(ConOps).md` | Rewritten and aligned |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-04_Stakeholder-Requirements-Definition_(StRS).md` | Rewritten and aligned |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-05_Business-Requirements-Document_(BRD).md` | Rewritten and aligned |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-06_Use-Case-Specification_(UCS).md` | Rewritten and aligned |
 | `docs/DOC/Tier 2 - Architecture & Design/DOC-07_Software-Design-Document_(SDD).md` | Rewritten and aligned |
 | `docs/DOC/Tier 2 - Architecture & Design/DOC-08_Software-Architecture-Document_(SAD).md` | Rewritten and aligned |
 | `docs/DOC/Tier 2 - Architecture & Design/DOC-09_Interface-Control-Document_(ICD).md` | Rewritten and aligned |
@@ -55,13 +55,13 @@ This replacement pack rewrites the controlled document set around the supplied E
 | `docs/DOC/Tier 6 - Security & Compliance/DOC-33_Incident-Response-Plan_(IRP).md` | Rewritten and aligned |
 | `docs/DOC/Tier 6 - Security & Compliance/DOC-34_Authority-to-Operate_(ATO).md` | Rewritten and aligned |
 | `docs/DOC/Tier 7 - Project Management/DOC-35_Project-Management-Plan_(PMP).md` | Rewritten and aligned |
-| `docs/DOC/Tier 7 - Project Management/DOC-36_Risk-Rigister_(RR).md` | Rewritten and aligned |
+| `docs/DOC/Tier 7 - Project Management/DOC-36_Risk-Register_(RR).md` | Rewritten and aligned |
 | `docs/DOC/Tier 7 - Project Management/DOC-37_Change-Management-Plan_(CMP).md` | Rewritten and aligned |
 
 
 ## Path note
 
-The original folder/file names contain spelling errors (`Reuirements`, `Specufucation`, `Risk-Rigister`). This pack keeps those paths unchanged so it can be applied as a drop-in replacement. Rename paths in a separate controlled change if desired.
+The original folder/file names contained spelling errors, and this pass normalizes the documented paths to the corrected spellings while keeping the content intact.
 
 ## Validation performed
 

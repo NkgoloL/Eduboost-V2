@@ -4,4 +4,4 @@ This folder contains the aligned `docs/DOC` replacement pack generated on 2026-0
 
 Use `DOC_ALIGNMENT_REPORT.md` first. It explains why the previous controlled docs were replaced and how this pack was aligned to the supplied codebase.
 
-The pack intentionally preserves original paths for drop-in replacement, even where legacy path names contain spelling errors.
+The pack keeps the aligned document content and now uses the corrected paths directly in the tree.

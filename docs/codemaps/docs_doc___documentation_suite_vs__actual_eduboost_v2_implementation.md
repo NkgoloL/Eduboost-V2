@@ -10,7 +10,7 @@ The docs/DOC/ directory contains a 37-document MIL-STD-498 suite describing a 'D
 **Trace text diagram:**
 ```
 docs/DOC/ Documentation Suite Structure
-├── Tier 1 - Requirements & Concept/ <-- DOC-01_System-Requirements-Specufucation_(SRS).md:1
+├── Tier 1 - Requirements & Concept/ <-- DOC-01_System-Requirements-Specification_(SRS).md:1
 │   └── DOC-01_SRS.md <-- 1a
 │       └── System Requirements Specification
 ├── Tier 2 - Architecture & Design/ <-- DOC-08_Software-Architecture-Document_(SAD).md:1
@@ -35,7 +35,7 @@ docs/DOC/ Documentation Suite Structure
 **Location ID: 1a**
 **Title:** Tier 1: Requirements & Concept - Entry Point
 **Description:** Top-level requirements document defining the 'DBE AI Expert System' scope
-**Path:LineNumber:** /home/nkgolol/Dev/Development/Eduboost-V2/docs/DOC/Tier 1 - Reuirements & Concept/DOC-01_System-Requirements-Specufucation_(SRS).md:1
+**Path:LineNumber:** /home/nkgolol/Dev/Development/Eduboost-V2/docs/DOC/Tier 1 - Requirements & Concept/DOC-01_System-Requirements-Specification_(SRS).md:1
 
 **Location ID: 1b**
 **Title:** Tier 2: Architecture & Design - System Structure
@@ -100,23 +100,23 @@ DBE AI Expert System Documentation
     └── POST /ask endpoint for queries <-- 2d
 
 Documented System Flow (not implemented):
-Policy Analyst <-- DOC-01_System-Requirements-Specufucation_(SRS).md:116
+Policy Analyst <-- DOC-01_System-Requirements-Specification_(SRS).md:116
 └── submits query to /ask endpoint <-- 2d
     ├── KnowledgeGraphManager retrieves <-- 2c
     │   └── from Cosmos DB Gremlin API <-- 2e
-    └── Expert Model generates response <-- DOC-01_System-Requirements-Specufucation_(SRS).md:160
+    └── Expert Model generates response <-- DOC-01_System-Requirements-Specification_(SRS).md:160
         └── returns policy recommendation <-- 2f
 ```
 
 **Location ID: 2a**
 **Title:** System Purpose - Policy Advisory Platform
 **Description:** Defines a system for educational policy queries, not learner education
-**Path:LineNumber:** /home/nkgolol/Dev/Development/Eduboost-V2/docs/DOC/Tier 1 - Reuirements & Concept/DOC-01_System-Requirements-Specufucation_(SRS).md:47
+**Path:LineNumber:** /home/nkgolol/Dev/Development/Eduboost-V2/docs/DOC/Tier 1 - Requirements & Concept/DOC-01_System-Requirements-Specification_(SRS).md:47
 
 **Location ID: 2b**
 **Title:** Core Requirement - Gremlin Knowledge Graph
 **Description:** Requires Cosmos DB Gremlin API for graph traversal
-**Path:LineNumber:** /home/nkgolol/Dev/Development/Eduboost-V2/docs/DOC/Tier 1 - Reuirements & Concept/DOC-01_System-Requirements-Specufucation_(SRS).md:150
+**Path:LineNumber:** /home/nkgolol/Dev/Development/Eduboost-V2/docs/DOC/Tier 1 - Requirements & Concept/DOC-01_System-Requirements-Specification_(SRS).md:150
 
 **Location ID: 2c**
 **Title:** Key Component - KnowledgeGraphManager Class
@@ -136,7 +136,7 @@ Policy Analyst <-- DOC-01_System-Requirements-Specufucation_(SRS).md:116
 **Location ID: 2f**
 **Title:** Use Case - Policy Query Scenario
 **Description:** Example query about school infrastructure policy, not learner diagnostics
-**Path:LineNumber:** /home/nkgolol/Dev/Development/Eduboost-V2/docs/DOC/Tier 1 - Reuirements & Concept/DOC-03_Concept-of-Operations_(ConOps).md:24
+**Path:LineNumber:** /home/nkgolol/Dev/Development/Eduboost-V2/docs/DOC/Tier 1 - Requirements & Concept/DOC-03_Concept-of-Operations_(ConOps).md:24
 
 ### AI Guide: Documented DBE AI Expert System - Azure Knowledge Graph Architecture
 
@@ -267,7 +267,7 @@ docs/DOC/ Documentation Suite
 **Location ID: 4a**
 **Title:** Documented Component - KnowledgeGraphManager
 **Description:** References src/ingestion/graph_manager.py which doesn't exist
-**Path:LineNumber:** /home/nkgolol/Dev/Development/Eduboost-V2/docs/DOC/Tier 1 - Reuirements & Concept/DOC-02_System-Subsystem-Specification_(SSS).md:82
+**Path:LineNumber:** /home/nkgolol/Dev/Development/Eduboost-V2/docs/DOC/Tier 1 - Requirements & Concept/DOC-02_System-Subsystem-Specification_(SSS).md:82
 
 **Location ID: 4b**
 **Title:** Documented API - Gremlin Client Usage

@@ -77,12 +77,12 @@
 | `docs/Azure_Migration_Guide.md` | deployment | EduBoost SA — Azure Migration Guide (Dev/Test) | - | - | 0 | 2 |
 | `docs/DEVELOPMENT.md` | compliance_popia | Development Guide | fail | - | 0 | 5 |
 | `docs/DOC/EduBoost_SA_State_of_System_Report.docx` | compliance_popia | 🦁 EduBoost SA | draft, ready, pass | - | 2 | 0 |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-01_System-Requirements-Specufucation_(SRS).md` | compliance_popia | System Requirements Specification (SRS) | draft, pass | 2026-04-28, 2026-04-29 | 0 | 10 |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-02_System-Subsystem-Specification_(SSS).md` | beta_launch | System/Subsystem Specification (SSS) | draft | 2026-04-29 | 0 | 0 |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-03_Concept-of-Operations_(ConOps).md` | beta_launch | Concept of Operations (ConOps) | - | 2026-04-29 | 0 | 0 |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-04_Stakeholder-Requirements-Definition_(StRS).md` | compliance_popia | Stakeholder Requirements Definition (StRS) | todo | 2026-04-29 | 0 | 0 |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-05_Business-Requirements-Document_(BRD).md` | compliance_popia | Business Requirements Document (BRD) | todo | 2026-04-29 | 0 | 0 |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-06_Use-Case-Specification_(UCS).md` | beta_launch | Use Case Specification (UCS) | todo, pass, fail | 2026-04-29 | 0 | 0 |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-01_System-Requirements-Specification_(SRS).md` | compliance_popia | System Requirements Specification (SRS) | draft, pass | 2026-04-28, 2026-04-29 | 0 | 10 |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-02_System-Subsystem-Specification_(SSS).md` | beta_launch | System/Subsystem Specification (SSS) | draft | 2026-04-29 | 0 | 0 |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-03_Concept-of-Operations_(ConOps).md` | beta_launch | Concept of Operations (ConOps) | - | 2026-04-29 | 0 | 0 |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-04_Stakeholder-Requirements-Definition_(StRS).md` | compliance_popia | Stakeholder Requirements Definition (StRS) | todo | 2026-04-29 | 0 | 0 |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-05_Business-Requirements-Document_(BRD).md` | compliance_popia | Business Requirements Document (BRD) | todo | 2026-04-29 | 0 | 0 |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-06_Use-Case-Specification_(UCS).md` | beta_launch | Use Case Specification (UCS) | todo, pass, fail | 2026-04-29 | 0 | 0 |
 | `docs/DOC/Tier 2 - Architecture & Design/DOC-07_Software-Design-Document_(SDD).md` | deployment | Software Design Document (SDD) | fail | 2026-04-29 | 0 | 0 |
 | `docs/DOC/Tier 2 - Architecture & Design/DOC-08_Software-Architecture-Document_(SAD).md` | beta_launch | Software Architecture Document (SAD) | - | 2026-04-29 | 0 | 0 |
 | `docs/DOC/Tier 2 - Architecture & Design/DOC-09_Interface-Control-Document_(ICD).md` | beta_launch | Interface Control Document (ICD) | fail | 2026-04-29 | 0 | 2 |
@@ -112,7 +112,7 @@
 | `docs/DOC/Tier 6 - Security & Compliance/DOC-33_Incident-Response-Plan_(IRP).md` | compliance_popia | Incident Response Plan (IRP) | todo, fail | 2026-04-29 | 0 | 1 |
 | `docs/DOC/Tier 6 - Security & Compliance/DOC-34_Authority-to-Operate_(ATO).md` | compliance_popia | Authority to Operate (ATO) | todo, draft, pass | 2026-04-29 | 0 | 0 |
 | `docs/DOC/Tier 7 - Project Management/DOC-35_Project-Management-Plan_(PMP).md` | compliance_popia | Project Management Plan (PMP) | todo, pass | 2026-03-01, 2026-04-29, 2026-06-30 | 0 | 0 |
-| `docs/DOC/Tier 7 - Project Management/DOC-36_Risk-Rigister_(RR).md` | compliance_popia | Risk Register (RR) | - | 2026-04-29 | 0 | 0 |
+| `docs/DOC/Tier 7 - Project Management/DOC-36_Risk-Register_(RR).md` | compliance_popia | Risk Register (RR) | - | 2026-04-29 | 0 | 0 |
 | `docs/DOC/Tier 7 - Project Management/DOC-37_Change-Management-Plan_(CMP).md` | release_evidence | Change Management Plan (CMP) | pass | 2026-04-29 | 0 | 0 |
 | `docs/LLM_Phase3_Finetuning.md` | deployment | LLM Phase 3 Fine-Tuning Runbook | blocked, ready, pass | - | 0 | 0 |
 | `docs/LLM_Test_Gating.md` | deployment | LLM Test Gating | - | - | 0 | 0 |

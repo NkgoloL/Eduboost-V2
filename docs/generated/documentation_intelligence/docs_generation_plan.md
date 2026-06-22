@@ -181,9 +181,9 @@ Use this plan to turn the raw documentation corpus into higher-level deliverable
 - Example sources:
   - `audits/agents_tasks/TODO_Harmonic-Fusion.md`
   - `audits/roadmaps/V2_Execution_Roadmap.md`
-  - `docs/DOC/Tier 1 - Reuirements & Concept/DOC-02_System-Subsystem-Specification_(SSS).md`
-  - `docs/DOC/Tier 1 - Reuirements & Concept/DOC-03_Concept-of-Operations_(ConOps).md`
-  - `docs/DOC/Tier 1 - Reuirements & Concept/DOC-06_Use-Case-Specification_(UCS).md`
+  - `docs/DOC/Tier 1 - Requirements & Concept/DOC-02_System-Subsystem-Specification_(SSS).md`
+  - `docs/DOC/Tier 1 - Requirements & Concept/DOC-03_Concept-of-Operations_(ConOps).md`
+  - `docs/DOC/Tier 1 - Requirements & Concept/DOC-06_Use-Case-Specification_(UCS).md`
   - `docs/DOC/Tier 2 - Architecture & Design/DOC-08_Software-Architecture-Document_(SAD).md`
   - `docs/DOC/Tier 2 - Architecture & Design/DOC-09_Interface-Control-Document_(ICD).md`
   - `docs/DOC/Tier 2 - Architecture & Design/DOC-10_Database-Design-Document_(DDD).md`

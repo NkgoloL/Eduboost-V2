@@ -25,12 +25,12 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/API_REFERENCE.md` | `general` | API Reference | 11510 | False |
 | `docs/Azure_Migration_Guide.md` | `general` | EduBoost SA — Azure Migration Guide (Dev/Test) | 2365 | False |
 | `docs/DEVELOPMENT.md` | `general` | Development Guide | 1547 | False |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-01_System-Requirements-Specufucation_(SRS).md` | `general` | System Requirements Specification (SRS) | 16307 | False |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-02_System-Subsystem-Specification_(SSS).md` | `general` | System/Subsystem Specification (SSS) | 7720 | False |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-03_Concept-of-Operations_(ConOps).md` | `general` | Concept of Operations (ConOps) | 4054 | False |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-04_Stakeholder-Requirements-Definition_(StRS).md` | `general` | Stakeholder Requirements Definition (StRS) | 2949 | False |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-05_Business-Requirements-Document_(BRD).md` | `general` | Business Requirements Document (BRD) | 1996 | False |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-06_Use-Case-Specification_(UCS).md` | `general` | Use Case Specification (UCS) | 6140 | False |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-01_System-Requirements-Specification_(SRS).md` | `general` | System Requirements Specification (SRS) | 16307 | False |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-02_System-Subsystem-Specification_(SSS).md` | `general` | System/Subsystem Specification (SSS) | 7720 | False |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-03_Concept-of-Operations_(ConOps).md` | `general` | Concept of Operations (ConOps) | 4054 | False |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-04_Stakeholder-Requirements-Definition_(StRS).md` | `general` | Stakeholder Requirements Definition (StRS) | 2949 | False |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-05_Business-Requirements-Document_(BRD).md` | `general` | Business Requirements Document (BRD) | 1996 | False |
+| `docs/DOC/Tier 1 - Requirements & Concept/DOC-06_Use-Case-Specification_(UCS).md` | `general` | Use Case Specification (UCS) | 6140 | False |
 | `docs/DOC/Tier 2 - Architecture & Design/DOC-07_Software-Design-Document_(SDD).md` | `general` | Software Design Document (SDD) | 10238 | False |
 | `docs/DOC/Tier 2 - Architecture & Design/DOC-08_Software-Architecture-Document_(SAD).md` | `general` | Software Architecture Document (SAD) | 12430 | False |
 | `docs/DOC/Tier 2 - Architecture & Design/DOC-09_Interface-Control-Document_(ICD).md` | `general` | Interface Control Document (ICD) | 5921 | False |
@@ -60,7 +60,7 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/DOC/Tier 6 - Security & Compliance/DOC-33_Incident-Response-Plan_(IRP).md` | `general` | Incident Response Plan (IRP) | 4746 | False |
 | `docs/DOC/Tier 6 - Security & Compliance/DOC-34_Authority-to-Operate_(ATO).md` | `general` | Authority to Operate (ATO) | 4613 | False |
 | `docs/DOC/Tier 7 - Project Management/DOC-35_Project-Management-Plan_(PMP).md` | `general` | Project Management Plan (PMP) | 4179 | False |
-| `docs/DOC/Tier 7 - Project Management/DOC-36_Risk-Rigister_(RR).md` | `general` | Risk Register (RR) | 4875 | False |
+| `docs/DOC/Tier 7 - Project Management/DOC-36_Risk-Register_(RR).md` | `general` | Risk Register (RR) | 4875 | False |
 | `docs/DOC/Tier 7 - Project Management/DOC-37_Change-Management-Plan_(CMP).md` | `general` | Change Management Plan (CMP) | 3608 | False |
 | `docs/LLM_Phase3_Finetuning.md` | `general` | LLM Phase 3 Fine-Tuning Runbook | 5595 | False |
 | `docs/LLM_Test_Gating.md` | `general` | Llm Test Gating | 682 | False |
