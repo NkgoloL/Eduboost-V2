@@ -1,8 +1,8 @@
 # Phase 2R Gate 2R.2 Evidence Index
 
-**Generated:** 2026-06-21T21:58:03Z
-**Status:** Candidate verification failed
-**Source commit:** `52e13d77eef1bf6d704db1593aea85a2907be9fd`
+**Generated:** 2026-06-22T08:04:11Z
+**Status:** Candidate verification passed — human approval pending
+**Source commit:** `6a68437037da656e2ccbc9fb00d13e8f9037d882`
 **Environment:** see `raw/environment.txt`
 
 | Evidence ID / claim | Artifact |

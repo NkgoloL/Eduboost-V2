@@ -1,9 +1,10 @@
 {
-  "command": [],
-  "duration_seconds": 0,
-  "exit_code": null,
-  "finished_at": null,
-  "reason": "PostgreSQL verification was not run because Gate 2R.2 closure prerequisites failed.",
-  "started_at": null,
-  "status": "not_run"
+  "command": [
+    "bash",
+    "scripts/verify_phase02r_postgres.sh"
+  ],
+  "duration_seconds": 14,
+  "exit_code": 0,
+  "finished_at": "2026-06-22T08:04:26Z",
+  "started_at": "2026-06-22T08:04:12Z"
 }
