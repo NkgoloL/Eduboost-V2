@@ -1,0 +1,56 @@
+{
+  "binding": {
+    "activation_key": "CAPS:g4:MATH:en:global",
+    "binding_epoch": 1,
+    "corpus_version_id": "corpus-g4math-en-v1",
+    "manifest_sha256": "18c288d98b094d87f44e58f13351abb83dc44b210dbd95e97215b9e4bf6c8d98",
+    "status": "active"
+  },
+  "candidate_count": 3,
+  "claim": "approved semantic corpus manifest is deterministic and hashable",
+  "gate": "2R.5",
+  "manifest": {
+    "activation_key": "CAPS:g4:MATH:en:global",
+    "chunk_version_ids": [
+      "chunk-g4math-fractions-001",
+      "chunk-g4math-measurement-001",
+      "chunk-g4math-numbers-001"
+    ],
+    "corpus_code": "CAPS-G4-MATH-EN",
+    "corpus_policy_version": "phase02r-gate2r5-corpus-v1",
+    "curriculum_node_version_ids": [
+      "node-g4math-fractions-common-v1",
+      "node-g4math-measurement-length-v1",
+      "node-g4math-numbers-whole-numbers-v1"
+    ],
+    "embedding_model": "phase02r-static-policy-embedding",
+    "embedding_version": "gate2r5-no-vector-dry-run-v1",
+    "language": "en",
+    "manifest_sha256": "18c288d98b094d87f44e58f13351abb83dc44b210dbd95e97215b9e4bf6c8d98",
+    "mapping_version_ids": [
+      "map-g4math-fractions-001",
+      "map-g4math-measurement-001",
+      "map-g4math-numbers-001"
+    ],
+    "membership_count": 3,
+    "retrieval_policy_version": "phase02r-gate2r5-retrieval-v1",
+    "retrieval_projection_sha256": "f3f1b24f95bfa30cacc34501e52d0e01e4413eb46121f29699e7213573b84c5d",
+    "review_status": "review_required",
+    "scope": {
+      "curriculum_code": "CAPS",
+      "grade": 4,
+      "subject_code": "MATH",
+      "tenant_scope": "global"
+    },
+    "source_snapshot_hash": "ed15616965efb7a309f60e6051381d64521a255912a63768f6af8686ee021e0e",
+    "source_version_ids": [
+      "src-caps-g4math-v1"
+    ],
+    "status": "built",
+    "tier1_membership_count": 3,
+    "version_number": 1
+  },
+  "projection_sha256": "f3f1b24f95bfa30cacc34501e52d0e01e4413eb46121f29699e7213573b84c5d",
+  "sample_retrieval_hit_count": 2,
+  "status": "passed"
+}
