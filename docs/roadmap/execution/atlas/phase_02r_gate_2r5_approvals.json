@@ -1,0 +1,60 @@
+{
+  "gate": "2R.5",
+  "gate_title": "Approved semantic corpus and real-source retrieval",
+  "decision": "approved_with_disclosed_self_review_exception",
+  "approved_gate": "2R.5",
+  "authorised_next_gate": null,
+  "implementation_source_commit_sha": "a31be31d7323f675b83430dc775084abc44f58ce",
+  "evidence_commit_sha": "747a1e6e75941cdc262e0b9a76f05df6aa655103",
+  "evidence_index_path": "docs/release-evidence/atlas/phase-02r/gate-2r5/evidence_index.md",
+  "evidence_index_sha256": "9f53b3db290f4d560b6db6df8490b0b793d48e3ff9047eefec4354afa90bd615",
+  "approval_scope": [
+    "Gate 2R.5 semantic corpus implementation",
+    "approved corpus manifest readiness",
+    "retrieval projection export readiness",
+    "real-source retrieval validation readiness",
+    "static-only PostgreSQL readiness disclosure"
+  ],
+  "explicit_non_scope": [
+    "Gate 2R.6 generation grounding",
+    "Gate 2R.7 tutor grounding",
+    "learner-facing retrieval endpoint activation",
+    "production generation or tutor behaviour changes",
+    "live database migration execution"
+  ],
+  "reviewers": {
+    "engineering_approver": {
+      "name": "Nkgolo Lebelo",
+      "status": "approved",
+      "exception": "disclosed_self_review_exception"
+    },
+    "rights_reviewer": {
+      "name": "Nkgolo Lebelo",
+      "status": "approved",
+      "exception": "disclosed_self_review_exception"
+    },
+    "curriculum_reviewer": {
+      "name": "Nkgolo Lebelo",
+      "status": "approved",
+      "exception": "disclosed_self_review_exception"
+    },
+    "evidence_custodian": {
+      "name": "Nkgolo Lebelo",
+      "status": "approved",
+      "exception": "disclosed_self_review_exception"
+    },
+    "release_manager": {
+      "name": "Nkgolo Lebelo",
+      "status": "approved",
+      "exception": "disclosed_self_review_exception"
+    }
+  },
+  "controls": {
+    "maker_checker_exception_disclosed": true,
+    "evidence_commit_separate_from_implementation": true,
+    "approval_commit_separate_from_evidence": true,
+    "gate_2r6_not_authorised_by_this_manifest": true,
+    "live_database_execution_required_for_future_activation": false,
+    "static_only_postgres_evidence_disclosed": true
+  }
+}
