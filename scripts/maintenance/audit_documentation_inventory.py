@@ -10,7 +10,7 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-from doc_utils import iter_markdown, markdown_h1, parse_front_matter, relpath
+from doc_utils import iter_markdown, markdown_h1, parse_front_matter, relpath, should_relax_metadata
 
 RISKY_TERMS = [
     "production-ready",
@@ -66,6 +66,7 @@ def main() -> int:
     parser.add_argument("--out-json", default="")
     parser.add_argument("--out-csv", default="")
     parser.add_argument("--out-findings", default="")
+    parser.add_argument("--strict-legacy", action="store_true", help="Include archive/generated/evidence areas in findings.")
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
@@ -84,6 +85,7 @@ def main() -> int:
         owner = str(meta.get("owner") or "")
         audience = str(meta.get("audience") or "")
         source_of_truth = meta.get("source_of_truth", "")
+        relaxed_legacy = should_relax_metadata(rel)
         line_count = text.count("\n") + 1 if text else 0
         byte_count = len(text.encode("utf-8"))
         first_dir = "/".join(rel.split("/")[:2]) if "/" in rel else "."
@@ -109,13 +111,13 @@ def main() -> int:
             "has_front_matter": bool(meta),
         }
         rows.append(row)
-        if not meta:
+        if not meta and (args.strict_legacy or not relaxed_legacy):
             findings.append({"severity": "medium", "type": "missing_metadata", "path": rel, "detail": "No YAML front matter"})
-        if risky_hits:
+        if risky_hits and (args.strict_legacy or not relaxed_legacy):
             findings.append({"severity": "high", "type": "risky_or_stale_terms", "path": rel, "detail": "; ".join(risky_hits)})
-        if broken_links:
+        if broken_links and (args.strict_legacy or not relaxed_legacy):
             findings.append({"severity": "high", "type": "broken_local_links", "path": rel, "detail": str(broken_links)})
-        if line_count > 500:
+        if line_count > 500 and (args.strict_legacy or not relaxed_legacy):
             findings.append({"severity": "low", "type": "oversized_document", "path": rel, "detail": f"{line_count} lines"})
 
     for title, paths in titles.items():
@@ -130,7 +132,11 @@ def main() -> int:
         "files_with_metadata": sum(1 for r in rows if r["has_front_matter"]),
         "files_with_owner": sum(1 for r in rows if r["owner"]),
         "files_with_source_of_truth": sum(1 for r in rows if str(r["source_of_truth"]).lower() in {"true", "yes"}),
-        "broken_local_link_count": sum(int(r["broken_local_links"]) for r in rows),
+        "broken_local_link_count": sum(
+            int(r["broken_local_links"])
+            for r in rows
+            if args.strict_legacy or not should_relax_metadata(str(r["path"]))
+        ),
         "finding_count": len(findings),
         "top_directories": dir_counts.most_common(30),
     }
@@ -139,7 +145,11 @@ def main() -> int:
         out = root / args.out_csv
         out.parent.mkdir(parents=True, exist_ok=True)
         with out.open("w", encoding="utf-8", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()) if rows else ["path"])
+            writer = csv.DictWriter(
+                f,
+                fieldnames=list(rows[0].keys()) if rows else ["path"],
+                lineterminator="\n",
+            )
             writer.writeheader()
             writer.writerows(rows)
     if args.out_findings:
@@ -147,7 +157,7 @@ def main() -> int:
         out.parent.mkdir(parents=True, exist_ok=True)
         with out.open("w", encoding="utf-8", newline="") as f:
             fieldnames = ["severity", "type", "path", "detail"]
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer = csv.DictWriter(f, fieldnames=fieldnames, lineterminator="\n")
             writer.writeheader()
             writer.writerows(findings)
     if args.out_json:

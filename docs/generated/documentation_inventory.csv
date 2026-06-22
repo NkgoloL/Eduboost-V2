@@ -4,7 +4,7 @@ path,title,h1,status,owner,audience,source_of_truth,last_reviewed,review_interva
 .github/ISSUE_TEMPLATE/feature_request.md,[Feature]: ,,,,,,,,20,332,,0,True
 .github/ISSUE_TEMPLATE/incorrect_content.md,[Content]: ,,,,,,,,27,451,,0,True
 .github/ISSUE_TEMPLATE/popia_concern.md,[POPIA]: ,,,,,,,,30,540,,0,True
-.github/PULL_REQUEST_TEMPLATE/documentation_change.md,,,,,,,,,11,560,,0,False
+.github/PULL_REQUEST_TEMPLATE/documentation_change.md,,,,,,,,,10,559,,0,False
 .github/PULL_REQUEST_TEMPLATE.md,,,,,,,,,55,1007,,0,False
 .github/SECRETS_CONFIGURATION.md,GitHub Actions Secret Configuration for db-backup-restore-rollback-evidence,GitHub Actions Secret Configuration for db-backup-restore-rollback-evidence,,,,,,,112,3235,,0,False
 .github/agents/eduboost-backend.agent.md,EduBoost Backend Specialist,EduBoost Backend Specialist,,,,,,,54,1875,,0,True
@@ -108,7 +108,7 @@ docs/DOC/README.md,Archived documentation redirect,Archived documentation redire
 docs/LLM_Phase3_Finetuning.md,LLM Phase 3 Fine-Tuning Runbook,LLM Phase 3 Fine-Tuning Runbook,,,,,,,180,5595,,0,False
 docs/LLM_Test_Gating.md,,,,,,,,,18,682,,0,False
 docs/POPIA_COMPLIANCE.md,POPIA Compliance Guide,POPIA Compliance Guide,,,,,,,302,11841,,0,False
-docs/README.md,EduBoost Documentation Index,EduBoost Documentation Index,active,documentation-governance,developer,True,2026-06-22,30,51,2607,,0,True
+docs/README.md,EduBoost Documentation Index,EduBoost Documentation Index,active,documentation-governance,developer,True,2026-06-22,30,50,2606,,0,True
 docs/adr/0001-modular-monolith.md,ADR 0001: Modular Monolith Architecture,ADR 0001: Modular Monolith Architecture,,,,,,,20,765,,0,False
 docs/adr/0002-popia-first-design.md,ADR 0002: POPIA-First Design,ADR 0002: POPIA-First Design,,,,,,,22,1112,,0,False
 docs/adr/0003-llm-provider-abstraction.md,ADR 0003: LLM Provider Abstraction,ADR 0003: LLM Provider Abstraction,,,,,,,22,1096,,0,False
@@ -188,13 +188,13 @@ docs/ai/production_llm_gateway_contract.md,Production LLM Gateway Contract,Produ
 docs/ai/remediation_safety_contract.md,Remediation Safety Contract,Remediation Safety Contract,,,,,,,42,1183,,0,False
 docs/ai_lesson_safety.md,AI Lesson Safety Baseline,AI Lesson Safety Baseline,,,,,,,36,1128,,0,False
 docs/analytics/learning_event_schema.md,POPIA-safe learning event schema,POPIA-safe learning event schema,,,,,,,22,937,,0,False
-docs/api/README.md,API Documentation Index,API Documentation,active,backend,developer,True,2026-06-22,30,22,616,,0,True
+docs/api/README.md,API Documentation Index,API Documentation,active,backend,developer,True,2026-06-22,30,21,615,,0,True
 docs/api/_build/README.md,Archived documentation redirect,Archived documentation redirect,archived,documentation-governance,reviewer,False,2026-06-22,180,25,762,,0,True
 docs/api_envelope_contract.md,API Envelope Contract,API Envelope Contract,,,,,,,101,2016,,0,False
 docs/api_v2.md,API V2 Overview,API V2 Overview,,,,,,,176,4074,,0,False
 docs/api_versioning_policy.md,EduBoost API Versioning Policy,EduBoost API Versioning Policy,,,,,,,140,4277,,0,False
 docs/architecture/CORE_TECHNICAL_AUDIT_2026-05-17.md,EduBoost V2 Core Technical Audit,EduBoost V2 Core Technical Audit,,,,,,,687,28955,production-ready,0,False
-docs/architecture/README.md,Architecture Documentation Index,Architecture Documentation,active,architecture,developer,True,2026-06-22,60,22,666,,0,True
+docs/architecture/README.md,Architecture Documentation Index,Architecture Documentation,active,architecture,developer,True,2026-06-22,60,21,665,,0,True
 docs/architecture/V2_ARCHITECTURE.md,EduBoost SA — Recommended Architecture,EduBoost SA — Recommended Architecture,,,,,,,296,14300,,0,False
 docs/architecture/architecture_decisions.md,Architecture Decisions Index,Architecture Decisions Index,,,,,,,36,810,,1,False
 docs/architecture/architecture_diagram.md,EduBoost SA V2 — Architecture Diagram,EduBoost SA V2 — Architecture Diagram,,,,,,,140,4018,,0,False
@@ -223,7 +223,7 @@ docs/archive/EduBoost_Technical_Status_Report.md,EduBoost V2 — Comprehensive T
 docs/archive/INTEGRATION_COMPLETE.md,EduBoost V2 PR Integration Complete ✅,EduBoost V2 PR Integration Complete ✅,,,,,,,303,11273,production-ready,2,False
 docs/archive/LLM_Integration_Roadmap.md,EduBoost V2: LLM Brain Integration Roadmap,EduBoost V2: LLM Brain Integration Roadmap,,,,,,,76,5999,,0,False
 docs/archive/PR_INTEGRATION_SUMMARY.md,PR Integration Summary (2026-05-08),PR Integration Summary (2026-05-08),,,,,,,587,25865,,0,False
-docs/archive/README.md,Documentation Archive Index,Documentation Archive,active,documentation-governance,reviewer,False,2026-06-22,180,22,653,,0,True
+docs/archive/README.md,Documentation Archive Index,Documentation Archive,active,documentation-governance,reviewer,False,2026-06-22,180,21,652,,0,True
 docs/archive/legacy-doc-framework/20260622T193052Z/DOC/DOC_ALIGNMENT_REPORT.md,docs/DOC Alignment Report,docs/DOC Alignment Report,,,,,,,82,5995,DBE AI Expert;Cosmos DB;Azure ML;knowledge graph,0,False
 docs/archive/legacy-doc-framework/20260622T193052Z/DOC/README.md,EduBoost V2 Controlled Document Set,EduBoost V2 Controlled Document Set,,,,,,,8,378,,0,False
 docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 1 - Requirements & Concept/DOC-01_System-Requirements-Specification_(SRS).md,System Requirements Specification (SRS),System Requirements Specification (SRS),,,,,,,113,7981,production-ready,0,False
@@ -382,7 +382,7 @@ docs/codemaps/jwt_security_implementation_dual_system_architecture.md,JWT Securi
 docs/codemaps/pytest_configuration_and_test_suite_structure.md,Pytest Configuration and Test Suite Structure,Pytest Configuration and Test Suite Structure,,,,,,,1098,66559,,0,False
 docs/codemaps/routeguard_authentication_flow_and_testing.md,RouteGuard Authentication Flow & Testing,RouteGuard Authentication Flow & Testing,,,,,,,736,55333,,0,False
 docs/codemaps/test_coverage_and_ci_pipeline_configuration.md,Test Coverage and CI Pipeline Configuration,Test Coverage and CI Pipeline Configuration,,,,,,,582,44479,,0,False
-docs/compliance/README.md,Compliance Documentation Index,Compliance Documentation,active,privacy,privacy,True,2026-06-22,45,22,713,,0,True
+docs/compliance/README.md,Compliance Documentation Index,Compliance Documentation,active,privacy,privacy,True,2026-06-22,45,21,712,,0,True
 docs/compliance/data_retention_policy.md,Data retention policy,Data retention policy,,,,,,,15,1365,,0,False
 docs/compliance/popia_data_rights.md,POPIA data-subject-rights workflow,POPIA data-subject-rights workflow,,,,,,,29,1563,,0,False
 docs/compliance/pr_004_implementation_summary.md,PR-004 POPIA consent/data-rights/audit implementation summary,PR-004 POPIA consent/data-rights/audit implementation summary,,,,,,,26,1424,,0,False
@@ -398,7 +398,7 @@ docs/content_factory/staging_seed_execution.md,Content Factory Staging Seed Exec
 docs/content_factory/staging_verification.md,Content Factory Staging Verification,Content Factory Staging Verification,,,,,,,37,1522,,0,False
 docs/content_factory_overnight_batch_pipeline.md,Content Factory Full Generation System: Overnight Batch Pipeline — Complete Trace Text,Content Factory Full Generation System: Overnight Batch Pipeline — Complete Trace Text,,,,,,,1029,49878,,0,False
 docs/coverage-improvement-handover.md,Code Coverage Improvement Handover,Code Coverage Improvement Handover,,,,,,,193,6677,,0,False
-docs/current_state.md,EduBoost Current State,EduBoost Current State,active,release-management,developer,True,2026-06-22,14,52,2435,,0,True
+docs/current_state.md,EduBoost Current State,EduBoost Current State,active,release-management,developer,True,2026-06-22,14,51,2434,,0,True
 docs/curriculum/StudyMaterialExpansionPlan.md,Study Material Expansion Implementation Plan,Study Material Expansion Implementation Plan,,,,,,,594,24683,,0,False
 docs/curriculum/TOPIC_MAP_REVIEW_CHECKLIST.md,Topic Map Review Checklist,Topic Map Review Checklist,,,,,,,364,11114,,0,False
 docs/curriculum/caps_topic_map.md,CAPS Topic Map MVP,CAPS Topic Map MVP,,,,,,,43,1137,,0,False
@@ -443,20 +443,20 @@ docs/disaster_recovery.md,Disaster recovery plan,Disaster recovery plan,,,,,,,75
 docs/docs_gap_report.md,Documentation Gap Report,Documentation Gap Report,,,,,,,24,803,,0,False
 docs/docs_generation_plan.md,Documentation Generation Plan,Documentation Generation Plan,,,,,,,13,344,,0,False
 docs/docs_inventory.md,Archived documentation redirect,Archived documentation redirect,archived,documentation-governance,reviewer,False,2026-06-22,180,25,801,,0,True
-docs/documentation/README.md,Documentation Governance Index,Documentation Governance,active,documentation-governance,developer,True,2026-06-22,30,28,661,,0,True
+docs/documentation/README.md,Documentation Governance Index,Documentation Governance,active,documentation-governance,developer,True,2026-06-22,30,27,660,,0,True
 docs/documentation/adr_lifecycle_contract.md,ADR Lifecycle Contract,ADR Lifecycle Contract,,,,,,,32,604,,0,False
 docs/documentation/claim_discipline_contract.md,Claim Discipline Contract,Claim Discipline Contract,,,,,,,48,1113,production ready;launch approved;fully complete,0,False
-docs/documentation/claim_discipline_policy.md,Documentation Claim Discipline Policy,Documentation Claim Discipline Policy,active,documentation-governance,developer,True,2026-06-22,30,60,1395,production-ready;production ready;release-ready;launch approved;fully complete;all tests pass;green baseline,0,True
+docs/documentation/claim_discipline_policy.md,Documentation Claim Discipline Policy,Documentation Claim Discipline Policy,active,documentation-governance,developer,True,2026-06-22,30,59,1394,production-ready;production ready;release-ready;launch approved;fully complete;all tests pass;green baseline,0,True
 docs/documentation/documentation_adrs_claim_discipline_architecture_contract.md,Documentation ADRs Claim Discipline Architecture Contract,Documentation ADRs Claim Discipline Architecture Contract,,,,,,,48,1017,,0,False
-docs/documentation/documentation_housekeeping_policy.md,Documentation Housekeeping Policy,Documentation Housekeeping Policy,active,documentation-governance,developer,True,2026-06-22,30,112,2836,,0,True
+docs/documentation/documentation_housekeeping_policy.md,Documentation Housekeeping Policy,Documentation Housekeeping Policy,active,documentation-governance,developer,True,2026-06-22,30,111,2835,,0,True
 docs/documentation/documentation_inventory_contract.md,Documentation Inventory Contract,Documentation Inventory Contract,,,,,,,38,772,,0,False
 docs/documentation/documentation_review_gate_contract.md,Documentation Review Gate Contract,Documentation Review Gate Contract,,,,,,,29,672,,0,False
 docs/documentation/production_claim_boundary_policy.md,Production Claim Boundary Policy,Production Claim Boundary Policy,,,,,,,25,828,,0,False
 docs/documentation/release_notes_discipline_contract.md,Release Notes Discipline Contract,Release Notes Discipline Contract,,,,,,,34,671,,0,False
-docs/documentation/stale_documentation_register.md,Stale Documentation Register,Stale Documentation Register,active,documentation-governance,developer,False,2026-06-22,30,45,1972,,0,True
+docs/documentation/stale_documentation_register.md,Stale Documentation Register,Stale Documentation Register,active,documentation-governance,developer,False,2026-06-22,30,44,1971,,0,True
 docs/documentation/stale_documentation_review_register.md,Stale Documentation Review Register,Stale Documentation Review Register,,,,,,,26,622,,0,False
 docs/documentation_intelligence_pipeline.md,Documentation Intelligence Pipeline,Documentation Intelligence Pipeline,,,,,,,130,4837,,0,False
-docs/engineering/README.md,Engineering Documentation Index,Engineering Documentation,active,engineering,developer,True,2026-06-22,45,22,597,,0,True
+docs/engineering/README.md,Engineering Documentation Index,Engineering Documentation,active,engineering,developer,True,2026-06-22,45,21,596,,0,True
 docs/engineering/branching.md,Branching and Protection Policy,Branching and Protection Policy,,,,,,,152,4435,production-ready,0,False
 docs/engineering/ci_workflows.md,CI/CD Workflows,CI/CD Workflows,,,,,,,156,6861,,0,False
 docs/engineering/coverage_debt.md,Coverage Debt Register,Coverage Debt Register,,,,,,,187,6943,,0,False
@@ -532,7 +532,7 @@ docs/frontend/production_protected_route_guard_contract.md,Production Protected 
 docs/frontend/production_teacher_admin_scope_contract.md,Production Teacher/Admin Scope Contract,Production Teacher/Admin Scope Contract,,,,,,,27,862,,0,False
 docs/frontend/spike_report_template.md,Frontend Spike Report Template,Frontend Spike Report Template,,,,,,,36,990,,0,False
 docs/frontend/task_metadata_template.md,Frontend Task Metadata Template,Frontend Task Metadata Template,,,,,,,21,1206,,0,False
-docs/generated/README.md,Generated Documentation Index,Generated Documentation,generated,documentation-governance,developer,False,2026-06-22,30,22,730,,0,True
+docs/generated/README.md,Generated Documentation Index,Generated Documentation,generated,documentation-governance,developer,False,2026-06-22,30,21,729,,0,True
 docs/generated/documentation_intelligence/README.md,Documentation Intelligence Artifacts,Documentation Intelligence Artifacts,,,,,,,12,482,,0,False
 docs/generated/documentation_intelligence/classifier_suggestions.md,Classifier Suggestions,Classifier Suggestions,,,,,,,126,7262,production ready,0,False
 docs/generated/documentation_intelligence/docs_gap_report.md,Documentation Gap Report,Documentation Gap Report,,,,,,,593,31276,,0,False
@@ -577,7 +577,7 @@ docs/observability/telemetry_privacy_retention_contract.md,Telemetry Privacy and
 docs/operations/CLUSTER_D_CLOSURE.md,Cluster D CI/Deployment/Environment Closure,Cluster D CI/Deployment/Environment Closure,,,,,,,43,1252,,0,False
 docs/operations/CLUSTER_E_CLOSURE.md,Cluster E Data Resilience Closure,Cluster E Data Resilience Closure,,,,,,,54,1636,,0,False
 docs/operations/CLUSTER_H_CLOSURE.md,Cluster H Staging and Beta Release Closure,Cluster H Staging and Beta Release Closure,,,,,,,210,7368,,0,False
-docs/operations/README.md,Operations Documentation Index,Operations Documentation,active,operations,operator,True,2026-06-22,60,22,615,,0,True
+docs/operations/README.md,Operations Documentation Index,Operations Documentation,active,operations,operator,True,2026-06-22,60,21,614,,0,True
 docs/operations/SYSTEM_STARTUP_GUIDE.md,EduBoost V2 End-to-End System Startup Guide,EduBoost V2 End-to-End System Startup Guide,,,,,,,276,7727,,3,False
 docs/operations/SYSTEM_STARTUP_REPORT.md,EduBoost V2 End-to-End System - Startup Report,EduBoost V2 End-to-End System - Startup Report,,,,,,,394,10873,,3,False
 docs/operations/alertmanager.md,Alertmanager Deployment Contract,Alertmanager Deployment Contract,,,,,,,141,3898,,0,False
@@ -735,7 +735,7 @@ docs/popia_erasure_cascade_matrix.md,POPIA Erasure Cascade Matrix,POPIA Erasure 
 docs/popia_export_data_inventory.md,POPIA Export Data Inventory,POPIA Export Data Inventory,,,,,,,270,11969,,0,False
 docs/pr/README.md,Archived documentation redirect,Archived documentation redirect,archived,documentation-governance,reviewer,False,2026-06-22,180,25,715,,0,True
 docs/privacy/information_officer.md,Information Officer Contact,Information Officer Contact,,,,,,,79,3347,,0,False
-docs/product/README.md,Product Documentation Index,Product Documentation,active,product,product,True,2026-06-22,60,22,724,,0,True
+docs/product/README.md,Product Documentation Index,Product Documentation,active,product,product,True,2026-06-22,60,21,723,,0,True
 docs/product/ai_transparency_faq.md,AI Transparency FAQ — EduBoost,AI Transparency FAQ — EduBoost,,,,,,,156,4511,,2,False
 docs/product/differentiation_strategy.md,Future differentiation strategy,Future differentiation strategy,,,,,,,22,773,,0,False
 docs/product/faq.md,Frequently Asked Questions — EduBoost,Frequently Asked Questions — EduBoost,,,,,,,147,3864,,0,False
@@ -902,7 +902,7 @@ docs/release/consent_runtime_repair_slice_002.md,Consent Runtime Repair Slice 00
 docs/release/consent_service_compatibility_contract.md,Consent Service Compatibility Contract,Consent Service Compatibility Contract,,,,,,,35,1416,,0,False
 docs/release/content_factory_refreshed_status.md,Content Factory Refreshed Status,Content Factory Refreshed Status,,,,,,,50,4490,,0,False
 docs/release/content_readiness_status.md,Content Readiness Status,Content Readiness Status,,,,,,,27,1387,,0,False
-docs/release/current/README.md,Current Release Documentation Index,Current Release Documentation,active,release-management,reviewer,True,2026-06-22,14,22,763,,0,True
+docs/release/current/README.md,Current Release Documentation Index,Current Release Documentation,active,release-management,reviewer,True,2026-06-22,14,21,762,,0,True
 docs/release/db_backup_restore_rollback_evidence_status.md,DB Backup / Restore / Rollback Evidence Status,DB Backup / Restore / Rollback Evidence Status,,,,,,,54,1349,,0,False
 docs/release/db_live_only_table_ownership_status.md,DB Live-Only Table Ownership Status,DB Live-Only Table Ownership Status,,,,,,,31,1468,,0,False
 docs/release/db_migration_seed_repeatability_status.md,DB Migration + Seed Repeatability Status,DB Migration + Seed Repeatability Status,,,,,,,69,2114,,0,False
@@ -1336,7 +1336,7 @@ docs/secrets.md,Secrets Management (starter guidance),Secrets Management (starte
 docs/security/PHASE2_AUTHORIZATION_CLOSURE.md,Phase 2 Authorization Closure Report,Phase 2 Authorization Closure Report,,,,,,,63,2133,,0,False
 docs/security/POPIA_CONSENT_AUDIT_BASELINE.md,POPIA Consent and Audit Baseline,POPIA Consent and Audit Baseline,,,,,,,100,3383,,0,False
 docs/security/POPIA_CONSENT_GATE_CLOSURE.md,POPIA Consent Gate Closure Report,POPIA Consent Gate Closure Report,,,,,,,81,2510,,0,False
-docs/security/README.md,Security Documentation Index,Security Documentation,active,security,security,True,2026-06-22,45,22,683,,0,True
+docs/security/README.md,Security Documentation Index,Security Documentation,active,security,security,True,2026-06-22,45,21,682,,0,True
 docs/security/active_consent_route_order.md,Active Consent Route Order,Active Consent Route Order,,,,,,,25,467,,0,False
 docs/security/active_consent_route_sources.md,Active Consent Route Sources,Active Consent Route Sources,,,,,,,26,511,,0,False
 docs/security/assessment_attempt_authorization_wiring.md,Assessment Attempt Authorization Wiring,Assessment Attempt Authorization Wiring,,,,,,,27,699,,0,False

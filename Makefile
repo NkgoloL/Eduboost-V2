@@ -2804,12 +2804,12 @@ backend-implementation-3351-3390-full-check: jwt-secret-rotation-status jwt-secr
 	python3 -m ruff check scripts/jwt_secret_rotation_evidence.py scripts/patch_jwt_secret_rotation_registry.py scripts/check_jwt_secret_rotation_evidence.py tests/unit/test_jwt_secret_rotation_evidence.py --select F821,F401,F811,E402
 
 # BEGIN EDUBOOST DOCS HOUSEKEEPING TARGETS
-.PHONY: docs-housekeeping-check docs-inventory docs-metadata-check docs-source-of-truth-check docs-links-check docs-claim-discipline-check
+.PHONY: docs-housekeeping-check docs-housekeeping-inventory docs-metadata-check docs-source-of-truth-check docs-links-check docs-claim-discipline-check
 
-docs-housekeeping-check: docs-source-of-truth-check docs-metadata-check docs-claim-discipline-check docs-links-check
+docs-housekeeping-check: docs-housekeeping-inventory docs-source-of-truth-check docs-metadata-check docs-claim-discipline-check docs-links-check
 	$(PYTHON) scripts/maintenance/audit_documentation_inventory.py --root . --out-json docs/generated/documentation_inventory.json --out-csv docs/generated/documentation_inventory.csv --out-findings docs/generated/documentation_findings.csv
 
-docs-inventory:
+docs-housekeeping-inventory:
 	$(PYTHON) scripts/maintenance/audit_documentation_inventory.py --root . --out-json docs/generated/documentation_inventory.json --out-csv docs/generated/documentation_inventory.csv --out-findings docs/generated/documentation_findings.csv
 
 docs-source-of-truth-check:
