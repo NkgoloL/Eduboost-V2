@@ -1,0 +1,197 @@
+{
+  "run_id": "20260622T193052Z",
+  "generated_at": "2026-06-22T19:30:52.462776+00:00",
+  "mode": "apply",
+  "repository": "/home/nkgolol/Dev/SandBox/Eduboost-V2",
+  "notes": [
+    "No documents are deleted by this script.",
+    "docs/release-evidence is intentionally left in place because Phase 02R evidence automation currently depends on stable paths.",
+    "Redirect stubs are not source-of-truth documents."
+  ],
+  "actions": [
+    {
+      "type": "directory",
+      "original_path": "docs/documentation/migration_manifests",
+      "new_path": "docs/documentation/migration_manifests",
+      "reason": "Ensure canonical directory exists",
+      "action": "mkdir",
+      "redirect_stub": false
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/product",
+      "new_path": "docs/product",
+      "reason": "Ensure canonical directory exists",
+      "action": "mkdir",
+      "redirect_stub": false
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/architecture",
+      "new_path": "docs/architecture",
+      "reason": "Ensure canonical directory exists",
+      "action": "mkdir",
+      "redirect_stub": false
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/engineering",
+      "new_path": "docs/engineering",
+      "reason": "Ensure canonical directory exists",
+      "action": "mkdir",
+      "redirect_stub": false
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/api",
+      "new_path": "docs/api",
+      "reason": "Ensure canonical directory exists",
+      "action": "mkdir",
+      "redirect_stub": false
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/compliance",
+      "new_path": "docs/compliance",
+      "reason": "Ensure canonical directory exists",
+      "action": "mkdir",
+      "redirect_stub": false
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/security",
+      "new_path": "docs/security",
+      "reason": "Ensure canonical directory exists",
+      "action": "mkdir",
+      "redirect_stub": false
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/operations",
+      "new_path": "docs/operations",
+      "reason": "Ensure canonical directory exists",
+      "action": "mkdir",
+      "redirect_stub": false
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/release/current",
+      "new_path": "docs/release/current",
+      "reason": "Ensure canonical directory exists",
+      "action": "mkdir",
+      "redirect_stub": false
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/generated",
+      "new_path": "docs/generated",
+      "reason": "Ensure canonical directory exists",
+      "action": "mkdir",
+      "redirect_stub": false
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/archive",
+      "new_path": "docs/archive",
+      "reason": "Ensure canonical directory exists",
+      "action": "mkdir",
+      "redirect_stub": false
+    },
+    {
+      "type": "directory",
+      "original_path": "artifacts/evidence",
+      "new_path": "artifacts/evidence",
+      "reason": "Ensure canonical directory exists",
+      "action": "mkdir",
+      "redirect_stub": false
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/DOC",
+      "new_path": "docs/archive/legacy-doc-framework/20260622T193052Z/DOC",
+      "reason": "Formal DOC framework archived; canonical docs now live under docs/<topic>/ and docs/documentation/source_of_truth.yml.",
+      "action": "move",
+      "redirect_stub": true
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/api/_build",
+      "new_path": "docs/generated/api-doc-builds/20260622T193052Z/_build",
+      "reason": "Generated Sphinx/API build output moved out of active API docs.",
+      "action": "move",
+      "redirect_stub": true
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/api/build",
+      "new_path": "docs/generated/api-doc-builds/20260622T193052Z/build",
+      "reason": "Generated Sphinx/API build output moved out of active API docs.",
+      "action": "move",
+      "redirect_stub": true
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/release/superseded",
+      "new_path": "docs/archive/release/superseded/20260622T193052Z",
+      "reason": "Superseded release documents archived away from active release surface.",
+      "action": "move",
+      "redirect_stub": true
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/todos",
+      "new_path": "docs/archive/roadmaps-or-todos/20260622T193052Z/todos",
+      "reason": "Legacy TODO documents archived pending merge into canonical roadmap/backlog.",
+      "action": "move",
+      "redirect_stub": true
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/patches",
+      "new_path": "docs/archive/patches/20260622T193052Z/patches",
+      "reason": "Patch notes archived after application.",
+      "action": "move",
+      "redirect_stub": true
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/input",
+      "new_path": "docs/archive/imported-inputs/20260622T193052Z/input",
+      "reason": "Imported input documents archived and removed from active source-of-truth surface.",
+      "action": "move",
+      "redirect_stub": true
+    },
+    {
+      "type": "directory",
+      "original_path": "docs/pr",
+      "new_path": "docs/archive/pr-notes/20260622T193052Z/pr",
+      "reason": "PR notes archived as historical process records.",
+      "action": "move",
+      "redirect_stub": true
+    },
+    {
+      "type": "file",
+      "original_path": "docs/docs_inventory.md",
+      "new_path": "docs/generated/legacy-inventories/20260622T193052Z/docs_inventory.md",
+      "reason": "Legacy generated inventory moved to generated documentation area.",
+      "action": "move",
+      "redirect_stub": true
+    },
+    {
+      "type": "file",
+      "original_path": "docs/release/audit_callsite_inventory.md",
+      "new_path": "docs/generated/release-inventories/20260622T193052Z/audit_callsite_inventory.md",
+      "reason": "Generated release inventory moved to generated documentation area.",
+      "action": "move",
+      "redirect_stub": true
+    },
+    {
+      "type": "file",
+      "original_path": "docs/release/consent_callsite_inventory.md",
+      "new_path": "docs/generated/release-inventories/20260622T193052Z/consent_callsite_inventory.md",
+      "reason": "Generated release inventory moved to generated documentation area.",
+      "action": "move",
+      "redirect_stub": true
+    }
+  ]
+}
