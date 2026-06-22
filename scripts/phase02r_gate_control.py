@@ -121,6 +121,17 @@ def _validate_plan_current_state(authorised_gate: str, approved_gate: str, error
     expected_status = f"Gate {approved_gate} verified complete; Gate {authorised_gate} authorised"
     if approved_gate != "2R.0" and expected_status not in plan:
         errors.append(f"execution plan is missing current gate status phrase: {expected_status}")
+    for gate in GATE_ORDER:
+        auth_phrase = f"**Execution authorisation:** Gate {gate} only"
+        if gate != authorised_gate and auth_phrase in plan:
+            errors.append(f"execution plan contains obsolete execution authorisation statement: {auth_phrase}")
+    for prior_gate, next_gate in zip(GATE_ORDER, GATE_ORDER[1:]):
+        status_phrase = f"Gate {prior_gate} verified complete; Gate {next_gate} authorised"
+        if (prior_gate, next_gate) != (approved_gate, authorised_gate) and status_phrase in plan:
+            errors.append(f"execution plan contains obsolete gate status phrase: {status_phrase}")
+    blocked_phrase = f"Gate {authorised_gate} remains blocked"
+    if blocked_phrase in plan:
+        errors.append(f"execution plan contradicts authorised gate with blocked wording: {blocked_phrase}")
     if authorised_gate != "2R.1":
         stale_phrases = (
             "Gate 2R.0 has passed and authorises Gate 2R.1 only",

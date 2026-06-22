@@ -2,8 +2,8 @@
 
 **Document version:** 1.5
 **Plan date:** 2026-06-16
-**Status:** Gate 2R.3 verified complete; Gate 2R.4 authorised
-**Execution authorisation:** Gate 2R.4 only
+**Status:** Gate 2R.4 verified complete; Gate 2R.5 authorised
+**Execution authorisation:** Gate 2R.5 only
 **Phase:** 02R
 **Programme position:** Mandatory foundation reset before Phases 8–13
 **Sprint codename / documentation namespace:** `atlas`
@@ -45,10 +45,10 @@
 PHASE_02R_START_APPROVED=true
 ```
 
-> **Control statement:** Gate 2R.3 has been verified complete under the
-> disclosed self-review exception. Gate 2R.4 is authorised for controlled
-> execution only. Gate 2R.5 and every later gate remain blocked until Gate
-> 2R.4 has passing evidence, approvals, and a separate immutable transition
+> **Control statement:** Gate 2R.4 has been verified complete under the
+> disclosed self-review exception. Gate 2R.5 is authorised for controlled
+> execution only. Gate 2R.6 and every later gate remain blocked until Gate
+> 2R.5 has passing evidence, approvals, and a separate immutable transition
 > commit.
 
 > **Current implementation boundary:** Gate 2R.1 authority and rights records
@@ -2160,7 +2160,7 @@ PHASE_02R_START_APPROVED=true
 | Gate 2R.1 premature closure claim | Superseded / invalid | `docs/release-evidence/atlas/phase-02r/gate-2r1/superseded/2026-06-16-premature-transition/` | No authority |
 | Gate 2R.1 current state | In Progress | This v1.5 amendment and implementation patch | Gate 2R.2 remains blocked |
 
-**Current decision:** Gate 2R.3 is Verified Complete. Gate 2R.4 is Authorised. `PHASE_02R_START_APPROVED` remains `true` because Phase 2R execution has started, and the current gate control authorises Gate 2R.4 only.
+**Current decision:** Gate 2R.4 is Verified Complete. Gate 2R.5 is Authorised. `PHASE_02R_START_APPROVED` remains `true` because Phase 2R execution has started, and the current gate control authorises Gate 2R.5 only.
 
 ---
 
