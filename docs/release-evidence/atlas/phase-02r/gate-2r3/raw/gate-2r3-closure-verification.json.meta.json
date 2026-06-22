@@ -1,15 +1,12 @@
 {
   "command": [
     ".venv/bin/python",
-    "scripts/verify_phase02r_gate2r2_to_2r8.py",
-    "--gate",
-    "2R.3",
-    "--mode",
-    "closure",
+    "scripts/verify_phase02r_gate2r3.py",
+    "--include-real-source",
     "--json"
   ],
-  "duration_seconds": 0,
-  "exit_code": 1,
-  "finished_at": "2026-06-22T10:13:49Z",
-  "started_at": "2026-06-22T10:13:49Z"
+  "duration_seconds": 1,
+  "exit_code": 0,
+  "finished_at": "2026-06-22T10:23:23Z",
+  "started_at": "2026-06-22T10:23:22Z"
 }
