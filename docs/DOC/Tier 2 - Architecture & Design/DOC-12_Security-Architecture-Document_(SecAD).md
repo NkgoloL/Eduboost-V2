@@ -1,187 +1,90 @@
 # Security Architecture Document (SecAD)
-**Document ID:** DBE-SecAD-012  
-**Version:** 1.0.0  
-**Date:** 2026-04-29  
-**Classification:** RESTRICTED — Security Sensitive
 
----
+| Field | Value |
+|---|---|
+| Document ID | EDB-SECAD-012 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-## 1. Security Architecture Overview
+## Authoritative project baseline
 
-The DBE AI Expert System employs a **defence-in-depth** security model with five concentric security layers:
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
-```
-Layer 5 (Outermost): Network Perimeter (VNet, NSG, TLS)
-Layer 4:             API Gateway (APIM JWT, Rate Limiting, CORS)
-Layer 3:             Application (FastAPI Auth Middleware, Input Validation)
-Layer 2:             Data (Gremlin Parameterisation, Cosmos Encryption, Key Vault)
-Layer 1 (Innermost): Execution (Non-root containers, ReadOnlyRootFS, Pod Security)
-```
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
----
+### Claim discipline
 
-## 2. Threat Model Summary
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
-Full threat model in `docs/security/TMD.md`. Key identified threats:
+## Security model
 
-| Threat | Category | STRIDE | Current Mitigation | Status |
-|--------|----------|--------|--------------------|--------|
-| Gremlin query injection | Tampering | T | Parameterised bindings (ADR-004) | ✅ Mitigated |
-| Unauthenticated API access | Spoofing | S | APIM JWT + FastAPI middleware | ⚠️ Partial (FastAPI auth pending) |
-| Credential leakage | Info Disclosure | I | Key Vault, gitignore | ✅ Mitigated |
-| DoS via query flooding | Denial of Service | D | APIM rate limiting (1000/60s) | ✅ Mitigated |
-| Privilege escalation in pod | Elevation | E | Non-root, readOnlyRootFS | ✅ Mitigated |
-| Data exfiltration via logs | Info Disclosure | I | PII scrubbing in log pipeline | ⚠️ Pending |
+EduBoost V2 uses defence in depth across application, data, infrastructure and operations controls.
 
----
+| Layer | Controls |
+|---|---|
+| Identity | JWT access/refresh tokens, token claims, Redis-backed revocation and session endpoints. |
+| Authorisation | Role dependencies, admin route protection and object-level learner/guardian checks. |
+| Route safety | Pydantic validation, rate limiting and central exception handlers. |
+| Browser/API boundary | CORS allowlist and security headers middleware. |
+| Secrets | Production placeholder-secret rejection and optional Azure Key Vault refresh. |
+| Data protection | Encryption configuration, POPIA workflows, audit events and erasure controls. |
+| Operations | Metrics access restrictions, structured logs, dependency/security workflows and incident process. |
 
-## 3. Authentication & Authorisation Architecture
+## Security headers
 
-### 3.1 APIM Layer (External Boundary)
+The middleware stack includes security headers for content security policy, frame denial, content sniffing prevention, referrer policy, permissions policy and production HSTS where configured.
 
-```xml
-<validate-jwt header-name="Authorization" ...>
-    <openid-config url="https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration" />
-    <required-claims>
-        <claim name="aud"><value>{{client-id}}</value></claim>
-    </required-claims>
-</validate-jwt>
-```
+## Admin surfaces
 
-- Token issuer: Azure Active Directory
-- Required claim: `aud` must match the registered application client ID (stored in Key Vault Named Value)
-- Invalid tokens: HTTP 401 returned before request reaches AKS
+Admin-only routes include Content Factory, ETL, AI operations, curriculum expansion, consent renewal and IRT quality. These require explicit admin dependencies and must not be exposed to learners/guardians.
 
-### 3.2 FastAPI Layer (Internal Defence)
+## Security architecture exclusions
 
-**Required implementation (Phase 3):**
-```python
-from fastapi.security import OAuth2PasswordBearer
-from fastapi import Depends, HTTPException, status
+Stale gateway-centric controls from the previous docs are not the canonical security boundary. Any future API gateway must be documented as an infrastructure layer around the FastAPI V2 runtime, not a replacement for application-level authentication and authorisation.
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+## Source-of-truth references
 
-async def verify_token(token: str = Depends(oauth2_scheme)):
-    try:
-        payload = jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=[settings.JWT_ALGORITHM])
-        return payload
-    except JWTError:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
 
-@app.post("/ask", dependencies=[Depends(verify_token)])
-async def ask_agent(request: QueryRequest): ...
-```
+## Standard verification gate
 
----
+Run the closest applicable subset before accepting a document-controlled change:
 
-## 4. Data Security
-
-### 4.1 Gremlin Injection Prevention
-
-**Vulnerable pattern (prohibited):**
-```python
-query = f"g.addV('Document').property('id', '{doc_id}')"  # INJECTION RISK
-```
-
-**Secure pattern (required):**
-```python
-query = "g.addV('Document').property('id', id_val)"
-self._submit(query, {"id_val": doc_id})  # Binding — never interpolated
+```bash
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
 ```
 
-### 4.2 Secrets Management Architecture
-
-```
-┌────────────────────────────────────┐
-│           Azure Key Vault          │
-│  cosmos-endpoint   cosmos-key      │
-│  azure-ml-endpoint azure-ml-key    │
-│  storage-connection jwt-secret     │
-└──────────────┬─────────────────────┘
-               │ CSI Driver
-               ▼
-┌────────────────────────────────────┐
-│    AKS Pod (SecretProviderClass)   │
-│  Mounts secrets as env vars        │
-│  No secrets in container image     │
-│  No secrets in Helm values         │
-└────────────────────────────────────┘
-```
-
-### 4.3 Encryption Standards
-
-| Data State | Mechanism | Standard |
-|------------|-----------|----------|
-| At rest (Cosmos DB) | Azure-managed keys | AES-256 |
-| At rest (Blob Storage) | Azure-managed keys | AES-256 |
-| In transit (all) | TLS 1.2 minimum | TLS 1.2+ |
-| In transit (internal AKS) | mTLS (future: Istio) | TLS 1.3 |
-
----
-
-## 5. Network Security Architecture
-
-```
-Internet ──► APIM (public IP) ──► VNet Peering ──► AKS (private)
-                                                     │
-NSG Rules:                                           ▼
-  Inbound 443: Allow from *                     Cosmos DB (private endpoint)
-  Inbound 22:  DENY from *                      Blob Storage (private endpoint)
-  Inbound 3389: DENY from *                     Key Vault (private endpoint)
-```
-
-**NetworkPolicy (Kubernetes):**
-- Ingress: Only from APIM subnet CIDR
-- Egress: Only to Cosmos DB, Blob Storage, Azure ML, Key Vault endpoints
-
----
-
-## 6. Security Headers
-
-Applied by APIM `policy.xml`:
-
-| Header | Value | Purpose |
-|--------|-------|---------|
-| `X-Content-Type-Options` | `nosniff` | Prevent MIME sniffing |
-| `X-Frame-Options` | `DENY` | Clickjacking prevention |
-| `X-XSS-Protection` | `1; mode=block` | Legacy XSS filter |
-| `Strict-Transport-Security` | `max-age=31536000; includeSubDomains` | HSTS |
-| `Content-Security-Policy` | `default-src 'self'` | CSP |
-| `Cache-Control` | `no-cache, max-age=3600` | Cache control |
-
----
-
-## 7. Container Security Baseline
-
-```yaml
-securityContext:
-  runAsNonRoot: true
-  runAsUser: 1000
-  fsGroup: 1000
-  allowPrivilegeEscalation: false
-  readOnlyRootFilesystem: true
-  capabilities:
-    drop: [ALL]
-```
-
-Writable paths: `/tmp` only (tmpfs emptyDir volume mount).
-
----
-
-## 8. Compliance Mapping (ISO 27001 Annex A)
-
-| Control | Annex A Ref | Implementation |
-|---------|------------|----------------|
-| Access Control | A.9 | APIM JWT + AAD |
-| Cryptography | A.10 | AES-256 at rest, TLS in transit |
-| Physical Security | A.11 | Azure datacenter (out of scope) |
-| Operations Security | A.12 | Azure Monitor + alert rules |
-| Communications Security | A.13 | TLS, VNet, NSG, Private Endpoints |
-| System Acquisition | A.14 | Parameterised queries, input validation |
-| Supplier Relationships | A.15 | Microsoft Azure BAA |
-| Incident Management | A.16 | IRP document |
-| Audit Logging | A.12.4 | APIM EventHub, App Insights |
-
----
-
-*End of SecAD — DBE-SecAD-012 v1.0.0*
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

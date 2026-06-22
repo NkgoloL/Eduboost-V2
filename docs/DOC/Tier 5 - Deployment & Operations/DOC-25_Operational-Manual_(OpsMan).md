@@ -1,198 +1,88 @@
-# Operations Manual (OpsMan)
-**Document ID:** DBE-OpsMan-025  
-**Version:** 1.0.0  
-**Date:** 2026-04-29  
-**Classification:** Internal — Controlled
+# Operational Manual (OpsMan)
 
----
+| Field | Value |
+|---|---|
+| Document ID | EDB-OPSMAN-025 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-## 1. System Overview
+## Authoritative project baseline
 
-| Component | URL / Resource | Health Indicator |
-|-----------|---------------|-----------------|
-| API (via APIM) | `https://api.dbe-expert.gov.za` | `GET /health → 200` |
-| AKS Cluster | `aks-dbe-expert-{env}` | Pod status `Running` |
-| Cosmos DB | `cosmos-dbe-expert-{env}` | Azure portal metrics |
-| Azure ML | `mlw-dbe-{env}` | Endpoint status `Healthy` |
-| Application Insights | `appi-dbe-{env}` | Live Metrics stream |
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
-**Operations Dashboard:** `https://portal.azure.com/#dashboard/dbe-expert-{env}`
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
----
+### Claim discipline
 
-## 2. Daily Health Checks
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
-Run each morning before business hours (08:00 SAST):
+## Routine operations
 
-```bash
-# 1. API health
-curl -sf https://api.dbe-expert.gov.za/health | grep healthy && echo "API OK"
+| Operation | Command / endpoint | Expected result |
+|---|---|---|
+| App health | `GET /health` | Status `ok` with version/environment. |
+| Deep readiness | `GET /ready` or `/api/v2/health/deep` | `ok` or controlled `degraded`; `error` blocks readiness. |
+| Metrics | `GET /metrics` | Prometheus metrics; production access restricted to private ranges. |
+| Worker | `arq app.modules.jobs.WorkerSettings` | Worker starts and registers configured functions. |
+| Migrations | `alembic upgrade head` | Database at expected head. |
+| Content registry | Content Factory scope/coverage APIs | Launch scope and targets readable. |
+| Frontend | `pnpm run build` / service health | UI builds and API URL is correct. |
 
-# 2. Pod status
-kubectl get pods -n default -l app.kubernetes.io/name=dbe-agent-orchestrator
+## Operational runbooks
 
-# 3. Check recent error rate in Application Insights (last 1 hour)
-az monitor app-insights query \
-  --app appi-dbe-prod \
-  --analytics-query "requests | where timestamp > ago(1h) | summarize errorRate = countif(resultCode >= 500) * 100.0 / count()"
+- Authentication incident: revoke token/session, inspect audit logs and rotate JWT secret if required.
+- POPIA request issue: inspect request status, audit events, learner/guardian relationship and service logs.
+- Content issue: quarantine artifact, remove from learner-facing routes and open review assignment.
+- DB migration issue: stop deployment, restore from backup if needed and capture failure evidence.
+- AI provider issue: check provider health, rate/budget counters and fallback behaviour.
 
-# 4. Check Cosmos DB throttling (429s)
-az cosmosdb show --name cosmos-dbe-expert-prod \
-  --resource-group rg-dbe-ai-expert-system \
-  --query "documentEndpoint"
-```
+## Logging and audit
 
----
+Operational logs should avoid learner/guardian personal data. Audit events should be sufficient to reconstruct protected actions without storing unnecessary sensitive content.
 
-## 3. Alert Triage Runbook
+## Source-of-truth references
 
-### ALERT: High 5xx Error Rate
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
 
-**Trigger:** HTTP 5xx rate > 1% over 5-minute window.  
-**Severity:** P1 — page on-call immediately.
+## Standard verification gate
 
-```bash
-# Step 1: Check pod health
-kubectl get pods -n default
-kubectl describe pod <pod-name>
-
-# Step 2: Inspect recent logs (last 50 lines per pod)
-kubectl logs -n default -l app.kubernetes.io/name=dbe-agent-orchestrator \
-  --tail=50 --all-containers=true
-
-# Step 3: Check Gremlin connectivity
-kubectl exec -it <pod-name> -- python -c "
-from src.ingestion.graph_manager import KnowledgeGraphManager
-import os
-m = KnowledgeGraphManager(
-  os.environ['COSMOS_GREMLIN_ENDPOINT'],
-  os.environ['COSMOS_KEY'],
-  'KnowledgeDB', 'ExpertGraph'
-)
-print('Gremlin OK' if m.health_check() else 'Gremlin FAILED')
-"
-
-# Step 4: If Gremlin unreachable — check Cosmos DB service health
-az cosmosdb check-name-exists --name cosmos-dbe-expert-prod
-
-# Step 5: If pod crashlooping — rollback
-helm rollback dbe-agent 0 --namespace default --wait
-```
-
----
-
-### ALERT: High p95 Latency
-
-**Trigger:** `/ask` p95 > 3 000 ms sustained for 10 minutes.  
-**Severity:** P2.
+Run the closest applicable subset before accepting a document-controlled change:
 
 ```bash
-# Step 1: Check pod CPU/memory
-kubectl top pods -n default
-
-# Step 2: Check HPA status
-kubectl get hpa -n default
-kubectl describe hpa dbe-agent-dbe-agent-orchestrator
-
-# Step 3: Force manual scale if HPA is slow
-kubectl scale deployment dbe-agent-dbe-agent-orchestrator \
-  --replicas=5 -n default
-
-# Step 4: Check Cosmos DB RU consumption
-# (View in Azure Portal → Cosmos DB → Metrics → Total Request Units)
-
-# Step 5: Flush Redis cache if applicable (Phase 4)
-# redis-cli FLUSHDB
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
 ```
 
----
-
-### ALERT: Feedback Blob Write Failures
-
-**Trigger:** Any `BlobServiceError` in Application Insights.  
-**Severity:** P2.
-
-```bash
-# Check storage account status
-az storage account show \
-  --name stdbeexpertprod \
-  --resource-group rg-dbe-ai-expert-system \
-  --query "statusOfPrimary"
-
-# Verify connection string secret in Key Vault
-az keyvault secret show \
-  --vault-name kv-dbe-prod \
-  --name storage-connection-string \
-  --query "value" -o tsv | grep -c "AccountKey"
-```
-
----
-
-### ALERT: Low Feedback Rating Average
-
-**Trigger:** Average `rating` < 3.0 over rolling 24 hours (Application Insights custom metric).  
-**Severity:** P3 — notify ML Engineer.
-
-**Action:** Review feedback blobs in storage container, identify query patterns, escalate to ML team for model inspection.
-
----
-
-## 4. Log Query Reference
-
-**Application Insights — Kusto queries:**
-
-```kusto
-// Recent errors with stack traces
-exceptions
-| where timestamp > ago(1h)
-| order by timestamp desc
-| project timestamp, type, outerMessage, details
-
-// Request latency distribution
-requests
-| where timestamp > ago(1h)
-| summarize
-    p50 = percentile(duration, 50),
-    p95 = percentile(duration, 95),
-    p99 = percentile(duration, 99)
-  by name
-
-// Failed feedback writes
-traces
-| where message contains "Failed to save feedback blob"
-| project timestamp, message, severityLevel
-
-// Gremlin retry events
-traces
-| where message contains "Gremlin" and severityLevel >= 2
-| order by timestamp desc
-```
-
----
-
-## 5. Routine Maintenance Tasks
-
-| Task | Frequency | Procedure |
-|------|-----------|-----------|
-| Rotate Cosmos DB keys | Quarterly | Update Key Vault secret; restart pods via rolling update |
-| Update base Docker image | Monthly | Rebuild on latest `python:3.10-slim`; push to ACR; deploy |
-| Review feedback blobs | Weekly | Spot-check 10 blobs for anomalies |
-| Review Azure Monitor alerts | Monthly | Tune thresholds based on observed baselines |
-| Cosmos DB index review | Quarterly | Run `az cosmosdb sql container show` and compare against DDD |
-| AKS node pool update | Per Azure advisory | `az aks nodepool upgrade` during maintenance window |
-
----
-
-## 6. Capacity Planning Indicators
-
-Scale up Cosmos DB throughput (increase RU/s) when:
-- Cosmos DB metric `NormalizedRUConsumption` consistently > 70%.
-- Gremlin p95 latency rising above 300 ms.
-
-Scale up AKS node pool when:
-- `kubectl top nodes` shows CPU > 80% on majority of nodes for > 30 minutes.
-- HPA is at `maxReplicas` and latency is degrading.
-
----
-
-*End of OpsMan — DBE-OpsMan-025 v1.0.0*
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

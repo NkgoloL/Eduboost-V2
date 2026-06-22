@@ -1,95 +1,87 @@
 # Compliance Matrix
-**Document ID:** DBE-CM-032  
-**Version:** 1.0.0  
-**Date:** 2026-04-29  
-**Classification:** Internal — Controlled
 
----
+| Field | Value |
+|---|---|
+| Document ID | EDB-COMP-032 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-## Instructions
+## Authoritative project baseline
 
-This matrix maps each compliance requirement to its implementing control, the responsible owner, the evidence artefact, and current verification status.
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
-Status codes: ✅ Compliant | ⚠️ Partial | ❌ Non-compliant | ⬜ Not yet assessed
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
----
+### Claim discipline
 
-## 1. POPIA Act No. 4 of 2013
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
-| POPIA Condition | Section | Control | Owner | Evidence | Status |
-|----------------|---------|---------|-------|----------|--------|
-| Accountability | S.8 | Information Officer appointed | DBE Legal | Appointment letter | ⬜ |
-| Lawful processing | S.9 | Queries used only for advisory | Lead Eng | Design docs, PIA | ✅ |
-| Minimality | S.10 | Only `query` and `user_id` collected | Lead Eng | ICD §3, DD §1 | ✅ |
-| Purpose specification | S.13 | Privacy notice to users | DBE Legal | Published notice | ⬜ |
-| Further processing | S.15 | Feedback only for model improvement | Lead Eng | `feedback_loop.py` | ✅ |
-| Information quality | S.16 | Document validation on ingestion | Lead Eng | `pipeline.py` | ✅ |
-| Openness | S.17 | Privacy policy published | DBE Legal | URL | ⬜ |
-| Security safeguards | S.19 | Encryption, PII scrubbing, RBAC | Security | SecAD, PIA §5 | ⚠️ |
-| Data subject access | S.23 | Access/erasure mechanism | Lead Eng | Endpoint / process | ❌ |
-| Transborder flows | S.72 | ML endpoint in SA or consent | Lead Eng | PIA §6 | ⚠️ |
+## POPIA alignment matrix
 
----
+| POPIA principle/control | EduBoost control | Evidence needed |
+|---|---|---|
+| Accountability | Named owners, audit events, release evidence and ATO. | Governance docs and audit logs. |
+| Processing limitation | Consent and learner-purpose scoping. | Consent tests and PIA. |
+| Purpose specification | Learning, progress, support and privacy workflows only. | Privacy notice and service docs. |
+| Further processing limitation | AI/content reuse controlled by policy and consent. | AI safety and data-governance evidence. |
+| Information quality | Parent correction route and content review. | Correction workflow tests. |
+| Openness | Privacy notice and parent portal. | Published notice and UI evidence. |
+| Security safeguards | JWT, secrets, encryption, object-level auth, rate limits and monitoring. | Security gate outputs. |
+| Data subject participation | Export, erasure, correction and restriction routes. | POPIA route tests and audit evidence. |
 
-## 2. ISO/IEC 27001:2022 Annex A
+## Engineering compliance matrix
 
-| Control Domain | Control | Annex A Ref | Implementation | Status |
-|----------------|---------|------------|----------------|--------|
-| Information security policies | Policy document | A.5.1 | SecPlan, CSD | ✅ |
-| Access control | AAD RBAC | A.5.15 | APIM JWT, RBAC | ⚠️ |
-| User authentication | JWT Bearer | A.5.17 | APIM policy | ✅ |
-| Cryptography | AES-256 at rest, TLS in transit | A.8.24 | SecAD §4.3 | ✅ |
-| Physical security | Azure datacentre | A.7.1 | Azure SLA | ✅ |
-| Operations security | Monitoring, patch mgmt | A.8.8 | OpsMan, CI/CD | ⚠️ |
-| Network security | VNet, NSG, TLS | A.8.20 | infrastructure/main.tf | ✅ |
-| Secure development | SAST, code review | A.8.28 | CSD, CI/CD | ⚠️ |
-| Vulnerability mgmt | Trivy, pip-audit, bandit | A.8.8 | CI/CD (Phase 3) | ⚠️ |
-| Incident management | IRP document | A.5.26 | IRP.md | ✅ |
-| Business continuity | DRP | A.5.29 | DRP.md | ✅ |
-| Compliance | Legal obligations tracking | A.5.36 | This matrix | ⚠️ |
-| Audit logging | APIM EventHub + AppInsights | A.8.15 | policy.xml | ⚠️ |
-| Supplier relationships | Microsoft Azure BAA | A.5.19 | Azure portal | ✅ |
+| Standard/control | Evidence |
+|---|---|
+| API contract control | OpenAPI and route inventory checks. |
+| DB change control | Alembic migrations and schema integrity. |
+| Release readiness | Full gate and ATO package. |
+| Secure SDLC | Code review checklist, tests, dependency/security workflows. |
+| Documentation integrity | Stale term scan and controlled docs update. |
 
----
+## Source-of-truth references
 
-## 3. Azure Government / South African Sovereignty
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
 
-| Requirement | Control | Status |
-|-------------|---------|--------|
-| Data residency in SA | Primary region: `southafricanorth` | ✅ |
-| Disaster recovery region | `eastus` (required consent for SA data) | ⚠️ |
-| Azure Government SLA | Standard_1 APIM in production | ⚠️ (Phase 5) |
-| Compliance certification | Azure compliance portal evidence | ⬜ |
+## Standard verification gate
 
----
+Run the closest applicable subset before accepting a document-controlled change:
 
-## 4. Summary Dashboard
+```bash
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
+```
 
-| Framework | Total Controls | Compliant | Partial | Non-compliant | Not Assessed |
-|-----------|---------------|-----------|---------|---------------|--------------|
-| POPIA | 10 | 4 | 3 | 1 | 2 |
-| ISO 27001 Annex A | 14 | 6 | 6 | 0 | 2 |
-| Azure Sovereignty | 4 | 2 | 1 | 0 | 1 |
-| **TOTAL** | **28** | **12** | **10** | **1** | **5** |
-
-**Overall compliance readiness: 43% fully compliant — ATO not yet achievable.**  
-Target: 100% Compliant or Partial with accepted residual risk before ATO.
-
----
-
-## 5. Compliance Remediation Roadmap
-
-| Priority | Item | Owner | Target |
-|----------|------|-------|--------|
-| P0 | Appoint Information Officer (POPIA S.8) | DBE Legal | Phase 5 |
-| P0 | Fix POPIA S.23 data subject access | Lead Eng | Phase 5 |
-| P1 | PII scrubbing middleware (POPIA S.19) | Lead Eng | Phase 3 |
-| P1 | FastAPI RBAC / OAuth2 middleware | Lead Eng | Phase 3 |
-| P1 | SAST + image scanning in CI/CD | DevOps | Phase 3 |
-| P2 | Publish privacy notice (POPIA S.17) | DBE Legal | Phase 5 |
-| P2 | ML endpoint region confirmation | Lead Eng | Phase 3 |
-| P3 | Azure compliance evidence collection | DevOps | Phase 5 |
-
----
-
-*End of Compliance Matrix — DBE-CM-032 v1.0.0*
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

@@ -1,124 +1,95 @@
 # Data Dictionary (DD)
-**Document ID:** DBE-DD-011  
-**Version:** 1.0.0  
-**Date:** 2026-04-29
 
----
+| Field | Value |
+|---|---|
+| Document ID | EDB-DD-011 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-## 1. Canonical Data Entities
+## Authoritative project baseline
 
-### 1.1 Document
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
-| Field | Type | Nullable | Description | Example |
-|-------|------|----------|-------------|---------|
-| `id` | string | No | Globally unique document identifier | `"policy_001"` |
-| `partitionKey` | string | No | Cosmos DB partition key, equals `category` | `"policy"` |
-| `source` | string | No | Origin blob name or file path | `"policy_framework_2024.json"` |
-| `title` | string | Yes | Human-readable document title | `"National Curriculum Framework"` |
-| `category` | string | No | Document classification | `"policy"` / `"infrastructure"` |
-| `content` | string | Yes | Full document body text | `"Guidelines for..."` |
-| `created_at` | ISO 8601 | Yes | Ingestion timestamp | `"2026-04-29T12:00:00Z"` |
-| `updated_at` | ISO 8601 | Yes | Last modification timestamp | `"2026-04-29T12:00:00Z"` |
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
-**Allowed `category` values:** `policy`, `infrastructure`, `curriculum`, `governance`, `default`
+### Claim discipline
 
----
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
-### 1.2 QueryRequest
+## Core data domains
 
-| Field | Type | Nullable | Constraints | Description |
-|-------|------|----------|-------------|-------------|
-| `query` | string | No | Non-empty, max 2000 chars | Natural-language policy question |
-| `user_id` | string | Yes | Default: `"anonymous"` | Caller identity for audit logging |
+| Domain | Description | Representative tables/classes |
+|---|---|---|
+| Guardian/account | Parent/guardian identity, auth and profile extensions. | `Guardian`, `SecureToken`, `OnboardingState`, `PrivacySettings` |
+| Learner | Child learner profile and guardian relationship. | `LearnerProfile` |
+| Consent/privacy | POPIA consent, renewal, erasure and data-rights actions. | `ParentalConsent`, `ConsentVersionHistory`, `ErasureRequest`, data-rights schemas |
+| Diagnostics/IRT | Item bank, sessions, responses, exposure and calibration. | `IRTItem`, `DiagnosticSession`, `CalibrationAudit`, `ItemExposure` |
+| Mastery/progress | Knowledge gaps, subject/topic mastery and snapshots. | `KnowledgeGap`, `SubjectMastery`, `TopicMastery`, `MasterySnapshot` |
+| Practice | Practice sessions, queue and spaced review. | `PracticeQueue`, `SpacedReviewSchedule`, `PracticeSession` |
+| Lessons | Generated/approved lesson records and feedback. | `Lesson`, `LessonFeedback` |
+| Content Factory | Scope, coverage, artifacts, provenance, validation, reviews and promotion. | `ContentScope`, `ContentGenerationRun`, `ContentGenerationArtifact`, `ContentArtifactReview` |
+| AI operations | Budget counters, usage reservations and usage events. | `AIBudgetCounter`, `AIUsageReservation`, `AIUsageEvent` |
+| Audit | Append-only event/audit logs. | `AuditEvent`, `AuditLog` |
 
----
+## Launch content registry fields
 
-### 1.3 AgentResponse
+| Field | Meaning |
+|---|---|
+| `scope_id` | Unique curriculum/content scope, e.g. `{launch_scope['scope_id']}`. |
+| `grade` | Numeric grade. |
+| `subject_code` / `subject` | Subject identity. |
+| `language` | Content language. |
+| `curriculum` | Curriculum authority, currently CAPS. |
+| `caps_refs` | CAPS references covered by the launch scope. |
+| `targets` | Required approved diagnostic items, lessons, assessment blueprints and study-plan templates. |
 
-| Field | Type | Nullable | Description |
-|-------|------|----------|-------------|
-| `response` | string | No | Synthesised policy recommendation |
-| `sources` | string[] | No | List of knowledge sources used |
-| `confidence` | float | No | Confidence score in range [0.0, 1.0] |
+## Data classification
 
----
+Learner identity, guardian identity, consent records, diagnostic responses, mastery gaps and parent reports are personal information and should be treated as POPIA-sensitive.
 
-### 1.4 FeedbackPayload
+## Source-of-truth references
 
-| Field | Type | Nullable | Constraints | Description |
-|-------|------|----------|-------------|-------------|
-| `query` | string | No | Non-empty | The original query submitted |
-| `response` | string | No | Non-empty | The response that was rated |
-| `rating` | integer | No | Range [1, 5] inclusive | User satisfaction rating |
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
 
----
+## Standard verification gate
 
-### 1.5 Graph Vertex — ExpertSystem
+Run the closest applicable subset before accepting a document-controlled change:
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `id` | string | Fixed value: `"dbe_root"` |
-| `name` | string | `"DBE AI Expert System"` |
-| `version` | string | Semantic version string |
+```bash
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
+```
 
-### 1.6 Graph Vertex — Category
-
-| Property | Type | Allowed Values |
-|----------|------|----------------|
-| `id` | string | `policy`, `infrastructure`, `curriculum`, `governance` |
-| `name` | string | Human-readable label |
-| `description` | string | Category purpose description |
-
-### 1.7 Graph Vertex — Document
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `id` | string | Matches Cosmos DB document `id` |
-| `name` | string | Document title |
-| `source` | string | Originating blob or file |
-| `category` | string | Parent category id |
-
-### 1.8 Graph Vertex — Agent
-
-| Property | Type | Allowed Values |
-|----------|------|----------------|
-| `id` | string | Unique agent identifier |
-| `name` | string | Human-readable name |
-| `type` | string | `AzureML`, `Baseline`, `LLM` |
-
-### 1.9 Graph Edge Properties (all edge types)
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `confidence` | float | Relationship confidence [0.0, 1.0] |
-| `timestamp` | ISO 8601 | Edge creation time |
-| `weight` | float | Traversal scoring weight |
-
----
-
-## 2. Environment Variable Glossary
-
-| Variable | Type | Required | Default | Description |
-|----------|------|----------|---------|-------------|
-| `AZURE_ML_ENDPOINT` | URL | No | None | Azure ML Online Endpoint URL |
-| `AZURE_ML_KEY` | string | No | None | Azure ML bearer token |
-| `COSMOS_ENDPOINT` | URL | Prod | None | Cosmos DB SQL API endpoint |
-| `COSMOS_KEY` | string | Prod | None | Cosmos DB primary key |
-| `COSMOS_GREMLIN_ENDPOINT` | URL | Prod | None | Gremlin WSS endpoint |
-| `COSMOS_GREMLIN_KEY` | string | Prod | None | Gremlin primary key |
-| `COSMOS_DATABASE_NAME` | string | No | `KnowledgeDB` | Database name |
-| `COSMOS_CONTAINER_NAME` | string | No | `IntelligenceStore` | Container name |
-| `AZURE_STORAGE_CONNECTION_STRING` | string | Prod | None | Blob storage connection |
-| `AZURE_STORAGE_CONTAINER_FEEDBACK` | string | No | `feedback` | Feedback blob container |
-| `FEEDBACK_RETRAINING_THRESHOLD` | integer | No | `10` | Low-rating trigger count |
-| `CACHE_TTL_SECONDS` | integer | No | `3600` | Redis cache TTL |
-| `PORT` | integer | No | `8000` | FastAPI listen port |
-| `ENVIRONMENT` | string | No | `development` | `development` / `staging` / `production` |
-| `LOG_LEVEL` | string | No | `INFO` | `DEBUG` / `INFO` / `WARNING` / `ERROR` |
-| `JWT_SECRET_KEY` | string | Prod | None | JWT signing secret |
-| `JWT_ALGORITHM` | string | No | `HS256` | JWT algorithm |
-| `KEY_VAULT_NAME` | string | Prod | None | Azure Key Vault resource name |
-
----
-
-*End of DD — DBE-DD-011 v1.0.0*
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

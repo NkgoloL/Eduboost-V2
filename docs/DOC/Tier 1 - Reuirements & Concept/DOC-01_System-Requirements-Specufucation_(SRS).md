@@ -1,341 +1,112 @@
 # System Requirements Specification (SRS)
-**Document ID:** DBE-SRS-001  
-**Version:** 1.0.0  
-**Date:** 2026-04-29  
-**Classification:** Internal — Controlled  
-**Status:** Baseline Draft
-
----
-
-## Document Control
-
-| Field | Detail |
-|-------|--------|
-| Prepared By | DBE AI Expert System Team |
-| Reviewed By | *Pending* |
-| Approved By | *Pending* |
-| Based On | ISO/IEC 29148:2018, MIL-STD-498 SRS DID |
-
-### Revision History
-
-| Version | Date | Author | Description |
-|---------|------|--------|-------------|
-| 0.1 | 2026-04-28 | System Agent | Initial draft from architecture review |
-| 1.0 | 2026-04-29 | System Agent | Baseline release |
-
----
-
-## Table of Contents
-
-1. [Introduction](#1-introduction)
-2. [Overall Description](#2-overall-description)
-3. [Functional Requirements](#3-functional-requirements)
-4. [Non-Functional Requirements](#4-non-functional-requirements)
-5. [Interface Requirements](#5-interface-requirements)
-6. [Data Requirements](#6-data-requirements)
-7. [Security Requirements](#7-security-requirements)
-8. [Compliance Requirements](#8-compliance-requirements)
-9. [Constraints](#9-constraints)
-10. [Requirements Traceability Matrix](#10-requirements-traceability-matrix)
-
----
-
-## 1. Introduction
-
-### 1.1 Purpose
-
-This System Requirements Specification (SRS) defines all functional, non-functional, interface, and constraint requirements for the **DBE AI Expert System** — an agentic AI platform designed to support the South African Department of Basic Education (DBE) in automated knowledge ingestion, expert policy reasoning, and orchestrated advisory services.
-
-### 1.2 Scope
-
-The DBE AI Expert System shall:
-- Ingest, classify, and store educational policy documents from multiple source formats.
-- Represent ingested knowledge as a queryable knowledge graph.
-- Invoke specialised AI expert models to generate policy recommendations.
-- Expose an authenticated REST API for downstream consumer applications.
-- Collect user feedback and trigger automated model retraining pipelines.
-- Operate within the Azure Government Cloud tenancy of the DBE.
-
-### 1.3 Definitions and Acronyms
-
-| Term | Definition |
-|------|-----------|
-| AKS | Azure Kubernetes Service |
-| APIM | Azure API Management |
-| ConOps | Concept of Operations |
-| Cosmos DB | Azure Cosmos DB (Gremlin and SQL APIs) |
-| DBE | Department of Basic Education (South Africa) |
-| Gremlin | Apache TinkerPop graph traversal language |
-| ICD | Interface Control Document |
-| LLM | Large Language Model |
-| ML | Machine Learning |
-| POPIA | Protection of Personal Information Act (South Africa) |
-| RTO | Recovery Time Objective |
-| RPO | Recovery Point Objective |
-| SLA | Service Level Agreement |
-| VNet | Azure Virtual Network |
-
-### 1.4 References
-
-| ID | Document |
-|----|---------|
-| REF-01 | `docs/design/SAD.md` — Software Architecture Document |
-| REF-02 | `docs/design/ICD.md` — Interface Control Document |
-| REF-03 | `docs/requirements/ConOps.md` — Concept of Operations |
-| REF-04 | `infrastructure/main.tf` — Azure Infrastructure Definition |
-| REF-05 | ISO/IEC 25010:2011 — Systems and Software Quality Models |
-| REF-06 | POPIA Act No. 4 of 2013 |
-
----
-
-## 2. Overall Description
-
-### 2.1 Product Perspective
-
-The DBE AI Expert System is a cloud-native, microservice-based AI advisory platform. It is not a standalone product — it integrates with:
-- Azure Blob Storage (document landing zone)
-- Azure Cosmos DB (knowledge graph and document store)
-- Azure ML Workspace (expert model hosting)
-- Azure API Management (external API gateway)
-- Azure Kubernetes Service (containerised workload execution)
-- Azure Monitor / Application Insights (observability)
-
-### 2.2 Product Functions (Summary)
-
-1. **Document Ingestion** — Automated extraction and normalisation of documents from Azure Blob Storage.
-2. **Knowledge Graph Management** — Schema-validated graph construction and traversal using Gremlin API.
-3. **Expert Model Inference** — Asynchronous invocation of specialised Azure ML endpoints for domain-specific recommendations.
-4. **Query Orchestration** — Context retrieval, expert model dispatch, and response synthesis via the `/ask` endpoint.
-5. **Feedback Collection** — User rating capture via `/feedback` endpoint with blob persistence.
-6. **Automated Retraining** — Feedback-triggered Azure ML retraining pipeline invocation.
-
-### 2.3 User Classes
-
-| Class | Description | Interaction Mode |
-|-------|-------------|-----------------|
-| Policy Analyst | DBE staff querying educational policies | REST API / Web UI |
-| System Administrator | Deploys, monitors, and maintains the platform | AKS / Azure Portal |
-| Data Engineer | Manages document ingestion and graph seeding | CLI / Pipeline |
-| ML Engineer | Maintains expert models and retraining pipelines | Azure ML Studio |
-| Auditor | Reviews compliance and access logs | Azure Monitor |
-
-### 2.4 Operating Environment
-
-- **Cloud:** Microsoft Azure (South Africa North preferred; East US failover)
-- **Runtime:** Python 3.10+, FastAPI, Kubernetes 1.27+
-- **Availability Target:** 99.9% monthly uptime for the `/ask` and `/feedback` endpoints
-- **Data Residency:** All PII-bearing data must remain within South African Azure regions
-
----
-
-## 3. Functional Requirements
-
-Requirements are identified as `FR-XXX`. Priority: **M** = Must, **S** = Should, **C** = Could.
-
-### 3.1 Document Ingestion
-
-| ID | Priority | Requirement |
-|----|----------|-------------|
-| FR-001 | M | The system shall ingest JSON-formatted documents from Azure Blob Storage containers. |
-| FR-002 | M | The system shall upsert ingested documents into Cosmos DB with a partition key derived from the `category` field. |
-| FR-003 | M | The system shall assign a unique `id` to each ingested document if none is present. |
-| FR-004 | S | The system shall support bulk ingestion of multiple documents in a single pipeline invocation. |
-| FR-005 | S | The system shall log ingestion success and failure events with document identifiers. |
-| FR-006 | C | The system should support PDF and plain-text document ingestion with automatic format detection. |
-
-### 3.2 Knowledge Graph
-
-| ID | Priority | Requirement |
-|----|----------|-------------|
-| FR-010 | M | The system shall maintain a schema-validated knowledge graph with vertex types: ExpertSystem, Category, Document, Agent. |
-| FR-011 | M | The system shall maintain edge types: manages, contains, references, triggers. |
-| FR-012 | M | The system shall reject vertex and edge creation requests that violate the schema definition. |
-| FR-013 | M | The system shall use parameterised Gremlin queries exclusively — f-string interpolation is prohibited. |
-| FR-014 | M | The system shall initialise the graph idempotently — repeated initialisation calls must not create duplicate vertices. |
-| FR-015 | S | The system shall support keyword-based document search across `name` and `content` vertex properties. |
-| FR-016 | S | The system shall support two-hop traversal to retrieve related categories for a given document. |
-| FR-017 | S | The system shall validate that a target Category vertex exists before creating a `contains` edge. |
 
-### 3.3 Expert Model Inference
-
-| ID | Priority | Requirement |
-|----|----------|-------------|
-| FR-020 | M | The system shall invoke the Azure ML Online Endpoint asynchronously when `AZURE_ML_ENDPOINT` and `AZURE_ML_KEY` are configured. |
-| FR-021 | M | The system shall fall back to the `BaselinePolicyModel` when Azure ML credentials are absent. |
-| FR-022 | M | The system shall return expert inference results within 15 seconds or surface a structured error response. |
-| FR-023 | S | The system shall log all expert model invocations with query hash, model version, and latency. |
-
-### 3.4 Query Orchestration (`/ask`)
-
-| ID | Priority | Requirement |
-|----|----------|-------------|
-| FR-030 | M | The system shall expose a `POST /ask` endpoint accepting `{"query": string, "user_id": string}`. |
-| FR-031 | M | The system shall retrieve relevant context from the knowledge graph before invoking the expert model. |
-| FR-032 | M | The system shall return a response conforming to `AgentResponse` schema: `{response, sources, confidence}`. |
-| FR-033 | M | The system shall return HTTP 422 for malformed request bodies. |
-| FR-034 | M | The system shall return HTTP 500 with a structured error body on internal failures. |
-| FR-035 | S | The system shall include a reasoning trace in the response when `debug=true` query parameter is supplied. |
-
-### 3.5 Feedback Collection
-
-| ID | Priority | Requirement |
-|----|----------|-------------|
-| FR-040 | M | The system shall expose a `POST /feedback` endpoint accepting `{"query", "response", "rating": 1–5}`. |
-| FR-041 | M | The system shall persist feedback as a JSON blob in Azure Blob Storage. |
-| FR-042 | M | The system shall trigger retraining consideration when `rating < 3`. |
-| FR-043 | S | The system shall trigger an Azure ML retraining pipeline after accumulating N low-rated feedbacks (configurable via `FEEDBACK_RETRAINING_THRESHOLD`). |
-
-### 3.6 System Health
-
-| ID | Priority | Requirement |
-|----|----------|-------------|
-| FR-050 | M | The system shall expose a `GET /health` endpoint returning `{"status": "healthy"}` with HTTP 200. |
-| FR-051 | M | The system shall expose a `GET /version` endpoint returning git SHA, build timestamp, and environment. |
-| FR-052 | S | The health endpoint shall include Gremlin and Cosmos connectivity status when `detailed=true` is supplied. |
-
----
-
-## 4. Non-Functional Requirements
-
-### 4.1 Performance
-
-| ID | Requirement |
-|----|-------------|
-| NFR-001 | The `/ask` endpoint shall respond within **2 seconds** at the 95th percentile under nominal load (≤ 50 concurrent users). |
-| NFR-002 | The `/feedback` endpoint shall respond within **500ms** at the 95th percentile. |
-| NFR-003 | Single Gremlin vertex retrieval shall complete within **100ms**. |
-| NFR-004 | Two-hop graph traversal shall complete within **500ms**. |
-| NFR-005 | Document ingestion throughput shall support a minimum of **100 documents per minute**. |
-
-### 4.2 Availability
-
-| ID | Requirement |
-|----|-------------|
-| NFR-010 | The system shall achieve **99.9% monthly uptime** for production API endpoints. |
-| NFR-011 | Planned maintenance windows shall not exceed **2 hours per month**. |
-| NFR-012 | The system shall recover from a single AKS node failure within **5 minutes** without operator intervention. |
-
-### 4.3 Scalability
-
-| ID | Requirement |
-|----|-------------|
-| NFR-020 | The system shall scale horizontally from 2 to 10 pod replicas via the Horizontal Pod Autoscaler at 70% CPU utilisation. |
-| NFR-021 | The knowledge graph shall support a minimum of **100,000 document vertices** without performance degradation beyond NFR-003/004. |
-
-### 4.4 Reliability
-
-| ID | Requirement |
-|----|-------------|
-| NFR-030 | All Gremlin queries shall implement retry logic with exponential backoff (max 3 attempts). |
-| NFR-031 | The system shall not lose feedback data once HTTP 200 has been returned to the caller. |
-| NFR-032 | The Gremlin client shall reconnect automatically following a network interruption. |
-
-### 4.5 Maintainability
-
-| ID | Requirement |
-|----|-------------|
-| NFR-040 | All public Python methods shall have Google-style docstrings. |
-| NFR-041 | Code coverage shall not fall below **80%** as measured by `pytest-cov`. |
-| NFR-042 | All linting checks (`ruff`, `bandit`) shall pass with zero errors in CI/CD. |
-
-### 4.6 Portability
-
-| ID | Requirement |
-|----|-------------|
-| NFR-050 | The application shall be containerised via Docker and deployable to any OCI-compliant Kubernetes cluster. |
-| NFR-051 | Environment configuration shall be entirely externalised via environment variables — no hardcoded credentials. |
-
----
-
-## 5. Interface Requirements
-
-### 5.1 External API Interfaces
-
-Refer to `docs/design/ICD.md` for complete contract definitions.
-
-| Interface | Protocol | Format | Auth |
-|-----------|----------|--------|------|
-| `/ask` (inbound) | HTTPS/REST | JSON | JWT Bearer via APIM |
-| `/feedback` (inbound) | HTTPS/REST | JSON | JWT Bearer via APIM |
-| `/health` (inbound) | HTTPS/REST | JSON | None |
-| Azure ML Endpoint (outbound) | HTTPS/REST | JSON | Bearer token |
-| Cosmos DB Gremlin (outbound) | WSS/WebSocket | GraphSON v2 | Primary key |
-| Azure Blob Storage (outbound) | HTTPS | Binary / JSON | Connection string |
-
-### 5.2 User Interfaces
-
-The system does not provide a direct user interface. Consumer applications integrate via the APIM gateway.
-
-### 5.3 Hardware Interfaces
-
-The system operates exclusively on cloud virtualised infrastructure. No physical hardware interfaces are defined.
-
----
-
-## 6. Data Requirements
-
-| ID | Requirement |
-|----|-------------|
-| DR-001 | All document data shall be stored in Azure Cosmos DB with partition key `/category`. |
-| DR-002 | Feedback data shall be persisted as JSON blobs with UUID-named files in the `feedback` container. |
-| DR-003 | The knowledge graph shall enforce the schema defined in `config/graph_schema.json`. |
-| DR-004 | All stored data shall be encrypted at rest using Azure-managed keys (AES-256). |
-| DR-005 | Feedback data shall be retained for a minimum of **90 days** as configured by `FEEDBACK_STORAGE_RETENTION_DAYS`. |
-
----
-
-## 7. Security Requirements
-
-| ID | Requirement |
-|----|-------------|
-| SR-001 | All inbound API calls shall be authenticated via JWT Bearer tokens validated by APIM. |
-| SR-002 | The FastAPI application shall implement OAuth2 Bearer authentication middleware as a secondary defence layer. |
-| SR-003 | All Gremlin queries shall use parameterised bindings — no string interpolation of user-supplied data. |
-| SR-004 | All credentials shall be stored in Azure Key Vault — never in code, environment files, or container images. |
-| SR-005 | TLS 1.2 minimum shall be enforced on all inbound and outbound connections. |
-| SR-006 | The AKS pod security context shall run as non-root (UID 1000) with `readOnlyRootFilesystem: true`. |
-| SR-007 | Security headers (X-Content-Type-Options, X-Frame-Options, HSTS, CSP) shall be injected by APIM. |
-
----
-
-## 8. Compliance Requirements
-
-| ID | Regulation | Requirement |
-|----|-----------|-------------|
-| CR-001 | POPIA Act No. 4 of 2013 | Personal information of learners and staff must not be logged, stored, or transmitted without explicit consent. |
-| CR-002 | POPIA | A Privacy Impact Assessment (PIA) shall be completed before production launch. |
-| CR-003 | NDP (National Development Plan) | The system shall support DBE strategic objectives for digital education transformation. |
-| CR-004 | ISO/IEC 27001 | The security controls shall align with ISO 27001 Annex A control categories. |
-| CR-005 | Azure Government SLA | The system shall operate exclusively within Azure regions compliant with South African data sovereignty requirements. |
-
----
-
-## 9. Constraints
-
-| ID | Constraint |
-|----|-----------|
-| CON-001 | The system must be implemented in Python 3.10+ and deployed on Azure. |
-| CON-002 | The knowledge graph must use Azure Cosmos DB Gremlin API — no alternative graph database is permitted. |
-| CON-003 | The APIM SKU must be `Developer_1` for development and `Standard_1` for production. |
-| CON-004 | The system must operate within the `rg-dbe-ai-expert-system` resource group naming convention. |
-| CON-005 | All infrastructure must be defined as code (Terraform) — manual portal provisioning is not permitted for production resources. |
-
----
-
-## 10. Requirements Traceability Matrix
-
-| Req ID | Description (summary) | Design Ref | Test Ref |
-|--------|----------------------|------------|----------|
-| FR-001 | Blob document ingestion | SDD §3.1, ICD §2.1 | STP TC-001 |
-| FR-010 | Schema-validated graph | SDD §3.2, DDD §2 | STP TC-010 |
-| FR-013 | Parameterised Gremlin | SecAD §4.1 | STP TC-013 |
-| FR-030 | `/ask` endpoint | ICD §3.1, SDD §3.4 | STP TC-030 |
-| FR-040 | `/feedback` endpoint | ICD §3.2, SDD §3.5 | STP TC-040 |
-| NFR-001 | 2s p95 latency | SDD §5, PBR | STP TC-100 |
-| NFR-010 | 99.9% availability | SAD §4, DRP | ATP AC-010 |
-| SR-003 | Parameterised queries | SecAD §4.1, TMD | STP TC-013 |
-| CR-001 | POPIA compliance | PIA, SecPlan | ATP AC-050 |
-
----
-
-*End of SRS — DBE-SRS-001 v1.0.0*
+| Field | Value |
+|---|---|
+| Document ID | EDB-SRS-001 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
+
+## Authoritative project baseline
+
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
+
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
+
+### Claim discipline
+
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
+
+## Purpose
+
+This SRS defines the required behaviour for EduBoost V2. The system is not a policy-query graph-search platform. It is a modular learning platform for South African learners, guardians, administrators and future educator reviewers.
+
+## Functional requirements
+
+| ID | Requirement | Priority | Implementation anchor |
+|---|---|---|---|
+| FR-01 | Register, authenticate, refresh, revoke, and inspect sessions for guardians and authorised users. | Must | `app/api_v2_routers/auth.py`, `app/services/auth_application_service.py` |
+| FR-02 | Create and manage learner profiles with guardian ownership and object-level access control. | Must | `app/api_v2_routers/learners.py`, `app/repositories/` |
+| FR-03 | Run diagnostic assessment sessions and persist responses, scores, mastery updates, and item exposure controls. | Must | `app/api_v2_routers/diagnostics.py`, `app/services/diagnostic*.py` |
+| FR-04 | Support IRT calibration and item-quality governance for adaptive diagnostics. | Must | `app/api_v2_routers/irt_quality.py`, `app/domain/irt_quality_schemas.py` |
+| FR-05 | Generate, retrieve, stream, complete, and sync CAPS-aligned lessons. | Must | `app/api_v2_routers/lessons.py`, `app/services/lesson_service_v2.py` |
+| FR-06 | Provide lesson-scoped AI tutor sessions with safety constraints. | Should | `app/api_v2_routers/tutor.py`, `app/services/learner_tutor.py`, `app/services/tutor_safety.py` |
+| FR-07 | Generate personalised study plans from mastery gaps and curriculum coverage. | Must | `app/api_v2_routers/study_plans.py`, `app/services/study_plan_service_v2.py` |
+| FR-08 | Track gamification XP, badges, leaderboard profile and achievement progress. | Should | `app/api_v2_routers/gamification.py`, `app/services/gamification_service_v2.py` |
+| FR-09 | Provide a parent/guardian dashboard with learner progress, access bundle exports, and erasure initiation. | Must | `app/api_v2_routers/parents.py` |
+| FR-10 | Manage POPIA consent, data export, erasure, correction, restriction, renewal and audit evidence. | Must | `app/api_v2_routers/popia.py`, `app/api_v2_routers/consent.py` |
+| FR-11 | Operate admin-only Content Factory, review, seed, staging and production-promotion controls. | Must | `app/api_v2_routers/content_factory.py`, `app/models/content_factory.py` |
+| FR-12 | Expose health, readiness, metrics and operational status endpoints. | Must | `app/api_v2.py`, `app/api_v2_routers/system.py` |
+
+## Non-functional requirements
+
+| ID | Requirement | Baseline control |
+|---|---|---|
+| NFR-01 | Security by default for protected routes. | JWT tokens, role dependencies, object-level authorisation and security headers middleware. |
+| NFR-02 | POPIA-aligned privacy controls. | Consent lifecycle, data-subject rights routes, audit events, retention/erasure workflow. |
+| NFR-03 | Reproducible database state. | Alembic migrations and schema integrity scripts. |
+| NFR-04 | Observable operations. | `/health`, `/ready`, `/metrics`, Prometheus, Alertmanager and structured logging. |
+| NFR-05 | Deterministic curriculum evidence. | `data/content_factory/scopes.json`, `coverage_targets.json`, generated item/lesson artifacts and release evidence. |
+| NFR-06 | Frontend build quality. | pnpm, TypeScript, Vitest, ESLint and environment validation. |
+| NFR-07 | AI safety and cost control. | LLM provider timeout/retry settings, tutor safety filters, AI budget counters and reservation APIs. |
+| NFR-08 | Claims backed by evidence. | Current-state docs, roadmap gates, release evidence, CI and verification scripts. |
+
+## Launch-scope requirements
+
+| ID | Requirement | Acceptance signal |
+|---|---|---|
+| LR-01 | Treat Grade 4 Mathematics English as the initial launch scope. | `data/content_factory/scopes.json` contains `grade4_mathematics_en`. |
+| LR-02 | Maintain coverage for CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3. | `coverage_targets.json` contains all three refs. |
+| LR-03 | Keep launch evidence bounded. | Documents must state that green launch evidence covers the slice only, not all grades/subjects. |
+
+## Out of scope for this project baseline
+
+- DBE policy-advisory workflows, `/ask` policy answers, graph-database, external ML retraining pipelines and gateway-first identity are not part of the supplied EduBoost V2 runtime.
+- Full Grade R-7 CAPS coverage is a roadmap target, not a completed launch claim.
+- Production-readiness claims require fresh release evidence.
+
+## Source-of-truth references
+
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
+
+## Standard verification gate
+
+Run the closest applicable subset before accepting a document-controlled change:
+
+```bash
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
+```
+
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

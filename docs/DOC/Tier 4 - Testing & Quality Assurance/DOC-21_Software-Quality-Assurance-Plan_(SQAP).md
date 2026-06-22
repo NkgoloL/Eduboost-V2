@@ -1,253 +1,84 @@
-# DOC-21: Software Quality Assurance Plan (SQAP)
-**MIL-STD-498**
+# Software Quality Assurance Plan (SQAP)
 
-## 1. Overview
-This Software Quality Assurance Plan (SQAP) defines the QA processes, standards, and metrics for ensuring EduBoost V2 meets quality requirements throughout development and deployment.
+| Field | Value |
+|---|---|
+| Document ID | EDB-SQAP-021 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-**Plan Status:** ✅ IMPLEMENTED AND ENFORCED
-**Adoption Date:** 2026-04-01
-**Compliance:** 100% (all developers trained, all PRs reviewed per CRS)
-**Enforcement Mechanism:** GitHub Actions CI/CD gates + code review requirements
+## Authoritative project baseline
 
-## 2. Quality Objectives
-1. **Reliability:** Zero downtime for core diagnostic workflow
-2. **Security:** No data breaches (POPIA compliant)
-3. **Performance:** <50ms p95 cache latency
-4. **Maintainability:** <3.5 average cyclomatic complexity
-5. **Usability:** 95%+ successful lesson completions
-6. **Compliance:** 100% CAPS curriculum alignment
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
-## 3. QA Organization
-```
-Quality Manager (reports to CTO)
-├── Test Lead
-│   ├── Unit Test Engineer
-│   ├── Integration Test Engineer
-│   └── E2E Test Engineer
-└── Performance & Security Engineer
-    ├── Load Test Engineer
-    └── Security Auditor
-```
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
-## 4. QA Standards & Procedures
+### Claim discipline
 
-### 4.1 Coding Standards
-- **Language:** Python 3.11+, TypeScript 5.4+
-- **Linters:** ruff, eslint (enforced in CI)
-- **Complexity:** Max cyclomatic complexity = 5
-- **Coverage:** Min 80% code coverage
-- **Documentation:** Docstrings on all public functions
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
-### 4.2 Testing Standards
-- **Unit Tests:** pytest (backend), vitest (frontend)
-- **Integration Tests:** Docker Compose + PostgreSQL fixtures
-- **E2E Tests:** Playwright with Chrome/Chromium
-- **Test Data:** 500 IRT items, 50 learner profiles
-- **Test Naming:** `test_<function>_<scenario>_<outcome>`
+## Quality objectives
 
-### 4.3 Security Standards
-- **SAST:** Bandit scan pre-commit
-- **DAST:** OWASP top 10 validation
-- **Dependency Scan:** pip-audit, npm audit weekly
-- **Secrets:** gitleaks on every commit
-- **Encryption:** AES-256 for PII at rest
+| Objective | Control |
+|---|---|
+| Maintain architecture integrity | Import-linter contracts and modular-monolith rules. |
+| Prevent API/client drift | Generated OpenAPI, route inventory and frontend API contract tests. |
+| Prevent schema drift | Alembic graph and schema integrity scripts. |
+| Protect children and guardians | POPIA tests, consent gates and object-level auth. |
+| Keep learning content trustworthy | Content Factory provenance, review and answer-key verification. |
+| Keep UI reliable | TypeScript, Vitest, accessibility and E2E checks. |
+| Keep release claims honest | Evidence bundle and ATO decision discipline. |
 
-### 4.4 Performance Standards
-- **API Latency:** p99 < 500ms
-- **Cache Hit:** p95 < 50ms
-- **LLM Cost:** < $0.01 per lesson
-- **Database:** Query p99 < 100ms
-- **Memory:** < 2GB per container
+## Review cadence
 
-## 5. Quality Metrics
+- Every PR: static checks, unit tests and docs impact assessment.
+- Every schema change: migration graph and rollback consideration.
+- Every route change: OpenAPI and frontend contract update.
+- Every content expansion: source evidence, review and staging/production gates.
+- Every release candidate: full ATO review and risk register update.
 
-### 5.1 Code Quality Metrics
-| Metric | Target | Current | Tracking |
-|--------|--------|---------|----------|
-| Code Coverage | ≥ 80% | 82% | Weekly |
-| Cyclomatic Complexity | ≤ 5 avg | 3.2 avg | Per commit |
-| Code Duplication | < 5% | 2% | Monthly |
-| Technical Debt Ratio | < 10% | 4% | Monthly |
+## Source-of-truth references
 
-### 5.2 Testing Metrics
-| Metric | Target | Current | Tracking |
-|--------|--------|---------|----------|
-| Unit Test Pass Rate | 100% | 99.2% | Per commit |
-| Integration Test Pass Rate | 100% | 100% | Per merge |
-| E2E Test Pass Rate | ≥ 95% | 100% | Weekly |
-| Test Execution Time | < 15m | 12.1m | Per commit |
-| Defect Detection Rate | > 90% | 94% | Monthly |
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
 
-### 5.3 Security Metrics
-| Metric | Target | Current | Tracking |
-|--------|--------|---------|----------|
-| CVE Issues | 0 (HIGH) | 0 | Weekly |
-| Secrets Detected | 0 | 0 | Per commit |
-| SAST Issues | 0 (MEDIUM) | 0 | Per commit |
-| POPIA Violations | 0 | 0 | Per deploy |
+## Standard verification gate
 
-### 5.4 Performance Metrics
-| Metric | Target | Current | Tracking |
-|--------|--------|---------|----------|
-| Cache Hit Latency p95 | < 50ms | 48ms | Continuous |
-| LLM Cost per Lesson | < $0.01 | $0.0095 | Daily |
-| API Availability | 99.9% | 100% | Continuous |
-| Error Rate | < 0.1% | 0.02% | Continuous |
+Run the closest applicable subset before accepting a document-controlled change:
 
-## 6. Quality Review Process
-
-### 6.1 Code Review Gates
-1. **Automated Checks:**
-   - gitleaks (no secrets)
-   - ruff/eslint (style)
-   - bandit (security)
-   - pytest coverage (≥80%)
-
-2. **Peer Review:**
-   - At least 1 approval required
-   - Review focus: security, performance, maintainability
-   - Discussion window: 24 hours
-
-3. **QA Sign-Off:**
-   - Tests pass in staging
-   - Performance benchmarks met
-   - No new HIGH/CRITICAL issues
-
-### 6.2 Release Quality Gate
-**Go/No-Go Checklist:**
-- [ ] 99%+ test pass rate
-- [ ] 82%+ code coverage
-- [ ] 0 CVEs (HIGH/CRITICAL)
-- [ ] 0 POPIA violations
-- [ ] Performance benchmarks met
-- [ ] E2E smoke test passed
-- [ ] Documentation updated
-
-## 7. Issue Management
-
-### 7.1 Defect Classification
-| Severity | Impact | Response | Resolution |
-|----------|--------|----------|-----------|
-| Critical | System down | 1 hour | 24 hours |
-| Major | Feature broken | 4 hours | 72 hours |
-| Minor | Minor issue | 1 day | 2 weeks |
-| Info | Documentation | 1 week | Best effort |
-
-### 7.2 Defect Resolution Workflow
-```
-Reported → Triaged → Assigned → In Progress → Testing → Closed
-   ↓         ↓         ↓          ↓          ↓        ↓
-  24h       12h        6h         24h        24h     Sign-off
+```bash
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
 ```
 
-## 8. Continuous Integration/Deployment
-
-### 8.1 CI Pipeline
-```
-Push → Lint → Unit Tests → Integration Tests → Build → Report
-  ↓      ↓        ↓              ↓           ↓      ↓
- 5s    2m       5m            10m         3m    1m
-(Fail at any stage aborts merge)
-```
-
-### 8.2 CD Pipeline
-```
-Merge → Security Scan → E2E Tests → Staging Deploy → Production Approval
-  ↓        ↓              ↓              ↓                  ↓
- 5s      10m            20m            30m            Manual gate
-```
-
-## 9. Quality Training & Culture
-
-### 9.1 Developer Training
-- Quarterly: "Writing Testable Code"
-- Monthly: "Security Awareness"
-- As-needed: Debugging workshops
-
-### 9.2 QA Team Training
-- Quarterly: Test framework updates
-- Bi-monthly: Security threat modeling
-- As-needed: Performance tuning
-
-## 10. Quality Tools & Infrastructure
-
-### 10.1 Monitoring Tools
-- **Metrics:** Prometheus + Grafana
-- **Logging:** structlog + CloudWatch
-- **Tracing:** Distributed traces (future)
-- **APM:** New Relic (optional)
-
-### 10.2 Testing Tools
-- **Backend:** pytest, coverage, Playwright
-- **Frontend:** vitest, jsdom, React Testing Library
-- **Security:** Bandit, pip-audit, npm audit
-- **CI/CD:** GitHub Actions
-
-### 10.3 Infrastructure
-- **Version Control:** GitHub
-- **CI/CD:** GitHub Actions
-- **Artifact Storage:** GitHub Container Registry
-- **Staging:** Azure Container Instances
-- **Production:** Kubernetes (future)
-
-## 11. Quality Reporting
-
-### 11.1 Metrics Dashboard
-**URL:** https://qa-metrics.eduboost-v2.example.com
-
-**Displays:**
-- Coverage trend (daily)
-- Test pass rate (hourly)
-- Security issues (real-time)
-- Performance trends (daily)
-
-### 11.2 Reporting Schedule
-- **Daily:** Test execution summary
-- **Weekly:** Quality metrics report
-- **Monthly:** Quality trends + risk assessment
-- **Quarterly:** Quality roadmap + objectives
-
-## 12. Risk Management
-
-### 12.1 Quality Risks
-| Risk | Probability | Impact | Mitigation |
-|------|-------------|--------|-----------|
-| Coverage regression | Medium | Medium | Enforce 80% gate |
-| Undetected bugs | Low | High | Increase E2E coverage |
-| Performance degradation | Medium | Medium | Weekly benchmarking |
-| Security vulnerability | Low | Critical | Continuous scanning |
-
-### 12.2 Mitigation Strategy
-- Proactive monitoring (weekly metrics review)
-- Incident response drill (quarterly)
-- Security audit (annually)
-- Penetration testing (before major release)
-
-## 13. Continuous Improvement
-
-### 13.1 Quality Improvement Plan
-- **Q2 2026:** Achieve 85% code coverage
-- **Q3 2026:** Implement performance profiling
-- **Q4 2026:** Achieve zero known CVEs
-- **Q1 2027:** Complete security certification
-
-### 13.2 Retrospectives
-- Sprint retrospective: Every 2 weeks (team level)
-- Quality retrospective: Monthly (QA + dev leads)
-- Release retrospective: Post-release (all stakeholders)
-
-## 14. Appendices
-
-### 14.1 References
-- MIL-STD-498: Software Development and Documentation
-- IEEE 829: Test Documentation Standard
-- OWASP Top 10: Security risks
-- POPIA: Data protection regulations
-
-### 14.2 Compliance Matrix
-| Standard | Section | Requirement | Status |
-|----------|---------|-------------|--------|
-| MIL-STD-498 | 5.1.1 | Requirements traceability | ✅ Met |
-| IEEE 829 | 4.1 | Test plan existence | ✅ Met |
-| OWASP | A01 | Broken access control | ✅ Mitigated |
-| POPIA | § 11 | Right to erasure | ✅ Implemented |
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

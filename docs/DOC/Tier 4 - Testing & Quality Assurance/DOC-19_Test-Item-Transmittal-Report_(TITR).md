@@ -1,118 +1,86 @@
-# DOC-19: Test Item Transmittal Report (TITR)
-**MIL-STD-498**
+# Test Item Transmittal Report (TITR)
 
-## 1. Executive Summary
-This Test Item Transmittal Report documents the transmission of test items (code, test cases, and supporting materials) from development to QA for formal testing of EduBoost V2 Release 1.0.
+| Field | Value |
+|---|---|
+| Document ID | EDB-TITR-019 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-**Report Date:** May 4, 2026  
-**Release Version:** v1.0.0  
-**Test Phase:** Pre-GA Verification  
-**Status:** ✅ APPROVED FOR RELEASE
-**Last Baseline Commit:** 9a9b8b1 (fix: resolve missing legacy imports in v2 router and repositories)
+## Authoritative project baseline
 
-## 2. Transmittal Authorization
-- **Authorized By:** Principal Engineer
-- **Date Approved:** 2026-05-04
-- **Target QA Lead:** QA Team
-- **Delivery Method:** GitHub repository push
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
-## 3. Test Items Transmitted
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
-### 3.1 Backend Test Suite
-| Item | Path | Version | Status |
-|------|------|---------|--------|
-| Unit Tests | tests/unit/ | v1.0 | Ready |
-| Integration Tests | tests/integration/ | v1.0 | Ready |
-| Contract Tests | tests/contract/ | v1.0 | Ready |
-| E2E Tests | playwright.config.ts | v1.0 | Ready |
-| Test Data | alembic/versions/0007_caps_irt_item_bank.py | v1.0 | Ready |
+### Claim discipline
 
-### 3.2 Frontend Test Suite
-| Item | Path | Version | Status |
-|------|------|---------|--------|
-| Component Tests | app/frontend/__tests__/ | v1.0 | Ready |
-| API Contract Tests | app/frontend/src/__tests__/ | v1.0 | Ready |
-| Vitest Config | app/frontend/vitest.config.ts | v2.1.9 | Ready |
-| Coverage Config | app/frontend/package.json | v1.0 | Ready |
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
-### 3.3 Test Infrastructure
-| Item | Path | Version | Status |
-|------|------|---------|--------|
-| CI/CD Pipeline | .github/workflows/ci.yml | v1.0 | Ready |
-| Docker Compose | docker-compose.yml | v2 | Ready |
-| pytest Config | pytest.ini | v1.0 | Ready |
-| GitHub Secrets | .env.example | v1.0 | Configured |
+## Items under test
 
-## 4. Test Execution Summary
-**Baseline Build:** Commit ce89092 (fix(frontend): correct vitest config)
+| Item | Version/source | Transmittal status |
+|---|---|---|
+| Backend runtime | `app/api_v2.py` | Include in every release gate. |
+| Frontend app | `app/frontend/package.json` and `src/` | Include with pnpm lockfile. |
+| Database migrations | `alembic/versions/` | Include with migration graph proof. |
+| Content registry | `data/content_factory/scopes.json`, `coverage_targets.json` | Include with coverage tests. |
+| Generated launch content | `data/generated/` and `data/caps/` | Include with validation and seed proof. |
+| Docker stack | `docker-compose.yml`, `docker-compose.prod.yml` | Include compose config proof. |
+| CI workflows | `.github/workflows/` | Include workflow run evidence. |
+| Documentation | `docs/`, `docs/DOC/` | Include stale-content scan. |
 
-### 4.1 Pre-Transmittal Test Results
+## Required transmittal metadata
+
+- Commit SHA and branch.
+- Archive/checksum or artifact ID.
+- Environment variables class, with secrets redacted.
+- Database migration head.
+- Test command log paths.
+- Known deviations and approvals.
+
+## Source-of-truth references
+
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
+
+## Standard verification gate
+
+Run the closest applicable subset before accepting a document-controlled change:
+
+```bash
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
 ```
-Backend Unit Tests:     85 passed (82% coverage) ✓
-Frontend Unit Tests:    31 passed (81% coverage) ✓
-Integration Tests:      42 passed ✓
-Playwright E2E:         8 suites passed ✓
-Bandit SAST:           0 issues (severity >= MEDIUM) ✓
-pip-audit:             0 CVEs ✓
-npm audit:             0 HIGH/CRITICAL ✓
-gitleaks:              0 secrets detected ✓Last Test Run:         2026-05-04 13:56:00 UTC
-CI Pipeline Status:     GREEN (all checks passing)```
 
-### 4.2 Coverage Metrics
-| Module | Lines | Branches | Functions | Statements |
-|--------|-------|----------|-----------|------------|
-| app.api_v2 | 88% | 82% | 90% | 88% |
-| app.core | 85% | 80% | 86% | 85% |
-| app.services | 80% | 75% | 81% | 80% |
-| app.repositories | 84% | 78% | 85% | 84% |
-| frontend | 81% | 78% | 82% | 81% |
-
-## 5. Known Issues & Exceptions
-
-### 5.1 Open Issues at Transmittal
-| ID | Severity | Status | Resolution |
-|---|---|---|---|
-| ISSUE-001 | Info | Known | Vite CJS deprecation (harmless, documented) |
-| ISSUE-002 | Info | Known | npm audit has 2 transitive deps with LOW CVE |
-| ISSUE-003 | Minor | Open | Three E2E tests require manual DB seed |
-
-### 5.2 Test Limitations
-- Stripe webhook testing uses mock events (not live Stripe endpoint)
-- LLM latency tests use cached responses (not live API calls)
-- Load testing (>100 concurrent) not yet automated
-
-## 6. Test Environment Configuration
-**QA Environment URL:** https://qa.eduboost-v2.example.com  
-**Test Data:** 500 IRT items, 50 learner profiles, 3 CAPS curricula seeded  
-**Database:** PostgreSQL 16 (qa_eduboost_v2 schema)  
-**Redis:** 7.0 with 3600s TTL for semantic cache  
-
-## 7. Deliverables Included
-- ✓ Full source code with test suite (app/, tests/)
-- ✓ CI/CD pipeline configuration (.github/workflows/)
-- ✓ Docker images (API, frontend, docs)
-- ✓ Test data seeds (alembic/versions/)
-- ✓ Documentation (docs/DOC/Tier 4/)
-- ✓ Playwright E2E scripts
-- ✓ Performance benchmarks
-
-## 8. QA Entry Criteria
-For QA to accept this transmittal:
-- [ ] All CI checks green on commit ce89092
-- [ ] Test suite executes without errors
-- [ ] >80% code coverage maintained
-- [ ] POPIA sweep passes
-- [ ] No HIGH/CRITICAL security issues
-
-## 9. QA Exit Criteria (Before Release)
-- [ ] All transmittal tests passed in QA environment
-- [ ] E2E scenarios validated (diagnostic → lesson → parent portal)
-- [ ] Performance benchmarks: p95 cache latency < 50ms
-- [ ] POPIA compliance verified (no PII leakage)
-- [ ] Incident response procedures tested
-- [ ] Rollback procedures tested
-
-## 10. Sign-Off
-**Development Lead:** _______________  Date: _______
-**QA Lead:** _______________  Date: _______
-**Release Manager:** _______________  Date: _______
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

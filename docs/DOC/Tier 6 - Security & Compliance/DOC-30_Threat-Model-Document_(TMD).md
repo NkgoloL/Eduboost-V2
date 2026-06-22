@@ -1,111 +1,95 @@
 # Threat Model Document (TMD)
-**Document ID:** DBE-TMD-030  
-**Version:** 1.0.0  
-**Date:** 2026-04-29  
-**Classification:** RESTRICTED — Security Sensitive  
-**Methodology:** STRIDE
 
----
+| Field | Value |
+|---|---|
+| Document ID | EDB-TMD-030 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-## 1. System Assets Under Analysis
+## Authoritative project baseline
 
-| Asset | Sensitivity | Impact if Compromised |
-|-------|-------------|----------------------|
-| DBE policy documents (Cosmos DB) | High | Unauthorised disclosure of unreleased policy |
-| Knowledge graph structure | Medium | Manipulation of advisory outputs |
-| User query logs | High | PII exposure (POPIA violation) |
-| Azure ML model | Medium | Model poisoning via adversarial inputs |
-| JWT signing secret | Critical | Full API impersonation |
-| Cosmos DB / Storage keys | Critical | Full data exfiltration or destruction |
-| Gremlin query execution | High | Graph data tampering via injection |
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
----
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
-## 2. STRIDE Threat Analysis
+### Claim discipline
 
-### 2.1 Spoofing (Identity)
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
-| Threat ID | Description | Entry Point | Likelihood | Impact | Mitigation |
-|-----------|-------------|-------------|------------|--------|------------|
-| S-01 | Attacker forges JWT to call `/ask` | APIM | Low | High | APIM validates against Azure AD OIDC; short token TTL (24h) |
-| S-02 | Compromised service principal used for Azure resource access | Azure AD | Low | Critical | MFA on all human accounts; PIM for privileged roles |
-| S-03 | Pod impersonation within AKS cluster | Internal VNet | Very Low | High | NetworkPolicy restricts pod-to-pod traffic; no service mesh bypass |
+## Assets
 
-### 2.2 Tampering (Integrity)
+| Asset | Sensitivity | Primary threats |
+|---|---|---|
+| Learner profile and age/grade | High | Unauthorised access, over-retention, profiling. |
+| Guardian identity and contact data | High | Account takeover, phishing, disclosure. |
+| Diagnostic responses and mastery | High | Inference, discrimination, improper sharing. |
+| Consent and data-rights records | Critical | Tampering, deletion without evidence, non-compliance. |
+| Content artifacts and answer keys | Medium/High | Poisoned content, wrong answers, unauthorised publication. |
+| JWT/signing/encryption secrets | Critical | Full account compromise or data exposure. |
+| Audit logs | High | Tampering or insufficient evidence. |
 
-| Threat ID | Description | Entry Point | Likelihood | Impact | Mitigation |
-|-----------|-------------|-------------|------------|--------|------------|
-| T-01 | **Gremlin injection** via malicious `query` parameter | `/ask` endpoint | Medium (before fix) | Critical | Parameterised bindings implemented (ADR-004); injection string never reaches Gremlin engine |
-| T-02 | Unauthorised Cosmos DB document modification | Azure Portal / SDK | Low | High | RBAC role assignment restricts to authorised identities only |
-| T-03 | Docker image tampering in ACR | ACR | Very Low | Critical | Image signing (Phase 5); Trivy scan in CI |
-| T-04 | Terraform state tampering | Azure Storage (tfstate) | Low | High | Storage Account soft delete + access key rotation |
+## STRIDE threats and controls
 
-### 2.3 Repudiation (Non-repudiation)
+| STRIDE | Example threat | Control |
+|---|---|---|
+| Spoofing | Forged/expired token used on learner route. | JWT validation, expiry, revocation and role checks. |
+| Tampering | Content artifact modified after review. | Provenance, validation reports, review records and promotion gates. |
+| Repudiation | Guardian denies erasure request. | Authenticated request, audit event and retained data-rights record. |
+| Information disclosure | Parent accesses unrelated learner. | Object-level authorisation tests. |
+| Denial of service | LLM/tutor flooding or metrics scraping. | Rate limits, provider budgets, metrics restrictions. |
+| Elevation of privilege | Learner reaches admin content route. | Admin dependencies and frontend route isolation. |
 
-| Threat ID | Description | Entry Point | Likelihood | Impact | Mitigation |
-|-----------|-------------|-------------|------------|--------|------------|
-| R-01 | User denies submitting low-rated feedback | `/feedback` | Low | Medium | APIM EventHub logs request + JWT identity; immutable blob storage |
-| R-02 | Admin denies deploying a bad release | AKS | Low | High | Helm history + git commit SHA in `/version` endpoint |
+## Highest-risk areas
 
-### 2.4 Information Disclosure
+1. Child data privacy and consent correctness.
+2. Auth context normalisation across compatibility code.
+3. Content accuracy and answer-key safety.
+4. AI provider prompt/data leakage.
+5. Release evidence integrity.
 
-| Threat ID | Description | Entry Point | Likelihood | Impact | Mitigation |
-|-----------|-------------|-------------|------------|--------|------------|
-| I-01 | PII in query logs (POPIA violation) | Application Insights | Medium | Critical | PII scrubbing middleware (Phase 3); POPIA-compliant data handling |
-| I-02 | Cosmos DB key exposed via git commit | Source code | Low | Critical | `.gitignore` on `.env`; trufflehog pre-commit hook |
-| I-03 | Stack traces in API error responses | `/ask` HTTP 500 | Medium | Low | `HTTPException` wraps internal errors; only `str(e)` surfaced |
-| I-04 | Azure ML model weights accessible | Azure ML | Very Low | Medium | Azure ML endpoint key required; private deployment option |
+## Source-of-truth references
 
-### 2.5 Denial of Service
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
 
-| Threat ID | Description | Entry Point | Likelihood | Impact | Mitigation |
-|-----------|-------------|-------------|------------|--------|------------|
-| D-01 | Query flooding exhausting Gremlin RU/s | `/ask` via APIM | Medium | High | APIM rate limiting 1000 req/60s; Cosmos autoscale |
-| D-02 | Large query payload consuming memory | `/ask` | Low | Medium | Pydantic `max_length=2000` on `query` field |
-| D-03 | Pod OOM kill loop | AKS | Low | High | Memory limit 512Mi; liveness probe restarts pod; HPA scales out |
+## Standard verification gate
 
-### 2.6 Elevation of Privilege
+Run the closest applicable subset before accepting a document-controlled change:
 
-| Threat ID | Description | Entry Point | Likelihood | Impact | Mitigation |
-|-----------|-------------|-------------|------------|--------|------------|
-| E-01 | Container escape to host | AKS node | Very Low | Critical | Non-root (UID 1000), `readOnlyRootFilesystem`, `drop: [ALL]` |
-| E-02 | Unrestricted service account token access | AKS | Low | High | Workload Identity (AAD Pod Identity / OIDC) instead of node-level MSI |
-| E-03 | Terraform state read grants full infra access | Storage Account | Low | Critical | Storage Account access key restricted to CI/CD service principal only |
-
----
-
-## 3. Attack Surface Summary
-
+```bash
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
 ```
-Internet
-   │
-   ▼
-[APIM] ── Attack surface: JWT bypass, rate limit bypass
-   │
-   ▼
-[FastAPI] ── Attack surface: Pydantic bypass, missing auth middleware
-   │
-   ├──► [Gremlin] ── Attack surface: Injection (MITIGATED)
-   │
-   ├──► [Azure ML] ── Attack surface: Model poisoning
-   │
-   └──► [Blob Storage] ── Attack surface: Feedback blob exfiltration
-```
 
----
-
-## 4. Priority Remediation Order
-
-| Priority | Threat ID | Action | Phase |
-|----------|-----------|--------|-------|
-| P0 | T-01 | Gremlin injection — parameterised bindings | ✅ Done |
-| P1 | S-01 | FastAPI OAuth2 middleware | Phase 3 |
-| P1 | I-01 | PII scrubbing middleware | Phase 3 |
-| P1 | S-02 | Replace `{{client-id}}` in APIM policy | Phase 3 |
-| P2 | I-02 | Trufflehog pre-commit hook | Phase 3 |
-| P2 | T-03 | Trivy image scanning in CI | Phase 3 |
-| P3 | E-01 | Validate pod security baseline in staging | Phase 5 |
-
----
-
-*End of TMD — DBE-TMD-030 v1.0.0*
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

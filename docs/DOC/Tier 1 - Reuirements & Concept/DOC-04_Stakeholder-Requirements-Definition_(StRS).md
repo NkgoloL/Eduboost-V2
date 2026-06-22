@@ -1,80 +1,92 @@
 # Stakeholder Requirements Definition (StRS)
-**Document ID:** DBE-StRS-004  
-**Version:** 1.0.0  
-**Date:** 2026-04-29
 
----
+| Field | Value |
+|---|---|
+| Document ID | EDB-STRS-004 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-## 1. Stakeholder Register
+## Authoritative project baseline
 
-| ID | Stakeholder | Role | Interest Level | Influence |
-|----|------------|------|---------------|-----------|
-| SH-01 | DBE Policy Division | Primary user | High | High |
-| SH-02 | DBE IT Operations | System owner | High | High |
-| SH-03 | District Officials | End users | High | Medium |
-| SH-04 | School Principals | End users | Medium | Low |
-| SH-05 | DBE Data Engineering | Technical | High | Medium |
-| SH-06 | DBE ML Engineering | Technical | High | Medium |
-| SH-07 | DBE Legal & Compliance | Governance | Medium | High |
-| SH-08 | SITA (State IT Agency) | Infrastructure | Low | Medium |
-| SH-09 | DBE Auditors | Oversight | Low | High |
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
----
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
-## 2. Stakeholder Needs
+### Claim discipline
 
-### SH-01 — Policy Division
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
-| Need ID | Description | Priority |
-|---------|-------------|----------|
-| SN-01-01 | Query the system in plain language without technical training | Must |
-| SN-01-02 | Receive responses with source document citations | Must |
-| SN-01-03 | Trust that responses are based on current, approved documents | Must |
-| SN-01-04 | Flag incorrect or outdated responses for review | Should |
+## Stakeholder register
 
-### SH-02 — IT Operations
+| ID | Stakeholder | Need | Priority |
+|---|---|---|---|
+| SH-01 | Learners | Age-appropriate CAPS-aligned lessons, diagnostics, practice, tutor help and motivation. | High |
+| SH-02 | Parents/guardians | Safe consent management, progress visibility, reports and data-rights controls. | High |
+| SH-03 | Educator/content reviewers | Curriculum alignment, review queues, provenance and answer-key verification. | High |
+| SH-04 | Platform administrators | Content Factory, readiness, audit, operations and release evidence. | High |
+| SH-05 | Engineers | Clear architecture, reproducible tests, migration integrity and clean CI. | High |
+| SH-06 | Compliance/legal | POPIA, child data protection, audit trails, consent history and erasure governance. | High |
+| SH-07 | Product/programme owner | A scoped launch path, claim discipline, risk register and beta readiness. | High |
+| SH-08 | Security operators | Secrets management, token revocation, security headers, dependency scanning and incident response. | Medium |
 
-| Need ID | Description | Priority |
-|---------|-------------|----------|
-| SN-02-01 | Deploy, update, and roll back the system without downtime | Must |
-| SN-02-02 | Monitor system health via a single dashboard | Must |
-| SN-02-03 | Receive alerts when error rates or latency exceed thresholds | Must |
-| SN-02-04 | All secrets managed in Azure Key Vault — no manual credential handling | Must |
+## Stakeholder requirements
 
-### SH-07 — Legal & Compliance
+| Req ID | Stakeholder | Requirement | Validation |
+|---|---|---|---|
+| SR-01 | Learner | The UI must support diagnostic-to-lesson flow without exposing admin controls. | Frontend route tests and E2E. |
+| SR-02 | Guardian | Guardian can see learner progress and initiate POPIA workflows. | Parent portal tests and route-contract tests. |
+| SR-03 | Compliance | Consent and data-rights actions are persisted and auditable. | POPIA tests and audit repository evidence. |
+| SR-04 | Content reviewer | Artifact review requires provenance and quality checks. | Content Factory service tests. |
+| SR-05 | Operator | Health, readiness and metrics endpoints exist and are scrapeable under controlled conditions. | Runtime entrypoint and Compose validation. |
+| SR-06 | Engineer | New code respects import-boundary contracts and source-of-truth docs. | Import-linter and current-state checks. |
 
-| Need ID | Description | Priority |
-|---------|-------------|----------|
-| SN-07-01 | All personal data processing compliant with POPIA | Must |
-| SN-07-02 | Complete audit trail of all system actions | Must |
-| SN-07-03 | No learner PII stored in query logs | Must |
-| SN-07-04 | Data residency within South African Azure regions | Must |
+## Stakeholder exclusions corrected from stale docs
 
-### SH-09 — Auditors
+The project does not target DBE policy analysts asking natural-language policy questions over a graph-search architecture. References to policy analysts, gateway policy controls, graph-database and external ML platform policy-retraining stakeholders have been removed from this aligned baseline.
 
-| Need ID | Description | Priority |
-|---------|-------------|----------|
-| SN-09-01 | Access to immutable audit logs for any date range | Must |
-| SN-09-02 | Evidence of security controls implementation | Must |
-| SN-09-03 | Signed Authority to Operate (ATO) before production | Must |
+## Source-of-truth references
 
----
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
 
-## 3. Needs-to-Requirements Mapping
+## Standard verification gate
 
-| Stakeholder Need | Derived SRS Requirement |
-|-----------------|------------------------|
-| SN-01-01 | FR-030, FR-032 |
-| SN-01-02 | FR-032 (sources field), FR-031 |
-| SN-01-03 | FR-001, FR-010, FR-014 |
-| SN-02-01 | NFR-010, NFR-012, Deployment Guide |
-| SN-02-02 | NFR monitoring requirements, OpsMan |
-| SN-02-03 | Azure Monitor alert rules (Phase 3) |
-| SN-07-01 | CR-001, CR-002, PIA |
-| SN-07-03 | CR-001, SR-007 |
-| SN-09-01 | APIM EventHub logging, SR-007 |
-| SN-09-03 | ATO document |
+Run the closest applicable subset before accepting a document-controlled change:
 
----
+```bash
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
+```
 
-*End of StRS — DBE-StRS-004 v1.0.0*
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

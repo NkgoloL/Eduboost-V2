@@ -1,114 +1,84 @@
 # Security Plan (SecPlan)
-**Document ID:** DBE-SecPlan-029  
-**Version:** 1.0.0  
-**Date:** 2026-04-29  
-**Classification:** RESTRICTED — Security Sensitive
 
----
+| Field | Value |
+|---|---|
+| Document ID | EDB-SECPLAN-029 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-## Document Control
+## Authoritative project baseline
 
-| Field | Detail |
-|-------|--------|
-| Prepared By | DBE AI Expert System Security Team |
-| Authority | DBE IT Security Officer |
-| Review Cycle | Annually or after any security incident |
-| Based On | ISO/IEC 27001:2022, NIST CSF |
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
----
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
-## 1. Security Objectives
+### Claim discipline
 
-1. Protect the confidentiality of DBE policy documents and user query data.
-2. Ensure the integrity of the knowledge graph — no unauthorised modifications.
-3. Maintain availability of the `/ask` endpoint to meet NFR-010 (99.9% uptime).
-4. Achieve and maintain POPIA compliance.
-5. Attain Authority to Operate (ATO) sign-off before production launch.
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
----
+## Security objectives
 
-## 2. Security Controls by Domain
+| Objective | Control |
+|---|---|
+| Authenticate users and services | JWT access/refresh tokens and session management. |
+| Prevent unauthorised learner access | Object-level authorisation and guardian relationship checks. |
+| Protect admin functions | Admin dependencies on Content Factory, ETL, AI operations and IRT routes. |
+| Protect secrets | Environment-driven settings, production secret validation and Key Vault option. |
+| Protect web boundary | CORS allowlist, security headers, rate limiting and validation. |
+| Protect data | PostgreSQL access controls, encryption configuration, backups and POPIA workflow. |
+| Detect issues | Audit events, structured logs, metrics and alerting. |
+| Respond to incidents | Incident response plan and release evidence controls. |
 
-### 2.1 Identity and Access Management
+## Security operating rules
 
-| Control | Implementation | Status |
-|---------|---------------|--------|
-| External API authentication | APIM JWT validation (Azure AD) | ✅ Implemented |
-| Internal API authentication | FastAPI OAuth2 middleware | ⚠️ Phase 3 pending |
-| Service identity | AKS Managed Identity (SystemAssigned) | ✅ Implemented |
-| Role-based access | RBAC on Cosmos DB, Storage, ML (via `azurerm_role_assignment`) | ⚠️ Phase 3 pending |
-| Multi-factor authentication | Azure AD MFA for portal access | ✅ Azure AD default |
-| Privileged access | Azure PIM for Contributor role | ⚠️ Recommended |
+- Never log raw learner diagnostic answers with identity unless explicitly required and protected.
+- Never expose `/metrics` publicly in production.
+- Never bypass content review/promotion for learner-facing content.
+- Never claim production readiness without current security evidence.
 
-### 2.2 Data Protection
+## Source-of-truth references
 
-| Control | Implementation | Status |
-|---------|---------------|--------|
-| Encryption at rest | Azure-managed keys (AES-256) — Cosmos DB, Blob | ✅ Default |
-| Encryption in transit | TLS 1.2+ on all connections | ✅ Enforced |
-| Secret management | Azure Key Vault (all credentials) | ✅ Implemented |
-| Gremlin injection prevention | Parameterised query bindings | ✅ Implemented |
-| Input validation | Pydantic models on all endpoints | ✅ Implemented |
-| PII scrubbing in logs | Structured logging with PII filter | ⚠️ Phase 3 pending |
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
 
-### 2.3 Network Security
+## Standard verification gate
 
-| Control | Implementation | Status |
-|---------|---------------|--------|
-| Network isolation | Azure VNet + private subnets | ✅ Implemented |
-| NSG rules | Allow 443 inbound; deny 22/3389 | ✅ Implemented |
-| Private endpoints | Cosmos DB, Storage, Key Vault | ⚠️ Phase 3 pending |
-| Rate limiting | APIM: 1000 req/60s per IP | ✅ Implemented |
-| DDoS protection | Azure DDoS Basic (Standard for prod) | ⚠️ Production gap |
+Run the closest applicable subset before accepting a document-controlled change:
 
-### 2.4 Container and Workload Security
+```bash
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
+```
 
-| Control | Implementation | Status |
-|---------|---------------|--------|
-| Non-root execution | `runAsUser: 1000` in pod spec | ✅ Implemented |
-| Read-only root filesystem | `readOnlyRootFilesystem: true` | ✅ Implemented |
-| Capability drop | `drop: [ALL]` | ✅ Implemented |
-| Image vulnerability scan | Trivy in CI/CD (Phase 3) | ⚠️ Phase 3 pending |
-| Network policies | Ingress/egress rules in Helm | ⚠️ Manifest missing |
-| Image signing | Azure Container Registry content trust | ⚠️ Phase 5 |
-
-### 2.5 Monitoring and Audit
-
-| Control | Implementation | Status |
-|---------|---------------|--------|
-| API request logging | APIM EventHub logger | ✅ Implemented |
-| Application telemetry | Application Insights | ⚠️ SDK integration Phase 3 |
-| Alert rules | Azure Monitor metric alerts | ⚠️ Phase 3 pending |
-| Security audit scripts | `scripts/security_audit.ps1` | ✅ Exists (not yet run) |
-| Key Vault diagnostic settings | Audit log to Log Analytics | ⚠️ Phase 3 pending |
-| Secrets scanning | Trufflehog / Gitleaks in CI | ⚠️ Phase 3 pending |
-
----
-
-## 3. Security Testing Schedule
-
-| Activity | When | Owner |
-|----------|------|-------|
-| SAST scan (`bandit`, `ruff`) | Every CI/CD run | DevOps |
-| IaC scan (`checkov`) | Every infrastructure PR | DevOps |
-| Dependency audit (`pip-audit`) | Weekly CI run | DevOps |
-| Penetration test (external firm) | Phase 5 (before ATO) | Security Officer |
-| Compliance script execution | Phase 5 | Security Officer |
-| Annual security review | Annually post-launch | Security Officer |
-
----
-
-## 4. Residual Risks
-
-| Risk | Control Gap | Residual Level | Owner |
-|------|-------------|----------------|-------|
-| FastAPI endpoints accessible without APIM bypass | OAuth2 middleware pending | Medium | Lead Engineer |
-| `{{client-id}}` placeholder in APIM policy | Named Value not yet wired | High | DevOps |
-| No private endpoints on Cosmos DB / Storage | Network gap | Medium | DevOps |
-| No image signing in ACR | Phase 5 item | Low | DevOps |
-
-**Acceptance Criterion:** All High residual risks resolved before ATO sign-off.
-
----
-
-*End of SecPlan — DBE-SecPlan-029 v1.0.0*
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

@@ -1,208 +1,110 @@
-# Installation & Configuration Guide (ICG)
-**Document ID:** DBE-ICG-027  
-**Version:** 1.0.0  
-**Date:** 2026-04-29
+# Installation and Configuration Guide (ICG)
 
----
+| Field | Value |
+|---|---|
+| Document ID | EDB-ICG-027 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-## 1. Local Development Setup
+## Authoritative project baseline
 
-### 1.1 Clone and Install
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
+
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
+
+### Claim discipline
+
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
+
+## Prerequisites
+
+- Python 3.12.3.
+- Docker Desktop/Engine with Compose v2.
+- Node.js >= 20 and pnpm >= 9.
+- PostgreSQL 16 and Redis 7 for non-Docker local runs.
+
+## Backend setup
 
 ```bash
-git clone https://github.com/NkgoloL/dbe-ai-expert-system.git
-cd dbe-ai-expert-system
-
-# Create and activate virtual environment
-python3.10 -m venv .venv
-source .venv/bin/activate          # Linux/macOS
-# .\.venv\Scripts\Activate.ps1     # Windows PowerShell
-
-# Install package with dev extras
-pip install -e ".[dev]"
-```
-
-### 1.2 Environment Configuration
-
-```bash
+python3 -m venv .venv
+. .venv/bin/activate
+pip install -r requirements/dev.txt
 cp .env.example .env
-# Edit .env with your values — see Section 2 for each variable
+alembic upgrade head
+uvicorn app.api_v2:app --host 0.0.0.0 --port 8000
 ```
 
-**Minimum required for local development (no Azure):**
-```bash
-# .env
-ENVIRONMENT=development
-PORT=8000
-LOG_LEVEL=DEBUG
-# Leave Azure variables blank — system will use BaselinePolicyModel fallback
-```
-
-### 1.3 Run the Application Locally
+## Frontend setup
 
 ```bash
-python src/orchestration/main.py
-# Server starts at http://localhost:8000
-# Swagger UI: http://localhost:8000/docs
+cd app/frontend
+corepack enable
+pnpm install --frozen-lockfile
+pnpm run dev
 ```
 
-### 1.4 Run the Test Suite
+## Required configuration areas
+
+| Variable/group | Purpose |
+|---|---|
+| `DATABASE_URL` | PostgreSQL connection; normalised to asyncpg where applicable. |
+| `REDIS_URL` | Redis for cache, revocation and ARQ. |
+| `JWT_SECRET` | Access/refresh token signing; production placeholders rejected. |
+| `ENCRYPTION_KEY`, `ENCRYPTION_SALT` | Sensitive-data encryption controls. |
+| `ALLOWED_ORIGINS` | CORS allowlist. |
+| `NEXT_PUBLIC_API_URL` | Frontend API base URL. |
+| LLM provider keys | Optional/required depending on AI provider mode. |
+| `AZURE_KEY_VAULT_URL` | Optional production secret refresh path. |
+
+## Configuration warnings
+
+- Do not use npm for frontend installs in this baseline; use pnpm.
+- Do not commit `.env`, exports, logs or temporary data.
+- Do not use hosted production-looking API fallbacks unless explicitly approved.
+
+## Source-of-truth references
+
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
+
+## Standard verification gate
+
+Run the closest applicable subset before accepting a document-controlled change:
 
 ```bash
-# All tests (unit + integration, mocked)
-pytest tests/ -v
-
-# With coverage report
-pytest tests/ --cov=src --cov-report=html
-open htmlcov/index.html
-
-# Specific module
-pytest tests/test_graph_integration.py -v
-
-# Fail fast on first failure
-pytest tests/ -x
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
 ```
 
----
-
-## 2. Environment Variable Reference
-
-Copy from `.env.example` and populate each section:
-
-### Azure Credentials
-```bash
-AZURE_SUBSCRIPTION_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-AZURE_TENANT_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-AZURE_CLIENT_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-AZURE_CLIENT_SECRET=your-client-secret
-```
-> Obtain from: Azure Portal → Azure Active Directory → App Registrations
-
-### Cosmos DB (SQL API)
-```bash
-COSMOS_ENDPOINT=https://cosmos-dbe-expert-dev.documents.azure.com:443/
-COSMOS_KEY=<primary-key>
-COSMOS_DATABASE_NAME=KnowledgeDB
-COSMOS_CONTAINER_NAME=IntelligenceStore
-```
-> Obtain from: Azure Portal → Cosmos DB account → Keys
-
-### Cosmos DB (Gremlin API)
-```bash
-COSMOS_GREMLIN_ENDPOINT=https://cosmos-dbe-expert-dev.gremlin.cosmos.azure.com:443/
-COSMOS_GREMLIN_KEY=<same-primary-key>
-```
-
-### Azure Blob Storage
-```bash
-AZURE_STORAGE_ACCOUNT_NAME=stdbeexpertdev
-AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;AccountName=...
-AZURE_STORAGE_CONTAINER_FEEDBACK=feedback
-AZURE_STORAGE_CONTAINER_DOCUMENTS=documents
-```
-> Obtain from: Storage Account → Access keys → Connection string
-
-### Azure Machine Learning
-```bash
-AZURE_ML_ENDPOINT=https://your-endpoint.eastus.inference.ml.azure.com/score
-AZURE_ML_KEY=<endpoint-key>
-AZURE_ML_WORKSPACE=mlw-dbe-dev
-AZURE_RESOURCE_GROUP=rg-dbe-ai-expert-system
-```
-> If unset, system uses `BaselinePolicyModel` automatically.
-
-### Application Settings
-```bash
-PORT=8000
-ENVIRONMENT=development           # development | staging | production
-LOG_LEVEL=INFO                    # DEBUG | INFO | WARNING | ERROR
-FEEDBACK_RETRAINING_THRESHOLD=10  # Number of low ratings before retraining trigger
-CACHE_TTL_SECONDS=3600            # Redis cache TTL (Phase 4)
-```
-
-### Security
-```bash
-KEY_VAULT_NAME=kv-dbe-dev
-JWT_SECRET_KEY=<strong-random-secret-min-32-chars>
-JWT_ALGORITHM=HS256
-JWT_EXPIRATION_HOURS=24
-```
-
----
-
-## 3. Cosmos DB Emulator (CI / Offline Testing)
-
-For integration tests without a live Azure account:
-
-```bash
-# Pull and run the emulator
-docker run -d \
-  --name cosmosdb-emulator \
-  -p 8081:8081 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 \
-  mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
-
-# Export emulator endpoint
-export COSMOS_ENDPOINT=https://localhost:8081/
-export COSMOS_KEY=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw==
-
-# Run integration tests against emulator
-USE_REAL_COSMOS=true pytest tests/test_graph_integration.py -v
-```
-
----
-
-## 4. Docker Build (Local)
-
-```bash
-# Build
-docker build -t dbe-agent-orchestrator:local .
-
-# Run with .env file
-docker run --rm \
-  --env-file .env \
-  -p 8000:8000 \
-  dbe-agent-orchestrator:local
-
-# Verify
-curl http://localhost:8000/health
-```
-
----
-
-## 5. Code Quality Checks
-
-```bash
-# Linting (ruff)
-ruff check src/ tests/
-
-# Formatting check
-black --check src/ tests/
-
-# Security scan (bandit)
-bandit -r src/ -ll
-
-# Dependency vulnerability scan
-pip-audit
-
-# Pre-commit hooks (install once)
-pip install pre-commit
-pre-commit install
-pre-commit run --all-files
-```
-
----
-
-## 6. Troubleshooting
-
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| `ImportError: cannot import name 'BaseSettings' from 'pydantic'` | Pydantic v2 breaking change | `pip install pydantic-settings` |
-| `GremlinServerError: WebSocket handshake failed` | Wrong endpoint format | Ensure endpoint uses `wss://` and ends with port `443/` |
-| `CosmosHttpResponseError: 401` | Wrong key | Re-copy primary key from Azure Portal |
-| `AttributeError: 'NoneType' object has no attribute 'submit'` | Gremlin client not initialised | Ensure `COSMOS_GREMLIN_ENDPOINT` is set |
-| Tests fail with `DeprecationWarning: There is no current event loop` | Deprecated `get_event_loop()` | Use `pytest-asyncio` and `@pytest.mark.asyncio` |
-| `bandit: No issues identified` but test fails | Coverage below 80% | Add tests for uncovered paths (check `htmlcov/`) |
-
----
-
-*End of ICG — DBE-ICG-027 v1.0.0*
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

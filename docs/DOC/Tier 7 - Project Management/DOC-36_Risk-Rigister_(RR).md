@@ -1,80 +1,79 @@
 # Risk Register (RR)
-**Document ID:** DBE-RR-036  
-**Version:** 1.0.0  
-**Date:** 2026-04-29  
-**Classification:** Internal — Controlled
 
----
+| Field | Value |
+|---|---|
+| Document ID | EDB-RR-036 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-## Risk Rating Matrix
+## Authoritative project baseline
 
-| Probability \ Impact | Low (1) | Medium (2) | High (3) | Critical (4) |
-|---------------------|---------|-----------|---------|-------------|
-| High (3) | 3 — Medium | 6 — High | 9 — Critical | 12 — Critical |
-| Medium (2) | 2 — Low | 4 — Medium | 6 — High | 8 — Critical |
-| Low (1) | 1 — Low | 2 — Low | 3 — Medium | 4 — Medium |
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
----
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
-## Active Risks
+### Claim discipline
 
-### Technical Risks
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
-| ID | Risk | Probability | Impact | Rating | Mitigation | Owner | Status |
-|----|------|------------|--------|--------|------------|-------|--------|
-| TR-01 | Cosmos DB Gremlin quota exhaustion during load tests | Medium | High | **6 — High** | Use emulator in CI; reserve quota for staging | DevOps | Open |
-| TR-02 | `pydantic-settings` breaking change in future minor version | Low | Medium | **2 — Low** | Pin version in `requirements.txt`; dependabot alerts | Lead Eng | Open |
-| TR-03 | Azure ML cold-start latency exceeds `/ask` 2s SRS target | Medium | High | **6 — High** | Warm-up probe; Redis cache for repeat queries (Phase 4) | ML Eng | Open |
-| TR-04 | Gremlin keyword scan too slow at 100k+ documents | Medium | High | **6 — High** | Azure Cognitive Search integration planned Phase 4 | Lead Eng | Open |
-| TR-05 | AKS node pool version falls behind Kubernetes supported window | Low | Medium | **2 — Low** | Azure Monitor advisory alerts; quarterly node pool upgrade | DevOps | Open |
-| TR-06 | Azure ML model regression after automated retraining | Medium | High | **6 — High** | Model evaluation gate before promotion; lineage tracker | ML Eng | Open |
-| TR-07 | WebSocket Gremlin connection drops under sustained load | Medium | High | **6 — High** | Tenacity retry (3 attempts); connection pool_size=4 | Lead Eng | Mitigated |
+## Active risk register
 
-### Security Risks
+| ID | Risk | Severity | Mitigation | Owner |
+|---|---|---|---|---|
+| R-001 | Stale docs contradict current runtime and mislead delivery. | High | Replace `docs/DOC`, add stale-term scan and doc review gate. | Engineering/docs |
+| R-002 | Auth context shape drift breaks protected POPIA/data-rights flows. | High | Normalise actor helper and add router-level regression tests. | Backend |
+| R-003 | Frontend API paths drift from backend OpenAPI. | High | Add OpenAPI-driven frontend route contract tests. | Frontend/backend |
+| R-004 | Content coverage is overclaimed beyond launch slice. | High | Scope-bound claims to Grade 4 Mathematics refs and require coverage evidence. | Product/content |
+| R-005 | Generated content reaches learners without adequate review. | Critical | Enforce provenance, validation, answer-key verification and review gates. | Content governance |
+| R-006 | Child/guardian data is exposed through logs, exports or authorisation flaws. | Critical | POPIA tests, log redaction, object-level auth and PIA/ATO review. | Security/compliance |
+| R-007 | CI or local setup diverges from pnpm/Python/Alembic baseline. | Medium | Keep scripts/tooling aligned and verified in CI. | Platform |
+| R-008 | Backup/restore/rollback is unproven. | High | Run target-environment DR drill before launch. | Operations |
+| R-009 | AI provider outage or unsafe response degrades learner experience. | Medium | Provider health, safety filters, timeouts, budgets and fallback behaviour. | AI/platform |
+| R-010 | Legacy Celery/RabbitMQ references re-enter architecture. | Medium | Enforce V2 ARQ/Redis decision and review dependency changes. | Architecture |
 
-| ID | Risk | Probability | Impact | Rating | Mitigation | Owner | Status |
-|----|------|------------|--------|--------|------------|-------|--------|
-| SR-01 | FastAPI endpoints bypassed (no auth middleware yet) | Medium | Critical | **8 — Critical** | OAuth2 middleware — Phase 3 priority | Lead Eng | Open |
-| SR-02 | Accidental secret commit to git | Low | Critical | **4 — Medium** | `.gitignore`, trufflehog pre-commit; Key Vault only | DevOps | Open |
-| SR-03 | APIM `{{client-id}}` placeholder shipped to production | Medium | High | **6 — High** | Terraform Named Value; pre-deploy checklist | DevOps | Open |
-| SR-04 | PII in Application Insights logs (POPIA S.19) | Medium | Critical | **8 — Critical** | PII scrubbing middleware — Phase 3 priority | Lead Eng | Open |
+## Source-of-truth references
 
-### Compliance Risks
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
 
-| ID | Risk | Probability | Impact | Rating | Mitigation | Owner | Status |
-|----|------|------------|--------|--------|------------|-------|--------|
-| CR-01 | POPIA Information Officer not appointed before launch | High | High | **9 — Critical** | Engage DBE Legal immediately; ATO gate | DBE Legal | Open |
-| CR-02 | Azure ML data routed to East US (transborder flow) | Medium | High | **6 — High** | Deploy ML endpoint in `southafricanorth` | ML Eng | Open |
-| CR-03 | Privacy notice not published before go-live | High | Medium | **6 — High** | Block production deploy without notice URL | DBE Legal | Open |
+## Standard verification gate
 
-### Project / Schedule Risks
+Run the closest applicable subset before accepting a document-controlled change:
 
-| ID | Risk | Probability | Impact | Rating | Mitigation | Owner | Status |
-|----|------|------------|--------|--------|------------|-------|--------|
-| PR-01 | Azure subscription quota insufficient for staging | Medium | High | **6 — High** | Request quota increases 2 weeks ahead of Phase 3 | DevOps | Open |
-| PR-02 | Penetration test vendor unavailable for Phase 5 slot | Medium | High | **6 — High** | Engage vendor at Phase 3 start (6-week lead time) | Security | Open |
-| PR-03 | 80% coverage target unachievable without real Cosmos DB | Medium | Medium | **4 — Medium** | Cosmos DB emulator in CI (Phase 3) | DevOps | Open |
-| PR-04 | Key developer unavailable during critical Phase 3 sprint | Low | High | **3 — Medium** | Knowledge transfer sessions; bus factor documentation | PM | Open |
+```bash
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
+```
 
----
-
-## Closed Risks
-
-| ID | Risk | Closure Reason | Date Closed |
-|----|------|---------------|-------------|
-| TR-08 | Gremlin injection vector in `add_document_node()` | Fixed — parameterised bindings implemented | 2026-04-29 |
-| TR-09 | `BaseSettings` import failure on Pydantic v2 | Fixed — `pydantic-settings` added | 2026-04-29 |
-
----
-
-## Risk Review Schedule
-
-| Review | Frequency | Attendees |
-|--------|-----------|---------|
-| Risk register update | Per sprint | PM + Lead Eng |
-| Critical risk escalation | Immediately | PM + IT Director |
-| Full risk review | Per phase | All team leads |
-
----
-
-*End of RR — DBE-RR-036 v1.0.0*
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

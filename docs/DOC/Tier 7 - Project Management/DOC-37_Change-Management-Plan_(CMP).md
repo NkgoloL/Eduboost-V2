@@ -1,115 +1,89 @@
 # Change Management Plan (CMP)
-**Document ID:** DBE-CMP-037  
-**Version:** 1.0.0  
-**Date:** 2026-04-29
 
----
+| Field | Value |
+|---|---|
+| Document ID | EDB-CMP-037 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-## 1. Purpose
+## Authoritative project baseline
 
-This document defines the process for managing changes to the DBE AI Expert System — including changes to source code, infrastructure, interfaces, documentation, and security controls — to ensure all changes are assessed, approved, and traceable.
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
----
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
-## 2. Change Categories
+### Claim discipline
 
-| Category | Definition | Approval Required | Lead Time |
-|----------|-----------|-------------------|-----------|
-| **Standard** | Pre-approved, low-risk, routine (e.g., dependency patch, log level change) | Tech Lead | Same sprint |
-| **Normal** | Planned change requiring assessment (e.g., new endpoint, schema change) | Tech Lead + PM | 1 sprint |
-| **Emergency** | Critical security fix or P1 incident resolution | Tech Lead (post-hoc PM notification) | Immediate |
-| **Major** | Breaking interface change, architecture revision, data migration | Tech Lead + PM + DBE IT Director | 2 sprints |
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
----
+## Change classes
 
-## 3. Change Request Process
+| Class | Examples | Required approval/evidence |
+|---|---|---|
+| Standard | Small docs/test refactor with no runtime impact. | Reviewer approval and relevant checks. |
+| Application | Router, service, frontend or business logic changes. | Tests, OpenAPI/route impact, security/POPIA review if applicable. |
+| Database | Models, migrations, retention or erasure logic. | Alembic migration, schema integrity, rollback plan. |
+| Security/privacy | Auth, secrets, consent, exports, erasure, child data. | Security/compliance review and regression evidence. |
+| Content | Scope registry, generated items/lessons, promotion gates. | Provenance, validation, review and coverage evidence. |
+| Release | Deployment, CI, infrastructure, ATO. | Full release evidence and named approver. |
 
+## Change process
+
+1. Describe change and affected domains.
+2. Identify risk class and required evidence.
+3. Implement with tests and docs.
+4. Run required verification gates.
+5. Review and approve.
+6. Merge/deploy only with attached evidence.
+7. Update release notes, risk register and ATO if impacted.
+
+## Emergency changes
+
+Emergency changes may bypass normal sequencing only to restore safety/availability. They require after-the-fact evidence, root-cause review and control remediation.
+
+## Source-of-truth references
+
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
+
+## Standard verification gate
+
+Run the closest applicable subset before accepting a document-controlled change:
+
+```bash
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
 ```
-Engineer identifies change need
-        │
-        ▼
-   Create Change Request (CR)
-   in issue tracker with:
-   - CR-ID
-   - Category
-   - Description
-   - Affected components
-   - Impact assessment
-   - Rollback plan
-        │
-        ▼
-   Tech Lead reviews
-        │
-   ┌────┴────┐
-Standard/   Normal/
-Emergency   Major
-   │           │
-   ▼           ▼
-Approve     PM + Director
-immediately    review
-   │           │
-   └─────┬─────┘
-         │
-         ▼
-   Implement on feature branch
-   Run CI/CD pipeline
-   Peer code review
-         │
-         ▼
-   Merge to develop
-   Staging deployment
-   Smoke tests
-         │
-         ▼
-   Merge to main (production)
-   Update CHANGELOG / Release Notes
-```
 
----
-
-## 4. Interface Change Control
-
-Any change to interfaces defined in `docs/design/ICD.md` is automatically classified as **Normal** or **Major** and requires:
-
-1. ICD version increment.
-2. Consumer team notification ≥ 5 business days before deployment.
-3. Updated consumer integration tests.
-4. Backwards compatibility maintained for at least one sprint, or explicit breaking change notice.
-
----
-
-## 5. Infrastructure Change Control
-
-All infrastructure changes must be:
-- Implemented in Terraform (`infrastructure/` directory).
-- Reviewed via `terraform plan` output in PR.
-- Applied only via CI/CD pipeline — no manual `az` commands in production.
-- Documented with a comment block in the relevant `.tf` file.
-
----
-
-## 6. Emergency Change Procedure
-
-For P1 security incidents or outages:
-
-1. Engineer implements fix on `hotfix/<incident-id>` branch.
-2. Tech Lead approves via PR review (minimum 1 reviewer).
-3. CI/CD pipeline runs (tests must pass — no bypassing).
-4. Deploy to production.
-5. Retrospective within 5 business days; lessons learned added to `docs/management/RR.md`.
-6. Full CR documentation completed within 24 hours post-deployment.
-
----
-
-## 7. Change Log
-
-| CR-ID | Date | Category | Description | Approved By | Status |
-|-------|------|----------|-------------|-------------|--------|
-| CR-001 | 2026-04-29 | Normal | Migrate BaseSettings to pydantic-settings | Tech Lead | ✅ Merged |
-| CR-002 | 2026-04-29 | Normal | Parameterise all Gremlin queries (security fix) | Tech Lead | ✅ Merged |
-| CR-003 | 2026-04-29 | Normal | Externalise graph schema to config/graph_schema.json | Tech Lead | ✅ Merged |
-| CR-004 | 2026-04-29 | Normal | Add tenacity retry to Gremlin client | Tech Lead | ✅ Merged |
-
----
-
-*End of CMP — DBE-CMP-037 v1.0.0*
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

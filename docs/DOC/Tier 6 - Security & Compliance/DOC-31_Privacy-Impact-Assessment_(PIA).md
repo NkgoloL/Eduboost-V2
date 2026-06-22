@@ -1,130 +1,94 @@
 # Privacy Impact Assessment (PIA)
-**Document ID:** DBE-PIA-031  
-**Version:** 1.0.0  
-**Date:** 2026-04-29  
-**Classification:** RESTRICTED — Compliance Sensitive  
-**Regulatory Basis:** POPIA Act No. 4 of 2013 (South Africa)
 
----
+| Field | Value |
+|---|---|
+| Document ID | EDB-PIA-031 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-## 1. Purpose and Scope
+## Authoritative project baseline
 
-This PIA assesses the privacy risks associated with the DBE AI Expert System, identifies personal information processing activities, evaluates compliance with POPIA, and specifies required controls before the system may be deployed to production.
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
-**Scope:** All data flows involving personal information within or passing through the DBE AI Expert System, including query inputs, feedback data, API logs, and telemetry.
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
----
+### Claim discipline
 
-## 2. Personal Information Inventory
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
-| Data Category | Description | Collected? | Stored? | Shared? | POPIA Basis |
-|---------------|-------------|-----------|---------|---------|-------------|
-| User queries | Natural-language policy questions | Yes | No (transient) | No | Legitimate interest |
-| `user_id` field | Analyst identifier in `/ask` payload | Yes | No (logged to AppInsights) | No | Legitimate interest |
-| Feedback content | Query + response text | Yes | Yes (Blob 90 days) | No | Legitimate interest |
-| Learner PII (incidental) | SA ID numbers, names in queries | Possible | Must NOT be | Never | N/A — must be scrubbed |
-| API access logs | IP address, JWT claims (name/email) | Yes | Yes (APIM EventHub) | No | Legal obligation |
-| Azure AD identity | Logged-in user identity | Yes | Yes (Azure AD) | No | Contract |
+## Processing overview
 
----
+EduBoost processes child learner information and guardian information to deliver diagnostics, lessons, study plans, progress reporting and privacy workflows. POPIA controls are therefore central, not optional.
 
-## 3. Privacy Risks
+## Personal information categories
 
-| Risk ID | Description | Likelihood | Impact | POPIA Section |
-|---------|-------------|------------|--------|---------------|
-| PR-01 | Learner SA ID number captured in query logs | Medium | Critical | S.19 (Security safeguards) |
-| PR-02 | Feedback blobs containing PII retained beyond 90 days | Low | High | S.14 (Retention limitation) |
-| PR-03 | API logs with `user_id` accessible to unauthorised Azure users | Low | High | S.19 |
-| PR-04 | Query content routed to Azure ML (US East region) outside SA | Medium | High | S.72 (Transborder flows) |
-| PR-05 | No data subject access/erasure mechanism | High | Medium | S.23–24 (Data subject rights) |
-| PR-06 | No consent mechanism for query data use in ML retraining | High | High | S.11 (Consent) |
+| Category | Examples | Legal/control basis |
+|---|---|---|
+| Guardian/account | Identity, email/contact, auth/session metadata. | Account and consent administration. |
+| Learner profile | Name/display name, grade, subject, guardian relationship. | Learning service delivery with guardian consent. |
+| Learning records | Diagnostic responses, mastery gaps, lesson completions, study plans. | Adaptive learning and progress reporting. |
+| Consent records | Grant, deny, withdraw, renew and version history. | POPIA accountability. |
+| Data-rights records | Export, erasure, correction, restriction requests. | POPIA data subject rights. |
+| Audit records | Actor, action, timestamp, request context. | Legal accountability and incident investigation. |
 
----
+## Privacy risks
 
-## 4. Compliance Controls
+| Risk | Severity | Required control |
+|---|---|---|
+| Parent/guardian accesses unrelated learner | Critical | Object-level authorisation and regression tests. |
+| Consent state not enforced | Critical | Active consent dependency and consent lifecycle tests. |
+| Data export exposes excessive information | High | Export minimisation and review. |
+| Erasure deletes required legal evidence | High | Retention policy and auditable erasure execution. |
+| LLM provider receives unnecessary PII | High | Prompt minimisation, safety filters and provider governance. |
+| Logs contain child PII | High | Structured redaction and log review. |
 
-### POPIA Section Mapping
+## PIA decision
 
-| POPIA Condition | Section | Control Required | Status |
-|----------------|---------|-----------------|--------|
-| Accountability | S.8 | Designated Information Officer | ⚠️ Appoint before launch |
-| Processing limitation | S.9–10 | Query data used only for advisory; not sold | ✅ By design |
-| Purpose specification | S.13 | Privacy notice to users | ⚠️ Required |
-| Further processing limitation | S.15 | Feedback used only for model improvement | ✅ By design |
-| Information quality | S.16 | Policy documents validated before ingestion | ✅ Pipeline validation |
-| Openness | S.17–18 | Privacy Policy published | ⚠️ Required |
-| Security safeguards | S.19 | Encryption, access control, PII scrubbing | ⚠️ Partial |
-| Data subject participation | S.23–24 | Access/erasure endpoint | ⚠️ Not implemented |
+PIA status is **not production approved** by this document alone. Approval requires current legal, security and technical evidence and an ATO decision.
 
----
+## Source-of-truth references
 
-## 5. PII Scrubbing Requirement
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
 
-Before production launch, the following middleware must be implemented:
+## Standard verification gate
 
-```python
-import re
+Run the closest applicable subset before accepting a document-controlled change:
 
-# Patterns for South African PII
-SA_ID_PATTERN = re.compile(r'\b\d{13}\b')
-SA_PHONE_PATTERN = re.compile(r'\b0[6-8]\d{8}\b')
-SA_EMAIL_PATTERN = re.compile(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
-
-def scrub_pii(text: str) -> str:
-    """Remove South African PII patterns from log entries."""
-    text = SA_ID_PATTERN.sub('[ID-REDACTED]', text)
-    text = SA_PHONE_PATTERN.sub('[PHONE-REDACTED]', text)
-    text = SA_EMAIL_PATTERN.sub('[EMAIL-REDACTED]', text)
-    return text
+```bash
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
 ```
 
-This must be applied to:
-- All Application Insights log entries containing user query content.
-- Feedback blob content before storage (or at retrieval time).
-- APIM EventHub log entries.
-
----
-
-## 6. Transborder Data Flow Analysis
-
-| Flow | Origin | Destination | Personal Data Involved | POPIA S.72 Risk |
-|------|--------|-------------|----------------------|-----------------|
-| Query → Azure ML | SA North | East US (if ML endpoint in US) | Query text (possible PII) | High |
-| Feedback blobs | SA North | SA North only | Feedback text | None |
-| API logs | SA North | SA North (EventHub) | IP + user_id | None |
-
-**Required control for ML endpoint:** Either deploy Azure ML endpoint in `southafricanorth`, or obtain explicit consent for cross-border data transfer per POPIA S.72(1)(a).
-
----
-
-## 7. Data Retention Policy
-
-| Data | Retention Period | Deletion Mechanism |
-|------|-----------------|-------------------|
-| Query requests | Not stored (transient) | N/A |
-| Feedback blobs | 90 days | Azure Blob lifecycle management rule |
-| API logs (APIM EventHub) | 90 days | EventHub retention policy |
-| Application Insights telemetry | 90 days | Workspace retention setting |
-| Azure AD access logs | 30 days | Azure AD default |
-
----
-
-## 8. PIA Sign-Off Gate
-
-**This PIA must be reviewed and signed before production deployment.**
-
-| Role | Name | Decision | Date |
-|------|------|----------|------|
-| Information Officer | *TBD — DBE Legal* | ☐ Approved ☐ Rejected | |
-| DBE IT Security Officer | *TBD* | ☐ Approved ☐ Rejected | |
-| Lead Engineer | *TBD* | ☐ Approved ☐ Rejected | |
-
-**Open Items blocking sign-off:**
-- [ ] PR-01: PII scrubbing middleware deployed and tested (AC-013 in ATP).
-- [ ] PR-04: Azure ML endpoint region confirmed as `southafricanorth` or consent obtained.
-- [ ] PR-05: Data subject access/erasure endpoint implemented or process documented.
-- [ ] PR-06: Privacy notice published to all users.
-
----
-
-*End of PIA — DBE-PIA-031 v1.0.0*
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

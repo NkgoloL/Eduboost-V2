@@ -1,187 +1,92 @@
 # Coding Standards Document (CSD)
-**Document ID:** DBE-CSD-014  
-**Version:** 1.0.0  
-**Date:** 2026-04-29
 
----
+| Field | Value |
+|---|---|
+| Document ID | EDB-CSD-014 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-## 1. Language and Runtime
+## Authoritative project baseline
 
-| Item | Standard |
-|------|----------|
-| Language | Python 3.10+ |
-| Type Hints | Mandatory on all public function signatures |
-| Async | `async/await` for all I/O-bound operations |
-| String Formatting | f-strings for display; **binding dicts for all query construction** |
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
----
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
-## 2. Docstring Standard — Google Style
+### Claim discipline
 
-All public classes, methods, and module-level functions must have Google-style docstrings conforming to PEP 257.
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
-**Class docstring:**
-```python
-class KnowledgeGraphManager:
-    """Schema-validated Gremlin graph client with lazy initialisation.
+## Python standards
 
-    Provides parameterised query execution, retry logic, and full
-    schema validation loaded from config/graph_schema.json at runtime.
+| Standard | Requirement |
+|---|---|
+| Runtime | Python 3.12.3. |
+| Typing | Use explicit type hints for service boundaries and Pydantic contracts. |
+| Formatting/lint | Use ruff for release-blocking syntax/name checks and configured lint gates. |
+| Architecture | Keep routers thin; move workflow logic into services and persistence into repositories. |
+| Async | Await async calls; do not hide unawaited coroutine warnings. |
+| Database | Use Alembic for schema changes; avoid runtime schema creation for production state. |
+| Security | Never hard-code secrets; use settings and secret validation. |
 
-    Attributes:
-        _schema: Loaded schema definition dictionary.
-        _client: Lazily-initialised Gremlin client instance.
-    """
+## TypeScript/frontend standards
+
+| Standard | Requirement |
+|---|---|
+| Package manager | Use pnpm, not npm, for frontend work. |
+| Type safety | `pnpm run type-check` must pass. |
+| Unit tests | Vitest should cover service, route, accessibility and UI contracts. |
+| API layer | Keep backend route paths centralised and covered by contract tests. |
+| Styling/components | Preserve design-system consistency and accessibility contracts. |
+
+## Documentation standards
+
+- `docs/DOC` must describe EduBoost V2 only.
+- Stale DBE policy-advisory, Cosmos, Gremlin, gateway-first and external ML retraining content is prohibited unless explicitly documented as legacy/non-applicable.
+- Claims must be evidence-scoped: implemented, locally tested, CI verified, staging verified or production verified.
+
+## Source-of-truth references
+
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
+
+## Standard verification gate
+
+Run the closest applicable subset before accepting a document-controlled change:
+
+```bash
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
 ```
 
-**Method docstring:**
-```python
-def validate_schema(
-    self,
-    element_type: str,
-    label: str,
-    properties: Optional[List[str]] = None,
-) -> bool:
-    """Validate a graph element against the runtime schema definition.
-
-    Args:
-        element_type: Graph element class — must be 'vertex' or 'edge'.
-        label: The element label to validate against the schema registry.
-        properties: Optional list of property names to validate for label.
-            Unknown properties emit a WARNING but do not fail validation.
-
-    Returns:
-        True if the label is registered in the schema, False otherwise.
-
-    Raises:
-        TypeError: If element_type is neither 'vertex' nor 'edge'.
-
-    Example:
-        >>> manager = KnowledgeGraphManager(endpoint, key, "db", "graph")
-        >>> manager.validate_schema("vertex", "Document")
-        True
-        >>> manager.validate_schema("vertex", "InvalidType")
-        False
-    """
-```
-
----
-
-## 3. Naming Conventions
-
-| Construct | Convention | Example |
-|-----------|-----------|---------|
-| Module | `snake_case` | `graph_manager.py` |
-| Class | `PascalCase` | `KnowledgeGraphManager` |
-| Method / Function | `snake_case` | `get_documents_by_category` |
-| Private method | `_snake_case` | `_submit`, `_get_client` |
-| Constant | `UPPER_SNAKE_CASE` | `MAX_RETRIES` |
-| Variable | `snake_case` | `category_id` |
-| Type alias | `PascalCase` | `DocumentMap = Dict[str, Any]` |
-
----
-
-## 4. Logging Standards
-
-```python
-# ✅ Correct — lazy % formatting
-logger.info("Document '%s' ingested to category '%s'.", doc_id, category_id)
-logger.error("Gremlin query failed: %s", exc)
-
-# ❌ Wrong — eager f-string evaluation regardless of log level
-logger.info(f"Document {doc_id} ingested")  # PROHIBITED
-```
-
-| Level | Usage |
-|-------|-------|
-| `DEBUG` | Gremlin query strings, raw payloads (dev only) |
-| `INFO` | Successful operations with key identifiers |
-| `WARNING` | Recoverable anomalies, fallback activations, schema property mismatches |
-| `ERROR` | Failed operations with full exception context |
-| `CRITICAL` | System cannot continue — must page on-call |
-
-**Production log format (JSON):**
-```json
-{
-  "timestamp": "2026-04-29T12:00:00Z",
-  "level": "INFO",
-  "logger": "src.ingestion.graph_manager",
-  "message": "Document vertex added",
-  "document_id": "doc_001",
-  "duration_ms": 42
-}
-```
-
----
-
-## 5. Security Coding Rules
-
-| Rule | Enforcement |
-|------|-------------|
-| **No f-string in Gremlin queries** | Ruff rule + Bandit S608 |
-| **No hardcoded credentials** | Bandit B105, B106 + trufflehog in CI |
-| **No `eval()` or `exec()`** | Bandit B307 |
-| **All external inputs validated by Pydantic** | Code review gate |
-| **Exception messages must not expose internal paths or stack traces to API callers** | Code review gate |
-
----
-
-## 6. Testing Standards
-
-```python
-# ✅ Correct async test pattern (pytest-asyncio)
-@pytest.mark.asyncio
-async def test_expert_model_inference():
-    model = BaselinePolicyModel()
-    result = await model.predict("infrastructure query", "context")
-    assert "Infrastructure Recommendation" in result
-
-# ❌ Deprecated pattern (Python 3.10+)
-loop = asyncio.get_event_loop()
-result = loop.run_until_complete(model.predict(...))  # PROHIBITED
-```
-
-- Every new public method requires a unit test.
-- Every new endpoint requires an integration test.
-- Coverage floor: 80% (enforced by `--cov-fail-under=80` in CI).
-- No mocking at the service layer — use MSW or `pytest-httpx` to mock at the network layer.
-
----
-
-## 7. Import Organisation
-
-```python
-# Standard library
-import json
-import logging
-from typing import Any, Dict, List, Optional
-
-# Third-party
-import httpx
-from tenacity import retry, stop_after_attempt
-
-# Internal
-from src.ingestion.graph_manager import KnowledgeGraphManager
-from src.models.expert_model import ExpertModel
-```
-
-Order enforced by `ruff` isort rules.
-
----
-
-## 8. Code Review Checklist
-
-Before any PR is merged:
-- [ ] All public methods have Google-style docstrings
-- [ ] Type hints present on all function signatures
-- [ ] No f-strings in Gremlin query construction
-- [ ] No hardcoded credentials or secrets
-- [ ] Logging uses `%s` format, not f-strings
-- [ ] New functionality has corresponding tests
-- [ ] `ruff` passes with zero errors
-- [ ] `bandit` passes with zero HIGH findings
-- [ ] Coverage does not fall below 80%
-
----
-
-*End of CSD — DBE-CSD-014 v1.0.0*
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

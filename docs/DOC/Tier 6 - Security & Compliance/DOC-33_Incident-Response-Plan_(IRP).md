@@ -1,162 +1,87 @@
 # Incident Response Plan (IRP)
-**Document ID:** DBE-IRP-033  
-**Version:** 1.0.0  
-**Date:** 2026-04-29  
-**Classification:** RESTRICTED — Operations Sensitive
 
----
+| Field | Value |
+|---|---|
+| Document ID | EDB-IRP-033 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-## 1. Incident Severity Classification
+## Authoritative project baseline
 
-| Severity | Criteria | Response SLA | Examples |
-|----------|----------|-------------|---------|
-| **P1 — Critical** | Production down; data breach; POPIA violation | 15 min acknowledgement; 4 hr resolution | All endpoints returning 5xx; Cosmos key leaked; PII in logs |
-| **P2 — High** | Degraded performance; partial outage; security anomaly | 1 hr acknowledgement; 8 hr resolution | p95 > 5s; HPA not scaling; failed login spike |
-| **P3 — Medium** | Non-critical functional issue; compliance gap | 4 hr acknowledgement; next sprint | Feedback blob write failing; missing audit log |
-| **P4 — Low** | Minor issue; documentation gap | 24 hr acknowledgement; backlog | Wrong version in `/version` endpoint |
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
----
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
-## 2. Incident Response Phases
+### Claim discipline
 
-### Phase 1 — Detection & Triage (0–15 min)
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
-```
-Azure Monitor alert fires
-       │
-       ▼
-On-call engineer acknowledges in PagerDuty
-       │
-       ├── Classify severity (P1/P2/P3/P4)
-       │
-       ├── P1: Immediately page DBE IT Director + Security Officer
-       │
-       └── Open incident ticket in tracking system
-```
+## Incident categories
 
-**Initial triage checklist:**
+| Category | Examples | Initial response |
+|---|---|---|
+| Privacy/POPIA | Wrong learner disclosure, failed erasure, exported excessive data. | Contain access, preserve evidence, notify compliance owner. |
+| Security | Secret leak, account takeover, unauthorised admin access. | Revoke/rotate, disable access, inspect audit logs. |
+| Content safety | Incorrect answer key, harmful tutor response, unreviewed artifact published. | Quarantine content, block promotion, notify reviewers. |
+| Availability | API/database/Redis/frontend outage. | Triage health/readiness/logs and roll back if deployment-related. |
+| Data integrity | Migration failure, corrupted mastery/diagnostic state. | Stop writes if needed, restore from backup and validate schema. |
+
+## Response phases
+
+1. Detect and classify.
+2. Contain and preserve evidence.
+3. Eradicate root cause.
+4. Recover service.
+5. Communicate to stakeholders according to severity and legal obligation.
+6. Complete post-incident review and update controls.
+
+## Evidence requirements
+
+Every incident must have timestamps, affected users/data classes, root cause, remediation, prevention actions and owner/date for follow-up.
+
+## Source-of-truth references
+
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
+
+## Standard verification gate
+
+Run the closest applicable subset before accepting a document-controlled change:
+
 ```bash
-# Is the API responding?
-curl -sf https://api.dbe-expert.gov.za/health || echo "API DOWN"
-
-# Are pods running?
-kubectl get pods -n default
-
-# Any recent deployments?
-helm history dbe-agent --namespace default | tail -5
-
-# Any Azure service disruptions?
-az resource list --resource-type Microsoft.ContainerService/managedClusters \
-  --query "[].provisioningState"
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
 ```
 
----
-
-### Phase 2 — Containment (15 min – 2 hr)
-
-**For data breach / credential leak:**
-```bash
-# Immediately rotate all affected secrets
-az keyvault secret set --vault-name kv-dbe-prod \
-  --name cosmos-key --value "<NEW_KEY>"
-
-# Force pod restart to invalidate cached secrets
-kubectl rollout restart deployment/dbe-agent-dbe-agent-orchestrator
-
-# Revoke compromised Azure credentials
-az ad sp credential reset --id <SERVICE_PRINCIPAL_ID>
-```
-
-**For production instability:**
-```bash
-# Rollback to last known-good release
-helm rollback dbe-agent 0 --namespace default --wait
-
-# Verify health
-curl -sf https://api.dbe-expert.gov.za/health
-```
-
-**For POPIA breach (PII in logs):**
-1. Immediately notify DBE Information Officer.
-2. Identify scope — run Application Insights query to determine time range and data volume:
-   ```kusto
-   traces
-   | where message matches regex @'\b\d{13}\b'
-   | summarize count() by bin(timestamp, 1h)
-   ```
-3. Purge affected log entries via Azure Monitor data purge API.
-4. Begin 72-hour POPIA notification clock (S.22 — must notify IRSA if high risk).
-
----
-
-### Phase 3 — Eradication & Recovery (2 hr – RTO)
-
-1. Identify and eliminate root cause (patch code, update config, rotate credentials).
-2. Re-run CI/CD pipeline to deploy fixed version.
-3. Re-run ATP smoke tests (ref: `docs/verification/ATP.md` AC-001, AC-002, AC-003).
-4. Confirm from Application Insights that error rate returns to < 1%.
-
----
-
-### Phase 4 — Post-Incident Review (within 5 business days)
-
-**Post-Incident Report template:**
-
-```markdown
-## Post-Incident Report
-
-**Incident ID:** INC-YYYY-NNN
-**Date/Time:** YYYY-MM-DD HH:MM SAST
-**Duration:** X hours Y minutes
-**Severity:** P1 / P2 / P3
-**Systems Affected:** [list]
-
-### Timeline
-| Time | Event |
-|------|-------|
-| HH:MM | Alert fired |
-| HH:MM | On-call acknowledged |
-| HH:MM | Root cause identified |
-| HH:MM | Fix deployed |
-| HH:MM | Service restored |
-
-### Root Cause
-[Concise technical description]
-
-### Impact
-[Users affected, data impacted, SLA breach?]
-
-### Immediate Corrective Actions
-[What was done to restore service]
-
-### Long-term Preventive Actions
-[TODO items to prevent recurrence — add to docs/TODO.md]
-
-### Lessons Learned
-[What would we do differently?]
-```
-
----
-
-## 3. Escalation Matrix
-
-| Time Since P1 Alert | Action | Contact |
-|--------------------|--------|---------|
-| 0 min | On-call engineer responds | PagerDuty primary |
-| 15 min (no ack) | Escalate to backup on-call | PagerDuty secondary |
-| 30 min (unresolved) | Notify DBE IT Director | Direct call |
-| 60 min (unresolved) | Notify DBE CIO | Email + call |
-| 4 hr (unresolved) | Invoke DRP | DRP lead |
-| 72 hr (data breach) | Notify IRSA (POPIA S.22) | DBE Information Officer → IRSA |
-
----
-
-## 4. Incident Log
-
-| Incident ID | Date | Severity | Description | Resolution | PIR Complete |
-|-------------|------|----------|-------------|------------|--------------|
-| *(No incidents recorded)* | | | | | |
-
----
-
-*End of IRP — DBE-IRP-033 v1.0.0*
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

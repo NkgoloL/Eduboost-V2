@@ -1,109 +1,93 @@
 # Authority to Operate (ATO)
-**Document ID:** DBE-ATO-034  
-**Version:** 0.1.0 (DRAFT — Pending Completion)  
-**Date:** 2026-04-29  
-**Classification:** RESTRICTED — Executive
-
----
-
-## 1. System Identification
 
 | Field | Value |
-|-------|-------|
-| System Name | DBE AI Expert System |
-| Document ID | DBE-ATO-034 |
-| Owning Department | Department of Basic Education — IT Division |
-| System Custodian | DBE IT Director |
-| Environment | Production (`aks-dbe-expert-prod`) |
-| Data Classification | Official (non-secret), POPIA-bearing |
+|---|---|
+| Document ID | EDB-ATO-034 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
----
+## Authoritative project baseline
 
-## 2. ATO Preconditions Checklist
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
-All items below must be resolved before this ATO may be signed. Current status reflects Phase 2 baseline.
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
-### Security Preconditions
+### Claim discipline
 
-| # | Precondition | Evidence Required | Status |
-|---|-------------|------------------|--------|
-| SEC-01 | Gremlin injection vulnerability resolved | `docs/design/SecAD.md` §4.1; code review | ✅ |
-| SEC-02 | FastAPI OAuth2 authentication middleware deployed | Code + integration test | ❌ |
-| SEC-03 | `{{client-id}}` replaced with Key Vault Named Value in APIM | Terraform `azurerm_api_management_named_value` | ❌ |
-| SEC-04 | PII scrubbing middleware deployed and verified via AC-013 | ATR sign-off | ❌ |
-| SEC-05 | All secrets in Key Vault — no plaintext in code/images/values | Trufflehog scan report | ❌ |
-| SEC-06 | Container image vulnerability scan — zero CRITICAL CVEs | Trivy scan report | ❌ |
-| SEC-07 | Network policies restricting pod ingress/egress deployed | `kubectl get networkpolicies` | ❌ |
-| SEC-08 | Penetration test completed — no unresolved critical findings | External pentest report | ❌ |
-| SEC-09 | `localhost:3000` CORS origin removed from APIM policy | Code review | ❌ |
-| SEC-10 | `purge_protection_enabled = true` on production Key Vault | Terraform plan + `az keyvault show` | ❌ |
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
-### Compliance Preconditions
+## ATO status
 
-| # | Precondition | Evidence Required | Status |
-|---|-------------|------------------|--------|
-| COMP-01 | PIA signed by Information Officer | Signed `docs/security/PIA.md` | ❌ |
-| COMP-02 | Privacy notice published to all users | URL | ❌ |
-| COMP-03 | Information Officer appointed | DBE appointment letter | ❌ |
-| COMP-04 | Data subject access/erasure mechanism | Endpoint or documented process | ❌ |
-| COMP-05 | Azure ML endpoint confirmed in `southafricanorth` | Azure portal screenshot | ❌ |
-| COMP-06 | Compliance scripts executed and findings resolved | `scripts/compliance_checks.ps1` output | ❌ |
-| COMP-07 | Security audit scripts executed and findings resolved | `scripts/security_audit.ps1` output | ❌ |
+| Field | Value |
+|---|---|
+| System | EduBoost SA / EduBoost V2 |
+| Environment | Not specified by this document |
+| Current decision | Not authorised for production by this document |
+| Decision owner | Pending named approver |
+| Evidence bundle | Pending fresh CI/staging/security/POPIA/DR evidence |
 
-### Operational Preconditions
+## ATO decision criteria
 
-| # | Precondition | Evidence Required | Status |
-|---|-------------|------------------|--------|
-| OPS-01 | Acceptance Test Procedure (ATP) fully passed | Signed `docs/verification/ATP.md` | ❌ |
-| OPS-02 | SLA monitoring active (Azure Monitor alerts) | Alert rule screenshots | ❌ |
-| OPS-03 | DRP tested — RTO validated | DRP test report | ❌ |
-| OPS-04 | Deployment runbook reviewed by operations team | Signed `docs/operations/Deployment_Guide.md` | ❌ |
-| OPS-05 | Cosmos DB second geo-location configured | Terraform output | ❌ |
-| OPS-06 | APIM SKU upgraded to `Standard_1` | Terraform plan | ❌ |
-| OPS-07 | CI/CD pipeline fully operational (build, test, deploy) | GitHub Actions green badge | ❌ |
+| Criterion | Required evidence |
+|---|---|
+| Runtime health | App import, health/readiness and staging smoke. |
+| API correctness | OpenAPI/route inventory drift checks. |
+| Database readiness | Migration graph, schema integrity and backup/restore. |
+| Security | Secret validation, dependency scan, auth/object-level tests. |
+| POPIA | Consent and data-rights tests plus legal sign-off. |
+| Content | Launch scope coverage, review/promotion evidence and rollback plan. |
+| Frontend | pnpm lint, type-check, Vitest and E2E journey. |
+| Operations | Monitoring, incident response, rollback and support plan. |
 
----
+## ATO decision options
 
-## 3. Risk Acceptance Statement
+- **Deny**: release blocked.
+- **Conditional**: limited beta/staging with explicit compensating controls.
+- **Authorise**: only after all required evidence is current and accepted.
 
-By signing this ATO, the authorising officials acknowledge the following residual risks:
+## Source-of-truth references
 
-| Risk | Residual Level | Accepted By |
-|------|---------------|-------------|
-| Single Azure region deployment (DR-05) | Medium | *TBD* |
-| In-memory keyword search for graph (Phase 4 replacement) | Low | *TBD* |
-| 90-day feedback retention (may need extension) | Low | *TBD* |
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
 
----
+## Standard verification gate
 
-## 4. ATO Decision
+Run the closest applicable subset before accepting a document-controlled change:
 
-| Decision | ☐ AUTHORISED TO OPERATE |
-|----------|------------------------|
-| | ☐ INTERIM AUTHORISATION (conditions attached) |
-| | ☐ DENIED — remediation required |
+```bash
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
+```
 
-**Conditions (if Interim):**  
-_[List any conditions under which interim operation is permitted]_
-
-**Authorisation Period:** 12 months from signature date, with 6-month security review.
-
----
-
-## 5. Signatures
-
-| Role | Name | Signature | Date |
-|------|------|-----------|------|
-| DBE IT Director (System Owner) | | | |
-| DBE Information Officer (POPIA) | | | |
-| DBE IT Security Officer | | | |
-| QA Lead (ATP witness) | | | |
-
----
-
-**Current Status: ❌ NOT AUTHORISED — 24 of 24 preconditions outstanding.**  
-**Target ATO Date:** Phase 5 completion (~Week 10 of roadmap)
-
----
-
-*End of ATO — DBE-ATO-034 v0.1.0 (Draft)*
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

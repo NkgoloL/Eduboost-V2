@@ -1,123 +1,85 @@
-# DOC-17: Test Case Specification (TCS)
-**MIL-STD-498 / IEEE 1012**
+# Test Case Specification (TCS)
 
-## 1. Unit Test Cases
+| Field | Value |
+|---|---|
+| Document ID | EDB-TCS-017 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-**Status:** ✅ ALL 85 UNIT TESTS PASSING
-**Coverage:** 82% (test_irt_gap_probe.py, test_judiciary_schema_enforcement.py, et al.)
-**Last Run:** 2026-05-04 13:45 UTC
-**CI Status:** GREEN
+## Authoritative project baseline
 
-### 1.1 IRT Engine (app/modules/diagnostics/irt_engine.py)
-```python
-# TCS-001: test_eap_convergence_at_20_items
-def test_eap_convergence_at_20_items():
-    engine = IRTEngine()
-    responses = [generate_random_response() for _ in range(20)]
-    theta_final, se_final, _ = engine.update_theta_eap(responses)
-    assert se_final < 0.3 or len(responses) == 20
-    assert -3 <= theta_final <= 3
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
-# TCS-002: test_mfi_selection_maximizes_information
-def test_mfi_selection_maximizes_information():
-    engine = IRTEngine()
-    theta_current = 0.5
-    next_item = engine.select_next_item_mfi(theta_current)
-    fisher_info = engine.compute_fisher_information(next_item, theta_current)
-    # Compare against all other items in pool
-    for other_item in engine.item_pool:
-        assert fisher_info >= engine.compute_fisher_information(other_item, theta_current)
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
+
+### Claim discipline
+
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
+
+## Representative test cases
+
+| ID | Scenario | Expected result |
+|---|---|---|
+| TC-001 | Register guardian with valid payload. | Token pair and guardian context returned. |
+| TC-002 | Refresh revoked token. | Request denied and event/audit path exercised. |
+| TC-003 | Guardian creates learner then fetches profile. | Learner profile returned only to owning guardian/admin. |
+| TC-004 | Start diagnostic for launch scope. | Session created with first item available. |
+| TC-005 | Submit diagnostic response. | Response persisted; score/mastery updated transactionally. |
+| TC-006 | Generate study plan after gaps. | Plan reflects mastery gaps and CAPS coverage. |
+| TC-007 | Generate lesson for supported CAPS ref. | Lesson content includes trust/safety metadata and is persisted. |
+| TC-008 | Award XP. | Learner gamification profile updates and achievement rules evaluated. |
+| TC-009 | Parent dashboard request. | Progress summary and privacy controls returned for authorised guardian. |
+| TC-010 | POPIA export request. | Request persisted; authorised actor captured; audit evidence recorded. |
+| TC-011 | Content artifact approval without provenance. | Blocked by validation/review governance. |
+| TC-012 | OpenAPI check after route change. | Drift detected until docs/openapi.json is regenerated. |
+
+## Acceptance rule
+
+A test case is complete only when it includes setup, action, assertion, cleanup/isolation and evidence of which project risk it covers.
+
+## Source-of-truth references
+
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
+
+## Standard verification gate
+
+Run the closest applicable subset before accepting a document-controlled change:
+
+```bash
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
 ```
 
-### 1.2 Ether Archetype Engine (app/modules/learners/ether_service.py)
-```python
-# TCS-003: test_ether_classification_deterministic
-def test_ether_classification_deterministic():
-    ether = EtherService()
-    responses = {"pace": "fast", "modality": "visual", "motivation": "extrinsic", 
-                 "social": "solo", "challenge": "moderate"}
-    arch1 = ether.classify_archetype(responses)
-    arch2 = ether.classify_archetype(responses)
-    assert arch1 == arch2  # Deterministic
-    assert arch1 in VALID_ARCHETYPES
-
-# TCS-004: test_ether_confidence_threshold
-def test_ether_confidence_threshold():
-    ether = EtherService()
-    arch, confidence = ether.classify_with_confidence(responses)
-    assert confidence >= 0.6  # Posterior confidence minimum
-```
-
-### 1.3 Redis Semantic Cache (app/core/redis.py)
-```python
-# TCS-005: test_cache_hit_latency_p95
-def test_cache_hit_latency_p95():
-    cache = RedisClient()
-    key = cache.semantic_cache_key("grade_4", "fractions", "en", "Chokhmah")
-    cache.set_semantic_cache(key, LESSON_PAYLOAD, ttl=3600)
-    
-    latencies = []
-    for _ in range(1000):
-        start = time.perf_counter()
-        result = cache.get_semantic_cache(key)
-        latencies.append((time.perf_counter() - start) * 1000)  # ms
-    
-    p95 = np.percentile(latencies, 95)
-    assert p95 < 50  # < 50ms p95
-
-# TCS-006: test_cache_miss_fallback
-def test_cache_miss_fallback():
-    cache = RedisClient()
-    result = cache.get_semantic_cache("nonexistent_key")
-    assert result is None
-```
-
-### 1.4 Stripe Webhook (app/api_v2_routers/billing.py)
-```python
-# TCS-007: test_stripe_subscription_webhook_tier_update
-def test_stripe_subscription_webhook_tier_update():
-    event_data = {
-        "type": "customer.subscription.created",
-        "data": {"object": {"customer": STRIPE_CUSTOMER_ID, "status": "active"}}
-    }
-    response = client.post("/api/v2/billing/webhook", json=event_data)
-    assert response.status_code == 200
-    
-    guardian = db.query(Guardian).filter_by(stripe_customer_id=STRIPE_CUSTOMER_ID).first()
-    assert guardian.subscription_tier == "premium"
-```
-
-### 1.5 JWT Refresh Rotation (app/core/config.py)
-```python
-# TCS-008: test_jwt_refresh_rotation_generates_new_jti
-def test_jwt_refresh_rotation_generates_new_jti():
-    login_resp = client.post("/auth/login", json=LOGIN_CREDS)
-    refresh_token_1 = get_refresh_token_from_cookie(login_resp)
-    jti_1 = decode_token(refresh_token_1)["jti"]
-    
-    refresh_resp = client.post("/auth/refresh", cookies={"refresh_token": refresh_token_1})
-    refresh_token_2 = get_refresh_token_from_cookie(refresh_resp)
-    jti_2 = decode_token(refresh_token_2)["jti"]
-    
-    assert jti_1 != jti_2  # New JTI on rotation
-    assert is_jti_in_denylist(jti_1)  # Old JTI revoked
-```
-
-## 2. Integration Test Cases
-
-### 2.1 IRT ↔ Repository Flow
-- TCS-009: Diagnostic submission persists responses → Repository.save_diagnostic_response()
-- TCS-010: Theta update fetches latest item from DB → Repository.get_next_item()
-
-### 2.2 Billing ↔ Database Flow
-- TCS-011: Stripe webhook creates Guardian if missing
-- TCS-012: Subscription tier cascades to quota restrictions
-
-### 2.3 Auth ↔ Cache ↔ Database Flow
-- TCS-013: JWT denylist persisted in Redis
-- TCS-014: Key Vault secret rotation updates JWT_SECRET in-memory
-
-## 3. Contract Tests (Frontend ↔ Backend)
-- TCS-015: DiagnosticResult schema matches frontend expectation
-- TCS-016: LessonPayload content field accepts `string | LessonSection[]`
-- TCS-017: ParentDashboardResponse meets frontend type requirements
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

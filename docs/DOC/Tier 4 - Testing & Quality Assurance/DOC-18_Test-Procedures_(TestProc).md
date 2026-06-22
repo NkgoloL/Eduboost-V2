@@ -1,175 +1,102 @@
-# DOC-18: Test Procedures (TestProc)
-**MIL-STD-498 / IEEE 829**
+# Test Procedures
 
-## 1. Unit Test Execution Procedures
+| Field | Value |
+|---|---|
+| Document ID | EDB-TESTPROC-018 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-**Status:** ✅ PROCEDURES VALIDATED IN PRODUCTION
-**Last Execution:** 2026-05-04 13:45 UTC
-**Test Framework:** pytest v7.4.0 (backend), vitest v2.1.9 (frontend)
-**CI/CD Integration:** GitHub Actions (automated on every commit)
+## Authoritative project baseline
 
-### 1.1 Backend Unit Tests
-**Command:** `pytest tests/unit/ -v --cov=app --cov-fail-under=80`
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
-**Steps:**
-1. Activate virtual environment: `source .venv/bin/activate`
-2. Install test dependencies: `pip install -r requirements-dev.txt`
-3. Run pytest: `pytest tests/unit/`
-4. Verify coverage report: `pytest tests/unit/ --cov=app --cov-report=html`
-5. Check coverage/index.html for 80% threshold
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
-**Expected Output:**
-```
-tests/unit/test_irt_gap_probe.py::test_eap_convergence PASSED
-tests/unit/test_judiciary_schema_enforcement.py::test_malformed_llm_rejected PASSED
-...
-======================== 85 passed in 4.23s ========================
-coverage: 82% (487/594 lines)
-```
+### Claim discipline
 
-### 1.2 Frontend Unit Tests
-**Command:** `npm test`
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
-**Steps:**
-1. Navigate to frontend: `cd app/frontend`
-2. Install dependencies: `npm install`
-3. Run vitest: `npm test`
-4. Verify coverage: `npm run test:coverage`
+## Local procedure
 
-**Expected Output:**
-```
-✓ src/__tests__/ApiLayer.test.ts (11)
-✓ src/__tests__/OfflineSync.test.ts (5)
-✓ __tests__/EntryAndPortal.test.tsx (4)
-======================== 31 passed ========================
-Coverage: 81% (lines), 80% (branches)
-```
-
-## 2. Integration Test Execution
-
-### 2.1 Database Integration
-**Command:** `pytest tests/integration/test_*.py -v --tb=short`
-
-**Setup:**
-1. Ensure PostgreSQL running: `docker-compose up postgres`
-2. Apply migrations: `alembic upgrade head`
-3. Seed test data: `python scripts/seed_irt_items.py`
-
-**Steps:**
-1. Run integration tests: `pytest tests/integration/test_deep_health.py -v`
-2. Check Redis connectivity: `pytest tests/integration/test_redis_*.py -v`
-3. Validate LLM fallover: `pytest tests/integration/test_llm_*.py -v`
-
-### 2.2 API Contract Tests
-**Command:** `pytest tests/contract/ -v`
-
-**Setup:**
-1. Start mock backend: `python scripts/mock_backend.py &`
-2. Run frontend contract tests: `npm run test:contract`
-
-## 3. End-to-End Testing
-
-### 3.1 Playwright E2E Flow
-**Command:** `npx playwright test`
-
-**Setup:**
-1. Start full stack: `docker-compose up --build`
-2. Install playwright: `npx playwright install chromium`
-3. Run E2E suite: `npx playwright test --ui`
-
-**Test Flows:**
-- **E2E-001:** Learner → Registration → Login → Diagnostic → Lesson → Complete
-- **E2E-002:** Parent → Registration → Guardian → Dashboard → Export
-- **E2E-003:** Offline learner → Complete lesson → Sync on reconnect
-
-## 4. Performance Test Procedures
-
-### 4.1 Cache Latency Benchmark
-**Command:** `python scripts/benchmark_cache_latency.py`
-
-**Steps:**
-1. Prime cache: 1000 lessons loaded
-2. Measure hit latency: 5000 requests
-3. Calculate p50, p95, p99
-4. Verify: p95 < 50ms
-
-### 4.2 LLM Token Cost Tracking
-**Command:** `pytest tests/performance/test_llm_cost.py -v`
-
-**Metrics:**
-- Tokens/second: ≥ 10k tokens/s
-- Cost estimation: ≤ $0.01 per lesson
-- Cache hit ratio: ≥ 70%
-
-## 5. Security Test Procedures
-
-### 5.1 SAST (Static Analysis)
 ```bash
-# Bandit: Check for security issues
-bandit -r app/ --skip B101,B601
-
-# Ruff: Check for code quality
-ruff check app/
-
-# pip-audit: Dependency vulnerabilities
-pip-audit -r requirements.txt
+cp .env.example .env
+python3 -m venv .venv
+. .venv/bin/activate
+pip install -r requirements/dev.txt
+python3 -m compileall -q app scripts
+python3 scripts/check_runtime_entrypoints.py
+make test-fast
+cd app/frontend
+corepack enable
+pnpm install --frozen-lockfile
+pnpm run env-check
+pnpm run lint
+pnpm run type-check
+pnpm run test
 ```
 
-### 5.2 POPIA Data Protection
+## Docker procedure
+
 ```bash
-# PII sweep
-python scripts/popia_sweep.py --fail-on-issues
-
-# Check for hardcoded secrets
-git secrets --scan
+docker compose config
+docker compose up --build
+curl -fsS http://localhost:8000/health
+curl -fsS http://localhost:8000/ready
+curl -fsS http://localhost:8000/api/v2/health/deep
 ```
 
-### 5.3 DAST (Runtime Security)
+## Release procedure
+
+1. Run all local gates.
+2. Run GitHub Actions on the release branch.
+3. Run migration checks against disposable PostgreSQL.
+4. Deploy staging.
+5. Capture staging smoke, browser E2E, POPIA, backup/restore and rollback evidence.
+6. Update ATO decision and risk register.
+
+## Source-of-truth references
+
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
+
+## Standard verification gate
+
+Run the closest applicable subset before accepting a document-controlled change:
+
 ```bash
-# JWT expiry validation
-curl -X POST http://localhost:8000/api/v2/auth/refresh \
-  -H "Cookie: refresh_token=<expired_token>" \
-  -w "%{http_code}\n"  # Expected: 401
-
-# SQL injection prevention
-curl -X GET "http://localhost:8000/api/v2/learners/?query='; DROP TABLE--"
-# Expected: 200 with sanitized query or error
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
 ```
 
-## 6. Test Environment Configuration
-
-### 6.1 CI/CD Pipeline Tests
-All tests run on every commit via `.github/workflows/ci.yml`:
-- gitleaks (secrets scan)
-- pip-audit (dependency scan)
-- npm audit (frontend dependencies)
-- pytest (backend unit + integration)
-- vitest (frontend unit)
-- Playwright (E2E)
-- Bandit (SAST)
-
-### 6.2 Test Execution Timeline
-| Phase | Tests | Duration | Trigger |
-|-------|-------|----------|---------|
-| Commit | Lint, gitleaks | 1m | Every commit |
-| PR | Unit tests (80% coverage) | 5m | Pre-merge |
-| Merge | Integration tests | 10m | Post-merge to develop |
-| Release | E2E + Performance | 20m | Pre-release |
-
-## 7. Test Failure Resolution
-
-### 7.1 Unit Test Failure
-1. Identify failing test: `pytest tests/unit/test_foo.py::test_bar -v`
-2. Debug locally: Add `--pdb` flag
-3. Fix code or test
-4. Rerun: `pytest tests/unit/test_foo.py::test_bar -v`
-
-### 7.2 Integration Test Failure
-1. Check service connectivity: `pytest tests/integration/test_health.py -v`
-2. Verify DB state: `psql eduboost_test -c "SELECT COUNT(*) FROM learner_profiles;"`
-3. Reset test DB: `alembic downgrade base && alembic upgrade head`
-
-### 7.3 E2E Failure
-1. Review screenshot: `./playwright-report/test_failure.html`
-2. Check browser logs: `npx playwright test --debug`
-3. Rerun failed test: `npx playwright test --grep "test_name"`
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

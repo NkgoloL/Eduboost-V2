@@ -1,204 +1,89 @@
 # Disaster Recovery Plan (DRP)
-**Document ID:** DBE-DRP-026  
-**Version:** 1.0.0  
-**Date:** 2026-04-29  
-**Classification:** RESTRICTED — Operations Sensitive
 
----
+| Field | Value |
+|---|---|
+| Document ID | EDB-DRP-026 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-## 1. Recovery Objectives
+## Authoritative project baseline
 
-| Objective | Target | Measurement |
-|-----------|--------|-------------|
-| Recovery Time Objective (RTO) | 4 hours | Time from incident declaration to service restoration |
-| Recovery Point Objective (RPO) | 1 hour | Maximum acceptable data loss |
-| Maximum Tolerable Downtime (MTD) | 8 hours | Business tolerance limit |
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
----
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
-## 2. Disaster Scenarios and Recovery Procedures
+### Claim discipline
 
-### Scenario DR-01 — Single AKS Node Failure
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
-**Detection:** Azure Monitor node health alert; pod eviction events in `kubectl get events`.  
-**Automatic Recovery:** AKS automatically reschedules pods on healthy nodes within 5 minutes (`PodDisruptionBudget` ensures 1 replica always available).  
-**Manual Verification:**
+## Recovery objectives
+
+| Asset | Target RPO | Target RTO | Evidence needed |
+|---|---:|---:|---|
+| PostgreSQL primary data | Defined by deployment tier | Defined by deployment tier | Backup/restore drill. |
+| Redis cache/queue | Best effort for cache; job recovery policy for ARQ | Defined by operations | Worker retry/dead-letter evidence. |
+| Content artifacts | Repository-backed and object storage backed where used | Restore from repo/artifacts | Checksum and promotion history. |
+| Frontend/API containers | Rebuild from commit | Minutes to hours | Container build logs and deploy rollback proof. |
+| Audit/POPIA evidence | Highest priority retention | As defined legally | Immutable backup and access controls. |
+
+## DR scenarios
+
+| Scenario | Response |
+|---|---|
+| Database corruption | Stop writes, snapshot evidence, restore last known-good backup, run migrations, validate integrity. |
+| Redis loss | Restart Redis, rehydrate cache naturally, inspect ARQ job loss/retry impact. |
+| Bad deployment | Roll back to previous container/image/commit; verify health and route contracts. |
+| Content artifact defect | Quarantine artifact, remove from production promotion, notify reviewers and regenerate evidence. |
+| Secret compromise | Rotate affected secrets, revoke sessions/tokens, audit access and redeploy. |
+| POPIA evidence loss | Escalate as compliance incident and follow incident response plan. |
+
+## DR validation
+
+A release cannot claim DR readiness until backup, restore and rollback evidence is attached for the target environment.
+
+## Source-of-truth references
+
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
+
+## Standard verification gate
+
+Run the closest applicable subset before accepting a document-controlled change:
+
 ```bash
-kubectl get nodes
-kubectl get pods -n default -o wide
-curl -sf https://api.dbe-expert.gov.za/health
-```
-**RTO:** ~5 minutes (automatic). Manual steps only if automatic recovery fails.
-
----
-
-### Scenario DR-02 — Full AKS Cluster Failure
-
-**Detection:** All `/health` checks fail; no pods running.
-
-**Recovery Steps:**
-```bash
-# Step 1: Determine failure cause
-az aks show --name aks-dbe-expert-prod \
-  --resource-group rg-dbe-ai-expert-system \
-  --query "provisioningState"
-
-# Step 2: If cluster is failed/deleting, re-provision via Terraform
-cd infrastructure/
-terraform apply -target=azurerm_kubernetes_cluster.main -auto-approve
-
-# Step 3: Re-get credentials
-az aks get-credentials --resource-group rg-dbe-ai-expert-system \
-  --name aks-dbe-expert-prod
-
-# Step 4: Re-deploy application
-helm upgrade --install dbe-agent helm/dbe-agent-orchestrator/ \
-  --set image.tag=$(git rev-parse --short HEAD) \
-  --wait --timeout 10m
-
-# Step 5: Validate
-curl -sf https://api.dbe-expert.gov.za/health
-```
-
-**Estimated RTO:** 45–90 minutes.
-
----
-
-### Scenario DR-03 — Cosmos DB Account Failure / Data Corruption
-
-**Detection:** Gremlin health check fails; Cosmos DB portal shows degraded state.
-
-**Recovery from Point-in-Time Backup:**
-```bash
-# Step 1: Identify corruption timestamp
-# Check Application Insights for last known-good timestamp
-
-# Step 2: Trigger PITR restore (7-day window)
-az cosmosdb restore \
-  --target-database-account-name cosmos-dbe-expert-prod-restored \
-  --account-name cosmos-dbe-expert-prod \
-  --restore-timestamp "2026-04-29T10:00:00Z" \
-  --location "southafricanorth" \
-  --resource-group rg-dbe-ai-expert-system
-
-# Step 3: Update Key Vault secret with new endpoint
-az keyvault secret set \
-  --vault-name kv-dbe-prod \
-  --name cosmos-endpoint \
-  --value "<RESTORED_ENDPOINT>"
-
-# Step 4: Rolling restart to pick up new secret
-kubectl rollout restart deployment/dbe-agent-dbe-agent-orchestrator
-
-# Step 5: Re-initialise graph if needed
-export COSMOS_GREMLIN_ENDPOINT=<RESTORED_GREMLIN_ENDPOINT>
-python src/ingestion/graph_manager.py
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
 ```
 
-**Estimated RTO:** 2–4 hours (PITR restore time depends on data volume).  
-**RPO:** Up to 1 hour (continuous backup).
-
----
-
-### Scenario DR-04 — Azure Blob Storage Failure (Feedback Loss)
-
-**Detection:** Feedback blob write errors in Application Insights.
-
-**Impact Assessment:** Feedback data from the failure window may be unrecoverable. Existing blobs are safe (LRS/GRS redundancy).
-
-**Recovery Steps:**
-```bash
-# Verify storage account status
-az storage account show \
-  --name stdbeexpertprod \
-  --query "statusOfPrimary"
-
-# If primary region unavailable, failover to secondary (GRS)
-az storage account failover \
-  --name stdbeexpertprod \
-  --resource-group rg-dbe-ai-expert-system --yes
-
-# Update connection string secret
-NEW_CONN=$(az storage account show-connection-string \
-  --name stdbeexpertprod \
-  --resource-group rg-dbe-ai-expert-system \
-  --query connectionString -o tsv)
-
-az keyvault secret set \
-  --vault-name kv-dbe-prod \
-  --name storage-connection-string \
-  --value "$NEW_CONN"
-
-kubectl rollout restart deployment/dbe-agent-dbe-agent-orchestrator
-```
-
----
-
-### Scenario DR-05 — Azure Region Outage (South Africa North)
-
-**Detection:** Azure Service Health alert; all endpoints unreachable.
-
-**Failover to East US:**
-```bash
-# Step 1: Provision infrastructure in East US (pre-configured as Terraform workspace)
-cd infrastructure/
-terraform workspace select eastus
-terraform apply -var="location=eastus" -var="environment=prod" -auto-approve
-
-# Step 2: Update DNS (api.dbe-expert.gov.za) to point to East US APIM
-# (Manual step via DNS provider)
-
-# Step 3: Verify service in East US
-curl -sf https://api-dr.dbe-expert.gov.za/health
-```
-
-**Estimated RTO:** 3–6 hours (DNS propagation included).  
-**Note:** Cosmos DB second `geo_location` must be configured (TODO item in `docs/TODO.md`).
-
----
-
-### Scenario DR-06 — Key Vault Secret Compromise
-
-**Detection:** Security alert; suspected credential leak.
-
-**Immediate Actions:**
-```bash
-# Step 1: Rotate ALL secrets immediately
-for SECRET in cosmos-endpoint cosmos-key azure-ml-key jwt-secret storage-connection-string; do
-  echo "Rotating $SECRET..."
-  # Generate or retrieve new value, then:
-  az keyvault secret set --vault-name kv-dbe-prod --name $SECRET --value "<NEW_VALUE>"
-done
-
-# Step 2: Rolling restart to invalidate old credentials in running pods
-kubectl rollout restart deployment/dbe-agent-dbe-agent-orchestrator
-
-# Step 3: Revoke old Cosmos DB keys via portal
-# Step 4: Notify security officer and initiate IRP
-```
-
----
-
-## 3. DR Test Schedule
-
-| Test | Frequency | Last Tested | Next Test |
-|------|-----------|-------------|-----------|
-| DR-01 (Node failure) | Quarterly | *Pending* | Phase 5 |
-| DR-02 (Cluster failure) | Semi-annually | *Pending* | Phase 5 |
-| DR-03 (Cosmos PITR) | Semi-annually | *Pending* | Phase 5 |
-| DR-05 (Region failover) | Annually | *Pending* | Post-launch |
-
----
-
-## 4. Recovery Team Contacts
-
-| Role | Responsibility | Escalation Timeout |
-|------|---------------|-------------------|
-| On-Call Engineer | First responder; DR-01, DR-02 | Immediate |
-| DevOps Lead | Infrastructure recovery; DR-02, DR-03 | 15 minutes |
-| DBE IT Director | Business decision on MTD breach | 30 minutes |
-| Microsoft Azure Support | DR-05 region-level incidents | Concurrent |
-
----
-
-*End of DRP — DBE-DRP-026 v1.0.0*
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

@@ -1,116 +1,86 @@
 # Project Management Plan (PMP)
-**Document ID:** DBE-PMP-035  
-**Version:** 1.0.0  
-**Date:** 2026-04-29  
-**Classification:** Internal — Controlled
-
----
-
-## 1. Project Overview
 
 | Field | Value |
-|-------|-------|
-| Project Name | DBE AI Expert System |
-| Sponsor | DBE IT Director |
-| Project Manager | TBD |
-| Start Date | 2026-03-01 |
-| Target Completion | 2026-06-30 (10 weeks remaining) |
-| Budget | Within existing Azure Enterprise Agreement |
+|---|---|
+| Document ID | EDB-PMP-035 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
----
+## Authoritative project baseline
 
-## 2. Scope Statement
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
-**In scope:**
-- All 83 TODO items documented in `docs/TODO.md`.
-- Five delivery phases (Phase 1 complete; Phases 2–5 in progress).
-- All 39 documentation artefacts in this document suite.
-- POPIA compliance certification and ATO sign-off.
-- Production deployment to `southafricanorth` Azure region.
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
-**Out of scope:**
-- Web UI / portal for end users (separate project).
-- Intranet identity provider integration.
-- Mobile application.
-- Content management of policy documents.
+### Claim discipline
 
----
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
-## 3. Delivery Schedule
+## Project approach
 
-| Phase | Focus | Weeks | Status |
-|-------|-------|-------|--------|
-| Phase 1 | Foundation & Infrastructure | 1–2 | ✅ Complete |
-| Phase 2 | Intelligence & Data | 3–4 | 🔄 ~50% |
-| Phase 3 | Integration & CI/CD | 5–7 | ⬜ Not started |
-| Phase 4 | Optimisation & LLM | 7–9 | ⬜ Not started |
-| Phase 5 | Production & Governance | 9–10 | ⬜ Not started |
+EduBoost V2 is managed as evidence-gated delivery. Each phase must define scope, acceptance criteria, implementation report, evidence pack and audit result before being called complete.
 
-### Detailed Milestone Schedule
+## Workstreams
 
-| Milestone | Target Date | Deliverable |
-|-----------|-------------|-------------|
-| M1 | Week 4 | Phase 2 complete — 80% test coverage, Gremlin traversal wired |
-| M2 | Week 5 | CI/CD pipeline green — build, test, Trivy, deploy to staging |
-| M3 | Week 6 | APIM JWT, FastAPI auth, PII scrubbing deployed to staging |
-| M4 | Week 7 | AKS fully managed — HPA, SecretProviderClass, NetworkPolicy |
-| M5 | Week 8 | Azure Monitor alerts, structured logging, Application Insights live |
-| M6 | Week 9 | Performance benchmarks completed (PBR populated) |
-| M7 | Week 9 | Penetration test completed |
-| M8 | Week 10 | ATP executed and signed |
-| M9 | Week 10 | PIA signed; ATO issued; production deployment |
+| Workstream | Scope |
+|---|---|
+| Product learning path | Learner onboarding, diagnostics, lessons, tutor, study plans, practice and gamification. |
+| Parent/privacy | Parent portal, consent, data rights, reports and POPIA evidence. |
+| Content Factory | CAPS source evidence, item/lesson generation, review, seed and promotion gates. |
+| Platform engineering | Backend, frontend, DB, Redis/ARQ, API contracts and CI. |
+| Security/compliance | Threat model, PIA, security plan, incident response and ATO. |
+| Operations | Deployment, monitoring, backup/restore, rollback and support readiness. |
 
----
+## Governance controls
 
-## 4. Resource Plan
+- Source-of-truth docs under `docs/` and roadmap execution namespace.
+- Controlled evidence under release/evidence folders.
+- No phase closure without acceptance evidence.
+- No production claim without ATO and release evidence.
 
-| Role | Allocation | Responsibilities |
-|------|-----------|-----------------|
-| Lead Engineer | 100% | Architecture, code review, Phase 3–4 implementation |
-| Backend Engineer | 100% | Python services, Gremlin, FastAPI |
-| DevOps Engineer | 80% | Terraform, Helm, CI/CD, AKS, monitoring |
-| ML Engineer | 50% | Azure ML endpoints, retraining pipeline |
-| Security Engineer | 30% | Threat model, pen test coordination, compliance scripts |
-| QA Engineer | 50% | Test plan, ATP execution, coverage reporting |
-| DBE Legal | 20% | PIA review, Information Officer appointment, privacy notice |
+## Source-of-truth references
 
----
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
 
-## 5. Communication Plan
+## Standard verification gate
 
-| Communication | Frequency | Format | Audience |
-|---------------|-----------|--------|---------|
-| Sprint standup | Daily | 15-min call | Engineering team |
-| Sprint review | Bi-weekly | Demo + retro | All stakeholders |
-| Phase completion report | Per phase | Written report | DBE management |
-| Security status | Weekly | Email | Security Officer |
-| Incident notification | Ad hoc | Email + call | IT Director |
-| DOC_MASTER_TRACKER | Continuous | Git commit | All |
+Run the closest applicable subset before accepting a document-controlled change:
 
----
+```bash
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
+```
 
-## 6. Budget Management
-
-| Category | Allocated | Estimated Monthly | Notes |
-|----------|-----------|-------------------|-------|
-| AKS (2 nodes D2s_v2) | R8,000/month | R8,000 | Scale up in Phase 4 |
-| Cosmos DB (Gremlin) | R3,500/month | R3,500 | 400 RU/s base |
-| Azure ML Workspace | R2,000/month | R2,000 | Endpoint hosting |
-| APIM Standard_1 | R4,000/month | R4,000 | Production only |
-| Storage + Key Vault | R500/month | R500 | |
-| **Total** | **~R18,000/month** | | Within EA budget |
-
----
-
-## 7. Acceptance Criteria
-
-The project is considered complete when:
-1. All 24 ATO preconditions in `docs/security/ATO.md` are resolved.
-2. ATO signed by all required authorising officials.
-3. System live in production (`api.dbe-expert.gov.za`) with 99.9% uptime SLA.
-4. First 100 queries processed with average rating ≥ 3.5.
-5. All 83 TODO items in `docs/TODO.md` resolved or formally deferred.
-
----
-
-*End of PMP — DBE-PMP-035 v1.0.0*
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.

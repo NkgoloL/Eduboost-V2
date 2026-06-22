@@ -1,110 +1,91 @@
 # Release Notes
-**Document ID:** DBE-RN-028  
-**Version History:** All releases
 
----
+| Field | Value |
+|---|---|
+| Document ID | EDB-REL-028 |
+| Product | EduBoost SA / EduBoost V2 |
+| Version | 2.0 aligned baseline |
+| Generated | 2026-06-22 |
+| Status | Aligned baseline draft |
+| Classification | Internal - controlled |
+| Replacement note | Replaces stale DBE policy-advisory content previously found in `docs/DOC` |
 
-## Release 0.1.0 — Phase 2 Foundation
-**Date:** 2026-04-29  
-**Status:** Development  
-**Branch:** `develop`
+## Authoritative project baseline
 
-### Summary
-Establishes the intelligence and data layer for the DBE AI Expert System. This release delivers a fully tested knowledge graph schema framework, an end-to-end ingestion flow orchestrator, and a corrected orchestration service.
+This document is aligned to the EduBoost V2 repository supplied on 2026-06-22. It replaces the prior `docs/DOC` material that described a different DBE policy-advisory system.
 
-### New Features
+| Area | Current baseline |
+|---|---|
+| Product | EduBoost SA, a CAPS-aligned adaptive learning platform for South African primary learners |
+| Active backend | `app/api_v2.py` FastAPI modular monolith, mounted under `/api/v2` and `/v2` |
+| Frontend | `app/frontend`, package `eduboost-sa-frontend`, Next.js `16.2.7`, React `18.3.1`, TypeScript `5.4.5` |
+| Package manager | pnpm `9.14.4` for frontend |
+| Python runtime | Python `3.12.3` |
+| Persistence | PostgreSQL via SQLAlchemy/Alembic; 44 Alembic revision files in the supplied archive |
+| Queue/cache | Redis and ARQ worker path (`app.modules.jobs.WorkerSettings`); V2 should not introduce Celery/RabbitMQ for new work |
+| Launch curriculum scope | `grade4_mathematics_en`: CAPS refs 4.M.1.1, 4.M.1.2, 4.M.1.3 |
+| Content targets | 40 approved diagnostic items, 8 approved lessons, 1 assessment blueprint, and 1 study-plan template per launch CAPS ref |
+| API surface | 205 route handlers discovered by static router scan, plus health/readiness/metrics root routes |
+| Tests | 767 backend test files and approximately 44 frontend test/spec files in the archive |
+| Workflows | 44 GitHub Actions workflow files |
 
-- **Knowledge Graph Manager** (`src/ingestion/graph_manager.py`)
-  - Lazy, fault-tolerant Gremlin client with tenacity retry and exponential backoff.
-  - Schema loaded from external `config/graph_schema.json` — no hardcoded definitions.
-  - Idempotent graph initialisation via Gremlin `coalesce()` pattern.
-  - Full traversal API: `get_documents_by_category()`, `search_documents_by_keyword()`, `get_related_categories()`, `get_agent_triggers()`.
-  - `health_check()` method for independent connectivity verification.
+### Claim discipline
 
-- **Security Hardening**
-  - All Gremlin queries converted to parameterised binding dictionaries — query injection vector eliminated.
-  - `config/graph_schema.json` externalised for runtime schema management.
+Unless fresh CI, staging, backup/restore, security, POPIA and release evidence is attached, these documents describe the current implementation and target operating model. They must not be used to claim that the system is production-ready.
 
-- **Documentation Suite** (39 documents)
-  - Tiers 1–7 covering requirements, architecture, design, implementation, verification, operations, security, and project management.
+## Release note template
 
-### Bug Fixes
+| Field | Value |
+|---|---|
+| Release | TBD |
+| Branch/SHA | TBD |
+| Environment | TBD |
+| Release manager | TBD |
+| ATO decision | Pending |
 
-- **BUG-002** (Critical): Fixed `ImportError` on Pydantic v2 — migrated `BaseSettings` import to `pydantic_settings`.
-- **BUG-006**: Fixed `asyncio.get_event_loop()` deprecation in `tests/test_models.py` — replaced with `pytest-asyncio`.
-- **BUG-007**: Fixed `pyproject.toml` package discovery configuration (`package-dir` mapping).
+## Current aligned baseline changes
 
-### Dependency Changes
+- Replaced stale `docs/DOC` content that described a DBE policy-advisory expert system.
+- Documented EduBoost V2 runtime: FastAPI, Next.js, PostgreSQL, Redis/ARQ, Content Factory, diagnostics, IRT, parent portal, study plans, gamification and POPIA.
+- Preserved the existing `docs/DOC` folder/file names for drop-in replacement, despite spelling errors in the legacy paths.
+- Added claim discipline and verification requirements to every controlled document.
 
-| Package | Change | Version |
-|---------|--------|---------|
-| `pydantic-settings` | Added | `≥2.0.0` |
-| `pytest-asyncio` | Added | `≥0.21.0` |
-| `pytest-cov` | Added | `≥4.1.0` |
-| `pytest-httpx` | Added | `≥0.21.0` |
-| `tenacity` | Added | latest |
-| `python-json-logger` | Added | `≥2.0.7` |
-| `opencensus-ext-azure` | Added | `≥1.1.13` |
-| `redis` | Added | `≥4.6.0` |
-| `ruff` | Added (dev) | `≥0.1.0` |
-| `bandit` | Added (dev) | `≥1.7.5` |
+## Release blockers to track per release
 
-### Known Issues
+- Fresh backend and frontend gates.
+- OpenAPI and route inventory drift.
+- POPIA data-rights route/client compatibility.
+- Migration and schema integrity.
+- Content Factory registry/coverage and launch content proof.
+- Security scan and dependency enforcement.
+- Staging smoke, E2E, backup, restore and rollback evidence.
 
-| ID | Severity | Description |
-|----|----------|-------------|
-| BUG-001 | Critical | `retrieve_context()` in `main.py` returns static string — not connected to graph. Targeted Phase 3. |
-| BUG-003 | High | Performance test assertions only validate `> 0` threshold — no real Gremlin measurements yet. |
-| BUG-004 | High | Gremlin injection regression test not yet implemented. |
-| BUG-005 | High | `AzureMLExpertModel.predict()` has no test coverage. |
+## Source-of-truth references
 
-### Upgrade Instructions
+- Runtime entrypoint: `app/api_v2.py`
+- Backend routers: `app/api_v2_routers/` and `app/modules/practice/router.py`
+- Domain contracts: `app/domain/`
+- Persistence models: `app/models/`, `app/repositories/`, `alembic/versions/`
+- Content Factory: `app/services/content_factory*.py`, `app/api_v2_routers/content_factory.py`, `data/content_factory/`
+- Diagnostics and IRT: `app/services/diagnostic*.py`, `app/api_v2_routers/diagnostics.py`, `app/api_v2_routers/irt_quality.py`
+- Parent portal and POPIA: `app/api_v2_routers/parents.py`, `app/api_v2_routers/popia.py`, `app/services/popia_service.py`
+- Frontend: `app/frontend/package.json`, `app/frontend/src/`
+- Operations: `docker-compose.yml`, `docker-compose.prod.yml`, `.github/workflows/`, `docs/operations/`
+
+## Standard verification gate
+
+Run the closest applicable subset before accepting a document-controlled change:
 
 ```bash
-git pull origin develop
-pip install -e ".[dev]"     # picks up new pydantic-settings and test deps
-pytest tests/ -v            # verify 25 tests pass
+python3 -m compileall -q app scripts
+python3 -m ruff check app tests scripts --select E9,F63,F7,F82,F821
+python3 scripts/verify_migration_graph.py
+python3 scripts/validate_schema_integrity.py
+python3 scripts/check_runtime_entrypoints.py
+python3 scripts/generate_openapi.py --check
+python3 scripts/generate_route_inventory.py --check
+make test-fast
+cd app/frontend && pnpm run env-check && pnpm run lint && pnpm run type-check && pnpm run test
 ```
 
-### Breaking Changes
-
-None — this is an internal development release. No external API contracts changed.
-
----
-
-## Release 0.0.1 — Phase 1 Foundation
-**Date:** 2026-04-01  
-**Status:** Superseded
-
-### Summary
-Initial repository setup. Terraform infrastructure definitions, Docker container, FastAPI skeleton, and knowledge ingestion pipeline MVP.
-
-### Contents
-- Azure infrastructure (Terraform): Resource Group, VNet, AKS, Cosmos DB, Azure ML, APIM, Key Vault.
-- FastAPI orchestration service with `/health`, `/ask`, `/feedback` stubs.
-- `KnowledgeIngestionPipeline` — Cosmos DB upsert via SQL API.
-- `BaselinePolicyModel` — keyword heuristic fallback.
-- CI/CD: GitHub Actions Terraform workflow.
-- Helm chart: `dbe-agent-orchestrator`.
-
----
-
-## Planned: Release 0.2.0 — Phase 3 Integration
-**Target Date:** +3 weeks  
-**Status:** Planned
-
-### Planned Contents
-- FastAPI OAuth2 JWT authentication middleware.
-- `retrieve_context()` wired to `KnowledgeGraphManager.search_documents_by_keyword()`.
-- Cosmos DB Gremlin + graph resources provisioned via Terraform.
-- ACR provisioned and CI/CD image build/push pipeline active.
-- Cosmos DB Emulator in GitHub Actions CI.
-- Application Insights SDK integrated (structured JSON logs, distributed traces).
-- Azure Monitor alert rules deployed via Terraform.
-- HPA manifest (`hpa.yaml`) added to Helm chart.
-- `SecretProviderClass` for Key Vault CSI driver.
-- All Phase 2 TODO items from `docs/TODO.md` resolved.
-
----
-
-*End of Release Notes — DBE-RN-028 v1.0.0*
+For release claims add integration tests, Docker Compose validation, staging smoke tests, Playwright E2E, backup/restore proof, rollback proof, and security/POPIA evidence.
