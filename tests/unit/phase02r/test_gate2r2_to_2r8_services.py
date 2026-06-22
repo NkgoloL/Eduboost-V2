@@ -42,7 +42,7 @@ def test_gate2r2_acquisition_requires_hash_and_rejects_pii(tmp_path: Path) -> No
 def test_gate2r3_extraction_preserves_page_and_chunk_hashes(tmp_path: Path) -> None:
     source = tmp_path / "caps.txt"
     source.write_text("PAGE ONE\n\nWhole numbers\fPAGE TWO\n\nFractions", encoding="utf-8")
-    result = StructuredTextExtractor(max_chunk_chars=80).extract_text_fixture(source, language="en")
+    result = StructuredTextExtractor(max_chunk_chars=120).extract_text_fixture(source, language="en")
     assert [page.page_number for page in result.pages] == [1, 2]
     assert all(len(page.text_sha256) == 64 for page in result.pages)
     assert result.chunks and result.chunks[0].page_start == 1
