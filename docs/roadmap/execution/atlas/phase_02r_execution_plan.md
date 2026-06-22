@@ -2156,7 +2156,7 @@ PHASE_02R_START_APPROVED=true
 | Gate 2R.1 premature closure claim | Superseded / invalid | `docs/release-evidence/atlas/phase-02r/gate-2r1/superseded/2026-06-16-premature-transition/` | No authority |
 | Gate 2R.1 current state | In Progress | This v1.5 amendment and implementation patch | Gate 2R.2 remains blocked |
 
-**Current decision:** Gate 2R.3 is Verified Complete. Gate 2R.4 is Authorised. `PHASE_02R_START_APPROVED` remains `true` because Phase 2R execution has started, while `phase_02r_start_gate_control.json` authorises only Gate 2R.3.
+**Current decision:** Gate 2R.3 is Verified Complete. Gate 2R.4 is Authorised. `PHASE_02R_START_APPROVED` remains `true` because Phase 2R execution has started, and the current gate control authorises Gate 2R.4 only.
 
 ---
 
