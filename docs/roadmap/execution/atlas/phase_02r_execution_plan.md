@@ -45,7 +45,11 @@
 PHASE_02R_START_APPROVED=true
 ```
 
-> **Control statement:** Gate 2R.0 has passed and authorises Gate 2R.1 only. Gate 2R.1 is in progress. Gate 2R.2 and every later gate remain blocked until a clean evidence run, independent approvals, and a separate immutable gate-transition commit exist.
+> **Control statement:** Gate 2R.3 has been verified complete under the
+> disclosed self-review exception. Gate 2R.4 is authorised for controlled
+> execution only. Gate 2R.5 and every later gate remain blocked until Gate
+> 2R.4 has passing evidence, approvals, and a separate immutable transition
+> commit.
 
 > **Current implementation boundary:** Gate 2R.1 authority and rights records
 > are present for the controlled first closure slice, but those authority
