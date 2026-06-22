@@ -1,12 +1,13 @@
 {
   "phase": "02R",
   "start_approved": true,
-  "approval_decision_commit_sha": "f7384da965400cc7b4ac0b2e83e5ff6d7179483b",
+  "approval_decision_commit_sha": "d51069c2fc15fbb4c8bf14469945627e43ea03bd",
   "approval_authority_rule": "The approval decision commit records the human gate decision. The separate transition commit enacts the approved_gate/authorised_next_gate control state and must match the remote branch SHA at transition.",
-  "evidence_commit_sha": "88b56d9b4867b97eba3a043ac0932b990b6c1b61",
-  "transition_commit_sha": "ff2a5c61d255ffe020886d7e3734ffb73df30268",
-  "remote_branch_sha_at_transition": "ff2a5c61d255ffe020886d7e3734ffb73df30268",
-  "approved_gate": "2R.4",
-  "authorised_next_gate": "2R.5",
-  "approved_at": "2026-06-22T21:00:00+02:00"
+  "evidence_commit_sha": "747a1e6e75941cdc262e0b9a76f05df6aa655103",
+  "transition_commit_sha": "d51069c2fc15fbb4c8bf14469945627e43ea03bd",
+  "remote_branch_sha_at_transition": "d51069c2fc15fbb4c8bf14469945627e43ea03bd",
+  "approved_gate": "2R.5",
+  "authorised_next_gate": "2R.6",
+  "approved_at": "2026-06-22T22:10:00+02:00"
 }
+
