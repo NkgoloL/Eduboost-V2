@@ -9,7 +9,7 @@ APPROVALS = ROOT / "docs/roadmap/execution/atlas/phase_02r_gate_2r1_approvals.js
 EVIDENCE_INDEX = ROOT / "docs/release-evidence/atlas/phase-02r/gate-2r1/evidence_index.md"
 
 app = json.loads(APPROVALS.read_text(encoding="utf-8"))
-evidence_ts = "2026-06-18T13:35:28+02:00"  # from git log evidence commit
+evidence_ts = "2026-06-21T20:52:38+02:00"  # from git log evidence commit
 evidence_index_sha256 = hashlib.sha256(EVIDENCE_INDEX.read_bytes()).hexdigest()
 
 print(f"Decision:              {app['decision']}")

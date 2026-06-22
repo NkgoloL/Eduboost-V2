@@ -127,7 +127,7 @@ INFO  [alembic.runtime.migration] Running upgrade 20260615_2100_p17_reconcile ->
 INFO  [alembic.runtime.migration] Running upgrade 20260615_2100_p17_reconcile -> 20260616_1200_phase02r_authority, Phase 2R source authority, rights, inventory, and review ledgers.
 == Phase 2R PostgreSQL tests ==
 ...                                                                      [100%]
-3 passed in 0.29s
+3 passed in 0.26s
 == Load real Gate 2R.1 authority and rights records ==
 {
   "canonical_source_url": "https://www.education.gov.za/LinkClick.aspx?fileticket=dr7zg3CFCr8%3d&tabid=572&portalid=0&mid=1568&forcedownload=true",
@@ -149,7 +149,7 @@ INFO  [alembic.runtime.migration] Running upgrade 20260615_2100_p17_reconcile ->
   "source_manifest_sha256": "4a97e16ccda496d34ded3962570fabfedc28573ff487d276569f29e36d6d68cb",
   "source_path": "data/caps/source_documents/raw/caps_intermediate_phase_mathematics_grade4_6.pdf",
   "source_sha256": "7fec668a6d3b0ed4ae6974a9739970a2128a80553589f682ff5d5bffc02a783e",
-  "source_verified_at": "2026-06-21T18:51:12Z",
+  "source_verified_at": "2026-06-22T08:04:20Z",
   "source_version_id": "ec65ef5f-8ed1-5cf3-baa4-49fc4e5d9faa",
   "status": "loaded",
   "valid": true

@@ -26,10 +26,15 @@ def test_gate2r2_acquisition_requires_hash_and_rejects_pii(tmp_path: Path) -> No
     source = tmp_path / "caps.txt"
     source.write_text("Numbers, operations and relationships", encoding="utf-8")
     sha = hashlib.sha256(source.read_bytes()).hexdigest()
-    acquired = ControlledAcquisitionService().acquire_local_file(source, expected_sha256=sha)
+    rights = {"decision_status": "approved", "may_store_original": True}
+    acquired = ControlledAcquisitionService().acquire_local_file(
+        source, expected_sha256=sha, rights_decision=rights, allowed_root=tmp_path
+    )
     assert acquired.sha256 == sha
     with pytest.raises(AcquisitionRejectedError):
-        ControlledAcquisitionService().acquire_local_file(source, expected_sha256="0" * 64)
+        ControlledAcquisitionService().acquire_local_file(
+            source, expected_sha256="0" * 64, rights_decision=rights, allowed_root=tmp_path
+        )
     with pytest.raises(AcquisitionRejectedError):
         assert_no_learner_pii_in_source_metadata({"learner_id": "L1"})
 

@@ -1,6 +1,6 @@
-# Phase 2R Gate 2R.1 Audit Record
+# Phase 2R Gate 2R.2 Audit Record
 
-**Generated:** 2026-06-21T18:51:03Z
+**Generated:** 2026-06-22T08:04:11Z
 **Status:** Pending independent review
 **Candidate verification status:** Candidate verification passed — human approval pending
 

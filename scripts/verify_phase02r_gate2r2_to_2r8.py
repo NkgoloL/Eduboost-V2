@@ -45,7 +45,11 @@ def _behavioral_contracts() -> list[str]:
             path = Path(tmp) / "source.txt"
             path.write_text("PAGE ONE\n\nWhole numbers\fPAGE TWO\n\nFractions", encoding="utf-8")
             sha = hashlib.sha256(path.read_bytes()).hexdigest()
-            acquired = ControlledAcquisitionService().acquire_local_file(path, expected_sha256=sha)
+            acquired = ControlledAcquisitionService().acquire_local_file(
+                path,
+                expected_sha256=sha,
+                rights_decision={"decision_status": "approved", "may_store_original": True}
+            )
             if acquired.sha256 != sha:
                 errors.append("acquisition checksum contract failed")
             try:
