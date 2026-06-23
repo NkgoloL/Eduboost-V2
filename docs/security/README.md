@@ -1,5 +1,5 @@
 ---
-title: Security Documentation Index
+title: "Security Documentation"
 status: active
 owner: security
 reviewers: [backend, operations, privacy]
@@ -7,10 +7,10 @@ audience: security
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-22
+last_reviewed: 2026-06-23
 review_interval_days: 45
-evidence_command: make environment-security-check && make production-secret-placeholder-check
-code_anchors: [app/core/security.py, app/security, .github/workflows]
+evidence_command: "make docs-housekeeping-stage4-check"
+code_anchors: [docs/security/README.md, app/security]
 ---
 
 # Security Documentation

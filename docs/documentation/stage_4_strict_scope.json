@@ -1,0 +1,22 @@
+{
+  "allowed_risky_terms": [
+    {
+      "path": "docs/architecture/CORE_TECHNICAL_AUDIT_2026-05-17.md",
+      "reason": "Historic audit wording is retained as evidence text; document metadata marks it as current-evidence, not a readiness claim.",
+      "term": "production-ready"
+    }
+  ],
+  "description": "Strict enforcement for architecture, product, API, compliance, and current security documentation after deep housekeeping.",
+  "exclude_paths": [],
+  "require_ascii_filenames": true,
+  "require_unique_titles": true,
+  "schema_version": "doc-strict-scope/v2",
+  "stage": "Stage 4 strict documentation cleanup tranche 2",
+  "strict_paths": [
+    "docs/architecture",
+    "docs/product",
+    "docs/api",
+    "docs/compliance",
+    "docs/security"
+  ]
+}

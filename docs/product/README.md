@@ -1,5 +1,5 @@
 ---
-title: Product Documentation Index
+title: "Product Documentation"
 status: active
 owner: product
 reviewers: [engineering, privacy, curriculum]
@@ -7,10 +7,10 @@ audience: product
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-22
+last_reviewed: 2026-06-23
 review_interval_days: 60
-evidence_command: make docs-housekeeping-check
-code_anchors: [docs/documentation/source_of_truth.yml]
+evidence_command: "make docs-housekeeping-stage4-check"
+code_anchors: [docs/product/README.md]
 ---
 
 # Product Documentation

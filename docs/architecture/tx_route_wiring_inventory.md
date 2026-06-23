@@ -1,3 +1,18 @@
+---
+title: "Transaction Route Wiring Inventory"
+status: current-evidence
+owner: architecture
+reviewers: [architecture, engineering]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-23
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage4-check"
+code_anchors: [docs/architecture/README.md]
+---
+
 # Transaction Route Wiring Inventory
 
 Generated at: `2026-06-12T17:41:14Z`

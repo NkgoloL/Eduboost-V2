@@ -1,3 +1,18 @@
+---
+title: "Router Repository Boundary Matrix"
+status: current-evidence
+owner: architecture
+reviewers: [architecture, engineering]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-23
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage4-check"
+code_anchors: [docs/architecture/README.md]
+---
+
 # Router Repository Boundary Matrix
 
 Generated at: `2026-06-13T13:49:14Z`

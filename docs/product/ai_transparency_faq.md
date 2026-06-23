@@ -1,3 +1,18 @@
+---
+title: "AI Transparency FAQ — EduBoost"
+status: active
+owner: product
+reviewers: [product, curriculum, release-management]
+audience: stakeholder
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-23
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage4-check"
+code_anchors: [docs/product/README.md]
+---
+
 # AI Transparency FAQ — EduBoost
 
 **Last Updated**: 2026-06-12  
@@ -144,7 +159,7 @@ Manage consent in **Settings** → **Consent Management**.
 If you have questions about how EduBoost uses AI:
 
 - **Email**: ai-safety@eduboost.co.za
-- **Technical Details**: See our [Technical Architecture](../architecture/architecture.md)
+- **Technical Details**: See our [Technical Architecture](../architecture/README.md)
 
 ---
 
@@ -153,4 +168,4 @@ If you have questions about how EduBoost uses AI:
 - [Product Overview](../product/product_overview.md)
 - [Privacy Policy](https://eduboost.co.za/privacy)
 - [Parent Guide](../product/parent_guide.md)
-- [POPIA Compliance](../popia/POPIA_COMPLIANCE.md)
+- [POPIA Compliance](../compliance/popia_data_rights.md)

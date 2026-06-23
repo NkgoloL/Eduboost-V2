@@ -1,5 +1,5 @@
 ---
-title: Archived documentation redirect
+title: "Archived API _build Redirect"
 status: archived
 owner: documentation-governance
 reviewers: [release-management]
@@ -7,13 +7,13 @@ audience: reviewer
 source_of_truth: false
 supersedes: []
 superseded_by: docs/generated/api-doc-builds/20260622T193052Z/_build
-last_reviewed: 2026-06-22
+last_reviewed: 2026-06-23
 review_interval_days: 180
-evidence_command: make docs-housekeeping-check
-code_anchors: [docs/documentation/migration_manifests]
+evidence_command: "make docs-housekeeping-stage4-check"
+code_anchors: [docs/api/README.md, docs/openapi.json]
 ---
 
-# Archived documentation redirect
+# Archived API _build Redirect
 
 Moved by EduBoost documentation housekeeping.
 

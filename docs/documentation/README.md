@@ -24,3 +24,8 @@ Core files:
 - `claim_discipline_policy.md`
 - `stale_documentation_register.md`
 - `migration_manifests/`
+
+## Active cleanup stages
+
+- [Stage 3 Documentation Housekeeping](stage_3_documentation_housekeeping.md)
+- [Stage 4 Documentation Deep Housekeeping](stage_4_deep_housekeeping.md)
