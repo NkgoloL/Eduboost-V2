@@ -158,19 +158,22 @@ export const ConsentService = {
 
 export const DataRightsService = {
   exportLearner: (learnerId: string, format: "json" | "csv" = "json") =>
-    fetchApi<DataExportBundle>(`/popia/data-export/${learnerId}?export_format=${format}`),
+    fetchApi<DataExportBundle>("/popia/exports", {
+      method: "POST",
+      body: JSON.stringify({ learner_id: learnerId, format }),
+    }),
   requestErasure: (learnerId: string, reason = "guardian_request") =>
-    fetchApi<DataRightsStatus>(`/popia/deletion-request/${learnerId}`, {
+    fetchApi<DataRightsStatus>("/popia/erasure", {
       method: "POST",
-      body: JSON.stringify({ reason }),
+      body: JSON.stringify({ learner_id: learnerId, reason }),
     }),
-  cancelErasure: (learnerId: string) => fetchApi<DataRightsStatus>(`/popia/deletion-cancel/${learnerId}`, { method: "POST" }),
+  cancelErasure: (learnerId: string) => fetchApi<DataRightsStatus>(`/popia/erasure/${learnerId}/cancel`, { method: "POST" }),
   restrictProcessing: (learnerId: string, reason = "guardian_request") =>
-    fetchApi<DataRightsStatus>(`/popia/restriction-request/${learnerId}`, {
+    fetchApi<DataRightsStatus>("/popia/restriction", {
       method: "POST",
-      body: JSON.stringify({ reason }),
+      body: JSON.stringify({ learner_id: learnerId, reason }),
     }),
-  deletionStatus: (learnerId: string) => fetchApi<DataRightsStatus>(`/popia/deletion-status/${learnerId}`),
+  deletionStatus: (learnerId: string) => fetchApi<DataRightsStatus>(`/popia/erasure/${learnerId}/status`),
 };
 
 export const ParentService = {

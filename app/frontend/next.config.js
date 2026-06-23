@@ -11,7 +11,12 @@ const withSerwist = require("@serwist/next").default({
 
 function normalizeApiBaseUrl(value) {
   const trimmed = String(value || "").trim().replace(/\/+$/, "");
-  if (!trimmed) return "https://eduboost-api.onrender.com/api/v2";
+  if (!trimmed) {
+    if (process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test") {
+      return "http://localhost:8000/api/v2";
+    }
+    throw new Error("NEXT_PUBLIC_API_URL is required outside development/test");
+  }
   return trimmed.endsWith("/api/v2") ? trimmed : `${trimmed}/api/v2`;
 }
 

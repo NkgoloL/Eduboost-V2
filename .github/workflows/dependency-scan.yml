@@ -125,5 +125,5 @@ jobs:
           echo "## Dependency Scan Results" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "✅ pip-audit: ${{ needs.pip-audit.result }}" >> $GITHUB_STEP_SUMMARY
-          echo "✅ npm audit: ${{ needs.npm-audit.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "✅ pnpm audit: ${{ needs.pnpm-audit.result }}" >> $GITHUB_STEP_SUMMARY
           echo "✅ dependency-review: ${{ needs.dependency-review.result }}" >> $GITHUB_STEP_SUMMARY

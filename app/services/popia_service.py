@@ -233,6 +233,36 @@ class POPIADataRightsService:
             "preflight_result": preflight_result,
         }
 
+    async def erasure_status(self, learner_id: str, current_user: dict[str, Any] | AuthContext) -> dict[str, Any]:
+        """Return the latest erasure request status for a learner."""
+        requester_id = _current_user_actor_id(current_user)
+        requester_role = _current_user_role(current_user)
+        learner = await self.load_learner_for_read(learner_id, current_user)
+
+        erasure_request = await self.db.scalar(
+            select(ErasureRequest)
+            .where(ErasureRequest.learner_id == learner_id)
+            .order_by(ErasureRequest.created_at.desc())
+        )
+        if erasure_request is None:
+            return asdict(self._status("erasure", "pending_review", learner_id, POPIA_ERASURE_REVIEW_SLA_DAYS, "erasure.status.none"))
+
+        if erasure_request.requester_id != requester_id and requester_role != "admin" and str(learner.guardian_id) != requester_id:
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Only the requester, guardian or admin can view erasure status")
+
+        return {
+            "request_id": erasure_request.id,
+            "state": erasure_request.state,
+            "learner_id": learner_id,
+            "reason": erasure_request.reason,
+            "requested_at": _iso(erasure_request.created_at),
+            "grace_period_end": _iso(erasure_request.grace_period_end_at),
+            "scheduled_at": _iso(erasure_request.scheduled_at),
+            "executed_at": _iso(erasure_request.executed_at),
+            "legal_hold": erasure_request.legal_hold,
+            "requires_admin_review": erasure_request.legal_hold or erasure_request.state in {ERASURE_STATE_REQUESTED, ERASURE_STATE_VERIFIED, ERASURE_STATE_SCHEDULED},
+        }
+
     async def cancel_erasure(self, learner_id: str, current_user: dict[str, Any] | AuthContext) -> dict[str, Any]:
         """Cancel an active erasure request."""
         requester_id = _current_user_actor_id(current_user)

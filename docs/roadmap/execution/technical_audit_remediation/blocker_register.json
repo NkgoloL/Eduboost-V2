@@ -1,0 +1,48 @@
+{
+  "stream": "technical-audit-remediation",
+  "status": "baseline_reset_in_progress",
+  "phase_02r_dependency": {
+    "required_state": "closed",
+    "approved_gate": "2R.8",
+    "authorised_next_gate": null
+  },
+  "baseline_reset_scope": [
+    "POPIA frontend/backend route contract alignment",
+    "parent dashboard export URL alignment",
+    "frontend production API fallback fail-closed contract",
+    "dependency-scan workflow summary repair",
+    "audit-remediation verification and evidence harness"
+  ],
+  "remaining_release_blockers_after_reset": [
+    {
+      "id": "TA-OPENAPI-001",
+      "title": "Regenerate and verify OpenAPI after route-contract changes",
+      "severity": "high",
+      "status": "pending_next_slice"
+    },
+    {
+      "id": "TA-BACKEND-FAST-001",
+      "title": "Rerun and close backend fast gate from clean checkout",
+      "severity": "critical",
+      "status": "pending_next_slice"
+    },
+    {
+      "id": "TA-FRONTEND-001",
+      "title": "Rerun frontend env-check, lint, type-check, and Vitest under pnpm",
+      "severity": "high",
+      "status": "pending_next_slice"
+    },
+    {
+      "id": "TA-E2E-001",
+      "title": "Re-establish Playwright/E2E execution ownership and lockfile discipline",
+      "severity": "high",
+      "status": "pending_next_slice"
+    },
+    {
+      "id": "TA-SECURITY-001",
+      "title": "Ensure dependency scans fail on configured severity and publish artifacts consistently",
+      "severity": "high",
+      "status": "partially_addressed_in_baseline_reset"
+    }
+  ]
+}
