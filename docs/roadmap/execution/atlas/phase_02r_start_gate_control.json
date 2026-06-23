@@ -1,12 +1,13 @@
 {
   "phase": "02R",
   "start_approved": true,
-  "approval_decision_commit_sha": "1917443999c15d487cb137021375c3dd8cfd52a2",
-  "approval_authority_rule": "The approval decision commit records the human gate decision. The separate transition commit enacts the approved_gate/authorised_next_gate control state and must match the remote branch SHA at transition.",
-  "evidence_commit_sha": "0bd9fb3ca58295eb17fa138493ce4d91d40b2f74",
-  "transition_commit_sha": "ceb027bb8cad3780362243d4d3d81b37b7529402",
-  "remote_branch_sha_at_transition": "ceb027bb8cad3780362243d4d3d81b37b7529402",
-  "approved_gate": "2R.7",
-  "authorised_next_gate": "2R.8",
-  "approved_at": "2026-06-23T22:00:00+02:00"
+  "approval_decision_commit_sha": "1f2be5789f8f3a62bf604721bd431f5be3b712f5",
+  "approval_authority_rule": "The Gate 2R.8 approval decision commit records the terminal human gate decision. Phase 02R is closed with authorised_next_gate=null. The final closure commit records the terminal control state and audit bundle hash.",
+  "evidence_commit_sha": "0e0da245b3e0236c7deb2f2cac2139b705392e7e",
+  "approved_gate": "2R.8",
+  "authorised_next_gate": null,
+  "phase_status": "closed",
+  "final_closure_commit_sha": "0000000000000000000000000000000000000000",
+  "final_audit_bundle_sha256": "b8a80e5072594c2b0b355ca12942fc2b8d5210b74c0b2c70c899c667ef091313",
+  "approved_at": "2026-06-23T21:07:37+02:00"
 }

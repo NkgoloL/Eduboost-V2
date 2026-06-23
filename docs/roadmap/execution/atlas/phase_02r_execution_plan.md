@@ -2,8 +2,8 @@
 
 **Document version:** 1.5
 **Plan date:** 2026-06-16
-**Status:** Gate 2R.7 verified complete; Gate 2R.8 authorised
-**Execution authorisation:** Gate 2R.8 only
+**Status:** Gate 2R.8 verified complete; Phase 02R closed
+**Execution authorisation:** Phase 02R closed; no further Phase 02R gate authorised
 **Phase:** 02R
 **Programme position:** Mandatory foundation reset before Phases 8–13
 **Sprint codename / documentation namespace:** `atlas`
