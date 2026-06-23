@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "baseline_reset_in_progress",
+  "status": "phase_02_backend_fast_gate_in_progress",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -18,13 +18,13 @@
       "id": "TA-OPENAPI-001",
       "title": "Regenerate and verify OpenAPI after route-contract changes",
       "severity": "high",
-      "status": "pending_next_slice"
+      "status": "evidence_recorded"
     },
     {
       "id": "TA-BACKEND-FAST-001",
       "title": "Rerun and close backend fast gate from clean checkout",
       "severity": "critical",
-      "status": "pending_next_slice"
+      "status": "implementation_in_progress"
     },
     {
       "id": "TA-FRONTEND-001",
@@ -44,5 +44,6 @@
       "severity": "high",
       "status": "partially_addressed_in_baseline_reset"
     }
-  ]
+  ],
+  "active_slice": "02-backend-fast-gate"
 }
