@@ -134,7 +134,7 @@ production serving.
 
 ## Evidence
 
-See \\`docs/release-evidence/atlas/phase-02r/gate-2r8/evidence_index.md\\`.
+See \`docs/release-evidence/atlas/phase-02r/gate-2r8/evidence_index.md\`.
 EOF
 
 cat > "$INDEX" <<EOF
@@ -151,16 +151,16 @@ cat > "$INDEX" <<EOF
 
 | Evidence ID / claim | Artifact |
 |---|---|
-| Gate 2R.8 control authorisation from Gate 2R.7 | \\`raw/gate-control.json\\`, \\`raw/preflight.txt\\` |
-| Gate 2R.8 implementation verifier | \\`raw/verify_phase02r.txt\\`, \\`raw/verify_phase02r_gate2r8.json\\` |
-| PostgreSQL/static-readiness disclosure | \\`raw/verify_phase02r_gate2r8_postgres.txt\\` |
-| Legacy migration disposition manifest | \\`raw/legacy_migration_manifest.json\\` |
-| Real-corpus retrieval evaluation report | \\`raw/real_corpus_evaluation_report.json\\` |
-| Audit bundle and prior-gate reference aggregation | \\`raw/audit_bundle.json\\` |
-| Closure-readiness validation | \\`raw/closure_validation.json\\` |
-| Focused Gate 2R.8 tests | \\`raw/focused_tests.txt\\` |
-| Compile checks | \\`raw/compileall.txt\\` |
-| Raw evidence checksums | \\`raw/SHA256SUMS.txt\\` |
+| Gate 2R.8 control authorisation from Gate 2R.7 | \`raw/gate-control.json\`, \`raw/preflight.txt\` |
+| Gate 2R.8 implementation verifier | \`raw/verify_phase02r.txt\`, \`raw/verify_phase02r_gate2r8.json\` |
+| PostgreSQL/static-readiness disclosure | \`raw/verify_phase02r_gate2r8_postgres.txt\` |
+| Legacy migration disposition manifest | \`raw/legacy_migration_manifest.json\` |
+| Real-corpus retrieval evaluation report | \`raw/real_corpus_evaluation_report.json\` |
+| Audit bundle and prior-gate reference aggregation | \`raw/audit_bundle.json\` |
+| Closure-readiness validation | \`raw/closure_validation.json\` |
+| Focused Gate 2R.8 tests | \`raw/focused_tests.txt\` |
+| Compile checks | \`raw/compileall.txt\` |
+| Raw evidence checksums | \`raw/SHA256SUMS.txt\` |
 EOF
 
 cat > "$AUDIT" <<EOF
