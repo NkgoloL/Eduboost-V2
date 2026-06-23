@@ -1,0 +1,251 @@
+{
+  "artifacts": [
+    {
+      "artifact_id": "g2r6-lesson_with_assessment-14196a9c26a35eae",
+      "artifact_sha256": "14196a9c26a35eae341f0cda7efc5536a0d81985cc69f22b85b7c3162b58d5a2",
+      "artifact_type": "lesson_with_assessment",
+      "assessment_items": [
+        {
+          "answer_expression": "2 + 3 * 4",
+          "answer_verification_hash": "8527a891e224136950ff32ca212b45bc93f69fbb801c3b1ebedac52775f99e61",
+          "answer_verification_status": "passed",
+          "expected_answer": "14",
+          "item_id": "item-arithmetic-001",
+          "prompt": "Calculate 2 + 3 \u00d7 4. Show why multiplication is completed before addition.",
+          "proposed_answer": "14",
+          "source_chunk_ids": [
+            "chunk-g4math-numbers-001"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "claim_type": "curriculum_requirement",
+          "overlap_ratio": 0.04,
+          "supporting_chunk_ids": [
+            "chunk-g4math-numbers-001"
+          ],
+          "text": "The lesson addresses the approved curriculum objective for compare whole numbers and place value."
+        },
+        {
+          "claim_type": "pedagogical_guidance",
+          "overlap_ratio": 0.0,
+          "supporting_chunk_ids": [],
+          "text": "The learner-facing explanation must transform, not copy, the source wording."
+        },
+        {
+          "claim_type": "assessment_claim",
+          "overlap_ratio": 0.03,
+          "supporting_chunk_ids": [
+            "chunk-g4math-numbers-001"
+          ],
+          "text": "The generated assessment item has a deterministic Grade 4 mathematics answer check."
+        }
+      ],
+      "generation_policy_version": "phase02r-gate2r6-grounded-generation-v1",
+      "grounding_decision": {
+        "chunk_version_ids": [
+          "chunk-g4math-numbers-001"
+        ],
+        "failure_reasons": [],
+        "mapping_version_ids": [
+          "map-g4math-numbers-001"
+        ],
+        "passed": true,
+        "source_snapshot_hash": "cc8ef298d3e67d50d21d00604b79e05d220e0857930925b1a1a53109d8a8d8f7",
+        "source_version_ids": [
+          "src-caps-g4math-v1"
+        ],
+        "status": "passed"
+      },
+      "lesson_sections": [
+        {
+          "learner_text": "Use the approved CAPS source evidence to introduce the concept, then ask the learner to explain the idea in their own words.",
+          "section_id": "intro",
+          "source_chunk_ids": [
+            "chunk-g4math-numbers-001"
+          ],
+          "title": "Connect the idea: compare whole numbers and place value"
+        },
+        {
+          "learner_text": "Work through one Grade 4 example, show each step, and keep the mathematics aligned to the cited curriculum objective.",
+          "section_id": "guided-practice",
+          "source_chunk_ids": [
+            "chunk-g4math-numbers-001"
+          ],
+          "title": "Guided practice"
+        }
+      ],
+      "request": {
+        "activation_key": "CAPS:g4:MATH:en:global",
+        "artifact_type": "lesson_with_assessment",
+        "binding_epoch": 1,
+        "corpus_version_id": "corpus-g4math-en-v1",
+        "language": "en",
+        "learner_stage": "grade_4",
+        "objective_ids": [
+          "node-g4math-numbers-whole-numbers-v1"
+        ],
+        "requested_by": "phase02r_gate2r6_verifier",
+        "safe_fallback_allowed": false,
+        "top_k": 2,
+        "topic": "compare whole numbers and place value"
+      },
+      "source_references": [
+        {
+          "authority_tier": "tier_1",
+          "binding_epoch": 1,
+          "chunk_version_id": "chunk-g4math-numbers-001",
+          "corpus_version_id": "corpus-g4math-en-v1",
+          "curriculum_node_version_id": "node-g4math-numbers-whole-numbers-v1",
+          "mapping_version_id": "map-g4math-numbers-001",
+          "matched_terms": [
+            "and",
+            "compare",
+            "numbers",
+            "place",
+            "value",
+            "whole"
+          ],
+          "page_end": 12,
+          "page_start": 12,
+          "retrieval_score": 0.646667,
+          "review_status": "approved",
+          "rights_status": "approved",
+          "source_snapshot_hash": "ed15616965efb7a309f60e6051381d64521a255912a63768f6af8686ee021e0e",
+          "source_version_id": "src-caps-g4math-v1",
+          "text_sha256": "20e63562afa7cf00fa564a37bc79f5670fd55130f712eb4e4d09d6d1293eb02f"
+        }
+      ],
+      "source_snapshot_hash": "cc8ef298d3e67d50d21d00604b79e05d220e0857930925b1a1a53109d8a8d8f7",
+      "status": "grounded_verified",
+      "validation_summary": {
+        "answer_verification_status": "passed",
+        "claim_validation_status": "passed",
+        "copying_policy": "transformative_output_only",
+        "source_reference_count": 1,
+        "status": "passed",
+        "tier1_reference_count": 1
+      }
+    },
+    {
+      "artifact_id": "g2r6-assessment-4a5a597393fef172",
+      "artifact_sha256": "4a5a597393fef1721e9396528a64650650e992bcc0210a36798ce8017978507b",
+      "artifact_type": "assessment",
+      "assessment_items": [
+        {
+          "answer_expression": "2 + 3 * 4",
+          "answer_verification_hash": "8527a891e224136950ff32ca212b45bc93f69fbb801c3b1ebedac52775f99e61",
+          "answer_verification_status": "passed",
+          "expected_answer": "14",
+          "item_id": "item-arithmetic-001",
+          "prompt": "Calculate 2 + 3 \u00d7 4. Show why multiplication is completed before addition.",
+          "proposed_answer": "14",
+          "source_chunk_ids": [
+            "chunk-g4math-numbers-001"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "claim_type": "curriculum_requirement",
+          "overlap_ratio": 0.04,
+          "supporting_chunk_ids": [
+            "chunk-g4math-numbers-001"
+          ],
+          "text": "The lesson addresses the approved curriculum objective for compare whole numbers and place value."
+        },
+        {
+          "claim_type": "pedagogical_guidance",
+          "overlap_ratio": 0.0,
+          "supporting_chunk_ids": [],
+          "text": "The learner-facing explanation must transform, not copy, the source wording."
+        },
+        {
+          "claim_type": "assessment_claim",
+          "overlap_ratio": 0.03,
+          "supporting_chunk_ids": [
+            "chunk-g4math-numbers-001"
+          ],
+          "text": "The generated assessment item has a deterministic Grade 4 mathematics answer check."
+        }
+      ],
+      "generation_policy_version": "phase02r-gate2r6-grounded-generation-v1",
+      "grounding_decision": {
+        "chunk_version_ids": [
+          "chunk-g4math-numbers-001"
+        ],
+        "failure_reasons": [],
+        "mapping_version_ids": [
+          "map-g4math-numbers-001"
+        ],
+        "passed": true,
+        "source_snapshot_hash": "cc8ef298d3e67d50d21d00604b79e05d220e0857930925b1a1a53109d8a8d8f7",
+        "source_version_ids": [
+          "src-caps-g4math-v1"
+        ],
+        "status": "passed"
+      },
+      "lesson_sections": [],
+      "request": {
+        "activation_key": "CAPS:g4:MATH:en:global",
+        "artifact_type": "assessment",
+        "binding_epoch": 1,
+        "corpus_version_id": "corpus-g4math-en-v1",
+        "language": "en",
+        "learner_stage": "grade_4",
+        "objective_ids": [
+          "node-g4math-numbers-whole-numbers-v1"
+        ],
+        "requested_by": "phase02r_gate2r6_verifier",
+        "safe_fallback_allowed": false,
+        "top_k": 2,
+        "topic": "compare whole numbers and place value"
+      },
+      "source_references": [
+        {
+          "authority_tier": "tier_1",
+          "binding_epoch": 1,
+          "chunk_version_id": "chunk-g4math-numbers-001",
+          "corpus_version_id": "corpus-g4math-en-v1",
+          "curriculum_node_version_id": "node-g4math-numbers-whole-numbers-v1",
+          "mapping_version_id": "map-g4math-numbers-001",
+          "matched_terms": [
+            "and",
+            "compare",
+            "numbers",
+            "place",
+            "value",
+            "whole"
+          ],
+          "page_end": 12,
+          "page_start": 12,
+          "retrieval_score": 0.646667,
+          "review_status": "approved",
+          "rights_status": "approved",
+          "source_snapshot_hash": "ed15616965efb7a309f60e6051381d64521a255912a63768f6af8686ee021e0e",
+          "source_version_id": "src-caps-g4math-v1",
+          "text_sha256": "20e63562afa7cf00fa564a37bc79f5670fd55130f712eb4e4d09d6d1293eb02f"
+        }
+      ],
+      "source_snapshot_hash": "cc8ef298d3e67d50d21d00604b79e05d220e0857930925b1a1a53109d8a8d8f7",
+      "status": "grounded_verified",
+      "validation_summary": {
+        "answer_verification_status": "passed",
+        "claim_validation_status": "passed",
+        "copying_policy": "transformative_output_only",
+        "source_reference_count": 1,
+        "status": "passed",
+        "tier1_reference_count": 1
+      }
+    }
+  ],
+  "gate": "2R.6",
+  "gate_boundary": {
+    "gate_2r7_authorised": false,
+    "learner_facing_endpoint_wired": false,
+    "tutor_runtime_wired": false
+  },
+  "packet_sha256": "1764d1891965da8fd3458810c3e0cd5020751ed45f4b21fed637bf20c3784fbf",
+  "policy_version": "phase02r-gate2r6-grounded-generation-v1"
+}
