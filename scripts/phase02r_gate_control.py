@@ -85,7 +85,7 @@ def _evidence_index_metadata(gate: str, path: Path, errors: list[str]) -> tuple[
         errors.append(f"Gate {gate} evidence index is missing")
         return None, None, None
     generated_match = re.search(r"\*\*Generated:\*\*\s+(.+)", text)
-    source_match = re.search(r"\*\*Source commit:\*\*\s+`([0-9a-f]{40})`", text)
+    source_match = re.search(r"\*\*Source commit:\*\*\s+`?([0-9a-f]{40})`?", text)
     status_match = re.search(r"\*\*Status:\*\*\s+(.+)", text)
     generated = _parse_time(generated_match.group(1).strip() if generated_match else None, f"Gate {gate} evidence index Generated", errors)
     if not source_match:
