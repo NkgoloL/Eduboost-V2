@@ -194,7 +194,7 @@ All schemas extend `StrictModel` with `extra="forbid"` and `str_strip_whitespace
 
 | File | Purpose |
 |---|---|
-| `docs/adr/ADR-030-learner-tutor-safety-boundary.md` | Formal safety and context boundary policy |
+| `docs/adr/ADR-033-learner-tutor-safety-boundary.md` | Formal safety and context boundary policy |
 
 ### 3.9 Runbook
 

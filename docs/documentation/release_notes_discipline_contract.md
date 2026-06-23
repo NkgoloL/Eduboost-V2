@@ -1,3 +1,17 @@
+---
+title: "Release Notes Discipline Contract"
+status: active
+owner: documentation-governance
+reviewers: [engineering, release-management]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-23
+review_interval_days: 180
+evidence_command: make docs-housekeeping-stage3-check
+code_anchors: []
+---
 # Release Notes Discipline Contract
 
 ## Required Release Note Types

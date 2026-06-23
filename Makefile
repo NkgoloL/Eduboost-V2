@@ -2804,9 +2804,9 @@ backend-implementation-3351-3390-full-check: jwt-secret-rotation-status jwt-secr
 	python3 -m ruff check scripts/jwt_secret_rotation_evidence.py scripts/patch_jwt_secret_rotation_registry.py scripts/check_jwt_secret_rotation_evidence.py tests/unit/test_jwt_secret_rotation_evidence.py --select F821,F401,F811,E402
 
 # BEGIN EDUBOOST DOCS HOUSEKEEPING TARGETS
-.PHONY: docs-housekeeping-check docs-housekeeping-refresh docs-housekeeping-inventory docs-housekeeping-inventory-check docs-housekeeping-ratchet-check docs-housekeeping-strict-check docs-metadata-check docs-source-of-truth-check docs-links-check docs-links-full-check docs-claim-discipline-check docs-adr-number-check docs-stale-term-check docs-housekeeping-baseline-refresh
+.PHONY: docs-housekeeping-check docs-housekeeping-refresh docs-housekeeping-inventory docs-housekeeping-inventory-check docs-housekeeping-ratchet-check docs-housekeeping-strict-check docs-metadata-check docs-source-of-truth-check docs-links-check docs-links-full-check docs-claim-discipline-check docs-adr-number-check docs-stale-term-check docs-housekeeping-baseline-refresh docs-housekeeping-stage3-apply docs-housekeeping-stage3-check docs-stage3-strict-scope-check docs-workflow-consolidation-check
 
-docs-housekeeping-check: docs-housekeeping-inventory-check docs-source-of-truth-check docs-metadata-check docs-claim-discipline-check docs-links-check docs-housekeeping-ratchet-check docs-adr-number-check docs-stale-term-check
+docs-housekeeping-check: docs-housekeeping-inventory-check docs-source-of-truth-check docs-metadata-check docs-claim-discipline-check docs-links-check docs-housekeeping-ratchet-check docs-adr-number-check docs-stale-term-check docs-housekeeping-stage3-check
 
 docs-housekeeping-inventory:
 	$(PYTHON) scripts/maintenance/audit_documentation_inventory.py --root . --out-json docs/generated/documentation_inventory.json --out-csv docs/generated/documentation_inventory.csv --out-findings docs/generated/documentation_findings.csv
@@ -2852,3 +2852,18 @@ docs-housekeeping-strict-check: docs-source-of-truth-check docs-housekeeping-inv
 	$(PYTHON) scripts/maintenance/check_doc_adr_numbers.py --root . --strict
 	$(PYTHON) scripts/maintenance/check_doc_stale_terms.py --root . --strict
 # END EDUBOOST DOCS HOUSEKEEPING TARGETS
+
+# Stage 3 documentation housekeeping strict tranche.
+docs-housekeeping-stage3-apply:
+	python3 scripts/maintenance/apply_doc_stage3_cleanup.py --root .
+	python3 scripts/maintenance/check_doc_adr_numbers.py --root . --update
+
+docs-stage3-strict-scope-check:
+	python3 scripts/maintenance/check_doc_stage3_strict_scope.py --root .
+
+docs-workflow-consolidation-check:
+	python3 scripts/maintenance/check_doc_workflow_consolidation.py --root .
+
+docs-housekeeping-stage3-check: docs-stage3-strict-scope-check docs-workflow-consolidation-check
+	python3 scripts/maintenance/check_doc_adr_numbers.py --root . --strict
+

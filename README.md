@@ -1,3 +1,17 @@
+---
+title: "EduBoost SA"
+status: active
+owner: product
+reviewers: [product, engineering, privacy]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-23
+review_interval_days: 180
+evidence_command: make docs-housekeeping-stage3-check
+code_anchors: []
+---
 # EduBoost SA
 
 [![CI/CD](https://github.com/nkgolomatjila-svg/Eduboost_V.2/actions/workflows/ci-cd.yml/badge.svg?branch=master)](https://github.com/nkgolomatjila-svg/Eduboost_V.2/actions/workflows/ci-cd.yml)
