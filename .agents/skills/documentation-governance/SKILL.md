@@ -1,25 +1,17 @@
 # Documentation Governance Skill
 
-Use this skill whenever creating, editing, moving, or reviewing EduBoost documentation.
+Use this skill whenever creating, moving, reviewing, or approving EduBoost documentation.
 
-## Purpose
+## Required behavior
 
-Prevent documentation drift, stale release claims, duplicate source-of-truth documents, and generated-evidence sprawl.
+1. Check `docs/documentation/source_of_truth.yml` before creating a new document.
+2. Prefer updating the existing canonical document over adding a parallel one.
+3. Add complete YAML front matter to active documents.
+4. Keep generated and evidence documents out of canonical reading paths unless they are explicitly registered.
+5. Avoid unbounded readiness claims such as `production-ready`, `release-ready`, `fully complete`, or `all tests pass` unless the claim is scoped to a date, command, and evidence artifact.
+6. Run `make docs-housekeeping-check` before committing.
+7. Use `make docs-housekeeping-strict-check` to plan cleanup, not to claim current release readiness.
 
-## Rules
+## Inventory reproducibility
 
-1. Read `docs/documentation/source_of_truth.yml` before creating or updating a document.
-2. Decide whether the document is active, generated, evidence, draft, superseded, or archived.
-3. Add YAML front matter with owner, audience, status, source-of-truth flag, review date, review interval, evidence command, and code anchors.
-4. Do not create a second canonical document for an existing topic.
-5. Use bounded evidence language for readiness, security, compliance, or release claims.
-6. Archive old material with a manifest instead of silently deleting it.
-7. Run `make docs-housekeeping-check` before committing documentation changes.
-
-## Good output pattern
-
-- Current status in one canonical document.
-- Generated detail in `docs/generated/`.
-- Evidence in `docs/release-evidence/` or `artifacts/evidence/`.
-- Historical material in `docs/archive/`.
-- A link from canonical docs to evidence, not copied evidence prose everywhere.
+Markdown files tracked through Git LFS must be inventoried by stable LFS identity, not by expanded local content. This preserves identical outputs between a git-lfs clone and a GitHub source ZIP.

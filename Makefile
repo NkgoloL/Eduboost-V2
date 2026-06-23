@@ -2804,13 +2804,18 @@ backend-implementation-3351-3390-full-check: jwt-secret-rotation-status jwt-secr
 	python3 -m ruff check scripts/jwt_secret_rotation_evidence.py scripts/patch_jwt_secret_rotation_registry.py scripts/check_jwt_secret_rotation_evidence.py tests/unit/test_jwt_secret_rotation_evidence.py --select F821,F401,F811,E402
 
 # BEGIN EDUBOOST DOCS HOUSEKEEPING TARGETS
-.PHONY: docs-housekeeping-check docs-housekeeping-inventory docs-metadata-check docs-source-of-truth-check docs-links-check docs-claim-discipline-check
+.PHONY: docs-housekeeping-check docs-housekeeping-inventory docs-housekeeping-inventory-check docs-housekeeping-ratchet-check docs-housekeeping-strict-check docs-metadata-check docs-source-of-truth-check docs-links-check docs-links-full-check docs-claim-discipline-check docs-adr-number-check docs-stale-term-check docs-housekeeping-baseline-refresh
 
-docs-housekeeping-check: docs-housekeeping-inventory docs-source-of-truth-check docs-metadata-check docs-claim-discipline-check docs-links-check
-	$(PYTHON) scripts/maintenance/audit_documentation_inventory.py --root . --out-json docs/generated/documentation_inventory.json --out-csv docs/generated/documentation_inventory.csv --out-findings docs/generated/documentation_findings.csv
+docs-housekeeping-check: docs-housekeeping-inventory docs-housekeeping-inventory-check docs-source-of-truth-check docs-metadata-check docs-claim-discipline-check docs-links-check docs-housekeeping-ratchet-check docs-adr-number-check docs-stale-term-check
 
 docs-housekeeping-inventory:
 	$(PYTHON) scripts/maintenance/audit_documentation_inventory.py --root . --out-json docs/generated/documentation_inventory.json --out-csv docs/generated/documentation_inventory.csv --out-findings docs/generated/documentation_findings.csv
+
+docs-housekeeping-inventory-check:
+	$(PYTHON) scripts/maintenance/check_doc_inventory_reproducible.py --root .
+
+docs-housekeeping-ratchet-check:
+	$(PYTHON) scripts/maintenance/check_doc_housekeeping_ratchet.py --root .
 
 docs-source-of-truth-check:
 	$(PYTHON) scripts/maintenance/check_doc_source_of_truth.py --root .
@@ -2821,6 +2826,28 @@ docs-metadata-check:
 docs-links-check:
 	$(PYTHON) scripts/maintenance/check_doc_links.py --root . --changed-only
 
+docs-links-full-check:
+	$(PYTHON) scripts/maintenance/check_doc_links.py --root .
+
 docs-claim-discipline-check:
 	$(PYTHON) scripts/maintenance/check_doc_truth_claims.py --root . --canonical-only
+
+docs-adr-number-check:
+	$(PYTHON) scripts/maintenance/check_doc_adr_numbers.py --root .
+
+docs-stale-term-check:
+	$(PYTHON) scripts/maintenance/check_doc_stale_terms.py --root .
+
+docs-housekeeping-baseline-refresh: docs-housekeeping-inventory
+	$(PYTHON) scripts/maintenance/update_doc_housekeeping_baseline.py --root .
+	$(PYTHON) scripts/maintenance/check_doc_adr_numbers.py --root . --update
+	$(PYTHON) scripts/maintenance/check_doc_stale_terms.py --root . --update
+
+docs-housekeeping-strict-check: docs-source-of-truth-check docs-housekeeping-inventory-check
+	$(PYTHON) scripts/maintenance/check_doc_metadata.py --root . --strict-legacy
+	$(PYTHON) scripts/maintenance/check_doc_truth_claims.py --root . --strict-legacy
+	$(PYTHON) scripts/maintenance/check_doc_links.py --root .
+	$(PYTHON) scripts/maintenance/check_doc_adr_numbers.py --root . --strict
+	$(PYTHON) scripts/maintenance/check_doc_stale_terms.py --root . --strict
 # END EDUBOOST DOCS HOUSEKEEPING TARGETS
+

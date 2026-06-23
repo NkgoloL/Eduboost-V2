@@ -39,8 +39,8 @@ imports and controlled migration behavior.
   is already retired.
 
 For the current documentation sync status, see
-[`docs/current_state.md`](/docs/current_state.md), [`docs/project_status.md`](/docs/project_status.md), and the root
-[`docs/todos/todo.md`](/docs/todos/todo.md) live tracker.
+[`docs/current_state.md`](/docs/current_state.md), [`docs/project_status.md`](/docs/project_status.md), and
+[`docs/documentation/source_of_truth.yml`](docs/documentation/source_of_truth.yml).
 
 Item-bank coverage details live in
 [`docs/caps/grade4_maths_coverage_matrix.md`](/docs/caps/grade4_maths_coverage_matrix.md).
@@ -183,6 +183,8 @@ The editable inputs for those lockfiles are:
 
 - Current state: [`docs/current_state.md`](/docs/current_state.md)
 - Status index: [`docs/project_status.md`](/docs/project_status.md)
+- Documentation source-of-truth register: [`docs/documentation/source_of_truth.yml`](docs/documentation/source_of_truth.yml)
+- Documentation housekeeping policy: [`docs/documentation/documentation_housekeeping_policy.md`](docs/documentation/documentation_housekeeping_policy.md)
 - Operating model: [`docs/operations/recommended_operating_model.md`](/docs/operations/recommended_operating_model.md)
 - Project assistance lanes: [`docs/operations/project_assistance_status.md`](/docs/operations/project_assistance_status.md)
 - TODO implementation plan: [`docs/operations/todo_implementation_plan.md`](/docs/operations/todo_implementation_plan.md)

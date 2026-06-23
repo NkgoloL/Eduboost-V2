@@ -1,0 +1,33 @@
+name: Documentation Governance Stage 2
+
+on:
+  pull_request:
+    paths:
+      - "**/*.md"
+      - "docs/documentation/**"
+      - "scripts/maintenance/**"
+      - "Makefile"
+      - ".gitattributes"
+      - ".github/workflows/documentation-governance-stage2.yml"
+  push:
+    branches: [master, main]
+    paths:
+      - "**/*.md"
+      - "docs/documentation/**"
+      - "scripts/maintenance/**"
+      - "Makefile"
+      - ".gitattributes"
+      - ".github/workflows/documentation-governance-stage2.yml"
+
+jobs:
+  docs-housekeeping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Documentation housekeeping check
+        run: make docs-housekeeping-check

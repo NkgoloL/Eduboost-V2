@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import hashlib
 import os
 import re
 import subprocess
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
 
@@ -35,6 +37,8 @@ DEFAULT_EXCLUDED_DIR_PARTS = {
     "htmlcov",
 }
 
+# Historical/generated/evidence areas are intentionally relaxed for default adoption gates.
+# Stage 2 adds ratchet checks so these areas cannot get worse while the cleanup proceeds.
 LEGACY_RELAXED_PREFIXES = (
     "docs/archive/",
     "docs/release-evidence/",
@@ -43,6 +47,20 @@ LEGACY_RELAXED_PREFIXES = (
     "audits/",
     "reports/",
 )
+
+LFS_POINTER_HEADER = "version https://git-lfs.github.com/spec/v1"
+LFS_OID_RE = re.compile(r"^oid sha256:([a-fA-F0-9]{64})$", re.MULTILINE)
+LFS_SIZE_RE = re.compile(r"^size (\d+)$", re.MULTILINE)
+
+
+@dataclass(frozen=True)
+class MarkdownDocument:
+    path: Path
+    rel: str
+    text: str
+    content_kind: str
+    lfs_sha256: str = ""
+    lfs_size: int = 0
 
 
 def relpath(path: Path, root: Path) -> str:
@@ -54,13 +72,16 @@ def is_excluded(path: Path) -> bool:
 
 
 def iter_markdown(root: Path) -> Iterable[Path]:
+    seen: set[Path] = set()
     for base in [root / "docs", root / "audits", root / "reports", root / ".github"]:
         if base.exists():
-            for path in base.rglob("*.md"):
-                if not is_excluded(path):
+            for path in sorted(base.rglob("*.md"), key=lambda p: relpath(p, root)):
+                if not is_excluded(path) and path not in seen:
+                    seen.add(path)
                     yield path
-    for path in root.glob("*.md"):
-        if path.is_file():
+    for path in sorted(root.glob("*.md"), key=lambda p: p.name):
+        if path.is_file() and path not in seen:
+            seen.add(path)
             yield path
 
 
@@ -101,30 +122,24 @@ def markdown_h1(text: str) -> str | None:
 
 
 def git_changed_markdown(root: Path) -> list[Path]:
-    try:
-        output = subprocess.check_output(
-            ["git", "diff", "--name-only", "--diff-filter=ACMRT", "origin/master...HEAD"],
-            cwd=root,
-            text=True,
-            stderr=subprocess.DEVNULL,
-        )
-    except Exception:
+    commands = [
+        ["git", "diff", "--name-only", "--diff-filter=ACMRT", "origin/master...HEAD"],
+        ["git", "diff", "--name-only", "--diff-filter=ACMRT"],
+    ]
+    output = ""
+    for command in commands:
         try:
-            output = subprocess.check_output(
-                ["git", "diff", "--name-only", "--diff-filter=ACMRT"],
-                cwd=root,
-                text=True,
-                stderr=subprocess.DEVNULL,
-            )
+            output = subprocess.check_output(command, cwd=root, text=True, stderr=subprocess.DEVNULL)
+            break
         except Exception:
-            return []
+            output = ""
     paths = []
     for line in output.splitlines():
         if line.endswith(".md"):
             path = root / line
             if path.exists():
                 paths.append(path)
-    return paths
+    return sorted(paths, key=lambda p: relpath(p, root))
 
 
 def load_source_of_truth_paths(root: Path) -> list[Path]:
@@ -148,3 +163,85 @@ def should_relax_metadata(rel: str) -> bool:
 
 def ensure_parent(path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+
+
+def parse_lfs_gitattributes(root: Path) -> set[str]:
+    """Return exact LFS-tracked markdown paths declared in .gitattributes.
+
+    This intentionally supports the repo's current exact-path usage. Glob patterns are
+    preserved as best-effort suffix/prefix checks by is_lfs_tracked().
+    """
+    attrs = root / ".gitattributes"
+    if not attrs.exists():
+        return set()
+    tracked: set[str] = set()
+    for raw in attrs.read_text(encoding="utf-8", errors="replace").splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#") or "filter=lfs" not in line:
+            continue
+        pattern = line.split()[0].strip()
+        if pattern.startswith("/"):
+            pattern = pattern[1:]
+        tracked.add(pattern)
+    return tracked
+
+
+def _pattern_matches(rel: str, pattern: str) -> bool:
+    if pattern == rel:
+        return True
+    # Lightweight support for common .gitattributes glob forms without adding dependencies.
+    if "*" in pattern:
+        regex = "^" + re.escape(pattern).replace(r"\*\*", ".*").replace(r"\*", "[^/]*") + "$"
+        return bool(re.match(regex, rel))
+    return False
+
+
+def is_lfs_tracked(rel: str, root: Path, lfs_patterns: set[str] | None = None) -> bool:
+    patterns = lfs_patterns if lfs_patterns is not None else parse_lfs_gitattributes(root)
+    return any(_pattern_matches(rel, pattern) for pattern in patterns)
+
+
+def parse_lfs_pointer(text: str) -> tuple[str, int] | None:
+    if not text.startswith(LFS_POINTER_HEADER):
+        return None
+    oid_match = LFS_OID_RE.search(text)
+    size_match = LFS_SIZE_RE.search(text)
+    if not oid_match or not size_match:
+        return None
+    return oid_match.group(1).lower(), int(size_match.group(1))
+
+
+def stable_lfs_identity(path: Path, root: Path) -> tuple[str, int]:
+    raw_bytes = path.read_bytes()
+    raw_text = raw_bytes.decode("utf-8", errors="replace")
+    pointer = parse_lfs_pointer(raw_text)
+    if pointer:
+        return pointer
+    return hashlib.sha256(raw_bytes).hexdigest(), len(raw_bytes)
+
+
+def read_markdown_document(path: Path, root: Path, lfs_patterns: set[str] | None = None) -> MarkdownDocument:
+    rel = relpath(path, root)
+    if is_lfs_tracked(rel, root, lfs_patterns):
+        sha256, size = stable_lfs_identity(path, root)
+        return MarkdownDocument(
+            path=path,
+            rel=rel,
+            text="",
+            content_kind="git_lfs_tracked_skipped_content",
+            lfs_sha256=sha256,
+            lfs_size=size,
+        )
+    return MarkdownDocument(
+        path=path,
+        rel=rel,
+        text=path.read_text(encoding="utf-8", errors="replace"),
+        content_kind="markdown",
+    )
+
+
+def write_json_deterministic(path: Path, payload: object) -> None:
+    ensure_parent(path)
+    import json
+
+    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
