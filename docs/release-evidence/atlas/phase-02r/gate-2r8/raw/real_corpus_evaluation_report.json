@@ -1,0 +1,51 @@
+{
+  "dataset": {
+    "case_by_language": {
+      "af": 6,
+      "en": 16,
+      "nso": 6
+    },
+    "case_by_strand": {
+      "data_handling": 3,
+      "measurement": 3,
+      "numbers_operations_relationships": 4,
+      "out_of_scope": 10,
+      "patterns_functions_algebra": 4,
+      "space_shape_geometry": 4
+    },
+    "case_count": 28,
+    "negative_case_count": 10,
+    "positive_case_count": 18
+  },
+  "evaluation_policy_version": "phase02r-gate2r8-evaluation-v1",
+  "gate": "2R.8",
+  "gate_boundary": {
+    "live_database_executed": false,
+    "phase_02r_completion_declared": false,
+    "production_activation_performed": false
+  },
+  "report_sha256": "9889964bedc9599ee78799254af8825471117fbe4b784defa0cb460dd250e578",
+  "result": {
+    "case_hash": "3440e0c8b0c5900466a3a3d51ade26349f1723ecb5be75f6b50d5fe895554a10",
+    "failure_reasons": [],
+    "metrics": {
+      "case_count": 28,
+      "mrr": 1.0,
+      "negative_case_count": 10,
+      "positive_case_count": 18,
+      "precision_at_k": 1.0,
+      "prohibited_hit_count": 0,
+      "recall_at_k": 1.0,
+      "wrong_language_hit_count": 0,
+      "wrong_version_hit_count": 0
+    },
+    "policy_version": "phase02r-gate2r8-evaluation-v1",
+    "status": "passed",
+    "thresholds": {
+      "min_mrr": 0.85,
+      "min_precision_at_k": 0.75,
+      "min_recall_at_k": 0.9
+    }
+  },
+  "status": "passed"
+}

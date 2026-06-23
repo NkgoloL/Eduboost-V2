@@ -1,0 +1,16 @@
+{
+  "command": [
+    "timeout",
+    "120",
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/unit/phase02r/test_gate2r7_grounded_tutor.py",
+    "--no-cov"
+  ],
+  "duration_seconds": 1,
+  "exit_code": 0,
+  "finished_at": "2026-06-23T14:40:34Z",
+  "started_at": "2026-06-23T14:40:33Z"
+}

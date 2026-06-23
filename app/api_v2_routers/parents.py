@@ -165,7 +165,7 @@ async def get_parent_trust_dashboard(
                 ai_progress_summary=ai_progress_summary,
                 lesson_completion_rate_7d=completion_rate,
                 streak_days=learner.streak_days,
-                export_url=f"/api/v2/popia/data-export/{learner.id}",
+                export_url=f"/api/v2/popia/exports?learner_id={learner.id}",
             )
         )
 
@@ -205,7 +205,7 @@ async def export_parent_access_bundle(
             {
                 "learner_id": learner.id,
                 "display_name": learner.display_name,
-                "export_url": f"/api/v2/popia/data-export/{learner.id}",
+                "export_url": f"/api/v2/popia/exports?learner_id={learner.id}",
             }
         )
     return {

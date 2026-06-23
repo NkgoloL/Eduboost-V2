@@ -1,0 +1,62 @@
+{
+  "artifact_count": 5,
+  "decisions": [
+    {
+      "artifact_id": "assessment-g4math-place-value-v1",
+      "artifact_type": "assessment_item",
+      "disposition": "grounded_verified",
+      "learner_serving_allowed": true,
+      "rationale": "Artifact has Phase 02R source grounding and required answer/provenance verification.",
+      "requires_human_review": false
+    },
+    {
+      "artifact_id": "fixture-synthetic-demo-001",
+      "artifact_type": "lesson",
+      "disposition": "synthetic_fixture_excluded",
+      "learner_serving_allowed": false,
+      "rationale": "Synthetic fixture is excluded from production serving and audit closure.",
+      "requires_human_review": false
+    },
+    {
+      "artifact_id": "legacy-draft-ungrounded-001",
+      "artifact_type": "lesson",
+      "disposition": "retire_legacy_ungrounded",
+      "learner_serving_allowed": false,
+      "rationale": "Unpublished legacy artifact lacks complete Phase 02R provenance and is retired from learner serving.",
+      "requires_human_review": false
+    },
+    {
+      "artifact_id": "legacy-published-ungrounded-001",
+      "artifact_type": "lesson",
+      "disposition": "quarantine_requires_review",
+      "learner_serving_allowed": false,
+      "rationale": "Published legacy artifact is not fully Phase 02R verified and must be quarantined pending review.",
+      "requires_human_review": true
+    },
+    {
+      "artifact_id": "lesson-g4math-place-value-v1",
+      "artifact_type": "lesson",
+      "disposition": "grounded_verified",
+      "learner_serving_allowed": true,
+      "rationale": "Artifact has Phase 02R source grounding and required answer/provenance verification.",
+      "requires_human_review": false
+    }
+  ],
+  "gate": "2R.8",
+  "gate_boundary": {
+    "migration_executed": false,
+    "phase_02r_completion_declared": false,
+    "production_activation_performed": false
+  },
+  "learner_serving_allowed_count": 2,
+  "manifest_sha256": "75fb163c61fe45cdf188e5f43bd2ce6cde889eb47ca2bc11ae3283d4212c5391",
+  "policy_version": "phase02r-gate2r8-legacy-migration-v1",
+  "requires_human_review_count": 1,
+  "status": "ready_for_review",
+  "summary": {
+    "grounded_verified": 2,
+    "quarantine_requires_review": 1,
+    "retire_legacy_ungrounded": 1,
+    "synthetic_fixture_excluded": 1
+  }
+}

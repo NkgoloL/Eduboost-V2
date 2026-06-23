@@ -1,0 +1,17 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "scripts/phase02r_gate_control.py",
+    "--expected-approved-gate",
+    "2R.7",
+    "--expected-authorised-gate",
+    "2R.8",
+    "--require-approval-roles",
+    "--require-evidence-index-sha",
+    "--json"
+  ],
+  "duration_seconds": 0,
+  "exit_code": 0,
+  "finished_at": "2026-06-23T18:28:37Z",
+  "started_at": "2026-06-23T18:28:37Z"
+}
