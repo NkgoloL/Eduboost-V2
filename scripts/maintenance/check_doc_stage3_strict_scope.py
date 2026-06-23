@@ -107,6 +107,7 @@ def main() -> int:
 
     root = Path(args.root).resolve()
     config = load_scope(root, args.scope)
+    stage_label = str(config.get("stage") or "Stage 3 strict-scope")
     files = expand_paths(root, config)
     failures: list[str] = []
     titles: dict[str, list[str]] = {}
@@ -147,14 +148,14 @@ def main() -> int:
                 failures.append(f"duplicate title in strict scope '{title}': {', '.join(paths)}")
 
     if failures:
-        print("Stage 3 strict-scope check failed:")
+        print(f"{stage_label} check failed:")
         for failure in failures[:200]:
             print(f"  - {failure}")
         if len(failures) > 200:
             print(f"  ... {len(failures) - 200} more")
         return 1
 
-    print(f"Stage 3 strict-scope check passed for {len(files)} file(s).")
+    print(f"{stage_label} check passed for {len(files)} file(s).")
     return 0
 
 
