@@ -57,6 +57,11 @@ if [[ "$GATE" == "2R.5" ]]; then
   exit 0
 fi
 
+if [[ "$GATE" == "2R.6" ]]; then
+  "$PYTHON_BIN" scripts/verify_phase02r_gate2r6.py --mode "$MODE"
+  exit 0
+fi
+
 if [[ "$GATE" == "2R.4" ]]; then
   "$PYTHON_BIN" scripts/verify_phase02r_gate2r4.py --mode "$MODE"
   exit 0
