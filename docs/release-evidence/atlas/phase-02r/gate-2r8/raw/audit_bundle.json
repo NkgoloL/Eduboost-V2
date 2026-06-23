@@ -1,8 +1,40 @@
 {
-  "audit_bundle_sha256": "dd93be53bd3a3535e70149dff9d6711da6817a9494be03edc57e0bec5b22f4b7",
+  "audit_bundle_sha256": "b8a80e5072594c2b0b355ca12942fc2b8d5210b74c0b2c70c899c667ef091313",
   "closure_readiness": {
     "evaluation_status": "passed",
     "evidence_references": [
+      {
+        "approval_decision": null,
+        "approval_manifest_path": "docs/roadmap/execution/atlas/phase_02r_gate_2r0_approvals.json",
+        "authorised_next_gate": null,
+        "evidence_index_path": "docs/release-evidence/atlas/phase-02r/gate-2r0/evidence_index.md",
+        "evidence_index_sha256": "724903ebbf423a1282abc8c063463bf565fab0b159a678c31b319c23e318317b",
+        "gate": "2R.0"
+      },
+      {
+        "approval_decision": "approved_with_disclosed_self_review_exception",
+        "approval_manifest_path": "docs/roadmap/execution/atlas/phase_02r_gate_2r1_approvals.json",
+        "authorised_next_gate": "2R.2",
+        "evidence_index_path": "docs/release-evidence/atlas/phase-02r/gate-2r1/evidence_index.md",
+        "evidence_index_sha256": "7da390fe366e3fda1afe106931963e6293a3b052edd114a17232db9af0d22d15",
+        "gate": "2R.1"
+      },
+      {
+        "approval_decision": "approved_with_disclosed_self_review_exception",
+        "approval_manifest_path": "docs/roadmap/execution/atlas/phase_02r_gate_2r2_approvals.json",
+        "authorised_next_gate": "2R.3",
+        "evidence_index_path": "docs/release-evidence/atlas/phase-02r/gate-2r2/evidence_index.md",
+        "evidence_index_sha256": "86e082069786582f0f6ea38bafbea0036a55abe71a781a49aa5bd5b5049874fe",
+        "gate": "2R.2"
+      },
+      {
+        "approval_decision": "approved_with_disclosed_self_review_exception",
+        "approval_manifest_path": "docs/roadmap/execution/atlas/phase_02r_gate_2r3_approvals.json",
+        "authorised_next_gate": "2R.4",
+        "evidence_index_path": "docs/release-evidence/atlas/phase-02r/gate-2r3/evidence_index.md",
+        "evidence_index_sha256": "5bd011ce8c0f4a37e8adb75a4fac0ac69294d12cf6c251a28822d27cb37a2bcd",
+        "gate": "2R.3"
+      },
       {
         "approval_decision": "approved_with_disclosed_self_review_exception",
         "approval_manifest_path": "docs/roadmap/execution/atlas/phase_02r_gate_2r4_approvals.json",
@@ -42,7 +74,7 @@
     "status": "ready_for_candidate_closure_evidence"
   },
   "evaluation_report_sha256": "9889964bedc9599ee78799254af8825471117fbe4b784defa0cb460dd250e578",
-  "evidence_reference_count": 4,
+  "evidence_reference_count": 8,
   "gate": "2R.8",
   "gate_boundary": {
     "legacy_migration_executed": false,

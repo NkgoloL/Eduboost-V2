@@ -1,8 +1,8 @@
 # Phase 2R Gate 2R.8 Evidence Index
 
-**Generated:** 2026-06-23T17:36:21Z
+**Generated:** 2026-06-23T18:28:37Z
 **Branch:** feature/atlas-phase-02r-gate-2r1-remediation
-**Source commit:** 040f73a8c5d93c5b03694561e408d29d25a2c457
+**Source commit:** c0a3e4a0a60a9551eddf2a06ae6e3a11913531af
 **Status:** Candidate verification passed — human approval pending
 **Gate 2R.8:** candidate evidence collected
 **Phase 02R closure:** pending human approval and final closure decision
