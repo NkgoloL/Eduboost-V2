@@ -2,8 +2,8 @@
 
 **Document version:** 1.5
 **Plan date:** 2026-06-16
-**Status:** Gate 2R.5 verified complete; Gate 2R.6 authorised
-**Execution authorisation:** Gate 2R.6 only
+**Status:** Gate 2R.6 verified complete; Gate 2R.7 authorised
+**Execution authorisation:** Gate 2R.7 only
 **Phase:** 02R
 **Programme position:** Mandatory foundation reset before Phases 8–13
 **Sprint codename / documentation namespace:** `atlas`
@@ -45,10 +45,10 @@
 PHASE_02R_START_APPROVED=true
 ```
 
-> **Control statement:** Gate 2R.5 has been verified complete under the
-> disclosed self-review exception. Gate 2R.6 is authorised for controlled
-> execution only. Gate 2R.7 and every later gate remain blocked until Gate
-> 2R.6 has passing evidence, approvals, and a separate immutable transition
+> **Control statement:** Gate 2R.6 has been verified complete under the
+> disclosed self-review exception. Gate 2R.7 is authorised for controlled
+> execution only. Gate 2R.8 and every later gate remain blocked until Gate
+> 2R.7 has passing evidence, approvals, and a separate immutable transition
 > commit.
 
 > **Current implementation boundary:** Gate 2R.1 authority and rights records
