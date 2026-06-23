@@ -1,0 +1,124 @@
+{
+  "claims": [
+    {
+      "claim_type": "curriculum_requirement",
+      "overlap_ratio": 0.04,
+      "supporting_chunk_ids": [
+        "chunk-g4math-numbers-001"
+      ],
+      "text": "The response is limited to the retrieved approved curriculum objective and source evidence."
+    },
+    {
+      "claim_type": "pedagogical_guidance",
+      "overlap_ratio": 0.0,
+      "supporting_chunk_ids": [],
+      "text": "The tutor should guide the learner with a question and a short worked hint, not copy source wording."
+    }
+  ],
+  "grounding_policy_version": "phase02r-gate2r7-grounded-tutor-v1",
+  "learner_response": "Let's use your approved lesson evidence for this topic. Start by identifying the place-value of each digit, then compare the largest place first. Tell me which digit you compared first and why.",
+  "provenance_sha256": "8a259650206ec19f8b9b3600a6e2666129eaabae8f24a300cedc60763a1d76ec",
+  "request": {
+    "activation_key": "CAPS:g4:MATH:en:global",
+    "active_lesson_artifact_ids": [
+      "g2r6-lesson_with_assessment-demo"
+    ],
+    "binding_epoch": 1,
+    "controls": {
+      "active_consent_verified": true,
+      "budget_allowed": true,
+      "learner_context_minimised": true,
+      "ownership_verified": true,
+      "pii_redaction_applied": true,
+      "rate_limit_allowed": true,
+      "safety_screen_passed": true
+    },
+    "corpus_version_id": "corpus-g4math-en-v1",
+    "curriculum_dependent": true,
+    "curriculum_node_version_ids": [
+      "node-g4math-numbers-whole-numbers-v1"
+    ],
+    "language": "en",
+    "learner_id": "learner-demo-g4",
+    "learner_question": "How do I compare whole numbers using place value?",
+    "model": "deterministic-grounded-tutor",
+    "prompt_version": "phase02r-gate2r7-prompt-v1",
+    "provider": "phase02r-local-policy",
+    "safe_fallback_allowed": true,
+    "top_k": 3,
+    "tutor_message_id": "tutor-msg-g2r7-001"
+  },
+  "response_status": "grounded_tutor_response",
+  "source_references": [
+    {
+      "activation_key": "CAPS:g4:MATH:en:global",
+      "authority_tier": "tier_1",
+      "binding_epoch": 1,
+      "chunk_version_id": "chunk-g4math-numbers-001",
+      "corpus_version_id": "corpus-g4math-en-v1",
+      "curriculum_node_version_id": "node-g4math-numbers-whole-numbers-v1",
+      "mapping_version_id": "map-g4math-numbers-001",
+      "matched_terms": [
+        "compare",
+        "numbers",
+        "place",
+        "value",
+        "whole"
+      ],
+      "page_end": 12,
+      "page_start": 12,
+      "retrieval_score": 0.538889,
+      "review_status": "approved",
+      "rights_status": "approved",
+      "source_snapshot_hash": "ed15616965efb7a309f60e6051381d64521a255912a63768f6af8686ee021e0e",
+      "source_version_id": "src-caps-g4math-v1",
+      "text_sha256": "20e63562afa7cf00fa564a37bc79f5670fd55130f712eb4e4d09d6d1293eb02f"
+    }
+  ],
+  "trace": {
+    "activation_scope_key": "CAPS:g4:MATH:en:global",
+    "binding_epoch": 1,
+    "claim_validation_status": "passed",
+    "corpus_version_id": "corpus-g4math-en-v1",
+    "curriculum_node_version_ids": [
+      "node-g4math-numbers-whole-numbers-v1"
+    ],
+    "fallback_reason": null,
+    "grounding_policy_version": "phase02r-gate2r7-grounded-tutor-v1",
+    "grounding_status": "passed",
+    "mapping_version_ids": [
+      "map-g4math-numbers-001"
+    ],
+    "model": "deterministic-grounded-tutor",
+    "prompt_version": "phase02r-gate2r7-prompt-v1",
+    "provider": "phase02r-local-policy",
+    "published_artifact_ids": [
+      "g2r6-lesson_with_assessment-demo"
+    ],
+    "retrieval_query": "How do I compare whole numbers using place value?",
+    "safety_metadata": {
+      "active_consent_verified": true,
+      "learner_context_minimised": true,
+      "ownership_verified": true,
+      "pii_redaction_applied": true
+    },
+    "source_chunk_version_ids": [
+      "chunk-g4math-numbers-001"
+    ],
+    "source_snapshot_sha256": "6550b34e98fa0627eae31816c55544cd9c9b32a7eab96a27149a10ce695c655f",
+    "source_version_ids": [
+      "src-caps-g4math-v1"
+    ],
+    "tutor_message_id": "tutor-msg-g2r7-001"
+  },
+  "tutor_message_id": "tutor-msg-g2r7-001",
+  "validation_summary": {
+    "claim_validation_status": "passed",
+    "curriculum_node_count": 1,
+    "review_status": "approved",
+    "rights_status": "approved",
+    "source_reference_count": 1,
+    "status": "passed",
+    "tier1_reference_count": 1
+  }
+}

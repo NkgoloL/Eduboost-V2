@@ -1,0 +1,68 @@
+{
+  "phase": "02R",
+  "gate": "2R.8",
+  "decision": "approved_with_disclosed_self_review_exception",
+  "phase_status": "closed",
+  "evidence_source_sha": "c0a3e4a0a60a9551eddf2a06ae6e3a11913531af",
+  "evidence_commit_sha": "0e0da245b3e0236c7deb2f2cac2139b705392e7e",
+  "evidence_index_sha256": "76dfe3639bed2e0f0137f3df7076a2c46181431a3395ee82e2b14d8cddd2dd48",
+  "decided_at": "2026-06-23T21:07:37+02:00",
+  "authorised_next_gate": null,
+  "self_review_exception": true,
+  "independence_status": "conflict_disclosed",
+  "risk_acceptance": "accepted_by_phase_owner",
+  "compensating_controls": [
+    "clean committed implementation source",
+    "separate evidence commit",
+    "raw SHA256 evidence hashes",
+    "full Gate 2R.0 through Gate 2R.7 audit bundle aggregation",
+    "legacy migration readiness validation passed",
+    "real-corpus evaluation validation passed",
+    "closure-readiness validation passed",
+    "terminal gate-control verifier required before Phase 02R closure",
+    "post-closure CI required"
+  ],
+  "restriction": "This approval closes Gate 2R.8 and authorises terminal Phase 02R closure only. It does not declare broader product release readiness.",
+  "decisions": [
+    {
+      "role": "engineering_approver",
+      "review_domain": "implementation",
+      "decision": "approved",
+      "reviewer": "Nkgolo Lebelo",
+      "decided_at": "2026-06-23T21:07:37+02:00",
+      "immutable_reference": "0e0da245b3e0236c7deb2f2cac2139b705392e7e"
+    },
+    {
+      "role": "rights_reviewer",
+      "review_domain": "rights_and_authority",
+      "decision": "approved",
+      "reviewer": "Nkgolo Lebelo",
+      "decided_at": "2026-06-23T21:07:37+02:00",
+      "immutable_reference": "0e0da245b3e0236c7deb2f2cac2139b705392e7e"
+    },
+    {
+      "role": "curriculum_reviewer",
+      "review_domain": "legacy_migration_real_corpus_evaluation_and_closure_readiness",
+      "decision": "approved",
+      "reviewer": "Nkgolo Lebelo",
+      "decided_at": "2026-06-23T21:07:37+02:00",
+      "immutable_reference": "0e0da245b3e0236c7deb2f2cac2139b705392e7e"
+    },
+    {
+      "role": "evidence_custodian",
+      "review_domain": "evidence_integrity",
+      "decision": "approved",
+      "reviewer": "Nkgolo Lebelo",
+      "decided_at": "2026-06-23T21:07:37+02:00",
+      "immutable_reference": "0e0da245b3e0236c7deb2f2cac2139b705392e7e"
+    },
+    {
+      "role": "release_manager",
+      "review_domain": "terminal_phase_closure",
+      "decision": "approved",
+      "reviewer": "Nkgolo Lebelo",
+      "decided_at": "2026-06-23T21:07:37+02:00",
+      "immutable_reference": "0e0da245b3e0236c7deb2f2cac2139b705392e7e"
+    }
+  ]
+}

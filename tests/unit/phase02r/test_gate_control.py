@@ -179,3 +179,37 @@ def test_placeholder_commit_references_are_rejected(tmp_path, monkeypatch) -> No
 
     errors = module.validate_state(expected_authorised_gate="2R.1")
     assert "control.approval_decision_commit_sha must be a real 40-character lowercase Git SHA" in errors
+
+
+def test_terminal_gate_control_rejects_stale_authorised_gate_language(tmp_path, monkeypatch) -> None:
+    import json
+
+    control = json.loads(module.CONTROL_PATH.read_text(encoding="utf-8"))
+    control.update({
+        "approved_gate": "2R.8",
+        "authorised_next_gate": None,
+        "phase_status": "closed",
+        "approval_decision_commit_sha": "a" * 40,
+        "evidence_commit_sha": "b" * 40,
+        "final_closure_commit_sha": "c" * 40,
+        "final_audit_bundle_sha256": "d" * 64,
+        "approved_at": "2026-06-23T21:07:37+02:00",
+    })
+    path = tmp_path / "control.json"
+    path.write_text(json.dumps(control), encoding="utf-8")
+    monkeypatch.setattr(module, "CONTROL_PATH", path)
+
+    plan_path = tmp_path / "plan.md"
+    plan_path.write_text("\n".join([
+        "**Status:** Gate 2R.8 verified complete; Phase 02R closed",
+        "**Execution authorisation:** Phase 02R closed; no further Phase 02R gate authorised",
+        "Gate 2R.8 is authorised for controlled execution only.",
+        "Every later gate remains blocked until Gate 2R.8 has passing evidence.",
+        "the current gate control authorises Gate 2R.5 only.",
+    ]), encoding="utf-8")
+    monkeypatch.setattr(module, "PLAN_PATH", plan_path)
+    monkeypatch.setattr(module, "_validate_gate_approval", lambda **kwargs: None)
+
+    errors = module.validate_state(expected_approved_gate="2R.8", expected_authorised_gate="null")
+    assert any("obsolete gate authorisation language in terminal state" in error for error in errors)
+    assert any("obsolete later-gate blocking language in terminal state" in error for error in errors)

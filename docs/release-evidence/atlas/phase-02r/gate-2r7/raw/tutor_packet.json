@@ -1,0 +1,417 @@
+{
+  "audience_views": {
+    "auditor": {
+      "audience": "auditor",
+      "fallback_reason": null,
+      "grounding_status": "passed",
+      "provenance_sha256": "8a259650206ec19f8b9b3600a6e2666129eaabae8f24a300cedc60763a1d76ec",
+      "response_status": "grounded_tutor_response",
+      "source_references": [
+        {
+          "activation_key": "CAPS:g4:MATH:en:global",
+          "authority_tier": "tier_1",
+          "binding_epoch": 1,
+          "chunk_version_id": "chunk-g4math-numbers-001",
+          "corpus_version_id": "corpus-g4math-en-v1",
+          "curriculum_node_version_id": "node-g4math-numbers-whole-numbers-v1",
+          "mapping_version_id": "map-g4math-numbers-001",
+          "matched_terms": [
+            "compare",
+            "numbers",
+            "place",
+            "value",
+            "whole"
+          ],
+          "page_end": 12,
+          "page_start": 12,
+          "retrieval_score": 0.538889,
+          "review_status": "approved",
+          "rights_status": "approved",
+          "source_snapshot_hash": "ed15616965efb7a309f60e6051381d64521a255912a63768f6af8686ee021e0e",
+          "source_version_id": "src-caps-g4math-v1",
+          "text_sha256": "20e63562afa7cf00fa564a37bc79f5670fd55130f712eb4e4d09d6d1293eb02f"
+        }
+      ],
+      "trace": {
+        "activation_scope_key": "CAPS:g4:MATH:en:global",
+        "binding_epoch": 1,
+        "claim_validation_status": "passed",
+        "corpus_version_id": "corpus-g4math-en-v1",
+        "curriculum_node_version_ids": [
+          "node-g4math-numbers-whole-numbers-v1"
+        ],
+        "fallback_reason": null,
+        "grounding_policy_version": "phase02r-gate2r7-grounded-tutor-v1",
+        "grounding_status": "passed",
+        "mapping_version_ids": [
+          "map-g4math-numbers-001"
+        ],
+        "model": "deterministic-grounded-tutor",
+        "prompt_version": "phase02r-gate2r7-prompt-v1",
+        "provider": "phase02r-local-policy",
+        "published_artifact_ids": [
+          "g2r6-lesson_with_assessment-demo"
+        ],
+        "retrieval_query": "How do I compare whole numbers using place value?",
+        "safety_metadata": {
+          "active_consent_verified": true,
+          "learner_context_minimised": true,
+          "ownership_verified": true,
+          "pii_redaction_applied": true
+        },
+        "source_chunk_version_ids": [
+          "chunk-g4math-numbers-001"
+        ],
+        "source_snapshot_sha256": "6550b34e98fa0627eae31816c55544cd9c9b32a7eab96a27149a10ce695c655f",
+        "source_version_ids": [
+          "src-caps-g4math-v1"
+        ],
+        "tutor_message_id": "tutor-msg-g2r7-001"
+      },
+      "tutor_message_id": "tutor-msg-g2r7-001"
+    },
+    "educator": {
+      "activation_scope_key": "CAPS:g4:MATH:en:global",
+      "audience": "educator",
+      "claim_validation_status": "passed",
+      "corpus_version_id": "corpus-g4math-en-v1",
+      "curriculum_node_version_ids": [
+        "node-g4math-numbers-whole-numbers-v1"
+      ],
+      "fallback_reason": null,
+      "grounding_status": "passed",
+      "provenance_sha256": "8a259650206ec19f8b9b3600a6e2666129eaabae8f24a300cedc60763a1d76ec",
+      "response_status": "grounded_tutor_response",
+      "source_chunk_version_ids": [
+        "chunk-g4math-numbers-001"
+      ],
+      "tutor_message_id": "tutor-msg-g2r7-001"
+    },
+    "guardian": {
+      "audience": "guardian",
+      "authority_explanation": "Uses approved EduBoost lesson/curriculum evidence when available; otherwise shows a non-authoritative fallback.",
+      "curriculum_node_count": 1,
+      "fallback_reason": null,
+      "grounding_status": "passed",
+      "provenance_sha256": "8a259650206ec19f8b9b3600a6e2666129eaabae8f24a300cedc60763a1d76ec",
+      "response_status": "grounded_tutor_response",
+      "source_reference_count": 1,
+      "tutor_message_id": "tutor-msg-g2r7-001"
+    },
+    "learner": {
+      "audience": "learner",
+      "authority_explanation": "Uses approved EduBoost lesson/curriculum evidence when available; otherwise shows a non-authoritative fallback.",
+      "curriculum_node_count": 1,
+      "fallback_reason": null,
+      "grounding_status": "passed",
+      "provenance_sha256": "8a259650206ec19f8b9b3600a6e2666129eaabae8f24a300cedc60763a1d76ec",
+      "response_status": "grounded_tutor_response",
+      "source_reference_count": 1,
+      "tutor_message_id": "tutor-msg-g2r7-001"
+    },
+    "operator": {
+      "activation_scope_key": "CAPS:g4:MATH:en:global",
+      "audience": "operator",
+      "binding_epoch": 1,
+      "fallback_reason": null,
+      "grounding_policy_version": "phase02r-gate2r7-grounded-tutor-v1",
+      "grounding_status": "passed",
+      "model": "deterministic-grounded-tutor",
+      "prompt_version": "phase02r-gate2r7-prompt-v1",
+      "provenance_sha256": "8a259650206ec19f8b9b3600a6e2666129eaabae8f24a300cedc60763a1d76ec",
+      "provider": "phase02r-local-policy",
+      "response_status": "grounded_tutor_response",
+      "source_snapshot_sha256": "6550b34e98fa0627eae31816c55544cd9c9b32a7eab96a27149a10ce695c655f",
+      "tutor_message_id": "tutor-msg-g2r7-001"
+    },
+    "reviewer": {
+      "activation_scope_key": "CAPS:g4:MATH:en:global",
+      "audience": "reviewer",
+      "claim_validation_status": "passed",
+      "corpus_version_id": "corpus-g4math-en-v1",
+      "curriculum_node_version_ids": [
+        "node-g4math-numbers-whole-numbers-v1"
+      ],
+      "fallback_reason": null,
+      "grounding_status": "passed",
+      "provenance_sha256": "8a259650206ec19f8b9b3600a6e2666129eaabae8f24a300cedc60763a1d76ec",
+      "response_status": "grounded_tutor_response",
+      "source_chunk_version_ids": [
+        "chunk-g4math-numbers-001"
+      ],
+      "tutor_message_id": "tutor-msg-g2r7-001"
+    }
+  },
+  "gate": "2R.7",
+  "gate_boundary": {
+    "gate_2r7_authorised": true,
+    "gate_2r8_authorised": false,
+    "learner_facing_endpoint_wired_by_package": false,
+    "legacy_migration_wired": false,
+    "live_database_migration_executed": false,
+    "real_corpus_evaluation_closure_wired": false
+  },
+  "grounded_response": {
+    "claims": [
+      {
+        "claim_type": "curriculum_requirement",
+        "overlap_ratio": 0.04,
+        "supporting_chunk_ids": [
+          "chunk-g4math-numbers-001"
+        ],
+        "text": "The response is limited to the retrieved approved curriculum objective and source evidence."
+      },
+      {
+        "claim_type": "pedagogical_guidance",
+        "overlap_ratio": 0.0,
+        "supporting_chunk_ids": [],
+        "text": "The tutor should guide the learner with a question and a short worked hint, not copy source wording."
+      }
+    ],
+    "grounding_policy_version": "phase02r-gate2r7-grounded-tutor-v1",
+    "learner_response": "Let's use your approved lesson evidence for this topic. Start by identifying the place-value of each digit, then compare the largest place first. Tell me which digit you compared first and why.",
+    "provenance_sha256": "8a259650206ec19f8b9b3600a6e2666129eaabae8f24a300cedc60763a1d76ec",
+    "request": {
+      "activation_key": "CAPS:g4:MATH:en:global",
+      "active_lesson_artifact_ids": [
+        "g2r6-lesson_with_assessment-demo"
+      ],
+      "binding_epoch": 1,
+      "controls": {
+        "active_consent_verified": true,
+        "budget_allowed": true,
+        "learner_context_minimised": true,
+        "ownership_verified": true,
+        "pii_redaction_applied": true,
+        "rate_limit_allowed": true,
+        "safety_screen_passed": true
+      },
+      "corpus_version_id": "corpus-g4math-en-v1",
+      "curriculum_dependent": true,
+      "curriculum_node_version_ids": [
+        "node-g4math-numbers-whole-numbers-v1"
+      ],
+      "language": "en",
+      "learner_id": "learner-demo-g4",
+      "learner_question": "How do I compare whole numbers using place value?",
+      "model": "deterministic-grounded-tutor",
+      "prompt_version": "phase02r-gate2r7-prompt-v1",
+      "provider": "phase02r-local-policy",
+      "safe_fallback_allowed": true,
+      "top_k": 3,
+      "tutor_message_id": "tutor-msg-g2r7-001"
+    },
+    "response_status": "grounded_tutor_response",
+    "source_references": [
+      {
+        "activation_key": "CAPS:g4:MATH:en:global",
+        "authority_tier": "tier_1",
+        "binding_epoch": 1,
+        "chunk_version_id": "chunk-g4math-numbers-001",
+        "corpus_version_id": "corpus-g4math-en-v1",
+        "curriculum_node_version_id": "node-g4math-numbers-whole-numbers-v1",
+        "mapping_version_id": "map-g4math-numbers-001",
+        "matched_terms": [
+          "compare",
+          "numbers",
+          "place",
+          "value",
+          "whole"
+        ],
+        "page_end": 12,
+        "page_start": 12,
+        "retrieval_score": 0.538889,
+        "review_status": "approved",
+        "rights_status": "approved",
+        "source_snapshot_hash": "ed15616965efb7a309f60e6051381d64521a255912a63768f6af8686ee021e0e",
+        "source_version_id": "src-caps-g4math-v1",
+        "text_sha256": "20e63562afa7cf00fa564a37bc79f5670fd55130f712eb4e4d09d6d1293eb02f"
+      }
+    ],
+    "trace": {
+      "activation_scope_key": "CAPS:g4:MATH:en:global",
+      "binding_epoch": 1,
+      "claim_validation_status": "passed",
+      "corpus_version_id": "corpus-g4math-en-v1",
+      "curriculum_node_version_ids": [
+        "node-g4math-numbers-whole-numbers-v1"
+      ],
+      "fallback_reason": null,
+      "grounding_policy_version": "phase02r-gate2r7-grounded-tutor-v1",
+      "grounding_status": "passed",
+      "mapping_version_ids": [
+        "map-g4math-numbers-001"
+      ],
+      "model": "deterministic-grounded-tutor",
+      "prompt_version": "phase02r-gate2r7-prompt-v1",
+      "provider": "phase02r-local-policy",
+      "published_artifact_ids": [
+        "g2r6-lesson_with_assessment-demo"
+      ],
+      "retrieval_query": "How do I compare whole numbers using place value?",
+      "safety_metadata": {
+        "active_consent_verified": true,
+        "learner_context_minimised": true,
+        "ownership_verified": true,
+        "pii_redaction_applied": true
+      },
+      "source_chunk_version_ids": [
+        "chunk-g4math-numbers-001"
+      ],
+      "source_snapshot_sha256": "6550b34e98fa0627eae31816c55544cd9c9b32a7eab96a27149a10ce695c655f",
+      "source_version_ids": [
+        "src-caps-g4math-v1"
+      ],
+      "tutor_message_id": "tutor-msg-g2r7-001"
+    },
+    "tutor_message_id": "tutor-msg-g2r7-001",
+    "validation_summary": {
+      "claim_validation_status": "passed",
+      "curriculum_node_count": 1,
+      "review_status": "approved",
+      "rights_status": "approved",
+      "source_reference_count": 1,
+      "status": "passed",
+      "tier1_reference_count": 1
+    }
+  },
+  "operational_controls": {
+    "append_only_provenance_required": true,
+    "audience_specific_provenance_views_required": true,
+    "fallback_must_be_non_authoritative": true,
+    "ownership_consent_safety_rate_budget_controls_required": true
+  },
+  "packet_sha256": "1c9102472f393e29da718011e4711d85707b3341ea213b8708991e645d31fbaa",
+  "persisted_provenance_records": [
+    {
+      "activation_scope_key": "CAPS:g4:MATH:en:global",
+      "binding_epoch": 1,
+      "claim_validation_status": "passed",
+      "corpus_version_id": "corpus-g4math-en-v1",
+      "curriculum_node_version_ids": [
+        "node-g4math-numbers-whole-numbers-v1"
+      ],
+      "fallback_reason": null,
+      "grounding_policy_version": "phase02r-gate2r7-grounded-tutor-v1",
+      "grounding_status": "passed",
+      "mapping_version_ids": [
+        "map-g4math-numbers-001"
+      ],
+      "model": "deterministic-grounded-tutor",
+      "prompt_version": "phase02r-gate2r7-prompt-v1",
+      "provider": "phase02r-local-policy",
+      "published_artifact_ids": [
+        "g2r6-lesson_with_assessment-demo"
+      ],
+      "retrieval_query": "How do I compare whole numbers using place value?",
+      "safety_metadata": {
+        "active_consent_verified": true,
+        "learner_context_minimised": true,
+        "ownership_verified": true,
+        "pii_redaction_applied": true
+      },
+      "source_chunk_version_ids": [
+        "chunk-g4math-numbers-001"
+      ],
+      "source_snapshot_sha256": "6550b34e98fa0627eae31816c55544cd9c9b32a7eab96a27149a10ce695c655f",
+      "source_version_ids": [
+        "src-caps-g4math-v1"
+      ],
+      "tutor_message_id": "tutor-msg-g2r7-001"
+    },
+    {
+      "activation_scope_key": "CAPS:g4:MATH:en:global",
+      "binding_epoch": 1,
+      "claim_validation_status": "not_applicable",
+      "corpus_version_id": "corpus-g4math-en-v1",
+      "curriculum_node_version_ids": [],
+      "fallback_reason": "non_curriculum_question",
+      "grounding_policy_version": "phase02r-gate2r7-grounded-tutor-v1",
+      "grounding_status": "fallback",
+      "mapping_version_ids": [],
+      "model": "deterministic-grounded-tutor",
+      "prompt_version": "phase02r-gate2r7-prompt-v1",
+      "provider": "phase02r-local-policy",
+      "published_artifact_ids": [
+        "g2r6-lesson_with_assessment-demo"
+      ],
+      "retrieval_query": "Can you help me with a general study habit?",
+      "safety_metadata": {
+        "fallback_is_non_authoritative": true
+      },
+      "source_chunk_version_ids": [],
+      "source_snapshot_sha256": null,
+      "source_version_ids": [],
+      "tutor_message_id": "tutor-msg-g2r7-fallback-001"
+    }
+  ],
+  "policy_version": "phase02r-gate2r7-grounded-tutor-v1",
+  "safe_fallback_response": {
+    "claims": [],
+    "grounding_policy_version": "phase02r-gate2r7-grounded-tutor-v1",
+    "learner_response": "I cannot verify this answer against approved source evidence right now. Please check the assigned lesson or share the exact problem so we can work through the steps together.",
+    "provenance_sha256": "43b49b260a03290a3d4ceec6364200496d9cb189c5070fe2fcee9471a8d60afe",
+    "request": {
+      "activation_key": "CAPS:g4:MATH:en:global",
+      "active_lesson_artifact_ids": [
+        "g2r6-lesson_with_assessment-demo"
+      ],
+      "binding_epoch": 1,
+      "controls": {
+        "active_consent_verified": true,
+        "budget_allowed": true,
+        "learner_context_minimised": true,
+        "ownership_verified": true,
+        "pii_redaction_applied": true,
+        "rate_limit_allowed": true,
+        "safety_screen_passed": true
+      },
+      "corpus_version_id": "corpus-g4math-en-v1",
+      "curriculum_dependent": false,
+      "curriculum_node_version_ids": [],
+      "language": "en",
+      "learner_id": "learner-demo-g4",
+      "learner_question": "Can you help me with a general study habit?",
+      "model": "deterministic-grounded-tutor",
+      "prompt_version": "phase02r-gate2r7-prompt-v1",
+      "provider": "phase02r-local-policy",
+      "safe_fallback_allowed": true,
+      "top_k": 3,
+      "tutor_message_id": "tutor-msg-g2r7-fallback-001"
+    },
+    "response_status": "safe_non_authoritative_fallback",
+    "source_references": [],
+    "trace": {
+      "activation_scope_key": "CAPS:g4:MATH:en:global",
+      "binding_epoch": 1,
+      "claim_validation_status": "not_applicable",
+      "corpus_version_id": "corpus-g4math-en-v1",
+      "curriculum_node_version_ids": [],
+      "fallback_reason": "non_curriculum_question",
+      "grounding_policy_version": "phase02r-gate2r7-grounded-tutor-v1",
+      "grounding_status": "fallback",
+      "mapping_version_ids": [],
+      "model": "deterministic-grounded-tutor",
+      "prompt_version": "phase02r-gate2r7-prompt-v1",
+      "provider": "phase02r-local-policy",
+      "published_artifact_ids": [
+        "g2r6-lesson_with_assessment-demo"
+      ],
+      "retrieval_query": "Can you help me with a general study habit?",
+      "safety_metadata": {
+        "fallback_is_non_authoritative": true
+      },
+      "source_chunk_version_ids": [],
+      "source_snapshot_sha256": null,
+      "source_version_ids": [],
+      "tutor_message_id": "tutor-msg-g2r7-fallback-001"
+    },
+    "tutor_message_id": "tutor-msg-g2r7-fallback-001",
+    "validation_summary": {
+      "curriculum_authority_claims_emitted": false,
+      "fallback_reason": "non_curriculum_question",
+      "source_reference_count": 0,
+      "status": "safe_non_authoritative_fallback"
+    }
+  }
+}

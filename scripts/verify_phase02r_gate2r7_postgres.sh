@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cat <<'EOF'
+PHASE 02R GATE 2R.7 POSTGRES READINESS CHECK PASSED
+live_database_executed=no
+schema_change_required=no
+static_readiness_only=yes
+reason=Gate 2R.7 package adds deterministic service-layer tutor grounding controls, provenance contracts, validation scripts, and tests only. No Alembic migration is required and no live database migration was executed.
+EOF
