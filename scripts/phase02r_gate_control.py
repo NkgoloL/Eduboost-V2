@@ -136,10 +136,26 @@ def _validate_plan_current_state(authorised_gate: str | None, approved_gate: str
                 f"execution plan is missing terminal status phrase for Phase 02R closure "
                 f"(expected one of: {terminal_status_phrases})"
             )
+        terminal_auth = "**Execution authorisation:** Phase 02R closed; no further Phase 02R gate authorised"
+        if terminal_auth not in plan:
+            errors.append(f"execution plan is missing terminal execution authorisation statement: {terminal_auth}")
         for gate in GATE_ORDER:
             auth_phrase = f"**Execution authorisation:** Gate {gate} only"
             if auth_phrase in plan:
                 errors.append(f"execution plan contains obsolete execution authorisation statement in terminal state: {auth_phrase}")
+            for phrase in (
+                f"Gate {gate} is authorised",
+                f"Gate {gate} is Authorised",
+                f"current gate control authorises Gate {gate}",
+            ):
+                if phrase in plan:
+                    errors.append(f"execution plan contains obsolete gate authorisation language in terminal state: {phrase}")
+        for prior_gate, next_gate in zip(GATE_ORDER, GATE_ORDER[1:]):
+            status_phrase = f"Gate {prior_gate} verified complete; Gate {next_gate} authorised"
+            if status_phrase in plan:
+                errors.append(f"execution plan contains obsolete gate status phrase in terminal state: {status_phrase}")
+        if "Every later gate remains blocked" in plan or "every later gate remain blocked" in plan:
+            errors.append("execution plan contains obsolete later-gate blocking language in terminal state")
         return
     expected_auth = f"**Execution authorisation:** Gate {authorised_gate} only"
     if expected_auth not in plan:
@@ -239,14 +255,17 @@ def _validate_gate_approval(
             errors.append("control.transition_commit_sha must be a real 40-character lowercase Git SHA")
         if not SHA_RE.fullmatch(remote_branch_sha_at_transition):
             errors.append("control.remote_branch_sha_at_transition must be a real 40-character lowercase Git SHA")
-        if control.get("evidence_commit_sha") != evidence_commit_sha:
-            errors.append("gate control evidence_commit_sha must equal the approved evidence commit")
         if transition_commit_sha == evidence_commit_sha:
             errors.append("transition commit must be separate from the evidence commit")
         if transition_commit_sha == approval_decision_commit_sha:
             errors.append("transition commit must be separate from the approval decision commit")
         if remote_branch_sha_at_transition != transition_commit_sha:
             errors.append("remote_branch_sha_at_transition must equal the transition_commit_sha")
+
+    if approvals.get("decision") not in APPROVED_DECISIONS:
+        errors.append(f"Gate {approved_gate} approvals decision is not approved")
+    if control.get("evidence_commit_sha") != evidence_commit_sha:
+        errors.append("gate control evidence_commit_sha must equal the approved evidence commit")
 
     if not SHA_RE.fullmatch(evidence_commit_sha):
         errors.append(f"Gate {approved_gate} approvals require a real evidence_commit_sha")
