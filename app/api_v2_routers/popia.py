@@ -215,6 +215,21 @@ async def cancel_erasure(
     )
 
 
+
+
+@router.get("/erasure/{learner_id}/status")
+async def erasure_status(
+    learner_id: uuid.UUID,
+    dsr_svc: POPIADataRightsService = Depends(get_canonical_data_rights_service),
+    current_user: Any = Depends(require_auth_context),
+) -> Any:
+    """Returns the latest erasure request status for a learner."""
+    return await dsr_svc.erasure_status(
+        learner_id=str(learner_id),
+        current_user=current_user,
+    )
+
+
 # ---------------------------------------------------------------------------
 # §4.3 Data Subject Rights – Correction & Restriction
 # ---------------------------------------------------------------------------
