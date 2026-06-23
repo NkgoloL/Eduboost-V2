@@ -1,4 +1,18 @@
-# ADR-031 — IRT Quality and Self-Healing Controls
+---
+title: "ADR-034 — IRT Quality and Self-Healing Controls"
+status: active
+owner: architecture
+reviewers: [engineering, architecture]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-23
+review_interval_days: 180
+evidence_command: make docs-housekeeping-stage3-check
+code_anchors: []
+---
+# ADR-034 — IRT Quality and Self-Healing Controls
 
 **Status:** Proposed for Phase 4 approval  
 **Date:** 2026-06-15

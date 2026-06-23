@@ -17,7 +17,7 @@ CODE_OF_CONDUCT.md,markdown,,0,Code of Conduct,Code of Conduct,,,,,,,70,3196,,0,
 CONTRIBUTING.md,markdown,,0,Contributing to EduBoost SA,Contributing to EduBoost SA,,,,,,,157,3911,,1,False
 Memory.md,markdown,,0,Agent Memory & Behavioral Directives,Agent Memory & Behavioral Directives,,,,,,,21,1937,,0,False
 PRIVACY_NOTICE.md,markdown,,0,EduBoost SA Privacy Notice,EduBoost SA Privacy Notice,,,,,,,215,9115,,0,False
-README.md,markdown,,0,EduBoost SA,EduBoost SA,,,,,,,199,8311,,0,False
+README.md,markdown,,0,EduBoost SA,EduBoost SA,active,product,developer,False,2026-06-23,180,213,8614,,0,True
 SECURITY.md,markdown,,0,Security Policy,Security Policy,,,,,,,99,2955,,1,False
 audits/agents_tasks/AGENT_IMPLEMENTATION_TODO.md,markdown,,0,Agent Implementation TODO,Agent Implementation TODO,,,,,,,34,1658,,0,False
 audits/agents_tasks/TODO.md,markdown,,0,EduBoost SA V2 — Agent TODO List,EduBoost SA V2 — Agent TODO List,,,,,,,815,48600,,0,False
@@ -109,62 +109,62 @@ docs/LLM_Phase3_Finetuning.md,markdown,,0,LLM Phase 3 Fine-Tuning Runbook,LLM Ph
 docs/LLM_Test_Gating.md,markdown,,0,,,,,,,,,18,682,,0,False
 docs/POPIA_COMPLIANCE.md,markdown,,0,POPIA Compliance Guide,POPIA Compliance Guide,,,,,,,302,11841,,0,False
 docs/README.md,markdown,,0,EduBoost Documentation Index,EduBoost Documentation Index,active,documentation-governance,developer,True,2026-06-22,30,50,2606,,0,True
-docs/adr/0001-modular-monolith.md,markdown,,0,ADR 0001: Modular Monolith Architecture,ADR 0001: Modular Monolith Architecture,,,,,,,20,765,,0,False
-docs/adr/0002-popia-first-design.md,markdown,,0,ADR 0002: POPIA-First Design,ADR 0002: POPIA-First Design,,,,,,,22,1112,,0,False
-docs/adr/0003-llm-provider-abstraction.md,markdown,,0,ADR 0003: LLM Provider Abstraction,ADR 0003: LLM Provider Abstraction,,,,,,,22,1096,,0,False
-docs/adr/0004-standardizing-logic.md,markdown,,0,ADR 0004: Standardizing Business Logic Location and Naming,ADR 0004: Standardizing Business Logic Location and Naming,,,,,,,21,1100,,0,False
-docs/adr/0005-fastapi-v2-entrypoint.md,markdown,,0,ADR 0005: FastAPI V2 Entrypoint,ADR 0005: FastAPI V2 Entrypoint,,,,,,,16,662,,0,False
-docs/adr/0006-nextjs-frontend.md,markdown,,0,ADR 0006: Next.js Frontend,ADR 0006: Next.js Frontend,,,,,,,20,851,,0,False
-docs/adr/0007-postgresql-audit-ledger.md,markdown,,0,ADR 0007: PostgreSQL Audit Ledger,ADR 0007: PostgreSQL Audit Ledger,,,,,,,23,993,,0,False
-docs/adr/0008-redis-token-revocation.md,markdown,,0,ADR 0008: Redis Token Revocation,ADR 0008: Redis Token Revocation,,,,,,,23,895,,0,False
-docs/adr/0009-caps-alignment.md,markdown,,0,ADR 0009: CAPS Alignment,ADR 0009: CAPS Alignment,,,,,,,23,988,,0,False
-docs/adr/0010-business-logic-location.md,markdown,,0,ADR 0010 — Business Logic Location,ADR 0010 — Business Logic Location,,,,,,,74,2837,,0,False
-docs/adr/ADR-001-python-runtime-version.md,markdown,,0,ADR-001 — Supported Python Runtime Version,ADR-001 — Supported Python Runtime Version,,,,,,,124,4313,,0,False
-docs/adr/ADR-002-startup-ddl-repair.md,markdown,,0,ADR-002 — Startup DDL Repair in `app/api_v2.py`,ADR-002 — Startup DDL Repair in `app/api_v2.py`,,,,,,,155,7931,,0,False
-docs/adr/ADR-003-deployment-targets.md,markdown,,0,ADR-003 — Deployment Targets and Promotion Model,ADR-003 — Deployment Targets and Promotion Model,,,,,,,189,5647,,0,False
-docs/adr/ADR-004-popia-data-rights-service-authority.md,markdown,,0,ADR-004: POPIA Data Rights Service Authority,ADR-004: POPIA Data Rights Service Authority,,,,,,,83,3104,,0,False
-docs/adr/ADR-005-database-rollback-policy.md,markdown,,0,ADR-005 — Database Rollback Policy,ADR-005 — Database Rollback Policy,,,,,,,89,3311,,0,False
-docs/adr/ADR-009-billing-provider.md,markdown,,0,ADR-009: Billing Provider Decision,ADR-009: Billing Provider Decision,,,,,,,27,1075,,0,False
-docs/adr/ADR-010-notifications-communication-provider.md,markdown,,0,ADR-010: Notifications and Communication Provider Decision,ADR-010: Notifications and Communication Provider Decision,,,,,,,31,1249,,0,False
-docs/adr/ADR-011-observability-stack.md,markdown,,0,ADR-011: Observability Stack Decision,ADR-011: Observability Stack Decision,,,,,,,31,1154,,0,False
-docs/adr/ADR-012-ci-cd-infrastructure-deployment.md,markdown,,0,"ADR-012: CI/CD, Infrastructure, Deployment, Docker, and Environment Decision","ADR-012: CI/CD, Infrastructure, Deployment, Docker, and Environment Decision",,,,,,,31,1179,,0,False
-docs/adr/ADR-013-backup-restore-disaster-recovery.md,markdown,,0,"ADR-013: Backup, Restore, and Disaster Recovery Decision","ADR-013: Backup, Restore, and Disaster Recovery Decision",,,,,,,31,1290,,0,False
-docs/adr/ADR-014-testing-release-evidence-quality-gates.md,markdown,,0,"ADR-014: Testing, Release Evidence, and Quality Gates Decision","ADR-014: Testing, Release Evidence, and Quality Gates Decision",,,,,,,33,1277,,0,False
-docs/adr/ADR-015-security-posture-threat-modeling.md,markdown,,0,ADR-015: Security Posture and Threat Modeling Decision,ADR-015: Security Posture and Threat Modeling Decision,,,,,,,32,1339,,0,False
-docs/adr/ADR-016-incident-response-operations-support.md,markdown,,0,"ADR-016: Incident Response, Operations, and Support Decision","ADR-016: Incident Response, Operations, and Support Decision",,,,,,,31,1184,,0,False
-docs/adr/ADR-017-documentation-adrs-claim-discipline.md,markdown,,0,"ADR-017: Documentation, ADRs, and Claim Discipline","ADR-017: Documentation, ADRs, and Claim Discipline",,,,,,,27,1347,,0,False
-docs/adr/ADR-018-beta-launch-staging-acceptance-product-scope.md,markdown,,0,"ADR-018: Beta Launch, Staging Acceptance, and Product Scope","ADR-018: Beta Launch, Staging Acceptance, and Product Scope",,,,,,,28,1022,,0,False
-docs/adr/ADR-019-roadmap-after-production-readiness-baseline.md,markdown,,0,ADR-019 — Roadmap After Production Readiness Baseline,ADR-019 — Roadmap After Production Readiness Baseline,,,,,,,65,1903,,0,False
-docs/adr/ADR-020-final-release-blocker-checklist.md,markdown,,0,ADR-020: Final Release-Blocker Checklist,ADR-020: Final Release-Blocker Checklist,,,,,,,29,1096,,0,False
-docs/adr/ADR-021-backend-consolidation-evidence-first.md,markdown,,0,ADR-021: Backend Consolidation Must Be Evidence-First,ADR-021: Backend Consolidation Must Be Evidence-First,,,,,,,41,1537,,0,False
-docs/adr/ADR-022-audit-consent-table-ownership-options.md,markdown,,0,ADR-022: Audit and Consent Table Ownership Options,ADR-022: Audit and Consent Table Ownership Options,,,,,,,53,2022,,0,False
-docs/adr/ADR-023-frontend-upgrade-react-19-next-15.md,markdown,,0,ADR-023: Frontend Upgrade - React 19 + Next 15,ADR-023: Frontend Upgrade - React 19 + Next 15,,,,,,,61,2836,,0,False
-docs/adr/ADR-024-frontend-rollback-plan.md,markdown,,0,ADR-024: Frontend Rollback Plan,ADR-024: Frontend Rollback Plan,,,,,,,147,4386,,0,False
-docs/adr/ADR-025-frontend-upgrade-backlog-metadata.md,markdown,,0,ADR-025: Frontend Upgrade Backlog Metadata,ADR-025: Frontend Upgrade Backlog Metadata,,,,,,,205,5608,all tests pass,1,False
-docs/adr/ADR-026-python-version-alignment.md,markdown,,0,ADR-026 — Phase 4 Python Version Alignment,ADR-026 — Phase 4 Python Version Alignment,,,,,,,44,2191,,0,False
-docs/adr/ADR-027-observability-endpoint-access-control.md,markdown,,0,ADR-027 — Observability Endpoint Access Control,ADR-027 — Observability Endpoint Access Control,,,,,,,65,2183,,0,False
-docs/adr/ADR-028-authoritative-deployment-target.md,markdown,,0,ADR-028 — Authoritative Production Deployment Target,ADR-028 — Authoritative Production Deployment Target,,,,,,,83,2798,,0,False
-docs/adr/ADR-029-supabase-auth-strategy.md,markdown,,0,ADR-029: Supabase Auth Strategy,ADR-029: Supabase Auth Strategy,,,,,,,53,1833,,0,False
-docs/adr/ADR-030-content-review-governance.md,markdown,,0,ADR-030 — Educator Consensus and Content Governance,ADR-030 — Educator Consensus and Content Governance,,,,,,,55,2178,,0,False
-docs/adr/ADR-030-learner-tutor-safety-boundary.md,markdown,,0,ADR-030 — Learner Tutor Safety and Context Boundary,ADR-030 — Learner Tutor Safety and Context Boundary,,,,,,,27,1425,,0,False
-docs/adr/ADR-031-durable-ai-operations-budget-authority.md,markdown,,0,ADR-031 — Durable AI Operations and Budget Authority,ADR-031 — Durable AI Operations and Budget Authority,,,,,,,25,1474,,0,False
-docs/adr/ADR-031-irt-quality-self-healing.md,markdown,,0,ADR-031 — IRT Quality and Self-Healing Controls,ADR-031 — IRT Quality and Self-Healing Controls,,,,,,,29,1793,,0,False
-docs/adr/ADR-032-curriculum-expansion-training-governance.md,markdown,,0,ADR-032 — Governed Curriculum Expansion and Training Dataset Manifests,ADR-032 — Governed Curriculum Expansion and Training Dataset Manifests,,,,,,,28,1423,,0,False
-docs/adr/README.md,markdown,,0,Architectural Decision Records (ADR),Architectural Decision Records (ADR),,,,,,,25,1203,,0,False
-docs/adr/frontend/ADR-001-auth-model.md,markdown,,0,ADR-001 — Frontend Auth Model (FastAPI JWT + httpOnly cookie),ADR-001 — Frontend Auth Model (FastAPI JWT + httpOnly cookie),,,,,,,50,2813,,0,False
-docs/adr/frontend/ADR-001-rollback.md,markdown,,0,ADR-001 Rollback Plan — Supabase Auth Restoration,ADR-001 Rollback Plan — Supabase Auth Restoration,,,,,,,43,2279,,0,False
-docs/adr/frontend/ADR-002-state-management.md,markdown,,0,ADR-002 — State Management (Zustand + TanStack Query),ADR-002 — State Management (Zustand + TanStack Query),,,,,,,46,2461,,0,False
-docs/adr/frontend/ADR-003-popia-frontend.md,markdown,,0,ADR-003 — POPIA Frontend Audit Relay,ADR-003 — POPIA Frontend Audit Relay,,,,,,,46,2285,,0,False
-docs/adr/frontend/ADR-004-ai-tutor.md,markdown,,0,ADR-004 — AI Tutor Proxy & Safety Envelope,ADR-004 — AI Tutor Proxy & Safety Envelope,,,,,,,45,1866,,0,False
-docs/adr/frontend/ADR-005-analytics.md,markdown,,0,ADR-005 — Analytics & Consent Tiers (Plausible Self-Host),ADR-005 — Analytics & Consent Tiers (Plausible Self-Host),,,,,,,45,2001,,0,False
-docs/adr/frontend/ADR-006-rsc-boundaries.md,markdown,,0,ADR-006 — RSC Boundaries & Route Component Map,ADR-006 — RSC Boundaries & Route Component Map,,,,,,,47,2467,,0,False
-docs/adr/frontend/ADR-007-offline-sync.md,markdown,,0,ADR-007 — Offline Sync & Conflict Resolution,ADR-007 — Offline Sync & Conflict Resolution,,,,,,,46,2195,,0,False
-docs/adr/frontend/ADR-008-voice-input.md,markdown,,0,ADR-008 — Voice Input (Web Speech API en-ZA),ADR-008 — Voice Input (Web Speech API en-ZA),,,,,,,46,1934,,0,False
-docs/adr/frontend/ADR-023-frontend-upgrade-react19-next15.md,markdown,,0,ADR-023 — Frontend Upgrade (React 19 + Next 15),ADR-023 — Frontend Upgrade (React 19 + Next 15),,,,,,,79,3775,,0,False
-docs/adr/frontend/ADR-024-frontend-rollback-plan.md,markdown,,0,ADR-024 — Frontend Rollback Plan (React 19 + Next 15),ADR-024 — Frontend Rollback Plan (React 19 + Next 15),,,,,,,123,3930,,0,False
-docs/adr/frontend/ADR-025-frontend-upgrade-backlog-metadata.md,markdown,,0,ADR-025 — Frontend Upgrade Backlog Metadata,ADR-025 — Frontend Upgrade Backlog Metadata,,,,,,,174,4614,,0,False
-docs/adr/frontend/TEMPLATE.md,markdown,,0,Architecture Decision Record Template (Frontend),Architecture Decision Record Template (Frontend),,,,,,,39,1053,,0,False
-docs/adr/frontend/sign-off.md,markdown,,0,Frontend ADR Sign-Off Register,Frontend ADR Sign-Off Register,,,,,,,14,1474,,0,False
+docs/adr/0001-modular-monolith.md,markdown,,0,ADR 0001: Modular Monolith Architecture,ADR 0001: Modular Monolith Architecture,active,architecture,developer,False,2026-06-23,180,34,1097,,0,True
+docs/adr/0002-popia-first-design.md,markdown,,0,ADR 0002: POPIA-First Design,ADR 0002: POPIA-First Design,active,architecture,developer,False,2026-06-23,180,36,1433,,0,True
+docs/adr/0003-llm-provider-abstraction.md,markdown,,0,ADR 0003: LLM Provider Abstraction,ADR 0003: LLM Provider Abstraction,active,architecture,developer,False,2026-06-23,180,36,1423,,0,True
+docs/adr/0004-standardizing-logic.md,markdown,,0,ADR 0004: Standardizing Business Logic Location and Naming,ADR 0004: Standardizing Business Logic Location and Naming,active,architecture,developer,False,2026-06-23,180,35,1451,,0,True
+docs/adr/0005-fastapi-v2-entrypoint.md,markdown,,0,ADR 0005: FastAPI V2 Entrypoint,ADR 0005: FastAPI V2 Entrypoint,active,architecture,developer,False,2026-06-23,180,30,986,,0,True
+docs/adr/0006-nextjs-frontend.md,markdown,,0,ADR 0006: Next.js Frontend,ADR 0006: Next.js Frontend,active,architecture,developer,False,2026-06-23,180,34,1170,,0,True
+docs/adr/0007-postgresql-audit-ledger.md,markdown,,0,ADR 0007: PostgreSQL Audit Ledger,ADR 0007: PostgreSQL Audit Ledger,active,architecture,developer,False,2026-06-23,180,37,1319,,0,True
+docs/adr/0008-redis-token-revocation.md,markdown,,0,ADR 0008: Redis Token Revocation,ADR 0008: Redis Token Revocation,active,architecture,developer,False,2026-06-23,180,37,1220,,0,True
+docs/adr/0009-caps-alignment.md,markdown,,0,ADR 0009: CAPS Alignment,ADR 0009: CAPS Alignment,active,architecture,developer,False,2026-06-23,180,37,1305,,0,True
+docs/adr/0010-business-logic-location.md,markdown,,0,ADR 0010 — Business Logic Location,ADR 0010 — Business Logic Location,active,architecture,developer,False,2026-06-23,180,88,3166,,0,True
+docs/adr/ADR-001-python-runtime-version.md,markdown,,0,ADR-001 — Supported Python Runtime Version,ADR-001 — Supported Python Runtime Version,active,architecture,developer,False,2026-06-23,180,138,4650,,0,True
+docs/adr/ADR-002-startup-ddl-repair.md,markdown,,0,ADR-002 — Startup DDL Repair in `app/api_v2.py`,ADR-002 — Startup DDL Repair in `app/api_v2.py`,active,architecture,developer,False,2026-06-23,180,169,8273,,0,True
+docs/adr/ADR-003-deployment-targets.md,markdown,,0,ADR-003 — Deployment Targets and Promotion Model,ADR-003 — Deployment Targets and Promotion Model,active,architecture,developer,False,2026-06-23,180,203,5990,,0,True
+docs/adr/ADR-004-popia-data-rights-service-authority.md,markdown,,0,ADR-004: POPIA Data Rights Service Authority,ADR-004: POPIA Data Rights Service Authority,active,architecture,developer,False,2026-06-23,180,97,3441,,0,True
+docs/adr/ADR-005-database-rollback-policy.md,markdown,,0,ADR-005 — Database Rollback Policy,ADR-005 — Database Rollback Policy,active,architecture,developer,False,2026-06-23,180,103,3640,,0,True
+docs/adr/ADR-009-billing-provider.md,markdown,,0,ADR-009: Billing Provider Decision,ADR-009: Billing Provider Decision,active,architecture,developer,False,2026-06-23,180,41,1402,,0,True
+docs/adr/ADR-010-notifications-communication-provider.md,markdown,,0,ADR-010: Notifications and Communication Provider Decision,ADR-010: Notifications and Communication Provider Decision,active,architecture,developer,False,2026-06-23,180,45,1600,,0,True
+docs/adr/ADR-011-observability-stack.md,markdown,,0,ADR-011: Observability Stack Decision,ADR-011: Observability Stack Decision,active,architecture,developer,False,2026-06-23,180,45,1484,,0,True
+docs/adr/ADR-012-ci-cd-infrastructure-deployment.md,markdown,,0,"ADR-012: CI/CD, Infrastructure, Deployment, Docker, and Environment Decision","ADR-012: CI/CD, Infrastructure, Deployment, Docker, and Environment Decision",active,architecture,developer,False,2026-06-23,180,45,1548,,0,True
+docs/adr/ADR-013-backup-restore-disaster-recovery.md,markdown,,0,"ADR-013: Backup, Restore, and Disaster Recovery Decision","ADR-013: Backup, Restore, and Disaster Recovery Decision",active,architecture,developer,False,2026-06-23,180,45,1639,,0,True
+docs/adr/ADR-014-testing-release-evidence-quality-gates.md,markdown,,0,"ADR-014: Testing, Release Evidence, and Quality Gates Decision","ADR-014: Testing, Release Evidence, and Quality Gates Decision",active,architecture,developer,False,2026-06-23,180,47,1632,,0,True
+docs/adr/ADR-015-security-posture-threat-modeling.md,markdown,,0,ADR-015: Security Posture and Threat Modeling Decision,ADR-015: Security Posture and Threat Modeling Decision,active,architecture,developer,False,2026-06-23,180,46,1686,,0,True
+docs/adr/ADR-016-incident-response-operations-support.md,markdown,,0,"ADR-016: Incident Response, Operations, and Support Decision","ADR-016: Incident Response, Operations, and Support Decision",active,architecture,developer,False,2026-06-23,180,45,1537,,0,True
+docs/adr/ADR-017-documentation-adrs-claim-discipline.md,markdown,,0,"ADR-017: Documentation, ADRs, and Claim Discipline","ADR-017: Documentation, ADRs, and Claim Discipline",active,architecture,developer,False,2026-06-23,180,41,1690,,0,True
+docs/adr/ADR-018-beta-launch-staging-acceptance-product-scope.md,markdown,,0,"ADR-018: Beta Launch, Staging Acceptance, and Product Scope","ADR-018: Beta Launch, Staging Acceptance, and Product Scope",active,architecture,developer,False,2026-06-23,180,42,1374,,0,True
+docs/adr/ADR-019-roadmap-after-production-readiness-baseline.md,markdown,,0,ADR-019 — Roadmap After Production Readiness Baseline,ADR-019 — Roadmap After Production Readiness Baseline,active,architecture,developer,False,2026-06-23,180,79,2251,,0,True
+docs/adr/ADR-020-final-release-blocker-checklist.md,markdown,,0,ADR-020: Final Release-Blocker Checklist,ADR-020: Final Release-Blocker Checklist,active,architecture,developer,False,2026-06-23,180,43,1429,,0,True
+docs/adr/ADR-021-backend-consolidation-evidence-first.md,markdown,,0,ADR-021: Backend Consolidation Must Be Evidence-First,ADR-021: Backend Consolidation Must Be Evidence-First,active,architecture,developer,False,2026-06-23,180,55,1883,,0,True
+docs/adr/ADR-022-audit-consent-table-ownership-options.md,markdown,,0,ADR-022: Audit and Consent Table Ownership Options,ADR-022: Audit and Consent Table Ownership Options,active,architecture,developer,False,2026-06-23,180,67,2365,,0,True
+docs/adr/ADR-023-frontend-upgrade-react-19-next-15.md,markdown,,0,ADR-023: Frontend Upgrade - React 19 + Next 15,ADR-023: Frontend Upgrade - React 19 + Next 15,active,architecture,developer,False,2026-06-23,180,75,3175,,0,True
+docs/adr/ADR-024-frontend-rollback-plan.md,markdown,,0,ADR-024: Frontend Rollback Plan,ADR-024: Frontend Rollback Plan,active,architecture,developer,False,2026-06-23,180,161,4710,,0,True
+docs/adr/ADR-025-frontend-upgrade-backlog-metadata.md,markdown,,0,ADR-025: Frontend Upgrade Backlog Metadata,ADR-025: Frontend Upgrade Backlog Metadata,active,architecture,developer,False,2026-06-23,180,219,5959,all tests pass,0,True
+docs/adr/ADR-026-python-version-alignment.md,markdown,,0,ADR-026 — Phase 4 Python Version Alignment,ADR-026 — Phase 4 Python Version Alignment,active,architecture,developer,False,2026-06-23,180,58,2528,,0,True
+docs/adr/ADR-027-observability-endpoint-access-control.md,markdown,,0,ADR-027 — Observability Endpoint Access Control,ADR-027 — Observability Endpoint Access Control,active,architecture,developer,False,2026-06-23,180,79,2525,,0,True
+docs/adr/ADR-028-authoritative-deployment-target.md,markdown,,0,ADR-028 — Authoritative Production Deployment Target,ADR-028 — Authoritative Production Deployment Target,active,architecture,developer,False,2026-06-23,180,97,3145,,0,True
+docs/adr/ADR-029-supabase-auth-strategy.md,markdown,,0,ADR-029: Supabase Auth Strategy,ADR-029: Supabase Auth Strategy,active,architecture,developer,False,2026-06-23,180,67,2157,,0,True
+docs/adr/ADR-030-content-review-governance.md,markdown,,0,ADR-030 — Educator Consensus and Content Governance,ADR-030 — Educator Consensus and Content Governance,active,architecture,developer,False,2026-06-23,180,69,2524,,0,True
+docs/adr/ADR-031-durable-ai-operations-budget-authority.md,markdown,,0,ADR-031 — Durable AI Operations and Budget Authority,ADR-031 — Durable AI Operations and Budget Authority,active,architecture,developer,False,2026-06-23,180,39,1821,,0,True
+docs/adr/ADR-032-curriculum-expansion-training-governance.md,markdown,,0,ADR-032 — Governed Curriculum Expansion and Training Dataset Manifests,ADR-032 — Governed Curriculum Expansion and Training Dataset Manifests,active,architecture,developer,False,2026-06-23,180,42,1788,,0,True
+docs/adr/ADR-033-learner-tutor-safety-boundary.md,markdown,,0,ADR-033 — Learner Tutor Safety and Context Boundary,ADR-033 — Learner Tutor Safety and Context Boundary,active,architecture,developer,False,2026-06-23,180,41,1771,,0,True
+docs/adr/ADR-034-irt-quality-self-healing.md,markdown,,0,ADR-034 — IRT Quality and Self-Healing Controls,ADR-034 — IRT Quality and Self-Healing Controls,active,architecture,developer,False,2026-06-23,180,43,2135,,0,True
+docs/adr/README.md,markdown,,0,Architectural Decision Records (ADR),Architectural Decision Records (ADR),active,architecture,developer,False,2026-06-23,180,45,1873,,0,True
+docs/adr/frontend/ADR-001-auth-model.md,markdown,,0,ADR-001 — Frontend Auth Model (FastAPI JWT + httpOnly cookie),ADR-001 — Frontend Auth Model (FastAPI JWT + httpOnly cookie),active,frontend,developer,False,2026-06-23,180,64,3162,,0,True
+docs/adr/frontend/ADR-001-rollback.md,markdown,,0,ADR-001 Rollback Plan — Supabase Auth Restoration,ADR-001 Rollback Plan — Supabase Auth Restoration,active,frontend,developer,False,2026-06-23,180,57,2616,,0,True
+docs/adr/frontend/ADR-002-state-management.md,markdown,,0,ADR-002 — State Management (Zustand + TanStack Query),ADR-002 — State Management (Zustand + TanStack Query),active,frontend,developer,False,2026-06-23,180,60,2802,,0,True
+docs/adr/frontend/ADR-003-popia-frontend.md,markdown,,0,ADR-003 — POPIA Frontend Audit Relay,ADR-003 — POPIA Frontend Audit Relay,active,frontend,developer,False,2026-06-23,180,60,2609,,0,True
+docs/adr/frontend/ADR-004-ai-tutor.md,markdown,,0,ADR-004 — AI Tutor Proxy & Safety Envelope,ADR-004 — AI Tutor Proxy & Safety Envelope,active,frontend,developer,False,2026-06-23,180,59,2196,,0,True
+docs/adr/frontend/ADR-005-analytics.md,markdown,,0,ADR-005 — Analytics & Consent Tiers (Plausible Self-Host),ADR-005 — Analytics & Consent Tiers (Plausible Self-Host),active,frontend,developer,False,2026-06-23,180,59,2346,,0,True
+docs/adr/frontend/ADR-006-rsc-boundaries.md,markdown,,0,ADR-006 — RSC Boundaries & Route Component Map,ADR-006 — RSC Boundaries & Route Component Map,active,frontend,developer,False,2026-06-23,180,61,2801,,0,True
+docs/adr/frontend/ADR-007-offline-sync.md,markdown,,0,ADR-007 — Offline Sync & Conflict Resolution,ADR-007 — Offline Sync & Conflict Resolution,active,frontend,developer,False,2026-06-23,180,60,2527,,0,True
+docs/adr/frontend/ADR-008-voice-input.md,markdown,,0,ADR-008 — Voice Input (Web Speech API en-ZA),ADR-008 — Voice Input (Web Speech API en-ZA),active,frontend,developer,False,2026-06-23,180,60,2266,,0,True
+docs/adr/frontend/ADR-023-frontend-upgrade-react19-next15.md,markdown,,0,ADR-023 — Frontend Upgrade (React 19 + Next 15),ADR-023 — Frontend Upgrade (React 19 + Next 15),active,frontend,developer,False,2026-06-23,180,93,4110,,0,True
+docs/adr/frontend/ADR-024-frontend-rollback-plan.md,markdown,,0,ADR-024 — Frontend Rollback Plan (React 19 + Next 15),ADR-024 — Frontend Rollback Plan (React 19 + Next 15),active,frontend,developer,False,2026-06-23,180,137,4271,,0,True
+docs/adr/frontend/ADR-025-frontend-upgrade-backlog-metadata.md,markdown,,0,ADR-025 — Frontend Upgrade Backlog Metadata,ADR-025 — Frontend Upgrade Backlog Metadata,active,frontend,developer,False,2026-06-23,180,188,4945,,0,True
+docs/adr/frontend/TEMPLATE.md,markdown,,0,Architecture Decision Record Template (Frontend),Architecture Decision Record Template (Frontend),template,frontend,developer,False,2026-06-23,180,53,1389,,0,True
+docs/adr/frontend/sign-off.md,markdown,,0,Frontend ADR Sign-Off Register,Frontend ADR Sign-Off Register,active,frontend,developer,False,2026-06-23,180,28,1790,,0,True
 docs/ai/CLUSTER_F_CLOSURE.md,markdown,,0,Cluster F AI/CAPS/Diagnostics Safety Closure,Cluster F AI/CAPS/Diagnostics Safety Closure,,,,,,,63,1988,,0,False
 docs/ai/ai_fixture_coverage_matrix.md,markdown,,0,AI Fixture Coverage Matrix,AI Fixture Coverage Matrix,,,,,,,26,1170,,0,False
 docs/ai/ai_output_fixtures.md,markdown,,0,AI Output Fixtures,AI Output Fixtures,,,,,,,27,681,,0,False
@@ -444,19 +444,20 @@ docs/docs_gap_report.md,markdown,,0,Documentation Gap Report,Documentation Gap R
 docs/docs_generation_plan.md,markdown,,0,Documentation Generation Plan,Documentation Generation Plan,,,,,,,13,344,,0,False
 docs/docs_inventory.md,markdown,,0,Archived documentation redirect,Archived documentation redirect,archived,documentation-governance,reviewer,False,2026-06-22,180,25,801,,0,True
 docs/documentation/README.md,markdown,,0,Documentation Governance Index,Documentation Governance,active,documentation-governance,developer,True,2026-06-22,30,27,660,,0,True
-docs/documentation/adr_lifecycle_contract.md,markdown,,0,ADR Lifecycle Contract,ADR Lifecycle Contract,,,,,,,32,604,,0,False
-docs/documentation/claim_discipline_contract.md,markdown,,0,Claim Discipline Contract,Claim Discipline Contract,,,,,,,48,1113,production ready;launch approved;fully complete,0,False
+docs/documentation/adr_lifecycle_contract.md,markdown,,0,ADR Lifecycle Contract,ADR Lifecycle Contract,active,documentation-governance,developer,False,2026-06-23,180,46,937,,0,True
+docs/documentation/claim_discipline_contract.md,markdown,,0,Claim Discipline Contract,Claim Discipline Contract,active,documentation-governance,developer,False,2026-06-23,180,62,1449,production ready;launch approved;fully complete,0,True
 docs/documentation/claim_discipline_policy.md,markdown,,0,Documentation Claim Discipline Policy,Documentation Claim Discipline Policy,active,documentation-governance,developer,True,2026-06-22,30,59,1394,production-ready;production ready;release-ready;launch approved;fully complete;all tests pass;green baseline,0,True
-docs/documentation/documentation_adrs_claim_discipline_architecture_contract.md,markdown,,0,Documentation ADRs Claim Discipline Architecture Contract,Documentation ADRs Claim Discipline Architecture Contract,,,,,,,48,1017,,0,False
+docs/documentation/documentation_adrs_claim_discipline_architecture_contract.md,markdown,,0,Documentation ADRs Claim Discipline Architecture Contract,Documentation ADRs Claim Discipline Architecture Contract,active,documentation-governance,developer,False,2026-06-23,180,62,1385,,0,True
 docs/documentation/documentation_debt_baseline.md,markdown,,0,Documentation Debt Baseline,Documentation Debt Baseline,active,documentation-governance,engineering,False,2026-06-22,30,39,1334,,0,True
 docs/documentation/documentation_housekeeping_policy.md,markdown,,0,Documentation Housekeeping Policy,Documentation Housekeeping Policy,active,documentation-governance,developer,True,2026-06-22,30,111,2835,,0,True
-docs/documentation/documentation_inventory_contract.md,markdown,,0,Documentation Inventory Contract,Documentation Inventory Contract,,,,,,,38,772,,0,False
-docs/documentation/documentation_review_gate_contract.md,markdown,,0,Documentation Review Gate Contract,Documentation Review Gate Contract,,,,,,,29,672,,0,False
-docs/documentation/production_claim_boundary_policy.md,markdown,,0,Production Claim Boundary Policy,Production Claim Boundary Policy,,,,,,,25,828,,0,False
-docs/documentation/release_notes_discipline_contract.md,markdown,,0,Release Notes Discipline Contract,Release Notes Discipline Contract,,,,,,,34,671,,0,False
+docs/documentation/documentation_inventory_contract.md,markdown,,0,Documentation Inventory Contract,Documentation Inventory Contract,active,documentation-governance,developer,False,2026-06-23,180,52,1115,,0,True
+docs/documentation/documentation_review_gate_contract.md,markdown,,0,Documentation Review Gate Contract,Documentation Review Gate Contract,active,documentation-governance,developer,False,2026-06-23,180,43,1017,,0,True
+docs/documentation/production_claim_boundary_policy.md,markdown,,0,Production Claim Boundary Policy,Production Claim Boundary Policy,active,documentation-governance,developer,False,2026-06-23,180,39,1171,,0,True
+docs/documentation/release_notes_discipline_contract.md,markdown,,0,Release Notes Discipline Contract,Release Notes Discipline Contract,active,documentation-governance,developer,False,2026-06-23,180,48,1015,,0,True
 docs/documentation/stage_2_documentation_housekeeping.md,markdown,,0,Stage 2 Documentation Housekeeping,Stage 2 Documentation Housekeeping,active,documentation-governance,engineering,False,2026-06-22,30,81,3003,,0,True
+docs/documentation/stage_3_documentation_housekeeping.md,markdown,,0,Stage 3 Documentation Housekeeping,Stage 3 Documentation Housekeeping,active,documentation-governance,developer,False,2026-06-23,30,43,1434,,0,True
 docs/documentation/stale_documentation_register.md,markdown,,0,Stale Documentation Register,Stale Documentation Register,active,documentation-governance,developer,False,2026-06-22,30,44,1971,,0,True
-docs/documentation/stale_documentation_review_register.md,markdown,,0,Stale Documentation Review Register,Stale Documentation Review Register,,,,,,,26,622,,0,False
+docs/documentation/stale_documentation_review_register.md,markdown,,0,Stale Documentation Review Register,Stale Documentation Review Register,active,documentation-governance,developer,False,2026-06-23,180,40,968,,0,True
 docs/documentation_intelligence_pipeline.md,markdown,,0,Documentation Intelligence Pipeline,Documentation Intelligence Pipeline,,,,,,,130,4837,,0,False
 docs/engineering/README.md,markdown,,0,Engineering Documentation Index,Engineering Documentation,active,engineering,developer,True,2026-06-22,45,21,596,,0,True
 docs/engineering/branching.md,markdown,,0,Branching and Protection Policy,Branching and Protection Policy,,,,,,,152,4435,production-ready,0,False

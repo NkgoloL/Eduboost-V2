@@ -3,14 +3,21 @@ name: Documentation Governance
 on:
   pull_request:
     paths:
-      - 'docs/**'
-      - 'audits/**'
-      - 'reports/**'
-      - '*.md'
-      - '.github/**/*.md'
-      - '.github/workflows/documentation-governance.yml'
-      - 'scripts/maintenance/check_doc_*.py'
-      - 'scripts/maintenance/audit_documentation_inventory.py'
+      - "**/*.md"
+      - "docs/documentation/**"
+      - "scripts/maintenance/**"
+      - "Makefile"
+      - ".gitattributes"
+      - ".github/workflows/documentation-governance.yml"
+  push:
+    branches: [master, main]
+    paths:
+      - "**/*.md"
+      - "docs/documentation/**"
+      - "scripts/maintenance/**"
+      - "Makefile"
+      - ".gitattributes"
+      - ".github/workflows/documentation-governance.yml"
   workflow_dispatch:
 
 jobs:
@@ -20,23 +27,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          lfs: false
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      - name: Source-of-truth register
-        run: python3 scripts/maintenance/check_doc_source_of_truth.py --root .
-      - name: Canonical metadata
-        run: python3 scripts/maintenance/check_doc_metadata.py --root . --canonical-only
-      - name: Changed documentation metadata
-        run: python3 scripts/maintenance/check_doc_metadata.py --root . --changed-only
-      - name: Changed documentation links
-        run: python3 scripts/maintenance/check_doc_links.py --root . --changed-only
-      - name: Changed documentation claim discipline
-        run: python3 scripts/maintenance/check_doc_truth_claims.py --root . --changed-only
-      - name: Generate documentation inventory
-        run: |
-          python3 scripts/maintenance/audit_documentation_inventory.py \
-            --root . \
-            --out-json docs/generated/documentation_inventory.json \
-            --out-csv docs/generated/documentation_inventory.csv \
-            --out-findings docs/generated/documentation_findings.csv
+          python-version: "3.12"
+      - name: Documentation housekeeping check
+        run: make docs-housekeeping-check
+      - name: Stage 3 strict tranche check
+        run: make docs-housekeeping-stage3-check

@@ -1,3 +1,17 @@
+---
+title: "ADR-025: Frontend Upgrade Backlog Metadata"
+status: active
+owner: architecture
+reviewers: [engineering, architecture]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-23
+review_interval_days: 180
+evidence_command: make docs-housekeeping-stage3-check
+code_anchors: []
+---
 # ADR-025: Frontend Upgrade Backlog Metadata
 
 ## Status
@@ -194,7 +208,7 @@ const a11yScoreThreshold = 95; // 95/100
 ## Related Documents
 - [ADR-023](ADR-023-frontend-upgrade-react-19-next-15.md) - Frontend Upgrade Decision
 - [ADR-024](ADR-024-frontend-rollback-plan.md) - Frontend Rollback Plan
-- [Frontend Spike Results](../frontend/spike-results.md) - Spike Analysis
+- [Frontend spike report template](../frontend/spike_report_template.md) - Spike Analysis
 - [Package.json](../../app/frontend/package.json) - Current Dependencies
 
 ## Maintenance

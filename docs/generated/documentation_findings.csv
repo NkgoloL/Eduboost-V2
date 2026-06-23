@@ -1,7 +1,6 @@
 severity,type,path,detail
 high,broken_local_links,CONTRIBUTING.md,1
 high,broken_local_links,SECURITY.md,1
-high,broken_local_links,docs/adr/ADR-025-frontend-upgrade-backlog-metadata.md,1
 high,broken_local_links,docs/architecture/architecture_decisions.md,1
 high,broken_local_links,docs/content_factory/CONTENT_GENERATION_CONFIG.md,1
 high,broken_local_links,docs/frontend/post-rc5-dependency-maintenance.md,1
@@ -165,7 +164,6 @@ medium,missing_metadata,CODE_OF_CONDUCT.md,No YAML front matter
 medium,missing_metadata,CONTRIBUTING.md,No YAML front matter
 medium,missing_metadata,Memory.md,No YAML front matter
 medium,missing_metadata,PRIVACY_NOTICE.md,No YAML front matter
-medium,missing_metadata,README.md,No YAML front matter
 medium,missing_metadata,SECURITY.md,No YAML front matter
 medium,missing_metadata,docs/AI_AGENT_SKILLS_MANIFEST.md,No YAML front matter
 medium,missing_metadata,docs/API_REFERENCE.md,No YAML front matter
@@ -174,62 +172,6 @@ medium,missing_metadata,docs/DEVELOPMENT.md,No YAML front matter
 medium,missing_metadata,docs/LLM_Phase3_Finetuning.md,No YAML front matter
 medium,missing_metadata,docs/LLM_Test_Gating.md,No YAML front matter
 medium,missing_metadata,docs/POPIA_COMPLIANCE.md,No YAML front matter
-medium,missing_metadata,docs/adr/0001-modular-monolith.md,No YAML front matter
-medium,missing_metadata,docs/adr/0002-popia-first-design.md,No YAML front matter
-medium,missing_metadata,docs/adr/0003-llm-provider-abstraction.md,No YAML front matter
-medium,missing_metadata,docs/adr/0004-standardizing-logic.md,No YAML front matter
-medium,missing_metadata,docs/adr/0005-fastapi-v2-entrypoint.md,No YAML front matter
-medium,missing_metadata,docs/adr/0006-nextjs-frontend.md,No YAML front matter
-medium,missing_metadata,docs/adr/0007-postgresql-audit-ledger.md,No YAML front matter
-medium,missing_metadata,docs/adr/0008-redis-token-revocation.md,No YAML front matter
-medium,missing_metadata,docs/adr/0009-caps-alignment.md,No YAML front matter
-medium,missing_metadata,docs/adr/0010-business-logic-location.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-001-python-runtime-version.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-002-startup-ddl-repair.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-003-deployment-targets.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-004-popia-data-rights-service-authority.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-005-database-rollback-policy.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-009-billing-provider.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-010-notifications-communication-provider.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-011-observability-stack.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-012-ci-cd-infrastructure-deployment.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-013-backup-restore-disaster-recovery.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-014-testing-release-evidence-quality-gates.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-015-security-posture-threat-modeling.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-016-incident-response-operations-support.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-017-documentation-adrs-claim-discipline.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-018-beta-launch-staging-acceptance-product-scope.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-019-roadmap-after-production-readiness-baseline.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-020-final-release-blocker-checklist.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-021-backend-consolidation-evidence-first.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-022-audit-consent-table-ownership-options.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-023-frontend-upgrade-react-19-next-15.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-024-frontend-rollback-plan.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-025-frontend-upgrade-backlog-metadata.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-026-python-version-alignment.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-027-observability-endpoint-access-control.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-028-authoritative-deployment-target.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-029-supabase-auth-strategy.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-030-content-review-governance.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-030-learner-tutor-safety-boundary.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-031-durable-ai-operations-budget-authority.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-031-irt-quality-self-healing.md,No YAML front matter
-medium,missing_metadata,docs/adr/ADR-032-curriculum-expansion-training-governance.md,No YAML front matter
-medium,missing_metadata,docs/adr/README.md,No YAML front matter
-medium,missing_metadata,docs/adr/frontend/ADR-001-auth-model.md,No YAML front matter
-medium,missing_metadata,docs/adr/frontend/ADR-001-rollback.md,No YAML front matter
-medium,missing_metadata,docs/adr/frontend/ADR-002-state-management.md,No YAML front matter
-medium,missing_metadata,docs/adr/frontend/ADR-003-popia-frontend.md,No YAML front matter
-medium,missing_metadata,docs/adr/frontend/ADR-004-ai-tutor.md,No YAML front matter
-medium,missing_metadata,docs/adr/frontend/ADR-005-analytics.md,No YAML front matter
-medium,missing_metadata,docs/adr/frontend/ADR-006-rsc-boundaries.md,No YAML front matter
-medium,missing_metadata,docs/adr/frontend/ADR-007-offline-sync.md,No YAML front matter
-medium,missing_metadata,docs/adr/frontend/ADR-008-voice-input.md,No YAML front matter
-medium,missing_metadata,docs/adr/frontend/ADR-023-frontend-upgrade-react19-next15.md,No YAML front matter
-medium,missing_metadata,docs/adr/frontend/ADR-024-frontend-rollback-plan.md,No YAML front matter
-medium,missing_metadata,docs/adr/frontend/ADR-025-frontend-upgrade-backlog-metadata.md,No YAML front matter
-medium,missing_metadata,docs/adr/frontend/TEMPLATE.md,No YAML front matter
-medium,missing_metadata,docs/adr/frontend/sign-off.md,No YAML front matter
 medium,missing_metadata,docs/ai/CLUSTER_F_CLOSURE.md,No YAML front matter
 medium,missing_metadata,docs/ai/ai_fixture_coverage_matrix.md,No YAML front matter
 medium,missing_metadata,docs/ai/ai_output_fixtures.md,No YAML front matter
@@ -434,14 +376,6 @@ medium,missing_metadata,docs/disaster_recovery/runbooks/database_restore.md,No Y
 medium,missing_metadata,docs/disaster_recovery/runbooks/object_storage_restore.md,No YAML front matter
 medium,missing_metadata,docs/docs_gap_report.md,No YAML front matter
 medium,missing_metadata,docs/docs_generation_plan.md,No YAML front matter
-medium,missing_metadata,docs/documentation/adr_lifecycle_contract.md,No YAML front matter
-medium,missing_metadata,docs/documentation/claim_discipline_contract.md,No YAML front matter
-medium,missing_metadata,docs/documentation/documentation_adrs_claim_discipline_architecture_contract.md,No YAML front matter
-medium,missing_metadata,docs/documentation/documentation_inventory_contract.md,No YAML front matter
-medium,missing_metadata,docs/documentation/documentation_review_gate_contract.md,No YAML front matter
-medium,missing_metadata,docs/documentation/production_claim_boundary_policy.md,No YAML front matter
-medium,missing_metadata,docs/documentation/release_notes_discipline_contract.md,No YAML front matter
-medium,missing_metadata,docs/documentation/stale_documentation_review_register.md,No YAML front matter
 medium,missing_metadata,docs/documentation_intelligence_pipeline.md,No YAML front matter
 medium,missing_metadata,docs/engineering/branching.md,No YAML front matter
 medium,missing_metadata,docs/engineering/ci_workflows.md,No YAML front matter
