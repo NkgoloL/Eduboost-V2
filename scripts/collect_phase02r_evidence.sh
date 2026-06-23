@@ -29,6 +29,10 @@ if [[ "$GATE" == "2R.6" && -x scripts/collect_phase02r_gate2r6_evidence.sh ]]; t
   exec bash scripts/collect_phase02r_gate2r6_evidence.sh
 fi
 
+if [[ "$GATE" == "2R.7" && -x scripts/collect_phase02r_gate2r7_evidence.sh ]]; then
+  exec bash scripts/collect_phase02r_gate2r7_evidence.sh
+fi
+
 if [[ "$GATE" == "2R.4" && -x scripts/collect_phase02r_gate2r4_evidence.sh ]]; then
   exec bash scripts/collect_phase02r_gate2r4_evidence.sh
 fi

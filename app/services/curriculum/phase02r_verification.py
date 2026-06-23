@@ -50,6 +50,12 @@ REQUIRED_PATHS_BY_GATE: dict[str, tuple[str, ...]] = {
     "2R.7": (
         "app/services/curriculum/tutor_grounding.py",
         "app/models/curriculum_grounding.py",
+        "scripts/curriculum/build_phase02r_gate2r7_grounded_tutor.py",
+        "scripts/curriculum/export_phase02r_gate2r7_tutor_packet.py",
+        "scripts/curriculum/validate_phase02r_gate2r7_tutor.py",
+        "scripts/verify_phase02r_gate2r7.py",
+        "scripts/verify_phase02r_gate2r7_postgres.sh",
+        "scripts/collect_phase02r_gate2r7_evidence.sh",
     ),
     "2R.8": (
         "app/services/curriculum/legacy.py",
