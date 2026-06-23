@@ -363,7 +363,7 @@ DEFAULT_FINAL_BLOCKER_DECISION = FinalReleaseBlockerDecision(
 
 DEFAULT_DOMAIN_SUMMARIES = (
     ReleaseBlockerDomainSummary(ReleaseBlockerDomain.REPOSITORY, "docs/backlog/production_readiness/00_repository_state_and_canonical_source_of_truth.md", "python3 scripts/check_domain_01_repository_governance_ci_evidence.py", "release-owner", True, True),
-    ReleaseBlockerDomainSummary(ReleaseBlockerDomain.BACKEND_API, "docs/backlog/production_readiness/01_pr-002r_replacement_#U2014_backend_runtime_and_api_contract_baseline.md", "python3 scripts/check_domain_02_backend_api_contract_evidence.py", "engineering", True, True),
+    ReleaseBlockerDomainSummary(ReleaseBlockerDomain.BACKEND_API, "docs/backlog/production_readiness/01_pr-002r_replacement_backend_runtime_and_api_contract_baseline.md", "python3 scripts/check_domain_02_backend_api_contract_evidence.py", "engineering", True, True),
     ReleaseBlockerDomainSummary(ReleaseBlockerDomain.SECURITY, "docs/backlog/production_readiness/15_security_posture_and_threat_modeling.md", "make security-posture-threat-modeling-production-readiness-check", "security-owner", True, True),
     ReleaseBlockerDomainSummary(ReleaseBlockerDomain.OPERATIONS_SUPPORT, "docs/backlog/production_readiness/16_incident_response_operations_and_support.md", "make incident-response-operations-support-production-readiness-check", "support-owner", True, True),
     ReleaseBlockerDomainSummary(ReleaseBlockerDomain.EXTERNAL_MANUAL, "docs/release_blockers/external_manual_dependency_register.md", "manual verification", "release-owner", True, True, "GitHub settings, legal approval, live provider setup"),

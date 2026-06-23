@@ -36,6 +36,15 @@ make docs-housekeeping-check
 ```
 
 The default gate is safe for the current repo. It checks canonical docs, changed links, deterministic inventory, and ratchet baselines.
+It validates committed generated inventory outputs before running ratchets; it does not regenerate those outputs.
+
+## Refresh target
+
+Regenerate committed inventory outputs explicitly when the documentation tree intentionally changes:
+
+```bash
+make docs-housekeeping-refresh
+```
 
 ## Strict gate
 

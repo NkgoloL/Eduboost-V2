@@ -8,12 +8,14 @@ BLOCK_START = "# BEGIN EDUBOOST DOCS HOUSEKEEPING TARGETS"
 BLOCK_END = "# END EDUBOOST DOCS HOUSEKEEPING TARGETS"
 BLOCK = f"""
 {BLOCK_START}
-.PHONY: docs-housekeeping-check docs-housekeeping-inventory docs-housekeeping-inventory-check docs-housekeeping-ratchet-check docs-housekeeping-strict-check docs-metadata-check docs-source-of-truth-check docs-links-check docs-links-full-check docs-claim-discipline-check docs-adr-number-check docs-stale-term-check docs-housekeeping-baseline-refresh
+.PHONY: docs-housekeeping-check docs-housekeeping-refresh docs-housekeeping-inventory docs-housekeeping-inventory-check docs-housekeeping-ratchet-check docs-housekeeping-strict-check docs-metadata-check docs-source-of-truth-check docs-links-check docs-links-full-check docs-claim-discipline-check docs-adr-number-check docs-stale-term-check docs-housekeeping-baseline-refresh
 
-docs-housekeeping-check: docs-housekeeping-inventory docs-housekeeping-inventory-check docs-source-of-truth-check docs-metadata-check docs-claim-discipline-check docs-links-check docs-housekeeping-ratchet-check docs-adr-number-check docs-stale-term-check
+docs-housekeeping-check: docs-housekeeping-inventory-check docs-source-of-truth-check docs-metadata-check docs-claim-discipline-check docs-links-check docs-housekeeping-ratchet-check docs-adr-number-check docs-stale-term-check
 
 docs-housekeeping-inventory:
 	$(PYTHON) scripts/maintenance/audit_documentation_inventory.py --root . --out-json docs/generated/documentation_inventory.json --out-csv docs/generated/documentation_inventory.csv --out-findings docs/generated/documentation_findings.csv
+
+docs-housekeeping-refresh: docs-housekeeping-inventory
 
 docs-housekeeping-inventory-check:
 	$(PYTHON) scripts/maintenance/check_doc_inventory_reproducible.py --root .
@@ -42,7 +44,7 @@ docs-adr-number-check:
 docs-stale-term-check:
 	$(PYTHON) scripts/maintenance/check_doc_stale_terms.py --root .
 
-docs-housekeeping-baseline-refresh: docs-housekeeping-inventory
+docs-housekeeping-baseline-refresh: docs-housekeeping-refresh
 	$(PYTHON) scripts/maintenance/update_doc_housekeeping_baseline.py --root .
 	$(PYTHON) scripts/maintenance/check_doc_adr_numbers.py --root . --update
 	$(PYTHON) scripts/maintenance/check_doc_stale_terms.py --root . --update

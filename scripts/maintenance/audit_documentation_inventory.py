@@ -34,7 +34,6 @@ RISKY_TERMS = [
     "Cosmos DB",
     "Azure ML",
     "Neo4j",
-    "knowledge graph",
 ]
 
 LOCAL_LINK_RE = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")

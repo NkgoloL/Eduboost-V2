@@ -8,13 +8,14 @@ BLOCK_START = "# BEGIN EDUBOOST DOCS HOUSEKEEPING TARGETS"
 BLOCK_END = "# END EDUBOOST DOCS HOUSEKEEPING TARGETS"
 BLOCK = f"""
 {BLOCK_START}
-.PHONY: docs-housekeeping-check docs-housekeeping-inventory docs-metadata-check docs-source-of-truth-check docs-links-check docs-claim-discipline-check
+.PHONY: docs-housekeeping-check docs-housekeeping-refresh docs-housekeeping-inventory docs-metadata-check docs-source-of-truth-check docs-links-check docs-claim-discipline-check
 
-docs-housekeeping-check: docs-housekeeping-inventory docs-source-of-truth-check docs-metadata-check docs-claim-discipline-check docs-links-check
-	$(PYTHON) scripts/maintenance/audit_documentation_inventory.py --root . --out-json docs/generated/documentation_inventory.json --out-csv docs/generated/documentation_inventory.csv --out-findings docs/generated/documentation_findings.csv
+docs-housekeeping-check: docs-source-of-truth-check docs-metadata-check docs-claim-discipline-check docs-links-check
 
 docs-housekeeping-inventory:
 	$(PYTHON) scripts/maintenance/audit_documentation_inventory.py --root . --out-json docs/generated/documentation_inventory.json --out-csv docs/generated/documentation_inventory.csv --out-findings docs/generated/documentation_findings.csv
+
+docs-housekeeping-refresh: docs-housekeeping-inventory
 
 docs-source-of-truth-check:
 	$(PYTHON) scripts/maintenance/check_doc_source_of_truth.py --root .

@@ -14,7 +14,6 @@ STALE_TERMS = [
     "Cosmos DB",
     "Azure ML",
     "Neo4j",
-    "knowledge graph",
 ]
 
 
