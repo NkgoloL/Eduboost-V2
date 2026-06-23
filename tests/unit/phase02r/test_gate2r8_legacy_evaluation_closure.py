@@ -109,9 +109,9 @@ def test_legacy_manifest_is_review_ready_and_non_executing() -> None:
     assert manifest["requires_human_review_count"] >= 1
 
 
-def test_previous_gate_references_cover_2r4_to_2r7() -> None:
+def test_previous_gate_references_cover_full_chain_2r0_to_2r7() -> None:
     refs = collect_previous_gate_references(Path.cwd())
-    assert [ref.gate for ref in refs] == ["2R.4", "2R.5", "2R.6", "2R.7"]
+    assert [ref.gate for ref in refs] == ["2R.0", "2R.1", "2R.2", "2R.3", "2R.4", "2R.5", "2R.6", "2R.7"]
 
 
 def test_closure_readiness_is_candidate_only() -> None:
@@ -133,3 +133,145 @@ def test_gate2r8_required_paths_registered() -> None:
     from app.services.curriculum.phase02r_verification import validate_required_paths
 
     assert validate_required_paths("2R.8") == []
+
+
+# ---------------------------------------------------------------------------
+# Regression tests for terminal Phase 02R closure support
+# ---------------------------------------------------------------------------
+
+def test_gate_control_validates_current_2r7_to_2r8_state() -> None:
+    """Existing gate state (approved=2R.7, authorised=2R.8) must still validate cleanly."""
+    from scripts.phase02r_gate_control import validate_state
+
+    errors = validate_state(
+        expected_approved_gate="2R.7",
+        expected_authorised_gate="2R.8",
+    )
+    assert errors == [], f"Unexpected errors: {errors}"
+
+
+def test_gate_control_rejects_nonexistent_gate_2r9() -> None:
+    """Gate 2R.8 must not be able to authorise a nonexistent Gate 2R.9."""
+    from scripts.phase02r_gate_control import GATE_ORDER
+
+    assert "2R.9" not in GATE_ORDER, "Gate 2R.9 must not exist in GATE_ORDER"
+
+
+def test_terminal_closure_requires_null_authorised_gate_and_phase_status() -> None:
+    """validate_state must reject a terminal-shaped control lacking required terminal fields."""
+    import json
+    import tempfile
+    from pathlib import Path
+    from unittest.mock import patch
+
+    import scripts.phase02r_gate_control as gc
+
+    # Build a minimal control that looks terminal but is missing terminal fields.
+    terminal_control_bad = {
+        "phase": "02R",
+        "start_approved": True,
+        "approved_gate": "2R.8",
+        "authorised_next_gate": None,
+        # Missing phase_status, final_closure_commit_sha, final_audit_bundle_sha256
+        "approval_decision_commit_sha": "a" * 40,
+        "evidence_commit_sha": "b" * 40,
+        "approved_at": "2026-06-23T22:00:00+02:00",
+    }
+    terminal_control_good = {
+        **terminal_control_bad,
+        "phase_status": "closed",
+        "final_closure_commit_sha": "c" * 40,
+        "final_audit_bundle_sha256": "d" * 64,
+    }
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tmp = Path(tmpdir)
+        (tmp / "control.json").write_text(json.dumps(terminal_control_bad), encoding="utf-8")
+        with patch.object(gc, "CONTROL_PATH", tmp / "control.json"):
+            errors = gc.validate_state()
+        assert any("phase_status" in e or "final_closure_commit_sha" in e or "final_audit_bundle_sha256" in e for e in errors), \
+            f"Expected terminal-field errors, got: {errors}"
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tmp = Path(tmpdir)
+        (tmp / "control.json").write_text(json.dumps(terminal_control_good), encoding="utf-8")
+        with patch.object(gc, "CONTROL_PATH", tmp / "control.json"):
+            errors_good = gc.validate_state()
+        # Should fail on approvals/evidence (files don't exist), but NOT on terminal field checks.
+        terminal_field_errors = [e for e in errors_good if any(
+            kw in e for kw in ("phase_status", "final_closure_commit_sha", "final_audit_bundle_sha256")
+        )]
+        assert terminal_field_errors == [], f"Terminal fields should be valid, but got: {terminal_field_errors}"
+
+
+def test_closure_requires_all_prior_gate_evidence_files_present() -> None:
+    """evaluate_closure_readiness must report missing evidence for any gate in the full chain."""
+    import tempfile
+    from pathlib import Path
+
+    from app.services.curriculum.phase02r_closure import REQUIRED_PREVIOUS_GATES, evaluate_closure_readiness
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        root = Path(tmpdir)
+        # Create a dummy root with no evidence files.
+        readiness = evaluate_closure_readiness(root)
+        assert readiness.status == "blocked"
+        missing = [r for r in readiness.evidence_references if r.evidence_index_sha256 is None]
+        assert len(missing) == len(REQUIRED_PREVIOUS_GATES), (
+            f"Expected all {len(REQUIRED_PREVIOUS_GATES)} gates to be reported missing, got {len(missing)}"
+        )
+
+
+def test_final_closure_commit_must_differ_from_evidence_and_approval_commits() -> None:
+    """_validate_gate_approval must reject terminal state where final_closure_commit_sha == evidence commit."""
+    import scripts.phase02r_gate_control as gc
+    from unittest.mock import MagicMock, patch
+
+    shared_sha = "a" * 40  # deliberately reused to trigger the separation checks
+
+    control = {
+        "phase": "02R",
+        "start_approved": True,
+        "approved_gate": "2R.8",
+        "authorised_next_gate": None,
+        "phase_status": "closed",
+        "approval_decision_commit_sha": "b" * 40,
+        "evidence_commit_sha": shared_sha,
+        "final_closure_commit_sha": shared_sha,  # same as evidence — must be rejected
+        "final_audit_bundle_sha256": "e" * 64,
+        "approved_at": "2026-06-23T22:00:00+02:00",
+    }
+
+    errors: list[str] = []
+
+    # Provide a minimal approvals stub that passes the gate/phase_status checks but
+    # does NOT override final_closure_commit_sha so the SHA comparison is reached.
+    minimal_approvals = {
+        "gate": "2R.8",
+        "authorised_next_gate": None,
+        "phase_status": "closed",
+        "evidence_source_sha": shared_sha,
+        "evidence_commit_sha": shared_sha,
+        "decisions": [],
+    }
+
+    with (
+        patch.object(gc, "_evidence_index_metadata", return_value=(None, shared_sha, "candidate")),
+        patch.object(gc, "_validate_raw_checksums", return_value=None),
+        patch.object(gc, "_load", return_value=minimal_approvals),
+        patch.object(gc, "_approvals_path", return_value=MagicMock()),
+        patch.object(gc, "_evidence_index_path", return_value=MagicMock(exists=lambda: False)),
+        patch.object(gc, "_evidence_raw_dir", return_value=MagicMock()),
+    ):
+        gc._validate_gate_approval(
+            approved_gate="2R.8",
+            authorised_gate=None,
+            control=control,
+            require_approval_roles=False,
+            require_evidence_index_sha=False,
+            errors=errors,
+        )
+
+    assert any("final closure commit" in e and "separate" in e for e in errors), (
+        f"Expected final closure commit separation error, got: {errors}"
+    )

@@ -4,6 +4,13 @@
 This version is gate-aware for Gate 2R.1 and later transitions. It validates
 whichever gate is recorded as approved in phase_02r_start_gate_control.json,
 not only Gate 2R.1.
+
+Terminal state (Phase 02R complete):
+  approved_gate = 2R.8
+  authorised_next_gate = null
+  phase_status = "closed" or "complete"
+  final_closure_commit_sha = <40-char SHA>
+  final_audit_bundle_sha256 = <64-char hex>
 """
 from __future__ import annotations
 
@@ -21,7 +28,10 @@ CONTROL_PATH = ROOT / "docs/roadmap/execution/atlas/phase_02r_start_gate_control
 AUTOMATION_PATH = ROOT / "docs/roadmap/execution/atlas/phase_02r_gate_automation.json"
 PLAN_PATH = ROOT / "docs/roadmap/execution/atlas/phase_02r_execution_plan.md"
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 GATE_ORDER = ["2R.0", "2R.1", "2R.2", "2R.3", "2R.4", "2R.5", "2R.6", "2R.7", "2R.8"]
+TERMINAL_GATE = "2R.8"
+VALID_PHASE_TERMINAL_STATUSES = {"closed", "complete"}
 REQUIRED_ROLES = {
     "engineering_approver",
     "rights_reviewer",
@@ -109,11 +119,27 @@ def _validate_raw_checksums(gate: str, raw_dir: Path, errors: list[str]) -> None
             errors.append(f"Gate {gate} raw evidence checksum mismatch: {name}")
 
 
-def _validate_plan_current_state(authorised_gate: str, approved_gate: str, errors: list[str]) -> None:
+def _validate_plan_current_state(authorised_gate: str | None, approved_gate: str, errors: list[str]) -> None:
     try:
         plan = PLAN_PATH.read_text(encoding="utf-8")
     except FileNotFoundError:
         errors.append("Phase 2R execution plan is missing")
+        return
+    # Terminal state: Phase 02R is closed; no next-gate authorisation.
+    if authorised_gate is None:
+        terminal_status_phrases = (
+            f"Gate {approved_gate} verified complete; Phase 02R closed",
+            f"Gate {approved_gate} verified complete; Phase 02R complete",
+        )
+        if not any(p in plan for p in terminal_status_phrases):
+            errors.append(
+                f"execution plan is missing terminal status phrase for Phase 02R closure "
+                f"(expected one of: {terminal_status_phrases})"
+            )
+        for gate in GATE_ORDER:
+            auth_phrase = f"**Execution authorisation:** Gate {gate} only"
+            if auth_phrase in plan:
+                errors.append(f"execution plan contains obsolete execution authorisation statement in terminal state: {auth_phrase}")
         return
     expected_auth = f"**Execution authorisation:** Gate {authorised_gate} only"
     if expected_auth not in plan:
@@ -146,7 +172,7 @@ def _validate_plan_current_state(authorised_gate: str, approved_gate: str, error
 def _validate_gate_approval(
     *,
     approved_gate: str,
-    authorised_gate: str,
+    authorised_gate: str | None,
     control: dict[str, Any],
     require_approval_roles: bool,
     require_evidence_index_sha: bool,
@@ -173,33 +199,61 @@ def _validate_gate_approval(
 
     if approvals.get("gate") != approved_gate:
         errors.append(f"Gate {approved_gate} approvals manifest has wrong gate")
-    if approvals.get("decision") not in APPROVED_DECISIONS or approvals.get("authorised_next_gate") != authorised_gate:
-        errors.append(f"Gate {approved_gate} approvals do not authorise Gate {authorised_gate}")
+
+    # Terminal state: authorised_next_gate is null — final Phase 02R closure.
+    if authorised_gate is None:
+        # In terminal state, approvals must explicitly set authorised_next_gate to null.
+        if approvals.get("authorised_next_gate") is not None:
+            errors.append(f"Gate {approved_gate} approvals must have authorised_next_gate=null in terminal closure state")
+        if approvals.get("phase_status") not in VALID_PHASE_TERMINAL_STATUSES:
+            errors.append(
+                f"Gate {approved_gate} approvals must have phase_status in "
+                f"{sorted(VALID_PHASE_TERMINAL_STATUSES)} for terminal closure"
+            )
+    else:
+        if approvals.get("decision") not in APPROVED_DECISIONS or approvals.get("authorised_next_gate") != authorised_gate:
+            errors.append(f"Gate {approved_gate} approvals do not authorise Gate {authorised_gate}")
+
     if approvals.get("evidence_source_sha") != evidence_source_sha:
         errors.append(f"Gate {approved_gate} approvals do not reference the evidence source commit")
 
     evidence_commit_sha = str(approvals.get("evidence_commit_sha") or "")
     approval_decision_commit_sha = str(control.get("approval_decision_commit_sha") or "")
-    transition_commit_sha = str(control.get("transition_commit_sha") or "")
-    remote_branch_sha_at_transition = str(control.get("remote_branch_sha_at_transition") or "")
+
+    # In terminal state, transition/remote fields are replaced by final_closure_commit_sha.
+    if authorised_gate is None:
+        final_closure_sha = str(control.get("final_closure_commit_sha") or "")
+        if not SHA_RE.fullmatch(final_closure_sha):
+            errors.append("control.final_closure_commit_sha must be a real 40-character lowercase Git SHA in terminal state")
+        final_audit_sha256 = str(control.get("final_audit_bundle_sha256") or "")
+        if not SHA256_RE.fullmatch(final_audit_sha256):
+            errors.append("control.final_audit_bundle_sha256 must be a real 64-character hex SHA256 in terminal state")
+        if final_closure_sha and final_closure_sha == evidence_commit_sha:
+            errors.append("final closure commit must be separate from the evidence commit")
+        if final_closure_sha and final_closure_sha == approval_decision_commit_sha:
+            errors.append("final closure commit must be separate from the approval decision commit")
+    else:
+        transition_commit_sha = str(control.get("transition_commit_sha") or "")
+        remote_branch_sha_at_transition = str(control.get("remote_branch_sha_at_transition") or "")
+        if not SHA_RE.fullmatch(transition_commit_sha):
+            errors.append("control.transition_commit_sha must be a real 40-character lowercase Git SHA")
+        if not SHA_RE.fullmatch(remote_branch_sha_at_transition):
+            errors.append("control.remote_branch_sha_at_transition must be a real 40-character lowercase Git SHA")
+        if control.get("evidence_commit_sha") != evidence_commit_sha:
+            errors.append("gate control evidence_commit_sha must equal the approved evidence commit")
+        if transition_commit_sha == evidence_commit_sha:
+            errors.append("transition commit must be separate from the evidence commit")
+        if transition_commit_sha == approval_decision_commit_sha:
+            errors.append("transition commit must be separate from the approval decision commit")
+        if remote_branch_sha_at_transition != transition_commit_sha:
+            errors.append("remote_branch_sha_at_transition must equal the transition_commit_sha")
+
     if not SHA_RE.fullmatch(evidence_commit_sha):
         errors.append(f"Gate {approved_gate} approvals require a real evidence_commit_sha")
     if not SHA_RE.fullmatch(approval_decision_commit_sha):
         errors.append("control.approval_decision_commit_sha must be a real 40-character lowercase Git SHA")
-    if not SHA_RE.fullmatch(transition_commit_sha):
-        errors.append("control.transition_commit_sha must be a real 40-character lowercase Git SHA")
-    if not SHA_RE.fullmatch(remote_branch_sha_at_transition):
-        errors.append("control.remote_branch_sha_at_transition must be a real 40-character lowercase Git SHA")
-    if control.get("evidence_commit_sha") != evidence_commit_sha:
-        errors.append("gate control evidence_commit_sha must equal the approved evidence commit")
     if approval_decision_commit_sha == evidence_commit_sha:
         errors.append("approval decision commit must be separate from the evidence commit")
-    if transition_commit_sha == evidence_commit_sha:
-        errors.append("transition commit must be separate from the evidence commit")
-    if transition_commit_sha == approval_decision_commit_sha:
-        errors.append("transition commit must be separate from the approval decision commit")
-    if remote_branch_sha_at_transition != transition_commit_sha:
-        errors.append("remote_branch_sha_at_transition must equal the transition_commit_sha")
 
     approved_roles: set[str] = set()
     decision_times: list[datetime] = []
@@ -254,32 +308,60 @@ def validate_state(
         errors.append("control.start_approved must be boolean")
 
     approved_gate = str(control.get("approved_gate") or "")
-    authorised_gate = str(control.get("authorised_next_gate") or "")
+    # authorised_next_gate may be null/None in terminal state (Phase 02R closed).
+    raw_authorised = control.get("authorised_next_gate")
+    authorised_gate: str | None = str(raw_authorised) if raw_authorised is not None else None
+
     if approved_gate not in GATE_ORDER:
         errors.append("control.approved_gate is invalid")
-    if authorised_gate not in GATE_ORDER:
-        errors.append("control.authorised_next_gate is invalid")
+
+    # Terminal closure state: approved_gate=2R.8, authorised_next_gate=null.
+    is_terminal = (approved_gate == TERMINAL_GATE and authorised_gate is None)
+
+    if not is_terminal:
+        if authorised_gate not in GATE_ORDER:
+            errors.append("control.authorised_next_gate is invalid (must be a known gate or null for terminal closure)")
+        if expected_authorised_gate and authorised_gate != expected_authorised_gate:
+            errors.append(f"authorised_next_gate must be {expected_authorised_gate}")
+        if approved_gate in GATE_ORDER and authorised_gate in GATE_ORDER:
+            if GATE_ORDER.index(authorised_gate) != GATE_ORDER.index(approved_gate) + 1:
+                errors.append("authorised_next_gate must be exactly one gate after approved_gate")
+    else:
+        # Terminal state checks.
+        phase_status = control.get("phase_status")
+        if phase_status not in VALID_PHASE_TERMINAL_STATUSES:
+            errors.append(
+                f"control.phase_status must be one of {sorted(VALID_PHASE_TERMINAL_STATUSES)} "
+                f"when authorised_next_gate is null (terminal closure state)"
+            )
+        if not SHA_RE.fullmatch(str(control.get("final_closure_commit_sha") or "")):
+            errors.append("control.final_closure_commit_sha must be a real 40-character lowercase Git SHA in terminal state")
+        if not SHA256_RE.fullmatch(str(control.get("final_audit_bundle_sha256") or "")):
+            errors.append("control.final_audit_bundle_sha256 must be a real 64-character hex SHA256 in terminal state")
+        if expected_authorised_gate is not None and expected_authorised_gate != "null":
+            errors.append(f"authorised_next_gate must be null (terminal), not {expected_authorised_gate!r}")
+
     if expected_approved_gate and approved_gate != expected_approved_gate:
         errors.append(f"approved_gate must be {expected_approved_gate}")
-    if expected_authorised_gate and authorised_gate != expected_authorised_gate:
-        errors.append(f"authorised_next_gate must be {expected_authorised_gate}")
-    if approved_gate in GATE_ORDER and authorised_gate in GATE_ORDER:
-        if GATE_ORDER.index(authorised_gate) != GATE_ORDER.index(approved_gate) + 1:
-            errors.append("authorised_next_gate must be exactly one gate after approved_gate")
 
     if control.get("start_approved") is True:
-        for field in ("approval_decision_commit_sha", "evidence_commit_sha", "transition_commit_sha", "remote_branch_sha_at_transition"):
+        for field in ("approval_decision_commit_sha", "evidence_commit_sha"):
             if not SHA_RE.fullmatch(str(control.get(field, ""))):
                 errors.append(f"control.{field} must be a real 40-character lowercase Git SHA")
         _parse_time(control.get("approved_at"), "control.approved_at", errors)
+        if not is_terminal:
+            for field in ("transition_commit_sha", "remote_branch_sha_at_transition"):
+                if not SHA_RE.fullmatch(str(control.get(field, ""))):
+                    errors.append(f"control.{field} must be a real 40-character lowercase Git SHA")
 
-    supported = (automation.get("supported_gates") or {}).get(authorised_gate, {})
-    if authorised_gate and not all(supported.get(name) is True for name in ("preflight", "verify", "collect")):
-        errors.append(f"automation for authorised gate {authorised_gate} is incomplete")
-    if authorised_gate != "2R.0" and supported.get("apply") is not True:
-        errors.append(f"automation for authorised gate {authorised_gate} lacks apply support")
+    if not is_terminal:
+        supported = (automation.get("supported_gates") or {}).get(authorised_gate, {})
+        if authorised_gate and not all(supported.get(name) is True for name in ("preflight", "verify", "collect")):
+            errors.append(f"automation for authorised gate {authorised_gate} is incomplete")
+        if authorised_gate != "2R.0" and supported.get("apply") is not True:
+            errors.append(f"automation for authorised gate {authorised_gate} lacks apply support")
 
-    if approved_gate in GATE_ORDER and authorised_gate in GATE_ORDER:
+    if approved_gate in GATE_ORDER:
         _validate_plan_current_state(authorised_gate, approved_gate, errors)
         _validate_gate_approval(
             approved_gate=approved_gate,
@@ -296,7 +378,10 @@ def validate_state(
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--expected-approved-gate")
-    parser.add_argument("--expected-authorised-gate")
+    parser.add_argument(
+        "--expected-authorised-gate",
+        help='Expected authorised_next_gate value, or "null" for terminal closure state.',
+    )
     parser.add_argument("--require-approval-roles", action="store_true")
     parser.add_argument("--require-evidence-index-sha", action="store_true")
     parser.add_argument("--json", action="store_true")

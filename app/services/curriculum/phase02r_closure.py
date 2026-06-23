@@ -12,7 +12,7 @@ from app.services.curriculum.legacy_migration import build_gate2r8_legacy_migrat
 
 
 CLOSURE_POLICY_VERSION = "phase02r-gate2r8-closure-v1"
-REQUIRED_PREVIOUS_GATES = ("2R.4", "2R.5", "2R.6", "2R.7")
+REQUIRED_PREVIOUS_GATES = ("2R.0", "2R.1", "2R.2", "2R.3", "2R.4", "2R.5", "2R.6", "2R.7")
 
 
 class Phase02RClosureRejectedError(ValueError):
@@ -89,6 +89,9 @@ def evaluate_closure_readiness(root: Path) -> Gate2R8ClosureReadiness:
     for ref in refs:
         if ref.evidence_index_sha256 is None:
             failures.append(f"missing evidence index for {ref.gate}")
+        # Gate 2R.0 uses a different approval pattern (committed plan, not a JSON manifest).
+        if ref.gate == "2R.0":
+            continue
         if ref.approval_decision != "approved_with_disclosed_self_review_exception":
             failures.append(f"missing approved manifest for {ref.gate}")
     eval_report = build_gate2r8_evaluation_report()
