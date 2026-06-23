@@ -1,3 +1,18 @@
+---
+title: "Data retention policy"
+status: active
+owner: privacy
+reviewers: [privacy, security, release-management]
+audience: compliance-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-23
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage4-check"
+code_anchors: [docs/compliance/README.md]
+---
+
 # Data retention policy
 
 | Data category | Retention | Deletion/anonymisation trigger | Notes |

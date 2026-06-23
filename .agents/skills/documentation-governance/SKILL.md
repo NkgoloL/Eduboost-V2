@@ -15,3 +15,7 @@ Use this skill whenever creating, moving, reviewing, or approving EduBoost docum
 ## Inventory reproducibility
 
 Markdown files tracked through Git LFS must be inventoried by stable LFS identity, not by expanded local content. This preserves identical outputs between a git-lfs clone and a GitHub source ZIP.
+
+## Stage 4 strict tranche
+
+When editing `docs/architecture/`, `docs/product/`, `docs/api/`, `docs/compliance/`, or current `docs/security/` documents, run `make docs-housekeeping-stage4-check` in addition to the default housekeeping gate.

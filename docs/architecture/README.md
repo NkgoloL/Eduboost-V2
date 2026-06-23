@@ -1,5 +1,5 @@
 ---
-title: Architecture Documentation Index
+title: "Architecture Documentation"
 status: active
 owner: architecture
 reviewers: [backend, frontend, security, operations]
@@ -7,10 +7,10 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-22
+last_reviewed: 2026-06-23
 review_interval_days: 60
-evidence_command: make runtime-check && make openapi-check
-code_anchors: [app/api_v2.py, app/frontend/package.json, alembic]
+evidence_command: "make docs-housekeeping-stage4-check"
+code_anchors: [docs/architecture/README.md]
 ---
 
 # Architecture Documentation
