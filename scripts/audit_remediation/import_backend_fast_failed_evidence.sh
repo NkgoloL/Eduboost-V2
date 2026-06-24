@@ -82,7 +82,7 @@ cat > "$EVIDENCE_DIR/evidence_index.md" <<EOF_INDEX
 
 ## Boundary
 
-This is non-passing diagnostic evidence. It must not be used as backend-fast candidate evidence. Passing evidence remains blocked until `make test-fast` exits 0 from a clean implementation commit.
+This is non-passing diagnostic evidence. It must not be used as backend-fast candidate evidence. Passing evidence remains blocked until \`make test-fast\` exits 0 from a clean implementation commit.
 EOF_INDEX
 
 sha256sum "$EVIDENCE_DIR/evidence_index.md" > "$EVIDENCE_DIR/evidence_index.sha256"

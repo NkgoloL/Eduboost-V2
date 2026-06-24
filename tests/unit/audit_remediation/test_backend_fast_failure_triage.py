@@ -114,3 +114,9 @@ def test_find_backend_fast_log_accepts_directory(tmp_path: Path) -> None:
     log = raw / "backend_fast_gate.txt"
     log.write_text("1 failed", encoding="utf-8")
     assert REPORT.find_backend_fast_log(tmp_path) == log
+
+
+def test_failed_evidence_importer_escapes_markdown_command_backticks() -> None:
+    script = (ROOT / "scripts/audit_remediation/import_backend_fast_failed_evidence.sh").read_text(encoding="utf-8")
+    assert "\\`make test-fast\\`" in script
+    assert "until `make test-fast` exits" not in script
