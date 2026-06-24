@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
-"""Verify the Python environment required to run the backend fast gate."""
+"""Verify the Python environment required to run the backend fast gate.
+
+The important detail is that the imports must be checked in the same Python
+interpreter that the backend-fast authority command uses. The script therefore
+spawns `--python-bin` for each import check instead of importing modules in the
+verifier process by default.
+"""
 from __future__ import annotations
 
 import argparse
-import importlib
 import json
 import platform
 import subprocess
@@ -60,34 +65,67 @@ REQUIRED_IMPORTS: tuple[tuple[str, str, str], ...] = (
 )
 
 
-def import_status() -> list[dict[str, Any]]:
+def _resolve_python_bin(root: Path, python_bin: str) -> Path:
+    candidate = Path(python_bin)
+    if not candidate.is_absolute():
+        candidate = root / candidate
+    return candidate.resolve()
+
+
+def _python_version(python_bin: Path) -> str:
+    completed = subprocess.run(
+        [str(python_bin), "-c", "import platform; print(platform.python_version())"],
+        cwd=ROOT,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    return completed.stdout.strip() if completed.returncode == 0 else f"unavailable: {completed.stdout.strip()}"
+
+
+def import_status(python_bin: Path, root: Path = ROOT) -> list[dict[str, Any]]:
     results: list[dict[str, Any]] = []
     for module_name, reason, hint in REQUIRED_IMPORTS:
-        try:
-            module = importlib.import_module(module_name)
-        except Exception as exc:  # noqa: BLE001 - diagnostic tool must report all import failures
+        completed = subprocess.run(
+            [str(python_bin), "-c", f"import {module_name}; print('ok')"],
+            cwd=root,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+        )
+        if completed.returncode != 0:
             results.append({
                 "module": module_name,
                 "valid": False,
                 "reason": reason,
                 "requirement_hint": hint,
-                "error": f"{type(exc).__name__}: {exc}",
+                "error": (completed.stderr or completed.stdout).strip(),
             })
         else:
-            version = getattr(module, "__version__", None)
+            version_completed = subprocess.run(
+                [str(python_bin), "-c", f"import {module_name} as m; print(getattr(m, '__version__', ''))"],
+                cwd=root,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.DEVNULL,
+                check=False,
+            )
+            version = version_completed.stdout.strip() if version_completed.returncode == 0 else None
             results.append({
                 "module": module_name,
                 "valid": True,
                 "reason": reason,
                 "requirement_hint": hint,
-                "version": str(version) if version is not None else None,
+                "version": version or None,
             })
     return results
 
 
-def run_pip_check(python_bin: str) -> dict[str, Any]:
+def run_pip_check(python_bin: Path) -> dict[str, Any]:
     completed = subprocess.run(
-        [python_bin, "-m", "pip", "check"],
+        [str(python_bin), "-m", "pip", "check"],
         text=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
@@ -105,6 +143,10 @@ def verify(root: Path = ROOT, *, run_pip: bool = False, python_bin: str = sys.ex
     warnings: list[str] = []
     checked: list[str] = []
 
+    resolved_python = _resolve_python_bin(root, python_bin)
+    if not resolved_python.exists():
+        errors.append(f"python interpreter not found: {resolved_python}")
+
     for rel_path in ["requirements/base.txt", "requirements/dev.txt", "Makefile", "pytest.ini"]:
         path = root / rel_path
         if path.exists():
@@ -112,20 +154,36 @@ def verify(root: Path = ROOT, *, run_pip: bool = False, python_bin: str = sys.ex
         else:
             errors.append(f"missing {rel_path}")
 
-    imports = import_status()
+    imports: list[dict[str, Any]] = []
+    if resolved_python.exists():
+        imports = import_status(resolved_python, root)
+    else:
+        imports = [
+            {
+                "module": module_name,
+                "valid": False,
+                "reason": reason,
+                "requirement_hint": hint,
+                "error": "authority interpreter missing",
+            }
+            for module_name, reason, hint in REQUIRED_IMPORTS
+        ]
+
     missing = [item for item in imports if not item["valid"]]
     if missing:
         errors.append(f"{len(missing)} backend-fast Python import requirement(s) missing")
 
     pip_check = None
-    if run_pip:
-        pip_check = run_pip_check(python_bin)
+    if run_pip and resolved_python.exists():
+        pip_check = run_pip_check(resolved_python)
         checked.append("python -m pip check")
         if not pip_check["valid"]:
             errors.append("pip check failed")
 
-    if sys.version_info[:2] not in {(3, 11), (3, 12), (3, 13)}:
-        warnings.append(f"Python {platform.python_version()} is outside the expected 3.11-3.13 range")
+    version = _python_version(resolved_python) if resolved_python.exists() else "missing"
+    version_parts = tuple(int(part) for part in version.split(".")[:2] if part.isdigit()) if resolved_python.exists() else ()
+    if version_parts and version_parts not in {(3, 11), (3, 12), (3, 13)}:
+        warnings.append(f"Python {version} is outside the expected 3.11-3.13 range")
 
     return {
         "valid": not errors,
@@ -133,12 +191,12 @@ def verify(root: Path = ROOT, *, run_pip: bool = False, python_bin: str = sys.ex
         "warnings": warnings,
         "checked": checked,
         "python": {
-            "executable": python_bin,
-            "version": platform.python_version(),
+            "executable": str(resolved_python),
+            "version": version,
         },
         "imports": imports,
         "missing_modules": [item["module"] for item in missing],
-        "install_hint": f"{python_bin} -m pip install -r requirements/dev.txt",
+        "install_hint": f"{resolved_python} -m pip install -r requirements/dev.txt",
         "pip_check": pip_check,
     }
 

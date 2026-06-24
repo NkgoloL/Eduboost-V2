@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_02b_backend_fast_runtime_dependency_remediation",
+  "status": "phase_02b_runtime_dependency_evidence_harness_repair",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -59,7 +59,7 @@
       "status": "partially_addressed_in_baseline_reset"
     }
   ],
-  "active_slice": "02b-backend-fast-runtime-dependencies",
+  "active_slice": "02b-runtime-dependency-evidence-repair",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "status": "failed_authority_gate_captured_for_triage",
@@ -81,9 +81,11 @@
     "runtime_dependency_slice": {
       "id": "TA-BACKEND-FAST-002",
       "title": "Synchronize backend fast authority Python runtime dependencies",
-      "status": "implementation_assets_applied",
+      "status": "evidence_harness_repair_pending_recollection",
       "authority_interpreter": ".venv/bin/python",
-      "policy": "Environment dependency evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0."
+      "policy": "Environment dependency evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "evidence_boundary": "Runtime dependency evidence is separate from backend-fast candidate evidence; make test-fast must still exit 0 before passing backend-fast evidence is allowed.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     }
   }
 }
