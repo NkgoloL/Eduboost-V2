@@ -1,20 +1,20 @@
 # Documentation Inventory
 
-Generated at: `2026-06-14T22:20:24Z`
-Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
+Generated at: `2026-06-24T11:30:24Z`
+Commit: `f5d72b8380da6403371ea91f6c8298626ba07aa1`
 
-- Documents: `1370`
+- Documents: `1579`
 - Generated docs: `4`
 
 ## Categories
 
 | Category | Count |
 |---|---:|
-| `adr` | 52 |
+| `adr` | 56 |
 | `api` | 6 |
 | `architecture` | 40 |
-| `general` | 682 |
-| `release` | 488 |
+| `general` | 888 |
+| `release` | 487 |
 | `security` | 102 |
 
 ## Documents
@@ -103,6 +103,10 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/adr/ADR-028-authoritative-deployment-target.md` | `adr` | ADR-028 — Authoritative Production Deployment Target | 2798 | False |
 | `docs/adr/ADR-029-supabase-auth-strategy.md` | `adr` | ADR-029: Supabase Auth Strategy | 1833 | False |
 | `docs/adr/ADR-030-content-review-governance.md` | `adr` | ADR-030 — Educator Consensus and Content Governance | 2178 | False |
+| `docs/adr/ADR-030-learner-tutor-safety-boundary.md` | `adr` | ADR-030 — Learner Tutor Safety and Context Boundary | 1425 | False |
+| `docs/adr/ADR-031-durable-ai-operations-budget-authority.md` | `adr` | ADR-031 — Durable AI Operations and Budget Authority | 1474 | False |
+| `docs/adr/ADR-031-irt-quality-self-healing.md` | `adr` | ADR-031 — IRT Quality and Self-Healing Controls | 1793 | False |
+| `docs/adr/ADR-032-curriculum-expansion-training-governance.md` | `adr` | ADR-032 — Governed Curriculum Expansion and Training Dataset Manifests | 1423 | False |
 | `docs/adr/README.md` | `adr` | Architectural Decision Records (ADR) | 1203 | False |
 | `docs/adr/frontend/ADR-001-auth-model.md` | `adr` | ADR-001 — Frontend Auth Model (FastAPI JWT + httpOnly cookie) | 2813 | False |
 | `docs/adr/frontend/ADR-001-rollback.md` | `adr` | ADR-001 Rollback Plan — Supabase Auth Restoration | 2279 | False |
@@ -189,6 +193,17 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/archive/INTEGRATION_COMPLETE.md` | `general` | EduBoost V2 PR Integration Complete ✅ | 11273 | False |
 | `docs/archive/LLM_Integration_Roadmap.md` | `general` | EduBoost V2: LLM Brain Integration Roadmap | 5999 | False |
 | `docs/archive/PR_INTEGRATION_SUMMARY.md` | `general` | PR Integration Summary (2026-05-08) | 25865 | False |
+| `docs/archive/legacy-phase-controls/20260615T184543Z/execution/phase_1_execution_plan.md` | `general` | Phase 1 Execution Plan - Release-Blocking Correctness Fixes | 2045 | False |
+| `docs/archive/legacy-phase-controls/20260615T184543Z/execution/phase_1_implementation_report.md` | `general` | Phase 1 Implementation Report - Release-Blocking Correctness Fixes | 2718 | False |
+| `docs/archive/legacy-phase-controls/20260615T184543Z/execution/phase_3_execution_plan.md` | `general` | Phase 3 Execution Plan — Frontend Build and Test Health | 8261 | False |
+| `docs/archive/legacy-phase-controls/20260615T184543Z/execution/phase_3_implementation_report.md` | `general` | Phase 3 Implementation Report - Frontend Build and Test Health | 3512 | False |
+| `docs/archive/legacy-phase-controls/20260615T184543Z/execution/phase_4_execution_plan.md` | `general` | Phase 4 Execution Plan - Runtime and Environment Alignment | 2071 | False |
+| `docs/archive/legacy-phase-controls/20260615T184543Z/execution/phase_4_implementation_report.md` | `general` | Phase 4 Implementation Report - Runtime and Environment Alignment | 2476 | False |
+| `docs/archive/legacy-phase-controls/20260615T184543Z/execution/phase_5_execution_plan.md` | `general` | Phase 5 Execution Plan — Migrations and Schema Management | 9356 | False |
+| `docs/archive/legacy-phase-controls/20260615T184543Z/execution/phase_5_implementation_report.md` | `general` | Phase 5 Implementation Report | 5677 | False |
+| `docs/archive/legacy-phase-controls/20260615T184543Z/execution/phase_6_execution_plan.md` | `general` | Phase 6 Execution Plan — Durable Background Jobs | 11411 | False |
+| `docs/archive/legacy-phase-controls/20260615T184543Z/execution/phase_7_execution_plan.md` | `general` | Phase 7 Execution Plan — Deployment and Security Hardening | 12788 | False |
+| `docs/archive/legacy-phase-controls/20260615T184543Z/execution/phase_7_implementation_report.md` | `general` | Phase 7 Implementation Report — Deployment and Security Hardening | 7131 | False |
 | `docs/archive/pr_007_implementation_summary.md` | `general` | PR-007 Frontend core flows and accessibility | 4212 | False |
 | `docs/archive/roadmaps-or-todos/EDUBOOST_NEXT_BATCH_ALL_OUTSTANDING_TASKS.md` | `general` | EduBoost V2 — Next Batch: All Outstanding Tasks | 9942 | False |
 | `docs/archive/roadmaps-or-todos/MANIFEST.md` | `general` | Archived Roadmaps And TODOs | 521 | False |
@@ -438,10 +453,10 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/frontend/task_metadata_template.md` | `general` | Frontend Task Metadata Template | 1206 | False |
 | `docs/generated/documentation_intelligence/README.md` | `general` | Documentation Intelligence Artifacts | 482 | False |
 | `docs/generated/documentation_intelligence/classifier_suggestions.md` | `general` | Classifier Suggestions | 7262 | False |
-| `docs/generated/documentation_intelligence/docs_gap_report.md` | `general` | Documentation Gap Report | 31221 | False |
+| `docs/generated/documentation_intelligence/docs_gap_report.md` | `general` | Documentation Gap Report | 31265 | False |
 | `docs/generated/documentation_intelligence/docs_generation_plan.md` | `general` | Documentation Generation Plan | 10022 | False |
-| `docs/generated/documentation_intelligence/docs_inventory.json` | `general` | Docs Inventory | 1842246 | False |
-| `docs/generated/documentation_intelligence/docs_inventory.md` | `general` | Documentation Inventory | 125504 | False |
+| `docs/generated/documentation_intelligence/docs_inventory.json` | `general` | Docs Inventory | 1842378 | False |
+| `docs/generated/documentation_intelligence/docs_inventory.md` | `general` | Documentation Inventory | 125548 | False |
 | `docs/generated/documentation_intelligence/gap_fixes.md` | `general` | Gap Fixes & Proposed Evidence Links | 1749 | False |
 | `docs/generated/documentation_intelligence/review_request.md` | `general` | Review Request: System Overview | 1202 | False |
 | `docs/generated/documentation_intelligence/sanity_checks.json` | `general` | Sanity Checks | 3293824 | False |
@@ -476,7 +491,7 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/observability/runbooks/notification_dead_letter_spike.md` | `general` | Runbook: notification_dead_letter_spike | 655 | False |
 | `docs/observability/runbooks/privacy_export_failure.md` | `general` | Runbook: privacy_export_failure | 639 | False |
 | `docs/observability/telemetry_privacy_retention_contract.md` | `general` | Telemetry Privacy and Retention Contract | 852 | False |
-| `docs/openapi.json` | `api` | Openapi | 633542 | False |
+| `docs/openapi.json` | `api` | Openapi | 737459 | False |
 | `docs/openapi_pr003.json` | `api` | Openapi Pr003 | 125292 | False |
 | `docs/openapi_pr004.json` | `api` | Openapi Pr004 | 132996 | False |
 | `docs/operations/CLUSTER_D_CLOSURE.md` | `general` | Cluster D CI/Deployment/Environment Closure | 1252 | False |
@@ -775,8 +790,8 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/release/backend_data_retention_decision_checklist.md` | `release` | Backend Data Retention Decision Checklist | 1404 | False |
 | `docs/release/backend_deletion_candidate_inventory.md` | `release` | Backend Deletion Candidate Inventory | 105050098 | False |
 | `docs/release/backend_first_wiring_candidate_registry.md` | `release` | Backend First Wiring Candidate Registry | 372 | False |
-| `docs/release/backend_first_wiring_candidates_report.md` | `release` | Backend First Wiring Candidates Report | 5947 | False |
-| `docs/release/backend_implementation_371_375_report.md` | `release` | Backend Implementation 371-375 Report | 3408 | False |
+| `docs/release/backend_first_wiring_candidates_report.md` | `release` | Backend First Wiring Candidates Report | 6025 | False |
+| `docs/release/backend_implementation_371_375_report.md` | `release` | Backend Implementation 371-375 Report | 3512 | False |
 | `docs/release/backend_implementation_decision_ledger.md` | `release` | Backend Implementation Decision Ledger | 1147 | False |
 | `docs/release/backend_implementation_manifest_401_420.md` | `release` | Backend Implementation Manifest 401-420 | 524 | False |
 | `docs/release/backend_implementation_slice_371_375.md` | `release` | Backend Implementation Slice 371-375 | 570 | False |
@@ -784,11 +799,11 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/release/backend_implementation_slice_431_450.md` | `release` | Backend Implementation Slice 431-450 | 626 | False |
 | `docs/release/backend_implementation_terminal_progress_packet.md` | `release` | Backend Implementation Terminal Progress Packet | 1049 | False |
 | `docs/release/backend_runtime_compatibility_contract.md` | `release` | Backend Runtime Compatibility Contract | 1489 | False |
-| `docs/release/backend_runtime_compatibility_report.md` | `release` | Backend Runtime Compatibility Report | 3999 | False |
+| `docs/release/backend_runtime_compatibility_report.md` | `release` | Backend Runtime Compatibility Report | 4129 | False |
 | `docs/release/backend_runtime_enablement_checksum_manifest.md` | `release` | Backend Runtime Enablement Checksum Manifest | 1488 | False |
 | `docs/release/backend_runtime_enablement_closure_packet.md` | `release` | Backend Runtime Enablement Closure Packet | 347 | False |
 | `docs/release/backend_runtime_enablement_packet.md` | `release` | Backend Runtime Enablement Packet | 1285 | False |
-| `docs/release/backend_runtime_enablement_report.md` | `release` | Backend Runtime Enablement Report | 6881 | False |
+| `docs/release/backend_runtime_enablement_report.md` | `release` | Backend Runtime Enablement Report | 6985 | False |
 | `docs/release/backend_runtime_integration_checksum_manifest.md` | `release` | Backend Runtime Integration Checksum Manifest | 1109 | False |
 | `docs/release/backend_runtime_integration_next_pr_queue.md` | `release` | Backend Runtime Integration Next PR Queue | 405 | False |
 | `docs/release/backend_runtime_integration_readiness.md` | `release` | Backend Runtime Integration Readiness | 583 | False |
@@ -828,7 +843,7 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/release/ci_run_evidence_status.json` | `release` | Ci Run Evidence Status | 766 | False |
 | `docs/release/ci_run_evidence_status.md` | `release` | CI Run Evidence Status | 801 | False |
 | `docs/release/ci_workflow_consolidation.md` | `release` | EduBoost V2 CI Workflow Consolidation Plan | 1293 | False |
-| `docs/release/consent_callsite_inventory.md` | `release` | Consent Call-Site Inventory | 82761 | False |
+| `docs/release/consent_callsite_inventory.md` | `release` | Consent Call-Site Inventory | 83055 | False |
 | `docs/release/consent_candidate_execution_ledger.md` | `release` | Consent Candidate Execution Ledger | 428 | False |
 | `docs/release/consent_runtime_compatibility_slice_001.md` | `release` | Consent Runtime Compatibility Slice 001 | 640 | False |
 | `docs/release/consent_runtime_integration_target_map.md` | `release` | Consent Runtime Integration Target Map | 365 | False |
@@ -850,8 +865,8 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/release/deep_readiness_runtime_integration_target_map.md` | `release` | Deep-Readiness Runtime Integration Target Map | 371 | False |
 | `docs/release/diag_deep_health_runtime_status.json` | `release` | Diag Deep Health Runtime Status | 1246 | False |
 | `docs/release/diag_deep_health_runtime_status.md` | `release` | Diagnostic Deep Health Runtime Evidence Status | 1596 | False |
-| `docs/release/diagnostic_item_bank_canonicality_status.json` | `release` | Diagnostic Item Bank Canonicality Status | 59656 | False |
-| `docs/release/diagnostic_item_bank_canonicality_status.md` | `release` | Diagnostic Item-Bank Policy Status | 3348 | False |
+| `docs/release/diagnostic_item_bank_canonicality_status.json` | `release` | Diagnostic Item Bank Canonicality Status | 70606 | False |
+| `docs/release/diagnostic_item_bank_canonicality_status.md` | `release` | Diagnostic Item-Bank Policy Status | 4311 | False |
 | `docs/release/diagnostic_score_live_audit_status.json` | `release` | Diagnostic Score Live Audit Status | 6070 | False |
 | `docs/release/diagnostic_score_live_audit_status.md` | `release` | Diagnostic Score Live Audit Status | 3632 | False |
 | `docs/release/diagnostics_data_integrity_repair_report.md` | `release` | Diagnostics Data Integrity Repair Report | 355 | False |
@@ -880,8 +895,8 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/release/external_approvals/legal_approval.md` | `release` | POPIA/legal release approval | 515 | False |
 | `docs/release/external_approvals/security_approval.md` | `release` | Security release approval | 510 | False |
 | `docs/release/external_approvals/staging_acceptance.md` | `release` | Staging acceptance approval | 516 | False |
-| `docs/release/final_beta_gate_refresh.json` | `release` | Final Beta Gate Refresh | 13197 | False |
-| `docs/release/final_beta_gate_refresh.md` | `release` | Final Beta Gate Refresh | 4242 | False |
+| `docs/release/final_beta_gate_refresh.json` | `release` | Final Beta Gate Refresh | 13189 | False |
+| `docs/release/final_beta_gate_refresh.md` | `release` | Final Beta Gate Refresh | 4238 | False |
 | `docs/release/final_closure_certificate.md` | `release` | Final Closure Certificate | 1060 | False |
 | `docs/release/final_go_no_go_evidence.md` | `release` | Final Go/No-Go Evidence | 1358 | False |
 | `docs/release/first_audit_runtime_wiring_evidence.md` | `release` | First Audit Runtime Wiring Evidence | 465 | False |
@@ -1075,8 +1090,6 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/release/phase_4_implementation_audit.md` | `release` | Phase 4 Implementation Audit - Runtime and Environment Alignment | 1413 | False |
 | `docs/release/phase_5_evidence.md` | `release` | Phase 5 Evidence | 1923 | False |
 | `docs/release/phase_5_implementation_audit.md` | `release` | Phase 5 Implementation Audit | 2052 | False |
-| `docs/release/phase_6_evidence.md` | `release` | Phase 6 Evidence — Durable Background Jobs | 5731 | False |
-| `docs/release/phase_6_implementation_audit.md` | `release` | Phase 6 Implementation Audit — Durable Background Jobs | 5853 | False |
 | `docs/release/phase_7_evidence.md` | `release` | Phase 7 Evidence — Deployment and Security Hardening | 6655 | False |
 | `docs/release/phase_7_implementation_audit.md` | `release` | Phase 7 Implementation Audit - Deployment and Security Hardening | 3646 | False |
 | `docs/release/phase_8_evidence.md` | `release` | Phase 8 Evidence - Privacy and Authorization Completion | 4046 | False |
@@ -1160,6 +1173,7 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/release/staging_smoke_workflow_status.json` | `release` | Staging Smoke Workflow Status | 393 | False |
 | `docs/release/staging_smoke_workflow_status.md` | `release` | Staging Smoke Workflow Status | 670 | False |
 | `docs/release/status.md` | `release` | Status | 698 | False |
+| `docs/release/superseded/2026-06-21-full-pytest-latest-v2/README.md` | `release` | Superseded Full Pytest Artifact | 610 | False |
 | `docs/release/test_environment_contract.md` | `release` | Test Environment Contract | 983 | False |
 | `docs/release/transaction_rollback_rollup_report.json` | `release` | Transaction Rollback Rollup Report | 1522 | False |
 | `docs/release/transaction_rollback_rollup_report.md` | `release` | Transaction Rollback Proof Rollup | 1291 | False |
@@ -1173,11 +1187,158 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/release-evidence/atlas/phase-01/phase_01_remediation_tracker.md` | `general` | Phase 1 Remediation Tracker | 5652 | False |
 | `docs/release-evidence/atlas/phase-02/phase2_live_closure_evidence.json` | `general` | Phase2 Live Closure Evidence | 11709 | False |
 | `docs/release-evidence/atlas/phase-02/phase2_live_closure_evidence.md` | `general` | Phase 2 Live Closure Evidence | 224 | False |
-| `docs/release-evidence/atlas/phase-02/phase_02_audit_report.md` | `general` | Phase 2 Independent Audit Report | 3447 | False |
+| `docs/release-evidence/atlas/phase-02/phase_02_audit_report.md` | `general` | Phase 2 Independent Audit Report | 3465 | False |
 | `docs/release-evidence/atlas/phase-02/phase_02_evidence_index.md` | `general` | Phase 2 Evidence Pack and Index | 2762 | False |
-| `docs/release-evidence/atlas/phase-03/phase_01_02_integration_audit.md` | `general` | Phase 1 and Phase 2 Integration Audit | 4213 | False |
-| `docs/release-evidence/atlas/phase-03/phase_03_audit_report.md` | `general` | Phase 3 Pre-Integration Audit Report | 1924 | False |
-| `docs/release-evidence/atlas/phase-03/phase_03_evidence_index.md` | `general` | Phase 3 Evidence Index | 1919 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r0/audit_report.md` | `general` | Phase 2R Gate 2R.0 Audit Report | 388 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r0/evidence_index.md` | `general` | Phase 2R Gate 2R.0 Evidence Index | 939 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r0/raw/baseline.json` | `general` | Baseline | 2292 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r0/raw/extraction_sample.json` | `general` | Extraction Sample | 2518 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r0/raw/phase_identifier_compatibility.json` | `general` | Phase Identifier Compatibility | 322 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r0/raw/phase_identifier_compatibility_strict.json` | `general` | Phase Identifier Compatibility Strict | 318 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r0/raw/source_inventory.json` | `general` | Source Inventory | 615 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r0/raw/source_manifest.json` | `general` | Source Manifest | 122 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r1/README.md` | `general` | Gate 2R.1 Current Evidence State | 1034 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r1/audit_report.md` | `general` | Phase 2R Gate 2R.1 Audit Record | 400 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r1/evidence_handoff_metadata.json` | `general` | Evidence Handoff Metadata | 1010 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r1/evidence_index.md` | `general` | Phase 2R Gate 2R.1 Evidence Index | 954 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r1/raw/environment.txt.meta.json` | `general` | Environment.Txt.Meta | 219 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r1/raw/gate-2r1-closure-verification.json` | `general` | Gate 2R1 Closure Verification | 1292 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r1/raw/gate-2r1-closure-verification.json.meta.json` | `general` | Gate 2R1 Closure Verification.Json.Meta | 255 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r1/raw/postgres-verification.txt.meta.json` | `general` | Postgres Verification.Txt.Meta | 202 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r1/superseded/2026-06-16-premature-transition/SUPERSEDED.md` | `general` | Superseded Gate 2R.1 Evidence — 2026-06-16 | 413 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r1/superseded/2026-06-16-premature-transition/audit_report.md` | `general` | Phase 2R Gate 2R.1 Audit Report | 254 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r1/superseded/2026-06-16-premature-transition/evidence_index.md` | `general` | Phase 2R Gate 2R.1 Evidence Index | 582 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r1/superseded/2026-06-16-premature-transition/raw/phase_identifier_compatibility_strict.json` | `general` | Phase Identifier Compatibility Strict | 318 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r2/audit_report.md` | `general` | Phase 2R Gate 2R.2 Audit Record | 400 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r2/evidence_index.md` | `general` | Phase 2R Gate 2R.2 Evidence Index | 513 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r2/raw/environment.txt.meta.json` | `general` | Environment.Txt.Meta | 219 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r2/raw/gate-2r2-closure-verification.json` | `general` | Gate 2R2 Closure Verification | 3443 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r2/raw/gate-2r2-closure-verification.json.meta.json` | `general` | Gate 2R2 Closure Verification.Json.Meta | 255 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r2/raw/postgres-verification.txt.meta.json` | `general` | Postgres Verification.Txt.Meta | 202 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r3/audit_report.md` | `general` | Phase 2R Gate 2R.3 Audit Record | 400 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r3/evidence_index.md` | `general` | Phase 2R Gate 2R.3 Evidence Index | 513 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r3/raw/environment.txt.meta.json` | `general` | Environment.Txt.Meta | 219 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r3/raw/gate-2r3-closure-verification.json` | `general` | Gate 2R3 Closure Verification | 5065 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r3/raw/gate-2r3-closure-verification.json.meta.json` | `general` | Gate 2R3 Closure Verification.Json.Meta | 255 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r3/raw/postgres-verification.txt.meta.json` | `general` | Postgres Verification.Txt.Meta | 202 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r4/evidence_index.md` | `general` | Phase 02R Gate 2R.4 Evidence Index | 1113 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r4/raw/curriculum_graph_validation.json` | `general` | Curriculum Graph Validation | 36 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r4/raw/curriculum_graph_validation.json.meta.json` | `general` | Curriculum Graph Validation.Json.Meta | 275 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r4/raw/graph_export.json` | `general` | Graph Export | 7100 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r4/raw/graph_export.json.meta.json` | `general` | Graph Export.Json.Meta | 246 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r4/raw/language_authority_validation.json` | `general` | Language Authority Validation | 36 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r4/raw/language_authority_validation.json.meta.json` | `general` | Language Authority Validation.Json.Meta | 278 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r4/raw/mapping_review_validation.json` | `general` | Mapping Review Validation | 36 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r4/raw/mapping_review_validation.json.meta.json` | `general` | Mapping Review Validation.Json.Meta | 284 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r4/raw/preflight.txt.meta.json` | `general` | Preflight.Txt.Meta | 221 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r4/raw/tier1_support_validation.json` | `general` | Tier1 Support Validation | 36 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r4/raw/tier1_support_validation.json.meta.json` | `general` | Tier1 Support Validation.Json.Meta | 275 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r4/raw/verify_phase02r.txt.meta.json` | `general` | Verify Phase02R.Txt.Meta | 218 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r4/raw/verify_phase02r_postgres.txt.meta.json` | `general` | Verify Phase02R Postgres.Txt.Meta | 209 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r5/audit_report.md` | `general` | Phase 2R Gate 2R.5 Audit Record | 400 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r5/evidence_index.md` | `general` | Phase 2R Gate 2R.5 Evidence Index | 1002 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r5/raw/environment.txt.meta.json` | `general` | Environment.Txt.Meta | 252 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r5/raw/focused_tests.txt.meta.json` | `general` | Focused Tests.Txt.Meta | 279 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r5/raw/preflight.txt.meta.json` | `general` | Preflight.Txt.Meta | 221 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r5/raw/retrieval_projection.json` | `general` | Retrieval Projection | 3140 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r5/raw/retrieval_projection.json.meta.json` | `general` | Retrieval Projection.Json.Meta | 258 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r5/raw/retrieval_validation.json` | `general` | Retrieval Validation | 2965 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r5/raw/retrieval_validation.json.meta.json` | `general` | Retrieval Validation.Json.Meta | 249 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r5/raw/semantic_corpus_manifest.json` | `general` | Semantic Corpus Manifest | 1978 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r5/raw/semantic_corpus_manifest.json.meta.json` | `general` | Semantic Corpus Manifest.Json.Meta | 252 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r5/raw/verify_phase02r.txt.meta.json` | `general` | Verify Phase02R.Txt.Meta | 254 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r5/raw/verify_phase02r_gate2r5.json` | `general` | Verify Phase02R Gate2R5 | 10644 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r5/raw/verify_phase02r_gate2r5.json.meta.json` | `general` | Verify Phase02R Gate2R5.Json.Meta | 262 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r5/raw/verify_phase02r_gate2r5_postgres.txt.meta.json` | `general` | Verify Phase02R Gate2R5 Postgres.Txt.Meta | 209 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r6/audit_report.md` | `general` | Phase 2R Gate 2R.6 Audit Record | 400 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r6/evidence_index.md` | `general` | Phase 2R Gate 2R.6 Evidence Index | 1266 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r6/raw/environment.txt.meta.json` | `general` | Environment.Txt.Meta | 252 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r6/raw/focused_tests.txt.meta.json` | `general` | Focused Tests.Txt.Meta | 309 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r6/raw/generation_packet.json` | `general` | Generation Packet | 9236 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r6/raw/generation_packet.json.meta.json` | `general` | Generation Packet.Json.Meta | 255 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r6/raw/generation_validation.json` | `general` | Generation Validation | 374 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r6/raw/generation_validation.json.meta.json` | `general` | Generation Validation.Json.Meta | 250 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r6/raw/grounded_generation_artifact.json` | `general` | Grounded Generation Artifact | 4312 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r6/raw/grounded_generation_artifact.json.meta.json` | `general` | Grounded Generation Artifact.Json.Meta | 256 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r6/raw/preflight.txt.meta.json` | `general` | Preflight.Txt.Meta | 221 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r6/raw/verify_phase02r.txt.meta.json` | `general` | Verify Phase02R.Txt.Meta | 254 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r6/raw/verify_phase02r_gate2r6.json` | `general` | Verify Phase02R Gate2R6 | 15764 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r6/raw/verify_phase02r_gate2r6.json.meta.json` | `general` | Verify Phase02R Gate2R6.Json.Meta | 262 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r6/raw/verify_phase02r_gate2r6_postgres.txt.meta.json` | `general` | Verify Phase02R Gate2R6 Postgres.Txt.Meta | 209 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r7/audit_report.md` | `general` | Phase 2R Gate 2R.7 Audit Record | 400 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r7/evidence_index.md` | `general` | Phase 2R Gate 2R.7 Evidence Index | 1424 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r7/raw/environment.txt.meta.json` | `general` | Environment.Txt.Meta | 252 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r7/raw/focused_tests.txt.meta.json` | `general` | Focused Tests.Txt.Meta | 304 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r7/raw/grounded_tutor_response.json` | `general` | Grounded Tutor Response | 4372 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r7/raw/grounded_tutor_response.json.meta.json` | `general` | Grounded Tutor Response.Json.Meta | 251 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r7/raw/preflight.txt.meta.json` | `general` | Preflight.Txt.Meta | 221 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r7/raw/tutor_packet.json` | `general` | Tutor Packet | 16191 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r7/raw/tutor_packet.json.meta.json` | `general` | Tutor Packet.Json.Meta | 250 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r7/raw/tutor_validation.json` | `general` | Tutor Validation | 493 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r7/raw/tutor_validation.json.meta.json` | `general` | Tutor Validation.Json.Meta | 245 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r7/raw/verify_phase02r.txt.meta.json` | `general` | Verify Phase02R.Txt.Meta | 254 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r7/raw/verify_phase02r_gate2r7.json` | `general` | Verify Phase02R Gate2R7 | 15762 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r7/raw/verify_phase02r_gate2r7.json.meta.json` | `general` | Verify Phase02R Gate2R7.Json.Meta | 262 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r7/raw/verify_phase02r_gate2r7_postgres.txt.meta.json` | `general` | Verify Phase02R Gate2R7 Postgres.Txt.Meta | 209 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/audit_report.md` | `general` | Phase 2R Gate 2R.8 Audit Record | 399 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/evidence_index.md` | `general` | Phase 2R Gate 2R.8 Evidence Index | 1186 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/audit_bundle.json` | `general` | Audit Bundle | 4497 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/audit_bundle.json.meta.json` | `general` | Audit Bundle.Json.Meta | 250 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/closure_validation.json` | `general` | Closure Validation | 4176 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/closure_validation.json.meta.json` | `general` | Closure Validation.Json.Meta | 247 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/compileall.txt.meta.json` | `general` | Compileall.Txt.Meta | 735 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/environment.txt.meta.json` | `general` | Environment.Txt.Meta | 219 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/focused_tests.txt.meta.json` | `general` | Focused Tests.Txt.Meta | 289 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/gate-control.json` | `general` | Gate Control | 36 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/gate-control.json.meta.json` | `general` | Gate Control.Json.Meta | 382 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/legacy_migration_manifest.json` | `general` | Legacy Migration Manifest | 2301 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/legacy_migration_manifest.json.meta.json` | `general` | Legacy Migration Manifest.Json.Meta | 253 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/preflight.txt.meta.json` | `general` | Preflight.Txt.Meta | 221 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/real_corpus_evaluation_report.json` | `general` | Real Corpus Evaluation Report | 1367 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/real_corpus_evaluation_report.json.meta.json` | `general` | Real Corpus Evaluation Report.Json.Meta | 255 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/verify_phase02r.txt.meta.json` | `general` | Verify Phase02R.Txt.Meta | 254 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/verify_phase02r_gate2r8.json` | `general` | Verify Phase02R Gate2R8 | 15521 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/verify_phase02r_gate2r8.json.meta.json` | `general` | Verify Phase02R Gate2R8.Json.Meta | 262 | False |
+| `docs/release-evidence/atlas/phase-02r/gate-2r8/raw/verify_phase02r_gate2r8_postgres.txt.meta.json` | `general` | Verify Phase02R Gate2R8 Postgres.Txt.Meta | 209 | False |
+| `docs/release-evidence/atlas/phase-03/phase_01_02_integration_audit.md` | `general` | Phase 1 and Phase 2 Integration Audit | 4312 | False |
+| `docs/release-evidence/atlas/phase-03/phase_03_audit_report.md` | `general` | Phase 3 Final Audit Report | 2145 | False |
+| `docs/release-evidence/atlas/phase-03/phase_03_evidence_index.md` | `general` | Phase 3 Evidence Index | 2176 | False |
+| `docs/release-evidence/atlas/phase-04/phase_04_audit_report.md` | `general` | Phase 4 Independent Audit Report — IRT Quality and Self-Healing Controls | 956 | False |
+| `docs/release-evidence/atlas/phase-04/phase_04_evidence_index.md` | `general` | Phase 4 Evidence Index — IRT Quality and Self-Healing Controls | 1486 | False |
+| `docs/release-evidence/atlas/phase-05/phase_05_audit_report.md` | `general` | Phase 5 Independent Audit Report — Safe Learner AI Tutor | 1829 | False |
+| `docs/release-evidence/atlas/phase-05/phase_05_evidence_index.md` | `general` | Phase 5 Evidence Index — Safe Learner AI Tutor | 1845 | False |
+| `docs/release-evidence/atlas/phase-06/phase_06_audit_report.md` | `general` | Phase 6 Independent Audit — AI Operations | 419 | False |
+| `docs/release-evidence/atlas/phase-06/phase_06_evidence_index.md` | `general` | Phase 6 Evidence Index — AI Operations | 692 | False |
+| `docs/release-evidence/atlas/phase-07/phase_07_audit_report.md` | `general` | Phase 7 Independent Audit Report | 845 | False |
+| `docs/release-evidence/atlas/phase-07/phase_07_evidence_index.md` | `general` | Phase 7 Evidence Index | 1351 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/evidence_index.md` | `general` | Technical Audit Remediation Evidence — Backend Fast Failed Gate Diagnostic | 920 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/backend_fast_environment.json` | `general` | Backend Fast Environment | 7992 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/backend_fast_failure_report.json` | `general` | Backend Fast Failure Report | 12585 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/import_manifest.json` | `general` | Import Manifest | 322 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/original_failed_evidence/raw/backend_fast_failure_classification.json` | `general` | Backend Fast Failure Classification | 17702 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/original_failed_evidence/raw/backend_fast_gate_result.json` | `general` | Backend Fast Gate Result | 313 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/original_failed_evidence/raw/backend_fast_preflight.json` | `general` | Backend Fast Preflight | 809 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/original_failed_evidence/raw/backend_fast_runner_stdout.json` | `general` | Backend Fast Runner Stdout | 313 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/original_failed_evidence/raw/baseline_reset_check.json` | `general` | Baseline Reset Check | 433 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/original_failed_evidence/raw/dependency_scan_workflow.json` | `general` | Dependency Scan Workflow | 168 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/original_failed_evidence/raw/frontend_env_contract.json` | `general` | Frontend Env Contract | 155 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/original_failed_evidence/raw/openapi_route_contract.json` | `general` | Openapi Route Contract | 1959 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/original_failed_evidence/raw/phase02r_terminal_gate_control.json` | `general` | Phase02R Terminal Gate Control | 202 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/original_failed_evidence/raw/popia_route_contract.json` | `general` | Popia Route Contract | 301 | False |
+| `docs/release-evidence/technical-audit/backend-fast-runtime-dependencies/20260624T112921Z/evidence_index.md` | `general` | Evidence Index | 0 | False |
+| `docs/release-evidence/technical-audit/backend-fast-runtime-dependencies/20260624T112921Z/raw/backend_fast_environment.json` | `general` | Backend Fast Environment | 10582 | False |
+| `docs/release-evidence/technical-audit/backend-fast-runtime-dependencies/20260624T112921Z/raw/result.json` | `general` | Result | 245 | False |
+| `docs/release-evidence/technical-audit/backend-fast-runtime-dependencies/20260624T112921Z/raw/runtime_dependency_verification.json` | `general` | Runtime Dependency Verification | 2988 | False |
+| `docs/release-evidence/technical-audit/baseline-reset/evidence_index.md` | `general` | Technical Audit Remediation Baseline Reset Evidence | 713 | False |
+| `docs/release-evidence/technical-audit/baseline-reset/raw/baseline_reset.json` | `general` | Baseline Reset | 380 | False |
+| `docs/release-evidence/technical-audit/baseline-reset/raw/dependency_scan_workflow.json` | `general` | Dependency Scan Workflow | 105 | False |
+| `docs/release-evidence/technical-audit/baseline-reset/raw/frontend_env_contract.json` | `general` | Frontend Env Contract | 95 | False |
+| `docs/release-evidence/technical-audit/baseline-reset/raw/popia_route_contract.json` | `general` | Popia Route Contract | 242 | False |
+| `docs/release-evidence/technical-audit/openapi-route-contract/evidence_index.md` | `general` | Technical Audit Remediation Evidence — OpenAPI Route Contract | 947 | False |
+| `docs/release-evidence/technical-audit/openapi-route-contract/raw/baseline_reset_check.json` | `general` | Baseline Reset Check | 433 | False |
+| `docs/release-evidence/technical-audit/openapi-route-contract/raw/frontend_env_contract.json` | `general` | Frontend Env Contract | 155 | False |
+| `docs/release-evidence/technical-audit/openapi-route-contract/raw/openapi_route_contract.json` | `general` | Openapi Route Contract | 1959 | False |
+| `docs/release-evidence/technical-audit/openapi-route-contract/raw/popia_route_contract.json` | `general` | Popia Route Contract | 301 | False |
 | `docs/release_blockers/external_manual_dependency_register.md` | `general` | External Manual Dependency Register | 941 | False |
 | `docs/release_blockers/final_go_no_go_checklist.md` | `general` | Final Go/No-Go Checklist | 717 | False |
 | `docs/release_blockers/final_launch_boundary_statement.md` | `general` | Final Launch Boundary Statement | 669 | False |
@@ -1190,22 +1351,72 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/release_checklist.md` | `general` | Release Checklist | 2775 | False |
 | `docs/repository/governance.md` | `general` | Repository Governance — EduBoost | 3947 | False |
 | `docs/repository_governance.md` | `general` | Repository Governance | 6896 | False |
-| `docs/roadmap/EduBoost_Full_Lifecycle_Delivery_and_Beta_Readiness_Plan.md` | `general` | EduBoost Full-Lifecycle Delivery and Beta Readiness Plan | 114030 | False |
-| `docs/roadmap/PHASE_QUICK_REFERENCE.md` | `general` | EduBoost 13-Phase Quick Reference | 4834 | False |
-| `docs/roadmap/PHASE_STATUS_REGISTER.md` | `general` | EduBoost Phase Status Register | 10762 | False |
+| `docs/roadmap/EduBoost_Full_Lifecycle_Delivery_and_Beta_Readiness_Plan.md` | `general` | EduBoost Full-Lifecycle Delivery and Beta Readiness Plan | 114122 | False |
+| `docs/roadmap/PHASE_QUICK_REFERENCE.md` | `general` | EduBoost 13-Phase Quick Reference | 4840 | False |
+| `docs/roadmap/PHASE_STATUS_REGISTER.md` | `general` | EduBoost Phase Status Register | 4311 | False |
 | `docs/roadmap/PROCESS_DISCIPLINE.md` | `general` | Process Discipline — Phase Execution Standards | 10263 | False |
-| `docs/roadmap/README.md` | `general` | EduBoost Roadmap Documentation | 4039 | False |
+| `docs/roadmap/README.md` | `general` | EduBoost Roadmap Documentation | 4045 | False |
 | `docs/roadmap/agent_roadmap_reconciliation.json` | `general` | Agent Roadmap Reconciliation | 6769 | False |
 | `docs/roadmap/agent_roadmap_reconciliation.md` | `general` | Agent Roadmap Reconciliation | 3379 | False |
 | `docs/roadmap/deferred_scope_register.md` | `general` | Deferred Scope Register | 847 | False |
 | `docs/roadmap/execution/atlas/README.md` | `general` | Atlas Sprint Namespace | 584 | False |
+| `docs/roadmap/execution/atlas/phase_00_execution_plan.md` | `general` | Phase 0 Execution Plan — Environment and Reproducibility | 1449 | False |
 | `docs/roadmap/execution/atlas/phase_01_execution_plan.md` | `general` | Phase 1 Corrective Execution Plan — Grounded LLM Generation | 7762 | False |
 | `docs/roadmap/execution/atlas/phase_01_implementation_report.md` | `general` | Phase 1 Corrective Implementation Report | 5808 | False |
+| `docs/roadmap/execution/atlas/phase_02_execution_plan.md` | `general` | Phase 2 Execution Plan — Semantic Retrieval and Grounding | 7122 | False |
+| `docs/roadmap/execution/atlas/phase_02_implementation_report.md` | `general` | Phase 2 Implementation Report — Semantic Retrieval and Grounding | 5904 | False |
+| `docs/roadmap/execution/atlas/phase_02r_appendix_a_data_model.md` | `general` | Phase 2R Appendix A — Detailed Authoritative Data Model | 15038 | False |
+| `docs/roadmap/execution/atlas/phase_02r_appendix_b_test_and_evaluation_matrix.md` | `general` | Phase 2R Appendix B — Test, Verification, and Evaluation Matrix | 15448 | False |
+| `docs/roadmap/execution/atlas/phase_02r_appendix_c_evidence_inventory.md` | `general` | Phase 2R Appendix C — Evidence Inventory and Integrity Rules | 14184 | False |
+| `docs/roadmap/execution/atlas/phase_02r_appendix_d_audit_sampling.md` | `general` | Phase 2R Appendix D — Independent Audit and Sampling Plan | 5728 | False |
+| `docs/roadmap/execution/atlas/phase_02r_appendix_e_api_review_and_provenance.md` | `general` | Phase 2R Appendix E — Review Interfaces, Cross-Phase Integrations, APIs, Jobs, and Provenance | 11519 | False |
+| `docs/roadmap/execution/atlas/phase_02r_execution_plan.md` | `general` | Phase 2R Execution Plan — Authoritative CAPS Corpus, Grounded Generation, and Tutor Retrieval | 123393 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2R1_closure_report.md` | `general` | Phase 2R Gate 2R.1 Candidate Evidence Report | 805 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2R2_closure_report.md` | `general` | Phase 2R Gate 2R.2 Candidate Evidence Report | 805 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2R3_closure_report.md` | `general` | Phase 2R Gate 2R.3 Candidate Evidence Report | 805 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r0_closure_report.md` | `general` | Phase 2R Gate 2R.0 Closure Report | 1440 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r0_initial_report.md` | `general` | Phase 2R Gate 2R.0 Initial Start-Gate Report | 12311 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r1_approval_intake.md` | `general` | Phase 2R Gate 2R.1 Approval Intake Record | 2438 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r1_approvals.json` | `general` | Phase 02R Gate 2R1 Approvals | 2372 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r1_closure_report.md` | `general` | Phase 2R Gate 2R.1 Status Correction | 1651 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r2_approvals.json` | `general` | Phase 02R Gate 2R2 Approvals | 2371 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r2_control_repair_note.md` | `general` | Phase 2R Gate 2R.2 Control/Evidence Repair Note | 644 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r2_implementation_note.md` | `general` | Phase 2R Gate 2R.2 Implementation Note — Secure Acquisition | 1049 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r2_opening_record.md` | `general` | Phase 2R Gate 2R.2 Opening Record | 3018 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r3_approvals.json` | `general` | Phase 02R Gate 2R3 Approvals | 2372 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r3_implementation_note.md` | `general` | Phase 2R Gate 2R.3 Implementation Note | 1307 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r4_approvals.json` | `general` | Phase 02R Gate 2R4 Approvals | 2372 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r4_closure_report.md` | `general` | Phase 02R Gate 2R.4 Candidate Closure Report | 1363 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r4_implementation_note.md` | `general` | Phase 02R Gate 2R.4 Implementation Note | 1813 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r5_approvals.json` | `general` | Phase 02R Gate 2R5 Approvals | 2479 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r5_closure_report.md` | `general` | Phase 2R Gate 2R.5 Candidate Evidence Report | 1091 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r5_implementation_note.md` | `general` | Phase 02R Gate 2R.5 Implementation Note — Semantic Corpus and Real-Source Retrieval | 2184 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r6_approvals.json` | `general` | Phase 02R Gate 2R6 Approvals | 2539 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r6_closure_report.md` | `general` | Phase 2R Gate 2R.6 Candidate Evidence Report | 1106 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r6_implementation_note.md` | `general` | Phase 02R Gate 2R.6 Implementation Note | 1419 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r7_approvals.json` | `general` | Phase 02R Gate 2R7 Approvals | 2715 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r7_closure_report.md` | `general` | Phase 2R Gate 2R.7 Candidate Evidence Report | 1227 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r7_implementation_note.md` | `general` | Phase 02R Gate 2R.7 Implementation Note — Grounded Learner Tutor | 1705 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r8_approvals.json` | `general` | Phase 02R Gate 2R8 Approvals | 2641 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r8_closure_report.md` | `general` | Phase 2R Gate 2R.8 Candidate Closure Report | 993 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_2r8_implementation_note.md` | `general` | Phase 02R Gate 2R.8 Implementation Note | 1410 | False |
+| `docs/roadmap/execution/atlas/phase_02r_gate_automation.json` | `general` | Phase 02R Gate Automation | 1071 | False |
+| `docs/roadmap/execution/atlas/phase_02r_implementation_report.md` | `general` | Phase 2R Implementation Report | 4591 | False |
+| `docs/roadmap/execution/atlas/phase_02r_plan_approval.md` | `general` | Phase 2R Plan Approval | 917 | False |
+| `docs/roadmap/execution/atlas/phase_02r_start_gate_control.json` | `general` | Phase 02R Start Gate Control | 748 | False |
+| `docs/roadmap/execution/atlas/phase_03_execution_plan.md` | `general` | Phase 3 Execution Plan — Educator Consensus and Content Governance | 49142 | False |
+| `docs/roadmap/execution/atlas/phase_03_governance_revalidation_addendum.md` | `general` | Phase 3 Governance Revalidation Addendum | 711 | False |
+| `docs/roadmap/execution/atlas/phase_03_implementation_report.md` | `general` | Phase 3 Implementation Report — Educator Consensus and Content Governance | 3595 | False |
+| `docs/roadmap/execution/atlas/phase_04_execution_plan.md` | `general` | Phase 4 Execution Plan — IRT Quality and Self-Healing Controls | 6128 | False |
+| `docs/roadmap/execution/atlas/phase_04_implementation_report.md` | `general` | Phase 4 Implementation Report — IRT Quality and Self-Healing Controls | 1439 | False |
+| `docs/roadmap/execution/atlas/phase_05_execution_plan.md` | `general` | Phase 5 Execution Plan — Safe Learner AI Tutor | 7407 | False |
+| `docs/roadmap/execution/atlas/phase_05_implementation_report.md` | `general` | Phase 5 Implementation Report — Safe Learner AI Tutor | 16688 | False |
+| `docs/roadmap/execution/atlas/phase_06_execution_plan.md` | `general` | Phase 6 Execution Plan — Durable AI Operations, Budget Authority, and Production Hardening | 11589 | False |
+| `docs/roadmap/execution/atlas/phase_06_implementation_report.md` | `general` | Phase 6 Implementation Report — Durable AI Operations and Budget Authority | 1091 | False |
+| `docs/roadmap/execution/atlas/phase_07_execution_plan.md` | `general` | Phase 7 Execution Plan — Curriculum Coverage Expansion, Multilingual Quality, and Training Dataset Governance | 17155 | False |
+| `docs/roadmap/execution/atlas/phase_07_implementation_report.md` | `general` | Phase 7 Implementation Report — Curriculum Coverage Expansion, Multilingual Quality, and Training Dataset Governance | 2577 | False |
+| `docs/roadmap/execution/atlas/phases_01_07_reconciliation_plan.md` | `general` | Phases 1–7 Reconciliation Plan | 853 | False |
 | `docs/roadmap/execution/audit_remediation_roadmap_2026-06-13.md` | `general` | EduBoost V2 Audit Remediation Roadmap | 57480 | False |
-| `docs/roadmap/execution/atlas/phase_02_execution_plan.md` | `general` | Phase 2 Execution Plan — Semantic Retrieval and Grounding | 7092 | False |
-| `docs/roadmap/execution/atlas/phase_02_implementation_report.md` | `general` | Phase 2 Implementation Report — Semantic Retrieval and Grounding | 5892 | False |
-| `docs/roadmap/execution/atlas/phase_03_execution_plan.md` | `general` | Phase 3 Execution Plan — Educator Consensus and Content Governance | 49112 | False |
-| `docs/roadmap/execution/atlas/phase_03_implementation_report.md` | `general` | Phase 3 Implementation Report — Educator Consensus and Content Governance | 3299 | False |
 | `docs/roadmap/execution/phase_10_execution_plan.md` | `general` | Phase 10 Execution Plan — Post-Production Product Documentation & Operational Tooling | 6196 | False |
 | `docs/roadmap/execution/phase_10_implementation_report.md` | `general` | Phase 10 Implementation Report - Post-Production Product Documentation & Operational Tooling | 4107 | False |
 | `docs/roadmap/execution/phase_11_execution_plan.md` | `general` | Phase 11 Execution Plan — Technical Debt Burn-Down | 7427 | False |
@@ -1214,26 +1425,20 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/roadmap/execution/phase_12_implementation_report.md` | `general` | Phase 12 Implementation Report — Security Posture Deepening | 6963 | False |
 | `docs/roadmap/execution/phase_13_execution_plan.md` | `general` | Phase 13 Execution Plan — Frontend and Product Completeness | 9348 | False |
 | `docs/roadmap/execution/phase_13_implementation_report.md` | `general` | Phase 13 Implementation Report — Frontend and Product Completeness | 9140 | False |
-| `docs/roadmap/execution/phase_1_execution_plan.md` | `general` | Phase 1 Execution Plan - Release-Blocking Correctness Fixes | 2045 | False |
-| `docs/roadmap/execution/phase_1_implementation_report.md` | `general` | Phase 1 Implementation Report - Release-Blocking Correctness Fixes | 2718 | False |
-| `docs/roadmap/execution/phase_3_execution_plan.md` | `general` | Phase 3 Execution Plan — Frontend Build and Test Health | 8261 | False |
-| `docs/roadmap/execution/phase_3_implementation_report.md` | `general` | Phase 3 Implementation Report - Frontend Build and Test Health | 3512 | False |
-| `docs/roadmap/execution/phase_4_execution_plan.md` | `general` | Phase 4 Execution Plan - Runtime and Environment Alignment | 2071 | False |
-| `docs/roadmap/execution/phase_4_implementation_report.md` | `general` | Phase 4 Implementation Report - Runtime and Environment Alignment | 2476 | False |
-| `docs/roadmap/execution/phase_5_execution_plan.md` | `general` | Phase 5 Execution Plan — Migrations and Schema Management | 9356 | False |
-| `docs/roadmap/execution/phase_5_implementation_report.md` | `general` | Phase 5 Implementation Report | 5677 | False |
-| `docs/roadmap/execution/phase_6_execution_plan.md` | `general` | Phase 6 Execution Plan — Durable Background Jobs | 11411 | False |
-| `docs/roadmap/execution/phase_6_implementation_report.md` | `general` | Phase 6 Implementation Report — Durable Background Jobs | 7709 | False |
-| `docs/roadmap/execution/phase_7_execution_plan.md` | `general` | Phase 7 Execution Plan — Deployment and Security Hardening | 12788 | False |
-| `docs/roadmap/execution/phase_7_implementation_report.md` | `general` | Phase 7 Implementation Report — Deployment and Security Hardening | 7131 | False |
 | `docs/roadmap/execution/phase_8_execution_plan.md` | `general` | Phase 8 Execution Plan — Privacy and Authorization Completion | 20396 | False |
 | `docs/roadmap/execution/phase_8_implementation_report.md` | `general` | Phase 8 Implementation Report — Privacy and Authorization Completion | 9339 | False |
 | `docs/roadmap/execution/phase_9_execution_plan.md` | `general` | Phase 9 Execution Plan — Release-Blocker Checklist | 10610 | False |
 | `docs/roadmap/execution/phase_9_implementation_report.md` | `general` | Phase 9 Implementation Report — Release-Blocker Checklist | 10868 | False |
 | `docs/roadmap/execution/phase_audit_report_template.md` | `general` | Phase <NN> Audit Report — <Phase Title> | 5081 | False |
-| `docs/roadmap/execution/phase_evidence_pack_template.md` | `general` | Phase <NN> Evidence Index — <Phase Title> | 4060 | False |
-| `docs/roadmap/execution/phase_execution_plan_template.md` | `general` | Phase <NN> Execution Plan — <Phase Title> | 7298 | False |
+| `docs/roadmap/execution/phase_evidence_pack_template.md` | `general` | Phase <NN> Evidence Index — <Phase Title> | 4066 | False |
+| `docs/roadmap/execution/phase_execution_plan_template.md` | `general` | Phase <NN> Execution Plan — <Phase Title> | 7304 | False |
 | `docs/roadmap/execution/phase_implementation_report_template.md` | `general` | Phase <NN> Implementation Report — <Phase Title> | 7034 | False |
+| `docs/roadmap/execution/technical_audit_remediation/00_control_reset.md` | `general` | Technical Audit Remediation — Baseline Reset | 1611 | False |
+| `docs/roadmap/execution/technical_audit_remediation/01_openapi_route_contract.md` | `general` | Technical Audit Remediation — Slice 01: OpenAPI Route Contract | 2288 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02_backend_fast_gate.md` | `general` | Technical Audit Remediation — Phase 02: Backend Fast Gate Restoration | 1912 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02a_backend_fast_failure_triage.md` | `general` | Technical Audit Remediation — Phase 02A: Backend Fast Failure Triage | 1960 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02b_backend_fast_runtime_dependencies.md` | `general` | Technical Audit Remediation Phase 02B — Backend Fast Runtime Dependencies | 1579 | False |
+| `docs/roadmap/execution/technical_audit_remediation/blocker_register.json` | `general` | Blocker Register | 3067 | False |
 | `docs/roadmap/ga_graduation_boundary_contract.md` | `general` | GA Graduation Boundary Contract | 576 | False |
 | `docs/roadmap/post_530_north_star_execution_board.md` | `general` | Post-530 North-Star Execution Board | 494 | False |
 | `docs/roadmap/post_baseline_risk_register.md` | `general` | Post-Baseline Risk Register | 451 | False |
@@ -1263,7 +1468,11 @@ Commit: `da5706512d1db7dfad36eea166d6b2849e63f0f7`
 | `docs/roadmap_domains/domain_13_infrastructure-devops_execution_report.md` | `general` | Domain 13 Infrastructure Devops Execution Report | 2238 | False |
 | `docs/roadmap_domains/domain_14_legal-privacy-documentation_execution_report.md` | `general` | Domain 14 Legal Privacy Documentation Execution Report | 2321 | False |
 | `docs/route_inventory.md` | `general` | EduBoost V2 Route Inventory | 20723 | False |
+| `docs/runbooks/ai_operations_and_budgets.md` | `general` | AI Operations and Budget Runbook | 2021 | False |
 | `docs/runbooks/content_review_governance.md` | `general` | Content Review Governance Runbook | 2006 | False |
+| `docs/runbooks/curriculum_expansion_and_training_governance.md` | `general` | Curriculum Expansion and Training Dataset Governance Runbook | 2199 | False |
+| `docs/runbooks/irt_quality_watchdog.md` | `general` | IRT Quality Watchdog Runbook | 1682 | False |
+| `docs/runbooks/learner_tutor.md` | `general` | Learner Tutor Operations Runbook | 1309 | False |
 | `docs/safety/content_policy.md` | `general` | Content Safety Policy | 9178 | False |
 | `docs/secrets.md` | `general` | Secrets Management (starter guidance) | 1111 | False |
 | `docs/security/PHASE2_AUTHORIZATION_CLOSURE.md` | `security` | Phase 2 Authorization Closure Report | 2133 | False |

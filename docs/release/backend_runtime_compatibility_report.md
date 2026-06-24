@@ -1,13 +1,13 @@
 # Backend Runtime Compatibility Report
 
-Generated at: `2026-06-13T13:51:38Z`
+Generated at: `2026-06-24T11:32:47Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| runtime compatibility | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_compatibility.py` |
-| audit compatibility | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/generate_audit_callsite_inventory.py --fail-empty` |
-| consent compatibility | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/generate_consent_callsite_inventory.py --fail-empty` |
-| health readiness | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_health_readiness_contract.py` |
+| runtime compatibility | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_runtime_compatibility.py` |
+| audit compatibility | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_audit_callsite_inventory.py --fail-empty` |
+| consent compatibility | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_consent_callsite_inventory.py --fail-empty` |
+| health readiness | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_health_readiness_contract.py` |
 
 ## Boundary
 
@@ -15,7 +15,7 @@ This report proves compatibility surfaces exist. It does not approve deletion, t
 
 ## runtime compatibility
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_compatibility.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_runtime_compatibility.py`
 
 Return code: `0`
 
@@ -41,27 +41,27 @@ Deep-health compatibility surface
 
 ## audit compatibility
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/generate_audit_callsite_inventory.py --fail-empty`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_audit_callsite_inventory.py --fail-empty`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/Development/Eduboost-V2/docs/release/audit_callsite_inventory.md (3161 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/audit_callsite_inventory.md (3810 row(s))
 ```
 
 ## consent compatibility
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/generate_consent_callsite_inventory.py --fail-empty`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_consent_callsite_inventory.py --fail-empty`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/Development/Eduboost-V2/docs/release/consent_callsite_inventory.md (598 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/consent_callsite_inventory.md (600 row(s))
 ```
 
 ## health readiness
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_health_readiness_contract.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_health_readiness_contract.py`
 
 Return code: `0`
 

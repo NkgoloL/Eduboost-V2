@@ -1,14 +1,14 @@
 # Backend Consolidation Execution Report
 
-Generated at: `2026-06-13T13:51:22Z`
+Generated at: `2026-06-24T11:32:38Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| execution packet | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_consolidation_execution_packet.py` |
-| readiness report | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/generate_backend_consolidation_readiness_report.py` |
-| release guard | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_consolidation_release_guard.py` |
-| no-op guard | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_consolidation_noop_guard.py` |
-| runtime compatibility | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_compatibility.py` |
+| execution packet | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_execution_packet.py` |
+| readiness report | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_readiness_report.py` |
+| release guard | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_release_guard.py` |
+| no-op guard | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_noop_guard.py` |
+| runtime compatibility | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_runtime_compatibility.py` |
 
 ## Boundary
 
@@ -16,7 +16,7 @@ This report sequences backend consolidation. It does not approve destructive cha
 
 ## execution packet
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_consolidation_execution_packet.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_execution_packet.py`
 
 Return code: `0`
 
@@ -47,17 +47,17 @@ Backend consolidation execution packet check
 
 ## readiness report
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/generate_backend_consolidation_readiness_report.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_readiness_report.py`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/Development/Eduboost-V2/docs/release/backend_consolidation_readiness_report.md
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/backend_consolidation_readiness_report.md
 ```
 
 ## release guard
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_consolidation_release_guard.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_release_guard.py`
 
 Return code: `0`
 
@@ -84,7 +84,7 @@ Backend consolidation release guard
 
 ## no-op guard
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_consolidation_noop_guard.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_noop_guard.py`
 
 Return code: `0`
 
@@ -105,7 +105,7 @@ Backend consolidation no-op/deletion guard
 
 ## runtime compatibility
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_compatibility.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_runtime_compatibility.py`
 
 Return code: `0`
 

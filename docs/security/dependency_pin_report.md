@@ -1,6 +1,6 @@
 # Dependency Pin Report
 
-Generated at: `2026-06-13T13:48:49Z`
+Generated at: `2026-06-24T11:30:27Z`
 
 **Status:** blocked_unpinned_dependencies
 
