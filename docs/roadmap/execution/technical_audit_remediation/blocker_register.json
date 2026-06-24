@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_02_backend_fast_gate_in_progress",
+  "status": "phase_02_backend_fast_gate_blocked_failed_authority_gate",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -24,7 +24,20 @@
       "id": "TA-BACKEND-FAST-001",
       "title": "Rerun and close backend fast gate from clean checkout",
       "severity": "critical",
-      "status": "implementation_in_progress"
+      "status": "blocked_failed_authority_gate",
+      "latest_failure_summary": {
+        "failed": 161,
+        "passed": 1255,
+        "skipped": 10,
+        "xfailed": 1,
+        "errors": 111
+      },
+      "latest_failure_categories": [
+        "dependency_or_import",
+        "database_or_migration",
+        "openapi_route_contract",
+        "popia_auth_or_route_contract"
+      ]
     },
     {
       "id": "TA-FRONTEND-001",
@@ -45,5 +58,24 @@
       "status": "partially_addressed_in_baseline_reset"
     }
   ],
-  "active_slice": "02-backend-fast-gate"
+  "active_slice": "02a-backend-fast-failure-triage",
+  "backend_fast_failure": {
+    "authority_command": "make test-fast",
+    "status": "failed_authority_gate_captured_for_triage",
+    "reported_return_code": 2,
+    "reported_summary": {
+      "failed": 161,
+      "passed": 1255,
+      "skipped": 10,
+      "xfailed": 1,
+      "errors": 111
+    },
+    "reported_categories": [
+      "dependency_or_import",
+      "database_or_migration",
+      "openapi_route_contract",
+      "popia_auth_or_route_contract"
+    ],
+    "passing_evidence_policy": "Do not create backend-fast-gate candidate evidence until make test-fast exits 0."
+  }
 }
