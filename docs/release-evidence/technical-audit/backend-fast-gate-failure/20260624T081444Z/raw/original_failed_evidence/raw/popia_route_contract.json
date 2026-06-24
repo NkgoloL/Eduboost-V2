@@ -1,0 +1,12 @@
+$ python3 scripts/audit_remediation/verify_popia_route_contract.py --json
+{
+  "canonical_frontend_routes": [
+    "/popia/exports",
+    "/popia/erasure",
+    "/popia/erasure/{learner_id}/cancel",
+    "/popia/erasure/{learner_id}/status",
+    "/popia/restriction"
+  ],
+  "errors": [],
+  "valid": true
+}
