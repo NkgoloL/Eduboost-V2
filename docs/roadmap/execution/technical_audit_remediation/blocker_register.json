@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_02_backend_fast_gate_blocked_failed_authority_gate",
+  "status": "phase_02b_backend_fast_runtime_dependency_remediation",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -24,7 +24,7 @@
       "id": "TA-BACKEND-FAST-001",
       "title": "Rerun and close backend fast gate from clean checkout",
       "severity": "critical",
-      "status": "blocked_failed_authority_gate",
+      "status": "blocked_runtime_dependency_remediation_in_progress",
       "latest_failure_summary": {
         "failed": 161,
         "passed": 1255,
@@ -37,7 +37,8 @@
         "database_or_migration",
         "openapi_route_contract",
         "popia_auth_or_route_contract"
-      ]
+      ],
+      "next_slice": "02b-backend-fast-runtime-dependencies"
     },
     {
       "id": "TA-FRONTEND-001",
@@ -58,7 +59,7 @@
       "status": "partially_addressed_in_baseline_reset"
     }
   ],
-  "active_slice": "02a-backend-fast-failure-triage",
+  "active_slice": "02b-backend-fast-runtime-dependencies",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "status": "failed_authority_gate_captured_for_triage",
@@ -76,6 +77,13 @@
       "openapi_route_contract",
       "popia_auth_or_route_contract"
     ],
-    "passing_evidence_policy": "Do not create backend-fast-gate candidate evidence until make test-fast exits 0."
+    "passing_evidence_policy": "Do not create backend-fast-gate candidate evidence until make test-fast exits 0.",
+    "runtime_dependency_slice": {
+      "id": "TA-BACKEND-FAST-002",
+      "title": "Synchronize backend fast authority Python runtime dependencies",
+      "status": "implementation_assets_applied",
+      "authority_interpreter": ".venv/bin/python",
+      "policy": "Environment dependency evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0."
+    }
   }
 }
