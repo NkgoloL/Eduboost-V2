@@ -3,184 +3,80 @@ bringing up nodes...
 bringing up nodes...
 
 ........................................................................ [  3%]
-...............................................s........................ [  6%]
-........................................................................ [  9%]
-.......F................................................................ [ 12%]
+........................................................................ [  6%]
+...........s............................................................ [  9%]
+........................................................................ [ 12%]
 ........................................................................ [ 15%]
 ........................................................................ [ 18%]
-............................ssssssssss.................................. [ 21%]
-......................................................................... [ 24%]
-........................................................................ [ 28%]
+........................................................................ [ 21%]
+........................................................................ [ 24%]
+........................................................................ [ 27%]
 ........................................................................ [ 31%]
 ........................................................................ [ 34%]
-...................................................................F.... [ 37%]
-..............F......................................................... [ 40%]
-........................................................................ [ 43%]
-..F..................................................................... [ 46%]
+........................................................................ [ 37%]
+........................................................................ [ 40%]
+.......................................................................s [ 43%]
+sssssssss............................................................... [ 46%]
 ........................................................................ [ 49%]
 ........................................................................ [ 52%]
-........................................................................ [ 56%]
+........................................................................ [ 55%]
 ........................................................................ [ 59%]
 ........................................................................ [ 62%]
-...........F....................F....................................... [ 65%]
+........................................................................ [ 65%]
 ........................................................................ [ 68%]
-...................................................x.................... [ 71%]
+.............x.......................................................... [ 71%]
 ........................................................................ [ 74%]
-............................F............F...........................F.. [ 77%]
-..F..................................................................... [ 80%]
-.................................................F..F....F.............. [ 84%]
-........................................................................ [ 87%]
-............................................F........................... [ 90%]
-....................................................F................... [ 93%]
+........................................................................ [ 77%]
+........................................................................ [ 80%]
+........................................................................ [ 83%]
+.............................................................F.......... [ 87%]
+........................................................................ [ 90%]
+........................................................................ [ 93%]
 ........................................................................ [ 96%]
 ........................................................................ [ 99%]
-.........                                                                [100%]sys:1: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+............                                                             [100%]sys:1: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+sys:1: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
 RuntimeWarning: Enable tracemalloc to get the object allocation traceback
 
 =================================== FAILURES ===================================
-____________ test_phase02e_verifier_reports_valid_static_contracts _____________
-[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/audit_remediation/test_backend_fast_phase02e.py:41: in test_phase02e_verifier_reports_valid_static_contracts
-    assert all(check.passed for check in checks)
-E   assert False
-E    +  where False = all(<generator object test_phase02e_verifier_reports_valid_static_contracts.<locals>.<genexpr> at 0x701c6feeec80>)
-______________ test_days_until_expiry_returns_positive_for_future ______________
-[gw2] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_consent_state_machine.py:189: in test_days_until_expiry_returns_positive_for_future
-    assert c.days_until_expiry() == 30
-E   AssertionError: assert 29 == 30
-E    +  where 29 = <bound method ConsentRecord.days_until_expiry of ConsentRecord(id=UUID('5400c602-6a89-46a1-865b-32035609d301'), learne...fo=datetime.timezone.utc), updated_at=datetime.datetime(2026, 6, 26, 14, 5, 29, 491952, tzinfo=datetime.timezone.utc))>()
-E    +    where <bound method ConsentRecord.days_until_expiry of ConsentRecord(id=UUID('5400c602-6a89-46a1-865b-32035609d301'), learne...fo=datetime.timezone.utc), updated_at=datetime.datetime(2026, 6, 26, 14, 5, 29, 491952, tzinfo=datetime.timezone.utc))> = ConsentRecord(id=UUID('5400c602-6a89-46a1-865b-32035609d301'), learner_id=UUID('00000000-0000-0000-0000-000000000001')...nfo=datetime.timezone.utc), updated_at=datetime.datetime(2026, 6, 26, 14, 5, 29, 491952, tzinfo=datetime.timezone.utc)).days_until_expiry
-_________ test_future_layers_return_configured_zero_count_placeholders _________
-[gw2] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_content_coverage_service.py:142: in test_future_layers_return_configured_zero_count_placeholders
-    assert report.layers[ContentLayer.ASSESSMENT_BLUEPRINTS].target == 4
-E   AssertionError: assert 1 == 4
-E    +  where 1 = CoverageLayerCounts(target=1, approved=0, pending_review=0, rejected=0, generated=0, status=<CoverageLayerStatus.RED: 'red'>, coverage_ratio=0.0).target
-_______________ test_bridge_expression_maps_item_id_from_irt_id ________________
-[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_diagnostic_score_live_audit.py:28: in test_bridge_expression_maps_item_id_from_irt_id
-    assert expr == 'gen_random_uuid()'
-E   assert 'i."id"' == 'gen_random_uuid()'
-E     
-E     - gen_random_uuid()
-E     + i."id"
-_______________ test_no_raw_dict_responses_in_production_routers _______________
-[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_no_raw_dict_responses.py:107: in test_no_raw_dict_responses_in_production_routers
-    raise AssertionError(msg)
-E   AssertionError: 
-E   Raw dict responses detected in production routers.
-E   Use ok(), fail(), paginated(), route_class=EnvelopedRoute, or add # envelope-exempt: <reason>.
-E   
-E     app/api_v2_routers/generation.py:301 - bare dict return without ok()/fail()/paginated() or EnvelopedRoute
-_______________ test_ops_assets_validate_static_deployment_files _______________
-[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_ops_assets.py:22: in test_ops_assets_validate_static_deployment_files
-    assert result.returncode == 0, result.stderr + result.stdout
-E   AssertionError: Ops asset validation failed: docker/Dockerfile.v2 must use the pinned Python slim base selected for V2
-E     
-E   assert 1 == 0
-E    +  where 1 = CompletedProcess(args=['/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python', 'scripts/validate_op...='', stderr='Ops asset validation failed: docker/Dockerfile.v2 must use the pinned Python slim base selected for V2\n').returncode
-________________ test_production_settings_require_key_vault_url ________________
-[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_production_key_vault_behavior.py:16: in test_production_settings_require_key_vault_url
-    with pytest.raises(ValueError, match="AZURE_KEY_VAULT_URL is required when APP_ENV is production"):
-E   Failed: DID NOT RAISE <class 'ValueError'>
-_________________ test_project_assistance_report_check_passes __________________
-[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_project_assistance_status.py:41: in test_project_assistance_report_check_passes
-    assert result.returncode == 0, result.stdout + result.stderr
-E   AssertionError: Project assistance status is stale; run make project-assistance-status
-E     
-E   assert 1 == 0
-E    +  where 1 = CompletedProcess(args=['/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python', 'scripts/project_ass...'--check'], returncode=1, stdout='Project assistance status is stale; run make project-assistance-status\n', stderr='').returncode
-____ test_jobs_have_consent_reminder_aliases_without_missing_direct_symbols ____
-[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_runtime_blockers_after_followup_audit.py:57: in test_jobs_have_consent_reminder_aliases_without_missing_direct_symbols
-    assert "AsyncSessionLocal" not in source
-E   assert 'AsyncSessionLocal' not in '"""ARQ back..."),\n    )\n'
-E     
-E     'AsyncSessionLocal' is contained here:
-E       se import AsyncSessionLocal
-E               from app.domain.schemas import LessonRequest
-E               from app.modules.lessons.service import LessonService
-E       
-E               async with AsyncSessionLocal() as db:...
-E     
-E     ...Full output truncated (379 lines hidden), use '-vv' to show
-__________________ test_repo_hygiene_has_no_current_failures ___________________
-[gw2] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_repo_hygiene.py:11: in test_repo_hygiene_has_no_current_failures
-    assert failures == []
-E   AssertionError: assert [HygieneFailu...t allowlist')] == []
-E     
-E     Left contains 3 more items, first extra item: HygieneFailure(code='ROOT_CLUTTER', path='.gitleaks.toml', detail='tracked root file is outside the repository root allowlist')
-E     Use -v to get more diff
-___________ test_generic_scope_builder_generates_valid_launch_slice ____________
-[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_scope_content_builder.py:31: in test_generic_scope_builder_generates_valid_launch_slice
-    assert report["blueprint_count"] == 10
-E   assert 13 == 10
------------------------------ Captured stdout call -----------------------------
-[2m2026-06-26T14:06:18.491477Z[0m [[32m[1minfo     [0m] [1mLoaded CAPS topic map: caps_topic_map_grade4_maths.json (50 refs)[0m [[0m[1m[34mapp.modules.lessons.caps_topic_map_service[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m2.0.0[0m
------------------------------- Captured log call -------------------------------
-INFO     app.modules.lessons.caps_topic_map_service:caps_topic_map_service.py:173 Loaded CAPS topic map: caps_topic_map_grade4_maths.json (50 refs)
-______ test_source_manifest_local_file_verification_passes_on_vm_sources _______
-[gw2] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_source_manifest_readiness.py:83: in test_source_manifest_local_file_verification_passes_on_vm_sources
-    assert result.passed is True
-E   AssertionError: assert False is True
-E    +  where False = SourceManifestValidationResult(errors=['source document caps_foundation_coding_and_robotics_en path does not exist: da...der_home_language_en', 'grader_life_skills_en', 'grader_mathematics_en', 'grader_sepedi_first_additional_language_en']).passed
-__________________ test_sessions_logout_and_revoke_all_paths ___________________
-[gw2] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_sprint2_auth_router_delegates.py:124: in test_sessions_logout_and_revoke_all_paths
-    revoke_response = await auth.revoke_all_tokens(
-app/api_v2_routers/auth.py:212: in revoke_all_tokens
-    current_user=current_user.raw_claims,
-E   AttributeError: 'dict' object has no attribute 'raw_claims'
 __________ test_topic_map_worklist_preserves_source_hashes_for_scope ___________
-[gw5] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_topic_map_worklist.py:32: in test_topic_map_worklist_preserves_source_hashes_for_scope
-    assert grade7_math["text_sha256"] == ["881f88f60186856703767333a0c3f2331b8aeebb52dd11fcf46c2f25c90d3c33"]
-E   AssertionError: assert [] == ['881f88f6018...2f25c90d3c33']
+[gw2] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+tests/unit/test_topic_map_worklist.py:33: in test_topic_map_worklist_preserves_source_hashes_for_scope
+    assert grade7_math["text_extract_paths"] == ["data/caps/source_documents/text/caps_senior_mathematics_en.txt"]
+E   AssertionError: assert ['data/conten...atics_en.txt'] == ['data/caps/s...atics_en.txt']
 E     
-E     Right contains one more item: '881f88f60186856703767333a0c3f2331b8aeebb52dd11fcf46c2f25c90d3c33'
+E     At index 0 diff: 'data/content_factory/source_text_extracts/caps_senior_mathematics_en.txt' != 'data/caps/source_documents/text/caps_senior_mathematics_en.txt'
 E     Use -v to get more diff
-_______ test_topic_map_validator_accepts_current_draft_and_runtime_state _______
-[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_validate_topic_maps.py:15: in test_topic_map_validator_accepts_current_draft_and_runtime_state
-    assert result.draft_count == 50
-E   assert 0 == 50
-E    +  where 0 = TopicMapValidationResult(draft_count=0, runtime_count=51, draft_status_summary=Counter(), runtime_ref_count=1663, errors=[]).draft_count
 =============================== warnings summary ===============================
-tests/unit/test_popia_consent_versioning.py::TestConsentVersioning::test_renew_records_version_history
 tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_cancel_erasure_updates_state_to_cancelled
+  /usr/lib/python3.12/unittest/mock.py:439: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    def __init__(
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
 tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_supports_different_methods
-tests/unit/test_popia_export_completeness.py::TestExportPayloadCompleteness::test_learner_profile_contains_all_required_fields
-tests/unit/test_v2_services_full.py::TestLessonServiceV2::test_generate_returns_cached
-tests/unit/test_guardian_consent_withdrawal.py::TestProcessingBlocking::test_consent_withdrawn_audit_event_logged
+tests/unit/test_popia_consent_versioning.py::TestConsentVersioning::test_renew_records_version_history
+tests/unit/test_v2_services.py::test_audit_service_returns_logged_event
   /usr/lib/python3.12/unittest/mock.py:2188: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
     def __init__(self, name, parent):
   Enable tracemalloc to get traceback where the object was allocated.
   See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
 
+tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_invalid_method_raises_error
+  /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/lib/python3.12/site-packages/pluggy/_callers.py:45: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    pass
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/unit/test_token_revocation.py::test_is_token_revoked_redis_error
+  /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/lib/python3.12/site-packages/rich/text.py:1130: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    _Text(
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
 =========================== short test summary info ============================
-FAILED tests/unit/audit_remediation/test_backend_fast_phase02e.py::test_phase02e_verifier_reports_valid_static_contracts
-FAILED tests/unit/test_consent_state_machine.py::test_days_until_expiry_returns_positive_for_future
-FAILED tests/unit/test_content_coverage_service.py::test_future_layers_return_configured_zero_count_placeholders
-FAILED tests/unit/test_diagnostic_score_live_audit.py::test_bridge_expression_maps_item_id_from_irt_id
-FAILED tests/unit/test_no_raw_dict_responses.py::test_no_raw_dict_responses_in_production_routers
-FAILED tests/unit/test_ops_assets.py::test_ops_assets_validate_static_deployment_files
-FAILED tests/unit/test_production_key_vault_behavior.py::test_production_settings_require_key_vault_url
-FAILED tests/unit/test_project_assistance_status.py::test_project_assistance_report_check_passes
-FAILED tests/unit/test_runtime_blockers_after_followup_audit.py::test_jobs_have_consent_reminder_aliases_without_missing_direct_symbols
-FAILED tests/unit/test_repo_hygiene.py::test_repo_hygiene_has_no_current_failures
-FAILED tests/unit/test_scope_content_builder.py::test_generic_scope_builder_generates_valid_launch_slice
-FAILED tests/unit/test_source_manifest_readiness.py::test_source_manifest_local_file_verification_passes_on_vm_sources
-FAILED tests/unit/test_sprint2_auth_router_delegates.py::test_sessions_logout_and_revoke_all_paths
 FAILED tests/unit/test_topic_map_worklist.py::test_topic_map_worklist_preserves_source_hashes_for_scope
-FAILED tests/unit/test_validate_topic_maps.py::test_topic_map_validator_accepts_current_draft_and_runtime_state
-15 failed, 2287 passed, 11 skipped, 1 xfailed, 6 warnings in 382.33s (0:06:22)
+1 failed, 2303 passed, 11 skipped, 1 xfailed, 6 warnings in 268.81s (0:04:28)
 make: *** [Makefile:53: test-fast] Error 1

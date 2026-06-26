@@ -3,49 +3,43 @@
     "async_mock_warning": {
       "matched": true,
       "snippets": [
-        ".......................... [ 99%] ......... [100%]sys:1: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited RuntimeWarning: Enable tracemalloc to get the object allocation traceback =================================== FAILURES =================================== ___",
-        "awal.py::TestProcessingBlocking::test_consent_withdrawn_audit_event_logged /usr/lib/python3.12/unittest/mock.py:2188: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited def __init__(self, name, parent): Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stable/how-to/capt",
-        "[ 99%] ......... [100%]sys:1: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited RuntimeWarning: Enable tracemalloc to get the object allocation traceback =================================== FAILU",
-        "king::test_consent_withdrawn_audit_event_logged /usr/lib/python3.12/unittest/mock.py:2188: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited def __init__(self, name, parent): Enable tracemalloc to get traceback where the object was allocated. See ht"
+        ".......................... [ 99%] ............ [100%]sys:1: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited RuntimeWarning: Enable tracemalloc to get the object allocation traceback sys:1: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaite",
+        "._execute_mock_call' was never awaited RuntimeWarning: Enable tracemalloc to get the object allocation traceback sys:1: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited RuntimeWarning: Enable tracemalloc to get the object allocation traceback =================================== FAILURES =================================== ___",
+        "tErasureRequestStateMachine::test_cancel_erasure_updates_state_to_cancelled /usr/lib/python3.12/unittest/mock.py:439: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited def __init__( Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#re",
+        "ry tests/unit/test_v2_services.py::test_audit_service_returns_logged_event /usr/lib/python3.12/unittest/mock.py:2188: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited def __init__(self, name, parent): Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stable/how-to/capt",
+        "rror /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/lib/python3.12/site-packages/pluggy/_callers.py:45: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited pass Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-wa"
+      ]
+    },
+    "content_factory_registry": {
+      "matched": true,
+      "snippets": [
+        "AssertionError: assert ['data/conten...atics_en.txt'] == ['data/caps/s...atics_en.txt'] E E At index 0 diff: 'data/content_factory/source_text_extracts/caps_senior_mathematics_en.txt' != 'data/caps/source_documents/text/caps_senior_mathematics_en.txt' E Use -v to get more diff ========"
       ]
     },
     "popia_auth_or_route_contract": {
       "matched": true,
       "snippets": [
-        "errors=[]).draft_count =============================== warnings summary =============================== tests/unit/test_popia_consent_versioning.py::TestConsentVersioning::test_renew_records_version_history tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_",
-        "tests/unit/test_popia_consent_versioning.py::TestConsentVersioning::test_renew_records_version_history tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_cancel_erasure_updates_state_to_cancelled tests/unit/test_popia_erasure_safety.py::TestErasureRequestSt",
-        "popia_erasure_safety.py::TestErasureRequestStateMachine::test_cancel_erasure_updates_state_to_cancelled tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_supports_different_methods tests/unit/test_popia_export_completeness.py::TestExportPayl",
-        "opia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_supports_different_methods tests/unit/test_popia_export_completeness.py::TestExportPayloadCompleteness::test_learner_profile_contains_all_required_fields tests/unit/test_v2_services_full.py::TestLessonService",
-        "/unit/test_popia_consent_versioning.py::TestConsentVersioning::test_renew_records_version_history tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_cancel_erasure_updates_state_to_cancelled tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachi"
+        "se -v to get more diff =============================== warnings summary =============================== tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_cancel_erasure_updates_state_to_cancelled /usr/lib/python3.12/unittest/mock.py:439: RuntimeWarning: c",
+        "See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info. tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_supports_different_methods tests/unit/test_popia_consent_versioning.py::TestConsentVers",
+        "opia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_supports_different_methods tests/unit/test_popia_consent_versioning.py::TestConsentVersioning::test_renew_records_version_history tests/unit/test_v2_services.py::test_audit_service_returns_logged_event /usr",
+        "See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info. tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_invalid_method_raises_error /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.v",
+        "to get more diff =============================== warnings summary =============================== tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_cancel_erasure_updates_state_to_cancelled /usr/lib/python3.12/unittest/mock.py:439: RuntimeWarning: coroutine"
       ]
     }
   },
   "category_names": [
     "async_mock_warning",
+    "content_factory_registry",
     "popia_auth_or_route_contract"
   ],
-  "failed_test_count_detected": 15,
+  "failed_test_count_detected": 1,
   "failed_tests": [
-    "tests/unit/audit_remediation/test_backend_fast_phase02e.py::test_phase02e_verifier_reports_valid_static_contracts",
-    "tests/unit/test_consent_state_machine.py::test_days_until_expiry_returns_positive_for_future",
-    "tests/unit/test_content_coverage_service.py::test_future_layers_return_configured_zero_count_placeholders",
-    "tests/unit/test_diagnostic_score_live_audit.py::test_bridge_expression_maps_item_id_from_irt_id",
-    "tests/unit/test_no_raw_dict_responses.py::test_no_raw_dict_responses_in_production_routers",
-    "tests/unit/test_ops_assets.py::test_ops_assets_validate_static_deployment_files",
-    "tests/unit/test_production_key_vault_behavior.py::test_production_settings_require_key_vault_url",
-    "tests/unit/test_project_assistance_status.py::test_project_assistance_report_check_passes",
-    "tests/unit/test_runtime_blockers_after_followup_audit.py::test_jobs_have_consent_reminder_aliases_without_missing_direct_symbols",
-    "tests/unit/test_repo_hygiene.py::test_repo_hygiene_has_no_current_failures",
-    "tests/unit/test_scope_content_builder.py::test_generic_scope_builder_generates_valid_launch_slice",
-    "tests/unit/test_source_manifest_readiness.py::test_source_manifest_local_file_verification_passes_on_vm_sources",
-    "tests/unit/test_sprint2_auth_router_delegates.py::test_sessions_logout_and_revoke_all_paths",
-    "tests/unit/test_topic_map_worklist.py::test_topic_map_worklist_preserves_source_hashes_for_scope",
-    "tests/unit/test_validate_topic_maps.py::test_topic_map_validator_accepts_current_draft_and_runtime_state"
+    "tests/unit/test_topic_map_worklist.py::test_topic_map_worklist_preserves_source_hashes_for_scope"
   ],
-  "failure_count": 15,
+  "failure_count": 1,
   "summary_counts": {
-    "failed": 15,
-    "passed": 2287,
+    "failed": 1,
+    "passed": 2303,
     "skipped": 11,
     "xfailed": 1
   },
