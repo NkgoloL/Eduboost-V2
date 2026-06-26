@@ -1,0 +1,40 @@
+{
+  "valid": true,
+  "checks": [
+    {
+      "name": "seed_executor_session_helpers",
+      "valid": true,
+      "detail": "Content staging seed executor uses safe session helpers for real AsyncSession and unit-test doubles."
+    },
+    {
+      "name": "seed_executor_returns_result",
+      "valid": true,
+      "detail": "seed_staging returns a result object with seeded/skipped counts."
+    },
+    {
+      "name": "diagnostic_item_default_quality_state",
+      "valid": true,
+      "detail": "DiagnosticItem availability treats missing DB default as uncalibrated."
+    },
+    {
+      "name": "item_bank_selection_default_quality_state",
+      "valid": true,
+      "detail": "ItemBankService selection treats missing/non-string IRT quality state as uncalibrated."
+    },
+    {
+      "name": "tutor_router_contract_declared",
+      "valid": true,
+      "detail": "V2 router contract declares the tutor router fragment."
+    },
+    {
+      "name": "study_plan_db_import_contract",
+      "valid": true,
+      "detail": "Study plan routes expose the DB import and get_db dependency expected by the consent-gate contract."
+    },
+    {
+      "name": "phase02f_documented_boundaries",
+      "valid": true,
+      "detail": "Phase 02F docs preserve backend-fast and KG boundaries."
+    }
+  ]
+}

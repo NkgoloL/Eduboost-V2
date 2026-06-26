@@ -1,0 +1,23 @@
+........F............................................................... [100%]
+=================================== FAILURES ===================================
+________________ test_valid_approved_artifact_creates_seed_item ________________
+tests/unit/test_content_staging_seed_executor.py:100: in test_valid_approved_artifact_creates_seed_item
+    assert len(session.added) == 3
+E   assert 2 == 3
+E    +  where 2 = len([<app.models.content_factory.ContentSeedRun object at 0x701c03b77c50>, <app.models.content_factory.ContentStagingSeedItem object at 0x701c03dd5340>])
+E    +    where [<app.models.content_factory.ContentSeedRun object at 0x701c03b77c50>, <app.models.content_factory.ContentStagingSeedItem object at 0x701c03dd5340>] = <tests.unit.test_content_staging_seed_executor.Session object at 0x701c03b75d90>.added
+----------------------------- Captured stdout call -----------------------------
+[2m2026-06-26T13:32:13.800620Z[0m [[32m[1minfo     [0m] [1mSeeded batch 0 for scope some_scope: attempted=1, upserted=1, skipped=0, elapsed=0.001s[0m [[0m[1m[34mapp.services.content_staging_seed_executor[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m2.0.0[0m
+------------------------------ Captured log call -------------------------------
+INFO     app.services.content_staging_seed_executor:content_staging_seed_executor.py:255 Seeded batch 0 for scope some_scope: attempted=1, upserted=1, skipped=0, elapsed=0.001s
+=============================== warnings summary ===============================
+../../../.local/lib/python3.12/site-packages/pydantic/_internal/_fields.py:160
+  /home/nkgolol/.local/lib/python3.12/site-packages/pydantic/_internal/_fields.py:160: UserWarning: Field "model_version" has conflict with protected namespace "model_".
+  
+  You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/unit/test_content_staging_seed_executor.py::test_valid_approved_artifact_creates_seed_item
+1 failed, 71 passed, 1 warning in 8.21s
