@@ -36,8 +36,11 @@ class Session:
     async def get(self, model, key):
         return None
     async def execute(self, stmt):
-        if "content_validation_reports" in str(stmt):
+        statement = str(stmt)
+        if "content_validation_reports" in statement:
             return Result([SimpleNamespace(passed=True)])
+        if "content_staging_artifacts" in statement:
+            return Result([])
         return Result(self.artifacts)
     def add(self, obj):
         self.added.append(obj)
