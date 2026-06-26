@@ -1,47 +1,13 @@
 {
-  "categories": {
-    "async_mock_warning": {
-      "matched": true,
-      "snippets": [
-        ".......................... [ 99%] ............ [100%]sys:1: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited RuntimeWarning: Enable tracemalloc to get the object allocation traceback sys:1: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaite",
-        "._execute_mock_call' was never awaited RuntimeWarning: Enable tracemalloc to get the object allocation traceback sys:1: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited RuntimeWarning: Enable tracemalloc to get the object allocation traceback =================================== FAILURES =================================== ___",
-        "tErasureRequestStateMachine::test_cancel_erasure_updates_state_to_cancelled /usr/lib/python3.12/unittest/mock.py:439: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited def __init__( Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#re",
-        "ry tests/unit/test_v2_services.py::test_audit_service_returns_logged_event /usr/lib/python3.12/unittest/mock.py:2188: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited def __init__(self, name, parent): Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stable/how-to/capt",
-        "rror /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/lib/python3.12/site-packages/pluggy/_callers.py:45: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited pass Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-wa"
-      ]
-    },
-    "content_factory_registry": {
-      "matched": true,
-      "snippets": [
-        "AssertionError: assert ['data/conten...atics_en.txt'] == ['data/caps/s...atics_en.txt'] E E At index 0 diff: 'data/content_factory/source_text_extracts/caps_senior_mathematics_en.txt' != 'data/caps/source_documents/text/caps_senior_mathematics_en.txt' E Use -v to get more diff ========"
-      ]
-    },
-    "popia_auth_or_route_contract": {
-      "matched": true,
-      "snippets": [
-        "se -v to get more diff =============================== warnings summary =============================== tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_cancel_erasure_updates_state_to_cancelled /usr/lib/python3.12/unittest/mock.py:439: RuntimeWarning: c",
-        "See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info. tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_supports_different_methods tests/unit/test_popia_consent_versioning.py::TestConsentVers",
-        "opia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_supports_different_methods tests/unit/test_popia_consent_versioning.py::TestConsentVersioning::test_renew_records_version_history tests/unit/test_v2_services.py::test_audit_service_returns_logged_event /usr",
-        "See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info. tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_invalid_method_raises_error /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.v",
-        "to get more diff =============================== warnings summary =============================== tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_cancel_erasure_updates_state_to_cancelled /usr/lib/python3.12/unittest/mock.py:439: RuntimeWarning: coroutine"
-      ]
-    }
-  },
-  "category_names": [
-    "async_mock_warning",
-    "content_factory_registry",
-    "popia_auth_or_route_contract"
-  ],
-  "failed_test_count_detected": 1,
-  "failed_tests": [
-    "tests/unit/test_topic_map_worklist.py::test_topic_map_worklist_preserves_source_hashes_for_scope"
-  ],
-  "failure_count": 1,
+  "categories": {},
+  "category_names": [],
+  "failed_test_count_detected": 0,
+  "failed_tests": [],
+  "failure_count": 0,
   "summary_counts": {
-    "failed": 1,
-    "passed": 2303,
+    "passed": 2315,
     "skipped": 11,
     "xfailed": 1
   },
-  "valid": false
+  "valid": true
 }

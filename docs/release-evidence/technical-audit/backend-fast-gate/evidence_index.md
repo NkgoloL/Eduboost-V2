@@ -3,8 +3,8 @@
 **Stream:** technical-audit-remediation  
 **Slice:** 02-backend-fast-gate  
 **Branch:** feature/atlas-phase-02r-gate-2r1-remediation  
-**Source commit:** d3c05d02440454f463a32adcc28e11e89db5c7ce  
-**Generated at:** 2026-06-26T22:22:36+02:00  
+**Source commit:** bab46d9cba67f502d3ccd6dd6fb24c9f96ddd81b  
+**Generated at:** 2026-06-27T00:48:54+02:00  
 **Status:** Candidate verification passed — human approval pending  
 **Authority command:** make test-fast
 

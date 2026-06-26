@@ -3,80 +3,54 @@ bringing up nodes...
 bringing up nodes...
 
 ........................................................................ [  3%]
-........................................................................ [  6%]
-...........s............................................................ [  9%]
+......................................................................... [  6%]
+..............................................s......................... [  9%]
 ........................................................................ [ 12%]
 ........................................................................ [ 15%]
 ........................................................................ [ 18%]
 ........................................................................ [ 21%]
 ........................................................................ [ 24%]
 ........................................................................ [ 27%]
-........................................................................ [ 31%]
+........................................................................ [ 30%]
 ........................................................................ [ 34%]
 ........................................................................ [ 37%]
 ........................................................................ [ 40%]
-.......................................................................s [ 43%]
-sssssssss............................................................... [ 46%]
+........................................................................ [ 43%]
+........................................................................ [ 46%]
 ........................................................................ [ 49%]
-........................................................................ [ 52%]
+................................ssssssssss.............................. [ 52%]
 ........................................................................ [ 55%]
-........................................................................ [ 59%]
-........................................................................ [ 62%]
+........................................................................ [ 58%]
+........................................................................ [ 61%]
 ........................................................................ [ 65%]
 ........................................................................ [ 68%]
-.............x.......................................................... [ 71%]
-........................................................................ [ 74%]
+........................................................................ [ 71%]
+..x..................................................................... [ 74%]
 ........................................................................ [ 77%]
 ........................................................................ [ 80%]
 ........................................................................ [ 83%]
-.............................................................F.......... [ 87%]
-........................................................................ [ 90%]
-........................................................................ [ 93%]
-........................................................................ [ 96%]
+........................................................................ [ 86%]
+........................................................................ [ 89%]
+........................................................................ [ 92%]
+........................................................................ [ 95%]
 ........................................................................ [ 99%]
-............                                                             [100%]sys:1: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
-RuntimeWarning: Enable tracemalloc to get the object allocation traceback
-sys:1: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+......................                                                   [100%]sys:1: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
 RuntimeWarning: Enable tracemalloc to get the object allocation traceback
 
-=================================== FAILURES ===================================
-__________ test_topic_map_worklist_preserves_source_hashes_for_scope ___________
-[gw2] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_topic_map_worklist.py:33: in test_topic_map_worklist_preserves_source_hashes_for_scope
-    assert grade7_math["text_extract_paths"] == ["data/caps/source_documents/text/caps_senior_mathematics_en.txt"]
-E   AssertionError: assert ['data/conten...atics_en.txt'] == ['data/caps/s...atics_en.txt']
-E     
-E     At index 0 diff: 'data/content_factory/source_text_extracts/caps_senior_mathematics_en.txt' != 'data/caps/source_documents/text/caps_senior_mathematics_en.txt'
-E     Use -v to get more diff
 =============================== warnings summary ===============================
-tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_cancel_erasure_updates_state_to_cancelled
-  /usr/lib/python3.12/unittest/mock.py:439: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
-    def __init__(
-  Enable tracemalloc to get traceback where the object was allocated.
-  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
-
-tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_supports_different_methods
-tests/unit/test_popia_consent_versioning.py::TestConsentVersioning::test_renew_records_version_history
-tests/unit/test_v2_services.py::test_audit_service_returns_logged_event
+tests/unit/test_popia_erasure_safety.py::TestSoftDeleteSafety::test_soft_delete_sets_is_deleted_flag
+tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_blocks_before_grace_period
+tests/unit/test_v2_services_full.py::TestLessonServiceV2::test_submit_feedback
   /usr/lib/python3.12/unittest/mock.py:2188: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
     def __init__(self, name, parent):
   Enable tracemalloc to get traceback where the object was allocated.
   See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
 
-tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_invalid_method_raises_error
-  /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/lib/python3.12/site-packages/pluggy/_callers.py:45: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
-    pass
-  Enable tracemalloc to get traceback where the object was allocated.
-  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
-
-tests/unit/test_token_revocation.py::test_is_token_revoked_redis_error
-  /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/lib/python3.12/site-packages/rich/text.py:1130: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
-    _Text(
+tests/unit/test_popia_export_completeness.py::TestExportPayloadCompleteness::test_learner_profile_contains_all_required_fields
+  /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/lib/python3.12/site-packages/_pytest/threadexception.py:43: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    def __enter__(self) -> "catch_threading_exception":
   Enable tracemalloc to get traceback where the object was allocated.
   See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-=========================== short test summary info ============================
-FAILED tests/unit/test_topic_map_worklist.py::test_topic_map_worklist_preserves_source_hashes_for_scope
-1 failed, 2303 passed, 11 skipped, 1 xfailed, 6 warnings in 268.81s (0:04:28)
-make: *** [Makefile:53: test-fast] Error 1
+2315 passed, 11 skipped, 1 xfailed, 4 warnings in 396.88s (0:06:36)
