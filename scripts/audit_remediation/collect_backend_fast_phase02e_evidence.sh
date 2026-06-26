@@ -19,14 +19,14 @@ TEST_STATUS=$?
 COMPILE_STATUS=$?
 set -e
 
-cat > "$OUT/evidence_index.md" <<EOF
-# Backend Fast Phase 02E Evidence
-
-Generated at: \\`$STAMP\\`
-
-## Status
-
-EOF
+{
+  echo "# Backend Fast Phase 02E Evidence"
+  echo ""
+  echo "Generated at: \`${STAMP}\`"
+  echo ""
+  echo "## Status"
+  echo ""
+} > "$OUT/evidence_index.md"
 
 if [[ "$VERIFY_STATUS" -eq 0 && "$TEST_STATUS" -eq 0 && "$COMPILE_STATUS" -eq 0 ]]; then
   echo "Status: Phase 02E focused verification passed — backend-fast retry pending" >> "$OUT/evidence_index.md"
@@ -34,26 +34,28 @@ else
   echo "Status: Phase 02E focused verification failed — remediation pending" >> "$OUT/evidence_index.md"
 fi
 
-cat >> "$OUT/evidence_index.md" <<EOF
-
-## Source
-
-- Source commit: \\`$(git rev-parse HEAD 2>/dev/null || echo unknown)\\`
-- Branch: \\`$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo unknown)\\`
-
-## Checks
-
-| Check | Exit code |
-|---|---:|
-| Phase 02E verifier | $VERIFY_STATUS |
-| Focused tests | $TEST_STATUS |
-| Compileall | $COMPILE_STATUS |
-
-## Boundary
-
-This is focused remediation evidence only. It is not backend-fast candidate evidence. The authority gate remains \\`make test-fast\\` and must exit 0 before passing backend-fast evidence may be committed.
-
-EOF
+GIT_SHA="$(git rev-parse HEAD 2>/dev/null || echo unknown)"
+GIT_BRANCH="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo unknown)"
+{
+  echo ""
+  echo "## Source"
+  echo ""
+  echo "- Source commit: \`${GIT_SHA}\`"
+  echo "- Branch: \`${GIT_BRANCH}\`"
+  echo ""
+  echo "## Checks"
+  echo ""
+  echo "| Check | Exit code |"
+  echo "|---|---:|"
+  echo "| Phase 02E verifier | ${VERIFY_STATUS} |"
+  echo "| Focused tests | ${TEST_STATUS} |"
+  echo "| Compileall | ${COMPILE_STATUS} |"
+  echo ""
+  echo "## Boundary"
+  echo ""
+  echo "This is focused remediation evidence only. It is not backend-fast candidate evidence. The authority gate remains \`make test-fast\` and must exit 0 before passing backend-fast evidence may be committed."
+  echo ""
+} >> "$OUT/evidence_index.md"
 
 (
   cd "$OUT"

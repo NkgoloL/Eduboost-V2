@@ -1,0 +1,41 @@
+{
+  "valid": true,
+  "checks": [
+    {
+      "name": "playwright_defaults_to_next_port_3050",
+      "passed": true,
+      "detail": "Playwright fallback uses checker-recognised Next.js port 3050 and hardened timeout."
+    },
+    {
+      "name": "ether_auth_boundary_file_restored",
+      "passed": true,
+      "detail": "app/api_v2_routers/ether.py exposes the historical authenticated onboarding boundary."
+    },
+    {
+      "name": "curriculum_expansion_router_contract_declared",
+      "passed": true,
+      "detail": "Router contract declares the registered curriculum_expansion router fragment."
+    },
+    {
+      "name": "mcp_fastmcp_import_proven_by_sync_script",
+      "passed": true,
+      "detail": "Authority dependency sync proves the exact MCP import used by the ETL MCP server."
+    },
+    {
+      "name": "seed_script_handles_missing_result_identity",
+      "passed": true,
+      "detail": "Seed script tolerates mocked result objects without seed_run_id."
+    },
+    {
+      "name": "seed_executor_tolerates_mock_existing_staging_without_id",
+      "passed": true,
+      "detail": "Seed executor tolerates test doubles that do not expose ORM id."
+    },
+    {
+      "name": "phase_02e_registered_in_blocker_register",
+      "passed": true,
+      "detail": "Blocker register records Phase 02E as the active backend-fast remediation slice."
+    }
+  ],
+  "policy": "Focused Phase 02E evidence only; backend-fast candidate evidence requires make test-fast exit 0."
+}
