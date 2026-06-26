@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_02h_backend_fast_residual_contracts_remediation_ready",
+  "status": "phase_02i_backend_fast_topic_map_provenance_remediation_ready",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -24,21 +24,19 @@
       "id": "TA-BACKEND-FAST-001",
       "title": "Rerun and close backend fast gate from clean checkout",
       "severity": "critical",
-      "status": "blocked_phase_02h_remediation_in_progress",
+      "status": "blocked_phase_02i_remediation_in_progress",
       "latest_failure_summary": {
-        "failed": 15,
-        "passed": 2287,
+        "failed": 1,
+        "passed": 2303,
         "skipped": 11,
         "xfailed": 1,
         "errors": 0
       },
       "latest_failure_categories": [
-        "residual_static_contracts",
-        "content_factory_topic_map_contracts",
-        "ops_security_contracts",
-        "auth_route_delegate_contract"
+        "content_factory_registry",
+        "topic_map_worklist_provenance"
       ],
-      "next_slice": "02h-backend-fast-residual-contracts"
+      "next_slice": "02i-backend-fast-topic-map-provenance"
     },
     {
       "id": "TA-FRONTEND-001",
@@ -59,25 +57,20 @@
       "status": "partially_addressed_in_baseline_reset"
     }
   ],
-  "active_slice": "02h-backend-fast-residual-contracts",
+  "active_slice": "02i-backend-fast-topic-map-provenance",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
-    "status": "failed_authority_gate_captured_for_phase_02h_remediation",
+    "status": "failed_authority_gate_captured_for_phase_02i_remediation",
     "reported_return_code": 2,
     "reported_summary": {
-      "failed": 15,
-      "passed": 2287,
+      "failed": 1,
+      "passed": 2303,
       "skipped": 11,
       "xfailed": 1
     },
     "reported_categories": [
-      "content_scope_registry",
-      "router_contract",
-      "dependency_or_import",
-      "ci_workflow_contract",
-      "orm_enum_schema_drift",
-      "dockerfile_pin_mismatch",
-      "miscellaneous_state_mismatches"
+      "content_factory_registry",
+      "topic_map_worklist_provenance"
     ],
     "passing_evidence_policy": "Do not create backend-fast-gate candidate evidence until make test-fast exits 0.",
     "runtime_dependency_slice": {
@@ -164,6 +157,15 @@
       ],
       "estimated_failures_targeted": 15,
       "policy": "Phase 02H evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    },
+    "phase_02i_slice": {
+      "id": "TA-BACKEND-FAST-010",
+      "title": "Restore reviewed text-extract provenance for topic-map worklist generation",
+      "status": "implementation_ready",
+      "dominant_failure_cluster": "topic_map_worklist_preserves_source_hashes_for_scope",
+      "estimated_failures_targeted": 1,
+      "policy": "Phase 02I evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
       "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     }
   }
