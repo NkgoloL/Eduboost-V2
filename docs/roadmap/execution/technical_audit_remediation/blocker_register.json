@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_02j_tracked_topic_map_provenance_remediation_ready",
+  "status": "phase_02k_backend_fast_evidence_authority_repair_ready",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -24,7 +24,7 @@
       "id": "TA-BACKEND-FAST-001",
       "title": "Rerun and close backend fast gate from clean checkout",
       "severity": "critical",
-      "status": "blocked_phase_02j_remediation_in_progress",
+      "status": "blocked_evidence_harness_repair_required",
       "latest_failure_summary": {
         "failed": 1,
         "passed": 2303,
@@ -37,7 +37,13 @@
         "topic_map_worklist_provenance",
         "tracked_artifact_gap"
       ],
-      "next_slice": "02j-tracked-topic-map-provenance"
+      "next_slice": "02k-backend-fast-evidence-authority",
+      "latest_evidence_control_gap": {
+        "backend_fast_gate_result_returncode": 2,
+        "backend_fast_gate_result_valid": false,
+        "backend_fast_evidence_check_valid": true,
+        "issue": "candidate evidence index/check claimed pass while raw authority result still recorded a failed make test-fast run"
+      }
     },
     {
       "id": "TA-FRONTEND-001",
@@ -58,7 +64,7 @@
       "status": "partially_addressed_in_baseline_reset"
     }
   ],
-  "active_slice": "02j-tracked-topic-map-provenance",
+  "active_slice": "02k-backend-fast-evidence-authority",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "status": "failed_authority_gate_captured_for_phase_02j_remediation",
@@ -177,6 +183,14 @@
       "dominant_failure_cluster": "topic_map_worklist_preserves_source_hashes_for_scope",
       "estimated_failures_targeted": 1,
       "policy": "Phase 02J evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    },
+    "phase_02k_slice": {
+      "id": "TA-BACKEND-FAST-011",
+      "title": "Repair backend-fast candidate evidence authority harness",
+      "status": "implementation_ready",
+      "control_gap": "candidate evidence must be derived from a fresh make test-fast returncode 0 run, with machine-readable raw JSON and no stale failure artifacts",
+      "policy": "Do not accept backend-fast-gate evidence unless backend_fast_gate_result.json has returncode 0 and valid=true, classification has zero failures, and verify_backend_fast_evidence.py independently passes.",
       "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     }
   },

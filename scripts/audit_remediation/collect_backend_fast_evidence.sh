@@ -10,32 +10,43 @@ EVIDENCE_DIR="docs/release-evidence/technical-audit/backend-fast-gate"
 RAW_DIR="$EVIDENCE_DIR/raw"
 mkdir -p "$RAW_DIR"
 
-run_capture() {
+run_json_capture() {
   local output="$1"
   shift
-  {
-    echo "$ $*"
-    "$@"
-  } >"$output" 2>&1
+  "$@" >"$output" 2>&1
+}
+
+run_text_capture() {
+  local output="$1"
+  shift
+  "$@" >"$output" 2>&1
+}
+
+write_sha256sums() {
+  find "$RAW_DIR" -type f ! -name 'SHA256SUMS.txt' -print0 \
+    | sort -z \
+    | xargs -0 sha256sum > "$RAW_DIR/SHA256SUMS.txt"
 }
 
 SOURCE_COMMIT="$(git rev-parse HEAD 2>/dev/null || printf 'unknown')"
 BRANCH="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || printf 'unknown')"
 GENERATED_AT="$(date -Iseconds)"
 
-run_capture "$RAW_DIR/phase02r_terminal_gate_control.json" "$PYTHON_BIN" scripts/phase02r_gate_control.py \
+# Candidate evidence must contain machine-readable JSON artifacts.  Do not prefix
+# JSON files with shell command banners; the verifier intentionally rejects that.
+run_json_capture "$RAW_DIR/phase02r_terminal_gate_control.json" "$PYTHON_BIN" scripts/phase02r_gate_control.py \
   --expected-approved-gate 2R.8 \
   --expected-authorised-gate null \
   --require-approval-roles \
   --require-evidence-index-sha \
   --json
-run_capture "$RAW_DIR/baseline_reset_check.json" "$PYTHON_BIN" scripts/audit_remediation/verify_baseline_reset.py --json
-run_capture "$RAW_DIR/openapi_route_contract.json" "$PYTHON_BIN" scripts/audit_remediation/verify_openapi_route_contract.py --json
-run_capture "$RAW_DIR/popia_route_contract.json" "$PYTHON_BIN" scripts/audit_remediation/verify_popia_route_contract.py --json
-run_capture "$RAW_DIR/frontend_env_contract.json" "$PYTHON_BIN" scripts/audit_remediation/verify_frontend_env_contract.py --json
-run_capture "$RAW_DIR/dependency_scan_workflow.json" "$PYTHON_BIN" scripts/audit_remediation/verify_dependency_scan_workflow.py --json
-run_capture "$RAW_DIR/backend_fast_preflight.json" "$PYTHON_BIN" scripts/audit_remediation/verify_backend_fast_gate_preflight.py --json
-run_capture "$RAW_DIR/compileall.txt" "$PYTHON_BIN" -m compileall -q app scripts
+run_json_capture "$RAW_DIR/baseline_reset_check.json" "$PYTHON_BIN" scripts/audit_remediation/verify_baseline_reset.py --json
+run_json_capture "$RAW_DIR/openapi_route_contract.json" "$PYTHON_BIN" scripts/audit_remediation/verify_openapi_route_contract.py --json
+run_json_capture "$RAW_DIR/popia_route_contract.json" "$PYTHON_BIN" scripts/audit_remediation/verify_popia_route_contract.py --json
+run_json_capture "$RAW_DIR/frontend_env_contract.json" "$PYTHON_BIN" scripts/audit_remediation/verify_frontend_env_contract.py --json
+run_json_capture "$RAW_DIR/dependency_scan_workflow.json" "$PYTHON_BIN" scripts/audit_remediation/verify_dependency_scan_workflow.py --json
+run_json_capture "$RAW_DIR/backend_fast_preflight.json" "$PYTHON_BIN" scripts/audit_remediation/verify_backend_fast_gate_preflight.py --json
+run_text_capture "$RAW_DIR/compileall.txt" "$PYTHON_BIN" -m compileall -q app scripts
 
 set +e
 "$PYTHON_BIN" scripts/audit_remediation/run_backend_fast_gate.py \
@@ -45,16 +56,15 @@ set +e
 backend_fast_status=$?
 set -e
 
-"$PYTHON_BIN" scripts/audit_remediation/classify_backend_fast_failures.py \
+run_json_capture "$RAW_DIR/backend_fast_failure_classification.json" \
+  "$PYTHON_BIN" scripts/audit_remediation/classify_backend_fast_failures.py \
   --input "$RAW_DIR/backend_fast_gate.txt" \
-  --json > "$RAW_DIR/backend_fast_failure_classification.json"
+  --json
 
 if [[ "$backend_fast_status" -ne 0 ]]; then
   printf 'Backend fast gate failed with exit code %s. See %s/backend_fast_gate.txt and classification JSON.\n' "$backend_fast_status" "$RAW_DIR" >&2
   exit "$backend_fast_status"
 fi
-
-find "$RAW_DIR" -type f -print0 | sort -z | xargs -0 sha256sum > "$RAW_DIR/SHA256SUMS.txt"
 
 cat > "$EVIDENCE_DIR/evidence_index.md" <<EOF
 # Technical Audit Remediation Evidence — Backend Fast Gate
@@ -89,7 +99,11 @@ cat > "$EVIDENCE_DIR/evidence_index.md" <<EOF
 This evidence confirms the backend fast gate for the technical-audit remediation stream. It does not claim full product release readiness, frontend closure, E2E closure, live database execution, or runtime knowledge-graph implementation.
 EOF
 
-run_capture "$RAW_DIR/backend_fast_evidence_check.json" "$PYTHON_BIN" scripts/audit_remediation/verify_backend_fast_evidence.py --json --evidence-dir "$EVIDENCE_DIR"
-find "$RAW_DIR" -type f -print0 | sort -z | xargs -0 sha256sum > "$RAW_DIR/SHA256SUMS.txt"
+# Verify before writing the self-check artifact, then store the exact verification output.
+run_json_capture "$RAW_DIR/backend_fast_evidence_check.json" \
+  "$PYTHON_BIN" scripts/audit_remediation/verify_backend_fast_evidence.py \
+  --json \
+  --evidence-dir "$EVIDENCE_DIR"
+write_sha256sums
 sha256sum "$EVIDENCE_DIR/evidence_index.md" > "$EVIDENCE_DIR/evidence_index.sha256"
 printf 'Collected backend fast-gate evidence in %s\n' "$EVIDENCE_DIR"

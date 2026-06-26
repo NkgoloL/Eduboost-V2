@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -12,8 +13,46 @@ ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_EVIDENCE_DIR = ROOT / "docs/release-evidence/technical-audit/backend-fast-gate"
 
 
-def _load_json(path: Path) -> dict[str, Any]:
-    return json.loads(path.read_text(encoding="utf-8"))
+def _load_json(path: Path, errors: list[str]) -> dict[str, Any] | None:
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        errors.append(f"raw/{path.name} must be valid JSON: {exc.msg} at line {exc.lineno} column {exc.colno}")
+    except OSError as exc:
+        errors.append(f"raw/{path.name} could not be read: {exc}")
+    return None
+
+
+def _verify_sha256sums(evidence_dir: Path, raw: Path, errors: list[str], warnings: list[str]) -> None:
+    sums_path = raw / "SHA256SUMS.txt"
+    if not sums_path.exists():
+        return
+    lines = [line.strip() for line in sums_path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    if not lines:
+        errors.append("raw/SHA256SUMS.txt must not be empty")
+        return
+    for line in lines:
+        parts = line.split(maxsplit=1)
+        if len(parts) != 2:
+            errors.append(f"raw/SHA256SUMS.txt contains malformed line: {line!r}")
+            continue
+        digest, rel = parts
+        if not re.fullmatch(r"[0-9a-f]{64}", digest):
+            errors.append(f"raw/SHA256SUMS.txt contains invalid digest for {rel}")
+            continue
+        rel = rel.lstrip("*")
+        if rel.endswith("raw/SHA256SUMS.txt") or rel == "SHA256SUMS.txt":
+            errors.append("raw/SHA256SUMS.txt must not include a self-referential hash")
+            continue
+        path = evidence_dir / rel if rel.startswith("raw/") else raw / rel
+        if not path.exists():
+            errors.append(f"raw/SHA256SUMS.txt references missing artifact: {rel}")
+            continue
+        actual = hashlib.sha256(path.read_bytes()).hexdigest()
+        if actual != digest:
+            errors.append(f"raw/SHA256SUMS.txt digest mismatch for {rel}")
+    if not any("backend_fast_gate_result.json" in line for line in lines):
+        warnings.append("raw/SHA256SUMS.txt does not list backend_fast_gate_result.json")
 
 
 def verify(evidence_dir: Path = DEFAULT_EVIDENCE_DIR) -> dict[str, Any]:
@@ -26,10 +65,14 @@ def verify(evidence_dir: Path = DEFAULT_EVIDENCE_DIR) -> dict[str, Any]:
         "phase02r_terminal_gate_control.json",
         "baseline_reset_check.json",
         "openapi_route_contract.json",
+        "popia_route_contract.json",
+        "frontend_env_contract.json",
+        "dependency_scan_workflow.json",
         "backend_fast_preflight.json",
         "compileall.txt",
         "backend_fast_gate.txt",
         "backend_fast_gate_result.json",
+        "backend_fast_runner_stdout.json",
         "backend_fast_failure_classification.json",
         "SHA256SUMS.txt",
     ]
@@ -44,28 +87,51 @@ def verify(evidence_dir: Path = DEFAULT_EVIDENCE_DIR) -> dict[str, Any]:
         "phase02r_terminal_gate_control.json",
         "baseline_reset_check.json",
         "openapi_route_contract.json",
+        "popia_route_contract.json",
+        "frontend_env_contract.json",
+        "dependency_scan_workflow.json",
         "backend_fast_preflight.json",
     ]
     for name in json_validity_files:
         path = raw / name
         if path.exists():
-            payload = _load_json(path)
-            if payload.get("valid") is not True:
+            payload = _load_json(path, errors)
+            if payload is not None and payload.get("valid") is not True:
                 errors.append(f"raw/{name} must report valid=true")
 
     result_path = raw / "backend_fast_gate_result.json"
     if result_path.exists():
-        result = _load_json(result_path)
-        if result.get("valid") is not True or result.get("returncode") != 0:
-            errors.append("backend fast gate result must be valid with returncode 0")
+        result = _load_json(result_path, errors)
+        if result is not None:
+            if result.get("valid") is not True or result.get("returncode") != 0:
+                errors.append("backend fast gate result must be valid with returncode 0")
+            if result.get("command") != "make test-fast":
+                errors.append("backend fast gate result must record command 'make test-fast'")
 
     classification_path = raw / "backend_fast_failure_classification.json"
     if classification_path.exists():
-        classification = _load_json(classification_path)
-        if classification.get("failure_count", 0) != 0:
-            errors.append("backend fast failure classification must detect zero failures")
-        if classification.get("category_names"):
-            warnings.append("classifier matched diagnostic categories despite zero failures; inspect raw output")
+        classification = _load_json(classification_path, errors)
+        if classification is not None:
+            if classification.get("failure_count", 0) != 0:
+                errors.append("backend fast failure classification must detect zero failures")
+            if classification.get("failed_tests"):
+                errors.append("backend fast failure classification must not list failed tests")
+            if classification.get("category_names"):
+                errors.append("backend fast failure classification must not match diagnostic categories")
+
+    runner_path = raw / "backend_fast_runner_stdout.json"
+    if runner_path.exists():
+        runner = _load_json(runner_path, errors)
+        if runner is not None and (runner.get("valid") is not True or runner.get("returncode") != 0):
+            errors.append("backend fast runner stdout JSON must report valid=true and returncode 0")
+
+    gate_text_path = raw / "backend_fast_gate.txt"
+    if gate_text_path.exists():
+        gate_text = gate_text_path.read_text(encoding="utf-8", errors="replace")
+        if re.search(r"(^|\n)(FAILED|ERROR)\s+tests/", gate_text):
+            errors.append("backend fast gate output still contains failed/error test lines")
+        if "failed," in gate_text or "failed in" in gate_text or "Error 1" in gate_text or "Error 2" in gate_text:
+            errors.append("backend fast gate output still contains failure summary or make error")
 
     index_path = evidence_dir / "evidence_index.md"
     if not index_path.exists():
@@ -77,6 +143,10 @@ def verify(evidence_dir: Path = DEFAULT_EVIDENCE_DIR) -> dict[str, Any]:
             errors.append("evidence index must record candidate verification passing and pending approval")
         if not re.search(r"Source commit:\*\*\s*[0-9a-f]{40}", index_text):
             errors.append("evidence index must include a 40-character source commit")
+        if "does not claim full product release readiness" not in index_text:
+            errors.append("evidence index must preserve release-readiness boundary")
+
+    _verify_sha256sums(evidence_dir, raw, errors, warnings)
 
     return {"valid": not errors, "errors": errors, "warnings": warnings, "checked": checked}
 
