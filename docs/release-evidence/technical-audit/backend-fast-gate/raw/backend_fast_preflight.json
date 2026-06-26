@@ -1,0 +1,21 @@
+$ python3 scripts/audit_remediation/verify_backend_fast_gate_preflight.py --json
+{
+  "authority_command": "make test-fast",
+  "checked": [
+    "docs/roadmap/execution/atlas/phase_02r_start_gate_control.json",
+    "docs/release-evidence/technical-audit/baseline-reset/evidence_index.md",
+    "docs/release-evidence/technical-audit/openapi-route-contract/evidence_index.md",
+    "data/content_factory/scopes.json",
+    "data/content_factory/coverage_targets.json",
+    "Makefile",
+    "pytest.ini",
+    "docs/roadmap/execution/technical_audit_remediation/blocker_register.json",
+    "app/services/curriculum/graph.py",
+    "app/services/curriculum/corpus.py",
+    "app/services/curriculum/generation.py",
+    "app/services/curriculum/tutor_grounding.py"
+  ],
+  "errors": [],
+  "valid": true,
+  "warnings": []
+}
