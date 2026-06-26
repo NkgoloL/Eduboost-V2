@@ -12,37 +12,37 @@ pytestmark = pytest.mark.unit
 
 
 class NoDbSession:
-    async def execute(self, query):  # pragma: no cover - planned scopes must fail before DB access
+    async def execute(self, query):  # pragma: no cover - non-active scopes must fail before DB access
         raise AssertionError("planned scopes must not query learner-visible content")
 
-    async def scalar(self, query):  # pragma: no cover - planned scopes must fail before DB access
+    async def scalar(self, query):  # pragma: no cover - non-active scopes must fail before DB access
         raise AssertionError("planned scopes must not query learner-visible content")
 
 
-def test_planned_scopes_are_registered_but_not_active() -> None:
+def test_review_scopes_are_registered_generation_ready_but_not_active() -> None:
     registry = ContentScopeRegistry()
 
-    planned_scope = registry.get_scope("grade5_mathematics_en")
+    review_scope = registry.get_scope("grade5_mathematics_en")
 
-    assert planned_scope.status.value == "planned"
-    assert planned_scope.caps_refs == []
-    assert planned_scope.topic_map_path is None
+    assert review_scope.status.value == "review"
+    assert len(review_scope.caps_refs) == 16
+    assert review_scope.topic_map_path == "data/caps/topic_maps/grade5_mathematics_en.json"
     assert "grade5_mathematics_en" not in {scope.scope_id for scope in registry.list_active_scopes()}
     assert "grade4_mathematics_en" in {scope.scope_id for scope in registry.list_active_scopes()}
 
 
-def test_planned_scope_validation_is_skipped_and_not_failed_as_missing_content() -> None:
+def test_review_scope_validation_is_skipped_but_generation_ready() -> None:
     result = validate_scope("grade5_mathematics_en", strict=True)
 
     assert result.passed is True
     assert result.skipped is True
-    assert result.status == "planned"
+    assert result.status == "review"
     assert result.item_counts == {}
     assert result.lesson_counts == {}
 
 
 @pytest.mark.asyncio
-async def test_planned_scope_cannot_be_served_to_learners() -> None:
+async def test_review_scope_cannot_be_served_to_learners() -> None:
     service = ContentLearnerReadService()
 
     with pytest.raises(LookupError, match="not active"):
@@ -67,10 +67,10 @@ def test_coverage_report_separates_active_and_planned_scopes() -> None:
 
     assert report["summary"]["scopes.active"] == 1
     assert report["summary"]["scopes.learner_visible"] == 1
-    assert report["summary"]["scopes.planned"] > 1
+    assert report["summary"]["scopes.review"] == 50
     assert report["summary"]["caps_refs.active"] == 3
     grade5 = next(row for row in report["scopes"] if row["scope_id"] == "grade5_mathematics_en")
-    assert grade5["status"] == "planned"
+    assert grade5["status"] == "review"
     assert grade5["learner_visible"] is False
-    assert grade5["caps_ref_count"] == 0
+    assert grade5["caps_ref_count"] == 16
     assert grade5["validation_status"] == "not_applicable"

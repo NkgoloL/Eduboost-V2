@@ -1,6 +1,6 @@
 # Disposable DB Schema Proof Execution Report
 
-Generated: `2026-06-13T13:49:03.889250+00:00`
+Generated: `2026-06-24T11:30:19.080486+00:00`
 
 Safety: `DATABASE_URL is not set`
 

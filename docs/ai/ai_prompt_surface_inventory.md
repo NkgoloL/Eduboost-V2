@@ -23,6 +23,8 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/api_v2_routers/auth_extended.py` | `diagnostic` |
 | `app/api_v2_routers/content_factory.py` | `llm, diagnostic` |
 | `app/api_v2_routers/diagnostics.py` | `diagnostic` |
+| `app/api_v2_routers/generation.py` | `prompt, llm, diagnostic` |
+| `app/api_v2_routers/irt_quality.py` | `diagnostic` |
 | `app/api_v2_routers/learner_content.py` | `diagnostic` |
 | `app/api_v2_routers/lessons.py` | `llm, generate_lesson` |
 | `app/api_v2_routers/test_services.py` | `prompt, diagnostic` |
@@ -37,20 +39,29 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/core/llm_gateway.py` | `prompt, llm, anthropic, groq, generate_lesson` |
 | `app/core/metrics.py` | `llm, anthropic, groq, diagnostic` |
 | `app/core/rate_limit.py` | `llm` |
+| `app/domain/ai_operations_schemas.py` | `prompt` |
 | `app/domain/api_v2_models.py` | `remediation` |
 | `app/domain/consent.py` | `llm, diagnostic` |
 | `app/domain/content_coverage.py` | `diagnostic` |
 | `app/domain/content_factory_schemas.py` | `prompt, diagnostic` |
+| `app/domain/curriculum_expansion_schemas.py` | `diagnostic` |
 | `app/domain/item_schema.py` | `llm, diagnostic` |
 | `app/domain/lesson.py` | `llm` |
 | `app/domain/llm_schemas.py` | `diagnostic` |
 | `app/domain/roles.py` | `diagnostic` |
 | `app/domain/schemas.py` | `diagnostic` |
+| `app/jobs/batch_generation_job.py` | `llm` |
+| `app/jobs/irt_quality_job.py` | `diagnostic` |
 | `app/models/__init__.py` | `prompt, llm, groq, diagnostic, remediation` |
+| `app/models/ai_operations.py` | `prompt` |
 | `app/models/auth_extensions.py` | `diagnostic` |
 | `app/models/content_factory.py` | `prompt, diagnostic, remediation` |
+| `app/models/curriculum_authority.py` | `prompt` |
+| `app/models/curriculum_grounding.py` | `prompt` |
 | `app/models/diagnostic_item.py` | `llm, diagnostic` |
+| `app/models/irt_quality.py` | `diagnostic` |
 | `app/models/item_exposure.py` | `diagnostic` |
+| `app/models/tutor.py` | `prompt` |
 | `app/modules/beta_launch/production_readiness_contracts.py` | `diagnostic` |
 | `app/modules/billing/production_readiness_contracts.py` | `llm` |
 | `app/modules/deployment/production_readiness_contracts.py` | `llm` |
@@ -105,7 +116,10 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/repositories/lesson_repository.py` | `prompt, llm` |
 | `app/repositories/practice_session_repository.py` | `remediation` |
 | `app/repositories/repositories.py` | `diagnostic` |
+| `app/services/ai_operations.py` | `prompt, anthropic, groq` |
 | `app/services/backend_consolidation_runtime.py` | `diagnostic` |
+| `app/services/batch_generation.py` | `prompt, llm, diagnostic` |
+| `app/services/content_answer_key_verification.py` | `diagnostic` |
 | `app/services/content_blueprint_validation.py` | `diagnostic` |
 | `app/services/content_coverage_service.py` | `diagnostic` |
 | `app/services/content_factory.py` | `diagnostic` |
@@ -132,11 +146,23 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/services/content_generation_executor.py` | `prompt, generate_lesson, diagnostic` |
 | `app/services/content_generation_planner.py` | `prompt, diagnostic` |
 | `app/services/content_learner_read_service.py` | `diagnostic` |
+| `app/services/content_review_governance.py` | `prompt, diagnostic` |
 | `app/services/content_review_queue.py` | `prompt` |
 | `app/services/content_safety/__init__.py` | `llm` |
 | `app/services/content_safety/lesson_contracts.py` | `llm, remediation` |
 | `app/services/content_safety/pii.py` | `prompt, llm` |
+| `app/services/content_schemas.py` | `llm, diagnostic` |
+| `app/services/content_validator.py` | `llm, diagnostic` |
+| `app/services/curriculum/corpus.py` | `llm` |
 | `app/services/curriculum/coverage.py` | `diagnostic` |
+| `app/services/curriculum/extraction.py` | `prompt, llm` |
+| `app/services/curriculum/generation.py` | `prompt` |
+| `app/services/curriculum/graph.py` | `prompt` |
+| `app/services/curriculum/legacy.py` | `diagnostic` |
+| `app/services/curriculum/legacy_migration.py` | `diagnostic` |
+| `app/services/curriculum/rights_policy.py` | `prompt` |
+| `app/services/curriculum/tutor_grounding.py` | `prompt` |
+| `app/services/curriculum_expansion.py` | `diagnostic` |
 | `app/services/data_subject_rights_service.py` | `prompt, llm, diagnostic` |
 | `app/services/diagnostic.py` | `diagnostic` |
 | `app/services/diagnostic_data_integrity.py` | `diagnostic` |
@@ -150,20 +176,38 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/services/etl/etl_pipeline.py` | `remediation` |
 | `app/services/etl/etl_pipeline_v2.py` | `llm` |
 | `app/services/executive.py` | `llm` |
+| `app/services/irt_quality_service.py` | `prompt, diagnostic` |
 | `app/services/launch_content_seed.py` | `prompt, llm, diagnostic, remediation` |
+| `app/services/learner_tutor.py` | `prompt, llm` |
 | `app/services/lesson_context_builder.py` | `prompt, diagnostic, remediation` |
 | `app/services/lesson_service_v2.py` | `llm, generate_lesson` |
 | `app/services/llm/__init__.py` | `llm` |
 | `app/services/llm/gateway.py` | `prompt, llm` |
 | `app/services/llm/json_completion.py` | `prompt, llm, anthropic, groq` |
+| `app/services/llm_provider.py` | `prompt, llm, anthropic, groq` |
 | `app/services/pii_sweep.py` | `anthropic` |
 | `app/services/popia_service.py` | `prompt, llm, diagnostic, remediation` |
+| `app/services/prompt_registry.py` | `prompt, diagnostic` |
 | `app/services/quota_service.py` | `llm` |
 | `app/services/rlhf_service.py` | `anthropic` |
+| `app/services/safety_filter.py` | `prompt, llm` |
+| `app/services/semantic_retrieval/generation_context.py` | `prompt` |
 | `app/services/study_plan_updater.py` | `diagnostic, remediation` |
 | `app/services/system_service_v2.py` | `diagnostic` |
+| `app/services/tutor_safety.py` | `prompt` |
 | `scripts/assign_irt_params.py` | `diagnostic` |
 | `scripts/audit_baseline_refresh.py` | `llm` |
+| `scripts/audit_remediation/backend_fast_failure_report.py` | `prompt, llm, diagnostic, remediation` |
+| `scripts/audit_remediation/classify_backend_fast_failures.py` | `remediation` |
+| `scripts/audit_remediation/run_backend_fast_category_probe.py` | `remediation` |
+| `scripts/audit_remediation/run_backend_fast_gate.py` | `remediation` |
+| `scripts/audit_remediation/verify_backend_fast_environment.py` | `llm, anthropic, groq, diagnostic` |
+| `scripts/audit_remediation/verify_backend_fast_evidence.py` | `diagnostic` |
+| `scripts/audit_remediation/verify_backend_fast_failure_triage.py` | `diagnostic, remediation` |
+| `scripts/audit_remediation/verify_backend_fast_gate_preflight.py` | `remediation` |
+| `scripts/audit_remediation/verify_backend_fast_runtime_dependencies.py` | `anthropic, remediation` |
+| `scripts/audit_remediation/verify_baseline_reset.py` | `remediation` |
+| `scripts/audit_remediation/verify_openapi_route_contract.py` | `remediation` |
 | `scripts/audit_write_flow.py` | `diagnostic` |
 | `scripts/audit_write_runtime_evidence.py` | `llm` |
 | `scripts/auth_refresh_db_evidence_gate.py` | `llm` |
@@ -245,6 +289,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/curriculum/build_launch_content_artifacts.py` | `diagnostic` |
 | `scripts/curriculum/build_launch_item_bank.py` | `diagnostic` |
 | `scripts/curriculum/build_scope_content_artifacts.py` | `diagnostic, remediation` |
+| `scripts/curriculum/load_phase02r_authority_records.py` | `prompt` |
 | `scripts/curriculum/validate_scope_content.py` | `diagnostic, remediation` |
 | `scripts/db_backup_restore_rollback_evidence.py` | `llm, diagnostic` |
 | `scripts/db_migration_seed_repeatability.py` | `diagnostic` |
@@ -253,6 +298,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/diagnostic_score_live_audit.py` | `llm, diagnostic` |
 | `scripts/evaluate_pedagogy.py` | `prompt, llm` |
 | `scripts/evidence_attachment_runbook.py` | `diagnostic` |
+| `scripts/finalize_phase02r_evidence_metadata.py` | `llm` |
 | `scripts/generate_ai_prompt_surface_inventory.py` | `prompt, system_message, user_message, llm, anthropic, groq, generate_lesson, diagnostic, remediation` |
 | `scripts/generate_audit_callsite_inventory.py` | `diagnostic` |
 | `scripts/generate_backend_consolidation_evidence_manifest.py` | `diagnostic` |
@@ -293,8 +339,11 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/patch_diagnostics_scoring_snapshot.py` | `diagnostic` |
 | `scripts/patch_diagnostics_session_binding.py` | `diagnostic` |
 | `scripts/patch_route_tx_diagnostics_slice_registry.py` | `diagnostic` |
+| `scripts/phase02r_gate_control.py` | `llm` |
+| `scripts/phase2_evaluate_retrieval.py` | `diagnostic` |
 | `scripts/popia_route_tx_gap_plan.py` | `diagnostic` |
 | `scripts/popia_sweep.py` | `prompt, llm, anthropic, groq, diagnostic` |
+| `scripts/populate_register.py` | `prompt` |
 | `scripts/prepare_training_data.py` | `llm` |
 | `scripts/prod_frontend_runtime.py` | `llm` |
 | `scripts/refresh_current_state_doc.py` | `llm` |
@@ -320,8 +369,10 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/validate_focused_adapter.py` | `llm` |
 | `scripts/validate_item_bank.py` | `diagnostic` |
 | `scripts/validate_ops_assets.py` | `llm` |
+| `scripts/validate_phase02r_authority_schema.py` | `prompt` |
 | `scripts/validate_runtime_env.py` | `anthropic, groq` |
 | `scripts/validate_schema_integrity.py` | `diagnostic` |
+| `scripts/verify_phase02r_gate2r2.py` | `diagnostic` |
 
 ## Command
 

@@ -1,0 +1,361 @@
+{
+  "checked": [
+    "requirements/base.txt",
+    "requirements/dev.txt",
+    "Makefile",
+    "pytest.ini"
+  ],
+  "errors": [
+    "42 backend-fast Python import requirement(s) missing"
+  ],
+  "imports": [
+    {
+      "error": "ModuleNotFoundError: No module named 'fastapi'",
+      "module": "fastapi",
+      "reason": "backend runtime import",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'sqlalchemy'",
+      "module": "sqlalchemy",
+      "reason": "model/repository imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'alembic'",
+      "module": "alembic",
+      "reason": "migration graph verification",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'asyncpg'",
+      "module": "asyncpg",
+      "reason": "PostgreSQL async SQLAlchemy URL imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'jose'",
+      "module": "jose",
+      "reason": "JWT/token tests",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'passlib'",
+      "module": "passlib.context",
+      "reason": "password/auth tests",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'redis'",
+      "module": "redis",
+      "reason": "quota/session/token revocation tests",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'structlog'",
+      "module": "structlog",
+      "reason": "runtime logging imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'anthropic'",
+      "module": "anthropic",
+      "reason": "LLM gateway import contracts",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'groq'",
+      "module": "groq",
+      "reason": "LLM gateway import contracts",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'openai'",
+      "module": "openai",
+      "reason": "LLM gateway import contracts",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'posthog'",
+      "module": "posthog",
+      "reason": "analytics imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'sklearn'",
+      "module": "sklearn",
+      "reason": "diagnostic/IRT tests",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'numpy'",
+      "module": "numpy",
+      "reason": "diagnostic/IRT tests",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'pandas'",
+      "module": "pandas",
+      "reason": "data/reporting imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'scipy'",
+      "module": "scipy",
+      "reason": "diagnostic/IRT tests",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'sendgrid'",
+      "module": "sendgrid",
+      "reason": "notification imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'jinja2'",
+      "module": "jinja2",
+      "reason": "template/rendering imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'boto3'",
+      "module": "boto3",
+      "reason": "storage integration imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'stripe'",
+      "module": "stripe",
+      "reason": "billing router imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'prometheus_fastapi_instrumentator'",
+      "module": "prometheus_fastapi_instrumentator",
+      "reason": "metrics imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'sentry_sdk'",
+      "module": "sentry_sdk",
+      "reason": "observability imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'azure'",
+      "module": "azure.identity",
+      "reason": "Azure secret/key-vault imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'dotenv'",
+      "module": "dotenv",
+      "reason": "environment loading imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'httpx'",
+      "module": "httpx",
+      "reason": "API/client tests",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'tenacity'",
+      "module": "tenacity",
+      "reason": "retry-policy imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'bleach'",
+      "module": "bleach",
+      "reason": "content sanitisation imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'phonenumbers'",
+      "module": "phonenumbers",
+      "reason": "profile validation imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'dateutil'",
+      "module": "dateutil",
+      "reason": "date/time utilities",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'babel'",
+      "module": "babel",
+      "reason": "locale/reporting imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'reportlab'",
+      "module": "reportlab",
+      "reason": "PDF/report generation imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'pypdf'",
+      "module": "pypdf",
+      "reason": "PDF extraction imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'arq'",
+      "module": "arq",
+      "reason": "worker dependency imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'pytest'",
+      "module": "pytest",
+      "reason": "test runner",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'pytest_asyncio'",
+      "module": "pytest_asyncio",
+      "reason": "async unit tests",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'pytest_cov'",
+      "module": "pytest_cov",
+      "reason": "pytest --no-cov option registration",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'xdist'",
+      "module": "xdist",
+      "reason": "pytest -n auto option registration",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'pytest_mock'",
+      "module": "pytest_mock",
+      "reason": "mocking fixtures",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'hypothesis'",
+      "module": "hypothesis",
+      "reason": "property tests",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'factory'",
+      "module": "factory",
+      "reason": "factory-boy tests",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'faker'",
+      "module": "faker",
+      "reason": "test data generation",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": false
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'aiosqlite'",
+      "module": "aiosqlite",
+      "reason": "SQLite async test paths",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": false
+    }
+  ],
+  "install_hint": "/home/linuxbrew/.linuxbrew/opt/python@3.14/bin/python3.14 -m pip install -r requirements/dev.txt",
+  "missing_modules": [
+    "fastapi",
+    "sqlalchemy",
+    "alembic",
+    "asyncpg",
+    "jose",
+    "passlib.context",
+    "redis",
+    "structlog",
+    "anthropic",
+    "groq",
+    "openai",
+    "posthog",
+    "sklearn",
+    "numpy",
+    "pandas",
+    "scipy",
+    "sendgrid",
+    "jinja2",
+    "boto3",
+    "stripe",
+    "prometheus_fastapi_instrumentator",
+    "sentry_sdk",
+    "azure.identity",
+    "dotenv",
+    "httpx",
+    "tenacity",
+    "bleach",
+    "phonenumbers",
+    "dateutil",
+    "babel",
+    "reportlab",
+    "pypdf",
+    "arq",
+    "pytest",
+    "pytest_asyncio",
+    "pytest_cov",
+    "xdist",
+    "pytest_mock",
+    "hypothesis",
+    "factory",
+    "faker",
+    "aiosqlite"
+  ],
+  "pip_check": null,
+  "python": {
+    "executable": "/home/linuxbrew/.linuxbrew/opt/python@3.14/bin/python3.14",
+    "version": "3.14.5"
+  },
+  "valid": false,
+  "warnings": [
+    "Python 3.14.5 is outside the expected 3.11-3.13 range"
+  ]
+}

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-13T13:49:03Z",
-  "current_commit": "0c9d99b0734c4c731b3fa0fba53a9f503acc5685",
+  "generated_at": "2026-06-24T11:30:18Z",
+  "current_commit": "f5d72b8380da6403371ea91f6c8298626ba07aa1",
   "status": "diagnostic-item-bank-policy-accepted",
   "policy_path": "docs/architecture/diagnostic_item_bank_canonicality.yml",
   "decision": "diagnostic_items-runtime-required",
@@ -187,20 +187,158 @@
       "runtime_surface": false
     },
     {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 19,
+      "line_excerpt": "op.add_column(\"diagnostic_items\", sa.Column(\"irt_quality_state\", sa.String(32), nullable=False, server_default=\"uncalibrated\"))",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 20,
+      "line_excerpt": "op.add_column(\"diagnostic_items\", sa.Column(\"irt_model_version\", sa.String(64), nullable=True))",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 21,
+      "line_excerpt": "op.add_column(\"diagnostic_items\", sa.Column(\"irt_policy_version\", sa.String(64), nullable=True))",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 22,
+      "line_excerpt": "op.add_column(\"diagnostic_items\", sa.Column(\"irt_response_count\", sa.Integer(), nullable=False, server_default=\"0\"))",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 23,
+      "line_excerpt": "op.add_column(\"diagnostic_items\", sa.Column(\"irt_unique_learners\", sa.Integer(), nullable=False, server_default=\"0\"))",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 24,
+      "line_excerpt": "op.add_column(\"diagnostic_items\", sa.Column(\"irt_strike_count\", sa.Integer(), nullable=False, server_default=\"0\"))",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 25,
+      "line_excerpt": "op.add_column(\"diagnostic_items\", sa.Column(\"irt_last_calibrated_at\", sa.DateTime(timezone=True), nullable=True))",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 26,
+      "line_excerpt": "op.add_column(\"diagnostic_items\", sa.Column(\"irt_last_run_id\", postgresql.UUID(as_uuid=True), nullable=True))",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 27,
+      "line_excerpt": "op.add_column(\"diagnostic_items\", sa.Column(\"irt_intervention_reason\", sa.String(500), nullable=True))",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 28,
+      "line_excerpt": "op.add_column(\"diagnostic_items\", sa.Column(\"irt_manual_override_until\", sa.DateTime(timezone=True), nullable=True))",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 29,
+      "line_excerpt": "op.add_column(\"diagnostic_items\", sa.Column(\"irt_manual_override_reason\", sa.String(500), nullable=True))",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 30,
+      "line_excerpt": "op.add_column(\"diagnostic_items\", sa.Column(\"irt_rewrite_artifact_id\", postgresql.UUID(as_uuid=True), nullable=True))",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 31,
+      "line_excerpt": "op.add_column(\"diagnostic_items\", sa.Column(\"irt_row_version\", sa.Integer(), nullable=False, server_default=\"1\"))",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 34,
+      "line_excerpt": "\"diagnostic_items\",",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 37,
+      "line_excerpt": "op.create_check_constraint(\"ck_diagnostic_items_irt_counts\", \"diagnostic_items\", \"irt_response_count >= 0 AND irt_unique_learners >= 0 AND irt_strike_count >= 0 AND irt_row_version > 0\")",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 38,
+      "line_excerpt": "op.create_foreign_key(\"fk_diagnostic_items_irt_rewrite_artifact\", \"diagnostic_items\", \"content_generation_artifacts\", [\"irt_rewrite_artifact_id\"], [\"artifact_id\"], ondelete=\"SET NULL\")",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 39,
+      "line_excerpt": "op.create_index(\"ix_diagnostic_items_irt_quality_state\", \"diagnostic_items\", [\"irt_quality_state\"])",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 62,
+      "line_excerpt": "sa.Column(\"item_id\", postgresql.UUID(as_uuid=True), sa.ForeignKey(\"diagnostic_items.item_id\", ondelete=\"RESTRICT\"), nullable=False),",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 98,
+      "line_excerpt": "op.drop_index(\"ix_diagnostic_items_irt_quality_state\", table_name=\"diagnostic_items\")",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 99,
+      "line_excerpt": "op.drop_constraint(\"fk_diagnostic_items_irt_rewrite_artifact\", \"diagnostic_items\", type_=\"foreignkey\")",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 100,
+      "line_excerpt": "op.drop_constraint(\"ck_diagnostic_items_irt_counts\", \"diagnostic_items\", type_=\"check\")",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 101,
+      "line_excerpt": "op.drop_constraint(\"ck_diagnostic_items_irt_state\", \"diagnostic_items\", type_=\"check\")",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+      "line_number": 108,
+      "line_excerpt": "op.drop_column(\"diagnostic_items\", column)",
+      "runtime_surface": false
+    },
+    {
       "path": "app/api_v2_routers/content_factory.py",
-      "line_number": 1088,
+      "line_number": 1077,
       "line_excerpt": "diagnostic_items = await service.get_diagnostic_items(session, scope_id=scope_id, caps_ref=caps_ref)",
       "runtime_surface": true
     },
     {
       "path": "app/api_v2_routers/content_factory.py",
-      "line_number": 1090,
+      "line_number": 1079,
       "line_excerpt": "return {\"diagnostic_items\": diagnostic_items, \"lessons\": lessons}",
       "runtime_surface": true
     },
     {
       "path": "app/api_v2_routers/content_factory.py",
-      "line_number": 1111,
+      "line_number": 1100,
       "line_excerpt": "run_metadata={\"layers\": [\"diagnostic_items\", \"lessons\", \"assessment_blueprints\", \"study_plan_templates\"]},",
       "runtime_surface": true
     },
@@ -211,27 +349,45 @@
       "runtime_surface": true
     },
     {
+      "path": "app/domain/curriculum_expansion_schemas.py",
+      "line_number": 17,
+      "line_excerpt": "layers: list[str] = Field(default_factory=lambda: [\"diagnostic_items\", \"lessons\"], min_length=1, max_length=8)",
+      "runtime_surface": true
+    },
+    {
       "path": "app/models/content_factory.py",
-      "line_number": 56,
+      "line_number": 59,
       "line_excerpt": "DIAGNOSTIC_ITEMS = \"diagnostic_items\"",
       "runtime_surface": true
     },
     {
       "path": "app/models/diagnostic_item.py",
-      "line_number": 110,
+      "line_number": 111,
       "line_excerpt": "ORM representation of the diagnostic_items table.",
       "runtime_surface": true
     },
     {
       "path": "app/models/diagnostic_item.py",
-      "line_number": 116,
+      "line_number": 117,
       "line_excerpt": "__tablename__ = \"diagnostic_items\"",
+      "runtime_surface": true
+    },
+    {
+      "path": "app/models/irt_quality.py",
+      "line_number": 48,
+      "line_excerpt": "ForeignKey(\"diagnostic_items.item_id\", ondelete=\"RESTRICT\"), nullable=False",
       "runtime_surface": true
     },
     {
       "path": "app/models/item_exposure.py",
       "line_number": 58,
       "line_excerpt": "ForeignKey(\"diagnostic_items.item_id\", ondelete=\"RESTRICT\"),",
+      "runtime_surface": true
+    },
+    {
+      "path": "app/services/content_answer_key_verification.py",
+      "line_number": 112,
+      "line_excerpt": "if layer != \"diagnostic_items\" and artifact_type != \"diagnostic_item\":",
       "runtime_surface": true
     },
     {
@@ -253,9 +409,27 @@
       "runtime_surface": true
     },
     {
+      "path": "app/services/content_generation/providers/llm.py",
+      "line_number": 169,
+      "line_excerpt": "values = payload.get(\"diagnostic_items\")",
+      "runtime_surface": true
+    },
+    {
       "path": "app/services/content_generation/scope_blueprint_generator.py",
       "line_number": 87,
       "line_excerpt": "\"source_item_bank\": \"diagnostic_items\",",
+      "runtime_surface": true
+    },
+    {
+      "path": "app/services/content_review_governance.py",
+      "line_number": 355,
+      "line_excerpt": "if _value(artifact.artifact_type) == \"diagnostic_item\" or _value(artifact.content_layer) == \"diagnostic_items\":",
+      "runtime_surface": true
+    },
+    {
+      "path": "app/services/content_review_governance.py",
+      "line_number": 545,
+      "line_excerpt": "or _value(artifact.content_layer) == \"diagnostic_items\"",
       "runtime_surface": true
     },
     {
@@ -268,6 +442,12 @@
       "path": "app/services/curriculum/coverage.py",
       "line_number": 27,
       "line_excerpt": "item_refs = {row.get(\"caps_reference\") for row in diagnostic_items if row.get(\"caps_reference\")}",
+      "runtime_surface": true
+    },
+    {
+      "path": "app/services/curriculum_expansion.py",
+      "line_number": 177,
+      "line_excerpt": "if _enum_value(artifact.content_layer) == \"diagnostic_items\" and not artifact.answer_key_verified:",
       "runtime_surface": true
     },
     {
@@ -458,73 +638,49 @@
     },
     {
       "path": "docs/release/audit_callsite_inventory.md",
-      "line_number": 2336,
+      "line_number": 2659,
       "line_excerpt": "| `scripts/diagnostic_item_bank_canonicality.py` | 142 | audit_append_call | `blockers.append(\"no diagnostic_items references found; runtime-required policy is unsupported\")` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/audit_callsite_inventory.md",
-      "line_number": 2355,
+      "line_number": 2678,
       "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 493 | audit_append_call | `blockers.append(\"diagnostic_items table is missing\")` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/audit_callsite_inventory.md",
-      "line_number": 2358,
+      "line_number": 2681,
       "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 513 | audit_append_call | `blockers.append(\"DIAG_SCORE_ALLOW_BRIDGE_SEED must be 1 before mutating diagnostic_items\")` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/audit_callsite_inventory.md",
-      "line_number": 2359,
+      "line_number": 2682,
       "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 515 | audit_append_call | `blockers.append(\"cannot bridge-seed without both diagnostic_items and irt_items\")` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/audit_callsite_inventory.md",
-      "line_number": 2361,
+      "line_number": 2684,
       "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 531 | audit_append_call | `blockers.append(\"diagnostic_items has 0 rows; runtime-required item bank is not seeded\")` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/backend_consolidation_diagnostic_report.md",
-      "line_number": 204,
+      "line_number": 243,
       "line_excerpt": "- diagnostic_items",
       "runtime_surface": false
     },
     {
       "path": "docs/release/backend_deletion_candidate_inventory.md",
-      "line_number": 311198,
-      "line_excerpt": "| `docs/release/backend_deletion_candidate_inventory.md` | 310166 | legacy_audit | `\\| `docs/release/db_migration_seed_repeatability_status.md` \\| 62 \\| legacy_audit \\| `- required runtime table DDL missing: audit_events, audit_logs, calibr",
+      "line_number": 317324,
+      "line_excerpt": "| `docs/release/backend_deletion_candidate_inventory.md` | 316288 | legacy_consent | `\\| `docs/release/no_false_closure_status_after_3311_3350.md` \\| 20 \\| legacy_consent \\| `- Key table counts match for `alembic_version`, `audit_events`, `",
       "runtime_surface": false
     },
     {
       "path": "docs/release/backend_deletion_candidate_inventory.md",
-      "line_number": 311199,
-      "line_excerpt": "| `docs/release/backend_deletion_candidate_inventory.md` | 310167 | legacy_audit | `\\| `docs/release/db_migration_seed_repeatability_status.md` \\| 62 \\| legacy_consent \\| `- required runtime table DDL missing: audit_events, audit_logs, cali",
-      "runtime_surface": false
-    },
-    {
-      "path": "docs/release/backend_deletion_candidate_inventory.md",
-      "line_number": 311216,
-      "line_excerpt": "| `docs/release/backend_deletion_candidate_inventory.md` | 310184 | legacy_consent | `\\| `docs/release/no_false_closure_status_after_3311_3350.md` \\| 20 \\| legacy_consent \\| `- Key table counts match for `alembic_version`, `audit_events`, `",
-      "runtime_surface": false
-    },
-    {
-      "path": "docs/release/backend_deletion_candidate_inventory.md",
-      "line_number": 312200,
-      "line_excerpt": "| `docs/release/db_migration_seed_repeatability_status.md` | 62 | legacy_audit | `- required runtime table DDL missing: audit_events, audit_logs, calibration_audits, diagnostic_items, diagnostic_sessions, guardians, irt_items, item_exposure",
-      "runtime_surface": false
-    },
-    {
-      "path": "docs/release/backend_deletion_candidate_inventory.md",
-      "line_number": 312201,
-      "line_excerpt": "| `docs/release/db_migration_seed_repeatability_status.md` | 62 | legacy_consent | `- required runtime table DDL missing: audit_events, audit_logs, calibration_audits, diagnostic_items, diagnostic_sessions, guardians, irt_items, item_exposu",
-      "runtime_surface": false
-    },
-    {
-      "path": "docs/release/backend_deletion_candidate_inventory.md",
-      "line_number": 312218,
+      "line_number": 318324,
       "line_excerpt": "| `docs/release/no_false_closure_status_after_3311_3350.md` | 20 | legacy_consent | `- Key table counts match for `alembic_version`, `audit_events`, `diagnostic_items`, `irt_items`, and `parental_consents`.` | TODO | no |",
       "runtime_surface": false
     },
@@ -573,19 +729,19 @@
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 30,
-      "line_excerpt": "| `app/api_v2_routers/content_factory.py` | 1088 | `diagnostic_items = await service.get_diagnostic_items(session, scope_id=scope_id, caps_ref=caps_ref)` |",
+      "line_excerpt": "| `app/api_v2_routers/content_factory.py` | 1077 | `diagnostic_items = await service.get_diagnostic_items(session, scope_id=scope_id, caps_ref=caps_ref)` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 31,
-      "line_excerpt": "| `app/api_v2_routers/content_factory.py` | 1090 | `return {\"diagnostic_items\": diagnostic_items, \"lessons\": lessons}` |",
+      "line_excerpt": "| `app/api_v2_routers/content_factory.py` | 1079 | `return {\"diagnostic_items\": diagnostic_items, \"lessons\": lessons}` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 32,
-      "line_excerpt": "| `app/api_v2_routers/content_factory.py` | 1111 | `run_metadata={\"layers\": [\"diagnostic_items\", \"lessons\", \"assessment_blueprints\", \"study_plan_templates\"]},` |",
+      "line_excerpt": "| `app/api_v2_routers/content_factory.py` | 1100 | `run_metadata={\"layers\": [\"diagnostic_items\", \"lessons\", \"assessment_blueprints\", \"study_plan_templates\"]},` |",
       "runtime_surface": false
     },
     {
@@ -597,84 +753,126 @@
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 34,
-      "line_excerpt": "| `app/models/content_factory.py` | 56 | `DIAGNOSTIC_ITEMS = \"diagnostic_items\"` |",
+      "line_excerpt": "| `app/domain/curriculum_expansion_schemas.py` | 17 | `layers: list[str] = Field(default_factory=lambda: [\"diagnostic_items\", \"lessons\"], min_length=1, max_length=8)` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 35,
-      "line_excerpt": "| `app/models/diagnostic_item.py` | 110 | `ORM representation of the diagnostic_items table.` |",
+      "line_excerpt": "| `app/models/content_factory.py` | 59 | `DIAGNOSTIC_ITEMS = \"diagnostic_items\"` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 36,
-      "line_excerpt": "| `app/models/diagnostic_item.py` | 116 | `__tablename__ = \"diagnostic_items\"` |",
+      "line_excerpt": "| `app/models/diagnostic_item.py` | 111 | `ORM representation of the diagnostic_items table.` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 37,
-      "line_excerpt": "| `app/models/item_exposure.py` | 58 | `ForeignKey(\"diagnostic_items.item_id\", ondelete=\"RESTRICT\"),` |",
+      "line_excerpt": "| `app/models/diagnostic_item.py` | 117 | `__tablename__ = \"diagnostic_items\"` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 38,
-      "line_excerpt": "| `app/services/content_file_artifact_import.py` | 29 | `\"diagnostic_items\": (ContentLayer.DIAGNOSTIC_ITEMS, ContentArtifactType.DIAGNOSTIC_ITEM, \"items\"),` |",
+      "line_excerpt": "| `app/models/irt_quality.py` | 48 | `ForeignKey(\"diagnostic_items.item_id\", ondelete=\"RESTRICT\"), nullable=False` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 39,
-      "line_excerpt": "| `app/services/content_file_promotion_readiness.py` | 22 | `\"diagnostic_items\": \"diagnostic_items\",` |",
+      "line_excerpt": "| `app/models/item_exposure.py` | 58 | `ForeignKey(\"diagnostic_items.item_id\", ondelete=\"RESTRICT\"),` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 40,
-      "line_excerpt": "| `app/services/content_file_promotion_readiness.py` | 252 | `if layer == \"diagnostic_items\":` |",
+      "line_excerpt": "| `app/services/content_answer_key_verification.py` | 112 | `if layer != \"diagnostic_items\" and artifact_type != \"diagnostic_item\":` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 41,
-      "line_excerpt": "| `app/services/content_generation/scope_blueprint_generator.py` | 87 | `\"source_item_bank\": \"diagnostic_items\",` |",
+      "line_excerpt": "| `app/services/content_file_artifact_import.py` | 29 | `\"diagnostic_items\": (ContentLayer.DIAGNOSTIC_ITEMS, ContentArtifactType.DIAGNOSTIC_ITEM, \"items\"),` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 42,
-      "line_excerpt": "| `app/services/curriculum/coverage.py` | 24 | `def detect_gaps(self, *, lessons: Iterable[Mapping[str, Any]], diagnostic_items: Iterable[Mapping[str, Any]]) -> list[CurriculumGap]:` |",
+      "line_excerpt": "| `app/services/content_file_promotion_readiness.py` | 22 | `\"diagnostic_items\": \"diagnostic_items\",` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 43,
-      "line_excerpt": "| `app/services/curriculum/coverage.py` | 27 | `item_refs = {row.get(\"caps_reference\") for row in diagnostic_items if row.get(\"caps_reference\")}` |",
+      "line_excerpt": "| `app/services/content_file_promotion_readiness.py` | 252 | `if layer == \"diagnostic_items\":` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 44,
-      "line_excerpt": "| `app/services/launch_content_seed.py` | 48 | `item_bank_path = _artifact_path(scope, \"diagnostic_items\", \"data/generated/items/grade4_maths_launch_item_bank.json\")` |",
+      "line_excerpt": "| `app/services/content_generation/providers/llm.py` | 169 | `values = payload.get(\"diagnostic_items\")` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 45,
+      "line_excerpt": "| `app/services/content_generation/scope_blueprint_generator.py` | 87 | `\"source_item_bank\": \"diagnostic_items\",` |",
+      "runtime_surface": false
+    },
+    {
+      "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
+      "line_number": 46,
+      "line_excerpt": "| `app/services/content_review_governance.py` | 355 | `if _value(artifact.artifact_type) == \"diagnostic_item\" or _value(artifact.content_layer) == \"diagnostic_items\":` |",
+      "runtime_surface": false
+    },
+    {
+      "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
+      "line_number": 47,
+      "line_excerpt": "| `app/services/content_review_governance.py` | 545 | `or _value(artifact.content_layer) == \"diagnostic_items\"` |",
+      "runtime_surface": false
+    },
+    {
+      "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
+      "line_number": 48,
+      "line_excerpt": "| `app/services/curriculum/coverage.py` | 24 | `def detect_gaps(self, *, lessons: Iterable[Mapping[str, Any]], diagnostic_items: Iterable[Mapping[str, Any]]) -> list[CurriculumGap]:` |",
+      "runtime_surface": false
+    },
+    {
+      "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
+      "line_number": 49,
+      "line_excerpt": "| `app/services/curriculum/coverage.py` | 27 | `item_refs = {row.get(\"caps_reference\") for row in diagnostic_items if row.get(\"caps_reference\")}` |",
+      "runtime_surface": false
+    },
+    {
+      "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
+      "line_number": 50,
+      "line_excerpt": "| `app/services/curriculum_expansion.py` | 177 | `if _enum_value(artifact.content_layer) == \"diagnostic_items\" and not artifact.answer_key_verified:` |",
+      "runtime_surface": false
+    },
+    {
+      "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
+      "line_number": 51,
+      "line_excerpt": "| `app/services/launch_content_seed.py` | 48 | `item_bank_path = _artifact_path(scope, \"diagnostic_items\", \"data/generated/items/grade4_maths_launch_item_bank.json\")` |",
+      "runtime_surface": false
+    },
+    {
+      "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
+      "line_number": 52,
       "line_excerpt": "| `app/services/launch_content_seed.py` | 66 | `item_target = _target_for(scope, \"diagnostic_items.approved\", DEFAULT_ITEM_TARGET, registry=registry)` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
-      "line_number": 54,
+      "line_number": 61,
       "line_excerpt": "- Empty `diagnostic_items` remains beta-blocking under DIAG-SCORE-001.",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
-      "line_number": 55,
+      "line_number": 62,
       "line_excerpt": "- This policy does not seed `diagnostic_items`.",
       "runtime_surface": false
     },
@@ -1201,6 +1399,30 @@
       "runtime_surface": false
     },
     {
+      "path": "tests/phase04/test_phase4_postgres_integration.py",
+      "line_number": 20,
+      "line_excerpt": "WHERE table_name='diagnostic_items' AND column_name LIKE 'irt_%'",
+      "runtime_surface": false
+    },
+    {
+      "path": "tests/phase04/test_phase4_postgres_integration.py",
+      "line_number": 52,
+      "line_excerpt": "INSERT INTO diagnostic_items (",
+      "runtime_surface": false
+    },
+    {
+      "path": "tests/phase07/test_phase7_unit.py",
+      "line_number": 88,
+      "line_excerpt": "content_layer=SimpleNamespace(value=\"diagnostic_items\"),",
+      "runtime_surface": false
+    },
+    {
+      "path": "tests/reconciliation/test_phases_1_7_reconciliation.py",
+      "line_number": 62,
+      "line_excerpt": "content_layer=SimpleNamespace(value=\"diagnostic_items\"),",
+      "runtime_surface": false
+    },
+    {
       "path": "tests/unit/modules/diagnostics/test_item_bank_models.py",
       "line_number": 100,
       "line_excerpt": "assert DiagnosticItem.__tablename__ == \"diagnostic_items\"",
@@ -1220,19 +1442,19 @@
     },
     {
       "path": "tests/unit/test_content_file_review_workflow.py",
-      "line_number": 75,
+      "line_number": 95,
       "line_excerpt": "\"diagnostic_items\",",
       "runtime_surface": false
     },
     {
       "path": "tests/unit/test_content_file_review_workflow.py",
-      "line_number": 113,
+      "line_number": 133,
       "line_excerpt": "\"diagnostic_items\": 1,",
       "runtime_surface": false
     },
     {
       "path": "tests/unit/test_content_file_review_workflow.py",
-      "line_number": 133,
+      "line_number": 153,
       "line_excerpt": "assert len(grade5[\"layers\"][\"diagnostic_items\"]) == 1",
       "runtime_surface": false
     },
@@ -1426,19 +1648,19 @@
   "runtime_diagnostic_items_references": [
     {
       "path": "app/api_v2_routers/content_factory.py",
-      "line_number": 1088,
+      "line_number": 1077,
       "line_excerpt": "diagnostic_items = await service.get_diagnostic_items(session, scope_id=scope_id, caps_ref=caps_ref)",
       "runtime_surface": true
     },
     {
       "path": "app/api_v2_routers/content_factory.py",
-      "line_number": 1090,
+      "line_number": 1079,
       "line_excerpt": "return {\"diagnostic_items\": diagnostic_items, \"lessons\": lessons}",
       "runtime_surface": true
     },
     {
       "path": "app/api_v2_routers/content_factory.py",
-      "line_number": 1111,
+      "line_number": 1100,
       "line_excerpt": "run_metadata={\"layers\": [\"diagnostic_items\", \"lessons\", \"assessment_blueprints\", \"study_plan_templates\"]},",
       "runtime_surface": true
     },
@@ -1449,27 +1671,45 @@
       "runtime_surface": true
     },
     {
+      "path": "app/domain/curriculum_expansion_schemas.py",
+      "line_number": 17,
+      "line_excerpt": "layers: list[str] = Field(default_factory=lambda: [\"diagnostic_items\", \"lessons\"], min_length=1, max_length=8)",
+      "runtime_surface": true
+    },
+    {
       "path": "app/models/content_factory.py",
-      "line_number": 56,
+      "line_number": 59,
       "line_excerpt": "DIAGNOSTIC_ITEMS = \"diagnostic_items\"",
       "runtime_surface": true
     },
     {
       "path": "app/models/diagnostic_item.py",
-      "line_number": 110,
+      "line_number": 111,
       "line_excerpt": "ORM representation of the diagnostic_items table.",
       "runtime_surface": true
     },
     {
       "path": "app/models/diagnostic_item.py",
-      "line_number": 116,
+      "line_number": 117,
       "line_excerpt": "__tablename__ = \"diagnostic_items\"",
+      "runtime_surface": true
+    },
+    {
+      "path": "app/models/irt_quality.py",
+      "line_number": 48,
+      "line_excerpt": "ForeignKey(\"diagnostic_items.item_id\", ondelete=\"RESTRICT\"), nullable=False",
       "runtime_surface": true
     },
     {
       "path": "app/models/item_exposure.py",
       "line_number": 58,
       "line_excerpt": "ForeignKey(\"diagnostic_items.item_id\", ondelete=\"RESTRICT\"),",
+      "runtime_surface": true
+    },
+    {
+      "path": "app/services/content_answer_key_verification.py",
+      "line_number": 112,
+      "line_excerpt": "if layer != \"diagnostic_items\" and artifact_type != \"diagnostic_item\":",
       "runtime_surface": true
     },
     {
@@ -1491,9 +1731,27 @@
       "runtime_surface": true
     },
     {
+      "path": "app/services/content_generation/providers/llm.py",
+      "line_number": 169,
+      "line_excerpt": "values = payload.get(\"diagnostic_items\")",
+      "runtime_surface": true
+    },
+    {
       "path": "app/services/content_generation/scope_blueprint_generator.py",
       "line_number": 87,
       "line_excerpt": "\"source_item_bank\": \"diagnostic_items\",",
+      "runtime_surface": true
+    },
+    {
+      "path": "app/services/content_review_governance.py",
+      "line_number": 355,
+      "line_excerpt": "if _value(artifact.artifact_type) == \"diagnostic_item\" or _value(artifact.content_layer) == \"diagnostic_items\":",
+      "runtime_surface": true
+    },
+    {
+      "path": "app/services/content_review_governance.py",
+      "line_number": 545,
+      "line_excerpt": "or _value(artifact.content_layer) == \"diagnostic_items\"",
       "runtime_surface": true
     },
     {
@@ -1506,6 +1764,12 @@
       "path": "app/services/curriculum/coverage.py",
       "line_number": 27,
       "line_excerpt": "item_refs = {row.get(\"caps_reference\") for row in diagnostic_items if row.get(\"caps_reference\")}",
+      "runtime_surface": true
+    },
+    {
+      "path": "app/services/curriculum_expansion.py",
+      "line_number": 177,
+      "line_excerpt": "if _enum_value(artifact.content_layer) == \"diagnostic_items\" and not artifact.answer_key_verified:",
       "runtime_surface": true
     },
     {

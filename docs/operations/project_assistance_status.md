@@ -5,9 +5,9 @@ working control surface, not a release approval.
 
 ## Current Gate Snapshot
 
-- **Last refreshed:** 2026-05-17 12:10 UTC
-- **Assessed commit:** `859695dac818`
-- **Quality gate:** 🔴 RED (9/11 required checks passing)
+- **Last refreshed:** 2026-06-10 12:17 UTC
+- **Assessed commit:** `958c86ff8465`
+- **Quality gate:** 🔴 RED (6/11 required checks passing)
 
 ## Source Coverage
 
@@ -16,7 +16,7 @@ working control surface, not a release approval.
 | `.github/PULL_REQUEST_TEMPLATE.md` | present |
 | `.github/workflows/` | present |
 | `Makefile` | present |
-| `TODO.md` | present |
+| `TODO.md` | missing |
 | `app/` | present |
 | `docs/POPIA_COMPLIANCE.md` | present |
 | `docs/current_state.md` | present |
@@ -45,7 +45,7 @@ Keep the project honest about what is implemented, verified, blocked, or externa
 Sources:
 - `docs/current_state.md` (present)
 - `docs/project_status.md` (present)
-- `TODO.md` (present)
+- `TODO.md` (missing)
 
 Commands:
 - `make refresh-current-state`

@@ -15,7 +15,7 @@ code_anchors: [docs/architecture/README.md]
 
 # Auth Service Extraction Report
 
-Generated at: `2026-06-13T13:48:05Z`
+Generated at: `2026-06-24T11:29:47Z`
 
 Repository imports remaining in auth router: `0`
 

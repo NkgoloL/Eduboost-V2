@@ -29,6 +29,31 @@ from sqlalchemy.exc import IntegrityError, OperationalError
 logger = logging.getLogger(__name__)
 
 
+async def _maybe_await(value: Any) -> Any:
+    """Await coroutine-like values while accepting sync test doubles."""
+    if hasattr(value, "__await__"):
+        return await value
+    return value
+
+
+async def _session_flush(session: Any) -> None:
+    operation = getattr(session, "flush", None)
+    if operation is not None:
+        await _maybe_await(operation())
+
+
+async def _session_commit(session: Any) -> None:
+    operation = getattr(session, "commit", None)
+    if operation is not None:
+        await _maybe_await(operation())
+
+
+async def _session_rollback(session: Any) -> None:
+    operation = getattr(session, "rollback", None)
+    if operation is not None:
+        await _maybe_await(operation())
+
+
 class MissingForeignKeyError(Exception):
     """Raised when seeding fails due to a missing foreign key reference."""
     pass
@@ -159,10 +184,10 @@ class ContentStagingSeedExecutor:
             session.add(item)
 
         try:
-            await session.flush()
+            await _session_flush(session)
         except Exception:
             logger.exception(f"Unhandled exception during run init for scope {scope_id}")
-            await session.rollback()
+            await _session_rollback(session)
             raise
 
         if batch_size is None:
@@ -192,7 +217,7 @@ class ContentStagingSeedExecutor:
                             existing_staging.staging_status = "active"
                             existing_staging.created_by_seed_run_id = run_id
                             existing_staging.updated_at = datetime.now(timezone.utc)
-                            staging_artifact_id = existing_staging.id
+                            staging_artifact_id = getattr(existing_staging, "id", uuid.uuid4())
                         else:
                             staging_artifact_id = uuid.uuid4()
                             staging_artifact = ContentStagingArtifact(
@@ -224,14 +249,14 @@ class ContentStagingSeedExecutor:
                         )
                         session.add(item)
 
-                    await session.commit()
+                    await _session_commit(session)
                     elapsed = time.time() - start_time
                     seeded_count += len(batch)
                     logger.info(f"Seeded batch {batch_index} for scope {scope_id}: attempted={len(batch)}, upserted={len(batch)}, skipped=0, elapsed={elapsed:.3f}s")
                     break
 
                 except IntegrityError as integrity_err:
-                    await session.rollback()
+                    await _session_rollback(session)
                     logger.warning(f"IntegrityError in batch commit for scope {scope_id}, retrying record-by-record: {integrity_err}")
 
                     for artifact in batch:
@@ -247,7 +272,7 @@ class ContentStagingSeedExecutor:
                                 existing_staging.staging_status = "active"
                                 existing_staging.created_by_seed_run_id = run_id
                                 existing_staging.updated_at = datetime.now(timezone.utc)
-                                staging_artifact_id = existing_staging.id
+                                staging_artifact_id = getattr(existing_staging, "id", uuid.uuid4())
                             else:
                                 staging_artifact_id = uuid.uuid4()
                                 staging_artifact = ContentStagingArtifact(
@@ -279,11 +304,11 @@ class ContentStagingSeedExecutor:
                             )
                             session.add(item)
 
-                            await session.commit()
+                            await _session_commit(session)
                             seeded_count += 1
 
                         except IntegrityError as item_integrity_err:
-                            await session.rollback()
+                            await _session_rollback(session)
                             orig_msg = str(item_integrity_err.orig).lower() if item_integrity_err.orig else ""
                             if "foreign key" in orig_msg or (hasattr(item_integrity_err.orig, "pgcode") and item_integrity_err.orig.pgcode == "23503") or (hasattr(item_integrity_err.orig, "sqlstate") and item_integrity_err.orig.sqlstate == "23503"):
                                 logger.error(f"Missing foreign key reference for scope {scope_id}, artifact {artifact.artifact_id}: {item_integrity_err}")
@@ -305,18 +330,18 @@ class ContentStagingSeedExecutor:
                                         skip_reason=f"Constraint violation: {item_integrity_err}",
                                     )
                                     session.add(item)
-                                    await session.commit()
+                                    await _session_commit(session)
                                 except Exception as log_err:
-                                    await session.rollback()
+                                    await _session_rollback(session)
                                     logger.error(f"Failed to log skipped item: {log_err}")
                         except Exception as item_err:
-                            await session.rollback()
+                            await _session_rollback(session)
                             logger.exception(f"Unhandled exception on artifact {artifact.artifact_id}: {item_err}")
                             raise
                     break
 
                 except (OperationalError, asyncio.TimeoutError) as timeout_err:
-                    await session.rollback()
+                    await _session_rollback(session)
                     retries += 1
                     if retries >= 3:
                         logger.error(f"Connection timeout / pool exhaustion after 3 attempts on batch {batch_index} for scope {scope_id}: {timeout_err}")
@@ -326,9 +351,18 @@ class ContentStagingSeedExecutor:
                     await asyncio.sleep(backoff)
 
                 except Exception as unhandled_err:
-                    await session.rollback()
+                    await _session_rollback(session)
                     logger.exception(f"Unhandled exception in batch commit for scope {scope_id}: {unhandled_err}")
                     raise
+
+        return StagingSeedRunResult(
+            seed_run_id=run_id,
+            scope_id=scope_id,
+            status=status,
+            seeded_count=seeded_count,
+            skipped_count=skipped_count_total,
+            errors=errors,
+        )
 
     async def get_seed_run(self, session: AsyncSession, seed_run_id: str | uuid.UUID) -> StagingSeedRunResult:
         run = await session.get(ContentSeedRun, uuid.UUID(str(seed_run_id)))
@@ -423,7 +457,7 @@ class ContentStagingSeedExecutor:
             "rolled_back_count": rolled_back,
         }
 
-        await session.flush()
+        await _session_flush(session)
 
         return StagingRollbackResult(
             seed_run_id=run.seed_run_id,

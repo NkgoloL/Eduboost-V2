@@ -63,13 +63,6 @@ class ScopeBlueprintGenerator:
                         context=context,
                         lesson_variant=LESSON_VARIANTS[ref_index % len(LESSON_VARIANTS)],
                     ),
-                    self._recheck(
-                        slug=slug,
-                        safe_ref=safe,
-                        ref=ref,
-                        context=context,
-                        misconception_tags=misconception_tags,
-                    ),
                     self._mastery_check(
                         slug=slug,
                         safe_ref=safe,

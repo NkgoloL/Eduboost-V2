@@ -1,0 +1,314 @@
+{
+  "checked": [
+    "requirements/base.txt",
+    "requirements/dev.txt",
+    "Makefile",
+    "pytest.ini"
+  ],
+  "errors": [],
+  "imports": [
+    {
+      "module": "fastapi",
+      "reason": "backend runtime import",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "0.111.0"
+    },
+    {
+      "module": "sqlalchemy",
+      "reason": "model/repository imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "2.0.30"
+    },
+    {
+      "module": "alembic",
+      "reason": "migration graph verification",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "1.13.1"
+    },
+    {
+      "module": "asyncpg",
+      "reason": "PostgreSQL async SQLAlchemy URL imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "0.29.0"
+    },
+    {
+      "module": "jose",
+      "reason": "JWT/token tests",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "3.3.0"
+    },
+    {
+      "module": "passlib.context",
+      "reason": "password/auth tests",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": null
+    },
+    {
+      "module": "redis",
+      "reason": "quota/session/token revocation tests",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "5.0.4"
+    },
+    {
+      "module": "structlog",
+      "reason": "runtime logging imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "24.2.0"
+    },
+    {
+      "module": "anthropic",
+      "reason": "LLM gateway import contracts",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "0.95.0"
+    },
+    {
+      "module": "groq",
+      "reason": "LLM gateway import contracts",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "0.9.0"
+    },
+    {
+      "module": "openai",
+      "reason": "LLM gateway import contracts",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "1.30.5"
+    },
+    {
+      "module": "posthog",
+      "reason": "analytics imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "7.11.2"
+    },
+    {
+      "module": "sklearn",
+      "reason": "diagnostic/IRT tests",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "1.5.0"
+    },
+    {
+      "module": "numpy",
+      "reason": "diagnostic/IRT tests",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "1.26.4"
+    },
+    {
+      "module": "pandas",
+      "reason": "data/reporting imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "2.2.2"
+    },
+    {
+      "module": "scipy",
+      "reason": "diagnostic/IRT tests",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "1.13.1"
+    },
+    {
+      "module": "sendgrid",
+      "reason": "notification imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "6.11.0"
+    },
+    {
+      "module": "jinja2",
+      "reason": "template/rendering imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "3.1.4"
+    },
+    {
+      "module": "boto3",
+      "reason": "storage integration imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "1.34.110"
+    },
+    {
+      "module": "stripe",
+      "reason": "billing router imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": null
+    },
+    {
+      "module": "prometheus_fastapi_instrumentator",
+      "reason": "metrics imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "6.1.0"
+    },
+    {
+      "module": "sentry_sdk",
+      "reason": "observability imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": null
+    },
+    {
+      "module": "azure.identity",
+      "reason": "Azure secret/key-vault imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "1.16.0"
+    },
+    {
+      "module": "dotenv",
+      "reason": "environment loading imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": null
+    },
+    {
+      "module": "httpx",
+      "reason": "API/client tests",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "0.27.0"
+    },
+    {
+      "module": "tenacity",
+      "reason": "retry-policy imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": null
+    },
+    {
+      "module": "bleach",
+      "reason": "content sanitisation imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "6.1.0"
+    },
+    {
+      "module": "phonenumbers",
+      "reason": "profile validation imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "8.13.37"
+    },
+    {
+      "module": "dateutil",
+      "reason": "date/time utilities",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "2.9.0"
+    },
+    {
+      "module": "babel",
+      "reason": "locale/reporting imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "2.15.0"
+    },
+    {
+      "module": "reportlab",
+      "reason": "PDF/report generation imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "4.2.0"
+    },
+    {
+      "module": "pypdf",
+      "reason": "PDF extraction imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "5.4.0"
+    },
+    {
+      "module": "arq",
+      "reason": "worker dependency imports",
+      "requirement_hint": "requirements/base.txt",
+      "valid": true,
+      "version": "0.28.0"
+    },
+    {
+      "module": "pytest",
+      "reason": "test runner",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": true,
+      "version": "9.0.3"
+    },
+    {
+      "module": "pytest_asyncio",
+      "reason": "async unit tests",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": true,
+      "version": "1.3.0"
+    },
+    {
+      "module": "pytest_cov",
+      "reason": "pytest --no-cov option registration",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": true,
+      "version": "7.1.0"
+    },
+    {
+      "module": "xdist",
+      "reason": "pytest -n auto option registration",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": true,
+      "version": "3.6.1"
+    },
+    {
+      "module": "pytest_mock",
+      "reason": "mocking fixtures",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": true,
+      "version": null
+    },
+    {
+      "module": "hypothesis",
+      "reason": "property tests",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": true,
+      "version": "6.152.4"
+    },
+    {
+      "module": "factory",
+      "reason": "factory-boy tests",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": true,
+      "version": "3.3.3"
+    },
+    {
+      "module": "faker",
+      "reason": "test data generation",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": true,
+      "version": null
+    },
+    {
+      "module": "aiosqlite",
+      "reason": "SQLite async test paths",
+      "requirement_hint": "requirements/dev.txt",
+      "valid": true,
+      "version": "0.22.1"
+    }
+  ],
+  "install_hint": "/usr/bin/python3.12 -m pip install -r requirements/dev.txt",
+  "missing_modules": [],
+  "pip_check": null,
+  "python": {
+    "executable": "/usr/bin/python3.12",
+    "version": "3.12.3"
+  },
+  "valid": true,
+  "warnings": []
+}

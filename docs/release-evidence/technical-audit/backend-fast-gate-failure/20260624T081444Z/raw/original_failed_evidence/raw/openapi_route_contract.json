@@ -1,0 +1,74 @@
+$ python3 scripts/audit_remediation/verify_openapi_route_contract.py --json
+{
+  "checked": [
+    "docs/openapi.json",
+    "app/frontend/src/lib/api/services.ts",
+    "app/api_v2_routers/parents.py",
+    "app/api_v2_routers/popia.py"
+  ],
+  "errors": [],
+  "required_openapi_routes": [
+    {
+      "method": "POST",
+      "path": "/api/v2/popia/exports",
+      "reason": "canonical POPIA data export"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/popia/exports",
+      "reason": "canonical POPIA data export alias"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/popia/erasure",
+      "reason": "canonical POPIA erasure request"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/popia/erasure",
+      "reason": "canonical POPIA erasure request alias"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/popia/erasure/{learner_id}/cancel",
+      "reason": "canonical POPIA erasure cancellation"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/popia/erasure/{learner_id}/cancel",
+      "reason": "canonical POPIA erasure cancellation alias"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/popia/erasure/{learner_id}/status",
+      "reason": "canonical POPIA erasure status"
+    },
+    {
+      "method": "GET",
+      "path": "/v2/popia/erasure/{learner_id}/status",
+      "reason": "canonical POPIA erasure status alias"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/popia/restriction",
+      "reason": "canonical POPIA processing restriction"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/popia/restriction",
+      "reason": "canonical POPIA processing restriction alias"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/parents/{guardian_id}/export",
+      "reason": "parent export endpoint"
+    },
+    {
+      "method": "GET",
+      "path": "/v2/parents/{guardian_id}/export",
+      "reason": "parent export endpoint alias"
+    }
+  ],
+  "valid": true,
+  "warnings": []
+}

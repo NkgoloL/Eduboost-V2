@@ -1,0 +1,91 @@
+{
+  "valid": true,
+  "checks": [
+    {
+      "name": "consent_expiry_uses_ceiling_days",
+      "valid": true,
+      "detail": "Consent expiry calculation is stable across sub-second test boundaries."
+    },
+    {
+      "name": "future_layer_targets_restored",
+      "valid": true,
+      "detail": "Grade 4 future-layer coverage targets match backend-fast contract."
+    },
+    {
+      "name": "diagnostic_score_item_id_generated",
+      "valid": true,
+      "detail": "Diagnostic bridge generates target item_id rather than copying IRT id."
+    },
+    {
+      "name": "generation_cancel_enveloped",
+      "valid": true,
+      "detail": "Generation cancel response uses V2 envelope helper."
+    },
+    {
+      "name": "ops_python_pin_matches_v2_dockerfile",
+      "valid": true,
+      "detail": "Ops validator expects the V2 Docker Python base pin."
+    },
+    {
+      "name": "production_key_vault_fails_closed",
+      "valid": true,
+      "detail": "Production settings require Key Vault URL before fetching secrets."
+    },
+    {
+      "name": "repo_hygiene_root_operational_files_allowed",
+      "valid": true,
+      "detail": "Known operational root files are explicitly allowed."
+    },
+    {
+      "name": "source_manifest_object_store_cache_boundary",
+      "valid": true,
+      "detail": "Source-manifest local file verification tolerates object-store-backed clean checkouts."
+    },
+    {
+      "name": "grade7_math_text_extract_hash_recorded",
+      "valid": true,
+      "detail": "Grade 7 mathematics text extract hash is recorded for topic-map worklist evidence."
+    },
+    {
+      "name": "topic_map_draft_fallback",
+      "valid": true,
+      "detail": "Topic-map validator preserves reviewed-draft counts when generated draft envelopes are absent."
+    },
+    {
+      "name": "topic_worklist_text_sha_fallback",
+      "valid": true,
+      "detail": "Topic-map worklist preserves text/source hashes for registered source documents."
+    },
+    {
+      "name": "auth_revoke_all_dict_compatible",
+      "valid": true,
+      "detail": "Auth revoke-all accepts both AuthContext and legacy dict test claims."
+    },
+    {
+      "name": "jobs_use_session_factory_alias",
+      "valid": true,
+      "detail": "ARQ jobs use the canonical session factory alias, not direct AsyncSessionLocal references."
+    },
+    {
+      "name": "phase02e_verifier_history_survives_slice_advance",
+      "valid": true,
+      "detail": "Phase 02E verifier checks historical registration instead of active-slice ownership."
+    },
+    {
+      "name": "blueprint_generator_baseline_plus_three_per_ref",
+      "valid": true,
+      "detail": "Scope blueprint generation yields baseline plus three approved blueprints per CAPS ref."
+    },
+    {
+      "name": "project_assistance_status_regenerated",
+      "valid": true,
+      "detail": "Project assistance report is regenerated for current source state."
+    },
+    {
+      "name": "phase02h_registered",
+      "valid": true,
+      "detail": "Blocker register records Phase 02H as the current backend-fast remediation slice."
+    }
+  ],
+  "policy": "Phase 02H focused evidence only; backend-fast candidate evidence requires make test-fast exit 0."
+}

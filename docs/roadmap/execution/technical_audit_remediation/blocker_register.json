@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "baseline_reset_in_progress",
+  "status": "phase_02k_backend_fast_evidence_authority_repair_ready",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -18,13 +18,32 @@
       "id": "TA-OPENAPI-001",
       "title": "Regenerate and verify OpenAPI after route-contract changes",
       "severity": "high",
-      "status": "pending_next_slice"
+      "status": "evidence_recorded"
     },
     {
       "id": "TA-BACKEND-FAST-001",
       "title": "Rerun and close backend fast gate from clean checkout",
       "severity": "critical",
-      "status": "pending_next_slice"
+      "status": "blocked_evidence_harness_repair_required",
+      "latest_failure_summary": {
+        "failed": 1,
+        "passed": 2303,
+        "skipped": 11,
+        "xfailed": 1,
+        "errors": 0
+      },
+      "latest_failure_categories": [
+        "content_factory_registry",
+        "topic_map_worklist_provenance",
+        "tracked_artifact_gap"
+      ],
+      "next_slice": "02k-backend-fast-evidence-authority",
+      "latest_evidence_control_gap": {
+        "backend_fast_gate_result_returncode": 2,
+        "backend_fast_gate_result_valid": false,
+        "backend_fast_evidence_check_valid": true,
+        "issue": "candidate evidence index/check claimed pass while raw authority result still recorded a failed make test-fast run"
+      }
     },
     {
       "id": "TA-FRONTEND-001",
@@ -44,5 +63,138 @@
       "severity": "high",
       "status": "partially_addressed_in_baseline_reset"
     }
+  ],
+  "active_slice": "02k-backend-fast-evidence-authority",
+  "backend_fast_failure": {
+    "authority_command": "make test-fast",
+    "status": "failed_authority_gate_captured_for_phase_02j_remediation",
+    "reported_return_code": 2,
+    "reported_summary": {
+      "failed": 1,
+      "passed": 2303,
+      "skipped": 11,
+      "xfailed": 1
+    },
+    "reported_categories": [
+      "content_factory_registry",
+      "topic_map_worklist_provenance",
+      "tracked_artifact_gap"
+    ],
+    "passing_evidence_policy": "Do not create backend-fast-gate candidate evidence until make test-fast exits 0.",
+    "runtime_dependency_slice": {
+      "id": "TA-BACKEND-FAST-002",
+      "title": "Synchronize backend fast authority Python runtime dependencies",
+      "status": "evidence_harness_repair_pending_recollection",
+      "authority_interpreter": ".venv/bin/python",
+      "policy": "Environment dependency evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "evidence_boundary": "Runtime dependency evidence is separate from backend-fast candidate evidence; make test-fast must still exit 0 before passing backend-fast evidence is allowed.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    },
+    "content_scope_registry_slice": {
+      "id": "TA-BACKEND-FAST-003",
+      "title": "Register generated Content Factory scopes for backend fast authority tests",
+      "status": "implementation_ready",
+      "dominant_failure_cluster": "grade5_mathematics_en not registered",
+      "estimated_failures_targeted": 30,
+      "policy": "Scope-registry evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "kg_boundary": "Registry metadata preserves future KG hooks but does not introduce runtime KG implementation."
+    },
+    "phase_02d_slice": {
+      "id": "TA-BACKEND-FAST-004",
+      "title": "Remediate staging scope filtering, MCP dependency, CI artifact upload, and Content Factory schema contracts",
+      "status": "implementation_ready",
+      "dominant_failure_clusters": [
+        "staging_scope_count_explosion",
+        "mcp_dependency_missing",
+        "ci_workflow_contract",
+        "orm_enum_schema_drift"
+      ],
+      "estimated_failures_targeted": 13,
+      "policy": "Phase 02D evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    },
+    "phase_02e_slice": {
+      "id": "TA-BACKEND-FAST-005",
+      "title": "Remediate MCP authority import, Playwright port contract, router auth boundary, and staging seed result handling",
+      "status": "implementation_ready",
+      "dominant_failure_clusters": [
+        "mcp_dependency_missing",
+        "frontend_deployment_playwright_config",
+        "router_contract",
+        "staging_seed_executor"
+      ],
+      "estimated_failures_targeted": 12,
+      "policy": "Phase 02E evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    },
+    "phase_02f_slice": {
+      "id": "TA-BACKEND-FAST-006",
+      "title": "Remediate diagnostic item-bank selection, staging seed executor result/session handling, tutor router contract, and study-plan DB import contract",
+      "status": "implementation_ready",
+      "dominant_failure_clusters": [
+        "diagnostics_item_bank",
+        "staging_seed_executor",
+        "router_contract_tutor_fragment",
+        "study_plan_consent_db_import"
+      ],
+      "estimated_failures_targeted": 8,
+      "policy": "Phase 02F evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    },
+    "phase_02g_slice": {
+      "id": "TA-BACKEND-FAST-007",
+      "title": "Remediate POPIA async-session write safety and route/auth contract warnings",
+      "status": "implementation_ready",
+      "dominant_failure_clusters": [
+        "async_mock_warning",
+        "popia_auth_or_route_contract",
+        "popia_async_route_contract"
+      ],
+      "policy": "Phase 02G evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    },
+    "phase_02h_slice": {
+      "id": "TA-BACKEND-FAST-008",
+      "title": "Remediate residual backend-fast static, source, auth, and ops contracts",
+      "status": "implementation_ready",
+      "dominant_failure_clusters": [
+        "residual_static_contracts",
+        "content_factory_topic_map_contracts",
+        "ops_security_contracts",
+        "auth_route_delegate_contract"
+      ],
+      "estimated_failures_targeted": 15,
+      "policy": "Phase 02H evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    },
+    "phase_02i_slice": {
+      "id": "TA-BACKEND-FAST-010",
+      "title": "Restore reviewed text-extract provenance for topic-map worklist generation",
+      "status": "implementation_ready",
+      "dominant_failure_cluster": "topic_map_worklist_preserves_source_hashes_for_scope",
+      "estimated_failures_targeted": 1,
+      "policy": "Phase 02I evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    },
+    "phase_02j_slice": {
+      "id": "TA-BACKEND-FAST-011",
+      "title": "Track reviewed text-extract manifest for clean-checkout topic-map provenance",
+      "status": "implementation_ready",
+      "dominant_failure_cluster": "topic_map_worklist_preserves_source_hashes_for_scope",
+      "estimated_failures_targeted": 1,
+      "policy": "Phase 02J evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    },
+    "phase_02k_slice": {
+      "id": "TA-BACKEND-FAST-011",
+      "title": "Repair backend-fast candidate evidence authority harness",
+      "status": "implementation_ready",
+      "control_gap": "candidate evidence must be derived from a fresh make test-fast returncode 0 run, with machine-readable raw JSON and no stale failure artifacts",
+      "policy": "Do not accept backend-fast-gate evidence unless backend_fast_gate_result.json has returncode 0 and valid=true, classification has zero failures, and verify_backend_fast_evidence.py independently passes.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    }
+  },
+  "historical_slices": [
+    "02h-backend-fast-residual-contracts"
   ]
 }

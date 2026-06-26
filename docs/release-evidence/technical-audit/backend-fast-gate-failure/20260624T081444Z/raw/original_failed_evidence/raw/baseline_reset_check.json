@@ -1,0 +1,12 @@
+$ python3 scripts/audit_remediation/verify_baseline_reset.py --json
+{
+  "checked": [
+    "docs/roadmap/execution/atlas/phase_02r_start_gate_control.json",
+    "docs/roadmap/execution/atlas/phase_02r_execution_plan.md",
+    "docs/roadmap/execution/technical_audit_remediation/blocker_register.json",
+    "docs/roadmap/execution/technical_audit_remediation/00_control_reset.md"
+  ],
+  "errors": [],
+  "valid": true,
+  "warnings": []
+}

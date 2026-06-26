@@ -270,11 +270,17 @@ class DiagnosticItem(Base):
     # --- Helpers ---------------------------------------------------------
     @property
     def is_available_for_selection(self) -> bool:
-        """True if this item can be served: approved and below exposure cap."""
+        """True if this item can be served: approved and below exposure cap.
+
+        Newly-created in-memory DiagnosticItem objects do not receive database
+        server defaults until flushed. Treat a missing IRT quality state as the
+        same operational default used by the database: ``uncalibrated``.
+        """
+        quality_state = self.irt_quality_state or "uncalibrated"
         return (
             self.review_status == ReviewStatusEnum.APPROVED
             and self.exposure_count < self.max_exposure
-            and self.irt_quality_state in {"uncalibrated", "healthy", "monitor", "overridden"}
+            and quality_state in {"uncalibrated", "healthy", "monitor", "overridden"}
         )
 
     @property

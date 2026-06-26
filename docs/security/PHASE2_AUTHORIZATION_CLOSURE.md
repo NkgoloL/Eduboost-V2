@@ -23,9 +23,9 @@ routes that do not carry a learner object.
 
 ## Route Matrix Summary
 
-- Routes inspected: 164
-- Covered learner-scoped routes: 62
-- Non-learner-scoped routes: 99
+- Routes inspected: 201
+- Covered learner-scoped routes: 66
+- Non-learner-scoped routes: 132
 - Missing learner authorization markers: 3
 
 ## Key Evidence

@@ -1,9 +1,9 @@
 # Production Frontend Deployment Status
 
-Generated at: `2026-06-13T13:49:09Z`
-Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
+Generated at: `2026-06-24T11:30:38Z`
+Commit: `f5d72b8380da6403371ea91f6c8298626ba07aa1`
 
-**Status:** `production-frontend-configured`
+**Status:** `deployment-config-not-proven`
 
 | Check | Passed | Detail |
 |---|---:|---|
@@ -13,12 +13,12 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `nginx depends on frontend` | True | nginx depends_on includes frontend |
 | `nginx cert mount aligned to /etc/letsencrypt` | True | nginx reads same cert path certbot writes |
 | `certbot writes to /etc/letsencrypt` | True | certbot volume target |
-| `playwright defaults to Next.js port 3050` | True | baseURL fallback |
+| `playwright defaults to Next.js port 3050` | False | baseURL fallback |
 | `playwright timeout hardened` | True | timeout >= 60s |
 
 ## Blockers
 
-- None
+- playwright defaults to Next.js port 3050
 
 ## Interpretation
 

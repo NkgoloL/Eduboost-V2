@@ -1,7 +1,7 @@
 # Final Beta Gate Refresh
 
-Generated at: `2026-06-13T13:48:05Z`
-Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
+Generated at: `2026-06-24T11:29:47Z`
+Commit: `f5d72b8380da6403371ea91f6c8298626ba07aa1`
 
 **Beta decision:** `NO-GO`
 
@@ -34,7 +34,7 @@ Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
 | `SEC-001` | `external-blocked` | True | `docs/release/external_approvals/security_approval.md` | False | True | external approval sign-off metadata required |
 | `CONTENT-001` | `external-blocked` | True | `docs/release/external_approvals/content_approval.md` | False | True | external approval sign-off metadata required |
 | `LESSON-AUTH-001` | `runtime-passing` | False | `docs/release/lesson_authorization_hardening_report.md` | False | True | full HTTP and staging proof for all lesson routes remains pending |
-| `STAGING-001` | `external-blocked` | True | `docs/release/staging_smoke_evidence.md` | False | True | real staging smoke evidence and GitHub Actions run URL required |
+| `STAGING-001` | `external-blocked` | True | `docs/release/external_approvals/staging_acceptance.md` | False | True | external approval sign-off metadata required |
 | `EXT-GATE-001` | `runtime-passing` | True | `docs/release/external_approval_status.md` | False | True | required external approval items remain external-blocked until signed off |
 
 ## Resolved non-blocking accepted findings

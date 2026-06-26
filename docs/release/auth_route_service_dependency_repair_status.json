@@ -1,60 +1,60 @@
 {
-  "generated_at": "2026-06-13T13:48:04Z",
-  "current_commit": "0c9d99b0734c4c731b3fa0fba53a9f503acc5685",
+  "generated_at": "2026-06-24T11:29:46Z",
+  "current_commit": "f5d72b8380da6403371ea91f6c8298626ba07aa1",
   "status": "auth-route-service-dependencies-passing",
   "functions": [
     {
       "function": "me",
-      "line": 81,
+      "line": 80,
       "references_auth_service": false,
       "has_auth_service_param": false,
       "passed": true
     },
     {
       "function": "register",
-      "line": 87,
+      "line": 86,
       "references_auth_service": true,
       "has_auth_service_param": true,
       "passed": true
     },
     {
       "function": "login",
-      "line": 106,
+      "line": 105,
       "references_auth_service": true,
       "has_auth_service_param": true,
       "passed": true
     },
     {
       "function": "create_dev_session",
-      "line": 124,
+      "line": 123,
       "references_auth_service": true,
       "has_auth_service_param": true,
       "passed": true
     },
     {
       "function": "refresh",
-      "line": 148,
+      "line": 147,
       "references_auth_service": true,
       "has_auth_service_param": true,
       "passed": true
     },
     {
       "function": "list_sessions",
-      "line": 179,
+      "line": 178,
       "references_auth_service": false,
       "has_auth_service_param": false,
       "passed": true
     },
     {
       "function": "logout",
-      "line": 188,
+      "line": 187,
       "references_auth_service": true,
       "has_auth_service_param": true,
       "passed": true
     },
     {
       "function": "revoke_all_tokens",
-      "line": 204,
+      "line": 203,
       "references_auth_service": true,
       "has_auth_service_param": true,
       "passed": true

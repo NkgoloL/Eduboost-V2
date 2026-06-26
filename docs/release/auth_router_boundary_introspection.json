@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-13T13:48:05Z",
+  "generated_at": "2026-06-24T11:29:47Z",
   "auth_router_exists": true,
   "imports": [
     "app.api_v2_deps.auth",
@@ -22,7 +22,7 @@
   "functions": [
     {
       "name": "_canonical_access_claims",
-      "lineno": 42,
+      "lineno": 41,
       "args": [
         "user",
         "existing_claims",
@@ -31,7 +31,7 @@
     },
     {
       "name": "_canonical_refresh_claims",
-      "lineno": 46,
+      "lineno": 45,
       "args": [
         "existing_claims",
         "user"
@@ -39,7 +39,7 @@
     },
     {
       "name": "_legacy_refresh_error_response",
-      "lineno": 49,
+      "lineno": 48,
       "args": [
         "message",
         "status_code"
@@ -47,14 +47,14 @@
     },
     {
       "name": "me",
-      "lineno": 81,
+      "lineno": 80,
       "args": [
         "current_user"
       ]
     },
     {
       "name": "register",
-      "lineno": 87,
+      "lineno": 86,
       "args": [
         "request",
         "body",
@@ -66,7 +66,7 @@
     },
     {
       "name": "login",
-      "lineno": 106,
+      "lineno": 105,
       "args": [
         "request",
         "body",
@@ -78,7 +78,7 @@
     },
     {
       "name": "create_dev_session",
-      "lineno": 124,
+      "lineno": 123,
       "args": [
         "response",
         "db",
@@ -88,7 +88,7 @@
     },
     {
       "name": "refresh",
-      "lineno": 148,
+      "lineno": 147,
       "args": [
         "request",
         "response",
@@ -101,7 +101,7 @@
     },
     {
       "name": "_set_refresh_cookie",
-      "lineno": 167,
+      "lineno": 166,
       "args": [
         "response",
         "token"
@@ -109,14 +109,14 @@
     },
     {
       "name": "list_sessions",
-      "lineno": 179,
+      "lineno": 178,
       "args": [
         "current_user"
       ]
     },
     {
       "name": "logout",
-      "lineno": 188,
+      "lineno": 187,
       "args": [
         "response",
         "current_user",
@@ -127,7 +127,7 @@
     },
     {
       "name": "revoke_all_tokens",
-      "lineno": 204,
+      "lineno": 203,
       "args": [
         "response",
         "current_user",

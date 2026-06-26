@@ -15,7 +15,7 @@ code_anchors: [docs/architecture/README.md]
 
 # Legacy Learner Access Guard Report
 
-Generated at: `2026-06-13T13:49:15Z`
+Generated at: `2026-06-24T11:30:01Z`
 
 | Path | Count |
 |---|---:|

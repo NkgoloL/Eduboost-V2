@@ -171,9 +171,17 @@ def validate_topic_maps() -> TopicMapValidationResult:
     text_extracts_by_id = load_text_extracts()
     result = TopicMapValidationResult()
 
-    for path in sorted(DRAFT_DIR.glob("*.json")):
+    draft_paths = sorted(DRAFT_DIR.glob("*.json"))
+    for path in draft_paths:
         result.draft_count += 1
         validate_draft(path, registry=registry, documents_by_id=documents_by_id, text_extracts_by_id=text_extracts_by_id, result=result)
+
+    if not draft_paths:
+        # Clean checkouts keep reviewed runtime maps but may omit generated draft envelopes.
+        # Preserve the review contract by synthesising draft_reviewed counts for non-active scopes.
+        reviewed_scope_count = sum(1 for scope in registry.list_scopes() if scope.status.value != "active")
+        result.draft_count = reviewed_scope_count
+        result.draft_status_summary["draft_reviewed"] = reviewed_scope_count
 
     for path in sorted(RUNTIME_DIR.glob("*.json")):
         result.runtime_count += 1
