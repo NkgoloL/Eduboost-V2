@@ -65,8 +65,8 @@ def run_checks() -> list[Check]:
         ),
         Check(
             "phase_02e_registered_in_blocker_register",
-            "02e-backend-fast-router-frontend-seed" in blocker,
-            "Blocker register records Phase 02E as the active backend-fast remediation slice.",
+            "phase_02e_slice" in blocker,
+            "Blocker register retains Phase 02E evidence history after later backend-fast slices advance.",
         ),
     ]
 

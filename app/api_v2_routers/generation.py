@@ -14,6 +14,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.api_v2_deps.auth import AuthContext, require_admin
 from app.core.config import get_settings
 from app.core.database import get_db
+from app.domain.api_v2_models import ok
 from app.models.content_factory import ContentGenerationRun, ContentGenerationTask, ContentLayer
 from app.modules.jobs import enqueue_durable
 from app.services.batch_generation import BatchGenerationEngine, GenerationTaskSpec
@@ -298,4 +299,4 @@ async def cancel_generation_run(
         .values(status="cancelled")
     )
     await db.commit()
-    return {"run_id": str(run_id), "cancelled_tasks": len(cancelled), "status": "cancelled"}
+    return ok({"run_id": str(run_id), "cancelled_tasks": len(cancelled), "status": "cancelled"})

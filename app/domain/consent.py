@@ -6,6 +6,7 @@ Covers backlog §4.1 (consent lifecycle) and §4.2 (declarative enforcement).
 from __future__ import annotations
 
 import uuid
+import math
 from datetime import datetime, timedelta, timezone
 from enum import Enum
 from typing import Optional
@@ -133,7 +134,7 @@ class ConsentRecord(BaseModel):
         if self.expires_at is None:
             return None
         delta = self.expires_at - datetime.now(timezone.utc)
-        return max(0, delta.days)
+        return max(0, math.ceil(delta.total_seconds() / 86400))
 
     # -----------------------------------------------------------------------
     # Private helpers

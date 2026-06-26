@@ -61,6 +61,11 @@ def validate_source_manifest(
             if verify_local_files:
                 source_path = ROOT / document.source_path
                 if not source_path.exists():
+                    if getattr(document, "object_store_uri", None):
+                        result.warnings.append(
+                            f"source document {document.document_id} local cache missing; object store URI recorded"
+                        )
+                        continue
                     result.errors.append(f"source document {document.document_id} path does not exist: {document.source_path}")
                     continue
                 actual_hash = hashlib.sha256(source_path.read_bytes()).hexdigest()

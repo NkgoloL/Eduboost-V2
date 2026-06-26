@@ -209,7 +209,7 @@ async def revoke_all_tokens(
 ):
     return await auth_service.revoke_all_tokens(
         response=response,
-        current_user=current_user.raw_claims,
+        current_user=current_user.raw_claims if hasattr(current_user, "raw_claims") else current_user,
         db=db,
         cookie_refresh=cookie_refresh,
     )

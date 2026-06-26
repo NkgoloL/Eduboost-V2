@@ -260,9 +260,7 @@ class Settings(BaseSettings):
         if not self.is_production():
             return self
         if not self.AZURE_KEY_VAULT_URL:
-            if self._production_key_vault_url_required():
-                raise ValueError("AZURE_KEY_VAULT_URL is required when APP_ENV is production")
-            return self
+            raise ValueError("AZURE_KEY_VAULT_URL is required when APP_ENV is production")
         self.refresh_from_key_vault()
         return self
 

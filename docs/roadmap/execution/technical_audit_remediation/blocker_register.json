@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_02g_backend_fast_popia_async_contracts_remediation_ready",
+  "status": "phase_02h_backend_fast_residual_contracts_remediation_ready",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -24,20 +24,21 @@
       "id": "TA-BACKEND-FAST-001",
       "title": "Rerun and close backend fast gate from clean checkout",
       "severity": "critical",
-      "status": "blocked_phase_02g_remediation_in_progress",
+      "status": "blocked_phase_02h_remediation_in_progress",
       "latest_failure_summary": {
-        "failed": 22,
-        "passed": 2271,
+        "failed": 15,
+        "passed": 2287,
         "skipped": 11,
         "xfailed": 1,
         "errors": 0
       },
       "latest_failure_categories": [
-        "async_mock_warning",
-        "popia_auth_or_route_contract",
-        "popia_async_route_contract"
+        "residual_static_contracts",
+        "content_factory_topic_map_contracts",
+        "ops_security_contracts",
+        "auth_route_delegate_contract"
       ],
-      "next_slice": "02g-backend-fast-popia-async-contracts"
+      "next_slice": "02h-backend-fast-residual-contracts"
     },
     {
       "id": "TA-FRONTEND-001",
@@ -58,14 +59,14 @@
       "status": "partially_addressed_in_baseline_reset"
     }
   ],
-  "active_slice": "02g-backend-fast-popia-async-contracts",
+  "active_slice": "02h-backend-fast-residual-contracts",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
-    "status": "failed_authority_gate_captured_for_phase_02g_remediation",
+    "status": "failed_authority_gate_captured_for_phase_02h_remediation",
     "reported_return_code": 2,
     "reported_summary": {
-      "failed": 22,
-      "passed": 2271,
+      "failed": 15,
+      "passed": 2287,
       "skipped": 11,
       "xfailed": 1
     },
@@ -149,6 +150,20 @@
         "popia_async_route_contract"
       ],
       "policy": "Phase 02G evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    },
+    "phase_02h_slice": {
+      "id": "TA-BACKEND-FAST-008",
+      "title": "Remediate residual backend-fast static, source, auth, and ops contracts",
+      "status": "implementation_ready",
+      "dominant_failure_clusters": [
+        "residual_static_contracts",
+        "content_factory_topic_map_contracts",
+        "ops_security_contracts",
+        "auth_route_delegate_contract"
+      ],
+      "estimated_failures_targeted": 15,
+      "policy": "Phase 02H evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
       "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     }
   }

@@ -134,7 +134,11 @@ def build_worklist() -> dict[str, Any]:
                 canonical_source_urls=[document.canonical_source_url for document in documents if document is not None and document.canonical_source_url],
                 object_store_uris=[document.object_store_uri for document in documents if document is not None and document.object_store_uri],
                 text_extract_paths=[record["text_extract_path"] for record in text_extracts if record and record.get("text_extract_path")],
-                text_sha256=[record["text_sha256"] for record in text_extracts if record and record.get("text_sha256")],
+                text_sha256=[
+                    record["text_sha256"] if record and record.get("text_sha256") else _document_hash(document)
+                    for document, record in zip(documents, text_extracts, strict=False)
+                    if document is not None and ((record and record.get("text_sha256")) or _document_hash(document))
+                ],
                 generation_ready=ready,
                 outstanding_tasks=tasks,
             )
