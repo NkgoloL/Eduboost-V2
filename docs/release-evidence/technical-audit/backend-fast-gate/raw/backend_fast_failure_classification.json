@@ -3,30 +3,30 @@
     "async_mock_warning": {
       "matched": true,
       "snippets": [
-        "SandBox/Eduboost-V2-phase02r-gate2r1/.venv/lib/python3.12/site-packages/hypothesis/internal/conjecture/datatree.py:849: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited zip(node.ir_types, node.kwargs, node.values) Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stable/",
-        "nt_versioning.py::TestConsentVersioning::test_renew_records_version_history /usr/lib/python3.12/unittest/mock.py:434: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited new = type(cls.__name__, bases, {'__doc__': cls.__doc__}) Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.o",
-        "elled tests/unit/test_v2_services.py::test_learner_service_returns_summary /usr/lib/python3.12/unittest/mock.py:2188: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited def __init__(self, name, parent): Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stable/how-to/capt",
-        "rasureRequestStateMachine::test_execute_erasure_invalid_method_raises_error /usr/lib/python3.12/unittest/mock.py:508: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited def _mock_add_spec(self, spec, spec_set, _spec_as_instance=False, Enable tracemalloc to get traceback where the object was allocated. See https://docs.",
-        "estExportPayloadCompleteness::test_learner_profile_contains_all_required_fields /usr/lib/python3.12/selectors.py:351: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited def register(self, fileobj, events, data=None): Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stab"
+        "opia_service.py::test_build_learner_export_json_returns_payload_and_status /usr/lib/python3.12/unittest/mock.py:2188: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited def __init__(self, name, parent): Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stable/how-to/capt",
+        "rection_with_allowed_fields /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/services/popia_service.py:333: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited self.db.add(learner) Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stable/how-to/capture-warnings.",
+        "el_erasure_restores_learner /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/services/popia_service.py:288: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited self.db.add(erasure_request) Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stable/how-to/capture-w",
+        "el_erasure_restores_learner /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/services/popia_service.py:294: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited self.db.add(learner) Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stable/how-to/capture-warnings.",
+        "t/test_v2_services_full.py::TestLessonServiceV2::test_get_lesson_from_redis /usr/lib/python3.12/unittest/mock.py:404: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited def __init__(self, /, *args, **kwargs): Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stable/how-t"
       ]
     },
     "dependency_or_import": {
       "matched": true,
       "snippets": [
-        "l_mcp_server_v2 as server tools/etl/etl_mcp_server_v2.py:55: in <module> from mcp.server.fastmcp import FastMCP E ModuleNotFoundError: No module named 'mcp' ______________ test_start_streamable_http_falls_back_to_settings _______________ [gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/",
-        "l_mcp_server_v2 as server tools/etl/etl_mcp_server_v2.py:55: in <module> from mcp.server.fastmcp import FastMCP E ModuleNotFoundError: No module named 'mcp' _______ test_auth_refresh_db_proof_workflow_runs_proof_and_evidence_gate _______ [gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/",
-        "rver tools/etl/etl_mcp_server_v2.py:55: in <module> from mcp.server.fastmcp import FastMCP E ModuleNotFoundError: No module named 'mcp' ______________ test_start_streamable_http_falls_back_to_settings _______________ [gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase",
-        "rver tools/etl/etl_mcp_server_v2.py:55: in <module> from mcp.server.fastmcp import FastMCP E ModuleNotFoundError: No module named 'mcp' _______ test_auth_refresh_db_proof_workflow_runs_proof_and_evidence_gate _______ [gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase"
+        "l_mcp_server_v2 as server tools/etl/etl_mcp_server_v2.py:55: in <module> from mcp.server.fastmcp import FastMCP E ModuleNotFoundError: No module named 'mcp' ______________ test_start_streamable_http_falls_back_to_settings _______________ [gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/",
+        "l_mcp_server_v2 as server tools/etl/etl_mcp_server_v2.py:55: in <module> from mcp.server.fastmcp import FastMCP E ModuleNotFoundError: No module named 'mcp' _______________ test_bridge_expression_maps_item_id_from_irt_id ________________ [gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/",
+        "rver tools/etl/etl_mcp_server_v2.py:55: in <module> from mcp.server.fastmcp import FastMCP E ModuleNotFoundError: No module named 'mcp' ______________ test_start_streamable_http_falls_back_to_settings _______________ [gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase",
+        "rver tools/etl/etl_mcp_server_v2.py:55: in <module> from mcp.server.fastmcp import FastMCP E ModuleNotFoundError: No module named 'mcp' _______________ test_bridge_expression_maps_item_id_from_irt_id ________________ [gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase"
       ]
     },
     "popia_auth_or_route_contract": {
       "matched": true,
       "snippets": [
-        "See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info. tests/unit/test_popia_consent_versioning.py::TestConsentVersioning::test_renew_records_version_history /usr/lib/python3.12/unittest/mock.py:434: RuntimeWarning: coroutine 'AsyncMo",
-        "See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info. tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_cancel_erasure_updates_state_to_cancelled tests/unit/test_v2_services.py::test_learner_service_returns_",
-        "See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info. tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_invalid_method_raises_error /usr/lib/python3.12/unittest/mock.py:508: RuntimeWarning:",
-        "See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info. tests/unit/test_popia_export_completeness.py::TestExportPayloadCompleteness::test_learner_profile_contains_all_required_fields /usr/lib/python3.12/selectors.py:351: RuntimeWarning",
-        "See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info. tests/unit/test_popia_service.py::test_request_correction_with_allowed_fields /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/services/popia_service.py:333: RuntimeWarn"
+        "o attribute 'rollback' =============================== warnings summary =============================== tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_blocks_on_legal_hold tests/unit/test_popia_export_completeness.py::TestExportPayloadCom",
+        "test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_blocks_on_legal_hold tests/unit/test_popia_export_completeness.py::TestExportPayloadCompleteness::test_learner_profile_contains_all_required_fields tests/unit/test_popia_service.py::test_build_learner_e",
+        "xport_completeness.py::TestExportPayloadCompleteness::test_learner_profile_contains_all_required_fields tests/unit/test_popia_service.py::test_build_learner_export_json_returns_payload_and_status /usr/lib/python3.12/unittest/mock.py:2188: RuntimeWarning: coroutine 'AsyncMockMixin._e",
+        "See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info. tests/unit/test_popia_service.py::test_request_correction_with_allowed_fields /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/services/popia_service.py:333: RuntimeWarn",
+        "e.py::test_request_correction_with_allowed_fields /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/services/popia_service.py:333: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited self.db.add(learner) Enable tracemalloc to get traceback"
       ]
     }
   },
@@ -35,51 +35,43 @@
     "dependency_or_import",
     "popia_auth_or_route_contract"
   ],
-  "failed_test_count_detected": 38,
+  "failed_test_count_detected": 30,
   "failed_tests": [
     "tests/unit/test_api_v2_router_contract.py::test_registered_router_fragments_are_exposed_under_each_v2_prefix",
     "tests/unit/modules/diagnostics/test_item_bank_models.py::TestDiagnosticItemProperties::test_is_available_true_when_approved_and_under_cap",
     "tests/unit/modules/diagnostics/test_item_bank_service.py::test_select_item_picks_nearest_b_to_theta",
     "tests/unit/modules/diagnostics/test_item_bank_service.py::test_select_item_expands_window_when_neighbourhood_empty",
-    "tests/unit/test_content_staging_readiness.py::test_all_configured_scopes_are_enumerated",
-    "tests/unit/test_content_staging_readiness.py::test_verification_report_persists_blockers",
-    "tests/unit/test_content_staging_seed_executor.py::test_valid_approved_artifact_creates_seed_item",
+    "tests/unit/test_consent_state_machine.py::test_days_until_expiry_returns_positive_for_future",
+    "tests/unit/test_content_coverage_service.py::test_future_layers_return_configured_zero_count_placeholders",
     "tests/unit/test_etl_mcp_server_startup.py::test_etl_mcp_server_uses_json_response_mode",
     "tests/unit/test_etl_mcp_server_startup.py::test_start_streamable_http_falls_back_to_settings",
-    "tests/unit/test_ci_auth_refresh_db_proof_workflow.py::test_auth_refresh_db_proof_workflow_runs_proof_and_evidence_gate",
-    "tests/unit/test_ci_auth_refresh_db_proof_workflow.py::test_ci_auth_refresh_db_proof_workflow_status_passing",
-    "tests/unit/test_ci_auth_refresh_db_proof_workflow.py::test_ci_auth_refresh_db_proof_workflow_status_writes_reports",
-    "tests/unit/test_ci_auth_refresh_db_proof_workflow.py::test_ci_auth_refresh_db_proof_workflow_checker_runs_local_mode",
-    "tests/unit/test_content_factory_table_reconciliation.py::TestOrmTableNameReconciliation::test_no_undeclared_orm_models",
     "tests/unit/test_diagnostic_score_live_audit.py::test_bridge_expression_maps_item_id_from_irt_id",
+    "tests/unit/test_no_raw_dict_responses.py::test_no_raw_dict_responses_in_production_routers",
     "tests/unit/test_operational_auth_boundaries.py::test_operational_auth_boundary_matrix_statuses",
     "tests/unit/test_operational_auth_boundaries.py::test_operational_auth_boundary_source_contracts",
     "tests/unit/test_ops_assets.py::test_ops_assets_validate_static_deployment_files",
-    "tests/unit/test_no_raw_dict_responses.py::test_no_raw_dict_responses_in_production_routers",
     "tests/unit/test_prod_frontend_deployment.py::test_playwright_default_matches_next_port",
     "tests/unit/test_prod_frontend_deployment.py::test_production_frontend_deployment_status_writes_reports",
     "tests/unit/test_prod_frontend_deployment.py::test_production_frontend_deployment_checker_runs_local_mode",
     "tests/unit/test_prod_frontend_deployment.py::test_production_frontend_deployment_status_builder_is_passing",
     "tests/unit/test_repo_hygiene.py::test_repo_hygiene_has_no_current_failures",
-    "tests/unit/test_runtime_blockers_after_followup_audit.py::test_jobs_have_consent_reminder_aliases_without_missing_direct_symbols",
     "tests/unit/test_production_key_vault_behavior.py::test_production_settings_require_key_vault_url",
+    "tests/unit/test_runtime_blockers_after_followup_audit.py::test_jobs_have_consent_reminder_aliases_without_missing_direct_symbols",
     "tests/unit/test_project_assistance_status.py::test_project_assistance_report_check_passes",
-    "tests/unit/test_seed_staging_review_scopes.py::test_staging_executor_batch_size_respected",
-    "tests/unit/test_seed_staging_review_scopes.py::test_staging_executor_constraint_violation_retry_record_by_record",
     "tests/unit/test_scope_content_builder.py::test_generic_scope_builder_generates_valid_launch_slice",
     "tests/unit/test_source_manifest_readiness.py::test_source_manifest_local_file_verification_passes_on_vm_sources",
+    "tests/unit/test_seed_staging_review_scopes.py::test_staging_executor_batch_size_respected",
     "tests/unit/test_sprint2_auth_router_delegates.py::test_sessions_logout_and_revoke_all_paths",
-    "tests/unit/test_study_plan_consent_gate_wiring.py::test_study_plan_route_imports_consent_gate_and_db_dependency",
+    "tests/unit/test_seed_staging_review_scopes.py::test_staging_executor_constraint_violation_retry_record_by_record",
     "tests/unit/test_topic_map_worklist.py::test_topic_map_worklist_preserves_source_hashes_for_scope",
     "tests/unit/test_validate_topic_maps.py::test_topic_map_validator_accepts_current_draft_and_runtime_state",
-    "tests/unit/test_consent_state_machine.py::test_days_until_expiry_returns_positive_for_future",
-    "tests/unit/test_content_coverage_service.py::test_future_layers_return_configured_zero_count_placeholders",
-    "tests/unit/test_content_factory_enums.py::TestContentArtifactStatusEnum::test_no_undeclared_orm_values"
+    "tests/unit/test_study_plan_consent_gate_wiring.py::test_study_plan_route_imports_consent_gate_and_db_dependency",
+    "tests/unit/test_content_staging_seed_executor.py::test_valid_approved_artifact_creates_seed_item"
   ],
-  "failure_count": 38,
+  "failure_count": 30,
   "summary_counts": {
-    "failed": 38,
-    "passed": 2243,
+    "failed": 30,
+    "passed": 2257,
     "skipped": 11,
     "xfailed": 1
   },

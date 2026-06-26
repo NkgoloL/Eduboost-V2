@@ -2,38 +2,38 @@
 bringing up nodes...
 bringing up nodes...
 
-...............................ssss......ss.......ss.................... [  3%]
-........................................................................ [  6%]
+......................................................ss....ss.........s [  3%]
+..s.....s.s......s...........s.......................................... [  6%]
 ........................................................................ [  9%]
 ........................................................................ [ 12%]
-.................................F........s.............................. [ 15%]
+................................................................F..s.... [ 15%]
 ........................................................................ [ 18%]
-......................................................F................. [ 22%]
-..............FF........................................................ [ 25%]
-....................ss................................F......F...F...... [ 28%]
-........................................................................ [ 31%]
+..........................................................F............. [ 21%]
+..................FF.................................................... [ 25%]
+........................................................................ [ 28%]
+....F..................F................................................ [ 31%]
 ........................................................................ [ 34%]
-F.F....................FFFF............................................. [ 37%]
-.............................................F.......................... [ 40%]
-.F...................................................................... [ 44%]
+......................................................................... [ 37%]
+..............FF................................................F....... [ 40%]
+........................................................................ [ 43%]
 ........................................................................ [ 47%]
 ........................................................................ [ 50%]
 ........................................................................ [ 53%]
 ........................................................................ [ 56%]
-.............FFF.....................................................F.. [ 59%]
-........................................................................ [ 62%]
+........................................................................ [ 59%]
+......................F..................FFF............................ [ 62%]
 ........................................................................ [ 65%]
-.............................x.......................................... [ 69%]
-....FFF..F.............................................................. [ 72%]
-...................F...........................................F........ [ 75%]
-...F..........F.....FF.......................F.......................... [ 78%]
-.................F.........F...............F............................ [ 81%]
-........................................................................ [ 84%]
-...................F.................................................... [ 87%]
-...............................F........................................ [ 91%]
-............................................F..................F..F..... [ 94%]
-........................................................................ [ 97%]
-............................................................             [100%]
+........................................................................ [ 68%]
+............x..............................................FFF..F....... [ 72%]
+................................................................F....... [ 75%]
+.............................F...........F...............F.............. [ 78%]
+..........................................................F............. [ 81%]
+.............................F.......FF..F.............................. [ 84%]
+........................................................................ [ 87%]
+.................................................F...................... [ 90%]
+................F..........F............................................ [ 93%]
+.............F.......................................................... [ 97%]
+..................................................................       [100%]
 =================================== FAILURES ===================================
 ______ test_registered_router_fragments_are_exposed_under_each_v2_prefix _______
 [gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
@@ -45,7 +45,7 @@ _ TestDiagnosticItemProperties.test_is_available_true_when_approved_and_under_ca
 tests/unit/modules/diagnostics/test_item_bank_models.py:214: in test_is_available_true_when_approved_and_under_cap
     assert item.is_available_for_selection
 E   AssertionError: assert False
-E    +  where False = <DiagnosticItem item_id=2cd13ad0 caps_ref='4.M.1.1' status='approved'>.is_available_for_selection
+E    +  where False = <DiagnosticItem item_id=975e5226 caps_ref='4.M.1.1' status='approved'>.is_available_for_selection
 __________________ test_select_item_picks_nearest_b_to_theta ___________________
 [gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
 tests/unit/modules/diagnostics/test_item_bank_service.py:165: in test_select_item_picks_nearest_b_to_theta
@@ -56,106 +56,50 @@ ___________ test_select_item_expands_window_when_neighbourhood_empty ___________
 tests/unit/modules/diagnostics/test_item_bank_service.py:182: in test_select_item_expands_window_when_neighbourhood_empty
     assert selected.item_id == fallback_item.item_id
 E   AttributeError: 'NoneType' object has no attribute 'item_id'
-__________________ test_all_configured_scopes_are_enumerated ___________________
-[gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_content_staging_readiness.py:69: in test_all_configured_scopes_are_enumerated
-    assert [scope.scope_id for scope in report.scopes] == ["grade4_mathematics_en"]
-E   AssertionError: assert ['grade1_codi...tics_en', ...] == ['grade4_mathematics_en']
-E     
-E     At index 0 diff: 'grade1_coding_and_robotics_en' != 'grade4_mathematics_en'
-E     Left contains 50 more items, first extra item: 'grade1_home_language_en'
-E     Use -v to get more diff
-__________________ test_verification_report_persists_blockers __________________
-[gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_content_staging_readiness.py:151: in test_verification_report_persists_blockers
-    assert len(session.added) == 2
-E   assert 52 == 2
-E    +  where 52 = len([<app.models.content_factory.ContentStagingVerificationRun object at 0x7bf562351df0>, <app.models.content_factory.Cont...t at 0x7bf562351640>, <app.models.content_factory.ContentStagingVerificationScopeResult object at 0x7bf5623537a0>, ...])
-E    +    where [<app.models.content_factory.ContentStagingVerificationRun object at 0x7bf562351df0>, <app.models.content_factory.Cont...t at 0x7bf562351640>, <app.models.content_factory.ContentStagingVerificationScopeResult object at 0x7bf5623537a0>, ...] = <tests.unit.test_content_staging_readiness._Session object at 0x7bf56230c170>.added
-________________ test_valid_approved_artifact_creates_seed_item ________________
-[gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-app/services/content_staging_seed_executor.py:195: in seed_staging
-    staging_artifact_id = existing_staging.id
-E   AttributeError: 'types.SimpleNamespace' object has no attribute 'id'
-
-During handling of the above exception, another exception occurred:
-tests/unit/test_content_staging_seed_executor.py:96: in test_valid_approved_artifact_creates_seed_item
-    res = await executor.seed_staging(session, "some_scope", actor_id="admin")
-app/services/content_staging_seed_executor.py:329: in seed_staging
-    await session.rollback()
-E   AttributeError: 'Session' object has no attribute 'rollback'
-_________________ test_etl_mcp_server_uses_json_response_mode __________________
+______________ test_days_until_expiry_returns_positive_for_future ______________
 [gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+tests/unit/test_consent_state_machine.py:189: in test_days_until_expiry_returns_positive_for_future
+    assert c.days_until_expiry() == 30
+E   AssertionError: assert 29 == 30
+E    +  where 29 = <bound method ConsentRecord.days_until_expiry of ConsentRecord(id=UUID('4fbc8bcb-7bbf-4309-b579-ccd168f8bd71'), learne...o=datetime.timezone.utc), updated_at=datetime.datetime(2026, 6, 26, 12, 29, 37, 464585, tzinfo=datetime.timezone.utc))>()
+E    +    where <bound method ConsentRecord.days_until_expiry of ConsentRecord(id=UUID('4fbc8bcb-7bbf-4309-b579-ccd168f8bd71'), learne...o=datetime.timezone.utc), updated_at=datetime.datetime(2026, 6, 26, 12, 29, 37, 464585, tzinfo=datetime.timezone.utc))> = ConsentRecord(id=UUID('4fbc8bcb-7bbf-4309-b579-ccd168f8bd71'), learner_id=UUID('00000000-0000-0000-0000-000000000001')...fo=datetime.timezone.utc), updated_at=datetime.datetime(2026, 6, 26, 12, 29, 37, 464585, tzinfo=datetime.timezone.utc)).days_until_expiry
+_________ test_future_layers_return_configured_zero_count_placeholders _________
+[gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+tests/unit/test_content_coverage_service.py:142: in test_future_layers_return_configured_zero_count_placeholders
+    assert report.layers[ContentLayer.ASSESSMENT_BLUEPRINTS].target == 4
+E   AssertionError: assert 1 == 4
+E    +  where 1 = CoverageLayerCounts(target=1, approved=0, pending_review=0, rejected=0, generated=0, status=<CoverageLayerStatus.RED: 'red'>, coverage_ratio=0.0).target
+_________________ test_etl_mcp_server_uses_json_response_mode __________________
+[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
 tests/unit/test_etl_mcp_server_startup.py:5: in test_etl_mcp_server_uses_json_response_mode
     import tools.etl.etl_mcp_server_v2 as server
 tools/etl/etl_mcp_server_v2.py:55: in <module>
     from mcp.server.fastmcp import FastMCP
 E   ModuleNotFoundError: No module named 'mcp'
 ______________ test_start_streamable_http_falls_back_to_settings _______________
-[gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
 tests/unit/test_etl_mcp_server_startup.py:11: in test_start_streamable_http_falls_back_to_settings
     import tools.etl.etl_mcp_server_v2 as server
 tools/etl/etl_mcp_server_v2.py:55: in <module>
     from mcp.server.fastmcp import FastMCP
 E   ModuleNotFoundError: No module named 'mcp'
-_______ test_auth_refresh_db_proof_workflow_runs_proof_and_evidence_gate _______
-[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_ci_auth_refresh_db_proof_workflow.py:33: in test_auth_refresh_db_proof_workflow_runs_proof_and_evidence_gate
-    assert "actions/upload-artifact@v4" in source
-E   assert 'actions/upload-artifact@v4' in 'name: Auth Refresh DB Proof\n\non:\n  workflow_dispatch:\n  pull_request:\n    paths:\n      - "app/**"\n      - "scr...            docs/release/auth_refresh_db_evidence_status.json\n            docs/release/evidence_status_registry.yml\n'
-____________ test_ci_auth_refresh_db_proof_workflow_status_passing _____________
-[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_ci_auth_refresh_db_proof_workflow.py:38: in test_ci_auth_refresh_db_proof_workflow_status_passing
-    assert status.status == "ci-auth-refresh-db-proof-workflow-configured"
-E   AssertionError: assert 'ci-auth-refr...ow-not-proven' == 'ci-auth-refr...ow-configured'
-E     
-E     - ci-auth-refresh-db-proof-workflow-configured
-E     ?                                   ^  -------
-E     + ci-auth-refresh-db-proof-workflow-not-proven
-E     ?                                   ^ +++++++
-_________ test_ci_auth_refresh_db_proof_workflow_status_writes_reports _________
-[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_ci_auth_refresh_db_proof_workflow.py:46: in test_ci_auth_refresh_db_proof_workflow_status_writes_reports
-    assert status.status == "ci-auth-refresh-db-proof-workflow-configured"
-E   AssertionError: assert 'ci-auth-refr...ow-not-proven' == 'ci-auth-refr...ow-configured'
-E     
-E     - ci-auth-refresh-db-proof-workflow-configured
-E     ?                                   ^  -------
-E     + ci-auth-refresh-db-proof-workflow-not-proven
-E     ?                                   ^ +++++++
-________ test_ci_auth_refresh_db_proof_workflow_checker_runs_local_mode ________
-[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_ci_auth_refresh_db_proof_workflow.py:61: in test_ci_auth_refresh_db_proof_workflow_checker_runs_local_mode
-    assert result.returncode == 0, result.stdout
-E   AssertionError: CI auth refresh DB proof workflow check
-E     - INFO status: ci-auth-refresh-db-proof-workflow-not-proven
-E     - PASS syntax scripts/ci_auth_refresh_db_proof_workflow.py
-E     - PASS syntax scripts/check_ci_auth_refresh_db_proof_workflow.py
-E     - PASS syntax scripts/patch_ci_auth_refresh_db_proof_workflow_registry.py
-E     - PASS syntax tests/unit/test_ci_auth_refresh_db_proof_workflow.py
-E     - PASS focused Ruff CI auth refresh DB proof workflow check
-E     Failures:
-E     - artifact upload configured
-E     
-E   assert 1 == 0
-E    +  where 1 = CompletedProcess(args=['/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python', 'scripts/check_ci_au...f_workflow.py\n- PASS focused Ruff CI auth refresh DB proof workflow check\nFailures:\n- artifact upload configured\n').returncode
-_________ TestOrmTableNameReconciliation.test_no_undeclared_orm_models _________
-[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_content_factory_table_reconciliation.py:102: in test_no_undeclared_orm_models
-    assert not undeclared, (
-E   AssertionError: The following ORM models are not declared in ORM_TABLE_MAP. Add them to the schema contract:
-E       ContentAnswerKeyVerification (__tablename__='content_answer_key_verifications')
-E       ContentReviewDecision (__tablename__='content_review_decisions')
-E       ContentStateTransitionEvent (__tablename__='content_state_transition_events')
-E   assert not ["ContentAnswerKeyVerification (__tablename__='content_answer_key_verifications')", "ContentReviewDecision (__tablename__='content_review_decisions')", "ContentStateTransitionEvent (__tablename__='content_state_transition_events')"]
 _______________ test_bridge_expression_maps_item_id_from_irt_id ________________
-[gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+[gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
 tests/unit/test_diagnostic_score_live_audit.py:28: in test_bridge_expression_maps_item_id_from_irt_id
     assert expr == 'gen_random_uuid()'
 E   assert 'i."id"' == 'gen_random_uuid()'
 E     
 E     - gen_random_uuid()
 E     + i."id"
+_______________ test_no_raw_dict_responses_in_production_routers _______________
+[gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+tests/unit/test_no_raw_dict_responses.py:107: in test_no_raw_dict_responses_in_production_routers
+    raise AssertionError(msg)
+E   AssertionError: 
+E   Raw dict responses detected in production routers.
+E   Use ok(), fail(), paginated(), route_class=EnvelopedRoute, or add # envelope-exempt: <reason>.
+E   
+E     app/api_v2_routers/generation.py:301 - bare dict return without ok()/fail()/paginated() or EnvelopedRoute
 ________________ test_operational_auth_boundary_matrix_statuses ________________
 [gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
 tests/unit/test_operational_auth_boundaries.py:20: in test_operational_auth_boundary_matrix_statuses
@@ -178,23 +122,14 @@ E   AssertionError: Ops asset validation failed: docker/Dockerfile.v2 must use t
 E     
 E   assert 1 == 0
 E    +  where 1 = CompletedProcess(args=['/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python', 'scripts/validate_op...='', stderr='Ops asset validation failed: docker/Dockerfile.v2 must use the pinned Python slim base selected for V2\n').returncode
-_______________ test_no_raw_dict_responses_in_production_routers _______________
-[gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_no_raw_dict_responses.py:107: in test_no_raw_dict_responses_in_production_routers
-    raise AssertionError(msg)
-E   AssertionError: 
-E   Raw dict responses detected in production routers.
-E   Use ok(), fail(), paginated(), route_class=EnvelopedRoute, or add # envelope-exempt: <reason>.
-E   
-E     app/api_v2_routers/generation.py:301 - bare dict return without ok()/fail()/paginated() or EnvelopedRoute
 __________________ test_playwright_default_matches_next_port ___________________
-[gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+[gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
 tests/unit/test_prod_frontend_deployment.py:42: in test_playwright_default_matches_next_port
     assert playwright_uses_next_port(text)
 E   assert False
 E    +  where False = playwright_uses_next_port('/**\n * playwright.config.ts — EduBoost SA V2\n *\n * Place at the project root:\n *   playwright.config.ts\n *\n * I... // ── Output directories ───────────────────────────────────────────────────────\n  outputDir: "test-results",\n});\n')
 __________ test_production_frontend_deployment_status_writes_reports ___________
-[gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+[gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
 tests/unit/test_prod_frontend_deployment.py:51: in test_production_frontend_deployment_status_writes_reports
     assert status.status == "production-frontend-configured"
 E   AssertionError: assert 'deployment-config-not-proven' == 'production-f...nd-configured'
@@ -202,7 +137,7 @@ E
 E     - production-frontend-configured
 E     + deployment-config-not-proven
 _________ test_production_frontend_deployment_checker_runs_local_mode __________
-[gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+[gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
 tests/unit/test_prod_frontend_deployment.py:68: in test_production_frontend_deployment_checker_runs_local_mode
     assert result.returncode == 0, result.stdout
 E   AssertionError: Production frontend deployment check
@@ -218,7 +153,7 @@ E
 E   assert 1 == 0
 E    +  where 1 = CompletedProcess(args=['/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python', 'scripts/check_prod_...py\n- PASS focused Ruff production frontend deployment check\nFailures:\n- playwright defaults to Next.js port 3050\n').returncode
 ________ test_production_frontend_deployment_status_builder_is_passing _________
-[gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+[gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
 tests/unit/test_prod_frontend_deployment.py:95: in test_production_frontend_deployment_status_builder_is_passing
     assert status.status == "production-frontend-configured"
 E   AssertionError: assert 'deployment-config-not-proven' == 'production-f...nd-configured'
@@ -226,15 +161,20 @@ E
 E     - production-frontend-configured
 E     + deployment-config-not-proven
 __________________ test_repo_hygiene_has_no_current_failures ___________________
-[gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
 tests/unit/test_repo_hygiene.py:11: in test_repo_hygiene_has_no_current_failures
     assert failures == []
 E   AssertionError: assert [HygieneFailu...t allowlist')] == []
 E     
 E     Left contains 3 more items, first extra item: HygieneFailure(code='ROOT_CLUTTER', path='.gitleaks.toml', detail='tracked root file is outside the repository root allowlist')
 E     Use -v to get more diff
-____ test_jobs_have_consent_reminder_aliases_without_missing_direct_symbols ____
+________________ test_production_settings_require_key_vault_url ________________
 [gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+tests/unit/test_production_key_vault_behavior.py:16: in test_production_settings_require_key_vault_url
+    with pytest.raises(ValueError, match="AZURE_KEY_VAULT_URL is required when APP_ENV is production"):
+E   Failed: DID NOT RAISE <class 'ValueError'>
+____ test_jobs_have_consent_reminder_aliases_without_missing_direct_symbols ____
+[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
 tests/unit/test_runtime_blockers_after_followup_audit.py:57: in test_jobs_have_consent_reminder_aliases_without_missing_direct_symbols
     assert "AsyncSessionLocal" not in source
 E   assert 'AsyncSessionLocal' not in '"""ARQ back..."),\n    )\n'
@@ -247,74 +187,64 @@ E
 E               async with AsyncSessionLocal() as db:...
 E     
 E     ...Full output truncated (379 lines hidden), use '-vv' to show
-________________ test_production_settings_require_key_vault_url ________________
-[gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_production_key_vault_behavior.py:16: in test_production_settings_require_key_vault_url
-    with pytest.raises(ValueError, match="AZURE_KEY_VAULT_URL is required when APP_ENV is production"):
-E   Failed: DID NOT RAISE <class 'ValueError'>
 _________________ test_project_assistance_report_check_passes __________________
-[gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+[gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
 tests/unit/test_project_assistance_status.py:41: in test_project_assistance_report_check_passes
     assert result.returncode == 0, result.stdout + result.stderr
 E   AssertionError: Project assistance status is stale; run make project-assistance-status
 E     
 E   assert 1 == 0
 E    +  where 1 = CompletedProcess(args=['/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python', 'scripts/project_ass...'--check'], returncode=1, stdout='Project assistance status is stale; run make project-assistance-status\n', stderr='').returncode
+___________ test_generic_scope_builder_generates_valid_launch_slice ____________
+[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+tests/unit/test_scope_content_builder.py:31: in test_generic_scope_builder_generates_valid_launch_slice
+    assert report["blueprint_count"] == 10
+E   assert 13 == 10
+----------------------------- Captured stdout call -----------------------------
+[2m2026-06-26T12:30:07.631804Z[0m [[32m[1minfo     [0m] [1mLoaded CAPS topic map: caps_topic_map_grade4_maths.json (50 refs)[0m [[0m[1m[34mapp.modules.lessons.caps_topic_map_service[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m2.0.0[0m
+------------------------------ Captured log call -------------------------------
+INFO     app.modules.lessons.caps_topic_map_service:caps_topic_map_service.py:173 Loaded CAPS topic map: caps_topic_map_grade4_maths.json (50 refs)
+______ test_source_manifest_local_file_verification_passes_on_vm_sources _______
+[gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+tests/unit/test_source_manifest_readiness.py:83: in test_source_manifest_local_file_verification_passes_on_vm_sources
+    assert result.passed is True
+E   AssertionError: assert False is True
+E    +  where False = SourceManifestValidationResult(errors=['source document caps_foundation_coding_and_robotics_en path does not exist: da...der_home_language_en', 'grader_life_skills_en', 'grader_mathematics_en', 'grader_sepedi_first_additional_language_en']).passed
 __________________ test_staging_executor_batch_size_respected __________________
-[gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
 tests/unit/test_seed_staging_review_scopes.py:74: in test_staging_executor_batch_size_respected
     assert res.seeded_count == 5
 E   AttributeError: 'NoneType' object has no attribute 'seeded_count'
 ----------------------------- Captured stdout call -----------------------------
-[2m2026-06-26T11:47:58.925869Z[0m [[32m[1minfo     [0m] [1mSeeded batch 0 for scope some_scope: attempted=2, upserted=2, skipped=0, elapsed=0.002s[0m [[0m[1m[34mapp.services.content_staging_seed_executor[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m2.0.0[0m
-[2m2026-06-26T11:47:58.928250Z[0m [[32m[1minfo     [0m] [1mSeeded batch 1 for scope some_scope: attempted=2, upserted=2, skipped=0, elapsed=0.002s[0m [[0m[1m[34mapp.services.content_staging_seed_executor[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m2.0.0[0m
-[2m2026-06-26T11:47:58.930753Z[0m [[32m[1minfo     [0m] [1mSeeded batch 2 for scope some_scope: attempted=1, upserted=1, skipped=0, elapsed=0.002s[0m [[0m[1m[34mapp.services.content_staging_seed_executor[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m2.0.0[0m
+[2m2026-06-26T12:30:08.718626Z[0m [[32m[1minfo     [0m] [1mSeeded batch 0 for scope some_scope: attempted=2, upserted=2, skipped=0, elapsed=0.001s[0m [[0m[1m[34mapp.services.content_staging_seed_executor[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m2.0.0[0m
+[2m2026-06-26T12:30:08.719684Z[0m [[32m[1minfo     [0m] [1mSeeded batch 1 for scope some_scope: attempted=2, upserted=2, skipped=0, elapsed=0.001s[0m [[0m[1m[34mapp.services.content_staging_seed_executor[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m2.0.0[0m
+[2m2026-06-26T12:30:08.720904Z[0m [[32m[1minfo     [0m] [1mSeeded batch 2 for scope some_scope: attempted=1, upserted=1, skipped=0, elapsed=0.001s[0m [[0m[1m[34mapp.services.content_staging_seed_executor[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m2.0.0[0m
 ------------------------------ Captured log call -------------------------------
-INFO     app.services.content_staging_seed_executor:content_staging_seed_executor.py:230 Seeded batch 0 for scope some_scope: attempted=2, upserted=2, skipped=0, elapsed=0.002s
-INFO     app.services.content_staging_seed_executor:content_staging_seed_executor.py:230 Seeded batch 1 for scope some_scope: attempted=2, upserted=2, skipped=0, elapsed=0.002s
-INFO     app.services.content_staging_seed_executor:content_staging_seed_executor.py:230 Seeded batch 2 for scope some_scope: attempted=1, upserted=1, skipped=0, elapsed=0.002s
+INFO     app.services.content_staging_seed_executor:content_staging_seed_executor.py:230 Seeded batch 0 for scope some_scope: attempted=2, upserted=2, skipped=0, elapsed=0.001s
+INFO     app.services.content_staging_seed_executor:content_staging_seed_executor.py:230 Seeded batch 1 for scope some_scope: attempted=2, upserted=2, skipped=0, elapsed=0.001s
+INFO     app.services.content_staging_seed_executor:content_staging_seed_executor.py:230 Seeded batch 2 for scope some_scope: attempted=1, upserted=1, skipped=0, elapsed=0.001s
+__________________ test_sessions_logout_and_revoke_all_paths ___________________
+[gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+tests/unit/test_sprint2_auth_router_delegates.py:124: in test_sessions_logout_and_revoke_all_paths
+    revoke_response = await auth.revoke_all_tokens(
+app/api_v2_routers/auth.py:212: in revoke_all_tokens
+    current_user=current_user.raw_claims,
+E   AttributeError: 'dict' object has no attribute 'raw_claims'
 ______ test_staging_executor_constraint_violation_retry_record_by_record _______
-[gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
 tests/unit/test_seed_staging_review_scopes.py:106: in test_staging_executor_constraint_violation_retry_record_by_record
     assert res.seeded_count == 3
 E   AttributeError: 'NoneType' object has no attribute 'seeded_count'
 ----------------------------- Captured stdout call -----------------------------
-[2m2026-06-26T11:47:58.954725Z[0m [[33m[1mwarning  [0m] [1mIntegrityError in batch commit for scope some_scope, retrying record-by-record: (builtins.NoneType) None
+[2m2026-06-26T12:30:08.735244Z[0m [[33m[1mwarning  [0m] [1mIntegrityError in batch commit for scope some_scope, retrying record-by-record: (builtins.NoneType) None
 [SQL: mock uniqueness violation]
 (Background on this error at: https://sqlalche.me/e/20/gkpj)[0m [[0m[1m[34mapp.services.content_staging_seed_executor[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m2.0.0[0m
 ------------------------------ Captured log call -------------------------------
 WARNING  app.services.content_staging_seed_executor:content_staging_seed_executor.py:235 IntegrityError in batch commit for scope some_scope, retrying record-by-record: (builtins.NoneType) None
 [SQL: mock uniqueness violation]
 (Background on this error at: https://sqlalche.me/e/20/gkpj)
-___________ test_generic_scope_builder_generates_valid_launch_slice ____________
-[gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_scope_content_builder.py:31: in test_generic_scope_builder_generates_valid_launch_slice
-    assert report["blueprint_count"] == 10
-E   assert 13 == 10
------------------------------ Captured stdout call -----------------------------
-[2m2026-06-26T11:48:01.106090Z[0m [[32m[1minfo     [0m] [1mLoaded CAPS topic map: caps_topic_map_grade4_maths.json (50 refs)[0m [[0m[1m[34mapp.modules.lessons.caps_topic_map_service[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m2.0.0[0m
------------------------------- Captured log call -------------------------------
-INFO     app.modules.lessons.caps_topic_map_service:caps_topic_map_service.py:173 Loaded CAPS topic map: caps_topic_map_grade4_maths.json (50 refs)
-______ test_source_manifest_local_file_verification_passes_on_vm_sources _______
-[gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_source_manifest_readiness.py:83: in test_source_manifest_local_file_verification_passes_on_vm_sources
-    assert result.passed is True
-E   AssertionError: assert False is True
-E    +  where False = SourceManifestValidationResult(errors=['source document caps_foundation_coding_and_robotics_en path does not exist: da...der_home_language_en', 'grader_life_skills_en', 'grader_mathematics_en', 'grader_sepedi_first_additional_language_en']).passed
-__________________ test_sessions_logout_and_revoke_all_paths ___________________
-[gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_sprint2_auth_router_delegates.py:124: in test_sessions_logout_and_revoke_all_paths
-    revoke_response = await auth.revoke_all_tokens(
-app/api_v2_routers/auth.py:212: in revoke_all_tokens
-    current_user=current_user.raw_claims,
-E   AttributeError: 'dict' object has no attribute 'raw_claims'
-_________ test_study_plan_route_imports_consent_gate_and_db_dependency _________
-[gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_study_plan_consent_gate_wiring.py:17: in test_study_plan_route_imports_consent_gate_and_db_dependency
-    assert "from app.core.database import AsyncSessionLocal, get_db" in source
-E   assert 'from app.core.database import AsyncSessionLocal, get_db' in '"""Study plan routes for EduBoost V2."""\n\nfrom fastapi import APIRouter, Depends\nfrom app.core.envelope_route impo...ap_ratio},\n    )\n    return JobAcceptedResponse(job_id=job_id, operation="study_plan_generation", status="queued")\n'
 __________ test_topic_map_worklist_preserves_source_hashes_for_scope ___________
-[gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+[gw4] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
 tests/unit/test_topic_map_worklist.py:32: in test_topic_map_worklist_preserves_source_hashes_for_scope
     assert grade7_math["text_sha256"] == ["881f88f60186856703767333a0c3f2331b8aeebb52dd11fcf46c2f25c90d3c33"]
 E   AssertionError: assert [] == ['881f88f6018...2f25c90d3c33']
@@ -322,59 +252,34 @@ E
 E     Right contains one more item: '881f88f60186856703767333a0c3f2331b8aeebb52dd11fcf46c2f25c90d3c33'
 E     Use -v to get more diff
 _______ test_topic_map_validator_accepts_current_draft_and_runtime_state _______
-[gw0] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+[gw1] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
 tests/unit/test_validate_topic_maps.py:15: in test_topic_map_validator_accepts_current_draft_and_runtime_state
     assert result.draft_count == 50
 E   assert 0 == 50
 E    +  where 0 = TopicMapValidationResult(draft_count=0, runtime_count=51, draft_status_summary=Counter(), runtime_ref_count=1663, errors=[]).draft_count
-______________ test_days_until_expiry_returns_positive_for_future ______________
+_________ test_study_plan_route_imports_consent_gate_and_db_dependency _________
+[gw5] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
+tests/unit/test_study_plan_consent_gate_wiring.py:17: in test_study_plan_route_imports_consent_gate_and_db_dependency
+    assert "from app.core.database import AsyncSessionLocal, get_db" in source
+E   assert 'from app.core.database import AsyncSessionLocal, get_db' in '"""Study plan routes for EduBoost V2."""\n\nfrom fastapi import APIRouter, Depends\nfrom app.core.envelope_route impo...ap_ratio},\n    )\n    return JobAcceptedResponse(job_id=job_id, operation="study_plan_generation", status="queued")\n'
+________________ test_valid_approved_artifact_creates_seed_item ________________
 [gw2] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_consent_state_machine.py:189: in test_days_until_expiry_returns_positive_for_future
-    assert c.days_until_expiry() == 30
-E   AssertionError: assert 29 == 30
-E    +  where 29 = <bound method ConsentRecord.days_until_expiry of ConsentRecord(id=UUID('1d00bff7-24d7-417a-a2df-8f7f78950e23'), learne...o=datetime.timezone.utc), updated_at=datetime.datetime(2026, 6, 26, 11, 48, 17, 537148, tzinfo=datetime.timezone.utc))>()
-E    +    where <bound method ConsentRecord.days_until_expiry of ConsentRecord(id=UUID('1d00bff7-24d7-417a-a2df-8f7f78950e23'), learne...o=datetime.timezone.utc), updated_at=datetime.datetime(2026, 6, 26, 11, 48, 17, 537148, tzinfo=datetime.timezone.utc))> = ConsentRecord(id=UUID('1d00bff7-24d7-417a-a2df-8f7f78950e23'), learner_id=UUID('00000000-0000-0000-0000-000000000001')...fo=datetime.timezone.utc), updated_at=datetime.datetime(2026, 6, 26, 11, 48, 17, 537148, tzinfo=datetime.timezone.utc)).days_until_expiry
-_________ test_future_layers_return_configured_zero_count_placeholders _________
-[gw2] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_content_coverage_service.py:142: in test_future_layers_return_configured_zero_count_placeholders
-    assert report.layers[ContentLayer.ASSESSMENT_BLUEPRINTS].target == 4
-E   AssertionError: assert 1 == 4
-E    +  where 1 = CoverageLayerCounts(target=1, approved=0, pending_review=0, rejected=0, generated=0, status=<CoverageLayerStatus.RED: 'red'>, coverage_ratio=0.0).target
-_________ TestContentArtifactStatusEnum.test_no_undeclared_orm_values __________
-[gw2] linux -- Python 3.12.3 /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python
-tests/unit/test_content_factory_enums.py:53: in test_no_undeclared_orm_values
-    assert not extra, (
-E   AssertionError: ContentArtifactStatus has values not declared in the schema contract: {'superseded', 'published', 'revision_required'}. Add them to the contract or remove from the ORM.
-E   assert not {'published', 'revision_required', 'superseded'}
+app/services/content_staging_seed_executor.py:195: in seed_staging
+    staging_artifact_id = existing_staging.id
+E   AttributeError: 'types.SimpleNamespace' object has no attribute 'id'
+
+During handling of the above exception, another exception occurred:
+tests/unit/test_content_staging_seed_executor.py:96: in test_valid_approved_artifact_creates_seed_item
+    res = await executor.seed_staging(session, "some_scope", actor_id="admin")
+app/services/content_staging_seed_executor.py:329: in seed_staging
+    await session.rollback()
+E   AttributeError: 'Session' object has no attribute 'rollback'
 =============================== warnings summary ===============================
-tests/unit/test_irt_properties.py::test_p_correct_bounds
-  /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/lib/python3.12/site-packages/hypothesis/internal/conjecture/datatree.py:849: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
-    zip(node.ir_types, node.kwargs, node.values)
-  Enable tracemalloc to get traceback where the object was allocated.
-  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
-
-tests/unit/test_popia_consent_versioning.py::TestConsentVersioning::test_renew_records_version_history
-  /usr/lib/python3.12/unittest/mock.py:434: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
-    new = type(cls.__name__, bases, {'__doc__': cls.__doc__})
-  Enable tracemalloc to get traceback where the object was allocated.
-  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
-
-tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_cancel_erasure_updates_state_to_cancelled
-tests/unit/test_v2_services.py::test_learner_service_returns_summary
+tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_blocks_on_legal_hold
+tests/unit/test_popia_export_completeness.py::TestExportPayloadCompleteness::test_learner_profile_contains_all_required_fields
+tests/unit/test_popia_service.py::test_build_learner_export_json_returns_payload_and_status
   /usr/lib/python3.12/unittest/mock.py:2188: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
     def __init__(self, name, parent):
-  Enable tracemalloc to get traceback where the object was allocated.
-  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
-
-tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_invalid_method_raises_error
-  /usr/lib/python3.12/unittest/mock.py:508: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
-    def _mock_add_spec(self, spec, spec_set, _spec_as_instance=False,
-  Enable tracemalloc to get traceback where the object was allocated.
-  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
-
-tests/unit/test_popia_export_completeness.py::TestExportPayloadCompleteness::test_learner_profile_contains_all_required_fields
-  /usr/lib/python3.12/selectors.py:351: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
-    def register(self, fileobj, events, data=None):
   Enable tracemalloc to get traceback where the object was allocated.
   See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
 
@@ -396,9 +301,15 @@ tests/unit/test_popia_service.py::test_cancel_erasure_restores_learner
   Enable tracemalloc to get traceback where the object was allocated.
   See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
 
-tests/unit/test_token_config.py::test_verify_access_token_global_revoke_epoch
-  /usr/lib/python3.12/unittest/mock.py:767: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
-    def __setattr__(self, name, value):
+tests/unit/test_v2_services_full.py::TestLessonServiceV2::test_get_lesson_from_redis
+  /usr/lib/python3.12/unittest/mock.py:404: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    def __init__(self, /, *args, **kwargs):
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/unit/test_irt_properties.py::test_p_correct_bounds
+  /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py:2002: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    self._observability_predicates: defaultdict = defaultdict(
   Enable tracemalloc to get traceback where the object was allocated.
   See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
 
@@ -408,39 +319,31 @@ FAILED tests/unit/test_api_v2_router_contract.py::test_registered_router_fragmen
 FAILED tests/unit/modules/diagnostics/test_item_bank_models.py::TestDiagnosticItemProperties::test_is_available_true_when_approved_and_under_cap
 FAILED tests/unit/modules/diagnostics/test_item_bank_service.py::test_select_item_picks_nearest_b_to_theta
 FAILED tests/unit/modules/diagnostics/test_item_bank_service.py::test_select_item_expands_window_when_neighbourhood_empty
-FAILED tests/unit/test_content_staging_readiness.py::test_all_configured_scopes_are_enumerated
-FAILED tests/unit/test_content_staging_readiness.py::test_verification_report_persists_blockers
-FAILED tests/unit/test_content_staging_seed_executor.py::test_valid_approved_artifact_creates_seed_item
+FAILED tests/unit/test_consent_state_machine.py::test_days_until_expiry_returns_positive_for_future
+FAILED tests/unit/test_content_coverage_service.py::test_future_layers_return_configured_zero_count_placeholders
 FAILED tests/unit/test_etl_mcp_server_startup.py::test_etl_mcp_server_uses_json_response_mode
 FAILED tests/unit/test_etl_mcp_server_startup.py::test_start_streamable_http_falls_back_to_settings
-FAILED tests/unit/test_ci_auth_refresh_db_proof_workflow.py::test_auth_refresh_db_proof_workflow_runs_proof_and_evidence_gate
-FAILED tests/unit/test_ci_auth_refresh_db_proof_workflow.py::test_ci_auth_refresh_db_proof_workflow_status_passing
-FAILED tests/unit/test_ci_auth_refresh_db_proof_workflow.py::test_ci_auth_refresh_db_proof_workflow_status_writes_reports
-FAILED tests/unit/test_ci_auth_refresh_db_proof_workflow.py::test_ci_auth_refresh_db_proof_workflow_checker_runs_local_mode
-FAILED tests/unit/test_content_factory_table_reconciliation.py::TestOrmTableNameReconciliation::test_no_undeclared_orm_models
 FAILED tests/unit/test_diagnostic_score_live_audit.py::test_bridge_expression_maps_item_id_from_irt_id
+FAILED tests/unit/test_no_raw_dict_responses.py::test_no_raw_dict_responses_in_production_routers
 FAILED tests/unit/test_operational_auth_boundaries.py::test_operational_auth_boundary_matrix_statuses
 FAILED tests/unit/test_operational_auth_boundaries.py::test_operational_auth_boundary_source_contracts
 FAILED tests/unit/test_ops_assets.py::test_ops_assets_validate_static_deployment_files
-FAILED tests/unit/test_no_raw_dict_responses.py::test_no_raw_dict_responses_in_production_routers
 FAILED tests/unit/test_prod_frontend_deployment.py::test_playwright_default_matches_next_port
 FAILED tests/unit/test_prod_frontend_deployment.py::test_production_frontend_deployment_status_writes_reports
 FAILED tests/unit/test_prod_frontend_deployment.py::test_production_frontend_deployment_checker_runs_local_mode
 FAILED tests/unit/test_prod_frontend_deployment.py::test_production_frontend_deployment_status_builder_is_passing
 FAILED tests/unit/test_repo_hygiene.py::test_repo_hygiene_has_no_current_failures
-FAILED tests/unit/test_runtime_blockers_after_followup_audit.py::test_jobs_have_consent_reminder_aliases_without_missing_direct_symbols
 FAILED tests/unit/test_production_key_vault_behavior.py::test_production_settings_require_key_vault_url
+FAILED tests/unit/test_runtime_blockers_after_followup_audit.py::test_jobs_have_consent_reminder_aliases_without_missing_direct_symbols
 FAILED tests/unit/test_project_assistance_status.py::test_project_assistance_report_check_passes
-FAILED tests/unit/test_seed_staging_review_scopes.py::test_staging_executor_batch_size_respected
-FAILED tests/unit/test_seed_staging_review_scopes.py::test_staging_executor_constraint_violation_retry_record_by_record
 FAILED tests/unit/test_scope_content_builder.py::test_generic_scope_builder_generates_valid_launch_slice
 FAILED tests/unit/test_source_manifest_readiness.py::test_source_manifest_local_file_verification_passes_on_vm_sources
+FAILED tests/unit/test_seed_staging_review_scopes.py::test_staging_executor_batch_size_respected
 FAILED tests/unit/test_sprint2_auth_router_delegates.py::test_sessions_logout_and_revoke_all_paths
-FAILED tests/unit/test_study_plan_consent_gate_wiring.py::test_study_plan_route_imports_consent_gate_and_db_dependency
+FAILED tests/unit/test_seed_staging_review_scopes.py::test_staging_executor_constraint_violation_retry_record_by_record
 FAILED tests/unit/test_topic_map_worklist.py::test_topic_map_worklist_preserves_source_hashes_for_scope
 FAILED tests/unit/test_validate_topic_maps.py::test_topic_map_validator_accepts_current_draft_and_runtime_state
-FAILED tests/unit/test_consent_state_machine.py::test_days_until_expiry_returns_positive_for_future
-FAILED tests/unit/test_content_coverage_service.py::test_future_layers_return_configured_zero_count_placeholders
-FAILED tests/unit/test_content_factory_enums.py::TestContentArtifactStatusEnum::test_no_undeclared_orm_values
-38 failed, 2243 passed, 11 skipped, 1 xfailed, 10 warnings in 200.86s (0:03:20)
+FAILED tests/unit/test_study_plan_consent_gate_wiring.py::test_study_plan_route_imports_consent_gate_and_db_dependency
+FAILED tests/unit/test_content_staging_seed_executor.py::test_valid_approved_artifact_creates_seed_item
+30 failed, 2257 passed, 11 skipped, 1 xfailed, 8 warnings in 106.48s (0:01:46)
 make: *** [Makefile:53: test-fast] Error 1
