@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_02e_backend_fast_router_frontend_seed_remediation_ready",
+  "status": "phase_02f_backend_fast_item_seed_router_remediation_ready",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -24,24 +24,24 @@
       "id": "TA-BACKEND-FAST-001",
       "title": "Rerun and close backend fast gate from clean checkout",
       "severity": "critical",
-      "status": "blocked_phase_02e_remediation_in_progress",
+      "status": "blocked_phase_02f_remediation_in_progress",
       "latest_failure_summary": {
-        "failed": 30,
-        "passed": 2257,
+        "failed": 22,
+        "passed": 2271,
         "skipped": 11,
         "xfailed": 1,
         "errors": 0
       },
       "latest_failure_categories": [
-        "mcp_dependency_missing",
-        "frontend_deployment_playwright_config",
-        "router_contract",
+        "router_contract_tutor_fragment",
+        "diagnostics_item_bank",
         "staging_seed_executor",
         "dockerfile_pin_mismatch",
-        "diagnostics_item_bank",
+        "raw_dict_response",
+        "repo_hygiene",
         "miscellaneous_state_mismatches"
       ],
-      "next_slice": "02e-backend-fast-router-frontend-seed"
+      "next_slice": "02f-backend-fast-item-seed-router"
     },
     {
       "id": "TA-FRONTEND-001",
@@ -62,14 +62,14 @@
       "status": "partially_addressed_in_baseline_reset"
     }
   ],
-  "active_slice": "02e-backend-fast-router-frontend-seed",
+  "active_slice": "02f-backend-fast-item-seed-router",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
-    "status": "failed_authority_gate_captured_for_phase_02e_remediation",
+    "status": "failed_authority_gate_captured_for_phase_02f_remediation",
     "reported_return_code": 2,
     "reported_summary": {
-      "failed": 30,
-      "passed": 2257,
+      "failed": 22,
+      "passed": 2271,
       "skipped": 11,
       "xfailed": 1
     },
@@ -127,6 +127,20 @@
       ],
       "estimated_failures_targeted": 12,
       "policy": "Phase 02E evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    },
+    "phase_02f_slice": {
+      "id": "TA-BACKEND-FAST-006",
+      "title": "Remediate diagnostic item-bank selection, staging seed executor result/session handling, tutor router contract, and study-plan DB import contract",
+      "status": "implementation_ready",
+      "dominant_failure_clusters": [
+        "diagnostics_item_bank",
+        "staging_seed_executor",
+        "router_contract_tutor_fragment",
+        "study_plan_consent_db_import"
+      ],
+      "estimated_failures_targeted": 8,
+      "policy": "Phase 02F evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
       "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     }
   }

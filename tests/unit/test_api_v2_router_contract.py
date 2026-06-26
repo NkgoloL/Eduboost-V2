@@ -24,6 +24,7 @@ def test_registered_router_fragments_are_exposed_under_each_v2_prefix() -> None:
         "auth_extended": "/auth",
         "learners": "/learners",
         "lessons": "/lessons",
+        "tutor": "/tutor",
         "study_plans": "/study-plans",
         "diagnostics": "/diagnostics",
         "practice": "/practice",
