@@ -170,11 +170,11 @@ No items found.
 - `docs/API_REFERENCE.md`
 - `docs/DEVELOPMENT.md`
 - `docs/DOC/EduBoost_SA_State_of_System_Report.docx`
-- `docs/DOC/Tier 1 - Reuirements & Concept/DOC-01_System-Requirements-Specufucation_(SRS).md`
-- `docs/DOC/Tier 1 - Reuirements & Concept/DOC-02_System-Subsystem-Specification_(SSS).md`
-- `docs/DOC/Tier 1 - Reuirements & Concept/DOC-04_Stakeholder-Requirements-Definition_(StRS).md`
-- `docs/DOC/Tier 1 - Reuirements & Concept/DOC-05_Business-Requirements-Document_(BRD).md`
-- `docs/DOC/Tier 1 - Reuirements & Concept/DOC-06_Use-Case-Specification_(UCS).md`
+- `docs/DOC/Tier 1 - Requirements & Concept/DOC-01_System-Requirements-Specification_(SRS).md`
+- `docs/DOC/Tier 1 - Requirements & Concept/DOC-02_System-Subsystem-Specification_(SSS).md`
+- `docs/DOC/Tier 1 - Requirements & Concept/DOC-04_Stakeholder-Requirements-Definition_(StRS).md`
+- `docs/DOC/Tier 1 - Requirements & Concept/DOC-05_Business-Requirements-Document_(BRD).md`
+- `docs/DOC/Tier 1 - Requirements & Concept/DOC-06_Use-Case-Specification_(UCS).md`
 - `docs/DOC/Tier 2 - Architecture & Design/DOC-07_Software-Design-Document_(SDD).md`
 - `docs/DOC/Tier 2 - Architecture & Design/DOC-09_Interface-Control-Document_(ICD).md`
 - `docs/DOC/Tier 3 - Implementation & Code/DOC-14_Coding-Standards-Document_(CSD).md`
@@ -387,12 +387,12 @@ No items found.
 
 - `docs/AI_AGENT_SKILLS_MANIFEST.md`
 - `docs/API_REFERENCE.md`
-- `docs/DOC/Tier 1 - Reuirements & Concept/DOC-01_System-Requirements-Specufucation_(SRS).md`
-- `docs/DOC/Tier 1 - Reuirements & Concept/DOC-02_System-Subsystem-Specification_(SSS).md`
-- `docs/DOC/Tier 1 - Reuirements & Concept/DOC-03_Concept-of-Operations_(ConOps).md`
-- `docs/DOC/Tier 1 - Reuirements & Concept/DOC-04_Stakeholder-Requirements-Definition_(StRS).md`
-- `docs/DOC/Tier 1 - Reuirements & Concept/DOC-05_Business-Requirements-Document_(BRD).md`
-- `docs/DOC/Tier 1 - Reuirements & Concept/DOC-06_Use-Case-Specification_(UCS).md`
+- `docs/DOC/Tier 1 - Requirements & Concept/DOC-01_System-Requirements-Specification_(SRS).md`
+- `docs/DOC/Tier 1 - Requirements & Concept/DOC-02_System-Subsystem-Specification_(SSS).md`
+- `docs/DOC/Tier 1 - Requirements & Concept/DOC-03_Concept-of-Operations_(ConOps).md`
+- `docs/DOC/Tier 1 - Requirements & Concept/DOC-04_Stakeholder-Requirements-Definition_(StRS).md`
+- `docs/DOC/Tier 1 - Requirements & Concept/DOC-05_Business-Requirements-Document_(BRD).md`
+- `docs/DOC/Tier 1 - Requirements & Concept/DOC-06_Use-Case-Specification_(UCS).md`
 - `docs/DOC/Tier 2 - Architecture & Design/DOC-07_Software-Design-Document_(SDD).md`
 - `docs/DOC/Tier 2 - Architecture & Design/DOC-08_Software-Architecture-Document_(SAD).md`
 - `docs/DOC/Tier 2 - Architecture & Design/DOC-09_Interface-Control-Document_(ICD).md`
@@ -422,7 +422,7 @@ No items found.
 - `docs/DOC/Tier 6 - Security & Compliance/DOC-33_Incident-Response-Plan_(IRP).md`
 - `docs/DOC/Tier 6 - Security & Compliance/DOC-34_Authority-to-Operate_(ATO).md`
 - `docs/DOC/Tier 7 - Project Management/DOC-35_Project-Management-Plan_(PMP).md`
-- `docs/DOC/Tier 7 - Project Management/DOC-36_Risk-Rigister_(RR).md`
+- `docs/DOC/Tier 7 - Project Management/DOC-36_Risk-Register_(RR).md`
 - `docs/DOC/Tier 7 - Project Management/DOC-37_Change-Management-Plan_(CMP).md`
 - `docs/LLM_Phase3_Finetuning.md`
 - `docs/LLM_Test_Gating.md`

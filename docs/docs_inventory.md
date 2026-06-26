@@ -1,12 +1,25 @@
-# Documentation Inventory
+---
+title: Archived documentation redirect
+status: archived
+owner: documentation-governance
+reviewers: [release-management]
+audience: reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: docs/generated/legacy-inventories/20260622T193052Z/docs_inventory.md
+last_reviewed: 2026-06-22
+review_interval_days: 180
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/documentation/migration_manifests]
+---
 
-Generated at: `2026-06-24T11:30:24Z`
-Commit: `f5d72b8380da6403371ea91f6c8298626ba07aa1`
+# Archived documentation redirect
 
-- Documents: `1579`
-- Generated docs: `4`
+Moved by EduBoost documentation housekeeping.
 
-## Categories
+- Original path: `docs/docs_inventory.md`
+- New path: `docs/generated/legacy-inventories/20260622T193052Z/docs_inventory.md`
+- Reason: Legacy generated inventory moved to generated documentation area.
 
 | Category | Count |
 |---|---:|
@@ -1600,3 +1613,4 @@ Commit: `f5d72b8380da6403371ea91f6c8298626ba07aa1`
 | `docs/todos/todo.md` | `general` | EduBoost V2 -- North Star TODO | 18520 | False |
 | `docs/v2_handoff.md` | `general` | V2 Handoff Guide for Less Capable Agents | 906 | False |
 | `docs/v2_migration.md` | `general` | V2 Migration Guide | 2595 | False |
+This file is retained as a redirect stub only. It is not a current source-of-truth document.

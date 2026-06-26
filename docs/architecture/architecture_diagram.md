@@ -1,3 +1,18 @@
+---
+title: "EduBoost SA V2 — Architecture Diagram"
+status: active
+owner: architecture
+reviewers: [architecture, engineering]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-23
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage4-check"
+code_anchors: [docs/architecture/README.md]
+---
+
 # EduBoost SA V2 — Architecture Diagram
 
 > **Note:** This diagram is the authoritative visual reference for the V2

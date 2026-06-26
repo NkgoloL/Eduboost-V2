@@ -1,3 +1,18 @@
+---
+title: "POPIA data-subject-rights workflow"
+status: active
+owner: privacy
+reviewers: [privacy, security, release-management]
+audience: compliance-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-23
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage4-check"
+code_anchors: [docs/compliance/README.md]
+---
+
 # POPIA data-subject-rights workflow
 
 EduBoost supports the POPIA operational baseline for learner and guardian data:

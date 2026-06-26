@@ -1,3 +1,17 @@
+---
+title: "ADR 0006: Next.js Frontend"
+status: active
+owner: architecture
+reviewers: [engineering, architecture]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-23
+review_interval_days: 180
+evidence_command: make docs-housekeeping-stage3-check
+code_anchors: []
+---
 # ADR 0006: Next.js Frontend
 
 ## Status

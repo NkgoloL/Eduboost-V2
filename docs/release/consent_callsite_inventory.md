@@ -1,6 +1,19 @@
-# Consent Call-Site Inventory
+---
+title: Archived documentation redirect
+status: archived
+owner: documentation-governance
+reviewers: [release-management]
+audience: reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: docs/generated/release-inventories/20260622T193052Z/consent_callsite_inventory.md
+last_reviewed: 2026-06-22
+review_interval_days: 180
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/documentation/migration_manifests]
+---
 
-This inventory supports consent service/table consolidation. It is diagnostic only.
+# Archived documentation redirect
 
 | Path | Line | Category | Text |
 |---|---:|---|---|
@@ -604,11 +617,10 @@ This inventory supports consent service/table consolidation. It is diagnostic on
 | `tests/unit/test_sprint3_consent_service_runtime.py` | 206 | consent_repository | `service = ConsentService(consent_repo=AsyncMock())` |
 | `tests/unit/test_sprint3_consent_service_runtime.py` | 222 | consent_service | `service = ConsentService(consent_repo=AsyncMock())` |
 | `tests/unit/test_sprint3_consent_service_runtime.py` | 222 | consent_repository | `service = ConsentService(consent_repo=AsyncMock())` |
+Moved by EduBoost documentation housekeeping.
 
-## Review checklist
+- Original path: `docs/release/consent_callsite_inventory.md`
+- New path: `docs/generated/release-inventories/20260622T193052Z/consent_callsite_inventory.md`
+- Reason: Generated release inventory moved to generated documentation area.
 
-- [ ] Identify the canonical active-consent runtime service.
-- [ ] Identify whether `consent_records` is current state, event history, or both.
-- [ ] Identify whether `parental_consents` is current state, relationship consent, or legacy.
-- [ ] Confirm POPIA routes keep explicit read/write authorization boundaries.
-- [ ] Do not merge/drop consent tables without ADR and data-retention decision.
+This file is retained as a redirect stub only. It is not a current source-of-truth document.

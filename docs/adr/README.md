@@ -1,3 +1,17 @@
+---
+title: "Architectural Decision Records (ADR)"
+status: active
+owner: architecture
+reviewers: [engineering, architecture]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-23
+review_interval_days: 180
+evidence_command: make docs-housekeeping-stage3-check
+code_anchors: []
+---
 # Architectural Decision Records (ADR)
 
 This directory contains records of significant architectural decisions made during the development of EduBoost V2.
@@ -22,3 +36,9 @@ This directory contains records of significant architectural decisions made duri
 - **Accepted**: current architectural direction.
 - **Superseded**: replaced by a newer ADR.
 - **Deprecated**: no longer recommended but still relevant to historical context.
+
+## Stage 3 ADR numbering rule
+
+ADR numbers in `docs/adr/*.md` must be unique. Stage 3 resolved the prior duplicate root-level `ADR-030` and `ADR-031` numbers by preserving the original decisions and renumbering the later conflicting records to `ADR-033` and `ADR-034`.
+
+Run `make docs-housekeeping-stage3-check` before merging ADR changes.

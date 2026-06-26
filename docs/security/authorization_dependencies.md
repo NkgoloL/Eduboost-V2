@@ -1,3 +1,18 @@
+---
+title: "Authorization Dependency Adapter"
+status: active
+owner: security
+reviewers: [security, engineering, privacy]
+audience: security-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-23
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage4-check"
+code_anchors: [docs/security/README.md, app/security]
+---
+
 # Authorization Dependency Adapter
 
 ## Purpose
@@ -114,17 +129,9 @@ Review `docs/security/learner_route_authorization_inspection.md` before wiring t
 
 - [`docs/security/popia_restriction_request_authorization_wiring.md`](popia_restriction_request_authorization_wiring.md)
 
-## POPIA Deletion Status Authorization
-
-- [`docs/security/popia_deletion_status_authorization_wiring.md`](popia_deletion_status_authorization_wiring.md)
-
 ## Parent Erasure Authorization
 
 - [`docs/security/parent_erasure_authorization_wiring.md`](parent_erasure_authorization_wiring.md)
-
-## POPIA Deletion Execute Authorization
-
-- [`docs/security/popia_deletion_execute_authorization_wiring.md`](popia_deletion_execute_authorization_wiring.md)
 
 ## Parent Export Authorization
 
@@ -225,3 +232,7 @@ Review `docs/security/learner_route_authorization_inspection.md` before wiring t
 ## POPIA Consent and Audit Baseline
 
 - [`docs/security/POPIA_CONSENT_AUDIT_BASELINE.md`](POPIA_CONSENT_AUDIT_BASELINE.md)
+
+## Retired authorization pages
+
+The former POPIA deletion status and deletion execute authorization wiring pages are intentionally not linked here because those standalone route contracts are not present in the current repository tree.

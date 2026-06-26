@@ -1,6 +1,19 @@
-# Audit Call-Site Inventory
+---
+title: Archived documentation redirect
+status: archived
+owner: documentation-governance
+reviewers: [release-management]
+audience: reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: docs/generated/release-inventories/20260622T193052Z/audit_callsite_inventory.md
+last_reviewed: 2026-06-22
+review_interval_days: 180
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/documentation/migration_manifests]
+---
 
-This inventory supports audit repository consolidation. It is diagnostic only.
+# Archived documentation redirect
 
 | Path | Line | Category | Text |
 |---|---:|---|---|
@@ -3814,11 +3827,10 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `tests/unit/test_v2_services_full.py` | 29 | audit_log_identifier | `def _audit_log(event_type: str = "TEST") -> AuditLog:` |
 | `tests/unit/test_v2_services_full.py` | 30 | audit_log_identifier | `return AuditLog(event_id=str(uuid.uuid4()), learner_id=LEARNER_ID, event_type=event_type,` |
 | `tests/unit/test_v2_services_full.py` | 403 | audit_append_call | `learners.append(m)` |
+Moved by EduBoost documentation housekeeping.
 
-## Review checklist
+- Original path: `docs/release/audit_callsite_inventory.md`
+- New path: `docs/generated/release-inventories/20260622T193052Z/audit_callsite_inventory.md`
+- Reason: Generated release inventory moved to generated documentation area.
 
-- [ ] Confirm canonical append-only audit table.
-- [ ] Confirm all security/POPIA-sensitive actions emit canonical audit events.
-- [ ] Identify legacy `append` call sites that need adapter migration.
-- [ ] Identify any `audit_logs` data-retention requirement.
-- [ ] Delete legacy audit code only after adapter migration and full-suite evidence.
+This file is retained as a redirect stub only. It is not a current source-of-truth document.

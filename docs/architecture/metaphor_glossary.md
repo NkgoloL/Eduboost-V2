@@ -1,3 +1,18 @@
+---
+title: "Metaphor → Domain Name Glossary"
+status: active
+owner: architecture
+reviewers: [architecture, engineering]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-23
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage4-check"
+code_anchors: [docs/architecture/README.md]
+---
+
 # Metaphor → Domain Name Glossary
 
 Early design documents for EduBoost used a political/civic metaphor to name

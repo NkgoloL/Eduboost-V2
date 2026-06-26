@@ -33,7 +33,7 @@ The repository contains all 21 production-readiness backlog files:
 
 ```text
 00_repository_state_and_canonical_source_of_truth.md
-01_pr-002r_replacement_#U2014_backend_runtime_and_api_contract_baseline.md
+01_pr-002r_replacement_backend_runtime_and_api_contract_baseline.md
 02_backend_architecture_modular_monolith_and_dependency_boundaries.md
 03_authentication_sessions_rbac_and_object-level_authorization.md
 04_popia_consent_privacy_data-subject_rights_and_audit.md
@@ -229,12 +229,12 @@ The documentation posture is strong. The repo contains a large evidence corpus a
 
 #### A. Root TODO domain 01 link drift
 
-`TODO.md` links domain 01 using an em dash filename, but the actual filename uses `#U2014`.
+`TODO.md` previously linked domain 01 through an em dash filename that extracted differently in ZIP workflows; the current path is ASCII-only.
 
 Actual file:
 
 ```text
-docs/backlog/production_readiness/01_pr-002r_replacement_#U2014_backend_runtime_and_api_contract_baseline.md
+docs/backlog/production_readiness/01_pr-002r_replacement_backend_runtime_and_api_contract_baseline.md
 ```
 
 #### B. Root TODO is an index, not completion ledger
