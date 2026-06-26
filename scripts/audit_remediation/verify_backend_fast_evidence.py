@@ -130,7 +130,15 @@ def verify(evidence_dir: Path = DEFAULT_EVIDENCE_DIR) -> dict[str, Any]:
         gate_text = gate_text_path.read_text(encoding="utf-8", errors="replace")
         if re.search(r"(^|\n)(FAILED|ERROR)\s+tests/", gate_text):
             errors.append("backend fast gate output still contains failed/error test lines")
-        if "failed," in gate_text or "failed in" in gate_text or "Error 1" in gate_text or "Error 2" in gate_text:
+        # Pytest summaries may legitimately include xfailed entries, e.g.
+        # ``2315 passed, 11 skipped, 1 xfailed, 4 warnings``.  Treat only an
+        # explicit non-zero ``failed``/``error`` count as a failed authority
+        # summary; do not match the ``failed`` substring inside ``xfailed``.
+        if re.search(r"(?:^|[,\s])([1-9]\d*)\s+failed(?:,|\s+in\b)", gate_text):
+            errors.append("backend fast gate output still contains failure summary or make error")
+        if re.search(r"(?:^|[,\s])([1-9]\d*)\s+errors?(?:,|\s+in\b)", gate_text, flags=re.IGNORECASE):
+            errors.append("backend fast gate output still contains error summary or make error")
+        if re.search(r"make: \*\*\* .*Error [1-9]", gate_text):
             errors.append("backend fast gate output still contains failure summary or make error")
 
     index_path = evidence_dir / "evidence_index.md"

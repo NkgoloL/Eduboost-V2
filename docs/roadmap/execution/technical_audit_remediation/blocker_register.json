@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_02k_backend_fast_evidence_authority_repair_ready",
+  "status": "phase_02l_backend_fast_xfailed_evidence_verifier_ready",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -64,7 +64,7 @@
       "status": "partially_addressed_in_baseline_reset"
     }
   ],
-  "active_slice": "02k-backend-fast-evidence-authority",
+  "active_slice": "02l-backend-fast-xfailed-evidence-verifier",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "status": "failed_authority_gate_captured_for_phase_02j_remediation",
@@ -192,6 +192,13 @@
       "control_gap": "candidate evidence must be derived from a fresh make test-fast returncode 0 run, with machine-readable raw JSON and no stale failure artifacts",
       "policy": "Do not accept backend-fast-gate evidence unless backend_fast_gate_result.json has returncode 0 and valid=true, classification has zero failures, and verify_backend_fast_evidence.py independently passes.",
       "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    },
+    "phase_02l_slice": {
+      "id": "TA-BACKEND-FAST-012",
+      "title": "Make backend fast evidence verifier xfailed-safe without weakening failure detection",
+      "status": "implementation_ready",
+      "policy": "A pytest xfailed count is allowed only when make test-fast returns 0, failure_count is 0, and no failed/error tests are listed.",
+      "boundary": "Evidence verifier repair only; no product release readiness, Phase 02R governance, live DB migration, or runtime KG work."
     }
   },
   "historical_slices": [
