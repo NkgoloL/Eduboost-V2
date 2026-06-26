@@ -30,12 +30,18 @@ async def run_seeding(args: argparse.Namespace) -> int:
     # Resolve scope IDs
     if args.scope_id:
         scope_ids = args.scope_id
-    else:
+    elif getattr(args, "include_all_review_scopes", False):
         scope_ids = [
             scope.scope_id
             for scope in registry.list_scopes()
             if scope.status == ContentScopeStatus.REVIEW
         ]
+    else:
+        # Default seeding remains active-scope only. Review scopes from the
+        # expanded registry are staging candidates, not default operational
+        # seed targets; pass --include-all-review-scopes for the explicit
+        # review-scope backfill workflow.
+        scope_ids = [scope.scope_id for scope in registry.list_active_scopes()]
 
     if not scope_ids:
         logger.warning("No review scopes resolved to seed.")
@@ -151,6 +157,7 @@ async def run_seeding(args: argparse.Namespace) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--scope-id", action="append", default=None, help="Process one or more specific scopes. Repeatable.")
+    parser.add_argument("--include-all-review-scopes", action="store_true", help="Process every review/staging scope from the expanded registry. Default is active scopes only.")
     parser.add_argument("--dry-run", action="store_true", help="Print dry run summary of scopes and counts without writing to database.")
     parser.add_argument("--batch-size", type=int, default=None, help="Commit batch size.")
     parser.add_argument("--reviewer-id", default="dev-content-review-2026-06-03", help="Actor ID to assign for the run.")

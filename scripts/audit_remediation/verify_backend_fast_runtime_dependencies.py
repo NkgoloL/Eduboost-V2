@@ -32,18 +32,14 @@ REQUIRED_IMPORTS: dict[str, str] = {
     "prometheus_client": "prometheus-client",
     "psycopg2": "psycopg2-binary or psycopg2",
     "pypdf": "pypdf",
+    "mcp": "mcp[cli]",
     "redis": "redis",
     "starlette": "starlette",
     "structlog": "structlog",
     "yaml": "PyYAML",
 }
 
-OPTIONAL_IMPORTS: dict[str, str] = {
-    # The audit failure classifier saw mcp in one environment. Treat it as
-    # optional unless it is declared in requirements, because the backend fast
-    # gate should not fail only because an undeclared optional integration is absent.
-    "mcp": "mcp",
-}
+OPTIONAL_IMPORTS: dict[str, str] = {}
 
 
 @dataclass(frozen=True)

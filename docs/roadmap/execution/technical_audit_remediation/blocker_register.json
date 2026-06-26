@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_02c_scope_registry_expansion_ready",
+  "status": "phase_02d_backend_fast_staging_and_contract_remediation_ready",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -24,24 +24,25 @@
       "id": "TA-BACKEND-FAST-001",
       "title": "Rerun and close backend fast gate from clean checkout",
       "severity": "critical",
-      "status": "blocked_scope_registry_remediation_in_progress",
+      "status": "blocked_phase_02d_remediation_in_progress",
       "latest_failure_summary": {
-        "failed": 73,
-        "passed": 2204,
+        "failed": 38,
+        "passed": 2243,
         "skipped": 11,
         "xfailed": 1,
         "errors": 0
       },
       "latest_failure_categories": [
-        "content_scope_registry",
-        "router_contract",
-        "dependency_or_import",
+        "staging_scope_count_explosion",
+        "mcp_dependency_missing",
         "ci_workflow_contract",
         "orm_enum_schema_drift",
+        "diagnostics_item_bank",
+        "router_contract",
         "dockerfile_pin_mismatch",
         "miscellaneous_state_mismatches"
       ],
-      "next_slice": "02c-backend-fast-scope-registry-expansion"
+      "next_slice": "02d-backend-fast-staging-contracts"
     },
     {
       "id": "TA-FRONTEND-001",
@@ -62,14 +63,14 @@
       "status": "partially_addressed_in_baseline_reset"
     }
   ],
-  "active_slice": "02c-backend-fast-scope-registry-expansion",
+  "active_slice": "02d-backend-fast-staging-contracts",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
-    "status": "failed_authority_gate_captured_for_scope_registry_remediation",
+    "status": "failed_authority_gate_captured_for_phase_02d_remediation",
     "reported_return_code": 2,
     "reported_summary": {
-      "failed": 73,
-      "passed": 2204,
+      "failed": 38,
+      "passed": 2243,
       "skipped": 11,
       "xfailed": 1
     },
@@ -100,6 +101,20 @@
       "estimated_failures_targeted": 30,
       "policy": "Scope-registry evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
       "kg_boundary": "Registry metadata preserves future KG hooks but does not introduce runtime KG implementation."
+    },
+    "phase_02d_slice": {
+      "id": "TA-BACKEND-FAST-004",
+      "title": "Remediate staging scope filtering, MCP dependency, CI artifact upload, and Content Factory schema contracts",
+      "status": "implementation_ready",
+      "dominant_failure_clusters": [
+        "staging_scope_count_explosion",
+        "mcp_dependency_missing",
+        "ci_workflow_contract",
+        "orm_enum_schema_drift"
+      ],
+      "estimated_failures_targeted": 13,
+      "policy": "Phase 02D evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     }
   }
 }

@@ -111,10 +111,22 @@ class ContentStagingReadinessService:
         include_partial: bool = True,
         actor_id: str | None = None,
         persist: bool = True,
+        include_review_scopes: bool = False,
     ) -> AllScopeStagingVerificationReport:
+        # The expanded Content Factory registry contains many review/staging
+        # scopes. The default all-scope staging gate is production-facing and
+        # must remain limited to active learner-visible scopes unless a caller
+        # explicitly opts into review-scope verification. This preserves the
+        # Grade 4 beta boundary while keeping review scopes individually
+        # addressable by scope_id.
+        registry_scopes = (
+            self.scope_registry.list_scopes()
+            if include_review_scopes
+            else self.scope_registry.list_active_scopes()
+        )
         reports = [
             await self.verify_scope(scope.scope_id, session=session, include_partial=include_partial, actor_id=actor_id)
-            for scope in self.scope_registry.list_scopes()
+            for scope in registry_scopes
         ]
         report = AllScopeStagingVerificationReport(
             status="completed",

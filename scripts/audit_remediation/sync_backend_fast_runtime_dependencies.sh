@@ -26,7 +26,8 @@ fi
   'pytest-xdist==3.6.1' \
   'pytest-cov' \
   'pypdf==5.4.0' \
-  'arq==0.28.0'
+  'arq==0.28.0' \
+  'mcp[cli]>=1.0.0'
 
 cd "$ROOT"
 "$PYTHON_BIN" scripts/audit_remediation/verify_backend_fast_runtime_dependencies.py --json
