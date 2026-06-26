@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_02b_runtime_dependency_evidence_harness_repair",
+  "status": "phase_02c_scope_registry_expansion_ready",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -24,21 +24,24 @@
       "id": "TA-BACKEND-FAST-001",
       "title": "Rerun and close backend fast gate from clean checkout",
       "severity": "critical",
-      "status": "blocked_runtime_dependency_remediation_in_progress",
+      "status": "blocked_scope_registry_remediation_in_progress",
       "latest_failure_summary": {
-        "failed": 161,
-        "passed": 1255,
-        "skipped": 10,
+        "failed": 73,
+        "passed": 2204,
+        "skipped": 11,
         "xfailed": 1,
-        "errors": 111
+        "errors": 0
       },
       "latest_failure_categories": [
+        "content_scope_registry",
+        "router_contract",
         "dependency_or_import",
-        "database_or_migration",
-        "openapi_route_contract",
-        "popia_auth_or_route_contract"
+        "ci_workflow_contract",
+        "orm_enum_schema_drift",
+        "dockerfile_pin_mismatch",
+        "miscellaneous_state_mismatches"
       ],
-      "next_slice": "02b-backend-fast-runtime-dependencies"
+      "next_slice": "02c-backend-fast-scope-registry-expansion"
     },
     {
       "id": "TA-FRONTEND-001",
@@ -59,23 +62,25 @@
       "status": "partially_addressed_in_baseline_reset"
     }
   ],
-  "active_slice": "02b-runtime-dependency-evidence-repair",
+  "active_slice": "02c-backend-fast-scope-registry-expansion",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
-    "status": "failed_authority_gate_captured_for_triage",
+    "status": "failed_authority_gate_captured_for_scope_registry_remediation",
     "reported_return_code": 2,
     "reported_summary": {
-      "failed": 161,
-      "passed": 1255,
-      "skipped": 10,
-      "xfailed": 1,
-      "errors": 111
+      "failed": 73,
+      "passed": 2204,
+      "skipped": 11,
+      "xfailed": 1
     },
     "reported_categories": [
+      "content_scope_registry",
+      "router_contract",
       "dependency_or_import",
-      "database_or_migration",
-      "openapi_route_contract",
-      "popia_auth_or_route_contract"
+      "ci_workflow_contract",
+      "orm_enum_schema_drift",
+      "dockerfile_pin_mismatch",
+      "miscellaneous_state_mismatches"
     ],
     "passing_evidence_policy": "Do not create backend-fast-gate candidate evidence until make test-fast exits 0.",
     "runtime_dependency_slice": {
@@ -86,6 +91,15 @@
       "policy": "Environment dependency evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
       "evidence_boundary": "Runtime dependency evidence is separate from backend-fast candidate evidence; make test-fast must still exit 0 before passing backend-fast evidence is allowed.",
       "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    },
+    "content_scope_registry_slice": {
+      "id": "TA-BACKEND-FAST-003",
+      "title": "Register generated Content Factory scopes for backend fast authority tests",
+      "status": "implementation_ready",
+      "dominant_failure_cluster": "grade5_mathematics_en not registered",
+      "estimated_failures_targeted": 30,
+      "policy": "Scope-registry evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "kg_boundary": "Registry metadata preserves future KG hooks but does not introduce runtime KG implementation."
     }
   }
 }
