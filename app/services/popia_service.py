@@ -8,6 +8,7 @@ structured, machine-readable status metadata.
 from __future__ import annotations
 
 import csv
+import inspect
 from dataclasses import asdict, dataclass
 from datetime import datetime, timedelta, timezone
 from io import StringIO
@@ -80,6 +81,22 @@ def _iso(value: datetime | None) -> str | None:
     return value.isoformat() if value else None
 
 
+
+
+async def _maybe_await(value: Any) -> Any:
+    """Return sync values and await async test doubles.
+
+    SQLAlchemy ``AsyncSession.add`` is intentionally synchronous, but many
+    backend-fast tests use ``AsyncMock`` as a lightweight session double.
+    Calling an AsyncMock-backed ``add`` without awaiting it creates unawaited
+    coroutine warnings, which the backend-fast gate treats as failures.
+    This adapter keeps production behaviour unchanged while making service
+    writes safe under async test doubles.
+    """
+    if inspect.isawaitable(value):
+        return await value
+    return value
+
 def _role_value(raw_role: Any) -> str:
     value = getattr(raw_role, "value", raw_role)
     return str(value or "").lower()
@@ -104,6 +121,12 @@ class POPIADataRightsService:
         self.learners = LearnerRepository(db)
         self.audit = AuditRepository(db)
         self.consent = ConsentService(db)
+
+
+    async def _add(self, *objects: Any) -> None:
+        """Add ORM objects while tolerating AsyncMock-backed test sessions."""
+        for obj in objects:
+            await _maybe_await(self.db.add(obj))
 
     async def load_learner_for_read(self, learner_id: str, current_user: dict[str, Any] | AuthContext) -> LearnerProfile:
         learner = await self.learners.get_by_id(learner_id)
@@ -195,13 +218,13 @@ class POPIADataRightsService:
             grace_period_end_at=grace_period_end,
             preflight_result=preflight_result,
         )
-        self.db.add(erasure_request)
+        await self._add(erasure_request)
 
         # Soft delete learner (grace period)
         learner.is_deleted = True
         learner.deletion_requested_at = _now()
         learner.display_name = "[erased]"
-        self.db.add(learner)
+        await self._add(learner)
 
         # Revoke consent
         await self.consent.execute_erasure(requester_id, learner_id)
@@ -285,13 +308,13 @@ class POPIADataRightsService:
 
         # Update erasure request state
         erasure_request.state = ERASURE_STATE_CANCELLED
-        self.db.add(erasure_request)
+        await self._add(erasure_request)
 
         # Restore learner
         learner.is_deleted = False
         learner.deletion_requested_at = None
         learner.display_name = learner.display_name if learner.display_name != "[erased]" else "Restored"
-        self.db.add(learner)
+        await self._add(learner)
 
         # Audit event
         await self.audit.append(
@@ -330,7 +353,7 @@ class POPIADataRightsService:
         updates = {key: value for key, value in fields.items() if key in allowed}
         for key, value in updates.items():
             setattr(learner, key, value)
-        self.db.add(learner)
+        await self._add(learner)
         await self.audit.append(
             "data_subject.correction_requested",
             actor_id=requester_id,
@@ -431,13 +454,13 @@ class POPIADataRightsService:
         erasure_request.state = ERASURE_STATE_EXECUTED
         erasure_request.executed_at = _now()
         erasure_request.execution_method = method
-        self.db.add(erasure_request)
+        await self._add(erasure_request)
 
         # Post-erasure verification
         postflight_result = await self._postflight_erasure_verification(learner.id, method)
 
         erasure_request.postflight_result = postflight_result
-        self.db.add(erasure_request)
+        await self._add(erasure_request)
 
         # Audit event
         await self.audit.append(

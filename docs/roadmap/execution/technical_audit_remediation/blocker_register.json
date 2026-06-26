@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_02f_backend_fast_item_seed_router_remediation_ready",
+  "status": "phase_02g_backend_fast_popia_async_contracts_remediation_ready",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -24,7 +24,7 @@
       "id": "TA-BACKEND-FAST-001",
       "title": "Rerun and close backend fast gate from clean checkout",
       "severity": "critical",
-      "status": "blocked_phase_02f_remediation_in_progress",
+      "status": "blocked_phase_02g_remediation_in_progress",
       "latest_failure_summary": {
         "failed": 22,
         "passed": 2271,
@@ -33,15 +33,11 @@
         "errors": 0
       },
       "latest_failure_categories": [
-        "router_contract_tutor_fragment",
-        "diagnostics_item_bank",
-        "staging_seed_executor",
-        "dockerfile_pin_mismatch",
-        "raw_dict_response",
-        "repo_hygiene",
-        "miscellaneous_state_mismatches"
+        "async_mock_warning",
+        "popia_auth_or_route_contract",
+        "popia_async_route_contract"
       ],
-      "next_slice": "02f-backend-fast-item-seed-router"
+      "next_slice": "02g-backend-fast-popia-async-contracts"
     },
     {
       "id": "TA-FRONTEND-001",
@@ -62,10 +58,10 @@
       "status": "partially_addressed_in_baseline_reset"
     }
   ],
-  "active_slice": "02f-backend-fast-item-seed-router",
+  "active_slice": "02g-backend-fast-popia-async-contracts",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
-    "status": "failed_authority_gate_captured_for_phase_02f_remediation",
+    "status": "failed_authority_gate_captured_for_phase_02g_remediation",
     "reported_return_code": 2,
     "reported_summary": {
       "failed": 22,
@@ -141,6 +137,18 @@
       ],
       "estimated_failures_targeted": 8,
       "policy": "Phase 02F evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    },
+    "phase_02g_slice": {
+      "id": "TA-BACKEND-FAST-007",
+      "title": "Remediate POPIA async-session write safety and route/auth contract warnings",
+      "status": "implementation_ready",
+      "dominant_failure_clusters": [
+        "async_mock_warning",
+        "popia_auth_or_route_contract",
+        "popia_async_route_contract"
+      ],
+      "policy": "Phase 02G evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
       "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     }
   }
