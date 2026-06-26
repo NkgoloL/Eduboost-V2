@@ -3,21 +3,20 @@
     "async_mock_warning": {
       "matched": true,
       "snippets": [
-        ".......................... [ 99%] ...... [100%]sys:1: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited RuntimeWarning: Enable tracemalloc to get the object allocation traceback =================================== FAILURES =================================== ___",
-        "sure_safety.py::TestSoftDeleteSafety::test_soft_delete_erases_display_name /usr/lib/python3.12/unittest/mock.py:2537: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited return tuple.__new__(cls, (name, args, kwargs)) Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stab",
-        "TestErasureRequestStateMachine::test_execute_erasure_blocks_without_export /usr/lib/python3.12/unittest/mock.py:2119: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited def __init__(self, /, *args, **kw): Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stable/how-to/ca",
-        ":TestExportPayloadCompleteness::test_learner_profile_includes_pseudonym_id /usr/lib/python3.12/unittest/mock.py:2129: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited if getattr(self, \"_mock_methods\", None) is not None: Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en",
-        "rection_with_allowed_fields /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/services/popia_service.py:333: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited self.db.add(learner) Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stable/how-to/capture-warnings."
+        ".......................... [ 99%] ......... [100%]sys:1: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited RuntimeWarning: Enable tracemalloc to get the object allocation traceback =================================== FAILURES =================================== ___",
+        "awal.py::TestProcessingBlocking::test_consent_withdrawn_audit_event_logged /usr/lib/python3.12/unittest/mock.py:2188: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited def __init__(self, name, parent): Enable tracemalloc to get traceback where the object was allocated. See https://docs.pytest.org/en/stable/how-to/capt",
+        "[ 99%] ......... [100%]sys:1: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited RuntimeWarning: Enable tracemalloc to get the object allocation traceback =================================== FAILU",
+        "king::test_consent_withdrawn_audit_event_logged /usr/lib/python3.12/unittest/mock.py:2188: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited def __init__(self, name, parent): Enable tracemalloc to get traceback where the object was allocated. See ht"
       ]
     },
     "popia_auth_or_route_contract": {
       "matched": true,
       "snippets": [
-        "errors=[]).draft_count =============================== warnings summary =============================== tests/unit/test_popia_erasure_safety.py::TestSoftDeleteSafety::test_soft_delete_erases_display_name /usr/lib/python3.12/unittest/mock.py:2537: RuntimeWarning: coroutine 'AsyncMock",
-        "See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info. tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_blocks_without_export /usr/lib/python3.12/unittest/mock.py:2119: RuntimeWarning: coro",
-        "See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info. tests/unit/test_popia_export_completeness.py::TestExportPayloadCompleteness::test_learner_profile_includes_pseudonym_id /usr/lib/python3.12/unittest/mock.py:2129: RuntimeWarning:",
-        "See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info. tests/unit/test_popia_service.py::test_request_correction_with_allowed_fields /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/services/popia_service.py:333: RuntimeWarn",
-        "e.py::test_request_correction_with_allowed_fields /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/services/popia_service.py:333: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited self.db.add(learner) Enable tracemalloc to get traceback"
+        "errors=[]).draft_count =============================== warnings summary =============================== tests/unit/test_popia_consent_versioning.py::TestConsentVersioning::test_renew_records_version_history tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_",
+        "tests/unit/test_popia_consent_versioning.py::TestConsentVersioning::test_renew_records_version_history tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_cancel_erasure_updates_state_to_cancelled tests/unit/test_popia_erasure_safety.py::TestErasureRequestSt",
+        "popia_erasure_safety.py::TestErasureRequestStateMachine::test_cancel_erasure_updates_state_to_cancelled tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_supports_different_methods tests/unit/test_popia_export_completeness.py::TestExportPayl",
+        "opia_erasure_safety.py::TestErasureRequestStateMachine::test_execute_erasure_supports_different_methods tests/unit/test_popia_export_completeness.py::TestExportPayloadCompleteness::test_learner_profile_contains_all_required_fields tests/unit/test_v2_services_full.py::TestLessonService",
+        "/unit/test_popia_consent_versioning.py::TestConsentVersioning::test_renew_records_version_history tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachine::test_cancel_erasure_updates_state_to_cancelled tests/unit/test_popia_erasure_safety.py::TestErasureRequestStateMachi"
       ]
     }
   },
@@ -33,10 +32,10 @@
     "tests/unit/test_diagnostic_score_live_audit.py::test_bridge_expression_maps_item_id_from_irt_id",
     "tests/unit/test_no_raw_dict_responses.py::test_no_raw_dict_responses_in_production_routers",
     "tests/unit/test_ops_assets.py::test_ops_assets_validate_static_deployment_files",
-    "tests/unit/test_repo_hygiene.py::test_repo_hygiene_has_no_current_failures",
     "tests/unit/test_production_key_vault_behavior.py::test_production_settings_require_key_vault_url",
-    "tests/unit/test_runtime_blockers_after_followup_audit.py::test_jobs_have_consent_reminder_aliases_without_missing_direct_symbols",
     "tests/unit/test_project_assistance_status.py::test_project_assistance_report_check_passes",
+    "tests/unit/test_runtime_blockers_after_followup_audit.py::test_jobs_have_consent_reminder_aliases_without_missing_direct_symbols",
+    "tests/unit/test_repo_hygiene.py::test_repo_hygiene_has_no_current_failures",
     "tests/unit/test_scope_content_builder.py::test_generic_scope_builder_generates_valid_launch_slice",
     "tests/unit/test_source_manifest_readiness.py::test_source_manifest_local_file_verification_passes_on_vm_sources",
     "tests/unit/test_sprint2_auth_router_delegates.py::test_sessions_logout_and_revoke_all_paths",
@@ -46,7 +45,7 @@
   "failure_count": 15,
   "summary_counts": {
     "failed": 15,
-    "passed": 2283,
+    "passed": 2287,
     "skipped": 11,
     "xfailed": 1
   },
