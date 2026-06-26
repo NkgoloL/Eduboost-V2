@@ -25,7 +25,7 @@ import { defineConfig, devices } from "@playwright/test";
 
 // Scaffold variables expected by checks
 export const FRONTEND_BASE_URL =
-  process.env.PLAYWRIGHT_BASE_URL ?? process.env.FRONTEND_BASE_URL ?? "http://localhost:3050";
+  process.env.PLAYWRIGHT_BASE_URL ?? process.env.FRONTEND_BASE_URL ?? "http://127.0.0.1:3050";
 export const PLAYWRIGHT_WEB_SERVER_COMMAND =
   process.env.PLAYWRIGHT_WEB_SERVER_COMMAND?.trim() || "pnpm --dir app/frontend exec next dev --webpack -p 3050";
 const shouldStartWebServer = process.env.PLAYWRIGHT_SKIP_WEB_SERVER !== "1";

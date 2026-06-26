@@ -192,7 +192,7 @@ class ContentStagingSeedExecutor:
                             existing_staging.staging_status = "active"
                             existing_staging.created_by_seed_run_id = run_id
                             existing_staging.updated_at = datetime.now(timezone.utc)
-                            staging_artifact_id = existing_staging.id
+                            staging_artifact_id = getattr(existing_staging, "id", uuid.uuid4())
                         else:
                             staging_artifact_id = uuid.uuid4()
                             staging_artifact = ContentStagingArtifact(
@@ -247,7 +247,7 @@ class ContentStagingSeedExecutor:
                                 existing_staging.staging_status = "active"
                                 existing_staging.created_by_seed_run_id = run_id
                                 existing_staging.updated_at = datetime.now(timezone.utc)
-                                staging_artifact_id = existing_staging.id
+                                staging_artifact_id = getattr(existing_staging, "id", uuid.uuid4())
                             else:
                                 staging_artifact_id = uuid.uuid4()
                                 staging_artifact = ContentStagingArtifact(

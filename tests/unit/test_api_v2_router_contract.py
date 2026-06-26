@@ -40,6 +40,11 @@ def test_registered_router_fragments_are_exposed_under_each_v2_prefix() -> None:
         "jobs": "/jobs",
         "system": "/system",
         "learner_content": "/learner/content",
+        "curriculum_expansion": "/admin/curriculum-expansion",
+        "ai_operations": "/admin/ai-operations",
+        "generation": "/admin/generation",
+        "content_review": "/content-review",
+        "irt_quality": "/admin/irt-quality",
     }
 
     missing: list[str] = []

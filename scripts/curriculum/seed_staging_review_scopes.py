@@ -119,7 +119,8 @@ async def run_seeding(args: argparse.Namespace) -> int:
                     succeeded_scopes.append(scope_id)
                     total_upserted += res.seeded_count
                     total_skipped += res.skipped_count
-                    scopes_run_ids[scope_id] = str(res.seed_run_id)
+                    seed_run_id = getattr(res, "seed_run_id", None) or getattr(res, "id", None)
+                    scopes_run_ids[scope_id] = str(seed_run_id) if seed_run_id is not None else "unreported"
             except MissingForeignKeyError as fkey_err:
                 logger.error(f"Seeding aborted for scope {scope_id} due to missing foreign key: {fkey_err}")
                 failed_scopes.append(scope_id)

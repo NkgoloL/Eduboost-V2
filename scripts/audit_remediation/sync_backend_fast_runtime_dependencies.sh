@@ -29,5 +29,11 @@ fi
   'arq==0.28.0' \
   'mcp[cli]>=1.0.0'
 
+# Prove the exact import used by tools/etl/etl_mcp_server_v2.py, not only `import mcp`.
+"$VENV_PY" - <<'PY'
+from mcp.server.fastmcp import FastMCP
+print(FastMCP.__name__)
+PY
+
 cd "$ROOT"
 "$PYTHON_BIN" scripts/audit_remediation/verify_backend_fast_runtime_dependencies.py --json
