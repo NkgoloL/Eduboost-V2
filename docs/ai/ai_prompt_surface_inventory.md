@@ -198,15 +198,26 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/assign_irt_params.py` | `diagnostic` |
 | `scripts/audit_baseline_refresh.py` | `llm` |
 | `scripts/audit_remediation/backend_fast_failure_report.py` | `prompt, llm, diagnostic, remediation` |
-| `scripts/audit_remediation/classify_backend_fast_failures.py` | `remediation` |
+| `scripts/audit_remediation/classify_backend_fast_failures.py` | `diagnostic, remediation` |
 | `scripts/audit_remediation/run_backend_fast_category_probe.py` | `remediation` |
 | `scripts/audit_remediation/run_backend_fast_gate.py` | `remediation` |
 | `scripts/audit_remediation/verify_backend_fast_environment.py` | `llm, anthropic, groq, diagnostic` |
-| `scripts/audit_remediation/verify_backend_fast_evidence.py` | `diagnostic` |
+| `scripts/audit_remediation/verify_backend_fast_evidence.py` | `llm, diagnostic` |
 | `scripts/audit_remediation/verify_backend_fast_failure_triage.py` | `diagnostic, remediation` |
 | `scripts/audit_remediation/verify_backend_fast_gate_preflight.py` | `remediation` |
+| `scripts/audit_remediation/verify_backend_fast_phase02d.py` | `remediation` |
+| `scripts/audit_remediation/verify_backend_fast_phase02e.py` | `remediation` |
+| `scripts/audit_remediation/verify_backend_fast_phase02f.py` | `diagnostic, remediation` |
+| `scripts/audit_remediation/verify_backend_fast_phase02g.py` | `remediation` |
+| `scripts/audit_remediation/verify_backend_fast_phase02h.py` | `diagnostic, remediation` |
+| `scripts/audit_remediation/verify_backend_fast_phase02i.py` | `remediation` |
+| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | `remediation` |
+| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | `remediation` |
+| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | `remediation` |
+| `scripts/audit_remediation/verify_backend_fast_phase02n.py` | `diagnostic, remediation` |
 | `scripts/audit_remediation/verify_backend_fast_runtime_dependencies.py` | `anthropic, remediation` |
 | `scripts/audit_remediation/verify_baseline_reset.py` | `remediation` |
+| `scripts/audit_remediation/verify_content_scope_registry_expansion.py` | `diagnostic` |
 | `scripts/audit_remediation/verify_openapi_route_contract.py` | `remediation` |
 | `scripts/audit_write_flow.py` | `diagnostic` |
 | `scripts/audit_write_runtime_evidence.py` | `llm` |

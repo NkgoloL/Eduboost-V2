@@ -1,18 +1,3 @@
----
-title: "Phase 2 Authorization Closure Report"
-status: current-evidence
-owner: security
-reviewers: [security, engineering, privacy]
-audience: security-reviewer
-source_of_truth: false
-supersedes: []
-superseded_by: null
-last_reviewed: 2026-06-23
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage4-check"
-code_anchors: [docs/security/README.md, app/security]
----
-
 # Phase 2 Authorization Closure Report
 
 ## Scope
@@ -23,8 +8,8 @@ routes that do not carry a learner object.
 
 ## Route Matrix Summary
 
-- Routes inspected: 201
-- Covered learner-scoped routes: 66
+- Routes inspected: 202
+- Covered learner-scoped routes: 67
 - Non-learner-scoped routes: 132
 - Missing learner authorization markers: 3
 

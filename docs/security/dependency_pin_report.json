@@ -1,8 +1,11 @@
 {
-  "generated_at": "2026-06-24T11:30:27Z",
+  "generated_at": "2026-06-27T02:19:45Z",
   "status": "blocked_unpinned_dependencies",
   "blockers": [
-    "requirements.txt:4: arq>=0.25.0"
+    "requirements.txt:4: arq>=0.25.0",
+    "requirements.txt:7: mcp[cli]>=1.0.0",
+    "requirements/base.txt:396: mcp[cli]>=1.0.0",
+    "requirements/dev.txt:519: mcp[cli]>=1.0.0"
   ],
   "rows": [
     {
@@ -28,6 +31,24 @@
       "line": 4,
       "classification": "range_or_unpinned",
       "text": "arq>=0.25.0"
+    },
+    {
+      "file": "requirements.txt",
+      "line": 5,
+      "classification": "ignored",
+      "text": ""
+    },
+    {
+      "file": "requirements.txt",
+      "line": 6,
+      "classification": "ignored",
+      "text": "# MCP SDK for local ETL FastMCP tooling."
+    },
+    {
+      "file": "requirements.txt",
+      "line": 7,
+      "classification": "range_or_unpinned",
+      "text": "mcp[cli]>=1.0.0"
     },
     {
       "file": "requirements/base.txt",
@@ -2386,6 +2407,24 @@
       "line": 393,
       "classification": "ignored",
       "text": "# via deprecated"
+    },
+    {
+      "file": "requirements/base.txt",
+      "line": 394,
+      "classification": "ignored",
+      "text": ""
+    },
+    {
+      "file": "requirements/base.txt",
+      "line": 395,
+      "classification": "ignored",
+      "text": "# MCP SDK for local ETL FastMCP tooling."
+    },
+    {
+      "file": "requirements/base.txt",
+      "line": 396,
+      "classification": "range_or_unpinned",
+      "text": "mcp[cli]>=1.0.0"
     },
     {
       "file": "requirements/dev.txt",
@@ -5482,6 +5521,24 @@
       "line": 516,
       "classification": "ignored",
       "text": "# setuptools"
+    },
+    {
+      "file": "requirements/dev.txt",
+      "line": 517,
+      "classification": "ignored",
+      "text": ""
+    },
+    {
+      "file": "requirements/dev.txt",
+      "line": 518,
+      "classification": "ignored",
+      "text": "# MCP SDK for local ETL FastMCP tooling."
+    },
+    {
+      "file": "requirements/dev.txt",
+      "line": 519,
+      "classification": "range_or_unpinned",
+      "text": "mcp[cli]>=1.0.0"
     }
   ]
 }

@@ -1,21 +1,6 @@
----
-title: "Service Boundary Inventory"
-status: current-evidence
-owner: architecture
-reviewers: [architecture, engineering]
-audience: developer
-source_of_truth: false
-supersedes: []
-superseded_by: null
-last_reviewed: 2026-06-23
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage4-check"
-code_anchors: [docs/architecture/README.md]
----
-
 # Service Boundary Inventory
 
-Generated at: `2026-06-24T11:30:01Z`
+Generated at: `2026-06-27T02:18:44Z`
 
 | Path | Classification |
 |---|---|

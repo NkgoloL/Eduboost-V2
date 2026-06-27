@@ -1,7 +1,7 @@
 # Diagnostic Item-Bank Policy Status
 
-Generated at: `2026-06-24T11:30:18Z`
-Commit: `f5d72b8380da6403371ea91f6c8298626ba07aa1`
+Generated at: `2026-06-27T02:19:19Z`
+Commit: `88840fc52a05c694c6d313e57bc8cba4bcda4c63`
 
 **Status:** `diagnostic-item-bank-policy-accepted`
 **Policy:** `docs/architecture/diagnostic_item_bank_canonicality.yml`
@@ -42,7 +42,7 @@ Commit: `f5d72b8380da6403371ea91f6c8298626ba07aa1`
 | `app/services/content_file_promotion_readiness.py` | 22 | `"diagnostic_items": "diagnostic_items",` |
 | `app/services/content_file_promotion_readiness.py` | 252 | `if layer == "diagnostic_items":` |
 | `app/services/content_generation/providers/llm.py` | 169 | `values = payload.get("diagnostic_items")` |
-| `app/services/content_generation/scope_blueprint_generator.py` | 87 | `"source_item_bank": "diagnostic_items",` |
+| `app/services/content_generation/scope_blueprint_generator.py` | 80 | `"source_item_bank": "diagnostic_items",` |
 | `app/services/content_review_governance.py` | 355 | `if _value(artifact.artifact_type) == "diagnostic_item" or _value(artifact.content_layer) == "diagnostic_items":` |
 | `app/services/content_review_governance.py` | 545 | `or _value(artifact.content_layer) == "diagnostic_items"` |
 | `app/services/curriculum/coverage.py` | 24 | `def detect_gaps(self, *, lessons: Iterable[Mapping[str, Any]], diagnostic_items: Iterable[Mapping[str, Any]]) -> list[CurriculumGap]:` |

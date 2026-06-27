@@ -1,6 +1,6 @@
 # Backend Consolidation Diagnostic Report
 
-Generated at: `2026-06-24T11:32:43Z`
+Generated at: `2026-06-27T02:21:31Z`
 
 | Check | Return code | Command |
 |---|---:|---|
@@ -132,7 +132,7 @@ Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/pytho
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/audit_callsite_inventory.md (3810 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/audit_callsite_inventory.md (3966 row(s))
 ```
 
 ## consent inventory

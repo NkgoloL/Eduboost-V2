@@ -1,33 +1,20 @@
----
-title: Archived documentation redirect
-status: archived
-owner: documentation-governance
-reviewers: [release-management]
-audience: reviewer
-source_of_truth: false
-supersedes: []
-superseded_by: docs/generated/legacy-inventories/20260622T193052Z/docs_inventory.md
-last_reviewed: 2026-06-22
-review_interval_days: 180
-evidence_command: make docs-housekeeping-check
-code_anchors: [docs/documentation/migration_manifests]
----
+# Documentation Inventory
 
-# Archived documentation redirect
+Generated at: `2026-06-27T02:18:55Z`
+Commit: `88840fc52a05c694c6d313e57bc8cba4bcda4c63`
 
-Moved by EduBoost documentation housekeeping.
+- Documents: `1688`
+- Generated docs: `4`
 
-- Original path: `docs/docs_inventory.md`
-- New path: `docs/generated/legacy-inventories/20260622T193052Z/docs_inventory.md`
-- Reason: Legacy generated inventory moved to generated documentation area.
+## Categories
 
 | Category | Count |
 |---|---:|
 | `adr` | 56 |
-| `api` | 6 |
-| `architecture` | 40 |
-| `general` | 888 |
-| `release` | 487 |
+| `api` | 9 |
+| `architecture` | 41 |
+| `general` | 992 |
+| `release` | 488 |
 | `security` | 102 |
 
 ## Documents
@@ -38,110 +25,74 @@ Moved by EduBoost documentation housekeeping.
 | `docs/API_REFERENCE.md` | `general` | API Reference | 11510 | False |
 | `docs/Azure_Migration_Guide.md` | `general` | EduBoost SA — Azure Migration Guide (Dev/Test) | 2365 | False |
 | `docs/DEVELOPMENT.md` | `general` | Development Guide | 1547 | False |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-01_System-Requirements-Specufucation_(SRS).md` | `general` | System Requirements Specification (SRS) | 16307 | False |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-02_System-Subsystem-Specification_(SSS).md` | `general` | System/Subsystem Specification (SSS) | 7720 | False |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-03_Concept-of-Operations_(ConOps).md` | `general` | Concept of Operations (ConOps) | 4054 | False |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-04_Stakeholder-Requirements-Definition_(StRS).md` | `general` | Stakeholder Requirements Definition (StRS) | 2949 | False |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-05_Business-Requirements-Document_(BRD).md` | `general` | Business Requirements Document (BRD) | 1996 | False |
-| `docs/DOC/Tier 1 - Reuirements & Concept/DOC-06_Use-Case-Specification_(UCS).md` | `general` | Use Case Specification (UCS) | 6140 | False |
-| `docs/DOC/Tier 2 - Architecture & Design/DOC-07_Software-Design-Document_(SDD).md` | `general` | Software Design Document (SDD) | 10238 | False |
-| `docs/DOC/Tier 2 - Architecture & Design/DOC-08_Software-Architecture-Document_(SAD).md` | `general` | Software Architecture Document (SAD) | 12430 | False |
-| `docs/DOC/Tier 2 - Architecture & Design/DOC-09_Interface-Control-Document_(ICD).md` | `general` | Interface Control Document (ICD) | 5921 | False |
-| `docs/DOC/Tier 2 - Architecture & Design/DOC-10_Database-Design-Document_(DDD).md` | `general` | Database Design Document (DDD) | 4752 | False |
-| `docs/DOC/Tier 2 - Architecture & Design/DOC-11_Data-Dictionary_(DD).md` | `general` | Data Dictionary (DD) | 4910 | False |
-| `docs/DOC/Tier 2 - Architecture & Design/DOC-12_Security-Architecture-Document_(SecAD).md` | `general` | Security Architecture Document (SecAD) | 6468 | False |
-| `docs/DOC/Tier 3 - Implementation & Code/DOC-13_API-Reference.md` | `general` | API Reference | 4720 | False |
-| `docs/DOC/Tier 3 - Implementation & Code/DOC-14_Coding-Standards-Document_(CSD).md` | `general` | Coding Standards Document (CSD) | 5402 | False |
-| `docs/DOC/Tier 4 - Testing & Quality Assurance/DOC-15_Test-Plan_(TP).md` | `general` | DOC-15: Test Plan (TP) | 1844 | False |
-| `docs/DOC/Tier 4 - Testing & Quality Assurance/DOC-16_Test-Design-Specification_(TDS).md` | `general` | DOC-16: Test Design Specification (TDS) | 2779 | False |
-| `docs/DOC/Tier 4 - Testing & Quality Assurance/DOC-17_Test-Case-Specification_(TCS).md` | `general` | DOC-17: Test Case Specification (TCS) | 4711 | False |
-| `docs/DOC/Tier 4 - Testing & Quality Assurance/DOC-18_Test-Procedures_(TestProc).md` | `general` | DOC-18: Test Procedures (TestProc) | 5295 | False |
-| `docs/DOC/Tier 4 - Testing & Quality Assurance/DOC-19_Test-Item-Transmittal-Report_(TITR).md` | `general` | DOC-19: Test Item Transmittal Report (TITR) | 4639 | False |
-| `docs/DOC/Tier 4 - Testing & Quality Assurance/DOC-20_Test-Summary-Report_(TSR).md` | `general` | DOC-20: Test Summary Report (TSR) | 8464 | False |
-| `docs/DOC/Tier 4 - Testing & Quality Assurance/DOC-21_Software-Quality-Assurance-Plan_(SQAP).md` | `general` | DOC-21: Software Quality Assurance Plan (SQAP) | 8152 | False |
-| `docs/DOC/Tier 4 - Testing & Quality Assurance/DOC-22_Quality-Metrics-Report_(QMR).md` | `general` | DOC-22: Quality Metrics Report (QMR) | 10506 | False |
-| `docs/DOC/Tier 4 - Testing & Quality Assurance/DOC-23_Code-Review-Checklist_and_Standards_(CRS).md` | `general` | DOC-23: Code Review Checklist & Standards (CRS) | 12373 | False |
-| `docs/DOC/Tier 5 - Deployment & Operations/DOC-24_Deployment-Guide.md` | `general` | Deployment Guide | 5817 | False |
-| `docs/DOC/Tier 5 - Deployment & Operations/DOC-25_Operational-Manual_(OpsMan).md` | `general` | Operations Manual (OpsMan) | 5571 | False |
-| `docs/DOC/Tier 5 - Deployment & Operations/DOC-26_Disaster-Recovery-Plan_(DRP).md` | `general` | Disaster Recovery Plan (DRP) | 6307 | False |
-| `docs/DOC/Tier 5 - Deployment & Operations/DOC-27_Installation-and-Configuration-Guide_(ICG).md` | `general` | Installation & Configuration Guide (ICG) | 5305 | False |
-| `docs/DOC/Tier 5 - Deployment & Operations/DOC-28_Release_Notes.md` | `general` | Release Notes | 4394 | False |
-| `docs/DOC/Tier 6 - Security & Compliance/DOC-29_Security-Plan_(SecPlan).md` | `general` | Security Plan (SecPlan) | 4736 | False |
-| `docs/DOC/Tier 6 - Security & Compliance/DOC-30_Threat-Model-Document_(TMD).md` | `general` | Threat Model Document (TMD) | 5703 | False |
-| `docs/DOC/Tier 6 - Security & Compliance/DOC-31_Privacy-Impact-Assessment_(PIA).md` | `general` | Privacy Impact Assessment (PIA) | 5820 | False |
-| `docs/DOC/Tier 6 - Security & Compliance/DOC-32_Compliance_Matrix.md` | `general` | Compliance Matrix | 4375 | False |
-| `docs/DOC/Tier 6 - Security & Compliance/DOC-33_Incident-Response-Plan_(IRP).md` | `general` | Incident Response Plan (IRP) | 4746 | False |
-| `docs/DOC/Tier 6 - Security & Compliance/DOC-34_Authority-to-Operate_(ATO).md` | `general` | Authority to Operate (ATO) | 4613 | False |
-| `docs/DOC/Tier 7 - Project Management/DOC-35_Project-Management-Plan_(PMP).md` | `general` | Project Management Plan (PMP) | 4179 | False |
-| `docs/DOC/Tier 7 - Project Management/DOC-36_Risk-Rigister_(RR).md` | `general` | Risk Register (RR) | 4875 | False |
-| `docs/DOC/Tier 7 - Project Management/DOC-37_Change-Management-Plan_(CMP).md` | `general` | Change Management Plan (CMP) | 3608 | False |
+| `docs/DOC/README.md` | `general` | Archived documentation redirect | 812 | False |
 | `docs/LLM_Phase3_Finetuning.md` | `general` | LLM Phase 3 Fine-Tuning Runbook | 5595 | False |
 | `docs/LLM_Test_Gating.md` | `general` | Llm Test Gating | 682 | False |
 | `docs/POPIA_COMPLIANCE.md` | `general` | POPIA Compliance Guide | 11841 | False |
-| `docs/README.md` | `general` | EduBoost V2 Documentation Index | 2050 | False |
-| `docs/adr/0001-modular-monolith.md` | `adr` | ADR 0001: Modular Monolith Architecture | 765 | False |
-| `docs/adr/0002-popia-first-design.md` | `adr` | ADR 0002: POPIA-First Design | 1112 | False |
-| `docs/adr/0003-llm-provider-abstraction.md` | `adr` | ADR 0003: LLM Provider Abstraction | 1096 | False |
-| `docs/adr/0004-standardizing-logic.md` | `adr` | ADR 0004: Standardizing Business Logic Location and Naming | 1100 | False |
-| `docs/adr/0005-fastapi-v2-entrypoint.md` | `adr` | ADR 0005: FastAPI V2 Entrypoint | 662 | False |
-| `docs/adr/0006-nextjs-frontend.md` | `adr` | ADR 0006: Next.js Frontend | 851 | False |
-| `docs/adr/0007-postgresql-audit-ledger.md` | `adr` | ADR 0007: PostgreSQL Audit Ledger | 993 | False |
-| `docs/adr/0008-redis-token-revocation.md` | `adr` | ADR 0008: Redis Token Revocation | 895 | False |
-| `docs/adr/0009-caps-alignment.md` | `adr` | ADR 0009: CAPS Alignment | 988 | False |
-| `docs/adr/0010-business-logic-location.md` | `adr` | ADR 0010 — Business Logic Location | 2837 | False |
-| `docs/adr/ADR-001-python-runtime-version.md` | `adr` | ADR-001 — Supported Python Runtime Version | 4313 | False |
-| `docs/adr/ADR-002-startup-ddl-repair.md` | `adr` | ADR-002 — Startup DDL Repair in `app/api_v2.py` | 7931 | False |
-| `docs/adr/ADR-003-deployment-targets.md` | `adr` | ADR-003 — Deployment Targets and Promotion Model | 5647 | False |
-| `docs/adr/ADR-004-popia-data-rights-service-authority.md` | `adr` | ADR-004: POPIA Data Rights Service Authority | 3104 | False |
-| `docs/adr/ADR-005-database-rollback-policy.md` | `adr` | ADR-005 — Database Rollback Policy | 3311 | False |
-| `docs/adr/ADR-009-billing-provider.md` | `adr` | ADR-009: Billing Provider Decision | 1075 | False |
-| `docs/adr/ADR-010-notifications-communication-provider.md` | `adr` | ADR-010: Notifications and Communication Provider Decision | 1249 | False |
-| `docs/adr/ADR-011-observability-stack.md` | `adr` | ADR-011: Observability Stack Decision | 1154 | False |
-| `docs/adr/ADR-012-ci-cd-infrastructure-deployment.md` | `adr` | ADR-012: CI/CD, Infrastructure, Deployment, Docker, and Environment Decision | 1179 | False |
-| `docs/adr/ADR-013-backup-restore-disaster-recovery.md` | `adr` | ADR-013: Backup, Restore, and Disaster Recovery Decision | 1290 | False |
-| `docs/adr/ADR-014-testing-release-evidence-quality-gates.md` | `adr` | ADR-014: Testing, Release Evidence, and Quality Gates Decision | 1277 | False |
-| `docs/adr/ADR-015-security-posture-threat-modeling.md` | `adr` | ADR-015: Security Posture and Threat Modeling Decision | 1339 | False |
-| `docs/adr/ADR-016-incident-response-operations-support.md` | `adr` | ADR-016: Incident Response, Operations, and Support Decision | 1184 | False |
-| `docs/adr/ADR-017-documentation-adrs-claim-discipline.md` | `adr` | ADR-017: Documentation, ADRs, and Claim Discipline | 1347 | False |
-| `docs/adr/ADR-018-beta-launch-staging-acceptance-product-scope.md` | `adr` | ADR-018: Beta Launch, Staging Acceptance, and Product Scope | 1022 | False |
-| `docs/adr/ADR-019-roadmap-after-production-readiness-baseline.md` | `adr` | ADR-019 — Roadmap After Production Readiness Baseline | 1903 | False |
-| `docs/adr/ADR-020-final-release-blocker-checklist.md` | `adr` | ADR-020: Final Release-Blocker Checklist | 1096 | False |
-| `docs/adr/ADR-021-backend-consolidation-evidence-first.md` | `adr` | ADR-021: Backend Consolidation Must Be Evidence-First | 1537 | False |
-| `docs/adr/ADR-022-audit-consent-table-ownership-options.md` | `adr` | ADR-022: Audit and Consent Table Ownership Options | 2022 | False |
-| `docs/adr/ADR-023-frontend-upgrade-react-19-next-15.md` | `adr` | ADR-023: Frontend Upgrade - React 19 + Next 15 | 2836 | False |
-| `docs/adr/ADR-024-frontend-rollback-plan.md` | `adr` | ADR-024: Frontend Rollback Plan | 4386 | False |
-| `docs/adr/ADR-025-frontend-upgrade-backlog-metadata.md` | `adr` | ADR-025: Frontend Upgrade Backlog Metadata | 5608 | False |
-| `docs/adr/ADR-026-python-version-alignment.md` | `adr` | ADR-026 — Phase 4 Python Version Alignment | 2191 | False |
-| `docs/adr/ADR-027-observability-endpoint-access-control.md` | `adr` | ADR-027 — Observability Endpoint Access Control | 2183 | False |
-| `docs/adr/ADR-028-authoritative-deployment-target.md` | `adr` | ADR-028 — Authoritative Production Deployment Target | 2798 | False |
-| `docs/adr/ADR-029-supabase-auth-strategy.md` | `adr` | ADR-029: Supabase Auth Strategy | 1833 | False |
-| `docs/adr/ADR-030-content-review-governance.md` | `adr` | ADR-030 — Educator Consensus and Content Governance | 2178 | False |
-| `docs/adr/ADR-030-learner-tutor-safety-boundary.md` | `adr` | ADR-030 — Learner Tutor Safety and Context Boundary | 1425 | False |
-| `docs/adr/ADR-031-durable-ai-operations-budget-authority.md` | `adr` | ADR-031 — Durable AI Operations and Budget Authority | 1474 | False |
-| `docs/adr/ADR-031-irt-quality-self-healing.md` | `adr` | ADR-031 — IRT Quality and Self-Healing Controls | 1793 | False |
-| `docs/adr/ADR-032-curriculum-expansion-training-governance.md` | `adr` | ADR-032 — Governed Curriculum Expansion and Training Dataset Manifests | 1423 | False |
-| `docs/adr/README.md` | `adr` | Architectural Decision Records (ADR) | 1203 | False |
-| `docs/adr/frontend/ADR-001-auth-model.md` | `adr` | ADR-001 — Frontend Auth Model (FastAPI JWT + httpOnly cookie) | 2813 | False |
-| `docs/adr/frontend/ADR-001-rollback.md` | `adr` | ADR-001 Rollback Plan — Supabase Auth Restoration | 2279 | False |
-| `docs/adr/frontend/ADR-002-state-management.md` | `adr` | ADR-002 — State Management (Zustand + TanStack Query) | 2461 | False |
-| `docs/adr/frontend/ADR-003-popia-frontend.md` | `adr` | ADR-003 — POPIA Frontend Audit Relay | 2285 | False |
-| `docs/adr/frontend/ADR-004-ai-tutor.md` | `adr` | ADR-004 — AI Tutor Proxy & Safety Envelope | 1866 | False |
-| `docs/adr/frontend/ADR-005-analytics.md` | `adr` | ADR-005 — Analytics & Consent Tiers (Plausible Self-Host) | 2001 | False |
-| `docs/adr/frontend/ADR-006-rsc-boundaries.md` | `adr` | ADR-006 — RSC Boundaries & Route Component Map | 2467 | False |
-| `docs/adr/frontend/ADR-007-offline-sync.md` | `adr` | ADR-007 — Offline Sync & Conflict Resolution | 2195 | False |
-| `docs/adr/frontend/ADR-008-voice-input.md` | `adr` | ADR-008 — Voice Input (Web Speech API en-ZA) | 1934 | False |
-| `docs/adr/frontend/ADR-023-frontend-upgrade-react19-next15.md` | `adr` | ADR-023 — Frontend Upgrade (React 19 + Next 15) | 3775 | False |
-| `docs/adr/frontend/ADR-024-frontend-rollback-plan.md` | `adr` | ADR-024 — Frontend Rollback Plan (React 19 + Next 15) | 3930 | False |
-| `docs/adr/frontend/ADR-025-frontend-upgrade-backlog-metadata.md` | `adr` | ADR-025 — Frontend Upgrade Backlog Metadata | 4614 | False |
-| `docs/adr/frontend/TEMPLATE.md` | `adr` | Architecture Decision Record Template (Frontend) | 1053 | False |
-| `docs/adr/frontend/sign-off.md` | `adr` | Frontend ADR Sign-Off Register | 1474 | False |
+| `docs/README.md` | `general` | EduBoost Documentation Index | 2606 | False |
+| `docs/adr/0001-modular-monolith.md` | `adr` | ADR 0001: Modular Monolith Architecture | 1097 | False |
+| `docs/adr/0002-popia-first-design.md` | `adr` | ADR 0002: POPIA-First Design | 1433 | False |
+| `docs/adr/0003-llm-provider-abstraction.md` | `adr` | ADR 0003: LLM Provider Abstraction | 1423 | False |
+| `docs/adr/0004-standardizing-logic.md` | `adr` | ADR 0004: Standardizing Business Logic Location and Naming | 1451 | False |
+| `docs/adr/0005-fastapi-v2-entrypoint.md` | `adr` | ADR 0005: FastAPI V2 Entrypoint | 986 | False |
+| `docs/adr/0006-nextjs-frontend.md` | `adr` | ADR 0006: Next.js Frontend | 1170 | False |
+| `docs/adr/0007-postgresql-audit-ledger.md` | `adr` | ADR 0007: PostgreSQL Audit Ledger | 1319 | False |
+| `docs/adr/0008-redis-token-revocation.md` | `adr` | ADR 0008: Redis Token Revocation | 1220 | False |
+| `docs/adr/0009-caps-alignment.md` | `adr` | ADR 0009: CAPS Alignment | 1305 | False |
+| `docs/adr/0010-business-logic-location.md` | `adr` | ADR 0010 — Business Logic Location | 3166 | False |
+| `docs/adr/ADR-001-python-runtime-version.md` | `adr` | ADR-001 — Supported Python Runtime Version | 4650 | False |
+| `docs/adr/ADR-002-startup-ddl-repair.md` | `adr` | ADR-002 — Startup DDL Repair in `app/api_v2.py` | 8273 | False |
+| `docs/adr/ADR-003-deployment-targets.md` | `adr` | ADR-003 — Deployment Targets and Promotion Model | 5990 | False |
+| `docs/adr/ADR-004-popia-data-rights-service-authority.md` | `adr` | ADR-004: POPIA Data Rights Service Authority | 3441 | False |
+| `docs/adr/ADR-005-database-rollback-policy.md` | `adr` | ADR-005 — Database Rollback Policy | 3640 | False |
+| `docs/adr/ADR-009-billing-provider.md` | `adr` | ADR-009: Billing Provider Decision | 1402 | False |
+| `docs/adr/ADR-010-notifications-communication-provider.md` | `adr` | ADR-010: Notifications and Communication Provider Decision | 1600 | False |
+| `docs/adr/ADR-011-observability-stack.md` | `adr` | ADR-011: Observability Stack Decision | 1484 | False |
+| `docs/adr/ADR-012-ci-cd-infrastructure-deployment.md` | `adr` | ADR-012: CI/CD, Infrastructure, Deployment, Docker, and Environment Decision | 1548 | False |
+| `docs/adr/ADR-013-backup-restore-disaster-recovery.md` | `adr` | ADR-013: Backup, Restore, and Disaster Recovery Decision | 1639 | False |
+| `docs/adr/ADR-014-testing-release-evidence-quality-gates.md` | `adr` | ADR-014: Testing, Release Evidence, and Quality Gates Decision | 1632 | False |
+| `docs/adr/ADR-015-security-posture-threat-modeling.md` | `adr` | ADR-015: Security Posture and Threat Modeling Decision | 1686 | False |
+| `docs/adr/ADR-016-incident-response-operations-support.md` | `adr` | ADR-016: Incident Response, Operations, and Support Decision | 1537 | False |
+| `docs/adr/ADR-017-documentation-adrs-claim-discipline.md` | `adr` | ADR-017: Documentation, ADRs, and Claim Discipline | 1690 | False |
+| `docs/adr/ADR-018-beta-launch-staging-acceptance-product-scope.md` | `adr` | ADR-018: Beta Launch, Staging Acceptance, and Product Scope | 1374 | False |
+| `docs/adr/ADR-019-roadmap-after-production-readiness-baseline.md` | `adr` | ADR-019 — Roadmap After Production Readiness Baseline | 2251 | False |
+| `docs/adr/ADR-020-final-release-blocker-checklist.md` | `adr` | ADR-020: Final Release-Blocker Checklist | 1429 | False |
+| `docs/adr/ADR-021-backend-consolidation-evidence-first.md` | `adr` | ADR-021: Backend Consolidation Must Be Evidence-First | 1883 | False |
+| `docs/adr/ADR-022-audit-consent-table-ownership-options.md` | `adr` | ADR-022: Audit and Consent Table Ownership Options | 2365 | False |
+| `docs/adr/ADR-023-frontend-upgrade-react-19-next-15.md` | `adr` | ADR-023: Frontend Upgrade - React 19 + Next 15 | 3175 | False |
+| `docs/adr/ADR-024-frontend-rollback-plan.md` | `adr` | ADR-024: Frontend Rollback Plan | 4710 | False |
+| `docs/adr/ADR-025-frontend-upgrade-backlog-metadata.md` | `adr` | ADR-025: Frontend Upgrade Backlog Metadata | 5959 | False |
+| `docs/adr/ADR-026-python-version-alignment.md` | `adr` | ADR-026 — Phase 4 Python Version Alignment | 2528 | False |
+| `docs/adr/ADR-027-observability-endpoint-access-control.md` | `adr` | ADR-027 — Observability Endpoint Access Control | 2525 | False |
+| `docs/adr/ADR-028-authoritative-deployment-target.md` | `adr` | ADR-028 — Authoritative Production Deployment Target | 3145 | False |
+| `docs/adr/ADR-029-supabase-auth-strategy.md` | `adr` | ADR-029: Supabase Auth Strategy | 2157 | False |
+| `docs/adr/ADR-030-content-review-governance.md` | `adr` | ADR-030 — Educator Consensus and Content Governance | 2524 | False |
+| `docs/adr/ADR-031-durable-ai-operations-budget-authority.md` | `adr` | ADR-031 — Durable AI Operations and Budget Authority | 1821 | False |
+| `docs/adr/ADR-032-curriculum-expansion-training-governance.md` | `adr` | ADR-032 — Governed Curriculum Expansion and Training Dataset Manifests | 1788 | False |
+| `docs/adr/ADR-033-learner-tutor-safety-boundary.md` | `adr` | ADR-033 — Learner Tutor Safety and Context Boundary | 1771 | False |
+| `docs/adr/ADR-034-irt-quality-self-healing.md` | `adr` | ADR-034 — IRT Quality and Self-Healing Controls | 2135 | False |
+| `docs/adr/README.md` | `adr` | Architectural Decision Records (ADR) | 1873 | False |
+| `docs/adr/frontend/ADR-001-auth-model.md` | `adr` | ADR-001 — Frontend Auth Model (FastAPI JWT + httpOnly cookie) | 3162 | False |
+| `docs/adr/frontend/ADR-001-rollback.md` | `adr` | ADR-001 Rollback Plan — Supabase Auth Restoration | 2616 | False |
+| `docs/adr/frontend/ADR-002-state-management.md` | `adr` | ADR-002 — State Management (Zustand + TanStack Query) | 2802 | False |
+| `docs/adr/frontend/ADR-003-popia-frontend.md` | `adr` | ADR-003 — POPIA Frontend Audit Relay | 2609 | False |
+| `docs/adr/frontend/ADR-004-ai-tutor.md` | `adr` | ADR-004 — AI Tutor Proxy & Safety Envelope | 2196 | False |
+| `docs/adr/frontend/ADR-005-analytics.md` | `adr` | ADR-005 — Analytics & Consent Tiers (Plausible Self-Host) | 2346 | False |
+| `docs/adr/frontend/ADR-006-rsc-boundaries.md` | `adr` | ADR-006 — RSC Boundaries & Route Component Map | 2801 | False |
+| `docs/adr/frontend/ADR-007-offline-sync.md` | `adr` | ADR-007 — Offline Sync & Conflict Resolution | 2527 | False |
+| `docs/adr/frontend/ADR-008-voice-input.md` | `adr` | ADR-008 — Voice Input (Web Speech API en-ZA) | 2266 | False |
+| `docs/adr/frontend/ADR-023-frontend-upgrade-react19-next15.md` | `adr` | ADR-023 — Frontend Upgrade (React 19 + Next 15) | 4110 | False |
+| `docs/adr/frontend/ADR-024-frontend-rollback-plan.md` | `adr` | ADR-024 — Frontend Rollback Plan (React 19 + Next 15) | 4271 | False |
+| `docs/adr/frontend/ADR-025-frontend-upgrade-backlog-metadata.md` | `adr` | ADR-025 — Frontend Upgrade Backlog Metadata | 4945 | False |
+| `docs/adr/frontend/TEMPLATE.md` | `adr` | Architecture Decision Record Template (Frontend) | 1389 | False |
+| `docs/adr/frontend/sign-off.md` | `adr` | Frontend ADR Sign-Off Register | 1790 | False |
 | `docs/ai/CLUSTER_F_CLOSURE.md` | `general` | Cluster F AI/CAPS/Diagnostics Safety Closure | 1988 | False |
 | `docs/ai/ai_fixture_coverage_matrix.md` | `general` | AI Fixture Coverage Matrix | 1170 | False |
 | `docs/ai/ai_output_fixtures.md` | `general` | AI Output Fixtures | 681 | False |
 | `docs/ai/ai_output_schema_contract.md` | `general` | AI Output Schema Contract | 871 | False |
 | `docs/ai/ai_prompt_input_contract.md` | `general` | AI Prompt Input Contract | 976 | False |
 | `docs/ai/ai_prompt_secret_leakage_guard.md` | `general` | AI Prompt Secret Leakage Guard | 731 | False |
-| `docs/ai/ai_prompt_surface_inventory.md` | `general` | AI Prompt Surface Inventory | 20869 | False |
+| `docs/ai/ai_prompt_surface_inventory.md` | `general` | AI Prompt Surface Inventory | 25061 | False |
 | `docs/ai/ai_refusal_regression_fixtures.md` | `general` | AI Refusal Regression Fixtures | 504 | False |
 | `docs/ai/ai_safety_boundary_contract.md` | `general` | AI Safety Boundary Contract | 908 | False |
 | `docs/ai/ai_safety_evidence_index.md` | `general` | AI Safety Evidence Index | 1350 | False |
@@ -158,54 +109,98 @@ Moved by EduBoost documentation housekeeping.
 | `docs/ai/remediation_safety_contract.md` | `general` | Remediation Safety Contract | 1183 | False |
 | `docs/ai_lesson_safety.md` | `general` | AI Lesson Safety Baseline | 1128 | False |
 | `docs/analytics/learning_event_schema.md` | `general` | POPIA-safe learning event schema | 937 | False |
+| `docs/api/README.md` | `api` | API Documentation | 605 | False |
+| `docs/api/_build/README.md` | `api` | Archived API _build Redirect | 766 | False |
+| `docs/api/build/README.md` | `api` | Archived API build Redirect | 761 | False |
 | `docs/api_envelope_contract.md` | `api` | API Envelope Contract | 2016 | False |
 | `docs/api_v2.md` | `api` | API V2 Overview | 4074 | False |
 | `docs/api_versioning_policy.md` | `api` | EduBoost API Versioning Policy | 4277 | False |
-| `docs/architecture/CORE_TECHNICAL_AUDIT_2026-05-17.md` | `architecture` | EduBoost V2 Core Technical Audit | 28955 | False |
-| `docs/architecture/V2_ARCHITECTURE.md` | `architecture` | EduBoost SA — Recommended Architecture | 14300 | False |
-| `docs/architecture/architecture_decisions.md` | `architecture` | Architecture Decisions Index | 810 | False |
-| `docs/architecture/architecture_diagram.md` | `architecture` | EduBoost SA V2 — Architecture Diagram | 4018 | False |
+| `docs/architecture/CORE_TECHNICAL_AUDIT_2026-05-17.md` | `architecture` | EduBoost V2 Core Technical Audit | 29319 | False |
+| `docs/architecture/README.md` | `architecture` | Architecture Documentation | 636 | False |
+| `docs/architecture/V2_ARCHITECTURE.md` | `architecture` | EduBoost SA — Recommended Architecture | 14662 | False |
+| `docs/architecture/architecture_decisions.md` | `architecture` | Architecture Decisions Index | 1185 | False |
+| `docs/architecture/architecture_diagram.md` | `architecture` | EduBoost SA V2 — Architecture Diagram | 4379 | False |
 | `docs/architecture/auth_boundary_debt_report.json` | `architecture` | Auth Boundary Debt Report | 453 | False |
 | `docs/architecture/auth_boundary_debt_report.md` | `architecture` | Auth Boundary Debt Report | 433 | False |
 | `docs/architecture/auth_lifecycle_extraction_report.json` | `architecture` | Auth Lifecycle Extraction Report | 438 | False |
-| `docs/architecture/auth_lifecycle_extraction_report.md` | `architecture` | Auth Lifecycle Extraction Report | 609 | False |
+| `docs/architecture/auth_lifecycle_extraction_report.md` | `architecture` | Auth Lifecycle Extraction Report | 973 | False |
 | `docs/architecture/auth_service_extraction_followup.json` | `architecture` | Auth Service Extraction Followup | 371 | False |
 | `docs/architecture/auth_service_extraction_followup.md` | `architecture` | Auth Service Extraction Follow-up | 369 | False |
 | `docs/architecture/auth_service_extraction_report.json` | `architecture` | Auth Service Extraction Report | 1417 | False |
 | `docs/architecture/auth_service_extraction_report.md` | `architecture` | Auth Service Extraction Report | 538 | False |
 | `docs/architecture/auth_service_ownership_report.json` | `architecture` | Auth Service Ownership Report | 522 | False |
-| `docs/architecture/auth_service_ownership_report.md` | `architecture` | Auth Service Ownership Report | 542 | False |
-| `docs/architecture/boundary_debt_queue.md` | `architecture` | Boundary Debt Queue | 688 | False |
-| `docs/architecture/boundary_enforcement_policy.md` | `architecture` | Boundary Enforcement Policy | 639 | False |
+| `docs/architecture/auth_service_ownership_report.md` | `architecture` | Auth Service Ownership Report | 903 | False |
+| `docs/architecture/boundary_debt_queue.md` | `architecture` | Boundary Debt Queue | 1029 | False |
+| `docs/architecture/boundary_enforcement_policy.md` | `architecture` | Boundary Enforcement Policy | 988 | False |
 | `docs/architecture/db_live_only_table_ownership.yml` | `architecture` | Db Live Only Table Ownership | 1566 | False |
 | `docs/architecture/diagnostic_item_bank_canonicality.yml` | `architecture` | Diagnostic Item Bank Canonicality | 1289 | False |
-| `docs/architecture/import_boundaries.md` | `architecture` | Import Boundaries | 2362 | False |
+| `docs/architecture/import_boundaries.md` | `architecture` | Import Boundaries | 2701 | False |
 | `docs/architecture/import_linter_availability.md` | `architecture` | Import-Linter Availability | 122 | False |
-| `docs/architecture/import_linter_contract_run.md` | `architecture` | Import-Linter Contract Run | 1130 | False |
+| `docs/architecture/import_linter_contract_run.md` | `architecture` | Import-Linter Contract Run | 1478 | False |
 | `docs/architecture/legacy_learner_access_guard_report.json` | `architecture` | Legacy Learner Access Guard Report | 234 | False |
 | `docs/architecture/legacy_learner_access_guard_report.md` | `architecture` | Legacy Learner Access Guard Report | 285 | False |
-| `docs/architecture/metaphor_glossary.md` | `architecture` | Metaphor → Domain Name Glossary | 1212 | False |
+| `docs/architecture/metaphor_glossary.md` | `architecture` | Metaphor → Domain Name Glossary | 1567 | False |
 | `docs/architecture/metaphor_layer_inventory_baseline.json` | `architecture` | Metaphor Layer Inventory Baseline | 36898 | False |
-| `docs/architecture/router_repository_boundary_inventory.md` | `architecture` | Router Repository Boundary Inventory | 374 | False |
-| `docs/architecture/router_repository_boundary_matrix.json` | `architecture` | Router Repository Boundary Matrix | 5357 | False |
-| `docs/architecture/router_repository_boundary_matrix.md` | `architecture` | Router Repository Boundary Matrix | 2239 | False |
+| `docs/architecture/router_repository_boundary_inventory.md` | `architecture` | Router Repository Boundary Inventory | 742 | False |
+| `docs/architecture/router_repository_boundary_matrix.json` | `architecture` | Router Repository Boundary Matrix | 6611 | False |
+| `docs/architecture/router_repository_boundary_matrix.md` | `architecture` | Router Repository Boundary Matrix | 2660 | False |
 | `docs/architecture/router_service_dependency_map.json` | `architecture` | Router Service Dependency Map | 9620 | False |
-| `docs/architecture/router_service_dependency_map.md` | `architecture` | Router Service Dependency Map | 5018 | False |
+| `docs/architecture/router_service_dependency_map.md` | `architecture` | Router Service Dependency Map | 5369 | False |
 | `docs/architecture/router_thinness_baseline.json` | `architecture` | Router Thinness Baseline | 7752 | False |
-| `docs/architecture/service_boundary_classification_policy.md` | `architecture` | Service Boundary Classification Policy | 1129 | False |
-| `docs/architecture/service_boundary_inventory.json` | `architecture` | Service Boundary Inventory | 22162 | False |
-| `docs/architecture/service_boundary_inventory.md` | `architecture` | Service Boundary Inventory | 13182 | False |
+| `docs/architecture/service_boundary_classification_policy.md` | `architecture` | Service Boundary Classification Policy | 1489 | False |
+| `docs/architecture/service_boundary_inventory.json` | `architecture` | Service Boundary Inventory | 26233 | False |
+| `docs/architecture/service_boundary_inventory.md` | `architecture` | Service Boundary Inventory | 15477 | False |
 | `docs/architecture/service_family_map.json` | `architecture` | Service Family Map | 102143 | False |
-| `docs/architecture/service_family_map.md` | `architecture` | Service Family Map | 27720 | False |
+| `docs/architecture/service_family_map.md` | `architecture` | Service Family Map | 28060 | False |
 | `docs/architecture/transaction_boundary_inventory.json` | `architecture` | Transaction Boundary Inventory | 105251 | False |
-| `docs/architecture/transaction_boundary_inventory.md` | `architecture` | Transaction Boundary Inventory | 46813 | False |
+| `docs/architecture/transaction_boundary_inventory.md` | `architecture` | Transaction Boundary Inventory | 47175 | False |
 | `docs/architecture/tx_route_wiring_inventory.json` | `architecture` | Tx Route Wiring Inventory | 9748 | False |
-| `docs/architecture/tx_route_wiring_inventory.md` | `architecture` | Transaction Route Wiring Inventory | 4524 | False |
+| `docs/architecture/tx_route_wiring_inventory.md` | `architecture` | Transaction Route Wiring Inventory | 4890 | False |
 | `docs/architecture.md` | `general` | Architecture | 1189 | False |
 | `docs/archive/EduBoost_Technical_Status_Report.md` | `general` | EduBoost V2 — Comprehensive Technical Status Report | 24010 | False |
 | `docs/archive/INTEGRATION_COMPLETE.md` | `general` | EduBoost V2 PR Integration Complete ✅ | 11273 | False |
 | `docs/archive/LLM_Integration_Roadmap.md` | `general` | EduBoost V2: LLM Brain Integration Roadmap | 5999 | False |
 | `docs/archive/PR_INTEGRATION_SUMMARY.md` | `general` | PR Integration Summary (2026-05-08) | 25865 | False |
+| `docs/archive/README.md` | `general` | Documentation Archive | 652 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/DOC_ALIGNMENT_REPORT.md` | `general` | docs/DOC Alignment Report | 5995 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/README.md` | `general` | EduBoost V2 Controlled Document Set | 378 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 1 - Requirements & Concept/DOC-01_System-Requirements-Specification_(SRS).md` | `general` | System Requirements Specification (SRS) | 7981 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 1 - Requirements & Concept/DOC-02_System-Subsystem-Specification_(SSS).md` | `general` | System/Subsystem Specification (SSS) | 6157 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 1 - Requirements & Concept/DOC-03_Concept-of-Operations_(ConOps).md` | `general` | Concept of Operations (ConOps) | 6322 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 1 - Requirements & Concept/DOC-04_Stakeholder-Requirements-Definition_(StRS).md` | `general` | Stakeholder Requirements Definition (StRS) | 5877 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 1 - Requirements & Concept/DOC-05_Business-Requirements-Document_(BRD).md` | `general` | Business Requirements Document (BRD) | 5625 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 1 - Requirements & Concept/DOC-06_Use-Case-Specification_(UCS).md` | `general` | Use-Case Specification (UCS) | 6062 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 2 - Architecture & Design/DOC-07_Software-Design-Document_(SDD).md` | `general` | Software Design Document (SDD) | 5541 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 2 - Architecture & Design/DOC-08_Software-Architecture-Document_(SAD).md` | `general` | Software Architecture Document (SAD) | 5378 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 2 - Architecture & Design/DOC-09_Interface-Control-Document_(ICD).md` | `general` | Interface Control Document (ICD) | 7118 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 2 - Architecture & Design/DOC-10_Database-Design-Document_(DDD).md` | `general` | Database Design Document (DDD) | 12490 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 2 - Architecture & Design/DOC-11_Data-Dictionary_(DD).md` | `general` | Data Dictionary (DD) | 5619 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 2 - Architecture & Design/DOC-12_Security-Architecture-Document_(SecAD).md` | `general` | Security Architecture Document (SecAD) | 5139 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 3 - Implementation & Code/DOC-13_API-Reference.md` | `general` | API Reference | 26863 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 3 - Implementation & Code/DOC-14_Coding-Standards-Document_(CSD).md` | `general` | Coding Standards Document (CSD) | 4975 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 4 - Testing & Quality Assurance/DOC-15_Test-Plan_(TP).md` | `general` | Test Plan (TP) | 4953 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 4 - Testing & Quality Assurance/DOC-16_Test-Design-Specification_(TDS).md` | `general` | Test Design Specification (TDS) | 4767 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 4 - Testing & Quality Assurance/DOC-17_Test-Case-Specification_(TCS).md` | `general` | Test Case Specification (TCS) | 5017 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 4 - Testing & Quality Assurance/DOC-18_Test-Procedures_(TestProc).md` | `general` | Test Procedures | 4405 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 4 - Testing & Quality Assurance/DOC-19_Test-Item-Transmittal-Report_(TITR).md` | `general` | Test Item Transmittal Report (TITR) | 4586 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 4 - Testing & Quality Assurance/DOC-20_Test-Summary-Report_(TSR).md` | `general` | Test Summary Report (TSR) | 4620 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 4 - Testing & Quality Assurance/DOC-21_Software-Quality-Assurance-Plan_(SQAP).md` | `general` | Software Quality Assurance Plan (SQAP) | 4585 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 4 - Testing & Quality Assurance/DOC-22_Quality-Metrics-Report_(QMR).md` | `general` | Quality Metrics Report (QMR) | 4671 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 4 - Testing & Quality Assurance/DOC-23_Code-Review-Checklist_and_Standards_(CRS).md` | `general` | Code Review Checklist and Standards (CRS) | 4825 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 5 - Deployment & Operations/DOC-24_Deployment-Guide.md` | `general` | Deployment Guide | 4919 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 5 - Deployment & Operations/DOC-25_Operational-Manual_(OpsMan).md` | `general` | Operational Manual (OpsMan) | 5010 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 5 - Deployment & Operations/DOC-26_Disaster-Recovery-Plan_(DRP).md` | `general` | Disaster Recovery Plan (DRP) | 5106 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 5 - Deployment & Operations/DOC-27_Installation-and-Configuration-Guide_(ICG).md` | `general` | Installation and Configuration Guide (ICG) | 4877 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 5 - Deployment & Operations/DOC-28_Release_Notes.md` | `general` | Release Notes | 4567 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 6 - Security & Compliance/DOC-29_Security-Plan_(SecPlan).md` | `general` | Security Plan (SecPlan) | 4669 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 6 - Security & Compliance/DOC-30_Threat-Model-Document_(TMD).md` | `general` | Threat Model Document (TMD) | 5273 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 6 - Security & Compliance/DOC-31_Privacy-Impact-Assessment_(PIA).md` | `general` | Privacy Impact Assessment (PIA) | 5403 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 6 - Security & Compliance/DOC-32_Compliance_Matrix.md` | `general` | Compliance Matrix | 4937 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 6 - Security & Compliance/DOC-33_Incident-Response-Plan_(IRP).md` | `general` | Incident Response Plan (IRP) | 4748 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 6 - Security & Compliance/DOC-34_Authority-to-Operate_(ATO).md` | `general` | Authority to Operate (ATO) | 4713 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 7 - Project Management/DOC-35_Project-Management-Plan_(PMP).md` | `general` | Project Management Plan (PMP) | 4627 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 7 - Project Management/DOC-36_Risk-Register_(RR).md` | `general` | Risk Register (RR) | 5230 | False |
+| `docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 7 - Project Management/DOC-37_Change-Management-Plan_(CMP).md` | `general` | Change Management Plan (CMP) | 4843 | False |
 | `docs/archive/legacy-phase-controls/20260615T184543Z/execution/phase_1_execution_plan.md` | `general` | Phase 1 Execution Plan - Release-Blocking Correctness Fixes | 2045 | False |
 | `docs/archive/legacy-phase-controls/20260615T184543Z/execution/phase_1_implementation_report.md` | `general` | Phase 1 Implementation Report - Release-Blocking Correctness Fixes | 2718 | False |
 | `docs/archive/legacy-phase-controls/20260615T184543Z/execution/phase_3_execution_plan.md` | `general` | Phase 3 Execution Plan — Frontend Build and Test Health | 8261 | False |
@@ -217,7 +212,16 @@ Moved by EduBoost documentation housekeeping.
 | `docs/archive/legacy-phase-controls/20260615T184543Z/execution/phase_6_execution_plan.md` | `general` | Phase 6 Execution Plan — Durable Background Jobs | 11411 | False |
 | `docs/archive/legacy-phase-controls/20260615T184543Z/execution/phase_7_execution_plan.md` | `general` | Phase 7 Execution Plan — Deployment and Security Hardening | 12788 | False |
 | `docs/archive/legacy-phase-controls/20260615T184543Z/execution/phase_7_implementation_report.md` | `general` | Phase 7 Implementation Report — Deployment and Security Hardening | 7131 | False |
+| `docs/archive/patches/20260622T193052Z/patches/makefile_deduplicate_notes.md` | `general` | Makefile Duplicate Target Patch | 3858 | False |
+| `docs/archive/pr-notes/20260622T193052Z/pr/PR-002R_BACKEND_RUNTIME_API_CONTRACT.md` | `general` | PR-002R Backend Runtime and API Contract Evidence | 7876 | False |
+| `docs/archive/pr-notes/20260622T193052Z/pr/backend_runtime_wiring_pr_template.md` | `general` | Backend Runtime Wiring PR Template | 429 | False |
+| `docs/archive/pr-notes/20260622T193052Z/pr/combined_runtime_wiring_pr_checklist.md` | `general` | Combined Runtime Wiring PR Checklist | 437 | False |
+| `docs/archive/pr-notes/20260622T193052Z/pr/first_audit_runtime_wiring_pr_checklist.md` | `general` | First Audit Runtime Wiring PR Checklist | 526 | False |
+| `docs/archive/pr-notes/20260622T193052Z/pr/runtime_integration_pr_template.md` | `general` | Runtime Integration PR Template | 445 | False |
 | `docs/archive/pr_007_implementation_summary.md` | `general` | PR-007 Frontend core flows and accessibility | 4212 | False |
+| `docs/archive/release/superseded/20260622T193052Z/2026-06-21-full-pytest-latest-v2/README.md` | `general` | Superseded Full Pytest Artifact | 610 | False |
+| `docs/archive/roadmaps-or-todos/20260622T193052Z/todos/data_generator_todo.md` | `general` | Data Generator Remediation TODO | 9526 | False |
+| `docs/archive/roadmaps-or-todos/20260622T193052Z/todos/todo.md` | `general` | EduBoost V2 -- North Star TODO | 18520 | False |
 | `docs/archive/roadmaps-or-todos/EDUBOOST_NEXT_BATCH_ALL_OUTSTANDING_TASKS.md` | `general` | EduBoost V2 — Next Batch: All Outstanding Tasks | 9942 | False |
 | `docs/archive/roadmaps-or-todos/MANIFEST.md` | `general` | Archived Roadmaps And TODOs | 521 | False |
 | `docs/archive/roadmaps-or-todos/RoadMap.md` | `general` | Frontend-Backend Recovery Roadmap | 7911 | False |
@@ -241,7 +245,7 @@ Moved by EduBoost documentation housekeeping.
 | `docs/backlog/pr_cf_010_staging_seed_execution.md` | `general` | PR-CF-010 Staging Seed Execution | 1655 | False |
 | `docs/backlog/pr_cf_013_full_generation_runner.md` | `general` | PR-CF-013 — Full outstanding content generation runner | 1729 | False |
 | `docs/backlog/production_readiness/00_repository_state_and_canonical_source_of_truth.md` | `general` | 0. Repository state and canonical source of truth | 4624 | False |
-| `docs/backlog/production_readiness/01_pr-002r_replacement_—_backend_runtime_and_api_contract_baseline.md` | `general` | 1. PR-002R replacement — backend runtime and API contract baseline | 12884 | False |
+| `docs/backlog/production_readiness/01_pr-002r_replacement_backend_runtime_and_api_contract_baseline.md` | `general` | 1. PR-002R replacement — backend runtime and API contract baseline | 12884 | False |
 | `docs/backlog/production_readiness/02_backend_architecture_modular_monolith_and_dependency_boundaries.md` | `general` | 2. Backend architecture, modular monolith, and dependency boundaries | 4547 | False |
 | `docs/backlog/production_readiness/03_authentication_sessions_rbac_and_object-level_authorization.md` | `general` | 3. Authentication, sessions, RBAC, and object-level authorization | 10872 | False |
 | `docs/backlog/production_readiness/04_popia_consent_privacy_data-subject_rights_and_audit.md` | `general` | 4. POPIA consent, privacy, data-subject rights, and audit | 10278 | False |
@@ -297,7 +301,7 @@ Moved by EduBoost documentation housekeeping.
 | `docs/codemaps/base_repository_implementation_generic_async_crud_database_interactions.md` | `general` | Base Repository Implementation: Generic Async CRUD & Database Interactions | 51139 | False |
 | `docs/codemaps/content_factory_full_generation_system_overnight_batch_pipeline.md` | `general` | Content Factory Full Generation System: Overnight Batch Pipeline | 56301 | False |
 | `docs/codemaps/coverage_debt_management_and_recovery_system.md` | `general` | Coverage Debt Management and Recovery System | 45644 | False |
-| `docs/codemaps/docs_doc___documentation_suite_vs__actual_eduboost_v2_implementation.md` | `general` | docs/DOC/* Documentation Suite vs. Actual EduBoost V2 Implementation | 20735 | False |
+| `docs/codemaps/docs_doc___documentation_suite_vs__actual_eduboost_v2_implementation.md` | `general` | docs/DOC/* Documentation Suite vs. Actual EduBoost V2 Implementation | 20740 | False |
 | `docs/codemaps/eduboost_etl_mcp_server_architecture_document_pipeline_exposed_as_ai_callable_tools.md` | `general` | Eduboost ETL MCP Server Architecture: Document Pipeline Exposed as AI-Callable Tools | 33881 | False |
 | `docs/codemaps/eduboost_frontend_next_js_learner_platform_with_auth_ai_lessons_diagnostics_and_popia_compliance.md` | `general` | EduBoost Frontend: Next.js Learner Platform with Auth, AI Lessons, Diagnostics & POPIA Compliance | 54946 | False |
 | `docs/codemaps/eduboost_frontend_next_js_learning_platform_with_auth_ai_lessons_diagnostics_and_pwa.md` | `general` | EduBoost Frontend: Next.js Learning Platform with Auth, AI Lessons, Diagnostics & PWA | 52337 | False |
@@ -318,10 +322,11 @@ Moved by EduBoost documentation housekeeping.
 | `docs/codemaps/pytest_configuration_and_test_suite_structure.md` | `general` | Pytest Configuration and Test Suite Structure | 66559 | False |
 | `docs/codemaps/routeguard_authentication_flow_and_testing.md` | `general` | RouteGuard Authentication Flow & Testing | 55333 | False |
 | `docs/codemaps/test_coverage_and_ci_pipeline_configuration.md` | `general` | Test Coverage and CI Pipeline Configuration | 44479 | False |
-| `docs/compliance/data_retention_policy.md` | `general` | Data retention policy | 1365 | False |
-| `docs/compliance/popia_data_rights.md` | `general` | POPIA data-subject-rights workflow | 1563 | False |
-| `docs/compliance/pr_004_implementation_summary.md` | `general` | PR-004 POPIA consent/data-rights/audit implementation summary | 1424 | False |
-| `docs/compliance/subprocessor_register.md` | `general` | Subprocessor register | 1136 | False |
+| `docs/compliance/README.md` | `general` | Compliance Documentation | 685 | False |
+| `docs/compliance/data_retention_policy.md` | `general` | Data retention policy | 1723 | False |
+| `docs/compliance/popia_data_rights.md` | `general` | POPIA data-subject-rights workflow | 1934 | False |
+| `docs/compliance/pr_004_implementation_summary.md` | `general` | PR-004 POPIA consent/data-rights/audit implementation summary | 1822 | False |
+| `docs/compliance/subprocessor_register.md` | `general` | Subprocessor register | 1494 | False |
 | `docs/content_factory/CONTENT_GENERATION_CONFIG.md` | `general` | Content Generation Configuration | 12183 | False |
 | `docs/content_factory/admin_api.md` | `general` | Content Factory Admin API | 695 | False |
 | `docs/content_factory/control_plane.md` | `general` | Content Factory Control Plane | 657 | False |
@@ -333,7 +338,7 @@ Moved by EduBoost documentation housekeeping.
 | `docs/content_factory/staging_verification.md` | `general` | Content Factory Staging Verification | 1522 | False |
 | `docs/content_factory_overnight_batch_pipeline.md` | `general` | Content Factory Full Generation System: Overnight Batch Pipeline — Complete Trace Text | 49878 | False |
 | `docs/coverage-improvement-handover.md` | `general` | Code Coverage Improvement Handover | 6677 | False |
-| `docs/current_state.md` | `general` | Failure Details | 4526 | False |
+| `docs/current_state.md` | `general` | EduBoost Current State | 2434 | False |
 | `docs/curriculum/StudyMaterialExpansionPlan.md` | `general` | Study Material Expansion Implementation Plan | 24683 | False |
 | `docs/curriculum/TOPIC_MAP_REVIEW_CHECKLIST.md` | `general` | Topic Map Review Checklist | 11114 | False |
 | `docs/curriculum/caps_topic_map.md` | `general` | CAPS Topic Map MVP | 1137 | False |
@@ -379,15 +384,31 @@ Moved by EduBoost documentation housekeeping.
 | `docs/docs_generation_plan.md` | `general` | docs_generation_plan.md | 0 | True |
 | `docs/docs_inventory.json` | `general` | docs_inventory.json | 0 | True |
 | `docs/docs_inventory.md` | `general` | docs_inventory.md | 0 | True |
-| `docs/documentation/adr_lifecycle_contract.md` | `general` | ADR Lifecycle Contract | 604 | False |
-| `docs/documentation/claim_discipline_contract.md` | `general` | Claim Discipline Contract | 1113 | False |
-| `docs/documentation/documentation_adrs_claim_discipline_architecture_contract.md` | `general` | Documentation ADRs Claim Discipline Architecture Contract | 1017 | False |
-| `docs/documentation/documentation_inventory_contract.md` | `general` | Documentation Inventory Contract | 772 | False |
-| `docs/documentation/documentation_review_gate_contract.md` | `general` | Documentation Review Gate Contract | 672 | False |
-| `docs/documentation/production_claim_boundary_policy.md` | `general` | Production Claim Boundary Policy | 828 | False |
-| `docs/documentation/release_notes_discipline_contract.md` | `general` | Release Notes Discipline Contract | 671 | False |
-| `docs/documentation/stale_documentation_review_register.md` | `general` | Stale Documentation Review Register | 622 | False |
+| `docs/documentation/README.md` | `general` | Documentation Governance | 839 | False |
+| `docs/documentation/adr_lifecycle_contract.md` | `general` | ADR Lifecycle Contract | 937 | False |
+| `docs/documentation/adr_number_baseline.json` | `general` | Adr Number Baseline | 192 | False |
+| `docs/documentation/claim_discipline_contract.md` | `general` | Claim Discipline Contract | 1449 | False |
+| `docs/documentation/claim_discipline_policy.md` | `general` | Documentation Claim Discipline Policy | 1394 | False |
+| `docs/documentation/documentation_adrs_claim_discipline_architecture_contract.md` | `general` | Documentation ADRs Claim Discipline Architecture Contract | 1385 | False |
+| `docs/documentation/documentation_debt_baseline.md` | `general` | Documentation Debt Baseline | 1334 | False |
+| `docs/documentation/documentation_housekeeping_policy.md` | `general` | Documentation Housekeeping Policy | 2835 | False |
+| `docs/documentation/documentation_inventory_contract.md` | `general` | Documentation Inventory Contract | 1115 | False |
+| `docs/documentation/documentation_review_gate_contract.md` | `general` | Documentation Review Gate Contract | 1017 | False |
+| `docs/documentation/housekeeping_ratchet_baseline.json` | `general` | Housekeeping Ratchet Baseline | 667 | False |
+| `docs/documentation/migration_manifests/20260622T193052Z.json` | `general` | 20260622T193052Z | 6527 | False |
+| `docs/documentation/production_claim_boundary_policy.md` | `general` | Production Claim Boundary Policy | 1171 | False |
+| `docs/documentation/release_notes_discipline_contract.md` | `general` | Release Notes Discipline Contract | 1015 | False |
+| `docs/documentation/source_of_truth.yml` | `general` | EduBoost documentation source-of-truth register | 4546 | False |
+| `docs/documentation/stage_2_documentation_housekeeping.md` | `general` | Stage 2 Documentation Housekeeping | 3003 | False |
+| `docs/documentation/stage_3_documentation_housekeeping.md` | `general` | Stage 3 Documentation Housekeeping | 1434 | False |
+| `docs/documentation/stage_3_strict_scope.json` | `general` | Stage 3 Strict Scope | 2488 | False |
+| `docs/documentation/stage_4_deep_housekeeping.md` | `general` | Stage 4 Documentation Deep Housekeeping | 1286 | False |
+| `docs/documentation/stage_4_strict_scope.json` | `general` | Stage 4 Strict Scope | 760 | False |
+| `docs/documentation/stale_documentation_register.md` | `general` | Stale Documentation Register | 1971 | False |
+| `docs/documentation/stale_documentation_review_register.md` | `general` | Stale Documentation Review Register | 968 | False |
+| `docs/documentation/stale_term_baseline.json` | `general` | Stale Term Baseline | 572 | False |
 | `docs/documentation_intelligence_pipeline.md` | `general` | Documentation Intelligence Pipeline | 4837 | False |
+| `docs/engineering/README.md` | `general` | Engineering Documentation | 596 | False |
 | `docs/engineering/branching.md` | `general` | Branching and Protection Policy | 4435 | False |
 | `docs/engineering/ci_workflows.md` | `general` | CI/CD Workflows | 6861 | False |
 | `docs/engineering/coverage_debt.md` | `general` | Coverage Debt Register | 6943 | False |
@@ -440,8 +461,8 @@ Moved by EduBoost documentation housekeeping.
 | `docs/frontend/frontend_e2e_runtime_commands.md` | `general` | Frontend E2E Runtime Commands | 831 | False |
 | `docs/frontend/frontend_evidence_index.md` | `general` | Frontend Evidence Index | 1612 | False |
 | `docs/frontend/frontend_journey_evidence.md` | `general` | Frontend Journey Evidence | 296 | False |
-| `docs/frontend/frontend_route_inventory.md` | `general` | Frontend Route Inventory | 13675 | False |
-| `docs/frontend/frontend_runtime_inventory.md` | `general` | Frontend Runtime Inventory | 655 | False |
+| `docs/frontend/frontend_route_inventory.md` | `general` | Frontend Route Inventory | 13868 | False |
+| `docs/frontend/frontend_runtime_inventory.md` | `general` | Frontend Runtime Inventory | 656 | False |
 | `docs/frontend/frontend_verification_evidence_2026-05-11.md` | `general` | Frontend Verification Evidence | 1990 | False |
 | `docs/frontend/learner_vertical_journey_contract.md` | `general` | Learner Vertical Journey Contract | 1116 | False |
 | `docs/frontend/parent_vertical_journey_contract.md` | `general` | Parent Vertical Journey Contract | 1278 | False |
@@ -464,19 +485,25 @@ Moved by EduBoost documentation housekeeping.
 | `docs/frontend/production_teacher_admin_scope_contract.md` | `general` | Production Teacher/Admin Scope Contract | 862 | False |
 | `docs/frontend/spike_report_template.md` | `general` | Frontend Spike Report Template | 990 | False |
 | `docs/frontend/task_metadata_template.md` | `general` | Frontend Task Metadata Template | 1206 | False |
+| `docs/generated/README.md` | `general` | Generated Documentation | 729 | False |
 | `docs/generated/documentation_intelligence/README.md` | `general` | Documentation Intelligence Artifacts | 482 | False |
 | `docs/generated/documentation_intelligence/classifier_suggestions.md` | `general` | Classifier Suggestions | 7262 | False |
-| `docs/generated/documentation_intelligence/docs_gap_report.md` | `general` | Documentation Gap Report | 31265 | False |
-| `docs/generated/documentation_intelligence/docs_generation_plan.md` | `general` | Documentation Generation Plan | 10022 | False |
-| `docs/generated/documentation_intelligence/docs_inventory.json` | `general` | Docs Inventory | 1842378 | False |
-| `docs/generated/documentation_intelligence/docs_inventory.md` | `general` | Documentation Inventory | 125548 | False |
+| `docs/generated/documentation_intelligence/docs_gap_report.md` | `general` | Documentation Gap Report | 31276 | False |
+| `docs/generated/documentation_intelligence/docs_generation_plan.md` | `general` | Documentation Generation Plan | 10025 | False |
+| `docs/generated/documentation_intelligence/docs_inventory.json` | `general` | Docs Inventory | 1842398 | False |
+| `docs/generated/documentation_intelligence/docs_inventory.md` | `general` | Documentation Inventory | 125554 | False |
 | `docs/generated/documentation_intelligence/gap_fixes.md` | `general` | Gap Fixes & Proposed Evidence Links | 1749 | False |
 | `docs/generated/documentation_intelligence/review_request.md` | `general` | Review Request: System Overview | 1202 | False |
-| `docs/generated/documentation_intelligence/sanity_checks.json` | `general` | Sanity Checks | 3293824 | False |
+| `docs/generated/documentation_intelligence/sanity_checks.json` | `general` | Sanity Checks | 3293884 | False |
 | `docs/generated/documentation_intelligence/sanity_checks.md` | `general` | Docs Sanity Checks | 59756 | False |
 | `docs/generated/documentation_intelligence/system_overview.md` | `general` | System Overview | 5650 | False |
+| `docs/generated/documentation_inventory.json` | `general` | Documentation Inventory | 1065385 | False |
+| `docs/generated/legacy-inventories/20260622T193052Z/docs_inventory.md` | `general` | Documentation Inventory | 169777 | False |
+| `docs/generated/release-inventories/20260622T193052Z/audit_callsite_inventory.md` | `general` | Audit Call-Site Inventory | 422988 | False |
+| `docs/generated/release-inventories/20260622T193052Z/consent_callsite_inventory.md` | `general` | Consent Call-Site Inventory | 82761 | False |
 | `docs/incident_response.md` | `general` | Incident Response Playbook | 2260 | False |
 | `docs/index.md` | `general` | EduBoost V2 | 1408 | False |
+| `docs/input/README.md` | `general` | Archived documentation redirect | 772 | False |
 | `docs/irt/README.md` | `general` | IRT Engine | 929 | False |
 | `docs/launch_scope.md` | `general` | Production Launch Scope (v1.0) | 1652 | False |
 | `docs/learning_science/irt_model.md` | `general` | IRT Diagnostic Model | 938 | False |
@@ -510,6 +537,7 @@ Moved by EduBoost documentation housekeeping.
 | `docs/operations/CLUSTER_D_CLOSURE.md` | `general` | Cluster D CI/Deployment/Environment Closure | 1252 | False |
 | `docs/operations/CLUSTER_E_CLOSURE.md` | `general` | Cluster E Data Resilience Closure | 1636 | False |
 | `docs/operations/CLUSTER_H_CLOSURE.md` | `general` | Cluster H Staging and Beta Release Closure | 7368 | False |
+| `docs/operations/README.md` | `general` | Operations Documentation | 614 | False |
 | `docs/operations/SYSTEM_STARTUP_GUIDE.md` | `general` | EduBoost V2 End-to-End System Startup Guide | 7727 | False |
 | `docs/operations/SYSTEM_STARTUP_REPORT.md` | `general` | EduBoost V2 End-to-End System - Startup Report | 10873 | False |
 | `docs/operations/alertmanager.md` | `general` | Alertmanager Deployment Contract | 3898 | False |
@@ -533,7 +561,7 @@ Moved by EduBoost documentation housekeeping.
 | `docs/operations/beta_release_final_checklist.md` | `general` | Beta Release Final Checklist | 1981 | False |
 | `docs/operations/beta_release_final_index.md` | `general` | Beta Release Final Index | 3193 | False |
 | `docs/operations/beta_release_freeze_window_contract.md` | `general` | Beta Release Freeze Window Contract | 1753 | False |
-| `docs/operations/beta_release_pr_body.md` | `general` | Beta Release PR Body | 1366 | False |
+| `docs/operations/beta_release_pr_body.md` | `general` | Beta Release PR Body | 1404 | False |
 | `docs/operations/beta_release_readiness_contract.md` | `general` | Beta Release Readiness Contract | 2539 | False |
 | `docs/operations/beta_retrospective_action_register.md` | `general` | Beta Retrospective Action Register | 1855 | False |
 | `docs/operations/beta_rollback_runbook.md` | `general` | Beta Rollback Runbook | 1541 | False |
@@ -604,7 +632,7 @@ Moved by EduBoost documentation housekeeping.
 | `docs/operations/pr_ready_final_closure_certificate.md` | `general` | PR-Ready Final Closure Certificate | 1884 | False |
 | `docs/operations/production_restore_approval.md` | `general` | Production Restore Approval Guard | 713 | False |
 | `docs/operations/production_secrets.md` | `general` | Production Secrets Management | 2555 | False |
-| `docs/operations/project_assistance_status.md` | `general` | Project Assistance Status | 4091 | False |
+| `docs/operations/project_assistance_status.md` | `general` | Project Assistance Status | 3998 | False |
 | `docs/operations/project_evidence_index.md` | `general` | Project Evidence Index | 1993 | False |
 | `docs/operations/project_release_closure_index.md` | `general` | Project Release Closure Index | 3864 | False |
 | `docs/operations/recommended_operating_model.md` | `general` | Recommended Operating Model | 6000 | False |
@@ -658,30 +686,32 @@ Moved by EduBoost documentation housekeeping.
 | `docs/operations_support/status_communication_contract.md` | `general` | Status Communication Contract | 778 | False |
 | `docs/operations_support/support_sla_policy.md` | `general` | Support SLA Policy | 709 | False |
 | `docs/ops/db_backup.md` | `general` | Database Backup — EduBoost | 1899 | False |
-| `docs/patches/makefile_deduplicate_notes.md` | `general` | Makefile Duplicate Target Patch | 3858 | False |
+| `docs/patches/README.md` | `general` | Archived documentation redirect | 719 | False |
 | `docs/popia/README.md` | `general` | POPIA And Data Rights | 1095 | False |
 | `docs/popia/popia_data_rights.md` | `general` | POPIA data-subject-rights workflow | 1563 | False |
 | `docs/popia_consent_versioning_design.md` | `general` | POPIA Consent Versioning Design | 6341 | False |
 | `docs/popia_erasure.md` | `general` | Runbook: POPIA Right-to-Erasure Request | 2400 | False |
 | `docs/popia_erasure_cascade_matrix.md` | `general` | POPIA Erasure Cascade Matrix | 6382 | False |
 | `docs/popia_export_data_inventory.md` | `general` | POPIA Export Data Inventory | 11969 | False |
-| `docs/pr/PR-002R_BACKEND_RUNTIME_API_CONTRACT.md` | `general` | PR-002R Backend Runtime and API Contract Evidence | 7876 | False |
-| `docs/pr/backend_runtime_wiring_pr_template.md` | `general` | Backend Runtime Wiring PR Template | 429 | False |
-| `docs/pr/combined_runtime_wiring_pr_checklist.md` | `general` | Combined Runtime Wiring PR Checklist | 437 | False |
-| `docs/pr/first_audit_runtime_wiring_pr_checklist.md` | `general` | First Audit Runtime Wiring PR Checklist | 526 | False |
-| `docs/pr/runtime_integration_pr_template.md` | `general` | Runtime Integration PR Template | 445 | False |
+| `docs/pr/PR-002R_BACKEND_RUNTIME_API_CONTRACT.md` | `general` | PR-002R Backend Runtime API Contract | 678 | False |
+| `docs/pr/README.md` | `general` | Archived documentation redirect | 715 | False |
+| `docs/pr/backend_runtime_wiring_pr_template.md` | `general` | Backend Runtime Wiring PR Template | 365 | False |
+| `docs/pr/combined_runtime_wiring_pr_checklist.md` | `general` | Combined Runtime Wiring PR Checklist | 636 | False |
+| `docs/pr/first_audit_runtime_wiring_pr_checklist.md` | `general` | First Audit Runtime Wiring PR Checklist | 464 | False |
+| `docs/pr/runtime_integration_pr_template.md` | `general` | Runtime Integration PR Template | 438 | False |
 | `docs/privacy/information_officer.md` | `general` | Information Officer Contact | 3347 | False |
-| `docs/product/ai_transparency_faq.md` | `general` | AI Transparency FAQ — EduBoost | 4511 | False |
-| `docs/product/differentiation_strategy.md` | `general` | Future differentiation strategy | 773 | False |
-| `docs/product/faq.md` | `general` | Frequently Asked Questions — EduBoost | 3864 | False |
-| `docs/product/launch_scope.md` | `general` | EduBoost beta launch scope | 1749 | False |
-| `docs/product/learner_guide.md` | `general` | Learner Guide — EduBoost | 3826 | False |
-| `docs/product/parent_guide.md` | `general` | Parent/Guardian Guide — EduBoost | 3921 | False |
-| `docs/product/pricing_faq.md` | `general` | Pricing FAQ — EduBoost | 2951 | False |
-| `docs/product/pricing_operations.md` | `general` | Pricing operations and refund process | 1167 | False |
-| `docs/product/product_overview.md` | `general` | EduBoost Product Overview | 4031 | False |
-| `docs/product/roadmap.md` | `general` | Transparent product roadmap | 957 | False |
-| `docs/product/teacher_guide.md` | `general` | Teacher Guide — EduBoost | 4131 | False |
+| `docs/product/README.md` | `general` | Product Documentation | 712 | False |
+| `docs/product/ai_transparency_faq.md` | `general` | AI Transparency FAQ — EduBoost | 4871 | False |
+| `docs/product/differentiation_strategy.md` | `general` | Future differentiation strategy | 1132 | False |
+| `docs/product/faq.md` | `general` | Frequently Asked Questions — EduBoost | 4231 | False |
+| `docs/product/launch_scope.md` | `general` | EduBoost beta launch scope | 2103 | False |
+| `docs/product/learner_guide.md` | `general` | Learner Guide — EduBoost | 4180 | False |
+| `docs/product/parent_guide.md` | `general` | Parent/Guardian Guide — EduBoost | 4283 | False |
+| `docs/product/pricing_faq.md` | `general` | Pricing FAQ — EduBoost | 3303 | False |
+| `docs/product/pricing_operations.md` | `general` | Pricing operations and refund process | 1532 | False |
+| `docs/product/product_overview.md` | `general` | EduBoost Product Overview | 4384 | False |
+| `docs/product/roadmap.md` | `general` | Transparent product roadmap | 1312 | False |
+| `docs/product/teacher_guide.md` | `general` | Teacher Guide — EduBoost | 4485 | False |
 | `docs/production_readiness_roadmap.md` | `general` | EduBoost V2 Production Readiness Roadmap | 10997 | False |
 | `docs/project/status.md` | `general` | Status | 698 | False |
 | `docs/project_status.md` | `general` | Project Status | 19700 | False |
@@ -714,7 +744,7 @@ Moved by EduBoost documentation housekeeping.
 | `docs/release/EduBoost_V2_North_Star_TODO_2026-05-22.md` | `release` | EduBoost V2 North Star TODO - 2026-05-22 | 12744 | False |
 | `docs/release/EduBoost_V2_Post_Baseline_Remediation_Roadmap.md` | `release` | EduBoost V2 — Post-Baseline Remediation and Execution Roadmap | 14566 | False |
 | `docs/release/EduBoost_V2_Production_Readiness_Status_Report.md` | `release` | EduBoost V2 Production-Readiness Status Report | 1078 | False |
-| `docs/release/EduBoost_V2_Production_Readiness_Technical_Assessment.md` | `release` | EduBoost V2 — Production Readiness Technical Assessment | 17986 | False |
+| `docs/release/EduBoost_V2_Production_Readiness_Technical_Assessment.md` | `release` | EduBoost V2 — Production Readiness Technical Assessment | 18023 | False |
 | `docs/release/EduBoost_V2_Release_Owner_Go_No_Go_Memo.md` | `release` | EduBoost V2 Release-Owner Go/No-Go Memo | 975 | False |
 | `docs/release/EduBoost_V2_Remaining_External_Evidence_Checklist.md` | `release` | EduBoost V2 Remaining External Evidence Checklist | 1700 | False |
 | `docs/release/EduBoost_V2_Technical_Report.md` | `release` | EduBoost SA V2 — Comprehensive Technical Report | 23015 | False |
@@ -737,9 +767,9 @@ Moved by EduBoost documentation housekeeping.
 | `docs/release/approval_evidence_status.md` | `release` | Approval Evidence Status | 1296 | False |
 | `docs/release/arq_consent_job_repair_report.md` | `release` | ARQ Consent Job Repair Report | 340 | False |
 | `docs/release/arq_dependency_worker_import_repair_report.md` | `release` | ARQ Dependency and Worker Import Repair Report | 520 | False |
-| `docs/release/audit_baseline_refresh_status.json` | `release` | Audit Baseline Refresh Status | 6535 | False |
-| `docs/release/audit_baseline_refresh_status.md` | `release` | Audit Baseline Refresh Status | 3596 | False |
-| `docs/release/audit_callsite_inventory.md` | `release` | Audit Call-Site Inventory | 422988 | False |
+| `docs/release/audit_baseline_refresh_status.json` | `release` | Audit Baseline Refresh Status | 6601 | False |
+| `docs/release/audit_baseline_refresh_status.md` | `release` | Audit Baseline Refresh Status | 3636 | False |
+| `docs/release/audit_callsite_inventory.md` | `release` | Audit Call-Site Inventory | 538967 | False |
 | `docs/release/audit_callsite_migration_slice_002.md` | `release` | Audit Call-Site Migration Slice 002 | 482 | False |
 | `docs/release/audit_candidate_execution_ledger.md` | `release` | Audit Candidate Execution Ledger | 451 | False |
 | `docs/release/audit_canonicalization_implementation_checklist.md` | `release` | Audit Canonicalization Implementation Checklist | 957 | False |
@@ -786,22 +816,22 @@ Moved by EduBoost documentation housekeeping.
 | `docs/release/auth_token_claims_repair_report.md` | `release` | Auth Token Claims Repair Report | 502 | False |
 | `docs/release/backend_adapter_wiring_service_contract.md` | `release` | Backend Adapter Wiring Service Contract | 417 | False |
 | `docs/release/backend_consolidation_decision_record.md` | `release` | Backend Consolidation Decision Record | 1859 | False |
-| `docs/release/backend_consolidation_diagnostic_report.md` | `release` | Backend Consolidation Diagnostic Report | 9066 | False |
+| `docs/release/backend_consolidation_diagnostic_report.md` | `release` | Backend Consolidation Diagnostic Report | 10686 | False |
 | `docs/release/backend_consolidation_dragons.md` | `release` | Backend Consolidation Dragons | 2693 | False |
 | `docs/release/backend_consolidation_evidence_manifest.md` | `release` | Backend Consolidation Evidence Manifest | 3640 | False |
 | `docs/release/backend_consolidation_execution_packet.md` | `release` | Backend Consolidation Execution Packet | 1359 | False |
-| `docs/release/backend_consolidation_execution_report.md` | `release` | Backend Consolidation Execution Report | 7024 | False |
+| `docs/release/backend_consolidation_execution_report.md` | `release` | Backend Consolidation Execution Report | 7167 | False |
 | `docs/release/backend_consolidation_implementation_foundation.md` | `release` | Backend Consolidation Implementation Foundation | 1124 | False |
-| `docs/release/backend_consolidation_implementation_foundation_report.md` | `release` | Backend Consolidation Implementation Foundation Report | 12888 | False |
+| `docs/release/backend_consolidation_implementation_foundation_report.md` | `release` | Backend Consolidation Implementation Foundation Report | 12992 | False |
 | `docs/release/backend_consolidation_implementation_progress.md` | `release` | Backend Consolidation Implementation Progress | 960 | False |
-| `docs/release/backend_consolidation_progress_report.md` | `release` | Backend Consolidation Progress Report | 3893 | False |
+| `docs/release/backend_consolidation_progress_report.md` | `release` | Backend Consolidation Progress Report | 3997 | False |
 | `docs/release/backend_consolidation_readiness_matrix.md` | `release` | Backend Consolidation Readiness Matrix | 1795 | False |
-| `docs/release/backend_consolidation_readiness_report.md` | `release` | Backend Consolidation Readiness Report | 2850 | False |
+| `docs/release/backend_consolidation_readiness_report.md` | `release` | Backend Consolidation Readiness Report | 2993 | False |
 | `docs/release/backend_consolidation_terminal_packet.md` | `release` | Backend Consolidation Terminal Packet | 1481 | False |
-| `docs/release/backend_consolidation_terminal_report.md` | `release` | Backend Consolidation Terminal Report | 9156 | False |
+| `docs/release/backend_consolidation_terminal_report.md` | `release` | Backend Consolidation Terminal Report | 9338 | False |
 | `docs/release/backend_data_retention_approval_update.md` | `release` | Backend Data Retention Approval Update | 402 | False |
 | `docs/release/backend_data_retention_decision_checklist.md` | `release` | Backend Data Retention Decision Checklist | 1404 | False |
-| `docs/release/backend_deletion_candidate_inventory.md` | `release` | Backend Deletion Candidate Inventory | 105050098 | False |
+| `docs/release/backend_deletion_candidate_inventory.md` | `release` | Backend Deletion Candidate Inventory | 110777534 | False |
 | `docs/release/backend_first_wiring_candidate_registry.md` | `release` | Backend First Wiring Candidate Registry | 372 | False |
 | `docs/release/backend_first_wiring_candidates_report.md` | `release` | Backend First Wiring Candidates Report | 6025 | False |
 | `docs/release/backend_implementation_371_375_report.md` | `release` | Backend Implementation 371-375 Report | 3512 | False |
@@ -820,14 +850,14 @@ Moved by EduBoost documentation housekeeping.
 | `docs/release/backend_runtime_integration_checksum_manifest.md` | `release` | Backend Runtime Integration Checksum Manifest | 1109 | False |
 | `docs/release/backend_runtime_integration_next_pr_queue.md` | `release` | Backend Runtime Integration Next PR Queue | 405 | False |
 | `docs/release/backend_runtime_integration_readiness.md` | `release` | Backend Runtime Integration Readiness | 583 | False |
-| `docs/release/backend_runtime_integration_readiness_report.md` | `release` | Backend Runtime Integration Readiness Report | 5760 | False |
+| `docs/release/backend_runtime_integration_readiness_report.md` | `release` | Backend Runtime Integration Readiness Report | 5864 | False |
 | `docs/release/backend_runtime_integration_status_rollup.md` | `release` | Backend Runtime Integration Status Rollup | 412 | False |
 | `docs/release/backend_runtime_probe_contract.md` | `release` | Backend Runtime Probe Contract | 1140 | False |
-| `docs/release/backend_runtime_probe_report.md` | `release` | Backend Runtime Probe Report | 6524 | False |
-| `docs/release/backend_runtime_wiring_cases_report.md` | `release` | Backend Runtime Wiring Cases Report | 5374 | False |
+| `docs/release/backend_runtime_probe_report.md` | `release` | Backend Runtime Probe Report | 6628 | False |
+| `docs/release/backend_runtime_wiring_cases_report.md` | `release` | Backend Runtime Wiring Cases Report | 5465 | False |
 | `docs/release/backend_runtime_wiring_fixture_contract.md` | `release` | Backend Runtime Wiring Fixture Contract | 740 | False |
 | `docs/release/backend_runtime_wiring_preflight.md` | `release` | Backend Runtime Wiring Preflight | 699 | False |
-| `docs/release/backend_runtime_wiring_preflight_report.md` | `release` | Backend Runtime Wiring Preflight Report | 5144 | False |
+| `docs/release/backend_runtime_wiring_preflight_report.md` | `release` | Backend Runtime Wiring Preflight Report | 5300 | False |
 | `docs/release/backend_runtime_wiring_status_rollup.md` | `release` | Backend Runtime Wiring Status Rollup | 493 | False |
 | `docs/release/backend_runtime_wiring_test_pack.md` | `release` | Backend Runtime Wiring Test Pack | 713 | False |
 | `docs/release/backup_drill_evidence.json` | `release` | Backup Drill Evidence | 194 | False |
@@ -845,8 +875,8 @@ Moved by EduBoost documentation housekeeping.
 | `docs/release/beta_release_owner_memo.md` | `release` | Beta Release Owner Memo | 151 | False |
 | `docs/release/branch_protection_evidence.json` | `release` | Branch Protection Evidence | 301 | False |
 | `docs/release/branch_protection_evidence.md` | `release` | Branch Protection Evidence | 584 | False |
-| `docs/release/ci_auth_refresh_db_proof_workflow_status.json` | `release` | Ci Auth Refresh Db Proof Workflow Status | 1699 | False |
-| `docs/release/ci_auth_refresh_db_proof_workflow_status.md` | `release` | CI Auth Refresh DB Proof Workflow Status | 1284 | False |
+| `docs/release/ci_auth_refresh_db_proof_workflow_status.json` | `release` | Ci Auth Refresh Db Proof Workflow Status | 1662 | False |
+| `docs/release/ci_auth_refresh_db_proof_workflow_status.md` | `release` | CI Auth Refresh DB Proof Workflow Status | 1261 | False |
 | `docs/release/ci_authority_status.json` | `release` | Ci Authority Status | 2884 | False |
 | `docs/release/ci_authority_status.md` | `release` | CI Authority Status | 2847 | False |
 | `docs/release/ci_evidence.json` | `release` | Ci Evidence | 196 | False |
@@ -865,6 +895,7 @@ Moved by EduBoost documentation housekeeping.
 | `docs/release/consent_service_compatibility_contract.md` | `release` | Consent Service Compatibility Contract | 1416 | False |
 | `docs/release/content_factory_refreshed_status.md` | `release` | Content Factory Refreshed Status | 4490 | False |
 | `docs/release/content_readiness_status.md` | `release` | Content Readiness Status | 1387 | False |
+| `docs/release/current/README.md` | `release` | Current Release Documentation | 762 | False |
 | `docs/release/db_backup_restore_rollback_evidence_status.json` | `release` | Db Backup Restore Rollback Evidence Status | 1302 | False |
 | `docs/release/db_backup_restore_rollback_evidence_status.md` | `release` | DB Backup / Restore / Rollback Evidence Status | 1349 | False |
 | `docs/release/db_live_only_table_ownership_status.json` | `release` | Db Live Only Table Ownership Status | 2689 | False |
@@ -878,7 +909,7 @@ Moved by EduBoost documentation housekeeping.
 | `docs/release/deep_readiness_runtime_integration_target_map.md` | `release` | Deep-Readiness Runtime Integration Target Map | 371 | False |
 | `docs/release/diag_deep_health_runtime_status.json` | `release` | Diag Deep Health Runtime Status | 1246 | False |
 | `docs/release/diag_deep_health_runtime_status.md` | `release` | Diagnostic Deep Health Runtime Evidence Status | 1596 | False |
-| `docs/release/diagnostic_item_bank_canonicality_status.json` | `release` | Diagnostic Item Bank Canonicality Status | 70606 | False |
+| `docs/release/diagnostic_item_bank_canonicality_status.json` | `release` | Diagnostic Item Bank Canonicality Status | 74502 | False |
 | `docs/release/diagnostic_item_bank_canonicality_status.md` | `release` | Diagnostic Item-Bank Policy Status | 4311 | False |
 | `docs/release/diagnostic_score_live_audit_status.json` | `release` | Diagnostic Score Live Audit Status | 6070 | False |
 | `docs/release/diagnostic_score_live_audit_status.md` | `release` | Diagnostic Score Live Audit Status | 3632 | False |
@@ -901,7 +932,7 @@ Moved by EduBoost documentation housekeeping.
 | `docs/release/eduboost-v2-technical-audit-2026-06-02.md` | `release` | EduBoost V2 Technical Audit | 20636 | False |
 | `docs/release/evidence_attachment_runbook.md` | `release` | Evidence Attachment Runbook | 5177 | False |
 | `docs/release/evidence_attachment_runbook_manifest.json` | `release` | Evidence Attachment Runbook Manifest | 4984 | False |
-| `docs/release/evidence_status_registry.yml` | `release` | EduBoost V2 Evidence Status Registry | 34339 | False |
+| `docs/release/evidence_status_registry.yml` | `release` | EduBoost V2 Evidence Status Registry | 34358 | False |
 | `docs/release/external_approval_status.json` | `release` | External Approval Status | 3030 | False |
 | `docs/release/external_approval_status.md` | `release` | External Approval Status | 1584 | False |
 | `docs/release/external_approvals/content_approval.md` | `release` | Educator/content release approval | 522 | False |
@@ -914,7 +945,7 @@ Moved by EduBoost documentation housekeeping.
 | `docs/release/final_go_no_go_evidence.md` | `release` | Final Go/No-Go Evidence | 1358 | False |
 | `docs/release/first_audit_runtime_wiring_evidence.md` | `release` | First Audit Runtime Wiring Evidence | 465 | False |
 | `docs/release/first_audit_runtime_wiring_pr.md` | `release` | First Audit Runtime Wiring PR | 677 | False |
-| `docs/release/first_audit_runtime_wiring_report.md` | `release` | First Audit Runtime Wiring Report | 4729 | False |
+| `docs/release/first_audit_runtime_wiring_report.md` | `release` | First Audit Runtime Wiring Report | 4833 | False |
 | `docs/release/first_consent_runtime_wiring_pr.md` | `release` | First Consent Runtime Wiring PR | 407 | False |
 | `docs/release/first_deep_readiness_runtime_wiring_pr.md` | `release` | First Deep-Readiness Runtime Wiring PR | 361 | False |
 | `docs/release/followup_audit_runtime_debt_queue.md` | `release` | Follow-up Audit Runtime Debt Queue | 456 | False |
@@ -1160,11 +1191,11 @@ Moved by EduBoost documentation housekeeping.
 | `docs/release/runtime_integration_test_evidence_template.md` | `release` | Runtime Integration Test Evidence Template | 315 | False |
 | `docs/release/runtime_launch_content_evidence_status.json` | `release` | Runtime Launch Content Evidence Status | 5162 | False |
 | `docs/release/runtime_launch_content_evidence_status.md` | `release` | Runtime Launch Content Evidence Status | 4875 | False |
-| `docs/release/runtime_wiring_431_450_report.md` | `release` | Runtime Wiring 431-450 Report | 5699 | False |
+| `docs/release/runtime_wiring_431_450_report.md` | `release` | Runtime Wiring 431-450 Report | 5803 | False |
 | `docs/release/runtime_wiring_approval_checklist.md` | `release` | Runtime Wiring Approval Checklist | 529 | False |
 | `docs/release/schema_drift_db_execution_checklist.md` | `release` | Schema Drift DB Execution Checklist | 852 | False |
 | `docs/release/schema_drift_disposable_db_proof.md` | `release` | Schema Drift Disposable DB Proof | 963 | False |
-| `docs/release/schema_drift_disposable_latest.json` | `release` | Schema Drift Disposable Latest | 1109 | False |
+| `docs/release/schema_drift_disposable_latest.json` | `release` | Schema Drift Disposable Latest | 1148 | False |
 | `docs/release/schema_drift_disposable_latest.md` | `release` | Schema Drift Disposable DB Latest Proof | 341 | False |
 | `docs/release/schema_drift_evidence_contract.md` | `release` | Schema Drift Evidence Contract | 898 | False |
 | `docs/release/schema_drift_execution_gate_hardening.md` | `release` | Schema Drift Execution Gate Hardening | 593 | False |
@@ -1186,7 +1217,7 @@ Moved by EduBoost documentation housekeeping.
 | `docs/release/staging_smoke_workflow_status.json` | `release` | Staging Smoke Workflow Status | 393 | False |
 | `docs/release/staging_smoke_workflow_status.md` | `release` | Staging Smoke Workflow Status | 670 | False |
 | `docs/release/status.md` | `release` | Status | 698 | False |
-| `docs/release/superseded/2026-06-21-full-pytest-latest-v2/README.md` | `release` | Superseded Full Pytest Artifact | 610 | False |
+| `docs/release/superseded/README.md` | `release` | Archived documentation redirect | 768 | False |
 | `docs/release/test_environment_contract.md` | `release` | Test Environment Contract | 983 | False |
 | `docs/release/transaction_rollback_rollup_report.json` | `release` | Transaction Rollback Rollup Report | 1522 | False |
 | `docs/release/transaction_rollback_rollup_report.md` | `release` | Transaction Rollback Proof Rollup | 1291 | False |
@@ -1324,6 +1355,15 @@ Moved by EduBoost documentation housekeeping.
 | `docs/release-evidence/atlas/phase-06/phase_06_evidence_index.md` | `general` | Phase 6 Evidence Index — AI Operations | 692 | False |
 | `docs/release-evidence/atlas/phase-07/phase_07_audit_report.md` | `general` | Phase 7 Independent Audit Report | 845 | False |
 | `docs/release-evidence/atlas/phase-07/phase_07_evidence_index.md` | `general` | Phase 7 Evidence Index | 1351 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate/evidence_index.md` | `general` | Technical Audit Remediation Evidence — Backend Fast Gate | 1163 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate/raw/backend_fast_preflight.json` | `general` | Backend Fast Preflight | 728 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate/raw/backend_fast_runner_stdout.json` | `general` | Backend Fast Runner Stdout | 0 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate/raw/baseline_reset_check.json` | `general` | Baseline Reset Check | 365 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate/raw/dependency_scan_workflow.json` | `general` | Dependency Scan Workflow | 90 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate/raw/frontend_env_contract.json` | `general` | Frontend Env Contract | 80 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate/raw/openapi_route_contract.json` | `general` | Openapi Route Contract | 1883 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate/raw/phase02r_terminal_gate_control.json` | `general` | Phase02R Terminal Gate Control | 36 | False |
+| `docs/release-evidence/technical-audit/backend-fast-gate/raw/popia_route_contract.json` | `general` | Popia Route Contract | 227 | False |
 | `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/evidence_index.md` | `general` | Technical Audit Remediation Evidence — Backend Fast Failed Gate Diagnostic | 920 | False |
 | `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/backend_fast_environment.json` | `general` | Backend Fast Environment | 7992 | False |
 | `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/backend_fast_failure_report.json` | `general` | Backend Fast Failure Report | 12585 | False |
@@ -1338,10 +1378,53 @@ Moved by EduBoost documentation housekeeping.
 | `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/original_failed_evidence/raw/openapi_route_contract.json` | `general` | Openapi Route Contract | 1959 | False |
 | `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/original_failed_evidence/raw/phase02r_terminal_gate_control.json` | `general` | Phase02R Terminal Gate Control | 202 | False |
 | `docs/release-evidence/technical-audit/backend-fast-gate-failure/20260624T081444Z/raw/original_failed_evidence/raw/popia_route_contract.json` | `general` | Popia Route Contract | 301 | False |
-| `docs/release-evidence/technical-audit/backend-fast-runtime-dependencies/20260624T112921Z/evidence_index.md` | `general` | Evidence Index | 0 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02d/20260626T122827Z/evidence_index.md` | `general` | Technical Audit Phase 02D Evidence — Backend Fast Staging and Contract Remediation | 678 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02d/20260626T122827Z/raw/phase02d_verification.json` | `general` | Phase02D Verification | 1387 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02e/20260626T125325Z/evidence_index.md` | `general` | Backend Fast Phase 02E Evidence | 497 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02e/20260626T125325Z/raw/phase02e_verification.json` | `general` | Phase02E Verification | 1481 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02e/20260626T125348Z/evidence_index.md` | `general` | Backend Fast Phase 02E Evidence | 497 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02e/20260626T125348Z/raw/phase02e_verification.json` | `general` | Phase02E Verification | 1481 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02e/20260626T125448Z/evidence_index.md` | `general` | Backend Fast Phase 02E Evidence | 615 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02e/20260626T125448Z/raw/phase02e_verification.json` | `general` | Phase02E Verification | 1481 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02f/20260626T133205Z/evidence_index.md` | `general` | Technical Audit Phase 02F — Backend Fast Item/Seed/Router Evidence | 637 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02f/20260626T133205Z/raw/phase02f_verification.json` | `general` | Phase02F Verification | 1287 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02f/20260626T133525Z/evidence_index.md` | `general` | Technical Audit Phase 02F — Backend Fast Item/Seed/Router Evidence | 643 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02f/20260626T133525Z/raw/phase02f_verification.json` | `general` | Phase02F Verification | 1287 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02g/20260626T140322Z/evidence_index.md` | `general` | Technical Audit Backend Fast Phase 02G Evidence | 624 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02g/20260626T140322Z/raw/phase02g_verification.json` | `general` | Phase02G Verification | 36 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02h/20260626T174429Z/evidence_index.md` | `general` | Backend Fast Phase 02H Evidence | 576 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02h/20260626T174429Z/raw/phase02h_verification.json` | `general` | Phase02H Verification | 3187 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02i/20260626T184358Z/evidence_index.md` | `general` | Backend Fast Phase 02I Evidence | 655 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02i/20260626T184358Z/raw/phase02i_static_verification.json` | `general` | Phase02I Static Verification | 1394 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02i/20260626T184358Z/raw/phase02i_verification.json` | `general` | Phase02I Verification | 2697 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02i/20260626T184557Z/evidence_index.md` | `general` | Backend Fast Phase 02I Evidence | 1034 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02i/20260626T184557Z/raw/phase02i_static_verification.json` | `general` | Phase02I Static Verification | 1394 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02i/20260626T184557Z/raw/phase02i_verification.json` | `general` | Phase02I Verification | 2697 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02j/20260626T201308Z/evidence_index.md` | `general` | Backend Fast Phase 02J Evidence — Tracked Topic-Map Text-Extract Provenance | 544 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02j/20260626T201308Z/raw/phase02j_static_verification.json` | `general` | Phase02J Static Verification | 1619 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02j/20260626T201308Z/raw/phase02j_verification.json` | `general` | Phase02J Verification | 2223 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02k/20260626T210348Z/evidence_index.md` | `general` | Backend Fast Phase 02K Evidence — Evidence Authority Harness Repair | 610 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02k/20260626T210348Z/raw/phase02k_verification.json` | `general` | Phase02K Verification | 367 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02l/20260626T233910Z/evidence_index.md` | `general` | Technical Audit Remediation Evidence — Backend Fast Phase 02L | 755 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02l/20260626T233910Z/raw/backend_fast_evidence_verification.json` | `general` | Backend Fast Evidence Verification | 597 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02l/20260626T233910Z/raw/phase02l_verification.json` | `general` | Phase02L Verification | 308 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02m/20260627T011155Z/evidence_index.md` | `general` | Technical Audit Remediation Evidence — Backend Fast Phase 02M | 682 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02m/20260627T011155Z/raw/phase02m_verification.json` | `general` | Phase02M Verification | 692 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02n/20260627T020138Z/evidence_index.md` | `general` | Technical Audit Remediation Evidence — Backend Fast Phase 02N | 819 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02n/20260627T020138Z/raw/backend_fast_evidence_verifier.json` | `general` | Backend Fast Evidence Verifier | 597 | False |
+| `docs/release-evidence/technical-audit/backend-fast-phase02n/20260627T020138Z/raw/phase02n_verifier.json` | `general` | Phase02N Verifier | 437 | False |
+| `docs/release-evidence/technical-audit/backend-fast-runtime-dependencies/20260624T112921Z/evidence_index.md` | `general` | Technical Audit Remediation Evidence — Backend Fast Runtime Dependencies | 66947 | False |
 | `docs/release-evidence/technical-audit/backend-fast-runtime-dependencies/20260624T112921Z/raw/backend_fast_environment.json` | `general` | Backend Fast Environment | 10582 | False |
 | `docs/release-evidence/technical-audit/backend-fast-runtime-dependencies/20260624T112921Z/raw/result.json` | `general` | Result | 245 | False |
 | `docs/release-evidence/technical-audit/backend-fast-runtime-dependencies/20260624T112921Z/raw/runtime_dependency_verification.json` | `general` | Runtime Dependency Verification | 2988 | False |
+| `docs/release-evidence/technical-audit/backend-fast-runtime-dependencies/20260624T120642Z/evidence_index.md` | `general` | Technical Audit Remediation Evidence — Backend Fast Runtime Dependencies | 1043 | False |
+| `docs/release-evidence/technical-audit/backend-fast-runtime-dependencies/20260624T120642Z/raw/backend_fast_environment.json` | `general` | Backend Fast Environment | 7998 | False |
+| `docs/release-evidence/technical-audit/backend-fast-runtime-dependencies/20260624T120642Z/raw/result.json` | `general` | Result | 289 | False |
+| `docs/release-evidence/technical-audit/backend-fast-runtime-dependencies/20260624T120642Z/raw/runtime_dependency_verification.json` | `general` | Runtime Dependency Verification | 2988 | False |
+| `docs/release-evidence/technical-audit/backend-fast-scope-registry/20260626T114326Z/evidence_index.md` | `general` | Technical Audit Backend Fast Scope Registry Evidence | 992 | False |
+| `docs/release-evidence/technical-audit/backend-fast-scope-registry/20260626T114326Z/raw/content_scope_registry_static_verification.json` | `general` | Content Scope Registry Static Verification | 427 | False |
+| `docs/release-evidence/technical-audit/backend-fast-scope-registry/20260626T114326Z/raw/content_scope_registry_verification.json` | `general` | Content Scope Registry Verification | 427 | False |
+| `docs/release-evidence/technical-audit/backend-fast-scope-registry/20260626T114326Z/raw/registry_summary.json` | `general` | Registry Summary | 1335 | False |
 | `docs/release-evidence/technical-audit/baseline-reset/evidence_index.md` | `general` | Technical Audit Remediation Baseline Reset Evidence | 713 | False |
 | `docs/release-evidence/technical-audit/baseline-reset/raw/baseline_reset.json` | `general` | Baseline Reset | 380 | False |
 | `docs/release-evidence/technical-audit/baseline-reset/raw/dependency_scan_workflow.json` | `general` | Dependency Scan Workflow | 105 | False |
@@ -1450,8 +1533,22 @@ Moved by EduBoost documentation housekeeping.
 | `docs/roadmap/execution/technical_audit_remediation/01_openapi_route_contract.md` | `general` | Technical Audit Remediation — Slice 01: OpenAPI Route Contract | 2288 | False |
 | `docs/roadmap/execution/technical_audit_remediation/02_backend_fast_gate.md` | `general` | Technical Audit Remediation — Phase 02: Backend Fast Gate Restoration | 1912 | False |
 | `docs/roadmap/execution/technical_audit_remediation/02a_backend_fast_failure_triage.md` | `general` | Technical Audit Remediation — Phase 02A: Backend Fast Failure Triage | 1960 | False |
-| `docs/roadmap/execution/technical_audit_remediation/02b_backend_fast_runtime_dependencies.md` | `general` | Technical Audit Remediation Phase 02B — Backend Fast Runtime Dependencies | 1579 | False |
-| `docs/roadmap/execution/technical_audit_remediation/blocker_register.json` | `general` | Blocker Register | 3067 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02b_backend_fast_runtime_dependencies.md` | `general` | Technical Audit Remediation Phase 02B — Backend Fast Runtime Dependencies | 800 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02c_backend_fast_scope_registry.md` | `general` | Technical Audit Remediation Phase 02C — Backend Fast Scope Registry Expansion | 2088 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02d_backend_fast_staging_contracts.md` | `general` | Technical Audit Remediation Phase 02D — Backend Fast Staging and Contract Remediation | 1932 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02e_backend_fast_router_frontend_seed.md` | `general` | Technical Audit Remediation Phase 02E — Backend Fast Router, Frontend, MCP and Seed Contracts | 1954 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02f_backend_fast_item_seed_router.md` | `general` | Technical Audit Remediation Phase 02F — Backend Fast Item/Seed/Router Contracts | 1494 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02f_backend_fast_item_seed_router_status.md` | `general` | Phase 02F Backend Fast Item/Seed/Router Status | 473 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02g_backend_fast_popia_async_contracts.md` | `general` | Technical Audit Remediation Phase 02G — Backend Fast POPIA Async Route Contracts | 1053 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02g_backend_fast_popia_async_contracts_status.md` | `general` | TA Phase 02G Status — POPIA Async Route Contracts | 310 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02h_backend_fast_residual_contracts.md` | `general` | Technical Audit Remediation Phase 02H — Backend Fast Residual Contracts | 1488 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02i_backend_fast_topic_map_provenance.md` | `general` | Technical Audit Remediation Phase 02I — Backend Fast Topic-Map Provenance | 1844 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02j_backend_fast_tracked_topic_map_provenance.md` | `general` | Technical Audit Remediation Phase 02J — Tracked Topic-Map Text-Extract Provenance | 1326 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02k_backend_fast_evidence_authority.md` | `general` | Technical Audit Remediation Phase 02K — Backend Fast Evidence Authority Repair | 2361 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02l_backend_fast_xfailed_evidence_verifier.md` | `general` | Technical Audit Remediation Phase 02L — Backend Fast xfailed Evidence Verifier | 1694 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02m_backend_fast_head_aligned_finalization.md` | `general` | Technical Audit Remediation Phase 02M — Backend Fast HEAD-Aligned Finalization | 1483 | False |
+| `docs/roadmap/execution/technical_audit_remediation/02n_backend_fast_evidence_finalization.md` | `general` | Technical Audit Remediation 02N — Backend Fast Evidence Finalization | 1701 | False |
+| `docs/roadmap/execution/technical_audit_remediation/blocker_register.json` | `general` | Blocker Register | 11220 | False |
 | `docs/roadmap/ga_graduation_boundary_contract.md` | `general` | GA Graduation Boundary Contract | 576 | False |
 | `docs/roadmap/post_530_north_star_execution_board.md` | `general` | Post-530 North-Star Execution Board | 494 | False |
 | `docs/roadmap/post_baseline_risk_register.md` | `general` | Post-Baseline Risk Register | 451 | False |
@@ -1488,108 +1585,108 @@ Moved by EduBoost documentation housekeeping.
 | `docs/runbooks/learner_tutor.md` | `general` | Learner Tutor Operations Runbook | 1309 | False |
 | `docs/safety/content_policy.md` | `general` | Content Safety Policy | 9178 | False |
 | `docs/secrets.md` | `general` | Secrets Management (starter guidance) | 1111 | False |
-| `docs/security/PHASE2_AUTHORIZATION_CLOSURE.md` | `security` | Phase 2 Authorization Closure Report | 2133 | False |
-| `docs/security/POPIA_CONSENT_AUDIT_BASELINE.md` | `security` | POPIA Consent and Audit Baseline | 3383 | False |
-| `docs/security/POPIA_CONSENT_GATE_CLOSURE.md` | `security` | POPIA Consent Gate Closure Report | 2510 | False |
-| `docs/security/README.md` | `security` | Security | 1033 | False |
-| `docs/security/active_consent_route_order.md` | `security` | Active Consent Route Order | 467 | False |
-| `docs/security/active_consent_route_sources.md` | `security` | Active Consent Route Sources | 511 | False |
-| `docs/security/assessment_attempt_authorization_wiring.md` | `security` | Assessment Attempt Authorization Wiring | 699 | False |
-| `docs/security/assessment_attempt_model_contract.md` | `security` | Assessment Attempt Model Contract | 464 | False |
-| `docs/security/assessment_consent_gate.md` | `security` | Assessment Consent Gate | 561 | False |
-| `docs/security/assessment_list_auth_boundary.md` | `security` | Assessment List Authentication Boundary | 389 | False |
-| `docs/security/audit_event_contracts.md` | `security` | Audit Event Contracts | 549 | False |
-| `docs/security/auth_boundary_evidence.md` | `security` | Auth Boundary Evidence | 1656 | False |
-| `docs/security/auth_hardening_status.md` | `security` | Auth Hardening Status | 162 | False |
-| `docs/security/auth_session_policy.md` | `security` | Auth, session, and RBAC policy baseline | 2868 | False |
-| `docs/security/authorization_dependencies.md` | `security` | Authorization Dependency Adapter | 7532 | False |
-| `docs/security/consent_dependency_adapter.md` | `security` | POPIA Consent Dependency Adapter | 682 | False |
-| `docs/security/consent_dependency_denial_paths.md` | `security` | Consent Dependency Denial Paths | 622 | False |
-| `docs/security/consent_grant_authorization_wiring.md` | `security` | Consent Grant Authorization Wiring | 537 | False |
-| `docs/security/consent_rejection_audit.md` | `security` | Consent Rejection Audit | 543 | False |
-| `docs/security/consent_renewal_admin_auth_boundary.md` | `security` | Consent Renewal Admin Authorization Boundary | 538 | False |
-| `docs/security/consent_revoke_authorization_wiring.md` | `security` | Consent Revoke Authorization Wiring | 541 | False |
-| `docs/security/consent_status_authorization_wiring.md` | `security` | Consent Status Authorization Wiring | 523 | False |
-| `docs/security/dependency_constraints_snapshot.md` | `security` | Dependency Constraints Snapshot | 250 | False |
-| `docs/security/dependency_pin_report.json` | `security` | Dependency Pin Report | 125705 | False |
-| `docs/security/dependency_pin_report.md` | `security` | Dependency Pin Report | 155 | False |
-| `docs/security/dev_only_endpoint_exposure.md` | `security` | Dev-Only Endpoint Exposure Guard | 547 | False |
-| `docs/security/dev_session_environment_gate.md` | `security` | Dev Session Environment Gate | 577 | False |
-| `docs/security/diagnostic_items_authorization_wiring.md` | `security` | Diagnostic Items Authorization Wiring | 839 | False |
-| `docs/security/diagnostic_submit_authorization_wiring.md` | `security` | Diagnostic Submit Authorization Wiring | 894 | False |
-| `docs/security/diagnostics_central_consent_source.md` | `security` | Diagnostics Central Consent Source | 445 | False |
-| `docs/security/diagnostics_consent_gate.md` | `security` | Diagnostics Consent Gate | 386 | False |
-| `docs/security/environment_security_contract.md` | `security` | Environment Security Contract | 679 | False |
-| `docs/security/ether_onboarding_consent_gate.md` | `security` | Ether Onboarding Consent Boundary | 679 | False |
-| `docs/security/ether_onboarding_questions_auth_boundary.md` | `security` | Ether Onboarding Questions Authentication Boundary | 497 | False |
-| `docs/security/frontend_token_storage_audit.md` | `security` | Frontend Token Storage Audit | 3214 | False |
-| `docs/security/gamification_award_xp_authorization_wiring.md` | `security` | Gamification Award XP Authorization Wiring | 478 | False |
-| `docs/security/gamification_consent_gate.md` | `security` | Gamification Consent Gate | 394 | False |
-| `docs/security/gamification_profile_authorization_wiring.md` | `security` | Gamification Profile Authorization Wiring | 592 | False |
+| `docs/security/PHASE2_AUTHORIZATION_CLOSURE.md` | `security` | Phase 2 Authorization Closure Report | 2134 | False |
+| `docs/security/POPIA_CONSENT_AUDIT_BASELINE.md` | `security` | POPIA Consent and Audit Baseline | 3766 | False |
+| `docs/security/POPIA_CONSENT_GATE_CLOSURE.md` | `security` | POPIA Consent Gate Closure Report | 2894 | False |
+| `docs/security/README.md` | `security` | Security Documentation | 624 | False |
+| `docs/security/active_consent_route_order.md` | `security` | Active Consent Route Order | 834 | False |
+| `docs/security/active_consent_route_sources.md` | `security` | Active Consent Route Sources | 880 | False |
+| `docs/security/assessment_attempt_authorization_wiring.md` | `security` | Assessment Attempt Authorization Wiring | 1079 | False |
+| `docs/security/assessment_attempt_model_contract.md` | `security` | Assessment Attempt Model Contract | 838 | False |
+| `docs/security/assessment_consent_gate.md` | `security` | Assessment Consent Gate | 925 | False |
+| `docs/security/assessment_list_auth_boundary.md` | `security` | Assessment List Authentication Boundary | 769 | False |
+| `docs/security/audit_event_contracts.md` | `security` | Audit Event Contracts | 921 | False |
+| `docs/security/auth_boundary_evidence.md` | `security` | Auth Boundary Evidence | 2029 | False |
+| `docs/security/auth_hardening_status.md` | `security` | Auth Hardening Status | 524 | False |
+| `docs/security/auth_session_policy.md` | `security` | Auth, session, and RBAC policy baseline | 3248 | False |
+| `docs/security/authorization_dependencies.md` | `security` | Authorization Dependency Adapter | 7831 | False |
+| `docs/security/consent_dependency_adapter.md` | `security` | POPIA Consent Dependency Adapter | 1055 | False |
+| `docs/security/consent_dependency_denial_paths.md` | `security` | Consent Dependency Denial Paths | 994 | False |
+| `docs/security/consent_grant_authorization_wiring.md` | `security` | Consent Grant Authorization Wiring | 912 | False |
+| `docs/security/consent_rejection_audit.md` | `security` | Consent Rejection Audit | 917 | False |
+| `docs/security/consent_renewal_admin_auth_boundary.md` | `security` | Consent Renewal Admin Authorization Boundary | 923 | False |
+| `docs/security/consent_revoke_authorization_wiring.md` | `security` | Consent Revoke Authorization Wiring | 917 | False |
+| `docs/security/consent_status_authorization_wiring.md` | `security` | Consent Status Authorization Wiring | 899 | False |
+| `docs/security/dependency_constraints_snapshot.md` | `security` | Dependency Constraints Snapshot | 632 | False |
+| `docs/security/dependency_pin_report.json` | `security` | Dependency Pin Report | 127125 | False |
+| `docs/security/dependency_pin_report.md` | `security` | Dependency Pin Report | 288 | False |
+| `docs/security/dev_only_endpoint_exposure.md` | `security` | Dev-Only Endpoint Exposure Guard | 920 | False |
+| `docs/security/dev_session_environment_gate.md` | `security` | Dev Session Environment Gate | 946 | False |
+| `docs/security/diagnostic_items_authorization_wiring.md` | `security` | Diagnostic Items Authorization Wiring | 1217 | False |
+| `docs/security/diagnostic_submit_authorization_wiring.md` | `security` | Diagnostic Submit Authorization Wiring | 1273 | False |
+| `docs/security/diagnostics_central_consent_source.md` | `security` | Diagnostics Central Consent Source | 820 | False |
+| `docs/security/diagnostics_consent_gate.md` | `security` | Diagnostics Consent Gate | 751 | False |
+| `docs/security/environment_security_contract.md` | `security` | Environment Security Contract | 1049 | False |
+| `docs/security/ether_onboarding_consent_gate.md` | `security` | Ether Onboarding Consent Boundary | 1053 | False |
+| `docs/security/ether_onboarding_questions_auth_boundary.md` | `security` | Ether Onboarding Questions Authentication Boundary | 888 | False |
+| `docs/security/frontend_token_storage_audit.md` | `security` | Frontend Token Storage Audit | 3593 | False |
+| `docs/security/gamification_award_xp_authorization_wiring.md` | `security` | Gamification Award XP Authorization Wiring | 861 | False |
+| `docs/security/gamification_consent_gate.md` | `security` | Gamification Consent Gate | 760 | False |
+| `docs/security/gamification_profile_authorization_wiring.md` | `security` | Gamification Profile Authorization Wiring | 974 | False |
 | `docs/security/jwt_rotation_introspection.json` | `security` | Jwt Rotation Introspection | 638 | False |
 | `docs/security/jwt_rotation_introspection.md` | `security` | JWT Rotation Introspection | 343 | False |
-| `docs/security/jwt_rotation_plan.md` | `security` | JWT Rotation Plan | 801 | False |
+| `docs/security/jwt_rotation_plan.md` | `security` | JWT Rotation Plan | 1159 | False |
 | `docs/security/jwt_rotation_repair_report.md` | `security` | JWT Rotation Repair Report | 255 | False |
-| `docs/security/jwt_secret_resolution_policy.md` | `security` | JWT Secret Resolution Policy | 537 | False |
-| `docs/security/learner_authz_ci.md` | `security` | Learner Authorization Coverage CI | 349 | False |
-| `docs/security/learner_authz_coverage_check.md` | `security` | Learner Authorization Coverage Check | 922 | False |
-| `docs/security/learner_authz_matrix.md` | `security` | Learner Authorization Coverage Matrix | 8477 | False |
-| `docs/security/learner_mastery_authorization_wiring.md` | `security` | Learner Mastery Authorization Wiring | 1001 | False |
-| `docs/security/learner_read_authorization_http_tests.md` | `security` | Learner Read Authorization HTTP Tests | 962 | False |
-| `docs/security/learner_read_consent_gate.md` | `security` | Learner Read Consent Gate | 504 | False |
-| `docs/security/learner_route_authorization_inspection.md` | `security` | Learner Route Authorization Inspection | 24725 | False |
-| `docs/security/learner_route_authorization_wiring.md` | `security` | Learner Route Authorization Wiring | 1732 | False |
-| `docs/security/lesson_generation_authorization_wiring.md` | `security` | Lesson Generation Authorization Wiring | 852 | False |
-| `docs/security/lesson_generation_consent_gate.md` | `security` | Lesson Generation Consent Gate | 485 | False |
-| `docs/security/lesson_stream_authorization_wiring.md` | `security` | Lesson Stream Authorization Wiring | 497 | False |
-| `docs/security/object_authorization.md` | `security` | Object-Level Authorization Baseline | 2106 | False |
-| `docs/security/onboarding_authorization_wiring.md` | `security` | Onboarding Authorization Wiring | 455 | False |
-| `docs/security/onboarding_consent_gate.md` | `security` | Onboarding Consent Gate | 581 | False |
-| `docs/security/onboarding_questions_auth_boundary.md` | `security` | Onboarding Questions Authentication Boundary | 404 | False |
-| `docs/security/operational_auth_boundaries.md` | `security` | Operational Auth Boundaries | 689 | False |
-| `docs/security/parent_dashboard_authorization_wiring.md` | `security` | Parent Dashboard Authorization Wiring | 512 | False |
-| `docs/security/parent_erasure_authorization_wiring.md` | `security` | Parent Learner Erasure Authorization Wiring | 605 | False |
-| `docs/security/parent_export_authorization_wiring.md` | `security` | Parent Access-Bundle Export Authorization Wiring | 596 | False |
-| `docs/security/parent_progress_authorization_wiring.md` | `security` | Parent Learner Progress Authorization Wiring | 834 | False |
-| `docs/security/parent_routes_consent_gate.md` | `security` | Parent Routes Consent Gate | 571 | False |
-| `docs/security/parent_trust_dashboard_authorization_wiring.md` | `security` | Parent Trust Dashboard Authorization Wiring | 553 | False |
-| `docs/security/phase2_authorization_closure_check.md` | `security` | Phase 2 Authorization Closure Check | 550 | False |
-| `docs/security/phase2_authorization_closure_report.md` | `security` | Phase 2 Authorization Closure Report Generator | 595 | False |
-| `docs/security/phase2_authorization_evidence_check.md` | `security` | Phase 2 Authorization Evidence Check | 2648 | False |
-| `docs/security/phase2_router_import_smoke.md` | `security` | Phase 2 Router Import Smoke | 376 | False |
-| `docs/security/pii_secret_redaction_contract.md` | `security` | PII and Secret Redaction Contract | 532 | False |
-| `docs/security/pip_audit_report.md` | `security` | pip-audit Report | 198 | False |
-| `docs/security/popia_consent_audit_ci.md` | `security` | POPIA Consent Audit CI | 628 | False |
-| `docs/security/popia_consent_audit_evidence_check.md` | `security` | POPIA Consent Audit Evidence Check | 888 | False |
-| `docs/security/popia_consent_boundary_check.md` | `security` | POPIA Consent Boundary Check | 555 | False |
-| `docs/security/popia_consent_boundary_matrix.md` | `security` | POPIA Consent Boundary Matrix | 21023 | False |
-| `docs/security/popia_consent_closure_check.md` | `security` | POPIA Consent Closure Check | 678 | False |
-| `docs/security/popia_consent_closure_ci.md` | `security` | POPIA Consent Closure CI | 324 | False |
-| `docs/security/popia_consent_gate_check.md` | `security` | POPIA Consent Gate Check | 1112 | False |
+| `docs/security/jwt_secret_resolution_policy.md` | `security` | JWT Secret Resolution Policy | 906 | False |
+| `docs/security/learner_authz_ci.md` | `security` | Learner Authorization Coverage CI | 723 | False |
+| `docs/security/learner_authz_coverage_check.md` | `security` | Learner Authorization Coverage Check | 1299 | False |
+| `docs/security/learner_authz_matrix.md` | `security` | Learner Authorization Coverage Matrix | 8865 | False |
+| `docs/security/learner_mastery_authorization_wiring.md` | `security` | Learner Mastery Authorization Wiring | 1378 | False |
+| `docs/security/learner_read_authorization_http_tests.md` | `security` | Learner Read Authorization HTTP Tests | 1340 | False |
+| `docs/security/learner_read_consent_gate.md` | `security` | Learner Read Consent Gate | 870 | False |
+| `docs/security/learner_route_authorization_inspection.md` | `security` | Learner Route Authorization Inspection | 25104 | False |
+| `docs/security/learner_route_authorization_wiring.md` | `security` | Learner Route Authorization Wiring | 2107 | False |
+| `docs/security/lesson_generation_authorization_wiring.md` | `security` | Lesson Generation Authorization Wiring | 1231 | False |
+| `docs/security/lesson_generation_consent_gate.md` | `security` | Lesson Generation Consent Gate | 856 | False |
+| `docs/security/lesson_stream_authorization_wiring.md` | `security` | Lesson Stream Authorization Wiring | 872 | False |
+| `docs/security/object_authorization.md` | `security` | Object-Level Authorization Baseline | 2482 | False |
+| `docs/security/onboarding_authorization_wiring.md` | `security` | Onboarding Authorization Wiring | 827 | False |
+| `docs/security/onboarding_consent_gate.md` | `security` | Onboarding Consent Gate | 945 | False |
+| `docs/security/onboarding_questions_auth_boundary.md` | `security` | Onboarding Questions Authentication Boundary | 789 | False |
+| `docs/security/operational_auth_boundaries.md` | `security` | Operational Auth Boundaries | 1057 | False |
+| `docs/security/parent_dashboard_authorization_wiring.md` | `security` | Parent Dashboard Authorization Wiring | 890 | False |
+| `docs/security/parent_erasure_authorization_wiring.md` | `security` | Parent Learner Erasure Authorization Wiring | 989 | False |
+| `docs/security/parent_export_authorization_wiring.md` | `security` | Parent Access-Bundle Export Authorization Wiring | 985 | False |
+| `docs/security/parent_progress_authorization_wiring.md` | `security` | Parent Learner Progress Authorization Wiring | 1219 | False |
+| `docs/security/parent_routes_consent_gate.md` | `security` | Parent Routes Consent Gate | 938 | False |
+| `docs/security/parent_trust_dashboard_authorization_wiring.md` | `security` | Parent Trust Dashboard Authorization Wiring | 937 | False |
+| `docs/security/phase2_authorization_closure_check.md` | `security` | Phase 2 Authorization Closure Check | 936 | False |
+| `docs/security/phase2_authorization_closure_report.md` | `security` | Phase 2 Authorization Closure Report Generator | 992 | False |
+| `docs/security/phase2_authorization_evidence_check.md` | `security` | Phase 2 Authorization Evidence Check | 3035 | False |
+| `docs/security/phase2_router_import_smoke.md` | `security` | Phase 2 Router Import Smoke | 744 | False |
+| `docs/security/pii_secret_redaction_contract.md` | `security` | PII and Secret Redaction Contract | 906 | False |
+| `docs/security/pip_audit_report.md` | `security` | pip-audit Report | 565 | False |
+| `docs/security/popia_consent_audit_ci.md` | `security` | POPIA Consent Audit CI | 1001 | False |
+| `docs/security/popia_consent_audit_evidence_check.md` | `security` | POPIA Consent Audit Evidence Check | 1273 | False |
+| `docs/security/popia_consent_boundary_check.md` | `security` | POPIA Consent Boundary Check | 924 | False |
+| `docs/security/popia_consent_boundary_matrix.md` | `security` | POPIA Consent Boundary Matrix | 23967 | False |
+| `docs/security/popia_consent_closure_check.md` | `security` | POPIA Consent Closure Check | 1056 | False |
+| `docs/security/popia_consent_closure_ci.md` | `security` | POPIA Consent Closure CI | 699 | False |
+| `docs/security/popia_consent_gate_check.md` | `security` | POPIA Consent Gate Check | 1477 | False |
 | `docs/security/popia_consent_gate_inventory.md` | `security` | POPIA Consent Gate Inventory | 20667 | False |
-| `docs/security/popia_correction_request_authorization_wiring.md` | `security` | POPIA Correction Request Authorization Wiring | 609 | False |
-| `docs/security/popia_data_export_authorization_wiring.md` | `security` | POPIA Data Export Authorization Wiring | 818 | False |
-| `docs/security/popia_data_rights_consent_boundary.md` | `security` | POPIA Data-Rights Consent Boundary | 972 | False |
-| `docs/security/popia_deletion_cancel_authorization_wiring.md` | `security` | POPIA Deletion Cancel Authorization Wiring | 586 | False |
-| `docs/security/popia_deletion_request_authorization_wiring.md` | `security` | POPIA Deletion Request Authorization Wiring | 595 | False |
-| `docs/security/popia_restriction_request_authorization_wiring.md` | `security` | POPIA Restriction Request Authorization Wiring | 666 | False |
-| `docs/security/privacy_boundary_evidence.md` | `security` | Privacy Boundary Evidence | 2333 | False |
-| `docs/security/production_key_vault_behavior.md` | `security` | Production Key Vault Behavior | 475 | False |
-| `docs/security/production_secret_placeholder_guard.md` | `security` | Production Secret Placeholder Guard | 903 | False |
-| `docs/security/risk_acceptance_register.md` | `security` | Risk Acceptance Register | 620 | False |
-| `docs/security/route_policy_matrix.md` | `security` | Route Policy Matrix | 9393 | False |
-| `docs/security/runbooks/security_incident_response.md` | `security` | Security Incident Response Runbook | 871 | False |
-| `docs/security/secret_hygiene_contract.md` | `security` | Secret Hygiene Contract | 605 | False |
-| `docs/security/security_control_register.md` | `security` | Security Control Register | 558 | False |
-| `docs/security/security_headers_policy.md` | `security` | Security Headers Policy | 502 | False |
-| `docs/security/security_posture_architecture_contract.md` | `security` | Security Posture Architecture Contract | 817 | False |
-| `docs/security/security_test_strategy_contract.md` | `security` | Security Test Strategy Contract | 691 | False |
-| `docs/security/study_plan_authorization_wiring.md` | `security` | Study Plan Authorization Wiring | 1310 | False |
-| `docs/security/study_plan_consent_gate.md` | `security` | Study Plan Consent Gate | 438 | False |
-| `docs/security/supply_chain_security_contract.md` | `security` | Supply Chain Security Contract | 577 | False |
-| `docs/security/threat_model_register.md` | `security` | Threat Model Register | 494 | False |
-| `docs/security/threat_model_v2.md` | `security` | EduBoost V2 Threat Model | 10164 | False |
-| `docs/security/vulnerability_management_policy.md` | `security` | Vulnerability Management Policy | 725 | False |
+| `docs/security/popia_correction_request_authorization_wiring.md` | `security` | POPIA Correction Request Authorization Wiring | 995 | False |
+| `docs/security/popia_data_export_authorization_wiring.md` | `security` | POPIA Data Export Authorization Wiring | 1197 | False |
+| `docs/security/popia_data_rights_consent_boundary.md` | `security` | POPIA Data-Rights Consent Boundary | 1347 | False |
+| `docs/security/popia_deletion_cancel_authorization_wiring.md` | `security` | POPIA Deletion Cancel Authorization Wiring | 969 | False |
+| `docs/security/popia_deletion_request_authorization_wiring.md` | `security` | POPIA Deletion Request Authorization Wiring | 979 | False |
+| `docs/security/popia_restriction_request_authorization_wiring.md` | `security` | POPIA Restriction Request Authorization Wiring | 1053 | False |
+| `docs/security/privacy_boundary_evidence.md` | `security` | Privacy Boundary Evidence | 2709 | False |
+| `docs/security/production_key_vault_behavior.md` | `security` | Production Key Vault Behavior | 845 | False |
+| `docs/security/production_secret_placeholder_guard.md` | `security` | Production Secret Placeholder Guard | 1279 | False |
+| `docs/security/risk_acceptance_register.md` | `security` | Risk Acceptance Register | 985 | False |
+| `docs/security/route_policy_matrix.md` | `security` | Route Policy Matrix | 9763 | False |
+| `docs/security/runbooks/security_incident_response.md` | `security` | Security Incident Response Runbook | 1246 | False |
+| `docs/security/secret_hygiene_contract.md` | `security` | Secret Hygiene Contract | 969 | False |
+| `docs/security/security_control_register.md` | `security` | Security Control Register | 924 | False |
+| `docs/security/security_headers_policy.md` | `security` | Security Headers Policy | 866 | False |
+| `docs/security/security_posture_architecture_contract.md` | `security` | Security Posture Architecture Contract | 1196 | False |
+| `docs/security/security_test_strategy_contract.md` | `security` | Security Test Strategy Contract | 1063 | False |
+| `docs/security/study_plan_authorization_wiring.md` | `security` | Study Plan Authorization Wiring | 1682 | False |
+| `docs/security/study_plan_consent_gate.md` | `security` | Study Plan Consent Gate | 802 | False |
+| `docs/security/supply_chain_security_contract.md` | `security` | Supply Chain Security Contract | 948 | False |
+| `docs/security/threat_model_register.md` | `security` | Threat Model Register | 856 | False |
+| `docs/security/threat_model_v2.md` | `security` | EduBoost V2 Threat Model | 10529 | False |
+| `docs/security/vulnerability_management_policy.md` | `security` | Vulnerability Management Policy | 1097 | False |
 | `docs/spikes/FE-SPIKE-001-next-react-compat.md` | `general` | FE-SPIKE-001 — Next 15 + React 19 compatibility in the Docker runner | 2547 | False |
 | `docs/spikes/FE-SPIKE-002-initial-bundle-budget.md` | `general` | FE-SPIKE-002 — Initial bundle budget (≤120KB gzipped) | 757 | False |
 | `docs/spikes/FE-SPIKE-003-ppr-deployment-viability.md` | `general` | FE-SPIKE-003 — Partial Prerendering + deployment viability | 5187 | False |
@@ -1609,8 +1706,6 @@ Moved by EduBoost documentation housekeeping.
 | `docs/testing/release_evidence_bundle_contract.md` | `general` | Release Evidence Bundle Contract | 670 | False |
 | `docs/testing/test_strategy_matrix_contract.md` | `general` | Test Strategy Matrix Contract | 769 | False |
 | `docs/testing/testing_release_evidence_architecture_contract.md` | `general` | Testing Release Evidence Architecture Contract | 924 | False |
-| `docs/todos/data_generator_todo.md` | `general` | Data Generator Remediation TODO | 9526 | False |
-| `docs/todos/todo.md` | `general` | EduBoost V2 -- North Star TODO | 18520 | False |
+| `docs/todos/README.md` | `general` | Archived documentation redirect | 770 | False |
 | `docs/v2_handoff.md` | `general` | V2 Handoff Guide for Less Capable Agents | 906 | False |
 | `docs/v2_migration.md` | `general` | V2 Migration Guide | 2595 | False |
-This file is retained as a redirect stub only. It is not a current source-of-truth document.

@@ -1,19 +1,6 @@
----
-title: Archived documentation redirect
-status: archived
-owner: documentation-governance
-reviewers: [release-management]
-audience: reviewer
-source_of_truth: false
-supersedes: []
-superseded_by: docs/generated/release-inventories/20260622T193052Z/consent_callsite_inventory.md
-last_reviewed: 2026-06-22
-review_interval_days: 180
-evidence_command: make docs-housekeeping-check
-code_anchors: [docs/documentation/migration_manifests]
----
+# Consent Call-Site Inventory
 
-# Archived documentation redirect
+This inventory supports consent service/table consolidation. It is diagnostic only.
 
 | Path | Line | Category | Text |
 |---|---:|---|---|
@@ -104,7 +91,7 @@ code_anchors: [docs/documentation/migration_manifests]
 | `app/core/dependencies.py` | 71 | require_active_consent | `dependencies=[Depends(require_active_consent)],` |
 | `app/core/dependencies.py` | 94 | consent_repository | `repo: ConsentRepository = Depends(get_consent_repo),` |
 | `app/core/dependencies.py` | 106 | require_active_consent | `await require_active_consent(learner_id, db, repo)` |
-| `app/domain/consent.py` | 68 | consent_grant | `def grant(self, privacy_notice_version: str) -> "ConsentRecord":` |
+| `app/domain/consent.py` | 69 | consent_grant | `def grant(self, privacy_notice_version: str) -> "ConsentRecord":` |
 | `app/models/__init__.py` | 147 | parental_consent_model | `consents: Mapped[list[ParentalConsent]] = relationship("ParentalConsent", back_populates="guardian")` |
 | `app/models/__init__.py` | 176 | parental_consent_model | `consents: Mapped[list[ParentalConsent]] = relationship("ParentalConsent", back_populates="learner")` |
 | `app/models/__init__.py` | 198 | parental_consent_model | `class ParentalConsent(Base):` |
@@ -261,14 +248,14 @@ code_anchors: [docs/documentation/migration_manifests]
 | `app/services/job_dependency_factory.py` | 72 | consent_repository | `kwargs["consent_repo"] = consent_repo` |
 | `app/services/popia_consent_lifecycle_adapter.py` | 215 | consent_grant | `async def grant(self, *args: Any, **kwargs: Any) -> ConsentRecord:` |
 | `app/services/popia_consent_lifecycle_adapter.py` | 234 | consent_revoke | `async def revoke(self, *args: Any, **kwargs: Any) -> ConsentRecord:` |
-| `app/services/popia_service.py` | 35 | parental_consent_model | `ParentalConsent,` |
-| `app/services/popia_service.py` | 43 | consent_service | `from app.services.consent import ConsentService` |
-| `app/services/popia_service.py` | 106 | consent_service | `self.consent = ConsentService(db)` |
-| `app/services/popia_service.py` | 131 | require_active_consent | `await self.consent.require_active_consent(learner_id, actor_id=requester_id)` |
-| `app/services/popia_service.py` | 352 | consent_revoke | `await self.consent.revoke(learner_id, guardian_id=requester_id, reason="processing_restricted")` |
-| `app/services/popia_service.py` | 509 | parental_consent_model | `consents = list((await self.db.scalars(select(ParentalConsent).where(ParentalConsent.learner_id == learner_id))).all())` |
-| `app/services/popia_service.py` | 601 | parental_consents_table | `"parental_consents": [` |
-| `app/services/popia_service.py` | 711 | parental_consents_table | `"parental_consents",` |
+| `app/services/popia_service.py` | 36 | parental_consent_model | `ParentalConsent,` |
+| `app/services/popia_service.py` | 44 | consent_service | `from app.services.consent import ConsentService` |
+| `app/services/popia_service.py` | 123 | consent_service | `self.consent = ConsentService(db)` |
+| `app/services/popia_service.py` | 154 | require_active_consent | `await self.consent.require_active_consent(learner_id, actor_id=requester_id)` |
+| `app/services/popia_service.py` | 375 | consent_revoke | `await self.consent.revoke(learner_id, guardian_id=requester_id, reason="processing_restricted")` |
+| `app/services/popia_service.py` | 532 | parental_consent_model | `consents = list((await self.db.scalars(select(ParentalConsent).where(ParentalConsent.learner_id == learner_id))).all())` |
+| `app/services/popia_service.py` | 624 | parental_consents_table | `"parental_consents": [` |
+| `app/services/popia_service.py` | 734 | parental_consents_table | `"parental_consents",` |
 | `app/services/popia_transactional_lifecycle.py` | 101 | consent_grant | `async def grant(self, **kwargs: Any) -> Any:` |
 | `scripts/check_active_consent_route_sources.py` | 63 | consent_service | `"ConsentService(db).require_active_consent" not in source,` |
 | `scripts/check_active_consent_route_sources.py` | 63 | require_active_consent | `"ConsentService(db).require_active_consent" not in source,` |
@@ -617,10 +604,11 @@ code_anchors: [docs/documentation/migration_manifests]
 | `tests/unit/test_sprint3_consent_service_runtime.py` | 206 | consent_repository | `service = ConsentService(consent_repo=AsyncMock())` |
 | `tests/unit/test_sprint3_consent_service_runtime.py` | 222 | consent_service | `service = ConsentService(consent_repo=AsyncMock())` |
 | `tests/unit/test_sprint3_consent_service_runtime.py` | 222 | consent_repository | `service = ConsentService(consent_repo=AsyncMock())` |
-Moved by EduBoost documentation housekeeping.
 
-- Original path: `docs/release/consent_callsite_inventory.md`
-- New path: `docs/generated/release-inventories/20260622T193052Z/consent_callsite_inventory.md`
-- Reason: Generated release inventory moved to generated documentation area.
+## Review checklist
 
-This file is retained as a redirect stub only. It is not a current source-of-truth document.
+- [ ] Identify the canonical active-consent runtime service.
+- [ ] Identify whether `consent_records` is current state, event history, or both.
+- [ ] Identify whether `parental_consents` is current state, relationship consent, or legacy.
+- [ ] Confirm POPIA routes keep explicit read/write authorization boundaries.
+- [ ] Do not merge/drop consent tables without ADR and data-retention decision.
