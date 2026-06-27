@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_02l_backend_fast_xfailed_evidence_verifier_ready",
+  "status": "phase_02m_backend_fast_head_aligned_finalization_ready",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -24,20 +24,21 @@
       "id": "TA-BACKEND-FAST-001",
       "title": "Rerun and close backend fast gate from clean checkout",
       "severity": "critical",
-      "status": "blocked_evidence_harness_repair_required",
+      "status": "blocked_head_aligned_audit_harness_finalization",
       "latest_failure_summary": {
-        "failed": 1,
-        "passed": 2303,
+        "failed": 8,
+        "passed": 2311,
         "skipped": 11,
         "xfailed": 1,
         "errors": 0
       },
       "latest_failure_categories": [
-        "content_factory_registry",
-        "topic_map_worklist_provenance",
-        "tracked_artifact_gap"
+        "audit_harness_fixture_drift",
+        "historical_phase_verifier_active_slice_drift",
+        "runtime_wiring_pr_docs_gap",
+        "project_assistance_status_stale"
       ],
-      "next_slice": "02k-backend-fast-evidence-authority",
+      "next_slice": "02m-backend-fast-head-aligned-finalization",
       "latest_evidence_control_gap": {
         "backend_fast_gate_result_returncode": 2,
         "backend_fast_gate_result_valid": false,
@@ -64,21 +65,22 @@
       "status": "partially_addressed_in_baseline_reset"
     }
   ],
-  "active_slice": "02l-backend-fast-xfailed-evidence-verifier",
+  "active_slice": "02m-backend-fast-head-aligned-finalization",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
-    "status": "failed_authority_gate_captured_for_phase_02j_remediation",
+    "status": "head_aligned_retry_failed_audit_harness_finalization_required",
     "reported_return_code": 2,
     "reported_summary": {
-      "failed": 1,
-      "passed": 2303,
+      "failed": 8,
+      "passed": 2311,
       "skipped": 11,
       "xfailed": 1
     },
     "reported_categories": [
-      "content_factory_registry",
-      "topic_map_worklist_provenance",
-      "tracked_artifact_gap"
+      "audit_harness_fixture_drift",
+      "historical_phase_verifier_active_slice_drift",
+      "runtime_wiring_pr_docs_gap",
+      "project_assistance_status_stale"
     ],
     "passing_evidence_policy": "Do not create backend-fast-gate candidate evidence until make test-fast exits 0.",
     "runtime_dependency_slice": {
@@ -199,6 +201,20 @@
       "status": "implementation_ready",
       "policy": "A pytest xfailed count is allowed only when make test-fast returns 0, failure_count is 0, and no failed/error tests are listed.",
       "boundary": "Evidence verifier repair only; no product release readiness, Phase 02R governance, live DB migration, or runtime KG work."
+    },
+    "phase_02m_slice": {
+      "id": "TA-BACKEND-FAST-013",
+      "title": "Finalize backend-fast audit harness for HEAD-aligned evidence recollection",
+      "status": "implementation_ready",
+      "dominant_failure_clusters": [
+        "backend_fast_evidence_fixture_drift",
+        "phase02k_phase02l_historical_verifier_drift",
+        "runtime_wiring_pr_docs_missing",
+        "project_assistance_status_stale"
+      ],
+      "estimated_failures_targeted": 8,
+      "policy": "Phase 02M evidence may be recorded separately, but HEAD-aligned backend-fast evidence must still be recollected and verified before TA Phase 02 is closed.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     }
   },
   "historical_slices": [

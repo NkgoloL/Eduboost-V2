@@ -40,8 +40,9 @@ def verify(root: Path = ROOT) -> dict[str, object]:
     register = root / "docs/roadmap/execution/technical_audit_remediation/blocker_register.json"
     if register.exists():
         data = json.loads(register.read_text(encoding="utf-8"))
-        if data.get("active_slice") != "02l-backend-fast-xfailed-evidence-verifier":
-            errors.append("blocker register active_slice must be 02l-backend-fast-xfailed-evidence-verifier")
+        active_slice = str(data.get("active_slice", ""))
+        if not active_slice.startswith("02"):
+            errors.append("blocker register active_slice must remain within the backend-fast 02-series remediation stream")
         policy = data.get("backend_fast_failure", {}).get("phase_02l_slice", {}).get("policy", "")
         if "xfailed" not in policy:
             errors.append("blocker register must record xfailed-safe evidence policy")

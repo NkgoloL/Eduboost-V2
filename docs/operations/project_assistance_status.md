@@ -5,9 +5,7 @@ working control surface, not a release approval.
 
 ## Current Gate Snapshot
 
-- **Last refreshed:** 2026-06-10 12:17 UTC
-- **Assessed commit:** `958c86ff8465`
-- **Quality gate:** 🔴 RED (6/11 required checks passing)
+- Current-state summary markers were not found.
 
 ## Source Coverage
 
