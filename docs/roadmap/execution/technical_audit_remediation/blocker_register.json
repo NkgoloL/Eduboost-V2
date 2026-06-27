@@ -39,14 +39,15 @@
       "id": "TA-FRONTEND-001",
       "title": "Rerun frontend env-check, lint, type-check, and Vitest under pnpm",
       "severity": "high",
-      "status": "frontend_vitest_contract_repair_ready",
-      "active_slice": "03a-frontend-vitest-contracts",
+      "status": "evidence_recorded",
       "authority_command": "python3 scripts/audit_remediation/run_frontend_tooling_authority.py --output-dir docs/release-evidence/technical-audit/frontend-tooling-authority/raw --json",
       "evidence_verifier": "python3 scripts/audit_remediation/verify_frontend_tooling_evidence.py --evidence-dir docs/release-evidence/technical-audit/frontend-tooling-authority --json",
-      "passing_evidence_policy": "Do not close TA-FRONTEND-001 until frontend/tooling authority evidence verifies valid=true.",
+      "latest_valid_evidence_commit": "d8ecbe3d9c",
+      "frontend_tooling_authority_result": "valid",
+      "failed_steps": [],
+      "passing_evidence_policy": "Frontend/tooling authority evidence is recorded and valid; the authority blocker is closed.",
       "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
-      "latest_failed_step": "frontend_vitest",
-      "evidence_boundary": "Frontend/tooling evidence remains diagnostic-only until all authority steps pass."
+      "evidence_boundary": "Frontend/tooling evidence is now recorded as passing authority evidence."
     },
     {
       "id": "TA-E2E-001",
@@ -61,7 +62,7 @@
       "status": "partially_addressed_in_baseline_reset"
     }
   ],
-  "active_slice": "03a-frontend-vitest-contracts",
+  "active_slice": "next-technical-audit-slice",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "status": "head_aligned_retry_failed_audit_harness_finalization_required",
@@ -218,7 +219,7 @@
   ],
   "frontend_tooling_authority": {
     "id": "TA-FRONTEND-001",
-    "status": "frontend_vitest_contract_repair_ready",
+    "status": "evidence_recorded",
     "authority_commands": [
       "pnpm --version",
       "pnpm --dir app/frontend install --frozen-lockfile",
@@ -229,14 +230,10 @@
     ],
     "evidence_dir": "docs/release-evidence/technical-audit/frontend-tooling-authority",
     "boundary": "Frontend/tooling evidence is separate from Playwright/E2E and dependency-scan closure.",
-    "active_slice": "03a-frontend-vitest-contracts",
-    "latest_failed_authority_step": "frontend_vitest",
-    "latest_failure_cluster": [
-      "services.smoke.test.ts canonical POPIA route expectation drift",
-      "EntryAndPortal.test.tsx jsdom scrollIntoView guard",
-      "frontend_tooling_evidence_check self-hash exclusion"
-    ],
-    "passing_evidence_policy": "Do not close TA-FRONTEND-001 until collect_frontend_tooling_authority_evidence.sh and verify_frontend_tooling_evidence.py return valid=true.",
+    "latest_valid_evidence_commit": "d8ecbe3d9c",
+    "frontend_tooling_authority_result": "valid",
+    "failed_steps": [],
+    "passing_evidence_policy": "Frontend/tooling authority evidence has been recorded and validated; the blocker is closed.",
     "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
   }
 }
