@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_02m_backend_fast_head_aligned_finalization_ready",
+  "status": "phase_02n_backend_fast_evidence_finalization_ready",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -24,26 +24,21 @@
       "id": "TA-BACKEND-FAST-001",
       "title": "Rerun and close backend fast gate from clean checkout",
       "severity": "critical",
-      "status": "blocked_head_aligned_audit_harness_finalization",
+      "status": "blocked_head_aligned_evidence_integrity_finalization",
       "latest_failure_summary": {
-        "failed": 8,
-        "passed": 2311,
-        "skipped": 11,
-        "xfailed": 1,
-        "errors": 0
+        "backend_fast_gate_result_returncode": 0,
+        "backend_fast_failure_classification_failure_count": 0,
+        "evidence_verifier_valid": false
       },
       "latest_failure_categories": [
-        "audit_harness_fixture_drift",
-        "historical_phase_verifier_active_slice_drift",
-        "runtime_wiring_pr_docs_gap",
-        "project_assistance_status_stale"
+        "passing_output_diagnostic_category_false_positive",
+        "raw_sha256_manifest_digest_mismatch",
+        "stale_raw_evidence_contamination"
       ],
-      "next_slice": "02m-backend-fast-head-aligned-finalization",
+      "next_slice": "02n-backend-fast-evidence-finalization",
       "latest_evidence_control_gap": {
-        "backend_fast_gate_result_returncode": 2,
-        "backend_fast_gate_result_valid": false,
-        "backend_fast_evidence_check_valid": true,
-        "issue": "candidate evidence index/check claimed pass while raw authority result still recorded a failed make test-fast run"
+        "issue": "authority command passed but final evidence verifier rejected stale diagnostic categories and raw SHA digest mismatches",
+        "boundary": "do not commit refreshed backend-fast gate evidence until corrected verifier returns valid=true"
       }
     },
     {

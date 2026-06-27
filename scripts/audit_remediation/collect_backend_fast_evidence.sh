@@ -8,6 +8,10 @@ PYTHON_BIN="${PYTHON_BIN:-python3}"
 BACKEND_FAST_COMMAND="${BACKEND_FAST_COMMAND:-make test-fast}"
 EVIDENCE_DIR="docs/release-evidence/technical-audit/backend-fast-gate"
 RAW_DIR="$EVIDENCE_DIR/raw"
+# Candidate evidence for this authority gate must be a self-contained snapshot
+# from the current run.  Remove stale raw files first so previous failed
+# classifications or old SHA manifests cannot contaminate a green rerun.
+rm -rf "$RAW_DIR"
 mkdir -p "$RAW_DIR"
 
 run_json_capture() {
@@ -23,9 +27,15 @@ run_text_capture() {
 }
 
 write_sha256sums() {
-  find "$RAW_DIR" -type f ! -name 'SHA256SUMS.txt' -print0 \
-    | sort -z \
-    | xargs -0 sha256sum > "$RAW_DIR/SHA256SUMS.txt"
+  (
+    cd "$EVIDENCE_DIR"
+    find raw -type f \
+      ! -name 'SHA256SUMS.txt' \
+      ! -name 'backend_fast_evidence_check.json' \
+      -print0 \
+      | sort -z \
+      | xargs -0 sha256sum > raw/SHA256SUMS.txt
+  )
 }
 
 SOURCE_COMMIT="$(git rev-parse HEAD 2>/dev/null || printf 'unknown')"
@@ -99,11 +109,15 @@ cat > "$EVIDENCE_DIR/evidence_index.md" <<EOF
 This evidence confirms the backend fast gate for the technical-audit remediation stream. It does not claim full product release readiness, frontend closure, E2E closure, live database execution, or runtime knowledge-graph implementation.
 EOF
 
-# Verify before writing the self-check artifact, then store the exact verification output.
+# Write the raw hash manifest only after every authority artifact and the
+# evidence index have stabilized.  The derived self-check JSON is intentionally
+# excluded from raw/SHA256SUMS.txt to avoid a self-mutating evidence bundle.
+write_sha256sums
+
+# Verify the final artifact set, then store the exact verification output.
 run_json_capture "$RAW_DIR/backend_fast_evidence_check.json" \
   "$PYTHON_BIN" scripts/audit_remediation/verify_backend_fast_evidence.py \
   --json \
   --evidence-dir "$EVIDENCE_DIR"
-write_sha256sums
 sha256sum "$EVIDENCE_DIR/evidence_index.md" > "$EVIDENCE_DIR/evidence_index.sha256"
 printf 'Collected backend fast-gate evidence in %s\n' "$EVIDENCE_DIR"

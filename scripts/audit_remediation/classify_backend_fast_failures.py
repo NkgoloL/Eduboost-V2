@@ -52,7 +52,24 @@ FAILED_TEST_RE = re.compile(r"^(FAILED|ERROR)\s+([^\s]+)", re.MULTILINE)
 SUMMARY_RE = re.compile(r"(?P<count>\d+)\s+(?P<kind>failed|errors?|passed|skipped|xfailed|xpassed)")
 
 
-def classify_text(text: str) -> dict[str, Any]:
+def _summary_counts(text: str) -> dict[str, int]:
+    summary: dict[str, int] = {}
+    for match in SUMMARY_RE.finditer(text):
+        kind = match.group("kind")
+        if kind == "error":
+            kind = "errors"
+        summary[kind] = summary.get(kind, 0) + int(match.group("count"))
+    return summary
+
+
+def _failure_count(summary: dict[str, int], failed_tests: list[str]) -> int:
+    count = summary.get("failed", 0) + summary.get("errors", 0)
+    if not count and failed_tests:
+        count = len(failed_tests)
+    return count
+
+
+def _classify_categories(text: str) -> dict[str, dict[str, Any]]:
     categories: dict[str, dict[str, Any]] = {}
     for category, patterns in CATEGORY_PATTERNS.items():
         snippets: list[str] = []
@@ -69,18 +86,20 @@ def classify_text(text: str) -> dict[str, Any]:
                 break
         if snippets:
             categories[category] = {"matched": True, "snippets": snippets}
+    return categories
 
+
+def classify_text(text: str) -> dict[str, Any]:
     failed_tests = [match.group(2) for match in FAILED_TEST_RE.finditer(text)]
-    summary: dict[str, int] = {}
-    for match in SUMMARY_RE.finditer(text):
-        kind = match.group("kind")
-        if kind == "error":
-            kind = "errors"
-        summary[kind] = summary.get(kind, 0) + int(match.group("count"))
+    summary = _summary_counts(text)
+    failure_count = _failure_count(summary, failed_tests)
 
-    failure_count = summary.get("failed", 0) + summary.get("errors", 0)
-    if not failure_count and failed_tests:
-        failure_count = len(failed_tests)
+    # Diagnostic categories are meaningful only for failed authority output.  A
+    # green pytest log may still contain benign warning text or package/module
+    # names such as ``popia``/``AsyncMock``.  Do not carry those into a passing
+    # classification, otherwise the evidence verifier can falsely reject a
+    # clean ``make test-fast`` run even when failure_count is zero.
+    categories = _classify_categories(text) if failure_count else {}
 
     return {
         "valid": failure_count == 0,

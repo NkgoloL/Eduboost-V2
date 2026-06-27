@@ -112,12 +112,19 @@ def verify(evidence_dir: Path = DEFAULT_EVIDENCE_DIR) -> dict[str, Any]:
     if classification_path.exists():
         classification = _load_json(classification_path, errors)
         if classification is not None:
-            if classification.get("failure_count", 0) != 0:
+            failure_count = int(classification.get("failure_count", 0) or 0)
+            failed_tests = classification.get("failed_tests") or []
+            category_names = classification.get("category_names") or []
+            if classification.get("valid") is not True:
+                errors.append("backend fast failure classification must report valid=true")
+            if failure_count != 0:
                 errors.append("backend fast failure classification must detect zero failures")
-            if classification.get("failed_tests"):
+            if failed_tests:
                 errors.append("backend fast failure classification must not list failed tests")
-            if classification.get("category_names"):
-                errors.append("backend fast failure classification must not match diagnostic categories")
+            if category_names and (failure_count or failed_tests):
+                errors.append("backend fast failure classification must not match diagnostic categories for failed output")
+            elif category_names:
+                warnings.append("backend fast failure classification recorded diagnostic categories despite zero failures")
 
     runner_path = raw / "backend_fast_runner_stdout.json"
     if runner_path.exists():
