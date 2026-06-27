@@ -50,7 +50,7 @@ def _write_valid_evidence(raw: Path, gate_text: str) -> None:
         json.dumps({"valid": True, "returncode": 0, "command": "make test-fast"}), encoding="utf-8"
     )
     (raw / "backend_fast_failure_classification.json").write_text(
-        json.dumps({"failure_count": 0, "failed_tests": [], "category_names": []}), encoding="utf-8"
+        json.dumps({"valid": True, "failure_count": 0, "failed_tests": [], "category_names": []}), encoding="utf-8"
     )
     digest = hashlib.sha256((raw / "backend_fast_gate_result.json").read_bytes()).hexdigest()
     (raw / "SHA256SUMS.txt").write_text(f"{digest}  raw/backend_fast_gate_result.json\n", encoding="utf-8")

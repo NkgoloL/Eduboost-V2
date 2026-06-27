@@ -115,7 +115,7 @@ def test_backend_fast_evidence_verifier_accepts_complete_evidence(tmp_path: Path
         encoding="utf-8",
     )
     (raw / "backend_fast_failure_classification.json").write_text(
-        json.dumps({"failure_count": 0, "failed_tests": [], "category_names": []}),
+        json.dumps({"valid": True, "failure_count": 0, "failed_tests": [], "category_names": []}),
         encoding="utf-8",
     )
     digest = hashlib.sha256((raw / "backend_fast_gate_result.json").read_bytes()).hexdigest()
