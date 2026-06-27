@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_04_ci_authority_workflow_cleanup_closed",
+  "status": "phase_05_dependency_scan_enforcement_ready",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -59,7 +59,19 @@
       "id": "TA-SECURITY-001",
       "title": "Ensure dependency scans fail on configured severity and publish artifacts consistently",
       "severity": "high",
-      "status": "partially_addressed_in_baseline_reset"
+      "status": "dependency_scan_enforcement_ready",
+      "authority_command": "python3 scripts/audit_remediation/verify_dependency_scan_enforcement.py --json",
+      "evidence_verifier": "python3 scripts/audit_remediation/verify_dependency_scan_evidence.py --evidence-dir docs/release-evidence/technical-audit/dependency-scan-enforcement --json",
+      "workflow": ".github/workflows/dependency-scan.yml",
+      "scope": [
+        "pip-audit fail-closed requirements matrix",
+        "pnpm audit critical-threshold fail-closed frontend scan",
+        "dependency-review critical severity guard",
+        "supported dependency scan artifact uploads",
+        "stable dependency scan enforcement evidence bundle"
+      ],
+      "passing_evidence_policy": "Static dependency-scan enforcement evidence may be recorded when the verifier is valid; remote GitHub Actions scan success is a separate future evidence requirement.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     },
     {
       "id": "TA-CI-001",
@@ -82,7 +94,7 @@
       "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     }
   ],
-  "active_slice": "next-technical-audit-slice",
+  "active_slice": "05-dependency-scan-enforcement",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "status": "evidence_recorded",

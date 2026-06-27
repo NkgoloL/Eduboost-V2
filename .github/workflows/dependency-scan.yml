@@ -46,14 +46,14 @@ jobs:
 
       - name: Run pip-audit
         run: |
-          set -o pipefail
+          set -euo pipefail
           pip-audit -r ${{ matrix.requirements }} --format=json \
             | tee pip-audit.json \
             | python3 -m json.tool
 
       - name: Upload pip-audit report
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: pip-audit-${{ strategy.job-index }}
           path: pip-audit.json
@@ -85,16 +85,26 @@ jobs:
       - name: Run pnpm audit
         working-directory: app/frontend
         run: |
+          set -euo pipefail
           pnpm audit --audit-level=critical --json | tee pnpm-audit.json
 
       - name: Check pnpm audit results
+        working-directory: app/frontend
         run: |
-          VULNS=$(node -e "const d=require('./app/frontend/pnpm-audit.json'); console.log(d.metadata?.vulnerabilities?.total || 0)" 2>/dev/null || echo "0")
-          echo "Found $VULNS pnpm vulnerabilities"
+          node - <<'NODE'
+          const fs = require('fs');
+          const report = JSON.parse(fs.readFileSync('pnpm-audit.json', 'utf8'));
+          const vulnerabilities = report.metadata?.vulnerabilities ?? {};
+          const critical = Number(vulnerabilities.critical ?? 0);
+          console.log(`pnpm critical vulnerabilities: ${critical}`);
+          if (critical > 0) {
+            process.exitCode = 1;
+          }
+          NODE
 
       - name: Upload pnpm audit report
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: pnpm-audit
           path: app/frontend/pnpm-audit.json
