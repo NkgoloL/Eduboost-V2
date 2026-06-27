@@ -1,0 +1,107 @@
+{
+  "authority": "frontend-tooling-authority",
+  "branch": "feature/atlas-phase-02r-gate-2r1-remediation",
+  "diagnostic_only": false,
+  "expected_steps": [
+    "pnpm_version",
+    "pnpm_install_frozen_lockfile",
+    "frontend_env_check",
+    "frontend_type_check",
+    "frontend_lint",
+    "frontend_vitest"
+  ],
+  "failed_steps": [],
+  "frontend_root": "app/frontend",
+  "missing_steps": [],
+  "source_commit": "c6dd8a454990cfff7d212eeef093dfef31c1c34a",
+  "steps": [
+    {
+      "command": [
+        "pnpm",
+        "--version"
+      ],
+      "cwd": ".",
+      "duration_seconds": 0.905,
+      "name": "pnpm_version",
+      "returncode": 0,
+      "stderr_file": "pnpm_version_stderr.txt",
+      "stdout_file": "pnpm_version_stdout.txt"
+    },
+    {
+      "command": [
+        "pnpm",
+        "--dir",
+        "app/frontend",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "cwd": ".",
+      "duration_seconds": 2.408,
+      "name": "pnpm_install_frozen_lockfile",
+      "returncode": 0,
+      "stderr_file": "pnpm_install_frozen_lockfile_stderr.txt",
+      "stdout_file": "pnpm_install_frozen_lockfile_stdout.txt"
+    },
+    {
+      "command": [
+        "pnpm",
+        "--dir",
+        "app/frontend",
+        "run",
+        "env-check"
+      ],
+      "cwd": ".",
+      "duration_seconds": 0.497,
+      "name": "frontend_env_check",
+      "returncode": 0,
+      "stderr_file": "frontend_env_check_stderr.txt",
+      "stdout_file": "frontend_env_check_stdout.txt"
+    },
+    {
+      "command": [
+        "pnpm",
+        "--dir",
+        "app/frontend",
+        "run",
+        "type-check"
+      ],
+      "cwd": ".",
+      "duration_seconds": 5.328,
+      "name": "frontend_type_check",
+      "returncode": 0,
+      "stderr_file": "frontend_type_check_stderr.txt",
+      "stdout_file": "frontend_type_check_stdout.txt"
+    },
+    {
+      "command": [
+        "pnpm",
+        "--dir",
+        "app/frontend",
+        "run",
+        "lint"
+      ],
+      "cwd": ".",
+      "duration_seconds": 3.696,
+      "name": "frontend_lint",
+      "returncode": 0,
+      "stderr_file": "frontend_lint_stderr.txt",
+      "stdout_file": "frontend_lint_stdout.txt"
+    },
+    {
+      "command": [
+        "pnpm",
+        "--dir",
+        "app/frontend",
+        "run",
+        "test"
+      ],
+      "cwd": ".",
+      "duration_seconds": 29.997,
+      "name": "frontend_vitest",
+      "returncode": 0,
+      "stderr_file": "frontend_vitest_stderr.txt",
+      "stdout_file": "frontend_vitest_stdout.txt"
+    }
+  ],
+  "valid": true
+}

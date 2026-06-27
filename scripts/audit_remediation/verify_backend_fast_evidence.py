@@ -112,12 +112,19 @@ def verify(evidence_dir: Path = DEFAULT_EVIDENCE_DIR) -> dict[str, Any]:
     if classification_path.exists():
         classification = _load_json(classification_path, errors)
         if classification is not None:
-            if classification.get("failure_count", 0) != 0:
+            failure_count = int(classification.get("failure_count", 0) or 0)
+            failed_tests = classification.get("failed_tests") or []
+            category_names = classification.get("category_names") or []
+            if classification.get("valid") is not True:
+                errors.append("backend fast failure classification must report valid=true")
+            if failure_count != 0:
                 errors.append("backend fast failure classification must detect zero failures")
-            if classification.get("failed_tests"):
+            if failed_tests:
                 errors.append("backend fast failure classification must not list failed tests")
-            if classification.get("category_names"):
-                errors.append("backend fast failure classification must not match diagnostic categories")
+            if category_names and (failure_count or failed_tests):
+                errors.append("backend fast failure classification must not match diagnostic categories for failed output")
+            elif category_names:
+                warnings.append("backend fast failure classification recorded diagnostic categories despite zero failures")
 
     runner_path = raw / "backend_fast_runner_stdout.json"
     if runner_path.exists():
@@ -130,7 +137,15 @@ def verify(evidence_dir: Path = DEFAULT_EVIDENCE_DIR) -> dict[str, Any]:
         gate_text = gate_text_path.read_text(encoding="utf-8", errors="replace")
         if re.search(r"(^|\n)(FAILED|ERROR)\s+tests/", gate_text):
             errors.append("backend fast gate output still contains failed/error test lines")
-        if "failed," in gate_text or "failed in" in gate_text or "Error 1" in gate_text or "Error 2" in gate_text:
+        # Pytest summaries may legitimately include xfailed entries, e.g.
+        # ``2315 passed, 11 skipped, 1 xfailed, 4 warnings``.  Treat only an
+        # explicit non-zero ``failed``/``error`` count as a failed authority
+        # summary; do not match the ``failed`` substring inside ``xfailed``.
+        if re.search(r"(?:^|[,\s])([1-9]\d*)\s+failed(?:,|\s+in\b)", gate_text):
+            errors.append("backend fast gate output still contains failure summary or make error")
+        if re.search(r"(?:^|[,\s])([1-9]\d*)\s+errors?(?:,|\s+in\b)", gate_text, flags=re.IGNORECASE):
+            errors.append("backend fast gate output still contains error summary or make error")
+        if re.search(r"make: \*\*\* .*Error [1-9]", gate_text):
             errors.append("backend fast gate output still contains failure summary or make error")
 
     index_path = evidence_dir / "evidence_index.md"

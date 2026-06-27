@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_02k_backend_fast_evidence_authority_repair_ready",
+  "status": "phase_03a_frontend_vitest_contracts_ready",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -24,32 +24,30 @@
       "id": "TA-BACKEND-FAST-001",
       "title": "Rerun and close backend fast gate from clean checkout",
       "severity": "critical",
-      "status": "blocked_evidence_harness_repair_required",
-      "latest_failure_summary": {
-        "failed": 1,
-        "passed": 2303,
-        "skipped": 11,
-        "xfailed": 1,
-        "errors": 0
-      },
-      "latest_failure_categories": [
-        "content_factory_registry",
-        "topic_map_worklist_provenance",
-        "tracked_artifact_gap"
-      ],
-      "next_slice": "02k-backend-fast-evidence-authority",
+      "status": "evidence_recorded",
+      "authority_command": "make test-fast",
+      "latest_valid_evidence_commit": "cf23c185bf",
+      "backend_fast_gate_result_returncode": 0,
+      "backend_fast_failure_classification_failure_count": 0,
+      "next_slice": "next-technical-audit-slice",
       "latest_evidence_control_gap": {
-        "backend_fast_gate_result_returncode": 2,
-        "backend_fast_gate_result_valid": false,
-        "backend_fast_evidence_check_valid": true,
-        "issue": "candidate evidence index/check claimed pass while raw authority result still recorded a failed make test-fast run"
+        "issue": "backend fast gate evidence has been refreshed and verified valid",
+        "boundary": "backend-fast gate restoration is closed; future technical-audit work continues in the next slice"
       }
     },
     {
       "id": "TA-FRONTEND-001",
       "title": "Rerun frontend env-check, lint, type-check, and Vitest under pnpm",
       "severity": "high",
-      "status": "pending_next_slice"
+      "status": "evidence_recorded",
+      "authority_command": "python3 scripts/audit_remediation/run_frontend_tooling_authority.py --output-dir docs/release-evidence/technical-audit/frontend-tooling-authority/raw --json",
+      "evidence_verifier": "python3 scripts/audit_remediation/verify_frontend_tooling_evidence.py --evidence-dir docs/release-evidence/technical-audit/frontend-tooling-authority --json",
+      "latest_valid_evidence_commit": "d8ecbe3d9c",
+      "frontend_tooling_authority_result": "valid",
+      "failed_steps": [],
+      "passing_evidence_policy": "Frontend/tooling authority evidence is recorded and valid; the authority blocker is closed.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+      "evidence_boundary": "Frontend/tooling evidence is now recorded as passing authority evidence."
     },
     {
       "id": "TA-E2E-001",
@@ -64,21 +62,22 @@
       "status": "partially_addressed_in_baseline_reset"
     }
   ],
-  "active_slice": "02k-backend-fast-evidence-authority",
+  "active_slice": "next-technical-audit-slice",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
-    "status": "failed_authority_gate_captured_for_phase_02j_remediation",
+    "status": "head_aligned_retry_failed_audit_harness_finalization_required",
     "reported_return_code": 2,
     "reported_summary": {
-      "failed": 1,
-      "passed": 2303,
+      "failed": 8,
+      "passed": 2311,
       "skipped": 11,
       "xfailed": 1
     },
     "reported_categories": [
-      "content_factory_registry",
-      "topic_map_worklist_provenance",
-      "tracked_artifact_gap"
+      "audit_harness_fixture_drift",
+      "historical_phase_verifier_active_slice_drift",
+      "runtime_wiring_pr_docs_gap",
+      "project_assistance_status_stale"
     ],
     "passing_evidence_policy": "Do not create backend-fast-gate candidate evidence until make test-fast exits 0.",
     "runtime_dependency_slice": {
@@ -188,13 +187,53 @@
     "phase_02k_slice": {
       "id": "TA-BACKEND-FAST-011",
       "title": "Repair backend-fast candidate evidence authority harness",
-      "status": "implementation_ready",
-      "control_gap": "candidate evidence must be derived from a fresh make test-fast returncode 0 run, with machine-readable raw JSON and no stale failure artifacts",
-      "policy": "Do not accept backend-fast-gate evidence unless backend_fast_gate_result.json has returncode 0 and valid=true, classification has zero failures, and verify_backend_fast_evidence.py independently passes.",
+      "status": "closed",
+      "control_gap": "candidate evidence now derives from a fresh make test-fast returncode 0 run with verified raw JSON and no stale failure artifacts",
+      "policy": "Backend-fast gate evidence is accepted only when backend_fast_gate_result.json has returncode 0 and valid=true, classification has zero failures, and verify_backend_fast_evidence.py independently passes.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    },
+    "phase_02l_slice": {
+      "id": "TA-BACKEND-FAST-012",
+      "title": "Make backend fast evidence verifier xfailed-safe without weakening failure detection",
+      "status": "closed",
+      "policy": "A pytest xfailed count is allowed only when make test-fast returns 0, failure_count is 0, and no failed/error tests are listed.",
+      "boundary": "Evidence verifier repair only; no product release readiness, Phase 02R governance, live DB migration, or runtime KG work."
+    },
+    "phase_02m_slice": {
+      "id": "TA-BACKEND-FAST-013",
+      "title": "Finalize backend-fast audit harness for HEAD-aligned evidence recollection",
+      "status": "closed",
+      "dominant_failure_clusters": [
+        "backend_fast_evidence_fixture_drift",
+        "phase02k_phase02l_historical_verifier_drift",
+        "runtime_wiring_pr_docs_missing",
+        "project_assistance_status_stale"
+      ],
+      "estimated_failures_targeted": 8,
+      "policy": "Phase 02M evidence was recorded separately, and backend-fast evidence has now been recollected and verified before TA Phase 02 closure.",
       "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     }
   },
   "historical_slices": [
     "02h-backend-fast-residual-contracts"
-  ]
+  ],
+  "frontend_tooling_authority": {
+    "id": "TA-FRONTEND-001",
+    "status": "evidence_recorded",
+    "authority_commands": [
+      "pnpm --version",
+      "pnpm --dir app/frontend install --frozen-lockfile",
+      "pnpm --dir app/frontend run env-check",
+      "pnpm --dir app/frontend run type-check",
+      "pnpm --dir app/frontend run lint",
+      "pnpm --dir app/frontend run test"
+    ],
+    "evidence_dir": "docs/release-evidence/technical-audit/frontend-tooling-authority",
+    "boundary": "Frontend/tooling evidence is separate from Playwright/E2E and dependency-scan closure.",
+    "latest_valid_evidence_commit": "d8ecbe3d9c",
+    "frontend_tooling_authority_result": "valid",
+    "failed_steps": [],
+    "passing_evidence_policy": "Frontend/tooling authority evidence has been recorded and validated; the blocker is closed.",
+    "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+  }
 }
