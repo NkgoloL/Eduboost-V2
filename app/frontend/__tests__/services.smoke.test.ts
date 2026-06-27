@@ -73,10 +73,10 @@ test('Consent revoke and DataRights cancelErasure/deletionStatus work', async ()
     if (url.includes('/consent/revoke')) {
       return new Response(JSON.stringify({ revoked: 1, message: 'ok' }), { status: 200 })
     }
-    if (url.includes('/popia/deletion-cancel')) {
+    if (url === '/api/backend/popia/erasure/L1/cancel') {
       return new Response(JSON.stringify({ status: 'ok' }), { status: 200 })
     }
-    if (url.includes('/popia/deletion-status')) {
+    if (url === '/api/backend/popia/erasure/L1/status') {
       return new Response(JSON.stringify({ status: 'pending' }), { status: 200 })
     }
     return new Response(JSON.stringify({}), { status: 200 })
