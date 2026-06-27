@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_02n_backend_fast_evidence_finalization_ready",
+  "status": "backend_fast_gate_restoration_closed",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -24,21 +24,15 @@
       "id": "TA-BACKEND-FAST-001",
       "title": "Rerun and close backend fast gate from clean checkout",
       "severity": "critical",
-      "status": "blocked_head_aligned_evidence_integrity_finalization",
-      "latest_failure_summary": {
-        "backend_fast_gate_result_returncode": 0,
-        "backend_fast_failure_classification_failure_count": 0,
-        "evidence_verifier_valid": false
-      },
-      "latest_failure_categories": [
-        "passing_output_diagnostic_category_false_positive",
-        "raw_sha256_manifest_digest_mismatch",
-        "stale_raw_evidence_contamination"
-      ],
-      "next_slice": "02n-backend-fast-evidence-finalization",
+      "status": "evidence_recorded",
+      "authority_command": "make test-fast",
+      "latest_valid_evidence_commit": "cf23c185bf",
+      "backend_fast_gate_result_returncode": 0,
+      "backend_fast_failure_classification_failure_count": 0,
+      "next_slice": "next-technical-audit-slice",
       "latest_evidence_control_gap": {
-        "issue": "authority command passed but final evidence verifier rejected stale diagnostic categories and raw SHA digest mismatches",
-        "boundary": "do not commit refreshed backend-fast gate evidence until corrected verifier returns valid=true"
+        "issue": "backend fast gate evidence has been refreshed and verified valid",
+        "boundary": "backend-fast gate restoration is closed; future technical-audit work continues in the next slice"
       }
     },
     {
@@ -60,7 +54,7 @@
       "status": "partially_addressed_in_baseline_reset"
     }
   ],
-  "active_slice": "02m-backend-fast-head-aligned-finalization",
+  "active_slice": "next-technical-audit-slice",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "status": "head_aligned_retry_failed_audit_harness_finalization_required",
@@ -185,22 +179,22 @@
     "phase_02k_slice": {
       "id": "TA-BACKEND-FAST-011",
       "title": "Repair backend-fast candidate evidence authority harness",
-      "status": "implementation_ready",
-      "control_gap": "candidate evidence must be derived from a fresh make test-fast returncode 0 run, with machine-readable raw JSON and no stale failure artifacts",
-      "policy": "Do not accept backend-fast-gate evidence unless backend_fast_gate_result.json has returncode 0 and valid=true, classification has zero failures, and verify_backend_fast_evidence.py independently passes.",
+      "status": "closed",
+      "control_gap": "candidate evidence now derives from a fresh make test-fast returncode 0 run with verified raw JSON and no stale failure artifacts",
+      "policy": "Backend-fast gate evidence is accepted only when backend_fast_gate_result.json has returncode 0 and valid=true, classification has zero failures, and verify_backend_fast_evidence.py independently passes.",
       "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     },
     "phase_02l_slice": {
       "id": "TA-BACKEND-FAST-012",
       "title": "Make backend fast evidence verifier xfailed-safe without weakening failure detection",
-      "status": "implementation_ready",
+      "status": "closed",
       "policy": "A pytest xfailed count is allowed only when make test-fast returns 0, failure_count is 0, and no failed/error tests are listed.",
       "boundary": "Evidence verifier repair only; no product release readiness, Phase 02R governance, live DB migration, or runtime KG work."
     },
     "phase_02m_slice": {
       "id": "TA-BACKEND-FAST-013",
       "title": "Finalize backend-fast audit harness for HEAD-aligned evidence recollection",
-      "status": "implementation_ready",
+      "status": "closed",
       "dominant_failure_clusters": [
         "backend_fast_evidence_fixture_drift",
         "phase02k_phase02l_historical_verifier_drift",
@@ -208,7 +202,7 @@
         "project_assistance_status_stale"
       ],
       "estimated_failures_targeted": 8,
-      "policy": "Phase 02M evidence may be recorded separately, but HEAD-aligned backend-fast evidence must still be recollected and verified before TA Phase 02 is closed.",
+      "policy": "Phase 02M evidence was recorded separately, and backend-fast evidence has now been recollected and verified before TA Phase 02 closure.",
       "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     }
   },
