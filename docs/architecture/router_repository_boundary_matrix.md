@@ -1,21 +1,6 @@
----
-title: "Router Repository Boundary Matrix"
-status: current-evidence
-owner: architecture
-reviewers: [architecture, engineering]
-audience: developer
-source_of_truth: false
-supersedes: []
-superseded_by: null
-last_reviewed: 2026-06-23
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage4-check"
-code_anchors: [docs/architecture/README.md]
----
-
 # Router Repository Boundary Matrix
 
-Generated at: `2026-06-24T11:30:00Z`
+Generated at: `2026-06-27T02:18:43Z`
 
 | Router | P0 | Repository imports | Transition allowed | Violations |
 |---|---:|---|---|---|
@@ -35,6 +20,7 @@ Generated at: `2026-06-24T11:30:00Z`
 | `app/api_v2_routers/content_review.py` | False | - | - | - |
 | `app/api_v2_routers/curriculum_expansion.py` | False | - | - | - |
 | `app/api_v2_routers/diagnostics.py` | False | - | - | - |
+| `app/api_v2_routers/ether.py` | False | - | - | - |
 | `app/api_v2_routers/gamification.py` | False | `app.repositories.gamification_repository`, `app.repositories.repositories` | - | `app.repositories.gamification_repository`, `app.repositories.repositories` |
 | `app/api_v2_routers/generation.py` | False | - | - | - |
 | `app/api_v2_routers/irt_quality.py` | False | - | - | - |
