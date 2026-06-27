@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_03_frontend_tooling_authority_closed",
+  "status": "phase_04_ci_authority_workflow_cleanup_ready",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -60,9 +60,26 @@
       "title": "Ensure dependency scans fail on configured severity and publish artifacts consistently",
       "severity": "high",
       "status": "partially_addressed_in_baseline_reset"
+    },
+    {
+      "id": "TA-CI-001",
+      "title": "Repair main CI workflow authority and package-manager contract",
+      "severity": "high",
+      "status": "workflow_cleanup_ready",
+      "authority_command": "python3 scripts/audit_remediation/verify_ci_authority_workflow.py --json",
+      "evidence_verifier": "python3 scripts/audit_remediation/verify_ci_authority_workflow_evidence.py --evidence-dir docs/release-evidence/technical-audit/ci-authority-workflow --json",
+      "workflow": ".github/workflows/ci-cd.yml",
+      "scope": [
+        "main CI/CD workflow job-id uniqueness",
+        "pnpm frontend and E2E install ownership",
+        "supported artifact upload action pin",
+        "production promotion needs drift guard"
+      ],
+      "passing_evidence_policy": "Static CI workflow-cleanup evidence may be recorded when the verifier is valid; remote GitHub Actions success is a separate future evidence requirement.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     }
   ],
-  "active_slice": "next-technical-audit-slice",
+  "active_slice": "04-ci-authority-workflow-cleanup",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "status": "evidence_recorded",

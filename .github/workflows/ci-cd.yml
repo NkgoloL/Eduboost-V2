@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
@@ -50,7 +50,7 @@ jobs:
         run: |
           pip install bandit
           bandit -r app/ -ll -ii --exclude app/tests -f json -o bandit-report.json
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: bandit-report
@@ -74,7 +74,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
@@ -97,7 +97,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
@@ -135,7 +135,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
@@ -151,7 +151,7 @@ jobs:
           sphinx-build -W -b html docs/api/source docs/api/_build/html
 
       - name: Upload documentation artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: api-documentation
           path: docs/api/_build/html/
@@ -165,7 +165,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
@@ -229,7 +229,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
@@ -289,7 +289,7 @@ jobs:
       JUDICIARY_SERVICE_URL: http://localhost:8001
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
@@ -300,7 +300,7 @@ jobs:
       - name: Run backend coverage
         run: make test-coverage COVERAGE_THRESHOLD=${{ env.COVERAGE_THRESHOLD }}
       - name: Upload coverage XML artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: backend-coverage-xml
           path: coverage.xml
@@ -311,7 +311,7 @@ jobs:
           file: coverage.xml
           fail_ci_if_error: false
       - name: Upload coverage HTML artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: backend-coverage-html
           path: coverage_html/
@@ -353,7 +353,7 @@ jobs:
       JWT_SECRET_KEY: test-jwt-secret-32-chars-minimum-value
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
@@ -386,7 +386,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "pnpm"
@@ -403,11 +403,14 @@ jobs:
       - name: Audit pnpm dependencies
         run: pnpm audit --audit-level=high
 
+      - name: Run frontend env check
+        run: pnpm run env-check
+
       - name: Run frontend coverage gate
         run: pnpm run test:coverage
 
       - name: Upload frontend coverage artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: frontend-coverage
           path: app/frontend/coverage/
@@ -430,7 +433,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "pnpm"
@@ -438,14 +441,15 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 9.14.4
-      - name: Install frontend dependencies
-        working-directory: app/frontend
+      - name: Install root Playwright dependencies
         run: pnpm install --frozen-lockfile
+      - name: Install frontend dependencies
+        run: pnpm --dir app/frontend install --frozen-lockfile
       - name: Install Playwright browsers
-        run: app/frontend/node_modules/.bin/playwright install --with-deps chromium
+        run: pnpm exec playwright install --with-deps chromium
       - name: Run Playwright tests
-        run: app/frontend/node_modules/.bin/playwright test
-      - uses: actions/upload-artifact@v7
+        run: pnpm exec playwright test
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: playwright-report
@@ -485,7 +489,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
@@ -533,7 +537,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
@@ -558,7 +562,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
@@ -583,7 +587,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
@@ -656,7 +660,7 @@ jobs:
     name: Production Promotion Gate
     runs-on: ubuntu-latest
     if: github.event_name == 'release' && github.event.action == 'published'
-    needs: [lint, unit-tests, integration-tests, backend-coverage, frontend, schema-drift, content-factory-migrations, content-factory-unit-tests, popia-tests, image-scan, secrets-scan, e2e]
+    needs: [lint, unit-tests, integration-tests, backend-coverage, frontend, schema-drift, alembic-drift, content-factory-migrations, content-factory-unit-tests, popia-tests, image-scan, secrets-scan, e2e]
     environment: production
     steps:
       - uses: actions/checkout@v4
