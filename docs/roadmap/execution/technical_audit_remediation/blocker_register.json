@@ -1,5 +1,5 @@
 {
-  "active_slice": "technical-audit-release-readiness-closed",
+  "active_slice": "technical-audit-remediation-closure-authority",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "content_scope_registry_slice": {
@@ -213,6 +213,22 @@
     "title": "Technical-audit release-readiness authority",
     "updated_at_utc": "2026-06-28T21:13:27Z"
   },
+  "phase_12_technical_audit_closure_authority": {
+    "authority_record": "docs/roadmap/execution/technical_audit_remediation/technical_audit_closure_record.json",
+    "deployment_authorised": false,
+    "evidence_path": "docs/release-evidence/technical-audit/phase-12-closure",
+    "id": "TA-CLOSURE-001",
+    "live_learner_traffic_authorised": false,
+    "production_release_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_implementation_claimed": false,
+    "status": "closure_authority_ready",
+    "technical_audit_release_readiness_claimed": true,
+    "technical_audit_remediation_closed": false,
+    "technical_audit_remediation_closure_claimed": false,
+    "title": "Technical-audit remediation closure authority",
+    "updated_at_utc": "2026-06-28T21:34:27Z"
+  },
   "remaining_release_blockers_after_reset": [
     {
       "authority_command": "PYTHON_BIN=.venv/bin/python bash scripts/audit_remediation/finalize_openapi_frontend_contract.sh --regenerate && python3 scripts/audit_remediation/verify_openapi_frontend_contract.py --json",
@@ -377,6 +393,6 @@
       "title": "Hosted CI run evidence and merge readiness authority"
     }
   ],
-  "status": "phase_11_technical_audit_release_readiness_closed",
+  "status": "phase_12_technical_audit_closure_authority_ready",
   "stream": "technical-audit-remediation"
 }
