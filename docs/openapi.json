@@ -51,6 +51,7 @@
             "type": "string"
           },
           "summary": {
+            "additionalProperties": true,
             "title": "Summary",
             "type": "object"
           }
@@ -74,6 +75,7 @@
             "type": "string"
           },
           "details": {
+            "additionalProperties": true,
             "title": "Details",
             "type": "object"
           },
@@ -279,21 +281,25 @@
       "ArtifactReviewBundleResponse": {
         "properties": {
           "artifact": {
+            "additionalProperties": true,
             "title": "Artifact",
             "type": "object"
           },
           "generation_metadata": {
+            "additionalProperties": true,
             "title": "Generation Metadata",
             "type": "object"
           },
           "prior_review_events": {
             "items": {
+              "additionalProperties": true,
               "type": "object"
             },
             "title": "Prior Review Events",
             "type": "array"
           },
           "provenance": {
+            "additionalProperties": true,
             "title": "Provenance",
             "type": "object"
           },
@@ -302,6 +308,7 @@
           },
           "similar_artifacts": {
             "items": {
+              "additionalProperties": true,
               "type": "object"
             },
             "title": "Similar Artifacts",
@@ -309,6 +316,7 @@
           },
           "sources": {
             "items": {
+              "additionalProperties": true,
               "type": "object"
             },
             "title": "Sources",
@@ -317,6 +325,7 @@
           "validation_report": {
             "anyOf": [
               {
+                "additionalProperties": true,
                 "type": "object"
               },
               {
@@ -363,6 +372,7 @@
         "additionalProperties": false,
         "properties": {
           "artifact_json": {
+            "additionalProperties": true,
             "title": "Artifact Json",
             "type": "object"
           },
@@ -473,6 +483,7 @@
             "type": "string"
           },
           "metadata": {
+            "additionalProperties": true,
             "title": "Metadata",
             "type": "object"
           },
@@ -610,6 +621,7 @@
             "type": "string"
           },
           "used_cost_usd": {
+            "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
             "title": "Used Cost Usd",
             "type": "string"
           },
@@ -863,6 +875,9 @@
             "additionalProperties": {
               "$ref": "#/components/schemas/CoverageLayerCounts"
             },
+            "propertyNames": {
+              "$ref": "#/components/schemas/ContentLayer-Output"
+            },
             "title": "Layers",
             "type": "object"
           },
@@ -991,11 +1006,7 @@
             "type": "string"
           },
           "state": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ConsentState"
-              }
-            ],
+            "$ref": "#/components/schemas/ConsentState",
             "default": "pending"
           },
           "updated_at": {
@@ -1182,6 +1193,7 @@
             "title": "Source Hash"
           },
           "source_metadata": {
+            "additionalProperties": true,
             "title": "Source Metadata",
             "type": "object"
           },
@@ -1279,6 +1291,7 @@
       "ContentArtifactValidationRequest": {
         "properties": {
           "artifact_json": {
+            "additionalProperties": true,
             "title": "Artifact Json",
             "type": "object"
           },
@@ -1321,6 +1334,7 @@
       "ContentArtifactValidationResponse": {
         "properties": {
           "checks": {
+            "additionalProperties": true,
             "title": "Checks",
             "type": "object"
           },
@@ -1439,6 +1453,7 @@
             "title": "Status"
           },
           "summary": {
+            "additionalProperties": true,
             "title": "Summary",
             "type": "object"
           }
@@ -1502,6 +1517,7 @@
       "ContentFactoryReportResponse": {
         "properties": {
           "coverage": {
+            "additionalProperties": true,
             "title": "Coverage",
             "type": "object"
           },
@@ -1636,6 +1652,7 @@
             "type": "string"
           },
           "summary": {
+            "additionalProperties": true,
             "title": "Summary",
             "type": "object"
           },
@@ -1670,6 +1687,7 @@
           },
           "missing": {
             "items": {
+              "additionalProperties": true,
               "type": "object"
             },
             "title": "Missing",
@@ -1682,6 +1700,7 @@
           },
           "skipped": {
             "items": {
+              "additionalProperties": true,
               "type": "object"
             },
             "title": "Skipped",
@@ -1757,6 +1776,7 @@
             "type": "string"
           },
           "run_metadata": {
+            "additionalProperties": true,
             "title": "Run Metadata",
             "type": "object"
           },
@@ -2056,6 +2076,7 @@
             "type": "string"
           },
           "summary": {
+            "additionalProperties": true,
             "title": "Summary",
             "type": "object"
           }
@@ -2070,6 +2091,7 @@
       "CorrectionRequestLegacyBody": {
         "properties": {
           "fields": {
+            "additionalProperties": true,
             "title": "Fields",
             "type": "object"
           },
@@ -2367,6 +2389,7 @@
           },
           "ranked_gaps": {
             "items": {
+              "additionalProperties": true,
               "type": "object"
             },
             "title": "Ranked Gaps",
@@ -2656,6 +2679,7 @@
             "type": "boolean"
           },
           "plan": {
+            "additionalProperties": true,
             "title": "Plan",
             "type": "object"
           },
@@ -2981,6 +3005,7 @@
             "type": "string"
           },
           "summary": {
+            "additionalProperties": true,
             "title": "Summary",
             "type": "object"
           }
@@ -3030,6 +3055,7 @@
           "error": {
             "anyOf": [
               {
+                "additionalProperties": true,
                 "type": "object"
               },
               {
@@ -3047,6 +3073,7 @@
             "type": "string"
           },
           "payload": {
+            "additionalProperties": true,
             "title": "Payload",
             "type": "object"
           },
@@ -3193,6 +3220,7 @@
         "type": "object"
       },
       "LearnerDiagnosticItem": {
+        "description": "Learner-facing diagnostic item.",
         "properties": {
           "artifact_id": {
             "title": "Artifact Id",
@@ -3229,6 +3257,7 @@
             "type": "string"
           },
           "payload": {
+            "additionalProperties": true,
             "title": "Payload",
             "type": "object"
           },
@@ -3291,6 +3320,7 @@
         "type": "object"
       },
       "LearnerLesson": {
+        "description": "Learner-facing lesson.",
         "properties": {
           "artifact_id": {
             "title": "Artifact Id",
@@ -3327,6 +3357,7 @@
             "type": "string"
           },
           "payload": {
+            "additionalProperties": true,
             "title": "Payload",
             "type": "object"
           },
@@ -3455,6 +3486,7 @@
         "type": "object"
       },
       "LearnerScopeContentSummary": {
+        "description": "Summary of learner-visible content for a scope.",
         "properties": {
           "diagnostic_items_count": {
             "title": "Diagnostic Items Count",
@@ -3651,6 +3683,7 @@
             "type": "string"
           },
           "metadata": {
+            "additionalProperties": true,
             "title": "Metadata",
             "type": "object"
           },
@@ -4158,6 +4191,7 @@
             "type": "array"
           },
           "coverage_summary": {
+            "additionalProperties": true,
             "title": "Coverage Summary",
             "type": "object"
           },
@@ -4166,6 +4200,7 @@
             "type": "string"
           },
           "staging_summary": {
+            "additionalProperties": true,
             "title": "Staging Summary",
             "type": "object"
           },
@@ -4230,6 +4265,7 @@
           },
           "skipped": {
             "items": {
+              "additionalProperties": true,
               "type": "object"
             },
             "title": "Skipped",
@@ -5326,6 +5362,7 @@
             "type": "string"
           },
           "rubric_results": {
+            "additionalProperties": true,
             "title": "Rubric Results",
             "type": "object"
           },
@@ -5411,6 +5448,7 @@
             "title": "Reason Code"
           },
           "rubric_results": {
+            "additionalProperties": true,
             "title": "Rubric Results",
             "type": "object"
           }
@@ -5802,6 +5840,7 @@
             "type": "string"
           },
           "run_metadata": {
+            "additionalProperties": true,
             "title": "Run Metadata",
             "type": "object"
           },
@@ -5970,11 +6009,7 @@
             "title": "Seeded Staging"
           },
           "severity": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/BlockerSeverity"
-              }
-            ],
+            "$ref": "#/components/schemas/BlockerSeverity",
             "default": "blocking"
           },
           "validation_failed": {
@@ -6031,6 +6066,9 @@
           "layers": {
             "additionalProperties": {
               "$ref": "#/components/schemas/ScopeCoverageLayerSummary"
+            },
+            "propertyNames": {
+              "$ref": "#/components/schemas/ContentLayer-Output"
             },
             "title": "Layers",
             "type": "object"
@@ -6162,6 +6200,7 @@
             "$ref": "#/components/schemas/StagingReadinessStatus"
           },
           "summary": {
+            "additionalProperties": true,
             "title": "Summary",
             "type": "object"
           }
@@ -6765,6 +6804,7 @@
           "cost_metadata": {
             "anyOf": [
               {
+                "additionalProperties": true,
                 "type": "object"
               },
               {
@@ -6853,6 +6893,7 @@
           "token_usage": {
             "anyOf": [
               {
+                "additionalProperties": true,
                 "type": "object"
               },
               {
@@ -7142,9 +7183,6 @@
           },
           "status": {
             "const": "cancelled",
-            "enum": [
-              "cancelled"
-            ],
             "title": "Status",
             "type": "string"
           }
@@ -7382,6 +7420,7 @@
             "type": "string"
           },
           "estimated_cost_usd": {
+            "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
             "title": "Estimated Cost Usd",
             "type": "string"
           },
@@ -8647,6 +8686,7 @@
           "content": {
             "application/json": {
               "schema": {
+                "additionalProperties": true,
                 "title": "Request",
                 "type": "object"
               }
@@ -8954,6 +8994,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Promotion Event Items Api V2 Admin Content Factory Promotion Events  Promotion Event Id  Items Get",
                   "type": "object"
                 }
@@ -11832,6 +11873,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Capture Snapshots Api V2 Admin Curriculum Expansion Coverage Snapshots Post",
@@ -11882,6 +11924,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Scope Coverage Api V2 Admin Curriculum Expansion Coverage  Scope Id  Get",
                   "type": "object"
                 }
@@ -12176,6 +12219,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response List Etl Datasets Api V2 Admin Etl Datasets Get",
@@ -12206,6 +12250,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response List Etl Documents Api V2 Admin Etl Documents Get",
@@ -12246,6 +12291,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Etl Document Api V2 Admin Etl Documents  Document Id  Get",
                   "type": "object"
                 }
@@ -12295,6 +12341,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Document Audit Api V2 Admin Etl Documents  Document Id  Audit Get",
@@ -12346,6 +12393,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Document Chunks Api V2 Admin Etl Documents  Document Id  Chunks Get",
@@ -12385,6 +12433,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Etl Metrics Api V2 Admin Etl Metrics Get",
                   "type": "object"
                 }
@@ -12423,6 +12472,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Etl Quality Api V2 Admin Etl Quality  Document Id  Get",
                   "type": "object"
                 }
@@ -12461,6 +12511,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Review Queue Api V2 Admin Etl Review Queue Get",
@@ -12502,6 +12553,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Search Etl Api V2 Admin Etl Search Get",
                   "type": "object"
                 }
@@ -12539,6 +12591,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Etl Admin Status Api V2 Admin Etl Status Get",
                   "type": "object"
                 }
@@ -12673,6 +12726,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Cancel Generation Run Api V2 Admin Generation Runs  Run Id  Cancel Post",
                   "type": "object"
                 }
@@ -14021,6 +14075,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Grant Consent Api V2 Consent Grant Post",
                   "type": "object"
                 }
@@ -14068,6 +14123,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Revoke Consent Api V2 Consent Revoke Post",
                   "type": "object"
                 }
@@ -14117,6 +14173,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Consent Status Api V2 Consent Status  Learner Id  Get",
                   "type": "object"
                 }
@@ -16793,6 +16850,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Learner Progress Api V2 Parents Learners  Learner Id  Progress Get",
                   "type": "object"
                 }
@@ -19063,6 +19121,7 @@
           "content": {
             "application/json": {
               "schema": {
+                "additionalProperties": true,
                 "title": "Request",
                 "type": "object"
               }
@@ -19370,6 +19429,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Promotion Event Items V2 Admin Content Factory Promotion Events  Promotion Event Id  Items Get",
                   "type": "object"
                 }
@@ -22248,6 +22308,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Capture Snapshots V2 Admin Curriculum Expansion Coverage Snapshots Post",
@@ -22298,6 +22359,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Scope Coverage V2 Admin Curriculum Expansion Coverage  Scope Id  Get",
                   "type": "object"
                 }
@@ -22592,6 +22654,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response List Etl Datasets V2 Admin Etl Datasets Get",
@@ -22622,6 +22685,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response List Etl Documents V2 Admin Etl Documents Get",
@@ -22662,6 +22726,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Etl Document V2 Admin Etl Documents  Document Id  Get",
                   "type": "object"
                 }
@@ -22711,6 +22776,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Document Audit V2 Admin Etl Documents  Document Id  Audit Get",
@@ -22762,6 +22828,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Document Chunks V2 Admin Etl Documents  Document Id  Chunks Get",
@@ -22801,6 +22868,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Etl Metrics V2 Admin Etl Metrics Get",
                   "type": "object"
                 }
@@ -22839,6 +22907,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Etl Quality V2 Admin Etl Quality  Document Id  Get",
                   "type": "object"
                 }
@@ -22877,6 +22946,7 @@
               "application/json": {
                 "schema": {
                   "items": {
+                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Review Queue V2 Admin Etl Review Queue Get",
@@ -22918,6 +22988,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Search Etl V2 Admin Etl Search Get",
                   "type": "object"
                 }
@@ -22955,6 +23026,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Etl Admin Status V2 Admin Etl Status Get",
                   "type": "object"
                 }
@@ -23089,6 +23161,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Cancel Generation Run V2 Admin Generation Runs  Run Id  Cancel Post",
                   "type": "object"
                 }
@@ -24437,6 +24510,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Grant Consent V2 Consent Grant Post",
                   "type": "object"
                 }
@@ -24484,6 +24558,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Revoke Consent V2 Consent Revoke Post",
                   "type": "object"
                 }
@@ -24533,6 +24608,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Consent Status V2 Consent Status  Learner Id  Get",
                   "type": "object"
                 }
@@ -27209,6 +27285,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response Get Learner Progress V2 Parents Learners  Learner Id  Progress Get",
                   "type": "object"
                 }
