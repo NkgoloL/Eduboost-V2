@@ -69,22 +69,12 @@ jobs:
             echo 'No prior remote CI branch integration verifier found; skipping compatibility check.'
           fi
 
-      - name: Run repository verification scripts
+      - name: Verify Phase 02R terminal control state
         run: |
-          if [ -x scripts/verify_phase02r.sh ]; then
-            bash scripts/verify_phase02r.sh
-          elif [ -f scripts/verify_phase02r.sh ]; then
-            bash scripts/verify_phase02r.sh
+          if [ -f scripts/phase02r_gate_control.py ]; then
+            python scripts/phase02r_gate_control.py --expected-approved-gate 2R.8 --expected-authorised-gate null --require-approval-roles --require-evidence-index-sha --json
           else
-            echo 'No scripts/verify_phase02r.sh found; skipping.'
-          fi
-
-          if [ -x scripts/verify_phase02r_postgres.sh ]; then
-            bash scripts/verify_phase02r_postgres.sh
-          elif [ -f scripts/verify_phase02r_postgres.sh ]; then
-            bash scripts/verify_phase02r_postgres.sh
-          else
-            echo 'No scripts/verify_phase02r_postgres.sh found; skipping.'
+            echo "No scripts/phase02r_gate_control.py found; skipping Phase 02R control check."
           fi
 
       - name: Run test suite
