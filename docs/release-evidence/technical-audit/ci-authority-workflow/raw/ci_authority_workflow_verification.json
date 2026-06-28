@@ -1,0 +1,173 @@
+{
+  "findings": [
+    {
+      "message": ".github/workflows/ci-cd.yml exists",
+      "valid": true
+    },
+    {
+      "message": "frontend pnpm-lock.yaml exists",
+      "valid": true
+    },
+    {
+      "message": "root packageManager uses pnpm",
+      "valid": true
+    },
+    {
+      "message": "frontend packageManager uses pnpm",
+      "valid": true
+    },
+    {
+      "message": "workflow job ids are unique",
+      "valid": true
+    },
+    {
+      "message": "job schema-drift present",
+      "valid": true
+    },
+    {
+      "message": "job alembic-drift present",
+      "valid": true
+    },
+    {
+      "message": "job frontend present",
+      "valid": true
+    },
+    {
+      "message": "job e2e present",
+      "valid": true
+    },
+    {
+      "message": "job production-promote present",
+      "valid": true
+    },
+    {
+      "message": "forbidden snippet absent: npm ci",
+      "valid": true
+    },
+    {
+      "message": "forbidden snippet absent: package-lock.json",
+      "valid": true
+    },
+    {
+      "message": "forbidden snippet absent: app/frontend/node_modules/.bin/playwright",
+      "valid": true
+    },
+    {
+      "message": "forbidden snippet absent: actions/upload-artifact@v7",
+      "valid": true
+    },
+    {
+      "message": "forbidden snippet absent: actions/setup-node@v6",
+      "valid": true
+    },
+    {
+      "message": "forbidden snippet absent: actions/setup-python@v6",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: actions/upload-artifact@v4",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: pnpm/action-setup@v4",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: cache: \"pnpm\"",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: cache-dependency-path: app/frontend/pnpm-lock.yaml",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: pnpm install --frozen-lockfile",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: pnpm --dir app/frontend install --frozen-lockfile",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: pnpm run env-check",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: pnpm run lint",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: pnpm run type-check",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: pnpm run build",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: pnpm exec playwright install --with-deps chromium",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: pnpm exec playwright test",
+      "valid": true
+    },
+    {
+      "message": "production-promote needs schema-drift",
+      "valid": true
+    },
+    {
+      "message": "production-promote needs alembic-drift",
+      "valid": true
+    },
+    {
+      "message": "production-promote needs frontend",
+      "valid": true
+    },
+    {
+      "message": "production-promote needs e2e",
+      "valid": true
+    },
+    {
+      "message": "production-promote needs unit-tests",
+      "valid": true
+    },
+    {
+      "message": "production-promote needs integration-tests",
+      "valid": true
+    },
+    {
+      "message": "TA-CI-001 blocker registered",
+      "valid": true
+    },
+    {
+      "message": "TA-CI-001 status workflow_cleanup_ready",
+      "valid": true
+    },
+    {
+      "message": "active_slice is 04-ci-authority-workflow-cleanup",
+      "valid": true
+    }
+  ],
+  "job_ids": [
+    "lint",
+    "schema-drift",
+    "docs-quality",
+    "docs",
+    "unit-tests",
+    "integration-tests",
+    "backend-coverage",
+    "v2-smoke",
+    "frontend",
+    "e2e",
+    "alembic-drift",
+    "content-factory-migrations",
+    "content-factory-unit-tests",
+    "popia-tests",
+    "image-scan",
+    "secrets-scan",
+    "production-promote"
+  ],
+  "valid": true,
+  "workflow": ".github/workflows/ci-cd.yml"
+}

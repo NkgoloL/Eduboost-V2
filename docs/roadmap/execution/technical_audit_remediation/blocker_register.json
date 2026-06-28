@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_03_frontend_tooling_authority_closed",
+  "status": "phase_05_dependency_scan_enforcement_closed",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -59,7 +59,42 @@
       "id": "TA-SECURITY-001",
       "title": "Ensure dependency scans fail on configured severity and publish artifacts consistently",
       "severity": "high",
-      "status": "partially_addressed_in_baseline_reset"
+      "status": "evidence_recorded",
+      "authority_command": "python3 scripts/audit_remediation/verify_dependency_scan_enforcement.py --json",
+      "evidence_verifier": "python3 scripts/audit_remediation/verify_dependency_scan_evidence.py --evidence-dir docs/release-evidence/technical-audit/dependency-scan-enforcement --json",
+      "latest_valid_evidence_commit": "2cee804e20",
+      "dependency_scan_enforcement_result": "valid",
+      "remote_scan_run_claimed": false,
+      "workflow": ".github/workflows/dependency-scan.yml",
+      "scope": [
+        "pip-audit fail-closed requirements matrix",
+        "pnpm audit critical-threshold fail-closed frontend scan",
+        "dependency-review critical severity guard",
+        "supported dependency scan artifact uploads",
+        "stable dependency scan enforcement evidence bundle"
+      ],
+      "passing_evidence_policy": "Static dependency-scan enforcement evidence is recorded and valid; remote GitHub Actions scan success is not yet claimed.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+    },
+    {
+      "id": "TA-CI-001",
+      "title": "Repair main CI workflow authority and package-manager contract",
+      "severity": "high",
+      "status": "evidence_recorded",
+      "authority_command": "python3 scripts/audit_remediation/verify_ci_authority_workflow.py --json",
+      "evidence_verifier": "python3 scripts/audit_remediation/verify_ci_authority_workflow_evidence.py --evidence-dir docs/release-evidence/technical-audit/ci-authority-workflow --json",
+      "latest_valid_evidence_commit": "bde09e12da",
+      "workflow_authority_result": "valid",
+      "remote_ci_run_claimed": false,
+      "workflow": ".github/workflows/ci-cd.yml",
+      "scope": [
+        "main CI/CD workflow job-id uniqueness",
+        "pnpm frontend and E2E install ownership",
+        "supported artifact upload action pin",
+        "production promotion needs drift guard"
+      ],
+      "passing_evidence_policy": "Static CI workflow-cleanup evidence is recorded and valid; remote GitHub Actions success is not yet claimed.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     }
   ],
   "active_slice": "next-technical-audit-slice",
