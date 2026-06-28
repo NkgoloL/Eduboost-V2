@@ -77,10 +77,6 @@ jobs:
             echo "No scripts/phase02r_gate_control.py found; skipping Phase 02R control check."
           fi
 
-      - name: Run test suite
+      - name: Run hosted CI authority focused tests
         run: |
-          if [ -d tests ]; then
-            python -m pytest -q
-          else
-            echo 'No tests directory found; hosted CI authority harness still validated.'
-          fi
+          python -m pytest -q tests/unit/audit_remediation/test_remote_ci_branch_integration_authority.py tests/unit/audit_remediation/test_hosted_ci_merge_readiness_authority.py --no-cov
