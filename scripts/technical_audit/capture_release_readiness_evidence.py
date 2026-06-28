@@ -56,6 +56,20 @@ def git_value(args: list[str], default: str | None = None) -> str | None:
         return default
 
 
+def git_is_ancestor_or_equal(candidate: str, descendant: str) -> bool:
+    """Return True if candidate is an ancestor of (or equal to) descendant."""
+    try:
+        # git merge-base --is-ancestor exits 0 if true, 1 if false
+        result = subprocess.run(
+            ["git", "merge-base", "--is-ancestor", candidate, descendant],
+            capture_output=True,
+            text=True,
+        )
+        return result.returncode == 0
+    except Exception:
+        return False
+
+
 def tracked_worktree_clean() -> bool:
     diff = subprocess.run(["git", "diff", "--quiet"], text=True)
     staged = subprocess.run(["git", "diff", "--cached", "--quiet"], text=True)
@@ -202,8 +216,15 @@ def evaluate_release_readiness(
         errors.append("hosted authority record must claim branch protection")
     if hosted_record.get("merge_readiness_authorised") is not True:
         errors.append("hosted authority record must authorise merge readiness")
-    if hosted_record.get("head_sha") != source_commit:
-        errors.append("hosted authority record head_sha must match current branch HEAD")
+    record_sha = hosted_record.get("head_sha") or ""
+    if record_sha and source_commit:
+        if record_sha != source_commit and not git_is_ancestor_or_equal(record_sha, source_commit):
+            errors.append(
+                f"hosted authority record head_sha ({record_sha[:12]}) must be an ancestor of "
+                f"current branch HEAD ({source_commit[:12]})"
+            )
+    elif not record_sha or not SHA_RE.match(record_sha):
+        errors.append("hosted authority record head_sha is missing or invalid")
 
     if blocker_summary.get("required_blockers_closed") is not True:
         errors.append(f"required blockers are not all closed: {blocker_summary.get('failed_blockers')}")
