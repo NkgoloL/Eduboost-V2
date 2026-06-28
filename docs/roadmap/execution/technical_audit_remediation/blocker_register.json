@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_07_openapi_frontend_contract_finalization_ready",
+  "status": "phase_07_openapi_frontend_contract_finalization_closed",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -18,11 +18,11 @@
       "id": "TA-OPENAPI-001",
       "title": "Regenerate and verify OpenAPI after route-contract changes",
       "severity": "high",
-      "status": "openapi_frontend_contract_finalization_ready",
+      "status": "evidence_recorded",
       "authority_command": "PYTHON_BIN=.venv/bin/python bash scripts/audit_remediation/finalize_openapi_frontend_contract.sh --regenerate && python3 scripts/audit_remediation/verify_openapi_frontend_contract.py --json",
       "evidence_verifier": "python3 scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py --evidence-dir docs/release-evidence/technical-audit/openapi-frontend-contract --json",
-      "latest_valid_evidence_commit": null,
-      "openapi_frontend_contract_result": "pending",
+      "latest_valid_evidence_commit": "39609175f2",
+      "openapi_frontend_contract_result": "valid",
       "release_readiness_claimed": false,
       "scope": [
         "regenerated docs/openapi.json from active FastAPI runtime",
@@ -127,7 +127,7 @@
       "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     }
   ],
-  "active_slice": "07-openapi-frontend-contract-finalization",
+  "active_slice": "next-technical-audit-slice",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "status": "evidence_recorded",
