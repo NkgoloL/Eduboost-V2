@@ -1,0 +1,96 @@
+name: EduBoost Hosted CI Authority
+
+on:
+  push:
+    branches:
+      - master
+      - main
+      - 'codex/**'
+      - 'feature/**'
+  pull_request:
+    branches:
+      - master
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+concurrency:
+  group: technical-audit-hosted-ci-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Verify repository authority
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt
+          fi
+          if [ -f requirements-dev.txt ]; then
+            python -m pip install -r requirements-dev.txt
+          fi
+          if [ -f pyproject.toml ]; then
+            python -m pip install -e '.[dev]' || python -m pip install -e .
+          fi
+
+      - name: Validate hosted CI authority scripts
+        run: |
+          python -m py_compile scripts/technical_audit/capture_hosted_ci_evidence.py
+          python -m py_compile scripts/technical_audit/verify_hosted_ci_authority.py
+          python scripts/technical_audit/verify_hosted_ci_authority.py --allow-unclaimed --json
+
+      - name: Verify prior remote CI branch integration evidence
+        run: |
+          if [ -f scripts/technical_audit/verify_remote_ci_branch_integration_evidence.py ]; then
+            python scripts/technical_audit/verify_remote_ci_branch_integration_evidence.py --json
+          else
+            echo 'No prior remote CI branch integration verifier found; skipping compatibility check.'
+          fi
+
+      - name: Run repository verification scripts
+        run: |
+          if [ -x scripts/verify_phase02r.sh ]; then
+            bash scripts/verify_phase02r.sh
+          elif [ -f scripts/verify_phase02r.sh ]; then
+            bash scripts/verify_phase02r.sh
+          else
+            echo 'No scripts/verify_phase02r.sh found; skipping.'
+          fi
+
+          if [ -x scripts/verify_phase02r_postgres.sh ]; then
+            bash scripts/verify_phase02r_postgres.sh
+          elif [ -f scripts/verify_phase02r_postgres.sh ]; then
+            bash scripts/verify_phase02r_postgres.sh
+          else
+            echo 'No scripts/verify_phase02r_postgres.sh found; skipping.'
+          fi
+
+      - name: Run test suite
+        run: |
+          if [ -d tests ]; then
+            python -m pytest -q
+          else
+            echo 'No tests directory found; hosted CI authority harness still validated.'
+          fi

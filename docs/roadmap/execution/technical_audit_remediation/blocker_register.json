@@ -1,5 +1,5 @@
 {
-  "active_slice": "09-hosted-ci-merge-readiness-authority",
+  "active_slice": "ta-phase-09-hosted-ci-run-evidence",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "content_scope_registry_slice": {
@@ -179,6 +179,14 @@
     "approved_gate": "2R.8",
     "authorised_next_gate": null,
     "required_state": "closed"
+  },
+  "phase_09_hosted_ci_authority": {
+    "authority_record": "docs/roadmap/execution/technical_audit_remediation/hosted_ci_authority_record.json",
+    "closure_rule": "May close only after verify_hosted_ci_authority.py passes without --allow-unclaimed against real hosted CI evidence.",
+    "hosted_ci_run_claimed": false,
+    "merge_readiness_authorised": false,
+    "status": "prepared_awaiting_real_hosted_ci_evidence",
+    "workflow": ".github/workflows/technical-audit-hosted-ci.yml"
   },
   "remaining_release_blockers_after_reset": [
     {
