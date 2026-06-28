@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_05_dependency_scan_enforcement_closed",
+  "status": "phase_07_openapi_frontend_contract_finalization_closed",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -18,7 +18,21 @@
       "id": "TA-OPENAPI-001",
       "title": "Regenerate and verify OpenAPI after route-contract changes",
       "severity": "high",
-      "status": "evidence_recorded"
+      "status": "evidence_recorded",
+      "authority_command": "PYTHON_BIN=.venv/bin/python bash scripts/audit_remediation/finalize_openapi_frontend_contract.sh --regenerate && python3 scripts/audit_remediation/verify_openapi_frontend_contract.py --json",
+      "evidence_verifier": "python3 scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py --evidence-dir docs/release-evidence/technical-audit/openapi-frontend-contract --json",
+      "latest_valid_evidence_commit": "39609175f2",
+      "openapi_frontend_contract_result": "valid",
+      "release_readiness_claimed": false,
+      "scope": [
+        "regenerated docs/openapi.json from active FastAPI runtime",
+        "canonical POPIA and parent data-rights route contract",
+        "frontend API service route-fragment verification",
+        "retired POPIA alias rejection",
+        "stable OpenAPI/frontend evidence bundle"
+      ],
+      "passing_evidence_policy": "OpenAPI/frontend contract evidence may be recorded only after the runtime-generated OpenAPI check and frontend route-contract verifier both pass.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     },
     {
       "id": "TA-BACKEND-FAST-001",
@@ -53,7 +67,23 @@
       "id": "TA-E2E-001",
       "title": "Re-establish Playwright/E2E execution ownership and lockfile discipline",
       "severity": "high",
-      "status": "pending_next_slice"
+      "status": "evidence_recorded",
+      "authority_command": "python3 scripts/audit_remediation/run_e2e_playwright_authority.py --output-dir docs/release-evidence/technical-audit/e2e-playwright-authority/raw --json",
+      "static_verifier": "python3 scripts/audit_remediation/verify_e2e_playwright_authority.py --json",
+      "evidence_verifier": "python3 scripts/audit_remediation/verify_e2e_playwright_evidence.py --evidence-dir docs/release-evidence/technical-audit/e2e-playwright-authority --json",
+      "latest_valid_evidence_commit": "583b23a9d5",
+      "e2e_playwright_authority_result": "valid",
+      "remote_ci_run_claimed": false,
+      "full_backend_backed_e2e_claimed": false,
+      "scope": [
+        "root pnpm Playwright dependency ownership",
+        "frontend pnpm lockfile discipline",
+        "mocked learner and parent Playwright journey execution",
+        "Playwright artifact capture",
+        "E2E workflow pnpm/action pin contract"
+      ],
+      "passing_evidence_policy": "E2E/Playwright execution authority evidence is recorded and valid; remote hosted CI success and full backend-backed E2E readiness are separate future claims.",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     },
     {
       "id": "TA-SECURITY-001",

@@ -1,0 +1,124 @@
+{
+  "authority_scope": "mocked_frontend_playwright_journeys",
+  "findings": [
+    {
+      "message": "root package.json exists",
+      "valid": true
+    },
+    {
+      "message": "frontend package.json exists",
+      "valid": true
+    },
+    {
+      "message": "root pnpm lockfile exists",
+      "valid": true
+    },
+    {
+      "message": "frontend pnpm lockfile exists",
+      "valid": true
+    },
+    {
+      "message": "root package manager is pnpm",
+      "valid": true
+    },
+    {
+      "message": "root @playwright/test dependency declared",
+      "valid": true
+    },
+    {
+      "message": "frontend package manager is pnpm",
+      "valid": true
+    },
+    {
+      "message": "Playwright default base URL uses Next.js port 3050",
+      "valid": true
+    },
+    {
+      "message": "Playwright webServer starts frontend through pnpm",
+      "valid": true
+    },
+    {
+      "message": "Playwright testDir is tests/e2e",
+      "valid": true
+    },
+    {
+      "message": "Playwright report/result directories are configured",
+      "valid": true
+    },
+    {
+      "message": "required mocked E2E spec exists: tests/e2e/learner-mocked-api-journey.spec.ts",
+      "valid": true
+    },
+    {
+      "message": "required mocked E2E spec exists: tests/e2e/parent-mocked-api-journey.spec.ts",
+      "valid": true
+    },
+    {
+      "message": "workflow does not use forbidden E2E pattern: npm ci",
+      "valid": true
+    },
+    {
+      "message": "workflow does not use forbidden E2E pattern: npx playwright",
+      "valid": true
+    },
+    {
+      "message": "workflow does not use forbidden E2E pattern: app/frontend/node_modules/.bin/playwright",
+      "valid": true
+    },
+    {
+      "message": "workflow does not use forbidden E2E pattern: actions/setup-node@v6",
+      "valid": true
+    },
+    {
+      "message": "workflow contains required E2E snippet: pnpm install --frozen-lockfile",
+      "valid": true
+    },
+    {
+      "message": "workflow contains required E2E snippet: pnpm --dir app/frontend install --frozen-lockfile",
+      "valid": true
+    },
+    {
+      "message": "workflow contains required E2E snippet: pnpm exec playwright install --with-deps chromium",
+      "valid": true
+    },
+    {
+      "message": "workflow contains required E2E snippet: pnpm exec playwright test",
+      "valid": true
+    },
+    {
+      "message": "workflow contains required E2E snippet: actions/upload-artifact@v4",
+      "valid": true
+    },
+    {
+      "message": "workflow contains required E2E snippet: test-results/",
+      "valid": true
+    },
+    {
+      "message": "workflow contains required E2E snippet: playwright-report/",
+      "valid": true
+    },
+    {
+      "message": "ci-cd.yml caches root and frontend pnpm lockfiles",
+      "valid": true
+    },
+    {
+      "message": "e2e.yml caches root and frontend pnpm lockfiles",
+      "valid": true
+    },
+    {
+      "message": "frontend-e2e.yml caches root and frontend pnpm lockfiles",
+      "valid": true
+    },
+    {
+      "message": "TA-E2E-001 blocker registered",
+      "valid": true
+    },
+    {
+      "message": "Phase 06 active slice registered",
+      "valid": true
+    }
+  ],
+  "full_backend_backed_e2e_claimed": false,
+  "remote_ci_run_claimed": false,
+  "valid": true
+}
