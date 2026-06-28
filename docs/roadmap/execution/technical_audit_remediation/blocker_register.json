@@ -197,16 +197,21 @@
       "python3 scripts/technical_audit/verify_release_readiness_authority.py --json"
     ],
     "authority_record": "docs/roadmap/execution/technical_audit_remediation/technical_audit_release_readiness_record.json",
+    "branch_protection_claimed": true,
     "evidence_path": "docs/release-evidence/technical-audit/phase-11-release-readiness",
+    "hosted_ci_run_claimed": true,
     "id": "TA-RELEASE-READINESS-001",
     "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+    "merge_readiness_authorised": true,
     "merge_readiness_required": true,
     "production_release_authorised": false,
+    "release_owner": "Nkgolo Lebelo",
     "release_readiness_claimed": false,
     "runtime_kg_implementation_claimed": false,
-    "status": "authority_ready",
+    "status": "release_readiness_unclaimed",
     "technical_audit_release_readiness_claimed": false,
-    "title": "Technical-audit release-readiness authority"
+    "title": "Technical-audit release-readiness authority",
+    "updated_at_utc": "2026-06-28T21:07:40Z"
   },
   "remaining_release_blockers_after_reset": [
     {

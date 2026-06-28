@@ -1,15 +1,31 @@
 {
-  "authority_note": "Placeholder only. Strict release-readiness verification must fail until capture_release_readiness_evidence.py is run with --claim-release-readiness and a release owner.",
-  "branch_protection_claimed": null,
+  "branch": "codex/phase-06-e2e-playwright-authority",
+  "branch_protection_claimed": true,
+  "claimed_at_utc": null,
+  "constraints": [
+    "Release readiness is scoped to the technical-audit remediation stream only.",
+    "Production launch, release tagging, deployment, and live learner traffic remain out of scope.",
+    "Runtime knowledge-graph implementation remains out of scope.",
+    "The release-readiness claim requires explicit --claim-release-readiness and a release owner."
+  ],
+  "created_at_utc": "2026-06-28T21:07:40Z",
+  "evidence_dir": "docs/release-evidence/technical-audit/phase-11-release-readiness",
+  "evidence_index": "docs/release-evidence/technical-audit/phase-11-release-readiness/evidence_index.md",
   "full_backend_backed_e2e_claimed": false,
-  "hosted_ci_run_claimed": null,
-  "merge_readiness_authorised": null,
+  "hosted_ci_run_claimed": true,
+  "merge_readiness_authorised": true,
   "production_release_authorised": false,
+  "release_decision": "unclaimed",
+  "release_owner": "Nkgolo Lebelo",
   "release_readiness_claimed": false,
-  "required_blockers_closed": null,
+  "repository": "NkgoloL/Eduboost-V2",
+  "required_blockers_closed": true,
   "runtime_kg_implementation_claimed": false,
   "schema_version": 1,
+  "sha256sums": "docs/release-evidence/technical-audit/phase-11-release-readiness/SHA256SUMS.txt",
   "slice": "TA-PHASE-11-TECHNICAL-AUDIT-RELEASE-READINESS",
+  "source_commit": "989b9926a1eabed3fbce04d1d6619c0527305664",
   "status": "release_readiness_unclaimed",
-  "technical_audit_release_readiness_claimed": false
+  "technical_audit_release_readiness_claimed": false,
+  "updated_at_utc": "2026-06-28T21:07:40Z"
 }

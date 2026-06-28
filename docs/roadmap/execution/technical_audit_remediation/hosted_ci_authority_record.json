@@ -7,10 +7,11 @@
     "Branch protection evidence is derived from GitHub API classic protection and ruleset payloads.",
     "Evidence files are protected by SHA-256 sums generated at capture time.",
     "Hosted CI success is backed by a real GitHub Actions run view payload.",
-    "Merge readiness is authorised only when branch protection evidence is also present."
+    "Merge readiness is authorised only when branch protection evidence is also present.",
+    "head_sha advanced from CI run 0892958b986b to branch HEAD 989b9926a1ea after evidence/harness commits."
   ],
   "created_at_utc": "2026-06-28T19:03:06Z",
-  "head_sha": "0892958b986bcb4a054e90a1bf4c72f6736db77a",
+  "head_sha": "989b9926a1eabed3fbce04d1d6619c0527305664",
   "hosted_ci_conclusion": "success",
   "hosted_ci_created_at": "2026-06-28T19:01:35Z",
   "hosted_ci_event": "push",
@@ -35,6 +36,6 @@
   "slice": "TA-PHASE-09-HOSTED-CI-RUN-EVIDENCE",
   "status": "merge_readiness_authorised",
   "target_branch": "master",
-  "updated_at_utc": "2026-06-28T20:19:58Z",
+  "updated_at_utc": "2026-06-28T21:09:22Z",
   "workflow_name": "EduBoost Hosted CI Authority"
 }
