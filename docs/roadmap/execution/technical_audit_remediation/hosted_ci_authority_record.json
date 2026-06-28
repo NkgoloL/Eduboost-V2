@@ -1,29 +1,34 @@
 {
   "branch": "codex/phase-06-e2e-playwright-authority",
   "branch_protection_claimed": false,
-  "branch_protection_evidence": null,
+  "branch_protection_evidence": "docs/release-evidence/technical-audit/phase-09-hosted-ci/raw/branch_protection_master.json",
   "constraints": [
-    "Hosted CI success is not claimed until a real GitHub Actions completed/success run is captured.",
-    "Merge readiness is not authorised until hosted CI evidence and branch-protection evidence are both recorded.",
-    "Preparatory local verification must use --allow-unclaimed and must not be treated as hosted CI success."
+    "Hosted CI success is backed by a real GitHub Actions run view payload.",
+    "Merge readiness is authorised only when branch protection evidence is also present.",
+    "Evidence files are protected by SHA-256 sums generated at capture time."
   ],
-  "created_at_utc": "2026-06-28T18:54:50Z",
-  "head_sha": "7b061a40af39a07a73ba5d5615fb3e93ba57b73d",
-  "hosted_ci_conclusion": null,
-  "hosted_ci_run_claimed": false,
-  "hosted_ci_run_id": null,
-  "hosted_ci_run_url": null,
-  "hosted_ci_status": null,
-  "hosted_ci_unclaimed_reason": "phase_09_authority_harness_prepared_awaiting_real_github_actions_run",
+  "created_at_utc": "2026-06-28T19:03:06Z",
+  "head_sha": "0892958b986bcb4a054e90a1bf4c72f6736db77a",
+  "hosted_ci_conclusion": "success",
+  "hosted_ci_created_at": "2026-06-28T19:01:35Z",
+  "hosted_ci_event": "push",
+  "hosted_ci_run_claimed": true,
+  "hosted_ci_run_id": 28332718788,
+  "hosted_ci_run_url": "https://github.com/NkgoloL/Eduboost-V2/actions/runs/28332718788",
+  "hosted_ci_status": "completed",
+  "hosted_ci_updated_at": "2026-06-28T19:02:33Z",
   "merge_readiness_authorised": false,
   "raw_evidence_files": [
-    "docs/release-evidence/technical-audit/phase-09-hosted-ci/raw/hosted_ci_unclaimed_placeholder.json"
+    "docs/release-evidence/technical-audit/phase-09-hosted-ci/raw/gh_run_list.json",
+    "docs/release-evidence/technical-audit/phase-09-hosted-ci/raw/branch_protection_master.json",
+    "docs/release-evidence/technical-audit/phase-09-hosted-ci/raw/gh_run_view_28332718788.json"
   ],
-  "repository": "https://github.com/NkgoloL/Eduboost-V2.git",
+  "repository": "NkgoloL/Eduboost-V2",
   "schema_version": 1,
   "sha256sums": "docs/release-evidence/technical-audit/phase-09-hosted-ci/SHA256SUMS.txt",
   "slice": "TA-PHASE-09-HOSTED-CI-RUN-EVIDENCE",
-  "status": "hosted_ci_unclaimed",
-  "updated_at_utc": "2026-06-28T18:54:50Z",
+  "status": "hosted_ci_evidence_recorded",
+  "target_branch": "master",
+  "updated_at_utc": "2026-06-28T19:03:06Z",
   "workflow_name": "EduBoost Hosted CI Authority"
 }
