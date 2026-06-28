@@ -1,5 +1,5 @@
 {
-  "active_slice": "ta-phase-10-branch-protection-merge-readiness",
+  "active_slice": "next-technical-audit-slice",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "content_scope_registry_slice": {
@@ -183,12 +183,12 @@
   "phase_09_hosted_ci_authority": {
     "authority_record": "docs/roadmap/execution/technical_audit_remediation/hosted_ci_authority_record.json",
     "branch_protection_capture": "scripts/technical_audit/capture_branch_protection_evidence.py",
-    "branch_protection_claimed": false,
+    "branch_protection_claimed": true,
     "closure_rule": "May close only after verify_hosted_ci_authority.py passes without --allow-unclaimed against real hosted CI evidence.",
     "hosted_ci_run_claimed": true,
-    "merge_readiness_authorised": false,
+    "merge_readiness_authorised": true,
     "merge_readiness_verifier": "scripts/technical_audit/verify_merge_readiness_authority.py --json",
-    "status": "hosted_ci_evidence_recorded_branch_protection_pending",
+    "status": "merge_readiness_authorised",
     "workflow": ".github/workflows/technical-audit-hosted-ci.yml"
   },
   "remaining_release_blockers_after_reset": [
@@ -334,13 +334,13 @@
         "python3 scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py --evidence-dir docs/release-evidence/technical-audit/hosted-ci-merge-readiness --json"
       ],
       "branch_protection_capture": "scripts/technical_audit/capture_branch_protection_evidence.py",
-      "branch_protection_claimed": false,
+      "branch_protection_claimed": true,
       "evidence_path": "docs/release-evidence/technical-audit/hosted-ci-merge-readiness",
       "full_backend_backed_e2e_claimed": false,
-      "hosted_ci_merge_readiness_result": "blocked_branch_protection_pending",
+      "hosted_ci_merge_readiness_result": "valid",
       "id": "TA-HOSTED-CI-001",
       "latest_valid_evidence_commit": null,
-      "merge_readiness_authorised": false,
+      "merge_readiness_authorised": true,
       "merge_readiness_verifier": "scripts/technical_audit/verify_merge_readiness_authority.py --json",
       "notes": [
         "Phase 09 requires a real hosted CI success artifact matching branch HEAD before evidence can pass.",
@@ -351,10 +351,10 @@
       "remote_ci_success_claimed": true,
       "runtime_kg_implementation_claimed": false,
       "severity": "high",
-      "status": "branch_protection_evidence_pending",
+      "status": "evidence_recorded",
       "title": "Hosted CI run evidence and merge readiness authority"
     }
   ],
-  "status": "phase_10_branch_protection_merge_readiness_ready",
+  "status": "phase_10_branch_protection_merge_readiness_closed",
   "stream": "technical-audit-remediation"
 }
