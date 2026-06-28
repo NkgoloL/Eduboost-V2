@@ -1,5 +1,5 @@
 {
-  "active_slice": "next-technical-audit-slice",
+  "active_slice": "09-hosted-ci-merge-readiness-authority",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "content_scope_registry_slice": {
@@ -308,15 +308,38 @@
         "This slice consolidates prior static authority-gate evidence and optionally records hosted CI status.",
         "Remote GitHub Actions success remains unclaimed unless a supplied remote CI status artifact says conclusion=success."
       ],
+      "remote_ci_branch_integration_result": "valid",
       "remote_ci_run_claimed": false,
       "remote_ci_success_claimed": false,
       "runtime_kg_implementation_claimed": false,
       "severity": "high",
       "status": "evidence_recorded",
-      "title": "Remote CI and branch integration authority",
-      "remote_ci_branch_integration_result": "valid"
+      "title": "Remote CI and branch integration authority"
+    },
+    {
+      "authority_commands": [
+        "python3 scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py --json",
+        "REMOTE_CI_STATUS_JSON=var/audit-remediation/hosted-ci-status.json bash scripts/audit_remediation/collect_hosted_ci_merge_readiness_evidence.sh",
+        "python3 scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py --evidence-dir docs/release-evidence/technical-audit/hosted-ci-merge-readiness --json"
+      ],
+      "evidence_path": "docs/release-evidence/technical-audit/hosted-ci-merge-readiness",
+      "full_backend_backed_e2e_claimed": false,
+      "hosted_ci_merge_readiness_result": "pending",
+      "id": "TA-HOSTED-CI-001",
+      "latest_valid_evidence_commit": null,
+      "notes": [
+        "Phase 09 requires a real hosted CI success artifact matching branch HEAD before evidence can pass.",
+        "Diagnostic evidence without REMOTE_CI_STATUS_JSON must not be committed as passing evidence."
+      ],
+      "release_readiness_claimed": false,
+      "remote_ci_run_claimed": false,
+      "remote_ci_success_claimed": false,
+      "runtime_kg_implementation_claimed": false,
+      "severity": "high",
+      "status": "hosted_ci_merge_readiness_authority_ready",
+      "title": "Hosted CI run evidence and merge readiness authority"
     }
   ],
-  "status": "phase_08_remote_ci_branch_integration_closed",
+  "status": "phase_09_hosted_ci_merge_readiness_authority_ready",
   "stream": "technical-audit-remediation"
 }
