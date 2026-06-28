@@ -1,5 +1,5 @@
 {
-  "active_slice": "technical-audit-release-readiness-closed",
+  "active_slice": "technical-audit-release-readiness-authority",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "content_scope_registry_slice": {
@@ -206,12 +206,12 @@
     "merge_readiness_required": true,
     "production_release_authorised": false,
     "release_owner": "Nkgolo Lebelo",
-    "release_readiness_claimed": true,
+    "release_readiness_claimed": false,
     "runtime_kg_implementation_claimed": false,
-    "status": "technical_audit_release_readiness_authorised",
-    "technical_audit_release_readiness_claimed": true,
+    "status": "release_readiness_unclaimed",
+    "technical_audit_release_readiness_claimed": false,
     "title": "Technical-audit release-readiness authority",
-    "updated_at_utc": "2026-06-28T21:13:27Z"
+    "updated_at_utc": "2026-06-28T21:07:40Z"
   },
   "remaining_release_blockers_after_reset": [
     {
@@ -377,6 +377,6 @@
       "title": "Hosted CI run evidence and merge readiness authority"
     }
   ],
-  "status": "phase_11_technical_audit_release_readiness_closed",
+  "status": "phase_11_release_readiness_authority_ready",
   "stream": "technical-audit-remediation"
 }
