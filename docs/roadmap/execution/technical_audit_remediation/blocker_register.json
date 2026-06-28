@@ -1,5 +1,5 @@
 {
-  "active_slice": "08-remote-ci-branch-integration-authority",
+  "active_slice": "next-technical-audit-slice",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "content_scope_registry_slice": {
@@ -303,7 +303,7 @@
       "evidence_path": "docs/release-evidence/technical-audit/remote-ci-branch-integration",
       "full_release_readiness_claimed": false,
       "id": "TA-REMOTE-CI-001",
-      "latest_valid_evidence_commit": null,
+      "latest_valid_evidence_commit": "98bd0ae778",
       "notes": [
         "This slice consolidates prior static authority-gate evidence and optionally records hosted CI status.",
         "Remote GitHub Actions success remains unclaimed unless a supplied remote CI status artifact says conclusion=success."
@@ -312,10 +312,11 @@
       "remote_ci_success_claimed": false,
       "runtime_kg_implementation_claimed": false,
       "severity": "high",
-      "status": "remote_ci_branch_integration_authority_ready",
-      "title": "Remote CI and branch integration authority"
+      "status": "evidence_recorded",
+      "title": "Remote CI and branch integration authority",
+      "remote_ci_branch_integration_result": "valid"
     }
   ],
-  "status": "phase_08_remote_ci_branch_integration_authority_ready",
+  "status": "phase_08_remote_ci_branch_integration_closed",
   "stream": "technical-audit-remediation"
 }
