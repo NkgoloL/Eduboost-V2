@@ -94,7 +94,7 @@ jobs:
           make auth-refresh-db-evidence-release-check
 
       - name: Upload auth refresh DB proof artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: auth-refresh-db-proof-${{ github.run_id }}
           if-no-files-found: error
