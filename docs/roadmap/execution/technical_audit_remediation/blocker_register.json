@@ -1,6 +1,6 @@
 {
   "stream": "technical-audit-remediation",
-  "status": "phase_06_e2e_playwright_authority_ready",
+  "status": "phase_06_e2e_playwright_authority_closed",
   "phase_02r_dependency": {
     "required_state": "closed",
     "approved_gate": "2R.8",
@@ -53,10 +53,14 @@
       "id": "TA-E2E-001",
       "title": "Re-establish Playwright/E2E execution ownership and lockfile discipline",
       "severity": "high",
-      "status": "e2e_playwright_authority_ready",
+      "status": "evidence_recorded",
       "authority_command": "python3 scripts/audit_remediation/run_e2e_playwright_authority.py --output-dir docs/release-evidence/technical-audit/e2e-playwright-authority/raw --json",
       "static_verifier": "python3 scripts/audit_remediation/verify_e2e_playwright_authority.py --json",
       "evidence_verifier": "python3 scripts/audit_remediation/verify_e2e_playwright_evidence.py --evidence-dir docs/release-evidence/technical-audit/e2e-playwright-authority --json",
+      "latest_valid_evidence_commit": "583b23a9d5",
+      "e2e_playwright_authority_result": "valid",
+      "remote_ci_run_claimed": false,
+      "full_backend_backed_e2e_claimed": false,
       "scope": [
         "root pnpm Playwright dependency ownership",
         "frontend pnpm lockfile discipline",
@@ -64,9 +68,7 @@
         "Playwright artifact capture",
         "E2E workflow pnpm/action pin contract"
       ],
-      "passing_evidence_policy": "E2E/Playwright execution authority evidence may be recorded when the static verifier, mocked Playwright runner, evidence verifier, and SHA manifest are valid. Remote hosted CI success and full backend-backed E2E readiness are separate future claims.",
-      "remote_ci_run_claimed": false,
-      "full_backend_backed_e2e_claimed": false,
+      "passing_evidence_policy": "E2E/Playwright execution authority evidence is recorded and valid; remote hosted CI success and full backend-backed E2E readiness are separate future claims.",
       "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     },
     {
@@ -111,7 +113,7 @@
       "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
     }
   ],
-  "active_slice": "06-e2e-playwright-execution-authority",
+  "active_slice": "next-technical-audit-slice",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "status": "evidence_recorded",
