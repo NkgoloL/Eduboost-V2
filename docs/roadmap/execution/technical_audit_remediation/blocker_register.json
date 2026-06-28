@@ -1,5 +1,5 @@
 {
-  "active_slice": "next-technical-audit-slice",
+  "active_slice": "technical-audit-release-readiness-authority",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "content_scope_registry_slice": {
@@ -191,6 +191,23 @@
     "status": "merge_readiness_authorised",
     "workflow": ".github/workflows/technical-audit-hosted-ci.yml"
   },
+  "phase_11_release_readiness_authority": {
+    "authority_commands": [
+      "python3 scripts/technical_audit/capture_release_readiness_evidence.py --claim-release-readiness --release-owner \"Nkgolo Lebelo\" --json",
+      "python3 scripts/technical_audit/verify_release_readiness_authority.py --json"
+    ],
+    "authority_record": "docs/roadmap/execution/technical_audit_remediation/technical_audit_release_readiness_record.json",
+    "evidence_path": "docs/release-evidence/technical-audit/phase-11-release-readiness",
+    "id": "TA-RELEASE-READINESS-001",
+    "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+    "merge_readiness_required": true,
+    "production_release_authorised": false,
+    "release_readiness_claimed": false,
+    "runtime_kg_implementation_claimed": false,
+    "status": "authority_ready",
+    "technical_audit_release_readiness_claimed": false,
+    "title": "Technical-audit release-readiness authority"
+  },
   "remaining_release_blockers_after_reset": [
     {
       "authority_command": "PYTHON_BIN=.venv/bin/python bash scripts/audit_remediation/finalize_openapi_frontend_contract.sh --regenerate && python3 scripts/audit_remediation/verify_openapi_frontend_contract.py --json",
@@ -355,6 +372,6 @@
       "title": "Hosted CI run evidence and merge readiness authority"
     }
   ],
-  "status": "phase_10_branch_protection_merge_readiness_closed",
+  "status": "phase_11_release_readiness_authority_ready",
   "stream": "technical-audit-remediation"
 }
