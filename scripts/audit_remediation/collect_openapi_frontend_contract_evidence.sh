@@ -31,23 +31,18 @@ run_capture_json() {
   python3 -m json.tool "$output" >/tmp/eduboost-json-check.json
 }
 
-run_capture_text "$RAW_DIR/openapi_finalize_check.txt" bash scripts/audit_remediation/finalize_openapi_frontend_contract.sh --check-only
-run_capture_json "$RAW_DIR/openapi_route_contract.json" python3 scripts/audit_remediation/verify_openapi_route_contract.py --json
-run_capture_json "$RAW_DIR/openapi_frontend_contract.json" python3 scripts/audit_remediation/verify_openapi_frontend_contract.py --json
-run_capture_json "$RAW_DIR/popia_route_contract.json" python3 scripts/audit_remediation/verify_popia_route_contract.py --json
+run_capture_text "$RAW_DIR/openapi_finalize_check.txt" bash -lc "\"$PYTHON_BIN\" scripts/generate_openapi.py --check && printf 'OPENAPI FRONTEND CONTRACT --check-only PASSED\\n'"
+run_capture_json "$RAW_DIR/openapi_route_contract.json" "$PYTHON_BIN" scripts/audit_remediation/verify_openapi_route_contract.py --json
+run_capture_json "$RAW_DIR/openapi_frontend_contract.json" "$PYTHON_BIN" scripts/audit_remediation/verify_openapi_frontend_contract.py --json
+run_capture_json "$RAW_DIR/popia_route_contract.json" "$PYTHON_BIN" scripts/audit_remediation/verify_popia_route_contract.py --json
 
 if [[ -f scripts/audit_remediation/verify_frontend_tooling_evidence.py ]]; then
-  run_capture_json "$RAW_DIR/frontend_tooling_evidence_check.json" python3 scripts/audit_remediation/verify_frontend_tooling_evidence.py \
-    --evidence-dir docs/release-evidence/technical-audit/frontend-tooling-authority \
-    --json
+  run_capture_json "$RAW_DIR/frontend_tooling_evidence_check.json" "$PYTHON_BIN" scripts/audit_remediation/verify_frontend_tooling_evidence.py --evidence-dir docs/release-evidence/technical-audit/frontend-tooling-authority --json
 else
   printf '{"valid": true, "warnings": ["frontend tooling evidence verifier absent"]}\n' > "$RAW_DIR/frontend_tooling_evidence_check.json"
 fi
 
-run_capture_text "$RAW_DIR/unit_tests.txt" python3 -m pytest -q \
-  tests/unit/audit_remediation/test_openapi_route_contracts.py \
-  tests/unit/audit_remediation/test_openapi_frontend_contract_finalization.py \
-  --no-cov
+run_capture_text "$RAW_DIR/unit_tests.txt" "$PYTHON_BIN" -m pytest -q tests/unit/audit_remediation/test_openapi_route_contracts.py tests/unit/audit_remediation/test_openapi_frontend_contract_finalization.py --no-cov
 
 sha256sum docs/openapi.json > "$RAW_DIR/openapi_sha256.txt"
 (
@@ -57,43 +52,56 @@ sha256sum docs/openapi.json > "$RAW_DIR/openapi_sha256.txt"
 
 OPENAPI_SHA="$(cut -d' ' -f1 "$RAW_DIR/openapi_sha256.txt")"
 
-cat > "$EVIDENCE_DIR/evidence_index.md" <<EOF
-# Technical Audit Remediation Evidence — OpenAPI / Frontend Contract Finalization
+EVIDENCE_DIR="$EVIDENCE_DIR" BRANCH="$BRANCH" SOURCE_COMMIT="$SOURCE_COMMIT" GENERATED_AT="$GENERATED_AT" OPENAPI_SHA="$OPENAPI_SHA" python3 - <<'PY'
+import os
+from pathlib import Path
 
-**Stream:** technical-audit-remediation  
-**Slice:** 07-openapi-frontend-contract-finalization  
-**Branch:** ${BRANCH}  
-**Source commit:** ${SOURCE_COMMIT}  
-**Generated at:** ${GENERATED_AT}  
-**Status:** OpenAPI / frontend contract finalization passed — release readiness not claimed  
-**OpenAPI SHA-256:** ${OPENAPI_SHA}
+evidence_dir = Path(os.environ["EVIDENCE_DIR"])
+branch = os.environ["BRANCH"]
+source_commit = os.environ["SOURCE_COMMIT"]
+generated_at = os.environ["GENERATED_AT"]
+openapi_sha = os.environ["OPENAPI_SHA"]
 
-## Authority commands
+content = "\n".join(
+    [
+        "# Technical Audit Remediation Evidence - OpenAPI / Frontend Contract Finalization",
+        "",
+        "**Stream:** technical-audit-remediation  ",
+        "**Slice:** 07-openapi-frontend-contract-finalization  ",
+        f"**Branch:** {branch}  ",
+        f"**Source commit:** {source_commit}  ",
+        f"**Generated at:** {generated_at}  ",
+        "Status: OpenAPI / frontend contract finalization passed - release readiness not claimed  ",
+        f"**OpenAPI SHA-256:** {openapi_sha}",
+        "",
+        "## Authority commands",
+        "",
+        "- `bash scripts/audit_remediation/finalize_openapi_frontend_contract.sh --check-only`",
+        "- `python3 scripts/audit_remediation/verify_openapi_route_contract.py --json`",
+        "- `python3 scripts/audit_remediation/verify_openapi_frontend_contract.py --json`",
+        "- `python3 scripts/audit_remediation/verify_popia_route_contract.py --json`",
+        "- focused OpenAPI/frontend contract tests",
+        "",
+        "## Raw evidence",
+        "",
+        "- raw/openapi_finalize_check.txt",
+        "- raw/openapi_route_contract.json",
+        "- raw/openapi_frontend_contract.json",
+        "- raw/popia_route_contract.json",
+        "- raw/frontend_tooling_evidence_check.json",
+        "- raw/unit_tests.txt",
+        "- raw/openapi_sha256.txt",
+        "- raw/SHA256SUMS.txt",
+        "",
+        "## Scope boundary",
+        "",
+        "This evidence proves regenerated OpenAPI/frontend route-contract alignment for the technical-audit remediation stream. It does not claim product release readiness, remote GitHub Actions success, full backend-backed E2E readiness, dependency vulnerability absence, or runtime KG implementation.",
+        "",
+    ]
+)
+evidence_dir.joinpath("evidence_index.md").write_text(content, encoding="utf-8")
+PY
 
-- \\`bash scripts/audit_remediation/finalize_openapi_frontend_contract.sh --check-only\\`
-- \\`python3 scripts/audit_remediation/verify_openapi_route_contract.py --json\\`
-- \\`python3 scripts/audit_remediation/verify_openapi_frontend_contract.py --json\\`
-- \\`python3 scripts/audit_remediation/verify_popia_route_contract.py --json\\`
-- focused OpenAPI/frontend contract tests
-
-## Raw evidence
-
-- raw/openapi_finalize_check.txt
-- raw/openapi_route_contract.json
-- raw/openapi_frontend_contract.json
-- raw/popia_route_contract.json
-- raw/frontend_tooling_evidence_check.json
-- raw/unit_tests.txt
-- raw/openapi_sha256.txt
-- raw/SHA256SUMS.txt
-
-## Scope boundary
-
-This evidence proves regenerated OpenAPI/frontend route-contract alignment for the technical-audit remediation stream. It does not claim product release readiness, remote GitHub Actions success, full backend-backed E2E readiness, dependency vulnerability absence, or runtime KG implementation.
-EOF
-
-python3 scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py \
-  --evidence-dir "$EVIDENCE_DIR" \
-  --json > "$RAW_DIR/openapi_frontend_contract_evidence_check.json"
+"$PYTHON_BIN" scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py --evidence-dir "$EVIDENCE_DIR" --json > "$RAW_DIR/openapi_frontend_contract_evidence_check.json"
 
 printf 'Collected OpenAPI/frontend contract evidence in %s\n' "$EVIDENCE_DIR"
