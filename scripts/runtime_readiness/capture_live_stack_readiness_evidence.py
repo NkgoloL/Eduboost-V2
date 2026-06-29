@@ -102,14 +102,15 @@ def http_probe(base_url: str, path: str, timeout: int) -> dict[str, Any]:
         "json": None,
         "error": "",
     }
+    body = ""
     try:
         req = Request(url, headers={"User-Agent": "EduBoost-Phase14-Live-Stack-Readiness/1.0"})
         with urlopen(req, timeout=timeout) as response:
-            body = response.read(1024 * 1024).decode("utf-8", errors="replace")
+            body = response.read(8 * 1024 * 1024).decode("utf-8", errors="replace")
             result["status_code"] = int(getattr(response, "status", 0))
             result["body_excerpt"] = body[:4000]
     except HTTPError as exc:
-        body = exc.read(1024 * 1024).decode("utf-8", errors="replace")
+        body = exc.read(8 * 1024 * 1024).decode("utf-8", errors="replace")
         result["status_code"] = exc.code
         result["body_excerpt"] = body[:4000]
         result["error"] = f"http error {exc.code}"
@@ -117,9 +118,9 @@ def http_probe(base_url: str, path: str, timeout: int) -> dict[str, Any]:
         result["error"] = f"url error: {exc.reason}"
     except Exception as exc:  # pragma: no cover
         result["error"] = f"{type(exc).__name__}: {exc}"
-    if result["body_excerpt"]:
+    if body:
         try:
-            result["json"] = json.loads(result["body_excerpt"])
+            result["json"] = json.loads(body)
         except Exception:
             result["json"] = None
     return result
