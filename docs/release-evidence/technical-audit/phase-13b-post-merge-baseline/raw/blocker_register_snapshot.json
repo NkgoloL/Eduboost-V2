@@ -1,5 +1,5 @@
 {
-  "active_slice": "technical-audit-post-merge-baseline-recorded",
+  "active_slice": "technical-audit-remediation-closed",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "content_scope_registry_slice": {
@@ -234,21 +234,19 @@
     "authority_record": "docs/roadmap/execution/technical_audit_remediation/technical_audit_post_merge_baseline_record.json",
     "deployment_authorised": false,
     "evidence_path": "docs/release-evidence/technical-audit/phase-13b-post-merge-baseline",
-    "hosted_ci_authority_valid": true,
+    "hosted_ci_provenance_model": "split_ci_run_evidence_closure_terminal_sha",
     "id": "TA-POST-MERGE-BASELINE-001",
     "live_learner_traffic_authorised": false,
-    "merge_readiness_authorised": true,
-    "post_merge_baseline_recorded": true,
+    "post_merge_baseline_recorded": false,
     "production_release_authorised": false,
     "release_tag_authorised": false,
     "required_check": "Verify repository authority",
     "runtime_kg_implementation_claimed": false,
-    "source_commit": "97bf389015f5857e26d713d5bda4135a240ca46a",
-    "status": "post_merge_baseline_recorded",
+    "status": "authority_ready",
     "target_branch": "master",
     "technical_audit_remediation_closed": true,
     "title": "Post-merge protected-branch baseline authority",
-    "updated_at_utc": "2026-06-29T21:37:10Z"
+    "updated_at_utc": "2026-06-29T21:27:02Z"
   },
   "remaining_release_blockers_after_reset": [
     {
@@ -414,6 +412,6 @@
       "title": "Hosted CI run evidence and merge readiness authority"
     }
   ],
-  "status": "phase_13b_post_merge_baseline_recorded",
+  "status": "phase_12_technical_audit_remediation_closed",
   "stream": "technical-audit-remediation"
 }
