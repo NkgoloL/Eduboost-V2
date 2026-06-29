@@ -9,7 +9,8 @@
     "Hosted CI success is backed by a real GitHub Actions run view payload.",
     "Merge readiness is authorised only when branch protection evidence is also present.",
     "head_sha advanced from CI run 0892958b986b to branch HEAD 989b9926a1ea after evidence/harness commits.",
-    "head_sha advanced from CI run 989b9926a1ea to branch HEAD d8b6c1c85a15 after evidence/harness commits."
+    "head_sha advanced from CI run 989b9926a1ea to branch HEAD d8b6c1c85a15 after evidence/harness commits.",
+    "Phase 13A split provenance model records ci_run_sha, evidence_commit_sha, closure_commit_sha, and current_terminal_sha separately so the hosted CI run payload is not conflated with later evidence or terminal commits."
   ],
   "created_at_utc": "2026-06-28T19:03:06Z",
   "head_sha": "d8b6c1c85a155c3927f48607b7c78c3ada44c28e",
@@ -38,5 +39,9 @@
   "status": "merge_readiness_authorised",
   "target_branch": "master",
   "updated_at_utc": "2026-06-28T21:09:49Z",
-  "workflow_name": "EduBoost Hosted CI Authority"
+  "workflow_name": "EduBoost Hosted CI Authority",
+  "ci_run_sha": "0892958b986bcb4a054e90a1bf4c72f6736db77a",
+  "evidence_commit_sha": "34e85fb8e6d9f7654746a0eb223e37b3c28f5a80",
+  "closure_commit_sha": "29d8f904c89194aa29e55b85c9c06794515c6cac",
+  "current_terminal_sha": "d66b343dc099951722211d9a172a65b69c2788af"
 }

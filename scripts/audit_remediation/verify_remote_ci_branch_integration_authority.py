@@ -104,12 +104,16 @@ def verify() -> dict[str, Any]:
 
     register = _load_json(REGISTER_PATH, errors)
     if register:
-        if register.get("active_slice") != "08-remote-ci-branch-integration-authority":
+        terminal_closed = (
+            register.get("status") == "phase_12_technical_audit_remediation_closed"
+            or register.get("active_slice") == "technical-audit-remediation-closed"
+        )
+        if not terminal_closed and register.get("active_slice") != "08-remote-ci-branch-integration-authority":
             errors.append(
                 "blocker_register.active_slice must be 08-remote-ci-branch-integration-authority"
             )
         status = register.get("status")
-        if status not in {
+        if not terminal_closed and status not in {
             "phase_08_remote_ci_branch_integration_authority_ready",
             "phase_08_remote_ci_branch_integration_authority_closed",
         }:
