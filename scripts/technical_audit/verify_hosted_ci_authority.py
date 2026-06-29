@@ -70,9 +70,22 @@ def verify_record(record: dict[str, Any], *, allow_unclaimed: bool) -> tuple[boo
     if record.get("slice") != "TA-PHASE-09-HOSTED-CI-RUN-EVIDENCE":
         errors.append("slice must be TA-PHASE-09-HOSTED-CI-RUN-EVIDENCE")
 
+
     sha = record.get("head_sha")
     if not isinstance(sha, str) or not SHA_RE.match(sha):
         errors.append("head_sha must be a 40-character lowercase git SHA")
+
+    provenance_fields = {
+        "ci_run_sha": record.get("ci_run_sha"),
+        "evidence_commit_sha": record.get("evidence_commit_sha"),
+        "closure_commit_sha": record.get("closure_commit_sha"),
+        "current_terminal_sha": record.get("current_terminal_sha"),
+    }
+    has_split_provenance = any(value is not None for value in provenance_fields.values())
+    if has_split_provenance:
+        for key, value in provenance_fields.items():
+            if not isinstance(value, str) or not SHA_RE.match(value):
+                errors.append(f"{key} must be a 40-character lowercase git SHA")
 
     if not isinstance(record.get("hosted_ci_run_claimed"), bool):
         errors.append("hosted_ci_run_claimed must be boolean")
@@ -122,8 +135,9 @@ def verify_record(record: dict[str, Any], *, allow_unclaimed: bool) -> tuple[boo
         errors.append("missing gh_run_view raw evidence file")
     else:
         view = load_json(pathlib.Path(view_files[0]))
-        if view.get("headSha") != record.get("head_sha"):
-            errors.append("run view headSha does not match record head_sha")
+        expected_run_sha = record.get("ci_run_sha") if has_split_provenance else record.get("head_sha")
+        if view.get("headSha") != expected_run_sha:
+            errors.append("run view headSha does not match hosted CI run provenance SHA")
         if view.get("status") != "completed":
             errors.append("run view status is not completed")
         if view.get("conclusion") != "success":

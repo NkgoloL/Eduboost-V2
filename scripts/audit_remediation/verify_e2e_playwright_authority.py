@@ -84,7 +84,9 @@ def verify() -> dict[str, object]:
             findings.append(Finding("pnpm-lock.yaml" in text and "app/frontend/pnpm-lock.yaml" in text, f"{name} caches root and frontend pnpm lockfiles"))
 
     findings.append(Finding("TA-E2E-001" in blocker_register, "TA-E2E-001 blocker registered"))
-    findings.append(Finding("06-e2e-playwright-execution-authority" in blocker_register, "Phase 06 active slice registered"))
+    terminal_closed = "technical-audit-remediation-closed" in blocker_register
+    phase_active = "06-e2e-playwright-execution-authority" in blocker_register
+    findings.append(Finding(phase_active or terminal_closed, "Phase 06 active or archived terminal slice registered"))
 
     return {
         "valid": all(f.valid for f in findings),

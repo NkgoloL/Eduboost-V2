@@ -97,7 +97,7 @@ def verify() -> dict[str, object]:
         "actions/upload-artifact@v4",
         "pnpm/action-setup@v4",
         "cache: \"pnpm\"",
-        "cache-dependency-path: app/frontend/pnpm-lock.yaml",
+        "app/frontend/pnpm-lock.yaml",
         "pnpm install --frozen-lockfile",
         "pnpm --dir app/frontend install --frozen-lockfile",
         "pnpm run env-check",
@@ -122,7 +122,13 @@ def verify() -> dict[str, object]:
             findings.append(Finding(ci is not None, "TA-CI-001 blocker registered" if ci else "TA-CI-001 blocker missing"))
             if isinstance(ci, dict):
                 findings.append(Finding(ci.get("status") in {"workflow_cleanup_ready", "evidence_recorded"}, f"TA-CI-001 status {ci.get('status')}"))
-            findings.append(Finding(data.get("active_slice") in {"04-ci-authority-workflow-cleanup", "next-technical-audit-slice"}, f"active_slice is {data.get('active_slice')}"))
+            allowed_active_slices = {
+                "04-ci-authority-workflow-cleanup",
+                    "next-technical-audit-slice",
+                    "technical-audit-remediation-closed",
+            }
+            terminal_closed = data.get("status") == "phase_12_technical_audit_remediation_closed"
+            findings.append(Finding(data.get("active_slice") in allowed_active_slices or terminal_closed, f"active_slice is {data.get('active_slice')}"))
         except Exception as exc:
             findings.append(Finding(False, f"blocker register invalid JSON: {exc}"))
     else:

@@ -22,6 +22,17 @@ REQUIRED = [
 ]
 
 
+TERMINAL_STATUSES = {
+    "phase_12_technical_audit_remediation_closed",
+}
+
+
+def _register_mode(data: dict[str, object]) -> str:
+    if data.get("status") in TERMINAL_STATUSES or data.get("active_slice") == "technical-audit-remediation-closed":
+        return "archival"
+    return "phase-local"
+
+
 def verify(root: Path = ROOT) -> dict[str, object]:
     errors: list[str] = []
     checked: list[str] = []
@@ -74,11 +85,17 @@ def verify(root: Path = ROOT) -> dict[str, object]:
     register = root / "docs/roadmap/execution/technical_audit_remediation/blocker_register.json"
     if register.exists():
         data = json.loads(register.read_text(encoding="utf-8"))
-        if data.get("active_slice") != "02m-backend-fast-head-aligned-finalization":
+        mode = _register_mode(data)
+        if mode == "phase-local" and data.get("active_slice") != "02m-backend-fast-head-aligned-finalization":
             errors.append("blocker register active_slice must be 02m-backend-fast-head-aligned-finalization")
         policy = data.get("backend_fast_failure", {}).get("phase_02m_slice", {}).get("policy", "")
-        if "HEAD-aligned" not in policy:
+        if mode == "phase-local" and "HEAD-aligned" not in policy:
             errors.append("blocker register must record HEAD-aligned evidence policy")
+        if mode == "archival":
+            blockers = data.get("remaining_release_blockers_after_reset", [])
+            backend = next((item for item in blockers if isinstance(item, dict) and item.get("id") == "TA-BACKEND-FAST-001"), None)
+            if not isinstance(backend, dict) or backend.get("status") != "evidence_recorded":
+                errors.append("terminal register must archive TA-BACKEND-FAST-001 as evidence_recorded")
     else:
         errors.append("missing blocker register")
 

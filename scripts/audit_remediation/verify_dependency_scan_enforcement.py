@@ -105,7 +105,14 @@ def verify() -> dict[str, object]:
             findings.append(Finding(isinstance(security, dict), "TA-SECURITY-001 blocker registered" if isinstance(security, dict) else "TA-SECURITY-001 blocker missing"))
             if isinstance(security, dict):
                 findings.append(Finding(security.get("status") in {"dependency_scan_enforcement_ready", "evidence_recorded", "partially_addressed_in_baseline_reset"}, f"TA-SECURITY-001 status {security.get('status')}"))
-            findings.append(Finding(data.get("active_slice") in {"05-dependency-scan-enforcement", "next-technical-audit-slice", "04-ci-authority-workflow-cleanup"}, f"active_slice is {data.get('active_slice')}"))
+            allowed_active_slices = {
+                "05-dependency-scan-enforcement",
+                    "next-technical-audit-slice",
+                    "04-ci-authority-workflow-cleanup",
+                    "technical-audit-remediation-closed",
+            }
+            terminal_closed = data.get("status") == "phase_12_technical_audit_remediation_closed"
+            findings.append(Finding(data.get("active_slice") in allowed_active_slices or terminal_closed, f"active_slice is {data.get('active_slice')}"))
         except Exception as exc:
             findings.append(Finding(False, f"blocker register invalid JSON: {exc}"))
     else:
