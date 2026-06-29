@@ -1,0 +1,39 @@
+{
+  "attempted": true,
+  "body_excerpt": "{\"status\":\"ok\",\"critical\":{\"secrets\":{\"status\":\"ok\"},\"postgres\":{\"status\":\"ok\"},\"redis\":{\"status\":\"ok\"},\"migrations\":{\"status\":\"ok\",\"revision\":\"20260622_1200_phase02r_gate2r4\"},\"audit_repository\":{\"status\":\"ok\"}},\"optional\":{\"llm_provider\":{\"status\":\"skipped\",\"detail\":\"No LLM provider credentials configured\"},\"judiciary\":{\"status\":\"ok\"}},\"message\":\"System is operational\"}",
+  "error": "",
+  "json": {
+    "critical": {
+      "audit_repository": {
+        "status": "ok"
+      },
+      "migrations": {
+        "revision": "20260622_1200_phase02r_gate2r4",
+        "status": "ok"
+      },
+      "postgres": {
+        "status": "ok"
+      },
+      "redis": {
+        "status": "ok"
+      },
+      "secrets": {
+        "status": "ok"
+      }
+    },
+    "message": "System is operational",
+    "optional": {
+      "judiciary": {
+        "status": "ok"
+      },
+      "llm_provider": {
+        "detail": "No LLM provider credentials configured",
+        "status": "skipped"
+      }
+    },
+    "status": "ok"
+  },
+  "path": "/v2/health/deep",
+  "status_code": 200,
+  "url": "http://127.0.0.1:8000/v2/health/deep"
+}

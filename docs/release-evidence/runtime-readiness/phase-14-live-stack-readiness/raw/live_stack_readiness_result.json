@@ -1,0 +1,34 @@
+{
+  "allow_optional_degraded": false,
+  "base_url": "http://127.0.0.1:8000",
+  "critical_components": {
+    "audit_repository": "ok",
+    "migrations": "ok",
+    "postgres": "ok",
+    "redis": "ok",
+    "secrets": "ok"
+  },
+  "deployment_authorised": false,
+  "errors": [],
+  "generated_at_utc": "2026-06-29T22:29:57Z",
+  "live_learner_traffic_authorised": false,
+  "live_stack_readiness_claimed": true,
+  "live_stack_readiness_recorded": true,
+  "optional_components": {
+    "judiciary": "ok",
+    "llm_provider": "skipped"
+  },
+  "overall_statuses": {
+    "deep_api_v2": "ok",
+    "deep_v2": "ok",
+    "ready": "ok"
+  },
+  "post_merge_baseline_valid": true,
+  "production_release_authorised": false,
+  "release_tag_authorised": false,
+  "runtime_kg_implementation_claimed": false,
+  "source_commit": "cd321117926e5062771659afa1d20280e9ba664b",
+  "target_branch": "master",
+  "valid": true,
+  "warnings": []
+}
