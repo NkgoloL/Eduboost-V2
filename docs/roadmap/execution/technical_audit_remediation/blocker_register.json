@@ -1,5 +1,5 @@
 {
-  "active_slice": "technical-audit-remediation-closed",
+  "active_slice": "technical-audit-post-merge-baseline-authority",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "content_scope_registry_slice": {
@@ -230,6 +230,24 @@
     "title": "Technical-audit remediation closure authority",
     "updated_at_utc": "2026-06-28T21:35:19Z"
   },
+  "phase_13b_post_merge_baseline_authority": {
+    "authority_record": "docs/roadmap/execution/technical_audit_remediation/technical_audit_post_merge_baseline_record.json",
+    "deployment_authorised": false,
+    "evidence_path": "docs/release-evidence/technical-audit/phase-13b-post-merge-baseline",
+    "hosted_ci_provenance_model": "split_ci_run_evidence_closure_terminal_sha",
+    "id": "TA-POST-MERGE-BASELINE-001",
+    "live_learner_traffic_authorised": false,
+    "post_merge_baseline_recorded": false,
+    "production_release_authorised": false,
+    "release_tag_authorised": false,
+    "required_check": "Verify repository authority",
+    "runtime_kg_implementation_claimed": false,
+    "status": "authority_ready",
+    "target_branch": "master",
+    "technical_audit_remediation_closed": true,
+    "title": "Post-merge protected-branch baseline authority",
+    "updated_at_utc": "2026-06-29T21:27:02Z"
+  },
   "remaining_release_blockers_after_reset": [
     {
       "authority_command": "PYTHON_BIN=.venv/bin/python bash scripts/audit_remediation/finalize_openapi_frontend_contract.sh --regenerate && python3 scripts/audit_remediation/verify_openapi_frontend_contract.py --json",
@@ -394,6 +412,6 @@
       "title": "Hosted CI run evidence and merge readiness authority"
     }
   ],
-  "status": "phase_12_technical_audit_remediation_closed",
+  "status": "phase_13b_post_merge_baseline_authority_ready",
   "stream": "technical-audit-remediation"
 }
