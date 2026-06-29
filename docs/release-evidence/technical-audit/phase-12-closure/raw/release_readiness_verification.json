@@ -1,0 +1,28 @@
+{
+  "branch_protection_claimed": true,
+  "checked": [
+    "docs/roadmap/execution/technical_audit_remediation/technical_audit_release_readiness_record.json",
+    "docs/release-evidence/technical-audit/phase-11-release-readiness",
+    "docs/release-evidence/technical-audit/phase-11-release-readiness/SHA256SUMS.txt",
+    "docs/release-evidence/technical-audit/phase-11-release-readiness/raw/git_state.json",
+    "docs/release-evidence/technical-audit/phase-11-release-readiness/raw/blocker_register_snapshot.json",
+    "docs/release-evidence/technical-audit/phase-11-release-readiness/raw/hosted_ci_authority_record_snapshot.json",
+    "docs/release-evidence/technical-audit/phase-11-release-readiness/raw/merge_readiness_verification.json",
+    "docs/release-evidence/technical-audit/phase-11-release-readiness/raw/required_blocker_summary.json",
+    "docs/release-evidence/technical-audit/phase-11-release-readiness/raw/release_readiness_result.json",
+    "docs/release-evidence/technical-audit/phase-11-release-readiness/evidence_index.md"
+  ],
+  "command": "/usr/bin/python3 scripts/technical_audit/verify_release_readiness_authority.py --json",
+  "errors": [],
+  "hosted_ci_run_claimed": true,
+  "merge_readiness_authorised": true,
+  "production_release_authorised": false,
+  "release_readiness_claimed": true,
+  "returncode": 0,
+  "source_commit": "c936953cbf9d769b21b8e6e878b40773ddc7abb8",
+  "technical_audit_release_readiness_claimed": true,
+  "valid": true,
+  "warnings": [
+    "legacy hosted-ci-merge-readiness diagnostics directory exists; keep it uncommitted unless deliberately recollected"
+  ]
+}

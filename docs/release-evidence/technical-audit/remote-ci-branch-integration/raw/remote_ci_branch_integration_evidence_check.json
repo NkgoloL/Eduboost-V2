@@ -1,0 +1,82 @@
+{
+  "branch_integration_authority_result": "valid",
+  "errors": [],
+  "evidence_dir": "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release-evidence/technical-audit/remote-ci-branch-integration",
+  "remote_ci_run_claimed": false,
+  "sha256sums": {
+    "checked": [
+      {
+        "actual": "a5b58b5e351f298d881aa40c089262a5e6608fabeab2fecc514d84aa9b6c6ebc",
+        "expected": "a5b58b5e351f298d881aa40c089262a5e6608fabeab2fecc514d84aa9b6c6ebc",
+        "file": "backend_fast_gate_evidence_check.json",
+        "match": true
+      },
+      {
+        "actual": "3b1f76cf009bf498e1d14ef11570bfa884c6e8f2a682b51e48d6fa175b00be45",
+        "expected": "3b1f76cf009bf498e1d14ef11570bfa884c6e8f2a682b51e48d6fa175b00be45",
+        "file": "branch_integration_summary.json",
+        "match": true
+      },
+      {
+        "actual": "c6ea78e8cc8e76c6e7764f1ccdee35a224dce6fada961d12899cf2fbb2fb5183",
+        "expected": "c6ea78e8cc8e76c6e7764f1ccdee35a224dce6fada961d12899cf2fbb2fb5183",
+        "file": "ci_authority_workflow_evidence_check.json",
+        "match": true
+      },
+      {
+        "actual": "c55ad543cdb277a588e3434556ced2df4b9258781d7a19fe6567d3a2fc6ff20f",
+        "expected": "c55ad543cdb277a588e3434556ced2df4b9258781d7a19fe6567d3a2fc6ff20f",
+        "file": "dependency_scan_enforcement_evidence_check.json",
+        "match": true
+      },
+      {
+        "actual": "869f61e4f9e5e0cac4c67b43309df93c95039820b9ae9f115c992f29f7d77e57",
+        "expected": "869f61e4f9e5e0cac4c67b43309df93c95039820b9ae9f115c992f29f7d77e57",
+        "file": "e2e_playwright_authority_evidence_check.json",
+        "match": true
+      },
+      {
+        "actual": "c60b6640347b3c9431f628c95c0b026c9ed32d9d65bdbde17d870d92f59c3a3d",
+        "expected": "c60b6640347b3c9431f628c95c0b026c9ed32d9d65bdbde17d870d92f59c3a3d",
+        "file": "frontend_tooling_authority_evidence_check.json",
+        "match": true
+      },
+      {
+        "actual": "a84db28bc9f3679d3fffe930430d67577964ead45681685df79f5a735972e01f",
+        "expected": "a84db28bc9f3679d3fffe930430d67577964ead45681685df79f5a735972e01f",
+        "file": "git_state.json",
+        "match": true
+      },
+      {
+        "actual": "402b734a7d84cfc9bf38e117bfdd620792043fcc6df0a3c73c84a8354634ae08",
+        "expected": "402b734a7d84cfc9bf38e117bfdd620792043fcc6df0a3c73c84a8354634ae08",
+        "file": "openapi_frontend_contract_evidence_check.json",
+        "match": true
+      },
+      {
+        "actual": "32a55c9ebb1a7609228566440fd7b677c9b5885f65113dbef4f38c53cb8a97b3",
+        "expected": "32a55c9ebb1a7609228566440fd7b677c9b5885f65113dbef4f38c53cb8a97b3",
+        "file": "remote_ci_branch_integration_verification.json",
+        "match": true
+      },
+      {
+        "actual": "6891004db9fd562996b58cd46b46badfa8c890aae40f339b20c5a106d28b1fb0",
+        "expected": "6891004db9fd562996b58cd46b46badfa8c890aae40f339b20c5a106d28b1fb0",
+        "file": "remote_ci_status.json",
+        "match": true
+      },
+      {
+        "actual": "246232319f998a45a7eca7a69bbc479c90b504ae919b4050de077d95a8823e19",
+        "expected": "246232319f998a45a7eca7a69bbc479c90b504ae919b4050de077d95a8823e19",
+        "file": "workflow_inventory.json",
+        "match": true
+      }
+    ],
+    "mismatches": [],
+    "present": true
+  },
+  "valid": true,
+  "warnings": [
+    "remote hosted CI success is not claimed by this evidence bundle"
+  ]
+}
