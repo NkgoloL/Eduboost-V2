@@ -1,5 +1,5 @@
 {
-  "active_slice": "technical-audit-remediation-closed",
+  "active_slice": "technical-audit-release-readiness-authority",
   "backend_fast_failure": {
     "authority_command": "make test-fast",
     "content_scope_registry_slice": {
@@ -206,29 +206,12 @@
     "merge_readiness_required": true,
     "production_release_authorised": false,
     "release_owner": "Nkgolo Lebelo",
-    "release_readiness_claimed": true,
+    "release_readiness_claimed": false,
     "runtime_kg_implementation_claimed": false,
-    "status": "technical_audit_release_readiness_authorised",
-    "technical_audit_release_readiness_claimed": true,
+    "status": "release_readiness_unclaimed",
+    "technical_audit_release_readiness_claimed": false,
     "title": "Technical-audit release-readiness authority",
-    "updated_at_utc": "2026-06-28T21:13:27Z"
-  },
-  "phase_12_technical_audit_closure_authority": {
-    "authority_record": "docs/roadmap/execution/technical_audit_remediation/technical_audit_closure_record.json",
-    "closure_owner": "Nkgolo Lebelo",
-    "deployment_authorised": false,
-    "evidence_path": "docs/release-evidence/technical-audit/phase-12-closure",
-    "id": "TA-CLOSURE-001",
-    "live_learner_traffic_authorised": false,
-    "production_release_authorised": false,
-    "release_tag_authorised": false,
-    "runtime_kg_implementation_claimed": false,
-    "status": "technical_audit_remediation_closed",
-    "technical_audit_release_readiness_claimed": true,
-    "technical_audit_remediation_closed": true,
-    "technical_audit_remediation_closure_claimed": true,
-    "title": "Technical-audit remediation closure authority",
-    "updated_at_utc": "2026-06-28T21:35:19Z"
+    "updated_at_utc": "2026-06-28T21:07:40Z"
   },
   "remaining_release_blockers_after_reset": [
     {
@@ -394,6 +377,6 @@
       "title": "Hosted CI run evidence and merge readiness authority"
     }
   ],
-  "status": "phase_12_technical_audit_remediation_closed",
+  "status": "phase_11_release_readiness_authority_ready",
   "stream": "technical-audit-remediation"
 }

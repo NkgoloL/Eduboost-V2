@@ -1,0 +1,18 @@
+{
+  "branch_protection_claimed": true,
+  "branch_protection_mechanism": "classic_branch_protection",
+  "checked": [
+    "docs/roadmap/execution/technical_audit_remediation/hosted_ci_authority_record.json",
+    "docs/release-evidence/technical-audit/phase-09-hosted-ci/SHA256SUMS.txt",
+    "docs/release-evidence/technical-audit/phase-09-hosted-ci/raw/branch_protection_result_master.json"
+  ],
+  "command": "/usr/bin/python3 scripts/technical_audit/verify_merge_readiness_authority.py --json",
+  "errors": [],
+  "hosted_ci_run_claimed": true,
+  "merge_readiness_authorised": true,
+  "returncode": 0,
+  "valid": true,
+  "warnings": [
+    "legacy hosted-ci-merge-readiness diagnostics directory exists; keep it uncommitted unless deliberately recollected"
+  ]
+}

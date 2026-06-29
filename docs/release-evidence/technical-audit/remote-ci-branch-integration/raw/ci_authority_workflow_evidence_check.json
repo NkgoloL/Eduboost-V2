@@ -1,0 +1,61 @@
+{
+  "findings": [
+    {
+      "message": "evidence directory exists",
+      "valid": true
+    },
+    {
+      "message": "raw directory exists",
+      "valid": true
+    },
+    {
+      "message": "evidence index exists",
+      "valid": true
+    },
+    {
+      "message": "workflow verification JSON exists",
+      "valid": true
+    },
+    {
+      "message": "workflow verification JSON is valid",
+      "valid": true
+    },
+    {
+      "message": "workflow verification valid=true",
+      "valid": true
+    },
+    {
+      "message": "evidence contains workflow job ids are unique",
+      "valid": true
+    },
+    {
+      "message": "evidence contains required snippet present: actions/upload-artifact@v4",
+      "valid": true
+    },
+    {
+      "message": "evidence contains required snippet present: pnpm --dir app/frontend install --frozen-lockfile",
+      "valid": true
+    },
+    {
+      "message": "evidence contains required snippet present: pnpm exec playwright test",
+      "valid": true
+    },
+    {
+      "message": "evidence contains TA-CI-001 blocker registered",
+      "valid": true
+    },
+    {
+      "message": "raw/SHA256SUMS.txt matches ci-cd.yml.snapshot",
+      "valid": true
+    },
+    {
+      "message": "raw/SHA256SUMS.txt matches ci_authority_workflow_verification.json",
+      "valid": true
+    },
+    {
+      "message": "raw/SHA256SUMS.txt matches ci_authority_workflow_verification.stderr.txt",
+      "valid": true
+    }
+  ],
+  "valid": true
+}
