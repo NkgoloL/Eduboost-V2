@@ -17,11 +17,17 @@ REQUIRED = [
 
 TERMINAL_STATUSES = {
     "phase_12_technical_audit_remediation_closed",
+    "phase_13b_post_merge_baseline_recorded",
 }
 
 
 def _register_mode(data: dict[str, object]) -> str:
-    if data.get("status") in TERMINAL_STATUSES or data.get("active_slice") == "technical-audit-remediation-closed":
+    status = data.get("status")
+    active_slice = data.get("active_slice")
+    if (
+        status in TERMINAL_STATUSES
+        or active_slice in {"technical-audit-remediation-closed", "technical-audit-post-merge-baseline-recorded"}
+    ):
         return "archival"
     return "phase-local"
 
