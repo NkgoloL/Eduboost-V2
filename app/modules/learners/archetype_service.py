@@ -1,19 +1,19 @@
 """Psychological archetype profiling and cold-start onboarding.
 
-Constitutional Pillar 5 — *The Ether*.  Assigns a Kabbalistic archetype
+Learner Archetype Profiling Service.  Assigns a Kabbalistic archetype
 on the learner's first session via a five-question micro-diagnostic,
 eliminating the legacy 8–10 event lag.
 
 The archetype drives LLM prompt-tone modifiers so that lesson content
 is personalised for the learner's cognitive style (e.g. visual, hands-on,
-narrative).  See :meth:`EtherService.modify_prompt_for_archetype`.
+narrative).  See :meth:`ArchetypeService.modify_prompt_for_archetype`.
 
 Example:
     Classify a learner during onboarding::
 
-        from app.modules.learners.ether_service import EtherService
+        from app.modules.learners.archetype_service import ArchetypeService
 
-        svc = EtherService()
+        svc = ArchetypeService()
         answers = [
             {"question_id": 1, "answer": "A"},
             {"question_id": 2, "answer": "C"},
@@ -127,8 +127,8 @@ _ARCHETYPE_DESCRIPTIONS = {
 }
 
 
-class EtherService:
-    """Constitutional Pillar 5: The Ether — archetype profiling service.
+class ArchetypeService:
+    """Learner Archetype Profiling Service — archetype profiling service.
 
     Assigns a psychological archetype on the learner's first session
     by scoring five onboarding questions against a Bayesian likelihood
@@ -138,7 +138,7 @@ class EtherService:
     Example:
         ::
 
-            svc = EtherService()
+            svc = ArchetypeService()
             label, desc, scores = svc.classify_archetype(answers)
     """
 

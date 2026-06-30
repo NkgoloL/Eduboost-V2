@@ -5,7 +5,7 @@ from unittest.mock import AsyncMock
 
 import pytest
 
-from app.core.llm_gateway import ExecutiveService, _coerce_lesson_json, _extract_json_object, _strip_generation_artifacts, settings
+from app.core.llm import LessonGenerator, _coerce_lesson_json, _extract_json_object, _strip_generation_artifacts, settings
 from app.services.caps_validator import CAPSAlignmentValidator
 
 
@@ -71,7 +71,7 @@ def test_strip_generation_artifacts_removes_synthetic_chat_turns() -> None:
 
 @pytest.mark.asyncio
 async def test_executive_uses_local_hf_provider_when_configured(monkeypatch) -> None:
-    service = ExecutiveService()
+    service = LessonGenerator()
     monkeypatch.setattr(settings, "LLM_PROVIDER", "local_hf")
     local_call = AsyncMock(return_value='{"title": "Local"}')
     monkeypatch.setattr(service, "_call_local_hf", local_call)
@@ -84,7 +84,7 @@ async def test_executive_uses_local_hf_provider_when_configured(monkeypatch) -> 
 
 @pytest.mark.asyncio
 async def test_executive_retries_when_caps_validation_fails(monkeypatch) -> None:
-    service = ExecutiveService()
+    service = LessonGenerator()
 
     first = json.dumps(
         {
@@ -111,9 +111,9 @@ async def test_executive_retries_when_caps_validation_fails(monkeypatch) -> None
 
     side_effect = AsyncMock(side_effect=[first, second])
     monkeypatch.setattr(service, "_call_with_fallback", side_effect)
-    monkeypatch.setattr("app.core.llm_gateway.cache_get", AsyncMock(return_value=None))
-    monkeypatch.setattr("app.core.llm_gateway.cache_set", AsyncMock())
-    monkeypatch.setattr("app.core.llm_gateway.check_and_consume_quota", AsyncMock())
+    monkeypatch.setattr("app.core.llm.cache_get", AsyncMock(return_value=None))
+    monkeypatch.setattr("app.core.llm.cache_set", AsyncMock())
+    monkeypatch.setattr("app.core.llm.check_and_consume_quota", AsyncMock())
 
     payload, from_cache = await service.generate_lesson(
         pseudonym_id="pseudo-1",

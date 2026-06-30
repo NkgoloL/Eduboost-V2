@@ -2,18 +2,18 @@ from __future__ import annotations
 
 import pytest
 
-from app.core.judiciary import ConstitutionalViolation, JudiciaryService
+from app.core.policy import PolicyViolation, PolicyService
 
 
 def test_invalid_json_is_wrapped_as_constitutional_violation() -> None:
-    service = JudiciaryService()
+    service = PolicyService()
 
-    with pytest.raises(ConstitutionalViolation):
+    with pytest.raises(PolicyViolation):
         service.stamp_lesson("not-json")
 
 
 def test_valid_json_is_validated_without_jsondecodeerror() -> None:
-    service = JudiciaryService()
+    service = PolicyService()
     payload = service.stamp_lesson(
         """
         {

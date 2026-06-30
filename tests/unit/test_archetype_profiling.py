@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-from app.modules.learners.ether_service import EtherService
+from app.modules.learners.archetype_service import ArchetypeService
 
 
 def test_all_ten_archetypes_are_reachable() -> None:
-    service = EtherService()
+    service = ArchetypeService()
     answer_sets = {
         "Keter": ["A", "A", "D", "C", "A"],
         "Chokmah": ["B", "C", "A", "C", "A"],
@@ -29,7 +29,7 @@ def test_all_ten_archetypes_are_reachable() -> None:
 
 
 def test_posterior_distribution_rewards_consistent_signal() -> None:
-    service = EtherService()
+    service = ArchetypeService()
     label, _description, probabilities = service.classify_archetype(
         [
             {"question_id": 1, "answer": "D"},

@@ -34,7 +34,7 @@
 
 ### Epic 11: V2 Modular Monolith Baseline
 **Prompt to Agent:**
-> "Treat `docs/architecture/V2_ARCHITECTURE.md` as the new architectural turning point. Establish the V2 baseline by scaffolding `app/core/`, `app/domain/`, `app/repositories/`, and `app/services/` as modular-monolith boundaries without breaking the existing runtime. Update the roadmap and status docs to reflect that prior epics are now legacy-complete and V2 is the active execution stream."
+> "Treat `docs/architecture/ARCHITECTURE.md` as the new architectural turning point. Establish the V2 baseline by scaffolding `app/core/`, `app/domain/`, `app/repositories/`, and `app/services/` as modular-monolith boundaries without breaking the existing runtime. Update the roadmap and status docs to reflect that prior epics are now legacy-complete and V2 is the active execution stream."
 - [~] Status: In Progress (2026-05-01)
 
 ### Epic 12: V2 De-Legacy Infrastructure Alignment

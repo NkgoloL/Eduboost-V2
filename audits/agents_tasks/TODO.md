@@ -136,15 +136,15 @@
     ```
     Commit: `chore: remove scratch dir and AI session artefact from tracked files`.
 
-11. [x] Rename `gemini-code-1777601244294.md` to `docs/architecture/V2_ARCHITECTURE.md`
+11. [x] Rename legacy manifest to `docs/architecture/ARCHITECTURE.md`
     to give it a stable, descriptive path:
     ```bash
     mkdir -p docs/architecture
-    git mv gemini-code-1777601244294.md docs/architecture/V2_ARCHITECTURE.md
+    git mv [legacy_manifest].md docs/architecture/ARCHITECTURE.md
     ```
-    Update all references in `AGENT_INSTRUCTIONS_V2.md`, `README.md`, and any
+    Update all references in `AGENT_INSTRUCTIONS.md`, `README.md`, and any
     file in `audits/` that links to the old filename. Commit:
-    `docs: rename V2 architecture manifest to stable path`.
+    `docs: rename architecture manifest to stable path`.
 
 12. [x] Verify that `docker-compose.prod.yml` exists (it was listed in the CHANGELOG
     as added but returned 404 when fetched). If absent, create it with Nginx
@@ -232,7 +232,7 @@
     `ANTHROPIC_API_KEY` from Key Vault using `azure-keyvault-secrets` +
     `azure-identity` (already in `requirements.txt`). Fall back to environment
     variables for `APP_ENV != "production"`. Document the required Key Vault
-    secret names in `.env.example` and in `docs/architecture/V2_ARCHITECTURE.md`.
+    secret names in `.env.example` and in `docs/architecture/ARCHITECTURE.md`.
     Commit: `feat(config): source all production secrets from Azure Key Vault`.
 
 19. [x] Implement a Redis token denylist for immediate JWT invalidation on logout
@@ -771,7 +771,7 @@
     - Remove all references to the legacy runtime and Celery/RabbitMQ
     - Update the Quick Start to use the single `docker compose up --build`
     - Update the "Current State" section to remove all ⚠️ Beta caveats
-    - Add a "Architecture" section linking to `docs/architecture/V2_ARCHITECTURE.md`
+    - Add a "Architecture" section linking to `docs/architecture/ARCHITECTURE.md`
     - Add badges for: CI/CD status, coverage %, security scan, POPIA compliance,
       CAPS alignment
     Commit: `docs(readme): update README to reflect V2 GA state`.
