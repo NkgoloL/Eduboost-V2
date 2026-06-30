@@ -37,6 +37,12 @@ DEFAULT_ORDERED_SPECS = (
     "tests/e2e/study_plan_and_lesson.spec.ts",
     "tests/e2e/parent_portal.spec.ts",
 )
+ORDERED_STEP_NAMES = {
+    "tests/e2e/auth.setup.ts": "auth_setup",
+    "tests/e2e/diagnostic.spec.ts": "diagnostic",
+    "tests/e2e/study_plan_and_lesson.spec.ts": "study_plan_and_lesson",
+    "tests/e2e/parent_portal.spec.ts": "parent_portal",
+}
 FALSE_BOUNDARY_FIELDS = (
     "production_release_authorised",
     "deployment_authorised",
@@ -295,7 +301,10 @@ def main() -> int:
         steps.append(_run_step("playwright_install_chromium", ["pnpm", "exec", "playwright", "install", "chromium"], raw_dir, env, 900))
 
     for index, spec in enumerate(specs, start=1):
-        safe_name = re_safe = "".join(ch if ch.isalnum() else "_" for ch in pathlib.Path(spec).stem)
+        safe_name = ORDERED_STEP_NAMES.get(
+            spec,
+            "".join(ch if ch.isalnum() else "_" for ch in pathlib.Path(spec).stem),
+        )
         steps.append(_run_step(
             f"playwright_seeded_{index:02d}_{safe_name}",
             ["pnpm", "exec", "playwright", "test", spec, "--project=chromium", "--workers=1", "--reporter=list"],

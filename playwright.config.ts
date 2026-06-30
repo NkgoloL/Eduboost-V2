@@ -33,7 +33,7 @@ const shouldStartWebServer = process.env.PLAYWRIGHT_SKIP_WEB_SERVER !== "1";
 export default defineConfig({
   // ── Test discovery ──────────────────────────────────────────────────────────
   testDir: "./tests/e2e",
-  testMatch: ["**/*.spec.ts"],
+  testMatch: ["**/*.spec.ts", "**/*.setup.ts"],
 
   // ── Global test timeout (ms) ───────────────────────────────────────────────
   timeout: 60_000,
