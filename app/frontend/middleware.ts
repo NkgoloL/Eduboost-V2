@@ -36,5 +36,19 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: PROTECTED_MATCHERS,
+  matcher: [
+    "/dashboard",
+    "/dashboard/:path*",
+    "/parent-dashboard",
+    "/parent-dashboard/:path*",
+    "/teacher",
+    "/teacher/:path*",
+    "/admin",
+    "/admin/:path*",
+    "/settings",
+    "/settings/:path*",
+    "/onboarding",
+    "/onboarding/:path*",
+  ],
 };
+
