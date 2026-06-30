@@ -25,6 +25,7 @@ scrape_configs:
     static_configs:
       - targets: ['redis:9121']
 
-  - job_name: 'celery'
-    static_configs:
-      - targets: ['flower:5555']
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ['alertmanager:9093']

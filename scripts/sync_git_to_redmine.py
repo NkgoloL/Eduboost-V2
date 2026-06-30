@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-import sys
-import re
 import subprocess
 
 # Redmine User ID for NkgoloL
@@ -10,7 +8,7 @@ USER_ID = 5
 ISSUE_MAP = {
     "gamification": 1, "badge": 1, "xp": 1, "streak": 1, "reward": 1,
     "parent": 2, "guardian": 2, "consent": 2, "family": 2, "verification": 2,
-    "diagnostic": 3, "irt": 3, "assessment": 3, "item": 3, "test": 3,
+    "diagnostic": 3, "irt": 3, "assessment": 3, "item": 3,
     "study plan": 4, "plan": 4, "refresh": 4, "rationale": 4,
     "fourth estate": 5, "estate": 5, "audit_events": 5,
     "judiciary": 6, "compliance": 6, "policy": 6,
@@ -42,24 +40,24 @@ def get_issue_id(message):
 
 def sync():
     commits = get_latest_commits(100)
-    
+
     for line in commits:
         if not line: continue
         parts = line.split("|")
         if len(parts) < 4: continue
         hash_id, author, date_str, message = parts[0], parts[1], parts[2], "|".join(parts[3:])
-        
+
         issue_id = get_issue_id(message)
         if not issue_id: continue
-        
+
         notes = f"Commit {hash_id} by {author} on {date_str}: {message}"
         notes_escaped = notes.replace("'", "''").replace("\\", "\\\\")
-        
+
         # Check and Insert Journal
         sql = f"USE redmine; INSERT INTO journals (journalized_id, journalized_type, user_id, notes, created_on) " \
               f"SELECT {issue_id}, 'Issue', {USER_ID}, '{notes_escaped}', NOW() " \
               f"WHERE NOT EXISTS (SELECT 1 FROM journals WHERE notes LIKE 'Commit {hash_id}%');"
-        
+
         # Heuristic for progress
         if any(kw in message.lower() for kw in ["complete", "done", "finish", "final"]):
              sql += f" UPDATE issues SET done_ratio = 100, status_id = 3, updated_on = NOW() WHERE id = {issue_id};"
@@ -69,7 +67,7 @@ def sync():
              sql += f" UPDATE issues SET done_ratio = GREATEST(COALESCE(done_ratio, 0), 90), status_id = 2, updated_on = NOW() WHERE id = {issue_id};"
         else:
              sql += f" UPDATE issues SET done_ratio = GREATEST(COALESCE(done_ratio, 0), 30), status_id = 2, updated_on = NOW() WHERE id = {issue_id};"
-        
+
         # Run SQL via mariadb CLI
         subprocess.run(["mariadb", "-u", "redmine", "-e", sql])
 

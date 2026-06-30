@@ -44,6 +44,6 @@ async def test_learner_session_creation():
     payload = response.json()
     assert "session_token" in payload
     assert "expires_in" in payload
-    
+
     # Verify it looks like a JWT
     assert len(payload["session_token"].split(".")) == 3

@@ -1,0 +1,76 @@
+name: diag-score-live-audit
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply_seed:
+        description: "Apply guarded bridge seed from irt_items to diagnostic_items"
+        required: true
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  diag-score-live-audit:
+    name: Diagnostic score live audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    env:
+      PYTHONPATH: .
+      DIAG_SCORE_DATABASE_URL: ${{ secrets.DIAG_SCORE_DATABASE_URL }}
+      DIAG_SCORE_ALLOW_BRIDGE_SEED: ${{ github.event.inputs.apply_seed == 'true' && '1' || '0' }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt
+          fi
+          if [ -f requirements-dev.txt ]; then
+            python -m pip install -r requirements-dev.txt
+          fi
+          python -m pip install sqlalchemy asyncpg
+
+      - name: Verify required secret
+        run: |
+          test -n "${DIAG_SCORE_DATABASE_URL}"
+          case "${DIAG_SCORE_DATABASE_URL}" in
+            *"<"*|*">"*|*"example.com"*|*"localhost"*|*"127.0.0.1"*)
+              echo "DIAG_SCORE_DATABASE_URL is placeholder/local and cannot be used"
+              exit 1
+              ;;
+          esac
+
+      - name: Run diagnostic score live audit
+        run: |
+          if [ "${DIAG_SCORE_ALLOW_BRIDGE_SEED}" = "1" ]; then
+            python scripts/diagnostic_score_live_audit.py --apply-seed
+          else
+            python scripts/diagnostic_score_live_audit.py
+          fi
+
+      - name: Upload diagnostic score evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: diagnostic-score-live-audit-evidence
+          path: |
+            docs/release/diagnostic_score_live_audit_status.json
+            docs/release/diagnostic_score_live_audit_status.md
+          if-no-files-found: warn

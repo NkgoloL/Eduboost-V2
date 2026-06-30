@@ -1,0 +1,36 @@
+# Makefile.arch — Architecture gate targets
+# Include in the root Makefile with:  include Makefile.arch
+
+.PHONY: lint-imports audit-routers metaphor-check dep-graph inventory-services
+
+## Verify all import-boundary contracts (§2.4)
+lint-imports:
+	lint-imports
+
+## Audit routers for business logic and complexity (§2.3)
+audit-routers:
+	python scripts/audit_router_thinness.py --strict
+
+## Check for metaphor-layer names in active code (§2.5)
+metaphor-check:
+	python scripts/rename_metaphor_layers.py
+
+## Apply metaphor → domain renames in-place (§2.5)
+metaphor-rename:
+	python scripts/rename_metaphor_layers.py --apply
+
+## Generate module dependency graph to docs/ (§2.1 P2)
+dep-graph:
+	python scripts/generate_dep_graph.py > docs/module_dependency_graph.md
+	@echo "Written: docs/module_dependency_graph.md"
+
+## Inventory services and modules; flag duplicates (§2.2)
+inventory-services:
+	python scripts/inventory_services.py
+
+## Mark deprecated duplicate service files with headers (§2.2)
+mark-deprecated:
+	python scripts/inventory_services.py --mark-deprecated
+
+## Run all architecture gates (used in CI)
+arch-gates: lint-imports audit-routers metaphor-check

@@ -2,8 +2,8 @@
 
 import React from "react";
 import { useLearner } from "../../../context/LearnerContext";
-import { Card } from "../../../components/ui/Card";
-import { Button } from "../../../components/ui/Button";
+import { Card } from "../../../components/ui/Card-legacy";
+import { Button } from "../../../components/ui/Button-legacy";
 
 export default function ParentPortalPage() {
   const { learner } = useLearner();
@@ -17,9 +17,9 @@ export default function ParentPortalPage() {
   return (
     <div className="max-w-4xl mx-auto p-4 md:p-8">
       <header className="mb-12">
-        <h1 className="text-4xl font-['Baloo_2'] font-bold text-[var(--text)] mb-2">Parent & Guardian Portal</h1>
+        <h1 className="text-4xl font-['Baloo_2'] font-bold text-[var(--text)] mb-2">Invite Your Guardian</h1>
         <p className="text-[var(--muted)] font-medium">
-          Manage your learning privacy and share progress with your family.
+          Share your learner ID with your parent or guardian so they can view your progress reports.
         </p>
       </header>
 

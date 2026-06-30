@@ -1,5 +1,7 @@
 import { vi, afterEach } from 'vitest'
 
+vi.mock('server-only', () => ({}))
+
 function jsonResponse(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
     status,
@@ -26,6 +28,39 @@ globalThis.fetch = vi.fn(async (input: RequestInfo | URL) => {
     })
   }
   return jsonResponse({})
+})
+
+const createStorage = () => {
+  let store: Record<string, string> = {}
+  return {
+    get length() {
+      return Object.keys(store).length
+    },
+    clear: () => {
+      store = {}
+    },
+    getItem: (key: string) => (key in store ? store[key] : null),
+    setItem: (key: string, value: string) => {
+      store[key] = value
+    },
+    removeItem: (key: string) => {
+      delete store[key]
+    },
+    key: (index: number) => Object.keys(store)[index] ?? null,
+  }
+}
+
+const localStorageMock = createStorage()
+const sessionStorageMock = createStorage()
+
+Object.defineProperty(window, 'localStorage', {
+  value: localStorageMock,
+  writable: true,
+})
+
+Object.defineProperty(window, 'sessionStorage', {
+  value: sessionStorageMock,
+  writable: true,
 })
 
 afterEach(() => {

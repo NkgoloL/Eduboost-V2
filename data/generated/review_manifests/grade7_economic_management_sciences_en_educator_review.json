@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T11:03:03Z",
+  "scope_id": "grade7_economic_management_sciences_en",
+  "scope_status": "review",
+  "review_policy_id": "educator_review_required_v1",
+  "decision": "dev_approved",
+  "dev_approved": true,
+  "stage_unlocked": true,
+  "approved": false,
+  "legal_decision": "pending",
+  "legal_approved": false,
+  "reviewer_id": "dev-content-review-2026-06-03",
+  "evidence_url": "dev-reviewed-generated-artifacts",
+  "legal_evidence_url": "pending",
+  "approved_at": "2026-06-03T11:03:03Z",
+  "notes": "Developer reviewed generated artifacts for staging/import unblock. Educator and legal production approvals remain pending.",
+  "layer_review": {
+    "topic_map": {
+      "path": "data/caps/topic_maps/grade7_economic_management_sciences_en.json",
+      "sha256": "sha256:dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "record_count": 32,
+      "review_ready_count": 32,
+      "review_status": "dev_approved"
+    },
+    "diagnostic_items": {
+      "path": "data/generated/items/grade7_economic_management_sciences_en_item_bank.json",
+      "sha256": "sha256:c1cafbcac7c84c92804d5fa4eee8a84efacf7b4a25b65e3699f65c2b08d2a839",
+      "record_count": 640,
+      "review_ready_count": 640,
+      "review_status": "dev_approved"
+    },
+    "lessons": {
+      "path": "data/generated/lessons/grade7_economic_management_sciences_en_lessons.json",
+      "sha256": "sha256:e3e03799d800638c7de3a7da6fe757a2b14abb3289a16d7162a727071c358c7b",
+      "record_count": 128,
+      "review_ready_count": 128,
+      "review_status": "dev_approved"
+    },
+    "assessment_blueprints": {
+      "path": "data/generated/assessment_blueprints/grade7_economic_management_sciences_en_blueprints.json",
+      "sha256": "sha256:8087950b31a6687c8a71232c4facaf47f33b1b6c000bac29a4a65ad793462b76",
+      "record_count": 49,
+      "review_ready_count": 49,
+      "review_status": "dev_approved"
+    },
+    "study_plan_templates": {
+      "path": "data/generated/study_plans/grade7_economic_management_sciences_en_templates.json",
+      "sha256": "sha256:131cc5a7c9571b89d4cd38433a78ae3924714fe361e8c63403331dec7b780f3b",
+      "record_count": 16,
+      "review_ready_count": 16,
+      "review_status": "dev_approved"
+    }
+  },
+  "promotion_readiness": {
+    "staging_eligible": true,
+    "production_eligible": false,
+    "blockers": [
+      "Scope is still in review and requires dev_approved or educator approval before staging unlock.",
+      "Review evidence packet is missing.",
+      "Educator approval is required for production.",
+      "Legal approval is required for production."
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T11:03:04Z",
+  "scope_id": "grade7_natural_sciences_en",
+  "scope_status": "review",
+  "review_policy_id": "educator_review_required_v1",
+  "decision": "dev_approved",
+  "dev_approved": true,
+  "stage_unlocked": true,
+  "approved": false,
+  "legal_decision": "pending",
+  "legal_approved": false,
+  "reviewer_id": "dev-content-review-2026-06-03",
+  "evidence_url": "dev-reviewed-generated-artifacts",
+  "legal_evidence_url": "pending",
+  "approved_at": "2026-06-03T11:03:04Z",
+  "notes": "Developer reviewed generated artifacts for staging/import unblock. Educator and legal production approvals remain pending.",
+  "layer_review": {
+    "topic_map": {
+      "path": "data/caps/topic_maps/grade7_natural_sciences_en.json",
+      "sha256": "sha256:923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "record_count": 32,
+      "review_ready_count": 32,
+      "review_status": "dev_approved"
+    },
+    "diagnostic_items": {
+      "path": "data/generated/items/grade7_natural_sciences_en_item_bank.json",
+      "sha256": "sha256:6f1ae69a5d775bb03d866afb3543ad868b3536e4e827981c3e921d93bd39b865",
+      "record_count": 640,
+      "review_ready_count": 640,
+      "review_status": "dev_approved"
+    },
+    "lessons": {
+      "path": "data/generated/lessons/grade7_natural_sciences_en_lessons.json",
+      "sha256": "sha256:152fe4cc7079e59f6826b7e2f26a33bb9210198f7f32ca79b4f137cae6925cc8",
+      "record_count": 128,
+      "review_ready_count": 128,
+      "review_status": "dev_approved"
+    },
+    "assessment_blueprints": {
+      "path": "data/generated/assessment_blueprints/grade7_natural_sciences_en_blueprints.json",
+      "sha256": "sha256:22c3c201db655d931416f3f43405027558e0c981f92eeefc3ff45967eeb1a053",
+      "record_count": 49,
+      "review_ready_count": 49,
+      "review_status": "dev_approved"
+    },
+    "study_plan_templates": {
+      "path": "data/generated/study_plans/grade7_natural_sciences_en_templates.json",
+      "sha256": "sha256:e24261d6fc1d60b66eaf4d49b234041bc9db750ec3e381b28b0bc1c879d6caec",
+      "record_count": 16,
+      "review_ready_count": 16,
+      "review_status": "dev_approved"
+    }
+  },
+  "promotion_readiness": {
+    "staging_eligible": true,
+    "production_eligible": false,
+    "blockers": [
+      "Scope is still in review and requires dev_approved or educator approval before staging unlock.",
+      "Review evidence packet is missing.",
+      "Educator approval is required for production.",
+      "Legal approval is required for production."
+    ]
+  }
+}

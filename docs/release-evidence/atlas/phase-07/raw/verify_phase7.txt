@@ -1,0 +1,460 @@
+python=/home/nkgolol/Dev/SandBox/Eduboost-V2/.venv/bin/python
+version=3.12.3
+== compile ==
+== release-blocking ruff ==
+All checks passed!
+== Phase 7 focused tests ==
+.................                                                        [100%]
+17 passed in 3.24s
+== registry ==
+{
+  "active_scopes": 1,
+  "scopes": 1,
+  "scopes_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/data/content_factory/scopes.json",
+  "targets": 3,
+  "targets_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/data/content_factory/coverage_targets.json"
+}
+== router and ARQ registration ==
+routes=7
+/admin/curriculum-expansion/coverage/snapshots
+/admin/curriculum-expansion/coverage/{scope_id}
+/admin/curriculum-expansion/plans
+/admin/curriculum-expansion/training-manifests
+/admin/curriculum-expansion/training-manifests/{manifest_id}
+/admin/curriculum-expansion/training-manifests/{manifest_id}/decision
+/admin/curriculum-expansion/training-manifests/{manifest_id}/export
+weekly_snapshot_job=registered
+== deterministic training-readiness dry run ==
+{
+  "artifact_count": 1,
+  "dataset": "/tmp/tmp.wHHpI3jI2g/dataset.jsonl",
+  "dataset_version": "phase7-synthetic-v1",
+  "dry_run": true,
+  "status": "ready",
+  "training_executed": false
+}
+== migration graph ==
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+== schema integrity ==
+Schema integrity OK
+== OpenAPI drift ==
+== import boundaries ==
+
+╔══╗─────────▶╔╗ ╔╗      ╔╗◀───┐
+╚╣╠╝◀─────┐  ╔╝╚╗║║────▶╔╝╚╗   │
+ ║║   ╔══╦══╦╩╗╔╝║║  ╔╦═╩╗╔╝╔═╦══╗
+ ║║╔══╣╔╗║╔╗║╔╣║ ║║ ╔╬╣╔╗║║ ║│║╔═╝
+╔╣╠╣║║║╚╝║╚╝║║║╚╗║╚═╝║║║║║╚╗║═╣║
+╚══╩╩╩╣╔═╩══╩╝╚═╝╚═══╩╩╝╚╩═╩╩═╩╝
+  └──▶║║                    ▲
+      ╚╝────────────────────┘
+
+
+---------
+Contracts
+---------
+
+Analyzed 433 files, 2253 dependencies.
+--------------------------------------
+
+FastAPI v2 routers should not import repositories directly KEPT
+POPIA router uses dependency layer rather than repository construction KEPT
+Lessons router uses authorization service layer rather than repositories KEPT
+
+Contracts: 3 kept, 0 broken.
+== Atlas governance paths ==
+== prior-phase fast regressions ==
+All checks passed!
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.19s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+...............                                                          [100%]
+15 passed in 0.47s
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 0.86s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 0.98s
+...............                                                          [100%]
+15 passed in 0.47s
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Phase 3 route/policy contract OK: 9 routes
+
+[1/8] Compile Phase 4 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 4 unit, route, state-machine, and selection tests
+..........                                                               [100%]
+10 passed in 2.84s
+
+[4/8] Migration graph and schema model integrity
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Schema integrity OK
+
+[5/8] Router and ARQ registration
+Phase 4 routes OK: 10
+IRT watchdog registered as durable function and nightly cron
+
+[6/8] Fail-closed serving and rewrite-review contracts
+No automatic answer-option mutation; rewrites return to Phase 3 review
+
+[7/8] Phase 1-3 fast regressions
+All checks passed!
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.26s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+...............                                                          [100%]
+15 passed in 0.43s
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 1.18s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 0.93s
+...............                                                          [100%]
+15 passed in 0.45s
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Phase 3 route/policy contract OK: 9 routes
+
+[8/8] Legacy single-review path remains absent
+PHASE 4 FAST VERIFICATION PASSED
+Python: 3.12.3
+
+[1/8] Compile Phase 5 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 5 focused backend tests
+.............                                                            [100%]
+13 passed in 2.77s
+
+[4/8] Router, context, and migration contracts
+Tutor router registration OK: 5 canonical paths
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+
+[5/8] Privacy and fail-safe static contracts
+
+[6/8] Frontend type and component tests
+
+> eduboost-sa-frontend@1.0.0 type-check /home/nkgolol/Dev/SandBox/Eduboost-V2/app/frontend
+> tsc --noEmit
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.7 [39m[90m/home/nkgolol/Dev/SandBox/Eduboost-V2/app/frontend[39m
+
+ [32m✓[39m src/components/learner/__tests__/AiTutorChat.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 127[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m   Start at [22m 19:07:13
+[2m   Duration [22m 1.16s[2m (transform 62ms, setup 77ms, import 109ms, tests 127ms, environment 554ms)[22m
+
+
+[7/8] Architecture, schema, and prior-phase regressions
+
+╔══╗─────────▶╔╗ ╔╗      ╔╗◀───┐
+╚╣╠╝◀─────┐  ╔╝╚╗║║────▶╔╝╚╗   │
+ ║║   ╔══╦══╦╩╗╔╝║║  ╔╦═╩╗╔╝╔═╦══╗
+ ║║╔══╣╔╗║╔╗║╔╣║ ║║ ╔╬╣╔╗║║ ║│║╔═╝
+╔╣╠╣║║║╚╝║╚╝║║║╚╗║╚═╝║║║║║╚╗║═╣║
+╚══╩╩╩╣╔═╩══╩╝╚═╝╚═══╩╩╝╚╩═╩╩═╩╝
+  └──▶║║                    ▲
+      ╚╝────────────────────┘
+
+
+---------
+Contracts
+---------
+
+Analyzed 433 files, 2253 dependencies.
+--------------------------------------
+
+FastAPI v2 routers should not import repositories directly KEPT
+POPIA router uses dependency layer rather than repository construction KEPT
+Lessons router uses authorization service layer rather than repositories KEPT
+
+Contracts: 3 kept, 0 broken.
+Schema integrity OK
+All checks passed!
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 0.90s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+...............                                                          [100%]
+15 passed in 0.45s
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 0.80s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 0.89s
+...............                                                          [100%]
+15 passed in 0.43s
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Phase 3 route/policy contract OK: 9 routes
+
+[1/8] Compile Phase 4 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 4 unit, route, state-machine, and selection tests
+..........                                                               [100%]
+10 passed in 2.73s
+
+[4/8] Migration graph and schema model integrity
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Schema integrity OK
+
+[5/8] Router and ARQ registration
+Phase 4 routes OK: 10
+IRT watchdog registered as durable function and nightly cron
+
+[6/8] Fail-closed serving and rewrite-review contracts
+No automatic answer-option mutation; rewrites return to Phase 3 review
+
+[7/8] Phase 1-3 fast regressions
+All checks passed!
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 1.08s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+...............                                                          [100%]
+15 passed in 0.67s
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 0.86s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 0.91s
+...............                                                          [100%]
+15 passed in 0.43s
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Phase 3 route/policy contract OK: 9 routes
+
+[8/8] Legacy single-review path remains absent
+PHASE 4 FAST VERIFICATION PASSED
+
+[8/8] Atlas governance paths
+PHASE 5 FAST VERIFICATION PASSED
+== Phase 6 fast verification ==
+Python 3.12.3
+All checks passed!
+......                                                                   [100%]
+6 passed in 2.72s
+Phase 6 router/job registration OK: 3 key paths
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Schema integrity OK
+All checks passed!
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 0.92s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+...............                                                          [100%]
+15 passed in 0.44s
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 0.91s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 0.90s
+...............                                                          [100%]
+15 passed in 0.43s
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Phase 3 route/policy contract OK: 9 routes
+
+[1/8] Compile Phase 4 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 4 unit, route, state-machine, and selection tests
+..........                                                               [100%]
+10 passed in 3.71s
+
+[4/8] Migration graph and schema model integrity
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Schema integrity OK
+
+[5/8] Router and ARQ registration
+Phase 4 routes OK: 10
+IRT watchdog registered as durable function and nightly cron
+
+[6/8] Fail-closed serving and rewrite-review contracts
+No automatic answer-option mutation; rewrites return to Phase 3 review
+
+[7/8] Phase 1-3 fast regressions
+All checks passed!
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 0.92s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+...............                                                          [100%]
+15 passed in 0.44s
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 0.81s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 0.92s
+...............                                                          [100%]
+15 passed in 0.43s
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Phase 3 route/policy contract OK: 9 routes
+
+[8/8] Legacy single-review path remains absent
+PHASE 4 FAST VERIFICATION PASSED
+Python: 3.12.3
+
+[1/8] Compile Phase 5 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 5 focused backend tests
+.............                                                            [100%]
+13 passed in 2.82s
+
+[4/8] Router, context, and migration contracts
+Tutor router registration OK: 5 canonical paths
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+
+[5/8] Privacy and fail-safe static contracts
+
+[6/8] Frontend type and component tests
+
+> eduboost-sa-frontend@1.0.0 type-check /home/nkgolol/Dev/SandBox/Eduboost-V2/app/frontend
+> tsc --noEmit
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.7 [39m[90m/home/nkgolol/Dev/SandBox/Eduboost-V2/app/frontend[39m
+
+ [32m✓[39m src/components/learner/__tests__/AiTutorChat.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 125[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m   Start at [22m 19:08:56
+[2m   Duration [22m 1.14s[2m (transform 64ms, setup 81ms, import 113ms, tests 125ms, environment 529ms)[22m
+
+
+[7/8] Architecture, schema, and prior-phase regressions
+
+╔══╗─────────▶╔╗ ╔╗      ╔╗◀───┐
+╚╣╠╝◀─────┐  ╔╝╚╗║║────▶╔╝╚╗   │
+ ║║   ╔══╦══╦╩╗╔╝║║  ╔╦═╩╗╔╝╔═╦══╗
+ ║║╔══╣╔╗║╔╗║╔╣║ ║║ ╔╬╣╔╗║║ ║│║╔═╝
+╔╣╠╣║║║╚╝║╚╝║║║╚╗║╚═╝║║║║║╚╗║═╣║
+╚══╩╩╩╣╔═╩══╩╝╚═╝╚═══╩╩╝╚╩═╩╩═╩╝
+  └──▶║║                    ▲
+      ╚╝────────────────────┘
+
+
+---------
+Contracts
+---------
+
+Analyzed 433 files, 2253 dependencies.
+--------------------------------------
+
+FastAPI v2 routers should not import repositories directly KEPT
+POPIA router uses dependency layer rather than repository construction KEPT
+Lessons router uses authorization service layer rather than repositories KEPT
+
+Contracts: 3 kept, 0 broken.
+Schema integrity OK
+All checks passed!
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 0.92s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+...............                                                          [100%]
+15 passed in 0.43s
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 0.83s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 0.90s
+...............                                                          [100%]
+15 passed in 0.42s
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Phase 3 route/policy contract OK: 9 routes
+
+[1/8] Compile Phase 4 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 4 unit, route, state-machine, and selection tests
+..........                                                               [100%]
+10 passed in 2.86s
+
+[4/8] Migration graph and schema model integrity
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Schema integrity OK
+
+[5/8] Router and ARQ registration
+Phase 4 routes OK: 10
+IRT watchdog registered as durable function and nightly cron
+
+[6/8] Fail-closed serving and rewrite-review contracts
+No automatic answer-option mutation; rewrites return to Phase 3 review
+
+[7/8] Phase 1-3 fast regressions
+All checks passed!
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 0.90s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+...............                                                          [100%]
+15 passed in 0.47s
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 0.83s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 0.90s
+...............                                                          [100%]
+15 passed in 0.44s
+Migration graph OK: 41 revisions, head=20260615_1800_p7_curriculum
+Phase 3 route/policy contract OK: 9 routes
+
+[8/8] Legacy single-review path remains absent
+PHASE 4 FAST VERIFICATION PASSED
+
+[8/8] Atlas governance paths
+PHASE 5 FAST VERIFICATION PASSED
+PHASE 6 FAST VERIFICATION PASSED
+PHASE 7 FAST VERIFICATION PASSED
+
+exit_code=0

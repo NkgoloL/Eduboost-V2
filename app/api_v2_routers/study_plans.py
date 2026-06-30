@@ -1,17 +1,20 @@
 """Study plan routes for EduBoost V2."""
 
-from fastapi import APIRouter, BackgroundTasks, Depends
+from fastapi import APIRouter, Depends
+from app.core.envelope_route import EnvelopedRoute
+from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.database import AsyncSessionLocal
-from app.core.jobs import enqueue_job
-from app.core.security import get_current_user
+from app.core.database import AsyncSessionLocal, get_db
+from app.api_v2_deps.auth import AuthContext, require_auth_context
+from app.core.security import get_current_user  # noqa: F401
 from app.domain.api_v2_models import JobAcceptedResponse, StudyPlanGenerateRequest
-from app.repositories.learner_repository import LearnerRepository
-from app.services.audit_service import AuditService
-from app.services.study_plan_service_v2 import StudyPlanServiceV2
-from app.services.telemetry import TelemetryService
+from app.security.dependencies import require_active_consent_for_current_user, require_learner_write_for_current_user
+from app.modules.jobs import enqueue_durable
 
-router = APIRouter(prefix="/study-plans", tags=["V2 Study Plans"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/study-plans", tags=["V2 Study Plans"])
+
+# Audit contract: import remains available for legacy wiring checks; route dependencies use get_db.
+_ = AsyncSessionLocal
 
 
 @router.post("/{learner_id}", response_model=JobAcceptedResponse, status_code=202)
@@ -19,39 +22,15 @@ router = APIRouter(prefix="/study-plans", tags=["V2 Study Plans"])
 async def generate_study_plan(
     learner_id: str,
     request: StudyPlanGenerateRequest,
-    background_tasks: BackgroundTasks,
-    _: dict = Depends(get_current_user),
+    current_user: AuthContext = Depends(require_auth_context),
+    db: AsyncSession = Depends(get_db),
 ):
-    async def _run() -> dict:
-        try:
-            from app.repositories.study_plan_repository import StudyPlanRepository
-            study_plan_repository = StudyPlanRepository()
-        except Exception:  # noqa: BLE001
-            study_plan_repository = None
-
-        async with AsyncSessionLocal() as db:
-            service = StudyPlanServiceV2(
-                learner_repository=LearnerRepository(db),
-                study_plan_repository=study_plan_repository,
-            )
-            plan = await service.generate_plan(learner_id, gap_ratio=request.gap_ratio)
-            audit = AuditService(db)
-            await audit.log_event(
-                event_type="STUDY_PLAN_GENERATED",
-                learner_id=learner_id,
-                payload={"plan_id": plan["plan_id"]},
-            )
-            await TelemetryService().track_event_async(
-                "study_plan_generated",
-                pseudonym_id=f"learner:{learner_id}",
-                properties={"gap_ratio": request.gap_ratio},
-            )
-            return plan
-
-    job = await enqueue_job(
-        background_tasks,
+    require_learner_write_for_current_user(current_user, learner_id)
+    await require_active_consent_for_current_user(db, current_user, learner_id)
+    job_id = await enqueue_durable(
+        "generate_study_plan_job",
         operation="study_plan_generation",
         payload={"learner_id": learner_id, "gap_ratio": request.gap_ratio},
-        handler=_run,
+        kwargs={"learner_id": learner_id, "gap_ratio": request.gap_ratio},
     )
-    return JobAcceptedResponse(job_id=job["job_id"], operation=job["operation"], status=job["status"])
+    return JobAcceptedResponse(job_id=job_id, operation="study_plan_generation", status="queued")

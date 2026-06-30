@@ -1,0 +1,92 @@
+{
+  "conclusion": "success",
+  "createdAt": "2026-06-28T19:01:35Z",
+  "databaseId": 28332718788,
+  "displayTitle": "fix(audit): scope hosted CI authority test step",
+  "event": "push",
+  "headBranch": "codex/phase-06-e2e-playwright-authority",
+  "headSha": "0892958b986bcb4a054e90a1bf4c72f6736db77a",
+  "jobs": [
+    {
+      "completedAt": "2026-06-28T19:02:33Z",
+      "conclusion": "success",
+      "databaseId": 83933573689,
+      "name": "Verify repository authority",
+      "startedAt": "2026-06-28T19:01:38Z",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Checkout repository",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Set up Python",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Install dependencies",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Validate hosted CI authority scripts",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Verify prior remote CI branch integration evidence",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Verify Phase 02R terminal control state",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run hosted CI authority focused tests",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Set up Python",
+          "number": 15,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Checkout repository",
+          "number": 16,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 17,
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/NkgoloL/Eduboost-V2/actions/runs/28332718788/job/83933573689"
+    }
+  ],
+  "status": "completed",
+  "updatedAt": "2026-06-28T19:02:33Z",
+  "url": "https://github.com/NkgoloL/Eduboost-V2/actions/runs/28332718788",
+  "workflowName": "EduBoost Hosted CI Authority"
+}

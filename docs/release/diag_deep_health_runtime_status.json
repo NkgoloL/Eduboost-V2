@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-06-12T17:38:05Z",
+  "current_commit": "a70b57616bb29572fcb57961b91a3f68f0c66329",
+  "current_branch": "phase-11/technical-debt-burn-down",
+  "status": "diag-deep-health-runtime-not-accepted",
+  "deep_health_url": "",
+  "test_command": "",
+  "http_status_code": null,
+  "http_body_excerpt": "",
+  "github_run": {
+    "run_id": "",
+    "run_url": "",
+    "workflow_name": "",
+    "run_status": "",
+    "conclusion": "",
+    "head_sha": "",
+    "blockers": [
+      "DIAG_DEEP_HEALTH_RUN_ID is required for accepted evidence"
+    ]
+  },
+  "component_results": {
+    "db": "",
+    "migration": "",
+    "audit": "",
+    "session": ""
+  },
+  "inferred_component_signals": {},
+  "verified_by": "unverified",
+  "date_verified": "2026-06-12",
+  "blockers": [
+    "deep health URL is missing, non-HTTPS, localhost/example, or placeholder",
+    "DIAG_DEEP_HEALTH_TEST_COMMAND is missing or placeholder",
+    "deep health HTTP probe was not attempted",
+    "DIAG_DEEP_HEALTH_DB_RESULT must be passed",
+    "DIAG_DEEP_HEALTH_MIGRATION_RESULT must be passed",
+    "DIAG_DEEP_HEALTH_AUDIT_RESULT must be passed",
+    "DIAG_DEEP_HEALTH_SESSION_RESULT must be passed",
+    "DIAG_DEEP_HEALTH_RUN_ID is required for accepted evidence"
+  ]
+}

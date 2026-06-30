@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your data export is ready — EduBoost SA</title>
+  <style>
+    body    { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; margin: 0; padding: 24px; }
+    .card   { max-width: 520px; margin: 0 auto; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+    .header { background: linear-gradient(135deg, #1a3c5e 0%, #0d6e4c 100%); padding: 36px 40px; text-align: center; }
+    .header .lion { font-size: 48px; display: block; margin-bottom: 8px; }
+    .header h1    { color: #fff; margin: 0; font-size: 22px; }
+    .body   { padding: 36px 40px; }
+    .body p { color: #374151; font-size: 15px; line-height: 1.7; margin: 0 0 16px; }
+    .cta    { display: block; margin: 24px 0; text-align: center; background: #1a3c5e; color: #fff !important;
+              text-decoration: none; padding: 14px 32px; border-radius: 8px; font-size: 16px; font-weight: 700; }
+    .note   { font-size: 12px; color: #9ca3af; background: #f9fafb; border-radius: 8px;
+              padding: 12px 16px; border: 1px solid #e5e7eb; }
+    .footer { border-top: 1px solid #e5e7eb; padding: 20px 40px; text-align: center; font-size: 12px; color: #9ca3af; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <span class="lion">📦</span>
+      <h1>Your data export is ready</h1>
+    </div>
+    <div class="body">
+      <p>Hi {{ learner_name }},</p>
+      <p>
+        As requested under POPIA section 23 (right of access), your EduBoost SA data
+        export has been prepared and is ready to download.
+      </p>
+      <a href="{{ export_url }}" class="cta">Download my data →</a>
+      <div class="note">
+        ⏳ This download link expires in <strong>48 hours</strong>.
+        Your export includes all personal data, learning history, and account activity
+        associated with your EduBoost SA account.
+      </div>
+    </div>
+    <div class="footer">
+      EduBoost SA &middot; Built with ubuntu — <em>"I am because we are."</em>
+    </div>
+  </div>
+</body>
+</html>

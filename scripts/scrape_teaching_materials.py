@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import os
 import re
-import json
 import subprocess
 from pathlib import Path
 from bs4 import BeautifulSoup
@@ -89,7 +88,7 @@ def main():
     for grade_num, subjects in grade_subjects.items():
         grade_dir = OUTPUT_BASE_DIR / f"grade{grade_num}"
         grade_dir.mkdir(parents=True, exist_ok=True)
-        
+
         g_num = int(grade_num)
         if 1 <= g_num <= 3:
             phase_hint = "foundation"
@@ -103,11 +102,11 @@ def main():
         for subject in subjects:
             synonyms = SUBJECT_SYNONYMS.get(subject, [subject])
             sub_patterns = [s.lower() for s in synonyms]
-            
+
             for pdf in all_pdfs:
                 pdf_text = pdf["text"].lower()
                 pdf_url = pdf["url"].lower()
-                
+
                 if subject == "maths" and grade_num == "1":
                      print(f"DEBUG: Checking PDF: '{pdf_text}' Patterns: {sub_patterns}")
 
@@ -117,15 +116,9 @@ def main():
 
                 # Phase/Grade matching
                 match = False
-                if phase_hint in pdf_text or phase_hint in pdf_url:
+                if phase_hint in pdf_text or phase_hint in pdf_url or (f"grade {grade_num}" in pdf_text or f"grade {grade_num}" in pdf_url) or (f"gr {grade_num}" in pdf_text or f"gr {grade_num}" in pdf_url or (f"gr{grade_num}" in pdf_text or f"gr{grade_num}" in pdf_url)):
                     match = True
-                elif f"grade {grade_num}" in pdf_text or f"grade {grade_num}" in pdf_url:
-                    match = True
-                elif f"gr {grade_num}" in pdf_text or f"gr {grade_num}" in pdf_url:
-                    match = True
-                elif f"gr{grade_num}" in pdf_text or f"gr{grade_num}" in pdf_url:
-                    match = True
-                
+
                 if match:
                     print(f"Matched: Grade {grade_num} {subject} -> {pdf['text']}")
                     filename = os.path.basename(urlparse(pdf["url"]).path)
@@ -136,7 +129,7 @@ def main():
                             filename = f"{subject}_gr{grade_num}_{ticket_match.group(1)}.pdf"
                         else:
                             filename = f"{subject}_gr{grade_num}_{hash(pdf['url'])}.pdf"
-                    
+
                     dest_path = grade_dir / filename
                     download_pdf(pdf["url"], dest_path)
 

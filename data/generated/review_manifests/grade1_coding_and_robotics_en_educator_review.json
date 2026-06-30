@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T11:03:01Z",
+  "scope_id": "grade1_coding_and_robotics_en",
+  "scope_status": "review",
+  "review_policy_id": "educator_review_required_v1",
+  "decision": "dev_approved",
+  "dev_approved": true,
+  "stage_unlocked": true,
+  "approved": false,
+  "legal_decision": "pending",
+  "legal_approved": false,
+  "reviewer_id": "dev-content-review-2026-06-03",
+  "evidence_url": "dev-reviewed-generated-artifacts",
+  "legal_evidence_url": "pending",
+  "approved_at": "2026-06-03T11:03:01Z",
+  "notes": "Developer reviewed generated artifacts for staging/import unblock. Educator and legal production approvals remain pending.",
+  "layer_review": {
+    "topic_map": {
+      "path": "data/caps/topic_maps/grade1_coding_and_robotics_en.json",
+      "sha256": "sha256:b10d26868f876cd0a9bfcefe47e93e39a58caa0168112fe873e2ffdc488a37ec",
+      "record_count": 32,
+      "review_ready_count": 32,
+      "review_status": "dev_approved"
+    },
+    "diagnostic_items": {
+      "path": "data/generated/items/grade1_coding_and_robotics_en_item_bank.json",
+      "sha256": "sha256:f8907486374c615f3c20641ed0d919aaea3ec355c1bb9606c8f97b5c3ac11a39",
+      "record_count": 640,
+      "review_ready_count": 640,
+      "review_status": "dev_approved"
+    },
+    "lessons": {
+      "path": "data/generated/lessons/grade1_coding_and_robotics_en_lessons.json",
+      "sha256": "sha256:c94345b81c0c9ccc00a075ac4fcefd35ddf66b5db06844be3560b2f5c836b66a",
+      "record_count": 128,
+      "review_ready_count": 128,
+      "review_status": "dev_approved"
+    },
+    "assessment_blueprints": {
+      "path": "data/generated/assessment_blueprints/grade1_coding_and_robotics_en_blueprints.json",
+      "sha256": "sha256:6ab4f8b24b2655967fb3c5397f985b487196f210b9e5b0a25388569046e4a462",
+      "record_count": 49,
+      "review_ready_count": 49,
+      "review_status": "dev_approved"
+    },
+    "study_plan_templates": {
+      "path": "data/generated/study_plans/grade1_coding_and_robotics_en_templates.json",
+      "sha256": "sha256:6573d13076dd925bf689721e28926c2fb47d23fc43a0cca32484c49ab3400d35",
+      "record_count": 16,
+      "review_ready_count": 16,
+      "review_status": "dev_approved"
+    }
+  },
+  "promotion_readiness": {
+    "staging_eligible": true,
+    "production_eligible": false,
+    "blockers": [
+      "Scope is still in review and requires dev_approved or educator approval before staging unlock.",
+      "Review evidence packet is missing.",
+      "Educator approval is required for production.",
+      "Legal approval is required for production."
+    ]
+  }
+}

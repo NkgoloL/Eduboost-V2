@@ -8,7 +8,7 @@ from datetime import datetime, timedelta, timezone
 async def test_fourth_estate_circuit_breaker_flow():
     # Setup FourthEstate with a low threshold for testing
     fe = FourthEstate(redis_url="redis://localhost:6379", cb_threshold=2, cb_recovery_timeout=1)
-    
+
     event = AuditEvent(
         event_type=EventType.LLM_CALL_COMPLETED,
         pillar="EXECUTIVE",
@@ -20,7 +20,7 @@ async def test_fourth_estate_circuit_breaker_flow():
         mock_redis = MagicMock()
         mock_redis.xadd = AsyncMock(return_value="12345-0")
         mock_from_url.return_value = mock_redis
-        
+
         await fe.publish(event)
         assert fe._cb_state == "CLOSED"
         assert mock_redis.xadd.called
@@ -31,12 +31,12 @@ async def test_fourth_estate_circuit_breaker_flow():
         mock_redis = MagicMock()
         mock_redis.xadd = AsyncMock(side_effect=Exception("Redis Down"))
         mock_from_url.return_value = mock_redis
-        
+
         # Failure 1
         await fe.publish(event)
         assert fe._cb_state == "CLOSED"
         assert fe._cb_failure_count == 1
-        
+
         # Failure 2 -> Should trigger OPEN
         await fe.publish(event)
         assert fe._cb_state == "OPEN"
@@ -52,12 +52,12 @@ async def test_fourth_estate_circuit_breaker_flow():
     # Fast-forward time by manually adjusting last_failure_time
     fe._cb_last_failure_time = datetime.now(timezone.utc) - timedelta(seconds=2)
     fe._redis = None
-    
+
     with patch("redis.asyncio.from_url") as mock_from_url:
         mock_redis = MagicMock()
         mock_redis.xadd = AsyncMock(return_value="12345-1")
         mock_from_url.return_value = mock_redis
-        
+
         await fe.publish(event)
         assert fe._cb_state == "CLOSED" # HALF_OPEN -> SUCCESS -> CLOSED
         assert fe._cb_failure_count == 0
@@ -68,7 +68,7 @@ async def test_fourth_estate_circuit_breaker_reopen():
     fe = FourthEstate(redis_url="redis://localhost:6379", cb_threshold=1, cb_recovery_timeout=0)
     fe._cb_state = "OPEN"
     fe._cb_last_failure_time = datetime.now(timezone.utc) - timedelta(seconds=1)
-    
+
     event = AuditEvent(
         event_type=EventType.LLM_CALL_COMPLETED,
         pillar="EXECUTIVE",
@@ -80,7 +80,7 @@ async def test_fourth_estate_circuit_breaker_reopen():
         mock_redis = MagicMock()
         mock_redis.xadd = AsyncMock(side_effect=Exception("Still Down"))
         mock_from_url.return_value = mock_redis
-        
+
         await fe.publish(event)
         assert fe._cb_state == "OPEN"
         assert fe._cb_failure_count > 0

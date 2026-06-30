@@ -1,0 +1,99 @@
+{
+  "generated_at": "2026-06-27T02:18:33Z",
+  "current_commit": "88840fc52a05c694c6d313e57bc8cba4bcda4c63",
+  "status": "auth-lifecycle-controlled-semantic-proof-passing",
+  "route_proofs": [
+    {
+      "function": "register",
+      "delegates_to_service": true,
+      "has_auth_service_param": true,
+      "passes_context_keywords": [
+        "auth_runtime",
+        "body",
+        "db",
+        "request",
+        "response"
+      ],
+      "prohibited_route_calls": [],
+      "passed": true
+    },
+    {
+      "function": "login",
+      "delegates_to_service": true,
+      "has_auth_service_param": true,
+      "passes_context_keywords": [
+        "auth_runtime",
+        "body",
+        "db",
+        "request",
+        "response"
+      ],
+      "prohibited_route_calls": [],
+      "passed": true
+    },
+    {
+      "function": "refresh",
+      "delegates_to_service": true,
+      "has_auth_service_param": true,
+      "passes_context_keywords": [
+        "auth_runtime",
+        "body",
+        "cookie_refresh",
+        "db",
+        "request",
+        "response"
+      ],
+      "prohibited_route_calls": [],
+      "passed": true
+    },
+    {
+      "function": "logout",
+      "delegates_to_service": true,
+      "has_auth_service_param": true,
+      "passes_context_keywords": [
+        "cookie_refresh",
+        "current_user",
+        "db",
+        "response"
+      ],
+      "prohibited_route_calls": [],
+      "passed": true
+    },
+    {
+      "function": "revoke_all_tokens",
+      "delegates_to_service": true,
+      "has_auth_service_param": true,
+      "passes_context_keywords": [
+        "cookie_refresh",
+        "current_user",
+        "db",
+        "response"
+      ],
+      "prohibited_route_calls": [],
+      "passed": true
+    }
+  ],
+  "cookie_proofs": [
+    {
+      "method": "logout",
+      "callable_ok": true,
+      "deleted_cookies": [
+        "refresh_token"
+      ],
+      "returned_mapping": true,
+      "passed": true,
+      "detail": "controlled fallback invocation completed"
+    },
+    {
+      "method": "revoke_all_tokens",
+      "callable_ok": true,
+      "deleted_cookies": [
+        "refresh_token"
+      ],
+      "returned_mapping": true,
+      "passed": true,
+      "detail": "controlled fallback invocation completed"
+    }
+  ],
+  "blockers": []
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "boundary": "first scoped consent runtime wiring candidate; non-destructive audit-compatible payload only",
+  "selected_candidate": {
+    "id": "BCW-431-CONSENT-GRANT-PAYLOAD",
+    "area": "consent",
+    "action": "consent.granted",
+    "actor_id": "guardian-consent-runtime-pr",
+    "learner_id": "learner-consent-runtime-pr",
+    "expected_operation_type": "write",
+    "expected_resource_type": "learner_consent",
+    "approved_for_runtime_pr": true,
+    "destructive": false,
+    "requires_route_change": false,
+    "requires_schema_change": false,
+    "requires_database_write_in_test": false,
+    "requires_table_merge": false
+  }
+}

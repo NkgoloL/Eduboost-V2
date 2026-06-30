@@ -4,7 +4,7 @@ Enforces active parental consent before learner data or lesson generation
 can proceed.  All operations are audited for South African POPIA
 compliance using either a provided
 :class:`~app.repositories.audit_repository.AuditRepository` or the
-:class:`~app.core.audit.AuditService` fallback.
+:class:`~app.core.audit.FourthEstateService` fallback.
 
 Every consent state change (grant, revoke, renew, erasure) is recorded
 in the audit trail for compliance and investigation.
@@ -22,10 +22,17 @@ from __future__ import annotations
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.services.audit_service import AuditService
-from app.core.exceptions import ConsentRequiredError
+from app.core.audit import FourthEstateService
+from app.core.consent_policy import ConsentPolicyDecision, derive_consent_state
+from app.core.exceptions import ConsentExpiredError, ConsentRequiredError
+from app.models import ParentalConsent
 from app.repositories.audit_repository import AuditRepository
-from app.repositories.consent_repository import ConsentRepository
+from app.repositories.repositories import ConsentRepository
+from app.utils.versioning import (
+    VersionChangeType,
+    detect_version_change,
+    requires_manual_renewal,
+)
 
 
 class ConsentService:
@@ -34,7 +41,7 @@ class ConsentService:
     Exposes operations to grant, revoke, renew, and query parental
     consent records.  Every consent state change is recorded in the
     audit trail via :class:`~app.repositories.audit_repository.AuditRepository`
-    or :class:`~app.core.audit.AuditService`.
+    or :class:`~app.core.audit.FourthEstateService`.
 
     Example:
         ::
@@ -47,12 +54,16 @@ class ConsentService:
             assert consent is not None
     """
 
+    # Current required policy version - should be configurable via env/config
+    REQUIRED_POLICY_VERSION = "1.0.0"
+
     def __init__(
         self,
         db: AsyncSession | None = None,
         *,
         consent_repo: ConsentRepository | None = None,
         audit_repo: AuditRepository | None = None,
+        required_policy_version: str | None = None,
     ) -> None:
         """Initialise the consent service with repository dependencies.
 
@@ -63,6 +74,8 @@ class ConsentService:
                 instance.  Created from ``db`` if not supplied.
             audit_repo: Optional :class:`~app.repositories.audit_repository.AuditRepository`
                 instance.  Created from ``db`` if not supplied.
+            required_policy_version: Optional required policy version string.
+                Defaults to class constant if not provided.
 
         Raises:
             ValueError: If neither a database session nor a consent
@@ -84,35 +97,68 @@ class ConsentService:
         self._db = db
         self._repo = consent_repo
         self._audit_repo = audit_repo
+        self._required_policy_version = required_policy_version or self.REQUIRED_POLICY_VERSION
 
-    async def require_active_consent(self, learner_id: str, actor_id: str | None = None) -> None:
+    async def consent_decision(self, learner_id: str) -> ConsentPolicyDecision:
+        """Return the canonical consent-state decision for a learner."""
+        consent = await self._repo.get_latest_for_learner(str(learner_id))
+        decision = derive_consent_state(consent, learner_id=str(learner_id))
+
+        # Check if consent is stale due to policy version change
+        if consent and decision.active:
+            if self._is_consent_stale(consent.policy_version):
+                from app.models import ConsentState
+                from app.core.consent_policy import ConsentPolicyDecision
+                # Create new decision with stale consent status
+                decision = ConsentPolicyDecision(
+                    learner_id=decision.learner_id,
+                    state=ConsentState.RENEWAL_REQUIRED,
+                    active=False,
+                    reason=f"Consent version {consent.policy_version} is stale; required version is {self._required_policy_version}",
+                    policy_version=consent.policy_version,
+                    privacy_notice_version=decision.privacy_notice_version,
+                    granted_at=decision.granted_at,
+                    expires_at=decision.expires_at,
+                    revoked_at=decision.revoked_at,
+                    renewal_due_at=decision.renewal_due_at,
+                )
+
+        return decision
+
+    def _is_consent_stale(self, consent_version: str) -> bool:
+        """Check if consent version is stale compared to required version."""
+        try:
+            return requires_manual_renewal(consent_version, self._required_policy_version)
+        except ValueError:
+            # If version parsing fails, treat as stale to be safe
+            return True
+
+    def detect_version_change_type(self, current_version: str, new_version: str) -> VersionChangeType:
+        """Detect the type of version change between two consent versions."""
+        try:
+            return detect_version_change(current_version, new_version)
+        except ValueError:
+            # If version parsing fails, assume major change (safest)
+            return VersionChangeType.MAJOR
+
+    async def require_active_consent(self, learner_id: str, actor_id: str | None = None) -> ConsentPolicyDecision:
         """Enforce active consent for a learner.
 
-        If no active consent exists, an audit event is appended and a
-        :class:`~app.core.exceptions.ConsentRequiredError` is raised.
-
-        Args:
-            learner_id: Learner identifier to validate consent for.
-            actor_id: Optional actor identifier for the audit event.
-
-        Raises:
-            ConsentRequiredError: When the learner does not have active
-                consent.
-
-        Example:
-            ::
-
-                await svc.require_active_consent("l-001", actor_id="u-001")
+        Returns the policy decision when processing may proceed. Pending,
+        expired, denied, or withdrawn states are audited and blocked.
         """
-        consent = await self._repo.get_active(str(learner_id))
-        if consent is None:
+        decision = await self.consent_decision(str(learner_id))
+        if not decision.active:
             await self._append_audit(
                 "consent.access_rejected",
                 actor_id=actor_id,
                 resource_id=learner_id,
-                payload={"learner_id": str(learner_id), "reason": "missing_or_expired"},
+                payload={"learner_id": str(learner_id), "reason": decision.reason, "state": decision.state.value},
             )
+            if decision.state.value == "expired":
+                raise ConsentExpiredError("Guardian consent has expired")
             raise ConsentRequiredError("Active parental consent required")
+        return decision
 
     async def grant(
         self,
@@ -122,7 +168,7 @@ class ConsentService:
         ip_address: str | None = None,
         user_agent: str | None = None,
         ip_hash: str | None = None,
-    ):
+    ) -> ParentalConsent:
         """Grant a new parental consent record.
 
         Creates a consent record via
@@ -154,13 +200,16 @@ class ConsentService:
             consent_version=consent_version,
             ip_address=ip_address or ip_hash,
             user_agent=user_agent,
+            state="granted",
         )
         await self._append_audit(
             "consent.granted",
             actor_id=guardian_id,
             resource_id=consent.id,
-            payload={"learner_id": str(learner_id), "consent_version": consent_version},
+            payload={"learner_id": str(learner_id), "consent_version": consent_version, "state": "granted"},
         )
+        # Record version history entry
+        await self._record_version_history(consent, "granted", "initial_grant")
         return consent
 
     async def revoke(self, learner_id: str, guardian_id: str | None = None, reason: str = "revoked") -> int:
@@ -192,11 +241,13 @@ class ConsentService:
                 "consent.revoked",
                 actor_id=guardian_id,
                 resource_id=active.id,
-                payload={"learner_id": str(learner_id), "reason": reason},
+                payload={"learner_id": str(learner_id), "reason": reason, "state": "withdrawn"},
             )
+            # Record version history entry
+            await self._record_version_history(active, "withdrawn", reason)
         return count
 
-    async def renew(self, guardian_id: str, learner_id: str, consent_version: str):
+    async def renew(self, guardian_id: str, learner_id: str, consent_version: str) -> ParentalConsent:
         """Renew an existing consent record with a new policy version.
 
         Revokes the previous consent and creates a fresh record with
@@ -216,6 +267,14 @@ class ConsentService:
 
                 renewed = await svc.renew("g-001", "l-001", "2.0")
         """
+        # Get current consent to detect version change type
+        current = await self._repo.get_latest_for_learner(str(learner_id))
+        current_version = current.policy_version if current else "0.0.0"
+
+        change_type = self.detect_version_change_type(current_version, consent_version)
+
+        # For PATCH changes (same MAJOR.MINOR), auto-renewal is allowed
+        # For MAJOR/MINOR changes, manual renewal is required (already handled by caller)
         previous, renewed = await self._repo.renew(
             learner_id=str(learner_id),
             guardian_id=str(guardian_id),
@@ -229,8 +288,11 @@ class ConsentService:
                 "learner_id": str(learner_id),
                 "previous_version": getattr(previous, "policy_version", None),
                 "new_version": consent_version,
+                "change_type": change_type.value,
             },
         )
+        # Record version history entry for renewed consent
+        await self._record_version_history(renewed, "granted", f"renewed_from_{getattr(previous, 'policy_version', 'unknown')}")
         return renewed
 
     async def execute_erasure(self, guardian_id: str, learner_id: str) -> None:
@@ -259,7 +321,7 @@ class ConsentService:
             payload={"learner_id": str(learner_id)},
         )
 
-    async def get_status(self, learner_id: str):
+    async def get_status(self, learner_id: str) -> ParentalConsent | None:
         """Return the current active consent status for a learner.
 
         Args:
@@ -276,9 +338,9 @@ class ConsentService:
                 if consent is None:
                     print("No active consent")
         """
-        return await self._repo.get_active(str(learner_id))
+        return await self._repo.get_latest_for_learner(str(learner_id))
 
-    async def get_expiring_consents(self, db: AsyncSession | None = None, days: int = 30):
+    async def get_expiring_consents(self, db: AsyncSession | None = None, days: int = 30) -> list[ParentalConsent]:
         """Return consent records expiring within a given window.
 
         Used by the ARQ consent-renewal reminder background job
@@ -305,7 +367,7 @@ class ConsentService:
         """Persist an audit event for a consent lifecycle operation.
 
         Tries :class:`~app.repositories.audit_repository.AuditRepository`
-        first; falls back to :class:`~app.core.audit.AuditService`
+        first; falls back to :class:`~app.core.audit.FourthEstateService`
         if no audit repository was configured.
 
         Args:
@@ -324,8 +386,33 @@ class ConsentService:
             )
             return
         if self._db is not None:
-            await AuditService(self._db).record(
+            await FourthEstateService(self._db).record(
                 event_type=event_type,
                 actor_id=actor_id,
                 payload=payload,
             )
+
+    async def _record_version_history(self, consent: ParentalConsent, status: str, transition_reason: str) -> None:
+        """Record a consent version history entry for audit trail.
+
+        Args:
+            consent: The consent record to snapshot.
+            status: The consent status at this point in time.
+            transition_reason: Reason for the state transition.
+        """
+        from app.models import ConsentVersionHistory
+
+        if self._db is None:
+            return
+
+        history_entry = ConsentVersionHistory(
+            consent_id=consent.id,
+            policy_version=consent.policy_version,
+            status=status,
+            granted_at=consent.granted_at,
+            expires_at=consent.expires_at,
+            revoked_at=consent.revoked_at,
+            transition_reason=transition_reason,
+        )
+        self._db.add(history_entry)
+        await self._db.flush()

@@ -1,0 +1,60 @@
+name: Cluster F AI Safety Evidence
+
+on:
+  pull_request:
+    branches: [master, "release/**"]
+  push:
+    branches: [master, "release/**"]
+
+jobs:
+  cluster-f-ai-safety:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Cluster F evidence checks
+        run: |
+          make caps-alignment-contract-check
+          make ai-safety-boundary-check
+          make diagnostic-generation-safety-check
+          make ai-output-schema-contract-check
+          make ai-output-fixture-validation-check
+          make ai-refusal-fixture-check
+          make ai-fixture-coverage-check
+          make ai-prompt-secret-leakage-check
+          make ai-prompt-surface-inventory-check
+          make ai-prompt-surface-inventory
+          make llm-provider-fallback-contract-check
+          make ai-prompt-input-contract-check
+          make lesson-generation-safety-check
+          make remediation-safety-contract-check
+          make cluster-f-closure-check
+          make cluster-f-ai-safety-check
+          pytest -c pytest.ini \
+            tests/unit/test_caps_alignment_contract.py \
+            tests/unit/test_cluster_f_secret_fixture_coverage_evidence.py \
+            tests/unit/test_ai_fixture_coverage_matrix.py \
+            tests/unit/test_ai_prompt_secret_leakage.py \
+            tests/unit/test_cluster_f_prompt_refusal_evidence.py \
+            tests/unit/test_ai_refusal_fixtures.py \
+            tests/unit/test_ai_prompt_surface_inventory.py \
+            tests/unit/test_cluster_f_fixture_validation_evidence.py \
+            tests/unit/test_validate_ai_output_fixtures.py \
+            tests/unit/test_ai_output_fixtures.py \
+            tests/unit/test_cluster_f_closure_report.py \
+            tests/unit/test_ai_safety_evidence_index.py \
+            tests/unit/test_cluster_f_closure_check.py \
+            tests/unit/test_remediation_safety_contract.py \
+            tests/unit/test_lesson_generation_safety_contract.py \
+            tests/unit/test_ai_output_schema_contract.py \
+            tests/unit/test_llm_provider_fallback_contract.py \
+            tests/unit/test_diagnostic_generation_safety_contract.py \
+            tests/unit/test_ai_prompt_input_contract.py \
+            tests/unit/test_ai_safety_boundary_contract.py \
+            -q --no-cov

@@ -1,0 +1,111 @@
+{
+  "artifact": "runtime_launch_content_evidence_status",
+  "captured_at": "2026-05-25T08:35:24Z",
+  "deployed_sha": "6b68736",
+  "backend_deploy_id": "dep-d89vt47r43ps73e3cd20",
+  "frontend_deploy_id": "dep-d8a00ur7uimc739v13p0",
+  "health": {
+    "backend": "ok",
+    "deep_health": "ok",
+    "postgres": "ok",
+    "migrations": "ok",
+    "google_llm": "ok"
+  },
+  "frontend": {
+    "http_200": true
+  },
+  "launch_content": {
+    "scope": [
+      "4.M.1.1",
+      "4.M.1.2",
+      "4.M.1.3"
+    ],
+    "diagnostic_items_approved": 40,
+    "diagnostic_items_expected": 40,
+    "diagnostic_items_total_approved": 120,
+    "lessons_approved": 24,
+    "lessons_expected_per_ref": 8,
+    "answer_key_verification": 100,
+    "green_refs": 3,
+    "per_caps_ref": {
+      "4.M.1.1": {
+        "diagnostic_items_approved": 40,
+        "lessons_approved": 8,
+        "coverage_ratio": 1.0
+      },
+      "4.M.1.2": {
+        "diagnostic_items_approved": 40,
+        "lessons_approved": 8,
+        "coverage_ratio": 1.0
+      },
+      "4.M.1.3": {
+        "diagnostic_items_approved": 40,
+        "lessons_approved": 8,
+        "coverage_ratio": 1.0
+      }
+    }
+  },
+  "implementation_roadmap_taken": [
+    "Confirm Render backend and frontend service IDs, URLs, and deploy branch.",
+    "Commit generated CAPS topic maps, diagnostic item bank, lesson bank, blueprints, study-plan templates, seeders, and validation tooling.",
+    "Push the same deploy SHA to both origin/master and origin/main because Render deploys main while the local checkout tracks master.",
+    "Redeploy backend and frontend from explicit commit SHAs.",
+    "Attempt direct Render one-off seed jobs and record that the current Render plan blocks one-off jobs and non-interactive SSH.",
+    "Harden seeders so diagnostic items load the new topic-map path and lesson rows can use a disabled system seed owner and learner.",
+    "Add an idempotent production startup seeder that checks live coverage, upserts missing approved diagnostic items and lessons, and skips once coverage is complete.",
+    "Fix live seed blockers by ignoring generated artifact metadata fields not present in diagnostic_items and making SQLAlchemy asyncpg PgBouncer-safe for Supabase transaction pooling.",
+    "Verify live health, deep health, diagnostic item coverage, lesson coverage, and frontend HTTP 200."
+  ],
+  "outstanding_tasks": [
+    {
+      "id": "LC-OUT-001",
+      "title": "Replace startup seeding with an operational seed command",
+      "status": "outstanding",
+      "detail": "Render one-off jobs were blocked on the current plan, so production startup seeding is the working implementation. Long term, enable Render jobs or add an admin-only seed runner and then disable automatic startup seeding."
+    },
+    {
+      "id": "LC-OUT-002",
+      "title": "Add a canonical lesson-bank model",
+      "status": "outstanding",
+      "detail": "Approved launch lessons are currently stored in learner-scoped lessons rows attached to a disabled system seed learner. Add a dedicated lesson_bank or approved_lessons table for canonical reusable content."
+    },
+    {
+      "id": "LC-OUT-003",
+      "title": "Seed assessment blueprints into runtime storage",
+      "status": "outstanding",
+      "detail": "Blueprint artifacts exist in the repository, but runtime assessment blueprint persistence and serving still need a canonical repository or table path."
+    },
+    {
+      "id": "LC-OUT-004",
+      "title": "Expand beyond the Grade 4 Mathematics launch slice",
+      "status": "outstanding",
+      "detail": "The green slice is limited to 4.M.1.1, 4.M.1.2, and 4.M.1.3. Next phases are full Grade 4 Mathematics and then Grades R-7."
+    },
+    {
+      "id": "LC-OUT-005",
+      "title": "Add an admin coverage dashboard",
+      "status": "outstanding",
+      "detail": "Backend coverage APIs exist. The admin frontend still needs a clear coverage panel for diagnostic items, lessons, and blueprints."
+    },
+    {
+      "id": "LC-OUT-006",
+      "title": "Audit frontend subject and content flows end to end",
+      "status": "outstanding",
+      "detail": "Backend content is seeded and verified. Still perform browser and user-flow verification for subjects, diagnostics, lesson generation, study plans, assessment attempts, and parent dashboard using real learner sessions."
+    },
+    {
+      "id": "LC-OUT-007",
+      "title": "Add CI guardrails for launch content",
+      "status": "outstanding",
+      "detail": "Add tests that reject ORM-incompatible generated artifacts, keep PgBouncer-safe DB config from regressing, and verify seeded launch refs remain green."
+    }
+  ],
+  "evidence": {
+    "backend_health_url": "https://eduboost-api.onrender.com/health",
+    "deep_health_url": "https://eduboost-api.onrender.com/api/v2/health/deep",
+    "frontend_url": "https://eduboos-frontend.onrender.com",
+    "lesson_coverage_url": "https://eduboost-api.onrender.com/api/v2/lessons/coverage?grade=4&subject=Mathematics",
+    "admin_diagnostic_coverage_url": "https://eduboost-api.onrender.com/api/v2/diagnostics/coverage",
+    "startup_seed_log_event": "launch_content_seed_skipped_complete"
+  }
+}

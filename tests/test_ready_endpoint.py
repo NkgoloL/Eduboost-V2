@@ -1,4 +1,3 @@
-import pytest
 from fastapi.testclient import TestClient
 from app.api_v2 import app
 
@@ -13,7 +12,7 @@ def test_ready_endpoint_success(monkeypatch):
             "optional": {"llm_provider": {"status": "ok"}, "judiciary": {"status": "ok"}},
             "message": "System is operational"
         }
-    monkeypatch.setattr("app.core.health.gather_deep_health", mock_gather_deep_health)
+    monkeypatch.setattr("app.api_v2.gather_deep_health", mock_gather_deep_health)
     response = client.get("/ready")
     assert response.status_code == 200
     data = response.json()
@@ -30,7 +29,7 @@ def test_ready_endpoint_degraded(monkeypatch):
             "optional": {"llm_provider": {"status": "error", "detail": "provider timeout"}, "judiciary": {"status": "ok"}},
             "message": "System is operational but in degraded mode"
         }
-    monkeypatch.setattr("app.core.health.gather_deep_health", mock_gather_deep_health)
+    monkeypatch.setattr("app.api_v2.gather_deep_health", mock_gather_deep_health)
     response = client.get("/ready")
     assert response.status_code == 200 # Degraded still returns 200 for readiness
     data = response.json()
@@ -46,7 +45,7 @@ def test_ready_endpoint_failure(monkeypatch):
             "optional": {"llm_provider": {"status": "ok"}, "judiciary": {"status": "ok"}},
             "message": "System is unavailable"
         }
-    monkeypatch.setattr("app.core.health.gather_deep_health", mock_gather_deep_health)
+    monkeypatch.setattr("app.api_v2.gather_deep_health", mock_gather_deep_health)
     response = client.get("/ready")
     assert response.status_code == 503
     data = response.json()

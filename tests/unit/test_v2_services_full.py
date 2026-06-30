@@ -39,16 +39,19 @@ class TestLessonServiceV2:
     def _svc(self, cached=None, db_row=None):
         from app.services.lesson_service_v2 import LessonServiceV2
         repo = AsyncMock()
-        repo.create = AsyncMock()
+        mock_row = MagicMock()
+        mock_row.id = LESSON_ID
+        repo.create = AsyncMock(return_value=mock_row)
         repo.get_by_id = AsyncMock(return_value=db_row)
-        svc = LessonServiceV2(lesson_repository=repo)
-        svc.redis = AsyncMock()
-        svc.redis.get = AsyncMock(return_value=None)
-        svc.redis.set = AsyncMock()
+        redis_mock = MagicMock()
+        redis_mock.get = AsyncMock(return_value=None)
+        svc = LessonServiceV2(lesson_repository=repo, redis_client=redis_mock)
+        svc.cache_service = MagicMock()
+        svc.cache_service.get = AsyncMock(return_value=cached)
+        svc.cache_service.set = AsyncMock()
+        svc.cache_service.build_cache_key = MagicMock(return_value="key")
         svc.quota_service = AsyncMock()
-        svc.quota_service.assert_within_quota = AsyncMock(return_value=1)
-        svc.quota_service.get_cached = AsyncMock(return_value=cached)
-        svc.quota_service.set_cached = AsyncMock()
+        svc.quota_service.check_and_reserve = AsyncMock()
         return svc, repo
 
     @pytest.mark.asyncio
@@ -73,10 +76,10 @@ class TestLessonServiceV2:
 
     @pytest.mark.asyncio
     async def test_generate_enforces_quota(self):
-        from app.services.quota_service import QuotaExceededError
+        from fastapi import HTTPException
         svc, _ = self._svc()
-        svc.quota_service.assert_within_quota = AsyncMock(side_effect=QuotaExceededError("over"))
-        with pytest.raises(QuotaExceededError):
+        svc.quota_service.check_and_reserve = AsyncMock(side_effect=HTTPException(status_code=429))
+        with pytest.raises(HTTPException):
             await svc.generate_lesson(LEARNER_ID, "MATH", "Fractions")
 
     @pytest.mark.asyncio
@@ -247,6 +250,124 @@ class TestAssessmentServiceV2:
                             {"question_id": "q2", "learner_answer": "london"}])
         assert r["correct_count"] == 1
         assert r["marks_obtained"] == 2
+
+    @pytest.mark.asyncio
+    async def test_submit_handles_item_id_field(self):
+        from app.services.assessment_service_v2 import AssessmentServiceV2
+        qs = [{"item_id": "q1", "correct_answer": "4", "marks": 1}]
+        repo = AsyncMock()
+        repo.get_assessment = AsyncMock(return_value={"questions": qs, "total_marks": 1})
+        repo.create_attempt = AsyncMock(return_value=str(uuid.uuid4()))
+        svc = AssessmentServiceV2(repository=repo)
+        with patch("app.services.assessment_service_v2.AuditService") as a:
+            a.return_value.log_event = AsyncMock()
+            r = await svc.submit_attempt(ASSESSMENT_ID, LEARNER_ID,
+                responses=[{"item_id": "q1", "selected_option": "4"}])
+        assert r["correct_count"] == 1
+
+    @pytest.mark.asyncio
+    async def test_submit_handles_answer_field(self):
+        from app.services.assessment_service_v2 import AssessmentServiceV2
+        qs = [{"question_id": "q1", "correct_answer": "4", "marks": 1}]
+        repo = AsyncMock()
+        repo.get_assessment = AsyncMock(return_value={"questions": qs, "total_marks": 1})
+        repo.create_attempt = AsyncMock(return_value=str(uuid.uuid4()))
+        svc = AssessmentServiceV2(repository=repo)
+        with patch("app.services.assessment_service_v2.AuditService") as a:
+            a.return_value.log_event = AsyncMock()
+            r = await svc.submit_attempt(ASSESSMENT_ID, LEARNER_ID,
+                responses=[{"question_id": "q1", "answer": "4"}])
+        assert r["correct_count"] == 1
+
+    @pytest.mark.asyncio
+    async def test_submit_normalizes_case_and_whitespace(self):
+        from app.services.assessment_service_v2 import AssessmentServiceV2
+        qs = [{"question_id": "q1", "correct_answer": "Paris", "marks": 1}]
+        repo = AsyncMock()
+        repo.get_assessment = AsyncMock(return_value={"questions": qs, "total_marks": 1})
+        repo.create_attempt = AsyncMock(return_value=str(uuid.uuid4()))
+        svc = AssessmentServiceV2(repository=repo)
+        with patch("app.services.assessment_service_v2.AuditService") as a:
+            a.return_value.log_event = AsyncMock()
+            r = await svc.submit_attempt(ASSESSMENT_ID, LEARNER_ID,
+                responses=[{"question_id": "q1", "learner_answer": "  paris  "}])
+        assert r["correct_count"] == 1
+
+    @pytest.mark.asyncio
+    async def test_submit_calculates_total_marks_from_questions(self):
+        from app.services.assessment_service_v2 import AssessmentServiceV2
+        qs = [{"question_id": "q1", "correct_answer": "4", "marks": 2},
+              {"question_id": "q2", "correct_answer": "5", "marks": 3}]
+        repo = AsyncMock()
+        repo.get_assessment = AsyncMock(return_value={"questions": qs})  # No total_marks
+        repo.create_attempt = AsyncMock(return_value=str(uuid.uuid4()))
+        svc = AssessmentServiceV2(repository=repo)
+        with patch("app.services.assessment_service_v2.AuditService") as a:
+            a.return_value.log_event = AsyncMock()
+            r = await svc.submit_attempt(ASSESSMENT_ID, LEARNER_ID,
+                responses=[{"question_id": "q1", "learner_answer": "4"},
+                            {"question_id": "q2", "learner_answer": "5"}])
+        assert r["total_marks"] == 5
+        assert r["score"] == 1.0
+
+    @pytest.mark.asyncio
+    async def test_submit_defaults_marks_to_one(self):
+        from app.services.assessment_service_v2 import AssessmentServiceV2
+        qs = [{"question_id": "q1", "correct_answer": "4"},  # No marks field
+              {"question_id": "q2", "correct_answer": "5"}]
+        repo = AsyncMock()
+        repo.get_assessment = AsyncMock(return_value={"questions": qs})
+        repo.create_attempt = AsyncMock(return_value=str(uuid.uuid4()))
+        svc = AssessmentServiceV2(repository=repo)
+        with patch("app.services.assessment_service_v2.AuditService") as a:
+            a.return_value.log_event = AsyncMock()
+            r = await svc.submit_attempt(ASSESSMENT_ID, LEARNER_ID,
+                responses=[{"question_id": "q1", "learner_answer": "4"},
+                            {"question_id": "q2", "learner_answer": "5"}])
+        assert r["total_marks"] == 2
+        assert r["marks_obtained"] == 2
+
+    @pytest.mark.asyncio
+    async def test_submit_handles_zero_total_marks(self):
+        from app.services.assessment_service_v2 import AssessmentServiceV2
+        qs = [{"question_id": "q1", "correct_answer": "4", "marks": 0}]
+        repo = AsyncMock()
+        repo.get_assessment = AsyncMock(return_value={"questions": qs, "total_marks": 0})
+        repo.create_attempt = AsyncMock(return_value=str(uuid.uuid4()))
+        svc = AssessmentServiceV2(repository=repo)
+        with patch("app.services.assessment_service_v2.AuditService") as a:
+            a.return_value.log_event = AsyncMock()
+            r = await svc.submit_attempt(ASSESSMENT_ID, LEARNER_ID,
+                responses=[{"question_id": "q1", "learner_answer": "4"}])
+        assert r["score"] == 0.0
+
+    @pytest.mark.asyncio
+    async def test_submit_with_time_taken(self):
+        from app.services.assessment_service_v2 import AssessmentServiceV2
+        qs = [{"question_id": "q1", "correct_answer": "4", "marks": 1}]
+        repo = AsyncMock()
+        repo.get_assessment = AsyncMock(return_value={"questions": qs, "total_marks": 1})
+        repo.create_attempt = AsyncMock(return_value=str(uuid.uuid4()))
+        svc = AssessmentServiceV2(repository=repo)
+        with patch("app.services.assessment_service_v2.AuditService") as a:
+            a.return_value.log_event = AsyncMock()
+            await svc.submit_attempt(ASSESSMENT_ID, LEARNER_ID,
+                responses=[{"question_id": "q1", "learner_answer": "4"}],
+                time_taken_seconds=120)
+        repo.create_attempt.assert_called_once()
+        call_kwargs = repo.create_attempt.call_args.kwargs
+        assert call_kwargs["time_taken_seconds"] == 120
+
+    @pytest.mark.asyncio
+    async def test_list_with_limit_and_offset(self):
+        from app.services.assessment_service_v2 import AssessmentServiceV2
+        repo = AsyncMock()
+        repo.list_assessments = AsyncMock(return_value=[{"assessment_id": "a1"}])
+        svc = AssessmentServiceV2(repository=repo)
+        with patch("app.services.assessment_service_v2.AuditService") as a:
+            a.return_value.log_event = AsyncMock()
+            await svc.list_assessments(limit=10, offset=5)
+        repo.list_assessments.assert_called_once_with(limit=10, offset=5)
 
 
 # ---------------------------------------------------------------------------

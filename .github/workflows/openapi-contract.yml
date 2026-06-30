@@ -1,0 +1,81 @@
+# .github/workflows/openapi-contract.yml
+# ────────────────────────────────────────
+# Fails if the generated OpenAPI schema differs from the committed docs/openapi.json.
+# Run `make openapi` locally and commit the result before merging.
+
+name: openapi-contract
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - "app/**"
+      - "docs/openapi.json"
+      - "scripts/generate_openapi.py"
+  pull_request:
+    paths:
+      - "app/**"
+      - "docs/openapi.json"
+      - "scripts/generate_openapi.py"
+
+jobs:
+  openapi-contract:
+    name: OpenAPI schema contract
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: eduboost
+          POSTGRES_PASSWORD: eduboost
+          POSTGRES_DB: eduboost_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis:7
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      APP_ENV: test
+      ENVIRONMENT: test
+      DATABASE_URL: postgresql+asyncpg://eduboost:eduboost@localhost:5432/eduboost_test
+      REDIS_URL: redis://localhost:6379/0
+      ALLOWED_ORIGINS: http://localhost:3000,http://localhost:8000,http://test
+      ENCRYPTION_KEY: MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=
+      JWT_SECRET: openapi-ci-test-secret-32chars-min
+      JWT_SECRET_KEY: openapi-ci-test-secret-32chars-min
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements/dev.txt
+
+      - name: Smoke-import app.api_v2
+        run: python -c "from app.api_v2 import app; print(app.title)"
+
+      - name: Check OpenAPI schema matches committed schema
+        run: python scripts/generate_openapi.py --check
+
+      - name: Upload generated schema (on failure, for inspection)
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: openapi-generated
+          path: docs/openapi.json

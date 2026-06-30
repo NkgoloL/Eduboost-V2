@@ -1,0 +1,1573 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T19:39:56Z",
+  "scope": "grade5_life_skills_en",
+  "grade": 5,
+  "subject": "Life Skills",
+  "source_item_bank": "diagnostic_items",
+  "item_difficulty_bands": [
+    "easy",
+    "moderate",
+    "on_level",
+    "challenging"
+  ],
+  "blueprints": [
+    {
+      "blueprint_id": "grade5-life-skills-en-baseline-diagnostic-v2",
+      "type": "baseline_diagnostic",
+      "title": "Grade 5 Life Skills Baseline Diagnostic",
+      "description": "Samples approved items across all 16 CAPS topics in grade5_life_skills_en to establish a starting mastery profile.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.1.1",
+          "5.LS.1.2",
+          "5.LS.1.3",
+          "5.LS.1.4",
+          "5.LS.2.1",
+          "5.LS.2.2",
+          "5.LS.2.3",
+          "5.LS.2.4",
+          "5.LS.3.1",
+          "5.LS.3.2",
+          "5.LS.3.3",
+          "5.LS.3.4",
+          "5.LS.4.1",
+          "5.LS.4.2",
+          "5.LS.4.3",
+          "5.LS.4.4"
+        ],
+        "item_count": 24,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 6,
+          "moderate": 6,
+          "on_level": 6,
+          "challenging": 6
+        },
+        "require_unique_stems": true,
+        "max_items_per_caps_ref": 2
+      },
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-1-1-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Beginning knowledge and personal well-being Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 5.LS.1.1 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.1.1"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:26c6f8fe7a26960de26441503aecd9582a7c56da9e07aeb56dc051dba38eccd4"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-1-1-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Beginning knowledge and personal well-being Short Practice",
+      "description": "Short practice quiz after the standard lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.1.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-1-1-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Beginning knowledge and personal well-being Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.1.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-1-1-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Beginning knowledge and personal well-being Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.1.1"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-1-2-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Creative arts Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 5.LS.1.2 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.1.2"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:122509cb1097dbd1c5115cf1c0d86424b8f2bdc72af47fc79bc8ccc8992332cd"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-1-2-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Creative arts Short Practice",
+      "description": "Short practice quiz after the visual lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.1.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "visual",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-1-2-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Creative arts Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.1.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-1-2-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Creative arts Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.1.2"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-1-3-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Physical education Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 5.LS.1.3 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.1.3"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:7ac8d1353a3991d451411436d44053ae7288a2069bd9d6e6fcb0ed51ea5825c9"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-1-3-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Physical education Short Practice",
+      "description": "Short practice quiz after the story lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.1.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "story",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-1-3-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Physical education Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.1.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-1-3-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Physical education Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.1.3"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-1-4-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Health and safety Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 5.LS.1.4 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.1.4"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:6ca0072b9306666b15604ef06b8867e5af5b281b0c4f915e6d7cb3a512d01224"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-1-4-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Health and safety Short Practice",
+      "description": "Short practice quiz after the step by step lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.1.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-1-4-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Health and safety Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.1.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-1-4-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Health and safety Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.1.4"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-2-1-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Beginning knowledge and personal well-being Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 5.LS.2.1 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.2.1"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:02c2dfce27ecb2fa50cdb64acc91b0c7303b03ec20c27906ed8d64dbeb40e846"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-2-1-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Beginning knowledge and personal well-being Short Practice",
+      "description": "Short practice quiz after the real world sa lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.2.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "real_world_sa",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-2-1-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Beginning knowledge and personal well-being Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.2.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-2-1-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Beginning knowledge and personal well-being Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.2.1"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-2-2-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Creative arts Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 5.LS.2.2 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.2.2"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:8e4b66164fa97d647134677c5e1b1624c59a9fb244364896afa3aa8c3d163249"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-2-2-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Creative arts Short Practice",
+      "description": "Short practice quiz after the exam style lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.2.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-2-2-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Creative arts Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.2.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-2-2-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Creative arts Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.2.2"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-2-3-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Physical education Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 5.LS.2.3 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.2.3"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:c74ab8e2a35cefe8e181a594a3b3094602b4ee7aff5fd0b26082bfddb8830eb0"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-2-3-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Physical education Short Practice",
+      "description": "Short practice quiz after the standard lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.2.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-2-3-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Physical education Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.2.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-2-3-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Physical education Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.2.3"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-2-4-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Social responsibility Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 5.LS.2.4 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.2.4"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:49bd4364627c5c6d35b3500b02eec56caac210afb4ffc36ac399d14c7d6c9321"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-2-4-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Social responsibility Short Practice",
+      "description": "Short practice quiz after the visual lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.2.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "visual",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-2-4-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Social responsibility Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.2.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-2-4-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Social responsibility Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.2.4"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-3-1-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Personal and social well-being Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 5.LS.3.1 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.3.1"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:2ab79d6a42625eb0b1aa227160e8367482f726d55f10fc9e989cd2d648434a97"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-3-1-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Personal and social well-being Short Practice",
+      "description": "Short practice quiz after the story lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.3.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "story",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-3-1-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Personal and social well-being Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.3.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-3-1-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Personal and social well-being Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.3.1"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-3-2-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Creative arts Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 5.LS.3.2 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.3.2"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:00003a90b92e3d5cc7f45381fa84e45fa3b1204554acec1fd505a019e43ca433"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-3-2-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Creative arts Short Practice",
+      "description": "Short practice quiz after the step by step lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.3.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-3-2-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Creative arts Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.3.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-3-2-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Creative arts Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.3.2"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-3-3-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Physical education Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 5.LS.3.3 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.3.3"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:7a226497cd431f116832408afd5e611455e37d06049c753552cfb758b5cfdfdc"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-3-3-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Physical education Short Practice",
+      "description": "Short practice quiz after the real world sa lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.3.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "real_world_sa",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-3-3-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Physical education Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.3.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-3-3-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Physical education Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.3.3"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-3-4-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Study skills Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 5.LS.3.4 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.3.4"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:f9666d57581b2e107764659cc000e5acca3d09154efa3782323c6abc1319c0f4"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-3-4-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Study skills Short Practice",
+      "description": "Short practice quiz after the exam style lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.3.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-3-4-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Study skills Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.3.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-3-4-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Study skills Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.3.4"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-4-1-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Personal and social well-being Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 5.LS.4.1 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.4.1"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:4d74b5f1cd9b94d7429301330d126215033c448e785f6b5681eefd2cd55c6810"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-4-1-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Personal and social well-being Short Practice",
+      "description": "Short practice quiz after the standard lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.4.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-4-1-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Personal and social well-being Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.4.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-4-1-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Personal and social well-being Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.4.1"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-4-2-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Creative arts Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 5.LS.4.2 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.4.2"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:d23042f78b3043531eb82ca23ff941efd1eadff57a43e5f7cc17b2e8d579cec6"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-4-2-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Creative arts Short Practice",
+      "description": "Short practice quiz after the visual lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.4.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "visual",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-4-2-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Creative arts Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.4.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-4-2-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Creative arts Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.4.2"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-4-3-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Physical education Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 5.LS.4.3 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.4.3"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:45603b9a0343295e8b746d1c5e5255b55ff6e6d6a3165405e36401b6f6bff4d2"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-4-3-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Physical education Short Practice",
+      "description": "Short practice quiz after the story lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.4.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "story",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-4-3-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Physical education Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.4.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-4-3-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Physical education Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.4.3"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-4-4-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Health, safety and environmental responsibility Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 5.LS.4.4 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.4.4"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:53936fddb85c7ad380e2bb321efb0558fc51f949a4577ddbc3092e21c7865803"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-4-4-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Health, safety and environmental responsibility Short Practice",
+      "description": "Short practice quiz after the step by step lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.4.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-4-4-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Health, safety and environmental responsibility Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.4.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade5-life-skills-en-5-LS-4-4-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Health, safety and environmental responsibility Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "5.LS.4.4"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    }
+  ]
+}

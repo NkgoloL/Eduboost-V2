@@ -30,13 +30,13 @@ _BLOCKED_PATTERNS = re.compile(
 )
 
 
-class PolicyViolation(Exception):
+class ConstitutionalViolation(Exception):
     pass
 
 
-class PolicyService:
+class JudiciaryService:
     """
-    Core AI Content Policy Enforcement.
+    Constitutional Pillar 3: The Judiciary.
     Validates all AI output against strict Pydantic schemas and content policy.
     """
 
@@ -49,41 +49,41 @@ class PolicyService:
             return payload
         except ValidationError as exc:
             log.warning("judiciary_lesson_invalid", errors=exc.errors())
-            raise PolicyViolation(f"Lesson schema violation: {exc}") from exc
+            raise ConstitutionalViolation(f"Lesson schema violation: {exc}") from exc
 
     def stamp_study_plan(self, raw_output: str) -> StudyPlanPayload:
         self._assert_no_violations(raw_output)
         try:
             return _STUDY_PLAN_ADAPTER.validate_json(self._clean_json(raw_output))
         except ValidationError as exc:
-            raise PolicyViolation(f"StudyPlan schema violation: {exc}") from exc
+            raise ConstitutionalViolation(f"StudyPlan schema violation: {exc}") from exc
 
     def stamp_diagnostic_feedback(self, raw_output: str) -> DiagnosticFeedbackPayload:
         self._assert_no_violations(raw_output)
         try:
             return _DIAGNOSTIC_ADAPTER.validate_json(self._clean_json(raw_output))
         except ValidationError as exc:
-            raise PolicyViolation(f"Diagnostic feedback schema violation: {exc}") from exc
+            raise ConstitutionalViolation(f"Diagnostic feedback schema violation: {exc}") from exc
 
     def _clean_json(self, text: str) -> str:
         clean = re.sub(r"```(?:json)?|```", "", text).strip()
         if not clean:
-            raise PolicyViolation("LLM did not return valid JSON: empty response")
+            raise ConstitutionalViolation("LLM did not return valid JSON: empty response")
         return clean
 
     def _assert_no_violations(self, text: str) -> None:
         if _BLOCKED_PATTERNS.search(text):
-            raise PolicyViolation("Content policy violation detected in AI output")
+            raise ConstitutionalViolation("Content policy violation detected in AI output")
 
     def _assert_answer_quality(self, payload: LessonPayload) -> None:
         """Ensure the lesson has a non-empty answer that isn't just a placeholder."""
         answer = payload.answer.strip().lower()
         if not answer or len(answer) < 2:
-            raise PolicyViolation("Lesson missing a valid answer key")
-        
+            raise ConstitutionalViolation("Lesson missing a valid answer key")
+
         placeholders = {"tbd", "n/a", "none", "no answer", "answer here"}
         if answer in placeholders:
-            raise PolicyViolation("Lesson contains a placeholder answer key")
+            raise ConstitutionalViolation("Lesson contains a placeholder answer key")
 
         # Basic check: if the practice question asks for a calculation, the answer should have digits?
         # This is a bit brittle, but good for a baseline.

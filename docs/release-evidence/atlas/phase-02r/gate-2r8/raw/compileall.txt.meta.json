@@ -1,0 +1,21 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "compileall",
+    "-q",
+    "app/services/curriculum/legacy_migration.py",
+    "app/services/curriculum/evaluation.py",
+    "app/services/curriculum/phase02r_closure.py",
+    "scripts/verify_phase02r_gate2r8.py",
+    "scripts/curriculum/build_phase02r_gate2r8_legacy_migration.py",
+    "scripts/curriculum/export_phase02r_gate2r8_evaluation_report.py",
+    "scripts/curriculum/export_phase02r_gate2r8_audit_bundle.py",
+    "scripts/curriculum/validate_phase02r_gate2r8_closure.py",
+    "tests/unit/phase02r/test_gate2r8_legacy_evaluation_closure.py"
+  ],
+  "duration_seconds": 1,
+  "exit_code": 0,
+  "finished_at": "2026-06-23T18:28:42Z",
+  "started_at": "2026-06-23T18:28:41Z"
+}

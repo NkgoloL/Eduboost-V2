@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T11:03:02Z",
+  "scope_id": "grade4_natural_sciences_and_technology_en",
+  "scope_status": "review",
+  "review_policy_id": "educator_review_required_v1",
+  "decision": "dev_approved",
+  "dev_approved": true,
+  "stage_unlocked": true,
+  "approved": false,
+  "legal_decision": "pending",
+  "legal_approved": false,
+  "reviewer_id": "dev-content-review-2026-06-03",
+  "evidence_url": "dev-reviewed-generated-artifacts",
+  "legal_evidence_url": "pending",
+  "approved_at": "2026-06-03T11:03:02Z",
+  "notes": "Developer reviewed generated artifacts for staging/import unblock. Educator and legal production approvals remain pending.",
+  "layer_review": {
+    "topic_map": {
+      "path": "data/caps/topic_maps/grade4_natural_sciences_and_technology_en.json",
+      "sha256": "sha256:5aaadd31ed927153856aeba6d4c9748b904193498c6c07e9cd597ca5aada65d1",
+      "record_count": 45,
+      "review_ready_count": 45,
+      "review_status": "dev_approved"
+    },
+    "diagnostic_items": {
+      "path": "data/generated/items/grade4_natural_sciences_and_technology_en_item_bank.json",
+      "sha256": "sha256:e24df6080090fecd66dd8fbab9fb5397a1ef936a0b6f22a1b8f6907620a7d4b1",
+      "record_count": 720,
+      "review_ready_count": 720,
+      "review_status": "dev_approved"
+    },
+    "lessons": {
+      "path": "data/generated/lessons/grade4_natural_sciences_and_technology_en_lessons.json",
+      "sha256": "sha256:b947a80978c1701a81151fc81f1f7e3629e6378ef57140ec7431bb772d8e8ceb",
+      "record_count": 144,
+      "review_ready_count": 144,
+      "review_status": "dev_approved"
+    },
+    "assessment_blueprints": {
+      "path": "data/generated/assessment_blueprints/grade4_natural_sciences_and_technology_en_blueprints.json",
+      "sha256": "sha256:933fee55e3e4a58fa15809062f5eac9e8c92504b55fc0304e67b053b27ca330d",
+      "record_count": 55,
+      "review_ready_count": 55,
+      "review_status": "dev_approved"
+    },
+    "study_plan_templates": {
+      "path": "data/generated/study_plans/grade4_natural_sciences_and_technology_en_templates.json",
+      "sha256": "sha256:2c921e8382a18009b244b7a150c4224b242c3b205c905f1b0361a9319087f152",
+      "record_count": 18,
+      "review_ready_count": 18,
+      "review_status": "dev_approved"
+    }
+  },
+  "promotion_readiness": {
+    "staging_eligible": true,
+    "production_eligible": false,
+    "blockers": [
+      "Scope is still in review and requires dev_approved or educator approval before staging unlock.",
+      "Review evidence packet is missing.",
+      "Educator approval is required for production.",
+      "Legal approval is required for production."
+    ]
+  }
+}

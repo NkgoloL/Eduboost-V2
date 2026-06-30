@@ -61,7 +61,7 @@ async def test_study_plan_rejects_unknown_fields():
 async def test_learner_session_creation():
     """Test that learner session endpoint creates a valid token."""
     learner_id = str(uuid.uuid4())
-    
+
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         response = await client.post(
             "/api/v1/auth/learner/session",

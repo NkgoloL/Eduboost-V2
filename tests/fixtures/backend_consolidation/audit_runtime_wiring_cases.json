@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "boundary": "adapter-backed audit runtime wiring cases; no deletion or table migration",
+  "cases": [
+    {
+      "name": "consent_granted_canonical_event",
+      "candidate_name": "consent_audit_events",
+      "action": "consent.granted",
+      "actor_id": "guardian-fixture",
+      "learner_id": "learner-fixture",
+      "resource_type": "learner_consent",
+      "expected_resource_id": "learner-fixture",
+      "expected_metadata": {
+        "migration_candidate": "consent_audit_events"
+      }
+    },
+    {
+      "name": "popia_export_requested_canonical_event",
+      "candidate_name": "popia_data_rights_audit",
+      "action": "popia.export.requested",
+      "actor_id": "guardian-fixture",
+      "learner_id": "learner-fixture",
+      "resource_type": "popia_data_export",
+      "expected_resource_id": "learner-fixture",
+      "expected_metadata": {
+        "migration_candidate": "popia_data_rights_audit"
+      }
+    }
+  ]
+}

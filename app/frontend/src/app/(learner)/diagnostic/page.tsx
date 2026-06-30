@@ -1,26 +1,9 @@
-"use client";
+import { DiagnosticEntryClient } from "@/components/learner/DiagnosticEntryClient";
+import { getDiagnosticEntryShellData } from "@/lib/learner/server-loaders";
 
-import { useRouter } from "next/navigation";
-import { useLearner } from "../../../context/LearnerContext";
-import { InteractiveDiagnostic } from "../../../components/eduboost/InteractiveDiagnostic";
-import type { SubjectCode } from "../../../lib/api/types";
+export const dynamic = "force-dynamic";
 
-export default function DiagnosticPage() {
-  const { learner, setMasteryData } = useLearner();
-  const router = useRouter();
-
-  if (!learner) {
-    return null;
-  }
-
-  return (
-    <InteractiveDiagnostic
-      learner={learner}
-      onComplete={(subject: SubjectCode, mastery: number) => {
-        setMasteryData((prev) => ({ ...prev, [subject]: mastery }));
-        router.push("/plan");
-      }}
-      onBack={() => router.push("/dashboard")}
-    />
-  );
+export default async function DiagnosticPage() {
+  const shellData = await getDiagnosticEntryShellData();
+  return <DiagnosticEntryClient {...shellData} />;
 }

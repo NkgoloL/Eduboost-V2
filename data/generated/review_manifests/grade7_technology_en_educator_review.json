@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T11:03:04Z",
+  "scope_id": "grade7_technology_en",
+  "scope_status": "review",
+  "review_policy_id": "educator_review_required_v1",
+  "decision": "dev_approved",
+  "dev_approved": true,
+  "stage_unlocked": true,
+  "approved": false,
+  "legal_decision": "pending",
+  "legal_approved": false,
+  "reviewer_id": "dev-content-review-2026-06-03",
+  "evidence_url": "dev-reviewed-generated-artifacts",
+  "legal_evidence_url": "pending",
+  "approved_at": "2026-06-03T11:03:04Z",
+  "notes": "Developer reviewed generated artifacts for staging/import unblock. Educator and legal production approvals remain pending.",
+  "layer_review": {
+    "topic_map": {
+      "path": "data/caps/topic_maps/grade7_technology_en.json",
+      "sha256": "sha256:750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "record_count": 32,
+      "review_ready_count": 32,
+      "review_status": "dev_approved"
+    },
+    "diagnostic_items": {
+      "path": "data/generated/items/grade7_technology_en_item_bank.json",
+      "sha256": "sha256:1e5342fd2c6a1a880ac8134aeee14fd9e8a3532882df1217031596d16f9f7ff5",
+      "record_count": 640,
+      "review_ready_count": 640,
+      "review_status": "dev_approved"
+    },
+    "lessons": {
+      "path": "data/generated/lessons/grade7_technology_en_lessons.json",
+      "sha256": "sha256:2fc0fa04cde336fa87ba38f533d8617c77b9d2df4a2dab2d0c5bf7438e959211",
+      "record_count": 128,
+      "review_ready_count": 128,
+      "review_status": "dev_approved"
+    },
+    "assessment_blueprints": {
+      "path": "data/generated/assessment_blueprints/grade7_technology_en_blueprints.json",
+      "sha256": "sha256:531ec8bdefcedc4e46efd8a43c6ce5cc2ba477d7d0e604afcb4cdf195bee5c0b",
+      "record_count": 49,
+      "review_ready_count": 49,
+      "review_status": "dev_approved"
+    },
+    "study_plan_templates": {
+      "path": "data/generated/study_plans/grade7_technology_en_templates.json",
+      "sha256": "sha256:7706c989a32454333e1354e0310883c17cd82f5599b930e045eef225276ad5e5",
+      "record_count": 16,
+      "review_ready_count": 16,
+      "review_status": "dev_approved"
+    }
+  },
+  "promotion_readiness": {
+    "staging_eligible": true,
+    "production_eligible": false,
+    "blockers": [
+      "Scope is still in review and requires dev_approved or educator approval before staging unlock.",
+      "Review evidence packet is missing.",
+      "Educator approval is required for production.",
+      "Legal approval is required for production."
+    ]
+  }
+}

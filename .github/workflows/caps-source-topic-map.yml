@@ -1,0 +1,92 @@
+name: CAPS Source And Topic Map Gates
+
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+      - "release/**"
+    paths:
+      - "data/caps/source_documents/**"
+      - "data/content_factory/scopes.json"
+      - "data/content_factory/source_text_extracts_manifest.json"
+      - "data/content_factory/topic_map_worklist.json"
+      - "data/content_factory/topic_map_drafts/**"
+      - "scripts/curriculum/**"
+      - "tests/unit/test_*caps*.py"
+      - "tests/unit/test_*source*.py"
+      - "tests/unit/test_topic_map_worklist.py"
+      - "requirements*.txt"
+      - "requirements/**"
+      - ".github/workflows/caps-source-topic-map.yml"
+  push:
+    branches:
+      - master
+      - main
+      - "release/**"
+    paths:
+      - "data/caps/source_documents/**"
+      - "data/content_factory/scopes.json"
+      - "data/content_factory/source_text_extracts_manifest.json"
+      - "data/content_factory/topic_map_worklist.json"
+      - "data/content_factory/topic_map_drafts/**"
+      - "scripts/curriculum/**"
+      - "tests/unit/test_*caps*.py"
+      - "tests/unit/test_*source*.py"
+      - "tests/unit/test_topic_map_worklist.py"
+      - "requirements*.txt"
+      - "requirements/**"
+      - ".github/workflows/caps-source-topic-map.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  caps-source-topic-map-gates:
+    name: Validate CAPS source and topic-map metadata
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONPATH: .
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements/dev.txt
+
+      - name: Validate source manifest metadata
+        run: python scripts/curriculum/validate_source_manifest.py
+
+      - name: Report source inventory
+        run: python scripts/curriculum/source_inventory.py
+
+      - name: Build topic-map worklist
+        run: python scripts/curriculum/build_topic_map_worklist.py --json > /tmp/topic_map_worklist.json
+
+      - name: Validate topic-map drafts and runtime maps
+        run: python scripts/curriculum/validate_topic_maps.py
+
+      - name: Run focused CAPS metadata tests
+        run: |
+          pytest -q --no-cov \
+            tests/unit/test_source_manifest_readiness.py \
+            tests/unit/test_source_inventory_expansion.py \
+            tests/unit/test_download_caps_sources.py \
+            tests/unit/test_upload_caps_sources_to_azure.py \
+            tests/unit/test_extract_caps_source_text.py \
+            tests/unit/test_topic_map_worklist.py \
+            tests/unit/test_validate_topic_maps.py \
+            tests/unit/test_study_material_expansion_foundation.py \
+            tests/unit/test_content_scope_registry.py \
+            tests/unit/test_content_coverage_service.py

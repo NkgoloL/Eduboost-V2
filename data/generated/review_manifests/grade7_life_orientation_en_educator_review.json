@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T11:03:04Z",
+  "scope_id": "grade7_life_orientation_en",
+  "scope_status": "review",
+  "review_policy_id": "educator_review_required_v1",
+  "decision": "dev_approved",
+  "dev_approved": true,
+  "stage_unlocked": true,
+  "approved": false,
+  "legal_decision": "pending",
+  "legal_approved": false,
+  "reviewer_id": "dev-content-review-2026-06-03",
+  "evidence_url": "dev-reviewed-generated-artifacts",
+  "legal_evidence_url": "pending",
+  "approved_at": "2026-06-03T11:03:04Z",
+  "notes": "Developer reviewed generated artifacts for staging/import unblock. Educator and legal production approvals remain pending.",
+  "layer_review": {
+    "topic_map": {
+      "path": "data/caps/topic_maps/grade7_life_orientation_en.json",
+      "sha256": "sha256:14806316af8d4d269fd4ed9738ffd8631eedea5ee054cfc0aedb9f982fa17f93",
+      "record_count": 32,
+      "review_ready_count": 32,
+      "review_status": "dev_approved"
+    },
+    "diagnostic_items": {
+      "path": "data/generated/items/grade7_life_orientation_en_item_bank.json",
+      "sha256": "sha256:627b6bc71740ab8a788fb3c747b4e4c37559d24bac59d36699f5481025f9f8f5",
+      "record_count": 640,
+      "review_ready_count": 640,
+      "review_status": "dev_approved"
+    },
+    "lessons": {
+      "path": "data/generated/lessons/grade7_life_orientation_en_lessons.json",
+      "sha256": "sha256:c8f78efd0764c55dacdf3c87191b4371654bbbff427423bbc345cc91c944c400",
+      "record_count": 128,
+      "review_ready_count": 128,
+      "review_status": "dev_approved"
+    },
+    "assessment_blueprints": {
+      "path": "data/generated/assessment_blueprints/grade7_life_orientation_en_blueprints.json",
+      "sha256": "sha256:f97f76486f123eb5798845b7a9456484fa1d8e8149006331cf3a776dd26f3f1e",
+      "record_count": 49,
+      "review_ready_count": 49,
+      "review_status": "dev_approved"
+    },
+    "study_plan_templates": {
+      "path": "data/generated/study_plans/grade7_life_orientation_en_templates.json",
+      "sha256": "sha256:9d1a65116271441c16f10032b6b49d5edb58699699b5e8b201ae2c8dff8875ba",
+      "record_count": 16,
+      "review_ready_count": 16,
+      "review_status": "dev_approved"
+    }
+  },
+  "promotion_readiness": {
+    "staging_eligible": true,
+    "production_eligible": false,
+    "blockers": [
+      "Scope is still in review and requires dev_approved or educator approval before staging unlock.",
+      "Review evidence packet is missing.",
+      "Educator approval is required for production.",
+      "Legal approval is required for production."
+    ]
+  }
+}

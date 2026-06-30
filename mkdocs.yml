@@ -2,6 +2,23 @@ site_name: EduBoost V2
 site_description: Architecture, operations, and API documentation for EduBoost SA V2
 site_url: https://example.com/eduboost-v2
 repo_url: https://github.com/NkgoloL/Eduboost-V2
+# Keep MkDocs focused on curated docs and reference pages. Generated inventories
+# and historical build outputs are retained in the repo but are too large/noisy
+# for strict site validation.
+exclude_docs: |
+  api/
+  generated/
+  archive/
+  ai/lesson_quality_rubric.md
+  architecture/architecture_decisions.md
+  caps/grade4_maths_coverage_matrix.md
+  release/backend_deletion_candidate_inventory.md
+  release/full_pytest_latest_v2.txt
+  release/EduBoost_V2_Technical_Report_v2.md
+  security/authorization_dependencies.md
+
+not_in_nav: |
+  **/*.md
 site_dir: site
 
 theme:
@@ -16,6 +33,9 @@ nav:
       - Migration Guide: v2_migration.md
       - Agent Handoff: v2_handoff.md
   - Operations:
+      - Recommended Operating Model: operations/recommended_operating_model.md
+      - Project Assistance Status: operations/project_assistance_status.md
+      - TODO Implementation Plan: operations/todo_implementation_plan.md
       - API Overview: api_v2.md
       - POPIA Compliance: POPIA_COMPLIANCE.md
       - Right to Erasure: popia_erasure.md

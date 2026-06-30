@@ -1,63 +1,78 @@
+from __future__ import annotations
+
+import os
+import sys
+from pathlib import Path
+from collections.abc import AsyncGenerator
+from typing import Any
+
 import pytest
-from unittest.mock import AsyncMock, MagicMock
-from uuid import uuid4
+import pytest_asyncio
+from sqlalchemy.exc import SQLAlchemyError
 
-from app.api_v2 import app as fastapi_app
-from app.core import providers
-from app.core.database import get_db
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
+def ensure_repo_root_on_path() -> None:
+    """Ensure repository-local packages are importable during pytest collection."""
+    repo_root = str(REPO_ROOT)
+    if repo_root not in sys.path:
+        sys.path.insert(0, repo_root)
 
-@pytest.fixture
-def mock_db_session():
-    """Fixture for a mocked SQLAlchemy AsyncSession."""
-    session = AsyncMock()
-    return session
+ensure_repo_root_on_path()
+os.environ["APP_ENV"] = "test"
+os.environ["ENVIRONMENT"] = "test"
 
+# Register governance auto-marking (see tests/governance_markers.py).
+from tests import governance_markers as _governance_markers  # noqa: F401
 
-@pytest.fixture
-def db_session(mock_db_session):
-    """Alias for mock_db_session for compatibility with legacy tests."""
-    return mock_db_session
-
-
-@pytest.fixture
-def mock_llm_service():
-    """Fixture for a mocked LLM service."""
-    service = AsyncMock()
-    service.generate_lesson.return_value = (MagicMock(), False)
-    return service
+pytest_collection_modifyitems = _governance_markers.pytest_collection_modifyitems
 
 
-@pytest.fixture
-def mock_user_id():
-    """Fixture for a consistent test user ID."""
-    return uuid4()
+def _require_test_database() -> bool:
+    return os.environ.get("EDUBOOST_REQUIRE_TEST_DB", "").lower() in {"1", "true", "yes"}
 
 
-@pytest.fixture
-def mock_learner_id():
-    """Fixture for a consistent test learner ID."""
-    return uuid4()
+@pytest_asyncio.fixture(scope="session")
+async def test_db_setup():
+    """Ensure a clean database schema for tests that request database access."""
+    if os.environ.get("AUTH_REFRESH_DB_PROOF_ENABLED") == "1":
+        yield
+        return
+
+    try:
+        from app.core.database import create_all_tables, drop_all_tables
+    except ModuleNotFoundError as exc:
+        if _require_test_database():
+            raise
+        pytest.skip(f"test database dependency is unavailable: {exc}")
+
+    db_url = os.environ.get("DATABASE_URL", "").lower()
+    if "prod" in db_url or "staging" in db_url:
+        pytest.exit(f"ABORT: DATABASE_URL appears to point to a protected environment ({db_url}). Refusing to run tests and drop tables.")
+
+    try:
+        await drop_all_tables()
+        await create_all_tables()
+    except (OSError, SQLAlchemyError) as exc:
+        if _require_test_database():
+            raise
+        pytest.skip(f"test database is unavailable: {exc}")
+
+    try:
+        yield
+    finally:
+        await drop_all_tables()
 
 
-@pytest.fixture(autouse=True)
-def dependency_overrides(mock_db_session):
-    """Install common FastAPI dependency overrides for tests.
+@pytest_asyncio.fixture
+async def db_session(test_db_setup) -> AsyncGenerator[Any, None]:
+    """Provide a fresh async database session for each test."""
+    from app.core.database import AsyncSessionFactory, engine
 
-    Overrides the DB provider and common service providers so tests don't
-    accidentally hit real infrastructure. This fixture is autouse so it
-    applies to all tests unless explicitly disabled.
-    """
-    # Save existing overrides to restore later
-    original = dict(fastapi_app.dependency_overrides)
-
-    fastapi_app.dependency_overrides[get_db] = lambda: mock_db_session
-    # Provide lightweight async mocks for commonly-injected services
-    fastapi_app.dependency_overrides[providers.get_lesson_service] = lambda: AsyncMock()
-    fastapi_app.dependency_overrides[providers.get_audit_service] = lambda: AsyncMock()
-
-    yield
-
-    # Restore original overrides
-    fastapi_app.dependency_overrides.clear()
-    fastapi_app.dependency_overrides.update(original)
+    async with AsyncSessionFactory() as session:
+        yield session
+        async with engine.begin():
+            # await conn.run_sync(Base.metadata.create_all)
+            pass
+        await session.rollback()
+        await session.close()

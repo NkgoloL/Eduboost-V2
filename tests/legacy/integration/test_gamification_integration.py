@@ -63,7 +63,7 @@ class TestGamificationIntegration:
 
         # Setup
         mock_db_session.get.return_value = mock_learner_grade_r3
-        
+
         # Mock badge check returns no existing badges
         badge_result = MagicMock()
         badge_result.scalar_one_or_none.return_value = None
@@ -92,9 +92,9 @@ class TestGamificationIntegration:
 
         # Setup: learner at 95 XP (level 1), needs 5 more to reach level 2
         mock_learner_grade_r3.total_xp = 95
-        
+
         mock_db_session.get.return_value = mock_learner_grade_r3
-        
+
         badge_result = MagicMock()
         badge_result.scalar_one_or_none.return_value = None
         mock_db_session.execute.return_value = badge_result
@@ -154,7 +154,7 @@ class TestGamificationIntegration:
         mock_learner_grade_r3.streak_days = 5
 
         mock_db_session.get.return_value = mock_learner_grade_r3
-        
+
         badge_result = MagicMock()
         badge_result.scalar_one_or_none.return_value = None
         mock_db_session.execute.return_value = badge_result
@@ -177,7 +177,7 @@ class TestGamificationIntegration:
         mock_learner_grade_r3.streak_days = 10
 
         mock_db_session.get.return_value = mock_learner_grade_r3
-        
+
         badge_result = MagicMock()
         badge_result.scalar_one_or_none.return_value = None
         mock_db_session.execute.return_value = badge_result
@@ -215,7 +215,7 @@ class TestGamificationIntegration:
     @pytest.mark.asyncio
     async def test_grade_r3_max_daily_xp(self, mock_db_session, mock_learner_grade_r3):
         """Test that Grade R-3 has correct max daily XP."""
-        
+
         # Verify config
         assert GRADE_BAND_CONFIG["R-3"]["max_daily_xp"] == 200
         assert GRADE_BAND_CONFIG["R-3"]["engagement_style"] == "rewards"
@@ -224,7 +224,7 @@ class TestGamificationIntegration:
     @pytest.mark.asyncio
     async def test_grade_47_max_daily_xp(self, mock_db_session, mock_learner_grade_47):
         """Test that Grade 4-7 has correct max daily XP and discovery badges."""
-        
+
         # Verify config
         assert GRADE_BAND_CONFIG["4-7"]["max_daily_xp"] == 250
         assert GRADE_BAND_CONFIG["4-7"]["engagement_style"] == "discovery"
@@ -321,12 +321,12 @@ class TestGamificationIntegration:
         mock_learner_grade_r3.streak_days = 7
 
         mock_db_session.get.return_value = mock_learner_grade_r3
-        
+
         # First call: check if badge exists (returns None = doesn't exist)
         # Second call: create badge
         badge_result = MagicMock()
         badge_result.scalar_one_or_none.return_value = None
-        
+
         call_count = [0]
         def execute_side_effect(*args, **kwargs):
             call_count[0] += 1
@@ -355,7 +355,7 @@ class TestGamificationIntegration:
             "concept_mastered",
             "study_plan_complete",
         ]
-        
+
         for xp_type in required_types:
             assert xp_type in XP_CONFIG, f"Missing XP type: {xp_type}"
             assert XP_CONFIG[xp_type] > 0, f"XP value should be positive for {xp_type}"
@@ -377,7 +377,7 @@ class TestGamificationIntegration:
         learner_id = mock_learner_grade_r3.learner_id
 
         mock_db_session.get.return_value = mock_learner_grade_r3
-        
+
         result = MagicMock()
         result.all.return_value = []
         mock_db_session.execute.return_value = result
@@ -396,9 +396,9 @@ class TestGamificationIntegration:
         learner_id = mock_learner_grade_r3.learner_id
 
         mock_learner_grade_r3.total_xp = 250  # Should be level 3
-        
+
         mock_db_session.get.return_value = mock_learner_grade_r3
-        
+
         result = MagicMock()
         result.all.return_value = []
         mock_db_session.execute.return_value = result
@@ -417,7 +417,7 @@ class TestGamificationIntegration:
         learner_id = mock_learner_grade_47.learner_id
 
         mock_db_session.get.return_value = mock_learner_grade_47
-        
+
         result = MagicMock()
         result.all.return_value = []
         mock_db_session.execute.return_value = result

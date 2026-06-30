@@ -1,0 +1,444 @@
+12:34:38 │ INFO     │ __main__ — Starting ingestion — sources=['huggingface'] grades=(4, 9) limit=1 dry_run=False
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/visitors.py:137 in _compiler_dispatch                       │
+│                                                                              │
+│    134 │   │   │                                                             │
+│    135 │   │   │   """                                                       │
+│    136 │   │   │   try:                                                      │
+│ ❱  137 │   │   │   │   meth = getter(visitor)                                │
+│    138 │   │   │   except AttributeError as err:                             │
+│    139 │   │   │   │   return visitor.visit_unsupported_compilation(self,    │
+│        err, **kw)  # type: ignore  # noqa: E501                              │
+│    140 │   │   │   else:                                                     │
+╰──────────────────────────────────────────────────────────────────────────────╯
+AttributeError: 'SQLiteTypeCompiler' object has no attribute 'visit_JSONB'
+
+The above exception was the direct cause of the following exception:
+
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/compiler.py:6645 in visit_create_table                      │
+│                                                                              │
+│   6642 │   │   for create_column in create.columns:                          │
+│   6643 │   │   │   column = create_column.element                            │
+│   6644 │   │   │   try:                                                      │
+│ ❱ 6645 │   │   │   │   processed = self.process(                             │
+│   6646 │   │   │   │   │   create_column, first_pk=column.primary_key and    │
+│        not first_pk                                                          │
+│   6647 │   │   │   │   )                                                     │
+│   6648 │   │   │   │   if processed is not None:                             │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/compiler.py:915 in process                                  │
+│                                                                              │
+│    912 │   │   raise NotImplementedError()                                   │
+│    913 │                                                                     │
+│    914 │   def process(self, obj: Visitable, **kwargs: Any) -> str:          │
+│ ❱  915 │   │   return obj._compiler_dispatch(self, **kwargs)                 │
+│    916 │                                                                     │
+│    917 │   def __str__(self) -> str:                                         │
+│    918 │   │   """Return the string text of the generated SQL or DDL."""     │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/visitors.py:141 in _compiler_dispatch                       │
+│                                                                              │
+│    138 │   │   │   except AttributeError as err:                             │
+│    139 │   │   │   │   return visitor.visit_unsupported_compilation(self,    │
+│        err, **kw)  # type: ignore  # noqa: E501                              │
+│    140 │   │   │   else:                                                     │
+│ ❱  141 │   │   │   │   return meth(self, **kw)  # type: ignore  # noqa: E501 │
+│    142 │   │                                                                 │
+│    143 │   │   cls._compiler_dispatch = (  # type: ignore                    │
+│    144 │   │   │   cls._original_compiler_dispatch                           │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/compiler.py:6676 in visit_create_column                     │
+│                                                                              │
+│   6673 │   │   if column.system:                                             │
+│   6674 │   │   │   return None                                               │
+│   6675 │   │                                                                 │
+│ ❱ 6676 │   │   text = self.get_column_specification(column,                  │
+│        first_pk=first_pk)                                                    │
+│   6677 │   │   const = " ".join(                                             │
+│   6678 │   │   │   self.process(constraint) for constraint in                │
+│        column.constraints                                                    │
+│   6679 │   │   )                                                             │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/dialects/sqlite/base.py:1534 in get_column_specification        │
+│                                                                              │
+│   1531                                                                       │
+│   1532 class SQLiteDDLCompiler(compiler.DDLCompiler):                        │
+│   1533 │   def get_column_specification(self, column, **kwargs):             │
+│ ❱ 1534 │   │   coltype = self.dialect.type_compiler_instance.process(        │
+│   1535 │   │   │   column.type, type_expression=column                       │
+│   1536 │   │   )                                                             │
+│   1537 │   │   colspec = self.preparer.format_column(column) + " " + coltype │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/compiler.py:960 in process                                  │
+│                                                                              │
+│    957 │   │   │   and self.dialect.name in type_._variant_mapping           │
+│    958 │   │   ):                                                            │
+│    959 │   │   │   type_ = type_._variant_mapping[self.dialect.name]         │
+│ ❱  960 │   │   return type_._compiler_dispatch(self, **kw)                   │
+│    961 │                                                                     │
+│    962 │   def visit_unsupported_compilation(                                │
+│    963 │   │   self, element: Any, err: Exception, **kw: Any                 │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/visitors.py:139 in _compiler_dispatch                       │
+│                                                                              │
+│    136 │   │   │   try:                                                      │
+│    137 │   │   │   │   meth = getter(visitor)                                │
+│    138 │   │   │   except AttributeError as err:                             │
+│ ❱  139 │   │   │   │   return visitor.visit_unsupported_compilation(self,    │
+│        err, **kw)  # type: ignore  # noqa: E501                              │
+│    140 │   │   │   else:                                                     │
+│    141 │   │   │   │   return meth(self, **kw)  # type: ignore  # noqa: E501 │
+│    142                                                                       │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/compiler.py:965 in visit_unsupported_compilation            │
+│                                                                              │
+│    962 │   def visit_unsupported_compilation(                                │
+│    963 │   │   self, element: Any, err: Exception, **kw: Any                 │
+│    964 │   ) -> NoReturn:                                                    │
+│ ❱  965 │   │   raise exc.UnsupportedCompilationError(self, element) from err │
+│    966                                                                       │
+│    967                                                                       │
+│    968 # this was a Visitable, but to allow accurate detection of            │
+╰──────────────────────────────────────────────────────────────────────────────╯
+UnsupportedCompilationError: Compiler 
+<sqlalchemy.dialects.sqlite.base.SQLiteTypeCompiler object at 0x7b78a6109350> 
+can't render element of type JSONB (Background on this error at: 
+https://sqlalche.me/e/20/l7de)
+
+The above exception was the direct cause of the following exception:
+
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/scripts/ingestion/main.py:265 in  │
+│ run                                                                          │
+│                                                                              │
+│   262 │                                                                      │
+│   263 │   lo, hi = _parse_grades(grades)                                     │
+│   264 │                                                                      │
+│ ❱ 265 │   stats = asyncio.run(                                               │
+│   266 │   │   run_ingestion(                                                 │
+│   267 │   │   │   source_ids=source_ids,                                     │
+│   268 │   │   │   grade_range=(lo, hi),                                      │
+│                                                                              │
+│ /usr/lib/python3.11/asyncio/runners.py:188 in run                            │
+│                                                                              │
+│   185 │   │   │   "asyncio.run() cannot be called from a running event       │
+│       loop")                                                                 │
+│   186 │                                                                      │
+│   187 │   with Runner(debug=debug) as runner:                                │
+│ ❱ 188 │   │   return runner.run(main)                                        │
+│   189                                                                        │
+│   190                                                                        │
+│   191 def _cancel_all_tasks(loop):                                           │
+│                                                                              │
+│ /usr/lib/python3.11/asyncio/runners.py:120 in run                            │
+│                                                                              │
+│   117 │   │   try:                                                           │
+│   118 │   │   │   if self._set_event_loop:                                   │
+│   119 │   │   │   │   events.set_event_loop(self._loop)                      │
+│ ❱ 120 │   │   │   return self._loop.run_until_complete(task)                 │
+│   121 │   │   except exceptions.CancelledError:                              │
+│   122 │   │   │   if self._interrupt_count > 0:                              │
+│   123 │   │   │   │   uncancel = getattr(task, "uncancel", None)             │
+│                                                                              │
+│ /usr/lib/python3.11/asyncio/base_events.py:650 in run_until_complete         │
+│                                                                              │
+│    647 │   │   if not future.done():                                         │
+│    648 │   │   │   raise RuntimeError('Event loop stopped before Future      │
+│        completed.')                                                          │
+│    649 │   │                                                                 │
+│ ❱  650 │   │   return future.result()                                        │
+│    651 │                                                                     │
+│    652 │   def stop(self):                                                   │
+│    653 │   │   """Stop running the event loop.                               │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/scripts/ingestion/main.py:140 in  │
+│ run_ingestion                                                                │
+│                                                                              │
+│   137 │   │   dry_run=dry_run,                                               │
+│   138 │   │   export_jsonl=export_dir,                                       │
+│   139 │   )                                                                  │
+│ ❱ 140 │   await pipeline.init()                                              │
+│   141 │                                                                      │
+│   142 │   # ── Optional: connect to Redis for progress reporting             │
+│       ─────────────────────                                                  │
+│   143 │   qm: QueueManager | None = None                                     │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/scripts/ingestion/pipeline/__init │
+│ __.py:119 in init                                                            │
+│                                                                              │
+│   116 │   async def init(self) -> None:                                      │
+│   117 │   │   """Connect to the database and create tables if they don't     │
+│       exist."""                                                              │
+│   118 │   │   if not self._dry_run:                                          │
+│ ❱ 119 │   │   │   await self._storage.init()                                 │
+│   120 │   │   logger.info("[Pipeline] Initialised (dry_run=%s)",             │
+│       self._dry_run)                                                         │
+│   121 │                                                                      │
+│   122 │   async def close(self) -> None:                                     │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/scripts/ingestion/pipeline/storag │
+│ e.py:58 in init                                                              │
+│                                                                              │
+│    55 │   │   self._batch_size = batch_size                                  │
+│    56 │                                                                      │
+│    57 │   async def init(self) -> None:                                      │
+│ ❱  58 │   │   await init_db(self._db_url)                                    │
+│    59 │                                                                      │
+│    60 │   async def close(self) -> None:                                     │
+│    61 │   │   await close_db()                                               │
+│                                                                              │
+│ /usr/lib/python3.11/contextlib.py:222 in __aexit__                           │
+│                                                                              │
+│   219 │   │   │   │   # tell if we get the same exception back               │
+│   220 │   │   │   │   value = typ()                                          │
+│   221 │   │   │   try:                                                       │
+│ ❱ 222 │   │   │   │   await self.gen.athrow(typ, value, traceback)           │
+│   223 │   │   │   except StopAsyncIteration as exc:                          │
+│   224 │   │   │   │   # Suppress StopIteration *unless* it's the same        │
+│       exception that                                                         │
+│   225 │   │   │   │   # was passed to throw().  This prevents a              │
+│       StopIteration                                                          │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/ext/asyncio/engine.py:1065 in begin                             │
+│                                                                              │
+│   1062 │   │                                                                 │
+│   1063 │   │   async with conn:                                              │
+│   1064 │   │   │   async with conn.begin():                                  │
+│ ❱ 1065 │   │   │   │   yield conn                                            │
+│   1066 │                                                                     │
+│   1067 │   def connect(self) -> AsyncConnection:                             │
+│   1068 │   │   """Return an :class:`_asyncio.AsyncConnection` object.        │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/scripts/ingestion/pipeline/storag │
+│ e.py:189 in init_db                                                          │
+│                                                                              │
+│   186 │   _session_factory = async_sessionmaker(_engine,                     │
+│       expire_on_commit=False)                                                │
+│   187 │                                                                      │
+│   188 │   async with _engine.begin() as conn:                                │
+│ ❱ 189 │   │   await conn.run_sync(Base.metadata.create_all)                  │
+│   190 │                                                                      │
+│   191 │   logger.info("[Storage] Database initialised: %s",                  │
+│       database_url.split("@")[-1])                                           │
+│   192                                                                        │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/ext/asyncio/engine.py:886 in run_sync                           │
+│                                                                              │
+│    883 │   │                                                                 │
+│    884 │   │   """  # noqa: E501                                             │
+│    885 │   │                                                                 │
+│ ❱  886 │   │   return await greenlet_spawn(                                  │
+│    887 │   │   │   fn, self._proxied, *arg, _require_await=False, **kw       │
+│    888 │   │   )                                                             │
+│    889                                                                       │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/util/_concurrency_py3k.py:203 in greenlet_spawn                 │
+│                                                                              │
+│   200 │   │   │   │   # its expected flow.                                   │
+│   201 │   │   │   │   result = context.throw(*sys.exc_info())                │
+│   202 │   │   │   else:                                                      │
+│ ❱ 203 │   │   │   │   result = context.switch(value)                         │
+│   204 │   finally:                                                           │
+│   205 │   │   # clean up to avoid cycle resolution by gc                     │
+│   206 │   │   del context.driver                                             │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/schema.py:5857 in create_all                                │
+│                                                                              │
+│   5854 │   │     in the target database.                                     │
+│   5855 │   │                                                                 │
+│   5856 │   │   """                                                           │
+│ ❱ 5857 │   │   bind._run_ddl_visitor(                                        │
+│   5858 │   │   │   ddl.SchemaGenerator, self, checkfirst=checkfirst,         │
+│        tables=tables                                                         │
+│   5859 │   │   )                                                             │
+│   5860                                                                       │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/engine/base.py:2457 in _run_ddl_visitor                         │
+│                                                                              │
+│   2454 │   │   options given to the visitor so that "checkfirst" is skipped. │
+│   2455 │   │                                                                 │
+│   2456 │   │   """                                                           │
+│ ❱ 2457 │   │   visitorcallable(self.dialect, self,                           │
+│        **kwargs).traverse_single(element)                                    │
+│   2458                                                                       │
+│   2459                                                                       │
+│   2460 class ExceptionContextImpl(ExceptionContext):                         │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/visitors.py:664 in traverse_single                          │
+│                                                                              │
+│    661 │   │   for v in self.visitor_iterator:                               │
+│    662 │   │   │   meth = getattr(v, "visit_%s" % obj.__visit_name__, None)  │
+│    663 │   │   │   if meth:                                                  │
+│ ❱  664 │   │   │   │   return meth(obj, **kw)                                │
+│    665 │                                                                     │
+│    666 │   def iterate(                                                      │
+│    667 │   │   self, obj: Optional[ExternallyTraversible]                    │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/ddl.py:918 in visit_metadata                                │
+│                                                                              │
+│    915 │   │   │                                                             │
+│    916 │   │   │   for table, fkcs in collection:                            │
+│    917 │   │   │   │   if table is not None:                                 │
+│ ❱  918 │   │   │   │   │   self.traverse_single(                             │
+│    919 │   │   │   │   │   │   table,                                        │
+│    920 │   │   │   │   │   │   create_ok=True,                               │
+│    921 │   │   │   │   │   │   include_foreign_key_constraints=fkcs,         │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/visitors.py:664 in traverse_single                          │
+│                                                                              │
+│    661 │   │   for v in self.visitor_iterator:                               │
+│    662 │   │   │   meth = getattr(v, "visit_%s" % obj.__visit_name__, None)  │
+│    663 │   │   │   if meth:                                                  │
+│ ❱  664 │   │   │   │   return meth(obj, **kw)                                │
+│    665 │                                                                     │
+│    666 │   def iterate(                                                      │
+│    667 │   │   self, obj: Optional[ExternallyTraversible]                    │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/ddl.py:956 in visit_table                                   │
+│                                                                              │
+│    953 │   │   │   │   include_foreign_key_constraints=(                     │
+│    954 │   │   │   │   │   include_foreign_key_constraints                   │
+│    955 │   │   │   │   ),                                                    │
+│ ❱  956 │   │   │   )._invoke_with(self.connection)                           │
+│    957 │   │   │                                                             │
+│    958 │   │   │   if hasattr(table, "indexes"):                             │
+│    959 │   │   │   │   for index in table.indexes:                           │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/ddl.py:314 in _invoke_with                                  │
+│                                                                              │
+│    311 │                                                                     │
+│    312 │   def _invoke_with(self, bind):                                     │
+│    313 │   │   if self._should_execute(self.target, bind):                   │
+│ ❱  314 │   │   │   return bind.execute(self)                                 │
+│    315 │                                                                     │
+│    316 │   def __call__(self, target, bind, **kw):                           │
+│    317 │   │   """Execute the DDL as a ddl_listener."""                      │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/engine/base.py:1418 in execute                                  │
+│                                                                              │
+│   1415 │   │   except AttributeError as err:                                 │
+│   1416 │   │   │   raise exc.ObjectNotExecutableError(statement) from err    │
+│   1417 │   │   else:                                                         │
+│ ❱ 1418 │   │   │   return meth(                                              │
+│   1419 │   │   │   │   self,                                                 │
+│   1420 │   │   │   │   distilled_parameters,                                 │
+│   1421 │   │   │   │   execution_options or NO_OPTIONS,                      │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/ddl.py:180 in _execute_on_connection                        │
+│                                                                              │
+│    177 │   def _execute_on_connection(                                       │
+│    178 │   │   self, connection, distilled_params, execution_options         │
+│    179 │   ):                                                                │
+│ ❱  180 │   │   return connection._execute_ddl(                               │
+│    181 │   │   │   self, distilled_params, execution_options                 │
+│    182 │   │   )                                                             │
+│    183                                                                       │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/engine/base.py:1526 in _execute_ddl                             │
+│                                                                              │
+│   1523 │   │                                                                 │
+│   1524 │   │   dialect = self.dialect                                        │
+│   1525 │   │                                                                 │
+│ ❱ 1526 │   │   compiled = ddl.compile(                                       │
+│   1527 │   │   │   dialect=dialect,                                          │
+│        schema_translate_map=schema_translate_map                             │
+│   1528 │   │   )                                                             │
+│   1529 │   │   ret = self._execute_context(                                  │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/elements.py:308 in compile                                  │
+│                                                                              │
+│    305 │   │   │   │   │   self.stringify_dialect                            │
+│    306 │   │   │   │   ).get_dialect()()                                     │
+│    307 │   │                                                                 │
+│ ❱  308 │   │   return self._compiler(dialect, **kw)                          │
+│    309 │                                                                     │
+│    310 │   def _compiler(self, dialect: Dialect, **kw: Any) -> Compiled:     │
+│    311 │   │   """Return a compiler appropriate for this ClauseElement,      │
+│        given a                                                               │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/ddl.py:69 in _compiler                                      │
+│                                                                              │
+│     66 │   │   """Return a compiler appropriate for this ClauseElement,      │
+│        given a                                                               │
+│     67 │   │   Dialect."""                                                   │
+│     68 │   │                                                                 │
+│ ❱   69 │   │   return dialect.ddl_compiler(dialect, self, **kw)              │
+│     70 │                                                                     │
+│     71 │   def _compile_w_cache(                                             │
+│     72 │   │   self,                                                         │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/compiler.py:870 in __init__                                 │
+│                                                                              │
+│    867 │   │   │   │   if TYPE_CHECKING:                                     │
+│    868 │   │   │   │   │   assert isinstance(statement, Executable)          │
+│    869 │   │   │   │   self.execution_options = statement._execution_options │
+│ ❱  870 │   │   │   self.string = self.process(self.statement,                │
+│        **compile_kwargs)                                                     │
+│    871 │   │   │                                                             │
+│    872 │   │   │   if render_schema_translate:                               │
+│    873 │   │   │   │   self.string =                                         │
+│        self.preparer._render_schema_translates(                              │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/compiler.py:915 in process                                  │
+│                                                                              │
+│    912 │   │   raise NotImplementedError()                                   │
+│    913 │                                                                     │
+│    914 │   def process(self, obj: Visitable, **kwargs: Any) -> str:          │
+│ ❱  915 │   │   return obj._compiler_dispatch(self, **kwargs)                 │
+│    916 │                                                                     │
+│    917 │   def __str__(self) -> str:                                         │
+│    918 │   │   """Return the string text of the generated SQL or DDL."""     │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/visitors.py:141 in _compiler_dispatch                       │
+│                                                                              │
+│    138 │   │   │   except AttributeError as err:                             │
+│    139 │   │   │   │   return visitor.visit_unsupported_compilation(self,    │
+│        err, **kw)  # type: ignore  # noqa: E501                              │
+│    140 │   │   │   else:                                                     │
+│ ❱  141 │   │   │   │   return meth(self, **kw)  # type: ignore  # noqa: E501 │
+│    142 │   │                                                                 │
+│    143 │   │   cls._compiler_dispatch = (  # type: ignore                    │
+│    144 │   │   │   cls._original_compiler_dispatch                           │
+│                                                                              │
+│ /home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/lib/python3.11/site-package │
+│ s/sqlalchemy/sql/compiler.py:6655 in visit_create_table                      │
+│                                                                              │
+│   6652 │   │   │   │   if column.primary_key:                                │
+│   6653 │   │   │   │   │   first_pk = True                                   │
+│   6654 │   │   │   except exc.CompileError as ce:                            │
+│ ❱ 6655 │   │   │   │   raise exc.CompileError(                               │
+│   6656 │   │   │   │   │   "(in table '%s', column '%s'): %s"                │
+│   6657 │   │   │   │   │   % (table.description, column.name, ce.args[0])    │
+│   6658 │   │   │   │   ) from ce                                             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+CompileError: (in table 'ingestion_raw', column 'raw_json'): Compiler 
+<sqlalchemy.dialects.sqlite.base.SQLiteTypeCompiler object at 0x7b78a6109350> 
+can't render element of type JSONB

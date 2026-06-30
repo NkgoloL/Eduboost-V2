@@ -1,0 +1,12 @@
+title = "EduBoost V2 gitleaks configuration"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Repository-approved false positives and generated fixtures"
+paths = [
+  '''^docs/release/.*\.md$''',
+  '''^data/generated/.*''',
+  '''^app/frontend/pnpm-lock\.yaml$''',
+]

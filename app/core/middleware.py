@@ -4,7 +4,6 @@ Request ID injection, timing headers, structured logging, rate limit headers.
 """
 from __future__ import annotations
 
-import logging
 import time
 import uuid
 

@@ -1,0 +1,66 @@
+{
+  "checks": [
+    {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "scripts/phase02r_gate_control.py",
+        "--expected-approved-gate",
+        "2R.1",
+        "--expected-authorised-gate",
+        "2R.2",
+        "--require-approval-roles",
+        "--require-evidence-index-sha",
+        "--json"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"errors\": [],\n  \"valid\": true\n}\n"
+    },
+    {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "-m",
+        "compileall",
+        "-q",
+        "app/services/curriculum",
+        "scripts/curriculum",
+        "scripts/verify_phase02r_gate2r2.py",
+        "tests/unit/phase02r"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/unit/phase02r/test_gate2r2_secure_acquisition.py",
+        "--no-cov"
+      ],
+      "exit_code": 0,
+      "output": "........                                                                 [100%]\n8 passed in 0.12s\n"
+    },
+    {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "scripts/curriculum/acquire_phase02r_sources.py",
+        "--dry-run",
+        "--json"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"actual_sha256\": \"7fec668a6d3b0ed4ae6974a9739970a2128a80553589f682ff5d5bffc02a783e\",\n  \"dry_run\": true,\n  \"eligible\": true,\n  \"expected_sha256\": \"7fec668a6d3b0ed4ae6974a9739970a2128a80553589f682ff5d5bffc02a783e\",\n  \"gate\": \"2R.2\",\n  \"planned_object_uri\": \"local://phase02r/sources/sha256/7f/7fec668a6d3b0ed4ae6974a9739970a2128a80553589f682ff5d5bffc02a783e.pdf\",\n  \"source_available\": true,\n  \"source_path\": \"data/caps/source_documents/raw/caps_intermediate_phase_mathematics_grade4_6.pdf\",\n  \"source_version_id\": null,\n  \"target_document_id\": \"caps_intermediate_phase_mathematics_grade4_6\"\n}\n"
+    },
+    {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "scripts/curriculum/acquire_phase02r_sources.py",
+        "--json"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"acquired\": true,\n  \"actual_sha256\": \"7fec668a6d3b0ed4ae6974a9739970a2128a80553589f682ff5d5bffc02a783e\",\n  \"dry_run\": false,\n  \"eligible\": true,\n  \"expected_sha256\": \"7fec668a6d3b0ed4ae6974a9739970a2128a80553589f682ff5d5bffc02a783e\",\n  \"gate\": \"2R.2\",\n  \"malware_scan_status\": \"not_required\",\n  \"media_type\": \"application/pdf\",\n  \"object_uri\": \"local://phase02r/sources/sha256/7f/7fec668a6d3b0ed4ae6974a9739970a2128a80553589f682ff5d5bffc02a783e.pdf\",\n  \"planned_object_uri\": \"local://phase02r/sources/sha256/7f/7fec668a6d3b0ed4ae6974a9739970a2128a80553589f682ff5d5bffc02a783e.pdf\",\n  \"sha256\": \"7fec668a6d3b0ed4ae6974a9739970a2128a80553589f682ff5d5bffc02a783e\",\n  \"size_bytes\": 2097873,\n  \"source_available\": true,\n  \"source_path\": \"data/caps/source_documents/raw/caps_intermediate_phase_mathematics_grade4_6.pdf\",\n  \"source_version_id\": null,\n  \"storage_backend\": \"local-content-addressed\",\n  \"target_document_id\": \"caps_intermediate_phase_mathematics_grade4_6\"\n}\n"
+    }
+  ],
+  "errors": [],
+  "valid": true
+}

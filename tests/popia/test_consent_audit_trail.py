@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime, timedelta
 
 import pytest
 import pytest_asyncio
@@ -117,5 +116,5 @@ async def test_missing_consent_writes_rejected_access_audit_event(
     event = result.scalar_one()
     assert str(event.actor_id) == guardian.id
     assert str(event.resource_id) == learner.id
-    assert event.payload["reason"] == "missing_or_expired"
+    assert event.payload["reason"] == "no_consent_record"
 

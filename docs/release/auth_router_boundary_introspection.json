@@ -1,0 +1,144 @@
+{
+  "generated_at": "2026-06-27T02:18:40Z",
+  "auth_router_exists": true,
+  "imports": [
+    "app.api_v2_deps.auth",
+    "app.api_v2_deps.auth_runtime",
+    "app.api_v2_deps.auth_service",
+    "app.core.config",
+    "app.core.database",
+    "app.core.envelope_route",
+    "app.core.rate_limit",
+    "app.core.refresh_tokens",
+    "app.core.security",
+    "app.domain.schemas",
+    "app.models",
+    "app.services.auth_application_service",
+    "app.services.auth_token_claims",
+    "fastapi",
+    "fastapi.responses",
+    "sqlalchemy.ext.asyncio"
+  ],
+  "functions": [
+    {
+      "name": "_canonical_access_claims",
+      "lineno": 41,
+      "args": [
+        "user",
+        "existing_claims",
+        "extra"
+      ]
+    },
+    {
+      "name": "_canonical_refresh_claims",
+      "lineno": 45,
+      "args": [
+        "existing_claims",
+        "user"
+      ]
+    },
+    {
+      "name": "_legacy_refresh_error_response",
+      "lineno": 48,
+      "args": [
+        "message",
+        "status_code"
+      ]
+    },
+    {
+      "name": "me",
+      "lineno": 80,
+      "args": [
+        "current_user"
+      ]
+    },
+    {
+      "name": "register",
+      "lineno": 86,
+      "args": [
+        "request",
+        "body",
+        "response",
+        "db",
+        "auth_runtime",
+        "auth_service"
+      ]
+    },
+    {
+      "name": "login",
+      "lineno": 105,
+      "args": [
+        "request",
+        "body",
+        "response",
+        "db",
+        "auth_runtime",
+        "auth_service"
+      ]
+    },
+    {
+      "name": "create_dev_session",
+      "lineno": 123,
+      "args": [
+        "response",
+        "db",
+        "auth_runtime",
+        "auth_service"
+      ]
+    },
+    {
+      "name": "refresh",
+      "lineno": 147,
+      "args": [
+        "request",
+        "response",
+        "body",
+        "db",
+        "cookie_refresh",
+        "auth_runtime",
+        "auth_service"
+      ]
+    },
+    {
+      "name": "_set_refresh_cookie",
+      "lineno": 166,
+      "args": [
+        "response",
+        "token"
+      ]
+    },
+    {
+      "name": "list_sessions",
+      "lineno": 178,
+      "args": [
+        "current_user"
+      ]
+    },
+    {
+      "name": "logout",
+      "lineno": 187,
+      "args": [
+        "response",
+        "current_user",
+        "db",
+        "cookie_refresh",
+        "auth_service"
+      ]
+    },
+    {
+      "name": "revoke_all_tokens",
+      "lineno": 203,
+      "args": [
+        "response",
+        "current_user",
+        "db",
+        "cookie_refresh",
+        "auth_service"
+      ]
+    }
+  ],
+  "auth_runtime_dependency_imported": true,
+  "learner_repository_symbol_count": 0,
+  "learner_repository_constructor_count": 0,
+  "direct_get_by_guardian_count": 0
+}

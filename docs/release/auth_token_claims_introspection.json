@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-05-17T20:36:18Z",
+  "auth_router": "app/api_v2_routers/auth.py",
+  "router_exists": true,
+  "canonical_claim_helper_imported": true,
+  "local_token_claim_markers": 9,
+  "raw_email_encrypted_assignment": false,
+  "imports": [
+    "app.core.config",
+    "app.core.database",
+    "app.core.envelope_route",
+    "app.core.rate_limit",
+    "app.core.refresh_tokens",
+    "app.core.security",
+    "app.core.token_revocation",
+    "app.domain.schemas",
+    "app.models",
+    "app.repositories.repositories",
+    "app.services.auth_token_claims",
+    "app.services.fourth_estate",
+    "fastapi",
+    "fastapi.responses",
+    "sqlalchemy.ext.asyncio"
+  ],
+  "functions": [
+    "_canonical_access_claims",
+    "_canonical_refresh_claims",
+    "_legacy_refresh_error_response",
+    "_set_refresh_cookie",
+    "create_dev_session",
+    "list_sessions",
+    "login",
+    "logout",
+    "me",
+    "refresh_token",
+    "register",
+    "revoke_all_tokens"
+  ]
+}

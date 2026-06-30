@@ -5,7 +5,7 @@ runtime.
 
 ## Prerequisites
 
-- Python 3.11+
+- Python 3.12+ (currently 3.12.3)
 - Node.js 20 LTS
 - Docker Desktop with Compose v2
 

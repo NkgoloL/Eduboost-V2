@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "boundary": "first actual wiring candidate registry; non-destructive adapter-backed candidates only",
+  "candidates": [
+    {
+      "id": "BCW-391-AUDIT-CONSENT",
+      "area": "audit",
+      "name": "consent_audit_events",
+      "candidate_name": "consent_audit_events",
+      "action": "consent.granted",
+      "actor_id": "guardian-candidate",
+      "learner_id": "learner-candidate",
+      "resource_type": "learner_consent",
+      "approved_for_wiring": true,
+      "destructive": false,
+      "requires_route_change": false
+    },
+    {
+      "id": "BCW-392-AUDIT-POPIA",
+      "area": "audit",
+      "name": "popia_data_rights_audit",
+      "candidate_name": "popia_data_rights_audit",
+      "action": "popia.export.requested",
+      "actor_id": "guardian-candidate",
+      "learner_id": "learner-candidate",
+      "resource_type": "popia_data_export",
+      "approved_for_wiring": true,
+      "destructive": false,
+      "requires_route_change": false
+    },
+    {
+      "id": "BCW-393-CONSENT-GRANT",
+      "area": "consent",
+      "name": "consent_grant_audit_payload",
+      "action": "consent.granted",
+      "actor_id": "guardian-candidate",
+      "learner_id": "learner-candidate",
+      "approved_for_wiring": true,
+      "destructive": false,
+      "requires_route_change": false
+    },
+    {
+      "id": "BCW-394-CONSENT-STATUS",
+      "area": "consent",
+      "name": "consent_status_read_payload",
+      "action": "consent.status.read",
+      "actor_id": "guardian-candidate",
+      "learner_id": "learner-candidate",
+      "approved_for_wiring": true,
+      "destructive": false,
+      "requires_route_change": false
+    }
+  ]
+}

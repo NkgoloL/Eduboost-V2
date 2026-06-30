@@ -1,0 +1,65 @@
+{
+  "checks": {
+    "TA-BACKEND-FAST-001": {
+      "errors": [],
+      "latest_valid_evidence_commit": "cf23c185bf",
+      "status": "evidence_recorded",
+      "valid": true
+    },
+    "TA-CI-001": {
+      "errors": [],
+      "latest_valid_evidence_commit": "bde09e12da",
+      "status": "evidence_recorded",
+      "valid": true
+    },
+    "TA-E2E-001": {
+      "errors": [],
+      "latest_valid_evidence_commit": "583b23a9d5",
+      "status": "evidence_recorded",
+      "valid": true
+    },
+    "TA-FRONTEND-001": {
+      "errors": [],
+      "latest_valid_evidence_commit": "d8ecbe3d9c",
+      "status": "evidence_recorded",
+      "valid": true
+    },
+    "TA-HOSTED-CI-001": {
+      "errors": [],
+      "latest_valid_evidence_commit": null,
+      "status": "evidence_recorded",
+      "valid": true
+    },
+    "TA-OPENAPI-001": {
+      "errors": [],
+      "latest_valid_evidence_commit": "39609175f2",
+      "status": "evidence_recorded",
+      "valid": true
+    },
+    "TA-REMOTE-CI-001": {
+      "errors": [],
+      "latest_valid_evidence_commit": "98bd0ae778",
+      "status": "evidence_recorded",
+      "valid": true
+    },
+    "TA-SECURITY-001": {
+      "errors": [],
+      "latest_valid_evidence_commit": "2cee804e20",
+      "status": "evidence_recorded",
+      "valid": true
+    }
+  },
+  "failed_blockers": [],
+  "required_blockers": [
+    "TA-OPENAPI-001",
+    "TA-BACKEND-FAST-001",
+    "TA-FRONTEND-001",
+    "TA-E2E-001",
+    "TA-SECURITY-001",
+    "TA-CI-001",
+    "TA-REMOTE-CI-001",
+    "TA-HOSTED-CI-001"
+  ],
+  "required_blockers_closed": true,
+  "schema_version": 1
+}

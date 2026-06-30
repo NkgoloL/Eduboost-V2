@@ -1,0 +1,236 @@
+End-to-end overnight batch generation pipeline that orchestrates content creation from planning through review submission. The system starts with gap analysis [1b], creates generation tasks [2d], executes them via providers [3c], validates artifacts [5b], verifies staging readiness [6c], seeds to staging [7c], and produces comprehensive reports [8b]. Human review gates prevent automatic approval [5e].
+
+
+1. Motivation
+The Content Factory needs to generate thousands of educational artifacts (diagnostic items, lessons, assessments, study plans) across multiple grades, subjects, and curriculum topics. Doing this manually would take months. The overnight batch generation system solves this by automating the generation pipeline while maintaining strict safety controls: it can generate and validate content, but never auto-approves anything or promotes to production without human review [1a].
+
+The system must handle long-running operations safely—generation runs can take hours and may be interrupted. It needs to prevent concurrent runs from conflicting, track progress, resume after failures, and produce comprehensive audit trails.
+
+Details
+Entry Point and Safety Gates
+The batch runner starts at run_full_generation.py [1a], which first checks that CONTENT_FACTORY_GENERATION_ENABLED=true is explicitly set—this prevents accidental production runs. It then acquires a distributed lock [1b] with a 180-minute TTL to ensure only one overnight run executes at a time across all processes.
+
+Run Tracking
+Every execution creates a ContentGenerationRun record [1c] that tracks the run ID, scope (single or all scopes), requested layers (diagnostic_items, lessons, etc.), and metadata like concurrency limits and budget caps. This provides full audit history and enables resumable execution.
+
+Planning Phase
+The planner is invoked [1d] to analyze coverage gaps—it queries the staging readiness service to find where approved artifact counts fall short of configured targets, validates that ETL source chunks are available, and creates ContentGenerationTask records with idempotency keys to prevent duplicate generation.
+
+Execution Loop
+The main loop iterates through planned tasks, executing each one by calling generation providers (deterministic for testing, LLM for production), validating outputs, and creating artifact records with pending_review status. The loop respects --max-artifacts and --budget-cap limits to prevent runaway generation. 
+
+ Post-Generation Actions
+After generation completes, the system can optionally:
+
+Seed approved artifacts to staging [staging tables for preview, never learner-visible]
+Verify staging readiness [check coverage and blockers]
+Write comprehensive reports [markdown summaries, CSVs, error logs]
+Lock Release
+The lock is released in a finally block [1e] to ensure it's freed even if generation fails, preventing deadlocks that would block future runs.
+
+2. Motivation
+The Content Factory needs to generate thousands of educational artifacts (diagnostic items, lessons, assessments, study plans) across multiple grades, subjects, and curriculum topics. The planning system solves the problem of identifying exactly what content is missing by comparing current coverage against configured targets, then creating generation tasks only for the gaps.
+
+Without this planner, the system would either regenerate existing content (wasting resources and creating duplicates) or require manual tracking of what needs to be generated. The planner automates gap analysis and ensures idempotent task creation so overnight batch runs can safely resume without duplicating work.
+
+Details
+Coverage Gap Analysis
+The planner starts by calling ContentStagingReadinessService.verify_scope() [2a] to get a readiness report that shows current vs. target counts for each content layer (diagnostic_items, lessons, etc.) per curriculum topic. For example, if Grade 4 Math Topic "4.1.2" needs 10 diagnostic items but only has 7 approved, the gap is 3.
+
+The calculation missing_count = max(0, layer.target - layer.approved) [2b] determines how many artifacts to generate. Layers with zero or negative gaps are skipped entirely.
+
+Source Context Validation
+Before creating a generation task, the planner validates that approved ETL source material exists [2c]. It calls ContentGenerationSourceContextService.build_context() which queries the content_artifact_sources table for approved, licensed curriculum documents that can ground the generation.
+
+If no valid sources exist (wrong license, low quality, or unapproved status), the task is skipped and recorded as a blocker. This prevents generating content without proper educational source material.
+
+Idempotent Task Creation
+Each task gets an idempotency key combining scope, topic, layer, and version [2d]. The planner checks if a task with this key already exists before creating a new one. This allows the overnight runner to be safely restarted—it will skip already-planned tasks rather than creating duplicates.
+
+The task record includes metadata like topic title, grade, subject, and the count of missing artifacts. Tasks are persisted via session.add(task) [2e] and later picked up by the executor.
+
+Output
+The planner returns a GenerationPlanResult containing lists of created task IDs, skipped targets (with reasons), and missing counts per layer. This data feeds into the generation report and allows operators to understand what will be generated and what blockers exist.
+
+3. Task Execution in the Content Factory Generation Pipeline
+Motivation
+The Content Factory needs to generate thousands of educational artifacts (diagnostic items, lessons, assessments) to fill curriculum coverage gaps. The ContentGenerationExecutor solves the problem of safely executing these generation tasks: it must call AI providers (or deterministic generators), validate outputs, enforce source provenance requirements, and create database records—all while preventing duplicate generation and ensuring no content reaches learners without human review.
+
+The core challenge is orchestrating the handoff from a queued task to a validated artifact ready for review, while maintaining strict audit trails linking every generated piece of content back to approved source material.
+
+Details
+
+Execution Lifecycle
+When a generation task is ready to execute [3a], the executor first marks it as running and acquires a time-limited lock to prevent concurrent execution. This status transition is critical for resumability—if the process crashes, other workers know not to retry locked tasks until the lock expires.
+
+Source Context Validation
+Before calling any generation provider, the executor rebuilds the source context [3b] by querying for approved ETL source chunks. This is a deliberate re-validation: even though the planner verified sources were available when creating the task, they might have been deprecated or removed between planning and execution. The system enforces that generation cannot proceed without valid, approved source material.
+
+Provider Invocation
+The executor calls _call_provider() [3c] which routes to either a deterministic provider (for testing) or an LLM provider (for production). The provider receives a typed request containing source chunks, topic metadata, and the count of artifacts needed. The provider returns a list of generated payloads, each with a validation lambda—a deferred validation function that will be called later with the artifact hash and existing hashes to check for duplicates and business rule violations.
+
+Artifact Creation
+For each generated payload, the executor computes a stable JSON hash to detect duplicates, invokes the validation lambda to check quality rules, then calls create_artifact() [3d]. The ContentFactoryService performs comprehensive validation including source provenance checks, creates the ContentGenerationArtifact record, and links it to ContentArtifactSource records that cite specific ETL document chunks. Critically, artifacts that pass validation are set to pending_review status—the system never auto-approves content.
+
+Task Completion
+After processing all generated artifacts, the executor updates the task with output artifact IDs and sets its final status [3e]: succeeded if artifacts were created without validation errors, or failed otherwise. The session is flushed [3e] to persist all changes atomically. This completion updates the run's progress tracking and enables the reporting system to generate accurate metrics about what was generated versus what failed.
+
+4. Diagnostic Item Generation Guide
+Motivation
+The Content Factory needs to generate diagnostic assessment items (multiple-choice questions) to measure learner understanding across curriculum topics. These items must be:
+
+Grounded in approved source material from the ETL pipeline (textbooks, curriculum documents)
+Validated for correctness (answer keys, proper option counts, source citations)
+Deduplicated to prevent generating the same question twice
+Curriculum-aligned to specific CAPS references
+The system supports both deterministic generation (for testing/dry runs) and LLM-based generation (for production), using the same validation pipeline for both [4d].
+
+Details
+Generation Request Construction
+When a generation task executes [4a], the executor builds a DiagnosticGenerationRequest containing:
+
+Scope metadata (grade, subject, language, CAPS reference)
+Source chunks with text content from approved ETL documents
+Target counts (how many items are needed vs already approved)
+
+Topic title for context
+This request object ensures the provider has all necessary context to generate curriculum-aligned content.
+
+Provider Implementation
+The deterministic provider [4b] creates GeneratedDiagnosticItem objects with:
+
+Question text referencing the topic and CAPS ref
+Multiple choice options (A, B, C, D)
+Correct answer designation
+Explanation grounded in specific source chunks [4b]
+Metadata (difficulty, cognitive level, safety status)
+The provider cycles through available source chunks to ensure each item cites a specific source document.
+
+Artifact JSON Conversion
+Each generated item is converted to artifact JSON format [4c] via to_artifact_json(). This transformation:
+
+Wraps the correct answer in an answer_key object
+Preserves all source chunk IDs for provenance tracking
+Standardizes the schema for database storage
+Validation Pipeline
+
+Before artifact creation, each item undergoes validation [4e] that checks:
+
+Answer key exists - diagnostic items must have solutions [diagnostic_generator.py:10]
+Sufficient options - at least 2 choices required [diagnostic_generator.py:13]
+CAPS alignment - item's caps_ref must match the task [diagnostic_generator.py:19]
+Source citations present - items require ETL provenance
+No duplicates - artifact hash checked against existing items [diagnostic_generator.py:23]
+Validation errors prevent the item from reaching pending_review status - it's marked validation_failed instead. This ensures only valid, well-formed items enter the human review queue.
+
+Deferred Validation Pattern
+The validation logic is wrapped in a lambda function [4d] that's called later during artifact creation. This allows the executor to:
+
+Generate all items from the provider first
+Collect existing artifact hashes from the database
+Validate each item against the complete hash set
+Prevent race conditions in duplicate detection
+This pattern ensures validation has access to the full context needed for duplicate checking.
+
+5. Motivation
+The Content Factory generates educational content (diagnostic items, lessons, assessments) using LLMs or deterministic providers. Every generated artifact must be traceable to approved source material and pass validation gates before human review. The system prevents low-quality or ungrounded content from reaching learners by enforcing strict provenance requirements [5b].
+
+The core problem: Generated content is only as trustworthy as its sources. Without validation, the system could create artifacts citing deprecated documents, incompatible licenses, or low-quality materials—creating legal and pedagogical risks.
+
+Details
+Validation Pipeline
+When creating an artifact [5a], the system runs two parallel validation tracks:
+
+Content validation checks the artifact payload itself—ensuring diagnostic items have answer keys [5a], lessons have learning objectives, and all required fields are present.
+
+Provenance validation [5b] verifies every source citation meets strict criteria:
+
+Document status must be approved, indexed, or training_ready [5b]
+License must be compatible (government_open, public_domain, CC-BY, etc.) [5b]
+Quality scores must exceed 0.5 threshold [5b]
+The system computes a source snapshot hash from all cited chunks, creating an immutable audit trail linking the artifact to specific source versions.
+
+Status Assignment
+Artifacts are never auto-approved [5d]. If validation passes, status is set to pending_review—requiring human review before staging. If validation fails, status becomes validation_failed and the artifact is blocked from further promotion.
+
+Database Persistence
+The system creates three linked records [5e]:
+
+ContentGenerationArtifact - the generated content with computed hash [5c]
+ContentArtifactSource - one record per cited source chunk [5e]
+ContentValidationReport - detailed validation results and errors
+This three-table design enables auditing: given any artifact, you can trace back to exact source chunks and understand why it passed or failed validation.
+
+Safety Guarantees
+The validation layer ensures no ungrounded content enters the review queue. Even if a provider generates plausible-looking content, it's rejected unless backed by approved, licensed, quality-verified sources. This prevents the "hallucination problem" common in LLM systems from affecting learners.
+
+6. Staging Readiness Verification
+Motivation
+Before seeding generated content artifacts to staging tables (where they can be previewed), the system must verify that each scope has sufficient approved coverage to meet configured targets. The problem: artifacts may have been approved by reviewers, but they might have invalid source provenance, incompatible licenses, or low-quality source material—any of which would make them unsuitable for staging or production.
+
+The ContentStagingReadinessService solves this by analyzing all artifacts for a scope and computing how many are actually stageable after filtering out quality/provenance/license issues [6d].
+
+Details
+Data Loading Phase: The service first loads all artifacts for the scope [6a] and builds an index mapping each artifact to its source citations [6b]. This index is critical for provenance validation.
+
+Layer-by-Layer Analysis: For each content layer (diagnostic_items, lessons, etc.) and CAPS reference, the service computes a LayerReadinessSummary [6c]. This involves:
+
+Counting artifacts by status (approved, pending_review, validation_failed, etc.)
+Filtering to only approved artifacts
+Running three quality gates on each approved artifact:
+Provenance validation: Does it cite valid ETL source chunks with proper hashes?
+License validation: Are all sources under acceptable licenses (government_open, public_domain, etc.)?
+Quality validation: Do sources meet minimum quality score thresholds (≥0.5)?
+Stageable Count Calculation: The stageable count is approved artifacts minus those failing any quality gate [6d]. If stageable >= target, the layer is ready for staging. If stageable > 0 but below target, it's partially stageable.
+
+Blocker Generation: For each layer that doesn't meet its target, the service generates structured blocker records [6e] with codes like insufficient_approved_coverage, invalid_provenance, or pending_human_review. These blockers inform administrators what needs to be fixed before staging.
+
+Report Output: The final ScopeStagingVerificationReport includes the overall status, a can_seed_staging boolean flag, the list of blockers, and per-layer summaries—providing a complete picture of readiness.
+
+7. Staging Seed Execution Guide
+Motivation
+After content artifacts are generated and approved by human reviewers, they need to be promoted to staging tables where they can be previewed before production deployment. The staging seed system solves the problem of safely moving approved artifacts from the content factory into staging tables (like lesson_bank, assessment_blueprints, study_plan_templates) while maintaining full traceability and rollback capability.
+
+The key constraint: only artifacts with status approved can be seeded to staging. This prevents unreviewed or validation-failed content from becoming visible, even in preview environments.
+
+Details
+Entry Point and Validation
+The process starts at ContentSeedPromotionService.seed_staging() [7b], which first runs a staging gate check [7a] to verify that approved artifacts are actually available for seeding. The gate calculates stageable_approved count and can optionally allow partial seeding if allow_partial=True.
+
+Planning Phase
+The executor calls _plan_seed() to identify which artifacts are seedable vs skipped. Artifacts are skipped if they lack proper provenance, have license issues, or don't meet quality thresholds. This planning phase ensures we only attempt to seed artifacts that will pass staging verification.
+
+Execution Phase
+For each seedable artifact, the system:
+
+Creates a ContentSeedRun record [7c] to track this seeding operation with metadata about scope, layers, and actor
+Creates ContentStagingArtifact records that copy the artifact payload into staging tables
+Updates the original artifact status [7d] from approved to seeded_staging, creating an audit trail
+All changes are persisted in a single transaction via session.flush(), ensuring atomicity—either all artifacts seed successfully or none do.
+
+Safety Guarantees
+The staging seed never auto-approves artifacts. It only moves artifacts that humans have already reviewed and approved. The ContentSeedRun record provides rollback metadata, allowing staging to be reset if issues are discovered during preview testing.
+
+8. Report Generation for Content Factory Overnight Runs
+Motivation
+The Content Factory runs overnight batch generation that can create hundreds or thousands of content artifacts across multiple scopes and layers. Without comprehensive reporting, operators have no visibility into what was planned, what succeeded, what failed, or what's waiting for human review. The reporting system solves this by capturing complete evidence of each generation run in a timestamped directory with both human-readable summaries and machine-parseable data exports.
+
+Details
+Entry Point
+The report generation is triggered at the end of the full generation pipeline [8a]. After all tasks have been executed and staging operations completed, the orchestrator calls reporter.write_report(report_data) with a GenerationReportData object containing metrics and lists of tasks/artifacts.
+
+Report Structure
+The reporter creates a timestamped directory under reports/content_factory/full_generation/ [8b] to ensure each run's evidence is preserved separately. This prevents overwrites and enables historical analysis.
+
+Output Artifacts
+The system generates multiple complementary outputs:
+
+summary.md [8c]: Human-readable markdown with run status, metrics (planned vs executed tasks, generated vs failed artifacts), and file inventory
+summary.json: Machine-readable version of the same metrics for automated processing
+CSV exports [8d]: Separate CSV files for planned_tasks, executed_tasks, generated_artifacts, pending_review, validation_failed, source_blockers, and staging_seed_results—enabling spreadsheet analysis and filtering
+errors.log [8e]: Plain text log of all errors encountered during generation for debugging
+Scope Readiness Snapshots
+The reporter also captures before and after snapshots of scope readiness (coverage targets vs actual approved counts) as JSON files. This allows operators to measure the impact of each generation run on overall content coverage.
+
+Safety and Auditability
+All reports are immutable evidence artifacts. The timestamped directory structure means no run's evidence can be accidentally overwritten. This supports audit trails and enables operators to investigate issues days or weeks after a run completes.

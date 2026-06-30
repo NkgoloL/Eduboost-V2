@@ -22,7 +22,7 @@ def extract_sections(text: str) -> dict[str, str]:
     Attempts to avoid Table of Contents by looking for headers at the start of a line.
     """
     sections = {}
-    
+
     for i in range(1, 5):
         # Pattern: Look for "SECTION X" or "X SECTION X" at the start of a line
         # This usually distinguishes the actual section from the Table of Contents
@@ -30,7 +30,7 @@ def extract_sections(text: str) -> dict[str, str]:
         match = re.search(pattern, text, re.S | re.I)
         if match:
             content = match.group(1).strip()
-            # If content is very short, it might still be a TOC or a sub-header, 
+            # If content is very short, it might still be a TOC or a sub-header,
             # so we try a broader search but only if the first one failed or was too small.
             if len(content) > 100:
                 sections[f"section_{i}"] = content
@@ -78,7 +78,7 @@ def generate_pairs(doc: dict, sections: dict) -> list[dict]:
             "instruction": f"Explain the CAPS assessment requirements for {context}.",
             "output": sections["section_4"][:3000]
         })
-        
+
     # Generic question about the document
     pairs.append({
         "instruction": f"What is the purpose of the '{doc['title']}' document?",
@@ -100,17 +100,17 @@ def process_teaching_plans() -> list[dict]:
         grade = md_file.parent.name.replace("grade ", "").capitalize()
         subject = md_file.stem.replace("_", " ").capitalize()
         content = md_file.read_text(encoding="utf-8")
-        
+
         # 1. Full plan overview
         pairs.append({
             "instruction": f"Generate a CAPS-aligned teaching plan overview for Grade {grade} {subject}.",
             "output": content.strip()
         })
-        
+
         # 2. Term-based breakdown
         terms = re.split(r"## Term \d+", content)
         term_headers = re.findall(r"## (Term \d+.*)", content)
-        
+
         for i, term_content in enumerate(terms[1:]):
             if i < len(term_headers):
                 term_name = term_headers[i]
@@ -118,7 +118,7 @@ def process_teaching_plans() -> list[dict]:
                     "instruction": f"What is covered in {term_name} for Grade {grade} {subject} according to the teaching plan?",
                     "output": f"In {term_name} for Grade {grade} {subject}, the following topics are covered:\n{term_content.strip()}"
                 })
-                
+
                 # 3. Week-based breakdown
                 weeks = re.findall(r"- (Week \d+.*)", term_content)
                 for week in weeks:
@@ -131,7 +131,7 @@ def process_teaching_plans() -> list[dict]:
 
 def main():
     all_pairs = []
-    
+
     # 1. Process CAPS PDFs from manifest
     if MANIFEST_PATH.exists():
         with MANIFEST_PATH.open("r") as f:
@@ -141,7 +141,7 @@ def main():
                 if not text_path.exists():
                     LOGGER.warning(f"Text file not found: {text_path}")
                     continue
-                
+
                 LOGGER.info(f"Processing {doc['title']}...")
                 text = text_path.read_text(encoding="utf-8")
                 sections = extract_sections(text)

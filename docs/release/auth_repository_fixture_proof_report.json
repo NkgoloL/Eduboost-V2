@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-05-19T19:36:21Z",
+  "status": "implemented",
+  "proof_status": "integration-passing",
+  "scope": "actual session-bound ORM repositories and project models in SQLAlchemy AsyncSession fixture",
+  "changes": {
+    "auth_application_service": false,
+    "auth_runtime_boundary": false,
+    "evidence_registry": false
+  },
+  "not_claimed": [
+    "live Postgres migration proof",
+    "Redis-backed refresh-token cache proof",
+    "staging auth flow proof",
+    "production secret rotation evidence"
+  ]
+}

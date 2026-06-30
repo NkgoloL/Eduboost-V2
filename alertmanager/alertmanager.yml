@@ -1,3 +1,12 @@
+## EduBoost V2 — Alertmanager configuration (deployed as-is).
+##
+## Secret webhook URLs are loaded from files at runtime via `*_url_file`.
+## The orchestrator (Docker Compose / Render / k8s) mounts the file into the
+## container; this YAML is checked in and identical to what Alertmanager loads.
+##
+## See docs/operations/alertmanager.md for the full deployment contract and
+## override instructions.
+
 route:
   receiver: slack-default
   group_wait: 30s
@@ -7,6 +16,9 @@ route:
 receivers:
   - name: slack-default
     slack_configs:
-      - api_url: ${ALERTMANAGER_SLACK_WEBHOOK}
+      # Webhook is loaded from a file mounted by the orchestrator. The path
+      # below is the canonical mount location; override at deploy time only
+      # by mounting a different file at the same path.
+      - api_url_file: /etc/alertmanager/secrets/slack_webhook_url
         channel: "#eduboost-alerts"
         send_resolved: true

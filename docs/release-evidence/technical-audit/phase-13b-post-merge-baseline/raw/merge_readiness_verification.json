@@ -1,0 +1,20 @@
+{
+  "payload": {
+    "branch_protection_claimed": true,
+    "branch_protection_mechanism": "classic_branch_protection",
+    "checked": [
+      "docs/roadmap/execution/technical_audit_remediation/hosted_ci_authority_record.json",
+      "docs/release-evidence/technical-audit/phase-09-hosted-ci/SHA256SUMS.txt",
+      "docs/release-evidence/technical-audit/phase-09-hosted-ci/raw/branch_protection_result_master.json"
+    ],
+    "errors": [],
+    "hosted_ci_run_claimed": true,
+    "merge_readiness_authorised": true,
+    "valid": true,
+    "warnings": []
+  },
+  "returncode": 0,
+  "script": "scripts/technical_audit/verify_merge_readiness_authority.py",
+  "stderr": "",
+  "valid": true
+}

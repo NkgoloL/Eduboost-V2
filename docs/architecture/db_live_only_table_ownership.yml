@@ -1,0 +1,40 @@
+version: 1
+status: accepted
+policy: sql-owned
+source: north-star-audit
+tables:
+  consent_records:
+    domain: popia-consent
+    ownership: sql-owned
+    reason: Present in live Supabase as a POPIA/DSR persistence surface but not declared in current ORM metadata.
+    orm_model_required: false
+    migration_action: document-and-monitor
+    beta_blocking: false
+  data_export_requests:
+    domain: data-subject-rights
+    ownership: sql-owned
+    reason: Present in live Supabase as a POPIA/DSR data export request surface but not declared in current ORM metadata.
+    orm_model_required: false
+    migration_action: document-and-monitor
+    beta_blocking: false
+  erasure_requests:
+    domain: data-subject-rights
+    ownership: sql-owned
+    reason: Present in live Supabase as a POPIA/DSR erasure request surface but not declared in current ORM metadata.
+    orm_model_required: false
+    migration_action: document-and-monitor
+    beta_blocking: false
+  correction_requests:
+    domain: data-subject-rights
+    ownership: sql-owned
+    reason: Present in live Supabase as a POPIA/DSR correction request surface but not declared in current ORM metadata.
+    orm_model_required: false
+    migration_action: document-and-monitor
+    beta_blocking: false
+  restriction_requests:
+    domain: data-subject-rights
+    ownership: sql-owned
+    reason: Present in live Supabase as a POPIA/DSR processing restriction request surface but not declared in current ORM metadata.
+    orm_model_required: false
+    migration_action: document-and-monitor
+    beta_blocking: false

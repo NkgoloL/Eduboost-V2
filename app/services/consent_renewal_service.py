@@ -6,8 +6,8 @@ This service queries for ParentalConsent records expiring within 30 days
 and dispatches SendGrid reminder emails with a renewal link.
 
 Designed to run as:
-  - A FastAPI BackgroundTask (V2 path)
-  - A daily scheduled job via arq (if configured)
+  - A durable ARQ worker job
+  - The shared worker-backed consent reminder path used by the API
 """
 from __future__ import annotations
 
@@ -194,12 +194,7 @@ class ConsentRenewalService:
     Queries for ParentalConsent records expiring within ``days_threshold``
     and dispatches renewal reminder emails via the injected EmailGateway.
 
-    Usage (FastAPI BackgroundTask — V2 path):
-        background_tasks.add_task(
-            ConsentRenewalService(db, gateway, settings).run
-        )
-
-    Usage (arq worker):
+    Usage (worker-backed durable path):
         await ConsentRenewalService(db, gateway, settings).run()
     """
 

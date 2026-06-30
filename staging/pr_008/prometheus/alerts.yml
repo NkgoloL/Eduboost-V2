@@ -1,0 +1,118 @@
+groups:
+  - name: eduboost_runtime_critical
+    rules:
+      - alert: EduBoostApiDown
+        expr: up{job="eduboost-api"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: EduBoost API target is down
+          runbook: docs/operations/observability.md#api-down
+
+      - alert: EduBoostReadinessFailure
+        expr: min by (component) (eduboost_readiness_component_status{criticality="critical"}) == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: Critical readiness component is unavailable
+          runbook: docs/operations/observability.md#readiness-failure
+
+      - alert: EduBoostHigh5xxRate
+        expr: sum(rate(eduboost_http_requests_total{status_code=~"5.."}[5m])) / clamp_min(sum(rate(eduboost_http_requests_total[5m])), 0.001) > 0.02
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: API 5xx error rate exceeds 2%
+
+      - alert: EduBoostHighLatency
+        expr: histogram_quantile(0.95, sum by (le, endpoint) (rate(eduboost_http_request_duration_seconds_bucket[5m]))) > 2
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: API p95 latency exceeds 2 seconds
+
+      - alert: EduBoostDatabaseUnavailable
+        expr: eduboost_readiness_component_status{component="postgres",criticality="critical"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: PostgreSQL readiness check failed
+
+      - alert: EduBoostRedisUnavailable
+        expr: eduboost_readiness_component_status{component="redis",criticality="critical"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: Redis readiness check failed
+
+      - alert: EduBoostAuditWriteFailure
+        expr: increase(eduboost_audit_write_failures_total[10m]) > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: Audit repository write failure detected
+
+      - alert: EduBoostConsentGateFailureSpike
+        expr: sum(rate(eduboost_consent_gate_blocks_total[5m])) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: Consent gate block rate increased
+
+      - alert: EduBoostBackupFailure
+        expr: increase(eduboost_backup_failures_total[24h]) > 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: PostgreSQL backup automation reported a failure
+
+      - alert: EduBoostBackupStale
+        expr: time() - eduboost_backup_last_success_timestamp > 93600
+        for: 15m
+        labels:
+          severity: critical
+        annotations:
+          summary: No successful PostgreSQL backup reported in 26 hours
+
+  - name: eduboost_runtime_warnings
+    rules:
+      - alert: EduBoostHigh4xxRate
+        expr: sum(rate(eduboost_http_requests_total{status_code=~"4.."}[10m])) / clamp_min(sum(rate(eduboost_http_requests_total[10m])), 0.001) > 0.2
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: API 4xx rate is high
+
+      - alert: EduBoostLLMErrorSpike
+        expr: sum(rate(eduboost_llm_requests_total{status="error"}[10m])) > 0.2
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: LLM provider error rate increased
+
+      - alert: EduBoostLLMCostSpike
+        expr: max(eduboost_llm_estimated_cost_usd_daily) > 25
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: Estimated daily LLM cost exceeded budget threshold
+
+      - alert: EduBoostBackgroundJobFailures
+        expr: sum(rate(eduboost_arq_jobs_total{status="failed"}[10m])) > 0.1
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: Background job failure rate increased

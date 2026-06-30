@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T11:03:03Z",
+  "scope_id": "grade6_sepedi_first_additional_language_en",
+  "scope_status": "review",
+  "review_policy_id": "educator_review_required_v1",
+  "decision": "dev_approved",
+  "dev_approved": true,
+  "stage_unlocked": true,
+  "approved": false,
+  "legal_decision": "pending",
+  "legal_approved": false,
+  "reviewer_id": "dev-content-review-2026-06-03",
+  "evidence_url": "dev-reviewed-generated-artifacts",
+  "legal_evidence_url": "pending",
+  "approved_at": "2026-06-03T11:03:03Z",
+  "notes": "Developer reviewed generated artifacts for staging/import unblock. Educator and legal production approvals remain pending.",
+  "layer_review": {
+    "topic_map": {
+      "path": "data/caps/topic_maps/grade6_sepedi_first_additional_language_en.json",
+      "sha256": "sha256:a8cab19cfe80271f98875235d5f77f8408aa69f60f7848d97f4629b7f25b0f13",
+      "record_count": 32,
+      "review_ready_count": 32,
+      "review_status": "dev_approved"
+    },
+    "diagnostic_items": {
+      "path": "data/generated/items/grade6_sepedi_first_additional_language_en_item_bank.json",
+      "sha256": "sha256:f691c4a01e85a54690874e62c33caa252658cb01fae1852c274d8a2d8c8c59f2",
+      "record_count": 640,
+      "review_ready_count": 640,
+      "review_status": "dev_approved"
+    },
+    "lessons": {
+      "path": "data/generated/lessons/grade6_sepedi_first_additional_language_en_lessons.json",
+      "sha256": "sha256:399ba7aa75720fe935d739892a7fc00af9bdf4e6752bcf641e11e0c8a272952e",
+      "record_count": 128,
+      "review_ready_count": 128,
+      "review_status": "dev_approved"
+    },
+    "assessment_blueprints": {
+      "path": "data/generated/assessment_blueprints/grade6_sepedi_first_additional_language_en_blueprints.json",
+      "sha256": "sha256:88094324daa3497d327580b9051a199e8eea982955c528bc4d972c9af4a3acf9",
+      "record_count": 49,
+      "review_ready_count": 49,
+      "review_status": "dev_approved"
+    },
+    "study_plan_templates": {
+      "path": "data/generated/study_plans/grade6_sepedi_first_additional_language_en_templates.json",
+      "sha256": "sha256:a12e0ae940a7ef27e0b1399f6214da7bbe106546aed92f5058bcaadecd4eb688",
+      "record_count": 16,
+      "review_ready_count": 16,
+      "review_status": "dev_approved"
+    }
+  },
+  "promotion_readiness": {
+    "staging_eligible": true,
+    "production_eligible": false,
+    "blockers": [
+      "Scope is still in review and requires dev_approved or educator approval before staging unlock.",
+      "Review evidence packet is missing.",
+      "Educator approval is required for production.",
+      "Legal approval is required for production."
+    ]
+  }
+}

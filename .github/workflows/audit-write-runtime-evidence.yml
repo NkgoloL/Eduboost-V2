@@ -1,0 +1,79 @@
+name: audit-write-runtime-evidence
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_flow:
+        description: "Run the audited flow command and verify audit_events changed"
+        required: true
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit-write-runtime-evidence:
+    name: Audit write runtime evidence
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    env:
+      PYTHONPATH: .
+      AUDIT_WRITE_DATABASE_URL: ${{ secrets.AUDIT_WRITE_DATABASE_URL }}
+      AUDIT_WRITE_TRACE_ID: audit-write-${{ github.run_id }}-${{ github.sha }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip psycopg2-binary
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt || true
+          fi
+          if [ -f requirements-dev.txt ]; then
+            python -m pip install -r requirements-dev.txt || true
+          fi
+
+      - name: Verify required secrets
+        run: |
+          test -n "${AUDIT_WRITE_DATABASE_URL}"
+          case "${AUDIT_WRITE_DATABASE_URL}" in
+            *"<"*|*">"*|*"example.com"*|*"localhost"*|*"127.0.0.1"*)
+              echo "AUDIT_WRITE_DATABASE_URL is placeholder/local and cannot be used"
+              exit 1
+              ;;
+          esac
+
+      - name: Run audit write runtime evidence
+        run: |
+          echo "=== Running flow script directly ==="
+          PYTHONPATH=. python scripts/audit_write_flow_command.py
+          echo "=== Running evidence script ==="
+          export AUDIT_WRITE_FLOW_COMMAND="PYTHONPATH=. python scripts/audit_write_flow_command.py"
+          if [ "${{ github.event.inputs.run_flow }}" = "true" ]; then
+            python scripts/audit_write_runtime_evidence.py --run-flow
+          else
+            python scripts/audit_write_runtime_evidence.py
+          fi
+
+      - name: Upload audit write evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: audit-write-runtime-evidence
+          path: |
+            docs/release/audit_write_runtime_evidence_status.json
+            docs/release/audit_write_runtime_evidence_status.md
+          if-no-files-found: warn

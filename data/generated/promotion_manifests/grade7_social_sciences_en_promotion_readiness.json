@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-13T20:40:55Z",
+  "scope_id": "grade7_social_sciences_en",
+  "grade": 7,
+  "phase": "senior",
+  "subject_code": "SS",
+  "subject": "Social Sciences",
+  "language": "en",
+  "status": "review",
+  "learner_visible": false,
+  "source_ready": true,
+  "review_evidence": {
+    "status": "dev_approved",
+    "approved": false,
+    "stage_unlocked": true,
+    "production_unlocked": false,
+    "manifest_path": "data/generated/review_manifests/grade7_social_sciences_en_educator_review.json",
+    "stage_blockers": [],
+    "production_blockers": [
+      "Educator approval is required for production.",
+      "Legal approval is required for production."
+    ],
+    "blockers": [
+      "Educator approval is required for production.",
+      "Legal approval is required for production."
+    ]
+  },
+  "lesson_quality": {
+    "passed": true,
+    "quarantined": false,
+    "lesson_count": 128,
+    "failed_lesson_count": 0,
+    "blockers": [],
+    "aggregate": {
+      "missing_lesson_body": 0,
+      "missing_title": 0,
+      "missing_scope_id": 0,
+      "missing_variant": 0,
+      "missing_teacher_notes": 0,
+      "missing_parent_notes": 0,
+      "missing_extension_prompts": 0,
+      "practice_questions_correct_option_a": 0,
+      "lessons_with_identical_answer_keys": 0,
+      "placeholder_worked_example_steps": 0
+    }
+  },
+  "staging_eligible": true,
+  "production_eligible": false,
+  "caps_ref_count": 16,
+  "layers": {
+    "topic_map": {
+      "layer": "topic_map",
+      "relative_path": "data/caps/topic_maps/grade7_social_sciences_en.json",
+      "exists": true,
+      "sha256": "sha256:0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "record_count": 32,
+      "approved_count": 32,
+      "review_ready_count": 32,
+      "idempotency_key": "grade7_social_sciences_en:topic_map:sha256:0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f"
+    },
+    "diagnostic_items": {
+      "layer": "diagnostic_items",
+      "relative_path": "data/generated/items/grade7_social_sciences_en_item_bank.json",
+      "exists": true,
+      "sha256": "sha256:291199432ed192f2a785c80e938db68f3d720a5b97b01a3001929c5d87b39c49",
+      "record_count": 640,
+      "approved_count": 640,
+      "review_ready_count": 640,
+      "idempotency_key": "grade7_social_sciences_en:diagnostic_items:sha256:291199432ed192f2a785c80e938db68f3d720a5b97b01a3001929c5d87b39c49"
+    },
+    "lessons": {
+      "layer": "lessons",
+      "relative_path": "data/generated/lessons/grade7_social_sciences_en_lessons.json",
+      "exists": true,
+      "sha256": "sha256:4039c21687e4959239392a0dbeb59f3e5f63d32c52580290d85dcacf5144bd8c",
+      "record_count": 128,
+      "approved_count": 128,
+      "review_ready_count": 128,
+      "idempotency_key": "grade7_social_sciences_en:lessons:sha256:4039c21687e4959239392a0dbeb59f3e5f63d32c52580290d85dcacf5144bd8c"
+    },
+    "assessment_blueprints": {
+      "layer": "assessment_blueprints",
+      "relative_path": "data/generated/assessment_blueprints/grade7_social_sciences_en_blueprints.json",
+      "exists": true,
+      "sha256": "sha256:163e7b69e3965ac9bb13dee9d1a363e85efdd0f8551b1fcecf8c8c4b8505e383",
+      "record_count": 65,
+      "approved_count": 65,
+      "review_ready_count": 65,
+      "idempotency_key": "grade7_social_sciences_en:assessment_blueprints:sha256:163e7b69e3965ac9bb13dee9d1a363e85efdd0f8551b1fcecf8c8c4b8505e383"
+    },
+    "study_plan_templates": {
+      "layer": "study_plan_templates",
+      "relative_path": "data/generated/study_plans/grade7_social_sciences_en_templates.json",
+      "exists": true,
+      "sha256": "sha256:943ec57398ba82a6ef24074e1efc93765b3175e19bd0a0a41c75a9c36207b4d7",
+      "record_count": 16,
+      "approved_count": 16,
+      "review_ready_count": 16,
+      "idempotency_key": "grade7_social_sciences_en:study_plan_templates:sha256:943ec57398ba82a6ef24074e1efc93765b3175e19bd0a0a41c75a9c36207b4d7"
+    }
+  },
+  "blockers": [
+    "Scope is still review; activate scope intentionally before learner visibility.",
+    "Educator approval is required for production.",
+    "Legal approval is required for production."
+  ],
+  "idempotency_keys": {
+    "topic_map": "grade7_social_sciences_en:topic_map:sha256:0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+    "diagnostic_items": "grade7_social_sciences_en:diagnostic_items:sha256:291199432ed192f2a785c80e938db68f3d720a5b97b01a3001929c5d87b39c49",
+    "lessons": "grade7_social_sciences_en:lessons:sha256:4039c21687e4959239392a0dbeb59f3e5f63d32c52580290d85dcacf5144bd8c",
+    "assessment_blueprints": "grade7_social_sciences_en:assessment_blueprints:sha256:163e7b69e3965ac9bb13dee9d1a363e85efdd0f8551b1fcecf8c8c4b8505e383",
+    "study_plan_templates": "grade7_social_sciences_en:study_plan_templates:sha256:943ec57398ba82a6ef24074e1efc93765b3175e19bd0a0a41c75a9c36207b4d7"
+  },
+  "rollback_manifest": {
+    "scope_id": "grade7_social_sciences_en",
+    "restore_scope_status": "review",
+    "artifact_paths": {
+      "topic_map": "data/caps/topic_maps/grade7_social_sciences_en.json",
+      "diagnostic_items": "data/generated/items/grade7_social_sciences_en_item_bank.json",
+      "lessons": "data/generated/lessons/grade7_social_sciences_en_lessons.json",
+      "assessment_blueprints": "data/generated/assessment_blueprints/grade7_social_sciences_en_blueprints.json",
+      "study_plan_templates": "data/generated/study_plans/grade7_social_sciences_en_templates.json"
+    },
+    "artifact_hashes": {
+      "topic_map": "sha256:0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "diagnostic_items": "sha256:291199432ed192f2a785c80e938db68f3d720a5b97b01a3001929c5d87b39c49",
+      "lessons": "sha256:4039c21687e4959239392a0dbeb59f3e5f63d32c52580290d85dcacf5144bd8c",
+      "assessment_blueprints": "sha256:163e7b69e3965ac9bb13dee9d1a363e85efdd0f8551b1fcecf8c8c4b8505e383",
+      "study_plan_templates": "sha256:943ec57398ba82a6ef24074e1efc93765b3175e19bd0a0a41c75a9c36207b4d7"
+    }
+  }
+}

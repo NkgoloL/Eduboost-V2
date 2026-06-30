@@ -1,0 +1,869 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T19:38:48Z",
+  "scope": "grade3_coding_and_robotics_en",
+  "grade": 3,
+  "subject": "Coding and Robotics",
+  "weekly_template": [
+    {
+      "day": "Mon",
+      "caps_ref": "3.CR.1.1",
+      "topic": "Pattern recognition and decomposition",
+      "activity_type": "lesson",
+      "lesson_variant": "standard",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-1-1-short-practice-v2",
+      "minutes": 40,
+      "teacher_cue": "Teach Pattern recognition and decomposition using the worked examples, then set the short practice blueprint."
+    },
+    {
+      "day": "Tue",
+      "caps_ref": "3.CR.1.2",
+      "topic": "Algorithms and coding",
+      "activity_type": "practice",
+      "lesson_variant": "visual",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-1-2-short-practice-v2",
+      "minutes": 25,
+      "teacher_cue": "Run the short practice quiz for Algorithms and coding and note missed misconception tags."
+    },
+    {
+      "day": "Wed",
+      "caps_ref": "3.CR.1.3",
+      "topic": "Robotics and mechanical systems",
+      "activity_type": "lesson",
+      "lesson_variant": "story",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-1-3-short-practice-v2",
+      "minutes": 40,
+      "teacher_cue": "Teach Robotics and mechanical systems using the worked examples, then set the short practice blueprint."
+    },
+    {
+      "day": "Thu",
+      "caps_ref": "3.CR.1.4",
+      "topic": "Digital concepts",
+      "activity_type": "practice",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-1-4-short-practice-v2",
+      "minutes": 25,
+      "teacher_cue": "Run the short practice quiz for Digital concepts and note missed misconception tags."
+    },
+    {
+      "day": "Fri",
+      "caps_ref": "3.CR.2.1",
+      "topic": "Algorithms and coding",
+      "activity_type": "review",
+      "lesson_variant": "real_world_sa",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-2-1-recheck-v2",
+      "minutes": 25,
+      "teacher_cue": "Use the recheck blueprint for Algorithms and coding and assign step-by-step remediation where needed."
+    }
+  ],
+  "topic_sequence": [
+    {
+      "caps_ref": "3.CR.1.1",
+      "topic": "Pattern recognition and decomposition",
+      "subtopic": "Pattern recognition and decomposition",
+      "term": 1,
+      "prerequisites": [],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to pattern recognition and decomposition.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:06259bb150015123b48f0650b1777546838a60c1f62c1c5816f29274c987c10a",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "3.CR.1.2",
+      "topic": "Algorithms and coding",
+      "subtopic": "Algorithms and coding",
+      "term": 1,
+      "prerequisites": [
+        "3.CR.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to algorithms and coding.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:bf3ba7449803d496511ae8957c76feca95509dfdbc7ddafe63a97db4ff05b78c",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "3.CR.1.3",
+      "topic": "Robotics and mechanical systems",
+      "subtopic": "Robotics and mechanical systems",
+      "term": 1,
+      "prerequisites": [
+        "3.CR.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to robotics and mechanical systems.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:f9a9e8d25e6fd9cc842e8147154063b54e2eca1f6be3bf3a80f531ff79d0bbc7",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "3.CR.1.4",
+      "topic": "Digital concepts",
+      "subtopic": "Digital concepts",
+      "term": 1,
+      "prerequisites": [
+        "3.CR.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to digital concepts.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:4c33bef95b67953678fbe86cf78ea412825ea83d162f758507dfccd11838ac83",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "3.CR.2.1",
+      "topic": "Algorithms and coding",
+      "subtopic": "Algorithms and coding",
+      "term": 2,
+      "prerequisites": [
+        "3.CR.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to algorithms and coding.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:90a4f91a3b0731bfbfe8bf4e7a87c597d46a619438aa02943e9769fbe92adf99",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "3.CR.2.2",
+      "topic": "Robotics and sensors",
+      "subtopic": "Robotics and sensors",
+      "term": 2,
+      "prerequisites": [
+        "3.CR.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to robotics and sensors.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:c58f642ab4047dbf2e557fe2b083b60f79e51bdaa430c3f60190557bde6c4b5e",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "3.CR.2.3",
+      "topic": "Data and digital systems",
+      "subtopic": "Data and digital systems",
+      "term": 2,
+      "prerequisites": [
+        "3.CR.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to data and digital systems.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:645aba92d318c0c677170e9af20a7ec730b0c37739a3d16484f22b1c960940e0",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "3.CR.2.4",
+      "topic": "Problem solving",
+      "subtopic": "Problem solving",
+      "term": 2,
+      "prerequisites": [
+        "3.CR.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to problem solving.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:d706444bd59e72469df6db949270511de3c79de2412474832345290772ceb140",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "3.CR.3.1",
+      "topic": "Coding projects",
+      "subtopic": "Coding projects",
+      "term": 3,
+      "prerequisites": [
+        "3.CR.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to coding projects.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:c15b7d4563a40fb52eadf359934ce2660398d57fc02a425d06550f39557509ae",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "3.CR.3.2",
+      "topic": "Robotics projects",
+      "subtopic": "Robotics projects",
+      "term": 3,
+      "prerequisites": [
+        "3.CR.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to robotics projects.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:febde022f12c16a21db511fa0760b84c2ed6dbfb3023e6ad597ca5032b88a1ee",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "3.CR.3.3",
+      "topic": "Internet and digital citizenship",
+      "subtopic": "Internet and digital citizenship",
+      "term": 3,
+      "prerequisites": [
+        "3.CR.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to internet and digital citizenship.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:ab272e883f5683523f938f13afbba41ae5d033aa939542603234eeb189d68c11",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "3.CR.3.4",
+      "topic": "Integrated design challenge",
+      "subtopic": "Integrated design challenge",
+      "term": 3,
+      "prerequisites": [
+        "3.CR.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to integrated design challenge.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:c6f0ad18910a706da8422665de898eda2e55b3fc0642d73c5f18af7f59df05a7",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "3.CR.4.1",
+      "topic": "Consolidation, debugging and assessment",
+      "subtopic": "Consolidation, debugging and assessment",
+      "term": 4,
+      "prerequisites": [
+        "3.CR.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to consolidation, debugging and assessment.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:c5d4118562d714c402dd6e6aa39482d35acbc1f9dcd8c3c70c4628d95ff1b9a7",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "3.CR.4.2",
+      "topic": "Robotics control",
+      "subtopic": "Robotics control",
+      "term": 4,
+      "prerequisites": [
+        "3.CR.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to robotics control.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:6355ac9e9238fba4cf9ec01361313e2465a7641004215d8797fb4d8800a636c3",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "3.CR.4.3",
+      "topic": "Data representation",
+      "subtopic": "Data representation",
+      "term": 4,
+      "prerequisites": [
+        "3.CR.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to data representation.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:34028c9f01e54c1fc30b993033517de202893547df4825cb52e6514de44ae48f",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "3.CR.4.4",
+      "topic": "Integrated project",
+      "subtopic": "Integrated project",
+      "term": 4,
+      "prerequisites": [
+        "3.CR.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to integrated project.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:036031425bed0315c27f0ff954b1da560296c0775548aaff9e615180d348c3ab",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    }
+  ],
+  "remediation_mappings": [
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "3.CR.1.1",
+      "topic": "Pattern recognition and decomposition",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "3.CR.1.1",
+      "topic": "Pattern recognition and decomposition",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "3.CR.1.2",
+      "topic": "Algorithms and coding",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-1-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "3.CR.1.2",
+      "topic": "Algorithms and coding",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-1-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "3.CR.1.3",
+      "topic": "Robotics and mechanical systems",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-1-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "3.CR.1.3",
+      "topic": "Robotics and mechanical systems",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-1-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "3.CR.1.4",
+      "topic": "Digital concepts",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-1-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "3.CR.1.4",
+      "topic": "Digital concepts",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-1-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "3.CR.2.1",
+      "topic": "Algorithms and coding",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-2-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "3.CR.2.1",
+      "topic": "Algorithms and coding",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-2-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "3.CR.2.2",
+      "topic": "Robotics and sensors",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-2-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "3.CR.2.2",
+      "topic": "Robotics and sensors",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-2-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "3.CR.2.3",
+      "topic": "Data and digital systems",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-2-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "3.CR.2.3",
+      "topic": "Data and digital systems",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-2-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "3.CR.2.4",
+      "topic": "Problem solving",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-2-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "3.CR.2.4",
+      "topic": "Problem solving",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-2-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "3.CR.3.1",
+      "topic": "Coding projects",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-3-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "3.CR.3.1",
+      "topic": "Coding projects",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-3-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "3.CR.3.2",
+      "topic": "Robotics projects",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-3-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "3.CR.3.2",
+      "topic": "Robotics projects",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-3-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "3.CR.3.3",
+      "topic": "Internet and digital citizenship",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-3-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "3.CR.3.3",
+      "topic": "Internet and digital citizenship",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-3-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "3.CR.3.4",
+      "topic": "Integrated design challenge",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-3-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "3.CR.3.4",
+      "topic": "Integrated design challenge",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-3-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "3.CR.4.1",
+      "topic": "Consolidation, debugging and assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-4-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "3.CR.4.1",
+      "topic": "Consolidation, debugging and assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-4-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "3.CR.4.2",
+      "topic": "Robotics control",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-4-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "3.CR.4.2",
+      "topic": "Robotics control",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-4-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "3.CR.4.3",
+      "topic": "Data representation",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-4-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "3.CR.4.3",
+      "topic": "Data representation",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-4-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "3.CR.4.4",
+      "topic": "Integrated project",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-4-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "3.CR.4.4",
+      "topic": "Integrated project",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-4-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    }
+  ],
+  "extension_mappings": [
+    {
+      "caps_ref": "3.CR.1.1",
+      "topic": "Pattern recognition and decomposition",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-1-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "3.CR.1.2",
+      "topic": "Algorithms and coding",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-1-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "3.CR.1.3",
+      "topic": "Robotics and mechanical systems",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-1-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "3.CR.1.4",
+      "topic": "Digital concepts",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-1-4-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "3.CR.2.1",
+      "topic": "Algorithms and coding",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-2-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "3.CR.2.2",
+      "topic": "Robotics and sensors",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-2-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "3.CR.2.3",
+      "topic": "Data and digital systems",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-2-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "3.CR.2.4",
+      "topic": "Problem solving",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-2-4-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "3.CR.3.1",
+      "topic": "Coding projects",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-3-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "3.CR.3.2",
+      "topic": "Robotics projects",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-3-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "3.CR.3.3",
+      "topic": "Internet and digital citizenship",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-3-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "3.CR.3.4",
+      "topic": "Integrated design challenge",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-3-4-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "3.CR.4.1",
+      "topic": "Consolidation, debugging and assessment",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-4-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "3.CR.4.2",
+      "topic": "Robotics control",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-4-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "3.CR.4.3",
+      "topic": "Data representation",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-4-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "3.CR.4.4",
+      "topic": "Integrated project",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade3-coding-and-robotics-en-3-CR-4-4-mastery-check-v2",
+      "minutes": 25
+    }
+  ],
+  "pacing_guidance": {
+    "lesson_block_minutes": 25,
+    "practice_block_minutes": 15,
+    "review_day": "Fri",
+    "notes": "Alternate lesson and practice days. Use recheck blueprints after practice when misconception tags were missed."
+  }
+}

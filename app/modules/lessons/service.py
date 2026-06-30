@@ -22,14 +22,13 @@ Example:
         )
 """
 
-from datetime import UTC, datetime
 from typing import TYPE_CHECKING
 from uuid import UUID
 
 from fastapi import HTTPException, status
 from sqlalchemy import select
 
-from app.core.database import AsyncSessionLocal
+from app.core.llm_gateway import active_provider_label
 from app.models import KnowledgeGap, Lesson
 from app.repositories.auth_repository import GuardianRepository
 from app.repositories.learner_repository import LearnerRepository
@@ -129,7 +128,7 @@ class LessonService:
 
         guardian = await self._guardian_repo.get_by_id(learner.guardian_id)
         tier = guardian.subscription_tier if guardian else "free"
-        
+
         learner_context = await self._build_learner_context(body.learner_id, body.subject)
 
         # 3. Call AI Service (Executive/Ether)
@@ -152,7 +151,7 @@ class LessonService:
             ) from exc
 
         # 4. Persist and Audit
-        provider = "cache" if from_cache else "groq"
+        provider = "cache" if from_cache else active_provider_label()
         lesson = await self._lesson_repo.create(
             learner_id=body.learner_id,
             grade=learner.grade,
@@ -161,14 +160,18 @@ class LessonService:
             language=body.language,
             archetype=learner.archetype,
             content=self._render_lesson_content(payload),
+            caps_reference=getattr(payload, "caps_reference", None),
+            alignment_confidence=getattr(payload, "alignment_confidence", 0.0),
+            quality_score=getattr(payload, "quality_score", 0.0),
+            trust_label=(getattr(payload, "trust_label", None).model_dump() if getattr(payload, "trust_label", None) else {}),
             llm_provider=provider,
             served_from_cache=from_cache,
         )
-        
+
         await self._audit_service.lesson_generated(
             learner.pseudonym_id, body.subject, body.topic, provider
         )
-        
+
         # Note: Caller is responsible for commit if needed, or we can commit here
         await self.db.commit()
 
@@ -180,6 +183,36 @@ class LessonService:
             from_cache,
             provider,
         )
+    async def complete_lesson(self, lesson_id: str) -> None:
+        """Mark a lesson as completed.
+
+        Args:
+            lesson_id: UUID of the lesson to complete.
+        """
+        await self._lesson_repo.mark_completed(lesson_id)
+        await self.db.commit()
+
+    async def record_feedback(self, lesson_id: str, score: int) -> None:
+        """Record learner feedback score for a lesson.
+
+        Args:
+            lesson_id: UUID of the lesson.
+            score: Feedback score (1-5).
+        """
+        await self._lesson_repo.record_feedback(lesson_id, score)
+        await self.db.commit()
+
+    async def get_lesson_by_id(self, lesson_id: str) -> Lesson | None:
+        """Fetch a single lesson by its UUID.
+
+        Args:
+            lesson_id: UUID of the lesson to fetch.
+
+        Returns:
+            Lesson | None: The lesson model if found, else None.
+        """
+        result = await self.db.execute(select(Lesson).where(Lesson.id == lesson_id))
+        return result.scalar_one_or_none()
 
     async def _build_learner_context(self, learner_id: str, subject: str) -> dict:
         """Build learner context from recent lessons and unresolved knowledge gaps.

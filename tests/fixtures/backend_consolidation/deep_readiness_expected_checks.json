@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "checks": [
+    {"name": "database_connectivity", "mode": "read_only", "required": true},
+    {"name": "alembic_current_revision", "mode": "read_only", "required": true},
+    {"name": "required_core_tables", "mode": "read_only", "required": true},
+    {"name": "audit_persistence_available", "mode": "read_only", "required": true},
+    {"name": "consent_persistence_available", "mode": "read_only", "required": true},
+    {"name": "redis_connectivity", "mode": "ping_only", "required": false},
+    {"name": "audit_write_probe", "mode": "internal_only_disabled_by_default", "required": false}
+  ]
+}

@@ -4,7 +4,6 @@ Statistical correctness validation for ability estimation.
 """
 from __future__ import annotations
 
-import math
 import pytest
 
 from app.modules.diagnostics.irt_engine import IRTEngine, IRTItem, IRTSession

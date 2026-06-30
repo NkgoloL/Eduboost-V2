@@ -1,0 +1,1573 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T19:39:25Z",
+  "scope": "grade4_coding_and_robotics_en",
+  "grade": 4,
+  "subject": "Coding and Robotics",
+  "source_item_bank": "diagnostic_items",
+  "item_difficulty_bands": [
+    "easy",
+    "moderate",
+    "on_level",
+    "challenging"
+  ],
+  "blueprints": [
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-baseline-diagnostic-v2",
+      "type": "baseline_diagnostic",
+      "title": "Grade 4 Coding and Robotics Baseline Diagnostic",
+      "description": "Samples approved items across all 16 CAPS topics in grade4_coding_and_robotics_en to establish a starting mastery profile.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.1.1",
+          "4.CR.1.2",
+          "4.CR.1.3",
+          "4.CR.1.4",
+          "4.CR.2.1",
+          "4.CR.2.2",
+          "4.CR.2.3",
+          "4.CR.2.4",
+          "4.CR.3.1",
+          "4.CR.3.2",
+          "4.CR.3.3",
+          "4.CR.3.4",
+          "4.CR.4.1",
+          "4.CR.4.2",
+          "4.CR.4.3",
+          "4.CR.4.4"
+        ],
+        "item_count": 24,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 6,
+          "moderate": 6,
+          "on_level": 6,
+          "challenging": 6
+        },
+        "require_unique_stems": true,
+        "max_items_per_caps_ref": 2
+      },
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-1-1-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Pattern recognition and decomposition Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.CR.1.1 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.1.1"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:fb22f7bb7cefb69529e76311eab27f6ad69ce455ff18858be4456d646d4df641"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-1-1-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Pattern recognition and decomposition Short Practice",
+      "description": "Short practice quiz after the standard lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.1.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-1-1-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Pattern recognition and decomposition Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.1.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-1-1-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Pattern recognition and decomposition Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.1.1"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-1-2-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Algorithms and coding Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.CR.1.2 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.1.2"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:6fad0be1bbe63dd94987e3c1423a58ddd6ba232195cc3a0bd57f545a270982a7"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-1-2-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Algorithms and coding Short Practice",
+      "description": "Short practice quiz after the visual lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.1.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "visual",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-1-2-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Algorithms and coding Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.1.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-1-2-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Algorithms and coding Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.1.2"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-1-3-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Robotics and mechanical systems Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.CR.1.3 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.1.3"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:c9a1b028f5823d049122a4b2d24ef6604af155a2975cbdc4aa7908ed5f79303c"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-1-3-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Robotics and mechanical systems Short Practice",
+      "description": "Short practice quiz after the story lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.1.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "story",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-1-3-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Robotics and mechanical systems Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.1.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-1-3-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Robotics and mechanical systems Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.1.3"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-1-4-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Digital concepts Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.CR.1.4 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.1.4"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:540bbc98c5f05e2653f3190c29adc23299164dec3a3363b3deb52ec4ebbd0c5e"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-1-4-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Digital concepts Short Practice",
+      "description": "Short practice quiz after the step by step lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.1.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-1-4-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Digital concepts Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.1.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-1-4-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Digital concepts Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.1.4"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-2-1-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Algorithms and coding Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.CR.2.1 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.2.1"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:34ae43d80ef3d9ab1d5ef25a08c06012c0fa96b661da03d688f3f631e07c33c9"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-2-1-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Algorithms and coding Short Practice",
+      "description": "Short practice quiz after the real world sa lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.2.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "real_world_sa",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-2-1-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Algorithms and coding Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.2.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-2-1-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Algorithms and coding Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.2.1"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-2-2-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Robotics and sensors Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.CR.2.2 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.2.2"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:7317fbdacec81fefd4d4ff163cdcc160e60da3e162fdc65f69be33d46cdc2d47"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-2-2-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Robotics and sensors Short Practice",
+      "description": "Short practice quiz after the exam style lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.2.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-2-2-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Robotics and sensors Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.2.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-2-2-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Robotics and sensors Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.2.2"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-2-3-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Data and digital systems Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.CR.2.3 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.2.3"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:2363dc62f2f0b918d5901c988b923eb99e705f5b39bd689f7f140c02ac32dc31"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-2-3-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Data and digital systems Short Practice",
+      "description": "Short practice quiz after the standard lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.2.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-2-3-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Data and digital systems Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.2.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-2-3-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Data and digital systems Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.2.3"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-2-4-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Problem solving Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.CR.2.4 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.2.4"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:a0e0ca228f9b77c5add7757236934dd0c3a6182dba982b969b80d0131061569b"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-2-4-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Problem solving Short Practice",
+      "description": "Short practice quiz after the visual lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.2.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "visual",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-2-4-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Problem solving Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.2.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-2-4-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Problem solving Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.2.4"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-3-1-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Coding projects Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.CR.3.1 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.3.1"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:7e873c653474284cd7f39b3e5f6e0607c652d099fec69b52912e4f53a1de72ab"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-3-1-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Coding projects Short Practice",
+      "description": "Short practice quiz after the story lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.3.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "story",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-3-1-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Coding projects Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.3.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-3-1-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Coding projects Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.3.1"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-3-2-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Robotics projects Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.CR.3.2 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.3.2"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:acf8ab63006b609031092f5c037ea27ddc8006f99479a1cd00f1563e43d91833"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-3-2-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Robotics projects Short Practice",
+      "description": "Short practice quiz after the step by step lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.3.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-3-2-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Robotics projects Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.3.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-3-2-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Robotics projects Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.3.2"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-3-3-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Internet and digital citizenship Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.CR.3.3 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.3.3"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:cfe0e2cdec4741202f67a15e4515fd3abdb0a9fa03bbdd45ef8aa16bb496248d"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-3-3-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Internet and digital citizenship Short Practice",
+      "description": "Short practice quiz after the real world sa lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.3.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "real_world_sa",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-3-3-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Internet and digital citizenship Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.3.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-3-3-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Internet and digital citizenship Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.3.3"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-3-4-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Integrated design challenge Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.CR.3.4 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.3.4"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:51f9655612bce7d6359684755f84bfbabb781b5a693da64956a1dd20adfe4e6b"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-3-4-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Integrated design challenge Short Practice",
+      "description": "Short practice quiz after the exam style lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.3.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-3-4-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Integrated design challenge Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.3.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-3-4-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Integrated design challenge Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.3.4"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-4-1-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Consolidation, debugging and assessment Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.CR.4.1 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.4.1"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:de2c1e5e4e020416e25a17af2ee2175f3afc187e766a5a5c5b1461f398671852"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-4-1-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Consolidation, debugging and assessment Short Practice",
+      "description": "Short practice quiz after the standard lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.4.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-4-1-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Consolidation, debugging and assessment Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.4.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-4-1-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Consolidation, debugging and assessment Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.4.1"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-4-2-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Robotics control Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.CR.4.2 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.4.2"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:dfe98de7f34199bda623a560043b982f7f681da74cc751ed8d31bf1e6879002e"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-4-2-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Robotics control Short Practice",
+      "description": "Short practice quiz after the visual lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.4.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "visual",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-4-2-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Robotics control Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.4.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-4-2-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Robotics control Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.4.2"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-4-3-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Data representation Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.CR.4.3 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.4.3"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:d53ded349913256c00e8bdaeedcad460b7ece99f27c1988f4e490f0f5fcc7665"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-4-3-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Data representation Short Practice",
+      "description": "Short practice quiz after the story lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.4.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "story",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-4-3-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Data representation Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.4.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-4-3-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Data representation Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.4.3"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-4-4-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Integrated project Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.CR.4.4 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.4.4"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:b426e28c9c6fefe06a99e0157a4e9d5ddf94abe27d031169af1ca5eec14f4a75"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-4-4-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Integrated project Short Practice",
+      "description": "Short practice quiz after the step by step lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.4.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-4-4-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Integrated project Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.4.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-coding-and-robotics-en-4-CR-4-4-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Integrated project Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.CR.4.4"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    }
+  ]
+}

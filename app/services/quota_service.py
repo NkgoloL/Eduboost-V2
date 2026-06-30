@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import hashlib
 import json
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 
 import redis.asyncio as aioredis
 import structlog
@@ -44,7 +44,7 @@ class QuotaService:
         self._redis = redis_client
 
     def _quota_key(self, guardian_id: str) -> str:
-        today = datetime.now(UTC).strftime("%Y-%m-%d")
+        today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
         return _QUOTA_KEY.format(guardian_id=guardian_id, date=today)
 
     async def check_and_reserve(

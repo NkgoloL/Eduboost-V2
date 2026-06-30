@@ -1,0 +1,24 @@
+evidence:
+  - id: pr-cf-007-staging-verification
+    title: Content Factory all-scope staging verification
+    status: implemented-local
+    artifacts:
+      - docs/content_factory/staging_verification.md
+      - docs/backlog/pr_cf_007_all_scope_staging_verification.md
+      - docs/openapi.json
+    verification:
+      - focused backend tests passed
+      - frontend type-check passed
+      - disposable Postgres migration smoke passed
+  - id: pr-cf-008-controlled-generation
+    title: Content Factory controlled generation executor
+    status: implemented-local
+    artifacts:
+      - docs/content_factory/controlled_generation.md
+      - docs/backlog/pr_cf_008_controlled_generation_executor.md
+      - docs/openapi.json
+    verification:
+      - focused backend tests passed
+      - OpenAPI check passed
+      - frontend type-check passed
+      - safety greps completed

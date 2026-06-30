@@ -1,73 +1,45 @@
-import type { ApiErrorShape, JobAcceptedResponse, JobStatusResponse } from "./types";
+import { ApiError, decodeJwtPayload, extractErrorMessage, generateRequestId, isEnvelope, normalizeApiBaseUrl, normalizeApiError, parseJson } from "./http";
+import type { JobAcceptedResponse, JobStatusResponse } from "./types";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v2";
+const ABSOLUTE_API_BASE = normalizeApiBaseUrl(process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v2");
+const PROXY_BASE_PATH = "/api/backend";
 
-/**
- * Enhanced fetch wrapper that handles authorization headers
- * and standardizes error responses.
- */
+export { ApiError, decodeJwtPayload, extractErrorMessage } from "./http";
+
 export function getApiBaseUrl() {
-  return BASE_URL;
+  return ABSOLUTE_API_BASE;
 }
 
-export function extractErrorMessage(error: unknown, fallback = "API request failed") {
-  if (error instanceof Error) return error.message;
-  // If it's already a string, use it (handy for simple throws)
-  if (typeof error === "string") return error;
-  return fallback;
-}
+export async function fetchApi<T>(endpoint: string, options: RequestInit = {}, retryOnUnauthorized = true): Promise<T> {
+  const requestId = generateRequestId();
+  const headers = buildHeaders(options.headers, options.body);
+  headers.set("X-Request-ID", requestId);
 
-export async function fetchApi<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
-  // Try to get tokens from localStorage
-  let token: string | null = null;
-  if (typeof window !== "undefined") {
-    // Guardian auth is the V2 token source for parent and learner-scoped calls.
-    if (endpoint.includes("/auth") || endpoint.includes("/consent") || endpoint.includes("/parent")) {
-      token = localStorage.getItem("guardian_token");
-    } else {
-      token = localStorage.getItem("guardian_token") || localStorage.getItem("learner_token");
-    }
-  }
-
-  const headers: HeadersInit = {
-    "Content-Type": "application/json",
-    ...(token && { Authorization: `Bearer ${token}` }),
-    ...options.headers,
-  };
-
-  const url = endpoint.startsWith("http") ? endpoint : `${BASE_URL}${endpoint}`;
+  const url = resolveRequestUrl(endpoint);
 
   try {
-    const response = await fetch(url, { ...options, headers });
-    
-    // For 204 No Content, return null
-    if (response.status === 204) return null as T;
+    const response = await fetch(url, {
+      ...options,
+      headers,
+      credentials: options.credentials || "include",
+    });
+    const payload = await parseJson(response);
 
-    const data = (await response.json().catch(() => null)) as ApiErrorShape | T | null;
-
-    if (!response.ok) {
-      let errorMessage = "API request failed";
-      
-      if (data && typeof data === "object") {
-        errorMessage = (data as any).detail || (data as any).message || errorMessage;
+    if (response.status === 401 && retryOnUnauthorized && !endpoint.startsWith("/api/auth/refresh")) {
+      const refreshed = await refreshSession();
+      if (refreshed) {
+        return fetchApi<T>(endpoint, options, false);
       }
-
-      if (response.status === 401) {
-        errorMessage = "Your session has expired. Please log in again.";
-      } else if (response.status === 403) {
-        errorMessage = (data as any)?.detail || (data as any)?.message || "You don't have permission to perform this action.";
-      } else if (response.status === 429) {
-        errorMessage = "Too many requests. Please wait a moment or upgrade to Premium.";
-      } else if (response.status === 503 || response.status === 504) {
-        errorMessage = "The server is currently busy. Please try again in a few seconds.";
-      } else {
-        errorMessage = (data as any)?.detail || (data as any)?.message || response.statusText || errorMessage;
-      }
-
-      throw new Error(errorMessage);
     }
 
-    return data as T;
+    if (!response.ok) {
+      throw new ApiError(normalizeApiError(payload, response));
+    }
+
+    if (isEnvelope<T>(payload) && "data" in payload) {
+      return payload.data as T;
+    }
+    return payload as T;
   } catch (error: unknown) {
     const message = extractErrorMessage(error, "Unknown API error");
     console.error(`[API Error] ${options.method || "GET"} ${url}:`, message);
@@ -75,7 +47,13 @@ export async function fetchApi<T>(endpoint: string, options: RequestInit = {}): 
   }
 }
 
-const sleep = (ms: number) => new Promise((resolve) => window.setTimeout(resolve, ms));
+const sleep = (ms: number) => new Promise((resolve) => {
+  if (typeof window !== "undefined" && window?.setTimeout) {
+    window.setTimeout(resolve, ms);
+  } else {
+    setTimeout(resolve, ms);
+  }
+});
 
 export async function waitForJobResult<T>(
   accepted: JobAcceptedResponse,
@@ -93,4 +71,34 @@ export async function waitForJobResult<T>(
     await sleep(pollIntervalMs);
   }
   throw new Error(`Timed out waiting for ${accepted.operation}`);
+}
+
+function resolveRequestUrl(endpoint: string) {
+  if (endpoint.startsWith("http")) return endpoint;
+  if (endpoint.startsWith("/api/")) return endpoint;
+  const normalized = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
+  return `${PROXY_BASE_PATH}${normalized}`;
+}
+
+function buildHeaders(inputHeaders: HeadersInit | undefined, body: RequestInit["body"]) {
+  const headers = new Headers(inputHeaders);
+  const hasContentType = Array.from(headers.keys()).some((key) => key.toLowerCase() === "content-type");
+  const shouldSetJson = body !== undefined && !(body instanceof FormData) && !(body instanceof Blob) && typeof body !== "string";
+
+  if (!hasContentType && body !== undefined && !(body instanceof FormData) && !(body instanceof Blob)) {
+    headers.set("Content-Type", typeof body === "string" ? "application/json" : "application/json");
+  } else if (!hasContentType && shouldSetJson) {
+    headers.set("Content-Type", "application/json");
+  }
+
+  return headers;
+}
+
+async function refreshSession() {
+  try {
+    const response = await fetch("/api/auth/refresh", { method: "POST" });
+    return response.ok;
+  } catch (error) {
+    return false;
+  }
 }

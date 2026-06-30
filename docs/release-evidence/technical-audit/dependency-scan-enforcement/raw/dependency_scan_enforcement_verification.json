@@ -1,0 +1,137 @@
+{
+  "findings": [
+    {
+      "message": "dependency-scan workflow exists",
+      "valid": true
+    },
+    {
+      "message": "dependency-scan job ids are unique",
+      "valid": true
+    },
+    {
+      "message": "job pip-audit present",
+      "valid": true
+    },
+    {
+      "message": "job pnpm-audit present",
+      "valid": true
+    },
+    {
+      "message": "job dependency-review present",
+      "valid": true
+    },
+    {
+      "message": "job summary present",
+      "valid": true
+    },
+    {
+      "message": "forbidden snippet absent: || true",
+      "valid": true
+    },
+    {
+      "message": "forbidden snippet absent: actions/upload-artifact@v7",
+      "valid": true
+    },
+    {
+      "message": "forbidden snippet absent: steps.publish.outputs.result_url",
+      "valid": true
+    },
+    {
+      "message": "forbidden snippet absent: needs.npm-audit",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: security-events: write",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: actions/upload-artifact@v4",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: uses: pnpm/action-setup@v4",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: cache: 'pnpm'",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: cache-dependency-path: app/frontend/pnpm-lock.yaml",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: fail-on-severity: critical",
+      "valid": true
+    },
+    {
+      "message": "required snippet present: needs.pnpm-audit.result",
+      "valid": true
+    },
+    {
+      "message": "pip-audit uses fail-closed shell options",
+      "valid": true
+    },
+    {
+      "message": "pip-audit scans requirements matrix",
+      "valid": true
+    },
+    {
+      "message": "pip-audit JSON artifact is captured",
+      "valid": true
+    },
+    {
+      "message": "pip-audit matrix covers tracked requirement sets",
+      "valid": true
+    },
+    {
+      "message": "pnpm-audit uses fail-closed shell options",
+      "valid": true
+    },
+    {
+      "message": "pnpm audit uses critical threshold",
+      "valid": true
+    },
+    {
+      "message": "pnpm audit JSON artifact is captured",
+      "valid": true
+    },
+    {
+      "message": "pnpm critical vulnerabilities fail the job",
+      "valid": true
+    },
+    {
+      "message": "pnpm audit installs from frozen lockfile",
+      "valid": true
+    },
+    {
+      "message": "dependency scan uploads audit artifacts",
+      "valid": true
+    },
+    {
+      "message": "all dependency scan artifact uploads use v4",
+      "valid": true
+    },
+    {
+      "message": "TA-SECURITY-001 blocker registered",
+      "valid": true
+    },
+    {
+      "message": "TA-SECURITY-001 status dependency_scan_enforcement_ready",
+      "valid": true
+    },
+    {
+      "message": "active_slice is 05-dependency-scan-enforcement",
+      "valid": true
+    }
+  ],
+  "job_ids": [
+    "pip-audit",
+    "pnpm-audit",
+    "dependency-review",
+    "summary"
+  ],
+  "remote_scan_run_claimed": false,
+  "valid": true,
+  "workflow": ".github/workflows/dependency-scan.yml"
+}

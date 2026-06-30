@@ -90,10 +90,10 @@ class TestParentPortalIntegration:
         # Setup consent check - first call returns granted, second returns None (no revocation)
         consent_result = MagicMock()
         consent_result.scalar_one_or_none.return_value = mock_consent_granted
-        
+
         revoked_result = MagicMock()
         revoked_result.scalar_one_or_none.return_value = None
-        
+
         mastery_result = MagicMock()
         mastery_result.scalars.return_value.all.return_value = []
 
@@ -199,10 +199,10 @@ class TestParentPortalIntegration:
         # Setup consent check - first call returns granted, second returns None (no revocation)
         consent_result = MagicMock()
         consent_result.scalar_one_or_none.return_value = mock_consent_granted
-        
+
         revoked_result = MagicMock()
         revoked_result.scalar_one_or_none.return_value = None
-        
+
         # Setup diagnostic sessions
         sessions = [
             MagicMock(
@@ -244,10 +244,10 @@ class TestParentPortalIntegration:
         # Setup consent check
         consent_result = MagicMock()
         consent_result.scalar_one_or_none.return_value = mock_consent_granted
-        
+
         revoked_result = MagicMock()
         revoked_result.scalar_one_or_none.return_value = None
-        
+
         # Setup: no diagnostic sessions
         diag_result = MagicMock()
         diag_result.scalars.return_value.all.return_value = []

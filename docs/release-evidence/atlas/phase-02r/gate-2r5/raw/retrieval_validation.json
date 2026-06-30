@@ -1,0 +1,77 @@
+{
+  "activation_key": "CAPS:g4:MATH:en:global",
+  "binding_epoch": 1,
+  "corpus_version_id": "corpus-g4math-en-v1",
+  "errors": [],
+  "gate": "2R.5",
+  "manifest_sha256": "18c288d98b094d87f44e58f13351abb83dc44b210dbd95e97215b9e4bf6c8d98",
+  "projection_sha256": "f3f1b24f95bfa30cacc34501e52d0e01e4413eb46121f29699e7213573b84c5d",
+  "retrieval": {
+    "hits": [
+      {
+        "activation_key": "CAPS:g4:MATH:en:global",
+        "authority_tier": "tier_1",
+        "binding_epoch": 1,
+        "chunk_version_id": "chunk-g4math-numbers-001",
+        "corpus_version_id": "corpus-g4math-en-v1",
+        "curriculum_node_version_id": "node-g4math-numbers-whole-numbers-v1",
+        "language": "en",
+        "mapping_version_id": "map-g4math-numbers-001",
+        "matched_terms": [
+          "and",
+          "compare",
+          "numbers",
+          "place",
+          "value",
+          "whole"
+        ],
+        "page_end": 12,
+        "page_start": 12,
+        "quality_score": 0.97,
+        "retrieval_text": "Learners compare and order whole numbers and describe place value in Grade 4 Mathematics.",
+        "review_status": "approved",
+        "rights_status": "approved",
+        "score": 0.97,
+        "source_snapshot_hash": "ed15616965efb7a309f60e6051381d64521a255912a63768f6af8686ee021e0e",
+        "source_version_id": "src-caps-g4math-v1",
+        "text_sha256": "20e63562afa7cf00fa564a37bc79f5670fd55130f712eb4e4d09d6d1293eb02f"
+      },
+      {
+        "activation_key": "CAPS:g4:MATH:en:global",
+        "authority_tier": "tier_1",
+        "binding_epoch": 1,
+        "chunk_version_id": "chunk-g4math-fractions-001",
+        "corpus_version_id": "corpus-g4math-en-v1",
+        "curriculum_node_version_id": "node-g4math-fractions-common-v1",
+        "language": "en",
+        "mapping_version_id": "map-g4math-fractions-001",
+        "matched_terms": [
+          "and",
+          "compare"
+        ],
+        "page_end": 37,
+        "page_start": 37,
+        "quality_score": 0.94,
+        "retrieval_text": "Learners recognise, describe and compare common fractions using diagrams and number lines.",
+        "review_status": "approved",
+        "rights_status": "approved",
+        "score": 0.313333,
+        "source_snapshot_hash": "ed15616965efb7a309f60e6051381d64521a255912a63768f6af8686ee021e0e",
+        "source_version_id": "src-caps-g4math-v1",
+        "text_sha256": "930f0f08b53a22c05e21cf0df6fb7f03702d699594606b763b7536fd70c42602"
+      }
+    ],
+    "query": {
+      "activation_key": "CAPS:g4:MATH:en:global",
+      "binding_epoch": 1,
+      "corpus_version_id": "corpus-g4math-en-v1",
+      "language": "en",
+      "query_text": "compare whole numbers and place value",
+      "required_curriculum_node_version_ids": [],
+      "top_k": 2
+    },
+    "retrieval_policy_version": "phase02r-gate2r5-retrieval-v1",
+    "source_snapshot_hash": "d1ce07f36257f30b5e55425f20a0669510e0ba6bd690e37cd4c89ae0e220b0cc"
+  },
+  "status": "passed"
+}

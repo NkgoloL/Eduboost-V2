@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "templates": [
+    {
+      "template_id": "caps_topic_map_extraction_v1",
+      "applies_to_curriculum": "CAPS",
+      "required_outputs": [
+        "terms",
+        "topics",
+        "subtopics",
+        "assessment_standards",
+        "prerequisites",
+        "common_misconceptions",
+        "source_citations",
+        "review_status"
+      ],
+      "review_checkpoints": [
+        "source_hash_verified",
+        "caps_refs_complete",
+        "topic_sequence_reviewed",
+        "assessment_standards_reviewed",
+        "human_reviewer_recorded"
+      ]
+    }
+  ]
+}

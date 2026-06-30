@@ -24,7 +24,7 @@ def download_file(url, dest_path):
     if dest_path.exists():
         print(f"Skipping {dest_path.name}, already exists.")
         return True
-    
+
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     }

@@ -21,17 +21,17 @@ PHASE_TO_GRADES = {
 def get_target_grades(doc):
     title = doc.get("title", "").lower()
     phase = doc.get("phase", "")
-    
+
     # Check for specific grade mentions first
     grade_match = re.search(r"grade\s*(r|[1-7])", title)
     if not grade_match:
         grade_match = re.search(r"gr\s*(r|[1-7])", title)
-        
+
     if grade_match:
         target = grade_match.group(1)
         # If it's a specific grade, only return that one
         return [target]
-    
+
     # If no specific grade, use the phase mapping
     return PHASE_TO_GRADES.get(phase, [])
 
@@ -59,16 +59,16 @@ def main():
             if not line.strip(): continue
             doc = json.loads(line)
             pdf_path = Path(doc.get("local_pdf"))
-            
+
             if not pdf_path.exists():
                 LOGGER.warning(f"File not found: {pdf_path}")
                 continue
-                
+
             grades = get_target_grades(doc)
             for grade in grades:
                 dest_dir = OUTPUT_BASE_DIR / f"grade{grade}"
                 dest_path = dest_dir / pdf_path.name
-                
+
                 if not dest_path.exists():
                     # Create relative symlink
                     rel_src = os.path.relpath(pdf_path, dest_dir)

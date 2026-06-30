@@ -29,7 +29,7 @@ class TestGamificationXPCalculation:
     def test_calculate_level_from_xp(self, gamification_service):
         """Test that level is correctly calculated from XP."""
         # Level formula: level = (total_xp // 100) + 1
-        
+
         assert gamification_service._calculate_level(0) == 1
         assert gamification_service._calculate_level(99) == 1
         assert gamification_service._calculate_level(100) == 2
@@ -41,13 +41,13 @@ class TestGamificationXPCalculation:
         """Test XP needed for next level."""
         # At 0 XP (level 1), need 100 to reach level 2
         assert gamification_service._xp_to_next_level(0) == 100
-        
+
         # At 50 XP (level 1), need 50 more
         assert gamification_service._xp_to_next_level(50) == 50
-        
+
         # At 100 XP (level 2), need 100 more (to reach level 3)
         assert gamification_service._xp_to_next_level(100) == 100
-        
+
         # At 199 XP (level 2), need 1 more
         assert gamification_service._xp_to_next_level(199) == 1
 
@@ -148,10 +148,10 @@ class TestGamificationBadges:
     def test_available_badges_for_grade_r3(self, gamification_service):
         """Test that Grade R-3 learners get appropriate badges."""
         badges = gamification_service._get_available_badges(grade=2)
-        
+
         assert badges is not None
         assert len(badges) > 0
-        
+
         # Should include streak badges for grades R-3
         badge_keys = [b.get("badge_key") for b in badges]
         assert any("streak" in key for key in badge_keys)
@@ -159,10 +159,10 @@ class TestGamificationBadges:
     def test_available_badges_for_grade_4plus(self, gamification_service):
         """Test that Grade 4-7 learners get appropriate badges."""
         badges = gamification_service._get_available_badges(grade=5)
-        
+
         assert badges is not None
         assert len(badges) > 0
-        
+
         # Should include discovery badges for grades 4-7
         badge_keys = [b.get("badge_key") for b in badges]
         # Mix of discovery, mastery, and milestone badges expected
@@ -171,7 +171,7 @@ class TestGamificationBadges:
     def test_badge_thresholds_are_realistic(self, gamification_service):
         """Test that badge thresholds are reasonable."""
         badges = gamification_service._get_available_badges(grade=3)
-        
+
         for badge in badges:
             if "threshold" in badge:
                 # Threshold should be positive
@@ -182,10 +182,10 @@ class TestGamificationBadges:
     def test_streaks_badges_exist(self, gamification_service):
         """Test that streak badges are properly configured."""
         badges = gamification_service._get_available_badges(grade=2)
-        
+
         streak_badges = [b for b in badges if b.get("badge_type") == "streak"]
         assert len(streak_badges) > 0
-        
+
         # Should have multiple streak levels
         streak_thresholds = [b["threshold"] for b in streak_badges]
         assert len(streak_thresholds) >= 3  # At least 3-5 streak levels
@@ -298,11 +298,11 @@ class TestGamificationStreakLogic:
     def test_streak_bonus_increases_with_days(self):
         """Test that streak bonus scales with streak days."""
         from app.api.services.gamification_service import XP_CONFIG
-        
+
         # Verify streak bonus is properly configured
         assert "streak_bonus" in XP_CONFIG
         assert XP_CONFIG["streak_bonus"] == 5  # 5 XP per day
-        
+
         # So a 10-day streak = 50 XP bonus
         expected_bonus = 10 * XP_CONFIG["streak_bonus"]
         assert expected_bonus == 50
@@ -310,9 +310,9 @@ class TestGamificationStreakLogic:
     def test_streak_thresholds_are_ordered(self):
         """Test that streak thresholds are properly ordered."""
         from app.api.services.gamification_service import STREAK_THRESHOLDS
-        
+
         # Should be in ascending order
-        assert STREAK_THRESHOLDS == sorted(STREAK_THRESHOLDS)
+        assert sorted(STREAK_THRESHOLDS) == STREAK_THRESHOLDS
         # Should have multiple levels
         assert len(STREAK_THRESHOLDS) >= 3
 
@@ -323,7 +323,7 @@ class TestGamificationXPConfig:
     def test_xp_config_is_complete(self):
         """Test that all XP types are configured."""
         from app.api.services.gamification_service import XP_CONFIG
-        
+
         expected_types = [
             "lesson_complete",
             "lesson_mastery",
@@ -333,7 +333,7 @@ class TestGamificationXPConfig:
             "badge_earned",
             "concept_mastered",
         ]
-        
+
         for xp_type in expected_types:
             assert xp_type in XP_CONFIG
             assert XP_CONFIG[xp_type] > 0
@@ -341,7 +341,7 @@ class TestGamificationXPConfig:
     def test_xp_values_are_reasonable(self):
         """Test that XP values are in reasonable ranges."""
         from app.api.services.gamification_service import XP_CONFIG
-        
+
         # Individual activity XP should be in range [10, 100]
         for activity_type in ["lesson_complete", "diagnostic_complete", "daily_login"]:
             xp_value = XP_CONFIG[activity_type]
@@ -350,10 +350,10 @@ class TestGamificationXPConfig:
     def test_grade_band_config_complete(self):
         """Test that grade band config is properly set up."""
         from app.api.services.gamification_service import GRADE_BAND_CONFIG
-        
+
         assert "R-3" in GRADE_BAND_CONFIG
         assert "4-7" in GRADE_BAND_CONFIG
-        
+
         for band in ["R-3", "4-7"]:
             config = GRADE_BAND_CONFIG[band]
             assert "badge_types" in config

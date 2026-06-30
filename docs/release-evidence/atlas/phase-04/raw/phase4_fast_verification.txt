@@ -1,0 +1,45 @@
+
+[1/8] Compile Phase 4 code
+
+[2/8] Release-blocking Ruff rules
+All checks passed!
+
+[3/8] Phase 4 unit, route, state-machine, and selection tests
+..........                                                               [100%]
+10 passed in 2.77s
+
+[4/8] Migration graph and schema model integrity
+Migration graph OK: 38 revisions, head=20260615_0900_p4_irt_quality
+Schema integrity OK
+
+[5/8] Router and ARQ registration
+Phase 4 routes OK: 10
+IRT watchdog registered as durable function and nightly cron
+
+[6/8] Fail-closed serving and rewrite-review contracts
+No automatic answer-option mutation; rewrites return to Phase 3 review
+
+[7/8] Phase 1-3 fast regressions
+All checks passed!
+Migration graph OK: 38 revisions, head=20260615_0900_p4_irt_quality
+........................................................................ [ 74%]
+ss.......................                                                [100%]
+95 passed, 2 skipped in 0.94s
+Phase 1 registration OK: 8 mounted paths
+NOTICE: PHASE1_TEST_DATABASE_URL is unset; PostgreSQL closeout checks remain pending.
+...............                                                          [100%]
+15 passed in 0.41s
+Migration graph OK: 38 revisions, head=20260615_0900_p4_irt_quality
+Phase 2 import/dimension contract OK
+.........                                                                [100%]
+9 passed in 0.74s
+........................................................................ [ 75%]
+.......................                                                  [100%]
+95 passed in 0.93s
+...............                                                          [100%]
+15 passed in 0.51s
+Migration graph OK: 38 revisions, head=20260615_0900_p4_irt_quality
+Phase 3 route/policy contract OK: 9 routes
+
+[8/8] Legacy single-review path remains absent
+PHASE 4 FAST VERIFICATION PASSED

@@ -1,0 +1,183 @@
+ Network eduboost-phase02r-verification_default Creating 
+ Network eduboost-phase02r-verification_default Created 
+ Container eduboost-phase02r-verification-postgres-1 Creating 
+ Container eduboost-phase02r-verification-postgres-1 Created 
+ Container eduboost-phase02r-verification-postgres-1 Starting 
+ Container eduboost-phase02r-verification-postgres-1 Started 
+== Upgrade from the Phase 1-7 reconciliation head ==
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001_v2_consolidated, Initial V2 Consolidated Schema Migration
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001_v2_consolidated, Initial V2 Consolidated Schema Migration
+INFO  [alembic.runtime.migration] Running upgrade 0001_v2_consolidated -> merge_2026_05_01, Merge Alembic heads into a single linear graph.
+INFO  [alembic.runtime.migration] Running upgrade 0001_v2_consolidated -> merge_2026_05_01, Merge Alembic heads into a single linear graph.
+INFO  [alembic.runtime.migration] Running upgrade merge_2026_05_01 -> 0005_seed_irt_items, Seed V2 IRT item bank with calibrated starter items.
+INFO  [alembic.runtime.migration] Running upgrade merge_2026_05_01 -> 0005_seed_irt_items, Seed V2 IRT item bank with calibrated starter items.
+INFO  [alembic.runtime.migration] Running upgrade merge_2026_05_01 -> 0002_add_missing_tables, Retire legacy missing-table migration in favour of canonical V2 schema.
+INFO  [alembic.runtime.migration] Running upgrade merge_2026_05_01 -> 0002_add_missing_tables, Retire legacy missing-table migration in favour of canonical V2 schema.
+INFO  [alembic.runtime.migration] Running upgrade 0002_add_missing_tables -> 0003_add_items_correct, Add items_correct to DiagnosticSession
+INFO  [alembic.runtime.migration] Running upgrade 0002_add_missing_tables -> 0003_add_items_correct, Add items_correct to DiagnosticSession
+INFO  [alembic.runtime.migration] Running upgrade 0003_add_items_correct -> 0004_add_rlhf_pipeline, Add RLHF pipeline tables
+INFO  [alembic.runtime.migration] Running upgrade 0003_add_items_correct -> 0004_add_rlhf_pipeline, Add RLHF pipeline tables
+INFO  [alembic.runtime.migration] Running upgrade 0004_add_rlhf_pipeline, 0005_seed_irt_items -> 94b628483fa7, Merge remaining heads 0004 and 0005
+INFO  [alembic.runtime.migration] Running upgrade 0004_add_rlhf_pipeline, 0005_seed_irt_items -> 94b628483fa7, Merge remaining heads 0004 and 0005
+INFO  [alembic.runtime.migration] Running upgrade 94b628483fa7 -> 0006, alembic/versions/0006_v2_audit_events.py
+─────────────────────────────────────────────────────────────────────────────
+Task 23: V2 Append-Only PostgreSQL Audit Service
+INFO  [alembic.runtime.migration] Running upgrade 94b628483fa7 -> 0006, alembic/versions/0006_v2_audit_events.py
+─────────────────────────────────────────────────────────────────────────────
+Task 23: V2 Append-Only PostgreSQL Audit Service
+INFO  [alembic.runtime.migration] Running upgrade 0006 -> 0007_caps_irt_item_bank, Expand the CAPS-aligned IRT item bank across Grades R-7 and core subjects.
+INFO  [alembic.runtime.migration] Running upgrade 0006 -> 0007_caps_irt_item_bank, Expand the CAPS-aligned IRT item bank across Grades R-7 and core subjects.
+INFO  [alembic.runtime.migration] Running upgrade 0007_caps_irt_item_bank -> 0008_lesson_completion_tracking, Track lesson completion timestamps for parent reporting and offline sync.
+INFO  [alembic.runtime.migration] Running upgrade 0007_caps_irt_item_bank -> 0008_lesson_completion_tracking, Track lesson completion timestamps for parent reporting and offline sync.
+INFO  [alembic.runtime.migration] Running upgrade 0008_lesson_completion_tracking -> 771fb3ac38b8, add missing production indexes and partial indexes
+INFO  [alembic.runtime.migration] Running upgrade 0008_lesson_completion_tracking -> 771fb3ac38b8, add missing production indexes and partial indexes
+INFO  [alembic.runtime.migration] Running upgrade 771fb3ac38b8 -> 0009_add_subject_mastery, Add subject_mastery table
+INFO  [alembic.runtime.migration] Running upgrade 771fb3ac38b8 -> 0009_add_subject_mastery, Add subject_mastery table
+INFO  [alembic.runtime.migration] Running upgrade 0009_add_subject_mastery -> 20260507_1200, POPIA consent states and tamper-evident audit chain.
+INFO  [alembic.runtime.migration] Running upgrade 0009_add_subject_mastery -> 20260507_1200, POPIA consent states and tamper-evident audit chain.
+INFO  [alembic.runtime.migration] Running upgrade 20260507_1200 -> 20260507_1330, database integrity constraints and production indexes.
+INFO  [alembic.runtime.migration] Running upgrade 20260507_1200 -> 20260507_1330, database integrity constraints and production indexes.
+INFO  [alembic.runtime.migration] Running upgrade 20260507_1330 -> 20260507_1500, Add AI/CAPS diagnostics safety metadata.
+INFO  [alembic.runtime.migration] Running upgrade 20260507_1330 -> 20260507_1500, Add AI/CAPS diagnostics safety metadata.
+INFO  [alembic.runtime.migration] Running upgrade 20260507_1500 -> 20260509_01, P1-02 — Alembic migration 0009: diagnostic_items table
+=======================================================
+Place this file at:
+    alembic/versions/0009_add_diagnostic_items_table.py
+INFO  [alembic.runtime.migration] Running upgrade 20260507_1500 -> 20260509_01, P1-02 — Alembic migration 0009: diagnostic_items table
+=======================================================
+Place this file at:
+    alembic/versions/0009_add_diagnostic_items_table.py
+INFO  [alembic.runtime.migration] Running upgrade 20260509_01 -> 20260509_02, P1-03 — Alembic migration 0010: item_exposures table
+=====================================================
+Place this file at:
+    alembic/versions/0010_add_item_exposures_table.py
+INFO  [alembic.runtime.migration] Running upgrade 20260509_01 -> 20260509_02, P1-03 — Alembic migration 0010: item_exposures table
+=====================================================
+Place this file at:
+    alembic/versions/0010_add_item_exposures_table.py
+INFO  [alembic.runtime.migration] Running upgrade 20260509_02 -> 20260510_0100, Add AL LLM safety fields to lessons.
+INFO  [alembic.runtime.migration] Running upgrade 20260509_02 -> 20260510_0100, Add AL LLM safety fields to lessons.
+INFO  [alembic.runtime.migration] Running upgrade 20260510_0100 -> 20260510_0200, Add diagnostics assessment lifecycle and mastery tables.
+INFO  [alembic.runtime.migration] Running upgrade 20260510_0100 -> 20260510_0200, Add diagnostics assessment lifecycle and mastery tables.
+INFO  [alembic.runtime.migration] Running upgrade 20260510_0200 -> 20260510_0300, alembic/versions/0010_popia_consent_audit_dsr.py
+Creates all POPIA-related tables (§4.1 §4.3 §4.5).
+Sets up row-level trigger to prevent UPDATE/DELETE on audit_events.
+INFO  [alembic.runtime.migration] Running upgrade 20260510_0200 -> 20260510_0300, alembic/versions/0010_popia_consent_audit_dsr.py
+Creates all POPIA-related tables (§4.1 §4.3 §4.5).
+Sets up row-level trigger to prevent UPDATE/DELETE on audit_events.
+INFO  [alembic.runtime.migration] Running upgrade 20260510_0300 -> 20260516_0100, alembic/versions/20260516_0100_remove_base_sentinel.py
+INFO  [alembic.runtime.migration] Running upgrade 20260510_0300 -> 20260516_0100, alembic/versions/20260516_0100_remove_base_sentinel.py
+INFO  [alembic.runtime.migration] Running upgrade 20260516_0100 -> 3f8a2c1d9e04, Legacy auth-extension branch placeholder.
+INFO  [alembic.runtime.migration] Running upgrade 20260516_0100 -> 3f8a2c1d9e04, Legacy auth-extension branch placeholder.
+INFO  [alembic.runtime.migration] Running upgrade 20260516_0100 -> 20260523_0000, add_auth_extensions
+INFO  [alembic.runtime.migration] Running upgrade 20260516_0100 -> 20260523_0000, add_auth_extensions
+INFO  [alembic.runtime.migration] Running upgrade 20260523_0000 -> 20260524_1800, repair auth extension schema drift
+INFO  [alembic.runtime.migration] Running upgrade 20260523_0000 -> 20260524_1800, repair auth extension schema drift
+INFO  [alembic.runtime.migration] Running upgrade 20260524_1800 -> 20260525_1531, Content Factory ETL provenance integration.
+INFO  [alembic.runtime.migration] Running upgrade 20260524_1800 -> 20260525_1531, Content Factory ETL provenance integration.
+INFO  [alembic.runtime.migration] Running upgrade 20260525_1531 -> 20260525_1900, Content Factory control plane expansion.
+INFO  [alembic.runtime.migration] Running upgrade 20260525_1531 -> 20260525_1900, Content Factory control plane expansion.
+INFO  [alembic.runtime.migration] Running upgrade 20260525_1900 -> 20260525_2100, Persist Content Factory staging verification reports.
+INFO  [alembic.runtime.migration] Running upgrade 20260525_1900 -> 20260525_2100, Persist Content Factory staging verification reports.
+INFO  [alembic.runtime.migration] Running upgrade 20260525_2100 -> 20260525_2200, Add Content Factory review assignments.
+INFO  [alembic.runtime.migration] Running upgrade 20260525_2100 -> 20260525_2200, Add Content Factory review assignments.
+INFO  [alembic.runtime.migration] Running upgrade 20260525_2200 -> 20260525_2300, Add Content Factory staging seed items and artifacts.
+INFO  [alembic.runtime.migration] Running upgrade 20260525_2200 -> 20260525_2300, Add Content Factory staging seed items and artifacts.
+INFO  [alembic.runtime.migration] Running upgrade 20260525_2300 -> 20260526_0300, Add Content Factory production promotion artifacts.
+INFO  [alembic.runtime.migration] Running upgrade 20260525_2300 -> 20260526_0300, Add Content Factory production promotion artifacts.
+INFO  [alembic.runtime.migration] Running upgrade 20260526_0300 -> 20260528_1600, POPIA consent versioning implementation.
+INFO  [alembic.runtime.migration] Running upgrade 20260526_0300 -> 20260528_1600, POPIA consent versioning implementation.
+INFO  [alembic.runtime.migration] Running upgrade 20260528_1600 -> 20260528_1700, POPIA erasure request state machine implementation.
+INFO  [alembic.runtime.migration] Running upgrade 20260528_1600 -> 20260528_1700, POPIA erasure request state machine implementation.
+INFO  [alembic.runtime.migration] Running upgrade 20260528_1700, 3f8a2c1d9e04 -> f2faf5aa12fd, Merge migration branches
+INFO  [alembic.runtime.migration] Running upgrade 20260528_1700, 3f8a2c1d9e04 -> f2faf5aa12fd, Merge migration branches
+INFO  [alembic.runtime.migration] Running upgrade f2faf5aa12fd -> 20260609_0800_practice_sessions, Phase 2.2 — Add durable practice_sessions table to replace in-memory _SESSIONS dict
+INFO  [alembic.runtime.migration] Running upgrade f2faf5aa12fd -> 20260609_0800_practice_sessions, Phase 2.2 — Add durable practice_sessions table to replace in-memory _SESSIONS dict
+INFO  [alembic.runtime.migration] Running upgrade 20260609_0800_practice_sessions -> 20260614_0900_p1_validation, Allow validation reports to reference a task before an artifact exists.
+INFO  [alembic.runtime.migration] Running upgrade 20260609_0800_practice_sessions -> 20260614_0900_p1_validation, Allow validation reports to reference a task before an artifact exists.
+INFO  [alembic.runtime.migration] Running upgrade 20260614_0900_p1_validation -> 20260614_1200_p2_retrieval, Phase 2 semantic retrieval corpus and pgvector indexes.
+INFO  [alembic.runtime.migration] Running upgrade 20260614_0900_p1_validation -> 20260614_1200_p2_retrieval, Phase 2 semantic retrieval corpus and pgvector indexes.
+INFO  [alembic.runtime.migration] Running upgrade 20260614_1200_p2_retrieval -> 20260614_1500_p3_consensus, Phase 3 educator consensus and content-governance controls.
+INFO  [alembic.runtime.migration] Running upgrade 20260614_1200_p2_retrieval -> 20260614_1500_p3_consensus, Phase 3 educator consensus and content-governance controls.
+INFO  [alembic.runtime.migration] Running upgrade 20260614_1500_p3_consensus -> 20260615_0900_p4_irt_quality, Phase 4 IRT quality and self-healing controls.
+INFO  [alembic.runtime.migration] Running upgrade 20260614_1500_p3_consensus -> 20260615_0900_p4_irt_quality, Phase 4 IRT quality and self-healing controls.
+INFO  [alembic.runtime.migration] Running upgrade 20260615_0900_p4_irt_quality -> 20260615_1200_p5_tutor, Phase 5 safe learner tutor sessions, messages, and escalations.
+INFO  [alembic.runtime.migration] Running upgrade 20260615_0900_p4_irt_quality -> 20260615_1200_p5_tutor, Phase 5 safe learner tutor sessions, messages, and escalations.
+INFO  [alembic.runtime.migration] Running upgrade 20260615_1200_p5_tutor -> 20260615_1500_p6_ai_ops, Phase 6 durable AI operations accounting.
+INFO  [alembic.runtime.migration] Running upgrade 20260615_1200_p5_tutor -> 20260615_1500_p6_ai_ops, Phase 6 durable AI operations accounting.
+INFO  [alembic.runtime.migration] Running upgrade 20260615_1500_p6_ai_ops -> 20260615_1800_p7_curriculum, Phase 7 curriculum coverage and training-data governance.
+INFO  [alembic.runtime.migration] Running upgrade 20260615_1500_p6_ai_ops -> 20260615_1800_p7_curriculum, Phase 7 curriculum coverage and training-data governance.
+INFO  [alembic.runtime.migration] Running upgrade 20260615_1800_p7_curriculum -> 20260615_2100_p17_reconcile, Phases 1-7 reconciliation controls.
+INFO  [alembic.runtime.migration] Running upgrade 20260615_1800_p7_curriculum -> 20260615_2100_p17_reconcile, Phases 1-7 reconciliation controls.
+DEBUG: Creating enum itemtype
+DEBUG: Creating enum subjectcode
+DEBUG: Creating enum language
+DEBUG: Creating enum reviewstatus
+DEBUG: Creating enum itemsource
+DEBUG: Creating enum difficultyband
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade 20260615_2100_p17_reconcile -> 20260616_1200_phase02r_authority, Phase 2R source authority, rights, inventory, and review ledgers.
+INFO  [alembic.runtime.migration] Running upgrade 20260615_2100_p17_reconcile -> 20260616_1200_phase02r_authority, Phase 2R source authority, rights, inventory, and review ledgers.
+== Phase 2R PostgreSQL tests ==
+...                                                                      [100%]
+3 passed in 0.26s
+== Load real Gate 2R.1 authority and rights records ==
+{
+  "canonical_source_url": "https://www.education.gov.za/LinkClick.aspx?fileticket=dr7zg3CFCr8%3d&tabid=572&portalid=0&mid=1568&forcedownload=true",
+  "counts": {
+    "inventory_items": 8,
+    "inventory_versions": 1,
+    "rights_decisions": 1,
+    "source_versions": 1,
+    "sources": 1
+  },
+  "downloaded_source": false,
+  "file_size_bytes": 2097873,
+  "inventory_items": 8,
+  "inventory_version_id": "d5c85f3a-a6fd-509d-8194-f2937aeadcf5",
+  "object_store_uri": "https://eduboostcaps06022047.blob.core.windows.net/caps-sources/intermediate/mathematics/en/caps_intermediate_phase_mathematics_grade4_6-7fec668a6d3b0ed4.pdf",
+  "rights_decision_id": "c8db96bb-25a8-5186-92f6-1d64e30da0cc",
+  "source_id": "e1fcafe7-d3e2-5605-acae-e0e77fa4886e",
+  "source_manifest_path": "data/caps/source_documents/manifest.json",
+  "source_manifest_sha256": "4a97e16ccda496d34ded3962570fabfedc28573ff487d276569f29e36d6d68cb",
+  "source_path": "data/caps/source_documents/raw/caps_intermediate_phase_mathematics_grade4_6.pdf",
+  "source_sha256": "7fec668a6d3b0ed4ae6974a9739970a2128a80553589f682ff5d5bffc02a783e",
+  "source_verified_at": "2026-06-22T10:23:30Z",
+  "source_version_id": "ec65ef5f-8ed1-5cf3-baa4-49fc4e5d9faa",
+  "status": "loaded",
+  "valid": true
+}
+== Downgrade and re-upgrade ==
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade 20260616_1200_phase02r_authority -> 20260615_2100_p17_reconcile, Phase 2R source authority, rights, inventory, and review ledgers.
+INFO  [alembic.runtime.migration] Running downgrade 20260616_1200_phase02r_authority -> 20260615_2100_p17_reconcile, Phase 2R source authority, rights, inventory, and review ledgers.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+20260615_2100_p17_reconcile
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade 20260615_2100_p17_reconcile -> 20260616_1200_phase02r_authority, Phase 2R source authority, rights, inventory, and review ledgers.
+INFO  [alembic.runtime.migration] Running upgrade 20260615_2100_p17_reconcile -> 20260616_1200_phase02r_authority, Phase 2R source authority, rights, inventory, and review ledgers.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+20260616_1200_phase02r_authority
+Migration graph OK: 44 revisions, head=20260618_1200_phase02r_grounding
+Schema integrity OK
+Phase 2R authority schema validation passed
+PHASE 02R GATE 2R.1 POSTGRESQL VERIFICATION PASSED

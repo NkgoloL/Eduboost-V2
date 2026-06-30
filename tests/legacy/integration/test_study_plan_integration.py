@@ -39,17 +39,17 @@ class TestStudyPlanIntegration:
     async def mock_db_session(self):
         """Create a mock database session with realistic setup."""
         session = AsyncMock()
-        
+
         # Mock commit and refresh
         session.commit = AsyncMock()
-        
+
         # Mock refresh to set created_at on the plan object
         async def mock_refresh(plan):
             if hasattr(plan, 'plan_id') and plan.plan_id:
                 plan.created_at = datetime.now()
         session.refresh = mock_refresh
         session.add = MagicMock()
-        
+
         return session
 
     @pytest_asyncio.fixture
@@ -99,7 +99,7 @@ class TestStudyPlanIntegration:
 
         # Setup: learner exists
         mock_db_session.get.return_value = mock_learner
-        
+
         # Setup: subject mastery query returns records
         mastery_result = MagicMock()
         mastery_result.scalars.return_value.all.return_value = mock_subject_mastery_records
@@ -114,7 +114,7 @@ class TestStudyPlanIntegration:
 
         # Verify: plan was added to session
         mock_db_session.add.assert_called_once()
-        
+
         # Verify: commit was called
         mock_db_session.commit.assert_called_once()
 
@@ -189,7 +189,7 @@ class TestStudyPlanIntegration:
 
         # Setup
         mock_db_session.get.return_value = mock_learner
-        
+
         mastery_result = MagicMock()
         mastery_result.scalars.return_value.all.return_value = mock_subject_mastery_records
         mock_db_session.execute.return_value = mastery_result
@@ -229,7 +229,7 @@ class TestStudyPlanIntegration:
 
         # Setup: no mastery records
         mock_db_session.get.return_value = mock_learner
-        
+
         mastery_result = MagicMock()
         mastery_result.scalars.return_value.all.return_value = []
         mock_db_session.execute.return_value = mastery_result
@@ -244,7 +244,7 @@ class TestStudyPlanIntegration:
         # Verify: plan still generated with defaults
         assert plan is not None
         assert "schedule" in plan
-        
+
         # Should have fallback tasks for empty data
         total_tasks = sum(len(tasks) for tasks in plan["schedule"].values())
         assert total_tasks > 0, "Should generate fallback tasks for sparse data"
@@ -257,7 +257,7 @@ class TestStudyPlanIntegration:
 
         # Setup: high mastery, no gaps
         mock_db_session.get.return_value = mock_learner
-        
+
         high_mastery_records = [
             MagicMock(subject_code="MATH", mastery_score=0.9, knowledge_gaps=[]),
             MagicMock(subject_code="ENG", mastery_score=0.85, knowledge_gaps=[]),
@@ -287,7 +287,7 @@ class TestStudyPlanIntegration:
 
         # Setup: many gaps
         mock_db_session.get.return_value = mock_learner
-        
+
         many_gaps = [
             "fractions", "division", "multiplication", "geometry", "algebra",
             "data", "volume", "measurement", "percentages", "ratios"
@@ -319,7 +319,7 @@ class TestStudyPlanIntegration:
         learner_id = mock_learner.learner_id
 
         mock_db_session.get.return_value = mock_learner
-        
+
         mastery_result = MagicMock()
         mastery_result.scalars.return_value.all.return_value = []
         mock_db_session.execute.return_value = mastery_result
@@ -362,7 +362,7 @@ class TestStudyPlanIntegration:
 
         # Setup: learner with diagnostic-derived gaps
         mock_db_session.get.return_value = mock_learner
-        
+
         mastery_result = MagicMock()
         mastery_result.scalars.return_value.all.return_value = []
         mock_db_session.execute.return_value = mastery_result
@@ -382,10 +382,10 @@ class TestStudyPlanIntegration:
             all_tasks.extend(tasks)
 
         remediation_tasks = [t for t in all_tasks if t.get("is_gap_focus")]
-        
+
         # Should have remediation tasks for diagnostic gaps
         assert len(remediation_tasks) > 0, "Should create remediation tasks from diagnostic gaps"
-        
+
         # Verify: gaps are reflected in week focus
         assert "fractions" in plan["week_focus"].lower() or "comprehension" in plan["week_focus"].lower()
 
@@ -434,7 +434,7 @@ class TestStudyPlanIntegration:
 
         # Setup: create existing plan
         mock_db_session.get.return_value = mock_learner
-        
+
         existing_plan = MagicMock(spec=StudyPlan)
         existing_plan.plan_id = uuid4()
         existing_plan.learner_id = learner_id
@@ -457,7 +457,7 @@ class TestStudyPlanIntegration:
         # Also need to handle the get_current_plan query
         plan_result = MagicMock()
         plan_result.scalar_one_or_none.return_value = existing_plan
-        
+
         # Need multiple execute calls - use a side_effect function
         call_count = [0]
         def execute_side_effect(*args, **kwargs):
@@ -473,7 +473,7 @@ class TestStudyPlanIntegration:
         # Verify: rationale is included
         assert "schedule_with_rationale" in plan_with_rationale
         assert "week_focus_rationale" in plan_with_rationale
-        
+
         monday_tasks = plan_with_rationale["schedule_with_rationale"].get("monday", [])
         assert len(monday_tasks) > 0
         assert "rationale" in monday_tasks[0], "Each task should have a rationale"
@@ -486,13 +486,13 @@ class TestStudyPlanIntegration:
     async def test_grade_0_grade_r_handling(self, mock_db_session):
         """Test plan generation for Grade R (grade=0)."""
         service = StudyPlanService(mock_db_session)
-        
+
         mock_learner = MagicMock(spec=Learner)
         mock_learner.learner_id = uuid4()
         mock_learner.grade = 0
-        
+
         mock_db_session.get.return_value = mock_learner
-        
+
         mastery_result = MagicMock()
         mastery_result.scalars.return_value.all.return_value = []
         mock_db_session.execute.return_value = mastery_result
@@ -515,7 +515,7 @@ class TestStudyPlanIntegration:
         learner_id = mock_learner.learner_id
 
         mock_db_session.get.return_value = mock_learner
-        
+
         mastery_result = MagicMock()
         mastery_result.scalars.return_value.all.return_value = []
         mock_db_session.execute.return_value = mastery_result
@@ -533,7 +533,7 @@ class TestStudyPlanIntegration:
         assert plan is not None
         assert "schedule" in plan
         assert len(plan["schedule"]) == 7  # All 7 days
-        
+
         # Should have fallback tasks
         total_tasks = sum(len(tasks) for tasks in plan["schedule"].values())
         assert total_tasks > 0, "Should generate fallback tasks"

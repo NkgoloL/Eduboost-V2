@@ -28,6 +28,7 @@ from dataclasses import dataclass
 from app.core.config import get_settings
 from app.core.exceptions import LLMError
 from app.core.metrics import llm_latency_seconds, llm_requests_total, record_llm_tokens
+from app.services.llm.json_completion import JsonCompletionGateway
 
 logger = logging.getLogger(__name__)
 
@@ -102,23 +103,28 @@ class LLMGateway:
                 assert resp.content
         """
         try:
-            response = await self._call_groq(prompt, system=system, max_tokens=max_tokens)
-            llm_requests_total.labels(provider="groq", status="success").inc()
-            return response
-        except Exception as groq_exc:
-            logger.warning("Groq call failed (%s), falling back to Anthropic", groq_exc)
-            llm_requests_total.labels(provider="groq", status="fallback").inc()
-
-        try:
-            response = await self._call_anthropic(prompt, system=system, max_tokens=max_tokens)
-            llm_requests_total.labels(provider="anthropic", status="success").inc()
-            return response
-        except Exception as anthropic_exc:
-            logger.error("Anthropic fallback also failed: %s", anthropic_exc)
-            llm_requests_total.labels(provider="anthropic", status="error").inc()
+            response = await JsonCompletionGateway().complete(
+                prompt=prompt,
+                system=system or "You are a helpful South African educational assistant.",
+                max_tokens=max_tokens,
+                temperature=0.7,
+                response_format="json",
+                operation="lesson_generation",
+            )
+            llm_requests_total.labels(provider=response.provider, status="success").inc()
+            return LLMResponse(
+                content=response.content,
+                provider=response.provider,
+                model=response.model,
+                prompt_tokens=response.prompt_tokens,
+                completion_tokens=response.completion_tokens,
+            )
+        except Exception as exc:
+            logger.error("JSON LLM gateway failed: %s", exc)
+            llm_requests_total.labels(provider="json_completion", status="error").inc()
             raise LLMError(
                 "Lesson generation is temporarily unavailable. Please try again shortly."
-            ) from anthropic_exc
+            ) from exc
 
     async def _call_groq(self, prompt: str, *, system: str, max_tokens: int) -> LLMResponse:
         """Call the Groq inference API (primary provider).
@@ -135,12 +141,12 @@ class LLMGateway:
             LLMError: If the Groq API key is not configured.
         """
         cfg = get_settings()
-        if not cfg.groq_api_key:
+        if not cfg.GROQ_API_KEY:
             raise LLMError("Groq API key not configured")
 
         from groq import AsyncGroq  # type: ignore[import-untyped]
 
-        client = AsyncGroq(api_key=cfg.groq_api_key)
+        client = AsyncGroq(api_key=cfg.GROQ_API_KEY)
         messages = []
         if system:
             messages.append({"role": "system", "content": system})
@@ -148,10 +154,10 @@ class LLMGateway:
 
         start = time.perf_counter()
         completion = await client.chat.completions.create(
-            model=cfg.groq_model,
+            model=getattr(cfg, "GROQ_MODEL", "llama3-70b-8192"),
             messages=messages,
             max_tokens=max_tokens,
-            timeout=cfg.llm_timeout_seconds,
+            timeout=cfg.LLM_TIMEOUT_SECONDS,
         )
         duration = time.perf_counter() - start
 
@@ -160,7 +166,7 @@ class LLMGateway:
         if usage:
             record_llm_tokens(
                 provider="groq",
-                model=cfg.groq_model,
+                model=getattr(cfg, "GROQ_MODEL", "llama3-70b-8192"),
                 operation="lesson_generation",
                 input_tokens=usage.prompt_tokens,
                 output_tokens=usage.completion_tokens,
@@ -169,7 +175,7 @@ class LLMGateway:
         return LLMResponse(
             content=completion.choices[0].message.content or "",
             provider="groq",
-            model=cfg.groq_model,
+            model=getattr(cfg, "GROQ_MODEL", "llama3-70b-8192"),
             prompt_tokens=usage.prompt_tokens if usage else 0,
             completion_tokens=usage.completion_tokens if usage else 0,
         )
@@ -189,16 +195,16 @@ class LLMGateway:
             LLMError: If the Anthropic API key is not configured.
         """
         cfg = get_settings()
-        if not cfg.anthropic_api_key:
+        if not cfg.ANTHROPIC_API_KEY:
             raise LLMError("Anthropic API key not configured")
 
         import anthropic
 
-        client = anthropic.AsyncAnthropic(api_key=cfg.anthropic_api_key)
+        client = anthropic.AsyncAnthropic(api_key=cfg.ANTHROPIC_API_KEY)
 
         start = time.perf_counter()
         message = await client.messages.create(
-            model=cfg.anthropic_model,
+            model=cfg.ANTHROPIC_MODEL,
             max_tokens=max_tokens,
             system=system or "You are a helpful South African educational assistant.",
             messages=[{"role": "user", "content": prompt}],
@@ -208,7 +214,7 @@ class LLMGateway:
         llm_latency_seconds.labels(provider="anthropic").observe(duration)
         record_llm_tokens(
             provider="anthropic",
-            model=cfg.anthropic_model,
+            model=cfg.ANTHROPIC_MODEL,
             operation="lesson_generation",
             input_tokens=message.usage.input_tokens,
             output_tokens=message.usage.output_tokens,
@@ -217,7 +223,7 @@ class LLMGateway:
         return LLMResponse(
             content=message.content[0].text if message.content else "",
             provider="anthropic",
-            model=cfg.anthropic_model,
+            model=cfg.ANTHROPIC_MODEL,
             prompt_tokens=message.usage.input_tokens,
             completion_tokens=message.usage.output_tokens,
         )

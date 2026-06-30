@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "events": [
+    {
+      "name": "consent_granted",
+      "input": {
+        "event_type": "consent.granted",
+        "actor_id": "guardian-1",
+        "learner_id": "learner-1",
+        "metadata": {"source": "fixture"}
+      },
+      "expected": {
+        "action": "consent.granted",
+        "resource_id": "learner-1",
+        "payload_contains": ["learner_id", "source"]
+      }
+    },
+    {
+      "name": "popia_export_requested",
+      "input": {
+        "action": "popia.export.requested",
+        "actor_id": "guardian-2",
+        "resource_type": "learner",
+        "resource_id": "learner-2",
+        "payload": {"request_id": "req-1"}
+      },
+      "expected": {
+        "action": "popia.export.requested",
+        "resource_id": "learner-2",
+        "payload_contains": ["request_id"]
+      }
+    }
+  ]
+}

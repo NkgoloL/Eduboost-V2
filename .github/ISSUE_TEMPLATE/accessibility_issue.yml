@@ -1,0 +1,33 @@
+name: Accessibility issue
+description: Report a keyboard, screen-reader, contrast, focus, or responsive usability issue.
+title: "[A11Y]: "
+labels: [accessibility, frontend, needs-triage]
+body:
+  - type: textarea
+    id: issue
+    attributes:
+      label: Accessibility problem
+      description: Describe the barrier and the user flow affected.
+    validations:
+      required: true
+  - type: dropdown
+    id: assistive-tech
+    attributes:
+      label: Assistive technology / input mode
+      options:
+        - Keyboard only
+        - Screen reader
+        - Voice control
+        - Touch/mobile
+        - Low vision / contrast
+        - Cognitive load / readability
+        - Other / not sure
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      placeholder: "1. Open...\n2. Navigate with...\n3. Observe..."
+  - type: input
+    id: browser
+    attributes:
+      label: Browser/device

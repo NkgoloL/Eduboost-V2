@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "boundary": "consent runtime wiring cases; no consent table merge",
+  "cases": [
+    {
+      "name": "consent_granted_write",
+      "action": "consent.granted",
+      "actor_id": "guardian-fixture",
+      "learner_id": "learner-fixture",
+      "expected_operation_type": "write",
+      "expected_resource_type": "learner_consent"
+    },
+    {
+      "name": "consent_status_read",
+      "action": "consent.status.read",
+      "actor_id": "guardian-fixture",
+      "learner_id": "learner-fixture",
+      "expected_operation_type": "read",
+      "expected_resource_type": "learner_consent"
+    }
+  ]
+}

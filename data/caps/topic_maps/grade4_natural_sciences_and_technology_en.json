@@ -1,0 +1,653 @@
+{
+  "_meta": {
+    "schema_version": "1.0.0",
+    "generated_at": "2026-06-03T00:00:00Z",
+    "reviewed_at": "2026-06-03T00:00:00Z",
+    "reviewer_id": "curriculum-reviewer-foundation-batch-1",
+    "scope_id": "grade4_natural_sciences_and_technology_en",
+    "scope": "Grade 4 Natural Sciences and Technology - all 4 CAPS terms",
+    "coding_scheme": "Grade.SubjectCode.Term.TopicIndex[.SubtopicIndex]",
+    "subject_codes": {
+      "NST": "Natural Sciences and Technology"
+    },
+    "source": "CAPS Intermediate Phase Natural Sciences and Technology document (DBE, South Africa), Section 3 Grade 4 content tables, pages 16-30.",
+    "source_document_ids": [
+      "caps_intermediate_natural_sciences_and_technology_en"
+    ],
+    "source_text_extract_paths": [
+      "data/caps/source_documents/text/caps_intermediate_natural_sciences_and_technology_en.txt"
+    ],
+    "review_status": "approved",
+    "notes": "Extracted from Grade 4 term tables. Topic-level caps_refs drive Content Factory coverage planning; subtopic refs preserve source detail for generation prompts."
+  },
+  "grade": 4,
+  "subject": "Natural Sciences and Technology",
+  "subject_code": "NST",
+  "terms": [
+    {
+      "term": 1,
+      "weeks": "1-10",
+      "strand": "Natural Sciences: Life and Living; Technology: Structures",
+      "topics": [
+        {
+          "caps_ref": "4.NST.1.1",
+          "topic_index": 1,
+          "topic": "Living and non-living things",
+          "time": "2 weeks (7 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.1.1.1",
+              "subtopic_index": 1,
+              "subtopic": "Living things and the seven life processes",
+              "assessment_standards": [
+                "Identify many different kinds of living things.",
+                "Explain that living plants and animals carry out the seven life processes: feeding, growing, reproducing, breathing, excreting, sensing and moving.",
+                "Recognise that some things that appear not to be living can carry on living under the right conditions."
+              ],
+              "prerequisites": [],
+              "common_misconceptions": [
+                "germs_not_recognised_as_living",
+                "dormant_seeds_classified_as_non_living"
+              ]
+            },
+            {
+              "caps_ref": "4.NST.1.1.2",
+              "subtopic_index": 2,
+              "subtopic": "Non-living and dead things",
+              "assessment_standards": [
+                "Explain that non-living things cannot carry out all seven life processes.",
+                "Distinguish between non-living things and things that were once living but are now dead.",
+                "Sort and compare examples of living, non-living and dead things."
+              ],
+              "prerequisites": [
+                "4.NST.1.1.1"
+              ],
+              "common_misconceptions": [
+                "fire_or_rivers_classified_as_living",
+                "dead_plant_material_classified_as_never_living"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.NST.1.2",
+          "topic_index": 2,
+          "topic": "Structure of plants and animals",
+          "time": "2.5 weeks (8.75 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.1.2.1",
+              "subtopic_index": 1,
+              "subtopic": "Basic structure of plants",
+              "assessment_standards": [
+                "Identify and label roots, stems, leaves, flowers, fruits and seeds.",
+                "Describe visible differences between plants, including size, shape and colour of plant parts."
+              ],
+              "prerequisites": [
+                "4.NST.1.1.1"
+              ],
+              "common_misconceptions": [
+                "fruit_not_understood_as_plant_part",
+                "roots_ignored_because_they_are_not_visible"
+              ]
+            },
+            {
+              "caps_ref": "4.NST.1.2.2",
+              "subtopic_index": 2,
+              "subtopic": "Basic structure of animals",
+              "assessment_standards": [
+                "Identify and label head, tail, body, limbs and sense organs.",
+                "Describe visible differences between animals, including size, shape, body covering and sense organs."
+              ],
+              "prerequisites": [
+                "4.NST.1.1.1"
+              ],
+              "common_misconceptions": [
+                "all_animals_assumed_to_have_same_limbs",
+                "body_covering_confused_with_habitat"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.NST.1.3",
+          "topic_index": 3,
+          "topic": "What plants need to grow",
+          "time": "1 week (3.5 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.1.3.1",
+              "subtopic_index": 1,
+              "subtopic": "Conditions for plant growth",
+              "assessment_standards": [
+                "Explain that plants need light, water and air to grow.",
+                "Explain that seeds need water and warmth to germinate.",
+                "Observe, measure and record growth of plants from seeds or cuttings over time."
+              ],
+              "prerequisites": [
+                "4.NST.1.2.1"
+              ],
+              "common_misconceptions": [
+                "soil_seen_as_only_requirement_for_growth",
+                "germination_confused_with_flowering"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.NST.1.4",
+          "topic_index": 4,
+          "topic": "Habitats of animals",
+          "time": "2 weeks (7 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.1.4.1",
+              "subtopic_index": 1,
+              "subtopic": "Different habitats and animal needs",
+              "assessment_standards": [
+                "Define a habitat as the place where a plant or animal lives.",
+                "Identify different habitats such as grassland, forest, river and sea.",
+                "Explain that animals need habitats for food, water, shelter, reproduction and escape from danger.",
+                "Match animals to suitable habitats and give reasons."
+              ],
+              "prerequisites": [
+                "4.NST.1.1.1"
+              ],
+              "common_misconceptions": [
+                "habitat_seen_as_only_a_house",
+                "animals_assumed_to_survive_in_any_habitat"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.NST.1.5",
+          "topic_index": 5,
+          "topic": "Structures for animal shelters",
+          "time": "2.5 weeks (8.75 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.1.5.1",
+              "subtopic_index": 1,
+              "subtopic": "Natural and human-made animal shelters",
+              "assessment_standards": [
+                "Identify natural animal shelters such as nests, shells, hollow trees and wasp nests.",
+                "Identify human-made animal shelters such as kennels, cages, kraals and stables.",
+                "Describe animal shelters as shell or frame structures with different shapes, sizes and materials."
+              ],
+              "prerequisites": [
+                "4.NST.1.4.1"
+              ],
+              "common_misconceptions": [
+                "all_shelters_seen_as_human_made",
+                "structure_type_confused_with_material"
+              ]
+            },
+            {
+              "caps_ref": "4.NST.1.5.2",
+              "subtopic_index": 2,
+              "subtopic": "Designing an animal shelter",
+              "assessment_standards": [
+                "Design and draw an animal shelter for a stated purpose.",
+                "Consider purpose, shape, size and materials in a shelter design.",
+                "Evaluate the suitability of an animal shelter design."
+              ],
+              "prerequisites": [
+                "4.NST.1.5.1"
+              ],
+              "common_misconceptions": [
+                "design_judged_only_by_appearance",
+                "materials_selected_without_link_to_purpose"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "term": 2,
+      "weeks": "1-10",
+      "strand": "Natural Sciences: Matter and Materials; Technology: Structures",
+      "topics": [
+        {
+          "caps_ref": "4.NST.2.1",
+          "topic_index": 1,
+          "topic": "Materials around us",
+          "time": "3.5 weeks (12.25 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.2.1.1",
+              "subtopic_index": 1,
+              "subtopic": "Solids, liquids and gases",
+              "assessment_standards": [
+                "Classify common materials as solids, liquids or gases.",
+                "Describe properties of solids, liquids and gases.",
+                "Explain that gases spread out and have no definite shape but can be contained."
+              ],
+              "prerequisites": [],
+              "common_misconceptions": [
+                "air_not_recognised_as_matter",
+                "powders_classified_as_liquids_because_they_pour"
+              ]
+            },
+            {
+              "caps_ref": "4.NST.2.1.2",
+              "subtopic_index": 2,
+              "subtopic": "Changes of state and the water cycle",
+              "assessment_standards": [
+                "Explain melting, evaporating, condensing, freezing and solidifying as effects of heating and cooling.",
+                "Investigate changes of state using water, ice and other substances.",
+                "Draw and explain the water cycle using changes of state."
+              ],
+              "prerequisites": [
+                "4.NST.2.1.1"
+              ],
+              "common_misconceptions": [
+                "evaporation_seen_as_water_disappearing",
+                "melting_and_dissolving_confused"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.NST.2.2",
+          "topic_index": 2,
+          "topic": "Solid materials",
+          "time": "2 weeks (7 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.2.2.1",
+              "subtopic_index": 1,
+              "subtopic": "Raw and manufactured materials",
+              "assessment_standards": [
+                "Give examples of raw materials used to make useful manufactured materials.",
+                "Link sand to glass, clay to ceramics, coal and oil to plastics, and plant or animal materials to paper, fabrics and leather."
+              ],
+              "prerequisites": [
+                "4.NST.2.1.1"
+              ],
+              "common_misconceptions": [
+                "manufactured_materials_seen_as_natural",
+                "raw_material_source_not_linked_to_product"
+              ]
+            },
+            {
+              "caps_ref": "4.NST.2.2.2",
+              "subtopic_index": 2,
+              "subtopic": "Properties of materials",
+              "assessment_standards": [
+                "Describe material properties including hard, soft, stiff, flexible, strong, weak, light, heavy, waterproof and absorbent.",
+                "Compare raw and manufactured materials using observable properties."
+              ],
+              "prerequisites": [
+                "4.NST.2.2.1"
+              ],
+              "common_misconceptions": [
+                "strong_confused_with_hard",
+                "waterproof_confused_with_absorbent"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.NST.2.3",
+          "topic_index": 3,
+          "topic": "Strengthening materials",
+          "time": "2 weeks (7 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.2.3.1",
+              "subtopic_index": 1,
+              "subtopic": "Ways to strengthen materials",
+              "assessment_standards": [
+                "Explain that folding and rolling can strengthen materials such as paper.",
+                "Investigate which pillar shapes support the most weight.",
+                "Record results and draw a bar graph."
+              ],
+              "prerequisites": [
+                "4.NST.2.2.2"
+              ],
+              "common_misconceptions": [
+                "thicker_always_assumed_stronger",
+                "test_results_not_linked_to_shape"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.NST.2.4",
+          "topic_index": 4,
+          "topic": "Strong frame structures",
+          "time": "2.5 weeks (8.75 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.2.4.1",
+              "subtopic_index": 1,
+              "subtopic": "Struts and frame structures",
+              "assessment_standards": [
+                "Explain how struts joined into triangles make strong stable structures.",
+                "Identify frame structures such as roof trusses, bridges, cranes, pylons and skeletons.",
+                "Design, make and evaluate a strong structure using tubular struts."
+              ],
+              "prerequisites": [
+                "4.NST.2.3.1"
+              ],
+              "common_misconceptions": [
+                "square_frames_assumed_as_stable_as_triangles",
+                "struts_confused_with_solid_walls"
+              ]
+            },
+            {
+              "caps_ref": "4.NST.2.4.2",
+              "subtopic_index": 2,
+              "subtopic": "Indigenous structures",
+              "assessment_standards": [
+                "Describe how indigenous traditional homes use frameworks of struts.",
+                "Recognise examples such as Zulu, Xhosa and Nama traditional structures."
+              ],
+              "prerequisites": [
+                "4.NST.2.4.1"
+              ],
+              "common_misconceptions": [
+                "indigenous_structures_seen_as_not_engineered",
+                "framework_hidden_by_covering_material"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "term": 3,
+      "weeks": "1-10",
+      "strand": "Natural Sciences: Energy and Change; Technology: Systems and Control",
+      "topics": [
+        {
+          "caps_ref": "4.NST.3.1",
+          "topic_index": 1,
+          "topic": "Energy and energy transfer",
+          "time": "2.5 weeks (8.75 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.3.1.1",
+              "subtopic_index": 1,
+              "subtopic": "Energy for life and energy chains",
+              "assessment_standards": [
+                "Explain that people and animals need energy for life processes and actions.",
+                "Explain that plants use energy from the Sun to make food.",
+                "Sequence an energy or food chain showing energy transfer from the Sun to plants and animals."
+              ],
+              "prerequisites": [
+                "4.NST.1.1.1"
+              ],
+              "common_misconceptions": [
+                "energy_seen_only_as_electricity",
+                "arrows_in_food_chains_reversed"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.NST.3.2",
+          "topic_index": 2,
+          "topic": "Energy around us",
+          "time": "2.5 weeks (8.75 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.3.2.1",
+              "subtopic_index": 1,
+              "subtopic": "Forms, sources, inputs and outputs of energy",
+              "assessment_standards": [
+                "Identify movement, heat, light and sound as examples of energy around us.",
+                "Identify stored energy sources such as food, wood, coal, oil products and natural gas.",
+                "Describe input and output energy for machines and appliances."
+              ],
+              "prerequisites": [
+                "4.NST.3.1.1"
+              ],
+              "common_misconceptions": [
+                "input_and_output_energy_swapped",
+                "stored_energy_not_recognised_until_used"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.NST.3.3",
+          "topic_index": 3,
+          "topic": "Movement and energy in a system",
+          "time": "2.5 weeks (8.75 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.3.3.1",
+              "subtopic_index": 1,
+              "subtopic": "Movement and musical instruments",
+              "assessment_standards": [
+                "Explain that musical instruments are systems using movement input energy.",
+                "Identify moving or vibrating parts of musical instruments.",
+                "Design, make and evaluate a musical instrument that uses movement energy to make sound."
+              ],
+              "prerequisites": [
+                "4.NST.3.2.1"
+              ],
+              "common_misconceptions": [
+                "sound_seen_as_not_energy",
+                "instrument_system_parts_not_connected_to_output"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.NST.3.4",
+          "topic_index": 4,
+          "topic": "Energy and sound",
+          "time": "2.5 weeks (8.75 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.3.4.1",
+              "subtopic_index": 1,
+              "subtopic": "Vibrations and sound",
+              "assessment_standards": [
+                "Explain that musical instruments make sounds through vibrations.",
+                "Explain that sound moves outwards from the vibrating part.",
+                "Recognise that vibrations travel through materials such as air, water, plastic, metal and wood."
+              ],
+              "prerequisites": [
+                "4.NST.3.3.1"
+              ],
+              "common_misconceptions": [
+                "sound_travels_only_through_air",
+                "vibration_not_linked_to_sound_source"
+              ]
+            },
+            {
+              "caps_ref": "4.NST.3.4.2",
+              "subtopic_index": 2,
+              "subtopic": "Pitch, volume and noise pollution",
+              "assessment_standards": [
+                "Distinguish loud and soft sounds by volume.",
+                "Distinguish high and low sounds by pitch.",
+                "Describe sources of noise pollution and ways to protect hearing."
+              ],
+              "prerequisites": [
+                "4.NST.3.4.1"
+              ],
+              "common_misconceptions": [
+                "pitch_confused_with_volume",
+                "temporary_loudness_not_distinguished_from_noise_pollution"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "term": 4,
+      "weeks": "1-8",
+      "strand": "Natural Sciences: Planet Earth and Beyond; Technology: Systems and Control",
+      "topics": [
+        {
+          "caps_ref": "4.NST.4.1",
+          "topic_index": 1,
+          "topic": "Planet Earth",
+          "time": "2 weeks (7 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.4.1.1",
+              "subtopic_index": 1,
+              "subtopic": "Features of Earth",
+              "assessment_standards": [
+                "Describe Earth as a sphere made of rock.",
+                "Identify land, water and air as main surface features of Earth.",
+                "Recognise continents, islands, oceans, seas, air and habitats as features of Earth."
+              ],
+              "prerequisites": [
+                "4.NST.1.4.1"
+              ],
+              "common_misconceptions": [
+                "earth_seen_as_flat_from_local_view",
+                "air_not_seen_as_part_of_earth_system"
+              ]
+            },
+            {
+              "caps_ref": "4.NST.4.1.2",
+              "subtopic_index": 2,
+              "subtopic": "Earth and space",
+              "assessment_standards": [
+                "Explain that Earth is a planet in space.",
+                "Identify the Sun, Moon and stars as objects visible from Earth."
+              ],
+              "prerequisites": [
+                "4.NST.4.1.1"
+              ],
+              "common_misconceptions": [
+                "sun_and_moon_seen_as_same_type_of_object",
+                "stars_seen_as_tiny_nearby_lights"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.NST.4.2",
+          "topic_index": 2,
+          "topic": "The Sun",
+          "time": "1 week (3.5 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.4.2.1",
+              "subtopic_index": 1,
+              "subtopic": "The Sun as our closest star",
+              "assessment_standards": [
+                "Describe the Sun as a star made of hot gas.",
+                "Explain that the Sun gives out heat and light.",
+                "Explain that the Sun is much bigger than Earth, very far away, and the closest star to Earth.",
+                "Explain that the Sun provides heat and light for living things on Earth."
+              ],
+              "prerequisites": [
+                "4.NST.4.1.2"
+              ],
+              "common_misconceptions": [
+                "sun_seen_as_a_planet",
+                "closest_star_confused_with_nearby_object"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.NST.4.3",
+          "topic_index": 3,
+          "topic": "The Earth and the Sun",
+          "time": "1 week (3.5 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.4.3.1",
+              "subtopic_index": 1,
+              "subtopic": "Earth orbit and the solar system",
+              "assessment_standards": [
+                "Explain that Earth moves around the Sun in an orbit.",
+                "Recognise the Sun as a star at the centre of the solar system.",
+                "Recognise Earth as one of eight planets in the solar system.",
+                "Explain that Earth receives enough light and heat from the Sun to support life."
+              ],
+              "prerequisites": [
+                "4.NST.4.2.1"
+              ],
+              "common_misconceptions": [
+                "sun_orbits_earth",
+                "pluto_counted_as_one_of_eight_planets"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.NST.4.4",
+          "topic_index": 4,
+          "topic": "The Moon",
+          "time": "2 weeks (7 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.4.4.1",
+              "subtopic_index": 1,
+              "subtopic": "Features and phases of the Moon",
+              "assessment_standards": [
+                "Describe the Moon as a ball of rock in space with no air or water.",
+                "Compare the Moon with Earth and the Sun by size and distance.",
+                "Explain that phases of the Moon result from the changing pattern of sunlight visible on the Moon.",
+                "Observe and record Moon phases over about a month."
+              ],
+              "prerequisites": [
+                "4.NST.4.1.2"
+              ],
+              "common_misconceptions": [
+                "moon_makes_its_own_light",
+                "moon_phase_changes_caused_by_earth_shadow_each_night"
+              ]
+            },
+            {
+              "caps_ref": "4.NST.4.4.2",
+              "subtopic_index": 2,
+              "subtopic": "Moon stories",
+              "assessment_standards": [
+                "Recognise that cultural stories about the Moon show its importance in people's lives.",
+                "Read or discuss cultural stories about the Moon respectfully as part of learning about the Moon."
+              ],
+              "prerequisites": [
+                "4.NST.4.4.1"
+              ],
+              "common_misconceptions": [
+                "cultural_stories_treated_as_scientific_measurements",
+                "science_learning_seen_as_excluding_culture"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.NST.4.5",
+          "topic_index": 5,
+          "topic": "Rocket systems",
+          "time": "2 weeks (7 hours)",
+          "subtopics": [
+            {
+              "caps_ref": "4.NST.4.5.1",
+              "subtopic_index": 1,
+              "subtopic": "Modelling a rocket",
+              "assessment_standards": [
+                "Explain that people have used rockets to go into space and travel to the Moon.",
+                "Describe a rocket as a system used to propel vehicles into space.",
+                "Explain that a rocket moves by pushing exhaust gases out through its back end.",
+                "Design, make, test and evaluate a balloon rocket model."
+              ],
+              "prerequisites": [
+                "4.NST.4.3.1"
+              ],
+              "common_misconceptions": [
+                "rocket_moves_because_air_pushes_from_front",
+                "model_results_not_linked_to_system_variables"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,9 +1,12 @@
+from __future__ import annotations
+import pytest
+pytestmark = pytest.mark.integration
+
 """V2 router integration test suite.
 
 Verifies the FastAPI V2 route surface using TestClient — no live DB or Redis.
 All service-layer dependencies are overridden via FastAPI dependency injection.
 """
-from __future__ import annotations
 import uuid
 from unittest.mock import AsyncMock, patch
 
@@ -11,8 +14,11 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api_v2 import app
+from app.api_v2_deps.auth import AuthContext, TokenType
+from app.api_v2_routers import lessons as lessons_router
 from app.domain.schemas import AuditLogEntry
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
+from app.models import UserRole
 
 
 LEARNER_ID = str(uuid.uuid4())
@@ -20,9 +26,37 @@ LESSON_ID = str(uuid.uuid4())
 PLAN_ID = str(uuid.uuid4())
 
 
+def _lesson_auth() -> AuthContext:
+    now = datetime.now(timezone.utc)
+    subject_id = str(uuid.uuid4())
+    return AuthContext(
+        user_id=subject_id,
+        roles=[UserRole.PARENT],
+        token_type=TokenType.ACCESS,
+        raw_claims={
+            "sub": subject_id,
+            "role": "parent",
+            "type": "access",
+            "jti": "router-test-jti",
+        },
+        issued_at=now,
+        expires_at=now + timedelta(minutes=15),
+        jti="router-test-jti",
+    )
+
+
 @pytest.fixture()
 def client():
-    return TestClient(app)
+    # Set up global dependency overrides for smoke tests
+    from app.core.security import get_current_user
+    app.dependency_overrides[get_current_user] = lambda: {
+        "sub": str(uuid.uuid4()),
+        "role": "parent",
+        "type": "access",
+    }
+    app.dependency_overrides[lessons_router.require_auth_context] = _lesson_auth
+    yield TestClient(app)
+    app.dependency_overrides.clear()
 
 
 # ---------------------------------------------------------------------------
@@ -53,9 +87,11 @@ class TestAuditRouter:
         )
         with patch("app.services.audit_service.AuditService.get_recent_events",
                    new=AsyncMock(return_value=[mock_entry])):
-            r = client.get("/v2/audit/feed")
+            r = client.get("/api/v2/audit/feed")
         # Either 200 with entries or 404/422 if route signature differs
         assert r.status_code in (200, 404, 422)
+        if r.status_code == 200:
+            assert "data" in r.json()
 
 
 # ---------------------------------------------------------------------------
@@ -64,14 +100,17 @@ class TestAuditRouter:
 
 class TestLessonRouter:
     def test_get_lesson_not_found(self, client):
-        with patch("app.services.lesson_service_v2.LessonServiceV2.get_lesson",
+        with patch("app.modules.lessons.service.LessonService.get_lesson_by_id",
                    new=AsyncMock(return_value=None)):
-            r = client.get(f"/v2/lessons/{LESSON_ID}")
+            r = client.get(f"/api/v2/lessons/{LESSON_ID}")
         assert r.status_code in (404, 200, 422)
+        if r.status_code == 200:
+            assert "data" in r.json()
 
     def test_generate_lesson_requires_body(self, client):
-        r = client.post("/v2/lessons/generate", json={})
-        assert r.status_code in (200, 400, 422)
+        r = client.post("/api/v2/lessons/generate", json={})
+        # Without valid body, should be 422 (Unprocessable Entity)
+        assert r.status_code in (400, 422)
 
 
 # ---------------------------------------------------------------------------
@@ -80,9 +119,9 @@ class TestLessonRouter:
 
 class TestStudyPlanRouter:
     def test_generate_plan_requires_auth(self, client):
-        r = client.post("/v2/study-plans/generate", json={"gap_ratio": 0.4})
-        # Without auth token, should be 200 (if no guard) or 401/422
-        assert r.status_code in (200, 401, 422)
+        r = client.post(f"/api/v2/study-plans/generate/{LEARNER_ID}", json={"gap_ratio": 0.4})
+        # We have global auth override, but missing ownership or 422 for body
+        assert r.status_code in (200, 202, 401, 403, 422)
 
 
 # ---------------------------------------------------------------------------
@@ -93,5 +132,7 @@ class TestGamificationRouter:
     def test_leaderboard_returns_list(self, client):
         with patch("app.services.gamification_service_v2.GamificationServiceV2.leaderboard",
                    new=AsyncMock(return_value=[])):
-            r = client.get("/v2/gamification/leaderboard")
+            r = client.get("/api/v2/gamification/leaderboard")
         assert r.status_code in (200, 404, 422)
+        if r.status_code == 200:
+            assert "data" in r.json()

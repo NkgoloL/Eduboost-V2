@@ -1,0 +1,113 @@
+
+============================================================
+  Router Thinness Audit — 36 violation(s)
+============================================================
+
+  [ERROR] app/api_v2_routers/0005_irt_seed.py:14
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from sqlalchemy.dialects.postgresql import JSONB`
+
+  [ERROR] app/api_v2_routers/0005_irt_seed.py:712
+         SUSPICIOUS_CALL: Possible DB call in router: `op.execute("DELETE FROM irt_items")`
+
+  [ERROR] app/api_v2_routers/auth.py:105
+         COMPLEXITY: Route `create_dev_session` has cyclomatic complexity 8 (max allowed: 5). Move business logic to a service.
+
+  [ERROR] app/api_v2_routers/billing.py:7
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`
+
+  [ERROR] app/api_v2_routers/consent.py:13
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`
+
+  [ERROR] app/api_v2_routers/consent.py:17
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from app.repositories.repositories import LearnerRepository`
+
+  [ERROR] app/api_v2_routers/diagnostics.py:10
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`
+
+  [ERROR] app/api_v2_routers/diagnostics.py:21
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from app.repositories.repositories import (`
+
+  [ERROR] app/api_v2_routers/diagnostics.py:32
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from app.repositories.item_bank_repository import ItemBankRepository`
+
+  [ERROR] app/api_v2_routers/diagnostics.py:36
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from app.repositories.diagnostic_session_repository import DiagnosticSessionRepository`
+
+  [ERROR] app/api_v2_routers/diagnostics.py:37
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from app.repositories.mastery_repository import MasteryRepository`
+
+  [ERROR] app/api_v2_routers/diagnostics.py:104
+         COMPLEXITY: Route `submit_diagnostic` has cyclomatic complexity 8 (max allowed: 5). Move business logic to a service.
+
+  [ERROR] app/api_v2_routers/ether.py:7
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`
+
+  [ERROR] app/api_v2_routers/gamification.py:8
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`
+
+  [ERROR] app/api_v2_routers/gamification.py:17
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from app.repositories.gamification_repository import GamificationRepository`
+
+  [ERROR] app/api_v2_routers/gamification.py:18
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from app.repositories.repositories import LearnerRepository, LessonRepository`
+
+  [ERROR] app/api_v2_routers/gamification.py:89
+         SUSPICIOUS_CALL: Possible DB call in router: `await db.commit()`
+
+  [ERROR] app/api_v2_routers/learners.py:7
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`
+
+  [ERROR] app/api_v2_routers/learners.py:13
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from app.repositories.repositories import KnowledgeGapRepository, LearnerRepository`
+
+  [ERROR] app/api_v2_routers/learners.py:14
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from app.repositories.mastery_repository import MasteryRepository`
+
+  [ERROR] app/api_v2_routers/learners.py:60
+         COMPLEXITY: Route `get_mastery` has cyclomatic complexity 6 (max allowed: 5). Move business logic to a service.
+
+  [ERROR] app/api_v2_routers/lessons.py:8
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`
+
+  [ERROR] app/api_v2_routers/onboarding.py:7
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`
+
+  [ERROR] app/api_v2_routers/onboarding.py:12
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from app.repositories.repositories import LearnerRepository`
+
+  [ERROR] app/api_v2_routers/parents.py:17
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from sqlalchemy import func, select`
+
+  [ERROR] app/api_v2_routers/parents.py:18
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`
+
+  [ERROR] app/api_v2_routers/parents.py:29
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from app.repositories.repositories import LearnerRepository`
+
+  [ERROR] app/api_v2_routers/parents.py:151
+         SUSPICIOUS_CALL: Possible DB call in router: `gaps_result = await db.execute(`
+
+  [ERROR] app/api_v2_routers/parents.py:280
+         SUSPICIOUS_CALL: Possible DB call in router: `await db.execute(`
+
+  [ERROR] app/api_v2_routers/parents.py:289
+         SUSPICIOUS_CALL: Possible DB call in router: `await db.execute(`
+
+  [ERROR] app/api_v2_routers/parents.py:44
+         COMPLEXITY: Route `get_parent_dashboard` has cyclomatic complexity 8 (max allowed: 5). Move business logic to a service.
+
+  [ERROR] app/api_v2_routers/parents.py:119
+         COMPLEXITY: Route `get_parent_trust_dashboard` has cyclomatic complexity 9 (max allowed: 5). Move business logic to a service.
+
+  [ERROR] app/api_v2_routers/popia.py:27
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from app.repositories.repositories import AuditRepository, ConsentRepository`
+
+  [ERROR] app/api_v2_routers/study_plans.py:5
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`
+
+  [ERROR] app/api_v2_routers/study_plans.py:11
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from app.repositories.repositories import LearnerRepository`
+
+  [ERROR] app/api_v2_routers/study_plans.py:41
+         FORBIDDEN_IMPORT: Router imports from restricted layer: `from app.repositories.study_plan_repository import StudyPlanRepository`
+

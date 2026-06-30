@@ -27,6 +27,12 @@ param acrUsername string
 @secure()
 param acrPassword string
 
+@description('Allowed CORS origins for the API (7.2 — no wildcard in production).')
+param corsAllowedOrigins array = [
+  'https://app.eduboost.co.za'
+  'https://eduboost.co.za'
+]
+
 @description('PostgreSQL connection string (Azure Database for PostgreSQL - Flexible Server)')
 @secure()
 param databaseUrl string
@@ -96,7 +102,7 @@ resource eduboostApi 'Microsoft.App/containerApps@2023-05-01' = {
         targetPort: 8000
         transport: 'http'
         corsPolicy: {
-          allowedOrigins: ['*']
+          allowedOrigins: corsAllowedOrigins
           allowedMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
           allowedHeaders: ['*']
           allowCredentials: false

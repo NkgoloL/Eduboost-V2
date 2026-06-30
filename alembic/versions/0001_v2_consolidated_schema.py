@@ -44,7 +44,7 @@ def upgrade() -> None:
     # ──────────────────────────────────────────────────────────────────────────
     op.create_table(
         "guardians",
-        sa.Column("id", sa.String(36), primary_key=True),
+        sa.Column("id", sa.String(64), primary_key=True),
         sa.Column("email_hash", sa.String(64), nullable=False, unique=True, index=True),
         sa.Column("email_encrypted", sa.Text, nullable=False),
         sa.Column("display_name", sa.String(120), nullable=False),
@@ -57,16 +57,15 @@ def upgrade() -> None:
         sa.Column("created_at", sa.DateTime(timezone=True), nullable=False, server_default=sa.text("now()")),
         sa.Column("updated_at", sa.DateTime(timezone=True), nullable=False, server_default=sa.text("now()")),
     )
-    op.create_index("ix_guardians_email_hash", "guardians", ["email_hash"])
 
     # ──────────────────────────────────────────────────────────────────────────
     # 2. Learner Profiles
     # ──────────────────────────────────────────────────────────────────────────
     op.create_table(
         "learner_profiles",
-        sa.Column("id", sa.String(36), primary_key=True),
-        sa.Column("pseudonym_id", sa.String(36), nullable=False, unique=True, index=True),
-        sa.Column("guardian_id", sa.String(36), nullable=False),
+        sa.Column("id", sa.String(64), primary_key=True),
+        sa.Column("pseudonym_id", sa.String(64), nullable=False, unique=True, index=True),
+        sa.Column("guardian_id", sa.String(64), nullable=False),
         sa.Column("display_name", sa.String(80), nullable=False),
         sa.Column("grade", sa.Integer, nullable=False),  # 0=GradeR, 1-7
         sa.Column("language", sa.Enum("en", "zu", "af", "xh", name="language"), nullable=False, server_default="en"),
@@ -85,16 +84,15 @@ def upgrade() -> None:
         sa.ForeignKeyConstraint(["guardian_id"], ["guardians.id"], ondelete="CASCADE"),
     )
     op.create_index("ix_learner_guardian_grade", "learner_profiles", ["guardian_id", "grade"])
-    op.create_index("ix_learner_profiles_pseudonym_id", "learner_profiles", ["pseudonym_id"])
 
     # ──────────────────────────────────────────────────────────────────────────
     # 3. Parental Consents (POPIA enforcement)
     # ──────────────────────────────────────────────────────────────────────────
     op.create_table(
         "parental_consents",
-        sa.Column("id", sa.String(36), primary_key=True),
-        sa.Column("guardian_id", sa.String(36), nullable=False),
-        sa.Column("learner_id", sa.String(36), nullable=False),
+        sa.Column("id", sa.String(64), primary_key=True),
+        sa.Column("guardian_id", sa.String(64), nullable=False),
+        sa.Column("learner_id", sa.String(64), nullable=False),
         sa.Column("policy_version", sa.String(20), nullable=False, server_default="1.0"),
         sa.Column("granted_at", sa.DateTime(timezone=True), nullable=False, server_default=sa.text("now()")),
         sa.Column("expires_at", sa.DateTime(timezone=True), nullable=False),
@@ -112,7 +110,7 @@ def upgrade() -> None:
     # ──────────────────────────────────────────────────────────────────────────
     op.create_table(
         "irt_items",
-        sa.Column("id", sa.String(36), primary_key=True),
+        sa.Column("id", sa.String(64), primary_key=True),
         sa.Column("grade", sa.Integer, nullable=False),
         sa.Column("subject", sa.String(60), nullable=False),
         sa.Column("topic", sa.String(120), nullable=False),
@@ -131,9 +129,9 @@ def upgrade() -> None:
     # ──────────────────────────────────────────────────────────────────────────
     op.create_table(
         "diagnostic_sessions",
-        sa.Column("id", sa.String(36), primary_key=True),
-        sa.Column("learner_id", sa.String(36), nullable=False),
-        sa.Column("responses", postgresql.JSONB, nullable=False, server_default="'{}'"),  # {item_id: bool}
+        sa.Column("id", sa.String(64), primary_key=True),
+        sa.Column("learner_id", sa.String(64), nullable=False),
+        sa.Column("responses", postgresql.JSONB, nullable=False, server_default="{}"),  # {item_id: bool}
         sa.Column("theta_before", sa.Float, nullable=False, server_default="0.0"),
         sa.Column("theta_after", sa.Float, nullable=True),
         sa.Column("completed_at", sa.DateTime(timezone=True), nullable=True),
@@ -147,8 +145,8 @@ def upgrade() -> None:
     # ──────────────────────────────────────────────────────────────────────────
     op.create_table(
         "knowledge_gaps",
-        sa.Column("id", sa.String(36), primary_key=True),
-        sa.Column("learner_id", sa.String(36), nullable=False),
+        sa.Column("id", sa.String(64), primary_key=True),
+        sa.Column("learner_id", sa.String(64), nullable=False),
         sa.Column("grade", sa.Integer, nullable=False),
         sa.Column("subject", sa.String(60), nullable=False),
         sa.Column("topic", sa.String(120), nullable=False),
@@ -164,9 +162,9 @@ def upgrade() -> None:
     # ──────────────────────────────────────────────────────────────────────────
     op.create_table(
         "lessons",
-        sa.Column("id", sa.String(36), primary_key=True),
-        sa.Column("learner_id", sa.String(36), nullable=False),
-        sa.Column("knowledge_gap_id", sa.String(36), nullable=True),
+        sa.Column("id", sa.String(64), primary_key=True),
+        sa.Column("learner_id", sa.String(64), nullable=False),
+        sa.Column("knowledge_gap_id", sa.String(64), nullable=True),
         sa.Column("grade", sa.Integer, nullable=False),
         sa.Column("subject", sa.String(60), nullable=False),
         sa.Column("topic", sa.String(120), nullable=False),
@@ -190,11 +188,11 @@ def upgrade() -> None:
     # ──────────────────────────────────────────────────────────────────────────
     op.create_table(
         "audit_logs",
-        sa.Column("id", sa.String(36), primary_key=True),
+        sa.Column("id", sa.String(64), primary_key=True),
         sa.Column("event_type", sa.String(80), nullable=False, index=True),
-        sa.Column("actor_id", sa.String(36), nullable=True),
-        sa.Column("learner_pseudonym", sa.String(36), nullable=True),
-        sa.Column("payload", postgresql.JSONB, nullable=False, server_default="'{}'"),
+        sa.Column("actor_id", sa.String(64), nullable=True),
+        sa.Column("learner_pseudonym", sa.String(64), nullable=True),
+        sa.Column("payload", postgresql.JSONB, nullable=False, server_default="{}"),
         sa.Column("constitutional_outcome", sa.String(20), nullable=True),  # APPROVED/REJECTED
         sa.Column("created_at", sa.DateTime(timezone=True), nullable=False, server_default=sa.text("now()")),
     )
@@ -225,11 +223,11 @@ def upgrade() -> None:
     # ──────────────────────────────────────────────────────────────────────────
     op.create_table(
         "stripe_webhook_events",
-        sa.Column("id", sa.String(36), primary_key=True),
+        sa.Column("id", sa.String(64), primary_key=True),
         sa.Column("stripe_event_id", sa.String(64), nullable=False, unique=True),
         sa.Column("event_type", sa.String(80), nullable=False),
         sa.Column("processed_at", sa.DateTime(timezone=True), nullable=False, server_default=sa.text("now()")),
-        sa.Column("payload", postgresql.JSONB, nullable=False, server_default="'{}'"),
+        sa.Column("payload", postgresql.JSONB, nullable=False, server_default="{}"),
     )
     op.create_index("ix_stripe_event_id", "stripe_webhook_events", ["stripe_event_id"])
 

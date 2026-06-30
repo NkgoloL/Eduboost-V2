@@ -12,11 +12,11 @@ class SystemServiceV2:
             "architecture": "modular-monolith",
             "audit_target": "postgresql-append-only",
             "pillars": [
-                "diagnostic-engine",
-                "lesson-generator",
-                "policy-enforcement",
+                "diagnostics",
+                "lessons",
+                "gamification",
                 "audit",
-                "learner-archetype",
+                "parent_portal",
             ]
         }
 

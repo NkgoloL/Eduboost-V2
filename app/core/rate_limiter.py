@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from fastapi import HTTPException, status
 
@@ -28,9 +28,9 @@ class AIQuotaExceeded(HTTPException):
 
 
 def seconds_until_tomorrow(now: datetime | None = None) -> int:
-    current = now or datetime.now(UTC)
+    current = now or datetime.now(timezone.utc)
     tomorrow = (current + timedelta(days=1)).date()
-    boundary = datetime(tomorrow.year, tomorrow.month, tomorrow.day, tzinfo=UTC)
+    boundary = datetime(tomorrow.year, tomorrow.month, tomorrow.day, tzinfo=timezone.utc)
     return max(1, int((boundary - current).total_seconds()))
 
 
@@ -39,7 +39,7 @@ async def check_ai_quota(user_id: str, tier: str = "free") -> QuotaDecision:
     if tier == "premium":
         return QuotaDecision(key="", used=0, limit=settings.PREMIUM_DAILY_REQUEST_QUOTA, retry_after=0)
 
-    today = datetime.now(UTC).date().isoformat()
+    today = datetime.now(timezone.utc).date().isoformat()
     retry_after = seconds_until_tomorrow()
     key = f"ai_quota:{user_id}:{today}"
     used = await increment_counter(key, ttl_seconds=24 * 3600)

@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-13T20:40:54Z",
+  "scope_id": "grade6_home_language_en",
+  "grade": 6,
+  "phase": "intermediate",
+  "subject_code": "HL",
+  "subject": "Home Language",
+  "language": "en",
+  "status": "review",
+  "learner_visible": false,
+  "source_ready": true,
+  "review_evidence": {
+    "status": "dev_approved",
+    "approved": false,
+    "stage_unlocked": true,
+    "production_unlocked": false,
+    "manifest_path": "data/generated/review_manifests/grade6_home_language_en_educator_review.json",
+    "stage_blockers": [],
+    "production_blockers": [
+      "Educator approval is required for production.",
+      "Legal approval is required for production."
+    ],
+    "blockers": [
+      "Educator approval is required for production.",
+      "Legal approval is required for production."
+    ]
+  },
+  "lesson_quality": {
+    "passed": true,
+    "quarantined": false,
+    "lesson_count": 128,
+    "failed_lesson_count": 0,
+    "blockers": [],
+    "aggregate": {
+      "missing_lesson_body": 0,
+      "missing_title": 0,
+      "missing_scope_id": 0,
+      "missing_variant": 0,
+      "missing_teacher_notes": 0,
+      "missing_parent_notes": 0,
+      "missing_extension_prompts": 0,
+      "practice_questions_correct_option_a": 0,
+      "lessons_with_identical_answer_keys": 0,
+      "placeholder_worked_example_steps": 0
+    }
+  },
+  "staging_eligible": true,
+  "production_eligible": false,
+  "caps_ref_count": 16,
+  "layers": {
+    "topic_map": {
+      "layer": "topic_map",
+      "relative_path": "data/caps/topic_maps/grade6_home_language_en.json",
+      "exists": true,
+      "sha256": "sha256:fc340d39f14a5c0dde5c915f82c35149e45c586e9c3309748271e6891cc89c04",
+      "record_count": 32,
+      "approved_count": 32,
+      "review_ready_count": 32,
+      "idempotency_key": "grade6_home_language_en:topic_map:sha256:fc340d39f14a5c0dde5c915f82c35149e45c586e9c3309748271e6891cc89c04"
+    },
+    "diagnostic_items": {
+      "layer": "diagnostic_items",
+      "relative_path": "data/generated/items/grade6_home_language_en_item_bank.json",
+      "exists": true,
+      "sha256": "sha256:f04b8568c520c93c3c039937b9501c231a24c0598fcab183c41e9adcd008bc46",
+      "record_count": 640,
+      "approved_count": 640,
+      "review_ready_count": 640,
+      "idempotency_key": "grade6_home_language_en:diagnostic_items:sha256:f04b8568c520c93c3c039937b9501c231a24c0598fcab183c41e9adcd008bc46"
+    },
+    "lessons": {
+      "layer": "lessons",
+      "relative_path": "data/generated/lessons/grade6_home_language_en_lessons.json",
+      "exists": true,
+      "sha256": "sha256:10843341383325c13d9bce2f6bc1d2fcf0fc8cf0fbe855ff441f6f35ee21e13c",
+      "record_count": 128,
+      "approved_count": 128,
+      "review_ready_count": 128,
+      "idempotency_key": "grade6_home_language_en:lessons:sha256:10843341383325c13d9bce2f6bc1d2fcf0fc8cf0fbe855ff441f6f35ee21e13c"
+    },
+    "assessment_blueprints": {
+      "layer": "assessment_blueprints",
+      "relative_path": "data/generated/assessment_blueprints/grade6_home_language_en_blueprints.json",
+      "exists": true,
+      "sha256": "sha256:fb3803885e017256722ed9bb2d16df4aab004a0ded555a65a84ecafa3aef3c6d",
+      "record_count": 65,
+      "approved_count": 65,
+      "review_ready_count": 65,
+      "idempotency_key": "grade6_home_language_en:assessment_blueprints:sha256:fb3803885e017256722ed9bb2d16df4aab004a0ded555a65a84ecafa3aef3c6d"
+    },
+    "study_plan_templates": {
+      "layer": "study_plan_templates",
+      "relative_path": "data/generated/study_plans/grade6_home_language_en_templates.json",
+      "exists": true,
+      "sha256": "sha256:687ffdd5f09854c8d9dee7207204879e2a7ea899e9052b96e3e69da20307e4e7",
+      "record_count": 16,
+      "approved_count": 16,
+      "review_ready_count": 16,
+      "idempotency_key": "grade6_home_language_en:study_plan_templates:sha256:687ffdd5f09854c8d9dee7207204879e2a7ea899e9052b96e3e69da20307e4e7"
+    }
+  },
+  "blockers": [
+    "Scope is still review; activate scope intentionally before learner visibility.",
+    "Educator approval is required for production.",
+    "Legal approval is required for production."
+  ],
+  "idempotency_keys": {
+    "topic_map": "grade6_home_language_en:topic_map:sha256:fc340d39f14a5c0dde5c915f82c35149e45c586e9c3309748271e6891cc89c04",
+    "diagnostic_items": "grade6_home_language_en:diagnostic_items:sha256:f04b8568c520c93c3c039937b9501c231a24c0598fcab183c41e9adcd008bc46",
+    "lessons": "grade6_home_language_en:lessons:sha256:10843341383325c13d9bce2f6bc1d2fcf0fc8cf0fbe855ff441f6f35ee21e13c",
+    "assessment_blueprints": "grade6_home_language_en:assessment_blueprints:sha256:fb3803885e017256722ed9bb2d16df4aab004a0ded555a65a84ecafa3aef3c6d",
+    "study_plan_templates": "grade6_home_language_en:study_plan_templates:sha256:687ffdd5f09854c8d9dee7207204879e2a7ea899e9052b96e3e69da20307e4e7"
+  },
+  "rollback_manifest": {
+    "scope_id": "grade6_home_language_en",
+    "restore_scope_status": "review",
+    "artifact_paths": {
+      "topic_map": "data/caps/topic_maps/grade6_home_language_en.json",
+      "diagnostic_items": "data/generated/items/grade6_home_language_en_item_bank.json",
+      "lessons": "data/generated/lessons/grade6_home_language_en_lessons.json",
+      "assessment_blueprints": "data/generated/assessment_blueprints/grade6_home_language_en_blueprints.json",
+      "study_plan_templates": "data/generated/study_plans/grade6_home_language_en_templates.json"
+    },
+    "artifact_hashes": {
+      "topic_map": "sha256:fc340d39f14a5c0dde5c915f82c35149e45c586e9c3309748271e6891cc89c04",
+      "diagnostic_items": "sha256:f04b8568c520c93c3c039937b9501c231a24c0598fcab183c41e9adcd008bc46",
+      "lessons": "sha256:10843341383325c13d9bce2f6bc1d2fcf0fc8cf0fbe855ff441f6f35ee21e13c",
+      "assessment_blueprints": "sha256:fb3803885e017256722ed9bb2d16df4aab004a0ded555a65a84ecafa3aef3c6d",
+      "study_plan_templates": "sha256:687ffdd5f09854c8d9dee7207204879e2a7ea899e9052b96e3e69da20307e4e7"
+    }
+  }
+}

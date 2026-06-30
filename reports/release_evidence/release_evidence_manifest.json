@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-05-07T13:21:09.372491+00:00",
+  "version": "snapshot",
+  "commit": "f6ea10477db6e41df75410fca4da5a2626625191",
+  "branch": "master",
+  "migration_head": "revision = \"0001_v2_consolidated\"\nrevision = \"0002_add_missing_tables\"\nrevision = \"0003_add_items_correct\"\nrevision = \"0004_add_rlhf_pipeline\"\nrevision = \"0005_seed_irt_items\"\nrevision: str = \"0006\"\nrevision = \"0007_caps_irt_item_bank\"\nrevision = \"0008_lesson_completion_tracking\"\nrevision = '0009_add_subject_mastery'\nrevision = '771fb3ac38b8'\nrevision = '94b628483fa7'\nrevision = \"0001_five_pillar_schema\"\nrevision = \"0001\"\nrevision = \"0001_phase2_baseline\"\nrevision: str = \"0001_initial\"\nrevisions should be created from the single head produced by this merge.\nrevision = \"merge_2026_05_01\"",
+  "artifacts": [
+    {
+      "path": "docs/openapi.json",
+      "sha256": "f0d4da16e8d29480a769d2bdaac2f675163d61066c8ab455ff277c8f4180797b",
+      "bytes": 132996
+    },
+    {
+      "path": "coverage.xml",
+      "sha256": "1a3da1cab340844458009c1ba81a847c809d3665b93dca9891d5e1856525b920",
+      "bytes": 176909
+    },
+    {
+      "path": "prometheus.yml",
+      "sha256": "9ae91b60f83ceade30a434422dd6884c47952ffcd20db80f6231fc2eba4a9bfb",
+      "bytes": 490
+    },
+    {
+      "path": "prometheus/alerts.yml",
+      "sha256": "5d196d51b6fc86af9f5bf1b68e588dee7197d3479dbeed9e9aec6cc0524a34a2",
+      "bytes": 3970
+    },
+    {
+      "path": "docker/Dockerfile.v2",
+      "sha256": "8f74d68f06fdce44f1aaca37c3a53a41e310a097296661eb228c297f02ebe847",
+      "bytes": 2676
+    },
+    {
+      "path": "docker-compose.yml",
+      "sha256": "038141ce4f008abb97c65f5af60e6ca25267fb5c9661019a6146ab3003d24e71",
+      "bytes": 3570
+    },
+    {
+      "path": "docker-compose.prod.yml",
+      "sha256": "533777979993bb11ae733b6dc32f7ecd4728586c9472de3f67065dbed4b9c9ed",
+      "bytes": 2025
+    }
+  ],
+  "required_external_evidence": [
+    "backend image digest",
+    "frontend image digest",
+    "SBOM files",
+    "Trivy/Bandit/gitleaks reports",
+    "staging smoke JSON output",
+    "backup and restore drill report"
+  ]
+}

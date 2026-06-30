@@ -1,51 +1,82 @@
-# EduBoost V2 — Data Inventory & Classification (POPIA Compliance)
+# Data Inventory
 
-This document catalogs every personal data field collected by the EduBoost V2 platform, its purpose, lawful basis, and retention period.
-
-## 1. Guardian (Data Subject)
-| Field | Purpose | Lawful Basis | Retention | Sensitivity |
-|-------|---------|--------------|-----------|-------------|
-| `email_hash` | Identity lookup (deterministic) | Contract | Lifetime | Moderate |
-| `email_encrypted` | Communications (transactional) | Contract | Lifetime | High |
-| `display_name` | UI personalisation | Consent | Lifetime | Low |
-| `password_hash` | Authentication | Contract | Lifetime | High |
-| `stripe_customer_id` | Billing integration | Contract | 7 years | Moderate |
-| `role` | Access control (RBAC) | Contract | Lifetime | Low |
-
-## 2. Learner (Data Subject)
-| Field | Purpose | Lawful Basis | Retention | Sensitivity |
-|-------|---------|--------------|-----------|-------------|
-| `display_name` | UI personalisation | Parental Consent | Lifetime | Low |
-| `pseudonym_id` | Analytics linkage (non-identifiable) | Legitimate Interest | Lifetime | Low |
-| `grade` | Curriculum alignment | Parental Consent | Lifetime | Low |
-| `language` | Content delivery | Parental Consent | Lifetime | Low |
-| `theta` | Ability estimate (IRT) | Parental Consent | Lifetime | Moderate |
-| `archetype` | Learning style profile | Parental Consent | Lifetime | Moderate |
-| `xp` / `streak` | Engagement / Gamification | Parental Consent | Lifetime | Low |
-
-## 3. Parental Consent (Legal Record)
-| Field | Purpose | Lawful Basis | Retention | Sensitivity |
-|-------|---------|--------------|-----------|-------------|
-| `guardian_id` | Linkage to parent | Legal Obligation | 5 years post-revoke | Moderate |
-| `learner_id` | Linkage to child | Legal Obligation | 5 years post-revoke | Moderate |
-| `policy_version` | Compliance tracking | Legal Obligation | 5 years post-revoke | Low |
-| `granted_at` | Audit trail | Legal Obligation | 5 years post-revoke | Low |
-| `ip_address_hash` | Non-repudiation | Legal Obligation | 5 years post-revoke | Moderate |
-
-## 4. Audit Log (Append-Only Ledger)
-| Field | Purpose | Lawful Basis | Retention | Sensitivity |
-|-------|---------|--------------|-----------|-------------|
-| `event_type` | Security / Compliance monitoring | Legitimate Interest | 10 years | Low |
-| `actor_id` | Accountability | Legitimate Interest | 10 years | Moderate |
-| `payload` | Contextual evidence | Legitimate Interest | 10 years | Moderate |
-
-## 5. Third-Party Exposure (Sub-processors)
-| Sub-processor | Purpose | Data Shared | Country |
-|---------------|---------|-------------|---------|
-| Groq / OpenAI | Lesson Generation | Subject, Topic, Grade (Anonymised) | USA |
-| Stripe | Payment Processing | Email, Billing Address, Card Details | USA |
-| PostHog | Analytics | Pseudonym ID, Event Type | USA |
-| Azure | Cloud Hosting | Encrypted DB, Logs, Files | Global / ZA |
+Auto-maintained document. Last updated: 2026-05-13.
+Covers §4.4 data minimisation requirements.
 
 ---
-*Last updated: 2026-05-05*
+
+## Learner Fields
+
+| Field | Purpose | Lawful Basis | Retention | Access Roles | Third-Party |
+|-------|---------|-------------|-----------|--------------|-------------|
+| `id` (UUID) | Primary key, internal linking | Contract | Lifetime of account | system | None |
+| `first_name` | Personalise UI | Consent | Account lifetime | guardian, learner, admin | None |
+| `last_name` | Personalise UI | Consent | Account lifetime | guardian, admin | None |
+| `grade` | Match CAPS curriculum | Consent | Account lifetime | guardian, learner, teacher | None |
+| `language` | Adapt content | Consent | Account lifetime | guardian, learner | None |
+| `school_name` | Optional institutional context | Consent | Account lifetime | admin | None |
+| `created_at` | Audit trail | Legal obligation | 5 years | admin | None |
+
+> **Minimisation note:** Names are **never** included in LLM prompts. Only
+> `learner_id` (tokenised) is passed to AI services.
+
+---
+
+## Guardian Fields
+
+| Field | Purpose | Lawful Basis | Retention | Access Roles | Third-Party |
+|-------|---------|-------------|-----------|--------------|-------------|
+| `id` (UUID) | Primary key | Contract | Account lifetime | system | None |
+| `email` | Authentication, notifications | Contract + Consent | Account lifetime | admin | None |
+| `phone_number` (optional) | Consent verification | Consent | Account lifetime | admin | None |
+| `created_at` | Audit | Legal obligation | 5 years | admin | None |
+
+---
+
+## Diagnostic Fields
+
+| Field | Purpose | Lawful Basis | Retention | Access Roles | Third-Party |
+|-------|---------|-------------|-----------|--------------|-------------|
+| `session_id` | Link answers to session | Contract | 2 years | system, admin | None |
+| `learner_id` (tokenised) | Link to learner | Contract | 2 years | system | AI service (tokenised) |
+| `subject` | Determine question bank | Contract | 2 years | system | None |
+| `answers` (JSONB) | Adaptive engine input | Contract | 2 years | system, admin | None |
+| `score` | Progress tracking | Contract | 2 years | guardian, teacher | None |
+
+---
+
+## Lesson / AI Fields
+
+| Field | Purpose | Lawful Basis | Retention | Access Roles | Third-Party |
+|-------|---------|-------------|-----------|--------------|-------------|
+| `lesson_id` | Internal reference | Contract | 1 year | system | None |
+| `learner_id` (tokenised) | Link lesson to learner | Contract | 1 year | system | AI provider (tokenised) |
+| `prompt_hash` | Audit of AI calls | Legal obligation | 5 years | admin | None |
+| `model_version` | Reproducibility | Legal obligation | 5 years | admin | AI provider |
+| `content` (JSONB) | Delivered content | Contract | 1 year | learner, guardian | None |
+
+---
+
+## Billing Fields
+
+| Field | Purpose | Lawful Basis | Retention | Access Roles | Third-Party |
+|-------|---------|-------------|-----------|--------------|-------------|
+| `subscription_id` | Link to plan | Contract | 7 years (SARS) | admin | Payment provider |
+| `plan_name` | Determine feature access | Contract | 7 years | admin, guardian | None |
+| `billing_email` | Invoice delivery | Contract | 7 years | admin | Payment provider |
+| `payment_reference` (tokenised) | Reconciliation | Contract | 7 years | admin | Payment provider |
+
+---
+
+## Identifiers Hashed / Tokenised
+
+- Learner names → never sent to LLM; use `learner_id` (UUID) only
+- Payment details → tokenised by payment gateway; raw card data never stored
+- Diagnostic prompts → hash stored, not raw text
+
+---
+
+## Non-Essential Fields Removed
+
+- ~~`ip_address`~~ – removed from learner_profiles (not essential)
+- ~~`device_fingerprint`~~ – removed (not required for CAPS delivery)

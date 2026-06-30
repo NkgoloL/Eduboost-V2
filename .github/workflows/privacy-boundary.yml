@@ -1,0 +1,96 @@
+name: Privacy Boundary & Consent Gate Check
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+env:
+  APP_ENV: test
+  ENVIRONMENT: test
+  DATABASE_URL: sqlite+aiosqlite:///./eduboost_test.db
+  REDIS_URL: redis://localhost:6379/0
+  ALLOWED_ORIGINS: http://localhost:3000,http://localhost:8000,http://test
+  ENCRYPTION_KEY: MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=
+  JWT_SECRET: privacy-boundary-ci-secret-32chars
+  JWT_SECRET_KEY: privacy-boundary-ci-secret-32chars
+
+jobs:
+  popia-consent-gate-check:
+    name: "§4.2 Consent Gate Inventory"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+
+      - name: Install dependencies
+        run: pip install -r requirements/dev.txt --break-system-packages
+
+      - name: Generate consent gate inventory
+        run: python scripts/generate_consent_gate_inventory.py
+
+      - name: Upload inventory artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: popia-consent-gate-inventory
+          path: docs/security/popia_consent_gate_inventory.md
+
+      - name: Fail if routes missing consent gate
+        # The script exits 1 if any route is missing a gate (re-run above)
+        run: python scripts/generate_consent_gate_inventory.py
+
+  popia-audit-contracts:
+    name: "§4.5 Audit Event Contract Tests"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+
+      - name: Install dependencies
+        run: pip install -r requirements/dev.txt --break-system-packages
+
+      - name: Run audit contract tests
+        run: pytest tests/unit/test_audit_integrity.py -v --no-cov
+
+  popia-consent-lifecycle:
+    name: "§4.1 Consent Lifecycle Tests"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+
+      - name: Install dependencies
+        run: pip install -r requirements/dev.txt --break-system-packages
+
+      - name: Run consent lifecycle + negative gate tests
+        run: pytest tests/unit/test_consent_lifecycle.py tests/popia/ -v --no-cov
+
+  popia-dsr-tests:
+    name: "§4.3 Data Subject Rights Tests"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+
+      - name: Install dependencies
+        run: pip install -r requirements/dev.txt --break-system-packages
+
+      - name: Run DSR integration tests
+        run: pytest tests/integration/test_popia_data_subject_rights.py -v --no-cov

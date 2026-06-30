@@ -1,0 +1,64 @@
+name: Deploy Frontend to Staging
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+
+permissions:
+  contents: read
+
+env:
+  IMAGE_NAME: eduboost-frontend
+
+jobs:
+  build-and-deploy:
+    name: Build Docker image and deploy to Azure Container Apps (Staging)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Build and push frontend image to ACR
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: docker/Dockerfile.frontend
+          push: true
+          tags: |
+            ${{ secrets.ACR_LOGIN_SERVER }}/eduboost-frontend:staging
+            ${{ secrets.ACR_LOGIN_SERVER }}/eduboost-frontend:${{ github.sha }}
+
+      - name: Update Azure Container App (staging)
+        uses: azure/cli@v3
+        with:
+          inlineScript: |
+            az acr login --name ${{ secrets.ACR_NAME }}
+            az containerapp update \
+              --name eduboost-frontend-staging \
+              --resource-group eduboost-staging-rg \
+              --image ${{ secrets.ACR_LOGIN_SERVER }}/eduboost-frontend:staging
+
+# Notes for repository administrators:
+# - Set the secret `AZURE_CREDENTIALS` with a service principal JSON for `azure/login`.
+#   Example (use `az ad sp create-for-rbac --sdk-auth` output):
+#   {
+#     "clientId": "...",
+#     "clientSecret": "...",
+#     "subscriptionId": "...",
+#     "tenantId": "...",
+#     "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+#     "resourceManagerEndpointUrl": "https://management.azure.com/",
+#     ...
+#   }
+# - Set `ACR_LOGIN_SERVER` (e.g. edubooststagingacr1780138416.azurecr.io) and `ACR_NAME` (e.g. edubooststagingacr1780138416) as repository secrets.
+# - The workflow runs on push to `master` and can be triggered manually via workflow_dispatch.

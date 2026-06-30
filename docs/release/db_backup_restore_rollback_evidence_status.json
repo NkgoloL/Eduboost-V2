@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-05-23T15:26:24Z",
+  "current_commit": "d3e97cde34d4cfe5ab81d4d39aeb646300e59e1c",
+  "status": "db-backup-restore-rollback-not-accepted",
+  "source_db_url_label": "",
+  "restore_db_url_label": "",
+  "dump_file_label": "",
+  "dump_sha256": "",
+  "dump_size_bytes": 0,
+  "source_smoke": {
+    "connected": false,
+    "table_count": null,
+    "alembic_version": "",
+    "key_table_counts": {},
+    "blockers": []
+  },
+  "restore_smoke": {
+    "connected": false,
+    "table_count": null,
+    "alembic_version": "",
+    "key_table_counts": {},
+    "blockers": []
+  },
+  "source_table_count": null,
+  "restore_table_count": null,
+  "key_count_mismatches": {},
+  "backup_command": {
+    "command_label": "",
+    "return_code": null,
+    "output_excerpt": ""
+  },
+  "restore_command": {
+    "command_label": "",
+    "return_code": null,
+    "output_excerpt": ""
+  },
+  "github_run": {
+    "run_id": "",
+    "run_url": "",
+    "workflow_name": "",
+    "run_status": "",
+    "conclusion": "",
+    "head_sha": "",
+    "blockers": []
+  },
+  "verified_by": "unverified",
+  "date_verified": "2026-05-23",
+  "blockers": [
+    "DB_ROLLBACK_SOURCE_DATABASE_URL is missing, placeholder, local, or invalid",
+    "DB_ROLLBACK_RESTORE_DATABASE_URL is missing, placeholder, local, or invalid"
+  ]
+}

@@ -4,6 +4,8 @@ import { useRouter, usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { useLearner } from "../../context/LearnerContext";
 import { Sidebar, BadgePopup } from "../../components/eduboost/ShellComponents";
+import { RouteGuard } from "../../components/eduboost/RouteGuard";
+import { AuthService } from "../../lib/api/services";
 
 export default function LearnerLayout({ children }: { children: React.ReactNode }) {
   const { learner, setLearner, badge, setBadge } = useLearner();
@@ -16,7 +18,7 @@ export default function LearnerLayout({ children }: { children: React.ReactNode 
     }
   }, [learner, router]);
 
-  if (!learner) return null;
+  if (!learner) return <RouteGuard required="learner">{children}</RouteGuard>;
 
   // Derive active tab from pathname
   const activeTab = pathname.split("/").pop() || "dashboard";
@@ -31,13 +33,14 @@ export default function LearnerLayout({ children }: { children: React.ReactNode 
           activeTab={activeTab}
           onTab={(tabId: string) => router.push(`/${tabId}`)}
           onLogout={() => {
+            void AuthService.logout();
             setLearner(null);
             router.push("/");
           }}
         />
-        <div className="main-content">
+        <main id="main-content" className="main-content" tabIndex={-1}>
           {children}
-        </div>
+        </main>
       </div>
     </div>
   );

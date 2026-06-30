@@ -1,0 +1,74 @@
+{
+  "captured_at": "2026-05-17T10:10:00Z",
+  "base_url": "https://staging.example.com",
+  "passed": true,
+  "results": [
+    {
+      "name": "health_deep",
+      "method": "GET",
+      "path": "/api/v2/health/deep",
+      "expected_statuses": [200, 503],
+      "actual_status": 200,
+      "passed": true,
+      "duration_ms": 150.0,
+      "error": null,
+      "headers": {
+        "content-type": "application/json"
+      }
+    },
+    {
+      "name": "openapi",
+      "method": "GET",
+      "path": "/openapi.json",
+      "expected_statuses": [200],
+      "actual_status": 200,
+      "passed": true,
+      "duration_ms": 50.0,
+      "error": null,
+      "headers": {
+        "content-type": "application/json"
+      }
+    },
+    {
+      "name": "security_headers",
+      "method": "GET",
+      "path": "/api/v2/health",
+      "expected_statuses": [200, 404],
+      "actual_status": 200,
+      "passed": true,
+      "duration_ms": 45.0,
+      "error": null,
+      "headers": {
+        "content-type": "application/json",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY"
+      }
+    },
+    {
+      "name": "auth_register_shape",
+      "method": "POST",
+      "path": "/api/v2/auth/register",
+      "expected_statuses": [201, 400, 409, 422],
+      "actual_status": 201,
+      "passed": true,
+      "duration_ms": 200.0,
+      "error": null,
+      "headers": {
+        "content-type": "application/json"
+      }
+    },
+    {
+      "name": "popia_export_requires_auth",
+      "method": "GET",
+      "path": "/api/v2/popia/data-export/smoke-learner",
+      "expected_statuses": [401, 403, 404],
+      "actual_status": 401,
+      "passed": true,
+      "duration_ms": 60.0,
+      "error": null,
+      "headers": {
+        "content-type": "application/json"
+      }
+    }
+  ]
+}

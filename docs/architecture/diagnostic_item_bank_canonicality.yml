@@ -1,0 +1,32 @@
+version: 2
+status: accepted
+decision: diagnostic_items-runtime-required
+canonical_item_bank: diagnostic_items
+supporting_item_bank: irt_items
+secondary_tables:
+  diagnostic_items:
+    classification: runtime-required
+    expected_min_rows: 1
+    beta_blocking_when_empty: true
+    allowed_usage:
+      - runtime scoring item-bank source
+      - adaptive diagnostic item selection source
+      - item exposure foreign-key target
+      - migrations
+      - documentation
+      - release evidence
+      - tests
+    migration_action: seed-required
+    unresolved_blocker: DIAG-SCORE-001
+  irt_items:
+    classification: seeded-supporting-bank
+    expected_min_rows: 1600
+    beta_blocking_when_empty: true
+    migration_action: already-seeded
+rationale:
+  - Live Supabase contains 1600 seeded rows in irt_items.
+  - Live Supabase contains diagnostic_items but currently has 0 rows.
+  - Runtime code references diagnostic_items through ORM/table declarations and foreign-key relationships.
+  - Therefore empty diagnostic_items cannot be accepted as beta-ready merely by documenting irt_items as canonical.
+  - DIAG-ITEMS-001R records this policy decision only.
+  - DIAG-SCORE-001 remains open until diagnostic_items is seeded or runtime references are removed and full scoring evidence passes.

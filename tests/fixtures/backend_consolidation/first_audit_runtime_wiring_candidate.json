@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "boundary": "first scoped audit runtime wiring candidate; non-destructive adapter-backed path only",
+  "selected_candidate": {
+    "id": "BCW-421-AUDIT-CONSENT-GRANTED",
+    "area": "audit",
+    "source_candidate": "consent_audit_events",
+    "action": "consent.granted",
+    "actor_id": "guardian-runtime-pr",
+    "learner_id": "learner-runtime-pr",
+    "resource_type": "learner_consent",
+    "approved_for_runtime_pr": true,
+    "destructive": false,
+    "requires_route_change": false,
+    "requires_schema_change": false,
+    "requires_database_write_in_test": false
+  }
+}

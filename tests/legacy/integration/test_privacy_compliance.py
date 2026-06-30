@@ -38,7 +38,7 @@ async def test_execute_deletion_contract():
     """Test that the deletion route returns the correct status format for right to erasure."""
     learner_id = str(uuid.uuid4())
     guardian_id = str(uuid.uuid4())
-    
+
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         response = await client.post(
             "/api/v1/parent/deletion/execute",
@@ -60,7 +60,7 @@ async def test_right_to_access_contract():
     """Test the POPIA right-to-access data export format."""
     learner_id = str(uuid.uuid4())
     guardian_id = str(uuid.uuid4())
-    
+
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         response = await client.get(
             f"/api/v1/parent/right-to-access/{learner_id}/{guardian_id}",

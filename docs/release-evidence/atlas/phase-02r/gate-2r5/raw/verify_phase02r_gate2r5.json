@@ -1,0 +1,59 @@
+{
+  "checks": [
+    {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "-m",
+        "compileall",
+        "-q",
+        "app/services/curriculum/corpus.py",
+        "app/services/curriculum/retrieval.py",
+        "app/services/curriculum/phase02r_verification.py",
+        "scripts/verify_phase02r_gate2r5.py",
+        "scripts/curriculum/build_phase02r_gate2r5_semantic_corpus.py",
+        "scripts/curriculum/export_phase02r_gate2r5_retrieval_projection.py",
+        "scripts/curriculum/validate_phase02r_gate2r5_retrieval.py",
+        "tests/unit/phase02r/test_gate2r5_semantic_corpus.py"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "scripts/curriculum/build_phase02r_gate2r5_semantic_corpus.py",
+        "--json"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"binding\": {\n    \"activation_key\": \"CAPS:g4:MATH:en:global\",\n    \"binding_epoch\": 1,\n    \"corpus_version_id\": \"corpus-g4math-en-v1\",\n    \"manifest_sha256\": \"18c288d98b094d87f44e58f13351abb83dc44b210dbd95e97215b9e4bf6c8d98\",\n    \"status\": \"active\"\n  },\n  \"candidate_count\": 3,\n  \"claim\": \"approved semantic corpus manifest is deterministic and hashable\",\n  \"gate\": \"2R.5\",\n  \"manifest\": {\n    \"activation_key\": \"CAPS:g4:MATH:en:global\",\n    \"chunk_version_ids\": [\n      \"chunk-g4math-fractions-001\",\n      \"chunk-g4math-measurement-001\",\n      \"chunk-g4math-numbers-001\"\n    ],\n    \"corpus_code\": \"CAPS-G4-MATH-EN\",\n    \"corpus_policy_version\": \"phase02r-gate2r5-corpus-v1\",\n    \"curriculum_node_version_ids\": [\n      \"node-g4math-fractions-common-v1\",\n      \"node-g4math-measurement-length-v1\",\n      \"node-g4math-numbers-whole-numbers-v1\"\n    ],\n    \"embedding_model\": \"phase02r-static-policy-embedding\",\n    \"embedding_version\": \"gate2r5-no-vector-dry-run-v1\",\n    \"language\": \"en\",\n    \"manifest_sha256\": \"18c288d98b094d87f44e58f13351abb83dc44b210dbd95e97215b9e4bf6c8d98\",\n    \"mapping_version_ids\": [\n      \"map-g4math-fractions-001\",\n      \"map-g4math-measurement-001\",\n      \"map-g4math-numbers-001\"\n    ],\n    \"membership_count\": 3,\n    \"retrieval_policy_version\": \"phase02r-gate2r5-retrieval-v1\",\n    \"retrieval_projection_sha256\": \"f3f1b24f95bfa30cacc34501e52d0e01e4413eb46121f29699e7213573b84c5d\",\n    \"review_status\": \"review_required\",\n    \"scope\": {\n      \"curriculum_code\": \"CAPS\",\n      \"grade\": 4,\n      \"subject_code\": \"MATH\",\n      \"tenant_scope\": \"global\"\n    },\n    \"source_snapshot_hash\": \"ed15616965efb7a309f60e6051381d64521a255912a63768f6af8686ee021e0e\",\n    \"source_version_ids\": [\n      \"src-caps-g4math-v1\"\n    ],\n    \"status\": \"built\",\n    \"tier1_membership_count\": 3,\n    \"version_number\": 1\n  },\n  \"projection_sha256\": \"f3f1b24f95bfa30cacc34501e52d0e01e4413eb46121f29699e7213573b84c5d\",\n  \"sample_retrieval_hit_count\": 2,\n  \"status\": \"passed\"\n}\n"
+    },
+    {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "scripts/curriculum/export_phase02r_gate2r5_retrieval_projection.py",
+        "--json"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"activation_key\": \"CAPS:g4:MATH:en:global\",\n  \"binding_epoch\": 1,\n  \"claim\": \"retrieval projection contains only active approved corpus membership\",\n  \"corpus_version_id\": \"corpus-g4math-en-v1\",\n  \"gate\": \"2R.5\",\n  \"manifest_sha256\": \"18c288d98b094d87f44e58f13351abb83dc44b210dbd95e97215b9e4bf6c8d98\",\n  \"projection_sha256\": \"f3f1b24f95bfa30cacc34501e52d0e01e4413eb46121f29699e7213573b84c5d\",\n  \"records\": [\n    {\n      \"activation_key\": \"CAPS:g4:MATH:en:global\",\n      \"authority_tier\": \"tier_1\",\n      \"binding_epoch\": 1,\n      \"chunk_version_id\": \"chunk-g4math-fractions-001\",\n      \"corpus_version_id\": \"corpus-g4math-en-v1\",\n      \"curriculum_node_version_id\": \"node-g4math-fractions-common-v1\",\n      \"language\": \"en\",\n      \"mapping_version_id\": \"map-g4math-fractions-001\",\n      \"page_end\": 37,\n      \"page_start\": 37,\n      \"quality_score\": 0.94,\n      \"retrieval_text\": \"Learners recognise, describe and compare common fractions using diagrams and number lines.\",\n      \"review_status\": \"approved\",\n      \"rights_status\": \"approved\",\n      \"source_snapshot_hash\": \"ed15616965efb7a309f60e6051381d64521a255912a63768f6af8686ee021e0e\",\n      \"source_version_id\": \"src-caps-g4math-v1\",\n      \"text_sha256\": \"930f0f08b53a22c05e21cf0df6fb7f03702d699594606b763b7536fd70c42602\"\n    },\n    {\n      \"activation_key\": \"CAPS:g4:MATH:en:global\",\n      \"authority_tier\": \"tier_1\",\n      \"binding_epoch\": 1,\n      \"chunk_version_id\": \"chunk-g4math-measurement-001\",\n      \"corpus_version_id\": \"corpus-g4math-en-v1\",\n      \"curriculum_node_version_id\": \"node-g4math-measurement-length-v1\",\n      \"language\": \"en\",\n      \"mapping_version_id\": \"map-g4math-measurement-001\",\n      \"page_end\": 83,\n      \"page_start\": 83,\n      \"quality_score\": 0.91,\n      \"retrieval_text\": \"Learners solve practical problems involving length, mass, capacity and time measurement.\",\n      \"review_status\": \"approved\",\n      \"rights_status\": \"approved\",\n      \"source_snapshot_hash\": \"ed15616965efb7a309f60e6051381d64521a255912a63768f6af8686ee021e0e\",\n      \"source_version_id\": \"src-caps-g4math-v1\",\n      \"text_sha256\": \"041bf7077eafbf968aae1219d93d5072696918faea3341e1a640ddca23502f83\"\n    },\n    {\n      \"activation_key\": \"CAPS:g4:MATH:en:global\",\n      \"authority_tier\": \"tier_1\",\n      \"binding_epoch\": 1,\n      \"chunk_version_id\": \"chunk-g4math-numbers-001\",\n      \"corpus_version_id\": \"corpus-g4math-en-v1\",\n      \"curriculum_node_version_id\": \"node-g4math-numbers-whole-numbers-v1\",\n      \"language\": \"en\",\n      \"mapping_version_id\": \"map-g4math-numbers-001\",\n      \"page_end\": 12,\n      \"page_start\": 12,\n      \"quality_score\": 0.97,\n      \"retrieval_text\": \"Learners compare and order whole numbers and describe place value in Grade 4 Mathematics.\",\n      \"review_status\": \"approved\",\n      \"rights_status\": \"approved\",\n      \"source_snapshot_hash\": \"ed15616965efb7a309f60e6051381d64521a255912a63768f6af8686ee021e0e\",\n      \"source_version_id\": \"src-caps-g4math-v1\",\n      \"text_sha256\": \"20e63562afa7cf00fa564a37bc79f5670fd55130f712eb4e4d09d6d1293eb02f\"\n    }\n  ],\n  \"retrieval_policy_version\": \"phase02r-gate2r5-retrieval-v1\",\n  \"status\": \"passed\"\n}\n"
+    },
+    {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "scripts/curriculum/validate_phase02r_gate2r5_retrieval.py",
+        "--json"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"activation_key\": \"CAPS:g4:MATH:en:global\",\n  \"binding_epoch\": 1,\n  \"corpus_version_id\": \"corpus-g4math-en-v1\",\n  \"errors\": [],\n  \"gate\": \"2R.5\",\n  \"manifest_sha256\": \"18c288d98b094d87f44e58f13351abb83dc44b210dbd95e97215b9e4bf6c8d98\",\n  \"projection_sha256\": \"f3f1b24f95bfa30cacc34501e52d0e01e4413eb46121f29699e7213573b84c5d\",\n  \"retrieval\": {\n    \"hits\": [\n      {\n        \"activation_key\": \"CAPS:g4:MATH:en:global\",\n        \"authority_tier\": \"tier_1\",\n        \"binding_epoch\": 1,\n        \"chunk_version_id\": \"chunk-g4math-numbers-001\",\n        \"corpus_version_id\": \"corpus-g4math-en-v1\",\n        \"curriculum_node_version_id\": \"node-g4math-numbers-whole-numbers-v1\",\n        \"language\": \"en\",\n        \"mapping_version_id\": \"map-g4math-numbers-001\",\n        \"matched_terms\": [\n          \"and\",\n          \"compare\",\n          \"numbers\",\n          \"place\",\n          \"value\",\n          \"whole\"\n        ],\n        \"page_end\": 12,\n        \"page_start\": 12,\n        \"quality_score\": 0.97,\n        \"retrieval_text\": \"Learners compare and order whole numbers and describe place value in Grade 4 Mathematics.\",\n        \"review_status\": \"approved\",\n        \"rights_status\": \"approved\",\n        \"score\": 0.97,\n        \"source_snapshot_hash\": \"ed15616965efb7a309f60e6051381d64521a255912a63768f6af8686ee021e0e\",\n        \"source_version_id\": \"src-caps-g4math-v1\",\n        \"text_sha256\": \"20e63562afa7cf00fa564a37bc79f5670fd55130f712eb4e4d09d6d1293eb02f\"\n      },\n      {\n        \"activation_key\": \"CAPS:g4:MATH:en:global\",\n        \"authority_tier\": \"tier_1\",\n        \"binding_epoch\": 1,\n        \"chunk_version_id\": \"chunk-g4math-fractions-001\",\n        \"corpus_version_id\": \"corpus-g4math-en-v1\",\n        \"curriculum_node_version_id\": \"node-g4math-fractions-common-v1\",\n        \"language\": \"en\",\n        \"mapping_version_id\": \"map-g4math-fractions-001\",\n        \"matched_terms\": [\n          \"and\",\n          \"compare\"\n        ],\n        \"page_end\": 37,\n        \"page_start\": 37,\n        \"quality_score\": 0.94,\n        \"retrieval_text\": \"Learners recognise, describe and compare common fractions using diagrams and number lines.\",\n        \"review_status\": \"approved\",\n        \"rights_status\": \"approved\",\n        \"score\": 0.313333,\n        \"source_snapshot_hash\": \"ed15616965efb7a309f60e6051381d64521a255912a63768f6af8686ee021e0e\",\n        \"source_version_id\": \"src-caps-g4math-v1\",\n        \"text_sha256\": \"930f0f08b53a22c05e21cf0df6fb7f03702d699594606b763b7536fd70c42602\"\n      }\n    ],\n    \"query\": {\n      \"activation_key\": \"CAPS:g4:MATH:en:global\",\n      \"binding_epoch\": 1,\n      \"corpus_version_id\": \"corpus-g4math-en-v1\",\n      \"language\": \"en\",\n      \"query_text\": \"compare whole numbers and place value\",\n      \"required_curriculum_node_version_ids\": [],\n      \"top_k\": 2\n    },\n    \"retrieval_policy_version\": \"phase02r-gate2r5-retrieval-v1\",\n    \"source_snapshot_hash\": \"d1ce07f36257f30b5e55425f20a0669510e0ba6bd690e37cd4c89ae0e220b0cc\"\n  },\n  \"status\": \"passed\"\n}\n"
+    },
+    {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "scripts/verify_migration_graph.py"
+      ],
+      "exit_code": 0,
+      "output": "Migration graph OK: 45 revisions, head=20260622_1200_phase02r_gate2r4\n"
+    }
+  ],
+  "errors": [],
+  "valid": true
+}

@@ -1,0 +1,88 @@
+name: Learning Evidence
+
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+      - "release/**"
+    paths:
+      - "app/domain/item_schema.py"
+      - "app/models/diagnostic_item.py"
+      - "app/models/item_exposure.py"
+      - "app/modules/diagnostics/**"
+      - "app/modules/practice/**"
+      - "app/modules/progress/**"
+      - "docs/diagnostics/**"
+      - "docs/learning_science/**"
+      - "docs/caps/**"
+      - "scripts/check_learning_evidence.py"
+      - "scripts/ci/check_diagnostics_assessment.py"
+      - "tests/unit/test_learning_evidence.py"
+      - "tests/unit/modules/diagnostics/**"
+      - "tests/unit/modules/practice/**"
+      - "tests/unit/modules/progress/**"
+      - "Makefile"
+      - ".github/workflows/learning-evidence.yml"
+  push:
+    branches:
+      - master
+      - main
+      - "release/**"
+    paths:
+      - "app/domain/item_schema.py"
+      - "app/models/diagnostic_item.py"
+      - "app/models/item_exposure.py"
+      - "app/modules/diagnostics/**"
+      - "app/modules/practice/**"
+      - "app/modules/progress/**"
+      - "docs/diagnostics/**"
+      - "docs/learning_science/**"
+      - "docs/caps/**"
+      - "scripts/check_learning_evidence.py"
+      - "scripts/ci/check_diagnostics_assessment.py"
+      - "tests/unit/test_learning_evidence.py"
+      - "tests/unit/modules/diagnostics/**"
+      - "tests/unit/modules/practice/**"
+      - "tests/unit/modules/progress/**"
+      - "Makefile"
+      - ".github/workflows/learning-evidence.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  learning-evidence-check:
+    name: Check learning evidence
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt
+          fi
+          if [ -f requirements-dev.txt ]; then
+            python -m pip install -r requirements-dev.txt
+          fi
+
+      - name: Run learning evidence tests
+        run: pytest tests/unit/test_learning_evidence.py -q --no-cov
+
+      - name: Run aggregate learning evidence check
+        run: make learning-evidence-check
+
+      - name: Run diagnostics assessment check
+        run: make diagnostics-assessment-check

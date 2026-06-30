@@ -1,0 +1,55 @@
+name: Auth Boundary
+
+on:
+  pull_request:
+    branches: [master, main, "release/**"]
+    paths:
+      - "app/api_v2_routers/auth.py"
+      - "app/core/rbac.py"
+      - "app/core/refresh_tokens.py"
+      - "app/core/token_revocation.py"
+      - "app/core/rate_limit.py"
+      - "app/security/**"
+      - "docs/security/**"
+      - "scripts/check_auth_boundary_evidence.py"
+      - "tests/unit/test_auth_boundary_evidence.py"
+      - "Makefile"
+      - ".github/workflows/auth-boundary.yml"
+  push:
+    branches: [master, main, "release/**"]
+    paths:
+      - "app/api_v2_routers/auth.py"
+      - "app/core/rbac.py"
+      - "app/core/refresh_tokens.py"
+      - "app/core/token_revocation.py"
+      - "app/core/rate_limit.py"
+      - "app/security/**"
+      - "docs/security/**"
+      - "scripts/check_auth_boundary_evidence.py"
+      - "tests/unit/test_auth_boundary_evidence.py"
+      - "Makefile"
+      - ".github/workflows/auth-boundary.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  auth-boundary-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
+          if [ -f requirements-dev.txt ]; then python -m pip install -r requirements-dev.txt; fi
+      - name: Run auth evidence test
+        run: pytest tests/unit/test_auth_boundary_evidence.py -q --no-cov
+      - name: Run auth evidence check
+        run: make auth-boundary-check

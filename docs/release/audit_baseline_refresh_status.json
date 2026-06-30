@@ -1,0 +1,210 @@
+{
+  "generated_at": "2026-06-27T02:18:55Z",
+  "current_commit": "88840fc52a05c694c6d313e57bc8cba4bcda4c63",
+  "current_branch": "feature/atlas-phase-02r-gate-2r1-remediation",
+  "status": "audit-baseline-refresh-current",
+  "beta_decision": "NO-GO",
+  "beta_blocker_count": 10,
+  "commands": [
+    {
+      "command": "make final-gate-refresh",
+      "return_code": 0,
+      "output_excerpt": "make[1]: Entering directory '/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1'\nPYTHONPATH=. python3 -c \"from scripts.final_gate_refresh import write_refresh; r = write_refresh(); print(r.beta_decision)\"\nNO-GO\nmake[1]: Leaving directory '/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1'\n"
+    },
+    {
+      "command": "write release_go_no_go_status from final_beta_gate_refresh",
+      "return_code": 0,
+      "output_excerpt": "release_go_no_go_status.json/md regenerated from current final beta gate"
+    },
+    {
+      "command": "python3 scripts/docs_inventory.py --write",
+      "return_code": 0,
+      "output_excerpt": "Wrote docs/docs_inventory.json\nWrote docs/docs_inventory.md\nWrote docs/docs_gap_report.md\nWrote docs/docs_generation_plan.md\nDocuments: 1688\n"
+    }
+  ],
+  "surfaces": [
+    {
+      "name": "final_beta_gate_refresh",
+      "path": "docs/release/final_beta_gate_refresh.json",
+      "exists": true,
+      "status": "NO-GO",
+      "decision": "NO-GO",
+      "commit": "88840fc52a05c694c6d313e57bc8cba4bcda4c63",
+      "stale": false
+    },
+    {
+      "name": "release_go_no_go_status",
+      "path": "docs/release/release_go_no_go_status.json",
+      "exists": true,
+      "status": "NO-GO",
+      "decision": "NO-GO",
+      "commit": "88840fc52a05c694c6d313e57bc8cba4bcda4c63",
+      "stale": false
+    },
+    {
+      "name": "ci_evidence",
+      "path": "docs/release/ci_evidence_status.json",
+      "exists": true,
+      "status": "ci-evidence-not-accepted",
+      "decision": "",
+      "commit": "b33e49720860a084e7a7c42ead1b620cb859e64f",
+      "stale": true
+    },
+    {
+      "name": "ci_run_evidence",
+      "path": "docs/release/ci_run_evidence_status.json",
+      "exists": true,
+      "status": "external-blocked",
+      "decision": "",
+      "commit": "b33e49720860a084e7a7c42ead1b620cb859e64f",
+      "stale": true
+    },
+    {
+      "name": "external_approval",
+      "path": "docs/release/external_approval_status.json",
+      "exists": true,
+      "status": "external-blocked",
+      "decision": "",
+      "commit": "88840fc52a05c694c6d313e57bc8cba4bcda4c63",
+      "stale": false
+    },
+    {
+      "name": "approval_evidence",
+      "path": "docs/release/approval_evidence_status.json",
+      "exists": true,
+      "status": "external-blocked",
+      "decision": "",
+      "commit": "b33e49720860a084e7a7c42ead1b620cb859e64f",
+      "stale": true
+    },
+    {
+      "name": "staging_smoke_evidence",
+      "path": "docs/release/staging_smoke_evidence_status.json",
+      "exists": true,
+      "status": "staging-smoke-evidence-not-accepted",
+      "decision": "",
+      "commit": "a70b57616bb29572fcb57961b91a3f68f0c66329",
+      "stale": true
+    },
+    {
+      "name": "staging_acceptance",
+      "path": "docs/release/staging_acceptance_status.json",
+      "exists": true,
+      "status": "external-blocked",
+      "decision": "",
+      "commit": "a70b57616bb29572fcb57961b91a3f68f0c66329",
+      "stale": true
+    },
+    {
+      "name": "auth_refresh_db_evidence",
+      "path": "docs/release/auth_refresh_db_evidence_status.json",
+      "exists": true,
+      "status": "auth-refresh-db-evidence-accepted",
+      "decision": "",
+      "commit": "b33e49720860a084e7a7c42ead1b620cb859e64f",
+      "stale": true
+    },
+    {
+      "name": "popia_response_contract_no_skip",
+      "path": "docs/release/popia_response_contract_no_skip_status.json",
+      "exists": true,
+      "status": "popia-response-contract-no-skip-passing",
+      "decision": "",
+      "commit": "525c272bb294365a86c6dcee10211cb11604cc43",
+      "stale": true
+    },
+    {
+      "name": "diag_deep_health_runtime",
+      "path": "docs/release/diag_deep_health_runtime_status.json",
+      "exists": true,
+      "status": "diag-deep-health-runtime-not-accepted",
+      "decision": "",
+      "commit": "a70b57616bb29572fcb57961b91a3f68f0c66329",
+      "stale": true
+    },
+    {
+      "name": "live_db_transaction_evidence",
+      "path": "docs/release/live_db_transaction_evidence_status.json",
+      "exists": true,
+      "status": "external-blocked",
+      "decision": "",
+      "commit": "a70b57616bb29572fcb57961b91a3f68f0c66329",
+      "stale": true
+    },
+    {
+      "name": "beta_blocker_burndown",
+      "path": "docs/release/beta_blocker_burndown_plan.json",
+      "exists": true,
+      "status": "",
+      "decision": "",
+      "commit": "b33e49720860a084e7a7c42ead1b620cb859e64f",
+      "stale": true
+    },
+    {
+      "name": "docs_inventory",
+      "path": "docs/docs_inventory.json",
+      "exists": true,
+      "status": "",
+      "decision": "",
+      "commit": "88840fc52a05c694c6d313e57bc8cba4bcda4c63",
+      "stale": false
+    }
+  ],
+  "accepted_evidence_markers": [
+    {
+      "id": "AUTH-REFRESH-DB-EVIDENCE-001",
+      "path": "docs/release/auth_refresh_db_evidence_status.json",
+      "expected_marker": "auth-refresh-db-evidence-accepted",
+      "exists": true,
+      "accepted": true
+    },
+    {
+      "id": "POPIA-001",
+      "path": "docs/release/popia_response_contract_no_skip_status.json",
+      "expected_marker": "popia-response-contract-no-skip-passing",
+      "exists": true,
+      "accepted": true
+    },
+    {
+      "id": "CI-001",
+      "path": "docs/release/ci_evidence_status.json",
+      "expected_marker": "ci-evidence-accepted",
+      "exists": true,
+      "accepted": false
+    },
+    {
+      "id": "EVID-001",
+      "path": "docs/release/ci_evidence_status.json",
+      "expected_marker": "ci-evidence-accepted",
+      "exists": true,
+      "accepted": false
+    },
+    {
+      "id": "STAGING-001",
+      "path": "docs/release/staging_smoke_evidence_status.json",
+      "expected_marker": "staging-smoke-evidence-accepted",
+      "exists": true,
+      "accepted": false
+    },
+    {
+      "id": "DIAG-001",
+      "path": "docs/release/diag_deep_health_runtime_status.json",
+      "expected_marker": "diag-deep-health-runtime-accepted",
+      "exists": true,
+      "accepted": false
+    }
+  ],
+  "remaining_beta_blockers": [
+    "JWT-001",
+    "ARQ-001",
+    "POPIA-001",
+    "CI-001",
+    "LEGAL-001",
+    "SEC-001",
+    "CONTENT-001",
+    "LESSON-AUTH-001",
+    "STAGING-001",
+    "EXT-GATE-001"
+  ],
+  "blockers": []
+}

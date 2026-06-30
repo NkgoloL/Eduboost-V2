@@ -1,7 +1,5 @@
-import pytest
 from fastapi.testclient import TestClient
 from app.api_v2 import app
-from app.core.config import settings
 
 client = TestClient(app)
 

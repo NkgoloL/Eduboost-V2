@@ -89,20 +89,20 @@ class TestLessonPipelineEndToEnd:
         """Happy path: clean params → APPROVED → lesson generated."""
         from app.api.judiciary.client import JudiciaryClient
         from app.api.judiciary.base import JudiciaryStampRef
-        
+
         mock_stamp = JudiciaryStampRef(
             stamp_id="test-stamp",
             action_id="test-action",
             verdict="APPROVED",
             reason="Integration test mock"
         )
-        
+
         with patch("app.api.services.lesson_service.call_llm", new_callable=AsyncMock) as mock_llm, \
              patch.object(JudiciaryClient, "review", new_callable=AsyncMock) as mock_review:
-            
+
             mock_llm.return_value = MOCK_LESSON_STR
             mock_review.return_value = mock_stamp
-            
+
             async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
                 response = await client.post("/api/v1/lessons/generate", json=_lesson_request())
 

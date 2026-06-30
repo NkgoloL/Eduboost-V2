@@ -3,13 +3,13 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { StarsBackground } from "../components/ui/StarsBackground";
-import { Button } from "../components/ui/Button";
+import { Button } from "../components/ui/Button-legacy";
 
 export default function Home() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-[var(--bg)] flex items-center justify-center relative overflow-hidden">
+    <main id="main-content" className="min-h-screen bg-[var(--bg)] flex items-center justify-center relative overflow-hidden">
       <div className="absolute top-0 w-full h-2 bg-gradient-to-r from-green-500 via-yellow-400 to-red-500 z-50" />
       <StarsBackground />
       
@@ -39,6 +39,6 @@ export default function Home() {
           </Button>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

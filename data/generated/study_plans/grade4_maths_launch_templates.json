@@ -1,0 +1,394 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T19:39:32Z",
+  "scope": "grade4_mathematics_en",
+  "grade": 4,
+  "subject": "Mathematics",
+  "weekly_template": [
+    {
+      "day": "Mon",
+      "caps_ref": "4.M.1.1",
+      "topic": "Whole Numbers",
+      "activity_type": "lesson",
+      "lesson_variant": "standard",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-1-short-practice-v2",
+      "minutes": 40,
+      "teacher_cue": "Teach Whole Numbers using the worked examples, then set the short practice blueprint."
+    },
+    {
+      "day": "Tue",
+      "caps_ref": "4.M.1.2",
+      "topic": "Common Fractions",
+      "activity_type": "practice",
+      "lesson_variant": "visual",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-2-short-practice-v2",
+      "minutes": 25,
+      "teacher_cue": "Run the short practice quiz for Common Fractions and note missed misconception tags."
+    },
+    {
+      "day": "Wed",
+      "caps_ref": "4.M.1.3",
+      "topic": "2D Shapes",
+      "activity_type": "lesson",
+      "lesson_variant": "story",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-3-short-practice-v2",
+      "minutes": 40,
+      "teacher_cue": "Teach 2D Shapes using the worked examples, then set the short practice blueprint."
+    },
+    {
+      "day": "Thu",
+      "caps_ref": "4.M.1.1",
+      "topic": "Whole Numbers",
+      "activity_type": "practice",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-1-short-practice-v2",
+      "minutes": 25,
+      "teacher_cue": "Run the short practice quiz for Whole Numbers and note missed misconception tags."
+    },
+    {
+      "day": "Fri",
+      "caps_ref": "4.M.1.2",
+      "topic": "Common Fractions",
+      "activity_type": "review",
+      "lesson_variant": "real_world_sa",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-2-recheck-v2",
+      "minutes": 25,
+      "teacher_cue": "Use the recheck blueprint for Common Fractions and assign step-by-step remediation where needed."
+    }
+  ],
+  "topic_sequence": [
+    {
+      "caps_ref": "4.M.1.1",
+      "topic": "Whole Numbers",
+      "subtopic": "Whole Numbers",
+      "term": 1,
+      "prerequisites": [
+        "4.M.1.1.1",
+        "4.M.1.1.2",
+        "4.M.1.1.3"
+      ],
+      "misconception_tags": [
+        "place_value_confusion",
+        "reversal_of_digit_order",
+        "incorrect_comparison_with_unequal_digit_counts",
+        "forgetting_to_regroup",
+        "subtracting_smaller_from_larger_regardless_of_position",
+        "place_value_error_in_column_method",
+        "incorrect_times_table_recall",
+        "forgetting_to_carry_in_multiplication",
+        "multiplying_each_digit_separately_without_place_value",
+        "remainder_ignored_or_mishandled",
+        "dividend_and_divisor_reversed",
+        "place_value_error_in_short_division"
+      ],
+      "assessment_standards": [
+        "Count forwards and backwards in 10s, 100s and 1 000s from any number.",
+        "Represent and recognise the place value of digits in whole numbers up to 4-digit numbers."
+      ],
+      "source_context_hash": "sha256:c5b8a5ef3b421173a709f656303d2df306a4846db7e25ee933b1030a87873141",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "4.M.1.2",
+      "topic": "Common Fractions",
+      "subtopic": "Common Fractions",
+      "term": 1,
+      "prerequisites": [
+        "4.M.1.1.1",
+        "4.M.1.2.1"
+      ],
+      "misconception_tags": [
+        "larger_denominator_means_larger_fraction",
+        "fraction_as_two_separate_whole_numbers",
+        "numerator_denominator_confusion",
+        "adding_numerators_and_denominators_separately",
+        "not_recognising_equivalent_forms",
+        "confusion_between_simplifying_and_halving"
+      ],
+      "assessment_standards": [
+        "Name and write common fractions: halves, thirds, quarters, fifths, sixths, eighths, tenths.",
+        "Order and compare common fractions with the same denominator."
+      ],
+      "source_context_hash": "sha256:f5a00af055460e8465da974287494866dd6f414835cf7a4a03488c89e5b7fb5e",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "4.M.1.3",
+      "topic": "2D Shapes",
+      "subtopic": "2D Shapes",
+      "term": 1,
+      "prerequisites": [
+        "4.M.1.3.1"
+      ],
+      "misconception_tags": [
+        "confusing_squares_and_rectangles",
+        "orientation_dependence_for_shape_recognition",
+        "counting_vertices_instead_of_sides",
+        "diagonal_symmetry_confused_with_horizontal_or_vertical",
+        "confusing_rotational_symmetry_with_line_symmetry"
+      ],
+      "assessment_standards": [
+        "Identify and name 2D shapes: circles, triangles, quadrilaterals, pentagons, hexagons, heptagons, octagons.",
+        "Describe shapes by number of sides, angles, and symmetry."
+      ],
+      "source_context_hash": "sha256:747eb317f544177a585efa1e2bd899d1209e919fe7dd4492cb023d3c4fb2c931",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    }
+  ],
+  "remediation_mappings": [
+    {
+      "misconception_tag": "place_value_confusion",
+      "caps_ref": "4.M.1.1",
+      "topic": "Whole Numbers",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "reversal_of_digit_order",
+      "caps_ref": "4.M.1.1",
+      "topic": "Whole Numbers",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "incorrect_comparison_with_unequal_digit_counts",
+      "caps_ref": "4.M.1.1",
+      "topic": "Whole Numbers",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "forgetting_to_regroup",
+      "caps_ref": "4.M.1.1",
+      "topic": "Whole Numbers",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "subtracting_smaller_from_larger_regardless_of_position",
+      "caps_ref": "4.M.1.1",
+      "topic": "Whole Numbers",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "place_value_error_in_column_method",
+      "caps_ref": "4.M.1.1",
+      "topic": "Whole Numbers",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "incorrect_times_table_recall",
+      "caps_ref": "4.M.1.1",
+      "topic": "Whole Numbers",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "forgetting_to_carry_in_multiplication",
+      "caps_ref": "4.M.1.1",
+      "topic": "Whole Numbers",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "multiplying_each_digit_separately_without_place_value",
+      "caps_ref": "4.M.1.1",
+      "topic": "Whole Numbers",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "remainder_ignored_or_mishandled",
+      "caps_ref": "4.M.1.1",
+      "topic": "Whole Numbers",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "dividend_and_divisor_reversed",
+      "caps_ref": "4.M.1.1",
+      "topic": "Whole Numbers",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "place_value_error_in_short_division",
+      "caps_ref": "4.M.1.1",
+      "topic": "Whole Numbers",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "larger_denominator_means_larger_fraction",
+      "caps_ref": "4.M.1.2",
+      "topic": "Common Fractions",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "fraction_as_two_separate_whole_numbers",
+      "caps_ref": "4.M.1.2",
+      "topic": "Common Fractions",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "numerator_denominator_confusion",
+      "caps_ref": "4.M.1.2",
+      "topic": "Common Fractions",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "adding_numerators_and_denominators_separately",
+      "caps_ref": "4.M.1.2",
+      "topic": "Common Fractions",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "not_recognising_equivalent_forms",
+      "caps_ref": "4.M.1.2",
+      "topic": "Common Fractions",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "confusion_between_simplifying_and_halving",
+      "caps_ref": "4.M.1.2",
+      "topic": "Common Fractions",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "confusing_squares_and_rectangles",
+      "caps_ref": "4.M.1.3",
+      "topic": "2D Shapes",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "orientation_dependence_for_shape_recognition",
+      "caps_ref": "4.M.1.3",
+      "topic": "2D Shapes",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "counting_vertices_instead_of_sides",
+      "caps_ref": "4.M.1.3",
+      "topic": "2D Shapes",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "diagonal_symmetry_confused_with_horizontal_or_vertical",
+      "caps_ref": "4.M.1.3",
+      "topic": "2D Shapes",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "confusing_rotational_symmetry_with_line_symmetry",
+      "caps_ref": "4.M.1.3",
+      "topic": "2D Shapes",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    }
+  ],
+  "extension_mappings": [
+    {
+      "caps_ref": "4.M.1.1",
+      "topic": "Whole Numbers",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "4.M.1.2",
+      "topic": "Common Fractions",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "4.M.1.3",
+      "topic": "2D Shapes",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade4-mathematics-en-4-M-1-3-mastery-check-v2",
+      "minutes": 25
+    }
+  ],
+  "pacing_guidance": {
+    "lesson_block_minutes": 25,
+    "practice_block_minutes": 15,
+    "review_day": "Fri",
+    "notes": "Alternate lesson and practice days. Use recheck blueprints after practice when misconception tags were missed."
+  }
+}

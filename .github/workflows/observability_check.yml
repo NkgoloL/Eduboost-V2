@@ -1,0 +1,98 @@
+# Phase 0 — T032 — Observability config CI gate.
+#
+# Validates the deployable Prometheus and Alertmanager artifacts:
+#   * promtool check rules <every-rules-file>  — alert/recording rule syntax,
+#     including Go-template syntax inside annotations.
+#   * amtool check-config alertmanager/alertmanager.yml  — receiver wiring,
+#     route validity, and URL/secret loader sanity.
+#
+# The alertmanager.yml in this repo is the exact artifact deployed to
+# Alertmanager (no template-rendering step). Secret webhook URLs are loaded
+# at runtime from files mounted by the orchestrator (see
+# docs/operations/alertmanager.md), so amtool can validate the file in place.
+
+name: Observability Config Check
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - "alertmanager/**"
+      - "prometheus/**"
+      - ".github/workflows/observability_check.yml"
+  pull_request:
+    branches: [master, main]
+    paths:
+      - "alertmanager/**"
+      - "prometheus/**"
+      - ".github/workflows/observability_check.yml"
+
+concurrency:
+  group: observability-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  observability-check:
+    name: "promtool + amtool on deployed artifacts"
+    runs-on: ubuntu-latest
+
+    env:
+      PROMETHEUS_VERSION: "3.1.0"
+      ALERTMANAGER_VERSION: "0.27.0"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install promtool
+        run: |
+          set -euo pipefail
+          curl -fsSL -o /tmp/prometheus.tgz \
+            "https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.linux-amd64.tar.gz"
+          tar -xzf /tmp/prometheus.tgz -C /tmp
+          sudo install -m 0755 \
+            "/tmp/prometheus-${PROMETHEUS_VERSION}.linux-amd64/promtool" \
+            /usr/local/bin/promtool
+          promtool --version
+
+      - name: Install amtool
+        run: |
+          set -euo pipefail
+          curl -fsSL -o /tmp/alertmanager.tgz \
+            "https://github.com/prometheus/alertmanager/releases/download/v${ALERTMANAGER_VERSION}/alertmanager-${ALERTMANAGER_VERSION}.linux-amd64.tar.gz"
+          tar -xzf /tmp/alertmanager.tgz -C /tmp
+          sudo install -m 0755 \
+            "/tmp/alertmanager-${ALERTMANAGER_VERSION}.linux-amd64/amtool" \
+            /usr/local/bin/amtool
+          amtool --version
+
+      # -----------------------------------------------------------------
+      # promtool: every rules file in the repo. New rules files are picked
+      # up automatically.
+      # -----------------------------------------------------------------
+      - name: promtool check rules (all rule files)
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          files=()
+          for f in prometheus/*.yml alertmanager/rules/*.yml; do
+            files+=("$f")
+          done
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "::error::No Prometheus rules files found under prometheus/ or alertmanager/rules/."
+            exit 1
+          fi
+          for f in "${files[@]}"; do
+            echo "--- promtool check rules $f ---"
+            promtool check rules "$f"
+          done
+
+      # -----------------------------------------------------------------
+      # amtool: the single deployable Alertmanager config. If a future
+      # PR introduces template rendering, render first and validate the
+      # rendered artifact instead.
+      # -----------------------------------------------------------------
+      - name: amtool check-config alertmanager/alertmanager.yml
+        run: |
+          set -euo pipefail
+          amtool check-config alertmanager/alertmanager.yml

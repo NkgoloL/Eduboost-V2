@@ -2,20 +2,21 @@
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException, status
+from app.core.envelope_route import EnvelopedRoute
 from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
-from app.core.security import get_current_user
+from app.api_v2_deps.auth import AuthContext, require_auth_context
+from app.core.security import get_current_user  # noqa: F401
+from app.security.dependencies import require_active_consent_for_current_user, require_learner_read_for_current_user
+from app.security.dependencies import require_learner_write_for_current_user
 from app.repositories.gamification_repository import GamificationRepository
-from app.repositories.learner_repository import LearnerRepository
-from app.repositories.lesson_repository import LessonRepository
-from app.services.consent import ConsentService
-from app.services.audit_service import AuditService
-from app.core import providers
+from app.repositories.repositories import LearnerRepository, LessonRepository
+from app.services.fourth_estate import FourthEstateService
 from app.services.gamification_service_v2 import GamificationServiceV2
 
-router = APIRouter(prefix="/gamification", tags=["V2 Gamification"])
+router = APIRouter(route_class=EnvelopedRoute, prefix="/gamification", tags=["V2 Gamification"])
 
 
 class AwardXPRequest(BaseModel):
@@ -29,9 +30,13 @@ class AwardXPRequest(BaseModel):
 async def get_profile(
     learner_id: str,
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(get_current_user),
+    current_user: AuthContext = Depends(require_auth_context),
 ):
-    await ConsentService(db).require_active_consent(learner_id, actor_id=current_user.get("sub"))
+    learner = await LearnerRepository(db).get_by_id(learner_id)
+    if learner is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
+    require_learner_read_for_current_user(current_user, learner)
+    await require_active_consent_for_current_user(db, current_user, learner_id)
     try:
         return await GamificationServiceV2(GamificationRepository(db)).get_profile(learner_id)
     except ValueError as exc:
@@ -42,22 +47,22 @@ async def get_profile(
 async def award_xp(
     body: AwardXPRequest,
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(get_current_user),
-    audit: AuditService = Depends(providers.get_audit_service),
+    current_user: AuthContext = Depends(require_auth_context),
 ):
-    await ConsentService(db).require_active_consent(body.learner_id, actor_id=current_user.get("sub"))
     learner = await LearnerRepository(db).get_by_id(body.learner_id)
     if learner is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
+    require_learner_write_for_current_user(current_user, body.learner_id)
+    await require_active_consent_for_current_user(db, current_user, body.learner_id)
 
     learner_repo = LearnerRepository(db)
     await learner_repo.add_xp(body.learner_id, body.xp_amount)
     if body.lesson_id:
         await LessonRepository(db).mark_completed(body.lesson_id)
 
-    await audit.record(
+    await FourthEstateService(db).record(
         event_type="gamification.xp_awarded",
-        actor_id=current_user.get("sub"),
+        actor_id=current_user.user_id,
         learner_pseudonym=learner.pseudonym_id,
         resource_id=body.learner_id,
         payload={
@@ -69,6 +74,8 @@ async def award_xp(
         constitutional_outcome="APPROVED",
     )
     await db.commit()
+    # Expire objects to ensure get_profile fetches fresh data from DB
+    db.expire_all()
     updated_profile = await GamificationServiceV2(GamificationRepository(db)).get_profile(body.learner_id)
     return {
         "awarded": True,

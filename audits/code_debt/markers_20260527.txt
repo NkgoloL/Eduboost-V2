@@ -1,0 +1,20 @@
+app/modules/lessons/teacher_insight_mode.py:16:Implements TODO §6.4.3: "Add teacher insight mode: aggregate misconception_tags
+app/modules/lessons/adaptive_remediation.py:16:This implements TODO §6.4.2:
+app/modules/lessons/parent_explanation_mode.py:18:Implements TODO §6.4.3: "Add parent explanation mode"
+app/modules/lessons/budget_guardrails.py:151:    # TODO: integrate with alertmanager or Prometheus Alertmanager webhook
+app/api_v2_routers/auth_extended.py:560:    # TODO: enqueue Celery task → export_user_data.delay(_current_user_id(current_user))
+app/api_v2_routers/auth_extended.py:587:    # TODO: enqueue Celery task → schedule_account_deletion.delay(_current_user_id(current_user))
+app/api_v2_routers/popia.py:106:    # TODO: replace with real auth dependency that injects actor_id from JWT
+app/services/content_learner_read_service.py:382:        # TODO: Implement legacy content fallback
+app/services/content_learner_read_service.py:398:        # TODO: Implement legacy content fallback
+app/core/llm_gateway.py:124:    pass
+app/core/llm_gateway.py:618:        pass
+app/core/audit.py:57:            pass
+app/core/judiciary.py:34:    pass
+app/modules/lessons/answer_key_verifier.py:127:        pass
+app/modules/progress/progress_timeline_service.py:27:                pass
+app/services/content_generation/prompt_payloads.py:38:    pass
+app/services/content_generation/prompt_payloads.py:42:    pass
+app/services/lesson_authorization.py:118:            pass
+app/services/popia_consent_lifecycle_adapter.py:78:            pass
+app/services/content_generation_executor.py:47:    pass

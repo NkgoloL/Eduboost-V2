@@ -1,0 +1,16 @@
+........................................................................ [ 39%]
+........................................................................ [ 79%]
+......................................                                   [100%]
+=============================== warnings summary ===============================
+../../../../.local/lib/python3.12/site-packages/_hypothesis_pytestplugin.py:481
+  /home/nkgolol/.local/lib/python3.12/site-packages/_hypothesis_pytestplugin.py:481: UserWarning: Skipping collection of '.hypothesis' directory - this usually means you've explicitly set the `norecursedirs` pytest config option, replacing rather than extending the default ignores.
+    warnings.warn(
+
+../../../../.local/lib/python3.12/site-packages/pydantic/_internal/_fields.py:160
+  /home/nkgolol/.local/lib/python3.12/site-packages/pydantic/_internal/_fields.py:160: UserWarning: Field "model_version" has conflict with protected namespace "model_".
+  
+  You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+182 passed, 2 warnings in 11.91s

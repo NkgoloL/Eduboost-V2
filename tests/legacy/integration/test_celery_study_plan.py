@@ -55,7 +55,7 @@ class TestCeleryStudyPlanTasks:
         self, mock_learner_id, mock_diagnostic_session_data, mock_subject_mastery
     ):
         """Test successful study plan refresh for a single learner."""
-        
+
         # Mock the async helper function at the module level where it's used
         with patch(
             "app.api.tasks.plan_tasks._refresh_study_plan",
@@ -64,11 +64,11 @@ class TestCeleryStudyPlanTasks:
             # Execute the Celery task directly (not through Celery runner)
             # This tests the task logic without the event loop conflict
             from app.api.tasks.plan_tasks import refresh_study_plan_task
-            
+
             # Create a mock task instance
             task = refresh_study_plan_task
             task.bind = MagicMock()
-            
+
             # Just verify the task can be called with the right parameters
             # The actual execution would require a running Celery worker
             assert task.name == "eduboost.tasks.refresh_study_plan"
@@ -77,7 +77,7 @@ class TestCeleryStudyPlanTasks:
     @pytest.mark.asyncio
     async def test_refresh_study_plan_task_no_diagnostic(self, mock_learner_id):
         """Test that task handles missing diagnostic sessions gracefully."""
-        
+
         with patch(
             "app.api.tasks.plan_tasks.AsyncSessionFactory"
         ) as mock_factory:
@@ -86,9 +86,9 @@ class TestCeleryStudyPlanTasks:
             mock_result = MagicMock()
             mock_result.mappings.return_value.first.return_value = None
             mock_session.execute.return_value = mock_result
-            
+
             mock_factory.return_value.__aenter__.return_value = mock_session
-            
+
             # Should not raise, just log warning
             await _refresh_study_plan(mock_learner_id)
 
@@ -100,7 +100,7 @@ class TestCeleryStudyPlanTasks:
     async def test_daily_plan_refresh_multiple_learners(self):
         """Test daily refresh processes multiple learners."""
         learner_ids = [str(uuid4()) for _ in range(3)]
-        
+
         with patch(
             "app.api.tasks.plan_tasks.AsyncSessionFactory"
         ) as mock_factory:
@@ -109,23 +109,23 @@ class TestCeleryStudyPlanTasks:
             mock_result = MagicMock()
             mock_result.fetchall.return_value = [(lid,) for lid in learner_ids]
             mock_session.execute.return_value = mock_result
-            
+
             mock_factory.return_value.__aenter__.return_value = mock_session
-            
+
             with patch(
                 "app.api.tasks.plan_tasks._refresh_study_plan",
                 new_callable=AsyncMock,
             ) as mock_refresh:
                 # Execute daily refresh
                 await _daily_plan_refresh_all()
-                
+
                 # Verify each learner had their plan refreshed
                 assert mock_refresh.call_count == 3
 
     @pytest.mark.asyncio
     async def test_daily_plan_refresh_empty(self):
         """Test daily refresh handles no active learners gracefully."""
-        
+
         with patch(
             "app.api.tasks.plan_tasks.AsyncSessionFactory"
         ) as mock_factory:
@@ -134,9 +134,9 @@ class TestCeleryStudyPlanTasks:
             mock_result = MagicMock()
             mock_result.fetchall.return_value = []
             mock_session.execute.return_value = mock_result
-            
+
             mock_factory.return_value.__aenter__.return_value = mock_session
-            
+
             # Should not raise
             await _daily_plan_refresh_all()
 
@@ -149,7 +149,7 @@ class TestCeleryStudyPlanTasks:
         self, mock_learner_id, mock_diagnostic_session_data, mock_subject_mastery
     ):
         """Test that study plan generation uses mocked Orchestrator (Anthropic API)."""
-        
+
         # Create mock orchestrator result
         mock_result = MagicMock()
         mock_result.success = True
@@ -165,7 +165,7 @@ class TestCeleryStudyPlanTasks:
             },
             "week_focus": "Focus on fractions and multiplication remediation"
         }
-        
+
         # Patch at the function level where it's imported inside the function
         with patch(
             "app.api.orchestrator.get_orchestrator"
@@ -173,10 +173,10 @@ class TestCeleryStudyPlanTasks:
             mock_orch = AsyncMock()
             mock_orch.run.return_value = mock_result
             mock_get_orch.return_value = mock_orch
-            
+
             # The orchestrator should be called with GENERATE_STUDY_PLAN operation
             from app.api.orchestrator import OrchestratorRequest
-            
+
             # Verify the request structure
             req = OrchestratorRequest(
                 operation="GENERATE_STUDY_PLAN",
@@ -187,10 +187,10 @@ class TestCeleryStudyPlanTasks:
                     "subjects_mastery": {s["subject_code"]: s["mastery_score"] for s in mock_subject_mastery},
                 },
             )
-            
+
             # Execute and verify orchestrator was called
             result = await mock_orch.run(req)
-            
+
             assert result.success is True
             assert "days" in result.output
 
@@ -201,7 +201,7 @@ class TestCeleryStudyPlanTasks:
     def test_refresh_task_has_retry_config(self):
         """Verify Celery task has proper retry configuration."""
         task = refresh_study_plan_task
-        
+
         # Check task configuration
         assert task.name == "eduboost.tasks.refresh_study_plan"
         assert task.max_retries == 3
@@ -210,7 +210,7 @@ class TestCeleryStudyPlanTasks:
     def test_daily_refresh_task_has_retry_config(self):
         """Verify daily refresh task has proper retry configuration."""
         task = daily_plan_refresh
-        
+
         assert task.name == "eduboost.tasks.daily_plan_refresh"
         assert task.max_retries == 2
         assert task.default_retry_delay == 60
@@ -222,7 +222,7 @@ class TestCeleryStudyPlanTasks:
     def test_beat_schedule_has_daily_plan_refresh(self):
         """Verify Celery Beat schedule includes daily plan refresh."""
         from app.api.core.celery_app import celery_app
-        
+
         beat_schedule = celery_app.conf.beat_schedule
         assert "daily-plan-refresh" in beat_schedule
         assert beat_schedule["daily-plan-refresh"]["task"] == "eduboost.tasks.daily_plan_refresh"
@@ -230,7 +230,7 @@ class TestCeleryStudyPlanTasks:
     def test_beat_schedule_has_weekly_parent_reports(self):
         """Verify Celery Beat schedule includes weekly parent reports."""
         from app.api.core.celery_app import celery_app
-        
+
         beat_schedule = celery_app.conf.beat_schedule
         assert "weekly-parent-reports" in beat_schedule
         assert beat_schedule["weekly-parent-reports"]["task"] == "eduboost.tasks.weekly_parent_reports"

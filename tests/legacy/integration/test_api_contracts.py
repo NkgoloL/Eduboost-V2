@@ -48,7 +48,7 @@ async def test_diagnostic_invalid_subject_returns_structured_error():
 async def test_diagnostic_run_returns_valid_response():
     """Test that diagnostic run endpoint returns properly structured response."""
     learner_id = str(uuid.uuid4())
-    
+
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         response = await client.post(
             "/api/v1/diagnostic/run",
@@ -77,7 +77,7 @@ async def test_diagnostic_run_returns_valid_response():
 async def test_diagnostic_history_endpoint():
     """Test that diagnostic history endpoint returns session list."""
     learner_id = uuid.uuid4()
-    
+
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         response = await client.get(
             f"/api/v1/diagnostic/history/{learner_id}",
@@ -97,7 +97,7 @@ async def test_diagnostic_history_endpoint():
 async def test_right_to_access_endpoint():
     """Test that POPIA right-to-access endpoint returns learner data."""
     learner_id = str(uuid.uuid4())
-    
+
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         response = await client.get(
             f"/api/v1/system/access/{learner_id}",

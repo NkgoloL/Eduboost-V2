@@ -1,22 +1,77 @@
-# EduBoost V2 Makefile
+SHELL := /bin/bash
+PYTHON ?= python3
 
-.PHONY: help dev test lint typecheck migrate docs clean
+include Makefile.arch
+
+.PHONY: accessibility-pwa-e2e-check ai-fixture-coverage-check ai-output-fixture-validation-check ai-output-schema-contract-check ai-prompt-input-contract-check ai-prompt-secret-leakage-check ai-prompt-surface-inventory ai-prompt-surface-inventory-check ai-refusal-fixture-check ai-safety-boundary-check ai-safety-release-check api-envelope-error-contract-check archival-lock-assertion-check audit-contract-check audit-review-closeout-certificate-check auth-boundary-check backup-redis-dr-check beta-acceptance-exit-criteria-check beta-evidence-consistency-check beta-feedback-intake-contract-check beta-governance-seal-check beta-known-issues-register-check beta-monitoring-incident-trigger-check beta-outcome-report-template-check beta-participant-support-handoff-check beta-pr-body beta-pr-body-check beta-release-closure-attestation-check beta-release-communications-plan-check beta-release-decision-log-check beta-release-evidence-bundle beta-release-evidence-bundle-check beta-release-execution-plan-check beta-release-final-checklist-check beta-release-final-index-check beta-release-freeze-window-check beta-release-readiness-contract-check beta-retrospective-action-register-check beta-rollback-runbook-check beta-signoff-manifest beta-signoff-manifest-check branch-handoff-proof-record-check branch-sync-rebase-checklist-check caps-ai-safety-evidence-check caps-alignment-contract-check caps-learning-proof-check cicd-staging-check clean cluster-d-ci-check cluster-d-closure-check cluster-e-closure-check cluster-e-data-resilience-check cluster-f-ai-safety-check cluster-f-closure-check cluster-g-closure-check cluster-g-frontend-check cluster-h-closure-check cluster-h-final-closeout-rollup-check cluster-h-release-evidence-checksum-index-check cluster-h-release-readiness-check cluster-h-terminal-closure-assertion-check database-backup-contract-check database-backup-dry-run database-backup-integrity-check database-backup-manifest database-resilience-env-matrix-check database-resilience-evidence-check database-restore-drill-docs-check database-restore-dry-run database-restore-evidence database-restore-integrity-check db-repository-check deployment-readiness-docs-check dev dev-only-endpoint-check diagnostic-generation-safety-check diagnostics-assessment-check docs domain-01-repository-governance-ci-evidence-check environment-security-check evidence-archive-completeness-guard-check evidence-freeze-confirmation-record-check final-acceptance-memo-check final-acceptance-packet-index-check final-archive-accession-record-check final-audit-handoff-register-check final-beta-operator-packet-check final-closure-manifest-check final-evidence-noop-execution-assertion-check final-merge-signoff-lock-check final-pr-handoff-summary-check final-pr-merge-readiness-check final-project-closeout-attestation-check final-release-evidence-ledger-check final-release-evidence-toc-check final-release-handoff-package-check final-release-operator-brief-check final-release-readiness-rollup-check final-release-verification final-release-verification-check final-reviewer-disposition-record-check final-reviewer-pack-checklist-check final-sealed-package-manifest-check frontend-accessibility-contract-check frontend-accessibility-static-check frontend-api-client-inventory frontend-api-client-inventory-check frontend-auth-consent-denial-check frontend-build-test-lint-contract-check frontend-e2e frontend-e2e-env-contract-check frontend-e2e-mocked frontend-e2e-opt-in-workflow-check frontend-e2e-runtime-command-check frontend-e2e-smoke frontend-journey-check frontend-journey-fixture-check frontend-mock-api-fixture-check frontend-playwright-mock-helper-check frontend-playwright-mocked-specs-check frontend-playwright-scaffold-check frontend-playwright-specs-check frontend-route-inventory frontend-route-inventory-check frontend-runtime-inventory frontend-runtime-inventory-check frontend-verification-evidence-check frozen-scope-variance-register-check generated-artifact-hygiene-check learner-authz-check learner-authz-matrix learner-vertical-journey-contract-check learning-evidence-check lesson-bank-check lesson-generation-safety-check lint llm-provider-fallback-contract-check merge-control-evidence-gate-check migrate migration-check migration-smoke observability-ops-check openapi openapi-check parent-vertical-journey-contract-check persistence-resilience-check phase2-authz-check phase2-authz-closure popia-consent-audit-check popia-consent-boundary-check popia-consent-closure-check popia-consent-gate-check popia-consent-order-check popia-consent-rejection-audit-check popia-consent-source-check popia-legal-check post-beta-evidence-archive-manifest-check post-closeout-custody-register-check post-closeout-evidence-access-policy-check post-closeout-maintenance-boundary-check post-deploy-staging-smoke-check post-deploy-staging-smoke-checklist-check post-merge-evidence-continuity-note-check post-merge-release-handoff-check post-terminal-audit-readiness-check pr-closeout-evidence-checklist-check pr-merge-evidence-summary-check pr-ready-final-closure-certificate-check pr002r-check privacy-boundary-check privacy-legal-evidence-check production-restore-approval-check production-secret-placeholder-check project-release-closure-index-check release-approval-workflow-contract-check release-artifact-retention-contract-check release-audit-trail-index-check release-candidate-evidence-sweep-check release-candidate-tag-manifest release-candidate-tag-manifest-check release-change-control-exception-log-check release-evidence-artifacts-check release-evidence-retention-finalization-check release-handoff-freeze-assertion-check release-owner-accountability-check release-owner-execution-guardrail-check release-owner-post-closeout-decision-record-check release-record-closure-ledger-check recommended-operating-model-check release-state-snapshot release-state-snapshot-check remediation-safety-contract-check reviewer-decision-capture-template-check route-inventory route-inventory-check runtime-check schema-integrity sealed-evidence-access-handoff-check sealed-reviewer-closeout-packet-check staging-operations-release-evidence-check staging-release-gate-check staging-smoke-evidence-manifest staging-smoke-evidence-manifest-check terminal-evidence-retrieval-guide-check terminal-evidence-seal-check terminal-handoff-closure-note-check terminal-pr-evidence-index-check terminal-review-index-check test typecheck verify-repo-state
 
 help:
 	@echo "Available commands:"
-	@echo "  dev        - Start development servers (API, Frontend, Postgres, Redis)"
-	@echo "  test       - Run backend tests"
-	@echo "  lint       - Run linters (ruff, black)"
-	@echo "  typecheck  - Run type checker (mypy)"
-	@echo "  migrate    - Run database migrations"
-	@echo "  docs       - Build and serve documentation"
-	@echo "  clean      - Remove temporary files"
+	@echo "  dev             - Start development servers (API, Frontend, Postgres, Redis)"
+	@echo "  test            - Run PR fast unit tests (alias for test-fast)"
+	@echo "  test-fast       - Unit tests in parallel, no coverage, excludes governance"
+	@echo "  test-integration - Integration tests, no coverage"
+	@echo "  test-coverage   - Unit+integration with coverage (see COVERAGE_THRESHOLD)"
+	@echo "  test-governance - Release/evidence meta-tests only"
+	@echo "  lint            - Run linters (ruff, black)"
+	@echo "  typecheck       - Run type checker (mypy)"
+	@echo "  migrate         - Run database migrations"
+	@echo "  docs            - Build and serve documentation"
+	@echo "  docs-inventory  - Generate documentation intelligence inventory"
+	@echo "  docs-inventory-check - Verify documentation intelligence inventory is current"
+	@echo "  openapi         - Generate docs/openapi.json"
+	@echo "  openapi-check   - Verify docs/openapi.json is current"
+	@echo "  route-inventory - Generate docs/route_inventory.md"
+	@echo "  route-inventory-check - Verify docs/route_inventory.md is current"
+	@echo "  runtime-check   - Verify FastAPI runtime entrypoints"
+	@echo "  verify-repo-state - Verify repository provenance and release branch expectations"
+	@echo "  recommended-operating-model-check - Verify operating-model contract wording"
+	@echo "  todo-implementation-plan-check - Verify outstanding TODO implementation plan coverage"
+	@echo "  project-assistance-status - Refresh the five-lane project assistance report"
+	@echo "  project-assistance-status-check - Verify the five-lane project assistance report"
+	@echo "  pr002r-check   - Verify PR-002R evidence bundle"
+	@echo "  beta-release-readiness-contract-check - Verify release-readiness docs contract wording"
+	@echo "  release-candidate-evidence-sweep-check - Verify release-candidate evidence sweep"
+	@echo "  frontend-verification-evidence-check - Verify frontend verification evidence"
+	@echo "  database-resilience-evidence-check - Verify database resilience evidence"
+	@echo "  privacy-legal-evidence-check - Verify privacy and legal evidence"
+	@echo "  caps-ai-safety-evidence-check - Verify CAPS AI safety evidence"
+	@echo "  clean           - Remove temporary files"
 
 dev:
 	docker-compose up
 
-test:
-	pytest tests/
+PYTEST ?= .venv/bin/python -m pytest
+COVERAGE_THRESHOLD ?= 67
+PR_TEST_MARKERS := not governance and not slow and not llm and not e2e
+
+.PHONY: test test-fast test-integration test-coverage test-coverage-full test-governance
+
+test: test-fast
+
+test-fast:
+	$(PYTEST) -c pytest.ini tests/unit -n auto --no-cov -m "$(PR_TEST_MARKERS)" -q
+
+test-integration:
+	$(PYTEST) -c pytest.ini tests/integration --no-cov -m "$(PR_TEST_MARKERS)" -q
+
+test-coverage:
+	# Use coverage CLI to avoid pytest-cov sqlite context corruption on this runner
+	.venv/bin/coverage run -m pytest -c pytest-coverage.ini tests/unit tests/integration \
+		-m "$(PR_TEST_MARKERS)" -q || true
+	.venv/bin/coverage html -d coverage_html || true
+	.venv/bin/coverage xml -o coverage.xml || true
+	.venv/bin/coverage report --fail-under=$(COVERAGE_THRESHOLD)
+
+test-coverage-full:
+	$(PYTEST) -c pytest-coverage.ini tests/ --cov-fail-under=0 -q
+
+test-governance:
+	$(PYTEST) -c pytest.ini tests/unit -m governance -q
+
+.PHONY: repo-hygiene-check
+repo-hygiene-check:
+	$(PYTHON) scripts/maintenance/check_repo_hygiene.py
 
 lint:
 	ruff check .
@@ -26,12 +81,2800 @@ typecheck:
 	mypy .
 
 migrate:
+	@if [ -n "$$DATABASE_URL" ]; then $(PYTHON) scripts/wait_for_db.py --optional; fi
 	alembic upgrade head
+
+wait-db:
+	$(PYTHON) scripts/wait_for_db.py
+
+migration-smoke:
+	@if [ -n "$$DATABASE_URL" ]; then $(PYTHON) scripts/wait_for_db.py; fi
+	bash ./scripts/smoke_test_migrations.sh
 
 docs:
 	mkdocs serve
 
+openapi:
+	$(PYTHON) scripts/generate_openapi.py
+
+openapi-check:
+	$(PYTHON) scripts/generate_openapi.py --check
+
+route-inventory:
+	$(PYTHON) scripts/generate_route_inventory.py
+
+route-inventory-check:
+	$(PYTHON) scripts/generate_route_inventory.py --check
+
+runtime-check:
+	$(PYTHON) scripts/check_runtime_entrypoints.py
+
+verify-repo-state:
+	$(PYTHON) scripts/verify_repo_state.py --expected-branch "$${EXPECTED_RELEASE_BRANCH:-master}" $${VERIFY_REPO_STATE_ARGS:-}
+
+recommended-operating-model-check:
+	$(PYTHON) scripts/check_recommended_operating_model.py
+
+.PHONY: todo-implementation-plan-check
+todo-implementation-plan-check:
+	$(PYTHON) scripts/check_todo_implementation_plan.py
+
+.PHONY: project-assistance-status project-assistance-status-check
+project-assistance-status:
+	$(PYTHON) scripts/project_assistance_status.py
+
+project-assistance-status-check:
+	$(PYTHON) scripts/project_assistance_status.py --check
+
+pr002r-check:
+	$(PYTHON) scripts/check_pr002r_evidence.py
+
+beta-release-readiness-contract-check:
+	$(PYTHON) scripts/check_beta_release_readiness_contract.py
+
+release-candidate-evidence-sweep-check:
+	$(PYTHON) scripts/check_release_candidate_evidence_sweep.py
+
+frontend-verification-evidence-check:
+	$(PYTHON) scripts/check_frontend_verification_evidence.py
+
+database-resilience-evidence-check:
+	$(PYTHON) scripts/check_database_resilience_evidence.py
+
+privacy-legal-evidence-check:
+	$(PYTHON) scripts/check_privacy_legal_release_evidence.py
+
+caps-ai-safety-evidence-check:
+	$(PYTHON) scripts/check_caps_ai_safety_release_evidence.py
+
+api-envelope-error-contract-check:
+	$(PYTHON) scripts/check_api_envelope_error_contract.py
+
+migration-check: schema-integrity
+	@echo "Running migration graph and schema integrity checks"
+	$(PYTHON) scripts/verify_migration_graph.py
+
+schema-integrity:
+	@echo "Validating ORM schema integrity"
+	$(PYTHON) scripts/validate_schema_integrity.py
+
+db-repository-check:
+	$(PYTHON) scripts/check_db_repository_evidence.py
+
+
 clean:
-	find . -type d -name "__pycache__" -exec rm -rf {} +
+	find . -type d -name "__pycache__" -prune -exec rm -rf {} +
 	find . -type f -name "*.pyc" -delete
-	rm -rf .pytest_cache .mypy_cache .ruff_cache
+	rm -rf .pytest_cache .mypy_cache .ruff_cache htmlcov .coverage
+
+phase2-authz-check:
+	$(PYTHON) scripts/check_phase2_authorization_evidence.py
+
+learner-authz-matrix:
+	$(PYTHON) scripts/generate_learner_authz_matrix.py
+
+learner-authz-check: learner-authz-matrix
+	$(PYTHON) scripts/check_learner_authz_coverage.py
+
+phase2-authz-closure:
+	$(PYTHON) scripts/check_phase2_authorization_closure.py
+
+audit-contract-check:
+	$(PYTHON) scripts/check_audit_event_contracts.py
+
+auth-boundary-check:
+	$(PYTHON) scripts/check_auth_boundary_evidence.py
+
+popia-consent-gate-check:
+	$(PYTHON) scripts/generate_consent_gate_inventory.py
+	$(PYTHON) scripts/check_consent_gate_inventory.py
+
+popia-consent-audit-check:
+	$(PYTHON) scripts/check_popia_consent_audit_evidence.py
+
+popia-consent-boundary-check:
+	$(PYTHON) scripts/generate_popia_consent_boundary_matrix.py
+	$(PYTHON) scripts/check_popia_consent_boundary_matrix.py
+
+popia-consent-order-check:
+	$(PYTHON) scripts/check_active_consent_route_order.py
+
+popia-consent-rejection-audit-check:
+	$(PYTHON) scripts/check_consent_rejection_audit.py
+
+popia-consent-source-check:
+	$(PYTHON) scripts/check_active_consent_route_sources.py
+
+popia-consent-closure-check:
+	$(PYTHON) scripts/check_popia_consent_closure.py
+
+privacy-boundary-check:
+	$(PYTHON) scripts/check_privacy_boundary_evidence.py
+
+popia-legal-check:
+	$(PYTHON) scripts/check_popia_legal_evidence.py
+
+environment-security-check:
+	$(PYTHON) scripts/check_environment_security_contract.py
+
+deployment-readiness-docs-check:
+	$(PYTHON) scripts/check_deployment_readiness_docs.py
+
+cluster-d-ci-check:
+	$(PYTHON) scripts/check_cluster_d_ci_evidence.py
+
+production-secret-placeholder-check:
+	$(PYTHON) scripts/check_production_secret_placeholders.py
+
+dev-only-endpoint-check:
+	$(PYTHON) scripts/check_dev_only_endpoint_exposure.py
+
+cluster-d-closure-check:
+	$(PYTHON) scripts/check_cluster_d_closure.py
+
+staging-release-gate-check:
+	$(PYTHON) scripts/check_staging_release_gate.py
+
+cicd-staging-check:
+	$(PYTHON) scripts/check_cicd_staging_evidence.py
+
+release-evidence-artifacts-check:
+	$(PYTHON) scripts/check_release_evidence_artifacts.py
+
+post-deploy-staging-smoke-check: post-deploy-staging-smoke-checklist-check
+
+staging-operations-release-evidence-check:
+	$(PYTHON) scripts/check_staging_operations_release_evidence.py
+
+database-backup-contract-check:
+	$(PYTHON) scripts/check_database_backup_contract.py
+
+database-restore-drill-docs-check:
+	$(PYTHON) scripts/check_database_restore_drill_docs.py
+
+cluster-e-data-resilience-check:
+	$(PYTHON) scripts/check_cluster_e_data_resilience_evidence.py
+
+database-backup-dry-run:
+	$(PYTHON) scripts/run_database_backup.py --dry-run
+
+database-restore-dry-run:
+	$(PYTHON) scripts/run_database_restore.py --dry-run --target-environment staging
+
+database-backup-manifest:
+	$(PYTHON) scripts/generate_database_backup_manifest.py --encrypted
+
+database-restore-evidence:
+	$(PYTHON) scripts/generate_database_restore_evidence.py
+
+database-backup-integrity-check:
+	$(PYTHON) scripts/check_database_backup_integrity.py
+
+database-restore-integrity-check:
+	$(PYTHON) scripts/check_database_restore_integrity.py
+
+backup-redis-dr-check:
+	$(PYTHON) scripts/check_backup_redis_dr_evidence.py
+
+cluster-e-closure-check:
+	$(PYTHON) scripts/check_cluster_e_closure.py
+
+database-resilience-env-matrix-check:
+	$(PYTHON) scripts/check_database_resilience_env_matrix.py
+
+production-restore-approval-check:
+	$(PYTHON) scripts/check_production_restore_approval.py
+
+persistence-resilience-check:
+	$(PYTHON) scripts/check_persistence_resilience_evidence.py
+
+caps-alignment-contract-check:
+	$(PYTHON) scripts/check_caps_alignment_contract.py
+
+ai-safety-boundary-check:
+	$(PYTHON) scripts/check_ai_safety_boundary_contract.py
+
+ai-safety-release-check:
+	$(PYTHON) scripts/check_ai_safety_release_evidence.py
+
+cluster-f-ai-safety-check:
+	$(PYTHON) scripts/check_cluster_f_ai_safety_evidence.py
+
+ai-prompt-input-contract-check:
+	$(PYTHON) scripts/check_ai_prompt_input_contract.py
+
+diagnostic-generation-safety-check:
+	$(PYTHON) scripts/check_diagnostic_generation_safety_contract.py
+
+llm-provider-fallback-contract-check:
+	$(PYTHON) scripts/check_llm_provider_fallback_contract.py
+
+ai-output-schema-contract-check:
+	$(PYTHON) scripts/check_ai_output_schema_contract.py
+
+lesson-generation-safety-check:
+	$(PYTHON) scripts/check_lesson_generation_safety_contract.py
+
+remediation-safety-contract-check:
+	$(PYTHON) scripts/check_remediation_safety_contract.py
+
+cluster-f-closure-check:
+	$(PYTHON) scripts/check_cluster_f_closure.py
+
+ai-output-fixture-validation-check:
+	$(PYTHON) scripts/validate_ai_output_fixtures.py
+
+ai-prompt-surface-inventory:
+	$(PYTHON) scripts/generate_ai_prompt_surface_inventory.py
+
+ai-prompt-surface-inventory-check:
+	$(PYTHON) scripts/check_ai_prompt_surface_inventory.py
+
+lesson-bank-check:
+	$(PYTHON) scripts/ci/ci_lesson_bank_check.py
+
+diagnostics-assessment-check:
+	$(PYTHON) scripts/ci/check_diagnostics_assessment.py
+	pytest tests/unit/modules/diagnostics/test_irt_engine_hardening.py tests/unit/modules/diagnostics/test_session_lifecycle.py tests/unit/modules/progress/test_mastery_model.py tests/unit/modules/practice/test_practice_and_calibration.py --no-cov
+
+learning-evidence-check:
+	$(PYTHON) scripts/check_learning_evidence.py
+
+caps-learning-proof-check:
+	$(PYTHON) scripts/check_caps_learning_proof.py
+
+frontend-journey-check:
+	$(PYTHON) scripts/check_frontend_journey_evidence.py
+
+accessibility-pwa-e2e-check:
+	$(PYTHON) scripts/check_accessibility_pwa_e2e_evidence.py
+
+observability-ops-check:
+	$(PYTHON) scripts/check_observability_ops_evidence.py
+
+# Evidence and release-control targets restored after stacked PR integration.
+ai-fixture-coverage-check:
+	$(PYTHON) scripts/check_ai_fixture_coverage_matrix.py
+
+ai-prompt-secret-leakage-check:
+	$(PYTHON) scripts/check_ai_prompt_secret_leakage.py
+
+ai-refusal-fixture-check:
+	$(PYTHON) scripts/check_ai_refusal_fixtures.py
+
+archival-lock-assertion-check:
+	$(PYTHON) scripts/check_archival_lock_assertion.py
+
+audit-review-closeout-certificate-check:
+	$(PYTHON) scripts/check_audit_review_closeout_certificate.py
+
+beta-acceptance-exit-criteria-check:
+	$(PYTHON) scripts/check_beta_acceptance_exit_criteria.py
+
+beta-evidence-consistency-check:
+	$(PYTHON) scripts/check_beta_evidence_consistency.py
+
+beta-feedback-intake-contract-check:
+	$(PYTHON) scripts/check_beta_feedback_intake_contract.py
+
+beta-governance-seal-check:
+	$(PYTHON) scripts/check_beta_governance_seal.py
+
+beta-known-issues-register-check:
+	$(PYTHON) scripts/check_beta_known_issues_register.py
+
+beta-monitoring-incident-trigger-check:
+	$(PYTHON) scripts/check_beta_monitoring_incident_trigger.py
+
+beta-outcome-report-template-check:
+	$(PYTHON) scripts/check_beta_outcome_report_template.py
+
+beta-participant-support-handoff-check:
+	$(PYTHON) scripts/check_beta_participant_support_handoff.py
+
+beta-pr-body:
+	$(PYTHON) scripts/generate_beta_pr_body.py
+
+beta-pr-body-check:
+	$(PYTHON) scripts/check_beta_pr_body.py
+
+beta-release-closure-attestation-check:
+	$(PYTHON) scripts/check_beta_release_closure_attestation.py
+
+beta-release-communications-plan-check:
+	$(PYTHON) scripts/check_beta_release_communications_plan.py
+
+beta-release-decision-log-check:
+	$(PYTHON) scripts/check_beta_release_decision_log.py
+
+beta-release-evidence-bundle:
+	$(PYTHON) scripts/generate_beta_release_evidence_bundle.py
+
+beta-release-evidence-bundle-check:
+	$(PYTHON) scripts/check_beta_release_evidence_bundle.py
+
+beta-release-execution-plan-check:
+	$(PYTHON) scripts/check_beta_release_execution_plan.py
+
+beta-release-final-checklist-check:
+	$(PYTHON) scripts/check_beta_release_final_checklist.py
+
+beta-release-final-index-check:
+	$(PYTHON) scripts/check_beta_release_final_index.py
+
+beta-release-freeze-window-check:
+	$(PYTHON) scripts/check_beta_release_freeze_window.py
+
+beta-retrospective-action-register-check:
+	$(PYTHON) scripts/check_beta_retrospective_action_register.py
+
+beta-rollback-runbook-check:
+	$(PYTHON) scripts/check_beta_rollback_runbook.py
+
+beta-signoff-manifest:
+	$(PYTHON) scripts/generate_beta_signoff_manifest.py
+
+beta-signoff-manifest-check:
+	$(PYTHON) scripts/check_beta_signoff_manifest.py
+
+branch-handoff-proof-record-check:
+	$(PYTHON) scripts/check_branch_handoff_proof_record.py
+
+branch-sync-rebase-checklist-check:
+	$(PYTHON) scripts/check_branch_sync_rebase_checklist.py
+
+cluster-g-frontend-check:
+	$(PYTHON) scripts/check_cluster_g_frontend_evidence.py
+
+cluster-g-closure-check:
+	$(PYTHON) scripts/check_cluster_g_closure.py
+
+cluster-h-release-readiness-check:
+	$(PYTHON) scripts/check_cluster_h_release_readiness.py
+
+cluster-h-closure-check:
+	$(PYTHON) scripts/check_cluster_h_closure.py
+
+cluster-h-final-closeout-rollup-check:
+	$(PYTHON) scripts/check_cluster_h_final_closeout_rollup.py
+
+cluster-h-release-evidence-checksum-index-check:
+	$(PYTHON) scripts/check_cluster_h_release_evidence_checksum_index.py
+
+cluster-h-terminal-closure-assertion-check:
+	$(PYTHON) scripts/check_cluster_h_terminal_closure_assertion.py
+
+evidence-archive-completeness-guard-check:
+	$(PYTHON) scripts/check_evidence_archive_completeness_guard.py
+
+evidence-freeze-confirmation-record-check:
+	$(PYTHON) scripts/check_evidence_freeze_confirmation_record.py
+
+final-acceptance-memo-check:
+	$(PYTHON) scripts/check_final_acceptance_memo.py
+
+final-acceptance-packet-index-check:
+	$(PYTHON) scripts/check_final_acceptance_packet_index.py
+
+final-archive-accession-record-check:
+	$(PYTHON) scripts/check_final_archive_accession_record.py
+
+final-audit-handoff-register-check:
+	$(PYTHON) scripts/check_final_audit_handoff_register.py
+
+final-beta-operator-packet-check:
+	$(PYTHON) scripts/check_final_beta_operator_packet.py
+
+final-closure-manifest-check:
+	$(PYTHON) scripts/check_final_closure_manifest.py
+
+final-evidence-noop-execution-assertion-check:
+	$(PYTHON) scripts/check_final_evidence_noop_execution_assertion.py
+
+final-merge-signoff-lock-check:
+	$(PYTHON) scripts/check_final_merge_signoff_lock.py
+
+final-pr-handoff-summary-check:
+	$(PYTHON) scripts/check_final_pr_handoff_summary.py
+
+final-pr-merge-readiness-check:
+	$(PYTHON) scripts/check_final_pr_merge_readiness.py
+
+final-project-closeout-attestation-check:
+	$(PYTHON) scripts/check_final_project_closeout_attestation.py
+
+final-release-evidence-ledger-check:
+	$(PYTHON) scripts/check_final_release_evidence_ledger.py
+
+final-release-evidence-toc-check:
+	$(PYTHON) scripts/check_final_release_evidence_toc.py
+
+final-release-handoff-package-check:
+	$(PYTHON) scripts/check_final_release_handoff_package.py
+
+final-release-operator-brief-check:
+	$(PYTHON) scripts/check_final_release_operator_brief.py
+
+final-release-readiness-rollup-check:
+	$(PYTHON) scripts/check_final_release_readiness_rollup.py
+
+final-release-verification-check:
+	$(PYTHON) scripts/check_final_release_verification_bundle.py
+
+final-release-verification:
+	$(PYTHON) scripts/check_final_release_verification_bundle.py --execute
+
+final-reviewer-disposition-record-check:
+	$(PYTHON) scripts/check_final_reviewer_disposition_record.py
+
+final-reviewer-pack-checklist-check:
+	$(PYTHON) scripts/check_final_reviewer_pack_checklist.py
+
+final-sealed-package-manifest-check:
+	$(PYTHON) scripts/check_final_sealed_package_manifest.py
+
+frontend-accessibility-contract-check:
+	$(PYTHON) scripts/check_frontend_accessibility_contract.py
+
+frontend-accessibility-static-check:
+	$(PYTHON) scripts/check_frontend_accessibility_static.py
+
+frontend-api-client-inventory:
+	$(PYTHON) scripts/generate_frontend_api_client_inventory.py
+
+frontend-api-client-inventory-check:
+	$(PYTHON) scripts/check_frontend_api_client_inventory.py
+
+frontend-auth-consent-denial-check:
+	$(PYTHON) scripts/check_frontend_auth_consent_denial_contract.py
+
+clean-next:
+	bash scripts/cleanup-next-artifacts.sh app/frontend
+
+fe-pr-002-verify:
+	bash -n scripts/cleanup-next-artifacts.sh
+	cd app/frontend && pnpm run type-check
+	cd app/frontend && pnpm run lint
+	cd app/frontend && pnpm run test
+
+frontend-build-test-lint-contract-check:
+	$(PYTHON) scripts/check_frontend_build_test_lint_contract.py
+
+frontend-e2e-env-contract-check:
+	$(PYTHON) scripts/check_frontend_e2e_environment_contract.py
+
+frontend-e2e-opt-in-workflow-check:
+	$(PYTHON) scripts/check_frontend_e2e_opt_in_workflow.py
+
+frontend-e2e-runtime-command-check:
+	$(PYTHON) scripts/check_frontend_e2e_runtime_commands.py
+
+frontend-e2e-smoke:
+	pnpm exec playwright test tests/e2e/learner-vertical-journey.spec.ts tests/e2e/parent-vertical-journey.spec.ts
+
+frontend-e2e-mocked:
+	PLAYWRIGHT_MOCK_API=1 pnpm exec playwright test tests/e2e/learner-mocked-api-journey.spec.ts tests/e2e/parent-mocked-api-journey.spec.ts
+
+frontend-e2e:
+	pnpm exec playwright test
+
+frontend-journey-fixture-check:
+	$(PYTHON) scripts/check_frontend_journey_fixtures.py
+
+frontend-mock-api-fixture-check:
+	$(PYTHON) scripts/check_frontend_mock_api_fixtures.py
+
+frontend-playwright-mock-helper-check:
+	$(PYTHON) scripts/check_frontend_playwright_mock_helpers.py
+
+frontend-playwright-mocked-specs-check:
+	$(PYTHON) scripts/check_frontend_playwright_mocked_specs.py
+
+frontend-playwright-scaffold-check:
+	$(PYTHON) scripts/check_frontend_playwright_scaffold.py
+
+frontend-playwright-specs-check:
+	$(PYTHON) scripts/check_frontend_playwright_specs.py
+
+frontend-route-inventory:
+	$(PYTHON) scripts/generate_frontend_route_inventory.py
+
+frontend-route-inventory-check:
+	$(PYTHON) scripts/check_frontend_route_inventory.py
+
+frontend-runtime-inventory:
+	$(PYTHON) scripts/generate_frontend_runtime_inventory.py
+
+frontend-runtime-inventory-check:
+	$(PYTHON) scripts/check_frontend_runtime_inventory.py
+
+frozen-scope-variance-register-check:
+	$(PYTHON) scripts/check_frozen_scope_variance_register.py
+
+generated-artifact-hygiene-check:
+	$(PYTHON) scripts/check_generated_artifact_hygiene.py
+
+learner-vertical-journey-contract-check:
+	$(PYTHON) scripts/check_learner_vertical_journey_contract.py
+
+merge-control-evidence-gate-check:
+	$(PYTHON) scripts/check_merge_control_evidence_gate.py
+
+parent-vertical-journey-contract-check:
+	$(PYTHON) scripts/check_parent_vertical_journey_contract.py
+
+post-beta-evidence-archive-manifest-check:
+	$(PYTHON) scripts/check_post_beta_evidence_archive_manifest.py
+
+post-closeout-custody-register-check:
+	$(PYTHON) scripts/check_post_closeout_custody_register.py
+
+post-closeout-evidence-access-policy-check:
+	$(PYTHON) scripts/check_post_closeout_evidence_access_policy.py
+
+post-closeout-maintenance-boundary-check:
+	$(PYTHON) scripts/check_post_closeout_maintenance_boundary.py
+
+post-deploy-staging-smoke-checklist-check:
+	$(PYTHON) scripts/check_post_deploy_staging_smoke_checklist.py
+
+post-merge-evidence-continuity-note-check:
+	$(PYTHON) scripts/check_post_merge_evidence_continuity_note.py
+
+post-merge-release-handoff-check:
+	$(PYTHON) scripts/check_post_merge_release_handoff.py
+
+post-terminal-audit-readiness-check:
+	$(PYTHON) scripts/check_post_terminal_audit_readiness.py
+
+pr-closeout-evidence-checklist-check:
+	$(PYTHON) scripts/check_pr_closeout_evidence_checklist.py
+
+pr-merge-evidence-summary-check:
+	$(PYTHON) scripts/check_pr_merge_evidence_summary.py
+
+pr-ready-final-closure-certificate-check:
+	$(PYTHON) scripts/check_pr_ready_final_closure_certificate.py
+
+project-release-closure-index-check:
+	$(PYTHON) scripts/check_project_release_closure_index.py
+
+release-approval-workflow-contract-check:
+	$(PYTHON) scripts/check_release_approval_workflow_contract.py
+
+release-artifact-retention-contract-check:
+	$(PYTHON) scripts/check_release_artifact_retention_contract.py
+
+release-audit-trail-index-check:
+	$(PYTHON) scripts/check_release_audit_trail_index.py
+
+release-candidate-tag-manifest:
+	$(PYTHON) scripts/generate_release_candidate_tag_manifest.py
+
+release-candidate-tag-manifest-check:
+	$(PYTHON) scripts/check_release_candidate_tag_manifest.py
+
+release-change-control-exception-log-check:
+	$(PYTHON) scripts/check_release_change_control_exception_log.py
+
+release-evidence-retention-finalization-check:
+	$(PYTHON) scripts/check_release_evidence_retention_finalization.py
+
+release-handoff-freeze-assertion-check:
+	$(PYTHON) scripts/check_release_handoff_freeze_assertion.py
+
+release-owner-accountability-check:
+	$(PYTHON) scripts/check_release_owner_accountability.py
+
+release-owner-execution-guardrail-check:
+	$(PYTHON) scripts/check_release_owner_execution_guardrail.py
+
+release-owner-post-closeout-decision-record-check:
+	$(PYTHON) scripts/check_release_owner_post_closeout_decision_record.py
+
+release-record-closure-ledger-check:
+	$(PYTHON) scripts/check_release_record_closure_ledger.py
+
+release-state-snapshot:
+	$(PYTHON) scripts/generate_release_state_snapshot.py
+
+release-state-snapshot-check:
+	$(PYTHON) scripts/check_release_state_snapshot.py
+
+reviewer-decision-capture-template-check:
+	$(PYTHON) scripts/check_reviewer_decision_capture_template.py
+
+sealed-evidence-access-handoff-check:
+	$(PYTHON) scripts/check_sealed_evidence_access_handoff.py
+
+sealed-reviewer-closeout-packet-check:
+	$(PYTHON) scripts/check_sealed_reviewer_closeout_packet.py
+
+staging-smoke-evidence-manifest:
+	$(PYTHON) scripts/generate_staging_smoke_evidence_manifest.py
+
+staging-smoke-evidence-manifest-check:
+	$(PYTHON) scripts/check_staging_smoke_evidence_manifest.py
+
+terminal-evidence-retrieval-guide-check:
+	$(PYTHON) scripts/check_terminal_evidence_retrieval_guide.py
+
+terminal-evidence-seal-check:
+	$(PYTHON) scripts/check_terminal_evidence_seal.py
+
+terminal-handoff-closure-note-check:
+	$(PYTHON) scripts/check_terminal_handoff_closure_note.py
+
+terminal-pr-evidence-index-check:
+	$(PYTHON) scripts/check_terminal_pr_evidence_index.py
+
+terminal-review-index-check:
+	$(PYTHON) scripts/check_terminal_review_index.py
+
+domain-01-repository-governance-ci-evidence-check:
+	$(PYTHON) scripts/check_domain_01_repository_governance_ci_evidence.py
+# =============================================================================
+# Makefile additions – paste these into the existing Makefile
+# (or apply via: patch -p0 < docs/patches/makefile_additions.patch)
+#
+# These additions address Recommendations 4 and 6 from the 2026-05-12
+# technical state report.
+# =============================================================================
+
+# Add to the existing .PHONY line (or replace the line entirely):
+# .PHONY: ... deduplicate-check refresh-current-state refresh-current-state-report sync-check-origin
+
+# ---------------------------------------------------------------------------
+# Recommendation 4: Makefile hygiene – detect duplicate targets
+# ---------------------------------------------------------------------------
+
+deduplicate-check:
+	$(PYTHON) scripts/deduplicate_makefile_targets.py
+
+deduplicate-fix:
+	$(PYTHON) scripts/deduplicate_makefile_targets.py --fix
+
+deduplicate-fix-dry-run:
+	$(PYTHON) scripts/deduplicate_makefile_targets.py --fix --dry-run
+
+
+# ---------------------------------------------------------------------------
+# Recommendation 5: Sync check – verify local branch is up to date
+# ---------------------------------------------------------------------------
+
+sync-check-origin:
+	./scripts/sync_check_origin.sh
+
+sync-and-verify:
+	./scripts/sync_check_origin.sh --sync
+
+
+# ---------------------------------------------------------------------------
+# Recommendation 6: Refresh current state documentation
+# ---------------------------------------------------------------------------
+
+refresh-current-state:
+	$(PYTHON) scripts/refresh_current_state_doc.py
+
+refresh-current-state-report:
+	$(PYTHON) scripts/refresh_current_state_doc.py --dated-report
+
+refresh-current-state-dry-run:
+	$(PYTHON) scripts/refresh_current_state_doc.py --dry-run --dated-report
+
+
+# ---------------------------------------------------------------------------
+# Omnibus: run all six recommendation fixes in sequence
+# ---------------------------------------------------------------------------
+# Intended for use after applying all code changes from the 2026-05-12
+# technical report.  Run this once to verify everything is clean.
+
+rec-all-checks: deduplicate-check \
+                frontend-e2e-opt-in-workflow-check \
+                pr002r-check \
+                runtime-check \
+                openapi-check \
+                route-inventory-check
+	$(MAKE) test-fast
+	$(PYTHON) scripts/refresh_current_state_doc.py --dated-report
+	@echo ""
+	@echo "All recommendation checks passed."
+	@echo "Review docs/current_state.md and commit."
+
+legacy-route-guard:
+	pytest tests/unit/test_api_v2_router_contract.py tests/test_entrypoints.py \
+		-v -k "legacy" --tb=short --no-cov
+	$(PYTHON) scripts/check_runtime_entrypoints.py
+
+pr-002r-check: runtime-check openapi-check legacy-route-guard
+	pytest \
+		tests/test_entrypoints.py \
+		tests/unit/test_api_v2_router_contract.py \
+		tests/unit/test_api_v2_envelope.py \
+		tests/unit/test_exception_envelopes.py \
+		tests/unit/test_no_raw_dict_responses.py \
+		-v --tb=short --no-cov
+	@echo ""
+	@echo "PR-002R acceptance checks passed."
+
+database-persistence-production-readiness-check:
+	$(PYTHON) scripts/check_database_persistence_production_readiness.py
+
+ai-llm-safety-caps-production-readiness-check:
+	$(PYTHON) scripts/check_ai_llm_safety_caps_production_readiness.py
+
+diagnostics-assessment-production-readiness-check:
+	$(PYTHON) scripts/check_diagnostics_assessment_production_readiness.py
+
+domain-07-diagnostics-assessment-evidence-check:
+	$(PYTHON) scripts/check_domain_07_diagnostics_assessment_evidence.py
+
+frontend-production-readiness-check:
+	$(PYTHON) scripts/check_frontend_production_readiness.py
+
+billing-monetization-production-readiness-check:
+	$(PYTHON) scripts/check_billing_monetization_production_readiness.py
+
+notifications-communication-production-readiness-check:
+	$(PYTHON) scripts/check_notifications_communication_production_readiness.py
+
+observability-production-readiness-check:
+	$(PYTHON) scripts/check_observability_production_readiness.py
+
+ci-cd-deployment-production-readiness-check:
+	$(PYTHON) scripts/check_ci_cd_deployment_production_readiness.py
+
+backup-restore-disaster-recovery-production-readiness-check:
+	$(PYTHON) scripts/check_backup_restore_disaster_recovery_production_readiness.py
+
+testing-release-quality-gates-production-readiness-check:
+	$(PYTHON) scripts/check_testing_release_quality_gates_production_readiness.py
+
+security-posture-threat-modeling-production-readiness-check:
+	$(PYTHON) scripts/check_security_posture_threat_modeling_production_readiness.py
+
+incident-response-operations-support-production-readiness-check:
+	$(PYTHON) scripts/check_incident_response_operations_support_production_readiness.py
+
+documentation-adrs-claim-discipline-production-readiness-check:
+	$(PYTHON) scripts/check_documentation_adrs_claim_discipline_production_readiness.py
+
+beta-launch-staging-acceptance-production-readiness-check:
+	$(PYTHON) scripts/check_beta_launch_staging_acceptance_production_readiness.py
+
+roadmap-after-production-readiness-baseline-check:
+	$(PYTHON) scripts/check_roadmap_after_production_readiness_baseline.py
+
+final-release-blocker-checklist-check:
+	$(PYTHON) scripts/check_final_release_blocker_checklist.py
+
+.PHONY: test-env-check route-alias-matrix route-alias-matrix-check release-evidence-index-check release-hygiene-check reset-test-db
+
+test-env-check:
+	PYTHONPATH=. python3 scripts/check_test_environment.py
+
+route-alias-matrix:
+	PYTHONPATH=. python3 scripts/generate_route_alias_matrix.py
+
+route-alias-matrix-check: route-alias-matrix
+	test -f docs/release/route_alias_matrix.md
+
+release-evidence-index-check:
+	PYTHONPATH=. python3 scripts/check_release_evidence_index.py
+
+release-hygiene-check: test-env-check route-alias-matrix-check release-evidence-index-check
+
+reset-test-db:
+	PYTHONPATH=. python3 scripts/check_test_environment.py --strict
+	@echo "Refusing to reset automatically from Makefile. Use the project-approved DB reset script only after verifying DATABASE_URL targets a disposable test database."
+	@exit 1
+
+.PHONY: warning-cleanup-check test-env-strict-check
+
+warning-cleanup-check:
+	python3 scripts/check_warning_cleanup.py
+
+test-env-strict-check:
+	PYTHONPATH=. python3 scripts/check_test_environment.py --strict
+
+.PHONY: route-alias-policy-check ci-workflow-consolidation-check ci-core-local ci-contract-check
+
+route-alias-policy-check:
+	PYTHONPATH=. python3 scripts/check_route_alias_matrix.py
+
+ci-workflow-consolidation-check:
+	PYTHONPATH=. python3 scripts/check_ci_workflow_consolidation.py
+
+ci-contract-check: ci-workflow-consolidation-check route-alias-policy-check
+
+ci-core-local: release-hygiene-check route-alias-policy-check openapi-check test-fast test-integration
+
+.PHONY: runtime-release-evidence-check release-readiness-local-check
+
+runtime-release-evidence-check:
+	PYTHONPATH=. python3 scripts/check_runtime_release_evidence.py
+
+release-readiness-local-check: release-hygiene-check runtime-release-evidence-check ci-contract-check
+	pytest -c pytest.ini tests/unit/test_runtime_release_evidence_contract.py tests/unit/test_release_hygiene_tooling.py tests/unit/test_ci_route_alias_policy.py -q --no-cov
+
+.PHONY: capture-pytest-release-evidence pytest-release-evidence-check local-release-evidence-check
+
+capture-pytest-release-evidence:
+	PYTHONPATH=. python3 scripts/capture_pytest_release_evidence.py all
+
+pytest-release-evidence-check:
+	PYTHONPATH=. python3 scripts/check_pytest_release_evidence.py
+
+local-release-evidence-check: pytest-release-evidence-check runtime-release-evidence-check release-evidence-index-check
+
+.PHONY: staging-smoke staging-smoke-check
+
+staging-smoke:
+	PYTHONPATH=. python3 scripts/run_staging_smoke.py
+staging-smoke-check:
+	PYTHONPATH=. python3 scripts/run_staging_smoke.py --validate --require-pass
+staging-smoke-schema-check:
+	PYTHONPATH=. python3 scripts/run_staging_smoke.py --validate
+.PHONY: staging-smoke staging-smoke-check staging-smoke-schema-check
+
+.PHONY: migration-evidence-capture migration-evidence-check migration-evidence-schema-check
+
+migration-evidence-capture:
+	PYTHONPATH=. python3 scripts/capture_migration_evidence.py
+
+migration-evidence-check:
+	PYTHONPATH=. python3 scripts/capture_migration_evidence.py --validate --require-pass
+
+migration-evidence-schema-check:
+	PYTHONPATH=. python3 scripts/capture_migration_evidence.py --validate
+
+.PHONY: backend-consolidation-dragons-check schema-drift-check backend-consolidation-diagnostics-check
+
+backend-consolidation-dragons-check:
+	PYTHONPATH=. python3 scripts/check_backend_consolidation_dragons.py
+
+schema-drift-check:
+	PYTHONPATH=. python3 scripts/compare_orm_tables_to_database.py
+
+backend-consolidation-diagnostics-check: backend-consolidation-dragons-check schema-drift-check
+	pytest -c pytest.ini tests/unit/test_backend_consolidation_dragon_diagnostics.py -q --no-cov
+
+.PHONY: audit-callsite-inventory audit-compatibility-check
+
+audit-callsite-inventory:
+	PYTHONPATH=. python3 scripts/generate_audit_callsite_inventory.py --fail-empty
+
+audit-compatibility-check: audit-callsite-inventory
+	pytest -c pytest.ini tests/unit/test_audit_callsite_inventory_and_adapter.py -q --no-cov
+
+.PHONY: consent-callsite-inventory consent-compatibility-check
+
+consent-callsite-inventory:
+	PYTHONPATH=. python3 scripts/generate_consent_callsite_inventory.py --fail-empty
+
+consent-compatibility-check: consent-callsite-inventory
+	pytest -c pytest.ini tests/unit/test_consent_callsite_inventory_and_compat.py -q --no-cov
+
+.PHONY: health-readiness-contract-check schema-drift-contract-check schema-drift-check-db backend-runtime-diagnostics-check
+
+health-readiness-contract-check:
+	PYTHONPATH=. python3 scripts/check_health_readiness_contract.py
+
+schema-drift-contract-check:
+	PYTHONPATH=. python3 scripts/check_schema_drift_contract.py
+
+schema-drift-check-db:
+	PYTHONPATH=. python3 scripts/compare_orm_tables_to_database.py --require-db --fail-on-drift
+
+backend-runtime-diagnostics-check: health-readiness-contract-check schema-drift-contract-check backend-consolidation-diagnostics-check
+	pytest -c pytest.ini tests/unit/test_health_readiness_schema_drift_guards.py -q --no-cov
+
+.PHONY: backend-consolidation-report backend-consolidation-release-guard backend-consolidation-full-check
+
+backend-consolidation-report:
+	PYTHONPATH=. python3 scripts/generate_backend_consolidation_report.py
+
+backend-consolidation-release-guard:
+	PYTHONPATH=. python3 scripts/check_backend_consolidation_release_guard.py
+
+backend-consolidation-full-check: backend-consolidation-report backend-consolidation-release-guard audit-compatibility-check consent-compatibility-check backend-runtime-diagnostics-check
+	pytest -c pytest.ini tests/unit/test_backend_consolidation_rollup_and_guard.py -q --no-cov
+
+.PHONY: backend-runtime-compatibility-check backend-runtime-compatibility-report backend-runtime-compatibility-full-check
+
+backend-runtime-compatibility-check:
+	PYTHONPATH=. python3 scripts/check_backend_runtime_compatibility.py
+
+backend-runtime-compatibility-report:
+	PYTHONPATH=. python3 scripts/generate_backend_runtime_compatibility_report.py
+
+backend-runtime-compatibility-full-check: backend-runtime-compatibility-check backend-runtime-compatibility-report audit-compatibility-check consent-compatibility-check health-readiness-contract-check
+	pytest -c pytest.ini tests/unit/test_backend_runtime_compatibility_contracts.py -q --no-cov
+
+.PHONY: backend-deletion-candidate-inventory backend-consolidation-noop-guard backend-consolidation-readiness-report backend-consolidation-readiness-full-check
+
+backend-deletion-candidate-inventory:
+	PYTHONPATH=. python3 scripts/generate_backend_deletion_candidate_inventory.py --fail-empty
+
+backend-consolidation-noop-guard: backend-deletion-candidate-inventory
+	PYTHONPATH=. python3 scripts/check_backend_consolidation_noop_guard.py
+
+backend-consolidation-readiness-report:
+	PYTHONPATH=. python3 scripts/generate_backend_consolidation_readiness_report.py
+
+backend-consolidation-readiness-full-check: backend-consolidation-readiness-report backend-consolidation-noop-guard backend-consolidation-full-check backend-runtime-compatibility-full-check
+	pytest -c pytest.ini tests/unit/test_backend_consolidation_readiness_and_noop_guard.py -q --no-cov
+
+.PHONY: backend-consolidation-execution-packet-check backend-consolidation-execution-report backend-consolidation-execution-full-check
+
+backend-consolidation-execution-packet-check:
+	PYTHONPATH=. python3 scripts/check_backend_consolidation_execution_packet.py
+
+backend-consolidation-execution-report:
+	PYTHONPATH=. python3 scripts/generate_backend_consolidation_execution_report.py
+
+backend-consolidation-execution-full-check: backend-consolidation-execution-packet-check backend-consolidation-execution-report backend-consolidation-readiness-full-check
+	pytest -c pytest.ini tests/unit/test_backend_consolidation_execution_packet.py -q --no-cov
+
+.PHONY: backend-runtime-probe-fixtures-check backend-runtime-probe-report backend-runtime-probe-full-check
+
+backend-runtime-probe-fixtures-check:
+	PYTHONPATH=. python3 scripts/check_backend_runtime_probe_fixtures.py
+
+backend-runtime-probe-report:
+	PYTHONPATH=. python3 scripts/generate_backend_runtime_probe_report.py
+
+backend-runtime-probe-full-check: backend-runtime-probe-fixtures-check backend-runtime-probe-report backend-consolidation-execution-full-check
+	pytest -c pytest.ini tests/unit/test_backend_runtime_probe_fixtures.py -q --no-cov
+
+.PHONY: backend-consolidation-evidence-manifest backend-consolidation-terminal-check backend-consolidation-terminal-report backend-consolidation-terminal-full-check
+
+backend-consolidation-evidence-manifest:
+	PYTHONPATH=. python3 scripts/generate_backend_consolidation_evidence_manifest.py
+
+backend-consolidation-terminal-check: backend-consolidation-evidence-manifest
+	PYTHONPATH=. python3 scripts/check_backend_consolidation_terminal_packet.py
+
+backend-consolidation-terminal-report:
+	PYTHONPATH=. python3 scripts/generate_backend_consolidation_terminal_report.py
+
+backend-consolidation-terminal-full-check: backend-consolidation-terminal-report backend-consolidation-terminal-check backend-consolidation-execution-full-check backend-runtime-probe-full-check
+	pytest -c pytest.ini tests/unit/test_backend_consolidation_terminal_packet.py -q --no-cov
+
+.PHONY: backend-consolidation-implementation-foundation-check backend-consolidation-implementation-foundation-report backend-consolidation-implementation-foundation-full-check
+
+backend-consolidation-implementation-foundation-check:
+	PYTHONPATH=. python3 scripts/check_backend_consolidation_implementation_foundation.py
+
+backend-consolidation-implementation-foundation-report:
+	PYTHONPATH=. python3 scripts/generate_backend_consolidation_implementation_report.py
+
+backend-consolidation-implementation-foundation-full-check: backend-consolidation-implementation-foundation-check backend-consolidation-implementation-foundation-report backend-consolidation-terminal-full-check
+	pytest -c pytest.ini tests/unit/test_backend_consolidation_implementation_foundation.py -q --no-cov
+
+.PHONY: schema-drift-disposable-proof schema-drift-disposable-proof-check schema-drift-disposable-proof-schema-check deep-readiness-readonly-check audit-canonicalization-slice-check backend-implementation-364-366-full-check
+
+schema-drift-disposable-proof:
+	PYTHONPATH=. python3 scripts/run_disposable_schema_drift_proof.py
+
+schema-drift-disposable-proof-check:
+	PYTHONPATH=. python3 scripts/run_disposable_schema_drift_proof.py --validate --require-pass
+
+schema-drift-disposable-proof-schema-check:
+	PYTHONPATH=. python3 scripts/run_disposable_schema_drift_proof.py --validate
+
+deep-readiness-readonly-check:
+	PYTHONPATH=. python3 scripts/check_deep_readiness_readonly_guard.py
+
+audit-canonicalization-slice-check:
+	PYTHONPATH=. python3 scripts/check_audit_canonicalization_slice.py
+
+backend-implementation-364-366-full-check: deep-readiness-readonly-check audit-canonicalization-slice-check backend-consolidation-implementation-foundation-full-check
+	pytest -c pytest.ini tests/unit/test_schema_drift_deep_readiness_audit_slice.py -q --no-cov
+
+.PHONY: consent-runtime-compatibility-slice-check audit-canonicalization-registry-check backend-consolidation-progress-report backend-implementation-367-370-full-check
+
+consent-runtime-compatibility-slice-check:
+	PYTHONPATH=. python3 scripts/check_consent_runtime_compatibility_slice.py
+
+audit-canonicalization-registry-check:
+	PYTHONPATH=. python3 scripts/check_audit_canonicalization_registry.py
+
+backend-consolidation-progress-report:
+	PYTHONPATH=. python3 scripts/generate_backend_consolidation_progress_report.py
+
+backend-implementation-367-370-full-check: consent-runtime-compatibility-slice-check audit-canonicalization-registry-check backend-consolidation-progress-report backend-implementation-364-366-full-check backend-consolidation-implementation-foundation-full-check
+	pytest -c pytest.ini tests/unit/test_consent_runtime_audit_registry_progress.py -q --no-cov
+
+.PHONY: backend-implementation-371-375-check backend-implementation-371-375-report backend-implementation-371-375-full-check
+
+backend-implementation-371-375-check:
+	PYTHONPATH=. python3 scripts/check_backend_implementation_371_375.py
+
+backend-implementation-371-375-report:
+	PYTHONPATH=. python3 scripts/generate_backend_implementation_371_375_report.py
+
+backend-implementation-371-375-full-check: backend-implementation-371-375-check backend-implementation-371-375-report backend-implementation-367-370-full-check backend-implementation-364-366-full-check
+	pytest -c pytest.ini tests/unit/test_backend_implementation_371_375.py -q --no-cov
+
+.PHONY: backend-runtime-wiring-preflight-check backend-runtime-wiring-preflight-report backend-implementation-376-382-full-check
+
+backend-runtime-wiring-preflight-check:
+	PYTHONPATH=. python3 scripts/check_backend_runtime_wiring_preflight.py
+
+backend-runtime-wiring-preflight-report:
+	PYTHONPATH=. python3 scripts/generate_backend_runtime_wiring_preflight_report.py
+
+backend-implementation-376-382-full-check: backend-runtime-wiring-preflight-check backend-runtime-wiring-preflight-report backend-implementation-371-375-full-check backend-implementation-367-370-full-check
+	pytest -c pytest.ini tests/unit/test_backend_runtime_wiring_preflight.py -q --no-cov
+
+.PHONY: backend-runtime-wiring-cases-check backend-runtime-wiring-cases-report backend-implementation-383-390-full-check
+
+backend-runtime-wiring-cases-check:
+	PYTHONPATH=. python3 scripts/check_backend_runtime_wiring_cases.py
+
+backend-runtime-wiring-cases-report:
+	PYTHONPATH=. python3 scripts/generate_backend_runtime_wiring_cases_report.py
+
+backend-implementation-383-390-full-check: backend-runtime-wiring-cases-check backend-runtime-wiring-cases-report backend-implementation-376-382-full-check backend-implementation-371-375-full-check
+	pytest -c pytest.ini tests/unit/test_backend_runtime_wiring_cases.py -q --no-cov
+
+.PHONY: backend-first-wiring-candidates-check backend-first-wiring-candidates-report backend-implementation-391-400-full-check
+
+backend-first-wiring-candidates-check:
+	PYTHONPATH=. python3 scripts/check_backend_first_wiring_candidates.py
+
+backend-first-wiring-candidates-report:
+	PYTHONPATH=. python3 scripts/generate_backend_first_wiring_candidates_report.py
+
+backend-implementation-391-400-full-check: backend-first-wiring-candidates-check backend-first-wiring-candidates-report backend-implementation-383-390-full-check backend-implementation-376-382-full-check
+	pytest -c pytest.ini tests/unit/test_backend_first_wiring_candidates.py -q --no-cov
+
+.PHONY: backend-runtime-enablement-guard backend-destructive-action-blocklist-check backend-runtime-enablement-report backend-runtime-enablement-full-check
+
+backend-runtime-enablement-guard:
+	PYTHONPATH=. python3 scripts/check_backend_runtime_enablement_guard.py
+
+backend-destructive-action-blocklist-check:
+	PYTHONPATH=. python3 scripts/check_backend_destructive_action_blocklist.py
+
+backend-runtime-enablement-report:
+	PYTHONPATH=. python3 scripts/generate_backend_runtime_enablement_report.py
+
+backend-runtime-enablement-full-check: backend-runtime-enablement-guard backend-destructive-action-blocklist-check backend-runtime-enablement-report backend-implementation-391-400-full-check backend-implementation-383-390-full-check
+	pytest -c pytest.ini tests/unit/test_backend_runtime_enablement_pack.py -q --no-cov
+
+.PHONY: first-audit-runtime-wiring-check first-audit-runtime-wiring-no-destructive-actions first-audit-runtime-wiring-report backend-implementation-421-430-full-check
+
+first-audit-runtime-wiring-check:
+	PYTHONPATH=. python3 scripts/check_first_audit_runtime_wiring.py
+
+first-audit-runtime-wiring-no-destructive-actions:
+	PYTHONPATH=. python3 scripts/check_first_audit_runtime_wiring_no_destructive_actions.py
+
+first-audit-runtime-wiring-report:
+	PYTHONPATH=. python3 scripts/generate_first_audit_runtime_wiring_report.py
+
+backend-implementation-421-430-full-check: first-audit-runtime-wiring-check first-audit-runtime-wiring-no-destructive-actions first-audit-runtime-wiring-report backend-runtime-enablement-full-check backend-implementation-391-400-full-check
+	pytest -c pytest.ini tests/unit/test_first_audit_runtime_wiring.py -q --no-cov
+
+.PHONY: first-consent-deep-readiness-runtime-wiring-check runtime-wiring-no-destructive-actions runtime-wiring-431-450-report backend-implementation-431-450-full-check
+
+first-consent-deep-readiness-runtime-wiring-check:
+	PYTHONPATH=. python3 scripts/check_first_consent_and_deep_readiness_runtime_wiring.py
+
+runtime-wiring-no-destructive-actions:
+	PYTHONPATH=. python3 scripts/check_runtime_wiring_no_destructive_actions.py
+
+runtime-wiring-431-450-report:
+	PYTHONPATH=. python3 scripts/generate_runtime_wiring_431_450_report.py
+
+backend-implementation-431-450-full-check: first-consent-deep-readiness-runtime-wiring-check runtime-wiring-no-destructive-actions runtime-wiring-431-450-report backend-implementation-421-430-full-check backend-runtime-enablement-full-check
+	pytest -c pytest.ini tests/unit/test_consent_deep_readiness_runtime_wiring.py -q --no-cov
+
+.PHONY: backend-runtime-integration-readiness-check backend-runtime-integration-blocklists-check backend-runtime-integration-readiness-report backend-runtime-integration-readiness-full-check
+
+backend-runtime-integration-readiness-check:
+	PYTHONPATH=. python3 scripts/check_backend_runtime_integration_readiness.py
+
+backend-runtime-integration-blocklists-check:
+	PYTHONPATH=. python3 scripts/check_backend_runtime_integration_blocklists.py
+
+backend-runtime-integration-readiness-report:
+	PYTHONPATH=. python3 scripts/generate_backend_runtime_integration_readiness_report.py
+
+backend-runtime-integration-readiness-full-check: backend-runtime-integration-readiness-check backend-runtime-integration-blocklists-check backend-runtime-integration-readiness-report backend-implementation-431-450-full-check backend-implementation-421-430-full-check
+	pytest -c pytest.ini tests/unit/test_backend_runtime_integration_readiness.py -q --no-cov
+.PHONY: real-audit-runtime-integration-wire real-audit-runtime-integration-check backend-implementation-481-490-full-check
+real-audit-runtime-integration-wire:
+	PYTHONPATH=. python3 scripts/wire_real_audit_runtime_path.py
+real-audit-runtime-integration-check:
+	PYTHONPATH=. python3 scripts/check_real_audit_runtime_integration.py
+backend-implementation-481-490-full-check: real-audit-runtime-integration-check
+	pytest -c pytest.ini tests/unit/test_real_audit_runtime_facade.py -q --no-cov
+.PHONY: real-consent-runtime-repair real-consent-runtime-repair-check backend-implementation-491-500-full-check
+real-consent-runtime-repair:
+	PYTHONPATH=. python3 scripts/repair_real_consent_runtime_seams.py
+real-consent-runtime-repair-check:
+	PYTHONPATH=. python3 scripts/check_real_consent_runtime_repair.py
+backend-implementation-491-500-full-check: real-consent-runtime-repair-check
+	pytest -c pytest.ini tests/unit/test_real_consent_runtime_facade.py -q --no-cov
+.PHONY: readonly-deep-readiness-wire readonly-deep-readiness-check backend-implementation-501-510-full-check
+readonly-deep-readiness-wire:
+	PYTHONPATH=. python3 scripts/wire_readonly_deep_readiness_route.py
+readonly-deep-readiness-check:
+	PYTHONPATH=. python3 scripts/check_readonly_deep_readiness_runtime.py
+backend-implementation-501-510-full-check: readonly-deep-readiness-check
+	pytest -c pytest.ini tests/unit/test_readonly_deep_readiness_runtime.py -q --no-cov
+.PHONY: disposable-db-schema-proof-execute disposable-db-schema-proof-execution-check backend-implementation-511-520-full-check
+disposable-db-schema-proof-execute:
+	PYTHONPATH=. python3 scripts/execute_disposable_db_schema_proof.py
+disposable-db-schema-proof-execution-check:
+	PYTHONPATH=. python3 scripts/check_disposable_db_schema_proof_execution.py
+backend-implementation-511-520-full-check: disposable-db-schema-proof-execute disposable-db-schema-proof-execution-check
+	pytest -c pytest.ini tests/unit/test_disposable_db_schema_proof_execution.py -q --no-cov
+.PHONY: post-migration-cleanup post-migration-cleanup-check backend-implementation-521-530-full-check
+post-migration-cleanup:
+	PYTHONPATH=. python3 scripts/remove_proven_dead_backend_consolidation_artifacts.py
+post-migration-cleanup-check:
+	PYTHONPATH=. python3 scripts/check_post_migration_cleanup.py
+backend-implementation-521-530-full-check: post-migration-cleanup post-migration-cleanup-check
+	pytest -c pytest.ini tests/unit/test_post_migration_cleanup.py -q --no-cov
+
+.PHONY: roadmap-reconciliation-check readme-ci-badge-patch docker-production-hardening-patch docker-production-hardening-check warning-integrity-check popia-sweep-evidence beta-content-threshold-check beta-content-threshold-schema-check auth-hardening-status backend-implementation-531-560-full-check
+
+roadmap-reconciliation-check:
+	PYTHONPATH=. python3 scripts/reconcile_agent_roadmap.py
+
+readme-ci-badge-patch:
+	PYTHONPATH=. python3 scripts/patch_readme_ci_badge.py
+
+docker-production-hardening-patch:
+	PYTHONPATH=. python3 scripts/harden_docker_compose.py
+
+docker-production-hardening-check:
+	PYTHONPATH=. python3 scripts/check_docker_production_hardening.py
+
+warning-integrity-check:
+	PYTHONPATH=. python3 scripts/run_warning_integrity_check.py
+
+popia-sweep-evidence:
+	PYTHONPATH=. python3 scripts/run_popia_sweep_evidence.py
+
+beta-content-threshold-check:
+	PYTHONPATH=. python3 scripts/check_beta_content_threshold.py
+
+beta-content-threshold-schema-check:
+	PYTHONPATH=. python3 scripts/check_beta_content_threshold_schema.py
+
+auth-hardening-status:
+	PYTHONPATH=. python3 scripts/check_auth_hardening_status.py
+
+backend-implementation-531-560-full-check: roadmap-reconciliation-check readme-ci-badge-patch docker-production-hardening-patch docker-production-hardening-check auth-hardening-status beta-content-threshold-schema-check
+	pytest -c pytest.ini tests/unit/test_roadmap_production_hardening.py -q --no-cov
+
+.PHONY: remote-ci-evidence-capture branch-protection-evidence-capture beta-content-hard-gate staging-smoke-finalize backup-drill-evidence restore-drill-evidence rollback-drill-evidence alertmanager-drill-evidence beta-readiness-status release-owner-beta-go-no-go beta-evidence-schema-check backend-implementation-561-580-full-check
+
+remote-ci-evidence-capture:
+	PYTHONPATH=. python3 scripts/capture_remote_ci_evidence.py
+
+branch-protection-evidence-capture:
+	PYTHONPATH=. python3 scripts/capture_branch_protection_evidence.py
+
+beta-content-hard-gate:
+	PYTHONPATH=. python3 scripts/enforce_beta_content_gate.py
+
+staging-smoke-finalize:
+	PYTHONPATH=. python3 scripts/finalize_staging_smoke_evidence.py
+
+backup-drill-evidence:
+	OPERATIONAL_DRILL=backup PYTHONPATH=. python3 scripts/capture_operational_drill_evidence.py
+
+restore-drill-evidence:
+	OPERATIONAL_DRILL=restore PYTHONPATH=. python3 scripts/capture_operational_drill_evidence.py
+
+rollback-drill-evidence:
+	OPERATIONAL_DRILL=rollback PYTHONPATH=. python3 scripts/capture_operational_drill_evidence.py
+
+alertmanager-drill-evidence:
+	OPERATIONAL_DRILL=alertmanager PYTHONPATH=. python3 scripts/capture_operational_drill_evidence.py
+
+beta-readiness-status:
+	PYTHONPATH=. python3 scripts/generate_beta_readiness_status.py
+
+release-owner-beta-go-no-go:
+	PYTHONPATH=. python3 scripts/generate_release_owner_beta_go_no_go.py
+
+beta-evidence-schema-check:
+	PYTHONPATH=. python3 scripts/check_evidence_json_schema.py docs/release/ci_evidence.json docs/release/branch_protection_evidence.json docs/beta/beta_content_hard_gate.json docs/release/staging_smoke_final_evidence.json docs/release/beta_readiness_status.json
+
+backend-implementation-561-580-full-check:
+	PYTHONPATH=. python3 scripts/capture_remote_ci_evidence.py || true
+	PYTHONPATH=. python3 scripts/capture_branch_protection_evidence.py || true
+	PYTHONPATH=. python3 scripts/enforce_beta_content_gate.py || true
+	PYTHONPATH=. python3 scripts/finalize_staging_smoke_evidence.py || true
+	OPERATIONAL_DRILL=backup PYTHONPATH=. python3 scripts/capture_operational_drill_evidence.py || true
+	OPERATIONAL_DRILL=restore PYTHONPATH=. python3 scripts/capture_operational_drill_evidence.py || true
+	OPERATIONAL_DRILL=rollback PYTHONPATH=. python3 scripts/capture_operational_drill_evidence.py || true
+	PYTHONPATH=. python3 scripts/generate_beta_readiness_status.py || true
+	PYTHONPATH=. python3 scripts/generate_release_owner_beta_go_no_go.py
+	PYTHONPATH=. python3 scripts/check_evidence_json_schema.py docs/release/ci_evidence.json docs/release/branch_protection_evidence.json docs/beta/beta_content_hard_gate.json docs/release/staging_smoke_final_evidence.json docs/release/backup_drill_evidence.json docs/release/restore_drill_evidence.json docs/release/rollback_drill_evidence.json docs/release/beta_readiness_status.json
+	pytest -c pytest.ini tests/unit/test_beta_evidence_release_gating.py -q --no-cov
+
+.PHONY: beta-evidence-integrity-repair truthful-beta-readiness-status truthful-release-owner-beta-go-no-go beta-evidence-integrity-check backend-implementation-581-590-full-check
+
+beta-evidence-integrity-repair:
+	PYTHONPATH=. python3 scripts/repair_beta_evidence_integrity.py
+
+truthful-beta-readiness-status:
+	PYTHONPATH=. python3 scripts/generate_truthful_beta_readiness_status.py
+
+truthful-release-owner-beta-go-no-go:
+	PYTHONPATH=. python3 scripts/generate_truthful_release_owner_beta_go_no_go.py
+
+beta-evidence-integrity-check:
+	PYTHONPATH=. python3 scripts/check_beta_evidence_integrity.py
+
+backend-implementation-581-590-full-check: beta-evidence-integrity-repair truthful-release-owner-beta-go-no-go beta-evidence-integrity-check
+	PYTHONPATH=. python3 scripts/generate_truthful_beta_readiness_status.py || true
+	PYTHONPATH=. python3 scripts/generate_truthful_release_owner_beta_go_no_go.py
+	pytest -c pytest.ini tests/unit/test_beta_evidence_integrity_repair.py -q --no-cov
+
+.PHONY: popia-consent-lifecycle-inspect popia-consent-lifecycle-repair popia-consent-lifecycle-check backend-implementation-591-610-full-check
+
+popia-consent-lifecycle-inspect:
+	PYTHONPATH=. python3 scripts/inspect_popia_consent_lifecycle.py
+
+popia-consent-lifecycle-repair:
+	PYTHONPATH=. python3 scripts/repair_popia_consent_lifecycle.py
+
+popia-consent-lifecycle-check:
+	PYTHONPATH=. python3 scripts/check_popia_consent_lifecycle_repair.py
+
+backend-implementation-591-610-full-check: popia-consent-lifecycle-inspect popia-consent-lifecycle-repair popia-consent-lifecycle-check
+	python3 -m compileall -q app/api_v2_routers app/modules/consent app/services app/repositories
+	pytest -c pytest.ini tests/unit/test_popia_consent_lifecycle_contracts.py -q --no-cov --tb=short
+
+.PHONY: lesson-object-authorization-inspect lesson-object-authorization-repair lesson-object-authorization-check backend-implementation-611-630-full-check
+
+lesson-object-authorization-inspect:
+	PYTHONPATH=. python3 scripts/inspect_lesson_object_authorization.py
+
+lesson-object-authorization-repair:
+	PYTHONPATH=. python3 scripts/repair_lesson_object_authorization.py
+
+lesson-object-authorization-check:
+	PYTHONPATH=. python3 scripts/check_lesson_object_authorization_repair.py
+
+backend-implementation-611-630-full-check: lesson-object-authorization-inspect lesson-object-authorization-repair lesson-object-authorization-check
+	python3 -m compileall -q app/api_v2_routers app/modules/lessons app/services app/repositories
+	pytest -c pytest.ini tests/unit/test_lesson_object_authorization_contracts.py -q --no-cov --tb=short
+
+.PHONY: auth-token-claims-inspect auth-token-claims-repair auth-token-claims-check backend-implementation-631-650-full-check
+
+auth-token-claims-inspect:
+	PYTHONPATH=. python3 scripts/inspect_auth_token_claims.py
+
+auth-token-claims-repair:
+	PYTHONPATH=. python3 scripts/repair_auth_token_claims.py
+
+auth-token-claims-check:
+	PYTHONPATH=. python3 scripts/check_auth_token_claims_repair.py
+
+backend-implementation-631-650-full-check: auth-token-claims-inspect auth-token-claims-repair auth-token-claims-check
+	python3 -m compileall -q app/api_v2_routers app/services app/modules/auth app/repositories
+	pytest -c pytest.ini tests/unit/test_auth_token_claims_contracts.py -q --no-cov --tb=short
+
+.PHONY: popia-router-boundary-repair router-boundary-matrix router-boundary-check import-linter-availability service-boundary-inventory legacy-learner-access-guard-report backend-implementation-651-670-full-check
+
+popia-router-boundary-repair:
+	PYTHONPATH=. python3 scripts/patch_popia_router_boundary.py
+
+router-boundary-matrix:
+	PYTHONPATH=. python3 scripts/generate_router_boundary_matrix.py
+
+router-boundary-check:
+	PYTHONPATH=. python3 scripts/check_router_boundary_enforcement.py
+
+import-linter-availability:
+	PYTHONPATH=. python3 scripts/check_import_linter_availability.py
+
+service-boundary-inventory:
+	PYTHONPATH=. python3 scripts/generate_service_boundary_inventory.py
+
+legacy-learner-access-guard-report:
+	PYTHONPATH=. python3 scripts/generate_legacy_learner_access_guard_report.py
+
+backend-implementation-651-670-full-check: popia-router-boundary-repair router-boundary-check import-linter-availability service-boundary-inventory legacy-learner-access-guard-report
+	python3 -m compileall -q app/api_v2_deps app/api_v2_routers app/services app/repositories
+	pytest -c pytest.ini tests/unit/test_boundary_enforcement_contracts.py -q --no-cov --tb=short
+
+.PHONY: service-family-map router-service-dependency-map architecture-boundary-contracts-check import-linter-contracts-run backend-implementation-671-690-full-check
+
+service-family-map:
+	PYTHONPATH=. python3 scripts/generate_service_family_map.py
+
+router-service-dependency-map:
+	PYTHONPATH=. python3 scripts/generate_router_service_dependency_map.py
+
+architecture-boundary-contracts-check:
+	PYTHONPATH=. python3 scripts/check_architecture_boundary_contracts.py
+
+import-linter-contracts-run:
+	PYTHONPATH=. python3 scripts/run_import_linter_contracts.py
+
+backend-implementation-671-690-full-check: service-family-map router-service-dependency-map architecture-boundary-contracts-check import-linter-contracts-run
+	python3 -m compileall -q app/api_v2_deps app/api_v2_routers app/services scripts
+	pytest -c pytest.ini tests/unit/test_architecture_boundary_contracts.py -q --no-cov --tb=short
+
+.PHONY: diagnostics-jobs-integrity-inspect diagnostics-data-integrity-repair arq-consent-job-repair diagnostics-jobs-integrity-check backend-implementation-691-720-full-check
+
+diagnostics-jobs-integrity-inspect:
+	PYTHONPATH=. python3 scripts/inspect_diagnostics_and_jobs_integrity.py
+
+diagnostics-data-integrity-repair:
+	PYTHONPATH=. python3 scripts/repair_diagnostics_data_integrity.py
+
+arq-consent-job-repair:
+	PYTHONPATH=. python3 scripts/repair_arq_consent_reminder_job.py
+
+diagnostics-jobs-integrity-check:
+	PYTHONPATH=. python3 scripts/check_diagnostics_jobs_integrity.py
+
+backend-implementation-691-720-full-check: diagnostics-jobs-integrity-inspect diagnostics-data-integrity-repair arq-consent-job-repair diagnostics-jobs-integrity-check
+	python3 -m compileall -q app/api_v2_routers app/modules app/services scripts
+	pytest -c pytest.ini tests/unit/test_diagnostics_jobs_integrity_contracts.py -q --no-cov --tb=short
+
+.PHONY: auth-router-boundary-inspect auth-router-boundary-repair auth-router-boundary-check auth-boundary-debt-report backend-implementation-721-750-full-check
+
+auth-router-boundary-inspect:
+	PYTHONPATH=. python3 scripts/inspect_auth_router_boundary.py
+
+auth-router-boundary-repair:
+	PYTHONPATH=. python3 scripts/repair_auth_router_boundary.py
+
+auth-router-boundary-check:
+	PYTHONPATH=. python3 scripts/check_auth_router_boundary.py
+
+auth-boundary-debt-report:
+	PYTHONPATH=. python3 scripts/generate_auth_boundary_debt_report.py
+
+backend-implementation-721-750-full-check: auth-router-boundary-inspect auth-router-boundary-repair auth-router-boundary-check auth-boundary-debt-report
+	python3 -m compileall -q app/api_v2_deps app/api_v2_routers app/services scripts
+	pytest -c pytest.ini tests/unit/test_auth_router_boundary_contracts.py -q --no-cov --tb=short
+
+.PHONY: jwt-rotation-inspect jwt-rotation-repair jwt-rotation-check dependency-pin-report dependency-constraints-snapshot optional-pip-audit deps-check deps-outdated deps-vulnerable deps-conflicts auth-extraction-followup backend-implementation-751-780-full-check
+
+jwt-rotation-inspect:
+	PYTHONPATH=. python3 scripts/inspect_jwt_rotation.py
+
+jwt-rotation-repair:
+	PYTHONPATH=. python3 scripts/repair_jwt_rotation.py
+
+jwt-rotation-check:
+	PYTHONPATH=. python3 scripts/check_jwt_rotation.py
+
+dependency-pin-report:
+	PYTHONPATH=. python3 scripts/generate_dependency_pin_report.py || true
+
+dependency-constraints-snapshot:
+	PYTHONPATH=. python3 scripts/generate_constraints_snapshot.py
+
+optional-pip-audit:
+	PYTHONPATH=. python3 scripts/run_optional_pip_audit.py || true
+
+deps-check: dependency-pin-report deps-conflicts optional-pip-audit
+
+deps-outdated:
+	python3 -m pip list --outdated --format=columns
+
+deps-vulnerable: optional-pip-audit
+
+deps-conflicts:
+	python3 -m pip check || true
+
+auth-extraction-followup:
+	PYTHONPATH=. python3 scripts/generate_auth_extraction_followup.py
+
+backend-implementation-751-780-full-check: jwt-rotation-inspect jwt-rotation-repair jwt-rotation-check dependency-pin-report dependency-constraints-snapshot optional-pip-audit auth-extraction-followup
+	python3 -m compileall -q app/services app/core scripts
+	pytest -c pytest.ini tests/unit/test_jwt_rotation_dependency_security.py -q --no-cov --tb=short
+
+.PHONY: runtime-blockers-followup-repair runtime-blockers-followup-check backend-implementation-781-830-full-check
+
+runtime-blockers-followup-repair:
+	PYTHONPATH=. python3 scripts/repair_runtime_blockers_after_followup_audit.py
+
+runtime-blockers-followup-check:
+	PYTHONPATH=. python3 scripts/check_runtime_blockers_after_followup_audit.py
+
+backend-implementation-781-830-full-check: runtime-blockers-followup-repair runtime-blockers-followup-check
+	python3 -m compileall -q app/api_v2_deps app/api_v2_routers app/modules app/services scripts
+	pytest -c pytest.ini tests/unit/test_runtime_blockers_after_followup_audit.py -q --no-cov --tb=short
+
+.PHONY: runtime-integration-proof-report runtime-integration-proof-check popia-lifecycle-integration-test diagnostics-db-integrity-proof-test backend-implementation-831-870-full-check
+
+runtime-integration-proof-report:
+	PYTHONPATH=. python3 scripts/generate_runtime_integration_proof_reports.py
+
+runtime-integration-proof-check:
+	PYTHONPATH=. python3 scripts/check_runtime_integration_proof.py
+
+popia-lifecycle-integration-test:
+	pytest -c pytest.ini tests/integration/test_popia_lifecycle_runtime_contract.py -q --no-cov --tb=short
+
+diagnostics-db-integrity-proof-test:
+	pytest -c pytest.ini tests/integration/test_diagnostics_db_integrity_proof.py -q --no-cov --tb=short
+
+backend-implementation-831-870-full-check: runtime-integration-proof-report runtime-integration-proof-check popia-lifecycle-integration-test diagnostics-db-integrity-proof-test
+	python3 -m compileall -q app/api_v2_deps app/api_v2_routers app/modules app/services scripts tests
+	pytest -c pytest.ini tests/unit/test_runtime_integration_proof_contracts.py -q --no-cov --tb=short
+
+.PHONY: auth-forward-refs-repair auth-forward-refs-check backend-implementation-831-870R-forward-ref-check
+
+auth-forward-refs-repair:
+	PYTHONPATH=. python3 scripts/repair_auth_forward_refs.py
+
+auth-forward-refs-check:
+	PYTHONPATH=. python3 scripts/check_auth_forward_refs.py
+
+backend-implementation-831-870R-forward-ref-check: auth-forward-refs-repair auth-forward-refs-check
+	python3 -m compileall -q app/api_v2_routers/auth.py scripts/repair_auth_forward_refs.py scripts/check_auth_forward_refs.py
+	pytest -c pytest.ini tests/unit/test_auth_forward_ref_import_contract.py -q --no-cov --tb=short
+
+.PHONY: auth-service-extraction-repair auth-service-extraction-check auth-service-extraction-report backend-implementation-871-910-full-check
+
+auth-service-extraction-repair:
+	PYTHONPATH=. python3 scripts/repair_auth_service_extraction.py
+
+auth-service-extraction-check:
+	PYTHONPATH=. python3 scripts/check_auth_service_extraction.py
+
+auth-service-extraction-report:
+	PYTHONPATH=. python3 scripts/generate_auth_service_extraction_report.py
+
+backend-implementation-871-910-full-check: auth-service-extraction-repair auth-service-extraction-check auth-service-extraction-report
+	python3 -m compileall -q app/api_v2_deps app/api_v2_routers app/services scripts tests/unit/test_auth_service_extraction_contracts.py
+	pytest -c pytest.ini tests/unit/test_auth_service_extraction_contracts.py -q --no-cov --tb=short
+
+.PHONY: auth-lifecycle-method-extraction-repair auth-lifecycle-method-extraction-check auth-lifecycle-extraction-report auth-lifecycle-method-tests auth-lifecycle-route-registration-tests backend-implementation-911-950-full-check
+
+auth-lifecycle-method-extraction-repair:
+	PYTHONPATH=. python3 scripts/repair_auth_lifecycle_method_extraction.py
+
+auth-lifecycle-method-extraction-check:
+	PYTHONPATH=. python3 scripts/check_auth_lifecycle_method_extraction.py
+
+auth-lifecycle-extraction-report:
+	PYTHONPATH=. python3 scripts/generate_auth_lifecycle_extraction_report.py
+
+auth-lifecycle-method-tests:
+	pytest -c pytest.ini tests/unit/test_auth_lifecycle_service_methods.py -q --no-cov --tb=short
+
+auth-lifecycle-route-registration-tests:
+	pytest -c pytest.ini tests/integration/test_auth_lifecycle_route_registration.py -q --no-cov --tb=short
+
+backend-implementation-911-950-full-check: auth-lifecycle-method-extraction-repair auth-lifecycle-method-extraction-check auth-lifecycle-extraction-report auth-lifecycle-method-tests auth-lifecycle-route-registration-tests
+	python3 -m compileall -q app/api_v2_deps app/api_v2_routers app/services scripts tests
+	python3 -m ruff check app/api_v2_routers/auth.py app/services/auth_application_service.py app/api_v2_deps/auth_service.py --select F821,F401,F811,E402
+
+.PHONY: auth-service-ownership-migrate auth-service-ownership-check auth-service-ownership-report auth-service-ownership-tests auth-lifecycle-http-non-500-tests backend-implementation-951-990-full-check
+
+auth-service-ownership-migrate:
+	PYTHONPATH=. python3 scripts/migrate_auth_lifecycle_helpers_to_service.py
+
+auth-service-ownership-check:
+	PYTHONPATH=. python3 scripts/check_auth_service_ownership.py
+
+auth-service-ownership-report:
+	PYTHONPATH=. python3 scripts/generate_auth_service_ownership_report.py
+
+auth-service-ownership-tests:
+	pytest -c pytest.ini tests/unit/test_auth_service_ownership_contracts.py -q --no-cov --tb=short
+
+auth-lifecycle-http-non-500-tests:
+	pytest -c pytest.ini tests/integration/test_auth_lifecycle_http_non_500.py -q --no-cov --tb=short
+
+backend-implementation-951-990-full-check: auth-service-ownership-migrate auth-service-ownership-check auth-service-ownership-report auth-service-ownership-tests auth-lifecycle-http-non-500-tests
+	python3 -m compileall -q app/api_v2_deps app/api_v2_routers app/services scripts tests
+	python3 -m ruff check app/api_v2_routers/auth.py app/services/auth_application_service.py app/services/auth_lifecycle_impl.py app/api_v2_deps/auth_service.py --select F821,F401,F811,E402
+
+.PHONY: auth-http-success-scope-report auth-http-success-scope-test auth-http-success-scope-check auth-http-success-scope-contracts backend-implementation-991-1030-full-check
+
+auth-http-success-scope-report:
+	PYTHONPATH=. python3 scripts/generate_auth_http_success_scope_report.py
+
+auth-http-success-scope-test:
+	pytest -c pytest.ini tests/integration/test_auth_lifecycle_http_success_scope.py -q --no-cov --tb=short
+
+auth-http-success-scope-check:
+	PYTHONPATH=. python3 scripts/check_auth_http_success_scope.py
+
+auth-http-success-scope-contracts:
+	pytest -c pytest.ini tests/unit/test_auth_http_success_scope_contracts.py -q --no-cov --tb=short
+
+backend-implementation-991-1030-full-check: auth-http-success-scope-report auth-http-success-scope-check auth-http-success-scope-contracts
+	python3 -m compileall -q app/api_v2_deps app/api_v2_routers app/services scripts tests
+	python3 -m ruff check app/api_v2_routers/auth.py app/services/auth_application_service.py app/services/auth_lifecycle_impl.py app/api_v2_deps/auth_service.py tests/integration/test_auth_lifecycle_http_success_scope.py --select F821,F401,F811,E402
+
+.PHONY: auth-db-lifecycle-proof-report auth-db-lifecycle-proof-test auth-db-lifecycle-proof-check auth-db-lifecycle-proof-contracts backend-implementation-1031-1070-full-check
+
+auth-db-lifecycle-proof-report:
+	PYTHONPATH=. python3 scripts/generate_auth_db_lifecycle_proof_report.py
+
+auth-db-lifecycle-proof-test:
+	pytest -c pytest.ini tests/integration/test_auth_transactional_db_lifecycle_proof.py -q --no-cov --tb=short
+
+auth-db-lifecycle-proof-check:
+	PYTHONPATH=. python3 scripts/check_auth_db_lifecycle_proof.py
+
+auth-db-lifecycle-proof-contracts:
+	pytest -c pytest.ini tests/unit/test_auth_db_lifecycle_proof_contracts.py -q --no-cov --tb=short
+
+backend-implementation-1031-1070-full-check: auth-db-lifecycle-proof-report auth-db-lifecycle-proof-check auth-db-lifecycle-proof-contracts
+	python3 -m compileall -q app/services scripts tests
+	python3 -m ruff check app/services/auth_db_lifecycle_proof.py scripts/generate_auth_db_lifecycle_proof_report.py scripts/check_auth_db_lifecycle_proof.py tests/integration/test_auth_transactional_db_lifecycle_proof.py tests/unit/test_auth_db_lifecycle_proof_contracts.py --select F821,F401,F811,E402
+
+.PHONY: jwt-production-guard-repair jwt-production-guard-test jwt-production-guard-check backend-implementation-1071-1110-full-check
+
+jwt-production-guard-repair:
+	PYTHONPATH=. python3 scripts/repair_jwt_production_guard.py
+
+jwt-production-guard-test:
+	pytest -c pytest.ini tests/unit/test_jwt_keyring_production_guard.py -q --no-cov --tb=short
+
+jwt-production-guard-check:
+	PYTHONPATH=. python3 scripts/check_jwt_production_guard.py
+
+backend-implementation-1071-1110-full-check: jwt-production-guard-repair jwt-production-guard-check
+	python3 -m compileall -q app/services app/core scripts tests
+	python3 -m ruff check app/services/jwt_keyring.py scripts/repair_jwt_production_guard.py scripts/check_jwt_production_guard.py tests/unit/test_jwt_keyring_production_guard.py --select F821,F401,F811,E402
+
+.PHONY: arq-dependency-worker-repair arq-worker-import-test arq-worker-import-check backend-implementation-1111-1150-full-check
+
+arq-dependency-worker-repair:
+	PYTHONPATH=. python3 scripts/repair_arq_dependency_worker_import.py
+
+arq-worker-import-test:
+	pytest -c pytest.ini tests/unit/test_arq_worker_import_contract.py -q --no-cov --tb=short
+
+arq-worker-import-check:
+	PYTHONPATH=. python3 scripts/check_arq_worker_import.py
+
+backend-implementation-1111-1150-full-check: arq-dependency-worker-repair arq-worker-import-check
+	python3 -m compileall -q app/services app/modules scripts tests
+	python3 -m ruff check app/services/arq_import_compat.py app/services/job_dependency_factory.py app/modules/jobs.py scripts/repair_arq_dependency_worker_import.py scripts/check_arq_worker_import.py tests/unit/test_arq_worker_import_contract.py --select F821,F401,F811,E402
+
+.PHONY: popia-lifecycle-response-contract-test popia-lifecycle-response-contract-check backend-implementation-1151-1190-full-check
+
+popia-lifecycle-response-contract-test:
+	pytest -c pytest.ini tests/integration/test_popia_lifecycle_response_contract.py tests/unit/test_popia_lifecycle_response_contracts.py -q --no-cov --tb=short
+
+popia-lifecycle-response-contract-check:
+	PYTHONPATH=. python3 scripts/check_popia_lifecycle_response_contract.py
+
+backend-implementation-1151-1190-full-check: popia-lifecycle-response-contract-check
+	python3 -m compileall -q app/services app/api_v2_routers scripts tests
+	python3 -m ruff check app/services/popia_consent_lifecycle_adapter.py app/api_v2_routers/popia.py scripts/check_popia_lifecycle_response_contract.py tests/integration/test_popia_lifecycle_response_contract.py tests/unit/test_popia_lifecycle_response_contracts.py --select F821,F401,F811,E402
+
+.PHONY: evidence-status-registry-check evidence-status-registry-test pytest-skip-inventory backend-implementation-1191-1230-full-check
+
+evidence-status-registry-check:
+	PYTHONPATH=. python3 scripts/check_evidence_status_registry.py
+
+evidence-status-registry-test:
+	pytest -c pytest.ini tests/unit/test_evidence_status_registry.py -q --no-cov --tb=short
+
+pytest-skip-inventory:
+	PYTHONPATH=. python3 scripts/record_pytest_skip_inventory.py --write-evidence
+
+backend-implementation-1191-1230-full-check: evidence-status-registry-check evidence-status-registry-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/evidence_registry.py scripts/check_evidence_status_registry.py scripts/record_pytest_skip_inventory.py tests/unit/test_evidence_status_registry.py --select F821,F401,F811,E402
+
+.PHONY: diagnostics-session-binding-repair diagnostics-session-binding-test diagnostics-session-binding-check backend-implementation-1231-1270-full-check
+
+diagnostics-session-binding-repair:
+	PYTHONPATH=. python3 scripts/patch_diagnostics_session_binding.py
+
+diagnostics-session-binding-test:
+	pytest -c pytest.ini tests/unit/test_diagnostic_route_integrity.py tests/integration/test_diagnostics_session_binding_routes.py -q --no-cov --tb=short
+
+diagnostics-session-binding-check:
+	PYTHONPATH=. python3 scripts/check_diagnostics_session_binding.py
+
+backend-implementation-1231-1270-full-check: diagnostics-session-binding-repair diagnostics-session-binding-check diagnostics-session-binding-test
+	python3 -m compileall -q app/services app/api_v2_routers scripts tests
+	python3 -m ruff check app/services/diagnostic_route_integrity.py app/services/diagnostic_session_integrity.py app/api_v2_routers/diagnostics.py scripts/patch_diagnostics_session_binding.py scripts/check_diagnostics_session_binding.py tests/unit/test_diagnostic_route_integrity.py tests/integration/test_diagnostics_session_binding_routes.py --select F821,F401,F811,E402
+
+.PHONY: auth-repository-fixture-repair auth-repository-fixture-proof-test auth-repository-fixture-proof-check backend-implementation-1271-1310-full-check
+
+auth-repository-fixture-repair:
+	PYTHONPATH=. python3 scripts/repair_auth_repository_fixture_proof.py
+
+auth-repository-fixture-proof-test:
+	pytest -c pytest.ini tests/integration/test_auth_repository_fixture_proof.py tests/unit/test_auth_repository_fixture_proof_contracts.py -q --no-cov --tb=short
+
+auth-repository-fixture-proof-check:
+	PYTHONPATH=. python3 scripts/check_auth_repository_fixture_proof.py
+
+backend-implementation-1271-1310-full-check: auth-repository-fixture-repair auth-repository-fixture-proof-check
+	python3 -m compileall -q app/services scripts tests
+	python3 -m ruff check app/services/auth_application_service.py app/services/auth_runtime_boundary.py scripts/repair_auth_repository_fixture_proof.py scripts/check_auth_repository_fixture_proof.py tests/integration/test_auth_repository_fixture_proof.py tests/unit/test_auth_repository_fixture_proof_contracts.py --select F821,F401,F811,E402
+
+.PHONY: lesson-authorization-hardening-repair lesson-authorization-hardening-test lesson-authorization-hardening-check backend-implementation-1311-1350-full-check
+
+lesson-authorization-hardening-repair:
+	PYTHONPATH=. python3 scripts/patch_lesson_authorization_hardening.py
+
+lesson-authorization-hardening-test:
+	pytest -c pytest.ini tests/unit/test_lesson_authorization_hardening.py tests/integration/test_lesson_authorization_negative_contract.py -q --no-cov --tb=short
+
+lesson-authorization-hardening-check:
+	PYTHONPATH=. python3 scripts/check_lesson_authorization_hardening.py
+
+backend-implementation-1311-1350-full-check: lesson-authorization-hardening-repair lesson-authorization-hardening-check lesson-authorization-hardening-test
+	python3 -m compileall -q app/services app/api_v2_routers scripts tests
+	python3 -m ruff check app/services/lesson_authorization.py app/api_v2_routers/lessons.py scripts/patch_lesson_authorization_hardening.py scripts/check_lesson_authorization_hardening.py tests/unit/test_lesson_authorization_hardening.py tests/integration/test_lesson_authorization_negative_contract.py --select F821,F401,F811,E402
+
+.PHONY: diagnostics-dynamic-repository-boundary-repair diagnostics-dynamic-repository-boundary-test diagnostics-dynamic-repository-boundary-check backend-implementation-1351-1390R-full-check
+
+diagnostics-dynamic-repository-boundary-repair:
+	PYTHONPATH=. python3 scripts/patch_diagnostics_dynamic_repository_boundary.py
+
+diagnostics-dynamic-repository-boundary-test:
+	pytest -c pytest.ini tests/unit/test_diagnostics_dynamic_repository_boundary.py -q --no-cov --tb=short
+
+diagnostics-dynamic-repository-boundary-check:
+	PYTHONPATH=. python3 scripts/check_diagnostics_dynamic_repository_boundary.py
+
+backend-implementation-1351-1390R-full-check: diagnostics-dynamic-repository-boundary-repair diagnostics-dynamic-repository-boundary-check diagnostics-dynamic-repository-boundary-test
+	python3 -m compileall -q app/api_v2_deps app/api_v2_routers scripts tests
+	python3 -m ruff check app/api_v2_deps/diagnostic_repositories.py app/api_v2_routers/diagnostics.py scripts/patch_diagnostics_dynamic_repository_boundary.py scripts/check_diagnostics_dynamic_repository_boundary.py tests/unit/test_diagnostics_dynamic_repository_boundary.py --select F821,F401,F811,E402
+
+.PHONY: transaction-boundary-inventory transaction-boundary-guardrail-check transaction-boundary-guardrail-test backend-implementation-1391-1430-full-check
+
+transaction-boundary-inventory:
+	PYTHONPATH=. python3 scripts/transaction_boundary_inventory.py
+
+transaction-boundary-guardrail-check:
+	PYTHONPATH=. python3 scripts/check_transaction_boundary_guardrails.py
+
+transaction-boundary-guardrail-test:
+	pytest -c pytest.ini tests/unit/test_transaction_boundary_guardrails.py -q --no-cov --tb=short
+
+backend-implementation-1391-1430-full-check: transaction-boundary-inventory transaction-boundary-guardrail-check transaction-boundary-guardrail-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/transaction_boundary_inventory.py scripts/check_transaction_boundary_guardrails.py tests/unit/test_transaction_boundary_guardrails.py --select F821,F401,F811,E402
+
+.PHONY: popia-transaction-rollback-proof-test popia-transaction-rollback-proof-check backend-implementation-1431-1470-full-check
+
+popia-transaction-rollback-proof-test:
+	pytest -c pytest.ini tests/integration/test_popia_transaction_rollback_proof.py tests/unit/test_popia_transactional_lifecycle_contracts.py -q --no-cov --tb=short
+
+popia-transaction-rollback-proof-check:
+	PYTHONPATH=. python3 scripts/check_popia_transaction_rollback_proof.py
+
+backend-implementation-1431-1470-full-check: popia-transaction-rollback-proof-check popia-transaction-rollback-proof-test
+	python3 -m compileall -q app/services scripts tests
+	python3 -m ruff check app/services/popia_transactional_lifecycle.py scripts/check_popia_transaction_rollback_proof.py tests/integration/test_popia_transaction_rollback_proof.py tests/unit/test_popia_transactional_lifecycle_contracts.py --select F821,F401,F811,E402
+
+.PHONY: auth-transaction-rollback-proof-test auth-transaction-rollback-proof-check backend-implementation-1471-1510-full-check
+
+auth-transaction-rollback-proof-test:
+	pytest -c pytest.ini tests/integration/test_auth_transaction_rollback_proof.py tests/unit/test_auth_transactional_registration_contracts.py -q --no-cov --tb=short
+
+auth-transaction-rollback-proof-check:
+	PYTHONPATH=. python3 scripts/check_auth_transaction_rollback_proof.py
+
+backend-implementation-1471-1510-full-check: auth-transaction-rollback-proof-test auth-transaction-rollback-proof-check
+	python3 -m compileall -q app/services scripts tests
+	python3 -m ruff check app/services/auth_transactional_registration.py scripts/check_auth_transaction_rollback_proof.py tests/integration/test_auth_transaction_rollback_proof.py tests/unit/test_auth_transactional_registration_contracts.py --select F821,F401,F811,E402
+
+.PHONY: diagnostics-transaction-rollback-proof-test diagnostics-transaction-rollback-proof-check backend-implementation-1511-1550-full-check
+
+diagnostics-transaction-rollback-proof-test:
+	pytest -c pytest.ini tests/integration/test_diagnostics_transaction_rollback_proof.py tests/unit/test_diagnostic_transactional_response_contracts.py -q --no-cov --tb=short
+
+diagnostics-transaction-rollback-proof-check:
+	PYTHONPATH=. python3 scripts/check_diagnostics_transaction_rollback_proof.py
+
+backend-implementation-1511-1550-full-check: diagnostics-transaction-rollback-proof-test diagnostics-transaction-rollback-proof-check
+	python3 -m compileall -q app/services scripts tests
+	python3 -m ruff check app/services/diagnostic_transactional_response.py scripts/check_diagnostics_transaction_rollback_proof.py tests/integration/test_diagnostics_transaction_rollback_proof.py tests/unit/test_diagnostic_transactional_response_contracts.py --select F821,F401,F811,E402
+
+.PHONY: lesson-gamification-transaction-rollback-proof-test lesson-gamification-transaction-rollback-proof-check backend-implementation-1551-1590-full-check
+
+lesson-gamification-transaction-rollback-proof-test:
+	pytest -c pytest.ini tests/integration/test_lesson_gamification_transaction_rollback_proof.py tests/unit/test_lesson_transactional_completion_contracts.py -q --no-cov --tb=short
+
+lesson-gamification-transaction-rollback-proof-check:
+	PYTHONPATH=. python3 scripts/check_lesson_gamification_transaction_rollback_proof.py
+
+backend-implementation-1551-1590-full-check: lesson-gamification-transaction-rollback-proof-test lesson-gamification-transaction-rollback-proof-check
+	python3 -m compileall -q app/services scripts tests
+	python3 -m ruff check app/services/lesson_transactional_completion.py scripts/check_lesson_gamification_transaction_rollback_proof.py tests/integration/test_lesson_gamification_transaction_rollback_proof.py tests/unit/test_lesson_transactional_completion_contracts.py --select F821,F401,F811,E402
+
+.PHONY: transaction-rollback-rollup-report transaction-rollback-rollup-check transaction-rollback-rollup-test backend-implementation-1591-1630-full-check
+
+transaction-rollback-rollup-report:
+	PYTHONPATH=. python3 -c "from scripts.transaction_rollback_rollup import write_rollup; r = write_rollup(); print(r.status)"
+
+transaction-rollback-rollup-check:
+	PYTHONPATH=. python3 scripts/check_transaction_rollback_rollup.py
+
+transaction-rollback-rollup-test:
+	pytest -c pytest.ini tests/unit/test_transaction_rollback_rollup.py -q --no-cov --tb=short
+
+backend-implementation-1591-1630-full-check: transaction-rollback-rollup-report transaction-rollback-rollup-check transaction-rollback-rollup-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/transaction_rollback_rollup.py scripts/check_transaction_rollback_rollup.py tests/unit/test_transaction_rollback_rollup.py --select F821,F401,F811,E402
+
+.PHONY: proof-no-skips-check diagnostics-scoring-snapshot-repair diagnostics-scoring-snapshot-test diagnostics-scoring-snapshot-check evidence-registry-commit-provenance-check backend-implementation-1631-1670-full-check
+
+proof-no-skips-check:
+	PYTHONPATH=. python3 scripts/check_popia_lifecycle_response_contract.py
+	PYTHONPATH=. python3 scripts/check_diagnostics_session_binding.py
+
+diagnostics-scoring-snapshot-repair:
+	PYTHONPATH=. python3 scripts/patch_diagnostics_scoring_snapshot.py
+
+diagnostics-scoring-snapshot-test:
+	pytest -c pytest.ini tests/unit/test_diagnostics_scoring_snapshot.py tests/unit/test_proof_pytest_no_skips.py -q --no-cov --tb=short
+
+diagnostics-scoring-snapshot-check:
+	PYTHONPATH=. python3 scripts/check_diagnostics_scoring_snapshot.py
+
+evidence-registry-commit-provenance-check:
+	PYTHONPATH=. python3 scripts/check_evidence_registry_commit_provenance.py
+
+backend-implementation-1631-1670-full-check: proof-no-skips-check diagnostics-scoring-snapshot-repair diagnostics-scoring-snapshot-test diagnostics-scoring-snapshot-check evidence-registry-commit-provenance-check
+	python3 -m compileall -q app/services app/modules/diagnostics scripts tests
+	python3 -m ruff check app/services/diagnostic_scoring_snapshot.py app/modules/diagnostics/diagnostic_session_service.py scripts/proof_pytest.py scripts/patch_diagnostics_scoring_snapshot.py scripts/check_diagnostics_scoring_snapshot.py scripts/check_popia_lifecycle_response_contract.py scripts/check_diagnostics_session_binding.py scripts/evidence_registry.py scripts/stamp_evidence_registry_commit.py scripts/check_evidence_registry_commit_provenance.py tests/unit/test_diagnostics_scoring_snapshot.py tests/unit/test_proof_pytest_no_skips.py tests/unit/test_evidence_registry_commit_provenance.py tests/integration/test_popia_lifecycle_response_contract.py tests/integration/test_diagnostics_session_binding_routes.py --select F821,F401,F811,E402
+
+.PHONY: ci-authority-registry-patch ci-authority-status ci-authority-local-check ci-authority-release-check ci-authority-test backend-implementation-1671-1710-full-check
+
+ci-authority-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_ci_authority_registry.py
+
+ci-authority-status:
+	PYTHONPATH=. python3 -c "from scripts.ci_authority import write_status; s = write_status(); print(s.ci_status)"
+
+ci-authority-local-check: ci-authority-registry-patch
+	PYTHONPATH=. python3 scripts/check_ci_authority.py
+
+ci-authority-release-check:
+	PYTHONPATH=. python3 scripts/check_ci_authority.py --release
+
+ci-authority-test:
+	pytest -c pytest.ini tests/unit/test_ci_authority.py -q --no-cov --tb=short
+
+backend-implementation-1671-1710-full-check: ci-authority-status ci-authority-local-check ci-authority-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/ci_authority.py scripts/patch_ci_authority_registry.py scripts/check_ci_authority.py tests/unit/test_ci_authority.py --select F821,F401,F811,E402
+
+.PHONY: docs-inventory docs-inventory-check docs-intelligence-check docs-intelligence-test backend-implementation-1711-1750-full-check
+
+docs-inventory:
+	PYTHONPATH=. python3 scripts/docs_inventory.py --write
+
+docs-inventory-check:
+	PYTHONPATH=. python3 scripts/docs_inventory.py --check
+
+docs-intelligence-check:
+	PYTHONPATH=. python3 scripts/check_docs_intelligence.py
+
+docs-intelligence-test:
+	pytest -c pytest.ini tests/unit/test_docs_intelligence.py -q --no-cov --tb=short
+
+backend-implementation-1711-1750-full-check: docs-inventory docs-inventory-check docs-intelligence-check docs-intelligence-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/docs_inventory.py scripts/check_docs_intelligence.py tests/unit/test_docs_intelligence.py --select F821,F401,F811,E402
+
+.PHONY: tx-route-wiring-inventory tx-route-wiring-check tx-route-wiring-test backend-implementation-1751-1790-full-check
+
+tx-route-wiring-inventory:
+	PYTHONPATH=. python3 -c "from scripts.tx_route_wiring_inventory import write_inventory; i = write_inventory(); print(i.status)"
+
+tx-route-wiring-check:
+	PYTHONPATH=. python3 scripts/check_tx_route_wiring.py
+
+tx-route-wiring-test:
+	pytest -c pytest.ini tests/unit/test_tx_route_wiring_inventory.py -q --no-cov --tb=short
+
+backend-implementation-1751-1790-full-check: tx-route-wiring-inventory tx-route-wiring-check tx-route-wiring-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/tx_route_wiring_inventory.py scripts/check_tx_route_wiring.py tests/unit/test_tx_route_wiring_inventory.py --select F821,F401,F811,E402
+
+.PHONY: external-approval-registry-patch external-approval-status external-approval-local-check external-approval-release-check external-approval-test backend-implementation-1791-1830-full-check
+
+external-approval-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_external_approval_registry.py
+
+external-approval-status:
+	PYTHONPATH=. python3 -c "from scripts.external_approval_gate import write_status; s = write_status(); print(s.status)"
+
+external-approval-local-check: external-approval-registry-patch
+	PYTHONPATH=. python3 scripts/check_external_approval_gate.py
+
+external-approval-release-check:
+	PYTHONPATH=. python3 scripts/check_external_approval_gate.py --release
+
+external-approval-test:
+	pytest -c pytest.ini tests/unit/test_external_approval_gate.py -q --no-cov --tb=short
+
+backend-implementation-1791-1830-full-check: external-approval-status external-approval-local-check external-approval-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/external_approval_gate.py scripts/patch_external_approval_registry.py scripts/check_external_approval_gate.py tests/unit/test_external_approval_gate.py --select F821,F401,F811,E402
+
+.PHONY: release-go-no-go-registry-patch release-go-no-go-status release-go-no-go-local-check release-go-no-go-release-check release-go-no-go-test backend-implementation-1831-1870-full-check
+
+release-go-no-go-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_release_go_no_go_registry.py
+
+release-go-no-go-status:
+	PYTHONPATH=. python3 -c "from scripts.release_go_no_go import write_status; s = write_status(); print(s.decision)"
+
+release-go-no-go-local-check: release-go-no-go-registry-patch
+	PYTHONPATH=. python3 scripts/check_release_go_no_go.py
+
+release-go-no-go-release-check:
+	PYTHONPATH=. python3 scripts/check_release_go_no_go.py --release
+
+release-go-no-go-test:
+	pytest -c pytest.ini tests/unit/test_release_go_no_go.py -q --no-cov --tb=short
+
+backend-implementation-1831-1870-full-check: release-go-no-go-status release-go-no-go-local-check release-go-no-go-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/release_go_no_go.py scripts/patch_release_go_no_go_registry.py scripts/check_release_go_no_go.py tests/unit/test_release_go_no_go.py --select F821,F401,F811,E402
+
+.PHONY: beta-blocker-burndown-registry-patch beta-blocker-burndown-plan beta-blocker-burndown-check beta-blocker-burndown-release-check beta-blocker-burndown-test backend-implementation-1871-1910-full-check
+
+beta-blocker-burndown-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_beta_blocker_burndown_registry.py
+
+beta-blocker-burndown-plan:
+	PYTHONPATH=. python3 -c "from scripts.beta_blocker_burndown import write_plan; p = write_plan(); print(p.burn_down_status)"
+
+beta-blocker-burndown-check: beta-blocker-burndown-registry-patch
+	PYTHONPATH=. python3 scripts/check_beta_blocker_burndown.py
+
+beta-blocker-burndown-release-check:
+	PYTHONPATH=. python3 scripts/check_beta_blocker_burndown.py --release
+
+beta-blocker-burndown-test:
+	pytest -c pytest.ini tests/unit/test_beta_blocker_burndown.py -q --no-cov --tb=short
+
+backend-implementation-1871-1910-full-check: beta-blocker-burndown-plan beta-blocker-burndown-check beta-blocker-burndown-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/beta_blocker_burndown.py scripts/patch_beta_blocker_burndown_registry.py scripts/check_beta_blocker_burndown.py tests/unit/test_beta_blocker_burndown.py --select F821,F401,F811,E402
+
+.PHONY: staging-acceptance-registry-patch staging-acceptance-template staging-acceptance-status staging-acceptance-local-check staging-acceptance-release-check staging-acceptance-test backend-implementation-1911-1950-full-check
+
+staging-acceptance-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_staging_acceptance_registry.py
+
+staging-acceptance-template:
+	PYTHONPATH=. python3 -c "from scripts.staging_acceptance_evidence import write_template; write_template(); print('staging template ready')"
+
+staging-acceptance-status:
+	PYTHONPATH=. python3 -c "from scripts.staging_acceptance_evidence import write_status; s = write_status(); print(s.status)"
+
+staging-acceptance-local-check: staging-acceptance-registry-patch
+	PYTHONPATH=. python3 scripts/check_staging_acceptance.py
+
+staging-acceptance-release-check:
+	PYTHONPATH=. python3 scripts/check_staging_acceptance.py --release
+
+staging-acceptance-test:
+	pytest -c pytest.ini tests/unit/test_staging_acceptance_evidence.py -q --no-cov --tb=short
+
+backend-implementation-1911-1950-full-check: staging-acceptance-template staging-acceptance-status staging-acceptance-local-check staging-acceptance-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/staging_acceptance_evidence.py scripts/patch_staging_acceptance_registry.py scripts/check_staging_acceptance.py tests/unit/test_staging_acceptance_evidence.py --select F821,F401,F811,E402
+
+.PHONY: ci-run-evidence-template ci-run-evidence-status ci-run-evidence-local-check ci-run-evidence-release-check ci-run-evidence-test ci-run-evidence-registry-patch ci-run-evidence-attach backend-implementation-1951-1990-full-check
+
+ci-run-evidence-template:
+	PYTHONPATH=. python3 scripts/ci_run_evidence.py --template
+
+ci-run-evidence-status:
+	PYTHONPATH=. python3 scripts/ci_run_evidence.py --status
+
+ci-run-evidence-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_ci_run_evidence_registry.py
+
+ci-run-evidence-local-check: ci-run-evidence-registry-patch
+	PYTHONPATH=. python3 scripts/check_ci_run_evidence.py
+
+ci-run-evidence-release-check:
+	PYTHONPATH=. python3 scripts/check_ci_run_evidence.py --release
+
+ci-run-evidence-test:
+	pytest -c pytest.ini tests/unit/test_ci_run_evidence.py -q --no-cov --tb=short
+
+ci-run-evidence-attach:
+	@test -n "$$CI_RUN_URL" || (echo "CI_RUN_URL is required"; exit 1)
+	@test -n "$$CI_RESULT" || (echo "CI_RESULT is required"; exit 1)
+	@test -n "$$CI_WORKFLOW" || (echo "CI_WORKFLOW is required"; exit 1)
+	@test -n "$$CI_VERIFIED_BY" || (echo "CI_VERIFIED_BY is required"; exit 1)
+	PYTHONPATH=. python3 scripts/ci_run_evidence.py --attach --run-url "$$CI_RUN_URL" --result "$$CI_RESULT" --workflow "$$CI_WORKFLOW" --verified-by "$$CI_VERIFIED_BY" --commit-sha "$${CI_COMMIT_SHA:-$$(git rev-parse HEAD)}" --branch "$${CI_BRANCH:-codex/production_readiness}" --repository "$${CI_REPOSITORY:-NkgoloL/Eduboost-V2}" --date-verified "$${CI_DATE_VERIFIED:-$$(date -u +%Y-%m-%d)}" --notes "$${CI_NOTES:-attached through CI-RUN-001 helper}"
+	PYTHONPATH=. python3 scripts/patch_ci_run_evidence_registry.py
+	@if [ -f scripts/release_go_no_go.py ]; then PYTHONPATH=. python3 -c "from scripts.release_go_no_go import write_status; s = write_status(); print(s.decision)"; fi
+	@if [ -f scripts/beta_blocker_burndown.py ]; then PYTHONPATH=. python3 -c "from scripts.beta_blocker_burndown import write_plan; p = write_plan(); print(p.burn_down_status)"; fi
+
+backend-implementation-1951-1990-full-check: ci-run-evidence-template ci-run-evidence-status ci-run-evidence-local-check ci-run-evidence-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/ci_run_evidence.py scripts/patch_ci_run_evidence_registry.py scripts/check_ci_run_evidence.py tests/unit/test_ci_run_evidence.py --select F821,F401,F811,E402
+
+.PHONY: approval-evidence-templates approval-evidence-status approval-evidence-registry-patch approval-evidence-local-check approval-evidence-release-check approval-evidence-test approval-evidence-attach backend-implementation-1991-2030-full-check
+
+approval-evidence-templates:
+	PYTHONPATH=. python3 scripts/approval_evidence.py --templates
+
+approval-evidence-status:
+	PYTHONPATH=. python3 scripts/approval_evidence.py --status
+
+approval-evidence-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_approval_evidence_registry.py
+
+approval-evidence-local-check: approval-evidence-registry-patch
+	PYTHONPATH=. python3 scripts/check_approval_evidence.py
+
+approval-evidence-release-check:
+	PYTHONPATH=. python3 scripts/check_approval_evidence.py --release
+
+approval-evidence-test:
+	pytest -c pytest.ini tests/unit/test_approval_evidence.py -q --no-cov --tb=short
+
+approval-evidence-attach:
+	@test -n "$$APPROVAL_ID" || (echo "APPROVAL_ID is required: LEGAL-001, SEC-001, or CONTENT-001"; exit 1)
+	@test -n "$$APPROVAL_DECISION" || (echo "APPROVAL_DECISION is required"; exit 1)
+	@test -n "$$APPROVAL_APPROVER" || (echo "APPROVAL_APPROVER is required"; exit 1)
+	@test -n "$$APPROVAL_EVIDENCE_URL" || (echo "APPROVAL_EVIDENCE_URL is required"; exit 1)
+	@test -n "$$APPROVAL_SCOPE" || (echo "APPROVAL_SCOPE is required"; exit 1)
+	PYTHONPATH=. python3 scripts/approval_evidence.py --attach "$$APPROVAL_ID" --decision "$$APPROVAL_DECISION" --approver "$$APPROVAL_APPROVER" --evidence-url "$$APPROVAL_EVIDENCE_URL" --date-verified "$${APPROVAL_DATE_VERIFIED:-$$(date -u +%Y-%m-%d)}" --scope "$$APPROVAL_SCOPE" --notes "$${APPROVAL_NOTES:-attached through APPROVAL-EVID-001 helper}"
+	PYTHONPATH=. python3 scripts/patch_approval_evidence_registry.py
+	@if [ -f scripts/external_approval_gate.py ]; then PYTHONPATH=. python3 -c "from scripts.external_approval_gate import write_status; s = write_status(); print(s.status)"; fi
+	@if [ -f scripts/release_go_no_go.py ]; then PYTHONPATH=. python3 -c "from scripts.release_go_no_go import write_status; s = write_status(); print(s.decision)"; fi
+	@if [ -f scripts/beta_blocker_burndown.py ]; then PYTHONPATH=. python3 -c "from scripts.beta_blocker_burndown import write_plan; p = write_plan(); print(p.burn_down_status)"; fi
+
+backend-implementation-1991-2030-full-check: approval-evidence-templates approval-evidence-status approval-evidence-local-check approval-evidence-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/approval_evidence.py scripts/patch_approval_evidence_registry.py scripts/check_approval_evidence.py tests/unit/test_approval_evidence.py --select F821,F401,F811,E402
+
+.PHONY: route-tx-impl-plan route-tx-impl-registry-patch route-tx-impl-plan-check route-tx-impl-plan-release-check route-tx-impl-plan-test backend-implementation-2031-2070-full-check
+
+route-tx-impl-plan:
+	PYTHONPATH=. python3 -c "from scripts.route_tx_impl_plan import write_plan; p = write_plan(); print(p.plan_status)"
+
+route-tx-impl-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_route_tx_impl_registry.py
+
+route-tx-impl-plan-check: route-tx-impl-registry-patch
+	PYTHONPATH=. python3 scripts/check_route_tx_impl_plan.py
+
+route-tx-impl-plan-release-check:
+	PYTHONPATH=. python3 scripts/check_route_tx_impl_plan.py --release
+
+route-tx-impl-plan-test:
+	pytest -c pytest.ini tests/unit/test_route_tx_impl_plan.py -q --no-cov --tb=short
+
+backend-implementation-2031-2070-full-check: route-tx-impl-plan route-tx-impl-plan-check route-tx-impl-plan-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/route_tx_impl_plan.py scripts/patch_route_tx_impl_registry.py scripts/check_route_tx_impl_plan.py tests/unit/test_route_tx_impl_plan.py --select F821,F401,F811,E402
+
+.PHONY: route-tx-auth-slice-report route-tx-auth-slice-registry-patch route-tx-auth-slice-check route-tx-auth-slice-release-check route-tx-auth-slice-test backend-implementation-2071-2110-full-check
+
+route-tx-auth-slice-report:
+	PYTHONPATH=. python3 -c "from scripts.route_tx_auth_slice import write_report; r = write_report(); print(r.local_status)"
+
+route-tx-auth-slice-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_route_tx_auth_slice_registry.py
+
+route-tx-auth-slice-check: route-tx-auth-slice-registry-patch
+	PYTHONPATH=. python3 scripts/check_route_tx_auth_slice.py
+
+route-tx-auth-slice-release-check:
+	PYTHONPATH=. python3 scripts/check_route_tx_auth_slice.py --release
+
+route-tx-auth-slice-test:
+	pytest -c pytest.ini tests/unit/test_route_tx_auth_slice.py -q --no-cov --tb=short
+
+backend-implementation-2071-2110-full-check: route-tx-auth-slice-report route-tx-auth-slice-check route-tx-auth-slice-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/route_tx_auth_slice.py scripts/patch_route_tx_auth_slice_registry.py scripts/check_route_tx_auth_slice.py tests/unit/test_route_tx_auth_slice.py --select F821,F401,F811,E402
+
+.PHONY: route-tx-popia-slice-report route-tx-popia-slice-registry-patch route-tx-popia-slice-check route-tx-popia-slice-release-check route-tx-popia-slice-test backend-implementation-2111-2150-full-check
+
+route-tx-popia-slice-report:
+	PYTHONPATH=. python3 -c "from scripts.route_tx_popia_slice import write_report; r = write_report(); print(r.local_status)"
+
+route-tx-popia-slice-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_route_tx_popia_slice_registry.py
+
+route-tx-popia-slice-check: route-tx-popia-slice-registry-patch
+	PYTHONPATH=. python3 scripts/check_route_tx_popia_slice.py
+
+route-tx-popia-slice-release-check:
+	PYTHONPATH=. python3 scripts/check_route_tx_popia_slice.py --release
+
+route-tx-popia-slice-test:
+	pytest -c pytest.ini tests/unit/test_route_tx_popia_slice.py -q --no-cov --tb=short
+
+backend-implementation-2111-2150-full-check: route-tx-popia-slice-report route-tx-popia-slice-check route-tx-popia-slice-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/route_tx_popia_slice.py scripts/patch_route_tx_popia_slice_registry.py scripts/check_route_tx_popia_slice.py tests/unit/test_route_tx_popia_slice.py --select F821,F401,F811,E402
+
+.PHONY: popia-route-tx-gap-plan popia-route-tx-not-proven-registry-patch popia-route-tx-no-false-closure-check popia-route-tx-gap-test backend-implementation-2111-2150R-full-check
+
+popia-route-tx-gap-plan:
+	PYTHONPATH=. python3 -c "from scripts.popia_route_tx_gap_plan import write_plan; p = write_plan(); print(p.status)"
+
+popia-route-tx-not-proven-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_popia_route_tx_not_proven_registry.py
+
+popia-route-tx-no-false-closure-check: popia-route-tx-not-proven-registry-patch
+	PYTHONPATH=. python3 scripts/check_popia_route_tx_no_false_closure.py
+
+popia-route-tx-gap-test:
+	pytest -c pytest.ini tests/unit/test_popia_route_tx_gap_plan.py -q --no-cov --tb=short
+
+backend-implementation-2111-2150R-full-check: popia-route-tx-gap-plan popia-route-tx-no-false-closure-check popia-route-tx-gap-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/popia_route_tx_gap_plan.py scripts/check_popia_route_tx_no_false_closure.py scripts/patch_popia_route_tx_not_proven_registry.py tests/unit/test_popia_route_tx_gap_plan.py --select F821,F401,F811,E402
+
+.PHONY: route-tx-diagnostics-slice-report route-tx-diagnostics-slice-registry-patch route-tx-diagnostics-slice-check route-tx-diagnostics-slice-release-check route-tx-diagnostics-slice-test backend-implementation-2151-2190-full-check
+
+route-tx-diagnostics-slice-report:
+	PYTHONPATH=. python3 -c "from scripts.route_tx_diagnostics_slice import write_report, write_gap_plan; r = write_report(); p = write_gap_plan(); print(r.local_status); print(p.status)"
+
+route-tx-diagnostics-slice-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_route_tx_diagnostics_slice_registry.py
+
+route-tx-diagnostics-slice-check: route-tx-diagnostics-slice-registry-patch
+	PYTHONPATH=. python3 scripts/check_route_tx_diagnostics_slice.py
+
+route-tx-diagnostics-slice-release-check:
+	PYTHONPATH=. python3 scripts/check_route_tx_diagnostics_slice.py --release
+
+route-tx-diagnostics-slice-test:
+	pytest -c pytest.ini tests/unit/test_route_tx_diagnostics_slice.py -q --no-cov --tb=short
+
+backend-implementation-2151-2190-full-check: route-tx-diagnostics-slice-report route-tx-diagnostics-slice-check route-tx-diagnostics-slice-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/route_tx_diagnostics_slice.py scripts/patch_route_tx_diagnostics_slice_registry.py scripts/check_route_tx_diagnostics_slice.py tests/unit/test_route_tx_diagnostics_slice.py --select F821,F401,F811,E402
+
+.PHONY: route-tx-slice-rollup route-tx-slice-rollup-registry-patch route-tx-slice-rollup-check route-tx-slice-rollup-release-check route-tx-slice-rollup-test backend-implementation-2191-2230-full-check
+
+route-tx-slice-rollup:
+	PYTHONPATH=. python3 -c "from scripts.route_tx_slice_rollup import write_rollup; r = write_rollup(); print(r.status)"
+
+route-tx-slice-rollup-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_route_tx_slice_rollup_registry.py
+
+route-tx-slice-rollup-check: route-tx-slice-rollup-registry-patch
+	PYTHONPATH=. python3 scripts/check_route_tx_slice_rollup.py
+
+route-tx-slice-rollup-release-check:
+	PYTHONPATH=. python3 scripts/check_route_tx_slice_rollup.py --release
+
+route-tx-slice-rollup-test:
+	pytest -c pytest.ini tests/unit/test_route_tx_slice_rollup.py -q --no-cov --tb=short
+
+backend-implementation-2191-2230-full-check: route-tx-slice-rollup route-tx-slice-rollup-check route-tx-slice-rollup-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/route_tx_slice_rollup.py scripts/patch_route_tx_slice_rollup_registry.py scripts/check_route_tx_slice_rollup.py tests/unit/test_route_tx_slice_rollup.py --select F821,F401,F811,E402
+
+.PHONY: live-db-tx-evidence-templates live-db-tx-evidence-status live-db-tx-evidence-registry-patch live-db-tx-evidence-local-check live-db-tx-evidence-release-check live-db-tx-evidence-test live-db-tx-evidence-attach backend-implementation-2231-2270-full-check
+
+live-db-tx-evidence-templates:
+	PYTHONPATH=. python3 scripts/live_db_tx_evidence.py --templates
+
+live-db-tx-evidence-status:
+	PYTHONPATH=. python3 scripts/live_db_tx_evidence.py --status
+
+live-db-tx-evidence-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_live_db_tx_evidence_registry.py
+
+live-db-tx-evidence-local-check: live-db-tx-evidence-registry-patch
+	PYTHONPATH=. python3 scripts/check_live_db_tx_evidence.py
+
+live-db-tx-evidence-release-check:
+	PYTHONPATH=. python3 scripts/check_live_db_tx_evidence.py --release
+
+live-db-tx-evidence-test:
+	pytest -c pytest.ini tests/unit/test_live_db_tx_evidence.py -q --no-cov --tb=short
+
+live-db-tx-evidence-attach:
+	@test -n "$$TX_SLICE" || (echo "TX_SLICE is required: auth, popia, or diagnostics"; exit 1)
+	@test -n "$$TX_EVIDENCE_URL" || (echo "TX_EVIDENCE_URL is required"; exit 1)
+	@test -n "$$TX_TEST_RESULT" || (echo "TX_TEST_RESULT is required"; exit 1)
+	@test -n "$$TX_DATABASE" || (echo "TX_DATABASE is required"; exit 1)
+	@test -n "$$TX_VERIFIED_BY" || (echo "TX_VERIFIED_BY is required"; exit 1)
+	PYTHONPATH=. python3 scripts/live_db_tx_evidence.py --attach "$$TX_SLICE" --evidence-url "$$TX_EVIDENCE_URL" --test-result "$$TX_TEST_RESULT" --database "$$TX_DATABASE" --commit-sha "$${TX_COMMIT_SHA:-$$(git rev-parse HEAD)}" --verified-by "$$TX_VERIFIED_BY" --date-verified "$${TX_DATE_VERIFIED:-$$(date -u +%Y-%m-%d)}" --notes "$${TX_NOTES:-attached through LIVE-DB-TX-EVID-001 helper}"
+	PYTHONPATH=. python3 scripts/patch_live_db_tx_evidence_registry.py
+	@if [ -f scripts/route_tx_slice_rollup.py ]; then PYTHONPATH=. python3 -c "from scripts.route_tx_slice_rollup import write_rollup; r = write_rollup(); print(r.status)"; fi
+	@if [ -f scripts/release_go_no_go.py ]; then PYTHONPATH=. python3 -c "from scripts.release_go_no_go import write_status; s = write_status(); print(s.decision)"; fi
+	@if [ -f scripts/beta_blocker_burndown.py ]; then PYTHONPATH=. python3 -c "from scripts.beta_blocker_burndown import write_plan; p = write_plan(); print(p.burn_down_status)"; fi
+
+backend-implementation-2231-2270-full-check: live-db-tx-evidence-templates live-db-tx-evidence-status live-db-tx-evidence-local-check live-db-tx-evidence-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/live_db_tx_evidence.py scripts/patch_live_db_tx_evidence_registry.py scripts/check_live_db_tx_evidence.py tests/unit/test_live_db_tx_evidence.py --select F821,F401,F811,E402
+
+.PHONY: final-gate-refresh final-gate-refresh-registry-patch final-gate-refresh-check final-gate-refresh-release-check final-gate-refresh-test backend-implementation-2271-2310-full-check
+
+final-gate-refresh:
+	PYTHONPATH=. python3 -c "from scripts.final_gate_refresh import write_refresh; r = write_refresh(); print(r.beta_decision)"
+
+final-gate-refresh-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_final_gate_refresh_registry.py
+
+final-gate-refresh-check: final-gate-refresh-registry-patch
+	PYTHONPATH=. python3 scripts/check_final_gate_refresh.py
+
+final-gate-refresh-release-check:
+	PYTHONPATH=. python3 scripts/check_final_gate_refresh.py --release
+
+final-gate-refresh-test:
+	pytest -c pytest.ini tests/unit/test_final_gate_refresh.py -q --no-cov --tb=short
+
+backend-implementation-2271-2310-full-check: final-gate-refresh final-gate-refresh-check final-gate-refresh-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/final_gate_refresh.py scripts/patch_final_gate_refresh_registry.py scripts/check_final_gate_refresh.py tests/unit/test_final_gate_refresh.py --select F821,F401,F811,E402
+
+.PHONY: evidence-attachment-runbook evidence-attachment-runbook-registry-patch evidence-attachment-runbook-check evidence-attachment-runbook-test backend-implementation-2311-2350-full-check
+
+evidence-attachment-runbook:
+	PYTHONPATH=. python3 -c "from scripts.evidence_attachment_runbook import write_runbook; r = write_runbook(); print(r.command_count)"
+
+evidence-attachment-runbook-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_evidence_attachment_runbook_registry.py
+
+evidence-attachment-runbook-check: evidence-attachment-runbook-registry-patch
+	PYTHONPATH=. python3 scripts/check_evidence_attachment_runbook.py
+
+evidence-attachment-runbook-test:
+	pytest -c pytest.ini tests/unit/test_evidence_attachment_runbook.py -q --no-cov --tb=short
+
+backend-implementation-2311-2350-full-check: evidence-attachment-runbook evidence-attachment-runbook-check evidence-attachment-runbook-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/evidence_attachment_runbook.py scripts/check_evidence_attachment_runbook.py scripts/patch_evidence_attachment_runbook_registry.py tests/unit/test_evidence_attachment_runbook.py --select F821,F401,F811,E402
+
+.PHONY: beta-no-go-handoff-packet beta-no-go-handoff-registry-patch beta-no-go-handoff-check beta-no-go-handoff-test backend-implementation-2351-2390-full-check
+
+beta-no-go-handoff-packet:
+	PYTHONPATH=. python3 -c "from scripts.beta_no_go_handoff_packet import write_packet; p = write_packet(); print(p.handoff_status)"
+
+beta-no-go-handoff-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_beta_no_go_handoff_registry.py
+
+beta-no-go-handoff-check: beta-no-go-handoff-registry-patch
+	PYTHONPATH=. python3 scripts/check_beta_no_go_handoff_packet.py
+
+beta-no-go-handoff-test:
+	pytest -c pytest.ini tests/unit/test_beta_no_go_handoff_packet.py -q --no-cov --tb=short
+
+backend-implementation-2351-2390-full-check: beta-no-go-handoff-packet beta-no-go-handoff-check beta-no-go-handoff-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/beta_no_go_handoff_packet.py scripts/check_beta_no_go_handoff_packet.py scripts/patch_beta_no_go_handoff_registry.py tests/unit/test_beta_no_go_handoff_packet.py --select F821,F401,F811,E402
+
+.PHONY: prod-frontend-deployment-repair prod-frontend-deployment-status prod-frontend-deployment-registry-patch prod-frontend-deployment-check prod-frontend-deployment-test backend-implementation-2431-2470-full-check
+
+prod-frontend-deployment-repair:
+	PYTHONPATH=. python3 scripts/repair_prod_frontend_deployment.py
+
+prod-frontend-deployment-status:
+	PYTHONPATH=. python3 -c "from scripts.prod_frontend_deployment import write_status; s = write_status(); print(s.status)"
+
+prod-frontend-deployment-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_prod_frontend_deployment_registry.py
+
+prod-frontend-deployment-check: prod-frontend-deployment-repair prod-frontend-deployment-registry-patch
+	PYTHONPATH=. python3 scripts/check_prod_frontend_deployment.py
+
+prod-frontend-deployment-test:
+	pytest -c pytest.ini tests/unit/test_prod_frontend_deployment.py -q --no-cov --tb=short
+
+backend-implementation-2431-2470-full-check: prod-frontend-deployment-repair prod-frontend-deployment-status prod-frontend-deployment-check prod-frontend-deployment-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/prod_frontend_deployment.py scripts/repair_prod_frontend_deployment.py scripts/check_prod_frontend_deployment.py scripts/patch_prod_frontend_deployment_registry.py tests/unit/test_prod_frontend_deployment.py --select F821,F401,F811,E402
+
+.PHONY: prod-frontend-runtime-repair prod-frontend-runtime-status prod-frontend-runtime-registry-patch prod-frontend-runtime-check prod-frontend-runtime-release-check prod-frontend-runtime-test backend-implementation-2471-2510-full-check
+
+prod-frontend-runtime-repair:
+	PYTHONPATH=. python3 scripts/repair_prod_frontend_runtime.py
+
+prod-frontend-runtime-status:
+	PYTHONPATH=. python3 -c "from scripts.prod_frontend_runtime import write_status; s = write_status(); print(s.status)"
+
+prod-frontend-runtime-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_prod_frontend_runtime_registry.py
+
+prod-frontend-runtime-check: prod-frontend-runtime-repair prod-frontend-runtime-registry-patch
+	PYTHONPATH=. python3 scripts/check_prod_frontend_runtime.py
+
+prod-frontend-runtime-release-check:
+	PYTHONPATH=. python3 scripts/check_prod_frontend_runtime.py --release
+
+prod-frontend-runtime-test:
+	pytest -c pytest.ini tests/unit/test_prod_frontend_runtime.py -q --no-cov --tb=short
+
+backend-implementation-2471-2510-full-check: prod-frontend-runtime-repair prod-frontend-runtime-status prod-frontend-runtime-check prod-frontend-runtime-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/prod_frontend_runtime.py scripts/repair_prod_frontend_runtime.py scripts/check_prod_frontend_runtime.py scripts/patch_prod_frontend_runtime_registry.py tests/unit/test_prod_frontend_runtime.py --select F821,F401,F811,E402
+
+.PHONY: prod-frontend-runtime-cert-path-repair backend-implementation-2471-2510R-full-check
+
+prod-frontend-runtime-cert-path-repair:
+	PYTHONPATH=. python3 scripts/repair_nginx_letsencrypt_paths.py
+
+backend-implementation-2471-2510R-full-check: prod-frontend-runtime-cert-path-repair prod-frontend-runtime-check prod-frontend-runtime-test
+	pytest -c pytest.ini tests/unit/test_nginx_letsencrypt_path_repair.py -q --no-cov --tb=short
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/repair_nginx_letsencrypt_paths.py tests/unit/test_nginx_letsencrypt_path_repair.py --select F821,F401,F811,E402
+
+.PHONY: auth-service-cleanup-repair auth-service-cleanup-status auth-service-cleanup-registry-patch auth-service-cleanup-check auth-service-cleanup-release-check auth-service-cleanup-test backend-implementation-2511-2550-full-check
+
+auth-service-cleanup-repair:
+	PYTHONPATH=. python3 scripts/repair_auth_service_cleanup.py
+
+auth-service-cleanup-status:
+	PYTHONPATH=. python3 -c "from scripts.auth_service_cleanup import write_status; s = write_status(); print(s.status)"
+
+auth-service-cleanup-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_auth_service_cleanup_registry.py
+
+auth-service-cleanup-check: auth-service-cleanup-repair auth-service-cleanup-registry-patch
+	PYTHONPATH=. python3 scripts/check_auth_service_cleanup.py
+
+auth-service-cleanup-release-check:
+	PYTHONPATH=. python3 scripts/check_auth_service_cleanup.py --release
+
+auth-service-cleanup-test:
+	pytest -c pytest.ini tests/unit/test_auth_service_cleanup.py -q --no-cov --tb=short
+
+backend-implementation-2511-2550-full-check: auth-service-cleanup-repair auth-service-cleanup-status auth-service-cleanup-check auth-service-cleanup-test
+	python3 -m compileall -q app/services app/api_v2_routers scripts tests
+	python3 -m ruff check scripts/auth_service_cleanup.py scripts/repair_auth_service_cleanup.py scripts/check_auth_service_cleanup.py scripts/patch_auth_service_cleanup_registry.py tests/unit/test_auth_service_cleanup.py app/services/auth_application_service.py --select F821,F401,F811,E402
+
+.PHONY: auth-route-logout-delegate-repair auth-route-logout-delegate-status auth-route-logout-delegate-registry-patch auth-route-logout-delegate-check auth-route-logout-delegate-test backend-implementation-2551-2590-full-check
+
+auth-route-logout-delegate-repair:
+	PYTHONPATH=. python3 scripts/repair_auth_route_logout_delegate.py
+
+auth-route-logout-delegate-status:
+	PYTHONPATH=. python3 -c "from scripts.auth_route_logout_delegate import write_status; s = write_status(); print(s.status)"
+
+auth-route-logout-delegate-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_auth_route_logout_delegate_registry.py
+
+auth-route-logout-delegate-check: auth-route-logout-delegate-repair auth-route-logout-delegate-registry-patch
+	PYTHONPATH=. python3 scripts/check_auth_route_logout_delegate.py
+
+auth-route-logout-delegate-test:
+	pytest -c pytest.ini tests/unit/test_auth_route_logout_delegate.py -q --no-cov --tb=short
+
+backend-implementation-2551-2590-full-check: auth-route-logout-delegate-repair auth-route-logout-delegate-status auth-route-logout-delegate-check auth-route-logout-delegate-test
+	python3 -m compileall -q app/services app/api_v2_routers scripts tests
+	python3 -m ruff check scripts/auth_route_logout_delegate.py scripts/repair_auth_route_logout_delegate.py scripts/check_auth_route_logout_delegate.py scripts/patch_auth_route_logout_delegate_registry.py tests/unit/test_auth_route_logout_delegate.py app/api_v2_routers/auth.py --select F821,F401,F811,E402
+
+.PHONY: backend-implementation-2551-2590R-full-check
+
+backend-implementation-2551-2590R-full-check: auth-route-logout-delegate-repair auth-route-logout-delegate-status auth-route-logout-delegate-check auth-route-logout-delegate-test
+	python3 -m compileall -q app/services app/api_v2_routers scripts tests
+	python3 -m ruff check scripts/auth_route_logout_delegate.py scripts/repair_auth_route_logout_delegate.py scripts/check_auth_route_logout_delegate.py scripts/patch_auth_route_logout_delegate_registry.py tests/unit/test_auth_route_logout_delegate.py app/api_v2_routers/auth.py --select F821,F401,F811,E402
+
+.PHONY: backend-implementation-2551-2590R2-full-check
+
+backend-implementation-2551-2590R2-full-check: auth-route-logout-delegate-repair auth-route-logout-delegate-status auth-route-logout-delegate-check auth-route-logout-delegate-test
+	python3 -m compileall -q app/services app/api_v2_routers scripts tests
+	python3 -m ruff check scripts/auth_route_logout_delegate.py scripts/repair_auth_route_logout_delegate.py scripts/check_auth_route_logout_delegate.py scripts/patch_auth_route_logout_delegate_registry.py tests/unit/test_auth_route_logout_delegate.py app/api_v2_routers/auth.py --select F821,F401,F811,E402
+
+.PHONY: auth-route-service-dependencies-repair auth-route-service-dependencies-status auth-route-service-dependencies-check auth-route-service-dependencies-test backend-implementation-2551-2590R3-full-check
+
+auth-route-service-dependencies-repair:
+	PYTHONPATH=. python3 scripts/repair_auth_route_service_dependencies.py
+
+auth-route-service-dependencies-status:
+	PYTHONPATH=. python3 -c "from scripts.auth_route_service_dependency_repair import write_status; s = write_status(); print(s.status)"
+
+auth-route-service-dependencies-check: auth-route-service-dependencies-repair
+	PYTHONPATH=. python3 scripts/check_auth_route_service_dependencies.py
+
+auth-route-service-dependencies-test:
+	pytest -c pytest.ini tests/unit/test_auth_route_service_dependency_repair.py tests/unit/test_auth_route_logout_delegate.py -q --no-cov --tb=short
+
+backend-implementation-2551-2590R3-full-check: auth-route-service-dependencies-repair auth-route-service-dependencies-status auth-route-service-dependencies-check auth-route-service-dependencies-test
+	python3 -m compileall -q app/services app/api_v2_routers scripts tests
+	python3 -m ruff check scripts/auth_route_service_dependency_repair.py scripts/repair_auth_route_service_dependencies.py scripts/check_auth_route_service_dependencies.py tests/unit/test_auth_route_service_dependency_repair.py tests/unit/test_auth_route_logout_delegate.py app/api_v2_routers/auth.py --select F821,F401,F811,E402
+
+.PHONY: auth-lifecycle-http-proof-status auth-lifecycle-http-proof-registry-patch auth-lifecycle-http-proof-check auth-lifecycle-http-proof-release-check auth-lifecycle-http-proof-test backend-implementation-2591-2630-full-check
+
+auth-lifecycle-http-proof-status:
+	PYTHONPATH=. python3 -c "from scripts.auth_lifecycle_http_proof import write_status; s = write_status(); print(s.status)"
+
+auth-lifecycle-http-proof-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_auth_lifecycle_http_proof_registry.py
+
+auth-lifecycle-http-proof-check: auth-lifecycle-http-proof-registry-patch
+	PYTHONPATH=. python3 scripts/check_auth_lifecycle_http_proof.py
+
+auth-lifecycle-http-proof-release-check:
+	PYTHONPATH=. python3 scripts/check_auth_lifecycle_http_proof.py --release
+
+auth-lifecycle-http-proof-test:
+	pytest -c pytest.ini tests/unit/test_auth_lifecycle_http_proof.py -q --no-cov --tb=short
+
+backend-implementation-2591-2630-full-check: auth-lifecycle-http-proof-status auth-lifecycle-http-proof-check auth-lifecycle-http-proof-test
+	python3 -m compileall -q app/services app/api_v2_routers scripts tests
+	python3 -m ruff check scripts/auth_lifecycle_http_proof.py scripts/check_auth_lifecycle_http_proof.py scripts/patch_auth_lifecycle_http_proof_registry.py tests/unit/test_auth_lifecycle_http_proof.py app/api_v2_routers/auth.py app/services/auth_application_service.py --select F821,F401,F811,E402
+
+.PHONY: auth-lifecycle-semantic-proof-status auth-lifecycle-semantic-proof-registry-patch auth-lifecycle-semantic-proof-check auth-lifecycle-semantic-proof-release-check auth-lifecycle-semantic-proof-test backend-implementation-2631-2670-full-check
+
+auth-lifecycle-semantic-proof-status:
+	PYTHONPATH=. python3 -c "from scripts.auth_lifecycle_semantic_proof import write_status; s = write_status(); print(s.status)"
+
+auth-lifecycle-semantic-proof-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_auth_lifecycle_semantic_proof_registry.py
+
+auth-lifecycle-semantic-proof-check: auth-lifecycle-semantic-proof-registry-patch
+	PYTHONPATH=. python3 scripts/check_auth_lifecycle_semantic_proof.py
+
+auth-lifecycle-semantic-proof-release-check:
+	PYTHONPATH=. python3 scripts/check_auth_lifecycle_semantic_proof.py --release
+
+auth-lifecycle-semantic-proof-test:
+	pytest -c pytest.ini tests/unit/test_auth_lifecycle_semantic_proof.py -q --no-cov --tb=short
+
+backend-implementation-2631-2670-full-check: auth-lifecycle-semantic-proof-status auth-lifecycle-semantic-proof-check auth-lifecycle-semantic-proof-test
+	python3 -m compileall -q app/services app/api_v2_routers scripts tests
+	python3 -m ruff check scripts/auth_lifecycle_semantic_proof.py scripts/check_auth_lifecycle_semantic_proof.py scripts/patch_auth_lifecycle_semantic_proof_registry.py tests/unit/test_auth_lifecycle_semantic_proof.py app/api_v2_routers/auth.py app/services/auth_application_service.py --select F821,F401,F811,E402
+
+.PHONY: auth-refresh-db-proof-status auth-refresh-db-proof-registry-patch auth-refresh-db-proof-check auth-refresh-db-proof-release-check auth-refresh-db-proof-test backend-implementation-2671-2710-full-check
+
+auth-refresh-db-proof-status:
+	PYTHONPATH=. python3 -c "from scripts.auth_refresh_db_proof import write_status; s = write_status(); print(s.status)"
+
+auth-refresh-db-proof-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_auth_refresh_db_proof_registry.py
+
+auth-refresh-db-proof-check: auth-refresh-db-proof-registry-patch
+	PYTHONPATH=. python3 scripts/check_auth_refresh_db_proof.py
+
+auth-refresh-db-proof-release-check:
+	PYTHONPATH=. python3 scripts/check_auth_refresh_db_proof.py --release
+
+auth-refresh-db-proof-test:
+	pytest -c pytest.ini tests/unit/test_auth_refresh_db_proof.py -q --no-cov --tb=short
+
+backend-implementation-2671-2710-full-check: auth-refresh-db-proof-status auth-refresh-db-proof-check auth-refresh-db-proof-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/auth_refresh_db_proof.py scripts/check_auth_refresh_db_proof.py scripts/patch_auth_refresh_db_proof_registry.py tests/unit/test_auth_refresh_db_proof.py tests/integration/test_auth_refresh_db_proof.py --select F821,F401,F811,E402
+
+.PHONY: auth-refresh-db-evidence-status auth-refresh-db-evidence-attach auth-refresh-db-evidence-registry-patch auth-refresh-db-evidence-check auth-refresh-db-evidence-release-check auth-refresh-db-evidence-test backend-implementation-2711-2750-full-check
+
+auth-refresh-db-evidence-status:
+	PYTHONPATH=. python3 -c "from scripts.auth_refresh_db_evidence_gate import write_status; s = write_status(); print(s.status)"
+
+auth-refresh-db-evidence-attach:
+	PYTHONPATH=. python3 scripts/attach_auth_refresh_db_evidence.py
+	PYTHONPATH=. python3 scripts/patch_auth_refresh_db_evidence_registry.py
+
+auth-refresh-db-evidence-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_auth_refresh_db_evidence_registry.py
+
+auth-refresh-db-evidence-check: auth-refresh-db-evidence-registry-patch
+	PYTHONPATH=. python3 scripts/check_auth_refresh_db_evidence_gate.py
+
+auth-refresh-db-evidence-release-check:
+	PYTHONPATH=. python3 scripts/check_auth_refresh_db_evidence_gate.py --release
+
+auth-refresh-db-evidence-test:
+	pytest -c pytest.ini tests/unit/test_auth_refresh_db_evidence_gate.py -q --no-cov --tb=short
+
+backend-implementation-2711-2750-full-check: auth-refresh-db-evidence-status auth-refresh-db-evidence-check auth-refresh-db-evidence-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/auth_refresh_db_evidence_gate.py scripts/attach_auth_refresh_db_evidence.py scripts/check_auth_refresh_db_evidence_gate.py scripts/patch_auth_refresh_db_evidence_registry.py tests/unit/test_auth_refresh_db_evidence_gate.py --select F821,F401,F811,E402
+
+.PHONY: auth-refresh-db-evidence-placeholder-repair-test backend-implementation-2711-2750R-full-check
+
+auth-refresh-db-evidence-placeholder-repair-test:
+	pytest -c pytest.ini tests/unit/test_auth_refresh_db_evidence_placeholder_repair.py tests/unit/test_auth_refresh_db_evidence_gate.py -q --no-cov --tb=short
+
+backend-implementation-2711-2750R-full-check: auth-refresh-db-evidence-status auth-refresh-db-evidence-check auth-refresh-db-evidence-placeholder-repair-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/auth_refresh_db_evidence_gate.py scripts/attach_auth_refresh_db_evidence.py scripts/check_auth_refresh_db_evidence_gate.py scripts/patch_auth_refresh_db_evidence_registry.py tests/unit/test_auth_refresh_db_evidence_gate.py tests/unit/test_auth_refresh_db_evidence_placeholder_repair.py --select F821,F401,F811,E402
+
+.PHONY: ci-auth-refresh-db-proof-workflow-status ci-auth-refresh-db-proof-workflow-registry-patch ci-auth-refresh-db-proof-workflow-check ci-auth-refresh-db-proof-workflow-test backend-implementation-2751-2790-full-check
+
+ci-auth-refresh-db-proof-workflow-status:
+	PYTHONPATH=. python3 -c "from scripts.ci_auth_refresh_db_proof_workflow import write_status; s = write_status(); print(s.status)"
+
+ci-auth-refresh-db-proof-workflow-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_ci_auth_refresh_db_proof_workflow_registry.py
+
+ci-auth-refresh-db-proof-workflow-check: ci-auth-refresh-db-proof-workflow-registry-patch
+	PYTHONPATH=. python3 scripts/check_ci_auth_refresh_db_proof_workflow.py
+
+ci-auth-refresh-db-proof-workflow-test:
+	pytest -c pytest.ini tests/unit/test_ci_auth_refresh_db_proof_workflow.py -q --no-cov --tb=short
+
+backend-implementation-2751-2790-full-check: ci-auth-refresh-db-proof-workflow-status ci-auth-refresh-db-proof-workflow-check ci-auth-refresh-db-proof-workflow-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/ci_auth_refresh_db_proof_workflow.py scripts/check_ci_auth_refresh_db_proof_workflow.py scripts/patch_ci_auth_refresh_db_proof_workflow_registry.py tests/unit/test_ci_auth_refresh_db_proof_workflow.py --select F821,F401,F811,E402
+
+.PHONY: final-gate-refresh-classifier-patch final-gate-refresh-classifier-status final-gate-refresh-classifier-check final-gate-refresh-classifier-test backend-implementation-2791-2830-full-check
+
+final-gate-refresh-classifier-patch:
+	PYTHONPATH=. python3 scripts/patch_final_gate_refresh_classifier_registry.py
+
+final-gate-refresh-classifier-status:
+	PYTHONPATH=. python3 -c "from scripts.final_gate_classifier import write_refresh; r = write_refresh(); print(r.beta_decision); print(r.beta_blocker_count)"
+
+final-gate-refresh-classifier-check: final-gate-refresh-classifier-patch
+	PYTHONPATH=. python3 scripts/check_final_gate_refresh_classifier.py
+
+final-gate-refresh-classifier-test:
+	pytest -c pytest.ini tests/unit/test_final_gate_refresh_classifier.py -q --no-cov --tb=short
+
+backend-implementation-2791-2830-full-check: final-gate-refresh-classifier-status final-gate-refresh-classifier-check final-gate-refresh-classifier-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/final_gate_classifier.py scripts/final_gate_refresh.py scripts/patch_final_gate_refresh_classifier_registry.py scripts/check_final_gate_refresh_classifier.py tests/unit/test_final_gate_refresh_classifier.py --select F821,F401,F811,E402
+
+.PHONY: popia-response-contract-no-skip-status popia-response-contract-no-skip-registry-patch popia-response-contract-no-skip-check popia-response-contract-no-skip-test backend-implementation-2831-2870-full-check
+
+popia-response-contract-no-skip-status:
+	PYTHONPATH=. python3 -c "from scripts.popia_response_contract_no_skips import write_status; s = write_status(run_tests=True); print(s.status)"
+
+popia-response-contract-no-skip-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_popia_response_contract_no_skip_registry.py
+
+popia-response-contract-no-skip-check: popia-response-contract-no-skip-registry-patch
+	PYTHONPATH=. python3 scripts/check_popia_response_contract_no_skips.py
+
+popia-response-contract-no-skip-test:
+	pytest -c pytest.ini tests/unit/test_popia_lifecycle_response_no_skip_proof.py -q --no-cov --tb=short -rs
+
+backend-implementation-2831-2870-full-check: popia-response-contract-no-skip-status popia-response-contract-no-skip-check popia-response-contract-no-skip-test
+	python3 -m compileall -q app/api_v2_routers app/services scripts tests
+	python3 -m ruff check scripts/popia_response_contract_no_skips.py scripts/check_popia_response_contract_no_skips.py scripts/check_popia_lifecycle_response_contract.py scripts/patch_popia_response_contract_no_skip_registry.py tests/unit/test_popia_lifecycle_response_no_skip_proof.py app/api_v2_routers/popia.py app/services/popia_consent_lifecycle_adapter.py --select F821,F401,F811,E402
+
+.PHONY: backend-implementation-2831-2870R-full-check
+
+backend-implementation-2831-2870R-full-check: popia-response-contract-no-skip-status popia-response-contract-no-skip-check popia-response-contract-no-skip-test
+	python3 -m compileall -q app/api_v2_routers app/services scripts tests
+	python3 -m ruff check scripts/popia_response_contract_no_skips.py scripts/check_popia_response_contract_no_skips.py scripts/check_popia_lifecycle_response_contract.py scripts/patch_popia_response_contract_no_skip_registry.py tests/unit/test_popia_lifecycle_response_no_skip_proof.py app/api_v2_routers/popia.py app/services/popia_consent_lifecycle_adapter.py --select F821,F401,F811,E402
+
+.PHONY: backend-implementation-2831-2870R3-full-check
+
+backend-implementation-2831-2870R3-full-check: popia-response-contract-no-skip-status popia-response-contract-no-skip-check popia-response-contract-no-skip-test
+	python3 -m compileall -q app/api_v2_routers app/services scripts tests
+	python3 -m ruff check scripts/popia_response_contract_no_skips.py scripts/check_popia_response_contract_no_skips.py scripts/check_popia_lifecycle_response_contract.py scripts/patch_popia_response_contract_no_skip_registry.py tests/unit/test_popia_lifecycle_response_no_skip_proof.py app/api_v2_routers/popia.py app/services/popia_consent_lifecycle_adapter.py --select F821,F401,F811,E402
+
+.PHONY: ci-evidence-acceptance-status ci-evidence-acceptance-registry-patch ci-evidence-acceptance-check ci-evidence-acceptance-test backend-implementation-2871-2910-full-check
+
+ci-evidence-acceptance-status:
+	PYTHONPATH=. python3 -c "from scripts.ci_evidence_acceptance import write_status; s = write_status(); print(s.status)"
+
+ci-evidence-acceptance-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_ci_evidence_registry.py
+
+ci-evidence-acceptance-check: ci-evidence-acceptance-registry-patch
+	PYTHONPATH=. python3 scripts/check_ci_evidence_acceptance.py
+
+ci-evidence-acceptance-test:
+	pytest -c pytest.ini tests/unit/test_ci_evidence_acceptance.py -q --no-cov --tb=short
+
+backend-implementation-2871-2910-full-check: ci-evidence-acceptance-status ci-evidence-acceptance-check ci-evidence-acceptance-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/ci_evidence_acceptance.py scripts/patch_ci_evidence_registry.py scripts/check_ci_evidence_acceptance.py tests/unit/test_ci_evidence_acceptance.py --select F821,F401,F811,E402
+
+.PHONY: staging-smoke-workflow-status staging-smoke-workflow-registry-patch staging-smoke-workflow-check staging-smoke-workflow-test backend-implementation-2911-2950-workflow-check
+
+staging-smoke-workflow-status:
+	PYTHONPATH=. python3 -c "from scripts.check_staging_smoke_workflow_config import write_status; s = write_status(); print(s.status)"
+
+staging-smoke-workflow-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_staging_smoke_workflow_registry.py
+
+staging-smoke-workflow-check: staging-smoke-workflow-registry-patch
+	PYTHONPATH=. python3 scripts/check_staging_smoke_workflow_config.py
+
+staging-smoke-workflow-test:
+	pytest -c pytest.ini tests/unit/test_staging_smoke_workflow_config.py -q --no-cov --tb=short
+
+backend-implementation-2911-2950-workflow-check: staging-smoke-workflow-status staging-smoke-workflow-check staging-smoke-workflow-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/staging_smoke_probe.py scripts/check_staging_smoke_workflow_config.py scripts/patch_staging_smoke_workflow_registry.py tests/unit/test_staging_smoke_workflow_config.py --select F821,F401,F811,E402
+
+.PHONY: staging-smoke-evidence-status staging-smoke-evidence-registry-patch staging-smoke-evidence-check staging-smoke-evidence-test backend-implementation-2911-2950-full-check
+
+staging-smoke-evidence-status:
+	PYTHONPATH=. python3 -c "from scripts.staging_smoke_evidence_acceptance import write_status; s = write_status(); print(s.status)"
+
+staging-smoke-evidence-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_staging_smoke_evidence_registry.py
+
+staging-smoke-evidence-check: staging-smoke-evidence-registry-patch
+	PYTHONPATH=. python3 scripts/check_staging_smoke_evidence_acceptance.py
+
+staging-smoke-evidence-test:
+	pytest -c pytest.ini tests/unit/test_staging_smoke_evidence_acceptance.py -q --no-cov --tb=short
+
+backend-implementation-2911-2950-full-check: staging-smoke-evidence-status staging-smoke-evidence-check staging-smoke-evidence-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/staging_smoke_evidence_acceptance.py scripts/patch_staging_smoke_evidence_registry.py scripts/check_staging_smoke_evidence_acceptance.py tests/unit/test_staging_smoke_evidence_acceptance.py --select F821,F401,F811,E402
+
+.PHONY: diag-deep-health-runtime-status diag-deep-health-runtime-registry-patch diag-deep-health-runtime-check diag-deep-health-runtime-test diag-deep-health-runtime-release-check backend-implementation-2951-2990-full-check
+
+diag-deep-health-runtime-status:
+	PYTHONPATH=. python3 -c "from scripts.diag_deep_health_runtime_evidence import write_status; s = write_status(run_http=bool(__import__('os').getenv('DIAG_DEEP_HEALTH_URL') or __import__('os').getenv('STAGING_DEEP_HEALTH_URL'))); print(s.status)"
+
+diag-deep-health-runtime-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_diag_deep_health_runtime_registry.py
+
+diag-deep-health-runtime-check:
+	PYTHONPATH=. python3 scripts/check_diag_deep_health_runtime.py
+
+diag-deep-health-runtime-test:
+	pytest -c pytest.ini tests/unit/test_diag_deep_health_runtime_evidence.py -q --no-cov --tb=short
+
+diag-deep-health-runtime-release-check: diag-deep-health-runtime-registry-patch
+	DIAG_DEEP_HEALTH_ACCEPT=1 PYTHONPATH=. python3 scripts/check_diag_deep_health_runtime.py
+
+backend-implementation-2951-2990-full-check: diag-deep-health-runtime-status diag-deep-health-runtime-check diag-deep-health-runtime-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/diag_deep_health_runtime_evidence.py scripts/patch_diag_deep_health_runtime_registry.py scripts/check_diag_deep_health_runtime.py tests/unit/test_diag_deep_health_runtime_evidence.py --select F821,F401,F811,E402
+
+.PHONY: audit-baseline-refresh-status audit-baseline-refresh-registry-patch audit-baseline-refresh-check audit-baseline-refresh-test backend-implementation-2991-3030-full-check
+
+audit-baseline-refresh-status:
+	PYTHONPATH=. python3 -c "from scripts.audit_baseline_refresh import write_status; s = write_status(); print(s.status); print(s.beta_decision); print(s.beta_blocker_count)"
+
+audit-baseline-refresh-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_audit_baseline_refresh_registry.py
+
+audit-baseline-refresh-check: audit-baseline-refresh-registry-patch
+	PYTHONPATH=. python3 scripts/check_audit_baseline_refresh.py
+
+audit-baseline-refresh-test:
+	pytest -c pytest.ini tests/unit/test_audit_baseline_refresh.py -q --no-cov --tb=short
+
+backend-implementation-2991-3030-full-check: audit-baseline-refresh-status audit-baseline-refresh-check audit-baseline-refresh-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/audit_baseline_refresh.py scripts/patch_audit_baseline_refresh_registry.py scripts/check_audit_baseline_refresh.py tests/unit/test_audit_baseline_refresh.py --select F821,F401,F811,E402
+
+.PHONY: db-migration-seed-repeatability-status db-migration-seed-repeatability-registry-patch db-migration-seed-repeatability-check db-migration-seed-repeatability-test backend-implementation-3071-3110-full-check
+
+db-migration-seed-repeatability-status:
+	PYTHONPATH=. python3 -c "from scripts.db_migration_seed_repeatability import write_status; s = write_status(); print(s.status); print(s.unique_irt_seed_rows)"
+
+db-migration-seed-repeatability-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_db_migration_seed_repeatability_registry.py
+
+db-migration-seed-repeatability-check:
+	PYTHONPATH=. python3 scripts/check_db_migration_seed_repeatability.py
+
+db-migration-seed-repeatability-test:
+	pytest -c pytest.ini tests/unit/test_db_migration_seed_repeatability.py -q --no-cov --tb=short
+
+backend-implementation-3071-3110-full-check: db-migration-seed-repeatability-status db-migration-seed-repeatability-registry-patch db-migration-seed-repeatability-check db-migration-seed-repeatability-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/db_migration_seed_repeatability.py scripts/patch_db_migration_seed_repeatability_registry.py scripts/check_db_migration_seed_repeatability.py tests/unit/test_db_migration_seed_repeatability.py --select F821,F401,F811,E402
+
+.PHONY: db-live-only-table-ownership-status db-live-only-table-ownership-registry-patch db-live-only-table-ownership-check db-live-only-table-ownership-test backend-implementation-3111-3150-full-check
+
+db-live-only-table-ownership-status:
+	PYTHONPATH=. python3 -c "from scripts.db_live_only_table_ownership import write_status; s = write_status(); print(s.status); print(f'{s.accepted_count}/{s.required_count}')"
+
+db-live-only-table-ownership-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_db_live_only_table_ownership_registry.py
+
+db-live-only-table-ownership-check:
+	PYTHONPATH=. python3 scripts/check_db_live_only_table_ownership.py
+
+db-live-only-table-ownership-test:
+	pytest -c pytest.ini tests/unit/test_db_live_only_table_ownership.py -q --no-cov --tb=short
+
+backend-implementation-3111-3150-full-check: db-live-only-table-ownership-status db-live-only-table-ownership-registry-patch db-live-only-table-ownership-check db-live-only-table-ownership-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/db_live_only_table_ownership.py scripts/patch_db_live_only_table_ownership_registry.py scripts/check_db_live_only_table_ownership.py tests/unit/test_db_live_only_table_ownership.py --select F821,F401,F811,E402
+
+.PHONY: diagnostic-item-bank-canonicality-status diagnostic-item-bank-canonicality-registry-patch diagnostic-item-bank-canonicality-check diagnostic-item-bank-canonicality-test backend-implementation-3151-3190-full-check
+
+diagnostic-item-bank-canonicality-status:
+	PYTHONPATH=. python3 -c "from scripts.diagnostic_item_bank_canonicality import write_status; s = write_status(); print(s.status)"
+
+diagnostic-item-bank-canonicality-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_diagnostic_item_bank_canonicality_registry.py
+
+diagnostic-item-bank-canonicality-check:
+	PYTHONPATH=. python3 scripts/check_diagnostic_item_bank_canonicality.py
+
+diagnostic-item-bank-canonicality-test:
+	pytest -c pytest.ini tests/unit/test_diagnostic_item_bank_canonicality.py -q --no-cov --tb=short
+
+backend-implementation-3151-3190-full-check: diagnostic-item-bank-canonicality-status diagnostic-item-bank-canonicality-registry-patch diagnostic-item-bank-canonicality-check diagnostic-item-bank-canonicality-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/diagnostic_item_bank_canonicality.py scripts/patch_diagnostic_item_bank_canonicality_registry.py scripts/check_diagnostic_item_bank_canonicality.py tests/unit/test_diagnostic_item_bank_canonicality.py --select F821,F401,F811,E402
+
+.PHONY: diagnostic-score-live-audit-status diagnostic-score-live-audit-registry-patch diagnostic-score-live-audit-check diagnostic-score-live-audit-test diagnostic-score-live-audit-release-check backend-implementation-3191-3230-full-check
+
+diagnostic-score-live-audit-status:
+	PYTHONPATH=. python3 -c "from scripts.diagnostic_score_live_audit import write_status; s = write_status(apply_seed=False); print(s.status); print(s.diagnostic_items_count); print(s.irt_items_count)"
+
+diagnostic-score-live-audit-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_diagnostic_score_live_audit_registry.py
+
+diagnostic-score-live-audit-check:
+	PYTHONPATH=. python3 scripts/check_diagnostic_score_live_audit.py
+
+diagnostic-score-live-audit-test:
+	python3 -m pytest -c pytest.ini tests/unit/test_diagnostic_score_live_audit.py -q --no-cov --tb=short
+
+diagnostic-score-live-audit-release-check: diagnostic-score-live-audit-registry-patch
+	DIAG_SCORE_ACCEPT=1 PYTHONPATH=. python3 scripts/check_diagnostic_score_live_audit.py
+
+backend-implementation-3191-3230-full-check: diagnostic-score-live-audit-status diagnostic-score-live-audit-check diagnostic-score-live-audit-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/diagnostic_score_live_audit.py scripts/patch_diagnostic_score_live_audit_registry.py scripts/check_diagnostic_score_live_audit.py tests/unit/test_diagnostic_score_live_audit.py --select F821,F401,F811,E402
+
+.PHONY: audit-write-runtime-status audit-write-runtime-registry-patch audit-write-runtime-check audit-write-runtime-test audit-write-runtime-release-check backend-implementation-3271-3310-full-check
+
+audit-write-runtime-status:
+	PYTHONPATH=. python3 -c "from scripts.audit_write_runtime_evidence import write_status; s = write_status(run_flow=False); print(s.status); print(s.audit_events_count_after); print(s.audit_events_delta)"
+
+audit-write-runtime-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_audit_write_runtime_registry.py
+
+audit-write-runtime-check:
+	PYTHONPATH=. python3 scripts/check_audit_write_runtime_evidence.py
+
+audit-write-runtime-test:
+	python3 -m pytest -c pytest.ini tests/unit/test_audit_write_runtime_evidence.py -q --no-cov --tb=short
+
+audit-write-runtime-release-check: audit-write-runtime-registry-patch
+	AUDIT_WRITE_ACCEPT=1 PYTHONPATH=. python3 scripts/check_audit_write_runtime_evidence.py
+
+backend-implementation-3271-3310-full-check: audit-write-runtime-status audit-write-runtime-registry-patch audit-write-runtime-check audit-write-runtime-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/audit_write_runtime_evidence.py scripts/patch_audit_write_runtime_registry.py scripts/check_audit_write_runtime_evidence.py tests/unit/test_audit_write_runtime_evidence.py --select F821,F401,F811,E402
+
+.PHONY: db-backup-restore-rollback-status db-backup-restore-rollback-registry-patch db-backup-restore-rollback-check db-backup-restore-rollback-test db-backup-restore-rollback-release-check backend-implementation-3311-3350-full-check
+
+db-backup-restore-rollback-status:
+	PYTHONPATH=. python3 -c "from scripts.db_backup_restore_rollback_evidence import write_status; s = write_status(run_drill=False); print(s['status']); print(s['dump_sha256']); print(s['source_table_count']); print(s['restore_table_count'])"
+
+db-backup-restore-rollback-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_db_backup_restore_rollback_registry.py
+
+db-backup-restore-rollback-check:
+	PYTHONPATH=. python3 scripts/check_db_backup_restore_rollback_evidence.py
+
+db-backup-restore-rollback-test:
+	pytest -c pytest.ini tests/unit/test_db_backup_restore_rollback_evidence.py -q --no-cov --tb=short
+
+db-backup-restore-rollback-release-check: db-backup-restore-rollback-registry-patch
+	DB_ROLLBACK_ACCEPT=1 PYTHONPATH=. python3 scripts/check_db_backup_restore_rollback_evidence.py
+
+backend-implementation-3311-3350-full-check: db-backup-restore-rollback-status db-backup-restore-rollback-registry-patch db-backup-restore-rollback-check db-backup-restore-rollback-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/db_backup_restore_rollback_evidence.py scripts/patch_db_backup_restore_rollback_registry.py scripts/check_db_backup_restore_rollback_evidence.py tests/unit/test_db_backup_restore_rollback_evidence.py --select F821,F401,F811,E402
+
+.PHONY: jwt-secret-rotation-status jwt-secret-rotation-registry-patch jwt-secret-rotation-check jwt-secret-rotation-test jwt-secret-rotation-release-check backend-implementation-3351-3390-full-check
+
+jwt-secret-rotation-status:
+	PYTHONPATH=. python3 -c "from scripts.jwt_secret_rotation_evidence import write_status; s = write_status(); print(s.status); print(s.access_current.fingerprint); print(s.refresh_current.fingerprint)"
+
+jwt-secret-rotation-registry-patch:
+	PYTHONPATH=. python3 scripts/patch_jwt_secret_rotation_registry.py
+
+jwt-secret-rotation-check:
+	PYTHONPATH=. python3 scripts/check_jwt_secret_rotation_evidence.py
+
+jwt-secret-rotation-test:
+	pytest -c pytest.ini tests/unit/test_jwt_secret_rotation_evidence.py -q --no-cov --tb=short
+
+jwt-secret-rotation-release-check: jwt-secret-rotation-registry-patch
+	JWT_EVIDENCE_ACCEPT=1 PYTHONPATH=. python3 scripts/check_jwt_secret_rotation_evidence.py
+
+backend-implementation-3351-3390-full-check: jwt-secret-rotation-status jwt-secret-rotation-registry-patch jwt-secret-rotation-check jwt-secret-rotation-test
+	python3 -m compileall -q scripts tests
+	python3 -m ruff check scripts/jwt_secret_rotation_evidence.py scripts/patch_jwt_secret_rotation_registry.py scripts/check_jwt_secret_rotation_evidence.py tests/unit/test_jwt_secret_rotation_evidence.py --select F821,F401,F811,E402
+
+# BEGIN EDUBOOST DOCS HOUSEKEEPING TARGETS
+.PHONY: docs-housekeeping-check docs-housekeeping-refresh docs-housekeeping-inventory docs-housekeeping-inventory-check docs-housekeeping-ratchet-check docs-housekeeping-strict-check docs-metadata-check docs-source-of-truth-check docs-links-check docs-links-full-check docs-claim-discipline-check docs-adr-number-check docs-stale-term-check docs-housekeeping-baseline-refresh docs-housekeeping-stage3-apply docs-housekeeping-stage3-check docs-stage3-strict-scope-check docs-workflow-consolidation-check docs-housekeeping-stage4-apply docs-stage4-strict-scope-check docs-housekeeping-stage4-check
+
+docs-housekeeping-check: docs-housekeeping-inventory-check docs-source-of-truth-check docs-metadata-check docs-claim-discipline-check docs-links-check docs-housekeeping-ratchet-check docs-adr-number-check docs-stale-term-check docs-housekeeping-stage3-check docs-housekeeping-stage4-check
+
+docs-housekeeping-inventory:
+	$(PYTHON) scripts/maintenance/audit_documentation_inventory.py --root . --out-json docs/generated/documentation_inventory.json --out-csv docs/generated/documentation_inventory.csv --out-findings docs/generated/documentation_findings.csv
+
+docs-housekeeping-refresh: docs-housekeeping-inventory
+
+docs-housekeeping-inventory-check:
+	$(PYTHON) scripts/maintenance/check_doc_inventory_reproducible.py --root .
+
+docs-housekeeping-ratchet-check:
+	$(PYTHON) scripts/maintenance/check_doc_housekeeping_ratchet.py --root .
+
+docs-source-of-truth-check:
+	$(PYTHON) scripts/maintenance/check_doc_source_of_truth.py --root .
+
+docs-metadata-check:
+	$(PYTHON) scripts/maintenance/check_doc_metadata.py --root . --canonical-only
+
+docs-links-check:
+	$(PYTHON) scripts/maintenance/check_doc_links.py --root . --changed-only
+
+docs-links-full-check:
+	$(PYTHON) scripts/maintenance/check_doc_links.py --root .
+
+docs-claim-discipline-check:
+	$(PYTHON) scripts/maintenance/check_doc_truth_claims.py --root . --canonical-only
+
+docs-adr-number-check:
+	$(PYTHON) scripts/maintenance/check_doc_adr_numbers.py --root .
+
+docs-stale-term-check:
+	$(PYTHON) scripts/maintenance/check_doc_stale_terms.py --root .
+
+docs-housekeeping-baseline-refresh: docs-housekeeping-refresh
+	$(PYTHON) scripts/maintenance/update_doc_housekeeping_baseline.py --root .
+	$(PYTHON) scripts/maintenance/check_doc_adr_numbers.py --root . --update
+	$(PYTHON) scripts/maintenance/check_doc_stale_terms.py --root . --update
+
+docs-housekeeping-strict-check: docs-source-of-truth-check docs-housekeeping-inventory-check
+	$(PYTHON) scripts/maintenance/check_doc_metadata.py --root . --strict-legacy
+	$(PYTHON) scripts/maintenance/check_doc_truth_claims.py --root . --strict-legacy
+	$(PYTHON) scripts/maintenance/check_doc_links.py --root .
+	$(PYTHON) scripts/maintenance/check_doc_adr_numbers.py --root . --strict
+	$(PYTHON) scripts/maintenance/check_doc_stale_terms.py --root . --strict
+# END EDUBOOST DOCS HOUSEKEEPING TARGETS
+
+# Stage 3 documentation housekeeping strict tranche.
+docs-housekeeping-stage3-apply:
+	python3 scripts/maintenance/apply_doc_stage3_cleanup.py --root .
+	python3 scripts/maintenance/check_doc_adr_numbers.py --root . --update
+
+docs-stage3-strict-scope-check:
+	python3 scripts/maintenance/check_doc_stage3_strict_scope.py --root .
+
+docs-workflow-consolidation-check:
+	python3 scripts/maintenance/check_doc_workflow_consolidation.py --root .
+
+docs-housekeeping-stage3-check: docs-stage3-strict-scope-check docs-workflow-consolidation-check
+	python3 scripts/maintenance/check_doc_adr_numbers.py --root . --strict
+
+
+
+# Stage 4 documentation deep-housekeeping strict tranche.
+docs-housekeeping-stage4-apply:
+	python3 scripts/maintenance/apply_doc_stage4_cleanup.py --root .
+
+docs-stage4-strict-scope-check:
+	python3 scripts/maintenance/check_doc_stage4_strict_scope.py --root .
+
+docs-housekeeping-stage4-check: docs-stage4-strict-scope-check docs-housekeeping-stage3-check
+	python3 scripts/maintenance/check_doc_adr_numbers.py --root . --strict

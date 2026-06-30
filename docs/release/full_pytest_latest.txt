@@ -1,0 +1,223 @@
+sssssssssssssssssssssssssss............................................. [  4%]
+........................................................................ [  8%]
+........................................................................ [ 12%]
+.............................................................FF......s.. [ 16%]
+...............FFFF..FFF................................................ [ 20%]
+........................................................................ [ 24%]
+....................................s................................... [ 28%]
+........................................................................ [ 32%]
+........................................................................ [ 36%]
+........................................................................ [ 40%]
+..............................................FF........................ [ 44%]
+........................................................................ [ 48%]
+........................................................................ [ 52%]
+........................................................................ [ 56%]
+........................................................................ [ 60%]
+........................................................................ [ 64%]
+........................................................................ [ 68%]
+........................................................................ [ 72%]
+........................................................................ [ 77%]
+........................................................................ [ 81%]
+........................................................................ [ 85%]
+........................................................................ [ 89%]
+..............................................................F......... [ 93%]
+........................................................................ [ 97%]
+................................................                         [100%]
+=================================== FAILURES ===================================
+_______________ test_api_main_compatibility_shim_import_contract _______________
+tests/test_entrypoints.py:123: in test_api_main_compatibility_shim_import_contract
+    shim_app = _load_app("app.api.main:app")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_entrypoints.py:31: in _load_app
+    module = import_module(module_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1310: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:488: in _call_with_frames_removed
+    ???
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1324: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'app.api'
+__________ test_api_main_compatibility_shim_exposes_health_and_ready ___________
+tests/test_entrypoints.py:133: in test_api_main_compatibility_shim_exposes_health_and_ready
+    app = _load_app("app.api.main:app")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_entrypoints.py:31: in _load_app
+    module = import_module(module_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1310: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:488: in _call_with_frames_removed
+    ???
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1324: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'app.api'
+___________________ test_popia_export_endpoint_auth_required ___________________
+tests/test_popia_end_to_end.py:15: in test_popia_export_endpoint_auth_required
+    assert response.status_code == 401 # Unauthorized
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   assert 404 == 401
+E    +  where 404 = <Response [404 Not Found]>.status_code
+----------------------------- Captured stdout call -----------------------------
+[2m2026-05-15T13:28:38.051696Z[0m [[32m[1minfo     [0m] [1mrequest_completed             [0m [[0m[1m[34mapp.core.middleware[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m0.1.0[0m [36mclient_ip[0m=[35mtestclient[0m [36mduration_ms[0m=[35m2.23[0m [36mmethod[0m=[35mPOST[0m [36mpath[0m=[35m/api/v2/popia/export[0m [36mrequest_id[0m=[35m91daeadc-8fbd-4964-85ac-d5eee0e6b95b[0m [36mstatus_code[0m=[35m404[0m
+[2m2026-05-15T13:28:38.059512Z[0m [[32m[1minfo     [0m] [1mHTTP Request: POST http://testserver/api/v2/popia/export "HTTP/1.1 404 Not Found"[0m [[0m[1m[34mhttpx[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m0.1.0[0m
+------------------------------ Captured log call -------------------------------
+INFO     app.core.middleware:middleware.py:71 {'request_id': '91daeadc-8fbd-4964-85ac-d5eee0e6b95b', 'method': 'POST', 'path': '/api/v2/popia/export', 'status_code': 404, 'duration_ms': 2.23, 'client_ip': 'testclient', 'event': 'request_completed', 'app_env': 'test', 'app_version': '0.1.0', 'level': 'info', 'logger': 'app.core.middleware', 'timestamp': '2026-05-15T13:28:38.051696Z'}
+INFO     httpx:_client.py:1026 HTTP Request: POST http://testserver/api/v2/popia/export "HTTP/1.1 404 Not Found"
+__________________ test_popia_erasure_endpoint_auth_required ___________________
+tests/test_popia_end_to_end.py:20: in test_popia_erasure_endpoint_auth_required
+    assert response.status_code == 401 # Unauthorized
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   assert 422 == 401
+E    +  where 422 = <Response [422 Unprocessable Entity]>.status_code
+----------------------------- Captured stdout call -----------------------------
+[2m2026-05-15T13:28:38.074382Z[0m [[32m[1minfo     [0m] [1mrequest_completed             [0m [[0m[1m[34mapp.core.middleware[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m0.1.0[0m [36mclient_ip[0m=[35mtestclient[0m [36mduration_ms[0m=[35m6.21[0m [36mmethod[0m=[35mPOST[0m [36mpath[0m=[35m/api/v2/popia/erasure[0m [36mrequest_id[0m=[35m2cba2a52-b79e-4ddd-b4e4-553c4eb5b257[0m [36mstatus_code[0m=[35m422[0m
+[2m2026-05-15T13:28:38.078942Z[0m [[32m[1minfo     [0m] [1mHTTP Request: POST http://testserver/api/v2/popia/erasure "HTTP/1.1 422 Unprocessable Entity"[0m [[0m[1m[34mhttpx[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m0.1.0[0m
+------------------------------ Captured log call -------------------------------
+INFO     app.core.middleware:middleware.py:71 {'request_id': '2cba2a52-b79e-4ddd-b4e4-553c4eb5b257', 'method': 'POST', 'path': '/api/v2/popia/erasure', 'status_code': 422, 'duration_ms': 6.21, 'client_ip': 'testclient', 'event': 'request_completed', 'app_env': 'test', 'app_version': '0.1.0', 'level': 'info', 'logger': 'app.core.middleware', 'timestamp': '2026-05-15T13:28:38.074382Z'}
+INFO     httpx:_client.py:1026 HTTP Request: POST http://testserver/api/v2/popia/erasure "HTTP/1.1 422 Unprocessable Entity"
+_________________________ test_consent_status_endpoint _________________________
+tests/test_popia_end_to_end.py:26: in test_consent_status_endpoint
+    assert response.status_code in (401, 200, 403)
+E   assert 404 in (401, 200, 403)
+E    +  where 404 = <Response [404 Not Found]>.status_code
+----------------------------- Captured stdout call -----------------------------
+[2m2026-05-15T13:28:38.088777Z[0m [[32m[1minfo     [0m] [1mrequest_completed             [0m [[0m[1m[34mapp.core.middleware[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m0.1.0[0m [36mclient_ip[0m=[35mtestclient[0m [36mduration_ms[0m=[35m2.56[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/api/v2/consent/status[0m [36mrequest_id[0m=[35mfa523284-101a-40f1-b74e-f79ae7e00183[0m [36mstatus_code[0m=[35m404[0m
+[2m2026-05-15T13:28:38.095057Z[0m [[32m[1minfo     [0m] [1mHTTP Request: GET http://testserver/api/v2/consent/status "HTTP/1.1 404 Not Found"[0m [[0m[1m[34mhttpx[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m0.1.0[0m
+------------------------------ Captured log call -------------------------------
+INFO     app.core.middleware:middleware.py:71 {'request_id': 'fa523284-101a-40f1-b74e-f79ae7e00183', 'method': 'GET', 'path': '/api/v2/consent/status', 'status_code': 404, 'duration_ms': 2.56, 'client_ip': 'testclient', 'event': 'request_completed', 'app_env': 'test', 'app_version': '0.1.0', 'level': 'info', 'logger': 'app.core.middleware', 'timestamp': '2026-05-15T13:28:38.088777Z'}
+INFO     httpx:_client.py:1026 HTTP Request: GET http://testserver/api/v2/consent/status "HTTP/1.1 404 Not Found"
+__________________________ test_audit_log_visibility ___________________________
+tests/test_popia_end_to_end.py:31: in test_audit_log_visibility
+    assert response.status_code == 401
+E   assert 404 == 401
+E    +  where 404 = <Response [404 Not Found]>.status_code
+----------------------------- Captured stdout call -----------------------------
+[2m2026-05-15T13:28:38.106585Z[0m [[32m[1minfo     [0m] [1mrequest_completed             [0m [[0m[1m[34mapp.core.middleware[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m0.1.0[0m [36mclient_ip[0m=[35mtestclient[0m [36mduration_ms[0m=[35m3.06[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/api/v2/popia/audit-logs[0m [36mrequest_id[0m=[35m1023881e-ec7e-424b-9088-9ee940f52478[0m [36mstatus_code[0m=[35m404[0m
+[2m2026-05-15T13:28:38.113373Z[0m [[32m[1minfo     [0m] [1mHTTP Request: GET http://testserver/api/v2/popia/audit-logs "HTTP/1.1 404 Not Found"[0m [[0m[1m[34mhttpx[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m0.1.0[0m
+------------------------------ Captured log call -------------------------------
+INFO     app.core.middleware:middleware.py:71 {'request_id': '1023881e-ec7e-424b-9088-9ee940f52478', 'method': 'GET', 'path': '/api/v2/popia/audit-logs', 'status_code': 404, 'duration_ms': 3.06, 'client_ip': 'testclient', 'event': 'request_completed', 'app_env': 'test', 'app_version': '0.1.0', 'level': 'info', 'logger': 'app.core.middleware', 'timestamp': '2026-05-15T13:28:38.106585Z'}
+INFO     httpx:_client.py:1026 HTTP Request: GET http://testserver/api/v2/popia/audit-logs "HTTP/1.1 404 Not Found"
+_________________ test_deletion_request_forbidden_non_guardian _________________
+tests/test_popia_negative.py:99: in test_deletion_request_forbidden_non_guardian
+    assert r.status_code == 403
+E   assert 422 == 403
+E    +  where 422 = <Response [422 Unprocessable Entity]>.status_code
+----------------------------- Captured stdout call -----------------------------
+[2m2026-05-15T13:28:38.159807Z[0m [[32m[1minfo     [0m] [1mrequest_completed             [0m [[0m[1m[34mapp.core.middleware[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m0.1.0[0m [36mclient_ip[0m=[35mtestclient[0m [36mduration_ms[0m=[35m5.61[0m [36mmethod[0m=[35mPOST[0m [36mpath[0m=[35m/v2/popia/deletion-request/learner-1[0m [36mrequest_id[0m=[35m3c2064fc-5f94-47c1-aa95-52b08bad5649[0m [36mstatus_code[0m=[35m422[0m
+[2m2026-05-15T13:28:38.164081Z[0m [[32m[1minfo     [0m] [1mHTTP Request: POST http://testserver/v2/popia/deletion-request/learner-1 "HTTP/1.1 422 Unprocessable Entity"[0m [[0m[1m[34mhttpx[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m0.1.0[0m
+------------------------------ Captured log call -------------------------------
+INFO     app.core.middleware:middleware.py:71 {'request_id': '3c2064fc-5f94-47c1-aa95-52b08bad5649', 'method': 'POST', 'path': '/v2/popia/deletion-request/learner-1', 'status_code': 422, 'duration_ms': 5.61, 'client_ip': 'testclient', 'event': 'request_completed', 'app_env': 'test', 'app_version': '0.1.0', 'level': 'info', 'logger': 'app.core.middleware', 'timestamp': '2026-05-15T13:28:38.159807Z'}
+INFO     httpx:_client.py:1026 HTTP Request: POST http://testserver/v2/popia/deletion-request/learner-1 "HTTP/1.1 422 Unprocessable Entity"
+_____________ test_deletion_request_conflict_if_already_requested ______________
+tests/test_popia_negative.py:112: in test_deletion_request_conflict_if_already_requested
+    assert r.status_code == 409
+E   assert 422 == 409
+E    +  where 422 = <Response [422 Unprocessable Entity]>.status_code
+----------------------------- Captured stdout call -----------------------------
+[2m2026-05-15T13:28:38.180257Z[0m [[32m[1minfo     [0m] [1mrequest_completed             [0m [[0m[1m[34mapp.core.middleware[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m0.1.0[0m [36mclient_ip[0m=[35mtestclient[0m [36mduration_ms[0m=[35m4.35[0m [36mmethod[0m=[35mPOST[0m [36mpath[0m=[35m/v2/popia/deletion-request/learner-1[0m [36mrequest_id[0m=[35mebb802a1-f0e5-4b58-8349-ab4f4d15d437[0m [36mstatus_code[0m=[35m422[0m
+[2m2026-05-15T13:28:38.184700Z[0m [[32m[1minfo     [0m] [1mHTTP Request: POST http://testserver/v2/popia/deletion-request/learner-1 "HTTP/1.1 422 Unprocessable Entity"[0m [[0m[1m[34mhttpx[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m0.1.0[0m
+------------------------------ Captured log call -------------------------------
+INFO     app.core.middleware:middleware.py:71 {'request_id': 'ebb802a1-f0e5-4b58-8349-ab4f4d15d437', 'method': 'POST', 'path': '/v2/popia/deletion-request/learner-1', 'status_code': 422, 'duration_ms': 4.35, 'client_ip': 'testclient', 'event': 'request_completed', 'app_env': 'test', 'app_version': '0.1.0', 'level': 'info', 'logger': 'app.core.middleware', 'timestamp': '2026-05-15T13:28:38.180257Z'}
+INFO     httpx:_client.py:1026 HTTP Request: POST http://testserver/v2/popia/deletion-request/learner-1 "HTTP/1.1 422 Unprocessable Entity"
+___________________ test_cancel_deletion_conflict_no_request ___________________
+tests/test_popia_negative.py:125: in test_cancel_deletion_conflict_no_request
+    assert r.status_code == 409
+E   assert 403 == 409
+E    +  where 403 = <Response [403 Forbidden]>.status_code
+----------------------------- Captured stdout call -----------------------------
+[2m2026-05-15T13:28:38.195206Z[0m [[32m[1minfo     [0m] [1mrequest_completed             [0m [[0m[1m[34mapp.core.middleware[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m0.1.0[0m [36mclient_ip[0m=[35mtestclient[0m [36mduration_ms[0m=[35m2.91[0m [36mmethod[0m=[35mPOST[0m [36mpath[0m=[35m/v2/popia/deletion-cancel/learner-1[0m [36mrequest_id[0m=[35m117451fb-6784-44e9-b052-e57126dd65c4[0m [36mstatus_code[0m=[35m403[0m
+[2m2026-05-15T13:28:38.200255Z[0m [[32m[1minfo     [0m] [1mHTTP Request: POST http://testserver/v2/popia/deletion-cancel/learner-1 "HTTP/1.1 403 Forbidden"[0m [[0m[1m[34mhttpx[0m][0m [36mapp_env[0m=[35mtest[0m [36mapp_version[0m=[35m0.1.0[0m
+------------------------------ Captured log call -------------------------------
+INFO     app.core.middleware:middleware.py:71 {'request_id': '117451fb-6784-44e9-b052-e57126dd65c4', 'method': 'POST', 'path': '/v2/popia/deletion-cancel/learner-1', 'status_code': 403, 'duration_ms': 2.91, 'client_ip': 'testclient', 'event': 'request_completed', 'app_env': 'test', 'app_version': '0.1.0', 'level': 'info', 'logger': 'app.core.middleware', 'timestamp': '2026-05-15T13:28:38.195206Z'}
+INFO     httpx:_client.py:1026 HTTP Request: POST http://testserver/v2/popia/deletion-cancel/learner-1 "HTTP/1.1 403 Forbidden"
+____________________ test_default_entrypoints_pass_contract ____________________
+tests/unit/test_check_runtime_entrypoints.py:53: in test_default_entrypoints_pass_contract
+    assert all(result.ok for result in results), results
+E   AssertionError: [EntrypointResult(spec='app.api_v2:app', ok=True, title='EduBoost SA V2', version='0.1.0', app_id=138135520281856, rou... SA V2', version='0.1.0', app_id=138135372859104, route_count=184, missing_routes=[], missing_prefixes=[], error=None)]
+E   assert False
+E    +  where False = all(<generator object test_default_entrypoints_pass_contract.<locals>.<genexpr> at 0x7da2262765c0>)
+________________________ test_runtime_check_cli_passes _________________________
+tests/unit/test_check_runtime_entrypoints.py:66: in test_runtime_check_cli_passes
+    assert result.returncode == 0, result.stderr
+E   AssertionError: /home/nkgolol/.local/lib/python3.12/site-packages/pydantic/_internal/_fields.py:160: UserWarning: Field "model_version" has conflict with protected namespace "model_".
+E     
+E     You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+E       warnings.warn(
+E     
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['/usr/bin/python3', '/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/scripts/check_runtime_entrypoint...You may be able to resolve this warning by setting `model_config[\'protected_namespaces\'] = ()`.\n  warnings.warn(\n').returncode
+________________________ test_schema_integrity_baseline ________________________
+tests/unit/test_schema_integrity.py:5: in test_schema_integrity_baseline
+    assert validate_schema_integrity() == 0
+E   assert 1 == 0
+E    +  where 1 = validate_schema_integrity()
+----------------------------- Captured stderr call -----------------------------
+Schema integrity validation failed:
+- parental_consents: missing constraints ['uq_consent_guardian_learner']
+=============================== warnings summary ===============================
+../../../../.local/lib/python3.12/site-packages/_hypothesis_pytestplugin.py:481
+  /home/nkgolol/.local/lib/python3.12/site-packages/_hypothesis_pytestplugin.py:481: UserWarning: Skipping collection of '.hypothesis' directory - this usually means you've explicitly set the `norecursedirs` pytest config option, replacing rather than extending the default ignores.
+    warnings.warn(
+
+../../../../.local/lib/python3.12/site-packages/pydantic/_internal/_fields.py:160
+  /home/nkgolol/.local/lib/python3.12/site-packages/pydantic/_internal/_fields.py:160: UserWarning: Field "model_version" has conflict with protected namespace "model_".
+  
+  You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+    warnings.warn(
+
+tests/unit/test_v2_repositories_full.py::TestLessonRepository::test_create_commits
+  /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/app/repositories/lesson_repository.py:31: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    db.add(lesson)
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/unit/test_v2_repositories_full.py::TestDiagnosticRepository::test_create_session_commits
+  /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/app/core/base.py:52: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    db.add(instance)
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/unit/test_v2_services.py::test_learner_service_returns_summary
+  /usr/lib/python3.12/unittest/mock.py:2188: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    def __init__(self, name, parent):
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_entrypoints.py::test_api_main_compatibility_shim_import_contract
+FAILED tests/test_entrypoints.py::test_api_main_compatibility_shim_exposes_health_and_ready
+FAILED tests/test_popia_end_to_end.py::test_popia_export_endpoint_auth_required
+FAILED tests/test_popia_end_to_end.py::test_popia_erasure_endpoint_auth_required
+FAILED tests/test_popia_end_to_end.py::test_consent_status_endpoint - assert ...
+FAILED tests/test_popia_end_to_end.py::test_audit_log_visibility - assert 404...
+FAILED tests/test_popia_negative.py::test_deletion_request_forbidden_non_guardian
+FAILED tests/test_popia_negative.py::test_deletion_request_conflict_if_already_requested
+FAILED tests/test_popia_negative.py::test_cancel_deletion_conflict_no_request
+FAILED tests/unit/test_check_runtime_entrypoints.py::test_default_entrypoints_pass_contract
+FAILED tests/unit/test_check_runtime_entrypoints.py::test_runtime_check_cli_passes
+FAILED tests/unit/test_schema_integrity.py::test_schema_integrity_baseline - ...
+12 failed, 1735 passed, 29 skipped, 5 warnings in 232.79s (0:03:52)

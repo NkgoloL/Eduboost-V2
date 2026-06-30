@@ -1,18 +1,20 @@
 """Audit routes for EduBoost V2."""
 
 from fastapi import APIRouter, Depends
+from app.core.envelope_route import EnvelopedRoute
+from app.api_v2_deps.auth import require_auth_context
+from app.core.security import get_current_user  # noqa: F401
 
 from app.services.audit_service import AuditService
-from app.core import providers
 
-router = APIRouter(prefix="/audit", tags=["V2 Audit"])
-
-
-@router.get("")
-async def get_audit_feed(limit: int = 20, audit: AuditService = Depends(providers.get_audit_service)):
-    return await audit.get_recent_events(limit=limit)
+router = APIRouter(route_class=EnvelopedRoute, prefix="/audit", tags=["V2 Audit"])
 
 
-@router.get("/feed")
-async def get_audit_feed_alias(limit: int = 20, audit: AuditService = Depends(providers.get_audit_service)):
-    return await audit.get_recent_events(limit=limit)
+@router.get("", dependencies=[Depends(require_auth_context)])
+async def get_audit_feed(limit: int = 20):
+    return await AuditService().get_recent_events(limit=limit)
+
+
+@router.get("/feed", dependencies=[Depends(require_auth_context)])
+async def get_audit_feed_alias(limit: int = 20):
+    return await AuditService().get_recent_events(limit=limit)

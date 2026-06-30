@@ -12,24 +12,7 @@ from datetime import datetime, timezone
 from sqlalchemy import select, text
 
 from app.core.database import AsyncSessionFactory
-from sqlalchemy.orm import declarative_base
-
-DummyBase = declarative_base()
-
-class ParentLearnerLink(DummyBase):
-    __tablename__ = 'parent_learner_link'
-    learner_id = None
-    parent_id = None
-
-class SubjectMastery(DummyBase):
-    __tablename__ = 'subject_mastery'
-    learner_id = None
-    subject_code = None
-    mastery_score = None
-    grade_level = None
-    knowledge_gaps = None
-
-
+from app.models import ParentalConsent, SubjectMastery
 
 class ParentReportRepository:
     """Repository for parent-report data access."""
@@ -38,9 +21,9 @@ class ParentReportRepository:
         """Return True if the guardian is linked to the learner."""
         async with AsyncSessionFactory() as session:
             result = await session.execute(
-                select(ParentLearnerLink).where(
-                    ParentLearnerLink.learner_id == learner_id,
-                    ParentLearnerLink.parent_id == guardian_id,
+                select(ParentalConsent).where(
+                    ParentalConsent.learner_id == learner_id,
+                    ParentalConsent.guardian_id == guardian_id,
                 )
             )
             return result.scalar_one_or_none() is not None

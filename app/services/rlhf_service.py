@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import uuid
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from typing import Any
 
 from app.services.pii_sweep import assert_no_pii
@@ -17,7 +17,7 @@ class RLHFService:
             "id": str(uuid.uuid4()),
             "format": "openai",
             "record_count": len(records),
-            "exported_at": datetime.now(UTC).isoformat(),
+            "exported_at": datetime.now(timezone.utc).isoformat(),
             "dataset_json": json.dumps(records),
         }
 
@@ -27,6 +27,6 @@ class RLHFService:
             "id": str(uuid.uuid4()),
             "format": "anthropic",
             "record_count": len(records),
-            "exported_at": datetime.now(UTC).isoformat(),
+            "exported_at": datetime.now(timezone.utc).isoformat(),
             "dataset_json": json.dumps(records),
         }

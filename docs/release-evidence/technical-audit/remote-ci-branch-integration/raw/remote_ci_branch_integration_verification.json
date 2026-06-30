@@ -1,0 +1,59 @@
+{
+  "errors": [],
+  "full_release_readiness_claimed": false,
+  "git": {
+    "branch": "codex/phase-06-e2e-playwright-authority",
+    "head": "2e39151e27",
+    "working_tree_clean": false
+  },
+  "phase": "08-remote-ci-branch-integration-authority",
+  "prior_evidence": {
+    "backend_fast_gate": {
+      "evidence_dir": "docs/release-evidence/technical-audit/backend-fast-gate",
+      "evidence_dir_present": true,
+      "evidence_index_present": true,
+      "verifier": "scripts/audit_remediation/verify_backend_fast_evidence.py",
+      "verifier_present": true
+    },
+    "ci_authority_workflow": {
+      "evidence_dir": "docs/release-evidence/technical-audit/ci-authority-workflow",
+      "evidence_dir_present": true,
+      "evidence_index_present": true,
+      "verifier": "scripts/audit_remediation/verify_ci_authority_workflow_evidence.py",
+      "verifier_present": true
+    },
+    "dependency_scan_enforcement": {
+      "evidence_dir": "docs/release-evidence/technical-audit/dependency-scan-enforcement",
+      "evidence_dir_present": true,
+      "evidence_index_present": true,
+      "verifier": "scripts/audit_remediation/verify_dependency_scan_evidence.py",
+      "verifier_present": true
+    },
+    "e2e_playwright_authority": {
+      "evidence_dir": "docs/release-evidence/technical-audit/e2e-playwright-authority",
+      "evidence_dir_present": true,
+      "evidence_index_present": true,
+      "verifier": "scripts/audit_remediation/verify_e2e_playwright_evidence.py",
+      "verifier_present": true
+    },
+    "frontend_tooling_authority": {
+      "evidence_dir": "docs/release-evidence/technical-audit/frontend-tooling-authority",
+      "evidence_dir_present": true,
+      "evidence_index_present": true,
+      "verifier": "scripts/audit_remediation/verify_frontend_tooling_evidence.py",
+      "verifier_present": true
+    },
+    "openapi_frontend_contract": {
+      "evidence_dir": "docs/release-evidence/technical-audit/openapi-frontend-contract",
+      "evidence_dir_present": true,
+      "evidence_index_present": true,
+      "verifier": "scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py",
+      "verifier_present": true
+    }
+  },
+  "remote_ci_run_claimed": false,
+  "valid": true,
+  "warnings": [
+    "working tree has uncommitted changes; collect final evidence from a clean tree"
+  ]
+}

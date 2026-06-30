@@ -1,0 +1,30 @@
+{
+  "journey": "learner_vertical",
+  "actor": {
+    "role": "learner",
+    "id": "learner-fixture-001"
+  },
+  "steps": [
+    "authenticated_session",
+    "onboarding",
+    "dashboard",
+    "diagnostic_start",
+    "diagnostic_submit",
+    "study_plan_recommendation",
+    "lesson_view",
+    "practice_or_assessment",
+    "progress_feedback"
+  ],
+  "required_api_domains": [
+    "learner-scoped reads",
+    "learner-scoped writes",
+    "diagnostic start and submit",
+    "lesson generation and lesson retrieval",
+    "progress/mastery retrieval"
+  ],
+  "denial_states": [
+    "unauthenticated session",
+    "unauthorized learner access",
+    "inactive or expired consent"
+  ]
+}

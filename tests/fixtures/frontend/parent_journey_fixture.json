@@ -1,0 +1,29 @@
+{
+  "journey": "parent_vertical",
+  "actor": {
+    "role": "parent",
+    "id": "parent-fixture-001"
+  },
+  "steps": [
+    "authenticated_session",
+    "parent_dashboard",
+    "linked_learner_select",
+    "progress_mastery_view",
+    "consent_status",
+    "trust_dashboard",
+    "data_export",
+    "data_rights_request"
+  ],
+  "required_api_domains": [
+    "parent-scoped reads",
+    "consent status and consent mutation",
+    "progress/mastery retrieval",
+    "error envelope parsing"
+  ],
+  "denial_states": [
+    "unauthenticated session",
+    "unauthorized parent access",
+    "missing learner link",
+    "revoked consent"
+  ]
+}

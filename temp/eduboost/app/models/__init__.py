@@ -1,1 +1,0 @@
-"""EduBoost SA package."""

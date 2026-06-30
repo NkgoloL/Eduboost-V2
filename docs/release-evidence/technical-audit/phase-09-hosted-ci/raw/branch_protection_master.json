@@ -1,0 +1,59 @@
+{
+  "allow_deletions": {
+    "enabled": false
+  },
+  "allow_force_pushes": {
+    "enabled": false
+  },
+  "allow_fork_syncing": {
+    "enabled": false
+  },
+  "api_meta": {
+    "command": "gh api repos/NkgoloL/Eduboost-V2/branches/master/protection",
+    "returncode": 0,
+    "stderr": ""
+  },
+  "available": true,
+  "block_creations": {
+    "enabled": false
+  },
+  "enforce_admins": {
+    "enabled": true,
+    "url": "https://api.github.com/repos/NkgoloL/Eduboost-V2/branches/master/protection/enforce_admins"
+  },
+  "lock_branch": {
+    "enabled": false
+  },
+  "required_conversation_resolution": {
+    "enabled": false
+  },
+  "required_linear_history": {
+    "enabled": false
+  },
+  "required_pull_request_reviews": {
+    "dismiss_stale_reviews": false,
+    "require_code_owner_reviews": false,
+    "require_last_push_approval": false,
+    "required_approving_review_count": 1,
+    "url": "https://api.github.com/repos/NkgoloL/Eduboost-V2/branches/master/protection/required_pull_request_reviews"
+  },
+  "required_signatures": {
+    "enabled": false,
+    "url": "https://api.github.com/repos/NkgoloL/Eduboost-V2/branches/master/protection/required_signatures"
+  },
+  "required_status_checks": {
+    "checks": [
+      {
+        "app_id": 15368,
+        "context": "Verify repository authority"
+      }
+    ],
+    "contexts": [
+      "Verify repository authority"
+    ],
+    "contexts_url": "https://api.github.com/repos/NkgoloL/Eduboost-V2/branches/master/protection/required_status_checks/contexts",
+    "strict": true,
+    "url": "https://api.github.com/repos/NkgoloL/Eduboost-V2/branches/master/protection/required_status_checks"
+  },
+  "url": "https://api.github.com/repos/NkgoloL/Eduboost-V2/branches/master/protection"
+}

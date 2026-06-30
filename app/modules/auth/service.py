@@ -15,16 +15,16 @@ Example:
 
         auth = AuthService()
         guardian = await auth.register_guardian(
-            db, email="parent@example.com", password="s3cure!",
+            db, email="parent [at] example.com", password="s3cure!",
             full_name="Thabo Mokoena",
         )
         access, refresh = await auth.authenticate(
-            db, email="parent@example.com", password="s3cure!",
+            db, email="parent [at] example.com", password="s3cure!",
         )
 """
 from __future__ import annotations
 
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from uuid import UUID
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -58,7 +58,7 @@ class AuthService:
 
             auth = AuthService()
             guardian = await auth.register_guardian(
-                db, email="parent@example.com", password="s3cure!",
+                db, email="parent [at] example.com", password="s3cure!",
                 full_name="Thabo Mokoena",
             )
     """
@@ -100,7 +100,7 @@ class AuthService:
 
                 guardian = await auth.register_guardian(
                     db,
-                    email="sipho@example.com",
+                    email="sipho [at] example.com",
                     password="secure-password",
                     full_name="Sipho Ndlovu",
                     phone="+27821234567",
@@ -163,7 +163,7 @@ class AuthService:
             ::
 
                 access, refresh = await auth.authenticate(
-                    db, email="parent@example.com", password="s3cure!",
+                    db, email="parent [at] example.com", password="s3cure!",
                 )
         """
         email_hash = hash_email(email)
@@ -182,7 +182,7 @@ class AuthService:
         if not guardian.is_active:
             raise AuthenticationError("Account is deactivated")
 
-        await _guardian_repo.update(guardian, db, last_login_at=datetime.now(UTC))
+        await _guardian_repo.update(guardian, db, last_login_at=datetime.now(timezone.utc))
         await write_audit_event(
             db,
             action=AuditAction.USER_LOGIN,

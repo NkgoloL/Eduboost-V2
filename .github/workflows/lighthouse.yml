@@ -1,0 +1,47 @@
+name: Lighthouse Staging Audit
+
+on:
+  workflow_dispatch:
+    inputs:
+      staging_url:
+        description: 'Staging URL to audit (e.g. https://staging.example.com)'
+        required: true
+
+jobs:
+  lighthouse:
+    name: Run Lighthouse against staging
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+
+      - name: Enable pnpm via Corepack
+        run: |
+          corepack enable
+          corepack prepare pnpm@9.14.4 --activate
+
+      - name: Install frontend deps
+        working-directory: ./app/frontend
+        run: pnpm install --frozen-lockfile
+
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v2
+
+      - name: Run Lighthouse
+        working-directory: ./app/frontend
+        env:
+          STAGING_URL: ${{ github.event.inputs.staging_url }}
+        run: |
+          mkdir -p ./tmp
+          pnpm run ci:lighthouse
+
+      - name: Upload Lighthouse artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: lighthouse-report
+          path: app/frontend/tmp/lh-staging*

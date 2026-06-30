@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "boundary": "first scoped deep-readiness runtime candidate; read-only helper only",
+  "selected_candidate": {
+    "id": "BCW-435-DEEP-READINESS-READONLY",
+    "area": "deep_readiness",
+    "checks": [
+      "database_connectivity",
+      "alembic_revision",
+      "required_table_presence",
+      "audit_persistence_capability",
+      "consent_persistence_capability"
+    ],
+    "approved_for_runtime_pr": true,
+    "destructive": false,
+    "requires_route_change": false,
+    "requires_schema_change": false,
+    "requires_database_write_in_test": false,
+    "allows_public_mutation": false
+  }
+}

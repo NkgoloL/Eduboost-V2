@@ -1,0 +1,85 @@
+{
+  "generated_at": "2026-06-12T17:35:53Z",
+  "results": [
+    {
+      "gate": "remote_ci",
+      "path": "docs/release/ci_evidence.json",
+      "original_status": "pending_remote_ci_evidence",
+      "repaired_status": "pending_remote_ci_evidence",
+      "evidence_source_type": "unknown",
+      "integrity_status": "pending_real_evidence",
+      "marker_invalid": false,
+      "source_trusted": false
+    },
+    {
+      "gate": "branch_protection",
+      "path": "docs/release/branch_protection_evidence.json",
+      "original_status": "pending_branch_protection_evidence",
+      "repaired_status": "pending_branch_protection_evidence",
+      "evidence_source_type": "unknown",
+      "integrity_status": "synthetic_invalid",
+      "marker_invalid": true,
+      "source_trusted": false
+    },
+    {
+      "gate": "content_gate",
+      "path": "docs/beta/beta_content_hard_gate.json",
+      "original_status": "pass",
+      "repaired_status": "pass",
+      "evidence_source_type": "educator_review_log",
+      "integrity_status": "valid",
+      "marker_invalid": false,
+      "source_trusted": true
+    },
+    {
+      "gate": "staging_smoke",
+      "path": "docs/release/staging_smoke_final_evidence.json",
+      "original_status": "synthetic_invalid",
+      "repaired_status": "synthetic_invalid",
+      "evidence_source_type": "unknown",
+      "integrity_status": "synthetic_invalid",
+      "marker_invalid": true,
+      "source_trusted": false
+    },
+    {
+      "gate": "backup_drill",
+      "path": "docs/release/backup_drill_evidence.json",
+      "original_status": "pending_backup_evidence",
+      "repaired_status": "pending_backup_evidence",
+      "evidence_source_type": "unknown",
+      "integrity_status": "pending_real_evidence",
+      "marker_invalid": false,
+      "source_trusted": false
+    },
+    {
+      "gate": "restore_drill",
+      "path": "docs/release/restore_drill_evidence.json",
+      "original_status": "synthetic_invalid",
+      "repaired_status": "synthetic_invalid",
+      "evidence_source_type": "unknown",
+      "integrity_status": "synthetic_invalid",
+      "marker_invalid": true,
+      "source_trusted": false
+    },
+    {
+      "gate": "rollback_drill",
+      "path": "docs/release/rollback_drill_evidence.json",
+      "original_status": "synthetic_invalid",
+      "repaired_status": "synthetic_invalid",
+      "evidence_source_type": "unknown",
+      "integrity_status": "synthetic_invalid",
+      "marker_invalid": true,
+      "source_trusted": false
+    },
+    {
+      "gate": "alertmanager_drill",
+      "path": "docs/release/alertmanager_drill_evidence.json",
+      "original_status": "synthetic_invalid",
+      "repaired_status": "synthetic_invalid",
+      "evidence_source_type": "unknown",
+      "integrity_status": "synthetic_invalid",
+      "marker_invalid": true,
+      "source_trusted": false
+    }
+  ]
+}

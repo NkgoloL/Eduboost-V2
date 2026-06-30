@@ -1,0 +1,905 @@
+{
+  "generated_at": "2026-06-27T02:18:44Z",
+  "rows": [
+    {
+      "path": "app/services/ai_operations.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/ai_safety.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/arq_import_compat.py",
+      "classification": "migration_or_compat_helper"
+    },
+    {
+      "path": "app/services/assessment_service_v2.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/audit_canonicalization_registry.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/audit_canonicalization_slice.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/audit_migration_orchestrator.py",
+      "classification": "migration_or_compat_helper"
+    },
+    {
+      "path": "app/services/audit_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/auth_application_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/auth_db_lifecycle_proof.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/auth_lifecycle_impl.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/auth_runtime_boundary.py",
+      "classification": "active_runtime_facade"
+    },
+    {
+      "path": "app/services/auth_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/auth_token_claims.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/auth_transactional_registration.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/backend_adapter_wiring_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/backend_candidate_execution_harness.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/backend_consolidation_runtime.py",
+      "classification": "active_runtime_facade"
+    },
+    {
+      "path": "app/services/backend_first_wiring_candidates.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/backend_runtime_integration_readiness.py",
+      "classification": "active_runtime_facade"
+    },
+    {
+      "path": "app/services/backend_runtime_wiring_cases.py",
+      "classification": "active_runtime_facade"
+    },
+    {
+      "path": "app/services/backend_runtime_wiring_preflight.py",
+      "classification": "active_runtime_facade"
+    },
+    {
+      "path": "app/services/batch_generation.py",
+      "classification": "deprecated_pending_callsite_removal"
+    },
+    {
+      "path": "app/services/caps_validator.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/consent.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/consent_compat.py",
+      "classification": "migration_or_compat_helper"
+    },
+    {
+      "path": "app/services/consent_expiry_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/consent_renewal_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/consent_runtime_compatibility.py",
+      "classification": "active_runtime_facade"
+    },
+    {
+      "path": "app/services/consent_runtime_orchestrator.py",
+      "classification": "active_runtime_facade"
+    },
+    {
+      "path": "app/services/consent_service.py",
+      "classification": "deprecated_pending_callsite_removal"
+    },
+    {
+      "path": "app/services/content_answer_key_verification.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_artifact_lifecycle.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_blueprint_validation.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_bulk_review.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_coverage_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/content_factory.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_factory_orchestrator.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_file_artifact_import.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_file_lesson_quality.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_file_promotion_readiness.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_file_review_workflow.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation/blueprint_generator.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation/diagnostic_generator.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation/generated_item_contract.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation/generated_lesson_contract.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation/lesson_generator.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation/prompt_payloads.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation/provider_factory.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation/providers/base.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation/providers/deterministic.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation/providers/llm.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation/scope_blueprint_generator.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation/scope_item_generator.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation/scope_lesson_generator.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation/scope_mcq_templates.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation/scope_study_plan_generator.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation/source_context.py",
+      "classification": "deprecated_pending_callsite_removal"
+    },
+    {
+      "path": "app/services/content_generation/study_plan_template_generator.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation/topic_map_source_context.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation_executor.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation_planner.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation_reporter.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation_run_lock.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_generation_runs.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_learner_read_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/content_production_promotion_executor.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_production_promotion_gate.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_production_read_verification.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_review_governance.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_review_queue.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_review_risk.py",
+      "classification": "deprecated_pending_callsite_removal"
+    },
+    {
+      "path": "app/services/content_reviewer_assignment.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_safety/lesson_contracts.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_safety/pii.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_schemas.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_scope_registry.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_seed_promotion.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_staging_preview_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/content_staging_read_verification.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_staging_readiness.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_staging_seed_executor.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_template_validation.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_validator.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/acquisition.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/answer_verification.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/caps_topic_map.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/claim_validation.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/corpus.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/coverage.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/evaluation.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/extraction.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/generation.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/graph.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/grounding.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/legacy.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/legacy_migration.py",
+      "classification": "migration_or_compat_helper"
+    },
+    {
+      "path": "app/services/curriculum/object_storage.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/phase02r_closure.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/phase02r_verification.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/retrieval.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/rights_policy.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/tutor_grounding.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum_expansion.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/data_subject_rights_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/deep_readiness_readonly.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/deep_readiness_route_contracts.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/deep_readiness_runtime.py",
+      "classification": "active_runtime_facade"
+    },
+    {
+      "path": "app/services/diagnostic.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/diagnostic_data_integrity.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/diagnostic_route_integrity.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/diagnostic_safety.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/diagnostic_scoring_snapshot.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/diagnostic_service_v2.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/diagnostic_session_integrity.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/diagnostic_session_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/diagnostic_transactional_response.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/email_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/ether.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/ether_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/etl/etl_pipeline.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/etl/etl_pipeline_v2.py",
+      "classification": "deprecated_pending_callsite_removal"
+    },
+    {
+      "path": "app/services/etl/etl_pipeline_v3_additions.py",
+      "classification": "deprecated_pending_callsite_removal"
+    },
+    {
+      "path": "app/services/etl/factory.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/executive.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/first_audit_runtime_wiring.py",
+      "classification": "active_runtime_facade"
+    },
+    {
+      "path": "app/services/first_consent_runtime_wiring.py",
+      "classification": "active_runtime_facade"
+    },
+    {
+      "path": "app/services/first_deep_readiness_runtime_wiring.py",
+      "classification": "active_runtime_facade"
+    },
+    {
+      "path": "app/services/fourth_estate.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/gamification_service_v2.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/irt_quality_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/job_dependency_factory.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/job_runtime_integrity.py",
+      "classification": "active_runtime_facade"
+    },
+    {
+      "path": "app/services/judiciary.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/jwt_keyring.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/launch_content_seed.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/learner_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/learner_tutor.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/lesson_authorization.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/lesson_context_builder.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/lesson_service_v2.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/lesson_transactional_completion.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/llm/gateway.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/llm/json_completion.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/llm_provider.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/parent_report_service_v2.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/pii_sweep.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/popia_consent_lifecycle_adapter.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/popia_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/popia_transactional_lifecycle.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/prompt_registry.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/quota_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/rlhf_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/runtime_audit_facade.py",
+      "classification": "active_runtime_facade"
+    },
+    {
+      "path": "app/services/runtime_consent_facade.py",
+      "classification": "active_runtime_facade"
+    },
+    {
+      "path": "app/services/safety_filter.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/semantic_retrieval/embedding.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/semantic_retrieval/evaluation.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/semantic_retrieval/generation_context.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/semantic_retrieval/indexing.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/semantic_retrieval/repository.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/semantic_retrieval/service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/semantic_retrieval/types.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/stripe_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/study_plan_service_v2.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/study_plan_updater.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/subscription_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/system_service_v2.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/telemetry.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/tutor_safety.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/auth/service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/modules/beta_launch/production_readiness_contracts.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/billing/production_readiness_contracts.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/consent/service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/modules/deployment/production_readiness_contracts.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/diagnostics/bias_review_router.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/diagnostics/calibration_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/modules/diagnostics/diagnostic_session_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/modules/diagnostics/irt_engine.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/diagnostics/irt_params.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/diagnostics/item_bank_pipeline.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/diagnostics/item_bank_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/modules/diagnostics/item_generator.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/diagnostics/item_selection_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/modules/diagnostics/item_validator.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/diagnostics/production_readiness_contracts.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/diagnostics/quality_scorer.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/diagnostics/service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/modules/diagnostics/session_recovery_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/modules/diagnostics/termination_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/modules/disaster_recovery/production_readiness_contracts.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/documentation_governance/production_readiness_contracts.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/final_release_blockers/production_readiness_contracts.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/jobs.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/learners/ether_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/modules/lessons/adaptive_remediation.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/lessons/answer_key_verifier.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/lessons/budget_guardrails.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/lessons/caps_topic_map_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/modules/lessons/lesson_coverage_router.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/lessons/lesson_generator.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/lessons/lesson_metrics.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/lessons/lesson_review_router.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/lessons/lesson_schema_v1.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/lessons/lesson_validator.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/lessons/lesson_variants.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/lessons/llm_gateway.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/lessons/llm_gateway_v2.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/lessons/mock_llm_provider.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/lessons/parent_explanation_mode.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/lessons/prompt_version_registry.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/lessons/service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/modules/lessons/teacher_insight_mode.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/notifications/production_readiness_contracts.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/observability/production_readiness_contracts.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/operations_support/production_readiness_contracts.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/practice/practice_generator.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/practice/router.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/practice/spaced_repetition_scheduler.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/progress/learning_velocity_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/modules/progress/mastery_model.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/progress/progress_timeline_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/modules/quality_gates/production_readiness_contracts.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/roadmap/production_readiness_contracts.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/security_posture/production_readiness_contracts.py",
+      "classification": "unclassified"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "phase": "02R",
+  "gate": "2R.5",
+  "decision": "approved_with_disclosed_self_review_exception",
+  "evidence_source_sha": "a31be31d7323f675b83430dc775084abc44f58ce",
+  "evidence_commit_sha": "747a1e6e75941cdc262e0b9a76f05df6aa655103",
+  "evidence_index_sha256": "9f53b3db290f4d560b6db6df8490b0b793d48e3ff9047eefec4354afa90bd615",
+  "decided_at": "2026-06-22T22:10:00+02:00",
+  "authorised_next_gate": "2R.6",
+  "self_review_exception": true,
+  "independence_status": "conflict_disclosed",
+  "risk_acceptance": "accepted_by_phase_owner",
+  "compensating_controls": [
+    "clean committed evidence source",
+    "separate evidence commit",
+    "raw SHA256 evidence hashes",
+    "semantic corpus manifest verification passed",
+    "retrieval projection validation passed",
+    "PostgreSQL static-readiness disclosure captured",
+    "strict transition verifier required before Gate 2R.6 start",
+    "post-transition CI required"
+  ],
+  "restriction": "This approval authorises controlled Gate 2R.6 execution only; it does not establish Phase 2R completion.",
+  "decisions": [
+    {
+      "role": "engineering_approver",
+      "review_domain": "implementation",
+      "decision": "approved",
+      "reviewer": "Nkgolo Lebelo",
+      "decided_at": "2026-06-22T22:10:00+02:00",
+      "immutable_reference": "747a1e6e75941cdc262e0b9a76f05df6aa655103"
+    },
+    {
+      "role": "rights_reviewer",
+      "review_domain": "rights",
+      "decision": "approved",
+      "reviewer": "Nkgolo Lebelo",
+      "decided_at": "2026-06-22T22:10:00+02:00",
+      "immutable_reference": "747a1e6e75941cdc262e0b9a76f05df6aa655103"
+    },
+    {
+      "role": "curriculum_reviewer",
+      "review_domain": "semantic_corpus_and_retrieval_readiness",
+      "decision": "approved",
+      "reviewer": "Nkgolo Lebelo",
+      "decided_at": "2026-06-22T22:10:00+02:00",
+      "immutable_reference": "747a1e6e75941cdc262e0b9a76f05df6aa655103"
+    },
+    {
+      "role": "evidence_custodian",
+      "review_domain": "evidence_integrity",
+      "decision": "approved",
+      "reviewer": "Nkgolo Lebelo",
+      "decided_at": "2026-06-22T22:10:00+02:00",
+      "immutable_reference": "747a1e6e75941cdc262e0b9a76f05df6aa655103"
+    },
+    {
+      "role": "release_manager",
+      "review_domain": "gate_transition",
+      "decision": "approved",
+      "reviewer": "Nkgolo Lebelo",
+      "decided_at": "2026-06-22T22:10:00+02:00",
+      "immutable_reference": "747a1e6e75941cdc262e0b9a76f05df6aa655103"
+    }
+  ]
+}

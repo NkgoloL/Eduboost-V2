@@ -1,0 +1,66 @@
+# .github/workflows/architecture-gates.yml
+# -----------------------------------------
+# Enforces import boundaries (§2.4) and router thinness (§2.3) on every PR.
+# These are required branch-protection checks.
+
+name: Architecture Gates
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+jobs:
+  lint-imports:
+    name: Import boundary check (import-linter)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+          cache: pip
+
+      - name: Install dev dependencies
+        run: pip install -r requirements/dev.txt
+
+      - name: Run import-linter
+        run: lint-imports
+        # Fails with exit 1 if any contract in .importlinter is violated.
+
+  audit-routers:
+    name: Router thinness audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+          cache: pip
+
+      - name: Install dev dependencies
+        run: pip install -r requirements/dev.txt
+
+      - name: Audit router thinness
+        run: python scripts/audit_router_thinness.py --strict
+        # --strict: treats complexity warnings as errors.
+
+  metaphor-check:
+    name: Metaphor layer inventory
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+
+      - name: Check for metaphor references in active code
+        run: python scripts/rename_metaphor_layers.py
+        # Exits 1 if any metaphor-layer names are found in engineering code.

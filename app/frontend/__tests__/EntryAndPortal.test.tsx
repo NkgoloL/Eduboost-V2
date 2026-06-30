@@ -8,14 +8,24 @@ import { BadgePopup, PlaceholderPanel, Sidebar } from "../src/components/eduboos
 import * as context from "../src/context/LearnerContext";
 import * as services from "../src/lib/api/services";
 
-vi.mock("recharts", () => ({
-  ResponsiveContainer: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-  BarChart: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-  Bar: () => <div>bar</div>,
-  XAxis: () => <div>x-axis</div>,
-  YAxis: () => <div>y-axis</div>,
-  Tooltip: () => <div>tooltip</div>,
-}));
+vi.mock("recharts", () => {
+  const ResponsiveContainer = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
+  const BarChart = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
+  const Bar = () => <div>bar</div>;
+  const XAxis = () => <div>x-axis</div>;
+  const YAxis = () => <div>y-axis</div>;
+  const Tooltip = () => <div>tooltip</div>;
+  return {
+    __esModule: true,
+    ResponsiveContainer,
+    BarChart,
+    Bar,
+    XAxis,
+    YAxis,
+    Tooltip,
+    default: { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip },
+  };
+});
 
 describe("Entry and portal components", () => {
   beforeEach(() => {
@@ -90,7 +100,10 @@ describe("Entry and portal components", () => {
         topic="Fractions"
         onBack={vi.fn()}
         onComplete={vi.fn()}
-        loading={false}
+        completionState={{ status: "idle" }}
+        xpAward={35}
+        offlineQueueEnabled
+        isCompleting={false}
       />
     );
     expect(screen.getAllByText("Fractions").length).toBeGreaterThan(0);
@@ -107,7 +120,10 @@ describe("Entry and portal components", () => {
         topic="Energy"
         onBack={vi.fn()}
         onComplete={vi.fn()}
-        loading
+        completionState={{ status: "pending", message: "Syncing" }}
+        xpAward={20}
+        offlineQueueEnabled={false}
+        isCompleting={true}
       />
     );
     expect(screen.getByText("Starter")).toBeInTheDocument();

@@ -1,20 +1,34 @@
 """Assessment routes for EduBoost V2."""
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from app.core.envelope_route import EnvelopedRoute
+from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.core.database import get_db
+from app.api_v2_deps.auth import AuthContext, require_auth_context
+from app.core.security import get_current_user  # noqa: F401
 from app.domain.api_v2_models import AssessmentAttemptRequest
-from app.services.assessment_service_v2 import AssessmentServiceV2
 
-router = APIRouter(prefix="/api/v2/assessments", tags=["V2 Assessments"])
+from app.services.assessment_service_v2 import AssessmentServiceV2
+from app.security.dependencies import require_active_consent_for_current_user, require_learner_write_for_current_user
+
+router = APIRouter(route_class=EnvelopedRoute, prefix="/assessments", tags=["V2 Assessments"])
 
 
 @router.get("")
-async def list_assessments(limit: int = 50, offset: int = 0):
+async def list_assessments(limit: int = 50, offset: int = 0, _: AuthContext = Depends(require_auth_context)):
     return await AssessmentServiceV2().list_assessments(limit=limit, offset=offset)
 
 
 @router.post("/{assessment_id}/attempt")
-async def submit_attempt(assessment_id: str, request: AssessmentAttemptRequest):
+async def submit_attempt(
+    assessment_id: str,
+    request: AssessmentAttemptRequest,
+    current_user: AuthContext = Depends(require_auth_context),
+    db: AsyncSession = Depends(get_db),
+):
+    require_learner_write_for_current_user(current_user, request.learner_id)
+    await require_active_consent_for_current_user(db, current_user, request.learner_id)
     return await AssessmentServiceV2().submit_attempt(
         assessment_id=assessment_id,
         learner_id=request.learner_id,

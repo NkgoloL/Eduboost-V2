@@ -1,0 +1,34 @@
+name: Incorrect content
+description: Report an incorrect answer, explanation, generated lesson, diagnostic item, or answer key.
+title: "[CONTENT ERROR]: "
+labels: [content, ai-safety, needs-triage]
+body:
+  - type: textarea
+    id: content-location
+    attributes:
+      label: Where did the incorrect content appear?
+      placeholder: "Lesson ID, diagnostic item ID, URL, screenshot description, or route. Do not include learner PII."
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is incorrect?
+      description: Explain the mathematical/scientific/pedagogical issue.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Expected correction
+      description: Provide the corrected answer/explanation if known.
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Minor typo/wording
+        - Incorrect explanation but low learner risk
+        - Incorrect answer/key
+        - Unsafe or misleading educational guidance
+        - Other

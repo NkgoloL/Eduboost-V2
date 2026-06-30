@@ -1,0 +1,3749 @@
+{
+  "generated_at": "2026-06-12T17:31:09Z",
+  "domains": {
+    "other": [
+      {
+        "path": "app/services/ai_safety.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentQualityScore"
+        ]
+      },
+      {
+        "path": "app/services/arq_import_compat.py",
+        "domain": "other",
+        "classification": "migration_or_compat_helper",
+        "classes": [
+          "RedisSettings"
+        ]
+      },
+      {
+        "path": "app/services/backend_adapter_wiring_service.py",
+        "domain": "other",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "AdapterWiringResult",
+          "InMemoryAuditSink"
+        ]
+      },
+      {
+        "path": "app/services/backend_candidate_execution_harness.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "HarnessResult"
+        ]
+      },
+      {
+        "path": "app/services/backend_consolidation_runtime.py",
+        "domain": "other",
+        "classification": "active_runtime_facade",
+        "classes": [
+          "CanonicalAuditWrite",
+          "ConstructorProbeResult"
+        ]
+      },
+      {
+        "path": "app/services/backend_first_wiring_candidates.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "WiringArea",
+          "WiringCandidate",
+          "WiringCandidatePayload"
+        ]
+      },
+      {
+        "path": "app/services/backend_runtime_integration_readiness.py",
+        "domain": "other",
+        "classification": "active_runtime_facade",
+        "classes": [
+          "IntegrationArea",
+          "RuntimeIntegrationDryRunResult",
+          "RuntimeIntegrationTarget"
+        ]
+      },
+      {
+        "path": "app/services/backend_runtime_wiring_cases.py",
+        "domain": "other",
+        "classification": "active_runtime_facade",
+        "classes": [
+          "WiringCaseResult"
+        ]
+      },
+      {
+        "path": "app/services/backend_runtime_wiring_preflight.py",
+        "domain": "other",
+        "classification": "active_runtime_facade",
+        "classes": [
+          "PreflightArea",
+          "RuntimeWiringPreflightResult"
+        ]
+      },
+      {
+        "path": "app/services/caps_validator.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "CAPSAlignmentValidator",
+          "CAPSValidationResult"
+        ]
+      },
+      {
+        "path": "app/services/content_artifact_lifecycle.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ArtifactStatusTransition",
+          "ContentArtifactLifecycleService"
+        ]
+      },
+      {
+        "path": "app/services/content_blueprint_validation.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "AssessmentBlueprintValidationService",
+          "BlueprintValidationResult"
+        ]
+      },
+      {
+        "path": "app/services/content_bulk_review.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "BulkReviewResult",
+          "ContentBulkReviewService"
+        ]
+      },
+      {
+        "path": "app/services/content_coverage_service.py",
+        "domain": "other",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "ContentCoverageService",
+          "CoverageGateLayerReport",
+          "DiagnosticCoverageRepository",
+          "LessonCoverageRepository"
+        ]
+      },
+      {
+        "path": "app/services/content_factory.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ArtifactProvenanceReport",
+          "ContentFactoryService",
+          "ContentValidationService",
+          "ETLProvenanceService",
+          "SourceGateResult"
+        ]
+      },
+      {
+        "path": "app/services/content_factory_orchestrator.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentFactoryOrchestrator",
+          "OrchestratorPlan"
+        ]
+      },
+      {
+        "path": "app/services/content_file_artifact_import.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentFileArtifactImportService",
+          "FileArtifactImportBatchPlan",
+          "FileArtifactImportPlan",
+          "FileArtifactImportRecord"
+        ]
+      },
+      {
+        "path": "app/services/content_file_promotion_readiness.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentFilePromotionReadinessService",
+          "PromotionReadinessResult"
+        ]
+      },
+      {
+        "path": "app/services/content_file_review_workflow.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentFileReviewWorkflowService",
+          "ScopeReviewEvidenceStatus"
+        ]
+      },
+      {
+        "path": "app/services/content_generation/blueprint_generator.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "BlueprintGenerationResult",
+          "BlueprintGenerator"
+        ]
+      },
+      {
+        "path": "app/services/content_generation/generated_item_contract.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "GeneratedItemQualityIssue",
+          "GeneratedItemQualityResult",
+          "GeneratedItemQualityValidator"
+        ]
+      },
+      {
+        "path": "app/services/content_generation/prompt_payloads.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "DiagnosticGenerationRequest",
+          "GeneratedDiagnosticItem",
+          "GeneratedLesson",
+          "GenerationRequestBase",
+          "LessonGenerationRequest",
+          "SourceContextChunk"
+        ]
+      },
+      {
+        "path": "app/services/content_generation/provider_factory.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "GenerationSettings"
+        ]
+      },
+      {
+        "path": "app/services/content_generation/providers/base.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentGenerationProvider"
+        ]
+      },
+      {
+        "path": "app/services/content_generation/providers/deterministic.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "DeterministicContentGenerationProvider"
+        ]
+      },
+      {
+        "path": "app/services/content_generation/providers/llm.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "LLMContentGenerationProvider"
+        ]
+      },
+      {
+        "path": "app/services/content_generation/scope_blueprint_generator.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ScopeBlueprintGenerator"
+        ]
+      },
+      {
+        "path": "app/services/content_generation/scope_item_generator.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ScopeItemGenerator"
+        ]
+      },
+      {
+        "path": "app/services/content_generation/scope_mcq_templates.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": []
+      },
+      {
+        "path": "app/services/content_generation/scope_study_plan_generator.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ScopeStudyPlanGenerator"
+        ]
+      },
+      {
+        "path": "app/services/content_generation/source_context.py",
+        "domain": "other",
+        "classification": "deprecated_legacy_service",
+        "classes": [
+          "ContentGenerationSourceContextService",
+          "SourceContextResult"
+        ]
+      },
+      {
+        "path": "app/services/content_generation/study_plan_template_generator.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "StudyPlanTemplateGenerationResult",
+          "StudyPlanTemplateGenerator"
+        ]
+      },
+      {
+        "path": "app/services/content_generation/topic_map_source_context.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "TopicMapSourceContext",
+          "TopicMapSourceContextBuilder",
+          "TopicMapSourceContextResult"
+        ]
+      },
+      {
+        "path": "app/services/content_generation_executor.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentGenerationExecutor",
+          "GenerationDisabledError",
+          "RunExecutionResult",
+          "TaskExecutionResult"
+        ]
+      },
+      {
+        "path": "app/services/content_generation_planner.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentGenerationPlanner",
+          "GenerationPlanResult"
+        ]
+      },
+      {
+        "path": "app/services/content_generation_reporter.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentGenerationReporter",
+          "GenerationReportData"
+        ]
+      },
+      {
+        "path": "app/services/content_generation_run_lock.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentGenerationRunLock",
+          "LockAcquisitionResult"
+        ]
+      },
+      {
+        "path": "app/services/content_generation_runs.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentGenerationRunService"
+        ]
+      },
+      {
+        "path": "app/services/content_production_promotion_executor.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentProductionPromotionExecutor",
+          "ProductionPromotionPage",
+          "ProductionPromotionPlan",
+          "ProductionPromotionResult",
+          "ProductionRollbackResult"
+        ]
+      },
+      {
+        "path": "app/services/content_production_promotion_gate.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentProductionPromotionGate",
+          "ProductionGateBlocker",
+          "ProductionGateReport",
+          "ProductionGateStatus"
+        ]
+      },
+      {
+        "path": "app/services/content_production_read_verification.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentProductionReadVerificationService",
+          "ProductionReadVerificationReport",
+          "ScopeProductionReadReport"
+        ]
+      },
+      {
+        "path": "app/services/content_review_queue.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ArtifactReviewBundle",
+          "ContentReviewQueueService",
+          "ReviewQueueItem",
+          "ReviewQueuePage",
+          "ReviewSummary"
+        ]
+      },
+      {
+        "path": "app/services/content_review_risk.py",
+        "domain": "other",
+        "classification": "deprecated_legacy_service",
+        "classes": [
+          "ContentReviewRiskService",
+          "ReviewRisk"
+        ]
+      },
+      {
+        "path": "app/services/content_reviewer_assignment.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentReviewerAssignmentService",
+          "ReviewerWorkload"
+        ]
+      },
+      {
+        "path": "app/services/content_safety/pii.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "PIIFinding"
+        ]
+      },
+      {
+        "path": "app/services/content_scope_registry.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentScopeRegistry",
+          "ContentScopeRegistryError"
+        ]
+      },
+      {
+        "path": "app/services/content_seed_promotion.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentSeedPromotionService",
+          "GateResult"
+        ]
+      },
+      {
+        "path": "app/services/content_staging_preview_service.py",
+        "domain": "other",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "ContentStagingPreviewService",
+          "StagingArtifactPreview",
+          "StagingCapsRefPreview",
+          "StagingPreviewReport"
+        ]
+      },
+      {
+        "path": "app/services/content_staging_read_verification.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentStagingReadVerificationService",
+          "ScopeStagingReadReport",
+          "StagingReadVerificationReport"
+        ]
+      },
+      {
+        "path": "app/services/content_staging_readiness.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "AllScopeStagingVerificationReport",
+          "BlockerSeverity",
+          "ContentStagingReadinessService",
+          "LayerReadinessSummary",
+          "ScopeBlocker",
+          "ScopeStagingVerificationReport",
+          "StagingReadinessStatus"
+        ]
+      },
+      {
+        "path": "app/services/content_staging_seed_executor.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ContentStagingSeedExecutor",
+          "MissingForeignKeyError",
+          "SeedableArtifact",
+          "SkippedArtifact",
+          "StagingRollbackResult",
+          "StagingSeedItemResult",
+          "StagingSeedPlan",
+          "StagingSeedRunPage",
+          "StagingSeedRunResult"
+        ]
+      },
+      {
+        "path": "app/services/content_template_validation.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "StudyPlanTemplateValidationResult",
+          "StudyPlanTemplateValidationService"
+        ]
+      },
+      {
+        "path": "app/services/curriculum/caps_topic_map.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "CAPSTopic",
+          "CAPSTopicMap"
+        ]
+      },
+      {
+        "path": "app/services/curriculum/coverage.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "CurriculumCoverageAnalyzer",
+          "CurriculumGap"
+        ]
+      },
+      {
+        "path": "app/services/data_subject_rights_service.py",
+        "domain": "other",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "DataSubjectRightsService"
+        ]
+      },
+      {
+        "path": "app/services/deep_readiness_readonly.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ReadinessCheckResult",
+          "ReadinessCheckSpec",
+          "ReadinessSeverity"
+        ]
+      },
+      {
+        "path": "app/services/deep_readiness_route_contracts.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "DeepReadinessRouteCheck",
+          "ReadinessCheckMode"
+        ]
+      },
+      {
+        "path": "app/services/deep_readiness_runtime.py",
+        "domain": "other",
+        "classification": "active_runtime_facade",
+        "classes": [
+          "DeepReadinessCheckResult",
+          "DeepReadinessRuntimeResult"
+        ]
+      },
+      {
+        "path": "app/services/email_service.py",
+        "domain": "other",
+        "classification": "duplicate_domain_service",
+        "classes": []
+      },
+      {
+        "path": "app/services/ether.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": []
+      },
+      {
+        "path": "app/services/ether_service.py",
+        "domain": "other",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "OnboardingResponse"
+        ]
+      },
+      {
+        "path": "app/services/etl/etl_pipeline.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ChunkType",
+          "Chunker",
+          "Document",
+          "DocumentChunk",
+          "DocumentSource",
+          "DocumentType",
+          "EduboostETL",
+          "ExtractionResult",
+          "Extractor",
+          "IngestRequest",
+          "LicenseStatus",
+          "Normalizer",
+          "ProcessingJob",
+          "ProcessingStatus",
+          "QualityCheckResult",
+          "QualityValidator",
+          "SourceType"
+        ]
+      },
+      {
+        "path": "app/services/etl/etl_pipeline_v2.py",
+        "domain": "other",
+        "classification": "deprecated_legacy_service",
+        "classes": [
+          "DocumentVersion",
+          "EduboostETLv2",
+          "FeedbackRecord",
+          "MonitoringReport",
+          "TrainingDataset",
+          "TrainingExample"
+        ]
+      },
+      {
+        "path": "app/services/etl/etl_pipeline_v3_additions.py",
+        "domain": "other",
+        "classification": "deprecated_legacy_service",
+        "classes": [
+          "AuditEntry",
+          "BulkReviewResult",
+          "ContaminationReport",
+          "DatasetSplitResult",
+          "EduboostETLv3"
+        ]
+      },
+      {
+        "path": "app/services/etl/factory.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": []
+      },
+      {
+        "path": "app/services/executive.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": []
+      },
+      {
+        "path": "app/services/first_deep_readiness_runtime_wiring.py",
+        "domain": "other",
+        "classification": "active_runtime_facade",
+        "classes": [
+          "DeepReadinessRuntimePlan",
+          "FirstDeepReadinessRuntimeCandidate"
+        ]
+      },
+      {
+        "path": "app/services/fourth_estate.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": []
+      },
+      {
+        "path": "app/services/job_dependency_factory.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": []
+      },
+      {
+        "path": "app/services/job_runtime_integrity.py",
+        "domain": "other",
+        "classification": "active_runtime_facade",
+        "classes": [
+          "JobRuntimeIntegrityError"
+        ]
+      },
+      {
+        "path": "app/services/judiciary.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": []
+      },
+      {
+        "path": "app/services/jwt_keyring.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "JWTKey",
+          "JWTKeyringError"
+        ]
+      },
+      {
+        "path": "app/services/launch_content_seed.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": []
+      },
+      {
+        "path": "app/services/llm/gateway.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "CanonicalLLMGateway",
+          "DeterministicMockProvider",
+          "LLMGatewayMetadata",
+          "LLMGatewayRequest",
+          "LLMGatewayResponse",
+          "LLMProvider",
+          "ProviderHealth",
+          "ProviderPolicy",
+          "ProviderResult",
+          "TokenUsage"
+        ]
+      },
+      {
+        "path": "app/services/llm/json_completion.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "JsonCompletionError",
+          "JsonCompletionGateway",
+          "JsonCompletionResponse"
+        ]
+      },
+      {
+        "path": "app/services/parent_report_service_v2.py",
+        "domain": "other",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "ParentReportServiceV2"
+        ]
+      },
+      {
+        "path": "app/services/pii_sweep.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "PIIFinding",
+          "PIIScanner",
+          "PIISweepError",
+          "SweepResult"
+        ]
+      },
+      {
+        "path": "app/services/quota_service.py",
+        "domain": "other",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "QuotaExceededError",
+          "QuotaService",
+          "SemanticCacheService"
+        ]
+      },
+      {
+        "path": "app/services/rlhf_service.py",
+        "domain": "other",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "RLHFService"
+        ]
+      },
+      {
+        "path": "app/services/stripe_service.py",
+        "domain": "other",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "StripeService"
+        ]
+      },
+      {
+        "path": "app/services/study_plan_service_v2.py",
+        "domain": "other",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "StudyPlanServiceV2",
+          "_MemoryStudyPlanRepository",
+          "_MissingLearnerRepository"
+        ]
+      },
+      {
+        "path": "app/services/study_plan_updater.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "StudyPlanUpdater"
+        ]
+      },
+      {
+        "path": "app/services/subscription_service.py",
+        "domain": "other",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "SubscriptionService"
+        ]
+      },
+      {
+        "path": "app/services/system_service_v2.py",
+        "domain": "other",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "SystemServiceV2"
+        ]
+      },
+      {
+        "path": "app/services/telemetry.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "TelemetryService"
+        ]
+      },
+      {
+        "path": "app/modules/beta_launch/production_readiness_contracts.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "AcceptanceStatus",
+          "BetaCohortPlan",
+          "BetaEntryCriterion",
+          "BetaExitCriterion",
+          "BetaLaunchDecision",
+          "BetaStage",
+          "FeedbackIntakeRule",
+          "FeedbackSeverity",
+          "KnownIssue",
+          "LaunchDecision",
+          "LaunchReadinessReview",
+          "ProductScopeArea",
+          "ProductScopeItem",
+          "StagingAcceptanceCriterion"
+        ]
+      },
+      {
+        "path": "app/modules/deployment/production_readiness_contracts.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ArtifactProvenance",
+          "DeploymentGate",
+          "DeploymentStrategy",
+          "DockerImageContract",
+          "EnvironmentContract",
+          "EnvironmentName",
+          "InfrastructureProviderDecision",
+          "PipelineCheck",
+          "PipelineStage",
+          "RollbackContract",
+          "RuntimeRole"
+        ]
+      },
+      {
+        "path": "app/modules/disaster_recovery/production_readiness_contracts.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "BackupFrequency",
+          "BackupManifestEntry",
+          "BackupPolicy",
+          "BackupProviderDecision",
+          "BackupScope",
+          "DisasterRecoveryPlan",
+          "DrillOutcome",
+          "RecoveryObjective",
+          "RecoveryTier",
+          "RestoreDrillEvidence",
+          "RestoreEnvironment",
+          "RestoreRunbook"
+        ]
+      },
+      {
+        "path": "app/modules/documentation_governance/production_readiness_contracts.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "AdrRecord",
+          "AdrStatus",
+          "ClaimConfidence",
+          "ClaimDisciplineRule",
+          "ClaimRecord",
+          "ClaimType",
+          "DocumentationAudience",
+          "DocumentationGovernanceDecision",
+          "DocumentationInventoryEntry",
+          "DocumentationReviewGate",
+          "DocumentationStatus",
+          "ReleaseNoteEntry",
+          "ReleaseNoteType",
+          "StaleDocumentationFinding"
+        ]
+      },
+      {
+        "path": "app/modules/final_release_blockers/production_readiness_contracts.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "BlockerSeverity",
+          "BlockerStatus",
+          "ExternalManualDependency",
+          "FinalDecision",
+          "FinalGoNoGoChecklist",
+          "FinalReleaseBlockerDecision",
+          "LaunchAuthority",
+          "ReleaseBlockerClosureRecord",
+          "ReleaseBlockerDomain",
+          "ReleaseBlockerDomainSummary",
+          "ReleaseBlockerItem",
+          "ReleaseWaiverRule"
+        ]
+      },
+      {
+        "path": "app/modules/jobs.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "WorkerSettings"
+        ]
+      },
+      {
+        "path": "app/modules/observability/production_readiness_contracts.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "AlertRule",
+          "AlertSeverity",
+          "DashboardDefinition",
+          "IncidentRoute",
+          "LogEventContract",
+          "MetricDefinition",
+          "ObservabilityProviderDecision",
+          "ServiceTier",
+          "SloDefinition",
+          "TelemetryRetentionPolicy",
+          "TelemetrySignal",
+          "TraceSpanContract"
+        ]
+      },
+      {
+        "path": "app/modules/operations_support/production_readiness_contracts.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "CustomerImpact",
+          "IncidentClassificationRule",
+          "IncidentRecord",
+          "IncidentSeverity",
+          "IncidentStatus",
+          "OnCallEscalationPolicy",
+          "OperationalHandoverChecklist",
+          "OperationalRole",
+          "OperationalRunbook",
+          "OperationsSupportDecision",
+          "PostIncidentReview",
+          "StatusCommunicationTemplate",
+          "SupportChannel",
+          "SupportPriority",
+          "SupportSla"
+        ]
+      },
+      {
+        "path": "app/modules/practice/practice_generator.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "PracticeGenerator"
+        ]
+      },
+      {
+        "path": "app/modules/practice/router.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "PracticeResponseRequest",
+          "PracticeSessionRequest"
+        ]
+      },
+      {
+        "path": "app/modules/practice/spaced_repetition_scheduler.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "SpacedRepetitionScheduler",
+          "SpacedReviewPlan"
+        ]
+      },
+      {
+        "path": "app/modules/progress/learning_velocity_service.py",
+        "domain": "other",
+        "classification": "canonical_domain_service",
+        "classes": [
+          "LearningVelocityService"
+        ]
+      },
+      {
+        "path": "app/modules/progress/mastery_model.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "MasteryLabel"
+        ]
+      },
+      {
+        "path": "app/modules/progress/progress_timeline_service.py",
+        "domain": "other",
+        "classification": "canonical_domain_service",
+        "classes": [
+          "ProgressTimelineService"
+        ]
+      },
+      {
+        "path": "app/modules/quality_gates/production_readiness_contracts.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "CoverageThreshold",
+          "DefectSeverity",
+          "DefectTriageRule",
+          "EvidenceType",
+          "QualityGate",
+          "QualityGateStatus",
+          "ReleaseChecklist",
+          "ReleaseEvidenceItem",
+          "ReleaseStage",
+          "TestLayer",
+          "TestSuiteContract",
+          "TestingStrategyDecision"
+        ]
+      },
+      {
+        "path": "app/modules/roadmap/production_readiness_contracts.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "BaselineBoundary",
+          "BaselineBoundaryItem",
+          "DeferredScopeItem",
+          "DependencyType",
+          "GraduationCriterion",
+          "PostBaselineRisk",
+          "PriorityLevel",
+          "RoadmapCategory",
+          "RoadmapDependency",
+          "RoadmapGovernanceDecision",
+          "RoadmapHorizon",
+          "RoadmapItem",
+          "RoadmapReviewCadence",
+          "RoadmapStatus"
+        ]
+      },
+      {
+        "path": "app/modules/security_posture/production_readiness_contracts.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "ControlStatus",
+          "IncidentSeverity",
+          "RiskAcceptanceRecord",
+          "SecretHygieneRule",
+          "SecurityControl",
+          "SecurityDomain",
+          "SecurityIncidentRunbook",
+          "SecurityPostureDecision",
+          "SecurityTestContract",
+          "SecurityTestType",
+          "SupplyChainControl",
+          "ThreatCategory",
+          "ThreatModelEntry",
+          "VulnerabilityPolicy",
+          "VulnerabilitySeverity"
+        ]
+      }
+    ],
+    "assessment": [
+      {
+        "path": "app/services/assessment_service_v2.py",
+        "domain": "assessment",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "AssessmentServiceV2"
+        ]
+      }
+    ],
+    "audit": [
+      {
+        "path": "app/services/audit_canonicalization_registry.py",
+        "domain": "audit",
+        "classification": "unclassified",
+        "classes": [
+          "AuditMigrationCandidate",
+          "MigrationStatus"
+        ]
+      },
+      {
+        "path": "app/services/audit_canonicalization_slice.py",
+        "domain": "audit",
+        "classification": "unclassified",
+        "classes": [
+          "CanonicalAuditCommand"
+        ]
+      },
+      {
+        "path": "app/services/audit_migration_orchestrator.py",
+        "domain": "audit",
+        "classification": "migration_or_compat_helper",
+        "classes": [
+          "AuditMigrationEnvelope"
+        ]
+      },
+      {
+        "path": "app/services/audit_service.py",
+        "domain": "audit",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "AuditService"
+        ]
+      },
+      {
+        "path": "app/services/first_audit_runtime_wiring.py",
+        "domain": "audit",
+        "classification": "active_runtime_facade",
+        "classes": [
+          "FirstAuditRuntimeCandidate",
+          "FirstAuditRuntimePayload",
+          "FirstAuditRuntimeRecordResult",
+          "InMemoryFirstAuditRuntimeSink"
+        ]
+      },
+      {
+        "path": "app/services/runtime_audit_facade.py",
+        "domain": "audit",
+        "classification": "active_runtime_facade",
+        "classes": [
+          "AuditRecordRepository",
+          "RuntimeAuditRecord"
+        ]
+      }
+    ],
+    "auth": [
+      {
+        "path": "app/services/auth_application_service.py",
+        "domain": "auth",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "AuthApplicationService",
+          "AuthApplicationServiceError",
+          "AuthRepositoryBundle"
+        ]
+      },
+      {
+        "path": "app/services/auth_db_lifecycle_proof.py",
+        "domain": "auth",
+        "classification": "unclassified",
+        "classes": [
+          "AuthDBProofApplicationService",
+          "AuthDBProofTokens",
+          "SQLiteAuthLifecycleProofStore"
+        ]
+      },
+      {
+        "path": "app/services/auth_lifecycle_impl.py",
+        "domain": "auth",
+        "classification": "unclassified",
+        "classes": []
+      },
+      {
+        "path": "app/services/auth_runtime_boundary.py",
+        "domain": "auth",
+        "classification": "active_runtime_facade",
+        "classes": [
+          "AuthRuntimeContext"
+        ]
+      },
+      {
+        "path": "app/services/auth_service.py",
+        "domain": "auth",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "AuthError",
+          "AuthService",
+          "CompatSession",
+          "CompatSession",
+          "LoginResult",
+          "SignupResult"
+        ]
+      },
+      {
+        "path": "app/services/auth_token_claims.py",
+        "domain": "auth",
+        "classification": "unclassified",
+        "classes": [
+          "AuthTokenClaims"
+        ]
+      },
+      {
+        "path": "app/services/auth_transactional_registration.py",
+        "domain": "auth",
+        "classification": "unclassified",
+        "classes": [
+          "AuthRegistrationInput",
+          "AuthRegistrationResult",
+          "AuthRegistrationTransactionError",
+          "TransactionalAuthRegistrationService"
+        ]
+      },
+      {
+        "path": "app/services/lesson_authorization.py",
+        "domain": "auth",
+        "classification": "authorization_helper",
+        "classes": []
+      },
+      {
+        "path": "app/modules/auth/service.py",
+        "domain": "auth",
+        "classification": "canonical_domain_service",
+        "classes": [
+          "AuthService"
+        ]
+      }
+    ],
+    "consent": [
+      {
+        "path": "app/services/consent.py",
+        "domain": "consent",
+        "classification": "unclassified",
+        "classes": []
+      },
+      {
+        "path": "app/services/consent_compat.py",
+        "domain": "consent",
+        "classification": "migration_or_compat_helper",
+        "classes": [
+          "ConsentAuditEvent"
+        ]
+      },
+      {
+        "path": "app/services/consent_expiry_service.py",
+        "domain": "consent",
+        "classification": "duplicate_domain_service",
+        "classes": []
+      },
+      {
+        "path": "app/services/consent_renewal_service.py",
+        "domain": "consent",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "ConsentRecord",
+          "ConsentRenewalService",
+          "EmailGateway",
+          "GuardianRecord",
+          "SendGridEmailGateway"
+        ]
+      },
+      {
+        "path": "app/services/consent_runtime_compatibility.py",
+        "domain": "consent",
+        "classification": "active_runtime_facade",
+        "classes": [
+          "ConsentRuntimeOperation",
+          "ConstructorProbe"
+        ]
+      },
+      {
+        "path": "app/services/consent_runtime_orchestrator.py",
+        "domain": "consent",
+        "classification": "active_runtime_facade",
+        "classes": [
+          "ConsentRuntimeCompatibilitySummary"
+        ]
+      },
+      {
+        "path": "app/services/consent_service.py",
+        "domain": "consent",
+        "classification": "deprecated_legacy_service",
+        "classes": [
+          "ConsentService"
+        ]
+      },
+      {
+        "path": "app/services/first_consent_runtime_wiring.py",
+        "domain": "consent",
+        "classification": "active_runtime_facade",
+        "classes": [
+          "FirstConsentRuntimeCandidate",
+          "FirstConsentRuntimePayload"
+        ]
+      },
+      {
+        "path": "app/services/popia_consent_lifecycle_adapter.py",
+        "domain": "consent",
+        "classification": "unclassified",
+        "classes": [
+          "POPIAConsentLifecycleAdapter"
+        ]
+      },
+      {
+        "path": "app/services/runtime_consent_facade.py",
+        "domain": "consent",
+        "classification": "active_runtime_facade",
+        "classes": [
+          "ConsentRuntimeEmission"
+        ]
+      },
+      {
+        "path": "app/modules/consent/service.py",
+        "domain": "consent",
+        "classification": "canonical_domain_service",
+        "classes": [
+          "ConsentService"
+        ]
+      }
+    ],
+    "lesson": [
+      {
+        "path": "app/services/content_file_lesson_quality.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "ContentFileLessonQualityService",
+          "LessonFileQualityResult"
+        ]
+      },
+      {
+        "path": "app/services/content_generation/generated_lesson_contract.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "GeneratedLessonQualityIssue",
+          "GeneratedLessonQualityResult",
+          "GeneratedLessonQualityValidator"
+        ]
+      },
+      {
+        "path": "app/services/content_generation/lesson_generator.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "LessonGenerator"
+        ]
+      },
+      {
+        "path": "app/services/content_generation/scope_lesson_generator.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "ScopeLessonGenerator"
+        ]
+      },
+      {
+        "path": "app/services/content_safety/lesson_contracts.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "LessonOutput",
+          "LessonValidationResult"
+        ]
+      },
+      {
+        "path": "app/services/lesson_context_builder.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "LessonContext",
+          "LessonContextBuilder"
+        ]
+      },
+      {
+        "path": "app/services/lesson_service_v2.py",
+        "domain": "lesson",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "LessonServiceV2"
+        ]
+      },
+      {
+        "path": "app/services/lesson_transactional_completion.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "LessonCompletionInput",
+          "LessonCompletionNotFoundError",
+          "LessonCompletionResult",
+          "LessonCompletionTransactionError",
+          "TransactionalLessonCompletionService"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/adaptive_remediation.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "RemediationPromptConfig",
+          "RemediationStrategy"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/answer_key_verifier.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "AnswerKeyVerifier",
+          "QuestionVerification",
+          "VerificationResult"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/budget_guardrails.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "BudgetConfig",
+          "BudgetExceededError",
+          "BudgetGuardrails",
+          "_InProcessCounter",
+          "_RedisCounter"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/caps_topic_map_service.py",
+        "domain": "lesson",
+        "classification": "canonical_domain_service",
+        "classes": [
+          "CAPSTopicMap",
+          "CAPSTopicMapService",
+          "SubtopicEntry",
+          "TermEntry",
+          "TopicEntry",
+          "TopicMapMeta"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/lesson_coverage_router.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "CapsRefCoverage",
+          "CoverageResponse",
+          "CoverageSummary",
+          "QualityScoreDistribution"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/lesson_generator.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "LessonGenerationError",
+          "LessonGenerator",
+          "VerificationResult"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/lesson_metrics.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "LessonMetrics"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/lesson_review_router.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "CurrentUser",
+          "LessonReviewRequest",
+          "QueuedLessonSummary",
+          "ReviewActionResponse",
+          "ReviewDecision",
+          "ReviewQueueResponse",
+          "UserRole"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/lesson_schema_v1.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "AnswerKeyEntry",
+          "DifficultyLevel",
+          "LLMProvider",
+          "LessonCreate",
+          "LessonResponse",
+          "PracticeQuestion",
+          "RemediationHint",
+          "ReviewStatus",
+          "SafetyClassification",
+          "SubjectEnum",
+          "TokenUsage",
+          "VariantType",
+          "WorkedExample"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/lesson_validator.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "LessonValidationError",
+          "LessonValidator",
+          "ValidationResult"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/lesson_variants.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "LessonVariantType",
+          "VariantPromptConfig"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/llm_gateway.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "LLMGateway",
+          "LLMResponse"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/llm_gateway_v2.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "AnthropicAdapter",
+          "CircuitBreaker",
+          "CircuitState",
+          "GroqAdapter",
+          "LLMGatewayError",
+          "LLMGatewayV2",
+          "ProviderUnavailableError"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/mock_llm_provider.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "MockLLMProvider",
+          "MockMode"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/parent_explanation_mode.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "LearnerSessionPerformance",
+          "ParentSummaryBullet",
+          "ParentSummaryGenerationError",
+          "ParentSummaryRequest",
+          "ParentSummaryResponse"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/prompt_version_registry.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "PromptTemplateRegistry"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/service.py",
+        "domain": "lesson",
+        "classification": "canonical_domain_service",
+        "classes": [
+          "LessonService"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/teacher_insight_mode.py",
+        "domain": "lesson",
+        "classification": "unclassified",
+        "classes": [
+          "InterventionGroup",
+          "LearnerMisconceptionRecord",
+          "MisconceptionCluster",
+          "TeacherInsightGenerationError",
+          "TeacherInsightRequest",
+          "TeacherInsightResponse"
+        ]
+      }
+    ],
+    "diagnostic": [
+      {
+        "path": "app/services/content_generation/diagnostic_generator.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": [
+          "DiagnosticGenerator"
+        ]
+      },
+      {
+        "path": "app/services/diagnostic.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": []
+      },
+      {
+        "path": "app/services/diagnostic_data_integrity.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": [
+          "DiagnosticIntegrityError",
+          "DiagnosticSubmissionIntegrityResult"
+        ]
+      },
+      {
+        "path": "app/services/diagnostic_route_integrity.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": []
+      },
+      {
+        "path": "app/services/diagnostic_safety.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": [
+          "DiagnosticItemValidation",
+          "DiagnosticItemValidator"
+        ]
+      },
+      {
+        "path": "app/services/diagnostic_scoring_snapshot.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": []
+      },
+      {
+        "path": "app/services/diagnostic_service_v2.py",
+        "domain": "diagnostic",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "DiagnosticServiceV2"
+        ]
+      },
+      {
+        "path": "app/services/diagnostic_session_integrity.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": [
+          "ServedDiagnosticItem"
+        ]
+      },
+      {
+        "path": "app/services/diagnostic_session_service.py",
+        "domain": "diagnostic",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "DiagnosticSessionNotFoundError",
+          "DiagnosticSessionService"
+        ]
+      },
+      {
+        "path": "app/services/diagnostic_transactional_response.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": [
+          "DiagnosticTransactionError",
+          "DiagnosticTransactionInput",
+          "DiagnosticTransactionResult",
+          "TransactionalDiagnosticResponseService"
+        ]
+      },
+      {
+        "path": "app/modules/diagnostics/bias_review_router.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": [
+          "BiasReviewRequest"
+        ]
+      },
+      {
+        "path": "app/modules/diagnostics/calibration_service.py",
+        "domain": "diagnostic",
+        "classification": "canonical_domain_service",
+        "classes": [
+          "CalibrationResult",
+          "CalibrationService"
+        ]
+      },
+      {
+        "path": "app/modules/diagnostics/diagnostic_session_service.py",
+        "domain": "diagnostic",
+        "classification": "canonical_domain_service",
+        "classes": [
+          "DiagnosticResponseResult",
+          "DiagnosticSessionService"
+        ]
+      },
+      {
+        "path": "app/modules/diagnostics/irt_engine.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": [
+          "DiagnosticEngine",
+          "DiagnosticSessionState",
+          "IRTEngine",
+          "IrtParameterError",
+          "_ItemProxy"
+        ]
+      },
+      {
+        "path": "app/modules/diagnostics/irt_params.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": []
+      },
+      {
+        "path": "app/modules/diagnostics/item_bank_pipeline.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": [
+          "ItemBankPipeline"
+        ]
+      },
+      {
+        "path": "app/modules/diagnostics/item_bank_service.py",
+        "domain": "diagnostic",
+        "classification": "canonical_domain_service",
+        "classes": [
+          "ItemBankService",
+          "ItemSelectionError"
+        ]
+      },
+      {
+        "path": "app/modules/diagnostics/item_generator.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": [
+          "AnswerKeyMismatchError",
+          "ItemGenerationError",
+          "ItemGenerator"
+        ]
+      },
+      {
+        "path": "app/modules/diagnostics/item_selection_service.py",
+        "domain": "diagnostic",
+        "classification": "canonical_domain_service",
+        "classes": [
+          "ItemSelectionService",
+          "SelectionResult"
+        ]
+      },
+      {
+        "path": "app/modules/diagnostics/item_validator.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": [
+          "ItemValidator",
+          "ValidationError"
+        ]
+      },
+      {
+        "path": "app/modules/diagnostics/production_readiness_contracts.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": [
+          "BiasDimension",
+          "DiagnosticItemSpec",
+          "ItemReviewStatus"
+        ]
+      },
+      {
+        "path": "app/modules/diagnostics/quality_scorer.py",
+        "domain": "diagnostic",
+        "classification": "unclassified",
+        "classes": [
+          "QualityScorer"
+        ]
+      },
+      {
+        "path": "app/modules/diagnostics/service.py",
+        "domain": "diagnostic",
+        "classification": "canonical_domain_service",
+        "classes": [
+          "ConsentService"
+        ]
+      },
+      {
+        "path": "app/modules/diagnostics/session_recovery_service.py",
+        "domain": "diagnostic",
+        "classification": "canonical_domain_service",
+        "classes": [
+          "DiagnosticSessionSnapshot",
+          "SessionRecoveryService",
+          "_MemoryRedis"
+        ]
+      },
+      {
+        "path": "app/modules/diagnostics/termination_service.py",
+        "domain": "diagnostic",
+        "classification": "canonical_domain_service",
+        "classes": [
+          "TerminationDecision",
+          "TerminationService"
+        ]
+      }
+    ],
+    "learner": [
+      {
+        "path": "app/services/content_learner_read_service.py",
+        "domain": "learner",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "ContentLearnerReadService",
+          "LearnerDiagnosticItem",
+          "LearnerLesson",
+          "LearnerReadMode",
+          "LearnerScopeContentSummary"
+        ]
+      },
+      {
+        "path": "app/services/learner_service.py",
+        "domain": "learner",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "LearnerService"
+        ]
+      },
+      {
+        "path": "app/modules/learners/ether_service.py",
+        "domain": "learner",
+        "classification": "canonical_domain_service",
+        "classes": [
+          "EtherService"
+        ]
+      }
+    ],
+    "gamification": [
+      {
+        "path": "app/services/gamification_service_v2.py",
+        "domain": "gamification",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "GamificationServiceV2",
+          "_EmptyGamificationRepository"
+        ]
+      }
+    ],
+    "popia": [
+      {
+        "path": "app/services/popia_service.py",
+        "domain": "popia",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "POPIADataRightsService",
+          "RightsRequestStatus"
+        ]
+      },
+      {
+        "path": "app/services/popia_transactional_lifecycle.py",
+        "domain": "popia",
+        "classification": "unclassified",
+        "classes": [
+          "POPIATransactionError",
+          "TransactionalPOPIAConsentLifecycleService",
+          "_NullAsyncContext"
+        ]
+      }
+    ],
+    "billing": [
+      {
+        "path": "app/modules/billing/production_readiness_contracts.py",
+        "domain": "billing",
+        "classification": "unclassified",
+        "classes": [
+          "BillingAuditEvent",
+          "BillingPlan",
+          "BillingProvider",
+          "BillingProviderDecision",
+          "PricingPolicy",
+          "SubscriptionSnapshot",
+          "SubscriptionState",
+          "WebhookIdempotencyStore",
+          "WebhookRetryPolicy"
+        ]
+      }
+    ],
+    "notification": [
+      {
+        "path": "app/modules/notifications/production_readiness_contracts.py",
+        "domain": "notification",
+        "classification": "unclassified",
+        "classes": [
+          "CommunicationProviderDecision",
+          "DeliveryRetryPolicy",
+          "DeliveryStatus",
+          "NotificationAudience",
+          "NotificationAuditEvent",
+          "NotificationChannel",
+          "NotificationOutbox",
+          "NotificationPolicy",
+          "NotificationPreference",
+          "NotificationPurpose",
+          "NotificationRequest",
+          "NotificationTemplate"
+        ]
+      }
+    ]
+  },
+  "rows": [
+    {
+      "path": "app/services/ai_safety.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentQualityScore"
+      ]
+    },
+    {
+      "path": "app/services/arq_import_compat.py",
+      "domain": "other",
+      "classification": "migration_or_compat_helper",
+      "classes": [
+        "RedisSettings"
+      ]
+    },
+    {
+      "path": "app/services/assessment_service_v2.py",
+      "domain": "assessment",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "AssessmentServiceV2"
+      ]
+    },
+    {
+      "path": "app/services/audit_canonicalization_registry.py",
+      "domain": "audit",
+      "classification": "unclassified",
+      "classes": [
+        "AuditMigrationCandidate",
+        "MigrationStatus"
+      ]
+    },
+    {
+      "path": "app/services/audit_canonicalization_slice.py",
+      "domain": "audit",
+      "classification": "unclassified",
+      "classes": [
+        "CanonicalAuditCommand"
+      ]
+    },
+    {
+      "path": "app/services/audit_migration_orchestrator.py",
+      "domain": "audit",
+      "classification": "migration_or_compat_helper",
+      "classes": [
+        "AuditMigrationEnvelope"
+      ]
+    },
+    {
+      "path": "app/services/audit_service.py",
+      "domain": "audit",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "AuditService"
+      ]
+    },
+    {
+      "path": "app/services/auth_application_service.py",
+      "domain": "auth",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "AuthApplicationService",
+        "AuthApplicationServiceError",
+        "AuthRepositoryBundle"
+      ]
+    },
+    {
+      "path": "app/services/auth_db_lifecycle_proof.py",
+      "domain": "auth",
+      "classification": "unclassified",
+      "classes": [
+        "AuthDBProofApplicationService",
+        "AuthDBProofTokens",
+        "SQLiteAuthLifecycleProofStore"
+      ]
+    },
+    {
+      "path": "app/services/auth_lifecycle_impl.py",
+      "domain": "auth",
+      "classification": "unclassified",
+      "classes": []
+    },
+    {
+      "path": "app/services/auth_runtime_boundary.py",
+      "domain": "auth",
+      "classification": "active_runtime_facade",
+      "classes": [
+        "AuthRuntimeContext"
+      ]
+    },
+    {
+      "path": "app/services/auth_service.py",
+      "domain": "auth",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "AuthError",
+        "AuthService",
+        "CompatSession",
+        "CompatSession",
+        "LoginResult",
+        "SignupResult"
+      ]
+    },
+    {
+      "path": "app/services/auth_token_claims.py",
+      "domain": "auth",
+      "classification": "unclassified",
+      "classes": [
+        "AuthTokenClaims"
+      ]
+    },
+    {
+      "path": "app/services/auth_transactional_registration.py",
+      "domain": "auth",
+      "classification": "unclassified",
+      "classes": [
+        "AuthRegistrationInput",
+        "AuthRegistrationResult",
+        "AuthRegistrationTransactionError",
+        "TransactionalAuthRegistrationService"
+      ]
+    },
+    {
+      "path": "app/services/backend_adapter_wiring_service.py",
+      "domain": "other",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "AdapterWiringResult",
+        "InMemoryAuditSink"
+      ]
+    },
+    {
+      "path": "app/services/backend_candidate_execution_harness.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "HarnessResult"
+      ]
+    },
+    {
+      "path": "app/services/backend_consolidation_runtime.py",
+      "domain": "other",
+      "classification": "active_runtime_facade",
+      "classes": [
+        "CanonicalAuditWrite",
+        "ConstructorProbeResult"
+      ]
+    },
+    {
+      "path": "app/services/backend_first_wiring_candidates.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "WiringArea",
+        "WiringCandidate",
+        "WiringCandidatePayload"
+      ]
+    },
+    {
+      "path": "app/services/backend_runtime_integration_readiness.py",
+      "domain": "other",
+      "classification": "active_runtime_facade",
+      "classes": [
+        "IntegrationArea",
+        "RuntimeIntegrationDryRunResult",
+        "RuntimeIntegrationTarget"
+      ]
+    },
+    {
+      "path": "app/services/backend_runtime_wiring_cases.py",
+      "domain": "other",
+      "classification": "active_runtime_facade",
+      "classes": [
+        "WiringCaseResult"
+      ]
+    },
+    {
+      "path": "app/services/backend_runtime_wiring_preflight.py",
+      "domain": "other",
+      "classification": "active_runtime_facade",
+      "classes": [
+        "PreflightArea",
+        "RuntimeWiringPreflightResult"
+      ]
+    },
+    {
+      "path": "app/services/caps_validator.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "CAPSAlignmentValidator",
+        "CAPSValidationResult"
+      ]
+    },
+    {
+      "path": "app/services/consent.py",
+      "domain": "consent",
+      "classification": "unclassified",
+      "classes": []
+    },
+    {
+      "path": "app/services/consent_compat.py",
+      "domain": "consent",
+      "classification": "migration_or_compat_helper",
+      "classes": [
+        "ConsentAuditEvent"
+      ]
+    },
+    {
+      "path": "app/services/consent_expiry_service.py",
+      "domain": "consent",
+      "classification": "duplicate_domain_service",
+      "classes": []
+    },
+    {
+      "path": "app/services/consent_renewal_service.py",
+      "domain": "consent",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "ConsentRecord",
+        "ConsentRenewalService",
+        "EmailGateway",
+        "GuardianRecord",
+        "SendGridEmailGateway"
+      ]
+    },
+    {
+      "path": "app/services/consent_runtime_compatibility.py",
+      "domain": "consent",
+      "classification": "active_runtime_facade",
+      "classes": [
+        "ConsentRuntimeOperation",
+        "ConstructorProbe"
+      ]
+    },
+    {
+      "path": "app/services/consent_runtime_orchestrator.py",
+      "domain": "consent",
+      "classification": "active_runtime_facade",
+      "classes": [
+        "ConsentRuntimeCompatibilitySummary"
+      ]
+    },
+    {
+      "path": "app/services/consent_service.py",
+      "domain": "consent",
+      "classification": "deprecated_legacy_service",
+      "classes": [
+        "ConsentService"
+      ]
+    },
+    {
+      "path": "app/services/content_artifact_lifecycle.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ArtifactStatusTransition",
+        "ContentArtifactLifecycleService"
+      ]
+    },
+    {
+      "path": "app/services/content_blueprint_validation.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "AssessmentBlueprintValidationService",
+        "BlueprintValidationResult"
+      ]
+    },
+    {
+      "path": "app/services/content_bulk_review.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "BulkReviewResult",
+        "ContentBulkReviewService"
+      ]
+    },
+    {
+      "path": "app/services/content_coverage_service.py",
+      "domain": "other",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "ContentCoverageService",
+        "CoverageGateLayerReport",
+        "DiagnosticCoverageRepository",
+        "LessonCoverageRepository"
+      ]
+    },
+    {
+      "path": "app/services/content_factory.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ArtifactProvenanceReport",
+        "ContentFactoryService",
+        "ContentValidationService",
+        "ETLProvenanceService",
+        "SourceGateResult"
+      ]
+    },
+    {
+      "path": "app/services/content_factory_orchestrator.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentFactoryOrchestrator",
+        "OrchestratorPlan"
+      ]
+    },
+    {
+      "path": "app/services/content_file_artifact_import.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentFileArtifactImportService",
+        "FileArtifactImportBatchPlan",
+        "FileArtifactImportPlan",
+        "FileArtifactImportRecord"
+      ]
+    },
+    {
+      "path": "app/services/content_file_lesson_quality.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "ContentFileLessonQualityService",
+        "LessonFileQualityResult"
+      ]
+    },
+    {
+      "path": "app/services/content_file_promotion_readiness.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentFilePromotionReadinessService",
+        "PromotionReadinessResult"
+      ]
+    },
+    {
+      "path": "app/services/content_file_review_workflow.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentFileReviewWorkflowService",
+        "ScopeReviewEvidenceStatus"
+      ]
+    },
+    {
+      "path": "app/services/content_generation/blueprint_generator.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "BlueprintGenerationResult",
+        "BlueprintGenerator"
+      ]
+    },
+    {
+      "path": "app/services/content_generation/diagnostic_generator.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": [
+        "DiagnosticGenerator"
+      ]
+    },
+    {
+      "path": "app/services/content_generation/generated_item_contract.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "GeneratedItemQualityIssue",
+        "GeneratedItemQualityResult",
+        "GeneratedItemQualityValidator"
+      ]
+    },
+    {
+      "path": "app/services/content_generation/generated_lesson_contract.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "GeneratedLessonQualityIssue",
+        "GeneratedLessonQualityResult",
+        "GeneratedLessonQualityValidator"
+      ]
+    },
+    {
+      "path": "app/services/content_generation/lesson_generator.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "LessonGenerator"
+      ]
+    },
+    {
+      "path": "app/services/content_generation/prompt_payloads.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "DiagnosticGenerationRequest",
+        "GeneratedDiagnosticItem",
+        "GeneratedLesson",
+        "GenerationRequestBase",
+        "LessonGenerationRequest",
+        "SourceContextChunk"
+      ]
+    },
+    {
+      "path": "app/services/content_generation/provider_factory.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "GenerationSettings"
+      ]
+    },
+    {
+      "path": "app/services/content_generation/providers/base.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentGenerationProvider"
+      ]
+    },
+    {
+      "path": "app/services/content_generation/providers/deterministic.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "DeterministicContentGenerationProvider"
+      ]
+    },
+    {
+      "path": "app/services/content_generation/providers/llm.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "LLMContentGenerationProvider"
+      ]
+    },
+    {
+      "path": "app/services/content_generation/scope_blueprint_generator.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ScopeBlueprintGenerator"
+      ]
+    },
+    {
+      "path": "app/services/content_generation/scope_item_generator.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ScopeItemGenerator"
+      ]
+    },
+    {
+      "path": "app/services/content_generation/scope_lesson_generator.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "ScopeLessonGenerator"
+      ]
+    },
+    {
+      "path": "app/services/content_generation/scope_mcq_templates.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": []
+    },
+    {
+      "path": "app/services/content_generation/scope_study_plan_generator.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ScopeStudyPlanGenerator"
+      ]
+    },
+    {
+      "path": "app/services/content_generation/source_context.py",
+      "domain": "other",
+      "classification": "deprecated_legacy_service",
+      "classes": [
+        "ContentGenerationSourceContextService",
+        "SourceContextResult"
+      ]
+    },
+    {
+      "path": "app/services/content_generation/study_plan_template_generator.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "StudyPlanTemplateGenerationResult",
+        "StudyPlanTemplateGenerator"
+      ]
+    },
+    {
+      "path": "app/services/content_generation/topic_map_source_context.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "TopicMapSourceContext",
+        "TopicMapSourceContextBuilder",
+        "TopicMapSourceContextResult"
+      ]
+    },
+    {
+      "path": "app/services/content_generation_executor.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentGenerationExecutor",
+        "GenerationDisabledError",
+        "RunExecutionResult",
+        "TaskExecutionResult"
+      ]
+    },
+    {
+      "path": "app/services/content_generation_planner.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentGenerationPlanner",
+        "GenerationPlanResult"
+      ]
+    },
+    {
+      "path": "app/services/content_generation_reporter.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentGenerationReporter",
+        "GenerationReportData"
+      ]
+    },
+    {
+      "path": "app/services/content_generation_run_lock.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentGenerationRunLock",
+        "LockAcquisitionResult"
+      ]
+    },
+    {
+      "path": "app/services/content_generation_runs.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentGenerationRunService"
+      ]
+    },
+    {
+      "path": "app/services/content_learner_read_service.py",
+      "domain": "learner",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "ContentLearnerReadService",
+        "LearnerDiagnosticItem",
+        "LearnerLesson",
+        "LearnerReadMode",
+        "LearnerScopeContentSummary"
+      ]
+    },
+    {
+      "path": "app/services/content_production_promotion_executor.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentProductionPromotionExecutor",
+        "ProductionPromotionPage",
+        "ProductionPromotionPlan",
+        "ProductionPromotionResult",
+        "ProductionRollbackResult"
+      ]
+    },
+    {
+      "path": "app/services/content_production_promotion_gate.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentProductionPromotionGate",
+        "ProductionGateBlocker",
+        "ProductionGateReport",
+        "ProductionGateStatus"
+      ]
+    },
+    {
+      "path": "app/services/content_production_read_verification.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentProductionReadVerificationService",
+        "ProductionReadVerificationReport",
+        "ScopeProductionReadReport"
+      ]
+    },
+    {
+      "path": "app/services/content_review_queue.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ArtifactReviewBundle",
+        "ContentReviewQueueService",
+        "ReviewQueueItem",
+        "ReviewQueuePage",
+        "ReviewSummary"
+      ]
+    },
+    {
+      "path": "app/services/content_review_risk.py",
+      "domain": "other",
+      "classification": "deprecated_legacy_service",
+      "classes": [
+        "ContentReviewRiskService",
+        "ReviewRisk"
+      ]
+    },
+    {
+      "path": "app/services/content_reviewer_assignment.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentReviewerAssignmentService",
+        "ReviewerWorkload"
+      ]
+    },
+    {
+      "path": "app/services/content_safety/lesson_contracts.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "LessonOutput",
+        "LessonValidationResult"
+      ]
+    },
+    {
+      "path": "app/services/content_safety/pii.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "PIIFinding"
+      ]
+    },
+    {
+      "path": "app/services/content_scope_registry.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentScopeRegistry",
+        "ContentScopeRegistryError"
+      ]
+    },
+    {
+      "path": "app/services/content_seed_promotion.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentSeedPromotionService",
+        "GateResult"
+      ]
+    },
+    {
+      "path": "app/services/content_staging_preview_service.py",
+      "domain": "other",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "ContentStagingPreviewService",
+        "StagingArtifactPreview",
+        "StagingCapsRefPreview",
+        "StagingPreviewReport"
+      ]
+    },
+    {
+      "path": "app/services/content_staging_read_verification.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentStagingReadVerificationService",
+        "ScopeStagingReadReport",
+        "StagingReadVerificationReport"
+      ]
+    },
+    {
+      "path": "app/services/content_staging_readiness.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "AllScopeStagingVerificationReport",
+        "BlockerSeverity",
+        "ContentStagingReadinessService",
+        "LayerReadinessSummary",
+        "ScopeBlocker",
+        "ScopeStagingVerificationReport",
+        "StagingReadinessStatus"
+      ]
+    },
+    {
+      "path": "app/services/content_staging_seed_executor.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ContentStagingSeedExecutor",
+        "MissingForeignKeyError",
+        "SeedableArtifact",
+        "SkippedArtifact",
+        "StagingRollbackResult",
+        "StagingSeedItemResult",
+        "StagingSeedPlan",
+        "StagingSeedRunPage",
+        "StagingSeedRunResult"
+      ]
+    },
+    {
+      "path": "app/services/content_template_validation.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "StudyPlanTemplateValidationResult",
+        "StudyPlanTemplateValidationService"
+      ]
+    },
+    {
+      "path": "app/services/curriculum/caps_topic_map.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "CAPSTopic",
+        "CAPSTopicMap"
+      ]
+    },
+    {
+      "path": "app/services/curriculum/coverage.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "CurriculumCoverageAnalyzer",
+        "CurriculumGap"
+      ]
+    },
+    {
+      "path": "app/services/data_subject_rights_service.py",
+      "domain": "other",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "DataSubjectRightsService"
+      ]
+    },
+    {
+      "path": "app/services/deep_readiness_readonly.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ReadinessCheckResult",
+        "ReadinessCheckSpec",
+        "ReadinessSeverity"
+      ]
+    },
+    {
+      "path": "app/services/deep_readiness_route_contracts.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "DeepReadinessRouteCheck",
+        "ReadinessCheckMode"
+      ]
+    },
+    {
+      "path": "app/services/deep_readiness_runtime.py",
+      "domain": "other",
+      "classification": "active_runtime_facade",
+      "classes": [
+        "DeepReadinessCheckResult",
+        "DeepReadinessRuntimeResult"
+      ]
+    },
+    {
+      "path": "app/services/diagnostic.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": []
+    },
+    {
+      "path": "app/services/diagnostic_data_integrity.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": [
+        "DiagnosticIntegrityError",
+        "DiagnosticSubmissionIntegrityResult"
+      ]
+    },
+    {
+      "path": "app/services/diagnostic_route_integrity.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": []
+    },
+    {
+      "path": "app/services/diagnostic_safety.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": [
+        "DiagnosticItemValidation",
+        "DiagnosticItemValidator"
+      ]
+    },
+    {
+      "path": "app/services/diagnostic_scoring_snapshot.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": []
+    },
+    {
+      "path": "app/services/diagnostic_service_v2.py",
+      "domain": "diagnostic",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "DiagnosticServiceV2"
+      ]
+    },
+    {
+      "path": "app/services/diagnostic_session_integrity.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": [
+        "ServedDiagnosticItem"
+      ]
+    },
+    {
+      "path": "app/services/diagnostic_session_service.py",
+      "domain": "diagnostic",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "DiagnosticSessionNotFoundError",
+        "DiagnosticSessionService"
+      ]
+    },
+    {
+      "path": "app/services/diagnostic_transactional_response.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": [
+        "DiagnosticTransactionError",
+        "DiagnosticTransactionInput",
+        "DiagnosticTransactionResult",
+        "TransactionalDiagnosticResponseService"
+      ]
+    },
+    {
+      "path": "app/services/email_service.py",
+      "domain": "other",
+      "classification": "duplicate_domain_service",
+      "classes": []
+    },
+    {
+      "path": "app/services/ether.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": []
+    },
+    {
+      "path": "app/services/ether_service.py",
+      "domain": "other",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "OnboardingResponse"
+      ]
+    },
+    {
+      "path": "app/services/etl/etl_pipeline.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ChunkType",
+        "Chunker",
+        "Document",
+        "DocumentChunk",
+        "DocumentSource",
+        "DocumentType",
+        "EduboostETL",
+        "ExtractionResult",
+        "Extractor",
+        "IngestRequest",
+        "LicenseStatus",
+        "Normalizer",
+        "ProcessingJob",
+        "ProcessingStatus",
+        "QualityCheckResult",
+        "QualityValidator",
+        "SourceType"
+      ]
+    },
+    {
+      "path": "app/services/etl/etl_pipeline_v2.py",
+      "domain": "other",
+      "classification": "deprecated_legacy_service",
+      "classes": [
+        "DocumentVersion",
+        "EduboostETLv2",
+        "FeedbackRecord",
+        "MonitoringReport",
+        "TrainingDataset",
+        "TrainingExample"
+      ]
+    },
+    {
+      "path": "app/services/etl/etl_pipeline_v3_additions.py",
+      "domain": "other",
+      "classification": "deprecated_legacy_service",
+      "classes": [
+        "AuditEntry",
+        "BulkReviewResult",
+        "ContaminationReport",
+        "DatasetSplitResult",
+        "EduboostETLv3"
+      ]
+    },
+    {
+      "path": "app/services/etl/factory.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": []
+    },
+    {
+      "path": "app/services/executive.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": []
+    },
+    {
+      "path": "app/services/first_audit_runtime_wiring.py",
+      "domain": "audit",
+      "classification": "active_runtime_facade",
+      "classes": [
+        "FirstAuditRuntimeCandidate",
+        "FirstAuditRuntimePayload",
+        "FirstAuditRuntimeRecordResult",
+        "InMemoryFirstAuditRuntimeSink"
+      ]
+    },
+    {
+      "path": "app/services/first_consent_runtime_wiring.py",
+      "domain": "consent",
+      "classification": "active_runtime_facade",
+      "classes": [
+        "FirstConsentRuntimeCandidate",
+        "FirstConsentRuntimePayload"
+      ]
+    },
+    {
+      "path": "app/services/first_deep_readiness_runtime_wiring.py",
+      "domain": "other",
+      "classification": "active_runtime_facade",
+      "classes": [
+        "DeepReadinessRuntimePlan",
+        "FirstDeepReadinessRuntimeCandidate"
+      ]
+    },
+    {
+      "path": "app/services/fourth_estate.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": []
+    },
+    {
+      "path": "app/services/gamification_service_v2.py",
+      "domain": "gamification",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "GamificationServiceV2",
+        "_EmptyGamificationRepository"
+      ]
+    },
+    {
+      "path": "app/services/job_dependency_factory.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": []
+    },
+    {
+      "path": "app/services/job_runtime_integrity.py",
+      "domain": "other",
+      "classification": "active_runtime_facade",
+      "classes": [
+        "JobRuntimeIntegrityError"
+      ]
+    },
+    {
+      "path": "app/services/judiciary.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": []
+    },
+    {
+      "path": "app/services/jwt_keyring.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "JWTKey",
+        "JWTKeyringError"
+      ]
+    },
+    {
+      "path": "app/services/launch_content_seed.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": []
+    },
+    {
+      "path": "app/services/learner_service.py",
+      "domain": "learner",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "LearnerService"
+      ]
+    },
+    {
+      "path": "app/services/lesson_authorization.py",
+      "domain": "auth",
+      "classification": "authorization_helper",
+      "classes": []
+    },
+    {
+      "path": "app/services/lesson_context_builder.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "LessonContext",
+        "LessonContextBuilder"
+      ]
+    },
+    {
+      "path": "app/services/lesson_service_v2.py",
+      "domain": "lesson",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "LessonServiceV2"
+      ]
+    },
+    {
+      "path": "app/services/lesson_transactional_completion.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "LessonCompletionInput",
+        "LessonCompletionNotFoundError",
+        "LessonCompletionResult",
+        "LessonCompletionTransactionError",
+        "TransactionalLessonCompletionService"
+      ]
+    },
+    {
+      "path": "app/services/llm/gateway.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "CanonicalLLMGateway",
+        "DeterministicMockProvider",
+        "LLMGatewayMetadata",
+        "LLMGatewayRequest",
+        "LLMGatewayResponse",
+        "LLMProvider",
+        "ProviderHealth",
+        "ProviderPolicy",
+        "ProviderResult",
+        "TokenUsage"
+      ]
+    },
+    {
+      "path": "app/services/llm/json_completion.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "JsonCompletionError",
+        "JsonCompletionGateway",
+        "JsonCompletionResponse"
+      ]
+    },
+    {
+      "path": "app/services/parent_report_service_v2.py",
+      "domain": "other",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "ParentReportServiceV2"
+      ]
+    },
+    {
+      "path": "app/services/pii_sweep.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "PIIFinding",
+        "PIIScanner",
+        "PIISweepError",
+        "SweepResult"
+      ]
+    },
+    {
+      "path": "app/services/popia_consent_lifecycle_adapter.py",
+      "domain": "consent",
+      "classification": "unclassified",
+      "classes": [
+        "POPIAConsentLifecycleAdapter"
+      ]
+    },
+    {
+      "path": "app/services/popia_service.py",
+      "domain": "popia",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "POPIADataRightsService",
+        "RightsRequestStatus"
+      ]
+    },
+    {
+      "path": "app/services/popia_transactional_lifecycle.py",
+      "domain": "popia",
+      "classification": "unclassified",
+      "classes": [
+        "POPIATransactionError",
+        "TransactionalPOPIAConsentLifecycleService",
+        "_NullAsyncContext"
+      ]
+    },
+    {
+      "path": "app/services/quota_service.py",
+      "domain": "other",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "QuotaExceededError",
+        "QuotaService",
+        "SemanticCacheService"
+      ]
+    },
+    {
+      "path": "app/services/rlhf_service.py",
+      "domain": "other",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "RLHFService"
+      ]
+    },
+    {
+      "path": "app/services/runtime_audit_facade.py",
+      "domain": "audit",
+      "classification": "active_runtime_facade",
+      "classes": [
+        "AuditRecordRepository",
+        "RuntimeAuditRecord"
+      ]
+    },
+    {
+      "path": "app/services/runtime_consent_facade.py",
+      "domain": "consent",
+      "classification": "active_runtime_facade",
+      "classes": [
+        "ConsentRuntimeEmission"
+      ]
+    },
+    {
+      "path": "app/services/stripe_service.py",
+      "domain": "other",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "StripeService"
+      ]
+    },
+    {
+      "path": "app/services/study_plan_service_v2.py",
+      "domain": "other",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "StudyPlanServiceV2",
+        "_MemoryStudyPlanRepository",
+        "_MissingLearnerRepository"
+      ]
+    },
+    {
+      "path": "app/services/study_plan_updater.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "StudyPlanUpdater"
+      ]
+    },
+    {
+      "path": "app/services/subscription_service.py",
+      "domain": "other",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "SubscriptionService"
+      ]
+    },
+    {
+      "path": "app/services/system_service_v2.py",
+      "domain": "other",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "SystemServiceV2"
+      ]
+    },
+    {
+      "path": "app/services/telemetry.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "TelemetryService"
+      ]
+    },
+    {
+      "path": "app/modules/auth/service.py",
+      "domain": "auth",
+      "classification": "canonical_domain_service",
+      "classes": [
+        "AuthService"
+      ]
+    },
+    {
+      "path": "app/modules/beta_launch/production_readiness_contracts.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "AcceptanceStatus",
+        "BetaCohortPlan",
+        "BetaEntryCriterion",
+        "BetaExitCriterion",
+        "BetaLaunchDecision",
+        "BetaStage",
+        "FeedbackIntakeRule",
+        "FeedbackSeverity",
+        "KnownIssue",
+        "LaunchDecision",
+        "LaunchReadinessReview",
+        "ProductScopeArea",
+        "ProductScopeItem",
+        "StagingAcceptanceCriterion"
+      ]
+    },
+    {
+      "path": "app/modules/billing/production_readiness_contracts.py",
+      "domain": "billing",
+      "classification": "unclassified",
+      "classes": [
+        "BillingAuditEvent",
+        "BillingPlan",
+        "BillingProvider",
+        "BillingProviderDecision",
+        "PricingPolicy",
+        "SubscriptionSnapshot",
+        "SubscriptionState",
+        "WebhookIdempotencyStore",
+        "WebhookRetryPolicy"
+      ]
+    },
+    {
+      "path": "app/modules/consent/service.py",
+      "domain": "consent",
+      "classification": "canonical_domain_service",
+      "classes": [
+        "ConsentService"
+      ]
+    },
+    {
+      "path": "app/modules/deployment/production_readiness_contracts.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ArtifactProvenance",
+        "DeploymentGate",
+        "DeploymentStrategy",
+        "DockerImageContract",
+        "EnvironmentContract",
+        "EnvironmentName",
+        "InfrastructureProviderDecision",
+        "PipelineCheck",
+        "PipelineStage",
+        "RollbackContract",
+        "RuntimeRole"
+      ]
+    },
+    {
+      "path": "app/modules/diagnostics/bias_review_router.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": [
+        "BiasReviewRequest"
+      ]
+    },
+    {
+      "path": "app/modules/diagnostics/calibration_service.py",
+      "domain": "diagnostic",
+      "classification": "canonical_domain_service",
+      "classes": [
+        "CalibrationResult",
+        "CalibrationService"
+      ]
+    },
+    {
+      "path": "app/modules/diagnostics/diagnostic_session_service.py",
+      "domain": "diagnostic",
+      "classification": "canonical_domain_service",
+      "classes": [
+        "DiagnosticResponseResult",
+        "DiagnosticSessionService"
+      ]
+    },
+    {
+      "path": "app/modules/diagnostics/irt_engine.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": [
+        "DiagnosticEngine",
+        "DiagnosticSessionState",
+        "IRTEngine",
+        "IrtParameterError",
+        "_ItemProxy"
+      ]
+    },
+    {
+      "path": "app/modules/diagnostics/irt_params.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": []
+    },
+    {
+      "path": "app/modules/diagnostics/item_bank_pipeline.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": [
+        "ItemBankPipeline"
+      ]
+    },
+    {
+      "path": "app/modules/diagnostics/item_bank_service.py",
+      "domain": "diagnostic",
+      "classification": "canonical_domain_service",
+      "classes": [
+        "ItemBankService",
+        "ItemSelectionError"
+      ]
+    },
+    {
+      "path": "app/modules/diagnostics/item_generator.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": [
+        "AnswerKeyMismatchError",
+        "ItemGenerationError",
+        "ItemGenerator"
+      ]
+    },
+    {
+      "path": "app/modules/diagnostics/item_selection_service.py",
+      "domain": "diagnostic",
+      "classification": "canonical_domain_service",
+      "classes": [
+        "ItemSelectionService",
+        "SelectionResult"
+      ]
+    },
+    {
+      "path": "app/modules/diagnostics/item_validator.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": [
+        "ItemValidator",
+        "ValidationError"
+      ]
+    },
+    {
+      "path": "app/modules/diagnostics/production_readiness_contracts.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": [
+        "BiasDimension",
+        "DiagnosticItemSpec",
+        "ItemReviewStatus"
+      ]
+    },
+    {
+      "path": "app/modules/diagnostics/quality_scorer.py",
+      "domain": "diagnostic",
+      "classification": "unclassified",
+      "classes": [
+        "QualityScorer"
+      ]
+    },
+    {
+      "path": "app/modules/diagnostics/service.py",
+      "domain": "diagnostic",
+      "classification": "canonical_domain_service",
+      "classes": [
+        "ConsentService"
+      ]
+    },
+    {
+      "path": "app/modules/diagnostics/session_recovery_service.py",
+      "domain": "diagnostic",
+      "classification": "canonical_domain_service",
+      "classes": [
+        "DiagnosticSessionSnapshot",
+        "SessionRecoveryService",
+        "_MemoryRedis"
+      ]
+    },
+    {
+      "path": "app/modules/diagnostics/termination_service.py",
+      "domain": "diagnostic",
+      "classification": "canonical_domain_service",
+      "classes": [
+        "TerminationDecision",
+        "TerminationService"
+      ]
+    },
+    {
+      "path": "app/modules/disaster_recovery/production_readiness_contracts.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "BackupFrequency",
+        "BackupManifestEntry",
+        "BackupPolicy",
+        "BackupProviderDecision",
+        "BackupScope",
+        "DisasterRecoveryPlan",
+        "DrillOutcome",
+        "RecoveryObjective",
+        "RecoveryTier",
+        "RestoreDrillEvidence",
+        "RestoreEnvironment",
+        "RestoreRunbook"
+      ]
+    },
+    {
+      "path": "app/modules/documentation_governance/production_readiness_contracts.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "AdrRecord",
+        "AdrStatus",
+        "ClaimConfidence",
+        "ClaimDisciplineRule",
+        "ClaimRecord",
+        "ClaimType",
+        "DocumentationAudience",
+        "DocumentationGovernanceDecision",
+        "DocumentationInventoryEntry",
+        "DocumentationReviewGate",
+        "DocumentationStatus",
+        "ReleaseNoteEntry",
+        "ReleaseNoteType",
+        "StaleDocumentationFinding"
+      ]
+    },
+    {
+      "path": "app/modules/final_release_blockers/production_readiness_contracts.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "BlockerSeverity",
+        "BlockerStatus",
+        "ExternalManualDependency",
+        "FinalDecision",
+        "FinalGoNoGoChecklist",
+        "FinalReleaseBlockerDecision",
+        "LaunchAuthority",
+        "ReleaseBlockerClosureRecord",
+        "ReleaseBlockerDomain",
+        "ReleaseBlockerDomainSummary",
+        "ReleaseBlockerItem",
+        "ReleaseWaiverRule"
+      ]
+    },
+    {
+      "path": "app/modules/jobs.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "WorkerSettings"
+      ]
+    },
+    {
+      "path": "app/modules/learners/ether_service.py",
+      "domain": "learner",
+      "classification": "canonical_domain_service",
+      "classes": [
+        "EtherService"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/adaptive_remediation.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "RemediationPromptConfig",
+        "RemediationStrategy"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/answer_key_verifier.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "AnswerKeyVerifier",
+        "QuestionVerification",
+        "VerificationResult"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/budget_guardrails.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "BudgetConfig",
+        "BudgetExceededError",
+        "BudgetGuardrails",
+        "_InProcessCounter",
+        "_RedisCounter"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/caps_topic_map_service.py",
+      "domain": "lesson",
+      "classification": "canonical_domain_service",
+      "classes": [
+        "CAPSTopicMap",
+        "CAPSTopicMapService",
+        "SubtopicEntry",
+        "TermEntry",
+        "TopicEntry",
+        "TopicMapMeta"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/lesson_coverage_router.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "CapsRefCoverage",
+        "CoverageResponse",
+        "CoverageSummary",
+        "QualityScoreDistribution"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/lesson_generator.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "LessonGenerationError",
+        "LessonGenerator",
+        "VerificationResult"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/lesson_metrics.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "LessonMetrics"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/lesson_review_router.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "CurrentUser",
+        "LessonReviewRequest",
+        "QueuedLessonSummary",
+        "ReviewActionResponse",
+        "ReviewDecision",
+        "ReviewQueueResponse",
+        "UserRole"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/lesson_schema_v1.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "AnswerKeyEntry",
+        "DifficultyLevel",
+        "LLMProvider",
+        "LessonCreate",
+        "LessonResponse",
+        "PracticeQuestion",
+        "RemediationHint",
+        "ReviewStatus",
+        "SafetyClassification",
+        "SubjectEnum",
+        "TokenUsage",
+        "VariantType",
+        "WorkedExample"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/lesson_validator.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "LessonValidationError",
+        "LessonValidator",
+        "ValidationResult"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/lesson_variants.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "LessonVariantType",
+        "VariantPromptConfig"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/llm_gateway.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "LLMGateway",
+        "LLMResponse"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/llm_gateway_v2.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "AnthropicAdapter",
+        "CircuitBreaker",
+        "CircuitState",
+        "GroqAdapter",
+        "LLMGatewayError",
+        "LLMGatewayV2",
+        "ProviderUnavailableError"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/mock_llm_provider.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "MockLLMProvider",
+        "MockMode"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/parent_explanation_mode.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "LearnerSessionPerformance",
+        "ParentSummaryBullet",
+        "ParentSummaryGenerationError",
+        "ParentSummaryRequest",
+        "ParentSummaryResponse"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/prompt_version_registry.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "PromptTemplateRegistry"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/service.py",
+      "domain": "lesson",
+      "classification": "canonical_domain_service",
+      "classes": [
+        "LessonService"
+      ]
+    },
+    {
+      "path": "app/modules/lessons/teacher_insight_mode.py",
+      "domain": "lesson",
+      "classification": "unclassified",
+      "classes": [
+        "InterventionGroup",
+        "LearnerMisconceptionRecord",
+        "MisconceptionCluster",
+        "TeacherInsightGenerationError",
+        "TeacherInsightRequest",
+        "TeacherInsightResponse"
+      ]
+    },
+    {
+      "path": "app/modules/notifications/production_readiness_contracts.py",
+      "domain": "notification",
+      "classification": "unclassified",
+      "classes": [
+        "CommunicationProviderDecision",
+        "DeliveryRetryPolicy",
+        "DeliveryStatus",
+        "NotificationAudience",
+        "NotificationAuditEvent",
+        "NotificationChannel",
+        "NotificationOutbox",
+        "NotificationPolicy",
+        "NotificationPreference",
+        "NotificationPurpose",
+        "NotificationRequest",
+        "NotificationTemplate"
+      ]
+    },
+    {
+      "path": "app/modules/observability/production_readiness_contracts.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "AlertRule",
+        "AlertSeverity",
+        "DashboardDefinition",
+        "IncidentRoute",
+        "LogEventContract",
+        "MetricDefinition",
+        "ObservabilityProviderDecision",
+        "ServiceTier",
+        "SloDefinition",
+        "TelemetryRetentionPolicy",
+        "TelemetrySignal",
+        "TraceSpanContract"
+      ]
+    },
+    {
+      "path": "app/modules/operations_support/production_readiness_contracts.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "CustomerImpact",
+        "IncidentClassificationRule",
+        "IncidentRecord",
+        "IncidentSeverity",
+        "IncidentStatus",
+        "OnCallEscalationPolicy",
+        "OperationalHandoverChecklist",
+        "OperationalRole",
+        "OperationalRunbook",
+        "OperationsSupportDecision",
+        "PostIncidentReview",
+        "StatusCommunicationTemplate",
+        "SupportChannel",
+        "SupportPriority",
+        "SupportSla"
+      ]
+    },
+    {
+      "path": "app/modules/practice/practice_generator.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "PracticeGenerator"
+      ]
+    },
+    {
+      "path": "app/modules/practice/router.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "PracticeResponseRequest",
+        "PracticeSessionRequest"
+      ]
+    },
+    {
+      "path": "app/modules/practice/spaced_repetition_scheduler.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "SpacedRepetitionScheduler",
+        "SpacedReviewPlan"
+      ]
+    },
+    {
+      "path": "app/modules/progress/learning_velocity_service.py",
+      "domain": "other",
+      "classification": "canonical_domain_service",
+      "classes": [
+        "LearningVelocityService"
+      ]
+    },
+    {
+      "path": "app/modules/progress/mastery_model.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "MasteryLabel"
+      ]
+    },
+    {
+      "path": "app/modules/progress/progress_timeline_service.py",
+      "domain": "other",
+      "classification": "canonical_domain_service",
+      "classes": [
+        "ProgressTimelineService"
+      ]
+    },
+    {
+      "path": "app/modules/quality_gates/production_readiness_contracts.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "CoverageThreshold",
+        "DefectSeverity",
+        "DefectTriageRule",
+        "EvidenceType",
+        "QualityGate",
+        "QualityGateStatus",
+        "ReleaseChecklist",
+        "ReleaseEvidenceItem",
+        "ReleaseStage",
+        "TestLayer",
+        "TestSuiteContract",
+        "TestingStrategyDecision"
+      ]
+    },
+    {
+      "path": "app/modules/roadmap/production_readiness_contracts.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "BaselineBoundary",
+        "BaselineBoundaryItem",
+        "DeferredScopeItem",
+        "DependencyType",
+        "GraduationCriterion",
+        "PostBaselineRisk",
+        "PriorityLevel",
+        "RoadmapCategory",
+        "RoadmapDependency",
+        "RoadmapGovernanceDecision",
+        "RoadmapHorizon",
+        "RoadmapItem",
+        "RoadmapReviewCadence",
+        "RoadmapStatus"
+      ]
+    },
+    {
+      "path": "app/modules/security_posture/production_readiness_contracts.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "ControlStatus",
+        "IncidentSeverity",
+        "RiskAcceptanceRecord",
+        "SecretHygieneRule",
+        "SecurityControl",
+        "SecurityDomain",
+        "SecurityIncidentRunbook",
+        "SecurityPostureDecision",
+        "SecurityTestContract",
+        "SecurityTestType",
+        "SupplyChainControl",
+        "ThreatCategory",
+        "ThreatModelEntry",
+        "VulnerabilityPolicy",
+        "VulnerabilitySeverity"
+      ]
+    }
+  ]
+}

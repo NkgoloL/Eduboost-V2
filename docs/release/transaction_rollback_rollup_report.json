@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-06-12T17:41:14Z",
+  "status": "isolated_rollback_coverage_complete",
+  "proofs": [
+    {
+      "id": "TX-POPIA-001",
+      "title": "POPIA consent lifecycle + audit rollback proof",
+      "present_in_registry": true,
+      "integration_passing": true,
+      "evidence_file": "docs/release/no_false_closure_status_after_1431_1470.md",
+      "evidence_exists": true
+    },
+    {
+      "id": "TX-AUTH-001",
+      "title": "Auth user + guardian + learner rollback proof",
+      "present_in_registry": true,
+      "integration_passing": true,
+      "evidence_file": "docs/release/no_false_closure_status_after_1471_1510.md",
+      "evidence_exists": true
+    },
+    {
+      "id": "TX-DIAG-001",
+      "title": "Diagnostic response + mastery + audit rollback proof",
+      "present_in_registry": true,
+      "integration_passing": true,
+      "evidence_file": "docs/release/no_false_closure_status_after_1511_1550.md",
+      "evidence_exists": true
+    },
+    {
+      "id": "TX-LESSON-001",
+      "title": "Lesson completion + gamification XP + audit rollback proof",
+      "present_in_registry": true,
+      "integration_passing": true,
+      "evidence_file": "docs/release/no_false_closure_status_after_1551_1590.md",
+      "evidence_exists": true
+    }
+  ],
+  "remaining_boundaries": [
+    "production route wiring through transactional services not proven",
+    "live Postgres rollback proof not proven",
+    "migration-level rollback behavior not proven",
+    "staging evidence not attached"
+  ]
+}

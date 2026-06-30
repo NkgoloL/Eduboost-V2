@@ -1,0 +1,63 @@
+name: Frontend E2E Opt-In
+
+on:
+  workflow_dispatch:
+    inputs:
+      frontend_base_url:
+        description: "Frontend base URL"
+        required: true
+        default: "http://localhost:3050"
+      learner_path:
+        description: "Learner journey path"
+        required: false
+        default: "/"
+      parent_path:
+        description: "Parent journey path"
+        required: false
+        default: "/"
+      web_server_command:
+        description: "Optional command to start frontend server"
+        required: false
+        default: ""
+
+jobs:
+  frontend-e2e-opt-in:
+    runs-on: ubuntu-latest
+    env:
+      FRONTEND_BASE_URL: ${{ inputs.frontend_base_url }}
+      PLAYWRIGHT_BASE_URL: ${{ inputs.frontend_base_url }}
+      LEARNER_JOURNEY_PATH: ${{ inputs.learner_path }}
+      PARENT_JOURNEY_PATH: ${{ inputs.parent_path }}
+      PLAYWRIGHT_WEB_SERVER_COMMAND: ${{ inputs.web_server_command }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.14.4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+          cache-dependency-path: |
+            pnpm-lock.yaml
+            app/frontend/pnpm-lock.yaml
+      - name: Install root Node dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Install frontend Node dependencies
+        run: pnpm --dir app/frontend install --frozen-lockfile
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Run mocked frontend E2E
+        run: PLAYWRIGHT_MOCK_API=1 pnpm exec playwright test tests/e2e/learner-mocked-api-journey.spec.ts tests/e2e/parent-mocked-api-journey.spec.ts
+      - name: Run smoke frontend E2E
+        run: pnpm exec playwright test tests/e2e/learner-vertical-journey.spec.ts tests/e2e/parent-vertical-journey.spec.ts
+
+      - name: Upload frontend E2E artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-e2e-artifacts
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 7

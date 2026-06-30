@@ -1,0 +1,4885 @@
+{
+  "components": {
+    "schemas": {
+      "ApiResponse": {
+        "$defs": {
+          "ApiError": {
+            "description": "Canonical API error payload for V2 responses.\n\nBackward-compatible handlers may also expose legacy top-level ``error`` and\n``message`` keys until all clients have migrated to the envelope contract.",
+            "properties": {
+              "code": {
+                "description": "Stable machine-readable error code.",
+                "title": "Code",
+                "type": "string"
+              },
+              "details": {
+                "additionalProperties": true,
+                "title": "Details",
+                "type": "object"
+              },
+              "field_errors": {
+                "description": "Validation or field-specific errors, when applicable.",
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "title": "Field Errors",
+                "type": "array"
+              },
+              "message": {
+                "description": "Human-readable error message.",
+                "title": "Message",
+                "type": "string"
+              },
+              "remediation": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Optional caller-facing hint for resolving the error.",
+                "title": "Remediation"
+              }
+            },
+            "required": [
+              "code",
+              "message"
+            ],
+            "title": "ApiError",
+            "type": "object"
+          },
+          "ApiMeta": {
+            "description": "Canonical response metadata.",
+            "properties": {
+              "api_version": {
+                "default": "v2",
+                "title": "Api Version",
+                "type": "string"
+              }
+            },
+            "title": "ApiMeta",
+            "type": "object"
+          }
+        },
+        "description": "Canonical V2 response envelope.",
+        "properties": {
+          "data": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Data"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/ApiError"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "meta": {
+            "$ref": "#/$defs/ApiMeta"
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Request Id"
+          }
+        },
+        "title": "ApiResponse",
+        "type": "object"
+      },
+      "AwardXPRequest": {
+        "properties": {
+          "event_type": {
+            "default": "lesson_completed",
+            "title": "Event Type",
+            "type": "string"
+          },
+          "learner_id": {
+            "title": "Learner Id",
+            "type": "string"
+          },
+          "lesson_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lesson Id"
+          },
+          "xp_amount": {
+            "maximum": 500.0,
+            "minimum": 1.0,
+            "title": "Xp Amount",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "learner_id",
+          "xp_amount"
+        ],
+        "title": "AwardXPRequest",
+        "type": "object"
+      },
+      "CheckoutSessionResponse": {
+        "properties": {
+          "checkout_url": {
+            "title": "Checkout Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "checkout_url"
+        ],
+        "title": "CheckoutSessionResponse",
+        "type": "object"
+      },
+      "ConsentGrantRequest": {
+        "properties": {
+          "consent_version": {
+            "default": "1.0",
+            "title": "Consent Version",
+            "type": "string"
+          },
+          "learner_id": {
+            "format": "uuid",
+            "title": "Learner Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "learner_id"
+        ],
+        "title": "ConsentGrantRequest",
+        "type": "object"
+      },
+      "ConsentRevokeRequest": {
+        "properties": {
+          "learner_id": {
+            "format": "uuid",
+            "title": "Learner Id",
+            "type": "string"
+          },
+          "reason": {
+            "default": "guardian_request",
+            "title": "Reason",
+            "type": "string"
+          }
+        },
+        "required": [
+          "learner_id"
+        ],
+        "title": "ConsentRevokeRequest",
+        "type": "object"
+      },
+      "DiagnosticAnswer": {
+        "properties": {
+          "item_id": {
+            "title": "Item Id",
+            "type": "string"
+          },
+          "selected_option": {
+            "title": "Selected Option",
+            "type": "string"
+          }
+        },
+        "required": [
+          "item_id",
+          "selected_option"
+        ],
+        "title": "DiagnosticAnswer",
+        "type": "object"
+      },
+      "DiagnosticResult": {
+        "properties": {
+          "gaps_identified": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Gaps Identified",
+            "type": "array"
+          },
+          "grade_equivalent": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Grade Equivalent"
+          },
+          "ranked_gaps": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Ranked Gaps",
+            "type": "array"
+          },
+          "session_id": {
+            "title": "Session Id",
+            "type": "string"
+          },
+          "standard_error": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Standard Error"
+          },
+          "theta_after": {
+            "title": "Theta After",
+            "type": "number"
+          },
+          "theta_before": {
+            "title": "Theta Before",
+            "type": "number"
+          }
+        },
+        "required": [
+          "session_id",
+          "theta_before",
+          "theta_after",
+          "gaps_identified"
+        ],
+        "title": "DiagnosticResult",
+        "type": "object"
+      },
+      "DiagnosticSubmit": {
+        "properties": {
+          "answers": {
+            "items": {
+              "$ref": "#/components/schemas/DiagnosticAnswer"
+            },
+            "title": "Answers",
+            "type": "array"
+          },
+          "learner_id": {
+            "title": "Learner Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "learner_id",
+          "answers"
+        ],
+        "title": "DiagnosticSubmit",
+        "type": "object"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "JobAcceptedResponse": {
+        "properties": {
+          "job_id": {
+            "title": "Job Id",
+            "type": "string"
+          },
+          "operation": {
+            "title": "Operation",
+            "type": "string"
+          },
+          "status": {
+            "default": "queued",
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id",
+          "operation"
+        ],
+        "title": "JobAcceptedResponse",
+        "type": "object"
+      },
+      "JobStatusResponse": {
+        "properties": {
+          "created_at": {
+            "title": "Created At",
+            "type": "string"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "job_id": {
+            "title": "Job Id",
+            "type": "string"
+          },
+          "operation": {
+            "title": "Operation",
+            "type": "string"
+          },
+          "payload": {
+            "additionalProperties": true,
+            "title": "Payload",
+            "type": "object"
+          },
+          "result": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Result"
+          },
+          "status": {
+            "default": "queued",
+            "title": "Status",
+            "type": "string"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id",
+          "operation",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "JobStatusResponse",
+        "type": "object"
+      },
+      "LearnerCreate": {
+        "properties": {
+          "display_name": {
+            "maxLength": 80,
+            "minLength": 2,
+            "title": "Display Name",
+            "type": "string"
+          },
+          "grade": {
+            "maximum": 7.0,
+            "minimum": 0.0,
+            "title": "Grade",
+            "type": "integer"
+          },
+          "language": {
+            "default": "en",
+            "title": "Language",
+            "type": "string"
+          }
+        },
+        "required": [
+          "display_name",
+          "grade"
+        ],
+        "title": "LearnerCreate",
+        "type": "object"
+      },
+      "LearnerResponse": {
+        "properties": {
+          "archetype": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Archetype"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "display_name": {
+            "title": "Display Name",
+            "type": "string"
+          },
+          "grade": {
+            "title": "Grade",
+            "type": "integer"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "language": {
+            "title": "Language",
+            "type": "string"
+          },
+          "pseudonym_id": {
+            "title": "Pseudonym Id",
+            "type": "string"
+          },
+          "streak_days": {
+            "title": "Streak Days",
+            "type": "integer"
+          },
+          "theta": {
+            "title": "Theta",
+            "type": "number"
+          },
+          "xp": {
+            "title": "Xp",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "pseudonym_id",
+          "display_name",
+          "grade",
+          "language",
+          "archetype",
+          "theta",
+          "xp",
+          "streak_days",
+          "created_at"
+        ],
+        "title": "LearnerResponse",
+        "type": "object"
+      },
+      "LessonRequest": {
+        "properties": {
+          "language": {
+            "default": "en",
+            "pattern": "^[a-z]{2}$",
+            "title": "Language",
+            "type": "string"
+          },
+          "learner_id": {
+            "title": "Learner Id",
+            "type": "string"
+          },
+          "subject": {
+            "maxLength": 60,
+            "minLength": 2,
+            "pattern": "^[a-zA-Z0-9\\s\\-]+$",
+            "title": "Subject",
+            "type": "string"
+          },
+          "topic": {
+            "maxLength": 120,
+            "minLength": 2,
+            "pattern": "^[a-zA-Z0-9\\s\\-\\(\\)\\.]+$",
+            "title": "Topic",
+            "type": "string"
+          }
+        },
+        "required": [
+          "learner_id",
+          "subject",
+          "topic"
+        ],
+        "title": "LessonRequest",
+        "type": "object"
+      },
+      "LoginRequest": {
+        "properties": {
+          "email": {
+            "format": "email",
+            "title": "Email",
+            "type": "string"
+          },
+          "password": {
+            "title": "Password",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ],
+        "title": "LoginRequest",
+        "type": "object"
+      },
+      "OnboardingAnswer": {
+        "properties": {
+          "answer": {
+            "title": "Answer",
+            "type": "string"
+          },
+          "question_id": {
+            "maximum": 5.0,
+            "minimum": 1.0,
+            "title": "Question Id",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "question_id",
+          "answer"
+        ],
+        "title": "OnboardingAnswer",
+        "type": "object"
+      },
+      "OnboardingResult": {
+        "properties": {
+          "archetype": {
+            "title": "Archetype",
+            "type": "string"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "learner_id": {
+            "title": "Learner Id",
+            "type": "string"
+          },
+          "probabilities": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Probabilities",
+            "type": "object"
+          }
+        },
+        "required": [
+          "learner_id",
+          "archetype",
+          "description"
+        ],
+        "title": "OnboardingResult",
+        "type": "object"
+      },
+      "OnboardingSubmit": {
+        "properties": {
+          "answers": {
+            "items": {
+              "$ref": "#/components/schemas/OnboardingAnswer"
+            },
+            "title": "Answers",
+            "type": "array"
+          },
+          "learner_id": {
+            "title": "Learner Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "learner_id",
+          "answers"
+        ],
+        "title": "OnboardingSubmit",
+        "type": "object"
+      },
+      "ParentDashboardLearner": {
+        "properties": {
+          "active_knowledge_gaps": {
+            "title": "Active Knowledge Gaps",
+            "type": "integer"
+          },
+          "archetype": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Archetype"
+          },
+          "display_name": {
+            "title": "Display Name",
+            "type": "string"
+          },
+          "grade_level": {
+            "title": "Grade Level",
+            "type": "string"
+          },
+          "irt_theta": {
+            "title": "Irt Theta",
+            "type": "number"
+          },
+          "last_lesson_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Lesson At"
+          },
+          "learner_id": {
+            "format": "uuid",
+            "title": "Learner Id",
+            "type": "string"
+          },
+          "lessons_this_week": {
+            "title": "Lessons This Week",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "learner_id",
+          "display_name",
+          "grade_level",
+          "archetype",
+          "irt_theta",
+          "lessons_this_week",
+          "active_knowledge_gaps",
+          "last_lesson_at"
+        ],
+        "title": "ParentDashboardLearner",
+        "type": "object"
+      },
+      "ParentDashboardResponse": {
+        "properties": {
+          "guardian_id": {
+            "format": "uuid",
+            "title": "Guardian Id",
+            "type": "string"
+          },
+          "learners": {
+            "items": {
+              "$ref": "#/components/schemas/ParentDashboardLearner"
+            },
+            "title": "Learners",
+            "type": "array"
+          },
+          "subscription_tier": {
+            "title": "Subscription Tier",
+            "type": "string"
+          },
+          "total_lessons_generated": {
+            "title": "Total Lessons Generated",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "guardian_id",
+          "learners",
+          "total_lessons_generated",
+          "subscription_tier"
+        ],
+        "title": "ParentDashboardResponse",
+        "type": "object"
+      },
+      "ParentTrustDashboardLearner": {
+        "properties": {
+          "ai_progress_summary": {
+            "title": "Ai Progress Summary",
+            "type": "string"
+          },
+          "archetype": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Archetype"
+          },
+          "display_name": {
+            "title": "Display Name",
+            "type": "string"
+          },
+          "export_url": {
+            "title": "Export Url",
+            "type": "string"
+          },
+          "grade_level": {
+            "title": "Grade Level",
+            "type": "integer"
+          },
+          "irt_theta": {
+            "title": "Irt Theta",
+            "type": "number"
+          },
+          "learner_id": {
+            "title": "Learner Id",
+            "type": "string"
+          },
+          "lesson_completion_rate_7d": {
+            "title": "Lesson Completion Rate 7D",
+            "type": "number"
+          },
+          "streak_days": {
+            "title": "Streak Days",
+            "type": "integer"
+          },
+          "top_knowledge_gaps": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Top Knowledge Gaps",
+            "type": "array"
+          }
+        },
+        "required": [
+          "learner_id",
+          "display_name",
+          "grade_level",
+          "archetype",
+          "irt_theta",
+          "ai_progress_summary",
+          "lesson_completion_rate_7d",
+          "streak_days",
+          "export_url"
+        ],
+        "title": "ParentTrustDashboardLearner",
+        "type": "object"
+      },
+      "ParentTrustDashboardResponse": {
+        "properties": {
+          "generated_at": {
+            "format": "date-time",
+            "title": "Generated At",
+            "type": "string"
+          },
+          "guardian_id": {
+            "title": "Guardian Id",
+            "type": "string"
+          },
+          "learners": {
+            "items": {
+              "$ref": "#/components/schemas/ParentTrustDashboardLearner"
+            },
+            "title": "Learners",
+            "type": "array"
+          },
+          "subscription_tier": {
+            "title": "Subscription Tier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "guardian_id",
+          "subscription_tier",
+          "generated_at"
+        ],
+        "title": "ParentTrustDashboardResponse",
+        "type": "object"
+      },
+      "RLHFExportRequest": {
+        "properties": {
+          "records": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Records",
+            "type": "array"
+          }
+        },
+        "title": "RLHFExportRequest",
+        "type": "object"
+      },
+      "RefreshRequest": {
+        "properties": {
+          "refresh_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Refresh Token"
+          }
+        },
+        "title": "RefreshRequest",
+        "type": "object"
+      },
+      "RegisterRequest": {
+        "properties": {
+          "display_name": {
+            "maxLength": 120,
+            "minLength": 2,
+            "title": "Display Name",
+            "type": "string"
+          },
+          "email": {
+            "format": "email",
+            "title": "Email",
+            "type": "string"
+          },
+          "password": {
+            "description": "Password must meet the EduBoost password/passphrase policy.",
+            "minLength": 12,
+            "title": "Password",
+            "type": "string"
+          },
+          "role": {
+            "default": "parent",
+            "enum": [
+              "parent",
+              "teacher"
+            ],
+            "title": "Role",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password",
+          "display_name"
+        ],
+        "title": "RegisterRequest",
+        "type": "object"
+      },
+      "StudyPlanGenerateRequest": {
+        "properties": {
+          "gap_ratio": {
+            "default": 0.4,
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Gap Ratio",
+            "type": "number"
+          }
+        },
+        "title": "StudyPlanGenerateRequest",
+        "type": "object"
+      },
+      "TokenResponse": {
+        "properties": {
+          "access_token": {
+            "title": "Access Token",
+            "type": "string"
+          },
+          "expires_in": {
+            "title": "Expires In",
+            "type": "integer"
+          },
+          "token_type": {
+            "default": "bearer",
+            "title": "Token Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "access_token",
+          "expires_in"
+        ],
+        "title": "TokenResponse",
+        "type": "object"
+      },
+      "ValidationError": {
+        "properties": {
+          "ctx": {
+            "title": "Context",
+            "type": "object"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "HTTPBearer": {
+        "scheme": "bearer",
+        "type": "http"
+      }
+    }
+  },
+  "info": {
+    "description": "AI-powered adaptive learning platform — Grade R to 7. CAPS-aligned. POPIA-compliant. Canonical runtime entrypoint: app.api_v2:app.",
+    "title": "EduBoost SA V2",
+    "version": "2.0.0",
+    "x-api-version-policy": {
+      "breaking_changes": "Require a documented deprecation window and OpenAPI diff review.",
+      "canonical_runtime": "app.api_v2:app",
+      "compatibility_prefix": "/v2",
+      "stable_prefix": "/api/v2"
+    }
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "root__get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Service metadata",
+        "tags": [
+          "ops"
+        ]
+      }
+    },
+    "/api/v2/admin/consent/trigger-renewal-reminders": {
+      "post": {
+        "description": "Queues the consent renewal reminder job as a FastAPI BackgroundTask.\nReturns 202 immediately; emails are dispatched asynchronously.\n\nAccess: Admin role required (RBAC enforced via ``require_role(\"Admin\")``\ndependency — wire once Task #15 RBAC is complete).",
+        "operationId": "trigger_renewal_reminders_api_v2_admin_consent_trigger_renewal_reminders_post",
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Trigger POPIA consent renewal reminder emails (Admin only)",
+        "tags": [
+          "V2 Admin – Consent"
+        ]
+      }
+    },
+    "/api/v2/auth/dev-session": {
+      "post": {
+        "description": "Non-production bootstrap endpoint for the local learner flow.\nCreates or reuses a guardian, learner, and active consent so the frontend\ncan exercise authenticated V2 routes without hand-editing localStorage.",
+        "operationId": "create_dev_session_api_v2_auth_dev_session_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Create Dev Session",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v2/auth/login": {
+      "post": {
+        "operationId": "login_api_v2_auth_login_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Login",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v2/auth/logout": {
+      "post": {
+        "description": "Revoke the current access token and clear the refresh token cookie.",
+        "operationId": "logout_api_v2_auth_logout_post",
+        "parameters": [
+          {
+            "in": "cookie",
+            "name": "eduboost_refresh",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Eduboost Refresh"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Logout",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v2/auth/me": {
+      "get": {
+        "operationId": "me_api_v2_auth_me_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Me",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v2/auth/refresh": {
+      "post": {
+        "operationId": "refresh_token_api_v2_auth_refresh_post",
+        "parameters": [
+          {
+            "in": "cookie",
+            "name": "eduboost_refresh",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Eduboost Refresh"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/RefreshRequest"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Refresh Token",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v2/auth/register": {
+      "post": {
+        "operationId": "register_api_v2_auth_register_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Register",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v2/auth/revoke-all": {
+      "post": {
+        "description": "Revoke ALL tokens for the current user (logout from all devices).\nUseful for security incidents or password changes.",
+        "operationId": "revoke_all_tokens_api_v2_auth_revoke_all_post",
+        "parameters": [
+          {
+            "in": "cookie",
+            "name": "eduboost_refresh",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Eduboost Refresh"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Revoke All Tokens",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v2/auth/sessions": {
+      "get": {
+        "description": "Return active refresh-token sessions for the current user.\n\nThe response intentionally exposes only token metadata, never token values.",
+        "operationId": "list_sessions_api_v2_auth_sessions_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Sessions",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v2/billing/checkout": {
+      "post": {
+        "operationId": "create_checkout_api_v2_billing_checkout_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckoutSessionResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Checkout",
+        "tags": [
+          "billing"
+        ]
+      }
+    },
+    "/api/v2/billing/create-checkout-session": {
+      "post": {
+        "operationId": "create_checkout_api_v2_billing_create_checkout_session_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckoutSessionResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Checkout",
+        "tags": [
+          "billing"
+        ]
+      }
+    },
+    "/api/v2/billing/webhook": {
+      "post": {
+        "operationId": "stripe_webhook_api_v2_billing_webhook_post",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "stripe-signature",
+            "required": true,
+            "schema": {
+              "title": "Stripe-Signature",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Stripe Webhook",
+        "tags": [
+          "billing"
+        ]
+      }
+    },
+    "/api/v2/consent/grant": {
+      "post": {
+        "operationId": "grant_consent_api_v2_consent_grant_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsentGrantRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Grant Consent Api V2 Consent Grant Post",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Grant Consent",
+        "tags": [
+          "POPIA Consent"
+        ]
+      }
+    },
+    "/api/v2/consent/revoke": {
+      "post": {
+        "operationId": "revoke_consent_api_v2_consent_revoke_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsentRevokeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Revoke Consent Api V2 Consent Revoke Post",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Revoke Consent",
+        "tags": [
+          "POPIA Consent"
+        ]
+      }
+    },
+    "/api/v2/consent/status/{learner_id}": {
+      "get": {
+        "operationId": "consent_status_api_v2_consent_status__learner_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Consent Status Api V2 Consent Status  Learner Id  Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Consent Status",
+        "tags": [
+          "POPIA Consent"
+        ]
+      }
+    },
+    "/api/v2/diagnostics/items/{learner_id}": {
+      "get": {
+        "operationId": "get_diagnostic_items_api_v2_diagnostics_items__learner_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Diagnostic Items",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
+    "/api/v2/diagnostics/submit": {
+      "post": {
+        "operationId": "submit_diagnostic_api_v2_diagnostics_submit_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DiagnosticSubmit"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiagnosticResult"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Submit Diagnostic",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
+    "/api/v2/gamification/award-xp": {
+      "post": {
+        "operationId": "award_xp_api_v2_gamification_award_xp_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AwardXPRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Award Xp",
+        "tags": [
+          "V2 Gamification"
+        ]
+      }
+    },
+    "/api/v2/gamification/leaderboard": {
+      "get": {
+        "operationId": "get_leaderboard_api_v2_gamification_leaderboard_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Leaderboard",
+        "tags": [
+          "V2 Gamification"
+        ]
+      }
+    },
+    "/api/v2/gamification/profile/{learner_id}": {
+      "get": {
+        "operationId": "get_profile_api_v2_gamification_profile__learner_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Profile",
+        "tags": [
+          "V2 Gamification"
+        ]
+      }
+    },
+    "/api/v2/health/deep": {
+      "get": {
+        "operationId": "deep_health_api_v2_health_deep_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Deep dependency health report",
+        "tags": [
+          "ops"
+        ]
+      }
+    },
+    "/api/v2/jobs/{job_id}": {
+      "get": {
+        "operationId": "get_job_status_api_v2_jobs__job_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "job_id",
+            "required": true,
+            "schema": {
+              "title": "Job Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Job Status",
+        "tags": [
+          "jobs"
+        ]
+      }
+    },
+    "/api/v2/learners/": {
+      "post": {
+        "operationId": "create_learner_api_v2_learners__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LearnerCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearnerResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Learner",
+        "tags": [
+          "learners"
+        ]
+      }
+    },
+    "/api/v2/learners/{learner_id}": {
+      "delete": {
+        "description": "POPIA Section 24 — Right to Erasure.\nMandates a valid Guardian JWT. Physical purge runs as a BackgroundTask.",
+        "operationId": "request_erasure_api_v2_learners__learner_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Request Erasure",
+        "tags": [
+          "learners"
+        ]
+      },
+      "get": {
+        "operationId": "get_learner_api_v2_learners__learner_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearnerResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Learner",
+        "tags": [
+          "learners"
+        ]
+      }
+    },
+    "/api/v2/learners/{learner_id}/mastery": {
+      "get": {
+        "operationId": "get_mastery_api_v2_learners__learner_id__mastery_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Mastery",
+        "tags": [
+          "learners"
+        ]
+      }
+    },
+    "/api/v2/lessons/": {
+      "post": {
+        "operationId": "generate_lesson_api_v2_lessons__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LessonRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Generate Lesson",
+        "tags": [
+          "lessons"
+        ]
+      }
+    },
+    "/api/v2/lessons/generate": {
+      "post": {
+        "operationId": "generate_lesson_api_v2_lessons_generate_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LessonRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Generate Lesson",
+        "tags": [
+          "lessons"
+        ]
+      }
+    },
+    "/api/v2/lessons/generate/stream": {
+      "post": {
+        "operationId": "generate_lesson_stream_api_v2_lessons_generate_stream_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LessonRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Generate Lesson Stream",
+        "tags": [
+          "lessons"
+        ]
+      }
+    },
+    "/api/v2/onboarding/archetype": {
+      "post": {
+        "operationId": "submit_onboarding_api_v2_onboarding_archetype_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OnboardingSubmit"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OnboardingResult"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Submit Onboarding",
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/api/v2/onboarding/questions": {
+      "get": {
+        "operationId": "get_onboarding_questions_api_v2_onboarding_questions_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Onboarding Questions",
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/api/v2/onboarding/submit": {
+      "post": {
+        "operationId": "submit_onboarding_api_v2_onboarding_submit_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OnboardingSubmit"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OnboardingResult"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Submit Onboarding",
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/api/v2/parents/dashboard": {
+      "get": {
+        "operationId": "get_parent_dashboard_api_v2_parents_dashboard_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParentDashboardResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Parent Dashboard",
+        "tags": [
+          "parents"
+        ]
+      }
+    },
+    "/api/v2/parents/learners/{learner_id}": {
+      "delete": {
+        "operationId": "request_erasure_api_v2_parents_learners__learner_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Request Erasure",
+        "tags": [
+          "parents"
+        ]
+      }
+    },
+    "/api/v2/parents/learners/{learner_id}/progress": {
+      "get": {
+        "operationId": "get_learner_progress_api_v2_parents_learners__learner_id__progress_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Learner Progress Api V2 Parents Learners  Learner Id  Progress Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Learner Progress",
+        "tags": [
+          "parents"
+        ]
+      }
+    },
+    "/api/v2/parents/{guardian_id}/dashboard": {
+      "get": {
+        "operationId": "get_parent_trust_dashboard_api_v2_parents__guardian_id__dashboard_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "guardian_id",
+            "required": true,
+            "schema": {
+              "title": "Guardian Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParentTrustDashboardResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Parent Trust Dashboard",
+        "tags": [
+          "parents"
+        ]
+      }
+    },
+    "/api/v2/parents/{guardian_id}/export": {
+      "get": {
+        "operationId": "export_parent_access_bundle_api_v2_parents__guardian_id__export_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "guardian_id",
+            "required": true,
+            "schema": {
+              "title": "Guardian Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Export Parent Access Bundle",
+        "tags": [
+          "parents"
+        ]
+      }
+    },
+    "/api/v2/popia/data-export/{learner_id}": {
+      "get": {
+        "description": "POPIA Right-to-Access: Export all personal data for a specific learner.\nOnly guardians of that learner (or admins) can request this.\nReturns: JSON file with all learner data.",
+        "operationId": "export_learner_data_api_v2_popia_data_export__learner_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Export Learner Data",
+        "tags": [
+          "compliance"
+        ]
+      }
+    },
+    "/api/v2/popia/deletion-cancel/{learner_id}": {
+      "post": {
+        "description": "Cancel a pending deletion request within the 30-day grace period.\nRestores the learner profile to active status.",
+        "operationId": "cancel_learner_deletion_api_v2_popia_deletion_cancel__learner_id__post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Cancel Learner Deletion",
+        "tags": [
+          "compliance"
+        ]
+      }
+    },
+    "/api/v2/popia/deletion-execute/{learner_id}": {
+      "post": {
+        "operationId": "execute_learner_deletion_api_v2_popia_deletion_execute__learner_id__post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Execute Learner Deletion",
+        "tags": [
+          "compliance"
+        ]
+      }
+    },
+    "/api/v2/popia/deletion-request/{learner_id}": {
+      "post": {
+        "description": "POPIA Right-to-Erasure: Request permanent deletion of learner data.\n\nDeletion is staged with a 30-day grace period to allow for withdrawal.\nAfter 30 days, data is permanently erased.\n\nOnly guardians of that learner can request this.",
+        "operationId": "request_learner_deletion_api_v2_popia_deletion_request__learner_id__post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Request Learner Deletion",
+        "tags": [
+          "compliance"
+        ]
+      }
+    },
+    "/api/v2/popia/deletion-status/{learner_id}": {
+      "get": {
+        "description": "Check if a learner has a pending deletion request.",
+        "operationId": "get_deletion_status_api_v2_popia_deletion_status__learner_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Deletion Status",
+        "tags": [
+          "compliance"
+        ]
+      }
+    },
+    "/api/v2/popia/rlhf-export/{export_format}": {
+      "post": {
+        "operationId": "export_rlhf_dataset_api_v2_popia_rlhf_export__export_format__post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "export_format",
+            "required": true,
+            "schema": {
+              "title": "Export Format",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RLHFExportRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Export Rlhf Dataset",
+        "tags": [
+          "compliance"
+        ]
+      }
+    },
+    "/api/v2/study-plans/generate/{learner_id}": {
+      "post": {
+        "operationId": "generate_study_plan_api_v2_study_plans_generate__learner_id__post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudyPlanGenerateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Generate Study Plan",
+        "tags": [
+          "V2 Study Plans"
+        ]
+      }
+    },
+    "/api/v2/study-plans/{learner_id}": {
+      "post": {
+        "operationId": "generate_study_plan_api_v2_study_plans__learner_id__post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudyPlanGenerateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Generate Study Plan",
+        "tags": [
+          "V2 Study Plans"
+        ]
+      }
+    },
+    "/health": {
+      "get": {
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Lightweight liveness probe",
+        "tags": [
+          "ops"
+        ]
+      }
+    },
+    "/metrics": {
+      "get": {
+        "operationId": "metrics_metrics_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Prometheus metrics endpoint",
+        "tags": [
+          "ops"
+        ]
+      }
+    },
+    "/ready": {
+      "get": {
+        "operationId": "ready_ready_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Dependency-aware readiness probe",
+        "tags": [
+          "ops"
+        ]
+      }
+    },
+    "/v2/admin/consent/trigger-renewal-reminders": {
+      "post": {
+        "description": "Queues the consent renewal reminder job as a FastAPI BackgroundTask.\nReturns 202 immediately; emails are dispatched asynchronously.\n\nAccess: Admin role required (RBAC enforced via ``require_role(\"Admin\")``\ndependency — wire once Task #15 RBAC is complete).",
+        "operationId": "trigger_renewal_reminders_v2_admin_consent_trigger_renewal_reminders_post",
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Trigger POPIA consent renewal reminder emails (Admin only)",
+        "tags": [
+          "V2 Admin – Consent"
+        ]
+      }
+    },
+    "/v2/auth/dev-session": {
+      "post": {
+        "description": "Non-production bootstrap endpoint for the local learner flow.\nCreates or reuses a guardian, learner, and active consent so the frontend\ncan exercise authenticated V2 routes without hand-editing localStorage.",
+        "operationId": "create_dev_session_v2_auth_dev_session_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Create Dev Session",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/v2/auth/login": {
+      "post": {
+        "operationId": "login_v2_auth_login_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Login",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/v2/auth/logout": {
+      "post": {
+        "description": "Revoke the current access token and clear the refresh token cookie.",
+        "operationId": "logout_v2_auth_logout_post",
+        "parameters": [
+          {
+            "in": "cookie",
+            "name": "eduboost_refresh",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Eduboost Refresh"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Logout",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/v2/auth/me": {
+      "get": {
+        "operationId": "me_v2_auth_me_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Me",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/v2/auth/refresh": {
+      "post": {
+        "operationId": "refresh_token_v2_auth_refresh_post",
+        "parameters": [
+          {
+            "in": "cookie",
+            "name": "eduboost_refresh",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Eduboost Refresh"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/RefreshRequest"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Refresh Token",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/v2/auth/register": {
+      "post": {
+        "operationId": "register_v2_auth_register_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Register",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/v2/auth/revoke-all": {
+      "post": {
+        "description": "Revoke ALL tokens for the current user (logout from all devices).\nUseful for security incidents or password changes.",
+        "operationId": "revoke_all_tokens_v2_auth_revoke_all_post",
+        "parameters": [
+          {
+            "in": "cookie",
+            "name": "eduboost_refresh",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Eduboost Refresh"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Revoke All Tokens",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/v2/auth/sessions": {
+      "get": {
+        "description": "Return active refresh-token sessions for the current user.\n\nThe response intentionally exposes only token metadata, never token values.",
+        "operationId": "list_sessions_v2_auth_sessions_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Sessions",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/v2/billing/checkout": {
+      "post": {
+        "operationId": "create_checkout_v2_billing_checkout_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckoutSessionResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Checkout",
+        "tags": [
+          "billing"
+        ]
+      }
+    },
+    "/v2/billing/create-checkout-session": {
+      "post": {
+        "operationId": "create_checkout_v2_billing_create_checkout_session_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckoutSessionResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Checkout",
+        "tags": [
+          "billing"
+        ]
+      }
+    },
+    "/v2/billing/webhook": {
+      "post": {
+        "operationId": "stripe_webhook_v2_billing_webhook_post",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "stripe-signature",
+            "required": true,
+            "schema": {
+              "title": "Stripe-Signature",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Stripe Webhook",
+        "tags": [
+          "billing"
+        ]
+      }
+    },
+    "/v2/consent/grant": {
+      "post": {
+        "operationId": "grant_consent_v2_consent_grant_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsentGrantRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Grant Consent V2 Consent Grant Post",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Grant Consent",
+        "tags": [
+          "POPIA Consent"
+        ]
+      }
+    },
+    "/v2/consent/revoke": {
+      "post": {
+        "operationId": "revoke_consent_v2_consent_revoke_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsentRevokeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Revoke Consent V2 Consent Revoke Post",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Revoke Consent",
+        "tags": [
+          "POPIA Consent"
+        ]
+      }
+    },
+    "/v2/consent/status/{learner_id}": {
+      "get": {
+        "operationId": "consent_status_v2_consent_status__learner_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Consent Status V2 Consent Status  Learner Id  Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Consent Status",
+        "tags": [
+          "POPIA Consent"
+        ]
+      }
+    },
+    "/v2/diagnostics/items/{learner_id}": {
+      "get": {
+        "operationId": "get_diagnostic_items_v2_diagnostics_items__learner_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Diagnostic Items",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
+    "/v2/diagnostics/submit": {
+      "post": {
+        "operationId": "submit_diagnostic_v2_diagnostics_submit_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DiagnosticSubmit"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiagnosticResult"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Submit Diagnostic",
+        "tags": [
+          "diagnostics"
+        ]
+      }
+    },
+    "/v2/gamification/award-xp": {
+      "post": {
+        "operationId": "award_xp_v2_gamification_award_xp_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AwardXPRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Award Xp",
+        "tags": [
+          "V2 Gamification"
+        ]
+      }
+    },
+    "/v2/gamification/leaderboard": {
+      "get": {
+        "operationId": "get_leaderboard_v2_gamification_leaderboard_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Leaderboard",
+        "tags": [
+          "V2 Gamification"
+        ]
+      }
+    },
+    "/v2/gamification/profile/{learner_id}": {
+      "get": {
+        "operationId": "get_profile_v2_gamification_profile__learner_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Profile",
+        "tags": [
+          "V2 Gamification"
+        ]
+      }
+    },
+    "/v2/health/deep": {
+      "get": {
+        "operationId": "deep_health_v2_health_deep_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Deep dependency health report",
+        "tags": [
+          "ops"
+        ]
+      }
+    },
+    "/v2/jobs/{job_id}": {
+      "get": {
+        "operationId": "get_job_status_v2_jobs__job_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "job_id",
+            "required": true,
+            "schema": {
+              "title": "Job Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Job Status",
+        "tags": [
+          "jobs"
+        ]
+      }
+    },
+    "/v2/learners/": {
+      "post": {
+        "operationId": "create_learner_v2_learners__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LearnerCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearnerResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Learner",
+        "tags": [
+          "learners"
+        ]
+      }
+    },
+    "/v2/learners/{learner_id}": {
+      "delete": {
+        "description": "POPIA Section 24 — Right to Erasure.\nMandates a valid Guardian JWT. Physical purge runs as a BackgroundTask.",
+        "operationId": "request_erasure_v2_learners__learner_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Request Erasure",
+        "tags": [
+          "learners"
+        ]
+      },
+      "get": {
+        "operationId": "get_learner_v2_learners__learner_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearnerResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Learner",
+        "tags": [
+          "learners"
+        ]
+      }
+    },
+    "/v2/learners/{learner_id}/mastery": {
+      "get": {
+        "operationId": "get_mastery_v2_learners__learner_id__mastery_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Mastery",
+        "tags": [
+          "learners"
+        ]
+      }
+    },
+    "/v2/lessons/": {
+      "post": {
+        "operationId": "generate_lesson_v2_lessons__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LessonRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Generate Lesson",
+        "tags": [
+          "lessons"
+        ]
+      }
+    },
+    "/v2/lessons/generate": {
+      "post": {
+        "operationId": "generate_lesson_v2_lessons_generate_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LessonRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Generate Lesson",
+        "tags": [
+          "lessons"
+        ]
+      }
+    },
+    "/v2/lessons/generate/stream": {
+      "post": {
+        "operationId": "generate_lesson_stream_v2_lessons_generate_stream_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LessonRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Generate Lesson Stream",
+        "tags": [
+          "lessons"
+        ]
+      }
+    },
+    "/v2/onboarding/archetype": {
+      "post": {
+        "operationId": "submit_onboarding_v2_onboarding_archetype_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OnboardingSubmit"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OnboardingResult"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Submit Onboarding",
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/v2/onboarding/questions": {
+      "get": {
+        "operationId": "get_onboarding_questions_v2_onboarding_questions_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Onboarding Questions",
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/v2/onboarding/submit": {
+      "post": {
+        "operationId": "submit_onboarding_v2_onboarding_submit_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OnboardingSubmit"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OnboardingResult"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Submit Onboarding",
+        "tags": [
+          "onboarding"
+        ]
+      }
+    },
+    "/v2/parents/dashboard": {
+      "get": {
+        "operationId": "get_parent_dashboard_v2_parents_dashboard_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParentDashboardResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Parent Dashboard",
+        "tags": [
+          "parents"
+        ]
+      }
+    },
+    "/v2/parents/learners/{learner_id}": {
+      "delete": {
+        "operationId": "request_erasure_v2_parents_learners__learner_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Request Erasure",
+        "tags": [
+          "parents"
+        ]
+      }
+    },
+    "/v2/parents/learners/{learner_id}/progress": {
+      "get": {
+        "operationId": "get_learner_progress_v2_parents_learners__learner_id__progress_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Learner Progress V2 Parents Learners  Learner Id  Progress Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Learner Progress",
+        "tags": [
+          "parents"
+        ]
+      }
+    },
+    "/v2/parents/{guardian_id}/dashboard": {
+      "get": {
+        "operationId": "get_parent_trust_dashboard_v2_parents__guardian_id__dashboard_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "guardian_id",
+            "required": true,
+            "schema": {
+              "title": "Guardian Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParentTrustDashboardResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Parent Trust Dashboard",
+        "tags": [
+          "parents"
+        ]
+      }
+    },
+    "/v2/parents/{guardian_id}/export": {
+      "get": {
+        "operationId": "export_parent_access_bundle_v2_parents__guardian_id__export_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "guardian_id",
+            "required": true,
+            "schema": {
+              "title": "Guardian Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Export Parent Access Bundle",
+        "tags": [
+          "parents"
+        ]
+      }
+    },
+    "/v2/popia/data-export/{learner_id}": {
+      "get": {
+        "description": "POPIA Right-to-Access: Export all personal data for a specific learner.\nOnly guardians of that learner (or admins) can request this.\nReturns: JSON file with all learner data.",
+        "operationId": "export_learner_data_v2_popia_data_export__learner_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Export Learner Data",
+        "tags": [
+          "compliance"
+        ]
+      }
+    },
+    "/v2/popia/deletion-cancel/{learner_id}": {
+      "post": {
+        "description": "Cancel a pending deletion request within the 30-day grace period.\nRestores the learner profile to active status.",
+        "operationId": "cancel_learner_deletion_v2_popia_deletion_cancel__learner_id__post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Cancel Learner Deletion",
+        "tags": [
+          "compliance"
+        ]
+      }
+    },
+    "/v2/popia/deletion-execute/{learner_id}": {
+      "post": {
+        "operationId": "execute_learner_deletion_v2_popia_deletion_execute__learner_id__post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Execute Learner Deletion",
+        "tags": [
+          "compliance"
+        ]
+      }
+    },
+    "/v2/popia/deletion-request/{learner_id}": {
+      "post": {
+        "description": "POPIA Right-to-Erasure: Request permanent deletion of learner data.\n\nDeletion is staged with a 30-day grace period to allow for withdrawal.\nAfter 30 days, data is permanently erased.\n\nOnly guardians of that learner can request this.",
+        "operationId": "request_learner_deletion_v2_popia_deletion_request__learner_id__post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Request Learner Deletion",
+        "tags": [
+          "compliance"
+        ]
+      }
+    },
+    "/v2/popia/deletion-status/{learner_id}": {
+      "get": {
+        "description": "Check if a learner has a pending deletion request.",
+        "operationId": "get_deletion_status_v2_popia_deletion_status__learner_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Deletion Status",
+        "tags": [
+          "compliance"
+        ]
+      }
+    },
+    "/v2/popia/rlhf-export/{export_format}": {
+      "post": {
+        "operationId": "export_rlhf_dataset_v2_popia_rlhf_export__export_format__post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "export_format",
+            "required": true,
+            "schema": {
+              "title": "Export Format",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RLHFExportRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Export Rlhf Dataset",
+        "tags": [
+          "compliance"
+        ]
+      }
+    },
+    "/v2/study-plans/generate/{learner_id}": {
+      "post": {
+        "operationId": "generate_study_plan_v2_study_plans_generate__learner_id__post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudyPlanGenerateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Generate Study Plan",
+        "tags": [
+          "V2 Study Plans"
+        ]
+      }
+    },
+    "/v2/study-plans/{learner_id}": {
+      "post": {
+        "operationId": "generate_study_plan_v2_study_plans__learner_id__post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudyPlanGenerateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Generate Study Plan",
+        "tags": [
+          "V2 Study Plans"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "description": "Runtime health, readiness, metrics, and service metadata.",
+      "name": "ops"
+    },
+    {
+      "description": "Guardian/learner authentication, session, and token workflows.",
+      "name": "auth"
+    },
+    {
+      "description": "Learner profile and lifecycle operations.",
+      "name": "learners"
+    },
+    {
+      "description": "CAPS-aligned AI lesson generation and retrieval.",
+      "name": "lessons"
+    },
+    {
+      "description": "Diagnostic assessment submission and learning-state updates.",
+      "name": "diagnostics"
+    },
+    {
+      "description": "POPIA data-rights and privacy operations.",
+      "name": "compliance"
+    },
+    {
+      "description": "Subscription checkout and billing webhook integrations.",
+      "name": "billing"
+    },
+    {
+      "description": "Asynchronous job status and accepted-work responses.",
+      "name": "jobs"
+    }
+  ]
+}

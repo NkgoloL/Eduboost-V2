@@ -1,0 +1,46 @@
+........................................................................ [  4%]
+........................................................................ [  9%]
+......s................................................................. [ 14%]
+........................................................................ [ 19%]
+........................................................................ [ 24%]
+........................................................................ [ 29%]
+........................................................................ [ 34%]
+........................................................................ [ 39%]
+........................................................................ [ 44%]
+........................................................................ [ 49%]
+........................................................................ [ 54%]
+........................................................................ [ 59%]
+........................................................................ [ 64%]
+........................................................................ [ 69%]
+........................................................................ [ 74%]
+........................................................................ [ 79%]
+........................................................................ [ 84%]
+........................................................................ [ 89%]
+........................................................................ [ 93%]
+........................................................................ [ 98%]
+................                                                         [100%]
+=============================== warnings summary ===============================
+../../../../.local/lib/python3.12/site-packages/_hypothesis_pytestplugin.py:481
+  /home/nkgolol/.local/lib/python3.12/site-packages/_hypothesis_pytestplugin.py:481: UserWarning: Skipping collection of '.hypothesis' directory - this usually means you've explicitly set the `norecursedirs` pytest config option, replacing rather than extending the default ignores.
+    warnings.warn(
+
+tests/unit/test_v2_repositories_full.py::TestLessonRepository::test_create_commits
+  /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/app/repositories/lesson_repository.py:31: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    db.add(lesson)
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/unit/test_v2_repositories_full.py::TestDiagnosticRepository::test_create_session_commits
+  /home/nkgolol/Dev/SandBox/dev/Eduboost-V2/app/core/base.py:52: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    db.add(instance)
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/unit/test_v2_services_full.py::TestLessonServiceV2::test_generate_calls_llm_on_cache_miss
+  /usr/lib/python3.12/unittest/mock.py:434: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    new = type(cls.__name__, bases, {'__doc__': cls.__doc__})
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1455 passed, 1 skipped, 4 warnings in 128.67s (0:02:08)

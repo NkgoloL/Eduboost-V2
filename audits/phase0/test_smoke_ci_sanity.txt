@@ -1,0 +1,40 @@
+    from app.main import app
+E   ModuleNotFoundError: No module named 'app.main'
+_ ERROR at setup of TestContentFactoryAdminAPISmoke.test_openapi_includes_admin_content_factory _
+tests/smoke/test_content_factory_admin_api_smoke.py:16: in client
+    from app.main import app
+E   ModuleNotFoundError: No module named 'app.main'
+_ ERROR at setup of TestContentFactoryAdminAPISmoke.test_no_public_content_factory_in_openapi _
+tests/smoke/test_content_factory_admin_api_smoke.py:16: in client
+    from app.main import app
+E   ModuleNotFoundError: No module named 'app.main'
+=================================== FAILURES ===================================
+___ TestContentFactoryStartupFlags.test_app_imports_with_generation_disabled ___
+tests/smoke/test_content_factory_startup_flags.py:17: in test_app_imports_with_generation_disabled
+    from app.main import app
+E   ModuleNotFoundError: No module named 'app.main'
+__ TestContentFactoryStartupFlags.test_app_imports_with_startup_seed_disabled __
+tests/smoke/test_content_factory_startup_flags.py:23: in test_app_imports_with_startup_seed_disabled
+    from app.main import app
+E   ModuleNotFoundError: No module named 'app.main'
+_____ TestContentFactoryStartupFlags.test_no_public_content_factory_route ______
+tests/smoke/test_content_factory_startup_flags.py:28: in test_no_public_content_factory_route
+    from app.main import app
+E   ModuleNotFoundError: No module named 'app.main'
+_________ TestContentFactoryStartupFlags.test_admin_routers_registered _________
+tests/smoke/test_content_factory_startup_flags.py:47: in test_admin_routers_registered
+    from app.main import app
+E   ModuleNotFoundError: No module named 'app.main'
+=========================== short test summary info ============================
+FAILED tests/smoke/test_content_factory_startup_flags.py::TestContentFactoryStartupFlags::test_app_imports_with_generation_disabled
+FAILED tests/smoke/test_content_factory_startup_flags.py::TestContentFactoryStartupFlags::test_app_imports_with_startup_seed_disabled
+FAILED tests/smoke/test_content_factory_startup_flags.py::TestContentFactoryStartupFlags::test_no_public_content_factory_route
+FAILED tests/smoke/test_content_factory_startup_flags.py::TestContentFactoryStartupFlags::test_admin_routers_registered
+ERROR tests/smoke/test_content_factory_admin_api_smoke.py::TestContentFactoryAdminAPISmoke::test_unauthenticated_health_rejected
+ERROR tests/smoke/test_content_factory_admin_api_smoke.py::TestContentFactoryAdminAPISmoke::test_admin_health_endpoint_exists
+ERROR tests/smoke/test_content_factory_admin_api_smoke.py::TestContentFactoryAdminAPISmoke::test_admin_scopes_endpoint_exists
+ERROR tests/smoke/test_content_factory_admin_api_smoke.py::TestContentFactoryAdminAPISmoke::test_admin_runs_endpoint_exists
+ERROR tests/smoke/test_content_factory_admin_api_smoke.py::TestContentFactoryAdminAPISmoke::test_admin_etl_status_endpoint_exists
+ERROR tests/smoke/test_content_factory_admin_api_smoke.py::TestContentFactoryAdminAPISmoke::test_openapi_includes_admin_content_factory
+ERROR tests/smoke/test_content_factory_admin_api_smoke.py::TestContentFactoryAdminAPISmoke::test_no_public_content_factory_in_openapi
+============== 4 failed, 21 passed, 27 skipped, 7 errors in 8.52s ==============

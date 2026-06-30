@@ -26,17 +26,16 @@ export function LearnerProvider({ children }: { children: React.ReactNode }) {
   const [badge, setBadge] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Load learner from localStorage on initial mount
   useEffect(() => {
-    const saved = localStorage.getItem("eb_active_learner");
-    if (saved) {
-      try {
-        setLearner(JSON.parse(saved));
-      } catch (e) {
-        console.error("Failed to parse saved learner", e);
-      }
-    }
-    setLoading(false);
+    let active = true;
+    const restoreLearner = async () => {
+      if (!active) return;
+      setLoading(false);
+    };
+    restoreLearner();
+    return () => {
+      active = false;
+    };
   }, []);
 
   const refreshState = useCallback(async () => {
@@ -61,13 +60,10 @@ export function LearnerProvider({ children }: { children: React.ReactNode }) {
     }
   }, [learner?.learner_id]);
 
-  // Save learner to localStorage whenever it changes
   useEffect(() => {
     if (learner) {
-      localStorage.setItem("eb_active_learner", JSON.stringify(learner));
       refreshState();
     } else {
-      localStorage.removeItem("eb_active_learner");
       setMasteryData({});
       setGamification(null);
     }

@@ -1,0 +1,375 @@
+{
+  "generated_at": "2026-06-27T02:18:27Z",
+  "current_commit": "88840fc52a05c694c6d313e57bc8cba4bcda4c63",
+  "beta_decision": "NO-GO",
+  "beta_blocker_count": 10,
+  "surfaces": [
+    {
+      "name": "ci_run_evidence",
+      "status": "ok",
+      "detail": "external-blocked"
+    },
+    {
+      "name": "external_approval_gate",
+      "status": "ok",
+      "detail": "external-blocked"
+    },
+    {
+      "name": "approval_evidence",
+      "status": "ok",
+      "detail": "external-blocked"
+    },
+    {
+      "name": "staging_acceptance",
+      "status": "ok",
+      "detail": "external-blocked"
+    },
+    {
+      "name": "live_db_tx_evidence",
+      "status": "ok",
+      "detail": "external-blocked"
+    },
+    {
+      "name": "route_tx_slice_rollup",
+      "status": "missing",
+      "detail": "missing"
+    },
+    {
+      "name": "release_go_no_go",
+      "status": "ok",
+      "detail": "NO-GO"
+    },
+    {
+      "name": "beta_blocker_burndown",
+      "status": "missing",
+      "detail": "missing"
+    },
+    {
+      "name": "docs_inventory",
+      "status": "ok",
+      "detail": "docs_inventory"
+    },
+    {
+      "name": "auth_refresh_db_evidence",
+      "status": "ok",
+      "detail": "auth-refresh-db-evidence-accepted"
+    }
+  ],
+  "refresh_results": [
+    {
+      "name": "ci_run_evidence",
+      "status": "ok",
+      "detail": "external-blocked"
+    },
+    {
+      "name": "external_approval_gate",
+      "status": "ok",
+      "detail": "external-blocked"
+    },
+    {
+      "name": "approval_evidence",
+      "status": "ok",
+      "detail": "external-blocked"
+    },
+    {
+      "name": "staging_acceptance",
+      "status": "ok",
+      "detail": "external-blocked"
+    },
+    {
+      "name": "live_db_tx_evidence",
+      "status": "ok",
+      "detail": "external-blocked"
+    },
+    {
+      "name": "route_tx_slice_rollup",
+      "status": "missing",
+      "detail": "missing"
+    },
+    {
+      "name": "release_go_no_go",
+      "status": "ok",
+      "detail": "NO-GO"
+    },
+    {
+      "name": "beta_blocker_burndown",
+      "status": "missing",
+      "detail": "missing"
+    },
+    {
+      "name": "docs_inventory",
+      "status": "ok",
+      "detail": "docs_inventory"
+    },
+    {
+      "name": "auth_refresh_db_evidence",
+      "status": "ok",
+      "detail": "auth-refresh-db-evidence-accepted"
+    }
+  ],
+  "beta_critical_findings": [
+    {
+      "id": "JWT-001",
+      "title": "JWT fallback safety and production secret guard",
+      "proof_status": "runtime-passing",
+      "closure_blocker": "external production secret provisioning and rotation evidence",
+      "evidence_file": "docs/release/jwt_production_guard_repair_report.md",
+      "external_dependency": false,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "ARQ-001",
+      "title": "ARQ dependency pin and worker import proof",
+      "proof_status": "runtime-passing",
+      "closure_blocker": "live Redis worker enqueue/dequeue staging evidence",
+      "evidence_file": "docs/release/arq_dependency_worker_import_repair_report.md",
+      "external_dependency": false,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "POPIA-001",
+      "title": "POPIA lifecycle HTTP response-contract proof",
+      "proof_status": "not-proven",
+      "closure_blocker": "skipped tests are not proof; POPIA-001 remains beta-blocking and is repaired separately by POPIA-001R",
+      "evidence_file": "docs/release/popia_response_contract_no_skip_status.md",
+      "external_dependency": false,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "CI-001",
+      "title": "Authoritative CI on release repo and branch",
+      "proof_status": "external-blocked",
+      "closure_blocker": "valid GitHub Actions run URL and passing result metadata required",
+      "evidence_file": "docs/release/ci_evidence.md",
+      "external_dependency": true,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "LEGAL-001",
+      "title": "POPIA/legal release approval",
+      "proof_status": "external-blocked",
+      "closure_blocker": "external approval sign-off metadata required",
+      "evidence_file": "docs/release/external_approvals/legal_approval.md",
+      "external_dependency": true,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "SEC-001",
+      "title": "Security release approval",
+      "proof_status": "external-blocked",
+      "closure_blocker": "external approval sign-off metadata required",
+      "evidence_file": "docs/release/external_approvals/security_approval.md",
+      "external_dependency": true,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "CONTENT-001",
+      "title": "Educator/content release approval",
+      "proof_status": "external-blocked",
+      "closure_blocker": "external approval sign-off metadata required",
+      "evidence_file": "docs/release/external_approvals/content_approval.md",
+      "external_dependency": true,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "LESSON-AUTH-001",
+      "title": "Lesson object authorization hardening and negative tests",
+      "proof_status": "runtime-passing",
+      "closure_blocker": "full HTTP and staging proof for all lesson routes remains pending",
+      "evidence_file": "docs/release/lesson_authorization_hardening_report.md",
+      "external_dependency": false,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "STAGING-001",
+      "title": "Staging acceptance approval",
+      "proof_status": "external-blocked",
+      "closure_blocker": "external approval sign-off metadata required",
+      "evidence_file": "docs/release/external_approvals/staging_acceptance.md",
+      "external_dependency": true,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "EXT-GATE-001",
+      "title": "External approval tracking gate",
+      "proof_status": "runtime-passing",
+      "closure_blocker": "required external approval items remain external-blocked until signed off",
+      "evidence_file": "docs/release/external_approval_status.md",
+      "external_dependency": true,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    }
+  ],
+  "non_ready_beta_findings": [
+    {
+      "id": "JWT-001",
+      "title": "JWT fallback safety and production secret guard",
+      "proof_status": "runtime-passing",
+      "closure_blocker": "external production secret provisioning and rotation evidence",
+      "evidence_file": "docs/release/jwt_production_guard_repair_report.md",
+      "external_dependency": false,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "ARQ-001",
+      "title": "ARQ dependency pin and worker import proof",
+      "proof_status": "runtime-passing",
+      "closure_blocker": "live Redis worker enqueue/dequeue staging evidence",
+      "evidence_file": "docs/release/arq_dependency_worker_import_repair_report.md",
+      "external_dependency": false,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "POPIA-001",
+      "title": "POPIA lifecycle HTTP response-contract proof",
+      "proof_status": "not-proven",
+      "closure_blocker": "skipped tests are not proof; POPIA-001 remains beta-blocking and is repaired separately by POPIA-001R",
+      "evidence_file": "docs/release/popia_response_contract_no_skip_status.md",
+      "external_dependency": false,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "CI-001",
+      "title": "Authoritative CI on release repo and branch",
+      "proof_status": "external-blocked",
+      "closure_blocker": "valid GitHub Actions run URL and passing result metadata required",
+      "evidence_file": "docs/release/ci_evidence.md",
+      "external_dependency": true,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "LEGAL-001",
+      "title": "POPIA/legal release approval",
+      "proof_status": "external-blocked",
+      "closure_blocker": "external approval sign-off metadata required",
+      "evidence_file": "docs/release/external_approvals/legal_approval.md",
+      "external_dependency": true,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "SEC-001",
+      "title": "Security release approval",
+      "proof_status": "external-blocked",
+      "closure_blocker": "external approval sign-off metadata required",
+      "evidence_file": "docs/release/external_approvals/security_approval.md",
+      "external_dependency": true,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "CONTENT-001",
+      "title": "Educator/content release approval",
+      "proof_status": "external-blocked",
+      "closure_blocker": "external approval sign-off metadata required",
+      "evidence_file": "docs/release/external_approvals/content_approval.md",
+      "external_dependency": true,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "LESSON-AUTH-001",
+      "title": "Lesson object authorization hardening and negative tests",
+      "proof_status": "runtime-passing",
+      "closure_blocker": "full HTTP and staging proof for all lesson routes remains pending",
+      "evidence_file": "docs/release/lesson_authorization_hardening_report.md",
+      "external_dependency": false,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "STAGING-001",
+      "title": "Staging acceptance approval",
+      "proof_status": "external-blocked",
+      "closure_blocker": "external approval sign-off metadata required",
+      "evidence_file": "docs/release/external_approvals/staging_acceptance.md",
+      "external_dependency": true,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    },
+    {
+      "id": "EXT-GATE-001",
+      "title": "External approval tracking gate",
+      "proof_status": "runtime-passing",
+      "closure_blocker": "required external approval items remain external-blocked until signed off",
+      "evidence_file": "docs/release/external_approval_status.md",
+      "external_dependency": true,
+      "registry_blocks_beta": true,
+      "release_ready": false,
+      "effective_blocks_beta": true
+    }
+  ],
+  "resolved_non_blocking_findings": [
+    {
+      "id": "AUTH-REFRESH-DB-PROOF-001",
+      "title": "Auth refresh-token DB persistence and revocation proof",
+      "proof_status": "integration-passing",
+      "closure_blocker": "none",
+      "evidence_file": "docs/release/auth_refresh_db_evidence_status.md",
+      "external_dependency": true,
+      "registry_blocks_beta": false,
+      "release_ready": true,
+      "effective_blocks_beta": false
+    },
+    {
+      "id": "AUTH-REFRESH-DB-EVIDENCE-001",
+      "title": "Auth refresh DB proof evidence attachment gate",
+      "proof_status": "integration-passing",
+      "closure_blocker": "none",
+      "evidence_file": "docs/release/auth_refresh_db_evidence_status.md",
+      "external_dependency": true,
+      "registry_blocks_beta": false,
+      "release_ready": true,
+      "effective_blocks_beta": false
+    }
+  ],
+  "required_next_actions": [
+    "Resolve JWT-001: external production secret provisioning and rotation evidence.",
+    "Resolve ARQ-001: live Redis worker enqueue/dequeue staging evidence.",
+    "Repair POPIA-001 skipped response-contract proof so no skipped tests are counted.",
+    "Attach accepted GitHub Actions CI evidence for CI-001.",
+    "Attach complete external approval metadata for LEGAL-001.",
+    "Attach complete external approval metadata for SEC-001.",
+    "Attach complete external approval metadata for CONTENT-001.",
+    "Resolve LESSON-AUTH-001: full HTTP and staging proof for all lesson routes remains pending.",
+    "Attach accepted staging smoke evidence and run URL for STAGING-001.",
+    "Complete all external approval items tracked by EXT-GATE-001."
+  ],
+  "no_false_closure_rules": [
+    "Do not mark beta GO while any effective beta-blocking registry item is not release-ready.",
+    "Integration-passing with `closure_blocker: none` can be release-ready even when the item had an external dependency.",
+    "External-blocked, not-proven, skipped-test, scaffold-only, and unresolved runtime/staging blockers remain beta-blocking."
+  ]
+}

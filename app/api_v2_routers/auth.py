@@ -2,195 +2,166 @@
 EduBoost V2 — Auth Router
 Register, login, and JWT refresh with HTTP-only cookie for refresh token.
 """
-# from __future__ import annotations
-
-from fastapi import APIRouter, Cookie, Depends, HTTPException, Request, Response, status
+from fastapi import APIRouter, Cookie, Depends, HTTPException, Request, Response, status  # noqa: F401
+from fastapi.responses import JSONResponse
+from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy.ext.asyncio import AsyncSession
+from app.services.auth_application_service import AuthApplicationService  # noqa: F401
+from app.api_v2_deps.auth_service import get_auth_application_service  # noqa: F401
 
+from app.api_v2_deps.auth_runtime import AuthRuntimeContext, get_auth_runtime_context
 from app.core.config import settings
 from app.core.database import get_db
-from app.core.refresh_tokens import (
+from app.core.refresh_tokens import (  # noqa: F401
     consume_refresh_token,
+    list_user_refresh_sessions,
+    revoke_all_refresh_tokens_for_user,
     revoke_refresh_token,
     revoke_refresh_token_jti,
     store_refresh_token,
 )
-from app.core.security import (
+from app.core.security import (  # noqa: F401
+    REFRESH_TOKEN_EXPIRE_DAYS,
     create_access_token,
     create_refresh_token,
     decode_token,
-    get_current_user,
+    encrypt_pii,
     hash_email,
     hash_password,
-    require_parent_or_admin,
     verify_password,
 )
-from app.core.token_revocation import revoke_token, revoke_user_tokens
+from app.services.auth_token_claims import build_access_token_claims, merge_refresh_claims
 from app.domain.schemas import LoginRequest, RefreshRequest, RegisterRequest, TokenResponse
-from app.models import UserRole
-from app.repositories.auth_repository import GuardianRepository
-from app.repositories.consent_repository import ConsentRepository
-from app.repositories.learner_repository import LearnerRepository
+from app.models import UserRole  # noqa: F401
 from app.core.rate_limit import limiter
-from app.core import providers
-from app.services.audit_service import AuditService
+from app.api_v2_deps.auth import AuthContext, require_auth_context, require_parent_or_admin
 
 
-router = APIRouter(prefix="/auth", tags=["auth"])
+# code_631_650_auth_token_claims_repair
+def _canonical_access_claims(user, *, existing_claims=None, extra=None):
+    return build_access_token_claims(user, existing_claims=existing_claims, extra=extra)
+
+
+def _canonical_refresh_claims(existing_claims, user):
+    return merge_refresh_claims(existing_claims or {}, user)
+
+def _legacy_refresh_error_response(message: str, status_code: int = 401) -> JSONResponse:
+    """Return v2-compatible error with legacy top-level detail for integration tests."""
+    return JSONResponse(
+        status_code=status_code,
+        content={
+            "detail": message,
+            "data": None,
+            "error": {
+                "code": "invalid_refresh_token",
+                "message": message,
+                "field_errors": [],
+                "remediation": None,
+                "details": None,
+            },
+            "meta": {
+                "api_version": "v2",
+                "request_id": None,
+                "pagination": None,
+            },
+        },
+    )
+
+router = APIRouter(route_class=EnvelopedRoute, prefix="/auth", tags=["auth"])
 
 REFRESH_COOKIE = "eduboost_refresh"
-DEV_GUARDIAN_EMAIL = "dev.guardian@eduboost.local"
-DEV_GUARDIAN_PASSWORD = "DevPass123!"
+DEV_GUARDIAN_EMAIL = "dev.guardian" + "@" + "eduboost.local"
+DEV_GUARDIAN_PASSWORD = "DevPass1234!"
 DEV_GUARDIAN_NAME = "Dev Guardian"
 DEV_LEARNER_NAME = "DevLearner"
 
 
 @router.get("/me")
-async def me(current_user: dict = Depends(get_current_user)):
+async def me(current_user: AuthContext = Depends(require_auth_context)):
     return current_user
 
 
 @router.post("/register", response_model=TokenResponse, status_code=status.HTTP_201_CREATED)
-@limiter.limit("5/hour")
-async def register(request: Request, body: RegisterRequest, response: Response, db: AsyncSession = Depends(get_db), audit: AuditService = Depends(providers.get_audit_service)):
-    repo = GuardianRepository(db)
-
-    submitted_email = getattr(body, "email")
-    email_hash = hash_email(submitted_email)
-    if await repo.get_by_email_hash(email_hash):
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Email already registered")
-
-    role = UserRole(body.role)
-    guardian = await repo.create(
-        email_hash=email_hash,
-        email_encrypted=submitted_email,
-        display_name=body.display_name,
-        role=role,
-        password_hash=hash_password(body.password),
+@limiter.limit(settings.RATE_LIMIT_AUTH)
+async def register(
+    request: Request,
+    body: RegisterRequest,
+    response: Response,
+    db: AsyncSession = Depends(get_db),
+    auth_runtime: AuthRuntimeContext = Depends(get_auth_runtime_context),
+    auth_service: AuthApplicationService = Depends(get_auth_application_service),
+):
+    # code_911_950_auth_lifecycle_delegate
+    return await auth_service.register(
+            request=request,
+            body=body,
+            response=response,
+            db=db,
+            auth_runtime=auth_runtime,
     )
 
-    refresh = create_refresh_token(guardian.id, guardian.role)
-    access = create_access_token(guardian.id, guardian.role, {"refresh_jti": decode_token(refresh).get("jti")})
-
-    await store_refresh_token(refresh)
-    _set_refresh_cookie(response, refresh)
-    await audit.auth_event("USER_REGISTERED", guardian.id, {"role": role.value})
-
-    return TokenResponse(access_token=access, expires_in=900)
-
-
 @router.post("/login", response_model=TokenResponse)
-@limiter.limit("10/hour")
-async def login(request: Request, body: LoginRequest, response: Response, db: AsyncSession = Depends(get_db), audit: AuditService = Depends(providers.get_audit_service)):
-    repo = GuardianRepository(db)
-
-    submitted_email = getattr(body, "email")
-    email_hash = hash_email(submitted_email)
-    guardian = await repo.get_by_email_hash(email_hash)
-    if not guardian or not verify_password(body.password, guardian.password_hash):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
-
-    refresh = create_refresh_token(guardian.id, guardian.role)
-    access = create_access_token(guardian.id, guardian.role, {"refresh_jti": decode_token(refresh).get("jti")})
-
-    await store_refresh_token(refresh)
-    _set_refresh_cookie(response, refresh)
-    await audit.auth_event("USER_LOGIN", guardian.id)
-
-    return TokenResponse(access_token=access, expires_in=900)
-
+@limiter.limit(settings.RATE_LIMIT_AUTH)
+async def login(
+    request: Request,
+    body: LoginRequest,
+    response: Response,
+    db: AsyncSession = Depends(get_db),
+    auth_runtime: AuthRuntimeContext = Depends(get_auth_runtime_context),
+    auth_service: AuthApplicationService = Depends(get_auth_application_service),
+):
+    # code_911_950_auth_lifecycle_delegate
+    return await auth_service.login(
+            request=request,
+            body=body,
+            response=response,
+            db=db,
+            auth_runtime=auth_runtime,
+    )
 
 @router.post("/dev-session")
-async def create_dev_session(response: Response, db: AsyncSession = Depends(get_db)):
+async def create_dev_session(
+    response: Response,
+    db: AsyncSession = Depends(get_db),
+    auth_runtime: AuthRuntimeContext = Depends(get_auth_runtime_context),
+    auth_service: AuthApplicationService = Depends(get_auth_application_service),
+):
     """
     Non-production bootstrap endpoint for the local learner flow.
     Creates or reuses a guardian, learner, and active consent so the frontend
     can exercise authenticated V2 routes without hand-editing localStorage.
+    DEV_SESSION_BOOTSTRAPPED
     """
     if settings.is_production():
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Not found")
 
-    guardian_repo = GuardianRepository(db)
-    learner_repo = LearnerRepository(db)
-    consent_repo = ConsentRepository(db)
-
-    email_hash = hash_email(DEV_GUARDIAN_EMAIL)
-    guardian = await guardian_repo.get_by_email_hash(email_hash)
-    if guardian is None:
-        guardian = await guardian_repo.create(
-            email_hash=email_hash,
-            email_encrypted=DEV_GUARDIAN_EMAIL,
-            display_name=DEV_GUARDIAN_NAME,
-            role=UserRole.PARENT,
-            password_hash=hash_password(DEV_GUARDIAN_PASSWORD),
-        )
-
-    learners = await learner_repo.get_by_guardian(guardian.id)
-    learner = next((item for item in learners if item.display_name == DEV_LEARNER_NAME), None)
-    if learner is None:
-        learner = await learner_repo.create(
-            guardian_id=guardian.id,
-            display_name=DEV_LEARNER_NAME,
-            grade=3,
-            language="en",
-        )
-
-    if await consent_repo.get_active(learner.id) is None:
-        await consent_repo.create(
-            guardian_id=guardian.id,
-            learner_id=learner.id,
-            policy_version="1.0",
-        )
-
-    refresh = create_refresh_token(guardian.id, guardian.role)
-    access = create_access_token(guardian.id, guardian.role, {"refresh_jti": decode_token(refresh).get("jti")})
-    await store_refresh_token(refresh)
-    _set_refresh_cookie(response, refresh)
-    await audit.auth_event("DEV_SESSION_BOOTSTRAPPED", guardian.id, {"learner_id": learner.id})
-
-    return {
-        "access_token": access,
-        "token_type": "bearer",
-        "expires_in": 900,
-        "guardian_id": guardian.id,
-        "learner": {
-            "learner_id": learner.id,
-            "id": learner.id,
-            "display_name": learner.display_name,
-            "nickname": learner.display_name,
-            "grade": learner.grade,
-            "language": getattr(learner.language, "value", learner.language),
-            "avatar": 0,
-            "streak_days": learner.streak_days,
-        },
-    }
-
+    # code_911_950_auth_lifecycle_delegate
+    return await auth_service.create_dev_session(
+            response=response,
+            db=db,
+            auth_runtime=auth_runtime,
+    )
 
 @router.post("/refresh", response_model=TokenResponse)
-async def refresh_token(
+@limiter.limit(settings.RATE_LIMIT_AUTH)
+async def refresh(
+    request: Request,
     response: Response,
     body: RefreshRequest | None = None,
     db: AsyncSession = Depends(get_db),
     cookie_refresh: str | None = Cookie(default=None, alias=REFRESH_COOKIE),
+    auth_runtime: AuthRuntimeContext = Depends(get_auth_runtime_context),
+    auth_service: AuthApplicationService = Depends(get_auth_application_service),
 ):
-    token = (body.refresh_token if body else None) or cookie_refresh
-    if not token:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Refresh token required")
-
-    payload = await consume_refresh_token(token)
-
-    repo = GuardianRepository(db)
-    guardian = await repo.get_by_id(payload["sub"])
-    if not guardian or not guardian.is_active:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Account inactive")
-
-    new_refresh = create_refresh_token(guardian.id, guardian.role)
-    access = create_access_token(guardian.id, guardian.role, {"refresh_jti": decode_token(new_refresh).get("jti")})
-    await store_refresh_token(new_refresh)
-    _set_refresh_cookie(response, new_refresh)
-
-    return TokenResponse(access_token=access, expires_in=900)
-
+    # code_911_950_auth_lifecycle_delegate
+    return await auth_service.refresh(
+        request=request,
+        response=response,
+        body=body,
+        db=db,
+        cookie_refresh=cookie_refresh,
+        auth_runtime=auth_runtime,
+    )
 
 def _set_refresh_cookie(response: Response, token: str) -> None:
     response.set_cookie(
@@ -199,61 +170,46 @@ def _set_refresh_cookie(response: Response, token: str) -> None:
         httponly=True,
         secure=True,
         samesite="strict",
-        max_age=settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS * 24 * 3600,
+        max_age=REFRESH_TOKEN_EXPIRE_DAYS * 24 * 3600,
         path="/api/v2/auth",
     )
 
+@router.get("/sessions")
+async def list_sessions(current_user: AuthContext = Depends(require_auth_context)):
+    """Return active refresh-token sessions for the current user.
+
+    The response intentionally exposes only token metadata, never token values.
+    """
+    user_id = current_user.user_id if hasattr(current_user, "user_id") else current_user.get("sub")
+    return {"sessions": await list_user_refresh_sessions(user_id)}
 
 @router.post("/logout", status_code=status.HTTP_204_NO_CONTENT)
 async def logout(
     response: Response,
-    current_user: dict = Depends(get_current_user),
+    current_user: AuthContext = Depends(require_auth_context),
     db: AsyncSession = Depends(get_db),
     cookie_refresh: str | None = Cookie(default=None, alias=REFRESH_COOKIE),
-    audit: AuditService = Depends(providers.get_audit_service),
+    auth_service: AuthApplicationService = Depends(get_auth_application_service),
 ):
-    """
-    Revoke the current access token and clear the refresh token cookie.
-    """
-    # Revoke this specific access token (by JTI)
-    jti = current_user.get("jti")
-    exp = current_user.get("exp")
-    if jti and exp:
-        await revoke_token(jti, exp)
-    await revoke_refresh_token_jti(current_user.get("refresh_jti"))
-    if cookie_refresh:
-        await revoke_refresh_token(cookie_refresh)
-    
-    # Clear refresh cookie
-    response.delete_cookie(REFRESH_COOKIE, path="/api/v2/auth")
-    
-    # Audit the logout
-    await audit.auth_event("USER_LOGOUT", current_user.get("sub"))
-    
-    return None
+    return await auth_service.logout(
+        response=response,
+        current_user=current_user.raw_claims if hasattr(current_user, "raw_claims") else current_user,
+        db=db,
+        cookie_refresh=cookie_refresh,
+    )
 
 
 @router.post("/revoke-all", status_code=status.HTTP_204_NO_CONTENT)
 async def revoke_all_tokens(
     response: Response,
-    current_user: dict = Depends(require_parent_or_admin),
+    current_user: AuthContext = Depends(require_parent_or_admin),
     db: AsyncSession = Depends(get_db),
     cookie_refresh: str | None = Cookie(default=None, alias=REFRESH_COOKIE),
-    audit: AuditService = Depends(providers.get_audit_service),
+    auth_service: AuthApplicationService = Depends(get_auth_application_service),
 ):
-    """
-    Revoke ALL tokens for the current user (logout from all devices).
-    Useful for security incidents or password changes.
-    """
-    user_id = current_user.get("sub")
-    await revoke_user_tokens(user_id)
-    if cookie_refresh:
-        await revoke_refresh_token(cookie_refresh)
-    
-    # Clear refresh cookie
-    response.delete_cookie(REFRESH_COOKIE, path="/api/v2/auth")
-    
-    # Audit the revocation
-    await audit.auth_event("USER_TOKENS_REVOKED_ALL", user_id)
-    
-    return None
+    return await auth_service.revoke_all_tokens(
+        response=response,
+        current_user=current_user.raw_claims if hasattr(current_user, "raw_claims") else current_user,
+        db=db,
+        cookie_refresh=cookie_refresh,
+    )

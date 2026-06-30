@@ -6,7 +6,7 @@ covering Mathematics, English, and Natural Sciences in all 4 CAPS languages.
 from __future__ import annotations
 
 import uuid
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 
 from alembic import op
 import sqlalchemy as sa
@@ -215,7 +215,7 @@ def upgrade():
             "a_param": item[6],
             "b_param": item[7],
             "language": item[8] if len(item) > 8 else "en",
-            "created_at": datetime.now(UTC),
+            "created_at": datetime.now(timezone.utc),
         }
         for item in _ITEMS
     ]

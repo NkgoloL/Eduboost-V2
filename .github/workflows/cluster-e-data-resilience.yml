@@ -1,0 +1,50 @@
+name: Cluster E Data Resilience Evidence
+
+on:
+  pull_request:
+    branches: [master, "release/**"]
+  push:
+    branches: [master, "release/**"]
+
+jobs:
+  cluster-e-data-resilience:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Cluster E evidence checks
+        run: |
+          make database-backup-contract-check
+          make database-restore-drill-docs-check
+          make database-restore-dry-run
+          make database-backup-dry-run
+          make database-restore-evidence
+          make database-backup-manifest
+          make database-backup-integrity-check
+          make database-restore-integrity-check
+          make database-resilience-env-matrix-check
+          make production-restore-approval-check
+          make cluster-e-data-resilience-check
+          make cluster-e-closure-check
+          pytest -c pytest.ini \
+            tests/unit/test_database_backup_contract.py \
+            tests/unit/test_cluster_e_release_gate_wiring.py \
+            tests/unit/test_data_resilience_evidence_index.py \
+            tests/unit/test_production_restore_approval.py \
+            tests/unit/test_database_resilience_env_matrix.py \
+            tests/unit/test_cluster_e_closure_report.py \
+            tests/unit/test_cluster_e_closure_check.py \
+            tests/unit/test_database_restore_integrity.py \
+            tests/unit/test_database_backup_integrity.py \
+            tests/unit/test_generate_database_restore_evidence.py \
+            tests/unit/test_generate_database_backup_manifest.py \
+            tests/unit/test_database_restore_command.py \
+            tests/unit/test_database_backup_command.py \
+            tests/unit/test_database_restore_drill_docs.py \
+            -q --no-cov

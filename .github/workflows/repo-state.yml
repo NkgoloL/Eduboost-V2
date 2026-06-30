@@ -1,0 +1,93 @@
+name: Repo State
+
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+      - "release/**"
+    paths:
+      - "docs/repository_governance.md"
+      - "docs/operations/recommended_operating_model.md"
+      - "docs/operations/project_assistance_status.md"
+      - "docs/operations/todo_implementation_plan.md"
+      - "docs/current_state.md"
+      - "scripts/check_recommended_operating_model.py"
+      - "scripts/project_assistance_status.py"
+      - "scripts/check_todo_implementation_plan.py"
+      - "scripts/verify_repo_state.py"
+      - "tests/unit/test_recommended_operating_model.py"
+      - "tests/unit/test_project_assistance_status.py"
+      - "tests/unit/test_todo_implementation_plan.py"
+      - "tests/unit/test_verify_repo_state.py"
+      - "Makefile"
+      - ".github/workflows/repo-state.yml"
+  push:
+    branches:
+      - master
+      - main
+      - "release/**"
+    paths:
+      - "docs/repository_governance.md"
+      - "docs/operations/recommended_operating_model.md"
+      - "docs/operations/project_assistance_status.md"
+      - "docs/operations/todo_implementation_plan.md"
+      - "docs/current_state.md"
+      - "scripts/check_recommended_operating_model.py"
+      - "scripts/project_assistance_status.py"
+      - "scripts/check_todo_implementation_plan.py"
+      - "scripts/verify_repo_state.py"
+      - "tests/unit/test_recommended_operating_model.py"
+      - "tests/unit/test_project_assistance_status.py"
+      - "tests/unit/test_todo_implementation_plan.py"
+      - "tests/unit/test_verify_repo_state.py"
+      - "Makefile"
+      - ".github/workflows/repo-state.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-repo-state:
+    name: Verify repository provenance
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+          cache: pip
+
+      - name: Install Python test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements-dev.txt ]; then
+            python -m pip install -r requirements-dev.txt
+          fi
+          if [ -f requirements/dev.txt ]; then
+            python -m pip install -r requirements/dev.txt
+          fi
+
+      - name: Verify repo-state checker tests
+        run: |
+          pytest \
+            tests/unit/test_verify_repo_state.py \
+            tests/unit/test_recommended_operating_model.py \
+            tests/unit/test_project_assistance_status.py \
+            tests/unit/test_todo_implementation_plan.py \
+            -q --no-cov
+
+      - name: Record repo state
+        run: |
+          make project-assistance-status-check
+          make recommended-operating-model-check
+          make todo-implementation-plan-check
+          make verify-repo-state \
+            EXPECTED_RELEASE_BRANCH="${GITHUB_BASE_REF:-${GITHUB_REF_NAME}}" \
+            VERIFY_REPO_STATE_ARGS="--allow-branch-mismatch --allow-dirty --freshness-marker HEAD"

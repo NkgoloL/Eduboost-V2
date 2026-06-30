@@ -1,0 +1,70 @@
+# ── Base Stage ───────────────────────────────────────────────────────────────
+FROM python:3.11-slim AS base
+
+WORKDIR /workspace
+
+# Non-root user setup
+RUN groupadd -g 1000 eduboost && \
+    useradd -u 1000 -g eduboost -s /bin/bash -m eduboost
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/workspace \
+    PATH="/home/eduboost/.local/bin:${PATH}"
+
+# Install essentials
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# ── Dependencies Stage ────────────────────────────────────────────────────────
+FROM base AS dependencies
+
+COPY requirements ./requirements
+RUN pip install --no-cache-dir --user -r requirements/base.txt
+
+# ── Runtime Stage ─────────────────────────────────────────────────────────────
+FROM base AS production
+
+ARG VCS_REF=unknown
+ARG BUILD_DATE=unknown
+ARG VERSION=0.0.0
+LABEL org.opencontainers.image.title="EduBoost API" \
+      org.opencontainers.image.description="EduBoost V2 FastAPI backend" \
+      org.opencontainers.image.source="https://github.com/NkgoloL/Eduboost-V2" \
+      org.opencontainers.image.revision="$VCS_REF" \
+      org.opencontainers.image.created="$BUILD_DATE" \
+      org.opencontainers.image.version="$VERSION" \
+      org.opencontainers.image.licenses="Proprietary"
+
+# Copy dependencies from dependencies stage
+COPY --from=dependencies /root/.local /home/eduboost/.local
+RUN chown -R eduboost:eduboost /home/eduboost/.local
+
+# Copy application code
+COPY --chown=eduboost:eduboost app ./app
+COPY --chown=eduboost:eduboost alembic ./alembic
+COPY --chown=eduboost:eduboost alembic.ini ./alembic.ini
+
+# Switch to non-root user
+USER eduboost
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:8000/ready || exit 1
+
+EXPOSE 8000
+
+CMD ["uvicorn", "app.api_v2:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
+
+# ── Documentation Stage ───────────────────────────────────────────────────────
+FROM base AS docs
+
+RUN pip install --no-cache-dir mkdocs mkdocs-material
+
+COPY mkdocs.yml ./mkdocs.yml
+COPY docs ./docs
+
+EXPOSE 8001
+
+CMD ["mkdocs", "serve", "-a", "0.0.0.0:8001"]

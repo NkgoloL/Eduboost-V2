@@ -1,0 +1,107 @@
+name: Auth Refresh DB Proof
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "app/**"
+      - "scripts/auth_refresh_db_*.py"
+      - "tests/integration/test_auth_refresh_db_proof.py"
+      - "tests/unit/test_auth_refresh_db_*.py"
+      - "Makefile"
+      - ".github/workflows/auth-refresh-db-proof.yml"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  auth-refresh-db-proof:
+    name: Run auth refresh DB proof
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: eduboost_proof
+          POSTGRES_PASSWORD: proofpassword
+          POSTGRES_DB: eduboost_proof
+        ports:
+          - 55432:5432
+        options: >-
+          --health-cmd "pg_isready -U eduboost_proof -d eduboost_proof"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+
+    env:
+      AUTH_REFRESH_DB_PROOF_DSN: postgresql://eduboost_proof:proofpassword@127.0.0.1:55432/eduboost_proof
+      AUTH_REFRESH_DB_PROOF_ENABLED: "1"
+      PYTHONPATH: .
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+
+      - name: Install Python dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt
+          fi
+          if [ -f requirements-dev.txt ]; then
+            python -m pip install -r requirements-dev.txt
+          fi
+          python -m pip install pytest pytest-asyncio asyncpg sqlalchemy ruff
+
+      - name: Run DB-backed auth refresh proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pytest \
+            -c pytest.ini \
+            tests/integration/test_auth_refresh_db_proof.py \
+            -q \
+            --no-cov \
+            --tb=short \
+            -rs
+
+      - name: Attach auth refresh DB proof evidence
+        shell: bash
+        env:
+          AUTH_REFRESH_DB_DSN_LABEL: github-actions-postgres-service
+          AUTH_REFRESH_DB_TEST_COMMAND: python -m pytest -c pytest.ini tests/integration/test_auth_refresh_db_proof.py -q --no-cov --tb=short -rs
+          AUTH_REFRESH_DB_TEST_RESULT: passed
+          AUTH_REFRESH_DB_REFRESH_PERSISTENCE_RESULT: passed
+          AUTH_REFRESH_DB_LOGOUT_REVOCATION_RESULT: passed
+          AUTH_REFRESH_DB_REVOKE_ALL_RESULT: passed
+          AUTH_REFRESH_DB_REUSE_DETECTION_RESULT: passed
+          AUTH_REFRESH_DB_EVIDENCE_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          AUTH_REFRESH_DB_COMMIT_SHA: ${{ github.sha }}
+          AUTH_REFRESH_DB_VERIFIED_BY: github-actions
+        run: |
+          set -euo pipefail
+          export AUTH_REFRESH_DB_DATE_VERIFIED="$(date -u +%F)"
+          make auth-refresh-db-evidence-attach
+          make auth-refresh-db-evidence-release-check
+
+      - name: Upload auth refresh DB proof artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: auth-refresh-db-proof-${{ github.run_id }}
+          if-no-files-found: error
+          path: |
+            docs/release/auth_refresh_db_proof_evidence.md
+            docs/release/auth_refresh_db_proof_status.md
+            docs/release/auth_refresh_db_proof_status.json
+            docs/release/auth_refresh_db_evidence_status.md
+            docs/release/auth_refresh_db_evidence_status.json
+            docs/release/evidence_status_registry.yml

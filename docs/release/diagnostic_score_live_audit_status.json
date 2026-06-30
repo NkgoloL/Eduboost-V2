@@ -1,0 +1,260 @@
+{
+  "generated_at": "2026-05-22T23:29:31Z",
+  "current_commit": "7f16b079bacfb08ff139314a42bf0abf37488c45",
+  "status": "diagnostic-score-live-audit-accepted",
+  "db_url_label": "DIAG_SCORE_DATABASE_URL",
+  "db_checked": true,
+  "seed_attempted": true,
+  "seed_inserted_rows": 1600,
+  "diagnostic_items_count": 28800,
+  "irt_items_count": 1600,
+  "diagnostic_items_columns": [
+    {
+      "name": "item_id",
+      "is_nullable": false,
+      "has_default": true,
+      "data_type": "uuid",
+      "udt_name": "uuid"
+    },
+    {
+      "name": "caps_ref",
+      "is_nullable": false,
+      "has_default": false,
+      "data_type": "character varying",
+      "udt_name": "varchar"
+    },
+    {
+      "name": "grade",
+      "is_nullable": false,
+      "has_default": false,
+      "data_type": "smallint",
+      "udt_name": "int2"
+    },
+    {
+      "name": "subject",
+      "is_nullable": false,
+      "has_default": false,
+      "data_type": "USER-DEFINED",
+      "udt_name": "subjectcode"
+    },
+    {
+      "name": "term",
+      "is_nullable": false,
+      "has_default": false,
+      "data_type": "smallint",
+      "udt_name": "int2"
+    },
+    {
+      "name": "topic",
+      "is_nullable": false,
+      "has_default": false,
+      "data_type": "character varying",
+      "udt_name": "varchar"
+    },
+    {
+      "name": "subtopic",
+      "is_nullable": false,
+      "has_default": false,
+      "data_type": "character varying",
+      "udt_name": "varchar"
+    },
+    {
+      "name": "skill",
+      "is_nullable": false,
+      "has_default": false,
+      "data_type": "character varying",
+      "udt_name": "varchar"
+    },
+    {
+      "name": "stem",
+      "is_nullable": false,
+      "has_default": false,
+      "data_type": "text",
+      "udt_name": "text"
+    },
+    {
+      "name": "answer_key",
+      "is_nullable": false,
+      "has_default": false,
+      "data_type": "character varying",
+      "udt_name": "varchar"
+    },
+    {
+      "name": "options",
+      "is_nullable": true,
+      "has_default": false,
+      "data_type": "jsonb",
+      "udt_name": "jsonb"
+    },
+    {
+      "name": "explanation",
+      "is_nullable": false,
+      "has_default": false,
+      "data_type": "text",
+      "udt_name": "text"
+    },
+    {
+      "name": "distractor_rationale",
+      "is_nullable": true,
+      "has_default": false,
+      "data_type": "jsonb",
+      "udt_name": "jsonb"
+    },
+    {
+      "name": "misconception_tags",
+      "is_nullable": false,
+      "has_default": true,
+      "data_type": "ARRAY",
+      "udt_name": "_text"
+    },
+    {
+      "name": "item_type",
+      "is_nullable": false,
+      "has_default": true,
+      "data_type": "USER-DEFINED",
+      "udt_name": "itemtype"
+    },
+    {
+      "name": "language",
+      "is_nullable": false,
+      "has_default": true,
+      "data_type": "USER-DEFINED",
+      "udt_name": "language"
+    },
+    {
+      "name": "difficulty_b",
+      "is_nullable": false,
+      "has_default": true,
+      "data_type": "numeric",
+      "udt_name": "numeric"
+    },
+    {
+      "name": "discrimination_a",
+      "is_nullable": false,
+      "has_default": true,
+      "data_type": "numeric",
+      "udt_name": "numeric"
+    },
+    {
+      "name": "guessing_c",
+      "is_nullable": false,
+      "has_default": true,
+      "data_type": "numeric",
+      "udt_name": "numeric"
+    },
+    {
+      "name": "difficulty_band",
+      "is_nullable": false,
+      "has_default": true,
+      "data_type": "USER-DEFINED",
+      "udt_name": "difficultyband"
+    },
+    {
+      "name": "review_status",
+      "is_nullable": false,
+      "has_default": true,
+      "data_type": "USER-DEFINED",
+      "udt_name": "reviewstatus"
+    },
+    {
+      "name": "reviewer_id",
+      "is_nullable": true,
+      "has_default": false,
+      "data_type": "uuid",
+      "udt_name": "uuid"
+    },
+    {
+      "name": "reviewed_at",
+      "is_nullable": true,
+      "has_default": false,
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz"
+    },
+    {
+      "name": "exposure_count",
+      "is_nullable": false,
+      "has_default": true,
+      "data_type": "integer",
+      "udt_name": "int4"
+    },
+    {
+      "name": "max_exposure",
+      "is_nullable": false,
+      "has_default": true,
+      "data_type": "integer",
+      "udt_name": "int4"
+    },
+    {
+      "name": "quality_score",
+      "is_nullable": true,
+      "has_default": false,
+      "data_type": "numeric",
+      "udt_name": "numeric"
+    },
+    {
+      "name": "safety_passed",
+      "is_nullable": false,
+      "has_default": true,
+      "data_type": "boolean",
+      "udt_name": "bool"
+    },
+    {
+      "name": "source",
+      "is_nullable": false,
+      "has_default": true,
+      "data_type": "USER-DEFINED",
+      "udt_name": "itemsource"
+    },
+    {
+      "name": "created_at",
+      "is_nullable": false,
+      "has_default": true,
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz"
+    },
+    {
+      "name": "updated_at",
+      "is_nullable": false,
+      "has_default": true,
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz"
+    }
+  ],
+  "bridge_seed_columns": [
+    "item_id",
+    "caps_ref",
+    "grade",
+    "subject",
+    "term",
+    "topic",
+    "subtopic",
+    "skill",
+    "stem",
+    "answer_key",
+    "options",
+    "explanation",
+    "item_type",
+    "language",
+    "review_status",
+    "source",
+    "created_at",
+    "updated_at"
+  ],
+  "unsupported_required_columns": [],
+  "github_run": {
+    "run_id": "26316648760",
+    "run_url": "https://github.com/NkgoloL/Eduboost-V2/actions/runs/26316648760",
+    "workflow_name": ".github/workflows/diag-score-live-audit.yml",
+    "run_status": "completed",
+    "conclusion": "success",
+    "head_sha": "7f16b079bacfb08ff139314a42bf0abf37488c45",
+    "blockers": []
+  },
+  "test_command": "python scripts/diagnostic_score_live_audit.py --apply-seed",
+  "seed_result": "passed",
+  "scoring_result": "passed",
+  "audit_result": "passed",
+  "verified_by": "github-actions",
+  "date_verified": "2026-05-22",
+  "blockers": []
+}

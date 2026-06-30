@@ -1,3 +1,7 @@
+import pytest
+from uuid import uuid4
+pytestmark = pytest.mark.integration
+
 """Integration tests for JWT refresh token rotation."""
 import pytest
 from httpx import ASGITransport, AsyncClient
@@ -7,6 +11,11 @@ from app.api_v2 import app
 
 @pytest.mark.asyncio
 @pytest.mark.integration
+
+def _unique_email(prefix: str) -> str:
+    return f"{prefix}-{uuid4().hex}@example.com"
+
+
 async def test_refresh_token_happy_path():
     """Test successful refresh token rotation."""
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
@@ -14,14 +23,14 @@ async def test_refresh_token_happy_path():
         register_response = await client.post(
             "/api/v2/auth/register",
             json={
-                "email": "test@example.com",
+                "email": _unique_email("test"),
                 "display_name": "Test User",
                 "password": "password123",
                 "role": "parent"
             }
         )
         assert register_response.status_code == 201
-        register_data = register_response.json()
+        register_data = register_response.json()["data"]
         access_token = register_data["access_token"]
         refresh_cookie = register_response.cookies.get("eduboost_refresh")
         assert refresh_cookie is not None
@@ -39,7 +48,7 @@ async def test_refresh_token_happy_path():
             cookies={"eduboost_refresh": refresh_cookie}
         )
         assert refresh_response.status_code == 200
-        refresh_data = refresh_response.json()
+        refresh_data = refresh_response.json()["data"]
         new_access_token = refresh_data["access_token"]
         new_refresh_cookie = refresh_response.cookies.get("eduboost_refresh")
         assert new_refresh_cookie is not None
@@ -62,7 +71,7 @@ async def test_refresh_token_reuse_detection():
         register_response = await client.post(
             "/api/v2/auth/register",
             json={
-                "email": "reuse@example.com",
+                "email": _unique_email("reuse"),
                 "display_name": "Reuse User",
                 "password": "password123",
                 "role": "parent"
@@ -84,7 +93,7 @@ async def test_refresh_token_reuse_detection():
             cookies={"eduboost_refresh": refresh_cookie}
         )
         assert refresh_response2.status_code == 401
-        assert "already used" in refresh_response2.json()["detail"].lower()
+        assert "already used" in refresh_response2.json()["error"]["message"].lower()
 
 
 @pytest.mark.asyncio
@@ -96,14 +105,14 @@ async def test_logout_clears_refresh_cookie():
         register_response = await client.post(
             "/api/v2/auth/register",
             json={
-                "email": "logout@example.com",
+                "email": _unique_email("logout"),
                 "display_name": "Logout User",
                 "password": "password123",
                 "role": "parent"
             }
         )
         assert register_response.status_code == 201
-        access_token = register_response.json()["access_token"]
+        access_token = register_response.json()["data"]["access_token"]
         refresh_cookie = register_response.cookies.get("eduboost_refresh")
 
         # Logout

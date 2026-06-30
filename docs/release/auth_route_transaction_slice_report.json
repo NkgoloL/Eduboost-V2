@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-06-12T17:40:53Z",
+  "current_commit": "a70b57616bb29572fcb57961b91a3f68f0c66329",
+  "route_file": "app/api_v2_routers/auth.py",
+  "local_status": "route-auth-delegation-passing",
+  "live_db_status": "external-blocked",
+  "transaction_service_markers_found": [
+    ".begin()",
+    "TransactionalAuthRegistrationService",
+    "async with self.session.begin"
+  ],
+  "findings": [
+    {
+      "route_function": "register",
+      "line": 87,
+      "expected_delegate": "auth_service.register",
+      "delegate_found": true,
+      "auth_service_dependency_found": true,
+      "direct_db_mutations": [],
+      "status": "route-delegates-to-auth-service",
+      "reason": "route delegates mutation to auth service boundary and has no direct db mutation calls"
+    },
+    {
+      "route_function": "create_dev_session",
+      "line": 124,
+      "expected_delegate": "auth_service.create_dev_session",
+      "delegate_found": true,
+      "auth_service_dependency_found": true,
+      "direct_db_mutations": [],
+      "status": "route-delegates-to-auth-service",
+      "reason": "route delegates mutation to auth service boundary and has no direct db mutation calls"
+    }
+  ],
+  "blockers": [
+    "live-db: Live DB evidence URL is pending",
+    "live-db: Test result is pending",
+    "live-db: Database is pending",
+    "live-db: Commit SHA is pending",
+    "live-db: Verified by is pending",
+    "live-db: Date verified is pending",
+    "live-db: Live DB evidence URL must be a URL",
+    "live-db: Test result must be passed/pass/green/ok",
+    "live-db: Commit SHA must look like a git SHA"
+  ],
+  "no_false_closure_rules": [
+    "Route delegation does not prove live database rollback.",
+    "Auth service markers do not prove the production route path by themselves.",
+    "ROUTE-TX-AUTH-001 release mode requires live DB evidence.",
+    "TX-ROUTE-001 remains open until all mutation route slices are wired and proven."
+  ]
+}

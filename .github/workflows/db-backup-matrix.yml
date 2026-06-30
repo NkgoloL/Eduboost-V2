@@ -1,0 +1,67 @@
+name: DB Backup Matrix
+
+on:
+  push:
+    branches: [ master, feat/** ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  backup-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - name: no-url
+            env: "PG_DUMP_BIN=./scripts/ci/mock_pg_dump.sh"
+          - name: with-url
+            env: "PG_DUMP_BIN=./scripts/ci/mock_pg_dump.sh DATABASE_URL=postgres://ci:ci@localhost/eduboost"
+          - name: age-encrypt
+            env: "PG_DUMP_BIN=./scripts/ci/mock_pg_dump.sh ENCRYPTION_TOOL=age AGE_RECIPIENTS=age1"
+          - name: gpg-encrypt
+            env: "PG_DUMP_BIN=./scripts/ci/mock_pg_dump.sh ENCRYPTION_TOOL=gpg GPG_RECIPIENT=ci@example.org"
+          - name: keep-plaintext
+            env: "PG_DUMP_BIN=./scripts/ci/mock_pg_dump.sh ENCRYPTION_TOOL=age AGE_RECIPIENTS=age1 KEEP_PLAINTEXT=true"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Make scripts executable
+        run: |
+          chmod +x scripts/ci/mock_pg_dump.sh scripts/ci/mock_age.sh scripts/ci/mock_gpg.sh scripts/db_backup.sh
+
+      - name: Show scenario
+        run: 'echo "Running scenario: ${{ matrix.name }}"'
+
+      - name: Run backup script (scenario)
+        shell: bash -l {0}
+        env:
+          BACKUP_DIR: ./backups-matrix
+          RETENTION_DAYS: 1
+        run: |
+          # apply scenario envs from matrix
+          set -a
+          eval "${{ matrix.env }}"
+          set +a
+          # make mock encryptors available on PATH if requested
+          if [[ "${ENCRYPTION_TOOL:-}" == "age" ]]; then
+            export PATH="./scripts/ci:$PATH"
+            cp ./scripts/ci/mock_age.sh ./scripts/ci/age || true
+            chmod +x ./scripts/ci/age
+          fi
+          if [[ "${ENCRYPTION_TOOL:-}" == "gpg" ]]; then
+            export PATH="./scripts/ci:$PATH"
+            cp ./scripts/ci/mock_gpg.sh ./scripts/ci/gpg || true
+            chmod +x ./scripts/ci/gpg
+          fi
+          ./scripts/db_backup.sh
+
+      - name: List produced artifacts
+        run: ls -la backups-matrix || true
+
+      - name: Upload backups artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: eduboost-db-backups-${{ matrix.name }}
+          path: backups-matrix

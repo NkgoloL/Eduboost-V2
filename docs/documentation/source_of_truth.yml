@@ -1,0 +1,160 @@
+# EduBoost documentation source-of-truth register
+# Generated/installed: 2026-06-22
+# Rule: every current topic must have one canonical_path and zero or more related_paths.
+
+version: 1
+project: EduBoost V2
+owner: documentation-governance
+last_reviewed: 2026-06-23
+review_interval_days: 30
+
+canonical_sections:
+  project_current_state:
+    canonical_path: docs/current_state.md
+    owner: release-management
+    review_interval_days: 14
+    evidence_commands:
+      - make runtime-check
+      - make openapi-check
+    related_paths:
+      - docs/README.md
+
+  documentation_governance:
+    canonical_path: docs/documentation/README.md
+    owner: documentation-governance
+    review_interval_days: 30
+    evidence_commands:
+      - make docs-housekeeping-check
+    related_paths:
+      - docs/documentation/documentation_housekeeping_policy.md
+      - docs/documentation/claim_discipline_policy.md
+      - docs/documentation/stale_documentation_register.md
+      - docs/documentation/stage_3_documentation_housekeeping.md
+      - docs/documentation/stage_3_strict_scope.json
+      - docs/documentation/stage_4_deep_housekeeping.md
+      - docs/documentation/stage_4_strict_scope.json
+
+  source_of_truth_register:
+    canonical_path: docs/documentation/source_of_truth.yml
+    owner: documentation-governance
+    review_interval_days: 30
+    evidence_commands:
+      - python3 scripts/maintenance/check_doc_source_of_truth.py --root .
+    related_paths: []
+
+  product_scope:
+    canonical_path: docs/product/README.md
+    owner: product
+    review_interval_days: 60
+    evidence_commands:
+      - make docs-housekeeping-check
+    related_paths:
+      - docs/beta
+      - docs/curriculum
+      - docs/caps
+
+  architecture:
+    canonical_path: docs/architecture/README.md
+    owner: architecture
+    review_interval_days: 60
+    evidence_commands:
+      - make runtime-check
+      - make openapi-check
+    related_paths:
+      - docs/adr
+      - docs/backend
+      - docs/frontend
+      - docs/database
+
+  engineering_workflow:
+    canonical_path: docs/engineering/README.md
+    owner: engineering
+    review_interval_days: 45
+    evidence_commands:
+      - make test-fast
+      - make lint
+      - make typecheck
+    related_paths:
+      - docs/development
+      - docs/testing
+
+  api_contract:
+    canonical_path: docs/api/README.md
+    owner: backend
+    review_interval_days: 30
+    evidence_commands:
+      - make openapi-check
+      - make route-inventory-check
+    related_paths:
+      - docs/openapi.json
+      - docs/route_inventory.md
+
+  compliance_privacy:
+    canonical_path: docs/compliance/README.md
+    owner: privacy
+    review_interval_days: 45
+    evidence_commands:
+      - make privacy-boundary-check
+    related_paths:
+      - docs/popia
+      - docs/privacy
+      - docs/legal
+
+  security:
+    canonical_path: docs/security/README.md
+    owner: security
+    review_interval_days: 45
+    evidence_commands:
+      - make environment-security-check
+      - make production-secret-placeholder-check
+    related_paths:
+      - docs/security/runbooks
+
+  operations:
+    canonical_path: docs/operations/README.md
+    owner: operations
+    review_interval_days: 60
+    evidence_commands:
+      - docker compose config
+    related_paths:
+      - docs/runbooks
+      - docs/observability
+      - docs/disaster_recovery
+      - deployment
+      - k8s
+
+  release_current:
+    canonical_path: docs/release/current/README.md
+    owner: release-management
+    review_interval_days: 14
+    evidence_commands:
+      - make docs-housekeeping-check
+    related_paths:
+      - docs/release
+      - docs/release-evidence
+
+  generated_documentation:
+    canonical_path: docs/generated/README.md
+    owner: documentation-governance
+    review_interval_days: 30
+    evidence_commands:
+      - python3 scripts/maintenance/audit_documentation_inventory.py --root . --out-json docs/generated/documentation_inventory.json --out-csv docs/generated/documentation_inventory.csv
+    related_paths:
+      - docs/generated/documentation_inventory.json
+      - docs/generated/documentation_inventory.csv
+
+  archive:
+    canonical_path: docs/archive/README.md
+    owner: documentation-governance
+    review_interval_days: 180
+    evidence_commands:
+      - make docs-housekeeping-check
+    related_paths:
+      - docs/documentation/migration_manifests
+
+rules:
+  metadata_required_for_active_docs: true
+  one_canonical_path_per_topic: true
+  archive_not_authoritative_by_default: true
+  generated_not_hand_edited: true
+  broad_readiness_claims_require_evidence: true

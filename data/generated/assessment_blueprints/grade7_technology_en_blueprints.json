@@ -1,0 +1,1573 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T20:13:28Z",
+  "scope": "grade7_technology_en",
+  "grade": 7,
+  "subject": "Technology",
+  "source_item_bank": "diagnostic_items",
+  "item_difficulty_bands": [
+    "easy",
+    "moderate",
+    "on_level",
+    "challenging"
+  ],
+  "blueprints": [
+    {
+      "blueprint_id": "grade7-technology-en-baseline-diagnostic-v2",
+      "type": "baseline_diagnostic",
+      "title": "Grade 7 Technology Baseline Diagnostic",
+      "description": "Samples approved items across all 16 CAPS topics in grade7_technology_en to establish a starting mastery profile.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.1.1",
+          "7.TECH.1.2",
+          "7.TECH.1.3",
+          "7.TECH.1.4",
+          "7.TECH.2.1",
+          "7.TECH.2.2",
+          "7.TECH.2.3",
+          "7.TECH.2.4",
+          "7.TECH.3.1",
+          "7.TECH.3.2",
+          "7.TECH.3.3",
+          "7.TECH.3.4",
+          "7.TECH.4.1",
+          "7.TECH.4.2",
+          "7.TECH.4.3",
+          "7.TECH.4.4"
+        ],
+        "item_count": 24,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 6,
+          "moderate": 6,
+          "on_level": 6,
+          "challenging": 6
+        },
+        "require_unique_stems": true,
+        "max_items_per_caps_ref": 2
+      },
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-1-1-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "The design process Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 7.TECH.1.1 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.1.1"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:74042c118884091cbdbd90a3c73733db9a94b508097ad30e8507f43e5738f8f9"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-1-1-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "The design process Short Practice",
+      "description": "Short practice quiz after the standard lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.1.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-1-1-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "The design process Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.1.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-1-1-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "The design process Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.1.1"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-1-2-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Structures Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 7.TECH.1.2 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.1.2"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:479817608ca3dfda7c36b28cf264f7562f7bbc3ac1a809610ebfa9a6ddc51b50"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-1-2-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Structures Short Practice",
+      "description": "Short practice quiz after the visual lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.1.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "visual",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-1-2-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Structures Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.1.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-1-2-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Structures Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.1.2"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-1-3-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Graphic communication Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 7.TECH.1.3 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.1.3"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:93148b4448d651ad3f20275bb8d788fc164d3b6c31528cda8642c0866a5e6a20"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-1-3-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Graphic communication Short Practice",
+      "description": "Short practice quiz after the story lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.1.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "story",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-1-3-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Graphic communication Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.1.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-1-3-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Graphic communication Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.1.3"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-1-4-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Assessment Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 7.TECH.1.4 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.1.4"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:547479ac3297f6da2c828306074ba79912d9d9d6c699614aad0a57b3fc4ba681"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-1-4-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Assessment Short Practice",
+      "description": "Short practice quiz after the step by step lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.1.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-1-4-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Assessment Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.1.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-1-4-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Assessment Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.1.4"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-2-1-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Processing Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 7.TECH.2.1 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.2.1"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:af78f14ed411238cc7e8384d1ca7bf3a9557da48457dde0e7ec140009fd094b9"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-2-1-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Processing Short Practice",
+      "description": "Short practice quiz after the real world sa lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.2.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "real_world_sa",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-2-1-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Processing Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.2.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-2-1-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Processing Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.2.1"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-2-2-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Materials and tools Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 7.TECH.2.2 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.2.2"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:5c3054f0b656d35e1cdffea356d4f60092cbca1ab94bf26c7edcd15c42371289"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-2-2-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Materials and tools Short Practice",
+      "description": "Short practice quiz after the exam style lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.2.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-2-2-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Materials and tools Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.2.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-2-2-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Materials and tools Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.2.2"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-2-3-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Design and make Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 7.TECH.2.3 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.2.3"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:1b48ee343a98187a2fc8ef62ec8c34d5f45f65f1e98d0211ef45f7b9d04ed8d9"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-2-3-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Design and make Short Practice",
+      "description": "Short practice quiz after the standard lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.2.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-2-3-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Design and make Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.2.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-2-3-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Design and make Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.2.3"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-2-4-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Assessment Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 7.TECH.2.4 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.2.4"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:2391e4b253828ac28e02569b2e67227e475d2bad90713065ec045ccec825377a"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-2-4-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Assessment Short Practice",
+      "description": "Short practice quiz after the visual lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.2.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "visual",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-2-4-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Assessment Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.2.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-2-4-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Assessment Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.2.4"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-3-1-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Systems and control Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 7.TECH.3.1 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.3.1"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:1fbae9df9beb28049e9ddbc355e344dc73ffccad6c56830ec950f4328ca7742b"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-3-1-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Systems and control Short Practice",
+      "description": "Short practice quiz after the story lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.3.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "story",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-3-1-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Systems and control Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.3.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-3-1-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Systems and control Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.3.1"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-3-2-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Mechanical systems Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 7.TECH.3.2 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.3.2"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:013e7570be068bab3021e8ec725c031e93480117f5a4bfc461aa7ab1a47fa21f"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-3-2-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Mechanical systems Short Practice",
+      "description": "Short practice quiz after the step by step lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.3.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-3-2-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Mechanical systems Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.3.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-3-2-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Mechanical systems Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.3.2"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-3-3-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Electrical systems Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 7.TECH.3.3 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.3.3"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:ed4e3b362eb15ed142cf1559fe22551d038e15309ad24d7a5aaf5b65c7209ea5"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-3-3-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Electrical systems Short Practice",
+      "description": "Short practice quiz after the real world sa lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.3.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "real_world_sa",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-3-3-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Electrical systems Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.3.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-3-3-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Electrical systems Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.3.3"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-3-4-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Assessment Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 7.TECH.3.4 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.3.4"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:84b0fd58d738888dad3c1fe2250c476824310ac67647fe4e28d310fa52638811"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-3-4-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Assessment Short Practice",
+      "description": "Short practice quiz after the exam style lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.3.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-3-4-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Assessment Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.3.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-3-4-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Assessment Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.3.4"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-4-1-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Technology project Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 7.TECH.4.1 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.4.1"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:bd8dc407f273d1b83c280061abf92115552eaf3396a2b1f6981a3ac72cfdd35f"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-4-1-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Technology project Short Practice",
+      "description": "Short practice quiz after the standard lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.4.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-4-1-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Technology project Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.4.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-4-1-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Technology project Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.4.1"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-4-2-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Evaluation and communication Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 7.TECH.4.2 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.4.2"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:8a971d02a5ab6527d01f5237e760ab3b5788cc8a1ef8ba035387c05fc7f4c57f"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-4-2-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Evaluation and communication Short Practice",
+      "description": "Short practice quiz after the visual lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.4.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "visual",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-4-2-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Evaluation and communication Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.4.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-4-2-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Evaluation and communication Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.4.2"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-4-3-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Revision Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 7.TECH.4.3 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.4.3"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:abadd7e36f70af151cac71c0a415b20de94a4a3542411b2e6e99a6c4b0d3c6a1"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-4-3-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Revision Short Practice",
+      "description": "Short practice quiz after the story lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.4.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "story",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-4-3-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Revision Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.4.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-4-3-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Revision Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.4.3"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-4-4-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Assessment Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 7.TECH.4.4 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.4.4"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:59b97e3794c9b34fd26f68c32881c155396f3642712df740db23a7421385479f"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-4-4-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Assessment Short Practice",
+      "description": "Short practice quiz after the step by step lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.4.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-4-4-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Assessment Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.4.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "topic_vocabulary_confusion",
+          "procedure_without_conceptual_understanding"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade7-technology-en-7-TECH-4-4-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Assessment Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "7.TECH.4.4"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    }
+  ]
+}

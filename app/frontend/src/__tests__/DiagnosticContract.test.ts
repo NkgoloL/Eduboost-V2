@@ -22,13 +22,15 @@ describe("Diagnostic API Contract", () => {
     } as Response);
 
     const items = await DiagnosticService.getItems("learner-1");
-    expect(items[0]).toMatchObject({
+    expect(items).toHaveLength(1);
+    const firstItem = items[0];
+    expect(firstItem).toMatchObject({
       item_id: "item-1",
       question_text: "How many halves make a whole?",
       subject: "MATH",
       topic: "Fractions",
     });
-    expect(Array.isArray(items[0].options)).toBe(true);
+    expect(Array.isArray(firstItem?.options)).toBe(true);
   });
 
   it("submits the expected learner answer payload", async () => {

@@ -1,5 +1,28 @@
 export type SubjectCode = "MATH" | "ENG" | "LIFE" | "NS" | "SS" | string;
 
+export type ApiEnvelope<T> = {
+  data?: T | null;
+  error?: NormalizedApiError | null;
+  meta?: Record<string, unknown>;
+  request_id?: string;
+};
+
+export interface FieldError {
+  field?: string;
+  message: string;
+  code?: string;
+}
+
+export interface NormalizedApiError {
+  code?: string;
+  message: string;
+  field_errors?: FieldError[];
+  remediation?: string;
+  details?: Record<string, unknown>;
+  request_id?: string;
+  status?: number;
+}
+
 export interface ActiveLearner {
   learner_id: string;
   id?: string;
@@ -24,9 +47,63 @@ export interface DevSessionResponse extends AuthTokenResponse {
   learner: ActiveLearner;
 }
 
+export interface AuthSessionMetadata {
+  jti?: string;
+  family?: string;
+  user_id?: string;
+  created_at?: string;
+  expires_at?: string;
+  last_seen_at?: string;
+}
+
+export interface AuthSessionsResponse {
+  sessions: AuthSessionMetadata[];
+}
+
 export interface ApiErrorShape {
   detail?: string;
   message?: string;
+  error?: NormalizedApiError;
+  request_id?: string;
+}
+
+export interface LearnerCreateInput {
+  display_name: string;
+  grade: number;
+  language?: string;
+}
+
+export interface ConsentGrantResponse {
+  id: string;
+  learner_id: string;
+  granted_at: string;
+  expires_at: string;
+  message: string;
+}
+
+export interface ConsentStatusResponse {
+  active: boolean;
+  learner_id: string;
+  granted_at?: string;
+  expires_at?: string;
+  days_remaining?: number;
+}
+
+export interface DataRightsStatus {
+  request_type: string;
+  status: string;
+  learner_id: string;
+  requested_at?: string;
+  due_at?: string;
+  audit_event?: string;
+}
+
+export interface DataExportBundle {
+  filename: string;
+  content_type: string;
+  payload?: Record<string, unknown>;
+  csv?: string;
+  status: DataRightsStatus;
 }
 
 export interface GamificationBadge {
@@ -76,6 +153,10 @@ export interface LessonPayload {
   content?: string | Array<LessonSection | string>;
   subject?: SubjectCode;
   topic?: string;
+  caps_reference?: string;
+  alignment_confidence?: number;
+  quality_score?: number | Record<string, unknown>;
+  trust_label?: string | Record<string, unknown>;
   cache_hit?: boolean;
   caps_aligned?: boolean;
   served_from_cache?: boolean;
@@ -118,6 +199,8 @@ export interface DiagnosticItem {
   options: string[];
   subject?: string;
   topic?: string;
+  skill?: string;
+  caps_reference?: string;
   difficulty_label?: string;
 }
 
@@ -162,6 +245,24 @@ export interface ParentTrustDashboardResponse {
   subscription_tier: string;
   generated_at: string;
   learners: ParentTrustDashboardLearner[];
+}
+
+export interface ParentDashboardLearner {
+  learner_id: string;
+  display_name: string;
+  grade_level: string;
+  archetype?: string | null;
+  irt_theta?: number;
+  lessons_this_week?: number;
+  active_knowledge_gaps?: number;
+  last_lesson_at?: string | null;
+}
+
+export interface ParentDashboardResponse {
+  guardian_id: string;
+  subscription_tier: string;
+  total_lessons_generated: number;
+  learners: ParentDashboardLearner[];
 }
 
 export interface ParentExportEntry {

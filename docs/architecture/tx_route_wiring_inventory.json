@@ -1,0 +1,322 @@
+{
+  "generated_at": "2026-06-12T17:41:14Z",
+  "status": "production-route-transaction-wiring-not-proven",
+  "routes": [
+    {
+      "domain": "auth",
+      "path": "app/api_v2_routers/auth.py",
+      "function_name": "me",
+      "line": 81,
+      "is_route": true,
+      "mutation_candidate": false,
+      "transactional_marker_present": false,
+      "status": "read-or-nonmutation-route"
+    },
+    {
+      "domain": "auth",
+      "path": "app/api_v2_routers/auth.py",
+      "function_name": "register",
+      "line": 87,
+      "is_route": true,
+      "mutation_candidate": true,
+      "transactional_marker_present": false,
+      "status": "route-transaction-wiring-not-proven"
+    },
+    {
+      "domain": "auth",
+      "path": "app/api_v2_routers/auth.py",
+      "function_name": "login",
+      "line": 106,
+      "is_route": true,
+      "mutation_candidate": false,
+      "transactional_marker_present": false,
+      "status": "read-or-nonmutation-route"
+    },
+    {
+      "domain": "auth",
+      "path": "app/api_v2_routers/auth.py",
+      "function_name": "create_dev_session",
+      "line": 124,
+      "is_route": true,
+      "mutation_candidate": true,
+      "transactional_marker_present": false,
+      "status": "route-transaction-wiring-not-proven"
+    },
+    {
+      "domain": "auth",
+      "path": "app/api_v2_routers/auth.py",
+      "function_name": "refresh",
+      "line": 148,
+      "is_route": true,
+      "mutation_candidate": false,
+      "transactional_marker_present": false,
+      "status": "read-or-nonmutation-route"
+    },
+    {
+      "domain": "auth",
+      "path": "app/api_v2_routers/auth.py",
+      "function_name": "list_sessions",
+      "line": 179,
+      "is_route": true,
+      "mutation_candidate": false,
+      "transactional_marker_present": false,
+      "status": "read-or-nonmutation-route"
+    },
+    {
+      "domain": "auth",
+      "path": "app/api_v2_routers/auth.py",
+      "function_name": "logout",
+      "line": 188,
+      "is_route": true,
+      "mutation_candidate": false,
+      "transactional_marker_present": false,
+      "status": "read-or-nonmutation-route"
+    },
+    {
+      "domain": "auth",
+      "path": "app/api_v2_routers/auth.py",
+      "function_name": "revoke_all_tokens",
+      "line": 204,
+      "is_route": true,
+      "mutation_candidate": false,
+      "transactional_marker_present": false,
+      "status": "read-or-nonmutation-route"
+    },
+    {
+      "domain": "popia",
+      "path": "app/api_v2_routers/popia.py",
+      "function_name": "grant_consent",
+      "line": 103,
+      "is_route": true,
+      "mutation_candidate": true,
+      "transactional_marker_present": false,
+      "status": "route-transaction-wiring-not-proven"
+    },
+    {
+      "domain": "popia",
+      "path": "app/api_v2_routers/popia.py",
+      "function_name": "deny_consent",
+      "line": 120,
+      "is_route": true,
+      "mutation_candidate": true,
+      "transactional_marker_present": false,
+      "status": "route-transaction-wiring-not-proven"
+    },
+    {
+      "domain": "popia",
+      "path": "app/api_v2_routers/popia.py",
+      "function_name": "withdraw_consent",
+      "line": 138,
+      "is_route": true,
+      "mutation_candidate": true,
+      "transactional_marker_present": false,
+      "status": "route-transaction-wiring-not-proven"
+    },
+    {
+      "domain": "popia",
+      "path": "app/api_v2_routers/popia.py",
+      "function_name": "renew_consent",
+      "line": 153,
+      "is_route": true,
+      "mutation_candidate": true,
+      "transactional_marker_present": false,
+      "status": "route-transaction-wiring-not-proven"
+    },
+    {
+      "domain": "popia",
+      "path": "app/api_v2_routers/popia.py",
+      "function_name": "create_export_request",
+      "line": 173,
+      "is_route": true,
+      "mutation_candidate": true,
+      "transactional_marker_present": false,
+      "status": "route-transaction-wiring-not-proven"
+    },
+    {
+      "domain": "popia",
+      "path": "app/api_v2_routers/popia.py",
+      "function_name": "create_erasure_request",
+      "line": 191,
+      "is_route": true,
+      "mutation_candidate": false,
+      "transactional_marker_present": false,
+      "status": "read-or-nonmutation-route"
+    },
+    {
+      "domain": "popia",
+      "path": "app/api_v2_routers/popia.py",
+      "function_name": "cancel_erasure",
+      "line": 206,
+      "is_route": true,
+      "mutation_candidate": false,
+      "transactional_marker_present": false,
+      "status": "read-or-nonmutation-route"
+    },
+    {
+      "domain": "popia",
+      "path": "app/api_v2_routers/popia.py",
+      "function_name": "create_correction_request",
+      "line": 223,
+      "is_route": true,
+      "mutation_candidate": false,
+      "transactional_marker_present": false,
+      "status": "read-or-nonmutation-route"
+    },
+    {
+      "domain": "popia",
+      "path": "app/api_v2_routers/popia.py",
+      "function_name": "create_restriction_request",
+      "line": 238,
+      "is_route": true,
+      "mutation_candidate": false,
+      "transactional_marker_present": false,
+      "status": "read-or-nonmutation-route"
+    },
+    {
+      "domain": "diagnostics",
+      "path": "app/api_v2_routers/diagnostics.py",
+      "function_name": "get_diagnostic_items",
+      "line": 46,
+      "is_route": true,
+      "mutation_candidate": false,
+      "transactional_marker_present": false,
+      "status": "read-or-nonmutation-route"
+    },
+    {
+      "domain": "diagnostics",
+      "path": "app/api_v2_routers/diagnostics.py",
+      "function_name": "submit_diagnostic",
+      "line": 103,
+      "is_route": true,
+      "mutation_candidate": true,
+      "transactional_marker_present": false,
+      "status": "route-transaction-wiring-not-proven"
+    },
+    {
+      "domain": "diagnostics",
+      "path": "app/api_v2_routers/diagnostics.py",
+      "function_name": "get_item_bank_coverage",
+      "line": 166,
+      "is_route": true,
+      "mutation_candidate": false,
+      "transactional_marker_present": false,
+      "status": "read-or-nonmutation-route"
+    },
+    {
+      "domain": "diagnostics",
+      "path": "app/api_v2_routers/diagnostics.py",
+      "function_name": "get_item_bank_item",
+      "line": 178,
+      "is_route": true,
+      "mutation_candidate": false,
+      "transactional_marker_present": false,
+      "status": "read-or-nonmutation-route"
+    },
+    {
+      "domain": "diagnostics",
+      "path": "app/api_v2_routers/diagnostics.py",
+      "function_name": "review_item_bank_item",
+      "line": 215,
+      "is_route": true,
+      "mutation_candidate": false,
+      "transactional_marker_present": false,
+      "status": "read-or-nonmutation-route"
+    },
+    {
+      "domain": "diagnostics",
+      "path": "app/api_v2_routers/diagnostics.py",
+      "function_name": "start_diagnostic_session",
+      "line": 251,
+      "is_route": true,
+      "mutation_candidate": true,
+      "transactional_marker_present": false,
+      "status": "route-transaction-wiring-not-proven"
+    },
+    {
+      "domain": "diagnostics",
+      "path": "app/api_v2_routers/diagnostics.py",
+      "function_name": "recover_diagnostic_session",
+      "line": 267,
+      "is_route": true,
+      "mutation_candidate": false,
+      "transactional_marker_present": false,
+      "status": "read-or-nonmutation-route"
+    },
+    {
+      "domain": "diagnostics",
+      "path": "app/api_v2_routers/diagnostics.py",
+      "function_name": "diagnostic_next_item",
+      "line": 283,
+      "is_route": true,
+      "mutation_candidate": false,
+      "transactional_marker_present": false,
+      "status": "read-or-nonmutation-route"
+    },
+    {
+      "domain": "diagnostics",
+      "path": "app/api_v2_routers/diagnostics.py",
+      "function_name": "diagnostic_respond",
+      "line": 316,
+      "is_route": true,
+      "mutation_candidate": true,
+      "transactional_marker_present": false,
+      "status": "route-transaction-wiring-not-proven"
+    },
+    {
+      "domain": "lessons",
+      "path": "app/api_v2_routers/lessons.py",
+      "function_name": "generate_lesson",
+      "line": 41,
+      "is_route": true,
+      "mutation_candidate": true,
+      "transactional_marker_present": false,
+      "status": "route-transaction-wiring-not-proven"
+    },
+    {
+      "domain": "lessons",
+      "path": "app/api_v2_routers/lessons.py",
+      "function_name": "generate_lesson_stream",
+      "line": 73,
+      "is_route": true,
+      "mutation_candidate": true,
+      "transactional_marker_present": false,
+      "status": "route-transaction-wiring-not-proven"
+    },
+    {
+      "domain": "lessons",
+      "path": "app/api_v2_routers/lessons.py",
+      "function_name": "get_lesson",
+      "line": 97,
+      "is_route": true,
+      "mutation_candidate": true,
+      "transactional_marker_present": false,
+      "status": "route-transaction-wiring-not-proven"
+    },
+    {
+      "domain": "lessons",
+      "path": "app/api_v2_routers/lessons.py",
+      "function_name": "complete_lesson",
+      "line": 117,
+      "is_route": true,
+      "mutation_candidate": true,
+      "transactional_marker_present": false,
+      "status": "route-transaction-wiring-not-proven"
+    },
+    {
+      "domain": "lessons",
+      "path": "app/api_v2_routers/lessons.py",
+      "function_name": "sync_lessons",
+      "line": 134,
+      "is_route": true,
+      "mutation_candidate": true,
+      "transactional_marker_present": false,
+      "status": "route-transaction-wiring-not-proven"
+    }
+  ],
+  "remaining_boundaries": [
+    "route handlers must be wired through transactional application services",
+    "live database transaction rollback behavior must be proven",
+    "staging route smoke must be attached",
+    "isolated rollback proof services do not prove production route wiring"
+  ]
+}

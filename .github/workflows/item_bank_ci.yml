@@ -1,0 +1,270 @@
+# .github/workflows/item_bank_ci.yml
+#
+# Phase 5 — P5-04 (validate-item-bank job) + P5-03 (coverage-assertion job)
+#
+# These are MANDATORY CI gates that block merge to master if they fail.
+# They run on every PR and push to master.
+
+name: Item Bank CI Gates
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "data/caps/**"
+      - "app/models/diagnostic_item.py"
+      - "app/models/item_exposure.py"
+      - "app/repositories/item_bank_repository.py"
+      - "app/modules/diagnostics/**"
+      - "scripts/validate_item_bank.py"
+      - "scripts/seed_item_bank.py"
+      - "alembic/versions/0005_*.py"
+      - "alembic/versions/0006_*.py"
+      - "tests/ci/**"
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHON_VERSION: "3.12.3"
+  ITEM_BANK_MIN_APPROVED: "1"
+  ITEM_BANK_MIN_APPROVED_TOTAL: "14"
+  DATABASE_URL: "postgresql://eduboost:eduboost@localhost:5432/eduboost"
+  POSTGRES_DB: eduboost
+  POSTGRES_USER: eduboost
+  POSTGRES_PASSWORD: eduboost
+
+# ─── P5-04: Seed JSON Validation (no DB needed) ─────────────────────────────
+jobs:
+  validate-item-bank:
+    name: "P5-04 · validate_item_bank.py (seed JSON)"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements/dev.txt
+
+      - name: Verify seed JSON exists
+        run: |
+          test -f data/caps/grade4_maths_item_bank.json || {
+            echo "::error file=data/caps/grade4_maths_item_bank.json::Seed file not found."
+            echo "Run scripts/generate_items.py then scripts/seed_item_bank.py to create it."
+            exit 1
+          }
+
+      - name: Run validate_item_bank.py (P5-04)
+        id: validate
+        run: |
+          python scripts/validate_item_bank.py \
+            --path data/caps/grade4_maths_item_bank.json \
+            --fail-on-any-error \
+            --output-format github-annotations
+        # --output-format github-annotations emits ::error:: lines for GitHub UI
+
+      - name: Assert 0 approved items fail validation
+        run: |
+          python -c "
+          import json, sys
+          data = json.loads(open('data/caps/grade4_maths_item_bank.json').read())
+          failures = [i for i in data['items']
+                      if i.get('review_status') == 'approved'
+                      and not i.get('safety_passed')]
+          if failures:
+              print(f'::error::{len(failures)} approved items have safety_passed != true')
+              sys.exit(1)
+          print(f'All approved items pass safety check.')
+          "
+
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: item-bank-validation-report
+          path: reports/validation/
+          if-no-files-found: ignore
+          retention-days: 30
+
+# ─── P5-03: Coverage Assertion (needs DB) ────────────────────────────────────
+  coverage-assertion:
+    name: "P5-03 · Coverage assertion (≥40 approved per CAPS ref)"
+    runs-on: ubuntu-latest
+    needs: validate-item-bank
+
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_DB: ${{ env.POSTGRES_DB }}
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements/dev.txt
+
+      - name: Run Alembic migrations
+        run: |
+          alembic upgrade head
+          alembic check
+        env:
+          DATABASE_URL: ${{ env.DATABASE_URL }}
+
+      - name: Seed item bank from seed JSON
+        run: |
+          python scripts/seed_item_bank.py \
+            --path data/caps/grade4_maths_item_bank.json \
+            --db-url "$DATABASE_URL" \
+            --dry-run false
+        env:
+          DATABASE_URL: ${{ env.DATABASE_URL }}
+
+      - name: Run coverage assertion tests (P5-03)
+        run: |
+          python -m pytest tests/ci/test_item_bank_coverage.py \
+            -v \
+            --tb=short \
+            --junitxml=reports/ci/coverage_assertion_results.xml \
+            -p no:warnings
+        env:
+          DATABASE_URL: ${{ env.DATABASE_URL }}
+
+      - name: Publish coverage assertion results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: coverage-assertion-results
+          path: reports/ci/
+          retention-days: 30
+
+      - name: Post coverage summary to PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const fs = require('fs');
+            let summary = '## 📚 Item Bank Coverage Assertion\n\n';
+            const caps_refs = ['4.M.1.1', '4.M.1.2', '4.M.1.3'];
+            summary += '| CAPS Ref | Topic | Status |\n|----------|-------|--------|\n';
+            // Simplified summary — full details in artifact
+            caps_refs.forEach(ref => {
+              summary += `| ${ref} | — | See CI logs |\n`;
+            });
+            summary += '\nFull results: download the `coverage-assertion-results` artifact.';
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: summary
+            });
+
+# ─── P5-06: Performance Gate (optional, not blocking) ────────────────────────
+  performance-gate:
+    name: "P5-06 · Item selection p99 < 50ms (non-blocking)"
+    runs-on: ubuntu-latest
+    needs: coverage-assertion
+    continue-on-error: true   # non-blocking — alerts but doesn't fail the build
+
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_DB: ${{ env.POSTGRES_DB }}
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements/dev.txt
+
+      - name: Run Alembic migrations + seed
+        run: |
+          alembic upgrade head
+          python scripts/seed_item_bank.py --path data/caps/grade4_maths_item_bank.json
+        env:
+          DATABASE_URL: ${{ env.DATABASE_URL }}
+
+      - name: Run DB-level performance test (P5-06 offline proxy)
+        run: |
+          python -c "
+          import asyncio, asyncpg, time, os, json, statistics
+
+          async def main():
+              pool = await asyncpg.create_pool(os.environ['DATABASE_URL'])
+              latencies = []
+              for _ in range(100):
+                  start = time.perf_counter()
+                  await pool.fetch(
+                      '''SELECT item_id, stem, options, difficulty_b, discrimination_a, guessing_c
+                         FROM   diagnostic_items
+                         WHERE  caps_ref      = \$1
+                           AND  review_status = \$2
+                           AND  safety_passed = TRUE
+                           AND  exposure_count < max_exposure
+                         ORDER BY ABS(difficulty_b - 0.0) LIMIT 20''',
+                      '4.M.1.1', 'approved'
+                  )
+                  latencies.append((time.perf_counter() - start) * 1000)
+              await pool.close()
+              sorted_l = sorted(latencies)
+              p99 = sorted_l[int(len(sorted_l)*0.99)]
+              mean = statistics.mean(sorted_l)
+              print(f'mean={mean:.1f}ms  p99={p99:.1f}ms')
+              if p99 >= 50:
+                  print(f'::warning::Item selection DB p99={p99:.1f}ms exceeds 50ms SLO (offline proxy)')
+              else:
+                  print('Performance SLO met (offline proxy test)')
+          asyncio.run(main())
+          "
+        env:
+          DATABASE_URL: ${{ env.DATABASE_URL }}

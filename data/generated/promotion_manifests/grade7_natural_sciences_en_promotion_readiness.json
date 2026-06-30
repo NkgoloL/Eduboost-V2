@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-13T20:40:55Z",
+  "scope_id": "grade7_natural_sciences_en",
+  "grade": 7,
+  "phase": "senior",
+  "subject_code": "NS",
+  "subject": "Natural Sciences",
+  "language": "en",
+  "status": "review",
+  "learner_visible": false,
+  "source_ready": true,
+  "review_evidence": {
+    "status": "dev_approved",
+    "approved": false,
+    "stage_unlocked": true,
+    "production_unlocked": false,
+    "manifest_path": "data/generated/review_manifests/grade7_natural_sciences_en_educator_review.json",
+    "stage_blockers": [],
+    "production_blockers": [
+      "Educator approval is required for production.",
+      "Legal approval is required for production."
+    ],
+    "blockers": [
+      "Educator approval is required for production.",
+      "Legal approval is required for production."
+    ]
+  },
+  "lesson_quality": {
+    "passed": true,
+    "quarantined": false,
+    "lesson_count": 128,
+    "failed_lesson_count": 0,
+    "blockers": [],
+    "aggregate": {
+      "missing_lesson_body": 0,
+      "missing_title": 0,
+      "missing_scope_id": 0,
+      "missing_variant": 0,
+      "missing_teacher_notes": 0,
+      "missing_parent_notes": 0,
+      "missing_extension_prompts": 0,
+      "practice_questions_correct_option_a": 0,
+      "lessons_with_identical_answer_keys": 0,
+      "placeholder_worked_example_steps": 0
+    }
+  },
+  "staging_eligible": true,
+  "production_eligible": false,
+  "caps_ref_count": 16,
+  "layers": {
+    "topic_map": {
+      "layer": "topic_map",
+      "relative_path": "data/caps/topic_maps/grade7_natural_sciences_en.json",
+      "exists": true,
+      "sha256": "sha256:923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "record_count": 32,
+      "approved_count": 32,
+      "review_ready_count": 32,
+      "idempotency_key": "grade7_natural_sciences_en:topic_map:sha256:923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182"
+    },
+    "diagnostic_items": {
+      "layer": "diagnostic_items",
+      "relative_path": "data/generated/items/grade7_natural_sciences_en_item_bank.json",
+      "exists": true,
+      "sha256": "sha256:45faea41e76d641c95ba712fbd4d5ac135618d6d50a1219c817b934bc439f235",
+      "record_count": 640,
+      "approved_count": 640,
+      "review_ready_count": 640,
+      "idempotency_key": "grade7_natural_sciences_en:diagnostic_items:sha256:45faea41e76d641c95ba712fbd4d5ac135618d6d50a1219c817b934bc439f235"
+    },
+    "lessons": {
+      "layer": "lessons",
+      "relative_path": "data/generated/lessons/grade7_natural_sciences_en_lessons.json",
+      "exists": true,
+      "sha256": "sha256:16a131dcaa0293f25b66a92ef985d4b45d5629c6de2c35dd15c7a395e84d96cd",
+      "record_count": 128,
+      "approved_count": 128,
+      "review_ready_count": 128,
+      "idempotency_key": "grade7_natural_sciences_en:lessons:sha256:16a131dcaa0293f25b66a92ef985d4b45d5629c6de2c35dd15c7a395e84d96cd"
+    },
+    "assessment_blueprints": {
+      "layer": "assessment_blueprints",
+      "relative_path": "data/generated/assessment_blueprints/grade7_natural_sciences_en_blueprints.json",
+      "exists": true,
+      "sha256": "sha256:1a3bcac8773bd5bb98c9e35c00b45d782b633801ade3838f20c9d634eb9da4e3",
+      "record_count": 65,
+      "approved_count": 65,
+      "review_ready_count": 65,
+      "idempotency_key": "grade7_natural_sciences_en:assessment_blueprints:sha256:1a3bcac8773bd5bb98c9e35c00b45d782b633801ade3838f20c9d634eb9da4e3"
+    },
+    "study_plan_templates": {
+      "layer": "study_plan_templates",
+      "relative_path": "data/generated/study_plans/grade7_natural_sciences_en_templates.json",
+      "exists": true,
+      "sha256": "sha256:75b3e3d9d10699e16c47b3526f0d71dd3b755dc8c2787fb67f80594016a9e690",
+      "record_count": 16,
+      "approved_count": 16,
+      "review_ready_count": 16,
+      "idempotency_key": "grade7_natural_sciences_en:study_plan_templates:sha256:75b3e3d9d10699e16c47b3526f0d71dd3b755dc8c2787fb67f80594016a9e690"
+    }
+  },
+  "blockers": [
+    "Scope is still review; activate scope intentionally before learner visibility.",
+    "Educator approval is required for production.",
+    "Legal approval is required for production."
+  ],
+  "idempotency_keys": {
+    "topic_map": "grade7_natural_sciences_en:topic_map:sha256:923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+    "diagnostic_items": "grade7_natural_sciences_en:diagnostic_items:sha256:45faea41e76d641c95ba712fbd4d5ac135618d6d50a1219c817b934bc439f235",
+    "lessons": "grade7_natural_sciences_en:lessons:sha256:16a131dcaa0293f25b66a92ef985d4b45d5629c6de2c35dd15c7a395e84d96cd",
+    "assessment_blueprints": "grade7_natural_sciences_en:assessment_blueprints:sha256:1a3bcac8773bd5bb98c9e35c00b45d782b633801ade3838f20c9d634eb9da4e3",
+    "study_plan_templates": "grade7_natural_sciences_en:study_plan_templates:sha256:75b3e3d9d10699e16c47b3526f0d71dd3b755dc8c2787fb67f80594016a9e690"
+  },
+  "rollback_manifest": {
+    "scope_id": "grade7_natural_sciences_en",
+    "restore_scope_status": "review",
+    "artifact_paths": {
+      "topic_map": "data/caps/topic_maps/grade7_natural_sciences_en.json",
+      "diagnostic_items": "data/generated/items/grade7_natural_sciences_en_item_bank.json",
+      "lessons": "data/generated/lessons/grade7_natural_sciences_en_lessons.json",
+      "assessment_blueprints": "data/generated/assessment_blueprints/grade7_natural_sciences_en_blueprints.json",
+      "study_plan_templates": "data/generated/study_plans/grade7_natural_sciences_en_templates.json"
+    },
+    "artifact_hashes": {
+      "topic_map": "sha256:923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "diagnostic_items": "sha256:45faea41e76d641c95ba712fbd4d5ac135618d6d50a1219c817b934bc439f235",
+      "lessons": "sha256:16a131dcaa0293f25b66a92ef985d4b45d5629c6de2c35dd15c7a395e84d96cd",
+      "assessment_blueprints": "sha256:1a3bcac8773bd5bb98c9e35c00b45d782b633801ade3838f20c9d634eb9da4e3",
+      "study_plan_templates": "sha256:75b3e3d9d10699e16c47b3526f0d71dd3b755dc8c2787fb67f80594016a9e690"
+    }
+  }
+}

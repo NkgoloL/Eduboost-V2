@@ -1,0 +1,139 @@
+# Dependency Vulnerability Scanning
+
+name: Dependency Scan
+
+on:
+  push:
+    branches: [master, main, 'phase-*/**']
+    paths:
+      - 'requirements/**'
+      - 'package.json'
+      - 'app/frontend/pnpm-lock.yaml'
+  pull_request:
+    paths:
+      - 'requirements/**'
+      - 'package.json'
+      - 'app/frontend/pnpm-lock.yaml'
+  schedule:
+    - cron: '0 3 * * *'  # Daily at 3 AM
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  pip-audit:
+    name: pip-audit (Python)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        requirements:
+          - requirements/base.txt
+          - requirements/dev.txt
+          - requirements/docs.txt
+          - requirements-ml.txt
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+
+      - name: Install pip-audit
+        run: pip install pip-audit
+
+      - name: Run pip-audit
+        run: |
+          set -euo pipefail
+          pip-audit -r ${{ matrix.requirements }} --format=json \
+            | tee pip-audit.json \
+            | python3 -m json.tool
+
+      - name: Upload pip-audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pip-audit-${{ strategy.job-index }}
+          path: pip-audit.json
+
+  pnpm-audit:
+    name: pnpm audit (Frontend)
+    runs-on: ubuntu-latest
+    if: hashFiles('app/frontend/package.json')
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          cache-dependency-path: app/frontend/pnpm-lock.yaml
+
+      - name: Install dependencies
+        working-directory: app/frontend
+        run: pnpm install --frozen-lockfile
+
+      - name: Run pnpm audit
+        working-directory: app/frontend
+        run: |
+          set -euo pipefail
+          pnpm audit --audit-level=critical --json | tee pnpm-audit.json
+
+      - name: Check pnpm audit results
+        working-directory: app/frontend
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const report = JSON.parse(fs.readFileSync('pnpm-audit.json', 'utf8'));
+          const vulnerabilities = report.metadata?.vulnerabilities ?? {};
+          const critical = Number(vulnerabilities.critical ?? 0);
+          console.log(`pnpm critical vulnerabilities: ${critical}`);
+          if (critical > 0) {
+            process.exitCode = 1;
+          }
+          NODE
+
+      - name: Upload pnpm audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pnpm-audit
+          path: app/frontend/pnpm-audit.json
+
+  dependency-review:
+    name: Dependency Review
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: critical
+          allow-dependencies-licenses: []
+
+  # Summary job
+  summary:
+    name: Dependency Scan Summary
+    needs: [pip-audit, pnpm-audit, dependency-review]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Summary
+        run: |
+          echo "## Dependency Scan Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ pip-audit: ${{ needs.pip-audit.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "✅ pnpm audit: ${{ needs.pnpm-audit.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "✅ dependency-review: ${{ needs.dependency-review.result }}" >> $GITHUB_STEP_SUMMARY

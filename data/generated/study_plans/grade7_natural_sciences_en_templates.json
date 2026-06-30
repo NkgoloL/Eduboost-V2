@@ -1,0 +1,869 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T20:13:17Z",
+  "scope": "grade7_natural_sciences_en",
+  "grade": 7,
+  "subject": "Natural Sciences",
+  "weekly_template": [
+    {
+      "day": "Mon",
+      "caps_ref": "7.NS.1.1",
+      "topic": "Life and living",
+      "activity_type": "lesson",
+      "lesson_variant": "standard",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-1-1-short-practice-v2",
+      "minutes": 40,
+      "teacher_cue": "Teach Life and living using the worked examples, then set the short practice blueprint."
+    },
+    {
+      "day": "Tue",
+      "caps_ref": "7.NS.1.2",
+      "topic": "Biodiversity and ecosystems",
+      "activity_type": "practice",
+      "lesson_variant": "visual",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-1-2-short-practice-v2",
+      "minutes": 25,
+      "teacher_cue": "Run the short practice quiz for Biodiversity and ecosystems and note missed misconception tags."
+    },
+    {
+      "day": "Wed",
+      "caps_ref": "7.NS.1.3",
+      "topic": "Scientific investigations",
+      "activity_type": "lesson",
+      "lesson_variant": "story",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-1-3-short-practice-v2",
+      "minutes": 40,
+      "teacher_cue": "Teach Scientific investigations using the worked examples, then set the short practice blueprint."
+    },
+    {
+      "day": "Thu",
+      "caps_ref": "7.NS.1.4",
+      "topic": "Assessment",
+      "activity_type": "practice",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-1-4-short-practice-v2",
+      "minutes": 25,
+      "teacher_cue": "Run the short practice quiz for Assessment and note missed misconception tags."
+    },
+    {
+      "day": "Fri",
+      "caps_ref": "7.NS.2.1",
+      "topic": "Matter and materials",
+      "activity_type": "review",
+      "lesson_variant": "real_world_sa",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-2-1-recheck-v2",
+      "minutes": 25,
+      "teacher_cue": "Use the recheck blueprint for Matter and materials and assign step-by-step remediation where needed."
+    }
+  ],
+  "topic_sequence": [
+    {
+      "caps_ref": "7.NS.1.1",
+      "topic": "Life and living",
+      "subtopic": "Life and living",
+      "term": 1,
+      "prerequisites": [],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to life and living.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:c083512225117a1c2516079f50d5ff8ee97a650c23b1a5dd352fd738b0426ed9",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.NS.1.2",
+      "topic": "Biodiversity and ecosystems",
+      "subtopic": "Biodiversity and ecosystems",
+      "term": 1,
+      "prerequisites": [
+        "7.NS.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to biodiversity and ecosystems.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:a46e971d7a7eda8f08ceab25026b34edd131895714a5d45624e0416d6927d0ce",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.NS.1.3",
+      "topic": "Scientific investigations",
+      "subtopic": "Scientific investigations",
+      "term": 1,
+      "prerequisites": [
+        "7.NS.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to scientific investigations.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:461970eef52bae257e7e303d87bec7ce624e38b24f6f2f17ff3f051f8e133653",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.NS.1.4",
+      "topic": "Assessment",
+      "subtopic": "Assessment",
+      "term": 1,
+      "prerequisites": [
+        "7.NS.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to assessment.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:d6c8aeaca7104f22315a04141f34b88a65dffd90731d55275f7a561ed22627d1",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.NS.2.1",
+      "topic": "Matter and materials",
+      "subtopic": "Matter and materials",
+      "term": 2,
+      "prerequisites": [
+        "7.NS.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to matter and materials.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:aff3d0002945977946da2e30f3ee01d01fbb620104d7f5738846a9d59276ffda",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.NS.2.2",
+      "topic": "Mixtures and separation",
+      "subtopic": "Mixtures and separation",
+      "term": 2,
+      "prerequisites": [
+        "7.NS.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to mixtures and separation.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:26542ff09cabb780df3c77d373c50aec27b572314fe83674db6627757bfbd22b",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.NS.2.3",
+      "topic": "Practical investigations",
+      "subtopic": "Practical investigations",
+      "term": 2,
+      "prerequisites": [
+        "7.NS.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to practical investigations.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:e5e487053e47fb6b00e188d164a39d6cd12bf436fe19d97355ccb53785c328be",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.NS.2.4",
+      "topic": "Assessment",
+      "subtopic": "Assessment",
+      "term": 2,
+      "prerequisites": [
+        "7.NS.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to assessment.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:87e42dd820a6a2d09a135ce150d451ec4dc62032b10984d3abf0256cd55ddb25",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.NS.3.1",
+      "topic": "Energy and change",
+      "subtopic": "Energy and change",
+      "term": 3,
+      "prerequisites": [
+        "7.NS.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to energy and change.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:9c462d5f5edf68c73758cea597780836c689800c179ca748cf512987befc5b5d",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.NS.3.2",
+      "topic": "Heat transfer and systems",
+      "subtopic": "Heat transfer and systems",
+      "term": 3,
+      "prerequisites": [
+        "7.NS.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to heat transfer and systems.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:931adddc0e5fced8c63941bac2f8be62792633fa3b1b99c09a290ddb7624681a",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.NS.3.3",
+      "topic": "Practical investigations",
+      "subtopic": "Practical investigations",
+      "term": 3,
+      "prerequisites": [
+        "7.NS.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to practical investigations.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:d4c3b8c936bc1c4dd5f3677154ccb4c04841e69402a71b8d176c6081b76acf34",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.NS.3.4",
+      "topic": "Assessment",
+      "subtopic": "Assessment",
+      "term": 3,
+      "prerequisites": [
+        "7.NS.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to assessment.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:4866798695359071f781f02cffe6b55a5ed8f609e22ae70f9b2ed1fae61c51df",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.NS.4.1",
+      "topic": "Planet Earth and beyond",
+      "subtopic": "Planet Earth and beyond",
+      "term": 4,
+      "prerequisites": [
+        "7.NS.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to planet earth and beyond.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:8dfcde2ab518bf542a52a7cd53cc1af23205db23b6be506ff6ef240f9904b6ee",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.NS.4.2",
+      "topic": "The solar system and Earth systems",
+      "subtopic": "The solar system and Earth systems",
+      "term": 4,
+      "prerequisites": [
+        "7.NS.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to the solar system and earth systems.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:bf86f9618e657655540f9692323dd2e1bcd9e1dc570001ddd669dd72e6b7af16",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.NS.4.3",
+      "topic": "Scientific models",
+      "subtopic": "Scientific models",
+      "term": 4,
+      "prerequisites": [
+        "7.NS.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to scientific models.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:f4921f60e2526563f6492112b6236534b433756d24ca50fbc23fa8aaa7a9f07d",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.NS.4.4",
+      "topic": "Assessment",
+      "subtopic": "Assessment",
+      "term": 4,
+      "prerequisites": [
+        "7.NS.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to assessment.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:b29cfe02d4f18ea4692c2eee68e123ab6e1d9504bbb2f42f1904722650c58e71",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    }
+  ],
+  "remediation_mappings": [
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.NS.1.1",
+      "topic": "Life and living",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.NS.1.1",
+      "topic": "Life and living",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.NS.1.2",
+      "topic": "Biodiversity and ecosystems",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-1-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.NS.1.2",
+      "topic": "Biodiversity and ecosystems",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-1-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.NS.1.3",
+      "topic": "Scientific investigations",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-1-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.NS.1.3",
+      "topic": "Scientific investigations",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-1-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.NS.1.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-1-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.NS.1.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-1-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.NS.2.1",
+      "topic": "Matter and materials",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-2-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.NS.2.1",
+      "topic": "Matter and materials",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-2-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.NS.2.2",
+      "topic": "Mixtures and separation",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-2-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.NS.2.2",
+      "topic": "Mixtures and separation",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-2-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.NS.2.3",
+      "topic": "Practical investigations",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-2-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.NS.2.3",
+      "topic": "Practical investigations",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-2-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.NS.2.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-2-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.NS.2.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-2-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.NS.3.1",
+      "topic": "Energy and change",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-3-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.NS.3.1",
+      "topic": "Energy and change",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-3-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.NS.3.2",
+      "topic": "Heat transfer and systems",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-3-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.NS.3.2",
+      "topic": "Heat transfer and systems",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-3-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.NS.3.3",
+      "topic": "Practical investigations",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-3-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.NS.3.3",
+      "topic": "Practical investigations",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-3-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.NS.3.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-3-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.NS.3.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-3-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.NS.4.1",
+      "topic": "Planet Earth and beyond",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-4-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.NS.4.1",
+      "topic": "Planet Earth and beyond",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-4-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.NS.4.2",
+      "topic": "The solar system and Earth systems",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-4-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.NS.4.2",
+      "topic": "The solar system and Earth systems",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-4-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.NS.4.3",
+      "topic": "Scientific models",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-4-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.NS.4.3",
+      "topic": "Scientific models",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-4-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.NS.4.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-4-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.NS.4.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-4-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    }
+  ],
+  "extension_mappings": [
+    {
+      "caps_ref": "7.NS.1.1",
+      "topic": "Life and living",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-1-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.NS.1.2",
+      "topic": "Biodiversity and ecosystems",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-1-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.NS.1.3",
+      "topic": "Scientific investigations",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-1-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.NS.1.4",
+      "topic": "Assessment",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-1-4-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.NS.2.1",
+      "topic": "Matter and materials",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-2-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.NS.2.2",
+      "topic": "Mixtures and separation",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-2-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.NS.2.3",
+      "topic": "Practical investigations",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-2-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.NS.2.4",
+      "topic": "Assessment",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-2-4-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.NS.3.1",
+      "topic": "Energy and change",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-3-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.NS.3.2",
+      "topic": "Heat transfer and systems",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-3-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.NS.3.3",
+      "topic": "Practical investigations",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-3-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.NS.3.4",
+      "topic": "Assessment",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-3-4-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.NS.4.1",
+      "topic": "Planet Earth and beyond",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-4-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.NS.4.2",
+      "topic": "The solar system and Earth systems",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-4-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.NS.4.3",
+      "topic": "Scientific models",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-4-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.NS.4.4",
+      "topic": "Assessment",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-natural-sciences-en-7-NS-4-4-mastery-check-v2",
+      "minutes": 25
+    }
+  ],
+  "pacing_guidance": {
+    "lesson_block_minutes": 25,
+    "practice_block_minutes": 15,
+    "review_day": "Fri",
+    "notes": "Alternate lesson and practice days. Use recheck blueprints after practice when misconception tags were missed."
+  }
+}

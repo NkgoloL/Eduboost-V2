@@ -1,0 +1,55 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.2.1, pluggy-1.6.0 -- /home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase(PosixPath('/home/nkgolol/Dev/Development/Eduboost-V2/.hypothesis/examples'))
+rootdir: /home/nkgolol/Dev/Development/Eduboost-V2
+configfile: pytest.ini
+plugins: asyncio-0.23.7, base-url-2.1.0, mock-3.14.0, hypothesis-6.102.1, cov-5.0.0, playwright-0.5.0, Faker-25.2.0, anyio-4.13.0, xdist-3.6.1
+asyncio: mode=Mode.AUTO
+collecting ... collected 43 items
+
+tests/popia/test_consent_audit_trail.py::test_grant_writes_audit_event SKIPPED [  2%]
+tests/popia/test_consent_audit_trail.py::test_revoke_writes_audit_event SKIPPED [  4%]
+tests/popia/test_consent_audit_trail.py::test_renew_writes_audit_event SKIPPED [  6%]
+tests/popia/test_consent_audit_trail.py::test_execute_erasure_writes_erasure_audit_event SKIPPED [  9%]
+tests/popia/test_consent_audit_trail.py::test_missing_consent_writes_rejected_access_audit_event SKIPPED [ 11%]
+tests/popia/test_right_to_erasure.py::TestRightToErasure::test_new_erasure_request_is_pending PASSED [ 13%]
+tests/popia/test_right_to_erasure.py::TestRightToErasure::test_legal_hold_blocks_execution PASSED [ 16%]
+tests/popia/test_right_to_erasure.py::TestRightToErasure::test_approved_without_hold_can_execute PASSED [ 18%]
+tests/popia/test_right_to_erasure.py::TestRightToErasure::test_erasure_sla_deadline_set_on_creation PASSED [ 20%]
+tests/popia/test_right_to_erasure.py::TestRightToErasure::test_completed_erasure_has_executed_at PASSED [ 23%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestLuhnValidator::test_valid_sa_id_luhn PASSED [ 25%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestLuhnValidator::test_invalid_luhn PASSED [ 27%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestLuhnValidator::test_all_zeros_is_luhn_valid PASSED [ 30%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestLuhnValidator::test_credit_card_luhn PASSED [ 32%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestPIIScannerPatterns::test_detects_valid_sa_id PASSED [ 34%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestPIIScannerPatterns::test_ignores_luhn_invalid_13_digits PASSED [ 37%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestPIIScannerPatterns::test_detects_email PASSED [ 39%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestPIIScannerPatterns::test_clean_text_with_no_email PASSED [ 41%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestPIIScannerPatterns::test_detects_za_phone_number PASSED [ 44%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestPIIScannerPatterns::test_detects_international_phone PASSED [ 46%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestPIIScannerPatterns::test_short_number_not_flagged PASSED [ 48%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestPIIScannerPatterns::test_detects_salutation_name PASSED [ 51%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestPIIScannerPatterns::test_salutation_without_name_not_flagged PASSED [ 53%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestPIIScannerPatterns::test_html_obfuscated_email_detected PASSED [ 55%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestPIIScannerPatterns::test_purely_pedagogical_text_is_clean PASSED [ 58%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestPIIScannerPatterns::test_scan_record_flags_pii_in_nested_list PASSED [ 60%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestPIIScannerPatterns::test_scan_record_clean PASSED [ 62%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestAssertNoPII::test_clean_records_pass_through PASSED [ 65%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestAssertNoPII::test_raises_pii_sweep_error_on_email PASSED [ 67%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestAssertNoPII::test_raises_pii_sweep_error_on_sa_id PASSED [ 69%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestAssertNoPII::test_raises_pii_sweep_error_on_phone PASSED [ 72%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestAssertNoPII::test_error_message_includes_count PASSED [ 74%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestAssertNoPII::test_multiple_records_all_flagged PASSED [ 76%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestAssertNoPII::test_empty_records_list_passes PASSED [ 79%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestAssertNoPII::test_empty_string_fields_are_clean PASSED [ 81%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestAssertNoPII::test_custom_scanner_is_used PASSED [ 83%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestRLHFServiceExports::test_openai_export_blocks_pii PASSED [ 86%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestRLHFServiceExports::test_anthropic_export_blocks_pii PASSED [ 88%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestRLHFServiceExports::test_clean_export_succeeds PASSED [ 90%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestRLHFServiceExports::test_pii_sweep_error_has_field_name PASSED [ 93%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestRLHFExportGuard::test_clean_export_succeeds PASSED [ 95%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestRLHFExportGuard::test_pii_contaminated_export_is_aborted PASSED [ 97%]
+tests/popia/test_rlhf_pii_scrubbing.py::TestRLHFExportGuard::test_anthropic_format_records_are_also_guarded PASSED [100%]
+
+======================== 38 passed, 5 skipped in 0.65s =========================

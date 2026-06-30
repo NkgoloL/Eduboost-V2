@@ -1,0 +1,46 @@
+Package                           Total     Covered   Missing   %
+======================================================================
+.                                     122        0      122    0.0
+api_v2_deps                           126        0      126    0.0
+api_v2_routers                       2003        0     2003    0.0
+domain                               1011        0     1011    0.0
+jobs                                   18        0       18    0.0
+models                                859        0      859    0.0
+modules                               110        0      110    0.0
+modules.auth                           40        0       40    0.0
+modules.beta_launch                   288        0      288    0.0
+modules.billing                       202        0      202    0.0
+modules.consent                        57        0       57    0.0
+modules.deployment                    247        0      247    0.0
+modules.diagnostics                  1169        0     1169    0.0
+modules.disaster_recovery             267        0      267    0.0
+modules.documentation_governance      292        0      292    0.0
+modules.final_release_blockers        285        0      285    0.0
+modules.gamification                    0        0        0    0.0
+modules.learners                       30        0       30    0.0
+modules.lessons                      1766        0     1766    0.0
+modules.notifications                 251        0      251    0.0
+modules.observability                 257        0      257    0.0
+modules.operations_support            290        0      290    0.0
+modules.parent_portal                   0        0        0    0.0
+modules.practice                       84        0       84    0.0
+modules.progress                       89        0       89    0.0
+modules.quality_gates                 245        0      245    0.0
+modules.rlhf                            0        0        0    0.0
+modules.roadmap                       296        0      296    0.0
+modules.security_posture              312        0      312    0.0
+modules.study_plans                     0        0        0    0.0
+repositories                          945        0      945    0.0
+security                              201        0      201    0.0
+services                             6384        0     6384    0.0
+services.content_safety               115        0      115    0.0
+services.curriculum                    93        0       93    0.0
+services.etl                         1392        0     1392    0.0
+services.llm                          203        0      203    0.0
+core                                 2188      177     2011    8.1
+======================================================================
+OVERALL                             22237      177    22060    0.8
+
+NOTE: This coverage was measured from a SUBSET of tests (~80 tests).
+It is NOT representative of the full suite coverage.
+Full-suite coverage measurement is blocked by timeout (see coverage_baseline_20260527.md).

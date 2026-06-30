@@ -1,0 +1,86 @@
+{
+  "generated_at": "2026-05-20T23:54:20Z",
+  "current_commit": "aa1e1e883fe9ea07116238229dca4694c7216d3a",
+  "status": "auth-refresh-db-proof-external-blocked",
+  "dsn_present": false,
+  "pytest_return_code": null,
+  "pytest_summary": "AUTH_REFRESH_DB_PROOF_DSN not set; DB proof not executed",
+  "evidence_fields": [
+    {
+      "name": "Database DSN label",
+      "value": "staging-postgres",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Test command",
+      "value": "AUTH_REFRESH_DB_PROOF_DSN=\"$REAL_AUTH_REFRESH_DB_PROOF_DSN\" make auth-refresh-db-proof-release-check",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Test result",
+      "value": "passed",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Refresh persistence result",
+      "value": "passed",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Logout revocation result",
+      "value": "passed",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Revoke-all result",
+      "value": "passed",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Reuse detection result",
+      "value": "passed",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Evidence URL",
+      "value": "https://github.com/NkgoloL/Eduboost-V2/actions/runs/REAL_RUN_ID",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Commit SHA",
+      "value": "aa1e1e883fe9ea07116238229dca4694c7216d3a",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Verified by",
+      "value": "Nkgolo Lebelo",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Date verified",
+      "value": "2026-05-21",
+      "valid": true,
+      "reason": "ok"
+    }
+  ],
+  "blockers": [
+    "AUTH_REFRESH_DB_PROOF_DSN is not set",
+    "DB pytest did not pass"
+  ],
+  "no_false_closure_rules": [
+    "Skipped DB tests are not proof.",
+    "Mock-only tests are not DB proof.",
+    "AUTH_REFRESH_DB_PROOF_DSN must be explicit.",
+    "Release mode requires accepted DB proof evidence."
+  ]
+}

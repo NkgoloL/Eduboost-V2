@@ -1,18 +1,12 @@
-# EduBoost V2 Code Owners
-
-# Global owners
-*       @NkgoloL
-
-# Backend specific
-/app/api_v2.py @NkgoloL
-/app/core/ @NkgoloL
-/app/modules/ @NkgoloL
-
-# Security & Compliance
-/docs/POPIA_COMPLIANCE.md @NkgoloL
-/app/middleware/security_headers.py @NkgoloL
-
-# Infrastructure
-/docker-compose.yml @NkgoloL
-/deployment/ @NkgoloL
-/.github/workflows/ @NkgoloL
+* @nkgolomatjila-svg
+app/modules/auth/ @nkgolomatjila-svg
+app/core/security.py @nkgolomatjila-svg
+app/core/password_policy.py @nkgolomatjila-svg
+app/modules/consent/ @nkgolomatjila-svg
+app/services/*consent* @nkgolomatjila-svg
+app/services/*audit* @nkgolomatjila-svg
+scripts/popia_sweep.py @nkgolomatjila-svg
+docs/caps/ @nkgolomatjila-svg
+data/ @nkgolomatjila-svg
+.github/ @nkgolomatjila-svg
+docs/release/ @nkgolomatjila-svg

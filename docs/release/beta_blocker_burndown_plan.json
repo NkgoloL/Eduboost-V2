@@ -1,0 +1,100 @@
+{
+  "generated_at": "2026-06-12T17:35:54Z",
+  "current_commit": "b33e49720860a084e7a7c42ead1b620cb859e64f",
+  "source_decision": "NO-GO",
+  "source_beta_blocker_count": 7,
+  "burn_down_status": "blocked",
+  "actions": [
+    {
+      "id": "CI-001",
+      "category": "ci-authority",
+      "status": "external-blocked",
+      "reason": "remote CI run URL not attached",
+      "owner": "release",
+      "evidence_file": "docs/release/ci_evidence.md",
+      "next_action": "Attach a passing GitHub Actions run URL for codex/production_readiness, then rerun CI authority release check.",
+      "verification_command": "make ci-authority-release-check",
+      "priority": "P0",
+      "can_be_closed_locally": false
+    },
+    {
+      "id": "CONTENT-001",
+      "category": "content",
+      "status": "external-blocked",
+      "reason": "external approval remains incomplete",
+      "owner": "content",
+      "evidence_file": "docs/release/external_approvals/content_approval.md",
+      "next_action": "Obtain educator/content approval for beta scope and replace pending metadata in content_approval.md.",
+      "verification_command": "make external-approval-release-check",
+      "priority": "P0",
+      "can_be_closed_locally": false
+    },
+    {
+      "id": "EXT-GATE-001",
+      "category": "external",
+      "status": "runtime-passing",
+      "reason": "external approval remains incomplete",
+      "owner": "release",
+      "evidence_file": "docs/release/external_approval_status.md",
+      "next_action": "Resolve registry blocker: external approval remains incomplete",
+      "verification_command": "make external-approval-release-check",
+      "priority": "P0",
+      "can_be_closed_locally": false
+    },
+    {
+      "id": "LEGAL-001",
+      "category": "legal",
+      "status": "external-blocked",
+      "reason": "external approval remains incomplete",
+      "owner": "legal",
+      "evidence_file": "docs/release/external_approvals/legal_approval.md",
+      "next_action": "Obtain POPIA/legal approval and replace pending metadata in legal_approval.md.",
+      "verification_command": "make external-approval-release-check",
+      "priority": "P0",
+      "can_be_closed_locally": false
+    },
+    {
+      "id": "SEC-001",
+      "category": "security",
+      "status": "external-blocked",
+      "reason": "external approval remains incomplete",
+      "owner": "security",
+      "evidence_file": "docs/release/external_approvals/security_approval.md",
+      "next_action": "Obtain security approval or pen-test sign-off and replace pending metadata in security_approval.md.",
+      "verification_command": "make external-approval-release-check",
+      "priority": "P0",
+      "can_be_closed_locally": false
+    },
+    {
+      "id": "STAGING-001",
+      "category": "staging",
+      "status": "external-blocked",
+      "reason": "external approval remains incomplete",
+      "owner": "release",
+      "evidence_file": "docs/release/external_approvals/staging_acceptance.md",
+      "next_action": "Run staging acceptance, attach evidence URL, and replace pending metadata in staging_acceptance.md.",
+      "verification_command": "make external-approval-release-check",
+      "priority": "P0",
+      "can_be_closed_locally": false
+    },
+    {
+      "id": "POPIA-001",
+      "category": "engineering",
+      "status": "not-proven",
+      "reason": "proof_status is not-proven",
+      "owner": "backend",
+      "evidence_file": "docs/release/popia_response_contract_no_skip_status.md",
+      "next_action": "Resolve registry blocker: proof_status is not-proven",
+      "verification_command": "make release-go-no-go-local-check",
+      "priority": "P1",
+      "can_be_closed_locally": true
+    }
+  ],
+  "release_mode_allowed": false,
+  "no_false_closure_rules": [
+    "Do not close CI-001 from local command output.",
+    "Do not close external approvals from generated templates.",
+    "Do not close staging acceptance without a staging evidence URL.",
+    "Do not change release decision to GO while any beta-blocking registry item remains incomplete."
+  ]
+}

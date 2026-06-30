@@ -2,12 +2,13 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip } from "recharts";
-import { ParentService } from "../../lib/api/services";
+import { ConsentService, DataRightsService, ParentService } from "../../lib/api/services";
 import { extractErrorMessage } from "../../lib/api/client";
-import { Button } from "../ui/Button";
-import { Card } from "../ui/Card";
+import { Button } from "../ui/Button-legacy";
+import { Card } from "../ui/Card-legacy";
 import { Stars } from "./EntryScreens";
-import type { ParentExportBundle, ParentTrustDashboardLearner, ParentTrustDashboardResponse } from "../../lib/api/types";
+import { InfoOfficerNotice } from "./InfoOfficerNotice";
+import type { ConsentStatusResponse, ParentExportBundle, ParentTrustDashboardLearner, ParentTrustDashboardResponse } from "../../lib/api/types";
 
 interface ParentDashboardProps {
   onBack: () => void;
@@ -18,6 +19,9 @@ export function ParentDashboard({ onBack }: ParentDashboardProps) {
   const [error, setError] = useState("");
   const [dashboard, setDashboard] = useState<ParentTrustDashboardResponse | null>(null);
   const [exportBundle, setExportBundle] = useState<ParentExportBundle | null>(null);
+  const [privacyStatus, setPrivacyStatus] = useState<Record<string, string>>({});
+  const [consentStatus, setConsentStatus] = useState<Record<string, ConsentStatusResponse>>({});
+  const [consentActionStatus, setConsentActionStatus] = useState<Record<string, string>>({});
 
   useEffect(() => {
     const guardianId = typeof window !== "undefined" ? localStorage.getItem("guardian_id") : null;
@@ -37,6 +41,22 @@ export function ParentDashboard({ onBack }: ParentDashboardProps) {
         ]);
         setDashboard(dashboardData);
         setExportBundle(exportData);
+
+        // Load consent status for each learner
+        const consentPromises = dashboardData.learners.map(async (learner) => {
+          try {
+            const status = await ConsentService.status(learner.learner_id);
+            return { learnerId: learner.learner_id, status };
+          } catch {
+            return { learnerId: learner.learner_id, status: { active: false, learner_id: learner.learner_id } as ConsentStatusResponse };
+          }
+        });
+        const consentResults = await Promise.all(consentPromises);
+        const consentMap: Record<string, ConsentStatusResponse> = {};
+        consentResults.forEach(({ learnerId, status }) => {
+          consentMap[learnerId] = status;
+        });
+        setConsentStatus(consentMap);
       } catch (err) {
         const detail = extractErrorMessage(err, "");
         setError(
@@ -52,6 +72,49 @@ export function ParentDashboard({ onBack }: ParentDashboardProps) {
     void load();
   }, []);
 
+
+  const runDataRightsAction = async (learnerId: string, action: "export" | "restrict" | "erase") => {
+    setPrivacyStatus((current) => ({ ...current, [learnerId]: "Submitting privacy request..." }));
+    try {
+      if (action === "export") {
+        const bundle = await DataRightsService.exportLearner(learnerId, "json");
+        const auditMsg = bundle.status?.audit_event ? ` (Audit: ${bundle.status.audit_event.slice(0, 8)}...)` : "";
+        setPrivacyStatus((current) => ({ ...current, [learnerId]: `Export ready: ${bundle.filename}${auditMsg}` }));
+      } else if (action === "restrict") {
+        const result = await DataRightsService.restrictProcessing(learnerId, "guardian_requested_from_dashboard");
+        const auditMsg = result.audit_event ? ` (Audit: ${result.audit_event.slice(0, 8)}...)` : "";
+        setPrivacyStatus((current) => ({ ...current, [learnerId]: `Processing restricted.${auditMsg} Optional learner processing is paused.` }));
+      } else {
+        const result = await DataRightsService.requestErasure(learnerId, "guardian_requested_from_dashboard");
+        const auditMsg = result.audit_event ? ` (Audit: ${result.audit_event.slice(0, 8)}...)` : "";
+        setPrivacyStatus((current) => ({ ...current, [learnerId]: `Erasure request submitted for review.${auditMsg}` }));
+      }
+    } catch (err) {
+      setPrivacyStatus((current) => ({ ...current, [learnerId]: extractErrorMessage(err, "Privacy request failed") }));
+    }
+  };
+
+  const runConsentAction = async (learnerId: string, action: "grant" | "revoke") => {
+    setConsentActionStatus((current) => ({ ...current, [learnerId]: action === "grant" ? "Granting consent..." : "Revoking consent..." }));
+    try {
+      if (action === "grant") {
+        await ConsentService.grant(learnerId, "1.0");
+        setConsentActionStatus((current) => ({ ...current, [learnerId]: "Consent granted successfully." }));
+        // Refresh consent status
+        const status = await ConsentService.status(learnerId);
+        setConsentStatus((current) => ({ ...current, [learnerId]: status }));
+      } else {
+        await ConsentService.revoke(learnerId, "guardian_request");
+        setConsentActionStatus((current) => ({ ...current, [learnerId]: "Consent revoked successfully." }));
+        // Refresh consent status
+        const status = await ConsentService.status(learnerId);
+        setConsentStatus((current) => ({ ...current, [learnerId]: status }));
+      }
+    } catch (err) {
+      setConsentActionStatus((current) => ({ ...current, [learnerId]: extractErrorMessage(err, "Consent action failed") }));
+    }
+  };
+
   const chartData = useMemo(
     () =>
       (dashboard?.learners || []).map((learner) => ({
@@ -63,7 +126,7 @@ export function ParentDashboard({ onBack }: ParentDashboardProps) {
   );
 
   return (
-    <div className="screen min-h-screen bg-[var(--bg)] p-6 overflow-y-auto">
+    <main id="main-content" className="screen min-h-screen bg-[var(--bg)] p-6 overflow-y-auto">
       <Stars />
       <div className="relative z-10 max-w-6xl mx-auto">
         <div className="flex justify-between items-center mb-8">
@@ -76,6 +139,8 @@ export function ParentDashboard({ onBack }: ParentDashboardProps) {
 
         {error && <div className="bg-red-500/20 text-red-200 p-4 rounded-xl mb-6 border border-red-500/30">{error}</div>}
 
+        <InfoOfficerNotice variant="card" className="mb-6" />
+
         {loading ? (
           <div className="py-20 text-center text-blue-200">Loading dashboard...</div>
         ) : !dashboard || dashboard.learners.length === 0 ? (
@@ -87,13 +152,14 @@ export function ParentDashboard({ onBack }: ParentDashboardProps) {
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-8">
               <Card className="xl:col-span-2 p-6 bg-[var(--surface2)]/70 border-[var(--border)] shadow-2xl">
                 <h2 className="text-xl font-bold text-white mb-4">7-Day Completion Trend</h2>
+                <p className="sr-only">Bar chart showing recent lesson completion for each learner.</p>
                 <div className="h-72">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={chartData}>
-                      <XAxis dataKey="name" stroke="#cbd5e1" />
-                      <YAxis stroke="#cbd5e1" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
                       <Tooltip />
-                      <Bar dataKey="completion" fill="#60a5fa" radius={[8, 8, 0, 0]} />
+                      <Bar dataKey="completion" radius={[8, 8, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
@@ -164,15 +230,61 @@ export function ParentDashboard({ onBack }: ParentDashboardProps) {
                     <p className="text-blue-50 leading-relaxed">{learner.ai_progress_summary}</p>
                   </div>
 
-                  <a href={learner.export_url} className="inline-flex items-center rounded-xl bg-blue-600 px-4 py-2 font-bold text-white hover:bg-blue-500 transition-colors">
-                    Open learner export
-                  </a>
+                  <div className="rounded-2xl bg-black/10 p-4 mb-4" aria-label={`Consent status for ${learner.display_name}`}>
+                    <div className="text-xs uppercase tracking-widest text-blue-200 mb-3">POPIA Consent</div>
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <span className={`w-3 h-3 rounded-full ${consentStatus[learner.learner_id]?.active ? "bg-green-400" : "bg-red-400"}`} />
+                        <span className="text-sm font-medium text-white">
+                          {consentStatus[learner.learner_id]?.active ? "Consent active" : "No consent"}
+                        </span>
+                      </div>
+                      {consentStatus[learner.learner_id]?.days_remaining !== undefined && (
+                        <span className="text-xs text-blue-200">
+                          {consentStatus[learner.learner_id]?.days_remaining} days remaining
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      <button
+                        type="button"
+                        onClick={() => void runConsentAction(learner.learner_id, "grant")}
+                        disabled={consentStatus[learner.learner_id]?.active}
+                        className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-green-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                      >
+                        Grant consent
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => void runConsentAction(learner.learner_id, "revoke")}
+                        disabled={!consentStatus[learner.learner_id]?.active}
+                        className="rounded-lg bg-red-500/20 px-3 py-1.5 text-xs font-bold text-red-100 hover:bg-red-500/30 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                      >
+                        Revoke consent
+                      </button>
+                    </div>
+                    {consentActionStatus[learner.learner_id] && (
+                      <p className="mt-2 text-xs text-blue-100" role="status" aria-live="polite">{consentActionStatus[learner.learner_id]}</p>
+                    )}
+                  </div>
+
+                  <div className="rounded-2xl bg-black/10 p-4" aria-label={`Privacy controls for ${learner.display_name}`}>
+                    <div className="text-xs uppercase tracking-widest text-blue-200 mb-3">Privacy controls</div>
+                    <div className="flex flex-wrap gap-3">
+                      <button type="button" onClick={() => void runDataRightsAction(learner.learner_id, "export")} className="rounded-xl bg-blue-600 px-4 py-2 font-bold text-white hover:bg-blue-500 transition-colors">Request export</button>
+                      <button type="button" onClick={() => void runDataRightsAction(learner.learner_id, "restrict")} className="rounded-xl bg-yellow-500/20 px-4 py-2 font-bold text-yellow-100 hover:bg-yellow-500/30 transition-colors">Restrict processing</button>
+                      <button type="button" onClick={() => void runDataRightsAction(learner.learner_id, "erase")} className="rounded-xl bg-red-500/20 px-4 py-2 font-bold text-red-100 hover:bg-red-500/30 transition-colors">Request erasure</button>
+                    </div>
+                    {privacyStatus[learner.learner_id] && (
+                      <p className="mt-3 text-sm text-blue-100" role="status" aria-live="polite">{privacyStatus[learner.learner_id]}</p>
+                    )}
+                  </div>
                 </Card>
               ))}
             </div>
           </>
         )}
       </div>
-    </div>
+    </main>
   );
 }

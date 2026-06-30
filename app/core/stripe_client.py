@@ -49,8 +49,8 @@ class StripeService:
             customer=customer_id,
             mode="subscription",
             line_items=[{"price": settings.STRIPE_PRICE_ID_PREMIUM, "quantity": 1}],
-            success_url="http://localhost:3000/dashboard?upgraded=true",
-            cancel_url="http://localhost:3000/dashboard?cancelled=true",
+            success_url=f"{settings.PUBLIC_FRONTEND_URL}/dashboard?upgraded=true",
+            cancel_url=f"{settings.PUBLIC_FRONTEND_URL}/dashboard?cancelled=true",
             metadata={"guardian_id": guardian_id},
         )
         return checkout.url  # type: ignore[return-value]

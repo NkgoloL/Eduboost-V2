@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-06-12T17:41:01Z",
+  "current_commit": "a70b57616bb29572fcb57961b91a3f68f0c66329",
+  "current_branch": "phase-11/technical-debt-burn-down",
+  "status": "staging-smoke-evidence-not-accepted",
+  "run_id": "",
+  "run_url": "",
+  "workflow_name": "",
+  "run_status": "",
+  "conclusion": "",
+  "head_sha": "",
+  "staging_base_url": "",
+  "smoke_command": "",
+  "smoke_result": "",
+  "healthcheck_result": "",
+  "api_result": "",
+  "frontend_result": "not-recorded",
+  "verified_by": "unverified",
+  "date_verified": "2026-06-12",
+  "blockers": [
+    "no successful staging/smoke GitHub Actions run found for current commit; set STAGING_SMOKE_RUN_ID",
+    "run ID is missing or non-numeric",
+    "GitHub Actions run status is missing, expected completed",
+    "GitHub Actions run conclusion is missing, expected success",
+    "GitHub Actions run SHA missing does not match current commit a70b57616bb29572fcb57961b91a3f68f0c66329",
+    "workflow name is missing",
+    "staging base URL is missing, non-HTTPS, localhost/example, or placeholder",
+    "staging smoke test command is missing or placeholder",
+    "STAGING_SMOKE_RESULT must be passed",
+    "STAGING_SMOKE_HEALTHCHECK_RESULT must be passed",
+    "STAGING_SMOKE_API_RESULT must be passed"
+  ]
+}

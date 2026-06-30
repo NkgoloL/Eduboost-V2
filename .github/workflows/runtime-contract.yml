@@ -1,0 +1,74 @@
+name: Runtime Contract
+
+on:
+  pull_request:
+    branches:
+      - master
+      - "release/**"
+    paths:
+      - "app/**"
+      - "scripts/check_runtime_entrypoints.py"
+      - "tests/test_entrypoints.py"
+      - "tests/unit/test_api_v2_router_contract.py"
+      - "tests/unit/test_check_runtime_entrypoints.py"
+      - "Makefile"
+      - ".github/workflows/runtime-contract.yml"
+  push:
+    branches:
+      - master
+      - "release/**"
+    paths:
+      - "app/**"
+      - "scripts/check_runtime_entrypoints.py"
+      - "tests/test_entrypoints.py"
+      - "tests/unit/test_api_v2_router_contract.py"
+      - "tests/unit/test_check_runtime_entrypoints.py"
+      - "Makefile"
+      - ".github/workflows/runtime-contract.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  runtime-check:
+    name: Check runtime entrypoints
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt
+          fi
+          if [ -f requirements-dev.txt ]; then
+            python -m pip install -r requirements-dev.txt
+          fi
+          if [ -f requirements/base.txt ]; then
+            python -m pip install -r requirements/base.txt
+          fi
+          if [ -f requirements/dev.txt ]; then
+            python -m pip install -r requirements/dev.txt
+          fi
+
+      - name: Verify runtime entrypoints
+        run: make runtime-check
+
+      - name: Run runtime contract tests
+        run: |
+          pytest -c pytest.ini \
+            tests/test_entrypoints.py \
+            tests/unit/test_api_v2_router_contract.py \
+            tests/unit/test_check_runtime_entrypoints.py \
+            -q --no-cov

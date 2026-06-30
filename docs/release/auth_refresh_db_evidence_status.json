@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-06-12T17:31:42Z",
+  "current_commit": "b33e49720860a084e7a7c42ead1b620cb859e64f",
+  "status": "auth-refresh-db-evidence-accepted",
+  "accepted": true,
+  "fields": [
+    {
+      "name": "Database DSN label",
+      "value": "github-actions-postgres-service",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Test command",
+      "value": "python -m pytest -c pytest.ini tests/integration/test_auth_refresh_db_proof.py -q --no-cov --tb=short -rs",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Test result",
+      "value": "passed",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Refresh persistence result",
+      "value": "passed",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Logout revocation result",
+      "value": "passed",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Revoke-all result",
+      "value": "passed",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Reuse detection result",
+      "value": "passed",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Evidence URL",
+      "value": "https://github.com/NkgoloL/Eduboost-V2/actions/runs/26226114014",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Commit SHA",
+      "value": "84ace987e1f577fcf647fbe105f78680003c5aaa",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Verified by",
+      "value": "github-actions",
+      "valid": true,
+      "reason": "ok"
+    },
+    {
+      "name": "Date verified",
+      "value": "2026-05-21",
+      "valid": true,
+      "reason": "ok"
+    }
+  ],
+  "blockers": []
+}

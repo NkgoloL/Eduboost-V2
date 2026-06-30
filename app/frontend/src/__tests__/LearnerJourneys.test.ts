@@ -8,8 +8,6 @@ const sourcePath = (...parts: string[]) => join(process.cwd(), "src", ...parts);
 describe("learner journey contracts", () => {
   beforeEach(() => {
     vi.restoreAllMocks();
-    window.localStorage.clear();
-    window.localStorage.setItem("guardian_token", "token-123");
   });
 
   it("loads dashboard data from mastery and gamification contracts", async () => {
@@ -59,9 +57,11 @@ describe("learner journey contracts", () => {
       } as Response);
 
     const plan = await LearnerService.getStudyPlan("learner-1");
+    const mondayDay = plan.days?.Mon?.[0];
+    const mondaySchedule = plan.schedule?.Mon?.[0];
 
-    expect(plan.days?.Mon[0].label).toBe("Fractions");
-    expect(plan.schedule?.Mon[0].type).toBe("gap-fill");
+    expect(mondayDay?.label).toBe("Fractions");
+    expect(mondaySchedule?.type).toBe("gap-fill");
     expect(plan.week_focus).toBe("Balanced revision and grade-level progress");
   });
 
@@ -116,17 +116,17 @@ describe("learner journey contracts", () => {
   });
 
   it("keeps learner pages wired for failed and empty states", () => {
-    const dashboard = readFileSync(sourcePath("app", "(learner)", "dashboard", "page.tsx"), "utf8");
+    const dashboard = readFileSync(sourcePath("components", "learner", "DashboardClient.tsx"), "utf8");
     const plan = readFileSync(sourcePath("app", "(learner)", "plan", "page.tsx"), "utf8");
     const badges = readFileSync(sourcePath("app", "(learner)", "badges", "page.tsx"), "utf8");
-    const lesson = readFileSync(sourcePath("app", "(learner)", "lesson", "page.tsx"), "utf8");
+    const lesson = readFileSync(sourcePath("components", "learner", "LessonEntryClient.tsx"), "utf8");
 
     expect(dashboard).toContain("error && !gamification");
     expect(plan).toContain("error && !plan");
     expect(plan).toContain("lessonHrefForPlanItem");
     expect(badges).toContain("error && !profile");
     expect(badges).toContain("No badges yet!");
-    expect(lesson).toContain("completionError");
-    expect(lesson).toContain("Reconnect to generate this lesson");
+    expect(lesson).toContain("completionState");
+    expect(lesson).toContain("Lesson saved offline and will sync when you reconnect.");
   });
 });

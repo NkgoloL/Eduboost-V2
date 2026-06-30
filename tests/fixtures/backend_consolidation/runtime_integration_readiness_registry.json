@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "boundary": "runtime integration readiness registry; dry-run only, no route/service rewiring",
+  "integration_targets": [
+    {
+      "id": "BIR-451-AUDIT-CONSENT",
+      "area": "audit",
+      "candidate_id": "BCW-421-AUDIT-CONSENT-GRANTED",
+      "target_kind": "service_call_path",
+      "dry_run_supported": true,
+      "runtime_wiring_allowed": false,
+      "requires_route_registration": false,
+      "requires_schema_change": false,
+      "destructive": false
+    },
+    {
+      "id": "BIR-452-CONSENT-GRANT",
+      "area": "consent",
+      "candidate_id": "BCW-431-CONSENT-GRANT-PAYLOAD",
+      "target_kind": "service_payload_path",
+      "dry_run_supported": true,
+      "runtime_wiring_allowed": false,
+      "requires_route_registration": false,
+      "requires_schema_change": false,
+      "destructive": false
+    },
+    {
+      "id": "BIR-453-DEEP-READINESS",
+      "area": "deep_readiness",
+      "candidate_id": "BCW-435-DEEP-READINESS-READONLY",
+      "target_kind": "readiness_plan",
+      "dry_run_supported": true,
+      "runtime_wiring_allowed": false,
+      "requires_route_registration": false,
+      "requires_schema_change": false,
+      "destructive": false
+    }
+  ],
+  "blocked_changes": [
+    "route registration",
+    "schema migration",
+    "audit repository deletion",
+    "consent table merge",
+    "public health write probe",
+    "production DB mutation",
+    "alembic stamp head"
+  ]
+}

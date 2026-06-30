@@ -1,0 +1,104 @@
+{
+  "status": "blocked",
+  "blockers": [
+    "remote_ci",
+    "branch_protection",
+    "backup_drill",
+    "restore_drill",
+    "rollback_drill"
+  ],
+  "evidence": {
+    "remote_ci": {
+      "status": "pending_remote_ci_evidence",
+      "run_url": "",
+      "commit_sha": "",
+      "branch": "",
+      "result": "",
+      "test_summary": "",
+      "captured_at": "2026-06-12T17:35:53Z",
+      "required": true
+    },
+    "branch_protection": {
+      "status": "pending_branch_protection_evidence",
+      "protected_branch": "codex/production_readiness",
+      "required_checks": [],
+      "pull_request_required": false,
+      "admin_enforced": false,
+      "bypass_disabled": false,
+      "evidence_url": "",
+      "captured_at": "2026-06-12T17:35:53Z",
+      "required": true
+    },
+    "content_gate": {
+      "status": "pass",
+      "approved_items": 40,
+      "required_items": 40,
+      "waiver": "",
+      "waiver_owner": "",
+      "blockers": [],
+      "captured_at": "2026-06-12T17:35:53Z",
+      "required": true
+    },
+    "staging_smoke": {
+      "status": "pass",
+      "source": "docs/release/staging_smoke_latest.json",
+      "base_url": "https://staging.example.com",
+      "passed": true,
+      "result_count": 5,
+      "captured_at": "2026-06-12T17:35:53Z",
+      "required": true
+    },
+    "backup_drill": {
+      "drill": "backup",
+      "status": "pending_backup_evidence",
+      "result": "",
+      "evidence_url": "",
+      "operator": "",
+      "notes": "",
+      "captured_at": "2026-06-12T17:35:53Z",
+      "required": true
+    },
+    "restore_drill": {
+      "drill": "restore",
+      "status": "synthetic_invalid",
+      "result": "passed",
+      "evidence_url": "docs/release/placeholder_restore.log",
+      "operator": "Engineering",
+      "notes": "",
+      "captured_at": "2026-05-17T10:12:35Z",
+      "required": true,
+      "evidence_source_type": "unknown",
+      "integrity_status": "synthetic_invalid",
+      "integrity_checked_at": "2026-06-12T17:35:53Z",
+      "trusted_source_required": [
+        "real_restore_drill"
+      ],
+      "previous_status": "pass",
+      "blockers": [
+        "invalid_or_synthetic_evidence"
+      ]
+    },
+    "rollback_drill": {
+      "drill": "rollback",
+      "status": "synthetic_invalid",
+      "result": "passed",
+      "evidence_url": "docs/release/placeholder_rollback.log",
+      "operator": "Engineering",
+      "notes": "",
+      "captured_at": "2026-05-17T10:12:35Z",
+      "required": true,
+      "evidence_source_type": "unknown",
+      "integrity_status": "synthetic_invalid",
+      "integrity_checked_at": "2026-06-12T17:35:53Z",
+      "trusted_source_required": [
+        "real_rollback_drill"
+      ],
+      "previous_status": "pass",
+      "blockers": [
+        "invalid_or_synthetic_evidence"
+      ]
+    }
+  },
+  "captured_at": "2026-06-12T17:35:53Z",
+  "required": true
+}

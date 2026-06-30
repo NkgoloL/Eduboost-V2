@@ -1,0 +1,90 @@
+{
+  "generated_at": "2026-06-27T02:19:44Z",
+  "current_commit": "88840fc52a05c694c6d313e57bc8cba4bcda4c63",
+  "status": "auth-lifecycle-http-route-proof-passing",
+  "router_import_ok": true,
+  "synthetic_app_registration_ok": true,
+  "proofs": [
+    {
+      "function": "register",
+      "service_method": "register",
+      "source_route_exists": true,
+      "registered_route_exists": true,
+      "service_method_exists": true,
+      "has_auth_service_dependency": true,
+      "delegates_to_service": true,
+      "methods": [
+        "POST"
+      ],
+      "paths": [
+        "/auth/register"
+      ],
+      "passed": true
+    },
+    {
+      "function": "login",
+      "service_method": "login",
+      "source_route_exists": true,
+      "registered_route_exists": true,
+      "service_method_exists": true,
+      "has_auth_service_dependency": true,
+      "delegates_to_service": true,
+      "methods": [
+        "POST"
+      ],
+      "paths": [
+        "/auth/login"
+      ],
+      "passed": true
+    },
+    {
+      "function": "refresh",
+      "service_method": "refresh",
+      "source_route_exists": true,
+      "registered_route_exists": true,
+      "service_method_exists": true,
+      "has_auth_service_dependency": true,
+      "delegates_to_service": true,
+      "methods": [
+        "POST"
+      ],
+      "paths": [
+        "/auth/refresh"
+      ],
+      "passed": true
+    },
+    {
+      "function": "logout",
+      "service_method": "logout",
+      "source_route_exists": true,
+      "registered_route_exists": true,
+      "service_method_exists": true,
+      "has_auth_service_dependency": true,
+      "delegates_to_service": true,
+      "methods": [
+        "POST"
+      ],
+      "paths": [
+        "/auth/logout"
+      ],
+      "passed": true
+    },
+    {
+      "function": "revoke_all_tokens",
+      "service_method": "revoke_all_tokens",
+      "source_route_exists": true,
+      "registered_route_exists": true,
+      "service_method_exists": true,
+      "has_auth_service_dependency": true,
+      "delegates_to_service": true,
+      "methods": [
+        "POST"
+      ],
+      "paths": [
+        "/auth/revoke-all"
+      ],
+      "passed": true
+    }
+  ],
+  "blockers": []
+}

@@ -1,26 +1,54 @@
-## Description
-Please include a summary of the changes and the related issue.
+## Summary
 
-Fixes # (issue)
+What does this PR change?
 
-## Type of Change
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] Documentation update
-- [ ] Chore / Refactoring
+## Type of change
 
-## Checklist
-- [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
-- [ ] Any dependent changes have been merged and published in downstream modules
+- [ ] Bug fix
+- [ ] Feature
+- [ ] Refactor
+- [ ] Documentation
+- [ ] Infrastructure
 
-## Production Readiness (Phase 0)
-- [ ] I have updated the release checklist if necessary
-- [ ] I have verified health/readiness impacts
-- [ ] I have reviewed POPIA/Security implications
+## Testing
+
+- [ ] Unit tests added or updated
+- [ ] Full local tests pass
+- [ ] Evidence attached in `docs/release/`
+
+## POPIA impact
+
+Does this PR touch learner data, consent, audit, PII, or LLM prompts?
+
+- [ ] No
+- [ ] Yes — describe impact:
+
+## Database migrations
+
+- [ ] No migration
+- [ ] Migration included with rollback plan
+
+## Security impact
+
+- [ ] No auth/authz/secrets impact
+- [ ] Auth/authz/secrets impact reviewed
+
+## Deployment notes
+
+Environment variables or operational changes:
+
+## Release evidence
+
+- [ ] TODO IDs addressed:
+- [ ] Evidence files updated under `docs/release/`:
+- [ ] Validation commands run:
+
+## Rollback plan
+
+- [ ] No rollback impact
+- [ ] Rollback covered by `docs/release/rollback_runbook.md`
+- [ ] Database rollback or restore path documented
+
+## Reviewer focus
+
+Call out the highest-risk areas reviewers should inspect:

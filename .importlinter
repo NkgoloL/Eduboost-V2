@@ -1,18 +1,39 @@
 [importlinter]
 root_package = app
+include_external_packages = True
 
-[importlinter:contract:1]
-name = API package must not import repositories
+[importlinter:contract:api_v2_routers_do_not_import_repositories]
+name = FastAPI v2 routers should not import repositories directly
 type = forbidden
+allow_indirect_imports = True
 source_modules =
-    app.api
+    app.api_v2_routers
 forbidden_modules =
     app.repositories
+ignore_imports =
+    app.api_v2_routers.consent -> app.repositories.*
+    app.api_v2_routers.content_factory -> app.repositories.*
+    app.api_v2_routers.gamification -> app.repositories.*
+    app.api_v2_routers.learners -> app.repositories.*
+    app.api_v2_routers.onboarding -> app.repositories.*
+    app.api_v2_routers.parents -> app.repositories.*
 
-[importlinter:contract:2]
-name = Services must not import API package
+[importlinter:contract:popia_router_uses_dependency_layer]
+name = POPIA router uses dependency layer rather than repository construction
 type = forbidden
+allow_indirect_imports = True
 source_modules =
-    app.services
+    app.api_v2_routers.popia
 forbidden_modules =
-    app.api
+    app.repositories
+    app.core.database
+    sqlalchemy
+
+[importlinter:contract:lessons_router_uses_authorization_service_layer]
+name = Lessons router uses authorization service layer rather than repositories
+type = forbidden
+allow_indirect_imports = True
+source_modules =
+    app.api_v2_routers.lessons
+forbidden_modules =
+    app.repositories

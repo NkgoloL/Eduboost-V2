@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T11:03:03Z",
+  "scope_id": "grade5_social_sciences_en",
+  "scope_status": "review",
+  "review_policy_id": "educator_review_required_v1",
+  "decision": "dev_approved",
+  "dev_approved": true,
+  "stage_unlocked": true,
+  "approved": false,
+  "legal_decision": "pending",
+  "legal_approved": false,
+  "reviewer_id": "dev-content-review-2026-06-03",
+  "evidence_url": "dev-reviewed-generated-artifacts",
+  "legal_evidence_url": "pending",
+  "approved_at": "2026-06-03T11:03:03Z",
+  "notes": "Developer reviewed generated artifacts for staging/import unblock. Educator and legal production approvals remain pending.",
+  "layer_review": {
+    "topic_map": {
+      "path": "data/caps/topic_maps/grade5_social_sciences_en.json",
+      "sha256": "sha256:485a525e8045747cb6cb8ee9aa98888fd38266b46d4ab3f9b5a72f2823eb34d5",
+      "record_count": 32,
+      "review_ready_count": 32,
+      "review_status": "dev_approved"
+    },
+    "diagnostic_items": {
+      "path": "data/generated/items/grade5_social_sciences_en_item_bank.json",
+      "sha256": "sha256:d83fb87e4a5ec15e5bb9a9476ccf7d52aa6b5c21c9e0ebd890afd043f00dc59a",
+      "record_count": 640,
+      "review_ready_count": 640,
+      "review_status": "dev_approved"
+    },
+    "lessons": {
+      "path": "data/generated/lessons/grade5_social_sciences_en_lessons.json",
+      "sha256": "sha256:674a4f3dfce80afbb134b502e648524d8f1e6b23785d72ee409bab3ce49a3f5b",
+      "record_count": 128,
+      "review_ready_count": 128,
+      "review_status": "dev_approved"
+    },
+    "assessment_blueprints": {
+      "path": "data/generated/assessment_blueprints/grade5_social_sciences_en_blueprints.json",
+      "sha256": "sha256:b1d2146917a17983e847a63fa97715123bd65a653c243e50690bcadfbc1c2fce",
+      "record_count": 49,
+      "review_ready_count": 49,
+      "review_status": "dev_approved"
+    },
+    "study_plan_templates": {
+      "path": "data/generated/study_plans/grade5_social_sciences_en_templates.json",
+      "sha256": "sha256:b295fcdeb4b78305a08d43d4fc09227ce66161c7f96885dcc3e1c7fb63b3b21b",
+      "record_count": 16,
+      "review_ready_count": 16,
+      "review_status": "dev_approved"
+    }
+  },
+  "promotion_readiness": {
+    "staging_eligible": true,
+    "production_eligible": false,
+    "blockers": [
+      "Scope is still in review and requires dev_approved or educator approval before staging unlock.",
+      "Review evidence packet is missing.",
+      "Educator approval is required for production.",
+      "Legal approval is required for production."
+    ]
+  }
+}

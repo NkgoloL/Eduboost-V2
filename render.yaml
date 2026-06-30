@@ -1,0 +1,57 @@
+services:
+  - type: web
+    name: eduboost-api
+    runtime: python
+    plan: free
+    region: oregon
+    branch: main
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: uvicorn app.api_v2:app --host 0.0.0.0 --port $PORT
+    # /ready is the canonical deep readiness probe (DB + Redis + critical deps).
+    # /health is retained as a lightweight liveness probe.
+    # See docs/operations/health.md for the full contract.
+    healthCheckPath: /ready
+    autoDeployTrigger: commit
+    envVars:
+      # ADR-001 declares Python 3.12.3 as the supported runtime.
+      - key: PYTHON_VERSION
+        value: "3.12.3"
+
+      - key: ENVIRONMENT
+        value: "production"
+
+      - key: APP_ENV
+        value: "production"
+
+      - key: APP_NAME
+        value: "eduboost"
+
+      - key: API_BASE_URL
+        value: "https://eduboost-api.onrender.com"
+
+      - key: FRONTEND_URL
+        value: "https://eduboos-frontend.onrender.com"
+
+      - key: ALLOWED_ORIGINS
+        value: "https://eduboos-frontend.onrender.com,http://localhost:3050,http://127.0.0.1:3050"
+
+      # Supabase Postgres connection string.
+      # Paste this during Render Blueprint creation.
+      - key: DATABASE_URL
+        sync: false
+
+      # Secret key for JWT/session/signing.
+      # Render will generate one during initial Blueprint creation.
+      - key: SECRET_KEY
+        generateValue: true
+
+      # Use whichever Redis variables EduBoost currently reads.
+      # For Upstash REST SDK:
+      - key: UPSTASH_REDIS_REST_URL
+        sync: false
+      - key: UPSTASH_REDIS_REST_TOKEN
+        sync: false
+
+      # For normal Redis clients, if your backend uses redis:// or rediss://:
+      - key: REDIS_URL
+        sync: false

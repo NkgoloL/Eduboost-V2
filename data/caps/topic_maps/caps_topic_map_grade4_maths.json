@@ -1,0 +1,646 @@
+{
+  "_meta": {
+    "schema_version": "1.0.0",
+    "generated_at": "2026-05-10",
+    "scope": "Grade 4 Mathematics — all 4 CAPS terms",
+    "coding_scheme": "Grade.SubjectCode.Term.TopicIndex[.SubtopicIndex]",
+    "subject_codes": { "M": "Mathematics", "E": "English", "Z": "isiZulu", "A": "Afrikaans", "L": "Life Skills", "N": "Natural Sciences" },
+    "source": "CAPS Grade 4-6 Intermediate Phase Mathematics document (DBE, South Africa)",
+    "notes": "Prerequisites list caps_refs whose mastery is assumed before engaging this topic."
+  },
+  "grade": 4,
+  "subject": "Mathematics",
+  "subject_code": "M",
+  "terms": [
+    {
+      "term": 1,
+      "weeks": "1-10",
+      "topics": [
+        {
+          "caps_ref": "4.M.1.1",
+          "topic_index": 1,
+          "topic": "Whole Numbers",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.1.1.1",
+              "subtopic_index": 1,
+              "subtopic": "Counting, ordering, comparing and representing numbers to at least 4-digit numbers",
+              "assessment_standards": [
+                "Count forwards and backwards in 10s, 100s and 1 000s from any number.",
+                "Represent and recognise the place value of digits in whole numbers up to 4-digit numbers.",
+                "Order and compare 4-digit numbers using <, > and = symbols.",
+                "Identify, write and recognise numbers in words up to 4-digit numbers."
+              ],
+              "prerequisites": [],
+              "common_misconceptions": [
+                "place_value_confusion",
+                "reversal_of_digit_order",
+                "incorrect_comparison_with_unequal_digit_counts"
+              ]
+            },
+            {
+              "caps_ref": "4.M.1.1.2",
+              "subtopic_index": 2,
+              "subtopic": "Addition and subtraction up to 4-digit numbers",
+              "assessment_standards": [
+                "Add and subtract up to 4-digit numbers.",
+                "Use column addition and subtraction with regrouping.",
+                "Estimate and verify answers using rounding.",
+                "Solve addition and subtraction word problems in context."
+              ],
+              "prerequisites": ["4.M.1.1.1"],
+              "common_misconceptions": [
+                "forgetting_to_regroup",
+                "subtracting_smaller_from_larger_regardless_of_position",
+                "place_value_error_in_column_method"
+              ]
+            },
+            {
+              "caps_ref": "4.M.1.1.3",
+              "subtopic_index": 3,
+              "subtopic": "Multiplication of 2-digit by 1-digit numbers",
+              "assessment_standards": [
+                "Multiply 2-digit numbers by 1-digit numbers.",
+                "Use multiplication tables up to 12 × 12.",
+                "Apply expanded notation in multiplication.",
+                "Solve multiplication problems in context."
+              ],
+              "prerequisites": ["4.M.1.1.2"],
+              "common_misconceptions": [
+                "incorrect_times_table_recall",
+                "forgetting_to_carry_in_multiplication",
+                "multiplying_each_digit_separately_without_place_value"
+              ]
+            },
+            {
+              "caps_ref": "4.M.1.1.4",
+              "subtopic_index": 4,
+              "subtopic": "Division up to 3-digit by 1-digit numbers",
+              "assessment_standards": [
+                "Divide up to 3-digit numbers by 1-digit numbers.",
+                "Interpret remainders in context.",
+                "Relate division to multiplication as inverse operations.",
+                "Solve division word problems."
+              ],
+              "prerequisites": ["4.M.1.1.3"],
+              "common_misconceptions": [
+                "remainder_ignored_or_mishandled",
+                "dividend_and_divisor_reversed",
+                "place_value_error_in_short_division"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.M.1.2",
+          "topic_index": 2,
+          "topic": "Common Fractions",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.1.2.1",
+              "subtopic_index": 1,
+              "subtopic": "Naming, ordering and comparing fractions",
+              "assessment_standards": [
+                "Name and write common fractions: halves, thirds, quarters, fifths, sixths, eighths, tenths.",
+                "Order and compare common fractions with the same denominator.",
+                "Identify fractions on a number line.",
+                "Use fraction notation (numerator/denominator)."
+              ],
+              "prerequisites": ["4.M.1.1.1"],
+              "common_misconceptions": [
+                "larger_denominator_means_larger_fraction",
+                "fraction_as_two_separate_whole_numbers",
+                "numerator_denominator_confusion"
+              ]
+            },
+            {
+              "caps_ref": "4.M.1.2.2",
+              "subtopic_index": 2,
+              "subtopic": "Equivalent fractions",
+              "assessment_standards": [
+                "Recognise and generate equivalent fractions.",
+                "Simplify fractions to lowest terms.",
+                "Use diagrams and number lines to show equivalence."
+              ],
+              "prerequisites": ["4.M.1.2.1"],
+              "common_misconceptions": [
+                "adding_numerators_and_denominators_separately",
+                "not_recognising_equivalent_forms",
+                "confusion_between_simplifying_and_halving"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.M.1.3",
+          "topic_index": 3,
+          "topic": "2D Shapes",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.1.3.1",
+              "subtopic_index": 1,
+              "subtopic": "Properties of 2D shapes",
+              "assessment_standards": [
+                "Identify and name 2D shapes: circles, triangles, quadrilaterals, pentagons, hexagons, heptagons, octagons.",
+                "Describe shapes by number of sides, angles, and symmetry.",
+                "Classify shapes as regular or irregular.",
+                "Draw 2D shapes."
+              ],
+              "prerequisites": [],
+              "common_misconceptions": [
+                "confusing_squares_and_rectangles",
+                "orientation_dependence_for_shape_recognition",
+                "counting_vertices_instead_of_sides"
+              ]
+            },
+            {
+              "caps_ref": "4.M.1.3.2",
+              "subtopic_index": 2,
+              "subtopic": "Lines of symmetry",
+              "assessment_standards": [
+                "Identify lines of symmetry in 2D shapes.",
+                "Draw lines of symmetry.",
+                "Complete symmetrical figures."
+              ],
+              "prerequisites": ["4.M.1.3.1"],
+              "common_misconceptions": [
+                "diagonal_symmetry_confused_with_horizontal_or_vertical",
+                "confusing_rotational_symmetry_with_line_symmetry"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.M.1.4",
+          "topic_index": 4,
+          "topic": "Number Patterns",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.1.4.1",
+              "subtopic_index": 1,
+              "subtopic": "Numeric patterns",
+              "assessment_standards": [
+                "Identify, describe, and extend numeric patterns.",
+                "Create own number patterns.",
+                "Describe the rule for a pattern."
+              ],
+              "prerequisites": ["4.M.1.1.1"],
+              "common_misconceptions": [
+                "incorrect_rule_identification",
+                "applying_additive_rule_to_multiplicative_pattern"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.M.1.5",
+          "topic_index": 5,
+          "topic": "Measurement — Length",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.1.5.1",
+              "subtopic_index": 1,
+              "subtopic": "Measuring length using mm, cm, m, and km",
+              "assessment_standards": [
+                "Estimate and measure length in millimetres, centimetres, metres, and kilometres.",
+                "Convert between mm, cm, and m.",
+                "Solve problems involving length in context."
+              ],
+              "prerequisites": [],
+              "common_misconceptions": [
+                "unit_conversion_errors_mm_to_cm",
+                "estimation_far_from_realistic_values"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "term": 2,
+      "weeks": "1-10",
+      "topics": [
+        {
+          "caps_ref": "4.M.2.1",
+          "topic_index": 1,
+          "topic": "Whole Numbers",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.2.1.1",
+              "subtopic_index": 1,
+              "subtopic": "Counting, ordering, comparing numbers to 5-digit numbers",
+              "assessment_standards": [
+                "Count, order, and compare numbers up to 5-digit numbers.",
+                "Identify the place value of each digit in a 5-digit number.",
+                "Round numbers to the nearest 10, 100, and 1 000."
+              ],
+              "prerequisites": ["4.M.1.1.1"],
+              "common_misconceptions": [
+                "place_value_confusion_in_five_digit_numbers",
+                "rounding_down_when_digit_is_5"
+              ]
+            },
+            {
+              "caps_ref": "4.M.2.1.2",
+              "subtopic_index": 2,
+              "subtopic": "Addition and subtraction up to 5-digit numbers",
+              "assessment_standards": [
+                "Add and subtract up to 5-digit numbers.",
+                "Solve addition and subtraction problems in context.",
+                "Check answers by estimation."
+              ],
+              "prerequisites": ["4.M.1.1.2", "4.M.2.1.1"],
+              "common_misconceptions": [
+                "forgetting_to_regroup_in_five_digit_addition",
+                "place_value_alignment_error"
+              ]
+            },
+            {
+              "caps_ref": "4.M.2.1.3",
+              "subtopic_index": 3,
+              "subtopic": "Multiplication of 3-digit by 1-digit numbers",
+              "assessment_standards": [
+                "Multiply 3-digit by 1-digit numbers.",
+                "Use expanded notation.",
+                "Solve multiplication problems in context."
+              ],
+              "prerequisites": ["4.M.1.1.3"],
+              "common_misconceptions": [
+                "place_value_error_in_three_digit_multiplication",
+                "forgetting_to_carry_in_hundreds_column"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.M.2.2",
+          "topic_index": 2,
+          "topic": "Common Fractions",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.2.2.1",
+              "subtopic_index": 1,
+              "subtopic": "Fractions of whole numbers",
+              "assessment_standards": [
+                "Calculate a fraction of a whole number.",
+                "Solve problems involving fractions of whole numbers.",
+                "Recognise that fractions can be used to describe portions of sets."
+              ],
+              "prerequisites": ["4.M.1.2.1", "4.M.1.2.2"],
+              "common_misconceptions": [
+                "dividing_only_the_numerator",
+                "not_recognising_fraction_of_a_set_context"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.M.2.3",
+          "topic_index": 3,
+          "topic": "Decimals",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.2.3.1",
+              "subtopic_index": 1,
+              "subtopic": "Decimal fractions (tenths and hundredths)",
+              "assessment_standards": [
+                "Recognise decimal notation for tenths and hundredths.",
+                "Order and compare decimal fractions.",
+                "Convert between common fractions and decimal fractions (tenths/hundredths).",
+                "Use decimal notation for money in South African context (rands and cents)."
+              ],
+              "prerequisites": ["4.M.1.2.1"],
+              "common_misconceptions": [
+                "longer_decimal_always_larger",
+                "ignoring_trailing_zeros_in_decimals",
+                "confusion_between_tenths_and_hundredths_columns"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.M.2.4",
+          "topic_index": 4,
+          "topic": "3D Objects",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.2.4.1",
+              "subtopic_index": 1,
+              "subtopic": "Properties of 3D objects",
+              "assessment_standards": [
+                "Identify and name 3D objects: prisms, pyramids, cylinders, cones, spheres.",
+                "Describe faces, edges, and vertices.",
+                "Identify 2D shapes in the faces of 3D objects.",
+                "Build 3D models from nets."
+              ],
+              "prerequisites": ["4.M.1.3.1"],
+              "common_misconceptions": [
+                "counting_faces_instead_of_edges",
+                "confusing_prism_and_pyramid",
+                "not_recognising_curved_surfaces"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.M.2.5",
+          "topic_index": 5,
+          "topic": "Measurement — Mass",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.2.5.1",
+              "subtopic_index": 1,
+              "subtopic": "Measuring mass using g and kg",
+              "assessment_standards": [
+                "Estimate and measure mass in grams and kilograms.",
+                "Convert between g and kg.",
+                "Solve problems involving mass in South African grocery/food contexts."
+              ],
+              "prerequisites": [],
+              "common_misconceptions": [
+                "converting_kg_to_g_by_adding_zeros_incorrectly",
+                "confusion_between_mass_and_weight"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.M.2.6",
+          "topic_index": 6,
+          "topic": "Data Handling",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.2.6.1",
+              "subtopic_index": 1,
+              "subtopic": "Collecting, organising, and representing data",
+              "assessment_standards": [
+                "Collect data using questionnaires and tallies.",
+                "Organise data in tables and tally charts.",
+                "Draw and interpret pictographs, bar graphs, and pie charts.",
+                "Answer questions about data: most, least, total, difference."
+              ],
+              "prerequisites": [],
+              "common_misconceptions": [
+                "misreading_scale_on_bar_graph",
+                "not_using_key_in_pictograph",
+                "confusing_frequency_with_value"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "term": 3,
+      "weeks": "1-10",
+      "topics": [
+        {
+          "caps_ref": "4.M.3.1",
+          "topic_index": 1,
+          "topic": "Whole Numbers",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.3.1.1",
+              "subtopic_index": 1,
+              "subtopic": "Multiplication of 2-digit by 2-digit numbers",
+              "assessment_standards": [
+                "Multiply 2-digit numbers by 2-digit numbers.",
+                "Use the long multiplication algorithm.",
+                "Estimate products by rounding.",
+                "Solve multiplication problems in context."
+              ],
+              "prerequisites": ["4.M.1.1.3", "4.M.2.1.3"],
+              "common_misconceptions": [
+                "forgetting_to_add_zero_placeholder_in_second_row",
+                "partial_product_alignment_error"
+              ]
+            },
+            {
+              "caps_ref": "4.M.3.1.2",
+              "subtopic_index": 2,
+              "subtopic": "Division with remainders (3-digit ÷ 2-digit)",
+              "assessment_standards": [
+                "Perform long division with remainders.",
+                "Interpret and represent remainders appropriately in context.",
+                "Solve division word problems."
+              ],
+              "prerequisites": ["4.M.1.1.4", "4.M.3.1.1"],
+              "common_misconceptions": [
+                "remainder_larger_than_divisor_error",
+                "misinterpreting_quotient_and_remainder_in_word_problem"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.M.3.2",
+          "topic_index": 2,
+          "topic": "Fractions",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.3.2.1",
+              "subtopic_index": 1,
+              "subtopic": "Adding and subtracting fractions with same denominator",
+              "assessment_standards": [
+                "Add fractions with the same denominator.",
+                "Subtract fractions with the same denominator.",
+                "Simplify answers where possible.",
+                "Solve fraction word problems."
+              ],
+              "prerequisites": ["4.M.1.2.1", "4.M.1.2.2"],
+              "common_misconceptions": [
+                "adding_denominators_together",
+                "not_simplifying_the_result",
+                "creating_mixed_number_incorrectly"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.M.3.3",
+          "topic_index": 3,
+          "topic": "Symmetry",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.3.3.1",
+              "subtopic_index": 1,
+              "subtopic": "Symmetry in regular and irregular polygons",
+              "assessment_standards": [
+                "Determine the number of lines of symmetry in polygons.",
+                "Distinguish between figures with and without lines of symmetry.",
+                "Create designs with symmetry."
+              ],
+              "prerequisites": ["4.M.1.3.2"],
+              "common_misconceptions": [
+                "assuming_all_polygons_are_symmetric",
+                "counting_extra_lines_that_are_not_lines_of_symmetry"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.M.3.4",
+          "topic_index": 4,
+          "topic": "Measurement — Volume and Capacity",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.3.4.1",
+              "subtopic_index": 1,
+              "subtopic": "Measuring volume and capacity using ml and l",
+              "assessment_standards": [
+                "Estimate and measure volume and capacity using millilitres and litres.",
+                "Convert between ml and l.",
+                "Read scales on measuring containers.",
+                "Solve capacity problems in everyday SA contexts (cooking, filling containers)."
+              ],
+              "prerequisites": [],
+              "common_misconceptions": [
+                "ml_and_l_conversion_error_factor_of_10_not_1000",
+                "misreading_non_standard_scale_intervals"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.M.3.5",
+          "topic_index": 5,
+          "topic": "Probability",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.3.5.1",
+              "subtopic_index": 1,
+              "subtopic": "Introduction to probability: likely, unlikely, certain, impossible",
+              "assessment_standards": [
+                "Describe events as likely, unlikely, certain, or impossible.",
+                "Identify outcomes of simple experiments.",
+                "Record results of probability experiments."
+              ],
+              "prerequisites": [],
+              "common_misconceptions": [
+                "confusing_likelihood_with_personal_preference",
+                "not_distinguishing_equally_likely_from_likely"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "term": 4,
+      "weeks": "1-10",
+      "topics": [
+        {
+          "caps_ref": "4.M.4.1",
+          "topic_index": 1,
+          "topic": "Whole Numbers — Revision and Consolidation",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.4.1.1",
+              "subtopic_index": 1,
+              "subtopic": "Consolidation of all four operations with 4- and 5-digit numbers",
+              "assessment_standards": [
+                "Add, subtract, multiply, and divide using numbers up to 5 digits.",
+                "Solve multi-step word problems combining more than one operation.",
+                "Estimate and verify using inverse operations."
+              ],
+              "prerequisites": ["4.M.1.1.1", "4.M.1.1.2", "4.M.1.1.3", "4.M.1.1.4", "4.M.2.1.1", "4.M.2.1.2", "4.M.2.1.3", "4.M.3.1.1", "4.M.3.1.2"],
+              "common_misconceptions": [
+                "incorrect_operation_selection_in_word_problems",
+                "not_checking_answer_with_inverse_operation"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.M.4.2",
+          "topic_index": 2,
+          "topic": "Numeric Patterns — Revision",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.4.2.1",
+              "subtopic_index": 1,
+              "subtopic": "Patterns in multiplication and division tables",
+              "assessment_standards": [
+                "Identify and describe patterns in multiplication tables.",
+                "Use patterns to predict terms.",
+                "Describe rules using words."
+              ],
+              "prerequisites": ["4.M.1.4.1", "4.M.1.1.3"],
+              "common_misconceptions": [
+                "applying_addition_rule_to_multiplicative_pattern"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.M.4.3",
+          "topic_index": 3,
+          "topic": "Measurement — Time",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.4.3.1",
+              "subtopic_index": 1,
+              "subtopic": "Reading analogue and digital time; calculating elapsed time",
+              "assessment_standards": [
+                "Read time on analogue and digital clocks to the nearest minute.",
+                "Convert between 12-hour and 24-hour time.",
+                "Calculate elapsed time in hours and minutes.",
+                "Solve time problems in SA school schedule context."
+              ],
+              "prerequisites": [],
+              "common_misconceptions": [
+                "confusing_hour_and_minute_hands",
+                "am_pm_confusion_in_12_hour_format",
+                "elapsed_time_subtraction_error_across_the_hour"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.M.4.4",
+          "topic_index": 4,
+          "topic": "Geometric Patterns",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.4.4.1",
+              "subtopic_index": 1,
+              "subtopic": "Identifying and extending geometric patterns",
+              "assessment_standards": [
+                "Identify, describe, and extend geometric patterns.",
+                "Create own geometric patterns.",
+                "Describe the rule for a geometric pattern using words and drawings."
+              ],
+              "prerequisites": ["4.M.1.3.1"],
+              "common_misconceptions": [
+                "confusing_growing_pattern_with_repeating_pattern"
+              ]
+            }
+          ]
+        },
+        {
+          "caps_ref": "4.M.4.5",
+          "topic_index": 5,
+          "topic": "Data Handling — Revision",
+          "subtopics": [
+            {
+              "caps_ref": "4.M.4.5.1",
+              "subtopic_index": 1,
+              "subtopic": "Interpreting and drawing graphs",
+              "assessment_standards": [
+                "Collect, organise, and represent data.",
+                "Draw bar graphs, pictographs, and pie charts.",
+                "Answer questions about data representations.",
+                "Compare data sets."
+              ],
+              "prerequisites": ["4.M.2.6.1"],
+              "common_misconceptions": [
+                "misreading_scale_intervals",
+                "not_labelling_graph_axes_or_title"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

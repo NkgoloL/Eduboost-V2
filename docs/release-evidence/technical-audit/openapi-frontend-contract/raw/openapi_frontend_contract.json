@@ -1,0 +1,135 @@
+{
+  "checked": [
+    "docs/openapi.json",
+    "app/frontend/src/lib/api/services.ts",
+    "app/api_v2_routers/parents.py",
+    "app/api_v2_routers/popia.py",
+    "scripts/generate_openapi.py",
+    "scripts/audit_remediation/regenerate_openapi_contract.sh"
+  ],
+  "errors": [],
+  "required_contract_routes": [
+    {
+      "frontend_fragment": "/popia/exports",
+      "method": "POST",
+      "openapi_path": "/api/v2/popia/exports",
+      "reason": "POPIA export request"
+    },
+    {
+      "frontend_fragment": "/popia/erasure",
+      "method": "POST",
+      "openapi_path": "/api/v2/popia/erasure",
+      "reason": "POPIA erasure request"
+    },
+    {
+      "frontend_fragment": "/popia/erasure/${learnerId}/cancel",
+      "method": "POST",
+      "openapi_path": "/api/v2/popia/erasure/{learner_id}/cancel",
+      "reason": "POPIA erasure cancellation"
+    },
+    {
+      "frontend_fragment": "/popia/erasure/${learnerId}/status",
+      "method": "GET",
+      "openapi_path": "/api/v2/popia/erasure/{learner_id}/status",
+      "reason": "POPIA erasure status"
+    },
+    {
+      "frontend_fragment": "/popia/restriction",
+      "method": "POST",
+      "openapi_path": "/api/v2/popia/restriction",
+      "reason": "POPIA processing restriction"
+    },
+    {
+      "frontend_fragment": "/parents/${guardianId}/export",
+      "method": "GET",
+      "openapi_path": "/api/v2/parents/{guardian_id}/export",
+      "reason": "parent export bundle"
+    },
+    {
+      "frontend_fragment": "/parents/${guardianId}/dashboard",
+      "method": "GET",
+      "openapi_path": "/api/v2/parents/{guardian_id}/dashboard",
+      "reason": "parent trust dashboard"
+    },
+    {
+      "frontend_fragment": "/parents/dashboard",
+      "method": "GET",
+      "openapi_path": "/api/v2/parents/dashboard",
+      "reason": "parent dashboard"
+    },
+    {
+      "frontend_fragment": "/consent/grant",
+      "method": "POST",
+      "openapi_path": "/api/v2/consent/grant",
+      "reason": "consent grant"
+    },
+    {
+      "frontend_fragment": "/consent/revoke",
+      "method": "POST",
+      "openapi_path": "/api/v2/consent/revoke",
+      "reason": "consent revoke"
+    },
+    {
+      "frontend_fragment": "/consent/status/${learnerId}",
+      "method": "GET",
+      "openapi_path": "/api/v2/consent/status/{learner_id}",
+      "reason": "consent status"
+    },
+    {
+      "frontend_fragment": "/lessons/generate",
+      "method": "POST",
+      "openapi_path": "/api/v2/lessons/generate",
+      "reason": "lesson generation"
+    },
+    {
+      "frontend_fragment": "/lessons/${lessonId}/complete",
+      "method": "POST",
+      "openapi_path": "/api/v2/lessons/{lesson_id}/complete",
+      "reason": "lesson completion"
+    },
+    {
+      "frontend_fragment": "/lessons/sync",
+      "method": "POST",
+      "openapi_path": "/api/v2/lessons/sync",
+      "reason": "lesson sync"
+    },
+    {
+      "frontend_fragment": "/learners/${learnerId}",
+      "method": "GET",
+      "openapi_path": "/api/v2/learners/{learner_id}",
+      "reason": "learner profile"
+    },
+    {
+      "frontend_fragment": "/learners/${learnerId}/mastery",
+      "method": "GET",
+      "openapi_path": "/api/v2/learners/{learner_id}/mastery",
+      "reason": "learner mastery"
+    },
+    {
+      "frontend_fragment": "/gamification/profile/${learnerId}",
+      "method": "GET",
+      "openapi_path": "/api/v2/gamification/profile/{learner_id}",
+      "reason": "gamification profile"
+    },
+    {
+      "frontend_fragment": "/gamification/award-xp",
+      "method": "POST",
+      "openapi_path": "/api/v2/gamification/award-xp",
+      "reason": "gamification XP award"
+    },
+    {
+      "frontend_fragment": "/study-plans/generate/${learnerId}",
+      "method": "POST",
+      "openapi_path": "/api/v2/study-plans/generate/{learner_id}",
+      "reason": "study-plan generation"
+    },
+    {
+      "frontend_fragment": "/diagnostics/submit",
+      "method": "POST",
+      "openapi_path": "/api/v2/diagnostics/submit",
+      "reason": "diagnostic submission"
+    }
+  ],
+  "valid": true,
+  "warnings": []
+}

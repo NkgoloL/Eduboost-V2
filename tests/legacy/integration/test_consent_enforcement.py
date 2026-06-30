@@ -17,8 +17,7 @@ from httpx import AsyncClient, ASGITransport
 
 # ── Adjust this import to your actual app entrypoint ──────────────────────────
 from app.api.main import app
-from app.core.database import get_db
-from app.api.services.consent_service import ConsentService, ConsentNotGrantedError
+from app.api.services.consent_service import ConsentNotGrantedError
 from app.api.models.consent import ConsentStatus
 
 

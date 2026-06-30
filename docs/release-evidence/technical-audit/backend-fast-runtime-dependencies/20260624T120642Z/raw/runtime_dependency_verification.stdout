@@ -1,0 +1,128 @@
+{
+  "valid": true,
+  "static_only": false,
+  "authority_interpreter": "/usr/bin/python3.12",
+  "interpreter_exists": true,
+  "makefile_pytest_line": "PYTEST ?= .venv/bin/python -m pytest",
+  "required_imports": [
+    {
+      "module": "anthropic",
+      "package_hint": "anthropic",
+      "available": true,
+      "error": null
+    },
+    {
+      "module": "arq",
+      "package_hint": "arq",
+      "available": true,
+      "error": null
+    },
+    {
+      "module": "fastapi",
+      "package_hint": "fastapi",
+      "available": true,
+      "error": null
+    },
+    {
+      "module": "httpx",
+      "package_hint": "httpx",
+      "available": true,
+      "error": null
+    },
+    {
+      "module": "hypothesis",
+      "package_hint": "hypothesis",
+      "available": true,
+      "error": null
+    },
+    {
+      "module": "jinja2",
+      "package_hint": "jinja2",
+      "available": true,
+      "error": null
+    },
+    {
+      "module": "jose",
+      "package_hint": "python-jose",
+      "available": true,
+      "error": null
+    },
+    {
+      "module": "prometheus_client",
+      "package_hint": "prometheus-client",
+      "available": true,
+      "error": null
+    },
+    {
+      "module": "psycopg2",
+      "package_hint": "psycopg2-binary or psycopg2",
+      "available": true,
+      "error": null
+    },
+    {
+      "module": "pypdf",
+      "package_hint": "pypdf",
+      "available": true,
+      "error": null
+    },
+    {
+      "module": "redis",
+      "package_hint": "redis",
+      "available": true,
+      "error": null
+    },
+    {
+      "module": "starlette",
+      "package_hint": "starlette",
+      "available": true,
+      "error": null
+    },
+    {
+      "module": "structlog",
+      "package_hint": "structlog",
+      "available": true,
+      "error": null
+    },
+    {
+      "module": "yaml",
+      "package_hint": "PyYAML",
+      "available": true,
+      "error": null
+    }
+  ],
+  "optional_imports": [
+    {
+      "module": "mcp",
+      "package_hint": "mcp",
+      "available": false,
+      "error": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nModuleNotFoundError: No module named 'mcp'"
+    }
+  ],
+  "missing_required_modules": [],
+  "missing_optional_modules": [
+    "mcp"
+  ],
+  "requirements_dev_exists": true,
+  "requirements_dev_mentions": {
+    "anthropic": true,
+    "arq": true,
+    "fastapi": true,
+    "httpx": true,
+    "hypothesis": true,
+    "jinja2": true,
+    "jose": false,
+    "prometheus_client": true,
+    "psycopg2": true,
+    "pypdf": true,
+    "redis": false,
+    "starlette": true,
+    "structlog": true,
+    "yaml": true,
+    "mcp": false
+  },
+  "recommendations": [
+    "Review requirements/dev.txt declarations for missing backend-fast runtime dependencies: jose, redis",
+    "Optional modules missing but not release-blocking for this verifier: mcp",
+    "Runtime dependency check passed; rerun the backend fast authority gate or proceed to application-failure remediation if it still fails."
+  ]
+}

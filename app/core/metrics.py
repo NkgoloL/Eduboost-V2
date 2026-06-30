@@ -80,6 +80,32 @@ irt_computation_seconds = Histogram(
     registry=REGISTRY,
 )
 
+item_bank_coverage_ratio = Gauge(
+    "eduboost_item_bank_coverage_ratio",
+    "Fraction of target approved item count per CAPS reference",
+    ["caps_ref"],
+    registry=REGISTRY,
+)
+
+diagnostic_sessions_total = Counter(
+    "eduboost_diagnostic_sessions_total",
+    "Diagnostic sessions by CAPS reference and outcome",
+    ["caps_ref", "outcome"],
+    registry=REGISTRY,
+)
+
+item_selection_latency_seconds = Histogram(
+    "eduboost_item_selection_latency_seconds",
+    "Item-bank selection latency",
+    ["caps_ref"],
+    buckets=[0.005, 0.01, 0.025, 0.05, 0.075, 0.1, 0.25],
+    registry=REGISTRY,
+)
+
+ITEM_BANK_COVERAGE_RATIO = item_bank_coverage_ratio
+DIAGNOSTIC_SESSIONS_TOTAL = diagnostic_sessions_total
+ITEM_SELECTION_LATENCY_SECONDS = item_selection_latency_seconds
+
 # ── Learner Activity ──────────────────────────────────────────────────────────
 active_learners_gauge = Gauge(
     "eduboost_active_learners",
@@ -135,6 +161,35 @@ redis_connected_clients = Gauge(
 )
 
 
+
+# ── Readiness / Release Operations ──────────────────────────────────────────
+readiness_component_status = Gauge(
+    "eduboost_readiness_component_status",
+    "Dependency readiness status by component; 1=ok, 0=unavailable/degraded",
+    ["component", "criticality"],
+    registry=REGISTRY,
+)
+
+audit_write_failures_total = Counter(
+    "eduboost_audit_write_failures_total",
+    "Audit write failures observed by the application",
+    ["operation"],
+    registry=REGISTRY,
+)
+
+backup_last_success_timestamp = Gauge(
+    "eduboost_backup_last_success_timestamp",
+    "Unix timestamp of the last successful PostgreSQL backup reported by backup automation",
+    registry=REGISTRY,
+)
+
+backup_failures_total = Counter(
+    "eduboost_backup_failures_total",
+    "PostgreSQL backup failures reported by backup automation",
+    ["stage"],
+    registry=REGISTRY,
+)
+
 # ── ARQ Background Jobs ───────────────────────────────────────────────────────
 arq_jobs_total = Counter(
     "eduboost_arq_jobs_total",
@@ -175,3 +230,163 @@ def record_llm_tokens(
 def make_metrics_app() -> object:
     """Returns an ASGI app that serves /metrics for Prometheus scraping."""
     return make_asgi_app(registry=REGISTRY)
+
+# ── Phase 3 Content Review Governance ───────────────────────────────────────
+content_review_decisions_total = Counter(
+    "eduboost_content_review_decisions_total",
+    "Educator content-review decisions",
+    ["action", "result"],
+    registry=REGISTRY,
+)
+
+content_review_state_transitions_total = Counter(
+    "eduboost_content_review_state_transitions_total",
+    "Content-governance state transitions",
+    ["from_status", "to_status"],
+    registry=REGISTRY,
+)
+
+content_review_stale_assignments = Gauge(
+    "eduboost_content_review_stale_assignments",
+    "Current number of stale content-review assignments",
+    registry=REGISTRY,
+)
+
+content_review_reminders_total = Counter(
+    "eduboost_content_review_reminders_total",
+    "Stale content-review reminder and escalation actions",
+    ["action"],
+    registry=REGISTRY,
+)
+
+content_review_authorization_failures_total = Counter(
+    "eduboost_content_review_authorization_failures_total",
+    "Authorization failures on content-review operations",
+    ["permission"],
+    registry=REGISTRY,
+)
+
+
+# ── Phase 4 IRT Quality Governance ─────────────────────────────────────────
+irt_calibration_runs_total = Counter(
+    "eduboost_irt_calibration_runs_total",
+    "IRT calibration run outcomes",
+    ["status"],
+    registry=REGISTRY,
+)
+
+irt_item_interventions_total = Counter(
+    "eduboost_irt_item_interventions_total",
+    "IRT item intervention decisions",
+    ["action"],
+    registry=REGISTRY,
+)
+
+irt_rewrite_requests_total = Counter(
+    "eduboost_irt_rewrite_requests_total",
+    "Governed item rewrite requests created by the IRT watchdog",
+    registry=REGISTRY,
+)
+
+irt_answer_position_bias = Gauge(
+    "eduboost_irt_answer_position_max_share",
+    "Maximum share of the correct answer in one option position",
+    registry=REGISTRY,
+)
+
+
+# ── Phase 5 Learner Tutor ─────────────────────────────────────────────────
+tutor_messages_total = Counter(
+    "eduboost_tutor_messages_total",
+    "Learner tutor message outcomes",
+    ["status", "provider"],
+    registry=REGISTRY,
+)
+
+tutor_fallback_total = Counter(
+    "eduboost_tutor_fallback_total",
+    "Learner tutor safe fallbacks",
+    ["reason"],
+    registry=REGISTRY,
+)
+
+tutor_escalations_total = Counter(
+    "eduboost_tutor_escalations_total",
+    "Learner tutor educator/safeguarding escalations",
+    ["reason", "severity"],
+    registry=REGISTRY,
+)
+
+tutor_quality_score = Histogram(
+    "eduboost_tutor_quality_score",
+    "Validated learner tutor quality score",
+    buckets=[0.0, 0.4, 0.6, 0.7, 0.8, 0.9, 1.0],
+    registry=REGISTRY,
+)
+
+
+# ── Phase 6 Durable AI Operations ───────────────────────────────────────────
+ai_usage_tokens_total = Counter(
+    "eduboost_ai_usage_tokens_total",
+    "Durably accounted AI tokens",
+    ["provider", "model", "purpose", "outcome"],
+    registry=REGISTRY,
+)
+
+ai_usage_cost_usd_total = Counter(
+    "eduboost_ai_usage_estimated_cost_usd_total",
+    "Estimated AI provider cost in USD; operational telemetry, not billing",
+    ["provider", "model", "purpose"],
+    registry=REGISTRY,
+)
+
+ai_budget_blocks_total = Counter(
+    "eduboost_ai_budget_blocks_total",
+    "AI operations blocked by durable budget authority",
+    ["scope", "purpose"],
+    registry=REGISTRY,
+)
+
+ai_budget_reserved_tokens = Counter(
+    "eduboost_ai_budget_reserved_tokens_total",
+    "Tokens reserved before governed AI calls",
+    ["scope", "purpose"],
+    registry=REGISTRY,
+)
+
+ai_budget_usage_ratio = Gauge(
+    "eduboost_ai_budget_usage_ratio",
+    "Current used-token ratio for durable budget scopes",
+    ["scope"],
+    registry=REGISTRY,
+)
+
+
+# ── Phase 7 Curriculum Expansion and Training Governance ───────────────────
+curriculum_coverage_gap_total = Gauge(
+    "eduboost_curriculum_coverage_gap_total",
+    "Current configured content gap count",
+    ["scope_id", "language"],
+    registry=REGISTRY,
+)
+
+curriculum_coverage_snapshots_total = Counter(
+    "eduboost_curriculum_coverage_snapshots_total",
+    "Durable curriculum coverage snapshots",
+    ["status"],
+    registry=REGISTRY,
+)
+
+training_dataset_artifacts_total = Gauge(
+    "eduboost_training_dataset_artifacts_total",
+    "Eligible artifacts in a governed training dataset manifest",
+    ["dataset_version", "language"],
+    registry=REGISTRY,
+)
+
+training_dataset_exclusions_total = Counter(
+    "eduboost_training_dataset_exclusions_total",
+    "Artifacts excluded from governed training datasets",
+    ["reason"],
+    registry=REGISTRY,
+)

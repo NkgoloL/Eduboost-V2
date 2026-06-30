@@ -12,7 +12,10 @@ from jose import JWTError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.authorization import assert_can_access_learner
 from app.core.exceptions import AuthenticationError, ConsentRequiredError
+from app.core.security import get_current_user
+from app.repositories.repositories import LearnerRepository
 from app.core.metrics import consent_gate_blocks_total
 from app.core.security import decode_token
 from app.repositories.consent_repository import ConsentRepository
@@ -89,12 +92,17 @@ async def require_active_consent_for_current_learner(
     learner_id: UUID,
     db: AsyncSession = Depends(get_db),
     repo: ConsentRepository = Depends(get_consent_repo),
-    _user_id: UUID = Depends(get_current_user_id),
+    current_user: dict = Depends(get_current_user),
 ) -> UUID:
+    """Combined auth + consent gate for learner-scoped endpoints.
+
+    The gate is declarative, checks object-level learner access, and verifies
+    active consent before endpoint code may process learner data.
     """
-    Combined auth + consent gate for learner-scoped endpoints.
-    Returns learner_id for use in endpoint handler.
-    """
+    learner = await LearnerRepository(db).get_by_id(str(learner_id))
+    if learner is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
+    assert_can_access_learner(current_user, learner)
     await require_active_consent(learner_id, db, repo)
     return learner_id
 

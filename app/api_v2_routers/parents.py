@@ -1,14 +1,15 @@
 """EduBoost V2 — Parent portal router."""
 from __future__ import annotations
 
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request, Response, status
+from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.api_v2_deps.auth import AuthContext, require_parent_or_admin
 from app.core.database import get_db
-from app.core.security import require_parent_or_admin
 from app.domain.schemas import (
     ParentDashboardLearner,
     ParentDashboardResponse,
@@ -16,36 +17,37 @@ from app.domain.schemas import (
     ParentTrustDashboardResponse,
 )
 from app.models import Guardian, KnowledgeGap, Lesson
-from app.repositories.learner_repository import LearnerRepository
+from app.repositories.repositories import LearnerRepository
+from app.security.dependencies import require_active_consent_for_current_user, require_learner_read_for_current_user
+from app.security.dependencies import require_learner_write_for_current_user
 from app.services.consent import ConsentService
-from app.services.lesson_generator import LessonGenerator
-from app.services.audit_service import AuditService
-from app.core import providers
+from app.services.executive import ExecutiveService
+from app.services.fourth_estate import FourthEstateService
 
-router = APIRouter(prefix="/parents", tags=["parents"])
-_executive = LessonGenerator()
+router = APIRouter(route_class=EnvelopedRoute, prefix="/parents", tags=["parents"])
+_executive = ExecutiveService()
 
 
 @router.get("/dashboard", response_model=ParentDashboardResponse)
 async def get_parent_dashboard(
     request: Request,
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_parent_or_admin),
+    current_user: AuthContext = Depends(require_parent_or_admin),
 ) -> ParentDashboardResponse:
-    guardian = await db.get(Guardian, current_user["sub"])
+    guardian = await db.get(Guardian, current_user.user_id)
     if guardian is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Guardian not found")
 
-    learners = await LearnerRepository(db).get_by_guardian(current_user["sub"])
-    consent_service = ConsentService(db)
-    one_week_ago = datetime.now(UTC) - timedelta(days=7)
+    learners = await LearnerRepository(db).get_by_guardian(current_user.user_id)
+    one_week_ago = datetime.now(timezone.utc) - timedelta(days=7)
 
     dashboard_learners: list[ParentDashboardLearner] = []
     total_lessons_generated = 0
 
     for learner in learners:
         try:
-            await consent_service.require_active_consent(learner.id, actor_id=current_user["sub"])
+            require_learner_read_for_current_user(current_user, learner)
+            await require_active_consent_for_current_user(db, current_user, learner.id)
         except HTTPException:
             continue
 
@@ -104,9 +106,9 @@ async def get_parent_trust_dashboard(
     guardian_id: str,
     request: Request,
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_parent_or_admin),
+    current_user: AuthContext = Depends(require_parent_or_admin),
 ) -> ParentTrustDashboardResponse:
-    if guardian_id != current_user["sub"] and str(current_user.get("role", "")).lower() != "admin":
+    if guardian_id != current_user.user_id and not current_user.is_admin:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorised to view this dashboard")
 
     guardian = await db.get(Guardian, guardian_id)
@@ -114,13 +116,13 @@ async def get_parent_trust_dashboard(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Guardian not found")
 
     learners = await LearnerRepository(db).get_by_guardian(guardian_id)
-    consent_service = ConsentService(db)
-    seven_days_ago = datetime.now(UTC) - timedelta(days=7)
+    seven_days_ago = datetime.now(timezone.utc) - timedelta(days=7)
     response_learners: list[ParentTrustDashboardLearner] = []
 
     for learner in learners:
         try:
-            await consent_service.require_active_consent(learner.id, actor_id=current_user["sub"])
+            require_learner_read_for_current_user(current_user, learner)
+            await require_active_consent_for_current_user(db, current_user, learner.id)
         except HTTPException:
             continue
 
@@ -163,7 +165,7 @@ async def get_parent_trust_dashboard(
                 ai_progress_summary=ai_progress_summary,
                 lesson_completion_rate_7d=completion_rate,
                 streak_days=learner.streak_days,
-                export_url=f"/api/v2/popia/data-export/{learner.id}",
+                export_url=f"/api/v2/popia/exports?learner_id={learner.id}",
             )
         )
 
@@ -176,7 +178,7 @@ async def get_parent_trust_dashboard(
     return ParentTrustDashboardResponse(
         guardian_id=guardian_id,
         subscription_tier=guardian.subscription_tier,
-        generated_at=datetime.now(UTC),
+        generated_at=datetime.now(timezone.utc),
         learners=response_learners,
     )
 
@@ -185,9 +187,9 @@ async def get_parent_trust_dashboard(
 async def export_parent_access_bundle(
     guardian_id: str,
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_parent_or_admin),
+    current_user: AuthContext = Depends(require_parent_or_admin),
 ):
-    if guardian_id != current_user["sub"] and str(current_user.get("role", "")).lower() != "admin":
+    if guardian_id != current_user.user_id and not current_user.is_admin:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorised to export this data")
 
     guardian = await db.get(Guardian, guardian_id)
@@ -195,15 +197,15 @@ async def export_parent_access_bundle(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Guardian not found")
 
     learners = await LearnerRepository(db).get_by_guardian(guardian_id)
-    consent_service = ConsentService(db)
     exports = []
     for learner in learners:
-        await consent_service.require_active_consent(learner.id, actor_id=current_user["sub"])
+        require_learner_read_for_current_user(current_user, learner)
+        await require_active_consent_for_current_user(db, current_user, learner.id)
         exports.append(
             {
                 "learner_id": learner.id,
                 "display_name": learner.display_name,
-                "export_url": f"/api/v2/popia/data-export/{learner.id}",
+                "export_url": f"/api/v2/popia/exports?learner_id={learner.id}",
             }
         )
     return {
@@ -217,17 +219,16 @@ async def export_parent_access_bundle(
 async def get_learner_progress(
     learner_id: str,
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_parent_or_admin),
+    current_user: AuthContext = Depends(require_parent_or_admin),
 ) -> dict:
     learner = await LearnerRepository(db).get_by_id(learner_id)
     if learner is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
-    if learner.guardian_id != current_user["sub"] and str(current_user.get("role", "")).lower() != "admin":
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorised to view this learner")
+    require_learner_read_for_current_user(current_user, learner)
 
-    await ConsentService(db).require_active_consent(learner_id, actor_id=current_user["sub"])
+    await require_active_consent_for_current_user(db, current_user, learner_id)
 
-    thirty_days_ago = datetime.now(UTC) - timedelta(days=30)
+    thirty_days_ago = datetime.now(timezone.utc) - timedelta(days=30)
     lessons = (
         await db.execute(
             select(Lesson.created_at, Lesson.subject)
@@ -271,22 +272,20 @@ async def request_erasure(
     learner_id: str,
     background_tasks: BackgroundTasks,
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_parent_or_admin),
-    audit: AuditService = Depends(providers.get_audit_service),
+    current_user: AuthContext = Depends(require_parent_or_admin),
 ) -> Response:
     learner = await LearnerRepository(db).get_by_id(learner_id)
     if learner is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
-    if learner.guardian_id != current_user["sub"] and str(current_user.get("role", "")).lower() != "admin":
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorised to erase this learner")
+    require_learner_write_for_current_user(current_user, learner_id)
 
     consent_service = ConsentService(db)
-    await consent_service.execute_erasure(current_user["sub"], learner_id)
+    await consent_service.execute_erasure(current_user.user_id, learner_id)
     await LearnerRepository(db).soft_delete(learner_id)
 
-    await audit.record(
+    await FourthEstateService(db).record(
         "learner.erasure_requested",
-        actor_id=current_user["sub"],
+        actor_id=current_user.user_id,
         learner_pseudonym=learner.pseudonym_id,
         resource_id=learner_id,
         payload={"learner_id": learner_id, "source": "parents_router"},

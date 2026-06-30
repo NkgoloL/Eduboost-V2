@@ -1,0 +1,59 @@
+name: Staging Smoke
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: "Staging base URL. Prefer repository secret STAGING_SMOKE_BASE_URL unless intentionally overriding."
+        required: false
+        default: ""
+      health_path:
+        description: "Health endpoint path"
+        required: false
+        default: "/health"
+      api_path:
+        description: "API smoke endpoint path"
+        required: false
+        default: "/api/v2/health"
+      frontend_path:
+        description: "Frontend smoke endpoint path, or empty to skip"
+        required: false
+        default: "/"
+
+permissions:
+  contents: read
+
+jobs:
+  staging-smoke:
+    name: Run staging smoke probe
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      STAGING_SMOKE_BASE_URL: ${{ inputs.base_url || secrets.STAGING_SMOKE_BASE_URL }}
+      STAGING_SMOKE_HEALTH_PATH: ${{ inputs.health_path }}
+      STAGING_SMOKE_API_PATH: ${{ inputs.api_path }}
+      STAGING_SMOKE_FRONTEND_PATH: ${{ inputs.frontend_path }}
+      STAGING_SMOKE_OUTPUT_JSON: staging_smoke_probe_result.json
+      STAGING_SMOKE_OUTPUT_MD: staging_smoke_probe_result.md
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+
+      - name: Run staging smoke probe
+        run: python scripts/staging_smoke_probe.py
+
+      - name: Upload staging smoke evidence artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: staging-smoke-evidence
+          path: |
+            staging_smoke_probe_result.json
+            staging_smoke_probe_result.md
+          if-no-files-found: error

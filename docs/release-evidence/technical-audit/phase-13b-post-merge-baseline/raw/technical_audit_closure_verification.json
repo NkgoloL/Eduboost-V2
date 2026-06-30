@@ -1,0 +1,33 @@
+{
+  "payload": {
+    "checked": [
+      "docs/roadmap/execution/technical_audit_remediation/technical_audit_closure_record.json",
+      "docs/release-evidence/technical-audit/phase-12-closure",
+      "docs/release-evidence/technical-audit/phase-12-closure/SHA256SUMS.txt",
+      "docs/release-evidence/technical-audit/phase-12-closure/raw/git_state.json",
+      "docs/release-evidence/technical-audit/phase-12-closure/raw/blocker_register_snapshot.json",
+      "docs/release-evidence/technical-audit/phase-12-closure/raw/hosted_ci_authority_record_snapshot.json",
+      "docs/release-evidence/technical-audit/phase-12-closure/raw/release_readiness_record_snapshot.json",
+      "docs/release-evidence/technical-audit/phase-12-closure/raw/release_readiness_verification.json",
+      "docs/release-evidence/technical-audit/phase-12-closure/raw/technical_audit_closure_result.json",
+      "docs/release-evidence/technical-audit/phase-12-closure/evidence_index.md",
+      "docs/roadmap/execution/technical_audit_remediation/blocker_register.json"
+    ],
+    "deployment_authorised": false,
+    "errors": [],
+    "live_learner_traffic_authorised": false,
+    "production_release_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_implementation_claimed": false,
+    "source_commit": "9d3045af978d36b38d4caddde4fa3ba0f66360ed",
+    "technical_audit_release_readiness_claimed": true,
+    "technical_audit_remediation_closed": true,
+    "technical_audit_remediation_closure_claimed": true,
+    "valid": true,
+    "warnings": []
+  },
+  "returncode": 0,
+  "script": "scripts/technical_audit/verify_technical_audit_closure.py",
+  "stderr": "",
+  "valid": true
+}

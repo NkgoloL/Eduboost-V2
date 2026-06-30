@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T11:03:02Z",
+  "scope_id": "grade5_mathematics_en",
+  "scope_status": "review",
+  "review_policy_id": "educator_review_required_v1",
+  "decision": "approved",
+  "dev_approved": true,
+  "stage_unlocked": true,
+  "approved": true,
+  "legal_decision": "approved",
+  "legal_approved": true,
+  "reviewer_id": "Curriculum Lead",
+  "evidence_url": "https://eduboost.example.com/evidence/educator-signoff-grade5-math.pdf",
+  "legal_evidence_url": "https://eduboost.example.com/evidence/legal-clearance-grade5-math.pdf",
+  "approved_at": "2026-06-04T12:00:00Z",
+  "approvals": {
+    "educator": {
+      "approved_by": "Sarah Khumalo",
+      "role": "Senior Curriculum Developer",
+      "approved_at": "2026-06-04T12:00:00Z",
+      "evidence_ref": "https://eduboost.example.com/evidence/educator-signoff-grade5-math.pdf"
+    },
+    "legal": {
+      "approved_by": "Jabu Ndlovu",
+      "role": "Legal Counsel",
+      "approved_at": "2026-06-04T12:00:00Z",
+      "evidence_ref": "https://eduboost.example.com/evidence/legal-clearance-grade5-math.pdf"
+    }
+  },
+  "notes": "Developer and educator reviewed generated artifacts for pilot. Staging and production promotion unlocked.",
+  "layer_review": {
+    "topic_map": {
+      "path": "data/caps/topic_maps/grade5_mathematics_en.json",
+      "sha256": "sha256:faf65611b0faabd0a22e0cd0b62bdede6fd939e82acb68309d46d2614d547d01",
+      "record_count": 32,
+      "review_ready_count": 32,
+      "review_status": "dev_approved"
+    },
+    "diagnostic_items": {
+      "path": "data/generated/items/grade5_mathematics_en_item_bank.json",
+      "sha256": "sha256:5885343705d68341ae48cebd8627e98a2caa2ece831771dff6cd75487a1a37f3",
+      "record_count": 640,
+      "review_ready_count": 640,
+      "review_status": "dev_approved"
+    },
+    "lessons": {
+      "path": "data/generated/lessons/grade5_mathematics_en_lessons.json",
+      "sha256": "sha256:3483da3adf77caf2771a336f50409207211767632fd1e47a7f7ce0ae66f3394a",
+      "record_count": 128,
+      "review_ready_count": 128,
+      "review_status": "dev_approved"
+    },
+    "assessment_blueprints": {
+      "path": "data/generated/assessment_blueprints/grade5_mathematics_en_blueprints.json",
+      "sha256": "sha256:415dee8b49b400631074b240292238749e3c7f3c2ab2d961a40502e81dc22922",
+      "record_count": 49,
+      "review_ready_count": 49,
+      "review_status": "dev_approved"
+    },
+    "study_plan_templates": {
+      "path": "data/generated/study_plans/grade5_mathematics_en_templates.json",
+      "sha256": "sha256:accc9113489b44225fd16e68f4ac7b2b5cf3518c4b0c77a13820eb9810a60a80",
+      "record_count": 16,
+      "review_ready_count": 16,
+      "review_status": "dev_approved"
+    }
+  },
+  "promotion_readiness": {
+    "staging_eligible": true,
+    "production_eligible": true,
+    "blockers": [
+      "Scope is still review; activate scope intentionally before learner visibility."
+    ]
+  }
+}

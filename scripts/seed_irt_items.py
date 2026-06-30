@@ -40,9 +40,9 @@ GRADE_4_MATH_QUESTIONS = [
 async def seed_irt_items():
     async with AsyncSessionFactory() as session:
         print("Seeding IRT Items...")
-        
+
         assessment_id = str(uuid.uuid4())
-        
+
         await session.execute(
             text(
                 "INSERT INTO assessments (assessment_id, title, subject_code, grade_level, assessment_type, total_marks, questions, is_active) "

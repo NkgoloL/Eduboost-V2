@@ -1,0 +1,249 @@
+[
+  {
+    "id": "T-01",
+    "priority": "P0",
+    "area": "CI/CD",
+    "title": "Trigger GitHub Actions CI on fork",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "docs/release/ci_evidence.md"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-02",
+    "priority": "P0",
+    "area": "CI/CD",
+    "title": "Fix README CI badge",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "README.md"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-03",
+    "priority": "P0",
+    "area": "CI/CD",
+    "title": "Enable branch protection",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "docs/release/branch_protection_evidence.md"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-04",
+    "priority": "P0",
+    "area": "Testing",
+    "title": "Warning integrity check",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "docs/release/warning_integrity_evidence.md"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-05",
+    "priority": "P1",
+    "area": "Content",
+    "title": "Educator item review and beta content gate",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "docs/beta/item_review_process.md",
+      "docs/beta/item_review_log.md"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-06",
+    "priority": "P1",
+    "area": "Docker",
+    "title": "Remove --reload from base Compose",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "docker-compose.yml"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-07",
+    "priority": "P1",
+    "area": "Docker",
+    "title": "Frontend production build",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "docker/Dockerfile.frontend",
+      "app/frontend/next.config.*"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-08",
+    "priority": "P1",
+    "area": "Docker",
+    "title": "Compose resource limits",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "docker-compose.yml",
+      "docker-compose.prod.yml"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-09",
+    "priority": "P1",
+    "area": "Docker/Security",
+    "title": "Require Grafana admin secret",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "docker-compose.yml",
+      ".env.example"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-10",
+    "priority": "P1",
+    "area": "Docker",
+    "title": "Add nginx production config",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "nginx/nginx.conf"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-11",
+    "priority": "P1",
+    "area": "Security",
+    "title": "Login rate limiting/account lockout",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "docs/security/auth_hardening_status.md"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-12R",
+    "priority": "P2",
+    "area": "Architecture",
+    "title": "Service boundary consolidation without deleting active facades",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "docs/roadmap/service_boundary_consolidation.md"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-13",
+    "priority": "P1",
+    "area": "Governance",
+    "title": "PR template and CODEOWNERS",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      ".github/PULL_REQUEST_TEMPLATE.md",
+      ".github/CODEOWNERS"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-14",
+    "priority": "P1",
+    "area": "POPIA",
+    "title": "Run POPIA sweep and archive evidence",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "docs/release/popia_sweep_evidence.md"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-15",
+    "priority": "P2",
+    "area": "Dependencies",
+    "title": "Pin Python dependencies",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "requirements/*.txt"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-16",
+    "priority": "P2",
+    "area": "Security",
+    "title": "JWT key rotation",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "docs/security/jwt_rotation_plan.md"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-17",
+    "priority": "P2",
+    "area": "Testing",
+    "title": "Object-level authz for every router",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "tests/integration/test_learner_read_authorization.py"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-18",
+    "priority": "P2",
+    "area": "Observability",
+    "title": "Alertmanager live notification",
+    "status": "PENDING_INFRA",
+    "evidence": [
+      "docs/release/alertmanager_evidence.md"
+    ],
+    "next_action": "Wire notification secret and fire test alert."
+  },
+  {
+    "id": "T-19",
+    "priority": "P2",
+    "area": "Operations",
+    "title": "Backup/restore drill",
+    "status": "PENDING_INFRA",
+    "evidence": [
+      "docs/release/backup_restore_evidence.md"
+    ],
+    "next_action": "Execute real drill and archive output."
+  },
+  {
+    "id": "T-20",
+    "priority": "P2",
+    "area": "Localisation",
+    "title": "Multilingual educator validation",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "docs/beta/multilingual_review_process.md"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-21",
+    "priority": "P3",
+    "area": "Frontend",
+    "title": "Bundle analysis/performance budget",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "app/frontend/package.json"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  },
+  {
+    "id": "T-22",
+    "priority": "P3",
+    "area": "Architecture",
+    "title": "ADRs for major decisions",
+    "status": "PARTIAL_OR_DONE_VERIFY",
+    "evidence": [
+      "docs/adr"
+    ],
+    "next_action": "Run task-specific checker and confirm evidence freshness."
+  }
+]

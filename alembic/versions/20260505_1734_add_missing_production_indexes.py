@@ -29,7 +29,7 @@ def upgrade() -> None:
         "ix_active_parental_consents",
         "parental_consents",
         ["learner_id"],
-        postgresql_where=sa.text("revoked_at IS NULL AND expires_at > CURRENT_TIMESTAMP")
+        postgresql_where=sa.text("revoked_at IS NULL")
     )
 
 

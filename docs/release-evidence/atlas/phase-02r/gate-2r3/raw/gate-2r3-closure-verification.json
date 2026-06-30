@@ -1,0 +1,70 @@
+{
+  "checks": [
+    {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "scripts/phase02r_gate_control.py",
+        "--expected-approved-gate",
+        "2R.2",
+        "--expected-authorised-gate",
+        "2R.3",
+        "--require-approval-roles",
+        "--require-evidence-index-sha",
+        "--json"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"errors\": [],\n  \"valid\": true\n}\n"
+    },
+    {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "-m",
+        "compileall",
+        "-q",
+        "app/services/curriculum/extraction.py",
+        "scripts/curriculum/extract_phase02r_sources.py",
+        "scripts/verify_phase02r_gate2r3.py",
+        "tests/unit/phase02r/test_gate2r3_extraction.py"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/unit/phase02r/test_gate2r3_extraction.py",
+        "--no-cov"
+      ],
+      "exit_code": 0,
+      "output": ".....                                                                    [100%]\n5 passed in 0.11s\n"
+    },
+    {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "scripts/curriculum/extract_phase02r_sources.py",
+        "--dry-run",
+        "--max-pages",
+        "3",
+        "--json"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"chunk_count\": 9,\n  \"controls\": {\n    \"corpus_membership_created\": false,\n    \"gate_2r4_authorised\": false,\n    \"mapping_approved\": false,\n    \"retrieval_projection_updated\": false\n  },\n  \"document_id\": \"caps_intermediate_phase_mathematics_grade4_6\",\n  \"dry_run\": true,\n  \"extraction_mode\": \"native_pdf\",\n  \"extractor_name\": \"pypdf_structured_extractor\",\n  \"extractor_version\": \"6.13.3\",\n  \"gate\": \"2R.3\",\n  \"generated_at\": \"2026-06-22T10:23:23Z\",\n  \"language\": \"en\",\n  \"outputs\": {\n    \"chunks\": \"var/phase02r/gate2r3/extractions/caps_intermediate_phase_mathematics_grade4_6/chunks.jsonl\",\n    \"manifest\": \"var/phase02r/gate2r3/extractions/caps_intermediate_phase_mathematics_grade4_6/extraction_manifest.json\",\n    \"pages\": \"var/phase02r/gate2r3/extractions/caps_intermediate_phase_mathematics_grade4_6/pages.jsonl\",\n    \"sections\": \"var/phase02r/gate2r3/extractions/caps_intermediate_phase_mathematics_grade4_6/sections.jsonl\"\n  },\n  \"page_count\": 3,\n  \"passed\": true,\n  \"quality_score\": 0.95,\n  \"schema_version\": \"1.0\",\n  \"section_count\": 9,\n  \"source_path\": \"data/caps/source_documents/raw/caps_intermediate_phase_mathematics_grade4_6.pdf\",\n  \"source_sha256\": \"7fec668a6d3b0ed4ae6974a9739970a2128a80553589f682ff5d5bffc02a783e\",\n  \"text_sha256\": \"e9c6e14b3707e6293b491c57c50ed7ff00ebf6f20be1af2dfec53d79961e36ba\",\n  \"validation_errors\": [],\n  \"warnings\": [\n    \"formula_or_arithmetic_expression_detected\",\n    \"short_chunk_review_recommended\"\n  ]\n}\n"
+    },
+    {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "scripts/curriculum/extract_phase02r_sources.py",
+        "--max-pages",
+        "5",
+        "--json"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"chunk_count\": 13,\n  \"controls\": {\n    \"corpus_membership_created\": false,\n    \"gate_2r4_authorised\": false,\n    \"mapping_approved\": false,\n    \"retrieval_projection_updated\": false\n  },\n  \"document_id\": \"caps_intermediate_phase_mathematics_grade4_6\",\n  \"dry_run\": false,\n  \"extraction_mode\": \"native_pdf\",\n  \"extractor_name\": \"pypdf_structured_extractor\",\n  \"extractor_version\": \"6.13.3\",\n  \"gate\": \"2R.3\",\n  \"generated_at\": \"2026-06-22T10:23:23Z\",\n  \"language\": \"en\",\n  \"outputs\": {\n    \"chunks\": \"var/phase02r/gate2r3/extractions/caps_intermediate_phase_mathematics_grade4_6/chunks.jsonl\",\n    \"manifest\": \"var/phase02r/gate2r3/extractions/caps_intermediate_phase_mathematics_grade4_6/extraction_manifest.json\",\n    \"pages\": \"var/phase02r/gate2r3/extractions/caps_intermediate_phase_mathematics_grade4_6/pages.jsonl\",\n    \"sections\": \"var/phase02r/gate2r3/extractions/caps_intermediate_phase_mathematics_grade4_6/sections.jsonl\"\n  },\n  \"page_count\": 5,\n  \"passed\": true,\n  \"quality_score\": 0.95,\n  \"schema_version\": \"1.0\",\n  \"section_count\": 13,\n  \"source_path\": \"data/caps/source_documents/raw/caps_intermediate_phase_mathematics_grade4_6.pdf\",\n  \"source_sha256\": \"7fec668a6d3b0ed4ae6974a9739970a2128a80553589f682ff5d5bffc02a783e\",\n  \"text_sha256\": \"ba712b35c155514111409b33ab6565c4cd9ebc58e94971d89070dcaa5522516f\",\n  \"validation_errors\": [],\n  \"warnings\": [\n    \"formula_or_arithmetic_expression_detected\",\n    \"short_chunk_review_recommended\"\n  ]\n}\n"
+    }
+  ],
+  "errors": [],
+  "valid": true
+}

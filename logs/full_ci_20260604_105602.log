@@ -1,0 +1,107 @@
+CI run started: Thu Jun  4 10:56:02 UTC 2026
+=== test-coverage ===
+.venv/bin/python -m pytest -c pytest-coverage.ini tests/unit tests/integration \
+	-m "not governance and not slow and not llm and not e2e" \
+	--cov-fail-under=67 -q
+........................................................................ [  3%]
+........................................................................ [  6%]
+.......s................................................................ [  9%]
+........................................................................ [ 12%]
+.........................................................ssssssssss..... [ 15%]
+................................../home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/_pytest/main.py:339: PluggyTeardownRaisedWarning: A plugin raised an exception during an old-style hookwrapper teardown.
+Plugin: _cov, Hook: pytest_runtestloop
+DataError: Couldn't use data file '/home/azureuser/Dev/Eduboost-V2/.coverage.vm-eduboost-dev-01.pid518150.X2TJLEDx': no such table: context
+For more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning
+  config.hook.pytest_runtestloop(session=session)
+Traceback (most recent call last):
+  File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqlitedb.py", line 122, in _execute
+    return self.con.execute(sql, parameters)  # type: ignore[arg-type]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: context
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqlitedb.py", line 127, in _execute
+    return self.con.execute(sql, parameters)  # type: ignore[arg-type]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: context
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/collector.py", line 394, in switch_context
+    self.flush_data()
+  File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/collector.py", line 476, in flush_data
+    self.covdata.add_arcs(self.mapped_file_dict(arc_data))
+  File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqldata.py", line 126, in _wrapped
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqldata.py", line 569, in add_arcs
+    self._set_context_id()
+  File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqldata.py", line 483, in _set_context_id
+    context_id = self._context_id(context)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqldata.py", line 458, in _context_id
+    row = con.execute_one("SELECT id FROM context WHERE context = ?", (context,))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqlitedb.py", line 181, in execute_one
+    with self.execute(sql, parameters) as cur:
+  File "/usr/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqlitedb.py", line 144, in execute
+    cur = self._execute(sql, parameters)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqlitedb.py", line 132, in _execute
+    raise DataError(f"Couldn't use data file {self.filename!r}: {msg}") from exc
+coverage.exceptions.DataError: Couldn't use data file '/home/azureuser/Dev/Eduboost-V2/.coverage.vm-eduboost-dev-01.pid518150.X2TJLEDx': no such table: context
+INTERNALERROR> Traceback (most recent call last):
+INTERNALERROR>   File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqlitedb.py", line 122, in _execute
+INTERNALERROR>     return self.con.execute(sql, parameters)  # type: ignore[arg-type]
+INTERNALERROR>            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR> sqlite3.OperationalError: no such table: context
+INTERNALERROR> 
+INTERNALERROR> During handling of the above exception, another exception occurred:
+INTERNALERROR> 
+INTERNALERROR> Traceback (most recent call last):
+INTERNALERROR>   File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqlitedb.py", line 127, in _execute
+INTERNALERROR>     return self.con.execute(sql, parameters)  # type: ignore[arg-type]
+INTERNALERROR>            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR> sqlite3.OperationalError: no such table: context
+INTERNALERROR> 
+INTERNALERROR> The above exception was the direct cause of the following exception:
+INTERNALERROR> 
+INTERNALERROR> Traceback (most recent call last):
+INTERNALERROR>   File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/_pytest/main.py", line 285, in wrap_session
+INTERNALERROR>     session.exitstatus = doit(config, session) or 0
+INTERNALERROR>                          ^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/collector.py", line 394, in switch_context
+INTERNALERROR>     self.flush_data()
+INTERNALERROR>   File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/collector.py", line 476, in flush_data
+INTERNALERROR>     self.covdata.add_arcs(self.mapped_file_dict(arc_data))
+INTERNALERROR>   File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqldata.py", line 126, in _wrapped
+INTERNALERROR>     return method(self, *args, **kwargs)
+INTERNALERROR>            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqldata.py", line 569, in add_arcs
+INTERNALERROR>     self._set_context_id()
+INTERNALERROR>   File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqldata.py", line 483, in _set_context_id
+INTERNALERROR>     context_id = self._context_id(context)
+INTERNALERROR>                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqldata.py", line 458, in _context_id
+INTERNALERROR>     row = con.execute_one("SELECT id FROM context WHERE context = ?", (context,))
+INTERNALERROR>           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqlitedb.py", line 181, in execute_one
+INTERNALERROR>     with self.execute(sql, parameters) as cur:
+INTERNALERROR>   File "/usr/lib/python3.11/contextlib.py", line 137, in __enter__
+INTERNALERROR>     return next(self.gen)
+INTERNALERROR>            ^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqlitedb.py", line 144, in execute
+INTERNALERROR>     cur = self._execute(sql, parameters)
+INTERNALERROR>           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/azureuser/Dev/Eduboost-V2/.venv/lib/python3.11/site-packages/coverage/sqlitedb.py", line 132, in _execute
+INTERNALERROR>     raise DataError(f"Couldn't use data file {self.filename!r}: {msg}") from exc
+INTERNALERROR> coverage.exceptions.DataError: Couldn't use data file '/home/azureuser/Dev/Eduboost-V2/.coverage.vm-eduboost-dev-01.pid518150.X2TJLEDx': no such table: context
+
+383 passed, 11 skipped, 897 deselected in 205.08s (0:03:25)
+make: *** [Makefile:59: test-coverage] Error 1

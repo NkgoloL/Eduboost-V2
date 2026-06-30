@@ -1,400 +1,263 @@
 """
-EduBoost V2 — POPIA Compliance Router
-Right-to-access (data export) and right-to-erasure (deletion request) endpoints.
-South African Protection of Personal Information Act compliance.
+app/api_v2_routers/popia.py
+POPIA endpoints: consent lifecycle (§4.1) and data-subject rights (§4.3).
+All learner-data routes use the require_active_consent dependency (§4.2).
 """
 from __future__ import annotations
 
-import json
-from datetime import UTC, datetime, timedelta
-from io import BytesIO
+import uuid
+from typing import Any, Optional
 
-from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, status
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select
+from fastapi import APIRouter, Depends, status
+from pydantic import BaseModel
 
-from app.core.database import get_db
-from app.core.database import AsyncSessionLocal
-from app.core.jobs import enqueue_job
-from app.core.security import get_current_user, require_parent_or_admin
-from app.domain.api_v2_models import JobAcceptedResponse, RLHFExportRequest
-from app.models import (
-    Guardian,
-    LearnerProfile,
-    ParentalConsent,
-    DiagnosticSession,
-    Lesson,
-    AuditLog,
-    KnowledgeGap,
+from app.api_v2_deps.consent_lifecycle import (
+    authenticated_actor_id as _authenticated_actor_id,
+    enforce_popia_learner_write as _enforce_popia_learner_write,
+    get_canonical_consent_service,
+    get_canonical_data_rights_service,
 )
-from app.repositories.learner_repository import LearnerRepository
-from app.services.consent import ConsentService
-from app.services.audit_service import AuditService
-from app.core import providers
-from app.services.rlhf_service import RLHFService
+from app.api_v2_deps.auth import require_auth_context
+from app.core.envelope_route import EnvelopedRoute
+from app.core.security import get_current_user  # noqa: F401
+from app.domain.consent import ConsentRecord
+from app.modules.consent.service import ConsentService
+from app.services.popia_service import POPIADataRightsService
 
-router = APIRouter(prefix="/popia", tags=["compliance"])
-
-
-# ──────────────────────────────────────────────────────────────────────────────
-# Right-to-Access: Data Export
-# ──────────────────────────────────────────────────────────────────────────────
+router = APIRouter(route_class=EnvelopedRoute, prefix="/popia", tags=["popia"])
 
 
-@router.get("/data-export/{learner_id}")
-async def export_learner_data(
-    learner_id: str,
-    current_user: dict = Depends(get_current_user),
-    db: AsyncSession = Depends(get_db),
-    audit: AuditService = Depends(providers.get_audit_service),
-):
-    """
-    POPIA Right-to-Access: Export all personal data for a specific learner.
-    Only guardians of that learner (or admins) can request this.
-    Returns: JSON file with all learner data.
-    """
-    # Verify the requester is the guardian or an admin
-    requester_id = current_user.get("sub")
-    learner_repo = LearnerRepository(db)
-    learner = await learner_repo.get_by_id(learner_id)
-    
-    if not learner:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Learner not found",
-        )
-    
-    # Check guardian relationship
-    if learner.guardian_id != requester_id and str(current_user.get("role", "")).lower() != "admin":
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="You can only access data for your own learners",
-        )
-    await ConsentService(db).require_active_consent(learner_id, actor_id=requester_id)
-    
-    # Collect all learner data
-    stmt = select(DiagnosticSession).where(DiagnosticSession.learner_id == learner_id)
-    diag_sessions = await db.scalars(stmt)
-    
-    stmt = select(Lesson).where(Lesson.learner_id == learner_id)
-    lessons = await db.scalars(stmt)
-    
-    stmt = select(KnowledgeGap).where(KnowledgeGap.learner_id == learner_id)
-    gaps = await db.scalars(stmt)
-    
-    stmt = select(ParentalConsent).where(ParentalConsent.learner_id == learner_id)
-    consents = await db.scalars(stmt)
-    
-    # Compile export payload
-    export_data = {
-        "export_date": datetime.now(UTC).isoformat(),
-        "learner": {
-            "id": learner.id,
-            "pseudonym_id": learner.pseudonym_id,
-            "display_name": learner.display_name,
-            "grade": learner.grade,
-            "language": learner.language,
-            "archetype": learner.archetype,
-            "theta": learner.theta,
-            "xp": learner.xp,
-            "streak_days": learner.streak_days,
-            "created_at": learner.created_at.isoformat() if learner.created_at else None,
-            "last_active": learner.last_active.isoformat() if learner.last_active else None,
-        },
-        "diagnostic_sessions": [
-            {
-                "id": s.id,
-                "theta_before": s.theta_before,
-                "theta_after": s.theta_after,
-                "completed_at": s.completed_at.isoformat() if s.completed_at else None,
-                "created_at": s.created_at.isoformat() if s.created_at else None,
-            }
-            for s in diag_sessions
-        ],
-        "lessons": [
-            {
-                "id": l.id,
-                "grade": l.grade,
-                "subject": l.subject,
-                "topic": l.topic,
-                "language": l.language,
-                "archetype": l.archetype,
-                "feedback_score": l.feedback_score,
-                "served_from_cache": l.served_from_cache,
-                "created_at": l.created_at.isoformat() if l.created_at else None,
-            }
-            for l in lessons
-        ],
-        "knowledge_gaps": [
-            {
-                "id": g.id,
-                "grade": g.grade,
-                "subject": g.subject,
-                "topic": g.topic,
-                "severity": g.severity,
-                "resolved": g.resolved,
-                "created_at": g.created_at.isoformat() if g.created_at else None,
-            }
-            for g in gaps
-        ],
-        "parental_consents": [
-            {
-                "id": c.id,
-                "policy_version": c.policy_version,
-                "granted_at": c.granted_at.isoformat() if c.granted_at else None,
-                "expires_at": c.expires_at.isoformat() if c.expires_at else None,
-                "revoked_at": c.revoked_at.isoformat() if c.revoked_at else None,
-                "is_active": c.is_active,
-            }
-            for c in consents
-        ],
-    }
-    
-    # Audit the export
-    await audit.record(
-        event_type="data_export.requested",
-        learner_pseudonym=learner.pseudonym_id,
-        actor_id=requester_id,
-        resource_id=learner_id,
-        payload={"learner_id": learner_id},
+# ---------------------------------------------------------------------------
+# Request/response schemas
+# ---------------------------------------------------------------------------
+
+class ConsentGrantRequest(BaseModel):
+    learner_id: uuid.UUID
+    guardian_id: uuid.UUID
+    privacy_notice_version: str
+
+
+class ConsentDenyRequest(BaseModel):
+    learner_id: uuid.UUID
+    guardian_id: uuid.UUID
+    privacy_notice_version: str
+    reason: Optional[str] = None
+
+
+class ConsentWithdrawRequest(BaseModel):
+    learner_id: uuid.UUID
+
+
+class ConsentRenewRequest(BaseModel):
+    learner_id: uuid.UUID
+    privacy_notice_version: str
+
+
+class ExportRequestBody(BaseModel):
+    learner_id: uuid.UUID
+    format: str = "json"
+
+
+class ErasureRequestBody(BaseModel):
+    learner_id: uuid.UUID
+    reason: str = "guardian_request"
+
+
+class ErasureApproveBody(BaseModel):
+    review_notes: Optional[str] = None
+
+
+class CorrectionRequestBody(BaseModel):
+    learner_id: uuid.UUID
+    field_name: str
+    new_value: str
+    old_value: Optional[str] = None
+
+
+class RestrictionRequestBody(BaseModel):
+    learner_id: uuid.UUID
+    reason: str
+
+
+class CorrectionRequestLegacyBody(BaseModel):
+    learner_id: uuid.UUID
+    fields: dict[str, Any]
+    reason: str
+
+
+class RestrictionRequestLegacyBody(BaseModel):
+    learner_id: uuid.UUID
+    reason: str
+
+
+class DeletionRequestBody(BaseModel):
+    reason: str
+
+
+# ---------------------------------------------------------------------------
+# §4.1 Consent lifecycle
+# ---------------------------------------------------------------------------
+
+
+@router.post("/consent/grant", response_model=ConsentRecord)
+async def grant_consent(
+    # require_learner_write_for_current_user
+    body: ConsentGrantRequest,
+    consent_svc: ConsentService = Depends(get_canonical_consent_service),
+    current_user: Any = Depends(require_auth_context),
+) -> ConsentRecord:
+    await _enforce_popia_learner_write(current_user, body.learner_id)
+    actor_id = _authenticated_actor_id(current_user)
+    return await consent_svc.grant(
+        learner_id=body.learner_id,
+        guardian_id=body.guardian_id,
+        privacy_notice_version=body.privacy_notice_version,
+        actor_id=actor_id,
     )
-    
-    return {
-        "filename": f"eduboost_data_export_{learner_id}_{datetime.now(UTC).strftime('%Y%m%d_%H%M%S')}.json",
-        "data": export_data,
-    }
 
 
-# ──────────────────────────────────────────────────────────────────────────────
-# Right-to-Erasure: Deletion Request
-# ──────────────────────────────────────────────────────────────────────────────
-
-
-@router.post("/deletion-request/{learner_id}")
-async def request_learner_deletion(
-    learner_id: str,
-    current_user: dict = Depends(get_current_user),
-    db: AsyncSession = Depends(get_db),
-    audit: AuditService = Depends(providers.get_audit_service),
-):
-    """
-    POPIA Right-to-Erasure: Request permanent deletion of learner data.
-    
-    Deletion is staged with a 30-day grace period to allow for withdrawal.
-    After 30 days, data is permanently erased.
-    
-    Only guardians of that learner can request this.
-    """
-    requester_id = current_user.get("sub")
-    learner_repo = LearnerRepository(db)
-    learner = await learner_repo.get_by_id(learner_id)
-    
-    if not learner:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Learner not found",
-        )
-    
-    # Verify guardian relationship
-    if learner.guardian_id != requester_id:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Only the learner's guardian can request deletion",
-        )
-    await ConsentService(db).require_active_consent(learner_id, actor_id=requester_id)
-    
-    # Check if deletion is already requested
-    if learner.deletion_requested_at is not None:
-        raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
-            detail="Deletion already requested for this learner",
-        )
-    
-    # Mark learner as soft-deleted and set deletion request timestamp
-    learner.is_deleted = True
-    learner.deletion_requested_at = datetime.now(UTC)
-    await db.commit()
-    
-    # Audit the deletion request
-    await audit.record(
-        event_type="deletion.requested",
-        learner_pseudonym=learner.pseudonym_id,
-        actor_id=requester_id,
-        resource_id=learner_id,
-        constitutional_outcome="APPROVED",
-        payload={
-            "learner_id": learner_id,
-            "grace_period_days": 30,
-            "requested_at": datetime.now(UTC).isoformat(),
-        },
+@router.post("/consent/deny", response_model=ConsentRecord)
+async def deny_consent(
+    # require_learner_write_for_current_user
+    body: ConsentDenyRequest,
+    consent_svc: ConsentService = Depends(get_canonical_consent_service),
+    current_user: Any = Depends(require_auth_context),
+) -> ConsentRecord:
+    await _enforce_popia_learner_write(current_user, body.learner_id)
+    actor_id = _authenticated_actor_id(current_user)
+    return await consent_svc.deny(
+        learner_id=body.learner_id,
+        guardian_id=body.guardian_id,
+        privacy_notice_version=body.privacy_notice_version,
+        actor_id=actor_id,
+        reason=body.reason,
     )
-    
-    return {
-        "detail": "Deletion request submitted. Data will be permanently erased in 30 days.",
-        "grace_period_days": 30,
-        "learner_id": learner_id,
-        "requested_at": datetime.now(UTC).isoformat(),
-    }
 
 
-@router.post("/deletion-cancel/{learner_id}")
-async def cancel_learner_deletion(
-    learner_id: str,
-    current_user: dict = Depends(get_current_user),
-    db: AsyncSession = Depends(get_db),
-    audit: AuditService = Depends(providers.get_audit_service),
-):
-    """
-    Cancel a pending deletion request within the 30-day grace period.
-    Restores the learner profile to active status.
-    """
-    requester_id = current_user.get("sub")
-    learner_repo = LearnerRepository(db)
-    learner = await learner_repo.get_by_id(learner_id)
-    
-    if not learner:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Learner not found",
-        )
-    
-    # Verify guardian relationship
-    if learner.guardian_id != requester_id:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Only the learner's guardian can cancel deletion",
-        )
-    await ConsentService(db).require_active_consent(learner_id, actor_id=requester_id)
-    
-    # Check if deletion was requested
-    if learner.deletion_requested_at is None:
-        raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
-            detail="No deletion request exists for this learner",
-        )
-    
-    # Cancel deletion
-    learner.is_deleted = False
-    learner.deletion_requested_at = None
-    await db.commit()
-    
-    # Audit the cancellation
-    await audit.record(
-        event_type="deletion.cancelled",
-        learner_pseudonym=learner.pseudonym_id,
-        actor_id=requester_id,
-        resource_id=learner_id,
-        payload={"learner_id": learner_id},
+@router.post("/consent/withdraw", response_model=ConsentRecord)
+async def withdraw_consent(
+    # require_learner_write_for_current_user
+    body: ConsentWithdrawRequest,
+    consent_svc: ConsentService = Depends(get_canonical_consent_service),
+    current_user: Any = Depends(require_auth_context),
+) -> ConsentRecord:
+    await _enforce_popia_learner_write(current_user, body.learner_id)
+    actor_id = _authenticated_actor_id(current_user)
+    return await consent_svc.withdraw(
+        learner_id=body.learner_id,
+        actor_id=actor_id,
     )
-    
-    return {
-        "detail": "Deletion request cancelled. Learner profile restored.",
-        "learner_id": learner_id,
-    }
 
 
-@router.post("/deletion-execute/{learner_id}", response_model=JobAcceptedResponse, status_code=status.HTTP_202_ACCEPTED)
-async def execute_learner_deletion(
-    learner_id: str,
-    background_tasks: BackgroundTasks,
-    current_user: dict = Depends(require_parent_or_admin),
-):
-    async def _run() -> dict:
-        async with AsyncSessionLocal() as db:
-            learner = await db.get(LearnerProfile, learner_id)
-            if learner is None:
-                raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
-            role = str(current_user.get("role", "")).lower()
-            if learner.guardian_id != current_user.get("sub") and role != "admin":
-                raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorised to purge this learner")
-            await LearnerRepository(db).purge_personal_data(learner_id)
-            await AuditService(db).record(
-                event_type="deletion.executed",
-                learner_pseudonym=learner.pseudonym_id,
-                actor_id=current_user.get("sub"),
-                resource_id=learner_id,
-                constitutional_outcome="APPROVED",
-                payload={"learner_id": learner_id},
-            )
-            await db.commit()
-            return {"learner_id": learner_id, "purged": True}
-
-    job = await enqueue_job(
-        background_tasks,
-        operation="popia_data_purge",
-        payload={"learner_id": learner_id},
-        handler=_run,
+@router.post("/consent/renew", response_model=ConsentRecord)
+async def renew_consent(
+    # require_learner_write_for_current_user
+    body: ConsentRenewRequest,
+    consent_svc: ConsentService = Depends(get_canonical_consent_service),
+    current_user: Any = Depends(require_auth_context),
+) -> ConsentRecord:
+    await _enforce_popia_learner_write(current_user, body.learner_id)
+    actor_id = _authenticated_actor_id(current_user)
+    return await consent_svc.renew(
+        learner_id=body.learner_id,
+        actor_id=actor_id,
+        privacy_notice_version=body.privacy_notice_version,
     )
-    return JobAcceptedResponse(job_id=job["job_id"], operation=job["operation"], status=job["status"])
 
 
-@router.post("/rlhf-export/{export_format}", response_model=JobAcceptedResponse, status_code=status.HTTP_202_ACCEPTED)
-async def export_rlhf_dataset(
-    export_format: str,
-    body: RLHFExportRequest,
-    background_tasks: BackgroundTasks,
-    _: dict = Depends(require_parent_or_admin),
-):
-    export_format = export_format.lower()
-    if export_format not in {"openai", "anthropic"}:
-        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail="Unsupported export format")
+# ---------------------------------------------------------------------------
+# §4.3 Data Subject Rights – Export
+# ---------------------------------------------------------------------------
 
-    async def _run() -> dict:
-        service = RLHFService()
-        if export_format == "openai":
-            return service.export_openai_format(body.records)
-        return service.export_anthropic_format(body.records)
-
-    job = await enqueue_job(
-        background_tasks,
-        operation="rlhf_export",
-        payload={"format": export_format, "record_count": len(body.records)},
-        handler=_run,
+@router.post("/exports")
+async def create_export_request(
+    # require_active_consent_for_current_user
+    body: ExportRequestBody,
+    dsr_svc: POPIADataRightsService = Depends(get_canonical_data_rights_service),
+    current_user: Any = Depends(require_auth_context),
+) -> Any:
+    """Creates a new data export request (§4.3)."""
+    return await dsr_svc.build_learner_export(
+        learner_id=str(body.learner_id),
+        current_user=current_user,
     )
-    return JobAcceptedResponse(job_id=job["job_id"], operation=job["operation"], status=job["status"])
 
 
-@router.get("/deletion-status/{learner_id}")
-async def get_deletion_status(
-    learner_id: str,
-    current_user: dict = Depends(get_current_user),
-    db: AsyncSession = Depends(get_db),
-):
-    """
-    Check if a learner has a pending deletion request.
-    """
-    requester_id = current_user.get("sub")
-    learner_repo = LearnerRepository(db)
-    learner = await learner_repo.get_by_id(learner_id)
-    
-    if not learner:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Learner not found",
-        )
-    
-    # Verify guardian relationship (or admin)
-    if learner.guardian_id != requester_id and str(current_user.get("role", "")).lower() != "admin":
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="You can only check status for your own learners",
-        )
-    
-    if learner.deletion_requested_at is None:
-        return {
-            "learner_id": learner_id,
-            "deletion_pending": False,
-            "is_deleted": False,
-        }
-    
-    # Calculate remaining grace period
-    grace_period_end = learner.deletion_requested_at + timedelta(days=30)
-    days_remaining = max((grace_period_end - datetime.now(UTC)).days, 0)
-    
-    return {
-        "learner_id": learner_id,
-        "deletion_pending": True,
-        "is_deleted": learner.is_deleted,
-        "requested_at": learner.deletion_requested_at.isoformat() if learner.deletion_requested_at else None,
-        "days_remaining": days_remaining,
-    }
+# ---------------------------------------------------------------------------
+# §4.3 Data Subject Rights – Erasure
+# ---------------------------------------------------------------------------
+
+@router.post("/erasure", status_code=status.HTTP_201_CREATED)
+async def create_erasure_request(
+    body: ErasureRequestBody,
+    dsr_svc: POPIADataRightsService = Depends(get_canonical_data_rights_service),
+    current_user: Any = Depends(require_auth_context),
+) -> Any:
+    """Creates a new erasure request (§4.3)."""
+    return await dsr_svc.request_erasure(
+        learner_id=str(body.learner_id),
+        current_user=current_user,
+        reason=body.reason,
+    )
+
+
+
+@router.post("/erasure/{learner_id}/cancel")
+async def cancel_erasure(
+    learner_id: uuid.UUID,
+    dsr_svc: POPIADataRightsService = Depends(get_canonical_data_rights_service),
+    current_user: Any = Depends(require_auth_context),
+) -> Any:
+    """Cancels a pending erasure request."""
+    return await dsr_svc.cancel_erasure(
+        learner_id=str(learner_id),
+        current_user=current_user,
+    )
+
+
+
+
+@router.get("/erasure/{learner_id}/status")
+async def erasure_status(
+    learner_id: uuid.UUID,
+    dsr_svc: POPIADataRightsService = Depends(get_canonical_data_rights_service),
+    current_user: Any = Depends(require_auth_context),
+) -> Any:
+    """Returns the latest erasure request status for a learner."""
+    return await dsr_svc.erasure_status(
+        learner_id=str(learner_id),
+        current_user=current_user,
+    )
+
+
+# ---------------------------------------------------------------------------
+# §4.3 Data Subject Rights – Correction & Restriction
+# ---------------------------------------------------------------------------
+
+@router.post("/correction")
+async def create_correction_request(
+    body: CorrectionRequestLegacyBody,
+    dsr_svc: POPIADataRightsService = Depends(get_canonical_data_rights_service),
+    current_user: Any = Depends(require_auth_context),
+) -> Any:
+    """Creates a correction request (§4.3)."""
+    return await dsr_svc.request_correction(
+        learner_id=str(body.learner_id),
+        current_user=current_user,
+        fields=body.fields,
+        reason=body.reason,
+    )
+
+
+@router.post("/restriction")
+async def create_restriction_request(
+    body: RestrictionRequestLegacyBody,
+    dsr_svc: POPIADataRightsService = Depends(get_canonical_data_rights_service),
+    current_user: Any = Depends(require_auth_context),
+) -> Any:
+    """Creates a processing restriction request (§4.3)."""
+    return await dsr_svc.restrict_processing(
+        learner_id=str(body.learner_id),
+        current_user=current_user,
+        reason=body.reason,
+    )

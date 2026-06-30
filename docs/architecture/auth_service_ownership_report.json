@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-05-18T18:00:26Z",
+  "auth_router_has_legacy_helpers": false,
+  "auth_router_imports_repositories": false,
+  "auth_router_has_future_annotations": false,
+  "auth_application_service_methods": {
+    "register": true,
+    "login": true,
+    "refresh": true,
+    "create_dev_session": true
+  },
+  "implementation_functions": [
+    "_canonical_access_claims",
+    "_maybe_await",
+    "_set_refresh_cookie",
+    "create_dev_session_impl",
+    "login_impl",
+    "refresh_impl",
+    "register_impl"
+  ]
+}

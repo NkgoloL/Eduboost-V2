@@ -1,13 +1,20 @@
 "use client";
 
 import React from "react";
-import { Card } from "../ui/Card";
-import { Button } from "../ui/Button";
+import { Card } from "../ui/Card-legacy";
+import { Button } from "../ui/Button-legacy";
 import { LoadingSpinner } from "../ui/LoadingSpinner";
 import { ErrorMessage } from "../ui/ErrorMessage";
 import { SUBJECTS } from "./constants";
 import { useLearner } from "../../context/LearnerContext";
+import { AiTutorChat } from "../learner/AiTutorChat";
 import type { LessonPayload, LessonSection, SubjectCode } from "../../lib/api/types";
+
+export interface LessonCompletionState {
+  status: "idle" | "pending" | "queued" | "success" | "error";
+  message?: string;
+  auditEventId?: string;
+}
 
 interface InteractiveLessonProps {
   lesson: LessonPayload;
@@ -15,11 +22,23 @@ interface InteractiveLessonProps {
   topic: string;
   onBack: () => void;
   onComplete: () => void;
-  loading: boolean;
-  error?: string;
+  completionState: LessonCompletionState;
+  xpAward: number;
+  offlineQueueEnabled: boolean;
+  isCompleting: boolean;
 }
 
-export default function InteractiveLesson({ lesson, subject, topic, onBack, onComplete, loading, error = "" }: InteractiveLessonProps) {
+export default function InteractiveLesson({
+  lesson,
+  subject,
+  topic,
+  onBack,
+  onComplete,
+  completionState,
+  xpAward,
+  offlineQueueEnabled,
+  isCompleting,
+}: InteractiveLessonProps) {
   const { learner } = useLearner();
   const subjectData = SUBJECTS.find((entry) => entry.code === subject);
 
@@ -27,9 +46,40 @@ export default function InteractiveLesson({ lesson, subject, topic, onBack, onCo
     return null;
   }
 
+  const renderCompletionBanner = () => {
+    if (completionState.status === "error") {
+      return (
+        <ErrorMessage title="Sync paused" message={completionState.message || "We could not sync your XP."} className="mb-8" />
+      );
+    }
+
+    if (completionState.status === "queued") {
+      return (
+        <div className="mb-8 rounded-2xl border-2 border-yellow-400/40 bg-yellow-400/10 p-6 text-yellow-100" role="status">
+          <p className="font-bold">Offline queue</p>
+          <p className="text-sm">{completionState.message || "Lesson saved offline and will sync when you reconnect."}</p>
+        </div>
+      );
+    }
+
+    if (completionState.status === "success") {
+      return (
+        <div className="mb-8 rounded-2xl border-2 border-green-500/40 bg-green-500/10 p-6 text-green-100" role="status">
+          <p className="font-bold">XP synced</p>
+          <p className="text-sm">
+            {completionState.message || "Your completion was synced."}
+            {completionState.auditEventId ? ` (Audit ref ${completionState.auditEventId})` : null}
+          </p>
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   return (
-    <div className="max-w-4xl mx-auto p-4 md:p-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <Button variant="secondary" onClick={onBack} className="mb-6 hover:translate-x-[-4px] transition-transform">
+    <article className="max-w-4xl mx-auto p-4 md:p-8 animate-in fade-in slide-in-from-bottom-4 duration-500" aria-labelledby="lesson-title">
+      <Button type="button" variant="secondary" onClick={onBack} className="mb-6 hover:translate-x-[-4px] transition-transform">
         Choose Another Topic
       </Button>
 
@@ -40,13 +90,13 @@ export default function InteractiveLesson({ lesson, subject, topic, onBack, onCo
 
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-6">
-            <span className="px-4 py-1.5 rounded-full text-xs font-black text-white uppercase tracking-wider" style={{ backgroundColor: subjectData?.color }}>
+            <span className="px-4 py-1.5 rounded-full text-xs font-black text-white uppercase tracking-wider bg-[var(--surface2)]" >
               {subjectData?.label || subject}
             </span>
             <span className="text-[var(--muted)] text-sm font-bold bg-[var(--surface2)] px-3 py-1 rounded-lg">Grade {learner.grade} Adventure</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-['Baloo_2'] font-extrabold text-[var(--text)] mb-8">{lesson.title}</h1>
+          <h1 id="lesson-title" className="text-4xl md:text-5xl font-['Baloo_2'] font-extrabold text-[var(--text)] mb-8">{lesson.title}</h1>
 
           <div className="prose prose-xl prose-blue max-w-none mb-12">
             <div className="text-xl text-[var(--muted)] leading-relaxed italic border-l-8 border-blue-500 pl-6 py-4 bg-[var(--surface2)] rounded-r-3xl mb-10">
@@ -80,18 +130,35 @@ export default function InteractiveLesson({ lesson, subject, topic, onBack, onCo
             </div>
           </div>
 
-          {error && <ErrorMessage title="Sync paused" message={error} className="mb-8" />}
+          {lesson.id && (
+            <AiTutorChat
+              learnerId={learner.id || learner.learner_id}
+              lessonId={lesson.id}
+              topic={topic}
+              language={learner.language || "en"}
+            />
+          )}
+
+          {renderCompletionBanner()}
 
           <div className="bg-[var(--surface2)] border-2 border-[var(--border)] p-10 rounded-[32px] text-center shadow-xl shadow-orange-500/5 relative overflow-hidden group">
             <h3 className="text-3xl font-black text-orange-300 mb-4 font-['Baloo_2']">Mission Accomplished?</h3>
-            <p className="text-orange-200 mb-10 font-bold text-lg">Finish this lesson to claim your 35 XP and level up!</p>
+            <p className="text-orange-200 mb-10 font-bold text-lg">
+              Finish this lesson to claim your {xpAward} XP and level up!
+            </p>
 
-            <Button onClick={onComplete} disabled={loading} className="px-16 py-5 text-2xl font-black shadow-2xl shadow-orange-500/40 hover:scale-105 active:scale-95 transition-all rounded-2xl bg-gradient-to-r from-orange-500 to-yellow-500 border-none">
-              {loading ? <LoadingSpinner size="sm" /> : "Claim My Stars!"}
+            <Button
+              type="button"
+              onClick={onComplete}
+              disabled={isCompleting}
+              aria-busy={isCompleting}
+              className="px-16 py-5 text-2xl font-black shadow-2xl shadow-orange-500/40 hover:scale-105 active:scale-95 transition-all rounded-2xl bg-gradient-to-r from-orange-500 to-yellow-500 border-none"
+            >
+              {isCompleting ? <LoadingSpinner size="sm" /> : offlineQueueEnabled ? "Claim My Stars!" : "Complete Lesson"}
             </Button>
           </div>
         </div>
       </Card>
-    </div>
+    </article>
   );
 }

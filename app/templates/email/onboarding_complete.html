@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're all set — EduBoost SA</title>
+  <style>
+    body    { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; margin: 0; padding: 24px; }
+    .card   { max-width: 520px; margin: 0 auto; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+    .header { background: linear-gradient(135deg, #1a3c5e 0%, #0d6e4c 100%); padding: 36px 40px; text-align: center; }
+    .header .lion { font-size: 48px; display: block; margin-bottom: 8px; }
+    .header h1    { color: #fff; margin: 0; font-size: 26px; }
+    .body   { padding: 36px 40px; }
+    .body p { color: #374151; font-size: 15px; line-height: 1.7; margin: 0 0 16px; }
+    .steps  { background: #ecfdf5; border-radius: 10px; padding: 16px 20px; margin: 20px 0; }
+    .steps li { color: #065f46; font-size: 13px; margin: 6px 0; list-style: none; }
+    .cta    { display: block; margin: 24px 0; text-align: center; background: #f59e0b;
+              color: #1a1a1a !important; text-decoration: none;
+              padding: 14px 32px; border-radius: 8px; font-size: 16px; font-weight: 700; }
+    .footer { border-top: 1px solid #e5e7eb; padding: 20px 40px; text-align: center; font-size: 12px; color: #9ca3af; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <span class="lion">🦁</span>
+      <h1>You're all set, {{ learner_name }}!</h1>
+    </div>
+    <div class="body">
+      <p>
+        Congratulations — you've completed your EduBoost SA onboarding.
+        Your personalised learning journey starts now!
+      </p>
+      <div class="steps">
+        <ul>
+          <li>✅ Email verified</li>
+          <li>✅ Profile complete</li>
+          <li>✅ Guardian consent given</li>
+          <li>✅ Diagnostic assessment done</li>
+          <li>✅ Study plan accepted</li>
+        </ul>
+      </div>
+      <p>Head to your dashboard to begin your first lesson.</p>
+      <a href="{{ dashboard_url }}" class="cta">Go to my dashboard →</a>
+    </div>
+    <div class="footer">
+      EduBoost SA &middot; Built with ubuntu — <em>"I am because we are."</em>
+    </div>
+  </div>
+</body>
+</html>

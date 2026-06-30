@@ -65,10 +65,11 @@ async def test_diagnostic_service_uses_repository():
 @pytest.mark.asyncio
 async def test_lesson_service_accepts_repository_injection():
     repo = AsyncMock()
-    quota = AsyncMock()
-    quota.get_cached.return_value = {"lesson_id": "cached-1"}
-    service = LessonServiceV2(lesson_repository=repo)
-    service.quota_service = quota
+    redis_mock = AsyncMock()
+    service = LessonServiceV2(lesson_repository=repo, redis_client=redis_mock)
+    cache = AsyncMock()
+    cache.get.return_value = '{"lesson_id": "cached-1"}'
+    service.cache_service = cache
 
     result = await service.generate_lesson("learner-1", "MATH", "Fractions")
 

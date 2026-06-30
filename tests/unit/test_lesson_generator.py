@@ -1,37 +1,123 @@
-import pytest
-from unittest.mock import AsyncMock, MagicMock
-from app.services.lesson_generator import LessonGenerator
+from __future__ import annotations
 
-@pytest.mark.unit
-@pytest.mark.asyncio
-async def test_lesson_generator_calls_provider():
-    # Mock cache
-    import app.core.llm
-    app.core.llm.cache_get = AsyncMock(return_value=None)
-    app.core.llm.cache_set = AsyncMock()
-    app.core.llm.check_and_consume_quota = AsyncMock(return_value=1)
-    generator = LessonGenerator()
-    generator._call_with_fallback = AsyncMock(return_value='{"title": "Test"}')
-    
-    # We need a stamp_lesson mock if it uses Judiciary
-    generator._judiciary = MagicMock()
-    generator._judiciary.stamp_lesson.return_value = MagicMock(
-        introduction="Intro", main_content="Content", worked_example="Example"
+from app.services.content_generation.lesson_generator import LessonGenerator
+from app.services.content_generation.prompt_payloads import GeneratedLesson
+
+
+def _lesson(**kwargs):
+    data = {
+        "title": "Lesson",
+        "summary": "Summary",
+        "learning_objectives": ["Objective"],
+        "teacher_notes": "Notes",
+        "learner_activity": "Activity",
+        "worked_examples": ["Example"],
+        "practice_questions": ["Question"],
+        "answer_key": ["Answer"],
+        "caps_ref": "4.M.1.1",
+        "grade": 4,
+        "subject_code": "MAT",
+        "language": "en",
+        "source_chunk_ids": ["chunk-1"],
+    }
+    data.update(kwargs)
+    return GeneratedLesson(**data)
+
+
+def test_lesson_generator_accepts_schema_valid_lesson() -> None:
+    assert LessonGenerator().validate(_lesson(), caps_ref="4.M.1.1") == []
+
+
+def test_lesson_without_answer_key_fails_validation() -> None:
+    errors = LessonGenerator().validate(_lesson(answer_key=[]), caps_ref="4.M.1.1")
+
+    assert any("answer key" in error for error in errors)
+
+
+def test_lesson_without_objectives_fails_validation() -> None:
+    errors = LessonGenerator().validate(_lesson(learning_objectives=[]), caps_ref="4.M.1.1")
+
+    assert any("objectives" in error for error in errors)
+
+
+def test_lesson_caps_ref_mismatch_fails_validation() -> None:
+    errors = LessonGenerator().validate(_lesson(caps_ref="5.M.2.1"), caps_ref="4.M.1.1")
+
+    assert any("does not match task caps_ref" in error for error in errors)
+
+
+def test_lesson_without_source_citations_fails_validation() -> None:
+    errors = LessonGenerator().validate(_lesson(source_chunk_ids=[]), caps_ref="4.M.1.1")
+
+    assert any("source citations" in error for error in errors)
+
+
+def test_lesson_grade_below_zero_fails_validation() -> None:
+    errors = LessonGenerator().validate(_lesson(grade=-1), caps_ref="4.M.1.1")
+
+    assert any("grade must be age appropriate" in error for error in errors)
+
+
+def test_lesson_grade_above_twelve_fails_validation() -> None:
+    errors = LessonGenerator().validate(_lesson(grade=13), caps_ref="4.M.1.1")
+
+    assert any("grade must be age appropriate" in error for error in errors)
+
+
+def test_lesson_duplicate_hash_fails_validation() -> None:
+    errors = LessonGenerator().validate(
+        _lesson(),
+        caps_ref="4.M.1.1",
+        existing_hashes={"hash-123"},
+        artifact_hash="hash-123"
     )
-    generator._caps_validator = MagicMock()
-    generator._caps_validator.validate.return_value = MagicMock(caps_aligned=True)
-    generator._caps_validator.validate_generated_content.return_value = MagicMock(caps_aligned=True)
-    
-    payload, from_cache = await generator.generate_lesson(
-        pseudonym_id="p-1",
-        grade=4,
-        subject="MATH",
-        topic="Fractions",
-        language="en",
-        archetype="visual",
-        user_id="u-1",
-        tier="free"
+
+    assert any("duplicates an existing artifact hash" in error for error in errors)
+
+
+def test_lesson_duplicate_hash_passes_when_no_existing_hashes() -> None:
+    errors = LessonGenerator().validate(
+        _lesson(),
+        caps_ref="4.M.1.1",
+        existing_hashes=None,
+        artifact_hash="hash-123"
     )
-    
-    assert payload is not None
-    generator._call_with_fallback.assert_called_once()
+
+    assert errors == []
+
+
+def test_lesson_duplicate_hash_passes_when_hash_not_in_existing() -> None:
+    errors = LessonGenerator().validate(
+        _lesson(),
+        caps_ref="4.M.1.1",
+        existing_hashes={"hash-456"},
+        artifact_hash="hash-123"
+    )
+
+    assert errors == []
+
+
+def test_lesson_without_practice_questions_passes_validation() -> None:
+    errors = LessonGenerator().validate(_lesson(practice_questions=[]), caps_ref="4.M.1.1")
+
+    assert errors == []
+
+
+def test_lesson_with_multiple_errors_returns_all_errors() -> None:
+    errors = LessonGenerator().validate(
+        _lesson(
+            learning_objectives=[],
+            answer_key=[],
+            caps_ref="5.M.2.1",
+            source_chunk_ids=[],
+            grade=-1
+        ),
+        caps_ref="4.M.1.1"
+    )
+
+    assert len(errors) > 1
+    assert any("objectives" in error for error in errors)
+    assert any("answer key" in error for error in errors)
+    assert any("caps_ref" in error for error in errors)
+    assert any("source citations" in error for error in errors)
+    assert any("grade" in error for error in errors)

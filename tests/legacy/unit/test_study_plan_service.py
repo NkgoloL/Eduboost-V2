@@ -11,8 +11,6 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 from app.api.services.study_plan_service import StudyPlanService
 from app.api.models.db_models import Learner
-from app.api.judiciary.provider_router import ProviderRouter
-from app.api.judiciary.client import JudiciaryClient
 
 
 class TestStudyPlanGeneration:
@@ -51,11 +49,11 @@ class TestStudyPlanGeneration:
              patch("groq.AsyncGroq"), \
              patch("app.api.services.study_plan_service.ProviderRouter") as mock_router_cls, \
              patch("app.api.judiciary.base.WorkerAgent._stamp_gate", new_callable=AsyncMock) as mock_gate:
-            
+
             mock_router = mock_router_cls.return_value
             mock_router.complete = AsyncMock(return_value='{"days": {"monday": []}}')
             mock_gate.return_value = JudiciaryStampRef(stamp_id="test-stamp", action_id="test-action", verdict="APPROVED")
-            
+
             # Setup
             learner_id = mock_learner.learner_id
         mock_session.get.return_value = mock_learner
@@ -180,11 +178,11 @@ class TestStudyPlanGeneration:
         # Assert
         assert "monday" in schedule
         assert "sunday" in schedule
-        
+
         # Count total tasks
         total_tasks = sum(len(tasks) for tasks in schedule.values())
         assert total_tasks > 0
-        
+
         # Weekdays should have more tasks than weekends
         weekday_tasks = sum(len(schedule[day]) for day in ["monday", "tuesday", "wednesday", "thursday", "friday"])
         weekend_tasks = sum(len(schedule[day]) for day in ["saturday", "sunday"])
@@ -217,7 +215,7 @@ class TestStudyPlanGeneration:
         # Both should produce schedules
         assert schedule_high_gap is not None
         assert schedule_low_gap is not None
-        
+
         # Schedule structure should be consistent
         assert set(schedule_high_gap.keys()) == set(schedule_low_gap.keys())
 
@@ -273,7 +271,7 @@ class TestStudyPlanValidation:
     def test_gap_ratio_validation_bounds(self, study_plan_service):
         """Test that gap_ratio is validated within bounds."""
         # Gap ratio should be between 0.3 and 0.6
-        
+
         # Valid ratios should pass
         valid_ratios = [0.3, 0.4, 0.5, 0.6]
         for ratio in valid_ratios:
@@ -322,13 +320,13 @@ class TestStudyPlanAlgorithmQuality:
 
         # Get task counts per day
         day_counts = [len(tasks) for tasks in schedule.values()]
-        
+
         # Standard deviation should be low (relatively balanced)
         if day_counts:
             mean = sum(day_counts) / len(day_counts)
             variance = sum((x - mean) ** 2 for x in day_counts) / len(day_counts)
             std_dev = variance ** 0.5
-            
+
             # Expect relatively even distribution (std dev < 2 tasks)
             assert std_dev < 2.0
 

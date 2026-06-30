@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-13T20:40:51Z",
+  "scope_id": "grade1_life_skills_en",
+  "grade": 1,
+  "phase": "foundation",
+  "subject_code": "LS",
+  "subject": "Life Skills",
+  "language": "en",
+  "status": "review",
+  "learner_visible": false,
+  "source_ready": true,
+  "review_evidence": {
+    "status": "dev_approved",
+    "approved": false,
+    "stage_unlocked": true,
+    "production_unlocked": false,
+    "manifest_path": "data/generated/review_manifests/grade1_life_skills_en_educator_review.json",
+    "stage_blockers": [],
+    "production_blockers": [
+      "Educator approval is required for production.",
+      "Legal approval is required for production."
+    ],
+    "blockers": [
+      "Educator approval is required for production.",
+      "Legal approval is required for production."
+    ]
+  },
+  "lesson_quality": {
+    "passed": true,
+    "quarantined": false,
+    "lesson_count": 128,
+    "failed_lesson_count": 0,
+    "blockers": [],
+    "aggregate": {
+      "missing_lesson_body": 0,
+      "missing_title": 0,
+      "missing_scope_id": 0,
+      "missing_variant": 0,
+      "missing_teacher_notes": 0,
+      "missing_parent_notes": 0,
+      "missing_extension_prompts": 0,
+      "practice_questions_correct_option_a": 0,
+      "lessons_with_identical_answer_keys": 0,
+      "placeholder_worked_example_steps": 0
+    }
+  },
+  "staging_eligible": true,
+  "production_eligible": false,
+  "caps_ref_count": 16,
+  "layers": {
+    "topic_map": {
+      "layer": "topic_map",
+      "relative_path": "data/caps/topic_maps/grade1_life_skills_en.json",
+      "exists": true,
+      "sha256": "sha256:b254ac5df0ec87f567dad8bfcf78d1450a9a8d79e2bf71c504825e6ca6fe18b4",
+      "record_count": 32,
+      "approved_count": 32,
+      "review_ready_count": 32,
+      "idempotency_key": "grade1_life_skills_en:topic_map:sha256:b254ac5df0ec87f567dad8bfcf78d1450a9a8d79e2bf71c504825e6ca6fe18b4"
+    },
+    "diagnostic_items": {
+      "layer": "diagnostic_items",
+      "relative_path": "data/generated/items/grade1_life_skills_en_item_bank.json",
+      "exists": true,
+      "sha256": "sha256:afb3b8b282578835de4263bebe180f54bf2397f2cf61230d65f67699449d6544",
+      "record_count": 640,
+      "approved_count": 640,
+      "review_ready_count": 640,
+      "idempotency_key": "grade1_life_skills_en:diagnostic_items:sha256:afb3b8b282578835de4263bebe180f54bf2397f2cf61230d65f67699449d6544"
+    },
+    "lessons": {
+      "layer": "lessons",
+      "relative_path": "data/generated/lessons/grade1_life_skills_en_lessons.json",
+      "exists": true,
+      "sha256": "sha256:24bea83c91bba2c940920aa1edf826e31cbcf64cbaa33a043b9f1e0cde46aa6c",
+      "record_count": 128,
+      "approved_count": 128,
+      "review_ready_count": 128,
+      "idempotency_key": "grade1_life_skills_en:lessons:sha256:24bea83c91bba2c940920aa1edf826e31cbcf64cbaa33a043b9f1e0cde46aa6c"
+    },
+    "assessment_blueprints": {
+      "layer": "assessment_blueprints",
+      "relative_path": "data/generated/assessment_blueprints/grade1_life_skills_en_blueprints.json",
+      "exists": true,
+      "sha256": "sha256:97e95c3682a8cac55d58e62fd11e9c6e03bb3ea934e8e7d57c85c085e48cf914",
+      "record_count": 65,
+      "approved_count": 65,
+      "review_ready_count": 65,
+      "idempotency_key": "grade1_life_skills_en:assessment_blueprints:sha256:97e95c3682a8cac55d58e62fd11e9c6e03bb3ea934e8e7d57c85c085e48cf914"
+    },
+    "study_plan_templates": {
+      "layer": "study_plan_templates",
+      "relative_path": "data/generated/study_plans/grade1_life_skills_en_templates.json",
+      "exists": true,
+      "sha256": "sha256:5f96a93dcd379ef96ff55d2f87c0ba1f1840f3cd85018611fe98a7d4484a06e2",
+      "record_count": 16,
+      "approved_count": 16,
+      "review_ready_count": 16,
+      "idempotency_key": "grade1_life_skills_en:study_plan_templates:sha256:5f96a93dcd379ef96ff55d2f87c0ba1f1840f3cd85018611fe98a7d4484a06e2"
+    }
+  },
+  "blockers": [
+    "Scope is still review; activate scope intentionally before learner visibility.",
+    "Educator approval is required for production.",
+    "Legal approval is required for production."
+  ],
+  "idempotency_keys": {
+    "topic_map": "grade1_life_skills_en:topic_map:sha256:b254ac5df0ec87f567dad8bfcf78d1450a9a8d79e2bf71c504825e6ca6fe18b4",
+    "diagnostic_items": "grade1_life_skills_en:diagnostic_items:sha256:afb3b8b282578835de4263bebe180f54bf2397f2cf61230d65f67699449d6544",
+    "lessons": "grade1_life_skills_en:lessons:sha256:24bea83c91bba2c940920aa1edf826e31cbcf64cbaa33a043b9f1e0cde46aa6c",
+    "assessment_blueprints": "grade1_life_skills_en:assessment_blueprints:sha256:97e95c3682a8cac55d58e62fd11e9c6e03bb3ea934e8e7d57c85c085e48cf914",
+    "study_plan_templates": "grade1_life_skills_en:study_plan_templates:sha256:5f96a93dcd379ef96ff55d2f87c0ba1f1840f3cd85018611fe98a7d4484a06e2"
+  },
+  "rollback_manifest": {
+    "scope_id": "grade1_life_skills_en",
+    "restore_scope_status": "review",
+    "artifact_paths": {
+      "topic_map": "data/caps/topic_maps/grade1_life_skills_en.json",
+      "diagnostic_items": "data/generated/items/grade1_life_skills_en_item_bank.json",
+      "lessons": "data/generated/lessons/grade1_life_skills_en_lessons.json",
+      "assessment_blueprints": "data/generated/assessment_blueprints/grade1_life_skills_en_blueprints.json",
+      "study_plan_templates": "data/generated/study_plans/grade1_life_skills_en_templates.json"
+    },
+    "artifact_hashes": {
+      "topic_map": "sha256:b254ac5df0ec87f567dad8bfcf78d1450a9a8d79e2bf71c504825e6ca6fe18b4",
+      "diagnostic_items": "sha256:afb3b8b282578835de4263bebe180f54bf2397f2cf61230d65f67699449d6544",
+      "lessons": "sha256:24bea83c91bba2c940920aa1edf826e31cbcf64cbaa33a043b9f1e0cde46aa6c",
+      "assessment_blueprints": "sha256:97e95c3682a8cac55d58e62fd11e9c6e03bb3ea934e8e7d57c85c085e48cf914",
+      "study_plan_templates": "sha256:5f96a93dcd379ef96ff55d2f87c0ba1f1840f3cd85018611fe98a7d4484a06e2"
+    }
+  }
+}

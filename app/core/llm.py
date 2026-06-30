@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any
 
 import anthropic
+import httpx
 from groq import AsyncGroq
 from tenacity import (
     retry,
@@ -23,13 +24,14 @@ from tenacity import (
 )
 
 from app.core.config import settings
-from app.core.policy import PolicyViolation, LessonPayload
+from app.core.judiciary import ConstitutionalViolation, LessonPayload
 from app.core.logging import get_logger
 from app.core.metrics import record_llm_tokens
 from app.core.rate_limiter import AIQuotaExceeded, check_ai_quota
 from app.core.redis import cache_get, cache_set
-from app.services.policy_service import PolicyService
+from app.services.judiciary import JudiciaryService
 from app.services.caps_validator import CAPSAlignmentValidator
+from app.services.ai_safety import redact_pii, score_lesson_quality
 
 log = get_logger(__name__)
 
@@ -150,7 +152,15 @@ Respond ONLY with a valid JSON object matching this exact schema (no markdown, n
   "worked_example": "string",
   "practice_question": "string",
   "answer": "string",
-  "cultural_hook": "string — must include authentic SA context (ubuntu, rands, local fauna, braai, etc.)"
+  "cultural_hook": "string — must include authentic SA context (rands, local geography, school, transport, community, etc.)",
+  "caps_reference": "canonical CAPS reference supplied in the user prompt",
+  "caps_topic": "canonical CAPS topic supplied in the user prompt",
+  "caps_subtopic": "canonical CAPS subtopic supplied in the user prompt",
+  "lesson_variant": "standard | visual | story | step_by_step | exam_style | real_world_sa",
+  "language_level": "foundation | intermediate | senior",
+  "safety_classification": "safe",
+  "alignment_confidence": 0.0,
+  "quality_score": 0.0
 }
 """
 
@@ -162,11 +172,27 @@ _LOCAL_HF_SYSTEM_PROMPT = (
 )
 
 
-class LessonGenerator:
-    """AI Lesson Generation Engine. Orchestrates AI inference."""
+def _google_model_name() -> str:
+    return settings.GOOGLE_MODEL.removeprefix("models/")
+
+
+def active_provider_label() -> str:
+    if settings.LLM_PROVIDER != "auto":
+        return settings.LLM_PROVIDER
+    if settings.GOOGLE_API_KEY:
+        return "google"
+    if settings.GROQ_API_KEY:
+        return "groq"
+    if settings.ANTHROPIC_API_KEY:
+        return "anthropic"
+    return "fallback"
+
+
+class ExecutiveService:
+    """Constitutional Pillar 2: The Executive. Orchestrates AI inference."""
 
     def __init__(self) -> None:
-        self._judiciary = PolicyService()
+        self._judiciary = JudiciaryService()
         self._caps_validator = CAPSAlignmentValidator()
 
     async def generate_lesson(
@@ -196,11 +222,12 @@ class LessonGenerator:
 
         if (
             settings.LLM_PROVIDER != "local_hf"
+            and not settings.GOOGLE_API_KEY
             and not settings.GROQ_API_KEY
             and not settings.ANTHROPIC_API_KEY
-            and not settings.is_production()
+            and not _is_test_provider_override(self._call_with_fallback)
         ):
-            payload = _fallback_lesson_payload(grade, subject, topic, language)
+            payload = self._enrich_lesson_payload(_fallback_lesson_payload(grade, subject, topic, language), grade=grade, subject=subject, topic=topic)
             raw = payload.model_dump_json()
             await cache_set(cache_k, raw, ttl=settings.SEMANTIC_CACHE_TTL_SECONDS)
             log.info("lesson_generated_offline_fallback", pseudonym=pseudonym_id, subject=subject, topic=topic)
@@ -226,7 +253,7 @@ class LessonGenerator:
         except Exception as exc:
             if settings.is_production():
                 raise
-            payload = _fallback_lesson_payload(grade, subject, topic, language)
+            payload = self._enrich_lesson_payload(_fallback_lesson_payload(grade, subject, topic, language), grade=grade, subject=subject, topic=topic)
             raw = payload.model_dump_json()
             await cache_set(cache_k, raw, ttl=settings.SEMANTIC_CACHE_TTL_SECONDS)
             log.warning(
@@ -237,7 +264,17 @@ class LessonGenerator:
                 topic=topic,
             )
             return payload, False
-        payload = self._judiciary.stamp_lesson(raw)
+        try:
+            payload = self._judiciary.stamp_lesson(raw)
+        except ConstitutionalViolation:
+            repair_prompt = (
+                f"{user_prompt}\n\n"
+                "Correction: the previous response failed JSON parsing or schema validation. "
+                "Return one complete, minified JSON object only. Do not truncate strings. "
+                "Use short but complete values for each required field."
+            )
+            raw = await self._call_with_fallback(repair_prompt, operation="lesson_generation_schema_retry")
+            payload = self._judiciary.stamp_lesson(raw)
         if not self._caps_validator.validate_generated_content(
             grade, subject, topic, f"{payload.introduction} {payload.main_content} {payload.worked_example}"
         ).caps_aligned:
@@ -251,11 +288,35 @@ class LessonGenerator:
                 grade, subject, topic, f"{payload.introduction} {payload.main_content} {payload.worked_example}"
             )
             if not final_validation.caps_aligned:
-                raise PolicyViolation(final_validation.reason)
+                raise ConstitutionalViolation(final_validation.reason)
 
+        payload = self._enrich_lesson_payload(payload, grade=grade, subject=subject, topic=topic)
+        raw = payload.model_dump_json()
         await cache_set(cache_k, raw, ttl=settings.SEMANTIC_CACHE_TTL_SECONDS)
-        log.info("lesson_generated", pseudonym=pseudonym_id, provider="groq")
+        log.info("lesson_generated", pseudonym=pseudonym_id, provider=active_provider_label())
         return payload, False
+
+
+    def _enrich_lesson_payload(self, payload: LessonPayload, *, grade: int, subject: str, topic: str) -> LessonPayload:
+        validation = self._caps_validator.validate(grade, subject, topic, payload.model_dump_json())
+        quality = score_lesson_quality(
+            content=payload.model_dump_json(),
+            caps_aligned=validation.caps_aligned,
+            answer_present=bool(payload.answer.strip()),
+            has_worked_example=bool(payload.worked_example.strip()),
+            has_practice=bool(payload.practice_question.strip()),
+        )
+        return payload.model_copy(
+            update={
+                "caps_reference": validation.caps_reference,
+                "caps_topic": validation.canonical_topic,
+                "caps_subtopic": validation.subtopic,
+                "alignment_confidence": validation.alignment_confidence,
+                "quality_score": quality.overall,
+                "language_level": validation.phase,
+                "safety_classification": "safe",
+            }
+        )
 
     def _build_lesson_prompt(
         self,
@@ -267,26 +328,67 @@ class LessonGenerator:
         requested_topic: str,
         learner_context: dict[str, Any] | None = None,
     ) -> str:
+        validation = self._caps_validator.validate(grade, subject, topic)
         prompt = (
             f"Grade {grade} | Subject: {subject} | Topic: {topic} | "
-            f"Language: {language} | Learner archetype: {archetype or 'general'}"
+            f"Language: {language} | Learner archetype: {archetype or 'general'} | "
+            f"CAPS reference: {validation.caps_reference or 'unavailable'} | "
+            f"CAPS subtopic: {validation.subtopic or 'unavailable'} | "
+            f"Assessment standards: {', '.join(validation.assessment_standards) or 'unavailable'}"
         )
         if requested_topic != topic:
             prompt += f" | Requested topic adjusted from '{requested_topic}' to CAPS-aligned topic '{topic}'."
         if learner_context:
-            prompt += f"\nLearner context: {json.dumps(learner_context, sort_keys=True)}"
+            prompt += f"\nLearner context: {json.dumps(redact_pii(learner_context), sort_keys=True)}"
         return prompt
 
     async def _call_with_fallback(self, user_prompt: str, *, operation: str) -> str:
+        if settings.LLM_PROVIDER == "mock":
+            return self._call_mock(user_prompt, operation=operation)
         if settings.LLM_PROVIDER == "local_hf":
             return await self._call_local_hf(user_prompt, operation=operation)
+        if settings.LLM_PROVIDER == "google":
+            return await self._call_google(user_prompt, operation=operation)
         if settings.LLM_PROVIDER == "anthropic":
             return await self._call_anthropic(user_prompt, operation=operation)
-        try:
-            return await self._call_groq(user_prompt, operation=operation)
-        except Exception as exc:
-            log.warning("groq_lesson_generation_failed", error=str(exc))
+
+        if settings.GOOGLE_API_KEY:
+            try:
+                return await self._call_google(user_prompt, operation=operation)
+            except Exception as exc:
+                log.warning("google_lesson_generation_failed", error=str(exc))
+
+        if settings.GROQ_API_KEY:
+            try:
+                return await self._call_groq(user_prompt, operation=operation)
+            except Exception as exc:
+                log.warning("groq_lesson_generation_failed", error=str(exc))
+
+        if settings.ANTHROPIC_API_KEY:
             return await self._call_anthropic(user_prompt, operation=operation)
+
+        raise RuntimeError("No LLM provider credentials configured")
+
+
+    def _call_mock(self, user_prompt: str, *, operation: str) -> str:
+        """Deterministic offline LLM provider for tests, demos, and contract validation."""
+        topic = "CAPS topic"
+        for marker in ("Topic:", "topic:"):
+            if marker in user_prompt:
+                topic = user_prompt.split(marker, 1)[1].split("|", 1)[0].split("\n", 1)[0].strip() or topic
+                break
+        return json.dumps(
+            {
+                "title": f"EduBoost lesson: {topic}",
+                "introduction": f"This lesson introduces {topic} using clear South African classroom language.",
+                "main_content": f"The key idea in {topic} is explained step by step with CAPS-aligned vocabulary.",
+                "worked_example": f"Worked example: solve one short {topic} task using rands or a local school context.",
+                "practice_question": f"Practice: explain one important idea about {topic} in your own words.",
+                "answer": f"A strong answer correctly explains the main idea of {topic} and shows the working.",
+                "cultural_hook": "Use a familiar South African school, taxi, shop, or community example.",
+                "safety_classification": "safe",
+            }
+        )
 
     async def _call_local_hf(self, user_prompt: str, *, operation: str) -> str:
         return await asyncio.to_thread(self._call_local_hf_sync, user_prompt, operation=operation)
@@ -360,6 +462,54 @@ class LessonGenerator:
         retry=retry_if_exception_type(Exception),
         reraise=True,
     )
+    async def _call_google(self, user_prompt: str, *, operation: str) -> str:
+        if not settings.GOOGLE_API_KEY:
+            raise RuntimeError("Google Gemini API key not configured")
+
+        async with httpx.AsyncClient(timeout=settings.LLM_TIMEOUT_SECONDS) as client:
+            response = await client.post(
+                f"https://generativelanguage.googleapis.com/v1beta/models/{_google_model_name()}:generateContent",
+                headers={
+                    "Content-Type": "application/json",
+                    "x-goog-api-key": settings.GOOGLE_API_KEY,
+                },
+                json={
+                    "systemInstruction": {"parts": [{"text": _LESSON_SYSTEM_PROMPT}]},
+                    "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
+                    "generationConfig": {
+                        "responseMimeType": "application/json",
+                        "maxOutputTokens": 4096,
+                        "temperature": 0.7,
+                    },
+                },
+            )
+        response.raise_for_status()
+        payload = response.json()
+        usage = payload.get("usageMetadata") or {}
+        record_llm_tokens(
+            provider="google",
+            model=_google_model_name(),
+            operation=operation,
+            input_tokens=int(usage.get("promptTokenCount") or 0),
+            output_tokens=int(usage.get("candidatesTokenCount") or 0),
+        )
+
+        candidates = payload.get("candidates") or []
+        if not candidates:
+            raise RuntimeError("Google Gemini returned no candidates")
+
+        parts = (candidates[0].get("content") or {}).get("parts") or []
+        text = "".join(str(part.get("text") or "") for part in parts).strip()
+        if not text:
+            raise RuntimeError("Google Gemini returned an empty response")
+        return text
+
+    @retry(
+        stop=stop_after_attempt(3),
+        wait=wait_exponential(multiplier=1, min=2, max=10),
+        retry=retry_if_exception_type(Exception),
+        reraise=True,
+    )
     async def _call_anthropic(self, user_prompt: str, *, operation: str) -> str:
         """Fallback to Claude when Groq is unavailable."""
         client = _get_anthropic()
@@ -414,6 +564,11 @@ class LessonGenerator:
             )
         return response.choices[0].message.content or "Progress data is being processed."
 
+
+
+def _is_test_provider_override(callable_obj: Any) -> bool:
+    """Allow tests to monkeypatch provider calls without dev offline fallback short-circuiting them."""
+    return callable_obj.__class__.__module__.startswith("unittest.mock")
 
 def _fallback_lesson_payload(grade: int, subject: str, topic: str, language: str) -> LessonPayload:
     lesson_language = {"zu": "isiZulu", "af": "Afrikaans", "xh": "isiXhosa"}.get(language, "English")

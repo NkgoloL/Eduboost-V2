@@ -1,0 +1,209 @@
+{
+  "description": "Known router thinness debt. The CI gate fails only for findings not listed here, so this baseline must shrink as routers are moved behind service boundaries.",
+  "violations": [
+    {
+      "file": "app/api_v2_routers/0005_irt_seed.py",
+      "line": 13,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.dialects.postgresql import JSONB`"
+    },
+    {
+      "file": "app/api_v2_routers/0005_irt_seed.py",
+      "line": 226,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `op.execute(\"DELETE FROM irt_items\")`"
+    },
+    {
+      "file": "app/api_v2_routers/assessments.py",
+      "line": 5,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/auth.py",
+      "line": 8,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/billing.py",
+      "line": 6,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/consent.py",
+      "line": 12,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/consent.py",
+      "line": 17,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from app.repositories.repositories import LearnerRepository`"
+    },
+    {
+      "file": "app/api_v2_routers/diagnostics.py",
+      "line": 261,
+      "kind": "complexity",
+      "detail": "Route `diagnostic_next_item` has cyclomatic complexity 7 (max allowed: 5). Move business logic to a service."
+    },
+    {
+      "file": "app/api_v2_routers/diagnostics.py",
+      "line": 81,
+      "kind": "complexity",
+      "detail": "Route `submit_diagnostic` has cyclomatic complexity 8 (max allowed: 5). Move business logic to a service."
+    },
+    {
+      "file": "app/api_v2_routers/diagnostics.py",
+      "line": 9,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/ether.py",
+      "line": 7,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/gamification.py",
+      "line": 13,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from app.repositories.gamification_repository import GamificationRepository`"
+    },
+    {
+      "file": "app/api_v2_routers/gamification.py",
+      "line": 14,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from app.repositories.repositories import LearnerRepository, LessonRepository`"
+    },
+    {
+      "file": "app/api_v2_routers/gamification.py",
+      "line": 75,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await db.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/gamification.py",
+      "line": 7,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/learners.py",
+      "line": 13,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from app.repositories.repositories import KnowledgeGapRepository, LearnerRepository`"
+    },
+    {
+      "file": "app/api_v2_routers/learners.py",
+      "line": 14,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from app.repositories.mastery_repository import MasteryRepository`"
+    },
+    {
+      "file": "app/api_v2_routers/learners.py",
+      "line": 55,
+      "kind": "complexity",
+      "detail": "Route `get_mastery` has cyclomatic complexity 6 (max allowed: 5). Move business logic to a service."
+    },
+    {
+      "file": "app/api_v2_routers/learners.py",
+      "line": 6,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/lessons.py",
+      "line": 119,
+      "kind": "complexity",
+      "detail": "Route `sync_lessons` has cyclomatic complexity 6 (max allowed: 5). Move business logic to a service."
+    },
+    {
+      "file": "app/api_v2_routers/lessons.py",
+      "line": 8,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/onboarding.py",
+      "line": 11,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from app.repositories.repositories import LearnerRepository`"
+    },
+    {
+      "file": "app/api_v2_routers/onboarding.py",
+      "line": 6,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/parents.py",
+      "line": 105,
+      "kind": "complexity",
+      "detail": "Route `get_parent_trust_dashboard` has cyclomatic complexity 9 (max allowed: 5). Move business logic to a service."
+    },
+    {
+      "file": "app/api_v2_routers/parents.py",
+      "line": 129,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `gaps_result = await db.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/parents.py",
+      "line": 20,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from app.repositories.repositories import LearnerRepository`"
+    },
+    {
+      "file": "app/api_v2_routers/parents.py",
+      "line": 233,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await db.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/parents.py",
+      "line": 240,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await db.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/parents.py",
+      "line": 32,
+      "kind": "complexity",
+      "detail": "Route `get_parent_dashboard` has cyclomatic complexity 8 (max allowed: 5). Move business logic to a service."
+    },
+    {
+      "file": "app/api_v2_routers/parents.py",
+      "line": 8,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy import func, select`"
+    },
+    {
+      "file": "app/api_v2_routers/parents.py",
+      "line": 9,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/study_plans.py",
+      "line": 11,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from app.repositories.repositories import LearnerRepository`"
+    },
+    {
+      "file": "app/api_v2_routers/study_plans.py",
+      "line": 33,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from app.repositories.study_plan_repository import StudyPlanRepository`"
+    },
+    {
+      "file": "app/api_v2_routers/study_plans.py",
+      "line": 5,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    }
+  ]
+}

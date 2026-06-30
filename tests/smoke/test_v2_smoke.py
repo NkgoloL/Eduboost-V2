@@ -5,7 +5,6 @@ Replaces the shallow importlib-only check in the legacy CI job.
 """
 from __future__ import annotations
 
-import pytest
 from fastapi.testclient import TestClient
 
 from app.api_v2 import app
@@ -44,7 +43,7 @@ class TestAuthEndpoints:
         r = client.post("/v2/auth/register", json={
             "email": "not-an-email",
             "password": "securepassword123",
-            "full_name": "Test Guardian",
+            "display_name": "Test Guardian",
         })
         assert r.status_code == 422
 
@@ -71,7 +70,11 @@ class TestAuthEndpoints:
 
 class TestConsentGate:
     def test_lessons_endpoint_requires_auth(self) -> None:
-        r = client.get("/v2/lessons/00000000-0000-0000-0000-000000000001")
+        r = client.post("/v2/lessons/", json={
+            "learner_id": "00000000-0000-0000-0000-000000000001",
+            "subject": "Mathematics",
+            "topic": "Fractions",
+        })
         assert r.status_code == 401
 
     def test_lessons_generate_requires_auth(self) -> None:
@@ -90,8 +93,11 @@ class TestConsentGate:
 
 
 class TestErrorHandling:
-    def test_404_returns_json_error(self) -> None:
-        r = client.get("/v2/nonexistent-endpoint")
+    def test_unmatched_get_returns_json_error(self) -> None:
+        r = client.get("/definitely-not-a-real-route")
+        # The app has a catch-all OPTIONS route for CORS preflight, so a GET
+        # to an otherwise unknown path is a method mismatch rather than a pure
+        # router miss.
         assert r.status_code == 404
         data = r.json()
         assert "error" in data or "detail" in data
@@ -103,7 +109,7 @@ class TestErrorHandling:
         assert r.status_code in (401, 422)
 
     def test_response_has_request_id_on_errors(self) -> None:
-        r = client.get("/v2/nonexistent-endpoint")
+        r = client.get("/definitely-not-a-real-route")
         assert "X-Request-ID" in r.headers
 
 

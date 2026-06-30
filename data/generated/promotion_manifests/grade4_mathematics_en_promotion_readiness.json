@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-13T20:40:53Z",
+  "scope_id": "grade4_mathematics_en",
+  "grade": 4,
+  "phase": "intermediate",
+  "subject_code": "M",
+  "subject": "Mathematics",
+  "language": "en",
+  "status": "active",
+  "learner_visible": true,
+  "source_ready": true,
+  "review_evidence": {
+    "status": "missing",
+    "approved": false,
+    "stage_unlocked": false,
+    "production_unlocked": false,
+    "manifest_path": null,
+    "stage_blockers": [
+      "Review evidence packet is missing."
+    ],
+    "production_blockers": [
+      "Educator approval is required for production.",
+      "Legal approval is required for production."
+    ],
+    "blockers": [
+      "Review evidence packet is missing."
+    ]
+  },
+  "lesson_quality": {
+    "passed": true,
+    "quarantined": false,
+    "lesson_count": 24,
+    "failed_lesson_count": 0,
+    "blockers": [],
+    "aggregate": {
+      "missing_lesson_body": 0,
+      "missing_title": 0,
+      "missing_scope_id": 0,
+      "missing_variant": 0,
+      "missing_teacher_notes": 0,
+      "missing_parent_notes": 0,
+      "missing_extension_prompts": 0,
+      "practice_questions_correct_option_a": 0,
+      "lessons_with_identical_answer_keys": 0,
+      "placeholder_worked_example_steps": 0
+    }
+  },
+  "staging_eligible": true,
+  "production_eligible": true,
+  "caps_ref_count": 3,
+  "layers": {
+    "topic_map": {
+      "layer": "topic_map",
+      "relative_path": "data/caps/topic_maps/caps_topic_map_grade4_maths.json",
+      "exists": true,
+      "sha256": "sha256:6263dac7eab672bb7499047f3bc0b868baad486cb749143b9128b5543a61736f",
+      "record_count": 50,
+      "approved_count": 50,
+      "review_ready_count": 50,
+      "idempotency_key": "grade4_mathematics_en:topic_map:sha256:6263dac7eab672bb7499047f3bc0b868baad486cb749143b9128b5543a61736f"
+    },
+    "diagnostic_items": {
+      "layer": "diagnostic_items",
+      "relative_path": "data/generated/items/grade4_maths_launch_item_bank.json",
+      "exists": true,
+      "sha256": "sha256:7c342d44614d8e74a72fc655b4edd903891f343c2e124091794774a1f333c6e5",
+      "record_count": 120,
+      "approved_count": 120,
+      "review_ready_count": 120,
+      "idempotency_key": "grade4_mathematics_en:diagnostic_items:sha256:7c342d44614d8e74a72fc655b4edd903891f343c2e124091794774a1f333c6e5"
+    },
+    "lessons": {
+      "layer": "lessons",
+      "relative_path": "data/generated/lessons/grade4_maths_launch_lessons.json",
+      "exists": true,
+      "sha256": "sha256:27e10fe49fdeda9782a89baf9f5c65c1fcc930dba8dbbf470d2232543cbf7514",
+      "record_count": 24,
+      "approved_count": 24,
+      "review_ready_count": 24,
+      "idempotency_key": "grade4_mathematics_en:lessons:sha256:27e10fe49fdeda9782a89baf9f5c65c1fcc930dba8dbbf470d2232543cbf7514"
+    },
+    "assessment_blueprints": {
+      "layer": "assessment_blueprints",
+      "relative_path": "data/generated/assessment_blueprints/grade4_maths_launch_blueprints.json",
+      "exists": true,
+      "sha256": "sha256:05b1fba720178421528e587044839a355864bc1f3211587e09d80149955a8ce4",
+      "record_count": 13,
+      "approved_count": 13,
+      "review_ready_count": 13,
+      "idempotency_key": "grade4_mathematics_en:assessment_blueprints:sha256:05b1fba720178421528e587044839a355864bc1f3211587e09d80149955a8ce4"
+    },
+    "study_plan_templates": {
+      "layer": "study_plan_templates",
+      "relative_path": "data/generated/study_plans/grade4_maths_launch_templates.json",
+      "exists": true,
+      "sha256": "sha256:fd5bfe4a13a39624180154a36c3c61883d84447dcb780d6941a54b78a1157b10",
+      "record_count": 3,
+      "approved_count": 3,
+      "review_ready_count": 3,
+      "idempotency_key": "grade4_mathematics_en:study_plan_templates:sha256:fd5bfe4a13a39624180154a36c3c61883d84447dcb780d6941a54b78a1157b10"
+    }
+  },
+  "blockers": [],
+  "idempotency_keys": {
+    "topic_map": "grade4_mathematics_en:topic_map:sha256:6263dac7eab672bb7499047f3bc0b868baad486cb749143b9128b5543a61736f",
+    "diagnostic_items": "grade4_mathematics_en:diagnostic_items:sha256:7c342d44614d8e74a72fc655b4edd903891f343c2e124091794774a1f333c6e5",
+    "lessons": "grade4_mathematics_en:lessons:sha256:27e10fe49fdeda9782a89baf9f5c65c1fcc930dba8dbbf470d2232543cbf7514",
+    "assessment_blueprints": "grade4_mathematics_en:assessment_blueprints:sha256:05b1fba720178421528e587044839a355864bc1f3211587e09d80149955a8ce4",
+    "study_plan_templates": "grade4_mathematics_en:study_plan_templates:sha256:fd5bfe4a13a39624180154a36c3c61883d84447dcb780d6941a54b78a1157b10"
+  },
+  "rollback_manifest": {
+    "scope_id": "grade4_mathematics_en",
+    "restore_scope_status": "active",
+    "artifact_paths": {
+      "topic_map": "data/caps/topic_maps/caps_topic_map_grade4_maths.json",
+      "diagnostic_items": "data/generated/items/grade4_maths_launch_item_bank.json",
+      "lessons": "data/generated/lessons/grade4_maths_launch_lessons.json",
+      "assessment_blueprints": "data/generated/assessment_blueprints/grade4_maths_launch_blueprints.json",
+      "study_plan_templates": "data/generated/study_plans/grade4_maths_launch_templates.json"
+    },
+    "artifact_hashes": {
+      "topic_map": "sha256:6263dac7eab672bb7499047f3bc0b868baad486cb749143b9128b5543a61736f",
+      "diagnostic_items": "sha256:7c342d44614d8e74a72fc655b4edd903891f343c2e124091794774a1f333c6e5",
+      "lessons": "sha256:27e10fe49fdeda9782a89baf9f5c65c1fcc930dba8dbbf470d2232543cbf7514",
+      "assessment_blueprints": "sha256:05b1fba720178421528e587044839a355864bc1f3211587e09d80149955a8ce4",
+      "study_plan_templates": "sha256:fd5bfe4a13a39624180154a36c3c61883d84447dcb780d6941a54b78a1157b10"
+    }
+  }
+}

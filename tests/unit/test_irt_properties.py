@@ -1,5 +1,4 @@
 from hypothesis import given, strategies as st
-import math
 from app.modules.diagnostics.irt_engine import p_correct, fisher_information
 
 @given(

@@ -27,5 +27,5 @@ async def test_secret_rotation_updates_cached_settings(monkeypatch):
     updated = await refresh_key_vault_secrets_once()
 
     assert updated is True
-    assert settings.JWT_SECRET == refreshed["JWT_SECRET"]
+    assert refreshed["JWT_SECRET"] == settings.JWT_SECRET
     assert settings.GROQ_API_KEY == "groq-key"

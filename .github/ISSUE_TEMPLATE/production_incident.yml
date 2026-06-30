@@ -1,0 +1,34 @@
+name: Production incident
+description: Track an outage, degraded service, security/privacy event, or launch-blocking defect.
+title: "[INCIDENT]: "
+labels: [incident, production, needs-triage]
+body:
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - SEV1 - learner data/security/major outage
+        - SEV2 - major feature unavailable
+        - SEV3 - degraded service or contained defect
+        - SEV4 - low-impact operational issue
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: Affected users, systems, environments, and time window. Do not include learner PII.
+    validations:
+      required: true
+  - type: textarea
+    id: timeline
+    attributes:
+      label: Timeline
+      placeholder: "YYYY-MM-DD HH:MM SAST - Detected..."
+  - type: textarea
+    id: mitigation
+    attributes:
+      label: Mitigation / rollback / current status
+    validations:
+      required: true

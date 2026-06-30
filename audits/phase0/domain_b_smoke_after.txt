@@ -1,0 +1,44 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.2.1, pluggy-1.6.0 -- /home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase(PosixPath('/home/nkgolol/Dev/Development/Eduboost-V2/.hypothesis/examples'))
+rootdir: /home/nkgolol/Dev/Development/Eduboost-V2
+configfile: pytest.ini
+plugins: asyncio-0.23.7, base-url-2.1.0, mock-3.14.0, hypothesis-6.102.1, cov-5.0.0, playwright-0.5.0, Faker-25.2.0, anyio-4.13.0, xdist-3.6.1
+asyncio: mode=Mode.AUTO
+collecting ... collected 32 items
+
+tests/smoke/test_app_import.py::test_fastapi_app_imports PASSED          [  3%]
+tests/smoke/test_content_factory_admin_api_smoke.py::TestContentFactoryAdminAPISmoke::test_unauthenticated_health_rejected PASSED [  6%]
+tests/smoke/test_content_factory_admin_api_smoke.py::TestContentFactoryAdminAPISmoke::test_admin_health_endpoint_exists PASSED [  9%]
+tests/smoke/test_content_factory_admin_api_smoke.py::TestContentFactoryAdminAPISmoke::test_admin_scopes_endpoint_exists PASSED [ 12%]
+tests/smoke/test_content_factory_admin_api_smoke.py::TestContentFactoryAdminAPISmoke::test_admin_runs_endpoint_exists PASSED [ 15%]
+tests/smoke/test_content_factory_admin_api_smoke.py::TestContentFactoryAdminAPISmoke::test_admin_etl_status_endpoint_exists PASSED [ 18%]
+tests/smoke/test_content_factory_admin_api_smoke.py::TestContentFactoryAdminAPISmoke::test_openapi_includes_admin_content_factory PASSED [ 21%]
+tests/smoke/test_content_factory_admin_api_smoke.py::TestContentFactoryAdminAPISmoke::test_no_public_content_factory_in_openapi PASSED [ 25%]
+tests/smoke/test_content_factory_startup_flags.py::TestContentFactoryStartupFlags::test_app_imports_with_generation_disabled PASSED [ 28%]
+tests/smoke/test_content_factory_startup_flags.py::TestContentFactoryStartupFlags::test_app_imports_with_startup_seed_disabled PASSED [ 31%]
+tests/smoke/test_content_factory_startup_flags.py::TestContentFactoryStartupFlags::test_no_public_content_factory_route PASSED [ 34%]
+tests/smoke/test_content_factory_startup_flags.py::TestContentFactoryStartupFlags::test_both_safety_flags_default_false PASSED [ 37%]
+tests/smoke/test_content_factory_startup_flags.py::TestContentFactoryStartupFlags::test_admin_routers_registered PASSED [ 40%]
+tests/smoke/test_v2_smoke.py::TestHealthEndpoints::test_health_returns_200 PASSED [ 43%]
+tests/smoke/test_v2_smoke.py::TestHealthEndpoints::test_health_includes_request_id_header PASSED [ 46%]
+tests/smoke/test_v2_smoke.py::TestHealthEndpoints::test_health_includes_timing_header PASSED [ 50%]
+tests/smoke/test_v2_smoke.py::TestHealthEndpoints::test_readiness_probe_exists PASSED [ 53%]
+tests/smoke/test_v2_smoke.py::TestHealthEndpoints::test_metrics_endpoint_exists PASSED [ 56%]
+tests/smoke/test_v2_smoke.py::TestAuthEndpoints::test_register_validates_email PASSED [ 59%]
+tests/smoke/test_v2_smoke.py::TestAuthEndpoints::test_register_requires_all_fields PASSED [ 62%]
+tests/smoke/test_v2_smoke.py::TestAuthEndpoints::test_login_returns_401_for_invalid_credentials PASSED [ 65%]
+tests/smoke/test_v2_smoke.py::TestAuthEndpoints::test_protected_endpoint_requires_auth PASSED [ 68%]
+tests/smoke/test_v2_smoke.py::TestAuthEndpoints::test_invalid_token_returns_401 PASSED [ 71%]
+tests/smoke/test_v2_smoke.py::TestConsentGate::test_lessons_endpoint_requires_auth PASSED [ 75%]
+tests/smoke/test_v2_smoke.py::TestConsentGate::test_lessons_generate_requires_auth PASSED [ 78%]
+tests/smoke/test_v2_smoke.py::TestConsentGate::test_consent_grant_requires_auth PASSED [ 81%]
+tests/smoke/test_v2_smoke.py::TestErrorHandling::test_unmatched_get_returns_json_error PASSED [ 84%]
+tests/smoke/test_v2_smoke.py::TestErrorHandling::test_invalid_uuid_returns_422 PASSED [ 87%]
+tests/smoke/test_v2_smoke.py::TestErrorHandling::test_response_has_request_id_on_errors PASSED [ 90%]
+tests/smoke/test_v2_smoke.py::TestOpenAPISchema::test_openapi_schema_is_accessible_in_non_production PASSED [ 93%]
+tests/smoke/test_v2_smoke.py::TestOpenAPISchema::test_consent_endpoints_in_schema PASSED [ 96%]
+tests/smoke/test_v2_smoke.py::TestOpenAPISchema::test_auth_endpoints_in_schema PASSED [100%]
+
+============================= 32 passed in 10.44s ==============================

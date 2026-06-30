@@ -18,7 +18,7 @@ async def test_study_plan_mastery_prioritization():
             home_language="eng"
         )
         session.add(learner)
-        
+
         # 2. Set up Subject Mastery with gaps
         # Gaps: MATH_FRAC (Grade 3), MATH_DEC (Grade 5, high severity)
         mastery = SubjectMastery(
@@ -37,27 +37,27 @@ async def test_study_plan_mastery_prioritization():
         # 3. Generate plan
         service = StudyPlanService(session)
         plan_data = await service.generate_plan(learner_id, grade=5)
-        
+
         schedule = plan_data["schedule"]
         tasks = []
         for day in schedule.values():
             tasks.extend(day)
-            
+
         # 4. Asserts
         # - Foundational gap (Grade 3) should be present
         fraction_tasks = [t for t in tasks if t["concept"] == "MATH_FRACTION"]
         assert len(fraction_tasks) > 0
         assert fraction_tasks[0]["grade"] == 3
-        
+
         # - Critically low mastery (0.2) should trigger spaced repetition
         # Math tasks should be abundant
         math_tasks = [t for t in tasks if t["subject"] == "MATH"]
         assert len(math_tasks) >= 4 # Should have several due to low mastery
-        
+
         # - High severity gap should have longer duration
         decimal_tasks = [t for t in tasks if t["concept"] == "MATH_DECIMAL"]
         assert decimal_tasks[0]["duration_minutes"] == 30 # Severity 0.9 > 0.7
-        
+
         print(f"Plan Week Focus: {plan_data['week_focus']}")
         assert "Foundational Bridge" in plan_data["week_focus"]
         assert "Math Fraction" in plan_data["week_focus"] # Grade 3 gap prioritized

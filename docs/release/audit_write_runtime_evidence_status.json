@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-05-23T19:33:50Z",
+  "current_commit": "39e0b099894761975d5b65f4bb7e2f9b21577a8f",
+  "status": "audit-write-runtime-not-accepted",
+  "db_url_label": "",
+  "db_checked": false,
+  "audit_table_exists": false,
+  "audit_events_count_before": null,
+  "audit_events_count_after": null,
+  "audit_events_delta": null,
+  "audit_trace_id": "audit-write-39e0b0998947-20260523193350",
+  "audit_trace_detected": false,
+  "flow_result": {
+    "command": "",
+    "return_code": null,
+    "output_excerpt": ""
+  },
+  "github_run": {
+    "run_id": "",
+    "run_url": "",
+    "workflow_name": "",
+    "run_status": "",
+    "conclusion": "",
+    "head_sha": "",
+    "blockers": []
+  },
+  "verified_by": "unverified",
+  "date_verified": "2026-05-23",
+  "blockers": [
+    "AUDIT_WRITE_DATABASE_URL/DATABASE_URL is missing, placeholder, local, or invalid"
+  ]
+}

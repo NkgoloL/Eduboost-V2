@@ -3,7 +3,6 @@ EduBoost V2 — Unit Tests
 Covers: IRT engine, Judiciary schema validation, Ether archetype classification.
 """
 import json
-import math
 import pytest
 
 from app.services.diagnostic import DiagnosticEngine, p_correct, update_theta_mle

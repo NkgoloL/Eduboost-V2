@@ -5,26 +5,21 @@ import { AuthService, DiagnosticService, LearnerService, ParentService } from ".
 describe("API layer", () => {
   beforeEach(() => {
     vi.restoreAllMocks();
-    window.localStorage.clear();
-    window.localStorage.setItem("guardian_token", "token-123");
   });
 
-  it("adds auth headers for API calls", async () => {
-    const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue({
-      ok: true,
-      status: 200,
-      json: async () => ({ ok: true }),
-    } as Response);
+  it("routes browser API calls through the backend proxy with credentials", async () => {
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue(
+      new Response(JSON.stringify({ data: { ok: true } }), { status: 200 })
+    );
 
-    await fetchApi("/parents/demo/export");
+    await fetchApi("/parents/demo/export", { method: "POST", body: JSON.stringify({ hello: "world" }) });
 
     expect(fetchMock).toHaveBeenCalledWith(
-      expect.stringContaining("/parents/demo/export"),
+      "/api/backend/parents/demo/export",
       expect.objectContaining({
-        headers: expect.objectContaining({
-          Authorization: "Bearer token-123",
-          "Content-Type": "application/json",
-        }),
+        method: "POST",
+        credentials: "include",
+        body: expect.stringContaining("hello"),
       })
     );
   });
@@ -55,28 +50,13 @@ describe("API layer", () => {
     await expect(fetchApi("/parents/demo/export")).rejects.toThrow("No access");
   });
 
-  it("uses learner tokens for learner-scoped absolute URLs and falls back to statusText", async () => {
-    window.localStorage.removeItem("guardian_token");
-    window.localStorage.setItem("learner_token", "learner-token");
-
-    const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue({
-      ok: false,
-      status: 502,
-      statusText: "Bad Gateway",
-      json: async () => {
-        throw new Error("bad json");
-      },
-    } as unknown as Response);
+  it("passes absolute URLs through untouched and surfaces status text on failure", async () => {
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue(
+      new Response("bad json", { status: 502, statusText: "Bad Gateway" })
+    );
 
     await expect(fetchApi("https://example.com/lessons")).rejects.toThrow("Bad Gateway");
-    expect(fetchMock).toHaveBeenCalledWith(
-      "https://example.com/lessons",
-      expect.objectContaining({
-        headers: expect.objectContaining({
-          Authorization: "Bearer learner-token",
-        }),
-      })
-    );
+    expect(fetchMock).toHaveBeenCalledWith("https://example.com/lessons", expect.any(Object));
   });
 
   it("waits for background jobs to complete", async () => {
@@ -237,8 +217,10 @@ describe("API layer", () => {
     } as Response);
 
     const items = await DiagnosticService.getItems("learner-1");
-    expect(items[0].item_id).toBe("item-1");
-    expect(items[0].question_text).toBe("Question?");
+    expect(items).toHaveLength(1);
+    const firstItem = items[0];
+    expect(firstItem?.item_id).toBe("item-1");
+    expect(firstItem?.question_text).toBe("Question?");
   });
 
   it("retrieves the parent dashboard bundle", async () => {

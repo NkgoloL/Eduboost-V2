@@ -1,0 +1,92 @@
+name: CI Core
+
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+      - codex/production_readiness
+      - release/**
+  push:
+    branches:
+      - master
+      - main
+      - codex/production_readiness
+      - release/**
+
+jobs:
+  core:
+    name: Core backend verification
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: eduboost_user
+          POSTGRES_PASSWORD: eduboost_password
+          POSTGRES_DB: eduboost_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      APP_ENV: test
+      ENVIRONMENT: test
+      DATABASE_URL: postgresql+asyncpg://eduboost_user:eduboost_password@localhost:5432/eduboost_test
+      REDIS_URL: redis://localhost:6379/0
+      ALLOWED_ORIGINS: '["http://localhost:3000","http://localhost:8000","http://test"]'
+      ENCRYPTION_KEY: MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=
+      JWT_SECRET: local-ci-test-secret-value-32chars-minimum
+      JWT_SECRET_KEY: local-ci-test-secret-value-32chars-minimum
+      PYTHONPATH: .
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12.3'
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements/dev.txt ]; then
+            pip install -r requirements/dev.txt
+          elif [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+
+      - name: Release hygiene checks
+        run: make release-hygiene-check
+
+      - name: Route alias policy
+        run: make route-alias-policy-check
+
+      - name: OpenAPI drift check
+        run: make openapi-check
+
+      - name: Unit tests
+        # pytest -c pytest.ini tests/unit -q --no-cov
+        run: make test-fast
+
+      - name: Integration tests
+        # pytest -c pytest.ini tests/integration -q --no-cov
+        run: make test-integration

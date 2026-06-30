@@ -1,0 +1,180 @@
+{
+  "boundary": {
+    "corpus_activation": false,
+    "embeddings": false,
+    "generation_or_tutor_change": false,
+    "learner_facing_change": false,
+    "retrieval_projection_rebuild": false
+  },
+  "edge_versions": [
+    {
+      "edge_type": "assesses",
+      "edge_version_id": "edgever-g4-maths-nor-assesses-001-v1",
+      "from_curriculum_node_version_id": "nodever-g4-maths-nor-assess-001-v1",
+      "metadata": {},
+      "proposed_at": "2026-06-22T00:00:00+00:00",
+      "proposed_by": "curriculum_mapper",
+      "review_notes": "Assessment statement traces to the approved learning objective.",
+      "review_status": "approved",
+      "reviewed_at": "2026-06-22T00:05:00+00:00",
+      "reviewed_by": "curriculum_reviewer",
+      "supersedes_edge_version_id": null,
+      "to_curriculum_node_version_id": "nodever-g4-maths-nor-001-v1"
+    }
+  ],
+  "gate": "2R.4",
+  "graph_sha256": "45129a6067da4d898bef664b379f96ec107f6fa232de939a20905dfe63d27fb0",
+  "language_links": [],
+  "mapping_review_events": [
+    {
+      "actor_id": "curriculum_mapper",
+      "event_type": "proposed",
+      "exception_id": null,
+      "mapping_version_id": "mappingver-g4-maths-nor-001-v1",
+      "next_status": "proposed",
+      "notes": null,
+      "occurred_at": "2026-06-22T00:10:00+00:00",
+      "per_item_trace_id": "proposal:mappingver-g4-maths-nor-001-v1",
+      "previous_status": null,
+      "review_event_id": "review-g4-maths-nor-001-proposed"
+    },
+    {
+      "actor_id": "curriculum_reviewer",
+      "event_type": "approved",
+      "exception_id": null,
+      "mapping_version_id": "mappingver-g4-maths-nor-001-v1",
+      "next_status": "approved",
+      "notes": "Approved as Tier 1 CAPS support.",
+      "occurred_at": "2026-06-22T00:15:00+00:00",
+      "per_item_trace_id": "review:mappingver-g4-maths-nor-001-v1:approved",
+      "previous_status": "proposed",
+      "review_event_id": "review-g4-maths-nor-001-approved"
+    },
+    {
+      "actor_id": "curriculum_mapper",
+      "event_type": "proposed",
+      "exception_id": null,
+      "mapping_version_id": "mappingver-g4-maths-nor-assess-001-v1",
+      "next_status": "proposed",
+      "notes": null,
+      "occurred_at": "2026-06-22T00:11:00+00:00",
+      "per_item_trace_id": "proposal:mappingver-g4-maths-nor-assess-001-v1",
+      "previous_status": null,
+      "review_event_id": "review-g4-maths-nor-assess-001-proposed"
+    },
+    {
+      "actor_id": "curriculum_reviewer",
+      "event_type": "approved",
+      "exception_id": null,
+      "mapping_version_id": "mappingver-g4-maths-nor-assess-001-v1",
+      "next_status": "approved",
+      "notes": "Approved as Tier 1 assessment support.",
+      "occurred_at": "2026-06-22T00:16:00+00:00",
+      "per_item_trace_id": "review:mappingver-g4-maths-nor-assess-001-v1:approved",
+      "previous_status": "proposed",
+      "review_event_id": "review-g4-maths-nor-assess-001-approved"
+    }
+  ],
+  "mapping_versions": [
+    {
+      "authority_tier": "tier_1",
+      "curriculum_node_version_id": "nodever-g4-maths-nor-001-v1",
+      "language": "en",
+      "language_status": "official_source",
+      "mapping_id": "mapping-g4-maths-nor-001",
+      "mapping_rationale": "CAPS source chunk directly supports the Grade 4 whole-number comparison objective.",
+      "mapping_version_id": "mappingver-g4-maths-nor-001-v1",
+      "metadata": {},
+      "proposed_at": "2026-06-22T00:10:00+00:00",
+      "proposed_by": "curriculum_mapper",
+      "review_notes": "Approved as Tier 1 CAPS support for Gate 2R.4 readiness only.",
+      "review_status": "approved",
+      "reviewed_at": "2026-06-22T00:15:00+00:00",
+      "reviewed_by": "curriculum_reviewer",
+      "source_chunk_version_id": "chunkver-caps-g4-nor-001",
+      "source_page_id": "page-caps-g4-001",
+      "source_section_id": "section-caps-g4-nor",
+      "supersedes_mapping_version_id": null,
+      "support_type": "direct_support"
+    },
+    {
+      "authority_tier": "tier_1",
+      "curriculum_node_version_id": "nodever-g4-maths-nor-assess-001-v1",
+      "language": "en",
+      "language_status": "official_source",
+      "mapping_id": "mapping-g4-maths-nor-assess-001",
+      "mapping_rationale": "CAPS source chunk supports assessment evidence for whole-number comparison.",
+      "mapping_version_id": "mappingver-g4-maths-nor-assess-001-v1",
+      "metadata": {},
+      "proposed_at": "2026-06-22T00:11:00+00:00",
+      "proposed_by": "curriculum_mapper",
+      "review_notes": "Approved as Tier 1 assessment support for Gate 2R.4 readiness only.",
+      "review_status": "approved",
+      "reviewed_at": "2026-06-22T00:16:00+00:00",
+      "reviewed_by": "curriculum_reviewer",
+      "source_chunk_version_id": "chunkver-caps-g4-nor-001",
+      "source_page_id": "page-caps-g4-001",
+      "source_section_id": "section-caps-g4-nor",
+      "supersedes_mapping_version_id": null,
+      "support_type": "assessment_evidence"
+    }
+  ],
+  "node_versions": [
+    {
+      "assessment_statement": "Learner can compare and order whole numbers using place value.",
+      "created_at": "2026-06-22T00:00:00+00:00",
+      "created_by": "phase02r_gate2r4_reference",
+      "curriculum_code": "CAPS",
+      "curriculum_node_id": "node-g4-maths-nor-001",
+      "curriculum_node_version_id": "nodever-g4-maths-nor-001-v1",
+      "effective_from": "2026-06-22",
+      "effective_to": null,
+      "grade": 4,
+      "language": "en",
+      "learning_objective": "Learners compare, order and represent whole numbers in the Grade 4 range.",
+      "metadata": {},
+      "node_type": "learning_objective",
+      "skill": "Compare, order and represent whole numbers",
+      "status": "approved",
+      "strand": "Numbers, operations and relationships",
+      "subject_code": "MATHEMATICS",
+      "subtopic": "Number range and place value",
+      "supersedes_version_id": null,
+      "term": "1",
+      "topic": "Whole numbers"
+    },
+    {
+      "assessment_statement": "Use ordered number sets and comparison prompts as assessment evidence.",
+      "created_at": "2026-06-22T00:00:00+00:00",
+      "created_by": "phase02r_gate2r4_reference",
+      "curriculum_code": "CAPS",
+      "curriculum_node_id": "node-g4-maths-nor-assess-001",
+      "curriculum_node_version_id": "nodever-g4-maths-nor-assess-001-v1",
+      "effective_from": "2026-06-22",
+      "effective_to": null,
+      "grade": 4,
+      "language": "en",
+      "learning_objective": "Assess whether learners compare and order whole numbers correctly.",
+      "metadata": {},
+      "node_type": "assessment_statement",
+      "skill": "Assess place-value comparison",
+      "status": "approved",
+      "strand": "Numbers, operations and relationships",
+      "subject_code": "MATHEMATICS",
+      "subtopic": "Number range and place value",
+      "supersedes_version_id": null,
+      "term": "1",
+      "topic": "Whole numbers"
+    }
+  ],
+  "schema": "edu_boost.phase02r.gate2r4.curriculum_graph_export.v1",
+  "source_chunk_version_ids": [
+    "chunkver-caps-g4-nor-001"
+  ],
+  "source_page_ids": [
+    "page-caps-g4-001"
+  ],
+  "source_section_ids": [
+    "section-caps-g4-nor"
+  ]
+}

@@ -5,9 +5,7 @@ These tests must all pass before any production deployment.
 """
 from __future__ import annotations
 
-import pytest
-from unittest.mock import AsyncMock, MagicMock, patch
-from uuid import uuid4, UUID
+from uuid import uuid4
 from datetime import UTC, datetime, timedelta
 
 from app.core.security import (
@@ -15,7 +13,6 @@ from app.core.security import (
     pseudonymise_for_llm, generate_secure_token,
 )
 from app.core.audit import AuditAction, _sanitise_metadata
-from app.modules.diagnostics.irt_engine import IRTEngine
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

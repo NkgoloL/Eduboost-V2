@@ -16,9 +16,9 @@ export function StarsBackground() {
 
     return Array.from({ length: 50 }, (_, i) => ({
       id: i,
-      x: seededValue(i, 12.9898, 78.233) * 100,
-      y: seededValue(i, 39.3468, 11.135) * 100,
-      size: seededValue(i, 73.156, 7.77) * 2.5 + 0.5,
+      x: (seededValue(i, 12.9898, 78.233) * 100).toFixed(4),
+      y: (seededValue(i, 39.3468, 11.135) * 100).toFixed(4),
+      size: (seededValue(i, 73.156, 7.77) * 2.5 + 0.5).toFixed(4),
       dur: `${(seededValue(i, 31.4159, 3.14) * 3 + 2).toFixed(1)}s`,
       opacity: (seededValue(i, 27.1828, 4.669) * 0.4 + 0.1).toFixed(2),
       delay: `${(seededValue(i, 19.775, 2.22) * 4).toFixed(1)}s`,

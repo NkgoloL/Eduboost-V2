@@ -1,22 +1,37 @@
-import { fetchApi, waitForJobResult } from "./client";
+import { fetchApi } from "./client";
 import type {
   ActiveLearner,
-  AwardXPResponse,
+  AuthSessionsResponse,
   AuthTokenResponse,
+  AwardXPResponse,
+  ConsentGrantResponse,
+  ConsentStatusResponse,
+  DataExportBundle,
+  DataRightsStatus,
   DevSessionResponse,
   DiagnosticAnswerInput,
   DiagnosticItem,
   DiagnosticResult,
   GamificationProfile,
   JobAcceptedResponse,
+  LearnerCreateInput,
   LessonJobResult,
   LessonPayload,
   OfflineLessonSyncEvent,
   MasteryResponse,
   ParentExportBundle,
+  ParentDashboardResponse,
   ParentTrustDashboardResponse,
   StudyPlanResponse,
 } from "./types";
+import { waitForJobResult } from "./client";
+
+const normalizeLearner = (learner: ActiveLearner): ActiveLearner => ({
+  ...learner,
+  learner_id: learner.learner_id || learner.id || "",
+  id: learner.id || learner.learner_id,
+  nickname: learner.nickname || learner.display_name,
+});
 
 const normalizeGamification = (profile: GamificationProfile): GamificationProfile => ({
   ...profile,
@@ -43,38 +58,48 @@ const normalizeLesson = (lesson: LessonJobResult): LessonJobResult => ({
 });
 
 export const AuthService = {
-  registerLearner: (data: Record<string, unknown>) =>
-    fetchApi<ActiveLearner>("/learners/", {
+  registerLearner: (data: LearnerCreateInput) => LearnerService.registerLearner(data),
+
+  registerGuardian: async (data: Record<string, unknown>) => {
+    const response = await fetchApi<AuthTokenResponse>("/api/auth/register", {
       method: "POST",
       body: JSON.stringify(data),
-    }),
+    });
+    return response;
+  },
 
-  registerGuardian: (data: Record<string, unknown>) =>
-    fetchApi<AuthTokenResponse>("/auth/register", {
+  loginGuardian: async (data: Record<string, unknown>) => {
+    const response = await fetchApi<AuthTokenResponse>("/api/auth/login", {
       method: "POST",
       body: JSON.stringify(data),
-    }),
+    });
+    return response;
+  },
 
-  loginGuardian: (data: Record<string, unknown>) =>
-    fetchApi<AuthTokenResponse>("/auth/login", {
-      method: "POST",
-      body: JSON.stringify(data),
-    }),
+  logout: async () => {
+    await fetchApi<null>("/api/auth/logout", { method: "POST" }).catch(() => null);
+  },
 
-  createDevSession: () =>
-    fetchApi<DevSessionResponse>("/auth/dev-session", {
-      method: "POST",
-    }),
+  revokeAll: async () => fetchApi<null>("/api/backend/auth/revoke-all", { method: "POST" }),
+
+  sessions: () => fetchApi<AuthSessionsResponse>("/api/backend/auth/sessions"),
+
+  createDevSession: async () => {
+    const response = await fetchApi<DevSessionResponse>("/api/auth/login", { method: "POST" });
+    return { ...response, learner: normalizeLearner(response.learner) };
+  },
 };
 
 export const LearnerService = {
-  registerLearner: (data: Record<string, unknown>) =>
-    fetchApi<ActiveLearner>("/learners/", {
-      method: "POST",
-      body: JSON.stringify(data),
-    }),
+  registerLearner: async (data: LearnerCreateInput) =>
+    normalizeLearner(
+      await fetchApi<ActiveLearner>("/learners/", {
+        method: "POST",
+        body: JSON.stringify(data),
+      })
+    ),
 
-  getProfile: (learnerId: string) => fetchApi<ActiveLearner>(`/learners/${learnerId}`),
+  getProfile: async (learnerId: string) => normalizeLearner(await fetchApi<ActiveLearner>(`/learners/${learnerId}`)),
 
   getGamificationProfile: async (learnerId: string) =>
     normalizeGamification(await fetchApi<GamificationProfile>(`/gamification/profile/${learnerId}`)),
@@ -115,25 +140,65 @@ export const LearnerService = {
     }),
 };
 
-export const ParentService = {
-  getTrustDashboard: (guardianId: string) =>
-    fetchApi<ParentTrustDashboardResponse>(`/parents/${guardianId}/dashboard`),
+export const ConsentService = {
+  grant: (learnerId: string, consentVersion = "1.0") =>
+    fetchApi<ConsentGrantResponse>("/consent/grant", {
+      method: "POST",
+      body: JSON.stringify({ learner_id: learnerId, consent_version: consentVersion }),
+    }),
 
-  getExportBundle: (guardianId: string) =>
-    fetchApi<ParentExportBundle>(`/parents/${guardianId}/export`),
+  revoke: (learnerId: string, reason = "guardian_request") =>
+    fetchApi<{ revoked: number; message: string }>("/consent/revoke", {
+      method: "POST",
+      body: JSON.stringify({ learner_id: learnerId, reason }),
+    }),
+
+  status: (learnerId: string) => fetchApi<ConsentStatusResponse>(`/consent/status/${learnerId}`),
+};
+
+export const DataRightsService = {
+  exportLearner: (learnerId: string, format: "json" | "csv" = "json") =>
+    fetchApi<DataExportBundle>("/popia/exports", {
+      method: "POST",
+      body: JSON.stringify({ learner_id: learnerId, format }),
+    }),
+  requestErasure: (learnerId: string, reason = "guardian_request") =>
+    fetchApi<DataRightsStatus>("/popia/erasure", {
+      method: "POST",
+      body: JSON.stringify({ learner_id: learnerId, reason }),
+    }),
+  cancelErasure: (learnerId: string) => fetchApi<DataRightsStatus>(`/popia/erasure/${learnerId}/cancel`, { method: "POST" }),
+  restrictProcessing: (learnerId: string, reason = "guardian_request") =>
+    fetchApi<DataRightsStatus>("/popia/restriction", {
+      method: "POST",
+      body: JSON.stringify({ learner_id: learnerId, reason }),
+    }),
+  deletionStatus: (learnerId: string) => fetchApi<DataRightsStatus>(`/popia/erasure/${learnerId}/status`),
+};
+
+export const ParentService = {
+  getDashboard: () => fetchApi<ParentDashboardResponse>("/parents/dashboard"),
+
+  getTrustDashboard: (guardianId: string) => fetchApi<ParentTrustDashboardResponse>(`/parents/${guardianId}/dashboard`),
+
+  getExportBundle: (guardianId: string) => fetchApi<ParentExportBundle>(`/parents/${guardianId}/export`),
 };
 
 export const DiagnosticService = {
   getItems: async (learnerId: string): Promise<DiagnosticItem[]> => {
     const items = await fetchApi<
-      Array<{ id: string; question: string; options: string[]; subject: string; topic: string }>
+      Array<{ id?: string; item_id?: string; question?: string; question_text?: string; options: string[]; subject?: string; topic?: string; skill?: string; caps_reference?: string }>
     >(`/diagnostics/items/${learnerId}`);
     return items.map((item) => ({
-      item_id: item.id,
-      question_text: item.question,
+      item_id: item.item_id || item.id,
+      id: item.id || item.item_id,
+      question_text: item.question_text || item.question,
+      question: item.question || item.question_text,
       options: item.options,
       subject: item.subject,
       topic: item.topic,
+      skill: item.skill,
+      caps_reference: item.caps_reference,
       difficulty_label: "Adaptive",
     }));
   },

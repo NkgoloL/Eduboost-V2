@@ -14,23 +14,16 @@ Release cadence:
 
 ## [Unreleased]
 
-### 🔧 Hardening: Final Documentation & Infrastructure Alignment (2026-05-06)
+### Added
+- Integrated the diagnostics assessment roadmap implementation: hardened 3PL IRT parameter validation, EAP updates, SE computation, MFIS item selection, termination rules, Redis-style session recovery, mastery/progress services, adaptive practice, spaced repetition, calibration, bias review routing, learning-science docs, migrations, CI checks, and focused tests.
+- Integrated the CAPS Grade 4 Mathematics item-bank phase bundle: diagnostic session orchestration services, lesson context and study-plan update helpers, coverage matrix generation, CI coverage/validation tests, Playwright diagnostic-flow coverage, Grafana dashboard provisioning, and Alertmanager rules.
+- Added item-bank Makefile targets for validation, seeding, coverage assertions, coverage matrix generation, E2E checks, performance checks, and release-candidate tagging.
+- Added admin-facing item-bank coverage and review endpoints under the diagnostics router.
+- Added a 120-item production completion plan for the Grade 4 Mathematics item bank.
 
-**Status**: Repository documentation and core infrastructure synchronized with the V2 Modular Monolith state.
-
-#### Added
-- **Agent Instructions**: New `AGENT_INSTRUCTIONS_V2.md` in root with TDD, POPIA, and `arq` mandates.
-- **Docker Sync**: Restored `docker-compose.v2.yml` and updated `docker-compose.prod.yml` to reflect the full V2 stack (FastAPI, Next.js, arq, PostgreSQL, Redis).
-- **Architecture Stability**: Renamed architecture manifest to a stable path at `docs/architecture/ARCHITECTURE.md`.
-
-#### Changed
-- **Requirements**: Replaced Celery/Flower with `arq` in `requirements/base.in`.
-- **Cleanup**: Removed all residual traces of the transient `gemini-code-*` filename from the entire repository.
-- **README**: Updated "Compose File Map" and documentation links for consistency.
-
----
-
-## [1.0.0-rc1] — 2026-05-04
+### Changed
+- Extended item-bank repository and service APIs for exposure heatmaps, review workflow compatibility, exclusion-aware IRT item selection, and Phase 5 CI script arguments.
+- Updated release documentation to record the live Grade 4 Mathematics launch slice: 120 approved diagnostic items, 24 approved lessons, 100% answer-key verification, and 3 green launch refs.
 
 ### ⚠️ BREAKING: Complete V2 Architectural Migration (2026-05-02)
 
