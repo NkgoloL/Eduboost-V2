@@ -11,6 +11,8 @@ test('handles start with no items', async () => {
   render(<InteractiveDiagnostic learner={learner as any} onComplete={() => {}} onBack={() => {}} />)
   const btn = screen.getByRole('button', { name: /Mathematics/i })
   btn.click()
+  const startButton = await screen.findByRole('button', { name: /Start Assessment/i })
+  startButton.click()
   await waitFor(() => expect(screen.getByText(/No diagnostic items are available/)).toBeInTheDocument())
 })
 
@@ -21,6 +23,8 @@ test('full flow submits and completes', async () => {
   render(<InteractiveDiagnostic learner={learner as any} onComplete={onComplete} onBack={() => {}} />)
   const btn = screen.getByRole('button', { name: /Mathematics/i })
   btn.click()
+  const startButton = await screen.findByRole('button', { name: /Start Assessment/i })
+  startButton.click()
   await waitFor(() => expect(screen.getByText(/Question 1/)).toBeInTheDocument())
   const options = screen.getAllByRole('radio')
   options[0].click()

@@ -103,7 +103,7 @@ export default function InteractiveLesson({
               {lesson.summary || "Get ready to explore this exciting topic together!"}
             </div>
 
-            <div className="mt-8 space-y-8 text-[var(--text)] text-lg md:text-xl leading-relaxed font-medium">
+            <div data-testid="lesson-content" className="mt-8 space-y-8 text-[var(--text)] text-lg md:text-xl leading-relaxed font-medium">
               {Array.isArray(lesson.content) ? (
                 lesson.content.map((section: LessonSection | string, idx: number) => (
                   <div key={idx} className="space-y-4">

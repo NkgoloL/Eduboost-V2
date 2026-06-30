@@ -29,6 +29,7 @@ describe("InteractiveDiagnostic", () => {
     render(<InteractiveDiagnostic learner={learner} onComplete={onComplete} onBack={vi.fn()} />);
 
     fireEvent.click(screen.getByText("Mathematics"));
+    fireEvent.click(screen.getByText(/Start Assessment/i));
     await waitFor(() => screen.getByText("2 + 2 = ?"));
     fireEvent.click(screen.getByText("4"));
     await waitFor(() => screen.getByText(/Assessment Complete!/i));
@@ -51,9 +52,11 @@ describe("InteractiveDiagnostic", () => {
     render(<InteractiveDiagnostic learner={learner} onComplete={vi.fn()} onBack={vi.fn()} />);
 
     fireEvent.click(screen.getByText("English"));
+    fireEvent.click(screen.getByText(/Start Assessment/i));
     await waitFor(() => screen.getByText(/No diagnostic items are available/i));
 
     fireEvent.click(screen.getByText("Natural Science"));
+    fireEvent.click(screen.getByText(/Start Assessment/i));
     await waitFor(() => screen.getByText("Water freezes at?"));
     fireEvent.click(screen.getByText("0°C"));
     await waitFor(() => screen.getByText(/You have mastered all current concepts!/i));
