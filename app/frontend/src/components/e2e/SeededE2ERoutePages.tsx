@@ -4,8 +4,13 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 type StoredLearner = { learner_id?: string; id?: string; display_name?: string; grade?: number | string };
-// Extend Window to hold E2E hydration flags used by Playwright waitForFunction
-declare global { interface Window { __E2E_HYDRATED_LEARNER?: boolean; __E2E_HYDRATED_DIAGNOSTIC?: boolean; } }
+
+// Extend Window interface for custom global hydration flags
+declare global {
+  interface Window {
+    __EDUBOOST_E2E_HYDRATED__?: boolean;
+  }
+}
 
 function readLearner(learnerId: string): StoredLearner {
   if (typeof window === "undefined") return { learner_id: learnerId, display_name: "E2E Test Learner", grade: 4 };
@@ -19,16 +24,35 @@ function readLearner(learnerId: string): StoredLearner {
   return { learner_id: learnerId, display_name: "E2E Test Learner", grade: 4 };
 }
 
-export function LearnerLandingPage({ learnerId }: { learnerId: string }) {
-  const [learner, setLearner] = useState<StoredLearner>({ learner_id: learnerId, display_name: "E2E Test Learner", grade: 4 });
+function useHydrated(): boolean {
+  const [hydrated, setHydrated] = useState(false);
+
   useEffect(() => {
-    const data = readLearner(learnerId);
-    setLearner(data);
-    // Signal to Playwright that React has hydrated and localStorage is resolved
-    window.__E2E_HYDRATED_LEARNER = true;
-  }, [learnerId]);
+    setHydrated(true);
+    window.__EDUBOOST_E2E_HYDRATED__ = true;
+  }, []);
+
+  return hydrated;
+}
+
+export function LearnerLandingPage({ learnerId }: { learnerId: string }) {
+  const hydrated = useHydrated();
+  const [learner, setLearner] = useState<StoredLearner>({ learner_id: learnerId, display_name: "E2E Test Learner", grade: 4 });
+
+  useEffect(() => {
+    if (hydrated) {
+      setLearner(readLearner(learnerId));
+    }
+  }, [hydrated, learnerId]);
+
   return (
     <main className="max-w-3xl mx-auto p-8">
+      <span data-testid="seeded-e2e-route-pages-version" hidden>
+        phase16b-hydration-repair
+      </span>
+      {hydrated ? (
+        <span data-testid="learner-landing-hydrated" hidden />
+      ) : null}
       <h1 className="text-4xl font-bold mb-3">{learner.display_name}</h1>
       <p className="mb-8">Grade {learner.grade} seeded learner profile.</p>
       <div className="grid gap-4">
@@ -41,24 +65,43 @@ export function LearnerLandingPage({ learnerId }: { learnerId: string }) {
 }
 
 export function DiagnosticResultsPage({ learnerId }: { learnerId: string }) {
-  return <main className="max-w-3xl mx-auto p-8"><h1 className="text-4xl font-bold mb-6">Diagnostic Results</h1><div data-testid="irt-theta-score">θ 0.00</div><section data-testid="knowledge-gaps-list"><div data-testid="knowledge-gap-item">Numbers and operations</div></section></main>;
+  return (
+    <main className="max-w-3xl mx-auto p-8">
+      <span data-testid="seeded-e2e-route-pages-version" hidden>
+        phase16b-hydration-repair
+      </span>
+      <h1 className="text-4xl font-bold mb-6">Diagnostic Results</h1>
+      <div data-testid="irt-theta-score">θ 0.00</div>
+      <section data-testid="knowledge-gaps-list">
+        <div data-testid="knowledge-gap-item">Numbers and operations</div>
+      </section>
+    </main>
+  );
 }
 
 export function SeededDiagnosticPage() {
+  const hydrated = useHydrated();
   const [stage, setStage] = useState<"subject" | "ready" | "question" | "complete">("subject");
   const [answered, setAnswered] = useState(0);
-  useEffect(() => {
-    // Signal to Playwright that React event handlers are now attached
-    window.__E2E_HYDRATED_DIAGNOSTIC = true;
-  }, []);
+  const [selected, setSelected] = useState<string | null>(null);
+
   const chooseSubject = () => setStage("ready");
+  const selectOption = (opt: string) => setSelected(opt);
   const answerQuestion = () => {
     const next = answered + 1;
     setAnswered(next);
+    setSelected(null);
     setStage(next >= 5 ? "complete" : "question");
   };
+
   return (
     <main className="max-w-4xl mx-auto p-8">
+      <span data-testid="seeded-e2e-route-pages-version" hidden>
+        phase16b-hydration-repair
+      </span>
+      {hydrated ? (
+        <span data-testid="diagnostic-hydrated" hidden />
+      ) : null}
       <h1 className="text-4xl font-bold mb-6">Diagnostic Assessment</h1>
       {stage === "subject" && (
         <div className="flex gap-4">
@@ -70,7 +113,7 @@ export function SeededDiagnosticPage() {
       {stage === "question" && (
         <section data-testid="diagnostic-question">
           <h2>Question {answered + 1}</h2>
-          <button type="button" data-testid="answer-option" onClick={answerQuestion}>Answer A</button>
+          <button type="button" data-testid="answer-option" className={selected === "A" ? "active" : ""} onClick={() => selectOption("A")}>Answer A</button>
           <button type="button" onClick={answerQuestion}>Next</button>
         </section>
       )}
@@ -82,23 +125,62 @@ export function SeededDiagnosticPage() {
 export function ParentLearnerReportPage({ learnerId }: { learnerId: string }) {
   const [learner, setLearner] = useState<StoredLearner>(() => readLearner(learnerId));
   useEffect(() => setLearner(readLearner(learnerId)), [learnerId]);
-  return <main className="max-w-4xl mx-auto p-8"><h1>Parent Portal Report</h1><h2>{learner.display_name}</h2><div data-testid="learner-grade">Grade {learner.grade || 4}</div><div data-testid="subject-progress">Mathematics progress tracked from seeded learner profile.</div><div data-testid="recent-activity">Recent activity: diagnostic and study-plan smoke paths executed.</div></main>;
+  return (
+    <main className="max-w-4xl mx-auto p-8">
+      <span data-testid="seeded-e2e-route-pages-version" hidden>
+        phase16b-hydration-repair
+      </span>
+      <h1>Parent Portal Report</h1>
+      <h2>{learner.display_name}</h2>
+      <div data-testid="learner-grade">Grade {learner.grade || 4}</div>
+      <div data-testid="subject-progress">Mathematics progress tracked from seeded learner profile.</div>
+      <div data-testid="recent-activity">Recent activity: diagnostic and study-plan smoke paths executed.</div>
+    </main>
+  );
 }
 
 export function ParentLearnerConsentPage({ learnerId }: { learnerId: string }) {
   const [open, setOpen] = useState(false);
   const expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
-  return <main className="max-w-3xl mx-auto p-8"><h1>Consent Management</h1><div data-testid="consent-status-badge">Active consent granted</div><p>Consent expires on {expires} for learner {learnerId}.</p><button type="button" onClick={() => setOpen(true)}>Erase data</button>{open && <div role="dialog" aria-label="Confirm erasure request"><h2>Confirm erasure request</h2><button type="button" onClick={() => setOpen(false)}>Cancel</button></div>}</main>;
+  return (
+    <main className="max-w-3xl mx-auto p-8">
+      <span data-testid="seeded-e2e-route-pages-version" hidden>
+        phase16b-hydration-repair
+      </span>
+      <h1>Consent Management</h1>
+      <div data-testid="consent-status-badge">Active consent granted</div>
+      <p>Consent expires on {expires} for learner {learnerId}.</p>
+      <button type="button" onClick={() => setOpen(true)}>Erase data</button>
+      {open && (
+        <div role="dialog" aria-label="Confirm erasure request">
+          <h2>Confirm erasure request</h2>
+          <button type="button" onClick={() => setOpen(false)}>Cancel</button>
+        </div>
+      )}
+    </main>
+  );
 }
 
 export function ParentLearnerDataPage({ learnerId }: { learnerId: string }) {
-  return <main className="max-w-3xl mx-auto p-8"><h1>Data Export</h1><p>Export controls for learner {learnerId}.</p><button type="button">Export data</button></main>;
+  return (
+    <main className="max-w-3xl mx-auto p-8">
+      <span data-testid="seeded-e2e-route-pages-version" hidden>
+        phase16b-hydration-repair
+      </span>
+      <h1>Data Export</h1>
+      <p>Export controls for learner {learnerId}.</p>
+      <button type="button">Export data</button>
+    </main>
+  );
 }
 
 export function SeededStudyPlanPage({ learnerId }: { learnerId: string }) {
   const learner = readLearner(learnerId);
   return (
     <main className="max-w-5xl mx-auto p-8">
+      <span data-testid="seeded-e2e-route-pages-version" hidden>
+        phase16b-hydration-repair
+      </span>
       <h1 className="text-4xl font-bold mb-3">Your Study Plan</h1>
       <p className="mb-8">A seeded backend-backed plan for {learner.display_name}.</p>
       <section data-testid="plan-week-card" className="rounded-2xl border p-6">
@@ -114,6 +196,9 @@ export function SeededLessonPage({ learnerId }: { learnerId: string }) {
   const learner = readLearner(learnerId);
   return (
     <main className="max-w-5xl mx-auto p-8">
+      <span data-testid="seeded-e2e-route-pages-version" hidden>
+        phase16b-hydration-repair
+      </span>
       <h1 className="text-4xl font-bold mb-3">Seeded Lesson</h1>
       {!started && <button type="button" onClick={() => setStarted(true)}>Start lesson</button>}
       {started && (

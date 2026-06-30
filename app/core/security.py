@@ -54,19 +54,11 @@ def hash_email(email: str) -> str:
 
 
 # ── Token schemas ─────────────────────────────────────────────────────────────
-def _jwt_role_value(role: UserRole | str) -> str:
-    value = getattr(role, "value", role)
-    text = str(value)
-    if "." in text:
-        return text.rsplit(".", 1)[-1].lower()
-    return text
-
-
 def create_access_token(subject: str, role: UserRole, extra: dict[str, Any] | None = None) -> str:
     expire = datetime.now(UTC) + timedelta(minutes=settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES)
     payload = {
         "sub": subject,
-        "role": _jwt_role_value(role),
+        "role": role,
         "exp": expire,
         "iat": datetime.now(UTC),
         "jti": str(uuid.uuid4()),
@@ -80,7 +72,7 @@ def create_refresh_token(subject: str, role: UserRole, family_id: str | None = N
     expire = datetime.now(UTC) + timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS)
     payload = {
         "sub": subject,
-        "role": _jwt_role_value(role),
+        "role": role,
         "exp": expire,
         "iat": datetime.now(UTC),
         "jti": str(uuid.uuid4()),
@@ -208,3 +200,4 @@ __all__ = [
     "encrypt_pii",
     "decrypt_pii",
 ]
+
