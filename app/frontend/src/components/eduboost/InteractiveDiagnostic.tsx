@@ -94,7 +94,7 @@ export function InteractiveDiagnostic({ learner, onComplete, onBack }: Interacti
       <main id="main-content" className="screen flex items-center justify-center p-4">
         <Stars />
         <Card className="relative z-10 p-8 max-w-2xl w-full bg-white/90 backdrop-blur-xl shadow-2xl border-none rounded-3xl">
-          <div className="text-center mb-10">
+          <div className="text-center mb-10" data-testid="diagnostic-complete">
             <div className="text-7xl mb-6 animate-bounce">🏆</div>
             <h2 className="text-4xl font-['Baloo_2'] text-gray-800 font-bold">Assessment Complete!</h2>
             <p className="text-gray-500 text-lg mt-2">
@@ -160,7 +160,7 @@ export function InteractiveDiagnostic({ learner, onComplete, onBack }: Interacti
           </div>
 
           <div className="min-h-[120px] flex items-center mb-10">
-            <h3 id="diagnostic-question" className="text-2xl md:text-3xl font-bold text-gray-800 leading-tight">
+            <h3 id="diagnostic-question" data-testid="diagnostic-question" className="text-2xl md:text-3xl font-bold text-gray-800 leading-tight">
               {currentItem.question_text || currentItem.question}
             </h3>
           </div>
@@ -172,6 +172,7 @@ export function InteractiveDiagnostic({ learner, onComplete, onBack }: Interacti
                 type="button"
                 role="radio"
                 aria-checked="false"
+                data-testid="answer-option"
                 disabled={loading}
                 onClick={() => void handleAnswer(option)}
                 className="group relative text-left p-6 border-2 border-gray-50 rounded-2xl hover:border-blue-400 hover:bg-blue-50 transition-all transform hover:-translate-y-1 active:scale-95 shadow-sm"
@@ -216,7 +217,15 @@ export function InteractiveDiagnostic({ learner, onComplete, onBack }: Interacti
             <button
               key={entry.code}
               type="button"
-              onClick={() => void handleStart(entry.code)}
+              onClick={() => {
+                setSubject(entry.code);
+                setItems([]);
+                setAnswers([]);
+                setQuestionCount(0);
+                setGapReport(null);
+                setCompleted(false);
+                setError("");
+              }}
               disabled={loading}
               className="group flex items-center gap-5 p-6 border-2 border-gray-50 rounded-3xl hover:border-blue-400 hover:bg-blue-50 transition-all text-left shadow-sm hover:shadow-md active:scale-95"
             >
@@ -231,6 +240,12 @@ export function InteractiveDiagnostic({ learner, onComplete, onBack }: Interacti
             </button>
           ))}
         </div>
+
+        {subject && !items.length && (
+          <button type="button" onClick={() => void handleStart(subject)} disabled={loading} className="btn-primary w-full py-5 text-xl rounded-2xl mt-8">
+            {loading ? "Preparing assessment..." : "Start Assessment"}
+          </button>
+        )}
 
         {error && <div className="mt-6 bg-red-50 text-red-500 p-4 rounded-xl text-sm font-medium border border-red-100">{error}</div>}
       </Card>

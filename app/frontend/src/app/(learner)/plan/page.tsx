@@ -158,13 +158,14 @@ export default function StudyPlanPage() {
 
               <div className="flex-1 space-y-4">
                 {items.length === 0 ? (
-                  <div className="p-6 rounded-2xl border-2 border-dashed border-[var(--border)] text-[var(--muted)] italic text-sm">
+                  <div data-testid="plan-week-card" className="p-6 rounded-2xl border-2 border-dashed border-[var(--border)] text-[var(--muted)] italic text-sm">
                     Rest day! Take some time to play and recharge.
                   </div>
                 ) : (
                   items.map((item: StudyPlanItem, idx: number) => (
                     <Card
                       key={`${day}-${idx}`}
+                      data-testid="plan-week-card"
                       className={`p-6 border-none flex flex-col sm:flex-row items-center gap-6 transition-all shadow-md hover:shadow-lg ${
                         isToday ? "bg-[var(--surface)] ring-2 ring-blue-500/30" : "bg-[var(--surface)]"
                       }`}

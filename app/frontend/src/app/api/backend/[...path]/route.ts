@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { backendFetch, forwardSetCookies } from "@/lib/api/server-client";
 import { getSessionToken } from "@/lib/auth/session.server";
 
-const ALLOWED_HEADERS = ["accept", "content-type", "x-request-id"];
+const ALLOWED_HEADERS = ["accept", "content-type", "x-request-id", "authorization"];
 const BODYLESS_METHODS = new Set(["GET", "HEAD"]);
 
 function sanitizePath(pathSegments: string[] | undefined) {
