@@ -107,11 +107,15 @@ def verify() -> dict[str, object]:
                 findings.append(Finding(security.get("status") in {"dependency_scan_enforcement_ready", "evidence_recorded", "partially_addressed_in_baseline_reset"}, f"TA-SECURITY-001 status {security.get('status')}"))
             allowed_active_slices = {
                 "05-dependency-scan-enforcement",
-                    "next-technical-audit-slice",
-                    "04-ci-authority-workflow-cleanup",
-                    "technical-audit-remediation-closed",
+                "next-technical-audit-slice",
+                "04-ci-authority-workflow-cleanup",
+                "technical-audit-remediation-closed",
+                "technical-audit-post-merge-baseline-recorded",
             }
-            terminal_closed = data.get("status") == "phase_12_technical_audit_remediation_closed"
+            terminal_closed = data.get("status") in {
+                "phase_12_technical_audit_remediation_closed",
+                "phase_13b_post_merge_baseline_recorded",
+            }
             findings.append(Finding(data.get("active_slice") in allowed_active_slices or terminal_closed, f"active_slice is {data.get('active_slice')}"))
         except Exception as exc:
             findings.append(Finding(False, f"blocker register invalid JSON: {exc}"))
