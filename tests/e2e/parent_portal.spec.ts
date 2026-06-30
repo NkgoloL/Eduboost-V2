@@ -17,10 +17,12 @@ const FIXTURE_FILE = path.join(
 
 test.describe("Parent Portal — Progress Reports", () => {
   let learnerId: string;
+  let learnerName: string;
 
   test.beforeAll(() => {
     const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8"));
     learnerId = fx.learnerId;
+    learnerName = fx.learnerName ?? fx.learner?.display_name ?? "DevLearner";
   });
 
   test("parent portal dashboard loads and shows learner card", async ({
@@ -30,7 +32,7 @@ test.describe("Parent Portal — Progress Reports", () => {
     await expect(
       page.getByRole("heading", { name: /parent portal/i })
     ).toBeVisible({ timeout: 10_000 });
-    await expect(page.getByText("E2E Test Learner")).toBeVisible();
+    await expect(page.getByText(learnerName)).toBeVisible();
   });
 
   test("learner progress report shows grade, subject, and activity", async ({

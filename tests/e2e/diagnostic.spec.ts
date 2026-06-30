@@ -15,10 +15,12 @@ const FIXTURE_FILE = path.join(
 
 test.describe("Diagnostic Assessment Flow", () => {
   let learnerId: string;
+  let learnerName: string;
 
   test.beforeAll(() => {
     const fixtures = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8"));
     learnerId = fixtures.learnerId;
+    learnerName = fixtures.learnerName ?? fixtures.learner?.display_name ?? "DevLearner";
   });
 
   test("guardian can navigate to diagnostic for their learner", async ({
@@ -26,9 +28,9 @@ test.describe("Diagnostic Assessment Flow", () => {
   }) => {
     await page.goto("/dashboard");
     await expect(
-      page.getByText("E2E Test Learner")
+      page.getByText(learnerName)
     ).toBeVisible();
-    await page.getByText("E2E Test Learner").click();
+    await page.getByText(learnerName).click();
     await expect(page).toHaveURL(new RegExp(`learners/${learnerId}`));
   });
 

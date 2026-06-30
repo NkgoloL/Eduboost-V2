@@ -12,8 +12,10 @@ setup("create dev learner session", async ({ page, request }) => {
 
   const response = await request.post(`${API_BASE_URL}/auth/dev-session`);
   expect(response.ok()).toBeTruthy();
-  const session = await response.json();
+  const envelope = await response.json();
+  const session = envelope.data ?? envelope;
   const learner = session.learner;
+  expect(learner).toBeTruthy();
 
   await page.goto("/");
   await page.evaluate(
@@ -37,6 +39,7 @@ setup("create dev learner session", async ({ page, request }) => {
         accessToken: session.access_token,
         guardianId: session.guardian_id,
         learnerId: learner.learner_id ?? learner.id,
+        learnerName: learner.display_name ?? learner.nickname ?? "Dev learner",
         learner,
       },
       null,
