@@ -1,0 +1,869 @@
+
+Running 8 tests using 1 worker
+
+  ✘  1 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:20:7 › Study Plan Generation › study plan page renders for the learner (19.3s)
+  ✘  2 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:20:7 › Study Plan Generation › study plan page renders for the learner (retry #1) (17.6s)
+  ✘  3 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:20:7 › Study Plan Generation › study plan page renders for the learner (retry #2) (17.5s)
+  ✘  4 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:21:7 › Study Plan Generation › can request study plan generation via V2 async job contract (97ms)
+  ✘  5 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:21:7 › Study Plan Generation › can request study plan generation via V2 async job contract (retry #1) (67ms)
+  ✘  6 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:21:7 › Study Plan Generation › can request study plan generation via V2 async job contract (retry #2) (67ms)
+  ✘  7 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:22:7 › Study Plan Generation › study plan page displays weekly topic breakdown (17.5s)
+  ✘  8 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:22:7 › Study Plan Generation › study plan page displays weekly topic breakdown (retry #1) (17.6s)
+  ✘  9 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:22:7 › Study Plan Generation › study plan page displays weekly topic breakdown (retry #2) (17.5s)
+  ✘  10 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:23:7 › Study Plan Generation › study plan mutation blocks out-of-scope learner (72ms)
+  ✘  11 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:23:7 › Study Plan Generation › study plan mutation blocks out-of-scope learner (retry #1) (81ms)
+  ✘  12 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:23:7 › Study Plan Generation › study plan mutation blocks out-of-scope learner (retry #2) (82ms)
+  ✘  13 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:29:7 › Lesson Delivery › lesson page loads for a learner with active plan (3.5s)
+  ✘  14 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:29:7 › Lesson Delivery › lesson page loads for a learner with active plan (retry #1) (1.9s)
+  ✘  15 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:29:7 › Lesson Delivery › lesson page loads for a learner with active plan (retry #2) (2.0s)
+  ✘  16 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:30:7 › Lesson Delivery › can request a new lesson via V2 async job contract (111ms)
+  ✘  17 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:30:7 › Lesson Delivery › can request a new lesson via V2 async job contract (retry #1) (73ms)
+  ✘  18 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:30:7 › Lesson Delivery › can request a new lesson via V2 async job contract (retry #2) (77ms)
+  ✘  19 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:31:7 › Lesson Delivery › lesson content renders with explanation and examples (40.1s)
+  ✘  20 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:31:7 › Lesson Delivery › lesson content renders with explanation and examples (retry #1) (40.1s)
+  ✘  21 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:31:7 › Lesson Delivery › lesson content renders with explanation and examples (retry #2) (40.4s)
+  ✘  22 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:32:7 › Lesson Delivery › learner can see completion control (12.6s)
+  ✘  23 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:32:7 › Lesson Delivery › learner can see completion control (retry #1) (12.8s)
+  ✘  24 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:32:7 › Lesson Delivery › learner can see completion control (retry #2) (12.3s)
+
+
+  1) [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:20:7 › Study Plan Generation › study plan page renders for the learner 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: /study plan/i })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('heading', { name: /study plan/i })[22m
+
+
+      18 |   let learnerId: string; let accessToken: string;
+      19 |   test.beforeAll(() => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); learnerId = fx.learnerId; accessToken = fx.accessToken; });
+    > 20 |   test("study plan page renders for the learner", async ({ page }) => { await page.goto(`/learners/${learnerId}/plan`); await expect(page.getByRole("heading", { name: /study plan/i })).toBeVisible({ timeout: 15000 }); });
+         |                                                                                                                                                                                          ^
+      21 |   test("can request study plan generation via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/${learnerId}`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); await expectAcceptedJob(res, /study_plan/i); });
+      22 |   test("study plan page displays weekly topic breakdown", async ({ page }) => { await page.goto(`/learners/${learnerId}/plan`); await expect(page.getByTestId("plan-week-card").first()).toBeVisible({ timeout: 15000 }); expect(await page.getByTestId("plan-week-card").count()).toBeGreaterThanOrEqual(1); });
+      23 |   test("study plan mutation blocks out-of-scope learner", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/00000000-0000-0000-0000-000000000000`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); expect([403, 404, 422]).toContain(res.status()); });
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:20:186
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-448ca-age-renders-for-the-learner-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-448ca-age-renders-for-the-learner-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/study_plan_and_lesson-Stud-448ca-age-renders-for-the-learner-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-448ca-age-renders-for-the-learner-chromium/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Stud-448ca-age-renders-for-the-learner-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: /study plan/i })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('heading', { name: /study plan/i })[22m
+
+
+      18 |   let learnerId: string; let accessToken: string;
+      19 |   test.beforeAll(() => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); learnerId = fx.learnerId; accessToken = fx.accessToken; });
+    > 20 |   test("study plan page renders for the learner", async ({ page }) => { await page.goto(`/learners/${learnerId}/plan`); await expect(page.getByRole("heading", { name: /study plan/i })).toBeVisible({ timeout: 15000 }); });
+         |                                                                                                                                                                                          ^
+      21 |   test("can request study plan generation via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/${learnerId}`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); await expectAcceptedJob(res, /study_plan/i); });
+      22 |   test("study plan page displays weekly topic breakdown", async ({ page }) => { await page.goto(`/learners/${learnerId}/plan`); await expect(page.getByTestId("plan-week-card").first()).toBeVisible({ timeout: 15000 }); expect(await page.getByTestId("plan-week-card").count()).toBeGreaterThanOrEqual(1); });
+      23 |   test("study plan mutation blocks out-of-scope learner", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/00000000-0000-0000-0000-000000000000`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); expect([403, 404, 422]).toContain(res.status()); });
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:20:186
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-448ca-age-renders-for-the-learner-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-448ca-age-renders-for-the-learner-chromium-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/study_plan_and_lesson-Stud-448ca-age-renders-for-the-learner-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-448ca-age-renders-for-the-learner-chromium-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Stud-448ca-age-renders-for-the-learner-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: /study plan/i })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('heading', { name: /study plan/i })[22m
+
+
+      18 |   let learnerId: string; let accessToken: string;
+      19 |   test.beforeAll(() => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); learnerId = fx.learnerId; accessToken = fx.accessToken; });
+    > 20 |   test("study plan page renders for the learner", async ({ page }) => { await page.goto(`/learners/${learnerId}/plan`); await expect(page.getByRole("heading", { name: /study plan/i })).toBeVisible({ timeout: 15000 }); });
+         |                                                                                                                                                                                          ^
+      21 |   test("can request study plan generation via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/${learnerId}`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); await expectAcceptedJob(res, /study_plan/i); });
+      22 |   test("study plan page displays weekly topic breakdown", async ({ page }) => { await page.goto(`/learners/${learnerId}/plan`); await expect(page.getByTestId("plan-week-card").first()).toBeVisible({ timeout: 15000 }); expect(await page.getByTestId("plan-week-card").count()).toBeGreaterThanOrEqual(1); });
+      23 |   test("study plan mutation blocks out-of-scope learner", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/00000000-0000-0000-0000-000000000000`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); expect([403, 404, 422]).toContain(res.status()); });
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:20:186
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-448ca-age-renders-for-the-learner-chromium-retry2/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-448ca-age-renders-for-the-learner-chromium-retry2/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/study_plan_and_lesson-Stud-448ca-age-renders-for-the-learner-chromium-retry2/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-448ca-age-renders-for-the-learner-chromium-retry2/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Stud-448ca-age-renders-for-the-learner-chromium-retry2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:21:7 › Study Plan Generation › can request study plan generation via V2 async job contract 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected value: [32m401[39m
+    Received array: [31m[200, 201, 202][39m
+
+       7 |
+       8 | async function expectAcceptedJob(response: APIResponse, operation: RegExp) {
+    >  9 |   expect([200, 201, 202]).toContain(response.status());
+         |                           ^
+      10 |   const payload = await response.json();
+      11 |   const data = payload?.data ?? payload;
+      12 |   expect(data).toHaveProperty("job_id");
+        at expectAcceptedJob (/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:9:27)
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:21:294
+
+    Error Context: test-results/study_plan_and_lesson-Stud-f28df-n-via-V2-async-job-contract-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-f28df-n-via-V2-async-job-contract-chromium/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Stud-f28df-n-via-V2-async-job-contract-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected value: [32m401[39m
+    Received array: [31m[200, 201, 202][39m
+
+       7 |
+       8 | async function expectAcceptedJob(response: APIResponse, operation: RegExp) {
+    >  9 |   expect([200, 201, 202]).toContain(response.status());
+         |                           ^
+      10 |   const payload = await response.json();
+      11 |   const data = payload?.data ?? payload;
+      12 |   expect(data).toHaveProperty("job_id");
+        at expectAcceptedJob (/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:9:27)
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:21:294
+
+    Error Context: test-results/study_plan_and_lesson-Stud-f28df-n-via-V2-async-job-contract-chromium-retry1/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-f28df-n-via-V2-async-job-contract-chromium-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Stud-f28df-n-via-V2-async-job-contract-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected value: [32m401[39m
+    Received array: [31m[200, 201, 202][39m
+
+       7 |
+       8 | async function expectAcceptedJob(response: APIResponse, operation: RegExp) {
+    >  9 |   expect([200, 201, 202]).toContain(response.status());
+         |                           ^
+      10 |   const payload = await response.json();
+      11 |   const data = payload?.data ?? payload;
+      12 |   expect(data).toHaveProperty("job_id");
+        at expectAcceptedJob (/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:9:27)
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:21:294
+
+    Error Context: test-results/study_plan_and_lesson-Stud-f28df-n-via-V2-async-job-contract-chromium-retry2/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-f28df-n-via-V2-async-job-contract-chromium-retry2/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Stud-f28df-n-via-V2-async-job-contract-chromium-retry2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:22:7 › Study Plan Generation › study plan page displays weekly topic breakdown 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByTestId('plan-week-card').first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByTestId('plan-week-card').first()[22m
+
+
+      20 |   test("study plan page renders for the learner", async ({ page }) => { await page.goto(`/learners/${learnerId}/plan`); await expect(page.getByRole("heading", { name: /study plan/i })).toBeVisible({ timeout: 15000 }); });
+      21 |   test("can request study plan generation via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/${learnerId}`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); await expectAcceptedJob(res, /study_plan/i); });
+    > 22 |   test("study plan page displays weekly topic breakdown", async ({ page }) => { await page.goto(`/learners/${learnerId}/plan`); await expect(page.getByTestId("plan-week-card").first()).toBeVisible({ timeout: 15000 }); expect(await page.getByTestId("plan-week-card").count()).toBeGreaterThanOrEqual(1); });
+         |                                                                                                                                                                                          ^
+      23 |   test("study plan mutation blocks out-of-scope learner", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/00000000-0000-0000-0000-000000000000`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); expect([403, 404, 422]).toContain(res.status()); });
+      24 | });
+      25 |
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:22:186
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-c902a-lays-weekly-topic-breakdown-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-c902a-lays-weekly-topic-breakdown-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/study_plan_and_lesson-Stud-c902a-lays-weekly-topic-breakdown-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-c902a-lays-weekly-topic-breakdown-chromium/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Stud-c902a-lays-weekly-topic-breakdown-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByTestId('plan-week-card').first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByTestId('plan-week-card').first()[22m
+
+
+      20 |   test("study plan page renders for the learner", async ({ page }) => { await page.goto(`/learners/${learnerId}/plan`); await expect(page.getByRole("heading", { name: /study plan/i })).toBeVisible({ timeout: 15000 }); });
+      21 |   test("can request study plan generation via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/${learnerId}`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); await expectAcceptedJob(res, /study_plan/i); });
+    > 22 |   test("study plan page displays weekly topic breakdown", async ({ page }) => { await page.goto(`/learners/${learnerId}/plan`); await expect(page.getByTestId("plan-week-card").first()).toBeVisible({ timeout: 15000 }); expect(await page.getByTestId("plan-week-card").count()).toBeGreaterThanOrEqual(1); });
+         |                                                                                                                                                                                          ^
+      23 |   test("study plan mutation blocks out-of-scope learner", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/00000000-0000-0000-0000-000000000000`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); expect([403, 404, 422]).toContain(res.status()); });
+      24 | });
+      25 |
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:22:186
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-c902a-lays-weekly-topic-breakdown-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-c902a-lays-weekly-topic-breakdown-chromium-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/study_plan_and_lesson-Stud-c902a-lays-weekly-topic-breakdown-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-c902a-lays-weekly-topic-breakdown-chromium-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Stud-c902a-lays-weekly-topic-breakdown-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByTestId('plan-week-card').first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByTestId('plan-week-card').first()[22m
+
+
+      20 |   test("study plan page renders for the learner", async ({ page }) => { await page.goto(`/learners/${learnerId}/plan`); await expect(page.getByRole("heading", { name: /study plan/i })).toBeVisible({ timeout: 15000 }); });
+      21 |   test("can request study plan generation via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/${learnerId}`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); await expectAcceptedJob(res, /study_plan/i); });
+    > 22 |   test("study plan page displays weekly topic breakdown", async ({ page }) => { await page.goto(`/learners/${learnerId}/plan`); await expect(page.getByTestId("plan-week-card").first()).toBeVisible({ timeout: 15000 }); expect(await page.getByTestId("plan-week-card").count()).toBeGreaterThanOrEqual(1); });
+         |                                                                                                                                                                                          ^
+      23 |   test("study plan mutation blocks out-of-scope learner", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/00000000-0000-0000-0000-000000000000`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); expect([403, 404, 422]).toContain(res.status()); });
+      24 | });
+      25 |
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:22:186
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-c902a-lays-weekly-topic-breakdown-chromium-retry2/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-c902a-lays-weekly-topic-breakdown-chromium-retry2/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/study_plan_and_lesson-Stud-c902a-lays-weekly-topic-breakdown-chromium-retry2/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-c902a-lays-weekly-topic-breakdown-chromium-retry2/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Stud-c902a-lays-weekly-topic-breakdown-chromium-retry2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:23:7 › Study Plan Generation › study plan mutation blocks out-of-scope learner 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected value: [32m401[39m
+    Received array: [31m[403, 404, 422][39m
+
+      21 |   test("can request study plan generation via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/${learnerId}`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); await expectAcceptedJob(res, /study_plan/i); });
+      22 |   test("study plan page displays weekly topic breakdown", async ({ page }) => { await page.goto(`/learners/${learnerId}/plan`); await expect(page.getByTestId("plan-week-card").first()).toBeVisible({ timeout: 15000 }); expect(await page.getByTestId("plan-week-card").count()).toBeGreaterThanOrEqual(1); });
+    > 23 |   test("study plan mutation blocks out-of-scope learner", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/00000000-0000-0000-0000-000000000000`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); expect([403, 404, 422]).toContain(res.status()); });
+         |                                                                                                                                                                                                                                                                                                                                    ^
+      24 | });
+      25 |
+      26 | test.describe("Lesson Delivery", () => {
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:23:324
+
+    Error Context: test-results/study_plan_and_lesson-Stud-76914-blocks-out-of-scope-learner-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-76914-blocks-out-of-scope-learner-chromium/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Stud-76914-blocks-out-of-scope-learner-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected value: [32m401[39m
+    Received array: [31m[403, 404, 422][39m
+
+      21 |   test("can request study plan generation via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/${learnerId}`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); await expectAcceptedJob(res, /study_plan/i); });
+      22 |   test("study plan page displays weekly topic breakdown", async ({ page }) => { await page.goto(`/learners/${learnerId}/plan`); await expect(page.getByTestId("plan-week-card").first()).toBeVisible({ timeout: 15000 }); expect(await page.getByTestId("plan-week-card").count()).toBeGreaterThanOrEqual(1); });
+    > 23 |   test("study plan mutation blocks out-of-scope learner", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/00000000-0000-0000-0000-000000000000`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); expect([403, 404, 422]).toContain(res.status()); });
+         |                                                                                                                                                                                                                                                                                                                                    ^
+      24 | });
+      25 |
+      26 | test.describe("Lesson Delivery", () => {
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:23:324
+
+    Error Context: test-results/study_plan_and_lesson-Stud-76914-blocks-out-of-scope-learner-chromium-retry1/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-76914-blocks-out-of-scope-learner-chromium-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Stud-76914-blocks-out-of-scope-learner-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected value: [32m401[39m
+    Received array: [31m[403, 404, 422][39m
+
+      21 |   test("can request study plan generation via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/${learnerId}`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); await expectAcceptedJob(res, /study_plan/i); });
+      22 |   test("study plan page displays weekly topic breakdown", async ({ page }) => { await page.goto(`/learners/${learnerId}/plan`); await expect(page.getByTestId("plan-week-card").first()).toBeVisible({ timeout: 15000 }); expect(await page.getByTestId("plan-week-card").count()).toBeGreaterThanOrEqual(1); });
+    > 23 |   test("study plan mutation blocks out-of-scope learner", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/study-plans/generate/00000000-0000-0000-0000-000000000000`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); expect([403, 404, 422]).toContain(res.status()); });
+         |                                                                                                                                                                                                                                                                                                                                    ^
+      24 | });
+      25 |
+      26 | test.describe("Lesson Delivery", () => {
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:23:324
+
+    Error Context: test-results/study_plan_and_lesson-Stud-76914-blocks-out-of-scope-learner-chromium-retry2/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Stud-76914-blocks-out-of-scope-learner-chromium-retry2/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Stud-76914-blocks-out-of-scope-learner-chromium-retry2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:29:7 › Lesson Delivery › lesson page loads for a learner with active plan 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32mtrue[39m
+    Received: [31mfalse[39m
+
+      27 |   let learnerId: string; let accessToken: string;
+      28 |   test.beforeAll(() => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); learnerId = fx.learnerId; accessToken = fx.accessToken; });
+    > 29 |   test("lesson page loads for a learner with active plan", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); const hasLesson = await page.getByTestId("lesson-content").isVisible({ timeout: 15000 }).catch(() => false); const hasCTA = await page.getByRole("button", { name: /start adventure|start lesson/i }).isVisible().catch(() => false); expect(hasLesson || hasCTA).toBe(true); });
+         |                                                                                                                                                                                                                                                                                                                                                                                                      ^
+      30 |   test("can request a new lesson via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/lessons/generate`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { learner_id: learnerId, subject: "MATH", topic: "Fractions", grade: "4", language: "en" } }); await expectAcceptedJob(res, /lesson/i); });
+      31 |   test("lesson content renders with explanation and examples", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await page.getByRole("button", { name: /start adventure|start lesson/i }).click().catch(() => undefined); await expect(page.getByTestId("lesson-content")).toBeVisible({ timeout: 30000 }); expect((await page.getByTestId("lesson-content").textContent())?.length).toBeGreaterThan(100); });
+      32 |   test("learner can see completion control", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await expect(page.getByRole("button", { name: /complete|done|finished|claim my stars/i })).toBeVisible({ timeout: 10000 }); });
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:29:390
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32mtrue[39m
+    Received: [31mfalse[39m
+
+      27 |   let learnerId: string; let accessToken: string;
+      28 |   test.beforeAll(() => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); learnerId = fx.learnerId; accessToken = fx.accessToken; });
+    > 29 |   test("lesson page loads for a learner with active plan", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); const hasLesson = await page.getByTestId("lesson-content").isVisible({ timeout: 15000 }).catch(() => false); const hasCTA = await page.getByRole("button", { name: /start adventure|start lesson/i }).isVisible().catch(() => false); expect(hasLesson || hasCTA).toBe(true); });
+         |                                                                                                                                                                                                                                                                                                                                                                                                      ^
+      30 |   test("can request a new lesson via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/lessons/generate`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { learner_id: learnerId, subject: "MATH", topic: "Fractions", grade: "4", language: "en" } }); await expectAcceptedJob(res, /lesson/i); });
+      31 |   test("lesson content renders with explanation and examples", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await page.getByRole("button", { name: /start adventure|start lesson/i }).click().catch(() => undefined); await expect(page.getByTestId("lesson-content")).toBeVisible({ timeout: 30000 }); expect((await page.getByTestId("lesson-content").textContent())?.length).toBeGreaterThan(100); });
+      32 |   test("learner can see completion control", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await expect(page.getByRole("button", { name: /complete|done|finished|claim my stars/i })).toBeVisible({ timeout: 10000 }); });
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:29:390
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32mtrue[39m
+    Received: [31mfalse[39m
+
+      27 |   let learnerId: string; let accessToken: string;
+      28 |   test.beforeAll(() => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); learnerId = fx.learnerId; accessToken = fx.accessToken; });
+    > 29 |   test("lesson page loads for a learner with active plan", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); const hasLesson = await page.getByTestId("lesson-content").isVisible({ timeout: 15000 }).catch(() => false); const hasCTA = await page.getByRole("button", { name: /start adventure|start lesson/i }).isVisible().catch(() => false); expect(hasLesson || hasCTA).toBe(true); });
+         |                                                                                                                                                                                                                                                                                                                                                                                                      ^
+      30 |   test("can request a new lesson via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/lessons/generate`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { learner_id: learnerId, subject: "MATH", topic: "Fractions", grade: "4", language: "en" } }); await expectAcceptedJob(res, /lesson/i); });
+      31 |   test("lesson content renders with explanation and examples", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await page.getByRole("button", { name: /start adventure|start lesson/i }).click().catch(() => undefined); await expect(page.getByTestId("lesson-content")).toBeVisible({ timeout: 30000 }); expect((await page.getByTestId("lesson-content").textContent())?.length).toBeGreaterThan(100); });
+      32 |   test("learner can see completion control", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await expect(page.getByRole("button", { name: /complete|done|finished|claim my stars/i })).toBeVisible({ timeout: 10000 }); });
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:29:390
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium-retry2/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium-retry2/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium-retry2/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium-retry2/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium-retry2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:30:7 › Lesson Delivery › can request a new lesson via V2 async job contract 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected value: [32m401[39m
+    Received array: [31m[200, 201, 202][39m
+
+       7 |
+       8 | async function expectAcceptedJob(response: APIResponse, operation: RegExp) {
+    >  9 |   expect([200, 201, 202]).toContain(response.status());
+         |                           ^
+      10 |   const payload = await response.json();
+      11 |   const data = payload?.data ?? payload;
+      12 |   expect(data).toHaveProperty("job_id");
+        at expectAcceptedJob (/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:9:27)
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:30:316
+
+    Error Context: test-results/study_plan_and_lesson-Less-4382a-n-via-V2-async-job-contract-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-4382a-n-via-V2-async-job-contract-chromium/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Less-4382a-n-via-V2-async-job-contract-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected value: [32m401[39m
+    Received array: [31m[200, 201, 202][39m
+
+       7 |
+       8 | async function expectAcceptedJob(response: APIResponse, operation: RegExp) {
+    >  9 |   expect([200, 201, 202]).toContain(response.status());
+         |                           ^
+      10 |   const payload = await response.json();
+      11 |   const data = payload?.data ?? payload;
+      12 |   expect(data).toHaveProperty("job_id");
+        at expectAcceptedJob (/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:9:27)
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:30:316
+
+    Error Context: test-results/study_plan_and_lesson-Less-4382a-n-via-V2-async-job-contract-chromium-retry1/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-4382a-n-via-V2-async-job-contract-chromium-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Less-4382a-n-via-V2-async-job-contract-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected value: [32m401[39m
+    Received array: [31m[200, 201, 202][39m
+
+       7 |
+       8 | async function expectAcceptedJob(response: APIResponse, operation: RegExp) {
+    >  9 |   expect([200, 201, 202]).toContain(response.status());
+         |                           ^
+      10 |   const payload = await response.json();
+      11 |   const data = payload?.data ?? payload;
+      12 |   expect(data).toHaveProperty("job_id");
+        at expectAcceptedJob (/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:9:27)
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:30:316
+
+    Error Context: test-results/study_plan_and_lesson-Less-4382a-n-via-V2-async-job-contract-chromium-retry2/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-4382a-n-via-V2-async-job-contract-chromium-retry2/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Less-4382a-n-via-V2-async-job-contract-chromium-retry2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:31:7 › Lesson Delivery › lesson content renders with explanation and examples 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByTestId('lesson-content')
+    Expected: visible
+    Timeout: 30000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 30000ms[22m
+    [2m  - waiting for getByTestId('lesson-content')[22m
+
+
+      29 |   test("lesson page loads for a learner with active plan", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); const hasLesson = await page.getByTestId("lesson-content").isVisible({ timeout: 15000 }).catch(() => false); const hasCTA = await page.getByRole("button", { name: /start adventure|start lesson/i }).isVisible().catch(() => false); expect(hasLesson || hasCTA).toBe(true); });
+      30 |   test("can request a new lesson via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/lessons/generate`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { learner_id: learnerId, subject: "MATH", topic: "Fractions", grade: "4", language: "en" } }); await expectAcceptedJob(res, /lesson/i); });
+    > 31 |   test("lesson content renders with explanation and examples", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await page.getByRole("button", { name: /start adventure|start lesson/i }).click().catch(() => undefined); await expect(page.getByTestId("lesson-content")).toBeVisible({ timeout: 30000 }); expect((await page.getByTestId("lesson-content").textContent())?.length).toBeGreaterThan(100); });
+         |                                                                                                                                                                                                                                                                                                   ^
+      32 |   test("learner can see completion control", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await expect(page.getByRole("button", { name: /complete|done|finished|claim my stars/i })).toBeVisible({ timeout: 10000 }); });
+      33 | });
+      34 |
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:31:291
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-31ef1-th-explanation-and-examples-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-31ef1-th-explanation-and-examples-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/study_plan_and_lesson-Less-31ef1-th-explanation-and-examples-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-31ef1-th-explanation-and-examples-chromium/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Less-31ef1-th-explanation-and-examples-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByTestId('lesson-content')
+    Expected: visible
+    Timeout: 30000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 30000ms[22m
+    [2m  - waiting for getByTestId('lesson-content')[22m
+
+
+      29 |   test("lesson page loads for a learner with active plan", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); const hasLesson = await page.getByTestId("lesson-content").isVisible({ timeout: 15000 }).catch(() => false); const hasCTA = await page.getByRole("button", { name: /start adventure|start lesson/i }).isVisible().catch(() => false); expect(hasLesson || hasCTA).toBe(true); });
+      30 |   test("can request a new lesson via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/lessons/generate`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { learner_id: learnerId, subject: "MATH", topic: "Fractions", grade: "4", language: "en" } }); await expectAcceptedJob(res, /lesson/i); });
+    > 31 |   test("lesson content renders with explanation and examples", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await page.getByRole("button", { name: /start adventure|start lesson/i }).click().catch(() => undefined); await expect(page.getByTestId("lesson-content")).toBeVisible({ timeout: 30000 }); expect((await page.getByTestId("lesson-content").textContent())?.length).toBeGreaterThan(100); });
+         |                                                                                                                                                                                                                                                                                                   ^
+      32 |   test("learner can see completion control", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await expect(page.getByRole("button", { name: /complete|done|finished|claim my stars/i })).toBeVisible({ timeout: 10000 }); });
+      33 | });
+      34 |
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:31:291
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-31ef1-th-explanation-and-examples-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-31ef1-th-explanation-and-examples-chromium-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/study_plan_and_lesson-Less-31ef1-th-explanation-and-examples-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-31ef1-th-explanation-and-examples-chromium-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Less-31ef1-th-explanation-and-examples-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByTestId('lesson-content')
+    Expected: visible
+    Timeout: 30000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 30000ms[22m
+    [2m  - waiting for getByTestId('lesson-content')[22m
+
+
+      29 |   test("lesson page loads for a learner with active plan", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); const hasLesson = await page.getByTestId("lesson-content").isVisible({ timeout: 15000 }).catch(() => false); const hasCTA = await page.getByRole("button", { name: /start adventure|start lesson/i }).isVisible().catch(() => false); expect(hasLesson || hasCTA).toBe(true); });
+      30 |   test("can request a new lesson via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/lessons/generate`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { learner_id: learnerId, subject: "MATH", topic: "Fractions", grade: "4", language: "en" } }); await expectAcceptedJob(res, /lesson/i); });
+    > 31 |   test("lesson content renders with explanation and examples", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await page.getByRole("button", { name: /start adventure|start lesson/i }).click().catch(() => undefined); await expect(page.getByTestId("lesson-content")).toBeVisible({ timeout: 30000 }); expect((await page.getByTestId("lesson-content").textContent())?.length).toBeGreaterThan(100); });
+         |                                                                                                                                                                                                                                                                                                   ^
+      32 |   test("learner can see completion control", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await expect(page.getByRole("button", { name: /complete|done|finished|claim my stars/i })).toBeVisible({ timeout: 10000 }); });
+      33 | });
+      34 |
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:31:291
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-31ef1-th-explanation-and-examples-chromium-retry2/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-31ef1-th-explanation-and-examples-chromium-retry2/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/study_plan_and_lesson-Less-31ef1-th-explanation-and-examples-chromium-retry2/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-31ef1-th-explanation-and-examples-chromium-retry2/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Less-31ef1-th-explanation-and-examples-chromium-retry2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:32:7 › Lesson Delivery › learner can see completion control 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: /complete|done|finished|claim my stars/i })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('button', { name: /complete|done|finished|claim my stars/i })[22m
+
+
+      30 |   test("can request a new lesson via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/lessons/generate`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { learner_id: learnerId, subject: "MATH", topic: "Fractions", grade: "4", language: "en" } }); await expectAcceptedJob(res, /lesson/i); });
+      31 |   test("lesson content renders with explanation and examples", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await page.getByRole("button", { name: /start adventure|start lesson/i }).click().catch(() => undefined); await expect(page.getByTestId("lesson-content")).toBeVisible({ timeout: 30000 }); expect((await page.getByTestId("lesson-content").textContent())?.length).toBeGreaterThan(100); });
+    > 32 |   test("learner can see completion control", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await expect(page.getByRole("button", { name: /complete|done|finished|claim my stars/i })).toBeVisible({ timeout: 10000 }); });
+         |                                                                                                                                                                                                                 ^
+      33 | });
+      34 |
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:32:209
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-e6345--can-see-completion-control-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-e6345--can-see-completion-control-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/study_plan_and_lesson-Less-e6345--can-see-completion-control-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-e6345--can-see-completion-control-chromium/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Less-e6345--can-see-completion-control-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: /complete|done|finished|claim my stars/i })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('button', { name: /complete|done|finished|claim my stars/i })[22m
+
+
+      30 |   test("can request a new lesson via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/lessons/generate`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { learner_id: learnerId, subject: "MATH", topic: "Fractions", grade: "4", language: "en" } }); await expectAcceptedJob(res, /lesson/i); });
+      31 |   test("lesson content renders with explanation and examples", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await page.getByRole("button", { name: /start adventure|start lesson/i }).click().catch(() => undefined); await expect(page.getByTestId("lesson-content")).toBeVisible({ timeout: 30000 }); expect((await page.getByTestId("lesson-content").textContent())?.length).toBeGreaterThan(100); });
+    > 32 |   test("learner can see completion control", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await expect(page.getByRole("button", { name: /complete|done|finished|claim my stars/i })).toBeVisible({ timeout: 10000 }); });
+         |                                                                                                                                                                                                                 ^
+      33 | });
+      34 |
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:32:209
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-e6345--can-see-completion-control-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-e6345--can-see-completion-control-chromium-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/study_plan_and_lesson-Less-e6345--can-see-completion-control-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-e6345--can-see-completion-control-chromium-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Less-e6345--can-see-completion-control-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: /complete|done|finished|claim my stars/i })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('button', { name: /complete|done|finished|claim my stars/i })[22m
+
+
+      30 |   test("can request a new lesson via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/lessons/generate`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { learner_id: learnerId, subject: "MATH", topic: "Fractions", grade: "4", language: "en" } }); await expectAcceptedJob(res, /lesson/i); });
+      31 |   test("lesson content renders with explanation and examples", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await page.getByRole("button", { name: /start adventure|start lesson/i }).click().catch(() => undefined); await expect(page.getByTestId("lesson-content")).toBeVisible({ timeout: 30000 }); expect((await page.getByTestId("lesson-content").textContent())?.length).toBeGreaterThan(100); });
+    > 32 |   test("learner can see completion control", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await expect(page.getByRole("button", { name: /complete|done|finished|claim my stars/i })).toBeVisible({ timeout: 10000 }); });
+         |                                                                                                                                                                                                                 ^
+      33 | });
+      34 |
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/study_plan_and_lesson.spec.ts:32:209
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-e6345--can-see-completion-control-chromium-retry2/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-e6345--can-see-completion-control-chromium-retry2/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/study_plan_and_lesson-Less-e6345--can-see-completion-control-chromium-retry2/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-e6345--can-see-completion-control-chromium-retry2/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Less-e6345--can-see-completion-control-chromium-retry2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8 failed
+    [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:20:7 › Study Plan Generation › study plan page renders for the learner 
+    [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:21:7 › Study Plan Generation › can request study plan generation via V2 async job contract 
+    [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:22:7 › Study Plan Generation › study plan page displays weekly topic breakdown 
+    [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:23:7 › Study Plan Generation › study plan mutation blocks out-of-scope learner 
+    [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:29:7 › Lesson Delivery › lesson page loads for a learner with active plan 
+    [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:30:7 › Lesson Delivery › can request a new lesson via V2 async job contract 
+    [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:31:7 › Lesson Delivery › lesson content renders with explanation and examples 
+    [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:32:7 › Lesson Delivery › learner can see completion control 

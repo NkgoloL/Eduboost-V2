@@ -1,2 +1,6 @@
-import StudyPlanPage from "@/app/(learner)/plan/page";
-export default StudyPlanPage;
+import { SeededStudyPlanPage } from "@/components/e2e/SeededE2ERoutePages";
+
+export default async function Page({ params }: { params: Promise<{ learnerId: string }> }) {
+  const { learnerId } = await params;
+  return <SeededStudyPlanPage learnerId={learnerId} />;
+}

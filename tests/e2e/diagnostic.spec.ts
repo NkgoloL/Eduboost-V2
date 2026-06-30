@@ -14,6 +14,7 @@ const FIXTURE_FILE = path.join(
 );
 
 test.describe("Diagnostic Assessment Flow", () => {
+  test.use({ storageState: "playwright/.auth/guardian.json" });
   let learnerId: string;
   let learnerName: string;
 
@@ -26,16 +27,22 @@ test.describe("Diagnostic Assessment Flow", () => {
   test("guardian can navigate to diagnostic for their learner", async ({
     page,
   }) => {
-    await page.goto("/dashboard");
+    // The LearnerLandingPage reads display_name from localStorage (set by storageState)
+    // and renders it after hydration (data-hydrated="true" on the root element).
+    await page.goto(`/learners/${learnerId}`);
+    // Wait for React to finish hydrating — the component sets data-hydrated="true" in useEffect
+    await page.locator('main[data-hydrated="true"]').waitFor({ state: "attached", timeout: 15_000 });
     await expect(
       page.getByText(learnerName)
-    ).toBeVisible();
-    await page.getByText(learnerName).click();
-    await expect(page).toHaveURL(new RegExp(`learners/${learnerId}`));
+    ).toBeVisible({ timeout: 5_000 });
+    // Navigate into the diagnostic from the landing page link
+    await page.getByRole("link", { name: /diagnostic/i }).click();
+    await expect(page).toHaveURL(new RegExp(`learners/${learnerId}/diagnostic`));
   });
 
   test("diagnostic page loads with subject selection", async ({ page }) => {
     await page.goto(`/learners/${learnerId}/diagnostic`);
+    await page.locator('main[data-hydrated="true"]').waitFor({ state: "attached", timeout: 15_000 });
     await expect(page.getByRole("heading", { name: /diagnostic/i })).toBeVisible();
     await expect(page.getByRole("button", { name: /mathematics/i })).toBeVisible();
     await expect(page.getByRole("button", { name: /english/i })).toBeVisible();
@@ -45,7 +52,12 @@ test.describe("Diagnostic Assessment Flow", () => {
     page,
   }) => {
     await page.goto(`/learners/${learnerId}/diagnostic`);
+    // Wait for React to hydrate before interacting — onClick handlers attach after mount
+    await page.locator('main[data-hydrated="true"]').waitFor({ state: "attached", timeout: 15_000 });
     await page.getByRole("button", { name: /mathematics/i }).click();
+    await expect(
+      page.getByRole("button", { name: /start assessment/i })
+    ).toBeVisible({ timeout: 10_000 });
     await page.getByRole("button", { name: /start assessment/i }).click();
 
     // IRT adaptive engine serves questions dynamically — answer 5

@@ -1,0 +1,425 @@
+
+Running 7 tests using 1 worker
+
+  ✓  1 [chromium] › tests/e2e/parent_portal.spec.ts:18:7 › Parent Portal — Consent Management › guardian can view and download data export (3.5s)
+  ✘  2 [chromium] › tests/e2e/parent_portal.spec.ts:19:7 › Parent Portal — Consent Management › right-to-erasure flow shows confirmation dialog (8.2s)
+  ✘  3 [chromium] › tests/e2e/parent_portal.spec.ts:19:7 › Parent Portal — Consent Management › right-to-erasure flow shows confirmation dialog (retry #1) (7.2s)
+  ✘  4 [chromium] › tests/e2e/parent_portal.spec.ts:19:7 › Parent Portal — Consent Management › right-to-erasure flow shows confirmation dialog (retry #2) (7.2s)
+  ✘  5 [chromium] › tests/e2e/parent_portal.spec.ts:23:7 › Parent Portal — API Consent Enforcement › out-of-scope learner data access is blocked (68ms)
+  ✘  6 [chromium] › tests/e2e/parent_portal.spec.ts:23:7 › Parent Portal — API Consent Enforcement › out-of-scope learner data access is blocked (retry #1) (64ms)
+  ✘  7 [chromium] › tests/e2e/parent_portal.spec.ts:23:7 › Parent Portal — API Consent Enforcement › out-of-scope learner data access is blocked (retry #2) (68ms)
+  ✘  8 [chromium] › tests/e2e/parent_portal.spec.ts:11:7 › Parent Portal — Progress Reports › parent portal dashboard loads and shows learner card (17.0s)
+  ✘  9 [chromium] › tests/e2e/parent_portal.spec.ts:11:7 › Parent Portal — Progress Reports › parent portal dashboard loads and shows learner card (retry #1) (12.0s)
+  ✘  10 [chromium] › tests/e2e/parent_portal.spec.ts:11:7 › Parent Portal — Progress Reports › parent portal dashboard loads and shows learner card (retry #2) (12.1s)
+  ✓  11 [chromium] › tests/e2e/parent_portal.spec.ts:12:7 › Parent Portal — Progress Reports › learner progress report shows grade, subject, and activity (3.7s)
+  ✓  12 [chromium] › tests/e2e/parent_portal.spec.ts:13:7 › Parent Portal — Progress Reports › consent status badge shows active/granted consent (2.2s)
+  ✘  13 [chromium] › tests/e2e/parent_portal.spec.ts:14:7 › Parent Portal — Progress Reports › consent expiry date is approximately 1 year from now (156ms)
+  ✘  14 [chromium] › tests/e2e/parent_portal.spec.ts:14:7 › Parent Portal — Progress Reports › consent expiry date is approximately 1 year from now (retry #1) (137ms)
+  ✘  15 [chromium] › tests/e2e/parent_portal.spec.ts:14:7 › Parent Portal — Progress Reports › consent expiry date is approximately 1 year from now (retry #2) (111ms)
+
+
+  1) [chromium] › tests/e2e/parent_portal.spec.ts:11:7 › Parent Portal — Progress Reports › parent portal dashboard loads and shows learner card 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: /parent portal/i })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('heading', { name: /parent portal/i })[22m
+
+
+       9 |   let learnerId: string;
+      10 |   test.beforeAll(() => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); learnerId = fx.learnerId; });
+    > 11 |   test("parent portal dashboard loads and shows learner card", async ({ page }) => { await page.goto("/parent"); await expect(page.getByRole("heading", { name: /parent portal/i })).toBeVisible({ timeout: 10000 }); await expect(page.getByText("E2E Test Learner")).toBeVisible({ timeout: 10000 }); });
+         |                                                                                                                                                                                      ^
+      12 |   test("learner progress report shows grade, subject, and activity", async ({ page }) => { await page.goto(`/parent/learners/${learnerId}/report`); await expect(page.getByTestId("learner-grade")).toBeVisible({ timeout: 10000 }); await expect(page.getByTestId("subject-progress")).toBeVisible(); await expect(page.getByTestId("recent-activity")).toBeVisible(); });
+      13 |   test("consent status badge shows active/granted consent", async ({ page }) => { await page.goto(`/parent/learners/${learnerId}/consent`); await expect(page.getByTestId("consent-status-badge")).toContainText(/active|granted/i); await expect(page.getByText(/expires/i)).toBeVisible(); });
+      14 |   test("consent expiry date is approximately 1 year from now", async ({ request }) => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); const res = await request.get(`${API_BASE_URL}/consent/status/${learnerId}`, { headers: { Authorization: `Bearer ${fx.accessToken}` } }); expect(res.status()).toBe(200); const payload = await res.json(); const data = payload?.data ?? payload; const expiresAt = new Date(data.expires_at ?? data.expiresAt).getTime(); const oneYear = 365 * 24 * 60 * 60 * 1000; expect(expiresAt - Date.now()).toBeGreaterThan(oneYear - 2 * 86400 * 1000); expect(expiresAt - Date.now()).toBeLessThan(oneYear + 2 * 86400 * 1000); });
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/parent_portal.spec.ts:11:182
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-4a97b-oads-and-shows-learner-card-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-4a97b-oads-and-shows-learner-card-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/parent_portal-Parent-Porta-4a97b-oads-and-shows-learner-card-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-4a97b-oads-and-shows-learner-card-chromium/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/parent_portal-Parent-Porta-4a97b-oads-and-shows-learner-card-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: /parent portal/i })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('heading', { name: /parent portal/i })[22m
+
+
+       9 |   let learnerId: string;
+      10 |   test.beforeAll(() => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); learnerId = fx.learnerId; });
+    > 11 |   test("parent portal dashboard loads and shows learner card", async ({ page }) => { await page.goto("/parent"); await expect(page.getByRole("heading", { name: /parent portal/i })).toBeVisible({ timeout: 10000 }); await expect(page.getByText("E2E Test Learner")).toBeVisible({ timeout: 10000 }); });
+         |                                                                                                                                                                                      ^
+      12 |   test("learner progress report shows grade, subject, and activity", async ({ page }) => { await page.goto(`/parent/learners/${learnerId}/report`); await expect(page.getByTestId("learner-grade")).toBeVisible({ timeout: 10000 }); await expect(page.getByTestId("subject-progress")).toBeVisible(); await expect(page.getByTestId("recent-activity")).toBeVisible(); });
+      13 |   test("consent status badge shows active/granted consent", async ({ page }) => { await page.goto(`/parent/learners/${learnerId}/consent`); await expect(page.getByTestId("consent-status-badge")).toContainText(/active|granted/i); await expect(page.getByText(/expires/i)).toBeVisible(); });
+      14 |   test("consent expiry date is approximately 1 year from now", async ({ request }) => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); const res = await request.get(`${API_BASE_URL}/consent/status/${learnerId}`, { headers: { Authorization: `Bearer ${fx.accessToken}` } }); expect(res.status()).toBe(200); const payload = await res.json(); const data = payload?.data ?? payload; const expiresAt = new Date(data.expires_at ?? data.expiresAt).getTime(); const oneYear = 365 * 24 * 60 * 60 * 1000; expect(expiresAt - Date.now()).toBeGreaterThan(oneYear - 2 * 86400 * 1000); expect(expiresAt - Date.now()).toBeLessThan(oneYear + 2 * 86400 * 1000); });
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/parent_portal.spec.ts:11:182
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-4a97b-oads-and-shows-learner-card-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-4a97b-oads-and-shows-learner-card-chromium-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/parent_portal-Parent-Porta-4a97b-oads-and-shows-learner-card-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-4a97b-oads-and-shows-learner-card-chromium-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/parent_portal-Parent-Porta-4a97b-oads-and-shows-learner-card-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: /parent portal/i })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('heading', { name: /parent portal/i })[22m
+
+
+       9 |   let learnerId: string;
+      10 |   test.beforeAll(() => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); learnerId = fx.learnerId; });
+    > 11 |   test("parent portal dashboard loads and shows learner card", async ({ page }) => { await page.goto("/parent"); await expect(page.getByRole("heading", { name: /parent portal/i })).toBeVisible({ timeout: 10000 }); await expect(page.getByText("E2E Test Learner")).toBeVisible({ timeout: 10000 }); });
+         |                                                                                                                                                                                      ^
+      12 |   test("learner progress report shows grade, subject, and activity", async ({ page }) => { await page.goto(`/parent/learners/${learnerId}/report`); await expect(page.getByTestId("learner-grade")).toBeVisible({ timeout: 10000 }); await expect(page.getByTestId("subject-progress")).toBeVisible(); await expect(page.getByTestId("recent-activity")).toBeVisible(); });
+      13 |   test("consent status badge shows active/granted consent", async ({ page }) => { await page.goto(`/parent/learners/${learnerId}/consent`); await expect(page.getByTestId("consent-status-badge")).toContainText(/active|granted/i); await expect(page.getByText(/expires/i)).toBeVisible(); });
+      14 |   test("consent expiry date is approximately 1 year from now", async ({ request }) => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); const res = await request.get(`${API_BASE_URL}/consent/status/${learnerId}`, { headers: { Authorization: `Bearer ${fx.accessToken}` } }); expect(res.status()).toBe(200); const payload = await res.json(); const data = payload?.data ?? payload; const expiresAt = new Date(data.expires_at ?? data.expiresAt).getTime(); const oneYear = 365 * 24 * 60 * 60 * 1000; expect(expiresAt - Date.now()).toBeGreaterThan(oneYear - 2 * 86400 * 1000); expect(expiresAt - Date.now()).toBeLessThan(oneYear + 2 * 86400 * 1000); });
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/parent_portal.spec.ts:11:182
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-4a97b-oads-and-shows-learner-card-chromium-retry2/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-4a97b-oads-and-shows-learner-card-chromium-retry2/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/parent_portal-Parent-Porta-4a97b-oads-and-shows-learner-card-chromium-retry2/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-4a97b-oads-and-shows-learner-card-chromium-retry2/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/parent_portal-Parent-Porta-4a97b-oads-and-shows-learner-card-chromium-retry2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › tests/e2e/parent_portal.spec.ts:14:7 › Parent Portal — Progress Reports › consent expiry date is approximately 1 year from now 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m200[39m
+    Received: [31m401[39m
+
+      12 |   test("learner progress report shows grade, subject, and activity", async ({ page }) => { await page.goto(`/parent/learners/${learnerId}/report`); await expect(page.getByTestId("learner-grade")).toBeVisible({ timeout: 10000 }); await expect(page.getByTestId("subject-progress")).toBeVisible(); await expect(page.getByTestId("recent-activity")).toBeVisible(); });
+      13 |   test("consent status badge shows active/granted consent", async ({ page }) => { await page.goto(`/parent/learners/${learnerId}/consent`); await expect(page.getByTestId("consent-status-badge")).toContainText(/active|granted/i); await expect(page.getByText(/expires/i)).toBeVisible(); });
+    > 14 |   test("consent expiry date is approximately 1 year from now", async ({ request }) => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); const res = await request.get(`${API_BASE_URL}/consent/status/${learnerId}`, { headers: { Authorization: `Bearer ${fx.accessToken}` } }); expect(res.status()).toBe(200); const payload = await res.json(); const data = payload?.data ?? payload; const expiresAt = new Date(data.expires_at ?? data.expiresAt).getTime(); const oneYear = 365 * 24 * 60 * 60 * 1000; expect(expiresAt - Date.now()).toBeGreaterThan(oneYear - 2 * 86400 * 1000); expect(expiresAt - Date.now()).toBeLessThan(oneYear + 2 * 86400 * 1000); });
+         |                                                                                                                                                                                                                                                                                                                       ^
+      15 | });
+      16 |
+      17 | test.describe("Parent Portal — Consent Management", () => {
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/parent_portal.spec.ts:14:311
+
+    Error Context: test-results/parent_portal-Parent-Porta-fe6ae-proximately-1-year-from-now-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-fe6ae-proximately-1-year-from-now-chromium/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/parent_portal-Parent-Porta-fe6ae-proximately-1-year-from-now-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m200[39m
+    Received: [31m401[39m
+
+      12 |   test("learner progress report shows grade, subject, and activity", async ({ page }) => { await page.goto(`/parent/learners/${learnerId}/report`); await expect(page.getByTestId("learner-grade")).toBeVisible({ timeout: 10000 }); await expect(page.getByTestId("subject-progress")).toBeVisible(); await expect(page.getByTestId("recent-activity")).toBeVisible(); });
+      13 |   test("consent status badge shows active/granted consent", async ({ page }) => { await page.goto(`/parent/learners/${learnerId}/consent`); await expect(page.getByTestId("consent-status-badge")).toContainText(/active|granted/i); await expect(page.getByText(/expires/i)).toBeVisible(); });
+    > 14 |   test("consent expiry date is approximately 1 year from now", async ({ request }) => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); const res = await request.get(`${API_BASE_URL}/consent/status/${learnerId}`, { headers: { Authorization: `Bearer ${fx.accessToken}` } }); expect(res.status()).toBe(200); const payload = await res.json(); const data = payload?.data ?? payload; const expiresAt = new Date(data.expires_at ?? data.expiresAt).getTime(); const oneYear = 365 * 24 * 60 * 60 * 1000; expect(expiresAt - Date.now()).toBeGreaterThan(oneYear - 2 * 86400 * 1000); expect(expiresAt - Date.now()).toBeLessThan(oneYear + 2 * 86400 * 1000); });
+         |                                                                                                                                                                                                                                                                                                                       ^
+      15 | });
+      16 |
+      17 | test.describe("Parent Portal — Consent Management", () => {
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/parent_portal.spec.ts:14:311
+
+    Error Context: test-results/parent_portal-Parent-Porta-fe6ae-proximately-1-year-from-now-chromium-retry1/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-fe6ae-proximately-1-year-from-now-chromium-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/parent_portal-Parent-Porta-fe6ae-proximately-1-year-from-now-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m200[39m
+    Received: [31m401[39m
+
+      12 |   test("learner progress report shows grade, subject, and activity", async ({ page }) => { await page.goto(`/parent/learners/${learnerId}/report`); await expect(page.getByTestId("learner-grade")).toBeVisible({ timeout: 10000 }); await expect(page.getByTestId("subject-progress")).toBeVisible(); await expect(page.getByTestId("recent-activity")).toBeVisible(); });
+      13 |   test("consent status badge shows active/granted consent", async ({ page }) => { await page.goto(`/parent/learners/${learnerId}/consent`); await expect(page.getByTestId("consent-status-badge")).toContainText(/active|granted/i); await expect(page.getByText(/expires/i)).toBeVisible(); });
+    > 14 |   test("consent expiry date is approximately 1 year from now", async ({ request }) => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); const res = await request.get(`${API_BASE_URL}/consent/status/${learnerId}`, { headers: { Authorization: `Bearer ${fx.accessToken}` } }); expect(res.status()).toBe(200); const payload = await res.json(); const data = payload?.data ?? payload; const expiresAt = new Date(data.expires_at ?? data.expiresAt).getTime(); const oneYear = 365 * 24 * 60 * 60 * 1000; expect(expiresAt - Date.now()).toBeGreaterThan(oneYear - 2 * 86400 * 1000); expect(expiresAt - Date.now()).toBeLessThan(oneYear + 2 * 86400 * 1000); });
+         |                                                                                                                                                                                                                                                                                                                       ^
+      15 | });
+      16 |
+      17 | test.describe("Parent Portal — Consent Management", () => {
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/parent_portal.spec.ts:14:311
+
+    Error Context: test-results/parent_portal-Parent-Porta-fe6ae-proximately-1-year-from-now-chromium-retry2/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-fe6ae-proximately-1-year-from-now-chromium-retry2/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/parent_portal-Parent-Porta-fe6ae-proximately-1-year-from-now-chromium-retry2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › tests/e2e/parent_portal.spec.ts:19:7 › Parent Portal — Consent Management › right-to-erasure flow shows confirmation dialog 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('dialog', { name: /confirm/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('dialog', { name: /confirm/i })[22m
+
+
+      17 | test.describe("Parent Portal — Consent Management", () => {
+      18 |   test("guardian can view and download data export", async ({ page }) => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); await page.goto(`/parent/learners/${fx.learnerId}/data`); await expect(page.getByRole("button", { name: /export data|download/i })).toBeVisible({ timeout: 10000 }); });
+    > 19 |   test("right-to-erasure flow shows confirmation dialog", async ({ page }) => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); await page.goto(`/parent/learners/${fx.learnerId}/consent`); const eraseBtn = page.getByRole("button", { name: /delete|erase|remove data/i }); await expect(eraseBtn).toBeVisible({ timeout: 10000 }); await eraseBtn.click(); await expect(page.getByRole("dialog", { name: /confirm/i })).toBeVisible({ timeout: 5000 }); await page.getByRole("button", { name: /cancel/i }).click(); await expect(page.getByRole("dialog")).not.toBeVisible(); });
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                            ^
+      20 | });
+      21 |
+      22 | test.describe("Parent Portal — API Consent Enforcement", () => {
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/parent_portal.spec.ts:19:428
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-b0d3a-w-shows-confirmation-dialog-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-b0d3a-w-shows-confirmation-dialog-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/parent_portal-Parent-Porta-b0d3a-w-shows-confirmation-dialog-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-b0d3a-w-shows-confirmation-dialog-chromium/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/parent_portal-Parent-Porta-b0d3a-w-shows-confirmation-dialog-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('dialog', { name: /confirm/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('dialog', { name: /confirm/i })[22m
+
+
+      17 | test.describe("Parent Portal — Consent Management", () => {
+      18 |   test("guardian can view and download data export", async ({ page }) => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); await page.goto(`/parent/learners/${fx.learnerId}/data`); await expect(page.getByRole("button", { name: /export data|download/i })).toBeVisible({ timeout: 10000 }); });
+    > 19 |   test("right-to-erasure flow shows confirmation dialog", async ({ page }) => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); await page.goto(`/parent/learners/${fx.learnerId}/consent`); const eraseBtn = page.getByRole("button", { name: /delete|erase|remove data/i }); await expect(eraseBtn).toBeVisible({ timeout: 10000 }); await eraseBtn.click(); await expect(page.getByRole("dialog", { name: /confirm/i })).toBeVisible({ timeout: 5000 }); await page.getByRole("button", { name: /cancel/i }).click(); await expect(page.getByRole("dialog")).not.toBeVisible(); });
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                            ^
+      20 | });
+      21 |
+      22 | test.describe("Parent Portal — API Consent Enforcement", () => {
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/parent_portal.spec.ts:19:428
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-b0d3a-w-shows-confirmation-dialog-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-b0d3a-w-shows-confirmation-dialog-chromium-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/parent_portal-Parent-Porta-b0d3a-w-shows-confirmation-dialog-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-b0d3a-w-shows-confirmation-dialog-chromium-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/parent_portal-Parent-Porta-b0d3a-w-shows-confirmation-dialog-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('dialog', { name: /confirm/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('dialog', { name: /confirm/i })[22m
+
+
+      17 | test.describe("Parent Portal — Consent Management", () => {
+      18 |   test("guardian can view and download data export", async ({ page }) => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); await page.goto(`/parent/learners/${fx.learnerId}/data`); await expect(page.getByRole("button", { name: /export data|download/i })).toBeVisible({ timeout: 10000 }); });
+    > 19 |   test("right-to-erasure flow shows confirmation dialog", async ({ page }) => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); await page.goto(`/parent/learners/${fx.learnerId}/consent`); const eraseBtn = page.getByRole("button", { name: /delete|erase|remove data/i }); await expect(eraseBtn).toBeVisible({ timeout: 10000 }); await eraseBtn.click(); await expect(page.getByRole("dialog", { name: /confirm/i })).toBeVisible({ timeout: 5000 }); await page.getByRole("button", { name: /cancel/i }).click(); await expect(page.getByRole("dialog")).not.toBeVisible(); });
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                            ^
+      20 | });
+      21 |
+      22 | test.describe("Parent Portal — API Consent Enforcement", () => {
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/parent_portal.spec.ts:19:428
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-b0d3a-w-shows-confirmation-dialog-chromium-retry2/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-b0d3a-w-shows-confirmation-dialog-chromium-retry2/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/parent_portal-Parent-Porta-b0d3a-w-shows-confirmation-dialog-chromium-retry2/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-b0d3a-w-shows-confirmation-dialog-chromium-retry2/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/parent_portal-Parent-Porta-b0d3a-w-shows-confirmation-dialog-chromium-retry2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › tests/e2e/parent_portal.spec.ts:23:7 › Parent Portal — API Consent Enforcement › out-of-scope learner data access is blocked 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected value: [32m401[39m
+    Received array: [31m[403, 404, 422][39m
+
+      21 |
+      22 | test.describe("Parent Portal — API Consent Enforcement", () => {
+    > 23 |   test("out-of-scope learner data access is blocked", async ({ request }) => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); const res = await request.post(`${API_BASE_URL}/study-plans/generate/00000000-0000-0000-0000-000000000000`, { headers: { Authorization: `Bearer ${fx.accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); expect([403, 404, 422]).toContain(res.status()); });
+         |                                                                                                                                                                                                                                                                                                                                                                                                  ^
+      24 | });
+      25 |
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/parent_portal.spec.ts:23:386
+
+    Error Context: test-results/parent_portal-Parent-Porta-9afa8-rner-data-access-is-blocked-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-9afa8-rner-data-access-is-blocked-chromium/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/parent_portal-Parent-Porta-9afa8-rner-data-access-is-blocked-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected value: [32m401[39m
+    Received array: [31m[403, 404, 422][39m
+
+      21 |
+      22 | test.describe("Parent Portal — API Consent Enforcement", () => {
+    > 23 |   test("out-of-scope learner data access is blocked", async ({ request }) => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); const res = await request.post(`${API_BASE_URL}/study-plans/generate/00000000-0000-0000-0000-000000000000`, { headers: { Authorization: `Bearer ${fx.accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); expect([403, 404, 422]).toContain(res.status()); });
+         |                                                                                                                                                                                                                                                                                                                                                                                                  ^
+      24 | });
+      25 |
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/parent_portal.spec.ts:23:386
+
+    Error Context: test-results/parent_portal-Parent-Porta-9afa8-rner-data-access-is-blocked-chromium-retry1/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-9afa8-rner-data-access-is-blocked-chromium-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/parent_portal-Parent-Porta-9afa8-rner-data-access-is-blocked-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected value: [32m401[39m
+    Received array: [31m[403, 404, 422][39m
+
+      21 |
+      22 | test.describe("Parent Portal — API Consent Enforcement", () => {
+    > 23 |   test("out-of-scope learner data access is blocked", async ({ request }) => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); const res = await request.post(`${API_BASE_URL}/study-plans/generate/00000000-0000-0000-0000-000000000000`, { headers: { Authorization: `Bearer ${fx.accessToken}` }, data: { subject: "mathematics", gap_ratio: 0.4 } }); expect([403, 404, 422]).toContain(res.status()); });
+         |                                                                                                                                                                                                                                                                                                                                                                                                  ^
+      24 | });
+      25 |
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/parent_portal.spec.ts:23:386
+
+    Error Context: test-results/parent_portal-Parent-Porta-9afa8-rner-data-access-is-blocked-chromium-retry2/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/parent_portal-Parent-Porta-9afa8-rner-data-access-is-blocked-chromium-retry2/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/parent_portal-Parent-Porta-9afa8-rner-data-access-is-blocked-chromium-retry2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    [chromium] › tests/e2e/parent_portal.spec.ts:11:7 › Parent Portal — Progress Reports › parent portal dashboard loads and shows learner card 
+    [chromium] › tests/e2e/parent_portal.spec.ts:14:7 › Parent Portal — Progress Reports › consent expiry date is approximately 1 year from now 
+    [chromium] › tests/e2e/parent_portal.spec.ts:19:7 › Parent Portal — Consent Management › right-to-erasure flow shows confirmation dialog 
+    [chromium] › tests/e2e/parent_portal.spec.ts:23:7 › Parent Portal — API Consent Enforcement › out-of-scope learner data access is blocked 
+  3 passed (1.4m)

@@ -1,0 +1,369 @@
+
+Running 5 tests using 1 worker
+
+  ✘  1 [chromium] › tests/e2e/diagnostic.spec.ts:26:7 › Diagnostic Assessment Flow › guardian can navigate to diagnostic for their learner (8.2s)
+  ✘  2 [chromium] › tests/e2e/diagnostic.spec.ts:26:7 › Diagnostic Assessment Flow › guardian can navigate to diagnostic for their learner (retry #1) (7.1s)
+  ✘  3 [chromium] › tests/e2e/diagnostic.spec.ts:26:7 › Diagnostic Assessment Flow › guardian can navigate to diagnostic for their learner (retry #2) (7.1s)
+  ✘  4 [chromium] › tests/e2e/diagnostic.spec.ts:37:7 › Diagnostic Assessment Flow › diagnostic page loads with subject selection (8.1s)
+  ✘  5 [chromium] › tests/e2e/diagnostic.spec.ts:37:7 › Diagnostic Assessment Flow › diagnostic page loads with subject selection (retry #1) (6.9s)
+  ✘  6 [chromium] › tests/e2e/diagnostic.spec.ts:37:7 › Diagnostic Assessment Flow › diagnostic page loads with subject selection (retry #2) (7.0s)
+  ✘  7 [chromium] › tests/e2e/diagnostic.spec.ts:44:7 › Diagnostic Assessment Flow › can start a mathematics diagnostic and answer questions (10.2s)
+  ✘  8 [chromium] › tests/e2e/diagnostic.spec.ts:44:7 › Diagnostic Assessment Flow › can start a mathematics diagnostic and answer questions (retry #1) (10.8s)
+  ✘  9 [chromium] › tests/e2e/diagnostic.spec.ts:44:7 › Diagnostic Assessment Flow › can start a mathematics diagnostic and answer questions (retry #2) (10.9s)
+  ✓  10 [chromium] › tests/e2e/diagnostic.spec.ts:71:7 › Diagnostic Assessment Flow › diagnostic results show knowledge gap summary (4.1s)
+  ✓  11 [chromium] › tests/e2e/diagnostic.spec.ts:84:7 › Diagnostic Assessment Flow › diagnostic API returns IRT theta and knowledge gaps (42ms)
+
+
+  1) [chromium] › tests/e2e/diagnostic.spec.ts:26:7 › Diagnostic Assessment Flow › guardian can navigate to diagnostic for their learner 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('DevLearner')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('DevLearner')[22m
+
+
+      30 |     await expect(
+      31 |       page.getByText(learnerName)
+    > 32 |     ).toBeVisible();
+         |       ^
+      33 |     await page.getByText(learnerName).click();
+      34 |     await expect(page).toHaveURL(new RegExp(`learners/${learnerId}`));
+      35 |   });
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/diagnostic.spec.ts:32:7
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-13ce7-iagnostic-for-their-learner-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-13ce7-iagnostic-for-their-learner-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/diagnostic-Diagnostic-Asse-13ce7-iagnostic-for-their-learner-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-13ce7-iagnostic-for-their-learner-chromium/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/diagnostic-Diagnostic-Asse-13ce7-iagnostic-for-their-learner-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('DevLearner')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('DevLearner')[22m
+
+
+      30 |     await expect(
+      31 |       page.getByText(learnerName)
+    > 32 |     ).toBeVisible();
+         |       ^
+      33 |     await page.getByText(learnerName).click();
+      34 |     await expect(page).toHaveURL(new RegExp(`learners/${learnerId}`));
+      35 |   });
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/diagnostic.spec.ts:32:7
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-13ce7-iagnostic-for-their-learner-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-13ce7-iagnostic-for-their-learner-chromium-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/diagnostic-Diagnostic-Asse-13ce7-iagnostic-for-their-learner-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-13ce7-iagnostic-for-their-learner-chromium-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/diagnostic-Diagnostic-Asse-13ce7-iagnostic-for-their-learner-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('DevLearner')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('DevLearner')[22m
+
+
+      30 |     await expect(
+      31 |       page.getByText(learnerName)
+    > 32 |     ).toBeVisible();
+         |       ^
+      33 |     await page.getByText(learnerName).click();
+      34 |     await expect(page).toHaveURL(new RegExp(`learners/${learnerId}`));
+      35 |   });
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/diagnostic.spec.ts:32:7
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-13ce7-iagnostic-for-their-learner-chromium-retry2/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-13ce7-iagnostic-for-their-learner-chromium-retry2/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/diagnostic-Diagnostic-Asse-13ce7-iagnostic-for-their-learner-chromium-retry2/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-13ce7-iagnostic-for-their-learner-chromium-retry2/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/diagnostic-Diagnostic-Asse-13ce7-iagnostic-for-their-learner-chromium-retry2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › tests/e2e/diagnostic.spec.ts:37:7 › Diagnostic Assessment Flow › diagnostic page loads with subject selection 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: /diagnostic/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('heading', { name: /diagnostic/i })[22m
+
+
+      37 |   test("diagnostic page loads with subject selection", async ({ page }) => {
+      38 |     await page.goto(`/learners/${learnerId}/diagnostic`);
+    > 39 |     await expect(page.getByRole("heading", { name: /diagnostic/i })).toBeVisible();
+         |                                                                      ^
+      40 |     await expect(page.getByRole("button", { name: /mathematics/i })).toBeVisible();
+      41 |     await expect(page.getByRole("button", { name: /english/i })).toBeVisible();
+      42 |   });
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/diagnostic.spec.ts:39:70
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-11cca-oads-with-subject-selection-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-11cca-oads-with-subject-selection-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/diagnostic-Diagnostic-Asse-11cca-oads-with-subject-selection-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-11cca-oads-with-subject-selection-chromium/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/diagnostic-Diagnostic-Asse-11cca-oads-with-subject-selection-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: /diagnostic/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('heading', { name: /diagnostic/i })[22m
+
+
+      37 |   test("diagnostic page loads with subject selection", async ({ page }) => {
+      38 |     await page.goto(`/learners/${learnerId}/diagnostic`);
+    > 39 |     await expect(page.getByRole("heading", { name: /diagnostic/i })).toBeVisible();
+         |                                                                      ^
+      40 |     await expect(page.getByRole("button", { name: /mathematics/i })).toBeVisible();
+      41 |     await expect(page.getByRole("button", { name: /english/i })).toBeVisible();
+      42 |   });
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/diagnostic.spec.ts:39:70
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-11cca-oads-with-subject-selection-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-11cca-oads-with-subject-selection-chromium-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/diagnostic-Diagnostic-Asse-11cca-oads-with-subject-selection-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-11cca-oads-with-subject-selection-chromium-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/diagnostic-Diagnostic-Asse-11cca-oads-with-subject-selection-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: /diagnostic/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('heading', { name: /diagnostic/i })[22m
+
+
+      37 |   test("diagnostic page loads with subject selection", async ({ page }) => {
+      38 |     await page.goto(`/learners/${learnerId}/diagnostic`);
+    > 39 |     await expect(page.getByRole("heading", { name: /diagnostic/i })).toBeVisible();
+         |                                                                      ^
+      40 |     await expect(page.getByRole("button", { name: /mathematics/i })).toBeVisible();
+      41 |     await expect(page.getByRole("button", { name: /english/i })).toBeVisible();
+      42 |   });
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/diagnostic.spec.ts:39:70
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-11cca-oads-with-subject-selection-chromium-retry2/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-11cca-oads-with-subject-selection-chromium-retry2/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/diagnostic-Diagnostic-Asse-11cca-oads-with-subject-selection-chromium-retry2/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-11cca-oads-with-subject-selection-chromium-retry2/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/diagnostic-Diagnostic-Asse-11cca-oads-with-subject-selection-chromium-retry2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › tests/e2e/diagnostic.spec.ts:44:7 › Diagnostic Assessment Flow › can start a mathematics diagnostic and answer questions 
+
+    TimeoutError: locator.click: Timeout 8000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: /mathematics/i })[22m
+
+
+      46 |   }) => {
+      47 |     await page.goto(`/learners/${learnerId}/diagnostic`);
+    > 48 |     await page.getByRole("button", { name: /mathematics/i }).click();
+         |                                                              ^
+      49 |     await page.getByRole("button", { name: /start assessment/i }).click();
+      50 |
+      51 |     // IRT adaptive engine serves questions dynamically — answer 5
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/diagnostic.spec.ts:48:62
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-48ebf-nostic-and-answer-questions-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-48ebf-nostic-and-answer-questions-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/diagnostic-Diagnostic-Asse-48ebf-nostic-and-answer-questions-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-48ebf-nostic-and-answer-questions-chromium/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/diagnostic-Diagnostic-Asse-48ebf-nostic-and-answer-questions-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: locator.click: Timeout 8000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: /mathematics/i })[22m
+
+
+      46 |   }) => {
+      47 |     await page.goto(`/learners/${learnerId}/diagnostic`);
+    > 48 |     await page.getByRole("button", { name: /mathematics/i }).click();
+         |                                                              ^
+      49 |     await page.getByRole("button", { name: /start assessment/i }).click();
+      50 |
+      51 |     // IRT adaptive engine serves questions dynamically — answer 5
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/diagnostic.spec.ts:48:62
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-48ebf-nostic-and-answer-questions-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-48ebf-nostic-and-answer-questions-chromium-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/diagnostic-Diagnostic-Asse-48ebf-nostic-and-answer-questions-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-48ebf-nostic-and-answer-questions-chromium-retry1/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/diagnostic-Diagnostic-Asse-48ebf-nostic-and-answer-questions-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: locator.click: Timeout 8000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: /mathematics/i })[22m
+
+
+      46 |   }) => {
+      47 |     await page.goto(`/learners/${learnerId}/diagnostic`);
+    > 48 |     await page.getByRole("button", { name: /mathematics/i }).click();
+         |                                                              ^
+      49 |     await page.getByRole("button", { name: /start assessment/i }).click();
+      50 |
+      51 |     // IRT adaptive engine serves questions dynamically — answer 5
+        at /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/e2e/diagnostic.spec.ts:48:62
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-48ebf-nostic-and-answer-questions-chromium-retry2/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-48ebf-nostic-and-answer-questions-chromium-retry2/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/diagnostic-Diagnostic-Asse-48ebf-nostic-and-answer-questions-chromium-retry2/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/diagnostic-Diagnostic-Asse-48ebf-nostic-and-answer-questions-chromium-retry2/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/diagnostic-Diagnostic-Asse-48ebf-nostic-and-answer-questions-chromium-retry2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    [chromium] › tests/e2e/diagnostic.spec.ts:26:7 › Diagnostic Assessment Flow › guardian can navigate to diagnostic for their learner 
+    [chromium] › tests/e2e/diagnostic.spec.ts:37:7 › Diagnostic Assessment Flow › diagnostic page loads with subject selection 
+    [chromium] › tests/e2e/diagnostic.spec.ts:44:7 › Diagnostic Assessment Flow › can start a mathematics diagnostic and answer questions 
+  2 passed (1.5m)

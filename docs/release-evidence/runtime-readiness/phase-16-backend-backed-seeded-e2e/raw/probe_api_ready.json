@@ -1,0 +1,41 @@
+{
+  "attempted": true,
+  "body_excerpt": "{\"status\":\"degraded\",\"critical\":{\"secrets\":{\"status\":\"ok\"},\"postgres\":{\"status\":\"ok\"},\"redis\":{\"status\":\"ok\"},\"migrations\":{\"status\":\"ok\",\"revision\":\"20260622_1200_phase02r_gate2r4\"},\"audit_repository\":{\"status\":\"ok\"}},\"optional\":{\"llm_provider\":{\"status\":\"skipped\",\"detail\":\"No LLM provider credentials configured\"},\"judiciary\":{\"status\":\"error\",\"detail\":\"ModuleNotFoundError\"}},\"message\":\"System is operational but in degraded mode\"}",
+  "error": "",
+  "json": {
+    "critical": {
+      "audit_repository": {
+        "status": "ok"
+      },
+      "migrations": {
+        "revision": "20260622_1200_phase02r_gate2r4",
+        "status": "ok"
+      },
+      "postgres": {
+        "status": "ok"
+      },
+      "redis": {
+        "status": "ok"
+      },
+      "secrets": {
+        "status": "ok"
+      }
+    },
+    "message": "System is operational but in degraded mode",
+    "optional": {
+      "judiciary": {
+        "detail": "ModuleNotFoundError",
+        "status": "error"
+      },
+      "llm_provider": {
+        "detail": "No LLM provider credentials configured",
+        "status": "skipped"
+      }
+    },
+    "status": "degraded"
+  },
+  "method": "GET",
+  "path": "/ready",
+  "status_code": 200,
+  "url": "http://127.0.0.1:8000/ready"
+}

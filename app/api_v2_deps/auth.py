@@ -98,11 +98,19 @@ def _parse_roles(role: Any) -> list[UserRole]:
     if role is None:
         return []
 
+    def _normalise_role(value: Any) -> UserRole:
+        if isinstance(value, UserRole):
+            return value
+        text = str(value)
+        if text.startswith("UserRole."):
+            text = text.rsplit(".", 1)[-1].lower()
+        return UserRole(text)
+
     if isinstance(role, list):
-        return [UserRole(r) if isinstance(r, str) else r for r in role]
+        return [_normalise_role(r) for r in role]
 
     if isinstance(role, str):
-        return [UserRole(role)]
+        return [_normalise_role(role)]
 
     if isinstance(role, UserRole):
         return [role]
