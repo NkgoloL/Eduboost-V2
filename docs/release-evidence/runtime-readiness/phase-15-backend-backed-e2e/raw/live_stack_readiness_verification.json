@@ -1,0 +1,35 @@
+{
+  "payload": {
+    "checked": [
+      "docs/roadmap/execution/runtime_readiness/phase_14_live_stack_readiness_record.json",
+      "docs/release-evidence/runtime-readiness/phase-14-live-stack-readiness",
+      "docs/release-evidence/runtime-readiness/phase-14-live-stack-readiness/SHA256SUMS.txt",
+      "docs/release-evidence/runtime-readiness/phase-14-live-stack-readiness/raw/git_state.json",
+      "docs/release-evidence/runtime-readiness/phase-14-live-stack-readiness/raw/post_merge_baseline_verification.json",
+      "docs/release-evidence/runtime-readiness/phase-14-live-stack-readiness/raw/probe_health.json",
+      "docs/release-evidence/runtime-readiness/phase-14-live-stack-readiness/raw/probe_ready.json",
+      "docs/release-evidence/runtime-readiness/phase-14-live-stack-readiness/raw/probe_deep_v2.json",
+      "docs/release-evidence/runtime-readiness/phase-14-live-stack-readiness/raw/probe_deep_api_v2.json",
+      "docs/release-evidence/runtime-readiness/phase-14-live-stack-readiness/raw/probe_openapi.json",
+      "docs/release-evidence/runtime-readiness/phase-14-live-stack-readiness/raw/live_stack_readiness_result.json",
+      "docs/release-evidence/runtime-readiness/phase-14-live-stack-readiness/evidence_index.md"
+    ],
+    "deployment_authorised": false,
+    "errors": [],
+    "live_learner_traffic_authorised": false,
+    "live_stack_readiness_recorded": true,
+    "post_merge_baseline_valid": true,
+    "postgres_readiness_claimed": true,
+    "production_release_authorised": false,
+    "record": "docs/roadmap/execution/runtime_readiness/phase_14_live_stack_readiness_record.json",
+    "redis_readiness_claimed": true,
+    "release_tag_authorised": false,
+    "runtime_kg_implementation_claimed": false,
+    "valid": true,
+    "warnings": []
+  },
+  "returncode": 0,
+  "script": "scripts/runtime_readiness/verify_live_stack_readiness.py",
+  "stderr": "",
+  "valid": true
+}
