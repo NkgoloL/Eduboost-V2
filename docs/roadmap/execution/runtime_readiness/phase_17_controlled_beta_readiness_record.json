@@ -1,0 +1,21 @@
+{
+  "beta_scope": "controlled_beta_readiness_gate",
+  "controlled_beta_launch_authorised": false,
+  "controlled_beta_readiness_claimed": false,
+  "controlled_beta_readiness_recorded": false,
+  "deployment_authorised": false,
+  "learner_data_migration_authorised": false,
+  "live_learner_traffic_authorised": false,
+  "notes": [
+    "Placeholder created by Phase 17 harness.",
+    "Capture requires --claim-controlled-beta-readiness and a readiness owner.",
+    "This gate records readiness only and does not authorise launch or live traffic."
+  ],
+  "production_release_authorised": false,
+  "public_beta_authorised": false,
+  "release_tag_authorised": false,
+  "runtime_kg_implementation_claimed": false,
+  "schema_version": 1,
+  "slice": "PHASE-17-CONTROLLED-BETA-READINESS-AUTHORITY",
+  "status": "pending_capture"
+}
