@@ -1,0 +1,29 @@
+{
+  "name": "backend_backed_e2e",
+  "payload": {
+    "backend_backed_e2e_recorded": true,
+    "checked": [
+      "docs/roadmap/execution/runtime_readiness/phase_15_backend_backed_e2e_record.json",
+      "docs/release-evidence/runtime-readiness/phase-15-backend-backed-e2e",
+      "docs/release-evidence/runtime-readiness/phase-15-backend-backed-e2e/SHA256SUMS.txt",
+      "docs/release-evidence/runtime-readiness/phase-15-backend-backed-e2e/evidence_index.md"
+    ],
+    "deployment_authorised": false,
+    "e2e_scope": "backend_backed_smoke",
+    "errors": [],
+    "full_production_e2e_claimed": false,
+    "live_learner_traffic_authorised": false,
+    "live_stack_readiness_valid": true,
+    "mocked_api_used": false,
+    "production_release_authorised": false,
+    "record": "docs/roadmap/execution/runtime_readiness/phase_15_backend_backed_e2e_record.json",
+    "release_tag_authorised": false,
+    "runtime_kg_implementation_claimed": false,
+    "valid": true,
+    "warnings": []
+  },
+  "returncode": 0,
+  "script": "scripts/runtime_readiness/verify_backend_backed_e2e.py",
+  "stderr": "",
+  "valid": true
+}
