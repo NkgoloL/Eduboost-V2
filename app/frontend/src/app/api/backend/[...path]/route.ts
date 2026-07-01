@@ -55,8 +55,8 @@ async function proxy(request: NextRequest, context: BackendRouteContext) {
     responseHeaders.set("Content-Type", contentType);
   }
 
-  const textBody = BODYLESS_METHODS.has(request.method.toUpperCase()) ? null : await backendResponse.text();
-  const response = new NextResponse(textBody, {
+  const textBody = await backendResponse.text();
+  const response = new NextResponse(request.method.toUpperCase() === "HEAD" ? null : textBody, {
     status: backendResponse.status,
     headers: responseHeaders,
   });

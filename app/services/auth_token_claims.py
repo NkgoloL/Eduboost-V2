@@ -63,7 +63,11 @@ class AuthTokenClaims:
 def _as_string(value: Any) -> str | None:
     if value is None:
         return None
-    text = str(value)
+    # Enum values such as UserRole.PARENT must be emitted as the stable
+    # JWT/API value ("parent"), not as Python's representation
+    # ("UserRole.PARENT").
+    raw_value = getattr(value, "value", value)
+    text = str(raw_value)
     return text if text else None
 
 
