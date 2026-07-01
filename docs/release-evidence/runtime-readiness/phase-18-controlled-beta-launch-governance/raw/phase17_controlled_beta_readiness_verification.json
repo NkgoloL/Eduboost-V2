@@ -1,0 +1,40 @@
+{
+  "name": "controlled_beta_readiness",
+  "payload": {
+    "backend_backed_e2e_valid": true,
+    "checked": [
+      "docs/roadmap/execution/runtime_readiness/phase_17_controlled_beta_readiness_record.json",
+      "docs/release-evidence/runtime-readiness/phase-17-controlled-beta-readiness/evidence_index.md",
+      "docs/release-evidence/runtime-readiness/phase-17-controlled-beta-readiness/SHA256SUMS.txt",
+      "docs/release-evidence/runtime-readiness/phase-17-controlled-beta-readiness/raw/git_state.json",
+      "docs/release-evidence/runtime-readiness/phase-17-controlled-beta-readiness/raw/readiness_documents.json",
+      "docs/release-evidence/runtime-readiness/phase-17-controlled-beta-readiness/raw/beta_boundary.json",
+      "docs/release-evidence/runtime-readiness/phase-17-controlled-beta-readiness/raw/technical_audit_closure_verification.json",
+      "docs/release-evidence/runtime-readiness/phase-17-controlled-beta-readiness/raw/post_merge_baseline_verification.json",
+      "docs/release-evidence/runtime-readiness/phase-17-controlled-beta-readiness/raw/live_stack_readiness_verification.json",
+      "docs/release-evidence/runtime-readiness/phase-17-controlled-beta-readiness/raw/backend_backed_e2e_verification.json",
+      "docs/release-evidence/runtime-readiness/phase-17-controlled-beta-readiness/raw/backend_backed_seeded_e2e_verification.json",
+      "docs/release-evidence/runtime-readiness/phase-17-controlled-beta-readiness/raw/controlled_beta_readiness_result.json",
+      "docs/release-evidence/runtime-readiness/phase-17-controlled-beta-readiness/raw/controlled_beta_readiness_record_snapshot.json"
+    ],
+    "controlled_beta_launch_authorised": false,
+    "controlled_beta_readiness_recorded": true,
+    "deployment_authorised": false,
+    "errors": [],
+    "live_learner_traffic_authorised": false,
+    "live_stack_readiness_valid": true,
+    "post_merge_baseline_valid": true,
+    "production_release_authorised": false,
+    "record": "docs/roadmap/execution/runtime_readiness/phase_17_controlled_beta_readiness_record.json",
+    "release_tag_authorised": false,
+    "runtime_kg_implementation_claimed": false,
+    "seeded_backend_backed_e2e_valid": true,
+    "technical_audit_closure_valid": true,
+    "valid": true,
+    "warnings": []
+  },
+  "returncode": 0,
+  "script": "scripts/runtime_readiness/verify_controlled_beta_readiness.py",
+  "stderr": "",
+  "valid": true
+}
