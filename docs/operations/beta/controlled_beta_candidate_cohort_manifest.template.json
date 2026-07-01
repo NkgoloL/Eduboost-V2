@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "phase": "Phase 18 controlled beta governance",
+  "description": "Template only. This controlled beta cohort manifest does not authorise live learner traffic.",
+  "cohort_name": "controlled-beta-candidate-cohort",
+  "candidate_only": true,
+  "live_learner_traffic_authorised": false,
+  "learners": [],
+  "guardians": [],
+  "required_fields_before_activation": [
+    "guardian_consent_reference",
+    "learner_alias_or_internal_id",
+    "grade",
+    "support_contact",
+    "data_retention_acknowledgement"
+  ]
+}
