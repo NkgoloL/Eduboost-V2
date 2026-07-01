@@ -1,6 +1,7 @@
 # Controlled Beta Launch Activation Boundary
 
 This document defines what Phase 19 does **not** authorise.
+This document does not authorise controlled beta launch.
 
 - Controlled beta launch authorised: false
 - Live learner traffic authorised: false

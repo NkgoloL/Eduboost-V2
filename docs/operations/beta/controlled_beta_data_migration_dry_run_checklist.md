@@ -1,6 +1,7 @@
 # Controlled Beta Data Migration Dry-Run Checklist
 
 This checklist does not authorise learner data migration or live learner traffic.
+This checklist does not authorise controlled beta launch.
 
 - Controlled beta launch authorised: false
 - Live learner traffic authorised: false
