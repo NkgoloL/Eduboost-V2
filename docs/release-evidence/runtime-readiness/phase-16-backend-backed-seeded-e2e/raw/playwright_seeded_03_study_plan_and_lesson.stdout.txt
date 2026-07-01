@@ -1,0 +1,51 @@
+
+Running 8 tests using 1 worker
+
+  ✓  1 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:20:7 › Study Plan Generation › study plan page renders for the learner (1.7s)
+  ✓  2 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:21:7 › Study Plan Generation › can request study plan generation via V2 async job contract (72ms)
+  ✓  3 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:22:7 › Study Plan Generation › study plan page displays weekly topic breakdown (1.6s)
+  ✓  4 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:23:7 › Study Plan Generation › study plan mutation blocks out-of-scope learner (22ms)
+  ✘  5 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:29:7 › Lesson Delivery › lesson page loads for a learner with active plan (2.4s)
+  ✓  6 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:29:7 › Lesson Delivery › lesson page loads for a learner with active plan (retry #1) (2.2s)
+  ✓  7 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:30:7 › Lesson Delivery › can request a new lesson via V2 async job contract (111ms)
+  ✓  8 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:31:7 › Lesson Delivery › lesson content renders with explanation and examples (10.5s)
+  ✓  9 [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:32:7 › Lesson Delivery › learner can see completion control (2.2s)
+
+
+  1) [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:29:7 › Lesson Delivery › lesson page loads for a learner with active plan 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32mtrue[39m
+    Received: [31mfalse[39m
+
+      27 |   let learnerId: string; let accessToken: string;
+      28 |   test.beforeAll(() => { const fx = JSON.parse(fs.readFileSync(FIXTURE_FILE, "utf-8")); learnerId = fx.learnerId; accessToken = fx.accessToken; });
+    > 29 |   test("lesson page loads for a learner with active plan", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); const hasLesson = await page.getByTestId("lesson-content").isVisible({ timeout: 15000 }).catch(() => false); const hasCTA = await page.getByRole("button", { name: /start adventure|start lesson/i }).isVisible().catch(() => false); expect(hasLesson || hasCTA).toBe(true); });
+         |                                                                                                                                                                                                                                                                                                                                                                                                      ^
+      30 |   test("can request a new lesson via V2 async job contract", async ({ request }) => { const res = await request.post(`${API_BASE_URL}/lessons/generate`, { headers: { Authorization: `Bearer ${accessToken}` }, data: { learner_id: learnerId, subject: "MATH", topic: "Fractions", grade: "4", language: "en" } }); await expectAcceptedJob(res, /lesson/i); });
+      31 |   test("lesson content renders with explanation and examples", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await page.getByRole("button", { name: /start adventure|start lesson/i }).click().catch(() => undefined); await expect(page.getByTestId("lesson-content")).toBeVisible({ timeout: 30000 }); expect((await page.getByTestId("lesson-content").textContent())?.length).toBeGreaterThan(100); });
+      32 |   test("learner can see completion control", async ({ page }) => { await page.goto(`/learners/${learnerId}/lesson`); await expect(page.getByRole("button", { name: /complete|done|finished|claim my stars/i })).toBeVisible({ timeout: 10000 }); });
+        at /tmp/eduboost-phase16-clean/tests/e2e/study_plan_and_lesson.spec.ts:29:390
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/study_plan_and_lesson-Less-65f2c--a-learner-with-active-plan-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 flaky
+    [chromium] › tests/e2e/study_plan_and_lesson.spec.ts:29:7 › Lesson Delivery › lesson page loads for a learner with active plan 
+  7 passed (22.4s)

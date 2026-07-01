@@ -67,7 +67,7 @@ def _item(
 DEV_DIAGNOSTIC_ITEMS = [
     _item(
         "00000000-0000-4000-8000-000000160301",
-        caps_ref="CAPS:G3:MATHEMATICS:T1:NUMBERS:COUNTING",
+        caps_ref="CAPS:G3:MATHEMATICS:T1:NUM:COUNT",
         subject="Mathematics",
         topic="Numbers, Operations and Relationships",
         skill="Counting and comparing whole numbers",
@@ -78,7 +78,7 @@ DEV_DIAGNOSTIC_ITEMS = [
     ),
     _item(
         "00000000-0000-4000-8000-000000160302",
-        caps_ref="CAPS:G3:MATHEMATICS:T1:NUMBERS:ADDITION",
+        caps_ref="CAPS:G3:MATHEMATICS:T1:NUM:ADD",
         subject="Mathematics",
         topic="Numbers, Operations and Relationships",
         skill="Addition within 100",
@@ -89,7 +89,7 @@ DEV_DIAGNOSTIC_ITEMS = [
     ),
     _item(
         "00000000-0000-4000-8000-000000160303",
-        caps_ref="CAPS:G3:MATHEMATICS:T1:PATTERNS:NUMBER_PATTERNS",
+        caps_ref="CAPS:G3:MATHEMATICS:T1:PAT:SEQ",
         subject="Mathematics",
         topic="Patterns, Functions and Algebra",
         skill="Complete a simple number pattern",
@@ -100,7 +100,7 @@ DEV_DIAGNOSTIC_ITEMS = [
     ),
     _item(
         "00000000-0000-4000-8000-000000160304",
-        caps_ref="CAPS:G3:MATHEMATICS:T1:MEASUREMENT:MONEY",
+        caps_ref="CAPS:G3:MATHEMATICS:T1:MEAS:MONEY",
         subject="Mathematics",
         topic="Measurement",
         skill="Work with South African rand values",
@@ -111,7 +111,7 @@ DEV_DIAGNOSTIC_ITEMS = [
     ),
     _item(
         "00000000-0000-4000-8000-000000160305",
-        caps_ref="CAPS:G3:MATHEMATICS:T1:DATA:PICTOGRAPHS",
+        caps_ref="CAPS:G3:MATHEMATICS:T1:DATA:TOTALS",
         subject="Mathematics",
         topic="Data Handling",
         skill="Read simple data totals",
@@ -122,7 +122,7 @@ DEV_DIAGNOSTIC_ITEMS = [
     ),
     _item(
         "00000000-0000-4000-8000-000000160306",
-        caps_ref="CAPS:G3:ENGLISH:T1:READING:COMPREHENSION",
+        caps_ref="CAPS:G3:ENGLISH:T1:READ:MAIN",
         subject="English",
         topic="Reading and Viewing",
         skill="Identify a main idea",
