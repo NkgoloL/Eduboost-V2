@@ -1,0 +1,40 @@
+{
+  "name": "post_merge_baseline",
+  "payload": {
+    "checked": [
+      "docs/roadmap/execution/technical_audit_remediation/technical_audit_post_merge_baseline_record.json",
+      "docs/release-evidence/technical-audit/phase-13b-post-merge-baseline",
+      "docs/release-evidence/technical-audit/phase-13b-post-merge-baseline/SHA256SUMS.txt",
+      "docs/release-evidence/technical-audit/phase-13b-post-merge-baseline/raw/git_state.json",
+      "docs/release-evidence/technical-audit/phase-13b-post-merge-baseline/raw/blocker_register_snapshot.json",
+      "docs/release-evidence/technical-audit/phase-13b-post-merge-baseline/raw/hosted_ci_authority_record_snapshot.json",
+      "docs/release-evidence/technical-audit/phase-13b-post-merge-baseline/raw/hosted_ci_authority_verification.json",
+      "docs/release-evidence/technical-audit/phase-13b-post-merge-baseline/raw/merge_readiness_verification.json",
+      "docs/release-evidence/technical-audit/phase-13b-post-merge-baseline/raw/release_readiness_verification.json",
+      "docs/release-evidence/technical-audit/phase-13b-post-merge-baseline/raw/technical_audit_closure_verification.json",
+      "docs/release-evidence/technical-audit/phase-13b-post-merge-baseline/raw/github_branch_state.json",
+      "docs/release-evidence/technical-audit/phase-13b-post-merge-baseline/raw/github_branch_protection.json",
+      "docs/release-evidence/technical-audit/phase-13b-post-merge-baseline/raw/github_check_runs.json",
+      "docs/release-evidence/technical-audit/phase-13b-post-merge-baseline/raw/post_merge_baseline_result.json",
+      "docs/release-evidence/technical-audit/phase-13b-post-merge-baseline/evidence_index.md",
+      "docs/roadmap/execution/technical_audit_remediation/blocker_register.json"
+    ],
+    "deployment_authorised": false,
+    "errors": [],
+    "hosted_ci_authority_valid": true,
+    "live_learner_traffic_authorised": false,
+    "merge_readiness_authorised": true,
+    "post_merge_baseline_recorded": true,
+    "production_release_authorised": false,
+    "record": "docs/roadmap/execution/technical_audit_remediation/technical_audit_post_merge_baseline_record.json",
+    "release_tag_authorised": false,
+    "runtime_kg_implementation_claimed": false,
+    "technical_audit_remediation_closed": true,
+    "valid": true,
+    "warnings": []
+  },
+  "returncode": 0,
+  "script": "scripts/technical_audit/verify_post_merge_baseline.py",
+  "stderr": "",
+  "valid": true
+}

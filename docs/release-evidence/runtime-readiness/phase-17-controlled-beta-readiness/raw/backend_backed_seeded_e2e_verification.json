@@ -1,0 +1,35 @@
+{
+  "name": "backend_backed_seeded_e2e",
+  "payload": {
+    "backend_backed_e2e_valid": true,
+    "checked": [
+      "docs/roadmap/execution/runtime_readiness/phase_16_backend_backed_seeded_e2e_record.json",
+      "docs/release-evidence/runtime-readiness/phase-16-backend-backed-seeded-e2e/evidence_index.md",
+      "docs/release-evidence/runtime-readiness/phase-16-backend-backed-seeded-e2e/SHA256SUMS.txt",
+      "docs/release-evidence/runtime-readiness/phase-16-backend-backed-seeded-e2e/raw/git_state.json",
+      "docs/release-evidence/runtime-readiness/phase-16-backend-backed-seeded-e2e/raw/phase15_backend_backed_e2e_verification.json",
+      "docs/release-evidence/runtime-readiness/phase-16-backend-backed-seeded-e2e/raw/probe_api_health.json",
+      "docs/release-evidence/runtime-readiness/phase-16-backend-backed-seeded-e2e/raw/probe_api_ready.json",
+      "docs/release-evidence/runtime-readiness/phase-16-backend-backed-seeded-e2e/raw/probe_api_deep.json",
+      "docs/release-evidence/runtime-readiness/phase-16-backend-backed-seeded-e2e/raw/probe_frontend_root.json",
+      "docs/release-evidence/runtime-readiness/phase-16-backend-backed-seeded-e2e/raw/probe_frontend_api_rewrite.json",
+      "docs/release-evidence/runtime-readiness/phase-16-backend-backed-seeded-e2e/raw/seeded_backend_backed_e2e_result.json"
+    ],
+    "deployment_authorised": false,
+    "e2e_scope": "backend_backed_seeded_journeys",
+    "errors": [],
+    "live_learner_traffic_authorised": false,
+    "mocked_api_used": false,
+    "production_release_authorised": false,
+    "record": "docs/roadmap/execution/runtime_readiness/phase_16_backend_backed_seeded_e2e_record.json",
+    "release_tag_authorised": false,
+    "runtime_kg_implementation_claimed": false,
+    "seeded_e2e_recorded": true,
+    "valid": true,
+    "warnings": []
+  },
+  "returncode": 0,
+  "script": "scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py",
+  "stderr": "",
+  "valid": true
+}
