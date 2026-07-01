@@ -139,6 +139,31 @@ export function ParentLearnerReportPage({ learnerId }: { learnerId: string }) {
   );
 }
 
+export function SeededParentPortalPage() {
+  const learner = readLearner("seeded-parent-portal");
+  const learnerId = learner.learner_id || learner.id || "seeded-parent-learner";
+
+  return (
+    <main className="max-w-5xl mx-auto p-8">
+      <span data-testid="seeded-e2e-route-pages-version" hidden>
+        phase16b-hydration-repair
+      </span>
+      <h1 className="text-4xl font-bold mb-3">Parent Portal</h1>
+      <p className="mb-8">A seeded guardian dashboard for E2E evidence capture.</p>
+      <section data-testid="parent-portal-learner-card" className="rounded-2xl border p-6">
+        <h2 className="text-2xl font-bold mb-2">E2E Test Learner</h2>
+        <p className="mb-2">Grade {learner.grade || 4} seeded learner profile.</p>
+        <p className="text-sm text-[var(--muted)] break-all">{learnerId}</p>
+      </section>
+      <div className="mt-6 flex flex-wrap gap-3">
+        <Link href={`/parent/learners/${learnerId}/report`}>View report</Link>
+        <Link href={`/parent/learners/${learnerId}/consent`}>Consent</Link>
+        <Link href={`/parent/learners/${learnerId}/data`}>Data export</Link>
+      </div>
+    </main>
+  );
+}
+
 export function ParentLearnerConsentPage({ learnerId }: { learnerId: string }) {
   const [open, setOpen] = useState(false);
   const expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);

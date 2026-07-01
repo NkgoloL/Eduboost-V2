@@ -12,6 +12,10 @@ export default function LearnerLayout({ children }: { children: React.ReactNode 
   const router = useRouter();
   const pathname = usePathname();
 
+  if (pathname.startsWith("/parent")) {
+    return <>{children}</>;
+  }
+
   useEffect(() => {
     if (!learner) {
       router.push("/");
