@@ -62,12 +62,13 @@ export function InteractiveDiagnostic({ learner, onComplete, onBack }: Interacti
     }
   };
 
-  const handleAnswer = async (option: string) => {
+  const handleAnswer = async (option: string, index: number) => {
     if (!currentItem?.item_id || !subject) {
       return;
     }
 
-    const nextAnswers = [...answers, { item_id: currentItem.item_id, selected_option: option }];
+    const optionKey = currentItem.option_keys?.[index] || String.fromCharCode(65 + index);
+    const nextAnswers = [...answers, { item_id: currentItem.item_id, selected_option: optionKey }];
     setAnswers(nextAnswers);
 
     if (questionCount < items.length - 1) {
@@ -174,7 +175,7 @@ export function InteractiveDiagnostic({ learner, onComplete, onBack }: Interacti
                 aria-checked="false"
                 data-testid="answer-option"
                 disabled={loading}
-                onClick={() => void handleAnswer(option)}
+                onClick={() => void handleAnswer(option, index)}
                 className="group relative text-left p-6 border-2 border-gray-50 rounded-2xl hover:border-blue-400 hover:bg-blue-50 transition-all transform hover:-translate-y-1 active:scale-95 shadow-sm"
               >
                 <div className="flex items-center gap-4">
