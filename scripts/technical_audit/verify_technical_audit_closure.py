@@ -208,10 +208,22 @@ def verify_record(record_path: pathlib.Path) -> dict[str, Any]:
     if REGISTER_PATH.exists():
         checked.append(REGISTER_PATH.as_posix())
         register = load_json(REGISTER_PATH)
-        if register.get("status") != "phase_12_technical_audit_remediation_closed":
-            errors.append("blocker_register.status must be phase_12_technical_audit_remediation_closed")
-        if register.get("active_slice") != "technical-audit-remediation-closed":
-            errors.append("blocker_register.active_slice must be technical-audit-remediation-closed")
+        allowed_statuses = {
+            "phase_12_technical_audit_remediation_closed",
+            "phase_13b_post_merge_baseline_recorded",
+        }
+        allowed_slices = {
+            "technical-audit-remediation-closed",
+            "technical-audit-post-merge-baseline-recorded",
+        }
+        if register.get("status") not in allowed_statuses:
+            errors.append(
+                "blocker_register.status must be phase_12_technical_audit_remediation_closed or phase_13b_post_merge_baseline_recorded"
+            )
+        if register.get("active_slice") not in allowed_slices:
+            errors.append(
+                "blocker_register.active_slice must be technical-audit-remediation-closed or technical-audit-post-merge-baseline-recorded"
+            )
         phase = register.get("phase_12_technical_audit_closure_authority")
         if not isinstance(phase, dict):
             errors.append("blocker_register.phase_12_technical_audit_closure_authority is required")
@@ -281,4 +293,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

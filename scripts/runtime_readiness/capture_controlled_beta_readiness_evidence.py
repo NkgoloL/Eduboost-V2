@@ -124,7 +124,9 @@ def collect_git_state(target_branch: str) -> dict[str, Any]:
     branch = git_value(["branch", "--show-current"])
     tracked_status = git_value(["status", "--short", "--untracked-files=no"])
     untracked_status = git_value(["status", "--short", "--untracked-files=all"])
-    remote_sha = git_value(["ls-remote", "origin", f"refs/heads/{target_branch}"])
+    remote_sha = git_value(["rev-parse", f"origin/{target_branch}"])
+    if remote_sha is None:
+        remote_sha = git_value(["ls-remote", "origin", f"refs/heads/{target_branch}"])
     remote_target_sha = remote_sha.split()[0] if remote_sha else None
     return {
         "branch": branch,
