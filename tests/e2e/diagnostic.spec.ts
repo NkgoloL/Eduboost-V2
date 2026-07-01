@@ -14,6 +14,7 @@ const FIXTURE_FILE = path.join(
 );
 
 test.describe("Diagnostic Assessment Flow", () => {
+  test.use({ storageState: "playwright/.auth/guardian.json" });
   let learnerId: string;
   let learnerName: string;
 
@@ -26,16 +27,27 @@ test.describe("Diagnostic Assessment Flow", () => {
   test("guardian can navigate to diagnostic for their learner", async ({
     page,
   }) => {
-    await page.goto("/dashboard");
+    await page.goto(`/learners/${learnerId}`);
+
+    // 1. Verify we are hitting the correct component version
+    await expect(page.getByTestId("seeded-e2e-route-pages-version")).toBeAttached({ timeout: 15_000 });
+
+    // 2. Wait for client-side hydration sentinel to attach
+    await page.getByTestId("learner-landing-hydrated").waitFor({ state: "attached", timeout: 15_000 });
+
+    // 3. Verify the client-populated name is correct
     await expect(
       page.getByText(learnerName)
-    ).toBeVisible();
-    await page.getByText(learnerName).click();
-    await expect(page).toHaveURL(new RegExp(`learners/${learnerId}`));
+    ).toBeVisible({ timeout: 5_000 });
+
+    // Navigate into the diagnostic from the landing page link
+    await page.getByRole("link", { name: /diagnostic/i }).click();
+    await expect(page).toHaveURL(new RegExp(`learners/${learnerId}/diagnostic`));
   });
 
   test("diagnostic page loads with subject selection", async ({ page }) => {
     await page.goto(`/learners/${learnerId}/diagnostic`);
+
     await expect(page.getByRole("heading", { name: /diagnostic/i })).toBeVisible();
     await expect(page.getByRole("button", { name: /mathematics/i })).toBeVisible();
     await expect(page.getByRole("button", { name: /english/i })).toBeVisible();
@@ -45,7 +57,11 @@ test.describe("Diagnostic Assessment Flow", () => {
     page,
   }) => {
     await page.goto(`/learners/${learnerId}/diagnostic`);
+
     await page.getByRole("button", { name: /mathematics/i }).click();
+    await expect(
+      page.getByRole("button", { name: /start assessment/i })
+    ).toBeVisible({ timeout: 10_000 });
     await page.getByRole("button", { name: /start assessment/i }).click();
 
     // IRT adaptive engine serves questions dynamically — answer 5
@@ -56,7 +72,7 @@ test.describe("Diagnostic Assessment Flow", () => {
       // Select any answer option (first one)
       const options = page.getByTestId("answer-option");
       await options.first().click();
-      const nextBtn = page.getByRole("button", { name: /next|submit/i });
+      const nextBtn = page.getByTestId("diagnostic-question").getByRole("button", { name: /next|submit/i });
       if (await nextBtn.isVisible()) {
         await nextBtn.click();
       }

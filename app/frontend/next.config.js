@@ -28,6 +28,8 @@ const nextConfig = {
   outputFileTracingRoot: __dirname,
   // PPR remains disabled — re-evaluate after stable Next.js support (FE-SPIKE-003)
   // experimental: { ppr: true }, // DO NOT ENABLE
+  // Allow HMR WebSocket connections from 127.0.0.1 (used by Playwright E2E tests)
+  allowedDevOrigins: ["127.0.0.1"],
   images: {
     unoptimized: true,
   },
