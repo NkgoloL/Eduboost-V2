@@ -184,23 +184,50 @@ export const ParentService = {
   getExportBundle: (guardianId: string) => fetchApi<ParentExportBundle>(`/parents/${guardianId}/export`),
 };
 
+
+const normalizeDiagnosticOptions = (options: unknown): { labels: string[]; keys: string[] } => {
+  if (!Array.isArray(options)) {
+    return { labels: [], keys: [] };
+  }
+  const labels: string[] = [];
+  const keys: string[] = [];
+  options.forEach((option, index) => {
+    const fallbackKey = String.fromCharCode(65 + index);
+    if (option && typeof option === "object") {
+      const record = option as Record<string, unknown>;
+      const key = String(record.key || record.id || fallbackKey);
+      const label = String(record.label || record.text || record.value || key);
+      keys.push(key);
+      labels.push(label);
+      return;
+    }
+    keys.push(fallbackKey);
+    labels.push(String(option));
+  });
+  return { labels, keys };
+};
+
 export const DiagnosticService = {
   getItems: async (learnerId: string): Promise<DiagnosticItem[]> => {
     const items = await fetchApi<
-      Array<{ id?: string; item_id?: string; question?: string; question_text?: string; options: string[]; subject?: string; topic?: string; skill?: string; caps_reference?: string }>
+      Array<{ id?: string; item_id?: string; question?: string; question_text?: string; options: unknown; option_keys?: string[]; subject?: string; topic?: string; skill?: string; caps_reference?: string }>
     >(`/diagnostics/items/${learnerId}`);
-    return items.map((item) => ({
-      item_id: item.item_id || item.id,
-      id: item.id || item.item_id,
-      question_text: item.question_text || item.question,
-      question: item.question || item.question_text,
-      options: item.options,
-      subject: item.subject,
-      topic: item.topic,
-      skill: item.skill,
-      caps_reference: item.caps_reference,
-      difficulty_label: "Adaptive",
-    }));
+    return items.map((item) => {
+      const normalizedOptions = normalizeDiagnosticOptions(item.options);
+      return {
+        item_id: item.item_id || item.id,
+        id: item.id || item.item_id,
+        question_text: item.question_text || item.question,
+        question: item.question || item.question_text,
+        options: normalizedOptions.labels,
+        option_keys: item.option_keys?.length ? item.option_keys : normalizedOptions.keys,
+        subject: item.subject,
+        topic: item.topic,
+        skill: item.skill,
+        caps_reference: item.caps_reference,
+        difficulty_label: "Adaptive",
+      };
+    });
   },
 
   submit: (learnerId: string, answers: DiagnosticAnswerInput[]) =>
