@@ -197,6 +197,7 @@ export interface DiagnosticItem {
   question?: string;
   question_text?: string;
   options: string[];
+  option_keys?: string[];
   subject?: string;
   topic?: string;
   skill?: string;
