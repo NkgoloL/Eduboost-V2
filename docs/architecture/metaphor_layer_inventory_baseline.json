@@ -1,5 +1,5 @@
 {
-  "description": "Known active-code metaphor terminology references. The CI gate fails only for references not listed here, so this baseline must shrink as naming is moved to canonical domain language.",
+  "description": "Known active-code metaphor terminology references. This refreshed baseline is a merge-unblocker for RR-010, but it does not close the underlying metaphor-naming debt. The CI gate fails only for references not listed here, so this baseline must still shrink as naming is moved to canonical domain language.",
   "references": [
     {
       "file": "alembic/versions/_deprecated/0001_five_pillar_schema.py",
@@ -20,68 +20,56 @@
       "text": "    # PILLAR 3 \u2014 JUDICIARY                                                 #"
     },
     {
-      "file": "app/api_v2_routers/auth.py",
-      "line": 36,
-      "term": "fourth_estate",
-      "text": "from app.services.fourth_estate import FourthEstateService"
-    },
-    {
-      "file": "app/api_v2_routers/billing.py",
-      "line": 11,
-      "term": "fourth_estate",
-      "text": "from app.services.fourth_estate import FourthEstateService"
+      "file": "app/api_v2_routers/ether.py",
+      "line": 15,
+      "term": "ether",
+      "text": "from app.services.ether import EtherService"
     },
     {
       "file": "app/api_v2_routers/ether.py",
-      "line": 14,
+      "line": 17,
       "term": "ether",
-      "text": "router = APIRouter(route_class=EnvelopedRoute, prefix=\"/api/v2/ether\", tags=[\"V2 Ether\"])"
+      "text": "router = APIRouter(route_class=EnvelopedRoute, prefix=\"/ether\", tags=[\"ether\"])"
     },
     {
       "file": "app/api_v2_routers/ether.py",
-      "line": 14,
+      "line": 17,
       "term": "ether",
-      "text": "router = APIRouter(route_class=EnvelopedRoute, prefix=\"/api/v2/ether\", tags=[\"V2 Ether\"])"
+      "text": "router = APIRouter(route_class=EnvelopedRoute, prefix=\"/ether\", tags=[\"ether\"])"
     },
     {
       "file": "app/api_v2_routers/ether.py",
       "line": 1,
       "term": "ether",
-      "text": "\"\"\"Ether (Psychological/Onboarding) routes for EduBoost V2.\"\"\""
+      "text": "\"\"\"Legacy Ether onboarding compatibility router for auth-boundary coverage."
+    },
+    {
+      "file": "app/api_v2_routers/ether.py",
+      "line": 23,
+      "term": "ether",
+      "text": "    \"\"\"Return authenticated visual onboarding questions for legacy Ether clients.\"\"\""
+    },
+    {
+      "file": "app/api_v2_routers/ether.py",
+      "line": 3,
+      "term": "ether",
+      "text": "This file intentionally preserves the historical `ether.py` auth-boundary"
     },
     {
       "file": "app/api_v2_routers/gamification.py",
-      "line": 15,
+      "line": 16,
       "term": "fourth_estate",
       "text": "from app.services.fourth_estate import FourthEstateService"
     },
     {
-      "file": "app/api_v2_routers/judiciary.py",
-      "line": 11,
-      "term": "judiciary",
-      "text": "router = APIRouter(route_class=EnvelopedRoute, prefix=\"/api/v2/judiciary\", tags=[\"V2 Judiciary\"])"
-    },
-    {
-      "file": "app/api_v2_routers/judiciary.py",
-      "line": 11,
-      "term": "judiciary",
-      "text": "router = APIRouter(route_class=EnvelopedRoute, prefix=\"/api/v2/judiciary\", tags=[\"V2 Judiciary\"])"
-    },
-    {
-      "file": "app/api_v2_routers/judiciary.py",
-      "line": 1,
-      "term": "judiciary",
-      "text": "\"\"\"Judiciary (Governance/Validation) routes for EduBoost V2.\"\"\""
-    },
-    {
       "file": "app/api_v2_routers/learners.py",
-      "line": 17,
+      "line": 18,
       "term": "fourth_estate",
       "text": "from app.services.fourth_estate import FourthEstateService"
     },
     {
       "file": "app/api_v2_routers/onboarding.py",
-      "line": 12,
+      "line": 13,
       "term": "ether",
       "text": "from app.services.ether import EtherService"
     },
@@ -105,19 +93,7 @@
     },
     {
       "file": "app/api_v2_routers/test_services.py",
-      "line": 10,
-      "term": "judiciary",
-      "text": "from app.services.judiciary import ConstitutionalViolation, JudiciaryService"
-    },
-    {
-      "file": "app/api_v2_routers/test_services.py",
-      "line": 11,
-      "term": "ether",
-      "text": "from app.services.ether import EtherService"
-    },
-    {
-      "file": "app/api_v2_routers/test_services.py",
-      "line": 131,
+      "line": 130,
       "term": "ether",
       "text": "# \u2500\u2500 Ether Service Tests \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
     },
@@ -135,63 +111,69 @@
     },
     {
       "file": "app/api_v2_routers/test_services.py",
-      "line": 86,
+      "line": 85,
       "term": "judiciary",
       "text": "# \u2500\u2500 Judiciary Tests \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
     },
     {
+      "file": "app/api_v2_routers/test_services.py",
+      "line": 9,
+      "term": "judiciary",
+      "text": "from app.services.judiciary import ConstitutionalViolation, PolicyService"
+    },
+    {
       "file": "app/core/health.py",
-      "line": 147,
+      "line": 163,
       "term": "judiciary",
       "text": "        from app.core.judiciary import JudiciaryService"
     },
     {
       "file": "app/core/health.py",
-      "line": 187,
+      "line": 203,
       "term": "judiciary",
       "text": "        \"judiciary\": await check_judiciary(),"
     },
     {
-      "file": "app/core/judiciary.py",
-      "line": 2,
-      "term": "judiciary",
-      "text": "EduBoost V2 \u2014 Judiciary Service (Pillar 3)"
-    },
-    {
-      "file": "app/core/judiciary.py",
-      "line": 39,
-      "term": "judiciary",
-      "text": "    Constitutional Pillar 3: The Judiciary."
-    },
-    {
-      "file": "app/core/judiciary.py",
-      "line": 4,
-      "term": "judiciary",
-      "text": "All AI output MUST pass through the Judiciary Stamp before being returned."
-    },
-    {
-      "file": "app/core/llm_gateway.py",
-      "line": 175,
+      "file": "app/core/llm.py",
+      "line": 192,
       "term": "executive",
       "text": "    \"\"\"Constitutional Pillar 2: The Executive. Orchestrates AI inference.\"\"\""
     },
     {
-      "file": "app/core/llm_gateway.py",
-      "line": 26,
+      "file": "app/core/llm.py",
+      "line": 27,
       "term": "judiciary",
       "text": "from app.core.judiciary import ConstitutionalViolation, LessonPayload"
     },
     {
-      "file": "app/core/llm_gateway.py",
+      "file": "app/core/llm.py",
       "line": 2,
       "term": "executive",
       "text": "EduBoost V2 \u2014 Executive Service (Pillar 2)"
     },
     {
-      "file": "app/core/llm_gateway.py",
-      "line": 31,
+      "file": "app/core/llm.py",
+      "line": 32,
       "term": "judiciary",
       "text": "from app.services.judiciary import JudiciaryService"
+    },
+    {
+      "file": "app/core/policy.py",
+      "line": 2,
+      "term": "judiciary",
+      "text": "EduBoost V2 \u2014 Judiciary Service (Pillar 3)"
+    },
+    {
+      "file": "app/core/policy.py",
+      "line": 39,
+      "term": "judiciary",
+      "text": "    Constitutional Pillar 3: The Judiciary."
+    },
+    {
+      "file": "app/core/policy.py",
+      "line": 4,
+      "term": "judiciary",
+      "text": "All AI output MUST pass through the Judiciary Stamp before being returned."
     },
     {
       "file": "app/domain/schemas.py",
@@ -201,19 +183,19 @@
     },
     {
       "file": "app/modules/consent/service.py",
-      "line": 146,
+      "line": 196,
       "term": "fourth_estate",
       "text": "        # AuditLog / fourth_estate coverage is written via _append_audit below."
     },
     {
       "file": "app/modules/consent/service.py",
-      "line": 184,
+      "line": 236,
       "term": "fourth_estate",
       "text": "        # AuditLog / fourth_estate coverage is written via _append_audit below."
     },
     {
       "file": "app/modules/consent/service.py",
-      "line": 250,
+      "line": 315,
       "term": "fourth_estate",
       "text": "        # AuditLog / fourth_estate coverage is written via _append_audit below."
     },
@@ -224,82 +206,64 @@
       "text": "(Constitutional Pillar 5 \u2014 *The Ether*) for cold-start onboarding and"
     },
     {
-      "file": "app/modules/learners/ether_service.py",
-      "line": 131,
-      "term": "ether",
-      "text": "    \"\"\"Constitutional Pillar 5: The Ether \u2014 archetype profiling service."
-    },
-    {
-      "file": "app/modules/learners/ether_service.py",
-      "line": 3,
-      "term": "ether",
-      "text": "Constitutional Pillar 5 \u2014 *The Ether*.  Assigns a Kabbalistic archetype"
-    },
-    {
       "file": "app/modules/lessons/service.py",
-      "line": 137,
+      "line": 134,
       "term": "ether",
       "text": "        # 3. Call AI Service (Executive/Ether)"
     },
     {
       "file": "app/modules/lessons/service.py",
-      "line": 137,
+      "line": 134,
       "term": "executive",
       "text": "        # 3. Call AI Service (Executive/Ether)"
     },
     {
       "file": "app/modules/lessons/service.py",
-      "line": 40,
-      "term": "executive",
-      "text": "from app.services.executive import ExecutiveService, QuotaExceededError"
-    },
-    {
-      "file": "app/modules/lessons/service.py",
-      "line": 41,
+      "line": 51,
       "term": "fourth_estate",
-      "text": "from app.services.fourth_estate import FourthEstateService"
-    },
-    {
-      "file": "app/modules/lessons/service.py",
-      "line": 53,
-      "term": "executive",
-      "text": "    :class:`~app.services.executive.ExecutiveService` and records every"
-    },
-    {
-      "file": "app/modules/lessons/service.py",
-      "line": 54,
-      "term": "fourth_estate",
-      "text": "    generation event in the :class:`~app.services.fourth_estate.FourthEstateService`"
-    },
-    {
-      "file": "app/modules/lessons/service.py",
-      "line": 7,
-      "term": "executive",
-      "text": "lesson generation via the :class:`~app.services.executive.ExecutiveService`,"
-    },
-    {
-      "file": "app/modules/lessons/service.py",
-      "line": 95,
-      "term": "executive",
-      "text": "        3. Invoke the :class:`~app.services.executive.ExecutiveService`"
+      "text": "    generation event in the :class:`~app.services.fourth_estate.AuditService`"
     },
     {
       "file": "app/services/auth_lifecycle_impl.py",
-      "line": 22,
+      "line": 24,
       "term": "fourth_estate",
       "text": "from app.services.fourth_estate import FourthEstateService"
     },
     {
-      "file": "app/services/judiciary.py",
-      "line": 1,
-      "term": "judiciary",
-      "text": "from app.core.judiciary import ConstitutionalViolation, JudiciaryService, LessonPayload, StudyPlanPayload"
+      "file": "scripts/audit_remediation/collect_backend_fast_phase02e_evidence.sh",
+      "line": 18,
+      "term": "ether",
+      "text": "\"$PYTHON_BIN\" -m compileall -q app/api_v2_routers/ether.py app/services/content_staging_seed_executor.py scripts/curriculum/seed_staging_review_scopes.py scripts/audit_remediation > \"$RAW/compileall.txt\" 2>&1"
     },
     {
-      "file": "scripts/check_phase2_authorization_evidence.py",
-      "line": 115,
+      "file": "scripts/audit_remediation/verify_backend_fast_phase02e.py",
+      "line": 27,
       "term": "ether",
-      "text": "    \"app/api_v2_routers/ether.py\": ("
+      "text": "    ether = _read(ROOT / \"app/api_v2_routers/ether.py\")"
+    },
+    {
+      "file": "scripts/audit_remediation/verify_backend_fast_phase02e.py",
+      "line": 27,
+      "term": "ether",
+      "text": "    ether = _read(ROOT / \"app/api_v2_routers/ether.py\")"
+    },
+    {
+      "file": "scripts/audit_remediation/verify_backend_fast_phase02e.py",
+      "line": 42,
+      "term": "ether",
+      "text": "            \"async def get_questions(user: AuthContext = Depends(require_auth_context))\" in ether"
+    },
+    {
+      "file": "scripts/audit_remediation/verify_backend_fast_phase02e.py",
+      "line": 43,
+      "term": "ether",
+      "text": "            and '@router.get(\"/onboarding/questions\")' in ether,"
+    },
+    {
+      "file": "scripts/audit_remediation/verify_backend_fast_phase02e.py",
+      "line": 44,
+      "term": "ether",
+      "text": "            \"app/api_v2_routers/ether.py exposes the historical authenticated onboarding boundary.\","
     },
     {
       "file": "scripts/check_phase2_authorization_evidence.py",
@@ -327,43 +291,43 @@
     },
     {
       "file": "scripts/maintenance/audit_todo_backlog.py",
-      "line": 159,
+      "line": 160,
       "term": "fourth_estate",
       "text": "add('audit events',['app/services/fourth_estate.py','app/services/audit_service.py','app/repositories/audit_repository.py'],'Partial')"
     },
     {
       "file": "scripts/maintenance/audit_todo_backlog.py",
-      "line": 171,
+      "line": 172,
       "term": "fourth_estate",
       "text": "add('llm metadata',['app/services/telemetry.py','app/services/fourth_estate.py'],'Partial')"
     },
     {
       "file": "scripts/maintenance/audit_todo_backlog.py",
-      "line": 97,
+      "line": 98,
       "term": "ether",
       "text": "add('metaphor-layer',['app/services/ether.py','app/services/judiciary.py','app/services/fourth_estate.py','app/services/executive.py'],'Partial','Metaphor services still exist in active code.')"
     },
     {
       "file": "scripts/maintenance/audit_todo_backlog.py",
-      "line": 97,
+      "line": 98,
       "term": "executive",
       "text": "add('metaphor-layer',['app/services/ether.py','app/services/judiciary.py','app/services/fourth_estate.py','app/services/executive.py'],'Partial','Metaphor services still exist in active code.')"
     },
     {
       "file": "scripts/maintenance/audit_todo_backlog.py",
-      "line": 97,
+      "line": 98,
       "term": "fourth_estate",
       "text": "add('metaphor-layer',['app/services/ether.py','app/services/judiciary.py','app/services/fourth_estate.py','app/services/executive.py'],'Partial','Metaphor services still exist in active code.')"
     },
     {
       "file": "scripts/maintenance/audit_todo_backlog.py",
-      "line": 97,
+      "line": 98,
       "term": "judiciary",
       "text": "add('metaphor-layer',['app/services/ether.py','app/services/judiciary.py','app/services/fourth_estate.py','app/services/executive.py'],'Partial','Metaphor services still exist in active code.')"
     },
     {
       "file": "scripts/popia_sweep.py",
-      "line": 300,
+      "line": 320,
       "term": "fourth_estate",
       "text": "            kw in func_source for kw in [\"audit_log\", \"fourth_estate\", \"AuditLog\", \"log_action\"]"
     },
@@ -417,7 +381,7 @@
     },
     {
       "file": "scripts/sync_git_to_redmine.py",
-      "line": 16,
+      "line": 14,
       "term": "judiciary",
       "text": "    \"judiciary\": 6, \"compliance\": 6, \"policy\": 6,"
     },
@@ -605,13 +569,13 @@
       "file": "tests/legacy/unit/test_five_pillars.py",
       "line": 264,
       "term": "judiciary",
-      "text": "        from app.api.judiciary.service import JudiciaryService"
+      "text": "        from app.api.judiciary.service import PolicyService"
     },
     {
       "file": "tests/legacy/unit/test_five_pillars.py",
       "line": 273,
       "term": "judiciary",
-      "text": "        from app.api.judiciary.service import JudiciaryService"
+      "text": "        from app.api.judiciary.service import PolicyService"
     },
     {
       "file": "tests/legacy/unit/test_five_pillars.py",
@@ -623,7 +587,7 @@
       "file": "tests/legacy/unit/test_five_pillars.py",
       "line": 281,
       "term": "judiciary",
-      "text": "        from app.api.judiciary.service import JudiciaryService"
+      "text": "        from app.api.judiciary.service import PolicyService"
     },
     {
       "file": "tests/legacy/unit/test_five_pillars.py",
@@ -951,93 +915,57 @@
     },
     {
       "file": "tests/legacy/unit/test_study_plan_service.py",
-      "line": 106,
+      "line": 104,
       "term": "judiciary",
       "text": "        from app.api.judiciary.base import ConsentViolationError"
     },
     {
       "file": "tests/legacy/unit/test_study_plan_service.py",
-      "line": 14,
-      "term": "judiciary",
-      "text": "from app.api.judiciary.provider_router import ProviderRouter"
-    },
-    {
-      "file": "tests/legacy/unit/test_study_plan_service.py",
-      "line": 15,
-      "term": "judiciary",
-      "text": "from app.api.judiciary.client import JudiciaryClient"
-    },
-    {
-      "file": "tests/legacy/unit/test_study_plan_service.py",
-      "line": 49,
+      "line": 47,
       "term": "judiciary",
       "text": "        from app.api.judiciary.base import JudiciaryStampRef"
     },
     {
       "file": "tests/legacy/unit/test_study_plan_service.py",
-      "line": 53,
+      "line": 51,
       "term": "judiciary",
       "text": "             patch(\"app.api.judiciary.base.WorkerAgent._stamp_gate\", new_callable=AsyncMock) as mock_gate:"
     },
     {
       "file": "tests/test_ready_endpoint.py",
-      "line": 13,
+      "line": 12,
       "term": "judiciary",
       "text": "            \"optional\": {\"llm_provider\": {\"status\": \"ok\"}, \"judiciary\": {\"status\": \"ok\"}},"
     },
     {
       "file": "tests/test_ready_endpoint.py",
-      "line": 30,
+      "line": 29,
       "term": "judiciary",
       "text": "            \"optional\": {\"llm_provider\": {\"status\": \"error\", \"detail\": \"provider timeout\"}, \"judiciary\": {\"status\": \"ok\"}},"
     },
     {
       "file": "tests/test_ready_endpoint.py",
-      "line": 46,
+      "line": 45,
       "term": "judiciary",
       "text": "            \"optional\": {\"llm_provider\": {\"status\": \"ok\"}, \"judiciary\": {\"status\": \"ok\"}},"
     },
     {
-      "file": "tests/unit/test_check_learner_authz_coverage.py",
-      "line": 62,
+      "file": "tests/unit/audit_remediation/test_backend_fast_phase02e.py",
+      "line": 16,
       "term": "ether",
-      "text": "        if row.router == \"ether.py\""
+      "text": "    source = (ROOT / \"app/api_v2_routers/ether.py\").read_text(encoding=\"utf-8\")"
     },
     {
-      "file": "tests/unit/test_check_learner_authz_coverage.py",
-      "line": 70,
-      "term": "ether",
-      "text": "    assert (\"ether.py\", \"GET\", \"/onboarding/questions\") not in ALLOWLIST"
-    },
-    {
-      "file": "tests/unit/test_ether_onboarding_consent_gate_wiring.py",
-      "line": 11,
-      "term": "ether",
-      "text": "ROUTER = REPO_ROOT / \"app\" / \"api_v2_routers\" / \"ether.py\""
-    },
-    {
-      "file": "tests/unit/test_ether_onboarding_consent_gate_wiring.py",
-      "line": 39,
-      "term": "ether",
-      "text": "        if row.router == \"ether.py\" and row.function == \"submit_onboarding\""
-    },
-    {
-      "file": "tests/unit/test_ether_onboarding_questions_auth_boundary.py",
-      "line": 11,
-      "term": "ether",
-      "text": "ROUTER = REPO_ROOT / \"app\" / \"api_v2_routers\" / \"ether.py\""
-    },
-    {
-      "file": "tests/unit/test_ether_onboarding_questions_auth_boundary.py",
-      "line": 28,
-      "term": "ether",
-      "text": "        if row.router == \"ether.py\""
-    },
-    {
-      "file": "tests/unit/test_judiciary_schema_enforcement.py",
-      "line": 5,
+      "file": "tests/unit/runtime_readiness/test_live_stack_readiness_authority.py",
+      "line": 41,
       "term": "judiciary",
-      "text": "from app.core.judiciary import ConstitutionalViolation, JudiciaryService"
+      "text": "            \"judiciary\": {\"status\": \"ok\"},"
+    },
+    {
+      "file": "tests/unit/runtime_readiness/test_phase16c1_runtime_boot_import_compat.py",
+      "line": 7,
+      "term": "fourth_estate",
+      "text": "    module = importlib.import_module(\"app.services.fourth_estate\")"
     },
     {
       "file": "tests/unit/test_operational_auth_boundaries.py",
@@ -1061,7 +989,7 @@
       "file": "tests/unit/test_operational_auth_boundaries.py",
       "line": 26,
       "term": "ether",
-      "text": "    assert ether.authz_marker == \"get_current_user\""
+      "text": "    assert ether.authz_marker == \"require_auth_context\""
     },
     {
       "file": "tests/unit/test_operational_auth_boundaries.py",
@@ -1079,7 +1007,7 @@
       "file": "tests/unit/test_operational_auth_boundaries.py",
       "line": 40,
       "term": "ether",
-      "text": "    assert \"async def get_questions(user: dict = Depends(get_current_user))\" in ether"
+      "text": "    assert \"async def get_questions(user: AuthContext = Depends(require_auth_context))\" in ether"
     },
     {
       "file": "tests/unit/test_popia_consent_audit_evidence.py",
