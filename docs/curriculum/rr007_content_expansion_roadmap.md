@@ -1,13 +1,17 @@
 ---
 title: "RR-007 Content Expansion Roadmap"
-status: active
-owner: engineering
-audience: developer
-source_of_truth: false
-last_reviewed: 2026-07-02
-review_interval_days: 60
+status: "active"
+owner: "engineering"
+reviewers: "[curriculum, content-factory, learning-science]"
+audience: "developer"
+source_of_truth: "false"
+supersedes: "[]"
+superseded_by: null
+last_reviewed: "2026-06-24"
+review_interval_days: "60"
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: "[docs/curriculum, app/services/content_factory]"
 ---
-
 
 # RR-007 Content Expansion Roadmap
 

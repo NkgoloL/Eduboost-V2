@@ -1,16 +1,16 @@
 ---
 title: "Release Gate Checklist for Content Factory"
-status: current-evidence
-owner: content-factory
-reviewers: [content-factory, curriculum, engineering]
-audience: developer
-source_of_truth: false
-supersedes: []
+status: "current-evidence"
+owner: "content-factory"
+reviewers: "[content-factory, curriculum, engineering]"
+audience: "developer"
+source_of_truth: "false"
+supersedes: "[]"
 superseded_by: null
-last_reviewed: 2026-06-24
-review_interval_days: 60
+last_reviewed: "2026-06-24"
+review_interval_days: "60"
 evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: [app/services/content_factory, data/content_factory, docs/content_factory]
+code_anchors: "[app/services/content_factory, data/content_factory, docs/content_factory]"
 ---
 
 # Release Gate Checklist for Content Factory

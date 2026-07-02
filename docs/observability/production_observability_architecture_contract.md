@@ -1,16 +1,16 @@
 ---
 title: "Production Observability Architecture Contract"
-status: active
-owner: operations
-reviewers: [operations, security, backend]
-audience: operator
-source_of_truth: true
-supersedes: []
+status: "active"
+owner: "operations"
+reviewers: "[operations, security, backend]"
+audience: "operator"
+source_of_truth: "true"
+supersedes: "[]"
 superseded_by: null
-last_reviewed: 2026-06-24
-review_interval_days: 60
+last_reviewed: "2026-06-24"
+review_interval_days: "60"
 evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: [app/api_v2.py, docs/observability]
+code_anchors: "[app/api_v2.py, docs/observability]"
 ---
 
 # Production Observability Architecture Contract

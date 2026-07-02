@@ -1,16 +1,16 @@
 ---
 title: "Incident Response Operations Support Architecture Contract"
-status: current-evidence
-owner: operations
-reviewers: [operations, support, privacy]
-audience: operator
-source_of_truth: true
-supersedes: []
+status: "current-evidence"
+owner: "operations"
+reviewers: "[operations, support, privacy]"
+audience: "operator"
+source_of_truth: "true"
+supersedes: "[]"
 superseded_by: null
-last_reviewed: 2026-06-24
-review_interval_days: 60
+last_reviewed: "2026-06-24"
+review_interval_days: "60"
 evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: [docs/operations_support, docs/runbooks]
+code_anchors: "[docs/operations_support, docs/runbooks]"
 ---
 
 # Incident Response Operations Support Architecture Contract
