@@ -1,0 +1,23 @@
+name: RR-010 Beta Outcome Reporting
+
+on:
+  pull_request:
+    paths:
+      - 'docs/beta_outcomes/**'
+      - 'docs/roadmap/reconciliation/rr_010_*'
+      - 'scripts/beta_outcomes/**'
+      - 'scripts/roadmap_reconciliation/*rr010*'
+      - 'tests/unit/roadmap_reconciliation/test_rr010_beta_outcome_reporting.py'
+      - 'Makefile'
+  workflow_dispatch:
+
+jobs:
+  rr010-beta-outcome-reporting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify RR-010 beta outcome reporting authority
+        run: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr010_beta_outcome_reporting.py --authority-only --json

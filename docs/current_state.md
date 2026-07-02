@@ -7,7 +7,7 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-22
+last_reviewed: 2026-07-02
 review_interval_days: 14
 evidence_command: make docs-housekeeping-check && make openapi-check && make runtime-check
 code_anchors: [app/api_v2.py, app/frontend/package.json, docs/documentation/source_of_truth.yml]
@@ -48,3 +48,19 @@ The documentation corpus must not claim broad production or release readiness wi
 ## Documentation truth boundary
 
 This file is not a release approval. It is a navigation document. Release decisions must be made through the release source-of-truth documents and evidence commands listed in `docs/documentation/source_of_truth.yml`.
+
+## Reconciled roadmap and governance state
+
+RR-009 governance/process reconciliation records that current work selection is governed by `docs/roadmap/reconciliation/outstanding_work_register.md` and must cite an `RR-###` item.
+
+Current closed reconciliation items include RR-001 through RR-008, with RR-006 completed earlier and retained as a valid out-of-order closure. New roadmap or product work remains blocked unless reconciled into the RR register.
+
+Known residual caveats remain visible:
+
+- RR-003 is valid, but its fallback coverage baseline recorded `0.0` because full test collection had pre-existing blockers.
+- RR-006 is valid, but its evidence PR merged with only the required branch-protection check blocking; other non-required checks were red.
+- RR-010 beta outcome reporting, RR-015 external approvals, RR-016 operational drills, and RR-017 release safety controls remain outstanding.
+
+Production release, deployment, release tagging, public beta, and runtime KG implementation remain unauthorised.
+
+**Current-state refresh cadence recorded: true**
