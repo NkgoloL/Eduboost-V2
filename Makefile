@@ -2878,3 +2878,15 @@ docs-stage4-strict-scope-check:
 
 docs-housekeeping-stage4-check: docs-stage4-strict-scope-check docs-housekeeping-stage3-check
 	python3 scripts/maintenance/check_doc_adr_numbers.py --root . --strict
+
+.PHONY: rr004-workspace-hygiene-audit rr004-ignored-artifact-clean-dry-run rr004-workspace-hygiene-check
+rr004-workspace-hygiene-audit:
+	@mkdir -p var/workspace-hygiene
+	$(PYTHON) scripts/workspace_hygiene/audit_workspace_hygiene.py --output var/workspace-hygiene/rr004_workspace_hygiene_snapshot.json
+	@cat var/workspace-hygiene/rr004_workspace_hygiene_snapshot.json
+
+rr004-ignored-artifact-clean-dry-run:
+	$(PYTHON) scripts/workspace_hygiene/safe_cleanup_ignored_artifacts.py --dry-run --json
+
+rr004-workspace-hygiene-check:
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_rr004_workspace_hygiene.py --json
