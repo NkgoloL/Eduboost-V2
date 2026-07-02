@@ -1,0 +1,30 @@
+name: RR-008 Operational Readiness
+
+on:
+  pull_request:
+    paths:
+      - 'docs/operations/readiness/**'
+      - 'docs/roadmap/reconciliation/rr_008_operational_readiness*'
+      - 'scripts/operations_readiness/**'
+      - 'scripts/roadmap_reconciliation/*rr008*'
+      - 'tests/unit/roadmap_reconciliation/test_rr008_operational_readiness.py'
+      - '.github/workflows/rr008-operational-readiness.yml'
+      - 'Makefile'
+  workflow_dispatch:
+
+jobs:
+  rr008-operational-readiness:
+    name: Verify RR-008 operational readiness
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify RR-008 authority
+        run: |
+          python -m py_compile \
+            scripts/operations_readiness/audit_rr008_operational_readiness.py \
+            scripts/roadmap_reconciliation/capture_rr008_operational_readiness_evidence.py \
+            scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py
+          PYTHONPATH=. python scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py --authority-only --json
