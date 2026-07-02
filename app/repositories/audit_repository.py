@@ -77,6 +77,7 @@ class AuditRepository:
     §4.5 – append-only audit log.
     Every INSERT chains hashes to form a tamper-evident log.
     The underlying table must have:
+
       - NO DELETE privilege for the app role
       - NO UPDATE privilege for the app role
       - A row-level trigger that raises on UPDATE/DELETE as a belt-and-suspenders guard
@@ -299,6 +300,7 @@ class AuditRepository:
           1. event_hash matches re-computed hash of payload columns
           2. hmac_signature matches re-computed HMAC
           3. previous_event_hash equals prior row's event_hash
+
         Returns (ok, list_of_errors).
         """
         errors: list[str] = []
