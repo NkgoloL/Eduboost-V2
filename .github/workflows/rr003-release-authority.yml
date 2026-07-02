@@ -1,0 +1,82 @@
+name: RR-003 Release Authority
+
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+    paths:
+      - "app/**"
+      - "scripts/**"
+      - "tests/**"
+      - "docs/release/**"
+      - "docs/roadmap/reconciliation/**"
+      - ".github/workflows/rr003-release-authority.yml"
+      - "Makefile"
+      - "pytest.ini"
+      - "pytest-coverage.ini"
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - "app/**"
+      - "scripts/**"
+      - "tests/**"
+      - "docs/release/**"
+      - "docs/roadmap/reconciliation/**"
+      - ".github/workflows/rr003-release-authority.yml"
+      - "Makefile"
+      - "pytest.ini"
+      - "pytest-coverage.ini"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rr003-release-authority:
+    name: RR-003 coverage CI route authority
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      PYTHONPATH: .
+      APP_ENV: test
+      ENVIRONMENT: test
+      DATABASE_URL: sqlite+aiosqlite:///./eduboost_rr003_test.db
+      REDIS_URL: redis://localhost:6379/0
+      ALLOWED_ORIGINS: http://localhost:3000,http://localhost:8000,http://test
+      ENCRYPTION_KEY: MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=
+      JWT_SECRET: rr003-release-authority-test-secret-32chars
+      JWT_SECRET_KEY: rr003-release-authority-test-secret-32chars
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements/dev.txt ]; then
+            pip install -r requirements/dev.txt
+          elif [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+
+      - name: Verify RR-003 authority scripts
+        run: |
+          python3 -m py_compile             scripts/roadmap_reconciliation/capture_rr003_coverage_ci_route_authority_evidence.py             scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py
+          python3 scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py --json
+
+      - name: Run fast unit authority
+        run: make test-fast
+
+      - name: Run route alias policy
+        run: make route-alias-policy-check
+
+      - name: Run OpenAPI drift check
+        run: make openapi-check
