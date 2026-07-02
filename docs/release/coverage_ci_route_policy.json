@@ -1,0 +1,19 @@
+{
+  "rr_id": "RR-003",
+  "policy_status": "authority_installed_evidence_pending",
+  "coverage_baseline_required": true,
+  "coverage_threshold_decision_required": true,
+  "release_blocking_checks_visible_in_ci": true,
+  "canonical_prefix": "/api/v2",
+  "compatibility_prefix": "/v2",
+  "new_unapproved_route_alias_exceptions_blocked": true,
+  "dormant_router_inventory_required": true,
+  "release_docs_current_evidence_required": true,
+  "boundary": {
+    "production_release_authorised": false,
+    "deployment_authorised": false,
+    "public_beta_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_implementation_claimed": false
+  }
+}
