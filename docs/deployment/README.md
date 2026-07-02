@@ -1,3 +1,18 @@
+---
+title: "Deployment And Operations"
+status: active
+owner: release-management
+reviewers: [release-management, operations, security]
+audience: operator
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-24
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: [Dockerfile, docker-compose.yml, docker-compose.prod.yml, .github/workflows]
+---
+
 # Deployment And Operations
 
 Deployment covers local compose, production-like compose smoke checks, Azure/IaC assets, runtime health, observability, backup/restore, and release evidence.

@@ -1,3 +1,18 @@
+---
+title: "Frontend Task Metadata Template"
+status: active
+owner: frontend
+reviewers: [frontend, product, privacy]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-24
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: [app/frontend, docs/frontend/README.md]
+---
+
 # Frontend Task Metadata Template
 
 Every Blocker or Critical task in TODO_V4.1 must capture the following metadata before work begins. Copy the table row below into PR descriptions, Jira tickets, or the evidence log.

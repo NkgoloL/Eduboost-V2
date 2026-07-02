@@ -1,3 +1,18 @@
+---
+title: "Frontend"
+status: active
+owner: frontend
+reviewers: [frontend, product, privacy]
+audience: developer
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-24
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: [app/frontend, docs/frontend/README.md]
+---
+
 # Frontend
 
 The frontend is a Next.js app in `app/frontend` serving learner, parent, auth, and admin experiences.

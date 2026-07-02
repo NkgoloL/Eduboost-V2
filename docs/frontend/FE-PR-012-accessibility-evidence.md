@@ -1,3 +1,18 @@
+---
+title: "FE-PR-012 Accessibility Evidence"
+status: current-evidence
+owner: frontend
+reviewers: [frontend, product, privacy]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-24
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: [app/frontend, docs/frontend/README.md]
+---
+
 # FE-PR-012 Accessibility Evidence
 
 This document records quick checks performed for Grade R UI features added in

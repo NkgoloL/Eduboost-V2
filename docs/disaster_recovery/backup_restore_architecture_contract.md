@@ -1,3 +1,18 @@
+---
+title: "Backup Restore Architecture Contract"
+status: active
+owner: operations
+reviewers: [operations, security, privacy]
+audience: operator
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-24
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: [docs/disaster_recovery, scripts]
+---
+
 # Backup Restore Architecture Contract
 
 ## Purpose

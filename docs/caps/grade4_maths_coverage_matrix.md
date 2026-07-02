@@ -1,3 +1,18 @@
+---
+title: "Grade 4 Mathematics - CAPS Item Bank Coverage Matrix"
+status: current-evidence
+owner: curriculum
+reviewers: [curriculum, content-factory, product]
+audience: curriculum-reviewer
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-24
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: [docs/caps, app/services/content_factory]
+---
+
 # Grade 4 Mathematics - CAPS Item Bank Coverage Matrix
 
 Last updated: 2026-05-25T08:35:24Z
