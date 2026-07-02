@@ -14,7 +14,7 @@ Configuration
 
 .. automodule:: app.core.config
    :members:
-   :exclude-members: validate_jwt_secret, validate_encryption_key, parse_allowed_origins
+   :exclude-members: validate_jwt_secret, validate_encryption_key, parse_allowed_origins, normalize_database_url
    :show-inheritance:
 
 Security
