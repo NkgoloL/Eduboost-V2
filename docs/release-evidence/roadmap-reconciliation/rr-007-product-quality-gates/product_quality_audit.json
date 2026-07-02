@@ -1,0 +1,45 @@
+{
+  "documents": {
+    "accessibility_audit_plan_exists": true,
+    "accessibility_audit_plan_marker_present": true,
+    "content_expansion_roadmap_exists": true,
+    "content_expansion_roadmap_marker_present": true,
+    "load_testing_plan_exists": true,
+    "load_testing_plan_marker_present": true,
+    "multilingual_lesson_proof_plan_exists": true,
+    "multilingual_lesson_proof_plan_marker_present": true,
+    "playwright_ci_gate_exists": true,
+    "playwright_ci_gate_marker_present": true,
+    "product_quality_policy_exists": true,
+    "pwa_offline_verification_plan_exists": true,
+    "pwa_offline_verification_plan_marker_present": true,
+    "quality_gate_manifest_exists": true,
+    "supabase_postgres_adr_exists": true,
+    "supabase_postgres_adr_marker_present": true
+  },
+  "errors": [],
+  "manifest": {
+    "accessibility_audit_plan_recorded": true,
+    "content_expansion_roadmap_recorded": true,
+    "deployment_authorised": false,
+    "load_testing_plan_recorded": true,
+    "multilingual_lesson_proof_plan_recorded": true,
+    "playwright_ci_visible": true,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "pwa_offline_verification_plan_recorded": true,
+    "release_tag_authorised": false,
+    "rr_id": "RR-007",
+    "runtime_kg_implementation_claimed": false,
+    "supabase_postgres_adr_recorded": true
+  },
+  "valid": true,
+  "warnings": [],
+  "workflow_checks": {
+    "existing_e2e_workflow_exists": true,
+    "existing_e2e_workflow_mentions_playwright": true,
+    "rr007_workflow_exists": true,
+    "rr007_workflow_mentions_playwright_ci": true,
+    "rr007_workflow_runs_audit": true
+  }
+}
