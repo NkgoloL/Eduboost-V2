@@ -1,0 +1,49 @@
+{
+  "auxiliary_governance_sources": [
+    "docs/roadmap/execution/runtime_readiness/18_controlled_beta_launch_governance_authority.md",
+    "docs/roadmap/execution/runtime_readiness/19_controlled_beta_activation_preflight_authority.md",
+    "docs/roadmap/execution/runtime_readiness/20_controlled_beta_launch_activation_authority.md",
+    "docs/roadmap/execution/runtime_readiness/21_controlled_beta_launch_monitoring_authority.md"
+  ],
+  "canonical_sources": [
+    {
+      "path": "docs/roadmap/PHASE_STATUS_REGISTER.md",
+      "reason": "Records atlas phase statuses and reconciliation blockers.",
+      "role": "phase_status_register"
+    },
+    {
+      "path": "docs/roadmap/roadmap.md",
+      "reason": "Primary remediation roadmap with Phases 0-16 and outstanding phase themes.",
+      "role": "technical_remediation_roadmap"
+    },
+    {
+      "path": "docs/product/roadmap.md",
+      "reason": "Product direction for alpha, beta, and later roadmap items.",
+      "role": "product_roadmap"
+    },
+    {
+      "path": "docs/operations/todo_implementation_plan.md",
+      "reason": "Detailed TODO wave implementation plan and exit-gate language.",
+      "role": "todo_implementation_plan"
+    },
+    {
+      "path": "docs/roadmap/post_baseline_roadmap_register.md",
+      "reason": "Post-baseline roadmap register containing RM items.",
+      "role": "post_baseline_register"
+    },
+    {
+      "path": "docs/current_state.md",
+      "reason": "Bounded current-state document and release truth boundary.",
+      "role": "current_state_boundary"
+    },
+    {
+      "path": "docs/release/EduBoost_V2_North_Star_TODO.md",
+      "reason": "North-star production-readiness TODO and explicit blocked operations.",
+      "role": "north_star_todo"
+    }
+  ],
+  "new_work_rule": "Do not introduce new implementation phases/workstreams until the Outstanding Work Register is reviewed and the next slice is selected from it.",
+  "purpose": "Canonical source inventory for roadmap/todo reconciliation before new work is introduced.",
+  "status": "authority_harness_pending_evidence",
+  "version": 1
+}
