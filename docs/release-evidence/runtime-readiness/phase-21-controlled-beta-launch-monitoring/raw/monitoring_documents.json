@@ -1,0 +1,55 @@
+{
+  "document_hashes": {
+    "docs/operations/beta/controlled_beta_incident_log.json": "345d40cce9438fb0b6fd4e120ef1086b32fd3056aa79bf83c557e70f262f5cc1",
+    "docs/operations/beta/controlled_beta_launch_monitoring_report.md": "5dac2be03faf58413b56a6619844e26c6428abfefaad50323ab5ad71ada8759e",
+    "docs/operations/beta/controlled_beta_monitoring_metrics_snapshot.json": "d092bb39502dde6e275264398bf6ebb493b0e542ca5fef8d0f9071ca7112b096",
+    "docs/operations/beta/controlled_beta_rollback_decision.md": "f1c77d1a43f770e6a9857b9e9c7dc1b1d34dacfd86111689e25ce827f06d36c1",
+    "docs/operations/beta/controlled_beta_support_log.json": "b70d5af62e60cf66656a287532b83734288dbc68bcf85c187ffc9d394f3c19ef"
+  },
+  "documents": {
+    "incident_log": {
+      "critical_incidents_open": false,
+      "incident_commander": "Incident Commander",
+      "incidents": [],
+      "open_p0_incidents": 0,
+      "open_p1_incidents": 0,
+      "production_release_authorised": false,
+      "rollback_required": false
+    },
+    "metrics_snapshot": {
+      "data_rights_routes_available": true,
+      "error_budget_breached": false,
+      "health_checks_green": true,
+      "live_learner_traffic_observed": true,
+      "metrics_window_utc": "2026-07-02T00:10:00Z/2026-07-02T01:10:00Z",
+      "notes": [
+        "Monitoring completed without incident",
+        "Seeded E2E regression stayed green"
+      ],
+      "seeded_e2e_regression_green": true
+    },
+    "monitoring_report": {
+      "path": "docs/operations/beta/controlled_beta_launch_monitoring_report.md",
+      "sha256": "5dac2be03faf58413b56a6619844e26c6428abfefaad50323ab5ad71ada8759e"
+    },
+    "rollback_decision": {
+      "path": "docs/operations/beta/controlled_beta_rollback_decision.md",
+      "sha256": "f1c77d1a43f770e6a9857b9e9c7dc1b1d34dacfd86111689e25ce827f06d36c1"
+    },
+    "support_log": {
+      "controlled_beta_launch_authorised": true,
+      "notes": [
+        "No support escalations required",
+        "Monitoring remained stable throughout the window"
+      ],
+      "public_beta_authorised": false,
+      "support_channel": "#beta-ops",
+      "support_owner": "Support Owner",
+      "total_tickets": 2,
+      "unresolved_p0_tickets": 0,
+      "unresolved_p1_tickets": 0
+    }
+  },
+  "errors": [],
+  "valid": true
+}
