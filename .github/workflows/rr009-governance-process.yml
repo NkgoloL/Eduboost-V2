@@ -1,0 +1,26 @@
+name: RR-009 Governance Process
+
+on:
+  pull_request:
+    paths:
+      - 'docs/current_state.md'
+      - 'docs/adr/**'
+      - 'docs/governance/**'
+      - 'docs/release/current/**'
+      - 'docs/roadmap/reconciliation/rr_009_*'
+      - 'scripts/governance/**'
+      - 'scripts/roadmap_reconciliation/*rr009*'
+      - 'tests/unit/roadmap_reconciliation/test_rr009_governance_process.py'
+      - 'Makefile'
+  workflow_dispatch:
+
+jobs:
+  rr009-governance-process:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify RR-009 governance process reconciliation
+        run: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr009_governance_process.py --authority-only --json
