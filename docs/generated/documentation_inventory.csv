@@ -151,7 +151,7 @@ docs/adr/ADR-032-curriculum-expansion-training-governance.md,markdown,,0,ADR-032
 docs/adr/ADR-033-learner-tutor-safety-boundary.md,markdown,,0,ADR-033 — Learner Tutor Safety and Context Boundary,ADR-033 — Learner Tutor Safety and Context Boundary,active,architecture,developer,False,2026-06-23,180,41,1771,,0,True
 docs/adr/ADR-034-irt-quality-self-healing.md,markdown,,0,ADR-034 — IRT Quality and Self-Healing Controls,ADR-034 — IRT Quality and Self-Healing Controls,active,architecture,developer,False,2026-06-23,180,43,2135,,0,True
 docs/adr/ADR-035-supabase-vs-raw-postgres-product-quality-gate.md,markdown,,0,ADR-035 — Supabase versus Raw Postgres Product Quality Gate,ADR-035 — Supabase versus Raw Postgres Product Quality Gate,proposed,architecture,developer,False,2026-07-02,180,42,1740,,0,True
-docs/adr/README.md,markdown,,0,Architectural Decision Records (ADR),Architectural Decision Records (ADR),active,architecture,developer,False,2026-06-23,180,45,1873,,0,True
+docs/adr/README.md,markdown,,0,Architectural Decision Records (ADR),Architectural Decision Records (ADR),active,architecture,developer,False,2026-07-02,180,98,8787,,0,True
 docs/adr/frontend/ADR-001-auth-model.md,markdown,,0,ADR-001 — Frontend Auth Model (FastAPI JWT + httpOnly cookie),ADR-001 — Frontend Auth Model (FastAPI JWT + httpOnly cookie),active,frontend,developer,False,2026-06-23,180,64,3162,,0,True
 docs/adr/frontend/ADR-001-rollback.md,markdown,,0,ADR-001 Rollback Plan — Supabase Auth Restoration,ADR-001 Rollback Plan — Supabase Auth Restoration,active,frontend,developer,False,2026-06-23,180,57,2616,,0,True
 docs/adr/frontend/ADR-002-state-management.md,markdown,,0,ADR-002 — State Management (Zustand + TanStack Query),ADR-002 — State Management (Zustand + TanStack Query),active,frontend,developer,False,2026-06-23,180,60,2802,,0,True
@@ -343,6 +343,11 @@ docs/beta_launch/beta_launch_staging_acceptance_architecture_contract.md,markdow
 docs/beta_launch/beta_product_scope_contract.md,markdown,,0,Beta Product Scope Contract,Beta Product Scope Contract,,,,,,,31,798,,0,False
 docs/beta_launch/post_beta_review_contract.md,markdown,,0,Post-Beta Review Contract,Post-Beta Review Contract,,,,,,,17,395,,0,False
 docs/beta_launch/staging_acceptance_criteria_contract.md,markdown,,0,Staging Acceptance Criteria Contract,Staging Acceptance Criteria Contract,,,,,,,34,725,,0,False
+docs/beta_outcomes/rr010_beta_outcome_report.template.md,markdown,,0,RR-010 Beta Outcome Report Template,RR-010 Beta Outcome Report Template,active,product,developer,True,2026-07-02,30,46,1272,,0,True
+docs/beta_outcomes/rr010_beta_outcome_reporting_policy.md,markdown,,0,RR-010 Beta Outcome Reporting Policy,RR-010 Beta Outcome Reporting Policy,active,product,developer,True,2026-07-02,30,44,1882,,0,True
+docs/beta_outcomes/rr010_educator_feedback_summary.template.md,markdown,,0,RR-010 Educator Feedback Summary Template,RR-010 Educator Feedback Summary Template,active,product,developer,True,2026-07-02,30,37,886,,0,True
+docs/beta_outcomes/rr010_incident_summary.template.md,markdown,,0,RR-010 Incident Summary Template,RR-010 Incident Summary Template,active,product,developer,True,2026-07-02,30,37,887,,0,True
+docs/beta_outcomes/rr010_weekly_health_reviews.template.md,markdown,,0,RR-010 Weekly Health Reviews Template,RR-010 Weekly Health Reviews Template,active,product,developer,True,2026-07-02,30,37,1048,,0,True
 docs/billing/billing_ux_audit_contract.md,markdown,,0,Billing UX and Audit Contract,Billing UX and Audit Contract,,,,,,,33,874,,0,False
 docs/billing/pricing_product_rules_contract.md,markdown,,0,Pricing and Product Rules Contract,Pricing and Product Rules Contract,,,,,,,35,1120,,0,False
 docs/billing/production_billing_provider_architecture_contract.md,markdown,,0,Production Billing Provider Architecture Contract,Production Billing Provider Architecture Contract,,,,,,,40,1305,,0,False
@@ -399,7 +404,7 @@ docs/content_factory/staging_seed_execution.md,markdown,,0,Content Factory Stagi
 docs/content_factory/staging_verification.md,markdown,,0,Content Factory Staging Verification,Content Factory Staging Verification,active,content-factory,developer,False,2026-06-24,60,52,1959,,0,True
 docs/content_factory_overnight_batch_pipeline.md,markdown,,0,Content Factory Full Generation System: Overnight Batch Pipeline — Complete Trace Text,Content Factory Full Generation System: Overnight Batch Pipeline — Complete Trace Text,,,,,,,1029,49878,,0,False
 docs/coverage-improvement-handover.md,markdown,,0,Code Coverage Improvement Handover,Code Coverage Improvement Handover,,,,,,,193,6677,,0,False
-docs/current_state.md,markdown,,0,EduBoost Current State,EduBoost Current State,active,release-management,developer,True,2026-06-22,14,51,2434,,0,True
+docs/current_state.md,markdown,,0,EduBoost Current State,EduBoost Current State,active,release-management,developer,True,2026-07-02,14,67,3501,,0,True
 docs/curriculum/StudyMaterialExpansionPlan.md,markdown,,0,Study Material Expansion Implementation Plan,Study Material Expansion Implementation Plan,active,curriculum,curriculum-reviewer,False,2026-06-24,60,609,25111,,0,True
 docs/curriculum/TOPIC_MAP_REVIEW_CHECKLIST.md,markdown,,0,Topic Map Review Checklist,Topic Map Review Checklist,current-evidence,curriculum,curriculum-reviewer,False,2026-06-24,60,379,11534,,0,True
 docs/curriculum/caps_topic_map.md,markdown,,0,CAPS Topic Map MVP,CAPS Topic Map MVP,active,curriculum,curriculum-reviewer,False,2026-06-24,60,58,1539,,0,True
@@ -558,6 +563,11 @@ docs/generated/documentation_intelligence/system_overview.md,markdown,,0,System 
 docs/generated/legacy-inventories/20260622T193052Z/docs_inventory.md,markdown,,0,Documentation Inventory,Documentation Inventory,,,,,,,1394,169777,,0,False
 docs/generated/release-inventories/20260622T193052Z/audit_callsite_inventory.md,markdown,,0,Audit Call-Site Inventory,Audit Call-Site Inventory,,,,,,,3176,422988,production-ready;release-ready,0,False
 docs/generated/release-inventories/20260622T193052Z/consent_callsite_inventory.md,markdown,,0,Consent Call-Site Inventory,Consent Call-Site Inventory,,,,,,,613,82761,,0,False
+docs/governance/rr009_adr_index_completion.md,markdown,,0,RR-009 ADR Index Completion,RR-009 ADR Index Completion,active,architecture,developer,True,2026-07-02,30,24,650,,0,True
+docs/governance/rr009_branch_protection_release_docs.md,markdown,,0,RR-009 Branch Protection Release Documentation,RR-009 Branch Protection Release Documentation,active,release-management,reviewer,True,2026-07-02,14,24,891,,0,True
+docs/governance/rr009_current_state_refresh_cadence.md,markdown,,0,RR-009 Current State Refresh Cadence,RR-009 Current State Refresh Cadence,active,release-management,developer,True,2026-07-02,14,31,1038,,0,True
+docs/governance/rr009_external_todo_ownership_register.md,markdown,,0,RR-009 External TODO Ownership Register,RR-009 External TODO Ownership Register,active,governance,reviewer,True,2026-07-02,14,34,1646,,0,True
+docs/governance/rr009_governance_process_policy.md,markdown,,0,RR-009 Governance Process Policy,RR-009 Governance Process Policy,active,governance,developer,True,2026-07-02,30,39,1484,,0,True
 docs/incident_response.md,markdown,,0,Incident Response Playbook,Incident Response Playbook,,,,,,,44,2260,,0,False
 docs/index.md,markdown,,0,EduBoost V2,EduBoost V2,,,,,,,27,1408,,1,False
 docs/input/README.md,markdown,,0,Archived documentation redirect,Archived documentation redirect,archived,documentation-governance,reviewer,False,2026-06-22,180,25,772,,0,True
@@ -882,6 +892,7 @@ docs/release-evidence/roadmap-reconciliation/rr-005-technical-debt-burndown/evid
 docs/release-evidence/roadmap-reconciliation/rr-006-security-posture-deepening/evidence_index.md,markdown,,0,RR-006 Security Posture Deepening Evidence,RR-006 Security Posture Deepening Evidence,,,,,,,29,680,,0,False
 docs/release-evidence/roadmap-reconciliation/rr-007-product-quality-gates/evidence_index.md,markdown,,0,RR-007 Product Quality Gates Evidence,RR-007 Product Quality Gates Evidence,,,,,,,23,823,,0,False
 docs/release-evidence/roadmap-reconciliation/rr-008-operational-readiness/evidence_index.md,markdown,,0,RR-008 Operational Readiness Evidence,RR-008 Operational Readiness Evidence,,,,,,,32,1103,,0,False
+docs/release-evidence/roadmap-reconciliation/rr-009-governance-process-reconciliation/evidence_index.md,markdown,,0,RR-009 Governance Process Reconciliation Evidence,RR-009 Governance Process Reconciliation Evidence,,,,,,,33,1195,,0,False
 docs/release-evidence/runtime-readiness/phase-14-live-stack-readiness/evidence_index.md,markdown,,0,Phase 14 Live-Stack Readiness Evidence,Phase 14 Live-Stack Readiness Evidence,,,,,,,24,604,,0,False
 docs/release-evidence/runtime-readiness/phase-15-backend-backed-e2e/evidence_index.md,markdown,,0,Phase 15 Backend-Backed E2E Smoke Evidence,Phase 15 Backend-Backed E2E Smoke Evidence,,,,,,,28,561,,0,False
 docs/release-evidence/runtime-readiness/phase-16-backend-backed-seeded-e2e/evidence_index.md,markdown,,0,Phase 16 Backend-Backed Seeded E2E Evidence,Phase 16 Backend-Backed Seeded E2E Evidence,,,,,,,28,570,,0,False
@@ -1053,7 +1064,8 @@ docs/release/consent_service_compatibility_contract.md,markdown,,0,Consent Servi
 docs/release/content_factory_refreshed_status.md,markdown,,0,Content Factory Refreshed Status,Content Factory Refreshed Status,,,,,,,50,4490,,0,False
 docs/release/content_readiness_status.md,markdown,,0,Content Readiness Status,Content Readiness Status,,,,,,,27,1387,,0,False
 docs/release/coverage_ci_route_authority.md,markdown,,0,"Coverage, CI, and Route Authority","Coverage, CI, and Route Authority",,,,,,,36,1374,,0,False
-docs/release/current/README.md,markdown,,0,Current Release Documentation Index,Current Release Documentation,active,release-management,reviewer,True,2026-06-22,14,21,762,,0,True
+docs/release/current/README.md,markdown,,0,Current Release Documentation Index,Current Release Documentation,active,release-management,reviewer,True,2026-07-02,14,27,1007,,0,True
+docs/release/current/branch_protection_evidence.md,markdown,,0,Branch Protection Evidence Linkage,Branch Protection Evidence Linkage,active,release-management,reviewer,True,2026-07-02,14,37,1606,,0,True
 docs/release/db_backup_restore_rollback_evidence_status.md,markdown,,0,DB Backup / Restore / Rollback Evidence Status,DB Backup / Restore / Rollback Evidence Status,,,,,,,54,1349,,0,False
 docs/release/db_live_only_table_ownership_status.md,markdown,,0,DB Live-Only Table Ownership Status,DB Live-Only Table Ownership Status,,,,,,,31,1468,,0,False
 docs/release/db_migration_seed_repeatability_status.md,markdown,,0,DB Migration + Seed Repeatability Status,DB Migration + Seed Repeatability Status,,,,,,,69,2114,,0,False
@@ -1494,6 +1506,8 @@ docs/roadmap/reconciliation/rr_005_technical_debt_burndown.md,markdown,,0,RR-005
 docs/roadmap/reconciliation/rr_006_security_posture_deepening.md,markdown,,0,RR-006 — Security Posture Deepening,RR-006 — Security Posture Deepening,,,,,,,42,1497,,0,False
 docs/roadmap/reconciliation/rr_007_product_quality_gates.md,markdown,,0,RR-007 Product Completeness / Quality Gates,RR-007 Product Completeness / Quality Gates,active,engineering,developer,False,2026-07-02,60,39,1403,,0,True
 docs/roadmap/reconciliation/rr_008_operational_readiness.md,markdown,,0,RR-008 Operational Readiness,RR-008 Operational Readiness,authority,operations,"developer, operator",True,,,37,1319,,0,True
+docs/roadmap/reconciliation/rr_009_governance_process_reconciliation.md,markdown,,0,RR-009 Governance Process Reconciliation,RR-009 Governance Process Reconciliation,active,governance,developer,True,2026-07-02,30,43,1218,,0,True
+docs/roadmap/reconciliation/rr_010_beta_outcome_reporting.md,markdown,,0,RR-010 Beta Outcome Reporting,RR-010 Beta Outcome Reporting,active,product,developer,True,2026-07-02,30,49,1555,,0,True
 docs/roadmap/roadmap.md,markdown,,0,EduBoost V2 Remediation Roadmap,EduBoost V2 Remediation Roadmap,,,,,,,671,25783,production-ready,0,False
 docs/roadmap/roadmap_dependency_register.md,markdown,,0,Roadmap Dependency Register,Roadmap Dependency Register,,,,,,,24,501,,0,False
 docs/roadmap/roadmap_graduation_criteria.md,markdown,,0,Roadmap Graduation Criteria,Roadmap Graduation Criteria,,,,,,,24,548,,0,False
