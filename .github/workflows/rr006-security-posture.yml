@@ -1,0 +1,57 @@
+name: RR-006 Security Posture
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/rr006-security-posture.yml'
+      - '.github/workflows/secrets-scan.yml'
+      - '.pre-commit-config.yaml'
+      - 'requirements*.txt'
+      - 'docs/security/**'
+      - 'scripts/roadmap_reconciliation/**'
+      - 'tests/unit/roadmap_reconciliation/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rr006-security-posture:
+    name: RR-006 security posture controls
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify RR-006 control record
+        run: |
+          python3 -m py_compile \
+            scripts/roadmap_reconciliation/verify_rr006_security_posture_deepening.py \
+            scripts/roadmap_reconciliation/capture_rr006_security_posture_deepening_evidence.py
+          PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr006_security_posture_deepening.py --json
+
+      - name: Install audit tools
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install pip-audit detect-secrets
+
+      - name: Python dependency audit
+        run: |
+          set -euo pipefail
+          for req in requirements.txt requirements-dev.txt requirements-docs.txt requirements-ml.txt; do
+            if [ -f "$req" ]; then
+              echo "Running pip-audit for $req"
+              pip-audit -r "$req" --format=json > "pip-audit-${req}.json"
+            fi
+          done
+
+      - name: Secrets scan
+        run: |
+          set -euo pipefail
+          detect-secrets scan --baseline .secrets.baseline . > /tmp/rr006-detect-secrets.json
+          python3 -m json.tool /tmp/rr006-detect-secrets.json > /tmp/rr006-detect-secrets.pretty.json

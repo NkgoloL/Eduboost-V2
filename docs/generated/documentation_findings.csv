@@ -1,12 +1,13 @@
 severity,type,path,detail
 high,broken_local_links,CONTRIBUTING.md,1
+high,broken_local_links,README.md,1
 high,broken_local_links,SECURITY.md,1
 high,broken_local_links,docs/content_factory/CONTENT_GENERATION_CONFIG.md,1
 high,broken_local_links,docs/frontend/post-rc5-dependency-maintenance.md,1
 high,broken_local_links,docs/index.md,1
 high,broken_local_links,docs/operations/SYSTEM_STARTUP_GUIDE.md,3
 high,broken_local_links,docs/operations/SYSTEM_STARTUP_REPORT.md,3
-high,broken_local_links,docs/project_status.md,3
+high,broken_local_links,docs/project_status.md,2
 high,broken_local_links,docs/v2_migration.md,1
 high,risky_or_stale_terms,docs/adr/ADR-025-frontend-upgrade-backlog-metadata.md,all tests pass
 high,risky_or_stale_terms,docs/architecture/CORE_TECHNICAL_AUDIT_2026-05-17.md,production-ready
@@ -26,6 +27,7 @@ high,risky_or_stale_terms,docs/project_status.md,production-ready; release-ready
 high,risky_or_stale_terms,docs/release/EVIDENCE_INDEX.md,release-ready
 high,risky_or_stale_terms,docs/release/EduBoost_V2_Comparative_Audit_Report.md,production-ready
 high,risky_or_stale_terms,docs/release/EduBoost_V2_North_Star_TODO_2026-05-22.md,production-ready
+high,risky_or_stale_terms,docs/release/audit_callsite_inventory.md,production-ready; release-ready
 high,risky_or_stale_terms,docs/release/eduboost-v2-technical-audit-2026-06-02.md,production-ready; release-ready
 high,risky_or_stale_terms,docs/release/final_beta_gate_refresh.md,release-ready
 high,risky_or_stale_terms,docs/release/next_execution_queue_after_1151_1190.md,production-ready
@@ -45,6 +47,7 @@ high,risky_or_stale_terms,docs/repository/governance.md,all tests pass
 high,risky_or_stale_terms,docs/repository_governance.md,production-ready
 high,risky_or_stale_terms,docs/roadmap/EduBoost_Full_Lifecycle_Delivery_and_Beta_Readiness_Plan.md,release-ready
 high,risky_or_stale_terms,docs/roadmap/execution/phase_8_execution_plan.md,all tests pass
+high,risky_or_stale_terms,docs/roadmap/execution/technical_audit_remediation/01_openapi_route_contract.md,green baseline
 high,risky_or_stale_terms,docs/roadmap/production_readiness_baseline_boundary_contract.md,production-ready
 high,risky_or_stale_terms,docs/roadmap/roadmap.md,production-ready
 high,risky_or_stale_terms,docs/roadmap_domains/domain_01_repository-governance-ci_execution_report.md,production-ready
@@ -92,10 +95,13 @@ low,oversized_document,docs/codemaps/routeguard_authentication_flow_and_testing.
 low,oversized_document,docs/codemaps/test_coverage_and_ci_pipeline_configuration.md,582 lines
 low,oversized_document,docs/content_factory_overnight_batch_pipeline.md,1029 lines
 low,oversized_document,docs/curriculum/StudyMaterialExpansionPlan.md,594 lines
+low,oversized_document,docs/docs_inventory.md,1712 lines
 low,oversized_document,docs/etl/README.md,558 lines
 low,oversized_document,docs/release/EVIDENCE_INDEX.md,1682 lines
 low,oversized_document,docs/release/EduBoost_V2_Production_Readiness_Technical_Assessment.md,520 lines
 low,oversized_document,docs/release/EduBoost_V2_Technical_Report_v2.md,762 lines
+low,oversized_document,docs/release/audit_callsite_inventory.md,3981 lines
+low,oversized_document,docs/release/consent_callsite_inventory.md,615 lines
 low,oversized_document,docs/roadmap/EduBoost_Full_Lifecycle_Delivery_and_Beta_Readiness_Plan.md,1882 lines
 low,oversized_document,docs/roadmap/execution/atlas/phase_02r_appendix_a_data_model.md,598 lines
 low,oversized_document,docs/roadmap/execution/atlas/phase_02r_execution_plan.md,2352 lines
@@ -104,9 +110,13 @@ low,oversized_document,docs/roadmap/execution/audit_remediation_roadmap_2026-06-
 low,oversized_document,docs/roadmap/roadmap.md,671 lines
 medium,duplicate_title,audits/reports/CORE_TECHNICAL_AUDIT_2026-05-17.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/API_REFERENCE.md,Duplicate title appears in 2 files
-medium,duplicate_title,docs/DOC/README.md,Duplicate title appears in 9 files
+medium,duplicate_title,docs/DOC/README.md,Duplicate title appears in 6 files
 medium,duplicate_title,docs/architecture/CORE_TECHNICAL_AUDIT_2026-05-17.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 3 - Implementation & Code/DOC-13_API-Reference.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/archive/pr-notes/20260622T193052Z/pr/backend_runtime_wiring_pr_template.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/archive/pr-notes/20260622T193052Z/pr/combined_runtime_wiring_pr_checklist.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/archive/pr-notes/20260622T193052Z/pr/first_audit_runtime_wiring_pr_checklist.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/archive/pr-notes/20260622T193052Z/pr/runtime_integration_pr_template.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/archive/pr_007_implementation_summary.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/backlog/pr_004_implementation_summary.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/backlog/pr_007_implementation_summary.md,Duplicate title appears in 2 files
@@ -119,32 +129,65 @@ medium,duplicate_title,docs/compliance/subprocessor_register.md,Duplicate title 
 medium,duplicate_title,docs/data_retention_policy.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/docs_gap_report.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/docs_generation_plan.md,Duplicate title appears in 2 files
-medium,duplicate_title,docs/docs_inventory.md,Duplicate title appears in 9 files
+medium,duplicate_title,docs/docs_inventory.md,Duplicate title appears in 3 files
 medium,duplicate_title,docs/generated/documentation_intelligence/docs_gap_report.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/generated/documentation_intelligence/docs_generation_plan.md,Duplicate title appears in 2 files
-medium,duplicate_title,docs/generated/documentation_intelligence/docs_inventory.md,Duplicate title appears in 2 files
-medium,duplicate_title,docs/generated/legacy-inventories/20260622T193052Z/docs_inventory.md,Duplicate title appears in 2 files
-medium,duplicate_title,docs/input/README.md,Duplicate title appears in 9 files
+medium,duplicate_title,docs/generated/documentation_intelligence/docs_inventory.md,Duplicate title appears in 3 files
+medium,duplicate_title,docs/generated/legacy-inventories/20260622T193052Z/docs_inventory.md,Duplicate title appears in 3 files
+medium,duplicate_title,docs/generated/release-inventories/20260622T193052Z/audit_callsite_inventory.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/generated/release-inventories/20260622T193052Z/consent_callsite_inventory.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/input/README.md,Duplicate title appears in 6 files
+medium,duplicate_title,docs/operations/beta/controlled_beta_launch_monitoring_report.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/operations/beta/controlled_beta_launch_monitoring_report.template.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/operations/beta/controlled_beta_rollback_decision.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/operations/beta/controlled_beta_rollback_decision.template.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/operations/beta_feedback_intake_contract.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/operations/beta_known_issues_register.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/operations/release_audit_trail_index.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/operations/release_state_snapshot.md,Duplicate title appears in 2 files
-medium,duplicate_title,docs/patches/README.md,Duplicate title appears in 9 files
+medium,duplicate_title,docs/patches/README.md,Duplicate title appears in 6 files
 medium,duplicate_title,docs/popia/popia_data_rights.md,Duplicate title appears in 2 files
-medium,duplicate_title,docs/pr/README.md,Duplicate title appears in 9 files
+medium,duplicate_title,docs/pr/README.md,Duplicate title appears in 6 files
+medium,duplicate_title,docs/pr/backend_runtime_wiring_pr_template.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/pr/combined_runtime_wiring_pr_checklist.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/pr/first_audit_runtime_wiring_pr_checklist.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/pr/runtime_integration_pr_template.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/project/status.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/release-evidence/atlas/phase-02r/gate-2r1/evidence_index.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/release-evidence/atlas/phase-02r/gate-2r1/superseded/2026-06-16-premature-transition/evidence_index.md,Duplicate title appears in 2 files
-medium,duplicate_title,docs/release/audit_callsite_inventory.md,Duplicate title appears in 9 files
+medium,duplicate_title,docs/release-evidence/roadmap-reconciliation/roadmap-reconciliation-slice/raw/outstanding_work_register_snapshot.md,Duplicate title appears in 3 files
+medium,duplicate_title,docs/release-evidence/roadmap-reconciliation/roadmap-reconciliation-slice/raw/phase_18_to_21_governance_classification_snapshot.md,Duplicate title appears in 3 files
+medium,duplicate_title,docs/release-evidence/roadmap-reconciliation/roadmap-reconciliation-slice/raw/roadmap_new_work_freeze_snapshot.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/release-evidence/roadmap-reconciliation/rr-001-atlas-phase-status-reconciliation/raw/docs__roadmap__PHASE_STATUS_REGISTER.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/release-evidence/roadmap-reconciliation/rr-001-atlas-phase-status-reconciliation/raw/docs__roadmap__reconciliation__outstanding_work_register.md,Duplicate title appears in 3 files
+medium,duplicate_title,docs/release-evidence/roadmap-reconciliation/rr-001-atlas-phase-status-reconciliation/raw/docs__roadmap__reconciliation__phase_18_to_21_governance_classification.md,Duplicate title appears in 3 files
+medium,duplicate_title,docs/release-evidence/roadmap-reconciliation/rr-001-atlas-phase-status-reconciliation/raw/docs__roadmap__reconciliation__rr_001_atlas_phase_status_reconciliation.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/release-evidence/technical-audit/backend-fast-phase02e/20260626T125325Z/evidence_index.md,Duplicate title appears in 3 files
+medium,duplicate_title,docs/release-evidence/technical-audit/backend-fast-phase02e/20260626T125348Z/evidence_index.md,Duplicate title appears in 3 files
+medium,duplicate_title,docs/release-evidence/technical-audit/backend-fast-phase02e/20260626T125448Z/evidence_index.md,Duplicate title appears in 3 files
+medium,duplicate_title,docs/release-evidence/technical-audit/backend-fast-phase02f/20260626T133205Z/evidence_index.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/release-evidence/technical-audit/backend-fast-phase02f/20260626T133525Z/evidence_index.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/release-evidence/technical-audit/backend-fast-phase02i/20260626T184358Z/evidence_index.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/release-evidence/technical-audit/backend-fast-phase02i/20260626T184557Z/evidence_index.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/release-evidence/technical-audit/backend-fast-runtime-dependencies/20260624T112921Z/evidence_index.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/release-evidence/technical-audit/backend-fast-runtime-dependencies/20260624T120642Z/evidence_index.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/release/audit_callsite_inventory.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/release/audit_trail_index.md,Duplicate title appears in 2 files
-medium,duplicate_title,docs/release/consent_callsite_inventory.md,Duplicate title appears in 9 files
+medium,duplicate_title,docs/release/consent_callsite_inventory.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/release/release_state_snapshot.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/release/staging_smoke_evidence.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/release/staging_smoke_evidence_status.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/release/status.md,Duplicate title appears in 2 files
-medium,duplicate_title,docs/release/superseded/README.md,Duplicate title appears in 9 files
+medium,duplicate_title,docs/release/superseded/README.md,Duplicate title appears in 6 files
+medium,duplicate_title,docs/roadmap/PHASE_STATUS_REGISTER.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/roadmap/execution/technical_audit_remediation/09_hosted_ci_merge_readiness_authority.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/roadmap/execution/technical_audit_remediation/phase_09_hosted_ci_authority.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/roadmap/reconciliation/outstanding_work_register.md,Duplicate title appears in 3 files
+medium,duplicate_title,docs/roadmap/reconciliation/phase_18_to_21_governance_classification.md,Duplicate title appears in 3 files
+medium,duplicate_title,docs/roadmap/reconciliation/roadmap_new_work_freeze.md,Duplicate title appears in 2 files
+medium,duplicate_title,docs/roadmap/reconciliation/rr_001_atlas_phase_status_reconciliation.md,Duplicate title appears in 2 files
 medium,duplicate_title,docs/subprocessor_register.md,Duplicate title appears in 2 files
-medium,duplicate_title,docs/todos/README.md,Duplicate title appears in 9 files
+medium,duplicate_title,docs/todos/README.md,Duplicate title appears in 6 files
 medium,duplicate_title,reports/content_factory/full_generation/20260526_171526/summary.md,Duplicate title appears in 4 files
 medium,duplicate_title,reports/content_factory/full_generation/20260526_174709/summary.md,Duplicate title appears in 4 files
 medium,duplicate_title,reports/content_factory/full_generation/20260526_174919/summary.md,Duplicate title appears in 4 files
@@ -155,6 +198,7 @@ medium,missing_metadata,.github/PULL_REQUEST_TEMPLATE/documentation_change.md,No
 medium,missing_metadata,.github/SECRETS_CONFIGURATION.md,No YAML front matter
 medium,missing_metadata,.github/prompts/plan-addGoogleDocstringsToModules.prompt.md,No YAML front matter
 medium,missing_metadata,.github/pull_request_template.md,No YAML front matter
+medium,missing_metadata,AGENT_INSTRUCTIONS_V2.md,No YAML front matter
 medium,missing_metadata,CHANGELOG.md,No YAML front matter
 medium,missing_metadata,CODE_OF_CONDUCT.md,No YAML front matter
 medium,missing_metadata,CONTRIBUTING.md,No YAML front matter
@@ -195,6 +239,13 @@ medium,missing_metadata,docs/api_envelope_contract.md,No YAML front matter
 medium,missing_metadata,docs/api_v2.md,No YAML front matter
 medium,missing_metadata,docs/api_versioning_policy.md,No YAML front matter
 medium,missing_metadata,docs/architecture.md,No YAML front matter
+medium,missing_metadata,docs/architecture/auth_boundary_debt_report.md,No YAML front matter
+medium,missing_metadata,docs/architecture/auth_service_extraction_followup.md,No YAML front matter
+medium,missing_metadata,docs/architecture/auth_service_extraction_report.md,No YAML front matter
+medium,missing_metadata,docs/architecture/import_linter_availability.md,No YAML front matter
+medium,missing_metadata,docs/architecture/legacy_learner_access_guard_report.md,No YAML front matter
+medium,missing_metadata,docs/architecture/router_repository_boundary_matrix.md,No YAML front matter
+medium,missing_metadata,docs/architecture/service_boundary_inventory.md,No YAML front matter
 medium,missing_metadata,docs/backend/README.md,No YAML front matter
 medium,missing_metadata,docs/backlog/PR_chore_docs_governance_body.md,No YAML front matter
 medium,missing_metadata,docs/backlog/backlog_audit.md,No YAML front matter
@@ -344,6 +395,7 @@ medium,missing_metadata,docs/disaster_recovery/runbooks/database_restore.md,No Y
 medium,missing_metadata,docs/disaster_recovery/runbooks/object_storage_restore.md,No YAML front matter
 medium,missing_metadata,docs/docs_gap_report.md,No YAML front matter
 medium,missing_metadata,docs/docs_generation_plan.md,No YAML front matter
+medium,missing_metadata,docs/docs_inventory.md,No YAML front matter
 medium,missing_metadata,docs/documentation_intelligence_pipeline.md,No YAML front matter
 medium,missing_metadata,docs/engineering/branching.md,No YAML front matter
 medium,missing_metadata,docs/engineering/ci_workflows.md,No YAML front matter
@@ -458,6 +510,27 @@ medium,missing_metadata,docs/operations/archival_lock_assertion.md,No YAML front
 medium,missing_metadata,docs/operations/audit_review_closeout_certificate.md,No YAML front matter
 medium,missing_metadata,docs/operations/backup_redis_dr_evidence.md,No YAML front matter
 medium,missing_metadata,docs/operations/backup_restore_runbook.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_activation_preflight_checklist.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_consent_pack_attestation.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_consent_pack_attestation.template.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_consent_pack_checklist.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_data_handling_register.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_data_migration_dry_run_checklist.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_go_no_go_decision.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_go_no_go_decision.template.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_incident_response_runbook.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_launch_activation_approval.template.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_launch_activation_boundary.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_launch_governance.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_launch_monitoring_report.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_launch_monitoring_report.template.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_observability_plan.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_participant_onboarding_checklist.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_rollback_decision.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_rollback_decision.template.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_rollback_plan.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_support_runbook.md,No YAML front matter
+medium,missing_metadata,docs/operations/beta/controlled_beta_traffic_control_plan.md,No YAML front matter
 medium,missing_metadata,docs/operations/beta_acceptance_exit_criteria.md,No YAML front matter
 medium,missing_metadata,docs/operations/beta_evidence_consistency_guard.md,No YAML front matter
 medium,missing_metadata,docs/operations/beta_feedback_intake_contract.md,No YAML front matter
@@ -605,6 +678,11 @@ medium,missing_metadata,docs/popia_consent_versioning_design.md,No YAML front ma
 medium,missing_metadata,docs/popia_erasure.md,No YAML front matter
 medium,missing_metadata,docs/popia_erasure_cascade_matrix.md,No YAML front matter
 medium,missing_metadata,docs/popia_export_data_inventory.md,No YAML front matter
+medium,missing_metadata,docs/pr/PR-002R_BACKEND_RUNTIME_API_CONTRACT.md,No YAML front matter
+medium,missing_metadata,docs/pr/backend_runtime_wiring_pr_template.md,No YAML front matter
+medium,missing_metadata,docs/pr/combined_runtime_wiring_pr_checklist.md,No YAML front matter
+medium,missing_metadata,docs/pr/first_audit_runtime_wiring_pr_checklist.md,No YAML front matter
+medium,missing_metadata,docs/pr/runtime_integration_pr_template.md,No YAML front matter
 medium,missing_metadata,docs/privacy/information_officer.md,No YAML front matter
 medium,missing_metadata,docs/production_readiness_roadmap.md,No YAML front matter
 medium,missing_metadata,docs/project/status.md,No YAML front matter
@@ -660,6 +738,7 @@ medium,missing_metadata,docs/release/approval_evidence_status.md,No YAML front m
 medium,missing_metadata,docs/release/arq_consent_job_repair_report.md,No YAML front matter
 medium,missing_metadata,docs/release/arq_dependency_worker_import_repair_report.md,No YAML front matter
 medium,missing_metadata,docs/release/audit_baseline_refresh_status.md,No YAML front matter
+medium,missing_metadata,docs/release/audit_callsite_inventory.md,No YAML front matter
 medium,missing_metadata,docs/release/audit_callsite_migration_slice_002.md,No YAML front matter
 medium,missing_metadata,docs/release/audit_candidate_execution_ledger.md,No YAML front matter
 medium,missing_metadata,docs/release/audit_canonicalization_implementation_checklist.md,No YAML front matter
@@ -750,6 +829,7 @@ medium,missing_metadata,docs/release/ci_evidence.md,No YAML front matter
 medium,missing_metadata,docs/release/ci_evidence_status.md,No YAML front matter
 medium,missing_metadata,docs/release/ci_run_evidence_status.md,No YAML front matter
 medium,missing_metadata,docs/release/ci_workflow_consolidation.md,No YAML front matter
+medium,missing_metadata,docs/release/consent_callsite_inventory.md,No YAML front matter
 medium,missing_metadata,docs/release/consent_candidate_execution_ledger.md,No YAML front matter
 medium,missing_metadata,docs/release/consent_runtime_compatibility_slice_001.md,No YAML front matter
 medium,missing_metadata,docs/release/consent_runtime_integration_target_map.md,No YAML front matter
@@ -758,6 +838,7 @@ medium,missing_metadata,docs/release/consent_runtime_repair_slice_002.md,No YAML
 medium,missing_metadata,docs/release/consent_service_compatibility_contract.md,No YAML front matter
 medium,missing_metadata,docs/release/content_factory_refreshed_status.md,No YAML front matter
 medium,missing_metadata,docs/release/content_readiness_status.md,No YAML front matter
+medium,missing_metadata,docs/release/coverage_ci_route_authority.md,No YAML front matter
 medium,missing_metadata,docs/release/db_backup_restore_rollback_evidence_status.md,No YAML front matter
 medium,missing_metadata,docs/release/db_live_only_table_ownership_status.md,No YAML front matter
 medium,missing_metadata,docs/release/db_migration_seed_repeatability_status.md,No YAML front matter
@@ -781,6 +862,7 @@ medium,missing_metadata,docs/release/diagnostics_scoring_snapshot_repair_report.
 medium,missing_metadata,docs/release/diagnostics_session_binding_repair_report.md,No YAML front matter
 medium,missing_metadata,docs/release/disposable_db_schema_proof_execution_report.md,No YAML front matter
 medium,missing_metadata,docs/release/docker_hardening_status.md,No YAML front matter
+medium,missing_metadata,docs/release/dormant_router_inventory.md,No YAML front matter
 medium,missing_metadata,docs/release/eduboost-v2-technical-audit-2026-06-02.md,No YAML front matter
 medium,missing_metadata,docs/release/evidence_attachment_runbook.md,No YAML front matter
 medium,missing_metadata,docs/release/external_approval_status.md,No YAML front matter
@@ -1130,7 +1212,52 @@ medium,missing_metadata,docs/roadmap/execution/phase_audit_report_template.md,No
 medium,missing_metadata,docs/roadmap/execution/phase_evidence_pack_template.md,No YAML front matter
 medium,missing_metadata,docs/roadmap/execution/phase_execution_plan_template.md,No YAML front matter
 medium,missing_metadata,docs/roadmap/execution/phase_implementation_report_template.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/runtime_readiness/14_live_stack_readiness_authority.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/runtime_readiness/15_backend_backed_e2e_authority.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/runtime_readiness/16_backend_backed_seeded_e2e_authority.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/runtime_readiness/16a_seeded_e2e_contract_repair.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/runtime_readiness/16c1_runtime_boot_import_compatibility.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/runtime_readiness/16c2_dev_session_auth_consent_contract.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/runtime_readiness/16c3_diagnostic_item_fetch_answer_contract.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/runtime_readiness/16c_diagnostic_item_fetch_contract_repair.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/runtime_readiness/17_controlled_beta_readiness_authority.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/runtime_readiness/18_controlled_beta_launch_governance_authority.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/runtime_readiness/19_controlled_beta_activation_preflight_authority.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/runtime_readiness/20_controlled_beta_launch_activation_authority.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/runtime_readiness/21_controlled_beta_launch_monitoring_authority.md,No YAML front matter
 medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/00_control_reset.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/01_openapi_route_contract.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/02_backend_fast_gate.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/02a_backend_fast_failure_triage.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/02b_backend_fast_runtime_dependencies.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/02c_backend_fast_scope_registry.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/02d_backend_fast_staging_contracts.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/02e_backend_fast_router_frontend_seed.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/02f_backend_fast_item_seed_router.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/02f_backend_fast_item_seed_router_status.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/02g_backend_fast_popia_async_contracts.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/02g_backend_fast_popia_async_contracts_status.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/02h_backend_fast_residual_contracts.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/02i_backend_fast_topic_map_provenance.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/02j_backend_fast_tracked_topic_map_provenance.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/02k_backend_fast_evidence_authority.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/02l_backend_fast_xfailed_evidence_verifier.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/02m_backend_fast_head_aligned_finalization.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/02n_backend_fast_evidence_finalization.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/03_frontend_tooling_authority.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/03a_frontend_tooling_vitest_contracts.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/04_ci_authority_workflow_cleanup.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/05_dependency_scan_enforcement.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/06_e2e_playwright_execution_authority.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/07_openapi_frontend_contract_finalization.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/08_remote_ci_branch_integration_authority.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/09_hosted_ci_merge_readiness_authority.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/10_branch_protection_merge_readiness.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/11_release_readiness_authority.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/12_technical_audit_remediation_closure.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/13b_post_merge_protected_branch_baseline_authority.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/phase_09_hosted_ci_authority.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/execution/technical_audit_remediation/true_state_application_audit_2026-06-29.md,No YAML front matter
 medium,missing_metadata,docs/roadmap/ga_graduation_boundary_contract.md,No YAML front matter
 medium,missing_metadata,docs/roadmap/post_530_north_star_execution_board.md,No YAML front matter
 medium,missing_metadata,docs/roadmap/post_baseline_risk_register.md,No YAML front matter
@@ -1139,6 +1266,14 @@ medium,missing_metadata,docs/roadmap/post_baseline_roadmap_register.md,No YAML f
 medium,missing_metadata,docs/roadmap/production_grade.md,No YAML front matter
 medium,missing_metadata,docs/roadmap/production_grade_p0_blockers_2026_06_01.md,No YAML front matter
 medium,missing_metadata,docs/roadmap/production_readiness_baseline_boundary_contract.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/reconciliation/outstanding_work_register.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/reconciliation/phase_18_to_21_governance_classification.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/reconciliation/roadmap_new_work_freeze.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/reconciliation/roadmap_reconciliation_slice.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/reconciliation/rr_001_atlas_phase_status_reconciliation.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/reconciliation/rr_002_privacy_popia_completion.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/reconciliation/rr_003_coverage_ci_route_authority.md,No YAML front matter
+medium,missing_metadata,docs/roadmap/reconciliation/rr_006_security_posture_deepening.md,No YAML front matter
 medium,missing_metadata,docs/roadmap/roadmap.md,No YAML front matter
 medium,missing_metadata,docs/roadmap/roadmap_dependency_register.md,No YAML front matter
 medium,missing_metadata,docs/roadmap/roadmap_graduation_criteria.md,No YAML front matter
@@ -1167,6 +1302,17 @@ medium,missing_metadata,docs/runbooks/irt_quality_watchdog.md,No YAML front matt
 medium,missing_metadata,docs/runbooks/learner_tutor.md,No YAML front matter
 medium,missing_metadata,docs/safety/content_policy.md,No YAML front matter
 medium,missing_metadata,docs/secrets.md,No YAML front matter
+medium,missing_metadata,docs/security/PHASE2_AUTHORIZATION_CLOSURE.md,No YAML front matter
+medium,missing_metadata,docs/security/dependency_pin_report.md,No YAML front matter
+medium,missing_metadata,docs/security/jwt_rotation_introspection.md,No YAML front matter
+medium,missing_metadata,docs/security/jwt_rotation_repair_report.md,No YAML front matter
+medium,missing_metadata,docs/security/popia_consent_boundary_matrix.md,No YAML front matter
+medium,missing_metadata,docs/security/popia_consent_gate_inventory.md,No YAML front matter
+medium,missing_metadata,docs/security/python_dependency_audit_policy.md,No YAML front matter
+medium,missing_metadata,docs/security/rr006_security_posture_control_map.md,No YAML front matter
+medium,missing_metadata,docs/security/rr006_threat_model_review.md,No YAML front matter
+medium,missing_metadata,docs/security/secrets_scanning_enforcement.md,No YAML front matter
+medium,missing_metadata,docs/security/v2_pen_test_checklist.md,No YAML front matter
 medium,missing_metadata,docs/spikes/FE-SPIKE-001-next-react-compat.md,No YAML front matter
 medium,missing_metadata,docs/spikes/FE-SPIKE-002-initial-bundle-budget.md,No YAML front matter
 medium,missing_metadata,docs/spikes/FE-SPIKE-003-ppr-deployment-viability.md,No YAML front matter
