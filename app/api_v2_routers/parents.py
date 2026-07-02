@@ -23,6 +23,7 @@ from app.security.dependencies import require_learner_write_for_current_user
 from app.services.consent import ConsentService
 from app.services.executive import ExecutiveService
 from app.services.fourth_estate import FourthEstateService
+from app.services.popia_service import POPIADataRightsService
 
 router = APIRouter(route_class=EnvelopedRoute, prefix="/parents", tags=["parents"])
 _executive = ExecutiveService()
@@ -267,33 +268,19 @@ async def get_learner_progress(
     }
 
 
-@router.delete("/learners/{learner_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/learners/{learner_id}", status_code=status.HTTP_202_ACCEPTED)
 async def request_erasure(
     learner_id: str,
-    background_tasks: BackgroundTasks,
     db: AsyncSession = Depends(get_db),
     current_user: AuthContext = Depends(require_parent_or_admin),
-) -> Response:
-    learner = await LearnerRepository(db).get_by_id(learner_id)
-    if learner is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
-    require_learner_write_for_current_user(current_user, learner_id)
+) -> dict:
+    """Create a canonical POPIA erasure request for a linked learner.
 
-    consent_service = ConsentService(db)
-    await consent_service.execute_erasure(current_user.user_id, learner_id)
-    await LearnerRepository(db).soft_delete(learner_id)
-
-    await FourthEstateService(db).record(
-        "learner.erasure_requested",
-        actor_id=current_user.user_id,
-        learner_pseudonym=learner.pseudonym_id,
-        resource_id=learner_id,
-        payload={"learner_id": learner_id, "source": "parents_router"},
-        constitutional_outcome="APPROVED",
-    )
-
-    background_tasks.add_task(_log_purge_request, learner_id, learner.pseudonym_id)
-    return Response(status_code=status.HTTP_204_NO_CONTENT)
+    Parent portal DELETE now persists an erasure request and relies on the
+    canonical POPIA service for authorisation, export-offer, legal-hold, consent,
+    and audit controls.
+    """
+    return await POPIADataRightsService(db).request_erasure(learner_id=learner_id, current_user=current_user)
 
 
 async def _log_purge_request(learner_id: str, learner_pseudonym: str) -> None:

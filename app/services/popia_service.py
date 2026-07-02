@@ -42,6 +42,7 @@ from app.models import (
 from app.repositories.audit_repository import AuditRepository
 from app.repositories.repositories import LearnerRepository
 from app.services.consent import ConsentService
+from app.services.popia_erasure_safety import build_erasure_preflight_decision
 
 POPIA_EXPORT_SLA_DAYS = 30
 POPIA_ERASURE_REVIEW_SLA_DAYS = 30
@@ -212,8 +213,8 @@ class POPIADataRightsService:
             state=ERASURE_STATE_REQUESTED,
             reason=reason,
             legal_basis="popia_section_11",
-            export_offered=False,
-            export_waived=False,
+            export_offered=preflight_result.get("export_offered", False),
+            export_waived=preflight_result.get("export_waived", False),
             legal_hold=preflight_result.get("legal_hold", False),
             grace_period_end_at=grace_period_end,
             preflight_result=preflight_result,
@@ -241,6 +242,9 @@ class POPIADataRightsService:
                 "grace_period_days": POPIA_ERASURE_GRACE_DAYS,
                 "grace_period_end": grace_period_end.isoformat(),
                 "preflight_result": preflight_result,
+                "export_offered": preflight_result.get("export_offered", False),
+                "export_waived": preflight_result.get("export_waived", False),
+                "requires_admin_review": preflight_result.get("requires_admin_review", False),
                 "preserve_audit_records": True,
             },
         )
@@ -388,19 +392,19 @@ class POPIADataRightsService:
         return False
 
     async def _preflight_erasure_checks(self, learner: LearnerProfile, requester_id: str, requester_role: str) -> dict[str, Any]:
-        """Perform pre-erasure safety checks."""
-        checks = {
-            "subject_exists": learner is not None,
-            "requester_authorized": str(learner.guardian_id) == requester_id or requester_role == "admin",
-            "consent_revoked": True,  # Will be revoked during erasure
-            "legal_hold": False,  # TODO: Check for legal hold flag
-            "grace_period_elapsed": False,  # Not applicable for initial request
-            "export_offered": False,  # TODO: Check if export was offered
-            "all_checks_passed": False,
-        }
+        """Perform pre-erasure safety checks before request persistence.
 
-        checks["all_checks_passed"] = all(checks.values())
-        return checks
+        The request flow offers export by default and stores that fact on the
+        erasure request. Execution still remains blocked by grace period, legal
+        hold, and explicit export-offer/waiver checks.
+        """
+        decision = build_erasure_preflight_decision(
+            learner=learner,
+            requester_authorized=str(learner.guardian_id) == requester_id or requester_role == "admin",
+            export_offered=True,
+            export_waived=False,
+        )
+        return decision.to_dict()
 
     async def execute_erasure(self, request_id: str, current_user: dict[str, Any] | AuthContext, *, method: str = ERASURE_METHOD_PHYSICAL) -> dict[str, Any]:
         """Execute erasure after grace period with safety checks."""

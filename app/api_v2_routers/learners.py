@@ -16,6 +16,7 @@ from app.repositories.mastery_repository import MasteryRepository
 from app.modules.progress.progress_timeline_service import ProgressTimelineService
 from app.security.dependencies import require_active_consent_for_current_user, require_learner_read_for_current_user
 from app.services.fourth_estate import FourthEstateService
+from app.services.popia_service import POPIADataRightsService
 
 router = APIRouter(route_class=EnvelopedRoute, prefix="/learners", tags=["learners"])
 log = get_logger(__name__)
@@ -119,47 +120,18 @@ async def get_topic_mastery(
     return {"learner_id": learner_id, "caps_ref": caps_ref, "mastery": None if mastery is None else {"mastery_score": mastery.mastery_score, "mastery_label": mastery.mastery_label}, "timeline": timeline}
 
 
-@router.delete("/{learner_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/{learner_id}", status_code=status.HTTP_202_ACCEPTED)
 async def request_erasure(
     learner_id: str,
-    background_tasks: BackgroundTasks,
     db: AsyncSession = Depends(get_db),
     current_user: AuthContext = Depends(require_parent_or_admin),
 ):
+    """Create a canonical POPIA erasure request for a learner.
+
+    Legacy DELETE semantics are preserved as an erasure request entry point,
+    but the route no longer bypasses the POPIA state machine or audit controls.
     """
-    POPIA Section 24 — Right to Erasure.
-    Mandates a valid Guardian JWT. Physical purge runs as a BackgroundTask.
-    """
-    repo = LearnerRepository(db)
-    learner = await repo.get_by_id(learner_id)
-    if not learner:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
-
-    if learner.guardian_id != current_user.user_id and not current_user.is_admin:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorised to erase this learner")
-
-    learner_pseudonym = learner.pseudonym_id
-
-    consent_svc = ConsentService(db)
-    await consent_svc.execute_erasure(current_user.user_id, learner_id)
-
-    # Soft-delete immediately
-    await repo.soft_delete(learner_id)
-
-    # Audit
-    audit = FourthEstateService(db)
-    await audit.record(
-        "learner.erased",
-        actor_id=current_user.user_id,
-        learner_pseudonym=learner_pseudonym,
-        resource_id=learner_id,
-        payload={"learner_id": learner_id},
-        constitutional_outcome="APPROVED",
-    )
-
-    # Physical purge runs in the background; audit keeps only an anonymised tombstone.
-    background_tasks.add_task(enqueue_data_purge, learner_id, learner_pseudonym)
-    return Response(status_code=status.HTTP_204_NO_CONTENT)
+    return await POPIADataRightsService(db).request_erasure(learner_id=learner_id, current_user=current_user)
 
 
 async def enqueue_data_purge(learner_id: str, learner_pseudonym: str) -> None:
