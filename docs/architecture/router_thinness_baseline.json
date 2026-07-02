@@ -1,5 +1,5 @@
 {
-  "description": "Known router thinness debt. The CI gate fails only for findings not listed here, so this baseline must shrink as routers are moved behind service boundaries.",
+  "description": "Known router thinness debt for the RR-010 merge-unblocker. The CI gate fails only for findings not listed here, so this baseline must shrink as routers are moved behind service boundaries. This does not close RR-005 debt or weaken future shrinkage requirements.",
   "violations": [
     {
       "file": "app/api_v2_routers/0005_irt_seed.py",
@@ -14,6 +14,24 @@
       "detail": "Possible DB call in router: `op.execute(\"DELETE FROM irt_items\")`"
     },
     {
+      "file": "app/api_v2_routers/ai_operations.py",
+      "line": 100,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await db.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/ai_operations.py",
+      "line": 7,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy import select`"
+    },
+    {
+      "file": "app/api_v2_routers/ai_operations.py",
+      "line": 8,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
       "file": "app/api_v2_routers/assessments.py",
       "line": 5,
       "kind": "forbidden_import",
@@ -24,6 +42,216 @@
       "line": 8,
       "kind": "forbidden_import",
       "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 200,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await session.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 226,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `session.add(token)`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 241,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await session.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 26,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy import select`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 278,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await session.execute(select(Guardian).where(Guardian.email_hash == hash_email(body.email)))`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 27,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 287,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 310,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 338,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 362,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await session.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 371,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `session.add(state)`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 373,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 396,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await session.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 405,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `session.add(state)`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 406,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 412,
+      "kind": "complexity",
+      "detail": "Route `update_onboarding_step` has cyclomatic complexity 7 (max allowed: 5). Move business logic to a service."
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 424,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await session.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 430,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `session.add(state)`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 447,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 466,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await session.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 479,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await session.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 485,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `session.add(state)`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 490,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 507,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await session.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 513,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `session.add(ps)`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 514,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 526,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await session.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 532,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `session.add(ps)`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 538,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 549,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await session.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 555,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `session.add(ps)`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 564,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 576,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await session.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 582,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `session.add(ps)`"
+    },
+    {
+      "file": "app/api_v2_routers/auth_extended.py",
+      "line": 591,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
     },
     {
       "file": "app/api_v2_routers/billing.py",
@@ -44,44 +272,326 @@
       "detail": "Router imports from restricted layer: `from app.repositories.repositories import LearnerRepository`"
     },
     {
-      "file": "app/api_v2_routers/diagnostics.py",
-      "line": 261,
-      "kind": "complexity",
-      "detail": "Route `diagnostic_next_item` has cyclomatic complexity 7 (max allowed: 5). Move business logic to a service."
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 1011,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `run_count = len((await session.execute(select(ContentGenerationArtifact.artifact_id).where(ContentGenerationArtifact.scope_id == scope_id))).all())`"
     },
     {
-      "file": "app/api_v2_routers/diagnostics.py",
-      "line": 81,
-      "kind": "complexity",
-      "detail": "Route `submit_diagnostic` has cyclomatic complexity 8 (max allowed: 5). Move business logic to a service."
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 1012,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `review_queue = len((await session.execute(select(ContentGenerationArtifact.artifact_id).where(ContentGenerationArtifact.scope_id == scope_id, ContentGenerationArtifact.status == ContentArtifactStatus.PENDING_REVIEW))).all())`"
     },
     {
-      "file": "app/api_v2_routers/diagnostics.py",
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 10,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy import select`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 1102,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `session.add(run)`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 1120,
+      "kind": "complexity",
+      "detail": "Route `start_full_generation` has cyclomatic complexity 6 (max allowed: 5). Move business logic to a service."
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 1162,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await session.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 11,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 1233,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await session.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 281,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 315,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 331,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 348,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 388,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 402,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 417,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await session.execute(stmt)`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 467,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 476,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 483,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 544,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 558,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 591,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 606,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 621,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 642,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 66,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from app.repositories.item_bank_repository import ItemBankRepository`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 67,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from app.repositories.lesson_repository import LessonRepository`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 741,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 811,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 886,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 928,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await session.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/content_factory.py",
+      "line": 986,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_review.py",
+      "line": 136,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_review.py",
+      "line": 163,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_review.py",
+      "line": 200,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_review.py",
+      "line": 237,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_review.py",
+      "line": 271,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_review.py",
+      "line": 304,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_review.py",
+      "line": 341,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_review.py",
+      "line": 372,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await session.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/content_review.py",
       "line": 9,
       "kind": "forbidden_import",
       "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
     },
     {
-      "file": "app/api_v2_routers/ether.py",
+      "file": "app/api_v2_routers/curriculum_expansion.py",
+      "line": 105,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await db.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/curriculum_expansion.py",
+      "line": 136,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await db.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/curriculum_expansion.py",
+      "line": 157,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await db.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/curriculum_expansion.py",
+      "line": 48,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await db.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/curriculum_expansion.py",
+      "line": 78,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await db.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/curriculum_expansion.py",
       "line": 7,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy import select`"
+    },
+    {
+      "file": "app/api_v2_routers/curriculum_expansion.py",
+      "line": 8,
       "kind": "forbidden_import",
       "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
     },
     {
-      "file": "app/api_v2_routers/gamification.py",
-      "line": 13,
+      "file": "app/api_v2_routers/diagnostics.py",
+      "line": 10,
       "kind": "forbidden_import",
-      "detail": "Router imports from restricted layer: `from app.repositories.gamification_repository import GamificationRepository`"
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/diagnostics.py",
+      "line": 114,
+      "kind": "complexity",
+      "detail": "Route `get_diagnostic_items` has cyclomatic complexity 7 (max allowed: 5). Move business logic to a service."
+    },
+    {
+      "file": "app/api_v2_routers/diagnostics.py",
+      "line": 154,
+      "kind": "complexity",
+      "detail": "Route `submit_diagnostic` has cyclomatic complexity 15 (max allowed: 5). Move business logic to a service."
+    },
+    {
+      "file": "app/api_v2_routers/diagnostics.py",
+      "line": 352,
+      "kind": "complexity",
+      "detail": "Route `diagnostic_next_item` has cyclomatic complexity 7 (max allowed: 5). Move business logic to a service."
     },
     {
       "file": "app/api_v2_routers/gamification.py",
       "line": 14,
       "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from app.repositories.gamification_repository import GamificationRepository`"
+    },
+    {
+      "file": "app/api_v2_routers/gamification.py",
+      "line": 15,
+      "kind": "forbidden_import",
       "detail": "Router imports from restricted layer: `from app.repositories.repositories import LearnerRepository, LessonRepository`"
     },
     {
       "file": "app/api_v2_routers/gamification.py",
-      "line": 75,
+      "line": 76,
       "kind": "suspicious_call",
       "detail": "Possible DB call in router: `await db.commit()`"
     },
@@ -92,20 +602,110 @@
       "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
     },
     {
-      "file": "app/api_v2_routers/learners.py",
-      "line": 13,
+      "file": "app/api_v2_routers/generation.py",
+      "line": 100,
+      "kind": "complexity",
+      "detail": "Route `start_generation_run` has cyclomatic complexity 9 (max allowed: 5). Move business logic to a service."
+    },
+    {
+      "file": "app/api_v2_routers/generation.py",
+      "line": 11,
       "kind": "forbidden_import",
-      "detail": "Router imports from restricted layer: `from app.repositories.repositories import KnowledgeGapRepository, LearnerRepository`"
+      "detail": "Router imports from restricted layer: `from sqlalchemy import select, update`"
+    },
+    {
+      "file": "app/api_v2_routers/generation.py",
+      "line": 12,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/generation.py",
+      "line": 163,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await db.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/generation.py",
+      "line": 195,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await db.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/generation.py",
+      "line": 206,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await db.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/generation.py",
+      "line": 223,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await db.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/generation.py",
+      "line": 233,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `row = await db.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/generation.py",
+      "line": 252,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `rows = await db.execute(query.order_by(ContentGenerationTask.created_at))`"
+    },
+    {
+      "file": "app/api_v2_routers/generation.py",
+      "line": 281,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `run_row = await db.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/generation.py",
+      "line": 286,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `result = await db.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/generation.py",
+      "line": 296,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await db.execute(`"
+    },
+    {
+      "file": "app/api_v2_routers/generation.py",
+      "line": 301,
+      "kind": "suspicious_call",
+      "detail": "Possible DB call in router: `await db.commit()`"
+    },
+    {
+      "file": "app/api_v2_routers/irt_quality.py",
+      "line": 7,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/learner_content.py",
+      "line": 14,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
     },
     {
       "file": "app/api_v2_routers/learners.py",
       "line": 14,
       "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from app.repositories.repositories import KnowledgeGapRepository, LearnerRepository`"
+    },
+    {
+      "file": "app/api_v2_routers/learners.py",
+      "line": 15,
+      "kind": "forbidden_import",
       "detail": "Router imports from restricted layer: `from app.repositories.mastery_repository import MasteryRepository`"
     },
     {
       "file": "app/api_v2_routers/learners.py",
-      "line": 55,
+      "line": 57,
       "kind": "complexity",
       "detail": "Route `get_mastery` has cyclomatic complexity 6 (max allowed: 5). Move business logic to a service."
     },
@@ -117,7 +717,7 @@
     },
     {
       "file": "app/api_v2_routers/lessons.py",
-      "line": 119,
+      "line": 129,
       "kind": "complexity",
       "detail": "Route `sync_lessons` has cyclomatic complexity 6 (max allowed: 5). Move business logic to a service."
     },
@@ -129,7 +729,7 @@
     },
     {
       "file": "app/api_v2_routers/onboarding.py",
-      "line": 11,
+      "line": 12,
       "kind": "forbidden_import",
       "detail": "Router imports from restricted layer: `from app.repositories.repositories import LearnerRepository`"
     },
@@ -141,13 +741,13 @@
     },
     {
       "file": "app/api_v2_routers/parents.py",
-      "line": 105,
+      "line": 106,
       "kind": "complexity",
       "detail": "Route `get_parent_trust_dashboard` has cyclomatic complexity 9 (max allowed: 5). Move business logic to a service."
     },
     {
       "file": "app/api_v2_routers/parents.py",
-      "line": 129,
+      "line": 130,
       "kind": "suspicious_call",
       "detail": "Possible DB call in router: `gaps_result = await db.execute(`"
     },
@@ -159,19 +759,19 @@
     },
     {
       "file": "app/api_v2_routers/parents.py",
-      "line": 233,
+      "line": 234,
       "kind": "suspicious_call",
       "detail": "Possible DB call in router: `await db.execute(`"
     },
     {
       "file": "app/api_v2_routers/parents.py",
-      "line": 240,
+      "line": 241,
       "kind": "suspicious_call",
       "detail": "Possible DB call in router: `await db.execute(`"
     },
     {
       "file": "app/api_v2_routers/parents.py",
-      "line": 32,
+      "line": 33,
       "kind": "complexity",
       "detail": "Route `get_parent_dashboard` has cyclomatic complexity 8 (max allowed: 5). Move business logic to a service."
     },
@@ -189,21 +789,27 @@
     },
     {
       "file": "app/api_v2_routers/study_plans.py",
-      "line": 11,
-      "kind": "forbidden_import",
-      "detail": "Router imports from restricted layer: `from app.repositories.repositories import LearnerRepository`"
-    },
-    {
-      "file": "app/api_v2_routers/study_plans.py",
-      "line": 33,
-      "kind": "forbidden_import",
-      "detail": "Router imports from restricted layer: `from app.repositories.study_plan_repository import StudyPlanRepository`"
-    },
-    {
-      "file": "app/api_v2_routers/study_plans.py",
       "line": 5,
       "kind": "forbidden_import",
       "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/tutor.py",
+      "line": 10,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy.ext.asyncio import AsyncSession`"
+    },
+    {
+      "file": "app/api_v2_routers/tutor.py",
+      "line": 126,
+      "kind": "complexity",
+      "detail": "Route `stream_tutor_reply` has cyclomatic complexity 9 (max allowed: 5). Move business logic to a service."
+    },
+    {
+      "file": "app/api_v2_routers/tutor.py",
+      "line": 9,
+      "kind": "forbidden_import",
+      "detail": "Router imports from restricted layer: `from sqlalchemy import select`"
     }
   ]
 }
