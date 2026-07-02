@@ -2897,3 +2897,10 @@ rr005-technical-debt-audit:
 
 rr005-technical-debt-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr005_technical_debt_burndown.py --json
+
+.PHONY: rr007-product-quality-audit rr007-product-quality-check
+rr007-product-quality-audit:
+	PYTHONPATH=. python3 scripts/product_quality/audit_rr007_product_quality_gates.py --json
+
+rr007-product-quality-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr007_product_quality_gates.py --json
