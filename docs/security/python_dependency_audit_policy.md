@@ -1,3 +1,18 @@
+---
+title: "Python Dependency Audit Policy"
+status: active
+owner: security
+reviewers: [security, engineering, privacy]
+audience: security-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-02
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage4-check"
+code_anchors: [docs/security/README.md, requirements.txt, requirements/base.txt, requirements/dev.txt]
+---
+
 # Python Dependency Audit Policy
 
 **Status:** RR-006 control policy  

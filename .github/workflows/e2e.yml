@@ -19,6 +19,13 @@ jobs:
     name: Playwright E2E Tests
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      POSTGRES_DB: eduboost_test
+      POSTGRES_USER: eduboost
+      POSTGRES_PASSWORD: testpass
+      JWT_SECRET: test-jwt-secret-32-chars-minimum-value
+      JWT_SECRET_KEY: test-jwt-secret-32-chars-minimum-value
+      GRAFANA_ADMIN_PASSWORD: admin
 
     steps:
       - name: Checkout code
@@ -32,7 +39,7 @@ jobs:
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 9.14.4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

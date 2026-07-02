@@ -1,3 +1,18 @@
+---
+title: "V2 Pen-Test Checklist"
+status: active
+owner: security
+reviewers: [security, engineering, privacy]
+audience: security-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-02
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage4-check"
+code_anchors: [docs/security/README.md, docs/security/threat_model_v2.md]
+---
+
 # V2 Pen-Test Checklist
 
 **Status:** RR-006 required checklist  
