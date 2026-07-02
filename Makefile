@@ -2890,3 +2890,10 @@ rr004-ignored-artifact-clean-dry-run:
 
 rr004-workspace-hygiene-check:
 	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_rr004_workspace_hygiene.py --json
+
+.PHONY: rr005-technical-debt-audit rr005-technical-debt-check
+rr005-technical-debt-audit:
+	PYTHONPATH=. python3 scripts/technical_debt/audit_rr005_technical_debt.py --json
+
+rr005-technical-debt-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr005_technical_debt_burndown.py --json
