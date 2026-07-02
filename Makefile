@@ -2904,3 +2904,9 @@ rr007-product-quality-audit:
 
 rr007-product-quality-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr007_product_quality_gates.py --json
+.PHONY: rr008-operational-readiness-audit rr008-operational-readiness-check
+rr008-operational-readiness-audit:
+	PYTHONPATH=. python3 scripts/operations_readiness/audit_rr008_operational_readiness.py --json
+
+rr008-operational-readiness-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py --json
