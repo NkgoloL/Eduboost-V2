@@ -1,0 +1,575 @@
+{
+  "checks": {
+    "dormant_router_review_recorded": true,
+    "import_linter_exceptions_registered": true,
+    "migration_history_audited": true,
+    "ruff_debt_inventory_collected": true,
+    "stale_route_comments_audited": true
+  },
+  "dormant_router_review": {
+    "inventory_present": true,
+    "retirement_decision": "no router retired by this audit-only RR-005 slice; retirement requires call-site proof",
+    "router_count": 4,
+    "routers": [
+      {
+        "exists": true,
+        "router": "app/modules/diagnostics/bias_review_router.py",
+        "status": "review required before retirement/archive"
+      },
+      {
+        "exists": true,
+        "router": "app/modules/lessons/lesson_coverage_router.py",
+        "status": "review required before retirement/archive"
+      },
+      {
+        "exists": true,
+        "router": "app/modules/lessons/lesson_review_router.py",
+        "status": "review required before retirement/archive"
+      },
+      {
+        "exists": true,
+        "router": "app/modules/practice/router.py",
+        "status": "review required before retirement/archive"
+      }
+    ],
+    "valid": true
+  },
+  "git": {
+    "branch": "master",
+    "head_sha": "b161e3a0b14cfb347a7004ed50aace101a2fc4cf",
+    "status_short": ""
+  },
+  "import_linter_exceptions": {
+    "config_present": true,
+    "ignore_imports": [
+      "app.api_v2_routers.consent -> app.repositories.*",
+      "app.api_v2_routers.content_factory -> app.repositories.*",
+      "app.api_v2_routers.gamification -> app.repositories.*",
+      "app.api_v2_routers.learners -> app.repositories.*",
+      "app.api_v2_routers.onboarding -> app.repositories.*",
+      "app.api_v2_routers.parents -> app.repositories.*"
+    ],
+    "ignore_imports_count": 6,
+    "valid": true
+  },
+  "migration_history": {
+    "deprecated_migration_file_count": 4,
+    "merge_migration_file_count": 3,
+    "migration_file_count": 49,
+    "migrations": [
+      {
+        "down_revision": null,
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/0001_v2_consolidated_schema.py",
+        "revision": "0001_v2_consolidated"
+      },
+      {
+        "down_revision": "merge_2026_05_01",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/0002_add_missing_tables.py",
+        "revision": "0002_add_missing_tables"
+      },
+      {
+        "down_revision": "0002_add_missing_tables",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/0003_add_items_correct.py",
+        "revision": "0003_add_items_correct"
+      },
+      {
+        "down_revision": "0003_add_items_correct",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/0004_add_rlhf_pipeline.py",
+        "revision": "0004_add_rlhf_pipeline"
+      },
+      {
+        "down_revision": "merge_2026_05_01",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/0005_seed_irt_items.py",
+        "revision": "0005_seed_irt_items"
+      },
+      {
+        "down_revision": null,
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/0006_v2_audit_events.py",
+        "revision": null
+      },
+      {
+        "down_revision": "0006",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/0007_caps_irt_item_bank.py",
+        "revision": "0007_caps_irt_item_bank"
+      },
+      {
+        "down_revision": "0007_caps_irt_item_bank",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/0008_lesson_completion_tracking.py",
+        "revision": "0008_lesson_completion_tracking"
+      },
+      {
+        "down_revision": "771fb3ac38b8",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/0009_add_subject_mastery.py",
+        "revision": "0009_add_subject_mastery"
+      },
+      {
+        "down_revision": "0008_lesson_completion_tracking",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260505_1734_add_missing_production_indexes.py",
+        "revision": "771fb3ac38b8"
+      },
+      {
+        "down_revision": "0009_add_subject_mastery",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260507_1200_popia_consent_audit_hardening.py",
+        "revision": "20260507_1200"
+      },
+      {
+        "down_revision": "20260507_1200",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260507_1330_database_integrity_constraints.py",
+        "revision": "20260507_1330"
+      },
+      {
+        "down_revision": "20260507_1330",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260507_1500_ai_caps_diagnostics_safety.py",
+        "revision": "20260507_1500"
+      },
+      {
+        "down_revision": "20260507_1500",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260509_0100_diagnostic_items.py",
+        "revision": "20260509_01"
+      },
+      {
+        "down_revision": "20260509_01",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260509_0200_item_exposures.py",
+        "revision": "20260509_02"
+      },
+      {
+        "down_revision": "20260509_02",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260510_0100_al_llm_safety_lessons.py",
+        "revision": "20260510_0100"
+      },
+      {
+        "down_revision": "20260510_0100",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260510_0200_diagnostics_assessment.py",
+        "revision": "20260510_0200"
+      },
+      {
+        "down_revision": "20260510_0200",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260510_0300_popia_consent_audit_dsr.py",
+        "revision": "20260510_0300"
+      },
+      {
+        "down_revision": "20260510_0300",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260516_0100_remove_base_sentinel.py",
+        "revision": "20260516_0100"
+      },
+      {
+        "down_revision": "20260516_0100",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260523_0000_add_auth_extensions.py",
+        "revision": "20260523_0000"
+      },
+      {
+        "down_revision": "20260523_0000",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260524_1800_repair_auth_extensions_schema.py",
+        "revision": "20260524_1800"
+      },
+      {
+        "down_revision": "20260524_1800",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260525_1531_content_factory_etl_integration.py",
+        "revision": "20260525_1531"
+      },
+      {
+        "down_revision": "20260525_1531",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260525_1900_content_factory_control_plane.py",
+        "revision": "20260525_1900"
+      },
+      {
+        "down_revision": "20260525_1900",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260525_2100_staging_verification_reports.py",
+        "revision": "20260525_2100"
+      },
+      {
+        "down_revision": "20260525_2100",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260525_2200_content_review_assignments.py",
+        "revision": "20260525_2200"
+      },
+      {
+        "down_revision": "20260525_2200",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260525_2300_content_factory_staging_seed_items.py",
+        "revision": "20260525_2300"
+      },
+      {
+        "down_revision": "20260525_2300",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260526_0300_content_factory_production_promotion_artifacts.py",
+        "revision": "20260526_0300"
+      },
+      {
+        "down_revision": "20260526_0300",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260528_1600_popia_consent_versioning.py",
+        "revision": "20260528_1600"
+      },
+      {
+        "down_revision": "20260528_1600",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260528_1700_popia_erasure_request_state.py",
+        "revision": "20260528_1700"
+      },
+      {
+        "down_revision": "f2faf5aa12fd",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260609_0800_practice_sessions_durable.py",
+        "revision": "20260609_0800_practice_sessions"
+      },
+      {
+        "down_revision": "20260609_0800_practice_sessions",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260614_0900_p1_validation.py",
+        "revision": "20260614_0900_p1_validation"
+      },
+      {
+        "down_revision": "20260614_0900_p1_validation",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260614_1200_p2_retrieval.py",
+        "revision": "20260614_1200_p2_retrieval"
+      },
+      {
+        "down_revision": "20260614_1200_p2_retrieval",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260614_1500_p3_consensus.py",
+        "revision": "20260614_1500_p3_consensus"
+      },
+      {
+        "down_revision": "20260614_1500_p3_consensus",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260615_0900_p4_irt_quality.py",
+        "revision": "20260615_0900_p4_irt_quality"
+      },
+      {
+        "down_revision": "20260615_0900_p4_irt_quality",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260615_1200_p5_tutor.py",
+        "revision": "20260615_1200_p5_tutor"
+      },
+      {
+        "down_revision": "20260615_1200_p5_tutor",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260615_1500_p6_ai_ops.py",
+        "revision": "20260615_1500_p6_ai_ops"
+      },
+      {
+        "down_revision": "20260615_1500_p6_ai_ops",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260615_1800_p7_curriculum.py",
+        "revision": "20260615_1800_p7_curriculum"
+      },
+      {
+        "down_revision": "20260615_1800_p7_curriculum",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260615_2100_p17_reconcile.py",
+        "revision": "20260615_2100_p17_reconcile"
+      },
+      {
+        "down_revision": "20260615_2100_p17_reconcile",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260616_1200_phase02r_authority_controls.py",
+        "revision": "20260616_1200_phase02r_authority"
+      },
+      {
+        "down_revision": "20260616_1200_phase02r_authority",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260618_1200_phase02r_grounding_controls.py",
+        "revision": "20260618_1200_phase02r_grounding"
+      },
+      {
+        "down_revision": "20260618_1200_phase02r_grounding",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/20260622_1200_phase02r_gate2r4_curriculum_graph.py",
+        "revision": "20260622_1200_phase02r_gate2r4"
+      },
+      {
+        "down_revision": "20260516_0100",
+        "is_deprecated": false,
+        "is_merge_file": false,
+        "path": "alembic/versions/3f8a2c1d9e04_add_auth_extensions.py",
+        "revision": "3f8a2c1d9e04"
+      },
+      {
+        "down_revision": [
+          "0004_add_rlhf_pipeline",
+          "0005_seed_irt_items"
+        ],
+        "is_deprecated": false,
+        "is_merge_file": true,
+        "path": "alembic/versions/94b628483fa7_merge_remaining_heads_0004_and_0005.py",
+        "revision": "94b628483fa7"
+      },
+      {
+        "down_revision": "0003_add_items_correct",
+        "is_deprecated": true,
+        "is_merge_file": false,
+        "path": "alembic/versions/_deprecated/0001_five_pillar_schema.py",
+        "revision": "0001_five_pillar_schema"
+      },
+      {
+        "down_revision": null,
+        "is_deprecated": true,
+        "is_merge_file": false,
+        "path": "alembic/versions/_deprecated/0001_initial_consolidated_schema.py",
+        "revision": "0001"
+      },
+      {
+        "down_revision": null,
+        "is_deprecated": true,
+        "is_merge_file": false,
+        "path": "alembic/versions/_deprecated/0001_phase2_baseline.py",
+        "revision": "0001_phase2_baseline"
+      },
+      {
+        "down_revision": null,
+        "is_deprecated": true,
+        "is_merge_file": false,
+        "path": "alembic/versions/_deprecated/0001_schema_from_technical_report.py",
+        "revision": null
+      },
+      {
+        "down_revision": [
+          "20260528_1700",
+          "3f8a2c1d9e04"
+        ],
+        "is_deprecated": false,
+        "is_merge_file": true,
+        "path": "alembic/versions/f2faf5aa12fd_merge_migration_branches.py",
+        "revision": "f2faf5aa12fd"
+      },
+      {
+        "down_revision": "0001_v2_consolidated",
+        "is_deprecated": false,
+        "is_merge_file": true,
+        "path": "alembic/versions/merge_2026_05_01_merge_branches.py",
+        "revision": "merge_2026_05_01"
+      }
+    ],
+    "squash_decision": "defer squash until a dedicated migration-window decision; do not rewrite migration history in RR-005",
+    "valid": true,
+    "versions_dir_present": true
+  },
+  "ruff_debt": {
+    "debt_captured": true,
+    "docs_baseline_mentions_phase_11": true,
+    "docs_baseline_present": true,
+    "fallback_to_existing_docs": false,
+    "json_command": [
+      "ruff",
+      "check",
+      "app",
+      "tests",
+      "scripts",
+      "--output-format=json"
+    ],
+    "json_returncode": 1,
+    "json_stderr": "",
+    "json_summary": {
+      "code_counts": {
+        "E401": 1,
+        "E402": 442,
+        "E701": 149,
+        "E702": 97,
+        "E712": 7,
+        "E741": 10,
+        "F401": 54,
+        "F841": 2
+      },
+      "finding_count": 762,
+      "top_files": [
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/scripts/maintenance/audit_todo_backlog.py",
+          46
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/scripts/jwt_secret_rotation_evidence.py",
+          32
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/services/etl/etl_pipeline.py",
+          19
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/models/__init__.py",
+          18
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/api/test_content_factory_run_routes.py",
+          17
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/scripts/roadmap_reconciliation/verify_rr002_privacy_popia_completion.py",
+          16
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/scripts/ingestion/sources/siyavula.py",
+          14
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/unit/test_v2_services_full.py",
+          14
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/scripts/curriculum/build_scope_content_artifacts.py",
+          13
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/scripts/execute_disposable_db_schema_proof.py",
+          13
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/modules/lessons/service.py",
+          12
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/scripts/repair_real_consent_runtime_seams.py",
+          12
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/services/auth_service.py",
+          11
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/scripts/check_jwt_secret_rotation_evidence.py",
+          10
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/scripts/wire_real_audit_runtime_path.py",
+          10
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/integration/test_diagnostic_session.py",
+          10
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/integration/test_lesson_generation_authorization.py",
+          10
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/integration/test_v2_routers.py",
+          10
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/integration/test_lesson_stream_authorization.py",
+          9
+        ],
+        [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/tests/integration/test_parent_progress_authorization.py",
+          9
+        ]
+      ]
+    },
+    "statistics_command": [
+      "ruff",
+      "check",
+      "app",
+      "tests",
+      "scripts",
+      "--statistics"
+    ],
+    "statistics_counts": {
+      "E401": 1,
+      "E402": 442,
+      "E701": 149,
+      "E702": 97,
+      "E712": 7,
+      "E741": 10,
+      "F401": 54,
+      "F841": 2
+    },
+    "statistics_returncode": 1,
+    "statistics_stderr": "",
+    "statistics_stdout": "442\tE402\t[ ] module-import-not-at-top-of-file\n149\tE701\t[ ] multiple-statements-on-one-line-colon\n 97\tE702\t[ ] multiple-statements-on-one-line-semicolon\n 54\tF401\t[-] unused-import\n 10\tE741\t[ ] ambiguous-variable-name\n  7\tE712\t[ ] true-false-comparison\n  2\tF841\t[ ] unused-variable\n  1\tE401\t[*] multiple-imports-on-one-line\nFound 762 errors.\n[*] 48 fixable with the `--fix` option (9 hidden fixes can be enabled with the `--unsafe-fixes` option).\n",
+    "tool_available": true,
+    "valid": true
+  },
+  "stale_route_comments": {
+    "findings": [
+      {
+        "comment": "# TODO: enqueue Celery task \u2192 export_user_data.delay(_current_user_id(current_user))",
+        "line": 565,
+        "path": "app/api_v2_routers/auth_extended.py",
+        "pattern": "TODO"
+      },
+      {
+        "comment": "# TODO: enqueue Celery task \u2192 schedule_account_deletion.delay(_current_user_id(current_user))",
+        "line": 592,
+        "path": "app/api_v2_routers/auth_extended.py",
+        "pattern": "TODO"
+      },
+      {
+        "comment": "# Audit contract: import remains available for legacy wiring checks; route dependencies use get_db.",
+        "line": 16,
+        "path": "app/api_v2_routers/study_plans.py",
+        "pattern": "legacy"
+      }
+    ],
+    "router_file_count": 36,
+    "stale_route_comment_count": 3,
+    "truncated": false,
+    "valid": true
+  },
+  "valid": true
+}
