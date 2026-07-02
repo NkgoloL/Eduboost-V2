@@ -1,3 +1,18 @@
+---
+title: "FE-PR-013-E Implementation Handover — Guardian WhatsApp Share (client-only)"
+status: current-evidence
+owner: frontend
+reviewers: [frontend, product, privacy]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-24
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: [app/frontend, docs/frontend/README.md]
+---
+
 # FE-PR-013-E Implementation Handover — Guardian WhatsApp Share (client-only)
 
 Scope: implement a client-only guardian-triggered WhatsApp share intent that allows a guardian to edit a redacted summary before invoking the native share or opening a `wa.me` link. Strict non-goals and constraints are listed below.

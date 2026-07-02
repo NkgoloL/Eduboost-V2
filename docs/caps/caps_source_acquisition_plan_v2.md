@@ -1,3 +1,18 @@
+---
+title: "CAPS Source Acquisition & Topic-Map Pipeline — Enhanced Plan v2.0"
+status: active
+owner: curriculum
+reviewers: [curriculum, content-factory, product]
+audience: curriculum-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-24
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: [docs/caps, app/services/content_factory]
+---
+
 # CAPS Source Acquisition & Topic-Map Pipeline — Enhanced Plan v2.0
 
 **Document status:** Reconciled with current EduBoost repo implementation for engineering execution

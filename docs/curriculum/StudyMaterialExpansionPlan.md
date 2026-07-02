@@ -1,3 +1,18 @@
+---
+title: "Study Material Expansion Implementation Plan"
+status: active
+owner: curriculum
+reviewers: [curriculum, content-factory, learning-science]
+audience: curriculum-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-24
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: [docs/curriculum, app/services/content_factory]
+---
+
 # Study Material Expansion Implementation Plan
 
 Date: 2026-06-02

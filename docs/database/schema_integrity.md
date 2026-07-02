@@ -1,3 +1,18 @@
+---
+title: "Schema integrity baseline"
+status: active
+owner: database
+reviewers: [backend, database, release-management]
+audience: developer
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-24
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: [alembic, app/repositories, scripts/validate_schema_integrity.py]
+---
+
 # Schema integrity baseline
 
 This document summarizes the database integrity baseline enforced by PR-005.

@@ -19,3 +19,7 @@ Markdown files tracked through Git LFS must be inventoried by stable LFS identit
 ## Stage 4 strict tranche
 
 When editing `docs/architecture/`, `docs/product/`, `docs/api/`, `docs/compliance/`, or current `docs/security/` documents, run `make docs-housekeeping-stage4-check` in addition to the default housekeeping gate.
+
+## Stage 5 strict tranche
+
+When editing technical delivery or learning-engine documentation under `docs/frontend/`, `docs/backend/`, `docs/database/`, `docs/deployment/`, `docs/testing/`, `docs/observability/`, `docs/disaster_recovery/`, `docs/operations_support/`, `docs/runbooks/`, `docs/content_factory/`, `docs/caps/`, `docs/curriculum/`, `docs/diagnostics/`, `docs/irt/`, `docs/learning_science/`, or `docs/ai/`, run `make docs-housekeeping-stage5-check` in addition to the default housekeeping gate.

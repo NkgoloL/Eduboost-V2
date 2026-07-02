@@ -37,3 +37,5 @@ jobs:
         run: make docs-housekeeping-stage3-check
       - name: Stage 4 strict tranche check
         run: make docs-housekeeping-stage4-check
+      - name: Stage 5 strict tranche check
+        run: make docs-housekeeping-stage5-check

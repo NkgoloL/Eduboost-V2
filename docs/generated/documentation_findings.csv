@@ -1,8 +1,6 @@
 severity,type,path,detail
 high,broken_local_links,CONTRIBUTING.md,1
 high,broken_local_links,SECURITY.md,1
-high,broken_local_links,docs/content_factory/CONTENT_GENERATION_CONFIG.md,1
-high,broken_local_links,docs/frontend/post-rc5-dependency-maintenance.md,1
 high,broken_local_links,docs/index.md,1
 high,broken_local_links,docs/operations/SYSTEM_STARTUP_GUIDE.md,3
 high,broken_local_links,docs/operations/SYSTEM_STARTUP_REPORT.md,3
@@ -16,7 +14,6 @@ high,risky_or_stale_terms,docs/codemaps/eduboost_v2_architecture_decision_record
 high,risky_or_stale_terms,docs/documentation/claim_discipline_contract.md,production ready; launch approved; fully complete
 high,risky_or_stale_terms,docs/documentation/claim_discipline_policy.md,production-ready; production ready; release-ready; launch approved; fully complete; all tests pass; green baseline
 high,risky_or_stale_terms,docs/engineering/branching.md,production-ready
-high,risky_or_stale_terms,docs/frontend/FE-PWA-MANIFEST-ICON-001-validation.md,production-ready
 high,risky_or_stale_terms,docs/operations/project_assistance_status.md,release-ready
 high,risky_or_stale_terms,docs/operations/recommended_operating_model.md,production-ready; release-ready
 high,risky_or_stale_terms,docs/operations/release_candidate_evidence_sweep_2026-05-11.md,production-ready
@@ -65,7 +62,7 @@ high,risky_or_stale_terms,docs/safety/content_policy.md,production-ready
 high,risky_or_stale_terms,docs/technical_state_report_2026-05-11.md,production-ready
 low,oversized_document,docs/API_REFERENCE.md,595 lines
 low,oversized_document,docs/architecture/CORE_TECHNICAL_AUDIT_2026-05-17.md,702 lines
-low,oversized_document,docs/caps/caps_source_acquisition_plan_v2.md,1076 lines
+low,oversized_document,docs/caps/caps_source_acquisition_plan_v2.md,1091 lines
 low,oversized_document,docs/codemaps/alembic_migration_and_ddl_management_startup_ddl_repairs_migration_integrity_and_alembic_workflow.md,665 lines
 low,oversized_document,docs/codemaps/api_documentation_structure_sphinx_mkdocs_generation_pipeline.md,506 lines
 low,oversized_document,docs/codemaps/base_repository_implementation_generic_async_crud_database_interactions.md,664 lines
@@ -91,7 +88,7 @@ low,oversized_document,docs/codemaps/pytest_configuration_and_test_suite_structu
 low,oversized_document,docs/codemaps/routeguard_authentication_flow_and_testing.md,736 lines
 low,oversized_document,docs/codemaps/test_coverage_and_ci_pipeline_configuration.md,582 lines
 low,oversized_document,docs/content_factory_overnight_batch_pipeline.md,1029 lines
-low,oversized_document,docs/curriculum/StudyMaterialExpansionPlan.md,594 lines
+low,oversized_document,docs/curriculum/StudyMaterialExpansionPlan.md,609 lines
 low,oversized_document,docs/etl/README.md,558 lines
 low,oversized_document,docs/release/EVIDENCE_INDEX.md,1682 lines
 low,oversized_document,docs/release/EduBoost_V2_Production_Readiness_Technical_Assessment.md,520 lines
@@ -168,34 +165,12 @@ medium,missing_metadata,docs/DEVELOPMENT.md,No YAML front matter
 medium,missing_metadata,docs/LLM_Phase3_Finetuning.md,No YAML front matter
 medium,missing_metadata,docs/LLM_Test_Gating.md,No YAML front matter
 medium,missing_metadata,docs/POPIA_COMPLIANCE.md,No YAML front matter
-medium,missing_metadata,docs/ai/CLUSTER_F_CLOSURE.md,No YAML front matter
-medium,missing_metadata,docs/ai/ai_fixture_coverage_matrix.md,No YAML front matter
-medium,missing_metadata,docs/ai/ai_output_fixtures.md,No YAML front matter
-medium,missing_metadata,docs/ai/ai_output_schema_contract.md,No YAML front matter
-medium,missing_metadata,docs/ai/ai_prompt_input_contract.md,No YAML front matter
-medium,missing_metadata,docs/ai/ai_prompt_secret_leakage_guard.md,No YAML front matter
-medium,missing_metadata,docs/ai/ai_prompt_surface_inventory.md,No YAML front matter
-medium,missing_metadata,docs/ai/ai_refusal_regression_fixtures.md,No YAML front matter
-medium,missing_metadata,docs/ai/ai_safety_boundary_contract.md,No YAML front matter
-medium,missing_metadata,docs/ai/ai_safety_evidence_index.md,No YAML front matter
-medium,missing_metadata,docs/ai/ai_safety_release_evidence.md,No YAML front matter
-medium,missing_metadata,docs/ai/caps_ai_safety_evidence_2026-05-11.md,No YAML front matter
-medium,missing_metadata,docs/ai/caps_alignment_contract.md,No YAML front matter
-medium,missing_metadata,docs/ai/diagnostic_generation_safety_contract.md,No YAML front matter
-medium,missing_metadata,docs/ai/lesson_generation_safety_contract.md,No YAML front matter
-medium,missing_metadata,docs/ai/lesson_quality_rubric.md,No YAML front matter
-medium,missing_metadata,docs/ai/llm_provider_fallback_contract.md,No YAML front matter
-medium,missing_metadata,docs/ai/production_ai_pii_safety_contract.md,No YAML front matter
-medium,missing_metadata,docs/ai/production_lesson_generation_validation_contract.md,No YAML front matter
-medium,missing_metadata,docs/ai/production_llm_gateway_contract.md,No YAML front matter
-medium,missing_metadata,docs/ai/remediation_safety_contract.md,No YAML front matter
 medium,missing_metadata,docs/ai_lesson_safety.md,No YAML front matter
 medium,missing_metadata,docs/analytics/learning_event_schema.md,No YAML front matter
 medium,missing_metadata,docs/api_envelope_contract.md,No YAML front matter
 medium,missing_metadata,docs/api_v2.md,No YAML front matter
 medium,missing_metadata,docs/api_versioning_policy.md,No YAML front matter
 medium,missing_metadata,docs/architecture.md,No YAML front matter
-medium,missing_metadata,docs/backend/README.md,No YAML front matter
 medium,missing_metadata,docs/backlog/PR_chore_docs_governance_body.md,No YAML front matter
 medium,missing_metadata,docs/backlog/backlog_audit.md,No YAML front matter
 medium,missing_metadata,docs/backlog/critical_path.md,No YAML front matter
@@ -255,13 +230,6 @@ medium,missing_metadata,docs/billing/pricing_product_rules_contract.md,No YAML f
 medium,missing_metadata,docs/billing/production_billing_provider_architecture_contract.md,No YAML front matter
 medium,missing_metadata,docs/billing/subscription_state_machine_contract.md,No YAML front matter
 medium,missing_metadata,docs/billing/webhook_security_idempotency_contract.md,No YAML front matter
-medium,missing_metadata,docs/caps/caps_learning_proof.md,No YAML front matter
-medium,missing_metadata,docs/caps/caps_source_acquisition_plan_v2.md,No YAML front matter
-medium,missing_metadata,docs/caps/content_expansion_roadmap.md,No YAML front matter
-medium,missing_metadata,docs/caps/grade4_maths_120_item_production_plan.md,No YAML front matter
-medium,missing_metadata,docs/caps/grade4_maths_coverage_matrix.md,No YAML front matter
-medium,missing_metadata,docs/caps/grade4_maths_lesson_coverage_matrix.md,No YAML front matter
-medium,missing_metadata,docs/caps/multilingual_status.md,No YAML front matter
 medium,missing_metadata,docs/codemaps/README.md,No YAML front matter
 medium,missing_metadata,docs/codemaps/alembic_migration_and_ddl_management_startup_ddl_repairs_migration_integrity_and_alembic_workflow.md,No YAML front matter
 medium,missing_metadata,docs/codemaps/api_documentation_structure_sphinx_mkdocs_generation_pipeline.md,No YAML front matter
@@ -290,58 +258,15 @@ medium,missing_metadata,docs/codemaps/jwt_security_implementation_dual_system_ar
 medium,missing_metadata,docs/codemaps/pytest_configuration_and_test_suite_structure.md,No YAML front matter
 medium,missing_metadata,docs/codemaps/routeguard_authentication_flow_and_testing.md,No YAML front matter
 medium,missing_metadata,docs/codemaps/test_coverage_and_ci_pipeline_configuration.md,No YAML front matter
-medium,missing_metadata,docs/content_factory/CONTENT_GENERATION_CONFIG.md,No YAML front matter
-medium,missing_metadata,docs/content_factory/admin_api.md,No YAML front matter
-medium,missing_metadata,docs/content_factory/control_plane.md,No YAML front matter
-medium,missing_metadata,docs/content_factory/controlled_generation.md,No YAML front matter
-medium,missing_metadata,docs/content_factory/full_generation_runner.md,No YAML front matter
-medium,missing_metadata,docs/content_factory/promotion_gates.md,No YAML front matter
-medium,missing_metadata,docs/content_factory/release_gate_checklist.md,No YAML front matter
-medium,missing_metadata,docs/content_factory/staging_seed_execution.md,No YAML front matter
-medium,missing_metadata,docs/content_factory/staging_verification.md,No YAML front matter
 medium,missing_metadata,docs/content_factory_overnight_batch_pipeline.md,No YAML front matter
 medium,missing_metadata,docs/coverage-improvement-handover.md,No YAML front matter
-medium,missing_metadata,docs/curriculum/StudyMaterialExpansionPlan.md,No YAML front matter
-medium,missing_metadata,docs/curriculum/TOPIC_MAP_REVIEW_CHECKLIST.md,No YAML front matter
-medium,missing_metadata,docs/curriculum/caps_topic_map.md,No YAML front matter
-medium,missing_metadata,docs/curriculum/caps_topic_map_production_contract.md,No YAML front matter
 medium,missing_metadata,docs/data_inventory.md,No YAML front matter
 medium,missing_metadata,docs/data_retention_policy.md,No YAML front matter
-medium,missing_metadata,docs/database/db_repository_evidence.md,No YAML front matter
-medium,missing_metadata,docs/database/migration_audit.md,No YAML front matter
-medium,missing_metadata,docs/database/migration_discipline.md,No YAML front matter
-medium,missing_metadata,docs/database/migration_release_discipline_contract.md,No YAML front matter
-medium,missing_metadata,docs/database/repository_transaction_performance_contract.md,No YAML front matter
-medium,missing_metadata,docs/database/schema_integrity.md,No YAML front matter
-medium,missing_metadata,docs/database/schema_readiness_contract.md,No YAML front matter
 medium,missing_metadata,docs/db_rollback.md,No YAML front matter
 medium,missing_metadata,docs/dependency_management.md,No YAML front matter
-medium,missing_metadata,docs/deployment/README.md,No YAML front matter
-medium,missing_metadata,docs/deployment/artifact_provenance_and_release_contract.md,No YAML front matter
-medium,missing_metadata,docs/deployment/ci_pipeline_contract.md,No YAML front matter
-medium,missing_metadata,docs/deployment/deployment_gate_and_rollback_contract.md,No YAML front matter
-medium,missing_metadata,docs/deployment/docker_runtime_hardening_contract.md,No YAML front matter
-medium,missing_metadata,docs/deployment/environment_configuration_contract.md,No YAML front matter
-medium,missing_metadata,docs/deployment/production_deployment_architecture_contract.md,No YAML front matter
 medium,missing_metadata,docs/development/e2e_testing.md,No YAML front matter
 medium,missing_metadata,docs/development/pwa_offline_plan.md,No YAML front matter
-medium,missing_metadata,docs/diagnostics/README.md,No YAML front matter
-medium,missing_metadata,docs/diagnostics/assessment_quality_fairness_contract.md,No YAML front matter
-medium,missing_metadata,docs/diagnostics/item_bank_launch_coverage_contract.md,No YAML front matter
-medium,missing_metadata,docs/diagnostics/item_contract.md,No YAML front matter
-medium,missing_metadata,docs/diagnostics/mastery_model_assessment_contract.md,No YAML front matter
-medium,missing_metadata,docs/diagnostics/production_diagnostics_assessment_readiness_contract.md,No YAML front matter
 medium,missing_metadata,docs/disaster_recovery.md,No YAML front matter
-medium,missing_metadata,docs/disaster_recovery/backup_policy_retention_contract.md,No YAML front matter
-medium,missing_metadata,docs/disaster_recovery/backup_restore_architecture_contract.md,No YAML front matter
-medium,missing_metadata,docs/disaster_recovery/business_continuity_contract.md,No YAML front matter
-medium,missing_metadata,docs/disaster_recovery/dr_escalation_matrix.md,No YAML front matter
-medium,missing_metadata,docs/disaster_recovery/evidence/restore_drill_001.md,No YAML front matter
-medium,missing_metadata,docs/disaster_recovery/recovery_objectives_contract.md,No YAML front matter
-medium,missing_metadata,docs/disaster_recovery/restore_drill_evidence_contract.md,No YAML front matter
-medium,missing_metadata,docs/disaster_recovery/restore_runbook_contract.md,No YAML front matter
-medium,missing_metadata,docs/disaster_recovery/runbooks/database_restore.md,No YAML front matter
-medium,missing_metadata,docs/disaster_recovery/runbooks/object_storage_restore.md,No YAML front matter
 medium,missing_metadata,docs/docs_gap_report.md,No YAML front matter
 medium,missing_metadata,docs/docs_generation_plan.md,No YAML front matter
 medium,missing_metadata,docs/documentation_intelligence_pipeline.md,No YAML front matter
@@ -355,78 +280,9 @@ medium,missing_metadata,docs/etl/README.md,No YAML front matter
 medium,missing_metadata,docs/etl/app_integration.md,No YAML front matter
 medium,missing_metadata,docs/experimentation/ethics_for_minors.md,No YAML front matter
 medium,missing_metadata,docs/five_pillars.md,No YAML front matter
-medium,missing_metadata,docs/frontend/CLUSTER_G_CLOSURE.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-002-handover.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-003-handover.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-004-handover.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-005-handover.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-006-handover.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-007-handover.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-008-audit.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-008-handover.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-010-handover.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-011-handover.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-012-accessibility-evidence.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-012-handover.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-013-A-handover.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-013-B-handover.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-013-B-retention-evidence.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-013-C-handover.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-013-D-handover.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-013-D-voice-consent-evidence.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-013-E-implementation-handover.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-013-E-whatsapp-sharing-boundary.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-013-implementation-plan.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-013-parent-review-retention.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PR-013-safety-and-compliance-boundary.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-PWA-MANIFEST-ICON-001-validation.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-SPIKE-004-web-speech.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-SPIKE-005-ai-tutor.md,No YAML front matter
-medium,missing_metadata,docs/frontend/FE-SPIKE-006-service-worker-spike.md,No YAML front matter
-medium,missing_metadata,docs/frontend/RC5-release-evidence.md,No YAML front matter
-medium,missing_metadata,docs/frontend/README.md,No YAML front matter
-medium,missing_metadata,docs/frontend/accessibility_pwa_e2e_evidence.md,No YAML front matter
-medium,missing_metadata,docs/frontend/frontend_accessibility_contract.md,No YAML front matter
-medium,missing_metadata,docs/frontend/frontend_accessibility_static_scan.md,No YAML front matter
-medium,missing_metadata,docs/frontend/frontend_api_client_inventory.md,No YAML front matter
-medium,missing_metadata,docs/frontend/frontend_auth_consent_denial_contract.md,No YAML front matter
-medium,missing_metadata,docs/frontend/frontend_build_test_lint_contract.md,No YAML front matter
-medium,missing_metadata,docs/frontend/frontend_e2e_environment_contract.md,No YAML front matter
-medium,missing_metadata,docs/frontend/frontend_e2e_opt_in_workflow.md,No YAML front matter
-medium,missing_metadata,docs/frontend/frontend_e2e_runtime_commands.md,No YAML front matter
-medium,missing_metadata,docs/frontend/frontend_evidence_index.md,No YAML front matter
-medium,missing_metadata,docs/frontend/frontend_journey_evidence.md,No YAML front matter
-medium,missing_metadata,docs/frontend/frontend_route_inventory.md,No YAML front matter
-medium,missing_metadata,docs/frontend/frontend_runtime_inventory.md,No YAML front matter
-medium,missing_metadata,docs/frontend/frontend_verification_evidence_2026-05-11.md,No YAML front matter
-medium,missing_metadata,docs/frontend/learner_vertical_journey_contract.md,No YAML front matter
-medium,missing_metadata,docs/frontend/parent_vertical_journey_contract.md,No YAML front matter
-medium,missing_metadata,docs/frontend/playwright_e2e_scaffold.md,No YAML front matter
-medium,missing_metadata,docs/frontend/playwright_journey_fixture_contract.md,No YAML front matter
-medium,missing_metadata,docs/frontend/playwright_mock_api_fixtures.md,No YAML front matter
-medium,missing_metadata,docs/frontend/playwright_mock_route_helpers.md,No YAML front matter
-medium,missing_metadata,docs/frontend/playwright_mocked_journey_specs.md,No YAML front matter
-medium,missing_metadata,docs/frontend/playwright_vertical_journey_specs.md,No YAML front matter
-medium,missing_metadata,docs/frontend/post-rc5-dependency-maintenance.md,No YAML front matter
-medium,missing_metadata,docs/frontend/pr_checklist_FE-PR-001-013.md,No YAML front matter
-medium,missing_metadata,docs/frontend/production_auth_onboarding_ux_contract.md,No YAML front matter
-medium,missing_metadata,docs/frontend/production_frontend_api_client_contract.md,No YAML front matter
-medium,missing_metadata,docs/frontend/production_frontend_env_security_contract.md,No YAML front matter
-medium,missing_metadata,docs/frontend/production_frontend_pwa_low_data_contract.md,No YAML front matter
-medium,missing_metadata,docs/frontend/production_frontend_ux_accessibility_mobile_contract.md,No YAML front matter
-medium,missing_metadata,docs/frontend/production_learner_parent_ux_contract.md,No YAML front matter
-medium,missing_metadata,docs/frontend/production_parent_privacy_controls_contract.md,No YAML front matter
-medium,missing_metadata,docs/frontend/production_protected_route_guard_contract.md,No YAML front matter
-medium,missing_metadata,docs/frontend/production_teacher_admin_scope_contract.md,No YAML front matter
-medium,missing_metadata,docs/frontend/spike_report_template.md,No YAML front matter
-medium,missing_metadata,docs/frontend/task_metadata_template.md,No YAML front matter
 medium,missing_metadata,docs/incident_response.md,No YAML front matter
 medium,missing_metadata,docs/index.md,No YAML front matter
-medium,missing_metadata,docs/irt/README.md,No YAML front matter
 medium,missing_metadata,docs/launch_scope.md,No YAML front matter
-medium,missing_metadata,docs/learning_science/irt_model.md,No YAML front matter
-medium,missing_metadata,docs/learning_science/learning_evidence.md,No YAML front matter
-medium,missing_metadata,docs/learning_science/mastery_model.md,No YAML front matter
 medium,missing_metadata,docs/legacy_compatibility.md,No YAML front matter
 medium,missing_metadata,docs/legal/legal_documents_index.md,No YAML front matter
 medium,missing_metadata,docs/legal/policy_versioning.md,No YAML front matter
@@ -438,16 +294,6 @@ medium,missing_metadata,docs/notifications/notification_audit_observability_cont
 medium,missing_metadata,docs/notifications/notification_delivery_reliability_contract.md,No YAML front matter
 medium,missing_metadata,docs/notifications/notification_template_governance_contract.md,No YAML front matter
 medium,missing_metadata,docs/notifications/production_notifications_architecture_contract.md,No YAML front matter
-medium,missing_metadata,docs/observability/alerting_incident_routing_contract.md,No YAML front matter
-medium,missing_metadata,docs/observability/dashboard_runbook_contract.md,No YAML front matter
-medium,missing_metadata,docs/observability/logging_tracing_contract.md,No YAML front matter
-medium,missing_metadata,docs/observability/metrics_slo_contract.md,No YAML front matter
-medium,missing_metadata,docs/observability/production_observability_architecture_contract.md,No YAML front matter
-medium,missing_metadata,docs/observability/runbooks/api_error_rate_high.md,No YAML front matter
-medium,missing_metadata,docs/observability/runbooks/llm_provider_failure_spike.md,No YAML front matter
-medium,missing_metadata,docs/observability/runbooks/notification_dead_letter_spike.md,No YAML front matter
-medium,missing_metadata,docs/observability/runbooks/privacy_export_failure.md,No YAML front matter
-medium,missing_metadata,docs/observability/telemetry_privacy_retention_contract.md,No YAML front matter
 medium,missing_metadata,docs/operations/CLUSTER_D_CLOSURE.md,No YAML front matter
 medium,missing_metadata,docs/operations/CLUSTER_E_CLOSURE.md,No YAML front matter
 medium,missing_metadata,docs/operations/CLUSTER_H_CLOSURE.md,No YAML front matter
@@ -587,17 +433,6 @@ medium,missing_metadata,docs/operations/terminal_pr_evidence_index.md,No YAML fr
 medium,missing_metadata,docs/operations/terminal_review_index.md,No YAML front matter
 medium,missing_metadata,docs/operations/todo_implementation_plan.md,No YAML front matter
 medium,missing_metadata,docs/operations/workspace_source_of_truth.md,No YAML front matter
-medium,missing_metadata,docs/operations_support/incident_classification_matrix.md,No YAML front matter
-medium,missing_metadata,docs/operations_support/incident_response_operations_support_architecture_contract.md,No YAML front matter
-medium,missing_metadata,docs/operations_support/incidents/INC-001.md,No YAML front matter
-medium,missing_metadata,docs/operations_support/on_call_escalation_policy.md,No YAML front matter
-medium,missing_metadata,docs/operations_support/post_incident_review_contract.md,No YAML front matter
-medium,missing_metadata,docs/operations_support/post_incident_reviews/PIR-001.md,No YAML front matter
-medium,missing_metadata,docs/operations_support/production_operations_handover_checklist.md,No YAML front matter
-medium,missing_metadata,docs/operations_support/runbooks/api_outage.md,No YAML front matter
-medium,missing_metadata,docs/operations_support/runbooks/privacy_incident.md,No YAML front matter
-medium,missing_metadata,docs/operations_support/status_communication_contract.md,No YAML front matter
-medium,missing_metadata,docs/operations_support/support_sla_policy.md,No YAML front matter
 medium,missing_metadata,docs/ops/db_backup.md,No YAML front matter
 medium,missing_metadata,docs/popia/README.md,No YAML front matter
 medium,missing_metadata,docs/popia/popia_data_rights.md,No YAML front matter
@@ -1160,11 +995,6 @@ medium,missing_metadata,docs/roadmap_domains/domain_12_notifications-communicati
 medium,missing_metadata,docs/roadmap_domains/domain_13_infrastructure-devops_execution_report.md,No YAML front matter
 medium,missing_metadata,docs/roadmap_domains/domain_14_legal-privacy-documentation_execution_report.md,No YAML front matter
 medium,missing_metadata,docs/route_inventory.md,No YAML front matter
-medium,missing_metadata,docs/runbooks/ai_operations_and_budgets.md,No YAML front matter
-medium,missing_metadata,docs/runbooks/content_review_governance.md,No YAML front matter
-medium,missing_metadata,docs/runbooks/curriculum_expansion_and_training_governance.md,No YAML front matter
-medium,missing_metadata,docs/runbooks/irt_quality_watchdog.md,No YAML front matter
-medium,missing_metadata,docs/runbooks/learner_tutor.md,No YAML front matter
 medium,missing_metadata,docs/safety/content_policy.md,No YAML front matter
 medium,missing_metadata,docs/secrets.md,No YAML front matter
 medium,missing_metadata,docs/spikes/FE-SPIKE-001-next-react-compat.md,No YAML front matter
@@ -1174,17 +1004,5 @@ medium,missing_metadata,docs/subprocessor_register.md,No YAML front matter
 medium,missing_metadata,docs/technical_state_report_2026-05-11.md,No YAML front matter
 medium,missing_metadata,docs/technical_state_report_2026-05-12.md,No YAML front matter
 medium,missing_metadata,docs/technical_state_report_2026-05-17.md,No YAML front matter
-medium,missing_metadata,docs/testing/README.md,No YAML front matter
-medium,missing_metadata,docs/testing/beta_release_quality_gate_checklist.md,No YAML front matter
-medium,missing_metadata,docs/testing/coverage_quality_threshold_contract.md,No YAML front matter
-medium,missing_metadata,docs/testing/defect_triage_release_blocker_contract.md,No YAML front matter
-medium,missing_metadata,docs/testing/known_issues_release_register.md,No YAML front matter
-medium,missing_metadata,docs/testing/pr002r_evidence_check.md,No YAML front matter
-medium,missing_metadata,docs/testing/production_release_quality_gate_checklist.md,No YAML front matter
-medium,missing_metadata,docs/testing/pytest_import_path.md,No YAML front matter
-medium,missing_metadata,docs/testing/quality_gate_waiver_policy.md,No YAML front matter
-medium,missing_metadata,docs/testing/release_evidence_bundle_contract.md,No YAML front matter
-medium,missing_metadata,docs/testing/test_strategy_matrix_contract.md,No YAML front matter
-medium,missing_metadata,docs/testing/testing_release_evidence_architecture_contract.md,No YAML front matter
 medium,missing_metadata,docs/v2_handoff.md,No YAML front matter
 medium,missing_metadata,docs/v2_migration.md,No YAML front matter

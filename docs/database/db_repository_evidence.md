@@ -1,3 +1,18 @@
+---
+title: "Database Repository Evidence"
+status: current-evidence
+owner: database
+reviewers: [backend, database, release-management]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-24
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: [alembic, app/repositories, scripts/validate_schema_integrity.py]
+---
+
 # Database Repository Evidence
 
 This index links migration graph, schema integrity, transaction/repository, and

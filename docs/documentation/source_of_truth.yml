@@ -5,7 +5,7 @@
 version: 1
 project: EduBoost V2
 owner: documentation-governance
-last_reviewed: 2026-06-23
+last_reviewed: 2026-06-24
 review_interval_days: 30
 
 canonical_sections:
@@ -33,6 +33,10 @@ canonical_sections:
       - docs/documentation/stage_3_strict_scope.json
       - docs/documentation/stage_4_deep_housekeeping.md
       - docs/documentation/stage_4_strict_scope.json
+      - docs/documentation/stage_5_technical_delivery_housekeeping.md
+      - docs/documentation/stage_5_strict_scope.json
+      - docs/documentation/stage_5_technical_delivery_housekeeping.md
+      - docs/documentation/stage_5_strict_scope.json
 
   source_of_truth_register:
     canonical_path: docs/documentation/source_of_truth.yml
@@ -142,6 +146,123 @@ canonical_sections:
     related_paths:
       - docs/generated/documentation_inventory.json
       - docs/generated/documentation_inventory.csv
+
+  frontend_runtime:
+    canonical_path: docs/frontend/README.md
+    owner: frontend
+    review_interval_days: 45
+    evidence_commands:
+      - make docs-housekeeping-stage5-check
+      - cd app/frontend && pnpm run type-check
+    related_paths:
+      - docs/frontend
+      - app/frontend
+
+  backend_runtime:
+    canonical_path: docs/backend/README.md
+    owner: backend
+    review_interval_days: 45
+    evidence_commands:
+      - make runtime-check
+      - make test-fast
+    related_paths:
+      - app/api_v2.py
+      - app/api_v2_routers
+      - docs/database
+
+  database_schema:
+    canonical_path: docs/database/schema_integrity.md
+    owner: database
+    review_interval_days: 45
+    evidence_commands:
+      - python3 scripts/validate_schema_integrity.py
+      - python3 scripts/verify_migration_graph.py
+    related_paths:
+      - alembic
+      - app/repositories
+
+  deployment_delivery:
+    canonical_path: docs/deployment/README.md
+    owner: release-management
+    review_interval_days: 45
+    evidence_commands:
+      - docker compose config
+      - docker compose -f docker-compose.prod.yml config
+    related_paths:
+      - docs/deployment
+      - .github/workflows
+
+  testing_quality:
+    canonical_path: docs/testing/README.md
+    owner: quality
+    review_interval_days: 45
+    evidence_commands:
+      - make test-fast
+      - make docs-housekeeping-stage5-check
+    related_paths:
+      - tests
+      - docs/testing
+
+  observability_operations:
+    canonical_path: docs/observability/production_observability_architecture_contract.md
+    owner: operations
+    review_interval_days: 45
+    evidence_commands:
+      - make docs-housekeeping-stage5-check
+    related_paths:
+      - docs/observability
+      - docs/operations_support
+
+  disaster_recovery:
+    canonical_path: docs/disaster_recovery/backup_restore_architecture_contract.md
+    owner: operations
+    review_interval_days: 45
+    evidence_commands:
+      - make docs-housekeeping-stage5-check
+    related_paths:
+      - docs/disaster_recovery
+      - docs/disaster_recovery/runbooks
+
+  content_factory:
+    canonical_path: docs/content_factory/control_plane.md
+    owner: content-factory
+    review_interval_days: 45
+    evidence_commands:
+      - make docs-housekeeping-stage5-check
+    related_paths:
+      - docs/content_factory
+      - data/content_factory
+
+  caps_curriculum:
+    canonical_path: docs/curriculum/caps_topic_map_production_contract.md
+    owner: curriculum
+    review_interval_days: 45
+    evidence_commands:
+      - make docs-housekeeping-stage5-check
+    related_paths:
+      - docs/caps
+      - docs/curriculum
+
+  diagnostics_learning_science:
+    canonical_path: docs/diagnostics/README.md
+    owner: diagnostics
+    review_interval_days: 45
+    evidence_commands:
+      - make docs-housekeeping-stage5-check
+    related_paths:
+      - docs/diagnostics
+      - docs/irt
+      - docs/learning_science
+
+  ai_safety:
+    canonical_path: docs/ai/ai_safety_boundary_contract.md
+    owner: ai-safety
+    review_interval_days: 45
+    evidence_commands:
+      - make docs-housekeeping-stage5-check
+    related_paths:
+      - docs/ai
+      - app/services
 
   archive:
     canonical_path: docs/archive/README.md

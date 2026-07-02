@@ -1,3 +1,18 @@
+---
+title: "Post-RC5 Dependency Maintenance Triage"
+status: active
+owner: frontend
+reviewers: [frontend, product, privacy]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-24
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: [app/frontend, docs/frontend/README.md]
+---
+
 # Post-RC5 Dependency Maintenance Triage
 
 **Date:** 2026-05-31  
@@ -129,7 +144,7 @@ All 4 PRs merged to master successfully. No conflicts. Lockfile updates clean.
 
 ## Deferred Post-Maintenance
 
-See [OUTSTANDING_TODO_ITEMS.md](../../OUTSTANDING_TODO_ITEMS.md) for follow-up work:
+See [OUTSTANDING_TODO_ITEMS.md](../archive/roadmaps-or-todos/OUTSTANDING_TODO_ITEMS.md.bak) for follow-up work:
 - **FE-PWA-MANIFEST-ICON-001:** PWA manifest icon validation (no dependencies affected)
 - **FE-TS-EXACT-OPTIONAL-001:** TypeScript `exactOptionalPropertyTypes` readiness spike (no dependencies affected)
 - **FE-PPR-RERUN-001:** Parent-review performance rerun after stabilization
