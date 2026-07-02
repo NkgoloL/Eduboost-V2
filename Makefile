@@ -2920,3 +2920,10 @@ rr008-operational-readiness-audit:
 
 rr008-operational-readiness-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py --json
+
+.PHONY: rr009-governance-process-audit rr009-governance-process-check
+rr009-governance-process-audit:
+	PYTHONPATH=. python3 scripts/governance/audit_rr009_governance_process.py --json
+
+rr009-governance-process-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr009_governance_process.py --json
