@@ -2,13 +2,13 @@
 title: "CAPS Learning Proof"
 status: "active"
 owner: "curriculum"
-reviewers: "[curriculum, content-factory, product]"
+reviewers: ["curriculum", "content-factory", "product"]
 audience: "curriculum-reviewer"
-source_of_truth: "false"
-supersedes: "[]"
+source_of_truth: false
+supersedes: []
 superseded_by: null
 last_reviewed: "2026-06-24"
-review_interval_days: "60"
+review_interval_days: 60
 evidence_command: "make docs-housekeeping-stage5-check"
 code_anchors: "[docs/caps, app/services/content_factory]"
 ---

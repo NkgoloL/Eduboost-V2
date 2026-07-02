@@ -2,13 +2,13 @@
 title: "Runbook: Privacy Incident"
 status: "current-evidence"
 owner: "operations"
-reviewers: "[operations, support, privacy]"
+reviewers: ["operations", "support", "privacy"]
 audience: "operator"
-source_of_truth: "false"
-supersedes: "[]"
+source_of_truth: false
+supersedes: []
 superseded_by: null
 last_reviewed: "2026-06-24"
-review_interval_days: "60"
+review_interval_days: 60
 evidence_command: "make docs-housekeeping-stage5-check"
 code_anchors: "[docs/operations_support, docs/runbooks]"
 ---

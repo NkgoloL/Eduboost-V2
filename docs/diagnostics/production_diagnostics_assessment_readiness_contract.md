@@ -2,13 +2,13 @@
 title: "Production Diagnostics and Assessment Readiness Contract"
 status: "active"
 owner: "diagnostics"
-reviewers: "[diagnostics, learning-science, backend]"
+reviewers: ["diagnostics", "learning-science", "backend"]
 audience: "developer"
-source_of_truth: "false"
-supersedes: "[]"
+source_of_truth: false
+supersedes: []
 superseded_by: null
 last_reviewed: "2026-06-24"
-review_interval_days: "60"
+review_interval_days: 60
 evidence_command: "make docs-housekeeping-stage5-check"
 code_anchors: "[app/modules/diagnostics, docs/diagnostics]"
 ---

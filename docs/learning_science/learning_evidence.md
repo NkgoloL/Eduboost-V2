@@ -2,13 +2,13 @@
 title: "Learning Evidence"
 status: "current-evidence"
 owner: "learning-science"
-reviewers: "[learning-science, diagnostics, curriculum]"
+reviewers: ["learning-science", "diagnostics", "curriculum"]
 audience: "learning-science-reviewer"
-source_of_truth: "false"
-supersedes: "[]"
+source_of_truth: false
+supersedes: []
 superseded_by: null
 last_reviewed: "2026-06-24"
-review_interval_days: "60"
+review_interval_days: 60
 evidence_command: "make docs-housekeeping-stage5-check"
 code_anchors: "[docs/learning_science, docs/diagnostics]"
 ---

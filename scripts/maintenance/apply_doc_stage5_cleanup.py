@@ -140,24 +140,71 @@ CANONICAL_PATHS = {
 FRONT_MATTER_RE = re.compile(r"\A---\s*(.*?)---\s*", re.DOTALL)
 
 
-def split_front_matter(text: str) -> tuple[dict[str, str] | None, str]:
+def parse_front_matter_value(value: str) -> object:
+    text = value.strip()
+    if not text:
+        return ""
+
+    candidate = text
+    for _ in range(10):
+        try:
+            parsed = json.loads(candidate)
+        except json.JSONDecodeError:
+            break
+        if isinstance(parsed, str):
+            if parsed == candidate:
+                break
+            candidate = parsed
+            continue
+        return parsed
+
+    if candidate in {"true", "false"}:
+        return candidate == "true"
+    if candidate == "null":
+        return None
+    if re.fullmatch(r"-?\d+", candidate):
+        return int(candidate)
+    if candidate.startswith("[") and candidate.endswith("]"):
+        inner = candidate[1:-1].strip()
+        if not inner:
+            return []
+        items: list[object] = []
+        for raw_item in inner.split(","):
+            item = raw_item.strip()
+            if not item:
+                continue
+            try:
+                parsed_item = json.loads(item)
+            except json.JSONDecodeError:
+                if (item.startswith('"') and item.endswith('"')) or (item.startswith("'") and item.endswith("'")):
+                    parsed_item = item[1:-1]
+                else:
+                    parsed_item = item
+            items.append(parsed_item)
+        return items
+    if (candidate.startswith('"') and candidate.endswith('"')) or (candidate.startswith("'") and candidate.endswith("'")):
+        return candidate[1:-1]
+    return candidate
+
+
+def split_front_matter(text: str) -> tuple[dict[str, object] | None, str]:
     match = FRONT_MATTER_RE.match(text)
     if not match:
         return None, text
-    meta: dict[str, str] = {}
+    meta: dict[str, object] = {}
     for line in match.group(1).splitlines():
         if ":" not in line or line.lstrip().startswith("#"):
             continue
         key, value = line.split(":", 1)
-        meta[key.strip()] = value.strip()
+        meta[key.strip()] = parse_front_matter_value(value)
     return meta, text[match.end():]
 
 
 def h1(text: str, fallback: str) -> str:
     for line in text.splitlines():
         if line.startswith("# "):
-            return line[2:].strip().replace('"', '\"')
-    return fallback.replace("_", " ").replace("-", " ").title().replace('"', '\"')
+            return line[2:].strip()
+    return fallback.replace("_", " ").replace("-", " ").title()
 
 
 def target_prefix(rel: str) -> str | None:
@@ -202,7 +249,7 @@ def format_value(value: object) -> str:
     return str(value)
 
 
-def build_front_matter(rel: str, title: str, existing: dict[str, str] | None) -> str:
+def build_front_matter(rel: str, title: str, existing: dict[str, object] | None) -> str:
     prefix = target_prefix(rel)
     if prefix is None:
         raise ValueError(f"No Stage 5 metadata mapping for {rel}")
@@ -212,7 +259,7 @@ def build_front_matter(rel: str, title: str, existing: dict[str, str] | None) ->
         "owner": OWNER_MAP[prefix],
         "reviewers": REVIEWER_MAP[prefix],
         "audience": AUDIENCE_MAP[prefix],
-        "source_of_truth": "true" if rel in CANONICAL_PATHS else "false",
+        "source_of_truth": rel in CANONICAL_PATHS,
         "supersedes": [],
         "superseded_by": None,
         "last_reviewed": LAST_REVIEWED,
@@ -222,7 +269,7 @@ def build_front_matter(rel: str, title: str, existing: dict[str, str] | None) ->
     }
     if existing:
         for key, value in existing.items():
-            if key in data and value not in {"", "null"} and key not in {"title", "evidence_command", "code_anchors", "last_reviewed"}:
+            if key in data and value is not None and value != "" and key not in {"title", "evidence_command", "code_anchors", "last_reviewed"}:
                 data[key] = value
     lines = [f"---"]
     for key in REQUIRED_METADATA_FIELDS:

@@ -2,13 +2,13 @@
 title: "Migration Audit"
 status: "current-evidence"
 owner: "database"
-reviewers: "[backend, database, release-management]"
+reviewers: ["backend", "database", "release-management"]
 audience: "developer"
-source_of_truth: "false"
-supersedes: "[]"
+source_of_truth: false
+supersedes: []
 superseded_by: null
 last_reviewed: "2026-06-24"
-review_interval_days: "60"
+review_interval_days: 60
 evidence_command: "make docs-housekeeping-stage5-check"
 code_anchors: "[alembic, app/repositories, scripts/validate_schema_integrity.py]"
 ---
