@@ -33,7 +33,11 @@ def _irt_item_is_learner_eligible(
     *,
     now: datetime | None = None,
 ) -> bool:
-    state = str(getattr(item, "irt_quality_state", "uncalibrated"))
+    state = getattr(item, "irt_quality_state", None)
+    # Unit tests and fresh ORM objects may not carry DB server defaults.
+    # Treat missing/non-string states as the persisted default.
+    if not isinstance(state, str) or not state:
+        state = "uncalibrated"
     if state in {"uncalibrated", "healthy", "monitor"}:
         return True
     if state != "overridden":

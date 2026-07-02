@@ -7,10 +7,10 @@ audience: security-reviewer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-23
+last_reviewed: 2026-07-02
 review_interval_days: 60
 evidence_command: "make docs-housekeeping-stage4-check"
-code_anchors: [docs/security/README.md, app/security]
+code_anchors: [docs/security/README.md, app/api_v2_routers]
 ---
 
 # POPIA Consent Gate Inventory

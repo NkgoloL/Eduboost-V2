@@ -1,0 +1,70 @@
+{
+  "capacity_planning_recorded": true,
+  "clean_git_state_at_capture": true,
+  "deployment_authorised": false,
+  "evidence_captured_at": "2026-07-02T18:25:17+00:00",
+  "evidence_owner": "Nkgolo Lebelo",
+  "git_branch": "master",
+  "git_commit": "96b3acaf1b42e1a68399c9c2a5f8da348d5c8c42",
+  "grafana_alert_linkage_recorded": true,
+  "incident_response_runbook_recorded": true,
+  "llm_cost_model_recorded": true,
+  "operational_readiness_audit": {
+    "documents": {
+      "capacity_planning_exists": true,
+      "capacity_planning_marker_present": true,
+      "grafana_alert_linkage_exists": true,
+      "grafana_alert_linkage_marker_present": true,
+      "incident_response_runbook_index_exists": true,
+      "incident_response_runbook_index_marker_present": true,
+      "llm_cost_model_exists": true,
+      "llm_cost_model_marker_present": true,
+      "operational_readiness_manifest_exists": true,
+      "operational_readiness_policy_exists": true,
+      "slo_definitions_exists": true,
+      "slo_definitions_marker_present": true
+    },
+    "errors": [],
+    "manifest": {
+      "capacity_planning_recorded": true,
+      "deployment_authorised": false,
+      "grafana_alert_linkage_recorded": true,
+      "incident_response_runbook_recorded": true,
+      "llm_cost_model_recorded": true,
+      "operational_drills_executed": false,
+      "operational_drills_remaining_rr_id": "RR-016",
+      "production_release_authorised": false,
+      "public_beta_authorised": false,
+      "release_tag_authorised": false,
+      "rr_id": "RR-008",
+      "runtime_kg_implementation_claimed": false,
+      "slo_definitions_recorded": true
+    },
+    "reference_documents": {
+      "existing_breach_response_doc_exists": true,
+      "existing_incident_response_doc_exists": true,
+      "existing_observability_doc_exists": true,
+      "existing_security_incident_runbook_exists": true
+    },
+    "valid": true,
+    "warnings": [],
+    "workflow_checks": {
+      "rr008_workflow_exists": true,
+      "rr008_workflow_mentions_operational_readiness": true,
+      "rr008_workflow_runs_verifier": true
+    }
+  },
+  "operational_readiness_recorded": true,
+  "production_release_authorised": false,
+  "public_beta_authorised": false,
+  "release_tag_authorised": false,
+  "rr003_fallback_coverage_caveat_visible": true,
+  "rr006_non_required_checks_caveat_visible": true,
+  "rr016_drills_remaining_visible": true,
+  "rr_id": "RR-008",
+  "runtime_kg_implementation_claimed": false,
+  "slo_definitions_recorded": true,
+  "status": "operational_readiness_recorded",
+  "status_short": "",
+  "target_branch": "master"
+}

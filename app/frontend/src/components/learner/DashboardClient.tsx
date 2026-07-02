@@ -130,7 +130,15 @@ export function DashboardClient({
     <div className="max-w-6xl mx-auto p-4 md:p-8">
       <header className="mb-10">
         <h1 className="text-4xl font-['Baloo_2'] font-bold text-[var(--text)] mb-2">
-          Welcome back, {learner.nickname || learner.display_name || "Learner"}!
+          Welcome back,{" "}
+          <button
+            type="button"
+            className="underline decoration-dotted underline-offset-4 hover:text-[var(--blue)]"
+            onClick={() => router.push(`/learners/${learner.id || learner.learner_id}`)}
+          >
+            {learner.display_name || learner.nickname || "Learner"}
+          </button>
+          !
         </h1>
         <p className="text-[var(--muted)] font-medium">
           You&apos;re doing great! Here&apos;s a look at your progress today.

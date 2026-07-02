@@ -1,0 +1,142 @@
+
+> eduboost-sa-frontend@1.0.0 test /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/frontend
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.7 [39m[90m/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/frontend[39m
+
+ [32m✓[39m __tests__/services.smoke.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 55[2mms[22m[39m
+ [32m✓[39m __tests__/InteractiveDiagnostic.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[33m 1139[2mms[22m[39m
+   [33m[2m✓[22m[39m handles start with no items [33m 724[2mms[22m[39m
+   [33m[2m✓[22m[39m full flow submits and completes [33m 410[2mms[22m[39m
+ [32m✓[39m __tests__/EntryScreens.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 1230[2mms[22m[39m
+   [33m[2m✓[22m[39m Landing buttons call handlers [33m 471[2mms[22m[39m
+   [33m[2m✓[22m[39m Onboarding completes and calls onComplete [33m 663[2mms[22m[39m
+ [32m✓[39m __tests__/EntryAndPortal.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[33m 1728[2mms[22m[39m
+     [33m[2m✓[22m[39m renders landing and onboarding flows [33m 808[2mms[22m[39m
+     [33m[2m✓[22m[39m renders parent dashboard, lesson, and sidebar widgets [33m 469[2mms[22m[39m
+     [33m[2m✓[22m[39m renders no-session, empty, and no-gap parent states plus sidebar fallbacks [33m 376[2mms[22m[39m
+ [32m✓[39m __tests__/ParentDashboard.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[33m 2059[2mms[22m[39m
+   [33m[2m✓[22m[39m data rights export updates status with audit evidence [33m 526[2mms[22m[39m
+   [33m[2m✓[22m[39m consent grant updates status [33m 326[2mms[22m[39m
+ [32m✓[39m src/__tests__/ApiLayer.test.ts [2m([22m[2m11 tests[22m[2m)[22m[33m 585[2mms[22m[39m
+     [33m[2m✓[22m[39m waits for background jobs to complete [33m 505[2mms[22m[39m
+ [32m✓[39m __tests__/InteractiveDiagnosticFlow.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[33m 584[2mms[22m[39m
+     [33m[2m✓[22m[39m runs a one-item diagnostic flow to completion [33m 415[2mms[22m[39m
+ [32m✓[39m __tests__/RoutingIntegration.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[33m 728[2mms[22m[39m
+ [32m✓[39m src/__tests__/grade-r/EarconButton.test.tsx [2m([22m[2m1 test[22m[2m)[22m[33m 444[2mms[22m[39m
+   [33m[2m✓[22m[39m EarconButton enables and plays earcon on click [33m 438[2mms[22m[39m
+ [32m✓[39m __tests__/RouteGuard.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[33m 581[2mms[22m[39m
+ [32m✓[39m __tests__/ErrorBoundary.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 502[2mms[22m[39m
+   [33m[2m✓[22m[39m ErrorBoundary catches error and shows message and retry [33m 407[2mms[22m[39m
+ [32m✓[39m __tests__/BetaAndFeedback.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[33m 437[2mms[22m[39m
+   [33m[2m✓[22m[39m FeedbackButton constructs mailto link with context [33m 341[2mms[22m[39m
+ [32m✓[39m src/components/learner/__tests__/AiTutorChat.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[33m 526[2mms[22m[39m
+     [33m[2m✓[22m[39m does not submit an empty question [33m 393[2mms[22m[39m
+ [32m✓[39m src/__tests__/grade-r/grade-r-contracts.test.tsx [2m([22m[2m1 test[22m[2m)[22m[33m 553[2mms[22m[39m
+   [33m[2m✓[22m[39m GradeRShell renders large touch targets and accessible labels [33m 543[2mms[22m[39m
+ [32m✓[39m src/__tests__/grade-r/PhonicsKaraokeText.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[33m 447[2mms[22m[39m
+ [32m✓[39m __tests__/FeaturePanels.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 166[2mms[22m[39m
+[90mstdout[2m | src/__tests__/guardian/whatsapp-share-shell.test.tsx[2m > [22m[2mWhatsAppShareShell[2m > [22m[2mdoes not auto-open and only opens on approve click, emitting metadata-only audit events
+[22m[39mwhatsapp-share-audit {
+  event: [32m'attempt'[39m,
+  learnerId: [32m'learner-1'[39m,
+  guardianId: [32m'g-1'[39m,
+  timestamp: [32m'2026-06-27T14:29:49.324Z'[39m
+}
+whatsapp-share-audit {
+  event: [32m'approved'[39m,
+  method: [32m'wa.me'[39m,
+  learnerId: [32m'learner-1'[39m,
+  guardianId: [32m'g-1'[39m,
+  timestamp: [32m'2026-06-27T14:29:49.327Z'[39m
+}
+
+ [32m✓[39m src/__tests__/guardian/whatsapp-share-shell.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 143[2mms[22m[39m
+ [32m✓[39m src/__tests__/voice/voice-input-shell.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 129[2mms[22m[39m
+ [32m✓[39m src/__tests__/authRoutes.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 52[2mms[22m[39m
+ [32m✓[39m src/__tests__/db/cache-api.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 60[2mms[22m[39m
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mrejects a request missing lesson_id
+[22m[39m[audit] tutor event {"event":"tutor.request.rejected","reason":"missing_lesson_id"}
+
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mreturns a safe refusal for broad free-chat prompts before provider call
+[22m[39m[audit] tutor event {"event":"tutor.request.received","lessonId":"lesson-1"}
+
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mreturns a safe refusal for broad free-chat prompts before provider call
+[22m[39m[audit] tutor event {"event":"tutor.request.refused","lessonId":"lesson-1","reason":"This tutor only answers lesson-focused questions. Please ask about the current lesson or exercise."}
+
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mrate-limits repeated requests from the same identity
+[22m[39m[audit] tutor event {"event":"tutor.request.received","lessonId":"lesson-1"}
+
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mrate-limits repeated requests from the same identity
+[22m[39m[audit] tutor event {"event":"tutor.request.accepted","lessonId":"lesson-1"}
+
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mrate-limits repeated requests from the same identity
+[22m[39m[audit] tutor event {"event":"tutor.request.received","lessonId":"lesson-1"}
+
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mrate-limits repeated requests from the same identity
+[22m[39m[audit] tutor event {"event":"tutor.request.accepted","lessonId":"lesson-1"}
+
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mrate-limits repeated requests from the same identity
+[22m[39m[audit] tutor event {"event":"tutor.request.received","lessonId":"lesson-1"}
+
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mrate-limits repeated requests from the same identity
+[22m[39m[audit] tutor event {"event":"tutor.request.accepted","lessonId":"lesson-1"}
+
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mrate-limits repeated requests from the same identity
+[22m[39m[audit] tutor event {"event":"tutor.request.received","lessonId":"lesson-1"}
+
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mrate-limits repeated requests from the same identity
+[22m[39m[audit] tutor event {"event":"tutor.request.accepted","lessonId":"lesson-1"}
+
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mrate-limits repeated requests from the same identity
+[22m[39m[audit] tutor event {"event":"tutor.request.received","lessonId":"lesson-1"}
+
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mrate-limits repeated requests from the same identity
+[22m[39m[audit] tutor event {"event":"tutor.request.accepted","lessonId":"lesson-1"}
+
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mrate-limits repeated requests from the same identity
+[22m[39m[audit] tutor event {"event":"tutor.request.received","lessonId":"lesson-1"}
+
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mrate-limits repeated requests from the same identity
+[22m[39m[audit] tutor event {"event":"tutor.request.accepted","lessonId":"lesson-1"}
+
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mrate-limits repeated requests from the same identity
+[22m[39m[audit] tutor event {"event":"tutor.rate_limited","reason":"Let's keep tutor questions focused and lesson-specific. Please wait a moment before asking again."}
+
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mforwards a lesson-bounded tutor request to the provider and returns filtered output
+[22m[39m[audit] tutor event {"event":"tutor.request.received","lessonId":"lesson-1"}
+
+[90mstdout[2m | src/__tests__/tutor/tutor-route.test.ts[2m > [22m[2mTutor API route[2m > [22m[2mforwards a lesson-bounded tutor request to the provider and returns filtered output
+[22m[39m[audit] tutor event {"event":"tutor.request.accepted","lessonId":"lesson-1"}
+
+ [32m✓[39m src/__tests__/tutor/tutor-route.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 69[2mms[22m[39m
+ [32m✓[39m __tests__/services.coverage.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 44[2mms[22m[39m
+ [32m✓[39m __tests__/client.api.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 71[2mms[22m[39m
+ [32m✓[39m src/__tests__/LearnerJourneys.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 33[2mms[22m[39m
+ [32m✓[39m src/__tests__/DiagnosticContract.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 29[2mms[22m[39m
+ [32m✓[39m src/__tests__/tutor/tutor-contracts.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 32[2mms[22m[39m
+ [32m✓[39m src/__tests__/tutor/parent-review-api.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [32m✓[39m src/__tests__/AccessibilityContracts.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[32m 26[2mms[22m[39m
+ [32m✓[39m src/__tests__/OfflineSync.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 21[2mms[22m[39m
+ [32m✓[39m src/lib/api/contentFactoryReview.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 22[2mms[22m[39m
+ [32m✓[39m src/__tests__/tutor/tutor-safety.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32m✓[39m __tests__/offlineSync.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32m✓[39m src/lib/api/contentFactory.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/__tests__/tutor/parent-review-access.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m __tests__/LegacyApiHelpers.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m src/__tests__/tutor/tutor-review-integration.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32m✓[39m src/__tests__/voice/voice-guardrails.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+ [32m✓[39m src/__tests__/ContentFactoryMode.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/__tests__/tutor/parent-review-redaction.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m src/__tests__/guardian/whatsapp-share-helper.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m src/__tests__/voice/voice-consent.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/__tests__/tutor/parent-review-contracts.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m src/__tests__/tutor/parent-review-retention.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m src/__tests__/voice/voice-capability.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 7[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m44 passed[39m[22m[90m (44)[39m
+[2m      Tests [22m [1m[32m149 passed[39m[22m[90m (149)[39m
+[2m   Start at [22m 16:29:34
+[2m   Duration [22m 29.10s[2m (transform 3.13s, setup 7.78s, import 9.47s, tests 12.68s, environment 91.99s)[22m
+

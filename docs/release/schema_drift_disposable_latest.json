@@ -1,12 +1,12 @@
 {
-  "captured_at": "2026-06-13T13:49:13Z",
+  "captured_at": "2026-06-27T02:22:35Z",
   "database_url_redacted": "postgresql+asyncpg://real_user:***@localhost:5432/eduboost_test",
   "dry_run": true,
   "passed": true,
   "results": [
     {
       "command": [
-        "/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python",
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
         "scripts/capture_migration_evidence.py"
       ],
       "name": "migration_evidence_capture",
@@ -16,7 +16,7 @@
     },
     {
       "command": [
-        "/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python",
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
         "scripts/capture_migration_evidence.py",
         "--validate",
         "--require-pass"
@@ -28,7 +28,7 @@
     },
     {
       "command": [
-        "/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python",
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
         "scripts/compare_orm_tables_to_database.py",
         "--require-db",
         "--fail-on-drift"

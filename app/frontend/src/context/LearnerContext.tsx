@@ -30,13 +30,32 @@ export function LearnerProvider({ children }: { children: React.ReactNode }) {
     let active = true;
     const restoreLearner = async () => {
       if (!active) return;
+      if (!learner && typeof window !== "undefined") {
+        const stored = window.localStorage.getItem("eb_active_learner");
+        if (stored) {
+          try {
+            const parsed = JSON.parse(stored) as ActiveLearner;
+            const learnerId = parsed.learner_id || parsed.id || "";
+            if (learnerId) {
+              setLearner({
+                ...parsed,
+                learner_id: learnerId,
+                id: parsed.id || learnerId,
+                nickname: parsed.nickname || parsed.display_name,
+              });
+            }
+          } catch {
+            // Ignore malformed local test state without logging learner data.
+          }
+        }
+      }
       setLoading(false);
     };
     restoreLearner();
     return () => {
       active = false;
     };
-  }, []);
+  }, [learner]);
 
   const refreshState = useCallback(async () => {
     if (!learner?.learner_id) return;

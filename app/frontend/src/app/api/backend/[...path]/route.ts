@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { backendFetch, forwardSetCookies } from "@/lib/api/server-client";
 import { getSessionToken } from "@/lib/auth/session.server";
 
-const ALLOWED_HEADERS = ["accept", "content-type", "x-request-id"];
+const ALLOWED_HEADERS = ["accept", "content-type", "x-request-id", "authorization"];
 const BODYLESS_METHODS = new Set(["GET", "HEAD"]);
 
 function sanitizePath(pathSegments: string[] | undefined) {
@@ -55,8 +55,8 @@ async function proxy(request: NextRequest, context: BackendRouteContext) {
     responseHeaders.set("Content-Type", contentType);
   }
 
-  const textBody = BODYLESS_METHODS.has(request.method.toUpperCase()) ? null : await backendResponse.text();
-  const response = new NextResponse(textBody, {
+  const textBody = await backendResponse.text();
+  const response = new NextResponse(request.method.toUpperCase() === "HEAD" ? null : textBody, {
     status: backendResponse.status,
     headers: responseHeaders,
   });

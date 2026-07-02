@@ -1,10 +1,150 @@
 {
-  "stream": "technical-audit-remediation",
-  "status": "baseline_reset_in_progress",
-  "phase_02r_dependency": {
-    "required_state": "closed",
-    "approved_gate": "2R.8",
-    "authorised_next_gate": null
+  "active_slice": "technical-audit-post-merge-baseline-recorded",
+  "backend_fast_failure": {
+    "authority_command": "make test-fast",
+    "content_scope_registry_slice": {
+      "dominant_failure_cluster": "grade5_mathematics_en not registered",
+      "estimated_failures_targeted": 30,
+      "id": "TA-BACKEND-FAST-003",
+      "kg_boundary": "Registry metadata preserves future KG hooks but does not introduce runtime KG implementation.",
+      "policy": "Scope-registry evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "status": "implementation_ready",
+      "title": "Register generated Content Factory scopes for backend fast authority tests"
+    },
+    "passing_evidence_policy": "Backend-fast gate evidence has been recorded and validated; the blocker is closed.",
+    "phase_02d_slice": {
+      "dominant_failure_clusters": [
+        "staging_scope_count_explosion",
+        "mcp_dependency_missing",
+        "ci_workflow_contract",
+        "orm_enum_schema_drift"
+      ],
+      "estimated_failures_targeted": 13,
+      "id": "TA-BACKEND-FAST-004",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+      "policy": "Phase 02D evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "status": "implementation_ready",
+      "title": "Remediate staging scope filtering, MCP dependency, CI artifact upload, and Content Factory schema contracts"
+    },
+    "phase_02e_slice": {
+      "dominant_failure_clusters": [
+        "mcp_dependency_missing",
+        "frontend_deployment_playwright_config",
+        "router_contract",
+        "staging_seed_executor"
+      ],
+      "estimated_failures_targeted": 12,
+      "id": "TA-BACKEND-FAST-005",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+      "policy": "Phase 02E evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "status": "implementation_ready",
+      "title": "Remediate MCP authority import, Playwright port contract, router auth boundary, and staging seed result handling"
+    },
+    "phase_02f_slice": {
+      "dominant_failure_clusters": [
+        "diagnostics_item_bank",
+        "staging_seed_executor",
+        "router_contract_tutor_fragment",
+        "study_plan_consent_db_import"
+      ],
+      "estimated_failures_targeted": 8,
+      "id": "TA-BACKEND-FAST-006",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+      "policy": "Phase 02F evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "status": "implementation_ready",
+      "title": "Remediate diagnostic item-bank selection, staging seed executor result/session handling, tutor router contract, and study-plan DB import contract"
+    },
+    "phase_02g_slice": {
+      "dominant_failure_clusters": [
+        "async_mock_warning",
+        "popia_auth_or_route_contract",
+        "popia_async_route_contract"
+      ],
+      "id": "TA-BACKEND-FAST-007",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+      "policy": "Phase 02G evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "status": "implementation_ready",
+      "title": "Remediate POPIA async-session write safety and route/auth contract warnings"
+    },
+    "phase_02h_slice": {
+      "dominant_failure_clusters": [
+        "residual_static_contracts",
+        "content_factory_topic_map_contracts",
+        "ops_security_contracts",
+        "auth_route_delegate_contract"
+      ],
+      "estimated_failures_targeted": 15,
+      "id": "TA-BACKEND-FAST-008",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+      "policy": "Phase 02H evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "status": "implementation_ready",
+      "title": "Remediate residual backend-fast static, source, auth, and ops contracts"
+    },
+    "phase_02i_slice": {
+      "dominant_failure_cluster": "topic_map_worklist_preserves_source_hashes_for_scope",
+      "estimated_failures_targeted": 1,
+      "id": "TA-BACKEND-FAST-010",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+      "policy": "Phase 02I evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "status": "implementation_ready",
+      "title": "Restore reviewed text-extract provenance for topic-map worklist generation"
+    },
+    "phase_02j_slice": {
+      "dominant_failure_cluster": "topic_map_worklist_preserves_source_hashes_for_scope",
+      "estimated_failures_targeted": 1,
+      "id": "TA-BACKEND-FAST-011",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+      "policy": "Phase 02J evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "status": "implementation_ready",
+      "title": "Track reviewed text-extract manifest for clean-checkout topic-map provenance"
+    },
+    "phase_02k_slice": {
+      "control_gap": "candidate evidence now derives from a fresh make test-fast returncode 0 run with verified raw JSON and no stale failure artifacts",
+      "id": "TA-BACKEND-FAST-011",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+      "policy": "Backend-fast gate evidence is accepted only when backend_fast_gate_result.json has returncode 0 and valid=true, classification has zero failures, and verify_backend_fast_evidence.py independently passes.",
+      "status": "closed",
+      "title": "Repair backend-fast candidate evidence authority harness"
+    },
+    "phase_02l_slice": {
+      "boundary": "Evidence verifier repair only; no product release readiness, Phase 02R governance, live DB migration, or runtime KG work.",
+      "id": "TA-BACKEND-FAST-012",
+      "policy": "A pytest xfailed count is allowed only when make test-fast returns 0, failure_count is 0, and no failed/error tests are listed.",
+      "status": "closed",
+      "title": "Make backend fast evidence verifier xfailed-safe without weakening failure detection"
+    },
+    "phase_02m_slice": {
+      "dominant_failure_clusters": [
+        "backend_fast_evidence_fixture_drift",
+        "phase02k_phase02l_historical_verifier_drift",
+        "runtime_wiring_pr_docs_missing",
+        "project_assistance_status_stale"
+      ],
+      "estimated_failures_targeted": 8,
+      "id": "TA-BACKEND-FAST-013",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+      "policy": "Phase 02M evidence was recorded separately, and backend-fast evidence has now been recollected and verified before TA Phase 02 closure.",
+      "status": "closed",
+      "title": "Finalize backend-fast audit harness for HEAD-aligned evidence recollection"
+    },
+    "reported_categories": [],
+    "reported_return_code": 0,
+    "reported_summary": {
+      "failed": 0,
+      "passed": 2328,
+      "skipped": 11,
+      "xfailed": 1
+    },
+    "runtime_dependency_slice": {
+      "authority_interpreter": ".venv/bin/python",
+      "evidence_boundary": "Runtime dependency evidence is separate from backend-fast candidate evidence; make test-fast must still exit 0 before passing backend-fast evidence is allowed.",
+      "id": "TA-BACKEND-FAST-002",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+      "policy": "Environment dependency evidence may be recorded separately, but backend-fast candidate evidence remains blocked until make test-fast exits 0.",
+      "status": "evidence_harness_repair_pending_recollection",
+      "title": "Synchronize backend fast authority Python runtime dependencies"
+    },
+    "status": "evidence_recorded"
   },
   "baseline_reset_scope": [
     "POPIA frontend/backend route contract alignment",
@@ -13,36 +153,267 @@
     "dependency-scan workflow summary repair",
     "audit-remediation verification and evidence harness"
   ],
+  "frontend_tooling_authority": {
+    "authority_commands": [
+      "pnpm --version",
+      "pnpm --dir app/frontend install --frozen-lockfile",
+      "pnpm --dir app/frontend run env-check",
+      "pnpm --dir app/frontend run type-check",
+      "pnpm --dir app/frontend run lint",
+      "pnpm --dir app/frontend run test"
+    ],
+    "boundary": "Frontend/tooling evidence is separate from Playwright/E2E and dependency-scan closure.",
+    "evidence_dir": "docs/release-evidence/technical-audit/frontend-tooling-authority",
+    "failed_steps": [],
+    "frontend_tooling_authority_result": "valid",
+    "id": "TA-FRONTEND-001",
+    "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+    "latest_valid_evidence_commit": "d8ecbe3d9c",
+    "passing_evidence_policy": "Frontend/tooling authority evidence has been recorded and validated; the blocker is closed.",
+    "status": "evidence_recorded"
+  },
+  "historical_slices": [
+    "02h-backend-fast-residual-contracts"
+  ],
+  "phase_02r_dependency": {
+    "approved_gate": "2R.8",
+    "authorised_next_gate": null,
+    "required_state": "closed"
+  },
+  "phase_09_hosted_ci_authority": {
+    "authority_record": "docs/roadmap/execution/technical_audit_remediation/hosted_ci_authority_record.json",
+    "branch_protection_capture": "scripts/technical_audit/capture_branch_protection_evidence.py",
+    "branch_protection_claimed": true,
+    "closure_rule": "May close only after verify_hosted_ci_authority.py passes without --allow-unclaimed against real hosted CI evidence.",
+    "hosted_ci_run_claimed": true,
+    "merge_readiness_authorised": true,
+    "merge_readiness_verifier": "scripts/technical_audit/verify_merge_readiness_authority.py --json",
+    "status": "merge_readiness_authorised",
+    "workflow": ".github/workflows/technical-audit-hosted-ci.yml"
+  },
+  "phase_11_release_readiness_authority": {
+    "authority_commands": [
+      "python3 scripts/technical_audit/capture_release_readiness_evidence.py --claim-release-readiness --release-owner \"Nkgolo Lebelo\" --json",
+      "python3 scripts/technical_audit/verify_release_readiness_authority.py --json"
+    ],
+    "authority_record": "docs/roadmap/execution/technical_audit_remediation/technical_audit_release_readiness_record.json",
+    "branch_protection_claimed": true,
+    "evidence_path": "docs/release-evidence/technical-audit/phase-11-release-readiness",
+    "hosted_ci_run_claimed": true,
+    "id": "TA-RELEASE-READINESS-001",
+    "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+    "merge_readiness_authorised": true,
+    "merge_readiness_required": true,
+    "production_release_authorised": false,
+    "release_owner": "Nkgolo Lebelo",
+    "release_readiness_claimed": true,
+    "runtime_kg_implementation_claimed": false,
+    "status": "technical_audit_release_readiness_authorised",
+    "technical_audit_release_readiness_claimed": true,
+    "title": "Technical-audit release-readiness authority",
+    "updated_at_utc": "2026-06-28T21:13:27Z"
+  },
+  "phase_12_technical_audit_closure_authority": {
+    "authority_record": "docs/roadmap/execution/technical_audit_remediation/technical_audit_closure_record.json",
+    "closure_owner": "Nkgolo Lebelo",
+    "deployment_authorised": false,
+    "evidence_path": "docs/release-evidence/technical-audit/phase-12-closure",
+    "id": "TA-CLOSURE-001",
+    "live_learner_traffic_authorised": false,
+    "production_release_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_implementation_claimed": false,
+    "status": "technical_audit_remediation_closed",
+    "technical_audit_release_readiness_claimed": true,
+    "technical_audit_remediation_closed": true,
+    "technical_audit_remediation_closure_claimed": true,
+    "title": "Technical-audit remediation closure authority",
+    "updated_at_utc": "2026-06-28T21:35:19Z"
+  },
+  "phase_13b_post_merge_baseline_authority": {
+    "authority_record": "docs/roadmap/execution/technical_audit_remediation/technical_audit_post_merge_baseline_record.json",
+    "deployment_authorised": false,
+    "evidence_path": "docs/release-evidence/technical-audit/phase-13b-post-merge-baseline",
+    "hosted_ci_authority_valid": true,
+    "id": "TA-POST-MERGE-BASELINE-001",
+    "live_learner_traffic_authorised": false,
+    "merge_readiness_authorised": true,
+    "post_merge_baseline_recorded": true,
+    "production_release_authorised": false,
+    "release_tag_authorised": false,
+    "required_check": "Verify repository authority",
+    "runtime_kg_implementation_claimed": false,
+    "source_commit": "97bf389015f5857e26d713d5bda4135a240ca46a",
+    "status": "post_merge_baseline_recorded",
+    "target_branch": "master",
+    "technical_audit_remediation_closed": true,
+    "title": "Post-merge protected-branch baseline authority",
+    "updated_at_utc": "2026-06-29T21:37:10Z"
+  },
   "remaining_release_blockers_after_reset": [
     {
+      "authority_command": "PYTHON_BIN=.venv/bin/python bash scripts/audit_remediation/finalize_openapi_frontend_contract.sh --regenerate && python3 scripts/audit_remediation/verify_openapi_frontend_contract.py --json",
+      "evidence_verifier": "python3 scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py --evidence-dir docs/release-evidence/technical-audit/openapi-frontend-contract --json",
       "id": "TA-OPENAPI-001",
-      "title": "Regenerate and verify OpenAPI after route-contract changes",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+      "latest_valid_evidence_commit": "39609175f2",
+      "openapi_frontend_contract_result": "valid",
+      "passing_evidence_policy": "OpenAPI/frontend contract evidence may be recorded only after the runtime-generated OpenAPI check and frontend route-contract verifier both pass.",
+      "release_readiness_claimed": false,
+      "scope": [
+        "regenerated docs/openapi.json from active FastAPI runtime",
+        "canonical POPIA and parent data-rights route contract",
+        "frontend API service route-fragment verification",
+        "retired POPIA alias rejection",
+        "stable OpenAPI/frontend evidence bundle"
+      ],
       "severity": "high",
-      "status": "pending_next_slice"
+      "status": "evidence_recorded",
+      "title": "Regenerate and verify OpenAPI after route-contract changes"
     },
     {
+      "authority_command": "make test-fast",
+      "backend_fast_failure_classification_failure_count": 0,
+      "backend_fast_gate_result_returncode": 0,
       "id": "TA-BACKEND-FAST-001",
-      "title": "Rerun and close backend fast gate from clean checkout",
+      "latest_evidence_control_gap": {
+        "boundary": "backend-fast gate restoration is closed; future technical-audit work continues in the next slice",
+        "issue": "backend fast gate evidence has been refreshed and verified valid"
+      },
+      "latest_valid_evidence_commit": "cf23c185bf",
+      "next_slice": "next-technical-audit-slice",
       "severity": "critical",
-      "status": "pending_next_slice"
+      "status": "evidence_recorded",
+      "title": "Rerun and close backend fast gate from clean checkout"
     },
     {
+      "authority_command": "python3 scripts/audit_remediation/run_frontend_tooling_authority.py --output-dir docs/release-evidence/technical-audit/frontend-tooling-authority/raw --json",
+      "evidence_boundary": "Frontend/tooling evidence is now recorded as passing authority evidence.",
+      "evidence_verifier": "python3 scripts/audit_remediation/verify_frontend_tooling_evidence.py --evidence-dir docs/release-evidence/technical-audit/frontend-tooling-authority --json",
+      "failed_steps": [],
+      "frontend_tooling_authority_result": "valid",
       "id": "TA-FRONTEND-001",
-      "title": "Rerun frontend env-check, lint, type-check, and Vitest under pnpm",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+      "latest_valid_evidence_commit": "d8ecbe3d9c",
+      "passing_evidence_policy": "Frontend/tooling authority evidence is recorded and valid; the authority blocker is closed.",
       "severity": "high",
-      "status": "pending_next_slice"
+      "status": "evidence_recorded",
+      "title": "Rerun frontend env-check, lint, type-check, and Vitest under pnpm"
     },
     {
+      "authority_command": "python3 scripts/audit_remediation/run_e2e_playwright_authority.py --output-dir docs/release-evidence/technical-audit/e2e-playwright-authority/raw --json",
+      "e2e_playwright_authority_result": "valid",
+      "evidence_verifier": "python3 scripts/audit_remediation/verify_e2e_playwright_evidence.py --evidence-dir docs/release-evidence/technical-audit/e2e-playwright-authority --json",
+      "full_backend_backed_e2e_claimed": false,
       "id": "TA-E2E-001",
-      "title": "Re-establish Playwright/E2E execution ownership and lockfile discipline",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+      "latest_valid_evidence_commit": "583b23a9d5",
+      "passing_evidence_policy": "E2E/Playwright execution authority evidence is recorded and valid; remote hosted CI success and full backend-backed E2E readiness are separate future claims.",
+      "remote_ci_run_claimed": false,
+      "scope": [
+        "root pnpm Playwright dependency ownership",
+        "frontend pnpm lockfile discipline",
+        "mocked learner and parent Playwright journey execution",
+        "Playwright artifact capture",
+        "E2E workflow pnpm/action pin contract"
+      ],
       "severity": "high",
-      "status": "pending_next_slice"
+      "static_verifier": "python3 scripts/audit_remediation/verify_e2e_playwright_authority.py --json",
+      "status": "evidence_recorded",
+      "title": "Re-establish Playwright/E2E execution ownership and lockfile discipline"
     },
     {
+      "authority_command": "python3 scripts/audit_remediation/verify_dependency_scan_enforcement.py --json",
+      "dependency_scan_enforcement_result": "valid",
+      "evidence_verifier": "python3 scripts/audit_remediation/verify_dependency_scan_evidence.py --evidence-dir docs/release-evidence/technical-audit/dependency-scan-enforcement --json",
       "id": "TA-SECURITY-001",
-      "title": "Ensure dependency scans fail on configured severity and publish artifacts consistently",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+      "latest_valid_evidence_commit": "2cee804e20",
+      "passing_evidence_policy": "Static dependency-scan enforcement evidence is recorded and valid; remote GitHub Actions scan success is not yet claimed.",
+      "remote_scan_run_claimed": false,
+      "scope": [
+        "pip-audit fail-closed requirements matrix",
+        "pnpm audit critical-threshold fail-closed frontend scan",
+        "dependency-review critical severity guard",
+        "supported dependency scan artifact uploads",
+        "stable dependency scan enforcement evidence bundle"
+      ],
       "severity": "high",
-      "status": "partially_addressed_in_baseline_reset"
+      "status": "evidence_recorded",
+      "title": "Ensure dependency scans fail on configured severity and publish artifacts consistently",
+      "workflow": ".github/workflows/dependency-scan.yml"
+    },
+    {
+      "authority_command": "python3 scripts/audit_remediation/verify_ci_authority_workflow.py --json",
+      "evidence_verifier": "python3 scripts/audit_remediation/verify_ci_authority_workflow_evidence.py --evidence-dir docs/release-evidence/technical-audit/ci-authority-workflow --json",
+      "id": "TA-CI-001",
+      "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star.",
+      "latest_valid_evidence_commit": "bde09e12da",
+      "passing_evidence_policy": "Static CI workflow-cleanup evidence is recorded and valid; remote GitHub Actions success is not yet claimed.",
+      "remote_ci_run_claimed": false,
+      "scope": [
+        "main CI/CD workflow job-id uniqueness",
+        "pnpm frontend and E2E install ownership",
+        "supported artifact upload action pin",
+        "production promotion needs drift guard"
+      ],
+      "severity": "high",
+      "status": "evidence_recorded",
+      "title": "Repair main CI workflow authority and package-manager contract",
+      "workflow": ".github/workflows/ci-cd.yml",
+      "workflow_authority_result": "valid"
+    },
+    {
+      "authority_commands": [
+        "python3 scripts/audit_remediation/verify_remote_ci_branch_integration_authority.py --json",
+        "bash scripts/audit_remediation/collect_remote_ci_branch_integration_evidence.sh",
+        "python3 scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py --evidence-dir docs/release-evidence/technical-audit/remote-ci-branch-integration --json"
+      ],
+      "branch_integration_authority_result": "pending",
+      "evidence_path": "docs/release-evidence/technical-audit/remote-ci-branch-integration",
+      "full_release_readiness_claimed": false,
+      "id": "TA-REMOTE-CI-001",
+      "latest_valid_evidence_commit": "98bd0ae778",
+      "notes": [
+        "This slice consolidates prior static authority-gate evidence and optionally records hosted CI status.",
+        "Remote GitHub Actions success remains unclaimed unless a supplied remote CI status artifact says conclusion=success."
+      ],
+      "remote_ci_branch_integration_result": "valid",
+      "remote_ci_run_claimed": false,
+      "remote_ci_success_claimed": false,
+      "runtime_kg_implementation_claimed": false,
+      "severity": "high",
+      "status": "evidence_recorded",
+      "title": "Remote CI and branch integration authority"
+    },
+    {
+      "authority_commands": [
+        "python3 scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py --json",
+        "REMOTE_CI_STATUS_JSON=var/audit-remediation/hosted-ci-status.json bash scripts/audit_remediation/collect_hosted_ci_merge_readiness_evidence.sh",
+        "python3 scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py --evidence-dir docs/release-evidence/technical-audit/hosted-ci-merge-readiness --json"
+      ],
+      "branch_protection_capture": "scripts/technical_audit/capture_branch_protection_evidence.py",
+      "branch_protection_claimed": true,
+      "evidence_path": "docs/release-evidence/technical-audit/hosted-ci-merge-readiness",
+      "full_backend_backed_e2e_claimed": false,
+      "hosted_ci_merge_readiness_result": "valid",
+      "id": "TA-HOSTED-CI-001",
+      "latest_valid_evidence_commit": null,
+      "merge_readiness_authorised": true,
+      "merge_readiness_verifier": "scripts/technical_audit/verify_merge_readiness_authority.py --json",
+      "notes": [
+        "Phase 09 requires a real hosted CI success artifact matching branch HEAD before evidence can pass.",
+        "Diagnostic evidence without REMOTE_CI_STATUS_JSON must not be committed as passing evidence."
+      ],
+      "release_readiness_claimed": false,
+      "remote_ci_run_claimed": true,
+      "remote_ci_success_claimed": true,
+      "runtime_kg_implementation_claimed": false,
+      "severity": "high",
+      "status": "evidence_recorded",
+      "title": "Hosted CI run evidence and merge readiness authority"
     }
-  ]
+  ],
+  "status": "phase_13b_post_merge_baseline_recorded",
+  "stream": "technical-audit-remediation"
 }

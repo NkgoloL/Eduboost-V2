@@ -126,12 +126,14 @@ This inventory records frontend route, page, and journey-related surfaces.
 | `app/frontend/src/components/layout/dashboard-topbar.tsx` | `href=, Link` | `parent, dashboard, lesson` |
 | `app/frontend/src/components/layout/marketing-footer.tsx` | `href=, Link` | `learner, parent` |
 | `app/frontend/src/components/layout/marketing-header.tsx` | `href=, Link` | `parent` |
+| `app/frontend/src/components/learner/AiTutorChat.tsx` | `_none_` | `learner, lesson` |
 | `app/frontend/src/components/learner/DashboardClient.tsx` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress` |
 | `app/frontend/src/components/learner/DashboardSkeleton.tsx` | `_none_` | `dashboard` |
 | `app/frontend/src/components/learner/DiagnosticEntryClient.tsx` | `Route` | `learner, dashboard, diagnostic` |
 | `app/frontend/src/components/learner/DiagnosticSkeleton.tsx` | `_none_` | `diagnostic` |
 | `app/frontend/src/components/learner/LessonEntryClient.tsx` | `Route` | `learner, dashboard, lesson` |
 | `app/frontend/src/components/learner/LessonSkeleton.tsx` | `_none_` | `lesson` |
+| `app/frontend/src/components/learner/__tests__/AiTutorChat.test.tsx` | `_none_` | `learner, lesson` |
 | `app/frontend/src/components/lessons/LessonTrustLabel.tsx` | `Link` | `parent, lesson` |
 | `app/frontend/src/components/ui/badge.tsx` | `_none_` | `parent` |
 | `app/frontend/src/components/ui/breadcrumb.tsx` | `Link` | `_none_` |

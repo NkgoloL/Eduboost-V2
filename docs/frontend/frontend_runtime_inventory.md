@@ -21,7 +21,7 @@ This inventory records frontend package scripts and runtime command assumptions 
 
 ## Package Manager
 
-- inferred package manager: `npm`
+- inferred package manager: `pnpm`
 
 ## Required Command Areas
 

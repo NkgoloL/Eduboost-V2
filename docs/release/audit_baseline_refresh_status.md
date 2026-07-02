@@ -1,8 +1,8 @@
 # Audit Baseline Refresh Status
 
-Generated at: `2026-06-13T13:48:41Z`
-Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
-Branch: `master`
+Generated at: `2026-06-27T02:18:55Z`
+Commit: `88840fc52a05c694c6d313e57bc8cba4bcda4c63`
+Branch: `feature/atlas-phase-02r-gate-2r1-remediation`
 
 **Status:** `audit-baseline-refresh-current`
 **Beta decision:** `NO-GO`
@@ -20,20 +20,20 @@ Branch: `master`
 
 | Surface | Exists | Status | Decision | Commit | Stale |
 |---|---:|---|---|---|---:|
-| `final_beta_gate_refresh` | True | `NO-GO` | `NO-GO` | `0c9d99b0734c4c731b3fa0fba53a9f503acc5685` | False |
-| `release_go_no_go_status` | True | `NO-GO` | `NO-GO` | `0c9d99b0734c4c731b3fa0fba53a9f503acc5685` | False |
+| `final_beta_gate_refresh` | True | `NO-GO` | `NO-GO` | `88840fc52a05c694c6d313e57bc8cba4bcda4c63` | False |
+| `release_go_no_go_status` | True | `NO-GO` | `NO-GO` | `88840fc52a05c694c6d313e57bc8cba4bcda4c63` | False |
 | `ci_evidence` | True | `ci-evidence-not-accepted` | `` | `b33e49720860a084e7a7c42ead1b620cb859e64f` | True |
 | `ci_run_evidence` | True | `external-blocked` | `` | `b33e49720860a084e7a7c42ead1b620cb859e64f` | True |
-| `external_approval` | True | `external-blocked` | `` | `a70b57616bb29572fcb57961b91a3f68f0c66329` | True |
+| `external_approval` | True | `external-blocked` | `` | `88840fc52a05c694c6d313e57bc8cba4bcda4c63` | False |
 | `approval_evidence` | True | `external-blocked` | `` | `b33e49720860a084e7a7c42ead1b620cb859e64f` | True |
 | `staging_smoke_evidence` | True | `staging-smoke-evidence-not-accepted` | `` | `a70b57616bb29572fcb57961b91a3f68f0c66329` | True |
 | `staging_acceptance` | True | `external-blocked` | `` | `a70b57616bb29572fcb57961b91a3f68f0c66329` | True |
 | `auth_refresh_db_evidence` | True | `auth-refresh-db-evidence-accepted` | `` | `b33e49720860a084e7a7c42ead1b620cb859e64f` | True |
-| `popia_response_contract_no_skip` | True | `popia-response-contract-no-skip-passing` | `` | `a70b57616bb29572fcb57961b91a3f68f0c66329` | True |
+| `popia_response_contract_no_skip` | True | `popia-response-contract-no-skip-passing` | `` | `525c272bb294365a86c6dcee10211cb11604cc43` | True |
 | `diag_deep_health_runtime` | True | `diag-deep-health-runtime-not-accepted` | `` | `a70b57616bb29572fcb57961b91a3f68f0c66329` | True |
 | `live_db_transaction_evidence` | True | `external-blocked` | `` | `a70b57616bb29572fcb57961b91a3f68f0c66329` | True |
 | `beta_blocker_burndown` | True | `` | `` | `b33e49720860a084e7a7c42ead1b620cb859e64f` | True |
-| `docs_inventory` | True | `` | `` | `0c9d99b0734c4c731b3fa0fba53a9f503acc5685` | False |
+| `docs_inventory` | True | `` | `` | `88840fc52a05c694c6d313e57bc8cba4bcda4c63` | False |
 
 ## Accepted evidence marker preservation
 

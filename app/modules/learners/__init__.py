@@ -1,6 +1,6 @@
 """Learner profile and archetype management module.
 
-Provides the :class:`~app.modules.learners.ether_service.EtherService`
+Provides the :class:`~app.modules.learners.archetype_service.ArchetypeService`
 (Constitutional Pillar 5 — *The Ether*) for cold-start onboarding and
 psychological archetype profiling.
 

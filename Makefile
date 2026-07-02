@@ -2888,3 +2888,35 @@ docs-stage5-strict-scope-check:
 
 docs-housekeeping-stage5-check: docs-stage5-strict-scope-check docs-housekeeping-stage4-check
 	python3 scripts/maintenance/check_doc_adr_numbers.py --root . --strict
+
+.PHONY: rr004-workspace-hygiene-audit rr004-ignored-artifact-clean-dry-run rr004-workspace-hygiene-check
+rr004-workspace-hygiene-audit:
+	@mkdir -p var/workspace-hygiene
+	$(PYTHON) scripts/workspace_hygiene/audit_workspace_hygiene.py --output var/workspace-hygiene/rr004_workspace_hygiene_snapshot.json
+	@cat var/workspace-hygiene/rr004_workspace_hygiene_snapshot.json
+
+rr004-ignored-artifact-clean-dry-run:
+	$(PYTHON) scripts/workspace_hygiene/safe_cleanup_ignored_artifacts.py --dry-run --json
+
+rr004-workspace-hygiene-check:
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_rr004_workspace_hygiene.py --json
+
+.PHONY: rr005-technical-debt-audit rr005-technical-debt-check
+rr005-technical-debt-audit:
+	PYTHONPATH=. python3 scripts/technical_debt/audit_rr005_technical_debt.py --json
+
+rr005-technical-debt-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr005_technical_debt_burndown.py --json
+
+.PHONY: rr007-product-quality-audit rr007-product-quality-check
+rr007-product-quality-audit:
+	PYTHONPATH=. python3 scripts/product_quality/audit_rr007_product_quality_gates.py --json
+
+rr007-product-quality-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr007_product_quality_gates.py --json
+.PHONY: rr008-operational-readiness-audit rr008-operational-readiness-check
+rr008-operational-readiness-audit:
+	PYTHONPATH=. python3 scripts/operations_readiness/audit_rr008_operational_readiness.py --json
+
+rr008-operational-readiness-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py --json

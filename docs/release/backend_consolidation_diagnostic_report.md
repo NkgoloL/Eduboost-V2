@@ -1,14 +1,14 @@
 # Backend Consolidation Diagnostic Report
 
-Generated at: `2026-06-13T13:51:33Z`
+Generated at: `2026-06-27T02:21:31Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| backend dragons | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_consolidation_dragons.py` |
-| audit inventory | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/generate_audit_callsite_inventory.py --fail-empty` |
-| consent inventory | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/generate_consent_callsite_inventory.py --fail-empty` |
-| health readiness contract | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_health_readiness_contract.py` |
-| schema drift contract | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_schema_drift_contract.py` |
+| backend dragons | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_dragons.py` |
+| audit inventory | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_audit_callsite_inventory.py --fail-empty` |
+| consent inventory | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_consent_callsite_inventory.py --fail-empty` |
+| health readiness contract | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_health_readiness_contract.py` |
+| schema drift contract | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_schema_drift_contract.py` |
 
 ## Interpretation
 
@@ -19,7 +19,7 @@ Generated at: `2026-06-13T13:51:33Z`
 
 ## backend dragons
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_consolidation_dragons.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_dragons.py`
 
 Return code: `0`
 
@@ -127,27 +127,27 @@ Backend consolidation dragon diagnostic
 
 ## audit inventory
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/generate_audit_callsite_inventory.py --fail-empty`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_audit_callsite_inventory.py --fail-empty`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/Development/Eduboost-V2/docs/release/audit_callsite_inventory.md (3161 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/audit_callsite_inventory.md (3966 row(s))
 ```
 
 ## consent inventory
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/generate_consent_callsite_inventory.py --fail-empty`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_consent_callsite_inventory.py --fail-empty`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/Development/Eduboost-V2/docs/release/consent_callsite_inventory.md (598 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/consent_callsite_inventory.md (600 row(s))
 ```
 
 ## health readiness contract
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_health_readiness_contract.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_health_readiness_contract.py`
 
 Return code: `0`
 
@@ -171,7 +171,7 @@ Health/readiness diagnostic contract check
 
 ## schema drift contract
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_schema_drift_contract.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_schema_drift_contract.py`
 
 Return code: `0`
 
@@ -180,11 +180,15 @@ Schema drift contract check
 - PASS [file] scripts/compare_orm_tables_to_database.py: present
 - PASS [file] docs/release/schema_drift_evidence_contract.md: present
 ORM tables
+- ai_budget_counters
+- ai_usage_events
+- ai_usage_reservations
 - assessment_blueprints
 - audit_events
 - audit_logs
 - calibration_audits
 - consent_version_history
+- content_answer_key_verifications
 - content_artifact_reviews
 - content_artifact_sources
 - content_coverage_targets
@@ -194,17 +198,54 @@ ORM tables
 - content_production_artifacts
 - content_promotion_events
 - content_review_assignments
+- content_review_decisions
 - content_scopes
 - content_seed_runs
 - content_staging_artifacts
 - content_staging_seed_items
 - content_staging_verification_runs
 - content_staging_verification_scope_results
+- content_state_transition_events
 - content_validation_reports
+- curriculum_answer_verification_records
+- curriculum_chunk_versions
+- curriculum_claim_validation_records
+- curriculum_corpus_activation_events
+- curriculum_corpus_active_bindings
+- curriculum_corpus_memberships
+- curriculum_corpus_outbox_events
+- curriculum_corpus_versions
+- curriculum_coverage_snapshots
+- curriculum_edge_versions
+- curriculum_expansion_runs
+- curriculum_extraction_runs
+- curriculum_generation_grounding_records
+- curriculum_graph_nodes
+- curriculum_inventory_items
+- curriculum_inventory_versions
+- curriculum_language_links
+- curriculum_legacy_dispositions
+- curriculum_mapping_review_events
+- curriculum_mapping_versions
+- curriculum_node_versions
+- curriculum_nodes
+- curriculum_original_objects
+- curriculum_retrieval_evaluation_cases
+- curriculum_retrieval_evaluation_runs
+- curriculum_review_decisions
+- curriculum_rights_decisions
+- curriculum_source_acquisition_runs
+- curriculum_source_mapping_versions
+- curriculum_source_pages
+- curriculum_source_sections
+- curriculum_source_versions
+- curriculum_sources
 - diagnostic_items
 - diagnostic_sessions
 - erasure_request
 - guardians
+- irt_calibration_events
+- irt_calibration_runs
 - irt_items
 - item_exposures
 - knowledge_gaps
@@ -215,9 +256,12 @@ ORM tables
 - mastery_snapshots
 - onboarding_states
 - parental_consents
+- phase02r_audit_findings
 - practice_queue
 - practice_sessions
 - privacy_settings
+- retrieval_source_chunks
+- retrieval_source_documents
 - rlhf_exports
 - secure_tokens
 - spaced_review_schedule
@@ -225,6 +269,12 @@ ORM tables
 - study_plan_templates
 - subject_mastery
 - topic_mastery
+- training_dataset_entries
+- training_dataset_manifests
+- tutor_escalations
+- tutor_grounding_records
+- tutor_messages
+- tutor_sessions
 DATABASE_URL not supplied; database comparison skipped.
 
 - PASS [command] ORM-only schema drift check runs without DB

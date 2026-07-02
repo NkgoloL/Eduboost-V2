@@ -8,6 +8,7 @@ structured, machine-readable status metadata.
 from __future__ import annotations
 
 import csv
+import inspect
 from dataclasses import asdict, dataclass
 from datetime import datetime, timedelta, timezone
 from io import StringIO
@@ -41,6 +42,7 @@ from app.models import (
 from app.repositories.audit_repository import AuditRepository
 from app.repositories.repositories import LearnerRepository
 from app.services.consent import ConsentService
+from app.services.popia_erasure_safety import build_erasure_preflight_decision
 
 POPIA_EXPORT_SLA_DAYS = 30
 POPIA_ERASURE_REVIEW_SLA_DAYS = 30
@@ -80,6 +82,22 @@ def _iso(value: datetime | None) -> str | None:
     return value.isoformat() if value else None
 
 
+
+
+async def _maybe_await(value: Any) -> Any:
+    """Return sync values and await async test doubles.
+
+    SQLAlchemy ``AsyncSession.add`` is intentionally synchronous, but many
+    backend-fast tests use ``AsyncMock`` as a lightweight session double.
+    Calling an AsyncMock-backed ``add`` without awaiting it creates unawaited
+    coroutine warnings, which the backend-fast gate treats as failures.
+    This adapter keeps production behaviour unchanged while making service
+    writes safe under async test doubles.
+    """
+    if inspect.isawaitable(value):
+        return await value
+    return value
+
 def _role_value(raw_role: Any) -> str:
     value = getattr(raw_role, "value", raw_role)
     return str(value or "").lower()
@@ -104,6 +122,12 @@ class POPIADataRightsService:
         self.learners = LearnerRepository(db)
         self.audit = AuditRepository(db)
         self.consent = ConsentService(db)
+
+
+    async def _add(self, *objects: Any) -> None:
+        """Add ORM objects while tolerating AsyncMock-backed test sessions."""
+        for obj in objects:
+            await _maybe_await(self.db.add(obj))
 
     async def load_learner_for_read(self, learner_id: str, current_user: dict[str, Any] | AuthContext) -> LearnerProfile:
         learner = await self.learners.get_by_id(learner_id)
@@ -189,19 +213,19 @@ class POPIADataRightsService:
             state=ERASURE_STATE_REQUESTED,
             reason=reason,
             legal_basis="popia_section_11",
-            export_offered=False,
-            export_waived=False,
+            export_offered=preflight_result.get("export_offered", False),
+            export_waived=preflight_result.get("export_waived", False),
             legal_hold=preflight_result.get("legal_hold", False),
             grace_period_end_at=grace_period_end,
             preflight_result=preflight_result,
         )
-        self.db.add(erasure_request)
+        await self._add(erasure_request)
 
         # Soft delete learner (grace period)
         learner.is_deleted = True
         learner.deletion_requested_at = _now()
         learner.display_name = "[erased]"
-        self.db.add(learner)
+        await self._add(learner)
 
         # Revoke consent
         await self.consent.execute_erasure(requester_id, learner_id)
@@ -218,6 +242,9 @@ class POPIADataRightsService:
                 "grace_period_days": POPIA_ERASURE_GRACE_DAYS,
                 "grace_period_end": grace_period_end.isoformat(),
                 "preflight_result": preflight_result,
+                "export_offered": preflight_result.get("export_offered", False),
+                "export_waived": preflight_result.get("export_waived", False),
+                "requires_admin_review": preflight_result.get("requires_admin_review", False),
                 "preserve_audit_records": True,
             },
         )
@@ -285,13 +312,13 @@ class POPIADataRightsService:
 
         # Update erasure request state
         erasure_request.state = ERASURE_STATE_CANCELLED
-        self.db.add(erasure_request)
+        await self._add(erasure_request)
 
         # Restore learner
         learner.is_deleted = False
         learner.deletion_requested_at = None
         learner.display_name = learner.display_name if learner.display_name != "[erased]" else "Restored"
-        self.db.add(learner)
+        await self._add(learner)
 
         # Audit event
         await self.audit.append(
@@ -330,7 +357,7 @@ class POPIADataRightsService:
         updates = {key: value for key, value in fields.items() if key in allowed}
         for key, value in updates.items():
             setattr(learner, key, value)
-        self.db.add(learner)
+        await self._add(learner)
         await self.audit.append(
             "data_subject.correction_requested",
             actor_id=requester_id,
@@ -365,19 +392,19 @@ class POPIADataRightsService:
         return False
 
     async def _preflight_erasure_checks(self, learner: LearnerProfile, requester_id: str, requester_role: str) -> dict[str, Any]:
-        """Perform pre-erasure safety checks."""
-        checks = {
-            "subject_exists": learner is not None,
-            "requester_authorized": str(learner.guardian_id) == requester_id or requester_role == "admin",
-            "consent_revoked": True,  # Will be revoked during erasure
-            "legal_hold": False,  # TODO: Check for legal hold flag
-            "grace_period_elapsed": False,  # Not applicable for initial request
-            "export_offered": False,  # TODO: Check if export was offered
-            "all_checks_passed": False,
-        }
+        """Perform pre-erasure safety checks before request persistence.
 
-        checks["all_checks_passed"] = all(checks.values())
-        return checks
+        The request flow offers export by default and stores that fact on the
+        erasure request. Execution still remains blocked by grace period, legal
+        hold, and explicit export-offer/waiver checks.
+        """
+        decision = build_erasure_preflight_decision(
+            learner=learner,
+            requester_authorized=str(learner.guardian_id) == requester_id or requester_role == "admin",
+            export_offered=True,
+            export_waived=False,
+        )
+        return decision.to_dict()
 
     async def execute_erasure(self, request_id: str, current_user: dict[str, Any] | AuthContext, *, method: str = ERASURE_METHOD_PHYSICAL) -> dict[str, Any]:
         """Execute erasure after grace period with safety checks."""
@@ -431,13 +458,13 @@ class POPIADataRightsService:
         erasure_request.state = ERASURE_STATE_EXECUTED
         erasure_request.executed_at = _now()
         erasure_request.execution_method = method
-        self.db.add(erasure_request)
+        await self._add(erasure_request)
 
         # Post-erasure verification
         postflight_result = await self._postflight_erasure_verification(learner.id, method)
 
         erasure_request.postflight_result = postflight_result
-        self.db.add(erasure_request)
+        await self._add(erasure_request)
 
         # Audit event
         await self.audit.append(

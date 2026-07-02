@@ -7,7 +7,7 @@ audience: security-reviewer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-23
+last_reviewed: 2026-07-02
 review_interval_days: 60
 evidence_command: "make docs-housekeeping-stage4-check"
 code_anchors: [docs/security/README.md, app/security]
@@ -23,9 +23,9 @@ routes that do not carry a learner object.
 
 ## Route Matrix Summary
 
-- Routes inspected: 164
-- Covered learner-scoped routes: 62
-- Non-learner-scoped routes: 99
+- Routes inspected: 202
+- Covered learner-scoped routes: 67
+- Non-learner-scoped routes: 132
 - Missing learner authorization markers: 3
 
 ## Key Evidence

@@ -37,7 +37,7 @@ class Settings(BaseSettings):
 
     # ── Application ──────────────────────────────────────────────────────────
     APP_NAME: str = "EduBoost SA"
-    APP_VERSION: str = "2.0.0"
+    APP_VERSION: str = "1.0.0-rc1"
     APP_BASE_URL: str = "https://eduboost.co.za"
     ENVIRONMENT: Literal["development", "test", "staging", "production"] = "development"
     APP_ENV: Literal["development", "test", "staging", "production"] = "development"
@@ -260,9 +260,7 @@ class Settings(BaseSettings):
         if not self.is_production():
             return self
         if not self.AZURE_KEY_VAULT_URL:
-            if self._production_key_vault_url_required():
-                raise ValueError("AZURE_KEY_VAULT_URL is required when APP_ENV is production")
-            return self
+            raise ValueError("AZURE_KEY_VAULT_URL is required when APP_ENV is production")
         self.refresh_from_key_vault()
         return self
 

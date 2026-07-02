@@ -6,8 +6,8 @@ import json
 import pytest
 
 from app.services.diagnostic import DiagnosticEngine, p_correct, update_theta_mle
-from app.services.judiciary import ConstitutionalViolation, JudiciaryService
-from app.services.ether import EtherService
+from app.services.judiciary import ConstitutionalViolation, PolicyService
+from app.services.archetype_service import ArchetypeService
 from app.domain.models import ArchetypeLabel
 
 
@@ -97,31 +97,31 @@ VALID_LESSON = {
 
 class TestJudiciary:
     def test_valid_lesson_passes(self):
-        svc = JudiciaryService()
+        svc = PolicyService()
         result = svc.stamp_lesson(json.dumps(VALID_LESSON))
         assert result.title == "Fractions"
 
     def test_invalid_json_raises(self):
-        svc = JudiciaryService()
+        svc = PolicyService()
         with pytest.raises(ConstitutionalViolation, match="valid JSON"):
             svc.stamp_lesson("not json at all")
 
     def test_missing_field_raises(self):
-        svc = JudiciaryService()
+        svc = PolicyService()
         bad = dict(VALID_LESSON)
         del bad["cultural_hook"]
         with pytest.raises(ConstitutionalViolation, match="schema violation"):
             svc.stamp_lesson(json.dumps(bad))
 
     def test_content_policy_blocks_violence(self):
-        svc = JudiciaryService()
+        svc = PolicyService()
         bad = dict(VALID_LESSON)
         bad["main_content"] = "This lesson is about violence and weapons."
         with pytest.raises(ConstitutionalViolation, match="policy violation"):
             svc.stamp_lesson(json.dumps(bad))
 
     def test_markdown_fences_stripped(self):
-        svc = JudiciaryService()
+        svc = PolicyService()
         wrapped = f"```json\n{json.dumps(VALID_LESSON)}\n```"
         result = svc.stamp_lesson(wrapped)
         assert result.answer == "3"
@@ -131,7 +131,7 @@ class TestJudiciary:
 
 class TestEther:
     def test_returns_valid_archetype(self):
-        svc = EtherService()
+        svc = ArchetypeService()
         answers = [
             {"question_id": 1, "answer": "A"},
             {"question_id": 2, "answer": "A"},
@@ -144,7 +144,7 @@ class TestEther:
         assert len(description) > 0
 
     def test_five_questions_returned(self):
-        svc = EtherService()
+        svc = ArchetypeService()
         questions = svc.get_onboarding_questions()
         assert len(questions) == 5
         for q in questions:
@@ -153,13 +153,13 @@ class TestEther:
             assert len(q["options"]) == 4
 
     def test_prompt_modifier_applied(self):
-        svc = EtherService()
+        svc = ArchetypeService()
         base = "Teach fractions."
         modified = svc.modify_prompt_for_archetype(base, ArchetypeLabel.BINAH)
         assert "step" in modified.lower() or "structured" in modified.lower() or "Binah" in modified
 
     def test_no_archetype_returns_base_prompt(self):
-        svc = EtherService()
+        svc = ArchetypeService()
         base = "Teach fractions."
         result = svc.modify_prompt_for_archetype(base, None)
         assert result == base

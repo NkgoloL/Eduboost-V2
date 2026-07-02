@@ -1,0 +1,42 @@
+{
+  "valid": true,
+  "phase": "TA-02D",
+  "slice": "backend-fast-staging-contracts",
+  "checks": [
+    {
+      "name": "staging_all_scopes_defaults_to_active_scopes",
+      "passed": true,
+      "detail": "verify_all_scopes defaults to active scopes and has explicit review-scope opt-in"
+    },
+    {
+      "name": "seed_script_defaults_to_active_scopes",
+      "passed": true,
+      "detail": "review-scope seeding requires explicit opt-in when no scope_id is supplied"
+    },
+    {
+      "name": "mcp_dependency_declared",
+      "passed": true,
+      "detail": "mcp[cli] declared in backend runtime/dev dependency inputs and locks"
+    },
+    {
+      "name": "mcp_dependency_is_required_for_backend_fast_authority",
+      "passed": true,
+      "detail": "runtime dependency verifier and sync script include MCP"
+    },
+    {
+      "name": "auth_refresh_db_uses_upload_artifact_v4",
+      "passed": true,
+      "detail": "auth refresh DB proof workflow uploads evidence with actions/upload-artifact@v4"
+    },
+    {
+      "name": "content_factory_schema_contract_declares_existing_models_and_enums",
+      "passed": true,
+      "detail": "schema contract includes existing ORM state tables and extended artifact statuses"
+    },
+    {
+      "name": "blocker_register_marks_phase02d_active",
+      "passed": true,
+      "detail": "blocker register points to Phase 02D slice"
+    }
+  ]
+}

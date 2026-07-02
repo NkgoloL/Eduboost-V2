@@ -1,0 +1,51 @@
+{
+  "authority_owner": "Nkgolo Lebelo",
+  "clean_git_state_at_capture": true,
+  "coverage_baseline_percent": 0.0,
+  "coverage_baseline_recorded": true,
+  "coverage_ci_route_authority_recorded": true,
+  "coverage_source": {
+    "branch_coverage_percent": 0.0,
+    "coverage_percent": 0.0,
+    "coverage_xml": "/tmp/rr003_coverage.xml",
+    "exists": true,
+    "lines_covered": 0,
+    "lines_valid": 30959
+  },
+  "coverage_threshold_decided": true,
+  "coverage_threshold_percent": 0.0,
+  "deployment_authorised": false,
+  "dormant_router_inventory_recorded": true,
+  "git_state": {
+    "branch": "master",
+    "head_sha": "eaa89a655be2b461a9dd977064522eb05274135f",
+    "status_short": "",
+    "target_branch": "master"
+  },
+  "production_release_authorised": false,
+  "public_beta_authorised": false,
+  "recorded_at": "2026-07-02T08:05:44.372268+00:00",
+  "release_checks_visible_in_ci": true,
+  "release_docs_point_to_current_evidence": true,
+  "release_tag_authorised": false,
+  "route_alias_check": {
+    "command": [
+      "python3",
+      "scripts/check_route_alias_matrix.py"
+    ],
+    "output": "Route alias policy check\n- Matrix: docs/release/route_alias_matrix.md\n- Canonical /api/v2 rows: 210\n- Explicit exceptions: 0\n- PASS all missing aliases are explicitly documented\n",
+    "returncode": 0
+  },
+  "route_alias_policy_enforced": true,
+  "rr_id": "RR-003",
+  "runtime_kg_implementation_claimed": false,
+  "status": "coverage_ci_route_authority_recorded",
+  "target_branch": "master",
+  "verification": {
+    "errors": [],
+    "policy_path": "docs/release/coverage_ci_route_policy.json",
+    "record_path": "docs/roadmap/reconciliation/rr_003_coverage_ci_route_authority_record.json",
+    "rr_id": "RR-003",
+    "valid": true
+  }
+}

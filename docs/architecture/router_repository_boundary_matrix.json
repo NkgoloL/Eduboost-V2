@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-13T13:49:14Z",
+  "generated_at": "2026-06-27T02:18:43Z",
   "rows": [
     {
       "router": "app/api_v2_routers/0005_irt_seed.py",
@@ -17,6 +17,13 @@
     },
     {
       "router": "app/api_v2_routers/admin_etl.py",
+      "p0_router": false,
+      "repository_imports": [],
+      "transition_allowed": [],
+      "violations": []
+    },
+    {
+      "router": "app/api_v2_routers/ai_operations.py",
       "p0_router": false,
       "repository_imports": [],
       "transition_allowed": [],
@@ -96,7 +103,28 @@
       ]
     },
     {
+      "router": "app/api_v2_routers/content_review.py",
+      "p0_router": false,
+      "repository_imports": [],
+      "transition_allowed": [],
+      "violations": []
+    },
+    {
+      "router": "app/api_v2_routers/curriculum_expansion.py",
+      "p0_router": false,
+      "repository_imports": [],
+      "transition_allowed": [],
+      "violations": []
+    },
+    {
       "router": "app/api_v2_routers/diagnostics.py",
+      "p0_router": false,
+      "repository_imports": [],
+      "transition_allowed": [],
+      "violations": []
+    },
+    {
+      "router": "app/api_v2_routers/ether.py",
       "p0_router": false,
       "repository_imports": [],
       "transition_allowed": [],
@@ -114,6 +142,20 @@
         "app.repositories.gamification_repository",
         "app.repositories.repositories"
       ]
+    },
+    {
+      "router": "app/api_v2_routers/generation.py",
+      "p0_router": false,
+      "repository_imports": [],
+      "transition_allowed": [],
+      "violations": []
+    },
+    {
+      "router": "app/api_v2_routers/irt_quality.py",
+      "p0_router": false,
+      "repository_imports": [],
+      "transition_allowed": [],
+      "violations": []
     },
     {
       "router": "app/api_v2_routers/jobs.py",
@@ -201,6 +243,13 @@
     },
     {
       "router": "app/api_v2_routers/test_services.py",
+      "p0_router": false,
+      "repository_imports": [],
+      "transition_allowed": [],
+      "violations": []
+    },
+    {
+      "router": "app/api_v2_routers/tutor.py",
       "p0_router": false,
       "repository_imports": [],
       "transition_allowed": [],

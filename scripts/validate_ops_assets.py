@@ -49,7 +49,7 @@ def fail(message: str) -> None:
 
 def check_dockerfile() -> None:
     content = read("docker/Dockerfile.v2")
-    if "FROM python:3.11-slim" not in content:
+    if "FROM python:3.12.3-slim" not in content:
         fail("docker/Dockerfile.v2 must use the pinned Python slim base selected for V2")
     if "USER eduboost" not in content:
         fail("docker/Dockerfile.v2 must run production as non-root user eduboost")

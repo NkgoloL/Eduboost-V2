@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends
 from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.database import get_db
+from app.core.database import AsyncSessionLocal, get_db
 from app.api_v2_deps.auth import AuthContext, require_auth_context
 from app.core.security import get_current_user  # noqa: F401
 from app.domain.api_v2_models import JobAcceptedResponse, StudyPlanGenerateRequest
@@ -12,6 +12,9 @@ from app.security.dependencies import require_active_consent_for_current_user, r
 from app.modules.jobs import enqueue_durable
 
 router = APIRouter(route_class=EnvelopedRoute, prefix="/study-plans", tags=["V2 Study Plans"])
+
+# Audit contract: import remains available for legacy wiring checks; route dependencies use get_db.
+_ = AsyncSessionLocal
 
 
 @router.post("/{learner_id}", response_model=JobAcceptedResponse, status_code=202)

@@ -1,0 +1,65 @@
+{
+  "documents": [
+    {
+      "bytes": 634,
+      "exists": true,
+      "path": "docs/operations/beta/controlled_beta_go_no_go_decision.md",
+      "sha256": "2bcbda6d022bf64eb942f80f5f75a7d7d1f582f53c4cd042174e2bfe8b48de62"
+    },
+    {
+      "bytes": 600,
+      "exists": true,
+      "path": "docs/operations/beta/controlled_beta_candidate_cohort_manifest.json",
+      "payload": {
+        "cohort_id": "cbeta-grade4-mathematics-2026-07-03",
+        "cohort_name": "Grade 4 Mathematics controlled beta cohort",
+        "controlled_beta_launch_authorised": true,
+        "data_protection_reviewer": "POPIA Reviewer",
+        "grades": [
+          4
+        ],
+        "guardian_consent_required": true,
+        "incident_commander": "Incident Commander",
+        "launch_owner": "Nkgolo Lebelo",
+        "learner_count": 12,
+        "live_learner_traffic_authorised": true,
+        "max_allowed_learners": 50,
+        "public_beta_authorised": false,
+        "rollback_owner": "Rollback Owner",
+        "subjects": [
+          "Mathematics"
+        ],
+        "support_owner": "Support Owner"
+      },
+      "sha256": "eb3e79e67ad9f52fea7b51bc2178dd08667ad86f36c757c311dad380db4f2251"
+    },
+    {
+      "bytes": 422,
+      "exists": true,
+      "path": "docs/operations/beta/controlled_beta_consent_pack_attestation.md",
+      "sha256": "2d5f8f5f9bdad2874fb31392decc9cda07973f0a755ee5fb62b79fd47c0e2fb3"
+    },
+    {
+      "bytes": 506,
+      "exists": true,
+      "path": "docs/operations/beta/controlled_beta_live_traffic_window.json",
+      "payload": {
+        "activation_end_utc": "2026-07-03T12:00:00Z",
+        "activation_start_utc": "2026-07-03T08:00:00Z",
+        "cohort_id": "cbeta-grade4-mathematics-2026-07-03",
+        "cohort_traffic_percentage": 100,
+        "controlled_beta_launch_authorised": true,
+        "incident_commander": "Incident Commander",
+        "launch_owner": "Nkgolo Lebelo",
+        "live_learner_traffic_authorised": true,
+        "monitoring_channel": "#beta-ops",
+        "public_beta_authorised": false,
+        "rollback_owner": "Rollback Owner",
+        "support_owner": "Support Owner"
+      },
+      "sha256": "8bd9596f9c4cd0cc9e6b6fc59ebc4bf91fb894dacbd1660e228933faa6514068"
+    }
+  ],
+  "errors": [],
+  "valid": true
+}

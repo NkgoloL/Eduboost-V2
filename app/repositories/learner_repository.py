@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
+import inspect
 from uuid import UUID
 
 from sqlalchemy import delete
@@ -42,7 +43,9 @@ class LearnerRepository(BaseRepository[Learner]):
         learner.display_name = "[erased]"
         learner.is_deleted = True
         learner.deletion_requested_at = datetime.now(timezone.utc)
-        db.add(learner)
+        add_result = db.add(learner)
+        if inspect.isawaitable(add_result):
+            await add_result
         await db.flush()
 
     async def purge_personal_data(self, learner_id: str | UUID, db: AsyncSession | None = None) -> None:

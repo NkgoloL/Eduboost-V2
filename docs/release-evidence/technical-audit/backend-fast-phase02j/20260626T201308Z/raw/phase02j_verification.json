@@ -1,0 +1,69 @@
+{
+  "phase": "02J",
+  "slice": "tracked-topic-map-text-extract-provenance",
+  "checks": [
+    {
+      "name": "gitignore_allows_manifest",
+      "passed": true,
+      "detail": "The source-text manifest is explicitly unignored for clean-checkout tracking."
+    },
+    {
+      "name": "manifest_not_gitignored",
+      "passed": true,
+      "detail": "git check-ignore reports source_text_extracts_manifest.json is trackable."
+    },
+    {
+      "name": "manifest_exists",
+      "passed": true,
+      "detail": "data/content_factory/source_text_extracts_manifest.json exists in the tracked tree."
+    },
+    {
+      "name": "manifest_single_senior_math_record",
+      "passed": true,
+      "detail": "Exactly one Senior Phase Mathematics text-extract provenance record is present."
+    },
+    {
+      "name": "manifest_scope_binding",
+      "passed": true,
+      "detail": "The record is bound to grade7_mathematics_en."
+    },
+    {
+      "name": "manifest_source_hash",
+      "passed": true,
+      "detail": "The record preserves the immutable PDF source SHA-256."
+    },
+    {
+      "name": "manifest_text_hash",
+      "passed": true,
+      "detail": "The record preserves the reviewed text-extract SHA-256."
+    },
+    {
+      "name": "manifest_text_path",
+      "passed": true,
+      "detail": "The record uses the clean-checkout CAPS source text path."
+    },
+    {
+      "name": "worklist_item_present",
+      "passed": true,
+      "detail": "Grade 7 Mathematics is present in the generated worklist."
+    },
+    {
+      "name": "worklist_text_hash",
+      "passed": true,
+      "detail": "Worklist uses reviewed text-extract hash, not the PDF hash fallback."
+    },
+    {
+      "name": "worklist_text_path",
+      "passed": true,
+      "detail": "Worklist uses the clean-checkout CAPS text path."
+    },
+    {
+      "name": "worklist_source_hash",
+      "passed": true,
+      "detail": "Worklist still preserves the immutable PDF source hash separately."
+    }
+  ],
+  "valid": true,
+  "policy": "Phase 02J focused evidence only; backend-fast candidate evidence requires make test-fast exit 0.",
+  "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+}

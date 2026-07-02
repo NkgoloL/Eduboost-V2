@@ -1,11 +1,3 @@
-from app.core.judiciary import ConstitutionalViolation, JudiciaryService, LessonPayload, StudyPlanPayload
+from app.core.policy import ConstitutionalViolation, JudiciaryService, LessonPayload
 
-JudiciaryValidationError = ConstitutionalViolation
-
-__all__ = [
-    "ConstitutionalViolation",
-    "JudiciaryService",
-    "JudiciaryValidationError",
-    "LessonPayload",
-    "StudyPlanPayload",
-]
+__all__ = ["ConstitutionalViolation", "JudiciaryService", "LessonPayload"]

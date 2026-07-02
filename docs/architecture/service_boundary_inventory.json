@@ -1,6 +1,10 @@
 {
-  "generated_at": "2026-06-13T13:49:14Z",
+  "generated_at": "2026-06-27T02:18:44Z",
   "rows": [
+    {
+      "path": "app/services/ai_operations.py",
+      "classification": "unclassified"
+    },
     {
       "path": "app/services/ai_safety.py",
       "classification": "unclassified"
@@ -86,6 +90,10 @@
       "classification": "active_runtime_facade"
     },
     {
+      "path": "app/services/batch_generation.py",
+      "classification": "deprecated_pending_callsite_removal"
+    },
+    {
       "path": "app/services/caps_validator.py",
       "classification": "unclassified"
     },
@@ -116,6 +124,10 @@
     {
       "path": "app/services/consent_service.py",
       "classification": "deprecated_pending_callsite_removal"
+    },
+    {
+      "path": "app/services/content_answer_key_verification.py",
+      "classification": "unclassified"
     },
     {
       "path": "app/services/content_artifact_lifecycle.py",
@@ -266,6 +278,10 @@
       "classification": "unclassified"
     },
     {
+      "path": "app/services/content_review_governance.py",
+      "classification": "unclassified"
+    },
+    {
       "path": "app/services/content_review_queue.py",
       "classification": "unclassified"
     },
@@ -283,6 +299,10 @@
     },
     {
       "path": "app/services/content_safety/pii.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/content_schemas.py",
       "classification": "unclassified"
     },
     {
@@ -314,11 +334,87 @@
       "classification": "unclassified"
     },
     {
+      "path": "app/services/content_validator.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/acquisition.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/answer_verification.py",
+      "classification": "unclassified"
+    },
+    {
       "path": "app/services/curriculum/caps_topic_map.py",
       "classification": "unclassified"
     },
     {
+      "path": "app/services/curriculum/claim_validation.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/corpus.py",
+      "classification": "unclassified"
+    },
+    {
       "path": "app/services/curriculum/coverage.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/evaluation.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/extraction.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/generation.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/graph.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/grounding.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/legacy.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/legacy_migration.py",
+      "classification": "migration_or_compat_helper"
+    },
+    {
+      "path": "app/services/curriculum/object_storage.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/phase02r_closure.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/phase02r_verification.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/retrieval.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/rights_policy.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum/tutor_grounding.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/curriculum_expansion.py",
       "classification": "unclassified"
     },
     {
@@ -426,6 +522,10 @@
       "classification": "domain_or_cross_cutting_service"
     },
     {
+      "path": "app/services/irt_quality_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
       "path": "app/services/job_dependency_factory.py",
       "classification": "unclassified"
     },
@@ -448,6 +548,10 @@
     {
       "path": "app/services/learner_service.py",
       "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/learner_tutor.py",
+      "classification": "unclassified"
     },
     {
       "path": "app/services/lesson_authorization.py",
@@ -474,6 +578,10 @@
       "classification": "unclassified"
     },
     {
+      "path": "app/services/llm_provider.py",
+      "classification": "unclassified"
+    },
+    {
       "path": "app/services/parent_report_service_v2.py",
       "classification": "domain_or_cross_cutting_service"
     },
@@ -494,6 +602,10 @@
       "classification": "unclassified"
     },
     {
+      "path": "app/services/prompt_registry.py",
+      "classification": "unclassified"
+    },
+    {
       "path": "app/services/quota_service.py",
       "classification": "domain_or_cross_cutting_service"
     },
@@ -508,6 +620,38 @@
     {
       "path": "app/services/runtime_consent_facade.py",
       "classification": "active_runtime_facade"
+    },
+    {
+      "path": "app/services/safety_filter.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/semantic_retrieval/embedding.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/semantic_retrieval/evaluation.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/semantic_retrieval/generation_context.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/semantic_retrieval/indexing.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/semantic_retrieval/repository.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/semantic_retrieval/service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/services/semantic_retrieval/types.py",
+      "classification": "unclassified"
     },
     {
       "path": "app/services/stripe_service.py",
@@ -531,6 +675,10 @@
     },
     {
       "path": "app/services/telemetry.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/tutor_safety.py",
       "classification": "unclassified"
     },
     {

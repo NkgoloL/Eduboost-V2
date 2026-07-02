@@ -27,7 +27,11 @@ export function AiTutorChat({ learnerId, lessonId, topic, language = "en" }: Pro
   const bottomRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => () => abortRef.current?.abort(), []);
-  useEffect(() => bottomRef.current?.scrollIntoView({ behavior: "smooth" }), [messages]);
+  useEffect(() => {
+    if (typeof bottomRef.current?.scrollIntoView === "function") {
+      bottomRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
 
   async function ensureSession(): Promise<string> {
     if (sessionId) return sessionId;

@@ -1,12 +1,12 @@
 # Backend First Wiring Candidates Report
 
-Generated at: `2026-06-13T13:52:21Z`
+Generated at: `2026-06-27T02:22:08Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| first wiring candidates | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_first_wiring_candidates.py` |
-| runtime wiring cases | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_wiring_cases.py` |
-| runtime wiring preflight | 0 | `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_wiring_preflight.py` |
+| first wiring candidates | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_first_wiring_candidates.py` |
+| runtime wiring cases | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_runtime_wiring_cases.py` |
+| runtime wiring preflight | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_runtime_wiring_preflight.py` |
 
 ## Boundary
 
@@ -14,7 +14,7 @@ This report proves first wiring candidates only; it does not approve route rewir
 
 ## first wiring candidates
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_first_wiring_candidates.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_first_wiring_candidates.py`
 
 Return code: `0`
 
@@ -34,7 +34,7 @@ Backend first wiring candidate check
 
 ## runtime wiring cases
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_wiring_cases.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_runtime_wiring_cases.py`
 
 Return code: `0`
 
@@ -58,7 +58,7 @@ Backend runtime wiring fixture case check
 
 ## runtime wiring preflight
 
-Command: `/home/nkgolol/Dev/Development/Eduboost-V2/.venv/bin/python scripts/check_backend_runtime_wiring_preflight.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_runtime_wiring_preflight.py`
 
 Return code: `0`
 

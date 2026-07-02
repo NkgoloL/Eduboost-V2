@@ -82,6 +82,10 @@ function resolveRequestUrl(endpoint: string) {
 
 function buildHeaders(inputHeaders: HeadersInit | undefined, body: RequestInit["body"]) {
   const headers = new Headers(inputHeaders);
+  if (!headers.has("Authorization") && typeof window !== "undefined") {
+    const devToken = window.localStorage.getItem("guardian_token");
+    if (devToken) headers.set("Authorization", `Bearer ${devToken}`);
+  }
   const hasContentType = Array.from(headers.keys()).some((key) => key.toLowerCase() === "content-type");
   const shouldSetJson = body !== undefined && !(body instanceof FormData) && !(body instanceof Blob) && typeof body !== "string";
 

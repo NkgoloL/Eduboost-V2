@@ -1,20 +1,20 @@
 # Auth Route Service Dependency Repair Status
 
-Generated at: `2026-06-13T13:48:04Z`
-Commit: `0c9d99b0734c4c731b3fa0fba53a9f503acc5685`
+Generated at: `2026-06-27T02:18:39Z`
+Commit: `88840fc52a05c694c6d313e57bc8cba4bcda4c63`
 
 **Status:** `auth-route-service-dependencies-passing`
 
 | Function | Line | References auth_service | Has dependency param | Passed |
 |---|---:|---:|---:|---:|
-| `me` | 81 | False | False | True |
-| `register` | 87 | True | True | True |
-| `login` | 106 | True | True | True |
-| `create_dev_session` | 124 | True | True | True |
-| `refresh` | 148 | True | True | True |
-| `list_sessions` | 179 | False | False | True |
-| `logout` | 188 | True | True | True |
-| `revoke_all_tokens` | 204 | True | True | True |
+| `me` | 80 | False | False | True |
+| `register` | 86 | True | True | True |
+| `login` | 105 | True | True | True |
+| `create_dev_session` | 123 | True | True | True |
+| `refresh` | 147 | True | True | True |
+| `list_sessions` | 178 | False | False | True |
+| `logout` | 187 | True | True | True |
+| `revoke_all_tokens` | 203 | True | True | True |
 
 ## Blockers
 

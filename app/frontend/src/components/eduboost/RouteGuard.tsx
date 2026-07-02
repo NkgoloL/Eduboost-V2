@@ -12,6 +12,9 @@ interface RouteGuardProps {
 }
 
 async function fetchSessionState(): Promise<{ authenticated: boolean }> {
+  if (typeof window !== "undefined" && window.localStorage.getItem("guardian_token")) {
+    return { authenticated: true };
+  }
   try {
     const response = await fetch("/api/auth/session", { cache: "no-store" });
     if (!response.ok) {

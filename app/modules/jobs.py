@@ -164,11 +164,11 @@ async def generate_lesson_job(
     validate_arq_job_payload(payload)
 
     async def _run() -> dict[str, Any]:
-        from app.core.database import AsyncSessionLocal
+        from app.core.database import AsyncSessionFactory
         from app.domain.schemas import LessonRequest
         from app.modules.lessons.service import LessonService
 
-        async with AsyncSessionLocal() as db:
+        async with AsyncSessionFactory() as db:
             service = LessonService(db)
             lesson, cache_hit, provider = await service.generate_lesson_for_learner(
                 LessonRequest.model_validate(
@@ -201,7 +201,7 @@ async def generate_study_plan_job(
     validate_arq_job_payload(payload)
 
     async def _run() -> dict[str, Any]:
-        from app.core.database import AsyncSessionLocal
+        from app.core.database import AsyncSessionFactory
         from app.repositories.repositories import LearnerRepository
         from app.services.audit_service import AuditService
         from app.services.study_plan_service_v2 import StudyPlanServiceV2
@@ -214,7 +214,7 @@ async def generate_study_plan_job(
         except Exception:  # noqa: BLE001
             study_plan_repository = None
 
-        async with AsyncSessionLocal() as db:
+        async with AsyncSessionFactory() as db:
             service = StudyPlanServiceV2(
                 learner_repository=LearnerRepository(db),
                 study_plan_repository=study_plan_repository,
@@ -461,13 +461,13 @@ async def startup(ctx: dict[str, Any]) -> None:
     Args:
         ctx: ARQ worker context dictionary.
     """
-    from app.core.database import AsyncSessionLocal
+    from app.core.database import AsyncSessionFactory
     from sqlalchemy import text
 
     ctx["settings"] = get_settings()
 
-    ctx["db_session_factory"] = AsyncSessionLocal
-    async with AsyncSessionLocal() as db:
+    ctx["db_session_factory"] = AsyncSessionFactory
+    async with AsyncSessionFactory() as db:
         await db.execute(text("SELECT 1"))
 
     redis = ctx.get("redis")

@@ -29,8 +29,7 @@ joblib==1.4.2
 redis==5.0.4
 hiredis==2.3.2
 
-celery==5.4.0
-flower==2.0.1
+arq==0.26.1
 
 sendgrid==6.11.0
 jinja2==3.1.4
@@ -55,3 +54,6 @@ reportlab==4.5.1
 pypdf==5.4.0
 # ARQ worker dependency — ARQ-001 / code_1111_1150
 arq>=0.25.0
+
+# MCP SDK for local ETL FastMCP tooling.
+mcp[cli]>=1.0.0

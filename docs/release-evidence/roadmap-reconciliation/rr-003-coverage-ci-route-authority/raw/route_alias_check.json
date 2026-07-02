@@ -1,0 +1,8 @@
+{
+  "command": [
+    "python3",
+    "scripts/check_route_alias_matrix.py"
+  ],
+  "output": "Route alias policy check\n- Matrix: docs/release/route_alias_matrix.md\n- Canonical /api/v2 rows: 210\n- Explicit exceptions: 0\n- PASS all missing aliases are explicitly documented\n",
+  "returncode": 0
+}

@@ -1,0 +1,82 @@
+name: EduBoost Hosted CI Authority
+
+on:
+  push:
+    branches:
+      - master
+      - main
+      - 'codex/**'
+      - 'feature/**'
+  pull_request:
+    branches:
+      - master
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+concurrency:
+  group: technical-audit-hosted-ci-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Verify repository authority
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt
+          fi
+          if [ -f requirements-dev.txt ]; then
+            python -m pip install -r requirements-dev.txt
+          fi
+          if [ -f pyproject.toml ]; then
+            python -m pip install -e '.[dev]' || python -m pip install -e .
+          fi
+
+      - name: Validate hosted CI authority scripts
+        run: |
+          python -m py_compile scripts/technical_audit/capture_hosted_ci_evidence.py
+          python -m py_compile scripts/technical_audit/verify_hosted_ci_authority.py
+          python scripts/technical_audit/verify_hosted_ci_authority.py --allow-unclaimed --json
+
+      - name: Verify prior remote CI branch integration evidence
+        run: |
+          if [ -f scripts/technical_audit/verify_remote_ci_branch_integration_evidence.py ]; then
+            python scripts/technical_audit/verify_remote_ci_branch_integration_evidence.py --json
+          else
+            echo 'No prior remote CI branch integration verifier found; skipping compatibility check.'
+          fi
+
+      - name: Verify Phase 02R terminal control state
+        run: |
+          if [ -f scripts/phase02r_gate_control.py ]; then
+            python scripts/phase02r_gate_control.py --expected-approved-gate 2R.8 --expected-authorised-gate null --require-approval-roles --require-evidence-index-sha --json
+          else
+            echo "No scripts/phase02r_gate_control.py found; skipping Phase 02R control check."
+          fi
+
+      - name: Run hosted CI authority focused tests
+        run: |
+          python -m pytest -q tests/unit/audit_remediation/test_remote_ci_branch_integration_authority.py tests/unit/audit_remediation/test_hosted_ci_merge_readiness_authority.py --no-cov

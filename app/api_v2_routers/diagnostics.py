@@ -1,6 +1,7 @@
 """EduBoost V2 — Diagnostic Router"""
 from __future__ import annotations
 
+from types import SimpleNamespace
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
@@ -30,6 +31,73 @@ router = APIRouter(route_class=EnvelopedRoute, prefix="/diagnostics", tags=["dia
 router.include_router(bias_review_router.router)
 _engine = DiagnosticEngine()
 _caps_validator = CAPSAlignmentValidator()
+
+_FRONTEND_SUBJECT_CODES = {
+    "mathematics": "MATH",
+    "math": "MATH",
+    "english": "ENG",
+    "eng": "ENG",
+    "natural sciences": "NS",
+    "natural science": "NS",
+    "social sciences": "SS",
+    "social science": "SS",
+    "life skills": "LIFE",
+    "life orientation": "LIFE",
+}
+
+
+def _subject_code(value) -> str:
+    raw = getattr(value, "value", value)
+    text = str(raw or "").strip()
+    return _FRONTEND_SUBJECT_CODES.get(text.lower(), text)
+
+
+def _option_payload(options) -> list[dict[str, str]]:
+    if not options:
+        return []
+    if isinstance(options, dict):
+        return [{"key": str(key), "label": str(value)} for key, value in options.items()]
+    payload = []
+    for index, option in enumerate(options):
+        fallback_key = chr(65 + index)
+        if isinstance(option, dict):
+            key = str(option.get("key") or option.get("id") or fallback_key)
+            label = str(option.get("label") or option.get("text") or option.get("value") or key)
+            payload.append({"key": key, "label": label})
+        else:
+            payload.append({"key": fallback_key, "label": str(option)})
+    return payload
+
+
+def _serialise_item_bank_item(item) -> dict:
+    options = _option_payload(item.options)
+    return {
+        "id": str(item.item_id),
+        "item_id": str(item.item_id),
+        "question": item.stem,
+        "question_text": item.stem,
+        "options": options,
+        "option_keys": [option["key"] for option in options],
+        "subject": _subject_code(item.subject),
+        "topic": item.topic,
+        "skill": item.skill,
+        "difficulty": float(item.difficulty_b),
+        "discrimination": float(item.discrimination_a),
+        "caps_reference": item.caps_ref,
+        "caps_ref": item.caps_ref,
+        "review_status": getattr(item.review_status, "value", item.review_status),
+    }
+
+
+def _engine_item_from_item_bank(item):
+    return SimpleNamespace(
+        id=str(item.item_id),
+        grade=int(item.grade),
+        subject=_subject_code(item.subject),
+        topic=str(item.topic),
+        a_param=float(item.discrimination_a or 1.0),
+        b_param=float(item.difficulty_b or 0.0),
+    )
 
 class ReviewItemRequest(BaseModel):
     review_status: str = Field(..., pattern="^(draft|ai_generated|human_reviewed|approved|retired)$")
@@ -62,24 +130,7 @@ async def get_diagnostic_items(
 
     canonical_items = await diagnostic_repositories.item_bank(db).list_approved_for_grade(learner.grade, limit=20)
     if canonical_items:
-        return [
-            {
-                "id": str(i.item_id),
-                "item_id": str(i.item_id),
-                "question": i.stem,
-                "question_text": i.stem,
-                "options": i.options,
-                "subject": getattr(i.subject, "value", i.subject),
-                "topic": i.topic,
-                "skill": i.skill,
-                "difficulty": float(i.difficulty_b),
-                "discrimination": float(i.discrimination_a),
-                "caps_reference": i.caps_ref,
-                "caps_ref": i.caps_ref,
-                "review_status": getattr(i.review_status, "value", i.review_status),
-            }
-            for i in canonical_items
-        ]
+        return [_serialise_item_bank_item(item) for item in canonical_items]
 
     items = await diagnostic_repositories.irt(db).get_items_for_grade(learner.grade, limit=20)
     return [
@@ -117,11 +168,29 @@ async def submit_diagnostic(
     tier = guardian.subscription_tier if guardian else "free"
     await check_ai_quota(learner.guardian_id, tier)
 
-    items = await diagnostic_repositories.irt(db).get_items_for_grade(learner.grade)
-    item_map = {i.id: i for i in items}
+    canonical_items = await diagnostic_repositories.item_bank(db).list_approved_for_grade(learner.grade, limit=50)
+    canonical_map = {str(item.item_id): item for item in canonical_items}
+    answer_ids = {str(answer.item_id) for answer in body.answers}
 
-    correct_ids = {a.item_id for a in body.answers if item_map.get(a.item_id) and a.selected_option == item_map[a.item_id].correct_option}
-    responses_dict = {a.item_id: a.selected_option for a in body.answers}
+    if canonical_map and answer_ids.issubset(set(canonical_map)):
+        served_items = [canonical_map[str(answer.item_id)] for answer in body.answers]
+        items = [_engine_item_from_item_bank(item) for item in served_items]
+        correct_ids = {
+            str(answer.item_id)
+            for answer in body.answers
+            if str(answer.selected_option).upper() == str(canonical_map[str(answer.item_id)].answer_key).upper()
+        }
+    else:
+        items = await diagnostic_repositories.irt(db).get_items_for_grade(learner.grade)
+        item_map = {str(i.id): i for i in items}
+        correct_ids = {
+            str(answer.item_id)
+            for answer in body.answers
+            if item_map.get(str(answer.item_id))
+            and str(answer.selected_option).upper() == str(item_map[str(answer.item_id)].correct_option).upper()
+        }
+
+    responses_dict = {str(a.item_id): str(a.selected_option) for a in body.answers}
 
     analysis = _engine.run_gap_probe_cascade(
         learner_grade=learner.grade,

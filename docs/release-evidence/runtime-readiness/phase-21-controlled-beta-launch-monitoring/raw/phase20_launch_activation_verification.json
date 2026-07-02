@@ -1,0 +1,39 @@
+{
+  "args": [
+    "python3",
+    "scripts/runtime_readiness/verify_controlled_beta_launch_activation.py",
+    "--json"
+  ],
+  "payload": {
+    "checked": [
+      "docs/roadmap/execution/runtime_readiness/phase_20_controlled_beta_launch_activation_record.json",
+      "docs/release-evidence/runtime-readiness/phase-20-controlled-beta-launch-activation/evidence_index.md",
+      "docs/release-evidence/runtime-readiness/phase-20-controlled-beta-launch-activation/SHA256SUMS.txt",
+      "docs/release-evidence/runtime-readiness/phase-20-controlled-beta-launch-activation/raw/git_state.json",
+      "docs/release-evidence/runtime-readiness/phase-20-controlled-beta-launch-activation/raw/phase19_activation_preflight_verification.json",
+      "docs/release-evidence/runtime-readiness/phase-20-controlled-beta-launch-activation/raw/launch_activation_documents.json",
+      "docs/release-evidence/runtime-readiness/phase-20-controlled-beta-launch-activation/raw/launch_activation_boundary.json",
+      "docs/release-evidence/runtime-readiness/phase-20-controlled-beta-launch-activation/raw/controlled_beta_launch_activation_result.json",
+      "docs/release-evidence/runtime-readiness/phase-20-controlled-beta-launch-activation/raw/controlled_beta_launch_activation_record_snapshot.json"
+    ],
+    "controlled_beta_launch_activation_recorded": true,
+    "controlled_beta_launch_authorised": true,
+    "deployment_authorised": false,
+    "errors": [],
+    "launch_activation_documents_valid": true,
+    "learner_data_migration_authorised": true,
+    "live_learner_traffic_authorised": true,
+    "phase_19_controlled_beta_activation_preflight_valid": true,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "record": "docs/roadmap/execution/runtime_readiness/phase_20_controlled_beta_launch_activation_record.json",
+    "release_tag_authorised": false,
+    "runtime_kg_implementation_claimed": false,
+    "valid": true,
+    "warnings": []
+  },
+  "returncode": 0,
+  "stderr": "",
+  "stdout": "{\n  \"checked\": [\n    \"docs/roadmap/execution/runtime_readiness/phase_20_controlled_beta_launch_activation_record.json\",\n    \"docs/release-evidence/runtime-readiness/phase-20-controlled-beta-launch-activation/evidence_index.md\",\n    \"docs/release-evidence/runtime-readiness/phase-20-controlled-beta-launch-activation/SHA256SUMS.txt\",\n    \"docs/release-evidence/runtime-readiness/phase-20-controlled-beta-launch-activation/raw/git_state.json\",\n    \"docs/release-evidence/runtime-readiness/phase-20-controlled-beta-launch-activation/raw/phase19_activation_preflight_verification.json\",\n    \"docs/release-evidence/runtime-readiness/phase-20-controlled-beta-launch-activation/raw/launch_activation_documents.json\",\n    \"docs/release-evidence/runtime-readiness/phase-20-controlled-beta-launch-activation/raw/launch_activation_boundary.json\",\n    \"docs/release-evidence/runtime-readiness/phase-20-controlled-beta-launch-activation/raw/controlled_beta_launch_activation_result.json\",\n    \"docs/release-evidence/runtime-readiness/phase-20-controlled-beta-launch-activation/raw/controlled_beta_launch_activation_record_snapshot.json\"\n  ],\n  \"controlled_beta_launch_activation_recorded\": true,\n  \"controlled_beta_launch_authorised\": true,\n  \"deployment_authorised\": false,\n  \"errors\": [],\n  \"launch_activation_documents_valid\": true,\n  \"learner_data_migration_authorised\": true,\n  \"live_learner_traffic_authorised\": true,\n  \"phase_19_controlled_beta_activation_preflight_valid\": true,\n  \"production_release_authorised\": false,\n  \"public_beta_authorised\": false,\n  \"record\": \"docs/roadmap/execution/runtime_readiness/phase_20_controlled_beta_launch_activation_record.json\",\n  \"release_tag_authorised\": false,\n  \"runtime_kg_implementation_claimed\": false,\n  \"valid\": true,\n  \"warnings\": []\n}\n",
+  "valid": true
+}

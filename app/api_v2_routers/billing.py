@@ -8,7 +8,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.api_v2_deps.auth import AuthContext, require_parent_or_admin
 from app.core.database import get_db
 from app.domain.schemas import CheckoutSessionResponse
-from app.services.fourth_estate import FourthEstateService
+from app.services.audit_service import AuditService
+from app.core import providers
 from app.services.stripe_service import StripeService
 
 router = APIRouter(route_class=EnvelopedRoute, prefix="/billing", tags=["billing"])
@@ -34,13 +35,13 @@ async def stripe_webhook(
     request: Request,
     db: AsyncSession = Depends(get_db),
     stripe_signature: str = Header(alias="stripe-signature"),
+    audit: AuditService = Depends(providers.get_audit_service),
 ):
     payload = await request.body()
     svc = StripeService(db)
     result = await svc.handle_webhook(payload, stripe_signature)
 
     # Record to audit trail
-    audit = FourthEstateService(db)
     await audit.record("STRIPE_WEBHOOK", payload=result)
 
     return result

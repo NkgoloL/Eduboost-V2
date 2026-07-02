@@ -1,0 +1,39 @@
+{
+  "phase": "02I",
+  "slice": "topic-map-provenance-final-backend-fast-repair",
+  "checks": [
+    {
+      "name": "text_extract_manifest_exists",
+      "passed": true,
+      "detail": "data/content_factory/source_text_extracts_manifest.json exists"
+    },
+    {
+      "name": "senior_mathematics_record_present",
+      "passed": true,
+      "detail": "Exactly one caps_senior_mathematics_en text-extract provenance record is tracked."
+    },
+    {
+      "name": "senior_mathematics_text_hash",
+      "passed": true,
+      "detail": "Senior Phase Mathematics text-extract SHA-256 matches the reviewed provenance contract."
+    },
+    {
+      "name": "senior_mathematics_source_hash",
+      "passed": true,
+      "detail": "Text-extract provenance remains bound to the immutable PDF source hash."
+    },
+    {
+      "name": "senior_mathematics_text_path",
+      "passed": true,
+      "detail": "Text-extract path is stable and clean-checkout safe as metadata."
+    },
+    {
+      "name": "phase02i_scope_binding",
+      "passed": true,
+      "detail": "Text-extract provenance is explicitly linked to the Grade 7 Mathematics scope."
+    }
+  ],
+  "valid": true,
+  "policy": "Phase 02I focused evidence only; backend-fast candidate evidence requires make test-fast exit 0.",
+  "kg_boundary": "No runtime knowledge-graph implementation is included; KG remains a future architectural north star."
+}

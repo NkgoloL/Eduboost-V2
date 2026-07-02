@@ -7,7 +7,7 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-23
+last_reviewed: 2026-07-02
 review_interval_days: 60
 evidence_command: "make docs-housekeeping-stage4-check"
 code_anchors: [docs/architecture/README.md]
@@ -15,7 +15,7 @@ code_anchors: [docs/architecture/README.md]
 
 # Auth Boundary Debt Report
 
-Generated at: `2026-06-13T13:48:05Z`
+Generated at: `2026-06-27T02:18:40Z`
 
 | Item | Value |
 |---|---|
