@@ -1,0 +1,74 @@
+{
+  "access_control_reviewed": true,
+  "alert_rule_links_recorded": true,
+  "dashboards": [
+    {
+      "id": "production-api-overview",
+      "required_panels": [
+        "traffic",
+        "latency",
+        "errors",
+        "saturation",
+        "SLO burn"
+      ],
+      "title": "Production API Overview"
+    },
+    {
+      "id": "learner-journey-health",
+      "required_panels": [
+        "diagnostic starts",
+        "lesson completion",
+        "parent portal access",
+        "session completion"
+      ],
+      "title": "Learner Journey Health"
+    },
+    {
+      "id": "popia-privacy-operations",
+      "required_panels": [
+        "consent events",
+        "export failures",
+        "erasure requests",
+        "audit write failures"
+      ],
+      "title": "POPIA Privacy Operations"
+    },
+    {
+      "id": "ai-llm-operations",
+      "required_panels": [
+        "provider latency",
+        "provider failures",
+        "token usage",
+        "estimated cost"
+      ],
+      "title": "AI and LLM Operations"
+    },
+    {
+      "id": "billing-operations",
+      "required_panels": [
+        "checkout sandbox status",
+        "webhook failures",
+        "idempotency outcomes",
+        "invoice lifecycle"
+      ],
+      "title": "Billing Operations"
+    },
+    {
+      "id": "infrastructure-readiness",
+      "required_panels": [
+        "database pool",
+        "Redis clients",
+        "readiness components",
+        "backup status"
+      ],
+      "title": "Infrastructure Readiness"
+    }
+  ],
+  "grafana_dashboard_inventory_recorded": true,
+  "grafana_folder_recorded": true,
+  "privacy_boundary_reviewed": true,
+  "prometheus_datasource_linked": true,
+  "rr_id": "RR-012",
+  "runbook_links_recorded": true,
+  "slo_panels_linked": true
+}
