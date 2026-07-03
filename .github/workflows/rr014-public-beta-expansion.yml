@@ -1,0 +1,23 @@
+name: RR-014 Public Beta Expansion
+
+on:
+  pull_request:
+    paths:
+      - 'docs/public_beta/**'
+      - 'docs/roadmap/reconciliation/rr_014_public_beta_expansion*'
+      - 'scripts/public_beta/**'
+      - 'scripts/roadmap_reconciliation/*rr014*'
+      - 'tests/unit/roadmap_reconciliation/test_rr014_public_beta_expansion.py'
+      - '.github/workflows/rr014-public-beta-expansion.yml'
+  workflow_dispatch:
+
+jobs:
+  rr014-public-beta-expansion:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify RR-014 authority
+        run: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py --authority-only --json
