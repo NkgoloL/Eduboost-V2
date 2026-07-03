@@ -1,0 +1,29 @@
+name: RR-011 Live Billing Provider Integration
+
+on:
+  pull_request:
+    paths:
+      - "docs/billing/**"
+      - "docs/roadmap/reconciliation/rr_011_live_billing_provider_integration*"
+      - "scripts/billing/audit_rr011_live_billing_provider_integration.py"
+      - "scripts/roadmap_reconciliation/*rr011*"
+      - "tests/unit/roadmap_reconciliation/test_rr011_live_billing_provider_integration.py"
+      - ".github/workflows/rr011-live-billing-provider-integration.yml"
+      - "Makefile"
+  workflow_dispatch:
+
+jobs:
+  rr011-live-billing-provider-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify RR-011 authority
+        run: |
+          python -m py_compile \
+            scripts/billing/audit_rr011_live_billing_provider_integration.py \
+            scripts/roadmap_reconciliation/capture_rr011_live_billing_provider_integration_evidence.py \
+            scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py
+          PYTHONPATH=. python scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py --authority-only --json
