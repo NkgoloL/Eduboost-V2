@@ -2950,3 +2950,11 @@ rr012-production-telemetry-dashboard-audit:
 .PHONY: rr012-production-telemetry-dashboard-check
 rr012-production-telemetry-dashboard-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py --authority-only --json
+
+.PHONY: rr013-advanced-mastery-model-research-audit
+rr013-advanced-mastery-model-research-audit:
+	PYTHONPATH=. python3 scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py --json
+
+.PHONY: rr013-advanced-mastery-model-research-check
+rr013-advanced-mastery-model-research-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py --authority-only --json
