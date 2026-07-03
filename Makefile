@@ -2934,3 +2934,11 @@ rr010-beta-outcome-audit:
 
 rr010-beta-outcome-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr010_beta_outcome_reporting.py --json
+
+.PHONY: rr011-live-billing-provider-audit
+rr011-live-billing-provider-audit:
+	PYTHONPATH=. python3 scripts/billing/audit_rr011_live_billing_provider_integration.py --json
+
+.PHONY: rr011-live-billing-provider-check
+rr011-live-billing-provider-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py --authority-only --json
