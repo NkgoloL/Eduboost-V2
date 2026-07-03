@@ -1,0 +1,39 @@
+name: RR-012 Production Telemetry Dashboard
+
+on:
+  pull_request:
+    branches: [master, main]
+    paths:
+      - "docs/telemetry/**"
+      - "docs/observability/**"
+      - "docs/roadmap/reconciliation/rr_012_production_telemetry_dashboard*"
+      - "scripts/telemetry/audit_rr012_production_telemetry_dashboard.py"
+      - "scripts/roadmap_reconciliation/*rr012_production_telemetry_dashboard*.py"
+      - "tests/unit/roadmap_reconciliation/test_rr012_production_telemetry_dashboard.py"
+      - ".github/workflows/rr012-production-telemetry-dashboard.yml"
+  push:
+    branches: [master, main]
+    paths:
+      - "docs/telemetry/**"
+      - "docs/observability/**"
+      - "docs/roadmap/reconciliation/rr_012_production_telemetry_dashboard*"
+      - "scripts/telemetry/audit_rr012_production_telemetry_dashboard.py"
+      - "scripts/roadmap_reconciliation/*rr012_production_telemetry_dashboard*.py"
+      - "tests/unit/roadmap_reconciliation/test_rr012_production_telemetry_dashboard.py"
+      - ".github/workflows/rr012-production-telemetry-dashboard.yml"
+
+jobs:
+  rr012-production-telemetry-dashboard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify RR-012 authority
+        run: |
+          python -m py_compile \
+            scripts/telemetry/audit_rr012_production_telemetry_dashboard.py \
+            scripts/roadmap_reconciliation/capture_rr012_production_telemetry_dashboard_evidence.py \
+            scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py
+          PYTHONPATH=. python scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py --authority-only --json
