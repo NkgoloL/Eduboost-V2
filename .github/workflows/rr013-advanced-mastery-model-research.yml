@@ -1,0 +1,28 @@
+name: RR-013 Advanced Mastery Model Research
+
+on:
+  pull_request:
+    paths:
+      - 'docs/research/mastery_model/**'
+      - 'docs/roadmap/reconciliation/rr_013_advanced_mastery_model_research*'
+      - 'scripts/mastery_research/**'
+      - 'scripts/roadmap_reconciliation/*rr013*'
+      - 'tests/unit/roadmap_reconciliation/test_rr013_advanced_mastery_model_research.py'
+      - '.github/workflows/rr013-advanced-mastery-model-research.yml'
+      - 'Makefile'
+  workflow_dispatch:
+
+jobs:
+  rr013-advanced-mastery-model-research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile RR-013 scripts
+        run: |
+          python3 -m py_compile             scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py             scripts/roadmap_reconciliation/capture_rr013_advanced_mastery_model_research_evidence.py             scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py
+      - name: Verify RR-013 authority
+        run: |
+          PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py --authority-only --json
