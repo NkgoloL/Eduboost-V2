@@ -2942,3 +2942,11 @@ rr011-live-billing-provider-audit:
 .PHONY: rr011-live-billing-provider-check
 rr011-live-billing-provider-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py --authority-only --json
+
+.PHONY: rr012-production-telemetry-dashboard-audit
+rr012-production-telemetry-dashboard-audit:
+	PYTHONPATH=. python3 scripts/telemetry/audit_rr012_production_telemetry_dashboard.py --json
+
+.PHONY: rr012-production-telemetry-dashboard-check
+rr012-production-telemetry-dashboard-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py --authority-only --json
