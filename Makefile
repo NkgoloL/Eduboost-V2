@@ -2958,3 +2958,10 @@ rr013-advanced-mastery-model-research-audit:
 .PHONY: rr013-advanced-mastery-model-research-check
 rr013-advanced-mastery-model-research-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py --authority-only --json
+.PHONY: rr014-public-beta-expansion-audit
+rr014-public-beta-expansion-audit:
+	PYTHONPATH=. python3 scripts/public_beta/audit_rr014_public_beta_expansion.py --json
+
+.PHONY: rr014-public-beta-expansion-check
+rr014-public-beta-expansion-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py --authority-only --json
