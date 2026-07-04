@@ -2973,3 +2973,11 @@ rr015-external-approvals-audit:
 .PHONY: rr015-external-approvals-check
 rr015-external-approvals-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr015_external_approvals.py --authority-only --json
+
+.PHONY: rr016-operational-drills-audit
+rr016-operational-drills-audit:
+	PYTHONPATH=. python3 scripts/operations_drills/audit_rr016_operational_drills.py --json
+
+.PHONY: rr016-operational-drills-check
+rr016-operational-drills-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr016_operational_drills.py --authority-only --json
