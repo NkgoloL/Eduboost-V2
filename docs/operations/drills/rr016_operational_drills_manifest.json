@@ -1,0 +1,28 @@
+{
+  "backup_drill_required": true,
+  "billing_launch_authorised": false,
+  "depends_on": [
+    "RR-015"
+  ],
+  "deployment_authorised": false,
+  "final_reports_required": true,
+  "incident_handoff_verification_required": true,
+  "live_payment_processing_authorised": false,
+  "monitoring_dashboard_verification_required": true,
+  "production_release_authorised": false,
+  "public_beta_authorised": false,
+  "public_beta_live_traffic_authorised": false,
+  "release_tag_authorised": false,
+  "required_drills": [
+    "backup",
+    "restore",
+    "rollback",
+    "monitoring_dashboard",
+    "incident_handoff"
+  ],
+  "restore_drill_required": true,
+  "rollback_drill_required": true,
+  "rr_id": "RR-016",
+  "runtime_kg_implementation_claimed": false,
+  "title": "Operational drills"
+}
