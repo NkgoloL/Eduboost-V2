@@ -87,6 +87,8 @@ def evaluate(root: Path | str = Path(".")) -> dict[str, Any]:
     authority_errors = [e for e in errors if not e.startswith("record flag must be true") and not e.startswith("final drill evidence failed")]
     authority_valid = not authority_errors and audit_result["authority_valid"] and rr015_valid and register_has_rr016
     valid = authority_valid and record.get("operational_drills_recorded") is True and not errors
+    if record.get("operational_drills_recorded") is not True:
+        valid = False
 
     return {
         "valid": valid,
@@ -107,7 +109,7 @@ def evaluate(root: Path | str = Path(".")) -> dict[str, Any]:
         "rr006_non_required_checks_caveat_visible": record.get("rr006_non_required_checks_caveat_visible") is True,
         "rr017_release_safety_controls_remaining_visible": record.get("rr017_release_safety_controls_remaining_visible") is True,
         "rr018_trustworthy_beta_quality_remaining_visible": record.get("rr018_trustworthy_beta_quality_remaining_visible") is True,
-        **{key: record.get(key) is False for key in BOUNDARY_FALSE_KEYS},
+        **{key: record.get(key) for key in BOUNDARY_FALSE_KEYS},
     }
 
 
