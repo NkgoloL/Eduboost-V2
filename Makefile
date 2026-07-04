@@ -2981,3 +2981,11 @@ rr016-operational-drills-audit:
 .PHONY: rr016-operational-drills-check
 rr016-operational-drills-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr016_operational_drills.py --authority-only --json
+
+.PHONY: rr017-release-safety-controls-audit
+rr017-release-safety-controls-audit:
+	PYTHONPATH=. python3 scripts/release_safety/audit_rr017_release_safety_controls.py --json
+
+.PHONY: rr017-release-safety-controls-check
+rr017-release-safety-controls-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr017_release_safety_controls.py --authority-only --json
