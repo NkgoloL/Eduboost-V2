@@ -1,0 +1,30 @@
+name: RR-015 External Approvals
+
+on:
+  pull_request:
+    paths:
+      - 'docs/approvals/**'
+      - 'docs/roadmap/reconciliation/rr_015_external_approvals*'
+      - 'scripts/approvals/**'
+      - 'scripts/roadmap_reconciliation/*rr015*'
+      - 'tests/unit/roadmap_reconciliation/test_rr015_external_approvals.py'
+      - '.github/workflows/rr015-external-approvals.yml'
+  workflow_dispatch:
+
+jobs:
+  rr015-external-approvals:
+    name: RR-015 External Approvals
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile RR-015 scripts
+        run: |
+          python3 -m py_compile \
+            scripts/approvals/audit_rr015_external_approvals.py \
+            scripts/roadmap_reconciliation/capture_rr015_external_approvals_evidence.py \
+            scripts/roadmap_reconciliation/verify_rr015_external_approvals.py
+      - name: Verify RR-015 authority
+        run: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr015_external_approvals.py --authority-only --json

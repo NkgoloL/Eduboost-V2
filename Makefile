@@ -2965,3 +2965,11 @@ rr014-public-beta-expansion-audit:
 .PHONY: rr014-public-beta-expansion-check
 rr014-public-beta-expansion-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py --authority-only --json
+
+.PHONY: rr015-external-approvals-audit
+rr015-external-approvals-audit:
+	PYTHONPATH=. python3 scripts/approvals/audit_rr015_external_approvals.py --json
+
+.PHONY: rr015-external-approvals-check
+rr015-external-approvals-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr015_external_approvals.py --authority-only --json
