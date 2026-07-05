@@ -3008,3 +3008,13 @@ kg000-formal-kg-roadmap-approval-audit:
 
 kg000-formal-kg-roadmap-approval-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg000_formal_kg_roadmap_approval.py --authority-only --json
+
+# KG-1 CAPS graph foundation
+kg001-caps-graph-foundation-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg001_caps_graph_foundation.py --json
+
+kg001-caps-graph-foundation-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kg001_caps_graph_foundation.py --write --json
+
+kg001-caps-graph-foundation-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg001_caps_graph_foundation.py --json
