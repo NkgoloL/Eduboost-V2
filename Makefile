@@ -3018,3 +3018,15 @@ kg001-caps-graph-foundation-build:
 
 kg001-caps-graph-foundation-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg001_caps_graph_foundation.py --json
+
+
+# KG-2 target graph generation
+.PHONY: kg002-target-graph-generation-audit kg002-target-graph-generation-build kg002-target-graph-generation-check
+kg002-target-graph-generation-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg002_target_graph_generation.py --json
+
+kg002-target-graph-generation-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kg002_target_graph_generation.py --write --json
+
+kg002-target-graph-generation-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg002_target_graph_generation.py --json
