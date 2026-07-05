@@ -1,0 +1,33 @@
+{
+  "boundary": {
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_payment_processing_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_implementation_claimed": false
+  },
+  "canonical_provider_adr": "docs/adr/ADR-009-billing-provider.md",
+  "provider": "stripe",
+  "register_item": "Live billing provider integration",
+  "required_controls": [
+    "hosted_checkout_provider_attested",
+    "hosted_checkout_sandbox_validated",
+    "webhook_endpoint_validation_recorded",
+    "webhook_signature_validation_recorded",
+    "webhook_idempotency_validation_recorded",
+    "pricing_catalogue_approved",
+    "no_raw_card_storage_confirmed",
+    "secrets_not_committed_confirmed",
+    "billing_launch_boundary_recorded"
+  ],
+  "required_final_files": [
+    "docs/billing/rr011_live_billing_provider_attestation.md",
+    "docs/billing/rr011_hosted_checkout_sandbox_validation.md",
+    "docs/billing/rr011_webhook_endpoint_validation.md",
+    "docs/billing/rr011_pricing_catalogue_approval.md",
+    "docs/billing/rr011_billing_launch_boundary.md"
+  ],
+  "rr_id": "RR-011"
+}

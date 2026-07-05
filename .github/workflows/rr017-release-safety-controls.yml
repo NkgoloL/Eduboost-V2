@@ -1,0 +1,27 @@
+name: RR-017 Release Safety Controls
+
+on:
+  pull_request:
+    paths:
+      - 'docs/release_safety/**'
+      - 'docs/roadmap/reconciliation/rr_017_release_safety_controls*'
+      - 'scripts/release_safety/**'
+      - 'scripts/roadmap_reconciliation/*rr017*'
+      - 'tests/unit/roadmap_reconciliation/test_rr017_release_safety_controls.py'
+      - '.github/workflows/rr017-release-safety-controls.yml'
+      - 'Makefile'
+  workflow_dispatch:
+
+jobs:
+  rr017-release-safety-controls:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile RR-017 scripts
+        run: |
+          python3 -m py_compile             scripts/release_safety/audit_rr017_release_safety_controls.py             scripts/roadmap_reconciliation/capture_rr017_release_safety_controls_evidence.py             scripts/roadmap_reconciliation/verify_rr017_release_safety_controls.py
+      - name: Run RR-017 authority verifier
+        run: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr017_release_safety_controls.py --authority-only --json

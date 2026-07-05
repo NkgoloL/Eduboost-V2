@@ -2934,3 +2934,69 @@ rr010-beta-outcome-audit:
 
 rr010-beta-outcome-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr010_beta_outcome_reporting.py --json
+
+.PHONY: rr011-live-billing-provider-audit
+rr011-live-billing-provider-audit:
+	PYTHONPATH=. python3 scripts/billing/audit_rr011_live_billing_provider_integration.py --json
+
+.PHONY: rr011-live-billing-provider-check
+rr011-live-billing-provider-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py --authority-only --json
+
+.PHONY: rr012-production-telemetry-dashboard-audit
+rr012-production-telemetry-dashboard-audit:
+	PYTHONPATH=. python3 scripts/telemetry/audit_rr012_production_telemetry_dashboard.py --json
+
+.PHONY: rr012-production-telemetry-dashboard-check
+rr012-production-telemetry-dashboard-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py --authority-only --json
+
+.PHONY: rr013-advanced-mastery-model-research-audit
+rr013-advanced-mastery-model-research-audit:
+	PYTHONPATH=. python3 scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py --json
+
+.PHONY: rr013-advanced-mastery-model-research-check
+rr013-advanced-mastery-model-research-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py --authority-only --json
+.PHONY: rr014-public-beta-expansion-audit
+rr014-public-beta-expansion-audit:
+	PYTHONPATH=. python3 scripts/public_beta/audit_rr014_public_beta_expansion.py --json
+
+.PHONY: rr014-public-beta-expansion-check
+rr014-public-beta-expansion-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py --authority-only --json
+
+.PHONY: rr015-external-approvals-audit
+rr015-external-approvals-audit:
+	PYTHONPATH=. python3 scripts/approvals/audit_rr015_external_approvals.py --json
+
+.PHONY: rr015-external-approvals-check
+rr015-external-approvals-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr015_external_approvals.py --authority-only --json
+
+.PHONY: rr016-operational-drills-audit
+rr016-operational-drills-audit:
+	PYTHONPATH=. python3 scripts/operations_drills/audit_rr016_operational_drills.py --json
+
+.PHONY: rr016-operational-drills-check
+rr016-operational-drills-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr016_operational_drills.py --authority-only --json
+
+.PHONY: rr017-release-safety-controls-audit
+rr017-release-safety-controls-audit:
+	PYTHONPATH=. python3 scripts/release_safety/audit_rr017_release_safety_controls.py --json
+
+.PHONY: rr017-release-safety-controls-check
+rr017-release-safety-controls-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr017_release_safety_controls.py --authority-only --json
+
+.PHONY: rr018-trustworthy-beta-quality-audit rr018-trustworthy-beta-quality-check
+rr018-trustworthy-beta-quality-audit:
+	$(PYTHON) scripts/product_quality/audit_rr018_trustworthy_beta_quality.py --json
+
+rr018-trustworthy-beta-quality-check:
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_rr018_trustworthy_beta_quality.py --authority-only --json
+
+.PHONY: final-roadmap-reconciliation-closure-check
+final-roadmap-reconciliation-closure-check:
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_final_roadmap_reconciliation_closure.py --authority-only --json

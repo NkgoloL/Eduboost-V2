@@ -1,0 +1,27 @@
+name: RR-016 Operational Drills
+
+on:
+  pull_request:
+    paths:
+      - 'docs/operations/drills/**'
+      - 'docs/roadmap/reconciliation/rr_016_operational_drills*'
+      - 'scripts/operations_drills/**'
+      - 'scripts/roadmap_reconciliation/*rr016*'
+      - 'tests/unit/roadmap_reconciliation/test_rr016_operational_drills.py'
+      - '.github/workflows/rr016-operational-drills.yml'
+      - 'Makefile'
+  workflow_dispatch:
+
+jobs:
+  rr016-operational-drills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile RR-016 scripts
+        run: |
+          python3 -m py_compile             scripts/operations_drills/audit_rr016_operational_drills.py             scripts/roadmap_reconciliation/capture_rr016_operational_drills_evidence.py             scripts/roadmap_reconciliation/verify_rr016_operational_drills.py
+      - name: Run RR-016 authority verifier
+        run: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr016_operational_drills.py --authority-only --json
