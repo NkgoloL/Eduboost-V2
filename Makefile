@@ -3030,3 +3030,14 @@ kg002-target-graph-generation-build:
 
 kg002-target-graph-generation-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg002_target_graph_generation.py --json
+
+# KG-3 learner graph shadow mode
+.PHONY: kg003-learner-graph-shadow-mode-audit kg003-learner-graph-shadow-mode-build kg003-learner-graph-shadow-mode-check
+kg003-learner-graph-shadow-mode-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg003_learner_graph_shadow_mode.py --json
+
+kg003-learner-graph-shadow-mode-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kg003_learner_graph_shadow_mode.py --write --json
+
+kg003-learner-graph-shadow-mode-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg003_learner_graph_shadow_mode.py --authority-only --json

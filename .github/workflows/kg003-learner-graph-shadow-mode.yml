@@ -1,0 +1,33 @@
+name: KG-3 Learner Graph Shadow Mode
+
+on:
+  pull_request:
+    paths:
+      - "app/domain/knowledge_graph_learner_shadow.py"
+      - "scripts/knowledge_graph/**kg003**"
+      - "scripts/roadmap_reconciliation/**kg003**"
+      - "docs/knowledge_graph/learner_shadow/**"
+      - "docs/roadmap/knowledge_graph/kg_003**"
+      - "data/knowledge_graph/learner_shadow_mode/kg003_shadow_observation_fixture.json"
+      - "tests/unit/roadmap_reconciliation/test_kg003_learner_graph_shadow_mode.py"
+  workflow_dispatch:
+
+jobs:
+  verify-kg003:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile KG-3 scripts
+        run: |
+          python3 -m py_compile \
+            app/domain/knowledge_graph_learner_shadow.py \
+            scripts/knowledge_graph/build_kg003_learner_graph_shadow_mode.py \
+            scripts/knowledge_graph/audit_kg003_learner_graph_shadow_mode.py \
+            scripts/roadmap_reconciliation/capture_kg003_learner_graph_shadow_mode_evidence.py \
+            scripts/roadmap_reconciliation/verify_kg003_learner_graph_shadow_mode.py
+      - name: Verify KG-3 authority
+        run: |
+          PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg003_learner_graph_shadow_mode.py --authority-only --json

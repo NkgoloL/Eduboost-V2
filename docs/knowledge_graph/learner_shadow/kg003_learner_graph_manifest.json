@@ -1,0 +1,20 @@
+{
+  "kg_id": "KG-3",
+  "artifact": "learner_graph_shadow_mode",
+  "status": "authority_recorded",
+  "source_dependencies": [
+    "KG-2 target graph generation",
+    "KG-3 synthetic shadow observation fixture"
+  ],
+  "outputs": [
+    "data/knowledge_graph/learner_shadow_mode/grade4_mathematics_learner_shadow_graph.json",
+    "data/knowledge_graph/learner_shadow_mode/grade4_mathematics_learner_shadow_graph_summary.json"
+  ],
+  "boundary": {
+    "shadow_mode_only": true,
+    "uses_live_learner_data": false,
+    "runtime_authority": false,
+    "database_schema_migration_authorised": false,
+    "learner_facing_model_change_authorised": false
+  }
+}

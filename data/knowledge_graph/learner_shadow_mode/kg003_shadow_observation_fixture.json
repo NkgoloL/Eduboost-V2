@@ -1,0 +1,53 @@
+{
+  "fixture_id": "KG-3-SYNTHETIC-LEARNER-SHADOW-OBSERVATIONS-GRADE-4-MATHEMATICS",
+  "fixture_version": "kg3-shadow-fixture-v1",
+  "source_ref": "KG-3 synthetic learner observation fixture",
+  "scope": {
+    "grade": 4,
+    "subject": "mathematics",
+    "data_classification": "synthetic_non_identifying",
+    "live_learner_data_used": false
+  },
+  "synthetic_learners": [
+    {
+      "learner_alias": "kg3-synthetic-learner-foundation-gap",
+      "fixture_ref": "synthetic-profile-foundation-gap",
+      "baseline_mastery": 0.58,
+      "confidence_offset": -0.05,
+      "target_type_adjustments": {
+        "topic": 0.08,
+        "subtopic": 0.02,
+        "assessment_statement": -0.03
+      },
+      "term_adjustments": {
+        "1": 0.04,
+        "2": 0.01,
+        "3": -0.03,
+        "4": -0.06
+      }
+    },
+    {
+      "learner_alias": "kg3-synthetic-learner-accelerated",
+      "fixture_ref": "synthetic-profile-accelerated",
+      "baseline_mastery": 0.76,
+      "confidence_offset": -0.02,
+      "target_type_adjustments": {
+        "topic": 0.07,
+        "subtopic": 0.03,
+        "assessment_statement": -0.01
+      },
+      "term_adjustments": {
+        "1": 0.08,
+        "2": 0.04,
+        "3": 0.00,
+        "4": -0.03
+      }
+    }
+  ],
+  "privacy_boundary": {
+    "contains_pii": false,
+    "uses_live_learner_data": false,
+    "pseudonymous_only": true,
+    "shadow_mode_only": true
+  }
+}
