@@ -3041,3 +3041,14 @@ kg003-learner-graph-shadow-mode-build:
 
 kg003-learner-graph-shadow-mode-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg003_learner_graph_shadow_mode.py --authority-only --json
+
+.PHONY: kg004-gap-engine-intervention-planner-audit kg004-gap-engine-intervention-planner-build kg004-gap-engine-intervention-planner-check
+kg004-gap-engine-intervention-planner-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg004_gap_engine_intervention_planner.py --json
+
+kg004-gap-engine-intervention-planner-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kg004_gap_engine_intervention_planner.py --write --json
+
+kg004-gap-engine-intervention-planner-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg004_gap_engine_intervention_planner.py --authority-only --json
+
