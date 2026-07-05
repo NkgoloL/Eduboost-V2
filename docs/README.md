@@ -47,3 +47,14 @@ Use that register to decide which document is current for a topic. Documents out
 ## Rule of thumb
 
 If a document makes a claim about current architecture, readiness, compliance, testing, deployment, or release status, it must either be listed as canonical in `source_of_truth.yml` or clearly marked as generated, evidence, draft, archived, or superseded.
+
+<!-- KG000_FORMAL_ROADMAP_APPROVAL:start -->
+## Knowledge graph learning-state roadmap
+
+The Knowledge Graph learning-state roadmap is opened after final RR closure and is governed by:
+
+- [Knowledge Graph Learning-State Architecture](architecture/knowledge_graph_learning_state_architecture.md)
+- [Knowledge Graph Data Model](architecture/knowledge_graph_data_model.md)
+- [KG Implementation Roadmap](roadmap/knowledge_graph/kg_implementation_roadmap.md)
+- [KG-0 Formal KG Roadmap Approval](roadmap/knowledge_graph/kg_000_formal_kg_roadmap_approval.md)
+<!-- KG000_FORMAL_ROADMAP_APPROVAL:end -->

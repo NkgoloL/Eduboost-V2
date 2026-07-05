@@ -3000,3 +3000,11 @@ rr018-trustworthy-beta-quality-check:
 .PHONY: final-roadmap-reconciliation-closure-check
 final-roadmap-reconciliation-closure-check:
 	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_final_roadmap_reconciliation_closure.py --authority-only --json
+
+# KG-0 formal KG roadmap approval targets
+.PHONY: kg000-formal-kg-roadmap-approval-audit kg000-formal-kg-roadmap-approval-check
+kg000-formal-kg-roadmap-approval-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg000_formal_kg_roadmap_approval.py --json
+
+kg000-formal-kg-roadmap-approval-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg000_formal_kg_roadmap_approval.py --authority-only --json

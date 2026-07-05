@@ -95,3 +95,11 @@ RR-009 refreshes this index so current governance does not rely on a partial ADR
 ## Governance rule
 
 ADR changes must keep this index current and must cite the relevant RR item or roadmap source. Run `make rr009-governance-process-check` before merging governance/process changes.
+
+<!-- KG000_FORMAL_ROADMAP_APPROVAL:start -->
+## Knowledge Graph ADR
+
+| ADR | Title | Status |
+|---|---|---|
+| [ADR-030](ADR-030-knowledge-graph-learning-state-core.md) | Knowledge Graph Learning-State Core | proposed/approved by KG-0 authority |
+<!-- KG000_FORMAL_ROADMAP_APPROVAL:end -->
