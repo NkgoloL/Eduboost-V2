@@ -1,5 +1,5 @@
 ---
-title: "RR-016 Backup Drill Report Template"
+title: RR-016 Backup Drill Report Template
 status: active
 owner: operations
 reviewers: [operations, reliability, security, privacy]
@@ -7,10 +7,10 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-04
+last_reviewed: 2026-07-05
 review_interval_days: 60
-evidence_command: "PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr016_operational_drills.py --json"
-code_anchors: [docs/operations/drills]
+evidence_command: make rr016-operational-drills-check
+code_anchors: [docs/operations/drills, scripts/roadmap_reconciliation]
 ---
 
 # RR-016 Backup Drill Report Template

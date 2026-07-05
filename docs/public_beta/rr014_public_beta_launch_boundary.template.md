@@ -1,5 +1,5 @@
 ---
-title: "RR-014 Public Beta Launch Boundary Template"
+title: RR-014 Public Beta Launch Boundary Template
 status: active
 owner: product
 reviewers: [product, operations, privacy]
@@ -7,10 +7,10 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-03
+last_reviewed: 2026-07-05
 review_interval_days: 60
-evidence_command: "PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py --json"
-code_anchors: [docs/public_beta]
+evidence_command: make rr014-public-beta-expansion-check
+code_anchors: [docs/public_beta, docs/beta, scripts/roadmap_reconciliation]
 ---
 
 # RR-014 Public Beta Launch Boundary Template

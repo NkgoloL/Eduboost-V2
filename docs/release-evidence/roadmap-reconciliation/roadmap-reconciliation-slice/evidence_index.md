@@ -1,3 +1,18 @@
+---
+title: Roadmap Reconciliation Evidence Index
+status: evidence-record
+owner: evidence-custodian
+reviewers: [evidence-custodian, roadmap-reconciliation, release-management]
+audience: evidence-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-05
+review_interval_days: 45
+evidence_command: make docs-housekeeping-stage6-check
+code_anchors: [docs/release-evidence/roadmap-reconciliation, docs/roadmap/reconciliation]
+---
+
 # Roadmap Reconciliation Evidence Index
 
 Captured at: `2026-07-02T00:47:07Z`  

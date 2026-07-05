@@ -23,3 +23,4 @@ When editing `docs/architecture/`, `docs/product/`, `docs/api/`, `docs/complianc
 ## Stage 5 strict tranche
 
 When editing technical delivery or learning-engine documentation under `docs/frontend/`, `docs/backend/`, `docs/database/`, `docs/deployment/`, `docs/testing/`, `docs/observability/`, `docs/disaster_recovery/`, `docs/operations_support/`, `docs/runbooks/`, `docs/content_factory/`, `docs/caps/`, `docs/curriculum/`, `docs/diagnostics/`, `docs/irt/`, `docs/learning_science/`, or `docs/ai/`, run `make docs-housekeeping-stage5-check` in addition to the default housekeeping gate.
+- Stage 6 governs RR/reconciliation/evidence documents; run `make docs-housekeeping-stage6-check` after changing RR roadmap, release evidence index, billing, telemetry, public beta, approval, drill, release safety, or trustworthy beta quality documents.

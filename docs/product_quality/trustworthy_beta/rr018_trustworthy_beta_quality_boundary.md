@@ -1,11 +1,16 @@
 ---
-title: "RR-018 Trustworthy Beta Quality Boundary"
+title: RR-018 Trustworthy Beta Quality Boundary
 status: active
 owner: product-quality
+reviewers: [quality, curriculum, product]
 audience: developer
 source_of_truth: true
+supersedes: []
+superseded_by: null
 last_reviewed: 2026-07-05
 review_interval_days: 60
+evidence_command: make rr018-trustworthy-beta-quality-check
+code_anchors: [docs/product_quality/trustworthy_beta, scripts/roadmap_reconciliation]
 ---
 
 # RR-018 Trustworthy Beta Quality Boundary

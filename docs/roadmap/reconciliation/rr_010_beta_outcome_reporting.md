@@ -7,10 +7,10 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-02
+last_reviewed: 2026-07-05
 review_interval_days: 30
-evidence_command: make rr010-beta-outcome-check
-code_anchors: [docs/beta_outcomes, scripts/roadmap_reconciliation/verify_rr010_beta_outcome_reporting.py]
+evidence_command: make roadmap-reconciliation-check
+code_anchors: [docs/roadmap/reconciliation, scripts/roadmap_reconciliation]
 ---
 
 # RR-010 Beta Outcome Reporting

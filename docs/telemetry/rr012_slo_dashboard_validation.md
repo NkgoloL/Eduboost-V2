@@ -1,5 +1,5 @@
 ---
-title: "RR-012 SLO Dashboard Validation"
+title: RR-012 SLO Dashboard Validation
 status: active
 owner: operations
 reviewers: [operations, security, backend]
@@ -7,10 +7,10 @@ audience: operator
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-03
+last_reviewed: 2026-07-05
 review_interval_days: 30
-evidence_command: "PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py --json"
-code_anchors: [docs/telemetry, docs/observability, app/core/metrics.py]
+evidence_command: make rr012-production-telemetry-dashboard-check
+code_anchors: [docs/telemetry, scripts/roadmap_reconciliation]
 ---
 
 # RR-012 SLO Dashboard Validation

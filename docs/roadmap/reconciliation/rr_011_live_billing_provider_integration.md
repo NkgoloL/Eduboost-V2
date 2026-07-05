@@ -7,10 +7,10 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-03
+last_reviewed: 2026-07-05
 review_interval_days: 30
-evidence_command: make rr011-live-billing-provider-check
-code_anchors: [docs/billing, scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py]
+evidence_command: make roadmap-reconciliation-check
+code_anchors: [docs/roadmap/reconciliation, scripts/roadmap_reconciliation]
 ---
 
 # RR-011 Live Billing Provider Integration

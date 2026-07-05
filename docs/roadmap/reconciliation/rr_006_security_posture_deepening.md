@@ -1,3 +1,18 @@
+---
+title: RR-006 — Security Posture Deepening
+status: active-control
+owner: roadmap-reconciliation
+reviewers: [roadmap-reconciliation, release-management, documentation-governance]
+audience: roadmap-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-05
+review_interval_days: 30
+evidence_command: make roadmap-reconciliation-check
+code_anchors: [docs/roadmap/reconciliation, scripts/roadmap_reconciliation]
+---
+
 # RR-006 — Security Posture Deepening
 
 **Register item:** `RR-006 | P0 | Security posture deepening`  

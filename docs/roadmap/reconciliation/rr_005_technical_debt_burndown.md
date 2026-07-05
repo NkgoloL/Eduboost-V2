@@ -1,10 +1,16 @@
 ---
-title: "RR-005 Technical Debt Burn-Down"
+title: RR-005 Technical Debt Burn-Down
 status: authority
 owner: engineering
+reviewers: [roadmap-reconciliation, release-management, documentation-governance]
 audience: developer
 source_of_truth: true
-evidence_command: "PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr005_technical_debt_burndown.py --json"
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-05
+review_interval_days: 30
+evidence_command: make roadmap-reconciliation-check
+code_anchors: [docs/roadmap/reconciliation, scripts/roadmap_reconciliation]
 ---
 
 # RR-005 Technical Debt Burn-Down

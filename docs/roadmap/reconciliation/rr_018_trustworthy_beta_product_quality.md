@@ -1,13 +1,17 @@
 ---
-title: "RR-018 Trustworthy Beta Product Quality"
+title: RR-018 Trustworthy Beta Product Quality
 status: active
 owner: product-quality
+reviewers: [roadmap-reconciliation, release-management, documentation-governance]
 audience: developer
 source_of_truth: false
+supersedes: []
+superseded_by: null
 last_reviewed: 2026-07-05
 review_interval_days: 60
+evidence_command: make roadmap-reconciliation-check
+code_anchors: [docs/roadmap/reconciliation, scripts/roadmap_reconciliation]
 ---
-
 
 # RR-018 Trustworthy Beta Product Quality
 

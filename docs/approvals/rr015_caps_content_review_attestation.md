@@ -1,5 +1,5 @@
 ---
-title: "RR-015 CAPS Content Review Attestation"
+title: RR-015 CAPS Content Review Attestation
 status: active
 owner: curriculum
 reviewers: [curriculum, product, support]
@@ -7,10 +7,10 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-04
+last_reviewed: 2026-07-05
 review_interval_days: 60
-evidence_command: "PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr015_external_approvals.py --json"
-code_anchors: [docs/approvals]
+evidence_command: make rr015-external-approvals-check
+code_anchors: [docs/approvals, scripts/roadmap_reconciliation]
 ---
 
 # RR-015 CAPS Content Review Attestation
