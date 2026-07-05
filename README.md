@@ -210,3 +210,17 @@ The editable inputs for those lockfiles are:
 
 Use `mkdocs serve` or `docker compose up --build` to browse the generated docs
 site locally.
+
+<!-- KG000_FORMAL_ROADMAP_APPROVAL:start -->
+## Knowledge Graph Roadmap
+
+EduBoost's post-RR roadmap introduces the Knowledge Graph learning-state stream as a newly approved roadmap, starting with `KG-0 — Formal KG roadmap approval`.
+
+Key references:
+
+- [ADR-030 Knowledge Graph Learning-State Core](docs/adr/ADR-030-knowledge-graph-learning-state-core.md)
+- [KG Implementation Roadmap](docs/roadmap/knowledge_graph/kg_implementation_roadmap.md)
+- [KG Roadmap Register](docs/roadmap/knowledge_graph/kg_roadmap_register.json)
+
+Boundary: KG-0 does not implement runtime KG behavior or authorise production release, deployment, public beta, billing launch, or a runtime KG authority switch.
+<!-- KG000_FORMAL_ROADMAP_APPROVAL:end -->
