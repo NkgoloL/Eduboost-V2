@@ -1,0 +1,149 @@
+{
+  "carried_caveats": {
+    "rr003_fallback_coverage_caveat_visible": true,
+    "rr006_non_required_checks_caveat_visible": true,
+    "rr016_clean_git_state_caveat_visible": true
+  },
+  "closure_boundaries": {
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_payment_processing_authorised": false,
+    "new_rr_items_introduced": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_implementation_claimed": false
+  },
+  "items": [
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_001_atlas_phase_status_record.json",
+      "required_completion_flag": "atlas_phase_register_reconciled",
+      "rr_id": "RR-001",
+      "title": "Roadmap/status reconciliation"
+    },
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_002_privacy_popia_completion_record.json",
+      "required_completion_flag": "privacy_popia_completion_recorded",
+      "rr_id": "RR-002",
+      "title": "Privacy / POPIA completion"
+    },
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_003_coverage_ci_route_authority_record.json",
+      "required_completion_flag": "coverage_ci_route_authority_recorded",
+      "rr_id": "RR-003",
+      "title": "Coverage / CI / route authority"
+    },
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_004_workspace_hygiene_record.json",
+      "required_completion_flag": "workspace_hygiene_recorded",
+      "rr_id": "RR-004",
+      "title": "Workspace hygiene"
+    },
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_005_technical_debt_burndown_record.json",
+      "required_completion_flag": "technical_debt_burndown_recorded",
+      "rr_id": "RR-005",
+      "title": "Technical debt burn-down"
+    },
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_006_security_posture_deepening_record.json",
+      "required_completion_flag": "security_posture_deepening_recorded",
+      "rr_id": "RR-006",
+      "title": "Security posture deepening"
+    },
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_007_product_quality_gates_record.json",
+      "required_completion_flag": "product_quality_gates_recorded",
+      "rr_id": "RR-007",
+      "title": "Product completeness / quality gates"
+    },
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_008_operational_readiness_record.json",
+      "required_completion_flag": "operational_readiness_recorded",
+      "rr_id": "RR-008",
+      "title": "Operational readiness"
+    },
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_009_governance_process_reconciliation_record.json",
+      "required_completion_flag": "governance_process_reconciliation_recorded",
+      "rr_id": "RR-009",
+      "title": "Governance / process reconciliation"
+    },
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_010_beta_outcome_reporting_record.json",
+      "required_completion_flag": "beta_outcome_reporting_recorded",
+      "rr_id": "RR-010",
+      "title": "Beta outcome reporting"
+    },
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_011_live_billing_provider_integration_record.json",
+      "required_completion_flag": "live_billing_provider_integration_recorded",
+      "rr_id": "RR-011",
+      "title": "Live billing provider integration"
+    },
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_012_production_telemetry_dashboard_record.json",
+      "required_completion_flag": "production_telemetry_dashboard_recorded",
+      "rr_id": "RR-012",
+      "title": "Production telemetry dashboard implementation"
+    },
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_013_advanced_mastery_model_research_record.json",
+      "required_completion_flag": "advanced_mastery_model_research_recorded",
+      "rr_id": "RR-013",
+      "title": "Advanced mastery-model research"
+    },
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_014_public_beta_expansion_record.json",
+      "required_completion_flag": "public_beta_expansion_readiness_recorded",
+      "rr_id": "RR-014",
+      "title": "Public beta expansion"
+    },
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_015_external_approvals_record.json",
+      "required_completion_flag": "external_approvals_recorded",
+      "rr_id": "RR-015",
+      "title": "External approvals"
+    },
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_016_operational_drills_record.json",
+      "required_completion_flag": "operational_drills_recorded",
+      "rr_id": "RR-016",
+      "title": "Operational drills"
+    },
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_017_release_safety_controls_record.json",
+      "required_completion_flag": "release_safety_controls_recorded",
+      "rr_id": "RR-017",
+      "title": "Release safety controls"
+    },
+    {
+      "expected_state": "addressed",
+      "record_path": "docs/roadmap/reconciliation/rr_018_trustworthy_beta_product_quality_record.json",
+      "required_completion_flag": "trustworthy_beta_product_quality_recorded",
+      "rr_id": "RR-018",
+      "title": "Trustworthy beta product quality"
+    }
+  ],
+  "register_scope": "RR-001 through RR-018",
+  "rr_count": 18,
+  "status": "final_closure_authority_pending_evidence"
+}
