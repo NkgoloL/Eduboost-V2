@@ -1,0 +1,22 @@
+name: Final Roadmap Reconciliation Closure
+
+on:
+  pull_request:
+    paths:
+      - "docs/roadmap/reconciliation/**"
+      - "docs/release-evidence/roadmap-reconciliation/final-roadmap-reconciliation-closure/**"
+      - "scripts/roadmap_reconciliation/*final_roadmap_reconciliation_closure*.py"
+      - "tests/unit/roadmap_reconciliation/test_final_roadmap_reconciliation_closure.py"
+      - ".github/workflows/final-roadmap-reconciliation-closure.yml"
+
+jobs:
+  verify-final-roadmap-closure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify final roadmap closure authority
+        run: |
+          PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_final_roadmap_reconciliation_closure.py --authority-only --json

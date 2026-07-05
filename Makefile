@@ -2996,3 +2996,7 @@ rr018-trustworthy-beta-quality-audit:
 
 rr018-trustworthy-beta-quality-check:
 	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_rr018_trustworthy_beta_quality.py --authority-only --json
+
+.PHONY: final-roadmap-reconciliation-closure-check
+final-roadmap-reconciliation-closure-check:
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_final_roadmap_reconciliation_closure.py --authority-only --json
