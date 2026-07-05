@@ -1,0 +1,32 @@
+name: RR-018 Trustworthy Beta Product Quality
+
+on:
+  pull_request:
+    paths:
+      - 'app/frontend/src/components/eduboost/TrustworthyBetaQualityPanel.tsx'
+      - 'app/domain/trustworthy_beta_quality.py'
+      - 'app/services/trustworthy_beta_quality.py'
+      - 'scripts/product_quality/audit_rr018_trustworthy_beta_quality.py'
+      - 'scripts/roadmap_reconciliation/*rr018*'
+      - 'docs/product_quality/rr018*'
+      - 'docs/roadmap/reconciliation/rr_018*'
+      - 'tests/unit/roadmap_reconciliation/test_rr018_trustworthy_beta_quality.py'
+  workflow_dispatch:
+
+jobs:
+  rr018-trustworthy-beta-product-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify RR-018 authority
+        run: |
+          python3 -m py_compile \
+            app/domain/trustworthy_beta_quality.py \
+            app/services/trustworthy_beta_quality.py \
+            scripts/product_quality/audit_rr018_trustworthy_beta_quality.py \
+            scripts/roadmap_reconciliation/capture_rr018_trustworthy_beta_quality_evidence.py \
+            scripts/roadmap_reconciliation/verify_rr018_trustworthy_beta_quality.py
+          PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr018_trustworthy_beta_quality.py --authority-only --json

@@ -2989,3 +2989,10 @@ rr017-release-safety-controls-audit:
 .PHONY: rr017-release-safety-controls-check
 rr017-release-safety-controls-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr017_release_safety_controls.py --authority-only --json
+
+.PHONY: rr018-trustworthy-beta-quality-audit rr018-trustworthy-beta-quality-check
+rr018-trustworthy-beta-quality-audit:
+	$(PYTHON) scripts/product_quality/audit_rr018_trustworthy_beta_quality.py --json
+
+rr018-trustworthy-beta-quality-check:
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_rr018_trustworthy_beta_quality.py --authority-only --json
