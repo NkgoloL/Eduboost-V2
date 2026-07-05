@@ -1,0 +1,18 @@
+{
+  "kg_id": "KG-1",
+  "maker_checker_note": "KG-1 projects already reviewed CAPS topic-map data into a deterministic graph artifact; it does not approve learner-facing runtime graph authority.",
+  "required_checks": [
+    "source checksum recorded",
+    "all nodes source-grounded",
+    "all edges source-grounded",
+    "no duplicate node keys",
+    "no orphan edges"
+  ],
+  "review_status": "approved_source_projection",
+  "runtime_authority": "read_model_only",
+  "scope": {
+    "curriculum": "CAPS",
+    "grade": 4,
+    "subject": "mathematics"
+  }
+}

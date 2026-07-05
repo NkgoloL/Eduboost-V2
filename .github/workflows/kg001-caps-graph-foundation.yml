@@ -1,0 +1,31 @@
+name: KG-1 CAPS Graph Foundation
+
+on:
+  pull_request:
+    paths:
+      - "app/domain/knowledge_graph_caps.py"
+      - "scripts/knowledge_graph/**"
+      - "scripts/roadmap_reconciliation/*kg001*"
+      - "docs/knowledge_graph/caps_graph/**"
+      - "docs/roadmap/knowledge_graph/**"
+      - "tests/unit/roadmap_reconciliation/test_kg001_caps_graph_foundation.py"
+      - ".github/workflows/kg001-caps-graph-foundation.yml"
+  workflow_dispatch:
+
+jobs:
+  kg001:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify KG-1 authority
+        run: |
+          python -m py_compile \
+            app/domain/knowledge_graph_caps.py \
+            scripts/knowledge_graph/build_kg001_caps_graph_foundation.py \
+            scripts/knowledge_graph/audit_kg001_caps_graph_foundation.py \
+            scripts/roadmap_reconciliation/capture_kg001_caps_graph_foundation_evidence.py \
+            scripts/roadmap_reconciliation/verify_kg001_caps_graph_foundation.py
+          PYTHONPATH=. python scripts/roadmap_reconciliation/verify_kg001_caps_graph_foundation.py --authority-only --json

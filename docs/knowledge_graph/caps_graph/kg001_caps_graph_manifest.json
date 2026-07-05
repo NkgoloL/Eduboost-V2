@@ -1,0 +1,41 @@
+{
+  "boundary": {
+    "database_schema_migration_authorised": false,
+    "deployment_authorised": false,
+    "learner_facing_model_change_authorised": false,
+    "learner_graph_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_authority_switch_authorised": false,
+    "runtime_kg_implementation_claimed": false
+  },
+  "edge_types": [
+    "contains",
+    "assesses",
+    "has_misconception",
+    "prerequisite_of"
+  ],
+  "graph_artifact": "data/knowledge_graph/caps_graph_foundation/grade4_mathematics_caps_graph.json",
+  "kg_id": "KG-1",
+  "node_types": [
+    "curriculum",
+    "grade",
+    "subject",
+    "term",
+    "topic",
+    "subtopic",
+    "assessment_statement",
+    "misconception"
+  ],
+  "runtime_authority": "read_model_only",
+  "scope": {
+    "curriculum": "CAPS",
+    "grade": 4,
+    "language": "en",
+    "subject": "mathematics"
+  },
+  "source_topic_map": "data/caps/topic_maps/caps_topic_map_grade4_maths.json",
+  "summary_artifact": "data/knowledge_graph/caps_graph_foundation/grade4_mathematics_caps_graph_summary.json",
+  "title": "CAPS graph foundation"
+}
