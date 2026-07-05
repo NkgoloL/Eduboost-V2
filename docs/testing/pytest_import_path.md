@@ -1,16 +1,16 @@
 ---
 title: "Pytest Import Path Policy"
-status: active
-owner: quality
-reviewers: [quality, engineering, release-management]
-audience: quality-reviewer
+status: "active"
+owner: "quality"
+reviewers: ["quality", "engineering", "release-management"]
+audience: "quality-reviewer"
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-24
+last_reviewed: "2026-06-24"
 review_interval_days: 60
 evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: [tests, pytest.ini, Makefile]
+code_anchors: "[tests, pytest.ini, Makefile]"
 ---
 
 # Pytest Import Path Policy

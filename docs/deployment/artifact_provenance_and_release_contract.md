@@ -1,16 +1,16 @@
 ---
 title: "Artifact Provenance and Release Contract"
-status: active
-owner: release-management
-reviewers: [release-management, operations, security]
-audience: operator
+status: "active"
+owner: "release-management"
+reviewers: ["release-management", "operations", "security"]
+audience: "operator"
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-24
+last_reviewed: "2026-06-24"
 review_interval_days: 60
 evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: [Dockerfile, docker-compose.yml, docker-compose.prod.yml, .github/workflows]
+code_anchors: "[Dockerfile, docker-compose.yml, docker-compose.prod.yml, .github/workflows]"
 ---
 
 # Artifact Provenance and Release Contract

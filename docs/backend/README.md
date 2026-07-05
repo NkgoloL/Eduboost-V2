@@ -1,16 +1,16 @@
 ---
 title: "Backend"
-status: active
-owner: backend
-reviewers: [backend, architecture, security]
-audience: developer
+status: "active"
+owner: "backend"
+reviewers: ["backend", "architecture", "security"]
+audience: "developer"
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-24
+last_reviewed: "2026-06-24"
 review_interval_days: 60
 evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: [app/api_v2.py, app/api_v2_routers, docs/backend/README.md]
+code_anchors: "[app/api_v2.py, app/api_v2_routers, docs/backend/README.md]"
 ---
 
 # Backend
