@@ -1,0 +1,27 @@
+{
+  "artifact": "data/knowledge_graph/target_graph/grade4_mathematics_target_graph.json",
+  "boundary": {
+    "database_schema_migration_authorised": false,
+    "deployment_authorised": false,
+    "learner_facing_model_change_authorised": false,
+    "learner_graph_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_authority_switch_authorised": false,
+    "runtime_kg_implementation_claimed": false,
+    "target_graph_runtime_authority_authorised": false
+  },
+  "kg_id": "KG-2",
+  "runtime_authority": "target_graph_read_model_only",
+  "scope": {
+    "grade": 4,
+    "subject": "mathematics"
+  },
+  "source_artifact": "data/knowledge_graph/caps_graph_foundation/grade4_mathematics_caps_graph.json",
+  "target_types": [
+    "topic",
+    "subtopic",
+    "assessment_statement"
+  ]
+}

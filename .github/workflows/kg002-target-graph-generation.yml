@@ -1,0 +1,24 @@
+name: KG-2 Target Graph Generation
+
+on:
+  pull_request:
+    paths:
+      - "app/domain/knowledge_graph_target.py"
+      - "scripts/knowledge_graph/**"
+      - "scripts/roadmap_reconciliation/*kg002*"
+      - "docs/knowledge_graph/target_graph/**"
+      - "docs/roadmap/knowledge_graph/kg_002*"
+      - "tests/unit/roadmap_reconciliation/test_kg002_target_graph_generation.py"
+      - ".github/workflows/kg002-target-graph-generation.yml"
+  workflow_dispatch:
+
+jobs:
+  verify-kg002:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify KG-2 authority
+        run: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg002_target_graph_generation.py --authority-only --json
