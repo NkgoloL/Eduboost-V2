@@ -2796,25 +2796,6 @@
     {
       "audience": "developer",
       "broken_local_links": 0,
-      "byte_count": 8186,
-      "content_kind": "markdown",
-      "h1": "ADR-030: Knowledge Graph Learning-State Core",
-      "has_front_matter": true,
-      "last_reviewed": "2026-07-05",
-      "lfs_sha256": "",
-      "lfs_size": 0,
-      "line_count": 153,
-      "owner": "architecture",
-      "path": "docs/adr/ADR-030-knowledge-graph-learning-state-core.md",
-      "review_interval_days": "60",
-      "risky_terms": "Neo4j",
-      "source_of_truth": false,
-      "status": "active",
-      "title": "ADR-030 Knowledge Graph Learning-State Core"
-    },
-    {
-      "audience": "developer",
-      "broken_local_links": 0,
       "byte_count": 1821,
       "content_kind": "markdown",
       "h1": "ADR-031 \u2014 Durable AI Operations and Budget Authority",
@@ -2906,6 +2887,25 @@
       "source_of_truth": false,
       "status": "proposed",
       "title": "ADR-035 \u2014 Supabase versus Raw Postgres Product Quality Gate"
+    },
+    {
+      "audience": "developer",
+      "broken_local_links": 0,
+      "byte_count": 8229,
+      "content_kind": "markdown",
+      "h1": "ADR-036: Knowledge Graph Learning-State Core",
+      "has_front_matter": true,
+      "last_reviewed": "2026-07-05",
+      "lfs_sha256": "",
+      "lfs_size": 0,
+      "line_count": 153,
+      "owner": "architecture",
+      "path": "docs/adr/ADR-036-knowledge-graph-learning-state-core.md",
+      "review_interval_days": "60",
+      "risky_terms": "",
+      "source_of_truth": false,
+      "status": "active",
+      "title": "ADR-036 Knowledge Graph Learning-State Core"
     },
     {
       "audience": "developer",
@@ -4316,7 +4316,7 @@
     {
       "audience": "developer",
       "broken_local_links": 0,
-      "byte_count": 6360,
+      "byte_count": 6381,
       "content_kind": "markdown",
       "h1": "Knowledge Graph Learning-State Architecture",
       "has_front_matter": true,
@@ -4327,7 +4327,7 @@
       "owner": "architecture",
       "path": "docs/architecture/knowledge_graph_learning_state_architecture.md",
       "review_interval_days": "60",
-      "risky_terms": "Neo4j",
+      "risky_terms": "",
       "source_of_truth": false,
       "status": "active",
       "title": "Knowledge Graph Learning-State Architecture"
@@ -35771,20 +35771,8 @@
       "type": "risky_or_stale_terms"
     },
     {
-      "detail": "Neo4j",
-      "path": "docs/adr/ADR-030-knowledge-graph-learning-state-core.md",
-      "severity": "high",
-      "type": "risky_or_stale_terms"
-    },
-    {
       "detail": "production-ready",
       "path": "docs/architecture/CORE_TECHNICAL_AUDIT_2026-05-17.md",
-      "severity": "high",
-      "type": "risky_or_stale_terms"
-    },
-    {
-      "detail": "Neo4j",
-      "path": "docs/architecture/knowledge_graph_learning_state_architecture.md",
       "severity": "high",
       "type": "risky_or_stale_terms"
     },
@@ -42790,13 +42778,13 @@
     "files_with_metadata": 635,
     "files_with_owner": 603,
     "files_with_source_of_truth": 97,
-    "finding_count": 1177,
+    "finding_count": 1175,
     "finding_counts_by_type": {
       "broken_local_links": 7,
       "duplicate_title": 96,
       "missing_metadata": 972,
       "oversized_document": 43,
-      "risky_or_stale_terms": 59
+      "risky_or_stale_terms": 57
     },
     "inventory_mode": "deterministic-lfs-aware",
     "lfs_tracked_markdown_files": 1,
