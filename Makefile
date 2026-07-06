@@ -41,7 +41,7 @@ help:
 dev:
 	docker-compose up
 
-PYTEST ?= .venv/bin/python -m pytest
+PYTEST ?= $(PYTHON) -m pytest
 COVERAGE_THRESHOLD ?= 67
 PR_TEST_MARKERS := not governance and not slow and not llm and not e2e
 
@@ -57,11 +57,11 @@ test-integration:
 
 test-coverage:
 	# Use coverage CLI to avoid pytest-cov sqlite context corruption on this runner
-	.venv/bin/coverage run -m pytest -c pytest-coverage.ini tests/unit tests/integration \
+	$(PYTHON) -m coverage run -m pytest -c pytest-coverage.ini tests/unit tests/integration \
 		-m "$(PR_TEST_MARKERS)" -q || true
-	.venv/bin/coverage html -d coverage_html || true
-	.venv/bin/coverage xml -o coverage.xml || true
-	.venv/bin/coverage report --fail-under=$(COVERAGE_THRESHOLD)
+	$(PYTHON) -m coverage html -d coverage_html || true
+	$(PYTHON) -m coverage xml -o coverage.xml || true
+	$(PYTHON) -m coverage report --fail-under=$(COVERAGE_THRESHOLD)
 
 test-coverage-full:
 	$(PYTEST) -c pytest-coverage.ini tests/ --cov-fail-under=0 -q

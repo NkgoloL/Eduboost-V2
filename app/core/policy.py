@@ -89,3 +89,18 @@ class JudiciaryService:
         # This is a bit brittle, but good for a baseline.
         if "calculate" in payload.practice_question.lower() and not any(c.isdigit() for c in payload.answer):
              log.warning("judiciary_potential_hallucination", reason="Calculation requested but answer has no digits")
+
+
+# Backward-compatible names kept for older tests and import sites.
+PolicyViolation = ConstitutionalViolation
+PolicyService = JudiciaryService
+
+__all__ = [
+    "PolicyViolation",
+    "PolicyService",
+    "LessonPayload",
+    "StudyPlanPayload",
+    "DiagnosticFeedbackPayload",
+    "ConstitutionalViolation",
+    "JudiciaryService",
+]

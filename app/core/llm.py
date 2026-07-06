@@ -565,6 +565,9 @@ class ExecutiveService:
         return response.choices[0].message.content or "Progress data is being processed."
 
 
+# Backward-compatible name kept for older tests and import sites.
+LessonGenerator = ExecutiveService
+
 
 def _is_test_provider_override(callable_obj: Any) -> bool:
     """Allow tests to monkeypatch provider calls without dev offline fallback short-circuiting them."""
