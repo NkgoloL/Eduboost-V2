@@ -1,3 +1,18 @@
+---
+title: EduBoost V2 Test Infrastructure
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # EduBoost V2 Test Infrastructure
 
 Multi-layered test suite covering unit tests (540+), integration tests (50+), E2E tests (16), and CI gates with pytest configuration, database fixtures, and Playwright setup. Key entry points: pytest configuration [1a], database setup [1c], integration test execution [2c], API security testing [4b], and E2E browser automation [5c].

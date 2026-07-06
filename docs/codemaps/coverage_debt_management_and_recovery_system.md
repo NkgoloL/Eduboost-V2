@@ -1,3 +1,18 @@
+---
+title: Coverage Debt Management and Recovery System
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # Coverage Debt Management and Recovery System
 
 Maps the coverage debt management system from configuration through measurement, tracking, risk classification, and recovery planning. Key configuration at [1a], timeout fix at [1b], CI enforcement at [2b], baseline measurement at [3b], module risk classification at [4b-4d], and recovery sprint plan at [5b-5d].

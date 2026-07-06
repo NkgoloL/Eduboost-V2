@@ -1,3 +1,18 @@
+---
+title: "EduBoost V2 Core Infrastructure: Runtime Primitives & Cross-Cutting Concerns"
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # EduBoost V2 Core Infrastructure: Runtime Primitives & Cross-Cutting Concerns
 
 Maps the foundational layer of EduBoost V2, covering application bootstrap, authentication/authorization, LLM orchestration, health monitoring, POPIA consent enforcement, and error handling. Key entry points: app startup [1b], JWT validation [3c], authorization checks [4c], LLM generation [5d], and consent gates [7c].

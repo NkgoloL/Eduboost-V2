@@ -1,3 +1,18 @@
+---
+title: "EduBoost Frontend: Next.js Learner Platform with Auth, AI Lessons, Diagnostics & POPIA Compliance"
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # EduBoost Frontend: Next.js Learner Platform with Auth, AI Lessons, Diagnostics & POPIA Compliance
 
 A Next.js 15 TypeScript frontend featuring authentication flows, AI-generated lesson delivery, adaptive diagnostics with IRT scoring, gamification, parent dashboards with POPIA data rights, offline sync capabilities, and admin content factory tooling. Key entry points: login flow [1b], lesson generation [2c], diagnostic submission [3d], offline sync [5b], and parent data export [6c].

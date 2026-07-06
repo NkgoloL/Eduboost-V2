@@ -1,3 +1,18 @@
+---
+title: EduBoost V2 North Star TODO - 2026-05-22
+status: release-record
+owner: release-management
+reviewers: [release-management, evidence-custodian, documentation-governance]
+audience: release-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 180
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/release, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # EduBoost V2 North Star TODO - 2026-05-22
 
 Audit snapshot for branch `codex/production_readiness` at commit `db14a6821eb14de532434360265a7370119b04ac`.

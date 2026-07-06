@@ -1,5 +1,5 @@
 ---
-title: Documentation Archive Index
+title: Documentation Archive
 status: active
 owner: documentation-governance
 reviewers: [release-management]
@@ -7,10 +7,10 @@ audience: reviewer
 source_of_truth: false
 supersedes: []
 superseded_by: docs/README.md
-last_reviewed: 2026-06-22
+last_reviewed: 2026-07-06
 review_interval_days: 180
-evidence_command: make docs-housekeeping-check
-code_anchors: [docs/documentation/migration_manifests]
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/archive, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
 ---
 
 # Documentation Archive

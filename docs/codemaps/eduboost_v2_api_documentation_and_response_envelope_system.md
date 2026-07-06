@@ -1,3 +1,18 @@
+---
+title: EduBoost V2 API Documentation and Response Envelope System
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # EduBoost V2 API Documentation and Response Envelope System
 
 This map covers the API documentation generation pipeline (Sphinx and MkDocs), OpenAPI schema generation and validation, and the V2 response envelope system that wraps all API responses in a canonical structure. Key entry points include the Sphinx build command [1a], OpenAPI generation script [3b], and the envelope route wrapper [4c].

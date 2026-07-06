@@ -1,3 +1,18 @@
+---
+title: "Alembic Migration and DDL Management: Startup DDL Repairs, Migration Integrity, and Alembic Workflow"
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # Alembic Migration and DDL Management: Startup DDL Repairs, Migration Integrity, and Alembic Workflow
 
 This map covers EduBoost V2's database schema management through Alembic migrations and transitional startup DDL repairs. The system maintains a single-head linear migration graph with CI enforcement, runtime health checks, and a documented path to eliminate startup DDL in favor of pure Alembic ownership. Key entry points: startup DDL execution [1b], Alembic migration runner [2d], CI integrity gate [3b], and health check verification [4b].

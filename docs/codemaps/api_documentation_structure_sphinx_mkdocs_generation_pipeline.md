@@ -1,3 +1,18 @@
+---
+title: "API Documentation Structure: Sphinx & MkDocs Generation Pipeline"
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # API Documentation Structure: Sphinx & MkDocs Generation Pipeline
 
 EduBoost V2 uses two parallel documentation systems: Sphinx generates comprehensive HTML API reference from Python docstrings, while MkDocs builds a Material-themed operational docs site. Key entry points include Sphinx configuration [1a], MkDocs configuration [2a], the documentation inventory scanner [4a], and the CI build workflow [5a].

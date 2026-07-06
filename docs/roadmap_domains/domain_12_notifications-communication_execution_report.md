@@ -1,3 +1,18 @@
+---
+title: Domain 12 Notifications Communication Execution Report
+status: historical-record
+owner: roadmap-governance
+reviewers: [roadmap-governance, domain-owner, documentation-governance]
+audience: roadmap-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/roadmap_domains, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
     # Domain 12: Notifications & Communication execution report
 
     Source roadmap: `temp/md/05_notifications_communication_roadmap.md`  

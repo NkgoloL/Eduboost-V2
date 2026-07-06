@@ -1,3 +1,18 @@
+---
+title: "Content Factory Full Generation System: Overnight Batch Pipeline"
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # Content Factory Full Generation System: Overnight Batch Pipeline
 
 End-to-end overnight batch generation pipeline that orchestrates content creation from planning through review submission. The system starts with gap analysis [1b], creates generation tasks [2d], executes them via providers [3c], validates artifacts [5b], verifies staging readiness [6c], seeds to staging [7c], and produces comprehensive reports [8b]. Human review gates prevent automatic approval [5e].

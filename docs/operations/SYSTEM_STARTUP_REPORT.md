@@ -1,3 +1,18 @@
+---
+title: EduBoost V2 End-to-End System - Startup Report
+status: historical-record
+owner: operations
+reviewers: [operations, security, release-management]
+audience: operator
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/operations, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # EduBoost V2 End-to-End System - Startup Report
 
 **Generated:** 2026-06-05 20:30 UTC  
@@ -361,11 +376,11 @@ psql -h 127.0.0.1 -p 54322 -U postgres
 
 ## References
 
-- **Architecture**: [docs/architecture.md](docs/architecture.md)
+- **Architecture**: [docs/architecture.md](../architecture.md)
 - **CAPS Plan**: [../caps/caps_source_acquisition_plan_v2.md](../caps/caps_source_acquisition_plan_v2.md)
-- **Data Generator**: [../todos/data_generator_todo.md](../todos/data_generator_todo.md)
+- **Data Generator**: [../todos/data_generator_todo.md](../todos/README.md)
 - **Roadmap**: [../roadmap/roadmap.md](../roadmap/roadmap.md)
-- **TODO**: [../todos/todo.md](../todos/todo.md)
+- **TODO**: [../todos/todo.md](../todos/README.md)
 - **Startup Guide**: [SYSTEM_STARTUP_GUIDE.md](SYSTEM_STARTUP_GUIDE.md)
 
 ---

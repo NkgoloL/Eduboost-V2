@@ -1,5 +1,5 @@
 ---
-title: Current Release Documentation Index
+title: Current Release Documentation
 status: active
 owner: release-management
 reviewers: [engineering, privacy, security, operations]
@@ -7,10 +7,10 @@ audience: reviewer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-02
+last_reviewed: 2026-07-06
 review_interval_days: 14
-evidence_command: make rr009-governance-process-check
-code_anchors: [docs/release, docs/release-evidence]
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/release, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
 ---
 
 # Current Release Documentation

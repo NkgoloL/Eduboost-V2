@@ -1,3 +1,18 @@
+---
+title: EduBoost V2 Unit Test Suite Architecture and Key Test Patterns
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # EduBoost V2 Unit Test Suite Architecture and Key Test Patterns
 
 Maps the comprehensive unit test infrastructure covering 543+ test files organized into pytest configuration [1a], repository contract validation [2b-2d], service layer business logic [3c-3e], API security boundaries [4b-4d], POPIA compliance verification [5c-5f], content factory authorization [6b-6d], and release evidence gates [7c-7e].

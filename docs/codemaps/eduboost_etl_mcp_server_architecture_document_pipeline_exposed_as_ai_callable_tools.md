@@ -1,3 +1,18 @@
+---
+title: "Eduboost ETL MCP Server Architecture: Document Pipeline Exposed as AI-Callable Tools"
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # Eduboost ETL MCP Server Architecture: Document Pipeline Exposed as AI-Callable Tools
 
 This codemap covers the Eduboost ETL MCP server architecture, which exposes a 13-phase document processing pipeline (ingestion, extraction, normalization, chunking, quality validation, search, training data generation) as 20+ AI-callable tools via the Model Context Protocol. The system has three layers: MCP server wrappers (tools/etl/), core ETL pipeline (app/services/etl/), and FastAPI integration (app/api_v2_routers/). Key entry points: server startup [1c], document ingestion [2c], full pipeline execution [3b], training data generation [4b], full-text search [5b], and bulk operations [7c].

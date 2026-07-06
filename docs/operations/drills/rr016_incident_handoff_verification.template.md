@@ -7,10 +7,10 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-05
+last_reviewed: 2026-07-06
 review_interval_days: 60
-evidence_command: make rr016-operational-drills-check
-code_anchors: [docs/operations/drills, scripts/roadmap_reconciliation]
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/operations, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
 ---
 
 # RR-016 Incident Handoff Verification Template

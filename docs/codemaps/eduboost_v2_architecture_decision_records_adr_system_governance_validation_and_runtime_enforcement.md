@@ -1,3 +1,18 @@
+---
+title: "EduBoost V2 Architecture Decision Records (ADR) System: Governance, Validation, and Runtime Enforcement"
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # EduBoost V2 Architecture Decision Records (ADR) System: Governance, Validation, and Runtime Enforcement
 
 Maps the ADR documentation governance system from definition through validation to runtime enforcement. The system defines 28 ADRs covering architecture (modular monolith), privacy (POPIA-first), runtime (Python 3.12.3), deployment, and production readiness across 11 operational domains. Key enforcement points include ADR validation contracts [1b], Python version enforcement [3a→3d], import boundary checks [4b], and CI-driven production readiness verification [8c].

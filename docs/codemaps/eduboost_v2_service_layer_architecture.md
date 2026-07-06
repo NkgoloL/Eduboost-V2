@@ -1,3 +1,18 @@
+---
+title: EduBoost V2 Service Layer Architecture
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # EduBoost V2 Service Layer Architecture
 
 Service layer implementing business logic across authentication, content generation, diagnostic assessments, POPIA compliance, and LLM orchestration. Key entry points include user login [1b], content artifact creation [2c], diagnostic session initialization [3b], and data export requests [4b].

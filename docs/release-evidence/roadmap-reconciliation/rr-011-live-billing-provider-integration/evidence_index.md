@@ -7,10 +7,10 @@ audience: evidence-reviewer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-05
+last_reviewed: 2026-07-06
 review_interval_days: 45
-evidence_command: make docs-housekeeping-stage6-check
-code_anchors: [docs/release-evidence/roadmap-reconciliation, docs/roadmap/reconciliation]
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/release-evidence, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
 ---
 
 # RR-011 Live Billing Provider Integration Evidence

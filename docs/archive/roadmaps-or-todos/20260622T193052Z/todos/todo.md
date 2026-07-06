@@ -1,3 +1,18 @@
+---
+title: EduBoost V2 -- North Star TODO
+status: archived-record
+owner: documentation-governance
+reviewers: [documentation-governance, evidence-custodian, release-management]
+audience: evidence-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 180
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/archive, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # EduBoost V2 -- North Star TODO
 
 **Purpose:** Execution-focused North Star for the next phase. This reflects the current green local backend unit baseline and separates repository-side completion from CI, runtime, external, legal, security, product, and beta-launch evidence.

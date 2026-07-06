@@ -1,3 +1,18 @@
+---
+title: RouteGuard Authentication Flow & Testing
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # RouteGuard Authentication Flow & Testing
 
 Frontend route protection system using dual-layer authentication: middleware cookie validation for initial request interception, and client-side RouteGuard component for role-based access control distinguishing learner routes (LearnerContext state) from guardian routes (session endpoint validation). Key entry points: [1a] parent route guard, [2a] learner route guard, [6a] test suite setup.

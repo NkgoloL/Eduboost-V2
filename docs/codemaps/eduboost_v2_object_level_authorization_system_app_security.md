@@ -1,3 +1,18 @@
+---
+title: EduBoost V2 Object-Level Authorization System (app/security/*)
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # EduBoost V2 Object-Level Authorization System (app/security/*)
 
 The app/security/ module implements a centralized object-level authorization policy engine with role-based access control for learner-scoped resources. The system uses an Actor-based model with ownership scopes (self, guardian, educator, support, admin, system) and canonical permissions (read, write, delete, admin). FastAPI dependency adapters bridge HTTP headers and JWT claims to the policy engine, which routes integrate alongside POPIA consent enforcement for two-layer security. Key flows: core policy evaluation [1c], header-based actor construction [2b], JWT claim adaptation [3c], route enforcement [4d], and combined auth+consent gates [5e].

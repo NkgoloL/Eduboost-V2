@@ -1,3 +1,18 @@
+---
+title: DB Backup/Restore/Rollback Drill — Troubleshooting & Runbook
+status: release-record
+owner: release-management
+reviewers: [release-management, evidence-custodian, documentation-governance]
+audience: release-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 180
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/release, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # DB Backup/Restore/Rollback Drill — Troubleshooting & Runbook
 
 This document records every step taken to produce a successful run of `scripts/db_backup_restore_rollback_evidence.py --run-drill` against Supabase Postgres (server 17.x) using containerized clients and a disposable restore database. It is intentionally verbose so future engineers can reproduce the process and understand all troubleshooting performed.

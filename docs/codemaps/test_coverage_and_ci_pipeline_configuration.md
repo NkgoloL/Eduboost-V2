@@ -1,3 +1,18 @@
+---
+title: Test Coverage and CI Pipeline Configuration
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # Test Coverage and CI Pipeline Configuration
 
 Maps pytest configuration, coverage reporting, and CI execution across the EduBoost-V2 testing infrastructure. Key entry points include pytest configuration [1a], coverage threshold enforcement [2b], CI unit test execution [3c], integration test database setup [4b], and contract smoke test validation [5d].

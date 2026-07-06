@@ -1,3 +1,18 @@
+---
+title: "Base Repository Implementation: Generic Async CRUD & Database Interactions"
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # Base Repository Implementation: Generic Async CRUD & Database Interactions
 
 Maps the async repository pattern from database engine initialization through generic BaseRepository CRUD operations to concrete domain repositories and FastAPI integration. Key entry points: database engine setup [1b], generic CRUD methods [2b-2e], session lifecycle [4b-4e], and API usage [5a-5e].

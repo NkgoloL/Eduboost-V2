@@ -1,3 +1,18 @@
+---
+title: Technical Audit — E2E / Playwright Execution Authority Evidence
+status: evidence-record
+owner: evidence-custodian
+reviewers: [evidence-custodian, release-management, documentation-governance]
+audience: evidence-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 180
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/release-evidence, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # Technical Audit — E2E / Playwright Execution Authority Evidence
 
 - Branch: `codex/phase-06-e2e-playwright-authority`
