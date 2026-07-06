@@ -44,7 +44,7 @@ jobs:
           make parent-vertical-journey-contract-check
           make cluster-g-frontend-check
           make cluster-g-closure-check
-          pytest -c pytest.ini \
+          python3 -m pytest -c pytest.ini \
             tests/unit/test_frontend_route_inventory.py \
             tests/unit/test_cluster_g_release_gate_wiring.py \
             tests/unit/test_cluster_g_closure_report.py \
