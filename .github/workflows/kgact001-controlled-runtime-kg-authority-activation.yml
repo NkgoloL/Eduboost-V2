@@ -1,0 +1,31 @@
+name: KG-ACT-001 Controlled Runtime KG Authority Activation
+
+on:
+  pull_request:
+    paths:
+      - "app/domain/knowledge_graph_runtime_activation.py"
+      - "scripts/knowledge_graph/**kgact001**"
+      - "scripts/roadmap_reconciliation/**kgact001**"
+      - "docs/knowledge_graph/runtime_activation/**"
+      - "docs/roadmap/knowledge_graph/kg_act_001**"
+      - "tests/unit/roadmap_reconciliation/test_kgact001_controlled_runtime_kg_authority_activation.py"
+  workflow_dispatch:
+
+jobs:
+  kgact001-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify KG-ACT-001 authority
+        run: |
+          python3 -m py_compile \
+            app/domain/knowledge_graph_runtime_activation.py \
+            scripts/knowledge_graph/build_kgact001_controlled_runtime_kg_authority_activation.py \
+            scripts/knowledge_graph/audit_kgact001_controlled_runtime_kg_authority_activation.py \
+            scripts/roadmap_reconciliation/capture_kgact001_controlled_runtime_kg_authority_activation_evidence.py \
+            scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py
+          pytest -q tests/unit/roadmap_reconciliation/test_kgact001_controlled_runtime_kg_authority_activation.py --no-cov
+          PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py --authority-only --json

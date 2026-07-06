@@ -1,0 +1,25 @@
+{
+  "final_doc_required_metadata": {
+    "reviewed_at": "ISO date or UTC timestamp required in each final .md file",
+    "reviewed_at_recorded": "must be true",
+    "reviewer": "non-placeholder reviewer name required in each final .md file",
+    "reviewer_named": "must be true"
+  },
+  "final_docs_required": [
+    "kgact001_runtime_authority_go_no_go.md",
+    "kgact001_feature_flag_activation_contract.md",
+    "kgact001_switch_execution_report.md",
+    "kgact001_rollback_validation.md",
+    "kgact001_learner_safety_validation.md",
+    "kgact001_popia_runtime_boundary_confirmation.md",
+    "kgact001_runtime_activation_boundary.md"
+  ],
+  "kg_id": "KG-ACT-001",
+  "required_reviews": [
+    "engineering runtime authority go/no-go",
+    "privacy and POPIA boundary confirmation",
+    "curriculum/product owner approval",
+    "rollback validation",
+    "learner safety validation"
+  ]
+}

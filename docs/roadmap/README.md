@@ -104,3 +104,15 @@ Phase evidence is stored in: `docs/release-evidence/atlas/phase-<NN>/`
 - Technical documentation: `docs/`
 - Tests: `tests/`
 - Architecture: `docs/architecture/`
+
+<!-- KG000_FORMAL_ROADMAP_APPROVAL:start -->
+## Knowledge Graph roadmap stream
+
+The reconciled RR register is closed through RR-018. New KG work starts only through the approved Knowledge Graph roadmap stream:
+
+- [KG-0 Formal KG Roadmap Approval](knowledge_graph/kg_000_formal_kg_roadmap_approval.md)
+- [KG Implementation Roadmap](knowledge_graph/kg_implementation_roadmap.md)
+- [KG Roadmap Register](knowledge_graph/kg_roadmap_register.json)
+
+Next after KG-0: `KG-1 — CAPS graph foundation`.
+<!-- KG000_FORMAL_ROADMAP_APPROVAL:end -->

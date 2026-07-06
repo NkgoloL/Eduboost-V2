@@ -1,0 +1,31 @@
+name: KG-0 Formal KG Roadmap Approval
+
+on:
+  pull_request:
+    paths:
+      - 'docs/roadmap/knowledge_graph/**'
+      - 'docs/adr/ADR-030-knowledge-graph-learning-state-core.md'
+      - 'docs/architecture/knowledge_graph_*.md'
+      - 'docs/product/knowledge_graph_learning_model_brief.md'
+      - 'docs/caps/knowledge_graph_mapping_contract.md'
+      - 'docs/ai/knowledge_graph_grounding_contract.md'
+      - 'docs/security/knowledge_graph_privacy_and_popia_contract.md'
+      - 'docs/testing/knowledge_graph_verification_plan.md'
+      - 'scripts/knowledge_graph/**'
+      - 'scripts/roadmap_reconciliation/*kg000*'
+      - 'tests/unit/roadmap_reconciliation/test_kg000_formal_kg_roadmap_approval.py'
+      - '.github/workflows/kg000-formal-kg-roadmap-approval.yml'
+  workflow_dispatch:
+
+jobs:
+  kg000-formal-roadmap-approval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify KG-0 authority
+        run: |
+          python3 -m py_compile             scripts/knowledge_graph/audit_kg000_formal_kg_roadmap_approval.py             scripts/roadmap_reconciliation/capture_kg000_formal_kg_roadmap_approval_evidence.py             scripts/roadmap_reconciliation/verify_kg000_formal_kg_roadmap_approval.py
+          PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg000_formal_kg_roadmap_approval.py --authority-only --json

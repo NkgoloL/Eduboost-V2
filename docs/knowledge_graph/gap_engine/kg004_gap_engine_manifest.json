@@ -1,0 +1,21 @@
+{
+  "artifact": "gap_engine_intervention_planner",
+  "boundary": {
+    "advisory_only": true,
+    "database_schema_migration_authorised": false,
+    "learner_facing_model_change_authorised": false,
+    "runtime_authority": false,
+    "shadow_mode_only": true,
+    "uses_live_learner_data": false
+  },
+  "kg_id": "KG-4",
+  "outputs": [
+    "data/knowledge_graph/gap_engine/grade4_mathematics_gap_intervention_plan.json",
+    "data/knowledge_graph/gap_engine/grade4_mathematics_gap_intervention_plan_summary.json"
+  ],
+  "source_dependencies": [
+    "KG-3 learner graph shadow mode",
+    "KG-2 target graph generation"
+  ],
+  "status": "authority_recorded"
+}

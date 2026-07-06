@@ -3001,20 +3001,108 @@ rr018-trustworthy-beta-quality-check:
 final-roadmap-reconciliation-closure-check:
 	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_final_roadmap_reconciliation_closure.py --authority-only --json
 
+# KG-0 formal KG roadmap approval targets
+.PHONY: kg000-formal-kg-roadmap-approval-audit kg000-formal-kg-roadmap-approval-check
+kg000-formal-kg-roadmap-approval-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg000_formal_kg_roadmap_approval.py --json
 
-docs-housekeeping-stage6-apply:
-	python3 scripts/maintenance/apply_doc_stage6_cleanup.py --root .
+kg000-formal-kg-roadmap-approval-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg000_formal_kg_roadmap_approval.py --authority-only --json
 
-docs-stage6-strict-scope-check:
-	python3 scripts/maintenance/check_doc_stage6_strict_scope.py --root .
+# KG-1 CAPS graph foundation
+kg001-caps-graph-foundation-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg001_caps_graph_foundation.py --json
 
-docs-housekeeping-stage6-check: docs-stage6-strict-scope-check docs-housekeeping-stage5-check
+kg001-caps-graph-foundation-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kg001_caps_graph_foundation.py --write --json
+
+kg001-caps-graph-foundation-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg001_caps_graph_foundation.py --json
 
 
-docs-housekeeping-stage7-apply:
-	python3 scripts/maintenance/apply_doc_stage7_cleanup.py --root .
+# KG-2 target graph generation
+.PHONY: kg002-target-graph-generation-audit kg002-target-graph-generation-build kg002-target-graph-generation-check
+kg002-target-graph-generation-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg002_target_graph_generation.py --json
 
-docs-stage7-strict-scope-check:
-	python3 scripts/maintenance/check_doc_stage7_strict_scope.py --root .
+kg002-target-graph-generation-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kg002_target_graph_generation.py --write --json
 
-docs-housekeeping-stage7-check: docs-stage7-strict-scope-check docs-housekeeping-stage6-check
+kg002-target-graph-generation-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg002_target_graph_generation.py --json
+
+# KG-3 learner graph shadow mode
+.PHONY: kg003-learner-graph-shadow-mode-audit kg003-learner-graph-shadow-mode-build kg003-learner-graph-shadow-mode-check
+kg003-learner-graph-shadow-mode-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg003_learner_graph_shadow_mode.py --json
+
+kg003-learner-graph-shadow-mode-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kg003_learner_graph_shadow_mode.py --write --json
+
+kg003-learner-graph-shadow-mode-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg003_learner_graph_shadow_mode.py --authority-only --json
+
+.PHONY: kg004-gap-engine-intervention-planner-audit kg004-gap-engine-intervention-planner-build kg004-gap-engine-intervention-planner-check
+kg004-gap-engine-intervention-planner-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg004_gap_engine_intervention_planner.py --json
+
+kg004-gap-engine-intervention-planner-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kg004_gap_engine_intervention_planner.py --write --json
+
+kg004-gap-engine-intervention-planner-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg004_gap_engine_intervention_planner.py --authority-only --json
+
+
+# KG-5 graph-grounded lesson and assessment generation
+.PHONY: kg005-graph-grounded-lesson-assessment-generation-audit kg005-graph-grounded-lesson-assessment-generation-build kg005-graph-grounded-lesson-assessment-generation-check
+kg005-graph-grounded-lesson-assessment-generation-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg005_graph_grounded_lesson_assessment_generation.py --json
+
+kg005-graph-grounded-lesson-assessment-generation-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kg005_graph_grounded_lesson_assessment_generation.py --write --json
+
+kg005-graph-grounded-lesson-assessment-generation-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg005_graph_grounded_lesson_assessment_generation.py --authority-only --json
+
+# KG-6 tutor, study plan, gamification, and parent alignment
+.PHONY: kg006-tutor-study-plan-gamification-parent-alignment-audit kg006-tutor-study-plan-gamification-parent-alignment-build kg006-tutor-study-plan-gamification-parent-alignment-check
+kg006-tutor-study-plan-gamification-parent-alignment-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg006_tutor_study_plan_gamification_parent_alignment.py --json
+
+kg006-tutor-study-plan-gamification-parent-alignment-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kg006_tutor_study_plan_gamification_parent_alignment.py --write --json
+
+kg006-tutor-study-plan-gamification-parent-alignment-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg006_tutor_study_plan_gamification_parent_alignment.py --authority-only --json
+
+# KG-7 authority switch and legacy cleanup readiness
+.PHONY: kg007-authority-switch-legacy-cleanup-audit kg007-authority-switch-legacy-cleanup-build kg007-authority-switch-legacy-cleanup-check
+kg007-authority-switch-legacy-cleanup-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg007_authority_switch_legacy_cleanup.py --json
+
+kg007-authority-switch-legacy-cleanup-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kg007_authority_switch_legacy_cleanup.py --write --json
+
+kg007-authority-switch-legacy-cleanup-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg007_authority_switch_legacy_cleanup.py --authority-only --json
+
+.PHONY: kgact001-controlled-runtime-kg-authority-activation-audit kgact001-controlled-runtime-kg-authority-activation-build kgact001-controlled-runtime-kg-authority-activation-check
+
+kgact001-controlled-runtime-kg-authority-activation-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kgact001_controlled_runtime_kg_authority_activation.py --json
+
+kgact001-controlled-runtime-kg-authority-activation-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kgact001_controlled_runtime_kg_authority_activation.py --write --json
+
+kgact001-controlled-runtime-kg-authority-activation-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py --authority-only --json
+# KG-8 post-switch optimisation and scale review
+.PHONY: kg008-post-switch-optimisation-scale-review-audit kg008-post-switch-optimisation-scale-review-build kg008-post-switch-optimisation-scale-review-check
+kg008-post-switch-optimisation-scale-review-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg008_post_switch_optimisation_scale_review.py --json
+
+kg008-post-switch-optimisation-scale-review-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kg008_post_switch_optimisation_scale_review.py --write --json
+
+kg008-post-switch-optimisation-scale-review-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg008_post_switch_optimisation_scale_review.py --authority-only --json
