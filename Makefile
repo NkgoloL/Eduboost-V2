@@ -3052,3 +3052,14 @@ kg004-gap-engine-intervention-planner-build:
 kg004-gap-engine-intervention-planner-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg004_gap_engine_intervention_planner.py --authority-only --json
 
+
+# KG-5 graph-grounded lesson and assessment generation
+.PHONY: kg005-graph-grounded-lesson-assessment-generation-audit kg005-graph-grounded-lesson-assessment-generation-build kg005-graph-grounded-lesson-assessment-generation-check
+kg005-graph-grounded-lesson-assessment-generation-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg005_graph_grounded_lesson_assessment_generation.py --json
+
+kg005-graph-grounded-lesson-assessment-generation-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kg005_graph_grounded_lesson_assessment_generation.py --write --json
+
+kg005-graph-grounded-lesson-assessment-generation-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg005_graph_grounded_lesson_assessment_generation.py --authority-only --json

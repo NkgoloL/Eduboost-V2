@@ -1,0 +1,31 @@
+name: KG-5 Graph-Grounded Lesson and Assessment Generation
+
+on:
+  pull_request:
+    paths:
+      - "app/domain/knowledge_graph_grounded_generation.py"
+      - "scripts/knowledge_graph/*kg005*"
+      - "scripts/roadmap_reconciliation/*kg005*"
+      - "docs/knowledge_graph/grounded_generation/**"
+      - "docs/roadmap/knowledge_graph/kg_005_*"
+      - "tests/unit/roadmap_reconciliation/test_kg005_graph_grounded_lesson_assessment_generation.py"
+      - ".github/workflows/kg005-graph-grounded-lesson-assessment-generation.yml"
+
+jobs:
+  kg005-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile KG-5 scripts
+        run: |
+          python3 -m py_compile \
+            app/domain/knowledge_graph_grounded_generation.py \
+            scripts/knowledge_graph/build_kg005_graph_grounded_lesson_assessment_generation.py \
+            scripts/knowledge_graph/audit_kg005_graph_grounded_lesson_assessment_generation.py \
+            scripts/roadmap_reconciliation/capture_kg005_graph_grounded_lesson_assessment_generation_evidence.py \
+            scripts/roadmap_reconciliation/verify_kg005_graph_grounded_lesson_assessment_generation.py
+      - name: Verify KG-5 authority
+        run: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg005_graph_grounded_lesson_assessment_generation.py --authority-only --json
