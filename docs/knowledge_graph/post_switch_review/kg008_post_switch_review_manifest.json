@@ -1,0 +1,35 @@
+{
+  "authority_files": [
+    "docs/roadmap/knowledge_graph/kg_008_post_switch_optimisation_scale_review.md",
+    "docs/roadmap/knowledge_graph/kg_008_post_switch_optimisation_scale_review_record.json",
+    "docs/knowledge_graph/post_switch_review/kg008_post_switch_review_policy.md",
+    "docs/knowledge_graph/post_switch_review/kg008_post_switch_review_schema.md",
+    "docs/knowledge_graph/post_switch_review/kg008_optimisation_backlog_contract.md",
+    "docs/knowledge_graph/post_switch_review/kg008_scale_review_contract.md",
+    "docs/knowledge_graph/post_switch_review/kg008_monitoring_review_contract.md"
+  ],
+  "boundary": {
+    "billing_launch_authorised": false,
+    "database_schema_migration_authorised": false,
+    "deployment_authorised": false,
+    "learner_facing_model_change_authorised": false,
+    "live_payment_processing_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false
+  },
+  "final_docs_required": [
+    "docs/knowledge_graph/post_switch_review/kg008_post_switch_go_no_go_review.md",
+    "docs/knowledge_graph/post_switch_review/kg008_optimisation_backlog_review.md",
+    "docs/knowledge_graph/post_switch_review/kg008_scale_review.md",
+    "docs/knowledge_graph/post_switch_review/kg008_monitoring_observability_review.md",
+    "docs/knowledge_graph/post_switch_review/kg008_rollback_observability_review.md",
+    "docs/knowledge_graph/post_switch_review/kg008_popia_post_switch_boundary_review.md",
+    "docs/knowledge_graph/post_switch_review/kg008_post_switch_boundary.md"
+  ],
+  "generated_artifact": "data/knowledge_graph/post_switch_review/grade4_mathematics_post_switch_optimisation_scale_review_pack.json",
+  "kg_id": "KG-8",
+  "requires": [
+    "KG-ACT-001"
+  ],
+  "title": "Post-switch optimisation and scale review"
+}
