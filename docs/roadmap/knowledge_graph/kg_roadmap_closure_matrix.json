@@ -1,0 +1,80 @@
+{
+  "boundaries": {
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_payment_processing_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_tag_authorised": false
+  },
+  "closure_id": "KG-ROADMAP-CLOSURE",
+  "created_after": "KG-8",
+  "kg008_non_required_check_pytest_path_caveat_visible": true,
+  "kg_items": [
+    {
+      "completion_flag": "formal_kg_roadmap_approval_recorded",
+      "kg_id": "KG-0",
+      "required": true,
+      "title": "Formal KG roadmap approval"
+    },
+    {
+      "completion_flag": "caps_graph_foundation_recorded",
+      "kg_id": "KG-1",
+      "required": true,
+      "title": "CAPS graph foundation"
+    },
+    {
+      "completion_flag": "target_graph_generation_recorded",
+      "kg_id": "KG-2",
+      "required": true,
+      "title": "Target graph generation"
+    },
+    {
+      "completion_flag": "learner_graph_shadow_mode_recorded",
+      "kg_id": "KG-3",
+      "required": true,
+      "title": "Learner graph shadow mode"
+    },
+    {
+      "completion_flag": "gap_engine_intervention_planner_recorded",
+      "kg_id": "KG-4",
+      "required": true,
+      "title": "Gap engine and intervention planner"
+    },
+    {
+      "completion_flag": "graph_grounded_generation_recorded",
+      "kg_id": "KG-5",
+      "required": true,
+      "title": "Graph-grounded lesson and assessment generation"
+    },
+    {
+      "completion_flag": "product_alignment_recorded",
+      "kg_id": "KG-6",
+      "required": true,
+      "title": "Tutor, study plan, gamification, and parent alignment"
+    },
+    {
+      "completion_flag": "authority_switch_legacy_cleanup_recorded",
+      "kg_id": "KG-7",
+      "required": true,
+      "title": "Authority switch readiness and legacy cleanup"
+    },
+    {
+      "completion_flag": "controlled_runtime_kg_authority_activation_recorded",
+      "kg_id": "KG-ACT-001",
+      "required": true,
+      "title": "Controlled runtime KG authority activation"
+    },
+    {
+      "completion_flag": "post_switch_optimisation_scale_review_recorded",
+      "kg_id": "KG-8",
+      "required": true,
+      "title": "Post-switch optimisation and scale review"
+    }
+  ],
+  "new_kg_slice_authorised": false,
+  "new_production_or_public_beta_roadmap_authorised": false,
+  "purpose": "Close the approved KG roadmap through KG-8 without authorising production release, deployment, public beta, billing launch, or live payment processing.",
+  "status": "pending_evidence_capture"
+}
