@@ -1,0 +1,31 @@
+name: KG-8 Post-Switch Optimisation and Scale Review
+
+on:
+  pull_request:
+    paths:
+      - "app/domain/knowledge_graph_post_switch_review.py"
+      - "scripts/knowledge_graph/**kg008**"
+      - "scripts/roadmap_reconciliation/**kg008**"
+      - "docs/knowledge_graph/post_switch_review/**"
+      - "docs/roadmap/knowledge_graph/kg_008**"
+      - "tests/unit/roadmap_reconciliation/test_kg008_post_switch_optimisation_scale_review.py"
+  workflow_dispatch:
+
+jobs:
+  kg008-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify KG-8 authority
+        run: |
+          python3 -m py_compile \
+            app/domain/knowledge_graph_post_switch_review.py \
+            scripts/knowledge_graph/build_kg008_post_switch_optimisation_scale_review.py \
+            scripts/knowledge_graph/audit_kg008_post_switch_optimisation_scale_review.py \
+            scripts/roadmap_reconciliation/capture_kg008_post_switch_optimisation_scale_review_evidence.py \
+            scripts/roadmap_reconciliation/verify_kg008_post_switch_optimisation_scale_review.py
+          pytest -q tests/unit/roadmap_reconciliation/test_kg008_post_switch_optimisation_scale_review.py --no-cov
+          PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg008_post_switch_optimisation_scale_review.py --authority-only --json

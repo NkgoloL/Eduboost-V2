@@ -3096,3 +3096,13 @@ kgact001-controlled-runtime-kg-authority-activation-build:
 
 kgact001-controlled-runtime-kg-authority-activation-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py --authority-only --json
+# KG-8 post-switch optimisation and scale review
+.PHONY: kg008-post-switch-optimisation-scale-review-audit kg008-post-switch-optimisation-scale-review-build kg008-post-switch-optimisation-scale-review-check
+kg008-post-switch-optimisation-scale-review-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg008_post_switch_optimisation_scale_review.py --json
+
+kg008-post-switch-optimisation-scale-review-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kg008_post_switch_optimisation_scale_review.py --write --json
+
+kg008-post-switch-optimisation-scale-review-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg008_post_switch_optimisation_scale_review.py --authority-only --json
