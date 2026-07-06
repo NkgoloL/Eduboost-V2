@@ -1,0 +1,140 @@
+{
+  "activation_controls": [
+    {
+      "blocking": true,
+      "control_key": "kg-runtime-authority-enable",
+      "control_name": "Enable KG artifacts as controlled runtime authority in the KG stream",
+      "control_type": "authority_switch",
+      "executed": true,
+      "source_ref": "KG-7 authority readiness pack",
+      "source_sha256": "b2550bf0b638c5391323613ea8ba8041577ba1398d523a99f8ca7ea567fd3a33"
+    },
+    {
+      "blocking": true,
+      "control_key": "kg-runtime-authority-audit-log",
+      "control_name": "Record runtime KG authority activation evidence",
+      "control_type": "audit",
+      "executed": true,
+      "source_ref": "KG-7 authority readiness pack",
+      "source_sha256": "b2550bf0b638c5391323613ea8ba8041577ba1398d523a99f8ca7ea567fd3a33"
+    },
+    {
+      "blocking": true,
+      "control_key": "kg-runtime-authority-rollback-ready",
+      "control_name": "Confirm rollback controls before activation",
+      "control_type": "rollback",
+      "executed": true,
+      "source_ref": "KG-7 rollback controls",
+      "source_sha256": "b2550bf0b638c5391323613ea8ba8041577ba1398d523a99f8ca7ea567fd3a33"
+    },
+    {
+      "blocking": true,
+      "control_key": "kg-runtime-authority-production-boundary",
+      "control_name": "Keep production deployment, public beta, and billing separately unauthorised",
+      "control_type": "boundary",
+      "executed": true,
+      "source_ref": "KG-ACT-001 runtime boundary",
+      "source_sha256": "b2550bf0b638c5391323613ea8ba8041577ba1398d523a99f8ca7ea567fd3a33"
+    }
+  ],
+  "activation_edges": [
+    {
+      "edge_id": "kgact001edge_a84730b045c9e42d22edbd73",
+      "edge_key": "activation-edge:kg-runtime-authority-enable",
+      "edge_type": "activates_controlled_runtime_kg_authority",
+      "source_key": "kg-runtime-authority-enable",
+      "source_ref": "KG-7 authority readiness pack",
+      "source_sha256": "b2550bf0b638c5391323613ea8ba8041577ba1398d523a99f8ca7ea567fd3a33",
+      "target_key": "controlled-runtime-kg-authority-state",
+      "version": "kgact001-controlled-runtime-kg-authority-activation-v1"
+    },
+    {
+      "edge_id": "kgact001edge_e62513382957d949039d3c3b",
+      "edge_key": "activation-edge:kg-runtime-authority-audit-log",
+      "edge_type": "activates_controlled_runtime_kg_authority",
+      "source_key": "kg-runtime-authority-audit-log",
+      "source_ref": "KG-7 authority readiness pack",
+      "source_sha256": "b2550bf0b638c5391323613ea8ba8041577ba1398d523a99f8ca7ea567fd3a33",
+      "target_key": "controlled-runtime-kg-authority-state",
+      "version": "kgact001-controlled-runtime-kg-authority-activation-v1"
+    },
+    {
+      "edge_id": "kgact001edge_be1ad70606bd8d1d388bd920",
+      "edge_key": "activation-edge:kg-runtime-authority-rollback-ready",
+      "edge_type": "activates_controlled_runtime_kg_authority",
+      "source_key": "kg-runtime-authority-rollback-ready",
+      "source_ref": "KG-7 rollback controls",
+      "source_sha256": "b2550bf0b638c5391323613ea8ba8041577ba1398d523a99f8ca7ea567fd3a33",
+      "target_key": "controlled-runtime-kg-authority-state",
+      "version": "kgact001-controlled-runtime-kg-authority-activation-v1"
+    },
+    {
+      "edge_id": "kgact001edge_1c06622668eb8fe6992d5a20",
+      "edge_key": "activation-edge:kg-runtime-authority-production-boundary",
+      "edge_type": "activates_controlled_runtime_kg_authority",
+      "source_key": "kg-runtime-authority-production-boundary",
+      "source_ref": "KG-ACT-001 runtime boundary",
+      "source_sha256": "b2550bf0b638c5391323613ea8ba8041577ba1398d523a99f8ca7ea567fd3a33",
+      "target_key": "controlled-runtime-kg-authority-state",
+      "version": "kgact001-controlled-runtime-kg-authority-activation-v1"
+    }
+  ],
+  "boundary": {
+    "activation_feature_flag_contract_recorded": true,
+    "authority_switch_executed": true,
+    "billing_launch_authorised": false,
+    "controlled_activation_only": true,
+    "controlled_runtime_activation_approved": true,
+    "database_schema_migration_authorised": false,
+    "deployment_authorised": false,
+    "learner_facing_model_change_authorised": false,
+    "learner_graph_persistence_authorised": false,
+    "learner_safety_validation_recorded": true,
+    "legacy_cleanup_executed": false,
+    "live_payment_processing_authorised": false,
+    "llm_provider_call_authorised": false,
+    "popia_runtime_boundary_confirmed": true,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_tag_authorised": false,
+    "rollback_validation_recorded": true,
+    "runtime_kg_authority_switch_authorised": true,
+    "runtime_kg_implementation_claimed": true,
+    "uses_guardian_pii": false,
+    "uses_live_learner_data": false,
+    "uses_llm_provider": false
+  },
+  "counts": {
+    "activation_controls": 4,
+    "activation_edges": 4,
+    "legacy_projection_mappings_inherited": 722,
+    "readiness_checks_inherited": 12,
+    "rollback_controls_inherited": 6,
+    "switch_control_edges_inherited": 722
+  },
+  "graph_id": "KG-ACT-001-CONTROLLED-RUNTIME-KG-AUTHORITY-ACTIVATION-GRADE-4-MATHEMATICS",
+  "graph_version": "kgact001-controlled-runtime-kg-authority-activation-v1",
+  "review": {
+    "curriculum_review_required": true,
+    "engineering_review_required": true,
+    "privacy_review_required": true,
+    "review_scope": "controlled KG authority activation only; no production deployment or public beta launch",
+    "rollback_validation_required": true,
+    "runtime_authority_activation_go_no_go_required": true
+  },
+  "scope": {
+    "curriculum": "CAPS",
+    "data_classification": "synthetic_and_repository_artifact_only",
+    "grade": 4,
+    "mode": "controlled_runtime_kg_authority_activation",
+    "production_deployment": false,
+    "subject": "mathematics"
+  },
+  "source": {
+    "kg7_readiness_pack_path": "data/knowledge_graph/authority_switch/grade4_mathematics_authority_switch_readiness_pack.json",
+    "kg7_readiness_pack_sha256": "b2550bf0b638c5391323613ea8ba8041577ba1398d523a99f8ca7ea567fd3a33",
+    "source_ref": "KG-7-AUTHORITY-SWITCH-LEGACY-CLEANUP-READINESS-GRADE-4-MATHEMATICS"
+  },
+  "status": "controlled_runtime_kg_authority_activation_recorded"
+}
