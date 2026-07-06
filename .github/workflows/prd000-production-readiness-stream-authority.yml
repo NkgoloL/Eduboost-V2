@@ -1,0 +1,29 @@
+name: PRD-0.0 Production Readiness Stream Authority
+
+on:
+  pull_request:
+    paths:
+      - "scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py"
+      - "scripts/roadmap_reconciliation/capture_prd000_production_readiness_stream_authority_evidence.py"
+      - "scripts/roadmap_reconciliation/verify_prd000_production_readiness_stream_authority.py"
+      - "docs/roadmap/production_readiness/**"
+      - "tests/unit/roadmap_reconciliation/test_prd000_production_readiness_stream_authority.py"
+      - "Makefile"
+  workflow_dispatch:
+
+jobs:
+  prd000-authority-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify PRD-0.0 production readiness authority
+        run: |
+          python3 -m py_compile \
+            scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py \
+            scripts/roadmap_reconciliation/capture_prd000_production_readiness_stream_authority_evidence.py \
+            scripts/roadmap_reconciliation/verify_prd000_production_readiness_stream_authority.py
+          python3 -m pytest -q tests/unit/roadmap_reconciliation/test_prd000_production_readiness_stream_authority.py --no-cov
+          PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd000_production_readiness_stream_authority.py --authority-only --json
