@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    "data/knowledge_graph/gap_engine/grade4_mathematics_gap_intervention_plan.json",
+    "data/knowledge_graph/target_graph/grade4_mathematics_target_graph.json"
+  ],
+  "kg_id": "KG-5",
+  "llm_provider_call_authorised": false,
+  "outputs": [
+    "data/knowledge_graph/grounded_generation/grade4_mathematics_graph_grounded_generation_pack.json",
+    "data/knowledge_graph/grounded_generation/grade4_mathematics_graph_grounded_generation_pack_summary.json"
+  ],
+  "requires": [
+    "KG-4",
+    "KG-2"
+  ],
+  "runtime_authority": false,
+  "status": "authority_defined",
+  "title": "Graph-grounded lesson and assessment generation",
+  "uses_live_learner_data": false
+}
