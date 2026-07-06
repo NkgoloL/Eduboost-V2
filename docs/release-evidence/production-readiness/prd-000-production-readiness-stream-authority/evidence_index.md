@@ -9,7 +9,7 @@ owner: production-readiness
 - Valid: `True`
 - PRD ID: `PRD-0.0`
 - Stream ID: `PRD-PRODUCTION-READINESS`
-- Captured at: `2026-07-06T16:56:46.136389+00:00`
+- Captured at: `2026-07-06T17:39:33.848796+00:00`
 - Evidence owner: `Nkgolo Lebelo`
 - PRD-0 sequence registered: `True`
 - PRD-1 blocked until PRD-0 closure: `True`
