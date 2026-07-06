@@ -38,7 +38,7 @@ This register tracks risks introduced by pivoting EduBoost's core learning model
 
 ## Active controls
 
-- ADR-030 defines the architectural decision.
+- ADR-036 defines the architectural decision.
 - Documentation verifier confirms core docs and indexes exist.
 - Phase 02R gates continue to control source acquisition, extraction, retrieval, generation, tutor integration, migration, and closure.
 - Graph state remains shadow-mode until evidence supports authority switch.

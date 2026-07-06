@@ -23,7 +23,7 @@ REQUIRED_DOCS = [
     "docs/roadmap/knowledge_graph/kg_000_formal_kg_roadmap_approval.md",
 ]
 INDEX_EXPECTATIONS = {
-    "README.md": ["Knowledge Graph Roadmap", "ADR-030", "kg_implementation_roadmap.md"],
+    "README.md": ["Knowledge Graph Roadmap", "ADR-036", "kg_implementation_roadmap.md"],
     "docs/README.md": ["Knowledge graph learning-state roadmap", "knowledge_graph_learning_state_architecture.md", "kg_implementation_roadmap.md"],
     "docs/architecture/README.md": ["Knowledge Graph Learning-State Architecture", "knowledge_graph_data_model.md"],
     "docs/adr/README.md": ["ADR-036", "Knowledge Graph Learning-State Core"],
