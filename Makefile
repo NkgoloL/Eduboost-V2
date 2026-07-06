@@ -3115,3 +3115,12 @@ kg-roadmap-closure-audit:
 kg-roadmap-closure-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg_roadmap_closure.py --authority-only --json
 # End KG roadmap closure report
+
+# PRD-0.0 production-readiness stream authority
+.PHONY: prd000-production-readiness-stream-authority-audit prd000-production-readiness-stream-authority-check
+prd000-production-readiness-stream-authority-audit:
+	PYTHONPATH=. python3 scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py --json
+
+prd000-production-readiness-stream-authority-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd000_production_readiness_stream_authority.py --authority-only --json
+# End PRD-0.0 production-readiness stream authority
