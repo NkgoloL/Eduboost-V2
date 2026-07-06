@@ -3106,3 +3106,12 @@ kg008-post-switch-optimisation-scale-review-build:
 
 kg008-post-switch-optimisation-scale-review-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg008_post_switch_optimisation_scale_review.py --authority-only --json
+
+# KG roadmap closure report
+.PHONY: kg-roadmap-closure-audit kg-roadmap-closure-check
+kg-roadmap-closure-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg_roadmap_closure.py --json
+
+kg-roadmap-closure-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg_roadmap_closure.py --authority-only --json
+# End KG roadmap closure report
