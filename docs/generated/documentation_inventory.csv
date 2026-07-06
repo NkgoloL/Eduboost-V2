@@ -18,7 +18,7 @@ CODE_OF_CONDUCT.md,markdown,,0,Code of Conduct,Code of Conduct,,,,,,,70,3196,,0,
 CONTRIBUTING.md,markdown,,0,Contributing to EduBoost SA,Contributing to EduBoost SA,,,,,,,157,3911,,1,False
 Memory.md,markdown,,0,Agent Memory & Behavioral Directives,Agent Memory & Behavioral Directives,,,,,,,21,1937,,0,False
 PRIVACY_NOTICE.md,markdown,,0,EduBoost SA Privacy Notice,EduBoost SA Privacy Notice,,,,,,,215,9115,,0,False
-README.md,markdown,,0,EduBoost SA,EduBoost SA,active,product,developer,False,2026-06-23,180,213,8608,,0,True
+README.md,markdown,,0,EduBoost SA,EduBoost SA,active,product,developer,False,2026-06-23,180,227,9341,,0,True
 SECURITY.md,markdown,,0,Security Policy,Security Policy,,,,,,,99,2955,,1,False
 audits/agents_tasks/AGENT_IMPLEMENTATION_TODO.md,markdown,,0,Agent Implementation TODO,Agent Implementation TODO,,,,,,,34,1658,,0,False
 audits/agents_tasks/TODO.md,markdown,,0,EduBoost SA V2 — Agent TODO List,EduBoost SA V2 — Agent TODO List,,,,,,,815,48559,,0,False
@@ -108,7 +108,7 @@ docs/DOC/README.md,markdown,,0,Archived documentation redirect,Archived document
 docs/LLM_Phase3_Finetuning.md,markdown,,0,LLM Phase 3 Fine-Tuning Runbook,LLM Phase 3 Fine-Tuning Runbook,,,,,,,180,5595,,0,False
 docs/LLM_Test_Gating.md,markdown,,0,,,,,,,,,18,682,,0,False
 docs/POPIA_COMPLIANCE.md,markdown,,0,POPIA Compliance Guide,POPIA Compliance Guide,,,,,,,302,11841,,0,False
-docs/README.md,markdown,,0,EduBoost Documentation Index,EduBoost Documentation Index,active,documentation-governance,developer,True,2026-06-22,30,50,2606,,0,True
+docs/README.md,markdown,,0,EduBoost Documentation Index,EduBoost Documentation Index,active,documentation-governance,developer,True,2026-06-22,30,61,3201,,0,True
 docs/adr/0001-modular-monolith.md,markdown,,0,ADR 0001: Modular Monolith Architecture,ADR 0001: Modular Monolith Architecture,active,architecture,developer,False,2026-06-23,180,34,1097,,0,True
 docs/adr/0002-popia-first-design.md,markdown,,0,ADR 0002: POPIA-First Design,ADR 0002: POPIA-First Design,active,architecture,developer,False,2026-06-23,180,36,1433,,0,True
 docs/adr/0003-llm-provider-abstraction.md,markdown,,0,ADR 0003: LLM Provider Abstraction,ADR 0003: LLM Provider Abstraction,active,architecture,developer,False,2026-06-23,180,36,1423,,0,True
@@ -146,12 +146,13 @@ docs/adr/ADR-027-observability-endpoint-access-control.md,markdown,,0,ADR-027 �
 docs/adr/ADR-028-authoritative-deployment-target.md,markdown,,0,ADR-028 — Authoritative Production Deployment Target,ADR-028 — Authoritative Production Deployment Target,active,architecture,developer,False,2026-06-23,180,97,3145,,0,True
 docs/adr/ADR-029-supabase-auth-strategy.md,markdown,,0,ADR-029: Supabase Auth Strategy,ADR-029: Supabase Auth Strategy,active,architecture,developer,False,2026-06-23,180,67,2157,,0,True
 docs/adr/ADR-030-content-review-governance.md,markdown,,0,ADR-030 — Educator Consensus and Content Governance,ADR-030 — Educator Consensus and Content Governance,active,architecture,developer,False,2026-06-23,180,69,2524,,0,True
+docs/adr/ADR-030-knowledge-graph-learning-state-core.md,markdown,,0,ADR-030 Knowledge Graph Learning-State Core,ADR-030: Knowledge Graph Learning-State Core,active,architecture,developer,False,2026-07-05,60,153,8186,Neo4j,0,True
 docs/adr/ADR-031-durable-ai-operations-budget-authority.md,markdown,,0,ADR-031 — Durable AI Operations and Budget Authority,ADR-031 — Durable AI Operations and Budget Authority,active,architecture,developer,False,2026-06-23,180,39,1821,,0,True
 docs/adr/ADR-032-curriculum-expansion-training-governance.md,markdown,,0,ADR-032 — Governed Curriculum Expansion and Training Dataset Manifests,ADR-032 — Governed Curriculum Expansion and Training Dataset Manifests,active,architecture,developer,False,2026-06-23,180,42,1788,,0,True
 docs/adr/ADR-033-learner-tutor-safety-boundary.md,markdown,,0,ADR-033 — Learner Tutor Safety and Context Boundary,ADR-033 — Learner Tutor Safety and Context Boundary,active,architecture,developer,False,2026-06-23,180,41,1771,,0,True
 docs/adr/ADR-034-irt-quality-self-healing.md,markdown,,0,ADR-034 — IRT Quality and Self-Healing Controls,ADR-034 — IRT Quality and Self-Healing Controls,active,architecture,developer,False,2026-06-23,180,43,2135,,0,True
 docs/adr/ADR-035-supabase-vs-raw-postgres-product-quality-gate.md,markdown,,0,ADR-035 — Supabase versus Raw Postgres Product Quality Gate,ADR-035 — Supabase versus Raw Postgres Product Quality Gate,proposed,architecture,developer,False,2026-07-02,180,42,1740,,0,True
-docs/adr/README.md,markdown,,0,Architectural Decision Records (ADR),Architectural Decision Records (ADR),active,architecture,developer,False,2026-07-02,180,98,8787,,0,True
+docs/adr/README.md,markdown,,0,Architectural Decision Records (ADR),Architectural Decision Records (ADR),active,architecture,developer,False,2026-07-02,180,106,9077,,0,True
 docs/adr/frontend/ADR-001-auth-model.md,markdown,,0,ADR-001 — Frontend Auth Model (FastAPI JWT + httpOnly cookie),ADR-001 — Frontend Auth Model (FastAPI JWT + httpOnly cookie),active,frontend,developer,False,2026-06-23,180,64,3162,,0,True
 docs/adr/frontend/ADR-001-rollback.md,markdown,,0,ADR-001 Rollback Plan — Supabase Auth Restoration,ADR-001 Rollback Plan — Supabase Auth Restoration,active,frontend,developer,False,2026-06-23,180,57,2616,,0,True
 docs/adr/frontend/ADR-002-state-management.md,markdown,,0,ADR-002 — State Management (Zustand + TanStack Query),ADR-002 — State Management (Zustand + TanStack Query),active,frontend,developer,False,2026-06-23,180,60,2802,,0,True
@@ -180,6 +181,7 @@ docs/ai/ai_safety_release_evidence.md,markdown,,0,AI Safety Release Evidence,AI 
 docs/ai/caps_ai_safety_evidence_2026-05-11.md,markdown,,0,CAPS And AI Safety Evidence,CAPS And AI Safety Evidence,current-evidence,ai-safety,safety-reviewer,False,2026-06-24,60,97,4095,,0,True
 docs/ai/caps_alignment_contract.md,markdown,,0,CAPS Alignment Contract,CAPS Alignment Contract,active,ai-safety,safety-reviewer,False,2026-06-24,60,53,1274,,0,True
 docs/ai/diagnostic_generation_safety_contract.md,markdown,,0,Diagnostic Generation Safety Contract,Diagnostic Generation Safety Contract,active,ai-safety,safety-reviewer,False,2026-06-24,60,56,1403,,0,True
+docs/ai/knowledge_graph_grounding_contract.md,markdown,,0,Knowledge Graph AI Grounding Contract,Knowledge Graph AI Grounding Contract,active,ai-safety,developer,False,2026-07-05,60,45,2478,,0,True
 docs/ai/lesson_generation_safety_contract.md,markdown,,0,Lesson Generation Safety Contract,Lesson Generation Safety Contract,active,ai-safety,safety-reviewer,False,2026-06-24,60,58,1544,,0,True
 docs/ai/lesson_quality_rubric.md,markdown,,0,Lesson Quality Rubric \u2014 Human Reviewer Checklist,Lesson Quality Rubric — Human Reviewer Checklist,active,ai-safety,safety-reviewer,False,2026-06-24,60,226,10678,,0,True
 docs/ai/llm_provider_fallback_contract.md,markdown,,0,LLM Provider Fallback Contract,LLM Provider Fallback Contract,active,ai-safety,safety-reviewer,False,2026-06-24,60,50,1257,,0,True
@@ -210,7 +212,7 @@ docs/approvals/rr015_security_review_attestation.template.md,markdown,,0,RR-015 
 docs/architecture.md,markdown,,0,Architecture,Architecture,,,,,,,39,1189,,0,False
 docs/architecture/ARCHITECTURE.md,markdown,,0,EduBoost SA — Recommended Architecture,EduBoost SA — Recommended Architecture,active,architecture,developer,False,2026-06-23,60,311,14660,,0,True
 docs/architecture/CORE_TECHNICAL_AUDIT_2026-05-17.md,markdown,,0,EduBoost V2 Core Technical Audit,EduBoost V2 Core Technical Audit,current-evidence,architecture,developer,False,2026-06-23,60,702,29319,production-ready,0,True
-docs/architecture/README.md,markdown,,0,Architecture Documentation,Architecture Documentation,active,architecture,developer,True,2026-06-23,60,21,636,,0,True
+docs/architecture/README.md,markdown,,0,Architecture Documentation,Architecture Documentation,active,architecture,developer,True,2026-06-23,60,31,1140,,0,True
 docs/architecture/architecture_decisions.md,markdown,,0,Architecture Decisions Index,Architecture Decisions Index,active,architecture,developer,False,2026-06-23,60,51,1185,,0,True
 docs/architecture/architecture_diagram.md,markdown,,0,EduBoost SA V2 — Architecture Diagram,EduBoost SA V2 — Architecture Diagram,active,architecture,developer,False,2026-06-23,60,155,4379,,0,True
 docs/architecture/auth_boundary_debt_report.md,markdown,,0,Auth Boundary Debt Report,Auth Boundary Debt Report,current-evidence,architecture,developer,False,2026-07-02,60,31,790,,0,True
@@ -223,6 +225,9 @@ docs/architecture/boundary_enforcement_policy.md,markdown,,0,Boundary Enforcemen
 docs/architecture/import_boundaries.md,markdown,,0,Import Boundaries,Import Boundaries,active,architecture,developer,False,2026-06-23,60,92,2701,,0,True
 docs/architecture/import_linter_availability.md,markdown,,0,Import-Linter Availability,Import-Linter Availability,current-evidence,architecture,developer,False,2026-07-02,60,25,480,,0,True
 docs/architecture/import_linter_contract_run.md,markdown,,0,Import-Linter Contract Run,Import-Linter Contract Run,active,architecture,developer,False,2026-06-23,60,47,1478,,0,True
+docs/architecture/knowledge_graph_data_model.md,markdown,,0,Knowledge Graph Data Model,Knowledge Graph Data Model,active,architecture,developer,False,2026-07-05,60,110,5617,,0,True
+docs/architecture/knowledge_graph_learning_state_architecture.md,markdown,,0,Knowledge Graph Learning-State Architecture,Knowledge Graph Learning-State Architecture,active,architecture,developer,False,2026-07-05,60,122,6360,Neo4j,0,True
+docs/architecture/knowledge_graph_transition_plan.md,markdown,,0,Knowledge Graph Transition Plan,Knowledge Graph Transition Plan,active,architecture,developer,False,2026-07-05,60,94,5284,,0,True
 docs/architecture/legacy_learner_access_guard_report.md,markdown,,0,Legacy Learner Access Guard Report,Legacy Learner Access Guard Report,current-evidence,architecture,developer,False,2026-07-02,60,26,651,,0,True
 docs/architecture/metaphor_glossary.md,markdown,,0,Metaphor → Domain Name Glossary,Metaphor → Domain Name Glossary,active,architecture,developer,False,2026-06-23,60,55,1567,,0,True
 docs/architecture/router_repository_boundary_inventory.md,markdown,,0,Router Repository Boundary Inventory,Router Repository Boundary Inventory,current-evidence,architecture,developer,False,2026-06-23,60,23,742,,0,True
@@ -387,6 +392,7 @@ docs/caps/content_expansion_roadmap.md,markdown,,0,CAPS Content Expansion Roadma
 docs/caps/grade4_maths_120_item_production_plan.md,markdown,,0,Grade 4 Mathematics 120-Item Production Plan,Grade 4 Mathematics 120-Item Production Plan,active,curriculum,curriculum-reviewer,False,2026-06-24,60,59,2061,,0,True
 docs/caps/grade4_maths_coverage_matrix.md,markdown,,0,Grade 4 Mathematics - CAPS Item Bank Coverage Matrix,Grade 4 Mathematics - CAPS Item Bank Coverage Matrix,current-evidence,curriculum,curriculum-reviewer,True,2026-06-24,60,64,2302,,0,True
 docs/caps/grade4_maths_lesson_coverage_matrix.md,markdown,,0,Grade 4 Mathematics - Lesson Coverage Matrix,Grade 4 Mathematics - Lesson Coverage Matrix,current-evidence,curriculum,curriculum-reviewer,False,2026-06-24,60,59,1969,,0,True
+docs/caps/knowledge_graph_mapping_contract.md,markdown,,0,Knowledge Graph CAPS Mapping Contract,CAPS Knowledge Graph Mapping Contract,active,curriculum,developer,False,2026-07-05,60,66,3050,,0,True
 docs/caps/multilingual_status.md,markdown,,0,Multilingual Lesson Generation Status,Multilingual Lesson Generation Status,current-evidence,curriculum,curriculum-reviewer,False,2026-06-24,60,135,4449,,0,True
 docs/codemaps/README.md,markdown,,0,Codemaps Documentation,Codemaps Documentation,,,,,,,240,21559,,0,False
 docs/codemaps/alembic_migration_and_ddl_management_startup_ddl_repairs_migration_integrity_and_alembic_workflow.md,markdown,,0,"Alembic Migration and DDL Management: Startup DDL Repairs, Migration Integrity, and Alembic Workflow","Alembic Migration and DDL Management: Startup DDL Repairs, Migration Integrity, and Alembic Workflow",,,,,,,665,51387,,0,False
@@ -600,6 +606,68 @@ docs/incident_response.md,markdown,,0,Incident Response Playbook,Incident Respon
 docs/index.md,markdown,,0,EduBoost V2,EduBoost V2,,,,,,,27,1408,,1,False
 docs/input/README.md,markdown,,0,Archived documentation redirect,Archived documentation redirect,archived,documentation-governance,reviewer,False,2026-06-22,180,25,772,,0,True
 docs/irt/README.md,markdown,,0,IRT Engine,IRT Engine,active,diagnostics,developer,True,2026-06-24,60,39,1283,,0,True
+docs/knowledge_graph/authority_switch/kg007_authority_switch_policy.md,markdown,,0,KG-7 Authority Switch Policy,KG-7 Authority Switch Policy,,,,,,,14,460,,0,False
+docs/knowledge_graph/authority_switch/kg007_authority_switch_schema.md,markdown,,0,KG-7 Authority Switch Readiness Schema,KG-7 Authority Switch Readiness Schema,,,,,,,13,306,,0,False
+docs/knowledge_graph/authority_switch/kg007_feature_flag_contract.md,markdown,,0,KG-7 Feature Flag Contract,KG-7 Feature Flag Contract,,,,,,,5,187,,0,False
+docs/knowledge_graph/authority_switch/kg007_legacy_projection_contract.md,markdown,,0,KG-7 Legacy Projection Contract,KG-7 Legacy Projection Contract,,,,,,,6,246,,0,False
+docs/knowledge_graph/authority_switch/kg007_rollback_boundary.md,markdown,,0,KG-7 Rollback Boundary,KG-7 Rollback Boundary,,,,,,,7,282,,0,False
+docs/knowledge_graph/caps_graph/kg001_caps_graph_foundation_policy.md,markdown,,0,KG-1 CAPS Graph Foundation Policy,KG-1 CAPS Graph Foundation Policy,active,knowledge-graph,developer,False,2026-07-05,60,36,1269,,0,True
+docs/knowledge_graph/caps_graph/kg001_caps_graph_loader_contract.md,markdown,,0,KG-1 CAPS Graph Loader Contract,KG-1 CAPS Graph Loader Contract,active,knowledge-graph,developer,False,2026-07-05,60,35,989,,0,True
+docs/knowledge_graph/caps_graph/kg001_caps_graph_runtime_boundary.md,markdown,,0,KG-1 CAPS Graph Runtime Boundary,KG-1 CAPS Graph Runtime Boundary,active,knowledge-graph,developer,False,2026-07-05,60,31,978,,0,True
+docs/knowledge_graph/caps_graph/kg001_caps_graph_schema.md,markdown,,0,KG-1 CAPS Graph Schema,KG-1 CAPS Graph Schema,active,knowledge-graph,developer,False,2026-07-05,60,41,1151,,0,True
+docs/knowledge_graph/gap_engine/kg004_gap_engine_advisory_boundary.md,markdown,,0,KG-4 Gap Engine Advisory Boundary,KG-4 Gap Engine Advisory Boundary,authority-recorded,knowledge-graph,,,,,28,865,,0,True
+docs/knowledge_graph/gap_engine/kg004_gap_engine_policy.md,markdown,,0,KG-4 Gap Engine Policy,KG-4 Gap Engine Policy,authority-recorded,knowledge-graph,,,,,18,780,,0,True
+docs/knowledge_graph/gap_engine/kg004_gap_engine_schema.md,markdown,,0,KG-4 Gap Engine Schema,KG-4 Gap Engine Schema,authority-recorded,knowledge-graph,,,,,24,605,,0,True
+docs/knowledge_graph/gap_engine/kg004_intervention_planner_contract.md,markdown,,0,KG-4 Intervention Planner Contract,KG-4 Intervention Planner Contract,authority-recorded,knowledge-graph,,,,,33,716,,0,True
+docs/knowledge_graph/grounded_generation/kg005_assessment_generation_contract.md,markdown,,0,KG-5 Assessment Generation Contract,KG-5 Assessment Generation Contract,authority_defined,,,,,,14,418,,0,True
+docs/knowledge_graph/grounded_generation/kg005_grounded_generation_policy.md,markdown,,0,KG-5 Grounded Generation Policy,KG-5 Grounded Generation Policy,authority_defined,,,,,,15,515,,0,True
+docs/knowledge_graph/grounded_generation/kg005_grounded_generation_schema.md,markdown,,0,KG-5 Grounded Generation Schema,KG-5 Grounded Generation Schema,authority_defined,,,,,,18,594,,0,True
+docs/knowledge_graph/grounded_generation/kg005_human_review_boundary.md,markdown,,0,KG-5 Human Review Boundary,KG-5 Human Review Boundary,authority_defined,,,,,,21,551,,0,True
+docs/knowledge_graph/grounded_generation/kg005_lesson_generation_contract.md,markdown,,0,KG-5 Lesson Generation Contract,KG-5 Lesson Generation Contract,authority_defined,,,,,,15,469,,0,True
+docs/knowledge_graph/learner_shadow/kg003_learner_graph_shadow_policy.md,markdown,,0,KG-3 Learner Graph Shadow Policy,KG-3 Learner Graph Shadow Policy,active,knowledge-graph,,,,,19,630,,0,True
+docs/knowledge_graph/learner_shadow/kg003_learner_graph_shadow_privacy_boundary.md,markdown,,0,KG-3 Learner Graph Shadow Privacy Boundary,KG-3 Learner Graph Shadow Privacy Boundary,active,knowledge-graph,,,,,18,546,,0,True
+docs/knowledge_graph/learner_shadow/kg003_learner_graph_shadow_runtime_boundary.md,markdown,,0,KG-3 Learner Graph Shadow Runtime Boundary,KG-3 Learner Graph Shadow Runtime Boundary,active,knowledge-graph,,,,,21,435,,0,True
+docs/knowledge_graph/learner_shadow/kg003_learner_graph_shadow_schema.md,markdown,,0,KG-3 Learner Graph Shadow Schema,KG-3 Learner Graph Shadow Schema,active,knowledge-graph,,,,,30,803,,0,True
+docs/knowledge_graph/learner_shadow/kg003_shadow_observation_fixture_contract.md,markdown,,0,KG-3 Shadow Observation Fixture Contract,KG-3 Shadow Observation Fixture Contract,active,knowledge-graph,,,,,18,575,,0,True
+docs/knowledge_graph/post_switch_review/kg008_monitoring_observability_review.md,markdown,,0,KG-8 Monitoring Observability Review,KG-8 Monitoring Observability Review,recorded,,,,,,14,306,,0,True
+docs/knowledge_graph/post_switch_review/kg008_monitoring_observability_review.template.md,markdown,,0,KG-8 Monitoring Observability Review Template,KG-8 Monitoring Observability Review Template,template,,,,,,14,341,,0,True
+docs/knowledge_graph/post_switch_review/kg008_monitoring_review_contract.md,markdown,,0,KG-8 Monitoring Review Contract,KG-8 Monitoring Review Contract,active,,,,,,9,310,,0,True
+docs/knowledge_graph/post_switch_review/kg008_optimisation_backlog_contract.md,markdown,,0,KG-8 Optimisation Backlog Contract,KG-8 Optimisation Backlog Contract,active,,,,,,14,388,,0,True
+docs/knowledge_graph/post_switch_review/kg008_optimisation_backlog_review.md,markdown,,0,KG-8 Optimisation Backlog Review,KG-8 Optimisation Backlog Review,recorded,,,,,,14,277,,0,True
+docs/knowledge_graph/post_switch_review/kg008_optimisation_backlog_review.template.md,markdown,,0,KG-8 Optimisation Backlog Review Template,KG-8 Optimisation Backlog Review Template,template,,,,,,14,312,,0,True
+docs/knowledge_graph/post_switch_review/kg008_popia_post_switch_boundary_review.md,markdown,,0,KG-8 POPIA Post-Switch Boundary Review,KG-8 POPIA Post-Switch Boundary Review,recorded,,,,,,15,341,,0,True
+docs/knowledge_graph/post_switch_review/kg008_popia_post_switch_boundary_review.template.md,markdown,,0,KG-8 POPIA Post-Switch Boundary Review Template,KG-8 POPIA Post-Switch Boundary Review Template,template,,,,,,15,376,,0,True
+docs/knowledge_graph/post_switch_review/kg008_post_switch_boundary.md,markdown,,0,KG-8 Post-Switch Boundary,KG-8 Post-Switch Boundary,recorded,,,,,,19,423,,0,True
+docs/knowledge_graph/post_switch_review/kg008_post_switch_boundary.template.md,markdown,,0,KG-8 Post-Switch Boundary Template,KG-8 Post-Switch Boundary Template,template,,,,,,21,543,,0,True
+docs/knowledge_graph/post_switch_review/kg008_post_switch_go_no_go_review.md,markdown,,0,KG-8 Post-Switch Go/No-Go Review,KG-8 Post-Switch Go/No-Go Review,recorded,,,,,,15,345,,0,True
+docs/knowledge_graph/post_switch_review/kg008_post_switch_go_no_go_review.template.md,markdown,,0,KG-8 Post-Switch Go/No-Go Review Template,KG-8 Post-Switch Go/No-Go Review Template,template,,,,,,17,472,,0,True
+docs/knowledge_graph/post_switch_review/kg008_post_switch_review_policy.md,markdown,,0,KG-8 Post-Switch Review Policy,KG-8 Post-Switch Review Policy,active,,,,,,17,813,,0,True
+docs/knowledge_graph/post_switch_review/kg008_post_switch_review_schema.md,markdown,,0,KG-8 Post-Switch Review Schema,KG-8 Post-Switch Review Schema,active,,,,,,32,599,,0,True
+docs/knowledge_graph/post_switch_review/kg008_rollback_observability_review.md,markdown,,0,KG-8 Rollback Observability Review,KG-8 Rollback Observability Review,recorded,,,,,,14,288,,0,True
+docs/knowledge_graph/post_switch_review/kg008_rollback_observability_review.template.md,markdown,,0,KG-8 Rollback Observability Review Template,KG-8 Rollback Observability Review Template,template,,,,,,14,323,,0,True
+docs/knowledge_graph/post_switch_review/kg008_scale_review.md,markdown,,0,KG-8 Scale Review,KG-8 Scale Review,recorded,,,,,,14,243,,0,True
+docs/knowledge_graph/post_switch_review/kg008_scale_review.template.md,markdown,,0,KG-8 Scale Review Template,KG-8 Scale Review Template,template,,,,,,14,278,,0,True
+docs/knowledge_graph/post_switch_review/kg008_scale_review_contract.md,markdown,,0,KG-8 Scale Review Contract,KG-8 Scale Review Contract,active,,,,,,14,360,,0,True
+docs/knowledge_graph/product_alignment/kg006_gamification_alignment_contract.md,markdown,,0,KG-6 Gamification Alignment Contract,KG-6 Gamification Alignment Contract,,,,,,,9,343,,0,False
+docs/knowledge_graph/product_alignment/kg006_parent_alignment_privacy_boundary.md,markdown,,0,KG-6 Parent Alignment Privacy Boundary,KG-6 Parent Alignment Privacy Boundary,,,,,,,10,366,,0,False
+docs/knowledge_graph/product_alignment/kg006_product_alignment_policy.md,markdown,,0,KG-6 Product Alignment Policy,KG-6 Product Alignment Policy,,,,,,,12,617,,0,False
+docs/knowledge_graph/product_alignment/kg006_product_alignment_schema.md,markdown,,0,KG-6 Product Alignment Schema,KG-6 Product Alignment Schema,,,,,,,12,729,,0,False
+docs/knowledge_graph/product_alignment/kg006_study_plan_alignment_contract.md,markdown,,0,KG-6 Study Plan Alignment Contract,KG-6 Study Plan Alignment Contract,,,,,,,10,419,,0,False
+docs/knowledge_graph/product_alignment/kg006_tutor_alignment_contract.md,markdown,,0,KG-6 Tutor Alignment Contract,KG-6 Tutor Alignment Contract,,,,,,,10,407,,0,False
+docs/knowledge_graph/runtime_activation/kgact001_feature_flag_activation_contract.md,markdown,,0,KG-ACT-001 Feature Flag Activation Contract,KG-ACT-001 Feature Flag Activation Contract,,,,,,,13,373,,0,False
+docs/knowledge_graph/runtime_activation/kgact001_learner_safety_validation.md,markdown,,0,KG-ACT-001 Learner Safety Validation,KG-ACT-001 Learner Safety Validation,,,,,,,13,405,,0,False
+docs/knowledge_graph/runtime_activation/kgact001_popia_runtime_boundary_confirmation.md,markdown,,0,KG-ACT-001 POPIA Runtime Boundary Confirmation,KG-ACT-001 POPIA Runtime Boundary Confirmation,,,,,,,13,391,,0,False
+docs/knowledge_graph/runtime_activation/kgact001_rollback_validation.md,markdown,,0,KG-ACT-001 Rollback Validation,KG-ACT-001 Rollback Validation,,,,,,,14,364,,0,False
+docs/knowledge_graph/runtime_activation/kgact001_runtime_activation_boundary.md,markdown,,0,KG-ACT-001 Runtime Activation Boundary,KG-ACT-001 Runtime Activation Boundary,,,,,,,16,477,,0,False
+docs/knowledge_graph/runtime_activation/kgact001_runtime_activation_boundary.template.md,markdown,,0,KG-ACT-001 Runtime Activation Boundary,KG-ACT-001 Runtime Activation Boundary,,,,,,,14,358,,0,False
+docs/knowledge_graph/runtime_activation/kgact001_runtime_activation_policy.md,markdown,,0,KG-ACT-001 Runtime Activation Policy,KG-ACT-001 Runtime Activation Policy,authority,knowledge-graph,,,,,14,462,,0,True
+docs/knowledge_graph/runtime_activation/kgact001_runtime_activation_schema.md,markdown,,0,KG-ACT-001 Runtime Activation Schema,KG-ACT-001 Runtime Activation Schema,,,,,,,25,701,,0,False
+docs/knowledge_graph/runtime_activation/kgact001_runtime_authority_go_no_go.md,markdown,,0,KG-ACT-001 Runtime Authority Go/No-Go,KG-ACT-001 Runtime Authority Go/No-Go,,,,,,,15,529,,0,False
+docs/knowledge_graph/runtime_activation/kgact001_switch_execution_report.md,markdown,,0,KG-ACT-001 Switch Execution Report,KG-ACT-001 Switch Execution Report,,,,,,,13,370,,0,False
+docs/knowledge_graph/target_graph/kg002_target_graph_generation_policy.md,markdown,,0,KG-2 Target Graph Generation Policy,KG-2 Target Graph Generation Policy,active,knowledge-graph,developer,False,2026-07-05,60,32,908,,0,True
+docs/knowledge_graph/target_graph/kg002_target_graph_policy_contract.md,markdown,,0,KG-2 Target Graph Policy Contract,KG-2 Target Graph Policy Contract,active,knowledge-graph,developer,False,2026-07-05,60,31,900,,0,True
+docs/knowledge_graph/target_graph/kg002_target_graph_runtime_boundary.md,markdown,,0,KG-2 Target Graph Runtime Boundary,KG-2 Target Graph Runtime Boundary,active,knowledge-graph,developer,False,2026-07-05,60,32,980,,0,True
+docs/knowledge_graph/target_graph/kg002_target_graph_schema.md,markdown,,0,KG-2 Target Graph Schema,KG-2 Target Graph Schema,active,knowledge-graph,developer,False,2026-07-05,60,30,939,,0,True
 docs/launch_scope.md,markdown,,0,Production Launch Scope (v1.0),Production Launch Scope (v1.0),,,,,,,39,1652,,0,False
 docs/learning_science/irt_model.md,markdown,,0,IRT Diagnostic Model,IRT Diagnostic Model,active,learning-science,learning-science-reviewer,False,2026-06-24,60,34,1344,,0,True
 docs/learning_science/learning_evidence.md,markdown,,0,Learning Evidence,Learning Evidence,current-evidence,learning-science,learning-science-reviewer,False,2026-06-24,60,88,3372,,0,True
@@ -838,6 +906,7 @@ docs/product/README.md,markdown,,0,Product Documentation,Product Documentation,a
 docs/product/ai_transparency_faq.md,markdown,,0,AI Transparency FAQ — EduBoost,AI Transparency FAQ — EduBoost,active,product,stakeholder,False,2026-06-23,60,171,4871,,0,True
 docs/product/differentiation_strategy.md,markdown,,0,Future differentiation strategy,Future differentiation strategy,active,product,stakeholder,False,2026-06-23,60,37,1132,,0,True
 docs/product/faq.md,markdown,,0,Frequently Asked Questions — EduBoost,Frequently Asked Questions — EduBoost,active,product,stakeholder,False,2026-06-23,60,162,4231,,0,True
+docs/product/knowledge_graph_learning_model_brief.md,markdown,,0,Knowledge Graph Learning Model Brief,Product Brief: Knowledge Graph Learning Model,active,product,developer,False,2026-07-05,60,71,2758,,0,True
 docs/product/launch_scope.md,markdown,,0,EduBoost beta launch scope,EduBoost beta launch scope,active,product,stakeholder,False,2026-06-23,60,45,2103,,0,True
 docs/product/learner_guide.md,markdown,,0,Learner Guide — EduBoost,Learner Guide — EduBoost,active,product,stakeholder,False,2026-06-23,60,169,4180,,0,True
 docs/product/parent_guide.md,markdown,,0,Parent/Guardian Guide — EduBoost,Parent/Guardian Guide — EduBoost,active,product,stakeholder,False,2026-06-23,60,179,4283,,0,True
@@ -935,6 +1004,18 @@ docs/release-evidence/atlas/phase-06/phase_06_audit_report.md,markdown,,0,Phase 
 docs/release-evidence/atlas/phase-06/phase_06_evidence_index.md,markdown,,0,Phase 6 Evidence Index — AI Operations,Phase 6 Evidence Index — AI Operations,,,,,,,15,692,,0,False
 docs/release-evidence/atlas/phase-07/phase_07_audit_report.md,markdown,,0,Phase 7 Independent Audit Report,Phase 7 Independent Audit Report,,,,,,,21,845,,0,False
 docs/release-evidence/atlas/phase-07/phase_07_evidence_index.md,markdown,,0,Phase 7 Evidence Index,Phase 7 Evidence Index,,,,,,,23,1351,,0,False
+docs/release-evidence/knowledge-graph/kg-000-formal-kg-roadmap-approval/evidence_index.md,markdown,,0,KG-0 Formal KG Roadmap Approval Evidence,KG-0 Formal KG Roadmap Approval Evidence,,,,,,,23,590,,0,False
+docs/release-evidence/knowledge-graph/kg-001-caps-graph-foundation/evidence_index.md,markdown,,0,KG-1 CAPS Graph Foundation Evidence,KG-1 CAPS Graph Foundation Evidence,,,,,,,35,987,,0,False
+docs/release-evidence/knowledge-graph/kg-002-target-graph-generation/evidence_index.md,markdown,,0,KG-2 Target Graph Generation Evidence,KG-2 Target Graph Generation Evidence,recorded,knowledge-graph,,,,,28,820,,0,True
+docs/release-evidence/knowledge-graph/kg-003-learner-graph-shadow-mode/evidence_index.md,markdown,,0,KG-3 Learner Graph Shadow Mode Evidence,KG-3 Learner Graph Shadow Mode Evidence,recorded,knowledge-graph,,,,,30,968,,0,True
+docs/release-evidence/knowledge-graph/kg-004-gap-engine-intervention-planner/evidence_index.md,markdown,,0,KG-4 Gap Engine and Intervention Planner Evidence,KG-4 Gap Engine and Intervention Planner Evidence,recorded,knowledge-graph,,,,,29,935,,0,True
+docs/release-evidence/knowledge-graph/kg-005-graph-grounded-lesson-assessment-generation/evidence_index.md,markdown,,0,KG-5 Graph-Grounded Lesson and Assessment Generation Evidence,KG-5 Graph-Grounded Lesson and Assessment Generation Evidence,recorded,knowledge-graph,,,,,30,981,,0,True
+docs/release-evidence/knowledge-graph/kg-006-tutor-study-plan-gamification-parent-alignment/evidence_index.md,markdown,,0,KG-6 Tutor Study Plan Gamification Parent Alignment Evidence,"KG-6 Tutor, Study Plan, Gamification, and Parent Alignment Evidence",recorded,knowledge-graph,,,,,31,1002,,0,True
+docs/release-evidence/knowledge-graph/kg-007-authority-switch-legacy-cleanup/evidence_index.md,markdown,,0,KG-7 Authority Switch Legacy Cleanup Evidence,KG-7 Authority Switch and Legacy Cleanup Evidence,recorded,knowledge-graph,,,,,30,860,,0,True
+docs/release-evidence/knowledge-graph/kg-008-post-switch-optimisation-scale-review/evidence_index.md,markdown,,0,KG-8 Post-Switch Optimisation and Scale Review Evidence,KG-8 Post-Switch Optimisation and Scale Review Evidence,recorded,knowledge-graph,,,,,32,843,,0,True
+docs/release-evidence/knowledge-graph/kg-act-001-controlled-runtime-kg-authority-activation/evidence_index.md,markdown,,0,KG-ACT-001 Controlled Runtime KG Authority Activation Evidence,KG-ACT-001 Controlled Runtime KG Authority Activation Evidence,recorded,knowledge-graph,,,,,27,771,,0,True
+docs/release-evidence/knowledge-graph/kg-roadmap-closure/evidence_index.md,markdown,,0,KG Roadmap Closure Evidence,KG Roadmap Closure Evidence,recorded,knowledge-graph,,,,,33,946,,0,True
+docs/release-evidence/production-readiness/prd-000-production-readiness-stream-authority/evidence_index.md,markdown,,0,PRD-0.0 Production Readiness Stream Authority Evidence,PRD-0.0 Production Readiness Stream Authority Evidence,recorded,production-readiness,,,,,34,940,,0,True
 docs/release-evidence/roadmap-reconciliation/final-roadmap-reconciliation-closure/evidence_index.md,markdown,,0,Final Roadmap Reconciliation Closure Evidence,Final Roadmap Reconciliation Closure Evidence,,,,,,,14,493,,0,False
 docs/release-evidence/roadmap-reconciliation/roadmap-reconciliation-slice/evidence_index.md,markdown,,0,Roadmap Reconciliation Evidence Index,Roadmap Reconciliation Evidence Index,,,,,,,35,1005,,0,False
 docs/release-evidence/roadmap-reconciliation/roadmap-reconciliation-slice/raw/outstanding_work_register_snapshot.md,markdown,,0,Outstanding Work Register,Outstanding Work Register,,,,,,,52,7570,,0,False
@@ -1466,7 +1547,7 @@ docs/roadmap/EduBoost_Full_Lifecycle_Delivery_and_Beta_Readiness_Plan.md,markdow
 docs/roadmap/PHASE_QUICK_REFERENCE.md,markdown,,0,EduBoost 13-Phase Quick Reference,EduBoost 13-Phase Quick Reference,,,,,,,142,4840,,0,False
 docs/roadmap/PHASE_STATUS_REGISTER.md,markdown,,0,EduBoost Phase Status Register,EduBoost Phase Status Register,,,,,,,81,4891,,0,False
 docs/roadmap/PROCESS_DISCIPLINE.md,markdown,,0,Process Discipline — Phase Execution Standards,Process Discipline — Phase Execution Standards,,,,,,,345,10263,,0,False
-docs/roadmap/README.md,markdown,,0,EduBoost Roadmap Documentation,EduBoost Roadmap Documentation,,,,,,,92,4045,,0,False
+docs/roadmap/README.md,markdown,,0,EduBoost Roadmap Documentation,EduBoost Roadmap Documentation,,,,,,,104,4584,,0,False
 docs/roadmap/agent_roadmap_reconciliation.md,markdown,,0,Agent Roadmap Reconciliation,Agent Roadmap Reconciliation,,,,,,,29,3379,,0,False
 docs/roadmap/deferred_scope_register.md,markdown,,0,Deferred Scope Register,Deferred Scope Register,,,,,,,22,847,,0,False
 docs/roadmap/execution/atlas/README.md,markdown,,0,Atlas Sprint Namespace,Atlas Sprint Namespace,,,,,,,13,584,,0,False
@@ -1580,12 +1661,28 @@ docs/roadmap/execution/technical_audit_remediation/13b_post_merge_protected_bran
 docs/roadmap/execution/technical_audit_remediation/phase_09_hosted_ci_authority.md,markdown,,0,TA Phase 09 — Hosted CI Run Evidence / Merge Readiness Authority,TA Phase 09 — Hosted CI Run Evidence / Merge Readiness Authority,,,,,,,77,2597,,0,False
 docs/roadmap/execution/technical_audit_remediation/true_state_application_audit_2026-06-29.md,markdown,,0,True State Application Audit - 2026-06-29,True State Application Audit - 2026-06-29,,,,,,,419,13607,,0,False
 docs/roadmap/ga_graduation_boundary_contract.md,markdown,,0,GA Graduation Boundary Contract,GA Graduation Boundary Contract,,,,,,,17,576,,0,False
+docs/roadmap/knowledge_graph/kg_000_formal_kg_roadmap_approval.md,markdown,,0,KG-0 Formal KG Roadmap Approval,KG-0 — Formal KG Roadmap Approval,active,roadmap-governance,developer,True,2026-07-05,60,57,2363,,0,True
+docs/roadmap/knowledge_graph/kg_001_caps_graph_foundation.md,markdown,,0,KG-1 CAPS Graph Foundation,KG-1 — CAPS Graph Foundation,active,knowledge-graph,developer,False,2026-07-05,60,51,1515,,0,True
+docs/roadmap/knowledge_graph/kg_002_target_graph_generation.md,markdown,,0,KG-2 Target Graph Generation,KG-2 — Target Graph Generation,active,knowledge-graph,developer,False,2026-07-05,60,49,1372,,0,True
+docs/roadmap/knowledge_graph/kg_003_learner_graph_shadow_mode.md,markdown,,0,KG-3 Learner Graph Shadow Mode,KG-3 Learner Graph Shadow Mode,pending-evidence,knowledge-graph,,,,,26,1076,,0,True
+docs/roadmap/knowledge_graph/kg_004_gap_engine_intervention_planner.md,markdown,,0,KG-4 Gap Engine and Intervention Planner,KG-4 Gap Engine and Intervention Planner,pending-evidence,knowledge-graph,,,,,27,1328,,0,True
+docs/roadmap/knowledge_graph/kg_005_graph_grounded_lesson_assessment_generation.md,markdown,,0,KG-5 Graph-Grounded Lesson and Assessment Generation,KG-5 Graph-Grounded Lesson and Assessment Generation,authority_defined,,,,,,41,1385,,0,True
+docs/roadmap/knowledge_graph/kg_006_tutor_study_plan_gamification_parent_alignment.md,markdown,,0,"KG-6 Tutor, Study Plan, Gamification, and Parent Alignment","KG-6 Tutor, Study Plan, Gamification, and Parent Alignment",authority-defined-pending-evidence,knowledge-graph,,,,,34,1357,,0,True
+docs/roadmap/knowledge_graph/kg_007_authority_switch_legacy_cleanup.md,markdown,,0,KG-7 Authority Switch and Legacy Cleanup,KG-7 — Authority Switch and Legacy Cleanup,authority-approved-pending-evidence,knowledge-graph,,,,,44,1328,,0,True
+docs/roadmap/knowledge_graph/kg_008_post_switch_optimisation_scale_review.md,markdown,,0,KG-8 Post-Switch Optimisation and Scale Review,KG-8 — Post-Switch Optimisation and Scale Review,active-authority,knowledge-graph,,,,,40,1355,,0,True
+docs/roadmap/knowledge_graph/kg_act_001_controlled_runtime_kg_authority_activation.md,markdown,,0,KG-ACT-001 Controlled Runtime KG Authority Activation,KG-ACT-001 Controlled Runtime KG Authority Activation,authority,knowledge-graph,,,,,26,942,,0,True
+docs/roadmap/knowledge_graph/kg_implementation_roadmap.md,markdown,,0,EduBoost Knowledge Graph Implementation Roadmap,EduBoost Knowledge Graph Implementation Roadmap,active,roadmap-governance,developer,True,2026-07-05,60,547,18027,,0,True
+docs/roadmap/knowledge_graph/kg_roadmap_closure_report.md,markdown,,0,KG Roadmap Closure Report,KG Roadmap Closure Report,pending-evidence-capture,knowledge-graph,,,,,56,2266,,0,True
+docs/roadmap/knowledge_graph_pivot_roadmap.md,markdown,,0,Knowledge Graph Pivot Roadmap,Knowledge Graph Pivot Roadmap,active,roadmap-governance,developer,False,2026-07-05,60,112,5987,,0,True
 docs/roadmap/post_530_north_star_execution_board.md,markdown,,0,Post-530 North-Star Execution Board,Post-530 North-Star Execution Board,,,,,,,16,494,,0,False
 docs/roadmap/post_baseline_risk_register.md,markdown,,0,Post-Baseline Risk Register,Post-Baseline Risk Register,,,,,,,26,451,,0,False
 docs/roadmap/post_baseline_roadmap_architecture_contract.md,markdown,,0,Post-Baseline Roadmap Architecture Contract,Post-Baseline Roadmap Architecture Contract,,,,,,,102,2767,,0,False
 docs/roadmap/post_baseline_roadmap_register.md,markdown,,0,Post-Baseline Roadmap Register,Post-Baseline Roadmap Register,,,,,,,23,852,,0,False
 docs/roadmap/production_grade.md,markdown,,0,Todo Production Grade,Todo Production Grade,,,,,,,68,3651,,0,False
 docs/roadmap/production_grade_p0_blockers_2026_06_01.md,markdown,,0,EduBoost V2 Production Grade P0 Blocker Tracker,EduBoost V2 Production Grade P0 Blocker Tracker,,,,,,,181,7153,,0,False
+docs/roadmap/production_readiness/prd_000_production_readiness_stream_authority.md,markdown,,0,PRD-0.0 Production-Readiness Stream Authority and Register,PRD-0.0 — Production-Readiness Stream Authority and Register,authority_registered_pending_evidence,Nkgolo Lebelo,,,,,98,3264,,0,True
+docs/roadmap/production_readiness/prd_0_expanded_post_closure_current_state_authority_refresh.md,markdown,,0,PRD-0 Expanded Post-Closure Current-State Authority Refresh,PRD-0 Expanded Post-Closure Current-State Authority Refresh,,,,,,,37,1521,,0,False
+docs/roadmap/production_readiness/production_readiness_boundary_contract.md,markdown,,0,Production Readiness Boundary Contract,Production Readiness Boundary Contract,,,,,,,43,1237,,0,False
 docs/roadmap/production_readiness_baseline_boundary_contract.md,markdown,,0,Production Readiness Baseline Boundary Contract,Production Readiness Baseline Boundary Contract,,,,,,,119,3451,production-ready,0,False
 docs/roadmap/reconciliation/final_roadmap_reconciliation_closure.md,markdown,,0,Final Roadmap Reconciliation Closure,Final Roadmap Reconciliation Closure,active,roadmap-reconciliation,developer,False,2026-07-05,60,52,2023,,0,True
 docs/roadmap/reconciliation/outstanding_work_register.md,markdown,,0,Outstanding Work Register,Outstanding Work Register,,,,,,,52,7570,,0,False
@@ -1610,6 +1707,7 @@ docs/roadmap/reconciliation/rr_015_external_approvals.md,markdown,,0,RR-015 Exte
 docs/roadmap/reconciliation/rr_016_operational_drills.md,markdown,,0,RR-016 Operational Drills,RR-016 Operational Drills,active,operations,developer,False,2026-07-04,60,71,2266,,0,True
 docs/roadmap/reconciliation/rr_017_release_safety_controls.md,markdown,,0,RR-017 Release Safety Controls,RR-017 Release Safety Controls,active,release-engineering,developer,False,2026-07-04,60,74,2597,,0,True
 docs/roadmap/reconciliation/rr_018_trustworthy_beta_product_quality.md,markdown,,0,RR-018 Trustworthy Beta Product Quality,RR-018 Trustworthy Beta Product Quality,active,product-quality,developer,False,2026-07-05,60,30,940,,0,True
+docs/roadmap/risk_register_knowledge_graph_pivot.md,markdown,,0,Knowledge Graph Pivot Risk Register,Knowledge Graph Pivot Risk Register,active,risk,developer,False,2026-07-05,60,45,4146,,0,True
 docs/roadmap/roadmap.md,markdown,,0,EduBoost V2 Remediation Roadmap,EduBoost V2 Remediation Roadmap,,,,,,,671,25783,production-ready,0,False
 docs/roadmap/roadmap_dependency_register.md,markdown,,0,Roadmap Dependency Register,Roadmap Dependency Register,,,,,,,24,501,,0,False
 docs/roadmap/roadmap_graduation_criteria.md,markdown,,0,Roadmap Graduation Criteria,Roadmap Graduation Criteria,,,,,,,24,548,,0,False
@@ -1679,6 +1777,7 @@ docs/security/jwt_rotation_introspection.md,markdown,,0,JWT Rotation Introspecti
 docs/security/jwt_rotation_plan.md,markdown,,0,JWT Rotation Plan,JWT Rotation Plan,active,security,security-reviewer,False,2026-06-23,60,51,1159,,0,True
 docs/security/jwt_rotation_repair_report.md,markdown,,0,JWT Rotation Repair Report,JWT Rotation Repair Report,current-evidence,security,security-reviewer,False,2026-07-02,60,26,647,,0,True
 docs/security/jwt_secret_resolution_policy.md,markdown,,0,JWT Secret Resolution Policy,JWT Secret Resolution Policy,active,security,security-reviewer,False,2026-06-23,60,41,906,,0,True
+docs/security/knowledge_graph_privacy_and_popia_contract.md,markdown,,0,Knowledge Graph Privacy and POPIA Contract,Knowledge Graph Privacy and POPIA Contract,active,privacy,developer,False,2026-07-05,60,66,3638,,0,True
 docs/security/learner_authz_ci.md,markdown,,0,Learner Authorization Coverage CI,Learner Authorization Coverage CI,active,security,security-reviewer,False,2026-06-23,60,39,723,,0,True
 docs/security/learner_authz_coverage_check.md,markdown,,0,Learner Authorization Coverage Check,Learner Authorization Coverage Check,active,security,security-reviewer,False,2026-06-23,60,55,1299,,0,True
 docs/security/learner_authz_matrix.md,markdown,,0,Learner Authorization Coverage Matrix,Learner Authorization Coverage Matrix,current-evidence,security,security-reviewer,False,2026-06-23,60,101,8865,,0,True
@@ -1763,6 +1862,7 @@ docs/testing/README.md,markdown,,0,Backend testing,Backend testing,active,qualit
 docs/testing/beta_release_quality_gate_checklist.md,markdown,,0,Beta Release Quality Gate Checklist,Beta Release Quality Gate Checklist,current-evidence,quality,quality-reviewer,False,2026-06-24,60,34,879,,0,True
 docs/testing/coverage_quality_threshold_contract.md,markdown,,0,Coverage Quality Threshold Contract,Coverage Quality Threshold Contract,active,quality,quality-reviewer,False,2026-06-24,60,44,1138,,0,True
 docs/testing/defect_triage_release_blocker_contract.md,markdown,,0,Defect Triage and Release Blocker Contract,Defect Triage and Release Blocker Contract,active,quality,quality-reviewer,False,2026-06-24,60,37,998,,0,True
+docs/testing/knowledge_graph_verification_plan.md,markdown,,0,Knowledge Graph Verification Plan,Knowledge Graph Verification Plan,active,quality,developer,False,2026-07-05,60,77,3697,,0,True
 docs/testing/known_issues_release_register.md,markdown,,0,Known Issues Release Register,Known Issues Release Register,active,quality,quality-reviewer,False,2026-06-24,60,41,1031,,0,True
 docs/testing/pr002r_evidence_check.md,markdown,,0,PR-002R Evidence Check,PR-002R Evidence Check,current-evidence,quality,quality-reviewer,False,2026-06-24,60,72,1555,,0,True
 docs/testing/production_release_quality_gate_checklist.md,markdown,,0,Production Release Quality Gate Checklist,Production Release Quality Gate Checklist,current-evidence,quality,quality-reviewer,False,2026-06-24,60,35,964,,0,True
