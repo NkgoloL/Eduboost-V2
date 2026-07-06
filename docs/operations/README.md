@@ -1,5 +1,5 @@
 ---
-title: Operations Documentation Index
+title: Operations Documentation
 status: active
 owner: operations
 reviewers: [engineering, security, release-management]
@@ -7,10 +7,10 @@ audience: operator
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-22
+last_reviewed: 2026-07-06
 review_interval_days: 60
-evidence_command: make docs-housekeeping-check
-code_anchors: [docker-compose.yml, docker-compose.prod.yml, deployment, k8s]
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/operations, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
 ---
 
 # Operations Documentation

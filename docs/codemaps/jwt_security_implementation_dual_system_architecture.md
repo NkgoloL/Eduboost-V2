@@ -1,3 +1,18 @@
+---
+title: "JWT Security Implementation: Dual-System Architecture"
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # JWT Security Implementation: Dual-System Architecture
 
 EduBoost V2 implements two parallel JWT systems: the primary system (security.py + jwt_keyring) used by auth routes with JWT-based refresh tokens, and an alternative system (token_config.py) with opaque refresh tokens. Key security features include kid-based key rotation, Redis-backed revocation with DB fallback, and family-based refresh token reuse detection. Notable entry points: login at [1b], token creation at [2a], verification at [3b], and refresh rotation at [4b].

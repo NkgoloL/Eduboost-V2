@@ -1,3 +1,18 @@
+---
+title: Phase 2R Gate 2R.3 Candidate Evidence Report
+status: historical-record
+owner: roadmap-governance
+reviewers: [roadmap-governance, release-management, documentation-governance]
+audience: roadmap-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 30
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/roadmap, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # Phase 2R Gate 2R.3 Candidate Evidence Report
 
 **Generated:** 2026-06-22T10:23:21Z

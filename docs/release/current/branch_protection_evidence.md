@@ -7,11 +7,12 @@ audience: reviewer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-02
+last_reviewed: 2026-07-06
 review_interval_days: 14
-evidence_command: make rr009-governance-process-check
-code_anchors: [.github/workflows]
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/release, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
 ---
+
 # Branch Protection Evidence Linkage
 
 RR-009 records where branch protection and repository-governance evidence is reflected in canonical release documentation.

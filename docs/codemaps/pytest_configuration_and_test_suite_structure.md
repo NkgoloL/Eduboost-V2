@@ -1,3 +1,18 @@
+---
+title: Pytest Configuration and Test Suite Structure
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # Pytest Configuration and Test Suite Structure
 
 Maps pytest configuration from pytest.ini through test discovery, fixture hierarchy, coverage reporting, and CI execution. Key configuration at [1a], marker definitions at [2b], database fixtures at [3a-3d], coverage thresholds at [4d], and CI test execution at [5a-5b].

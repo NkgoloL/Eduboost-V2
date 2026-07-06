@@ -7,10 +7,10 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-03
+last_reviewed: 2026-07-06
 review_interval_days: 30
-evidence_command: make rr011-live-billing-provider-check
-code_anchors: [docs/billing, scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py]
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/roadmap, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
 ---
 
 # RR-011 Live Billing Provider Integration

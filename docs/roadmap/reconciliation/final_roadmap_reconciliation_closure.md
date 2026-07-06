@@ -1,11 +1,16 @@
 ---
-title: "Final Roadmap Reconciliation Closure"
+title: Final Roadmap Reconciliation Closure
 status: active
 owner: roadmap-reconciliation
+reviewers: [roadmap-reconciliation, release-management, documentation-governance]
 audience: developer
 source_of_truth: false
-last_reviewed: 2026-07-05
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
 review_interval_days: 60
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/roadmap, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
 ---
 
 # Final Roadmap Reconciliation Closure

@@ -1,3 +1,18 @@
+---
+title: "EduBoost V2 ORM Models: Domain Entities, Assessment System, Content Factory, and POPIA Compliance"
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # EduBoost V2 ORM Models: Domain Entities, Assessment System, Content Factory, and POPIA Compliance
 
 Comprehensive map of EduBoost V2's SQLAlchemy ORM layer covering 40+ models across five subsystems: core domain (Guardian/LearnerProfile/ParentalConsent), IRT assessment (DiagnosticItem/ItemExposure/DiagnosticSession), content delivery (Lesson/KnowledgeGap), content factory (ContentGenerationArtifact/ContentScope), and auth extensions (SecureToken/OnboardingState/PrivacySettings). Key architectural patterns include bidirectional relationships via relationship(), CASCADE delete enforcement, POPIA compliance through soft-deletes and consent gating, IRT parameter storage for adaptive assessment, and AI generation metadata tracking.

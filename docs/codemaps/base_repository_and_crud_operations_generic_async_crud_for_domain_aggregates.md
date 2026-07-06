@@ -1,3 +1,18 @@
+---
+title: "Base Repository and CRUD Operations: Generic Async CRUD for Domain Aggregates"
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # Base Repository and CRUD Operations: Generic Async CRUD for Domain Aggregates
 
 Maps the repository pattern implementation from the generic BaseRepository class through concrete implementations to API/service usage. Core infrastructure at [1a-1e], concrete extensions at [2a-2e], session management at [3a-3d], API integration at [4a-4d], and service layer usage at [5a-5d].

@@ -1,5 +1,5 @@
 ---
-title: "RR-013 Advanced Mastery-Model Research"
+title: RR-013 Advanced Mastery-Model Research
 status: active
 owner: research
 reviewers: [research, learning-science, privacy]
@@ -7,10 +7,10 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-03
+last_reviewed: 2026-07-06
 review_interval_days: 60
-evidence_command: "PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py --json"
-code_anchors: [docs/research/mastery_model, scripts/mastery_research]
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/roadmap, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
 ---
 
 # RR-013 Advanced Mastery-Model Research

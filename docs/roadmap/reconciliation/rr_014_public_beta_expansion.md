@@ -1,5 +1,5 @@
 ---
-title: "RR-014 Public Beta Expansion"
+title: RR-014 Public Beta Expansion
 status: active
 owner: product
 reviewers: [product, privacy, operations, support]
@@ -7,10 +7,10 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-03
+last_reviewed: 2026-07-06
 review_interval_days: 60
-evidence_command: "PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py --json"
-code_anchors: [docs/public_beta, scripts/public_beta]
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/roadmap, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
 ---
 
 # RR-014 Public Beta Expansion

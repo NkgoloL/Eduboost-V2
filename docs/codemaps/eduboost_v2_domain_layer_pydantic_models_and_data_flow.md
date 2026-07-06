@@ -1,3 +1,18 @@
+---
+title: "EduBoost V2 Domain Layer: Pydantic Models and Data Flow"
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # EduBoost V2 Domain Layer: Pydantic Models and Data Flow
 
 Maps how domain models in app/domain/ flow through the EduBoost V2 architecture, from API transport schemas to business entities to persistence. Key entry points include API envelope construction [1b], consent state transitions [2c], content factory validation [3c], diagnostic item queries [4b], and role-based authorization [5b].

@@ -1,5 +1,5 @@
 ---
-title: "RR-013 Research Decision Memo Template"
+title: RR-013 Research Decision Memo Template
 status: active
 owner: research
 reviewers: [research, learning-science, privacy]
@@ -7,10 +7,10 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-03
+last_reviewed: 2026-07-05
 review_interval_days: 60
-evidence_command: "PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py --json"
-code_anchors: [docs/research/mastery_model, scripts/mastery_research]
+evidence_command: make rr013-advanced-mastery-model-research-check
+code_anchors: [docs/research/mastery_model, docs/diagnostics, docs/learning_science]
 ---
 
 # RR-013 Research Decision Memo

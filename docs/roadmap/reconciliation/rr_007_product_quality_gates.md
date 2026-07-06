@@ -1,13 +1,17 @@
 ---
-title: "RR-007 Product Completeness / Quality Gates"
+title: RR-007 Product Completeness / Quality Gates
 status: active
 owner: engineering
+reviewers: [roadmap-reconciliation, release-management, documentation-governance]
 audience: developer
 source_of_truth: false
-last_reviewed: 2026-07-02
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
 review_interval_days: 60
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/roadmap, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
 ---
-
 
 # RR-007 Product Completeness / Quality Gates
 

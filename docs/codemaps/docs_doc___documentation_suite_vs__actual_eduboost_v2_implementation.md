@@ -1,3 +1,18 @@
+---
+title: docs/DOC/* Documentation Suite vs. Actual EduBoost V2 Implementation
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # docs/DOC/* Documentation Suite vs. Actual EduBoost V2 Implementation
 
 The docs/DOC/ directory contains a 37-document MIL-STD-498 suite describing a 'DBE AI Expert System' (Azure-based policy advisory with Gremlin knowledge graphs), which is architecturally distinct from the actual EduBoost V2 codebase (a South African learning platform with PostgreSQL, IRT diagnostics, and lesson generation). Key documentation entry points: [1a] tier structure, [2a] documented system requirements, [3a] actual system description, [4a] architectural mismatch.

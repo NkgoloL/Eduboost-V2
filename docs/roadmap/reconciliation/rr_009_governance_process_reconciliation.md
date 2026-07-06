@@ -7,11 +7,12 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-02
+last_reviewed: 2026-07-06
 review_interval_days: 30
-evidence_command: make rr009-governance-process-check
-code_anchors: [docs/current_state.md, docs/adr/README.md, docs/release/current/README.md]
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/roadmap, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
 ---
+
 # RR-009 Governance Process Reconciliation
 
 RR-009 clears the `Governance and process` item from the reconciled outstanding-work register.

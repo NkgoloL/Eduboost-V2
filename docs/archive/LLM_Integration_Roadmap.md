@@ -1,3 +1,18 @@
+---
+title: "EduBoost V2: LLM Brain Integration Roadmap"
+status: archived-record
+owner: documentation-governance
+reviewers: [documentation-governance, evidence-custodian, release-management]
+audience: evidence-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 180
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/archive, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # EduBoost V2: LLM Brain Integration Roadmap
 
 This roadmap outlines the systematic integration of **DeepSeek v4 (via Hugging Face)** into the EduBoost V2 platform. The goal is to replace the current static fallback data with a fine-tuned, intelligent LLM that acts as the core "brain" of the application, specifically trained on the South African CAPS (Curriculum and Assessment Policy Statement) scope.

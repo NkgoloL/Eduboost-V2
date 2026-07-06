@@ -1,3 +1,18 @@
+---
+title: 6. AI, LLM safety, lesson generation, and CAPS validation
+status: active-control
+owner: delivery-planning
+reviewers: [delivery-planning, engineering, documentation-governance]
+audience: delivery-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 30
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/backlog, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # 6. AI, LLM safety, lesson generation, and CAPS validation
 
 ## 6.1 LLM gateway

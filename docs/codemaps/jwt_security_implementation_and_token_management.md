@@ -1,3 +1,18 @@
+---
+title: JWT Security Implementation and Token Management
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # JWT Security Implementation and Token Management
 
 EduBoost V2's JWT authentication system with dual-token architecture: short-lived access tokens (15 min) and single-use refresh tokens with family-based rotation. Features include kid-based key rotation via jwt_keyring, Redis-backed token storage with family reuse detection, multi-layer revocation (JTI, user-level, family-based), and canonical claims building. Notable entry points: login flow at [1b], token creation with keyring at [2d], verification with revocation at [3c], refresh rotation at [4b], and claims building at [5b].

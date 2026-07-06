@@ -1,3 +1,18 @@
+---
+title: "EduBoost Frontend: Next.js Learning Platform with Auth, AI Lessons, Diagnostics & PWA"
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # EduBoost Frontend: Next.js Learning Platform with Auth, AI Lessons, Diagnostics & PWA
 
 A Next.js 15 TypeScript frontend providing guardian authentication, AI-powered adaptive lessons, IRT diagnostics, gamification, POPIA-compliant parent dashboards, and offline PWA capabilities. Key flows: guardian login [1c], API proxy layer [2b], learner dashboard hydration [3d], async lesson generation [4c], diagnostic submission [5d], and offline service worker caching [6b].

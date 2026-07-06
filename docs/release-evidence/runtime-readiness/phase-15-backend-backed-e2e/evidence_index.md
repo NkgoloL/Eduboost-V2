@@ -1,3 +1,18 @@
+---
+title: Phase 15 Backend-Backed E2E Smoke Evidence
+status: evidence-record
+owner: evidence-custodian
+reviewers: [evidence-custodian, release-management, documentation-governance]
+audience: evidence-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 180
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/release-evidence, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # Phase 15 Backend-Backed E2E Smoke Evidence
 
 Captured at: 2026-06-30T08:14:54Z

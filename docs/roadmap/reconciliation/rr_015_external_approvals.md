@@ -1,5 +1,5 @@
 ---
-title: "RR-015 External Approvals"
+title: RR-015 External Approvals
 status: active
 owner: governance
 reviewers: [security, privacy, legal, curriculum, release-management]
@@ -7,10 +7,10 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-04
+last_reviewed: 2026-07-06
 review_interval_days: 60
-evidence_command: "PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr015_external_approvals.py --json"
-code_anchors: [docs/approvals, scripts/approvals]
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/roadmap, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
 ---
 
 # RR-015 External Approvals

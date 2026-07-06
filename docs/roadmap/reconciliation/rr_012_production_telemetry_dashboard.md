@@ -1,5 +1,5 @@
 ---
-title: "RR-012 Production Telemetry Dashboard"
+title: RR-012 Production Telemetry Dashboard
 status: pending-evidence
 owner: operations
 reviewers: [operations, security, backend]
@@ -7,10 +7,10 @@ audience: operator
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-03
+last_reviewed: 2026-07-06
 review_interval_days: 30
-evidence_command: "PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py --json"
-code_anchors: [docs/telemetry, docs/observability, app/core/metrics.py, prometheus/alerts.yml, alertmanager/alertmanager.yml]
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/roadmap, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
 ---
 
 # RR-012 Production Telemetry Dashboard

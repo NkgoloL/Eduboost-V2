@@ -1,5 +1,5 @@
 ---
-title: "RR-017 Prohibited Operations Register Template"
+title: RR-017 Prohibited Operations Register Template
 status: active
 owner: release-engineering
 reviewers: [release, operations, security, privacy]
@@ -7,12 +7,11 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-04
+last_reviewed: 2026-07-05
 review_interval_days: 60
-evidence_command: "PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr017_release_safety_controls.py --json"
-code_anchors: [docs/release_safety]
+evidence_command: make rr017-release-safety-controls-check
+code_anchors: [docs/release_safety, scripts/roadmap_reconciliation]
 ---
-
 
 # RR-017 Prohibited Operations Register Template
 

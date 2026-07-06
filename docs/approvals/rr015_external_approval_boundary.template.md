@@ -1,5 +1,5 @@
 ---
-title: "RR-015 External Approval Boundary Template"
+title: RR-015 External Approval Boundary Template
 status: template
 owner: governance
 reviewers: [security, privacy, legal, curriculum, release-management]
@@ -7,9 +7,10 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-04
+last_reviewed: 2026-07-05
 review_interval_days: 60
-code_anchors: [docs/approvals]
+evidence_command: make rr015-external-approvals-check
+code_anchors: [docs/approvals, scripts/roadmap_reconciliation]
 ---
 
 # RR-015 External Approval Boundary Template

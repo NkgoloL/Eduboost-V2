@@ -1,10 +1,16 @@
 ---
-title: "RR-008 Operational Readiness"
+title: RR-008 Operational Readiness
 status: authority
 owner: operations
+reviewers: [roadmap-reconciliation, release-management, documentation-governance]
 audience: developer, operator
 source_of_truth: true
-evidence_command: "PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py --json"
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 30
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/roadmap, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
 ---
 
 # RR-008 Operational Readiness

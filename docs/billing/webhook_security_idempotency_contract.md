@@ -1,3 +1,18 @@
+---
+title: Webhook Security and Idempotency Contract
+status: active
+owner: billing
+reviewers: [billing, privacy, release-management]
+audience: release-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-05
+review_interval_days: 45
+evidence_command: make docs-housekeeping-stage6-check
+code_anchors: [docs/billing, scripts/roadmap_reconciliation]
+---
+
 # Webhook Security and Idempotency Contract
 
 ## Purpose

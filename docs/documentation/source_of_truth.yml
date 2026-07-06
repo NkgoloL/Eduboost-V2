@@ -35,11 +35,11 @@ canonical_sections:
       - docs/documentation/stage_4_strict_scope.json
       - docs/documentation/stage_5_technical_delivery_housekeeping.md
       - docs/documentation/stage_5_strict_scope.json
-      - docs/documentation/stage_5_technical_delivery_housekeeping.md
-      - docs/documentation/stage_5_strict_scope.json
-      - docs/documentation/stage_5_technical_delivery_housekeeping.md
-      - docs/documentation/stage_5_strict_scope.json
-
+      - docs/documentation/stage_6_strict_scope.json
+      - docs/documentation/stage_7_strict_scope.json
+      - docs/documentation/stage_7_retention_policy.md
+      - docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md
+      - docs/documentation/stage_6_rr_reconciliation_evidence_governance.md
   source_of_truth_register:
     canonical_path: docs/documentation/source_of_truth.yml
     owner: documentation-governance
@@ -274,6 +274,64 @@ canonical_sections:
       - make docs-housekeeping-check
     related_paths:
       - docs/documentation/migration_manifests
+
+  rr_reconciliation_governance:
+    canonical_path: docs/roadmap/reconciliation/outstanding_work_register.md
+    owner: roadmap-reconciliation
+    review_interval_days: 30
+    evidence_commands:
+      - make docs-housekeeping-stage6-check
+      - make docs-housekeeping-check
+    related_paths:
+      - docs/roadmap/reconciliation
+      - docs/release-evidence/roadmap-reconciliation
+      - docs/billing
+      - docs/telemetry
+      - docs/research/mastery_model
+      - docs/public_beta
+      - docs/approvals
+      - docs/operations/drills
+      - docs/release_safety
+      - docs/product_quality/trustworthy_beta
+
+  rr_release_evidence_indexes:
+    canonical_path: docs/documentation/stage_6_rr_reconciliation_evidence_governance.md
+    owner: evidence-custodian
+    review_interval_days: 30
+    evidence_commands:
+      - make docs-housekeeping-stage6-check
+    related_paths:
+      - docs/release-evidence/roadmap-reconciliation
+
+  release_archive_governance:
+    canonical_path: docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md
+    owner: documentation-governance
+    review_interval_days: 45
+    evidence_commands:
+      - make docs-housekeeping-stage7-check
+      - make docs-housekeeping-check
+    related_paths:
+      - docs/release
+      - docs/archive
+      - docs/release-evidence
+      - docs/operations
+      - docs/roadmap
+      - docs/backlog
+      - docs/codemaps
+      - docs/roadmap_domains
+      - docs/reference
+      - docs/beta_launch
+
+  release_archive_retention_policy:
+    canonical_path: docs/documentation/stage_7_retention_policy.md
+    owner: evidence-custodian
+    review_interval_days: 45
+    evidence_commands:
+      - make docs-housekeeping-stage7-check
+    related_paths:
+      - docs/release
+      - docs/archive
+      - docs/release-evidence
 
 rules:
   metadata_required_for_active_docs: true

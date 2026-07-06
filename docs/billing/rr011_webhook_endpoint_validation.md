@@ -7,11 +7,12 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-03
+last_reviewed: 2026-07-05
 review_interval_days: 30
 evidence_command: make rr011-live-billing-provider-check
-code_anchors: [app/modules/billing/production_readiness_contracts.py, app/api_v2_routers/billing.py]
+code_anchors: [docs/billing, scripts/roadmap_reconciliation]
 ---
+
 # RR-011 Webhook Endpoint Validation
 
 Webhook endpoint configured: true

@@ -1,3 +1,18 @@
+---
+title: "EduBoost V2 Documentation System: Inventory Generation, Site Building, and Governance"
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # EduBoost V2 Documentation System: Inventory Generation, Site Building, and Governance
 
 Multi-layered documentation infrastructure spanning automated inventory tracking, MkDocs site generation, OpenAPI/route schema extraction, current state reporting, and governance enforcement with documentation freeze controls. Key entry points include inventory generation [1a], MkDocs configuration [2a], OpenAPI extraction [3b], route validation [4c], state refresh orchestration [5a], and operating model enforcement [6b].

@@ -1,3 +1,18 @@
+---
+title: "EduBoost V2 Repository Layer: Data Access Abstraction & Domain Persistence"
+status: reference-record
+owner: architecture
+reviewers: [architecture, engineering, documentation-governance]
+audience: architecture-reviewer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-06
+review_interval_days: 90
+evidence_command: make docs-housekeeping-stage7-check
+code_anchors: [docs/codemaps, docs/documentation/stage_7_release_archive_backlog_codemaps_governance.md]
+---
+
 # EduBoost V2 Repository Layer: Data Access Abstraction & Domain Persistence
 
 Maps the repository pattern implementation across domain-specific persistence classes that encapsulate PostgreSQL access using async SQLAlchemy and specialized asyncpg paths. Key entry points include base repository CRUD [1b], learner creation persistence [2c], audit event hash chaining [3d], POPIA consent access gating [4e], diagnostic session state tracking [5c], item exposure tracking [6e], repository factory resolution [7c], and service-layer repository composition [8f].
