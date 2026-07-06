@@ -1,5 +1,5 @@
 ---
-title: "ADR-030 Knowledge Graph Learning-State Core"
+title: "ADR-036 Knowledge Graph Learning-State Core"
 status: active
 owner: architecture
 reviewers: [architecture, product, privacy, curriculum, engineering]
@@ -13,7 +13,7 @@ evidence_command: make kg000-formal-kg-roadmap-approval-check
 code_anchors: []
 ---
 
-# ADR-030: Knowledge Graph Learning-State Core
+# ADR-036: Knowledge Graph Learning-State Core
 
 ## Status
 
@@ -98,7 +98,7 @@ Reasons:
 
 - EduBoost already operates PostgreSQL, Alembic, repositories, audit ledgers, and CI checks.
 - The first implementation needs governance, correctness, provenance, and migration discipline more than deep traversal performance.
-- A future Neo4j/RDF/triple-store move remains possible after query patterns and performance requirements are measured.
+- A future dedicated graph database or RDF triple-store move remains possible after query patterns and performance requirements are measured.
 
 ## Alternatives considered
 
@@ -110,7 +110,7 @@ Rejected. It preserves existing feature delivery but does not create one canonic
 
 Rejected. IRT is valuable for measurement, but it does not naturally represent prerequisites, CAPS hierarchy, misconceptions, lesson evidence, or parent explanations.
 
-### Move immediately to Neo4j or RDF triple store
+### Move immediately to a dedicated graph database or RDF triple store
 
 Deferred. A graph database may become useful later, but introducing it now would add operational complexity before the domain model is stable.
 

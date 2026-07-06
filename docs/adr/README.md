@@ -101,5 +101,5 @@ ADR changes must keep this index current and must cite the relevant RR item or r
 
 | ADR | Title | Status |
 |---|---|---|
-| [ADR-030](ADR-030-knowledge-graph-learning-state-core.md) | Knowledge Graph Learning-State Core | proposed/approved by KG-0 authority |
+| [ADR-036](ADR-036-knowledge-graph-learning-state-core.md) | Knowledge Graph Learning-State Core | proposed/approved by KG-0 authority |
 <!-- KG000_FORMAL_ROADMAP_APPROVAL:end -->
