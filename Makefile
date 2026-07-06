@@ -3074,3 +3074,14 @@ kg006-tutor-study-plan-gamification-parent-alignment-build:
 
 kg006-tutor-study-plan-gamification-parent-alignment-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg006_tutor_study_plan_gamification_parent_alignment.py --authority-only --json
+
+# KG-7 authority switch and legacy cleanup readiness
+.PHONY: kg007-authority-switch-legacy-cleanup-audit kg007-authority-switch-legacy-cleanup-build kg007-authority-switch-legacy-cleanup-check
+kg007-authority-switch-legacy-cleanup-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg007_authority_switch_legacy_cleanup.py --json
+
+kg007-authority-switch-legacy-cleanup-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kg007_authority_switch_legacy_cleanup.py --write --json
+
+kg007-authority-switch-legacy-cleanup-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg007_authority_switch_legacy_cleanup.py --authority-only --json

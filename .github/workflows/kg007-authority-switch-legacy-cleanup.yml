@@ -1,0 +1,31 @@
+name: KG-7 Authority Switch Legacy Cleanup
+
+on:
+  pull_request:
+    paths:
+      - "app/domain/knowledge_graph_authority_switch.py"
+      - "scripts/knowledge_graph/**kg007**.py"
+      - "scripts/roadmap_reconciliation/**kg007**.py"
+      - "docs/knowledge_graph/authority_switch/**"
+      - "docs/roadmap/knowledge_graph/kg_007_authority_switch_legacy_cleanup*"
+      - "tests/unit/roadmap_reconciliation/test_kg007_authority_switch_legacy_cleanup.py"
+      - ".github/workflows/kg007-authority-switch-legacy-cleanup.yml"
+  workflow_dispatch:
+
+jobs:
+  kg007-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify KG-7 authority
+        run: |
+          python3 -m py_compile \
+            app/domain/knowledge_graph_authority_switch.py \
+            scripts/knowledge_graph/build_kg007_authority_switch_legacy_cleanup.py \
+            scripts/knowledge_graph/audit_kg007_authority_switch_legacy_cleanup.py \
+            scripts/roadmap_reconciliation/capture_kg007_authority_switch_legacy_cleanup_evidence.py \
+            scripts/roadmap_reconciliation/verify_kg007_authority_switch_legacy_cleanup.py
+          PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg007_authority_switch_legacy_cleanup.py --authority-only --json
