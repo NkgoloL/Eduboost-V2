@@ -171,7 +171,7 @@ jobs:
           cache: "pip"
 
       - name: Install dependencies
-        run: pip install -r requirements/dev.txt
+        run: pip install -r requirements/dev.txt pytest-timeout
 
       - name: Run unit tests (fast gate)
         run: |
