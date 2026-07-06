@@ -3085,3 +3085,14 @@ kg007-authority-switch-legacy-cleanup-build:
 
 kg007-authority-switch-legacy-cleanup-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg007_authority_switch_legacy_cleanup.py --authority-only --json
+
+.PHONY: kgact001-controlled-runtime-kg-authority-activation-audit kgact001-controlled-runtime-kg-authority-activation-build kgact001-controlled-runtime-kg-authority-activation-check
+
+kgact001-controlled-runtime-kg-authority-activation-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kgact001_controlled_runtime_kg_authority_activation.py --json
+
+kgact001-controlled-runtime-kg-authority-activation-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kgact001_controlled_runtime_kg_authority_activation.py --write --json
+
+kgact001-controlled-runtime-kg-authority-activation-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py --authority-only --json
