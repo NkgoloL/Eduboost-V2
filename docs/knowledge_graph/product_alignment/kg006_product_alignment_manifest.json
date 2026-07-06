@@ -1,0 +1,31 @@
+{
+  "authority": "shadow_product_alignment_only",
+  "boundaries": {
+    "assessment_runtime_authority_authorised": false,
+    "database_schema_migration_authorised": false,
+    "deployment_authorised": false,
+    "gamification_runtime_authority_authorised": false,
+    "gap_engine_runtime_authority_authorised": false,
+    "generation_runtime_authority_authorised": false,
+    "intervention_planner_runtime_authority_authorised": false,
+    "learner_facing_model_change_authorised": false,
+    "learner_graph_implementation_authorised": false,
+    "learner_graph_persistence_authorised": false,
+    "learner_graph_runtime_authority_authorised": false,
+    "llm_provider_call_authorised": false,
+    "parent_portal_runtime_authority_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_authority_switch_authorised": false,
+    "runtime_kg_implementation_claimed": false,
+    "study_plan_runtime_authority_authorised": false,
+    "tutor_runtime_authority_authorised": false
+  },
+  "depends_on": "KG-5",
+  "input_artifact": "data/knowledge_graph/grounded_generation/grade4_mathematics_graph_grounded_generation_pack.json",
+  "kg_id": "KG-6",
+  "output_artifact": "data/knowledge_graph/product_alignment/grade4_mathematics_product_alignment_pack.json",
+  "status": "authority_defined_pending_evidence",
+  "title": "Tutor, study plan, gamification, and parent alignment"
+}

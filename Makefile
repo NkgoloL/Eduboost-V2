@@ -3063,3 +3063,14 @@ kg005-graph-grounded-lesson-assessment-generation-build:
 
 kg005-graph-grounded-lesson-assessment-generation-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg005_graph_grounded_lesson_assessment_generation.py --authority-only --json
+
+# KG-6 tutor, study plan, gamification, and parent alignment
+.PHONY: kg006-tutor-study-plan-gamification-parent-alignment-audit kg006-tutor-study-plan-gamification-parent-alignment-build kg006-tutor-study-plan-gamification-parent-alignment-check
+kg006-tutor-study-plan-gamification-parent-alignment-audit:
+	PYTHONPATH=. python3 scripts/knowledge_graph/audit_kg006_tutor_study_plan_gamification_parent_alignment.py --json
+
+kg006-tutor-study-plan-gamification-parent-alignment-build:
+	PYTHONPATH=. python3 scripts/knowledge_graph/build_kg006_tutor_study_plan_gamification_parent_alignment.py --write --json
+
+kg006-tutor-study-plan-gamification-parent-alignment-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg006_tutor_study_plan_gamification_parent_alignment.py --authority-only --json

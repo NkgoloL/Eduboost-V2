@@ -1,0 +1,25 @@
+name: KG-6 Tutor Study Plan Gamification Parent Alignment
+
+on:
+  pull_request:
+    paths:
+      - "app/domain/knowledge_graph_product_alignment.py"
+      - "scripts/knowledge_graph/*kg006*"
+      - "scripts/roadmap_reconciliation/*kg006*"
+      - "docs/knowledge_graph/product_alignment/**"
+      - "docs/roadmap/knowledge_graph/kg_006*"
+      - "tests/unit/roadmap_reconciliation/test_kg006_tutor_study_plan_gamification_parent_alignment.py"
+      - ".github/workflows/kg006-tutor-study-plan-gamification-parent-alignment.yml"
+
+jobs:
+  kg006-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify KG-6 authority
+        run: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg006_tutor_study_plan_gamification_parent_alignment.py --authority-only --json
+      - name: Run focused tests
+        run: pytest -q tests/unit/roadmap_reconciliation/test_kg006_tutor_study_plan_gamification_parent_alignment.py --no-cov
