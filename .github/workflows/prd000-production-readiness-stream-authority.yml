@@ -19,11 +19,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Install test dependencies
+        run: python3 -m pip install -r requirements/dev.txt
       - name: Verify PRD-0.0 production readiness authority
         run: |
           python3 -m py_compile \
             scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py \
             scripts/roadmap_reconciliation/capture_prd000_production_readiness_stream_authority_evidence.py \
             scripts/roadmap_reconciliation/verify_prd000_production_readiness_stream_authority.py
-          python3 -m pytest -q tests/unit/roadmap_reconciliation/test_prd000_production_readiness_stream_authority.py --no-cov
+          pytest -q tests/unit/roadmap_reconciliation/test_prd000_production_readiness_stream_authority.py --no-cov
           PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd000_production_readiness_stream_authority.py --authority-only --json

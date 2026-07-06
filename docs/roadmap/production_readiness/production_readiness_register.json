@@ -1,0 +1,159 @@
+{
+  "authority_boundaries": {
+    "authority_switch_executed": true,
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "new_kg_slice_authorised": false,
+    "prd1_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_authority_switch_authorised": true,
+    "runtime_kg_implementation_claimed": true
+  },
+  "current_truth": {
+    "kg_closure_required": true,
+    "prd0_sequence_registered": true,
+    "prd1_blocked_until_prd0_closure": true,
+    "rr_closure_required": true,
+    "stream_id": "PRD-PRODUCTION-READINESS"
+  },
+  "next_authorised_item": "PRD-0.0",
+  "prd0_sequence": [
+    {
+      "authorised": true,
+      "prd_id": "PRD-0.0",
+      "status": "registered"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-0.1",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-0.2",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-0.3",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-0.4",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-0.5",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-0.6",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-0.7",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-0.8",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-0.9",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-0.10",
+      "status": "blocked"
+    }
+  ],
+  "production_readiness_sequence": [
+    {
+      "authorised": false,
+      "prd_id": "PRD-1",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-2",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-3",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-4",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-5",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-6",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-7",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-8",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-9",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-10",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-11",
+      "status": "blocked"
+    }
+  ],
+  "gates": {
+    "billing_blocked_until_prd9": true,
+    "new_kg_slice_blocked": true,
+    "prd1_blocked_until_prd0_closure": true,
+    "production_release_blocked_until_prd11": true,
+    "public_beta_blocked_until_prd10": true
+  },
+  "prd0_sequence_registered": true,
+  "prd1_blocked_until_prd0_closure": true,
+  "prd_id": "PRD-0.0",
+  "production_readiness_stream_authority_recorded": false,
+  "production_release_authorised": false,
+  "public_beta_authorised": false,
+  "public_beta_live_traffic_authorised": false,
+  "release_tag_authorised": false,
+  "rr_closure_required": true,
+  "runtime_kg_authority_switch_authorised": true,
+  "runtime_kg_implementation_claimed": true,
+  "status": "authority_registered_pending_evidence",
+  "stream_id": "PRD-PRODUCTION-READINESS"
+}

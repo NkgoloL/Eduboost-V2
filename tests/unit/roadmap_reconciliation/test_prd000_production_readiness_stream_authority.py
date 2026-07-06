@@ -24,6 +24,16 @@ def _copy_repo(tmp_path: Path) -> Path:
 
 def test_prd000_authority_valid_before_capture(tmp_path: Path) -> None:
     work = _copy_repo(tmp_path)
+    record_path = work / "docs/roadmap/production_readiness/prd_000_production_readiness_stream_authority_record.json"
+    record = json.loads(record_path.read_text(encoding="utf-8"))
+    record.update(
+        {
+            "production_readiness_stream_authority_recorded": False,
+            "evidence_owner": None,
+            "evidence_captured_at": None,
+        }
+    )
+    record_path.write_text(json.dumps(record, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     result = evaluate(work)
     assert result["authority_valid"] is True
     assert result["valid"] is False
