@@ -1,0 +1,31 @@
+name: PRD-0.4 test dependency bootstrap baseline
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/prd004-test-dependency-bootstrap-baseline.yml'
+      - 'scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py'
+      - 'scripts/roadmap_reconciliation/verify_prd004_test_dependency_bootstrap_baseline.py'
+      - 'scripts/roadmap_reconciliation/capture_prd004_test_dependency_bootstrap_baseline_evidence.py'
+      - 'tests/unit/roadmap_reconciliation/test_prd004_test_dependency_bootstrap_baseline.py'
+      - 'docs/roadmap/production_readiness/**'
+  workflow_dispatch:
+
+jobs:
+  verify-prd004:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements/dev.txt
+      - name: Verify PRD-0.4 authority
+        run: |
+          python3 -m py_compile             scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py             scripts/roadmap_reconciliation/capture_prd004_test_dependency_bootstrap_baseline_evidence.py             scripts/roadmap_reconciliation/verify_prd004_test_dependency_bootstrap_baseline.py
+          PYTHONPATH=. python3 -m pytest -q             tests/unit/roadmap_reconciliation/test_prd004_test_dependency_bootstrap_baseline.py             --no-cov
+          PYTHONPATH=. python3             scripts/roadmap_reconciliation/verify_prd004_test_dependency_bootstrap_baseline.py             --authority-only             --json
