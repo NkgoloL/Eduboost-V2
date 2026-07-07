@@ -1,0 +1,1167 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ORM Models &mdash; EduBoost SA 2.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=c5a06975" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=51b770b3"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Repositories" href="repositories.html" />
+    <link rel="prev" title="API Routers" href="routers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EduBoost SA
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="core.html">Core — Shared Kernel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core.html#module-app.core.config">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.config.Settings"><code class="docutils literal notranslate"><span class="pre">Settings</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.APP_NAME"><code class="docutils literal notranslate"><span class="pre">Settings.APP_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.APP_VERSION"><code class="docutils literal notranslate"><span class="pre">Settings.APP_VERSION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.APP_BASE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.APP_BASE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ENVIRONMENT"><code class="docutils literal notranslate"><span class="pre">Settings.ENVIRONMENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.APP_ENV"><code class="docutils literal notranslate"><span class="pre">Settings.APP_ENV</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.DEBUG"><code class="docutils literal notranslate"><span class="pre">Settings.DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LEGACY_RETIREMENT_DATE"><code class="docutils literal notranslate"><span class="pre">Settings.LEGACY_RETIREMENT_DATE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.DATABASE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.DATABASE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.REDIS_URL"><code class="docutils literal notranslate"><span class="pre">Settings.REDIS_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.REDIS_CACHE_TTL_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.REDIS_CACHE_TTL_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.SEMANTIC_CACHE_TTL_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.SEMANTIC_CACHE_TTL_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.JWT_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.JWT_ALGORITHM"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_ALGORITHM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ENCRYPTION_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.ENCRYPTION_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ENCRYPTION_SALT"><code class="docutils literal notranslate"><span class="pre">Settings.ENCRYPTION_SALT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LLM_PROVIDER"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_PROVIDER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GOOGLE_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.GOOGLE_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GOOGLE_MODEL"><code class="docutils literal notranslate"><span class="pre">Settings.GOOGLE_MODEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ANTHROPIC_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.ANTHROPIC_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GROQ_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.GROQ_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GROQ_MODEL"><code class="docutils literal notranslate"><span class="pre">Settings.GROQ_MODEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.HUGGINGFACE_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.HUGGINGFACE_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ANTHROPIC_MODEL"><code class="docutils literal notranslate"><span class="pre">Settings.ANTHROPIC_MODEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOCAL_BASE_MODEL_ID"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_BASE_MODEL_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOCAL_ADAPTER_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_ADAPTER_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOCAL_MERGED_MODEL_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_MERGED_MODEL_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOCAL_LLM_MAX_NEW_TOKENS"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_LLM_MAX_NEW_TOKENS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOCAL_LLM_TEMPERATURE"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_LLM_TEMPERATURE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.INFERENCE_SERVICE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.INFERENCE_SERVICE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LLM_TIMEOUT_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_TIMEOUT_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LLM_MAX_RETRIES"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_MAX_RETRIES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.FREE_DAILY_REQUEST_QUOTA"><code class="docutils literal notranslate"><span class="pre">Settings.FREE_DAILY_REQUEST_QUOTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PREMIUM_DAILY_REQUEST_QUOTA"><code class="docutils literal notranslate"><span class="pre">Settings.PREMIUM_DAILY_REQUEST_QUOTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PUBLIC_FRONTEND_URL"><code class="docutils literal notranslate"><span class="pre">Settings.PUBLIC_FRONTEND_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.STRIPE_SECRET_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_SECRET_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.STRIPE_WEBHOOK_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_WEBHOOK_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.STRIPE_PRICE_ID_PREMIUM"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_PRICE_ID_PREMIUM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.POSTHOG_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.POSTHOG_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.POSTHOG_HOST"><code class="docutils literal notranslate"><span class="pre">Settings.POSTHOG_HOST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.SENDGRID_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.SENDGRID_FROM_EMAIL"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_FROM_EMAIL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.SENDGRID_FROM_NAME"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_FROM_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_KEY_VAULT_URL"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_KEY_VAULT_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_CLIENT_ID"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_CLIENT_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_CLIENT_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_CLIENT_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_TENANT_ID"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_TENANT_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_STORAGE_CONNECTION_STRING"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_STORAGE_CONNECTION_STRING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_STORAGE_CONTAINER"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_STORAGE_CONTAINER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.BACKUP_ENCRYPTION_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.BACKUP_ENCRYPTION_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.BACKUP_RETENTION_DAYS"><code class="docutils literal notranslate"><span class="pre">Settings.BACKUP_RETENTION_DAYS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GRAFANA_CLOUD_PROMETHEUS_URL"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_PROMETHEUS_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GRAFANA_CLOUD_LOKI_URL"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_LOKI_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GRAFANA_CLOUD_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PROMETHEUS_METRICS_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.PROMETHEUS_METRICS_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AI_USAGE_RESERVATION_TTL_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.AI_USAGE_RESERVATION_TTL_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PHASE7_TRAINING_MIN_QUALITY_SCORE"><code class="docutils literal notranslate"><span class="pre">Settings.PHASE7_TRAINING_MIN_QUALITY_SCORE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PHASE7_TRAINING_MIN_CAPS_ALIGNMENT_SCORE"><code class="docutils literal notranslate"><span class="pre">Settings.PHASE7_TRAINING_MIN_CAPS_ALIGNMENT_SCORE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PHASE7_REQUIRE_PUBLISHED"><code class="docutils literal notranslate"><span class="pre">Settings.PHASE7_REQUIRE_PUBLISHED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PHASE7_TRAINING_ARTIFACT_ROOT"><code class="docutils literal notranslate"><span class="pre">Settings.PHASE7_TRAINING_ARTIFACT_ROOT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOG_LEVEL"><code class="docutils literal notranslate"><span class="pre">Settings.LOG_LEVEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.SENTRY_DSN"><code class="docutils literal notranslate"><span class="pre">Settings.SENTRY_DSN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.KEY_VAULT_REFRESH_INTERVAL_HOURS"><code class="docutils literal notranslate"><span class="pre">Settings.KEY_VAULT_REFRESH_INTERVAL_HOURS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.RATE_LIMIT_DEFAULT"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_DEFAULT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.RATE_LIMIT_AUTH"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_AUTH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.RATE_LIMIT_LLM"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_LLM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.RATE_LIMIT_TUTOR"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_TUTOR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.USER_DAILY_TOKEN_LIMIT"><code class="docutils literal notranslate"><span class="pre">Settings.USER_DAILY_TOKEN_LIMIT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.TENANT_MONTHLY_TOKEN_LIMIT"><code class="docutils literal notranslate"><span class="pre">Settings.TENANT_MONTHLY_TOKEN_LIMIT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.TENANT_BUDGET_ALERT_PCT"><code class="docutils literal notranslate"><span class="pre">Settings.TENANT_BUDGET_ALERT_PCT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ARQ_MAX_JOBS"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_MAX_JOBS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ARQ_JOB_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_JOB_TIMEOUT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PASSWORD_MIN_LENGTH"><code class="docutils literal notranslate"><span class="pre">Settings.PASSWORD_MIN_LENGTH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PASSWORD_PASSPHRASE_MIN_LENGTH"><code class="docutils literal notranslate"><span class="pre">Settings.PASSWORD_PASSPHRASE_MIN_LENGTH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PASSWORD_BCRYPT_ROUNDS"><code class="docutils literal notranslate"><span class="pre">Settings.PASSWORD_BCRYPT_ROUNDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.CONTENT_STARTUP_SEED_ENABLED"><code class="docutils literal notranslate"><span class="pre">Settings.CONTENT_STARTUP_SEED_ENABLED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ALLOWED_ORIGINS"><code class="docutils literal notranslate"><span class="pre">Settings.ALLOWED_ORIGINS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.is_production"><code class="docutils literal notranslate"><span class="pre">Settings.is_production()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.refresh_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.refresh_from_key_vault()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.load_production_secrets_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.load_production_secrets_from_key_vault()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.config.get_settings"><code class="docutils literal notranslate"><span class="pre">get_settings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#security">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#audit-trail">Audit Trail</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Domain Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#diagnostics-irt-engine">Diagnostics — IRT Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#lessons-llm-gateway">Lessons — LLM Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#consent-popia-service">Consent — POPIA Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-app.modules.learners">Learners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-app.modules.study_plans">Study Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-app.modules.gamification">Gamification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-app.modules.parent_portal">Parent Portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-app.modules.rlhf">RLHF Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routers.html">API Routers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ORM Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.UserRole"><code class="docutils literal notranslate"><span class="pre">UserRole</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.UserRole.STUDENT"><code class="docutils literal notranslate"><span class="pre">UserRole.STUDENT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.UserRole.PARENT"><code class="docutils literal notranslate"><span class="pre">UserRole.PARENT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.UserRole.TEACHER"><code class="docutils literal notranslate"><span class="pre">UserRole.TEACHER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.UserRole.ADMIN"><code class="docutils literal notranslate"><span class="pre">UserRole.ADMIN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.SubscriptionTier"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.SubscriptionTier.FREE"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier.FREE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.SubscriptionTier.PREMIUM"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier.PREMIUM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.ArchetypeLabel"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ArchetypeLabel.KETER"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.KETER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ArchetypeLabel.CHOKMAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.CHOKMAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ArchetypeLabel.BINAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.BINAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ArchetypeLabel.CHESED"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.CHESED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ArchetypeLabel.GEVURAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.GEVURAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ArchetypeLabel.TIFERET"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.TIFERET</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ArchetypeLabel.NETZACH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.NETZACH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ArchetypeLabel.HOD"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.HOD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ArchetypeLabel.YESOD"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.YESOD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ArchetypeLabel.MALKUTH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.MALKUTH</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.Language"><code class="docutils literal notranslate"><span class="pre">Language</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.Language.ENGLISH"><code class="docutils literal notranslate"><span class="pre">Language.ENGLISH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.Language.ISIZULU"><code class="docutils literal notranslate"><span class="pre">Language.ISIZULU</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.Language.AFRIKAANS"><code class="docutils literal notranslate"><span class="pre">Language.AFRIKAANS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.Language.ISIXHOSA"><code class="docutils literal notranslate"><span class="pre">Language.ISIXHOSA</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.ConsentState"><code class="docutils literal notranslate"><span class="pre">ConsentState</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ConsentState.PENDING"><code class="docutils literal notranslate"><span class="pre">ConsentState.PENDING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ConsentState.GRANTED"><code class="docutils literal notranslate"><span class="pre">ConsentState.GRANTED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ConsentState.DENIED"><code class="docutils literal notranslate"><span class="pre">ConsentState.DENIED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ConsentState.EXPIRED"><code class="docutils literal notranslate"><span class="pre">ConsentState.EXPIRED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ConsentState.WITHDRAWN"><code class="docutils literal notranslate"><span class="pre">ConsentState.WITHDRAWN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ConsentState.RENEWAL_REQUIRED"><code class="docutils literal notranslate"><span class="pre">ConsentState.RENEWAL_REQUIRED</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.ItemReviewStatus"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ItemReviewStatus.DRAFT"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus.DRAFT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ItemReviewStatus.AI_GENERATED"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus.AI_GENERATED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ItemReviewStatus.HUMAN_REVIEWED"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus.HUMAN_REVIEWED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ItemReviewStatus.APPROVED"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus.APPROVED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ItemReviewStatus.RETIRED"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus.RETIRED</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.Guardian"><code class="docutils literal notranslate"><span class="pre">Guardian</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.Guardian.learners"><code class="docutils literal notranslate"><span class="pre">Guardian.learners</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.Guardian.consents"><code class="docutils literal notranslate"><span class="pre">Guardian.consents</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.Guardian.secure_tokens"><code class="docutils literal notranslate"><span class="pre">Guardian.secure_tokens</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.Guardian.onboarding_state"><code class="docutils literal notranslate"><span class="pre">Guardian.onboarding_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.Guardian.privacy_settings"><code class="docutils literal notranslate"><span class="pre">Guardian.privacy_settings</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.LearnerProfile"><code class="docutils literal notranslate"><span class="pre">LearnerProfile</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.LearnerProfile.guardian"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.guardian</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.LearnerProfile.consents"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.consents</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.LearnerProfile.knowledge_gaps"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.knowledge_gaps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.LearnerProfile.mastery_records"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.mastery_records</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.LearnerProfile.diagnostic_sessions"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.diagnostic_sessions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.LearnerProfile.lessons"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.lessons</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.LearnerProfile.study_plans"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.study_plans</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.LearnerProfile.assessment_attempts"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.assessment_attempts</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.Learner"><code class="docutils literal notranslate"><span class="pre">Learner</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.ParentalConsent"><code class="docutils literal notranslate"><span class="pre">ParentalConsent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ParentalConsent.guardian"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.guardian</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ParentalConsent.learner"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.learner</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ParentalConsent.version_history"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.version_history</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ParentalConsent.is_active"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.is_active</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.ConsentVersionHistory"><code class="docutils literal notranslate"><span class="pre">ConsentVersionHistory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.ConsentVersionHistory.consent"><code class="docutils literal notranslate"><span class="pre">ConsentVersionHistory.consent</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.ErasureRequest"><code class="docutils literal notranslate"><span class="pre">ErasureRequest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.AuditEvent"><code class="docutils literal notranslate"><span class="pre">AuditEvent</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.IRTItem"><code class="docutils literal notranslate"><span class="pre">IRTItem</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.Assessment"><code class="docutils literal notranslate"><span class="pre">Assessment</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.Assessment.attempts"><code class="docutils literal notranslate"><span class="pre">Assessment.attempts</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.AssessmentAttempt"><code class="docutils literal notranslate"><span class="pre">AssessmentAttempt</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.AssessmentAttempt.learner"><code class="docutils literal notranslate"><span class="pre">AssessmentAttempt.learner</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.AssessmentAttempt.assessment"><code class="docutils literal notranslate"><span class="pre">AssessmentAttempt.assessment</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.DiagnosticSession"><code class="docutils literal notranslate"><span class="pre">DiagnosticSession</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.DiagnosticSession.learner"><code class="docutils literal notranslate"><span class="pre">DiagnosticSession.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.KnowledgeGap"><code class="docutils literal notranslate"><span class="pre">KnowledgeGap</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.KnowledgeGap.learner"><code class="docutils literal notranslate"><span class="pre">KnowledgeGap.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.StudyPlan"><code class="docutils literal notranslate"><span class="pre">StudyPlan</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.StudyPlan.learner"><code class="docutils literal notranslate"><span class="pre">StudyPlan.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.SubjectMastery"><code class="docutils literal notranslate"><span class="pre">SubjectMastery</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.SubjectMastery.learner"><code class="docutils literal notranslate"><span class="pre">SubjectMastery.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.TopicMastery"><code class="docutils literal notranslate"><span class="pre">TopicMastery</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.MasterySnapshot"><code class="docutils literal notranslate"><span class="pre">MasterySnapshot</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.PracticeQueue"><code class="docutils literal notranslate"><span class="pre">PracticeQueue</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.SpacedReviewSchedule"><code class="docutils literal notranslate"><span class="pre">SpacedReviewSchedule</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.PracticeSession"><code class="docutils literal notranslate"><span class="pre">PracticeSession</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.CalibrationAudit"><code class="docutils literal notranslate"><span class="pre">CalibrationAudit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.Lesson"><code class="docutils literal notranslate"><span class="pre">Lesson</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.models.Lesson.learner"><code class="docutils literal notranslate"><span class="pre">Lesson.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.LessonFeedback"><code class="docutils literal notranslate"><span class="pre">LessonFeedback</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.RLHFExport"><code class="docutils literal notranslate"><span class="pre">RLHFExport</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.AuditLog"><code class="docutils literal notranslate"><span class="pre">AuditLog</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.StripeWebhookEvent"><code class="docutils literal notranslate"><span class="pre">StripeWebhookEvent</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app.models.LessonRecord"><code class="docutils literal notranslate"><span class="pre">LessonRecord</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="repositories.html">Repositories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.AssessmentRepository"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.AssessmentRepository.model"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.AssessmentRepository.list_active"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.list_active()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.AssessmentRepository.get_by_id_str"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.get_by_id_str()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.AuditRepository"><code class="docutils literal notranslate"><span class="pre">AuditRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.AuditRepository.record"><code class="docutils literal notranslate"><span class="pre">AuditRepository.record()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.AuditRepository.append"><code class="docutils literal notranslate"><span class="pre">AuditRepository.append()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.AuditRepository.get_by_resource"><code class="docutils literal notranslate"><span class="pre">AuditRepository.get_by_resource()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.AuditRepository.get_by_actor"><code class="docutils literal notranslate"><span class="pre">AuditRepository.get_by_actor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.AuditRepository.verify_chain"><code class="docutils literal notranslate"><span class="pre">AuditRepository.verify_chain()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.AuthRepository"><code class="docutils literal notranslate"><span class="pre">AuthRepository</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.ConsentRepository"><code class="docutils literal notranslate"><span class="pre">ConsentRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.ConsentRepository.get_active_for_learner"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.get_active_for_learner()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.ConsentRepository.get_by_id"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.get_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.ConsentRepository.create"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.ConsentRepository.update"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.ConsentRepository.list_expiring_soon"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.list_expiring_soon()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.DiagnosticRepository"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.DiagnosticRepository.model"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.DiagnosticRepository.get_latest_for_learner"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.get_latest_for_learner()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.DiagnosticRepository.create_session"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.create_session()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.GamificationRepository"><code class="docutils literal notranslate"><span class="pre">GamificationRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.GamificationRepository.get_profile_rows"><code class="docutils literal notranslate"><span class="pre">GamificationRepository.get_profile_rows()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.GamificationRepository.get_leaderboard_rows"><code class="docutils literal notranslate"><span class="pre">GamificationRepository.get_leaderboard_rows()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.GuardianRepository"><code class="docutils literal notranslate"><span class="pre">GuardianRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.GuardianRepository.model"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.GuardianRepository.get_by_email_hash"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_email_hash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.GuardianRepository.get_by_verification_token"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_verification_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.GuardianRepository.get_guardian_by_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_guardian_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.GuardianRepository.revoke_jti"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.revoke_jti()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.GuardianRepository.is_jti_revoked"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.is_jti_revoked()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.LearnerRepository"><code class="docutils literal notranslate"><span class="pre">LearnerRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LearnerRepository.model"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LearnerRepository.get_by_id"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.get_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LearnerRepository.delete_by_id"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.delete_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LearnerRepository.soft_delete"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.soft_delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LearnerRepository.purge_personal_data"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.purge_personal_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html#app.repositories.LessonRepository"><code class="docutils literal notranslate"><span class="pre">LessonRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LessonRepository.create"><code class="docutils literal notranslate"><span class="pre">LessonRepository.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LessonRepository.get"><code class="docutils literal notranslate"><span class="pre">LessonRepository.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LessonRepository.get_recent_for_learner"><code class="docutils literal notranslate"><span class="pre">LessonRepository.get_recent_for_learner()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LessonRepository.get_recent"><code class="docutils literal notranslate"><span class="pre">LessonRepository.get_recent()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LessonRepository.list_pending_review"><code class="docutils literal notranslate"><span class="pre">LessonRepository.list_pending_review()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LessonRepository.list_by_caps_ref"><code class="docutils literal notranslate"><span class="pre">LessonRepository.list_by_caps_ref()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LessonRepository.update_review_status"><code class="docutils literal notranslate"><span class="pre">LessonRepository.update_review_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LessonRepository.record_feedback"><code class="docutils literal notranslate"><span class="pre">LessonRepository.record_feedback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LessonRepository.mark_completed"><code class="docutils literal notranslate"><span class="pre">LessonRepository.mark_completed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LessonRepository.count_approved_by_caps_ref_async"><code class="docutils literal notranslate"><span class="pre">LessonRepository.count_approved_by_caps_ref_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="repositories.html#app.repositories.LessonRepository.list_approved_lessons_async"><code class="docutils literal notranslate"><span class="pre">LessonRepository.list_approved_lessons_async()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../notes/changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/changelog.html#v2-0-0-may-2026">v2.0.0 (May 2026)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/todo.html">Outstanding Work</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EduBoost SA</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ORM Models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/models.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="orm-models">
+<h1>ORM Models<a class="headerlink" href="#orm-models" title="Link to this heading"></a></h1>
+<p>SQLAlchemy 2.0 async ORM models managed by Alembic migrations.</p>
+<p id="module-app.models">EduBoost V2 — Domain Layer ORM Models
+All SQLAlchemy models live here. This layer has ZERO dependency on FastAPI
+HTTP objects, LLM clients, or any infrastructure code.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.UserRole">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">UserRole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#UserRole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.UserRole" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.UserRole.STUDENT">
+<span class="sig-name descname"><span class="pre">STUDENT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'student'</span></span><a class="headerlink" href="#app.models.UserRole.STUDENT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.UserRole.PARENT">
+<span class="sig-name descname"><span class="pre">PARENT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'parent'</span></span><a class="headerlink" href="#app.models.UserRole.PARENT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.UserRole.TEACHER">
+<span class="sig-name descname"><span class="pre">TEACHER</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'teacher'</span></span><a class="headerlink" href="#app.models.UserRole.TEACHER" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.UserRole.ADMIN">
+<span class="sig-name descname"><span class="pre">ADMIN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'admin'</span></span><a class="headerlink" href="#app.models.UserRole.ADMIN" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.SubscriptionTier">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">SubscriptionTier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#SubscriptionTier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.SubscriptionTier" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.SubscriptionTier.FREE">
+<span class="sig-name descname"><span class="pre">FREE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'free'</span></span><a class="headerlink" href="#app.models.SubscriptionTier.FREE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.SubscriptionTier.PREMIUM">
+<span class="sig-name descname"><span class="pre">PREMIUM</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'premium'</span></span><a class="headerlink" href="#app.models.SubscriptionTier.PREMIUM" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.ArchetypeLabel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">ArchetypeLabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#ArchetypeLabel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.ArchetypeLabel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ArchetypeLabel.KETER">
+<span class="sig-name descname"><span class="pre">KETER</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Keter'</span></span><a class="headerlink" href="#app.models.ArchetypeLabel.KETER" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ArchetypeLabel.CHOKMAH">
+<span class="sig-name descname"><span class="pre">CHOKMAH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Chokmah'</span></span><a class="headerlink" href="#app.models.ArchetypeLabel.CHOKMAH" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ArchetypeLabel.BINAH">
+<span class="sig-name descname"><span class="pre">BINAH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Binah'</span></span><a class="headerlink" href="#app.models.ArchetypeLabel.BINAH" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ArchetypeLabel.CHESED">
+<span class="sig-name descname"><span class="pre">CHESED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Chesed'</span></span><a class="headerlink" href="#app.models.ArchetypeLabel.CHESED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ArchetypeLabel.GEVURAH">
+<span class="sig-name descname"><span class="pre">GEVURAH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Gevurah'</span></span><a class="headerlink" href="#app.models.ArchetypeLabel.GEVURAH" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ArchetypeLabel.TIFERET">
+<span class="sig-name descname"><span class="pre">TIFERET</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Tiferet'</span></span><a class="headerlink" href="#app.models.ArchetypeLabel.TIFERET" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ArchetypeLabel.NETZACH">
+<span class="sig-name descname"><span class="pre">NETZACH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Netzach'</span></span><a class="headerlink" href="#app.models.ArchetypeLabel.NETZACH" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ArchetypeLabel.HOD">
+<span class="sig-name descname"><span class="pre">HOD</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Hod'</span></span><a class="headerlink" href="#app.models.ArchetypeLabel.HOD" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ArchetypeLabel.YESOD">
+<span class="sig-name descname"><span class="pre">YESOD</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Yesod'</span></span><a class="headerlink" href="#app.models.ArchetypeLabel.YESOD" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ArchetypeLabel.MALKUTH">
+<span class="sig-name descname"><span class="pre">MALKUTH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Malkuth'</span></span><a class="headerlink" href="#app.models.ArchetypeLabel.MALKUTH" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.Language">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">Language</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#Language"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.Language" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.Language.ENGLISH">
+<span class="sig-name descname"><span class="pre">ENGLISH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'en'</span></span><a class="headerlink" href="#app.models.Language.ENGLISH" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.Language.ISIZULU">
+<span class="sig-name descname"><span class="pre">ISIZULU</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'zu'</span></span><a class="headerlink" href="#app.models.Language.ISIZULU" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.Language.AFRIKAANS">
+<span class="sig-name descname"><span class="pre">AFRIKAANS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'af'</span></span><a class="headerlink" href="#app.models.Language.AFRIKAANS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.Language.ISIXHOSA">
+<span class="sig-name descname"><span class="pre">ISIXHOSA</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'xh'</span></span><a class="headerlink" href="#app.models.Language.ISIXHOSA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.ConsentState">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">ConsentState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#ConsentState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.ConsentState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ConsentState.PENDING">
+<span class="sig-name descname"><span class="pre">PENDING</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pending'</span></span><a class="headerlink" href="#app.models.ConsentState.PENDING" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ConsentState.GRANTED">
+<span class="sig-name descname"><span class="pre">GRANTED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'granted'</span></span><a class="headerlink" href="#app.models.ConsentState.GRANTED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ConsentState.DENIED">
+<span class="sig-name descname"><span class="pre">DENIED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'denied'</span></span><a class="headerlink" href="#app.models.ConsentState.DENIED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ConsentState.EXPIRED">
+<span class="sig-name descname"><span class="pre">EXPIRED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'expired'</span></span><a class="headerlink" href="#app.models.ConsentState.EXPIRED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ConsentState.WITHDRAWN">
+<span class="sig-name descname"><span class="pre">WITHDRAWN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'withdrawn'</span></span><a class="headerlink" href="#app.models.ConsentState.WITHDRAWN" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ConsentState.RENEWAL_REQUIRED">
+<span class="sig-name descname"><span class="pre">RENEWAL_REQUIRED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'renewal_required'</span></span><a class="headerlink" href="#app.models.ConsentState.RENEWAL_REQUIRED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.ItemReviewStatus">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">ItemReviewStatus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#ItemReviewStatus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.ItemReviewStatus" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ItemReviewStatus.DRAFT">
+<span class="sig-name descname"><span class="pre">DRAFT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'draft'</span></span><a class="headerlink" href="#app.models.ItemReviewStatus.DRAFT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ItemReviewStatus.AI_GENERATED">
+<span class="sig-name descname"><span class="pre">AI_GENERATED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ai_generated'</span></span><a class="headerlink" href="#app.models.ItemReviewStatus.AI_GENERATED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ItemReviewStatus.HUMAN_REVIEWED">
+<span class="sig-name descname"><span class="pre">HUMAN_REVIEWED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'human_reviewed'</span></span><a class="headerlink" href="#app.models.ItemReviewStatus.HUMAN_REVIEWED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ItemReviewStatus.APPROVED">
+<span class="sig-name descname"><span class="pre">APPROVED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'approved'</span></span><a class="headerlink" href="#app.models.ItemReviewStatus.APPROVED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ItemReviewStatus.RETIRED">
+<span class="sig-name descname"><span class="pre">RETIRED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'retired'</span></span><a class="headerlink" href="#app.models.ItemReviewStatus.RETIRED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.Guardian">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">Guardian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#Guardian"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.Guardian" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.Guardian.learners">
+<span class="sig-name descname"><span class="pre">learners</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.LearnerProfile" title="app.models.LearnerProfile"><span class="pre">LearnerProfile</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LearnerProfile'</span></span><a class="headerlink" href="#app.models.Guardian.learners" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.Guardian.consents">
+<span class="sig-name descname"><span class="pre">consents</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.ParentalConsent" title="app.models.ParentalConsent"><span class="pre">ParentalConsent</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ParentalConsent'</span></span><a class="headerlink" href="#app.models.Guardian.consents" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.Guardian.secure_tokens">
+<span class="sig-name descname"><span class="pre">secure_tokens</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">SecureToken</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'SecureToken'</span></span><a class="headerlink" href="#app.models.Guardian.secure_tokens" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.Guardian.onboarding_state">
+<span class="sig-name descname"><span class="pre">onboarding_state</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">OnboardingState</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'OnboardingState'</span></span><a class="headerlink" href="#app.models.Guardian.onboarding_state" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.Guardian.privacy_settings">
+<span class="sig-name descname"><span class="pre">privacy_settings</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">PrivacySettings</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PrivacySettings'</span></span><a class="headerlink" href="#app.models.Guardian.privacy_settings" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.LearnerProfile">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">LearnerProfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#LearnerProfile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.LearnerProfile" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.LearnerProfile.guardian">
+<span class="sig-name descname"><span class="pre">guardian</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.Guardian" title="app.models.Guardian"><span class="pre">Guardian</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Guardian'</span></span><a class="headerlink" href="#app.models.LearnerProfile.guardian" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.LearnerProfile.consents">
+<span class="sig-name descname"><span class="pre">consents</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.ParentalConsent" title="app.models.ParentalConsent"><span class="pre">ParentalConsent</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ParentalConsent'</span></span><a class="headerlink" href="#app.models.LearnerProfile.consents" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.LearnerProfile.knowledge_gaps">
+<span class="sig-name descname"><span class="pre">knowledge_gaps</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.KnowledgeGap" title="app.models.KnowledgeGap"><span class="pre">KnowledgeGap</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'KnowledgeGap'</span></span><a class="headerlink" href="#app.models.LearnerProfile.knowledge_gaps" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.LearnerProfile.mastery_records">
+<span class="sig-name descname"><span class="pre">mastery_records</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.SubjectMastery" title="app.models.SubjectMastery"><span class="pre">SubjectMastery</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'SubjectMastery'</span></span><a class="headerlink" href="#app.models.LearnerProfile.mastery_records" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.LearnerProfile.diagnostic_sessions">
+<span class="sig-name descname"><span class="pre">diagnostic_sessions</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.DiagnosticSession" title="app.models.DiagnosticSession"><span class="pre">DiagnosticSession</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'DiagnosticSession'</span></span><a class="headerlink" href="#app.models.LearnerProfile.diagnostic_sessions" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.LearnerProfile.lessons">
+<span class="sig-name descname"><span class="pre">lessons</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.Lesson" title="app.models.Lesson"><span class="pre">Lesson</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Lesson'</span></span><a class="headerlink" href="#app.models.LearnerProfile.lessons" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.LearnerProfile.study_plans">
+<span class="sig-name descname"><span class="pre">study_plans</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.StudyPlan" title="app.models.StudyPlan"><span class="pre">StudyPlan</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'StudyPlan'</span></span><a class="headerlink" href="#app.models.LearnerProfile.study_plans" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.LearnerProfile.assessment_attempts">
+<span class="sig-name descname"><span class="pre">assessment_attempts</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.AssessmentAttempt" title="app.models.AssessmentAttempt"><span class="pre">AssessmentAttempt</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'AssessmentAttempt'</span></span><a class="headerlink" href="#app.models.LearnerProfile.assessment_attempts" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.Learner">
+<span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">Learner</span></span><a class="headerlink" href="#app.models.Learner" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#app.models.LearnerProfile" title="app.models.LearnerProfile"><code class="xref py py-class docutils literal notranslate"><span class="pre">LearnerProfile</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.ParentalConsent">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">ParentalConsent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#ParentalConsent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.ParentalConsent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ParentalConsent.guardian">
+<span class="sig-name descname"><span class="pre">guardian</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.Guardian" title="app.models.Guardian"><span class="pre">Guardian</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Guardian'</span></span><a class="headerlink" href="#app.models.ParentalConsent.guardian" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ParentalConsent.learner">
+<span class="sig-name descname"><span class="pre">learner</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.LearnerProfile" title="app.models.LearnerProfile"><span class="pre">LearnerProfile</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LearnerProfile'</span></span><a class="headerlink" href="#app.models.ParentalConsent.learner" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ParentalConsent.version_history">
+<span class="sig-name descname"><span class="pre">version_history</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'ConsentVersionHistory'</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ConsentVersionHistory'</span></span><a class="headerlink" href="#app.models.ParentalConsent.version_history" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="app.models.ParentalConsent.is_active">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">is_active</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><a class="headerlink" href="#app.models.ParentalConsent.is_active" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.ConsentVersionHistory">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">ConsentVersionHistory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#ConsentVersionHistory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.ConsentVersionHistory" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<p>POPIA consent version history for tracking consent lifecycle and policy version changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.ConsentVersionHistory.consent">
+<span class="sig-name descname"><span class="pre">consent</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.ParentalConsent" title="app.models.ParentalConsent"><span class="pre">ParentalConsent</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ParentalConsent'</span></span><a class="headerlink" href="#app.models.ConsentVersionHistory.consent" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.ErasureRequest">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">ErasureRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#ErasureRequest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.ErasureRequest" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<p>POPIA Right to Erasure request state machine with safety checks and audit trail.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.AuditEvent">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">AuditEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#AuditEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.AuditEvent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.IRTItem">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">IRTItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#IRTItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.IRTItem" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.Assessment">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">Assessment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#Assessment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.Assessment" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.Assessment.attempts">
+<span class="sig-name descname"><span class="pre">attempts</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.AssessmentAttempt" title="app.models.AssessmentAttempt"><span class="pre">AssessmentAttempt</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'AssessmentAttempt'</span></span><a class="headerlink" href="#app.models.Assessment.attempts" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.AssessmentAttempt">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">AssessmentAttempt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#AssessmentAttempt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.AssessmentAttempt" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.AssessmentAttempt.learner">
+<span class="sig-name descname"><span class="pre">learner</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.LearnerProfile" title="app.models.LearnerProfile"><span class="pre">LearnerProfile</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LearnerProfile'</span></span><a class="headerlink" href="#app.models.AssessmentAttempt.learner" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.AssessmentAttempt.assessment">
+<span class="sig-name descname"><span class="pre">assessment</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.Assessment" title="app.models.Assessment"><span class="pre">Assessment</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Assessment'</span></span><a class="headerlink" href="#app.models.AssessmentAttempt.assessment" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.DiagnosticSession">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">DiagnosticSession</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#DiagnosticSession"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.DiagnosticSession" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.DiagnosticSession.learner">
+<span class="sig-name descname"><span class="pre">learner</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.LearnerProfile" title="app.models.LearnerProfile"><span class="pre">LearnerProfile</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LearnerProfile'</span></span><a class="headerlink" href="#app.models.DiagnosticSession.learner" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.KnowledgeGap">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">KnowledgeGap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#KnowledgeGap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.KnowledgeGap" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.KnowledgeGap.learner">
+<span class="sig-name descname"><span class="pre">learner</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.LearnerProfile" title="app.models.LearnerProfile"><span class="pre">LearnerProfile</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LearnerProfile'</span></span><a class="headerlink" href="#app.models.KnowledgeGap.learner" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.StudyPlan">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">StudyPlan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#StudyPlan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.StudyPlan" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.StudyPlan.learner">
+<span class="sig-name descname"><span class="pre">learner</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.LearnerProfile" title="app.models.LearnerProfile"><span class="pre">LearnerProfile</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LearnerProfile'</span></span><a class="headerlink" href="#app.models.StudyPlan.learner" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.SubjectMastery">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">SubjectMastery</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#SubjectMastery"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.SubjectMastery" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.SubjectMastery.learner">
+<span class="sig-name descname"><span class="pre">learner</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.LearnerProfile" title="app.models.LearnerProfile"><span class="pre">LearnerProfile</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LearnerProfile'</span></span><a class="headerlink" href="#app.models.SubjectMastery.learner" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.TopicMastery">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">TopicMastery</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#TopicMastery"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.TopicMastery" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.MasterySnapshot">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">MasterySnapshot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#MasterySnapshot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.MasterySnapshot" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.PracticeQueue">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">PracticeQueue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#PracticeQueue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.PracticeQueue" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.SpacedReviewSchedule">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">SpacedReviewSchedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#SpacedReviewSchedule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.SpacedReviewSchedule" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.PracticeSession">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">PracticeSession</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#PracticeSession"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.PracticeSession" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<p>Durable practice session storage (replaces in-memory _SESSIONS dict).</p>
+<p>Stores practice item sequence, learner responses, and session metadata
+for durability across process restarts and multi-worker consistency.</p>
+<p>Expires after 24 hours to avoid stale session accumulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.CalibrationAudit">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">CalibrationAudit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#CalibrationAudit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.CalibrationAudit" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.Lesson">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">Lesson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#Lesson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.Lesson" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.Lesson.learner">
+<span class="sig-name descname"><span class="pre">learner</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#app.models.LearnerProfile" title="app.models.LearnerProfile"><span class="pre">LearnerProfile</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LearnerProfile'</span></span><a class="headerlink" href="#app.models.Lesson.learner" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.LessonFeedback">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">LessonFeedback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#LessonFeedback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.LessonFeedback" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.RLHFExport">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">RLHFExport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#RLHFExport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.RLHFExport" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.AuditLog">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">AuditLog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#AuditLog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.AuditLog" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.StripeWebhookEvent">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">StripeWebhookEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models.html#StripeWebhookEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.models.StripeWebhookEvent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.LessonRecord">
+<span class="sig-prename descclassname"><span class="pre">app.models.</span></span><span class="sig-name descname"><span class="pre">LessonRecord</span></span><a class="headerlink" href="#app.models.LessonRecord" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#app.models.Lesson" title="app.models.Lesson"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lesson</span></code></a></p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="routers.html" class="btn btn-neutral float-left" title="API Routers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="repositories.html" class="btn btn-neutral float-right" title="Repositories" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, EduBoost SA Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

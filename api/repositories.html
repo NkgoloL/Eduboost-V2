@@ -1,0 +1,1116 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Repositories &mdash; EduBoost SA 2.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=c5a06975" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=51b770b3"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Changelog" href="../notes/changelog.html" />
+    <link rel="prev" title="ORM Models" href="models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EduBoost SA
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="core.html">Core — Shared Kernel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core.html#module-app.core.config">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.config.Settings"><code class="docutils literal notranslate"><span class="pre">Settings</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.APP_NAME"><code class="docutils literal notranslate"><span class="pre">Settings.APP_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.APP_VERSION"><code class="docutils literal notranslate"><span class="pre">Settings.APP_VERSION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.APP_BASE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.APP_BASE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ENVIRONMENT"><code class="docutils literal notranslate"><span class="pre">Settings.ENVIRONMENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.APP_ENV"><code class="docutils literal notranslate"><span class="pre">Settings.APP_ENV</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.DEBUG"><code class="docutils literal notranslate"><span class="pre">Settings.DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LEGACY_RETIREMENT_DATE"><code class="docutils literal notranslate"><span class="pre">Settings.LEGACY_RETIREMENT_DATE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.DATABASE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.DATABASE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.REDIS_URL"><code class="docutils literal notranslate"><span class="pre">Settings.REDIS_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.REDIS_CACHE_TTL_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.REDIS_CACHE_TTL_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.SEMANTIC_CACHE_TTL_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.SEMANTIC_CACHE_TTL_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.JWT_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.JWT_ALGORITHM"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_ALGORITHM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ENCRYPTION_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.ENCRYPTION_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ENCRYPTION_SALT"><code class="docutils literal notranslate"><span class="pre">Settings.ENCRYPTION_SALT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LLM_PROVIDER"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_PROVIDER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GOOGLE_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.GOOGLE_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GOOGLE_MODEL"><code class="docutils literal notranslate"><span class="pre">Settings.GOOGLE_MODEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ANTHROPIC_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.ANTHROPIC_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GROQ_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.GROQ_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GROQ_MODEL"><code class="docutils literal notranslate"><span class="pre">Settings.GROQ_MODEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.HUGGINGFACE_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.HUGGINGFACE_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ANTHROPIC_MODEL"><code class="docutils literal notranslate"><span class="pre">Settings.ANTHROPIC_MODEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOCAL_BASE_MODEL_ID"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_BASE_MODEL_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOCAL_ADAPTER_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_ADAPTER_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOCAL_MERGED_MODEL_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_MERGED_MODEL_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOCAL_LLM_MAX_NEW_TOKENS"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_LLM_MAX_NEW_TOKENS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOCAL_LLM_TEMPERATURE"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_LLM_TEMPERATURE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.INFERENCE_SERVICE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.INFERENCE_SERVICE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LLM_TIMEOUT_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_TIMEOUT_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LLM_MAX_RETRIES"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_MAX_RETRIES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.FREE_DAILY_REQUEST_QUOTA"><code class="docutils literal notranslate"><span class="pre">Settings.FREE_DAILY_REQUEST_QUOTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PREMIUM_DAILY_REQUEST_QUOTA"><code class="docutils literal notranslate"><span class="pre">Settings.PREMIUM_DAILY_REQUEST_QUOTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PUBLIC_FRONTEND_URL"><code class="docutils literal notranslate"><span class="pre">Settings.PUBLIC_FRONTEND_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.STRIPE_SECRET_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_SECRET_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.STRIPE_WEBHOOK_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_WEBHOOK_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.STRIPE_PRICE_ID_PREMIUM"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_PRICE_ID_PREMIUM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.POSTHOG_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.POSTHOG_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.POSTHOG_HOST"><code class="docutils literal notranslate"><span class="pre">Settings.POSTHOG_HOST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.SENDGRID_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.SENDGRID_FROM_EMAIL"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_FROM_EMAIL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.SENDGRID_FROM_NAME"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_FROM_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_KEY_VAULT_URL"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_KEY_VAULT_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_CLIENT_ID"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_CLIENT_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_CLIENT_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_CLIENT_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_TENANT_ID"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_TENANT_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_STORAGE_CONNECTION_STRING"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_STORAGE_CONNECTION_STRING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AZURE_STORAGE_CONTAINER"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_STORAGE_CONTAINER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.BACKUP_ENCRYPTION_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.BACKUP_ENCRYPTION_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.BACKUP_RETENTION_DAYS"><code class="docutils literal notranslate"><span class="pre">Settings.BACKUP_RETENTION_DAYS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GRAFANA_CLOUD_PROMETHEUS_URL"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_PROMETHEUS_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GRAFANA_CLOUD_LOKI_URL"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_LOKI_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.GRAFANA_CLOUD_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PROMETHEUS_METRICS_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.PROMETHEUS_METRICS_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.AI_USAGE_RESERVATION_TTL_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.AI_USAGE_RESERVATION_TTL_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PHASE7_TRAINING_MIN_QUALITY_SCORE"><code class="docutils literal notranslate"><span class="pre">Settings.PHASE7_TRAINING_MIN_QUALITY_SCORE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PHASE7_TRAINING_MIN_CAPS_ALIGNMENT_SCORE"><code class="docutils literal notranslate"><span class="pre">Settings.PHASE7_TRAINING_MIN_CAPS_ALIGNMENT_SCORE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PHASE7_REQUIRE_PUBLISHED"><code class="docutils literal notranslate"><span class="pre">Settings.PHASE7_REQUIRE_PUBLISHED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PHASE7_TRAINING_ARTIFACT_ROOT"><code class="docutils literal notranslate"><span class="pre">Settings.PHASE7_TRAINING_ARTIFACT_ROOT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.LOG_LEVEL"><code class="docutils literal notranslate"><span class="pre">Settings.LOG_LEVEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.SENTRY_DSN"><code class="docutils literal notranslate"><span class="pre">Settings.SENTRY_DSN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.KEY_VAULT_REFRESH_INTERVAL_HOURS"><code class="docutils literal notranslate"><span class="pre">Settings.KEY_VAULT_REFRESH_INTERVAL_HOURS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.RATE_LIMIT_DEFAULT"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_DEFAULT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.RATE_LIMIT_AUTH"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_AUTH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.RATE_LIMIT_LLM"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_LLM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.RATE_LIMIT_TUTOR"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_TUTOR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.USER_DAILY_TOKEN_LIMIT"><code class="docutils literal notranslate"><span class="pre">Settings.USER_DAILY_TOKEN_LIMIT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.TENANT_MONTHLY_TOKEN_LIMIT"><code class="docutils literal notranslate"><span class="pre">Settings.TENANT_MONTHLY_TOKEN_LIMIT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.TENANT_BUDGET_ALERT_PCT"><code class="docutils literal notranslate"><span class="pre">Settings.TENANT_BUDGET_ALERT_PCT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ARQ_MAX_JOBS"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_MAX_JOBS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ARQ_JOB_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_JOB_TIMEOUT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PASSWORD_MIN_LENGTH"><code class="docutils literal notranslate"><span class="pre">Settings.PASSWORD_MIN_LENGTH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PASSWORD_PASSPHRASE_MIN_LENGTH"><code class="docutils literal notranslate"><span class="pre">Settings.PASSWORD_PASSPHRASE_MIN_LENGTH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.PASSWORD_BCRYPT_ROUNDS"><code class="docutils literal notranslate"><span class="pre">Settings.PASSWORD_BCRYPT_ROUNDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.CONTENT_STARTUP_SEED_ENABLED"><code class="docutils literal notranslate"><span class="pre">Settings.CONTENT_STARTUP_SEED_ENABLED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.ALLOWED_ORIGINS"><code class="docutils literal notranslate"><span class="pre">Settings.ALLOWED_ORIGINS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.is_production"><code class="docutils literal notranslate"><span class="pre">Settings.is_production()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.refresh_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.refresh_from_key_vault()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core.html#app.core.config.Settings.load_production_secrets_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.load_production_secrets_from_key_vault()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="core.html#app.core.config.get_settings"><code class="docutils literal notranslate"><span class="pre">get_settings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#security">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#audit-trail">Audit Trail</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Domain Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#diagnostics-irt-engine">Diagnostics — IRT Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#lessons-llm-gateway">Lessons — LLM Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#consent-popia-service">Consent — POPIA Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-app.modules.learners">Learners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-app.modules.study_plans">Study Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-app.modules.gamification">Gamification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-app.modules.parent_portal">Parent Portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-app.modules.rlhf">RLHF Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routers.html">API Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">ORM Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.UserRole"><code class="docutils literal notranslate"><span class="pre">UserRole</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.UserRole.STUDENT"><code class="docutils literal notranslate"><span class="pre">UserRole.STUDENT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.UserRole.PARENT"><code class="docutils literal notranslate"><span class="pre">UserRole.PARENT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.UserRole.TEACHER"><code class="docutils literal notranslate"><span class="pre">UserRole.TEACHER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.UserRole.ADMIN"><code class="docutils literal notranslate"><span class="pre">UserRole.ADMIN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.SubscriptionTier"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.SubscriptionTier.FREE"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier.FREE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.SubscriptionTier.PREMIUM"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier.PREMIUM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.ArchetypeLabel"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.KETER"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.KETER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.CHOKMAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.CHOKMAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.BINAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.BINAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.CHESED"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.CHESED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.GEVURAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.GEVURAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.TIFERET"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.TIFERET</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.NETZACH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.NETZACH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.HOD"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.HOD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.YESOD"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.YESOD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ArchetypeLabel.MALKUTH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.MALKUTH</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.Language"><code class="docutils literal notranslate"><span class="pre">Language</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Language.ENGLISH"><code class="docutils literal notranslate"><span class="pre">Language.ENGLISH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Language.ISIZULU"><code class="docutils literal notranslate"><span class="pre">Language.ISIZULU</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Language.AFRIKAANS"><code class="docutils literal notranslate"><span class="pre">Language.AFRIKAANS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Language.ISIXHOSA"><code class="docutils literal notranslate"><span class="pre">Language.ISIXHOSA</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.ConsentState"><code class="docutils literal notranslate"><span class="pre">ConsentState</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ConsentState.PENDING"><code class="docutils literal notranslate"><span class="pre">ConsentState.PENDING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ConsentState.GRANTED"><code class="docutils literal notranslate"><span class="pre">ConsentState.GRANTED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ConsentState.DENIED"><code class="docutils literal notranslate"><span class="pre">ConsentState.DENIED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ConsentState.EXPIRED"><code class="docutils literal notranslate"><span class="pre">ConsentState.EXPIRED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ConsentState.WITHDRAWN"><code class="docutils literal notranslate"><span class="pre">ConsentState.WITHDRAWN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ConsentState.RENEWAL_REQUIRED"><code class="docutils literal notranslate"><span class="pre">ConsentState.RENEWAL_REQUIRED</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.ItemReviewStatus"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ItemReviewStatus.DRAFT"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus.DRAFT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ItemReviewStatus.AI_GENERATED"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus.AI_GENERATED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ItemReviewStatus.HUMAN_REVIEWED"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus.HUMAN_REVIEWED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ItemReviewStatus.APPROVED"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus.APPROVED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ItemReviewStatus.RETIRED"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus.RETIRED</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.Guardian"><code class="docutils literal notranslate"><span class="pre">Guardian</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Guardian.learners"><code class="docutils literal notranslate"><span class="pre">Guardian.learners</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Guardian.consents"><code class="docutils literal notranslate"><span class="pre">Guardian.consents</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Guardian.secure_tokens"><code class="docutils literal notranslate"><span class="pre">Guardian.secure_tokens</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Guardian.onboarding_state"><code class="docutils literal notranslate"><span class="pre">Guardian.onboarding_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Guardian.privacy_settings"><code class="docutils literal notranslate"><span class="pre">Guardian.privacy_settings</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.LearnerProfile"><code class="docutils literal notranslate"><span class="pre">LearnerProfile</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.LearnerProfile.guardian"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.guardian</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.LearnerProfile.consents"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.consents</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.LearnerProfile.knowledge_gaps"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.knowledge_gaps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.LearnerProfile.mastery_records"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.mastery_records</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.LearnerProfile.diagnostic_sessions"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.diagnostic_sessions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.LearnerProfile.lessons"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.lessons</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.LearnerProfile.study_plans"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.study_plans</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.LearnerProfile.assessment_attempts"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.assessment_attempts</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.Learner"><code class="docutils literal notranslate"><span class="pre">Learner</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.ParentalConsent"><code class="docutils literal notranslate"><span class="pre">ParentalConsent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ParentalConsent.guardian"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.guardian</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ParentalConsent.learner"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.learner</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ParentalConsent.version_history"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.version_history</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ParentalConsent.is_active"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.is_active</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.ConsentVersionHistory"><code class="docutils literal notranslate"><span class="pre">ConsentVersionHistory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.ConsentVersionHistory.consent"><code class="docutils literal notranslate"><span class="pre">ConsentVersionHistory.consent</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.ErasureRequest"><code class="docutils literal notranslate"><span class="pre">ErasureRequest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.AuditEvent"><code class="docutils literal notranslate"><span class="pre">AuditEvent</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.IRTItem"><code class="docutils literal notranslate"><span class="pre">IRTItem</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.Assessment"><code class="docutils literal notranslate"><span class="pre">Assessment</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Assessment.attempts"><code class="docutils literal notranslate"><span class="pre">Assessment.attempts</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.AssessmentAttempt"><code class="docutils literal notranslate"><span class="pre">AssessmentAttempt</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.AssessmentAttempt.learner"><code class="docutils literal notranslate"><span class="pre">AssessmentAttempt.learner</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.AssessmentAttempt.assessment"><code class="docutils literal notranslate"><span class="pre">AssessmentAttempt.assessment</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.DiagnosticSession"><code class="docutils literal notranslate"><span class="pre">DiagnosticSession</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.DiagnosticSession.learner"><code class="docutils literal notranslate"><span class="pre">DiagnosticSession.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.KnowledgeGap"><code class="docutils literal notranslate"><span class="pre">KnowledgeGap</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.KnowledgeGap.learner"><code class="docutils literal notranslate"><span class="pre">KnowledgeGap.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.StudyPlan"><code class="docutils literal notranslate"><span class="pre">StudyPlan</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.StudyPlan.learner"><code class="docutils literal notranslate"><span class="pre">StudyPlan.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.SubjectMastery"><code class="docutils literal notranslate"><span class="pre">SubjectMastery</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.SubjectMastery.learner"><code class="docutils literal notranslate"><span class="pre">SubjectMastery.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.TopicMastery"><code class="docutils literal notranslate"><span class="pre">TopicMastery</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.MasterySnapshot"><code class="docutils literal notranslate"><span class="pre">MasterySnapshot</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.PracticeQueue"><code class="docutils literal notranslate"><span class="pre">PracticeQueue</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.SpacedReviewSchedule"><code class="docutils literal notranslate"><span class="pre">SpacedReviewSchedule</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.PracticeSession"><code class="docutils literal notranslate"><span class="pre">PracticeSession</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.CalibrationAudit"><code class="docutils literal notranslate"><span class="pre">CalibrationAudit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.Lesson"><code class="docutils literal notranslate"><span class="pre">Lesson</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#app.models.Lesson.learner"><code class="docutils literal notranslate"><span class="pre">Lesson.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.LessonFeedback"><code class="docutils literal notranslate"><span class="pre">LessonFeedback</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.RLHFExport"><code class="docutils literal notranslate"><span class="pre">RLHFExport</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.AuditLog"><code class="docutils literal notranslate"><span class="pre">AuditLog</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.StripeWebhookEvent"><code class="docutils literal notranslate"><span class="pre">StripeWebhookEvent</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#app.models.LessonRecord"><code class="docutils literal notranslate"><span class="pre">LessonRecord</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Repositories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#app.repositories.AssessmentRepository"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.AssessmentRepository.model"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.AssessmentRepository.list_active"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.list_active()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.AssessmentRepository.get_by_id_str"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.get_by_id_str()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.repositories.AuditRepository"><code class="docutils literal notranslate"><span class="pre">AuditRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.AuditRepository.record"><code class="docutils literal notranslate"><span class="pre">AuditRepository.record()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.AuditRepository.append"><code class="docutils literal notranslate"><span class="pre">AuditRepository.append()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.AuditRepository.get_by_resource"><code class="docutils literal notranslate"><span class="pre">AuditRepository.get_by_resource()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.AuditRepository.get_by_actor"><code class="docutils literal notranslate"><span class="pre">AuditRepository.get_by_actor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.AuditRepository.verify_chain"><code class="docutils literal notranslate"><span class="pre">AuditRepository.verify_chain()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.repositories.AuthRepository"><code class="docutils literal notranslate"><span class="pre">AuthRepository</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app.repositories.ConsentRepository"><code class="docutils literal notranslate"><span class="pre">ConsentRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.ConsentRepository.get_active_for_learner"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.get_active_for_learner()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.ConsentRepository.get_by_id"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.get_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.ConsentRepository.create"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.ConsentRepository.update"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.ConsentRepository.list_expiring_soon"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.list_expiring_soon()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.repositories.DiagnosticRepository"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.DiagnosticRepository.model"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.DiagnosticRepository.get_latest_for_learner"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.get_latest_for_learner()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.DiagnosticRepository.create_session"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.create_session()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.repositories.GamificationRepository"><code class="docutils literal notranslate"><span class="pre">GamificationRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.GamificationRepository.get_profile_rows"><code class="docutils literal notranslate"><span class="pre">GamificationRepository.get_profile_rows()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.GamificationRepository.get_leaderboard_rows"><code class="docutils literal notranslate"><span class="pre">GamificationRepository.get_leaderboard_rows()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.repositories.GuardianRepository"><code class="docutils literal notranslate"><span class="pre">GuardianRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.GuardianRepository.model"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.GuardianRepository.get_by_email_hash"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_email_hash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.GuardianRepository.get_by_verification_token"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_verification_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.GuardianRepository.get_guardian_by_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_guardian_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.GuardianRepository.revoke_jti"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.revoke_jti()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.GuardianRepository.is_jti_revoked"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.is_jti_revoked()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.repositories.LearnerRepository"><code class="docutils literal notranslate"><span class="pre">LearnerRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.LearnerRepository.model"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.LearnerRepository.get_by_id"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.get_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.LearnerRepository.delete_by_id"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.delete_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.LearnerRepository.soft_delete"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.soft_delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.LearnerRepository.purge_personal_data"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.purge_personal_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app.repositories.LessonRepository"><code class="docutils literal notranslate"><span class="pre">LessonRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.LessonRepository.create"><code class="docutils literal notranslate"><span class="pre">LessonRepository.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.LessonRepository.get"><code class="docutils literal notranslate"><span class="pre">LessonRepository.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.LessonRepository.get_recent_for_learner"><code class="docutils literal notranslate"><span class="pre">LessonRepository.get_recent_for_learner()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.LessonRepository.get_recent"><code class="docutils literal notranslate"><span class="pre">LessonRepository.get_recent()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.LessonRepository.list_pending_review"><code class="docutils literal notranslate"><span class="pre">LessonRepository.list_pending_review()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.LessonRepository.list_by_caps_ref"><code class="docutils literal notranslate"><span class="pre">LessonRepository.list_by_caps_ref()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.LessonRepository.update_review_status"><code class="docutils literal notranslate"><span class="pre">LessonRepository.update_review_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.LessonRepository.record_feedback"><code class="docutils literal notranslate"><span class="pre">LessonRepository.record_feedback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.LessonRepository.mark_completed"><code class="docutils literal notranslate"><span class="pre">LessonRepository.mark_completed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.LessonRepository.count_approved_by_caps_ref_async"><code class="docutils literal notranslate"><span class="pre">LessonRepository.count_approved_by_caps_ref_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.LessonRepository.list_approved_lessons_async"><code class="docutils literal notranslate"><span class="pre">LessonRepository.list_approved_lessons_async()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../notes/changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/changelog.html#v2-0-0-may-2026">v2.0.0 (May 2026)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/todo.html">Outstanding Work</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EduBoost SA</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Repositories</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/repositories.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="repositories">
+<h1>Repositories<a class="headerlink" href="#repositories" title="Link to this heading"></a></h1>
+<p>Generic async data-access layer built on AsyncSQLAlchemy.</p>
+<p id="module-app.repositories">Repository abstractions for EduBoost V2.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.repositories.AssessmentRepository">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.repositories.</span></span><span class="sig-name descname"><span class="pre">AssessmentRepository</span></span><a class="reference internal" href="../_modules/app/repositories/assessment_repository.html#AssessmentRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AssessmentRepository" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseRepository</span></code>[<a class="reference internal" href="models.html#app.models.Assessment" title="app.models.Assessment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Assessment</span></code></a>]</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.repositories.AssessmentRepository.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#app.repositories.AssessmentRepository.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#app.models.Assessment" title="app.models.Assessment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Assessment</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.AssessmentRepository.list_active">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">list_active</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/assessment_repository.html#AssessmentRepository.list_active"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AssessmentRepository.list_active" title="Link to this definition"></a></dt>
+<dd><p>Return a list of active assessments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>db</strong> (<em>sqlalchemy.ext.asyncio.AsyncSession</em>)</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference internal" href="models.html#app.models.Assessment" title="app.models.Assessment"><em>Assessment</em></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.AssessmentRepository.get_by_id_str">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_by_id_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assessment_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/assessment_repository.html#AssessmentRepository.get_by_id_str"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AssessmentRepository.get_by_id_str" title="Link to this definition"></a></dt>
+<dd><p>Fetch a single assessment by its ID string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>assessment_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>db</strong> (<em>sqlalchemy.ext.asyncio.AsyncSession</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Assessment" title="app.models.Assessment"><em>Assessment</em></a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.repositories.AuditRepository">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.repositories.</span></span><span class="sig-name descname"><span class="pre">AuditRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/audit_repository.html#AuditRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AuditRepository" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>§4.5 – append-only audit log.
+Every INSERT chains hashes to form a tamper-evident log.
+The underlying table must have:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>NO DELETE privilege for the app role</p></li>
+<li><p>NO UPDATE privilege for the app role</p></li>
+<li><p>A row-level trigger that raises on UPDATE/DELETE as a belt-and-suspenders guard</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>asyncpg.Pool</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.AuditRepository.record">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">record</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resource_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/audit_repository.html#AuditRepository.record"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AuditRepository.record" title="Link to this definition"></a></dt>
+<dd><p>Append one audit event. Returns the new event’s UUID.
+Automatically chains the hash to the previous event for the same resource
+(or global tail if resource_id is None).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event_type</strong> (<em>AuditEventType</em><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>actor_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>UUID</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>resource_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>UUID</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>payload</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>conn</strong> (<em>asyncpg.Connection</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>UUID</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.AuditRepository.append">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resource_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/audit_repository.html#AuditRepository.append"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AuditRepository.append" title="Link to this definition"></a></dt>
+<dd><p>Append one audit event and return the inserted row.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event_type</strong> (<em>AuditEventType</em><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>actor_id</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>uuid.UUID</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>)</p></li>
+<li><p><strong>resource_id</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>uuid.UUID</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>)</p></li>
+<li><p><strong>payload</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>Any</em><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>conn</strong> (<em>Optional</em><em>[</em><em>asyncpg.Connection</em><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.AuditEvent" title="app.models.AuditEvent">AuditEvent</a> | asyncpg.Record</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.AuditRepository.get_by_resource">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_by_resource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/audit_repository.html#AuditRepository.get_by_resource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AuditRepository.get_by_resource" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>UUID</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>event_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference internal" href="models.html#app.models.AuditEvent" title="app.models.AuditEvent"><em>AuditEvent</em></a>] | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[asyncpg.Record]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.AuditRepository.get_by_actor">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_by_actor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/audit_repository.html#AuditRepository.get_by_actor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AuditRepository.get_by_actor" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>actor_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>UUID</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>event_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference internal" href="models.html#app.models.AuditEvent" title="app.models.AuditEvent"><em>AuditEvent</em></a>] | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[asyncpg.Record]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.AuditRepository.verify_chain">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">verify_chain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/audit_repository.html#AuditRepository.verify_chain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AuditRepository.verify_chain" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Walk the audit chain for a resource (or globally) and verify:</dt><dd><ol class="arabic simple">
+<li><p>event_hash matches re-computed hash of payload columns</p></li>
+<li><p>hmac_signature matches re-computed HMAC</p></li>
+<li><p>previous_event_hash equals prior row’s event_hash</p></li>
+</ol>
+</dd>
+</dl>
+<p>Returns (ok, list_of_errors).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>UUID</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)">tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.repositories.AuthRepository">
+<span class="sig-prename descclassname"><span class="pre">app.repositories.</span></span><span class="sig-name descname"><span class="pre">AuthRepository</span></span><a class="headerlink" href="#app.repositories.AuthRepository" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#app.repositories.GuardianRepository" title="app.repositories.auth_repository.GuardianRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">GuardianRepository</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.repositories.ConsentRepository">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.repositories.</span></span><span class="sig-name descname"><span class="pre">ConsentRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/consent_repository.html#ConsentRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.ConsentRepository" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pool</strong> (<em>asyncpg.Pool</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.ConsentRepository.get_active_for_learner">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_active_for_learner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/consent_repository.html#ConsentRepository.get_active_for_learner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.ConsentRepository.get_active_for_learner" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>learner_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>UUID</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>ConsentRecord</em> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.ConsentRepository.get_by_id">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/consent_repository.html#ConsentRepository.get_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.ConsentRepository.get_by_id" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>record_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>UUID</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>ConsentRecord</em> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.ConsentRepository.create">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/consent_repository.html#ConsentRepository.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.ConsentRepository.create" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>record</strong> (<em>ConsentRecord</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>ConsentRecord</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.ConsentRepository.update">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/consent_repository.html#ConsentRepository.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.ConsentRepository.update" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>record</strong> (<em>ConsentRecord</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>ConsentRecord</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.ConsentRepository.list_expiring_soon">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">list_expiring_soon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">within_days</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/consent_repository.html#ConsentRepository.list_expiring_soon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.ConsentRepository.list_expiring_soon" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>within_days</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<em>ConsentRecord</em>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.repositories.DiagnosticRepository">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.repositories.</span></span><span class="sig-name descname"><span class="pre">DiagnosticRepository</span></span><a class="reference internal" href="../_modules/app/repositories/diagnostic_repository.html#DiagnosticRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.DiagnosticRepository" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseRepository</span></code>[<a class="reference internal" href="models.html#app.models.DiagnosticSession" title="app.models.DiagnosticSession"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiagnosticSession</span></code></a>]</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.repositories.DiagnosticRepository.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#app.repositories.DiagnosticRepository.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#app.models.DiagnosticSession" title="app.models.DiagnosticSession"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiagnosticSession</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.DiagnosticRepository.get_latest_for_learner">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_latest_for_learner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/diagnostic_repository.html#DiagnosticRepository.get_latest_for_learner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.DiagnosticRepository.get_latest_for_learner" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>learner_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>UUID</em></a>)</p></li>
+<li><p><strong>subject</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>db</strong> (<em>sqlalchemy.ext.asyncio.AsyncSession</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.DiagnosticSession" title="app.models.DiagnosticSession"><em>DiagnosticSession</em></a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.DiagnosticRepository.create_session">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create_session</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grade_level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items_administered</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items_correct</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items_total</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_mastery_score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">knowledge_gaps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/diagnostic_repository.html#DiagnosticRepository.create_session"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.DiagnosticRepository.create_session" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>learner_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>UUID</em></a>)</p></li>
+<li><p><strong>subject_code</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>grade_level</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>theta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>sem</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>items_administered</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>items_correct</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>items_total</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>final_mastery_score</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>knowledge_gaps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a>)</p></li>
+<li><p><strong>db</strong> (<em>sqlalchemy.ext.asyncio.AsyncSession</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.DiagnosticSession" title="app.models.DiagnosticSession"><em>DiagnosticSession</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.repositories.GamificationRepository">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.repositories.</span></span><span class="sig-name descname"><span class="pre">GamificationRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/gamification_repository.html#GamificationRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GamificationRepository" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.GamificationRepository.get_profile_rows">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_profile_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/gamification_repository.html#GamificationRepository.get_profile_rows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GamificationRepository.get_profile_rows" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>learner_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.GamificationRepository.get_leaderboard_rows">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_leaderboard_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/gamification_repository.html#GamificationRepository.get_leaderboard_rows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GamificationRepository.get_leaderboard_rows" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.repositories.GuardianRepository">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.repositories.</span></span><span class="sig-name descname"><span class="pre">GuardianRepository</span></span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseRepository</span></code>[<a class="reference internal" href="models.html#app.models.Guardian" title="app.models.Guardian"><code class="xref py py-class docutils literal notranslate"><span class="pre">Guardian</span></code></a>]</p>
+<p>Repository for guardian accounts and token lifecycle operations.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.repositories.GuardianRepository.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#app.repositories.GuardianRepository.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#app.models.Guardian" title="app.models.Guardian"><code class="xref py py-class docutils literal notranslate"><span class="pre">Guardian</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.GuardianRepository.get_by_email_hash">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_by_email_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.get_by_email_hash"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.get_by_email_hash" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>email_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>db</strong> (<em>sqlalchemy.ext.asyncio.AsyncSession</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Guardian" title="app.models.Guardian"><em>Guardian</em></a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.GuardianRepository.get_by_verification_token">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_by_verification_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.get_by_verification_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.get_by_verification_token" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>token</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>db</strong> (<em>sqlalchemy.ext.asyncio.AsyncSession</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Guardian" title="app.models.Guardian"><em>Guardian</em></a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.GuardianRepository.get_guardian_by_id">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_guardian_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">guardian_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.get_guardian_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.get_guardian_by_id" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>guardian_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>db</strong> (<em>sqlalchemy.ext.asyncio.AsyncSession</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Guardian" title="app.models.Guardian"><em>Guardian</em></a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.GuardianRepository.revoke_jti">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">revoke_jti</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jti</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expires_at</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.revoke_jti"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.revoke_jti" title="Link to this definition"></a></dt>
+<dd><p>Mark a JWT JTI as revoked so it can’t be reused.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jti</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>expires_at</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><em>datetime</em></a>)</p></li>
+<li><p><strong>db</strong> (<em>sqlalchemy.ext.asyncio.AsyncSession</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.GuardianRepository.is_jti_revoked">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">is_jti_revoked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jti</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.is_jti_revoked"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.is_jti_revoked" title="Link to this definition"></a></dt>
+<dd><p>Return True if the given JTI has been revoked.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jti</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>db</strong> (<em>sqlalchemy.ext.asyncio.AsyncSession</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.repositories.LearnerRepository">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.repositories.</span></span><span class="sig-name descname"><span class="pre">LearnerRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/learner_repository.html#LearnerRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.LearnerRepository" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseRepository</span></code>[<a class="reference internal" href="models.html#app.models.LearnerProfile" title="app.models.LearnerProfile"><code class="xref py py-class docutils literal notranslate"><span class="pre">LearnerProfile</span></code></a>]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.repositories.LearnerRepository.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#app.repositories.LearnerRepository.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#app.models.LearnerProfile" title="app.models.LearnerProfile"><code class="xref py py-class docutils literal notranslate"><span class="pre">LearnerProfile</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.LearnerRepository.get_by_id">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/learner_repository.html#LearnerRepository.get_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.LearnerRepository.get_by_id" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>learner_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>UUID</em>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Learner" title="app.models.Learner">Learner</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.LearnerRepository.delete_by_id">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">delete_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/learner_repository.html#LearnerRepository.delete_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.LearnerRepository.delete_by_id" title="Link to this definition"></a></dt>
+<dd><p>Physically delete a learner record (Right to Erasure).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>learner_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>UUID</em>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.LearnerRepository.soft_delete">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">soft_delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/learner_repository.html#LearnerRepository.soft_delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.LearnerRepository.soft_delete" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>learner_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>UUID</em>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.LearnerRepository.purge_personal_data">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">purge_personal_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/learner_repository.html#LearnerRepository.purge_personal_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.LearnerRepository.purge_personal_data" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>learner_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>UUID</em>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.repositories.LessonRepository">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.repositories.</span></span><span class="sig-name descname"><span class="pre">LessonRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/lesson_repository.html#LessonRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.LessonRepository" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.LessonRepository.create">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/lesson_repository.html#LessonRepository.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.LessonRepository.create" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>)</p></li>
+<li><p><strong>kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Lesson" title="app.models.Lesson"><em>Lesson</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.LessonRepository.get">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lesson_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/lesson_repository.html#LessonRepository.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.LessonRepository.get" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lesson_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>UUID</em>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Lesson" title="app.models.Lesson">Lesson</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.LessonRepository.get_recent_for_learner">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_recent_for_learner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/lesson_repository.html#LessonRepository.get_recent_for_learner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.LessonRepository.get_recent_for_learner" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>learner_id</strong> (<em>UUID</em><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>subject</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference internal" href="models.html#app.models.Lesson" title="app.models.Lesson">Lesson</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.LessonRepository.get_recent">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_recent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learner_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/lesson_repository.html#LessonRepository.get_recent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.LessonRepository.get_recent" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>learner_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>UUID</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>skip</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference internal" href="models.html#app.models.Lesson" title="app.models.Lesson"><em>Lesson</em></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.LessonRepository.list_pending_review">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">list_pending_review</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">grade</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caps_ref</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/lesson_repository.html#LessonRepository.list_pending_review"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.LessonRepository.list_pending_review" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>grade</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>subject</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>caps_ref</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference internal" href="models.html#app.models.Lesson" title="app.models.Lesson"><em>Lesson</em></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.LessonRepository.list_by_caps_ref">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">list_by_caps_ref</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">caps_ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_all_statuses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/lesson_repository.html#LessonRepository.list_by_caps_ref"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.LessonRepository.list_by_caps_ref" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>caps_ref</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>include_all_statuses</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference internal" href="models.html#app.models.Lesson" title="app.models.Lesson"><em>Lesson</em></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.LessonRepository.update_review_status">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">update_review_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lesson_id</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">review_status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reviewer_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reviewer_notes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/lesson_repository.html#LessonRepository.update_review_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.LessonRepository.update_review_status" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lesson_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>UUID</em></a>)</p></li>
+<li><p><strong>review_status</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>reviewer_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.14)"><em>UUID</em></a>)</p></li>
+<li><p><strong>reviewer_notes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Lesson" title="app.models.Lesson"><em>Lesson</em></a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.LessonRepository.record_feedback">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">record_feedback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lesson_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/lesson_repository.html#LessonRepository.record_feedback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.LessonRepository.record_feedback" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lesson_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>score</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.LessonRepository.mark_completed">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">mark_completed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lesson_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">completed_at</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/lesson_repository.html#LessonRepository.mark_completed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.LessonRepository.mark_completed" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lesson_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>completed_at</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><em>datetime</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.LessonRepository.count_approved_by_caps_ref_async">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">count_approved_by_caps_ref_async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">caps_ref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/lesson_repository.html#LessonRepository.count_approved_by_caps_ref_async"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.LessonRepository.count_approved_by_caps_ref_async" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>caps_ref</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.LessonRepository.list_approved_lessons_async">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">list_approved_lessons_async</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/lesson_repository.html#LessonRepository.list_approved_lessons_async"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.LessonRepository.list_approved_lessons_async" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="models.html" class="btn btn-neutral float-left" title="ORM Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../notes/changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, EduBoost SA Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

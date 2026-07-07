@@ -1,0 +1,860 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>app.repositories.audit_repository &mdash; EduBoost SA 2.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=c5a06975" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=51b770b3"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            EduBoost SA
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/core.html">Core — Shared Kernel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/core.html#module-app.core.config">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings"><code class="docutils literal notranslate"><span class="pre">Settings</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.APP_NAME"><code class="docutils literal notranslate"><span class="pre">Settings.APP_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.APP_VERSION"><code class="docutils literal notranslate"><span class="pre">Settings.APP_VERSION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.APP_BASE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.APP_BASE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.ENVIRONMENT"><code class="docutils literal notranslate"><span class="pre">Settings.ENVIRONMENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.APP_ENV"><code class="docutils literal notranslate"><span class="pre">Settings.APP_ENV</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.DEBUG"><code class="docutils literal notranslate"><span class="pre">Settings.DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LEGACY_RETIREMENT_DATE"><code class="docutils literal notranslate"><span class="pre">Settings.LEGACY_RETIREMENT_DATE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.DATABASE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.DATABASE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.REDIS_URL"><code class="docutils literal notranslate"><span class="pre">Settings.REDIS_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.REDIS_CACHE_TTL_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.REDIS_CACHE_TTL_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.SEMANTIC_CACHE_TTL_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.SEMANTIC_CACHE_TTL_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.JWT_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.JWT_ALGORITHM"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_ALGORITHM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.ENCRYPTION_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.ENCRYPTION_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.ENCRYPTION_SALT"><code class="docutils literal notranslate"><span class="pre">Settings.ENCRYPTION_SALT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LLM_PROVIDER"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_PROVIDER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.GOOGLE_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.GOOGLE_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.GOOGLE_MODEL"><code class="docutils literal notranslate"><span class="pre">Settings.GOOGLE_MODEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.ANTHROPIC_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.ANTHROPIC_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.GROQ_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.GROQ_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.GROQ_MODEL"><code class="docutils literal notranslate"><span class="pre">Settings.GROQ_MODEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.HUGGINGFACE_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.HUGGINGFACE_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.ANTHROPIC_MODEL"><code class="docutils literal notranslate"><span class="pre">Settings.ANTHROPIC_MODEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LOCAL_BASE_MODEL_ID"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_BASE_MODEL_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LOCAL_ADAPTER_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_ADAPTER_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LOCAL_MERGED_MODEL_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_MERGED_MODEL_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LOCAL_LLM_MAX_NEW_TOKENS"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_LLM_MAX_NEW_TOKENS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LOCAL_LLM_TEMPERATURE"><code class="docutils literal notranslate"><span class="pre">Settings.LOCAL_LLM_TEMPERATURE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.INFERENCE_SERVICE_URL"><code class="docutils literal notranslate"><span class="pre">Settings.INFERENCE_SERVICE_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LLM_TIMEOUT_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_TIMEOUT_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LLM_MAX_RETRIES"><code class="docutils literal notranslate"><span class="pre">Settings.LLM_MAX_RETRIES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.FREE_DAILY_REQUEST_QUOTA"><code class="docutils literal notranslate"><span class="pre">Settings.FREE_DAILY_REQUEST_QUOTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.PREMIUM_DAILY_REQUEST_QUOTA"><code class="docutils literal notranslate"><span class="pre">Settings.PREMIUM_DAILY_REQUEST_QUOTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.PUBLIC_FRONTEND_URL"><code class="docutils literal notranslate"><span class="pre">Settings.PUBLIC_FRONTEND_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.STRIPE_SECRET_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_SECRET_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.STRIPE_WEBHOOK_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_WEBHOOK_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.STRIPE_PRICE_ID_PREMIUM"><code class="docutils literal notranslate"><span class="pre">Settings.STRIPE_PRICE_ID_PREMIUM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.POSTHOG_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.POSTHOG_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.POSTHOG_HOST"><code class="docutils literal notranslate"><span class="pre">Settings.POSTHOG_HOST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.SENDGRID_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.SENDGRID_FROM_EMAIL"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_FROM_EMAIL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.SENDGRID_FROM_NAME"><code class="docutils literal notranslate"><span class="pre">Settings.SENDGRID_FROM_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.AZURE_KEY_VAULT_URL"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_KEY_VAULT_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.AZURE_CLIENT_ID"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_CLIENT_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.AZURE_CLIENT_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_CLIENT_SECRET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.AZURE_TENANT_ID"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_TENANT_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.AZURE_STORAGE_CONNECTION_STRING"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_STORAGE_CONNECTION_STRING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.AZURE_STORAGE_CONTAINER"><code class="docutils literal notranslate"><span class="pre">Settings.AZURE_STORAGE_CONTAINER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.BACKUP_ENCRYPTION_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.BACKUP_ENCRYPTION_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.BACKUP_RETENTION_DAYS"><code class="docutils literal notranslate"><span class="pre">Settings.BACKUP_RETENTION_DAYS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.GRAFANA_CLOUD_PROMETHEUS_URL"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_PROMETHEUS_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.GRAFANA_CLOUD_LOKI_URL"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_LOKI_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.GRAFANA_CLOUD_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.GRAFANA_CLOUD_API_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.PROMETHEUS_METRICS_PATH"><code class="docutils literal notranslate"><span class="pre">Settings.PROMETHEUS_METRICS_PATH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.AI_USAGE_RESERVATION_TTL_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.AI_USAGE_RESERVATION_TTL_SECONDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.PHASE7_TRAINING_MIN_QUALITY_SCORE"><code class="docutils literal notranslate"><span class="pre">Settings.PHASE7_TRAINING_MIN_QUALITY_SCORE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.PHASE7_TRAINING_MIN_CAPS_ALIGNMENT_SCORE"><code class="docutils literal notranslate"><span class="pre">Settings.PHASE7_TRAINING_MIN_CAPS_ALIGNMENT_SCORE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.PHASE7_REQUIRE_PUBLISHED"><code class="docutils literal notranslate"><span class="pre">Settings.PHASE7_REQUIRE_PUBLISHED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.PHASE7_TRAINING_ARTIFACT_ROOT"><code class="docutils literal notranslate"><span class="pre">Settings.PHASE7_TRAINING_ARTIFACT_ROOT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.LOG_LEVEL"><code class="docutils literal notranslate"><span class="pre">Settings.LOG_LEVEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.SENTRY_DSN"><code class="docutils literal notranslate"><span class="pre">Settings.SENTRY_DSN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.KEY_VAULT_REFRESH_INTERVAL_HOURS"><code class="docutils literal notranslate"><span class="pre">Settings.KEY_VAULT_REFRESH_INTERVAL_HOURS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.RATE_LIMIT_DEFAULT"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_DEFAULT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.RATE_LIMIT_AUTH"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_AUTH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.RATE_LIMIT_LLM"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_LLM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.RATE_LIMIT_TUTOR"><code class="docutils literal notranslate"><span class="pre">Settings.RATE_LIMIT_TUTOR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.USER_DAILY_TOKEN_LIMIT"><code class="docutils literal notranslate"><span class="pre">Settings.USER_DAILY_TOKEN_LIMIT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.TENANT_MONTHLY_TOKEN_LIMIT"><code class="docutils literal notranslate"><span class="pre">Settings.TENANT_MONTHLY_TOKEN_LIMIT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.TENANT_BUDGET_ALERT_PCT"><code class="docutils literal notranslate"><span class="pre">Settings.TENANT_BUDGET_ALERT_PCT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.ARQ_MAX_JOBS"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_MAX_JOBS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.ARQ_JOB_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">Settings.ARQ_JOB_TIMEOUT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.PASSWORD_MIN_LENGTH"><code class="docutils literal notranslate"><span class="pre">Settings.PASSWORD_MIN_LENGTH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.PASSWORD_PASSPHRASE_MIN_LENGTH"><code class="docutils literal notranslate"><span class="pre">Settings.PASSWORD_PASSPHRASE_MIN_LENGTH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.PASSWORD_BCRYPT_ROUNDS"><code class="docutils literal notranslate"><span class="pre">Settings.PASSWORD_BCRYPT_ROUNDS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.CONTENT_STARTUP_SEED_ENABLED"><code class="docutils literal notranslate"><span class="pre">Settings.CONTENT_STARTUP_SEED_ENABLED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.ALLOWED_ORIGINS"><code class="docutils literal notranslate"><span class="pre">Settings.ALLOWED_ORIGINS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.is_production"><code class="docutils literal notranslate"><span class="pre">Settings.is_production()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.refresh_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.refresh_from_key_vault()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/core.html#app.core.config.Settings.load_production_secrets_from_key_vault"><code class="docutils literal notranslate"><span class="pre">Settings.load_production_secrets_from_key_vault()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/core.html#app.core.config.get_settings"><code class="docutils literal notranslate"><span class="pre">get_settings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/core.html#security">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/core.html#audit-trail">Audit Trail</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">Domain Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/modules.html#diagnostics-irt-engine">Diagnostics — IRT Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/modules.html#lessons-llm-gateway">Lessons — LLM Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/modules.html#consent-popia-service">Consent — POPIA Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/modules.html#module-app.modules.learners">Learners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/modules.html#module-app.modules.study_plans">Study Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/modules.html#module-app.modules.gamification">Gamification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/modules.html#module-app.modules.parent_portal">Parent Portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/modules.html#module-app.modules.rlhf">RLHF Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/routers.html">API Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/models.html">ORM Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.UserRole"><code class="docutils literal notranslate"><span class="pre">UserRole</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.UserRole.STUDENT"><code class="docutils literal notranslate"><span class="pre">UserRole.STUDENT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.UserRole.PARENT"><code class="docutils literal notranslate"><span class="pre">UserRole.PARENT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.UserRole.TEACHER"><code class="docutils literal notranslate"><span class="pre">UserRole.TEACHER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.UserRole.ADMIN"><code class="docutils literal notranslate"><span class="pre">UserRole.ADMIN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.SubscriptionTier"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.SubscriptionTier.FREE"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier.FREE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.SubscriptionTier.PREMIUM"><code class="docutils literal notranslate"><span class="pre">SubscriptionTier.PREMIUM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.KETER"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.KETER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.CHOKMAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.CHOKMAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.BINAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.BINAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.CHESED"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.CHESED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.GEVURAH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.GEVURAH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.TIFERET"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.TIFERET</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.NETZACH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.NETZACH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.HOD"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.HOD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.YESOD"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.YESOD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ArchetypeLabel.MALKUTH"><code class="docutils literal notranslate"><span class="pre">ArchetypeLabel.MALKUTH</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.Language"><code class="docutils literal notranslate"><span class="pre">Language</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Language.ENGLISH"><code class="docutils literal notranslate"><span class="pre">Language.ENGLISH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Language.ISIZULU"><code class="docutils literal notranslate"><span class="pre">Language.ISIZULU</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Language.AFRIKAANS"><code class="docutils literal notranslate"><span class="pre">Language.AFRIKAANS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Language.ISIXHOSA"><code class="docutils literal notranslate"><span class="pre">Language.ISIXHOSA</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.ConsentState"><code class="docutils literal notranslate"><span class="pre">ConsentState</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ConsentState.PENDING"><code class="docutils literal notranslate"><span class="pre">ConsentState.PENDING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ConsentState.GRANTED"><code class="docutils literal notranslate"><span class="pre">ConsentState.GRANTED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ConsentState.DENIED"><code class="docutils literal notranslate"><span class="pre">ConsentState.DENIED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ConsentState.EXPIRED"><code class="docutils literal notranslate"><span class="pre">ConsentState.EXPIRED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ConsentState.WITHDRAWN"><code class="docutils literal notranslate"><span class="pre">ConsentState.WITHDRAWN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ConsentState.RENEWAL_REQUIRED"><code class="docutils literal notranslate"><span class="pre">ConsentState.RENEWAL_REQUIRED</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.ItemReviewStatus"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ItemReviewStatus.DRAFT"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus.DRAFT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ItemReviewStatus.AI_GENERATED"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus.AI_GENERATED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ItemReviewStatus.HUMAN_REVIEWED"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus.HUMAN_REVIEWED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ItemReviewStatus.APPROVED"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus.APPROVED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ItemReviewStatus.RETIRED"><code class="docutils literal notranslate"><span class="pre">ItemReviewStatus.RETIRED</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.Guardian"><code class="docutils literal notranslate"><span class="pre">Guardian</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Guardian.learners"><code class="docutils literal notranslate"><span class="pre">Guardian.learners</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Guardian.consents"><code class="docutils literal notranslate"><span class="pre">Guardian.consents</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Guardian.secure_tokens"><code class="docutils literal notranslate"><span class="pre">Guardian.secure_tokens</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Guardian.onboarding_state"><code class="docutils literal notranslate"><span class="pre">Guardian.onboarding_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Guardian.privacy_settings"><code class="docutils literal notranslate"><span class="pre">Guardian.privacy_settings</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.LearnerProfile"><code class="docutils literal notranslate"><span class="pre">LearnerProfile</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.LearnerProfile.guardian"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.guardian</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.LearnerProfile.consents"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.consents</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.LearnerProfile.knowledge_gaps"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.knowledge_gaps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.LearnerProfile.mastery_records"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.mastery_records</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.LearnerProfile.diagnostic_sessions"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.diagnostic_sessions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.LearnerProfile.lessons"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.lessons</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.LearnerProfile.study_plans"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.study_plans</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.LearnerProfile.assessment_attempts"><code class="docutils literal notranslate"><span class="pre">LearnerProfile.assessment_attempts</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.Learner"><code class="docutils literal notranslate"><span class="pre">Learner</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.ParentalConsent"><code class="docutils literal notranslate"><span class="pre">ParentalConsent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ParentalConsent.guardian"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.guardian</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ParentalConsent.learner"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.learner</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ParentalConsent.version_history"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.version_history</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ParentalConsent.is_active"><code class="docutils literal notranslate"><span class="pre">ParentalConsent.is_active</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.ConsentVersionHistory"><code class="docutils literal notranslate"><span class="pre">ConsentVersionHistory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.ConsentVersionHistory.consent"><code class="docutils literal notranslate"><span class="pre">ConsentVersionHistory.consent</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.ErasureRequest"><code class="docutils literal notranslate"><span class="pre">ErasureRequest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.AuditEvent"><code class="docutils literal notranslate"><span class="pre">AuditEvent</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.IRTItem"><code class="docutils literal notranslate"><span class="pre">IRTItem</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.Assessment"><code class="docutils literal notranslate"><span class="pre">Assessment</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Assessment.attempts"><code class="docutils literal notranslate"><span class="pre">Assessment.attempts</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.AssessmentAttempt"><code class="docutils literal notranslate"><span class="pre">AssessmentAttempt</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.AssessmentAttempt.learner"><code class="docutils literal notranslate"><span class="pre">AssessmentAttempt.learner</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.AssessmentAttempt.assessment"><code class="docutils literal notranslate"><span class="pre">AssessmentAttempt.assessment</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.DiagnosticSession"><code class="docutils literal notranslate"><span class="pre">DiagnosticSession</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.DiagnosticSession.learner"><code class="docutils literal notranslate"><span class="pre">DiagnosticSession.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.KnowledgeGap"><code class="docutils literal notranslate"><span class="pre">KnowledgeGap</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.KnowledgeGap.learner"><code class="docutils literal notranslate"><span class="pre">KnowledgeGap.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.StudyPlan"><code class="docutils literal notranslate"><span class="pre">StudyPlan</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.StudyPlan.learner"><code class="docutils literal notranslate"><span class="pre">StudyPlan.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.SubjectMastery"><code class="docutils literal notranslate"><span class="pre">SubjectMastery</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.SubjectMastery.learner"><code class="docutils literal notranslate"><span class="pre">SubjectMastery.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.TopicMastery"><code class="docutils literal notranslate"><span class="pre">TopicMastery</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.MasterySnapshot"><code class="docutils literal notranslate"><span class="pre">MasterySnapshot</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.PracticeQueue"><code class="docutils literal notranslate"><span class="pre">PracticeQueue</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.SpacedReviewSchedule"><code class="docutils literal notranslate"><span class="pre">SpacedReviewSchedule</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.PracticeSession"><code class="docutils literal notranslate"><span class="pre">PracticeSession</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.CalibrationAudit"><code class="docutils literal notranslate"><span class="pre">CalibrationAudit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.Lesson"><code class="docutils literal notranslate"><span class="pre">Lesson</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/models.html#app.models.Lesson.learner"><code class="docutils literal notranslate"><span class="pre">Lesson.learner</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.LessonFeedback"><code class="docutils literal notranslate"><span class="pre">LessonFeedback</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.RLHFExport"><code class="docutils literal notranslate"><span class="pre">RLHFExport</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.AuditLog"><code class="docutils literal notranslate"><span class="pre">AuditLog</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.StripeWebhookEvent"><code class="docutils literal notranslate"><span class="pre">StripeWebhookEvent</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html#app.models.LessonRecord"><code class="docutils literal notranslate"><span class="pre">LessonRecord</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/repositories.html">Repositories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.model"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.list_active"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.list_active()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.get_by_id_str"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.get_by_id_str()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AuditRepository"><code class="docutils literal notranslate"><span class="pre">AuditRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AuditRepository.record"><code class="docutils literal notranslate"><span class="pre">AuditRepository.record()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AuditRepository.append"><code class="docutils literal notranslate"><span class="pre">AuditRepository.append()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AuditRepository.get_by_resource"><code class="docutils literal notranslate"><span class="pre">AuditRepository.get_by_resource()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AuditRepository.get_by_actor"><code class="docutils literal notranslate"><span class="pre">AuditRepository.get_by_actor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AuditRepository.verify_chain"><code class="docutils literal notranslate"><span class="pre">AuditRepository.verify_chain()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AuthRepository"><code class="docutils literal notranslate"><span class="pre">AuthRepository</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.ConsentRepository"><code class="docutils literal notranslate"><span class="pre">ConsentRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.ConsentRepository.get_active_for_learner"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.get_active_for_learner()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.ConsentRepository.get_by_id"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.get_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.ConsentRepository.create"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.ConsentRepository.update"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.ConsentRepository.list_expiring_soon"><code class="docutils literal notranslate"><span class="pre">ConsentRepository.list_expiring_soon()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.DiagnosticRepository"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.DiagnosticRepository.model"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.DiagnosticRepository.get_latest_for_learner"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.get_latest_for_learner()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.DiagnosticRepository.create_session"><code class="docutils literal notranslate"><span class="pre">DiagnosticRepository.create_session()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GamificationRepository"><code class="docutils literal notranslate"><span class="pre">GamificationRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GamificationRepository.get_profile_rows"><code class="docutils literal notranslate"><span class="pre">GamificationRepository.get_profile_rows()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GamificationRepository.get_leaderboard_rows"><code class="docutils literal notranslate"><span class="pre">GamificationRepository.get_leaderboard_rows()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository"><code class="docutils literal notranslate"><span class="pre">GuardianRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.model"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_by_email_hash"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_email_hash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_by_verification_token"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_verification_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_guardian_by_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_guardian_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.revoke_jti"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.revoke_jti()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.is_jti_revoked"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.is_jti_revoked()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LearnerRepository"><code class="docutils literal notranslate"><span class="pre">LearnerRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LearnerRepository.model"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LearnerRepository.get_by_id"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.get_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LearnerRepository.delete_by_id"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.delete_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LearnerRepository.soft_delete"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.soft_delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LearnerRepository.purge_personal_data"><code class="docutils literal notranslate"><span class="pre">LearnerRepository.purge_personal_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LessonRepository"><code class="docutils literal notranslate"><span class="pre">LessonRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LessonRepository.create"><code class="docutils literal notranslate"><span class="pre">LessonRepository.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LessonRepository.get"><code class="docutils literal notranslate"><span class="pre">LessonRepository.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LessonRepository.get_recent_for_learner"><code class="docutils literal notranslate"><span class="pre">LessonRepository.get_recent_for_learner()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LessonRepository.get_recent"><code class="docutils literal notranslate"><span class="pre">LessonRepository.get_recent()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LessonRepository.list_pending_review"><code class="docutils literal notranslate"><span class="pre">LessonRepository.list_pending_review()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LessonRepository.list_by_caps_ref"><code class="docutils literal notranslate"><span class="pre">LessonRepository.list_by_caps_ref()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LessonRepository.update_review_status"><code class="docutils literal notranslate"><span class="pre">LessonRepository.update_review_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LessonRepository.record_feedback"><code class="docutils literal notranslate"><span class="pre">LessonRepository.record_feedback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LessonRepository.mark_completed"><code class="docutils literal notranslate"><span class="pre">LessonRepository.mark_completed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LessonRepository.count_approved_by_caps_ref_async"><code class="docutils literal notranslate"><span class="pre">LessonRepository.count_approved_by_caps_ref_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.LessonRepository.list_approved_lessons_async"><code class="docutils literal notranslate"><span class="pre">LessonRepository.list_approved_lessons_async()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../notes/changelog.html#v2-0-0-may-2026">v2.0.0 (May 2026)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/todo.html">Outstanding Work</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">EduBoost SA</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">app.repositories.audit_repository</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for app.repositories.audit_repository</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">app/repositories/audit_repository.py</span>
+<span class="sd">Append-only PostgreSQL audit repository.</span>
+<span class="sd">Implements §4.5: event hash, previous-hash chain, HMAC signature.</span>
+<span class="sd">The DB role used at runtime must NOT have UPDATE/DELETE on this table.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">hashlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">hmac</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncpg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">select</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.ext.asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncSession</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.domain.consent</span><span class="w"> </span><span class="kn">import</span> <span class="n">AuditEventType</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AuditEvent</span>
+
+
+<span class="n">_HMAC_SECRET</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>   <span class="c1"># injected at startup from settings.AUDIT_HMAC_SECRET</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">configure_hmac_secret</span><span class="p">(</span><span class="n">secret</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">global</span> <span class="n">_HMAC_SECRET</span>
+    <span class="n">_HMAC_SECRET</span> <span class="o">=</span> <span class="n">secret</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_audit_hash</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">event_id</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
+    <span class="n">event_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">actor_id</span><span class="p">:</span> <span class="nb">object</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">resource_id</span><span class="p">:</span> <span class="nb">object</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">previous_event_hash</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return deterministic SHA-256 hash for audit-chain tests.&quot;&quot;&quot;</span>
+    <span class="n">canonical</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;event_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">event_id</span><span class="p">),</span>
+            <span class="s2">&quot;event_type&quot;</span><span class="p">:</span> <span class="n">event_type</span><span class="p">,</span>
+            <span class="s2">&quot;actor_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">actor_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">actor_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;resource_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">resource_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">resource_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;previous_event_hash&quot;</span><span class="p">:</span> <span class="n">previous_event_hash</span><span class="p">,</span>
+            <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="n">payload</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">canonical</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sign_audit_hash</span><span class="p">(</span><span class="n">event_hash</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">secret</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return HMAC-SHA256 signature for an audit hash.&quot;&quot;&quot;</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">secret</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">secret</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">secret</span>
+    <span class="k">return</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">event_hash</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">),</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_compute_hash</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;SHA-256 of the canonical JSON payload.&quot;&quot;&quot;</span>
+    <span class="n">canonical</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">canonical</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_compute_hmac</span><span class="p">(</span><span class="n">event_hash</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">previous_hash</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;HMAC-SHA256 over &#39;{event_hash}:{previous_hash}&#39;.&quot;&quot;&quot;</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">event_hash</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">previous_hash</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">_HMAC_SECRET</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="AuditRepository">
+<a class="viewcode-back" href="../../../api/repositories.html#app.repositories.AuditRepository">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AuditRepository</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    §4.5 – append-only audit log.</span>
+<span class="sd">    Every INSERT chains hashes to form a tamper-evident log.</span>
+<span class="sd">    The underlying table must have:</span>
+
+<span class="sd">      - NO DELETE privilege for the app role</span>
+<span class="sd">      - NO UPDATE privilege for the app role</span>
+<span class="sd">      - A row-level trigger that raises on UPDATE/DELETE as a belt-and-suspenders guard</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="n">asyncpg</span><span class="o">.</span><span class="n">Pool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="n">db</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_is_async_session</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="c1"># Avoid isinstance check which can fail with certain mock setups.</span>
+        <span class="c1"># AsyncSession has &#39;add&#39;, asyncpg.Connection/Pool does not.</span>
+        <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span> <span class="s2">&quot;add&quot;</span><span class="p">)</span>
+
+    <span class="c1"># ------------------------------------------------------------------</span>
+    <span class="c1"># Public write API (INSERT only)</span>
+    <span class="c1"># ------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="AuditRepository.record">
+<a class="viewcode-back" href="../../../api/repositories.html#app.repositories.AuditRepository.record">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">record</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">event_type</span><span class="p">:</span> <span class="n">AuditEventType</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">actor_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">resource_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">conn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">asyncpg</span><span class="o">.</span><span class="n">Connection</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Append one audit event. Returns the new event&#39;s UUID.</span>
+<span class="sd">        Automatically chains the hash to the previous event for the same resource</span>
+<span class="sd">        (or global tail if resource_id is None).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">payload</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="n">event_id</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span>
+
+        <span class="n">event_type_value</span> <span class="o">=</span> <span class="n">event_type</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">event_type</span><span class="p">,</span> <span class="n">AuditEventType</span><span class="p">)</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">event_type</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">event_type_value</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;event_type must not be blank&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_payload</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+
+        <span class="n">previous_event_hash</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_latest_hash</span><span class="p">(</span><span class="n">resource_id</span><span class="p">,</span> <span class="n">conn</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
+        <span class="n">hash_payload</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;event_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">event_id</span><span class="p">),</span>
+            <span class="s2">&quot;event_type&quot;</span><span class="p">:</span> <span class="n">event_type_value</span><span class="p">,</span>
+            <span class="s2">&quot;actor_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">actor_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">actor_id</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;resource_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">resource_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">resource_id</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;previous_event_hash&quot;</span><span class="p">:</span> <span class="n">previous_event_hash</span><span class="p">,</span>
+            <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="n">payload</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">event_hash</span> <span class="o">=</span> <span class="n">_compute_hash</span><span class="p">(</span><span class="n">hash_payload</span><span class="p">)</span>
+        <span class="n">signature</span> <span class="o">=</span> <span class="n">_compute_hmac</span><span class="p">(</span><span class="n">event_hash</span><span class="p">,</span> <span class="n">previous_event_hash</span><span class="p">)</span>
+        <span class="n">persisted_previous_event_hash</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">previous_event_hash</span> <span class="o">==</span> <span class="s2">&quot;GENESIS&quot;</span> <span class="k">else</span> <span class="n">previous_event_hash</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_async_session</span><span class="p">:</span>
+            <span class="n">event</span> <span class="o">=</span> <span class="n">AuditEvent</span><span class="p">(</span>
+                <span class="nb">id</span><span class="o">=</span><span class="n">event_id</span><span class="p">,</span>
+                <span class="n">event_type</span><span class="o">=</span><span class="n">event_type_value</span><span class="p">,</span>
+                <span class="n">actor_id</span><span class="o">=</span><span class="n">actor_id</span><span class="p">,</span>
+                <span class="n">resource_id</span><span class="o">=</span><span class="n">resource_id</span><span class="p">,</span>
+                <span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
+                <span class="n">event_hash</span><span class="o">=</span><span class="n">event_hash</span><span class="p">,</span>
+                <span class="n">previous_event_hash</span><span class="o">=</span><span class="n">persisted_previous_event_hash</span><span class="p">,</span>
+                <span class="n">hmac_signature</span><span class="o">=</span><span class="n">signature</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">event</span><span class="o">.</span><span class="n">id</span>
+
+        <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            INSERT INTO audit_events (</span>
+<span class="s2">                id, event_type, actor_id, resource_id,</span>
+<span class="s2">                payload, created_at,</span>
+<span class="s2">                event_hash, previous_event_hash, hmac_signature</span>
+<span class="s2">            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="n">execute</span> <span class="o">=</span> <span class="p">(</span><span class="n">conn</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span>
+        <span class="k">await</span> <span class="n">execute</span><span class="p">(</span>
+            <span class="n">sql</span><span class="p">,</span>
+            <span class="n">event_id</span><span class="p">,</span>
+            <span class="n">event_type_value</span><span class="p">,</span>
+            <span class="n">actor_id</span><span class="p">,</span>
+            <span class="n">resource_id</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="nb">str</span><span class="p">),</span>
+            <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">),</span>
+            <span class="n">event_hash</span><span class="p">,</span>
+            <span class="n">persisted_previous_event_hash</span><span class="p">,</span>
+            <span class="n">signature</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">event_id</span></div>
+
+
+<div class="viewcode-block" id="AuditRepository.append">
+<a class="viewcode-back" href="../../../api/repositories.html#app.repositories.AuditRepository.append">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">event_type</span><span class="p">:</span> <span class="n">AuditEventType</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">actor_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">resource_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">conn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">asyncpg</span><span class="o">.</span><span class="n">Connection</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AuditEvent</span> <span class="o">|</span> <span class="n">asyncpg</span><span class="o">.</span><span class="n">Record</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Append one audit event and return the inserted row.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">payload</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="n">event_id</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span>
+
+        <span class="n">event_type_value</span> <span class="o">=</span> <span class="n">event_type</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">event_type</span><span class="p">,</span> <span class="n">AuditEventType</span><span class="p">)</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">event_type</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">event_type_value</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;event_type must not be blank&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_payload</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+
+        <span class="n">previous_event_hash</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_latest_hash</span><span class="p">(</span><span class="n">resource_id</span><span class="p">,</span> <span class="n">conn</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
+        <span class="n">hash_payload</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;event_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">event_id</span><span class="p">),</span>
+            <span class="s2">&quot;event_type&quot;</span><span class="p">:</span> <span class="n">event_type_value</span><span class="p">,</span>
+            <span class="s2">&quot;actor_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">actor_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">actor_id</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;resource_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">resource_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">resource_id</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;previous_event_hash&quot;</span><span class="p">:</span> <span class="n">previous_event_hash</span><span class="p">,</span>
+            <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="n">payload</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">event_hash</span> <span class="o">=</span> <span class="n">_compute_hash</span><span class="p">(</span><span class="n">hash_payload</span><span class="p">)</span>
+        <span class="n">signature</span> <span class="o">=</span> <span class="n">_compute_hmac</span><span class="p">(</span><span class="n">event_hash</span><span class="p">,</span> <span class="n">previous_event_hash</span><span class="p">)</span>
+        <span class="n">persisted_previous_event_hash</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">previous_event_hash</span> <span class="o">==</span> <span class="s2">&quot;GENESIS&quot;</span> <span class="k">else</span> <span class="n">previous_event_hash</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_async_session</span><span class="p">:</span>
+            <span class="n">event</span> <span class="o">=</span> <span class="n">AuditEvent</span><span class="p">(</span>
+                <span class="nb">id</span><span class="o">=</span><span class="n">event_id</span><span class="p">,</span>
+                <span class="n">event_type</span><span class="o">=</span><span class="n">event_type_value</span><span class="p">,</span>
+                <span class="n">actor_id</span><span class="o">=</span><span class="n">actor_id</span><span class="p">,</span>
+                <span class="n">resource_id</span><span class="o">=</span><span class="n">resource_id</span><span class="p">,</span>
+                <span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
+                <span class="n">event_hash</span><span class="o">=</span><span class="n">event_hash</span><span class="p">,</span>
+                <span class="n">previous_event_hash</span><span class="o">=</span><span class="n">persisted_previous_event_hash</span><span class="p">,</span>
+                <span class="n">hmac_signature</span><span class="o">=</span><span class="n">signature</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">event</span>
+
+        <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            INSERT INTO audit_events (</span>
+<span class="s2">                id, event_type, actor_id, resource_id,</span>
+<span class="s2">                payload, created_at,</span>
+<span class="s2">                event_hash, previous_event_hash, hmac_signature</span>
+<span class="s2">            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)</span>
+<span class="s2">            RETURNING id, event_type, actor_id, resource_id,</span>
+<span class="s2">                      payload, created_at, event_hash,</span>
+<span class="s2">                      previous_event_hash, hmac_signature</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="n">fetchrow</span> <span class="o">=</span> <span class="p">(</span><span class="n">conn</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">)</span><span class="o">.</span><span class="n">fetchrow</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="k">await</span> <span class="n">fetchrow</span><span class="p">(</span>
+            <span class="n">sql</span><span class="p">,</span>
+            <span class="n">event_id</span><span class="p">,</span>
+            <span class="n">event_type_value</span><span class="p">,</span>
+            <span class="n">actor_id</span><span class="p">,</span>
+            <span class="n">resource_id</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="nb">str</span><span class="p">),</span>
+            <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">),</span>
+            <span class="n">event_hash</span><span class="p">,</span>
+            <span class="n">persisted_previous_event_hash</span><span class="p">,</span>
+            <span class="n">signature</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">assert</span> <span class="n">row</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">row</span></div>
+
+
+<div class="viewcode-block" id="AuditRepository.get_by_resource">
+<a class="viewcode-back" href="../../../api/repositories.html#app.repositories.AuditRepository.get_by_resource">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_by_resource</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">resource_id</span><span class="p">:</span> <span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">event_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">AuditEvent</span><span class="p">]</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">asyncpg</span><span class="o">.</span><span class="n">Record</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_async_session</span><span class="p">:</span>
+            <span class="n">stmt</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">AuditEvent</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">AuditEvent</span><span class="o">.</span><span class="n">resource_id</span> <span class="o">==</span> <span class="n">resource_id</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">event_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">stmt</span> <span class="o">=</span> <span class="n">stmt</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">AuditEvent</span><span class="o">.</span><span class="n">event_type</span> <span class="o">==</span> <span class="n">event_type</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">stmt</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">scalars</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+
+        <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            SELECT * FROM audit_events</span>
+<span class="s2">            WHERE resource_id = $1</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">object</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">resource_id</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">event_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">sql</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">            AND event_type = $2&quot;</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_type</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AuditRepository.get_by_actor">
+<a class="viewcode-back" href="../../../api/repositories.html#app.repositories.AuditRepository.get_by_actor">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_by_actor</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">actor_id</span><span class="p">:</span> <span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">event_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">AuditEvent</span><span class="p">]</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">asyncpg</span><span class="o">.</span><span class="n">Record</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_async_session</span><span class="p">:</span>
+            <span class="n">stmt</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">AuditEvent</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">AuditEvent</span><span class="o">.</span><span class="n">actor_id</span> <span class="o">==</span> <span class="n">actor_id</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">event_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">stmt</span> <span class="o">=</span> <span class="n">stmt</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">AuditEvent</span><span class="o">.</span><span class="n">event_type</span> <span class="o">==</span> <span class="n">event_type</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">stmt</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">scalars</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+
+        <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            SELECT * FROM audit_events</span>
+<span class="s2">            WHERE actor_id = $1</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">object</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">actor_id</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">event_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">sql</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">            AND event_type = $2&quot;</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_type</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
+
+
+    <span class="c1"># ------------------------------------------------------------------</span>
+    <span class="c1"># Chain verification (§4.5 – audit-chain verification script)</span>
+    <span class="c1"># ------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="AuditRepository.verify_chain">
+<a class="viewcode-back" href="../../../api/repositories.html#app.repositories.AuditRepository.verify_chain">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">verify_chain</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">resource_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10_000</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Walk the audit chain for a resource (or globally) and verify:</span>
+<span class="sd">          1. event_hash matches re-computed hash of payload columns</span>
+<span class="sd">          2. hmac_signature matches re-computed HMAC</span>
+<span class="sd">          3. previous_event_hash equals prior row&#39;s event_hash</span>
+
+<span class="sd">        Returns (ok, list_of_errors).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">errors</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">prev_hash</span> <span class="o">=</span> <span class="s2">&quot;GENESIS&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_async_session</span><span class="p">:</span>
+            <span class="n">stmt</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">AuditEvent</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+                <span class="n">AuditEvent</span><span class="o">.</span><span class="n">resource_id</span> <span class="o">==</span> <span class="n">resource_id</span> <span class="k">if</span> <span class="n">resource_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">AuditEvent</span><span class="o">.</span><span class="n">resource_id</span><span class="o">.</span><span class="n">is_</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">AuditEvent</span><span class="o">.</span><span class="n">created_at</span><span class="o">.</span><span class="n">asc</span><span class="p">(),</span> <span class="n">AuditEvent</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">asc</span><span class="p">())</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">stmt</span><span class="p">)</span>
+            <span class="n">rows</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">scalars</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                SELECT id, event_type, actor_id, resource_id, payload,</span>
+<span class="s2">                       created_at, event_hash, previous_event_hash, hmac_signature</span>
+<span class="s2">                FROM audit_events</span>
+<span class="s2">                WHERE ($1::uuid IS NULL OR resource_id = $1)</span>
+<span class="s2">                ORDER BY created_at ASC, id ASC</span>
+<span class="s2">                LIMIT $2</span>
+<span class="s2">            &quot;&quot;&quot;</span>
+            <span class="n">rows</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">resource_id</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_async_session</span><span class="p">:</span>
+                <span class="n">eid</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+                <span class="n">payload_value</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">payload</span>
+                <span class="n">event_type_value</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">event_type</span>
+                <span class="n">actor_id_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">actor_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">actor_id</span> <span class="k">else</span> <span class="kc">None</span>
+                <span class="n">resource_id_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">resource_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">resource_id</span> <span class="k">else</span> <span class="kc">None</span>
+                <span class="n">previous_event_hash_value</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">previous_event_hash</span>
+                <span class="n">event_hash_value</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">event_hash</span>
+                <span class="n">hmac_signature_value</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">hmac_signature</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">eid</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+                <span class="n">payload_value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;payload&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;payload&quot;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;payload&quot;</span><span class="p">])</span>
+                <span class="n">event_type_value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;event_type&quot;</span><span class="p">]</span>
+                <span class="n">actor_id_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;actor_id&quot;</span><span class="p">])</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;actor_id&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
+                <span class="n">resource_id_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;resource_id&quot;</span><span class="p">])</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;resource_id&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
+                <span class="n">previous_event_hash_value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;previous_event_hash&quot;</span><span class="p">]</span>
+                <span class="n">event_hash_value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;event_hash&quot;</span><span class="p">]</span>
+                <span class="n">hmac_signature_value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;hmac_signature&quot;</span><span class="p">]</span>
+
+            <span class="n">hash_payload</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;event_id&quot;</span><span class="p">:</span> <span class="n">eid</span><span class="p">,</span>
+                <span class="s2">&quot;event_type&quot;</span><span class="p">:</span> <span class="n">event_type_value</span><span class="p">,</span>
+                <span class="s2">&quot;actor_id&quot;</span><span class="p">:</span> <span class="n">actor_id_value</span><span class="p">,</span>
+                <span class="s2">&quot;resource_id&quot;</span><span class="p">:</span> <span class="n">resource_id_value</span><span class="p">,</span>
+                <span class="s2">&quot;previous_event_hash&quot;</span><span class="p">:</span> <span class="n">previous_event_hash_value</span><span class="p">,</span>
+                <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="n">payload_value</span><span class="p">,</span>
+            <span class="p">}</span>
+            <span class="n">expected_hash</span> <span class="o">=</span> <span class="n">_compute_hash</span><span class="p">(</span><span class="n">hash_payload</span><span class="p">)</span>
+            <span class="n">expected_hmac</span> <span class="o">=</span> <span class="n">_compute_hmac</span><span class="p">(</span><span class="n">expected_hash</span><span class="p">,</span> <span class="n">previous_event_hash_value</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">event_hash_value</span> <span class="o">!=</span> <span class="n">expected_hash</span><span class="p">:</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">eid</span><span class="si">}</span><span class="s2">] event_hash mismatch&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">hmac_signature_value</span> <span class="o">!=</span> <span class="n">expected_hmac</span><span class="p">:</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">eid</span><span class="si">}</span><span class="s2">] HMAC mismatch&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">previous_event_hash_value</span> <span class="o">!=</span> <span class="n">prev_hash</span><span class="p">:</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">eid</span><span class="si">}</span><span class="s2">] chain broken: expected previous_event_hash=</span><span class="si">{</span><span class="n">prev_hash</span><span class="si">!r}</span><span class="s2">, &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;got </span><span class="si">{</span><span class="n">previous_event_hash_value</span><span class="si">!r}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+            <span class="n">prev_hash</span> <span class="o">=</span> <span class="n">event_hash_value</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span></div>
+
+
+    <span class="c1"># ------------------------------------------------------------------</span>
+    <span class="c1"># Read helpers</span>
+    <span class="c1"># ------------------------------------------------------------------</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_latest_hash</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">resource_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span> <span class="o">|</span> <span class="nb">str</span><span class="p">],</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">conn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">asyncpg</span><span class="o">.</span><span class="n">Connection</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_async_session</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">resource_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">stmt</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">AuditEvent</span><span class="o">.</span><span class="n">event_hash</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">AuditEvent</span><span class="o">.</span><span class="n">resource_id</span><span class="o">.</span><span class="n">is_</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">stmt</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">AuditEvent</span><span class="o">.</span><span class="n">event_hash</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">AuditEvent</span><span class="o">.</span><span class="n">resource_id</span> <span class="o">==</span> <span class="n">resource_id</span><span class="p">)</span>
+            <span class="n">stmt</span> <span class="o">=</span> <span class="n">stmt</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">AuditEvent</span><span class="o">.</span><span class="n">created_at</span><span class="o">.</span><span class="n">desc</span><span class="p">(),</span> <span class="n">AuditEvent</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">stmt</span><span class="p">)</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">scalar_one_or_none</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">row</span> <span class="k">if</span> <span class="n">row</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;GENESIS&quot;</span>
+
+        <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            SELECT event_hash FROM audit_events</span>
+<span class="s2">            WHERE ($1::uuid IS NULL OR resource_id = $1)</span>
+<span class="s2">            ORDER BY created_at DESC, id DESC</span>
+<span class="s2">            LIMIT 1</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="n">fetch_one</span> <span class="o">=</span> <span class="p">(</span><span class="n">conn</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">)</span><span class="o">.</span><span class="n">fetchrow</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="k">await</span> <span class="n">fetch_one</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">resource_id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;event_hash&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">row</span> <span class="k">else</span> <span class="s2">&quot;GENESIS&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_validate_payload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">payload</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">pii_field_names</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;email&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;email_address&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;date_of_birth&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;display_name&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;full_name&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;first_name&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;last_name&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;phone&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;phone_number&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ssn&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;identity_number&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;national_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;passport_number&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;address&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;street_address&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;city&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;zip&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;postal_code&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">pii_field_names</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PII field names are not permitted in audit payload: </span><span class="si">{</span><span class="n">path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="n">check</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}{</span><span class="n">key</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+                    <span class="n">check</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">[</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">].&quot;</span><span class="p">)</span>
+
+        <span class="n">check</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, EduBoost SA Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
