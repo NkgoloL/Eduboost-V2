@@ -1,0 +1,33 @@
+{
+  "canonical_files": [
+    "docs/current_state.md",
+    "README.md",
+    "docs/README.md",
+    "docs/roadmap/README.md",
+    "docs/architecture/README.md"
+  ],
+  "prd_id": "PRD-0.1",
+  "required_truths": {
+    "billing_launch_authorised": false,
+    "controlled_runtime_kg_authority_switch": "executed",
+    "current_authorised_item": "PRD-0.1",
+    "deployment_authorised": false,
+    "kg_roadmap": "closed through KG-8",
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "new_kg_slice_authorised": false,
+    "prd1_implementation": "blocked until PRD-0.10 closure",
+    "production_readiness_stream": "open",
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "rr_roadmap_todo_register": "closed"
+  },
+  "stale_claims_forbidden_in_canonical_files": [
+    "RR-010 beta outcome reporting, RR-015 external approvals, RR-016 operational drills, and RR-017 release safety controls remain outstanding",
+    "runtime KG implementation remain unauthorised",
+    "runtime KG implementation remains unauthorised",
+    "Next after KG-0: `KG-1 \u2014 CAPS graph foundation`",
+    "New roadmap or product work remains blocked unless reconciled into the RR register"
+  ],
+  "truth_map_id": "PRD-0.1-CURRENT-STATE-DOCUMENTATION-TRUTH-MAP"
+}
