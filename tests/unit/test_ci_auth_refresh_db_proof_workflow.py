@@ -27,7 +27,7 @@ def test_auth_refresh_db_proof_workflow_uses_concrete_github_runtime_values():
 
 def test_auth_refresh_db_proof_workflow_runs_proof_and_evidence_gate():
     source = WORKFLOW.read_text(encoding="utf-8")
-    assert "tests/integration/test_auth_refresh_db_proof.py" in source
+    assert "tests/integration/test_auth_refresh_db_proof_integration.py" in source
     assert "make auth-refresh-db-evidence-attach" in source
     assert "make auth-refresh-db-evidence-release-check" in source
     assert "actions/upload-artifact@v4" in source

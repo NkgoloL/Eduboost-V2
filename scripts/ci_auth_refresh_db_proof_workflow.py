@@ -51,7 +51,11 @@ def build_status() -> WorkflowStatus:
         WorkflowCheck("workflow_dispatch enabled", "workflow_dispatch:" in source, "manual run supported"),
         WorkflowCheck("postgres service configured", "postgres:16-alpine" in source and "services:" in source, "disposable Postgres service"),
         WorkflowCheck("proof DSN configured", "AUTH_REFRESH_DB_PROOF_DSN:" in source and "127.0.0.1:55432" in source, "local service DSN"),
-        WorkflowCheck("integration proof test executed", "tests/integration/test_auth_refresh_db_proof.py" in source, "DB proof test path"),
+        WorkflowCheck(
+            "integration proof test executed",
+            "tests/integration/test_auth_refresh_db_proof_integration.py" in source,
+            "DB proof test path",
+        ),
         WorkflowCheck("evidence attach executed", "make auth-refresh-db-evidence-attach" in source, "evidence attach target"),
         WorkflowCheck("evidence release check executed", "make auth-refresh-db-evidence-release-check" in source, "release evidence target"),
         WorkflowCheck("concrete run URL uses github.run_id", "actions/runs/${{ github.run_id }}" in source, "numeric run id at runtime"),
