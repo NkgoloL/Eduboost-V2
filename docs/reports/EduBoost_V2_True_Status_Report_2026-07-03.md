@@ -1,17 +1,35 @@
 ---
 title: "EduBoost V2 True Status Technical Report"
-status: current-evidence
+status: historical-superseded
 owner: engineering
 reviewers: [engineering, architecture, product]
 audience: developer
 source_of_truth: false
 supersedes: []
-superseded_by: null
+superseded_by:
+  - docs/current_state.md
+  - docs/roadmap/production_readiness/production_readiness_register.json
+  - docs/roadmap/production_readiness/current_state_documentation_truth_map.json
+  - docs/roadmap/reconciliation/final_roadmap_reconciliation_closure_record.json
+  - docs/roadmap/knowledge_graph/kg_roadmap_closure_record.json
 last_reviewed: 2026-07-03
-review_interval_days: 14
-evidence_command: "n/a — see Method and Limitations"
+quarantined_by: PRD-0.2
+quarantine_reason: "Historical audit report predates RR closure, KG closure, KG-ACT-001 runtime authority activation, KG-8 closure, and PRD-0.1 canonical current-state refresh."
+review_interval_days: null
+evidence_command: "n/a — historical report, superseded by current-state authority records"
 code_anchors: [app/api_v2.py, docs/current_state.md, docs/roadmap/reconciliation/outstanding_work_register.md]
 ---
+
+
+> **Historical report — superseded**
+>
+> This report is retained for audit history only. It is **not** a live roadmap, release, KG, RR, PRD, production-readiness, public-beta, billing, deployment, or runtime-authority source of truth.
+>
+> It predates the final RR closure, KG roadmap closure through KG-8, KG-ACT-001 controlled runtime KG authority activation, KG roadmap closure report, PRD-0.0 production-readiness stream authority, and PRD-0.1 canonical current-state documentation refresh.
+>
+> Current authority must be taken from `docs/current_state.md`, `docs/roadmap/production_readiness/production_readiness_register.json`, `docs/roadmap/production_readiness/current_state_documentation_truth_map.json`, `docs/roadmap/reconciliation/final_roadmap_reconciliation_closure_record.json`, and `docs/roadmap/knowledge_graph/kg_roadmap_closure_record.json`.
+>
+> Do **not** use historical RR/KG status tables in this report to decide current implementation order.
 
 # EduBoost V2 — True Status Technical Report
 

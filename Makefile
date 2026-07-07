@@ -3131,3 +3131,12 @@ prd001-canonical-current-state-docs-audit:
 
 prd001-canonical-current-state-docs-check:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd001_canonical_current_state_documentation_refresh.py --authority-only --json
+
+.PHONY: prd002-historical-report-stale-source-quarantine-audit prd002-historical-report-stale-source-quarantine-check
+prd002-historical-report-stale-source-quarantine-audit:
+	PYTHONPATH=. python3 scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py --json
+
+prd002-historical-report-stale-source-quarantine-check:
+	python3 -m py_compile scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py scripts/roadmap_reconciliation/capture_prd002_historical_report_stale_source_quarantine_evidence.py scripts/roadmap_reconciliation/verify_prd002_historical_report_stale_source_quarantine.py
+	PYTHONPATH=. python3 -m pytest -q tests/unit/roadmap_reconciliation/test_prd002_historical_report_stale_source_quarantine.py --no-cov
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd002_historical_report_stale_source_quarantine.py --authority-only --json
