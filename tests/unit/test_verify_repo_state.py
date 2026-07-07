@@ -29,6 +29,22 @@ def test_repo_state_check_accepts_canonical_release_state() -> None:
     assert [result for result in results if not result.ok] == []
 
 
+def test_repo_state_check_accepts_nogit_remote_alias() -> None:
+    results = run_checks(
+        make_state(remote_url="https://github.com/NkgoloL/Eduboost-V2"),
+        expected_branch="master",
+        allowed_remotes=(
+            "https://github.com/NkgoloL/Eduboost-V2.git",
+            "https://github.com/NkgoloL/Eduboost-V2",
+        ),
+        freshness_marker="Merge pull request #52 from NkgoloL/chore/slow-query-logging",
+        allow_dirty=False,
+        allow_branch_mismatch=False,
+    )
+
+    assert [result for result in results if result.name == "remote-url" and not result.ok] == []
+
+
 def test_repo_state_check_rejects_wrong_branch_unless_allowed() -> None:
     strict = run_checks(
         make_state(branch="codex/pr1-repo-truth"),
