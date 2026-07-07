@@ -3163,3 +3163,13 @@ prd004-test-dependency-bootstrap-baseline-check:
 
 prd004-test-dependency-bootstrap-baseline-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd004_test_dependency_bootstrap_baseline_evidence.py --claim-prd004-test-dependency-bootstrap-baseline --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch "$${TARGET_BRANCH:-master}" --require-valid --json
+
+.PHONY: prd005-test-failure-collection-stabilisation-register-audit prd005-test-failure-collection-stabilisation-register-check prd005-test-failure-collection-stabilisation-register-capture
+prd005-test-failure-collection-stabilisation-register-audit:
+	PYTHONPATH=. python3 scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py --json
+
+prd005-test-failure-collection-stabilisation-register-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd005_test_failure_collection_stabilisation_register.py --json
+
+prd005-test-failure-collection-stabilisation-register-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd005_test_failure_collection_stabilisation_register_evidence.py --claim-prd005-test-failure-collection-stabilisation-register --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch "$${TARGET_BRANCH:-master}" --require-valid --json

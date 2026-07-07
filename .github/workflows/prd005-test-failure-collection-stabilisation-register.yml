@@ -1,0 +1,33 @@
+name: PRD-0.5 Test Failure Collection Stabilisation Register
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify-prd005:
+    name: Verify PRD-0.5 authority
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements/dev.txt
+      - name: Verify PRD-0.5
+        run: |
+          python3 -m py_compile \
+            scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py \
+            scripts/roadmap_reconciliation/capture_prd005_test_failure_collection_stabilisation_register_evidence.py \
+            scripts/roadmap_reconciliation/verify_prd005_test_failure_collection_stabilisation_register.py
+          PYTHONPATH=. python3 -m pytest -q \
+            tests/unit/roadmap_reconciliation/test_prd005_test_failure_collection_stabilisation_register.py \
+            --no-cov
+          PYTHONPATH=. python3 \
+            scripts/roadmap_reconciliation/verify_prd005_test_failure_collection_stabilisation_register.py \
+            --authority-only \
+            --json
