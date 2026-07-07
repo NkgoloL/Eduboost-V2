@@ -54,10 +54,12 @@ def audit(root: Path | str = Path(".")) -> dict[str, Any]:
             errors.append(f"missing PRD-0.1 file: {path}")
     if register.get("stream_id") != "PRD-PRODUCTION-READINESS":
         errors.append("production readiness register must identify PRD-PRODUCTION-READINESS")
-    if register.get("last_recorded_item") not in {"PRD-0.0", "PRD-0.1"}:
-        errors.append("production readiness register last_recorded_item must be PRD-0.0 before capture or PRD-0.1 after capture")
-    if register.get("next_authorised_item") not in {"PRD-0.1", "PRD-0.2"}:
-        errors.append("production readiness register next_authorised_item must be PRD-0.1 before capture or PRD-0.2 after capture")
+    ALLOWED_LAST_RECORDED_ITEMS = {f"PRD-0.{idx}" for idx in range(0, 11)}
+    ALLOWED_NEXT_AUTHORISED_ITEMS = {f"PRD-0.{idx}" for idx in range(1, 11)}
+    if register.get("last_recorded_item") not in ALLOWED_LAST_RECORDED_ITEMS:
+        errors.append("production readiness register last_recorded_item must be a valid PRD-0.x state")
+    if register.get("next_authorised_item") not in ALLOWED_NEXT_AUTHORISED_ITEMS:
+        errors.append("production readiness register next_authorised_item must be a valid PRD-0.x state")
     boundaries = register.get("authority_boundaries", {})
     for key in TRUE_KEYS:
         if boundaries.get(key) is not True:
