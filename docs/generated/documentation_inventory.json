@@ -306,7 +306,7 @@
     },
     {
       "audience": "",
-      "broken_local_links": 1,
+      "broken_local_links": 0,
       "byte_count": 3911,
       "content_kind": "markdown",
       "h1": "Contributing to EduBoost SA",
@@ -382,7 +382,7 @@
     },
     {
       "audience": "",
-      "broken_local_links": 1,
+      "broken_local_links": 0,
       "byte_count": 2955,
       "content_kind": "markdown",
       "h1": "Security Policy",
@@ -398,6 +398,25 @@
       "source_of_truth": "",
       "status": "",
       "title": "Security Policy"
+    },
+    {
+      "audience": "",
+      "broken_local_links": 0,
+      "byte_count": 213,
+      "content_kind": "markdown",
+      "h1": "TODO.md",
+      "has_front_matter": false,
+      "last_reviewed": "",
+      "lfs_sha256": "",
+      "lfs_size": 0,
+      "line_count": 9,
+      "owner": "",
+      "path": "TODO.md",
+      "review_interval_days": "",
+      "risky_terms": "",
+      "source_of_truth": "",
+      "status": "",
+      "title": "TODO.md"
     },
     {
       "audience": "",
@@ -5797,7 +5816,7 @@
     },
     {
       "audience": "",
-      "broken_local_links": 1,
+      "broken_local_links": 0,
       "byte_count": 521,
       "content_kind": "markdown",
       "h1": "Archived Roadmaps And TODOs",
@@ -11478,7 +11497,7 @@
     },
     {
       "audience": "",
-      "broken_local_links": 1,
+      "broken_local_links": 0,
       "byte_count": 1408,
       "content_kind": "markdown",
       "h1": "EduBoost V2",
@@ -17748,7 +17767,7 @@
     },
     {
       "audience": "",
-      "broken_local_links": 2,
+      "broken_local_links": 1,
       "byte_count": 19700,
       "content_kind": "markdown",
       "h1": "Project Status",
@@ -35608,7 +35627,7 @@
     },
     {
       "audience": "",
-      "broken_local_links": 1,
+      "broken_local_links": 0,
       "byte_count": 2595,
       "content_kind": "markdown",
       "h1": "V2 Migration Guide",
@@ -35723,24 +35742,6 @@
   ],
   "findings": [
     {
-      "detail": "1",
-      "path": "CONTRIBUTING.md",
-      "severity": "high",
-      "type": "broken_local_links"
-    },
-    {
-      "detail": "1",
-      "path": "SECURITY.md",
-      "severity": "high",
-      "type": "broken_local_links"
-    },
-    {
-      "detail": "1",
-      "path": "docs/index.md",
-      "severity": "high",
-      "type": "broken_local_links"
-    },
-    {
       "detail": "3",
       "path": "docs/operations/SYSTEM_STARTUP_GUIDE.md",
       "severity": "high",
@@ -35753,14 +35754,8 @@
       "type": "broken_local_links"
     },
     {
-      "detail": "2",
-      "path": "docs/project_status.md",
-      "severity": "high",
-      "type": "broken_local_links"
-    },
-    {
       "detail": "1",
-      "path": "docs/v2_migration.md",
+      "path": "docs/project_status.md",
       "severity": "high",
       "type": "broken_local_links"
     },
@@ -37015,6 +37010,12 @@
     {
       "detail": "No YAML front matter",
       "path": "SECURITY.md",
+      "severity": "medium",
+      "type": "missing_metadata"
+    },
+    {
+      "detail": "No YAML front matter",
+      "path": "TODO.md",
       "severity": "medium",
       "type": "missing_metadata"
     },
@@ -42774,21 +42775,21 @@
     }
   ],
   "summary": {
-    "broken_local_link_count": 12,
+    "broken_local_link_count": 7,
     "files_with_metadata": 635,
     "files_with_owner": 603,
     "files_with_source_of_truth": 97,
-    "finding_count": 1175,
+    "finding_count": 1172,
     "finding_counts_by_type": {
-      "broken_local_links": 7,
+      "broken_local_links": 3,
       "duplicate_title": 96,
-      "missing_metadata": 972,
+      "missing_metadata": 973,
       "oversized_document": 43,
       "risky_or_stale_terms": 57
     },
     "inventory_mode": "deterministic-lfs-aware",
     "lfs_tracked_markdown_files": 1,
-    "markdown_files": 1880,
+    "markdown_files": 1881,
     "repository_root": ".",
     "schema_version": "doc-inventory/v2-deterministic-lfs-aware",
     "top_directories": [
@@ -42901,15 +42902,15 @@
         11
       ],
       [
+        ".",
+        10
+      ],
+      [
         "docs/disaster_recovery",
         10
       ],
       [
         "docs/engineering",
-        10
-      ],
-      [
-        "docs/observability",
         10
       ]
     ]
