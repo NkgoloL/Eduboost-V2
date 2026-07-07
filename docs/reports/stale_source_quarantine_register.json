@@ -1,0 +1,55 @@
+{
+  "authority_boundaries": {
+    "authority_switch_executed": true,
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "new_kg_slice_authorised": false,
+    "prd1_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_authority_switch_authorised": true,
+    "runtime_kg_implementation_claimed": true
+  },
+  "current_authority_sources": [
+    "docs/current_state.md",
+    "docs/roadmap/production_readiness/production_readiness_register.json",
+    "docs/roadmap/production_readiness/current_state_documentation_truth_map.json",
+    "docs/roadmap/reconciliation/final_roadmap_reconciliation_closure_record.json",
+    "docs/roadmap/knowledge_graph/kg_roadmap_closure_record.json"
+  ],
+  "prd_id": "PRD-0.2",
+  "quarantined_sources": [
+    {
+      "known_stale_claim_classes": [
+        "RR item statuses predating final closure",
+        "runtime KG unauthorised claims predating KG-ACT-001",
+        "implementation order recommendations predating PRD stream authority",
+        "release readiness snapshot predating production-readiness register"
+      ],
+      "path": "docs/reports/EduBoost_V2_True_Status_Report_2026-07-03.md",
+      "quarantined_by": "PRD-0.2",
+      "reason": "Report predates final RR closure, KG closure through KG-8, KG-ACT-001 controlled runtime authority activation, KG roadmap closure report, PRD-0.0, and PRD-0.1.",
+      "required_citation_note": "Historical/superseded source; verify against current_state.md and production_readiness_register.json before using.",
+      "source_of_truth": false,
+      "status": "historical_superseded",
+      "superseded_by": [
+        "docs/current_state.md",
+        "docs/roadmap/production_readiness/production_readiness_register.json",
+        "docs/roadmap/production_readiness/current_state_documentation_truth_map.json",
+        "docs/roadmap/reconciliation/final_roadmap_reconciliation_closure_record.json",
+        "docs/roadmap/knowledge_graph/kg_roadmap_closure_record.json"
+      ]
+    }
+  ],
+  "register_id": "STALE-SOURCE-QUARANTINE-REGISTER",
+  "source_of_truth": true,
+  "status": "authority_recorded_pending_evidence_capture",
+  "windows_zone_identifier_policy": {
+    "known_removed": "docs/reports/EduBoost_V2_True_Status_Report_2026-07-03.md:Zone.Identifier",
+    "tracked_zone_identifier_files_allowed": false
+  }
+}
