@@ -92,7 +92,7 @@ def main() -> int:
     write_json(RECORD, record)
     EVIDENCE_DIR.mkdir(parents=True, exist_ok=True)
     write_json(EVIDENCE_DIR / "verification.json", after)
-    write_json(EVIDENCE_DIR / "git_state.json", git_state(args.target_branch))
+    write_json(EVIDENCE_DIR / "git_state.json", state)
     write_json(EVIDENCE_DIR / "current_state_documentation_truth_map_snapshot.json", read_json(Path("docs/roadmap/production_readiness/current_state_documentation_truth_map.json")))
     (EVIDENCE_DIR / "evidence_index.md").write_text(
         "# PRD-0.1 Canonical Current-State Documentation Refresh Evidence\n\n"
