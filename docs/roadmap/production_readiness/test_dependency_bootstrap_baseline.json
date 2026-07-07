@@ -1,0 +1,210 @@
+{
+  "authority_boundaries": {
+    "authority_switch_executed": true,
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "new_kg_slice_authorised": false,
+    "prd1_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_authority_switch_authorised": true,
+    "runtime_kg_implementation_claimed": true
+  },
+  "bootstrap_contracts": {
+    "backend_dev_dependency_install": "pip install -r requirements.txt && pip install -r requirements/dev.txt",
+    "backend_test_command": "PYTHONPATH=. python3 -m pytest ...",
+    "frontend_install_command": "pnpm install --frozen-lockfile",
+    "frontend_test_command": "pnpm test"
+  },
+  "captured_at": "2026-07-07T22:56:48.378339+00:00",
+  "deferred_to_later_prd0_slices": {
+    "openapi_generated_artifact_canonicalisation": "PRD-0.7",
+    "test_failure_collection_stabilisation": "PRD-0.5",
+    "workflow_command_hygiene_convergence": "PRD-0.6"
+  },
+  "frontend": {
+    "dependency_markers": {
+      "frontend_package_manager_pnpm": true,
+      "frontend_test_script_recorded": true,
+      "frontend_typecheck_script_recorded": true,
+      "playwright_declared_root": true,
+      "root_package_manager_pnpm": true,
+      "vitest_declared": true
+    },
+    "files": [
+      {
+        "exists": true,
+        "path": "package.json",
+        "sha256": "0f1b96117bd811f6fb46fb8f06f4f63729d1a5dfc501efa556f26f59495403f9"
+      },
+      {
+        "exists": true,
+        "path": "pnpm-lock.yaml",
+        "sha256": "9e280652ecab533b5542e225a4ed06488a5c155ec4fc79498b2e8f36dbd9c665"
+      },
+      {
+        "exists": true,
+        "path": "app/frontend/package.json",
+        "sha256": "405c0b8bd66433d3711ac7d2e25a210f5d0541b8850b01bafe9ad475dc648c21"
+      }
+    ]
+  },
+  "prd_id": "PRD-0.4",
+  "python_backend": {
+    "dependency_markers": {
+      "import_linter_declared": true,
+      "mypy_declared": true,
+      "pytest_cov_declared": true,
+      "pytest_declared": true,
+      "root_dev_requirements_aliases_dev": true,
+      "root_requirements_aliases_base": true,
+      "ruff_declared": true
+    },
+    "pytest_config_files": [
+      {
+        "exists": true,
+        "path": "pytest.ini",
+        "sha256": "6541f4f3852e9a03949f016460ee03dceda28863e16a0fb172e6065c5e31306e"
+      },
+      {
+        "exists": true,
+        "path": "pytest-coverage.ini",
+        "sha256": "bc0e437ffb732638dd84ad5081b638738d65f95167cbe00f980141e8e9783ac4"
+      },
+      {
+        "exists": true,
+        "path": "pyproject.toml",
+        "sha256": "4240162de806751c5976aee2f270187032d9c95de0482b8b15ae4b912d36403a"
+      }
+    ],
+    "requirement_files": [
+      {
+        "exists": true,
+        "path": "requirements.txt",
+        "sha256": "80d68bbe8e67712953ef1d979023c8183493212d76f6e06706dc883d06da1cd2"
+      },
+      {
+        "exists": true,
+        "path": "requirements-dev.txt",
+        "sha256": "d95c63c86a549c40849af735d5eb83aba8027c184cf2be3aaf8b3958e6d6f070"
+      },
+      {
+        "exists": true,
+        "path": "requirements/base.txt",
+        "sha256": "781b8d174bfea124bb947d15df6617e150bb4a4e37df0874fa769de74497aa45"
+      },
+      {
+        "exists": true,
+        "path": "requirements/dev.txt",
+        "sha256": "e4556937e153bfe6b6f63fddfc4c2153d4c5eec06ea30089c7add33a63a31449"
+      },
+      {
+        "exists": true,
+        "path": "requirements/constraints.snapshot.txt",
+        "sha256": "39edaa7763946ecc0ce5fcd05b83ec7f77b8c1a63e7f89250ecf42c5aedb4b28"
+      }
+    ],
+    "requires_python": ">=3.11"
+  },
+  "schema_version": "prd-test-dependency-bootstrap/v1",
+  "workflow_inventory": {
+    "dev_dependency_install_workflow_count": 39,
+    "dev_dependency_install_workflows": [
+      ".github/workflows/api-envelope-error-contract.yml",
+      ".github/workflows/architecture-gates.yml",
+      ".github/workflows/audit-write-runtime-evidence.yml",
+      ".github/workflows/auth-boundary.yml",
+      ".github/workflows/auth-refresh-db-proof.yml",
+      ".github/workflows/backend-consolidation.yml",
+      ".github/workflows/backend-nightly-coverage.yml",
+      ".github/workflows/beta-release-approval.yml",
+      ".github/workflows/caps-source-topic-map.yml",
+      ".github/workflows/ci-cd.yml",
+      ".github/workflows/ci-core.yml",
+      ".github/workflows/ci_lesson_quality.yml",
+      ".github/workflows/cluster-d-ci.yml",
+      ".github/workflows/cluster-e-data-resilience.yml",
+      ".github/workflows/cluster-f-ai-safety.yml",
+      ".github/workflows/cluster-g-frontend.yml",
+      ".github/workflows/cluster-h-release-readiness.yml",
+      ".github/workflows/dependency-scan.yml",
+      ".github/workflows/diag-score-live-audit.yml",
+      ".github/workflows/e2e.yml",
+      ".github/workflows/item_bank_ci.yml",
+      ".github/workflows/learner-authz-coverage.yml",
+      ".github/workflows/learning-evidence.yml",
+      ".github/workflows/legacy-route-guard.yml",
+      ".github/workflows/openapi-contract.yml",
+      ".github/workflows/openapi-drift.yml",
+      ".github/workflows/persistence-resilience.yml",
+      ".github/workflows/popia-consent-audit.yml",
+      ".github/workflows/prd000-production-readiness-stream-authority.yml",
+      ".github/workflows/prd001-canonical-current-state-documentation-refresh.yml",
+      ".github/workflows/prd002-historical-report-stale-source-quarantine.yml",
+      ".github/workflows/prd003-documentation-housekeeping-ratchet-refresh.yml",
+      ".github/workflows/prd004-test-dependency-bootstrap-baseline.yml",
+      ".github/workflows/privacy-boundary.yml",
+      ".github/workflows/repo-state.yml",
+      ".github/workflows/rr003-release-authority.yml",
+      ".github/workflows/rr006-security-posture.yml",
+      ".github/workflows/runtime-contract.yml",
+      ".github/workflows/technical-audit-hosted-ci.yml"
+    ],
+    "direct_pytest_workflow_count": 32,
+    "direct_pytest_workflows": [
+      ".github/workflows/api-envelope-error-contract.yml",
+      ".github/workflows/auth-boundary.yml",
+      ".github/workflows/auth-refresh-db-proof.yml",
+      ".github/workflows/caps-source-topic-map.yml",
+      ".github/workflows/ci-cd.yml",
+      ".github/workflows/ci-core.yml",
+      ".github/workflows/ci_diagnostics_assessment.yml",
+      ".github/workflows/ci_lesson_quality.yml",
+      ".github/workflows/cluster-d-ci.yml",
+      ".github/workflows/cluster-e-data-resilience.yml",
+      ".github/workflows/cluster-f-ai-safety.yml",
+      ".github/workflows/cluster-g-frontend.yml",
+      ".github/workflows/cluster-h-release-readiness.yml",
+      ".github/workflows/item_bank_ci.yml",
+      ".github/workflows/kg-roadmap-closure-report.yml",
+      ".github/workflows/kg004-gap-engine-intervention-planner.yml",
+      ".github/workflows/kg006-tutor-study-plan-gamification-parent-alignment.yml",
+      ".github/workflows/kg008-post-switch-optimisation-scale-review.yml",
+      ".github/workflows/kgact001-controlled-runtime-kg-authority-activation.yml",
+      ".github/workflows/learning-evidence.yml",
+      ".github/workflows/legacy-route-guard.yml",
+      ".github/workflows/persistence-resilience.yml",
+      ".github/workflows/popia-consent-audit.yml",
+      ".github/workflows/prd000-production-readiness-stream-authority.yml",
+      ".github/workflows/prd001-canonical-current-state-documentation-refresh.yml",
+      ".github/workflows/prd002-historical-report-stale-source-quarantine.yml",
+      ".github/workflows/prd003-documentation-housekeeping-ratchet-refresh.yml",
+      ".github/workflows/prd004-test-dependency-bootstrap-baseline.yml",
+      ".github/workflows/privacy-boundary.yml",
+      ".github/workflows/repo-state.yml",
+      ".github/workflows/runtime-contract.yml",
+      ".github/workflows/technical-audit-hosted-ci.yml"
+    ],
+    "module_pytest_workflow_count": 13,
+    "module_pytest_workflows": [
+      ".github/workflows/auth-refresh-db-proof.yml",
+      ".github/workflows/cluster-e-data-resilience.yml",
+      ".github/workflows/cluster-f-ai-safety.yml",
+      ".github/workflows/cluster-g-frontend.yml",
+      ".github/workflows/item_bank_ci.yml",
+      ".github/workflows/kg-roadmap-closure-report.yml",
+      ".github/workflows/popia-consent-audit.yml",
+      ".github/workflows/prd000-production-readiness-stream-authority.yml",
+      ".github/workflows/prd001-canonical-current-state-documentation-refresh.yml",
+      ".github/workflows/prd002-historical-report-stale-source-quarantine.yml",
+      ".github/workflows/prd003-documentation-housekeeping-ratchet-refresh.yml",
+      ".github/workflows/prd004-test-dependency-bootstrap-baseline.yml",
+      ".github/workflows/technical-audit-hosted-ci.yml"
+    ],
+    "workflow_count": 78
+  }
+}
