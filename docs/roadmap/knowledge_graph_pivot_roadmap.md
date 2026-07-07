@@ -27,7 +27,7 @@ This roadmap does not replace urgent release blockers. Current audit blockers ar
 
 **Goal:** Establish the pivot as an approved architectural direction.
 
-Deliverables: ADR-030 accepted; architecture index updated; README and docs index updated; product brief added; roadmap and risk register added; verification plan added; documentation verifier added.
+Deliverables: ADR-036 accepted; architecture index updated; README and docs index updated; product brief added; roadmap and risk register added; verification plan added; documentation verifier added.
 
 Exit criteria: `verify_phase02r_knowledge_graph_pivot_docs.py` passes and docs are committed separately from runtime implementation.
 

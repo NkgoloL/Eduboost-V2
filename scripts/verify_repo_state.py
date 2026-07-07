@@ -13,9 +13,13 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_ALLOWED_REMOTES = (
     "https://github.com/NkgoloL/Eduboost-V2.git",
+    "https://github.com/NkgoloL/Eduboost-V2",
     "git@github.com:NkgoloL/Eduboost-V2.git",
+    "git@github.com:NkgoloL/Eduboost-V2",
     "https://github.com/userxrebornbackup-ux/Eduboost-V2.git",
+    "https://github.com/userxrebornbackup-ux/Eduboost-V2",
     "git@github.com:userxrebornbackup-ux/Eduboost-V2.git",
+    "git@github.com:userxrebornbackup-ux/Eduboost-V2",
 )
 DEFAULT_FRESHNESS_MARKER = "Merge pull request #52 from NkgoloL/chore/slow-query-logging"
 

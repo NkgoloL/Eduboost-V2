@@ -218,7 +218,7 @@ EduBoost's post-RR roadmap introduces the Knowledge Graph learning-state stream 
 
 Key references:
 
-- [ADR-030 Knowledge Graph Learning-State Core](docs/adr/ADR-030-knowledge-graph-learning-state-core.md)
+- [ADR-036 Knowledge Graph Learning-State Core](docs/adr/ADR-036-knowledge-graph-learning-state-core.md)
 - [KG Implementation Roadmap](docs/roadmap/knowledge_graph/kg_implementation_roadmap.md)
 - [KG Roadmap Register](docs/roadmap/knowledge_graph/kg_roadmap_register.json)
 

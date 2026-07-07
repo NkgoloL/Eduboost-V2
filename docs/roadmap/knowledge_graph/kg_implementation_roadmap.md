@@ -71,7 +71,7 @@ Land the uploaded formalisation package as the approved KG roadmap/governance ba
 
 ### Main deliverables
 
-- `ADR-030-knowledge-graph-learning-state-core.md`
+- `ADR-036-knowledge-graph-learning-state-core.md`
 - KG architecture docs
 - KG data model docs
 - KG transition plan

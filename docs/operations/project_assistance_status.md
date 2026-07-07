@@ -14,7 +14,7 @@ working control surface, not a release approval.
 | `.github/PULL_REQUEST_TEMPLATE.md` | present |
 | `.github/workflows/` | present |
 | `Makefile` | present |
-| `TODO.md` | missing |
+| `TODO.md` | present |
 | `app/` | present |
 | `docs/POPIA_COMPLIANCE.md` | present |
 | `docs/current_state.md` | present |
@@ -43,7 +43,7 @@ Keep the project honest about what is implemented, verified, blocked, or externa
 Sources:
 - `docs/current_state.md` (present)
 - `docs/project_status.md` (present)
-- `TODO.md` (missing)
+- `TODO.md` (present)
 
 Commands:
 - `make refresh-current-state`

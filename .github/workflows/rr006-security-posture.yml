@@ -54,4 +54,7 @@ jobs:
         run: |
           set -euo pipefail
           detect-secrets scan --baseline .secrets.baseline . > /tmp/rr006-detect-secrets.json
+          if [ ! -s /tmp/rr006-detect-secrets.json ]; then
+            echo '{"results": {}}' > /tmp/rr006-detect-secrets.json
+          fi
           python3 -m json.tool /tmp/rr006-detect-secrets.json > /tmp/rr006-detect-secrets.pretty.json

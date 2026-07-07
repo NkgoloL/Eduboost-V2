@@ -107,7 +107,7 @@ They must avoid exposing unsafe raw internal inference details or unsupported pr
 
 ## Non-goals
 
-This pivot does not immediately require replacing PostgreSQL with Neo4j, replacing all current content systems, replacing IRT, replacing the AI Gateway, exposing graph internals directly to learners, or completing full CAPS coverage before proving Grade 4 Mathematics.
+This pivot does not immediately require replacing PostgreSQL with a dedicated graph database, replacing all current content systems, replacing IRT, replacing the AI Gateway, exposing graph internals directly to learners, or completing full CAPS coverage before proving Grade 4 Mathematics.
 
 ## Success measures
 

@@ -27,5 +27,7 @@ jobs:
             scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py \
             scripts/roadmap_reconciliation/capture_prd000_production_readiness_stream_authority_evidence.py \
             scripts/roadmap_reconciliation/verify_prd000_production_readiness_stream_authority.py
-          pytest -q tests/unit/roadmap_reconciliation/test_prd000_production_readiness_stream_authority.py --no-cov
+          PYTHONPATH=. python3 -m pytest -q \
+            tests/unit/roadmap_reconciliation/test_prd000_production_readiness_stream_authority.py \
+            --no-cov
           PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd000_production_readiness_stream_authority.py --authority-only --json

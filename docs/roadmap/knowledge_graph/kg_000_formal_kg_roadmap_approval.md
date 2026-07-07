@@ -26,7 +26,7 @@ This slice does not implement runtime knowledge graph behaviour. It records the 
 
 KG-0 approves the knowledge graph roadmap as the next roadmap stream by landing and indexing:
 
-- `docs/adr/ADR-030-knowledge-graph-learning-state-core.md`
+- `docs/adr/ADR-036-knowledge-graph-learning-state-core.md`
 - `docs/architecture/knowledge_graph_learning_state_architecture.md`
 - `docs/architecture/knowledge_graph_data_model.md`
 - `docs/architecture/knowledge_graph_transition_plan.md`
@@ -45,7 +45,7 @@ KG-0 approves the knowledge graph roadmap as the next roadmap stream by landing 
 - Final RR closure remains valid.
 - KG formalisation package docs exist and are indexed.
 - KG roadmap register contains `KG-0` through `KG-8`.
-- ADR-030 is present and indexed.
+- ADR-036 is present and indexed.
 - No runtime KG implementation is claimed.
 - No database migration, learner-facing model change, runtime KG authority switch, production release, deployment, release tag, public beta, billing launch, or live payment processing is authorised.
 

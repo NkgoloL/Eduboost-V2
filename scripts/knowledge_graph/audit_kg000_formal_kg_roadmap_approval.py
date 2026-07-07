@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any
 
 REQUIRED_DOCS = [
-    "docs/adr/ADR-030-knowledge-graph-learning-state-core.md",
+    "docs/adr/ADR-036-knowledge-graph-learning-state-core.md",
     "docs/architecture/knowledge_graph_learning_state_architecture.md",
     "docs/architecture/knowledge_graph_data_model.md",
     "docs/architecture/knowledge_graph_transition_plan.md",
@@ -23,10 +23,10 @@ REQUIRED_DOCS = [
     "docs/roadmap/knowledge_graph/kg_000_formal_kg_roadmap_approval.md",
 ]
 INDEX_EXPECTATIONS = {
-    "README.md": ["Knowledge Graph Roadmap", "ADR-030", "kg_implementation_roadmap.md"],
+    "README.md": ["Knowledge Graph Roadmap", "ADR-036", "kg_implementation_roadmap.md"],
     "docs/README.md": ["Knowledge graph learning-state roadmap", "knowledge_graph_learning_state_architecture.md", "kg_implementation_roadmap.md"],
     "docs/architecture/README.md": ["Knowledge Graph Learning-State Architecture", "knowledge_graph_data_model.md"],
-    "docs/adr/README.md": ["ADR-030", "Knowledge Graph Learning-State Core"],
+    "docs/adr/README.md": ["ADR-036", "Knowledge Graph Learning-State Core"],
     "docs/roadmap/README.md": ["KG-0", "kg_implementation_roadmap.md"],
 }
 KG_IDS = [f"KG-{i}" for i in range(0, 9)]
@@ -80,7 +80,7 @@ def audit(root: Path | str = Path(".")) -> dict[str, Any]:
     final_closure_valid = final_closure.get("final_roadmap_reconciliation_closure_recorded") is True and final_closure.get("all_reconciled_rr_items_addressed_through_rr018") is True
     if not final_closure_valid:
         errors.append("final roadmap reconciliation closure must be valid before KG-0")
-    adr_text = read_text(root, "docs/adr/ADR-030-knowledge-graph-learning-state-core.md")
+    adr_text = read_text(root, "docs/adr/ADR-036-knowledge-graph-learning-state-core.md")
     roadmap_text = read_text(root, "docs/roadmap/knowledge_graph/kg_implementation_roadmap.md")
     package_manifest = read_json(root, "docs/roadmap/knowledge_graph/kg_formalization_package_manifest.json")
     authority_checks = {
