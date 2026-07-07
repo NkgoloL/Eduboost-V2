@@ -1,103 +1,102 @@
+---
+title: EduBoost Roadmap Documentation
+status: active
+owner: roadmap-governance
+reviewers: [engineering, product, privacy, security, operations]
+audience: developer
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-07-07
+review_interval_days: 30
+evidence_command: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd001_canonical_current_state_documentation_refresh.py --json
+code_anchors: [docs/roadmap/production_readiness/production_readiness_register.json]
+---
+
 # EduBoost Roadmap Documentation
 
-This directory contains the authoritative roadmap documentation for the EduBoost V2 programme.
+This directory contains roadmap documentation for EduBoost V2.
 
-## 📋 North-Star Document
+## Current roadmap truth
 
-**`EduBoost_Full_Lifecycle_Delivery_and_Beta_Readiness_Plan.md`** — This is the controlling programme baseline. It defines the complete Phase 0–13 lifecycle, phase gates, evidence requirements, and beta success criteria.
+The old phase-roadmap and reconciliation streams are not the active next-work authority. The current state is:
 
-All other roadmap documents are subordinate to this baseline.
-
-## Directory Structure
-
-```
-docs/roadmap/
-├── EduBoost_Full_Lifecycle_Delivery_and_Beta_Readiness_Plan.md  # 📌 NORTH-STAR
-├── PHASE_STATUS_REGISTER.md                                    # Current phase status
-├── PROCESS_DISCIPLINE.md                                        # Process guidance
-├── execution/                                                   # Phase execution plans & reports
-│   ├── phase_execution_plan_template.md
-│   ├── phase_implementation_report_template.md
-│   ├── phase_audit_report_template.md
-│   ├── phase_evidence_pack_template.md
-│   ├── atlas/                                                   # Active sprint namespace
-│   │   ├── phase_01_execution_plan.md
-│   │   ├── phase_01_implementation_report.md
-│   │   └── ...
-│   ├── phase_00_execution_plan.md                             # (to be created)
-│   ├── phase_00_implementation_report.md                       # (to be created)
-│   └── ... (phases 1-13)
-├── domains/                                                     # Domain-specific roadmaps
-└── *.md                                                         # Supporting documents
+```text
+RR roadmap/TODO register: closed
+KG roadmap: closed through KG-8
+Controlled runtime KG authority switch: executed
+Production-readiness stream: open
+Current authorised item: PRD-0.1
+PRD-1 implementation: blocked until PRD-0.10 closure
 ```
 
-Active sprint namespace: `docs/roadmap/execution/atlas/`
+The active roadmap authority is:
 
-## Phase Overview
+- [`production_readiness/production_readiness_register.json`](production_readiness/production_readiness_register.json)
+- [`production_readiness/production_readiness_boundary_contract.md`](production_readiness/production_readiness_boundary_contract.md)
+- [`production_readiness/prd_0_expanded_post_closure_current_state_authority_refresh.md`](production_readiness/prd_0_expanded_post_closure_current_state_authority_refresh.md)
 
-| Phase | Name | Status |
-|:---:|---|:---:|
-| 0 | Environment and Reproducibility | Not Started |
-| 1 | Batch AI Content Generation | Verified Complete |
-| 2 | Semantic Retrieval | Verified Complete |
-| 3 | Educator Consensus and Content Governance | In Progress |
-| 4 | IRT Quality and Self-Healing Controls | In Progress |
-| 5 | Learner AI Tutor | In Progress |
-| 6 | Monitoring, Budget, and Production Hardening | In Progress |
-| 7 | Beta Content Coverage and Language Readiness | In Progress |
-| 8 | Architecture and Codebase Assurance | In Progress |
-| 9 | CI Authority and Reproducible Evidence | In Progress |
-| 10 | Product Readiness | In Progress |
-| 11 | Operations Readiness | In Progress |
-| 12 | External Review and Governance | Not Started |
-| 13 | Controlled Beta | Not Started |
+## Active PRD-0 sequence
 
-## Key Documents
+PRD-0 is a cleanup-first mini-program. It must close before PRD-1 starts:
 
-| Document | Purpose |
-|---|---|
-| `EduBoost_Full_Lifecycle_Delivery_and_Beta_Readiness_Plan.md` | Master programme plan (Phase 0–13) |
-| `PHASE_STATUS_REGISTER.md` | Real-time status of all phases |
-| `execution/phase_*_execution_plan.md` | Detailed execution plan per phase |
-| `execution/phase_*_implementation_report.md` | Post-implementation reconciliation |
+```text
+PRD-0.0  Production-readiness stream authority and register
+PRD-0.1  Canonical current-state documentation refresh
+PRD-0.2  Historical report and stale-source quarantine
+PRD-0.3  Documentation housekeeping ratchet refresh
+PRD-0.4  Test/dependency bootstrap baseline
+PRD-0.5  Test failure and collection stabilisation register
+PRD-0.6  Workflow command hygiene and CI inventory
+PRD-0.7  OpenAPI and generated artifact canonicalisation
+PRD-0.8  Branch/release naming reconciliation
+PRD-0.9  Repository hygiene and generated/local artifact audit
+PRD-0.10 PRD-0 closure evidence and handoff to PRD-1
+```
 
-## Four-Artefact Control Set
+## Production-readiness sequence after PRD-0
 
-Each phase requires a **complete four-artefact control set** before it can be marked `Verified Complete`:
+PRD-1 through PRD-11 are registered but blocked until PRD-0 closes:
 
-1. **Execution Plan** — Defines scope, acceptance criteria before work starts
-2. **Implementation Report** — Reconciles planned vs actual delivery
-3. **Evidence Index/Pack** — Attributable proof for every criterion
-4. **Phase Audit Report** — Independent verification and closure verdict
+```text
+PRD-1  Required CI and Release Gate Convergence
+PRD-2  Runtime KG Integration and Persistence
+PRD-3  Learner and Parent Vertical Journey Hardening
+PRD-4  Content, CAPS, and Educational Quality Readiness
+PRD-5  POPIA Live Data Operations and Privacy Assurance
+PRD-6  Security Assurance and External Review
+PRD-7  Observability, SRE, and Incident Readiness
+PRD-8  Performance, Scale, and Cost Execution
+PRD-9  Billing and Commercial Launch Readiness
+PRD-10 Controlled Beta / Live Learner Traffic Authorisation
+PRD-11 Production Release and Deployment Authorisation
+```
 
-See the North-Star document for the complete protocol.
+## Closed roadmap streams
 
-## Evidence Repository
+| Stream | State | Current authority |
+|---|---|---|
+| RR roadmap/TODO reconciliation | Closed through RR-018 | Historical/evidence only |
+| Knowledge Graph roadmap | Closed through KG-8 plus KG-ACT-001 | No new KG slice authorised |
+| PRD production-readiness | Open at PRD-0 | Active next-work authority |
 
-Phase evidence is stored in: `docs/release-evidence/atlas/phase-<NN>/`
+## Protected boundaries
 
-## Getting Started
+The following remain unauthorised until future PRD gates explicitly change them:
 
-1. **Read the North-Star document first** — `EduBoost_Full_Lifecycle_Delivery_and_Beta_Readiness_Plan.md`
-2. **Check current phase status** — `PHASE_STATUS_REGISTER.md`
-3. **Use templates** — `execution/phase_*_template.md`
-4. **Follow the protocol** — No phase starts without an approved execution plan
+```text
+production_release_authorised: false
+deployment_authorised: false
+release_tag_authorised: false
+public_beta_authorised: false
+public_beta_live_traffic_authorised: false
+live_learner_traffic_authorised: false
+billing_launch_authorised: false
+live_payment_processing_authorised: false
+new_kg_slice_authorised: false
+prd1_implementation_authorised: false
+```
 
-## Related Documentation
+## Historical roadmap documents
 
-- Release evidence: `docs/release-evidence/`
-- Technical documentation: `docs/`
-- Tests: `tests/`
-- Architecture: `docs/architecture/`
-
-<!-- KG000_FORMAL_ROADMAP_APPROVAL:start -->
-## Knowledge Graph roadmap stream
-
-The reconciled RR register is closed through RR-018. New KG work starts only through the approved Knowledge Graph roadmap stream:
-
-- [KG-0 Formal KG Roadmap Approval](knowledge_graph/kg_000_formal_kg_roadmap_approval.md)
-- [KG Implementation Roadmap](knowledge_graph/kg_implementation_roadmap.md)
-- [KG Roadmap Register](knowledge_graph/kg_roadmap_register.json)
-
-Next after KG-0: `KG-1 — CAPS graph foundation`.
-<!-- KG000_FORMAL_ROADMAP_APPROVAL:end -->
+Historical phase plans, old audit roadmaps, and archived register entries may remain for traceability. They must not be treated as live next-work authority unless a current PRD document explicitly references them.

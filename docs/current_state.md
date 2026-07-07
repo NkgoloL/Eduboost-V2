@@ -7,22 +7,25 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-02
+last_reviewed: 2026-07-07
 review_interval_days: 14
-evidence_command: make docs-housekeeping-check && make openapi-check && make runtime-check
-code_anchors: [app/api_v2.py, app/frontend/package.json, docs/documentation/source_of_truth.yml]
+evidence_command: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd001_canonical_current_state_documentation_refresh.py --json
+code_anchors: [app/api_v2.py, app/frontend/package.json, docs/roadmap/production_readiness/production_readiness_register.json]
 ---
 
 # EduBoost Current State
 
-This is the bounded current-state summary for EduBoost V2. It is intentionally conservative: it describes what the repository is intended to be and what must be re-verified before any readiness claim is made.
+This file is the canonical current-state summary for EduBoost V2 after the reconciled RR roadmap, Knowledge Graph roadmap, and PRD-0.0 production-readiness stream authority were closed.
+
+It is intentionally conservative. It records what is true now and what remains unauthorised before production, deployment, public beta, billing, live learner traffic, or further production-readiness implementation work can proceed.
 
 ## Product identity
 
-EduBoost V2 is a learning platform for South African Grade 4 Mathematics. Its core product direction is:
+EduBoost V2 is a South African Grade 4 Mathematics learning platform. Its product direction remains:
 
 - CAPS-aligned curriculum coverage.
 - Diagnostic assessment and adaptive learner support.
+- Knowledge-graph-grounded learning-state modelling.
 - AI-assisted tutoring through controlled and grounded service boundaries.
 - Parent/guardian visibility into progress, consent history, and reports.
 - Personalised study plans based on curriculum coverage and mastery gaps.
@@ -39,28 +42,77 @@ The active technical direction is:
 - Redis-backed sessions, jobs, or runtime support where configured.
 - Content Factory and curriculum tooling for controlled source ingestion and lesson material production.
 - Generated OpenAPI contract under `docs/openapi.json`.
-- Release and evidence automation under scripts, Makefile targets, and `docs/release*` areas.
+- Release and evidence automation under scripts, Makefile targets, and `docs/release-evidence/`.
+- Controlled runtime KG authority switch recorded through the KG activation and closure evidence stream.
 
-## Known caution areas
+## Canonical closure state
 
-The documentation corpus must not claim broad production or release readiness without fresh evidence. The June 2026 technical audit identified release-blocking concerns including missing Content Factory runtime registry artifacts, POPIA auth-shape drift, frontend/backend route drift, CI package-manager drift, stale OpenAPI output, frontend lint/env-check drift, and dependency scan enforcement gaps.
+The current closed roadmap state is:
 
-## Documentation truth boundary
+```text
+RR roadmap/TODO register: closed
+Final RR roadmap reconciliation closure: valid
+KG roadmap: closed through KG-8
+KG-ACT-001 controlled runtime KG authority activation: valid
+KG roadmap closure report: valid
+PRD-0.0 production-readiness stream authority: valid
+Production-readiness stream: open
+Current authorised item: PRD-0.1
+PRD-1 implementation: blocked until PRD-0.10 closure
+New KG slice: not authorised
+```
 
-This file is not a release approval. It is a navigation document. Release decisions must be made through the release source-of-truth documents and evidence commands listed in `docs/documentation/source_of_truth.yml`.
+## Runtime KG authority state
 
-## Reconciled roadmap and governance state
+The controlled KG authority switch is recorded as active in governance evidence:
 
-RR-009 governance/process reconciliation records that current work selection is governed by `docs/roadmap/reconciliation/outstanding_work_register.md` and must cite an `RR-###` item.
+```text
+runtime_kg_implementation_claimed: true
+runtime_kg_authority_switch_authorised: true
+authority_switch_executed: true
+```
 
-Current closed reconciliation items include RR-001 through RR-008, with RR-006 completed earlier and retained as a valid out-of-order closure. New roadmap or product work remains blocked unless reconciled into the RR register.
+This does **not** by itself authorise production release, public beta, live learner traffic, billing, deployment, or release tagging.
 
-Known residual caveats remain visible:
+## Current production-readiness boundaries
+
+These remain unauthorised:
+
+```text
+production_release_authorised: false
+deployment_authorised: false
+release_tag_authorised: false
+public_beta_authorised: false
+public_beta_live_traffic_authorised: false
+live_learner_traffic_authorised: false
+billing_launch_authorised: false
+live_payment_processing_authorised: false
+new_kg_slice_authorised: false
+prd1_implementation_authorised: false
+```
+
+## Active production-readiness sequence
+
+The active production-readiness stream is governed by:
+
+- `docs/roadmap/production_readiness/production_readiness_register.json`
+- `docs/roadmap/production_readiness/production_readiness_boundary_contract.md`
+- `docs/roadmap/production_readiness/prd_0_expanded_post_closure_current_state_authority_refresh.md`
+
+PRD-0 must close before PRD-1 starts. PRD-0 contains documentation truth refresh, stale-source quarantine, housekeeping ratchets, test/dependency baselines, workflow inventory, generated artifact canonicalisation, branch/release naming reconciliation, repository hygiene, and PRD-0 closure evidence.
+
+## Known caveats carried forward
+
+The following caveats remain visible and must not be hidden by later status documents:
 
 - RR-003 is valid, but its fallback coverage baseline recorded `0.0` because full test collection had pre-existing blockers.
 - RR-006 is valid, but its evidence PR merged with only the required branch-protection check blocking; other non-required checks were red.
-- RR-010 beta outcome reporting, RR-015 external approvals, RR-016 operational drills, and RR-017 release safety controls remain outstanding.
+- RR-016 is valid, but one captured git-state caveat was preserved for historical transparency.
+- KG-8 is valid, but one non-required GitHub Actions job failed because the runner called `pytest` directly and it was not on `PATH`.
+- PRD-0.0 introduced the production-readiness stream and blocked PRD-1 until PRD-0.10 closure.
 
-Production release, deployment, release tagging, public beta, and runtime KG implementation remain unauthorised.
+## Documentation truth boundary
 
-**Current-state refresh cadence recorded: true**
+This file is not a production approval. It is a current-state navigation document. Release, deployment, billing, public beta, live learner traffic, or optimisation-execution decisions must be made through future PRD gates and evidence commands.
+
+**Current-state refresh recorded: PRD-0.1**
