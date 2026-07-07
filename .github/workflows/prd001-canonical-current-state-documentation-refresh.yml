@@ -1,0 +1,43 @@
+name: PRD-0.1 Canonical Current-State Documentation Refresh
+
+on:
+  pull_request:
+    paths:
+      - "docs/current_state.md"
+      - "README.md"
+      - "docs/README.md"
+      - "docs/roadmap/README.md"
+      - "docs/architecture/README.md"
+      - "docs/roadmap/production_readiness/**"
+      - "scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py"
+      - "scripts/roadmap_reconciliation/verify_prd001_canonical_current_state_documentation_refresh.py"
+      - "scripts/roadmap_reconciliation/capture_prd001_canonical_current_state_documentation_refresh_evidence.py"
+      - "tests/unit/roadmap_reconciliation/test_prd001_canonical_current_state_documentation_refresh.py"
+      - ".github/workflows/prd001-canonical-current-state-documentation-refresh.yml"
+  push:
+    branches:
+      - master
+
+jobs:
+  verify-prd001:
+    name: Verify PRD-0.1 documentation authority
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements/dev.txt
+      - name: Compile PRD-0.1 scripts
+        run: |
+          python3 -m py_compile             scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py             scripts/roadmap_reconciliation/capture_prd001_canonical_current_state_documentation_refresh_evidence.py             scripts/roadmap_reconciliation/verify_prd001_canonical_current_state_documentation_refresh.py
+      - name: Run PRD-0.1 focused tests
+        run: |
+          PYTHONPATH=. python3 -m pytest -q             tests/unit/roadmap_reconciliation/test_prd001_canonical_current_state_documentation_refresh.py             --no-cov
+      - name: Verify PRD-0.1 authority
+        run: |
+          PYTHONPATH=. python3             scripts/roadmap_reconciliation/verify_prd001_canonical_current_state_documentation_refresh.py             --authority-only             --json
