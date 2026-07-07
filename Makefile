@@ -3153,3 +3153,13 @@ prd003-doc-housekeeping-ratchet-check:
 prd003-doc-housekeeping-ratchet-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd003_documentation_housekeeping_ratchet_refresh_evidence.py --claim-prd003-doc-housekeeping-ratchet-refresh --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
 # END PRD-0.3 documentation housekeeping ratchet refresh targets
+
+.PHONY: prd004-test-dependency-bootstrap-baseline-audit prd004-test-dependency-bootstrap-baseline-check prd004-test-dependency-bootstrap-baseline-capture
+prd004-test-dependency-bootstrap-baseline-audit:
+	PYTHONPATH=. python3 scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py --json
+
+prd004-test-dependency-bootstrap-baseline-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd004_test_dependency_bootstrap_baseline.py --json
+
+prd004-test-dependency-bootstrap-baseline-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd004_test_dependency_bootstrap_baseline_evidence.py --claim-prd004-test-dependency-bootstrap-baseline --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch "$${TARGET_BRANCH:-master}" --require-valid --json
