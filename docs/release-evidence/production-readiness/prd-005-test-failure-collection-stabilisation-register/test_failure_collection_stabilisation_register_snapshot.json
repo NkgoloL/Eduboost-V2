@@ -1,0 +1,344 @@
+{
+  "authority_boundaries": {
+    "authority_switch_executed": true,
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "new_kg_slice_authorised": false,
+    "prd1_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_authority_switch_authorised": true,
+    "runtime_kg_implementation_claimed": true
+  },
+  "captured_at": "2026-07-07T23:30:59.253799+00:00",
+  "collection_command_matrix": [
+    {
+      "classification_if_failing": "stale_test_contract",
+      "command": "PYTHONPATH=. python3 -m pytest -q tests/unit/roadmap_reconciliation --no-cov",
+      "command_id": "backend_control_plane_prd_tests",
+      "execution_required_in_prd005": false,
+      "purpose": "control-plane verifier regression tests"
+    },
+    {
+      "classification_if_failing": "import_or_collection",
+      "command": "PYTHONPATH=. python3 -m pytest --collect-only -q tests/unit --no-cov",
+      "command_id": "backend_unit_collection",
+      "execution_required_in_prd005": false,
+      "purpose": "unit test collection baseline"
+    },
+    {
+      "classification_if_failing": "import_or_collection",
+      "command": "PYTHONPATH=. python3 -m pytest --collect-only -q tests --no-cov",
+      "command_id": "backend_full_collection",
+      "execution_required_in_prd005": false,
+      "purpose": "full Python test collection baseline"
+    },
+    {
+      "classification_if_failing": "dependency_bootstrap",
+      "command": "PYTHONPATH=. python3 -m pytest -q tests/smoke/test_app_import.py --no-cov",
+      "command_id": "backend_smoke_import",
+      "execution_required_in_prd005": false,
+      "purpose": "application import smoke baseline"
+    },
+    {
+      "classification_if_failing": "frontend_tooling",
+      "command": "pnpm test",
+      "command_id": "frontend_unit_tests",
+      "execution_required_in_prd005": false,
+      "purpose": "frontend unit test baseline"
+    },
+    {
+      "classification_if_failing": "frontend_tooling",
+      "command": "npx playwright test",
+      "command_id": "frontend_e2e_opt_in",
+      "execution_required_in_prd005": false,
+      "purpose": "frontend e2e opt-in command contract"
+    },
+    {
+      "classification_if_failing": "documentation_or_generated_artifact",
+      "command": "make docs-housekeeping-check",
+      "command_id": "docs_housekeeping",
+      "execution_required_in_prd005": false,
+      "purpose": "documentation ratchet regression baseline"
+    }
+  ],
+  "failure_classification_schema": [
+    {
+      "allowed_action": "classify_and_register_before_repair",
+      "category": "dependency_bootstrap",
+      "owner_slice": "PRD-0.5"
+    },
+    {
+      "allowed_action": "classify_and_register_before_repair",
+      "category": "import_or_collection",
+      "owner_slice": "PRD-0.5"
+    },
+    {
+      "allowed_action": "classify_and_register_before_repair",
+      "category": "stale_test_contract",
+      "owner_slice": "PRD-0.5"
+    },
+    {
+      "allowed_action": "classify_and_register_before_repair",
+      "category": "product_behavior",
+      "owner_slice": "PRD-0.5"
+    },
+    {
+      "allowed_action": "classify_and_register_before_repair",
+      "category": "external_service",
+      "owner_slice": "PRD-0.5"
+    },
+    {
+      "allowed_action": "classify_and_register_before_repair",
+      "category": "frontend_tooling",
+      "owner_slice": "PRD-0.5"
+    },
+    {
+      "allowed_action": "classify_and_register_before_repair",
+      "category": "environment_only",
+      "owner_slice": "PRD-0.5"
+    },
+    {
+      "allowed_action": "classify_and_register_before_repair",
+      "category": "documentation_or_generated_artifact",
+      "owner_slice": "PRD-0.5"
+    }
+  ],
+  "prd_id": "PRD-0.5",
+  "pytest_configuration": {
+    "pytest_config_files": [
+      {
+        "exists": true,
+        "path": "pytest.ini",
+        "sha256": "6541f4f3852e9a03949f016460ee03dceda28863e16a0fb172e6065c5e31306e"
+      },
+      {
+        "exists": true,
+        "path": "pytest-coverage.ini",
+        "sha256": "bc0e437ffb732638dd84ad5081b638738d65f95167cbe00f980141e8e9783ac4"
+      },
+      {
+        "exists": true,
+        "path": "pyproject.toml",
+        "sha256": "4240162de806751c5976aee2f270187032d9c95de0482b8b15ae4b912d36403a"
+      }
+    ]
+  },
+  "schema_version": "prd-test-failure-collection-stabilisation/v1",
+  "stabilisation_boundaries": {
+    "broad_test_execution_repairs_deferred": true,
+    "no_product_behavior_repairs_authorised": true,
+    "no_silent_xfail_authorised": true,
+    "no_test_deletions_authorised": true,
+    "openapi_generated_artifact_canonicalisation_deferred_to_prd007": true,
+    "workflow_command_hygiene_deferred_to_prd006": true
+  },
+  "test_inventory": {
+    "python_parse_error_count": 0,
+    "python_parse_errors": [],
+    "sample_test_files": [
+      "tests/api/test_admin_etl_routes.py",
+      "tests/api/test_content_factory_admin_routes.py",
+      "tests/api/test_content_factory_artifact_routes.py",
+      "tests/api/test_content_factory_coverage_routes.py",
+      "tests/api/test_content_factory_full_generation_routes.py",
+      "tests/api/test_content_factory_generation_routes.py",
+      "tests/api/test_content_factory_preview_routes.py",
+      "tests/api/test_content_factory_production_promotion_routes.py",
+      "tests/api/test_content_factory_review_acceleration_routes.py",
+      "tests/api/test_content_factory_review_routes.py",
+      "tests/api/test_content_factory_run_routes.py",
+      "tests/api/test_content_factory_scope_routes.py",
+      "tests/api/test_content_factory_seed_promotion_routes.py",
+      "tests/api/test_content_factory_staging_seed_routes.py",
+      "tests/api/test_content_factory_staging_verification_routes.py",
+      "tests/api/test_learner_content_routes.py",
+      "tests/ci/test_item_bank_ci_jobs.py",
+      "tests/ci/test_item_bank_coverage.py",
+      "tests/integration/test_api_envelope.py",
+      "tests/integration/test_assessment_production_path.py",
+      "tests/integration/test_audit_immutability.py",
+      "tests/integration/test_auth_lifecycle_http_non_500.py",
+      "tests/integration/test_auth_lifecycle_http_success_scope.py",
+      "tests/integration/test_auth_lifecycle_route_registration.py",
+      "tests/integration/test_auth_rate_limits.py",
+      "tests/integration/test_auth_refresh.py",
+      "tests/integration/test_auth_refresh_db_proof_integration.py",
+      "tests/integration/test_auth_repository_fixture_proof.py",
+      "tests/integration/test_auth_transaction_rollback_proof.py",
+      "tests/integration/test_auth_transactional_db_lifecycle_proof.py",
+      "tests/integration/test_consent_grant_authorization.py",
+      "tests/integration/test_consent_renewal.py",
+      "tests/integration/test_consent_revoke_authorization.py",
+      "tests/integration/test_consent_status_authorization.py",
+      "tests/integration/test_content_factory_db_lifecycle.py",
+      "tests/integration/test_content_factory_migrations.py",
+      "tests/integration/test_content_factory_seed_promotion_db.py",
+      "tests/integration/test_content_factory_staging_verification_db.py",
+      "tests/integration/test_deep_health.py",
+      "tests/integration/test_diagnostic_items_authorization.py",
+      "tests/integration/test_diagnostic_session.py",
+      "tests/integration/test_diagnostic_submit_authorization.py",
+      "tests/integration/test_diagnostics_db_integrity_proof.py",
+      "tests/integration/test_diagnostics_session_binding_routes.py",
+      "tests/integration/test_diagnostics_transaction_rollback_proof.py",
+      "tests/integration/test_gamification_award_xp_authorization.py",
+      "tests/integration/test_gamification_profile_authorization.py",
+      "tests/integration/test_learner_flow_contract.py",
+      "tests/integration/test_learner_mastery_authorization.py",
+      "tests/integration/test_learner_read_authorization.py"
+    ],
+    "test_class_count": 244,
+    "test_file_count": 854,
+    "test_files_by_top_level": {
+      "api": 16,
+      "ci": 2,
+      "integration": 53,
+      "legacy": 29,
+      "modules": 1,
+      "phase01": 6,
+      "phase02": 7,
+      "phase02r": 1,
+      "phase03": 3,
+      "phase04": 3,
+      "phase05": 3,
+      "phase06": 3,
+      "phase07": 3,
+      "popia": 3,
+      "reconciliation": 2,
+      "smoke": 5,
+      "test_e2e_integration.py": 1,
+      "test_entrypoints.py": 1,
+      "test_health_checks.py": 1,
+      "test_health_metrics.py": 1,
+      "test_legacy_route_exclusion.py": 1,
+      "test_pipeline_stages.py": 1,
+      "test_popia_end_to_end.py": 1,
+      "test_popia_negative.py": 1,
+      "test_ready_endpoint.py": 1,
+      "unit": 705
+    },
+    "test_function_count": 4522
+  },
+  "triage_register": [
+    {
+      "category": "import_or_collection",
+      "delete_tests_authorised": false,
+      "repair_slice": "PRD-0.5-or-later",
+      "reproduction_command_id": "backend_full_collection",
+      "status": "registered_for_stabilisation",
+      "title": "Python test collection baseline",
+      "triage_id": "PRD005-TRIAGE-001"
+    },
+    {
+      "category": "dependency_bootstrap",
+      "delete_tests_authorised": false,
+      "repair_slice": "PRD-0.5-or-later",
+      "reproduction_command_id": "backend_smoke_import",
+      "status": "registered_for_stabilisation",
+      "title": "Smoke import/dependency bootstrap baseline",
+      "triage_id": "PRD005-TRIAGE-002"
+    },
+    {
+      "category": "frontend_tooling",
+      "delete_tests_authorised": false,
+      "repair_slice": "PRD-0.6-or-later",
+      "reproduction_command_id": "frontend_unit_tests",
+      "status": "registered_for_stabilisation",
+      "title": "Frontend unit/e2e command baseline",
+      "triage_id": "PRD005-TRIAGE-003"
+    },
+    {
+      "category": "environment_only",
+      "delete_tests_authorised": false,
+      "repair_slice": "PRD-0.6",
+      "reproduction_command_id": "backend_control_plane_prd_tests",
+      "status": "registered_for_prd006",
+      "title": "Workflow pytest command convergence",
+      "triage_id": "PRD005-TRIAGE-004"
+    },
+    {
+      "category": "documentation_or_generated_artifact",
+      "delete_tests_authorised": false,
+      "repair_slice": "PRD-0.7-or-later",
+      "reproduction_command_id": "docs_housekeeping",
+      "status": "registered_for_prd007_or_housekeeping",
+      "title": "Generated documentation artifact drift",
+      "triage_id": "PRD005-TRIAGE-005"
+    }
+  ],
+  "upstream_baseline": {
+    "prd004_baseline_present": true,
+    "prd004_direct_pytest_workflow_count": 32,
+    "prd004_schema_version": "prd-test-dependency-bootstrap/v1",
+    "prd004_workflow_count": 78
+  },
+  "workflow_test_command_inventory": {
+    "direct_pytest_workflow_count": 33,
+    "direct_pytest_workflows": [
+      ".github/workflows/api-envelope-error-contract.yml",
+      ".github/workflows/auth-boundary.yml",
+      ".github/workflows/auth-refresh-db-proof.yml",
+      ".github/workflows/caps-source-topic-map.yml",
+      ".github/workflows/ci-cd.yml",
+      ".github/workflows/ci-core.yml",
+      ".github/workflows/ci_diagnostics_assessment.yml",
+      ".github/workflows/ci_lesson_quality.yml",
+      ".github/workflows/cluster-d-ci.yml",
+      ".github/workflows/cluster-e-data-resilience.yml",
+      ".github/workflows/cluster-f-ai-safety.yml",
+      ".github/workflows/cluster-g-frontend.yml",
+      ".github/workflows/cluster-h-release-readiness.yml",
+      ".github/workflows/item_bank_ci.yml",
+      ".github/workflows/kg-roadmap-closure-report.yml",
+      ".github/workflows/kg004-gap-engine-intervention-planner.yml",
+      ".github/workflows/kg006-tutor-study-plan-gamification-parent-alignment.yml",
+      ".github/workflows/kg008-post-switch-optimisation-scale-review.yml",
+      ".github/workflows/kgact001-controlled-runtime-kg-authority-activation.yml",
+      ".github/workflows/learning-evidence.yml",
+      ".github/workflows/legacy-route-guard.yml",
+      ".github/workflows/persistence-resilience.yml",
+      ".github/workflows/popia-consent-audit.yml",
+      ".github/workflows/prd000-production-readiness-stream-authority.yml",
+      ".github/workflows/prd001-canonical-current-state-documentation-refresh.yml",
+      ".github/workflows/prd002-historical-report-stale-source-quarantine.yml",
+      ".github/workflows/prd003-documentation-housekeeping-ratchet-refresh.yml",
+      ".github/workflows/prd004-test-dependency-bootstrap-baseline.yml",
+      ".github/workflows/prd005-test-failure-collection-stabilisation-register.yml",
+      ".github/workflows/privacy-boundary.yml",
+      ".github/workflows/repo-state.yml",
+      ".github/workflows/runtime-contract.yml",
+      ".github/workflows/technical-audit-hosted-ci.yml"
+    ],
+    "frontend_test_workflow_count": 5,
+    "frontend_test_workflows": [
+      ".github/workflows/ci-cd.yml",
+      ".github/workflows/ci_lesson_quality.yml",
+      ".github/workflows/cluster-g-frontend.yml",
+      ".github/workflows/e2e.yml",
+      ".github/workflows/frontend-e2e.yml"
+    ],
+    "module_pytest_workflow_count": 14,
+    "module_pytest_workflows": [
+      ".github/workflows/auth-refresh-db-proof.yml",
+      ".github/workflows/cluster-e-data-resilience.yml",
+      ".github/workflows/cluster-f-ai-safety.yml",
+      ".github/workflows/cluster-g-frontend.yml",
+      ".github/workflows/item_bank_ci.yml",
+      ".github/workflows/kg-roadmap-closure-report.yml",
+      ".github/workflows/popia-consent-audit.yml",
+      ".github/workflows/prd000-production-readiness-stream-authority.yml",
+      ".github/workflows/prd001-canonical-current-state-documentation-refresh.yml",
+      ".github/workflows/prd002-historical-report-stale-source-quarantine.yml",
+      ".github/workflows/prd003-documentation-housekeeping-ratchet-refresh.yml",
+      ".github/workflows/prd004-test-dependency-bootstrap-baseline.yml",
+      ".github/workflows/prd005-test-failure-collection-stabilisation-register.yml",
+      ".github/workflows/technical-audit-hosted-ci.yml"
+    ],
+    "workflow_count": 79
+  }
+}
