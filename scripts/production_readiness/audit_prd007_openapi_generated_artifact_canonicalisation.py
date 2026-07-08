@@ -145,7 +145,7 @@ def audit(root: Path = Path(".")) -> dict[str, Any]:
         errors.append("PRD-0.6 workflow command hygiene and CI inventory must be valid before PRD-0.7")
     register = read_json(root / REGISTER)
     allowed_last = {f"PRD-0.{idx}" for idx in range(6, 11)} | {f"PRD-1.{idx}" for idx in range(0, 10)}
-    allowed_next = {f"PRD-0.{idx}" for idx in range(7, 11)} | {"PRD-1"} | {f"PRD-1.{idx}" for idx in range(0, 10)}
+    allowed_next = {f"PRD-0.{idx}" for idx in range(7, 11)} | {"PRD-1", "PRD-2"} | {f"PRD-1.{idx}" for idx in range(0, 10)}
     if register.get("last_recorded_item") not in allowed_last:
         errors.append("production readiness register last_recorded_item must be PRD-0.6 or a later PRD-0 archival state")
     if register.get("next_authorised_item") not in allowed_next:
