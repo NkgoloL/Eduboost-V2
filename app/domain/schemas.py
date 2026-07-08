@@ -129,6 +129,7 @@ class DiagnosticResult(BaseModel):
     standard_error: float | None = None
     grade_equivalent: int | None = None
     ranked_gaps: list[dict] = Field(default_factory=list)
+    runtime_kg_projection: dict[str, Any] = Field(default_factory=dict)
 
 
 # ── Onboarding (Ether cold-start) ─────────────────────────────────────────────

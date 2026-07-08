@@ -3287,3 +3287,10 @@ prd105-109-ci-convergence-release-readiness-handoff-check:
 prd105-109-ci-convergence-release-readiness-handoff-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd105_109_ci_convergence_release_readiness_handoff_evidence.py --claim-prd105-109-ci-convergence-release-readiness-handoff --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch master --require-valid --json
 # End PRD-1.5-1.9 CI convergence/release-readiness/handoff
+
+.PHONY: prd204-206-runtime-kg-route-projection-behaviour-check prd204-206-runtime-kg-route-projection-behaviour-capture
+prd204-206-runtime-kg-route-projection-behaviour-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd204_206_runtime_kg_route_projection_behaviour.py --json
+
+prd204-206-runtime-kg-route-projection-behaviour-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd204_206_runtime_kg_route_projection_behaviour_evidence.py --claim-prd204-206-runtime-kg-route-projection-behaviour --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
