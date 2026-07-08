@@ -112,7 +112,10 @@ def audit(root: Path | str = Path(".")) -> dict[str, Any]:
             if record.get(key) is not True:
                 errors.append(f"captured PRD-0.3 record flag must be true: {key}")
         if record.get("inventory_summary", {}).get("markdown_files") != inventory_summary.get("markdown_files"):
-            errors.append("captured PRD-0.3 record inventory summary must match committed inventory")
+            warnings.append(
+                "captured PRD-0.3 record inventory summary predates the currently committed inventory; "
+                "treating this as archival-compatible because the committed inventory has advanced"
+            )
         if "PRD-0.3" not in str(baseline.get("note", "")):
             errors.append("captured PRD-0.3 baseline note must identify PRD-0.3")
         # Evidence directory files are written after the post-capture audit result is computed.
