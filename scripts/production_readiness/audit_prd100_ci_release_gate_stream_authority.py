@@ -62,25 +62,33 @@ def prd1_sequence_registered(prd1_register: dict[str, Any]) -> bool:
 
 
 def prd1_0_recorded(prd1_register: dict[str, Any]) -> bool:
-    if prd1_register.get("last_recorded_item") != PRD_ID:
-        return False
-    if prd1_register.get("next_authorised_item") != "PRD-1.1":
+    last_item = str(prd1_register.get("last_recorded_item", ""))
+    next_item = str(prd1_register.get("next_authorised_item", ""))
+    if last_item == PRD_ID and next_item == "PRD-1.1":
+        positioned = True
+    elif last_item.startswith("PRD-1.") and last_item != PRD_ID and next_item.startswith("PRD-1."):
+        positioned = True
+    else:
+        positioned = False
+    if not positioned:
         return False
     for item in prd1_register.get("prd1_sequence", []):
         if item.get("prd_id") == PRD_ID and not (item.get("authorised") is True and item.get("status") == "recorded"):
             return False
-        if item.get("prd_id") == "PRD-1.1" and not (item.get("authorised") is True and item.get("status") in {"authorised", "next_authorised"}):
+        if item.get("prd_id") == "PRD-1.1" and not (item.get("authorised") is True and item.get("status") in {"authorised", "next_authorised", "recorded"}):
             return False
     return True
 
 
 def production_register_position(register: dict[str, Any]) -> str:
-    last_item = register.get("last_recorded_item")
-    next_item = register.get("next_authorised_item")
+    last_item = str(register.get("last_recorded_item", ""))
+    next_item = str(register.get("next_authorised_item", ""))
     if last_item == "PRD-0.10" and next_item == "PRD-1":
         return "after_prd0_handoff_before_prd1_capture"
     if last_item == PRD_ID and next_item == "PRD-1.1":
         return "prd1_0_recorded"
+    if last_item.startswith("PRD-1.") and last_item != PRD_ID and next_item.startswith("PRD-1."):
+        return "advanced_prd1_subslice"
     return "unexpected"
 
 
@@ -125,7 +133,7 @@ def audit(root: Path = Path(".")) -> dict[str, Any]:
     if prd010.get("valid") is not True:
         errors.append("PRD-0.10 verifier must remain valid before PRD-1.0")
     if production_register_position(register) == "unexpected":
-        errors.append("production readiness register must be positioned at PRD-0.10/PRD-1 or PRD-1.0/PRD-1.1")
+        errors.append("production readiness register must be positioned at PRD-0.10/PRD-1, PRD-1.0/PRD-1.1, or a later PRD-1.x slice")
     if prd1_register.get("schema_version") != "prd1-ci-release-gate-register/v1":
         errors.append("PRD-1 register schema_version must be prd1-ci-release-gate-register/v1")
     if prd1_register.get("stream_id") != STREAM_ID:
@@ -188,8 +196,7 @@ def audit(root: Path = Path(".")) -> dict[str, Any]:
         and recorded
         and snapshot_recorded
         and prd1_0_recorded(prd1_register)
-        and register.get("last_recorded_item") == PRD_ID
-        and register.get("next_authorised_item") == "PRD-1.1"
+        and production_register_position(register) in {"prd1_0_recorded", "advanced_prd1_subslice"}
         and record.get("next_authorised_item") == "PRD-1.1"
         and record.get("prd1_1_authorised") is True
     )

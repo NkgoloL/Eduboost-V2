@@ -1,0 +1,36 @@
+name: PRD-1.1 CI Inventory Authority
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/prd101-ci-inventory-authority.yml'
+      - 'docs/engineering/prd1_ci_inventory_authority.md'
+      - 'docs/roadmap/production_readiness/**'
+      - 'scripts/production_readiness/*prd101*'
+      - 'scripts/roadmap_reconciliation/*prd101*'
+      - 'tests/unit/roadmap_reconciliation/test_prd101_ci_inventory_authority.py'
+      - 'Makefile'
+  workflow_dispatch:
+
+jobs:
+  prd101-authority:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements/dev.txt
+      - name: Compile PRD-1.1 scripts
+        run: |
+          python3 -m py_compile             scripts/production_readiness/apply_prd101_ci_inventory_authority.py             scripts/production_readiness/audit_prd101_ci_inventory_authority.py             scripts/roadmap_reconciliation/capture_prd101_ci_inventory_authority_evidence.py             scripts/roadmap_reconciliation/verify_prd101_ci_inventory_authority.py
+      - name: Run focused PRD-1.1 tests
+        run: |
+          PYTHONPATH=. python3 -m pytest -q             tests/unit/roadmap_reconciliation/test_prd101_ci_inventory_authority.py             --no-cov
+      - name: Verify PRD-1.1 authority
+        run: |
+          PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd101_ci_inventory_authority.py --authority-only --json
