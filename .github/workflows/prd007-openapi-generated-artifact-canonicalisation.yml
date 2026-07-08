@@ -1,0 +1,59 @@
+name: PRD-0.7 OpenAPI Generated Artifact Canonicalisation
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - "openapi.json"
+      - "openapi.yaml"
+      - "docs/openapi.json"
+      - "docs/roadmap/production_readiness/**"
+      - "scripts/production_readiness/*prd007*"
+      - "scripts/roadmap_reconciliation/*prd007*"
+      - "tests/unit/roadmap_reconciliation/test_prd007_openapi_generated_artifact_canonicalisation.py"
+      - ".github/workflows/prd007-openapi-generated-artifact-canonicalisation.yml"
+      - "Makefile"
+  push:
+    branches:
+      - master
+    paths:
+      - "openapi.json"
+      - "openapi.yaml"
+      - "docs/openapi.json"
+      - "docs/roadmap/production_readiness/**"
+      - "scripts/production_readiness/*prd007*"
+      - "scripts/roadmap_reconciliation/*prd007*"
+      - "tests/unit/roadmap_reconciliation/test_prd007_openapi_generated_artifact_canonicalisation.py"
+      - ".github/workflows/prd007-openapi-generated-artifact-canonicalisation.yml"
+      - "Makefile"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prd007-openapi-generated-artifact-canonicalisation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install -r requirements/dev.txt
+
+      - name: Verify PRD-0.7 authority
+        run: |
+          PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd007_openapi_generated_artifact_canonicalisation.py --authority-only --json
+
+      - name: Run PRD-0.7 focused tests
+        run: |
+          PYTHONPATH=. python3 -m pytest -q tests/unit/roadmap_reconciliation/test_prd007_openapi_generated_artifact_canonicalisation.py --no-cov

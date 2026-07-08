@@ -3184,3 +3184,12 @@ prd006-workflow-command-hygiene-ci-inventory-check:
 
 prd006-workflow-command-hygiene-ci-inventory-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd006_workflow_command_hygiene_ci_inventory_evidence.py --claim-prd006-workflow-command-hygiene-ci-inventory --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+prd007-openapi-generated-artifact-canonicalisation-audit:
+	PYTHONPATH=. python3 scripts/production_readiness/audit_prd007_openapi_generated_artifact_canonicalisation.py
+
+prd007-openapi-generated-artifact-canonicalisation-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd007_openapi_generated_artifact_canonicalisation.py --json
+
+prd007-openapi-generated-artifact-canonicalisation-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd007_openapi_generated_artifact_canonicalisation_evidence.py --claim-prd007-openapi-generated-artifact-canonicalisation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
