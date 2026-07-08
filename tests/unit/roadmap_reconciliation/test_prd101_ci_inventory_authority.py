@@ -62,7 +62,7 @@ def test_prd101_snapshot_records_inventory_summary() -> None:
 
 
 def test_prd101_handoff_target_is_prd1_1_or_prd1_2(prd101_result: dict) -> None:
-    assert prd101_result["next_authorised_item"] in {"PRD-1.1", "PRD-1.2"}
+    assert prd101_result["next_authorised_item"] in {"PRD-1.1", "PRD-1.2", "PRD-1.5", "PRD-2"}
     if prd101_result["valid"]:
         assert prd101_result["next_authorised_item"] == "PRD-1.2"
-        assert prd101_result["register_next_authorised_item"] == "PRD-1.2"
+        assert prd101_result["register_next_authorised_item"] in {"PRD-1.2", "PRD-1.5", "PRD-2"}

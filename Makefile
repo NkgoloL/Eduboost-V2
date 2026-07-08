@@ -3270,3 +3270,11 @@ prd101-ci-inventory-authority-check:
 prd101-ci-inventory-authority-capture:
 	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/capture_prd101_ci_inventory_authority_evidence.py --claim-prd101-ci-inventory-authority --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch "$${TARGET_BRANCH:-master}" --require-valid --json
 # End PRD-1.1 CI inventory authority
+
+# PRD-1.2-1.4 required checks/workflow/release gate convergence
+.PHONY: prd102-104-required-checks-workflow-release-gate-check prd102-104-required-checks-workflow-release-gate-capture
+prd102-104-required-checks-workflow-release-gate-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd102_104_required_checks_workflow_release_gate_convergence.py --authority-only --json
+
+prd102-104-required-checks-workflow-release-gate-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd102_104_required_checks_workflow_release_gate_convergence_evidence.py --claim-prd102-104-required-checks-workflow-release-gate-convergence --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch master --require-valid --json

@@ -177,16 +177,18 @@ def collect_ci_inventory(root: Path = Path("."), captured_at: str | None = None)
 
 
 def prd1_1_recorded(prd1_register: dict[str, Any]) -> bool:
-    if prd1_register.get("last_recorded_item") != PRD_ID:
+    last_item = prd1_register.get("last_recorded_item")
+    next_item = prd1_register.get("next_authorised_item")
+    if (last_item, next_item) not in {
+        (PRD_ID, "PRD-1.2"),
+        ("PRD-1.4", "PRD-1.5"),
+        ("PRD-1.9", "PRD-2"),
+    }:
         return False
-    if prd1_register.get("next_authorised_item") != "PRD-1.2":
-        return False
-    for item in prd1_register.get("prd1_sequence", []):
-        if item.get("prd_id") == PRD_ID and not (item.get("authorised") is True and item.get("status") == "recorded"):
-            return False
-        if item.get("prd_id") == "PRD-1.2" and not (item.get("authorised") is True and item.get("status") in {"authorised", "next_authorised"}):
-            return False
-    return True
+    return any(
+        item.get("prd_id") == PRD_ID and item.get("authorised") is True and item.get("status") == "recorded"
+        for item in prd1_register.get("prd1_sequence", [])
+    )
 
 
 def production_register_position(register: dict[str, Any]) -> str:
@@ -196,6 +198,10 @@ def production_register_position(register: dict[str, Any]) -> str:
         return "after_prd1_0_before_prd1_1_capture"
     if last_item == PRD_ID and next_item == "PRD-1.2":
         return "prd1_1_recorded"
+    if last_item == "PRD-1.4" and next_item == "PRD-1.5":
+        return "prd1_4_recorded_after_prd1_1"
+    if last_item == "PRD-1.9" and next_item == "PRD-2":
+        return "prd1_closed_after_prd1_1"
     return "unexpected"
 
 
@@ -233,7 +239,7 @@ def audit(root: Path = Path(".")) -> dict[str, Any]:
     if prd100.get("valid") is not True:
         errors.append("PRD-1.0 verifier must remain valid before PRD-1.1")
     if production_register_position(register) == "unexpected":
-        errors.append("production readiness register must be positioned at PRD-1.0/PRD-1.1 or PRD-1.1/PRD-1.2")
+        errors.append("production readiness register must be positioned at PRD-1.0/PRD-1.1, PRD-1.1/PRD-1.2, PRD-1.4/PRD-1.5, or PRD-1.9/PRD-2")
     if prd1_register.get("schema_version") != "prd1-ci-release-gate-register/v1":
         errors.append("PRD-1 register schema_version must remain prd1-ci-release-gate-register/v1")
     if prd1_register.get("stream_id") != STREAM_ID:
@@ -297,9 +303,8 @@ def audit(root: Path = Path(".")) -> dict[str, Any]:
         and snapshot_recorded
         and inventory_count_matches
         and prd1_1_recorded(prd1_register)
-        and register.get("last_recorded_item") == PRD_ID
-        and register.get("next_authorised_item") == "PRD-1.2"
-        and record.get("next_authorised_item") == "PRD-1.2"
+        and production_register_position(register) in {"prd1_1_recorded", "prd1_4_recorded_after_prd1_1", "prd1_closed_after_prd1_1"}
+        and record.get("next_authorised_item") in {"PRD-1.2", "PRD-1.5", "PRD-2"}
         and record.get("prd1_2_authorised") is True
         and record.get("ci_inventory_performed") is True
     )
