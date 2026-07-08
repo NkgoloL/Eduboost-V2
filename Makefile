@@ -3238,3 +3238,19 @@ prd010-prd0-closure-evidence-handoff-check:
 prd010-prd0-closure-evidence-handoff-capture:
 	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/capture_prd010_prd0_closure_evidence_handoff.py --claim-prd010-prd0-closure-evidence-handoff --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch "$${TARGET_BRANCH:-master}" --require-valid --json
 # End PRD-0.10 PRD-0 closure evidence and PRD-1 handoff
+
+# PRD-1.0 CI/release-gate stream authority and register
+.PHONY: prd100-ci-release-gate-stream-authority-audit
+prd100-ci-release-gate-stream-authority-audit:
+	$(PYTHON) scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py --json
+
+.PHONY: prd100-ci-release-gate-stream-authority-check
+prd100-ci-release-gate-stream-authority-check:
+	$(PYTHON) -m py_compile scripts/production_readiness/apply_prd100_ci_release_gate_stream_authority.py scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py scripts/roadmap_reconciliation/capture_prd100_ci_release_gate_stream_authority_evidence.py scripts/roadmap_reconciliation/verify_prd100_ci_release_gate_stream_authority.py
+	PYTHONPATH=. $(PYTHON) -m pytest -q tests/unit/roadmap_reconciliation/test_prd100_ci_release_gate_stream_authority.py --no-cov
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_prd100_ci_release_gate_stream_authority.py --authority-only --json
+
+.PHONY: prd100-ci-release-gate-stream-authority-capture
+prd100-ci-release-gate-stream-authority-capture:
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/capture_prd100_ci_release_gate_stream_authority_evidence.py --claim-prd100-ci-release-gate-stream-authority --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch "$${TARGET_BRANCH:-master}" --require-valid --json
+# End PRD-1.0 CI/release-gate stream authority and register
