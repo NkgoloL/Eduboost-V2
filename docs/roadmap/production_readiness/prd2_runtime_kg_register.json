@@ -1,0 +1,38 @@
+{
+  "schema_version": "prd2-runtime-kg-register/v1",
+  "stream_id": "PRD-2-RUNTIME-KG-INTEGRATION-PERSISTENCE",
+  "parent_stream_id": "PRD-PRODUCTION-READINESS",
+  "goal": "move KG from evidence artifacts into real app runtime",
+  "authorised_by_prd1_9": true,
+  "status": "prd2_started_runtime_foundation_authority",
+  "last_recorded_item": "PRD-2.0-2.3",
+  "next_authorised_item": "PRD-2.0-2.3",
+  "prd2_sequence": [
+    {"prd_id": "PRD-2.0-2.3", "name": "Runtime KG persistence foundation, loader, feature flag, and projection hooks", "status": "authority_defined", "authorised": true},
+    {"prd_id": "PRD-2.4-2.6", "name": "Route integration, graph-backed diagnostic/lesson/study-plan behaviour, and rollback proof", "status": "blocked", "authorised": false},
+    {"prd_id": "PRD-2.7-2.9", "name": "Final PRD-2 evidence, runtime acceptance, and handoff to PRD-3", "status": "blocked", "authorised": false}
+  ],
+  "implementation_boundaries": {
+    "runtime_kg_migration_added": true,
+    "runtime_kg_models_added": true,
+    "runtime_kg_repositories_added": true,
+    "idempotent_graph_loader_added": true,
+    "feature_flag_added": true,
+    "lesson_context_hook_added": true,
+    "study_plan_projection_helper_added": true,
+    "routes_modified": false,
+    "runtime_kg_enabled_by_default": false,
+    "live_learner_traffic_authorised": false,
+    "production_release_authorised": false
+  },
+  "authority_boundaries": {
+    "prd3_implementation_authorised": false,
+    "public_beta_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "billing_launch_authorised": false,
+    "live_payment_processing_authorised": false,
+    "production_release_authorised": false,
+    "deployment_authorised": false,
+    "release_tag_authorised": false
+  }
+}

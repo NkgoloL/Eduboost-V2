@@ -76,6 +76,7 @@ async def create_all_tables() -> None:
     import app.models  # noqa: F401
     import app.models.diagnostic_item  # noqa: F401
     import app.models.item_exposure  # noqa: F401
+    import app.models.runtime_kg  # noqa: F401
     import app.repositories.study_plan_repository  # noqa: F401
 
     async with engine.begin() as conn:
@@ -110,6 +111,7 @@ async def drop_all_tables() -> None:
     import app.models  # noqa: F401
     import app.models.diagnostic_item  # noqa: F401
     import app.models.item_exposure  # noqa: F401
+    import app.models.runtime_kg  # noqa: F401
 
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
