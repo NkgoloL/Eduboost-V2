@@ -26,6 +26,7 @@ from app.modules.diagnostics.diagnostic_session_service import DiagnosticSession
 from app.modules.diagnostics.session_recovery_service import SessionRecoveryService
 from app.services.diagnostic_data_integrity import DiagnosticIntegrityError, validate_diagnostic_submission_payload
 from app.services.diagnostic_route_integrity import validate_adaptive_diagnostic_response
+from app.services.runtime_kg.route_integration import build_runtime_kg_diagnostic_projection
 
 router = APIRouter(route_class=EnvelopedRoute, prefix="/diagnostics", tags=["diagnostics"])
 router.include_router(bias_review_router.router)
@@ -214,6 +215,26 @@ async def submit_diagnostic(
     for g in gaps:
         await gap_repo.upsert(body.learner_id, g["grade"], g["subject"], g["topic"], g["severity"])
 
+    item_to_stable_code: dict[str, str] = {}
+    if canonical_map and answer_ids.issubset(set(canonical_map)):
+        item_to_stable_code = {
+            str(item_id): str(getattr(item, "caps_ref", None) or getattr(item, "skill", None) or getattr(item, "topic", item_id))
+            for item_id, item in canonical_map.items()
+        }
+    else:
+        item_to_stable_code = {
+            str(getattr(item, "id", "")): str(getattr(item, "caps_reference", None) or getattr(item, "skill", None) or getattr(item, "topic", getattr(item, "id", "")))
+            for item in items
+        }
+    correct_by_item_id = {str(answer.item_id): str(answer.item_id) in correct_ids for answer in body.answers}
+    runtime_kg_projection = await build_runtime_kg_diagnostic_projection(
+        db,
+        learner_id=str(body.learner_id),
+        subject_code=_subject_code(getattr(learner, "subject", None) or (items[0].subject if items else "Mathematics")),
+        correct_by_item_id=correct_by_item_id,
+        item_to_stable_code=item_to_stable_code,
+    )
+
     gap_labels = [f"{g['subject']}: {g['topic']}" for g in gaps]
     request.state.analytics = {
         "event": "diagnostic_completed",
@@ -229,6 +250,7 @@ async def submit_diagnostic(
         standard_error=analysis["standard_error"],
         grade_equivalent=analysis["grade_equivalent"],
         ranked_gaps=gaps,
+        runtime_kg_projection=runtime_kg_projection.to_payload(),
     )
 
 @router.get("/coverage")

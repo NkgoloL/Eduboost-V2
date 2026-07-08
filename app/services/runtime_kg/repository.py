@@ -109,3 +109,127 @@ class RuntimeKGRepository:
         existing.last_evidence_source = "runtime_kg_projection"
         await self.db.flush()
         return existing
+
+
+    async def get_active_nodes(self, *, graph_version: str | None = None, subject_code: str | None = None) -> tuple[RuntimeKGGraphLoad, list[RuntimeKGNode]] | None:
+        """Return the active graph and nodes for runtime read/projection paths."""
+
+        graph = await self.get_active_graph(graph_version=graph_version)
+        if graph is None:
+            return None
+        stmt = select(RuntimeKGNode).where(RuntimeKGNode.graph_load_id == graph.id)
+        if subject_code:
+            stmt = stmt.where(RuntimeKGNode.subject_code == subject_code)
+        result = await self.db.execute(stmt.order_by(RuntimeKGNode.stable_code))
+        return graph, list(result.scalars().all())
+
+    async def project_and_persist_evidence(
+        self,
+        *,
+        learner_id: str,
+        subject_code: str,
+        evidence,
+        graph_version: str | None = None,
+    ):
+        """Project diagnostic evidence onto the active runtime graph and persist states."""
+
+        active = await self.get_active_nodes(graph_version=graph_version, subject_code=subject_code)
+        if active is None:
+            return None
+        graph, nodes = active
+        from app.services.runtime_kg.schemas import RuntimeKGNodeInput
+        from app.services.runtime_kg.service import RuntimeKGProjectionService
+
+        node_inputs = [
+            RuntimeKGNodeInput(
+                stable_code=node.stable_code,
+                label=node.label,
+                node_type=node.node_type,
+                curriculum_code=node.curriculum_code,
+                grade=node.grade,
+                subject_code=node.subject_code,
+                strand=node.strand,
+                topic=node.topic,
+                mastery_weight=node.mastery_weight,
+                properties=node.properties_json,
+            )
+            for node in nodes
+        ]
+        projection = RuntimeKGProjectionService().project_from_evidence(
+            learner_id=learner_id,
+            subject_code=subject_code,
+            graph_version=graph.graph_version,
+            nodes=node_inputs,
+            evidence=list(evidence),
+        )
+        nodes_by_code = {node.stable_code: node for node in nodes}
+        for projected in projection.nodes:
+            node = nodes_by_code.get(projected.stable_code)
+            if node is not None:
+                await self.upsert_learner_projection(learner_id=learner_id, graph_node_id=node.id, projection=projected)
+        self.db.add(
+            RuntimeKGEvent(
+                learner_id=learner_id,
+                graph_load_id=graph.id,
+                event_type="learner_projection_updated",
+                source="runtime_kg_route_integration",
+                payload_json={"graph_version": graph.graph_version, "subject_code": subject_code, "evidence_count": len(list(evidence))},
+            )
+        )
+        await self.db.flush()
+        return projection
+
+    async def get_learner_gap_focus(
+        self,
+        *,
+        learner_id: str,
+        subject_code: str,
+        graph_version: str | None = None,
+        limit: int = 5,
+    ) -> list[dict]:
+        """Return graph-backed study-plan focus items from persisted learner node states."""
+
+        active = await self.get_active_nodes(graph_version=graph_version, subject_code=subject_code)
+        if active is None:
+            return []
+        graph, nodes = active
+        node_ids = [node.id for node in nodes]
+        if not node_ids:
+            return []
+        result = await self.db.execute(
+            select(LearnerKGNodeState, RuntimeKGNode)
+            .join(RuntimeKGNode, LearnerKGNodeState.graph_node_id == RuntimeKGNode.id)
+            .where(
+                LearnerKGNodeState.learner_id == learner_id,
+                LearnerKGNodeState.graph_node_id.in_(node_ids),
+                LearnerKGNodeState.gap_open == True,  # noqa: E712
+            )
+            .order_by(LearnerKGNodeState.mastery_score.asc(), LearnerKGNodeState.confidence.desc())
+            .limit(limit)
+        )
+        return [
+            {
+                "stable_code": node.stable_code,
+                "focus": node.topic or node.label,
+                "mastery_score": state.mastery_score,
+                "confidence": state.confidence,
+                "graph_version": graph.graph_version,
+                "recommended_action": "targeted_practice" if state.confidence >= 0.5 else "diagnose_prerequisite",
+            }
+            for state, node in result.all()
+        ]
+
+    async def record_rollback(self, *, learner_id: str | None, graph_version: str | None, reason: str) -> None:
+        """Record a runtime-KG rollback/fallback event without disrupting legacy flow."""
+
+        graph = await self.get_active_graph(graph_version=graph_version) if graph_version else None
+        self.db.add(
+            RuntimeKGEvent(
+                learner_id=learner_id,
+                graph_load_id=getattr(graph, "id", None),
+                event_type="rollback_to_legacy",
+                source="runtime_kg_route_integration",
+                payload_json={"graph_version": graph_version, "reason": reason},
+            )
+        )
+        await self.db.flush()

@@ -10,6 +10,7 @@ from app.core.security import get_current_user  # noqa: F401
 from app.domain.api_v2_models import JobAcceptedResponse, StudyPlanGenerateRequest
 from app.security.dependencies import require_active_consent_for_current_user, require_learner_write_for_current_user
 from app.modules.jobs import enqueue_durable
+from app.services.runtime_kg.route_integration import build_runtime_kg_study_plan_payload
 
 router = APIRouter(route_class=EnvelopedRoute, prefix="/study-plans", tags=["V2 Study Plans"])
 
@@ -27,10 +28,15 @@ async def generate_study_plan(
 ):
     require_learner_write_for_current_user(current_user, learner_id)
     await require_active_consent_for_current_user(db, current_user, learner_id)
+    runtime_kg_payload = await build_runtime_kg_study_plan_payload(
+        db,
+        learner_id=learner_id,
+        subject_code="Mathematics",
+    )
     job_id = await enqueue_durable(
         "generate_study_plan_job",
         operation="study_plan_generation",
-        payload={"learner_id": learner_id, "gap_ratio": request.gap_ratio},
-        kwargs={"learner_id": learner_id, "gap_ratio": request.gap_ratio},
+        payload={"learner_id": learner_id, "gap_ratio": request.gap_ratio, "runtime_kg": runtime_kg_payload},
+        kwargs={"learner_id": learner_id, "gap_ratio": request.gap_ratio, "runtime_kg": runtime_kg_payload},
     )
     return JobAcceptedResponse(job_id=job_id, operation="study_plan_generation", status="queued")
