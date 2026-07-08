@@ -3254,3 +3254,19 @@ prd100-ci-release-gate-stream-authority-check:
 prd100-ci-release-gate-stream-authority-capture:
 	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/capture_prd100_ci_release_gate_stream_authority_evidence.py --claim-prd100-ci-release-gate-stream-authority --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch "$${TARGET_BRANCH:-master}" --require-valid --json
 # End PRD-1.0 CI/release-gate stream authority and register
+
+# PRD-1.1 CI inventory authority
+.PHONY: prd101-ci-inventory-authority-audit
+prd101-ci-inventory-authority-audit:
+	$(PYTHON) scripts/production_readiness/audit_prd101_ci_inventory_authority.py --json
+
+.PHONY: prd101-ci-inventory-authority-check
+prd101-ci-inventory-authority-check:
+	$(PYTHON) -m py_compile scripts/production_readiness/apply_prd101_ci_inventory_authority.py scripts/production_readiness/audit_prd101_ci_inventory_authority.py scripts/roadmap_reconciliation/capture_prd101_ci_inventory_authority_evidence.py scripts/roadmap_reconciliation/verify_prd101_ci_inventory_authority.py
+	PYTHONPATH=. $(PYTHON) -m pytest -q tests/unit/roadmap_reconciliation/test_prd101_ci_inventory_authority.py --no-cov
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_prd101_ci_inventory_authority.py --authority-only --json
+
+.PHONY: prd101-ci-inventory-authority-capture
+prd101-ci-inventory-authority-capture:
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/capture_prd101_ci_inventory_authority_evidence.py --claim-prd101-ci-inventory-authority --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch "$${TARGET_BRANCH:-master}" --require-valid --json
+# End PRD-1.1 CI inventory authority
