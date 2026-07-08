@@ -21,7 +21,7 @@ RECORD = ROOT / "prd_000_production_readiness_stream_authority_record.json"
 
 PRD0_IDS = [f"PRD-0.{idx}" for idx in range(0, 11)]
 PRD_IDS = [f"PRD-{idx}" for idx in range(1, 12)]
-ALLOWED_NEXT_ITEMS = {f"PRD-0.{idx}" for idx in range(0, 11)}
+ALLOWED_NEXT_ITEMS = {f"PRD-0.{idx}" for idx in range(0, 11)} | {"PRD-1"}
 TRUE_KEYS = [
     "runtime_kg_implementation_claimed",
     "runtime_kg_authority_switch_authorised",
@@ -89,7 +89,7 @@ def audit(root: Path | str = Path(".")) -> dict[str, Any]:
     if register.get("stream_id") != STREAM_ID:
         errors.append("production readiness register must identify PRD-PRODUCTION-READINESS")
     if register.get("next_authorised_item") not in ALLOWED_NEXT_ITEMS:
-        errors.append("production readiness register next_authorised_item must remain within PRD-0.0 through PRD-0.10")
+        errors.append("production readiness register next_authorised_item must remain within PRD-0.0 through PRD-0.10, or PRD-1 after PRD-0.10 closure")
 
     prd0_ids = _ids(register.get("prd0_sequence", []))
     if prd0_ids != PRD0_IDS:

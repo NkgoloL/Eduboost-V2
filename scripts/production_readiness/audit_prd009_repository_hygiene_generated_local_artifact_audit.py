@@ -259,8 +259,8 @@ def audit(root: Path = Path(".")) -> dict[str, Any]:
             errors.append(f"missing required PRD-0.9 file: {path}")
     if prd008.get("valid") is not True:
         errors.append("PRD-0.8 verifier must be valid before PRD-0.9")
-    if register.get("last_recorded_item") not in {"PRD-0.8", "PRD-0.9"}:
-        errors.append("production readiness register must be positioned at PRD-0.8 or PRD-0.9")
+    if register.get("last_recorded_item") not in {"PRD-0.8", "PRD-0.9", "PRD-0.10"}:
+        errors.append("production readiness register must be positioned at PRD-0.8, PRD-0.9, or terminal PRD-0.10 handoff")
     if register.get("last_recorded_item") == "PRD-0.8" and register.get("next_authorised_item") != PRD_ID:
         errors.append("production readiness register must authorise PRD-0.9 after PRD-0.8")
     for key in TRUE_KEYS:
@@ -300,8 +300,10 @@ def audit(root: Path = Path(".")) -> dict[str, Any]:
         and recorded
         and inventory_recorded
         and record.get("next_authorised_item") == "PRD-0.10"
-        and register.get("last_recorded_item") == PRD_ID
-        and register.get("next_authorised_item") == "PRD-0.10"
+        and (
+            (register.get("last_recorded_item") == PRD_ID and register.get("next_authorised_item") == "PRD-0.10")
+            or (register.get("last_recorded_item") == "PRD-0.10" and register.get("next_authorised_item") == "PRD-1")
+        )
         and record.get("no_cleanup_performed") is True
         and record.get("no_file_deletion_performed") is True
     )

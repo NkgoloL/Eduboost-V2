@@ -1,0 +1,63 @@
+name: PRD-0.10 PRD-0 Closure Evidence Handoff
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - "docs/engineering/prd0_to_prd1_handoff.md"
+      - "docs/roadmap/production_readiness/**"
+      - "scripts/production_readiness/*prd010*"
+      - "scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py"
+      - "scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py"
+      - "scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py"
+      - "scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py"
+      - "scripts/roadmap_reconciliation/*prd010*"
+      - "tests/unit/roadmap_reconciliation/test_prd010_prd0_closure_evidence_handoff.py"
+      - ".github/workflows/prd010-prd0-closure-evidence-handoff.yml"
+      - "Makefile"
+  push:
+    branches:
+      - master
+    paths:
+      - "docs/engineering/prd0_to_prd1_handoff.md"
+      - "docs/roadmap/production_readiness/**"
+      - "scripts/production_readiness/*prd010*"
+      - "scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py"
+      - "scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py"
+      - "scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py"
+      - "scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py"
+      - "scripts/roadmap_reconciliation/*prd010*"
+      - "tests/unit/roadmap_reconciliation/test_prd010_prd0_closure_evidence_handoff.py"
+      - ".github/workflows/prd010-prd0-closure-evidence-handoff.yml"
+      - "Makefile"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prd010-prd0-closure-evidence-handoff:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install -r requirements/dev.txt
+
+      - name: Verify PRD-0.10 authority
+        run: |
+          PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd010_prd0_closure_evidence_handoff.py --authority-only --json
+
+      - name: Run PRD-0.10 focused tests
+        run: |
+          PYTHONPATH=. python3 -m pytest -q tests/unit/roadmap_reconciliation/test_prd010_prd0_closure_evidence_handoff.py --no-cov
