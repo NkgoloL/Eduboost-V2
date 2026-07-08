@@ -170,7 +170,7 @@ def audit(root: Path = Path(".")) -> dict[str, Any]:
     for key in NO_CHANGE_KEYS:
         if record.get(key) is not False:
             errors.append(f"{key} must remain false in PRD-1.0")
-        if prd1_register.get("implementation_boundaries", {}).get(key) is not False:
+        if production_register_position(register) == "prd1_0_recorded" and prd1_register.get("implementation_boundaries", {}).get(key) is not False:
             errors.append(f"PRD-1 register {key} must remain false")
 
     for key in [

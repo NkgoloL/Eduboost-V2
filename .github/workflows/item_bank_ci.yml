@@ -155,7 +155,7 @@ jobs:
 
       - name: Run coverage assertion tests (P5-03)
         run: |
-          python -m pytest tests/ci/test_item_bank_coverage.py \
+          python3 -m pytest tests/ci/test_item_bank_coverage.py \
             -v \
             --tb=short \
             --junitxml=reports/ci/coverage_assertion_results.xml \

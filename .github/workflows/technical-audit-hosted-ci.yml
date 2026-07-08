@@ -79,4 +79,4 @@ jobs:
 
       - name: Run hosted CI authority focused tests
         run: |
-          python -m pytest -q tests/unit/audit_remediation/test_remote_ci_branch_integration_authority.py tests/unit/audit_remediation/test_hosted_ci_merge_readiness_authority.py --no-cov
+          python3 -m pytest -q tests/unit/audit_remediation/test_remote_ci_branch_integration_authority.py tests/unit/audit_remediation/test_hosted_ci_merge_readiness_authority.py --no-cov

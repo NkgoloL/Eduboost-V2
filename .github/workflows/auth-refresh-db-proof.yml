@@ -66,7 +66,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python -m pytest \
+          python3 -m pytest \
             -c pytest.ini \
             tests/integration/test_auth_refresh_db_proof_integration.py \
             -q \
@@ -78,7 +78,7 @@ jobs:
         shell: bash
         env:
           AUTH_REFRESH_DB_DSN_LABEL: github-actions-postgres-service
-          AUTH_REFRESH_DB_TEST_COMMAND: python -m pytest -c pytest.ini tests/integration/test_auth_refresh_db_proof_integration.py -q --no-cov --tb=short -rs
+          AUTH_REFRESH_DB_TEST_COMMAND: python3 -m pytest -c pytest.ini tests/integration/test_auth_refresh_db_proof_integration.py -q --no-cov --tb=short -rs
           AUTH_REFRESH_DB_TEST_RESULT: passed
           AUTH_REFRESH_DB_REFRESH_PERSISTENCE_RESULT: passed
           AUTH_REFRESH_DB_LOGOUT_REVOCATION_RESULT: passed
