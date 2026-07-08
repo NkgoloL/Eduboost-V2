@@ -1,0 +1,41 @@
+{
+  "authority_boundaries": {
+    "authority_switch_executed": true,
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "new_kg_slice_authorised": false,
+    "prd2_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_authority_switch_authorised": true,
+    "runtime_kg_implementation_claimed": true
+  },
+  "captured_at": "2026-07-08T14:35:54.979929+00:00",
+  "implementation_boundaries": {
+    "branch_protection_modified": false,
+    "ci_workflow_changes_performed": false,
+    "openapi_reconciliation_performed": false,
+    "release_gate_enforced": false,
+    "required_checks_enforced": false,
+    "workflow_canonicalisation_performed": false
+  },
+  "next_authorised_item": "PRD-1.1",
+  "prd1_register_summary": {
+    "last_recorded_item": "PRD-1.0",
+    "next_authorised_item": "PRD-1.1",
+    "prd1_0_recorded": true,
+    "prd1_sequence_registered": true
+  },
+  "prd_id": "PRD-1.0",
+  "production_readiness_register_summary": {
+    "last_recorded_item": "PRD-1.0",
+    "next_authorised_item": "PRD-1.1",
+    "position": "prd1_0_recorded"
+  },
+  "schema_version": "prd1-ci-release-gate-stream-authority/v1",
+  "stream_id": "PRD-1-CI-RELEASE-GATE-CONVERGENCE"
+}
