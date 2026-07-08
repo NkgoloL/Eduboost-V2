@@ -1,0 +1,1401 @@
+{
+  "authority_boundaries": {
+    "authority_switch_executed": true,
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "new_kg_slice_authorised": false,
+    "prd1_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_authority_switch_authorised": true,
+    "runtime_kg_implementation_claimed": true
+  },
+  "canonical_openapi_path": "docs/openapi.json",
+  "canonical_openapi_present": true,
+  "canonical_openapi_sha256": "f08d8d60400d4091fdd658462d02c8f2782f1579b707334951867a48d813200d",
+  "canonical_openapi_summary": {
+    "operation_count": 424,
+    "path_count": 416,
+    "title": "EduBoost SA V2",
+    "version": "1.0.0-rc1"
+  },
+  "canonicalisation_policy": {
+    "branch_release_naming_reconciliation_deferred_to_prd008": true,
+    "canonical_openapi_source": "docs/openapi.json",
+    "historical_openapi_snapshots_are_non_canonical": true,
+    "root_openapi_json_is_generated_mirror": true,
+    "root_openapi_yaml_is_generated_mirror": true
+  },
+  "captured_at": "2026-07-08T09:03:28.187773+00:00",
+  "generated_artifact_count": 267,
+  "generated_artifacts": [
+    {
+      "path": "docs/documentation/README.md",
+      "sha256": "c70cd4c2ec83d9bcf2ea55386ccabaf276d14b1f3fd0565c6265c12eda944e44",
+      "size_bytes": 839
+    },
+    {
+      "path": "docs/documentation/adr_lifecycle_contract.md",
+      "sha256": "d11255795bb0e5f46f446b2c7a3192f65b385b2884ea9beeacf9deb4384192f0",
+      "size_bytes": 937
+    },
+    {
+      "path": "docs/documentation/adr_number_baseline.json",
+      "sha256": "c1a45409a0fc530162dae7a3b6208becba3ad725b83f4d9ce25b627945c262b1",
+      "size_bytes": 192
+    },
+    {
+      "path": "docs/documentation/claim_discipline_contract.md",
+      "sha256": "de4891ef203b6378f02a340273a38f734e233cbc06f38c071f4865ce40319bfc",
+      "size_bytes": 1449
+    },
+    {
+      "path": "docs/documentation/claim_discipline_policy.md",
+      "sha256": "f1d06c7141015ceba63e0210a55bcdf279ae45d459b02eda2289362de61b7f8d",
+      "size_bytes": 1394
+    },
+    {
+      "path": "docs/documentation/documentation_adrs_claim_discipline_architecture_contract.md",
+      "sha256": "d47cf5d97cd757a8c322abd3842e1fba01ff08941007a82727587c8529c59d3d",
+      "size_bytes": 1385
+    },
+    {
+      "path": "docs/documentation/documentation_debt_baseline.md",
+      "sha256": "075c4c120ed33a6aa91f3b6420fadc254674dfacf17593d5a38c9559c0ba7f45",
+      "size_bytes": 1334
+    },
+    {
+      "path": "docs/documentation/documentation_housekeeping_policy.md",
+      "sha256": "fe1bcdc2a085de06deea0b14deeb0d343efd8a2c87c166e5124d84990e32faaf",
+      "size_bytes": 2835
+    },
+    {
+      "path": "docs/documentation/documentation_inventory_contract.md",
+      "sha256": "3a60064c714526e2343718696b9a513e3cf29820d0e5aa17af92db5599979024",
+      "size_bytes": 1115
+    },
+    {
+      "path": "docs/documentation/documentation_review_gate_contract.md",
+      "sha256": "465295e5ee2de453d9c9d0dcdee533f4aaefa16d7b4fa8bae8d6e46810db6de9",
+      "size_bytes": 1017
+    },
+    {
+      "path": "docs/documentation/housekeeping_ratchet_baseline.json",
+      "sha256": "e641b42a28cfc5a1cbbb5ee839f06747055ac0e1cd921fb6ef7ac1194296301e",
+      "size_bytes": 667
+    },
+    {
+      "path": "docs/documentation/migration_manifests/20260622T193052Z.json",
+      "sha256": "358a950884261af03eaaee29b019e568c984c8909b9d57576ca834b846184daf",
+      "size_bytes": 6527
+    },
+    {
+      "path": "docs/documentation/production_claim_boundary_policy.md",
+      "sha256": "c01485435ccd8c9dcb1478ea92dd90e4ed9cd8503dab9af09acba19eed17df22",
+      "size_bytes": 1171
+    },
+    {
+      "path": "docs/documentation/release_notes_discipline_contract.md",
+      "sha256": "77492e4fc194b830d0d65eb8b667f19b37e66854b92283c165f1cb751d3891bd",
+      "size_bytes": 1015
+    },
+    {
+      "path": "docs/documentation/source_of_truth.yml",
+      "sha256": "3c7c1293959d923d3690ed8006b07ea25d771385d53e71b6e55ee70b5ec1b31c",
+      "size_bytes": 8065
+    },
+    {
+      "path": "docs/documentation/stage_2_documentation_housekeeping.md",
+      "sha256": "8a68fdb1fea75345c23aa5e55864bdd61c83ad496e405cb9b22a69f443afd6d8",
+      "size_bytes": 3003
+    },
+    {
+      "path": "docs/documentation/stage_3_documentation_housekeeping.md",
+      "sha256": "7419db57a52f20084557b4c078a6547e0a5945df80356773fbc6da38e0792a13",
+      "size_bytes": 1434
+    },
+    {
+      "path": "docs/documentation/stage_3_strict_scope.json",
+      "sha256": "e3cc05ecf2f6c8a0629d427f5295cd48d6e7d484067515b7757f6cd5037b527f",
+      "size_bytes": 2488
+    },
+    {
+      "path": "docs/documentation/stage_4_deep_housekeeping.md",
+      "sha256": "56dc6be88b7de9555408842586dd8299e8cb0768a900b1a439546cfb0610bce2",
+      "size_bytes": 1286
+    },
+    {
+      "path": "docs/documentation/stage_4_strict_scope.json",
+      "sha256": "b3bfb61ea8d9563f77c3c8ead8032b7c013ae1deee812b4dfbf8bc4c8abe3b57",
+      "size_bytes": 760
+    },
+    {
+      "path": "docs/documentation/stage_5_strict_scope.json",
+      "sha256": "20abf8e268d8d719b687b45eff673307bcc8830dbd07ea77c289b8dcb6481e89",
+      "size_bytes": 573
+    },
+    {
+      "path": "docs/documentation/stage_5_technical_delivery_housekeeping.md",
+      "sha256": "db23443f64d10ca5725f4464403bc007a8a85c1ae45928dbdcd83b7417fbd0af",
+      "size_bytes": 1426
+    },
+    {
+      "path": "docs/documentation/stale_documentation_register.md",
+      "sha256": "27613b98ef7b4a860ca0c5f83b60540bd03640e17ca6626546bbde6800033b53",
+      "size_bytes": 1971
+    },
+    {
+      "path": "docs/documentation/stale_documentation_review_register.md",
+      "sha256": "6e309800a39bc06584a1c4699bee78fc0746bb8a8a2ed09427ff182288594775",
+      "size_bytes": 968
+    },
+    {
+      "path": "docs/documentation/stale_term_baseline.json",
+      "sha256": "1b9291da48c722c5a5d0b6b969d75d8f7938de8cc67ebd29a402cf68ece92dad",
+      "size_bytes": 572
+    },
+    {
+      "path": "docs/generated/README.md",
+      "sha256": "e3cb9855a35733126b9e770fe5608ec1fe161257f04a00f3eb8dbdaab0d9229d",
+      "size_bytes": 729
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/.buildinfo",
+      "sha256": "2b090b9395cba3adc1fb9a23164dcd6c13b5c3f1051c7255c76c6feaef4ffa0d",
+      "size_bytes": 231
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/.doctrees/__intersphinx_cache__/pydantic_objects.inv",
+      "sha256": "495ca2d7cf8d229b1ccd7821d2833d12fc738834d6be7df34be98a34245ea371",
+      "size_bytes": 12742
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/.doctrees/__intersphinx_cache__/python_objects.inv",
+      "sha256": "5d621687c94461d21430af3e38e05412f0866357fc93f555808ba14838a0ac90",
+      "size_bytes": 153230
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/.doctrees/api/core.doctree",
+      "sha256": "8ebb35ff33894fd78d0aa677dda5dbf3984598f12d487963b35c21f4baf6d36d",
+      "size_bytes": 217499
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/.doctrees/api/models.doctree",
+      "sha256": "bcba0d56b41b627b14ad7e2d30b6c53893367a52d7e020085d5c73249b5990af",
+      "size_bytes": 116696
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/.doctrees/api/modules.doctree",
+      "sha256": "ac0d2444249be7bd4939304dbfe5e77513e3038898f83a145873134bb791df95",
+      "size_bytes": 209538
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/.doctrees/api/repositories.doctree",
+      "sha256": "c668d4dfe5e5167f59cc33a315669ef1bb1ab509f4ba9375db923c55754acf37",
+      "size_bytes": 186555
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/.doctrees/api/routers.doctree",
+      "sha256": "703409c420c0302d0e47dc27385792963e05fc210a0f46cf0f2c3805b1c4603b",
+      "size_bytes": 4643
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/.doctrees/environment.pickle",
+      "sha256": "80a117d1ffd6a3cd206165e069943a0e6685ea2c4ef73a4757c4c16efd865bd5",
+      "size_bytes": 3117182
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/.doctrees/index.doctree",
+      "sha256": "ae90d5fc1977e9b71479c96316c3494ca43e871f369a7b6480fcda091478bb96",
+      "size_bytes": 6811
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/.doctrees/notes/changelog.doctree",
+      "sha256": "dcfbfeabb4273c3ffd45e5647afbff77e761a4f273b0e90944f4b82e5366d5bc",
+      "size_bytes": 5777
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/.doctrees/notes/todo.doctree",
+      "sha256": "fbe072c8a729221d88da13706c557c8af96262ead8ef51f6e238a950d17eee6c",
+      "size_bytes": 3063
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_images/architecture-overview.svg",
+      "sha256": "b2884339da9165f5be35293b81105bc28bb33587152f06d6e9062c211e7d8a0b",
+      "size_bytes": 5876
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_modules/app/core/audit.html",
+      "sha256": "33bc986c3cad174a1758794a818adffb3d54f25a3d5b6e48bac26670a8a08aa2",
+      "size_bytes": 76909
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_modules/app/core/config.html",
+      "sha256": "33604952e05defe85c04e2c0f4c07b7df019f08003c62aa48750faaa049bbcde",
+      "size_bytes": 82328
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_modules/app/core/security.html",
+      "sha256": "7cef7a568318fbeee0bcb5f56537d79e4aa424ad4e86c46f1b5dd75f1c994296",
+      "size_bytes": 80877
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_modules/app/models.html",
+      "sha256": "8f9e7165ffe35d0b2b7edf1151fb564c98e474cbebf5f6cc48aa20658437a768",
+      "size_bytes": 134089
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_modules/app/modules/consent/service.html",
+      "sha256": "ff8b7b66c76c831f29c3f6c999520da476b001e06ada2b9df3296c3b53d5cc33",
+      "size_bytes": 90618
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_modules/app/modules/diagnostics/irt_engine.html",
+      "sha256": "6979086a8b57cb012d915ba66bff0e8d50ade2990d14384a56241d013aeb7232",
+      "size_bytes": 106281
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_modules/app/modules/lessons/llm_gateway.html",
+      "sha256": "aa35185268c7461bdb1ca9d8c50cd1379643bf447a7c087ad4ceeed5c74ef273",
+      "size_bytes": 83714
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_modules/app/repositories/assessment_repository.html",
+      "sha256": "23300dd9d8634c648fcd8efa4e8308ef65213cc5faff21e5448ec64a72874483",
+      "size_bytes": 68810
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_modules/app/repositories/audit_repository.html",
+      "sha256": "4e6dc7b5e64de4b21254e2842e16f7352fde571eb7e357d7fb0e5dc54fb5a62e",
+      "size_bytes": 78105
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_modules/app/repositories/auth_repository.html",
+      "sha256": "2d684c4859da8227794615f9c5d4a2417f1148c68bccc41ee34dace88ff2a0b1",
+      "size_bytes": 65010
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_modules/app/repositories/consent_repository.html",
+      "sha256": "2c0a962b6ea7ea655edf5cf01c172f4011359d3f223c1e8fb1ec323d8f0500eb",
+      "size_bytes": 78488
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_modules/app/repositories/diagnostic_repository.html",
+      "sha256": "f2c1db85cfa6db6a88028a59f2547be2f166076817751ef8cac48d29f6875118",
+      "size_bytes": 63143
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_modules/app/repositories/gamification_repository.html",
+      "sha256": "b2408360037452530c6a4764ae5bc45d0ec2554370cc8b759b84f656f6af8c73",
+      "size_bytes": 63939
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_modules/app/repositories/learner_repository.html",
+      "sha256": "4335806a349e7364acd3286c26b4bcf13016756f5ba084b3bdddaab057da8d53",
+      "size_bytes": 66318
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_modules/app/repositories/lesson_repository.html",
+      "sha256": "c08549ce1d0f3735af4226c30e0fbf38efdbd2e9dfad0d808f3360665d27b52a",
+      "size_bytes": 59746
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_modules/index.html",
+      "sha256": "3162a4e4c01d9f07fd0dbb193df20cc82e0aae111839b16276f03b25fa07b265",
+      "size_bytes": 56053
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_sources/api/core.rst.txt",
+      "sha256": "a6ee54649356a74053813dad15a20cf1c17e9691fe35f41f78f87342b6aa7951",
+      "size_bytes": 683
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_sources/api/models.rst.txt",
+      "sha256": "0406e3c37895a694b919a6ac8402208064b06d22d29a1eec6cf2dfafca6a98f7",
+      "size_bytes": 168
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_sources/api/modules.rst.txt",
+      "sha256": "e6921bda368ed7cdc2e8847f02a8cfae398dbbedd60328a980fc83d0519bc896",
+      "size_bytes": 1691
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_sources/api/repositories.rst.txt",
+      "sha256": "36c65084c81a6373401cea35bf8bb4faa62e4e34e458e8409c97df2aa2602c68",
+      "size_bytes": 173
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_sources/api/routers.rst.txt",
+      "sha256": "36faa4b94cf4152cf4d2c9ff6bd97f342ff016b2c74005d2916531c1708d727f",
+      "size_bytes": 348
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_sources/index.rst.txt",
+      "sha256": "989a65cfae39e8c5b991c2648f21185c283e85fe24832045afa7e6eb3f0c8078",
+      "size_bytes": 917
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_sources/notes/changelog.rst.txt",
+      "sha256": "7bcf3818dda98f5ce32dbbfe244fbd8bc7f03dd717f33a68edcb37ce7600ac14",
+      "size_bytes": 624
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_sources/notes/todo.rst.txt",
+      "sha256": "e95556fc05f5047eea2d1aef3464d19daa874d65a46084680a46709561a978f9",
+      "size_bytes": 161
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/_sphinx_javascript_frameworks_compat.js",
+      "sha256": "480a2c7377252c14a11bca4d3a49dfa16ea540a998fa637fae0189aee1b89113",
+      "size_bytes": 4289
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/base-stemmer.js",
+      "sha256": "eb67bedbfa264bd8a2201ebe07c861abbcbc56d7eaa28c53ff8b84f65ccd450f",
+      "size_bytes": 12250
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/basic.css",
+      "sha256": "656ff1bacd6f260fc7d71b97f9c2f1fcbf692dc84bf469cd952034efcb9eefed",
+      "size_bytes": 14685
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/badge_only.css",
+      "sha256": "f1399e4fc48c3ff17b5037d3512fcc451fb0abc2c95b4b8d12aab50cdd9d1d6f",
+      "size_bytes": 3329
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/fonts/Roboto-Slab-Bold.woff",
+      "sha256": "9fec87cadbe2413b255f1ec577573a83f1ca2e1c37aa023dbebcd3a7b864636a",
+      "size_bytes": 87624
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/fonts/Roboto-Slab-Bold.woff2",
+      "sha256": "1a0c024dd1a267c52d5575469ffe8570d1e84164de7d393cf3414bafd17d7a0c",
+      "size_bytes": 67312
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/fonts/Roboto-Slab-Regular.woff",
+      "sha256": "9f32630e2c0c5135bf1e86e36cb65b3932e4410644235bc2bd995e9c7f6ff117",
+      "size_bytes": 86288
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/fonts/Roboto-Slab-Regular.woff2",
+      "sha256": "874e42222856d7af03b3f438d21d923a4280d47fe67c48510e2174a1579795ef",
+      "size_bytes": 66444
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/fonts/fontawesome-webfont.eot",
+      "sha256": "7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979",
+      "size_bytes": 165742
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/fonts/fontawesome-webfont.svg",
+      "sha256": "ad6157926c1622ba4e1d03d478f1541368524bfc46f51e42fe0d945f7ef323e4",
+      "size_bytes": 444379
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/fonts/fontawesome-webfont.ttf",
+      "sha256": "aa58f33f239a0fb02f5c7a6c45c043d7a9ac9a093335806694ecd6d4edc0d6a8",
+      "size_bytes": 165548
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/fonts/fontawesome-webfont.woff",
+      "sha256": "ba0c59deb5450f5cb41b3f93609ee2d0d995415877ddfa223e8a8a7533474f07",
+      "size_bytes": 98024
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/fonts/fontawesome-webfont.woff2",
+      "sha256": "2adefcbc041e7d18fcf2d417879dc5a09997aa64d675b7a3c4b6ce33da13f3fe",
+      "size_bytes": 77160
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/fonts/lato-bold-italic.woff",
+      "sha256": "980c8592e5488df256192c999e92db8fd302db8cd8909b7fa266a684e37e45f8",
+      "size_bytes": 323344
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/fonts/lato-bold-italic.woff2",
+      "sha256": "c0916a33340d063f7b05679e08031e729d1888444706f04804705da5966d895d",
+      "size_bytes": 193308
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/fonts/lato-bold.woff",
+      "sha256": "0e56b17d142eb366c8007031d14e34da48c70b4a9d9a0ca492e696a7bae45e1e",
+      "size_bytes": 309728
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/fonts/lato-bold.woff2",
+      "sha256": "ae88fc0d7a961832f809527d30bd3983a6866d42f66a56ade23f543681594db6",
+      "size_bytes": 184912
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/fonts/lato-normal-italic.woff",
+      "sha256": "26318a1467a5e5caf10b04cfa942d079632560cd7a29cec565fd1dc9f7ec5081",
+      "size_bytes": 328412
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/fonts/lato-normal-italic.woff2",
+      "sha256": "4465765f2f6eddcdad34ffd7cab559e56bc0e75e45e192f85e9562b0771481dc",
+      "size_bytes": 195704
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/fonts/lato-normal.woff",
+      "sha256": "5b9025dda4d7688e3311b0c17eddc501133b807def33effaef6593843cf5416e",
+      "size_bytes": 309192
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/fonts/lato-normal.woff2",
+      "sha256": "983b0caf336e8542214fc17019a4fc5e0360864b92806ca14d55c1fc1c2c5a0f",
+      "size_bytes": 182708
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/css/theme.css",
+      "sha256": "17c556bc5f2b93a5fb4aa22a2706da52076f6d73f8ef4a6e1673dd4132a2ad68",
+      "size_bytes": 137285
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/custom.css",
+      "sha256": "ce3a60dea5d69be632347425f5364067df786ecb05e06fd29c718e254a744d14",
+      "size_bytes": 363
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/doctools.js",
+      "sha256": "6b2524c2723cc6e06cbf056e0b2861d50ba8fdd082ece13378bfb45d7a090528",
+      "size_bytes": 4332
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/documentation_options.js",
+      "sha256": "71eb9314a6403a167189359d1be83cb8c02ffb898afc9c224a74b53727e0a284",
+      "size_bytes": 328
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/english-stemmer.js",
+      "sha256": "1f995807fde5a820390fb9046e4813a7eb8f20a4684650f14fbdeb4c2ad7ffc5",
+      "size_bytes": 30599
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/file.png",
+      "sha256": "5c4bc9a16aebf38c4b950f59b8e501ca36495328cb9eb622218bce9064a35e3e",
+      "size_bytes": 286
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/Lato/lato-bold.eot",
+      "sha256": "b91fc1ca55df440dc11354b32a39b45db663d24bb17b16dcb2e706330955b0d1",
+      "size_bytes": 256056
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/Lato/lato-bold.ttf",
+      "sha256": "f71f833c099f450606f8107b83ef208ae918c0ea00779466d45e9be96b0bc7cc",
+      "size_bytes": 600856
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/Lato/lato-bold.woff",
+      "sha256": "0e56b17d142eb366c8007031d14e34da48c70b4a9d9a0ca492e696a7bae45e1e",
+      "size_bytes": 309728
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/Lato/lato-bold.woff2",
+      "sha256": "ae88fc0d7a961832f809527d30bd3983a6866d42f66a56ade23f543681594db6",
+      "size_bytes": 184912
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/Lato/lato-bolditalic.eot",
+      "sha256": "b3d585879a02f48c5d43d8f91d06b167e367a31934bb3b8147c0a90b5ca32bfc",
+      "size_bytes": 266158
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/Lato/lato-bolditalic.ttf",
+      "sha256": "f98d040631714eabffd0ffb747576674fa78c2910f6d9e3dc0c58481d03c1898",
+      "size_bytes": 622572
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/Lato/lato-bolditalic.woff",
+      "sha256": "980c8592e5488df256192c999e92db8fd302db8cd8909b7fa266a684e37e45f8",
+      "size_bytes": 323344
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/Lato/lato-bolditalic.woff2",
+      "sha256": "c0916a33340d063f7b05679e08031e729d1888444706f04804705da5966d895d",
+      "size_bytes": 193308
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/Lato/lato-italic.eot",
+      "sha256": "bc24dbe04f5b2415678f978e7e2f630cc6610670d684e088e73ad29c439eafe3",
+      "size_bytes": 268604
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/Lato/lato-italic.ttf",
+      "sha256": "12d825af88eafea1ce3aa469f83c03acaecd0d03f690f409c8643529f1205b4f",
+      "size_bytes": 639388
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/Lato/lato-italic.woff",
+      "sha256": "26318a1467a5e5caf10b04cfa942d079632560cd7a29cec565fd1dc9f7ec5081",
+      "size_bytes": 328412
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/Lato/lato-italic.woff2",
+      "sha256": "4465765f2f6eddcdad34ffd7cab559e56bc0e75e45e192f85e9562b0771481dc",
+      "size_bytes": 195704
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/Lato/lato-regular.eot",
+      "sha256": "e735410675eacc363b257112f39eb819a854b03077d7b1f0caa6e7660ffbd8b3",
+      "size_bytes": 253461
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/Lato/lato-regular.ttf",
+      "sha256": "089ab6d4a57e0e6c4dd3b681b6fd50a5184f1b902429d35e1227e52d6ccad1bd",
+      "size_bytes": 607720
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/Lato/lato-regular.woff",
+      "sha256": "5b9025dda4d7688e3311b0c17eddc501133b807def33effaef6593843cf5416e",
+      "size_bytes": 309192
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/Lato/lato-regular.woff2",
+      "sha256": "983b0caf336e8542214fc17019a4fc5e0360864b92806ca14d55c1fc1c2c5a0f",
+      "size_bytes": 182708
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/RobotoSlab/roboto-slab-v7-bold.eot",
+      "sha256": "4438991a12ff951cc8d0e83348ec06d9f910591b1b014c476e9595d4da099e48",
+      "size_bytes": 79520
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/RobotoSlab/roboto-slab-v7-bold.ttf",
+      "sha256": "ba12d2eab1fa765b6b05398fa7e047dd76293f0c051ce57a8f7b0c591c14d42b",
+      "size_bytes": 170616
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/RobotoSlab/roboto-slab-v7-bold.woff",
+      "sha256": "9fec87cadbe2413b255f1ec577573a83f1ca2e1c37aa023dbebcd3a7b864636a",
+      "size_bytes": 87624
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/RobotoSlab/roboto-slab-v7-bold.woff2",
+      "sha256": "1a0c024dd1a267c52d5575469ffe8570d1e84164de7d393cf3414bafd17d7a0c",
+      "size_bytes": 67312
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/RobotoSlab/roboto-slab-v7-regular.eot",
+      "sha256": "b3809b71d417c6c225e77a55880aa7915b4e4b4f77a5e2d243f3563731e7f55c",
+      "size_bytes": 78331
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/RobotoSlab/roboto-slab-v7-regular.ttf",
+      "sha256": "13aa5f54c6f2fa2e388fe0e675cdbcc6a81f6270a8bf9c03a5df8af9cb022810",
+      "size_bytes": 169064
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/RobotoSlab/roboto-slab-v7-regular.woff",
+      "sha256": "9f32630e2c0c5135bf1e86e36cb65b3932e4410644235bc2bd995e9c7f6ff117",
+      "size_bytes": 86288
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/fonts/RobotoSlab/roboto-slab-v7-regular.woff2",
+      "sha256": "874e42222856d7af03b3f438d21d923a4280d47fe67c48510e2174a1579795ef",
+      "size_bytes": 66444
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/jquery.js",
+      "sha256": "ff1523fb7389539c84c65aba19260648793bb4f5e29329d2ee8804bc37a3fe6e",
+      "size_bytes": 89501
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/js/badge_only.js",
+      "sha256": "f0a4808d04c4d55378751ac096a8376b64b1a704c82584b0ee590212cf413013",
+      "size_bytes": 934
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/js/theme.js",
+      "sha256": "536ad2d746e944c5570cc15badaeccc3c0582a1b66e45511fe4edce32b6da510",
+      "size_bytes": 5023
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/js/versions.js",
+      "sha256": "0998cc5239113cb6009ab1730e24ede85673759810ee8fb1e2f912305282a4aa",
+      "size_bytes": 6978
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/language_data.js",
+      "sha256": "af1c48fc5b0e0e9423cac068d55cdf22f541648709ae4b9190ee8aa9c2b08150",
+      "size_bytes": 13589
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/minus.png",
+      "sha256": "47e7fc50db3699f1ca41ce9a2ffa202c00c5d1d5180c55f62ba859b1bd6cc008",
+      "size_bytes": 90
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/plus.png",
+      "sha256": "54115199b96a130cba02147c47c0deb43dcc9b9f08b5162bba8642b34980ac63",
+      "size_bytes": 90
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/pygments.css",
+      "sha256": "1391123c90891f96f975870647f0b2c364fbfda7cd9e9b02bbd84f2077608034",
+      "size_bytes": 4848
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/searchtools.js",
+      "sha256": "954625d140412a9d3d954d67e2e3aec8f8bd18018cf7600b894298fb157c7780",
+      "size_bytes": 22464
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/_static/sphinx_highlight.js",
+      "sha256": "c551409f6bae30d602d5b47676696803554e7ceaa458c1c6eb8367b9d2c4dd31",
+      "size_bytes": 5325
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/api/core.html",
+      "sha256": "32365a34bc75b5ee4acb0bf15aba42b1170dba94d0b9e20eee72dcb66b00cd9c",
+      "size_bytes": 141778
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/api/models.html",
+      "sha256": "3dc6b14cd4fdf5a53d0c391ee1d3ba6ac79e8afdd015f150e6a418842dca816d",
+      "size_bytes": 96247
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/api/modules.html",
+      "sha256": "670f38e47de923fd0a2faf559d010141d32772ef94a89a382dd4d1fc80c67d35",
+      "size_bytes": 148528
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/api/repositories.html",
+      "sha256": "7ed6035d1192d6b2e946dbcc6daeb2d537e798ea151662c7bf48ed034afe4b4d",
+      "size_bytes": 122347
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/api/routers.html",
+      "sha256": "6cce21823ea58631bc7569eea4f57c6f97e1d29d76789db02441f0519146c98e",
+      "size_bytes": 53258
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/genindex.html",
+      "sha256": "cbfea5a1f4a4da5c425b4d605cd74214cae6f9529b2df42f2b9915772b618a61",
+      "size_bytes": 92967
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/index.html",
+      "sha256": "e94a169430bfc9828881e8df5838e02fe384c5f2a189a6736d0da2f29305af35",
+      "size_bytes": 84460
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/notes/changelog.html",
+      "sha256": "d180b99610ce29ac4a935aa26ca2e1bd56482c0620de98a090dd0abb759c998c",
+      "size_bytes": 55272
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/notes/todo.html",
+      "sha256": "dae7e204a1343c26badd00e1b3c32b7188a20873596613a15abe00386e200af9",
+      "size_bytes": 54540
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/objects.inv",
+      "sha256": "8805e8a58dfffb9fe887ede623d86b66af4e59cdc8e58e02dc9933a6fce86e84",
+      "size_bytes": 2625
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/py-modindex.html",
+      "sha256": "ff006cd99acac8d82f9930ffd7b751c99e59ea7e9269af47bb0d64824edb0f5e",
+      "size_bytes": 57571
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/search.html",
+      "sha256": "d4b048c17726bd611053720b9a79d3313b05e3db680e4da065217d37f6ba88be",
+      "size_bytes": 54367
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/_build/html/searchindex.js",
+      "sha256": "098f5aef4b0f860dcb01abd4a5166a4dc914cbc3f98c51f68ca79a56594c8d99",
+      "size_bytes": 22531
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/.buildinfo",
+      "sha256": "2b090b9395cba3adc1fb9a23164dcd6c13b5c3f1051c7255c76c6feaef4ffa0d",
+      "size_bytes": 231
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/.doctrees/__intersphinx_cache__/pydantic_objects.inv",
+      "sha256": "495ca2d7cf8d229b1ccd7821d2833d12fc738834d6be7df34be98a34245ea371",
+      "size_bytes": 12742
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/.doctrees/__intersphinx_cache__/python_objects.inv",
+      "sha256": "5d621687c94461d21430af3e38e05412f0866357fc93f555808ba14838a0ac90",
+      "size_bytes": 153230
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/.doctrees/api/core.doctree",
+      "sha256": "2250511984af49458b19c8f5d599e1e86855ce8a3c36deeb7d94952d187a70bc",
+      "size_bytes": 220955
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/.doctrees/api/models.doctree",
+      "sha256": "bcba0d56b41b627b14ad7e2d30b6c53893367a52d7e020085d5c73249b5990af",
+      "size_bytes": 116696
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/.doctrees/api/modules.doctree",
+      "sha256": "ac0d2444249be7bd4939304dbfe5e77513e3038898f83a145873134bb791df95",
+      "size_bytes": 209538
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/.doctrees/api/repositories.doctree",
+      "sha256": "c668d4dfe5e5167f59cc33a315669ef1bb1ab509f4ba9375db923c55754acf37",
+      "size_bytes": 186555
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/.doctrees/api/routers.doctree",
+      "sha256": "703409c420c0302d0e47dc27385792963e05fc210a0f46cf0f2c3805b1c4603b",
+      "size_bytes": 4643
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/.doctrees/environment.pickle",
+      "sha256": "26fea6c6093140f67825ba05e34ac696727a9aeed61d202274a14e658ac856e1",
+      "size_bytes": 3118048
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/.doctrees/index.doctree",
+      "sha256": "ae90d5fc1977e9b71479c96316c3494ca43e871f369a7b6480fcda091478bb96",
+      "size_bytes": 6811
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/.doctrees/notes/changelog.doctree",
+      "sha256": "dcfbfeabb4273c3ffd45e5647afbff77e761a4f273b0e90944f4b82e5366d5bc",
+      "size_bytes": 5777
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/.doctrees/notes/todo.doctree",
+      "sha256": "fbe072c8a729221d88da13706c557c8af96262ead8ef51f6e238a950d17eee6c",
+      "size_bytes": 3063
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_images/architecture-overview.svg",
+      "sha256": "b2884339da9165f5be35293b81105bc28bb33587152f06d6e9062c211e7d8a0b",
+      "size_bytes": 5876
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_modules/app/core/audit.html",
+      "sha256": "eadfa633dd439d2699c94a451d763f67f84bcc71b510d6ec3d230fefe2c9f1ff",
+      "size_bytes": 78790
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_modules/app/core/config.html",
+      "sha256": "86409840bf5136a6346c5b58b699fd2746b55b31b4fa93b9c710ddd6f4e069bd",
+      "size_bytes": 84525
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_modules/app/core/security.html",
+      "sha256": "96e5d026e9d9cf4d6dc2c5f10389d5dcc29f94a3f1aada418f6f364efd83edac",
+      "size_bytes": 81367
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_modules/app/models.html",
+      "sha256": "1421e9aa29e790163e03ab3440a5faabf5a000c4252d10531f77ab817d9bb7c2",
+      "size_bytes": 135946
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_modules/app/modules/consent/service.html",
+      "sha256": "ea6d39072c5548875d592a0d7eca20b08a37df8bfaf75dbc20c02e6dcd4e2327",
+      "size_bytes": 92523
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_modules/app/modules/diagnostics/irt_engine.html",
+      "sha256": "5e71fc98c08ff3d1683cc52c1b8984ceb339e21c176eff2ecc8dfa628ed94238",
+      "size_bytes": 108186
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_modules/app/modules/lessons/llm_gateway.html",
+      "sha256": "28b8955b564d7106b2f7c8fff89460433a1e35aa39ee809451398c3810c03f6e",
+      "size_bytes": 84210
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_modules/app/repositories/assessment_repository.html",
+      "sha256": "380b5b3bf88d7037456e43a2f3e791e449d5a938691ac614c4168486aa864710",
+      "size_bytes": 70691
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_modules/app/repositories/audit_repository.html",
+      "sha256": "ffc438c31f9fba1333a34e3457e09bd6e0a774ade9dbfd672321bb54aaaf812d",
+      "size_bytes": 79986
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_modules/app/repositories/auth_repository.html",
+      "sha256": "aa4a3387a2b14b65332f557e7285ceab03ea2114c899b630a6cf20e8d42343f6",
+      "size_bytes": 66891
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_modules/app/repositories/consent_repository.html",
+      "sha256": "fea5bf687451f8f7174fc2ff830934518b1db45f2f1ca7438358f09eaa193ec3",
+      "size_bytes": 80369
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_modules/app/repositories/diagnostic_repository.html",
+      "sha256": "f64c7aea66eb0f976557af74779de238452f185970db5d76c5eb7be89b752701",
+      "size_bytes": 65024
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_modules/app/repositories/gamification_repository.html",
+      "sha256": "ec12808dd31dcd69f01c48b3a22dcf4da43687bd8a6bc5db3b57ef02a862126c",
+      "size_bytes": 65820
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_modules/app/repositories/learner_repository.html",
+      "sha256": "51303a7c059adf74296af807970f85f7e7e053fd8f57643e51bdb70cdf37d6d4",
+      "size_bytes": 68199
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_modules/app/repositories/lesson_repository.html",
+      "sha256": "5be7c4653dd39517a64ea7a6d869a9a0affc53a0236e29fa347d0c2808b5cb2d",
+      "size_bytes": 61627
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_modules/index.html",
+      "sha256": "70d0f8aee411fa6322a8ebbeb8c1ca3e1375410d845924a8aa262238947d9f8f",
+      "size_bytes": 56531
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_sources/api/core.rst.txt",
+      "sha256": "a6ee54649356a74053813dad15a20cf1c17e9691fe35f41f78f87342b6aa7951",
+      "size_bytes": 683
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_sources/api/models.rst.txt",
+      "sha256": "0406e3c37895a694b919a6ac8402208064b06d22d29a1eec6cf2dfafca6a98f7",
+      "size_bytes": 168
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_sources/api/modules.rst.txt",
+      "sha256": "e6921bda368ed7cdc2e8847f02a8cfae398dbbedd60328a980fc83d0519bc896",
+      "size_bytes": 1691
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_sources/api/repositories.rst.txt",
+      "sha256": "36c65084c81a6373401cea35bf8bb4faa62e4e34e458e8409c97df2aa2602c68",
+      "size_bytes": 173
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_sources/api/routers.rst.txt",
+      "sha256": "36faa4b94cf4152cf4d2c9ff6bd97f342ff016b2c74005d2916531c1708d727f",
+      "size_bytes": 348
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_sources/index.rst.txt",
+      "sha256": "989a65cfae39e8c5b991c2648f21185c283e85fe24832045afa7e6eb3f0c8078",
+      "size_bytes": 917
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_sources/notes/changelog.rst.txt",
+      "sha256": "7bcf3818dda98f5ce32dbbfe244fbd8bc7f03dd717f33a68edcb37ce7600ac14",
+      "size_bytes": 624
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_sources/notes/todo.rst.txt",
+      "sha256": "e95556fc05f5047eea2d1aef3464d19daa874d65a46084680a46709561a978f9",
+      "size_bytes": 161
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/_sphinx_javascript_frameworks_compat.js",
+      "sha256": "480a2c7377252c14a11bca4d3a49dfa16ea540a998fa637fae0189aee1b89113",
+      "size_bytes": 4289
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/base-stemmer.js",
+      "sha256": "eb67bedbfa264bd8a2201ebe07c861abbcbc56d7eaa28c53ff8b84f65ccd450f",
+      "size_bytes": 12250
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/basic.css",
+      "sha256": "656ff1bacd6f260fc7d71b97f9c2f1fcbf692dc84bf469cd952034efcb9eefed",
+      "size_bytes": 14685
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/badge_only.css",
+      "sha256": "f1399e4fc48c3ff17b5037d3512fcc451fb0abc2c95b4b8d12aab50cdd9d1d6f",
+      "size_bytes": 3329
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/fonts/Roboto-Slab-Bold.woff",
+      "sha256": "9fec87cadbe2413b255f1ec577573a83f1ca2e1c37aa023dbebcd3a7b864636a",
+      "size_bytes": 87624
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/fonts/Roboto-Slab-Bold.woff2",
+      "sha256": "1a0c024dd1a267c52d5575469ffe8570d1e84164de7d393cf3414bafd17d7a0c",
+      "size_bytes": 67312
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/fonts/Roboto-Slab-Regular.woff",
+      "sha256": "9f32630e2c0c5135bf1e86e36cb65b3932e4410644235bc2bd995e9c7f6ff117",
+      "size_bytes": 86288
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/fonts/Roboto-Slab-Regular.woff2",
+      "sha256": "874e42222856d7af03b3f438d21d923a4280d47fe67c48510e2174a1579795ef",
+      "size_bytes": 66444
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/fonts/fontawesome-webfont.eot",
+      "sha256": "7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979",
+      "size_bytes": 165742
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/fonts/fontawesome-webfont.svg",
+      "sha256": "ad6157926c1622ba4e1d03d478f1541368524bfc46f51e42fe0d945f7ef323e4",
+      "size_bytes": 444379
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/fonts/fontawesome-webfont.ttf",
+      "sha256": "aa58f33f239a0fb02f5c7a6c45c043d7a9ac9a093335806694ecd6d4edc0d6a8",
+      "size_bytes": 165548
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/fonts/fontawesome-webfont.woff",
+      "sha256": "ba0c59deb5450f5cb41b3f93609ee2d0d995415877ddfa223e8a8a7533474f07",
+      "size_bytes": 98024
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/fonts/fontawesome-webfont.woff2",
+      "sha256": "2adefcbc041e7d18fcf2d417879dc5a09997aa64d675b7a3c4b6ce33da13f3fe",
+      "size_bytes": 77160
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/fonts/lato-bold-italic.woff",
+      "sha256": "980c8592e5488df256192c999e92db8fd302db8cd8909b7fa266a684e37e45f8",
+      "size_bytes": 323344
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/fonts/lato-bold-italic.woff2",
+      "sha256": "c0916a33340d063f7b05679e08031e729d1888444706f04804705da5966d895d",
+      "size_bytes": 193308
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/fonts/lato-bold.woff",
+      "sha256": "0e56b17d142eb366c8007031d14e34da48c70b4a9d9a0ca492e696a7bae45e1e",
+      "size_bytes": 309728
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/fonts/lato-bold.woff2",
+      "sha256": "ae88fc0d7a961832f809527d30bd3983a6866d42f66a56ade23f543681594db6",
+      "size_bytes": 184912
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/fonts/lato-normal-italic.woff",
+      "sha256": "26318a1467a5e5caf10b04cfa942d079632560cd7a29cec565fd1dc9f7ec5081",
+      "size_bytes": 328412
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/fonts/lato-normal-italic.woff2",
+      "sha256": "4465765f2f6eddcdad34ffd7cab559e56bc0e75e45e192f85e9562b0771481dc",
+      "size_bytes": 195704
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/fonts/lato-normal.woff",
+      "sha256": "5b9025dda4d7688e3311b0c17eddc501133b807def33effaef6593843cf5416e",
+      "size_bytes": 309192
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/fonts/lato-normal.woff2",
+      "sha256": "983b0caf336e8542214fc17019a4fc5e0360864b92806ca14d55c1fc1c2c5a0f",
+      "size_bytes": 182708
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/css/theme.css",
+      "sha256": "17c556bc5f2b93a5fb4aa22a2706da52076f6d73f8ef4a6e1673dd4132a2ad68",
+      "size_bytes": 137285
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/custom.css",
+      "sha256": "ce3a60dea5d69be632347425f5364067df786ecb05e06fd29c718e254a744d14",
+      "size_bytes": 363
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/doctools.js",
+      "sha256": "6b2524c2723cc6e06cbf056e0b2861d50ba8fdd082ece13378bfb45d7a090528",
+      "size_bytes": 4332
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/documentation_options.js",
+      "sha256": "71eb9314a6403a167189359d1be83cb8c02ffb898afc9c224a74b53727e0a284",
+      "size_bytes": 328
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/english-stemmer.js",
+      "sha256": "1f995807fde5a820390fb9046e4813a7eb8f20a4684650f14fbdeb4c2ad7ffc5",
+      "size_bytes": 30599
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/file.png",
+      "sha256": "5c4bc9a16aebf38c4b950f59b8e501ca36495328cb9eb622218bce9064a35e3e",
+      "size_bytes": 286
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/Lato/lato-bold.eot",
+      "sha256": "b91fc1ca55df440dc11354b32a39b45db663d24bb17b16dcb2e706330955b0d1",
+      "size_bytes": 256056
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/Lato/lato-bold.ttf",
+      "sha256": "f71f833c099f450606f8107b83ef208ae918c0ea00779466d45e9be96b0bc7cc",
+      "size_bytes": 600856
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/Lato/lato-bold.woff",
+      "sha256": "0e56b17d142eb366c8007031d14e34da48c70b4a9d9a0ca492e696a7bae45e1e",
+      "size_bytes": 309728
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/Lato/lato-bold.woff2",
+      "sha256": "ae88fc0d7a961832f809527d30bd3983a6866d42f66a56ade23f543681594db6",
+      "size_bytes": 184912
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/Lato/lato-bolditalic.eot",
+      "sha256": "b3d585879a02f48c5d43d8f91d06b167e367a31934bb3b8147c0a90b5ca32bfc",
+      "size_bytes": 266158
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/Lato/lato-bolditalic.ttf",
+      "sha256": "f98d040631714eabffd0ffb747576674fa78c2910f6d9e3dc0c58481d03c1898",
+      "size_bytes": 622572
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/Lato/lato-bolditalic.woff",
+      "sha256": "980c8592e5488df256192c999e92db8fd302db8cd8909b7fa266a684e37e45f8",
+      "size_bytes": 323344
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/Lato/lato-bolditalic.woff2",
+      "sha256": "c0916a33340d063f7b05679e08031e729d1888444706f04804705da5966d895d",
+      "size_bytes": 193308
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/Lato/lato-italic.eot",
+      "sha256": "bc24dbe04f5b2415678f978e7e2f630cc6610670d684e088e73ad29c439eafe3",
+      "size_bytes": 268604
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/Lato/lato-italic.ttf",
+      "sha256": "12d825af88eafea1ce3aa469f83c03acaecd0d03f690f409c8643529f1205b4f",
+      "size_bytes": 639388
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/Lato/lato-italic.woff",
+      "sha256": "26318a1467a5e5caf10b04cfa942d079632560cd7a29cec565fd1dc9f7ec5081",
+      "size_bytes": 328412
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/Lato/lato-italic.woff2",
+      "sha256": "4465765f2f6eddcdad34ffd7cab559e56bc0e75e45e192f85e9562b0771481dc",
+      "size_bytes": 195704
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/Lato/lato-regular.eot",
+      "sha256": "e735410675eacc363b257112f39eb819a854b03077d7b1f0caa6e7660ffbd8b3",
+      "size_bytes": 253461
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/Lato/lato-regular.ttf",
+      "sha256": "089ab6d4a57e0e6c4dd3b681b6fd50a5184f1b902429d35e1227e52d6ccad1bd",
+      "size_bytes": 607720
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/Lato/lato-regular.woff",
+      "sha256": "5b9025dda4d7688e3311b0c17eddc501133b807def33effaef6593843cf5416e",
+      "size_bytes": 309192
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/Lato/lato-regular.woff2",
+      "sha256": "983b0caf336e8542214fc17019a4fc5e0360864b92806ca14d55c1fc1c2c5a0f",
+      "size_bytes": 182708
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/RobotoSlab/roboto-slab-v7-bold.eot",
+      "sha256": "4438991a12ff951cc8d0e83348ec06d9f910591b1b014c476e9595d4da099e48",
+      "size_bytes": 79520
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/RobotoSlab/roboto-slab-v7-bold.ttf",
+      "sha256": "ba12d2eab1fa765b6b05398fa7e047dd76293f0c051ce57a8f7b0c591c14d42b",
+      "size_bytes": 170616
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/RobotoSlab/roboto-slab-v7-bold.woff",
+      "sha256": "9fec87cadbe2413b255f1ec577573a83f1ca2e1c37aa023dbebcd3a7b864636a",
+      "size_bytes": 87624
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/RobotoSlab/roboto-slab-v7-bold.woff2",
+      "sha256": "1a0c024dd1a267c52d5575469ffe8570d1e84164de7d393cf3414bafd17d7a0c",
+      "size_bytes": 67312
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/RobotoSlab/roboto-slab-v7-regular.eot",
+      "sha256": "b3809b71d417c6c225e77a55880aa7915b4e4b4f77a5e2d243f3563731e7f55c",
+      "size_bytes": 78331
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/RobotoSlab/roboto-slab-v7-regular.ttf",
+      "sha256": "13aa5f54c6f2fa2e388fe0e675cdbcc6a81f6270a8bf9c03a5df8af9cb022810",
+      "size_bytes": 169064
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/RobotoSlab/roboto-slab-v7-regular.woff",
+      "sha256": "9f32630e2c0c5135bf1e86e36cb65b3932e4410644235bc2bd995e9c7f6ff117",
+      "size_bytes": 86288
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/fonts/RobotoSlab/roboto-slab-v7-regular.woff2",
+      "sha256": "874e42222856d7af03b3f438d21d923a4280d47fe67c48510e2174a1579795ef",
+      "size_bytes": 66444
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/jquery.js",
+      "sha256": "ff1523fb7389539c84c65aba19260648793bb4f5e29329d2ee8804bc37a3fe6e",
+      "size_bytes": 89501
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/js/badge_only.js",
+      "sha256": "f0a4808d04c4d55378751ac096a8376b64b1a704c82584b0ee590212cf413013",
+      "size_bytes": 934
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/js/theme.js",
+      "sha256": "536ad2d746e944c5570cc15badaeccc3c0582a1b66e45511fe4edce32b6da510",
+      "size_bytes": 5023
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/js/versions.js",
+      "sha256": "0998cc5239113cb6009ab1730e24ede85673759810ee8fb1e2f912305282a4aa",
+      "size_bytes": 6978
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/language_data.js",
+      "sha256": "af1c48fc5b0e0e9423cac068d55cdf22f541648709ae4b9190ee8aa9c2b08150",
+      "size_bytes": 13589
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/minus.png",
+      "sha256": "47e7fc50db3699f1ca41ce9a2ffa202c00c5d1d5180c55f62ba859b1bd6cc008",
+      "size_bytes": 90
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/plus.png",
+      "sha256": "54115199b96a130cba02147c47c0deb43dcc9b9f08b5162bba8642b34980ac63",
+      "size_bytes": 90
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/pygments.css",
+      "sha256": "1391123c90891f96f975870647f0b2c364fbfda7cd9e9b02bbd84f2077608034",
+      "size_bytes": 4848
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/searchtools.js",
+      "sha256": "954625d140412a9d3d954d67e2e3aec8f8bd18018cf7600b894298fb157c7780",
+      "size_bytes": 22464
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/_static/sphinx_highlight.js",
+      "sha256": "c551409f6bae30d602d5b47676696803554e7ceaa458c1c6eb8367b9d2c4dd31",
+      "size_bytes": 5325
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/api/core.html",
+      "sha256": "86277eab901e91e4a23df833ab0aa06ff58a5ca76bdba5b77f647cfd050ffcc7",
+      "size_bytes": 143697
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/api/models.html",
+      "sha256": "774b6fa21cda4d26939da710c2e6b3cf5799ffc1e450548d9a10783d161aaa4b",
+      "size_bytes": 98024
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/api/modules.html",
+      "sha256": "10c702aca67987d6bb538441f544160dea446573313aae12d9dd31982d9e135a",
+      "size_bytes": 148992
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/api/repositories.html",
+      "sha256": "74d11749d012c42a860bfa952f01ee13babc691efc515f85945b30181228e2a4",
+      "size_bytes": 124124
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/api/routers.html",
+      "sha256": "74538ec1031d2166a58fe516c60a33b36e69b01ca1efd492474cc7a18dae4940",
+      "size_bytes": 55035
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/genindex.html",
+      "sha256": "2ffb307ad20cf02be8001b8bc0d9aaea90c4022991f8d5b87217bbb3fe135ec6",
+      "size_bytes": 93804
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/index.html",
+      "sha256": "8c1d23fdb47b942caf0246a0877d35b89ae4431f81dabc184e5f1360258c59e7",
+      "size_bytes": 84932
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/notes/changelog.html",
+      "sha256": "a99ee473b2102a3cc2dd80c139c79f4adaf268b61a28a9ec76db10e82cf1ea51",
+      "size_bytes": 57105
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/notes/todo.html",
+      "sha256": "05bad08040317be0338f19f6be6c16cbf3c4a1182f62d13f6ffcde276885b7d6",
+      "size_bytes": 56373
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/objects.inv",
+      "sha256": "c0e19543bc8644b8cfdcc5a297ec0621ecf4356f55961d066501409d55e71da5",
+      "size_bytes": 2645
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/py-modindex.html",
+      "sha256": "c6f1c768b5d4e3020da050d93cbd564721db6414b1f748cd49e162940477bbac",
+      "size_bytes": 58043
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/search.html",
+      "sha256": "3fdb6d695b77d5e3478e303832c4d765372b620503a3b4a57e97db08cf8902bd",
+      "size_bytes": 54839
+    },
+    {
+      "path": "docs/generated/api-doc-builds/20260622T193052Z/build/html/searchindex.js",
+      "sha256": "0764146ea0ad8c6f7279395e3b014819ef198d101198f48edf320e119e4b5a99",
+      "size_bytes": 47788
+    },
+    {
+      "path": "docs/generated/documentation_findings.csv",
+      "sha256": "16bdeff66a9f1aa4de4d3d15161eea812482d99404913e91f84230dc1129fb92",
+      "size_bytes": 118638
+    },
+    {
+      "path": "docs/generated/documentation_intelligence/README.md",
+      "sha256": "7c57c5878a89219da73cf1dee2fdb1def04b5d24cbace449c974f26636f709a7",
+      "size_bytes": 482
+    },
+    {
+      "path": "docs/generated/documentation_intelligence/classifier_suggestions.md",
+      "sha256": "89644aff92e5da05e610bc3ab34e98f17b285fde8aa0f98c912fb7c7f35cc965",
+      "size_bytes": 7262
+    },
+    {
+      "path": "docs/generated/documentation_intelligence/diagrams/deployment_architecture.mmd",
+      "sha256": "03f68639b837a8238a31e2d6ef299f8e30392a3c5a00c50f1577146604a0cdca",
+      "size_bytes": 665
+    },
+    {
+      "path": "docs/generated/documentation_intelligence/diagrams/logical_architecture.mmd",
+      "sha256": "1ed81182c77960815c25afd80b42d6ab97118695797a4794080f7d4acd427b9e",
+      "size_bytes": 756
+    },
+    {
+      "path": "docs/generated/documentation_intelligence/docs_gap_report.md",
+      "sha256": "10d31eff050c0c6f191074dea49bc86438c8810d67d2650b00f39ff87110dcf4",
+      "size_bytes": 31276
+    },
+    {
+      "path": "docs/generated/documentation_intelligence/docs_generation_plan.md",
+      "sha256": "9a241a5b14adf847596152bdf59988e45da0dfba67aba13f6f0e01c0c72b0a24",
+      "size_bytes": 10025
+    },
+    {
+      "path": "docs/generated/documentation_intelligence/docs_inventory.json",
+      "sha256": "a2dbc64f417acd318655902c7375f42c079bf9117456faed673196b72eb6c6ec",
+      "size_bytes": 1842398
+    },
+    {
+      "path": "docs/generated/documentation_intelligence/docs_inventory.md",
+      "sha256": "204a729b303906589871f88ca488c5db4caae88de6d8ac6c15b5e876ccf5675e",
+      "size_bytes": 125554
+    },
+    {
+      "path": "docs/generated/documentation_intelligence/gap_fixes.md",
+      "sha256": "375f1b6cdea6df1b2ff14d5ed5da91d2631daa5f23f633b56993ae8bdbf22865",
+      "size_bytes": 1749
+    },
+    {
+      "path": "docs/generated/documentation_intelligence/review_request.md",
+      "sha256": "00fea8d3cc71a07e4a6cfbfd9be790791913cfcce8e72bee394e563ab9a9ed37",
+      "size_bytes": 1202
+    },
+    {
+      "path": "docs/generated/documentation_intelligence/sanity_checks.json",
+      "sha256": "1d7644a4b59feec21b84463b60deb329aa95cdaf9c894d3805a6fc5d41440e5d",
+      "size_bytes": 3293884
+    },
+    {
+      "path": "docs/generated/documentation_intelligence/sanity_checks.md",
+      "sha256": "e9c76ac0d0c1f642355ea83a0c2ff64a88445e1d68b10e7c9c77e077778c1ffe",
+      "size_bytes": 59756
+    },
+    {
+      "path": "docs/generated/documentation_intelligence/system_overview.md",
+      "sha256": "08c82ea99279932d4884ec0eca00e13001172f4520d248956105e9436f631ba1",
+      "size_bytes": 5650
+    },
+    {
+      "path": "docs/generated/documentation_inventory.csv",
+      "sha256": "f1b83c4745494ea0b42f06d2d56497489eae14a8ea80b013b5e867d32a5f6b0a",
+      "size_bytes": 352567
+    },
+    {
+      "path": "docs/generated/documentation_inventory.json",
+      "sha256": "23f1a1a79b5e8b238cf0933f8832f2257258f0a5d63dc9640bb2bf71b67b8034",
+      "size_bytes": 1322239
+    },
+    {
+      "path": "docs/generated/legacy-inventories/20260622T193052Z/docs_inventory.md",
+      "sha256": "1f001a5dba3b96c139c108fc6cad2f945df0c48c430456e39af7ce07d25a3489",
+      "size_bytes": 169777
+    },
+    {
+      "path": "docs/generated/release-inventories/20260622T193052Z/audit_callsite_inventory.md",
+      "sha256": "941f068cfc35b31b742e985eabde20fb28943f9c11140ce5bcea86d8d5094980",
+      "size_bytes": 422988
+    },
+    {
+      "path": "docs/generated/release-inventories/20260622T193052Z/consent_callsite_inventory.md",
+      "sha256": "150fc5e1f532e6715a73b1c3dc81131ca707afd2a0333796b28861a4463f9089",
+      "size_bytes": 82761
+    }
+  ],
+  "historical_openapi_snapshot_count": 2,
+  "historical_openapi_snapshots": [
+    "docs/openapi_pr003.json",
+    "docs/openapi_pr004.json"
+  ],
+  "openapi_operation_count": 424,
+  "openapi_path_count": 416,
+  "prd_id": "PRD-0.7",
+  "root_json_matches_canonical": true,
+  "root_openapi_json_path": "openapi.json",
+  "root_openapi_json_present": true,
+  "root_openapi_json_sha256": "f08d8d60400d4091fdd658462d02c8f2782f1579b707334951867a48d813200d",
+  "root_openapi_json_summary": {
+    "operation_count": 424,
+    "path_count": 416,
+    "title": "EduBoost SA V2",
+    "version": "1.0.0-rc1"
+  },
+  "root_openapi_yaml_path": "openapi.yaml",
+  "root_openapi_yaml_present": true,
+  "root_openapi_yaml_sha256": "f08d8d60400d4091fdd658462d02c8f2782f1579b707334951867a48d813200d",
+  "root_openapi_yaml_summary": {
+    "operation_count": 424,
+    "path_count": 416,
+    "title": "EduBoost SA V2",
+    "version": "1.0.0-rc1"
+  },
+  "root_yaml_schema_matches_canonical": true,
+  "schema_version": "prd-openapi-generated-artifact-canonicalisation/v1"
+}
