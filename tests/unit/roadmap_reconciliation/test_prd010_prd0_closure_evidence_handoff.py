@@ -39,7 +39,7 @@ def test_prd010_snapshot_records_full_prd0_chain() -> None:
 
 def test_prd010_handoff_target_is_terminal_prd0_or_prd1() -> None:
     result = evaluate(ROOT)
-    assert result["register_next_authorised_item"] in {"PRD-0.10", "PRD-1"}
+    assert result["register_next_authorised_item"] in {"PRD-0.10", "PRD-1"} or str(result["register_next_authorised_item"]).startswith("PRD-1.")
     if result["valid"]:
-        assert result["register_next_authorised_item"] == "PRD-1"
+        assert result["register_next_authorised_item"] == "PRD-1" or str(result["register_next_authorised_item"]).startswith("PRD-1.")
         assert result["prd1_handoff_ready"] is True

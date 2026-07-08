@@ -1,0 +1,178 @@
+{
+  "authority_boundaries": {
+    "authority_switch_executed": true,
+    "billing_launch_authorised": false,
+    "branch_protection_modified": false,
+    "ci_workflow_changes_performed": true,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "new_kg_slice_authorised": false,
+    "openapi_reconciliation_performed": true,
+    "prd2_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_gate_enforced": false,
+    "release_tag_authorised": false,
+    "required_check_classification_performed": true,
+    "required_checks_enforced": false,
+    "runtime_kg_authority_switch_authorised": true,
+    "runtime_kg_implementation_claimed": true,
+    "workflow_canonicalisation_performed": true
+  },
+  "merged_prd_slices": [
+    "PRD-1.2",
+    "PRD-1.3",
+    "PRD-1.4"
+  ],
+  "next_authorised_item": "PRD-1.5",
+  "openapi_reconciliation": {
+    "canonical_openapi_path": "docs/openapi.json",
+    "compatibility_mirror_path": "openapi.json",
+    "docs_openapi_sha256": "f08d8d60400d4091fdd658462d02c8f2782f1579b707334951867a48d813200d",
+    "file_copy_required": false,
+    "reconciliation_performed": true,
+    "root_and_docs_openapi_match": true,
+    "root_openapi_sha256": "f08d8d60400d4091fdd658462d02c8f2782f1579b707334951867a48d813200d"
+  },
+  "prd_id": "PRD-1.2-1.4",
+  "purpose": "Classify required checks, canonicalise pytest workflow commands, and define the release gate baseline in one consolidated PRD-1 implementation slice.",
+  "release_gate_definition": {
+    "branch_protection_evidence_deferred_to_prd1_5": true,
+    "branch_protection_modified": false,
+    "canonical_trunk_branch": "master",
+    "master_required_check_candidates": [
+      "python-package-and-unit-tests",
+      "openapi-contract-and-drift",
+      "security-and-dependency-scan",
+      "migration-and-runtime-contracts"
+    ],
+    "release_authority_source": "PRD-11 remains final production release/deployment authority; PRD-1 only defines gate mechanics.",
+    "release_branch_pattern": "release/**",
+    "release_candidate_blocking_checks": [
+      "python-package-and-unit-tests",
+      "openapi-contract-and-drift",
+      "security-and-dependency-scan",
+      "migration-and-runtime-contracts",
+      "release-readiness-cluster"
+    ],
+    "release_gate_enforced": false
+  },
+  "required_check_classification": {
+    "advisory_checks": [
+      {
+        "check_id": "frontend-lighthouse-and-e2e",
+        "label": "Frontend Lighthouse and E2E checks",
+        "reason": "Useful release signal, but not promoted to master-required until PRD-1.5 convergence evidence proves stability.",
+        "required_for_master": false
+      },
+      {
+        "check_id": "historical-prd-kg-evidence-workflows",
+        "label": "Historical PRD/KG evidence workflows",
+        "reason": "Retained for audit replay and evidence continuity; not a production release gate.",
+        "required_for_master": false
+      }
+    ],
+    "classification_performed": true,
+    "enforcement_deferred_to_prd1_5_evidence": true,
+    "required_checks": [
+      {
+        "blocks_release_candidate": true,
+        "check_id": "python-package-and-unit-tests",
+        "label": "Python package compile and unit tests",
+        "required_for_master": true,
+        "source": "existing CI workflows and Makefile targets"
+      },
+      {
+        "blocks_release_candidate": true,
+        "check_id": "openapi-contract-and-drift",
+        "label": "OpenAPI contract and drift verification",
+        "required_for_master": true,
+        "source": ".github/workflows/openapi-contract.yml and .github/workflows/openapi-drift.yml"
+      },
+      {
+        "blocks_release_candidate": true,
+        "check_id": "security-and-dependency-scan",
+        "label": "Security and dependency scanning",
+        "required_for_master": true,
+        "source": ".github/workflows/dependency-scan.yml plus security-oriented workflows"
+      },
+      {
+        "blocks_release_candidate": true,
+        "check_id": "migration-and-runtime-contracts",
+        "label": "Database migration and runtime contract checks",
+        "required_for_master": true,
+        "source": ".github/workflows/migration_check.yml and .github/workflows/runtime-contract.yml"
+      },
+      {
+        "blocks_release_candidate": true,
+        "check_id": "release-readiness-cluster",
+        "label": "Release-readiness cluster checks",
+        "required_for_master": false,
+        "source": ".github/workflows/cluster-h-release-readiness.yml and release-readiness documentation"
+      }
+    ],
+    "required_checks_enforced": false
+  },
+  "schema_version": "prd1-required-checks-workflow-release-gate-convergence/v1",
+  "stream_id": "PRD-1-CI-RELEASE-GATE-CONVERGENCE",
+  "workflow_canonicalisation": {
+    "canonical_pytest_command": "python3 -m pytest",
+    "canonicalisation_performed": true,
+    "changed_files": [],
+    "deprecated_pytest_command": "python -m pytest",
+    "workflow_summary_after_canonicalisation": {
+      "deployment_reference_workflow_count": 34,
+      "main_reference_workflow_count": 24,
+      "master_reference_workflow_count": 47,
+      "openapi_reference_workflow_count": 5,
+      "python3_m_pytest_workflow_count": 39,
+      "python3_m_pytest_workflows": [
+        ".github/workflows/api-envelope-error-contract.yml",
+        ".github/workflows/auth-boundary.yml",
+        ".github/workflows/auth-refresh-db-proof.yml",
+        ".github/workflows/caps-source-topic-map.yml",
+        ".github/workflows/ci-cd.yml",
+        ".github/workflows/ci_diagnostics_assessment.yml",
+        ".github/workflows/ci_lesson_quality.yml",
+        ".github/workflows/cluster-d-ci.yml",
+        ".github/workflows/cluster-e-data-resilience.yml",
+        ".github/workflows/cluster-f-ai-safety.yml",
+        ".github/workflows/cluster-g-frontend.yml",
+        ".github/workflows/cluster-h-release-readiness.yml",
+        ".github/workflows/item_bank_ci.yml",
+        ".github/workflows/kg-roadmap-closure-report.yml",
+        ".github/workflows/kg004-gap-engine-intervention-planner.yml",
+        ".github/workflows/kg006-tutor-study-plan-gamification-parent-alignment.yml",
+        ".github/workflows/kg008-post-switch-optimisation-scale-review.yml",
+        ".github/workflows/kgact001-controlled-runtime-kg-authority-activation.yml",
+        ".github/workflows/learning-evidence.yml",
+        ".github/workflows/legacy-route-guard.yml",
+        ".github/workflows/persistence-resilience.yml",
+        ".github/workflows/popia-consent-audit.yml",
+        ".github/workflows/prd000-production-readiness-stream-authority.yml",
+        ".github/workflows/prd001-canonical-current-state-documentation-refresh.yml",
+        ".github/workflows/prd002-historical-report-stale-source-quarantine.yml",
+        ".github/workflows/prd003-documentation-housekeeping-ratchet-refresh.yml",
+        ".github/workflows/prd004-test-dependency-bootstrap-baseline.yml",
+        ".github/workflows/prd005-test-failure-collection-stabilisation-register.yml",
+        ".github/workflows/prd006-workflow-command-hygiene-ci-inventory.yml",
+        ".github/workflows/prd007-openapi-generated-artifact-canonicalisation.yml",
+        ".github/workflows/prd008-branch-release-naming-reconciliation.yml",
+        ".github/workflows/prd009-repository-hygiene-generated-local-artifact-audit.yml",
+        ".github/workflows/prd010-prd0-closure-evidence-handoff.yml",
+        ".github/workflows/prd100-ci-release-gate-stream-authority.yml",
+        ".github/workflows/prd101-ci-inventory-authority.yml",
+        ".github/workflows/privacy-boundary.yml",
+        ".github/workflows/repo-state.yml",
+        ".github/workflows/runtime-contract.yml",
+        ".github/workflows/technical-audit-hosted-ci.yml"
+      ],
+      "python_m_pytest_workflow_count": 0,
+      "python_m_pytest_workflows": [],
+      "release_reference_workflow_count": 26,
+      "workflow_count": 86
+    }
+  }
+}
