@@ -27,5 +27,5 @@ jobs:
             scripts/knowledge_graph/audit_kgact001_controlled_runtime_kg_authority_activation.py \
             scripts/roadmap_reconciliation/capture_kgact001_controlled_runtime_kg_authority_activation_evidence.py \
             scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py
-          pytest -q tests/unit/roadmap_reconciliation/test_kgact001_controlled_runtime_kg_authority_activation.py --no-cov
+          PYTHONPATH=. python3 -m pytest -q tests/unit/roadmap_reconciliation/test_kgact001_controlled_runtime_kg_authority_activation.py --no-cov
           PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py --authority-only --json

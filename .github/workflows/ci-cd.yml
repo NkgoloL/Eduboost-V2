@@ -175,7 +175,7 @@ jobs:
 
       - name: Run unit tests (fast gate)
         run: |
-          pytest -c pytest.ini tests/unit \
+          PYTHONPATH=. python3 -m pytest -c pytest.ini tests/unit \
             -n auto \
             --no-cov \
             -m "not governance and not slow and not llm and not e2e" \
@@ -242,7 +242,7 @@ jobs:
 
       - name: Run integration tests
         run: |
-          pytest -c pytest.ini tests/integration/ -v --tb=short \
+          PYTHONPATH=. python3 -m pytest -c pytest.ini tests/integration/ -v --tb=short \
             --no-cov \
             -m "not governance and not slow and not llm and not e2e" \
             --timeout=60
@@ -368,7 +368,7 @@ jobs:
 
       - name: V2 module coverage
         run: |
-          pytest tests/unit/ \
+          PYTHONPATH=. python3 -m pytest tests/unit/ \
             --cov=app.api_v2 \
             --cov=app.repositories \
             --cov=app.services \
@@ -578,7 +578,7 @@ jobs:
 
       - name: Run Content Factory static unit tests
         run: |
-          pytest \
+          PYTHONPATH=. python3 -m pytest \
             tests/unit/test_content_factory_route_security.py \
             tests/unit/test_content_factory_enums.py \
             tests/unit/test_content_factory_table_reconciliation.py \
@@ -603,7 +603,7 @@ jobs:
 
       - name: Run POPIA compliance tests
         run: |
-          pytest tests/popia/ -v --tb=short --no-cov -k "pii or consent or erasure"
+          PYTHONPATH=. python3 -m pytest tests/popia/ -v --tb=short --no-cov -k "pii or consent or erasure"
 
       - name: Run POPIA prompt sweep
         run: python scripts/popia_sweep.py --fail-on-issues
@@ -676,7 +676,7 @@ jobs:
           STAGING_URL: ${{ secrets.STAGING_URL }}
           STAGING_API_KEY: ${{ secrets.STAGING_API_KEY }}
         run: |
-          pytest tests/smoke/ -v --tb=short \
+          PYTHONPATH=. python3 -m pytest tests/smoke/ -v --tb=short \
             --base-url="$STAGING_URL" \
             --api-key="$STAGING_API_KEY" \
             --timeout=30

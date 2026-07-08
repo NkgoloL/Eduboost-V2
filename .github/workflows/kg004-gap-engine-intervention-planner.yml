@@ -33,6 +33,6 @@ jobs:
         run: |
           python3 -m py_compile             app/domain/knowledge_graph_gap_engine.py             scripts/knowledge_graph/build_kg004_gap_engine_intervention_planner.py             scripts/knowledge_graph/audit_kg004_gap_engine_intervention_planner.py             scripts/roadmap_reconciliation/capture_kg004_gap_engine_intervention_planner_evidence.py             scripts/roadmap_reconciliation/verify_kg004_gap_engine_intervention_planner.py
       - name: Run KG-4 focused tests
-        run: pytest -q tests/unit/roadmap_reconciliation/test_kg004_gap_engine_intervention_planner.py --no-cov
+        run: PYTHONPATH=. python3 -m pytest -q tests/unit/roadmap_reconciliation/test_kg004_gap_engine_intervention_planner.py --no-cov
       - name: Verify KG-4 authority
         run: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg004_gap_engine_intervention_planner.py --authority-only --json

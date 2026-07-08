@@ -76,7 +76,7 @@ jobs:
 
       - name: Verify repo-state checker tests
         run: |
-          pytest \
+          PYTHONPATH=. python3 -m pytest \
             tests/unit/test_verify_repo_state.py \
             tests/unit/test_recommended_operating_model.py \
             tests/unit/test_project_assistance_status.py \

@@ -246,7 +246,7 @@ jobs:
 
       - name: L5-03 — Golden prompt tests
         run: |
-          pytest tests/unit/modules/lessons/test_golden_prompts.py \
+          PYTHONPATH=. python3 -m pytest tests/unit/modules/lessons/test_golden_prompts.py \
             -v \
             --tb=short \
             --junitxml=reports/golden_tests.xml
@@ -363,7 +363,7 @@ jobs:
           API_BASE_URL: ${{ vars.STAGING_API_URL }}
           LEARNER_TOKEN: ${{ secrets.STAGING_LEARNER_TOKEN }}
         run: |
-          pytest tests/performance/test_lesson_generation_perf.py \
+          PYTHONPATH=. python3 -m pytest tests/performance/test_lesson_generation_perf.py \
             -v --performance \
             --tb=short \
             --junitxml=reports/perf_tests.xml

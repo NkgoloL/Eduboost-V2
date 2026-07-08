@@ -119,7 +119,7 @@ jobs:
           make cluster-h-release-readiness-check
       - name: Run Cluster H release readiness tests
         run: |
-          pytest -c pytest.ini \
+          PYTHONPATH=. python3 -m pytest -c pytest.ini \
             tests/unit/test_beta_release_readiness_contract.py \
             tests/unit/test_cluster_h_archive_accession_custody_retrieval_wiring.py \
             tests/unit/test_terminal_evidence_retrieval_guide.py \

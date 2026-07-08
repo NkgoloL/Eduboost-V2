@@ -3173,3 +3173,14 @@ prd005-test-failure-collection-stabilisation-register-check:
 
 prd005-test-failure-collection-stabilisation-register-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd005_test_failure_collection_stabilisation_register_evidence.py --claim-prd005-test-failure-collection-stabilisation-register --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch "$${TARGET_BRANCH:-master}" --require-valid --json
+
+.PHONY: prd006-workflow-command-hygiene-ci-inventory-audit prd006-workflow-command-hygiene-ci-inventory-check prd006-workflow-command-hygiene-ci-inventory-capture
+
+prd006-workflow-command-hygiene-ci-inventory-audit:
+	PYTHONPATH=. python3 scripts/production_readiness/audit_prd006_workflow_command_hygiene_ci_inventory.py --json
+
+prd006-workflow-command-hygiene-ci-inventory-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd006_workflow_command_hygiene_ci_inventory.py --authority-only --json
+
+prd006-workflow-command-hygiene-ci-inventory-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd006_workflow_command_hygiene_ci_inventory_evidence.py --claim-prd006-workflow-command-hygiene-ci-inventory --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
