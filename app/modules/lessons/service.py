@@ -36,6 +36,7 @@ from app.repositories.lesson_repository import LessonRepository
 from app.services.consent import ConsentService
 from app.services.lesson_generator import LessonGenerator, QuotaExceededError
 from app.services.audit_service import AuditService
+from app.services.runtime_kg.integration import build_lesson_context_with_runtime_kg
 
 if TYPE_CHECKING:
     from sqlalchemy.ext.asyncio import AsyncSession
@@ -129,7 +130,12 @@ class LessonService:
         guardian = await self._guardian_repo.get_by_id(learner.guardian_id)
         tier = guardian.subscription_tier if guardian else "free"
 
-        learner_context = await self._build_learner_context(body.learner_id, body.subject)
+        learner_context = await build_lesson_context_with_runtime_kg(
+            self.db,
+            str(body.learner_id),
+            body.subject,
+            fallback_builder=self._build_learner_context,
+        )
 
         # 3. Call AI Service (Executive/Ether)
         try:
