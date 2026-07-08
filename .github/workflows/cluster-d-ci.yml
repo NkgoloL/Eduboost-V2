@@ -30,7 +30,7 @@ jobs:
           python scripts/generate_release_evidence_manifest.py
           make cluster-d-closure-check
           make release-evidence-artifacts-check
-          pytest -c pytest.ini \
+          PYTHONPATH=. python3 -m pytest -c pytest.ini \
             tests/unit/test_environment_security_contract.py \
             tests/unit/test_cluster_d_closure_check.py \
             tests/unit/test_production_key_vault_behavior.py \

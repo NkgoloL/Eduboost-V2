@@ -71,7 +71,7 @@ jobs:
           fi
 
       - name: Run persistence resilience evidence tests
-        run: pytest tests/unit/test_persistence_resilience_evidence.py -q --no-cov
+        run: PYTHONPATH=. python3 -m pytest tests/unit/test_persistence_resilience_evidence.py -q --no-cov
 
       - name: Run aggregate persistence resilience check
         run: make persistence-resilience-check

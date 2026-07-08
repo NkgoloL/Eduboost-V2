@@ -41,7 +41,7 @@ jobs:
 
       - name: Run legacy-route-guard tests
         run: |
-          pytest \
+          PYTHONPATH=. python3 -m pytest \
             tests/unit/test_api_v2_router_contract.py \
             tests/test_entrypoints.py \
             -v \

@@ -22,4 +22,4 @@ jobs:
           python-version: "3.12.3"
       - run: pip install -r requirements.txt
       - run: python scripts/ci/check_diagnostics_assessment.py
-      - run: pytest tests/unit/modules/diagnostics/test_irt_engine_hardening.py tests/unit/modules/diagnostics/test_session_lifecycle.py tests/unit/modules/progress/test_mastery_model.py tests/unit/modules/practice/test_practice_and_calibration.py --no-cov
+      - run: PYTHONPATH=. python3 -m pytest tests/unit/modules/diagnostics/test_irt_engine_hardening.py tests/unit/modules/diagnostics/test_session_lifecycle.py tests/unit/modules/progress/test_mastery_model.py tests/unit/modules/practice/test_practice_and_calibration.py --no-cov

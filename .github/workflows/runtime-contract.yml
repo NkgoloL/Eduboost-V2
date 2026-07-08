@@ -67,7 +67,7 @@ jobs:
 
       - name: Run runtime contract tests
         run: |
-          pytest -c pytest.ini \
+          PYTHONPATH=. python3 -m pytest -c pytest.ini \
             tests/test_entrypoints.py \
             tests/unit/test_api_v2_router_contract.py \
             tests/unit/test_check_runtime_entrypoints.py \

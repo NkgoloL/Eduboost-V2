@@ -79,7 +79,7 @@ jobs:
           fi
 
       - name: Run learning evidence tests
-        run: pytest tests/unit/test_learning_evidence.py -q --no-cov
+        run: PYTHONPATH=. python3 -m pytest tests/unit/test_learning_evidence.py -q --no-cov
 
       - name: Run aggregate learning evidence check
         run: make learning-evidence-check

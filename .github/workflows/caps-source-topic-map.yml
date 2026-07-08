@@ -79,7 +79,7 @@ jobs:
 
       - name: Run focused CAPS metadata tests
         run: |
-          pytest -q --no-cov \
+          PYTHONPATH=. python3 -m pytest -q --no-cov \
             tests/unit/test_source_manifest_readiness.py \
             tests/unit/test_source_inventory_expansion.py \
             tests/unit/test_download_caps_sources.py \

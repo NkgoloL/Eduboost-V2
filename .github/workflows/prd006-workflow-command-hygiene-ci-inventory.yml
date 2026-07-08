@@ -1,0 +1,52 @@
+name: PRD-0.6 Workflow Command Hygiene CI Inventory
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/**'
+      - 'scripts/production_readiness/**'
+      - 'scripts/roadmap_reconciliation/**'
+      - 'tests/unit/roadmap_reconciliation/test_prd006_workflow_command_hygiene_ci_inventory.py'
+      - 'docs/roadmap/production_readiness/**'
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/**'
+      - 'scripts/production_readiness/**'
+      - 'scripts/roadmap_reconciliation/**'
+      - 'tests/unit/roadmap_reconciliation/test_prd006_workflow_command_hygiene_ci_inventory.py'
+      - 'docs/roadmap/production_readiness/**'
+
+jobs:
+  verify-prd006:
+    name: Verify PRD-0.6 workflow hygiene authority
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install verification dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then python3 -m pip install -r requirements.txt; fi
+          if [ -f requirements/dev.txt ]; then python3 -m pip install -r requirements/dev.txt; fi
+      - name: Compile PRD-0.6 scripts
+        run: |
+          python3 -m py_compile \
+            scripts/production_readiness/apply_prd006_workflow_command_hygiene.py \
+            scripts/production_readiness/audit_prd006_workflow_command_hygiene_ci_inventory.py \
+            scripts/roadmap_reconciliation/capture_prd006_workflow_command_hygiene_ci_inventory_evidence.py \
+            scripts/roadmap_reconciliation/verify_prd006_workflow_command_hygiene_ci_inventory.py
+      - name: Run PRD-0.6 focused tests
+        run: |
+          PYTHONPATH=. python3 -m pytest -q \
+            tests/unit/roadmap_reconciliation/test_prd006_workflow_command_hygiene_ci_inventory.py \
+            --no-cov
+      - name: Verify PRD-0.6 authority
+        run: |
+          PYTHONPATH=. python3 \
+            scripts/roadmap_reconciliation/verify_prd006_workflow_command_hygiene_ci_inventory.py \
+            --authority-only \
+            --json
