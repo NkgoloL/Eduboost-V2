@@ -1,0 +1,73 @@
+{
+  "authority_before_capture": {
+    "authority_valid": true,
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "diagnostic_route_projection_integrated": true,
+    "lesson_route_context_hook_preserved": true,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "merged_prd_slices": [
+      "PRD-2.4",
+      "PRD-2.5",
+      "PRD-2.6"
+    ],
+    "missing_paths": [],
+    "next_authorised_item": "PRD-2.4-2.6",
+    "prd2_7_2_9_authorised": false,
+    "prd2_foundation_valid": true,
+    "prd3_implementation_authorised": false,
+    "prd_id": "PRD-2.4-2.6",
+    "production_register_next_authorised_item": "PRD-2.4-2.6",
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "register_next_authorised_item": "PRD-2.4-2.6",
+    "release_tag_authorised": false,
+    "rollback_to_legacy_proven": true,
+    "routes_modified": true,
+    "runtime_kg_enabled_by_default": false,
+    "runtime_kg_route_projection_behaviour_recorded": false,
+    "study_plan_route_focus_integrated": true,
+    "valid": false
+  },
+  "captured_at": "2026-07-08T20:41:06.607192+00:00",
+  "captured_by": "Nkgolo Lebelo",
+  "evidence_files": {
+    "production_register_sha256": "bb6361ba5feacda259e0602abb8540fcc541ddc0ca6590340d5c29be6dae827d",
+    "record_sha256": "d1a790092e15126f0119eccde7fb068ade9b92083bce1cc3297740d309e34e2c",
+    "register_sha256": "c8adb044f9d85cf5e4e2a207c21d834af26a1bbc454e48e36f4e93f513b9e080"
+  },
+  "final_verification": {
+    "authority_valid": true,
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "diagnostic_route_projection_integrated": true,
+    "lesson_route_context_hook_preserved": true,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "merged_prd_slices": [
+      "PRD-2.4",
+      "PRD-2.5",
+      "PRD-2.6"
+    ],
+    "missing_paths": [],
+    "next_authorised_item": "PRD-2.7-2.9",
+    "prd2_7_2_9_authorised": true,
+    "prd2_foundation_valid": true,
+    "prd3_implementation_authorised": false,
+    "prd_id": "PRD-2.4-2.6",
+    "production_register_next_authorised_item": "PRD-2.7-2.9",
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "register_next_authorised_item": "PRD-2.7-2.9",
+    "release_tag_authorised": false,
+    "rollback_to_legacy_proven": true,
+    "routes_modified": true,
+    "runtime_kg_enabled_by_default": false,
+    "runtime_kg_route_projection_behaviour_recorded": true,
+    "study_plan_route_focus_integrated": true,
+    "valid": true
+  },
+  "prd_id": "PRD-2.4-2.6",
+  "target_branch": "master"
+}
