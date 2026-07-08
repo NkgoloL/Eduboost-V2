@@ -1,0 +1,1139 @@
+{
+  "authority_boundaries": {
+    "authority_switch_executed": true,
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "new_kg_slice_authorised": false,
+    "prd1_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_authority_switch_authorised": true,
+    "runtime_kg_implementation_claimed": true
+  },
+  "captured_at": "2026-07-08T01:15:21.348544+00:00",
+  "command_hygiene_policy": {
+    "canonical_pytest_command": "PYTHONPATH=. python3 -m pytest",
+    "dependency_install_completion_deferred_to_ci_contract_review": true,
+    "dev_dependency_install_expected_for_pytest_workflows": true,
+    "direct_pytest_invocations_allowed": false
+  },
+  "direct_pytest_command_count": 0,
+  "direct_pytest_commands": [],
+  "direct_pytest_workflow_count": 0,
+  "module_pytest_command_count": 42,
+  "module_pytest_commands": [
+    {
+      "command": "PYTHONPATH=. python3 -m pytest \\",
+      "line": 69,
+      "path": ".github/workflows/api-envelope-error-contract.yml"
+    },
+    {
+      "command": "run: PYTHONPATH=. python3 -m pytest tests/unit/test_auth_boundary_evidence.py -q --no-cov",
+      "line": 53,
+      "path": ".github/workflows/auth-boundary.yml"
+    },
+    {
+      "command": "python -m pytest \\",
+      "line": 69,
+      "path": ".github/workflows/auth-refresh-db-proof.yml"
+    },
+    {
+      "command": "AUTH_REFRESH_DB_TEST_COMMAND: python -m pytest -c pytest.ini tests/integration/test_auth_refresh_db_proof_integration.py -q --no-cov --tb=short -rs",
+      "line": 81,
+      "path": ".github/workflows/auth-refresh-db-proof.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest -q --no-cov \\",
+      "line": 82,
+      "path": ".github/workflows/caps-source-topic-map.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest -c pytest.ini tests/unit \\",
+      "line": 178,
+      "path": ".github/workflows/ci-cd.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest -c pytest.ini tests/integration/ -v --tb=short \\",
+      "line": 245,
+      "path": ".github/workflows/ci-cd.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest tests/unit/ \\",
+      "line": 371,
+      "path": ".github/workflows/ci-cd.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest \\",
+      "line": 581,
+      "path": ".github/workflows/ci-cd.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest tests/popia/ -v --tb=short --no-cov -k \"pii or consent or erasure\"",
+      "line": 606,
+      "path": ".github/workflows/ci-cd.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest tests/smoke/ -v --tb=short \\",
+      "line": 679,
+      "path": ".github/workflows/ci-cd.yml"
+    },
+    {
+      "command": "- run: PYTHONPATH=. python3 -m pytest tests/unit/modules/diagnostics/test_irt_engine_hardening.py tests/unit/modules/diagnostics/test_session_lifecycle.py tests/unit/modules/progress/test_mastery_model.py tests/unit/modules/practice/test_practice_and_calibration.py --no-cov",
+      "line": 25,
+      "path": ".github/workflows/ci_diagnostics_assessment.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest tests/unit/modules/lessons/test_golden_prompts.py \\",
+      "line": 249,
+      "path": ".github/workflows/ci_lesson_quality.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest tests/performance/test_lesson_generation_perf.py \\",
+      "line": 366,
+      "path": ".github/workflows/ci_lesson_quality.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest -c pytest.ini \\",
+      "line": 33,
+      "path": ".github/workflows/cluster-d-ci.yml"
+    },
+    {
+      "command": "python3 -m pytest -c pytest.ini \\",
+      "line": 35,
+      "path": ".github/workflows/cluster-e-data-resilience.yml"
+    },
+    {
+      "command": "python3 -m pytest -c pytest.ini \\",
+      "line": 40,
+      "path": ".github/workflows/cluster-f-ai-safety.yml"
+    },
+    {
+      "command": "python3 -m pytest -c pytest.ini \\",
+      "line": 47,
+      "path": ".github/workflows/cluster-g-frontend.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest -c pytest.ini \\",
+      "line": 122,
+      "path": ".github/workflows/cluster-h-release-readiness.yml"
+    },
+    {
+      "command": "python -m pytest tests/ci/test_item_bank_coverage.py \\",
+      "line": 158,
+      "path": ".github/workflows/item_bank_ci.yml"
+    },
+    {
+      "command": "python3 -m pytest -q tests/unit/roadmap_reconciliation/test_kg_roadmap_closure.py --no-cov",
+      "line": 27,
+      "path": ".github/workflows/kg-roadmap-closure-report.yml"
+    },
+    {
+      "command": "run: PYTHONPATH=. python3 -m pytest -q tests/unit/roadmap_reconciliation/test_kg004_gap_engine_intervention_planner.py --no-cov",
+      "line": 36,
+      "path": ".github/workflows/kg004-gap-engine-intervention-planner.yml"
+    },
+    {
+      "command": "run: PYTHONPATH=. python3 -m pytest -q tests/unit/roadmap_reconciliation/test_kg006_tutor_study_plan_gamification_parent_alignment.py --no-cov",
+      "line": 25,
+      "path": ".github/workflows/kg006-tutor-study-plan-gamification-parent-alignment.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest -q tests/unit/roadmap_reconciliation/test_kg008_post_switch_optimisation_scale_review.py --no-cov",
+      "line": 30,
+      "path": ".github/workflows/kg008-post-switch-optimisation-scale-review.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest -q tests/unit/roadmap_reconciliation/test_kgact001_controlled_runtime_kg_authority_activation.py --no-cov",
+      "line": 30,
+      "path": ".github/workflows/kgact001-controlled-runtime-kg-authority-activation.yml"
+    },
+    {
+      "command": "run: PYTHONPATH=. python3 -m pytest tests/unit/test_learning_evidence.py -q --no-cov",
+      "line": 82,
+      "path": ".github/workflows/learning-evidence.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest \\",
+      "line": 44,
+      "path": ".github/workflows/legacy-route-guard.yml"
+    },
+    {
+      "command": "run: PYTHONPATH=. python3 -m pytest tests/unit/test_persistence_resilience_evidence.py -q --no-cov",
+      "line": 74,
+      "path": ".github/workflows/persistence-resilience.yml"
+    },
+    {
+      "command": "python3 -m pytest -c pytest.ini \\",
+      "line": 36,
+      "path": ".github/workflows/popia-consent-audit.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest -q \\",
+      "line": 30,
+      "path": ".github/workflows/prd000-production-readiness-stream-authority.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest -q             tests/unit/roadmap_reconciliation/test_prd001_canonical_current_state_documentation_refresh.py             --no-cov",
+      "line": 40,
+      "path": ".github/workflows/prd001-canonical-current-state-documentation-refresh.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest -q             tests/unit/roadmap_reconciliation/test_prd002_historical_report_stale_source_quarantine.py             --no-cov",
+      "line": 32,
+      "path": ".github/workflows/prd002-historical-report-stale-source-quarantine.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest -q \\",
+      "line": 39,
+      "path": ".github/workflows/prd003-documentation-housekeeping-ratchet-refresh.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest -q             tests/unit/roadmap_reconciliation/test_prd004_test_dependency_bootstrap_baseline.py             --no-cov",
+      "line": 30,
+      "path": ".github/workflows/prd004-test-dependency-bootstrap-baseline.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest -q \\",
+      "line": 27,
+      "path": ".github/workflows/prd005-test-failure-collection-stabilisation-register.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest -q \\",
+      "line": 44,
+      "path": ".github/workflows/prd006-workflow-command-hygiene-ci-inventory.yml"
+    },
+    {
+      "command": "run: PYTHONPATH=. python3 -m pytest tests/unit/test_audit_integrity.py -v --no-cov",
+      "line": 62,
+      "path": ".github/workflows/privacy-boundary.yml"
+    },
+    {
+      "command": "run: PYTHONPATH=. python3 -m pytest tests/unit/test_consent_lifecycle.py tests/popia/ -v --no-cov",
+      "line": 79,
+      "path": ".github/workflows/privacy-boundary.yml"
+    },
+    {
+      "command": "run: PYTHONPATH=. python3 -m pytest tests/integration/test_popia_data_subject_rights.py -v --no-cov",
+      "line": 96,
+      "path": ".github/workflows/privacy-boundary.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest \\",
+      "line": 79,
+      "path": ".github/workflows/repo-state.yml"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest -c pytest.ini \\",
+      "line": 70,
+      "path": ".github/workflows/runtime-contract.yml"
+    },
+    {
+      "command": "python -m pytest -q tests/unit/audit_remediation/test_remote_ci_branch_integration_authority.py tests/unit/audit_remediation/test_hosted_ci_merge_readiness_authority.py --no-cov",
+      "line": 82,
+      "path": ".github/workflows/technical-audit-hosted-ci.yml"
+    }
+  ],
+  "module_pytest_workflow_count": 33,
+  "prd_id": "PRD-0.6",
+  "pytest_workflow_count": 33,
+  "pytest_workflow_missing_dev_install_count": 13,
+  "requirements_dev_install_workflow_count": 27,
+  "schema_version": "prd-workflow-command-hygiene-ci-inventory/v1",
+  "workflow_count": 80,
+  "workflow_files": [
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        69
+      ],
+      "path": ".github/workflows/api-envelope-error-contract.yml",
+      "sha256": "355f26f645650bc163f85241b02e4532138a44667d4d4353937379e8dca7e691"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/architecture-gates.yml",
+      "sha256": "952e878b5f450df966f5f5df72528cc246be0e5c8a717498ab4abc85e141dd34"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/audit-write-runtime-evidence.yml",
+      "sha256": "dd6c92c90ab7f953a52d905082d9cfa50d5282066e86c2441c3739670256613c"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        53
+      ],
+      "path": ".github/workflows/auth-boundary.yml",
+      "sha256": "0e5413f1273c2008ac2ca52467747ac368b09fbd7d83138b3b669006cf88f563"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 2,
+      "module_pytest_lines": [
+        69,
+        81
+      ],
+      "path": ".github/workflows/auth-refresh-db-proof.yml",
+      "sha256": "ffc090dce6fd0e14c2fd8271db6ea82e3c17c5b14131d735227b7d97a35ee91c"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/backend-consolidation.yml",
+      "sha256": "d541aef374d673aea7e6ec1a683a3437c3cb63d782af2c3682b9255aae4a8aba"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/backend-nightly-coverage.yml",
+      "sha256": "b702c0faa8577aba9af6941427b8f8606ef5c25dd53ece92ed69a4f80d56bbe7"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/beta-release-approval.yml",
+      "sha256": "ebd9841b03a48728318259c031bf55d6fc3a61cc28721c517da869dd0f0b90db"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        82
+      ],
+      "path": ".github/workflows/caps-source-topic-map.yml",
+      "sha256": "bce4a5302997f67dbfaf6f34afb0a9235f175e9301176327de8ef02e4c6f76ff"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 6,
+      "module_pytest_lines": [
+        178,
+        245,
+        371,
+        581,
+        606,
+        679
+      ],
+      "path": ".github/workflows/ci-cd.yml",
+      "sha256": "114c81ffe3a2af513765e59eb4403bd1b26203e6326487a5e75c8c12971451df"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/ci-core.yml",
+      "sha256": "edc6cc2bbd61862d66f14b9359fcda6dc08830538d3b63553d9e5e54d07cd465"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        25
+      ],
+      "path": ".github/workflows/ci_diagnostics_assessment.yml",
+      "sha256": "b0d029ed7dde07526408e7a9499568f6134069d392ae1255ace226ad2ef3f6a8"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 2,
+      "module_pytest_lines": [
+        249,
+        366
+      ],
+      "path": ".github/workflows/ci_lesson_quality.yml",
+      "sha256": "273651172810433bd26fd5e77751532cefff42cc1f7d22e3dd85ce37ec1a5f99"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        33
+      ],
+      "path": ".github/workflows/cluster-d-ci.yml",
+      "sha256": "026ab1443ba5d4f46e189fa2547e03bbcd94e2ba0dac5e2d9f89ccb74fa48c23"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        35
+      ],
+      "path": ".github/workflows/cluster-e-data-resilience.yml",
+      "sha256": "e5b1a6b44b9c0263f8966a112b84c6369645ab5acaf8cf10596acb52121b9733"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        40
+      ],
+      "path": ".github/workflows/cluster-f-ai-safety.yml",
+      "sha256": "83c26b7f6e441d3af7a1f08c6facb982cc9a15c2c9ceef272d5d2867cd82f8ab"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        47
+      ],
+      "path": ".github/workflows/cluster-g-frontend.yml",
+      "sha256": "95e15da55e0f7cfbd9245283dc9e432dd991e497639784725736b2ebf569d7d7"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        122
+      ],
+      "path": ".github/workflows/cluster-h-release-readiness.yml",
+      "sha256": "a66cbe77e53fa58050440778e774e784c5c92a8bbe4f0bf7ccdb4fa7d6d78e99"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/db-backup-dryrun.yml",
+      "sha256": "d15a43b336eff7caaf694b249bd7bf375415de82c8d19f61a2488fe2b1d72eba"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/db-backup-matrix.yml",
+      "sha256": "2255e7522e45a2a626f1bff6ee2d542a1ca776518bfe1d9a58f7bdc208f4ac14"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/db-backup-restore-rollback-evidence.yml",
+      "sha256": "f0f2f77313703af01915efa30652f939defc9b07c8de3fb2c51e5a1368dde9ab"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/dependency-scan.yml",
+      "sha256": "5463f9a19d0117753aeb07a9a94139d8bbb6184cb97f7a61da03ea05326c632c"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/deploy-frontend.yml",
+      "sha256": "3bd9f6274de8063c1fac7c9f7621502c68cd0a93cc2e1bf4fb0795df5d8d9a42"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/diag-score-live-audit.yml",
+      "sha256": "191df5053646d65450d1d1e1ac7c22c6b797ddb8cb103bbb94d39375a80aab1f"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/docs.yml",
+      "sha256": "22b097446aa8fa39bd726dfc9d3bf96800ffccfefd8cb2e3bb709dd638304901"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/documentation-governance.yml",
+      "sha256": "93d516150f5683d27048e167b8f4d9b72d8040449313952f4d977917434c1dfe"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/e2e.yml",
+      "sha256": "b3d728f6eb7b591e2cdf802f9ec22cccd4e473fc6c242a01a2ce85902b08d392"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/final-roadmap-reconciliation-closure.yml",
+      "sha256": "5aa3d4dcc76063a7104ebb1e8dff65bc4fce4c70efa5a590787ef93a6a6ae8ba"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/frontend-e2e.yml",
+      "sha256": "8231e5726229e9182ce63f3a79b7b29ceb9485e5d338ef4ab2e76a7a4c092525"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        158
+      ],
+      "path": ".github/workflows/item_bank_ci.yml",
+      "sha256": "f3ba66f2bcfbf49e7a42172acdd04465441914fac3b1be4a89ef985df7d30675"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/jwt-secret-rotation-evidence.yml",
+      "sha256": "7e0f35bfc7650524449234236eaee8ad274ef9d24670bc853eaf13183655a427"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        27
+      ],
+      "path": ".github/workflows/kg-roadmap-closure-report.yml",
+      "sha256": "fab7f5068b8ee8cf1c25fad6994e9003fa220fe219fc5a1456d58ae7f2df43f3"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/kg000-formal-kg-roadmap-approval.yml",
+      "sha256": "f33f876e0ed777c74b4fba6a715afa370e58cc9ec0e046846febf55b9d79f781"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/kg001-caps-graph-foundation.yml",
+      "sha256": "635f97a5a167bdeabe96b3a1ac8833a9ea371db2e5bbfe57fe8070acea40fa47"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/kg002-target-graph-generation.yml",
+      "sha256": "ca4345f1a1ed9d639eb605d578a3d596eb66632a431e21eeafefcdafb01e1108"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/kg003-learner-graph-shadow-mode.yml",
+      "sha256": "c52f4ee86e9d331ae513aab2a49e88fdc81108b64db684a902568dbc5a5852ec"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        36
+      ],
+      "path": ".github/workflows/kg004-gap-engine-intervention-planner.yml",
+      "sha256": "5c514e368d188e3a1a82b78a6650159e6ee35edc98159ff50dc6341bb9863166"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/kg005-graph-grounded-lesson-assessment-generation.yml",
+      "sha256": "9899c90e13ddc2c8982d440150736c7c35c56043d01a344897c2eaa09a256b29"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        25
+      ],
+      "path": ".github/workflows/kg006-tutor-study-plan-gamification-parent-alignment.yml",
+      "sha256": "b3dc1402eeb7aa4af5774201608e501a836a8f6c6e531844f50d44f7b28260ea"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/kg007-authority-switch-legacy-cleanup.yml",
+      "sha256": "77cb1e86ed81fb918a6861b3fe448dbd273fc2b251dabab13c3e25ddf47570e6"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        30
+      ],
+      "path": ".github/workflows/kg008-post-switch-optimisation-scale-review.yml",
+      "sha256": "b2df629ed9cae5fe54e00017a55feb4e571f0df903186f7b11658afd94ceae44"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        30
+      ],
+      "path": ".github/workflows/kgact001-controlled-runtime-kg-authority-activation.yml",
+      "sha256": "73e8cfbaa2e3dc29a03d0f617932366cda58253b4a8188117db400fbc344cd5f"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/learner-authz-coverage.yml",
+      "sha256": "688353cb1678866e19db750dcc3527c58b28a96ace261b7e53af4b6f8d583ece"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        82
+      ],
+      "path": ".github/workflows/learning-evidence.yml",
+      "sha256": "d9d735359248f75cc4aa93cd7b89e73e268f9f5cdfcf802114ea52b1a25128c2"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        44
+      ],
+      "path": ".github/workflows/legacy-route-guard.yml",
+      "sha256": "c551378d15b29d7a32043df8056a9ebb373061e7e13587a0c548000077384ca8"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/lighthouse.yml",
+      "sha256": "9a74f47e571260ad86d00d6137811a2c3103db488be70941803c9f9d95122dda"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/migration_check.yml",
+      "sha256": "f1b6bb177babcd7c8806e18649b0a13793348d3a99ecf105230729e67430a7fe"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/observability_check.yml",
+      "sha256": "e3daf5e840a71157436eeadac47fd0bfd87cdd5b0937b650ee22cba8e0870665"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/openapi-contract.yml",
+      "sha256": "d1f4cdf333ed10da9d99d027fc9e1c6ed602ed1955f39d4f6efdbc39a306e857"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/openapi-drift.yml",
+      "sha256": "89e434eeba0fdc421398db9a43ea08c2cb2f4c49c712ee7614aa9aec6c67d9f5"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        74
+      ],
+      "path": ".github/workflows/persistence-resilience.yml",
+      "sha256": "2c00a8297c7bff44d146c0f13a3c99d231d9668c35739fe3d7a603713a1776ea"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        36
+      ],
+      "path": ".github/workflows/popia-consent-audit.yml",
+      "sha256": "33ebbce218a4aa44ff4a5b5b85ad6c81c781291d772125736b8096ec635751a3"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        30
+      ],
+      "path": ".github/workflows/prd000-production-readiness-stream-authority.yml",
+      "sha256": "fe06506d433ebe65e4422f964bfea17a058740703e3637600afcd89d8d159ea5"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        40
+      ],
+      "path": ".github/workflows/prd001-canonical-current-state-documentation-refresh.yml",
+      "sha256": "766553fe99e2659f1efd98b4e274b0f527ac091259b4936851ff83ae1280e251"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        32
+      ],
+      "path": ".github/workflows/prd002-historical-report-stale-source-quarantine.yml",
+      "sha256": "343b6c94f4f08ae9a5bf1a6464361e34e2e0985f34cfd82f8c95b81e33a56630"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        39
+      ],
+      "path": ".github/workflows/prd003-documentation-housekeeping-ratchet-refresh.yml",
+      "sha256": "5ee3895f6d92b3d91fe16e89578930088011d3525e3839e18cc9beb20d500005"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        30
+      ],
+      "path": ".github/workflows/prd004-test-dependency-bootstrap-baseline.yml",
+      "sha256": "5be81f641959c70309824362cede591eb41a932ecbd0b55bb39561fd7d9634d1"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        27
+      ],
+      "path": ".github/workflows/prd005-test-failure-collection-stabilisation-register.yml",
+      "sha256": "9a7741990f5059c853f11ebaa1231c28874c3467dd86c352d6e0d475579fc9c6"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        44
+      ],
+      "path": ".github/workflows/prd006-workflow-command-hygiene-ci-inventory.yml",
+      "sha256": "46f4358f27588eb5c87e9a465c6425bb183c2fca5815cb9ca339401615b4923a"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 3,
+      "module_pytest_lines": [
+        62,
+        79,
+        96
+      ],
+      "path": ".github/workflows/privacy-boundary.yml",
+      "sha256": "439ebc3edaea84a78e8c54cdebd2403868d17b77d4e881bccfeca381dea9073e"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/release.yml",
+      "sha256": "e276911311a524373e277d36e31b43eacb999227fbfc3ec2f95ca0bdea8c7292"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        79
+      ],
+      "path": ".github/workflows/repo-state.yml",
+      "sha256": "22b01aee964ec984886ebee148ec67ae16e57f8fcaee9ee7bb01fca8ee2a3035"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/rr003-release-authority.yml",
+      "sha256": "e7cfe94842ceeb096a9f1910d80175742d0eb170ccab675c19bda9e06449ed0f"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/rr006-security-posture.yml",
+      "sha256": "99d12e3e3da7689fcfd32b2bdf0f83411bb7f459e9f00a2b3b2ef35c92137254"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/rr007-product-quality-gates.yml",
+      "sha256": "29119658cb66c444e0a33e04b439af961fc0585aaea892500e1b84d72a881cfb"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/rr008-operational-readiness.yml",
+      "sha256": "e48086060c5a1446041454e543b6612b4513dc333abce2800c80cdc6896d705f"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/rr009-governance-process.yml",
+      "sha256": "a7e4354c998bf89ccc6738bb7d1e1e1e775ab1bdabf508164a5787366524575e"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/rr010-beta-outcome-reporting.yml",
+      "sha256": "cf32bc39f9d48e52e243ae8bab07c297facdefd81de92e2084401424f746b66a"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/rr011-live-billing-provider-integration.yml",
+      "sha256": "3bd024841a3a4c2f35e8c2454b0c2a9ed2bd4f134782642d8b9cef8a90176e98"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/rr012-production-telemetry-dashboard.yml",
+      "sha256": "d4418c81cdfcd743437079e338fcd6241ca30bf9a17258042a6be48552e26336"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/rr013-advanced-mastery-model-research.yml",
+      "sha256": "92b81ba52e34fed01b978b09456f332e009b4628199440b175ed0ba5240f3a5b"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/rr014-public-beta-expansion.yml",
+      "sha256": "c1c04f56495a79483ea12f0f34676927cda39347a907c2226ed319f19daf7893"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/rr015-external-approvals.yml",
+      "sha256": "21b79e3c81cf9d6a3f4a797c02b856fdb1e36e0c7d7055e155e01b44345cee00"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/rr016-operational-drills.yml",
+      "sha256": "45c29eb9ad02d642d7969979451a37b989492ebeba97fe1c37a6833ebaa4e91c"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/rr017-release-safety-controls.yml",
+      "sha256": "85448e8833f1ddce89359a66b74e36a524a6488c9f99909826ca939b402b875e"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/rr018-trustworthy-beta-product-quality.yml",
+      "sha256": "3d2428f298307e53b77ef49e3d7d9c5284e983c8c22dccff0847c7e511c1c078"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": true,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        70
+      ],
+      "path": ".github/workflows/runtime-contract.yml",
+      "sha256": "592f8f4f289721ae1d067ee20f228ca445810786ae1542e1f3b4f9d407c0b77b"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/secrets-scan.yml",
+      "sha256": "889075ec1fa30afd97b028b76b54d56de8803a5336484bdfb9ac3a68d4551109"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": false,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 0,
+      "module_pytest_lines": [],
+      "path": ".github/workflows/staging-smoke.yml",
+      "sha256": "d30083a8b45d0156150e9fffdf6d5c5ebc2552a6652a7f8e35a9340395d5e46c"
+    },
+    {
+      "direct_pytest_command_count": 0,
+      "direct_pytest_lines": [],
+      "has_pytest": true,
+      "has_requirements_dev_install": false,
+      "module_pytest_command_count": 1,
+      "module_pytest_lines": [
+        82
+      ],
+      "path": ".github/workflows/technical-audit-hosted-ci.yml",
+      "sha256": "25b30d9c41c2c0676a18d4311eaca7cec527a7dc837b09fc808955110103f0bd"
+    }
+  ],
+  "workflows_missing_dev_install": [
+    ".github/workflows/api-envelope-error-contract.yml",
+    ".github/workflows/auth-boundary.yml",
+    ".github/workflows/auth-refresh-db-proof.yml",
+    ".github/workflows/ci_diagnostics_assessment.yml",
+    ".github/workflows/kg-roadmap-closure-report.yml",
+    ".github/workflows/kg004-gap-engine-intervention-planner.yml",
+    ".github/workflows/kg006-tutor-study-plan-gamification-parent-alignment.yml",
+    ".github/workflows/kg008-post-switch-optimisation-scale-review.yml",
+    ".github/workflows/kgact001-controlled-runtime-kg-authority-activation.yml",
+    ".github/workflows/learning-evidence.yml",
+    ".github/workflows/persistence-resilience.yml",
+    ".github/workflows/popia-consent-audit.yml",
+    ".github/workflows/technical-audit-hosted-ci.yml"
+  ]
+}
