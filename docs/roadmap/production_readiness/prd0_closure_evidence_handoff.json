@@ -1,0 +1,95 @@
+{
+  "all_prd0_predecessors_valid": true,
+  "authority_boundaries": {
+    "authority_switch_executed": true,
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "new_kg_slice_authorised": false,
+    "prd1_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_authority_switch_authorised": true,
+    "runtime_kg_implementation_claimed": true
+  },
+  "captured_at": "2026-07-08T13:19:32.478770+00:00",
+  "handoff": {
+    "next_authorised_item": "PRD-1",
+    "no_prd1_implementation_performed": true,
+    "prd0_closed": true,
+    "prd1_handoff_authorised": true
+  },
+  "prd0_verifier_results": {
+    "PRD-0.0": {
+      "authority_valid": true,
+      "errors": [],
+      "valid": true,
+      "warnings": []
+    },
+    "PRD-0.1": {
+      "authority_valid": true,
+      "errors": [],
+      "valid": true,
+      "warnings": []
+    },
+    "PRD-0.2": {
+      "authority_valid": true,
+      "errors": [],
+      "valid": true,
+      "warnings": []
+    },
+    "PRD-0.3": {
+      "authority_valid": true,
+      "errors": [],
+      "valid": true,
+      "warnings": []
+    },
+    "PRD-0.4": {
+      "authority_valid": true,
+      "errors": [],
+      "valid": true,
+      "warnings": []
+    },
+    "PRD-0.5": {
+      "authority_valid": true,
+      "errors": [],
+      "valid": true,
+      "warnings": []
+    },
+    "PRD-0.6": {
+      "authority_valid": true,
+      "errors": [],
+      "valid": true,
+      "warnings": []
+    },
+    "PRD-0.7": {
+      "authority_valid": true,
+      "errors": [],
+      "valid": true,
+      "warnings": []
+    },
+    "PRD-0.8": {
+      "authority_valid": true,
+      "errors": [],
+      "valid": true,
+      "warnings": []
+    },
+    "PRD-0.9": {
+      "authority_valid": true,
+      "errors": [],
+      "valid": true,
+      "warnings": []
+    }
+  },
+  "prd_id": "PRD-0.10",
+  "register_summary": {
+    "last_recorded_item": "PRD-0.10",
+    "next_authorised_item": "PRD-1",
+    "prd0_sequence_complete": true,
+    "prd1_handoff_ready": true
+  },
+  "schema_version": "prd0-closure-evidence-handoff/v1"
+}
