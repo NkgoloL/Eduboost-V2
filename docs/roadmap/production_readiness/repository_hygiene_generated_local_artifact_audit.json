@@ -1,0 +1,469 @@
+{
+  "authority_boundaries": {
+    "authority_switch_executed": true,
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "new_kg_slice_authorised": false,
+    "prd1_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_authority_switch_authorised": true,
+    "runtime_kg_implementation_claimed": true
+  },
+  "captured_at": "2026-07-08T12:26:25.945825+00:00",
+  "cleanup_policy": {
+    "artifact_deletion_authorised": false,
+    "audit_only": true,
+    "file_deletion_authorised": false,
+    "generated_local_cleanup_authorised": false,
+    "no_cleanup_performed": true,
+    "prd0_closure_deferred_to_prd010": true,
+    "repository_history_rewrite_authorised": false
+  },
+  "generated_local_artifact_candidates": [
+    {
+      "artifact_class": "coverage_report",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": true,
+      "file_count": 1,
+      "ignored_by_policy": true,
+      "is_dir": false,
+      "is_file": true,
+      "path": "coverage.xml",
+      "policy": "regenerate_not_source_authority",
+      "total_bytes_estimate": 176177
+    },
+    {
+      "artifact_class": "coverage_report",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": false,
+      "file_count": 0,
+      "ignored_by_policy": true,
+      "is_dir": false,
+      "is_file": false,
+      "path": "htmlcov",
+      "policy": "local_output",
+      "total_bytes_estimate": 0
+    },
+    {
+      "artifact_class": "coverage_report",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": true,
+      "file_count": 1,
+      "ignored_by_policy": true,
+      "is_dir": false,
+      "is_file": true,
+      "path": ".coverage",
+      "policy": "local_output",
+      "total_bytes_estimate": 135168
+    },
+    {
+      "artifact_class": "test_cache",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": true,
+      "file_count": 6,
+      "ignored_by_policy": true,
+      "is_dir": true,
+      "is_file": false,
+      "path": ".pytest_cache",
+      "policy": "local_output",
+      "total_bytes_estimate": 9536
+    },
+    {
+      "artifact_class": "typecheck_cache",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": false,
+      "file_count": 0,
+      "ignored_by_policy": true,
+      "is_dir": false,
+      "is_file": false,
+      "path": ".mypy_cache",
+      "policy": "local_output",
+      "total_bytes_estimate": 0
+    },
+    {
+      "artifact_class": "lint_cache",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": true,
+      "file_count": 4,
+      "ignored_by_policy": true,
+      "is_dir": true,
+      "is_file": false,
+      "path": ".ruff_cache",
+      "policy": "local_output",
+      "total_bytes_estimate": 579
+    },
+    {
+      "artifact_class": "test_cache",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": false,
+      "file_count": 0,
+      "ignored_by_policy": true,
+      "is_dir": false,
+      "is_file": false,
+      "path": ".hypothesis",
+      "policy": "local_output",
+      "total_bytes_estimate": 0
+    },
+    {
+      "artifact_class": "browser_test_report",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": false,
+      "file_count": 0,
+      "ignored_by_policy": true,
+      "is_dir": false,
+      "is_file": false,
+      "path": "playwright-report",
+      "policy": "local_output",
+      "total_bytes_estimate": 0
+    },
+    {
+      "artifact_class": "browser_test_output",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": false,
+      "file_count": 0,
+      "ignored_by_policy": true,
+      "is_dir": false,
+      "is_file": false,
+      "path": "test-results",
+      "policy": "local_output",
+      "total_bytes_estimate": 0
+    },
+    {
+      "artifact_class": "runtime_logs",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": true,
+      "file_count": 64,
+      "ignored_by_policy": true,
+      "is_dir": true,
+      "is_file": false,
+      "path": "logs",
+      "policy": "local_output_or_evidence_candidate",
+      "total_bytes_estimate": 25182544
+    },
+    {
+      "artifact_class": "temporary_files",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": true,
+      "file_count": 178,
+      "ignored_by_policy": true,
+      "is_dir": true,
+      "is_file": false,
+      "path": "temp",
+      "policy": "local_output",
+      "total_bytes_estimate": 1593453
+    },
+    {
+      "artifact_class": "temporary_files",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": false,
+      "file_count": 0,
+      "ignored_by_policy": true,
+      "is_dir": false,
+      "is_file": false,
+      "path": ".tmp",
+      "policy": "local_output",
+      "total_bytes_estimate": 0
+    },
+    {
+      "artifact_class": "temporary_files",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": false,
+      "file_count": 0,
+      "ignored_by_policy": true,
+      "is_dir": false,
+      "is_file": false,
+      "path": "scratch",
+      "policy": "local_output",
+      "total_bytes_estimate": 0
+    },
+    {
+      "artifact_class": "runtime_state",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": true,
+      "file_count": 71,
+      "ignored_by_policy": true,
+      "is_dir": true,
+      "is_file": false,
+      "path": "var",
+      "policy": "local_output",
+      "total_bytes_estimate": 2563084
+    },
+    {
+      "artifact_class": "package_metadata",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": true,
+      "file_count": 4,
+      "ignored_by_policy": false,
+      "is_dir": true,
+      "is_file": false,
+      "path": "eduboost.egg-info",
+      "policy": "generated_build_metadata",
+      "total_bytes_estimate": 9502
+    },
+    {
+      "artifact_class": "frontend_build_output",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": false,
+      "file_count": 0,
+      "ignored_by_policy": true,
+      "is_dir": false,
+      "is_file": false,
+      "path": "app/frontend/out",
+      "policy": "generated_build_output",
+      "total_bytes_estimate": 0
+    },
+    {
+      "artifact_class": "frontend_coverage",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": false,
+      "file_count": 0,
+      "ignored_by_policy": true,
+      "is_dir": false,
+      "is_file": false,
+      "path": "app/frontend/coverage",
+      "policy": "local_output",
+      "total_bytes_estimate": 0
+    },
+    {
+      "artifact_class": "data_export",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": false,
+      "file_count": 0,
+      "ignored_by_policy": true,
+      "is_dir": false,
+      "is_file": false,
+      "path": "data/exports",
+      "policy": "local_output",
+      "total_bytes_estimate": 0
+    },
+    {
+      "artifact_class": "temporary_data",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": true,
+      "file_count": 60,
+      "ignored_by_policy": true,
+      "is_dir": true,
+      "is_file": false,
+      "path": "data/temp",
+      "policy": "local_output",
+      "total_bytes_estimate": 103524
+    },
+    {
+      "artifact_class": "synthetic_data_output",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": false,
+      "file_count": 0,
+      "ignored_by_policy": true,
+      "is_dir": false,
+      "is_file": false,
+      "path": "data/synthetic",
+      "policy": "local_output",
+      "total_bytes_estimate": 0
+    },
+    {
+      "artifact_class": "llm_artifact_output",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": false,
+      "file_count": 0,
+      "ignored_by_policy": true,
+      "is_dir": false,
+      "is_file": false,
+      "path": "artifacts/llm",
+      "policy": "local_output",
+      "total_bytes_estimate": 0
+    },
+    {
+      "artifact_class": "docs_build_output",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": true,
+      "file_count": 1,
+      "ignored_by_policy": true,
+      "is_dir": true,
+      "is_file": false,
+      "path": "docs/api/_build",
+      "policy": "generated_build_output",
+      "total_bytes_estimate": 766
+    },
+    {
+      "artifact_class": "generated_infra_json",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": false,
+      "file_count": 0,
+      "ignored_by_policy": true,
+      "is_dir": false,
+      "is_file": false,
+      "path": "bicep/container_apps.json",
+      "policy": "generated_from_bicep_source",
+      "total_bytes_estimate": 0
+    },
+    {
+      "artifact_class": "local_backup",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": true,
+      "file_count": 1,
+      "ignored_by_policy": false,
+      "is_dir": true,
+      "is_file": false,
+      "path": "backups-local-test",
+      "policy": "local_backup",
+      "total_bytes_estimate": 192
+    },
+    {
+      "artifact_class": "local_backup",
+      "count_truncated": false,
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "exists": true,
+      "file_count": 2,
+      "ignored_by_policy": false,
+      "is_dir": true,
+      "is_file": false,
+      "path": "backups-matrix-test",
+      "policy": "local_backup",
+      "total_bytes_estimate": 384
+    }
+  ],
+  "prd_id": "PRD-0.9",
+  "repository_hygiene_policy_document": "docs/engineering/repository_hygiene.md",
+  "repository_hygiene_policy_document_refreshed": true,
+  "schema_version": "prd-repository-hygiene-generated-local-artifact-audit/v1",
+  "summary": {
+    "configured_generated_local_path_count": 25,
+    "coverage_artifact_present": true,
+    "egg_info_present": true,
+    "ignored_present_generated_local_path_count": 9,
+    "local_backup_path_count": 2,
+    "present_generated_local_path_count": 12,
+    "suspicious_top_level_entry_count": 9,
+    "terminal_output_artifact_count": 9,
+    "top_level_entry_count": 92,
+    "total_generated_local_bytes_estimate": 29774909,
+    "unignored_present_generated_local_path_count": 3
+  },
+  "suspicious_top_level_entries": [
+    {
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "is_dir": false,
+      "is_file": true,
+      "path": ".coverage",
+      "reasons": [
+        "backspace_overstrike_sequence"
+      ],
+      "size_bytes": 135168
+    },
+    {
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "is_dir": false,
+      "is_file": true,
+      "path": ".coveragerc",
+      "reasons": [
+        "branch_or_git_output"
+      ],
+      "size_bytes": 194
+    },
+    {
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "is_dir": false,
+      "is_file": true,
+      "path": "SECURITY.md",
+      "reasons": [
+        "branch_or_git_output"
+      ],
+      "size_bytes": 2955
+    },
+    {
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "is_dir": false,
+      "is_file": true,
+      "path": "coped technical delivery directories (frontend, backend, database, deployment, testing, observability, disaster_recovery, operations_support, runbooks, content_factory, caps, curriculum, diagnostics, irt, learning_science, ai)",
+      "reasons": [
+        "ansi_escape_sequence",
+        "branch/status command output captured with a truncated filename",
+        "branch_or_git_output"
+      ],
+      "size_bytes": 9877
+    },
+    {
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "is_dir": false,
+      "is_file": true,
+      "path": "coverage.xml",
+      "reasons": [
+        "branch_or_git_output"
+      ],
+      "size_bytes": 176177
+    },
+    {
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "is_dir": false,
+      "is_file": true,
+      "path": "cripts",
+      "reasons": [
+        "backspace_overstrike_sequence",
+        "pager/help output captured as a top-level file"
+      ],
+      "size_bytes": 13067
+    },
+    {
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "is_dir": false,
+      "is_file": true,
+      "path": "render.yaml",
+      "reasons": [
+        "branch_or_git_output"
+      ],
+      "size_bytes": 1736
+    },
+    {
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "is_dir": false,
+      "is_file": true,
+      "path": "tatus",
+      "reasons": [
+        "ansi_escape_sequence",
+        "branch/status command output captured as a top-level file",
+        "branch_or_git_output"
+      ],
+      "size_bytes": 9877
+    },
+    {
+      "disposition": "inventory_only_no_cleanup_authorised",
+      "is_dir": false,
+      "is_file": true,
+      "path": "ubprocess, sys",
+      "reasons": [
+        "ansi_escape_sequence",
+        "patch/diff or command-output fragment captured as a top-level file"
+      ],
+      "size_bytes": 162
+    }
+  ]
+}
