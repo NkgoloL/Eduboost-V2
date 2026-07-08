@@ -3222,3 +3222,19 @@ prd009-repository-hygiene-generated-local-artifact-audit-check:
 prd009-repository-hygiene-generated-local-artifact-audit-capture:
 	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/capture_prd009_repository_hygiene_generated_local_artifact_audit_evidence.py --claim-prd009-repository-hygiene-generated-local-artifact-audit --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch "$${TARGET_BRANCH:-master}" --require-valid --json
 # End PRD-0.9 repository hygiene and generated/local artifact audit
+
+# PRD-0.10 PRD-0 closure evidence and PRD-1 handoff
+.PHONY: prd010-prd0-closure-evidence-handoff-audit
+prd010-prd0-closure-evidence-handoff-audit:
+	$(PYTHON) scripts/production_readiness/audit_prd010_prd0_closure_evidence_handoff.py --json
+
+.PHONY: prd010-prd0-closure-evidence-handoff-check
+prd010-prd0-closure-evidence-handoff-check:
+	$(PYTHON) -m py_compile scripts/production_readiness/apply_prd010_prd0_closure_evidence_handoff.py scripts/production_readiness/audit_prd010_prd0_closure_evidence_handoff.py scripts/roadmap_reconciliation/capture_prd010_prd0_closure_evidence_handoff.py scripts/roadmap_reconciliation/verify_prd010_prd0_closure_evidence_handoff.py
+	PYTHONPATH=. $(PYTHON) -m pytest -q tests/unit/roadmap_reconciliation/test_prd010_prd0_closure_evidence_handoff.py --no-cov
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_prd010_prd0_closure_evidence_handoff.py --authority-only --json
+
+.PHONY: prd010-prd0-closure-evidence-handoff-capture
+prd010-prd0-closure-evidence-handoff-capture:
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/capture_prd010_prd0_closure_evidence_handoff.py --claim-prd010-prd0-closure-evidence-handoff --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch "$${TARGET_BRANCH:-master}" --require-valid --json
+# End PRD-0.10 PRD-0 closure evidence and PRD-1 handoff

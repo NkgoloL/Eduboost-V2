@@ -71,11 +71,11 @@ def audit(root: Path | str = Path(".")) -> dict[str, Any]:
     if register.get("stream_id") != "PRD-PRODUCTION-READINESS":
         errors.append("production readiness register must identify PRD-PRODUCTION-READINESS")
     ALLOWED_LAST_RECORDED_ITEMS = {f"PRD-0.{idx}" for idx in range(1, 11)}
-    ALLOWED_NEXT_AUTHORISED_ITEMS = {f"PRD-0.{idx}" for idx in range(2, 11)}
+    ALLOWED_NEXT_AUTHORISED_ITEMS = {f"PRD-0.{idx}" for idx in range(2, 11)} | {"PRD-1"}
     if register.get("last_recorded_item") not in ALLOWED_LAST_RECORDED_ITEMS:
         errors.append("production readiness register last_recorded_item must be a valid PRD-0.x state")
     if register.get("next_authorised_item") not in ALLOWED_NEXT_AUTHORISED_ITEMS:
-        errors.append("production readiness register next_authorised_item must be a valid PRD-0.x state")
+        errors.append("production readiness register next_authorised_item must be a valid PRD-0.x state, or PRD-1 after PRD-0.10 closure")
     for key in TRUE_KEYS:
         if boundaries.get(key) is not True:
             errors.append(f"register boundary must preserve true runtime KG flag: {key}")
