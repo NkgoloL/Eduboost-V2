@@ -3278,3 +3278,12 @@ prd102-104-required-checks-workflow-release-gate-check:
 
 prd102-104-required-checks-workflow-release-gate-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd102_104_required_checks_workflow_release_gate_convergence_evidence.py --claim-prd102-104-required-checks-workflow-release-gate-convergence --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch master --require-valid --json
+
+# PRD-1.5-1.9 CI convergence/release-readiness/handoff
+.PHONY: prd105-109-ci-convergence-release-readiness-handoff-check prd105-109-ci-convergence-release-readiness-handoff-capture
+prd105-109-ci-convergence-release-readiness-handoff-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd105_109_ci_convergence_release_readiness_handoff.py --authority-only --json
+
+prd105-109-ci-convergence-release-readiness-handoff-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd105_109_ci_convergence_release_readiness_handoff_evidence.py --claim-prd105-109-ci-convergence-release-readiness-handoff --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch master --require-valid --json
+# End PRD-1.5-1.9 CI convergence/release-readiness/handoff

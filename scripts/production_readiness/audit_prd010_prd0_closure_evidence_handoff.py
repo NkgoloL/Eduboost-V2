@@ -87,7 +87,7 @@ def all_predecessors_valid(results: dict[str, dict[str, Any]]) -> bool:
 def prd1_subslice_started(register: dict[str, Any]) -> bool:
     last_item = str(register.get("last_recorded_item", ""))
     next_item = str(register.get("next_authorised_item", ""))
-    return last_item.startswith("PRD-1.") and next_item.startswith("PRD-1.")
+    return last_item.startswith("PRD-1.") and (next_item.startswith("PRD-1.") or next_item == "PRD-2")
 
 
 def prd0_sequence_complete(register: dict[str, Any]) -> bool:

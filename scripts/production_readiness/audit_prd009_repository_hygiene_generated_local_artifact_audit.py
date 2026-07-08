@@ -303,7 +303,7 @@ def audit(root: Path = Path(".")) -> dict[str, Any]:
         and (
             (register.get("last_recorded_item") == PRD_ID and register.get("next_authorised_item") == "PRD-0.10")
             or (register.get("last_recorded_item") == "PRD-0.10" and register.get("next_authorised_item") == "PRD-1")
-            or (str(register.get("last_recorded_item", "")).startswith("PRD-1.") and str(register.get("next_authorised_item", "")).startswith("PRD-1."))
+            or (str(register.get("last_recorded_item", "")).startswith("PRD-1.") and (str(register.get("next_authorised_item", "")).startswith("PRD-1.") or register.get("next_authorised_item") == "PRD-2"))
         )
         and record.get("no_cleanup_performed") is True
         and record.get("no_file_deletion_performed") is True

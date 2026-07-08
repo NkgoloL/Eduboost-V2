@@ -40,6 +40,8 @@ def prd1_register_position(prd1_register: dict[str, Any]) -> str:
         return "after_prd1_1_before_convergence_capture"
     if pair == ("PRD-1.4", "PRD-1.5"):
         return "prd1_2_1_4_recorded_prd1_5_authorised"
+    if pair == ("PRD-1.9", "PRD-2"):
+        return "prd1_closed_after_prd1_4"
     return "unexpected"
 
 
@@ -55,7 +57,7 @@ def sequence_items_recorded(prd1_register: dict[str, Any]) -> bool:
 def prd1_5_authorised(prd1_register: dict[str, Any]) -> bool:
     for item in prd1_register.get("prd1_sequence", []):
         if item.get("prd_id") == "PRD-1.5":
-            return item.get("authorised") is True and item.get("status") in {"authorised", "next_authorised"}
+            return item.get("authorised") is True and item.get("status") in {"authorised", "next_authorised", "recorded"}
     return False
 
 
@@ -137,8 +139,10 @@ def audit(root: Path = Path(".")) -> dict[str, Any]:
         and evidence_recorded
         and sequence_items_recorded(prd1_register)
         and prd1_5_authorised(prd1_register)
-        and register.get("last_recorded_item") == "PRD-1.4"
-        and register.get("next_authorised_item") == "PRD-1.5"
+        and (
+            (register.get("last_recorded_item") == "PRD-1.4" and register.get("next_authorised_item") == "PRD-1.5")
+            or (register.get("last_recorded_item") == "PRD-1.9" and register.get("next_authorised_item") == "PRD-2")
+        )
         and record.get("next_authorised_item") == "PRD-1.5"
         and record.get("prd1_5_authorised") is True
     )
