@@ -1,0 +1,2158 @@
+{
+  "authority_boundaries": {
+    "authority_switch_executed": true,
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "new_kg_slice_authorised": false,
+    "prd2_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_authority_switch_authorised": true,
+    "runtime_kg_implementation_claimed": true
+  },
+  "branch_protection_inventory": {
+    "reference_count": 183,
+    "references": [
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/adr/ADR-012-ci-cd-infrastructure-deployment.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/adr/ADR-014-testing-release-evidence-quality-gates.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/approvals/rr015_external_approvals_policy.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/archive/INTEGRATION_COMPLETE.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/archive/roadmaps-or-todos/20260622T193052Z/todos/todo.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection",
+          "required check"
+        ],
+        "path": "docs/archive/roadmaps-or-todos/EDUBOOST_NEXT_BATCH_ALL_OUTSTANDING_TASKS.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/backlog/backlog_audit.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/backlog/critical_path.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/backlog/first_pr_batch.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/backlog/pr_001_implementation_summary.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection",
+          "required check"
+        ],
+        "path": "docs/backlog/production_readiness/00_repository_state_and_canonical_source_of_truth.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/backlog/production_readiness/02_backend_architecture_modular_monolith_and_dependency_boundaries.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/backlog/production_readiness/04_popia_consent_privacy_data-subject_rights_and_audit.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/backlog/production_readiness/14_testing_release_evidence_and_quality_gates.md"
+      },
+      {
+        "matched_terms": [
+          "required_checks"
+        ],
+        "path": "docs/beta_outcomes/rr010_beta_metrics_summary.json"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/beta_outcomes/rr010_beta_outcome_reporting_policy.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/billing/rr011_live_billing_provider_integration_policy.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection",
+          "required status",
+          "status check"
+        ],
+        "path": "docs/codemaps/alembic_migration_and_ddl_management_startup_ddl_repairs_migration_integrity_and_alembic_workflow.md"
+      },
+      {
+        "matched_terms": [
+          "status check"
+        ],
+        "path": "docs/codemaps/eduboost_frontend_next_js_learner_platform_with_auth_ai_lessons_diagnostics_and_popia_compliance.md"
+      },
+      {
+        "matched_terms": [
+          "status check"
+        ],
+        "path": "docs/codemaps/eduboost_frontend_next_js_learning_platform_with_auth_ai_lessons_diagnostics_and_pwa.md"
+      },
+      {
+        "matched_terms": [
+          "status check"
+        ],
+        "path": "docs/codemaps/eduboost_v2_core_infrastructure_runtime_primitives_and_cross_cutting_concerns.md"
+      },
+      {
+        "matched_terms": [
+          "status check"
+        ],
+        "path": "docs/codemaps/eduboost_v2_service_layer_architecture.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/codemaps/pytest_configuration_and_test_suite_structure.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/content_factory/promotion_gates.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/current_state.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection",
+          "required check"
+        ],
+        "path": "docs/deployment/ci_pipeline_contract.md"
+      },
+      {
+        "matched_terms": [
+          "status check"
+        ],
+        "path": "docs/disaster_recovery/restore_runbook_contract.md"
+      },
+      {
+        "matched_terms": [
+          "status check"
+        ],
+        "path": "docs/disaster_recovery/runbooks/database_restore.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection",
+          "required check",
+          "required status",
+          "status check"
+        ],
+        "path": "docs/docs_inventory.json"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/docs_inventory.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection",
+          "required check"
+        ],
+        "path": "docs/engineering/prd0_to_prd1_handoff.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection",
+          "required check"
+        ],
+        "path": "docs/engineering/prd1_ci_inventory_authority.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/engineering/technical_debt/rr005_technical_debt_burndown_policy.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection",
+          "required check"
+        ],
+        "path": "docs/generated/documentation_intelligence/docs_inventory.json"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/generated/documentation_intelligence/docs_inventory.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/generated/documentation_intelligence/sanity_checks.json"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/generated/documentation_inventory.json"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/generated/legacy-inventories/20260622T193052Z/docs_inventory.md"
+      },
+      {
+        "matched_terms": [
+          "required check",
+          "required status"
+        ],
+        "path": "docs/generated/release-inventories/20260622T193052Z/audit_callsite_inventory.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/governance/rr009_branch_protection_release_docs.md"
+      },
+      {
+        "matched_terms": [
+          "required_checks"
+        ],
+        "path": "docs/governance/rr009_governance_process_manifest.json"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/governance/rr009_governance_process_policy.md"
+      },
+      {
+        "matched_terms": [
+          "required_checks"
+        ],
+        "path": "docs/knowledge_graph/caps_graph/kg001_caps_graph_review_manifest.json"
+      },
+      {
+        "matched_terms": [
+          "status check"
+        ],
+        "path": "docs/operations/SYSTEM_STARTUP_GUIDE.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/operations/beta/controlled_beta_consent_pack_checklist.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/operations/cicd_staging_evidence.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/operations/cluster_h_release_evidence_checksum_index.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/operations/drills/rr016_operational_drills_policy.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/operations/external_evidence_checklist.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/operations/readiness/rr008_operational_readiness_policy.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/operations/staging_smoke_evidence_manifest.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection",
+          "required check"
+        ],
+        "path": "docs/operations/todo_implementation_plan.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/pr/combined_runtime_wiring_pr_checklist.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/product/launch_scope.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/product_quality/rr007_product_quality_gate_policy.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/product_quality/trustworthy_beta/rr018_trustworthy_beta_quality_policy.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/production_readiness_roadmap.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection",
+          "required check"
+        ],
+        "path": "docs/project_status.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/public_beta/rr014_public_beta_expansion_policy.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/release/EduBoost_V2_Post_Baseline_Remediation_Roadmap.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/release/EduBoost_V2_Production_Readiness_Technical_Assessment.md"
+      },
+      {
+        "matched_terms": [
+          "required check",
+          "required status"
+        ],
+        "path": "docs/release/audit_callsite_inventory.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/release/audit_trail_index.md"
+      },
+      {
+        "matched_terms": [
+          "required_checks"
+        ],
+        "path": "docs/release/beta_readiness_status.json"
+      },
+      {
+        "matched_terms": [
+          "required_checks"
+        ],
+        "path": "docs/release/branch_protection_evidence.json"
+      },
+      {
+        "matched_terms": [
+          "branch protection",
+          "required check",
+          "required_checks"
+        ],
+        "path": "docs/release/branch_protection_evidence.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/release/content_readiness_status.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/release/current/README.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection",
+          "required check"
+        ],
+        "path": "docs/release/current/branch_protection_evidence.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/release/final_closure_certificate.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/release/first_audit_runtime_wiring_evidence.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/release/known_issues.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/release/migration_evidence.md"
+      },
+      {
+        "matched_terms": [
+          "status check"
+        ],
+        "path": "docs/release/next_execution_queue_after_1751_1790.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/release/no_false_closure_status_after_1671_1710.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/release/no_false_closure_status_after_1951_1990.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/release/release_bundle_v1.0.0-rc2.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/release/release_state_snapshot.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/release/rollback_drill_evidence.md"
+      },
+      {
+        "matched_terms": [
+          "required status"
+        ],
+        "path": "docs/release/runtime_wiring_approval_checklist.md"
+      },
+      {
+        "matched_terms": [
+          "required check",
+          "required_checks"
+        ],
+        "path": "docs/release-evidence/production-readiness/prd-100-ci-release-gate-stream-authority/prd1_ci_release_gate_register_snapshot.json"
+      },
+      {
+        "matched_terms": [
+          "required_checks"
+        ],
+        "path": "docs/release-evidence/production-readiness/prd-100-ci-release-gate-stream-authority/prd1_ci_release_gate_stream_authority_snapshot.json"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/release-evidence/production-readiness/prd-100-ci-release-gate-stream-authority/production_readiness_register_prd1_0_snapshot.json"
+      },
+      {
+        "matched_terms": [
+          "required_checks"
+        ],
+        "path": "docs/release-evidence/production-readiness/prd-100-ci-release-gate-stream-authority/verification.json"
+      },
+      {
+        "matched_terms": [
+          "required_checks"
+        ],
+        "path": "docs/release-evidence/roadmap-reconciliation/final-roadmap-reconciliation-closure/raw_final_roadmap_reconciliation_closure.json"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/release-evidence/roadmap-reconciliation/roadmap-reconciliation-slice/raw/outstanding_work_register_snapshot.md"
+      },
+      {
+        "matched_terms": [
+          "branch protection"
+        ],
+        "path": "docs/release-evidence/roadmap-reconciliation/rr-001-atlas-phase-status-reconciliation/raw/docs__roadmap__reconciliation__outstanding_work_register.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/release-evidence/roadmap-reconciliation/rr-005-technical-debt-burndown/evidence_index.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/release-evidence/roadmap-reconciliation/rr-007-product-quality-gates/evidence_index.md"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/release-evidence/roadmap-reconciliation/rr-008-operational-readiness/evidence_index.md"
+      },
+      {
+        "matched_terms": [
+          "required_checks"
+        ],
+        "path": "docs/release-evidence/roadmap-reconciliation/rr-008-operational-readiness/verification.json"
+      },
+      {
+        "matched_terms": [
+          "branch protection",
+          "required check"
+        ],
+        "path": "docs/release-evidence/roadmap-reconciliation/rr-009-governance-process-reconciliation/evidence_index.md"
+      },
+      {
+        "matched_terms": [
+          "required_checks"
+        ],
+        "path": "docs/release-evidence/roadmap-reconciliation/rr-009-governance-process-reconciliation/verification.json"
+      },
+      {
+        "matched_terms": [
+          "required_checks"
+        ],
+        "path": "docs/release-evidence/roadmap-reconciliation/rr-010-beta-outcome-reporting/beta_metrics_summary.json"
+      },
+      {
+        "matched_terms": [
+          "required_checks"
+        ],
+        "path": "docs/release-evidence/roadmap-reconciliation/rr-010-beta-outcome-reporting/beta_outcome_audit.json"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/release-evidence/roadmap-reconciliation/rr-010-beta-outcome-reporting/evidence_index.md"
+      },
+      {
+        "matched_terms": [
+          "required_checks"
+        ],
+        "path": "docs/release-evidence/roadmap-reconciliation/rr-010-beta-outcome-reporting/verification.json"
+      },
+      {
+        "matched_terms": [
+          "required_checks"
+        ],
+        "path": "docs/release-evidence/roadmap-reconciliation/rr-011-live-billing-provider-integration/billing_provider_integration_record.json"
+      },
+      {
+        "matched_terms": [
+          "required check"
+        ],
+        "path": "docs/release-evidence/roadmap-reconciliation/rr-011-live-billing-provider-integration/evidence_index.md"
+      },
+      {
+        "matched_terms": [
+          "required_checks"
+        ],
+        "path": "docs/release-evidence/roadmap-reconciliation/rr-011-live-billing-provider-integration/verification.json"
+      }
+    ]
+  },
+  "captured_at": "2026-07-08T15:54:49.467225+00:00",
+  "implementation_boundaries": {
+    "branch_protection_modified": false,
+    "ci_workflow_changes_performed": false,
+    "openapi_reconciliation_performed": false,
+    "release_gate_enforced": false,
+    "required_check_classification_performed": false,
+    "required_checks_enforced": false,
+    "workflow_canonicalisation_performed": false
+  },
+  "makefile_inventory": {
+    "ci_like_target_count": 645,
+    "exists": true,
+    "mentions_openapi": true,
+    "mentions_pytest": true,
+    "path": "Makefile",
+    "target_count": 911,
+    "targets_sample": [
+      "SHELL",
+      "help",
+      "dev",
+      "PR_TEST_MARKERS",
+      "test",
+      "test-fast",
+      "test-integration",
+      "test-coverage",
+      "test-coverage-full",
+      "test-governance",
+      "repo-hygiene-check",
+      "lint",
+      "typecheck",
+      "migrate",
+      "wait-db",
+      "migration-smoke",
+      "docs",
+      "openapi",
+      "openapi-check",
+      "route-inventory",
+      "route-inventory-check",
+      "runtime-check",
+      "verify-repo-state",
+      "recommended-operating-model-check",
+      "todo-implementation-plan-check",
+      "project-assistance-status",
+      "project-assistance-status-check",
+      "pr002r-check",
+      "beta-release-readiness-contract-check",
+      "release-candidate-evidence-sweep-check",
+      "frontend-verification-evidence-check",
+      "database-resilience-evidence-check",
+      "privacy-legal-evidence-check",
+      "caps-ai-safety-evidence-check",
+      "api-envelope-error-contract-check",
+      "migration-check",
+      "schema-integrity",
+      "db-repository-check",
+      "clean",
+      "phase2-authz-check",
+      "learner-authz-matrix",
+      "learner-authz-check",
+      "phase2-authz-closure",
+      "audit-contract-check",
+      "auth-boundary-check",
+      "popia-consent-gate-check",
+      "popia-consent-audit-check",
+      "popia-consent-boundary-check",
+      "popia-consent-order-check",
+      "popia-consent-rejection-audit-check",
+      "popia-consent-source-check",
+      "popia-consent-closure-check",
+      "privacy-boundary-check",
+      "popia-legal-check",
+      "environment-security-check",
+      "deployment-readiness-docs-check",
+      "cluster-d-ci-check",
+      "production-secret-placeholder-check",
+      "dev-only-endpoint-check",
+      "cluster-d-closure-check",
+      "staging-release-gate-check",
+      "cicd-staging-check",
+      "release-evidence-artifacts-check",
+      "post-deploy-staging-smoke-check",
+      "staging-operations-release-evidence-check",
+      "database-backup-contract-check",
+      "database-restore-drill-docs-check",
+      "cluster-e-data-resilience-check",
+      "database-backup-dry-run",
+      "database-restore-dry-run",
+      "database-backup-manifest",
+      "database-restore-evidence",
+      "database-backup-integrity-check",
+      "database-restore-integrity-check",
+      "backup-redis-dr-check"
+    ],
+    "uses_python3_m_pytest": true,
+    "uses_python_m_pytest": false
+  },
+  "next_authorised_item": "PRD-1.2",
+  "openapi_inventory": {
+    "docs_openapi_present": true,
+    "paths": [
+      {
+        "exists": true,
+        "path": "openapi.json",
+        "size_bytes": 742887
+      },
+      {
+        "exists": true,
+        "path": "docs/openapi.json",
+        "size_bytes": 742887
+      }
+    ],
+    "root_openapi_present": true
+  },
+  "prd1_register_summary": {
+    "last_recorded_item": "PRD-1.1",
+    "next_authorised_item": "PRD-1.2",
+    "prd1_1_recorded": true
+  },
+  "prd_id": "PRD-1.1",
+  "production_readiness_register_summary": {
+    "last_recorded_item": "PRD-1.1",
+    "next_authorised_item": "PRD-1.2",
+    "position": "prd1_1_recorded"
+  },
+  "schema_version": "prd1-ci-inventory-authority/v1",
+  "stream_id": "PRD-1-CI-RELEASE-GATE-CONVERGENCE",
+  "summary": {
+    "branch_protection_reference_count": 183,
+    "deployment_reference_workflow_count": 52,
+    "docs_openapi_present": true,
+    "main_workflow_count": 24,
+    "makefile_ci_like_target_count": 645,
+    "master_workflow_count": 47,
+    "openapi_reference_workflow_count": 5,
+    "pytest_reference_workflow_count": 41,
+    "python3_m_pytest_workflow_count": 36,
+    "python_m_pytest_workflow_count": 3,
+    "release_branch_workflow_count": 24,
+    "release_event_workflow_count": 2,
+    "root_openapi_present": true,
+    "workflow_count": 86
+  },
+  "workflow_inventory": [
+    {
+      "ci_terms": [
+        "pytest"
+      ],
+      "line_count": 76,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/api-envelope-error-contract.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 66,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/architecture-gates.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 79,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/audit-write-runtime-evidence.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "pytest"
+      ],
+      "line_count": 55,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/auth-boundary.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "pytest",
+        "ruff"
+      ],
+      "line_count": 107,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/auth-refresh-db-proof.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": true
+    },
+    {
+      "ci_terms": [],
+      "line_count": 49,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/backend-consolidation.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "alembic",
+        "coverage"
+      ],
+      "line_count": 66,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/backend-nightly-coverage.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 51,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/beta-release-approval.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "coverage",
+        "pytest"
+      ],
+      "line_count": 92,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/caps-source-topic-map.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "alembic",
+        "coverage",
+        "docker",
+        "mypy",
+        "playwright",
+        "pytest",
+        "ruff"
+      ],
+      "line_count": 699,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": true,
+      "path": ".github/workflows/ci-cd.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "openapi",
+        "pytest"
+      ],
+      "line_count": 92,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": true,
+      "mentions_pytest": true,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/ci-core.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "pytest"
+      ],
+      "line_count": 25,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/ci_diagnostics_assessment.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "alembic",
+        "docker",
+        "playwright",
+        "pytest"
+      ],
+      "line_count": 377,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/ci_lesson_quality.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "pytest"
+      ],
+      "line_count": 43,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/cluster-d-ci.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "pytest"
+      ],
+      "line_count": 50,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/cluster-e-data-resilience.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "coverage",
+        "pytest"
+      ],
+      "line_count": 61,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/cluster-f-ai-safety.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "playwright",
+        "pytest"
+      ],
+      "line_count": 79,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/cluster-g-frontend.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "pytest"
+      ],
+      "line_count": 239,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/cluster-h-release-readiness.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 35,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/db-backup-dryrun.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 67,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/db-backup-matrix.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "docker"
+      ],
+      "line_count": 101,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/db-backup-restore-rollback-evidence.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 139,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/dependency-scan.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "docker"
+      ],
+      "line_count": 64,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/deploy-frontend.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 76,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/diag-score-live-audit.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 37,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/docs.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 41,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/documentation-governance.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "docker",
+        "playwright"
+      ],
+      "line_count": 114,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/e2e.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 22,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/final-roadmap-reconciliation-closure.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "playwright"
+      ],
+      "line_count": 64,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/frontend-e2e.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "alembic",
+        "coverage",
+        "pytest"
+      ],
+      "line_count": 270,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/item_bank_ci.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": true
+    },
+    {
+      "ci_terms": [],
+      "line_count": 60,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/jwt-secret-rotation-evidence.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile",
+        "pytest"
+      ],
+      "line_count": 28,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/kg-roadmap-closure-report.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile"
+      ],
+      "line_count": 31,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/kg000-formal-kg-roadmap-approval.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile"
+      ],
+      "line_count": 31,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/kg001-caps-graph-foundation.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 24,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/kg002-target-graph-generation.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile"
+      ],
+      "line_count": 33,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/kg003-learner-graph-shadow-mode.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile",
+        "pytest"
+      ],
+      "line_count": 38,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/kg004-gap-engine-intervention-planner.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile"
+      ],
+      "line_count": 31,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/kg005-graph-grounded-lesson-assessment-generation.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "pytest"
+      ],
+      "line_count": 25,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/kg006-tutor-study-plan-gamification-parent-alignment.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile"
+      ],
+      "line_count": 31,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/kg007-authority-switch-legacy-cleanup.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile",
+        "pytest"
+      ],
+      "line_count": 31,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/kg008-post-switch-optimisation-scale-review.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile",
+        "pytest"
+      ],
+      "line_count": 31,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/kgact001-controlled-runtime-kg-authority-activation.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "coverage"
+      ],
+      "line_count": 32,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/learner-authz-coverage.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "pytest"
+      ],
+      "line_count": 88,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/learning-evidence.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "pytest"
+      ],
+      "line_count": 53,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/legacy-route-guard.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 47,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/lighthouse.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "alembic"
+      ],
+      "line_count": 184,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/migration_check.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 98,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/observability_check.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "openapi"
+      ],
+      "line_count": 81,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": true,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/openapi-contract.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "openapi"
+      ],
+      "line_count": 58,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": true,
+      "mentions_pytest": false,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/openapi-drift.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "alembic",
+        "pytest"
+      ],
+      "line_count": 77,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/persistence-resilience.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "pytest"
+      ],
+      "line_count": 49,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/popia-consent-audit.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile",
+        "pytest"
+      ],
+      "line_count": 33,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/prd000-production-readiness-stream-authority.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile",
+        "pytest"
+      ],
+      "line_count": 43,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/prd001-canonical-current-state-documentation-refresh.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile",
+        "pytest"
+      ],
+      "line_count": 33,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/prd002-historical-report-stale-source-quarantine.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile",
+        "pytest"
+      ],
+      "line_count": 47,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/prd003-documentation-housekeeping-ratchet-refresh.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile",
+        "pytest"
+      ],
+      "line_count": 31,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/prd004-test-dependency-bootstrap-baseline.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile",
+        "pytest"
+      ],
+      "line_count": 33,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/prd005-test-failure-collection-stabilisation-register.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile",
+        "pytest"
+      ],
+      "line_count": 52,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/prd006-workflow-command-hygiene-ci-inventory.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "openapi",
+        "pytest"
+      ],
+      "line_count": 59,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": true,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/prd007-openapi-generated-artifact-canonicalisation.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "pytest"
+      ],
+      "line_count": 55,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/prd008-branch-release-naming-reconciliation.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "pytest"
+      ],
+      "line_count": 55,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/prd009-repository-hygiene-generated-local-artifact-audit.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "pytest"
+      ],
+      "line_count": 63,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/prd010-prd0-closure-evidence-handoff.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile",
+        "pytest"
+      ],
+      "line_count": 36,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/prd100-ci-release-gate-stream-authority.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile",
+        "pytest"
+      ],
+      "line_count": 31,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/prd101-ci-inventory-authority.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "pytest"
+      ],
+      "line_count": 96,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/privacy-boundary.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 170,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": true,
+      "path": ".github/workflows/release.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "pytest"
+      ],
+      "line_count": 93,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/repo-state.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "coverage",
+        "openapi",
+        "py_compile",
+        "pytest"
+      ],
+      "line_count": 82,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": true,
+      "mentions_pytest": true,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/rr003-release-authority.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile"
+      ],
+      "line_count": 60,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/rr006-security-posture.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "playwright"
+      ],
+      "line_count": 24,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/rr007-product-quality-gates.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile"
+      ],
+      "line_count": 30,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/rr008-operational-readiness.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 26,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/rr009-governance-process.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 23,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/rr010-beta-outcome-reporting.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile"
+      ],
+      "line_count": 29,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/rr011-live-billing-provider-integration.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile"
+      ],
+      "line_count": 39,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/rr012-production-telemetry-dashboard.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile"
+      ],
+      "line_count": 28,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/rr013-advanced-mastery-model-research.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 23,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/rr014-public-beta-expansion.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile"
+      ],
+      "line_count": 30,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/rr015-external-approvals.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile"
+      ],
+      "line_count": 27,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/rr016-operational-drills.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile"
+      ],
+      "line_count": 27,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/rr017-release-safety-controls.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile"
+      ],
+      "line_count": 32,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/rr018-trustworthy-beta-product-quality.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "pytest"
+      ],
+      "line_count": 74,
+      "mentions_deployment_or_promotion": true,
+      "mentions_main": false,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": true,
+      "mentions_release_event": false,
+      "path": ".github/workflows/runtime-contract.yml",
+      "uses_python3_m_pytest": true,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 65,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/secrets-scan.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [],
+      "line_count": 59,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": false,
+      "mentions_master": false,
+      "mentions_openapi": false,
+      "mentions_pytest": false,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/staging-smoke.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": false
+    },
+    {
+      "ci_terms": [
+        "py_compile",
+        "pytest"
+      ],
+      "line_count": 82,
+      "mentions_deployment_or_promotion": false,
+      "mentions_main": true,
+      "mentions_master": true,
+      "mentions_openapi": false,
+      "mentions_pytest": true,
+      "mentions_release_branch": false,
+      "mentions_release_event": false,
+      "path": ".github/workflows/technical-audit-hosted-ci.yml",
+      "uses_python3_m_pytest": false,
+      "uses_python_m_pytest": true
+    }
+  ]
+}

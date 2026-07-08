@@ -1,0 +1,23 @@
+# PRD-1.1 CI Inventory Authority Evidence
+
+- Captured at: 2026-07-08T15:54:49.467225+00:00
+- Evidence owner: Nkgolo Lebelo
+- Target branch: master
+- Valid: True
+- Authority valid: True
+- PRD-1.0 valid: True
+- Workflow count: 86
+- master workflow references: 47
+- main workflow references: 24
+- release-branch workflow references: 24
+- release-event workflow references: 2
+- deployment/promotion workflow references: 52
+- OpenAPI workflow references: 5
+- pytest workflow references: 41
+- Next authorised item: PRD-1.2
+- Required-check classification performed by PRD-1.1: false
+- Workflow canonicalisation performed by PRD-1.1: false
+- CI workflow changes performed by PRD-1.1: false
+- Release gate enforcement performed by PRD-1.1: false
+- PRD-2 implementation performed by PRD-1.1: false
+- Production release/deployment/beta/billing/live learner traffic/new KG scope: false
