@@ -1,0 +1,55 @@
+name: PRD-0.9 Repository Hygiene Generated Local Artifact Audit
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - "docs/engineering/repository_hygiene.md"
+      - "docs/roadmap/production_readiness/**"
+      - "scripts/production_readiness/*prd009*"
+      - "scripts/roadmap_reconciliation/*prd009*"
+      - "tests/unit/roadmap_reconciliation/test_prd009_repository_hygiene_generated_local_artifact_audit.py"
+      - ".github/workflows/prd009-repository-hygiene-generated-local-artifact-audit.yml"
+      - "Makefile"
+  push:
+    branches:
+      - master
+    paths:
+      - "docs/engineering/repository_hygiene.md"
+      - "docs/roadmap/production_readiness/**"
+      - "scripts/production_readiness/*prd009*"
+      - "scripts/roadmap_reconciliation/*prd009*"
+      - "tests/unit/roadmap_reconciliation/test_prd009_repository_hygiene_generated_local_artifact_audit.py"
+      - ".github/workflows/prd009-repository-hygiene-generated-local-artifact-audit.yml"
+      - "Makefile"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prd009-repository-hygiene-generated-local-artifact-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install -r requirements/dev.txt
+
+      - name: Verify PRD-0.9 authority
+        run: |
+          PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd009_repository_hygiene_generated_local_artifact_audit.py --authority-only --json
+
+      - name: Run PRD-0.9 focused tests
+        run: |
+          PYTHONPATH=. python3 -m pytest -q tests/unit/roadmap_reconciliation/test_prd009_repository_hygiene_generated_local_artifact_audit.py --no-cov

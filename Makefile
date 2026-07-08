@@ -3205,3 +3205,20 @@ prd008-branch-release-naming-reconciliation-check:
 .PHONY: prd008-branch-release-naming-reconciliation-capture
 prd008-branch-release-naming-reconciliation-capture:
 	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/capture_prd008_branch_release_naming_reconciliation_evidence.py --claim-prd008-branch-release-naming-reconciliation --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch "$${TARGET_BRANCH:-master}" --require-valid
+
+
+# PRD-0.9 repository hygiene and generated/local artifact audit
+.PHONY: prd009-repository-hygiene-generated-local-artifact-audit-audit
+prd009-repository-hygiene-generated-local-artifact-audit-audit:
+	$(PYTHON) scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py --json
+
+.PHONY: prd009-repository-hygiene-generated-local-artifact-audit-check
+prd009-repository-hygiene-generated-local-artifact-audit-check:
+	$(PYTHON) -m py_compile scripts/production_readiness/apply_prd009_repository_hygiene_generated_local_artifact_audit.py scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py scripts/roadmap_reconciliation/capture_prd009_repository_hygiene_generated_local_artifact_audit_evidence.py scripts/roadmap_reconciliation/verify_prd009_repository_hygiene_generated_local_artifact_audit.py
+	PYTHONPATH=. $(PYTHON) -m pytest -q tests/unit/roadmap_reconciliation/test_prd009_repository_hygiene_generated_local_artifact_audit.py --no-cov
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_prd009_repository_hygiene_generated_local_artifact_audit.py --authority-only --json
+
+.PHONY: prd009-repository-hygiene-generated-local-artifact-audit-capture
+prd009-repository-hygiene-generated-local-artifact-audit-capture:
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/capture_prd009_repository_hygiene_generated_local_artifact_audit_evidence.py --claim-prd009-repository-hygiene-generated-local-artifact-audit --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch "$${TARGET_BRANCH:-master}" --require-valid --json
+# End PRD-0.9 repository hygiene and generated/local artifact audit
