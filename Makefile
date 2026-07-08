@@ -3193,3 +3193,15 @@ prd007-openapi-generated-artifact-canonicalisation-check:
 
 prd007-openapi-generated-artifact-canonicalisation-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd007_openapi_generated_artifact_canonicalisation_evidence.py --claim-prd007-openapi-generated-artifact-canonicalisation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+.PHONY: prd008-branch-release-naming-reconciliation-audit
+prd008-branch-release-naming-reconciliation-audit:
+	$(PYTHON) scripts/production_readiness/audit_prd008_branch_release_naming_reconciliation.py
+
+.PHONY: prd008-branch-release-naming-reconciliation-check
+prd008-branch-release-naming-reconciliation-check:
+	$(PYTHON) scripts/roadmap_reconciliation/verify_prd008_branch_release_naming_reconciliation.py --authority-only
+
+.PHONY: prd008-branch-release-naming-reconciliation-capture
+prd008-branch-release-naming-reconciliation-capture:
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/capture_prd008_branch_release_naming_reconciliation_evidence.py --claim-prd008-branch-release-naming-reconciliation --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch "$${TARGET_BRANCH:-master}" --require-valid

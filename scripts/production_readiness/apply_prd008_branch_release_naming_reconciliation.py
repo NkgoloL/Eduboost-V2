@@ -1,4 +1,19 @@
-# Branching and Release Naming Policy
+#!/usr/bin/env python3
+"""Apply PRD-0.8 branch/release naming reconciliation.
+
+The script only refreshes the canonical branching policy document. It does not
+rename repository branches, rewrite historical workflow compatibility triggers,
+create release tags, or enable deployment.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+
+BRANCHING_DOC = Path("docs/engineering/branching.md")
+
+BRANCHING_DOC_TEXT = """# Branching and Release Naming Policy
 
 **Owner:** Platform / Engineering
 **Status:** Canonical after PRD-0.8
@@ -77,3 +92,41 @@ production release authorised: false
 release tag authorised: false
 deployment authorised: false
 ```
+"""
+
+
+def apply(root: Path = Path("."), write: bool = False) -> dict:
+    path = root / BRANCHING_DOC
+    current = path.read_text(encoding="utf-8") if path.exists() else ""
+    changed = current != BRANCHING_DOC_TEXT
+    if write:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(BRANCHING_DOC_TEXT, encoding="utf-8")
+    return {
+        "branching_policy_path": str(BRANCHING_DOC),
+        "changed": changed,
+        "canonical_trunk_branch": "master",
+        "legacy_main_alias_policy": "compatibility-only",
+        "release_branch_pattern": "release/**",
+        "production_release_authorised": False,
+        "deployment_authorised": False,
+        "release_tag_authorised": False,
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--root", default=".")
+    parser.add_argument("--write", action="store_true")
+    parser.add_argument("--json", action="store_true")
+    args = parser.parse_args()
+    result = apply(Path(args.root), write=args.write)
+    if args.json:
+        print(json.dumps(result, indent=2, sort_keys=True))
+    else:
+        print(f"PRD-0.8 branching policy checked. changed={result['changed']}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
