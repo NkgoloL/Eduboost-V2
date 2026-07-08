@@ -1,0 +1,96 @@
+{
+  "authorised_by_prd0_10": true,
+  "authority_boundaries": {
+    "authority_switch_executed": true,
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "new_kg_slice_authorised": false,
+    "prd2_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_tag_authorised": false,
+    "runtime_kg_authority_switch_authorised": true,
+    "runtime_kg_implementation_claimed": true
+  },
+  "canonical_trunk_branch": "master",
+  "goal": "make CI production-reliable",
+  "implementation_boundaries": {
+    "branch_protection_modified": false,
+    "ci_workflow_changes_performed": false,
+    "openapi_reconciliation_performed": false,
+    "release_gate_enforced": false,
+    "required_checks_enforced": false,
+    "workflow_canonicalisation_performed": false
+  },
+  "last_recorded_item": null,
+  "next_authorised_item": "PRD-1.0",
+  "parent_stream_id": "PRD-PRODUCTION-READINESS",
+  "prd1_sequence": [
+    {
+      "authorised": true,
+      "name": "CI/release-gate stream authority and register",
+      "prd_id": "PRD-1.0",
+      "status": "authority_pending"
+    },
+    {
+      "authorised": false,
+      "name": "CI inventory authority",
+      "prd_id": "PRD-1.1",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "name": "Required check classification",
+      "prd_id": "PRD-1.2",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "name": "Workflow canonicalisation",
+      "prd_id": "PRD-1.3",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "name": "Release gate definition",
+      "prd_id": "PRD-1.4",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "name": "CI convergence evidence",
+      "prd_id": "PRD-1.5",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "name": "Release readiness register",
+      "prd_id": "PRD-1.6",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "name": "Authority reconciliation",
+      "prd_id": "PRD-1.7",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "name": "Final evidence capture",
+      "prd_id": "PRD-1.8",
+      "status": "blocked"
+    },
+    {
+      "authorised": false,
+      "name": "Controlled handoff to PRD-2 Runtime KG Integration and Persistence",
+      "prd_id": "PRD-1.9",
+      "status": "blocked"
+    }
+  ],
+  "schema_version": "prd1-ci-release-gate-register/v1",
+  "status": "prd1_stream_authority_ready",
+  "stream_id": "PRD-1-CI-RELEASE-GATE-CONVERGENCE"
+}

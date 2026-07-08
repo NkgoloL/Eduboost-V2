@@ -84,6 +84,12 @@ def all_predecessors_valid(results: dict[str, dict[str, Any]]) -> bool:
     return bool(results) and all(item.get("valid") is True for item in results.values())
 
 
+def prd1_subslice_started(register: dict[str, Any]) -> bool:
+    last_item = str(register.get("last_recorded_item", ""))
+    next_item = str(register.get("next_authorised_item", ""))
+    return last_item.startswith("PRD-1.") and next_item.startswith("PRD-1.")
+
+
 def prd0_sequence_complete(register: dict[str, Any]) -> bool:
     sequence = register.get("prd0_sequence", [])
     expected = [f"PRD-0.{idx}" for idx in range(0, 11)]
@@ -94,11 +100,11 @@ def prd0_sequence_complete(register: dict[str, Any]) -> bool:
 
 
 def prd1_handoff_ready(register: dict[str, Any]) -> bool:
-    if register.get("next_authorised_item") != "PRD-1":
+    if register.get("next_authorised_item") != "PRD-1" and not prd1_subslice_started(register):
         return False
     for item in register.get("production_readiness_sequence", []):
         if item.get("prd_id") == "PRD-1":
-            return item.get("authorised") is True and item.get("status") in {"authorised", "next_authorised"}
+            return item.get("authorised") is True and item.get("status") in {"authorised", "next_authorised", "in_progress", "recorded"}
     return False
 
 
@@ -122,7 +128,7 @@ def closure_snapshot(root: Path, captured_at: str | None = None) -> dict[str, An
             **{key: False for key in FALSE_KEYS},
         },
         "handoff": {
-            "prd0_closed": register.get("last_recorded_item") == PRD_ID,
+            "prd0_closed": register.get("last_recorded_item") == PRD_ID or prd1_subslice_started(register),
             "next_authorised_item": register.get("next_authorised_item"),
             "prd1_handoff_authorised": prd1_handoff_ready(register),
             "no_prd1_implementation_performed": True,
@@ -143,12 +149,14 @@ def audit(root: Path = Path(".")) -> dict[str, Any]:
         if not (root / path).exists():
             errors.append(f"missing required PRD-0.10 file: {path}")
 
-    if register.get("last_recorded_item") not in {"PRD-0.9", "PRD-0.10"}:
+    if register.get("last_recorded_item") not in {"PRD-0.9", "PRD-0.10"} | {f"PRD-1.{idx}" for idx in range(0, 10)}:
         errors.append("production readiness register must be positioned at PRD-0.9 or terminal PRD-0.10")
     if register.get("last_recorded_item") == "PRD-0.9" and register.get("next_authorised_item") != PRD_ID:
         errors.append("production readiness register must authorise PRD-0.10 after PRD-0.9")
     if register.get("last_recorded_item") == PRD_ID and register.get("next_authorised_item") != "PRD-1":
         errors.append("terminal PRD-0.10 register state must authorise PRD-1 next")
+    if prd1_subslice_started(register) and not prd1_handoff_ready(register):
+        errors.append("advanced PRD-1 register state must preserve PRD-1 handoff readiness")
 
     for prd_id, result in results.items():
         if result.get("valid") is not True:
@@ -205,8 +213,10 @@ def audit(root: Path = Path(".")) -> dict[str, Any]:
         and record.get("prd0_sequence_complete") is True
         and record.get("prd1_handoff_authorised") is True
         and record.get("next_authorised_item") == "PRD-1"
-        and register.get("last_recorded_item") == PRD_ID
-        and register.get("next_authorised_item") == "PRD-1"
+        and (
+            (register.get("last_recorded_item") == PRD_ID and register.get("next_authorised_item") == "PRD-1")
+            or prd1_subslice_started(register)
+        )
         and prd0_sequence_complete(register)
         and prd1_handoff_ready(register)
     )
