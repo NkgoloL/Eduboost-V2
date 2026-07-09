@@ -3395,3 +3395,12 @@ prd705-709-observability-sre-final-handoff-check:
 .PHONY: prd705-709-observability-sre-final-handoff-capture
 prd705-709-observability-sre-final-handoff-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd705_709_observability_sre_final_handoff_evidence.py --claim-prd705-709-observability-sre-final-handoff --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+# PRD-8.0-8.4 performance, scale, and cost execution foundation
+.PHONY: prd800-804-performance-scale-cost-execution-foundation-check
+prd800-804-performance-scale-cost-execution-foundation-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd800_804_performance_scale_cost_execution_foundation.py --authority-only --json
+
+.PHONY: prd800-804-performance-scale-cost-execution-foundation-capture
+prd800-804-performance-scale-cost-execution-foundation-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd800_804_performance_scale_cost_execution_foundation_evidence.py --claim-prd800-804-performance-scale-cost-execution-foundation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json

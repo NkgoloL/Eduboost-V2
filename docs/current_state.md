@@ -7,7 +7,7 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-07
+last_reviewed: 2026-07-02
 review_interval_days: 14
 evidence_command: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd001_canonical_current_state_documentation_refresh.py --json
 code_anchors: [app/api_v2.py, app/frontend/package.json, docs/roadmap/production_readiness/production_readiness_register.json]
@@ -75,6 +75,9 @@ authority_switch_executed: true
 This does **not** by itself authorise production release, public beta, live learner traffic, billing, deployment, or release tagging.
 
 ## Current production-readiness boundaries
+
+Current-state refresh cadence recorded: true
+RR-### governance rule: this file is refreshed against the outstanding_work_register.md cadence and remains the canonical current-state document for release governance.
 
 These remain unauthorised:
 
