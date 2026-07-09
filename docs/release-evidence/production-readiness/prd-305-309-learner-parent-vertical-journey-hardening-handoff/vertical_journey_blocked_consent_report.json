@@ -1,0 +1,44 @@
+{
+  "accepted": false,
+  "blockers": [
+    "diagnostic_not_completed",
+    "guardian_consent_inactive",
+    "lesson_not_generated"
+  ],
+  "completion_ratio": 0.071,
+  "consent_gate_clear": false,
+  "contract_version": "prd3.5-3.9/vertical-journey-hardening/v1",
+  "guardian_id": "prd3-final-guardian",
+  "incomplete_milestones": [
+    "guardian_consent_active",
+    "learner_onboarding_completed",
+    "diagnostic_completed",
+    "runtime_kg_gap_profile_available",
+    "lesson_generated",
+    "lesson_completed",
+    "assessment_attempted",
+    "mastery_updated",
+    "study_plan_generated",
+    "gamification_profile_available",
+    "parent_progress_report_available",
+    "popia_export_path_available",
+    "popia_erasure_path_available"
+  ],
+  "learner_id": "prd3-blocked-learner",
+  "live_learner_traffic_authorised": false,
+  "parent_report_visible": false,
+  "popia_erasure_visible": false,
+  "popia_export_visible": false,
+  "prd4_handoff_authorised": false,
+  "prd4_implementation_authorised": false,
+  "prd_id": "PRD-3.5-3.9",
+  "production_release_authorised": false,
+  "recommended_next_actions": [
+    "Capture active guardian consent",
+    "Complete learner onboarding",
+    "Complete diagnostic assessment",
+    "Build learner KG gap profile",
+    "Generate a personalised lesson"
+  ],
+  "runtime_kg_gap_profile_visible": false
+}
