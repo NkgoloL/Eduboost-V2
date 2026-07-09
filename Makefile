@@ -3386,3 +3386,12 @@ prd700-observability-sre-incident-readiness-foundation-audit:
 .PHONY: prd700-observability-sre-incident-readiness-foundation-capture
 prd700-observability-sre-incident-readiness-foundation-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd700_704_observability_sre_incident_readiness_foundation_evidence.py --claim-prd700-704-observability-sre-incident-readiness-foundation --require-valid --json
+
+# PRD-7.5-7.9 observability/SRE final assurance/handoff
+.PHONY: prd705-709-observability-sre-final-handoff-check
+prd705-709-observability-sre-final-handoff-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd705_709_observability_sre_final_handoff.py --authority-only --json
+
+.PHONY: prd705-709-observability-sre-final-handoff-capture
+prd705-709-observability-sre-final-handoff-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd705_709_observability_sre_final_handoff_evidence.py --claim-prd705-709-observability-sre-final-handoff --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
