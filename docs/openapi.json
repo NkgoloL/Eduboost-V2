@@ -2395,6 +2395,11 @@
             "title": "Ranked Gaps",
             "type": "array"
           },
+          "runtime_kg_projection": {
+            "additionalProperties": true,
+            "title": "Runtime Kg Projection",
+            "type": "object"
+          },
           "session_id": {
             "title": "Session Id",
             "type": "string"
@@ -14203,6 +14208,54 @@
         ]
       }
     },
+    "/api/v2/content-quality/grade4-mathematics/final-acceptance": {
+      "get": {
+        "description": "Return the final PRD-4 educational-readiness acceptance view.\n\nThe endpoint confirms PRD-4 closure readiness while preserving the\nhandoff boundary: PRD-5 is next, but PRD-5 implementation is not\nauthorised here.",
+        "operationId": "get_grade4_maths_content_quality_final_acceptance_api_v2_content_quality_grade4_mathematics_final_acceptance_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Grade4 Maths Content Quality Final Acceptance Api V2 Content Quality Grade4 Mathematics Final Acceptance Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Grade4 Maths Content Quality Final Acceptance",
+        "tags": [
+          "content-quality"
+        ]
+      }
+    },
+    "/api/v2/content-quality/grade4-mathematics/readiness": {
+      "get": {
+        "description": "Return a deterministic Grade 4 Maths content-quality readiness view.\n\nThe endpoint exposes the PRD-4 readiness contract. It does not authorise\nlive learner traffic, public beta, deployment, or production release.",
+        "operationId": "get_grade4_maths_content_quality_readiness_api_v2_content_quality_grade4_mathematics_readiness_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Grade4 Maths Content Quality Readiness Api V2 Content Quality Grade4 Mathematics Readiness Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Grade4 Maths Content Quality Readiness",
+        "tags": [
+          "content-quality"
+        ]
+      }
+    },
     "/api/v2/content-review/artifacts/{artifact_id}/answer-key-verifications": {
       "post": {
         "operationId": "record_answer_key_verification_api_v2_content_review_artifacts__artifact_id__answer_key_verifications_post",
@@ -16654,6 +16707,54 @@
         ]
       }
     },
+    "/api/v2/observability-sre/final-assurance": {
+      "get": {
+        "description": "Return deterministic PRD-7 final observability/SRE assurance.\n\nThis endpoint exposes final dashboard, alert, SLO, incident, on-call,\nbackup/restore, rollback, privacy escalation, telemetry-redaction, and\nsupport-communications evidence acceptance. It does not authorise PRD-8,\npublic beta, live learner traffic, billing, deployment, release tags, or\nproduction release.",
+        "operationId": "get_observability_sre_final_assurance_api_v2_observability_sre_final_assurance_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Observability Sre Final Assurance Api V2 Observability Sre Final Assurance Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Observability Sre Final Assurance",
+        "tags": [
+          "observability-sre"
+        ]
+      }
+    },
+    "/api/v2/observability-sre/readiness": {
+      "get": {
+        "description": "Return deterministic PRD-7 observability/SRE readiness.\n\nThis endpoint exposes dashboards, alerts, SLOs, runbooks, on-call,\nbackup/restore/rollback, privacy escalation, and support-communications\nreadiness. It does not connect to telemetry backends, modify infrastructure,\nauthorise PRD-8, authorise public beta, live learner traffic, billing,\ndeployment, release tags, or production release.",
+        "operationId": "get_observability_sre_readiness_api_v2_observability_sre_readiness_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Observability Sre Readiness Api V2 Observability Sre Readiness Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Observability Sre Readiness",
+        "tags": [
+          "observability-sre"
+        ]
+      }
+    },
     "/api/v2/onboarding/archetype": {
       "post": {
         "operationId": "submit_onboarding_api_v2_onboarding_archetype_post",
@@ -16984,6 +17085,54 @@
         "summary": "Export Parent Access Bundle",
         "tags": [
           "parents"
+        ]
+      }
+    },
+    "/api/v2/performance-scale-cost/final-assurance": {
+      "get": {
+        "description": "Return deterministic PRD-8 final performance, scale, and cost assurance.\n\nThis endpoint exposes final load-test, runtime-KG query-performance,\ndatabase/index, LLM-cost, queue/backpressure, capacity, and frontend-budget\nevidence acceptance. It does not authorise PRD-9 implementation, billing,\nlive payment processing, live learner traffic, deployment, release tags,\npublic beta, or production release.",
+        "operationId": "get_performance_scale_cost_final_assurance_api_v2_performance_scale_cost_final_assurance_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Performance Scale Cost Final Assurance Api V2 Performance Scale Cost Final Assurance Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Performance Scale Cost Final Assurance",
+        "tags": [
+          "performance-scale-cost"
+        ]
+      }
+    },
+    "/api/v2/performance-scale-cost/readiness": {
+      "get": {
+        "description": "Return deterministic PRD-8 performance, scale, and cost readiness.\n\nThis endpoint exposes load-test, runtime-KG query-performance, database/index,\nLLM cost, queue/backpressure, frontend-budget, and capacity-plan readiness. It\ndoes not run load tests, modify infrastructure, authorise PRD-9, authorise\npublic beta, live learner traffic, billing, deployment, release tags, or\nproduction release.",
+        "operationId": "get_performance_scale_cost_readiness_api_v2_performance_scale_cost_readiness_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Performance Scale Cost Readiness Api V2 Performance Scale Cost Readiness Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Performance Scale Cost Readiness",
+        "tags": [
+          "performance-scale-cost"
         ]
       }
     },
@@ -17601,6 +17750,102 @@
         ]
       }
     },
+    "/api/v2/privacy-operations/live-data/final-assurance": {
+      "get": {
+        "description": "Return deterministic PRD-5 final POPIA privacy assurance.\n\nThis endpoint closes PRD-5 privacy assurance visibility and records\nreadiness for PRD-6 handoff. It does not authorise PRD-6\nimplementation, live learner traffic, deployment, billing, public beta,\nrelease tags, or production release.",
+        "operationId": "get_popia_live_data_operations_final_assurance_api_v2_privacy_operations_live_data_final_assurance_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Popia Live Data Operations Final Assurance Api V2 Privacy Operations Live Data Final Assurance Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Popia Live Data Operations Final Assurance",
+        "tags": [
+          "privacy-operations"
+        ]
+      }
+    },
+    "/api/v2/privacy-operations/live-data/readiness": {
+      "get": {
+        "description": "Return deterministic POPIA live-data operations readiness.\n\nThis endpoint exposes PRD-5 readiness controls. It does not authorise\npublic beta, live learner traffic, billing, deployment, or production\nrelease.",
+        "operationId": "get_popia_live_data_operations_readiness_api_v2_privacy_operations_live_data_readiness_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Popia Live Data Operations Readiness Api V2 Privacy Operations Live Data Readiness Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Popia Live Data Operations Readiness",
+        "tags": [
+          "privacy-operations"
+        ]
+      }
+    },
+    "/api/v2/security-assurance/final-assurance": {
+      "get": {
+        "description": "Return deterministic PRD-6 final security assurance.\n\nThis endpoint exposes final scanner, SBOM, secret-rotation, abuse-test,\nauthorization-negative-test, and external/independent review acceptance.\nIt does not run scanners, modify branch protection, authorise PRD-7,\nauthorise public beta, live learner traffic, billing, deployment, release\ntags, or production release.",
+        "operationId": "get_security_final_assurance_api_v2_security_assurance_final_assurance_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Security Final Assurance Api V2 Security Assurance Final Assurance Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Security Final Assurance",
+        "tags": [
+          "security-assurance"
+        ]
+      }
+    },
+    "/api/v2/security-assurance/readiness": {
+      "get": {
+        "description": "Return deterministic PRD-6 security assurance readiness.\n\nThis endpoint exposes security-assurance controls and evidence readiness.\nIt does not run scanners, modify branch protection, authorise PRD-7,\nauthorise public beta, live learner traffic, billing, deployment, release\ntags, or production release.",
+        "operationId": "get_security_assurance_readiness_api_v2_security_assurance_readiness_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Security Assurance Readiness Api V2 Security Assurance Readiness Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Security Assurance Readiness",
+        "tags": [
+          "security-assurance"
+        ]
+      }
+    },
     "/api/v2/study-plans/generate/{learner_id}": {
       "post": {
         "operationId": "generate_study_plan_api_v2_study_plans_generate__learner_id__post",
@@ -18044,6 +18289,56 @@
         "summary": "Stream Tutor Reply",
         "tags": [
           "learner-tutor"
+        ]
+      }
+    },
+    "/api/v2/vertical-journey/learners/{learner_id}": {
+      "get": {
+        "description": "Return one product-state view of the learner/parent vertical journey.\n\nThe route deliberately does not enable live learner traffic or bypass\nauthorisation. It is a hardening endpoint that exposes whether existing\nfeature paths are wired for the learner. If guardian consent is inactive,\nthe route reports the consent blocker instead of exercising downstream\nlearner-data paths.",
+        "operationId": "get_learner_vertical_journey_api_v2_vertical_journey_learners__learner_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Learner Vertical Journey Api V2 Vertical Journey Learners  Learner Id  Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Learner Vertical Journey",
+        "tags": [
+          "vertical-journey"
         ]
       }
     },
@@ -24653,6 +24948,54 @@
         ]
       }
     },
+    "/v2/content-quality/grade4-mathematics/final-acceptance": {
+      "get": {
+        "description": "Return the final PRD-4 educational-readiness acceptance view.\n\nThe endpoint confirms PRD-4 closure readiness while preserving the\nhandoff boundary: PRD-5 is next, but PRD-5 implementation is not\nauthorised here.",
+        "operationId": "get_grade4_maths_content_quality_final_acceptance_v2_content_quality_grade4_mathematics_final_acceptance_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Grade4 Maths Content Quality Final Acceptance V2 Content Quality Grade4 Mathematics Final Acceptance Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Grade4 Maths Content Quality Final Acceptance",
+        "tags": [
+          "content-quality"
+        ]
+      }
+    },
+    "/v2/content-quality/grade4-mathematics/readiness": {
+      "get": {
+        "description": "Return a deterministic Grade 4 Maths content-quality readiness view.\n\nThe endpoint exposes the PRD-4 readiness contract. It does not authorise\nlive learner traffic, public beta, deployment, or production release.",
+        "operationId": "get_grade4_maths_content_quality_readiness_v2_content_quality_grade4_mathematics_readiness_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Grade4 Maths Content Quality Readiness V2 Content Quality Grade4 Mathematics Readiness Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Grade4 Maths Content Quality Readiness",
+        "tags": [
+          "content-quality"
+        ]
+      }
+    },
     "/v2/content-review/artifacts/{artifact_id}/answer-key-verifications": {
       "post": {
         "operationId": "record_answer_key_verification_v2_content_review_artifacts__artifact_id__answer_key_verifications_post",
@@ -27104,6 +27447,54 @@
         ]
       }
     },
+    "/v2/observability-sre/final-assurance": {
+      "get": {
+        "description": "Return deterministic PRD-7 final observability/SRE assurance.\n\nThis endpoint exposes final dashboard, alert, SLO, incident, on-call,\nbackup/restore, rollback, privacy escalation, telemetry-redaction, and\nsupport-communications evidence acceptance. It does not authorise PRD-8,\npublic beta, live learner traffic, billing, deployment, release tags, or\nproduction release.",
+        "operationId": "get_observability_sre_final_assurance_v2_observability_sre_final_assurance_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Observability Sre Final Assurance V2 Observability Sre Final Assurance Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Observability Sre Final Assurance",
+        "tags": [
+          "observability-sre"
+        ]
+      }
+    },
+    "/v2/observability-sre/readiness": {
+      "get": {
+        "description": "Return deterministic PRD-7 observability/SRE readiness.\n\nThis endpoint exposes dashboards, alerts, SLOs, runbooks, on-call,\nbackup/restore/rollback, privacy escalation, and support-communications\nreadiness. It does not connect to telemetry backends, modify infrastructure,\nauthorise PRD-8, authorise public beta, live learner traffic, billing,\ndeployment, release tags, or production release.",
+        "operationId": "get_observability_sre_readiness_v2_observability_sre_readiness_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Observability Sre Readiness V2 Observability Sre Readiness Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Observability Sre Readiness",
+        "tags": [
+          "observability-sre"
+        ]
+      }
+    },
     "/v2/onboarding/archetype": {
       "post": {
         "operationId": "submit_onboarding_v2_onboarding_archetype_post",
@@ -27434,6 +27825,54 @@
         "summary": "Export Parent Access Bundle",
         "tags": [
           "parents"
+        ]
+      }
+    },
+    "/v2/performance-scale-cost/final-assurance": {
+      "get": {
+        "description": "Return deterministic PRD-8 final performance, scale, and cost assurance.\n\nThis endpoint exposes final load-test, runtime-KG query-performance,\ndatabase/index, LLM-cost, queue/backpressure, capacity, and frontend-budget\nevidence acceptance. It does not authorise PRD-9 implementation, billing,\nlive payment processing, live learner traffic, deployment, release tags,\npublic beta, or production release.",
+        "operationId": "get_performance_scale_cost_final_assurance_v2_performance_scale_cost_final_assurance_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Performance Scale Cost Final Assurance V2 Performance Scale Cost Final Assurance Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Performance Scale Cost Final Assurance",
+        "tags": [
+          "performance-scale-cost"
+        ]
+      }
+    },
+    "/v2/performance-scale-cost/readiness": {
+      "get": {
+        "description": "Return deterministic PRD-8 performance, scale, and cost readiness.\n\nThis endpoint exposes load-test, runtime-KG query-performance, database/index,\nLLM cost, queue/backpressure, frontend-budget, and capacity-plan readiness. It\ndoes not run load tests, modify infrastructure, authorise PRD-9, authorise\npublic beta, live learner traffic, billing, deployment, release tags, or\nproduction release.",
+        "operationId": "get_performance_scale_cost_readiness_v2_performance_scale_cost_readiness_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Performance Scale Cost Readiness V2 Performance Scale Cost Readiness Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Performance Scale Cost Readiness",
+        "tags": [
+          "performance-scale-cost"
         ]
       }
     },
@@ -28051,6 +28490,102 @@
         ]
       }
     },
+    "/v2/privacy-operations/live-data/final-assurance": {
+      "get": {
+        "description": "Return deterministic PRD-5 final POPIA privacy assurance.\n\nThis endpoint closes PRD-5 privacy assurance visibility and records\nreadiness for PRD-6 handoff. It does not authorise PRD-6\nimplementation, live learner traffic, deployment, billing, public beta,\nrelease tags, or production release.",
+        "operationId": "get_popia_live_data_operations_final_assurance_v2_privacy_operations_live_data_final_assurance_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Popia Live Data Operations Final Assurance V2 Privacy Operations Live Data Final Assurance Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Popia Live Data Operations Final Assurance",
+        "tags": [
+          "privacy-operations"
+        ]
+      }
+    },
+    "/v2/privacy-operations/live-data/readiness": {
+      "get": {
+        "description": "Return deterministic POPIA live-data operations readiness.\n\nThis endpoint exposes PRD-5 readiness controls. It does not authorise\npublic beta, live learner traffic, billing, deployment, or production\nrelease.",
+        "operationId": "get_popia_live_data_operations_readiness_v2_privacy_operations_live_data_readiness_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Popia Live Data Operations Readiness V2 Privacy Operations Live Data Readiness Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Popia Live Data Operations Readiness",
+        "tags": [
+          "privacy-operations"
+        ]
+      }
+    },
+    "/v2/security-assurance/final-assurance": {
+      "get": {
+        "description": "Return deterministic PRD-6 final security assurance.\n\nThis endpoint exposes final scanner, SBOM, secret-rotation, abuse-test,\nauthorization-negative-test, and external/independent review acceptance.\nIt does not run scanners, modify branch protection, authorise PRD-7,\nauthorise public beta, live learner traffic, billing, deployment, release\ntags, or production release.",
+        "operationId": "get_security_final_assurance_v2_security_assurance_final_assurance_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Security Final Assurance V2 Security Assurance Final Assurance Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Security Final Assurance",
+        "tags": [
+          "security-assurance"
+        ]
+      }
+    },
+    "/v2/security-assurance/readiness": {
+      "get": {
+        "description": "Return deterministic PRD-6 security assurance readiness.\n\nThis endpoint exposes security-assurance controls and evidence readiness.\nIt does not run scanners, modify branch protection, authorise PRD-7,\nauthorise public beta, live learner traffic, billing, deployment, release\ntags, or production release.",
+        "operationId": "get_security_assurance_readiness_v2_security_assurance_readiness_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Security Assurance Readiness V2 Security Assurance Readiness Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Security Assurance Readiness",
+        "tags": [
+          "security-assurance"
+        ]
+      }
+    },
     "/v2/study-plans/generate/{learner_id}": {
       "post": {
         "operationId": "generate_study_plan_v2_study_plans_generate__learner_id__post",
@@ -28496,6 +29031,56 @@
           "learner-tutor"
         ]
       }
+    },
+    "/v2/vertical-journey/learners/{learner_id}": {
+      "get": {
+        "description": "Return one product-state view of the learner/parent vertical journey.\n\nThe route deliberately does not enable live learner traffic or bypass\nauthorisation. It is a hardening endpoint that exposes whether existing\nfeature paths are wired for the learner. If guardian consent is inactive,\nthe route reports the consent blocker instead of exercising downstream\nlearner-data paths.",
+        "operationId": "get_learner_vertical_journey_v2_vertical_journey_learners__learner_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Learner Vertical Journey V2 Vertical Journey Learners  Learner Id  Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Learner Vertical Journey",
+        "tags": [
+          "vertical-journey"
+        ]
+      }
     }
   },
   "tags": [
@@ -28544,6 +29129,14 @@
       "name": "parents"
     },
     {
+      "description": "Learner and parent vertical journey hardening",
+      "name": "vertical-journey"
+    },
+    {
+      "description": "Content, CAPS, and educational quality readiness",
+      "name": "content-quality"
+    },
+    {
       "description": "Subscription and payment",
       "name": "billing"
     },
@@ -28554,6 +29147,22 @@
     {
       "description": "POPIA data subject rights",
       "name": "popia"
+    },
+    {
+      "description": "POPIA live-data operations and privacy assurance",
+      "name": "privacy-operations"
+    },
+    {
+      "description": "Security assurance and external review readiness",
+      "name": "security-assurance"
+    },
+    {
+      "description": "Observability, SRE, and incident readiness",
+      "name": "observability-sre"
+    },
+    {
+      "description": "Performance, scale, and cost execution readiness",
+      "name": "performance-scale-cost"
     },
     {
       "description": "Background job status",
