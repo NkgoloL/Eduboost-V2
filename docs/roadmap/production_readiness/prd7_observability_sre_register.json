@@ -1,0 +1,34 @@
+{
+  "authority_boundaries": {
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "prd8_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "release_tag_authorised": false
+  },
+  "last_recorded_item": "PRD-6.5-6.9",
+  "next_authorised_item": "PRD-7.0-7.4",
+  "observability_sre_evidence_recorded": false,
+  "observability_sre_foundation_recorded": false,
+  "prd7_sequence": [
+    {
+      "authorised": true,
+      "prd_id": "PRD-7.0-7.4",
+      "status": "authorised",
+      "title": "Observability SRE incident readiness foundation"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-7.5-7.9",
+      "status": "pending",
+      "title": "Observability SRE final evidence and handoff to PRD-8"
+    }
+  ],
+  "prd8_implementation_authorised": false,
+  "prd_id": "PRD-7",
+  "status": "prd7_observability_sre_foundation_authorised",
+  "title": "Observability, SRE, and Incident Readiness"
+}

@@ -51,6 +51,7 @@ from app.api_v2_routers import (  # noqa: E402
     learners,
     lessons,
     onboarding,
+    observability_sre,
     parents,
     popia,
     privacy_operations,
@@ -71,6 +72,7 @@ app.include_router(billing.router, prefix=API_V2)
 app.include_router(popia.router, prefix=API_V2)
 app.include_router(privacy_operations.router, prefix=API_V2)
 app.include_router(security_assurance.router, prefix=API_V2)
+app.include_router(observability_sre.router, prefix=API_V2)
 
 
 # ── Health & meta ─────────────────────────────────────────────────────────────
