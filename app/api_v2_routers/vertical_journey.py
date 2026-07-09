@@ -12,7 +12,7 @@ from app.models import AssessmentAttempt, DiagnosticSession, KnowledgeGap, Lesso
 from app.modules.consent.service import ConsentService
 from app.modules.vertical_journey.hardening import build_vertical_journey_hardening_report
 from app.modules.vertical_journey.service import VerticalJourneyInputs, build_vertical_journey_snapshot
-from app.repositories.repositories import LearnerRepository
+from app.services.learner_service import LearnerService
 from app.security.dependencies import require_learner_read_for_current_user
 from app.services.runtime_kg.route_integration import build_runtime_kg_study_plan_payload
 
@@ -38,7 +38,7 @@ async def get_learner_vertical_journey(
     learner-data paths.
     """
 
-    learner = await LearnerRepository(db).get_by_id(learner_id)
+    learner = await LearnerService(db).repository.get_by_id(learner_id)
     if learner is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
     require_learner_read_for_current_user(current_user, learner)
