@@ -1,0 +1,271 @@
+{
+  "acceptance_criteria": [
+    "load_test_evidence_accepted",
+    "runtime_kg_query_performance_evidence_accepted",
+    "database_index_review_evidence_accepted",
+    "llm_cost_guardrail_evidence_accepted",
+    "queue_backpressure_capacity_evidence_accepted",
+    "frontend_performance_budget_evidence_accepted",
+    "prd8_final_reconciliation_recorded"
+  ],
+  "accepted": true,
+  "billing_launch_authorised": false,
+  "blockers": [],
+  "database_index_review_evidence_accepted": true,
+  "deployment_authorised": false,
+  "final_evidence_items": [
+    {
+      "accepted": true,
+      "area": "api_load_test_plan",
+      "blocker_open": false,
+      "blocks_live_traffic": true,
+      "blocks_production_release": true,
+      "evidence_recorded": true,
+      "owner_confirmed": true,
+      "threshold_measured": true
+    },
+    {
+      "accepted": true,
+      "area": "learner_journey_load_test_plan",
+      "blocker_open": false,
+      "blocks_live_traffic": true,
+      "blocks_production_release": true,
+      "evidence_recorded": true,
+      "owner_confirmed": true,
+      "threshold_measured": true
+    },
+    {
+      "accepted": true,
+      "area": "runtime_kg_query_performance_plan",
+      "blocker_open": false,
+      "blocks_live_traffic": true,
+      "blocks_production_release": true,
+      "evidence_recorded": true,
+      "owner_confirmed": true,
+      "threshold_measured": true
+    },
+    {
+      "accepted": true,
+      "area": "database_index_review_plan",
+      "blocker_open": false,
+      "blocks_live_traffic": true,
+      "blocks_production_release": true,
+      "evidence_recorded": true,
+      "owner_confirmed": true,
+      "threshold_measured": true
+    },
+    {
+      "accepted": true,
+      "area": "llm_cost_simulation_plan",
+      "blocker_open": false,
+      "blocks_live_traffic": true,
+      "blocks_production_release": true,
+      "evidence_recorded": true,
+      "owner_confirmed": true,
+      "threshold_measured": true
+    },
+    {
+      "accepted": true,
+      "area": "queue_backpressure_test_plan",
+      "blocker_open": false,
+      "blocks_live_traffic": true,
+      "blocks_production_release": true,
+      "evidence_recorded": true,
+      "owner_confirmed": true,
+      "threshold_measured": true
+    },
+    {
+      "accepted": true,
+      "area": "frontend_performance_budget_plan",
+      "blocker_open": false,
+      "blocks_live_traffic": true,
+      "blocks_production_release": true,
+      "evidence_recorded": true,
+      "owner_confirmed": true,
+      "threshold_measured": true
+    },
+    {
+      "accepted": true,
+      "area": "capacity_and_sizing_plan",
+      "blocker_open": false,
+      "blocks_live_traffic": true,
+      "blocks_production_release": true,
+      "evidence_recorded": true,
+      "owner_confirmed": true,
+      "threshold_measured": true
+    },
+    {
+      "accepted": true,
+      "area": "cost_guardrail_plan",
+      "blocker_open": false,
+      "blocks_live_traffic": true,
+      "blocks_production_release": true,
+      "evidence_recorded": true,
+      "owner_confirmed": true,
+      "threshold_measured": true
+    }
+  ],
+  "final_evidence_matrix_accepted": true,
+  "frontend_performance_budget_evidence_accepted": true,
+  "live_learner_traffic_authorised": false,
+  "live_payment_processing_authorised": false,
+  "llm_cost_guardrail_evidence_accepted": true,
+  "load_test_evidence_accepted": true,
+  "performance_scale_cost_readiness": {
+    "billing_launch_authorised": false,
+    "blockers": [],
+    "capacity_plan_defined": true,
+    "cost_execution_defined": true,
+    "cost_guardrails_defined": true,
+    "database_index_review_defined": true,
+    "deployment_authorised": false,
+    "evidence_areas": [
+      "api_load_test_plan",
+      "learner_journey_load_test_plan",
+      "runtime_kg_query_performance_plan",
+      "database_index_review_plan",
+      "llm_cost_simulation_plan",
+      "queue_backpressure_test_plan",
+      "frontend_performance_budget_plan",
+      "capacity_and_sizing_plan",
+      "cost_guardrail_plan"
+    ],
+    "evidence_controls": [
+      {
+        "area": "api_load_test_plan",
+        "blocks_live_traffic": true,
+        "drill_or_test_defined": true,
+        "evidence_path_defined": true,
+        "owner_assigned": true,
+        "ready": true,
+        "threshold_defined": true
+      },
+      {
+        "area": "learner_journey_load_test_plan",
+        "blocks_live_traffic": true,
+        "drill_or_test_defined": true,
+        "evidence_path_defined": true,
+        "owner_assigned": true,
+        "ready": true,
+        "threshold_defined": true
+      },
+      {
+        "area": "runtime_kg_query_performance_plan",
+        "blocks_live_traffic": true,
+        "drill_or_test_defined": true,
+        "evidence_path_defined": true,
+        "owner_assigned": true,
+        "ready": true,
+        "threshold_defined": true
+      },
+      {
+        "area": "database_index_review_plan",
+        "blocks_live_traffic": true,
+        "drill_or_test_defined": true,
+        "evidence_path_defined": true,
+        "owner_assigned": true,
+        "ready": true,
+        "threshold_defined": true
+      },
+      {
+        "area": "llm_cost_simulation_plan",
+        "blocks_live_traffic": true,
+        "drill_or_test_defined": true,
+        "evidence_path_defined": true,
+        "owner_assigned": true,
+        "ready": true,
+        "threshold_defined": true
+      },
+      {
+        "area": "queue_backpressure_test_plan",
+        "blocks_live_traffic": true,
+        "drill_or_test_defined": true,
+        "evidence_path_defined": true,
+        "owner_assigned": true,
+        "ready": true,
+        "threshold_defined": true
+      },
+      {
+        "area": "frontend_performance_budget_plan",
+        "blocks_live_traffic": true,
+        "drill_or_test_defined": true,
+        "evidence_path_defined": true,
+        "owner_assigned": true,
+        "ready": true,
+        "threshold_defined": true
+      },
+      {
+        "area": "capacity_and_sizing_plan",
+        "blocks_live_traffic": true,
+        "drill_or_test_defined": true,
+        "evidence_path_defined": true,
+        "owner_assigned": true,
+        "ready": true,
+        "threshold_defined": true
+      },
+      {
+        "area": "cost_guardrail_plan",
+        "blocks_live_traffic": true,
+        "drill_or_test_defined": true,
+        "evidence_path_defined": true,
+        "owner_assigned": true,
+        "ready": true,
+        "threshold_defined": true
+      }
+    ],
+    "evidence_matrix_ready": true,
+    "frontend_performance_budget_defined": true,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "llm_cost_simulation_defined": true,
+    "load_tests_defined": true,
+    "performance_execution_defined": true,
+    "prd9_implementation_authorised": false,
+    "prd_id": "PRD-8.0-8.4",
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "queue_backpressure_tests_defined": true,
+    "ready": true,
+    "recommended_next_actions": [
+      "capture_prd8_performance_scale_cost_foundation_evidence",
+      "prepare_prd8_final_performance_scale_cost_handoff"
+    ],
+    "recommended_thresholds": {
+      "api_p95_ms": 750,
+      "critical_route_p95_ms": 1200,
+      "frontend_cls_max": 0.1,
+      "frontend_lcp_ms": 2500,
+      "llm_cost_per_active_learner_monthly_cap_usd": 2.5,
+      "runtime_kg_query_p95_ms": 250
+    },
+    "release_tag_authorised": false,
+    "runtime_kg_query_performance_defined": true,
+    "scale_execution_defined": true,
+    "scope_items": [
+      "load_test_readiness",
+      "runtime_kg_query_performance_readiness",
+      "database_index_review_readiness",
+      "llm_cost_simulation_readiness",
+      "queue_backpressure_readiness",
+      "frontend_performance_budget_readiness",
+      "capacity_plan_readiness"
+    ]
+  },
+  "performance_signoff_recorded": true,
+  "prd8_final_reconciliation_recorded": true,
+  "prd8_sequence_complete": true,
+  "prd9_handoff_ready": true,
+  "prd9_implementation_authorised": false,
+  "prd_id": "PRD-8.5-8.9",
+  "production_release_authorised": false,
+  "public_beta_authorised": false,
+  "queue_backpressure_capacity_evidence_accepted": true,
+  "recommended_next_actions": [
+    "capture_prd8_final_performance_scale_cost_evidence",
+    "handoff_to_prd9_billing_commercial_launch_readiness"
+  ],
+  "release_tag_authorised": false,
+  "runtime_kg_query_performance_evidence_accepted": true,
+  "scale_cost_reconciliation_recorded": true,
+  "source_readiness_prd_id": "PRD-8.0-8.4"
+}
