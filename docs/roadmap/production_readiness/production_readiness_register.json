@@ -13,6 +13,7 @@
     "prd5_implementation_authorised": false,
     "prd6_implementation_authorised": false,
     "prd7_implementation_authorised": false,
+    "prd8_implementation_authorised": false,
     "production_release_authorised": false,
     "public_beta_authorised": false,
     "public_beta_live_traffic_authorised": false,
@@ -75,6 +76,9 @@
     "prd6_security_assurance_foundation_recorded": true,
     "prd6_security_final_assurance_recorded": true,
     "prd6_started": true,
+    "prd7_next_authorised_item": "PRD-7.5-7.9",
+    "prd7_observability_sre_foundation_recorded": true,
+    "prd7_started": true,
     "rr_closure_required": true,
     "stream_id": "PRD-PRODUCTION-READINESS"
   },
@@ -86,9 +90,9 @@
     "production_release_blocked_until_prd11": true,
     "public_beta_blocked_until_prd10": true
   },
-  "last_recorded_at": "2026-07-09T15:24:59.197611+00:00",
-  "last_recorded_item": "PRD-6.5-6.9",
-  "next_authorised_item": "PRD-7",
+  "last_recorded_at": "2026-07-09T16:36:14.191240+00:00",
+  "last_recorded_item": "PRD-7.0-7.4",
+  "next_authorised_item": "PRD-7.5-7.9",
   "prd0_closed": true,
   "prd0_closed_at": "2026-07-08T13:19:32.478770+00:00",
   "prd0_sequence": [
@@ -252,6 +256,9 @@
   "prd6_security_assurance_foundation_recorded": true,
   "prd6_security_final_assurance_recorded": true,
   "prd6_started": true,
+  "prd7_next_authorised_item": "PRD-7.5-7.9",
+  "prd7_observability_sre_foundation_recorded": true,
+  "prd7_started": true,
   "prd_id": "PRD-0.0",
   "production_readiness_sequence": [
     {
@@ -318,6 +325,6 @@
   "rr_closure_required": true,
   "runtime_kg_authority_switch_authorised": true,
   "runtime_kg_implementation_claimed": true,
-  "status": "prd6_closed_prd7_handoff_authorised",
+  "status": "prd7_observability_sre_foundation_recorded",
   "stream_id": "PRD-PRODUCTION-READINESS"
 }

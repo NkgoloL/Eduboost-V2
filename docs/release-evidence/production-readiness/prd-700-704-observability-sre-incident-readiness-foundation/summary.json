@@ -1,24 +1,18 @@
 {
-  "backup_restore_rollback_readiness_defined": true,
-  "billing_launch_authorised": false,
+  "authority_valid": true,
+  "boundaries": {
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "prd8_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "release_tag_authorised": false
+  },
   "captured_at": "2026-07-09T16:36:14.191240+00:00",
-  "dashboard_alert_slo_readiness_defined": true,
-  "deployment_authorised": false,
-  "incident_runbook_on_call_readiness_defined": true,
-  "live_learner_traffic_authorised": false,
-  "live_payment_processing_authorised": false,
-  "merged_prd_slices": [
-    "PRD-7.0",
-    "PRD-7.1",
-    "PRD-7.2",
-    "PRD-7.3",
-    "PRD-7.4"
-  ],
   "next_authorised_item": "PRD-7.5-7.9",
-  "observability_sre_evidence_recorded": true,
-  "observability_sre_foundation_recorded": true,
-  "observability_sre_helper_added": true,
-  "observability_sre_readiness_snapshot": {
+  "observability_sre_readiness": {
     "alerts_defined": true,
     "backup_restore_drill_defined": true,
     "billing_launch_authorised": false,
@@ -204,14 +198,7 @@
     "telemetry_pii_redaction_defined": true,
     "telemetry_readiness_defined": true
   },
-  "observability_sre_route_added": true,
-  "prd8_implementation_authorised": false,
   "prd_id": "PRD-7.0-7.4",
-  "prd_owner": "Nkgolo Lebelo",
-  "previous_prd6_handoff_required": true,
-  "privacy_escalation_readiness_defined": true,
-  "production_release_authorised": false,
-  "public_beta_authorised": false,
-  "release_tag_authorised": false,
-  "target_branch": "master"
+  "register_next_authorised_item": "PRD-7.5-7.9",
+  "valid": true
 }

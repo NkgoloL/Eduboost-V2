@@ -1,0 +1,186 @@
+{
+  "alerts_defined": true,
+  "backup_restore_drill_defined": true,
+  "billing_launch_authorised": false,
+  "blockers": [],
+  "dashboards_defined": true,
+  "deployment_authorised": false,
+  "evidence_controls": [
+    {
+      "area": "metrics_dashboard",
+      "blocks_live_traffic": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "ready": true,
+      "runbook_or_drill_defined": true
+    },
+    {
+      "area": "logs_traces_correlation",
+      "blocks_live_traffic": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "ready": true,
+      "runbook_or_drill_defined": true
+    },
+    {
+      "area": "slo_burn_alerts",
+      "blocks_live_traffic": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "ready": true,
+      "runbook_or_drill_defined": true
+    },
+    {
+      "area": "incident_runbooks",
+      "blocks_live_traffic": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "ready": true,
+      "runbook_or_drill_defined": true
+    },
+    {
+      "area": "on_call_ownership",
+      "blocks_live_traffic": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "ready": true,
+      "runbook_or_drill_defined": true
+    },
+    {
+      "area": "backup_restore_drill",
+      "blocks_live_traffic": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "ready": true,
+      "runbook_or_drill_defined": true
+    },
+    {
+      "area": "rollback_drill",
+      "blocks_live_traffic": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "ready": true,
+      "runbook_or_drill_defined": true
+    },
+    {
+      "area": "privacy_escalation_process",
+      "blocks_live_traffic": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "ready": true,
+      "runbook_or_drill_defined": true
+    },
+    {
+      "area": "telemetry_pii_redaction",
+      "blocks_live_traffic": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "ready": true,
+      "runbook_or_drill_defined": true
+    },
+    {
+      "area": "support_status_comms",
+      "blocks_live_traffic": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "ready": true,
+      "runbook_or_drill_defined": true
+    }
+  ],
+  "evidence_matrix_ready": true,
+  "existing_observability_contract": {
+    "alert_count": 4,
+    "contract_issues": {
+      "alert_issues": [],
+      "dashboard_issues": [],
+      "log_event_issues": [],
+      "metric_issues": [],
+      "provider_decision_issues": [],
+      "retention_issues": [],
+      "slo_issues": [],
+      "trace_span_issues": []
+    },
+    "dashboard_count": 3,
+    "log_event_count": 3,
+    "metric_count": 5,
+    "provider_decision": {
+      "adr_path": "docs/adr/ADR-011-observability-stack.md",
+      "alert_backend": "alertmanager_or_managed_pager",
+      "architecture_doc_path": "docs/observability/production_observability_architecture_contract.md",
+      "error_backend": "sentry_or_managed_error_tracking",
+      "log_backend": "structured_json_logs",
+      "metrics_backend": "prometheus_or_managed_metrics",
+      "open_telemetry_required": true,
+      "pii_redaction_required": true,
+      "retention_policy_required": true,
+      "trace_backend": "opentelemetry_collector"
+    },
+    "retention_policy": {
+      "audit_logs_days": 365,
+      "deletion_workflow_required": true,
+      "export_workflow_required": true,
+      "logs_days": 90,
+      "metrics_days": 180,
+      "pii_redaction_required": true,
+      "traces_days": 30
+    },
+    "slo_count": 3,
+    "trace_span_count": 3
+  },
+  "incident_readiness_defined": true,
+  "incident_runbooks_defined": true,
+  "live_learner_traffic_authorised": false,
+  "live_payment_processing_authorised": false,
+  "observability_evidence_areas": [
+    "metrics_dashboard",
+    "logs_traces_correlation",
+    "slo_burn_alerts",
+    "incident_runbooks",
+    "on_call_ownership",
+    "backup_restore_drill",
+    "rollback_drill",
+    "privacy_escalation_process",
+    "telemetry_pii_redaction",
+    "support_status_comms"
+  ],
+  "on_call_ownership_defined": true,
+  "prd8_implementation_authorised": false,
+  "prd_id": "PRD-7.0-7.4",
+  "privacy_escalation_process_defined": true,
+  "production_release_authorised": false,
+  "public_beta_authorised": false,
+  "ready": true,
+  "recommended_backends": [
+    "prometheus_or_managed_metrics",
+    "structured_json_logs",
+    "opentelemetry_collector",
+    "sentry_or_managed_error_tracking",
+    "alertmanager_or_managed_pager"
+  ],
+  "recommended_next_actions": [
+    "capture_prd7_observability_sre_foundation_evidence",
+    "prepare_prd7_final_incident_readiness_handoff"
+  ],
+  "release_tag_authorised": false,
+  "required_runbooks": [
+    "api_error_rate_high",
+    "llm_provider_failure_spike",
+    "privacy_export_failure",
+    "backup_restore_failure",
+    "rollback_decision"
+  ],
+  "resilience_drills_defined": true,
+  "rollback_drill_defined": true,
+  "scope_items": [
+    "dashboard_readiness",
+    "alert_and_slo_readiness",
+    "incident_runbook_readiness",
+    "on_call_ownership_readiness",
+    "backup_restore_rollback_readiness",
+    "privacy_escalation_readiness"
+  ],
+  "slos_defined": true,
+  "support_status_comms_defined": true,
+  "telemetry_pii_redaction_defined": true,
+  "telemetry_readiness_defined": true
+}
