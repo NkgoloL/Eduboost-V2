@@ -1,0 +1,210 @@
+{
+  "acceptance_criteria": [
+    "live_data_processing_impact_assessment_accepted",
+    "consent_withdrawal_export_deletion_retention_drills_accepted",
+    "ai_prompt_and_telemetry_pii_redaction_accepted",
+    "subprocessor_data_flow_and_privacy_signoff_accepted",
+    "audit_2026_07_09_crosswalk_reconciled"
+  ],
+  "accepted": true,
+  "ai_prompt_telemetry_pii_redaction_accepted": true,
+  "audit_2026_07_09_crosswalk_reconciled": true,
+  "audit_crosswalk": [
+    {
+      "blocks_live_traffic": true,
+      "blocks_production_release": true,
+      "concern": "runtime_kg_persistence_temporal_evidence",
+      "disposition": "closed_by_prd2_with_follow_up_evidence_visible_to_later_assurance",
+      "owning_prd": "PRD-2",
+      "reconciled": true
+    },
+    {
+      "blocks_live_traffic": true,
+      "blocks_production_release": true,
+      "concern": "popia_data_subject_rights",
+      "disposition": "closed_by_prd5_live_data_privacy_assurance",
+      "owning_prd": "PRD-5",
+      "reconciled": true
+    },
+    {
+      "blocks_live_traffic": true,
+      "blocks_production_release": true,
+      "concern": "content_caps_quality",
+      "disposition": "closed_by_prd4_content_quality_readiness",
+      "owning_prd": "PRD-4",
+      "reconciled": true
+    },
+    {
+      "blocks_live_traffic": true,
+      "blocks_production_release": true,
+      "concern": "ci_dependency_hygiene",
+      "disposition": "prd1_closed_with_remaining_security_dependency_scans_deferred_to_prd6",
+      "owning_prd": "PRD-1/PRD-6",
+      "reconciled": true
+    },
+    {
+      "blocks_live_traffic": true,
+      "blocks_production_release": true,
+      "concern": "security_external_review",
+      "disposition": "scheduled_for_prd6_security_assurance_external_review",
+      "owning_prd": "PRD-6",
+      "reconciled": true
+    },
+    {
+      "blocks_live_traffic": true,
+      "blocks_production_release": true,
+      "concern": "observability_incident_privacy_escalation",
+      "disposition": "scheduled_for_prd7_observability_sre_incident_readiness",
+      "owning_prd": "PRD-7",
+      "reconciled": true
+    },
+    {
+      "blocks_live_traffic": false,
+      "blocks_production_release": true,
+      "concern": "performance_scale_cost",
+      "disposition": "scheduled_for_prd8_performance_scale_cost_execution",
+      "owning_prd": "PRD-8",
+      "reconciled": true
+    }
+  ],
+  "audit_report_id": "EduBoost Codebase Audit 2026-07-09",
+  "billing_launch_authorised": false,
+  "blockers": [],
+  "data_subject_rights_drills_accepted": true,
+  "deployment_authorised": false,
+  "live_data_processing_impact_assessment_accepted": true,
+  "live_learner_traffic_authorised": false,
+  "live_payment_processing_authorised": false,
+  "prd5_final_reconciliation_recorded": true,
+  "prd5_sequence_complete": true,
+  "prd6_handoff_ready": true,
+  "prd6_implementation_authorised": false,
+  "prd_id": "PRD-5.5-5.9",
+  "privacy_live_data_readiness": {
+    "ai_prompt_pii_redaction_proven": true,
+    "billing_launch_authorised": false,
+    "blockers": [],
+    "consent_withdrawal_drill_proven": true,
+    "data_flow_areas": [
+      "learner_profile",
+      "guardian_consent",
+      "diagnostic_response",
+      "runtime_kg_projection",
+      "lesson_interaction",
+      "study_plan",
+      "parent_report",
+      "support_event"
+    ],
+    "data_flow_controls": [
+      {
+        "area": "learner_profile",
+        "consent_required": true,
+        "pii_redaction_required": true,
+        "purpose_limited": true,
+        "ready": true,
+        "retention_classified": true
+      },
+      {
+        "area": "guardian_consent",
+        "consent_required": true,
+        "pii_redaction_required": true,
+        "purpose_limited": true,
+        "ready": true,
+        "retention_classified": true
+      },
+      {
+        "area": "diagnostic_response",
+        "consent_required": true,
+        "pii_redaction_required": true,
+        "purpose_limited": true,
+        "ready": true,
+        "retention_classified": true
+      },
+      {
+        "area": "runtime_kg_projection",
+        "consent_required": true,
+        "pii_redaction_required": true,
+        "purpose_limited": true,
+        "ready": true,
+        "retention_classified": true
+      },
+      {
+        "area": "lesson_interaction",
+        "consent_required": true,
+        "pii_redaction_required": true,
+        "purpose_limited": true,
+        "ready": true,
+        "retention_classified": true
+      },
+      {
+        "area": "study_plan",
+        "consent_required": true,
+        "pii_redaction_required": true,
+        "purpose_limited": true,
+        "ready": true,
+        "retention_classified": true
+      },
+      {
+        "area": "parent_report",
+        "consent_required": true,
+        "pii_redaction_required": true,
+        "purpose_limited": true,
+        "ready": true,
+        "retention_classified": true
+      },
+      {
+        "area": "support_event",
+        "consent_required": true,
+        "pii_redaction_required": true,
+        "purpose_limited": true,
+        "ready": true,
+        "retention_classified": true
+      }
+    ],
+    "data_flow_matrix_ready": true,
+    "deletion_drill_proven": true,
+    "deployment_authorised": false,
+    "export_drill_proven": true,
+    "live_data_processing_impact_assessment_complete": true,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "prd6_implementation_authorised": false,
+    "prd_id": "PRD-5.0-5.4",
+    "privacy_signoff_path_visible": true,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "ready": true,
+    "recommended_next_actions": [
+      "capture_prd5_live_data_privacy_evidence",
+      "prepare_prd5_final_privacy_assurance_handoff"
+    ],
+    "redaction_rules": [
+      "direct_identifier_redaction",
+      "guardian_contact_masking",
+      "free_text_minimisation",
+      "telemetry_payload_allowlist",
+      "llm_prompt_context_minimisation"
+    ],
+    "release_tag_authorised": false,
+    "retention_drill_proven": true,
+    "scope_items": [
+      "live_data_processing_impact_assessment",
+      "consent_withdrawal_proof",
+      "export_deletion_retention_drills",
+      "ai_prompt_telemetry_pii_redaction",
+      "subprocessor_data_flow_privacy_signoff_readiness"
+    ],
+    "subprocessor_data_flow_confirmed": true,
+    "telemetry_pii_redaction_proven": true
+  },
+  "privacy_signoff_recorded": true,
+  "production_release_authorised": false,
+  "public_beta_authorised": false,
+  "recommended_next_actions": [
+    "capture_prd5_final_privacy_assurance_evidence",
+    "handoff_to_prd6_security_assurance_external_review"
+  ],
+  "release_tag_authorised": false,
+  "source_readiness_prd_id": "PRD-5.0-5.4",
+  "subprocessor_data_flow_confirmed": true
+}

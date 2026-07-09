@@ -1,30 +1,19 @@
 {
-  "audit_2026_07_09_crosswalk_defined": true,
-  "audit_2026_07_09_crosswalk_reconciled": true,
-  "billing_launch_authorised": false,
+  "authority_valid": true,
+  "boundaries": {
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "prd6_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "release_tag_authorised": false
+  },
   "captured_at": "2026-07-09T14:04:18.825188+00:00",
-  "deployment_authorised": false,
-  "live_learner_traffic_authorised": false,
-  "live_payment_processing_authorised": false,
-  "merged_prd_slices": [
-    "PRD-5.5",
-    "PRD-5.6",
-    "PRD-5.7",
-    "PRD-5.8",
-    "PRD-5.9"
-  ],
   "next_authorised_item": "PRD-6",
-  "prd5_final_reconciliation_recorded": true,
-  "prd5_sequence_complete": true,
-  "prd6_handoff_authorised": true,
-  "prd6_implementation_authorised": false,
   "prd_id": "PRD-5.5-5.9",
-  "prd_owner": "Nkgolo Lebelo",
-  "previous_prd5_foundation_required": true,
-  "privacy_final_assurance_evidence_recorded": true,
-  "privacy_final_assurance_helper_added": true,
-  "privacy_final_assurance_route_added": true,
-  "privacy_final_assurance_snapshot": {
+  "privacy_final_assurance": {
     "acceptance_criteria": [
       "live_data_processing_impact_assessment_accepted",
       "consent_withdrawal_export_deletion_retention_drills_accepted",
@@ -234,11 +223,6 @@
     "source_readiness_prd_id": "PRD-5.0-5.4",
     "subprocessor_data_flow_confirmed": true
   },
-  "privacy_signoff_closure_defined": true,
-  "privacy_signoff_recorded": true,
-  "production_release_authorised": false,
-  "public_beta_authorised": false,
-  "release_tag_authorised": false,
-  "target_branch": "master",
-  "title": "POPIA final assurance, audit crosswalk, and handoff to PRD-6"
+  "register_next_authorised_item": "PRD-6",
+  "valid": true
 }
