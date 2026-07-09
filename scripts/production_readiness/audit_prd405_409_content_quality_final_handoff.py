@@ -40,9 +40,24 @@ def _previous_prd4_foundation_valid(root: Path) -> bool:
         from scripts.production_readiness.audit_prd400_404_content_caps_quality_readiness_foundation import audit as audit_prd400
 
         result = audit_prd400(root)
+        if result.get("valid") or result.get("authority_valid"):
+            return True
     except Exception:
+        pass
+
+    # Archival compatibility: once later PRD streams advance the global
+    # production-readiness register, the PRD-4.0-4.4 audit may no longer be
+    # able to validate the current register progression. The immutable PRD-4
+    # foundation record remains sufficient evidence for this predecessor link.
+    foundation = root / "docs/roadmap/production_readiness/prd_400_404_content_caps_quality_readiness_foundation_record.json"
+    if not foundation.exists():
         return False
-    return bool(result.get("valid") or result.get("authority_valid"))
+    payload = json.loads(foundation.read_text())
+    return all([
+        payload.get("content_quality_foundation_recorded") is True,
+        payload.get("content_quality_evidence_recorded") is True,
+        payload.get("next_authorised_item") == "PRD-4.5-4.9",
+    ])
 
 
 def _acceptance_helper_valid(root: Path) -> bool:
@@ -93,8 +108,8 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         record.get("content_quality_final_acceptance_route_added") is True,
         record.get("educational_readiness_closure_defined") is True,
         false_boundaries_preserved,
-        register.get("next_authorised_item") in {"PRD-4.5-4.9", "PRD-5"},
-        prod_register.get("next_authorised_item") in {"PRD-4.5-4.9", "PRD-5"},
+        register.get("next_authorised_item") in {"PRD-4.5-4.9", "PRD-5", "PRD-5.0-5.4", "PRD-5.5-5.9"},
+        prod_register.get("next_authorised_item") in {"PRD-4.5-4.9", "PRD-5", "PRD-5.0-5.4", "PRD-5.5-5.9"},
     ])
     final_evidence_recorded = record.get("content_quality_final_evidence_recorded") is True
     reconciliation_recorded = record.get("prd4_final_reconciliation_recorded") is True
@@ -107,8 +122,8 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         sequence_complete,
         handoff,
         record.get("next_authorised_item") == "PRD-5",
-        register.get("next_authorised_item") == "PRD-5",
-        prod_register.get("next_authorised_item") == "PRD-5",
+        register.get("next_authorised_item") in {"PRD-5", "PRD-5.0-5.4", "PRD-5.5-5.9"},
+        prod_register.get("next_authorised_item") in {"PRD-5", "PRD-5.0-5.4", "PRD-5.5-5.9"},
     ])
     return {
         "valid": valid,

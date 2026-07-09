@@ -43,7 +43,19 @@ app.add_middleware(
 )
 
 # ── Routers ───────────────────────────────────────────────────────────────────
-from app.api_v2_routers import auth, billing, content_quality, diagnostics, learners, lessons, onboarding, parents, popia, vertical_journey  # noqa: E402
+from app.api_v2_routers import (  # noqa: E402
+    auth,
+    billing,
+    content_quality,
+    diagnostics,
+    learners,
+    lessons,
+    onboarding,
+    parents,
+    popia,
+    privacy_operations,
+    vertical_journey,
+)
 
 API_V2 = "/api/v2"
 app.include_router(auth.router, prefix=API_V2)
@@ -56,6 +68,7 @@ app.include_router(vertical_journey.router, prefix=API_V2)
 app.include_router(content_quality.router, prefix=API_V2)
 app.include_router(billing.router, prefix=API_V2)
 app.include_router(popia.router, prefix=API_V2)
+app.include_router(privacy_operations.router, prefix=API_V2)
 
 
 # ── Health & meta ─────────────────────────────────────────────────────────────

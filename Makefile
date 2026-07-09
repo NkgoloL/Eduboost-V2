@@ -3337,3 +3337,12 @@ prd405-409-content-quality-final-handoff-check:
 .PHONY: prd405-409-content-quality-final-handoff-capture
 prd405-409-content-quality-final-handoff-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd405_409_content_quality_final_handoff_evidence.py --claim-prd405-409-content-quality-final-handoff --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+# PRD-5.0-5.4 POPIA live-data privacy operations foundation
+.PHONY: prd500-504-popia-live-data-privacy-ops-foundation-check
+prd500-504-popia-live-data-privacy-ops-foundation-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd500_504_popia_live_data_privacy_ops_foundation.py --authority-only --json
+
+.PHONY: prd500-504-popia-live-data-privacy-ops-foundation-capture
+prd500-504-popia-live-data-privacy-ops-foundation-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd500_504_popia_live_data_privacy_ops_foundation_evidence.py --claim-prd500-504-popia-live-data-privacy-ops-foundation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
