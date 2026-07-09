@@ -1,13 +1,17 @@
 {
-  "billing_launch_authorised": false,
-  "billing_provider_test_mode_defined": true,
+  "authority_valid": true,
+  "boundaries": {
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "prd10_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "release_tag_authorised": false
+  },
   "captured_at": "2026-07-09T21:37:57.638323+00:00",
-  "checkout_webhook_contract_defined": true,
-  "commercial_launch_evidence_recorded": true,
-  "commercial_launch_foundation_recorded": true,
-  "commercial_launch_readiness_helper_added": true,
-  "commercial_launch_readiness_route_added": true,
-  "commercial_launch_readiness_snapshot": {
+  "commercial_launch_readiness": {
     "billing_contract_readiness_defined": true,
     "billing_contracts": {
       "billing_plans": [
@@ -172,28 +176,8 @@
     "support_reconciliation_defined": true,
     "terms_privacy_launch_comms_defined": true
   },
-  "commercial_support_reconciliation_defined": true,
-  "deployment_authorised": false,
-  "invoice_tax_refund_support_defined": true,
-  "live_learner_traffic_authorised": false,
-  "live_payment_processing_authorised": false,
-  "merged_prd_slices": [
-    "PRD-9.0",
-    "PRD-9.1",
-    "PRD-9.2",
-    "PRD-9.3",
-    "PRD-9.4"
-  ],
   "next_authorised_item": "PRD-9.5-9.9",
-  "prd10_implementation_authorised": false,
   "prd_id": "PRD-9.0-9.4",
-  "prd_owner": "Nkgolo Lebelo",
-  "pricing_packaging_defined": true,
-  "production_release_authorised": false,
-  "public_beta_authorised": false,
-  "release_tag_authorised": false,
-  "sponsorship_school_procurement_defined": true,
-  "subscription_entitlement_matrix_defined": true,
-  "target_branch": "master",
-  "terms_privacy_launch_comms_defined": true
+  "register_next_authorised_item": "PRD-9.5-9.9",
+  "valid": true
 }
