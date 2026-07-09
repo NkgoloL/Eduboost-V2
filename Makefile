@@ -3355,3 +3355,12 @@ prd505-509-popia-final-assurance-handoff-check:
 .PHONY: prd505-509-popia-final-assurance-handoff-capture
 prd505-509-popia-final-assurance-handoff-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd505_509_popia_final_assurance_handoff_evidence.py --claim-prd505-509-popia-final-assurance-handoff --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+# PRD-6.0-6.4 security assurance foundation
+.PHONY: prd600-604-security-assurance-foundation-check
+prd600-604-security-assurance-foundation-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd600_604_security_assurance_foundation.py --authority-only --json
+
+.PHONY: prd600-604-security-assurance-foundation-capture
+prd600-604-security-assurance-foundation-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd600_604_security_assurance_foundation_evidence.py --claim-prd600-604-security-assurance-foundation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json

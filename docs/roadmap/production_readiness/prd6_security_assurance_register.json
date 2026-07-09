@@ -1,0 +1,34 @@
+{
+  "authority_boundaries": {
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "prd7_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "release_tag_authorised": false
+  },
+  "last_recorded_item": "PRD-5.5-5.9",
+  "next_authorised_item": "PRD-6.0-6.4",
+  "prd6_sequence": [
+    {
+      "authorised": true,
+      "prd_id": "PRD-6.0-6.4",
+      "status": "authorised",
+      "title": "Security assurance foundation"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-6.5-6.9",
+      "status": "blocked",
+      "title": "Security final evidence, external review, and handoff to PRD-7"
+    }
+  ],
+  "prd7_implementation_authorised": false,
+  "prd_id": "PRD-6",
+  "security_assurance_evidence_recorded": false,
+  "security_assurance_foundation_recorded": false,
+  "status": "prd6_security_assurance_foundation_authority_open",
+  "title": "Security Assurance and External Review"
+}

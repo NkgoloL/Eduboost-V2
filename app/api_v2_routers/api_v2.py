@@ -54,6 +54,7 @@ from app.api_v2_routers import (  # noqa: E402
     parents,
     popia,
     privacy_operations,
+    security_assurance,
     vertical_journey,
 )
 
@@ -69,6 +70,7 @@ app.include_router(content_quality.router, prefix=API_V2)
 app.include_router(billing.router, prefix=API_V2)
 app.include_router(popia.router, prefix=API_V2)
 app.include_router(privacy_operations.router, prefix=API_V2)
+app.include_router(security_assurance.router, prefix=API_V2)
 
 
 # ── Health & meta ─────────────────────────────────────────────────────────────
