@@ -3404,3 +3404,12 @@ prd800-804-performance-scale-cost-execution-foundation-check:
 .PHONY: prd800-804-performance-scale-cost-execution-foundation-capture
 prd800-804-performance-scale-cost-execution-foundation-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd800_804_performance_scale_cost_execution_foundation_evidence.py --claim-prd800-804-performance-scale-cost-execution-foundation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+# PRD-8.5-8.9 performance/scale/cost final assurance/handoff
+.PHONY: prd805-809-performance-scale-cost-final-handoff-check
+prd805-809-performance-scale-cost-final-handoff-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd805_809_performance_scale_cost_final_handoff.py --authority-only --json
+
+.PHONY: prd805-809-performance-scale-cost-final-handoff-capture
+prd805-809-performance-scale-cost-final-handoff-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd805_809_performance_scale_cost_final_handoff_evidence.py --claim-prd805-809-performance-scale-cost-final-handoff --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
