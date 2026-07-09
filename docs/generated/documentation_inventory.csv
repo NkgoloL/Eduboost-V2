@@ -508,9 +508,15 @@ docs/engineering/branching.md,markdown,,0,Branching and Release Naming Policy,Br
 docs/engineering/ci_workflows.md,markdown,,0,CI/CD Workflows,CI/CD Workflows,,,,,,,156,6861,,0,False
 docs/engineering/coverage_debt.md,markdown,,0,Coverage Debt Register,Coverage Debt Register,,,,,,,187,6943,,0,False
 docs/engineering/prd0_to_prd1_handoff.md,markdown,,0,PRD-0 to PRD-1 Handoff,PRD-0 to PRD-1 Handoff,,,,,,,33,1450,,0,False
+docs/engineering/prd1_ci_convergence_release_readiness_handoff.md,markdown,,0,PRD-1 CI/Release Gate Closure Handoff,PRD-1 CI/Release Gate Closure Handoff,,,,,,,18,923,,0,False
 docs/engineering/prd1_ci_inventory_authority.md,markdown,,0,PRD-1.1 CI Inventory Authority,PRD-1.1 CI Inventory Authority,,,,,,,20,816,,0,False
 docs/engineering/prd1_ci_release_gate_convergence.md,markdown,,0,PRD-1 CI and Release Gate Convergence,PRD-1 CI and Release Gate Convergence,,,,,,,16,1122,,0,False
 docs/engineering/prd1_required_checks_workflow_release_gate_convergence.md,markdown,,0,PRD-1 CI Release-Gate Convergence — Required Checks and Gate Baseline,PRD-1 CI Release-Gate Convergence — Required Checks and Gate Baseline,,,,,,,18,949,,0,False
+docs/engineering/prd2_runtime_kg_acceptance_handoff.md,markdown,,0,PRD-2.7-2.9 Runtime KG Acceptance and Handoff,PRD-2.7-2.9 Runtime KG Acceptance and Handoff,,,,,,,15,832,,0,False
+docs/engineering/prd2_runtime_kg_persistence_foundation.md,markdown,,0,PRD-2 Runtime KG Persistence Foundation,PRD-2 Runtime KG Persistence Foundation,,,,,,,33,1334,,0,False
+docs/engineering/prd2_runtime_kg_route_projection_behaviour.md,markdown,,0,PRD-2.4-2.6 Runtime KG Route Projection Behaviour,PRD-2.4-2.6 Runtime KG Route Projection Behaviour,,,,,,,14,912,,0,False
+docs/engineering/prd3_learner_parent_vertical_journey_foundation.md,markdown,,0,PRD-3.0-3.4 Learner and Parent Vertical Journey Foundation,PRD-3.0-3.4 Learner and Parent Vertical Journey Foundation,,,,,,,26,1126,,0,False
+docs/engineering/prd3_learner_parent_vertical_journey_hardening_handoff.md,markdown,,0,PRD-3.5-3.9 Learner/Parent Vertical Journey Hardening and Handoff,PRD-3.5-3.9 Learner/Parent Vertical Journey Hardening and Handoff,,,,,,,20,845,,0,False
 docs/engineering/repository_hygiene.md,markdown,,0,Repository Hygiene and Generated/Local Artifact Policy,Repository Hygiene and Generated/Local Artifact Policy,,,,,,,58,2897,,0,False
 docs/engineering/technical_debt/rr005_dormant_router_review.md,markdown,,0,RR-005 Dormant Router Review,RR-005 Dormant Router Review,active,engineering,developer,True,,,27,826,,0,True
 docs/engineering/technical_debt/rr005_import_linter_exception_register.md,markdown,,0,RR-005 Import-Linter Exception Register,RR-005 Import-Linter Exception Register,active,architecture,developer,True,,,27,937,,0,True
@@ -1035,6 +1041,7 @@ docs/release-evidence/production-readiness/prd-010-prd0-closure-evidence-handoff
 docs/release-evidence/production-readiness/prd-100-ci-release-gate-stream-authority/evidence_index.md,markdown,,0,PRD-1.0 CI/Release-Gate Stream Authority Evidence,PRD-1.0 CI/Release-Gate Stream Authority Evidence,,,,,,,16,583,,0,False
 docs/release-evidence/production-readiness/prd-101-ci-inventory-authority/evidence_index.md,markdown,,0,PRD-1.1 CI Inventory Authority Evidence,PRD-1.1 CI Inventory Authority Evidence,,,,,,,24,875,,0,False
 docs/release-evidence/production-readiness/prd-102-104-required-checks-workflow-release-gate-convergence/evidence_index.md,markdown,,0,"PRD-1.2-1.4 Required Checks, Workflow Canonicalisation, and Release Gate Evidence","PRD-1.2-1.4 Required Checks, Workflow Canonicalisation, and Release Gate Evidence",,,,,,,18,679,,0,False
+docs/release-evidence/production-readiness/prd-105-109-ci-convergence-release-readiness-handoff/evidence_index.md,markdown,,0,PRD-1.5-1.9 Evidence Index,PRD-1.5-1.9 Evidence Index,,,,,,,18,423,,0,False
 docs/release-evidence/roadmap-reconciliation/final-roadmap-reconciliation-closure/evidence_index.md,markdown,,0,Final Roadmap Reconciliation Closure Evidence,Final Roadmap Reconciliation Closure Evidence,,,,,,,14,493,,0,False
 docs/release-evidence/roadmap-reconciliation/roadmap-reconciliation-slice/evidence_index.md,markdown,,0,Roadmap Reconciliation Evidence Index,Roadmap Reconciliation Evidence Index,,,,,,,35,1005,,0,False
 docs/release-evidence/roadmap-reconciliation/roadmap-reconciliation-slice/raw/outstanding_work_register_snapshot.md,markdown,,0,Outstanding Work Register,Outstanding Work Register,,,,,,,52,7570,,0,False
@@ -1728,6 +1735,8 @@ docs/roadmap/production_readiness/prd_0_expanded_post_closure_current_state_auth
 docs/roadmap/production_readiness/prd_100_ci_release_gate_stream_authority.md,markdown,,0,PRD-1.0 — CI/Release-Gate Stream Authority and Register,PRD-1.0 — CI/Release-Gate Stream Authority and Register,,,,,,,52,1928,,0,False
 docs/roadmap/production_readiness/prd_101_ci_inventory_authority.md,markdown,,0,PRD-1.1 — CI Inventory Authority,PRD-1.1 — CI Inventory Authority,,,,,,,41,1433,,0,False
 docs/roadmap/production_readiness/prd_102_104_required_checks_workflow_release_gate_convergence.md,markdown,,0,"PRD-1.2-1.4 Required Checks, Workflow Canonicalisation, and Release Gate Definition","PRD-1.2-1.4 Required Checks, Workflow Canonicalisation, and Release Gate Definition",,,,,,,21,1428,,0,False
+docs/roadmap/production_readiness/prd_105_109_ci_convergence_release_readiness_handoff.md,markdown,,0,"PRD-1.5-1.9 — CI Convergence, Release Readiness, Final Evidence, and PRD-2 Handoff","PRD-1.5-1.9 — CI Convergence, Release Readiness, Final Evidence, and PRD-2 Handoff",,,,,,,20,1193,,0,False
+docs/roadmap/production_readiness/prd_200_203_runtime_kg_persistence_foundation.md,markdown,,0,PRD-2.0-2.3 — Runtime KG Persistence Foundation,PRD-2.0-2.3 — Runtime KG Persistence Foundation,,,,,,,28,787,,0,False
 docs/roadmap/production_readiness/production_readiness_boundary_contract.md,markdown,,0,Production Readiness Boundary Contract,Production Readiness Boundary Contract,,,,,,,43,1237,,0,False
 docs/roadmap/production_readiness/repository_hygiene_generated_local_artifact_audit.schema.md,markdown,,0,Repository hygiene generated/local artifact audit schema,Repository hygiene generated/local artifact audit schema,,,,,,,25,1350,,0,False
 docs/roadmap/production_readiness/repository_hygiene_generated_local_artifact_audit_plan.md,markdown,,0,Repository hygiene and generated/local artifact audit plan,Repository hygiene and generated/local artifact audit plan,,,,,,,30,1091,,0,False

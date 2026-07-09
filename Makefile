@@ -3311,3 +3311,11 @@ prd300-304-learner-parent-vertical-journey-foundation-check:
 .PHONY: prd300-304-learner-parent-vertical-journey-foundation-capture
 prd300-304-learner-parent-vertical-journey-foundation-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd300_304_learner_parent_vertical_journey_foundation_evidence.py --claim-prd300-304-learner-parent-vertical-journey-foundation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+.PHONY: prd305-309-learner-parent-vertical-journey-hardening-handoff-check
+prd305-309-learner-parent-vertical-journey-hardening-handoff-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd305_309_learner_parent_vertical_journey_hardening_handoff.py --json
+
+.PHONY: prd305-309-learner-parent-vertical-journey-hardening-handoff-capture
+prd305-309-learner-parent-vertical-journey-hardening-handoff-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd305_309_learner_parent_vertical_journey_hardening_handoff_evidence.py --claim-prd305-309-learner-parent-vertical-journey-hardening-handoff --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
