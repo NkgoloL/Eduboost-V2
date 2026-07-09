@@ -3319,3 +3319,12 @@ prd305-309-learner-parent-vertical-journey-hardening-handoff-check:
 .PHONY: prd305-309-learner-parent-vertical-journey-hardening-handoff-capture
 prd305-309-learner-parent-vertical-journey-hardening-handoff-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd305_309_learner_parent_vertical_journey_hardening_handoff_evidence.py --claim-prd305-309-learner-parent-vertical-journey-hardening-handoff --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+# PRD-4.0-4.4 content/CAPS/quality readiness foundation
+.PHONY: prd400-404-content-caps-quality-readiness-foundation-check
+prd400-404-content-caps-quality-readiness-foundation-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd400_404_content_caps_quality_readiness_foundation.py --authority-only --json
+
+.PHONY: prd400-404-content-caps-quality-readiness-foundation-capture
+prd400-404-content-caps-quality-readiness-foundation-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd400_404_content_caps_quality_readiness_foundation_evidence.py --claim-prd400-404-content-caps-quality-readiness-foundation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
