@@ -1,0 +1,125 @@
+{
+  "authority_valid": true,
+  "content_quality_blocked_report": {
+    "bias_language_accessibility_ready": false,
+    "billing_launch_authorised": false,
+    "blockers": [
+      "educator_reviewed_item_bank_missing",
+      "caps_coverage_matrix_incomplete",
+      "human_review_queue_missing",
+      "bias_language_accessibility_review_incomplete",
+      "misconception_remediation_validation_incomplete"
+    ],
+    "caps_coverage_complete": false,
+    "caps_coverage_matrix_available": false,
+    "deployment_authorised": false,
+    "educator_reviewed_item_bank": false,
+    "grade": 4,
+    "human_review_queue_available": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "misconception_remediation_ready": false,
+    "prd5_implementation_authorised": false,
+    "prd_id": "PRD-4.0-4.4",
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "quality_dimensions": [
+      "educator_review",
+      "caps_coverage",
+      "human_review_queue",
+      "bias_language_accessibility_review",
+      "misconception_remediation_validation"
+    ],
+    "ready": false,
+    "recommended_next_actions": [
+      "resolve_educator_reviewed_item_bank_missing",
+      "resolve_caps_coverage_matrix_incomplete",
+      "resolve_human_review_queue_missing",
+      "resolve_bias_language_accessibility_review_incomplete",
+      "resolve_misconception_remediation_validation_incomplete"
+    ],
+    "release_tag_authorised": false,
+    "strand_readiness": [],
+    "subject": "Mathematics"
+  },
+  "content_quality_readiness_report": {
+    "bias_language_accessibility_ready": true,
+    "billing_launch_authorised": false,
+    "blockers": [],
+    "caps_coverage_complete": true,
+    "caps_coverage_matrix_available": true,
+    "deployment_authorised": false,
+    "educator_reviewed_item_bank": true,
+    "grade": 4,
+    "human_review_queue_available": true,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "misconception_remediation_ready": true,
+    "prd5_implementation_authorised": false,
+    "prd_id": "PRD-4.0-4.4",
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "quality_dimensions": [
+      "educator_review",
+      "caps_coverage",
+      "human_review_queue",
+      "bias_language_accessibility_review",
+      "misconception_remediation_validation"
+    ],
+    "ready": true,
+    "recommended_next_actions": [
+      "capture_final_content_quality_evidence",
+      "prepare_prd4_final_handoff_to_prd5"
+    ],
+    "release_tag_authorised": false,
+    "strand_readiness": [
+      {
+        "coverage_confirmed": true,
+        "misconception_map_confirmed": true,
+        "ready": true,
+        "remediation_path_confirmed": true,
+        "reviewed_item_count": 3,
+        "strand": "Numbers, Operations & Relationships"
+      },
+      {
+        "coverage_confirmed": true,
+        "misconception_map_confirmed": true,
+        "ready": true,
+        "remediation_path_confirmed": true,
+        "reviewed_item_count": 3,
+        "strand": "Patterns, Functions & Algebra"
+      },
+      {
+        "coverage_confirmed": true,
+        "misconception_map_confirmed": true,
+        "ready": true,
+        "remediation_path_confirmed": true,
+        "reviewed_item_count": 3,
+        "strand": "Space & Shape (Geometry)"
+      },
+      {
+        "coverage_confirmed": true,
+        "misconception_map_confirmed": true,
+        "ready": true,
+        "remediation_path_confirmed": true,
+        "reviewed_item_count": 3,
+        "strand": "Measurement"
+      },
+      {
+        "coverage_confirmed": true,
+        "misconception_map_confirmed": true,
+        "ready": true,
+        "remediation_path_confirmed": true,
+        "reviewed_item_count": 3,
+        "strand": "Data Handling"
+      }
+    ],
+    "subject": "Mathematics"
+  },
+  "next_authorised_item": "PRD-4.5-4.9",
+  "prd_id": "PRD-4.0-4.4",
+  "recorded_at": "2026-07-09T11:04:21.567665+00:00",
+  "recorded_by": "Nkgolo Lebelo",
+  "target_branch": "master",
+  "valid": true
+}
