@@ -3364,3 +3364,12 @@ prd600-604-security-assurance-foundation-check:
 .PHONY: prd600-604-security-assurance-foundation-capture
 prd600-604-security-assurance-foundation-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd600_604_security_assurance_foundation_evidence.py --claim-prd600-604-security-assurance-foundation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+# PRD-6.5-6.9 security final assurance/handoff
+.PHONY: prd605-609-security-final-assurance-handoff-check
+prd605-609-security-final-assurance-handoff-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd605_609_security_final_assurance_handoff.py --authority-only --json
+
+.PHONY: prd605-609-security-final-assurance-handoff-capture
+prd605-609-security-final-assurance-handoff-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd605_609_security_final_assurance_handoff_evidence.py --claim-prd605-609-security-final-assurance-handoff --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json

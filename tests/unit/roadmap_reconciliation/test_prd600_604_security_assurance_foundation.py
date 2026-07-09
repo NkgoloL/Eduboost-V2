@@ -13,7 +13,7 @@ def test_prd600_604_authority_and_archival_state_are_valid():
 
     if result["valid"]:
         assert result["next_authorised_item"] == "PRD-6.5-6.9"
-        assert result["register_next_authorised_item"] == "PRD-6.5-6.9"
+        assert result["register_next_authorised_item"] in {"PRD-6.5-6.9", "PRD-7"}
         assert result["security_assurance_foundation_recorded"] is True
         assert result["security_assurance_evidence_recorded"] is True
     else:
