@@ -108,8 +108,8 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         record.get("content_quality_final_acceptance_route_added") is True,
         record.get("educational_readiness_closure_defined") is True,
         false_boundaries_preserved,
-        register.get("next_authorised_item") in {"PRD-4.5-4.9", "PRD-5", "PRD-5.0-5.4", "PRD-5.5-5.9"},
-        prod_register.get("next_authorised_item") in {"PRD-4.5-4.9", "PRD-5", "PRD-5.0-5.4", "PRD-5.5-5.9"},
+        register.get("next_authorised_item") in {"PRD-4.5-4.9", "PRD-5", "PRD-5.0-5.4", "PRD-5.5-5.9", "PRD-6"},
+        prod_register.get("next_authorised_item") in {"PRD-4.5-4.9", "PRD-5", "PRD-5.0-5.4", "PRD-5.5-5.9", "PRD-6"},
     ])
     final_evidence_recorded = record.get("content_quality_final_evidence_recorded") is True
     reconciliation_recorded = record.get("prd4_final_reconciliation_recorded") is True
@@ -122,8 +122,8 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         sequence_complete,
         handoff,
         record.get("next_authorised_item") == "PRD-5",
-        register.get("next_authorised_item") in {"PRD-5", "PRD-5.0-5.4", "PRD-5.5-5.9"},
-        prod_register.get("next_authorised_item") in {"PRD-5", "PRD-5.0-5.4", "PRD-5.5-5.9"},
+        register.get("next_authorised_item") in {"PRD-5", "PRD-5.0-5.4", "PRD-5.5-5.9", "PRD-6"},
+        prod_register.get("next_authorised_item") in {"PRD-5", "PRD-5.0-5.4", "PRD-5.5-5.9", "PRD-6"},
     ])
     return {
         "valid": valid,
