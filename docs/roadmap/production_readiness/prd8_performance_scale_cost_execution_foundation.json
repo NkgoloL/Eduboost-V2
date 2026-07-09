@@ -1,26 +1,18 @@
 {
-  "billing_launch_authorised": false,
-  "capacity_plan_defined": true,
+  "authority_valid": true,
+  "boundaries": {
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "prd9_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "release_tag_authorised": false
+  },
   "captured_at": "2026-07-09T18:56:20.327082+00:00",
-  "database_index_review_defined": true,
-  "deployment_authorised": false,
-  "frontend_performance_budget_defined": true,
-  "live_learner_traffic_authorised": false,
-  "live_payment_processing_authorised": false,
-  "llm_cost_simulation_defined": true,
-  "load_test_readiness_defined": true,
-  "merged_prd_slices": [
-    "PRD-8.0",
-    "PRD-8.1",
-    "PRD-8.2",
-    "PRD-8.3",
-    "PRD-8.4"
-  ],
   "next_authorised_item": "PRD-8.5-8.9",
-  "performance_scale_cost_evidence_recorded": true,
-  "performance_scale_cost_foundation_recorded": true,
-  "performance_scale_cost_readiness_helper_added": true,
-  "performance_scale_cost_readiness_snapshot": {
+  "performance_scale_cost_readiness": {
     "billing_launch_authorised": false,
     "blockers": [],
     "capacity_plan_defined": true,
@@ -160,16 +152,7 @@
       "capacity_plan_readiness"
     ]
   },
-  "performance_scale_cost_route_added": true,
-  "prd9_implementation_authorised": false,
   "prd_id": "PRD-8.0-8.4",
-  "prd_owner": "Nkgolo Lebelo",
-  "previous_prd7_handoff_required": true,
-  "production_release_authorised": false,
-  "public_beta_authorised": false,
-  "queue_backpressure_defined": true,
-  "release_tag_authorised": false,
-  "runtime_kg_query_performance_defined": true,
-  "status": "authority_ready_evidence_pending",
-  "target_branch": "master"
+  "register_next_authorised_item": "PRD-8.5-8.9",
+  "valid": true
 }
