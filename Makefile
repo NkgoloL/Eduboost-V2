@@ -3413,3 +3413,12 @@ prd805-809-performance-scale-cost-final-handoff-check:
 .PHONY: prd805-809-performance-scale-cost-final-handoff-capture
 prd805-809-performance-scale-cost-final-handoff-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd805_809_performance_scale_cost_final_handoff_evidence.py --claim-prd805-809-performance-scale-cost-final-handoff --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+# PRD-9.0-9.4 billing and commercial launch readiness foundation
+.PHONY: prd900-904-billing-commercial-launch-readiness-foundation-check
+prd900-904-billing-commercial-launch-readiness-foundation-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd900_904_billing_commercial_launch_readiness_foundation.py --authority-only --json
+
+.PHONY: prd900-904-billing-commercial-launch-readiness-foundation-capture
+prd900-904-billing-commercial-launch-readiness-foundation-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd900_904_billing_commercial_launch_readiness_foundation_evidence.py --claim-prd900-904-billing-commercial-launch-readiness-foundation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
