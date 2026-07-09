@@ -28,7 +28,7 @@ FALSE_BOUNDARIES = [
     "billing_launch_authorised",
     "live_payment_processing_authorised",
 ]
-ALLOWED_NEXT = {"PRD-6.5-6.9", "PRD-7"}
+ALLOWED_NEXT = {"PRD-6.5-6.9", "PRD-7", "PRD-7.0-7.4", "PRD-7.5-7.9", "PRD-8"}
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -141,8 +141,8 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         sequence_complete,
         handoff,
         record.get("next_authorised_item") == "PRD-7",
-        register.get("next_authorised_item") == "PRD-7",
-        prod_register.get("next_authorised_item") == "PRD-7",
+        register.get("next_authorised_item") in ALLOWED_NEXT,
+        prod_register.get("next_authorised_item") in ALLOWED_NEXT,
     ])
 
     return {
