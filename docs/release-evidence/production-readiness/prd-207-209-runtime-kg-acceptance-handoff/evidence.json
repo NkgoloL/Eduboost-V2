@@ -1,0 +1,102 @@
+{
+  "authority_before_capture": {
+    "authority_valid": true,
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "foundation_and_route_records_valid": true,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "merged_prd_slices": [
+      "PRD-2.7",
+      "PRD-2.8",
+      "PRD-2.9"
+    ],
+    "missing_paths": [],
+    "next_authorised_item": "PRD-2.7-2.9",
+    "prd2_final_reconciliation_recorded": false,
+    "prd2_sequence_complete": false,
+    "prd3_handoff_authorised": false,
+    "prd3_implementation_authorised": false,
+    "prd_id": "PRD-2.7-2.9",
+    "production_register_next_authorised_item": "PRD-2.7-2.9",
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "register_next_authorised_item": "PRD-2.7-2.9",
+    "release_tag_authorised": false,
+    "runtime_kg_acceptance_recorded": false,
+    "runtime_kg_acceptance_report_valid": true,
+    "runtime_kg_enabled_by_default": false,
+    "runtime_kg_final_evidence_recorded": false,
+    "runtime_kg_route_projection_valid": true,
+    "valid": false
+  },
+  "captured_at": "2026-07-09T07:55:40.006706+00:00",
+  "captured_by": "Nkgolo Lebelo",
+  "evidence_files": {
+    "production_register_sha256": "5aff44eb2fe8cc9bf848ecae0b8d861a7c288ea673d44fecf2add936d2d1dfc6",
+    "record_sha256": "881cac385f12fb663b5bfc50552d716454ab3e04e775de12f2c45857ff054c0c",
+    "register_sha256": "202c598b94acf87904dcb9f028e04eb3e8e0c0b42f0686ad26d8837a313d7758"
+  },
+  "final_verification": {
+    "authority_valid": true,
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "foundation_and_route_records_valid": true,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "merged_prd_slices": [
+      "PRD-2.7",
+      "PRD-2.8",
+      "PRD-2.9"
+    ],
+    "missing_paths": [],
+    "next_authorised_item": "PRD-3",
+    "prd2_final_reconciliation_recorded": true,
+    "prd2_sequence_complete": true,
+    "prd3_handoff_authorised": true,
+    "prd3_implementation_authorised": false,
+    "prd_id": "PRD-2.7-2.9",
+    "production_register_next_authorised_item": "PRD-3",
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "register_next_authorised_item": "PRD-3",
+    "release_tag_authorised": false,
+    "runtime_kg_acceptance_recorded": true,
+    "runtime_kg_acceptance_report_valid": true,
+    "runtime_kg_enabled_by_default": false,
+    "runtime_kg_final_evidence_recorded": true,
+    "runtime_kg_route_projection_valid": true,
+    "valid": true
+  },
+  "prd_id": "PRD-2.7-2.9",
+  "runtime_kg_acceptance_payload": {
+    "accepted": true,
+    "checks": [
+      {
+        "detail": "Runtime KG remains opt-in until PRD-3+ vertical journey rollout decisions.",
+        "name": "runtime_kg_disabled_by_default",
+        "passed": true
+      },
+      {
+        "detail": "Graph-backed learner gap projection exposes route-safe focus metadata.",
+        "name": "projection_payload_available",
+        "passed": true
+      },
+      {
+        "detail": "Legacy fallback remains explicit and serialisable.",
+        "name": "rollback_payload_available",
+        "passed": true
+      },
+      {
+        "detail": "PRD-2 may hand off to PRD-3 but does not implement PRD-3 learner/parent vertical journeys.",
+        "name": "prd3_handoff_only",
+        "passed": true
+      }
+    ],
+    "next_authorised_item": "PRD-3",
+    "prd3_implementation_authorised": false,
+    "prd_id": "PRD-2.7-2.9",
+    "runtime_kg_enabled_by_default": false
+  },
+  "target_branch": "master"
+}
