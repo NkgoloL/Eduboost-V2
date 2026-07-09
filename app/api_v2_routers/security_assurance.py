@@ -4,7 +4,10 @@ from __future__ import annotations
 from fastapi import APIRouter
 
 from app.core.envelope_route import EnvelopedRoute
-from app.modules.security_assurance import build_default_security_assurance_readiness_report
+from app.modules.security_assurance import (
+    build_default_security_assurance_readiness_report,
+    build_default_security_final_assurance_report,
+)
 
 router = APIRouter(route_class=EnvelopedRoute, prefix="/security-assurance", tags=["security-assurance"])
 
@@ -20,3 +23,17 @@ async def get_security_assurance_readiness() -> dict:
     """
 
     return build_default_security_assurance_readiness_report().to_payload()
+
+
+@router.get("/final-assurance")
+async def get_security_final_assurance() -> dict:
+    """Return deterministic PRD-6 final security assurance.
+
+    This endpoint exposes final scanner, SBOM, secret-rotation, abuse-test,
+    authorization-negative-test, and external/independent review acceptance.
+    It does not run scanners, modify branch protection, authorise PRD-7,
+    authorise public beta, live learner traffic, billing, deployment, release
+    tags, or production release.
+    """
+
+    return build_default_security_final_assurance_report().to_payload()

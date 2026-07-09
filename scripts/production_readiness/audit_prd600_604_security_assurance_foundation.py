@@ -28,7 +28,7 @@ FALSE_BOUNDARIES = [
     "billing_launch_authorised",
     "live_payment_processing_authorised",
 ]
-ALLOWED_NEXT = {"PRD-6", "PRD-6.0-6.4", "PRD-6.5-6.9"}
+ALLOWED_NEXT = {"PRD-6", "PRD-6.0-6.4", "PRD-6.5-6.9", "PRD-7"}
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -124,7 +124,7 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         record.get("secret_rotation_rate_limit_abuse_readiness_defined") is True,
         record.get("external_review_path_defined") is True,
         false_boundaries_preserved,
-        register.get("next_authorised_item") in {"PRD-6.0-6.4", "PRD-6.5-6.9"},
+        register.get("next_authorised_item") in {"PRD-6.0-6.4", "PRD-6.5-6.9", "PRD-7"},
         prod_next in ALLOWED_NEXT,
     ])
 
@@ -135,8 +135,8 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         foundation_recorded,
         evidence_recorded,
         record.get("next_authorised_item") == "PRD-6.5-6.9",
-        register.get("next_authorised_item") == "PRD-6.5-6.9",
-        prod_register.get("next_authorised_item") == "PRD-6.5-6.9",
+        register.get("next_authorised_item") in {"PRD-6.5-6.9", "PRD-7"},
+        prod_register.get("next_authorised_item") in {"PRD-6.5-6.9", "PRD-7"},
     ])
 
     return {
