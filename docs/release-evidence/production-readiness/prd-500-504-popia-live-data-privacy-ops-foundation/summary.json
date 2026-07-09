@@ -1,28 +1,19 @@
 {
-  "ai_prompt_telemetry_pii_redaction_visible": true,
-  "billing_launch_authorised": false,
+  "authority_valid": true,
+  "boundaries": {
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "prd6_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "release_tag_authorised": false
+  },
   "captured_at": "2026-07-09T12:35:28.499895+00:00",
-  "consent_withdrawal_drill_visible": true,
-  "deployment_authorised": false,
-  "export_deletion_retention_drills_visible": true,
-  "live_data_privacy_foundation_recorded": true,
-  "live_data_processing_impact_assessment_visible": true,
-  "live_learner_traffic_authorised": false,
-  "live_payment_processing_authorised": false,
-  "merged_prd_slices": [
-    "PRD-5.0",
-    "PRD-5.1",
-    "PRD-5.2",
-    "PRD-5.3",
-    "PRD-5.4"
-  ],
   "next_authorised_item": "PRD-5.5-5.9",
-  "prd6_implementation_authorised": false,
   "prd_id": "PRD-5.0-5.4",
-  "prd_owner": "Nkgolo Lebelo",
-  "previous_prd4_handoff_required": true,
-  "privacy_live_data_evidence_recorded": true,
-  "privacy_live_data_readiness_snapshot": {
+  "privacy_live_data_readiness": {
     "ai_prompt_pii_redaction_proven": true,
     "billing_launch_authorised": false,
     "blockers": [],
@@ -139,12 +130,6 @@
     "subprocessor_data_flow_confirmed": true,
     "telemetry_pii_redaction_proven": true
   },
-  "privacy_operations_helper_added": true,
-  "privacy_operations_route_added": true,
-  "production_release_authorised": false,
-  "public_beta_authorised": false,
-  "release_tag_authorised": false,
-  "subprocessor_data_flow_privacy_signoff_visible": true,
-  "target_branch": "master",
-  "title": "POPIA live-data operations privacy foundation"
+  "register_next_authorised_item": "PRD-5.5-5.9",
+  "valid": true
 }

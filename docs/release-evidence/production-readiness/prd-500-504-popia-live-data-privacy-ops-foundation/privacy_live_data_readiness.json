@@ -1,0 +1,117 @@
+{
+  "ai_prompt_pii_redaction_proven": true,
+  "billing_launch_authorised": false,
+  "blockers": [],
+  "consent_withdrawal_drill_proven": true,
+  "data_flow_areas": [
+    "learner_profile",
+    "guardian_consent",
+    "diagnostic_response",
+    "runtime_kg_projection",
+    "lesson_interaction",
+    "study_plan",
+    "parent_report",
+    "support_event"
+  ],
+  "data_flow_controls": [
+    {
+      "area": "learner_profile",
+      "consent_required": true,
+      "pii_redaction_required": true,
+      "purpose_limited": true,
+      "ready": true,
+      "retention_classified": true
+    },
+    {
+      "area": "guardian_consent",
+      "consent_required": true,
+      "pii_redaction_required": true,
+      "purpose_limited": true,
+      "ready": true,
+      "retention_classified": true
+    },
+    {
+      "area": "diagnostic_response",
+      "consent_required": true,
+      "pii_redaction_required": true,
+      "purpose_limited": true,
+      "ready": true,
+      "retention_classified": true
+    },
+    {
+      "area": "runtime_kg_projection",
+      "consent_required": true,
+      "pii_redaction_required": true,
+      "purpose_limited": true,
+      "ready": true,
+      "retention_classified": true
+    },
+    {
+      "area": "lesson_interaction",
+      "consent_required": true,
+      "pii_redaction_required": true,
+      "purpose_limited": true,
+      "ready": true,
+      "retention_classified": true
+    },
+    {
+      "area": "study_plan",
+      "consent_required": true,
+      "pii_redaction_required": true,
+      "purpose_limited": true,
+      "ready": true,
+      "retention_classified": true
+    },
+    {
+      "area": "parent_report",
+      "consent_required": true,
+      "pii_redaction_required": true,
+      "purpose_limited": true,
+      "ready": true,
+      "retention_classified": true
+    },
+    {
+      "area": "support_event",
+      "consent_required": true,
+      "pii_redaction_required": true,
+      "purpose_limited": true,
+      "ready": true,
+      "retention_classified": true
+    }
+  ],
+  "data_flow_matrix_ready": true,
+  "deletion_drill_proven": true,
+  "deployment_authorised": false,
+  "export_drill_proven": true,
+  "live_data_processing_impact_assessment_complete": true,
+  "live_learner_traffic_authorised": false,
+  "live_payment_processing_authorised": false,
+  "prd6_implementation_authorised": false,
+  "prd_id": "PRD-5.0-5.4",
+  "privacy_signoff_path_visible": true,
+  "production_release_authorised": false,
+  "public_beta_authorised": false,
+  "ready": true,
+  "recommended_next_actions": [
+    "capture_prd5_live_data_privacy_evidence",
+    "prepare_prd5_final_privacy_assurance_handoff"
+  ],
+  "redaction_rules": [
+    "direct_identifier_redaction",
+    "guardian_contact_masking",
+    "free_text_minimisation",
+    "telemetry_payload_allowlist",
+    "llm_prompt_context_minimisation"
+  ],
+  "release_tag_authorised": false,
+  "retention_drill_proven": true,
+  "scope_items": [
+    "live_data_processing_impact_assessment",
+    "consent_withdrawal_proof",
+    "export_deletion_retention_drills",
+    "ai_prompt_telemetry_pii_redaction",
+    "subprocessor_data_flow_privacy_signoff_readiness"
+  ],
+  "subprocessor_data_flow_confirmed": true,
+  "telemetry_pii_redaction_proven": true
+}
