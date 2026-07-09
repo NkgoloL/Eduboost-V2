@@ -1,0 +1,43 @@
+{
+  "schema_version": "prd3-vertical-journey-register/v1",
+  "stream_id": "PRD-3-LEARNER-PARENT-VERTICAL-JOURNEY-HARDENING",
+  "parent_stream_id": "PRD-PRODUCTION-READINESS",
+  "goal": "prove the core learner and parent product journey end to end",
+  "authorised_by_prd2_9": true,
+  "status": "prd3_started_vertical_journey_foundation_pending_evidence",
+  "last_recorded_item": null,
+  "next_authorised_item": "PRD-3.0-3.4",
+  "prd3_sequence": [
+    {
+      "prd_id": "PRD-3.0-3.4",
+      "name": "Learner/parent vertical journey foundation and status contract",
+      "status": "authorised",
+      "authorised": true
+    },
+    {
+      "prd_id": "PRD-3.5-3.9",
+      "name": "Vertical journey final hardening, evidence, and handoff to PRD-4",
+      "status": "pending",
+      "authorised": false
+    }
+  ],
+  "implementation_boundaries": {
+    "vertical_journey_status_route_added": true,
+    "parent_progress_report_available": true,
+    "popia_export_erasure_paths_visible": true,
+    "runtime_kg_gap_profile_included": true,
+    "live_learner_traffic_authorised": false,
+    "production_release_authorised": false,
+    "prd4_implementation_authorised": false
+  },
+  "authority_boundaries": {
+    "production_release_authorised": false,
+    "deployment_authorised": false,
+    "release_tag_authorised": false,
+    "public_beta_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "billing_launch_authorised": false,
+    "live_payment_processing_authorised": false,
+    "prd4_implementation_authorised": false
+  }
+}

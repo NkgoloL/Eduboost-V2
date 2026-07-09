@@ -3303,3 +3303,11 @@ prd207-209-runtime-kg-acceptance-handoff-check:
 prd207-209-runtime-kg-acceptance-handoff-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd207_209_runtime_kg_acceptance_handoff_evidence.py --claim-prd207-209-runtime-kg-acceptance-handoff --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch master --require-valid --json
 # End PRD-2.7-2.9 runtime KG acceptance/evidence/handoff
+
+.PHONY: prd300-304-learner-parent-vertical-journey-foundation-check
+prd300-304-learner-parent-vertical-journey-foundation-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd300_304_learner_parent_vertical_journey_foundation.py --json
+
+.PHONY: prd300-304-learner-parent-vertical-journey-foundation-capture
+prd300-304-learner-parent-vertical-journey-foundation-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd300_304_learner_parent_vertical_journey_foundation_evidence.py --claim-prd300-304-learner-parent-vertical-journey-foundation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json

@@ -94,6 +94,7 @@ OPENAPI_TAGS = [
     {"name": "gamification", "description": "Points, badges, and streaks"},
     {"name": "onboarding", "description": "New learner and parent onboarding"},
     {"name": "parents", "description": "Parent/guardian management"},
+    {"name": "vertical-journey", "description": "Learner and parent vertical journey hardening"},
     {"name": "billing", "description": "Subscription and payment"},
     {"name": "consent", "description": "POPIA consent collection"},
     {"name": "popia", "description": "POPIA data subject rights"},
@@ -165,6 +166,7 @@ from app.api_v2_routers import (  # noqa: E402
     study_plans,
     system,
     tutor,
+    vertical_journey,
 )
 
 API_V2 = "/api/v2"
@@ -186,6 +188,7 @@ ROUTER_REGISTRY = (
     ("generation", generation.router),
     ("onboarding", onboarding.router),
     ("parents", parents.router),
+    ("vertical_journey", vertical_journey.router),
     ("billing", billing.router),
     ("consent", consent.router),
     ("consent_renewal", consent_renewal.router),
