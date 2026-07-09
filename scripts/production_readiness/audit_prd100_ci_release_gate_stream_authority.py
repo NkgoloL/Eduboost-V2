@@ -66,7 +66,7 @@ def prd1_0_recorded(prd1_register: dict[str, Any]) -> bool:
     next_item = str(prd1_register.get("next_authorised_item", ""))
     if last_item == PRD_ID and next_item == "PRD-1.1":
         positioned = True
-    elif last_item.startswith("PRD-1.") and last_item != PRD_ID and (next_item.startswith("PRD-1.") or next_item == "PRD-2"):
+    elif last_item.startswith("PRD-1.") and last_item != PRD_ID and (next_item.startswith("PRD-1.") or next_item in {"PRD-2", "PRD-3"}):
         positioned = True
     else:
         positioned = False
@@ -89,7 +89,7 @@ def production_register_position(register: dict[str, Any]) -> str:
         return "prd1_0_recorded"
     if last_item.startswith("PRD-1.") and last_item != PRD_ID and next_item.startswith("PRD-1."):
         return "advanced_prd1_subslice"
-    if last_item == "PRD-1.9" and next_item == "PRD-2":
+    if last_item == "PRD-1.9" and next_item in {"PRD-2", "PRD-3"}:
         return "prd1_closed_prd2_authorised"
     return "unexpected"
 

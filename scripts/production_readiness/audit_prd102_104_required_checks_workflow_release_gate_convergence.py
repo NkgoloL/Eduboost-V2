@@ -40,7 +40,7 @@ def prd1_register_position(prd1_register: dict[str, Any]) -> str:
         return "after_prd1_1_before_convergence_capture"
     if pair == ("PRD-1.4", "PRD-1.5"):
         return "prd1_2_1_4_recorded_prd1_5_authorised"
-    if pair == ("PRD-1.9", "PRD-2"):
+    if pair == ("PRD-1.9", "PRD-2") or pair == ("PRD-1.9", "PRD-3"):
         return "prd1_closed_after_prd1_4"
     return "unexpected"
 
@@ -141,7 +141,8 @@ def audit(root: Path = Path(".")) -> dict[str, Any]:
         and prd1_5_authorised(prd1_register)
         and (
             (register.get("last_recorded_item") == "PRD-1.4" and register.get("next_authorised_item") == "PRD-1.5")
-            or (register.get("last_recorded_item") == "PRD-1.9" and register.get("next_authorised_item") == "PRD-2")
+            or (register.get("last_recorded_item") == "PRD-1.9" and register.get("next_authorised_item") in {"PRD-2", "PRD-3"})
+            or (str(register.get("last_recorded_item", "")).startswith("PRD-2.") and register.get("next_authorised_item") == "PRD-3")
         )
         and record.get("next_authorised_item") == "PRD-1.5"
         and record.get("prd1_5_authorised") is True

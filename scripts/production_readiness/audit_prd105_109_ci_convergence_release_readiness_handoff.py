@@ -38,22 +38,25 @@ def read_text(path: Path) -> str:
 
 
 def prd1_register_position(prd1_register: dict[str, Any]) -> str:
-    pair = (prd1_register.get("last_recorded_item"), prd1_register.get("next_authorised_item"))
-    if pair == ("PRD-1.4", "PRD-1.5"):
+    last_item = prd1_register.get("last_recorded_item")
+    next_item = prd1_register.get("next_authorised_item")
+    if (last_item, next_item) == ("PRD-1.4", "PRD-1.5"):
         return "after_prd1_4_before_final_capture"
-    if pair == ("PRD-1.9", "PRD-2"):
+    if last_item == "PRD-1.9" and next_item in {"PRD-2", "PRD-3"}:
         return "prd1_closed_prd2_authorised"
     return "unexpected"
 
 
 def production_register_position(register: dict[str, Any]) -> str:
-    pair = (register.get("last_recorded_item"), register.get("next_authorised_item"))
-    if pair == ("PRD-1.4", "PRD-1.5"):
+    last_item = register.get("last_recorded_item")
+    next_item = register.get("next_authorised_item")
+    if (last_item, next_item) == ("PRD-1.4", "PRD-1.5"):
         return "after_prd1_4_before_final_capture"
-    if pair == ("PRD-1.9", "PRD-2"):
+    if last_item == "PRD-1.9" and next_item in {"PRD-2", "PRD-3"}:
+        return "prd1_closed_prd2_authorised"
+    if str(last_item).startswith("PRD-2.") and next_item == "PRD-3":
         return "prd1_closed_prd2_authorised"
     return "unexpected"
-
 
 def prd1_sequence_complete(prd1_register: dict[str, Any]) -> bool:
     expected = [f"PRD-1.{idx}" for idx in range(10)]
@@ -167,7 +170,7 @@ def audit(root: Path = Path(".")) -> dict[str, Any]:
         and production_register_position(register) == "prd1_closed_prd2_authorised"
         and prd1_register_position(prd1_register) == "prd1_closed_prd2_authorised"
         and record.get("next_authorised_item") == "PRD-2"
-        and register.get("next_authorised_item") == "PRD-2"
+        and register.get("next_authorised_item") in {"PRD-2", "PRD-3"}
         and prd1_register.get("next_authorised_item") == "PRD-2"
         and record.get("prd2_implementation_authorised") is False
         and record.get("no_prd2_implementation_performed") is True

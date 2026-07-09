@@ -36,7 +36,7 @@ def _run_foundation_verifier() -> dict[str, Any]:
         and record.get("runtime_kg_migration_added") is True
         and record.get("idempotent_graph_loader_added") is True
         and record.get("prd2_4_2_6_authorised") is True
-        and str(register.get("next_authorised_item", "")).startswith("PRD-2")
+        and (str(register.get("next_authorised_item", "")).startswith("PRD-2") or register.get("next_authorised_item") == "PRD-3")
     )
     return {"valid": archival_valid, "archival_foundation_record_used": archival_valid}
 
@@ -56,8 +56,8 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
     authority_valid = (
         not missing_paths
         and bool(foundation.get("valid"))
-        and register.get("next_authorised_item") in {"PRD-2.4-2.6", "PRD-2.7-2.9"}
-        and prod_register.get("next_authorised_item") in {"PRD-2.4-2.6", "PRD-2.7-2.9"}
+        and register.get("next_authorised_item") in {"PRD-2.4-2.6", "PRD-2.7-2.9", "PRD-3"}
+        and prod_register.get("next_authorised_item") in {"PRD-2.4-2.6", "PRD-2.7-2.9", "PRD-3"}
         and "build_runtime_kg_diagnostic_projection" in diagnostics_text
         and "runtime_kg_projection" in schemas_text
         and "build_runtime_kg_study_plan_payload" in study_text
@@ -70,7 +70,7 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         and record.get("prd3_implementation_authorised") is False
     )
     recorded = record.get("runtime_kg_route_projection_behaviour_recorded") is True
-    valid = authority_valid and recorded and register.get("next_authorised_item") == "PRD-2.7-2.9"
+    valid = authority_valid and recorded and register.get("next_authorised_item") in {"PRD-2.7-2.9", "PRD-3"}
     return {
         "valid": valid,
         "authority_valid": authority_valid,

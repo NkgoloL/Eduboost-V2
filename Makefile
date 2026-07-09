@@ -3294,3 +3294,12 @@ prd204-206-runtime-kg-route-projection-behaviour-check:
 
 prd204-206-runtime-kg-route-projection-behaviour-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd204_206_runtime_kg_route_projection_behaviour_evidence.py --claim-prd204-206-runtime-kg-route-projection-behaviour --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+# PRD-2.7-2.9 runtime KG acceptance/evidence/handoff
+.PHONY: prd207-209-runtime-kg-acceptance-handoff-check prd207-209-runtime-kg-acceptance-handoff-capture
+prd207-209-runtime-kg-acceptance-handoff-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd207_209_runtime_kg_acceptance_handoff.py --authority-only --json
+
+prd207-209-runtime-kg-acceptance-handoff-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd207_209_runtime_kg_acceptance_handoff_evidence.py --claim-prd207-209-runtime-kg-acceptance-handoff --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch master --require-valid --json
+# End PRD-2.7-2.9 runtime KG acceptance/evidence/handoff
