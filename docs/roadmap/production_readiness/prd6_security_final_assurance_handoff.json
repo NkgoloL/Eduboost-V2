@@ -1,36 +1,20 @@
 {
-  "billing_launch_authorised": false,
+  "authority_valid": true,
+  "boundaries": {
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "prd7_implementation_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "release_tag_authorised": false
+  },
   "captured_at": "2026-07-09T15:24:59.197611+00:00",
-  "dast_api_fuzzing_evidence_defined": true,
-  "dependency_container_sbom_evidence_defined": true,
-  "deployment_authorised": false,
-  "external_or_independent_review_path_defined": true,
-  "external_or_independent_review_recorded": true,
-  "live_learner_traffic_authorised": false,
-  "live_payment_processing_authorised": false,
-  "merged_prd_slices": [
-    "PRD-6.5",
-    "PRD-6.6",
-    "PRD-6.7",
-    "PRD-6.8",
-    "PRD-6.9"
-  ],
   "next_authorised_item": "PRD-7",
-  "prd6_final_reconciliation_recorded": true,
-  "prd6_sequence_complete": true,
-  "prd7_handoff_authorised": true,
-  "prd7_implementation_authorised": false,
   "prd_id": "PRD-6.5-6.9",
-  "prd_owner": "Nkgolo Lebelo",
-  "previous_prd6_foundation_required": true,
-  "production_release_authorised": false,
-  "public_beta_authorised": false,
-  "release_tag_authorised": false,
-  "secret_rotation_rate_limit_abuse_evidence_defined": true,
-  "security_final_assurance_evidence_recorded": true,
-  "security_final_assurance_helper_added": true,
-  "security_final_assurance_route_added": true,
-  "security_final_assurance_snapshot": {
+  "register_next_authorised_item": "PRD-7",
+  "security_final_assurance": {
     "acceptance_criteria": [
       "dast_api_fuzzing_evidence_accepted",
       "dependency_container_sbom_evidence_accepted",
@@ -298,7 +282,5 @@
     "security_signoff_recorded": true,
     "source_readiness_prd_id": "PRD-6.0-6.4"
   },
-  "security_signoff_recorded": true,
-  "target_branch": "master",
-  "title": "Security final evidence, external review, reconciliation, and handoff"
+  "valid": true
 }
