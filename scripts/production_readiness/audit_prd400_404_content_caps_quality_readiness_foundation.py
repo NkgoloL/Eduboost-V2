@@ -97,8 +97,8 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         record.get("bias_language_accessibility_review_visible") is True,
         record.get("misconception_remediation_validation_visible") is True,
         false_boundaries_preserved,
-        register.get("next_authorised_item") in {"PRD-4.0-4.4", "PRD-4.5-4.9"},
-        prod_register.get("next_authorised_item") in {"PRD-4", "PRD-4.0-4.4", "PRD-4.5-4.9"},
+        register.get("next_authorised_item") in {"PRD-4.0-4.4", "PRD-4.5-4.9", "PRD-5"},
+        prod_register.get("next_authorised_item") in {"PRD-4", "PRD-4.0-4.4", "PRD-4.5-4.9", "PRD-5"},
     ])
     foundation_recorded = record.get("content_quality_foundation_recorded") is True
     evidence_recorded = record.get("content_quality_evidence_recorded") is True
@@ -107,8 +107,8 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         foundation_recorded,
         evidence_recorded,
         record.get("next_authorised_item") == "PRD-4.5-4.9",
-        register.get("next_authorised_item") == "PRD-4.5-4.9",
-        prod_register.get("next_authorised_item") == "PRD-4.5-4.9",
+        register.get("next_authorised_item") in {"PRD-4.5-4.9", "PRD-5"},
+        prod_register.get("next_authorised_item") in {"PRD-4.5-4.9", "PRD-5"},
     ])
     return {
         "valid": valid,

@@ -3328,3 +3328,12 @@ prd400-404-content-caps-quality-readiness-foundation-check:
 .PHONY: prd400-404-content-caps-quality-readiness-foundation-capture
 prd400-404-content-caps-quality-readiness-foundation-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd400_404_content_caps_quality_readiness_foundation_evidence.py --claim-prd400-404-content-caps-quality-readiness-foundation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+# PRD-4.5-4.9 content quality final evidence/handoff
+.PHONY: prd405-409-content-quality-final-handoff-check
+prd405-409-content-quality-final-handoff-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd405_409_content_quality_final_handoff.py --authority-only --json
+
+.PHONY: prd405-409-content-quality-final-handoff-capture
+prd405-409-content-quality-final-handoff-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd405_409_content_quality_final_handoff_evidence.py --claim-prd405-409-content-quality-final-handoff --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
