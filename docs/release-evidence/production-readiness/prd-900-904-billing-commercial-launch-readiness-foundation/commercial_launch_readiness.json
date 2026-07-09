@@ -1,0 +1,165 @@
+{
+  "billing_contract_readiness_defined": true,
+  "billing_contracts": {
+    "billing_plans": [
+      "free",
+      "parent",
+      "school",
+      "sponsored_learner",
+      "ngo_community"
+    ],
+    "pricing_policy_issues": [],
+    "provider_decision_issues": [],
+    "retry_policy_issues": [],
+    "signature_verification_sample": true,
+    "state_transition_sample": true,
+    "subscription_states": [
+      "trial",
+      "active",
+      "past_due",
+      "paused",
+      "canceled",
+      "expired"
+    ]
+  },
+  "billing_launch_authorised": false,
+  "billing_provider_test_mode_defined": true,
+  "blockers": [],
+  "checkout_webhook_contract_defined": true,
+  "commercial_evidence_areas": [
+    "provider_test_mode_decision",
+    "pricing_packaging_matrix",
+    "checkout_webhook_dry_run_contract",
+    "subscription_entitlement_matrix",
+    "invoice_receipt_tax_policy",
+    "refund_cancellation_dunning_policy",
+    "sponsorship_school_procurement_path",
+    "commercial_support_reconciliation_runbook",
+    "terms_privacy_launch_comms_review"
+  ],
+  "commercial_launch_scope_items": [
+    "billing_provider_test_mode_readiness",
+    "pricing_packaging_readiness",
+    "checkout_webhook_contract_readiness",
+    "subscription_entitlement_readiness",
+    "invoice_tax_refund_support_readiness",
+    "sponsorship_school_procurement_readiness",
+    "commercial_support_reconciliation_readiness",
+    "terms_privacy_launch_comms_readiness"
+  ],
+  "commercial_policy_readiness_defined": true,
+  "commercial_support_reconciliation_defined": true,
+  "deployment_authorised": false,
+  "evidence_controls": [
+    {
+      "area": "provider_test_mode_decision",
+      "blocks_billing_launch": true,
+      "blocks_live_payment_processing": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "policy_or_runbook_defined": true,
+      "ready": true,
+      "test_mode_only": true
+    },
+    {
+      "area": "pricing_packaging_matrix",
+      "blocks_billing_launch": true,
+      "blocks_live_payment_processing": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "policy_or_runbook_defined": true,
+      "ready": true,
+      "test_mode_only": true
+    },
+    {
+      "area": "checkout_webhook_dry_run_contract",
+      "blocks_billing_launch": true,
+      "blocks_live_payment_processing": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "policy_or_runbook_defined": true,
+      "ready": true,
+      "test_mode_only": true
+    },
+    {
+      "area": "subscription_entitlement_matrix",
+      "blocks_billing_launch": true,
+      "blocks_live_payment_processing": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "policy_or_runbook_defined": true,
+      "ready": true,
+      "test_mode_only": true
+    },
+    {
+      "area": "invoice_receipt_tax_policy",
+      "blocks_billing_launch": true,
+      "blocks_live_payment_processing": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "policy_or_runbook_defined": true,
+      "ready": true,
+      "test_mode_only": true
+    },
+    {
+      "area": "refund_cancellation_dunning_policy",
+      "blocks_billing_launch": true,
+      "blocks_live_payment_processing": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "policy_or_runbook_defined": true,
+      "ready": true,
+      "test_mode_only": true
+    },
+    {
+      "area": "sponsorship_school_procurement_path",
+      "blocks_billing_launch": true,
+      "blocks_live_payment_processing": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "policy_or_runbook_defined": true,
+      "ready": true,
+      "test_mode_only": true
+    },
+    {
+      "area": "commercial_support_reconciliation_runbook",
+      "blocks_billing_launch": true,
+      "blocks_live_payment_processing": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "policy_or_runbook_defined": true,
+      "ready": true,
+      "test_mode_only": true
+    },
+    {
+      "area": "terms_privacy_launch_comms_review",
+      "blocks_billing_launch": true,
+      "blocks_live_payment_processing": true,
+      "evidence_path_defined": true,
+      "owner_assigned": true,
+      "policy_or_runbook_defined": true,
+      "ready": true,
+      "test_mode_only": true
+    }
+  ],
+  "evidence_matrix_ready": true,
+  "existing_billing_contracts_valid": true,
+  "invoice_tax_refund_support_defined": true,
+  "live_learner_traffic_authorised": false,
+  "live_payment_processing_authorised": false,
+  "prd10_implementation_authorised": false,
+  "prd_id": "PRD-9.0-9.4",
+  "pricing_packaging_defined": true,
+  "production_release_authorised": false,
+  "public_beta_authorised": false,
+  "ready": true,
+  "recommended_next_actions": [
+    "capture_prd9_commercial_launch_readiness_foundation_evidence",
+    "continue_to_prd9_final_commercial_assurance_without_enabling_live_payments"
+  ],
+  "release_tag_authorised": false,
+  "sponsorship_school_procurement_defined": true,
+  "subscription_entitlement_matrix_defined": true,
+  "support_reconciliation_defined": true,
+  "terms_privacy_launch_comms_defined": true
+}

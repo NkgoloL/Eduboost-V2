@@ -1,22 +1,25 @@
 {
   "billing_launch_authorised": false,
+  "commercial_launch_evidence_recorded": true,
+  "commercial_launch_foundation_recorded": true,
   "deployment_authorised": false,
-  "last_recorded_item": null,
+  "last_recorded_at": "2026-07-09T21:37:57.638323+00:00",
+  "last_recorded_item": "PRD-9.0-9.4",
   "live_learner_traffic_authorised": false,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-9.0-9.4",
+  "next_authorised_item": "PRD-9.5-9.9",
   "prd10_implementation_authorised": false,
   "prd9_sequence": [
     {
       "authorised": true,
       "prd_id": "PRD-9.0-9.4",
-      "status": "authorised",
+      "status": "recorded",
       "title": "Billing and commercial launch readiness foundation"
     },
     {
-      "authorised": false,
+      "authorised": true,
       "prd_id": "PRD-9.5-9.9",
-      "status": "pending",
+      "status": "authorised",
       "title": "Commercial final evidence, billing readiness reconciliation, and handoff to PRD-10"
     }
   ],
@@ -24,5 +27,5 @@
   "production_release_authorised": false,
   "public_beta_authorised": false,
   "release_tag_authorised": false,
-  "status": "prd9_billing_commercial_launch_started"
+  "status": "prd9_billing_commercial_launch_foundation_recorded"
 }
