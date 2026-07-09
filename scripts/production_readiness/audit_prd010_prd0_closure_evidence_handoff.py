@@ -87,7 +87,9 @@ def all_predecessors_valid(results: dict[str, dict[str, Any]]) -> bool:
 def prd1_subslice_started(register: dict[str, Any]) -> bool:
     last_item = str(register.get("last_recorded_item", ""))
     next_item = str(register.get("next_authorised_item", ""))
-    return last_item.startswith("PRD-1.") and (next_item.startswith("PRD-1.") or next_item == "PRD-2")
+    return (
+        last_item.startswith("PRD-1.") and (next_item.startswith("PRD-1.") or next_item in {"PRD-2", "PRD-3"})
+    ) or (last_item.startswith("PRD-2.") and next_item == "PRD-3")
 
 
 def prd0_sequence_complete(register: dict[str, Any]) -> bool:
@@ -149,8 +151,9 @@ def audit(root: Path = Path(".")) -> dict[str, Any]:
         if not (root / path).exists():
             errors.append(f"missing required PRD-0.10 file: {path}")
 
-    if register.get("last_recorded_item") not in {"PRD-0.9", "PRD-0.10"} | {f"PRD-1.{idx}" for idx in range(0, 10)}:
-        errors.append("production readiness register must be positioned at PRD-0.9 or terminal PRD-0.10")
+    allowed_downstream_items = {f"PRD-1.{idx}" for idx in range(0, 10)} | {"PRD-2.0-2.3", "PRD-2.4-2.6", "PRD-2.7-2.9"}
+    if register.get("last_recorded_item") not in {"PRD-0.9", "PRD-0.10"} | allowed_downstream_items:
+        errors.append("production readiness register must be positioned at PRD-0.9, terminal PRD-0.10, or authorised downstream PRD state")
     if register.get("last_recorded_item") == "PRD-0.9" and register.get("next_authorised_item") != PRD_ID:
         errors.append("production readiness register must authorise PRD-0.10 after PRD-0.9")
     if register.get("last_recorded_item") == PRD_ID and register.get("next_authorised_item") != "PRD-1":

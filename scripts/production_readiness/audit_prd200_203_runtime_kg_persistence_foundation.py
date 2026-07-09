@@ -58,7 +58,7 @@ def _run_prd1_verifier() -> dict[str, Any]:
         and prd1_record.get("prd1_final_evidence_recorded") is True
         and prd1_record.get("prd2_handoff_authorised") is True
         and prd1_record.get("prd2_implementation_authorised") is False
-        and str(prod_register.get("next_authorised_item", "")).startswith("PRD-2")
+        and (str(prod_register.get("next_authorised_item", "")).startswith("PRD-2") or prod_register.get("next_authorised_item") == "PRD-3")
     )
     return {"valid": archival_valid, "archival_handoff_record_used": archival_valid}
 
@@ -76,9 +76,9 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
     authority_valid = (
         not missing_paths
         and bool(prd1_result.get("valid"))
-        and prod_register.get("next_authorised_item") in {"PRD-2", "PRD-2.4-2.6", "PRD-2.7-2.9"}
+        and prod_register.get("next_authorised_item") in {"PRD-2", "PRD-2.4-2.6", "PRD-2.7-2.9", "PRD-3"}
         and register.get("authorised_by_prd1_9") is True
-        and register.get("next_authorised_item") in {"PRD-2.0-2.3", "PRD-2.4-2.6", "PRD-2.7-2.9"}
+        and register.get("next_authorised_item") in {"PRD-2.0-2.3", "PRD-2.4-2.6", "PRD-2.7-2.9", "PRD-3"}
         and "import app.models.runtime_kg" in database_text
         and "build_lesson_context_with_runtime_kg" in lesson_text
         and "enabled: bool = False" in feature_text
@@ -87,7 +87,7 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         and record.get("prd3_implementation_authorised") is False
     )
     recorded = record.get("runtime_kg_persistence_foundation_recorded") is True
-    valid = authority_valid and recorded and register.get("next_authorised_item") in {"PRD-2.4-2.6", "PRD-2.7-2.9"}
+    valid = authority_valid and recorded and register.get("next_authorised_item") in {"PRD-2.4-2.6", "PRD-2.7-2.9", "PRD-3"}
     return {
         "valid": valid,
         "authority_valid": authority_valid,
