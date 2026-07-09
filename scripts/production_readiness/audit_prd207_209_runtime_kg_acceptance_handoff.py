@@ -101,8 +101,8 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         record.get("runtime_kg_acceptance_helper_added") is True,
         record.get("runtime_kg_enabled_by_default") is False,
         false_boundaries_preserved,
-        register.get("next_authorised_item") in {"PRD-2.7-2.9", "PRD-3", "PRD-3.0-3.4", "PRD-3.5-3.9"},
-        prod_register.get("next_authorised_item") in {"PRD-2.7-2.9", "PRD-3", "PRD-3.0-3.4", "PRD-3.5-3.9"},
+        register.get("next_authorised_item") in {"PRD-2.7-2.9", "PRD-3", "PRD-3.0-3.4", "PRD-3.5-3.9", "PRD-4"},
+        prod_register.get("next_authorised_item") in {"PRD-2.7-2.9", "PRD-3", "PRD-3.0-3.4", "PRD-3.5-3.9", "PRD-4"},
     ])
     recorded = record.get("runtime_kg_acceptance_recorded") is True
     final_evidence_recorded = record.get("runtime_kg_final_evidence_recorded") is True

@@ -10,6 +10,7 @@ from app.api_v2_deps.auth import AuthContext, require_auth_context
 from app.core.database import get_db
 from app.models import AssessmentAttempt, DiagnosticSession, KnowledgeGap, Lesson, StudyPlan, TopicMastery
 from app.modules.consent.service import ConsentService
+from app.modules.vertical_journey.hardening import build_vertical_journey_hardening_report
 from app.modules.vertical_journey.service import VerticalJourneyInputs, build_vertical_journey_snapshot
 from app.repositories.repositories import LearnerRepository
 from app.security.dependencies import require_learner_read_for_current_user
@@ -115,6 +116,7 @@ async def get_learner_vertical_journey(
         )
     )
     payload = snapshot.to_payload()
+    payload["hardening"] = build_vertical_journey_hardening_report(snapshot).to_payload()
     payload["consent"] = {
         "active": consent_active,
         "state": getattr(consent_decision.state, "value", str(consent_decision.state)),
