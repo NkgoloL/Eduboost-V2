@@ -1,0 +1,102 @@
+{
+  "critical_flow_ids": [
+    "audit_trail",
+    "auth_authorisation",
+    "billing_commercial",
+    "diagnostics_assessments",
+    "learner_journeys",
+    "popia_lifecycle"
+  ],
+  "execution_policy_valid": true,
+  "execution_results_recorded": 0,
+  "execution_results_schema_valid": true,
+  "flow_command_plan": [
+    {
+      "evidence_artifact": "product-auth-authorisation.json",
+      "flow_id": "auth_authorisation",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "evidence_artifact": "product-popia-lifecycle.json",
+      "flow_id": "popia_lifecycle",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/integration -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/integration -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": true
+    },
+    {
+      "evidence_artifact": "product-billing-commercial.json",
+      "flow_id": "billing_commercial",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "evidence_artifact": "product-learner-journeys.json",
+      "flow_id": "learner_journeys",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "evidence_artifact": "product-diagnostics-assessments.json",
+      "flow_id": "diagnostics_assessments",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "evidence_artifact": "product-audit-trail.json",
+      "flow_id": "audit_trail",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": false
+    }
+  ],
+  "flows_valid": true,
+  "governance_alignment": {
+    "coverage_contract_age_days": 0,
+    "fresh": true,
+    "freshness_max_age_days": 21,
+    "prd11_register_age_days": 0,
+    "prd11_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-4",
+    "product_gate_execution_contract_age_days": 0,
+    "product_runtime_contract_age_days": 0,
+    "production_register_age_days": 0,
+    "production_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-4",
+    "release_boundaries_locked": true,
+    "script_taxonomy_age_days": 0,
+    "state_agrees": true,
+    "test_taxonomy_age_days": 0,
+    "valid": true
+  },
+  "missing_flow_ids": [],
+  "missing_runtime_dependencies": [],
+  "next_after_evidence": "PRD-11.0R.RUNTIME-RESTORE-5",
+  "prd_id": "PRD-11.0R.RUNTIME-RESTORE-4",
+  "product_gate_green": false,
+  "required_flow_ids": [
+    "auth_authorisation",
+    "popia_lifecycle",
+    "billing_commercial",
+    "learner_journeys",
+    "diagnostics_assessments",
+    "audit_trail"
+  ],
+  "runtime_dependencies": [
+    "postgres",
+    "redis",
+    "exact_alembic_head",
+    "schema_contract",
+    "ready_endpoint"
+  ],
+  "schema_version": "prd11.0r/runtime-restore-4/product-gate-execution/v1",
+  "valid": true
+}

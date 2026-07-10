@@ -1,0 +1,32 @@
+{
+  "authority_valid": true,
+  "baseline_blockers": [
+    "disposable_stack_schema_lineage_reconciliation",
+    "database_lineage_and_schema",
+    "redis_readiness_dependency",
+    "ready_http_probe",
+    "generated_contracts",
+    "backend_unit_gate",
+    "integration_gate",
+    "dependency_audit_gate",
+    "frontend_quality_gate",
+    "secret_baseline_gate"
+  ],
+  "captured_at": "2026-07-10T22:36:27.149414+00:00",
+  "controlled_beta_activation_operational_hold": true,
+  "known_product_gate_blockers": [
+    "Product critical-flow commands have not all been executed to green state in this slice.",
+    "Runtime baseline remains red until stack/schema/readiness blockers are cleared.",
+    "Operational hold remains active until product_gate_green and runtime_baseline_green are true."
+  ],
+  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-5",
+  "prd_id": "PRD-11.0R.RUNTIME-RESTORE-4",
+  "product_gate_execution_contract_valid": true,
+  "product_gate_green": false,
+  "production_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-5",
+  "production_release_evidence_blocked_until_runtime_baseline_green": true,
+  "register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-5",
+  "runtime_baseline_green": false,
+  "runtime_baseline_status": "red_no_go_operational_hold_active",
+  "valid": true
+}

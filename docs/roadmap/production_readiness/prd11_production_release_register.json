@@ -15,7 +15,7 @@
   "current_truth": {
     "controlled_beta_activation_operational_hold": true,
     "live_learner_traffic_operationally_safe": false,
-    "prd11_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-4",
+    "prd11_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-5",
     "prd11_runtime_restore_1_authority_recorded": true,
     "prd11_runtime_restore_1_evidence_recorded": true,
     "prd11_runtime_restore_2_authority_recorded": true,
@@ -23,7 +23,7 @@
     "prd11_runtime_restore_3_authority_recorded": true,
     "prd11_runtime_restore_3_evidence_recorded": true,
     "prd11_runtime_restore_4_authority_recorded": true,
-    "prd11_runtime_restore_4_evidence_recorded": false,
+    "prd11_runtime_restore_4_evidence_recorded": true,
     "product_gate_green": false,
     "product_runtime_gate_green": false,
     "production_release_evidence_blocked_until_runtime_baseline_green": true,
@@ -32,15 +32,15 @@
     "runtime_restore_2_disposable_stack_schema_lineage_evidence_recorded": true,
     "runtime_restore_3_product_runtime_test_gate_evidence_recorded": true,
     "runtime_restore_4_product_gate_execution_authority_recorded": true,
-    "runtime_restore_4_product_gate_execution_evidence_recorded": false
+    "runtime_restore_4_product_gate_execution_evidence_recorded": true
   },
   "deployment_authorised": false,
-  "last_recorded_at": "2026-07-10T20:18:00+00:00",
+  "last_recorded_at": "2026-07-10T22:36:27.149414+00:00",
   "last_recorded_item": "PRD-11.0R.RUNTIME-RESTORE-4",
   "live_learner_traffic_authorised": true,
   "live_learner_traffic_operationally_safe": false,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-4",
+  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-5",
   "prd112r_handoff_authorised": true,
   "prd113r_handoff_authorised": true,
   "prd11_coverage_alignment_authority_recorded": true,
@@ -107,7 +107,7 @@
     {
       "authorised": true,
       "prd_id": "PRD-11.0R.RUNTIME-RESTORE-4",
-      "status": "authority_recorded",
+      "status": "evidence_recorded",
       "title": "Product gate execution and critical-flow repair"
     }
   ],
@@ -134,7 +134,7 @@
   "runtime_restore_3_product_runtime_test_gate_authority_recorded": true,
   "runtime_restore_3_product_runtime_test_gate_evidence_recorded": true,
   "runtime_restore_4_product_gate_execution_authority_recorded": true,
-  "runtime_restore_4_product_gate_execution_evidence_recorded": false,
+  "runtime_restore_4_product_gate_execution_evidence_recorded": true,
   "runtime_restore_handoff_authorised": true,
-  "status": "prd11_runtime_restore_4_authority_recorded"
+  "status": "prd11_runtime_restore_4_evidence_recorded"
 }

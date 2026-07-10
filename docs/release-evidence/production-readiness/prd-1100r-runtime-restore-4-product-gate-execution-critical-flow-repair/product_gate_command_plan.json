@@ -1,0 +1,52 @@
+{
+  "commands": [
+    {
+      "evidence_artifact": "product-auth-authorisation.json",
+      "flow_id": "auth_authorisation",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "evidence_artifact": "product-popia-lifecycle.json",
+      "flow_id": "popia_lifecycle",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/integration -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/integration -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": true
+    },
+    {
+      "evidence_artifact": "product-billing-commercial.json",
+      "flow_id": "billing_commercial",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "evidence_artifact": "product-learner-journeys.json",
+      "flow_id": "learner_journeys",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "evidence_artifact": "product-diagnostics-assessments.json",
+      "flow_id": "diagnostics_assessments",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "evidence_artifact": "product-audit-trail.json",
+      "flow_id": "audit_trail",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": false
+    }
+  ]
+}
