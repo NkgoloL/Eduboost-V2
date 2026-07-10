@@ -11,14 +11,17 @@
   "billing_launch_authorised": false,
   "controlled_beta_live_traffic_authorised": true,
   "deployment_authorised": false,
-  "last_recorded_at": "2026-07-10T18:15:00.348841+00:00",
-  "last_recorded_item": "PRD-11.1R",
+  "last_recorded_at": "2026-07-10T18:30:00+00:00",
+  "last_recorded_item": "PRD-11.2R",
   "live_learner_traffic_authorised": true,
   "live_payment_processing_authorised": false,
   "next_authorised_item": "PRD-11.2R",
   "prd112r_handoff_authorised": true,
+  "prd113r_handoff_authorised": false,
   "prd11_final_reconciliation_recorded": false,
   "prd11_production_release_preflight_foundation_recorded": true,
+  "prd11_script_taxonomy_authority_recorded": true,
+  "prd11_script_taxonomy_evidence_recorded": false,
   "prd11_sequence": [
     {
       "authorised": true,
@@ -41,8 +44,14 @@
     {
       "authorised": true,
       "prd_id": "PRD-11.2R",
-      "status": "authorised_next",
+      "status": "authority_recorded",
       "title": "Script Taxonomy and Functional Overhaul"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-11.3R",
+      "status": "pending",
+      "title": "Coverage Alignment and Documentation-defined Coverage Closure"
     }
   ],
   "prd11_sequence_complete": false,
@@ -55,5 +64,5 @@
   "public_beta_authorised": false,
   "public_beta_live_traffic_authorised": false,
   "release_tag_authorised": false,
-  "status": "prd11_test_suite_taxonomy_evidence_recorded"
+  "status": "prd11_script_taxonomy_authority_recorded"
 }

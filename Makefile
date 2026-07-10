@@ -3484,3 +3484,25 @@ prd1101r-test-suite-taxonomy-behavioural-gate-overhaul-check:
 .PHONY: prd1101r-test-suite-taxonomy-behavioural-gate-overhaul-capture
 prd1101r-test-suite-taxonomy-behavioural-gate-overhaul-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1101r_test_suite_taxonomy_behavioral_gate_overhaul_evidence.py --claim-prd1101r-test-suite-taxonomy-behavioral-gate-overhaul --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+.PHONY: script-taxonomy-check
+script-taxonomy-check:
+	PYTHONPATH=. python3 scripts/script_suites/verify_script_taxonomy.py --json
+
+.PHONY: script-suite-product script-suite-runtime script-suite-governance script-suite-advisory
+script-suite-product:
+	PYTHONPATH=. python3 scripts/script_suites/run_script_class.py product --dry-run --json
+script-suite-runtime:
+	PYTHONPATH=. python3 scripts/script_suites/run_script_class.py runtime --dry-run --json
+script-suite-governance:
+	PYTHONPATH=. python3 scripts/script_suites/run_script_class.py governance --dry-run --json
+script-suite-advisory:
+	PYTHONPATH=. python3 scripts/script_suites/run_script_class.py advisory --dry-run --json
+
+.PHONY: prd1102r-script-taxonomy-functional-overhaul-check
+prd1102r-script-taxonomy-functional-overhaul-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd1102r_script_taxonomy_functional_overhaul.py --authority-only --json
+
+.PHONY: prd1102r-script-taxonomy-functional-overhaul-capture
+prd1102r-script-taxonomy-functional-overhaul-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1102r_script_taxonomy_functional_overhaul_evidence.py --claim-prd1102r-script-taxonomy-functional-overhaul --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
