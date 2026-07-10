@@ -22,16 +22,21 @@
     "prd11_runtime_restore_2_evidence_recorded": true,
     "prd11_runtime_restore_3_authority_recorded": true,
     "prd11_runtime_restore_3_evidence_recorded": true,
+    "prd11_runtime_restore_4_authority_recorded": true,
+    "prd11_runtime_restore_4_evidence_recorded": false,
+    "product_gate_green": false,
     "product_runtime_gate_green": false,
     "production_release_evidence_blocked_until_runtime_baseline_green": true,
     "runtime_baseline_green": false,
     "runtime_restore_1_runtime_stack_db_lineage_readiness_evidence_recorded": true,
     "runtime_restore_2_disposable_stack_schema_lineage_evidence_recorded": true,
-    "runtime_restore_3_product_runtime_test_gate_evidence_recorded": true
+    "runtime_restore_3_product_runtime_test_gate_evidence_recorded": true,
+    "runtime_restore_4_product_gate_execution_authority_recorded": true,
+    "runtime_restore_4_product_gate_execution_evidence_recorded": false
   },
   "deployment_authorised": false,
-  "last_recorded_at": "2026-07-10T21:35:53.474251+00:00",
-  "last_recorded_item": "PRD-11.0R.RUNTIME-RESTORE-3",
+  "last_recorded_at": "2026-07-10T20:18:00+00:00",
+  "last_recorded_item": "PRD-11.0R.RUNTIME-RESTORE-4",
   "live_learner_traffic_authorised": true,
   "live_learner_traffic_operationally_safe": false,
   "live_payment_processing_authorised": false,
@@ -98,6 +103,12 @@
       "prd_id": "PRD-11.0R.RUNTIME-RESTORE-3",
       "status": "evidence_recorded",
       "title": "Product and runtime test gate repair"
+    },
+    {
+      "authorised": true,
+      "prd_id": "PRD-11.0R.RUNTIME-RESTORE-4",
+      "status": "authority_recorded",
+      "title": "Product gate execution and critical-flow repair"
     }
   ],
   "prd11_sequence_complete": false,
@@ -105,6 +116,8 @@
   "prd11_test_suite_taxonomy_evidence_recorded": true,
   "prd12_implementation_authorised": false,
   "prd_id": "PRD-11",
+  "product_gate_execution_contract_recorded": true,
+  "product_gate_green": false,
   "product_runtime_gate_green": false,
   "production_release_authorised": false,
   "production_release_evidence_blocked_until_runtime_baseline_green": true,
@@ -120,6 +133,8 @@
   "runtime_restore_2_disposable_stack_schema_lineage_evidence_recorded": true,
   "runtime_restore_3_product_runtime_test_gate_authority_recorded": true,
   "runtime_restore_3_product_runtime_test_gate_evidence_recorded": true,
+  "runtime_restore_4_product_gate_execution_authority_recorded": true,
+  "runtime_restore_4_product_gate_execution_evidence_recorded": false,
   "runtime_restore_handoff_authorised": true,
-  "status": "prd11_runtime_restore_3_evidence_recorded"
+  "status": "prd11_runtime_restore_4_authority_recorded"
 }
