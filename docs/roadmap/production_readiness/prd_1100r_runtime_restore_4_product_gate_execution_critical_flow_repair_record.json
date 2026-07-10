@@ -1,29 +1,469 @@
 {
   "authority_recorded_at": "2026-07-10T22:18:00+02:00",
   "billing_launch_authorised": false,
+  "captured_at": "2026-07-10T22:36:27.149414+00:00",
   "controlled_beta_activation_operational_hold": true,
   "critical_product_flows_recorded": true,
   "deployment_authorised": false,
   "independent_command_outputs_required": true,
   "known_failures_recorded_as_blockers": true,
+  "known_product_gate_blockers": [
+    "Product critical-flow commands have not all been executed to green state in this slice.",
+    "Runtime baseline remains red until stack/schema/readiness blockers are cleared.",
+    "Operational hold remains active until product_gate_green and runtime_baseline_green are true."
+  ],
   "live_learner_traffic_operationally_safe": false,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-4",
+  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-5",
   "positive_and_negative_flow_evidence_required": true,
   "prd12_implementation_authorised": false,
   "prd_id": "PRD-11.0R.RUNTIME-RESTORE-4",
+  "prd_owner": "Nkgolo Lebelo",
   "presence_only_flow_evidence_forbidden": true,
+  "product_gate_command_plan": [
+    {
+      "evidence_artifact": "product-auth-authorisation.json",
+      "flow_id": "auth_authorisation",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "evidence_artifact": "product-popia-lifecycle.json",
+      "flow_id": "popia_lifecycle",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/integration -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/integration -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": true
+    },
+    {
+      "evidence_artifact": "product-billing-commercial.json",
+      "flow_id": "billing_commercial",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "evidence_artifact": "product-learner-journeys.json",
+      "flow_id": "learner_journeys",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "evidence_artifact": "product-diagnostics-assessments.json",
+      "flow_id": "diagnostics_assessments",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "evidence_artifact": "product-audit-trail.json",
+      "flow_id": "audit_trail",
+      "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+      "release_blocking": true,
+      "requires_live_stack": false
+    }
+  ],
   "product_gate_execution_authority_recorded": true,
   "product_gate_execution_contract_recorded": true,
-  "product_gate_execution_evidence_recorded": false,
+  "product_gate_execution_contract_snapshot": {
+    "critical_flow_ids": [
+      "audit_trail",
+      "auth_authorisation",
+      "billing_commercial",
+      "diagnostics_assessments",
+      "learner_journeys",
+      "popia_lifecycle"
+    ],
+    "execution_policy_valid": true,
+    "execution_results_recorded": 0,
+    "execution_results_schema_valid": true,
+    "flow_command_plan": [
+      {
+        "evidence_artifact": "product-auth-authorisation.json",
+        "flow_id": "auth_authorisation",
+        "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "release_blocking": true,
+        "requires_live_stack": false
+      },
+      {
+        "evidence_artifact": "product-popia-lifecycle.json",
+        "flow_id": "popia_lifecycle",
+        "negative_command": "PYTHONPATH=. pytest -m product tests/integration -q --no-cov --tb=short",
+        "positive_command": "PYTHONPATH=. pytest -m product tests/integration -q --no-cov --tb=short",
+        "release_blocking": true,
+        "requires_live_stack": true
+      },
+      {
+        "evidence_artifact": "product-billing-commercial.json",
+        "flow_id": "billing_commercial",
+        "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "release_blocking": true,
+        "requires_live_stack": false
+      },
+      {
+        "evidence_artifact": "product-learner-journeys.json",
+        "flow_id": "learner_journeys",
+        "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "release_blocking": true,
+        "requires_live_stack": false
+      },
+      {
+        "evidence_artifact": "product-diagnostics-assessments.json",
+        "flow_id": "diagnostics_assessments",
+        "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "release_blocking": true,
+        "requires_live_stack": false
+      },
+      {
+        "evidence_artifact": "product-audit-trail.json",
+        "flow_id": "audit_trail",
+        "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "release_blocking": true,
+        "requires_live_stack": false
+      }
+    ],
+    "flows_valid": true,
+    "governance_alignment": {
+      "coverage_contract_age_days": 0,
+      "fresh": true,
+      "freshness_max_age_days": 21,
+      "prd11_register_age_days": 0,
+      "prd11_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-4",
+      "product_gate_execution_contract_age_days": 0,
+      "product_runtime_contract_age_days": 0,
+      "production_register_age_days": 0,
+      "production_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-4",
+      "release_boundaries_locked": true,
+      "script_taxonomy_age_days": 0,
+      "state_agrees": true,
+      "test_taxonomy_age_days": 0,
+      "valid": true
+    },
+    "missing_flow_ids": [],
+    "missing_runtime_dependencies": [],
+    "next_after_evidence": "PRD-11.0R.RUNTIME-RESTORE-5",
+    "prd_id": "PRD-11.0R.RUNTIME-RESTORE-4",
+    "product_gate_green": false,
+    "required_flow_ids": [
+      "auth_authorisation",
+      "popia_lifecycle",
+      "billing_commercial",
+      "learner_journeys",
+      "diagnostics_assessments",
+      "audit_trail"
+    ],
+    "runtime_dependencies": [
+      "postgres",
+      "redis",
+      "exact_alembic_head",
+      "schema_contract",
+      "ready_endpoint"
+    ],
+    "schema_version": "prd11.0r/runtime-restore-4/product-gate-execution/v1",
+    "valid": true
+  },
+  "product_gate_execution_evidence_recorded": true,
   "product_gate_green": false,
+  "product_gate_green_reason": "RESTORE-4 records critical-flow execution and blocker evidence; green state requires all independent positive/negative flow command outputs to pass.",
   "production_release_authorised": false,
   "production_release_evidence_blocked_until_runtime_baseline_green": true,
   "public_beta_authorised": false,
   "public_beta_live_traffic_authorised": false,
   "release_tag_authorised": false,
   "runtime_baseline_green": false,
+  "runtime_baseline_snapshot": {
+    "blockers": [
+      "disposable_stack_schema_lineage_reconciliation",
+      "database_lineage_and_schema",
+      "redis_readiness_dependency",
+      "ready_http_probe",
+      "generated_contracts",
+      "backend_unit_gate",
+      "integration_gate",
+      "dependency_audit_gate",
+      "frontend_quality_gate",
+      "secret_baseline_gate"
+    ],
+    "checks": {
+      "alembic_repository_graph": {
+        "expected_single_head": "20260708_2100_prd2_runtime_kg",
+        "repository_heads": [
+          "20260708_2100_prd2_runtime_kg"
+        ],
+        "revision_count": 46,
+        "status": "pass",
+        "version_file_count": 46
+      },
+      "backend_unit_gate": {
+        "reason": "backend_unit_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "database_lineage_and_schema": {
+        "expected_head": "20260708_2100_prd2_runtime_kg",
+        "reason": "DATABASE_URL not set; live database lineage and schema not proven",
+        "required_columns": {
+          "diagnostic_items": [
+            "irt_quality_state",
+            "irt_discrimination",
+            "irt_difficulty",
+            "irt_guessing"
+          ],
+          "runtime_kg_edges": [
+            "source_node_id",
+            "target_node_id",
+            "edge_type",
+            "weight"
+          ],
+          "runtime_kg_nodes": [
+            "stable_code",
+            "node_type",
+            "label",
+            "mastery_weight"
+          ]
+        },
+        "required_tables": [
+          "guardians",
+          "learner_profiles",
+          "assessments",
+          "assessment_attempts",
+          "diagnostic_items",
+          "diagnostic_sessions",
+          "study_plans",
+          "lessons",
+          "runtime_kg_graph_loads",
+          "runtime_kg_nodes",
+          "runtime_kg_edges",
+          "runtime_kg_events",
+          "ai_usage_events",
+          "tutor_sessions",
+          "audit_events"
+        ],
+        "status": "blocked"
+      },
+      "dependency_audit_gate": {
+        "reason": "dependency_audit_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "disposable_stack_schema_lineage_reconciliation": {
+        "contract_valid": true,
+        "details": {
+          "checks": {
+            "compose_contract": {
+              "compose_file": "docker-compose.yml",
+              "expected_services": [
+                "postgres",
+                "redis",
+                "api",
+                "worker",
+                "frontend"
+              ],
+              "missing_services": [],
+              "status": "pass",
+              "valid": true
+            },
+            "disposable_stack_command_plan": {
+              "commands": [
+                {
+                  "command": "docker compose -f docker-compose.yml up -d postgres redis api worker frontend",
+                  "step": "start_stack"
+                },
+                {
+                  "command": "alembic upgrade head",
+                  "step": "apply_migrations"
+                },
+                {
+                  "command": "PYTHONPATH=. python3 scripts/runtime/verify_disposable_stack_schema_lineage.py --require-live --json",
+                  "step": "verify_lineage_schema"
+                },
+                {
+                  "command": "curl -fsS ${API_BASE_URL:-http://localhost:8000}/ready",
+                  "step": "probe_ready"
+                },
+                {
+                  "command": "PYTHONPATH=. python3 scripts/production_readiness/collect_prd1100r_true_state_runtime_baseline.py --run-expensive-checks --json",
+                  "step": "capture_baseline"
+                }
+              ],
+              "compose_file": "docker-compose.yml",
+              "policy": {
+                "existing_database_requires_inventory_before_bridge_or_rebuild": true,
+                "fresh_disposable_database_must_migrate_to_head": true,
+                "no_blind_alembic_stamp": true,
+                "ready_probe_required_after_stack_start": true,
+                "runtime_schema_contract_required_after_migration": true,
+                "snapshot_before_lineage_repair": true
+              },
+              "valid": true
+            },
+            "lineage_probe": {
+              "expected_repository_head": "20260708_2100_prd2_runtime_kg",
+              "policy": {
+                "existing_database_requires_inventory_before_bridge_or_rebuild": true,
+                "fresh_disposable_database_must_migrate_to_head": true,
+                "no_blind_alembic_stamp": true,
+                "ready_probe_required_after_stack_start": true,
+                "runtime_schema_contract_required_after_migration": true,
+                "snapshot_before_lineage_repair": true
+              },
+              "reason": "DATABASE_URL not set; disposable/existing database lineage not proven",
+              "status": "blocked"
+            },
+            "lineage_reconciliation_decision": {
+              "blind_stamp_allowed": false,
+              "decision": "live_database_not_available_for_reconciliation",
+              "safe_next_action": "start_disposable_stack_or_provide_DATABASE_URL_before claiming lineage proof",
+              "status": "blocked"
+            },
+            "migration_graph_contract": {
+              "expected_single_head": "20260708_2100_prd2_runtime_kg",
+              "repository_heads": [
+                "20260708_2100_prd2_runtime_kg"
+              ],
+              "revision_count": 46,
+              "status": "pass",
+              "valid": true
+            },
+            "policy": {
+              "existing_database_requires_inventory_before_bridge_or_rebuild": true,
+              "fresh_disposable_database_must_migrate_to_head": true,
+              "no_blind_alembic_stamp": true,
+              "ready_probe_required_after_stack_start": true,
+              "runtime_schema_contract_required_after_migration": true,
+              "snapshot_before_lineage_repair": true,
+              "valid": true
+            },
+            "runtime_schema_contract_static": {
+              "missing_columns": {},
+              "missing_tables": [],
+              "required_columns": {
+                "diagnostic_items": [
+                  "irt_quality_state",
+                  "irt_discrimination",
+                  "irt_difficulty",
+                  "irt_guessing"
+                ],
+                "runtime_kg_edges": [
+                  "source_node_id",
+                  "target_node_id",
+                  "edge_type",
+                  "weight"
+                ],
+                "runtime_kg_nodes": [
+                  "stable_code",
+                  "node_type",
+                  "label",
+                  "mastery_weight"
+                ]
+              },
+              "required_tables": [
+                "guardians",
+                "learner_profiles",
+                "assessments",
+                "assessment_attempts",
+                "diagnostic_items",
+                "diagnostic_sessions",
+                "study_plans",
+                "lessons",
+                "runtime_kg_graph_loads",
+                "runtime_kg_nodes",
+                "runtime_kg_edges",
+                "runtime_kg_events",
+                "ai_usage_events",
+                "tutor_sessions",
+                "audit_events"
+              ],
+              "schema_contract_satisfied": true,
+              "status": "ok",
+              "valid": true
+            }
+          },
+          "contract_valid": true,
+          "live_lineage_schema_green": false,
+          "live_lineage_schema_required": false,
+          "next_required_runtime_action": "provide live disposable stack evidence",
+          "valid": true
+        },
+        "live_lineage_schema_green": false,
+        "next_required_runtime_action": "provide live disposable stack evidence",
+        "status": "blocked"
+      },
+      "docker_compose_service_contract": {
+        "expected_services": [
+          "postgres",
+          "redis",
+          "api",
+          "worker",
+          "frontend"
+        ],
+        "missing_services": [],
+        "status": "pass"
+      },
+      "frontend_quality_gate": {
+        "reason": "frontend_quality_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "generated_contracts": {
+        "reason": "generated contract checks not executed in collector default mode",
+        "status": "blocked"
+      },
+      "integration_gate": {
+        "reason": "integration_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "ready_http_probe": {
+        "reason": "API_BASE_URL not set; HTTP /ready not proven",
+        "status": "blocked"
+      },
+      "redis_readiness_dependency": {
+        "reason": "REDIS_URL not set; /ready Redis dependency not proven",
+        "status": "blocked"
+      },
+      "secret_baseline_gate": {
+        "reason": "secret_baseline_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "static_required_files": {
+        "missing": [],
+        "status": "pass"
+      }
+    },
+    "collector_version": "prd11.0r/true-state-runtime-baseline/v1",
+    "hard_gate_names": [
+      "static_required_files",
+      "docker_compose_service_contract",
+      "alembic_repository_graph",
+      "disposable_stack_schema_lineage_reconciliation",
+      "database_lineage_and_schema",
+      "redis_readiness_dependency",
+      "ready_http_probe",
+      "generated_contracts",
+      "backend_unit_gate",
+      "integration_gate",
+      "dependency_audit_gate",
+      "frontend_quality_gate",
+      "secret_baseline_gate"
+    ],
+    "operational_hold_required": true,
+    "overall_status": "red_no_go_operational_hold_active",
+    "prd_id": "PRD-11.0R",
+    "release_evidence_mode": "actual_probe_evidence_required_not_constant_status",
+    "runtime_baseline_green": false
+  },
+  "runtime_baseline_status": "red_no_go_operational_hold_active",
   "runtime_context_required_for_db_backed_flows": true,
-  "status": "authority_recorded",
+  "status": "product_gate_execution_evidence_recorded",
+  "target_branch": "master",
   "title": "Product Gate Execution and Critical Flow Repair"
 }
