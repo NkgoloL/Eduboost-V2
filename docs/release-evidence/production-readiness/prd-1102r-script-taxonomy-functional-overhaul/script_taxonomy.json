@@ -1,0 +1,101 @@
+{
+  "class_capabilities_valid": true,
+  "class_ids": [
+    "advisory",
+    "governance",
+    "product",
+    "runtime"
+  ],
+  "governance_sync": {
+    "fresh": true,
+    "freshness_max_age_days": 21,
+    "prd11_register_age_days": 0,
+    "prd11_register_next_authorised_item": "PRD-11.3R",
+    "production_register_age_days": 0,
+    "production_register_next_authorised_item": "PRD-11.3R",
+    "release_boundaries_locked": true,
+    "script_taxonomy_age_days": 0,
+    "state_agrees": true,
+    "test_taxonomy_age_days": 0,
+    "valid": true
+  },
+  "inventory_classes": [
+    "advisory",
+    "governance",
+    "product",
+    "runtime"
+  ],
+  "inventory_count": 1144,
+  "inventory_roles": [
+    "apply",
+    "audit",
+    "capture",
+    "collect",
+    "generate",
+    "maintenance",
+    "verify"
+  ],
+  "missing_classes": [],
+  "missing_inventory_classes": [],
+  "missing_inventory_roles": [],
+  "missing_roles": [],
+  "prd_id": "PRD-11.2R",
+  "required_classes": [
+    "product",
+    "runtime",
+    "governance",
+    "advisory"
+  ],
+  "required_roles": [
+    "audit",
+    "verify",
+    "capture",
+    "collect",
+    "generate",
+    "apply",
+    "maintenance"
+  ],
+  "role_contracts_valid": true,
+  "role_ids": [
+    "apply",
+    "audit",
+    "capture",
+    "collect",
+    "generate",
+    "maintenance",
+    "verify"
+  ],
+  "schema_version": "prd11.2r/script-taxonomy/v1",
+  "script_commands": [
+    {
+      "command": "PYTHONPATH=. python3 scripts/script_suites/run_script_class.py product --dry-run --json",
+      "purpose": "List product-behaviour scripts for services, routes, auth, POPIA, billing and learner journeys.",
+      "release_blocking": true,
+      "requires_live_stack": false,
+      "script_class": "product"
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/script_suites/run_script_class.py runtime --dry-run --json",
+      "purpose": "List runtime/stack scripts for Postgres, Redis, migrations, schema, /ready, worker and frontend proxy.",
+      "release_blocking": true,
+      "requires_live_stack": true,
+      "script_class": "runtime"
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/script_suites/run_script_class.py governance --dry-run --json",
+      "purpose": "List governance/evidence/register/documentation synchronisation scripts.",
+      "release_blocking": false,
+      "requires_live_stack": false,
+      "script_class": "governance"
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/script_suites/run_script_class.py advisory --dry-run --json",
+      "purpose": "List static/advisory scripts for Ruff, mypy, Bandit, coverage, dependency audit and drift checks.",
+      "release_blocking": true,
+      "requires_live_stack": false,
+      "script_class": "advisory"
+    }
+  ],
+  "script_outputs_cannot_self_prove_release_readiness": true,
+  "valid": true
+}

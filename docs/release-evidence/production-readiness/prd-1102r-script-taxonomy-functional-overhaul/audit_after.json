@@ -1,62 +1,24 @@
 {
   "advisory_script_class_recorded": true,
-  "billing_launch_authorised": false,
-  "captured_at": "2026-07-10T18:43:16.764520+00:00",
-  "deployment_authorised": false,
+  "authority_valid": true,
+  "false_boundaries_locked": true,
   "functional_roles_recorded": true,
   "governance_script_class_recorded": true,
   "governance_script_freshness_gate_recorded": true,
-  "live_payment_processing_authorised": false,
+  "missing_paths": [],
   "next_authorised_item": "PRD-11.3R",
   "prd113r_handoff_authorised": true,
   "prd_id": "PRD-11.2R",
-  "prd_owner": "Nkgolo Lebelo",
   "product_script_class_recorded": true,
-  "production_release_authorised": false,
-  "public_beta_authorised": false,
-  "public_beta_live_traffic_authorised": false,
-  "recorded_at": "2026-07-10T18:30:00+00:00",
-  "release_tag_authorised": false,
+  "production_register_next_authorised_item": "PRD-11.3R",
+  "register_next_authorised_item": "PRD-11.3R",
   "runtime_script_class_recorded": true,
-  "schema_version": "prd11.2r/script-taxonomy-functional-overhaul/v1",
   "script_classes_recorded": true,
-  "script_commands": [
-    {
-      "command": "PYTHONPATH=. python3 scripts/script_suites/run_script_class.py product --dry-run --json",
-      "purpose": "List product-behaviour scripts for services, routes, auth, POPIA, billing and learner journeys.",
-      "release_blocking": true,
-      "requires_live_stack": false,
-      "script_class": "product"
-    },
-    {
-      "command": "PYTHONPATH=. python3 scripts/script_suites/run_script_class.py runtime --dry-run --json",
-      "purpose": "List runtime/stack scripts for Postgres, Redis, migrations, schema, /ready, worker and frontend proxy.",
-      "release_blocking": true,
-      "requires_live_stack": true,
-      "script_class": "runtime"
-    },
-    {
-      "command": "PYTHONPATH=. python3 scripts/script_suites/run_script_class.py governance --dry-run --json",
-      "purpose": "List governance/evidence/register/documentation synchronisation scripts.",
-      "release_blocking": false,
-      "requires_live_stack": false,
-      "script_class": "governance"
-    },
-    {
-      "command": "PYTHONPATH=. python3 scripts/script_suites/run_script_class.py advisory --dry-run --json",
-      "purpose": "List static/advisory scripts for Ruff, mypy, Bandit, coverage, dependency audit and drift checks.",
-      "release_blocking": true,
-      "requires_live_stack": false,
-      "script_class": "advisory"
-    }
-  ],
   "script_mutability_policy_recorded": true,
   "script_outputs_cannot_self_prove_release_readiness": true,
   "script_taxonomy_authority_recorded": true,
   "script_taxonomy_evidence_recorded": true,
-  "status": "script_taxonomy_evidence_recorded",
-  "target_branch": "master",
-  "taxonomy_snapshot": {
+  "taxonomy": {
     "class_capabilities_valid": true,
     "class_ids": [
       "advisory",
@@ -68,9 +30,9 @@
       "fresh": true,
       "freshness_max_age_days": 21,
       "prd11_register_age_days": 0,
-      "prd11_register_next_authorised_item": "PRD-11.2R",
+      "prd11_register_next_authorised_item": "PRD-11.3R",
       "production_register_age_days": 0,
-      "production_register_next_authorised_item": "PRD-11.2R",
+      "production_register_next_authorised_item": "PRD-11.3R",
       "release_boundaries_locked": true,
       "script_taxonomy_age_days": 0,
       "state_agrees": true,
@@ -156,5 +118,7 @@
     ],
     "script_outputs_cannot_self_prove_release_readiness": true,
     "valid": true
-  }
+  },
+  "taxonomy_valid": true,
+  "valid": true
 }

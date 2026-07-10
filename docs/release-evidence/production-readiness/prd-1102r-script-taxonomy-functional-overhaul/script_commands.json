@@ -1,0 +1,32 @@
+{
+  "commands": [
+    {
+      "command": "PYTHONPATH=. python3 scripts/script_suites/run_script_class.py product --dry-run --json",
+      "purpose": "List product-behaviour scripts for services, routes, auth, POPIA, billing and learner journeys.",
+      "release_blocking": true,
+      "requires_live_stack": false,
+      "script_class": "product"
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/script_suites/run_script_class.py runtime --dry-run --json",
+      "purpose": "List runtime/stack scripts for Postgres, Redis, migrations, schema, /ready, worker and frontend proxy.",
+      "release_blocking": true,
+      "requires_live_stack": true,
+      "script_class": "runtime"
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/script_suites/run_script_class.py governance --dry-run --json",
+      "purpose": "List governance/evidence/register/documentation synchronisation scripts.",
+      "release_blocking": false,
+      "requires_live_stack": false,
+      "script_class": "governance"
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/script_suites/run_script_class.py advisory --dry-run --json",
+      "purpose": "List static/advisory scripts for Ruff, mypy, Bandit, coverage, dependency audit and drift checks.",
+      "release_blocking": true,
+      "requires_live_stack": false,
+      "script_class": "advisory"
+    }
+  ]
+}
