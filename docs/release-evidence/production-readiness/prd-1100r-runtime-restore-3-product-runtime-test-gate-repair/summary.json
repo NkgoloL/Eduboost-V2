@@ -1,0 +1,27 @@
+{
+  "authority_valid": true,
+  "baseline_blockers": [
+    "disposable_stack_schema_lineage_reconciliation",
+    "database_lineage_and_schema",
+    "redis_readiness_dependency",
+    "ready_http_probe",
+    "generated_contracts",
+    "backend_unit_gate",
+    "integration_gate",
+    "dependency_audit_gate",
+    "frontend_quality_gate",
+    "secret_baseline_gate"
+  ],
+  "captured_at": "2026-07-10T21:35:53.474251+00:00",
+  "controlled_beta_activation_operational_hold": true,
+  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-4",
+  "prd_id": "PRD-11.0R.RUNTIME-RESTORE-3",
+  "product_runtime_gate_contract_valid": true,
+  "product_runtime_gate_green": false,
+  "production_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-4",
+  "production_release_evidence_blocked_until_runtime_baseline_green": true,
+  "register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-4",
+  "runtime_baseline_green": false,
+  "runtime_baseline_status": "red_no_go_operational_hold_active",
+  "valid": true
+}

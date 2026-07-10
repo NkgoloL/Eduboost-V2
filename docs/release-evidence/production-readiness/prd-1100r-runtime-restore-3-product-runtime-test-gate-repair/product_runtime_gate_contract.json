@@ -1,0 +1,87 @@
+{
+  "gate_commands": [
+    {
+      "command": "PYTHONPATH=. python3 scripts/test_suites/run_product_runtime_gates.py product --dry-run --json",
+      "gate_class": "product",
+      "purpose": "List and enforce product behaviour gate commands for services, routes, DB, auth, POPIA, billing, learner journeys and diagnostics.",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/test_suites/run_product_runtime_gates.py runtime --dry-run --json",
+      "gate_class": "runtime",
+      "purpose": "List and enforce runtime gate commands for Postgres, Redis, migrations, schema, /ready, worker and frontend proxy.",
+      "release_blocking": true,
+      "requires_live_stack": true
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/test_suites/verify_product_runtime_test_gates.py --json",
+      "gate_class": "combined",
+      "purpose": "Verify that product/runtime gates require independent positive and negative behavioural evidence before release claims.",
+      "release_blocking": true,
+      "requires_live_stack": false
+    }
+  ],
+  "governance_alignment": {
+    "coverage_contract_age_days": 0,
+    "fresh": true,
+    "freshness_max_age_days": 21,
+    "prd11_register_age_days": 0,
+    "prd11_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-3",
+    "product_runtime_contract_age_days": 0,
+    "production_register_age_days": 0,
+    "production_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-3",
+    "release_boundaries_locked": true,
+    "script_taxonomy_age_days": 0,
+    "state_agrees": true,
+    "test_taxonomy_age_days": 0,
+    "valid": true
+  },
+  "missing_product_domains": [],
+  "missing_runtime_domains": [],
+  "next_after_evidence": "PRD-11.0R.RUNTIME-RESTORE-4",
+  "prd_id": "PRD-11.0R.RUNTIME-RESTORE-3",
+  "product_domain_ids": [
+    "auth_authorisation",
+    "billing_commercial",
+    "database_contracts",
+    "diagnostics_assessments",
+    "learner_journeys",
+    "popia_lifecycle",
+    "routes",
+    "services"
+  ],
+  "product_domains_valid": true,
+  "release_policy_valid": true,
+  "required_product_domains": [
+    "services",
+    "routes",
+    "database_contracts",
+    "auth_authorisation",
+    "popia_lifecycle",
+    "billing_commercial",
+    "learner_journeys",
+    "diagnostics_assessments"
+  ],
+  "required_runtime_domains": [
+    "postgres",
+    "redis",
+    "migrations",
+    "schema_contract",
+    "ready_endpoint",
+    "worker",
+    "frontend_proxy"
+  ],
+  "runtime_domain_ids": [
+    "frontend_proxy",
+    "migrations",
+    "postgres",
+    "ready_endpoint",
+    "redis",
+    "schema_contract",
+    "worker"
+  ],
+  "runtime_domains_valid": true,
+  "schema_version": "prd11.0r/runtime-restore-3/product-runtime-test-gates/v1",
+  "valid": true
+}
