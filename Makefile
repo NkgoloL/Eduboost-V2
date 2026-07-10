@@ -3558,3 +3558,12 @@ prd1100r-runtime-restore-3-product-runtime-test-gate-repair-check:
 
 prd1100r-runtime-restore-3-product-runtime-test-gate-repair-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_3_product_runtime_test_gate_repair_evidence.py --claim-prd1100r-runtime-restore-3-product-runtime-test-gate-repair --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+
+.PHONY: verify-prd1100r-runtime-restore-4 capture-prd1100r-runtime-restore-4
+verify-prd1100r-runtime-restore-4:
+	PYTHONPATH=. python3 scripts/test_suites/verify_product_gate_execution.py --json
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd1100r_runtime_restore_4_product_gate_execution_critical_flow_repair.py --authority-only --json
+
+capture-prd1100r-runtime-restore-4:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_4_product_gate_execution_critical_flow_repair_evidence.py --claim-prd1100r-runtime-restore-4-product-gate-execution-critical-flow-repair --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
