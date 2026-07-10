@@ -55,6 +55,7 @@ from app.api_v2_routers import (  # noqa: E402
     onboarding,
     observability_sre,
     performance_scale_cost,
+    production_release,
     parents,
     popia,
     privacy_operations,
@@ -79,6 +80,7 @@ app.include_router(privacy_operations.router, prefix=API_V2)
 app.include_router(security_assurance.router, prefix=API_V2)
 app.include_router(observability_sre.router, prefix=API_V2)
 app.include_router(performance_scale_cost.router, prefix=API_V2)
+app.include_router(production_release.router, prefix=API_V2)
 
 
 # ── Health & meta ─────────────────────────────────────────────────────────────

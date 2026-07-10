@@ -3449,3 +3449,12 @@ prd1005-1009-controlled-beta-final-live-traffic-handoff-check:
 .PHONY: prd1005-1009-controlled-beta-final-live-traffic-handoff-capture
 prd1005-1009-controlled-beta-final-live-traffic-handoff-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1005_1009_controlled_beta_final_live_traffic_handoff_evidence.py --claim-prd1005-1009-controlled-beta-final-live-traffic-handoff --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+# PRD-11.0-11.4 production release/deployment preflight foundation
+.PHONY: prd1100-1104-production-release-deployment-preflight-foundation-check
+prd1100-1104-production-release-deployment-preflight-foundation-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd1100_1104_production_release_deployment_preflight_foundation.py --authority-only --json
+
+.PHONY: prd1100-1104-production-release-deployment-preflight-foundation-capture
+prd1100-1104-production-release-deployment-preflight-foundation-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1100_1104_production_release_deployment_preflight_foundation_evidence.py --claim-prd1100-1104-production-release-deployment-preflight-foundation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json

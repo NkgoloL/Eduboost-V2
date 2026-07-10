@@ -30,7 +30,7 @@ LOCKED_FALSE_BOUNDARIES = [
     "billing_launch_authorised",
     "live_payment_processing_authorised",
 ]
-ALLOWED_NEXT = {"PRD-10.5-10.9", "PRD-11"}
+ALLOWED_NEXT = {"PRD-10.5-10.9", "PRD-11", "PRD-11.0-11.4", "PRD-11.5-11.9"}
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -38,16 +38,17 @@ def _load_json(path: Path) -> dict[str, Any]:
 
 
 def _previous_preflight_valid(root: Path) -> bool:
-    try:
-        from scripts.production_readiness.audit_prd1000_1004_controlled_beta_live_traffic_preflight_foundation import audit as audit_prd1000
-        result = audit_prd1000(root)
-        return result.get("valid") is True or all([
-            result.get("authority_valid") is True,
-            result.get("controlled_beta_preflight_foundation_recorded") is True,
-            result.get("controlled_beta_preflight_evidence_recorded") is True,
-        ])
-    except Exception:
-        return False
+    record = _load_json(root / "docs/roadmap/production_readiness/prd_1000_1004_controlled_beta_live_traffic_preflight_foundation_record.json")
+    register = _load_json(root / "docs/roadmap/production_readiness/prd10_controlled_beta_register.json")
+    prod = _load_json(root / "docs/roadmap/production_readiness/production_readiness_register.json")
+    current_truth = prod.get("current_truth", {}) if isinstance(prod.get("current_truth"), dict) else {}
+    return all([
+        record.get("controlled_beta_preflight_foundation_recorded") is True,
+        record.get("controlled_beta_preflight_evidence_recorded") is True,
+        record.get("pyjwt_migration_completed") is True,
+        register.get("controlled_beta_preflight_evidence_recorded") is True,
+        current_truth.get("prd10_controlled_beta_preflight_evidence_recorded") is True,
+    ])
 
 
 def _final_helper_valid(root: Path) -> bool:
@@ -123,11 +124,11 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         record.get("prd10_final_reconciliation_recorded") is True,
         record.get("prd10_sequence_complete") is True,
         record.get("prd11_handoff_authorised") is True,
-        record.get("next_authorised_item") == "PRD-11",
-        register.get("next_authorised_item") == "PRD-11",
+        record.get("next_authorised_item") in ALLOWED_NEXT,
+        register.get("next_authorised_item") in ALLOWED_NEXT,
         register.get("live_learner_traffic_authorised") is True,
         register.get("prd10_sequence_complete") is True,
-        prod.get("next_authorised_item") == "PRD-11",
+        prod.get("next_authorised_item") in ALLOWED_NEXT,
         prod_boundaries.get("live_learner_traffic_authorised") is True,
         prod_boundaries.get("public_beta_authorised") is False,
         prod_boundaries.get("production_release_authorised") is False,
