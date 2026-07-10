@@ -47,6 +47,7 @@ from app.api_v2_routers import (  # noqa: E402
     auth,
     billing,
     commercial_launch,
+    controlled_beta,
     content_quality,
     diagnostics,
     learners,
@@ -72,6 +73,7 @@ app.include_router(vertical_journey.router, prefix=API_V2)
 app.include_router(content_quality.router, prefix=API_V2)
 app.include_router(billing.router, prefix=API_V2)
 app.include_router(commercial_launch.router, prefix=API_V2)
+app.include_router(controlled_beta.router, prefix=API_V2)
 app.include_router(popia.router, prefix=API_V2)
 app.include_router(privacy_operations.router, prefix=API_V2)
 app.include_router(security_assurance.router, prefix=API_V2)

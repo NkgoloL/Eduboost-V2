@@ -1,0 +1,32 @@
+{
+  "billing_launch_authorised": false,
+  "controlled_beta_preflight_evidence_recorded": false,
+  "controlled_beta_preflight_foundation_recorded": false,
+  "deployment_authorised": false,
+  "last_recorded_item": "PRD-10.0-10.4",
+  "live_learner_traffic_authorised": false,
+  "live_payment_processing_authorised": false,
+  "next_authorised_item": "PRD-10.0-10.4",
+  "prd10_sequence": [
+    {
+      "authorised": true,
+      "prd_id": "PRD-10.0-10.4",
+      "status": "authority",
+      "title": "Controlled beta/live learner traffic preflight foundation"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-10.5-10.9",
+      "status": "pending",
+      "title": "Controlled beta final evidence and live-traffic authorisation decision handoff"
+    }
+  ],
+  "prd10_sequence_complete": false,
+  "prd11_handoff_authorised": false,
+  "prd11_implementation_authorised": false,
+  "prd_id": "PRD-10",
+  "production_release_authorised": false,
+  "public_beta_authorised": false,
+  "release_tag_authorised": false,
+  "status": "prd10_controlled_beta_preflight_started"
+}

@@ -23,7 +23,7 @@ import bcrypt
 from cryptography.fernet import Fernet
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from jose import JWTError, jwt
+from app.core.jwt_compat import JWTError, jwt
 
 from app.core.config import settings
 from app.core.token_revocation import is_token_revoked, is_user_revoked

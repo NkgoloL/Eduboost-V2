@@ -5,7 +5,7 @@ import os
 from dataclasses import dataclass
 from typing import Any
 
-from jose import jwt
+from app.core.jwt_compat import decode_options, jwt
 
 
 PLACEHOLDER_JWT_SECRETS = {
@@ -230,7 +230,7 @@ def decode_jwt_with_keyring(token: str, *, options: dict[str, Any] | None = None
     last_error: Exception | None = None
     for key in ordered:
         try:
-            return jwt.decode(token, key.secret, algorithms=[key.algorithm], options=options)
+            return jwt.decode(token, key.secret, algorithms=[key.algorithm], options=decode_options(options))
         except Exception as exc:
             last_error = exc
             continue

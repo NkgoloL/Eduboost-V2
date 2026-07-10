@@ -24,7 +24,7 @@ REQUIRED_IMPORTS: tuple[tuple[str, str, str], ...] = (
     ("sqlalchemy", "model/repository imports", "requirements/base.txt"),
     ("alembic", "migration graph verification", "requirements/base.txt"),
     ("asyncpg", "PostgreSQL async SQLAlchemy URL imports", "requirements/base.txt"),
-    ("jose", "JWT/token tests", "requirements/base.txt"),
+    ("jwt", "JWT/token tests", "requirements/base.txt"),
     ("passlib.context", "password/auth tests", "requirements/base.txt"),
     ("redis", "quota/session/token revocation tests", "requirements/base.txt"),
     ("structlog", "runtime logging imports", "requirements/base.txt"),
