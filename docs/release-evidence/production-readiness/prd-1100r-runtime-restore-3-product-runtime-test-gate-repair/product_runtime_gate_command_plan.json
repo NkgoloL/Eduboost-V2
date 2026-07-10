@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "command": "PYTHONPATH=. python3 scripts/test_suites/run_product_runtime_gates.py product --dry-run --json",
+      "gate_class": "product",
+      "purpose": "List and enforce product behaviour gate commands for services, routes, DB, auth, POPIA, billing, learner journeys and diagnostics.",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/test_suites/run_product_runtime_gates.py runtime --dry-run --json",
+      "gate_class": "runtime",
+      "purpose": "List and enforce runtime gate commands for Postgres, Redis, migrations, schema, /ready, worker and frontend proxy.",
+      "release_blocking": true,
+      "requires_live_stack": true
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/test_suites/verify_product_runtime_test_gates.py --json",
+      "gate_class": "combined",
+      "purpose": "Verify that product/runtime gates require independent positive and negative behavioural evidence before release claims.",
+      "release_blocking": true,
+      "requires_live_stack": false
+    }
+  ]
+}
