@@ -3430,3 +3430,13 @@ prd905-909-commercial-runtime-audit-remediation-handoff-check:
 .PHONY: prd905-909-commercial-runtime-audit-remediation-handoff-capture
 prd905-909-commercial-runtime-audit-remediation-handoff-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd905_909_commercial_runtime_audit_remediation_handoff_evidence.py --claim-prd905-909-commercial-runtime-audit-remediation-handoff --require-valid --json
+
+
+# PRD-10.0-10.4 controlled beta/live learner traffic preflight foundation
+.PHONY: prd1000-1004-controlled-beta-live-traffic-preflight-foundation-check
+prd1000-1004-controlled-beta-live-traffic-preflight-foundation-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd1000_1004_controlled_beta_live_traffic_preflight_foundation.py --authority-only --json
+
+.PHONY: prd1000-1004-controlled-beta-live-traffic-preflight-foundation-capture
+prd1000-1004-controlled-beta-live-traffic-preflight-foundation-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1000_1004_controlled_beta_live_traffic_preflight_foundation_evidence.py --claim-prd1000-1004-controlled-beta-live-traffic-preflight-foundation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json

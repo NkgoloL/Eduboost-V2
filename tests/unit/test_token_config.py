@@ -7,7 +7,7 @@ from datetime import datetime, timedelta, timezone
 from unittest.mock import AsyncMock, patch
 
 import pytest
-from jose import JWTError
+from app.core.jwt_compat import JWTError
 
 from app.core.token_config import (
     ACCESS_TOKEN_TTL_MINUTES,

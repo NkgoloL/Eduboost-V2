@@ -22,7 +22,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Any
 
 import redis.asyncio as aioredis
-from jose import JWTError, jwt
+from app.core.jwt_compat import JWTError, jwt, decode_options
 from pydantic import BaseModel
 
 # ---------------------------------------------------------------------------
@@ -166,7 +166,7 @@ async def verify_access_token(token: str) -> dict[str, Any]:
         header = jwt.get_unverified_header(token)
         kid = header.get("kid", CURRENT_KID)
         secret = _secret_for_kid(kid)
-        claims = jwt.decode(token, secret, algorithms=[ALGORITHM])
+        claims = jwt.decode(token, secret, algorithms=[ALGORITHM], options=decode_options())
     except JWTError:
         raise
 

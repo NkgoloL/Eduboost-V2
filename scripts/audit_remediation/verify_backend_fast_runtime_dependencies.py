@@ -28,7 +28,7 @@ REQUIRED_IMPORTS: dict[str, str] = {
     "httpx": "httpx",
     "hypothesis": "hypothesis",
     "jinja2": "jinja2",
-    "jose": "python-jose",
+    "jwt": "PyJWT",
     "prometheus_client": "prometheus-client",
     "psycopg2": "psycopg2-binary or psycopg2",
     "pypdf": "pypdf",
@@ -106,7 +106,7 @@ def _requirements_mentions(requirements_text: str, modules: Iterable[str]) -> di
     normalized = requirements_text.lower().replace("_", "-")
     module_to_needles = {
         "yaml": ["pyyaml"],
-        "jose": ["python-jose"],
+        "jwt": ["pyjwt"],
         "prometheus_client": ["prometheus-client"],
         "psycopg2": ["psycopg2", "psycopg2-binary"],
     }
