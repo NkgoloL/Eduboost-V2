@@ -1,0 +1,43 @@
+{
+  "authority_valid": true,
+  "captured_at": "2026-07-10T12:25:48.135606+00:00",
+  "controlled_beta_preflight": {
+    "accepted": true,
+    "auth_token_regression_gate": "pyjwt_migration_required_and_verified_before_live_traffic",
+    "beta_mode": "preflight_only",
+    "billing_launch_authorised": false,
+    "blockers": [],
+    "cohort_consent_eligibility_gate_defined": true,
+    "cohort_gate": "guardian_consent_and_learner_eligibility_required",
+    "controlled_beta_preflight_defined": true,
+    "controls": [
+      "prd10_authority_and_live_traffic_gate_definition",
+      "pyjwt_auth_token_regression_gate",
+      "controlled_beta_cohort_definition",
+      "guardian_consent_approval_and_learner_eligibility_gate",
+      "live_learner_traffic_dry_run",
+      "kill_switch_and_rollback_readiness",
+      "beta_support_monitoring_incident_escalation",
+      "go_no_go_readiness_contract"
+    ],
+    "deployment_authorised": false,
+    "dry_run_kill_switch_rollback_defined": true,
+    "kill_switch_state": "required_before_any_live_traffic",
+    "live_learner_traffic_authorised": false,
+    "live_payment_processing_authorised": false,
+    "live_traffic_gate_state": "defined_not_authorised",
+    "prd10_final_handoff_authorised": false,
+    "prd11_implementation_authorised": false,
+    "prd_id": "PRD-10.0-10.4",
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "pyjwt_auth_regression_gate_defined": true,
+    "release_tag_authorised": false,
+    "support_go_no_go_state": "required_before_any_live_traffic",
+    "support_monitoring_incident_go_no_go_defined": true
+  },
+  "next_authorised_item": "PRD-10.5-10.9",
+  "prd_id": "PRD-10.0-10.4",
+  "register_next_authorised_item": "PRD-10.5-10.9",
+  "valid": true
+}
