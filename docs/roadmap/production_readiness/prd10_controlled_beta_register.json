@@ -1,13 +1,17 @@
 {
   "billing_launch_authorised": false,
+  "controlled_beta_final_authority_recorded": true,
+  "controlled_beta_final_evidence_recorded": true,
+  "controlled_beta_live_traffic_authorised": true,
   "controlled_beta_preflight_evidence_recorded": true,
   "controlled_beta_preflight_foundation_recorded": true,
   "deployment_authorised": false,
-  "last_recorded_at": "2026-07-10T12:25:48.135606+00:00",
-  "last_recorded_item": "PRD-10.0-10.4",
-  "live_learner_traffic_authorised": false,
+  "last_recorded_at": "2026-07-10T14:04:04.464805+00:00",
+  "last_recorded_item": "PRD-10.5-10.9",
+  "live_learner_traffic_authorised": true,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-10.5-10.9",
+  "next_authorised_item": "PRD-11",
+  "prd10_final_reconciliation_recorded": true,
   "prd10_sequence": [
     {
       "authorised": true,
@@ -18,16 +22,17 @@
     {
       "authorised": true,
       "prd_id": "PRD-10.5-10.9",
-      "status": "pending",
+      "status": "recorded",
       "title": "Controlled beta final evidence and live-traffic authorisation decision handoff"
     }
   ],
-  "prd10_sequence_complete": false,
-  "prd11_handoff_authorised": false,
+  "prd10_sequence_complete": true,
+  "prd11_handoff_authorised": true,
   "prd11_implementation_authorised": false,
   "prd_id": "PRD-10",
   "production_release_authorised": false,
   "public_beta_authorised": false,
+  "public_beta_live_traffic_authorised": false,
   "release_tag_authorised": false,
-  "status": "prd10_controlled_beta_preflight_foundation_recorded"
+  "status": "prd10_closed_controlled_beta_live_traffic_authorised"
 }
