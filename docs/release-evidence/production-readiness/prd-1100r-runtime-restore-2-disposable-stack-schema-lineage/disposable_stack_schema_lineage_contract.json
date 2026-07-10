@@ -1,0 +1,137 @@
+{
+  "checks": {
+    "compose_contract": {
+      "compose_file": "docker-compose.yml",
+      "expected_services": [
+        "postgres",
+        "redis",
+        "api",
+        "worker",
+        "frontend"
+      ],
+      "missing_services": [],
+      "status": "pass",
+      "valid": true
+    },
+    "disposable_stack_command_plan": {
+      "commands": [
+        {
+          "command": "docker compose -f docker-compose.yml up -d postgres redis api worker frontend",
+          "step": "start_stack"
+        },
+        {
+          "command": "alembic upgrade head",
+          "step": "apply_migrations"
+        },
+        {
+          "command": "PYTHONPATH=. python3 scripts/runtime/verify_disposable_stack_schema_lineage.py --require-live --json",
+          "step": "verify_lineage_schema"
+        },
+        {
+          "command": "curl -fsS ${API_BASE_URL:-http://localhost:8000}/ready",
+          "step": "probe_ready"
+        },
+        {
+          "command": "PYTHONPATH=. python3 scripts/production_readiness/collect_prd1100r_true_state_runtime_baseline.py --run-expensive-checks --json",
+          "step": "capture_baseline"
+        }
+      ],
+      "compose_file": "docker-compose.yml",
+      "policy": {
+        "existing_database_requires_inventory_before_bridge_or_rebuild": true,
+        "fresh_disposable_database_must_migrate_to_head": true,
+        "no_blind_alembic_stamp": true,
+        "ready_probe_required_after_stack_start": true,
+        "runtime_schema_contract_required_after_migration": true,
+        "snapshot_before_lineage_repair": true
+      },
+      "valid": true
+    },
+    "lineage_probe": {
+      "expected_repository_head": "20260708_2100_prd2_runtime_kg",
+      "policy": {
+        "existing_database_requires_inventory_before_bridge_or_rebuild": true,
+        "fresh_disposable_database_must_migrate_to_head": true,
+        "no_blind_alembic_stamp": true,
+        "ready_probe_required_after_stack_start": true,
+        "runtime_schema_contract_required_after_migration": true,
+        "snapshot_before_lineage_repair": true
+      },
+      "reason": "DATABASE_URL not set; disposable/existing database lineage not proven",
+      "status": "blocked"
+    },
+    "lineage_reconciliation_decision": {
+      "blind_stamp_allowed": false,
+      "decision": "live_database_not_available_for_reconciliation",
+      "safe_next_action": "start_disposable_stack_or_provide_DATABASE_URL_before claiming lineage proof",
+      "status": "blocked"
+    },
+    "migration_graph_contract": {
+      "expected_single_head": "20260708_2100_prd2_runtime_kg",
+      "repository_heads": [
+        "20260708_2100_prd2_runtime_kg"
+      ],
+      "revision_count": 46,
+      "status": "pass",
+      "valid": true
+    },
+    "policy": {
+      "existing_database_requires_inventory_before_bridge_or_rebuild": true,
+      "fresh_disposable_database_must_migrate_to_head": true,
+      "no_blind_alembic_stamp": true,
+      "ready_probe_required_after_stack_start": true,
+      "runtime_schema_contract_required_after_migration": true,
+      "snapshot_before_lineage_repair": true,
+      "valid": true
+    },
+    "runtime_schema_contract_static": {
+      "missing_columns": {},
+      "missing_tables": [],
+      "required_columns": {
+        "diagnostic_items": [
+          "irt_quality_state",
+          "irt_discrimination",
+          "irt_difficulty",
+          "irt_guessing"
+        ],
+        "runtime_kg_edges": [
+          "source_node_id",
+          "target_node_id",
+          "edge_type",
+          "weight"
+        ],
+        "runtime_kg_nodes": [
+          "stable_code",
+          "node_type",
+          "label",
+          "mastery_weight"
+        ]
+      },
+      "required_tables": [
+        "guardians",
+        "learner_profiles",
+        "assessments",
+        "assessment_attempts",
+        "diagnostic_items",
+        "diagnostic_sessions",
+        "study_plans",
+        "lessons",
+        "runtime_kg_graph_loads",
+        "runtime_kg_nodes",
+        "runtime_kg_edges",
+        "runtime_kg_events",
+        "ai_usage_events",
+        "tutor_sessions",
+        "audit_events"
+      ],
+      "schema_contract_satisfied": true,
+      "status": "ok",
+      "valid": true
+    }
+  },
+  "contract_valid": true,
+  "live_lineage_schema_green": false,
+  "live_lineage_schema_required": false,
+  "next_required_runtime_action": "provide live disposable stack evidence",
+  "valid": true
+}

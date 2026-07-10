@@ -44,13 +44,13 @@
     "prd10_pyjwt_migration_completed": true,
     "prd10_sequence_complete": true,
     "prd10_started": true,
-    "prd11_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-2",
+    "prd11_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-3",
     "prd11_production_release_preflight_evidence_recorded": false,
     "prd11_production_release_preflight_foundation_recorded": true,
     "prd11_runtime_restore_1_authority_recorded": true,
     "prd11_runtime_restore_1_evidence_recorded": true,
     "prd11_runtime_restore_2_authority_recorded": true,
-    "prd11_runtime_restore_2_evidence_recorded": false,
+    "prd11_runtime_restore_2_evidence_recorded": true,
     "prd11_started": true,
     "prd1_authority_reconciliation_recorded": true,
     "prd1_blocked_until_prd0_closure": false,
@@ -129,7 +129,7 @@
     "rr_closure_required": true,
     "runtime_baseline_green": false,
     "runtime_restore_1_runtime_stack_db_lineage_readiness_evidence_recorded": true,
-    "runtime_restore_2_disposable_stack_schema_lineage_evidence_recorded": false,
+    "runtime_restore_2_disposable_stack_schema_lineage_evidence_recorded": true,
     "stream_id": "PRD-PRODUCTION-READINESS"
   },
   "gates": {
@@ -140,10 +140,10 @@
     "production_release_blocked_until_prd11": true,
     "public_beta_blocked_until_prd10": true
   },
-  "last_recorded_at": "2026-07-10T20:30:49.552267+00:00",
+  "last_recorded_at": "2026-07-10T20:59:16.601803+00:00",
   "last_recorded_item": "PRD-11.0R.RUNTIME-RESTORE-2",
   "live_learner_traffic_operationally_safe": false,
-  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-2",
+  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-3",
   "prd0_closed": true,
   "prd0_closed_at": "2026-07-08T13:19:32.478770+00:00",
   "prd0_sequence": [
@@ -407,8 +407,8 @@
   "runtime_restore_1_runtime_stack_db_lineage_readiness_authority_recorded": true,
   "runtime_restore_1_runtime_stack_db_lineage_readiness_evidence_recorded": true,
   "runtime_restore_2_disposable_stack_schema_lineage_authority_recorded": true,
-  "runtime_restore_2_disposable_stack_schema_lineage_evidence_recorded": false,
+  "runtime_restore_2_disposable_stack_schema_lineage_evidence_recorded": true,
   "runtime_restore_handoff_authorised": true,
-  "status": "prd11_runtime_restore_2_authority_recorded",
+  "status": "prd11_runtime_restore_2_evidence_recorded",
   "stream_id": "PRD-PRODUCTION-READINESS"
 }
