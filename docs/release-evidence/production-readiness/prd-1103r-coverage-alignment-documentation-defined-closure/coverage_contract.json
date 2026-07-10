@@ -1,0 +1,108 @@
+{
+  "class_minimums_met": true,
+  "coverage_class_ids": [
+    "advisory",
+    "governance",
+    "product",
+    "runtime"
+  ],
+  "coverage_commands": [
+    {
+      "command": "PYTHONPATH=. pytest -m product -q --no-cov",
+      "coverage_class": "product",
+      "purpose": "Product behaviour coverage for services, routes, DB, auth, POPIA, billing and learner journeys.",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "PYTHONPATH=. pytest -m runtime -q --no-cov",
+      "coverage_class": "runtime",
+      "purpose": "Runtime coverage for Postgres, Redis, migrations, schema, /ready, worker and frontend proxy.",
+      "release_blocking": true,
+      "requires_live_stack": true
+    },
+    {
+      "command": "PYTHONPATH=. pytest -m governance -q --no-cov",
+      "coverage_class": "governance",
+      "purpose": "Governance/evidence/documentation sync and freshness coverage.",
+      "release_blocking": false,
+      "requires_live_stack": false
+    },
+    {
+      "command": "make coverage-contract-check && make openapi-check && make route-inventory-check && make test-coverage COVERAGE_THRESHOLD=70",
+      "coverage_class": "advisory",
+      "purpose": "Advisory/static coverage for drift, dependency/security, quality and numeric coverage thresholds.",
+      "release_blocking": true,
+      "requires_live_stack": false
+    }
+  ],
+  "domain_classes": [
+    "advisory",
+    "governance",
+    "product",
+    "runtime"
+  ],
+  "domain_contracts_valid": true,
+  "domain_counts": {
+    "advisory": 7,
+    "governance": 5,
+    "product": 8,
+    "runtime": 6
+  },
+  "governance_sync": {
+    "coverage_contract_age_days": 0,
+    "fresh": true,
+    "freshness_max_age_days": 21,
+    "prd11_register_age_days": 0,
+    "prd11_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE",
+    "production_register_age_days": 0,
+    "production_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE",
+    "release_boundaries_locked": true,
+    "script_taxonomy_age_days": 0,
+    "state_agrees": true,
+    "test_taxonomy_age_days": 0,
+    "valid": true
+  },
+  "missing_classes": [],
+  "missing_domain_classes": [],
+  "next_after_evidence": "PRD-11.0R.RUNTIME-RESTORE",
+  "no_presence_only_release_policy": true,
+  "prd_id": "PRD-11.3R",
+  "required_classes": [
+    "product",
+    "runtime",
+    "governance",
+    "advisory"
+  ],
+  "schema_version": "prd11.3r/documentation-defined-coverage/v1",
+  "taxonomy_classes_match": true,
+  "threshold_alignment": {
+    "branch_coverage_required": true,
+    "ci_coverage_thresholds": [
+      70
+    ],
+    "coverage_source_paths": [
+      "app"
+    ],
+    "coveragerc_branch_enabled": true,
+    "makefile_coverage_threshold": 70,
+    "minimum_line_coverage_percent": 70,
+    "pytest_coverage_has_app_source": true,
+    "pytest_coverage_markers": [
+      "advisory",
+      "e2e",
+      "governance",
+      "integration",
+      "llm",
+      "performance",
+      "product",
+      "runtime",
+      "slow",
+      "smoke",
+      "unit"
+    ],
+    "test_coverage_target_swallows_failures": false,
+    "valid": true
+  },
+  "valid": true
+}
