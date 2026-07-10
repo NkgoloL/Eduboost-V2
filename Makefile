@@ -3458,3 +3458,16 @@ prd1100-1104-production-release-deployment-preflight-foundation-check:
 .PHONY: prd1100-1104-production-release-deployment-preflight-foundation-capture
 prd1100-1104-production-release-deployment-preflight-foundation-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1100_1104_production_release_deployment_preflight_foundation_evidence.py --claim-prd1100-1104-production-release-deployment-preflight-foundation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+# PRD-11.0R true-state runtime baseline restoration and evidence hardening
+.PHONY: prd1100r-true-state-runtime-baseline-restoration-check
+prd1100r-true-state-runtime-baseline-restoration-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd1100r_true_state_runtime_baseline_restoration.py --authority-only --json
+
+.PHONY: prd1100r-true-state-runtime-baseline-restoration-capture
+prd1100r-true-state-runtime-baseline-restoration-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1100r_true_state_runtime_baseline_restoration_evidence.py --claim-prd1100r-true-state-runtime-baseline-restoration --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+.PHONY: prd1100r-true-state-runtime-baseline-collect
+prd1100r-true-state-runtime-baseline-collect:
+	PYTHONPATH=. python3 scripts/production_readiness/collect_prd1100r_true_state_runtime_baseline.py --json

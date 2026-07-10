@@ -30,7 +30,7 @@ FALSE_BOUNDARIES = [
     "billing_launch_authorised",
     "live_payment_processing_authorised",
 ]
-ALLOWED_NEXT = {"PRD-11.0-11.4", "PRD-11.5-11.9"}
+ALLOWED_NEXT = {"PRD-11.0R", "PRD-11.0R.RUNTIME-RESTORE", "PRD-11.0-11.4", "PRD-11.5-11.9"}
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -50,6 +50,17 @@ def _previous_prd10_valid(root: Path) -> bool:
     except Exception:
         return False
 
+
+
+def _runtime_baseline_evidence_unblocked(root: Path) -> bool:
+    prod = _load_json(root / PROD_REGISTER.relative_to(ROOT))
+    current_truth = prod.get("current_truth", {}) if isinstance(prod.get("current_truth"), dict) else {}
+    return all([
+        current_truth.get("prd11_0r_true_state_runtime_baseline_evidence_recorded") is True,
+        current_truth.get("prd11_0r_runtime_baseline_green") is True,
+        current_truth.get("controlled_beta_activation_operational_hold") is False,
+        current_truth.get("production_release_evidence_blocked_until_runtime_baseline_green") is False,
+    ])
 
 def _preflight_helper_valid(root: Path) -> bool:
     try:
@@ -125,8 +136,10 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         prod_boundaries.get("public_beta_authorised") is False,
     ])
     evidence_recorded = record.get("production_release_preflight_evidence_recorded") is True
+    runtime_baseline_evidence_unblocked = _runtime_baseline_evidence_unblocked(root)
     valid = all([
         authority_valid,
+        runtime_baseline_evidence_unblocked,
         evidence_recorded,
         record.get("next_authorised_item") == "PRD-11.5-11.9",
         register.get("next_authorised_item") == "PRD-11.5-11.9",
@@ -142,6 +155,7 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         "production_release_preflight_valid": preflight_valid,
         "prd11_production_release_preflight_foundation_recorded": record.get("prd11_production_release_preflight_foundation_recorded") is True,
         "production_release_preflight_evidence_recorded": evidence_recorded,
+        "runtime_baseline_evidence_unblocked": _runtime_baseline_evidence_unblocked(root),
         "release_gate_definition_recorded": record.get("release_gate_definition_recorded") is True,
         "release_candidate_artifact_gate_recorded": record.get("release_candidate_artifact_gate_recorded") is True,
         "deployment_environment_preflight_recorded": record.get("deployment_environment_preflight_recorded") is True,
