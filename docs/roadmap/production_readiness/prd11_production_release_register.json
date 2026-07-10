@@ -1,27 +1,29 @@
 {
+  "authority_boundaries": {
+    "billing_launch_authorised": false,
+    "deployment_authorised": false,
+    "live_payment_processing_authorised": false,
+    "production_release_authorised": false,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_tag_authorised": false
+  },
   "billing_launch_authorised": false,
-  "controlled_beta_activation_operational_hold": true,
   "controlled_beta_live_traffic_authorised": true,
   "deployment_authorised": false,
-  "last_recorded_at": "2026-07-10T16:36:51.754106+00:00",
-  "last_recorded_item": "PRD-11.0R",
+  "last_recorded_at": "2026-07-10T00:00:00+00:00",
+  "last_recorded_item": "PRD-11.1R",
   "live_learner_traffic_authorised": true,
-  "live_learner_traffic_operationally_safe": false,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE",
+  "next_authorised_item": "PRD-11.1R",
+  "prd112r_handoff_authorised": false,
   "prd11_final_reconciliation_recorded": false,
   "prd11_production_release_preflight_foundation_recorded": true,
   "prd11_sequence": [
     {
       "authorised": true,
-      "prd_id": "PRD-11.0R",
-      "status": "recorded_operational_hold",
-      "title": "True-state runtime baseline restoration and evidence hardening"
-    },
-    {
-      "authorised": true,
       "prd_id": "PRD-11.0-11.4",
-      "status": "blocked_until_runtime_baseline_green",
+      "status": "authority_recorded",
       "title": "Production release/deployment preflight foundation"
     },
     {
@@ -29,20 +31,29 @@
       "prd_id": "PRD-11.5-11.9",
       "status": "pending",
       "title": "Production release final evidence and deployment authorisation decision"
+    },
+    {
+      "authorised": true,
+      "prd_id": "PRD-11.1R",
+      "status": "authorised",
+      "title": "Test Suite Taxonomy and Behavioural Gate Overhaul"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-11.2R",
+      "status": "blocked_pending_prd11_1r",
+      "title": "Script Taxonomy and Functional Overhaul"
     }
   ],
   "prd11_sequence_complete": false,
+  "prd11_test_suite_taxonomy_authority_recorded": true,
+  "prd11_test_suite_taxonomy_evidence_recorded": false,
   "prd12_implementation_authorised": false,
   "prd_id": "PRD-11",
   "production_release_authorised": false,
-  "production_release_evidence_blocked_until_runtime_baseline_green": true,
   "production_release_preflight_evidence_recorded": false,
   "public_beta_authorised": false,
   "public_beta_live_traffic_authorised": false,
   "release_tag_authorised": false,
-  "runtime_baseline_green": false,
-  "runtime_baseline_status": "red_no_go_operational_hold_active",
-  "status": "prd11_true_state_runtime_baseline_operational_hold_recorded",
-  "true_state_runtime_baseline_evidence_recorded": true,
-  "true_state_runtime_baseline_restoration_authority_recorded": true
+  "status": "prd11_started_production_release_preflight_foundation"
 }

@@ -3459,15 +3459,28 @@ prd1100-1104-production-release-deployment-preflight-foundation-check:
 prd1100-1104-production-release-deployment-preflight-foundation-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1100_1104_production_release_deployment_preflight_foundation_evidence.py --claim-prd1100-1104-production-release-deployment-preflight-foundation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
 
-# PRD-11.0R true-state runtime baseline restoration and evidence hardening
-.PHONY: prd1100r-true-state-runtime-baseline-restoration-check
-prd1100r-true-state-runtime-baseline-restoration-check:
-	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd1100r_true_state_runtime_baseline_restoration.py --authority-only --json
+# PRD-11.1R test-suite taxonomy and behavioural gate overhaul
+.PHONY: test-product test-runtime test-governance test-advisory test-suite-taxonomy-check
 
-.PHONY: prd1100r-true-state-runtime-baseline-restoration-capture
-prd1100r-true-state-runtime-baseline-restoration-capture:
-	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1100r_true_state_runtime_baseline_restoration_evidence.py --claim-prd1100r-true-state-runtime-baseline-restoration --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+test-product:
+	PYTHONPATH=. python3 scripts/test_suites/run_test_suite_class.py product --dry-run --json
 
-.PHONY: prd1100r-true-state-runtime-baseline-collect
-prd1100r-true-state-runtime-baseline-collect:
-	PYTHONPATH=. python3 scripts/production_readiness/collect_prd1100r_true_state_runtime_baseline.py --json
+test-runtime:
+	PYTHONPATH=. python3 scripts/test_suites/run_test_suite_class.py runtime --dry-run --json
+
+test-governance:
+	PYTHONPATH=. python3 scripts/test_suites/run_test_suite_class.py governance --dry-run --json
+
+test-advisory:
+	PYTHONPATH=. python3 scripts/test_suites/run_test_suite_class.py advisory --dry-run --json
+
+test-suite-taxonomy-check:
+	PYTHONPATH=. python3 scripts/test_suites/verify_test_suite_taxonomy.py --json
+
+.PHONY: prd1101r-test-suite-taxonomy-behavioural-gate-overhaul-check
+prd1101r-test-suite-taxonomy-behavioural-gate-overhaul-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd1101r_test_suite_taxonomy_behavioral_gate_overhaul.py --authority-only --json
+
+.PHONY: prd1101r-test-suite-taxonomy-behavioural-gate-overhaul-capture
+prd1101r-test-suite-taxonomy-behavioural-gate-overhaul-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1101r_test_suite_taxonomy_behavioral_gate_overhaul_evidence.py --claim-prd1101r-test-suite-taxonomy-behavioral-gate-overhaul --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json

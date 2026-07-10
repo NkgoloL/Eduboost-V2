@@ -2,7 +2,6 @@
   "authority_boundaries": {
     "authority_switch_executed": true,
     "billing_launch_authorised": false,
-    "controlled_beta_activation_operational_hold": true,
     "deployment_authorised": false,
     "live_learner_traffic_authorised": true,
     "live_payment_processing_authorised": false,
@@ -27,9 +26,7 @@
     "runtime_kg_implementation_claimed": true
   },
   "current_truth": {
-    "controlled_beta_activation_operational_hold": true,
     "kg_closure_required": true,
-    "live_learner_traffic_operationally_safe": false,
     "prd0_closed": true,
     "prd0_sequence_registered": true,
     "prd10_closed": true,
@@ -44,10 +41,7 @@
     "prd10_pyjwt_migration_completed": true,
     "prd10_sequence_complete": true,
     "prd10_started": true,
-    "prd11_0r_runtime_baseline_green": false,
-    "prd11_0r_true_state_runtime_baseline_evidence_recorded": true,
-    "prd11_0r_true_state_runtime_baseline_restoration_recorded": true,
-    "prd11_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE",
+    "prd11_next_authorised_item": "PRD-11.0-11.4",
     "prd11_production_release_preflight_evidence_recorded": false,
     "prd11_production_release_preflight_foundation_recorded": true,
     "prd11_started": true,
@@ -124,7 +118,6 @@
     "prd9_final_reconciliation_recorded": true,
     "prd9_handoff_authorised": true,
     "prd9_next_authorised_item": "PRD-10",
-    "production_release_evidence_blocked_until_runtime_baseline_green": true,
     "rr_closure_required": true,
     "stream_id": "PRD-PRODUCTION-READINESS"
   },
@@ -136,9 +129,9 @@
     "production_release_blocked_until_prd11": true,
     "public_beta_blocked_until_prd10": true
   },
-  "last_recorded_at": "2026-07-10T16:36:51.754106+00:00",
-  "last_recorded_item": "PRD-11.0R",
-  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE",
+  "last_recorded_at": "2026-07-10T00:00:00+00:00",
+  "last_recorded_item": "PRD-11.1R",
+  "next_authorised_item": "PRD-11.1R",
   "prd0_closed": true,
   "prd0_closed_at": "2026-07-08T13:19:32.478770+00:00",
   "prd0_sequence": [
@@ -199,6 +192,9 @@
     }
   ],
   "prd0_sequence_registered": true,
+  "prd112r_handoff_authorised": false,
+  "prd11_test_suite_taxonomy_authority_recorded": true,
+  "prd11_test_suite_taxonomy_evidence_recorded": false,
   "prd1_authority_reconciliation_recorded": true,
   "prd1_blocked_until_prd0_closure": false,
   "prd1_ci_convergence_evidence_recorded": true,
@@ -388,6 +384,6 @@
   "rr_closure_required": true,
   "runtime_kg_authority_switch_authorised": true,
   "runtime_kg_implementation_claimed": true,
-  "status": "prd11_true_state_runtime_baseline_operational_hold_recorded",
+  "status": "prd11_started_production_release_preflight_foundation",
   "stream_id": "PRD-PRODUCTION-READINESS"
 }
