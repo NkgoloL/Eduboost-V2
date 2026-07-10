@@ -11,38 +11,25 @@ import os
 import subprocess
 from pathlib import Path
 from typing import Any
+from urllib.error import URLError
+from urllib.request import urlopen
+
+from app.core.runtime_readiness import (
+    REQUIRED_RUNTIME_COLUMNS,
+    REQUIRED_RUNTIME_TABLES,
+    classify_database_lineage,
+    load_alembic_revision_graph,
+    validate_runtime_schema_contract,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
-REPOSITORY_HEAD = "20260708_2100_prd2_runtime_kg"
-REQUIRED_TABLES = (
-    "guardians",
-    "learner_profiles",
-    "assessments",
-    "assessment_attempts",
-    "diagnostic_items",
-    "diagnostic_sessions",
-    "study_plans",
-    "lessons",
-    "runtime_kg_nodes",
-    "runtime_kg_edges",
-    "runtime_kg_events",
-    "ai_usage_events",
-    "tutor_sessions",
-    "audit_events",
-)
-REQUIRED_COLUMNS = {
-    "diagnostic_items": (
-        "irt_quality_state",
-        "irt_discrimination",
-        "irt_difficulty",
-        "irt_guessing",
-    )
-}
+EXPECTED_COMPOSE_SERVICES = ("postgres", "redis", "api", "worker", "frontend")
 STATIC_REQUIRED_FILES = (
     "alembic/versions/20260708_2100_prd2_runtime_kg_persistence.py",
     "scripts/generate_openapi.py",
     "scripts/generate_route_inventory.py",
     "app/modules/production_release/true_state_baseline.py",
+    "app/core/runtime_readiness.py",
 )
 
 
@@ -75,61 +62,64 @@ def _static_files(root: Path) -> dict[str, Any]:
 
 
 def _alembic_graph(root: Path) -> dict[str, Any]:
-    versions = root / "alembic" / "versions"
-    if not versions.exists():
-        return {"status": "fail", "reason": "missing alembic/versions"}
-    present = sorted(path.stem for path in versions.glob("*.py"))
-    matching = [name for name in present if name.startswith(REPOSITORY_HEAD)]
+    graph = load_alembic_revision_graph(root / "alembic" / "versions")
     return {
-        "status": "pass" if matching else "fail",
-        "expected_head_prefix": REPOSITORY_HEAD,
-        "matching_revisions": matching,
-        "revision_count": len(present),
+        "status": "pass" if graph.valid else "fail",
+        "expected_single_head": graph.single_head,
+        "repository_heads": list(graph.heads),
+        "revision_count": len(graph.revisions),
+        "version_file_count": len(graph.version_files),
+    }
+
+
+def _compose_service_contract(root: Path) -> dict[str, Any]:
+    compose = root / "docker-compose.yml"
+    if not compose.exists():
+        return {"status": "fail", "reason": "missing docker-compose.yml", "expected_services": list(EXPECTED_COMPOSE_SERVICES)}
+    text_value = compose.read_text()
+    missing = [service for service in EXPECTED_COMPOSE_SERVICES if f"  {service}:" not in text_value]
+    return {
+        "status": "pass" if not missing else "fail",
+        "expected_services": list(EXPECTED_COMPOSE_SERVICES),
+        "missing_services": missing,
     }
 
 
 def _database_probe(root: Path) -> dict[str, Any]:
     url = os.getenv("DATABASE_URL") or os.getenv("SQLALCHEMY_DATABASE_URI")
+    graph = load_alembic_revision_graph(root / "alembic" / "versions")
     if not url:
         return {
             "status": "blocked",
             "reason": "DATABASE_URL not set; live database lineage and schema not proven",
-            "expected_head": REPOSITORY_HEAD,
-            "required_tables": list(REQUIRED_TABLES),
-            "required_columns": REQUIRED_COLUMNS,
+            "expected_head": graph.single_head,
+            "required_tables": list(REQUIRED_RUNTIME_TABLES),
+            "required_columns": {table: list(columns) for table, columns in REQUIRED_RUNTIME_COLUMNS.items()},
         }
     try:
-        from sqlalchemy import create_engine, inspect, text
+        from sqlalchemy import create_engine, text
     except Exception as exc:  # pragma: no cover - environment dependent
         return {"status": "blocked", "reason": f"sqlalchemy unavailable: {exc}"}
     try:  # pragma: no cover - requires live db
         engine = create_engine(url, pool_pre_ping=True)
         with engine.connect() as conn:
-            revisions = [row[0] for row in conn.execute(text("select version_num from alembic_version"))]
-            inspector = inspect(conn)
-            tables = set(inspector.get_table_names(schema="public"))
-            missing_tables = [table for table in REQUIRED_TABLES if table not in tables]
-            missing_columns: dict[str, list[str]] = {}
-            for table, columns in REQUIRED_COLUMNS.items():
-                if table not in tables:
-                    missing_columns[table] = list(columns)
-                    continue
-                present = {col["name"] for col in inspector.get_columns(table, schema="public")}
-                missing = [col for col in columns if col not in present]
-                if missing:
-                    missing_columns[table] = missing
-        exact_head = revisions == [REPOSITORY_HEAD]
-        clean = exact_head and not missing_tables and not missing_columns
+            revisions = [row[0] for row in conn.execute(text("select version_num from alembic_version order by version_num"))]
+            table_rows = conn.execute(text("select table_name from information_schema.tables where table_schema='public' and table_type='BASE TABLE'"))
+            tables = {row[0] for row in table_rows}
+            column_rows = conn.execute(text("select table_name, column_name from information_schema.columns where table_schema='public'"))
+            columns: dict[str, set[str]] = {}
+            for table, column in column_rows:
+                columns.setdefault(str(table), set()).add(str(column))
+        lineage = classify_database_lineage(revisions, graph)
+        schema = validate_runtime_schema_contract(tables, columns)
+        clean = lineage.get("status") == "ok" and schema.get("status") == "ok"
         return {
             "status": "pass" if clean else "fail",
-            "expected_head": REPOSITORY_HEAD,
-            "live_revisions": revisions,
-            "exact_repository_head": exact_head,
-            "missing_tables": missing_tables,
-            "missing_columns": missing_columns,
+            "lineage": lineage,
+            "schema_contract": schema,
         }
     except Exception as exc:  # pragma: no cover - requires live db
-        return {"status": "fail", "reason": str(exc), "expected_head": REPOSITORY_HEAD}
+        return {"status": "fail", "reason": str(exc), "expected_head": graph.single_head}
 
 
 def _redis_probe() -> dict[str, Any]:
@@ -146,6 +136,22 @@ def _redis_probe() -> dict[str, Any]:
         return {"status": "pass" if pong else "fail", "ping": bool(pong)}
     except Exception as exc:
         return {"status": "fail", "reason": str(exc)}
+
+
+def _ready_http_probe() -> dict[str, Any]:
+    base_url = os.getenv("API_BASE_URL") or os.getenv("EDUBOOST_API_BASE_URL")
+    if not base_url:
+        return {"status": "blocked", "reason": "API_BASE_URL not set; HTTP /ready not proven"}
+    url = base_url.rstrip("/") + "/ready"
+    try:  # pragma: no cover - requires live api
+        with urlopen(url, timeout=5) as response:
+            body = response.read(4096).decode("utf-8", errors="replace")
+            status = response.getcode()
+        return {"status": "pass" if status == 200 else "fail", "http_status": status, "url": url, "body_head": body[:1000]}
+    except URLError as exc:  # pragma: no cover - requires live api
+        return {"status": "fail", "url": url, "reason": str(exc)}
+    except Exception as exc:  # pragma: no cover - requires live api
+        return {"status": "fail", "url": url, "reason": f"{type(exc).__name__}: {exc}"}
 
 
 def _generated_contracts(root: Path, run_checks: bool) -> dict[str, Any]:
@@ -166,9 +172,11 @@ def _command_gate(name: str, command: list[str] | None, root: Path, run_checks: 
 def collect_baseline(root: Path = ROOT, *, run_expensive_checks: bool = False) -> dict[str, Any]:
     checks = {
         "static_required_files": _static_files(root),
+        "docker_compose_service_contract": _compose_service_contract(root),
         "alembic_repository_graph": _alembic_graph(root),
         "database_lineage_and_schema": _database_probe(root),
         "redis_readiness_dependency": _redis_probe(),
+        "ready_http_probe": _ready_http_probe(),
         "generated_contracts": _generated_contracts(root, run_expensive_checks),
         "backend_unit_gate": _command_gate("backend_unit_gate", ["python3", "-m", "pytest", "tests/unit", "-q", "--no-cov"], root, run_expensive_checks, timeout=300),
         "integration_gate": _command_gate("integration_gate", ["python3", "-m", "pytest", "tests/integration", "-q", "--no-cov"], root, run_expensive_checks, timeout=300),

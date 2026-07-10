@@ -3,19 +3,32 @@
     "billing_launch_authorised": false,
     "deployment_authorised": false,
     "live_payment_processing_authorised": false,
+    "prd12_implementation_authorised": false,
     "production_release_authorised": false,
     "public_beta_authorised": false,
     "public_beta_live_traffic_authorised": false,
     "release_tag_authorised": false
   },
   "billing_launch_authorised": false,
+  "controlled_beta_activation_operational_hold": true,
   "controlled_beta_live_traffic_authorised": true,
+  "current_truth": {
+    "controlled_beta_activation_operational_hold": true,
+    "live_learner_traffic_operationally_safe": false,
+    "prd11_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-1",
+    "prd11_runtime_restore_1_authority_recorded": true,
+    "prd11_runtime_restore_1_evidence_recorded": false,
+    "production_release_evidence_blocked_until_runtime_baseline_green": true,
+    "runtime_baseline_green": false,
+    "runtime_restore_1_runtime_stack_db_lineage_readiness_evidence_recorded": false
+  },
   "deployment_authorised": false,
-  "last_recorded_at": "2026-07-10T19:18:14.026198+00:00",
-  "last_recorded_item": "PRD-11.3R",
+  "last_recorded_at": "2026-07-10T19:45:26.409036+00:00",
+  "last_recorded_item": "PRD-11.0R.RUNTIME-RESTORE-1",
   "live_learner_traffic_authorised": true,
+  "live_learner_traffic_operationally_safe": false,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE",
+  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-1",
   "prd112r_handoff_authorised": true,
   "prd113r_handoff_authorised": true,
   "prd11_coverage_alignment_authority_recorded": true,
@@ -60,6 +73,12 @@
       "prd_id": "PRD-11.0R.RUNTIME-RESTORE",
       "status": "authorised_next",
       "title": "Runtime baseline restoration execution"
+    },
+    {
+      "authorised": true,
+      "prd_id": "PRD-11.0R.RUNTIME-RESTORE-1",
+      "status": "authority_recorded",
+      "title": "Runtime stack, DB lineage, and readiness restoration"
     }
   ],
   "prd11_sequence_complete": false,
@@ -68,10 +87,15 @@
   "prd12_implementation_authorised": false,
   "prd_id": "PRD-11",
   "production_release_authorised": false,
+  "production_release_evidence_blocked_until_runtime_baseline_green": true,
   "production_release_preflight_evidence_recorded": false,
   "public_beta_authorised": false,
   "public_beta_live_traffic_authorised": false,
   "release_tag_authorised": false,
+  "runtime_baseline_green": false,
+  "runtime_baseline_status": "red_no_go_operational_hold_active",
+  "runtime_restore_1_runtime_stack_db_lineage_readiness_authority_recorded": true,
+  "runtime_restore_1_runtime_stack_db_lineage_readiness_evidence_recorded": false,
   "runtime_restore_handoff_authorised": true,
-  "status": "prd11_coverage_alignment_evidence_recorded"
+  "status": "prd11_runtime_restore_1_authority_recorded"
 }

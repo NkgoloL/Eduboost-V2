@@ -50,7 +50,7 @@ FALSE_BOUNDARIES = [
     "live_payment_processing_authorised",
     "prd12_implementation_authorised",
 ]
-ALLOWED_NEXT = {"PRD-11.0R", "PRD-11.0R.RUNTIME-RESTORE", "PRD-11.0-11.4"}
+ALLOWED_NEXT = {"PRD-11.0R", "PRD-11.0R.RUNTIME-RESTORE", "PRD-11.0R.RUNTIME-RESTORE-1", "PRD-11.0R.RUNTIME-RESTORE-2", "PRD-11.0-11.4"}
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -147,8 +147,9 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         authority_valid,
         baseline_evidence_valid,
         record.get("next_authorised_item") == "PRD-11.0R.RUNTIME-RESTORE",
-        register.get("next_authorised_item") == "PRD-11.0R.RUNTIME-RESTORE",
-        prod.get("next_authorised_item") == "PRD-11.0R.RUNTIME-RESTORE",
+        register.get("next_authorised_item") in ALLOWED_NEXT,
+        prod.get("next_authorised_item") in ALLOWED_NEXT,
+        register.get("next_authorised_item") == prod.get("next_authorised_item"),
     ])
     return {
         "valid": valid,

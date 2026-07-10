@@ -27,7 +27,7 @@ COVERAGERC = ROOT / ".coveragerc"
 CI_CD = ROOT / ".github/workflows/ci-cd.yml"
 REQUIRED_CLASSES = ("product", "runtime", "governance", "advisory")
 FRESHNESS_MAX_AGE_DAYS = 21
-ALLOWED_NEXT = {"PRD-11.3R", "PRD-11.0R.RUNTIME-RESTORE"}
+ALLOWED_NEXT = {"PRD-11.3R", "PRD-11.0R.RUNTIME-RESTORE", "PRD-11.0R.RUNTIME-RESTORE-1", "PRD-11.0R.RUNTIME-RESTORE-2"}
 
 
 @dataclass(frozen=True)

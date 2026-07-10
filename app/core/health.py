@@ -9,6 +9,10 @@ from sqlalchemy import text
 from app.core.config import settings
 from app.core.database import AsyncSessionLocal
 from app.core.redis import get_redis
+from app.core.runtime_readiness import (
+    check_database_lineage_exact,
+    check_runtime_schema_contract,
+)
 
 
 def _google_model_name() -> str:
@@ -112,36 +116,21 @@ async def check_required_secrets() -> dict[str, Any]:
 
 
 async def check_migrations() -> dict[str, Any]:
-    """Verify that alembic migrations have been applied (best-effort).
+    """Verify that live Alembic lineage exactly matches the repository head.
 
-    Queries ``alembic_version`` and returns the active head revision.
-    The sentinel value ``'base'`` is excluded because it is not a real
-    migration revision — it is a placeholder that Alembic inserts when a
-    database is stamped without running migrations.  When multiple rows
-    exist (split-head state) a warning is included in the response so
-    operators can investigate, but the check does not fail provided at
-    least one real revision is present.
+    Unknown revisions, split-head rows, missing ``alembic_version`` rows, and
+    databases that are merely "some migration after base" are readiness
+    failures.  This makes ``/ready`` reflect the true-state report's database
+    lineage finding instead of treating any non-base revision as healthy.
     """
-    try:
-        async with AsyncSessionLocal() as session:
-            result = await session.execute(
-                text(
-                    "SELECT version_num FROM alembic_version"
-                    " WHERE version_num != 'base'"
-                    " ORDER BY version_num DESC"
-                    " LIMIT 10"
-                )
-            )
-            rows = result.fetchall()
-            if not rows:
-                return {"status": "error", "detail": "alembic_version table empty or contains only sentinel 'base' row"}
-            revisions = [r[0] for r in rows]
-            result_dict: dict[str, Any] = {"status": "ok", "revision": revisions[0]}
-            if len(revisions) > 1:
-                result_dict["warning"] = f"Multiple revisions in alembic_version: {revisions}"
-            return result_dict
-    except Exception as exc:  # noqa: BLE001
-        return {"status": "error", "detail": _safe_error(exc)}
+
+    return await check_database_lineage_exact(AsyncSessionLocal)
+
+
+async def check_schema_contract() -> dict[str, Any]:
+    """Verify critical runtime tables and columns exist in the live database."""
+
+    return await check_runtime_schema_contract(AsyncSessionLocal)
 
 
 async def check_audit_repository() -> dict[str, Any]:
@@ -194,6 +183,7 @@ async def gather_deep_health() -> dict[str, Any]:
         "postgres": await check_postgres(),
         "redis": await check_redis(),
         "migrations": await check_migrations(),
+        "schema_contract": await check_schema_contract(),
         "audit_repository": await check_audit_repository(),
     }
 

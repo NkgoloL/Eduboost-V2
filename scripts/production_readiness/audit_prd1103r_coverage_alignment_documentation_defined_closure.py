@@ -34,7 +34,7 @@ FALSE_BOUNDARIES = [
     "billing_launch_authorised",
     "live_payment_processing_authorised",
 ]
-ALLOWED_NEXT = {"PRD-11.3R", "PRD-11.0R.RUNTIME-RESTORE"}
+ALLOWED_NEXT = {"PRD-11.3R", "PRD-11.0R.RUNTIME-RESTORE", "PRD-11.0R.RUNTIME-RESTORE-1", "PRD-11.0R.RUNTIME-RESTORE-2"}
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -75,8 +75,9 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         evidence_recorded,
         record.get("runtime_restore_handoff_authorised") is True,
         record.get("next_authorised_item") == "PRD-11.0R.RUNTIME-RESTORE",
-        register_next == "PRD-11.0R.RUNTIME-RESTORE",
-        prod_next == "PRD-11.0R.RUNTIME-RESTORE",
+        register_next in ALLOWED_NEXT,
+        prod_next in ALLOWED_NEXT,
+        register_next == prod_next,
         (root / SUMMARY.relative_to(ROOT)).exists(),
     ])
     return {
