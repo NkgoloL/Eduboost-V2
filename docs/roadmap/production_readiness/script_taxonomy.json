@@ -1,0 +1,125 @@
+{
+  "freshness_max_age_days": 21,
+  "functional_roles": [
+    {
+      "description": "Read-only inspection that reports current state and must not mutate the repository or evidence records.",
+      "id": "audit",
+      "may_mutate": false,
+      "requires_machine_readable_output": true
+    },
+    {
+      "description": "Read-only pass/fail validation. It may call audit helpers but must not create the proof it validates.",
+      "id": "verify",
+      "may_mutate": false,
+      "requires_machine_readable_output": true
+    },
+    {
+      "description": "Evidence writer. It must consume authority/runtime/test outputs and write evidence; it must not convert unknown or red runtime state into green proof.",
+      "id": "capture",
+      "may_mutate": true,
+      "requires_machine_readable_output": true
+    },
+    {
+      "description": "Runtime observation collector. It may query local/disposable/staging systems but should not mutate application data unless explicitly declared.",
+      "id": "collect",
+      "may_mutate": false,
+      "requires_machine_readable_output": true
+    },
+    {
+      "description": "Artifact generator. It must expose check/read-only mode or be clearly marked mutating.",
+      "id": "generate",
+      "may_mutate": true,
+      "requires_machine_readable_output": true
+    },
+    {
+      "description": "Intentional repository mutation such as applying bundles, migrations, maintenance or code-generation outputs. It is never standalone release proof.",
+      "id": "apply",
+      "may_mutate": true,
+      "requires_machine_readable_output": false
+    },
+    {
+      "description": "Cleanup, repair, inventory or operational maintenance scripts. Must be explicitly marked release-blocking or advisory.",
+      "id": "maintenance",
+      "may_mutate": true,
+      "requires_machine_readable_output": true
+    }
+  ],
+  "last_reviewed_at": "2026-07-10T18:30:00+00:00",
+  "prd_id": "PRD-11.2R",
+  "purpose": "Classify scripts by release-evidence domain and function so scripts are operational tools with explicit mutability, evidence, and runtime contracts rather than unstructured helper sprawl.",
+  "release_gate_policy": "Script output is supporting evidence only. Product/runtime/security release claims require scripts in the product/runtime/advisory classes to execute behaviour or checks and emit current command results; governance/capture scripts cannot generate their own proof from constants.",
+  "required_command_groups": [
+    {
+      "command": "PYTHONPATH=. python3 scripts/script_suites/run_script_class.py product --dry-run --json",
+      "purpose": "List product-behaviour scripts and their declared functional roles.",
+      "script_class": "product"
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/script_suites/run_script_class.py runtime --dry-run --json",
+      "purpose": "List runtime/stack scripts and their readiness-probe roles.",
+      "script_class": "runtime"
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/script_suites/run_script_class.py governance --dry-run --json",
+      "purpose": "List governance/evidence scripts and docs/register sync duties.",
+      "script_class": "governance"
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/script_suites/run_script_class.py advisory --dry-run --json",
+      "purpose": "List static/advisory scripts for lint/type/security/drift/coverage/dependency checks.",
+      "script_class": "advisory"
+    }
+  ],
+  "schema_version": "prd11.2r/script-taxonomy/v1",
+  "script_classes": [
+    {
+      "description": "Scripts that exercise or support product behaviour: services, routes, DB-backed auth, POPIA, billing, learner journeys, diagnostics, lessons, study plans and parent portal.",
+      "id": "product",
+      "release_blocking": true,
+      "required_capabilities": [
+        "execute real product behaviour where possible",
+        "declare data mutation risk",
+        "declare required fixtures or live stack requirements",
+        "produce machine-readable result",
+        "avoid substituting governance evidence for product proof"
+      ]
+    },
+    {
+      "description": "Scripts that prove stack and operational health: Postgres, Redis, Alembic migrations, schema, /ready, worker, frontend proxy, readiness and runtime probes.",
+      "id": "runtime",
+      "release_blocking": true,
+      "required_capabilities": [
+        "fail closed on missing critical dependency",
+        "compare live migration revision to known repository head",
+        "probe required tables and columns",
+        "emit component-level status",
+        "distinguish local/disposable/staging target"
+      ]
+    },
+    {
+      "description": "Scripts that manage or verify PRD records, registers, evidence files, authority transitions, documentation synchronisation and freshness.",
+      "id": "governance",
+      "release_blocking": false,
+      "required_capabilities": [
+        "verify register agreement",
+        "verify documentation freshness within 21 days",
+        "preserve release authority boundaries",
+        "avoid claiming product/runtime readiness without external command outputs",
+        "record evidence provenance"
+      ]
+    },
+    {
+      "description": "Scripts that run or verify static/advisory gates: Ruff, mypy, Bandit, coverage, dependency audit, OpenAPI drift, route inventory and generated artifacts.",
+      "id": "advisory",
+      "release_blocking": true,
+      "required_capabilities": [
+        "run read-only check mode where possible",
+        "differentiate advisory and blocking findings",
+        "emit machine-readable output",
+        "avoid rewriting reports during check-only execution",
+        "record accepted-risk disposition when not green"
+      ]
+    }
+  ],
+  "status": "authority_recorded"
+}
