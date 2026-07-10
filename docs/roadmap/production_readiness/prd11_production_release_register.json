@@ -11,12 +11,12 @@
   "billing_launch_authorised": false,
   "controlled_beta_live_traffic_authorised": true,
   "deployment_authorised": false,
-  "last_recorded_at": "2026-07-10T00:00:00+00:00",
+  "last_recorded_at": "2026-07-10T18:15:00.348841+00:00",
   "last_recorded_item": "PRD-11.1R",
   "live_learner_traffic_authorised": true,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-11.1R",
-  "prd112r_handoff_authorised": false,
+  "next_authorised_item": "PRD-11.2R",
+  "prd112r_handoff_authorised": true,
   "prd11_final_reconciliation_recorded": false,
   "prd11_production_release_preflight_foundation_recorded": true,
   "prd11_sequence": [
@@ -35,19 +35,19 @@
     {
       "authorised": true,
       "prd_id": "PRD-11.1R",
-      "status": "authorised",
+      "status": "recorded",
       "title": "Test Suite Taxonomy and Behavioural Gate Overhaul"
     },
     {
-      "authorised": false,
+      "authorised": true,
       "prd_id": "PRD-11.2R",
-      "status": "blocked_pending_prd11_1r",
+      "status": "authorised_next",
       "title": "Script Taxonomy and Functional Overhaul"
     }
   ],
   "prd11_sequence_complete": false,
   "prd11_test_suite_taxonomy_authority_recorded": true,
-  "prd11_test_suite_taxonomy_evidence_recorded": false,
+  "prd11_test_suite_taxonomy_evidence_recorded": true,
   "prd12_implementation_authorised": false,
   "prd_id": "PRD-11",
   "production_release_authorised": false,
@@ -55,5 +55,5 @@
   "public_beta_authorised": false,
   "public_beta_live_traffic_authorised": false,
   "release_tag_authorised": false,
-  "status": "prd11_started_production_release_preflight_foundation"
+  "status": "prd11_test_suite_taxonomy_evidence_recorded"
 }
