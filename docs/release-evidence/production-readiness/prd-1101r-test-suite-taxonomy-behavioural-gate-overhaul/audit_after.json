@@ -1,57 +1,22 @@
 {
   "advisory_test_class_recorded": true,
+  "authority_valid": true,
   "behavioural_gate_policy_recorded": true,
-  "billing_launch_authorised": false,
-  "captured_at": "2026-07-10T18:15:00.348841+00:00",
-  "deployment_authorised": false,
+  "false_boundaries_locked": true,
   "governance_sync_freshness_gate_recorded": true,
+  "governance_sync_valid": true,
   "governance_test_class_recorded": true,
-  "live_payment_processing_authorised": false,
+  "missing_paths": [],
   "next_authorised_item": "PRD-11.2R",
   "prd112r_handoff_authorised": true,
   "prd_id": "PRD-11.1R",
-  "prd_owner": "Nkgolo Lebelo",
   "presence_only_tests_deprecated": true,
   "product_test_class_recorded": true,
-  "production_release_authorised": false,
-  "public_beta_authorised": false,
-  "public_beta_live_traffic_authorised": false,
-  "release_tag_authorised": false,
+  "production_register_next_authorised_item": "PRD-11.2R",
+  "register_next_authorised_item": "PRD-11.2R",
   "runtime_test_class_recorded": true,
   "separate_test_classes_recorded": true,
-  "status": "test_suite_taxonomy_evidence_recorded",
-  "suite_commands": [
-    {
-      "command": "PYTHONPATH=. pytest -m product -q --no-cov",
-      "purpose": "Run product behaviour tests for services, routes, auth, POPIA, billing and learner journeys.",
-      "release_blocking": true,
-      "requires_live_stack": false,
-      "suite_class": "product"
-    },
-    {
-      "command": "PYTHONPATH=. pytest -m runtime -q --no-cov",
-      "purpose": "Run stack/runtime tests for Postgres, Redis, migrations, schema, /ready, worker and proxy.",
-      "release_blocking": true,
-      "requires_live_stack": true,
-      "suite_class": "runtime"
-    },
-    {
-      "command": "PYTHONPATH=. pytest -m governance -q --no-cov",
-      "purpose": "Run PRD/evidence/register/documentation sync tests.",
-      "release_blocking": false,
-      "requires_live_stack": false,
-      "suite_class": "governance"
-    },
-    {
-      "command": "PYTHONPATH=. pytest -m advisory -q --no-cov",
-      "purpose": "Run static and advisory gates: drift, security, lint, type, coverage and dependency checks.",
-      "release_blocking": true,
-      "requires_live_stack": false,
-      "suite_class": "advisory"
-    }
-  ],
-  "target_branch": "master",
-  "taxonomy_snapshot": {
+  "taxonomy": {
     "behavioural_rule_recorded": true,
     "class_capabilities_valid": true,
     "class_ids": [
@@ -64,9 +29,9 @@
       "fresh": true,
       "freshness_max_age_days": 21,
       "prd11_register_age_days": 0,
-      "prd11_register_next_authorised_item": "PRD-11.1R",
+      "prd11_register_next_authorised_item": "PRD-11.2R",
       "production_register_age_days": 0,
-      "production_register_next_authorised_item": "PRD-11.1R",
+      "production_register_next_authorised_item": "PRD-11.2R",
       "release_boundaries_locked": true,
       "state_agrees": true,
       "taxonomy_age_days": 0,
@@ -127,6 +92,8 @@
     ],
     "valid": true
   },
+  "taxonomy_valid": true,
   "test_suite_taxonomy_authority_recorded": true,
-  "test_suite_taxonomy_evidence_recorded": true
+  "test_suite_taxonomy_evidence_recorded": true,
+  "valid": false
 }

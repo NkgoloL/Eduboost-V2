@@ -1,0 +1,76 @@
+{
+  "behavioural_rule_recorded": true,
+  "class_capabilities_valid": true,
+  "class_ids": [
+    "advisory",
+    "governance",
+    "product",
+    "runtime"
+  ],
+  "governance_sync": {
+    "fresh": true,
+    "freshness_max_age_days": 21,
+    "prd11_register_age_days": 0,
+    "prd11_register_next_authorised_item": "PRD-11.2R",
+    "production_register_age_days": 0,
+    "production_register_next_authorised_item": "PRD-11.2R",
+    "release_boundaries_locked": true,
+    "state_agrees": true,
+    "taxonomy_age_days": 0,
+    "valid": true
+  },
+  "missing_classes": [],
+  "missing_markers": [],
+  "prd_id": "PRD-11.1R",
+  "pytest_markers": [
+    "advisory",
+    "e2e",
+    "governance",
+    "integration",
+    "llm",
+    "performance",
+    "product",
+    "runtime",
+    "slow",
+    "smoke",
+    "unit"
+  ],
+  "required_classes": [
+    "product",
+    "runtime",
+    "governance",
+    "advisory"
+  ],
+  "schema_version": "prd11.1r/test-suite-taxonomy/v1",
+  "suite_commands": [
+    {
+      "command": "PYTHONPATH=. pytest -m product -q --no-cov",
+      "purpose": "Run product behaviour tests for services, routes, auth, POPIA, billing and learner journeys.",
+      "release_blocking": true,
+      "requires_live_stack": false,
+      "suite_class": "product"
+    },
+    {
+      "command": "PYTHONPATH=. pytest -m runtime -q --no-cov",
+      "purpose": "Run stack/runtime tests for Postgres, Redis, migrations, schema, /ready, worker and proxy.",
+      "release_blocking": true,
+      "requires_live_stack": true,
+      "suite_class": "runtime"
+    },
+    {
+      "command": "PYTHONPATH=. pytest -m governance -q --no-cov",
+      "purpose": "Run PRD/evidence/register/documentation sync tests.",
+      "release_blocking": false,
+      "requires_live_stack": false,
+      "suite_class": "governance"
+    },
+    {
+      "command": "PYTHONPATH=. pytest -m advisory -q --no-cov",
+      "purpose": "Run static and advisory gates: drift, security, lint, type, coverage and dependency checks.",
+      "release_blocking": true,
+      "requires_live_stack": false,
+      "suite_class": "advisory"
+    }
+  ],
+  "valid": true
+}

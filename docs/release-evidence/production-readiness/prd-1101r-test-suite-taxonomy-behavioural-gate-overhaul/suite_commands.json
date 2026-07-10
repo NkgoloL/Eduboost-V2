@@ -1,0 +1,32 @@
+{
+  "commands": [
+    {
+      "command": "PYTHONPATH=. pytest -m product -q --no-cov",
+      "purpose": "Run product behaviour tests for services, routes, auth, POPIA, billing and learner journeys.",
+      "release_blocking": true,
+      "requires_live_stack": false,
+      "suite_class": "product"
+    },
+    {
+      "command": "PYTHONPATH=. pytest -m runtime -q --no-cov",
+      "purpose": "Run stack/runtime tests for Postgres, Redis, migrations, schema, /ready, worker and proxy.",
+      "release_blocking": true,
+      "requires_live_stack": true,
+      "suite_class": "runtime"
+    },
+    {
+      "command": "PYTHONPATH=. pytest -m governance -q --no-cov",
+      "purpose": "Run PRD/evidence/register/documentation sync tests.",
+      "release_blocking": false,
+      "requires_live_stack": false,
+      "suite_class": "governance"
+    },
+    {
+      "command": "PYTHONPATH=. pytest -m advisory -q --no-cov",
+      "purpose": "Run static and advisory gates: drift, security, lint, type, coverage and dependency checks.",
+      "release_blocking": true,
+      "requires_live_stack": false,
+      "suite_class": "advisory"
+    }
+  ]
+}
