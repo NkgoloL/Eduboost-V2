@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-27T02:19:45Z",
+  "generated_at": "2026-07-10T10:48:49Z",
   "status": "blocked_unpinned_dependencies",
   "blockers": [
     "requirements.txt:4: arq>=0.25.0",
@@ -558,7 +558,7 @@
       "file": "requirements/base.txt",
       "line": 85,
       "classification": "pinned",
-      "text": "cryptography==42.0.8"
+      "text": "cryptography==49.0.0"
     },
     {
       "file": "requirements/base.txt",
@@ -1128,7 +1128,7 @@
       "file": "requirements/base.txt",
       "line": 180,
       "classification": "pinned",
-      "text": "msal==1.36.0"
+      "text": "msal==1.37.0"
     },
     {
       "file": "requirements/base.txt",
@@ -2427,6 +2427,36 @@
       "text": "mcp[cli]>=1.0.0"
     },
     {
+      "file": "requirements/base.txt",
+      "line": 397,
+      "classification": "ignored",
+      "text": ""
+    },
+    {
+      "file": "requirements/base.txt",
+      "line": 398,
+      "classification": "ignored",
+      "text": "# PRD-9.5-9.9 audit remediation: required for ingestion/e2e test collection"
+    },
+    {
+      "file": "requirements/base.txt",
+      "line": 399,
+      "classification": "pinned",
+      "text": "aiohttp==3.13.5"
+    },
+    {
+      "file": "requirements/base.txt",
+      "line": 400,
+      "classification": "ignored",
+      "text": "# PRD-9.5-9.9 audit remediation: required for ingestion/e2e test collection"
+    },
+    {
+      "file": "requirements/base.txt",
+      "line": 401,
+      "classification": "pinned",
+      "text": "beautifulsoup4==4.12.3"
+    },
+    {
       "file": "requirements/dev.txt",
       "line": 1,
       "classification": "ignored",
@@ -3018,7 +3048,7 @@
       "file": "requirements/dev.txt",
       "line": 99,
       "classification": "pinned",
-      "text": "cryptography==42.0.8"
+      "text": "cryptography==49.0.0"
     },
     {
       "file": "requirements/dev.txt",
@@ -3756,7 +3786,7 @@
       "file": "requirements/dev.txt",
       "line": 222,
       "classification": "pinned",
-      "text": "msal==1.36.0"
+      "text": "msal==1.37.0"
     },
     {
       "file": "requirements/dev.txt",
@@ -5539,6 +5569,36 @@
       "line": 519,
       "classification": "range_or_unpinned",
       "text": "mcp[cli]>=1.0.0"
+    },
+    {
+      "file": "requirements/dev.txt",
+      "line": 520,
+      "classification": "ignored",
+      "text": ""
+    },
+    {
+      "file": "requirements/dev.txt",
+      "line": 521,
+      "classification": "ignored",
+      "text": "# PRD-9.5-9.9 audit remediation: required for ingestion/e2e test collection"
+    },
+    {
+      "file": "requirements/dev.txt",
+      "line": 522,
+      "classification": "pinned",
+      "text": "aiohttp==3.13.5"
+    },
+    {
+      "file": "requirements/dev.txt",
+      "line": 523,
+      "classification": "ignored",
+      "text": "# PRD-9.5-9.9 audit remediation: required for ingestion/e2e test collection"
+    },
+    {
+      "file": "requirements/dev.txt",
+      "line": 524,
+      "classification": "pinned",
+      "text": "beautifulsoup4==4.12.3"
     }
   ]
 }
