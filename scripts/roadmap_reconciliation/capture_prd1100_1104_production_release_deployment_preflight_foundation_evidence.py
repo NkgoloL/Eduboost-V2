@@ -9,6 +9,7 @@ from typing import Any
 
 from app.modules.production_release import build_default_production_release_preflight_report
 from scripts.production_readiness.audit_prd1100_1104_production_release_deployment_preflight_foundation import ROOT, audit
+from scripts.production_readiness.audit_prd1100r_true_state_runtime_baseline_restoration import audit as audit_prd1100r
 
 RECORD = ROOT / "docs/roadmap/production_readiness/prd_1100_1104_production_release_deployment_preflight_foundation_record.json"
 REGISTER = ROOT / "docs/roadmap/production_readiness/prd11_production_release_register.json"
@@ -36,6 +37,14 @@ def main() -> int:
     args = parser.parse_args()
     if not args.claim_prd1100_1104_production_release_deployment_preflight_foundation:
         raise SystemExit("missing --claim-prd1100-1104-production-release-deployment-preflight-foundation")
+    baseline_gate = audit_prd1100r(ROOT)
+    if not (baseline_gate.get("true_state_runtime_baseline_evidence_recorded") and baseline_gate.get("runtime_baseline_green")):
+        raise SystemExit(json.dumps({
+            "valid": False,
+            "reason": "prd11_0r_runtime_baseline_not_green",
+            "message": "PRD-11.0-11.4 evidence capture is blocked until PRD-11.0R records a green runtime baseline.",
+            "prd1100r": baseline_gate,
+        }, indent=2, sort_keys=True))
     before = audit(ROOT)
     if not before["authority_valid"]:
         raise SystemExit(json.dumps(before, indent=2, sort_keys=True))

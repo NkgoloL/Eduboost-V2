@@ -1,18 +1,26 @@
 {
   "billing_launch_authorised": false,
+  "controlled_beta_activation_operational_hold": true,
   "controlled_beta_live_traffic_authorised": true,
   "deployment_authorised": false,
-  "last_recorded_item": "PRD-11.0-11.4",
+  "last_recorded_item": "PRD-11.0R",
   "live_learner_traffic_authorised": true,
+  "live_learner_traffic_operationally_safe": false,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-11.0-11.4",
+  "next_authorised_item": "PRD-11.0R",
   "prd11_final_reconciliation_recorded": false,
   "prd11_production_release_preflight_foundation_recorded": true,
   "prd11_sequence": [
     {
       "authorised": true,
-      "prd_id": "PRD-11.0-11.4",
+      "prd_id": "PRD-11.0R",
       "status": "authority_recorded",
+      "title": "True-state runtime baseline restoration and evidence hardening"
+    },
+    {
+      "authorised": true,
+      "prd_id": "PRD-11.0-11.4",
+      "status": "blocked_until_runtime_baseline_green",
       "title": "Production release/deployment preflight foundation"
     },
     {
@@ -26,9 +34,14 @@
   "prd12_implementation_authorised": false,
   "prd_id": "PRD-11",
   "production_release_authorised": false,
+  "production_release_evidence_blocked_until_runtime_baseline_green": true,
   "production_release_preflight_evidence_recorded": false,
   "public_beta_authorised": false,
   "public_beta_live_traffic_authorised": false,
   "release_tag_authorised": false,
-  "status": "prd11_started_production_release_preflight_foundation"
+  "runtime_baseline_green": false,
+  "runtime_baseline_status": "red_no_go_operational_hold_active",
+  "status": "prd11_true_state_runtime_baseline_restoration_authorised",
+  "true_state_runtime_baseline_evidence_recorded": false,
+  "true_state_runtime_baseline_restoration_authority_recorded": true
 }
