@@ -1,6 +1,7 @@
 {
   "baseline_green_required_before_prd1100_evidence_capture": true,
   "billing_launch_authorised": false,
+  "captured_at": "2026-07-10T16:36:51.754106+00:00",
   "concerns_addressed": [
     "runtime_readiness_probe_503",
     "database_lineage_unknown_revision",
@@ -22,10 +23,61 @@
   "live_learner_traffic_authorised": true,
   "live_learner_traffic_operationally_safe": false,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-11.0R",
+  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE",
   "operational_hold_recorded": true,
+  "operational_hold_snapshot": {
+    "accepted": true,
+    "baseline_green_required_before_prd1100_evidence_capture": true,
+    "billing_launch_authorised": false,
+    "blockers": [
+      "runtime_baseline_not_yet_green",
+      "ready_probe_not_proven_200",
+      "database_lineage_not_proven_at_repository_head",
+      "schema_drift_not_proven_clean",
+      "backend_product_gates_not_proven_green",
+      "frontend_quality_gates_not_proven_green",
+      "dependency_security_audits_not_proven_clean_or_accepted",
+      "external_approvals_not_recorded"
+    ],
+    "concern_categories": [
+      "operational_hold",
+      "runtime_readiness_probe",
+      "database_lineage_and_schema",
+      "disposable_stack_restore",
+      "popia_runtime_wiring",
+      "product_test_gates",
+      "frontend_quality_gates",
+      "openapi_route_inventory_drift",
+      "dependency_security_audits",
+      "secret_baseline_triage",
+      "coverage_baseline",
+      "billing_runtime_contracts",
+      "backup_restore_rollback_incident_drills",
+      "external_security_privacy_content_operations_gates"
+    ],
+    "controlled_beta_activation_operational_hold": true,
+    "controlled_beta_live_traffic_authorised": true,
+    "deployment_authorised": false,
+    "live_learner_traffic_authorised": true,
+    "live_learner_traffic_operationally_safe": false,
+    "live_payment_processing_authorised": false,
+    "next_action": "restore_disposable_stack_and_collect_green_runtime_baseline",
+    "prd12_implementation_authorised": false,
+    "prd_id": "PRD-11.0R",
+    "production_release_authorised": false,
+    "production_release_evidence_blocked_until_runtime_baseline_green": true,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_tag_authorised": false,
+    "report_scope": "true_state_runtime_baseline_restoration_and_evidence_hardening",
+    "runtime_baseline_green": false,
+    "runtime_baseline_status": "red_no_go_operational_hold_active",
+    "runtime_evidence_mode": "actual_probe_evidence_required_not_constant_status",
+    "true_state_report_reconciled": true
+  },
   "prd12_implementation_authorised": false,
   "prd_id": "PRD-11.0R",
+  "prd_owner": "Nkgolo Lebelo",
   "production_release_authorised": false,
   "production_release_evidence_blocked_until_runtime_baseline_green": true,
   "public_beta_authorised": false,
@@ -34,8 +86,110 @@
   "runtime_baseline_green": false,
   "runtime_baseline_status": "red_no_go_operational_hold_active",
   "runtime_evidence_mode": "actual_probe_evidence_required_not_constant_status",
-  "status": "prd11_true_state_runtime_baseline_restoration_authority_recorded",
+  "status": "prd11_true_state_runtime_baseline_restoration_evidence_recorded",
+  "target_branch": "master",
   "true_state_report_reconciled": true,
-  "true_state_runtime_baseline_evidence_recorded": false,
-  "true_state_runtime_baseline_restoration_authority_recorded": true
+  "true_state_runtime_baseline_evidence_recorded": true,
+  "true_state_runtime_baseline_restoration_authority_recorded": true,
+  "true_state_runtime_baseline_snapshot": {
+    "blockers": [
+      "database_lineage_and_schema",
+      "redis_readiness_dependency",
+      "generated_contracts",
+      "backend_unit_gate",
+      "integration_gate",
+      "dependency_audit_gate",
+      "frontend_quality_gate",
+      "secret_baseline_gate"
+    ],
+    "checks": {
+      "alembic_repository_graph": {
+        "expected_head_prefix": "20260708_2100_prd2_runtime_kg",
+        "matching_revisions": [
+          "20260708_2100_prd2_runtime_kg_persistence"
+        ],
+        "revision_count": 46,
+        "status": "pass"
+      },
+      "backend_unit_gate": {
+        "reason": "backend_unit_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "database_lineage_and_schema": {
+        "expected_head": "20260708_2100_prd2_runtime_kg",
+        "reason": "DATABASE_URL not set; live database lineage and schema not proven",
+        "required_columns": {
+          "diagnostic_items": [
+            "irt_quality_state",
+            "irt_discrimination",
+            "irt_difficulty",
+            "irt_guessing"
+          ]
+        },
+        "required_tables": [
+          "guardians",
+          "learner_profiles",
+          "assessments",
+          "assessment_attempts",
+          "diagnostic_items",
+          "diagnostic_sessions",
+          "study_plans",
+          "lessons",
+          "runtime_kg_nodes",
+          "runtime_kg_edges",
+          "runtime_kg_events",
+          "ai_usage_events",
+          "tutor_sessions",
+          "audit_events"
+        ],
+        "status": "blocked"
+      },
+      "dependency_audit_gate": {
+        "reason": "dependency_audit_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "frontend_quality_gate": {
+        "reason": "frontend_quality_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "generated_contracts": {
+        "reason": "generated contract checks not executed in collector default mode",
+        "status": "blocked"
+      },
+      "integration_gate": {
+        "reason": "integration_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "redis_readiness_dependency": {
+        "reason": "REDIS_URL not set; /ready Redis dependency not proven",
+        "status": "blocked"
+      },
+      "secret_baseline_gate": {
+        "reason": "secret_baseline_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "static_required_files": {
+        "missing": [],
+        "status": "pass"
+      }
+    },
+    "collector_version": "prd11.0r/true-state-runtime-baseline/v1",
+    "hard_gate_names": [
+      "static_required_files",
+      "alembic_repository_graph",
+      "database_lineage_and_schema",
+      "redis_readiness_dependency",
+      "generated_contracts",
+      "backend_unit_gate",
+      "integration_gate",
+      "dependency_audit_gate",
+      "frontend_quality_gate",
+      "secret_baseline_gate"
+    ],
+    "operational_hold_required": true,
+    "overall_status": "red_no_go_operational_hold_active",
+    "prd_id": "PRD-11.0R",
+    "release_evidence_mode": "actual_probe_evidence_required_not_constant_status",
+    "runtime_baseline_green": false
+  }
 }
