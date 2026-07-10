@@ -39,6 +39,8 @@ FALSE_BOUNDARIES = [
     "live_payment_processing_authorised",
 ]
 ALLOWED_NEXT = {"PRD-9.5-9.9", "PRD-10"}
+
+# `.agents` is a workspace mount in this environment, not tracked repo content.
 HYGIENE_REMOVED = [
     "coverage.xml",
     "backups-local-test",
@@ -46,7 +48,6 @@ HYGIENE_REMOVED = [
     "logs",
     "docs/generated",
     "temp",
-    ".agents",
     "data/siyavula_grade7_pw.html",
 ]
 
