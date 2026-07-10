@@ -1,14 +1,18 @@
 {
   "billing_launch_authorised": false,
+  "commercial_final_evidence_recorded": true,
   "commercial_launch_evidence_recorded": true,
   "commercial_launch_foundation_recorded": true,
+  "commercial_runtime_blockers_remediated": true,
   "deployment_authorised": false,
-  "last_recorded_at": "2026-07-09T21:37:57.638323+00:00",
-  "last_recorded_item": "PRD-9.0-9.4",
+  "last_recorded_at": "2026-07-10T09:25:26.235801+00:00",
+  "last_recorded_item": "PRD-9.5-9.9",
   "live_learner_traffic_authorised": false,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-9.5-9.9",
+  "next_authorised_item": "PRD-10",
+  "prd10_handoff_authorised": true,
   "prd10_implementation_authorised": false,
+  "prd9_final_reconciliation_recorded": true,
   "prd9_sequence": [
     {
       "authorised": true,
@@ -19,13 +23,14 @@
     {
       "authorised": true,
       "prd_id": "PRD-9.5-9.9",
-      "status": "authorised",
+      "status": "recorded",
       "title": "Commercial final evidence, billing readiness reconciliation, and handoff to PRD-10"
     }
   ],
+  "prd9_sequence_complete": true,
   "prd_id": "PRD-9",
   "production_release_authorised": false,
   "public_beta_authorised": false,
   "release_tag_authorised": false,
-  "status": "prd9_billing_commercial_launch_foundation_recorded"
+  "status": "prd9_closed_handoff_to_prd10_authorised"
 }
