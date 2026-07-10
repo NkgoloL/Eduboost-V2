@@ -11,7 +11,7 @@ from datetime import datetime, timedelta, timezone
 from unittest.mock import patch
 
 import pytest
-from jose import jwt
+from app.core.jwt_compat import jwt
 
 from app.core.token_config import (
     ALGORITHM,
@@ -69,7 +69,7 @@ def test_token_with_previous_kid_verifies_when_previous_key_configured():
 
 def test_secret_for_unknown_kid_raises_jwt_error():
     """_secret_for_kid must raise JWTError for an unrecognised kid."""
-    from jose import JWTError
+    from app.core.jwt_compat import JWTError
     from app.core.token_config import _secret_for_kid
 
     with pytest.raises(JWTError, match="Unknown signing key id"):
@@ -79,7 +79,7 @@ def test_secret_for_unknown_kid_raises_jwt_error():
 @pytest.mark.asyncio
 async def test_verify_access_token_rejects_unknown_kid():
     """verify_access_token must reject a token with an unknown kid header."""
-    from jose import JWTError
+    from app.core.jwt_compat import JWTError
     from app.core.token_config import verify_access_token
 
     unknown_key = "some-other-key-not-in-keystore-xyz"

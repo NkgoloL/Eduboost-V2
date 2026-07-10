@@ -11,7 +11,7 @@ from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-from jose import JWTError
+from app.core.jwt_compat import JWTError
 from sqlalchemy.exc import IntegrityError
 from slowapi.errors import RateLimitExceeded
 

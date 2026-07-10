@@ -1,0 +1,15 @@
+{
+  "app_import_boundary": "app.core.jwt_compat",
+  "audience_validation_policy": "low_level_decode_disables_default_audience_rejection; AuthContext validates optional issuer/audience claims separately",
+  "legacy_library_removed_from_requirements": "python-jose",
+  "live_learner_traffic_authorised": false,
+  "prd_id": "PRD-10.0-10.4",
+  "regression_controls": [
+    "keyring encode/decode roundtrip",
+    "kid based previous key decode",
+    "tampered token rejection",
+    "requirements no longer declare python-jose"
+  ],
+  "runtime_library": "PyJWT",
+  "status": "python_jose_removed_pyjwt_active"
+}

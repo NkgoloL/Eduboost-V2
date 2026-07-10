@@ -38,7 +38,7 @@ FALSE_BOUNDARIES = [
     "billing_launch_authorised",
     "live_payment_processing_authorised",
 ]
-ALLOWED_NEXT = {"PRD-9.5-9.9", "PRD-10"}
+ALLOWED_NEXT = {"PRD-9.5-9.9", "PRD-10", "PRD-10.0-10.4", "PRD-10.5-10.9"}
 
 # `.agents` is a workspace mount in this environment, not tracked repo content.
 HYGIENE_REMOVED = [
@@ -132,7 +132,7 @@ def _dependency_remediation_valid(root: Path) -> bool:
         "beautifulsoup4==4.12.3" in dev_txt,
         "cryptography==49.0.0" in base_in,
         security_plan.get("cryptography_bumped_in_requirements") is True,
-        security_plan.get("python_jose_to_pyjwt_required_before") == "PRD-10 live learner traffic authorisation",
+        (security_plan.get("python_jose_to_pyjwt_required_before") == "PRD-10 live learner traffic authorisation" or security_plan.get("python_jose_to_pyjwt_completed_in") == "PRD-10.0-10.4"),
         security_plan.get("secrets_baseline_reduction_required_before") == "PRD-10 live learner traffic authorisation",
         security_plan.get("gitleaks_allowlist_tightened") is True,
         "^docs/release-evidence/.*" in (root / ".gitleaks.toml").read_text(),
@@ -209,8 +209,8 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         sequence_complete,
         handoff_authorised,
         record.get("next_authorised_item") == "PRD-10",
-        register.get("next_authorised_item") == "PRD-10",
-        prod_register.get("next_authorised_item") == "PRD-10",
+        register.get("next_authorised_item") in {"PRD-10", "PRD-10.0-10.4", "PRD-10.5-10.9"},
+        prod_register.get("next_authorised_item") in {"PRD-10", "PRD-10.0-10.4", "PRD-10.5-10.9"},
     ])
 
     return {

@@ -13,7 +13,7 @@ from typing import Any
 from pydantic import BaseModel, Field
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from jose import JWTError
+from app.core.jwt_compat import JWTError
 
 from app.core.config import settings
 from app.core.security import decode_token, get_current_user as get_current_user_payload

@@ -3,7 +3,7 @@ from __future__ import annotations
 import importlib
 
 import pytest
-from jose import jwt
+from app.core.jwt_compat import jwt
 
 
 RESET_ENV_KEYS = [
