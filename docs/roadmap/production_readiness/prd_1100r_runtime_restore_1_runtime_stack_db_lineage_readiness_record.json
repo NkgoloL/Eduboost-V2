@@ -3,6 +3,7 @@
   "authority_recorded_at": "2026-07-10T00:00:00+02:00",
   "billing_launch_authorised": false,
   "capture_mode": "records_current_runtime_status_without_greenwashing",
+  "captured_at": "2026-07-10T20:02:26.540928+00:00",
   "controlled_beta_activation_operational_hold": true,
   "controls_installed": [
     "exact_alembic_repository_head_discovery",
@@ -19,9 +20,10 @@
   "exact_migration_head_readiness_required": true,
   "live_learner_traffic_operationally_safe": false,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-1",
+  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-2",
   "prd12_implementation_authorised": false,
   "prd_id": "PRD-11.0R.RUNTIME-RESTORE-1",
+  "prd_owner": "Nkgolo Lebelo",
   "previous_prd113r_handoff_required": true,
   "production_release_authorised": false,
   "production_release_evidence_blocked_until_runtime_baseline_green": true,
@@ -30,16 +32,394 @@
   "ready_http_probe_required": true,
   "release_tag_authorised": false,
   "required_schema_contract_required": true,
+  "runtime_baseline_green": false,
   "runtime_baseline_green_required_for_prd1100_1104_evidence": true,
+  "runtime_baseline_snapshot": {
+    "blockers": [
+      "database_lineage_and_schema",
+      "redis_readiness_dependency",
+      "ready_http_probe",
+      "generated_contracts",
+      "backend_unit_gate",
+      "integration_gate",
+      "dependency_audit_gate",
+      "frontend_quality_gate",
+      "secret_baseline_gate"
+    ],
+    "checks": {
+      "alembic_repository_graph": {
+        "expected_single_head": "20260708_2100_prd2_runtime_kg",
+        "repository_heads": [
+          "20260708_2100_prd2_runtime_kg"
+        ],
+        "revision_count": 46,
+        "status": "pass",
+        "version_file_count": 46
+      },
+      "backend_unit_gate": {
+        "reason": "backend_unit_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "database_lineage_and_schema": {
+        "expected_head": "20260708_2100_prd2_runtime_kg",
+        "reason": "DATABASE_URL not set; live database lineage and schema not proven",
+        "required_columns": {
+          "diagnostic_items": [
+            "irt_quality_state",
+            "irt_discrimination",
+            "irt_difficulty",
+            "irt_guessing"
+          ],
+          "runtime_kg_edges": [
+            "source_node_id",
+            "target_node_id",
+            "edge_type",
+            "weight"
+          ],
+          "runtime_kg_nodes": [
+            "stable_code",
+            "node_type",
+            "label",
+            "mastery_weight"
+          ]
+        },
+        "required_tables": [
+          "guardians",
+          "learner_profiles",
+          "assessments",
+          "assessment_attempts",
+          "diagnostic_items",
+          "diagnostic_sessions",
+          "study_plans",
+          "lessons",
+          "runtime_kg_graph_loads",
+          "runtime_kg_nodes",
+          "runtime_kg_edges",
+          "runtime_kg_events",
+          "ai_usage_events",
+          "tutor_sessions",
+          "audit_events"
+        ],
+        "status": "blocked"
+      },
+      "dependency_audit_gate": {
+        "reason": "dependency_audit_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "docker_compose_service_contract": {
+        "expected_services": [
+          "postgres",
+          "redis",
+          "api",
+          "worker",
+          "frontend"
+        ],
+        "missing_services": [],
+        "status": "pass"
+      },
+      "frontend_quality_gate": {
+        "reason": "frontend_quality_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "generated_contracts": {
+        "reason": "generated contract checks not executed in collector default mode",
+        "status": "blocked"
+      },
+      "integration_gate": {
+        "reason": "integration_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "ready_http_probe": {
+        "reason": "API_BASE_URL not set; HTTP /ready not proven",
+        "status": "blocked"
+      },
+      "redis_readiness_dependency": {
+        "reason": "REDIS_URL not set; /ready Redis dependency not proven",
+        "status": "blocked"
+      },
+      "secret_baseline_gate": {
+        "reason": "secret_baseline_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "static_required_files": {
+        "missing": [],
+        "status": "pass"
+      }
+    },
+    "collector_version": "prd11.0r/true-state-runtime-baseline/v1",
+    "hard_gate_names": [
+      "static_required_files",
+      "docker_compose_service_contract",
+      "alembic_repository_graph",
+      "database_lineage_and_schema",
+      "redis_readiness_dependency",
+      "ready_http_probe",
+      "generated_contracts",
+      "backend_unit_gate",
+      "integration_gate",
+      "dependency_audit_gate",
+      "frontend_quality_gate",
+      "secret_baseline_gate"
+    ],
+    "operational_hold_required": true,
+    "overall_status": "red_no_go_operational_hold_active",
+    "prd_id": "PRD-11.0R",
+    "release_evidence_mode": "actual_probe_evidence_required_not_constant_status",
+    "runtime_baseline_green": false
+  },
+  "runtime_baseline_status": "red_no_go_operational_hold_active",
   "runtime_kg_tables_required": true,
   "runtime_restore_sequence_item": 1,
   "runtime_restore_sequence_title": "Runtime stack, DB lineage, and readiness restoration",
   "runtime_stack_contract_controls_installed": true,
+  "runtime_stack_contract_snapshot": {
+    "baseline_snapshot": {
+      "blockers": [
+        "database_lineage_and_schema",
+        "redis_readiness_dependency",
+        "ready_http_probe",
+        "generated_contracts",
+        "backend_unit_gate",
+        "integration_gate",
+        "dependency_audit_gate",
+        "frontend_quality_gate",
+        "secret_baseline_gate"
+      ],
+      "checks": {
+        "alembic_repository_graph": {
+          "expected_single_head": "20260708_2100_prd2_runtime_kg",
+          "repository_heads": [
+            "20260708_2100_prd2_runtime_kg"
+          ],
+          "revision_count": 46,
+          "status": "pass",
+          "version_file_count": 46
+        },
+        "backend_unit_gate": {
+          "reason": "backend_unit_gate command not executed in collector default mode",
+          "status": "blocked"
+        },
+        "database_lineage_and_schema": {
+          "expected_head": "20260708_2100_prd2_runtime_kg",
+          "reason": "DATABASE_URL not set; live database lineage and schema not proven",
+          "required_columns": {
+            "diagnostic_items": [
+              "irt_quality_state",
+              "irt_discrimination",
+              "irt_difficulty",
+              "irt_guessing"
+            ],
+            "runtime_kg_edges": [
+              "source_node_id",
+              "target_node_id",
+              "edge_type",
+              "weight"
+            ],
+            "runtime_kg_nodes": [
+              "stable_code",
+              "node_type",
+              "label",
+              "mastery_weight"
+            ]
+          },
+          "required_tables": [
+            "guardians",
+            "learner_profiles",
+            "assessments",
+            "assessment_attempts",
+            "diagnostic_items",
+            "diagnostic_sessions",
+            "study_plans",
+            "lessons",
+            "runtime_kg_graph_loads",
+            "runtime_kg_nodes",
+            "runtime_kg_edges",
+            "runtime_kg_events",
+            "ai_usage_events",
+            "tutor_sessions",
+            "audit_events"
+          ],
+          "status": "blocked"
+        },
+        "dependency_audit_gate": {
+          "reason": "dependency_audit_gate command not executed in collector default mode",
+          "status": "blocked"
+        },
+        "docker_compose_service_contract": {
+          "expected_services": [
+            "postgres",
+            "redis",
+            "api",
+            "worker",
+            "frontend"
+          ],
+          "missing_services": [],
+          "status": "pass"
+        },
+        "frontend_quality_gate": {
+          "reason": "frontend_quality_gate command not executed in collector default mode",
+          "status": "blocked"
+        },
+        "generated_contracts": {
+          "reason": "generated contract checks not executed in collector default mode",
+          "status": "blocked"
+        },
+        "integration_gate": {
+          "reason": "integration_gate command not executed in collector default mode",
+          "status": "blocked"
+        },
+        "ready_http_probe": {
+          "reason": "API_BASE_URL not set; HTTP /ready not proven",
+          "status": "blocked"
+        },
+        "redis_readiness_dependency": {
+          "reason": "REDIS_URL not set; /ready Redis dependency not proven",
+          "status": "blocked"
+        },
+        "secret_baseline_gate": {
+          "reason": "secret_baseline_gate command not executed in collector default mode",
+          "status": "blocked"
+        },
+        "static_required_files": {
+          "missing": [],
+          "status": "pass"
+        }
+      },
+      "collector_version": "prd11.0r/true-state-runtime-baseline/v1",
+      "hard_gate_names": [
+        "static_required_files",
+        "docker_compose_service_contract",
+        "alembic_repository_graph",
+        "database_lineage_and_schema",
+        "redis_readiness_dependency",
+        "ready_http_probe",
+        "generated_contracts",
+        "backend_unit_gate",
+        "integration_gate",
+        "dependency_audit_gate",
+        "frontend_quality_gate",
+        "secret_baseline_gate"
+      ],
+      "operational_hold_required": true,
+      "overall_status": "red_no_go_operational_hold_active",
+      "prd_id": "PRD-11.0R",
+      "release_evidence_mode": "actual_probe_evidence_required_not_constant_status",
+      "runtime_baseline_green": false
+    },
+    "checks": {
+      "alembic_single_head": {
+        "heads": [
+          "20260708_2100_prd2_runtime_kg"
+        ],
+        "revision_count": 46,
+        "valid": true
+      },
+      "baseline_collector_contract": {
+        "blockers": [
+          "database_lineage_and_schema",
+          "redis_readiness_dependency",
+          "ready_http_probe",
+          "generated_contracts",
+          "backend_unit_gate",
+          "integration_gate",
+          "dependency_audit_gate",
+          "frontend_quality_gate",
+          "secret_baseline_gate"
+        ],
+        "hard_gate_names": [
+          "static_required_files",
+          "docker_compose_service_contract",
+          "alembic_repository_graph",
+          "database_lineage_and_schema",
+          "redis_readiness_dependency",
+          "ready_http_probe",
+          "generated_contracts",
+          "backend_unit_gate",
+          "integration_gate",
+          "dependency_audit_gate",
+          "frontend_quality_gate",
+          "secret_baseline_gate"
+        ],
+        "runtime_baseline_green": false,
+        "valid": true
+      },
+      "compose_contract": {
+        "expected_services": [
+          "postgres",
+          "redis",
+          "api",
+          "worker",
+          "frontend"
+        ],
+        "missing_services": [],
+        "valid": true
+      },
+      "health_contract": {
+        "missing_tokens": [],
+        "valid": true
+      },
+      "orm_schema_contract": {
+        "missing_columns": {},
+        "missing_tables": [],
+        "required_columns": {
+          "diagnostic_items": [
+            "irt_quality_state",
+            "irt_discrimination",
+            "irt_difficulty",
+            "irt_guessing"
+          ],
+          "runtime_kg_edges": [
+            "source_node_id",
+            "target_node_id",
+            "edge_type",
+            "weight"
+          ],
+          "runtime_kg_nodes": [
+            "stable_code",
+            "node_type",
+            "label",
+            "mastery_weight"
+          ]
+        },
+        "required_tables": [
+          "guardians",
+          "learner_profiles",
+          "assessments",
+          "assessment_attempts",
+          "diagnostic_items",
+          "diagnostic_sessions",
+          "study_plans",
+          "lessons",
+          "runtime_kg_graph_loads",
+          "runtime_kg_nodes",
+          "runtime_kg_edges",
+          "runtime_kg_events",
+          "ai_usage_events",
+          "tutor_sessions",
+          "audit_events"
+        ],
+        "schema_contract_satisfied": true,
+        "status": "ok",
+        "valid": true
+      },
+      "py_compile": {
+        "returncode": 0,
+        "stderr_tail": "",
+        "stdout_tail": "",
+        "valid": true
+      }
+    },
+    "contract_valid": true,
+    "live_green_required": false,
+    "runtime_baseline_green": false,
+    "valid": true
+  },
   "runtime_stack_db_lineage_readiness_authority_recorded": true,
-  "runtime_stack_db_lineage_readiness_evidence_recorded": false,
+  "runtime_stack_db_lineage_readiness_evidence_recorded": true,
   "schema_version": "prd11.0r-runtime-restore-1/v1",
   "split_alembic_head_fails_readiness": true,
-  "status": "runtime_stack_db_lineage_readiness_authority_recorded",
+  "status": "runtime_stack_db_lineage_readiness_evidence_recorded",
+  "target_branch": "master",
   "title": "Runtime Stack, DB Lineage, and Readiness Restoration",
   "unknown_alembic_revision_fails_readiness": true
 }
