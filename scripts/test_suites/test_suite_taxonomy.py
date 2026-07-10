@@ -114,7 +114,7 @@ def evaluate_governance_sync(root: Path = ROOT, *, now: datetime | None = None) 
     prd11_age = _age_days(prd11.get("last_recorded_at"), now=now)
     taxonomy_age = _age_days(load_taxonomy(root / TAXONOMY_PATH.relative_to(ROOT)).get("last_reviewed_at"), now=now)
     fresh = all(age is not None and age <= FRESHNESS_MAX_AGE_DAYS for age in (prod_age, prd11_age, taxonomy_age))
-    state_agrees = prod_next == prd11_next and prod_next in {"PRD-11.1R", "PRD-11.2R"}
+    state_agrees = prod_next == prd11_next and prod_next in {"PRD-11.1R", "PRD-11.2R", "PRD-11.3R", "PRD-11.0R.RUNTIME-RESTORE"}
     boundaries = prod.get("authority_boundaries", {}) if isinstance(prod.get("authority_boundaries"), dict) else {}
     release_boundaries_locked = all(
         boundaries.get(key) is False

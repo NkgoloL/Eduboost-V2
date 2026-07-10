@@ -42,7 +42,7 @@ dev:
 	docker-compose up
 
 PYTEST ?= $(PYTHON) -m pytest
-COVERAGE_THRESHOLD ?= 67
+COVERAGE_THRESHOLD ?= 70
 PR_TEST_MARKERS := not governance and not slow and not llm and not e2e
 
 .PHONY: test test-fast test-integration test-coverage test-coverage-full test-governance
@@ -58,7 +58,7 @@ test-integration:
 test-coverage:
 	# Use coverage CLI to avoid pytest-cov sqlite context corruption on this runner
 	$(PYTHON) -m coverage run -m pytest -c pytest-coverage.ini tests/unit tests/integration \
-		-m "$(PR_TEST_MARKERS)" -q || true
+		-m "$(PR_TEST_MARKERS)" -q
 	$(PYTHON) -m coverage html -d coverage_html || true
 	$(PYTHON) -m coverage xml -o coverage.xml || true
 	$(PYTHON) -m coverage report --fail-under=$(COVERAGE_THRESHOLD)
@@ -3506,3 +3506,26 @@ prd1102r-script-taxonomy-functional-overhaul-check:
 .PHONY: prd1102r-script-taxonomy-functional-overhaul-capture
 prd1102r-script-taxonomy-functional-overhaul-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1102r_script_taxonomy_functional_overhaul_evidence.py --claim-prd1102r-script-taxonomy-functional-overhaul --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+
+# PRD-11.3R documentation-defined coverage closure
+.PHONY: coverage-contract-check coverage-suite-product coverage-suite-runtime coverage-suite-governance coverage-suite-advisory
+coverage-contract-check:
+	PYTHONPATH=. python3 scripts/coverage_suites/verify_coverage_contract.py --json
+
+coverage-suite-product:
+	PYTHONPATH=. python3 scripts/coverage_suites/run_coverage_domain.py product --dry-run --json
+coverage-suite-runtime:
+	PYTHONPATH=. python3 scripts/coverage_suites/run_coverage_domain.py runtime --dry-run --json
+coverage-suite-governance:
+	PYTHONPATH=. python3 scripts/coverage_suites/run_coverage_domain.py governance --dry-run --json
+coverage-suite-advisory:
+	PYTHONPATH=. python3 scripts/coverage_suites/run_coverage_domain.py advisory --dry-run --json
+
+.PHONY: prd1103r-coverage-alignment-documentation-defined-closure-check
+prd1103r-coverage-alignment-documentation-defined-closure-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd1103r_coverage_alignment_documentation_defined_closure.py --authority-only --json
+
+.PHONY: prd1103r-coverage-alignment-documentation-defined-closure-capture
+prd1103r-coverage-alignment-documentation-defined-closure-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1103r_coverage_alignment_documentation_defined_closure_evidence.py --claim-prd1103r-coverage-alignment-documentation-defined-closure --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json

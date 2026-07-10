@@ -1,0 +1,339 @@
+{
+  "coverage_classes": [
+    {
+      "description": "Real application behaviour coverage.",
+      "id": "product",
+      "minimum_domains": 8,
+      "release_blocking": true,
+      "requires_negative_tests": true
+    },
+    {
+      "description": "Stack health and runtime dependency coverage.",
+      "id": "runtime",
+      "minimum_domains": 6,
+      "release_blocking": true,
+      "requires_negative_tests": true
+    },
+    {
+      "description": "PRD/register/evidence/documentation agreement and freshness coverage.",
+      "id": "governance",
+      "minimum_domains": 5,
+      "release_blocking": false,
+      "requires_negative_tests": true
+    },
+    {
+      "description": "Static/security/drift/quality coverage.",
+      "id": "advisory",
+      "minimum_domains": 7,
+      "release_blocking": true,
+      "requires_negative_tests": true
+    }
+  ],
+  "coverage_domains": [
+    {
+      "capability": "JWT/session auth, guardian/learner authorization, token revocation and denial paths.",
+      "class": "product",
+      "id": "auth_authorization",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "auth route positive/negative tests",
+        "object-level authorization tests"
+      ]
+    },
+    {
+      "capability": "POPIA export/delete/consent lifecycle and audit trail.",
+      "class": "product",
+      "id": "popia_data_subject_rights",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "POPIA lifecycle integration tests",
+        "authorization denial tests"
+      ]
+    },
+    {
+      "capability": "Stripe test-mode checkout, webhook idempotency, entitlement transitions and no live payment processing unless explicitly authorised.",
+      "class": "product",
+      "id": "billing_commercial",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "billing provider dry-run",
+        "webhook replay/idempotency tests"
+      ]
+    },
+    {
+      "capability": "Learner onboarding, diagnostic, lesson, assessment, study-plan and progress flows.",
+      "class": "product",
+      "id": "learner_vertical_journey",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "learner journey route/service tests",
+        "backend-backed E2E proof"
+      ]
+    },
+    {
+      "capability": "Diagnostic and assessment repository/service/API behaviour including IRT fields.",
+      "class": "product",
+      "id": "diagnostics_assessments",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "assessment route regression tests",
+        "diagnostic schema tests"
+      ]
+    },
+    {
+      "capability": "Lesson generation, study plan projection and runtime KG persistence/projection.",
+      "class": "product",
+      "id": "lesson_study_plan_runtime_kg",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "runtime KG persistence tests",
+        "lesson/study-plan API tests"
+      ]
+    },
+    {
+      "capability": "Parent dashboard, reports, export visibility, consent and learner progress access.",
+      "class": "product",
+      "id": "parent_portal",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "parent route tests",
+        "parent E2E journey"
+      ]
+    },
+    {
+      "capability": "Security, consent, billing and learner-event auditability.",
+      "class": "product",
+      "id": "audit_trail",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "audit repository writes",
+        "event-source evidence links"
+      ]
+    },
+    {
+      "capability": "Fresh DB migration from base to exact Alembic head and current live schema alignment.",
+      "class": "runtime",
+      "id": "postgres_migration_schema",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "alembic head equality",
+        "required table/column probes"
+      ]
+    },
+    {
+      "capability": "Redis-dependent readiness and queue/backpressure health.",
+      "class": "runtime",
+      "id": "redis_readiness",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "Redis up/down readiness tests"
+      ]
+    },
+    {
+      "capability": "/ready returns 200 only when critical components are healthy.",
+      "class": "runtime",
+      "id": "api_ready_probe",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "ready 200 proof",
+        "ready 503 dependency-failure proof"
+      ]
+    },
+    {
+      "capability": "Worker imports, queue connection and job execution readiness.",
+      "class": "runtime",
+      "id": "worker_runtime",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "worker smoke test",
+        "queue connectivity proof"
+      ]
+    },
+    {
+      "capability": "Next frontend proxy/API session path against backend.",
+      "class": "runtime",
+      "id": "frontend_proxy_runtime",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "backend-backed Playwright route",
+        "proxy auth denial proof"
+      ]
+    },
+    {
+      "capability": "Backup, restore and rollback drill proof.",
+      "class": "runtime",
+      "id": "backup_restore_rollback",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "restore drill evidence",
+        "rollback drill evidence"
+      ]
+    },
+    {
+      "capability": "Production register and PRD-11 register agree on current next authorised item.",
+      "class": "governance",
+      "id": "register_state_sync",
+      "negative_evidence_required": true,
+      "release_blocking": false,
+      "required_evidence": [
+        "register sync verifier"
+      ]
+    },
+    {
+      "capability": "Evidence files exist, are fresh and match authority records.",
+      "class": "governance",
+      "id": "evidence_integrity",
+      "negative_evidence_required": true,
+      "release_blocking": false,
+      "required_evidence": [
+        "evidence summary",
+        "authority/evidence diff"
+      ]
+    },
+    {
+      "capability": "Relevant governance/testing/script/coverage docs reviewed within 21 days.",
+      "class": "governance",
+      "id": "documentation_freshness",
+      "negative_evidence_required": true,
+      "release_blocking": false,
+      "required_evidence": [
+        "freshness verifier"
+      ]
+    },
+    {
+      "capability": "Production, deployment, public beta, billing and payment authorities remain locked until explicit release decision.",
+      "class": "governance",
+      "id": "authority_boundaries",
+      "negative_evidence_required": true,
+      "release_blocking": false,
+      "required_evidence": [
+        "boundary verifier"
+      ]
+    },
+    {
+      "capability": "Test, script and coverage taxonomies agree on the four evidence classes.",
+      "class": "governance",
+      "id": "taxonomy_consistency",
+      "negative_evidence_required": true,
+      "release_blocking": false,
+      "required_evidence": [
+        "taxonomy verifiers"
+      ]
+    },
+    {
+      "capability": "OpenAPI and route inventory are generated from the current code and drift checks are read-only.",
+      "class": "advisory",
+      "id": "openapi_route_inventory",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "openapi-check",
+        "route-inventory-check"
+      ]
+    },
+    {
+      "capability": "Python/base/dev/ML and frontend dependency audits resolve and high/critical findings are accepted or fixed.",
+      "class": "advisory",
+      "id": "dependency_audit",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "pip-audit outputs",
+        "pnpm audit output"
+      ]
+    },
+    {
+      "capability": "Secret baseline is reviewed, reduced and current.",
+      "class": "advisory",
+      "id": "secret_scanning",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "detect-secrets/gitleaks output"
+      ]
+    },
+    {
+      "capability": "Bandit high/medium findings fixed or formally dispositioned.",
+      "class": "advisory",
+      "id": "bandit_security",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "bandit report",
+        "finding disposition register"
+      ]
+    },
+    {
+      "capability": "Ruff and mypy quality gates are clean or explicitly non-blocking with accepted debt.",
+      "class": "advisory",
+      "id": "ruff_mypy_quality",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "ruff output",
+        "mypy output"
+      ]
+    },
+    {
+      "capability": "Fresh coverage report over app source meets >=70% line threshold and branch coverage is enabled.",
+      "class": "advisory",
+      "id": "coverage_report",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "coverage.xml",
+        "coverage report --fail-under=70"
+      ]
+    },
+    {
+      "capability": "Frontend lint, TypeScript, Vitest, build and backend-backed E2E are current.",
+      "class": "advisory",
+      "id": "frontend_quality",
+      "negative_evidence_required": true,
+      "release_blocking": true,
+      "required_evidence": [
+        "pnpm lint",
+        "pnpm test",
+        "next build",
+        "Playwright proof"
+      ]
+    }
+  ],
+  "coverage_thresholds": {
+    "branch_coverage_required": true,
+    "coverage_artifact_retention_required": true,
+    "coverage_failure_must_preserve_test_exit_state": true,
+    "coverage_report_must_be_fresh": true,
+    "coverage_source_paths": [
+      "app"
+    ],
+    "minimum_line_coverage_percent": 70
+  },
+  "freshness_max_age_days": 21,
+  "last_reviewed_at": "2026-07-10T00:00:00+00:00",
+  "next_after_evidence": "PRD-11.0R.RUNTIME-RESTORE",
+  "prd_id": "PRD-11.3R",
+  "release_gate_policy": "Documentation-defined coverage closure requires product, runtime, governance, and advisory coverage domains. Presence-only checks and constant accepted dataclasses cannot prove coverage or release readiness.",
+  "schema_version": "prd11.3r/documentation-defined-coverage/v1",
+  "source_documents": [
+    "docs/testing/coverage_quality_threshold_contract.md",
+    "docs/testing/test_suite_taxonomy.md",
+    "docs/testing/script_taxonomy.md",
+    "technical_state_true_project_2026-07-10.md"
+  ],
+  "status": "authority_recorded"
+}
