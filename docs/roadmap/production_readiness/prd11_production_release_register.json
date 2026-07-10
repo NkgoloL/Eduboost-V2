@@ -3,18 +3,19 @@
   "controlled_beta_activation_operational_hold": true,
   "controlled_beta_live_traffic_authorised": true,
   "deployment_authorised": false,
+  "last_recorded_at": "2026-07-10T16:36:51.754106+00:00",
   "last_recorded_item": "PRD-11.0R",
   "live_learner_traffic_authorised": true,
   "live_learner_traffic_operationally_safe": false,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-11.0R",
+  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE",
   "prd11_final_reconciliation_recorded": false,
   "prd11_production_release_preflight_foundation_recorded": true,
   "prd11_sequence": [
     {
       "authorised": true,
       "prd_id": "PRD-11.0R",
-      "status": "authority_recorded",
+      "status": "recorded_operational_hold",
       "title": "True-state runtime baseline restoration and evidence hardening"
     },
     {
@@ -41,7 +42,7 @@
   "release_tag_authorised": false,
   "runtime_baseline_green": false,
   "runtime_baseline_status": "red_no_go_operational_hold_active",
-  "status": "prd11_true_state_runtime_baseline_restoration_authorised",
-  "true_state_runtime_baseline_evidence_recorded": false,
+  "status": "prd11_true_state_runtime_baseline_operational_hold_recorded",
+  "true_state_runtime_baseline_evidence_recorded": true,
   "true_state_runtime_baseline_restoration_authority_recorded": true
 }

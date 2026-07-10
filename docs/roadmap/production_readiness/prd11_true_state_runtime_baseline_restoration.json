@@ -1,0 +1,123 @@
+{
+  "authority_valid": true,
+  "baseline_blockers": [
+    "database_lineage_and_schema",
+    "redis_readiness_dependency",
+    "generated_contracts",
+    "backend_unit_gate",
+    "integration_gate",
+    "dependency_audit_gate",
+    "frontend_quality_gate",
+    "secret_baseline_gate"
+  ],
+  "captured_at": "2026-07-10T16:36:51.754106+00:00",
+  "controlled_beta_activation_operational_hold": true,
+  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE",
+  "prd_id": "PRD-11.0R",
+  "production_release_evidence_blocked_until_runtime_baseline_green": true,
+  "register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE",
+  "runtime_baseline_green": false,
+  "runtime_baseline_status": "red_no_go_operational_hold_active",
+  "true_state_runtime_baseline": {
+    "blockers": [
+      "database_lineage_and_schema",
+      "redis_readiness_dependency",
+      "generated_contracts",
+      "backend_unit_gate",
+      "integration_gate",
+      "dependency_audit_gate",
+      "frontend_quality_gate",
+      "secret_baseline_gate"
+    ],
+    "checks": {
+      "alembic_repository_graph": {
+        "expected_head_prefix": "20260708_2100_prd2_runtime_kg",
+        "matching_revisions": [
+          "20260708_2100_prd2_runtime_kg_persistence"
+        ],
+        "revision_count": 46,
+        "status": "pass"
+      },
+      "backend_unit_gate": {
+        "reason": "backend_unit_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "database_lineage_and_schema": {
+        "expected_head": "20260708_2100_prd2_runtime_kg",
+        "reason": "DATABASE_URL not set; live database lineage and schema not proven",
+        "required_columns": {
+          "diagnostic_items": [
+            "irt_quality_state",
+            "irt_discrimination",
+            "irt_difficulty",
+            "irt_guessing"
+          ]
+        },
+        "required_tables": [
+          "guardians",
+          "learner_profiles",
+          "assessments",
+          "assessment_attempts",
+          "diagnostic_items",
+          "diagnostic_sessions",
+          "study_plans",
+          "lessons",
+          "runtime_kg_nodes",
+          "runtime_kg_edges",
+          "runtime_kg_events",
+          "ai_usage_events",
+          "tutor_sessions",
+          "audit_events"
+        ],
+        "status": "blocked"
+      },
+      "dependency_audit_gate": {
+        "reason": "dependency_audit_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "frontend_quality_gate": {
+        "reason": "frontend_quality_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "generated_contracts": {
+        "reason": "generated contract checks not executed in collector default mode",
+        "status": "blocked"
+      },
+      "integration_gate": {
+        "reason": "integration_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "redis_readiness_dependency": {
+        "reason": "REDIS_URL not set; /ready Redis dependency not proven",
+        "status": "blocked"
+      },
+      "secret_baseline_gate": {
+        "reason": "secret_baseline_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "static_required_files": {
+        "missing": [],
+        "status": "pass"
+      }
+    },
+    "collector_version": "prd11.0r/true-state-runtime-baseline/v1",
+    "hard_gate_names": [
+      "static_required_files",
+      "alembic_repository_graph",
+      "database_lineage_and_schema",
+      "redis_readiness_dependency",
+      "generated_contracts",
+      "backend_unit_gate",
+      "integration_gate",
+      "dependency_audit_gate",
+      "frontend_quality_gate",
+      "secret_baseline_gate"
+    ],
+    "operational_hold_required": true,
+    "overall_status": "red_no_go_operational_hold_active",
+    "prd_id": "PRD-11.0R",
+    "release_evidence_mode": "actual_probe_evidence_required_not_constant_status",
+    "runtime_baseline_green": false
+  },
+  "valid": true
+}
