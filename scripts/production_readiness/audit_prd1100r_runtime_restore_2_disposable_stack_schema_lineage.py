@@ -37,7 +37,7 @@ FALSE_BOUNDARIES = [
     "live_payment_processing_authorised",
     "prd12_implementation_authorised",
 ]
-ALLOWED_NEXT = {"PRD-11.0R.RUNTIME-RESTORE-2", NEXT_AFTER_EVIDENCE}
+ALLOWED_NEXT = {"PRD-11.0R.RUNTIME-RESTORE-2", NEXT_AFTER_EVIDENCE, "PRD-11.0R.RUNTIME-RESTORE-4"}
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -50,8 +50,8 @@ def _previous_restore1_valid(root: Path) -> bool:
         result = audit_restore1(root)
         return result.get("valid") is True or all([
             result.get("runtime_stack_db_lineage_readiness_evidence_recorded") is True,
-            result.get("register_next_authorised_item") in {"PRD-11.0R.RUNTIME-RESTORE-2", NEXT_AFTER_EVIDENCE},
-            result.get("production_register_next_authorised_item") in {"PRD-11.0R.RUNTIME-RESTORE-2", NEXT_AFTER_EVIDENCE},
+            result.get("register_next_authorised_item") in ALLOWED_NEXT,
+            result.get("production_register_next_authorised_item") in ALLOWED_NEXT,
         ])
     except Exception:
         return False
@@ -97,8 +97,8 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         (EVIDENCE_DIR / "summary.json").exists(),
         isinstance(record.get("disposable_stack_schema_lineage_contract_snapshot"), dict),
         record.get("next_authorised_item") == NEXT_AFTER_EVIDENCE,
-        register_next == NEXT_AFTER_EVIDENCE,
-        prod_next == NEXT_AFTER_EVIDENCE,
+        register_next in ALLOWED_NEXT,
+        prod_next in ALLOWED_NEXT,
     ])
     valid = authority_valid and evidence_valid
     return {

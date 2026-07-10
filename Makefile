@@ -3541,3 +3541,20 @@ prd1100r-runtime-restore-2-disposable-stack-schema-lineage-check:
 
 prd1100r-runtime-restore-2-disposable-stack-schema-lineage-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_2_disposable_stack_schema_lineage_evidence.py --claim-prd1100r-runtime-restore-2-disposable-stack-schema-lineage --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+# PRD-11.0R.RUNTIME-RESTORE-3 product/runtime test gate repair
+.PHONY: product-runtime-test-gate-check product-runtime-test-gate-product-dry-run product-runtime-test-gate-runtime-dry-run prd1100r-runtime-restore-3-product-runtime-test-gate-repair-check prd1100r-runtime-restore-3-product-runtime-test-gate-repair-capture
+product-runtime-test-gate-check:
+	PYTHONPATH=. python3 scripts/test_suites/verify_product_runtime_test_gates.py --json
+
+product-runtime-test-gate-product-dry-run:
+	PYTHONPATH=. python3 scripts/test_suites/run_product_runtime_gates.py product --dry-run --json
+
+product-runtime-test-gate-runtime-dry-run:
+	PYTHONPATH=. python3 scripts/test_suites/run_product_runtime_gates.py runtime --dry-run --json
+
+prd1100r-runtime-restore-3-product-runtime-test-gate-repair-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd1100r_runtime_restore_3_product_runtime_test_gate_repair.py --authority-only --json
+
+prd1100r-runtime-restore-3-product-runtime-test-gate-repair-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_3_product_runtime_test_gate_repair_evidence.py --claim-prd1100r-runtime-restore-3-product-runtime-test-gate-repair --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
