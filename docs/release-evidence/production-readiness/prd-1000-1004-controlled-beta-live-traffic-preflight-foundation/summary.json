@@ -1,11 +1,7 @@
 {
-  "auth_token_regression_gate_recorded": true,
-  "billing_launch_authorised": false,
+  "authority_valid": true,
   "captured_at": "2026-07-10T12:25:48.135606+00:00",
-  "controlled_beta_cohort_gate_recorded": true,
-  "controlled_beta_preflight_evidence_recorded": true,
-  "controlled_beta_preflight_foundation_recorded": true,
-  "controlled_beta_preflight_snapshot": {
+  "controlled_beta_preflight": {
     "accepted": true,
     "auth_token_regression_gate": "pyjwt_migration_required_and_verified_before_live_traffic",
     "beta_mode": "preflight_only",
@@ -40,28 +36,8 @@
     "support_go_no_go_state": "required_before_any_live_traffic",
     "support_monitoring_incident_go_no_go_defined": true
   },
-  "deployment_authorised": false,
-  "dry_run_kill_switch_rollback_gate_recorded": true,
-  "guardian_consent_eligibility_gate_recorded": true,
-  "live_learner_traffic_authorised": false,
-  "live_payment_processing_authorised": false,
-  "merged_prd_slices": [
-    "PRD-10.0",
-    "PRD-10.1",
-    "PRD-10.2",
-    "PRD-10.3",
-    "PRD-10.4"
-  ],
   "next_authorised_item": "PRD-10.5-10.9",
-  "prd11_implementation_authorised": false,
   "prd_id": "PRD-10.0-10.4",
-  "prd_owner": "Nkgolo Lebelo",
-  "production_release_authorised": false,
-  "public_beta_authorised": false,
-  "pyjwt_migration_completed": true,
-  "release_tag_authorised": false,
-  "status": "prd10_controlled_beta_preflight_foundation_recorded",
-  "support_monitoring_incident_go_no_go_gate_recorded": true,
-  "target_branch": "master",
-  "title": "Controlled beta / live learner traffic preflight foundation"
+  "register_next_authorised_item": "PRD-10.5-10.9",
+  "valid": true
 }
