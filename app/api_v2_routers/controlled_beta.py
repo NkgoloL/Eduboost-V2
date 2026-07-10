@@ -1,10 +1,13 @@
-"""Controlled beta and live learner traffic preflight routes for PRD-10."""
+"""Controlled beta and live learner traffic routes for PRD-10."""
 from __future__ import annotations
 
 from fastapi import APIRouter
 
 from app.core.envelope_route import EnvelopedRoute
-from app.modules.controlled_beta import build_default_controlled_beta_preflight_report
+from app.modules.controlled_beta import (
+    build_default_controlled_beta_final_authorisation_report,
+    build_default_controlled_beta_preflight_report,
+)
 
 router = APIRouter(route_class=EnvelopedRoute, prefix="/controlled-beta", tags=["controlled-beta"])
 
@@ -21,3 +24,15 @@ async def get_controlled_beta_preflight() -> dict:
     """
 
     return build_default_controlled_beta_preflight_report().to_payload()
+
+
+@router.get("/final-authorisation")
+async def get_controlled_beta_final_authorisation() -> dict:
+    """Return PRD-10.5-10.9 controlled beta final live-traffic authorisation.
+
+    This route defines the controls and decision boundary for authorising
+    limited controlled-beta live learner traffic while keeping public beta,
+    production release, billing launch, and live payment processing disabled.
+    """
+
+    return build_default_controlled_beta_final_authorisation_report().to_payload()

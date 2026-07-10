@@ -38,7 +38,7 @@ FALSE_BOUNDARIES = [
     "billing_launch_authorised",
     "live_payment_processing_authorised",
 ]
-ALLOWED_NEXT = {"PRD-9.5-9.9", "PRD-10", "PRD-10.0-10.4", "PRD-10.5-10.9"}
+ALLOWED_NEXT = {"PRD-9.5-9.9", "PRD-10", "PRD-10.0-10.4", "PRD-10.5-10.9", "PRD-11"}
 
 # `.agents` is a workspace mount in this environment, not tracked repo content.
 HYGIENE_REMOVED = [

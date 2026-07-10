@@ -34,7 +34,7 @@ FALSE_BOUNDARIES = [
     "billing_launch_authorised",
     "live_payment_processing_authorised",
 ]
-ALLOWED_NEXT = {"PRD-10.0-10.4", "PRD-10.5-10.9"}
+ALLOWED_NEXT = {"PRD-10.0-10.4", "PRD-10.5-10.9", "PRD-11"}
 
 
 def _load_json(path: Path) -> dict[str, Any]:
