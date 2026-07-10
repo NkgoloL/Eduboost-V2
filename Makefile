@@ -3422,3 +3422,11 @@ prd900-904-billing-commercial-launch-readiness-foundation-check:
 .PHONY: prd900-904-billing-commercial-launch-readiness-foundation-capture
 prd900-904-billing-commercial-launch-readiness-foundation-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd900_904_billing_commercial_launch_readiness_foundation_evidence.py --claim-prd900-904-billing-commercial-launch-readiness-foundation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+.PHONY: prd905-909-commercial-runtime-audit-remediation-handoff-check
+prd905-909-commercial-runtime-audit-remediation-handoff-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd905_909_commercial_runtime_audit_remediation_handoff.py --json
+
+.PHONY: prd905-909-commercial-runtime-audit-remediation-handoff-capture
+prd905-909-commercial-runtime-audit-remediation-handoff-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd905_909_commercial_runtime_audit_remediation_handoff_evidence.py --claim-prd905-909-commercial-runtime-audit-remediation-handoff --require-valid --json

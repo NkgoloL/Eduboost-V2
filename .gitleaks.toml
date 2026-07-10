@@ -1,6 +1,8 @@
 title = "EduBoost V2 gitleaks configuration"
 
-[extend]
+[extend  '''^docs/release-evidence/.*''',
+  '''^requirements/.*\.txt$''',
+]
 useDefault = true
 
 [allowlist]

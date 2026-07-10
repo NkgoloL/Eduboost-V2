@@ -19,7 +19,7 @@ def test_assessment_attempt_uses_phase2_write_authorization() -> None:
     block = source.split("async def submit_attempt", maxsplit=1)[1]
     assert "current_user: AuthContext = Depends(require_auth_context)" in block
     assert "require_learner_write_for_current_user(current_user, request.learner_id)" in block
-    assert block.index("require_learner_write_for_current_user") < block.index("return await AssessmentServiceV2()")
+    assert block.index("require_learner_write_for_current_user") < block.index("service = AssessmentServiceV2()")
 
 
 class FakeResponse:
