@@ -11,15 +11,15 @@
   "billing_launch_authorised": false,
   "controlled_beta_live_traffic_authorised": true,
   "deployment_authorised": false,
-  "last_recorded_at": "2026-07-10T00:00:00+00:00",
+  "last_recorded_at": "2026-07-10T19:18:14.026198+00:00",
   "last_recorded_item": "PRD-11.3R",
   "live_learner_traffic_authorised": true,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-11.3R",
+  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE",
   "prd112r_handoff_authorised": true,
   "prd113r_handoff_authorised": true,
   "prd11_coverage_alignment_authority_recorded": true,
-  "prd11_coverage_alignment_evidence_recorded": false,
+  "prd11_coverage_alignment_evidence_recorded": true,
   "prd11_final_reconciliation_recorded": false,
   "prd11_production_release_preflight_foundation_recorded": true,
   "prd11_script_taxonomy_authority_recorded": true,
@@ -52,13 +52,13 @@
     {
       "authorised": true,
       "prd_id": "PRD-11.3R",
-      "status": "authorised_current",
+      "status": "recorded",
       "title": "Coverage Alignment and Documentation-defined Coverage Closure"
     },
     {
-      "authorised": false,
+      "authorised": true,
       "prd_id": "PRD-11.0R.RUNTIME-RESTORE",
-      "status": "pending",
+      "status": "authorised_next",
       "title": "Runtime baseline restoration execution"
     }
   ],
@@ -72,6 +72,6 @@
   "public_beta_authorised": false,
   "public_beta_live_traffic_authorised": false,
   "release_tag_authorised": false,
-  "runtime_restore_handoff_authorised": false,
-  "status": "prd11_coverage_alignment_authority_recorded"
+  "runtime_restore_handoff_authorised": true,
+  "status": "prd11_coverage_alignment_evidence_recorded"
 }

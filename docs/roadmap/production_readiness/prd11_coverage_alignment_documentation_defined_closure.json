@@ -1,40 +1,7 @@
 {
-  "advisory_coverage_class_recorded": true,
-  "billing_launch_authorised": false,
+  "authority_valid": true,
   "captured_at": "2026-07-10T19:18:14.026198+00:00",
-  "coverage_alignment_authority_recorded": true,
-  "coverage_alignment_evidence_recorded": true,
-  "coverage_commands": [
-    {
-      "command": "PYTHONPATH=. pytest -m product -q --no-cov",
-      "coverage_class": "product",
-      "purpose": "Product behaviour coverage for services, routes, DB, auth, POPIA, billing and learner journeys.",
-      "release_blocking": true,
-      "requires_live_stack": false
-    },
-    {
-      "command": "PYTHONPATH=. pytest -m runtime -q --no-cov",
-      "coverage_class": "runtime",
-      "purpose": "Runtime coverage for Postgres, Redis, migrations, schema, /ready, worker and frontend proxy.",
-      "release_blocking": true,
-      "requires_live_stack": true
-    },
-    {
-      "command": "PYTHONPATH=. pytest -m governance -q --no-cov",
-      "coverage_class": "governance",
-      "purpose": "Governance/evidence/documentation sync and freshness coverage.",
-      "release_blocking": false,
-      "requires_live_stack": false
-    },
-    {
-      "command": "make coverage-contract-check && make openapi-check && make route-inventory-check && make test-coverage COVERAGE_THRESHOLD=70",
-      "coverage_class": "advisory",
-      "purpose": "Advisory/static coverage for drift, dependency/security, quality and numeric coverage thresholds.",
-      "release_blocking": true,
-      "requires_live_stack": false
-    }
-  ],
-  "coverage_contract_snapshot": {
+  "coverage_contract": {
     "class_minimums_met": true,
     "coverage_class_ids": [
       "advisory",
@@ -90,9 +57,9 @@
       "fresh": true,
       "freshness_max_age_days": 21,
       "prd11_register_age_days": 0,
-      "prd11_register_next_authorised_item": "PRD-11.3R",
+      "prd11_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE",
       "production_register_age_days": 0,
-      "production_register_next_authorised_item": "PRD-11.3R",
+      "production_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE",
       "release_boundaries_locked": true,
       "script_taxonomy_age_days": 0,
       "state_agrees": true,
@@ -142,26 +109,10 @@
     },
     "valid": true
   },
-  "coverage_failure_exit_state_preserved": true,
-  "coverage_thresholds_aligned_to_documentation": true,
-  "created_at": "2026-07-10T00:00:00+00:00",
-  "deployment_authorised": false,
-  "documentation_defined_coverage_contract_recorded": true,
-  "governance_coverage_class_recorded": true,
-  "live_payment_processing_authorised": false,
-  "negative_path_coverage_required": true,
+  "coverage_contract_valid": true,
   "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE",
   "prd_id": "PRD-11.3R",
-  "prd_owner": "Nkgolo Lebelo",
-  "presence_only_coverage_evidence_forbidden": true,
-  "product_coverage_class_recorded": true,
-  "production_release_authorised": false,
-  "public_beta_authorised": false,
-  "public_beta_live_traffic_authorised": false,
-  "release_tag_authorised": false,
-  "runtime_coverage_class_recorded": true,
-  "runtime_restore_handoff_authorised": true,
-  "schema_version": "prd11.3r/coverage-alignment/v1",
-  "status": "coverage_alignment_evidence_recorded",
-  "target_branch": "master"
+  "production_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE",
+  "register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE",
+  "valid": true
 }

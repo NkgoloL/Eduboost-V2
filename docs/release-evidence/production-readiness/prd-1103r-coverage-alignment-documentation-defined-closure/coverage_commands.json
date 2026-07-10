@@ -1,0 +1,32 @@
+{
+  "commands": [
+    {
+      "command": "PYTHONPATH=. pytest -m product -q --no-cov",
+      "coverage_class": "product",
+      "purpose": "Product behaviour coverage for services, routes, DB, auth, POPIA, billing and learner journeys.",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "PYTHONPATH=. pytest -m runtime -q --no-cov",
+      "coverage_class": "runtime",
+      "purpose": "Runtime coverage for Postgres, Redis, migrations, schema, /ready, worker and frontend proxy.",
+      "release_blocking": true,
+      "requires_live_stack": true
+    },
+    {
+      "command": "PYTHONPATH=. pytest -m governance -q --no-cov",
+      "coverage_class": "governance",
+      "purpose": "Governance/evidence/documentation sync and freshness coverage.",
+      "release_blocking": false,
+      "requires_live_stack": false
+    },
+    {
+      "command": "make coverage-contract-check && make openapi-check && make route-inventory-check && make test-coverage COVERAGE_THRESHOLD=70",
+      "coverage_class": "advisory",
+      "purpose": "Advisory/static coverage for drift, dependency/security, quality and numeric coverage thresholds.",
+      "release_blocking": true,
+      "requires_live_stack": false
+    }
+  ]
+}
