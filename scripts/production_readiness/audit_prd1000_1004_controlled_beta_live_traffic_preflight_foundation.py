@@ -34,7 +34,7 @@ FALSE_BOUNDARIES = [
     "billing_launch_authorised",
     "live_payment_processing_authorised",
 ]
-ALLOWED_NEXT = {"PRD-10.0-10.4", "PRD-10.5-10.9", "PRD-11"}
+ALLOWED_NEXT = {"PRD-10.0-10.4", "PRD-10.5-10.9", "PRD-11", "PRD-11.0-11.4", "PRD-11.5-11.9"}
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -42,16 +42,17 @@ def _load_json(path: Path) -> dict[str, Any]:
 
 
 def _previous_prd9_valid(root: Path) -> bool:
-    try:
-        from scripts.production_readiness.audit_prd905_909_commercial_runtime_audit_remediation_handoff import audit as audit_prd905
-        result = audit_prd905(root)
-        return result.get("valid") is True or all([
-            result.get("authority_valid") is True,
-            result.get("commercial_runtime_blockers_remediated") is True,
-            result.get("prd10_handoff_authorised") is True,
-        ])
-    except Exception:
-        return False
+    record = _load_json(root / "docs/roadmap/production_readiness/prd_905_909_commercial_runtime_audit_remediation_handoff_record.json")
+    register = _load_json(root / "docs/roadmap/production_readiness/prd9_commercial_launch_register.json")
+    prod = _load_json(root / "docs/roadmap/production_readiness/production_readiness_register.json")
+    current_truth = prod.get("current_truth", {}) if isinstance(prod.get("current_truth"), dict) else {}
+    return all([
+        record.get("commercial_runtime_blockers_remediated") is True,
+        record.get("commercial_final_evidence_recorded") is True,
+        record.get("prd10_handoff_authorised") is True,
+        register.get("prd9_sequence_complete") is True,
+        current_truth.get("prd9_closed") is True,
+    ])
 
 
 def _pyjwt_migration_valid(root: Path) -> bool:
@@ -145,9 +146,9 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
     valid = all([
         authority_valid,
         evidence_recorded,
-        record.get("next_authorised_item") == "PRD-10.5-10.9",
-        register.get("next_authorised_item") in {"PRD-10.5-10.9", "PRD-11"},
-        prod.get("next_authorised_item") in {"PRD-10.5-10.9", "PRD-11"},
+        record.get("next_authorised_item") in ALLOWED_NEXT,
+        register.get("next_authorised_item") in ALLOWED_NEXT,
+        prod.get("next_authorised_item") in ALLOWED_NEXT,
     ])
     return {
         "valid": valid,

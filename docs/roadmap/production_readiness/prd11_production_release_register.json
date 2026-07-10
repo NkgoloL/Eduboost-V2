@@ -1,0 +1,34 @@
+{
+  "billing_launch_authorised": false,
+  "controlled_beta_live_traffic_authorised": true,
+  "deployment_authorised": false,
+  "last_recorded_item": "PRD-11.0-11.4",
+  "live_learner_traffic_authorised": true,
+  "live_payment_processing_authorised": false,
+  "next_authorised_item": "PRD-11.0-11.4",
+  "prd11_final_reconciliation_recorded": false,
+  "prd11_production_release_preflight_foundation_recorded": true,
+  "prd11_sequence": [
+    {
+      "authorised": true,
+      "prd_id": "PRD-11.0-11.4",
+      "status": "authority_recorded",
+      "title": "Production release/deployment preflight foundation"
+    },
+    {
+      "authorised": false,
+      "prd_id": "PRD-11.5-11.9",
+      "status": "pending",
+      "title": "Production release final evidence and deployment authorisation decision"
+    }
+  ],
+  "prd11_sequence_complete": false,
+  "prd12_implementation_authorised": false,
+  "prd_id": "PRD-11",
+  "production_release_authorised": false,
+  "production_release_preflight_evidence_recorded": false,
+  "public_beta_authorised": false,
+  "public_beta_live_traffic_authorised": false,
+  "release_tag_authorised": false,
+  "status": "prd11_started_production_release_preflight_foundation"
+}

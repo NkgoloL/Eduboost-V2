@@ -38,7 +38,7 @@ FALSE_BOUNDARIES = [
     "billing_launch_authorised",
     "live_payment_processing_authorised",
 ]
-ALLOWED_NEXT = {"PRD-9.5-9.9", "PRD-10", "PRD-10.0-10.4", "PRD-10.5-10.9", "PRD-11"}
+ALLOWED_NEXT = {"PRD-9.5-9.9", "PRD-10", "PRD-10.0-10.4", "PRD-10.5-10.9", "PRD-11", "PRD-11.0-11.4", "PRD-11.5-11.9"}
 
 # `.agents` is a workspace mount in this environment, not tracked repo content.
 HYGIENE_REMOVED = [
@@ -209,8 +209,8 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         sequence_complete,
         handoff_authorised,
         record.get("next_authorised_item") == "PRD-10",
-        register.get("next_authorised_item") in {"PRD-10", "PRD-10.0-10.4", "PRD-10.5-10.9", "PRD-11"},
-        prod_register.get("next_authorised_item") in {"PRD-10", "PRD-10.0-10.4", "PRD-10.5-10.9", "PRD-11"},
+        register.get("next_authorised_item") in ALLOWED_NEXT,
+        prod_register.get("next_authorised_item") in ALLOWED_NEXT,
     ])
 
     return {
