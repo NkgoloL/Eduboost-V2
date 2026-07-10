@@ -278,6 +278,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.model"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.model</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.list_active"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.list_active()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.get_by_id_str"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.get_by_id_str()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.list_assessments"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.list_assessments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.get_assessment"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.get_assessment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.create_attempt"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.create_attempt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.to_payload"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.to_payload()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AuditRepository"><code class="docutils literal notranslate"><span class="pre">AuditRepository</span></code></a><ul>
@@ -310,9 +314,12 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository"><code class="docutils literal notranslate"><span class="pre">GuardianRepository</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.model"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_by_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_id()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_by_email_hash"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_email_hash()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_by_verification_token"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_verification_token()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_guardian_by_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_guardian_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_by_stripe_customer_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_stripe_customer_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.update_subscription"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.update_subscription()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.revoke_jti"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.revoke_jti()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.is_jti_revoked"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.is_jti_revoked()</span></code></a></li>
 </ul>
@@ -381,9 +388,8 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">uuid</span><span class="w"> </span><span class="kn">import</span> <span class="n">UUID</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">select</span><span class="p">,</span> <span class="n">text</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">select</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">update</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.ext.asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncSession</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">app.core.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseRepository</span>
@@ -393,35 +399,94 @@
 <div class="viewcode-block" id="GuardianRepository">
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.GuardianRepository">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">GuardianRepository</span><span class="p">(</span><span class="n">BaseRepository</span><span class="p">[</span><span class="n">Guardian</span><span class="p">]):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Repository for guardian accounts and token lifecycle operations.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Repository for guardian accounts and token lifecycle operations.</span>
+
+<span class="sd">    The repository is intentionally usable in both canonical V2 styles:</span>
+<span class="sd">    ``GuardianRepository().method(..., db)`` and the legacy/billing runtime</span>
+<span class="sd">    style ``GuardianRepository(db).method(...)``.  This removes the release</span>
+<span class="sd">    blocker where live billing code constructed the modern repository with a</span>
+<span class="sd">    bound session but the modern class did not accept one.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">model</span> <span class="o">=</span> <span class="n">Guardian</span>
 
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span> <span class="o">=</span> <span class="n">db</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncSession</span><span class="p">:</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="n">db</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span>
+        <span class="k">if</span> <span class="n">session</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;GuardianRepository requires an AsyncSession&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">session</span>
+
+<div class="viewcode-block" id="GuardianRepository.get_by_id">
+<a class="viewcode-back" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_by_id">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">guardian_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Guardian</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">select</span><span class="p">(</span><span class="n">Guardian</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Guardian</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">guardian_id</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">scalar_one_or_none</span><span class="p">()</span></div>
+
+
 <div class="viewcode-block" id="GuardianRepository.get_by_email_hash">
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_by_email_hash">[docs]</a>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_by_email_hash</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email_hash</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Guardian</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">select</span><span class="p">(</span><span class="n">Guardian</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Guardian</span><span class="o">.</span><span class="n">email_hash</span> <span class="o">==</span> <span class="n">email_hash</span><span class="p">))</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_by_email_hash</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email_hash</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Guardian</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">select</span><span class="p">(</span><span class="n">Guardian</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Guardian</span><span class="o">.</span><span class="n">email_hash</span> <span class="o">==</span> <span class="n">email_hash</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">scalar_one_or_none</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="GuardianRepository.get_by_verification_token">
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_by_verification_token">[docs]</a>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_by_verification_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Guardian</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">select</span><span class="p">(</span><span class="n">Guardian</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Guardian</span><span class="o">.</span><span class="n">verification_token</span> <span class="o">==</span> <span class="n">token</span><span class="p">))</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_by_verification_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Guardian</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">select</span><span class="p">(</span><span class="n">Guardian</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Guardian</span><span class="o">.</span><span class="n">verification_token</span> <span class="o">==</span> <span class="n">token</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">scalar_one_or_none</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="GuardianRepository.get_guardian_by_id">
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_guardian_by_id">[docs]</a>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_guardian_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">guardian_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Guardian</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">UUID</span><span class="p">(</span><span class="n">guardian_id</span><span class="p">),</span> <span class="n">db</span><span class="p">)</span></div>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_guardian_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">guardian_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Guardian</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="n">guardian_id</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="GuardianRepository.get_by_stripe_customer_id">
+<a class="viewcode-back" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_by_stripe_customer_id">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_by_stripe_customer_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stripe_customer_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Guardian</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+            <span class="n">select</span><span class="p">(</span><span class="n">Guardian</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Guardian</span><span class="o">.</span><span class="n">stripe_customer_id</span> <span class="o">==</span> <span class="n">stripe_customer_id</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">scalar_one_or_none</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="GuardianRepository.update_subscription">
+<a class="viewcode-back" href="../../../api/repositories.html#app.repositories.GuardianRepository.update_subscription">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">update_subscription</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">guardian_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">tier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">stripe_sub_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+            <span class="n">update</span><span class="p">(</span><span class="n">Guardian</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Guardian</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">guardian_id</span><span class="p">))</span>
+            <span class="o">.</span><span class="n">values</span><span class="p">(</span>
+                <span class="n">subscription_tier</span><span class="o">=</span><span class="n">tier</span><span class="p">,</span>
+                <span class="n">stripe_subscription_id</span><span class="o">=</span><span class="n">stripe_sub_id</span><span class="p">,</span>
+                <span class="n">updated_at</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="GuardianRepository.revoke_jti">
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.GuardianRepository.revoke_jti">[docs]</a>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">revoke_jti</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jti</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">expires_at</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mark a JWT JTI as revoked so it can&#39;t be reused.&quot;&quot;&quot;</span>
-        <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">revoke_jti</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jti</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">expires_at</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mark a JWT JTI as revoked so it cannot be reused.&quot;&quot;&quot;</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
             <span class="n">text</span><span class="p">(</span>
                 <span class="s2">&quot;INSERT INTO revoked_tokens (jti, revoked_at, expires_at) &quot;</span>
                 <span class="s2">&quot;VALUES (:jti, :revoked_at, :expires_at) &quot;</span>
@@ -437,9 +502,10 @@
 
 <div class="viewcode-block" id="GuardianRepository.is_jti_revoked">
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.GuardianRepository.is_jti_revoked">[docs]</a>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">is_jti_revoked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jti</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">is_jti_revoked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jti</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return True if the given JTI has been revoked.&quot;&quot;&quot;</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
             <span class="n">text</span><span class="p">(</span><span class="s2">&quot;SELECT 1 FROM revoked_tokens WHERE jti = :jti&quot;</span><span class="p">),</span> <span class="p">{</span><span class="s2">&quot;jti&quot;</span><span class="p">:</span> <span class="n">jti</span><span class="p">}</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span></div>

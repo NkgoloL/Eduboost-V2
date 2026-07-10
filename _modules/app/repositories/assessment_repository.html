@@ -278,6 +278,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.model"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.model</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.list_active"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.list_active()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.get_by_id_str"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.get_by_id_str()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.list_assessments"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.list_assessments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.get_assessment"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.get_assessment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.create_attempt"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.create_attempt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AssessmentRepository.to_payload"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.to_payload()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.AuditRepository"><code class="docutils literal notranslate"><span class="pre">AuditRepository</span></code></a><ul>
@@ -310,9 +314,12 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository"><code class="docutils literal notranslate"><span class="pre">GuardianRepository</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.model"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_by_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_id()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_by_email_hash"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_email_hash()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_by_verification_token"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_verification_token()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_guardian_by_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_guardian_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.get_by_stripe_customer_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_stripe_customer_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.update_subscription"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.update_subscription()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.revoke_jti"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.revoke_jti()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/repositories.html#app.repositories.GuardianRepository.is_jti_revoked"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.is_jti_revoked()</span></code></a></li>
 </ul>
@@ -382,7 +389,6 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">uuid</span><span class="w"> </span><span class="kn">import</span> <span class="n">UUID</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">select</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.ext.asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncSession</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">app.core.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseRepository</span>
@@ -392,26 +398,110 @@
 <div class="viewcode-block" id="AssessmentRepository">
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.AssessmentRepository">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">AssessmentRepository</span><span class="p">(</span><span class="n">BaseRepository</span><span class="p">[</span><span class="n">Assessment</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Canonical assessment repository with live-route compatibility methods.&quot;&quot;&quot;</span>
+
     <span class="n">model</span> <span class="o">=</span> <span class="n">Assessment</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span> <span class="o">=</span> <span class="n">db</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncSession</span><span class="p">:</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="n">db</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span>
+        <span class="k">if</span> <span class="n">session</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;AssessmentRepository requires an AsyncSession&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">session</span>
 
 <div class="viewcode-block" id="AssessmentRepository.list_active">
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.AssessmentRepository.list_active">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">list_active</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span><span class="p">,</span>
+        <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
         <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Assessment</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a list of active assessments.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;is_active&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_resolve_db</span><span class="p">(</span><span class="n">db</span><span class="p">),</span> <span class="n">filters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;is_active&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="AssessmentRepository.get_by_id_str">
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.AssessmentRepository.get_by_id_str">[docs]</a>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_by_id_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assessment_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Assessment</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_by_id_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assessment_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Assessment</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Fetch a single assessment by its ID string.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">UUID</span><span class="p">(</span><span class="n">assessment_id</span><span class="p">),</span> <span class="n">db</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">UUID</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">assessment_id</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_db</span><span class="p">(</span><span class="n">db</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="AssessmentRepository.list_assessments">
+<a class="viewcode-back" href="../../../api/repositories.html#app.repositories.AssessmentRepository.list_assessments">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">list_assessments</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compatibility method consumed by AssessmentServiceV2 live routes.&quot;&quot;&quot;</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_active</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">to_payload</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="AssessmentRepository.get_assessment">
+<a class="viewcode-back" href="../../../api/repositories.html#app.repositories.AssessmentRepository.get_assessment">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_assessment</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">assessment_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compatibility method consumed by AssessmentServiceV2 live routes.&quot;&quot;&quot;</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_by_id_str</span><span class="p">(</span><span class="n">assessment_id</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_payload</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">if</span> <span class="n">row</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="AssessmentRepository.create_attempt">
+<a class="viewcode-back" href="../../../api/repositories.html#app.repositories.AssessmentRepository.create_attempt">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">create_attempt</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">assessment_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">UUID</span><span class="p">,</span>
+        <span class="n">learner_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">UUID</span><span class="p">,</span>
+        <span class="n">responses</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
+        <span class="n">score</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">marks_obtained</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">time_taken_seconds</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an attempt and return its ID as the V2 service expects.&quot;&quot;&quot;</span>
+        <span class="n">attempt</span> <span class="o">=</span> <span class="k">await</span> <span class="n">AssessmentAttemptRepository</span><span class="p">()</span><span class="o">.</span><span class="n">create_attempt</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_db</span><span class="p">(</span><span class="n">db</span><span class="p">),</span>
+            <span class="n">assessment_id</span><span class="o">=</span><span class="n">assessment_id</span><span class="p">,</span>
+            <span class="n">learner_id</span><span class="o">=</span><span class="n">learner_id</span><span class="p">,</span>
+            <span class="n">responses</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;responses&quot;</span><span class="p">:</span> <span class="n">responses</span><span class="p">},</span>
+            <span class="n">score</span><span class="o">=</span><span class="n">score</span><span class="p">,</span>
+            <span class="n">marks_obtained</span><span class="o">=</span><span class="n">marks_obtained</span><span class="p">,</span>
+            <span class="n">time_taken_seconds</span><span class="o">=</span><span class="n">time_taken_seconds</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">attempt</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AssessmentRepository.to_payload">
+<a class="viewcode-back" href="../../../api/repositories.html#app.repositories.AssessmentRepository.to_payload">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_payload</span><span class="p">(</span><span class="n">row</span><span class="p">:</span> <span class="n">Assessment</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="n">questions</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">questions</span> <span class="ow">or</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">questions</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">questions</span> <span class="o">=</span> <span class="n">questions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;questions&quot;</span><span class="p">,</span> <span class="n">questions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">,</span> <span class="p">[]))</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;assessment_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+            <span class="s2">&quot;subject_code&quot;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">subject_code</span><span class="p">,</span>
+            <span class="s2">&quot;grade_level&quot;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">grade_level</span><span class="p">,</span>
+            <span class="s2">&quot;assessment_type&quot;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">assessment_type</span><span class="p">,</span>
+            <span class="s2">&quot;total_marks&quot;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">total_marks</span><span class="p">,</span>
+            <span class="s2">&quot;questions&quot;</span><span class="p">:</span> <span class="n">questions</span><span class="p">,</span>
+            <span class="s2">&quot;passing_score&quot;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">passing_score</span><span class="p">,</span>
+            <span class="s2">&quot;is_active&quot;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">is_active</span><span class="p">,</span>
+        <span class="p">}</span></div>
 </div>
 
 
@@ -432,8 +522,8 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Record a new assessment attempt.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
             <span class="n">db</span><span class="p">,</span>
-            <span class="n">assessment_id</span><span class="o">=</span><span class="n">UUID</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">assessment_id</span><span class="p">)),</span>
-            <span class="n">learner_id</span><span class="o">=</span><span class="n">UUID</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">learner_id</span><span class="p">)),</span>
+            <span class="n">assessment_id</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">assessment_id</span><span class="p">),</span>
+            <span class="n">learner_id</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">learner_id</span><span class="p">),</span>
             <span class="n">score</span><span class="o">=</span><span class="n">score</span><span class="p">,</span>
             <span class="n">marks_obtained</span><span class="o">=</span><span class="n">marks_obtained</span><span class="p">,</span>
             <span class="n">time_taken_seconds</span><span class="o">=</span><span class="n">time_taken_seconds</span><span class="p">,</span>

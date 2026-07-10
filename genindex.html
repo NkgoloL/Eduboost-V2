@@ -278,6 +278,10 @@
 <li class="toctree-l3"><a class="reference internal" href="api/repositories.html#app.repositories.AssessmentRepository.model"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.model</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/repositories.html#app.repositories.AssessmentRepository.list_active"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.list_active()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/repositories.html#app.repositories.AssessmentRepository.get_by_id_str"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.get_by_id_str()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/repositories.html#app.repositories.AssessmentRepository.list_assessments"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.list_assessments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/repositories.html#app.repositories.AssessmentRepository.get_assessment"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.get_assessment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/repositories.html#app.repositories.AssessmentRepository.create_attempt"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.create_attempt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/repositories.html#app.repositories.AssessmentRepository.to_payload"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.to_payload()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api/repositories.html#app.repositories.AuditRepository"><code class="docutils literal notranslate"><span class="pre">AuditRepository</span></code></a><ul>
@@ -310,9 +314,12 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api/repositories.html#app.repositories.GuardianRepository"><code class="docutils literal notranslate"><span class="pre">GuardianRepository</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api/repositories.html#app.repositories.GuardianRepository.model"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/repositories.html#app.repositories.GuardianRepository.get_by_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_id()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/repositories.html#app.repositories.GuardianRepository.get_by_email_hash"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_email_hash()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/repositories.html#app.repositories.GuardianRepository.get_by_verification_token"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_verification_token()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/repositories.html#app.repositories.GuardianRepository.get_guardian_by_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_guardian_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/repositories.html#app.repositories.GuardianRepository.get_by_stripe_customer_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_stripe_customer_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/repositories.html#app.repositories.GuardianRepository.update_subscription"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.update_subscription()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/repositories.html#app.repositories.GuardianRepository.revoke_jti"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.revoke_jti()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/repositories.html#app.repositories.GuardianRepository.is_jti_revoked"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.is_jti_revoked()</span></code></a></li>
 </ul>
@@ -587,6 +594,8 @@
         <li><a href="api/repositories.html#app.repositories.LessonRepository.create">(app.repositories.LessonRepository method)</a>
 </li>
       </ul></li>
+      <li><a href="api/repositories.html#app.repositories.AssessmentRepository.create_attempt">create_attempt() (app.repositories.AssessmentRepository method)</a>
+</li>
       <li><a href="api/repositories.html#app.repositories.DiagnosticRepository.create_session">create_session() (app.repositories.DiagnosticRepository method)</a>
 </li>
   </ul></td>
@@ -657,6 +666,8 @@
 </li>
       <li><a href="api/repositories.html#app.repositories.ConsentRepository.get_active_for_learner">get_active_for_learner() (app.repositories.ConsentRepository method)</a>
 </li>
+      <li><a href="api/repositories.html#app.repositories.AssessmentRepository.get_assessment">get_assessment() (app.repositories.AssessmentRepository method)</a>
+</li>
       <li><a href="api/repositories.html#app.repositories.AuditRepository.get_by_actor">get_by_actor() (app.repositories.AuditRepository method)</a>
 </li>
       <li><a href="api/repositories.html#app.repositories.GuardianRepository.get_by_email_hash">get_by_email_hash() (app.repositories.GuardianRepository method)</a>
@@ -664,12 +675,16 @@
       <li><a href="api/repositories.html#app.repositories.ConsentRepository.get_by_id">get_by_id() (app.repositories.ConsentRepository method)</a>
 
       <ul>
+        <li><a href="api/repositories.html#app.repositories.GuardianRepository.get_by_id">(app.repositories.GuardianRepository method)</a>
+</li>
         <li><a href="api/repositories.html#app.repositories.LearnerRepository.get_by_id">(app.repositories.LearnerRepository method)</a>
 </li>
       </ul></li>
       <li><a href="api/repositories.html#app.repositories.AssessmentRepository.get_by_id_str">get_by_id_str() (app.repositories.AssessmentRepository method)</a>
 </li>
       <li><a href="api/repositories.html#app.repositories.AuditRepository.get_by_resource">get_by_resource() (app.repositories.AuditRepository method)</a>
+</li>
+      <li><a href="api/repositories.html#app.repositories.GuardianRepository.get_by_stripe_customer_id">get_by_stripe_customer_id() (app.repositories.GuardianRepository method)</a>
 </li>
       <li><a href="api/repositories.html#app.repositories.GuardianRepository.get_by_verification_token">get_by_verification_token() (app.repositories.GuardianRepository method)</a>
 </li>
@@ -679,12 +694,12 @@
 </li>
       <li><a href="api/repositories.html#app.repositories.GamificationRepository.get_leaderboard_rows">get_leaderboard_rows() (app.repositories.GamificationRepository method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/repositories.html#app.repositories.GamificationRepository.get_profile_rows">get_profile_rows() (app.repositories.GamificationRepository method)</a>
 </li>
       <li><a href="api/repositories.html#app.repositories.LessonRepository.get_recent">get_recent() (app.repositories.LessonRepository method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/repositories.html#app.repositories.LessonRepository.get_recent_for_learner">get_recent_for_learner() (app.repositories.LessonRepository method)</a>
 </li>
       <li><a href="api/core.html#app.core.config.get_settings">get_settings() (in module app.core.config)</a>
@@ -827,15 +842,17 @@
 </li>
       <li><a href="api/models.html#app.models.LessonRecord">LessonRecord (in module app.models)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/repositories.html#app.repositories.LessonRepository">LessonRepository (class in app.repositories)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#app.models.LearnerProfile.lessons">lessons (app.models.LearnerProfile attribute)</a>
 </li>
       <li><a href="api/repositories.html#app.repositories.AssessmentRepository.list_active">list_active() (app.repositories.AssessmentRepository method)</a>
 </li>
       <li><a href="api/repositories.html#app.repositories.LessonRepository.list_approved_lessons_async">list_approved_lessons_async() (app.repositories.LessonRepository method)</a>
+</li>
+      <li><a href="api/repositories.html#app.repositories.AssessmentRepository.list_assessments">list_assessments() (app.repositories.AssessmentRepository method)</a>
 </li>
       <li><a href="api/repositories.html#app.repositories.LessonRepository.list_by_caps_ref">list_by_caps_ref() (app.repositories.LessonRepository method)</a>
 </li>
@@ -1062,11 +1079,13 @@
 </li>
       <li><a href="api/core.html#app.core.config.Settings.TENANT_BUDGET_ALERT_PCT">TENANT_BUDGET_ALERT_PCT (app.core.config.Settings attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/core.html#app.core.config.Settings.TENANT_MONTHLY_TOKEN_LIMIT">TENANT_MONTHLY_TOKEN_LIMIT (app.core.config.Settings attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#app.models.ArchetypeLabel.TIFERET">TIFERET (app.models.ArchetypeLabel attribute)</a>
+</li>
+      <li><a href="api/repositories.html#app.repositories.AssessmentRepository.to_payload">to_payload() (app.repositories.AssessmentRepository static method)</a>
 </li>
       <li><a href="api/models.html#app.models.TopicMastery">TopicMastery (class in app.models)</a>
 </li>
@@ -1082,6 +1101,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/repositories.html#app.repositories.GuardianRepository.update_subscription">update_subscription() (app.repositories.GuardianRepository method)</a>
+</li>
       <li><a href="api/core.html#app.core.config.Settings.USER_DAILY_TOKEN_LIMIT">USER_DAILY_TOKEN_LIMIT (app.core.config.Settings attribute)</a>
 </li>
       <li><a href="api/models.html#app.models.UserRole">UserRole (class in app.models)</a>

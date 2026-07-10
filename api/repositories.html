@@ -281,6 +281,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#app.repositories.AssessmentRepository.model"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.model</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#app.repositories.AssessmentRepository.list_active"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.list_active()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#app.repositories.AssessmentRepository.get_by_id_str"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.get_by_id_str()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.AssessmentRepository.list_assessments"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.list_assessments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.AssessmentRepository.get_assessment"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.get_assessment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.AssessmentRepository.create_attempt"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.create_attempt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.AssessmentRepository.to_payload"><code class="docutils literal notranslate"><span class="pre">AssessmentRepository.to_payload()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#app.repositories.AuditRepository"><code class="docutils literal notranslate"><span class="pre">AuditRepository</span></code></a><ul>
@@ -313,9 +317,12 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#app.repositories.GuardianRepository"><code class="docutils literal notranslate"><span class="pre">GuardianRepository</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#app.repositories.GuardianRepository.model"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.GuardianRepository.get_by_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_id()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#app.repositories.GuardianRepository.get_by_email_hash"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_email_hash()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#app.repositories.GuardianRepository.get_by_verification_token"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_verification_token()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#app.repositories.GuardianRepository.get_guardian_by_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_guardian_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.GuardianRepository.get_by_stripe_customer_id"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.get_by_stripe_customer_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.repositories.GuardianRepository.update_subscription"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.update_subscription()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#app.repositories.GuardianRepository.revoke_jti"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.revoke_jti()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#app.repositories.GuardianRepository.is_jti_revoked"><code class="docutils literal notranslate"><span class="pre">GuardianRepository.is_jti_revoked()</span></code></a></li>
 </ul>
@@ -384,8 +391,14 @@
 <p id="module-app.repositories">Repository abstractions for EduBoost V2.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="app.repositories.AssessmentRepository">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.repositories.</span></span><span class="sig-name descname"><span class="pre">AssessmentRepository</span></span><a class="reference internal" href="../_modules/app/repositories/assessment_repository.html#AssessmentRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AssessmentRepository" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.repositories.</span></span><span class="sig-name descname"><span class="pre">AssessmentRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/assessment_repository.html#AssessmentRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AssessmentRepository" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseRepository</span></code>[<a class="reference internal" href="models.html#app.models.Assessment" title="app.models.Assessment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Assessment</span></code></a>]</p>
+<p>Canonical assessment repository with live-route compatibility methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.repositories.AssessmentRepository.model">
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#app.repositories.AssessmentRepository.model" title="Link to this definition"></a></dt>
@@ -394,35 +407,105 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.repositories.AssessmentRepository.list_active">
-<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">list_active</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/assessment_repository.html#AssessmentRepository.list_active"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AssessmentRepository.list_active" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">list_active</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/assessment_repository.html#AssessmentRepository.list_active"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AssessmentRepository.list_active" title="Link to this definition"></a></dt>
 <dd><p>Return a list of active assessments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>db</strong> (<em>sqlalchemy.ext.asyncio.AsyncSession</em>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
 <li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
 <li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference internal" href="models.html#app.models.Assessment" title="app.models.Assessment"><em>Assessment</em></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference internal" href="models.html#app.models.Assessment" title="app.models.Assessment">Assessment</a>]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.repositories.AssessmentRepository.get_by_id_str">
-<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_by_id_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assessment_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/assessment_repository.html#AssessmentRepository.get_by_id_str"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AssessmentRepository.get_by_id_str" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_by_id_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assessment_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/assessment_repository.html#AssessmentRepository.get_by_id_str"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AssessmentRepository.get_by_id_str" title="Link to this definition"></a></dt>
 <dd><p>Fetch a single assessment by its ID string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>assessment_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
-<li><p><strong>db</strong> (<em>sqlalchemy.ext.asyncio.AsyncSession</em>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Assessment" title="app.models.Assessment"><em>Assessment</em></a> | None</p>
+<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Assessment" title="app.models.Assessment">Assessment</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.AssessmentRepository.list_assessments">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">list_assessments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/assessment_repository.html#AssessmentRepository.list_assessments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AssessmentRepository.list_assessments" title="Link to this definition"></a></dt>
+<dd><p>Compatibility method consumed by AssessmentServiceV2 live routes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, Any]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.AssessmentRepository.get_assessment">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_assessment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assessment_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/assessment_repository.html#AssessmentRepository.get_assessment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AssessmentRepository.get_assessment" title="Link to this definition"></a></dt>
+<dd><p>Compatibility method consumed by AssessmentServiceV2 live routes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>assessment_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, Any] | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.AssessmentRepository.create_attempt">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create_attempt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">assessment_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learner_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">responses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marks_obtained</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_taken_seconds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/assessment_repository.html#AssessmentRepository.create_attempt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AssessmentRepository.create_attempt" title="Link to this definition"></a></dt>
+<dd><p>Create an attempt and return its ID as the V2 service expects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>assessment_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>UUID</em>)</p></li>
+<li><p><strong>learner_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>UUID</em>)</p></li>
+<li><p><strong>responses</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>Any</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>score</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>marks_obtained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>time_taken_seconds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.AssessmentRepository.to_payload">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">to_payload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/assessment_repository.html#AssessmentRepository.to_payload"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.AssessmentRepository.to_payload" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>row</strong> (<a class="reference internal" href="models.html#app.models.Assessment" title="app.models.Assessment"><em>Assessment</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -718,9 +801,19 @@ Automatically chains the hash to the previous event for the same resource
 
 <dl class="py class">
 <dt class="sig sig-object py" id="app.repositories.GuardianRepository">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.repositories.</span></span><span class="sig-name descname"><span class="pre">GuardianRepository</span></span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.repositories.</span></span><span class="sig-name descname"><span class="pre">GuardianRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseRepository</span></code>[<a class="reference internal" href="models.html#app.models.Guardian" title="app.models.Guardian"><code class="xref py py-class docutils literal notranslate"><span class="pre">Guardian</span></code></a>]</p>
 <p>Repository for guardian accounts and token lifecycle operations.</p>
+<p>The repository is intentionally usable in both canonical V2 styles:
+<code class="docutils literal notranslate"><span class="pre">GuardianRepository().method(...,</span> <span class="pre">db)</span></code> and the legacy/billing runtime
+style <code class="docutils literal notranslate"><span class="pre">GuardianRepository(db).method(...)</span></code>.  This removes the release
+blocker where live billing code constructed the modern repository with a
+bound session but the modern class did not accept one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.repositories.GuardianRepository.model">
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#app.repositories.GuardianRepository.model" title="Link to this definition"></a></dt>
@@ -728,63 +821,113 @@ Automatically chains the hash to the previous event for the same resource
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.GuardianRepository.get_by_id">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">guardian_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.get_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.get_by_id" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>guardian_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Guardian" title="app.models.Guardian">Guardian</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="app.repositories.GuardianRepository.get_by_email_hash">
-<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_by_email_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.get_by_email_hash"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.get_by_email_hash" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_by_email_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.get_by_email_hash"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.get_by_email_hash" title="Link to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>email_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
-<li><p><strong>db</strong> (<em>sqlalchemy.ext.asyncio.AsyncSession</em>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Guardian" title="app.models.Guardian"><em>Guardian</em></a> | None</p>
+<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Guardian" title="app.models.Guardian">Guardian</a> | None</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.repositories.GuardianRepository.get_by_verification_token">
-<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_by_verification_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.get_by_verification_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.get_by_verification_token" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_by_verification_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.get_by_verification_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.get_by_verification_token" title="Link to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>token</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
-<li><p><strong>db</strong> (<em>sqlalchemy.ext.asyncio.AsyncSession</em>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Guardian" title="app.models.Guardian"><em>Guardian</em></a> | None</p>
+<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Guardian" title="app.models.Guardian">Guardian</a> | None</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.repositories.GuardianRepository.get_guardian_by_id">
-<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_guardian_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">guardian_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.get_guardian_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.get_guardian_by_id" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_guardian_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">guardian_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.get_guardian_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.get_guardian_by_id" title="Link to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>guardian_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
-<li><p><strong>db</strong> (<em>sqlalchemy.ext.asyncio.AsyncSession</em>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Guardian" title="app.models.Guardian"><em>Guardian</em></a> | None</p>
+<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Guardian" title="app.models.Guardian">Guardian</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.GuardianRepository.get_by_stripe_customer_id">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_by_stripe_customer_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stripe_customer_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.get_by_stripe_customer_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.get_by_stripe_customer_id" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stripe_customer_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="models.html#app.models.Guardian" title="app.models.Guardian">Guardian</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.repositories.GuardianRepository.update_subscription">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">update_subscription</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">guardian_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stripe_sub_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.update_subscription"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.update_subscription" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>guardian_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>tier</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>stripe_sub_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.repositories.GuardianRepository.revoke_jti">
-<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">revoke_jti</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jti</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expires_at</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.revoke_jti"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.revoke_jti" title="Link to this definition"></a></dt>
-<dd><p>Mark a JWT JTI as revoked so it can’t be reused.</p>
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">revoke_jti</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jti</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expires_at</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.revoke_jti"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.revoke_jti" title="Link to this definition"></a></dt>
+<dd><p>Mark a JWT JTI as revoked so it cannot be reused.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>jti</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
-<li><p><strong>expires_at</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><em>datetime</em></a>)</p></li>
-<li><p><strong>db</strong> (<em>sqlalchemy.ext.asyncio.AsyncSession</em>)</p></li>
+<li><p><strong>expires_at</strong> (<em>datetime</em>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -795,13 +938,13 @@ Automatically chains the hash to the previous event for the same resource
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.repositories.GuardianRepository.is_jti_revoked">
-<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">is_jti_revoked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jti</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.is_jti_revoked"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.is_jti_revoked" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">is_jti_revoked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jti</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/repositories/auth_repository.html#GuardianRepository.is_jti_revoked"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.repositories.GuardianRepository.is_jti_revoked" title="Link to this definition"></a></dt>
 <dd><p>Return True if the given JTI has been revoked.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>jti</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
-<li><p><strong>db</strong> (<em>sqlalchemy.ext.asyncio.AsyncSession</em>)</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em><em> | </em><em>None</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
