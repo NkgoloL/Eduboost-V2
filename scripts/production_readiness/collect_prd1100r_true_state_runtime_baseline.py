@@ -21,6 +21,7 @@ from app.core.runtime_readiness import (
     load_alembic_revision_graph,
     validate_runtime_schema_contract,
 )
+from scripts.runtime.disposable_stack_lineage import verify_disposable_stack_lineage_contract
 
 ROOT = Path(__file__).resolve().parents[2]
 EXPECTED_COMPOSE_SERVICES = ("postgres", "redis", "api", "worker", "frontend")
@@ -28,6 +29,7 @@ STATIC_REQUIRED_FILES = (
     "alembic/versions/20260708_2100_prd2_runtime_kg_persistence.py",
     "scripts/generate_openapi.py",
     "scripts/generate_route_inventory.py",
+    "scripts/runtime/verify_disposable_stack_schema_lineage.py",
     "app/modules/production_release/true_state_baseline.py",
     "app/core/runtime_readiness.py",
 )
@@ -169,11 +171,27 @@ def _command_gate(name: str, command: list[str] | None, root: Path, run_checks: 
     return _run(command, root, timeout=timeout)
 
 
+
+
+def _disposable_stack_schema_lineage_reconciliation(root: Path) -> dict[str, Any]:
+    result = verify_disposable_stack_lineage_contract(root, require_live=False)
+    status = "pass" if result.get("contract_valid") is True and result.get("live_lineage_schema_green") is True else "blocked"
+    if result.get("contract_valid") is not True:
+        status = "fail"
+    return {
+        "status": status,
+        "contract_valid": result.get("contract_valid") is True,
+        "live_lineage_schema_green": result.get("live_lineage_schema_green") is True,
+        "next_required_runtime_action": result.get("next_required_runtime_action"),
+        "details": result,
+    }
+
 def collect_baseline(root: Path = ROOT, *, run_expensive_checks: bool = False) -> dict[str, Any]:
     checks = {
         "static_required_files": _static_files(root),
         "docker_compose_service_contract": _compose_service_contract(root),
         "alembic_repository_graph": _alembic_graph(root),
+        "disposable_stack_schema_lineage_reconciliation": _disposable_stack_schema_lineage_reconciliation(root),
         "database_lineage_and_schema": _database_probe(root),
         "redis_readiness_dependency": _redis_probe(),
         "ready_http_probe": _ready_http_probe(),

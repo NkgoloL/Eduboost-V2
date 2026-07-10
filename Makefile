@@ -3529,3 +3529,15 @@ prd1103r-coverage-alignment-documentation-defined-closure-check:
 .PHONY: prd1103r-coverage-alignment-documentation-defined-closure-capture
 prd1103r-coverage-alignment-documentation-defined-closure-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1103r_coverage_alignment_documentation_defined_closure_evidence.py --claim-prd1103r-coverage-alignment-documentation-defined-closure --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
+
+
+# PRD-11.0R.RUNTIME-RESTORE-2 disposable stack/schema-lineage restoration
+.PHONY: runtime-disposable-stack-lineage-check prd1100r-runtime-restore-2-disposable-stack-schema-lineage-check prd1100r-runtime-restore-2-disposable-stack-schema-lineage-capture
+runtime-disposable-stack-lineage-check:
+	PYTHONPATH=. python3 scripts/runtime/verify_disposable_stack_schema_lineage.py --json
+
+prd1100r-runtime-restore-2-disposable-stack-schema-lineage-check:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd1100r_runtime_restore_2_disposable_stack_schema_lineage.py --authority-only --json
+
+prd1100r-runtime-restore-2-disposable-stack-schema-lineage-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_2_disposable_stack_schema_lineage_evidence.py --claim-prd1100r-runtime-restore-2-disposable-stack-schema-lineage --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
