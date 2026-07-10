@@ -34,7 +34,7 @@ FALSE_BOUNDARIES = [
     "billing_launch_authorised",
     "live_payment_processing_authorised",
 ]
-ALLOWED_NEXT = {"PRD-11.1R", "PRD-11.2R"}
+ALLOWED_NEXT = {"PRD-11.1R", "PRD-11.2R", "PRD-11.3R", "PRD-11.0R.RUNTIME-RESTORE"}
 
 
 def _load(path: Path) -> dict[str, Any]:

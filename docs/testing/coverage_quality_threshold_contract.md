@@ -4,10 +4,10 @@ status: "active"
 owner: "quality"
 reviewers: ["quality", "engineering", "release-management"]
 audience: "quality-reviewer"
-source_of_truth: false
+source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-06-24"
+last_reviewed: "2026-07-10"
 review_interval_days: 60
 evidence_command: "make docs-housekeeping-stage5-check"
 code_anchors: "[tests, pytest.ini, Makefile]"
@@ -41,3 +41,14 @@ This contract defines coverage thresholds and quality ratchet rules.
 ## Boundary
 
 This contract records coverage quality readiness. It does not claim a current coverage percentage.
+
+
+## PRD-11.3R Documentation-defined Coverage Closure
+
+PRD-11.3R makes this contract enforceable through `docs/roadmap/production_readiness/coverage_contract.json`
+and `scripts/coverage_suites/verify_coverage_contract.py`.
+
+Coverage closure requires more than a percentage. It requires coverage by evidence class:
+product behaviour, runtime stack, governance/evidence, and advisory/static quality. Presence-only
+checks do not satisfy this contract. Coverage evidence must include command outputs, negative-path
+proof, freshness metadata, and release-boundary preservation.

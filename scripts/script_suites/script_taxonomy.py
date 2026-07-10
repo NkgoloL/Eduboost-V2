@@ -148,7 +148,7 @@ def evaluate_governance_sync(root: Path = ROOT, *, now: datetime | None = None) 
         "test_taxonomy_age_days": _age_days(test_taxonomy.get("last_reviewed_at"), now=now),
     }
     fresh = all(age is not None and age <= FRESHNESS_MAX_AGE_DAYS for age in ages.values())
-    state_agrees = prod_next == prd11_next and prod_next in {"PRD-11.2R", "PRD-11.3R"}
+    state_agrees = prod_next == prd11_next and prod_next in {"PRD-11.2R", "PRD-11.3R", "PRD-11.0R.RUNTIME-RESTORE"}
     boundaries = prod.get("authority_boundaries", {}) if isinstance(prod.get("authority_boundaries"), dict) else {}
     release_boundaries_locked = all(
         boundaries.get(key) is False
