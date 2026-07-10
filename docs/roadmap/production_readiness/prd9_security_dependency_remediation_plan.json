@@ -1,0 +1,10 @@
+{
+  "cryptography_bumped_in_requirements": true,
+  "cryptography_version_target": "49.0.0",
+  "gitleaks_allowlist_tightened": true,
+  "python_jose_status": "pinned_pending_pyjwt_migration",
+  "python_jose_to_pyjwt_required_before": "PRD-10 live learner traffic authorisation",
+  "reason": "python-jose migration touches token error types and must be isolated behind auth regression tests",
+  "secrets_baseline_reduction_required_before": "PRD-10 live learner traffic authorisation",
+  "status": "active"
+}

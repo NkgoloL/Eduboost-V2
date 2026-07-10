@@ -16,8 +16,16 @@ router = APIRouter(route_class=EnvelopedRoute, prefix="/assessments", tags=["V2 
 
 
 @router.get("")
-async def list_assessments(limit: int = 50, offset: int = 0, _: AuthContext = Depends(require_auth_context)):
-    return await AssessmentServiceV2().list_assessments(limit=limit, offset=offset)
+async def list_assessments(
+    limit: int = 50,
+    offset: int = 0,
+    _: AuthContext = Depends(require_auth_context),
+    db: AsyncSession = Depends(get_db),
+):
+    service = AssessmentServiceV2()
+    if hasattr(service, "with_db"):
+        service = service.with_db(db)
+    return await service.list_assessments(limit=limit, offset=offset)
 
 
 @router.post("/{assessment_id}/attempt")
@@ -29,7 +37,10 @@ async def submit_attempt(
 ):
     require_learner_write_for_current_user(current_user, request.learner_id)
     await require_active_consent_for_current_user(db, current_user, request.learner_id)
-    return await AssessmentServiceV2().submit_attempt(
+    service = AssessmentServiceV2()
+    if hasattr(service, "with_db"):
+        service = service.with_db(db)
+    return await service.submit_attempt(
         assessment_id=assessment_id,
         learner_id=request.learner_id,
         responses=[item.model_dump() for item in request.responses],

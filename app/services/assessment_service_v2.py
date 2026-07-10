@@ -2,15 +2,25 @@ from __future__ import annotations
 
 from typing import Any
 
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.services.audit_service import AuditService
 
 
 class AssessmentServiceV2:
-    def __init__(self, repository: Any | None = None) -> None:
+    def __init__(self, repository: Any | None = None, db: AsyncSession | None = None) -> None:
+        self.db = db
         if repository is None:
             from app.repositories.assessment_repository import AssessmentRepository
-            repository = AssessmentRepository()
+            repository = AssessmentRepository(db)
         self.repository = repository
+
+    def with_db(self, db: AsyncSession) -> "AssessmentServiceV2":
+        """Bind a session when routers construct the service lazily."""
+        self.db = db
+        if hasattr(self.repository, "db"):
+            self.repository.db = db
+        return self
 
     async def list_assessments(self, limit: int = 20, offset: int = 0) -> dict:
         rows = await self.repository.list_assessments(limit=limit, offset=offset)

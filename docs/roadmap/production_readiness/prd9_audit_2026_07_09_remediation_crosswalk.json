@@ -1,0 +1,47 @@
+{
+  "audit_date": "2026-07-09",
+  "items": [
+    {
+      "disposition": "fixed_in_PRD-9.5",
+      "finding": "dual_repository_layer_subscription_runtime_failure"
+    },
+    {
+      "disposition": "fixed_in_PRD-9.6",
+      "finding": "assessment_service_repository_contract_mismatch"
+    },
+    {
+      "disposition": "compatibility_recorded_in_PRD-9.7",
+      "finding": "roadmap_reconciliation_archival_fragility"
+    },
+    {
+      "disposition": "requirements_repaired_in_PRD-9.8",
+      "finding": "aiohttp_beautifulsoup4_dev_dependency_drift"
+    },
+    {
+      "disposition": "cryptography_bumped_jose_migration_registered_as_PRD-10_blocker",
+      "finding": "cryptography_stale_python_jose_cve_risk"
+    },
+    {
+      "disposition": "removed_from_source_control_and_gitignored",
+      "finding": "stale_coverage_xml"
+    },
+    {
+      "disposition": "removed_from_source_control_and_gitignored",
+      "finding": "committed_backups_logs_generated_docs_temp_agents"
+    },
+    {
+      "disposition": "raw_file_removed_and_licensing_register_recorded",
+      "finding": "raw_siyavula_html_licensing_review"
+    },
+    {
+      "disposition": "gitleaks_allowlist_tightened_and_baseline_reduction_registered_as_PRD-10_blocker",
+      "finding": "large_detect_secrets_baseline_noise"
+    },
+    {
+      "disposition": "proprietary_LICENSE_file_added",
+      "finding": "missing_proprietary_license_file"
+    }
+  ],
+  "source": "EduBoost_V2_Technical_Audit_2026-07-09.md",
+  "status": "reconciled_by_PRD-9.5-9.9_authority_pending_evidence"
+}

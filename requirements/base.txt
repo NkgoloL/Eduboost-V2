@@ -82,7 +82,7 @@ click-plugins==1.1.1.2
     # via celery
 click-repl==0.3.0
     # via celery
-cryptography==42.0.8
+cryptography==49.0.0
     # via
     #   -r requirements/base.in
     #   azure-identity
@@ -177,7 +177,7 @@ markupsafe==3.0.3
     #   mako
 mdurl==0.1.2
     # via markdown-it-py
-msal==1.36.0
+msal==1.37.0
     # via
     #   azure-identity
     #   msal-extensions
@@ -394,3 +394,8 @@ wrapt==2.1.2
 
 # MCP SDK for local ETL FastMCP tooling.
 mcp[cli]>=1.0.0
+
+# PRD-9.5-9.9 audit remediation: required for ingestion/e2e test collection
+aiohttp==3.13.5
+# PRD-9.5-9.9 audit remediation: required for ingestion/e2e test collection
+beautifulsoup4==4.12.3
