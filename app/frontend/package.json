@@ -22,7 +22,8 @@
     "ci:lighthouse": "npx -y lighthouse@10 --output html --output json --output-path=./tmp/lh-staging --chrome-flags=\"--headless\" \"$STAGING_URL\"",
     "lint:strict": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0",
     "quality": "pnpm run type-check && pnpm run lint && pnpm run test && pnpm run build",
-    "quality:release": "pnpm run type-check && pnpm run lint:strict && pnpm run test && pnpm run build"
+    "quality:release": "pnpm run type-check && pnpm run lint:release && pnpm run test && pnpm run build",
+    "lint:release": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",

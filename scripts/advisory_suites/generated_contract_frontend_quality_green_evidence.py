@@ -1,9 +1,10 @@
-"""Generated-contract drift cleanup and frontend-quality green-run helpers.
+"""Generated-contract and frontend-quality green-evidence helpers.
 
-PRD-11.0R.RUNTIME-RESTORE.EXECUTION-3 is the first corrective slice that
-executes the generated-contract/frontend-quality command plan as a real
-blocker-clearing run. It deliberately keeps green status tied to captured
-command results; policy records alone cannot make a release gate green.
+PRD-11.0R.RUNTIME-RESTORE.EXECUTION-4 is the first execution slice that is
+allowed to turn the generated-contract and frontend-quality blockers green. It
+is intentionally fail-closed: evidence capture is not valid until the command
+outputs prove that OpenAPI/route inventory are current and the frontend release
+quality command succeeds in the repository environment.
 """
 from __future__ import annotations
 
@@ -18,13 +19,14 @@ from pathlib import Path
 from typing import Any, Iterable
 
 ROOT = Path(__file__).resolve().parents[2]
-CONTRACT = ROOT / "docs/roadmap/production_readiness/generated_contract_frontend_quality_green_run_contract.json"
-PREVIOUS_CONTRACT = ROOT / "docs/roadmap/production_readiness/generated_contract_frontend_quality_execution_contract.json"
+CONTRACT = ROOT / "docs/roadmap/production_readiness/generated_contract_frontend_quality_green_evidence_contract.json"
+PREVIOUS_CONTRACT = ROOT / "docs/roadmap/production_readiness/generated_contract_frontend_quality_green_run_contract.json"
 PRODUCTION_REGISTER = ROOT / "docs/roadmap/production_readiness/production_readiness_register.json"
 PRD11_REGISTER = ROOT / "docs/roadmap/production_readiness/prd11_production_release_register.json"
+DEFAULT_OUTPUT_DIR = ROOT / "var/prd11/runtime-restore/execution-4/generated-contract-frontend-green-evidence"
 
-PRD_ID = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-3"
-NEXT_AFTER_EVIDENCE = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-4"
+PRD_ID = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-4"
+NEXT_AFTER_EVIDENCE = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-5"
 FRESHNESS_MAX_AGE_DAYS = 21
 FALSE_BOUNDARIES = (
     "production_release_authorised",
@@ -40,11 +42,8 @@ REQUIRED_GATE_IDS = (
     "openapi_regenerate",
     "route_inventory_regenerate",
     "generated_contract_readonly_check",
-    "frontend_typecheck",
-    "frontend_lint",
-    "frontend_vitest",
-    "frontend_production_build",
     "frontend_release_quality",
+    "frontend_build_side_effect_check",
 )
 REQUIRED_EVIDENCE_TYPES = (
     "independent_command_output",
@@ -63,7 +62,7 @@ class GateCommand:
     cwd: str
     output_artifact: str
     release_blocking: bool = True
-    mutates_generated_contracts: bool = False
+    repairs_blocker: str | None = None
 
 
 def _python() -> str:
@@ -74,9 +73,14 @@ def _pnpm() -> str:
     return os.environ.get("PNPM_BIN") or shutil.which("pnpm") or "pnpm"
 
 
-def green_run_command_plan(root: Path = ROOT) -> list[dict[str, Any]]:
+def _git() -> str:
+    return os.environ.get("GIT_BIN") or shutil.which("git") or "git"
+
+
+def green_evidence_command_plan(root: Path = ROOT) -> list[dict[str, Any]]:
     py = _python()
     pnpm = _pnpm()
+    git = _git()
     commands = (
         GateCommand(
             "openapi_regenerate",
@@ -84,7 +88,7 @@ def green_run_command_plan(root: Path = ROOT) -> list[dict[str, Any]]:
             ".",
             "openapi-regenerate.json",
             True,
-            True,
+            "openapi_regenerate",
         ),
         GateCommand(
             "route_inventory_regenerate",
@@ -92,7 +96,7 @@ def green_run_command_plan(root: Path = ROOT) -> list[dict[str, Any]]:
             ".",
             "route-inventory-regenerate.json",
             True,
-            True,
+            "route_inventory_regenerate",
         ),
         GateCommand(
             "generated_contract_readonly_check",
@@ -100,37 +104,23 @@ def green_run_command_plan(root: Path = ROOT) -> list[dict[str, Any]]:
             ".",
             "generated-contract-readonly-check.json",
             True,
-            False,
-        ),
-        GateCommand(
-            "frontend_typecheck",
-            [pnpm, "run", "type-check"],
-            "app/frontend",
-            "frontend-typecheck.json",
-        ),
-        GateCommand(
-            "frontend_lint",
-            [pnpm, "run", "lint"],
-            "app/frontend",
-            "frontend-lint.json",
-        ),
-        GateCommand(
-            "frontend_vitest",
-            [pnpm, "run", "test"],
-            "app/frontend",
-            "frontend-vitest.json",
-        ),
-        GateCommand(
-            "frontend_production_build",
-            [pnpm, "run", "build"],
-            "app/frontend",
-            "frontend-build.json",
+            "generated_contract_readonly_check",
         ),
         GateCommand(
             "frontend_release_quality",
             [pnpm, "run", "quality:release"],
             "app/frontend",
-            "frontend-quality-release.json",
+            "frontend-release-quality.json",
+            True,
+            "frontend_release_quality",
+        ),
+        GateCommand(
+            "frontend_build_side_effect_check",
+            [git, "diff", "--exit-code", "--", "app/frontend/next-env.d.ts", "app/frontend/public/sw.js"],
+            ".",
+            "frontend-build-side-effect-check.json",
+            True,
+            "frontend_release_quality",
         ),
     )
     return [asdict(command) for command in commands]
@@ -164,14 +154,23 @@ def _age_days(value: Any, *, now: datetime | None = None) -> int | None:
 
 
 def _run_single(command: list[str], cwd: Path) -> dict[str, Any]:
-    completed = subprocess.run(command, cwd=cwd, text=True, capture_output=True)
-    return {
-        "command": " ".join(command),
-        "exit_code": completed.returncode,
-        "stdout_tail": completed.stdout[-8000:],
-        "stderr_tail": completed.stderr[-8000:],
-        "captured_at": datetime.now(timezone.utc).isoformat(),
-    }
+    try:
+        completed = subprocess.run(command, cwd=cwd, text=True, capture_output=True)
+        return {
+            "command": " ".join(command),
+            "exit_code": completed.returncode,
+            "stdout_tail": completed.stdout[-8000:],
+            "stderr_tail": completed.stderr[-8000:],
+            "captured_at": datetime.now(timezone.utc).isoformat(),
+        }
+    except FileNotFoundError as exc:
+        return {
+            "command": " ".join(command),
+            "exit_code": 127,
+            "stdout_tail": "",
+            "stderr_tail": f"Executable not found: {exc.filename}",
+            "captured_at": datetime.now(timezone.utc).isoformat(),
+        }
 
 
 def _run_command(command: list[str], cwd: Path) -> dict[str, Any]:
@@ -191,15 +190,17 @@ def _run_command(command: list[str], cwd: Path) -> dict[str, Any]:
     stdout: list[str] = []
     stderr: list[str] = []
     exit_code = 0
+    executed: list[str] = []
     for part in parts:
         result = _run_single(part, cwd)
+        executed.append(result["command"])
         stdout.append(result.get("stdout_tail", ""))
         stderr.append(result.get("stderr_tail", ""))
         if result.get("exit_code") != 0:
             exit_code = int(result.get("exit_code") or 1)
             break
     return {
-        "command": " && ".join(" ".join(part) for part in parts),
+        "command": " && ".join(executed),
         "exit_code": exit_code,
         "stdout_tail": "\n".join(stdout)[-8000:],
         "stderr_tail": "\n".join(stderr)[-8000:],
@@ -207,7 +208,7 @@ def _run_command(command: list[str], cwd: Path) -> dict[str, Any]:
     }
 
 
-def execute_green_run(
+def execute_green_evidence(
     root: Path = ROOT,
     *,
     gates: Iterable[str] | None = None,
@@ -215,10 +216,10 @@ def execute_green_run(
     continue_on_failure: bool = True,
 ) -> dict[str, Any]:
     wanted = set(gates or [])
-    out = output_dir or (root / "var/prd11/runtime-restore/execution-3/generated-frontend-green-run")
+    out = output_dir or DEFAULT_OUTPUT_DIR
     out.mkdir(parents=True, exist_ok=True)
     results: list[dict[str, Any]] = []
-    for item in green_run_command_plan(root):
+    for item in green_evidence_command_plan(root):
         if wanted and item["gate_id"] not in wanted:
             continue
         result = _run_command(list(item["command"]), root / item["cwd"])
@@ -233,6 +234,16 @@ def execute_green_run(
         "prd_id": PRD_ID,
         "executed": True,
         "results": results,
+        "generated_contracts_green": all(
+            item.get("green") is True
+            for item in results
+            if item.get("gate_id") in {"openapi_regenerate", "route_inventory_regenerate", "generated_contract_readonly_check"}
+        ),
+        "frontend_quality_green": all(
+            item.get("green") is True
+            for item in results
+            if item.get("gate_id") in {"frontend_release_quality", "frontend_build_side_effect_check"}
+        ),
         "all_green": bool(results) and not blockers and len(results) == len(REQUIRED_GATE_IDS),
         "blockers": blockers,
         "artifact_dir": str(out.relative_to(root) if out.is_relative_to(root) else out),
@@ -240,6 +251,11 @@ def execute_green_run(
     }
     _write_json(out / "summary.json", summary)
     return summary
+
+
+def load_green_evidence_summary(root: Path = ROOT, *, output_dir: Path | None = None) -> dict[str, Any]:
+    path = (output_dir or DEFAULT_OUTPUT_DIR) / "summary.json"
+    return _load(path)
 
 
 def _gate_valid(item: dict[str, Any]) -> bool:
@@ -252,7 +268,7 @@ def _gate_valid(item: dict[str, Any]) -> bool:
         item.get("governance_substitution_allowed") is False,
         isinstance(item.get("command"), list) and len(item.get("command")) >= 2,
         isinstance(item.get("required_evidence"), list) and set(REQUIRED_EVIDENCE_TYPES).issubset(set(item.get("required_evidence"))),
-        isinstance(item.get("blocker_when_nonzero_exit"), bool) and item.get("blocker_when_nonzero_exit") is True,
+        item.get("blocker_when_nonzero_exit") is True,
     ])
 
 
@@ -281,7 +297,7 @@ def evaluate_governance_alignment(root: Path = ROOT, *, now: datetime | None = N
         "contract_age_days": _age_days(_load(root / CONTRACT.relative_to(ROOT)).get("last_reviewed_at"), now=now),
     }
     fresh = all(age is not None and age <= FRESHNESS_MAX_AGE_DAYS for age in ages.values())
-    allowed = {PRD_ID, NEXT_AFTER_EVIDENCE, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-5", "PRD-11.0R.RUNTIME-RESTORE.EXECUTION"}
+    allowed = {PRD_ID, NEXT_AFTER_EVIDENCE, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION"}
     return {
         "valid": prod_next == prd11_next and prod_next in allowed and fresh and release_boundaries_locked,
         "state_agrees": prod_next == prd11_next and prod_next in allowed,
@@ -294,55 +310,58 @@ def evaluate_governance_alignment(root: Path = ROOT, *, now: datetime | None = N
     }
 
 
-def evaluate_green_run_contract(root: Path = ROOT) -> dict[str, Any]:
+def evaluate_green_evidence_contract(root: Path = ROOT, *, require_green: bool = False) -> dict[str, Any]:
     contract = _load(root / CONTRACT.relative_to(ROOT))
     gates = contract.get("gates", []) if isinstance(contract.get("gates"), list) else []
     gate_ids = {item.get("id") for item in gates if isinstance(item, dict)}
     missing_gates = [gate_id for gate_id in REQUIRED_GATE_IDS if gate_id not in gate_ids]
     gates_valid = all(_gate_valid(item) for item in gates if isinstance(item, dict)) and not missing_gates
-    execution_results = contract.get("execution_results", []) if isinstance(contract.get("execution_results"), list) else []
-    execution_results_valid = all(_result_valid(item) for item in execution_results if isinstance(item, dict))
     policy = contract.get("execution_policy", {}) if isinstance(contract.get("execution_policy"), dict) else {}
     policy_valid = all([
         policy.get("regenerate_then_readonly_check_required") is True,
-        policy.get("frontend_type_lint_test_build_required") is True,
+        policy.get("frontend_release_quality_required") is True,
+        policy.get("frontend_build_side_effect_check_required") is True,
         policy.get("green_status_requires_all_release_blocking_commands_zero") is True,
         policy.get("captured_command_outputs_are_required") is True,
         policy.get("presence_only_outputs_forbidden") is True,
         policy.get("governance_records_cannot_override_failed_gate") is True,
     ])
     previous_contract = _load(root / PREVIOUS_CONTRACT.relative_to(ROOT))
-    previous_valid = previous_contract.get("prd_id") == "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-2"
+    previous_valid = previous_contract.get("prd_id") == "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-3"
     governance = evaluate_governance_alignment(root)
-    command_plan = green_run_command_plan(root)
+    command_plan = green_evidence_command_plan(root)
     command_plan_valid = {item["gate_id"] for item in command_plan} == set(REQUIRED_GATE_IDS)
-    all_green_from_results = bool(execution_results) and all(item.get("green") is True for item in execution_results)
-    valid = all([
+    green_summary = load_green_evidence_summary(root)
+    results = green_summary.get("results", []) if isinstance(green_summary.get("results"), list) else []
+    results_valid = bool(results) and all(_result_valid(item) for item in results if isinstance(item, dict))
+    all_green = green_summary.get("all_green") is True
+    base_valid = all([
         contract.get("prd_id") == PRD_ID,
-        contract.get("schema_version") == "prd11.0r/runtime-restore-execution-3/generated-frontend-green-run/v1",
+        contract.get("schema_version") == "prd11.0r/runtime-restore-execution-4/generated-frontend-green-evidence/v1",
         gates_valid,
         policy_valid,
-        execution_results_valid,
         previous_valid,
         command_plan_valid,
-        contract.get("generated_contracts_green") is False,
-        contract.get("frontend_quality_green") is False,
         contract.get("next_after_evidence") == NEXT_AFTER_EVIDENCE,
         governance["valid"],
     ])
+    valid = base_valid and ((results_valid and all_green) if require_green else True)
     return {
         "valid": valid,
+        "base_valid": base_valid,
         "prd_id": contract.get("prd_id"),
         "missing_gates": missing_gates,
         "gate_count": len(gates),
         "gates_valid": gates_valid,
         "policy_valid": policy_valid,
-        "execution_results_valid": execution_results_valid,
-        "previous_execution_2_contract_valid": previous_valid,
+        "previous_execution_3_contract_valid": previous_valid,
         "command_plan_valid": command_plan_valid,
-        "generated_contracts_green": contract.get("generated_contracts_green") is True,
-        "frontend_quality_green": contract.get("frontend_quality_green") is True,
-        "all_green_from_results": all_green_from_results,
+        "results_valid": results_valid,
+        "all_green": all_green,
+        "generated_contracts_green": green_summary.get("generated_contracts_green") is True,
+        "frontend_quality_green": green_summary.get("frontend_quality_green") is True,
+        "green_summary_present": bool(green_summary),
+        "blockers": green_summary.get("blockers", []),
         "governance_alignment_valid": governance["valid"],
         "governance_alignment": governance,
         "next_after_evidence": contract.get("next_after_evidence"),

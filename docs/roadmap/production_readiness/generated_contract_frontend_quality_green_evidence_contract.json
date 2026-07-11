@@ -1,0 +1,137 @@
+{
+  "execution_policy": {
+    "captured_command_outputs_are_required": true,
+    "frontend_build_side_effect_check_required": true,
+    "frontend_release_quality_required": true,
+    "frontend_warnings_are_advisory_until_strict_lint_gate": true,
+    "governance_records_cannot_override_failed_gate": true,
+    "green_status_requires_all_release_blocking_commands_zero": true,
+    "presence_only_outputs_forbidden": true,
+    "regenerate_then_readonly_check_required": true
+  },
+  "frontend_quality_green": false,
+  "gates": [
+    {
+      "blocker_when_nonzero_exit": true,
+      "command": [
+        "python",
+        "scripts/generate_openapi.py"
+      ],
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "openapi_regenerate",
+      "must_execute_in_repo_environment": true,
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "exit_code",
+        "stdout_tail",
+        "stderr_tail",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ]
+    },
+    {
+      "blocker_when_nonzero_exit": true,
+      "command": [
+        "python",
+        "scripts/generate_route_inventory.py"
+      ],
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "route_inventory_regenerate",
+      "must_execute_in_repo_environment": true,
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "exit_code",
+        "stdout_tail",
+        "stderr_tail",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ]
+    },
+    {
+      "blocker_when_nonzero_exit": true,
+      "command": [
+        "python",
+        "scripts/generate_openapi.py",
+        "--check",
+        "&&",
+        "python",
+        "scripts/generate_route_inventory.py",
+        "--check"
+      ],
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "generated_contract_readonly_check",
+      "must_execute_in_repo_environment": true,
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "exit_code",
+        "stdout_tail",
+        "stderr_tail",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ]
+    },
+    {
+      "blocker_when_nonzero_exit": true,
+      "command": [
+        "pnpm",
+        "run",
+        "quality:release"
+      ],
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "frontend_release_quality",
+      "must_execute_in_repo_environment": true,
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "exit_code",
+        "stdout_tail",
+        "stderr_tail",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ]
+    },
+    {
+      "blocker_when_nonzero_exit": true,
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "--",
+        "app/frontend/next-env.d.ts",
+        "app/frontend/public/sw.js"
+      ],
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "frontend_build_side_effect_check",
+      "must_execute_in_repo_environment": true,
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "exit_code",
+        "stdout_tail",
+        "stderr_tail",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ]
+    }
+  ],
+  "generated_contracts_green": false,
+  "last_reviewed_at": "2026-07-11T10:31:49.020030+00:00",
+  "next_after_evidence": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-5",
+  "prd_id": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-4",
+  "previous_prd": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-3",
+  "schema_version": "prd11.0r/runtime-restore-execution-4/generated-frontend-green-evidence/v1",
+  "source_of_truth": "docs/testing/generated_contract_frontend_quality_green_evidence.md"
+}

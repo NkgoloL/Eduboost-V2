@@ -3,10 +3,14 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
 
+const generateServiceWorker = process.env.EDUBOOST_GENERATE_SERVICE_WORKER === "true";
+
 const withSerwist = require("@serwist/next").default({
   swSrc: "src/app/sw.ts",
   swDest: "public/sw.js",
-  disable: process.env.NODE_ENV === "development",
+  // Build/quality gates must be read-only by default. Enable service-worker
+  // generation explicitly only when producing a deployable PWA artifact.
+  disable: process.env.NODE_ENV === "development" || !generateServiceWorker,
 });
 
 function normalizeApiBaseUrl(value) {
