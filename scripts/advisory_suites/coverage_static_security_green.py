@@ -248,7 +248,15 @@ def _remaining_violation_count(gate_id: str, stdout: str, stderr: str, exit_code
             _first_int(r"(\d+) failed", text) or 0,
             _first_int(r"(\d+) errors?", text) or 0,
         ]
-        return sum(counts) or len(re.findall(r"^(FAILED|ERROR) ", text, re.MULTILINE))
+        summary_count = sum(counts) or len(re.findall(r"^(FAILED|ERROR) ", text, re.MULTILINE))
+        if summary_count:
+            return summary_count
+        progress_lines = [
+            line.split("[", 1)[0]
+            for line in stdout.splitlines()
+            if "[" in line and "%" in line
+        ]
+        return sum(line.count("F") for line in progress_lines)
     return 1
 
 

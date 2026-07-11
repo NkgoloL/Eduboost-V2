@@ -5,6 +5,7 @@ import sys
 from scripts.advisory_suites.coverage_static_security_green import (
     REQUIRED_GATE_IDS,
     CoverageStaticSecurityCommand,
+    _remaining_violation_count,
     _run_one,
     command_plan,
     evaluate_coverage_static_security_contract,
@@ -69,3 +70,9 @@ def test_gate_execution_records_bounded_operational_artifacts(tmp_path: Path):
     assert payload["remaining_violation_count"] == 1
     assert (tmp_path / "synthetic.stdout.txt").read_text()
     assert (tmp_path / "synthetic.stderr.txt").read_text()
+
+
+def test_coverage_timeout_counts_observed_pytest_failures():
+    stdout = "F........FF............................................................. [  2%]\n.....F...F [  4%]\n"
+
+    assert _remaining_violation_count("coverage_execution", stdout, "", None) == 5
