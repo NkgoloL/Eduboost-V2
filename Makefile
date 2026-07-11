@@ -3628,3 +3628,11 @@ prd1100r-runtime-restore-execution-6-verify:
 
 prd1100r-runtime-restore-execution-6-run:
 	PYTHONPATH=. $(PYTHON) scripts/test_suites/run_product_critical_flow_green.py --execute --require-green --json
+
+
+.PHONY: prd1100r-exec7-coverage-static-security-verify prd1100r-exec7-coverage-static-security-run
+prd1100r-exec7-coverage-static-security-verify:
+	$(PYTHON) scripts/advisory_suites/verify_coverage_static_security_green.py --json
+
+prd1100r-exec7-coverage-static-security-run:
+	$(PYTHON) scripts/advisory_suites/run_coverage_static_security_green.py --execute --require-green --json
