@@ -1,0 +1,89 @@
+{
+  "http_status": 200,
+  "json": {
+    "critical": {
+      "audit_repository": {
+        "status": "ok"
+      },
+      "migrations": {
+        "exact_repository_head": true,
+        "expected_repository_heads": [
+          "20260711_1510_prd11_runtime_green_exec5"
+        ],
+        "expected_single_head": "20260711_1510_prd11_runtime_green_exec5",
+        "live_revisions": [
+          "20260711_1510_prd11_runtime_green_exec5"
+        ],
+        "reason_codes": [],
+        "repository_revision_count": 47,
+        "status": "ok",
+        "unknown_revisions": []
+      },
+      "postgres": {
+        "status": "ok"
+      },
+      "redis": {
+        "status": "ok"
+      },
+      "schema_contract": {
+        "missing_columns": {},
+        "missing_tables": [],
+        "required_columns": {
+          "diagnostic_items": [
+            "irt_quality_state",
+            "irt_discrimination",
+            "irt_difficulty",
+            "irt_guessing"
+          ],
+          "runtime_kg_edges": [
+            "source_node_id",
+            "target_node_id",
+            "edge_type",
+            "weight"
+          ],
+          "runtime_kg_nodes": [
+            "stable_code",
+            "node_type",
+            "label",
+            "mastery_weight"
+          ]
+        },
+        "required_tables": [
+          "guardians",
+          "learner_profiles",
+          "assessments",
+          "assessment_attempts",
+          "diagnostic_items",
+          "diagnostic_sessions",
+          "study_plans",
+          "lessons",
+          "runtime_kg_graph_loads",
+          "runtime_kg_nodes",
+          "runtime_kg_edges",
+          "runtime_kg_events",
+          "ai_usage_events",
+          "tutor_sessions",
+          "audit_events"
+        ],
+        "schema_contract_satisfied": true,
+        "status": "ok"
+      },
+      "secrets": {
+        "status": "ok"
+      }
+    },
+    "message": "System is operational",
+    "optional": {
+      "judiciary": {
+        "status": "ok"
+      },
+      "llm_provider": {
+        "detail": "No LLM provider credentials configured",
+        "status": "skipped"
+      }
+    },
+    "status": "ok"
+  },
+  "status": "pass",
+  "url": "http://localhost:8000/ready"
+}
