@@ -10,6 +10,7 @@ from scripts.advisory_suites.generated_contract_frontend_green_run import evalua
 ROOT = Path(__file__).resolve().parents[2]
 PRD_ID = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-3"
 NEXT = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-4"
+NEXT_AFTER_EXECUTION_4 = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-5"
 RECORD = ROOT / "docs/roadmap/production_readiness/prd_1100r_runtime_restore_execution_3_generated_contract_frontend_green_run_record.json"
 REGISTER = ROOT / "docs/roadmap/production_readiness/prd11_production_release_register.json"
 PROD_REGISTER = ROOT / "docs/roadmap/production_readiness/production_readiness_register.json"
@@ -75,8 +76,8 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
     valid = all([
         authority_valid,
         evidence_recorded,
-        register.get("next_authorised_item") == NEXT,
-        prod_register.get("next_authorised_item") == NEXT,
+        register.get("next_authorised_item") in {NEXT, NEXT_AFTER_EXECUTION_4},
+        prod_register.get("next_authorised_item") in {NEXT, NEXT_AFTER_EXECUTION_4},
     ])
     return {
         "valid": valid,
