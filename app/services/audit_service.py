@@ -42,6 +42,14 @@ class AuditService:
             return [_entry_from_row(row) for row in rows]
         return []
 
+    async def consent_granted(self, guardian_id: str, learner_id: str, policy_version: str) -> AuditLogEntry:
+        return await self.log_event(
+            "CONSENT_GRANTED",
+            payload={"learner_id": learner_id, "policy_version": policy_version},
+            learner_id=learner_id,
+            actor_id=guardian_id,
+        )
+
 
 def _entry_from_row(row: Any) -> AuditLogEntry:
     return AuditLogEntry(

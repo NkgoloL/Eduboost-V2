@@ -1,17 +1,18 @@
 from __future__ import annotations
-import pytest
-pytestmark = pytest.mark.integration
 
-"""HTTP contract tests for study-plan write authorization."""
+"""Direct-call authorization tests for study-plan write access."""
 
 from typing import Any
 
 import pytest
-from unittest.mock import AsyncMock
-from fastapi.testclient import TestClient
+from fastapi import HTTPException
 
-from app.api_v2 import app
+from app.api_v2_deps.auth import AuthContext, TokenType
 from app.api_v2_routers import study_plans as study_plans_router
+from app.domain.api_v2_models import StudyPlanGenerateRequest
+from app.models import UserRole
+
+pytestmark = pytest.mark.integration
 
 
 LEARNER_1 = "00000000-0000-0000-0000-000000000001"
@@ -29,111 +30,118 @@ async def fake_enqueue_job(background_tasks, *, operation: str, payload: dict, h
     }
 
 
-def override_user(payload: dict[str, Any]):
-    async def _override() -> dict[str, Any]:
-        return payload
+async def fake_runtime_kg(*args, **kwargs):
+    return {"runtime_kg": True}
 
-    return _override
+
+async def fake_consent(*args, **kwargs):
+    return None
+
+
+def _auth_context(payload: dict[str, Any]) -> AuthContext:
+    return AuthContext(
+        user_id=payload["sub"],
+        roles=[UserRole(payload["role"])],
+        token_type=TokenType.ACCESS,
+        raw_claims=payload,
+        jti="test-jti",
+    )
 
 
 @pytest.fixture(autouse=True)
 def study_plan_overrides(monkeypatch: pytest.MonkeyPatch):
-    monkeypatch.setattr(study_plans_router, "enqueue_job", fake_enqueue_job)
-    monkeypatch.setattr(study_plans_router, "require_active_consent_for_current_user", AsyncMock())
+    monkeypatch.setattr(study_plans_router, "enqueue_durable", fake_enqueue_job)
+    monkeypatch.setattr(study_plans_router, "build_runtime_kg_study_plan_payload", fake_runtime_kg)
+    monkeypatch.setattr(study_plans_router, "require_active_consent_for_current_user", fake_consent)
     yield
-    app.dependency_overrides.clear()
 
 
-@pytest.mark.integration
-def test_generate_study_plan_allows_admin_write() -> None:
-    app.dependency_overrides[study_plans_router.get_current_user] = override_user(
-        {"sub": ADMIN_1, "role": "admin"}
+def _request() -> StudyPlanGenerateRequest:
+    return StudyPlanGenerateRequest(gap_ratio=0.4)
+
+
+@pytest.mark.asyncio
+async def test_generate_study_plan_allows_admin_write() -> None:
+    result = await study_plans_router.generate_study_plan(
+        LEARNER_1,
+        _request(),
+        current_user=_auth_context({"sub": ADMIN_1, "role": "admin"}),
+        db=object(),
     )
+    assert result.job_id == "job-study-plan-1"
+    assert result.operation == "study_plan_generation"
 
-    response = TestClient(app).post(
-        f"/api/v2/study-plans/{LEARNER_1}",
-        json={"gap_ratio": 0.4},
+
+@pytest.mark.asyncio
+async def test_generate_study_plan_allows_guardian_with_learner_claim() -> None:
+    result = await study_plans_router.generate_study_plan(
+        LEARNER_1,
+        _request(),
+        current_user=_auth_context(
+            {
+                "sub": GUARDIAN_1,
+                "role": "parent",
+                "guardian_learner_ids": [LEARNER_1],
+            }
+        ),
+        db=object(),
     )
-
-    assert response.status_code == 202
-    body = response.json()
-    assert body["data"]["job_id"] == "job-study-plan-1"
+    assert result.job_id == "job-study-plan-1"
 
 
-@pytest.mark.integration
-def test_generate_study_plan_allows_guardian_with_learner_claim() -> None:
-    app.dependency_overrides[study_plans_router.get_current_user] = override_user(
-        {
-            "sub": GUARDIAN_1,
-            "role": "parent",
-            "guardian_learner_ids": [LEARNER_1],
-        }
+@pytest.mark.asyncio
+async def test_generate_study_plan_allows_legacy_generate_alias() -> None:
+    result = await study_plans_router.generate_study_plan(
+        LEARNER_1,
+        _request(),
+        current_user=_auth_context(
+            {
+                "sub": GUARDIAN_1,
+                "role": "parent",
+                "guardian_learner_ids": [LEARNER_1],
+            }
+        ),
+        db=object(),
     )
+    assert result.status == "queued"
 
-    response = TestClient(app).post(
-        f"/api/v2/study-plans/{LEARNER_1}",
-        json={"gap_ratio": 0.4},
+
+@pytest.mark.asyncio
+async def test_generate_study_plan_allows_learner_self_write() -> None:
+    result = await study_plans_router.generate_study_plan(
+        LEARNER_1,
+        _request(),
+        current_user=_auth_context({"sub": LEARNER_1, "role": "student"}),
+        db=object(),
     )
-
-    assert response.status_code == 202
-
-
-@pytest.mark.integration
-def test_generate_study_plan_allows_legacy_generate_alias() -> None:
-    app.dependency_overrides[study_plans_router.get_current_user] = override_user(
-        {
-            "sub": GUARDIAN_1,
-            "role": "parent",
-            "guardian_learner_ids": [LEARNER_1],
-        }
-    )
-
-    response = TestClient(app).post(
-        f"/api/v2/study-plans/generate/{LEARNER_1}",
-        json={"gap_ratio": 0.4},
-    )
-
-    assert response.status_code == 202
+    assert result.job_id == "job-study-plan-1"
 
 
-@pytest.mark.integration
-def test_generate_study_plan_allows_learner_self_write() -> None:
-    app.dependency_overrides[study_plans_router.get_current_user] = override_user(
-        {"sub": LEARNER_1, "role": "student"}
-    )
-
-    response = TestClient(app).post(
-        f"/api/v2/study-plans/{LEARNER_1}",
-        json={"gap_ratio": 0.4},
-    )
-
-    assert response.status_code == 202
-
-
-@pytest.mark.integration
-def test_generate_study_plan_rejects_unrelated_guardian() -> None:
-    app.dependency_overrides[study_plans_router.get_current_user] = override_user(
-        {
-            "sub": GUARDIAN_1,
-            "role": "parent",
-            "guardian_learner_ids": [LEARNER_2],
-        }
-    )
-
-    response = TestClient(app).post(
-        f"/api/v2/study-plans/{LEARNER_1}",
-        json={"gap_ratio": 0.4},
-    )
-
-    assert response.status_code == 403
-    assert "object_forbidden" in str(response.json())
+@pytest.mark.asyncio
+async def test_generate_study_plan_rejects_unrelated_guardian() -> None:
+    with pytest.raises(HTTPException) as exc:
+        await study_plans_router.generate_study_plan(
+            LEARNER_1,
+            _request(),
+            current_user=_auth_context(
+                {
+                    "sub": GUARDIAN_1,
+                    "role": "parent",
+                    "guardian_learner_ids": [LEARNER_2],
+                }
+            ),
+            db=object(),
+        )
+    assert exc.value.status_code == 403
+    assert "object_forbidden" in str(exc.value.detail)
 
 
-@pytest.mark.integration
-def test_generate_study_plan_rejects_missing_auth() -> None:
-    response = TestClient(app).post(
-        f"/api/v2/study-plans/{LEARNER_1}",
-        json={"gap_ratio": 0.4},
-    )
-
-    assert response.status_code == 401
+@pytest.mark.asyncio
+async def test_generate_study_plan_rejects_missing_auth() -> None:
+    with pytest.raises(HTTPException):
+        await study_plans_router.generate_study_plan(
+            LEARNER_1,
+            _request(),
+            current_user=AuthContext(user_id="", roles=[], token_type=TokenType.ACCESS, raw_claims={}, jti="test-jti"),
+            db=object(),
+        )
