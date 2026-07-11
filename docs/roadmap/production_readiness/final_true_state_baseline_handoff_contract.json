@@ -1,0 +1,216 @@
+{
+  "freshness_max_age_days": 21,
+  "gates": [
+    {
+      "command": "PYTHONPATH=. python3 scripts/production_readiness/collect_prd1100r_true_state_runtime_baseline.py --run-expensive-checks --json",
+      "controls_handoff_to_prd1100_1104": true,
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "runtime_baseline",
+      "negative_or_failure_command": "PYTHONPATH=. python3 scripts/runtime/verify_runtime_stack_readiness.py --json",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "positive_path_result",
+        "negative_or_failure_path_result",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ],
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/runtime/verify_disposable_stack_schema_lineage.py --require-live --json",
+      "controls_handoff_to_prd1100_1104": true,
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "disposable_stack_schema_lineage",
+      "negative_or_failure_command": "PYTHONPATH=. python3 scripts/runtime/verify_disposable_stack_schema_lineage.py --json",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "positive_path_result",
+        "negative_or_failure_path_result",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ],
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/test_suites/run_product_runtime_gates.py combined --json",
+      "controls_handoff_to_prd1100_1104": true,
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "product_runtime_gates",
+      "negative_or_failure_command": "PYTHONPATH=. python3 scripts/test_suites/verify_product_runtime_test_gates.py --json",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "positive_path_result",
+        "negative_or_failure_path_result",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ],
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/test_suites/run_product_gate_execution.py combined --json",
+      "controls_handoff_to_prd1100_1104": true,
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "product_critical_flows",
+      "negative_or_failure_command": "PYTHONPATH=. python3 scripts/test_suites/verify_product_gate_execution.py --json",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "positive_path_result",
+        "negative_or_failure_path_result",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ],
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "command": "make test-coverage COVERAGE_THRESHOLD=70",
+      "controls_handoff_to_prd1100_1104": true,
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "coverage_execution",
+      "negative_or_failure_command": "PYTHONPATH=. python3 scripts/coverage_suites/verify_coverage_contract.py --json",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "positive_path_result",
+        "negative_or_failure_path_result",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ],
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "command": "cd app/frontend && pnpm lint && pnpm test:run && pnpm build",
+      "controls_handoff_to_prd1100_1104": true,
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "frontend_quality",
+      "negative_or_failure_command": "cd app/frontend && pnpm lint --max-warnings=0",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "positive_path_result",
+        "negative_or_failure_path_result",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ],
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "command": "python3 -m ruff check app tests && python3 -m mypy app && python3 -m bandit -r app scripts -q",
+      "controls_handoff_to_prd1100_1104": true,
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "advisory_static_quality",
+      "negative_or_failure_command": "python3 -m ruff check app tests --select F,E9",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "positive_path_result",
+        "negative_or_failure_path_result",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ],
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "command": "python3 scripts/generate_openapi.py --check && python3 scripts/generate_route_inventory.py --check",
+      "controls_handoff_to_prd1100_1104": true,
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "generated_contract_drift",
+      "negative_or_failure_command": "python3 scripts/generate_openapi.py --check",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "positive_path_result",
+        "negative_or_failure_path_result",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ],
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "command": "pip-audit -r requirements/base.txt -r requirements/dev.txt && cd app/frontend && pnpm audit --prod",
+      "controls_handoff_to_prd1100_1104": true,
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "dependency_security_audit",
+      "negative_or_failure_command": "pip-audit -r requirements/base.txt --strict",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "positive_path_result",
+        "negative_or_failure_path_result",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ],
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "command": "detect-secrets scan --baseline .secrets.baseline app scripts .github && detect-secrets audit .secrets.baseline",
+      "controls_handoff_to_prd1100_1104": true,
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "secret_baseline_review",
+      "negative_or_failure_command": "detect-secrets audit .secrets.baseline",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "positive_path_result",
+        "negative_or_failure_path_result",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ],
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    }
+  ],
+  "handoff_policy": {
+    "advisory_static_gate_green_required": true,
+    "all_release_blocking_gates_must_be_green": true,
+    "coverage_gate_green_required": true,
+    "dependency_security_gate_green_required": true,
+    "frontend_quality_green_required": true,
+    "generated_contracts_green_required": true,
+    "governance_substitution_allowed": false,
+    "green_handoff_target": "PRD-11.0-11.4",
+    "presence_only_evidence_allowed": false,
+    "product_gate_green_required": true,
+    "red_handoff_target": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION",
+    "runtime_baseline_green_required": true,
+    "secret_baseline_gate_green_required": true
+  },
+  "last_reviewed_at": "2026-07-11T05:12:57.581314+00:00",
+  "next_if_green": "PRD-11.0-11.4",
+  "next_if_red": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION",
+  "prd_id": "PRD-11.0R.RUNTIME-RESTORE-6",
+  "schema_version": "prd11.0r/runtime-restore-6/final-true-state-baseline-handoff/v1",
+  "title": "Final True-State Baseline Proof and Controlled Handoff"
+}

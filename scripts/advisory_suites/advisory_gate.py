@@ -40,7 +40,7 @@ REQUIRED_EVIDENCE_TYPES = (
     "fresh_artifact_reference",
     "blocker_record_when_not_green",
 )
-ALLOWED_NEXT = (PRD_ID, NEXT_AFTER_EVIDENCE)
+ALLOWED_NEXT = (PRD_ID, NEXT_AFTER_EVIDENCE, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION", "PRD-11.0-11.4")
 
 
 @dataclass(frozen=True)
