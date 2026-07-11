@@ -2,27 +2,136 @@
   "active_python_interpreter_required_for_generated_contracts": true,
   "authority_recorded": true,
   "billing_launch_authorised": false,
+  "captured_at": "2026-07-11T09:01:39.163148+00:00",
   "controlled_beta_activation_operational_hold": true,
   "created_at": "2026-07-11T07:30:00+00:00",
   "deployment_authorised": false,
-  "evidence_recorded": false,
+  "evidence_recorded": true,
   "frontend_lint_gate_recorded": true,
   "frontend_production_build_gate_recorded": true,
   "frontend_quality_green": false,
   "frontend_quality_release_script_recorded": true,
   "frontend_typecheck_gate_recorded": true,
   "frontend_vitest_gate_recorded": true,
+  "gate_results": {
+    "all_green": false,
+    "captured_at": "2026-07-11T09:01:39.163148+00:00",
+    "commands": [
+      {
+        "command": [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2/.venv/bin/python",
+          "scripts/generate_openapi.py"
+        ],
+        "cwd": ".",
+        "evidence_artifact": "generated-openapi-regeneration.json",
+        "gate_id": "generated_contract_regeneration",
+        "negative_path_command": [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2/.venv/bin/python",
+          "scripts/generate_openapi.py",
+          "--check"
+        ],
+        "release_blocking": true
+      },
+      {
+        "command": [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2/.venv/bin/python",
+          "scripts/generate_openapi.py",
+          "--check",
+          "&&",
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2/.venv/bin/python",
+          "scripts/generate_route_inventory.py",
+          "--check"
+        ],
+        "cwd": ".",
+        "evidence_artifact": "generated-contract-drift-check.json",
+        "gate_id": "generated_contract_drift_check",
+        "negative_path_command": [
+          "/home/nkgolol/Dev/SandBox/Eduboost-V2/.venv/bin/python",
+          "scripts/generate_route_inventory.py",
+          "--check"
+        ],
+        "release_blocking": true
+      },
+      {
+        "command": [
+          "/home/nkgolol/.local/bin/pnpm",
+          "run",
+          "type-check"
+        ],
+        "cwd": "app/frontend",
+        "evidence_artifact": "frontend-typecheck.json",
+        "gate_id": "frontend_typecheck",
+        "negative_path_command": [
+          "/home/nkgolol/.local/bin/pnpm",
+          "run",
+          "type-check"
+        ],
+        "release_blocking": true
+      },
+      {
+        "command": [
+          "/home/nkgolol/.local/bin/pnpm",
+          "run",
+          "lint"
+        ],
+        "cwd": "app/frontend",
+        "evidence_artifact": "frontend-lint.json",
+        "gate_id": "frontend_lint",
+        "negative_path_command": [
+          "/home/nkgolol/.local/bin/pnpm",
+          "run",
+          "lint:strict"
+        ],
+        "release_blocking": true
+      },
+      {
+        "command": [
+          "/home/nkgolol/.local/bin/pnpm",
+          "run",
+          "test"
+        ],
+        "cwd": "app/frontend",
+        "evidence_artifact": "frontend-vitest.json",
+        "gate_id": "frontend_vitest",
+        "negative_path_command": [
+          "/home/nkgolol/.local/bin/pnpm",
+          "run",
+          "test"
+        ],
+        "release_blocking": true
+      },
+      {
+        "command": [
+          "/home/nkgolol/.local/bin/pnpm",
+          "run",
+          "build"
+        ],
+        "cwd": "app/frontend",
+        "evidence_artifact": "frontend-production-build.json",
+        "gate_id": "frontend_production_build",
+        "negative_path_command": [
+          "/home/nkgolol/.local/bin/pnpm",
+          "run",
+          "quality:release"
+        ],
+        "release_blocking": true
+      }
+    ],
+    "executed": false,
+    "results": []
+  },
   "generated_contract_drift_check_gate_recorded": true,
   "generated_contract_frontend_quality_authority_recorded": true,
-  "generated_contract_frontend_quality_evidence_recorded": false,
+  "generated_contract_frontend_quality_evidence_recorded": true,
   "generated_contract_regeneration_gate_recorded": true,
   "generated_contracts_green": false,
   "generated_frontend_contract_valid": true,
   "live_learner_traffic_operationally_safe": false,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-2",
+  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-3",
   "prd12_implementation_authorised": false,
   "prd_id": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-2",
+  "prd_owner": "Nkgolo Lebelo",
   "presence_only_frontend_quality_evidence_forbidden": true,
   "presence_only_generated_contract_evidence_forbidden": true,
   "production_release_authorised": false,
@@ -31,6 +140,7 @@
   "public_beta_live_traffic_authorised": false,
   "release_tag_authorised": false,
   "runtime_baseline_green": false,
-  "status": "authority_recorded",
+  "status": "runtime_restore_execution_2_evidence_recorded",
+  "target_branch": "master",
   "title": "Generated Contract Regeneration and Frontend Quality Execution"
 }
