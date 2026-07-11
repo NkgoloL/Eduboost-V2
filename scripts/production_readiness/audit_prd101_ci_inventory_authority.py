@@ -183,7 +183,6 @@ def prd1_1_recorded(prd1_register: dict[str, Any]) -> bool:
         (PRD_ID, "PRD-1.2"),
         ("PRD-1.4", "PRD-1.5"),
         ("PRD-1.9", "PRD-2"),
-        ("PRD-1.9", "PRD-3"),
     }:
         return False
     return any(
@@ -201,9 +200,7 @@ def production_register_position(register: dict[str, Any]) -> str:
         return "prd1_1_recorded"
     if last_item == "PRD-1.4" and next_item == "PRD-1.5":
         return "prd1_4_recorded_after_prd1_1"
-    if last_item == "PRD-1.9" and next_item in {"PRD-2", "PRD-3"}:
-        return "prd1_closed_after_prd1_1"
-    if str(last_item).startswith("PRD-2.") and next_item == "PRD-3":
+    if last_item == "PRD-1.9" and next_item == "PRD-2":
         return "prd1_closed_after_prd1_1"
     return "unexpected"
 

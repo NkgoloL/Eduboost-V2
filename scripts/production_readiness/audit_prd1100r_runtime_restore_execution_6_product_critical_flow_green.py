@@ -23,7 +23,7 @@ FALSE_BOUNDARIES = {
     "live_payment_processing_authorised": False,
     "prd12_implementation_authorised": False,
 }
-ALLOWED_NEXT = {PRD_ID, NEXT}
+ALLOWED_NEXT = {PRD_ID, NEXT, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8"}
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -93,8 +93,8 @@ def audit(root: Path = ROOT, *, require_green: bool = False) -> dict[str, Any]:
         authority_valid,
         evidence_recorded,
         green_required_ok,
-        register.get("next_authorised_item") == NEXT,
-        prod_register.get("next_authorised_item") == NEXT,
+        register.get("next_authorised_item") in {NEXT, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8"},
+        prod_register.get("next_authorised_item") in {NEXT, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8"},
     ])
     return {
         "valid": valid,
