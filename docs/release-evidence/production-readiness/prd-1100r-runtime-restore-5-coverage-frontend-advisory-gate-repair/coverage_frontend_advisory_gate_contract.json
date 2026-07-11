@@ -1,0 +1,81 @@
+{
+  "advisory_static_gate_green": false,
+  "commands": [
+    {
+      "command": "make test-coverage COVERAGE_THRESHOLD=70",
+      "evidence_artifact": "coverage-execution.json",
+      "gate_id": "coverage_execution",
+      "negative_path_command": "python3 scripts/coverage_suites/verify_coverage_contract.py --json",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "cd app/frontend && pnpm lint && pnpm test:run && pnpm build",
+      "evidence_artifact": "frontend-quality.json",
+      "gate_id": "frontend_quality",
+      "negative_path_command": "cd app/frontend && pnpm lint --max-warnings=0",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "python3 -m ruff check app tests && python3 -m mypy app && python3 -m bandit -r app scripts -q",
+      "evidence_artifact": "advisory-static-quality.json",
+      "gate_id": "advisory_static_quality",
+      "negative_path_command": "python3 -m ruff check app tests --select F,E9",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "python3 scripts/generate_openapi.py --check && python3 scripts/generate_route_inventory.py --check",
+      "evidence_artifact": "generated-contract-drift.json",
+      "gate_id": "generated_contract_drift",
+      "negative_path_command": "python3 scripts/generate_openapi.py --check",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "pip-audit -r requirements/base.txt -r requirements/dev.txt && cd app/frontend && pnpm audit --prod",
+      "evidence_artifact": "dependency-security-audit.json",
+      "gate_id": "dependency_security_audit",
+      "negative_path_command": "pip-audit -r requirements/base.txt --strict",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "detect-secrets scan --baseline .secrets.baseline app scripts .github",
+      "evidence_artifact": "secret-baseline-review.json",
+      "gate_id": "secret_baseline_review",
+      "negative_path_command": "detect-secrets audit .secrets.baseline",
+      "release_blocking": true,
+      "requires_live_stack": false
+    }
+  ],
+  "coverage_gate_green": false,
+  "execution_results_valid": true,
+  "frontend_quality_green": false,
+  "gate_count": 6,
+  "gates_valid": true,
+  "governance_alignment": {
+    "coverage_contract_age_days": 0,
+    "coverage_frontend_advisory_contract_age_days": 0,
+    "fresh": true,
+    "freshness_max_age_days": 21,
+    "prd11_register_age_days": 0,
+    "prd11_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-5",
+    "product_gate_contract_age_days": 0,
+    "product_runtime_contract_age_days": 0,
+    "production_register_age_days": 0,
+    "production_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-5",
+    "release_boundaries_locked": true,
+    "script_taxonomy_age_days": 0,
+    "state_agrees": true,
+    "test_taxonomy_age_days": 0,
+    "valid": true
+  },
+  "governance_alignment_valid": true,
+  "missing_gates": [],
+  "next_after_evidence": "PRD-11.0R.RUNTIME-RESTORE-6",
+  "policy_valid": true,
+  "prd_id": "PRD-11.0R.RUNTIME-RESTORE-5",
+  "valid": true
+}

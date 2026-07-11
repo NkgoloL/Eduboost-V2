@@ -20,7 +20,7 @@
     "coverage_gate_green": false,
     "frontend_quality_green": false,
     "live_learner_traffic_operationally_safe": false,
-    "prd11_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-5",
+    "prd11_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-6",
     "prd11_runtime_restore_1_authority_recorded": true,
     "prd11_runtime_restore_1_evidence_recorded": true,
     "prd11_runtime_restore_2_authority_recorded": true,
@@ -30,7 +30,7 @@
     "prd11_runtime_restore_4_authority_recorded": true,
     "prd11_runtime_restore_4_evidence_recorded": true,
     "prd11_runtime_restore_5_authority_recorded": true,
-    "prd11_runtime_restore_5_evidence_recorded": false,
+    "prd11_runtime_restore_5_evidence_recorded": true,
     "product_gate_green": false,
     "product_runtime_gate_green": false,
     "production_release_evidence_blocked_until_runtime_baseline_green": true,
@@ -43,12 +43,12 @@
   },
   "deployment_authorised": false,
   "frontend_quality_green": false,
-  "last_recorded_at": "2026-07-10T22:55:00+00:00",
+  "last_recorded_at": "2026-07-11T04:57:30.100379+00:00",
   "last_recorded_item": "PRD-11.0R.RUNTIME-RESTORE-5",
   "live_learner_traffic_authorised": true,
   "live_learner_traffic_operationally_safe": false,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-5",
+  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-6",
   "prd112r_handoff_authorised": true,
   "prd113r_handoff_authorised": true,
   "prd11_coverage_alignment_authority_recorded": true,
@@ -121,7 +121,7 @@
     {
       "authorised": true,
       "prd_id": "PRD-11.0R.RUNTIME-RESTORE-5",
-      "status": "authority_recorded",
+      "status": "evidence_recorded",
       "title": "Coverage execution, frontend quality, and advisory gate repair"
     }
   ],
@@ -150,7 +150,7 @@
   "runtime_restore_4_product_gate_execution_authority_recorded": true,
   "runtime_restore_4_product_gate_execution_evidence_recorded": true,
   "runtime_restore_5_coverage_frontend_advisory_authority_recorded": true,
-  "runtime_restore_5_coverage_frontend_advisory_evidence_recorded": false,
+  "runtime_restore_5_coverage_frontend_advisory_evidence_recorded": true,
   "runtime_restore_handoff_authorised": true,
-  "status": "prd11_runtime_restore_5_authority_recorded"
+  "status": "prd11_runtime_restore_5_evidence_recorded"
 }
