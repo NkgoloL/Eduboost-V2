@@ -1,0 +1,216 @@
+{
+  "execution_policy": {
+    "frontend_type_lint_vitest_build_required": true,
+    "governance_records_cannot_override_failed_gate": true,
+    "green_status_requires_captured_command_success": true,
+    "openapi_and_route_inventory_must_be_checked_read_only": true,
+    "presence_only_outputs_forbidden": true,
+    "regeneration_command_must_be_available": true
+  },
+  "execution_results": [],
+  "freshness_max_age_days": 21,
+  "frontend_quality_green": false,
+  "gates": [
+    {
+      "class": "advisory",
+      "command": [
+        "{PYTHON}",
+        "scripts/generate_openapi.py"
+      ],
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "generated_contract_regeneration",
+      "known_failure_modes": [
+        "missing backend dependency",
+        "OpenAPI generation error",
+        "committed contract drift"
+      ],
+      "negative_or_failure_command": [
+        "{PYTHON}",
+        "scripts/generate_openapi.py",
+        "--check"
+      ],
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "positive_path_result",
+        "negative_or_failure_path_result",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ],
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "class": "advisory",
+      "command": [
+        "{PYTHON}",
+        "scripts/generate_openapi.py",
+        "--check",
+        "&&",
+        "{PYTHON}",
+        "scripts/generate_route_inventory.py",
+        "--check"
+      ],
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "generated_contract_drift_check",
+      "known_failure_modes": [
+        "OpenAPI drift",
+        "route inventory drift",
+        "runtime app import failure"
+      ],
+      "negative_or_failure_command": [
+        "{PYTHON}",
+        "scripts/generate_route_inventory.py",
+        "--check"
+      ],
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "positive_path_result",
+        "negative_or_failure_path_result",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ],
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "class": "advisory",
+      "command": [
+        "pnpm",
+        "run",
+        "type-check"
+      ],
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "frontend_typecheck",
+      "known_failure_modes": [
+        "TypeScript error",
+        "missing dependency",
+        "frontend tsconfig drift"
+      ],
+      "negative_or_failure_command": [
+        "pnpm",
+        "run",
+        "type-check"
+      ],
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "positive_path_result",
+        "negative_or_failure_path_result",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ],
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "class": "advisory",
+      "command": [
+        "pnpm",
+        "run",
+        "lint"
+      ],
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "frontend_lint",
+      "known_failure_modes": [
+        "React hook ordering regression",
+        "ESLint error",
+        "warning threshold breach"
+      ],
+      "negative_or_failure_command": [
+        "pnpm",
+        "run",
+        "lint:strict"
+      ],
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "positive_path_result",
+        "negative_or_failure_path_result",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ],
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "class": "advisory",
+      "command": [
+        "pnpm",
+        "run",
+        "test"
+      ],
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "frontend_vitest",
+      "known_failure_modes": [
+        "Vitest timeout",
+        "component behaviour regression",
+        "frontend API mock drift"
+      ],
+      "negative_or_failure_command": [
+        "pnpm",
+        "run",
+        "test"
+      ],
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "positive_path_result",
+        "negative_or_failure_path_result",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ],
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "class": "advisory",
+      "command": [
+        "pnpm",
+        "run",
+        "build"
+      ],
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "frontend_production_build",
+      "known_failure_modes": [
+        "Next build failure",
+        "route generation failure",
+        "frontend proxy build regression"
+      ],
+      "negative_or_failure_command": [
+        "pnpm",
+        "run",
+        "quality:release"
+      ],
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "positive_path_result",
+        "negative_or_failure_path_result",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ],
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    }
+  ],
+  "generated_contracts_green": false,
+  "last_reviewed_at": "2026-07-11T07:30:00+00:00",
+  "next_after_evidence": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-3",
+  "prd_id": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-2",
+  "schema_version": "prd11.0r/runtime-restore-execution-2/generated-frontend/v1",
+  "title": "Generated Contract Regeneration and Frontend Quality Execution Contract"
+}

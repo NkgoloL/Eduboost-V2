@@ -25,6 +25,7 @@
     "dependency_audit_gate_green": false,
     "frontend_conditional_hook_repaired": true,
     "frontend_quality_green": false,
+    "generated_contract_frontend_quality_contract_valid": true,
     "generated_contract_gate_uses_current_interpreter": true,
     "generated_contracts_green": false,
     "live_learner_traffic_operationally_safe": false,
@@ -43,6 +44,8 @@
     "prd11_runtime_restore_6_evidence_recorded": true,
     "prd11_runtime_restore_execution_1_authority_recorded": true,
     "prd11_runtime_restore_execution_1_evidence_recorded": true,
+    "prd11_runtime_restore_execution_2_authority_recorded": true,
+    "prd11_runtime_restore_execution_2_evidence_recorded": false,
     "product_gate_green": false,
     "product_runtime_gate_green": false,
     "production_release_evidence_blocked_until_runtime_baseline_green": true,
@@ -59,8 +62,8 @@
   "deployment_authorised": false,
   "frontend_quality_green": false,
   "generated_contracts_green": false,
-  "last_recorded_at": "2026-07-11T08:18:53.806539+00:00",
-  "last_recorded_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-1",
+  "last_recorded_at": "2026-07-11T07:30:00+00:00",
+  "last_recorded_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-2",
   "live_learner_traffic_authorised": true,
   "live_learner_traffic_operationally_safe": false,
   "live_payment_processing_authorised": false,
@@ -151,6 +154,12 @@
       "prd_id": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-1",
       "status": "evidence_recorded",
       "title": "Runtime command execution, frontend hook repair, and generated contract gate activation"
+    },
+    {
+      "authorised": true,
+      "prd_id": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-2",
+      "status": "authority_recorded",
+      "title": "Generated contract regeneration and frontend quality execution"
     }
   ],
   "prd11_sequence_complete": false,
@@ -183,7 +192,9 @@
   "runtime_restore_6_final_true_state_baseline_handoff_evidence_recorded": true,
   "runtime_restore_execution_1_runtime_command_frontend_generated_contracts_authority_recorded": true,
   "runtime_restore_execution_1_runtime_command_frontend_generated_contracts_evidence_recorded": true,
+  "runtime_restore_execution_2_generated_contract_frontend_quality_authority_recorded": true,
+  "runtime_restore_execution_2_generated_contract_frontend_quality_evidence_recorded": false,
   "runtime_restore_handoff_authorised": true,
   "secret_baseline_gate_green": false,
-  "status": "prd11_runtime_restore_execution_1_evidence_recorded"
+  "status": "prd11_runtime_restore_execution_2_authority_recorded"
 }

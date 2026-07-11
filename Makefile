@@ -3587,3 +3587,10 @@ prd1100r-runtime-restore-execution-1-verify:
 
 prd1100r-runtime-restore-execution-1-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_execution_1_runtime_command_frontend_generated_contracts_evidence.py --claim-prd1100r-runtime-restore-execution-1-runtime-command-frontend-generated-contracts --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch master --require-valid --json
+
+.PHONY: runtime-restore-execution-2-generated-frontend-gates runtime-restore-execution-2-generated-frontend-gates-execute
+runtime-restore-execution-2-generated-frontend-gates:
+	$(PYTHON) scripts/advisory_suites/verify_generated_frontend_quality_gates.py --json
+
+runtime-restore-execution-2-generated-frontend-gates-execute:
+	$(PYTHON) scripts/advisory_suites/run_generated_frontend_quality_gates.py --execute --json

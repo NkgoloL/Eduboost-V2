@@ -114,7 +114,7 @@ FINAL_GATE_COMMANDS: tuple[FinalGateCommand, ...] = (
     ),
     FinalGateCommand(
         "frontend_quality",
-        "cd app/frontend && pnpm lint && pnpm test:run && pnpm build",
+        "cd app/frontend && pnpm run type-check && pnpm run lint && pnpm run test && pnpm run build",
         "frontend-quality.json",
         True,
         False,
@@ -130,11 +130,11 @@ FINAL_GATE_COMMANDS: tuple[FinalGateCommand, ...] = (
     ),
     FinalGateCommand(
         "generated_contract_drift",
-        "python3 scripts/generate_openapi.py --check && python3 scripts/generate_route_inventory.py --check",
+        "${PYTHON:-python3} scripts/generate_openapi.py --check && ${PYTHON:-python3} scripts/generate_route_inventory.py --check",
         "generated-contract-drift.json",
         True,
         False,
-        "python3 scripts/generate_openapi.py --check",
+        "${PYTHON:-python3} scripts/generate_openapi.py --check",
     ),
     FinalGateCommand(
         "dependency_security_audit",

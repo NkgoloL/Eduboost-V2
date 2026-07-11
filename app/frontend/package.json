@@ -19,7 +19,10 @@
     "a11y-check": "vitest run src/__tests__/AccessibilityContracts.test.tsx",
     "analyze": "ANALYZE=true pnpm run build",
     "pr-007-check": "pnpm run env-check && pnpm run type-check && pnpm run test",
-    "ci:lighthouse": "npx -y lighthouse@10 --output html --output json --output-path=./tmp/lh-staging --chrome-flags=\"--headless\" \"$STAGING_URL\""
+    "ci:lighthouse": "npx -y lighthouse@10 --output html --output json --output-path=./tmp/lh-staging --chrome-flags=\"--headless\" \"$STAGING_URL\"",
+    "lint:strict": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0",
+    "quality": "pnpm run type-check && pnpm run lint && pnpm run test && pnpm run build",
+    "quality:release": "pnpm run type-check && pnpm run lint:strict && pnpm run test && pnpm run build"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",
