@@ -156,7 +156,7 @@ services:
         reservations:
           cpus: '0.10'
           memory: 128M
-    image: postgres:16-bookworm
+    image: pgvector/pgvector:pg16
     ports:
       - "5432:5432"
     environment:

@@ -166,6 +166,7 @@
     "secret_baseline_gate_green": false,
     "stream_id": "PRD-PRODUCTION-READINESS"
   },
+  "database_lineage_green": false,
   "dependency_audit_gate_green": false,
   "deployment_authorised": false,
   "frontend_quality_green": true,
@@ -178,7 +179,7 @@
     "public_beta_blocked_until_prd10": true
   },
   "generated_contracts_green": true,
-  "last_recorded_at": "2026-07-11T11:13:25.371165+00:00",
+  "last_recorded_at": "2026-07-11T11:40:57.443227+00:00",
   "last_recorded_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-3",
   "live_learner_traffic_operationally_safe": false,
   "live_payment_processing_authorised": false,
@@ -441,6 +442,8 @@
   "production_release_evidence_blocked_until_runtime_baseline_green": true,
   "public_beta_authorised": false,
   "public_beta_live_traffic_authorised": false,
+  "ready_probe_green": false,
+  "redis_readiness_green": false,
   "release_tag_authorised": false,
   "rr_closure_required": true,
   "runtime_baseline_green": false,
@@ -467,8 +470,11 @@
   "runtime_restore_execution_3_evidence_recorded": true,
   "runtime_restore_execution_4_authority_recorded": true,
   "runtime_restore_execution_4_evidence_recorded": true,
+  "runtime_restore_execution_5_authority_recorded": true,
   "runtime_restore_handoff_authorised": true,
+  "runtime_stack_green": false,
+  "schema_contract_green": false,
   "secret_baseline_gate_green": false,
-  "status": "prd11_runtime_restore_execution_4_evidence_recorded",
+  "status": "prd11_runtime_restore_execution_5_authority_recorded",
   "stream_id": "PRD-PRODUCTION-READINESS"
 }
