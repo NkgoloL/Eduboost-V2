@@ -28,7 +28,7 @@
     "generated_contract_gate_uses_current_interpreter": true,
     "generated_contracts_green": false,
     "live_learner_traffic_operationally_safe": false,
-    "prd11_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-1",
+    "prd11_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-2",
     "prd11_runtime_restore_1_authority_recorded": true,
     "prd11_runtime_restore_1_evidence_recorded": true,
     "prd11_runtime_restore_2_authority_recorded": true,
@@ -42,7 +42,7 @@
     "prd11_runtime_restore_6_authority_recorded": true,
     "prd11_runtime_restore_6_evidence_recorded": true,
     "prd11_runtime_restore_execution_1_authority_recorded": true,
-    "prd11_runtime_restore_execution_1_evidence_recorded": false,
+    "prd11_runtime_restore_execution_1_evidence_recorded": true,
     "product_gate_green": false,
     "product_runtime_gate_green": false,
     "production_release_evidence_blocked_until_runtime_baseline_green": true,
@@ -59,12 +59,12 @@
   "deployment_authorised": false,
   "frontend_quality_green": false,
   "generated_contracts_green": false,
-  "last_recorded_at": "2026-07-11T06:47:11.163148+00:00",
+  "last_recorded_at": "2026-07-11T08:18:53.806539+00:00",
   "last_recorded_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-1",
   "live_learner_traffic_authorised": true,
   "live_learner_traffic_operationally_safe": false,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-1",
+  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-2",
   "prd112r_handoff_authorised": true,
   "prd113r_handoff_authorised": true,
   "prd11_coverage_alignment_authority_recorded": true,
@@ -149,7 +149,7 @@
     {
       "authorised": true,
       "prd_id": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-1",
-      "status": "authority_recorded",
+      "status": "evidence_recorded",
       "title": "Runtime command execution, frontend hook repair, and generated contract gate activation"
     }
   ],
@@ -182,8 +182,8 @@
   "runtime_restore_6_final_true_state_baseline_handoff_authority_recorded": true,
   "runtime_restore_6_final_true_state_baseline_handoff_evidence_recorded": true,
   "runtime_restore_execution_1_runtime_command_frontend_generated_contracts_authority_recorded": true,
-  "runtime_restore_execution_1_runtime_command_frontend_generated_contracts_evidence_recorded": false,
+  "runtime_restore_execution_1_runtime_command_frontend_generated_contracts_evidence_recorded": true,
   "runtime_restore_handoff_authorised": true,
   "secret_baseline_gate_green": false,
-  "status": "prd11_runtime_restore_execution_1_authority_recorded"
+  "status": "prd11_runtime_restore_execution_1_evidence_recorded"
 }
