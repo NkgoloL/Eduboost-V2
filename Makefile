@@ -3574,3 +3574,8 @@ advisory-quality-gates:
 
 prd1100r-runtime-restore-5-verify:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd1100r_runtime_restore_5_coverage_frontend_advisory_gate_repair.py --json
+
+.PHONY: runtime-restore-6-verify
+runtime-restore-6-verify:
+	PYTHONPATH=. python3 scripts/runtime/verify_final_true_state_baseline.py --json
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd1100r_runtime_restore_6_final_true_state_baseline_handoff.py --authority-only --json

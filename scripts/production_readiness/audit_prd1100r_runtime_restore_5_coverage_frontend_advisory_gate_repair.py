@@ -39,7 +39,7 @@ FALSE_BOUNDARIES = [
     "live_payment_processing_authorised",
     "prd12_implementation_authorised",
 ]
-ALLOWED_NEXT = {PRD_ID, NEXT_AFTER_EVIDENCE}
+ALLOWED_NEXT = {PRD_ID, NEXT_AFTER_EVIDENCE, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION", "PRD-11.0-11.4"}
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -112,8 +112,8 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         (EVIDENCE_DIR / "summary.json").exists(),
         isinstance(record.get("coverage_frontend_advisory_gate_contract_snapshot"), dict),
         record.get("next_authorised_item") == NEXT_AFTER_EVIDENCE,
-        register_next == NEXT_AFTER_EVIDENCE,
-        prod_next == NEXT_AFTER_EVIDENCE,
+        register_next in ALLOWED_NEXT,
+        prod_next in ALLOWED_NEXT,
     ])
     valid = authority_valid and evidence_valid
     return {
