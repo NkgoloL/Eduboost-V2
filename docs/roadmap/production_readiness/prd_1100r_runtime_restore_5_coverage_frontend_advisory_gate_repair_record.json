@@ -3,12 +3,145 @@
   "advisory_static_gate_recorded": true,
   "advisory_static_outputs_required": true,
   "billing_launch_authorised": false,
+  "captured_at": "2026-07-11T04:57:30.100379+00:00",
   "controlled_beta_activation_operational_hold": true,
   "coverage_execution_gate_recorded": true,
+  "coverage_frontend_advisory_command_plan": [
+    {
+      "command": "make test-coverage COVERAGE_THRESHOLD=70",
+      "evidence_artifact": "coverage-execution.json",
+      "gate_id": "coverage_execution",
+      "negative_path_command": "python3 scripts/coverage_suites/verify_coverage_contract.py --json",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "cd app/frontend && pnpm lint && pnpm test:run && pnpm build",
+      "evidence_artifact": "frontend-quality.json",
+      "gate_id": "frontend_quality",
+      "negative_path_command": "cd app/frontend && pnpm lint --max-warnings=0",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "python3 -m ruff check app tests && python3 -m mypy app && python3 -m bandit -r app scripts -q",
+      "evidence_artifact": "advisory-static-quality.json",
+      "gate_id": "advisory_static_quality",
+      "negative_path_command": "python3 -m ruff check app tests --select F,E9",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "python3 scripts/generate_openapi.py --check && python3 scripts/generate_route_inventory.py --check",
+      "evidence_artifact": "generated-contract-drift.json",
+      "gate_id": "generated_contract_drift",
+      "negative_path_command": "python3 scripts/generate_openapi.py --check",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "pip-audit -r requirements/base.txt -r requirements/dev.txt && cd app/frontend && pnpm audit --prod",
+      "evidence_artifact": "dependency-security-audit.json",
+      "gate_id": "dependency_security_audit",
+      "negative_path_command": "pip-audit -r requirements/base.txt --strict",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "detect-secrets scan --baseline .secrets.baseline app scripts .github",
+      "evidence_artifact": "secret-baseline-review.json",
+      "gate_id": "secret_baseline_review",
+      "negative_path_command": "detect-secrets audit .secrets.baseline",
+      "release_blocking": true,
+      "requires_live_stack": false
+    }
+  ],
   "coverage_frontend_advisory_gate_authority_recorded": true,
   "coverage_frontend_advisory_gate_contract_recorded": true,
-  "coverage_frontend_advisory_gate_evidence_recorded": false,
+  "coverage_frontend_advisory_gate_contract_snapshot": {
+    "advisory_static_gate_green": false,
+    "commands": [
+      {
+        "command": "make test-coverage COVERAGE_THRESHOLD=70",
+        "evidence_artifact": "coverage-execution.json",
+        "gate_id": "coverage_execution",
+        "negative_path_command": "python3 scripts/coverage_suites/verify_coverage_contract.py --json",
+        "release_blocking": true,
+        "requires_live_stack": false
+      },
+      {
+        "command": "cd app/frontend && pnpm lint && pnpm test:run && pnpm build",
+        "evidence_artifact": "frontend-quality.json",
+        "gate_id": "frontend_quality",
+        "negative_path_command": "cd app/frontend && pnpm lint --max-warnings=0",
+        "release_blocking": true,
+        "requires_live_stack": false
+      },
+      {
+        "command": "python3 -m ruff check app tests && python3 -m mypy app && python3 -m bandit -r app scripts -q",
+        "evidence_artifact": "advisory-static-quality.json",
+        "gate_id": "advisory_static_quality",
+        "negative_path_command": "python3 -m ruff check app tests --select F,E9",
+        "release_blocking": true,
+        "requires_live_stack": false
+      },
+      {
+        "command": "python3 scripts/generate_openapi.py --check && python3 scripts/generate_route_inventory.py --check",
+        "evidence_artifact": "generated-contract-drift.json",
+        "gate_id": "generated_contract_drift",
+        "negative_path_command": "python3 scripts/generate_openapi.py --check",
+        "release_blocking": true,
+        "requires_live_stack": false
+      },
+      {
+        "command": "pip-audit -r requirements/base.txt -r requirements/dev.txt && cd app/frontend && pnpm audit --prod",
+        "evidence_artifact": "dependency-security-audit.json",
+        "gate_id": "dependency_security_audit",
+        "negative_path_command": "pip-audit -r requirements/base.txt --strict",
+        "release_blocking": true,
+        "requires_live_stack": false
+      },
+      {
+        "command": "detect-secrets scan --baseline .secrets.baseline app scripts .github",
+        "evidence_artifact": "secret-baseline-review.json",
+        "gate_id": "secret_baseline_review",
+        "negative_path_command": "detect-secrets audit .secrets.baseline",
+        "release_blocking": true,
+        "requires_live_stack": false
+      }
+    ],
+    "coverage_gate_green": false,
+    "execution_results_valid": true,
+    "frontend_quality_green": false,
+    "gate_count": 6,
+    "gates_valid": true,
+    "governance_alignment": {
+      "coverage_contract_age_days": 0,
+      "coverage_frontend_advisory_contract_age_days": 0,
+      "fresh": true,
+      "freshness_max_age_days": 21,
+      "prd11_register_age_days": 0,
+      "prd11_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-5",
+      "product_gate_contract_age_days": 0,
+      "product_runtime_contract_age_days": 0,
+      "production_register_age_days": 0,
+      "production_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-5",
+      "release_boundaries_locked": true,
+      "script_taxonomy_age_days": 0,
+      "state_agrees": true,
+      "test_taxonomy_age_days": 0,
+      "valid": true
+    },
+    "governance_alignment_valid": true,
+    "missing_gates": [],
+    "next_after_evidence": "PRD-11.0R.RUNTIME-RESTORE-6",
+    "policy_valid": true,
+    "prd_id": "PRD-11.0R.RUNTIME-RESTORE-5",
+    "valid": true
+  },
+  "coverage_frontend_advisory_gate_evidence_recorded": true,
   "coverage_gate_green": false,
+  "dependency_audit_gate_green": false,
   "dependency_security_gate_recorded": true,
   "deployment_authorised": false,
   "fresh_coverage_report_required": true,
@@ -16,15 +149,23 @@
   "frontend_quality_gate_recorded": true,
   "frontend_quality_green": false,
   "generated_contract_drift_gate_recorded": true,
+  "generated_contracts_green": false,
   "governance_substitution_for_advisory_forbidden": true,
   "independent_command_outputs_required": true,
+  "known_coverage_frontend_advisory_blockers": [
+    "Coverage execution has not yet produced a fresh green documentation-defined report.",
+    "Frontend lint/Vitest/build have not all been independently captured as green in this slice.",
+    "Ruff, mypy, Bandit, dependency audits, generated contracts, and secret baseline remain advisory blockers until independently green or dispositioned.",
+    "Runtime baseline remains red until stack/schema/readiness blockers are cleared."
+  ],
   "known_failures_recorded_as_blockers": true,
   "live_learner_traffic_operationally_safe": false,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-5",
+  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-6",
   "positive_and_negative_or_failure_outputs_required": true,
   "prd12_implementation_authorised": false,
   "prd_id": "PRD-11.0R.RUNTIME-RESTORE-5",
+  "prd_owner": "Nkgolo Lebelo",
   "presence_only_advisory_evidence_forbidden": true,
   "product_gate_green": false,
   "production_release_authorised": false,
@@ -33,6 +174,287 @@
   "public_beta_live_traffic_authorised": false,
   "release_tag_authorised": false,
   "runtime_baseline_green": false,
+  "runtime_baseline_snapshot": {
+    "blockers": [
+      "disposable_stack_schema_lineage_reconciliation",
+      "database_lineage_and_schema",
+      "redis_readiness_dependency",
+      "ready_http_probe",
+      "generated_contracts",
+      "backend_unit_gate",
+      "integration_gate",
+      "dependency_audit_gate",
+      "frontend_quality_gate",
+      "secret_baseline_gate"
+    ],
+    "checks": {
+      "alembic_repository_graph": {
+        "expected_single_head": "20260708_2100_prd2_runtime_kg",
+        "repository_heads": [
+          "20260708_2100_prd2_runtime_kg"
+        ],
+        "revision_count": 46,
+        "status": "pass",
+        "version_file_count": 46
+      },
+      "backend_unit_gate": {
+        "reason": "backend_unit_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "database_lineage_and_schema": {
+        "expected_head": "20260708_2100_prd2_runtime_kg",
+        "reason": "DATABASE_URL not set; live database lineage and schema not proven",
+        "required_columns": {
+          "diagnostic_items": [
+            "irt_quality_state",
+            "irt_discrimination",
+            "irt_difficulty",
+            "irt_guessing"
+          ],
+          "runtime_kg_edges": [
+            "source_node_id",
+            "target_node_id",
+            "edge_type",
+            "weight"
+          ],
+          "runtime_kg_nodes": [
+            "stable_code",
+            "node_type",
+            "label",
+            "mastery_weight"
+          ]
+        },
+        "required_tables": [
+          "guardians",
+          "learner_profiles",
+          "assessments",
+          "assessment_attempts",
+          "diagnostic_items",
+          "diagnostic_sessions",
+          "study_plans",
+          "lessons",
+          "runtime_kg_graph_loads",
+          "runtime_kg_nodes",
+          "runtime_kg_edges",
+          "runtime_kg_events",
+          "ai_usage_events",
+          "tutor_sessions",
+          "audit_events"
+        ],
+        "status": "blocked"
+      },
+      "dependency_audit_gate": {
+        "reason": "dependency_audit_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "disposable_stack_schema_lineage_reconciliation": {
+        "contract_valid": true,
+        "details": {
+          "checks": {
+            "compose_contract": {
+              "compose_file": "docker-compose.yml",
+              "expected_services": [
+                "postgres",
+                "redis",
+                "api",
+                "worker",
+                "frontend"
+              ],
+              "missing_services": [],
+              "status": "pass",
+              "valid": true
+            },
+            "disposable_stack_command_plan": {
+              "commands": [
+                {
+                  "command": "docker compose -f docker-compose.yml up -d postgres redis api worker frontend",
+                  "step": "start_stack"
+                },
+                {
+                  "command": "alembic upgrade head",
+                  "step": "apply_migrations"
+                },
+                {
+                  "command": "PYTHONPATH=. python3 scripts/runtime/verify_disposable_stack_schema_lineage.py --require-live --json",
+                  "step": "verify_lineage_schema"
+                },
+                {
+                  "command": "curl -fsS ${API_BASE_URL:-http://localhost:8000}/ready",
+                  "step": "probe_ready"
+                },
+                {
+                  "command": "PYTHONPATH=. python3 scripts/production_readiness/collect_prd1100r_true_state_runtime_baseline.py --run-expensive-checks --json",
+                  "step": "capture_baseline"
+                }
+              ],
+              "compose_file": "docker-compose.yml",
+              "policy": {
+                "existing_database_requires_inventory_before_bridge_or_rebuild": true,
+                "fresh_disposable_database_must_migrate_to_head": true,
+                "no_blind_alembic_stamp": true,
+                "ready_probe_required_after_stack_start": true,
+                "runtime_schema_contract_required_after_migration": true,
+                "snapshot_before_lineage_repair": true
+              },
+              "valid": true
+            },
+            "lineage_probe": {
+              "expected_repository_head": "20260708_2100_prd2_runtime_kg",
+              "policy": {
+                "existing_database_requires_inventory_before_bridge_or_rebuild": true,
+                "fresh_disposable_database_must_migrate_to_head": true,
+                "no_blind_alembic_stamp": true,
+                "ready_probe_required_after_stack_start": true,
+                "runtime_schema_contract_required_after_migration": true,
+                "snapshot_before_lineage_repair": true
+              },
+              "reason": "DATABASE_URL not set; disposable/existing database lineage not proven",
+              "status": "blocked"
+            },
+            "lineage_reconciliation_decision": {
+              "blind_stamp_allowed": false,
+              "decision": "live_database_not_available_for_reconciliation",
+              "safe_next_action": "start_disposable_stack_or_provide_DATABASE_URL_before claiming lineage proof",
+              "status": "blocked"
+            },
+            "migration_graph_contract": {
+              "expected_single_head": "20260708_2100_prd2_runtime_kg",
+              "repository_heads": [
+                "20260708_2100_prd2_runtime_kg"
+              ],
+              "revision_count": 46,
+              "status": "pass",
+              "valid": true
+            },
+            "policy": {
+              "existing_database_requires_inventory_before_bridge_or_rebuild": true,
+              "fresh_disposable_database_must_migrate_to_head": true,
+              "no_blind_alembic_stamp": true,
+              "ready_probe_required_after_stack_start": true,
+              "runtime_schema_contract_required_after_migration": true,
+              "snapshot_before_lineage_repair": true,
+              "valid": true
+            },
+            "runtime_schema_contract_static": {
+              "missing_columns": {},
+              "missing_tables": [],
+              "required_columns": {
+                "diagnostic_items": [
+                  "irt_quality_state",
+                  "irt_discrimination",
+                  "irt_difficulty",
+                  "irt_guessing"
+                ],
+                "runtime_kg_edges": [
+                  "source_node_id",
+                  "target_node_id",
+                  "edge_type",
+                  "weight"
+                ],
+                "runtime_kg_nodes": [
+                  "stable_code",
+                  "node_type",
+                  "label",
+                  "mastery_weight"
+                ]
+              },
+              "required_tables": [
+                "guardians",
+                "learner_profiles",
+                "assessments",
+                "assessment_attempts",
+                "diagnostic_items",
+                "diagnostic_sessions",
+                "study_plans",
+                "lessons",
+                "runtime_kg_graph_loads",
+                "runtime_kg_nodes",
+                "runtime_kg_edges",
+                "runtime_kg_events",
+                "ai_usage_events",
+                "tutor_sessions",
+                "audit_events"
+              ],
+              "schema_contract_satisfied": true,
+              "status": "ok",
+              "valid": true
+            }
+          },
+          "contract_valid": true,
+          "live_lineage_schema_green": false,
+          "live_lineage_schema_required": false,
+          "next_required_runtime_action": "provide live disposable stack evidence",
+          "valid": true
+        },
+        "live_lineage_schema_green": false,
+        "next_required_runtime_action": "provide live disposable stack evidence",
+        "status": "blocked"
+      },
+      "docker_compose_service_contract": {
+        "expected_services": [
+          "postgres",
+          "redis",
+          "api",
+          "worker",
+          "frontend"
+        ],
+        "missing_services": [],
+        "status": "pass"
+      },
+      "frontend_quality_gate": {
+        "reason": "frontend_quality_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "generated_contracts": {
+        "reason": "generated contract checks not executed in collector default mode",
+        "status": "blocked"
+      },
+      "integration_gate": {
+        "reason": "integration_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "ready_http_probe": {
+        "reason": "API_BASE_URL not set; HTTP /ready not proven",
+        "status": "blocked"
+      },
+      "redis_readiness_dependency": {
+        "reason": "REDIS_URL not set; /ready Redis dependency not proven",
+        "status": "blocked"
+      },
+      "secret_baseline_gate": {
+        "reason": "secret_baseline_gate command not executed in collector default mode",
+        "status": "blocked"
+      },
+      "static_required_files": {
+        "missing": [],
+        "status": "pass"
+      }
+    },
+    "collector_version": "prd11.0r/true-state-runtime-baseline/v1",
+    "hard_gate_names": [
+      "static_required_files",
+      "docker_compose_service_contract",
+      "alembic_repository_graph",
+      "disposable_stack_schema_lineage_reconciliation",
+      "database_lineage_and_schema",
+      "redis_readiness_dependency",
+      "ready_http_probe",
+      "generated_contracts",
+      "backend_unit_gate",
+      "integration_gate",
+      "dependency_audit_gate",
+      "frontend_quality_gate",
+      "secret_baseline_gate"
+    ],
+    "operational_hold_required": true,
+    "overall_status": "red_no_go_operational_hold_active",
+    "prd_id": "PRD-11.0R",
+    "release_evidence_mode": "actual_probe_evidence_required_not_constant_status",
+    "runtime_baseline_green": false
+  },
+  "runtime_baseline_status": "red_no_go_operational_hold_active",
+  "secret_baseline_gate_green": false,
   "secret_baseline_review_gate_recorded": true,
-  "status": "coverage_frontend_advisory_gate_authority_recorded"
+  "status": "coverage_frontend_advisory_gate_evidence_recorded",
+  "target_branch": "master"
 }
