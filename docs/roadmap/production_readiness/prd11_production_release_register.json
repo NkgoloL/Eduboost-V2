@@ -1,4 +1,5 @@
 {
+  "advisory_static_gate_green": false,
   "authority_boundaries": {
     "billing_launch_authorised": false,
     "deployment_authorised": false,
@@ -12,8 +13,12 @@
   "billing_launch_authorised": false,
   "controlled_beta_activation_operational_hold": true,
   "controlled_beta_live_traffic_authorised": true,
+  "coverage_gate_green": false,
   "current_truth": {
+    "advisory_static_gate_green": false,
     "controlled_beta_activation_operational_hold": true,
+    "coverage_gate_green": false,
+    "frontend_quality_green": false,
     "live_learner_traffic_operationally_safe": false,
     "prd11_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-5",
     "prd11_runtime_restore_1_authority_recorded": true,
@@ -24,6 +29,8 @@
     "prd11_runtime_restore_3_evidence_recorded": true,
     "prd11_runtime_restore_4_authority_recorded": true,
     "prd11_runtime_restore_4_evidence_recorded": true,
+    "prd11_runtime_restore_5_authority_recorded": true,
+    "prd11_runtime_restore_5_evidence_recorded": false,
     "product_gate_green": false,
     "product_runtime_gate_green": false,
     "production_release_evidence_blocked_until_runtime_baseline_green": true,
@@ -35,8 +42,9 @@
     "runtime_restore_4_product_gate_execution_evidence_recorded": true
   },
   "deployment_authorised": false,
-  "last_recorded_at": "2026-07-10T22:36:27.149414+00:00",
-  "last_recorded_item": "PRD-11.0R.RUNTIME-RESTORE-4",
+  "frontend_quality_green": false,
+  "last_recorded_at": "2026-07-10T22:55:00+00:00",
+  "last_recorded_item": "PRD-11.0R.RUNTIME-RESTORE-5",
   "live_learner_traffic_authorised": true,
   "live_learner_traffic_operationally_safe": false,
   "live_payment_processing_authorised": false,
@@ -109,6 +117,12 @@
       "prd_id": "PRD-11.0R.RUNTIME-RESTORE-4",
       "status": "evidence_recorded",
       "title": "Product gate execution and critical-flow repair"
+    },
+    {
+      "authorised": true,
+      "prd_id": "PRD-11.0R.RUNTIME-RESTORE-5",
+      "status": "authority_recorded",
+      "title": "Coverage execution, frontend quality, and advisory gate repair"
     }
   ],
   "prd11_sequence_complete": false,
@@ -135,6 +149,8 @@
   "runtime_restore_3_product_runtime_test_gate_evidence_recorded": true,
   "runtime_restore_4_product_gate_execution_authority_recorded": true,
   "runtime_restore_4_product_gate_execution_evidence_recorded": true,
+  "runtime_restore_5_coverage_frontend_advisory_authority_recorded": true,
+  "runtime_restore_5_coverage_frontend_advisory_evidence_recorded": false,
   "runtime_restore_handoff_authorised": true,
-  "status": "prd11_runtime_restore_4_evidence_recorded"
+  "status": "prd11_runtime_restore_5_authority_recorded"
 }

@@ -1,4 +1,5 @@
 {
+  "advisory_static_gate_green": false,
   "authority_boundaries": {
     "authority_switch_executed": true,
     "billing_launch_authorised": false,
@@ -26,8 +27,12 @@
     "runtime_kg_implementation_claimed": true
   },
   "controlled_beta_activation_operational_hold": true,
+  "coverage_gate_green": false,
   "current_truth": {
+    "advisory_static_gate_green": false,
     "controlled_beta_activation_operational_hold": true,
+    "coverage_gate_green": false,
+    "frontend_quality_green": false,
     "kg_closure_required": true,
     "live_learner_traffic_operationally_safe": false,
     "prd0_closed": true,
@@ -55,6 +60,8 @@
     "prd11_runtime_restore_3_evidence_recorded": true,
     "prd11_runtime_restore_4_authority_recorded": true,
     "prd11_runtime_restore_4_evidence_recorded": true,
+    "prd11_runtime_restore_5_authority_recorded": true,
+    "prd11_runtime_restore_5_evidence_recorded": false,
     "prd11_started": true,
     "prd1_authority_reconciliation_recorded": true,
     "prd1_blocked_until_prd0_closure": false,
@@ -141,6 +148,7 @@
     "runtime_restore_4_product_gate_execution_evidence_recorded": true,
     "stream_id": "PRD-PRODUCTION-READINESS"
   },
+  "frontend_quality_green": false,
   "gates": {
     "billing_blocked_until_prd9": true,
     "new_kg_slice_blocked": true,
@@ -149,8 +157,8 @@
     "production_release_blocked_until_prd11": true,
     "public_beta_blocked_until_prd10": true
   },
-  "last_recorded_at": "2026-07-10T22:36:27.149414+00:00",
-  "last_recorded_item": "PRD-11.0R.RUNTIME-RESTORE-4",
+  "last_recorded_at": "2026-07-10T22:55:00+00:00",
+  "last_recorded_item": "PRD-11.0R.RUNTIME-RESTORE-5",
   "live_learner_traffic_operationally_safe": false,
   "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE-5",
   "prd0_closed": true,
@@ -424,7 +432,9 @@
   "runtime_restore_3_product_runtime_test_gate_evidence_recorded": true,
   "runtime_restore_4_product_gate_execution_authority_recorded": true,
   "runtime_restore_4_product_gate_execution_evidence_recorded": true,
+  "runtime_restore_5_coverage_frontend_advisory_authority_recorded": true,
+  "runtime_restore_5_coverage_frontend_advisory_evidence_recorded": false,
   "runtime_restore_handoff_authorised": true,
-  "status": "prd11_runtime_restore_4_evidence_recorded",
+  "status": "prd11_runtime_restore_5_authority_recorded",
   "stream_id": "PRD-PRODUCTION-READINESS"
 }
