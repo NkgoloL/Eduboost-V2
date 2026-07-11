@@ -41,7 +41,7 @@ REQUIRED_RUNTIME_DEPENDENCIES = (
     "schema_contract",
     "ready_endpoint",
 )
-ALLOWED_NEXT = (PRD_ID, NEXT_AFTER_EVIDENCE)
+ALLOWED_NEXT = (PRD_ID, NEXT_AFTER_EVIDENCE, "PRD-11.0R.RUNTIME-RESTORE-6")
 
 
 @dataclass(frozen=True)
