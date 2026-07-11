@@ -1,0 +1,224 @@
+{
+  "created_at": "2026-07-11T09:30:00+00:00",
+  "execution_policy": {
+    "captured_command_outputs_are_required": true,
+    "frontend_type_lint_test_build_required": true,
+    "governance_records_cannot_override_failed_gate": true,
+    "green_status_requires_all_release_blocking_commands_zero": true,
+    "presence_only_outputs_forbidden": true,
+    "regenerate_then_readonly_check_required": true
+  },
+  "execution_results": [],
+  "frontend_quality_green": false,
+  "gates": [
+    {
+      "blocker_when_nonzero_exit": true,
+      "command": [
+        "${PYTHON}",
+        "scripts/generate_openapi.py"
+      ],
+      "cwd": ".",
+      "description": "Regenerate docs/openapi.json from app.api_v2:app using the active repo interpreter.",
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "openapi_regenerate",
+      "must_execute_in_repo_environment": true,
+      "mutates_generated_contracts": true,
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "exit_code",
+        "stdout_tail",
+        "stderr_tail",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ]
+    },
+    {
+      "blocker_when_nonzero_exit": true,
+      "command": [
+        "${PYTHON}",
+        "scripts/generate_route_inventory.py"
+      ],
+      "cwd": ".",
+      "description": "Regenerate docs/route_inventory.md from app.api_v2:app using the active repo interpreter.",
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "route_inventory_regenerate",
+      "must_execute_in_repo_environment": true,
+      "mutates_generated_contracts": true,
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "exit_code",
+        "stdout_tail",
+        "stderr_tail",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ]
+    },
+    {
+      "blocker_when_nonzero_exit": true,
+      "command": [
+        "${PYTHON}",
+        "scripts/generate_openapi.py",
+        "--check",
+        "&&",
+        "${PYTHON}",
+        "scripts/generate_route_inventory.py",
+        "--check"
+      ],
+      "cwd": ".",
+      "description": "Verify generated API contracts are current after regeneration.",
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "generated_contract_readonly_check",
+      "must_execute_in_repo_environment": true,
+      "mutates_generated_contracts": false,
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "exit_code",
+        "stdout_tail",
+        "stderr_tail",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ]
+    },
+    {
+      "blocker_when_nonzero_exit": true,
+      "command": [
+        "pnpm",
+        "run",
+        "type-check"
+      ],
+      "cwd": "app/frontend",
+      "description": "Run TypeScript no-emit check.",
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "frontend_typecheck",
+      "must_execute_in_repo_environment": true,
+      "mutates_generated_contracts": false,
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "exit_code",
+        "stdout_tail",
+        "stderr_tail",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ]
+    },
+    {
+      "blocker_when_nonzero_exit": true,
+      "command": [
+        "pnpm",
+        "run",
+        "lint"
+      ],
+      "cwd": "app/frontend",
+      "description": "Run frontend ESLint quality gate.",
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "frontend_lint",
+      "must_execute_in_repo_environment": true,
+      "mutates_generated_contracts": false,
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "exit_code",
+        "stdout_tail",
+        "stderr_tail",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ]
+    },
+    {
+      "blocker_when_nonzero_exit": true,
+      "command": [
+        "pnpm",
+        "run",
+        "test"
+      ],
+      "cwd": "app/frontend",
+      "description": "Run frontend Vitest suite.",
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "frontend_vitest",
+      "must_execute_in_repo_environment": true,
+      "mutates_generated_contracts": false,
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "exit_code",
+        "stdout_tail",
+        "stderr_tail",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ]
+    },
+    {
+      "blocker_when_nonzero_exit": true,
+      "command": [
+        "pnpm",
+        "run",
+        "build"
+      ],
+      "cwd": "app/frontend",
+      "description": "Run Next.js production build.",
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "frontend_production_build",
+      "must_execute_in_repo_environment": true,
+      "mutates_generated_contracts": false,
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "exit_code",
+        "stdout_tail",
+        "stderr_tail",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ]
+    },
+    {
+      "blocker_when_nonzero_exit": true,
+      "command": [
+        "pnpm",
+        "run",
+        "quality:release"
+      ],
+      "cwd": "app/frontend",
+      "description": "Run combined frontend release quality gate.",
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "frontend_release_quality",
+      "must_execute_in_repo_environment": true,
+      "mutates_generated_contracts": false,
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "required_evidence": [
+        "independent_command_output",
+        "exit_code",
+        "stdout_tail",
+        "stderr_tail",
+        "fresh_artifact_reference",
+        "blocker_record_when_not_green"
+      ]
+    }
+  ],
+  "generated_contracts_green": false,
+  "last_reviewed_at": "2026-07-11T09:30:00+00:00",
+  "next_after_evidence": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-4",
+  "prd_id": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-3",
+  "previous_contract": "docs/roadmap/production_readiness/generated_contract_frontend_quality_execution_contract.json",
+  "schema_version": "prd11.0r/runtime-restore-execution-3/generated-frontend-green-run/v1",
+  "source_of_truth": "docs/testing/generated_contract_frontend_quality_green_run.md"
+}
