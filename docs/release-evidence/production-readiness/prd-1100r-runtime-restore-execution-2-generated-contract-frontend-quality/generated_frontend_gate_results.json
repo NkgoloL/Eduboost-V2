@@ -1,0 +1,107 @@
+{
+  "all_green": false,
+  "captured_at": "2026-07-11T09:01:39.163148+00:00",
+  "commands": [
+    {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2/.venv/bin/python",
+        "scripts/generate_openapi.py"
+      ],
+      "cwd": ".",
+      "evidence_artifact": "generated-openapi-regeneration.json",
+      "gate_id": "generated_contract_regeneration",
+      "negative_path_command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2/.venv/bin/python",
+        "scripts/generate_openapi.py",
+        "--check"
+      ],
+      "release_blocking": true
+    },
+    {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2/.venv/bin/python",
+        "scripts/generate_openapi.py",
+        "--check",
+        "&&",
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2/.venv/bin/python",
+        "scripts/generate_route_inventory.py",
+        "--check"
+      ],
+      "cwd": ".",
+      "evidence_artifact": "generated-contract-drift-check.json",
+      "gate_id": "generated_contract_drift_check",
+      "negative_path_command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2/.venv/bin/python",
+        "scripts/generate_route_inventory.py",
+        "--check"
+      ],
+      "release_blocking": true
+    },
+    {
+      "command": [
+        "/home/nkgolol/.local/bin/pnpm",
+        "run",
+        "type-check"
+      ],
+      "cwd": "app/frontend",
+      "evidence_artifact": "frontend-typecheck.json",
+      "gate_id": "frontend_typecheck",
+      "negative_path_command": [
+        "/home/nkgolol/.local/bin/pnpm",
+        "run",
+        "type-check"
+      ],
+      "release_blocking": true
+    },
+    {
+      "command": [
+        "/home/nkgolol/.local/bin/pnpm",
+        "run",
+        "lint"
+      ],
+      "cwd": "app/frontend",
+      "evidence_artifact": "frontend-lint.json",
+      "gate_id": "frontend_lint",
+      "negative_path_command": [
+        "/home/nkgolol/.local/bin/pnpm",
+        "run",
+        "lint:strict"
+      ],
+      "release_blocking": true
+    },
+    {
+      "command": [
+        "/home/nkgolol/.local/bin/pnpm",
+        "run",
+        "test"
+      ],
+      "cwd": "app/frontend",
+      "evidence_artifact": "frontend-vitest.json",
+      "gate_id": "frontend_vitest",
+      "negative_path_command": [
+        "/home/nkgolol/.local/bin/pnpm",
+        "run",
+        "test"
+      ],
+      "release_blocking": true
+    },
+    {
+      "command": [
+        "/home/nkgolol/.local/bin/pnpm",
+        "run",
+        "build"
+      ],
+      "cwd": "app/frontend",
+      "evidence_artifact": "frontend-production-build.json",
+      "gate_id": "frontend_production_build",
+      "negative_path_command": [
+        "/home/nkgolol/.local/bin/pnpm",
+        "run",
+        "quality:release"
+      ],
+      "release_blocking": true
+    }
+  ],
+  "executed": false,
+  "results": []
+}
