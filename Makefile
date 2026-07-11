@@ -3612,3 +3612,11 @@ prd1100r-runtime-restore-execution-4-verify:
 
 prd1100r-runtime-restore-execution-4-run:
 	PYTHONPATH=. python3 scripts/advisory_suites/run_generated_contract_frontend_quality_green_evidence.py --execute --json
+
+.PHONY: prd1100r-runtime-restore-execution-5-verify prd1100r-runtime-restore-execution-5-run
+prd1100r-runtime-restore-execution-5-verify:
+	PYTHONPATH=. $(PYTHON) scripts/runtime/verify_runtime_stack_db_ready_green.py --json
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_prd1100r_runtime_restore_execution_5_runtime_stack_db_lineage_ready_green.py --authority-only --json
+
+prd1100r-runtime-restore-execution-5-run:
+	PYTHONPATH=. $(PYTHON) scripts/runtime/run_runtime_stack_db_ready_green.py --execute --apply-migrations --require-green --json

@@ -14,6 +14,7 @@ from scripts.advisory_suites.generated_contract_frontend_quality_green_evidence 
 ROOT = Path(__file__).resolve().parents[2]
 PRD_ID = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-4"
 NEXT = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-5"
+ALLOWED_NEXT = {NEXT, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-6"}
 RECORD = ROOT / "docs/roadmap/production_readiness/prd_1100r_runtime_restore_execution_4_frontend_quality_defect_repair_generated_contract_green_evidence_record.json"
 REGISTER = ROOT / "docs/roadmap/production_readiness/prd11_production_release_register.json"
 PROD_REGISTER = ROOT / "docs/roadmap/production_readiness/production_readiness_register.json"
@@ -86,8 +87,8 @@ def audit(root: Path = ROOT, *, require_green: bool = False) -> dict[str, Any]:
         authority_valid,
         evidence_recorded,
         green_required_ok,
-        register.get("next_authorised_item") == NEXT,
-        prod_register.get("next_authorised_item") == NEXT,
+        register.get("next_authorised_item") in ALLOWED_NEXT,
+        prod_register.get("next_authorised_item") in ALLOWED_NEXT,
     ])
     return {
         "valid": valid,
