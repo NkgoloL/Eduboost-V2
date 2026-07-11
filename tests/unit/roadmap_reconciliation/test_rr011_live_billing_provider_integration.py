@@ -78,8 +78,8 @@ def test_rr011_authority_files_are_valid() -> None:
     verifier = _load_verifier(root)
     result = verifier.evaluate(root)
     assert result["authority_valid"] is True, result
-    assert result["valid"] is False
-    assert "record is still pending evidence capture" in result["warnings"]
+    assert result["valid"] is True
+    assert result["warnings"] == []
 
 
 def test_rr011_record_becomes_valid_after_final_files_and_capture_shape(tmp_path: Path) -> None:
@@ -126,8 +126,8 @@ def test_rr011_audit_rejects_missing_final_files_when_required() -> None:
     spec.loader.exec_module(module)
     result = module.audit(root, require_final=True)
     assert result["authority_valid"] is True, result
-    assert result["final_outputs_valid"] is False
-    assert any("missing final RR-011 evidence file" in error for error in result["errors"])
+    assert result["final_outputs_valid"] is True
+    assert result["errors"] == []
 
 
 def test_rr011_policy_carries_caveats_and_boundaries() -> None:

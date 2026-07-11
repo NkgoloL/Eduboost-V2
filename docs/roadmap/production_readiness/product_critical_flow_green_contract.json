@@ -1,0 +1,107 @@
+{
+  "critical_flows": [
+    {
+      "class": "product",
+      "command_id": "auth_authorisation",
+      "description": "JWT/auth-context, role guard, and object-authorisation proof including denial paths.",
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "auth_authorisation",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_live_stack": false,
+      "requires_negative_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "class": "product",
+      "command_id": "popia_lifecycle",
+      "description": "Data-subject rights, consent, export/erasure, authorization, and audit response proof.",
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "popia_lifecycle",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_live_stack": true,
+      "requires_negative_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "class": "product",
+      "command_id": "billing_commercial",
+      "description": "Commercial/billing route, entitlement, webhook, and non-live safety proof.",
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "billing_commercial",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_live_stack": false,
+      "requires_negative_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "class": "product",
+      "command_id": "learner_journeys",
+      "description": "Learner and guardian journeys, progress, lesson/study-plan route and denial proof.",
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "learner_journeys",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_live_stack": true,
+      "requires_negative_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "class": "product",
+      "command_id": "diagnostics_assessments",
+      "description": "Diagnostic assessment, assessment attempts, and IRT/schema-backed execution proof.",
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "diagnostics_assessments",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_live_stack": true,
+      "requires_negative_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "class": "product",
+      "command_id": "audit_trail",
+      "description": "Audit events, immutability, and critical action traceability proof.",
+      "evidence_source": "independent_command_result",
+      "governance_substitution_allowed": false,
+      "id": "audit_trail",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_live_stack": true,
+      "requires_negative_path": true,
+      "requires_positive_path": true
+    }
+  ],
+  "execution_policy": {
+    "capture_independent_command_outputs": true,
+    "governance_records_cannot_override_failed_flow": true,
+    "green_status_requires_all_flow_results_green": true,
+    "known_failures_must_be_recorded_as_blockers": true,
+    "positive_and_negative_paths_required": true,
+    "presence_only_outputs_forbidden": true,
+    "runtime_baseline_must_be_green_before_product_green_claim": true,
+    "runtime_context_required_for_db_backed_flows": true
+  },
+  "execution_results": [],
+  "last_reviewed_at": "2026-07-11T13:22:33.284867+00:00",
+  "next_after_green_evidence": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7",
+  "prd_id": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-6",
+  "product_gate_green": false,
+  "runtime_prerequisites": [
+    "runtime_baseline_green",
+    "runtime_stack_green",
+    "database_lineage_green",
+    "schema_contract_green",
+    "redis_readiness_green",
+    "ready_probe_green"
+  ],
+  "schema_version": "prd11.0r/runtime-restore-execution-6/product-critical-flow-green/v1",
+  "source_of_truth": "docs/testing/product_critical_flow_green_execution.md"
+}

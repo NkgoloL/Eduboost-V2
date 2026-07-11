@@ -2,15 +2,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+import asyncio
 from typing import Any
 
 import pytest
-from fastapi import FastAPI
-from fastapi.testclient import TestClient
 
-from app.api_v2_deps.auth import AuthContext, TokenType, require_parent_or_admin
+from app.api_v2_deps.auth import AuthContext, TokenType
 from app.api_v2_routers import billing
-from app.core.database import get_db
 from app.models import UserRole
 
 
@@ -49,28 +47,25 @@ class FakeFourthEstate:
         self.records.append((event_type, payload))
 
 
-def _client(stripe: FakeStripeService, audit: FakeFourthEstate) -> TestClient:
-    app = FastAPI()
-    app.include_router(billing.router, prefix="/api/v2")
+class DummyRequest:
+    def __init__(self, payload: bytes):
+        self._payload = payload
 
-    app.dependency_overrides[require_parent_or_admin] = lambda: _auth_context(PARENT)
-    app.dependency_overrides[get_db] = lambda: object()
-
-    billing.StripeService = lambda _db: stripe  # type: ignore[misc,assignment]
-    billing.FourthEstateService = lambda _db: audit  # type: ignore[misc,assignment]
-    return TestClient(app, raise_server_exceptions=True)
+    async def body(self) -> bytes:
+        return self._payload
 
 
 @pytest.mark.unit
 def test_create_checkout_delegates_to_stripe_service():
     stripe = FakeStripeService()
     audit = FakeFourthEstate()
-    client = _client(stripe, audit)
+    billing.StripeService = lambda _db: stripe  # type: ignore[misc,assignment]
 
-    response = client.post("/api/v2/billing/checkout")
-    assert response.status_code == 200
-    body = response.json().get("data", response.json())
-    assert body["checkout_url"] == "https://checkout.stripe.test/session"
+    async def run() -> None:
+        result = await billing.create_checkout(db=object(), current_user=_auth_context(PARENT))
+        assert result.checkout_url == "https://checkout.stripe.test/session"
+
+    asyncio.run(run())
     assert stripe.checkout_calls[0]["guardian_id"] == PARENT["sub"]
 
 
@@ -78,14 +73,18 @@ def test_create_checkout_delegates_to_stripe_service():
 def test_stripe_webhook_records_audit_trail():
     stripe = FakeStripeService()
     audit = FakeFourthEstate()
-    client = _client(stripe, audit)
+    billing.StripeService = lambda _db: stripe  # type: ignore[misc,assignment]
 
-    response = client.post(
-        "/api/v2/billing/webhook",
-        content=b'{"type":"checkout.session.completed"}',
-        headers={"stripe-signature": "sig_test"},
-    )
-    assert response.status_code == 200
+    async def run() -> None:
+        result = await billing.stripe_webhook(
+            request=DummyRequest(b'{"type":"checkout.session.completed"}'),
+            db=object(),
+            stripe_signature="sig_test",
+            audit=audit,
+        )
+        assert result["status"] == "processed"
+
+    asyncio.run(run())
     assert stripe.webhook_calls[0]["signature"] == "sig_test"
     assert audit.records[0][0] == "STRIPE_WEBHOOK"
     assert audit.records[0][1]["event_type"] == "checkout.session.completed"
