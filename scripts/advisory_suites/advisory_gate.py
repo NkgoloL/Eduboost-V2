@@ -64,7 +64,7 @@ DEFAULT_GATE_COMMANDS: tuple[AdvisoryGateCommand, ...] = (
     ),
     AdvisoryGateCommand(
         "frontend_quality",
-        "cd app/frontend && pnpm lint && pnpm test:run && pnpm build",
+        "cd app/frontend && pnpm run type-check && pnpm run lint && pnpm run test && pnpm run build",
         "frontend-quality.json",
         True,
         False,
@@ -80,11 +80,11 @@ DEFAULT_GATE_COMMANDS: tuple[AdvisoryGateCommand, ...] = (
     ),
     AdvisoryGateCommand(
         "generated_contract_drift",
-        "python3 scripts/generate_openapi.py --check && python3 scripts/generate_route_inventory.py --check",
+        "${PYTHON:-python3} scripts/generate_openapi.py --check && ${PYTHON:-python3} scripts/generate_route_inventory.py --check",
         "generated-contract-drift.json",
         True,
         False,
-        "python3 scripts/generate_openapi.py --check",
+        "${PYTHON:-python3} scripts/generate_openapi.py --check",
     ),
     AdvisoryGateCommand(
         "dependency_security_audit",
