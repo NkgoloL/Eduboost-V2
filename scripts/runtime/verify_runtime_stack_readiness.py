@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import json
 import subprocess
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -47,7 +48,7 @@ def _health_contract(root: Path) -> dict[str, Any]:
 
 def _py_compile(root: Path) -> dict[str, Any]:
     cmd = [
-        "python3",
+        sys.executable,
         "-m",
         "py_compile",
         "app/core/runtime_readiness.py",

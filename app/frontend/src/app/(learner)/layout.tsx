@@ -12,15 +12,17 @@ export default function LearnerLayout({ children }: { children: React.ReactNode 
   const router = useRouter();
   const pathname = usePathname();
 
-  if (pathname.startsWith("/parent")) {
-    return <>{children}</>;
-  }
+  const isParentRoute = pathname.startsWith("/parent");
 
   useEffect(() => {
-    if (!learner) {
+    if (!learner && !isParentRoute) {
       router.push("/");
     }
-  }, [learner, router]);
+  }, [isParentRoute, learner, router]);
+
+  if (isParentRoute) {
+    return <>{children}</>;
+  }
 
   if (!learner) return <RouteGuard required="learner">{children}</RouteGuard>;
 

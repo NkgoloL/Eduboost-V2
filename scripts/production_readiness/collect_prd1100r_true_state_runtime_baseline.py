@@ -9,6 +9,7 @@ import argparse
 import json
 import os
 import subprocess
+import sys
 from pathlib import Path
 from typing import Any
 from urllib.error import URLError
@@ -159,8 +160,8 @@ def _ready_http_probe() -> dict[str, Any]:
 def _generated_contracts(root: Path, run_checks: bool) -> dict[str, Any]:
     if not run_checks:
         return {"status": "blocked", "reason": "generated contract checks not executed in collector default mode"}
-    openapi = _run(["python3", "scripts/generate_openapi.py", "--check"], root)
-    routes = _run(["python3", "scripts/generate_route_inventory.py", "--check"], root)
+    openapi = _run([sys.executable, "scripts/generate_openapi.py", "--check"], root)
+    routes = _run([sys.executable, "scripts/generate_route_inventory.py", "--check"], root)
     status = "pass" if openapi.get("status") == routes.get("status") == "pass" else "fail"
     return {"status": status, "openapi": openapi, "route_inventory": routes}
 
@@ -196,9 +197,9 @@ def collect_baseline(root: Path = ROOT, *, run_expensive_checks: bool = False) -
         "redis_readiness_dependency": _redis_probe(),
         "ready_http_probe": _ready_http_probe(),
         "generated_contracts": _generated_contracts(root, run_expensive_checks),
-        "backend_unit_gate": _command_gate("backend_unit_gate", ["python3", "-m", "pytest", "tests/unit", "-q", "--no-cov"], root, run_expensive_checks, timeout=300),
-        "integration_gate": _command_gate("integration_gate", ["python3", "-m", "pytest", "tests/integration", "-q", "--no-cov"], root, run_expensive_checks, timeout=300),
-        "dependency_audit_gate": _command_gate("dependency_audit_gate", ["python3", "-m", "pip_audit", "-r", "requirements/base.txt"], root, run_expensive_checks, timeout=180),
+        "backend_unit_gate": _command_gate("backend_unit_gate", [sys.executable, "-m", "pytest", "tests/unit", "-q", "--no-cov"], root, run_expensive_checks, timeout=300),
+        "integration_gate": _command_gate("integration_gate", [sys.executable, "-m", "pytest", "tests/integration", "-q", "--no-cov"], root, run_expensive_checks, timeout=300),
+        "dependency_audit_gate": _command_gate("dependency_audit_gate", [sys.executable, "-m", "pip_audit", "-r", "requirements/base.txt"], root, run_expensive_checks, timeout=180),
         "frontend_quality_gate": _command_gate("frontend_quality_gate", ["bash", "-lc", "cd app/frontend && pnpm lint && pnpm test -- --run && pnpm build"], root, run_expensive_checks, timeout=300),
         "secret_baseline_gate": _command_gate("secret_baseline_gate", ["bash", "-lc", "detect-secrets scan --baseline .secrets.baseline app scripts .github >/tmp/prd110r_detect_secrets.json"], root, run_expensive_checks, timeout=180),
     }
