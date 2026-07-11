@@ -3594,3 +3594,12 @@ runtime-restore-execution-2-generated-frontend-gates:
 
 runtime-restore-execution-2-generated-frontend-gates-execute:
 	$(PYTHON) scripts/advisory_suites/run_generated_frontend_quality_gates.py --execute --json
+
+
+.PHONY: prd1100r-runtime-restore-execution-3-verify prd1100r-runtime-restore-execution-3-green-run
+prd1100r-runtime-restore-execution-3-verify:
+	PYTHONPATH=. $(PYTHON) scripts/advisory_suites/verify_generated_contract_frontend_green_run.py --json
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_prd1100r_runtime_restore_execution_3_generated_contract_frontend_green_run.py --authority-only --json
+
+prd1100r-runtime-restore-execution-3-green-run:
+	PYTHONPATH=. $(PYTHON) scripts/advisory_suites/run_generated_contract_frontend_green_run.py --execute --json
