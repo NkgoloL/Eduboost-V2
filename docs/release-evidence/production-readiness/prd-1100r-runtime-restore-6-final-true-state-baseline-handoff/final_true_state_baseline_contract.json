@@ -1,0 +1,128 @@
+{
+  "commands": [
+    {
+      "command": "PYTHONPATH=. python3 scripts/production_readiness/collect_prd1100r_true_state_runtime_baseline.py --run-expensive-checks --json",
+      "evidence_artifact": "true-state-runtime-baseline.json",
+      "gate_id": "runtime_baseline",
+      "negative_path_command": "PYTHONPATH=. python3 scripts/runtime/verify_runtime_stack_readiness.py --json",
+      "release_blocking": true,
+      "requires_live_stack": true
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/runtime/verify_disposable_stack_schema_lineage.py --require-live --json",
+      "evidence_artifact": "disposable-stack-schema-lineage.json",
+      "gate_id": "disposable_stack_schema_lineage",
+      "negative_path_command": "PYTHONPATH=. python3 scripts/runtime/verify_disposable_stack_schema_lineage.py --json",
+      "release_blocking": true,
+      "requires_live_stack": true
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/test_suites/run_product_runtime_gates.py combined --json",
+      "evidence_artifact": "product-runtime-gates.json",
+      "gate_id": "product_runtime_gates",
+      "negative_path_command": "PYTHONPATH=. python3 scripts/test_suites/verify_product_runtime_test_gates.py --json",
+      "release_blocking": true,
+      "requires_live_stack": true
+    },
+    {
+      "command": "PYTHONPATH=. python3 scripts/test_suites/run_product_gate_execution.py combined --json",
+      "evidence_artifact": "product-critical-flows.json",
+      "gate_id": "product_critical_flows",
+      "negative_path_command": "PYTHONPATH=. python3 scripts/test_suites/verify_product_gate_execution.py --json",
+      "release_blocking": true,
+      "requires_live_stack": true
+    },
+    {
+      "command": "make test-coverage COVERAGE_THRESHOLD=70",
+      "evidence_artifact": "coverage-execution.json",
+      "gate_id": "coverage_execution",
+      "negative_path_command": "PYTHONPATH=. python3 scripts/coverage_suites/verify_coverage_contract.py --json",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "cd app/frontend && pnpm lint && pnpm test:run && pnpm build",
+      "evidence_artifact": "frontend-quality.json",
+      "gate_id": "frontend_quality",
+      "negative_path_command": "cd app/frontend && pnpm lint --max-warnings=0",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "python3 -m ruff check app tests && python3 -m mypy app && python3 -m bandit -r app scripts -q",
+      "evidence_artifact": "advisory-static-quality.json",
+      "gate_id": "advisory_static_quality",
+      "negative_path_command": "python3 -m ruff check app tests --select F,E9",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "python3 scripts/generate_openapi.py --check && python3 scripts/generate_route_inventory.py --check",
+      "evidence_artifact": "generated-contract-drift.json",
+      "gate_id": "generated_contract_drift",
+      "negative_path_command": "python3 scripts/generate_openapi.py --check",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "pip-audit -r requirements/base.txt -r requirements/dev.txt && cd app/frontend && pnpm audit --prod",
+      "evidence_artifact": "dependency-security-audit.json",
+      "gate_id": "dependency_security_audit",
+      "negative_path_command": "pip-audit -r requirements/base.txt --strict",
+      "release_blocking": true,
+      "requires_live_stack": false
+    },
+    {
+      "command": "detect-secrets scan --baseline .secrets.baseline app scripts .github && detect-secrets audit .secrets.baseline",
+      "evidence_artifact": "secret-baseline-review.json",
+      "gate_id": "secret_baseline_review",
+      "negative_path_command": "detect-secrets audit .secrets.baseline",
+      "release_blocking": true,
+      "requires_live_stack": false
+    }
+  ],
+  "gate_ids": [
+    "advisory_static_quality",
+    "coverage_execution",
+    "dependency_security_audit",
+    "disposable_stack_schema_lineage",
+    "frontend_quality",
+    "generated_contract_drift",
+    "product_critical_flows",
+    "product_runtime_gates",
+    "runtime_baseline",
+    "secret_baseline_review"
+  ],
+  "gates_valid": true,
+  "governance_alignment": {
+    "final_handoff_contract_age_days": 0,
+    "fresh": true,
+    "freshness_max_age_days": 21,
+    "prd11_register_age_days": 0,
+    "prd11_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION",
+    "production_register_age_days": 0,
+    "production_register_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION",
+    "release_boundaries_locked": true,
+    "state_agrees": true,
+    "valid": true
+  },
+  "missing_gates": [],
+  "next_if_green": "PRD-11.0-11.4",
+  "next_if_red": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION",
+  "policy_valid": true,
+  "prd_id": "PRD-11.0R.RUNTIME-RESTORE-6",
+  "required_gate_ids": [
+    "runtime_baseline",
+    "disposable_stack_schema_lineage",
+    "product_runtime_gates",
+    "product_critical_flows",
+    "coverage_execution",
+    "frontend_quality",
+    "advisory_static_quality",
+    "generated_contract_drift",
+    "dependency_security_audit",
+    "secret_baseline_review"
+  ],
+  "schema_version": "prd11.0r/runtime-restore-6/final-true-state-baseline-handoff/v1",
+  "valid": true
+}
