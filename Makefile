@@ -3579,3 +3579,11 @@ prd1100r-runtime-restore-5-verify:
 runtime-restore-6-verify:
 	PYTHONPATH=. python3 scripts/runtime/verify_final_true_state_baseline.py --json
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd1100r_runtime_restore_6_final_true_state_baseline_handoff.py --authority-only --json
+
+.PHONY: prd1100r-runtime-restore-execution-1-verify prd1100r-runtime-restore-execution-1-capture
+prd1100r-runtime-restore-execution-1-verify:
+	PYTHONPATH=. python3 -m pytest -q tests/unit/runtime/test_runtime_restore_execution_1.py tests/unit/roadmap_reconciliation/test_prd1100r_runtime_restore_execution_1_runtime_command_frontend_generated_contracts.py --no-cov
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd1100r_runtime_restore_execution_1_runtime_command_frontend_generated_contracts.py --authority-only --json
+
+prd1100r-runtime-restore-execution-1-capture:
+	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_execution_1_runtime_command_frontend_generated_contracts_evidence.py --claim-prd1100r-runtime-restore-execution-1-runtime-command-frontend-generated-contracts --prd-owner "$${PRD_OWNER:-Nkgolo Lebelo}" --target-branch master --require-valid --json
