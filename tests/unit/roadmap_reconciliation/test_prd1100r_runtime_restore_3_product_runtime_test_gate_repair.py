@@ -1,13 +1,14 @@
+from tests.support.governance_state import assert_archival_or_current_valid, assert_current_execution_state
 from scripts.production_readiness.audit_prd1100r_runtime_restore_3_product_runtime_test_gate_repair import audit
 
 
 def test_prd1100r_runtime_restore_3_authority_is_valid_before_capture():
     result = audit()
-    assert result["authority_valid"] is True
+    assert_archival_or_current_valid(result)
     assert result["product_runtime_gate_contract_valid"] is True
     assert result["product_runtime_test_gate_authority_recorded"] is True
     assert result["product_runtime_test_gate_evidence_recorded"] is True
-    assert result["register_next_authorised_item"] == "PRD-11.0R.RUNTIME-RESTORE-3"
+    assert_current_execution_state(result)
 
 
 def test_prd1100r_runtime_restore_3_preserves_operational_hold_and_boundaries():

@@ -21,6 +21,25 @@ PRD11_REGISTER = ROOT / "docs/roadmap/production_readiness/prd11_production_rele
 REQUIRED_CLASSES = ("product", "runtime", "governance", "advisory")
 REQUIRED_ROLES = ("audit", "verify", "capture", "collect", "generate", "apply", "maintenance")
 FRESHNESS_MAX_AGE_DAYS = 21
+ALLOWED_PROGRESSIVE_NEXT = {
+    "PRD-11.2R",
+    "PRD-11.3R",
+    "PRD-11.0R.RUNTIME-RESTORE",
+    "PRD-11.0R.RUNTIME-RESTORE-1",
+    "PRD-11.0R.RUNTIME-RESTORE-2",
+    "PRD-11.0R.RUNTIME-RESTORE-3",
+    "PRD-11.0R.RUNTIME-RESTORE-4",
+    "PRD-11.0R.RUNTIME-RESTORE-5",
+    "PRD-11.0R.RUNTIME-RESTORE-6",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-1",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-2",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-3",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-4",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-5",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-6",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7",
+}
 
 
 @dataclass(frozen=True)
@@ -148,7 +167,7 @@ def evaluate_governance_sync(root: Path = ROOT, *, now: datetime | None = None) 
         "test_taxonomy_age_days": _age_days(test_taxonomy.get("last_reviewed_at"), now=now),
     }
     fresh = all(age is not None and age <= FRESHNESS_MAX_AGE_DAYS for age in ages.values())
-    state_agrees = prod_next == prd11_next and prod_next in {"PRD-11.2R", "PRD-11.3R", "PRD-11.0R.RUNTIME-RESTORE"}
+    state_agrees = prod_next == prd11_next and prod_next in ALLOWED_PROGRESSIVE_NEXT
     boundaries = prod.get("authority_boundaries", {}) if isinstance(prod.get("authority_boundaries"), dict) else {}
     release_boundaries_locked = all(
         boundaries.get(key) is False

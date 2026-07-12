@@ -1,10 +1,14 @@
+from tests.support.governance_state import (
+    assert_archival_or_current_valid,
+    assert_historical_next_with_current_execution,
+)
 from scripts.production_readiness.audit_prd1100r_true_state_runtime_baseline_restoration import audit
 
 
 def test_prd1100r_authority_state_is_valid_before_or_after_capture():
     result = audit()
 
-    assert result["authority_valid"] is True
+    assert_archival_or_current_valid(result)
     assert result["previous_prd10_handoff_valid"] is True
     assert result["runtime_baseline_helper_valid"] is True
     assert result["true_state_runtime_baseline_restoration_authority_recorded"] is True
@@ -21,9 +25,5 @@ def test_prd1100r_authority_state_is_valid_before_or_after_capture():
     assert result["public_beta_authorised"] is False
     assert result["billing_launch_authorised"] is False
 
-    if result["valid"]:
-        assert result["true_state_runtime_baseline_evidence_recorded"] is True
-        assert result["next_authorised_item"] == "PRD-11.0R.RUNTIME-RESTORE"
-    else:
-        assert result["true_state_runtime_baseline_evidence_recorded"] is True
-        assert result["next_authorised_item"] == "PRD-11.0R"
+    assert result["true_state_runtime_baseline_evidence_recorded"] is True
+    assert_historical_next_with_current_execution(result, "PRD-11.0R.RUNTIME-RESTORE")

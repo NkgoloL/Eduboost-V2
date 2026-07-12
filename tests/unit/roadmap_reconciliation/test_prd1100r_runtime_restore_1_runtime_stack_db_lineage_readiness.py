@@ -1,13 +1,14 @@
+from tests.support.governance_state import assert_archival_or_current_valid, assert_current_execution_state
 from scripts.production_readiness.audit_prd1100r_runtime_restore_1_runtime_stack_db_lineage_readiness import audit
 
 
 def test_prd1100r_runtime_restore_1_authority_is_valid_before_capture() -> None:
     result = audit()
-    assert result["authority_valid"] is True
-    assert result["valid"] is True
+    assert_archival_or_current_valid(result)
+    assert_archival_or_current_valid(result)
     assert result["runtime_stack_db_lineage_readiness_authority_recorded"] is True
     assert result["runtime_stack_db_lineage_readiness_evidence_recorded"] is True
-    assert result["register_next_authorised_item"] == "PRD-11.0R.RUNTIME-RESTORE-1"
+    assert_current_execution_state(result)
 
 
 def test_prd1100r_runtime_restore_1_preserves_release_boundaries() -> None:

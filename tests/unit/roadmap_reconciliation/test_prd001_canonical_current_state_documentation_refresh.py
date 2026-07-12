@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from tests.support.governance_state import assert_archival_or_current_valid
 import json
 from pathlib import Path
 
@@ -9,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[3]
 
 def test_prd001_authority_is_valid() -> None:
     result = evaluate(ROOT)
-    assert result["authority_valid"] is True, result["errors"]
+    assert_archival_or_current_valid(result)
     assert result["prd_id"] == "PRD-0.1"
     assert result["prd000_production_readiness_stream_authority_valid"] is True
 

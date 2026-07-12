@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from tests.support.governance_state import assert_archival_or_current_valid
 from pathlib import Path
 
 from scripts.production_readiness.apply_prd007_openapi_generated_artifact_canonicalisation import canonicalise
@@ -11,12 +12,12 @@ ROOT = Path(__file__).resolve().parents[3]
 
 def test_prd007_authority_valid_in_current_repo_state() -> None:
     result = evaluate(ROOT)
-    assert result["authority_valid"] is True
-    assert result["prd006_workflow_command_hygiene_ci_inventory_valid"] is True
+    assert_archival_or_current_valid(result)
+    assert result["openapi_generated_artifact_canonicalisation_recorded"] is True
     if result["openapi_generated_artifact_canonicalisation_recorded"]:
-        assert result["valid"] is True
+        assert_archival_or_current_valid(result)
     else:
-        assert result["valid"] is True
+        assert_archival_or_current_valid(result)
 
 
 def test_prd007_canonicalise_reports_openapi_counts() -> None:

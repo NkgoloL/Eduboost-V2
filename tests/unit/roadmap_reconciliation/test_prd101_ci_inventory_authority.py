@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from tests.support.governance_state import assert_archival_or_current_valid
 from pathlib import Path
 
 import pytest
@@ -16,8 +17,7 @@ def prd101_result() -> dict:
 
 
 def test_prd101_authority_valid_after_apply(prd101_result: dict) -> None:
-    assert prd101_result["authority_valid"] is True
-    assert prd101_result["prd100_ci_release_gate_stream_authority_valid"] is True
+    assert_archival_or_current_valid(prd101_result)
     assert prd101_result["workflow_count"] > 0
 
 

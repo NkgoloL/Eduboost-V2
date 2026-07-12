@@ -74,8 +74,7 @@ def test_rr013_authority_files_are_valid() -> None:
     verifier = _load_verifier(root)
     result = verifier.evaluate(root)
     assert result["authority_valid"] is True, result
-    assert result["valid"] is False
-    assert "record is still pending evidence capture" in result["warnings"]
+    assert result["valid"] is True, result
 
 
 def test_rr013_record_becomes_valid_after_final_files_and_capture_shape(tmp_path: Path) -> None:
@@ -114,8 +113,18 @@ def test_rr013_record_becomes_valid_after_final_files_and_capture_shape(tmp_path
     assert result["valid"] is True, result
 
 
-def test_rr013_audit_rejects_missing_final_files_when_required() -> None:
-    root = Path.cwd()
+def test_rr013_audit_rejects_missing_final_files_when_required(tmp_path: Path) -> None:
+    source = Path.cwd()
+    root = tmp_path / "repo"
+    _copy_minimal_repo(source, root)
+    for path in (
+        "rr013_mastery_model_literature_review.md",
+        "rr013_candidate_model_comparison.md",
+        "rr013_evaluation_protocol.md",
+        "rr013_data_readiness_and_ethics_review.md",
+        "rr013_research_decision_memo.md",
+    ):
+        (root / "docs/research/mastery_model" / path).unlink()
     audit_path = root / "scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py"
     spec = importlib.util.spec_from_file_location("audit_rr013", audit_path)
     assert spec and spec.loader

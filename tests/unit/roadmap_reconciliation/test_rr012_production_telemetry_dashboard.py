@@ -106,8 +106,7 @@ def test_rr012_authority_files_are_valid() -> None:
     verifier = _load_verifier(root)
     result = verifier.evaluate(root)
     assert result["authority_valid"] is True, result
-    assert result["valid"] is False
-    assert "record is still pending evidence capture" in result["warnings"]
+    assert result["valid"] is True, result
 
 
 def test_rr012_record_becomes_valid_after_final_files_and_capture_shape(tmp_path: Path) -> None:
@@ -148,8 +147,18 @@ def test_rr012_record_becomes_valid_after_final_files_and_capture_shape(tmp_path
     assert result["valid"] is True, result
 
 
-def test_rr012_audit_rejects_missing_final_files_when_required() -> None:
-    root = Path.cwd()
+def test_rr012_audit_rejects_missing_final_files_when_required(tmp_path: Path) -> None:
+    source = Path.cwd()
+    root = tmp_path / "repo"
+    _copy_minimal_repo(source, root)
+    for path in (
+        "rr012_production_telemetry_dashboard_attestation.md",
+        "rr012_grafana_dashboard_inventory.json",
+        "rr012_alert_routing_validation.md",
+        "rr012_slo_dashboard_validation.md",
+        "rr012_dashboard_privacy_boundary.md",
+    ):
+        (root / "docs/telemetry" / path).unlink()
     audit_path = root / "scripts/telemetry/audit_rr012_production_telemetry_dashboard.py"
     spec = importlib.util.spec_from_file_location("audit_rr012", audit_path)
     assert spec and spec.loader

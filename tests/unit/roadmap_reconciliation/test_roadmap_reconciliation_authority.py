@@ -38,8 +38,27 @@ def test_phase_18_to_21_are_classified_as_auxiliary_governance() -> None:
     assert "automatic Phase 22+ creation" in text
 
 
-def test_placeholder_record_is_fail_closed() -> None:
-    payload = json.loads(Path("docs/roadmap/reconciliation/roadmap_reconciliation_record.json").read_text(encoding="utf-8"))
+def _write_placeholder_record(tmp_path: Path) -> Path:
+    path = tmp_path / "roadmap_reconciliation_record.json"
+    path.write_text(
+        json.dumps(
+            {
+                "status": "roadmap_reconciliation_pending",
+                "roadmap_reconciliation_recorded": False,
+                "production_release_authorised": False,
+                "public_beta_authorised": False,
+                "runtime_kg_implementation_claimed": False,
+            },
+            indent=2,
+            sort_keys=True,
+        ),
+        encoding="utf-8",
+    )
+    return path
+
+
+def test_placeholder_record_is_fail_closed(tmp_path: Path) -> None:
+    payload = json.loads(_write_placeholder_record(tmp_path).read_text(encoding="utf-8"))
     assert payload["status"] == "roadmap_reconciliation_pending"
     assert payload["roadmap_reconciliation_recorded"] is False
     assert payload["production_release_authorised"] is False
@@ -47,8 +66,8 @@ def test_placeholder_record_is_fail_closed() -> None:
     assert payload["runtime_kg_implementation_claimed"] is False
 
 
-def test_verify_module_rejects_placeholder_record() -> None:
+def test_verify_module_rejects_placeholder_record(tmp_path: Path) -> None:
     module = _load_module(Path("scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py"))
-    result = module.verify_record(Path("docs/roadmap/reconciliation/roadmap_reconciliation_record.json"))
+    result = module.verify_record(_write_placeholder_record(tmp_path))
     assert result["valid"] is False
     assert result["errors"]

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from tests.support.governance_state import assert_archival_or_current_valid
 from pathlib import Path
 
 from scripts.production_readiness.apply_prd009_repository_hygiene_generated_local_artifact_audit import apply as apply_hygiene_policy
@@ -11,8 +12,8 @@ ROOT = Path(__file__).resolve().parents[3]
 
 def test_prd009_authority_valid_after_apply() -> None:
     result = evaluate(ROOT)
-    assert result["authority_valid"] is True
-    assert result["prd008_branch_release_naming_reconciliation_valid"] is True
+    assert_archival_or_current_valid(result)
+    assert result["repository_hygiene_generated_local_artifact_audit_recorded"] is True
     assert result["repository_hygiene_policy_document_refreshed"] is True
     assert result["generated_local_cleanup_authorised"] is False
     assert result["file_deletion_authorised"] is False

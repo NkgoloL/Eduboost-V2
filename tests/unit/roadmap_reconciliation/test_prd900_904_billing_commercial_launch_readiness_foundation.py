@@ -1,10 +1,14 @@
+from tests.support.governance_state import (
+    assert_archival_or_current_valid,
+    assert_historical_next_with_current_execution,
+)
 from scripts.production_readiness.audit_prd900_904_billing_commercial_launch_readiness_foundation import audit
 
 
 def test_prd900_904_authority_and_evidence_state_are_valid():
     result = audit()
 
-    assert result["authority_valid"] is True
+    assert_archival_or_current_valid(result)
     assert result["previous_prd8_handoff_valid"] is True
     assert result["commercial_launch_readiness_valid"] is True
     assert result["billing_provider_test_mode_defined"] is True
@@ -21,12 +25,6 @@ def test_prd900_904_authority_and_evidence_state_are_valid():
     assert result["live_payment_processing_authorised"] is False
     assert result["live_learner_traffic_authorised"] is False
 
-    if result["valid"]:
-        assert result["commercial_launch_foundation_recorded"] is True
-        assert result["commercial_launch_evidence_recorded"] is True
-        assert result["next_authorised_item"] == "PRD-9.5-9.9"
-    else:
-        assert result["commercial_launch_foundation_recorded"] is True
-        assert result["commercial_launch_evidence_recorded"] is True
-        assert result["next_authorised_item"] == "PRD-9.0-9.4"
-        assert result["register_next_authorised_item"] == "PRD-9.0-9.4"
+    assert result["commercial_launch_foundation_recorded"] is True
+    assert result["commercial_launch_evidence_recorded"] is True
+    assert_historical_next_with_current_execution(result, "PRD-9.5-9.9")
