@@ -13,6 +13,8 @@ from __future__ import annotations
 
 import pytest
 from unittest.mock import AsyncMock, MagicMock
+from types import SimpleNamespace
+from uuid import uuid4
 
 from app.repositories.assessment_repository import AssessmentRepository
 
@@ -25,8 +27,19 @@ class TestAssessmentRepositoryListAssessments:
         db = AsyncMock()
 
         result_mock = MagicMock()
-        result_mock.mappings.return_value.all.return_value = [
-            {"assessment_id": "1", "title": "Test", "subject_code": "MATH", "grade_level": 4, "assessment_type": "quiz", "total_marks": 10}
+        assessment_id = uuid4()
+        result_mock.scalars.return_value.all.return_value = [
+            SimpleNamespace(
+                id=assessment_id,
+                title="Test",
+                subject_code="MATH",
+                grade_level=4,
+                assessment_type="quiz",
+                total_marks=10,
+                questions=[],
+                passing_score=7,
+                is_active=True,
+            )
         ]
         db.execute = AsyncMock(return_value=result_mock)
 
@@ -34,7 +47,7 @@ class TestAssessmentRepositoryListAssessments:
         result = await repo.list_assessments(limit=10, offset=0, db=db)
 
         assert len(result) == 1
-        assert result[0]["assessment_id"] == "1"
+        assert result[0]["assessment_id"] == str(assessment_id)
         db.execute.assert_awaited_once()
 
     @pytest.mark.asyncio
@@ -43,7 +56,7 @@ class TestAssessmentRepositoryListAssessments:
         db = AsyncMock()
 
         result_mock = MagicMock()
-        result_mock.mappings.return_value.all.return_value = []
+        result_mock.scalars.return_value.all.return_value = []
         db.execute = AsyncMock(return_value=result_mock)
 
         repo = AssessmentRepository()
@@ -61,19 +74,25 @@ class TestAssessmentRepositoryGetAssessment:
         db = AsyncMock()
 
         result_mock = MagicMock()
-        result_mock.mappings.return_value.first.return_value = {
-            "assessment_id": "1",
-            "total_marks": 10,
-            "questions": [],
-            "passing_score": 7
-        }
+        assessment_id = uuid4()
+        result_mock.scalar_one_or_none.return_value = SimpleNamespace(
+            id=assessment_id,
+            title="Test",
+            subject_code="MATH",
+            grade_level=4,
+            assessment_type="quiz",
+            total_marks=10,
+            questions=[],
+            passing_score=7,
+            is_active=True,
+        )
         db.execute = AsyncMock(return_value=result_mock)
 
         repo = AssessmentRepository()
-        result = await repo.get_assessment("1", db=db)
+        result = await repo.get_assessment(str(assessment_id), db=db)
 
         assert result is not None
-        assert result["assessment_id"] == "1"
+        assert result["assessment_id"] == str(assessment_id)
         db.execute.assert_awaited_once()
 
     @pytest.mark.asyncio
@@ -82,10 +101,10 @@ class TestAssessmentRepositoryGetAssessment:
         db = AsyncMock()
 
         result_mock = MagicMock()
-        result_mock.mappings.return_value.first.return_value = None
+        result_mock.scalar_one_or_none.return_value = None
         db.execute = AsyncMock(return_value=result_mock)
 
         repo = AssessmentRepository()
-        result = await repo.get_assessment("999", db=db)
+        result = await repo.get_assessment(str(uuid4()), db=db)
 
         assert result is None

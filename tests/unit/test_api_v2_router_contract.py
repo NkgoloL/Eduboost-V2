@@ -31,7 +31,10 @@ def test_registered_router_fragments_are_exposed_under_each_v2_prefix() -> None:
         "gamification": "/gamification",
         "onboarding": "/onboarding",
         "parents": "/parents",
+        "vertical_journey": "/vertical-journey",
         "billing": "/billing",
+        "commercial_launch": "/commercial-launch",
+        "controlled_beta": "/controlled-beta",
         "consent": "/consent",
         "consent_renewal": "/consent",
         "content_factory": "/admin/content-factory",
@@ -45,7 +48,13 @@ def test_registered_router_fragments_are_exposed_under_each_v2_prefix() -> None:
         "ai_operations": "/admin/ai-operations",
         "generation": "/admin/generation",
         "content_review": "/content-review",
+        "content_quality": "/content-quality",
         "irt_quality": "/admin/irt-quality",
+        "privacy_operations": "/privacy-operations",
+        "security_assurance": "/security-assurance",
+        "observability_sre": "/observability-sre",
+        "performance_scale_cost": "/performance-scale-cost",
+        "production_release": "/production-release",
     }
 
     missing: list[str] = []
