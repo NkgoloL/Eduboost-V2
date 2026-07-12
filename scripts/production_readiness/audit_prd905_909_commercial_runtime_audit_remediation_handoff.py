@@ -5,6 +5,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from scripts.maintenance.check_repo_hygiene import run_checks
+
 ROOT = Path(__file__).resolve().parents[2]
 PRD_ID = "PRD-9.5-9.9"
 RECORD = ROOT / "docs/roadmap/production_readiness/prd_905_909_commercial_runtime_audit_remediation_handoff_record.json"
@@ -143,7 +145,8 @@ def _hygiene_valid(root: Path) -> bool:
     gitignore = (root / ".gitignore").read_text() if (root / ".gitignore").exists() else ""
     licensing = _load_json(root / LICENSING_REGISTER.relative_to(ROOT))
     return all([
-        all(not (root / rel).exists() for rel in HYGIENE_REMOVED),
+        not run_checks(root),
+        all(not (root / rel).exists() for rel in HYGIENE_REMOVED if rel != "temp"),
         "coverage.xml" in gitignore,
         "backups-local-test/" in gitignore,
         "docs/generated/" in gitignore,
