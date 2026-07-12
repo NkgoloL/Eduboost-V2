@@ -5,6 +5,7 @@ import sys
 from scripts.advisory_suites.coverage_static_security_green import (
     REQUIRED_GATE_IDS,
     CoverageStaticSecurityCommand,
+    _coverage_execution_counts,
     _remaining_violation_count,
     _run_one,
     command_plan,
@@ -82,3 +83,24 @@ def test_coverage_gate_is_wired_to_stabilised_sharded_runner():
     gate = next(item for item in command_plan() if item.gate_id == "coverage_execution")
     assert gate.command[1] == "scripts/coverage_suites/run_coverage_baseline_stabilisation.py"
     assert gate.timeout_seconds == 3600
+
+
+def test_coverage_execution_counts_use_structured_summary(tmp_path: Path):
+    result = {
+        "stdout_artifact": str(tmp_path / "coverage.stdout.txt"),
+        "stdout_tail": json.dumps(
+            {
+                "confirmed_failed_leaf_count": 2,
+                "unresolved_timeout_leaf_count": 4,
+                "terminal_timeout_node_count": 0,
+                "unresolved_coverage_execution_count": 6,
+            }
+        ),
+    }
+
+    assert _coverage_execution_counts(result) == {
+        "confirmed_failed_leaf_count": 2,
+        "unresolved_timeout_leaf_count": 4,
+        "terminal_timeout_node_count": 0,
+        "unresolved_coverage_execution_count": 6,
+    }

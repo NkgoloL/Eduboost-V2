@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from scripts.runtime.disposable_stack_lineage import (
+    LineageProbeConfig,
     build_lineage_reconciliation_decision,
     verify_compose_file_contract,
     verify_disposable_stack_lineage_contract,
@@ -17,17 +18,35 @@ def test_disposable_stack_contract_is_installed() -> None:
 
 
 def test_live_lineage_is_not_claimed_without_database_url() -> None:
-    result = verify_disposable_stack_lineage_contract(require_live=False)
+    result = verify_disposable_stack_lineage_contract(
+        require_live=False,
+        config=LineageProbeConfig(database_url=None),
+    )
     assert result["checks"]["lineage_probe"]["status"] == "blocked"
     assert result["live_lineage_schema_green"] is False
     assert "provide live disposable stack evidence" in result["next_required_runtime_action"]
 
 
 def test_require_live_mode_fails_without_database_url() -> None:
-    result = verify_disposable_stack_lineage_contract(require_live=True)
+    result = verify_disposable_stack_lineage_contract(
+        require_live=True,
+        config=LineageProbeConfig(database_url=None),
+    )
     assert result["contract_valid"] is True
     assert result["valid"] is False
     assert result["live_lineage_schema_required"] is True
+    assert result["checks"]["lineage_probe"]["status"] == "blocked"
+
+
+def test_explicit_invalid_database_url_is_failed_live_evidence() -> None:
+    result = verify_disposable_stack_lineage_contract(
+        require_live=False,
+        config=LineageProbeConfig(database_url="postgresql://invalid:invalid@127.0.0.1:1/invalid"),
+    )
+
+    assert result["contract_valid"] is True
+    assert result["checks"]["lineage_probe"]["status"] == "fail"
+    assert result["live_lineage_schema_green"] is False
 
 
 def test_compose_and_migration_contracts_are_static_green() -> None:
