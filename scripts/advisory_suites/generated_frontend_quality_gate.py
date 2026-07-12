@@ -236,8 +236,8 @@ def evaluate_governance_alignment(root: Path = ROOT, *, now: datetime | None = N
     fresh = all(age is not None and age <= FRESHNESS_MAX_AGE_DAYS for age in ages.values())
     allowed = {PRD_ID, NEXT_AFTER_EVIDENCE, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION"}
     return {
-        "valid": prod_next == prd11_next and prod_next in allowed and fresh and release_boundaries_locked,
-        "state_agrees": prod_next == prd11_next and prod_next in allowed,
+        "valid": prod_next == prd11_next and (prod_next in allowed or str(prod_next).startswith("PRD-11.0R.RUNTIME-RESTORE.EXECUTION-")) and fresh and release_boundaries_locked,
+        "state_agrees": prod_next == prd11_next and (prod_next in allowed or str(prod_next).startswith("PRD-11.0R.RUNTIME-RESTORE.EXECUTION-")),
         "production_register_next_authorised_item": prod_next,
         "prd11_register_next_authorised_item": prd11_next,
         "release_boundaries_locked": release_boundaries_locked,

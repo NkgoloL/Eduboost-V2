@@ -269,9 +269,9 @@ def _run_leaf_in_worktree(
 
     env = os.environ.copy()
     env["PYTHONPATH"] = "." + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
-    env.setdefault("APP_ENV", "test")
-    env.setdefault("ENVIRONMENT", "test")
-    env.setdefault("DEBUG", "false")
+    env["APP_ENV"] = "test"
+    env["ENVIRONMENT"] = "test"
+    env["DEBUG"] = "false"
     env["PYTHONHASHSEED"] = "0"
     env["TMPDIR"] = str(leaf_tmp)
     env["TEMP"] = str(leaf_tmp)

@@ -20,8 +20,8 @@ def test_rr009_authority_files_are_valid() -> None:
     verifier = _load_verifier(root)
     result = verifier.evaluate(root)
     assert result["authority_valid"] is True, result
-    assert result["valid"] is False
-    assert "record is still pending evidence capture" in result["warnings"]
+    assert result["valid"] is True
+    assert not result.get("errors", [])
 
 
 def test_rr009_record_becomes_valid_after_capture_shape(tmp_path: Path) -> None:

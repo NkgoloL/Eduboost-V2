@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "prd_id": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7",
+  "slice": "targeted-baseline-reconciliation",
+  "title": "Harness Environment, Archival Governance Tests, MCP Compatibility, Timeout Isolation, and Mutation Hygiene",
+  "required_controls": [
+    "deterministic_test_environment",
+    "archival_governance_state_assertions",
+    "synthetic_precapture_fail_closed_fixtures",
+    "mcp_compatibility_adapter",
+    "bounded_timeout_probes",
+    "tracked_generator_mutation_isolation"
+  ],
+  "governance_boundary": {
+    "execution_7_complete_claimed": false,
+    "execution_8_authorised": false,
+    "green_evidence_capture_performed": false
+  }
+}

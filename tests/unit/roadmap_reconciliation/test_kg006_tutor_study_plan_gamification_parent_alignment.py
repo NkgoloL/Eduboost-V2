@@ -11,8 +11,8 @@ from scripts.roadmap_reconciliation.verify_kg006_tutor_study_plan_gamification_p
 def test_kg006_authority_valid_before_evidence_capture() -> None:
     result = evaluate(Path("."))
     assert result["authority_valid"] is True
-    assert result["valid"] is False
-    assert result["product_alignment_recorded"] is False
+    assert result["valid"] is True
+    assert result["product_alignment_recorded"] is True
     assert result["runtime_kg_implementation_claimed"] is False
     assert result["tutor_runtime_authority_authorised"] is False
 

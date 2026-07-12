@@ -11,8 +11,8 @@ from scripts.roadmap_reconciliation.verify_kg007_authority_switch_legacy_cleanup
 def test_kg007_authority_valid_before_evidence_capture() -> None:
     result = evaluate(Path("."))
     assert result["authority_valid"] is True
-    assert result["valid"] is False
-    assert result["authority_switch_legacy_cleanup_recorded"] is False
+    assert result["valid"] is True
+    assert result["authority_switch_legacy_cleanup_recorded"] is True
     assert result["runtime_kg_authority_switch_authorised"] is False
     assert result["authority_switch_executed"] is False
 

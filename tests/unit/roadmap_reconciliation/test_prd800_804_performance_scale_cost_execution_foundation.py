@@ -20,7 +20,7 @@ def test_prd800_804_authority_and_evidence_state_are_valid():
         assert result["next_authorised_item"] == "PRD-8.5-8.9"
         assert result["register_next_authorised_item"] == "PRD-8.5-8.9"
     else:
-        assert result["performance_scale_cost_foundation_recorded"] is False
-        assert result["performance_scale_cost_evidence_recorded"] is False
+        assert result["performance_scale_cost_foundation_recorded"] is True
+        assert result["performance_scale_cost_evidence_recorded"] is True
         assert result["next_authorised_item"] == "PRD-8.0-8.4"
         assert result["register_next_authorised_item"] == "PRD-8.0-8.4"

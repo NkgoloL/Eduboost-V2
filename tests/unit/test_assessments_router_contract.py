@@ -3,15 +3,18 @@ from __future__ import annotations
 
 import uuid
 from dataclasses import dataclass, field
+from functools import partial
 from typing import Any
 from unittest.mock import AsyncMock
 
+import anyio
 import pytest
 from fastapi import FastAPI
-from fastapi.testclient import TestClient
+from httpx import ASGITransport, AsyncClient
 
 from app.api_v2_routers import assessments
-from app.core.security import get_current_user
+from app.api_v2_deps.auth import require_auth_context
+from app.core.database import get_db
 
 
 LEARNER_ID = str(uuid.uuid4())
@@ -50,17 +53,50 @@ class FakeAssessmentService:
         }
 
 
-def _client(service: FakeAssessmentService) -> TestClient:
-    app = FastAPI()
-    app.include_router(assessments.router, prefix="/api/v2")
-    app.dependency_overrides[get_current_user] = lambda: ACTOR
-
-    async def _allow_consent(*_args, **_kwargs):
+def _build_app(
+    service: FakeAssessmentService,
+    monkeypatch: pytest.MonkeyPatch,
+    *,
+    consent_override: Any | None = None,
+) -> FastAPI:
+    async def allow_consent(*_args, **_kwargs):
         return None
 
-    assessments.require_active_consent_for_current_user = _allow_consent  # type: ignore[method-assign]
-    assessments.AssessmentServiceV2 = lambda: service  # type: ignore[misc,assignment]
-    return TestClient(app, raise_server_exceptions=True)
+    monkeypatch.setattr(
+        assessments,
+        "require_active_consent_for_current_user",
+        consent_override or allow_consent,
+    )
+    monkeypatch.setattr(
+        assessments,
+        "AssessmentServiceV2",
+        lambda: service,
+    )
+
+    app = FastAPI()
+    app.include_router(assessments.router, prefix="/api/v2")
+
+    async def auth_override():
+        return ACTOR
+
+    async def db_override():
+        return object()
+
+    app.dependency_overrides[require_auth_context] = auth_override
+    app.dependency_overrides[get_db] = db_override
+    return app
+
+
+async def _request(
+    app: FastAPI,
+    path: str,
+    *,
+    method: str = "get",
+    json: dict[str, Any] | None = None,
+):
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        return await client.request(method.upper(), path, json=json)
 
 
 def _unwrap(payload: dict[str, Any]) -> Any:
@@ -68,11 +104,11 @@ def _unwrap(payload: dict[str, Any]) -> Any:
 
 
 @pytest.mark.unit
-def test_list_assessments_delegates_to_service():
+def test_list_assessments_delegates_to_service(monkeypatch: pytest.MonkeyPatch):
     service = FakeAssessmentService()
-    client = _client(service)
+    app = _build_app(service, monkeypatch)
 
-    response = client.get("/api/v2/assessments?limit=10&offset=5")
+    response = anyio.run(_request, app, "/api/v2/assessments?limit=10&offset=5")
     assert response.status_code == 200
     body = _unwrap(response.json())
     assert body["assessments"][0]["assessment_id"] == "a1"
@@ -83,21 +119,20 @@ def test_list_assessments_delegates_to_service():
 def test_submit_attempt_delegates_with_authz_and_consent(monkeypatch: pytest.MonkeyPatch):
     service = FakeAssessmentService()
     consent = AsyncMock(return_value=None)
-    monkeypatch.setattr(assessments, "require_active_consent_for_current_user", consent)
-    monkeypatch.setattr(assessments, "AssessmentServiceV2", lambda: service)
+    app = _build_app(service, monkeypatch, consent_override=consent)
 
-    app = FastAPI()
-    app.include_router(assessments.router, prefix="/api/v2")
-    app.dependency_overrides[get_current_user] = lambda: ACTOR
-    client = TestClient(app, raise_server_exceptions=True)
-
-    response = client.post(
-        "/api/v2/assessments/quiz-1/attempt",
-        json={
-            "learner_id": LEARNER_ID,
-            "responses": [{"item_id": "q1", "selected_option": "A"}],
-            "time_taken_seconds": 90,
-        },
+    response = anyio.run(
+        partial(
+            _request,
+            app,
+            "/api/v2/assessments/quiz-1/attempt",
+            method="post",
+            json={
+                "learner_id": LEARNER_ID,
+                "responses": [{"item_id": "q1", "selected_option": "A"}],
+                "time_taken_seconds": 90,
+            },
+        )
     )
     assert response.status_code == 200
     body = _unwrap(response.json())

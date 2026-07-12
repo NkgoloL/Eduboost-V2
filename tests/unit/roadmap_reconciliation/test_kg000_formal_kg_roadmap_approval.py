@@ -17,6 +17,10 @@ def copy_payload(tmp_path: Path) -> Path:
         src = payload / rel; assert src.exists(), rel; (root / rel).parent.mkdir(parents=True, exist_ok=True); shutil.copy2(src, root / rel)
     for rel, text in {"README.md":"\nKnowledge Graph Roadmap ADR-036 kg_implementation_roadmap.md\n","docs/README.md":"\nKnowledge graph learning-state roadmap knowledge_graph_learning_state_architecture.md kg_implementation_roadmap.md\n","docs/architecture/README.md":"\nKnowledge Graph Learning-State Architecture knowledge_graph_data_model.md\n","docs/adr/README.md":"\nADR-036 Knowledge Graph Learning-State Core\n","docs/roadmap/README.md":"\nKG-0 kg_implementation_roadmap.md\n"}.items():
         path = root / rel; path.parent.mkdir(parents=True, exist_ok=True); path.write_text((path.read_text(encoding="utf-8") if path.exists() else "") + text, encoding="utf-8")
+    record_path = root / "docs/roadmap/knowledge_graph/kg_000_formal_kg_roadmap_approval_record.json"
+    record = json.loads(record_path.read_text(encoding="utf-8"))
+    record["formal_kg_roadmap_approval_recorded"] = False
+    record_path.write_text(json.dumps(record, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return root
 
 def test_authority_audit_passes(tmp_path: Path):

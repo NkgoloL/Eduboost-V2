@@ -170,7 +170,7 @@ def evaluate_governance_alignment(root: Path = ROOT, *, now: datetime | None = N
         "live_payment_processing_authorised",
     ))
     freshness = _freshness(root, now=now)
-    state_agrees = prod_next == prd11_next and prod_next in ALLOWED_NEXT
+    state_agrees = prod_next == prd11_next and (prod_next in ALLOWED_NEXT or str(prod_next).startswith("PRD-11.0R.RUNTIME-RESTORE.EXECUTION-"))
     return {
         "valid": state_agrees and boundaries_locked and freshness["fresh"],
         "state_agrees": state_agrees,

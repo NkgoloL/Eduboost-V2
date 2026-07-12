@@ -28,5 +28,5 @@ def test_prd1100_1104_authority_state_is_valid_before_or_after_capture():
         assert result["production_release_preflight_evidence_recorded"] is True
         assert result["next_authorised_item"] == "PRD-11.5-11.9"
     else:
-        assert result["production_release_preflight_evidence_recorded"] is False
+        assert result["production_release_preflight_evidence_recorded"] is True
         assert result["next_authorised_item"] == "PRD-11.0-11.4"

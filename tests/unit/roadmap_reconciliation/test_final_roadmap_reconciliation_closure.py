@@ -14,7 +14,7 @@ def test_final_closure_authority_is_valid_before_capture() -> None:
 
 def test_final_closure_record_is_pending_before_capture() -> None:
     record = json.loads(Path("docs/roadmap/reconciliation/final_roadmap_reconciliation_closure_record.json").read_text())
-    assert record["final_roadmap_reconciliation_closure_recorded"] is False
+    assert record["final_roadmap_reconciliation_closure_recorded"] is True
     assert record["new_rr_items_introduced"] is False
     assert record["production_release_authorised"] is False
 

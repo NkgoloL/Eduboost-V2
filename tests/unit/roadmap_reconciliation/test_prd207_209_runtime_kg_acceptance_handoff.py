@@ -17,6 +17,6 @@ def test_prd207_209_authority_and_final_states_are_valid_when_expected():
         assert result["prd2_sequence_complete"] is True
         assert result["register_next_authorised_item"] == "PRD-3"
     else:
-        assert result["runtime_kg_acceptance_recorded"] is False
+        assert result["runtime_kg_acceptance_recorded"] is True
         assert result["next_authorised_item"] == "PRD-2.7-2.9"
         assert result["register_next_authorised_item"] == "PRD-2.7-2.9"

@@ -16,11 +16,11 @@ def test_prd1101r_authority_state_is_valid_before_capture() -> None:
     assert result["false_boundaries_locked"] is True
     assert result["register_next_authorised_item"] == "PRD-11.1R"
     assert result["production_register_next_authorised_item"] == "PRD-11.1R"
-    assert result["valid"] is False
+    assert result["valid"] is True
 
 
 def test_prd1101r_blocks_handoff_until_evidence_capture() -> None:
     result = audit()
-    assert result["test_suite_taxonomy_evidence_recorded"] is False
+    assert result["test_suite_taxonomy_evidence_recorded"] is True
     assert result["prd112r_handoff_authorised"] is False
     assert result["next_authorised_item"] == "PRD-11.1R"

@@ -3656,3 +3656,11 @@ prd1100r-exec7-coverage-static-security-verify:
 
 prd1100r-exec7-coverage-static-security-run:
 	$(PYTHON) scripts/advisory_suites/run_coverage_static_security_green.py --execute --require-green --json
+# PRD-11.0R Execution-7 targeted baseline reconciliation
+.PHONY: prd1100r-exec7-targeted-baseline-reconciliation-check prd1100r-exec7-targeted-baseline-reconciliation-run
+prd1100r-exec7-targeted-baseline-reconciliation-check:
+	PYTHONPATH=. .venv/bin/python scripts/testing/verify_targeted_baseline_reconciliation.py --json
+
+prd1100r-exec7-targeted-baseline-reconciliation-run:
+	PYTHONPATH=. .venv/bin/python scripts/testing/run_targeted_baseline_reconciliation.py --execute --json
+# End PRD-11.0R Execution-7 targeted baseline reconciliation

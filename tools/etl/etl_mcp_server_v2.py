@@ -52,7 +52,7 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-from mcp.server.fastmcp import FastMCP
+from tools.etl.mcp_compat import FastMCP
 from pydantic import BaseModel, Field, ConfigDict
 
 sys.path.insert(0, str(Path(__file__).parent))

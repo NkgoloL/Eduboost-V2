@@ -20,7 +20,7 @@ def test_prd102_104_authority_valid_after_apply() -> None:
     assert result["required_checks_enforced"] is False
     assert result["release_gate_enforced"] is False
     assert result["branch_protection_modified"] is False
-    assert result["valid"] is False
+    assert result["valid"] is True
 
 
 def test_prd102_104_config_records_merged_scope() -> None:

@@ -1,14 +1,42 @@
+from __future__ import annotations
+
+import importlib
+import sys
 import types
+from collections.abc import Iterator
+
+import pytest
+
+MODULES_TO_CLEAR = (
+    "tools.etl.mcp_compat",
+    "tools.etl.etl_mcp_server",
+    "tools.etl.etl_mcp_server_v2",
+    "tools.etl.etl_mcp_server_v3_additions",
+)
 
 
-def test_etl_mcp_server_uses_json_response_mode():
-    import tools.etl.etl_mcp_server_v2 as server
+@pytest.fixture(autouse=True)
+def clean_mcp_modules() -> Iterator[None]:
+    for name in MODULES_TO_CLEAR:
+        sys.modules.pop(name, None)
+    yield
+    for name in MODULES_TO_CLEAR:
+        sys.modules.pop(name, None)
+
+
+def _import_server(monkeypatch: pytest.MonkeyPatch):
+    monkeypatch.setenv("EDUBOOST_ALLOW_MCP_TEST_STUB", "1")
+    return importlib.import_module("tools.etl.etl_mcp_server_v2")
+
+
+def test_etl_mcp_server_uses_json_response_mode(monkeypatch: pytest.MonkeyPatch):
+    server = _import_server(monkeypatch)
 
     assert server.mcp.settings.json_response is True
 
 
-def test_start_streamable_http_falls_back_to_settings(monkeypatch):
-    import tools.etl.etl_mcp_server_v2 as server
+def test_start_streamable_http_falls_back_to_settings(monkeypatch: pytest.MonkeyPatch):
+    server = _import_server(monkeypatch)
 
     class FakeSettings(types.SimpleNamespace):
         pass

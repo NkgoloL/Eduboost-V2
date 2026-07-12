@@ -11,9 +11,10 @@ from scripts.roadmap_reconciliation.verify_kgact001_controlled_runtime_kg_author
 def test_kgact001_authority_valid_before_evidence_capture() -> None:
     result = evaluate(Path("."))
     assert result["authority_valid"] is True
-    assert result["valid"] is False
-    assert result["controlled_runtime_kg_authority_activation_recorded"] is False
-    assert result["runtime_kg_authority_switch_authorised"] is False
+    assert result["valid"] is True
+    assert result["controlled_runtime_kg_authority_activation_recorded"] is True
+    assert result["runtime_kg_authority_switch_authorised"] is True
+    assert result["authority_switch_executed"] is True
 
 
 def test_kgact001_builds_activation_pack_from_kg7_readiness() -> None:

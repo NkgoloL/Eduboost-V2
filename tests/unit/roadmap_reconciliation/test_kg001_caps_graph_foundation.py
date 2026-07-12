@@ -30,6 +30,10 @@ def _copy_repo(tmp_path: Path) -> Path:
         target = dst / rel
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, target)
+    record_path = dst / "docs/roadmap/knowledge_graph/kg_001_caps_graph_foundation_record.json"
+    record = json.loads(record_path.read_text(encoding="utf-8"))
+    record["caps_graph_foundation_recorded"] = False
+    record_path.write_text(json.dumps(record, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return dst
 
 

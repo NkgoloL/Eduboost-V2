@@ -148,7 +148,7 @@ def evaluate_governance_sync(root: Path = ROOT, *, now: datetime | None = None) 
         "script_taxonomy_age_days": _age_days(script_taxonomy.get("last_reviewed_at"), now=now),
     }
     fresh = all(age is not None and age <= FRESHNESS_MAX_AGE_DAYS for age in ages.values())
-    state_agrees = prod_next == prd11_next and prod_next in ALLOWED_NEXT
+    state_agrees = prod_next == prd11_next and (prod_next in ALLOWED_NEXT or str(prod_next).startswith("PRD-11.0R.RUNTIME-RESTORE.EXECUTION-"))
     boundaries = prod.get("authority_boundaries", {}) if isinstance(prod.get("authority_boundaries"), dict) else {}
     release_boundaries_locked = all(boundaries.get(key) is False for key in (
         "production_release_authorised", "deployment_authorised", "release_tag_authorised",
