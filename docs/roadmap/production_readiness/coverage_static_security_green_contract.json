@@ -1,0 +1,171 @@
+{
+  "advisory_static_gate_green": false,
+  "coverage_gate_green": false,
+  "dependency_audit_gate_green": false,
+  "execution_policy": {
+    "coverage_failure_exit_state_preserved": true,
+    "dependency_audits_must_resolve": true,
+    "fresh_coverage_report_required": true,
+    "governance_records_cannot_override_failed_gate": true,
+    "green_status_requires_all_gate_results_green": true,
+    "presence_only_outputs_forbidden": true,
+    "ruff_mypy_bandit_required": true,
+    "secret_baseline_must_be_reviewable": true
+  },
+  "gates": [
+    {
+      "capability": "Fresh line/branch coverage must meet the documentation-defined threshold.",
+      "class": "advisory",
+      "command_id": "coverage_execution",
+      "evidence_source": "independent_command_result",
+      "expected_artifacts": [
+        "coverage.xml",
+        "coverage report output",
+        "exit code"
+      ],
+      "governance_substitution_allowed": false,
+      "id": "coverage_execution",
+      "known_failure_modes": [
+        "nonzero exit code",
+        "missing output artifact",
+        "stale or unreviewed blocker"
+      ],
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "capability": "Ruff must pass over release-relevant Python source and tests.",
+      "class": "advisory",
+      "command_id": "ruff_release_static_quality",
+      "evidence_source": "independent_command_result",
+      "expected_artifacts": [
+        "ruff output",
+        "exit code"
+      ],
+      "governance_substitution_allowed": false,
+      "id": "ruff_release_static_quality",
+      "known_failure_modes": [
+        "nonzero exit code",
+        "missing output artifact",
+        "stale or unreviewed blocker"
+      ],
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "capability": "Mypy must pass over app source or fail with explicit blockers.",
+      "class": "advisory",
+      "command_id": "mypy_release_static_quality",
+      "evidence_source": "independent_command_result",
+      "expected_artifacts": [
+        "mypy output",
+        "exit code"
+      ],
+      "governance_substitution_allowed": false,
+      "id": "mypy_release_static_quality",
+      "known_failure_modes": [
+        "nonzero exit code",
+        "missing output artifact",
+        "stale or unreviewed blocker"
+      ],
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "capability": "Bandit must produce a green or explicitly accepted release security result.",
+      "class": "advisory",
+      "command_id": "bandit_release_security",
+      "evidence_source": "independent_command_result",
+      "expected_artifacts": [
+        "bandit output",
+        "exit code"
+      ],
+      "governance_substitution_allowed": false,
+      "id": "bandit_release_security",
+      "known_failure_modes": [
+        "nonzero exit code",
+        "missing output artifact",
+        "stale or unreviewed blocker"
+      ],
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "capability": "Python dependency audit must resolve and return no unaccepted release blockers.",
+      "class": "advisory",
+      "command_id": "python_dependency_security_audit",
+      "evidence_source": "independent_command_result",
+      "expected_artifacts": [
+        "pip-audit output",
+        "exit code"
+      ],
+      "governance_substitution_allowed": false,
+      "id": "python_dependency_security_audit",
+      "known_failure_modes": [
+        "nonzero exit code",
+        "missing output artifact",
+        "stale or unreviewed blocker"
+      ],
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "capability": "Frontend production dependency audit must be green or have accepted blockers.",
+      "class": "advisory",
+      "command_id": "frontend_dependency_security_audit",
+      "evidence_source": "independent_command_result",
+      "expected_artifacts": [
+        "pnpm audit output",
+        "exit code"
+      ],
+      "governance_substitution_allowed": false,
+      "id": "frontend_dependency_security_audit",
+      "known_failure_modes": [
+        "nonzero exit code",
+        "missing output artifact",
+        "stale or unreviewed blocker"
+      ],
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    },
+    {
+      "capability": "Secret baseline scan must be reviewable and not hide unaudited release blockers.",
+      "class": "advisory",
+      "command_id": "secret_baseline_review",
+      "evidence_source": "independent_command_result",
+      "expected_artifacts": [
+        "detect-secrets output",
+        "exit code"
+      ],
+      "governance_substitution_allowed": false,
+      "id": "secret_baseline_review",
+      "known_failure_modes": [
+        "nonzero exit code",
+        "missing output artifact",
+        "stale or unreviewed blocker"
+      ],
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_negative_or_failure_path": true,
+      "requires_positive_path": true
+    }
+  ],
+  "last_reviewed_at": "2026-07-11T15:42:11+00:00",
+  "next_after_green_evidence": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8",
+  "prd_id": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7",
+  "schema_version": "prd11.0r/runtime-restore-execution-7/coverage-static-security-green/v1",
+  "secret_baseline_gate_green": false,
+  "title": "Coverage, Backend Static Quality, Dependency Security, and Secret Baseline Green Execution"
+}

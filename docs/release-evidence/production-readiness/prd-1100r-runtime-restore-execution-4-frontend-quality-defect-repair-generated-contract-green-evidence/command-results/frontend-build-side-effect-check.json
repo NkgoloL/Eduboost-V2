@@ -1,0 +1,13 @@
+{
+  "captured_at": "2026-07-11T10:57:10.528961+00:00",
+  "command": "/usr/bin/git diff --exit-code -- app/frontend/next-env.d.ts app/frontend/public/sw.js",
+  "cwd": ".",
+  "exit_code": 0,
+  "gate_id": "frontend_build_side_effect_check",
+  "green": true,
+  "output_artifact": "frontend-build-side-effect-check.json",
+  "release_blocking": true,
+  "repairs_blocker": "frontend_release_quality",
+  "stderr_tail": "",
+  "stdout_tail": ""
+}

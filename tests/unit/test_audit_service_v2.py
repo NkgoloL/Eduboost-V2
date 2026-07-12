@@ -1,7 +1,8 @@
 import pytest
-from unittest.mock import AsyncMock, MagicMock
+from unittest.mock import AsyncMock
 from uuid import uuid4
 from datetime import datetime, UTC
+from types import SimpleNamespace
 
 from app.services.audit_service import AuditService
 from app.models import AuditLog
@@ -18,7 +19,13 @@ async def test_audit_service_log_consent_granted():
     # I'll standardize on taking 'db' and creating the repo internally, 
     # or taking the repo as a dependency.
     
-    repo.append.return_value = MagicMock(id=uuid4(), created_at=datetime.now(UTC))
+    repo.append.return_value = SimpleNamespace(
+        id=uuid4(),
+        created_at=datetime.now(UTC),
+        event_type="CONSENT_GRANTED",
+        learner_id=str(uuid4()),
+        payload={"learner_id": "x", "policy_version": "1.0"},
+    )
     service = AuditService(repository=repo)
     
     await service.consent_granted(
