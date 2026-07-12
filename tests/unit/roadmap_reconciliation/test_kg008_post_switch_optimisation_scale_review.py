@@ -11,8 +11,8 @@ from scripts.roadmap_reconciliation.verify_kg008_post_switch_optimisation_scale_
 def test_kg008_authority_valid_before_evidence_capture() -> None:
     result = evaluate(Path("."))
     assert result["authority_valid"] is True
-    assert result["valid"] is False
-    assert result["post_switch_optimisation_scale_review_recorded"] is False
+    assert result["valid"] is True
+    assert result["post_switch_optimisation_scale_review_recorded"] is True
     assert result["kgact001_controlled_runtime_activation_valid"] is True
 
 

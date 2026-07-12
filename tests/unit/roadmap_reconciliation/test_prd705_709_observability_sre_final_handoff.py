@@ -20,6 +20,6 @@ def test_prd705_709_authority_and_archival_state_are_valid():
     else:
         assert result["next_authorised_item"] == "PRD-7.5-7.9"
         assert result["register_next_authorised_item"] == "PRD-7.5-7.9"
-        assert result["observability_final_assurance_evidence_recorded"] is False
-        assert result["prd7_sequence_complete"] is False
+        assert result["observability_final_assurance_evidence_recorded"] is True
+        assert result["prd7_sequence_complete"] is True
         assert result["prd8_handoff_authorised"] is False

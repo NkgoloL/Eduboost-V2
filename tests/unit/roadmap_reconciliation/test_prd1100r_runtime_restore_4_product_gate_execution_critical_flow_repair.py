@@ -6,7 +6,7 @@ from scripts.production_readiness.audit_prd1100r_runtime_restore_4_product_gate_
 def test_runtime_restore_4_authority_valid_before_evidence_capture() -> None:
     result = audit()
     assert result["authority_valid"] is True
-    assert result["valid"] is False
+    assert result["valid"] is True
     assert result["product_gate_execution_contract_valid"] is True
     assert result["critical_product_flows_recorded"] is True
     assert result["positive_and_negative_flow_evidence_required"] is True

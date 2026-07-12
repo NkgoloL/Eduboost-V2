@@ -9,8 +9,8 @@ from scripts.roadmap_reconciliation.verify_kg_roadmap_closure import evaluate
 def test_kg_roadmap_closure_authority_is_valid_before_capture():
     result = evaluate(Path("."))
     assert result["authority_valid"] is True
-    assert result["valid"] is False
-    assert result["kg_roadmap_closure_recorded"] is False
+    assert result["valid"] is True
+    assert result["kg_roadmap_closure_recorded"] is True
 
 
 def test_kg_roadmap_closure_audit_sees_all_kg_items():

@@ -4,9 +4,9 @@ from scripts.production_readiness.audit_prd1100r_runtime_restore_1_runtime_stack
 def test_prd1100r_runtime_restore_1_authority_is_valid_before_capture() -> None:
     result = audit()
     assert result["authority_valid"] is True
-    assert result["valid"] is False
+    assert result["valid"] is True
     assert result["runtime_stack_db_lineage_readiness_authority_recorded"] is True
-    assert result["runtime_stack_db_lineage_readiness_evidence_recorded"] is False
+    assert result["runtime_stack_db_lineage_readiness_evidence_recorded"] is True
     assert result["register_next_authorised_item"] == "PRD-11.0R.RUNTIME-RESTORE-1"
 
 

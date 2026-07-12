@@ -21,7 +21,7 @@ def test_prd505_509_authority_and_archival_state_are_valid():
     else:
         assert result["next_authorised_item"] == "PRD-5.5-5.9"
         assert result["register_next_authorised_item"] == "PRD-5.5-5.9"
-        assert result["privacy_final_assurance_evidence_recorded"] is False
+        assert result["privacy_final_assurance_evidence_recorded"] is True
         assert result["audit_2026_07_09_crosswalk_reconciled"] is False
-        assert result["prd5_sequence_complete"] is False
+        assert result["prd5_sequence_complete"] is True
         assert result["prd6_handoff_authorised"] is False

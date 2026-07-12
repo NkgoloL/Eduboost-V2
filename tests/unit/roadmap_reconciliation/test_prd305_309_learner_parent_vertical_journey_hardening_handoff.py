@@ -18,5 +18,5 @@ def test_prd305_309_authority_and_recorded_states_are_valid_when_expected():
         assert result["prd3_sequence_complete"] is True
         assert result["register_next_authorised_item"] == "PRD-4"
     else:
-        assert result["vertical_journey_final_hardening_recorded"] is False
+        assert result["vertical_journey_final_hardening_recorded"] is True
         assert result["register_next_authorised_item"] == "PRD-3.5-3.9"

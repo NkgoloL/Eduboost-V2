@@ -40,7 +40,7 @@ from pathlib import Path
 from typing import Optional
 
 # FastMCP is part of the official Python MCP SDK
-from mcp.server.fastmcp import FastMCP
+from tools.etl.mcp_compat import FastMCP
 from pydantic import BaseModel, Field, ConfigDict
 
 # Bring in the pipeline

@@ -21,6 +21,7 @@ def ensure_repo_root_on_path() -> None:
 ensure_repo_root_on_path()
 os.environ["APP_ENV"] = "test"
 os.environ["ENVIRONMENT"] = "test"
+os.environ["DEBUG"] = "false"
 
 # Register governance auto-marking (see tests/governance_markers.py).
 from tests import governance_markers as _governance_markers  # noqa: F401

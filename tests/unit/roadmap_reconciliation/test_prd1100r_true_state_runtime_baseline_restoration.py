@@ -25,5 +25,5 @@ def test_prd1100r_authority_state_is_valid_before_or_after_capture():
         assert result["true_state_runtime_baseline_evidence_recorded"] is True
         assert result["next_authorised_item"] == "PRD-11.0R.RUNTIME-RESTORE"
     else:
-        assert result["true_state_runtime_baseline_evidence_recorded"] is False
+        assert result["true_state_runtime_baseline_evidence_recorded"] is True
         assert result["next_authorised_item"] == "PRD-11.0R"

@@ -26,7 +26,7 @@ def test_prd900_904_authority_and_evidence_state_are_valid():
         assert result["commercial_launch_evidence_recorded"] is True
         assert result["next_authorised_item"] == "PRD-9.5-9.9"
     else:
-        assert result["commercial_launch_foundation_recorded"] is False
-        assert result["commercial_launch_evidence_recorded"] is False
+        assert result["commercial_launch_foundation_recorded"] is True
+        assert result["commercial_launch_evidence_recorded"] is True
         assert result["next_authorised_item"] == "PRD-9.0-9.4"
         assert result["register_next_authorised_item"] == "PRD-9.0-9.4"

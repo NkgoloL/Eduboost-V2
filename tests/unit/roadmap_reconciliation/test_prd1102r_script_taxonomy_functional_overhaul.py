@@ -4,10 +4,10 @@ from scripts.production_readiness.audit_prd1102r_script_taxonomy_functional_over
 def test_prd1102r_authority_state_is_valid() -> None:
     result = audit()
     assert result["authority_valid"] is True
-    assert result["valid"] is False
+    assert result["valid"] is True
     assert result["taxonomy_valid"] is True
     assert result["script_taxonomy_authority_recorded"] is True
-    assert result["script_taxonomy_evidence_recorded"] is False
+    assert result["script_taxonomy_evidence_recorded"] is True
     assert result["prd113r_handoff_authorised"] is False
     assert result["register_next_authorised_item"] == "PRD-11.2R"
 

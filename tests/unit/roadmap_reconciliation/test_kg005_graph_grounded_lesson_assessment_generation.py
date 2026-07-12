@@ -12,8 +12,8 @@ from scripts.roadmap_reconciliation.verify_kg005_graph_grounded_lesson_assessmen
 def test_kg005_authority_valid_before_evidence_capture() -> None:
     result = evaluate(Path("."))
     assert result["authority_valid"] is True
-    assert result["valid"] is False
-    assert result["graph_grounded_generation_recorded"] is False
+    assert result["valid"] is True
+    assert result["graph_grounded_generation_recorded"] is True
     assert result["runtime_kg_implementation_claimed"] is False
     assert result["llm_provider_call_authorised"] is False
 

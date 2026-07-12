@@ -381,9 +381,9 @@ def _new_tracked_mutations(before: dict[str, Any], after: dict[str, Any]) -> lis
 def _base_env(root: Path, coverage_data_dir: Path) -> dict[str, str]:
     env = os.environ.copy()
     env["PYTHONPATH"] = "." + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
-    env.setdefault("APP_ENV", "test")
-    env.setdefault("ENVIRONMENT", "test")
-    env.setdefault("DEBUG", "false")
+    env["APP_ENV"] = "test"
+    env["ENVIRONMENT"] = "test"
+    env["DEBUG"] = "false"
     env["COVERAGE_FILE"] = str(coverage_data_dir / ".coverage")
     env["PYTHONHASHSEED"] = "0"
     return env

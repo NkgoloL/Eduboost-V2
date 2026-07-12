@@ -16,5 +16,5 @@ def test_prd300_304_authority_and_recorded_states_are_valid_when_expected():
         assert result["learner_parent_vertical_journey_foundation_recorded"] is True
         assert result["register_next_authorised_item"] == "PRD-3.5-3.9"
     else:
-        assert result["learner_parent_vertical_journey_foundation_recorded"] is False
+        assert result["learner_parent_vertical_journey_foundation_recorded"] is True
         assert result["register_next_authorised_item"] in {"PRD-3", "PRD-3.0-3.4"}

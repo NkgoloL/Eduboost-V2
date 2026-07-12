@@ -1,18 +1,14 @@
 """Tests for canonical V2 global exception envelopes."""
 from __future__ import annotations
 
-import sys
-from pathlib import Path
+from functools import partial
 from typing import Any
 
+import anyio
 import pytest
 from fastapi import Body, FastAPI, HTTPException
-from fastapi.testclient import TestClient
+from httpx import ASGITransport, AsyncClient
 from pydantic import BaseModel, EmailStr
-
-REPO_ROOT = Path(__file__).resolve().parents[2]
-if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
 
 
 class SignupRequest(BaseModel):
@@ -20,7 +16,7 @@ class SignupRequest(BaseModel):
     password: str
 
 
-def _client() -> TestClient:
+def _build_app() -> FastAPI:
     from app.core.exceptions import ConsentRequiredError, DuplicateError, register_exception_handlers
 
     app = FastAPI()
@@ -61,12 +57,18 @@ def _client() -> TestClient:
     async def unhandled() -> None:
         raise RuntimeError("database password should not leak")
 
-    return TestClient(app, raise_server_exceptions=False)
+    return app
+
+
+async def _request(path: str, *, method: str = "get", json: dict[str, Any] | None = None):
+    transport = ASGITransport(app=_build_app(), raise_app_exceptions=False)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        return await client.request(method.upper(), path, json=json)
 
 
 @pytest.mark.unit
 def test_http_exception_uses_canonical_error_envelope() -> None:
-    response = _client().get("/http-not-found")
+    response = anyio.run(_request, "/http-not-found")
 
     assert response.status_code == 404
     assert response.json() == {
@@ -88,7 +90,7 @@ def test_http_exception_uses_canonical_error_envelope() -> None:
 
 @pytest.mark.unit
 def test_http_exception_with_dict_detail_preserves_safe_details() -> None:
-    response = _client().get("/http-dict-detail")
+    response = anyio.run(_request, "/http-dict-detail")
 
     assert response.status_code == 403
     payload = response.json()
@@ -101,7 +103,7 @@ def test_http_exception_with_dict_detail_preserves_safe_details() -> None:
 
 @pytest.mark.unit
 def test_domain_exception_uses_domain_code_and_details() -> None:
-    response = _client().get("/domain-consent")
+    response = anyio.run(_request, "/domain-consent")
 
     assert response.status_code == 403
     payload = response.json()
@@ -114,7 +116,7 @@ def test_domain_exception_uses_domain_code_and_details() -> None:
 
 @pytest.mark.unit
 def test_duplicate_error_maps_to_conflict_code() -> None:
-    response = _client().get("/domain-conflict")
+    response = anyio.run(_request, "/domain-conflict")
 
     assert response.status_code == 409
     payload = response.json()
@@ -124,7 +126,7 @@ def test_duplicate_error_maps_to_conflict_code() -> None:
 
 @pytest.mark.unit
 def test_validation_exception_uses_field_errors() -> None:
-    response = _client().post("/validation", json={"email": "not-an-email"})
+    response = anyio.run(partial(_request, "/validation", method="post", json={"email": "not-an-email"}))
 
     assert response.status_code == 422
     payload = response.json()
@@ -140,7 +142,7 @@ def test_validation_exception_uses_field_errors() -> None:
 
 @pytest.mark.unit
 def test_unhandled_exception_uses_safe_internal_error_message() -> None:
-    response = _client().get("/unhandled")
+    response = anyio.run(_request, "/unhandled")
 
     assert response.status_code == 500
     payload = response.json()
