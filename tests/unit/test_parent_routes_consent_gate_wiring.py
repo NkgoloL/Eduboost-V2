@@ -42,5 +42,4 @@ def test_parent_erasure_still_uses_consent_service_workflow() -> None:
     source = ROUTER.read_text(encoding="utf-8")
     block = source.split("async def request_erasure", maxsplit=1)[1]
 
-    assert "consent_service = ConsentService(db)" in block
-    assert "await consent_service.execute_erasure" in block
+    assert "POPIADataRightsService(db).request_erasure" in block

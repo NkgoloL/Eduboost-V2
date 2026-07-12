@@ -176,6 +176,7 @@ def generate_irt_seed_sql() -> tuple[int, int]:
         )
     lines.append("COMMIT;")
 
+    IRT_SEED_SQL.parent.mkdir(parents=True, exist_ok=True)
     IRT_SEED_SQL.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return len(rows), len(unique)
 

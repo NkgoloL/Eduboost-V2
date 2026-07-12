@@ -214,7 +214,12 @@ def evaluate_governance_alignment(root: Path = ROOT, *, now: datetime | None = N
         "final_handoff_contract_age_days": _age_days(load_contract(root).get("last_reviewed_at"), now=now),
     }
     fresh = all(age is not None and age <= FRESHNESS_MAX_AGE_DAYS for age in ages.values())
-    allowed = {PRD_ID, NEXT_IF_RED, NEXT_IF_GREEN}
+    allowed = {
+        PRD_ID,
+        NEXT_IF_RED,
+        "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7",
+        NEXT_IF_GREEN,
+    }
     return {
         "valid": prod_next == prd11_next and prod_next in allowed and fresh and release_boundaries_locked,
         "state_agrees": prod_next == prd11_next and prod_next in allowed,

@@ -47,7 +47,6 @@ jobs:
         run: pnpm --dir app/frontend install --frozen-lockfile
       - name: Install Playwright browsers
         run: pnpm exec playwright install --with-deps chromium
-      # Legacy compatibility marker for evidence checks: npx playwright test
       - name: Run mocked frontend E2E
         run: PLAYWRIGHT_MOCK_API=1 pnpm exec playwright test tests/e2e/learner-mocked-api-journey.spec.ts tests/e2e/parent-mocked-api-journey.spec.ts
       - name: Run smoke frontend E2E

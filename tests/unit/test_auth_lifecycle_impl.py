@@ -40,6 +40,7 @@ def patch_auth_security(monkeypatch):
     monkeypatch.setattr(auth_lifecycle_impl, "hash_password", lambda value: f"hashed-pass::{value}")
     monkeypatch.setattr(auth_lifecycle_impl, "encrypt_pii", lambda value: f"encrypted::{value}")
     monkeypatch.setattr(auth_lifecycle_impl, "verify_password", lambda password, stored: password == "correct-password")
+    monkeypatch.setattr(auth_lifecycle_impl, "seed_dev_diagnostic_items", AsyncMock())
     RecordingAudit.last_event = None
     yield
 

@@ -19,7 +19,7 @@ async def test_get_learner_summary_returns_learner():
 
     mock_repo = AsyncMock()
     mock_repo.get_by_id = AsyncMock(return_value=mock_learner)
-    service = LearnerService(mock_repo)
+    service = LearnerService(db=MagicMock(), repository=mock_repo)
 
     result = await service.get_learner_summary("learner-123")
 
@@ -33,7 +33,7 @@ async def test_get_learner_summary_returns_none_when_not_found():
     """Verify get_learner_summary returns None when learner not found."""
     mock_repo = AsyncMock()
     mock_repo.get_by_id = AsyncMock(return_value=None)
-    service = LearnerService(mock_repo)
+    service = LearnerService(db=MagicMock(), repository=mock_repo)
 
     result = await service.get_learner_summary("nonexistent-learner")
 
@@ -45,7 +45,7 @@ async def test_get_learner_summary_propagates_repository_exception():
     """Verify repository exceptions are not caught by the service."""
     mock_repo = AsyncMock()
     mock_repo.get_by_id = AsyncMock(side_effect=RuntimeError("DB error"))
-    service = LearnerService(mock_repo)
+    service = LearnerService(db=MagicMock(), repository=mock_repo)
 
     with pytest.raises(RuntimeError, match="DB error"):
         await service.get_learner_summary("learner-123")
@@ -55,5 +55,5 @@ async def test_get_learner_summary_propagates_repository_exception():
 def test_learner_service_init_stores_repository():
     """Verify constructor stores the repository reference."""
     mock_repo = MagicMock()
-    service = LearnerService(mock_repo)
+    service = LearnerService(db=MagicMock(), repository=mock_repo)
     assert service.repository is mock_repo

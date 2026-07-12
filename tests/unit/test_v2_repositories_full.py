@@ -309,10 +309,9 @@ class TestAssessmentRepository:
         repo = AssessmentRepository()
         session = self._mock_session()
         execute_result = MagicMock()
-        execute_result.mappings = MagicMock(return_value=MagicMock(all=MagicMock(return_value=[])))
+        execute_result.scalars.return_value.all.return_value = []
         session.execute = AsyncMock(return_value=execute_result)
-        with patch("app.repositories.assessment_repository.AsyncSessionLocal", return_value=session):
-            result = await repo.list_assessments()
+        result = await repo.list_assessments(db=session)
         assert isinstance(result, list)
 
     @pytest.mark.asyncio
@@ -321,10 +320,9 @@ class TestAssessmentRepository:
         repo = AssessmentRepository()
         session = self._mock_session()
         execute_result = MagicMock()
-        execute_result.mappings = MagicMock(return_value=MagicMock(first=MagicMock(return_value=None)))
+        execute_result.scalar_one_or_none.return_value = None
         session.execute = AsyncMock(return_value=execute_result)
-        with patch("app.repositories.assessment_repository.AsyncSessionLocal", return_value=session):
-            result = await repo.get_assessment("nonexistent")
+        result = await repo.get_assessment(str(uuid.uuid4()), db=session)
         assert result is None
 
     @pytest.mark.asyncio
@@ -334,15 +332,15 @@ class TestAssessmentRepository:
         session = self._mock_session()
         session.execute = AsyncMock()
         session.commit = AsyncMock()
-        with patch("app.repositories.assessment_repository.AsyncSessionLocal", return_value=session):
-            result = await repo.create_attempt(
-                assessment_id="a1",
-                learner_id=LEARNER_ID,
-                score=0.8,
-                marks_obtained=8,
-                time_taken_seconds=120,
-                responses=[],
-            )
+        result = await repo.create_attempt(
+            assessment_id=str(uuid.uuid4()),
+            learner_id=LEARNER_ID,
+            score=0.8,
+            marks_obtained=8,
+            time_taken_seconds=120,
+            responses=[],
+            db=session,
+        )
         assert isinstance(result, str)
 
     @pytest.mark.asyncio
@@ -351,16 +349,15 @@ class TestAssessmentRepository:
         repo = AssessmentRepository()
         session = self._mock_session()
         session.execute = AsyncMock()
-        with patch("app.repositories.assessment_repository.AsyncSessionLocal", return_value=session):
-            result = await repo.create_attempt(
-                assessment_id="a1",
-                learner_id=LEARNER_ID,
-                score=0.8,
-                marks_obtained=8,
-                time_taken_seconds=120,
-                responses=[],
-                db=session,
-            )
+        result = await repo.create_attempt(
+            assessment_id=str(uuid.uuid4()),
+            learner_id=LEARNER_ID,
+            score=0.8,
+            marks_obtained=8,
+            time_taken_seconds=120,
+            responses=[],
+            db=session,
+        )
         assert isinstance(result, str)
         # Should not commit when external session provided
         session.commit.assert_not_called()
