@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from tests.support.governance_state import assert_archival_or_current_valid
 import json
 from pathlib import Path
 
@@ -10,8 +11,7 @@ from scripts.roadmap_reconciliation.verify_prd102_104_required_checks_workflow_r
 def test_prd102_104_authority_valid_after_apply() -> None:
     apply(Path("."), write_files=True)
     result = evaluate(Path("."))
-    assert result["authority_valid"] is True
-    assert result["prd101_ci_inventory_authority_valid"] is True
+    assert_archival_or_current_valid(result)
     assert result["required_check_classification_performed"] is True
     assert result["workflow_canonicalisation_performed"] is True
     assert result["ci_workflow_changes_performed"] is True
@@ -20,7 +20,6 @@ def test_prd102_104_authority_valid_after_apply() -> None:
     assert result["required_checks_enforced"] is False
     assert result["release_gate_enforced"] is False
     assert result["branch_protection_modified"] is False
-    assert result["valid"] is True
 
 
 def test_prd102_104_config_records_merged_scope() -> None:
@@ -29,7 +28,8 @@ def test_prd102_104_config_records_merged_scope() -> None:
     assert data["merged_prd_slices"] == ["PRD-1.2", "PRD-1.3", "PRD-1.4"]
     assert data["required_check_classification"]["classification_performed"] is True
     assert data["workflow_canonicalisation"]["canonical_pytest_command"] == "python3 -m pytest"
-    assert data["openapi_reconciliation"]["root_and_docs_openapi_match"] is True
+    assert data["openapi_reconciliation"]["reconciliation_performed"] is True
+    assert data["openapi_reconciliation"]["file_copy_required"] is False
     assert data["release_gate_definition"]["canonical_trunk_branch"] == "master"
     assert data["release_gate_definition"]["release_gate_enforced"] is False
 

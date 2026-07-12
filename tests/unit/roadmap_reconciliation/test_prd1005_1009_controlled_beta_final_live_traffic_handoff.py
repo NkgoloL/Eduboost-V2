@@ -1,10 +1,14 @@
+from tests.support.governance_state import (
+    assert_archival_or_current_valid,
+    assert_historical_next_with_current_execution,
+)
 from scripts.production_readiness.audit_prd1005_1009_controlled_beta_final_live_traffic_handoff import audit
 
 
 def test_prd1005_1009_authority_state_is_valid_before_or_after_capture():
     result = audit()
 
-    assert result["authority_valid"] is True
+    assert_archival_or_current_valid(result)
     assert result["previous_prd10_preflight_valid"] is True
     assert result["controlled_beta_final_authorisation_valid"] is True
     assert result["controlled_beta_final_authority_recorded"] is True
@@ -18,15 +22,9 @@ def test_prd1005_1009_authority_state_is_valid_before_or_after_capture():
     assert result["live_payment_processing_authorised"] is False
     assert result["prd11_implementation_authorised"] is False
 
-    if result["valid"]:
-        assert result["controlled_beta_final_evidence_recorded"] is True
-        assert result["controlled_beta_live_traffic_authorised"] is True
-        assert result["live_learner_traffic_authorised"] is True
-        assert result["prd10_sequence_complete"] is True
-        assert result["prd11_handoff_authorised"] is True
-        assert result["next_authorised_item"] == "PRD-11"
-    else:
-        assert result["controlled_beta_final_evidence_recorded"] is False
-        assert result["controlled_beta_live_traffic_authorised"] is False
-        assert result["live_learner_traffic_authorised"] is False
-        assert result["next_authorised_item"] == "PRD-10.5-10.9"
+    assert result["controlled_beta_final_evidence_recorded"] is True
+    assert result["controlled_beta_live_traffic_authorised"] is True
+    assert result["live_learner_traffic_authorised"] is True
+    assert result["prd10_sequence_complete"] is True
+    assert result["prd11_handoff_authorised"] is True
+    assert_historical_next_with_current_execution(result, "PRD-11")

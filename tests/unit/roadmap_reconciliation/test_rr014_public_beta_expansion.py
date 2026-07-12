@@ -112,8 +112,7 @@ def test_rr014_authority_files_are_valid() -> None:
     verifier = _load_verifier(root)
     result = verifier.evaluate(root)
     assert result["authority_valid"] is True, result
-    assert result["valid"] is False
-    assert "record is still pending evidence capture" in result["warnings"]
+    assert result["valid"] is True, result
 
 
 def test_rr014_record_becomes_valid_after_final_files_and_capture_shape(tmp_path: Path) -> None:
@@ -151,8 +150,18 @@ def test_rr014_record_becomes_valid_after_final_files_and_capture_shape(tmp_path
     assert result["valid"] is True, result
 
 
-def test_rr014_audit_rejects_missing_final_files_when_required() -> None:
-    root = Path.cwd()
+def test_rr014_audit_rejects_missing_final_files_when_required(tmp_path: Path) -> None:
+    source = Path.cwd()
+    root = tmp_path / "repo"
+    _copy_minimal_repo(source, root)
+    for path in (
+        "rr014_public_beta_expansion_readiness_plan.md",
+        "rr014_public_beta_cohort_plan.json",
+        "rr014_public_beta_consent_and_privacy_attestation.md",
+        "rr014_public_beta_support_and_incident_plan.md",
+        "rr014_public_beta_launch_boundary.md",
+    ):
+        (root / "docs/public_beta" / path).unlink()
     audit_path = root / "scripts/public_beta/audit_rr014_public_beta_expansion.py"
     spec = importlib.util.spec_from_file_location("audit_rr014", audit_path)
     assert spec and spec.loader

@@ -1,10 +1,14 @@
+from tests.support.governance_state import (
+    assert_archival_or_current_valid,
+    assert_historical_next_with_current_execution,
+)
 from scripts.production_readiness.audit_prd1000_1004_controlled_beta_live_traffic_preflight_foundation import audit
 
 
 def test_prd1000_1004_authority_state_is_valid_and_live_traffic_locked():
     result = audit()
 
-    assert result["authority_valid"] is True
+    assert_archival_or_current_valid(result)
     assert result["previous_prd9_handoff_valid"] is True
     assert result["pyjwt_migration_valid"] is True
     assert result["controlled_beta_preflight_valid"] is True
@@ -19,10 +23,5 @@ def test_prd1000_1004_authority_state_is_valid_and_live_traffic_locked():
     assert result["billing_launch_authorised"] is False
     assert result["live_payment_processing_authorised"] is False
 
-    if result["valid"]:
-        assert result["controlled_beta_preflight_evidence_recorded"] is True
-        assert result["next_authorised_item"] == "PRD-10.5-10.9"
-    else:
-        assert result["controlled_beta_preflight_evidence_recorded"] is False
-        assert result["next_authorised_item"] == "PRD-10.0-10.4"
-        assert result["register_next_authorised_item"] == "PRD-10.0-10.4"
+    assert result["controlled_beta_preflight_evidence_recorded"] is True
+    assert_historical_next_with_current_execution(result, "PRD-10.0-10.4")

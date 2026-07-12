@@ -1,10 +1,14 @@
+from tests.support.governance_state import (
+    assert_archival_or_current_valid,
+    assert_historical_next_with_current_execution,
+)
 from scripts.production_readiness.audit_prd800_804_performance_scale_cost_execution_foundation import audit
 
 
 def test_prd800_804_authority_and_evidence_state_are_valid():
     result = audit()
 
-    assert result["authority_valid"] is True
+    assert_archival_or_current_valid(result)
     assert result["previous_prd7_handoff_valid"] is True
     assert result["performance_scale_cost_readiness_valid"] is True
     assert result["load_test_readiness_defined"] is True
@@ -14,13 +18,6 @@ def test_prd800_804_authority_and_evidence_state_are_valid():
     assert result["production_release_authorised"] is False
     assert result["live_learner_traffic_authorised"] is False
 
-    if result["valid"]:
-        assert result["performance_scale_cost_foundation_recorded"] is True
-        assert result["performance_scale_cost_evidence_recorded"] is True
-        assert result["next_authorised_item"] == "PRD-8.5-8.9"
-        assert result["register_next_authorised_item"] == "PRD-8.5-8.9"
-    else:
-        assert result["performance_scale_cost_foundation_recorded"] is True
-        assert result["performance_scale_cost_evidence_recorded"] is True
-        assert result["next_authorised_item"] == "PRD-8.0-8.4"
-        assert result["register_next_authorised_item"] == "PRD-8.0-8.4"
+    assert result["performance_scale_cost_foundation_recorded"] is True
+    assert result["performance_scale_cost_evidence_recorded"] is True
+    assert_historical_next_with_current_execution(result, "PRD-8.5-8.9")

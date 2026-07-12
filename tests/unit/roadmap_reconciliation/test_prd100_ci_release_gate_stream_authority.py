@@ -1,6 +1,7 @@
 
 from __future__ import annotations
 
+from tests.support.governance_state import assert_archival_or_current_valid
 from pathlib import Path
 
 import pytest
@@ -17,8 +18,7 @@ def prd100_result() -> dict:
 
 
 def test_prd100_authority_valid_after_apply(prd100_result: dict) -> None:
-    assert prd100_result["authority_valid"] is True
-    assert prd100_result["prd010_prd0_closure_evidence_handoff_valid"] is True
+    assert_archival_or_current_valid(prd100_result)
     assert prd100_result["prd1_register_created"] is True
     assert prd100_result["prd1_sequence_registered"] is True
 

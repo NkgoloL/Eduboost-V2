@@ -119,8 +119,7 @@ def test_rr015_authority_files_are_valid() -> None:
     verifier = _load_verifier(root)
     result = verifier.evaluate(root)
     assert result["authority_valid"] is True, result
-    assert result["valid"] is False
-    assert "record is still pending evidence capture" in result["warnings"]
+    assert result["valid"] is True, result
 
 
 def test_rr015_record_becomes_valid_after_final_files_and_capture_shape(tmp_path: Path) -> None:
@@ -155,8 +154,19 @@ def test_rr015_record_becomes_valid_after_final_files_and_capture_shape(tmp_path
     assert result["valid"] is True, result
 
 
-def test_rr015_audit_rejects_missing_final_files_when_required() -> None:
-    root = Path.cwd()
+def test_rr015_audit_rejects_missing_final_files_when_required(tmp_path: Path) -> None:
+    source = Path.cwd()
+    root = tmp_path / "repo"
+    _copy_minimal_repo(source, root)
+    for path in (
+        "rr015_security_review_attestation.md",
+        "rr015_popia_privacy_review_attestation.md",
+        "rr015_legal_review_attestation.md",
+        "rr015_caps_content_review_attestation.md",
+        "rr015_release_owner_go_no_go_signoff.md",
+        "rr015_external_approval_boundary.md",
+    ):
+        (root / "docs/approvals" / path).unlink()
     audit_path = root / "scripts/approvals/audit_rr015_external_approvals.py"
     spec = importlib.util.spec_from_file_location("audit_rr015", audit_path)
     assert spec and spec.loader

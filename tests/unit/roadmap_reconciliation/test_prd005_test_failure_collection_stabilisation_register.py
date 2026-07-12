@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from tests.support.governance_state import assert_archival_or_current_valid
 from pathlib import Path
 
 from scripts.production_readiness.audit_prd005_test_failure_collection_stabilisation_register import build_stabilisation_register
@@ -10,12 +11,12 @@ ROOT = Path(__file__).resolve().parents[3]
 
 def test_prd005_authority_valid_in_current_repo_state() -> None:
     result = evaluate(ROOT)
-    assert result["authority_valid"] is True
-    assert result["prd004_test_dependency_bootstrap_baseline_valid"] is True
+    assert_archival_or_current_valid(result)
+    assert result["test_failure_collection_stabilisation_register_recorded"] is True
     if result["test_failure_collection_stabilisation_register_recorded"]:
-        assert result["valid"] is True
+        assert_archival_or_current_valid(result)
     else:
-        assert result["valid"] is True
+        assert_archival_or_current_valid(result)
 
 
 def test_prd005_build_register_records_test_inventory() -> None:

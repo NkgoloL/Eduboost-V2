@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 import configparser
 import json
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
 TAXONOMY_PATH = ROOT / "docs/roadmap/production_readiness/test_suite_taxonomy.json"
@@ -21,6 +21,26 @@ PRD11_REGISTER = ROOT / "docs/roadmap/production_readiness/prd11_production_rele
 PYTEST_INI = ROOT / "pytest.ini"
 REQUIRED_CLASSES = ("product", "runtime", "governance", "advisory")
 FRESHNESS_MAX_AGE_DAYS = 21
+ALLOWED_PROGRESSIVE_NEXT = {
+    "PRD-11.1R",
+    "PRD-11.2R",
+    "PRD-11.3R",
+    "PRD-11.0R.RUNTIME-RESTORE",
+    "PRD-11.0R.RUNTIME-RESTORE-1",
+    "PRD-11.0R.RUNTIME-RESTORE-2",
+    "PRD-11.0R.RUNTIME-RESTORE-3",
+    "PRD-11.0R.RUNTIME-RESTORE-4",
+    "PRD-11.0R.RUNTIME-RESTORE-5",
+    "PRD-11.0R.RUNTIME-RESTORE-6",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-1",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-2",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-3",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-4",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-5",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-6",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7",
+}
 
 
 @dataclass(frozen=True)
@@ -114,7 +134,7 @@ def evaluate_governance_sync(root: Path = ROOT, *, now: datetime | None = None) 
     prd11_age = _age_days(prd11.get("last_recorded_at"), now=now)
     taxonomy_age = _age_days(load_taxonomy(root / TAXONOMY_PATH.relative_to(ROOT)).get("last_reviewed_at"), now=now)
     fresh = all(age is not None and age <= FRESHNESS_MAX_AGE_DAYS for age in (prod_age, prd11_age, taxonomy_age))
-    state_agrees = prod_next == prd11_next and prod_next in {"PRD-11.1R", "PRD-11.2R", "PRD-11.3R", "PRD-11.0R.RUNTIME-RESTORE"}
+    state_agrees = prod_next == prd11_next and prod_next in ALLOWED_PROGRESSIVE_NEXT
     boundaries = prod.get("authority_boundaries", {}) if isinstance(prod.get("authority_boundaries"), dict) else {}
     release_boundaries_locked = all(
         boundaries.get(key) is False

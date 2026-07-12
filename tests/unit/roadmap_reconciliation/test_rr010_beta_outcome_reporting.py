@@ -78,8 +78,7 @@ def test_rr010_authority_files_are_valid() -> None:
     verifier = _load_verifier(root)
     result = verifier.evaluate(root)
     assert result["authority_valid"] is True, result
-    assert result["valid"] is False
-    assert "record is still pending evidence capture" in result["warnings"]
+    assert result["valid"] is True, result
 
 
 def _copy_rr010_minimal_repo(source: Path, target: Path) -> None:
@@ -138,8 +137,18 @@ def test_rr010_record_becomes_valid_after_final_outcome_files_and_capture_shape(
     assert result["valid"] is True, result
 
 
-def test_rr010_audit_rejects_missing_final_files_when_required() -> None:
-    root = Path.cwd()
+def test_rr010_audit_rejects_missing_final_files_when_required(tmp_path: Path) -> None:
+    source = Path.cwd()
+    root = tmp_path / "repo"
+    _copy_rr010_minimal_repo(source, root)
+    for path in (
+        "rr010_beta_outcome_report.md",
+        "rr010_beta_metrics_summary.json",
+        "rr010_weekly_health_reviews.md",
+        "rr010_educator_feedback_summary.md",
+        "rr010_incident_summary.md",
+    ):
+        (root / "docs/beta_outcomes" / path).unlink()
     audit_path = root / "scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py"
     spec = importlib.util.spec_from_file_location("audit_rr010", audit_path)
     assert spec and spec.loader
