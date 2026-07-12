@@ -349,6 +349,8 @@ def _run_one(item: CoverageStaticSecurityCommand, output_dir: Path) -> dict[str,
     _write_text(stderr_artifact, stderr)
     classification = _failure_classification(item.gate_id, stdout, stderr, exit_code, timed_out=timed_out)
     remaining_count = _remaining_violation_count(item.gate_id, stdout, stderr, exit_code)
+    if item.gate_id == "coverage_execution" and timed_out:
+        remaining_count = max(remaining_count, 1)
     payload = {
         "gate_id": item.gate_id,
         "description": item.description,
@@ -406,7 +408,8 @@ def run_coverage_static_security_green(
     coverage_incomplete = any(
         item.get("gate_id") == "coverage_execution"
         and (
-            int(item.get("unresolved_timeout_leaf_count", 0)) > 0
+            item.get("timed_out") is True
+            or int(item.get("unresolved_timeout_leaf_count", 0)) > 0
             or int(item.get("terminal_timeout_node_count", 0)) > 0
         )
         for item in results

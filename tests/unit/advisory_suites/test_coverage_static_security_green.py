@@ -73,6 +73,22 @@ def test_gate_execution_records_bounded_operational_artifacts(tmp_path: Path):
     assert (tmp_path / "synthetic.stderr.txt").read_text()
 
 
+def test_coverage_execution_timeout_counts_as_unresolved_blocker(tmp_path: Path):
+    command = CoverageStaticSecurityCommand(
+        "coverage_execution",
+        "synthetic timed-out coverage gate",
+        [sys.executable, "-c", "import time; time.sleep(2)"],
+        "coverage.json",
+        1,
+    )
+
+    payload = _run_one(command, tmp_path)
+
+    assert payload["timed_out"] is True
+    assert payload["failure_classification"] == "timeout"
+    assert payload["remaining_violation_count"] == 1
+
+
 def test_coverage_timeout_counts_observed_pytest_failures():
     stdout = "F........FF............................................................. [  2%]\n.....F...F [  4%]\n"
 
