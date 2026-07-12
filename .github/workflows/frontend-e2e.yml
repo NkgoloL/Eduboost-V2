@@ -30,7 +30,7 @@ jobs:
       PARENT_JOURNEY_PATH: ${{ inputs.parent_path }}
       PLAYWRIGHT_WEB_SERVER_COMMAND: ${{ inputs.web_server_command }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v4
         with:
           version: 9.14.4
