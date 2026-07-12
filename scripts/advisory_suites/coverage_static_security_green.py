@@ -68,10 +68,16 @@ def command_plan() -> list[CoverageStaticSecurityCommand]:
     return [
         CoverageStaticSecurityCommand(
             "coverage_execution",
-            "Fresh documentation-defined coverage report with failure exit state preserved.",
-            ["make", "test-coverage", "COVERAGE_THRESHOLD=70", f"PYTHON={_py()}"],
+            "Fresh sharded coverage baseline with independent bounded execution and clean-worktree proof.",
+            [
+                _py(),
+                "scripts/coverage_suites/run_coverage_baseline_stabilisation.py",
+                "--execute",
+                "--require-green",
+                "--json",
+            ],
             "coverage-execution.json",
-            900,
+            3600,
         ),
         CoverageStaticSecurityCommand(
             "ruff_release_static_quality",

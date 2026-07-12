@@ -12,6 +12,7 @@ help:
 	@echo "  test-fast       - Unit tests in parallel, no coverage, excludes governance"
 	@echo "  test-integration - Integration tests, no coverage"
 	@echo "  test-coverage   - Unit+integration with coverage (see COVERAGE_THRESHOLD)"
+	@echo "  coverage-baseline-stabilisation - Run deterministic sharded Execution-7 coverage gate"
 	@echo "  test-governance - Release/evidence meta-tests only"
 	@echo "  lint            - Run linters (ruff, black)"
 	@echo "  typecheck       - Run type checker (mypy)"
@@ -45,7 +46,7 @@ PYTEST ?= $(PYTHON) -m pytest
 COVERAGE_THRESHOLD ?= 70
 PR_TEST_MARKERS := not governance and not slow and not llm and not e2e
 
-.PHONY: test test-fast test-integration test-coverage test-coverage-full test-governance
+.PHONY: test test-fast test-integration test-coverage test-coverage-full test-governance coverage-baseline-stabilisation coverage-baseline-stabilisation-plan coverage-baseline-stabilisation-verify
 
 test: test-fast
 
@@ -65,6 +66,15 @@ test-coverage:
 
 test-coverage-full:
 	$(PYTEST) -c pytest-coverage.ini tests/ --cov-fail-under=0 -q
+
+coverage-baseline-stabilisation-plan:
+	PYTHONPATH=. $(PYTHON) scripts/coverage_suites/run_coverage_baseline_stabilisation.py --json
+
+coverage-baseline-stabilisation:
+	PYTHONPATH=. $(PYTHON) scripts/coverage_suites/run_coverage_baseline_stabilisation.py --execute --require-green --json
+
+coverage-baseline-stabilisation-verify:
+	PYTHONPATH=. $(PYTHON) scripts/coverage_suites/verify_coverage_baseline_stabilisation.py --json
 
 test-governance:
 	$(PYTEST) -c pytest.ini tests/unit -m governance -q

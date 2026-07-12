@@ -76,3 +76,9 @@ def test_coverage_timeout_counts_observed_pytest_failures():
     stdout = "F........FF............................................................. [  2%]\n.....F...F [  4%]\n"
 
     assert _remaining_violation_count("coverage_execution", stdout, "", None) == 5
+
+
+def test_coverage_gate_is_wired_to_stabilised_sharded_runner():
+    gate = next(item for item in command_plan() if item.gate_id == "coverage_execution")
+    assert gate.command[1] == "scripts/coverage_suites/run_coverage_baseline_stabilisation.py"
+    assert gate.timeout_seconds == 3600
