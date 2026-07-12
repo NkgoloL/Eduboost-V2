@@ -13,6 +13,7 @@ help:
 	@echo "  test-integration - Integration tests, no coverage"
 	@echo "  test-coverage   - Unit+integration with coverage (see COVERAGE_THRESHOLD)"
 	@echo "  coverage-baseline-stabilisation - Run deterministic sharded Execution-7 coverage gate"
+	@echo "  unit-shard-stabilisation - Run adaptive Execution-7 unit-shard remediation"
 	@echo "  test-governance - Release/evidence meta-tests only"
 	@echo "  lint            - Run linters (ruff, black)"
 	@echo "  typecheck       - Run type checker (mypy)"
@@ -46,7 +47,7 @@ PYTEST ?= $(PYTHON) -m pytest
 COVERAGE_THRESHOLD ?= 70
 PR_TEST_MARKERS := not governance and not slow and not llm and not e2e
 
-.PHONY: test test-fast test-integration test-coverage test-coverage-full test-governance coverage-baseline-stabilisation coverage-baseline-stabilisation-plan coverage-baseline-stabilisation-verify
+.PHONY: test test-fast test-integration test-coverage test-coverage-full test-governance coverage-baseline-stabilisation coverage-baseline-stabilisation-plan coverage-baseline-stabilisation-verify unit-shard-stabilisation unit-shard-stabilisation-plan unit-shard-stabilisation-verify
 
 test: test-fast
 
@@ -75,6 +76,15 @@ coverage-baseline-stabilisation:
 
 coverage-baseline-stabilisation-verify:
 	PYTHONPATH=. $(PYTHON) scripts/coverage_suites/verify_coverage_baseline_stabilisation.py --json
+
+unit-shard-stabilisation-plan:
+	PYTHONPATH=. $(PYTHON) scripts/coverage_suites/run_unit_shard_stabilisation.py --json
+
+unit-shard-stabilisation:
+	PYTHONPATH=. $(PYTHON) scripts/coverage_suites/run_unit_shard_stabilisation.py --execute --require-green --json
+
+unit-shard-stabilisation-verify:
+	PYTHONPATH=. $(PYTHON) scripts/coverage_suites/verify_unit_shard_stabilisation.py --json
 
 test-governance:
 	$(PYTEST) -c pytest.ini tests/unit -m governance -q

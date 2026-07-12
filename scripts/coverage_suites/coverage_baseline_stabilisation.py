@@ -554,16 +554,26 @@ def run_coverage_baseline_stabilisation(
         collection_results.append(result)
         collection_counts[suite] = result["collected_test_count"]
 
-    unit_plan = [CoverageShard(**item) for item in plan["unit_shards"]]
     integration_plan = [CoverageShard(**item) for item in plan["integration_shards"]]
 
-    unit_results = _run_shards_parallel(
-        root=root,
-        output_dir=output_dir,
-        shards=unit_plan,
-        workers=workers,
-        env=env,
+    # Unit execution now uses adaptive timeout bisection in disposable Git
+    # worktrees. Import locally to avoid a module-level circular dependency:
+    # the unit stabiliser reuses this module's deterministic parent plan and
+    # bounded-command evidence contract.
+    from scripts.coverage_suites.unit_shard_stabilisation import (
+        run_unit_shard_stabilisation,
     )
+
+    unit_stabilisation = run_unit_shard_stabilisation(
+        root=root,
+        output_dir=output_dir / "unit-shard-stabilisation",
+        coverage_data_dir=coverage_data_dir,
+        execute=True,
+        parent_shard_count=unit_shards,
+        leaf_timeout_seconds=min(unit_timeout_seconds, 300),
+        workers=max(1, min(workers, 2)),
+    )
+    unit_results = list(unit_stabilisation.get("final_leaf_results", []))
     integration_results = _run_shards_sequential(
         root=root,
         output_dir=output_dir,
@@ -572,34 +582,39 @@ def run_coverage_baseline_stabilisation(
     )
     shard_results = unit_results + integration_results
 
-    report_results: list[dict[str, Any]] = []
-    combine_result = run_bounded_command(
-        root=root,
-        output_dir=output_dir / "reports",
-        command_id="coverage-combine",
-        command=[sys.executable, "-m", "coverage", "combine", "--keep", str(coverage_data_dir)],
-        timeout_seconds=120,
-        env=env,
+    coverage_execution_complete = bool(shard_results) and all(
+        item.get("timed_out") is not True and item.get("exit_code") is not None
+        for item in shard_results
     )
-    report_results.append(combine_result)
-
-    report_commands: list[tuple[str, list[str], int]] = [
-        ("coverage-report-json", [sys.executable, "-m", "coverage", "json", "-o", str(output_dir / "coverage.json")], 120),
-        ("coverage-report-xml", [sys.executable, "-m", "coverage", "xml", "-o", str(output_dir / "coverage.xml")], 120),
-        ("coverage-report-html", [sys.executable, "-m", "coverage", "html", "-d", str(html_dir)], 180),
-        ("coverage-report-threshold", [sys.executable, "-m", "coverage", "report", f"--fail-under={threshold}"], 120),
-    ]
-    for command_id, command, timeout_seconds in report_commands:
-        report_results.append(
-            run_bounded_command(
-                root=root,
-                output_dir=output_dir / "reports",
-                command_id=command_id,
-                command=command,
-                timeout_seconds=timeout_seconds,
-                env=env,
-            )
+    report_results: list[dict[str, Any]] = []
+    if coverage_execution_complete:
+        combine_result = run_bounded_command(
+            root=root,
+            output_dir=output_dir / "reports",
+            command_id="coverage-combine",
+            command=[sys.executable, "-m", "coverage", "combine", "--keep", str(coverage_data_dir)],
+            timeout_seconds=120,
+            env=env,
         )
+        report_results.append(combine_result)
+
+        report_commands: list[tuple[str, list[str], int]] = [
+            ("coverage-report-json", [sys.executable, "-m", "coverage", "json", "-o", str(output_dir / "coverage.json")], 120),
+            ("coverage-report-xml", [sys.executable, "-m", "coverage", "xml", "-o", str(output_dir / "coverage.xml")], 120),
+            ("coverage-report-html", [sys.executable, "-m", "coverage", "html", "-d", str(html_dir)], 180),
+            ("coverage-report-threshold", [sys.executable, "-m", "coverage", "report", f"--fail-under={threshold}"], 120),
+        ]
+        for command_id, command, timeout_seconds in report_commands:
+            report_results.append(
+                run_bounded_command(
+                    root=root,
+                    output_dir=output_dir / "reports",
+                    command_id=command_id,
+                    command=command,
+                    timeout_seconds=timeout_seconds,
+                    env=env,
+                )
+            )
 
     after_status = _git_tracked_status(root)
     mutations = _new_tracked_mutations(before_status, after_status)
@@ -610,8 +625,10 @@ def run_coverage_baseline_stabilisation(
         for item in collection_results
     )
     shards_green = bool(shard_results) and all(item.get("green") is True for item in shard_results)
-    reports_green = all(item.get("green") is True for item in report_results)
-    threshold_green = next(
+    reports_green = coverage_execution_complete and bool(report_results) and all(
+        item.get("green") is True for item in report_results
+    )
+    threshold_green = coverage_execution_complete and next(
         (item.get("green") is True for item in report_results if item.get("command_id") == "coverage-report-threshold"),
         False,
     )
@@ -629,9 +646,11 @@ def run_coverage_baseline_stabilisation(
         blockers.append("coverage_collection")
     if not shards_green:
         blockers.append("coverage_test_shards")
-    if not reports_green:
+    if not coverage_execution_complete:
+        blockers.append("coverage_incomplete_shards")
+    elif not reports_green:
         blockers.append("coverage_report_generation")
-    if not threshold_green:
+    if coverage_execution_complete and not threshold_green:
         blockers.append("coverage_threshold")
     if not git_available:
         blockers.append("git_worktree_observation_unavailable")
@@ -658,6 +677,7 @@ def run_coverage_baseline_stabilisation(
         "collection_green": collection_green,
         "collection_counts": collection_counts,
         "shards_green": shards_green,
+        "coverage_execution_complete": coverage_execution_complete,
         "reports_green": reports_green,
         "threshold_green": threshold_green,
         "git_observation_available": git_available,
@@ -671,6 +691,7 @@ def run_coverage_baseline_stabilisation(
         "blockers": blockers,
         "plan": plan,
         "collection_results": collection_results,
+        "unit_shard_stabilisation": unit_stabilisation,
         "unit_shard_results": unit_results,
         "integration_shard_results": integration_results,
         "report_results": report_results,

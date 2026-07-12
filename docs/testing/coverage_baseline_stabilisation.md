@@ -12,12 +12,14 @@ The stabilised runner:
 
 1. Discovers unit and integration test files deterministically.
 2. Records collection output, collection duration, and collected-test counts separately for each suite.
-3. Balances unit files into deterministic file-size-weighted shards and runs those shards in bounded parallel subprocesses.
-4. Balances integration files into deterministic shards and runs them sequentially to avoid uncontrolled shared database or Redis contention.
-5. Writes each shard's exact command, timestamps, timeout state, exit code, normalized failure classification, remaining failure count, stdout, and stderr.
-6. Stores coverage data and reports only under `var/prd11/runtime-restore/execution-7/coverage-baseline-stabilisation/`.
-7. Combines shard coverage data and produces JSON, XML, HTML, and terminal threshold reports.
-8. Compares tracked Git worktree state before and after execution and blocks green status if tests mutate tracked files.
+3. Preserves eight deterministic parent unit shards, splits them into bounded leaf shards, and adaptively bisects only leaves that time out.
+4. Runs each unit leaf in a disposable Git worktree so tracked mutations are attributable without dirtying the operator branch.
+5. Balances integration files into deterministic shards and runs them sequentially to avoid uncontrolled shared database or Redis contention.
+6. Writes each shard's exact command, timestamps, timeout state, exit code, normalized failure classification, remaining failure count, stdout, and stderr.
+7. Stores coverage data and reports only under `var/prd11/runtime-restore/execution-7/coverage-baseline-stabilisation/`.
+8. Discards timed-out attempt coverage data and combines coverage only after all final unit and integration shards complete.
+9. Produces JSON, XML, HTML, and terminal threshold reports only from a complete shard baseline.
+10. Compares tracked Git worktree state before and after execution and blocks green status if tests mutate tracked files.
 
 The default release threshold remains 70 percent. The existing marker policy remains:
 
@@ -88,6 +90,6 @@ var/prd11/runtime-restore/execution-7/coverage-baseline-stabilisation/
 
 ## Result interpretation
 
-A timeout now identifies the exact collection phase or shard. A normal test failure identifies the affected shard and preserves its complete output. A completed test baseline with coverage below 70 percent is classified as a real threshold failure rather than an execution timeout. Tracked generated-file mutations are listed explicitly and prevent a green result.
+A timeout now identifies the exact collection phase or adaptive unit leaf. A normal test failure identifies the affected shard and preserves its complete output. Coverage report generation and the 70 percent threshold are evaluated only after every final shard completes, preventing partial coverage from being presented as a final threshold result. Tracked generated-file mutations are listed explicitly and prevent a green result.
 
 The Execution-7 evidence capture remains prohibited until this coverage gate and every other release-blocking Execution-7 gate are green from merged `master`.
