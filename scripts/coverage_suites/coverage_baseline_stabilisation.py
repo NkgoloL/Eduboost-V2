@@ -582,10 +582,12 @@ def run_coverage_baseline_stabilisation(
     )
     shard_results = unit_results + integration_results
 
-    coverage_execution_complete = bool(shard_results) and all(
+    unit_execution_complete = unit_stabilisation.get("unit_execution_complete") is True
+    integration_execution_complete = bool(integration_results) and all(
         item.get("timed_out") is not True and item.get("exit_code") is not None
-        for item in shard_results
+        for item in integration_results
     )
+    coverage_execution_complete = unit_execution_complete and integration_execution_complete
     report_results: list[dict[str, Any]] = []
     if coverage_execution_complete:
         combine_result = run_bounded_command(
@@ -624,11 +626,19 @@ def run_coverage_baseline_stabilisation(
         and item.get("collected_test_count", 0) > 0
         for item in collection_results
     )
-    shards_green = bool(shard_results) and all(item.get("green") is True for item in shard_results)
-    reports_green = coverage_execution_complete and bool(report_results) and all(
-        item.get("green") is True for item in report_results
+    unit_tests_green = unit_stabilisation.get("unit_tests_green") is True
+    integration_green = bool(integration_results) and all(item.get("green") is True for item in integration_results)
+    shards_green = unit_tests_green and integration_green
+    combine_green = coverage_execution_complete and next(
+        (item.get("green") is True for item in report_results if item.get("command_id") == "coverage-combine"),
+        False,
     )
-    threshold_green = coverage_execution_complete and next(
+    report_generation_green = coverage_execution_complete and all(
+        next((item.get("green") is True for item in report_results if item.get("command_id") == command_id), False)
+        for command_id in ("coverage-report-json", "coverage-report-xml", "coverage-report-html")
+    )
+    reports_green = combine_green and report_generation_green
+    threshold_green = coverage_execution_complete and report_generation_green and next(
         (item.get("green") is True for item in report_results if item.get("command_id") == "coverage-report-threshold"),
         False,
     )
@@ -648,7 +658,9 @@ def run_coverage_baseline_stabilisation(
         blockers.append("coverage_test_shards")
     if not coverage_execution_complete:
         blockers.append("coverage_incomplete_shards")
-    elif not reports_green:
+    elif not combine_green:
+        blockers.append("coverage_data_combine")
+    elif not report_generation_green:
         blockers.append("coverage_report_generation")
     if coverage_execution_complete and not threshold_green:
         blockers.append("coverage_threshold")
@@ -661,6 +673,15 @@ def run_coverage_baseline_stabilisation(
     timed_out_ids = [item["command_id"] for item in all_results if item.get("timed_out") is True]
     failed_ids = [item["command_id"] for item in all_results if item.get("green") is not True]
     remaining_failure_count = sum(int(item.get("remaining_failure_count", 0)) for item in shard_results)
+    unit_confirmed_failed_leaf_count = int(unit_stabilisation.get("confirmed_failed_leaf_count", 0))
+    unit_unresolved_timeout_leaf_count = int(unit_stabilisation.get("unresolved_timeout_leaf_count", 0))
+    unit_terminal_timeout_node_count = len(unit_stabilisation.get("terminal_timeout_nodeids", []))
+    unresolved_coverage_execution_count = (
+        unit_confirmed_failed_leaf_count
+        + unit_unresolved_timeout_leaf_count
+        + unit_terminal_timeout_node_count
+        + sum(1 for item in integration_results if item.get("green") is not True)
+    )
     completed_at = _utc_now()
     summary = {
         "prd_id": PRD_ID,
@@ -678,7 +699,11 @@ def run_coverage_baseline_stabilisation(
         "collection_counts": collection_counts,
         "shards_green": shards_green,
         "coverage_execution_complete": coverage_execution_complete,
+        "coverage_test_execution_green": coverage_execution_complete and shards_green,
+        "coverage_data_combine_green": combine_green,
+        "coverage_report_generation_green": report_generation_green,
         "reports_green": reports_green,
+        "coverage_threshold_green": threshold_green,
         "threshold_green": threshold_green,
         "git_observation_available": git_available,
         "tracked_worktree_clean": worktree_clean,
@@ -688,6 +713,18 @@ def run_coverage_baseline_stabilisation(
         "timed_out_command_ids": timed_out_ids,
         "failed_command_ids": failed_ids,
         "remaining_test_failure_count": remaining_failure_count,
+        "confirmed_failed_leaf_count": unit_confirmed_failed_leaf_count,
+        "unresolved_timeout_leaf_count": unit_unresolved_timeout_leaf_count,
+        "terminal_timeout_node_count": unit_terminal_timeout_node_count,
+        "unresolved_coverage_execution_count": unresolved_coverage_execution_count,
+        "tracked_mutation_file_count": int(unit_stabilisation.get("tracked_mutation_file_count", 0)),
+        "tracked_mutation_files": unit_stabilisation.get("tracked_mutation_files", []),
+        "untracked_runtime_artifact_count": int(unit_stabilisation.get("untracked_runtime_artifact_count", 0)),
+        "outer_worktree_status": {
+            "before": before_status,
+            "after": after_status,
+        },
+        "isolated_worktree_statuses": unit_stabilisation.get("isolated_worktree_statuses", {}),
         "blockers": blockers,
         "plan": plan,
         "collection_results": collection_results,

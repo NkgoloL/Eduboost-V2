@@ -33,9 +33,27 @@ def test_prd009_inventory_records_generated_local_candidates() -> None:
     assert "eduboost.egg-info" in paths
 
 
-def test_prd009_inventory_records_suspicious_top_level_candidates() -> None:
+def test_current_repository_has_no_known_malformed_root_entries() -> None:
     inventory = repository_hygiene_inventory(ROOT)
     suspicious_paths = {item["path"] for item in inventory["suspicious_top_level_entries"]}
+    assert "cripts" not in suspicious_paths
+    assert "tatus" not in suspicious_paths
+    assert "ubprocess, sys" not in suspicious_paths
+    assert not any(path.startswith("coped technical delivery directories") for path in suspicious_paths)
+
+
+def test_prd009_inventory_detects_malformed_top_level_candidates(tmp_path: Path) -> None:
+    for name in (
+        "cripts",
+        "tatus",
+        "ubprocess, sys",
+        "coped technical delivery directories (...)",
+    ):
+        (tmp_path / name).write_text("captured malformed root artifact\n", encoding="utf-8")
+
+    inventory = repository_hygiene_inventory(tmp_path)
+    suspicious_paths = {item["path"] for item in inventory["suspicious_top_level_entries"]}
+
     assert "cripts" in suspicious_paths
     assert "tatus" in suspicious_paths
     assert "ubprocess, sys" in suspicious_paths

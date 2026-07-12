@@ -4,6 +4,9 @@ import json
 from pathlib import Path
 import subprocess
 
+import pytest
+
+import scripts.coverage_suites.unit_shard_stabilisation as unit_stabilisation
 from scripts.coverage_suites.unit_shard_stabilisation import (
     build_unit_stabilisation_plan,
     evaluate_unit_shard_stabilisation_contract,
@@ -130,3 +133,76 @@ def test_plan_summary_is_json_serializable(tmp_path: Path) -> None:
 
     assert result["executed"] is False
     assert json.loads((output / "summary.json").read_text(encoding="utf-8"))["valid"] is True
+
+
+def test_terminal_isolation_converts_leaf_timeout_to_specific_node_timeout(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    root = tmp_path / "repo"
+    (root / "tests/unit").mkdir(parents=True)
+    (root / "tests/integration").mkdir(parents=True)
+    (root / "tests/unit/test_timeout.py").write_text("def test_hangs(): assert True\n", encoding="utf-8")
+    output = tmp_path / "output"
+
+    def fake_execute_leaf_batch(**kwargs):
+        leaf = kwargs["leaves"][0]
+        return [
+            {
+                "command_id": leaf.leaf_id,
+                "parent_shard_id": leaf.parent_shard_id,
+                "leaf_depth": leaf.depth,
+                "test_files": list(leaf.test_files),
+                "estimated_bytes": leaf.estimated_bytes,
+                "timed_out": True,
+                "exit_code": None,
+                "green": False,
+                "tracked_mutation_files": [],
+                "tracked_mutation_entries": [],
+                "pytest_diagnostics": {
+                    "failed_nodeids": [],
+                    "error_nodeids": [],
+                    "last_active_test_line": None,
+                    "completed_node_count": 0,
+                    "slowest_tests": [],
+                },
+            }
+        ]
+
+    def fake_terminal_isolation(**_kwargs):
+        return [
+            {
+                "leaf_id": "unit-01-of-01.d1-01-of-01",
+                "terminal_file_attempt_count": 1,
+                "terminal_node_attempt_count": 1,
+                "terminal_timeout_nodeids": ["tests/unit/test_timeout.py::test_hangs"],
+                "terminal_failed_nodeids": [],
+                "terminal_error_nodeids": [],
+                "terminal_green_nodeids": [],
+                "terminal_unresolved_files": [],
+                "terminal_green": False,
+                "isolated_worktree_status": {"exit_code": 0, "entries": [], "stderr": ""},
+            }
+        ]
+
+    monkeypatch.setattr(unit_stabilisation, "_git_available", lambda _root: True)
+    monkeypatch.setattr(unit_stabilisation, "_execute_leaf_batch", fake_execute_leaf_batch)
+    monkeypatch.setattr(unit_stabilisation, "run_terminal_isolation", fake_terminal_isolation)
+
+    result = run_unit_shard_stabilisation(
+        root=root,
+        output_dir=output,
+        execute=True,
+        parent_shard_count=1,
+        initial_leaf_shards=1,
+        max_bisection_depth=1,
+        workers=1,
+    )
+
+    assert result["terminal_isolation_performed"] is True
+    assert result["terminal_node_attempt_count"] == 1
+    assert result["timed_out_leaf_ids"] == ["unit-01-of-01.d1-01-of-01"]
+    assert result["unresolved_timeout_leaf_count"] == 0
+    assert result["terminal_timeout_nodeids"] == ["tests/unit/test_timeout.py::test_hangs"]
+    assert result["unit_execution_complete"] is True
+    assert result["unit_tests_green"] is False

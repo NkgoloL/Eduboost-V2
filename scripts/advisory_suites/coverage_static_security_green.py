@@ -266,6 +266,34 @@ def _remaining_violation_count(gate_id: str, stdout: str, stderr: str, exit_code
     return 1
 
 
+def _extract_json_object(text: str) -> dict[str, Any]:
+    start = text.find("{")
+    end = text.rfind("}")
+    if start < 0 or end < start:
+        return {}
+    try:
+        payload = json.loads(text[start : end + 1])
+    except json.JSONDecodeError:
+        return {}
+    return payload if isinstance(payload, dict) else {}
+
+
+def _coverage_execution_counts(result: dict[str, Any]) -> dict[str, int]:
+    coverage_summary = _extract_json_object(str(result.get("stdout_tail", "")))
+    if not coverage_summary:
+        stdout_path = ROOT / str(result.get("stdout_artifact", ""))
+        try:
+            coverage_summary = _extract_json_object(stdout_path.read_text(encoding="utf-8", errors="replace"))
+        except OSError:
+            coverage_summary = {}
+    return {
+        "confirmed_failed_leaf_count": int(coverage_summary.get("confirmed_failed_leaf_count", 0)),
+        "unresolved_timeout_leaf_count": int(coverage_summary.get("unresolved_timeout_leaf_count", 0)),
+        "terminal_timeout_node_count": int(coverage_summary.get("terminal_timeout_node_count", 0)),
+        "unresolved_coverage_execution_count": int(coverage_summary.get("unresolved_coverage_execution_count", 0)),
+    }
+
+
 def _failure_classification(gate_id: str, stdout: str, stderr: str, exit_code: int | None, *, timed_out: bool) -> str:
     if timed_out:
         return "timeout"
@@ -367,11 +395,25 @@ def run_coverage_static_security_green(
         _write(output_dir / "summary.json", payload)
         return payload
     results = [_run_one(item, output_dir) for item in plan]
+    for item in results:
+        if item.get("gate_id") == "coverage_execution":
+            coverage_counts = _coverage_execution_counts(item)
+            if any(coverage_counts.values()):
+                item.update(coverage_counts)
+                item["remaining_violation_count"] = coverage_counts["unresolved_coverage_execution_count"]
     blockers = [item["gate_id"] for item in results if not item["green"] and item.get("release_blocking")]
     remaining = {item["gate_id"]: item["remaining_violation_count"] for item in results}
+    coverage_incomplete = any(
+        item.get("gate_id") == "coverage_execution"
+        and (
+            int(item.get("unresolved_timeout_leaf_count", 0)) > 0
+            or int(item.get("terminal_timeout_node_count", 0)) > 0
+        )
+        for item in results
+    )
     payload = {
         "executed": True,
-        "partial": gate_ids is not None,
+        "partial": gate_ids is not None or coverage_incomplete,
         "selected_gate_ids": [item.gate_id for item in plan],
         "all_green": not blockers,
         "blockers": blockers,
