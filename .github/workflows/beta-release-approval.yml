@@ -26,7 +26,7 @@ jobs:
       ROLLBACK_OWNER: ${{ inputs.rollback_owner }}
       POST_DEPLOY_OWNER: ${{ inputs.post_deploy_owner }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12.3"

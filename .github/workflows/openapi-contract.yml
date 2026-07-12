@@ -57,7 +57,7 @@ jobs:
       JWT_SECRET_KEY: openapi-ci-test-secret-32chars-min
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-python@v6
         with:
