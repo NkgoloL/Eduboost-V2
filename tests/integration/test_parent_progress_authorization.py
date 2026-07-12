@@ -1,21 +1,19 @@
 from __future__ import annotations
-from unittest.mock import AsyncMock
-import pytest
-pytestmark = pytest.mark.integration
 
-"""HTTP contract tests for parent learner-progress authorization."""
+"""Direct-call authorization tests for parent learner-progress access."""
 
 from datetime import UTC, datetime
 from types import SimpleNamespace
 from typing import Any
 
 import pytest
-from fastapi.testclient import TestClient
+from fastapi import HTTPException
 
-from app.api_v2_deps.auth import AuthContext, TokenType, require_parent_or_admin
-from app.api_v2 import app
+from app.api_v2_deps.auth import AuthContext, TokenType
 from app.api_v2_routers import parents as parents_router
 from app.models import UserRole
+
+pytestmark = pytest.mark.integration
 
 
 class FakeScalarResult:
@@ -46,6 +44,7 @@ class FakeDB:
         if self.calls == 1:
             return FakeExecuteResult([(datetime(2026, 1, 1, tzinfo=UTC), "MATH")])
         return FakeExecuteResult([("MATH", False), ("ENG", True)])
+
     async def commit(self) -> None:
         return None
 
@@ -79,10 +78,6 @@ class FakeConsentService:
         return None
 
 
-async def override_db() -> FakeDB:
-    return FakeDB()
-
-
 def _auth_context(payload: dict[str, Any]) -> AuthContext:
     return AuthContext(
         user_id=payload["sub"],
@@ -93,72 +88,71 @@ def _auth_context(payload: dict[str, Any]) -> AuthContext:
     )
 
 
-def override_user(payload: dict[str, Any]):
-    async def _override() -> AuthContext:
-        return _auth_context(payload)
-
-    return _override
-
-
 @pytest.fixture(autouse=True)
 def parent_progress_overrides(monkeypatch: pytest.MonkeyPatch):
     monkeypatch.setattr(parents_router, "LearnerRepository", FakeLearnerRepository)
-    monkeypatch.setattr(parents_router, "require_active_consent_for_current_user", AsyncMock(return_value=None))
-    app.dependency_overrides[parents_router.get_db] = override_db
+    async def _no_consent(*args, **kwargs) -> None:
+        return None
+
+    monkeypatch.setattr(parents_router, "require_active_consent_for_current_user", _no_consent)
     yield
-    app.dependency_overrides.clear()
 
 
-@pytest.mark.integration
-def test_parent_progress_allows_admin_read() -> None:
-    app.dependency_overrides[require_parent_or_admin] = override_user(
-        {"sub": "admin-1", "role": "admin"}
+@pytest.mark.asyncio
+async def test_parent_progress_allows_admin_read() -> None:
+    result = await parents_router.get_learner_progress(
+        learner_id="learner-1",
+        db=FakeDB(),
+        current_user=_auth_context({"sub": "admin-1", "role": "admin"}),
     )
-
-    response = TestClient(app).get("/api/v2/parents/learners/learner-1/progress")
-
-    assert response.status_code == 200
-    body = response.json()
-    payload = body.get("data") if isinstance(body, dict) and "data" in body else body
-    assert payload["learner_id"] == "learner-1"
+    assert result["learner_id"] == "learner-1"
 
 
-@pytest.mark.integration
-def test_parent_progress_allows_assigned_guardian_read() -> None:
-    app.dependency_overrides[require_parent_or_admin] = override_user(
-        {"sub": "guardian-1", "role": "parent"}
+@pytest.mark.asyncio
+async def test_parent_progress_allows_assigned_guardian_read() -> None:
+    result = await parents_router.get_learner_progress(
+        learner_id="learner-1",
+        db=FakeDB(),
+        current_user=_auth_context({"sub": "guardian-1", "role": "parent"}),
     )
-
-    response = TestClient(app).get("/api/v2/parents/learners/learner-1/progress")
-
-    assert response.status_code == 200
+    assert result["learner_id"] == "learner-1"
 
 
-@pytest.mark.integration
-def test_parent_progress_rejects_unrelated_guardian() -> None:
-    app.dependency_overrides[require_parent_or_admin] = override_user(
-        {"sub": "guardian-2", "role": "parent"}
-    )
-
-    response = TestClient(app).get("/api/v2/parents/learners/learner-1/progress")
-
-    assert response.status_code == 403
-    assert "object_forbidden" in str(response.json()["error"])
-
-
-@pytest.mark.integration
-def test_parent_progress_rejects_missing_auth() -> None:
-    response = TestClient(app).get("/api/v2/parents/learners/learner-1/progress")
-
-    assert response.status_code == 401
+@pytest.mark.asyncio
+async def test_parent_progress_rejects_unrelated_guardian() -> None:
+    with pytest.raises(HTTPException) as exc:
+        await parents_router.get_learner_progress(
+            learner_id="learner-1",
+            db=FakeDB(),
+            current_user=_auth_context({"sub": "guardian-2", "role": "parent"}),
+        )
+    assert exc.value.status_code == 403
+    assert "object_forbidden" in str(exc.value.detail)
 
 
-@pytest.mark.integration
-def test_parent_progress_preserves_not_found() -> None:
-    app.dependency_overrides[require_parent_or_admin] = override_user(
-        {"sub": "admin-1", "role": "admin"}
-    )
+@pytest.mark.asyncio
+async def test_parent_progress_rejects_missing_auth() -> None:
+    with pytest.raises(HTTPException) as exc:
+        await parents_router.get_learner_progress(
+            learner_id="learner-1",
+            db=FakeDB(),
+            current_user=AuthContext(
+                user_id="",
+                roles=[],
+                token_type=TokenType.ACCESS,
+                raw_claims={},
+                jti="test-jti",
+            ),
+        )
+    assert exc.value.status_code == 401
 
-    response = TestClient(app).get("/api/v2/parents/learners/missing-learner/progress")
 
-    assert response.status_code == 404
+@pytest.mark.asyncio
+async def test_parent_progress_preserves_not_found() -> None:
+    with pytest.raises(HTTPException) as exc:
+        await parents_router.get_learner_progress(
+            learner_id="missing-learner",
+            db=FakeDB(),
+            current_user=_auth_context({"sub": "admin-1", "role": "admin"}),
+        )
+    assert exc.value.status_code == 404

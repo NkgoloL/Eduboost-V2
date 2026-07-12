@@ -1,0 +1,216 @@
+{
+  "alembic_upgrade_head_green": true,
+  "all_green": true,
+  "blockers": [],
+  "command_plan": [
+    {
+      "artifact": "compose-contract.json",
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "scripts/runtime/verify_runtime_stack_readiness.py",
+        "--json"
+      ],
+      "description": "Verify committed disposable-stack service contract for postgres, redis, api, worker, and frontend.",
+      "gate_id": "compose_contract",
+      "release_blocking": true,
+      "requires_failure_mode": true,
+      "requires_live_stack": false,
+      "requires_positive_path": true
+    },
+    {
+      "artifact": "alembic-upgrade-head.json",
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "-m",
+        "alembic",
+        "upgrade",
+        "head"
+      ],
+      "description": "Apply migrations to the disposable database and prove the migration command succeeds.",
+      "gate_id": "alembic_upgrade_head",
+      "release_blocking": true,
+      "requires_failure_mode": true,
+      "requires_live_stack": true,
+      "requires_positive_path": true
+    },
+    {
+      "artifact": "disposable-stack-schema-lineage-live.json",
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "scripts/runtime/verify_disposable_stack_schema_lineage.py",
+        "--require-live",
+        "--json"
+      ],
+      "description": "Verify live DB revision equals repository Alembic head and critical runtime schema exists.",
+      "gate_id": "disposable_stack_schema_lineage_live",
+      "release_blocking": true,
+      "requires_failure_mode": true,
+      "requires_live_stack": true,
+      "requires_positive_path": true
+    },
+    {
+      "artifact": "redis-readiness.json",
+      "command": null,
+      "description": "Ping the configured Redis instance from the current repo environment.",
+      "gate_id": "redis_readiness",
+      "release_blocking": true,
+      "requires_failure_mode": true,
+      "requires_live_stack": true,
+      "requires_positive_path": true
+    },
+    {
+      "artifact": "ready-http-probe.json",
+      "command": null,
+      "description": "Probe API /ready and require HTTP 200 from the live API.",
+      "gate_id": "ready_http_probe",
+      "release_blocking": true,
+      "requires_failure_mode": true,
+      "requires_live_stack": true,
+      "requires_positive_path": true
+    }
+  ],
+  "database_lineage_green": true,
+  "execute": true,
+  "output_dir": "/tmp/eduboost-prd1100r-exec5c/var/prd11/runtime-restore/execution-5/runtime-stack-db-ready-green",
+  "ready_probe_green": true,
+  "redis_readiness_green": true,
+  "require_green": true,
+  "results": {
+    "alembic_upgrade_head": {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "-m",
+        "alembic",
+        "upgrade",
+        "head"
+      ],
+      "duration_seconds": 0.994,
+      "returncode": 0,
+      "status": "pass",
+      "stderr_tail": "INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.\nINFO  [alembic.runtime.migration] Context impl PostgresqlImpl.\nINFO  [alembic.runtime.migration] Will assume transactional DDL.\nINFO  [alembic.runtime.migration] Will assume transactional DDL.\n",
+      "stdout_tail": ""
+    },
+    "compose_contract": {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "scripts/runtime/verify_runtime_stack_readiness.py",
+        "--json"
+      ],
+      "duration_seconds": 0.901,
+      "returncode": 0,
+      "status": "pass",
+      "stderr_tail": "",
+      "stdout_tail": "\n      \"ready_http_probe\": {\n        \"body_head\": \"{\\\"status\\\":\\\"ok\\\",\\\"critical\\\":{\\\"secrets\\\":{\\\"status\\\":\\\"ok\\\"},\\\"postgres\\\":{\\\"status\\\":\\\"ok\\\"},\\\"redis\\\":{\\\"status\\\":\\\"ok\\\"},\\\"migrations\\\":{\\\"status\\\":\\\"ok\\\",\\\"expected_repository_heads\\\":[\\\"20260711_1510_prd11_runtime_green_exec5\\\"],\\\"expected_single_head\\\":\\\"20260711_1510_prd11_runtime_green_exec5\\\",\\\"live_revisions\\\":[\\\"20260711_1510_prd11_runtime_green_exec5\\\"],\\\"unknown_revisions\\\":[],\\\"exact_repository_head\\\":true,\\\"repository_revision_count\\\":47,\\\"reason_codes\\\":[]},\\\"schema_contract\\\":{\\\"status\\\":\\\"ok\\\",\\\"required_tables\\\":[\\\"guardians\\\",\\\"learner_profiles\\\",\\\"assessments\\\",\\\"assessment_attempts\\\",\\\"diagnostic_items\\\",\\\"diagnostic_sessions\\\",\\\"study_plans\\\",\\\"lessons\\\",\\\"runtime_kg_graph_loads\\\",\\\"runtime_kg_nodes\\\",\\\"runtime_kg_edges\\\",\\\"runtime_kg_events\\\",\\\"ai_usage_events\\\",\\\"tutor_sessions\\\",\\\"audit_events\\\"],\\\"required_columns\\\":{\\\"diagnostic_items\\\":[\\\"irt_quality_state\\\",\\\"irt_discrimination\\\",\\\"irt_difficulty\\\",\\\"irt_guessing\\\"],\\\"runtime_kg_nodes\\\":[\\\"stable_code\\\",\\\"node_type\\\",\\\"label\\\",\\\"mastery_weight\\\"],\\\"runtime_kg_edges\\\":[\\\"source_node_id\\\",\\\"target_node_id\\\",\\\"edge_type\",\n        \"http_status\": 200,\n        \"status\": \"pass\",\n        \"url\": \"http://localhost:8000/ready\"\n      },\n      \"redis_readiness_dependency\": {\n        \"ping\": true,\n        \"status\": \"pass\"\n      },\n      \"secret_baseline_gate\": {\n        \"reason\": \"secret_baseline_gate command not executed in collector default mode\",\n        \"status\": \"blocked\"\n      },\n      \"static_required_files\": {\n        \"missing\": [],\n        \"status\": \"pass\"\n      }\n    },\n    \"collector_version\": \"prd11.0r/true-state-runtime-baseline/v1\",\n    \"hard_gate_names\": [\n      \"static_required_files\",\n      \"docker_compose_service_contract\",\n      \"alembic_repository_graph\",\n      \"disposable_stack_schema_lineage_reconciliation\",\n      \"database_lineage_and_schema\",\n      \"redis_readiness_dependency\",\n      \"ready_http_probe\",\n      \"generated_contracts\",\n      \"backend_unit_gate\",\n      \"integration_gate\",\n      \"dependency_audit_gate\",\n      \"frontend_quality_gate\",\n      \"secret_baseline_gate\"\n    ],\n    \"operational_hold_required\": true,\n    \"overall_status\": \"red_no_go_operational_hold_active\",\n    \"prd_id\": \"PRD-11.0R\",\n    \"release_evidence_mode\": \"actual_probe_evidence_required_not_constant_status\",\n    \"runtime_baseline_green\": false\n  },\n  \"checks\": {\n    \"alembic_single_head\": {\n      \"heads\": [\n        \"20260711_1510_prd11_runtime_green_exec5\"\n      ],\n      \"revision_count\": 47,\n      \"valid\": true\n    },\n    \"baseline_collector_contract\": {\n      \"blockers\": [\n        \"generated_contracts\",\n        \"backend_unit_gate\",\n        \"integration_gate\",\n        \"dependency_audit_gate\",\n        \"frontend_quality_gate\",\n        \"secret_baseline_gate\"\n      ],\n      \"hard_gate_names\": [\n        \"static_required_files\",\n        \"docker_compose_service_contract\",\n        \"alembic_repository_graph\",\n        \"disposable_stack_schema_lineage_reconciliation\",\n        \"database_lineage_and_schema\",\n        \"redis_readiness_dependency\",\n        \"ready_http_probe\",\n        \"generated_contracts\",\n        \"backend_unit_gate\",\n        \"integration_gate\",\n        \"dependency_audit_gate\",\n        \"frontend_quality_gate\",\n        \"secret_baseline_gate\"\n      ],\n      \"runtime_baseline_green\": false,\n      \"valid\": true\n    },\n    \"compose_contract\": {\n      \"expected_services\": [\n        \"postgres\",\n        \"redis\",\n        \"api\",\n        \"worker\",\n        \"frontend\"\n      ],\n      \"missing_services\": [],\n      \"valid\": true\n    },\n    \"health_contract\": {\n      \"missing_tokens\": [],\n      \"valid\": true\n    },\n    \"orm_schema_contract\": {\n      \"missing_columns\": {},\n      \"missing_tables\": [],\n      \"required_columns\": {\n        \"diagnostic_items\": [\n          \"irt_quality_state\",\n          \"irt_discrimination\",\n          \"irt_difficulty\",\n          \"irt_guessing\"\n        ],\n        \"runtime_kg_edges\": [\n          \"source_node_id\",\n          \"target_node_id\",\n          \"edge_type\",\n          \"weight\"\n        ],\n        \"runtime_kg_nodes\": [\n          \"stable_code\",\n          \"node_type\",\n          \"label\",\n          \"mastery_weight\"\n        ]\n      },\n      \"required_tables\": [\n        \"guardians\",\n        \"learner_profiles\",\n        \"assessments\",\n        \"assessment_attempts\",\n        \"diagnostic_items\",\n        \"diagnostic_sessions\",\n        \"study_plans\",\n        \"lessons\",\n        \"runtime_kg_graph_loads\",\n        \"runtime_kg_nodes\",\n        \"runtime_kg_edges\",\n        \"runtime_kg_events\",\n        \"ai_usage_events\",\n        \"tutor_sessions\",\n        \"audit_events\"\n      ],\n      \"schema_contract_satisfied\": true,\n      \"status\": \"ok\",\n      \"valid\": true\n    },\n    \"py_compile\": {\n      \"returncode\": 0,\n      \"stderr_tail\": \"\",\n      \"stdout_tail\": \"\",\n      \"valid\": true\n    }\n  },\n  \"contract_valid\": true,\n  \"live_green_required\": false,\n  \"runtime_baseline_green\": false,\n  \"valid\": true\n}\n"
+    },
+    "disposable_stack_schema_lineage_live": {
+      "command": [
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "scripts/runtime/verify_disposable_stack_schema_lineage.py",
+        "--require-live",
+        "--json"
+      ],
+      "duration_seconds": 0.375,
+      "returncode": 0,
+      "status": "pass",
+      "stderr_tail": "",
+      "stdout_tail": "\n        {\n          \"command\": \"alembic upgrade head\",\n          \"step\": \"apply_migrations\"\n        },\n        {\n          \"command\": \"PYTHONPATH=. python3 scripts/runtime/verify_disposable_stack_schema_lineage.py --require-live --json\",\n          \"step\": \"verify_lineage_schema\"\n        },\n        {\n          \"command\": \"curl -fsS ${API_BASE_URL:-http://localhost:8000}/ready\",\n          \"step\": \"probe_ready\"\n        },\n        {\n          \"command\": \"PYTHONPATH=. python3 scripts/production_readiness/collect_prd1100r_true_state_runtime_baseline.py --run-expensive-checks --json\",\n          \"step\": \"capture_baseline\"\n        }\n      ],\n      \"compose_file\": \"docker-compose.yml\",\n      \"policy\": {\n        \"existing_database_requires_inventory_before_bridge_or_rebuild\": true,\n        \"fresh_disposable_database_must_migrate_to_head\": true,\n        \"no_blind_alembic_stamp\": true,\n        \"ready_probe_required_after_stack_start\": true,\n        \"runtime_schema_contract_required_after_migration\": true,\n        \"snapshot_before_lineage_repair\": true\n      },\n      \"valid\": true\n    },\n    \"lineage_probe\": {\n      \"lineage\": {\n        \"exact_repository_head\": true,\n        \"expected_repository_heads\": [\n          \"20260711_1510_prd11_runtime_green_exec5\"\n        ],\n        \"expected_single_head\": \"20260711_1510_prd11_runtime_green_exec5\",\n        \"live_revisions\": [\n          \"20260711_1510_prd11_runtime_green_exec5\"\n        ],\n        \"reason_codes\": [],\n        \"repository_revision_count\": 47,\n        \"status\": \"ok\",\n        \"unknown_revisions\": []\n      },\n      \"reconciliation_mode\": \"exact_head_verified\",\n      \"schema_contract\": {\n        \"missing_columns\": {},\n        \"missing_tables\": [],\n        \"required_columns\": {\n          \"diagnostic_items\": [\n            \"irt_quality_state\",\n            \"irt_discrimination\",\n            \"irt_difficulty\",\n            \"irt_guessing\"\n          ],\n          \"runtime_kg_edges\": [\n            \"source_node_id\",\n            \"target_node_id\",\n            \"edge_type\",\n            \"weight\"\n          ],\n          \"runtime_kg_nodes\": [\n            \"stable_code\",\n            \"node_type\",\n            \"label\",\n            \"mastery_weight\"\n          ]\n        },\n        \"required_tables\": [\n          \"guardians\",\n          \"learner_profiles\",\n          \"assessments\",\n          \"assessment_attempts\",\n          \"diagnostic_items\",\n          \"diagnostic_sessions\",\n          \"study_plans\",\n          \"lessons\",\n          \"runtime_kg_graph_loads\",\n          \"runtime_kg_nodes\",\n          \"runtime_kg_edges\",\n          \"runtime_kg_events\",\n          \"ai_usage_events\",\n          \"tutor_sessions\",\n          \"audit_events\"\n        ],\n        \"schema_contract_satisfied\": true,\n        \"status\": \"ok\"\n      },\n      \"status\": \"pass\"\n    },\n    \"lineage_reconciliation_decision\": {\n      \"blind_stamp_allowed\": false,\n      \"decision\": \"lineage_and_schema_already_at_repository_head\",\n      \"safe_next_action\": \"run_full_runtime_baseline_and_ready_probe\",\n      \"status\": \"pass\"\n    },\n    \"migration_graph_contract\": {\n      \"expected_single_head\": \"20260711_1510_prd11_runtime_green_exec5\",\n      \"repository_heads\": [\n        \"20260711_1510_prd11_runtime_green_exec5\"\n      ],\n      \"revision_count\": 47,\n      \"status\": \"pass\",\n      \"valid\": true\n    },\n    \"policy\": {\n      \"existing_database_requires_inventory_before_bridge_or_rebuild\": true,\n      \"fresh_disposable_database_must_migrate_to_head\": true,\n      \"no_blind_alembic_stamp\": true,\n      \"ready_probe_required_after_stack_start\": true,\n      \"runtime_schema_contract_required_after_migration\": true,\n      \"snapshot_before_lineage_repair\": true,\n      \"valid\": true\n    },\n    \"runtime_schema_contract_static\": {\n      \"missing_columns\": {},\n      \"missing_tables\": [],\n      \"required_columns\": {\n        \"diagnostic_items\": [\n          \"irt_quality_state\",\n          \"irt_discrimination\",\n          \"irt_difficulty\",\n          \"irt_guessing\"\n        ],\n        \"runtime_kg_edges\": [\n          \"source_node_id\",\n          \"target_node_id\",\n          \"edge_type\",\n          \"weight\"\n        ],\n        \"runtime_kg_nodes\": [\n          \"stable_code\",\n          \"node_type\",\n          \"label\",\n          \"mastery_weight\"\n        ]\n      },\n      \"required_tables\": [\n        \"guardians\",\n        \"learner_profiles\",\n        \"assessments\",\n        \"assessment_attempts\",\n        \"diagnostic_items\",\n        \"diagnostic_sessions\",\n        \"study_plans\",\n        \"lessons\",\n        \"runtime_kg_graph_loads\",\n        \"runtime_kg_nodes\",\n        \"runtime_kg_edges\",\n        \"runtime_kg_events\",\n        \"ai_usage_events\",\n        \"tutor_sessions\",\n        \"audit_events\"\n      ],\n      \"schema_contract_satisfied\": true,\n      \"status\": \"ok\",\n      \"valid\": true\n    }\n  },\n  \"contract_valid\": true,\n  \"live_lineage_schema_green\": true,\n  \"live_lineage_schema_required\": true,\n  \"next_required_runtime_action\": \"run full true-state baseline with expensive checks\",\n  \"valid\": true\n}\n"
+    },
+    "ready_http_probe": {
+      "http_status": 200,
+      "json": {
+        "critical": {
+          "audit_repository": {
+            "status": "ok"
+          },
+          "migrations": {
+            "exact_repository_head": true,
+            "expected_repository_heads": [
+              "20260711_1510_prd11_runtime_green_exec5"
+            ],
+            "expected_single_head": "20260711_1510_prd11_runtime_green_exec5",
+            "live_revisions": [
+              "20260711_1510_prd11_runtime_green_exec5"
+            ],
+            "reason_codes": [],
+            "repository_revision_count": 47,
+            "status": "ok",
+            "unknown_revisions": []
+          },
+          "postgres": {
+            "status": "ok"
+          },
+          "redis": {
+            "status": "ok"
+          },
+          "schema_contract": {
+            "missing_columns": {},
+            "missing_tables": [],
+            "required_columns": {
+              "diagnostic_items": [
+                "irt_quality_state",
+                "irt_discrimination",
+                "irt_difficulty",
+                "irt_guessing"
+              ],
+              "runtime_kg_edges": [
+                "source_node_id",
+                "target_node_id",
+                "edge_type",
+                "weight"
+              ],
+              "runtime_kg_nodes": [
+                "stable_code",
+                "node_type",
+                "label",
+                "mastery_weight"
+              ]
+            },
+            "required_tables": [
+              "guardians",
+              "learner_profiles",
+              "assessments",
+              "assessment_attempts",
+              "diagnostic_items",
+              "diagnostic_sessions",
+              "study_plans",
+              "lessons",
+              "runtime_kg_graph_loads",
+              "runtime_kg_nodes",
+              "runtime_kg_edges",
+              "runtime_kg_events",
+              "ai_usage_events",
+              "tutor_sessions",
+              "audit_events"
+            ],
+            "schema_contract_satisfied": true,
+            "status": "ok"
+          },
+          "secrets": {
+            "status": "ok"
+          }
+        },
+        "message": "System is operational",
+        "optional": {
+          "judiciary": {
+            "status": "ok"
+          },
+          "llm_provider": {
+            "detail": "No LLM provider credentials configured",
+            "status": "skipped"
+          }
+        },
+        "status": "ok"
+      },
+      "status": "pass",
+      "url": "http://localhost:8000/ready"
+    },
+    "redis_readiness": {
+      "ping": true,
+      "redis_url_present": true,
+      "status": "pass"
+    }
+  },
+  "runtime_stack_green": true,
+  "schema_contract_green": true,
+  "schema_version": "prd11.0r/runtime-restore-execution-5/runtime-stack-db-ready-green/v1"
+}

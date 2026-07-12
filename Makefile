@@ -12,6 +12,7 @@ help:
 	@echo "  test-fast       - Unit tests in parallel, no coverage, excludes governance"
 	@echo "  test-integration - Integration tests, no coverage"
 	@echo "  test-coverage   - Unit+integration with coverage (see COVERAGE_THRESHOLD)"
+	@echo "  coverage-baseline-stabilisation - Run deterministic sharded Execution-7 coverage gate"
 	@echo "  test-governance - Release/evidence meta-tests only"
 	@echo "  lint            - Run linters (ruff, black)"
 	@echo "  typecheck       - Run type checker (mypy)"
@@ -45,7 +46,7 @@ PYTEST ?= $(PYTHON) -m pytest
 COVERAGE_THRESHOLD ?= 70
 PR_TEST_MARKERS := not governance and not slow and not llm and not e2e
 
-.PHONY: test test-fast test-integration test-coverage test-coverage-full test-governance
+.PHONY: test test-fast test-integration test-coverage test-coverage-full test-governance coverage-baseline-stabilisation coverage-baseline-stabilisation-plan coverage-baseline-stabilisation-verify
 
 test: test-fast
 
@@ -65,6 +66,15 @@ test-coverage:
 
 test-coverage-full:
 	$(PYTEST) -c pytest-coverage.ini tests/ --cov-fail-under=0 -q
+
+coverage-baseline-stabilisation-plan:
+	PYTHONPATH=. $(PYTHON) scripts/coverage_suites/run_coverage_baseline_stabilisation.py --json
+
+coverage-baseline-stabilisation:
+	PYTHONPATH=. $(PYTHON) scripts/coverage_suites/run_coverage_baseline_stabilisation.py --execute --require-green --json
+
+coverage-baseline-stabilisation-verify:
+	PYTHONPATH=. $(PYTHON) scripts/coverage_suites/verify_coverage_baseline_stabilisation.py --json
 
 test-governance:
 	$(PYTEST) -c pytest.ini tests/unit -m governance -q
@@ -3612,3 +3622,27 @@ prd1100r-runtime-restore-execution-4-verify:
 
 prd1100r-runtime-restore-execution-4-run:
 	PYTHONPATH=. python3 scripts/advisory_suites/run_generated_contract_frontend_quality_green_evidence.py --execute --json
+
+.PHONY: prd1100r-runtime-restore-execution-5-verify prd1100r-runtime-restore-execution-5-run
+prd1100r-runtime-restore-execution-5-verify:
+	PYTHONPATH=. $(PYTHON) scripts/runtime/verify_runtime_stack_db_ready_green.py --json
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_prd1100r_runtime_restore_execution_5_runtime_stack_db_lineage_ready_green.py --authority-only --json
+
+prd1100r-runtime-restore-execution-5-run:
+	PYTHONPATH=. $(PYTHON) scripts/runtime/run_runtime_stack_db_ready_green.py --execute --apply-migrations --require-green --json
+
+.PHONY: prd1100r-runtime-restore-execution-6-verify prd1100r-runtime-restore-execution-6-run
+prd1100r-runtime-restore-execution-6-verify:
+	PYTHONPATH=. $(PYTHON) scripts/test_suites/verify_product_critical_flow_green.py --json
+	PYTHONPATH=. $(PYTHON) scripts/roadmap_reconciliation/verify_prd1100r_runtime_restore_execution_6_product_critical_flow_green.py --authority-only --json
+
+prd1100r-runtime-restore-execution-6-run:
+	PYTHONPATH=. $(PYTHON) scripts/test_suites/run_product_critical_flow_green.py --execute --require-green --json
+
+
+.PHONY: prd1100r-exec7-coverage-static-security-verify prd1100r-exec7-coverage-static-security-run
+prd1100r-exec7-coverage-static-security-verify:
+	$(PYTHON) scripts/advisory_suites/verify_coverage_static_security_green.py --json
+
+prd1100r-exec7-coverage-static-security-run:
+	$(PYTHON) scripts/advisory_suites/run_coverage_static_security_green.py --execute --require-green --json

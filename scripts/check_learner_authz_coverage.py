@@ -17,6 +17,10 @@ ALLOWLIST = {
     ("assessments.py", "GET", "/"),
     ("assessments.py", "GET", ""),
     ("onboarding.py", "GET", "/questions"),
+    # Runtime restore and POPIA operational probes are intentionally not learner-object scoped.
+    ("controlled_beta.py", "GET", "/preflight"),
+    ("privacy_operations.py", "GET", "/live-data/readiness"),
+    ("privacy_operations.py", "GET", "/live-data/final-assurance"),
     # Development/session bootstrap is not learner-object scoped.
     ("auth.py", "POST", "/dev-session"),
     # Token refresh endpoint is system auth, not learner-object scoped.

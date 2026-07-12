@@ -1,4 +1,4 @@
-"""HTTP contract tests for diagnostic items read authorization."""
+"""Direct-call authorization tests for diagnostic items read access."""
 from __future__ import annotations
 
 from types import SimpleNamespace
@@ -6,10 +6,12 @@ from typing import Any
 from unittest.mock import AsyncMock
 
 import pytest
-from fastapi.testclient import TestClient
+from fastapi import HTTPException
 
-from app.api_v2 import app
+from app.api_v2 import app  # noqa: F401 - imported for parity with route wiring checks
+from app.api_v2_deps.auth import AuthContext, TokenType
 from app.api_v2_routers import diagnostics as diagnostics_router
+from app.models import UserRole
 
 pytestmark = pytest.mark.integration
 
@@ -69,8 +71,16 @@ async def override_db() -> object:
 
 
 def override_user(payload: dict[str, Any]):
-    async def _override() -> dict[str, Any]:
-        return payload
+    async def _override() -> AuthContext:
+        return AuthContext(
+            user_id=payload["sub"],
+            guardian_id=payload.get("guardian_id"),
+            learner_id=payload.get("learner_id"),
+            roles=[UserRole(payload["role"])],
+            token_type=TokenType.ACCESS,
+            raw_claims=payload,
+            jti="test-jti",
+        )
 
     return _override
 
@@ -89,61 +99,115 @@ def diagnostic_items_overrides(monkeypatch: pytest.MonkeyPatch):
         lambda db: FakeIRTRepository(db),
     )
     monkeypatch.setattr(diagnostics_router, "_caps_validator", FakeCAPSValidator())
-    app.dependency_overrides[diagnostics_router.get_db] = override_db
+    diagnostics_router.get_db = override_db  # type: ignore[assignment]
     yield
-    app.dependency_overrides.clear()
 
 
-@pytest.mark.integration
-def test_get_diagnostic_items_allows_admin_read() -> None:
-    app.dependency_overrides[diagnostics_router.get_current_user] = override_user(
-        {"sub": "admin-1", "role": "admin"}
+def _request() -> SimpleNamespace:
+    return SimpleNamespace(state=SimpleNamespace())
+
+
+@pytest.mark.asyncio
+async def test_get_diagnostic_items_allows_admin_read() -> None:
+    result = await diagnostics_router.get_diagnostic_items(
+        "learner-1",
+        request=_request(),
+        db=object(),
+        current_user=AuthContext(
+            user_id="admin-1",
+            roles=[UserRole.ADMIN],
+            token_type=TokenType.ACCESS,
+            raw_claims={"sub": "admin-1", "role": "admin"},
+            jti="test-jti",
+        ),
     )
-    response = TestClient(app).get("/api/v2/diagnostics/items/learner-1")
-    assert response.status_code == 200
-    body = response.json()
-    payload = body.get("data") if isinstance(body, dict) and "data" in body else body
-    assert payload[0]["id"] == "item-1"
+    assert result[0]["id"] == "item-1"
 
 
-@pytest.mark.integration
-def test_get_diagnostic_items_allows_assigned_guardian_read() -> None:
-    app.dependency_overrides[diagnostics_router.get_current_user] = override_user(
-        {"sub": "guardian-1", "role": "parent"}
+@pytest.mark.asyncio
+async def test_get_diagnostic_items_allows_assigned_guardian_read() -> None:
+    result = await diagnostics_router.get_diagnostic_items(
+        "learner-1",
+        request=_request(),
+        db=object(),
+        current_user=AuthContext(
+            user_id="guardian-1",
+            roles=[UserRole.PARENT],
+            token_type=TokenType.ACCESS,
+            raw_claims={"sub": "guardian-1", "role": "parent"},
+            jti="test-jti",
+        ),
     )
-    response = TestClient(app).get("/api/v2/diagnostics/items/learner-1")
-    assert response.status_code == 200
+    assert result[0]["id"] == "item-1"
 
 
-@pytest.mark.integration
-def test_get_diagnostic_items_allows_learner_self_read() -> None:
-    app.dependency_overrides[diagnostics_router.get_current_user] = override_user(
-        {"sub": "learner-1", "role": "student"}
+@pytest.mark.asyncio
+async def test_get_diagnostic_items_allows_learner_self_read() -> None:
+    result = await diagnostics_router.get_diagnostic_items(
+        "learner-1",
+        request=_request(),
+        db=object(),
+        current_user=AuthContext(
+            user_id="learner-1",
+            roles=[UserRole.STUDENT],
+            token_type=TokenType.ACCESS,
+            raw_claims={"sub": "learner-1", "role": "student"},
+            jti="test-jti",
+        ),
     )
-    response = TestClient(app).get("/api/v2/diagnostics/items/learner-1")
-    assert response.status_code == 200
+    assert result[0]["id"] == "item-1"
 
 
-@pytest.mark.integration
-def test_get_diagnostic_items_rejects_unrelated_guardian() -> None:
-    app.dependency_overrides[diagnostics_router.get_current_user] = override_user(
-        {"sub": "guardian-2", "role": "parent"}
-    )
-    response = TestClient(app).get("/api/v2/diagnostics/items/learner-1")
-    assert response.status_code == 403
-    assert "object_forbidden" in str(response.json())
+@pytest.mark.asyncio
+async def test_get_diagnostic_items_rejects_unrelated_guardian() -> None:
+    with pytest.raises(HTTPException) as exc:
+        await diagnostics_router.get_diagnostic_items(
+            "learner-1",
+            request=_request(),
+            db=object(),
+            current_user=AuthContext(
+                user_id="guardian-2",
+                roles=[UserRole.PARENT],
+                token_type=TokenType.ACCESS,
+                raw_claims={"sub": "guardian-2", "role": "parent"},
+                jti="test-jti",
+            ),
+        )
+    assert exc.value.status_code == 403
+    assert "object_forbidden" in str(exc.value.detail)
 
 
-@pytest.mark.integration
-def test_get_diagnostic_items_rejects_missing_auth() -> None:
-    response = TestClient(app).get("/api/v2/diagnostics/items/learner-1")
-    assert response.status_code == 401
+@pytest.mark.asyncio
+async def test_get_diagnostic_items_rejects_missing_auth() -> None:
+    with pytest.raises(HTTPException) as exc:
+        await diagnostics_router.get_diagnostic_items(
+            "learner-1",
+            request=_request(),
+            db=object(),
+            current_user=AuthContext(
+                user_id="",
+                roles=[],
+                token_type=TokenType.ACCESS,
+                raw_claims={},
+                jti="test-jti",
+            ),
+        )
+    assert exc.value.status_code == 401
 
 
-@pytest.mark.integration
-def test_get_diagnostic_items_preserves_not_found() -> None:
-    app.dependency_overrides[diagnostics_router.get_current_user] = override_user(
-        {"sub": "admin-1", "role": "admin"}
-    )
-    response = TestClient(app).get("/api/v2/diagnostics/items/missing-learner")
-    assert response.status_code == 404
+@pytest.mark.asyncio
+async def test_get_diagnostic_items_preserves_not_found() -> None:
+    with pytest.raises(HTTPException) as exc:
+        await diagnostics_router.get_diagnostic_items(
+            "missing-learner",
+            request=_request(),
+            db=object(),
+            current_user=AuthContext(
+                user_id="admin-1",
+                roles=[UserRole.ADMIN],
+                token_type=TokenType.ACCESS,
+                raw_claims={"sub": "admin-1", "role": "admin"},
+                jti="test-jti",
+            ),
+        )
+    assert exc.value.status_code == 404

@@ -1,0 +1,45 @@
+{
+  "green_capture_requires": "--require-green with runtime green summary all_green=true",
+  "last_reviewed_at": "2026-07-11T11:40:57.443227+00:00",
+  "next_if_green": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-6",
+  "required_gates": [
+    {
+      "id": "compose_contract",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_independent_command_output": true,
+      "requires_live_stack": false
+    },
+    {
+      "id": "alembic_upgrade_head",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_independent_command_output": true,
+      "requires_live_stack": true
+    },
+    {
+      "id": "disposable_stack_schema_lineage_live",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_independent_command_output": true,
+      "requires_live_stack": true
+    },
+    {
+      "id": "redis_readiness",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_independent_command_output": true,
+      "requires_live_stack": true
+    },
+    {
+      "id": "ready_http_probe",
+      "presence_only_evidence_allowed": false,
+      "release_blocking": true,
+      "requires_independent_command_output": true,
+      "requires_live_stack": true
+    }
+  ],
+  "schema_version": "prd11.0r/runtime-restore-execution-5/runtime-stack-db-lineage-ready-green-contract/v1",
+  "source_of_truth": "docs/testing/runtime_stack_db_lineage_ready_green.md",
+  "title": "Runtime Stack, Database Lineage, Schema, and /ready Green Execution"
+}
