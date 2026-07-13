@@ -107,4 +107,6 @@ def test_execution_7_coverage_gate_uses_stabilised_runner() -> None:
     assert "scripts/coverage_suites/run_coverage_baseline_stabilisation.py" in gate.command
     assert "--execute" in gate.command
     assert "--require-green" in gate.command
-    assert gate.timeout_seconds == 3600
+    assert "--overall-budget-seconds" in gate.command
+    assert "--resume" in gate.command
+    assert gate.timeout_seconds == 4200

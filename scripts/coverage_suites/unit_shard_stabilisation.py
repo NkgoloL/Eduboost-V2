@@ -15,6 +15,7 @@ from __future__ import annotations
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -25,6 +26,18 @@ import sys
 import tempfile
 from typing import Any, Iterable, Sequence
 
+from scripts.coverage_suites.budgeted_terminal_isolation import (
+    DEFAULT_MAX_BISECTION_DEPTH as BUDGETED_DEFAULT_MAX_BISECTION_DEPTH,
+    DEFAULT_MAX_GENERATED_LEAVES,
+    DEFAULT_OVERALL_BUDGET_SECONDS,
+    DEFAULT_PACKAGING_RESERVE_SECONDS,
+    ExecutionBudget,
+    ProgressJournal,
+    atomic_write_json,
+    build_attempt_fingerprint,
+    package_terminal_artifacts,
+    revision_sha,
+)
 from scripts.coverage_suites.coverage_baseline_stabilisation import (
     DEFAULT_UNIT_SHARDS,
     MARKER_EXPRESSION,
@@ -39,7 +52,7 @@ REMEDIATION_ID = "PRD-11.0R.EXECUTION-7.UNIT-SHARD-STABILISATION"
 OUTPUT_DIR = ROOT / "var/prd11/runtime-restore/execution-7/unit-shard-stabilisation"
 CONTRACT = ROOT / "docs/roadmap/production_readiness/unit_shard_stabilisation_contract.json"
 DEFAULT_INITIAL_LEAF_SHARDS = 2
-DEFAULT_MAX_BISECTION_DEPTH = 3
+DEFAULT_MAX_BISECTION_DEPTH = BUDGETED_DEFAULT_MAX_BISECTION_DEPTH
 DEFAULT_LEAF_TIMEOUT_SECONDS = 300
 DEFAULT_TERMINAL_NODE_TIMEOUT_SECONDS = 60
 DEFAULT_WORKERS = 2
@@ -61,8 +74,7 @@ def _utc_now() -> str:
 
 
 def _write_json(path: Path, payload: dict[str, Any]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    atomic_write_json(path, payload)
 
 
 def _write_text(path: Path, value: str) -> None:
@@ -175,30 +187,60 @@ def build_unit_stabilisation_plan(
 def parse_pytest_diagnostics(stdout: str, stderr: str) -> dict[str, Any]:
     text = f"{stdout}\n{stderr}"
     status_pattern = re.compile(
-        r"^(?P<nodeid>tests/[^\s]+?::[^\s]+)\s+(?P<status>PASSED|FAILED|ERROR|SKIPPED|XFAIL|XPASS)",
+        r"^(?P<nodeid>tests/[^\s]+?::[^\s]+)\s+"
+        r"(?P<status>PASSED|FAILED|ERROR|SKIPPED|XFAIL|XPASS)",
         flags=re.MULTILINE,
     )
-    status_rows = [(match.group("nodeid"), match.group("status")) for match in status_pattern.finditer(text)]
-    failed = [nodeid for nodeid, status in status_rows if status == "FAILED"]
-    errors = [nodeid for nodeid, status in status_rows if status == "ERROR"]
-    for pattern, target in (
-        (re.compile(r"^FAILED\s+(tests/\S+)", flags=re.MULTILINE), failed),
-        (re.compile(r"^ERROR\s+(tests/\S+)", flags=re.MULTILINE), errors),
+    status_rows = [
+        (match.group("nodeid"), match.group("status"))
+        for match in status_pattern.finditer(text)
+    ]
+    statuses: dict[str, list[str]] = {
+        "PASSED": [],
+        "FAILED": [],
+        "ERROR": [],
+        "SKIPPED": [],
+        "XFAIL": [],
+        "XPASS": [],
+    }
+    for nodeid, status in status_rows:
+        statuses[status].append(nodeid)
+    for pattern, key in (
+        (re.compile(r"^FAILED\s+(tests/\S+)", flags=re.MULTILINE), "FAILED"),
+        (re.compile(r"^ERROR\s+(tests/\S+)", flags=re.MULTILINE), "ERROR"),
     ):
         for match in pattern.finditer(text):
-            if match.group(1) not in target:
-                target.append(match.group(1))
-    active_lines = [line.strip() for line in text.splitlines() if "tests/" in line and "::" in line]
+            if match.group(1) not in statuses[key]:
+                statuses[key].append(match.group(1))
+    active_lines = [
+        line.strip()
+        for line in text.splitlines()
+        if "tests/" in line and "::" in line
+    ]
     duration_rows = []
-    duration_pattern = re.compile(r"^\s*(\d+(?:\.\d+)?)s\s+\w+\s+(tests/\S+)", flags=re.MULTILINE)
+    duration_pattern = re.compile(
+        r"^\s*(\d+(?:\.\d+)?)s\s+\w+\s+(tests/\S+)",
+        flags=re.MULTILINE,
+    )
     for match in duration_pattern.finditer(text):
-        duration_rows.append({"seconds": float(match.group(1)), "nodeid": match.group(2)})
+        duration_rows.append(
+            {"seconds": float(match.group(1)), "nodeid": match.group(2)}
+        )
+    completed = sorted({nodeid for values in statuses.values() for nodeid in values})
     return {
-        "failed_nodeids": sorted(set(failed)),
-        "error_nodeids": sorted(set(errors)),
+        "passed_nodeids": sorted(set(statuses["PASSED"])),
+        "failed_nodeids": sorted(set(statuses["FAILED"])),
+        "error_nodeids": sorted(set(statuses["ERROR"])),
+        "skipped_nodeids": sorted(set(statuses["SKIPPED"])),
+        "xfailed_nodeids": sorted(set(statuses["XFAIL"])),
+        "xpassed_nodeids": sorted(set(statuses["XPASS"])),
+        "completed_nodeids": completed,
         "last_active_test_line": active_lines[-1] if active_lines else None,
-        "completed_node_count": len(status_rows),
-        "slowest_tests": sorted(duration_rows, key=lambda item: (-item["seconds"], item["nodeid"]))[:25],
+        "completed_node_count": len(completed),
+        "slowest_tests": sorted(
+            duration_rows,
+            key=lambda item: (-item["seconds"], item["nodeid"]),
+        )[:25],
     }
 
 
@@ -404,129 +446,299 @@ def _parse_collected_nodeids(stdout: str, test_file: str) -> list[str]:
     return nodeids
 
 
+def _safe_attempt_id(value: str, *, limit: int = 180) -> str:
+    return re.sub(r"[^A-Za-z0-9_.-]+", "_", value)[:limit]
+
+
+def _resumable_attempt(
+    *,
+    root: Path,
+    artifact_dir: Path,
+    command_id: str,
+    command: Sequence[str],
+    timeout_seconds: int,
+    env: dict[str, str],
+    test_files: Sequence[str],
+    kind: str,
+    budget: ExecutionBudget,
+    journal: ProgressJournal,
+    resume: bool,
+    revision: str,
+) -> dict[str, Any] | None:
+    fingerprint, identity = build_attempt_fingerprint(
+        root=root,
+        command=command,
+        timeout_seconds=timeout_seconds,
+        test_files=test_files,
+        marker_expression=MARKER_EXPRESSION,
+        revision=revision,
+    )
+    cached = journal.load_cached(fingerprint) if resume else {}
+    if cached:
+        cached = dict(cached)
+        cached["reused"] = True
+        journal.record_attempt(
+            kind=kind,
+            attempt_id=command_id,
+            fingerprint=fingerprint,
+            identity=identity,
+            result=cached,
+            reused=True,
+        )
+        return cached
+    if not budget.can_start(timeout_seconds):
+        return None
+    result = run_bounded_command(
+        root=root,
+        output_dir=artifact_dir,
+        command_id=command_id,
+        command=command,
+        timeout_seconds=timeout_seconds,
+        env=env,
+    )
+    result["reused"] = False
+    journal.record_attempt(
+        kind=kind,
+        attempt_id=command_id,
+        fingerprint=fingerprint,
+        identity=identity,
+        result=result,
+        reused=False,
+    )
+    return result
+
+
+def _nodes_for_file(values: Sequence[str], test_file: str) -> list[str]:
+    prefix = f"{test_file}::"
+    return sorted({value for value in values if value.startswith(prefix)})
+
+
 def _run_terminal_isolation_in_worktree(
     *,
     root: Path,
     output_dir: Path,
     coverage_data_dir: Path,
     leaf: UnitLeafShard,
+    source_result: dict[str, Any],
     node_timeout_seconds: int,
+    budget: ExecutionBudget,
+    journal: ProgressJournal,
+    resume: bool,
+    revision: str,
 ) -> dict[str, Any]:
     if not _git_available(root):
         raise RuntimeError("terminal isolation requires a Git checkout")
     worktree_parent = Path(tempfile.mkdtemp(prefix="eduboost-terminal-leaf-"))
     worktree = worktree_parent / "repo"
-    code, _, stderr = _git_output(root, "worktree", "add", "--detach", "--quiet", str(worktree), "HEAD")
+    code, _, stderr = _git_output(
+        root,
+        "worktree",
+        "add",
+        "--detach",
+        "--quiet",
+        str(worktree),
+        "HEAD",
+    )
     if code != 0:
         shutil.rmtree(worktree_parent, ignore_errors=True)
-        raise RuntimeError(f"git worktree add failed for terminal {leaf.leaf_id}: {stderr.strip()}")
+        raise RuntimeError(
+            f"git worktree add failed for terminal {leaf.leaf_id}: {stderr.strip()}"
+        )
 
     source_venv = root / ".venv"
     if source_venv.exists() and not (worktree / ".venv").exists():
         (worktree / ".venv").symlink_to(source_venv, target_is_directory=True)
 
     terminal_dir = output_dir / "terminal-isolation"
-    file_attempts: list[dict[str, Any]] = []
+    collect_attempts: list[dict[str, Any]] = []
     node_attempts: list[dict[str, Any]] = []
-    timeout_nodeids: list[str] = []
-    failed_nodeids: list[str] = []
-    error_nodeids: list[str] = []
-    green_nodeids: list[str] = []
-    unresolved_files: list[str] = []
+    timeout_nodeids: set[str] = set()
+    failed_nodeids: set[str] = set()
+    error_nodeids: set[str] = set()
+    green_nodeids: set[str] = set()
+    unresolved_files: set[str] = set()
+    pending_nodeids: list[str] = []
+    pending_due_to_budget: list[str] = []
+    source_diagnostics = source_result.get("pytest_diagnostics", {})
 
     try:
-        for test_file in leaf.test_files:
-            safe_file_id = test_file.replace("/", "_").replace(":", "_").removesuffix(".py")
-            file_command_id = f"{leaf.leaf_id}__file__{safe_file_id}"
-            file_env = _base_isolated_env(output_dir, worktree_parent, coverage_data_dir, file_command_id)
-            file_result = run_bounded_command(
-                root=worktree,
-                output_dir=terminal_dir / "files",
-                command_id=file_command_id,
-                command=_terminal_file_command(test_file),
-                timeout_seconds=leaf.timeout_seconds,
-                env=file_env,
+        for file_index, test_file in enumerate(leaf.test_files):
+            source_failed = _nodes_for_file(
+                source_diagnostics.get("failed_nodeids", []),
+                test_file,
             )
-            file_result["test_file"] = test_file
-            file_attempts.append(file_result)
-            if file_result.get("timed_out") is not True:
-                stdout_path = terminal_dir / "files" / f"{file_command_id}.stdout.txt"
-                stderr_path = terminal_dir / "files" / f"{file_command_id}.stderr.txt"
-                stdout = stdout_path.read_text(encoding="utf-8", errors="replace") if stdout_path.exists() else ""
-                stderr_text = stderr_path.read_text(encoding="utf-8", errors="replace") if stderr_path.exists() else ""
-                diagnostics = parse_pytest_diagnostics(stdout, stderr_text)
-                failed_nodeids.extend(diagnostics["failed_nodeids"])
-                error_nodeids.extend(diagnostics["error_nodeids"])
-                if file_result.get("green") is True:
-                    green_nodeids.extend(_parse_collected_nodeids(stdout, test_file))
-                continue
+            source_errors = _nodes_for_file(
+                source_diagnostics.get("error_nodeids", []),
+                test_file,
+            )
+            source_completed = set(
+                _nodes_for_file(
+                    source_diagnostics.get("completed_nodeids", []),
+                    test_file,
+                )
+            )
+            source_green = set(
+                _nodes_for_file(source_diagnostics.get("passed_nodeids", []), test_file)
+                + _nodes_for_file(source_diagnostics.get("skipped_nodeids", []), test_file)
+                + _nodes_for_file(source_diagnostics.get("xfailed_nodeids", []), test_file)
+                + _nodes_for_file(source_diagnostics.get("xpassed_nodeids", []), test_file)
+            )
+            failed_nodeids.update(source_failed)
+            error_nodeids.update(source_errors)
+            green_nodeids.update(source_green)
 
-            _remove_coverage_attempt(coverage_data_dir, file_command_id)
+            safe_file_id = _safe_attempt_id(test_file.removesuffix(".py"))
             collect_command_id = f"{leaf.leaf_id}__collect__{safe_file_id}"
-            collect_env = _base_isolated_env(output_dir, worktree_parent, coverage_data_dir, collect_command_id)
-            collect_result = run_bounded_command(
+            collect_timeout = min(leaf.timeout_seconds, 120)
+            collect_env = _base_isolated_env(
+                output_dir,
+                worktree_parent,
+                coverage_data_dir,
+                collect_command_id,
+            )
+            collect_result = _resumable_attempt(
                 root=worktree,
-                output_dir=terminal_dir / "collect",
+                artifact_dir=terminal_dir / "collect",
                 command_id=collect_command_id,
                 command=_collect_only_command(test_file),
-                timeout_seconds=min(leaf.timeout_seconds, 120),
+                timeout_seconds=collect_timeout,
                 env=collect_env,
+                test_files=[test_file],
+                kind="collect",
+                budget=budget,
+                journal=journal,
+                resume=resume,
+                revision=revision,
             )
+            if collect_result is None:
+                remaining_files = list(leaf.test_files[file_index:])
+                pending_due_to_budget.extend(remaining_files)
+                unresolved_files.update(remaining_files)
+                break
             collect_result["test_file"] = test_file
-            node_attempts.append(collect_result)
-            collect_stdout = (terminal_dir / "collect" / f"{collect_command_id}.stdout.txt").read_text(
-                encoding="utf-8",
-                errors="replace",
-            )
-            nodeids = _parse_collected_nodeids(collect_stdout, test_file)
-            if not nodeids:
-                unresolved_files.append(test_file)
+            collect_attempts.append(collect_result)
+            if collect_result.get("green") is not True:
+                unresolved_files.add(test_file)
                 continue
-            for nodeid in nodeids:
-                safe_node_id = re.sub(r"[^A-Za-z0-9_.-]+", "_", nodeid)
-                node_command_id = f"{leaf.leaf_id}__node__{safe_node_id}"[:220]
-                node_env = _base_isolated_env(output_dir, worktree_parent, coverage_data_dir, node_command_id)
-                node_result = run_bounded_command(
+            collect_stdout_path = (
+                terminal_dir / "collect" / f"{collect_command_id}.stdout.txt"
+            )
+            collect_stdout = (
+                collect_stdout_path.read_text(encoding="utf-8", errors="replace")
+                if collect_stdout_path.exists()
+                else str(collect_result.get("stdout_tail", ""))
+            )
+            collected_nodeids = _parse_collected_nodeids(collect_stdout, test_file)
+            if not collected_nodeids:
+                unresolved_files.add(test_file)
+                continue
+            suspects = [
+                nodeid for nodeid in collected_nodeids if nodeid not in source_completed
+            ]
+            if not suspects:
+                continue
+            for node_index, nodeid in enumerate(suspects):
+                node_command_id = (
+                    f"{leaf.leaf_id}__node__{_safe_attempt_id(nodeid, limit=150)}"
+                )
+                node_env = _base_isolated_env(
+                    output_dir,
+                    worktree_parent,
+                    coverage_data_dir,
+                    node_command_id,
+                )
+                node_result = _resumable_attempt(
                     root=worktree,
-                    output_dir=terminal_dir / "nodes",
+                    artifact_dir=terminal_dir / "nodes",
                     command_id=node_command_id,
                     command=_terminal_node_command(nodeid),
                     timeout_seconds=node_timeout_seconds,
                     env=node_env,
+                    test_files=[test_file],
+                    kind="node",
+                    budget=budget,
+                    journal=journal,
+                    resume=resume,
+                    revision=revision,
                 )
+                if node_result is None:
+                    pending = suspects[node_index:]
+                    pending_nodeids.extend(pending)
+                    pending_due_to_budget.extend(pending)
+                    break
                 node_result["nodeid"] = nodeid
                 node_result["test_file"] = test_file
                 node_attempts.append(node_result)
                 if node_result.get("timed_out") is True:
-                    timeout_nodeids.append(nodeid)
+                    timeout_nodeids.add(nodeid)
                 elif node_result.get("green") is True:
-                    green_nodeids.append(nodeid)
+                    green_nodeids.add(nodeid)
                 else:
                     stdout_path = terminal_dir / "nodes" / f"{node_command_id}.stdout.txt"
                     stderr_path = terminal_dir / "nodes" / f"{node_command_id}.stderr.txt"
-                    stdout = stdout_path.read_text(encoding="utf-8", errors="replace") if stdout_path.exists() else ""
-                    stderr_text = stderr_path.read_text(encoding="utf-8", errors="replace") if stderr_path.exists() else ""
+                    stdout = (
+                        stdout_path.read_text(encoding="utf-8", errors="replace")
+                        if stdout_path.exists()
+                        else ""
+                    )
+                    stderr_text = (
+                        stderr_path.read_text(encoding="utf-8", errors="replace")
+                        if stderr_path.exists()
+                        else ""
+                    )
                     diagnostics = parse_pytest_diagnostics(stdout, stderr_text)
-                    failed_nodeids.extend(diagnostics["failed_nodeids"] or [nodeid])
-                    error_nodeids.extend(diagnostics["error_nodeids"])
-        status_code, status_stdout, status_stderr = _git_output(worktree, "status", "--porcelain=v1", "--untracked-files=no")
+                    failed_nodeids.update(diagnostics["failed_nodeids"] or [nodeid])
+                    error_nodeids.update(diagnostics["error_nodeids"])
+                journal.set_outcomes(
+                    failed=sorted(failed_nodeids),
+                    errors=sorted(error_nodeids),
+                    timed_out=sorted(timeout_nodeids),
+                    green=sorted(green_nodeids),
+                )
+            if pending_due_to_budget:
+                break
+        status_code, status_stdout, status_stderr = _git_output(
+            worktree,
+            "status",
+            "--porcelain=v1",
+            "--untracked-files=no",
+        )
+        terminal_green = not any(
+            (
+                timeout_nodeids,
+                failed_nodeids,
+                error_nodeids,
+                unresolved_files,
+                pending_nodeids,
+                pending_due_to_budget,
+            )
+        )
         return {
             "leaf_id": leaf.leaf_id,
             "test_files": list(leaf.test_files),
-            "terminal_file_attempt_count": len(file_attempts),
-            "terminal_node_attempt_count": len([item for item in node_attempts if "__node__" in item.get("command_id", "")]),
-            "terminal_collect_attempt_count": len([item for item in node_attempts if "__collect__" in item.get("command_id", "")]),
-            "terminal_timeout_nodeids": sorted(set(timeout_nodeids)),
-            "terminal_failed_nodeids": sorted(set(failed_nodeids)),
-            "terminal_error_nodeids": sorted(set(error_nodeids)),
-            "terminal_green_nodeids": sorted(set(green_nodeids)),
-            "terminal_unresolved_files": sorted(set(unresolved_files)),
-            "terminal_green": not timeout_nodeids and not failed_nodeids and not error_nodeids and not unresolved_files,
-            "file_attempts": file_attempts,
+            "suspect_only_probing": True,
+            "source_completed_node_count": len(
+                source_diagnostics.get("completed_nodeids", [])
+            ),
+            "terminal_file_attempt_count": 0,
+            "terminal_node_attempt_count": len(node_attempts),
+            "terminal_collect_attempt_count": len(collect_attempts),
+            "terminal_timeout_nodeids": sorted(timeout_nodeids),
+            "terminal_failed_nodeids": sorted(failed_nodeids),
+            "terminal_error_nodeids": sorted(error_nodeids),
+            "terminal_green_nodeids": sorted(green_nodeids),
+            "terminal_unresolved_files": sorted(unresolved_files),
+            "terminal_pending_nodeids": sorted(set(pending_nodeids)),
+            "pending_due_to_budget": sorted(set(pending_due_to_budget)),
+            "budget_exhausted": bool(pending_due_to_budget),
+            "terminal_green": terminal_green,
+            "collect_attempts": collect_attempts,
             "node_attempts": node_attempts,
             "isolated_worktree_status": {
                 "exit_code": status_code,
-                "entries": sorted(line for line in status_stdout.splitlines() if line.strip()),
+                "entries": sorted(
+                    line for line in status_stdout.splitlines() if line.strip()
+                ),
                 "stderr": status_stderr[-4000:],
             },
         }
@@ -544,19 +756,128 @@ def run_terminal_isolation(
     timed_out_results: Sequence[dict[str, Any]],
     leaf_timeout_seconds: int,
     node_timeout_seconds: int = DEFAULT_TERMINAL_NODE_TIMEOUT_SECONDS,
+    overall_budget_seconds: int = DEFAULT_OVERALL_BUDGET_SECONDS,
+    packaging_reserve_seconds: int = DEFAULT_PACKAGING_RESERVE_SECONDS,
+    resume: bool = True,
+    budget: ExecutionBudget | None = None,
+    journal: ProgressJournal | None = None,
+    plan_fingerprint: str = "unavailable",
 ) -> list[dict[str, Any]]:
+    active_budget = budget or ExecutionBudget.start(
+        overall_budget_seconds,
+        packaging_reserve_seconds,
+    )
+    revision = revision_sha(root)
+    active_journal = journal or ProgressJournal(
+        output_dir=output_dir,
+        revision=revision,
+        plan_fingerprint=plan_fingerprint,
+        resume=resume,
+        budget=active_budget,
+    )
     results: list[dict[str, Any]] = []
-    for result in sorted(timed_out_results, key=lambda item: item["command_id"]):
+    ordered = sorted(timed_out_results, key=lambda item: item["command_id"])
+    for index, result in enumerate(ordered):
         leaf = _leaf_from_result(result, timeout_seconds=leaf_timeout_seconds)
+        if not active_budget.can_start(min(120, leaf_timeout_seconds)):
+            pending = ordered[index:]
+            active_journal.set_pending(
+                leaf_ids=[str(item["command_id"]) for item in pending],
+                file_ids=[
+                    test_file
+                    for item in pending
+                    for test_file in item.get("test_files", [])
+                ],
+                budget_items=[str(item["command_id"]) for item in pending],
+            )
+            results.extend(
+                {
+                    "leaf_id": str(item["command_id"]),
+                    "test_files": list(item.get("test_files", [])),
+                    "terminal_pending": True,
+                    "budget_exhausted": True,
+                    "pending_due_to_budget": [str(item["command_id"])],
+                    "terminal_file_attempt_count": 0,
+                    "terminal_collect_attempt_count": 0,
+                    "terminal_node_attempt_count": 0,
+                    "terminal_timeout_nodeids": [],
+                    "terminal_failed_nodeids": [],
+                    "terminal_error_nodeids": [],
+                    "terminal_green_nodeids": [],
+                    "terminal_unresolved_files": list(item.get("test_files", [])),
+                    "terminal_pending_nodeids": [],
+                    "terminal_green": False,
+                    "isolated_worktree_status": {
+                        "exit_code": None,
+                        "entries": [],
+                        "stderr": "not started because the inner execution budget was exhausted",
+                    },
+                }
+                for item in pending
+            )
+            break
         terminal_result = _run_terminal_isolation_in_worktree(
             root=root,
             output_dir=output_dir,
             coverage_data_dir=coverage_data_dir,
             leaf=leaf,
+            source_result=result,
             node_timeout_seconds=node_timeout_seconds,
+            budget=active_budget,
+            journal=active_journal,
+            resume=resume,
+            revision=revision,
         )
-        _write_json(output_dir / "terminal-isolation" / "leaves" / f"{leaf.leaf_id}.json", terminal_result)
+        _write_json(
+            output_dir / "terminal-isolation" / "leaves" / f"{leaf.leaf_id}.json",
+            terminal_result,
+        )
         results.append(terminal_result)
+        pending_nodes = [
+            nodeid
+            for item in results
+            for nodeid in item.get("terminal_pending_nodeids", [])
+        ]
+        active_journal.set_pending(
+            leaf_ids=[
+                item["leaf_id"]
+                for item in results
+                if item.get("terminal_green") is not True
+            ],
+            file_ids=[
+                test_file
+                for item in results
+                for test_file in item.get("terminal_unresolved_files", [])
+            ],
+            nodeids=pending_nodes,
+            budget_items=[
+                value
+                for item in results
+                for value in item.get("pending_due_to_budget", [])
+            ],
+        )
+    active_journal.set_outcomes(
+        failed=[
+            nodeid
+            for item in results
+            for nodeid in item.get("terminal_failed_nodeids", [])
+        ],
+        errors=[
+            nodeid
+            for item in results
+            for nodeid in item.get("terminal_error_nodeids", [])
+        ],
+        timed_out=[
+            nodeid
+            for item in results
+            for nodeid in item.get("terminal_timeout_nodeids", [])
+        ],
+        green=[
+            nodeid
+            for item in results
+            for nodeid in item.get("terminal_green_nodeids", [])
+        ],
+    )
     return results
 
 
@@ -644,8 +965,13 @@ def run_unit_shard_stabilisation(
     parent_shard_ids: Sequence[str] | None = None,
     initial_leaf_shards: int = DEFAULT_INITIAL_LEAF_SHARDS,
     max_bisection_depth: int = DEFAULT_MAX_BISECTION_DEPTH,
+    max_generated_leaves: int = DEFAULT_MAX_GENERATED_LEAVES,
     leaf_timeout_seconds: int = DEFAULT_LEAF_TIMEOUT_SECONDS,
     workers: int = DEFAULT_WORKERS,
+    overall_budget_seconds: int = DEFAULT_OVERALL_BUDGET_SECONDS,
+    packaging_reserve_seconds: int = DEFAULT_PACKAGING_RESERVE_SECONDS,
+    resume: bool = True,
+    budget: ExecutionBudget | None = None,
 ) -> dict[str, Any]:
     plan = build_unit_stabilisation_plan(
         root,
@@ -662,7 +988,15 @@ def run_unit_shard_stabilisation(
         "valid": True,
         "marker_expression": MARKER_EXPRESSION,
         "adaptive_bisection": True,
+        "progressive_file_isolation": True,
+        "suspect_only_terminal_probing": True,
+        "atomic_checkpoints": True,
+        "resume_supported": True,
         "workers": workers,
+        "max_generated_leaves": max_generated_leaves,
+        "overall_budget_seconds": overall_budget_seconds,
+        "packaging_reserve_seconds": packaging_reserve_seconds,
+        "terminal_node_workers": 1,
         "plan": plan,
         "governance_boundary": {
             "execution_7_complete_claimed": False,
@@ -681,11 +1015,35 @@ def run_unit_shard_stabilisation(
     data_dir = coverage_data_dir or (output_dir / "coverage-data")
     data_dir.mkdir(parents=True, exist_ok=True)
     started_at = _utc_now()
+    budget = budget or ExecutionBudget.start(
+        overall_budget_seconds,
+        packaging_reserve_seconds,
+    )
+    plan_fingerprint = hashlib.sha256(
+        json.dumps(plan, sort_keys=True, separators=(",", ":")).encode()
+    ).hexdigest()
+    journal = ProgressJournal(
+        output_dir=output_dir,
+        revision=revision_sha(root),
+        plan_fingerprint=plan_fingerprint,
+        resume=resume,
+        budget=budget,
+    )
     pending = [UnitLeafShard(**item) for item in plan["initial_leaf_shards"]]
     all_attempts: list[dict[str, Any]] = []
     final_results: list[dict[str, Any]] = []
+    generated_leaf_count = len(pending)
+    budget_pending_leaf_ids: list[str] = []
 
     while pending:
+        if not budget.can_start(leaf_timeout_seconds):
+            budget_pending_leaf_ids = [leaf.leaf_id for leaf in pending]
+            journal.set_pending(
+                leaf_ids=budget_pending_leaf_ids,
+                file_ids=[test_file for leaf in pending for test_file in leaf.test_files],
+                budget_items=budget_pending_leaf_ids,
+            )
+            break
         batch_results = _execute_leaf_batch(
             root=root,
             output_dir=output_dir,
@@ -698,7 +1056,12 @@ def run_unit_shard_stabilisation(
         for result in batch_results:
             files = tuple(result.get("test_files", []))
             depth = int(result.get("leaf_depth", 1))
-            can_bisect = _timed_out(result) and depth < max_bisection_depth and len(files) > 1
+            can_bisect = (
+                _timed_out(result)
+                and depth < max_bisection_depth
+                and len(files) > 1
+                and generated_leaf_count + 2 <= max_generated_leaves
+            )
             if can_bisect:
                 parent_leaf = _leaf_from_result(result, timeout_seconds=leaf_timeout_seconds)
                 children = split_unit_leaf(
@@ -711,9 +1074,14 @@ def run_unit_shard_stabilisation(
                     prefix=parent_leaf.leaf_id,
                 )
                 next_pending.extend(children)
+                generated_leaf_count += len(children)
             else:
                 final_results.append(result)
         pending = next_pending
+        journal.set_pending(
+            leaf_ids=[leaf.leaf_id for leaf in pending],
+            file_ids=[test_file for leaf in pending for test_file in leaf.test_files],
+        )
 
     timed_out_results = [item for item in final_results if item.get("timed_out") is True]
     terminal_results = run_terminal_isolation(
@@ -722,6 +1090,12 @@ def run_unit_shard_stabilisation(
         coverage_data_dir=data_dir,
         timed_out_results=timed_out_results,
         leaf_timeout_seconds=leaf_timeout_seconds,
+        overall_budget_seconds=overall_budget_seconds,
+        packaging_reserve_seconds=packaging_reserve_seconds,
+        resume=resume,
+        budget=budget,
+        journal=journal,
+        plan_fingerprint=plan_fingerprint,
     ) if timed_out_results else []
     terminal_timeout_nodeids = sorted(
         {
@@ -792,9 +1166,22 @@ def run_unit_shard_stabilisation(
         for item in timed_out_results
         if item["command_id"] not in terminal_leaf_ids or item["command_id"] in unresolved_timeout_leaf_ids
     ]
-    incomplete = bool(unresolved_timed_out_results) or any(
-        item.get("exit_code") is None and item.get("command_id") not in terminal_leaf_ids
-        for item in final_results
+    pending_due_to_budget = sorted(
+        set(budget_pending_leaf_ids)
+        | {
+            value
+            for item in terminal_results
+            for value in item.get("pending_due_to_budget", [])
+        }
+    )
+    incomplete = (
+        bool(unresolved_timed_out_results)
+        or bool(pending_due_to_budget)
+        or any(
+            item.get("exit_code") is None
+            and item.get("command_id") not in terminal_leaf_ids
+            for item in final_results
+        )
     )
     tests_green = (
         bool(final_results)
@@ -806,6 +1193,8 @@ def run_unit_shard_stabilisation(
     blockers: list[str] = []
     if incomplete:
         blockers.append("unit_shard_execution_incomplete")
+    if pending_due_to_budget:
+        blockers.append("terminal_execution_budget_exhausted")
     if failed_results:
         blockers.append("unit_test_failures")
     if terminal_timeout_nodeids:
@@ -834,7 +1223,9 @@ def run_unit_shard_stabilisation(
     summary = {
         **planned,
         "executed": True,
-        "valid": not blockers,
+        "valid": True,
+        "structural_valid": True,
+        "partial": incomplete,
         "all_green": not blockers,
         "started_at": started_at,
         "completed_at": completed_at,
@@ -849,6 +1240,23 @@ def run_unit_shard_stabilisation(
         "terminal_error_nodeids": terminal_error_nodeids,
         "terminal_green_nodeids": terminal_green_nodeids,
         "terminal_unresolved_files": terminal_unresolved_files,
+        "pending_due_to_budget": pending_due_to_budget,
+        "pending_due_to_budget_count": len(pending_due_to_budget),
+        "budget_exhausted": bool(pending_due_to_budget),
+        "budget": budget.snapshot(),
+        "resume_supported": True,
+        "resume_available": bool(pending_due_to_budget),
+        "plan_fingerprint": plan_fingerprint,
+        "generated_leaf_count": generated_leaf_count,
+        "completed_terminal_attempt_count": sum(
+            int(item.get("terminal_collect_attempt_count", 0))
+            + int(item.get("terminal_node_attempt_count", 0))
+            for item in terminal_results
+        ),
+        "reused_terminal_attempt_count": len(
+            journal.payload.get("reused_attempt_ids", [])
+        ),
+        "remaining_terminal_attempt_count": len(pending_due_to_budget),
         "confirmed_failed_leaf_count": len(failed_results),
         "unresolved_timeout_leaf_count": len(unresolved_timeout_leaf_ids),
         "initial_attempt_count": plan["initial_leaf_shard_count"],
@@ -859,7 +1267,12 @@ def run_unit_shard_stabilisation(
         "failed_leaf_ids": sorted(item["command_id"] for item in failed_results),
         "failed_nodeids": failed_nodeids,
         "error_nodeids": error_nodeids,
-        "remaining_failure_count": len(failed_nodeids) + len(error_nodeids) + len(terminal_timeout_nodeids),
+        "remaining_failure_count": (
+            len(failed_nodeids)
+            + len(error_nodeids)
+            + len(terminal_timeout_nodeids)
+            + len(pending_due_to_budget)
+        ),
         "mutation_attribution": mutation_map,
         "tracked_mutation_file_count": len(tracked_mutation_files),
         "tracked_mutation_files": tracked_mutation_files,
@@ -872,6 +1285,9 @@ def run_unit_shard_stabilisation(
         "final_leaf_results": final_results,
         "terminal_isolation_results": terminal_results,
     }
+    _write_json(output_dir / "summary.json", summary)
+    package = package_terminal_artifacts(output_dir)
+    summary["terminal_package"] = package
     _write_json(output_dir / "summary.json", summary)
     return summary
 
@@ -958,8 +1374,12 @@ def main() -> int:
     parser.add_argument("--parent-shards", type=int, default=DEFAULT_UNIT_SHARDS)
     parser.add_argument("--initial-leaf-shards", type=int, default=DEFAULT_INITIAL_LEAF_SHARDS)
     parser.add_argument("--max-bisection-depth", type=int, default=DEFAULT_MAX_BISECTION_DEPTH)
+    parser.add_argument("--max-generated-leaves", type=int, default=DEFAULT_MAX_GENERATED_LEAVES)
     parser.add_argument("--leaf-timeout-seconds", type=int, default=DEFAULT_LEAF_TIMEOUT_SECONDS)
     parser.add_argument("--workers", type=int, default=DEFAULT_WORKERS)
+    parser.add_argument("--overall-budget-seconds", type=int, default=DEFAULT_OVERALL_BUDGET_SECONDS)
+    parser.add_argument("--packaging-reserve-seconds", type=int, default=DEFAULT_PACKAGING_RESERVE_SECONDS)
+    parser.add_argument("--resume", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
     parser.add_argument("--coverage-data-dir", type=Path)
     args = parser.parse_args()
@@ -972,8 +1392,12 @@ def main() -> int:
         parent_shard_ids=parent_ids or None,
         initial_leaf_shards=args.initial_leaf_shards,
         max_bisection_depth=args.max_bisection_depth,
+        max_generated_leaves=args.max_generated_leaves,
         leaf_timeout_seconds=args.leaf_timeout_seconds,
         workers=args.workers,
+        overall_budget_seconds=args.overall_budget_seconds,
+        packaging_reserve_seconds=args.packaging_reserve_seconds,
+        resume=args.resume,
     )
     if args.require_green and result.get("all_green") is not True:
         result["valid"] = False

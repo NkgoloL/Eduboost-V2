@@ -98,7 +98,7 @@ def test_coverage_timeout_counts_observed_pytest_failures():
 def test_coverage_gate_is_wired_to_stabilised_sharded_runner():
     gate = next(item for item in command_plan() if item.gate_id == "coverage_execution")
     assert gate.command[1] == "scripts/coverage_suites/run_coverage_baseline_stabilisation.py"
-    assert gate.timeout_seconds == 3600
+    assert gate.timeout_seconds == 4200
 
 
 def test_coverage_execution_counts_use_structured_summary(tmp_path: Path):
@@ -109,6 +109,7 @@ def test_coverage_execution_counts_use_structured_summary(tmp_path: Path):
                 "confirmed_failed_leaf_count": 2,
                 "unresolved_timeout_leaf_count": 4,
                 "terminal_timeout_node_count": 0,
+                "pending_due_to_budget_count": 0,
                 "unresolved_coverage_execution_count": 6,
             }
         ),
@@ -118,5 +119,6 @@ def test_coverage_execution_counts_use_structured_summary(tmp_path: Path):
         "confirmed_failed_leaf_count": 2,
         "unresolved_timeout_leaf_count": 4,
         "terminal_timeout_node_count": 0,
+        "pending_due_to_budget_count": 0,
         "unresolved_coverage_execution_count": 6,
     }

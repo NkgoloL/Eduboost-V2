@@ -1,0 +1,21 @@
+{
+  "schema_version": "prd11.0r/execution-7/budgeted-terminal-isolation/v1",
+  "prd_id": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7",
+  "remediation_id": "PRD-11.0R.EXECUTION-7.BUDGETED-TERMINAL-ISOLATION-COMPLETION",
+  "branch": "codex/prd-1100r-execution-7-budgeted-terminal-isolation-completion",
+  "inner_budget_seconds": 3900,
+  "outer_gate_timeout_seconds": 4200,
+  "packaging_reserve_seconds": 300,
+  "maximum_bisection_depth": 8,
+  "maximum_generated_leaves": 256,
+  "progressive_file_isolation": true,
+  "suspect_only_node_probing": true,
+  "atomic_checkpoint_after_each_attempt": true,
+  "resume_attempt_fingerprints": true,
+  "partial_diagnostic_package_required": true,
+  "coverage_threshold": 70,
+  "coverage_threshold_unchanged": true,
+  "green_evidence_capture_allowed": false,
+  "execution_7_complete_claim_allowed": false,
+  "execution_8_authorised": false
+}

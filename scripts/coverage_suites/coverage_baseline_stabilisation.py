@@ -26,6 +26,13 @@ import sys
 import time
 from typing import Any, Sequence
 
+from scripts.coverage_suites.budgeted_terminal_isolation import (
+    DEFAULT_OVERALL_BUDGET_SECONDS,
+    DEFAULT_PACKAGING_RESERVE_SECONDS,
+    ExecutionBudget,
+    atomic_write_json,
+)
+
 ROOT = Path(__file__).resolve().parents[2]
 PRD_ID = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7"
 REMEDIATION_ID = "PRD-11.0R.EXECUTION-7.COVERAGE-BASELINE-STABILISATION"
@@ -75,8 +82,7 @@ def _utc_now() -> datetime:
 
 
 def _write_json(path: Path, payload: dict[str, Any]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    atomic_write_json(path, payload)
 
 
 def _write_text(path: Path, value: str) -> None:
@@ -175,6 +181,9 @@ def build_shard_plan(
     integration_shards: int = DEFAULT_INTEGRATION_SHARDS,
     unit_timeout_seconds: int = DEFAULT_UNIT_SHARD_TIMEOUT_SECONDS,
     integration_timeout_seconds: int = DEFAULT_INTEGRATION_SHARD_TIMEOUT_SECONDS,
+    overall_budget_seconds: int = DEFAULT_OVERALL_BUDGET_SECONDS,
+    packaging_reserve_seconds: int = DEFAULT_PACKAGING_RESERVE_SECONDS,
+    resume: bool = True,
 ) -> dict[str, Any]:
     unit_files = discover_test_files(root, "unit")
     integration_files = discover_test_files(root, "integration")
@@ -497,6 +506,9 @@ def run_coverage_baseline_stabilisation(
     collection_timeout_seconds: int = DEFAULT_COLLECTION_TIMEOUT_SECONDS,
     unit_timeout_seconds: int = DEFAULT_UNIT_SHARD_TIMEOUT_SECONDS,
     integration_timeout_seconds: int = DEFAULT_INTEGRATION_SHARD_TIMEOUT_SECONDS,
+    overall_budget_seconds: int = DEFAULT_OVERALL_BUDGET_SECONDS,
+    packaging_reserve_seconds: int = DEFAULT_PACKAGING_RESERVE_SECONDS,
+    resume: bool = True,
 ) -> dict[str, Any]:
     plan = build_shard_plan(
         root,
@@ -516,6 +528,9 @@ def run_coverage_baseline_stabilisation(
         "integration_execution": "sequential",
         "coverage_artifacts_isolated": True,
         "tracked_worktree_clean_required": True,
+        "overall_budget_seconds": overall_budget_seconds,
+        "packaging_reserve_seconds": packaging_reserve_seconds,
+        "resume_supported": True,
         "plan": plan,
     }
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -525,6 +540,10 @@ def run_coverage_baseline_stabilisation(
         return planned
 
     started_at = _utc_now()
+    budget = ExecutionBudget.start(
+        overall_budget_seconds,
+        packaging_reserve_seconds,
+    )
     coverage_data_dir = output_dir / "coverage-data"
     if coverage_data_dir.exists():
         shutil.rmtree(coverage_data_dir)
@@ -572,24 +591,43 @@ def run_coverage_baseline_stabilisation(
         parent_shard_count=unit_shards,
         leaf_timeout_seconds=min(unit_timeout_seconds, 300),
         workers=max(1, min(workers, 2)),
+        overall_budget_seconds=overall_budget_seconds,
+        packaging_reserve_seconds=packaging_reserve_seconds,
+        resume=resume,
+        budget=budget,
     )
     unit_results = list(unit_stabilisation.get("final_leaf_results", []))
-    integration_results = _run_shards_sequential(
-        root=root,
-        output_dir=output_dir,
-        shards=integration_plan,
-        env=env,
-    )
+    integration_results: list[dict[str, Any]] = []
+    integration_pending_shard_ids: list[str] = []
+    for shard_index, shard in enumerate(integration_plan):
+        if not budget.can_start(shard.timeout_seconds):
+            integration_pending_shard_ids.extend(
+                item.shard_id for item in integration_plan[shard_index:]
+            )
+            break
+        integration_results.extend(
+            _run_shards_sequential(
+                root=root,
+                output_dir=output_dir,
+                shards=[shard],
+                env=env,
+            )
+        )
     shard_results = unit_results + integration_results
 
     unit_execution_complete = unit_stabilisation.get("unit_execution_complete") is True
-    integration_execution_complete = bool(integration_results) and all(
-        item.get("timed_out") is not True and item.get("exit_code") is not None
-        for item in integration_results
+    integration_execution_complete = (
+        len(integration_results) == len(integration_plan)
+        and not integration_pending_shard_ids
+        and all(
+            item.get("timed_out") is not True and item.get("exit_code") is not None
+            for item in integration_results
+        )
     )
     coverage_execution_complete = unit_execution_complete and integration_execution_complete
     report_results: list[dict[str, Any]] = []
-    if coverage_execution_complete:
+    report_budget_available = budget.execution_seconds_remaining >= 660
+    if coverage_execution_complete and report_budget_available:
         combine_result = run_bounded_command(
             root=root,
             output_dir=output_dir / "reports",
@@ -658,9 +696,13 @@ def run_coverage_baseline_stabilisation(
         blockers.append("coverage_test_shards")
     if not coverage_execution_complete:
         blockers.append("coverage_incomplete_shards")
-    elif not combine_green:
+    if integration_pending_shard_ids:
+        blockers.append("coverage_execution_budget_exhausted")
+    if coverage_execution_complete and not report_budget_available:
+        blockers.append("coverage_report_budget_exhausted")
+    elif coverage_execution_complete and not combine_green:
         blockers.append("coverage_data_combine")
-    elif not report_generation_green:
+    elif coverage_execution_complete and not report_generation_green:
         blockers.append("coverage_report_generation")
     if coverage_execution_complete and not threshold_green:
         blockers.append("coverage_threshold")
@@ -676,22 +718,44 @@ def run_coverage_baseline_stabilisation(
     unit_confirmed_failed_leaf_count = int(unit_stabilisation.get("confirmed_failed_leaf_count", 0))
     unit_unresolved_timeout_leaf_count = int(unit_stabilisation.get("unresolved_timeout_leaf_count", 0))
     unit_terminal_timeout_node_count = len(unit_stabilisation.get("terminal_timeout_nodeids", []))
+    unit_pending_due_to_budget_count = int(
+        unit_stabilisation.get("pending_due_to_budget_count", 0)
+    )
     unresolved_coverage_execution_count = (
         unit_confirmed_failed_leaf_count
         + unit_unresolved_timeout_leaf_count
         + unit_terminal_timeout_node_count
+        + unit_pending_due_to_budget_count
         + sum(1 for item in integration_results if item.get("green") is not True)
+        + len(integration_pending_shard_ids)
     )
     completed_at = _utc_now()
     summary = {
         "prd_id": PRD_ID,
         "remediation_id": REMEDIATION_ID,
         "executed": True,
-        "valid": not blockers,
+        "valid": True,
+        "structural_valid": True,
         "all_green": not blockers,
         "started_at": started_at.isoformat(),
         "completed_at": completed_at.isoformat(),
         "duration_seconds": round((completed_at - started_at).total_seconds(), 3),
+        "partial": bool(
+            unit_stabilisation.get("partial")
+            or integration_pending_shard_ids
+            or (coverage_execution_complete and not report_budget_available)
+        ),
+        "budget": budget.snapshot(),
+        "budget_exhausted": bool(
+            unit_stabilisation.get("budget_exhausted")
+            or integration_pending_shard_ids
+            or (coverage_execution_complete and not report_budget_available)
+        ),
+        "resume_supported": True,
+        "resume_available": bool(
+            unit_stabilisation.get("resume_available")
+            or integration_pending_shard_ids
+        ),
         "marker_expression": MARKER_EXPRESSION,
         "coverage_threshold": threshold,
         "coverage_percent": coverage_percent,
@@ -716,6 +780,8 @@ def run_coverage_baseline_stabilisation(
         "confirmed_failed_leaf_count": unit_confirmed_failed_leaf_count,
         "unresolved_timeout_leaf_count": unit_unresolved_timeout_leaf_count,
         "terminal_timeout_node_count": unit_terminal_timeout_node_count,
+        "pending_due_to_budget_count": unit_pending_due_to_budget_count
+        + len(integration_pending_shard_ids),
         "unresolved_coverage_execution_count": unresolved_coverage_execution_count,
         "tracked_mutation_file_count": int(unit_stabilisation.get("tracked_mutation_file_count", 0)),
         "tracked_mutation_files": unit_stabilisation.get("tracked_mutation_files", []),
@@ -731,6 +797,8 @@ def run_coverage_baseline_stabilisation(
         "unit_shard_stabilisation": unit_stabilisation,
         "unit_shard_results": unit_results,
         "integration_shard_results": integration_results,
+        "integration_pending_shard_ids": integration_pending_shard_ids,
+        "report_budget_available": report_budget_available,
         "report_results": report_results,
         "coverage_json_artifact": _artifact_ref(output_dir / "coverage.json", root=root),
         "coverage_xml_artifact": _artifact_ref(output_dir / "coverage.xml", root=root),
@@ -792,7 +860,9 @@ def evaluate_coverage_baseline_stabilisation_contract(
             "coverage-baseline-stabilisation-verify:" in makefile,
             "run_coverage_baseline_stabilisation.py" in advisory_text,
             "--require-green" in advisory_text,
-            "3600" in advisory_text,
+            "4200" in advisory_text,
+            "--overall-budget-seconds" in advisory_text,
+            "--resume" in advisory_text,
         ]
     )
     governance_valid = all(
@@ -826,6 +896,9 @@ def main() -> int:
     parser.add_argument("--collection-timeout-seconds", type=int, default=DEFAULT_COLLECTION_TIMEOUT_SECONDS)
     parser.add_argument("--unit-timeout-seconds", type=int, default=DEFAULT_UNIT_SHARD_TIMEOUT_SECONDS)
     parser.add_argument("--integration-timeout-seconds", type=int, default=DEFAULT_INTEGRATION_SHARD_TIMEOUT_SECONDS)
+    parser.add_argument("--overall-budget-seconds", type=int, default=DEFAULT_OVERALL_BUDGET_SECONDS)
+    parser.add_argument("--packaging-reserve-seconds", type=int, default=DEFAULT_PACKAGING_RESERVE_SECONDS)
+    parser.add_argument("--resume", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
     args = parser.parse_args()
 
@@ -839,6 +912,9 @@ def main() -> int:
         collection_timeout_seconds=args.collection_timeout_seconds,
         unit_timeout_seconds=args.unit_timeout_seconds,
         integration_timeout_seconds=args.integration_timeout_seconds,
+        overall_budget_seconds=args.overall_budget_seconds,
+        packaging_reserve_seconds=args.packaging_reserve_seconds,
+        resume=args.resume,
     )
     if args.require_green and result.get("all_green") is not True:
         result["valid"] = False

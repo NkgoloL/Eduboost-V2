@@ -74,10 +74,15 @@ def command_plan() -> list[CoverageStaticSecurityCommand]:
                 "scripts/coverage_suites/run_coverage_baseline_stabilisation.py",
                 "--execute",
                 "--require-green",
+                "--overall-budget-seconds",
+                "3900",
+                "--packaging-reserve-seconds",
+                "300",
+                "--resume",
                 "--json",
             ],
             "coverage-execution.json",
-            3600,
+            4200,
         ),
         CoverageStaticSecurityCommand(
             "ruff_release_static_quality",
@@ -290,6 +295,7 @@ def _coverage_execution_counts(result: dict[str, Any]) -> dict[str, int]:
         "confirmed_failed_leaf_count": int(coverage_summary.get("confirmed_failed_leaf_count", 0)),
         "unresolved_timeout_leaf_count": int(coverage_summary.get("unresolved_timeout_leaf_count", 0)),
         "terminal_timeout_node_count": int(coverage_summary.get("terminal_timeout_node_count", 0)),
+        "pending_due_to_budget_count": int(coverage_summary.get("pending_due_to_budget_count", 0)),
         "unresolved_coverage_execution_count": int(coverage_summary.get("unresolved_coverage_execution_count", 0)),
     }
 
@@ -318,9 +324,9 @@ def _failure_classification(gate_id: str, stdout: str, stderr: str, exit_code: i
 def _run_one(item: CoverageStaticSecurityCommand, output_dir: Path) -> dict[str, Any]:
     env = os.environ.copy()
     env["PYTHONPATH"] = "." + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
-    env.setdefault("APP_ENV", "test")
-    env.setdefault("ENVIRONMENT", "test")
-    env.setdefault("DEBUG", "false")
+    env["APP_ENV"] = "test"
+    env["ENVIRONMENT"] = "test"
+    env["DEBUG"] = "false"
     started_at = datetime.now(timezone.utc)
     monotonic_started = time.monotonic()
     timed_out = False
@@ -411,6 +417,7 @@ def run_coverage_static_security_green(
             item.get("timed_out") is True
             or int(item.get("unresolved_timeout_leaf_count", 0)) > 0
             or int(item.get("terminal_timeout_node_count", 0)) > 0
+            or int(item.get("pending_due_to_budget_count", 0)) > 0
         )
         for item in results
     )

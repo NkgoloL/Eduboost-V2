@@ -14,6 +14,7 @@ help:
 	@echo "  test-coverage   - Unit+integration with coverage (see COVERAGE_THRESHOLD)"
 	@echo "  coverage-baseline-stabilisation - Run deterministic sharded Execution-7 coverage gate"
 	@echo "  unit-shard-stabilisation - Run adaptive Execution-7 unit-shard remediation"
+	@echo "  budgeted-terminal-isolation-verify - Verify resumable Execution-7 terminal isolation"
 	@echo "  test-governance - Release/evidence meta-tests only"
 	@echo "  lint            - Run linters (ruff, black)"
 	@echo "  typecheck       - Run type checker (mypy)"
@@ -47,7 +48,7 @@ PYTEST ?= $(PYTHON) -m pytest
 COVERAGE_THRESHOLD ?= 70
 PR_TEST_MARKERS := not governance and not slow and not llm and not e2e
 
-.PHONY: test test-fast test-integration test-coverage test-coverage-full test-governance coverage-baseline-stabilisation coverage-baseline-stabilisation-plan coverage-baseline-stabilisation-verify unit-shard-stabilisation unit-shard-stabilisation-plan unit-shard-stabilisation-verify
+.PHONY: test test-fast test-integration test-coverage test-coverage-full test-governance coverage-baseline-stabilisation coverage-baseline-stabilisation-plan coverage-baseline-stabilisation-verify unit-shard-stabilisation unit-shard-stabilisation-plan unit-shard-stabilisation-verify budgeted-terminal-isolation-plan budgeted-terminal-isolation-verify
 
 test: test-fast
 
@@ -85,6 +86,12 @@ unit-shard-stabilisation:
 
 unit-shard-stabilisation-verify:
 	PYTHONPATH=. $(PYTHON) scripts/coverage_suites/verify_unit_shard_stabilisation.py --json
+
+budgeted-terminal-isolation-plan:
+	PYTHONPATH=. $(PYTHON) scripts/coverage_suites/run_coverage_baseline_stabilisation.py --overall-budget-seconds 60 --packaging-reserve-seconds 10 --resume --json
+
+budgeted-terminal-isolation-verify:
+	PYTHONPATH=. $(PYTHON) scripts/coverage_suites/verify_budgeted_terminal_isolation.py --json
 
 test-governance:
 	$(PYTEST) -c pytest.ini tests/unit -m governance -q
