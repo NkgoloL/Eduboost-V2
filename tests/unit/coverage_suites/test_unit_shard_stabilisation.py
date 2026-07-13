@@ -100,8 +100,13 @@ def test_disposable_worktree_attributes_mutation_without_dirtying_source(tmp_pat
         workers=1,
     )
 
-    assert result["worktree_hygiene_green"] is False
-    assert result["mutation_attribution"]
+    assert result["worktree_hygiene_green"] is True
+    assert result["mutation_attribution"] == {}
+    assert result["observed_mutation_attribution"]
+    assert result["mutation_matrix_file_count"] == 1
+    assert result["mutation_matrix"][0]["path"] == "tracked.txt"
+    assert result["mutation_matrix"][0]["restored_after_test"] is True
+    assert result["tracked_mutation_file_count"] == 0
     assert (root / "tracked.txt").read_text(encoding="utf-8") == "original\n"
     assert _git(root, "status", "--porcelain=v1").stdout == ""
 
