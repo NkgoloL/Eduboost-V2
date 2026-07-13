@@ -4,6 +4,12 @@ concurrency = greenlet,thread
 dynamic_context = test_function
 source = app
 
+[paths]
+source =
+    app
+    /tmp/eduboost-unit-leaf-*/repo/app
+    /tmp/eduboost-terminal-leaf-*/repo/app
+
 [report]
 precision = 1
 skip_covered = False

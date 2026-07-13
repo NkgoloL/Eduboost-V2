@@ -336,6 +336,54 @@ def _git_output(root: Path, *args: str) -> tuple[int, str, str]:
     return completed.returncode, completed.stdout, completed.stderr
 
 
+def _sha256_bytes(value: bytes) -> str:
+    return hashlib.sha256(value).hexdigest()
+
+
+def _tracked_file_sha(root: Path, relative_path: str, *, ref: str | None = None) -> str | None:
+    if ref is not None:
+        completed = subprocess.run(
+            ["git", "show", f"{ref}:{relative_path}"],
+            cwd=root,
+            capture_output=True,
+            check=False,
+        )
+        if completed.returncode != 0:
+            return None
+        return _sha256_bytes(completed.stdout)
+
+    path = root / relative_path
+    if not path.exists() or not path.is_file():
+        return None
+    return _sha256_bytes(path.read_bytes())
+
+
+def _mutation_matrix_entries(
+    *,
+    worktree: Path,
+    leaf: UnitLeafShard,
+    mutated_files: Sequence[str],
+    patch_path: Path,
+    root: Path,
+) -> list[dict[str, Any]]:
+    entries: list[dict[str, Any]] = []
+    patch_ref = _artifact_ref(patch_path, root)
+    for relative_path in sorted(mutated_files):
+        entries.append(
+            {
+                "path": relative_path,
+                "first_mutating_test": leaf.leaf_id,
+                "all_mutating_tests": [leaf.leaf_id],
+                "generator_or_script_invoked": "pytest_leaf",
+                "before_sha256": _tracked_file_sha(worktree, relative_path, ref="HEAD"),
+                "after_sha256": _tracked_file_sha(worktree, relative_path),
+                "patch_artifact": patch_ref,
+                "restored_after_test": False,
+            }
+        )
+    return entries
+
+
 def _remove_coverage_attempt(coverage_data_dir: Path, leaf_id: str) -> None:
     for path in coverage_data_dir.glob(f".coverage.{leaf_id}*"):
         path.unlink(missing_ok=True)
@@ -378,12 +426,34 @@ def _run_leaf_in_worktree(
         _, patch_stdout, patch_stderr = _git_output(worktree, "diff", "--binary")
         patch_path = output_dir / "mutations" / f"{leaf.leaf_id}.patch"
         _write_text(patch_path, patch_stdout if patch_stdout else patch_stderr)
+        tracked_mutation_files = sorted(line for line in names_stdout.splitlines() if line.strip())
+        mutation_matrix = _mutation_matrix_entries(
+            worktree=worktree,
+            leaf=leaf,
+            mutated_files=tracked_mutation_files,
+            patch_path=patch_path,
+            root=root,
+        )
+        restore_exit_code = 0
+        restore_stderr = ""
+        restored_files: list[str] = []
+        unrestored_files = tracked_mutation_files
+        mutation_entries = sorted(line for line in status_stdout.splitlines() if line.strip())
+        restored_status_entries: list[str] = mutation_entries
+        if tracked_mutation_files:
+            restore_exit_code, _, restore_stderr = _git_output(worktree, "restore", "--source=HEAD", "--", *tracked_mutation_files)
+            _, restored_status_stdout, _ = _git_output(worktree, "status", "--porcelain=v1", "--untracked-files=no")
+            restored_status_entries = sorted(line for line in restored_status_stdout.splitlines() if line.strip())
+            unrestored_files = sorted(line for line in _git_output(worktree, "diff", "--name-only")[1].splitlines() if line.strip())
+            if restore_exit_code == 0:
+                restored_files = sorted(set(tracked_mutation_files) - set(unrestored_files))
+                for entry in mutation_matrix:
+                    entry["restored_after_test"] = entry["path"] in restored_files
         stdout_path = output_dir / "leaves" / f"{leaf.leaf_id}.stdout.txt"
         stderr_path = output_dir / "leaves" / f"{leaf.leaf_id}.stderr.txt"
         stdout = stdout_path.read_text(encoding="utf-8", errors="replace") if stdout_path.exists() else ""
         stderr_text = stderr_path.read_text(encoding="utf-8", errors="replace") if stderr_path.exists() else ""
         diagnostics = parse_pytest_diagnostics(stdout, stderr_text)
-        mutation_entries = sorted(line for line in status_stdout.splitlines() if line.strip())
         result.update(
             {
                 "parent_shard_id": leaf.parent_shard_id,
@@ -396,10 +466,17 @@ def _run_leaf_in_worktree(
                 "isolated_worktree_status_exit_code": status_code,
                 "isolated_worktree_status_stderr": status_stderr[-4000:],
                 "tracked_mutation_entries": mutation_entries,
-                "tracked_mutation_files": sorted(line for line in names_stdout.splitlines() if line.strip()),
+                "tracked_mutation_files": unrestored_files,
+                "tracked_mutation_observed_files": tracked_mutation_files,
+                "tracked_mutation_restored_files": restored_files,
+                "tracked_mutation_unrestored_files": unrestored_files,
+                "tracked_mutation_restore_exit_code": restore_exit_code,
+                "tracked_mutation_restore_stderr": restore_stderr[-4000:],
+                "tracked_mutation_status_after_restore": restored_status_entries,
                 "tracked_mutation_stat": stat_stdout[-12000:],
                 "tracked_mutation_patch": _artifact_ref(patch_path, root),
-                "source_worktree_mutated": bool(mutation_entries),
+                "mutation_matrix": mutation_matrix,
+                "source_worktree_mutated": bool(unrestored_files),
                 "stdout_artifact": _artifact_ref(stdout_path, root),
                 "stderr_artifact": _artifact_ref(stderr_path, root),
             }
@@ -1160,6 +1237,16 @@ def run_unit_shard_stabilisation(
         for item in final_results
         if item.get("tracked_mutation_files")
     }
+    observed_mutation_map = {
+        item["command_id"]: item.get("tracked_mutation_observed_files", [])
+        for item in final_results
+        if item.get("tracked_mutation_observed_files")
+    }
+    mutation_matrix = [
+        entry
+        for item in final_results
+        for entry in item.get("mutation_matrix", [])
+    ]
     terminal_leaf_ids = {item["leaf_id"] for item in terminal_results}
     unresolved_timed_out_results = [
         item
@@ -1274,6 +1361,10 @@ def run_unit_shard_stabilisation(
             + len(pending_due_to_budget)
         ),
         "mutation_attribution": mutation_map,
+        "observed_mutation_attribution": observed_mutation_map,
+        "mutation_matrix": mutation_matrix,
+        "mutation_matrix_file_count": len({entry["path"] for entry in mutation_matrix}),
+        "mutation_matrix_entry_count": len(mutation_matrix),
         "tracked_mutation_file_count": len(tracked_mutation_files),
         "tracked_mutation_files": tracked_mutation_files,
         "untracked_runtime_artifact_count": 0,

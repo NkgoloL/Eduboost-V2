@@ -268,6 +268,8 @@ def _classify_failure(
         return "test_failures"
     if command_id == "coverage-combine":
         return "coverage_combine_failed"
+    if command_id == "coverage-report-threshold":
+        return "coverage_threshold"
     if command_id.startswith("coverage-report"):
         return "coverage_report_generation_failed"
     return "command_failed"
@@ -687,6 +689,10 @@ def run_coverage_baseline_stabilisation(
         and after_status.get("clean") is True
         and not mutations
     )
+    worktree_hygiene_green = (
+        worktree_clean
+        and unit_stabilisation.get("worktree_hygiene_green") is True
+    )
     coverage_percent = _load_coverage_percent(output_dir / "coverage.json")
 
     blockers: list[str] = []
@@ -708,7 +714,7 @@ def run_coverage_baseline_stabilisation(
         blockers.append("coverage_threshold")
     if not git_available:
         blockers.append("git_worktree_observation_unavailable")
-    elif not worktree_clean:
+    elif not worktree_hygiene_green:
         blockers.append("tracked_worktree_mutation")
 
     all_results = collection_results + shard_results + report_results
@@ -771,6 +777,7 @@ def run_coverage_baseline_stabilisation(
         "threshold_green": threshold_green,
         "git_observation_available": git_available,
         "tracked_worktree_clean": worktree_clean,
+        "worktree_hygiene_green": worktree_hygiene_green,
         "tracked_worktree_before": before_status,
         "tracked_worktree_after": after_status,
         "new_tracked_mutations": mutations,
@@ -785,6 +792,9 @@ def run_coverage_baseline_stabilisation(
         "unresolved_coverage_execution_count": unresolved_coverage_execution_count,
         "tracked_mutation_file_count": int(unit_stabilisation.get("tracked_mutation_file_count", 0)),
         "tracked_mutation_files": unit_stabilisation.get("tracked_mutation_files", []),
+        "mutation_matrix_file_count": int(unit_stabilisation.get("mutation_matrix_file_count", 0)),
+        "mutation_matrix_entry_count": int(unit_stabilisation.get("mutation_matrix_entry_count", 0)),
+        "mutation_matrix": unit_stabilisation.get("mutation_matrix", []),
         "untracked_runtime_artifact_count": int(unit_stabilisation.get("untracked_runtime_artifact_count", 0)),
         "outer_worktree_status": {
             "before": before_status,

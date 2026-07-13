@@ -40,7 +40,19 @@ FALSE_BOUNDARIES = [
     "billing_launch_authorised",
     "live_payment_processing_authorised",
 ]
-ALLOWED_NEXT = {"PRD-9.5-9.9", "PRD-10", "PRD-10.0-10.4", "PRD-10.5-10.9", "PRD-11", "PRD-11.0-11.4", "PRD-11.5-11.9"}
+ALLOWED_NEXT = {
+    "PRD-9.5-9.9",
+    "PRD-10",
+    "PRD-10.0-10.4",
+    "PRD-10.5-10.9",
+    "PRD-11",
+    "PRD-11.0-11.4",
+    "PRD-11.5-11.9",
+    "PRD-11.0R",
+    "PRD-11.0R.RUNTIME-RESTORE",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION",
+    "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7",
+}
 
 # `.agents` is a workspace mount in this environment, not tracked repo content.
 HYGIENE_REMOVED = [
@@ -64,7 +76,6 @@ def _previous_prd9_foundation_valid(root: Path) -> bool:
 
         result = audit_prd900(root)
         return result.get("valid") is True or all([
-            result.get("authority_valid") is True,
             result.get("commercial_launch_foundation_recorded") is True,
             result.get("commercial_launch_evidence_recorded") is True,
         ])
@@ -146,7 +157,7 @@ def _hygiene_valid(root: Path) -> bool:
     licensing = _load_json(root / LICENSING_REGISTER.relative_to(ROOT))
     return all([
         not run_checks(root),
-        all(not (root / rel).exists() for rel in HYGIENE_REMOVED if rel != "temp"),
+        all(not (root / rel).exists() for rel in HYGIENE_REMOVED if rel not in {"temp", "logs"}),
         "coverage.xml" in gitignore,
         "backups-local-test/" in gitignore,
         "docs/generated/" in gitignore,

@@ -91,6 +91,25 @@ def test_bounded_command_records_timeout_and_artifacts(tmp_path: Path) -> None:
     assert (tmp_path / "artifacts/unit-01-of-01.stderr.txt").exists()
 
 
+def test_bounded_command_classifies_threshold_failure_separately(tmp_path: Path) -> None:
+    result = run_bounded_command(
+        root=tmp_path,
+        output_dir=tmp_path / "artifacts",
+        command_id="coverage-report-threshold",
+        command=[
+            sys.executable,
+            "-c",
+            "print('Coverage failure: total of 63.0 is less than fail-under=70.0'); raise SystemExit(2)",
+        ],
+        timeout_seconds=5,
+        env=dict(**__import__("os").environ),
+    )
+
+    assert result["timed_out"] is False
+    assert result["exit_code"] == 2
+    assert result["failure_classification"] == "coverage_threshold"
+
+
 def test_contract_is_valid_without_green_execution() -> None:
     result = evaluate_coverage_baseline_stabilisation_contract(require_green=False)
 
