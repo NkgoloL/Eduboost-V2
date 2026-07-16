@@ -7,15 +7,15 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-02
+last_reviewed: 2026-07-16
 review_interval_days: 14
-evidence_command: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd001_canonical_current_state_documentation_refresh.py --json
+evidence_command: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd1100r_runtime_restore_execution_7_coverage_static_security_green.py --json
 code_anchors: [app/api_v2.py, app/frontend/package.json, docs/roadmap/production_readiness/production_readiness_register.json]
 ---
 
 # EduBoost Current State
 
-This file is the canonical current-state summary for EduBoost V2 after the reconciled RR roadmap, Knowledge Graph roadmap, and PRD-0.0 production-readiness stream authority were closed.
+This file is the canonical current-state summary for EduBoost V2 after the reconciled RR roadmap, Knowledge Graph roadmap, PRD-0 through PRD-10 streams, and PRD-11 runtime restore executions up to Execution-6 were closed/recorded.
 
 It is intentionally conservative. It records what is true now and what remains unauthorised before production, deployment, public beta, billing, live learner traffic, or further production-readiness implementation work can proceed.
 
@@ -55,10 +55,9 @@ Final RR roadmap reconciliation closure: valid
 KG roadmap: closed through KG-8
 KG-ACT-001 controlled runtime KG authority activation: valid
 KG roadmap closure report: valid
-PRD-0.0 production-readiness stream authority: valid
-Production-readiness stream: open
-Current authorised item: PRD-0.1
-PRD-1 implementation: blocked until PRD-0.10 closure
+PRD-0.0 through PRD-10 streams: closed
+Current authorised item: PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7
+Execution-1 through Execution-6 closure: valid
 New KG slice: not authorised
 ```
 
@@ -100,9 +99,9 @@ The active production-readiness stream is governed by:
 
 - `docs/roadmap/production_readiness/production_readiness_register.json`
 - `docs/roadmap/production_readiness/production_readiness_boundary_contract.md`
-- `docs/roadmap/production_readiness/prd_0_expanded_post_closure_current_state_authority_refresh.md`
+- `docs/roadmap/production_readiness/prd_1100r_runtime_restore_execution_7_coverage_static_security_green_record.json`
 
-PRD-0 must close before PRD-1 starts. PRD-0 contains documentation truth refresh, stale-source quarantine, housekeeping ratchets, test/dependency baselines, workflow inventory, generated artifact canonicalisation, branch/release naming reconciliation, repository hygiene, and PRD-0 closure evidence.
+All initial phases (PRD-0 through PRD-10) are completed. The active gate is PRD-11 (Runtime Restore), specifically Execution-7 (Coverage, Static Quality, and Security Gates green).
 
 ## Known caveats carried forward
 
@@ -118,4 +117,4 @@ The following caveats remain visible and must not be hidden by later status docu
 
 This file is not a production approval. It is a current-state navigation document. Release, deployment, billing, public beta, live learner traffic, or optimisation-execution decisions must be made through future PRD gates and evidence commands.
 
-**Current-state refresh recorded: PRD-0.1**
+**Current-state refresh recorded: PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7**
