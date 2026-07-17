@@ -1,10 +1,10 @@
-from __future__ import annotations
-
 """
 EduBoost V2 — Redis Client
 Thin async wrapper around redis-py used for caching and session storage ONLY.
 No streams, no pub/sub, no Celery.
 """
+from __future__ import annotations
+
 from typing import Any
 
 import redis.asyncio as aioredis

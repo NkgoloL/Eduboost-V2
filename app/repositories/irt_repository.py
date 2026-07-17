@@ -1,7 +1,6 @@
 """IRT Item persistence repository for EduBoost V2."""
 from __future__ import annotations
 
-from uuid import UUID
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession

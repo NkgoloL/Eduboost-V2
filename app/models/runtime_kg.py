@@ -11,7 +11,6 @@ import uuid
 from datetime import datetime
 from typing import Any
 
-import sqlalchemy as sa
 from sqlalchemy import Boolean, CheckConstraint, DateTime, Float, ForeignKey, Index, Integer, String, Text, UniqueConstraint, func
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship

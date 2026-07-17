@@ -424,7 +424,7 @@ class EduboostETLv3(EduboostETLv2):
         ids = [r["example_id"] for r in examples]
 
         # Deterministic shuffle via hash
-        ids.sort(key=lambda x: hashlib.md5(f"{seed}{x}".encode()).hexdigest())
+        ids.sort(key=lambda x: hashlib.md5(f"{seed}{x}".encode(), usedforsecurity=False).hexdigest())
 
         n = len(ids)
         n_train = int(n * train)

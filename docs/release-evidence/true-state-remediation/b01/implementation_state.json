@@ -1,0 +1,47 @@
+{
+  "bundle_id": "B01",
+  "phase": "verify",
+  "phases": {
+    "verify": {
+      "checks": {
+        "baseline": {
+          "valid": true
+        },
+        "boundaries": {
+          "failures": [],
+          "inspected": [
+            "docs/roadmap/production_readiness/production_readiness_register.json",
+            "docs/roadmap/production_readiness/prd11_production_release_register.json",
+            "docs/roadmap/production_readiness/true_state_remediation_register.json"
+          ],
+          "valid": true
+        },
+        "mcp_isolation": {
+          "valid": true
+        },
+        "register": {
+          "errors": [],
+          "release_boundaries": {
+            "failures": [],
+            "inspected": [
+              "docs/roadmap/production_readiness/production_readiness_register.json",
+              "docs/roadmap/production_readiness/prd11_production_release_register.json",
+              "docs/roadmap/production_readiness/true_state_remediation_register.json"
+            ],
+            "valid": true
+          },
+          "task_count": 174,
+          "valid": true
+        }
+      },
+      "structural_only": true,
+      "valid": true
+    }
+  },
+  "reason": "skip-heavy cannot close a bundle",
+  "recorded_at": "2026-07-16T21:10:34.735038+00:00",
+  "schema_version": "eduboost/true-state-remediation/bundle-state/v1",
+  "skip_heavy": true,
+  "smoke_valid": true,
+  "valid": false
+}

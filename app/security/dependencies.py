@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 from collections.abc import Iterable
-from typing import Annotated
+from typing import Annotated, Any as _Any
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.modules.consent.service import ConsentService
 
 from fastapi import Header, HTTPException, status
 
@@ -145,10 +147,6 @@ def require_learner_delete(actor: Actor, learner_id: str) -> AuthorizationDecisi
     )
 
 # Current-user adapter -------------------------------------------------------
-
-from typing import Any as _Any
-from sqlalchemy.ext.asyncio import AsyncSession
-from app.modules.consent.service import ConsentService
 
 
 def _current_user_role_value(raw_role: _Any) -> str:

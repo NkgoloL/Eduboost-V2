@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
 
-from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request, Response, status
+from fastapi import APIRouter, Depends, HTTPException, Request, status
 from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -19,10 +19,7 @@ from app.domain.schemas import (
 from app.models import Guardian, KnowledgeGap, Lesson
 from app.repositories.repositories import LearnerRepository
 from app.security.dependencies import require_active_consent_for_current_user, require_learner_read_for_current_user
-from app.security.dependencies import require_learner_write_for_current_user
-from app.services.consent import ConsentService
 from app.services.executive import ExecutiveService
-from app.services.fourth_estate import FourthEstateService
 from app.services.popia_service import POPIADataRightsService
 
 router = APIRouter(route_class=EnvelopedRoute, prefix="/parents", tags=["parents"])

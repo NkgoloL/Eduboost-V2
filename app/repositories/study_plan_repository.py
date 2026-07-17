@@ -13,6 +13,7 @@ from typing import Any
 from sqlalchemy import select, Column, String, DateTime, Float, JSON, Text
 
 from app.core.database import AsyncSessionFactory, Base
+from app.models import SubjectMastery
 
 
 class StudyPlan(Base):
@@ -24,9 +25,6 @@ class StudyPlan(Base):
     gap_ratio = Column(Float, nullable=False)
     week_focus = Column(Text)
     generated_by = Column(String)
-
-
-from app.models import SubjectMastery
 
 
 

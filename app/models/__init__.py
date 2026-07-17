@@ -20,7 +20,7 @@ try:
 except Exception:
     from enum import Enum as _Enum
 
-    class StrEnum(str, _Enum):
+    class StrEnum(str, _Enum):  # type: ignore[no-redef]
         pass
 
 import sqlalchemy as sa
@@ -785,10 +785,10 @@ class StripeWebhookEvent(Base):
 LessonRecord = Lesson
 
 # ── CAPS Diagnostic Items ────────────────────────────────────────────────────
-from app.models.diagnostic_item import DiagnosticItem  # noqa: F401  (re-export)
-from app.models.item_exposure import ItemExposure  # noqa: F401  (re-export)
-from app.models.irt_quality import IRTCalibrationEvent, IRTCalibrationRun  # noqa: F401
-from app.models.content_factory import (  # noqa: F401  (re-export)
+from app.models.diagnostic_item import DiagnosticItem  # noqa: E402, F401  (re-export)
+from app.models.item_exposure import ItemExposure  # noqa: E402, F401  (re-export)
+from app.models.irt_quality import IRTCalibrationEvent, IRTCalibrationRun  # noqa: E402, F401
+from app.models.content_factory import (  # noqa: E402, F401  (re-export)
     AssessmentBlueprint,
     ContentAnswerKeyVerification,
     ContentArtifactReview,
@@ -817,7 +817,7 @@ from app.models.content_factory import (  # noqa: F401  (re-export)
 )
 
 # Auth extension models
-from app.models.auth_extensions import (  # noqa: F401  (re-export)
+from app.models.auth_extensions import (  # noqa: E402, F401  (re-export)
     OnboardingState,
     PrivacySettings,
     SecureToken,
@@ -825,7 +825,7 @@ from app.models.auth_extensions import (  # noqa: F401  (re-export)
 )
 
 # Phase 2 semantic-retrieval corpus models
-from app.models.retrieval import (  # noqa: F401  (re-export)
+from app.models.retrieval import (  # noqa: E402, F401  (re-export)
     RetrievalSourceChunk,
     RetrievalSourceDocument,
     Vector1536,
@@ -833,11 +833,11 @@ from app.models.retrieval import (  # noqa: F401  (re-export)
 
 # Phase 5 learner tutor models are imported so Base.metadata includes them.
 from app.models.tutor import TutorEscalation, TutorMessage, TutorSession  # noqa: E402,F401
-from app.models.ai_operations import AIBudgetCounter, AIUsageEvent, AIUsageReservation
-from app.models.curriculum_expansion import CurriculumCoverageSnapshot, CurriculumExpansionRun, TrainingDatasetEntry, TrainingDatasetManifest
+from app.models.ai_operations import AIBudgetCounter, AIUsageEvent, AIUsageReservation  # noqa: E402, F401
+from app.models.curriculum_expansion import CurriculumCoverageSnapshot, CurriculumExpansionRun, TrainingDatasetEntry, TrainingDatasetManifest  # noqa: E402, F401
 
 # Phase 2R authoritative source, rights, inventory, and review ledgers
-from app.models.curriculum_authority import (  # noqa: F401
+from app.models.curriculum_authority import (  # noqa: E402, F401
     CurriculumInventoryItem,
     CurriculumInventoryVersion,
     CurriculumReviewDecision,
@@ -847,7 +847,7 @@ from app.models.curriculum_authority import (  # noqa: F401
 )
 
 # Phase 2R gates 2R.2-2R.8 acquisition, extraction, corpus, grounding, and audit models
-from app.models.curriculum_grounding import (  # noqa: F401
+from app.models.curriculum_grounding import (  # noqa: E402, F401
     CurriculumAnswerVerificationRecord,
     CurriculumChunkVersion,
     CurriculumClaimValidationRecord,
@@ -871,7 +871,7 @@ from app.models.curriculum_grounding import (  # noqa: F401
     TutorGroundingRecord,
 )
 # Phase 02R Gate 2R.4 curriculum graph and reviewed mapping models
-from app.models.curriculum_graph import (  # noqa: F401
+from app.models.curriculum_graph import (  # noqa: E402, F401
     CurriculumEdgeVersion,
     CurriculumLanguageLink,
     CurriculumMappingReviewEvent,

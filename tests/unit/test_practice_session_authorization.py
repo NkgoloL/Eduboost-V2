@@ -178,11 +178,11 @@ async def test_respond_practice_requires_consent_before_advancing(monkeypatch):
     )
 
     # Should return "accepted" (not completed since we have 2 items)
-    assert result.get("accepted") == True
+    assert result.get("accepted") is True
     assert consent_calls and consent_calls[0][2] == learner_id
     # Verify repository was called to update with new cursor=1 and response
     mock_repo.update_cursor_and_responses.assert_called_once()
     call_args = mock_repo.update_cursor_and_responses.call_args
     assert call_args[0][1] == 1  # new_cursor should be 1
     assert len(call_args[0][2]) == 1  # 1 response
-    assert call_args[0][2][0]["correct"] == False
+    assert call_args[0][2][0]["correct"] is False

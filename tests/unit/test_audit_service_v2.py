@@ -5,7 +5,6 @@ from datetime import datetime, UTC
 from types import SimpleNamespace
 
 from app.services.audit_service import AuditService
-from app.models import AuditLog
 
 @pytest.mark.unit
 @pytest.mark.asyncio

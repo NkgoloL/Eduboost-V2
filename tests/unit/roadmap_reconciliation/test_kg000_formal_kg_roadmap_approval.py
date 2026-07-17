@@ -1,5 +1,8 @@
 from __future__ import annotations
-import json, os, shutil, subprocess
+import json
+import os
+import shutil
+import subprocess
 from pathlib import Path
 from scripts.knowledge_graph.audit_kg000_formal_kg_roadmap_approval import audit
 from scripts.roadmap_reconciliation.verify_kg000_formal_kg_roadmap_approval import evaluate

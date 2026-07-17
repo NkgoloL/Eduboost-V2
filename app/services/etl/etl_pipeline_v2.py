@@ -835,9 +835,9 @@ class EduboostETLv2(EduboostETL):
             rows = self._db().execute(
                 "SELECT input_text FROM training_examples WHERE dataset_id=?", (ds_id,)
             ).fetchall()
-            return {hashlib.md5(r["input_text"].encode()).hexdigest() for r in rows}
+            return {hashlib.md5(r["input_text"].encode(), usedforsecurity=False).hexdigest() for r in rows}
 
-        import hashlib
+        import hashlib  # noqa: PLC0415 (nested import for locality)
         h1 = _hashes(dataset_id)
         h2 = _hashes(test_dataset_id)
         overlap = h1 & h2

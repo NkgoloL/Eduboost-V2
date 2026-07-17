@@ -6,7 +6,6 @@ from pathlib import Path
 import pytest
 
 from app.services.curriculum.acquisition import (
-    AcquisitionPolicy,
     AcquisitionRejectedError,
     ControlledAcquisitionService,
     assert_no_learner_pii_in_source_metadata,

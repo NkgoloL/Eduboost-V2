@@ -347,7 +347,7 @@ class ContentFileArtifactImportService:
         result = await session.execute(
             select(ContentValidationReport).where(
                 ContentValidationReport.artifact_id == record.artifact_id,
-                ContentValidationReport.passed == True,
+                ContentValidationReport.passed is True,
             )
         )
         return result.scalar_one_or_none() is not None

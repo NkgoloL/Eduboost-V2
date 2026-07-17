@@ -14,7 +14,7 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
-from app.models.content_factory import ContentArtifactSource, ContentArtifactStatus, ContentGenerationArtifact
+from app.models.content_factory import ContentArtifactStatus, ContentGenerationArtifact
 from app.models.curriculum_expansion import (
     CurriculumCoverageSnapshot,
     CurriculumExpansionRun,

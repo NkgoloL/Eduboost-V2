@@ -26,7 +26,7 @@ def test_runtime_dependency_collector_uses_authority_python_for_environment_veri
 
 def test_environment_verifier_checks_target_interpreter_imports() -> None:
     source = ENV_VERIFY.read_text(encoding="utf-8")
-    tree = ast.parse(source)
+    ast.parse(source)
     assert "subprocess.run" in source
     assert "import_status(python_bin" in source
     assert "importlib.import_module" not in source

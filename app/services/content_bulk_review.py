@@ -7,7 +7,6 @@ from dataclasses import dataclass, field
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models.content_factory import ContentArtifactStatus
 from app.services.content_artifact_lifecycle import ContentArtifactLifecycleService
 from app.services.content_factory import ContentFactoryService
 from app.services.content_review_queue import ContentReviewQueueService

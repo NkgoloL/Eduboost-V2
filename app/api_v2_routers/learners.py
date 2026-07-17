@@ -1,7 +1,7 @@
 """EduBoost V2 — Learners Router"""
 from __future__ import annotations
 
-from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Response, status
+from fastapi import APIRouter, Depends, HTTPException, status
 from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -10,12 +10,10 @@ from app.core.logging import get_logger
 from app.api_v2_deps.auth import AuthContext, require_auth_context, require_parent_or_admin
 from app.core.security import get_current_user  # noqa: F401
 from app.domain.schemas import LearnerCreate, LearnerResponse
-from app.modules.consent.service import ConsentService
 from app.repositories.repositories import KnowledgeGapRepository, LearnerRepository
 from app.repositories.mastery_repository import MasteryRepository
 from app.modules.progress.progress_timeline_service import ProgressTimelineService
 from app.security.dependencies import require_active_consent_for_current_user, require_learner_read_for_current_user
-from app.services.fourth_estate import FourthEstateService
 from app.services.popia_service import POPIADataRightsService
 
 router = APIRouter(route_class=EnvelopedRoute, prefix="/learners", tags=["learners"])
