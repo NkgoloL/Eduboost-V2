@@ -23,6 +23,10 @@ __all__ = [
     "build_blocked_commercial_launch_readiness_report",
     "build_default_commercial_launch_readiness_report",
     "default_commercial_launch_evidence_controls",
+    # remediation sub-module re-exports
+    "CommercialRuntimeAuditRemediationReport",
+    "build_blocked_commercial_runtime_audit_remediation_report",
+    "build_default_commercial_runtime_audit_remediation_report",
 ]
 
 from app.modules.commercial_launch.remediation import (

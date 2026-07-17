@@ -1,14 +1,3 @@
-from __future__ import annotations
-
-
-def get_v2_settings():
-    """Compatibility settings hook used by legacy unit tests."""
-    try:
-        from app.core.config import settings
-    except Exception:
-        return None
-    return settings
-
 """
 app/services/auth_service.py
 ------------------------------
@@ -21,13 +10,17 @@ This service contains ALL auth business logic.
 The router (app/api_v2_routers/auth.py) calls these methods and maps
 results to HTTP responses — no business logic lives in the router.
 """
+from __future__ import annotations
 
+import hashlib as _compat_hashlib
+import hmac as _compat_hmac
 import logging
 import secrets
+import secrets as _compat_secrets
 import uuid
+from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from typing import Any
-from dataclasses import dataclass
 
 from app.core.password import (
     check_password_strength,
@@ -45,6 +38,15 @@ from app.core.token_config import (
     revoke_jti,
     revoke_token_family,
 )
+
+
+def get_v2_settings():
+    """Compatibility settings hook used by legacy unit tests."""
+    try:
+        from app.core.config import settings
+    except Exception:
+        return None
+    return settings
 
 logger = logging.getLogger("eduboost.auth")
 
@@ -454,9 +456,6 @@ class AuthService:
 # ---------------------------------------------------------------------------
 # Legacy synchronous AuthService compatibility API for historical unit tests
 # ---------------------------------------------------------------------------
-import hashlib as _compat_hashlib
-import hmac as _compat_hmac
-import secrets as _compat_secrets
 
 try:
     CompatSession

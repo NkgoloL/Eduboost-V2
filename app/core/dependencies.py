@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from uuid import UUID
 
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException, Request, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from app.core.jwt_compat import JWTError
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -19,6 +19,7 @@ from app.repositories.repositories import LearnerRepository
 from app.core.metrics import consent_gate_blocks_total
 from app.core.security import decode_token
 from app.repositories.consent_repository import ConsentRepository
+from app.core import context
 
 _bearer = HTTPBearer(auto_error=False)
 
@@ -108,9 +109,6 @@ async def require_active_consent_for_current_learner(
 
 
 # ── Observability ─────────────────────────────────────────────────────────────
-
-from fastapi import Request
-from app.core import context
 
 
 async def get_request_id(request: Request) -> str:

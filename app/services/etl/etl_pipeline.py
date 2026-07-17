@@ -616,7 +616,7 @@ class Normalizer:
         text = REPEATED_SPACE.sub(" ", text)
         text = re.sub(r'\n{3,}', '\n\n', text)
         # 5. Strip leading/trailing blank lines
-        lines = [l.rstrip() for l in text.split("\n")]
+        lines = [line_text.rstrip() for line_text in text.split("\n")]
         text = "\n".join(lines).strip()
 
         # Preserve structure flags
@@ -673,17 +673,21 @@ class Normalizer:
 
         # Infer title from first meaningful line
         if doc.title in ("", "Untitled"):
-            first_lines = [l.strip() for l in text.split("\n") if l.strip()][:5]
+            first_lines = [line_text.strip() for line_text in text.split("\n") if line_text.strip()][:5]
             if first_lines:
                 updates["title"] = first_lines[0][:120]
 
         # CAPS phase mapping
         if "grade" in updates or doc.grade:
             g = updates.get("grade") or doc.grade
-            if g <= 3:   updates["phase"] = "Foundation Phase"
-            elif g <= 6: updates["phase"] = "Intermediate Phase"
-            elif g <= 9: updates["phase"] = "Senior Phase"
-            else:        updates["phase"] = "FET Phase"
+            if g <= 3:
+                updates["phase"] = "Foundation Phase"
+            elif g <= 6:
+                updates["phase"] = "Intermediate Phase"
+            elif g <= 9:
+                updates["phase"] = "Senior Phase"
+            else:
+                updates["phase"] = "FET Phase"
 
         return updates
 
@@ -849,7 +853,8 @@ class Chunker:
                 ))
                 buf, buf_tokens = [para], t
             else:
-                buf.append(para); buf_tokens += t
+                buf.append(para)
+                buf_tokens += t
         if buf:
             chunks.append(DocumentChunk(
                 chunk_id="", document_id=document_id,
@@ -870,10 +875,14 @@ class Chunker:
         results, chars = [], 0
         buf = []
         for word in words:
-            buf.append(word); chars += len(word) + 1
+            buf.append(word)
+            chars += len(word) + 1
             if chars >= step:
-                results.append(" ".join(buf)); buf=[]; chars=0
-        if buf: results.append(" ".join(buf))
+                results.append(" ".join(buf))
+                buf = []
+                chars = 0
+        if buf:
+            results.append(" ".join(buf))
         return results
 
 
@@ -1259,10 +1268,18 @@ class EduboostETL:
                        document_type: Optional[str] = None,
                        limit: int = 100) -> list[dict]:
         clauses, params = [], []
-        if status:        clauses.append("processing_status=?"); params.append(status)
-        if grade:         clauses.append("grade=?");             params.append(grade)
-        if subject:       clauses.append("subject=?");           params.append(subject)
-        if document_type: clauses.append("document_type=?");     params.append(document_type)
+        if status:
+            clauses.append("processing_status=?")
+            params.append(status)
+        if grade:
+            clauses.append("grade=?")
+            params.append(grade)
+        if subject:
+            clauses.append("subject=?")
+            params.append(subject)
+        if document_type:
+            clauses.append("document_type=?")
+            params.append(document_type)
         where = ("WHERE " + " AND ".join(clauses)) if clauses else ""
         rows = self._db().execute(
             f"SELECT * FROM documents {where} ORDER BY created_at DESC LIMIT ?",

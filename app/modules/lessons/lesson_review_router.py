@@ -117,22 +117,22 @@ async def get_review_queue(
     lessons = await repo.list_pending_review(grade=grade, subject=subject, caps_ref=caps_ref, limit=limit, offset=offset)
     summaries = [
         QueuedLessonSummary(
-            lesson_id=str(l.id),
-            caps_ref=l.caps_ref or l.caps_reference,
-            grade=l.grade,
-            subject=l.subject,
-            topic=l.topic,
-            subtopic=l.subtopic,
-            quality_score=l.quality_score,
-            answer_key_verified=l.answer_key_verified,
-            safety_classification=SafetyClassification(l.safety_classification),
-            review_status=ReviewStatus(l.review_status),
-            auto_queue_reason=compute_auto_queue_reasons(l.quality_score, l.answer_key_verified, l.safety_classification),
-            created_at=l.created_at,
-            provider=l.provider or l.llm_provider,
-            prompt_template_version=l.prompt_template_version,
+            lesson_id=str(lesson.id),
+            caps_ref=lesson.caps_ref or lesson.caps_reference,
+            grade=lesson.grade,
+            subject=lesson.subject,
+            topic=lesson.topic,
+            subtopic=lesson.subtopic,
+            quality_score=lesson.quality_score,
+            answer_key_verified=lesson.answer_key_verified,
+            safety_classification=SafetyClassification(lesson.safety_classification),
+            review_status=ReviewStatus(lesson.review_status),
+            auto_queue_reason=compute_auto_queue_reasons(lesson.quality_score, lesson.answer_key_verified, lesson.safety_classification),
+            created_at=lesson.created_at,
+            provider=lesson.provider or lesson.llm_provider,
+            prompt_template_version=lesson.prompt_template_version,
         )
-        for l in lessons
+        for lesson in lessons
     ]
     return ReviewQueueResponse(total_pending=len(summaries), lessons=summaries)
 

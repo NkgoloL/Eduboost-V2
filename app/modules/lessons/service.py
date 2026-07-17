@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 """CAPS-aligned lesson generation service.
 
 Orchestrates the end-to-end lesson lifecycle: POPIA consent validation,
@@ -21,6 +19,7 @@ Example:
             body=request, current_user_id=user_id,
         )
 """
+from __future__ import annotations
 
 from typing import TYPE_CHECKING
 from uuid import UUID

@@ -16,8 +16,10 @@ Install dependencies:
 
 from __future__ import annotations
 
+from collections import defaultdict
 import logging
 import secrets
+import time as _time
 from datetime import datetime, timedelta, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
@@ -55,8 +57,6 @@ VERIFY_TTL_HR  = 24
 
 # ─── In-memory rate limiter for forgot-password (replace with Redis in prod) ──
 # Stores {ip: [timestamp, ...]} — max 5 requests per 15 min per IP
-from collections import defaultdict
-import time as _time
 _reset_attempts: dict[str, list[float]] = defaultdict(list)
 _RATE_WINDOW    = 15 * 60   # 15 minutes
 _RATE_MAX       = 5         # max requests per window
@@ -465,7 +465,7 @@ async def update_learner_profile(
 
     result = await session.execute(
         select(LearnerProfile)
-        .where(LearnerProfile.guardian_id == user.id, LearnerProfile.is_deleted == False)
+        .where(LearnerProfile.guardian_id == user.id, LearnerProfile.is_deleted is False)
         .order_by(LearnerProfile.created_at.asc())
         .limit(1)
     )

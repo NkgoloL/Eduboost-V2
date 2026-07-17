@@ -135,13 +135,13 @@ async def get_lesson_coverage(
 
     for row in _topic_rows(caps_service, grade, subject):
         lessons = await repo.list_by_caps_ref(row["caps_ref"], include_all_statuses=True)
-        approved = sum(1 for l in lessons if l.review_status == "approved")
-        pending = sum(1 for l in lessons if l.review_status in {"ai_generated", "human_reviewed"})
-        rejected = sum(1 for l in lessons if l.review_status == "rejected")
-        generated = sum(1 for l in lessons if l.review_status == "ai_generated")
-        verified = sum(1 for l in lessons if l.answer_key_verified)
-        scores = [float(l.quality_score) for l in lessons if l.quality_score is not None]
-        latency = [float(l.generation_latency_ms) for l in lessons if l.generation_latency_ms is not None]
+        approved = sum(1 for lesson in lessons if lesson.review_status == "approved")
+        pending = sum(1 for lesson in lessons if lesson.review_status in {"ai_generated", "human_reviewed"})
+        rejected = sum(1 for lesson in lessons if lesson.review_status == "rejected")
+        generated = sum(1 for lesson in lessons if lesson.review_status == "ai_generated")
+        verified = sum(1 for lesson in lessons if lesson.answer_key_verified)
+        scores = [float(lesson.quality_score) for lesson in lessons if lesson.quality_score is not None]
+        latency = [float(lesson.generation_latency_ms) for lesson in lessons if lesson.generation_latency_ms is not None]
         providers: dict[str, int] = {}
         for lesson in lessons:
             provider = lesson.provider or lesson.llm_provider or "unknown"
