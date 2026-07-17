@@ -27,7 +27,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 
-from jinja2 import Environment, FileSystemLoader, StrictUndefined
+from jinja2 import Environment, FileSystemLoader, StrictUndefined, select_autoescape
 
 logger = logging.getLogger(__name__)
 
@@ -100,10 +100,13 @@ class ItemGenerator:
         else:
             self._gateway = None  # will raise on first use
 
+        # Prompt templates are plain-text (not HTML/XML) — autoescaping is
+        # intentionally disabled. select_autoescape([]) makes this explicit and
+        # satisfies the Bandit B701 check (CWE-94).
         self._jinja_env = Environment(
             loader=FileSystemLoader(str(PROMPTS_DIR)),
             undefined=StrictUndefined,
-            autoescape=False,
+            autoescape=select_autoescape([]),
         )
 
     # ─── Public API ──────────────────────────────────────────────────────────
