@@ -405,7 +405,7 @@
 <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span> <span class="k">as</span> <span class="n">_Enum</span>
 
-    <span class="k">class</span><span class="w"> </span><span class="nc">StrEnum</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">_Enum</span><span class="p">):</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">StrEnum</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">_Enum</span><span class="p">):</span>  <span class="c1"># type: ignore[no-redef]</span>
         <span class="k">pass</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sa</span>
@@ -1260,10 +1260,10 @@
 <span class="n">LessonRecord</span> <span class="o">=</span> <span class="n">Lesson</span>
 
 <span class="c1"># ── CAPS Diagnostic Items ────────────────────────────────────────────────────</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.diagnostic_item</span><span class="w"> </span><span class="kn">import</span> <span class="n">DiagnosticItem</span>  <span class="c1"># noqa: F401  (re-export)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.item_exposure</span><span class="w"> </span><span class="kn">import</span> <span class="n">ItemExposure</span>  <span class="c1"># noqa: F401  (re-export)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.irt_quality</span><span class="w"> </span><span class="kn">import</span> <span class="n">IRTCalibrationEvent</span><span class="p">,</span> <span class="n">IRTCalibrationRun</span>  <span class="c1"># noqa: F401</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.content_factory</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa: F401  (re-export)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.diagnostic_item</span><span class="w"> </span><span class="kn">import</span> <span class="n">DiagnosticItem</span>  <span class="c1"># noqa: E402, F401  (re-export)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.item_exposure</span><span class="w"> </span><span class="kn">import</span> <span class="n">ItemExposure</span>  <span class="c1"># noqa: E402, F401  (re-export)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.irt_quality</span><span class="w"> </span><span class="kn">import</span> <span class="n">IRTCalibrationEvent</span><span class="p">,</span> <span class="n">IRTCalibrationRun</span>  <span class="c1"># noqa: E402, F401</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.content_factory</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa: E402, F401  (re-export)</span>
     <span class="n">AssessmentBlueprint</span><span class="p">,</span>
     <span class="n">ContentAnswerKeyVerification</span><span class="p">,</span>
     <span class="n">ContentArtifactReview</span><span class="p">,</span>
@@ -1292,7 +1292,7 @@
 <span class="p">)</span>
 
 <span class="c1"># Auth extension models</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.auth_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa: F401  (re-export)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.auth_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa: E402, F401  (re-export)</span>
     <span class="n">OnboardingState</span><span class="p">,</span>
     <span class="n">PrivacySettings</span><span class="p">,</span>
     <span class="n">SecureToken</span><span class="p">,</span>
@@ -1300,7 +1300,7 @@
 <span class="p">)</span>
 
 <span class="c1"># Phase 2 semantic-retrieval corpus models</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.retrieval</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa: F401  (re-export)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.retrieval</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa: E402, F401  (re-export)</span>
     <span class="n">RetrievalSourceChunk</span><span class="p">,</span>
     <span class="n">RetrievalSourceDocument</span><span class="p">,</span>
     <span class="n">Vector1536</span><span class="p">,</span>
@@ -1308,11 +1308,11 @@
 
 <span class="c1"># Phase 5 learner tutor models are imported so Base.metadata includes them.</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">app.models.tutor</span><span class="w"> </span><span class="kn">import</span> <span class="n">TutorEscalation</span><span class="p">,</span> <span class="n">TutorMessage</span><span class="p">,</span> <span class="n">TutorSession</span>  <span class="c1"># noqa: E402,F401</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.ai_operations</span><span class="w"> </span><span class="kn">import</span> <span class="n">AIBudgetCounter</span><span class="p">,</span> <span class="n">AIUsageEvent</span><span class="p">,</span> <span class="n">AIUsageReservation</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.curriculum_expansion</span><span class="w"> </span><span class="kn">import</span> <span class="n">CurriculumCoverageSnapshot</span><span class="p">,</span> <span class="n">CurriculumExpansionRun</span><span class="p">,</span> <span class="n">TrainingDatasetEntry</span><span class="p">,</span> <span class="n">TrainingDatasetManifest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.ai_operations</span><span class="w"> </span><span class="kn">import</span> <span class="n">AIBudgetCounter</span><span class="p">,</span> <span class="n">AIUsageEvent</span><span class="p">,</span> <span class="n">AIUsageReservation</span>  <span class="c1"># noqa: E402, F401</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.curriculum_expansion</span><span class="w"> </span><span class="kn">import</span> <span class="n">CurriculumCoverageSnapshot</span><span class="p">,</span> <span class="n">CurriculumExpansionRun</span><span class="p">,</span> <span class="n">TrainingDatasetEntry</span><span class="p">,</span> <span class="n">TrainingDatasetManifest</span>  <span class="c1"># noqa: E402, F401</span>
 
 <span class="c1"># Phase 2R authoritative source, rights, inventory, and review ledgers</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.curriculum_authority</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa: F401</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.curriculum_authority</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa: E402, F401</span>
     <span class="n">CurriculumInventoryItem</span><span class="p">,</span>
     <span class="n">CurriculumInventoryVersion</span><span class="p">,</span>
     <span class="n">CurriculumReviewDecision</span><span class="p">,</span>
@@ -1322,7 +1322,7 @@
 <span class="p">)</span>
 
 <span class="c1"># Phase 2R gates 2R.2-2R.8 acquisition, extraction, corpus, grounding, and audit models</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.curriculum_grounding</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa: F401</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.curriculum_grounding</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa: E402, F401</span>
     <span class="n">CurriculumAnswerVerificationRecord</span><span class="p">,</span>
     <span class="n">CurriculumChunkVersion</span><span class="p">,</span>
     <span class="n">CurriculumClaimValidationRecord</span><span class="p">,</span>
@@ -1346,7 +1346,7 @@
     <span class="n">TutorGroundingRecord</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="c1"># Phase 02R Gate 2R.4 curriculum graph and reviewed mapping models</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.curriculum_graph</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa: F401</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.curriculum_graph</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa: E402, F401</span>
     <span class="n">CurriculumEdgeVersion</span><span class="p">,</span>
     <span class="n">CurriculumLanguageLink</span><span class="p">,</span>
     <span class="n">CurriculumMappingReviewEvent</span><span class="p">,</span>
