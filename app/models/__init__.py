@@ -20,7 +20,7 @@ try:
 except Exception:
     from enum import Enum as _Enum
 
-    class StrEnum(str, _Enum):
+    class StrEnum(str, _Enum):  # type: ignore[no-redef]
         pass
 
 import sqlalchemy as sa
