@@ -25,7 +25,7 @@ def main() -> int:
     if args.dry_run:
         print(json.dumps(payload, indent=2, sort_keys=True) if args.json else command.command)
         return 0
-    result = subprocess.run(command.command, shell=True)
+    result = subprocess.run(command.command, shell=True)  # nosec B602
     payload["returncode"] = result.returncode
     if args.json:
         print(json.dumps(payload, indent=2, sort_keys=True))

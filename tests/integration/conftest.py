@@ -5,7 +5,7 @@ import pytest
 pytestmark = pytest.mark.integration
 
 
-import pytest_asyncio
+import pytest_asyncio  # noqa: E402
 
 
 @pytest_asyncio.fixture(scope="session", autouse=True)

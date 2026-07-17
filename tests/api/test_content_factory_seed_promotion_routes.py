@@ -17,7 +17,7 @@ class FakeGate:
 
 
 class FakeSeedRun:
-    seed_run_id = uuid.uuid4(); scope_id = "grade4_mathematics_en"; dry_run = True; status = "blocked"; summary = {"errors": ["coverage red"]}
+    seed_run_id = uuid.uuid4(); scope_id = "grade4_mathematics_en"; dry_run = True; status = "blocked"; summary = {"errors": ["coverage red"]}  # noqa: E702
 
 
 class FakeSeedService:
@@ -38,9 +38,9 @@ def _fake_seed_service(): return FakeSeedService()
 
 @pytest.fixture(autouse=True)
 def clear_overrides():
-    app.dependency_overrides.clear(); app.openapi_schema = None
+    app.dependency_overrides.clear(); app.openapi_schema = None  # noqa: E702
     yield
-    app.dependency_overrides.clear(); app.openapi_schema = None
+    app.dependency_overrides.clear(); app.openapi_schema = None  # noqa: E702
 
 
 def test_seed_staging_fails_if_gate_unmet() -> None:

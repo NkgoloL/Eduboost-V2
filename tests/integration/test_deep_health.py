@@ -1,9 +1,9 @@
 import pytest
 pytestmark = pytest.mark.integration
 
-from fastapi.testclient import TestClient
+from fastapi.testclient import TestClient  # noqa: E402
 
-from app.api_v2 import app
+from app.api_v2 import app  # noqa: E402
 
 
 def test_deep_health_returns_ok_when_checks_pass(monkeypatch):

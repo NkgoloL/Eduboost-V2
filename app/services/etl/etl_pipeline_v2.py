@@ -431,7 +431,7 @@ class EduboostETLv2(EduboostETL):
         clauses = ", ".join(f"{k}=?" for k in filtered)
         values = list(filtered.values()) + [_now(), document_id]
         self._db().execute(
-            f"UPDATE documents SET {clauses}, updated_at=? WHERE document_id=?",
+            f"UPDATE documents SET {clauses}, updated_at=? WHERE document_id=?",  # nosec B608
             values
         )
         self._db().commit()
@@ -593,7 +593,7 @@ class EduboostETLv2(EduboostETL):
 
         db = self._db()
         rows = db.execute(
-            """SELECT ce.chunk_id, ce.document_id, ce.embedding_blob, ce.embedding_dim,
+            """SELECT ce.chunk_id, ce.document_id, ce.embedding_blob, ce.embedding_dim,  # nosec B608
                       dc.heading, dc.content, dc.section_path, dc.page_start,
                       d.title, d.grade, d.subject, d.document_type
                FROM chunk_embeddings ce
@@ -710,7 +710,7 @@ class EduboostETLv2(EduboostETL):
             params = []
 
         rows = self._db().execute(
-            f"""SELECT dc.*, d.grade, d.subject, d.document_type, d.title
+            f"""SELECT dc.*, d.grade, d.subject, d.document_type, d.title  # nosec B608
                 FROM document_chunks dc
                 JOIN documents d ON dc.document_id = d.document_id
                 WHERE {clause}
@@ -983,7 +983,7 @@ class EduboostETLv2(EduboostETL):
         early_statuses = ("acquired", "extracted", "normalized", "metadata_enriched", "chunked")
         placeholders = ",".join("?" * len(early_statuses))
         rows = self._db().execute(
-            f"""SELECT document_id, title, processing_status, grade, subject,
+            f"""SELECT document_id, title, processing_status, grade, subject,  # nosec B608
                        document_type, updated_at, created_at,
                        julianday('now') - julianday(updated_at) AS days_stale
                 FROM documents

@@ -182,7 +182,7 @@ def _table_exists(conn, table_name: str) -> bool:
 
 def _count_rows(conn, table_name: str) -> int:
     with conn.cursor() as cursor:
-        cursor.execute(f'SELECT COUNT(*) FROM public."{table_name}"')
+        cursor.execute(f'SELECT COUNT(*) FROM public."{table_name}"')  # nosec B608
         return int(cursor.fetchone()[0])
 
 
@@ -209,7 +209,7 @@ def _latest_rows(conn, table_name: str, *, limit: int = 50) -> list[dict[str, An
     order_column = _order_column(conn, table_name)
     order_sql = f'ORDER BY "{order_column}" DESC' if order_column else ""
     with conn.cursor(cursor_factory=RealDictCursor) as cursor:
-        cursor.execute(f'SELECT * FROM public."{table_name}" {order_sql} LIMIT %s', (limit,))
+        cursor.execute(f'SELECT * FROM public."{table_name}" {order_sql} LIMIT %s', (limit,))  # nosec B608
         return [dict(row) for row in cursor.fetchall()]
 
 

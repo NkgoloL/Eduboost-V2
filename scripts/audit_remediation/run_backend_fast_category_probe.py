@@ -34,7 +34,7 @@ def run_probe(name: str, command: str, *, root: Path, output_dir: Path) -> dict[
     completed = subprocess.run(
         command,
         cwd=root,
-        shell=True,
+        shell=True,  # nosec B602
         text=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,

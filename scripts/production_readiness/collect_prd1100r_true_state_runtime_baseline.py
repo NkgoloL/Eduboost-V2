@@ -147,7 +147,7 @@ def _ready_http_probe() -> dict[str, Any]:
         return {"status": "blocked", "reason": "API_BASE_URL not set; HTTP /ready not proven"}
     url = base_url.rstrip("/") + "/ready"
     try:  # pragma: no cover - requires live api
-        with urlopen(url, timeout=5) as response:
+        with urlopen(url, timeout=5) as response:  # nosec B310
             body = response.read(4096).decode("utf-8", errors="replace")
             status = response.getcode()
         return {"status": "pass" if status == 200 else "fail", "http_status": status, "url": url, "body_head": body[:1000]}

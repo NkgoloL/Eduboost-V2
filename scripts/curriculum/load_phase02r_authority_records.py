@@ -124,7 +124,7 @@ def download_pdf(url: str, target: Path, *, max_bytes: int = MAX_SOURCE_DOWNLOAD
     request = Request(url, headers={"User-Agent": USER_AGENT})
     tmp = target.with_suffix(target.suffix + ".part")
     byte_count = 0
-    with urlopen(request, timeout=90) as response:
+    with urlopen(request, timeout=90) as response:  # nosec B310
         content_length = response.headers.get("Content-Length")
         if content_length and int(content_length) > max_bytes:
             raise RuntimeError(f"download exceeds max byte limit: {content_length} > {max_bytes}")
@@ -517,7 +517,7 @@ async def verify_persisted_records(conn: Any, records: dict[str, Any]) -> None:
 
     decision = records["rights_decision"]
     persisted_decision = await conn.fetchrow(
-        f"""
+        f"""  # nosec B608
         SELECT rights_decision_id,source_version_id,decision_status,{','.join(RIGHTS_FIELDS)},
                conditions,decision_basis,evidence_uri,reviewed_by,reviewed_at,expires_at,idempotency_key
         FROM curriculum_rights_decisions

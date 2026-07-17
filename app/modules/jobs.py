@@ -382,7 +382,7 @@ async def run_database_backup(ctx: dict[str, Any]) -> dict[str, Any]:
 
         # Ensure script is executable
         if not os.access(script_path, os.X_OK):
-            os.chmod(script_path, 0o755)
+            os.chmod(script_path, 0o755)  # nosec B103
 
         # Run the script
         result = subprocess.run(

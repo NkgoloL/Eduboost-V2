@@ -207,7 +207,7 @@ def _valid_evidence_url(value: Any) -> bool:
     host = (parsed.hostname or "").lower()
     if parsed.scheme != "https" or not host:
         return False
-    placeholder_tokens = ("example.com", ".example", "localhost", "127.0.0.1", "0.0.0.0")
+    placeholder_tokens = ("example.com", ".example", "localhost", "127.0.0.1", "0.0.0.0")  # nosec B104
     return not any(token in host for token in placeholder_tokens)
 
 

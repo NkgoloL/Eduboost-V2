@@ -2,11 +2,11 @@ from __future__ import annotations
 import pytest
 pytestmark = pytest.mark.integration
 
-from pathlib import Path
+from pathlib import Path  # noqa: E402
 
-import pytest
+import pytest  # noqa: E402
 
-from scripts.check_cluster_g_frontend_evidence import run_checks
+from scripts.check_cluster_g_frontend_evidence import run_checks  # noqa: E402
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]

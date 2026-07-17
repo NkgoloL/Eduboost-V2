@@ -70,7 +70,7 @@ PLACEHOLDER_TOKENS = {
     "change-me",
     "localhost",
     "127.0.0.1",
-    "0.0.0.0",
+    "0.0.0.0",  # nosec B104
     "::1",
     "real_run_id",
     "run_id",

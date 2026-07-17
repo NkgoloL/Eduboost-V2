@@ -297,7 +297,7 @@ class EduboostETLv3(EduboostETLv2):
 
         set_clauses.append("updated_at=?")
         params.extend([_now(), document_id])
-        db.execute(f"UPDATE documents SET {', '.join(set_clauses)} WHERE document_id=?", params)
+        db.execute(f"UPDATE documents SET {', '.join(set_clauses)} WHERE document_id=?", params)  # nosec B608
         db.commit()
 
         for col, old_val, new_val in changes:

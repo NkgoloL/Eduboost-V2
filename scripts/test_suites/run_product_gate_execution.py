@@ -33,7 +33,7 @@ def main() -> int:
     for item in commands:
         for kind in ("positive", "negative"):
             command = item[f"{kind}_command"]
-            completed = subprocess.run(command, shell=True, text=True, capture_output=True)
+            completed = subprocess.run(command, shell=True, text=True, capture_output=True)  # nosec B602
             results.append({
                 "flow_id": item["flow_id"],
                 "kind": kind,

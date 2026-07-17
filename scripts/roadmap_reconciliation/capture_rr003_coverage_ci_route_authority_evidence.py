@@ -64,7 +64,7 @@ def _parse_coverage_xml(path: Path) -> dict[str, Any]:
     if not path.exists():
         return {"exists": False, "coverage_percent": None, "error": f"missing coverage xml: {path}"}
     try:
-        root = ET.parse(path).getroot()
+        root = ET.parse(path).getroot()  # nosec B314
         line_rate = float(root.attrib.get("line-rate", "0"))
         branch_rate = float(root.attrib.get("branch-rate", "0")) if "branch-rate" in root.attrib else None
         return {

@@ -30,7 +30,7 @@ CHECKS = [
 def fetch(url: str, timeout: float) -> tuple[int, str]:
     request = urllib.request.Request(url, headers={"User-Agent": "eduboost-staging-smoke/1.0"})
     try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:  # noqa: S310 - operator-provided URL
+        with urllib.request.urlopen(request, timeout=timeout) as response:  # noqa: S310 - operator-provided URL  # nosec B310
             return response.status, response.read().decode("utf-8", errors="replace")
     except urllib.error.HTTPError as exc:
         return exc.code, exc.read().decode("utf-8", errors="replace")

@@ -144,7 +144,7 @@ def http_probe(base_url: str, path: str, timeout: int, *, method: str = "GET") -
     body = ""
     try:
         req = Request(url, headers={"User-Agent": "EduBoost-Phase16-Seeded-E2E/1.0"}, method=method)
-        with urlopen(req, timeout=timeout) as response:
+        with urlopen(req, timeout=timeout) as response:  # nosec B310
             body = response.read(8 * 1024 * 1024).decode("utf-8", errors="replace")
             result["status_code"] = int(getattr(response, "status", 0))
             result["body_excerpt"] = body[:4000]

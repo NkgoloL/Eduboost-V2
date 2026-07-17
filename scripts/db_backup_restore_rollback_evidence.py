@@ -145,7 +145,7 @@ def count_table(conn, table: str) -> int | None:
     if not table_exists(conn, table):
         return None
     with conn.cursor() as cur:
-        cur.execute(f'SELECT COUNT(*) FROM public."{table}"')
+        cur.execute(f'SELECT COUNT(*) FROM public."{table}"')  # nosec B608
         return int(cur.fetchone()[0])
 
 

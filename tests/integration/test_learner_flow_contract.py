@@ -3,15 +3,15 @@ import pytest
 pytestmark = pytest.mark.integration
 
 
-import asyncio
+import asyncio  # noqa: E402
 
-import pytest
-from httpx import ASGITransport, AsyncClient
+import pytest  # noqa: E402
+from httpx import ASGITransport, AsyncClient  # noqa: E402
 
-from app.api_v2 import app
-from app.core.config import settings
-from app.core.jobs import run_job, create_job
-from unittest.mock import patch
+from app.api_v2 import app  # noqa: E402
+from app.core.config import settings  # noqa: E402
+from app.core.jobs import run_job, create_job  # noqa: E402
+from unittest.mock import patch  # noqa: E402
 
 
 async def _poll_job(client: AsyncClient, token: str, job_id: str) -> dict:

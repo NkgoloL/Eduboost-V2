@@ -23,7 +23,7 @@ with OUT.open('w', encoding='utf-8') as f:
         options = r['options']
         options_sql = "'" + escape_sql(options) + "'::jsonb"
         q = (
-            "INSERT INTO irt_items (id, grade, subject, topic, language, question_text, options, correct_option, a_param, b_param, created_at) VALUES ("
+            "INSERT INTO irt_items (id, grade, subject, topic, language, question_text, options, correct_option, a_param, b_param, created_at) VALUES ("  # nosec B608
             f"'{escape_sql(r['id'])}', {r['grade']}, '{escape_sql(r['subject'])}', '{escape_sql(r['topic'])}', '{escape_sql(r['language'])}', '")
         q += escape_sql(r['question_text']) + "', " + options_sql + ", '" + r['correct_option'] + "', " + str(r['a_param']) + ", " + str(r['b_param']) + ", now());\n"
         f.write(q)

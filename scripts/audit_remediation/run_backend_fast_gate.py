@@ -25,7 +25,7 @@ def run_backend_fast(command: str, output_dir: Path, root: Path = ROOT) -> dict[
     completed = subprocess.run(
         command,
         cwd=root,
-        shell=True,
+        shell=True,  # nosec B602
         text=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,

@@ -24,7 +24,7 @@ os.environ["ENVIRONMENT"] = "test"
 os.environ["DEBUG"] = "false"
 
 # Register governance auto-marking (see tests/governance_markers.py).
-from tests import governance_markers as _governance_markers  # noqa: F401
+from tests import governance_markers as _governance_markers  # noqa: E402, F401
 
 pytest_collection_modifyitems = _governance_markers.pytest_collection_modifyitems
 

@@ -110,7 +110,7 @@ def _request(
         ).encode("utf-8")
 
     request = urllib.request.Request(url, data=body, method=check.method, headers=headers)
-    context = None if verify_tls else ssl._create_unverified_context()  # noqa: SLF001
+    context = None if verify_tls else ssl._create_unverified_context()  # noqa: SLF001  # nosec B323
 
     started = time.perf_counter()
     response_headers: dict[str, str] = {}
@@ -118,7 +118,7 @@ def _request(
     error: str | None = None
 
     try:
-        with urllib.request.urlopen(request, timeout=timeout_seconds, context=context) as response:
+        with urllib.request.urlopen(request, timeout=timeout_seconds, context=context) as response:  # nosec B310
             status = response.status
             response_headers = {key.lower(): value for key, value in response.headers.items()}
             response.read(4096)

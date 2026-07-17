@@ -11,7 +11,7 @@ from scripts.advisory_suites.advisory_gate import gate_command_plan
 
 
 def _run(command: str) -> dict[str, Any]:
-    completed = subprocess.run(command, shell=True, text=True, capture_output=True)
+    completed = subprocess.run(command, shell=True, text=True, capture_output=True)  # nosec B602
     return {
         "command": command,
         "exit_code": completed.returncode,

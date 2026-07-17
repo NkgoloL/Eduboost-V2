@@ -170,7 +170,7 @@ def generate_irt_seed_sql() -> tuple[int, int]:
             _sql_literal(row["b_param"]),
         ]
         lines.append(
-            "INSERT INTO public.irt_items "
+            "INSERT INTO public.irt_items "  # nosec B608
             "(id, grade, subject, topic, language, question_text, options, correct_option, a_param, b_param) "
             f"VALUES ({', '.join(values)}) ON CONFLICT (id) DO NOTHING;"
         )

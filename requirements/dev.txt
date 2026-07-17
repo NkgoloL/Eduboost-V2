@@ -6,7 +6,7 @@
 #
 aiohappyeyeballs==2.7.1
     # via aiohttp
-aiohttp==3.13.5
+aiohttp==3.14.1
     # via
     #   -r requirements/base.in
     #   -r requirements/dev.in
@@ -48,7 +48,7 @@ azure-core==1.40.0
     # via
     #   azure-identity
     #   azure-keyvault-secrets
-azure-identity==1.16.0
+azure-identity==1.16.1
     # via -r requirements/base.in
 azure-keyvault-secrets==4.8.0
     # via -r requirements/base.in
@@ -62,7 +62,7 @@ beautifulsoup4==4.12.3
     # via
     #   -r requirements/base.in
     #   -r requirements/dev.in
-bleach==6.1.0
+bleach==6.4.0
     # via -r requirements/base.in
 boto3==1.34.110
     # via -r requirements/base.in
@@ -321,7 +321,7 @@ pyjwt[crypto]==2.12.1
     # via
     #   -r requirements/base.in
     #   msal
-pypdf==5.4.0
+pypdf==6.13.3
     # via -r requirements/base.in
 pyproject-hooks==1.2.0
     # via
@@ -356,7 +356,7 @@ python-dateutil==2.9.0
     #   pandas
 python-discovery==1.2.2
     # via virtualenv
-python-dotenv==1.0.1
+python-dotenv==1.2.2
     # via
     #   -r requirements/base.in
     #   mcp
@@ -364,7 +364,7 @@ python-dotenv==1.0.1
     #   uvicorn
 python-http-client==3.3.7
     # via sendgrid
-python-multipart==0.0.9
+python-multipart==0.0.31
     # via
     #   -r requirements/base.in
     #   fastapi
@@ -424,9 +424,7 @@ sentry-sdk[fastapi]==2.59.0
 shellingham==1.5.4
     # via typer
 six==1.17.0
-    # via
-    #   bleach
-    #   python-dateutil
+    # via python-dateutil
 slowapi==0.1.9
     # via -r requirements/base.in
 sniffio==1.3.1
@@ -469,6 +467,7 @@ typer==0.25.1
     #   mcp
 typing-extensions==4.15.0
     # via
+    #   aiohttp
     #   aiosignal
     #   alembic
     #   anthropic

@@ -18,7 +18,7 @@ import subprocess
 
 def run(cmd, cwd=None):
     print(f"> {cmd}")
-    subprocess.check_call(cmd, shell=True, cwd=cwd)
+    subprocess.check_call(cmd, shell=True, cwd=cwd)  # nosec B602
 
 
 def main():

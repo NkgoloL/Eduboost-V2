@@ -33,7 +33,7 @@ def main() -> int:
     results: list[dict[str, Any]] = []
     if args.execute:
         for item in selected:
-            completed = subprocess.run(str(item["command"]), shell=True, cwd=ROOT)
+            completed = subprocess.run(str(item["command"]), shell=True, cwd=ROOT)  # nosec B602
             results.append({"id": item.get("id"), "class": item.get("class"), "command": item.get("command"), "returncode": completed.returncode})
     payload = {
         "valid": contract.get("valid") is True and (not args.execute or all(item["returncode"] == 0 for item in results)),

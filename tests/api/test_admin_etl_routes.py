@@ -15,9 +15,9 @@ def _admin_user():
 
 @pytest.fixture(autouse=True)
 def clear_overrides():
-    app.dependency_overrides.clear(); app.openapi_schema = None
+    app.dependency_overrides.clear(); app.openapi_schema = None  # noqa: E702
     yield
-    app.dependency_overrides.clear(); app.openapi_schema = None
+    app.dependency_overrides.clear(); app.openapi_schema = None  # noqa: E702
 
 
 def test_admin_etl_status_requires_admin() -> None:

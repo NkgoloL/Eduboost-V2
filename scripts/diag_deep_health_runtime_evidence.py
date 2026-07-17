@@ -17,7 +17,7 @@ OUT_JSON = ROOT / "docs/release/diag_deep_health_runtime_status.json"
 OUT_MD = ROOT / "docs/release/diag_deep_health_runtime_status.md"
 ACCEPTED_STATUS = "diag-deep-health-runtime-accepted"
 NOT_ACCEPTED_STATUS = "diag-deep-health-runtime-not-accepted"
-PLACEHOLDER_TOKENS = {"example.com", "localhost", "127.0.0.1", "0.0.0.0", "<", ">", "REAL_", "TODO", "TBD", "..."}
+PLACEHOLDER_TOKENS = {"example.com", "localhost", "127.0.0.1", "0.0.0.0", "<", ">", "REAL_", "TODO", "TBD", "..."}  # nosec B104
 REQUIRED_COMPONENT_RESULTS = {
     "db": "DIAG_DEEP_HEALTH_DB_RESULT",
     "migration": "DIAG_DEEP_HEALTH_MIGRATION_RESULT",
@@ -92,7 +92,7 @@ def http_get(url: str, timeout_seconds: int = 20) -> HttpProbe:
         return HttpProbe(False, None, "", "URL missing")
     try:
         request = Request(url, headers={"User-Agent": "EduBoost-Deep-Health-Evidence/1.0"})
-        with urlopen(request, timeout=timeout_seconds) as response:
+        with urlopen(request, timeout=timeout_seconds) as response:  # nosec B310
             body = response.read(65536).decode("utf-8", errors="replace")
             return HttpProbe(True, int(getattr(response, "status", 0)), body, "")
     except HTTPError as exc:

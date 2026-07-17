@@ -4,16 +4,16 @@ import pytest
 pytestmark = pytest.mark.integration
 
 
-from datetime import datetime, timedelta, timezone
-from types import SimpleNamespace
+from datetime import datetime, timedelta, timezone  # noqa: E402
+from types import SimpleNamespace  # noqa: E402
 
-from fastapi.testclient import TestClient
+from fastapi.testclient import TestClient  # noqa: E402
 
-from app.api_v2 import app
-from app.api_v2_deps.auth import AuthContext, TokenType, require_auth_context
-from app.api_v2_routers import lessons as lessons_router
-from app.core.database import get_db
-from app.models import UserRole
+from app.api_v2 import app  # noqa: E402
+from app.api_v2_deps.auth import AuthContext, TokenType, require_auth_context  # noqa: E402
+from app.api_v2_routers import lessons as lessons_router  # noqa: E402
+from app.core.database import get_db  # noqa: E402
+from app.models import UserRole  # noqa: E402
 
 
 def test_lesson_sync_processes_completion_and_feedback(monkeypatch):

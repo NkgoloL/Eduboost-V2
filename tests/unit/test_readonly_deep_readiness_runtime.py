@@ -4,10 +4,10 @@ class R:
     def scalar(self): return 1
 class S:
     def __init__(self): self.statements=[]
-    async def execute(self, statement): self.statements.append(str(statement)); return R()
+    async def execute(self, statement): self.statements.append(str(statement)); return R()  # noqa: E702
 def test_deep_readiness_sql_is_read_only():
     async def run():
-        s=S(); result=await run_deep_readiness_runtime_checks(db_session=s, required_tables=("users",))
-        assert result.status=="pass"; joined=" ".join(s.statements).lower()
+        s=S(); result=await run_deep_readiness_runtime_checks(db_session=s, required_tables=("users",))  # noqa: E702
+        assert result.status=="pass"; joined=" ".join(s.statements).lower()  # noqa: E702
         assert "select" in joined and "insert" not in joined and "update" not in joined and "delete" not in joined
     asyncio.run(run())

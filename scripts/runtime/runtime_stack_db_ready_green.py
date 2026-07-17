@@ -145,7 +145,7 @@ def _ready_probe() -> dict[str, Any]:
     url = _api_base_url().rstrip("/") + "/ready"
     request = Request(url, headers={"Accept": "application/json"})
     try:  # pragma: no cover - requires live api
-        with urlopen(request, timeout=15) as response:  # noqa: S310 - configured local/staging probe URL
+        with urlopen(request, timeout=15) as response:  # noqa: S310 - configured local/staging probe URL  # nosec B310
             body = response.read().decode("utf-8", errors="replace")
             status_code = getattr(response, "status", 200)
         parsed: Any

@@ -7,18 +7,18 @@ pytestmark = pytest.mark.integration
 Verifies the FastAPI V2 route surface using TestClient — no live DB or Redis.
 All service-layer dependencies are overridden via FastAPI dependency injection.
 """
-import uuid
-from unittest.mock import AsyncMock, patch
+import uuid  # noqa: E402
+from unittest.mock import AsyncMock, patch  # noqa: E402
 
-import pytest
-from fastapi.testclient import TestClient
+import pytest  # noqa: E402
+from fastapi.testclient import TestClient  # noqa: E402
 
-from app.api_v2 import app
-from app.api_v2_deps.auth import AuthContext, TokenType
-from app.api_v2_routers import lessons as lessons_router
-from app.domain.schemas import AuditLogEntry
-from datetime import datetime, timedelta, timezone
-from app.models import UserRole
+from app.api_v2 import app  # noqa: E402
+from app.api_v2_deps.auth import AuthContext, TokenType  # noqa: E402
+from app.api_v2_routers import lessons as lessons_router  # noqa: E402
+from app.domain.schemas import AuditLogEntry  # noqa: E402
+from datetime import datetime, timedelta, timezone  # noqa: E402
+from app.models import UserRole  # noqa: E402
 
 
 LEARNER_ID = str(uuid.uuid4())
