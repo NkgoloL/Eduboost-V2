@@ -96,7 +96,7 @@ async def test_practice_session_updates_survive_restart_cycle(async_db_session):
 
     assert session2.cursor == 1
     assert len(session2.responses) == 1
-    assert session2.responses[0]["correct"] == True
+    assert session2.responses[0]["correct"] is True
 
 
 @pytest.mark.asyncio
@@ -254,7 +254,7 @@ async def test_mark_completed_sets_timestamp(async_db_session):
     result = await repo.mark_completed(session.id)
     await async_db_session.commit()
 
-    assert result == True
+    assert result is True
 
     # Retrieve and verify timestamp is set
     updated = await repo.get_by_id(session.id)

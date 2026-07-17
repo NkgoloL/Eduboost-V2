@@ -11,7 +11,7 @@ import hashlib
 import json
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 KG1_GRAPH_ID = "KG-1-CAPS-GRAPH-FOUNDATION-GRADE-4-MATHEMATICS"
 KG1_GRAPH_VERSION = "kg1-caps-graph-foundation-v1"

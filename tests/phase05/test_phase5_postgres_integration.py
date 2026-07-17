@@ -8,7 +8,7 @@ from sqlalchemy import select, text
 from sqlalchemy.exc import DBAPIError, IntegrityError
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
-from app.models.tutor import TutorEscalation, TutorMessage, TutorSession
+from app.models.tutor import TutorEscalation, TutorMessage
 from app.modules.lessons.budget_guardrails import BudgetConfig, BudgetGuardrails
 from app.services.learner_tutor import LearnerTutorService
 from app.services.llm_provider import GenerationResult, TokenUsage

@@ -381,7 +381,7 @@ class ContentStagingSeedExecutor:
         )
 
     async def list_seed_runs(self, session: AsyncSession, *, scope_id: str | None = None, limit: int = 50, offset: int = 0) -> StagingSeedRunPage:
-        stmt = select(ContentSeedRun).where(ContentSeedRun.dry_run == False)
+        stmt = select(ContentSeedRun).where(ContentSeedRun.dry_run is False)
         if scope_id:
             stmt = stmt.where(ContentSeedRun.scope_id == scope_id)
 

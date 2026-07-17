@@ -432,7 +432,7 @@ def validate_graph_grounded_generation_pack(pack: dict[str, Any]) -> dict[str, A
     lesson_keys = {item.get("lesson_key") for item in lessons}
     assessment_keys = {item.get("assessment_key") for item in assessments}
     intervention_keys = {item.get("intervention_key") for item in lessons}
-    gap_keys = {item.get("gap_key") for item in lessons}
+    {item.get("gap_key") for item in lessons}
 
     if len(lesson_keys) != len(lessons):
         errors.append("duplicate lesson keys found")

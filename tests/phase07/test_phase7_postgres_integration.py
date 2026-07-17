@@ -2,11 +2,10 @@ from __future__ import annotations
 
 import os
 import uuid
-from types import SimpleNamespace
 
 import pytest
 from sqlalchemy import text
-from sqlalchemy.exc import DBAPIError, IntegrityError
+from sqlalchemy.exc import DBAPIError
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from app.models.content_factory import (
@@ -16,7 +15,6 @@ from app.models.content_factory import (
     ContentGenerationArtifact,
 )
 from app.domain.content_coverage import ContentLayer
-from app.models.curriculum_expansion import TrainingDatasetEntry, TrainingDatasetManifest
 from app.services.curriculum_expansion import TrainingDatasetGovernanceService
 
 

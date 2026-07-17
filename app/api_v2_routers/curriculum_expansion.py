@@ -4,7 +4,6 @@ from __future__ import annotations
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api_v2_deps.auth import AuthContext, require_admin
@@ -19,7 +18,7 @@ from app.domain.curriculum_expansion_schemas import (
     TrainingManifestCreateRequest,
     TrainingManifestResponse,
 )
-from app.models.curriculum_expansion import CurriculumCoverageSnapshot, TrainingDatasetManifest
+from app.models.curriculum_expansion import TrainingDatasetManifest
 from app.services.curriculum_expansion import CurriculumExpansionService, TrainingDatasetGovernanceService
 
 router = APIRouter(

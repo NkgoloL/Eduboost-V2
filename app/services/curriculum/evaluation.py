@@ -222,7 +222,6 @@ def build_gate2r8_evaluation_cases() -> tuple[RetrievalEvaluationCase, ...]:
     for idx in range(MIN_POSITIVE_CASES):
         strand = strands[idx % len(strands)]
         expected = f"chunk-g4math-{strand}-{idx:02d}"
-        distractor = f"chunk-g4math-{strand}-support-{idx:02d}"
         cases.append(
             RetrievalEvaluationCase(
                 case_id=f"positive-{idx:02d}",

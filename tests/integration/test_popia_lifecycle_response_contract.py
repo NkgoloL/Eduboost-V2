@@ -9,7 +9,6 @@ from typing import Any
 import pytest
 from fastapi import HTTPException
 
-from app.api_v2_deps.consent_lifecycle import get_canonical_consent_service
 from app.api_v2_routers import popia
 from app.domain.consent import ConsentRecord, ConsentState
 from app.services.popia_consent_lifecycle_adapter import POPIAConsentLifecycleAdapter

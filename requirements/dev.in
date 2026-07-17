@@ -26,3 +26,6 @@ mcp[cli]>=1.9.4
 
 aiohttp==3.13.5
 beautifulsoup4==4.12.3
+
+# Align greenlet version with base.txt to resolve audit and runtime conflicts
+greenlet==3.0.3

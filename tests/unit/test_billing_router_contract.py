@@ -58,7 +58,7 @@ class DummyRequest:
 @pytest.mark.unit
 def test_create_checkout_delegates_to_stripe_service():
     stripe = FakeStripeService()
-    audit = FakeFourthEstate()
+    FakeFourthEstate()
     billing.StripeService = lambda _db: stripe  # type: ignore[misc,assignment]
 
     async def run() -> None:
