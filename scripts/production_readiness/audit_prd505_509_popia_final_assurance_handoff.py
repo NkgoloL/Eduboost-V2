@@ -43,8 +43,8 @@ def _previous_prd5_foundation_valid(root: Path) -> bool:
         result = audit_prd500(root)
         if result.get("valid") or result.get("authority_valid"):
             return True
-    except Exception:
-        pass
+    except Exception:  # best-effort probe, cannot fail-close
+            pass
 
     record = root / "docs/roadmap/production_readiness/prd_500_504_popia_live_data_privacy_ops_foundation_record.json"
     if not record.exists():

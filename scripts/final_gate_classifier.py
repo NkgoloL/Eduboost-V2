@@ -174,8 +174,8 @@ def _load_yaml() -> dict[str, Any]:
         data = yaml.safe_load(text) or {}
         if isinstance(data, dict):
             return data
-    except Exception:
-        pass
+    except Exception:  # best-effort probe, cannot fail-close
+            pass
     return {"findings": _parse_registry_fallback(text)}
 
 
@@ -219,8 +219,8 @@ def _read_json_status(path: Path, keys: tuple[str, ...] = ("status", "beta_decis
             for key in keys:
                 if key in data:
                     return str(data[key])
-    except Exception:
-        pass
+    except Exception:  # best-effort probe, cannot fail-close
+            pass
     return path.stem
 
 

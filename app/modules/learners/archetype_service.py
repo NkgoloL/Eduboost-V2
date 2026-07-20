@@ -154,7 +154,7 @@ class ArchetypeService:
             ::
 
                 questions = svc.get_onboarding_questions()
-                assert len(questions) == 5
+                if not (len(questions) == 5): raise AssertionError("assertion failed")
         """
         return ONBOARDING_QUESTIONS
 
@@ -185,7 +185,7 @@ class ArchetypeService:
                     {"question_id": 4, "answer": "B"},
                     {"question_id": 5, "answer": "A"},
                 ])
-                assert isinstance(label, ArchetypeLabel)
+                if not (isinstance(label, ArchetypeLabel)): raise AssertionError("assertion failed")
         """
         scores = self.posterior_distribution(answers)
         best = max(scores, key=scores.get)
@@ -214,7 +214,7 @@ class ArchetypeService:
                 scores = svc.posterior_distribution([
                     {"question_id": 1, "answer": "B"},
                 ])
-                assert abs(sum(scores.values()) - 1.0) < 0.01
+                if not (abs(sum(scores.values()) - 1.0) < 0.01): raise AssertionError("assertion failed")
         """
         posterior: dict[str, float] = {a.value: 1.0 / len(ArchetypeLabel) for a in ArchetypeLabel}
         for answer in answers:
@@ -249,7 +249,7 @@ class ArchetypeService:
                     "Explain multiplication.",
                     ArchetypeLabel.HOD,
                 )
-                assert "diagrams" in modified.lower()
+                if not ("diagrams" in modified.lower()): raise AssertionError("assertion failed")
         """
         modifiers = {
             ArchetypeLabel.KETER: "Use abstract reasoning and philosophical framing.",

@@ -42,8 +42,8 @@ def _previous_prd4_foundation_valid(root: Path) -> bool:
         result = audit_prd400(root)
         if result.get("valid") or result.get("authority_valid"):
             return True
-    except Exception:
-        pass
+    except Exception:  # best-effort probe, cannot fail-close
+            pass
 
     # Archival compatibility: once later PRD streams advance the global
     # production-readiness register, the PRD-4.0-4.4 audit may no longer be

@@ -239,7 +239,7 @@ class AuditRepository:
             persisted_previous_event_hash,
             signature,
         )
-        assert row is not None
+        if not (row is not None): raise AssertionError("assertion failed")
         return row
 
     async def get_by_resource(

@@ -214,8 +214,8 @@ def _migration_revision_info(path: Path) -> dict[str, Any]:
                     revision = ast.literal_eval(node.value)
                 if "down_revision" in names:
                     down_revision = ast.literal_eval(node.value)
-    except Exception:
-        pass
+    except Exception:  # best-effort probe, cannot fail-close
+            pass
     return {
         "path": str(path),
         "revision": revision,

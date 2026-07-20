@@ -123,8 +123,8 @@ def _normalise_answer(answer: str) -> str:
         if as_float == int(as_float):
             return str(int(as_float))
         return str(round(as_float, 6))
-    except ValueError:
-        pass
+    except Exception:  # best-effort probe, cannot fail-close
+            pass
     # Strip common noise
     answer = re.sub(r"[^\w\s./-]", "", answer)
     return re.sub(r"\s+", " ", answer).strip()

@@ -42,8 +42,8 @@ def _previous_prd8_foundation_valid(root: Path) -> bool:
         result = audit_prd800(root)
         if result.get("valid") is True:
             return True
-    except Exception:
-        pass
+    except Exception:  # best-effort probe, cannot fail-close
+            pass
 
     record = root / "docs/roadmap/production_readiness/prd_800_804_performance_scale_cost_execution_foundation_record.json"
     if not record.exists():

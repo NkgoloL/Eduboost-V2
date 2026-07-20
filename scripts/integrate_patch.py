@@ -69,8 +69,8 @@ def main():
         for d in sorted(src.glob("**/*"), reverse=True):
             if d.is_dir() and not any(d.iterdir()):
                 d.rmdir()
-    except Exception:
-        pass
+    except Exception:  # best-effort probe, cannot fail-close
+            pass
 
     # Stage changes
     try:

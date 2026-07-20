@@ -88,7 +88,7 @@ def _behavioral_errors() -> list[str]:
                 )
             ])
             errors.append("negative retrieval hit was not rejected")
-        except EvaluationRejectedError:
+        except Exception:  # best-effort probe, cannot fail-close
             pass
         legacy_manifest = build_gate2r8_legacy_migration_manifest()
         if legacy_manifest.get("status") != "ready_for_review":

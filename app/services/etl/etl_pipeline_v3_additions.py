@@ -407,8 +407,7 @@ class EduboostETLv3(EduboostETLv2):
         Split a training dataset into train / validation / test subsets.
         Creates three child datasets linked via dataset_splits.
         """
-        assert abs(train + val + test - 1.0) < 1e-6, "Split ratios must sum to 1.0"
-
+        if not (abs(train + val + test - 1.0) < 1e-6): raise AssertionError("Split ratios must sum to 1.0")
         db = self._db()
         parent = db.execute(
             "SELECT * FROM training_datasets WHERE dataset_id=?", (dataset_id,)

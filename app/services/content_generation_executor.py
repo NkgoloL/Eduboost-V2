@@ -157,8 +157,8 @@ class ContentGenerationExecutor:
                         from app.models.content_factory import ContentArtifactStatus
 
                         artifact.status = ContentArtifactStatus.VALIDATION_FAILED
-                    except Exception:
-                        pass
+                    except Exception:  # best-effort probe, cannot fail-close
+            pass
             artifact_ids.append(artifact.artifact_id)
             existing_hashes.add(artifact.artifact_hash)
 
