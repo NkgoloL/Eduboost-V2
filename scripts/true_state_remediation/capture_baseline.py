@@ -1,5 +1,6 @@
 from __future__ import annotations
-import argparse, json, re, subprocess
+import argparse, json, re
+from scripts._subprocess import run
 from pathlib import Path
 from scripts.true_state_remediation.core import atomic_write_json, environment_manifest, git_state, root_from, sha256_file, utc_now
 

@@ -15,6 +15,7 @@ Usage:
 """
 from __future__ import annotations
 
+import os
 import shutil
 import subprocess
 import sys
@@ -26,13 +27,15 @@ from typing import Any
 def _resolve(cmd: Sequence[str]) -> list[str]:
     """Resolve first element via shutil.which to prevent PATH-hijacking.
 
-    Bandit B607 flags partial-path binaries (e.g. "git" without full path).
-    In EduBoost's container images PATH is fixed and trusted, but resolving
-    with shutil.which eliminates the theoretical risk.
+    Searches both the system PATH and the active venv bin directory so that
+    both activated and un-activated venv sessions work correctly.
     """
     if not cmd:
         return list(cmd)
-    resolved = shutil.which(cmd[0])
+    # Add venv bin/ to PATH so shutil.which finds console_scripts (alembic, mypy, etc.)
+    venv_bin = str(Path(sys.executable).parent.resolve())
+    extra_path = venv_bin + os.pathsep + os.environ.get("PATH", "")
+    resolved = shutil.which(cmd[0], path=extra_path)
     if resolved:
         return [resolved, *list(cmd[1:])]
     return list(cmd)

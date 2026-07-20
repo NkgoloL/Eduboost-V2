@@ -1,5 +1,6 @@
 from __future__ import annotations
-import json, subprocess, sys
+import json, sys
+from scripts._subprocess import run
 from pathlib import Path
 from scripts.true_state_remediation.core import (
  BundleError, atomic_write_json, environment_manifest, load_json, register_path, require_manual_evidence,

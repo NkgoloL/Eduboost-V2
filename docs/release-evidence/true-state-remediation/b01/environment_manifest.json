@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-07-17T16:29:17.127987+00:00",
+  "captured_at": "2026-07-20T08:43:04.495903+00:00",
   "docker": {
     "available": true,
     "exit_code": 0,
@@ -12,20 +12,20 @@
   },
   "git": {
     "available": true,
-    "branch": "master",
+    "branch": "fix/tsr-b01-gate-remediation",
     "clean": false,
-    "commit": "f3b9855d3e5d9c41481da03d9e095054dfe9d644",
-    "status_porcelain": "M app/frontend/package.json\n M app/frontend/pnpm-lock.yaml\n M docs/release-evidence/true-state-remediation/b01/apply/capture_baseline.json\n M docs/release-evidence/true-state-remediation/b01/baseline_manifest.json\n M docs/release-evidence/true-state-remediation/b01/environment_manifest.json\n M docs/release-evidence/true-state-remediation/b01/implementation_state.json\n M docs/roadmap/production_readiness/true_state_remediation_register.json\n M requirements/base.in\n M requirements/base.txt\n M requirements/dev.in\n M requirements/dev.txt\n M scripts/advisory_suites/run_advisory_quality_gates.py\n M scripts/audit_remediation/run_backend_fast_category_probe.py\n M scripts/audit_remediation/run_backend_fast_gate.py\n M scripts/integrate_patch.py\n M scripts/test_suites/run_product_gate_execution.py\n M scripts/test_suites/run_product_runtime_gates.py\n M scripts/test_suites/run_test_suite_class.py\n M tests/api/test_admin_etl_routes.py\n M tests/api/test_content_factory_run_routes.py\n M tests/api/test_content_factory_seed_promotion_routes.py\n M tests/conftest.py\n M tests/integration/conftest.py\n M tests/integration/test_auth_refresh.py\n M tests/integration/test_consent_grant_authorization.py\n M tests/integration/test_consent_renewal.py\n M tests/integration/test_consent_revoke_authorization.py\n M tests/integration/test_consent_status_authorization.py\n M tests/integration/test_deep_health.py\n M tests/integration/test_diagnostic_session.py\n M tests/integration/test_gamification_award_xp_authorization.py\n M tests/integration/test_gamification_profile_authorization.py\n M tests/integration/test_learner_flow_contract.py\n M tests/integration/test_learner_mastery_authorization.py\n M tests/integration/test_learner_read_authorization.py\n M tests/integration/test_lesson_generation_authorization.py\n M tests/integration/test_lesson_stream_authorization.py\n M tests/integration/test_lesson_sync.py\n M tests/integration/test_parent_erasure_authorization.py\n M tests/integration/test_parent_export_authorization.py\n M tests/integration/test_parent_progress_authorization.py\n M tests/integration/test_parent_trust_dashboard.py\n M tests/integration/test_stripe_webhooks.py\n M tests/integration/test_study_plan_authorization.py\n M tests/integration/test_v2_jobs.py\n M tests/integration/test_v2_routers.py\n M tests/test_popia_end_to_end.py\n M tests/test_popia_negative.py\n M tests/unit/roadmap_reconciliation/test_kg000_formal_kg_roadmap_approval.py\n M tests/unit/test_cluster_g_accessibility_evidence.py\n M tests/unit/test_cluster_g_api_fixture_evidence.py\n M tests/unit/test_cluster_g_build_e2e_workflow_evidence.py\n M tests/unit/test_cluster_g_closure_check.py\n M tests/unit/test_cluster_g_closure_report.py\n M tests/unit/test_cluster_g_e2e_runtime_evidence.py\n M tests/unit/test_cluster_g_frontend_evidence.py\n M tests/unit/test_cluster_g_mocked_playwright_evidence.py\n M tests/unit/test_cluster_g_parent_denial_evidence.py\n M tests/unit/test_cluster_g_playwright_evidence.py\n M tests/unit/test_cluster_g_release_gate_wiring.py\n M tests/unit/test_cluster_g_runtime_mock_evidence.py\n M tests/unit/test_popia_transactional_lifecycle_contracts.py\n M tests/unit/test_pr002r_docs_contract.py\n M tests/unit/test_pr002r_evidence_check.py\n M tests/unit/test_pr002r_governance_contract.py\n M tests/unit/test_readonly_deep_readiness_runtime.py\n M tests/unit/test_real_audit_runtime_facade.py\n M tests/unit/test_real_consent_runtime_facade.py\n M tests/unit/test_v2_services_full.py\n?? .tsr/backups/b01/20260717T133040Z/\n?? .tsr/backups/b01/20260717T134312Z/\n?? .tsr/backups/b01/20260717T162917Z/\n?? docs/release-evidence/true-state-remediation/b01/apply/release_gates.json\n?? docs/release-evidence/true-state-remediation/b01/commands/",
+    "commit": "991fd8a65a108a2dc5edefb016a7970d56f91f37",
+    "status_porcelain": "M docs/roadmap/production_readiness/true_state_remediation_register.json\n M scripts/true_state_remediation/capture_baseline.py\n M scripts/true_state_remediation/core.py\n M scripts/true_state_remediation/run_release_gates.py\n?? .tsr/backups/b01/20260720T084304Z/",
     "submodules": ""
   },
   "input_digests": {
     ".python-version": "fa682ae9d943f5c8076e68335c9ba3ab4d063ad035c07ac6928653dd4ac50af7",
-    "app/frontend/package.json": "8140a39cbf32ee2b31809c3dd041beab23f90eca81ef2fade2c0a596a73adafa",
+    "app/frontend/package.json": "763b1987e84c419185a469813847726bf2af79efb643edbc496564ee27b578e5",
     "package.json": "0f1b96117bd811f6fb46fb8f06f4f63729d1a5dfc501efa556f26f59495403f9",
     "pnpm-lock.yaml": "9e280652ecab533b5542e225a4ed06488a5c155ec4fc79498b2e8f36dbd9c665",
     "pyproject.toml": "4240162de806751c5976aee2f270187032d9c95de0482b8b15ae4b912d36403a",
-    "requirements/base.txt": "2ac2cb485e9ed877945fefa3adc8701862ab063c96bd22a93c58b44b855bebe5",
-    "requirements/dev.txt": "3c8f96c1583bbe6e0ab3fb3e697fddc81b684e1991ade5d607a6af124fd9c189",
+    "requirements/base.txt": "b2ad089eb082f2f4f5230e87a980f86d1e095802522dd3745f63921a9aecfda9",
+    "requirements/dev.txt": "ea7a8f4340a259050157d0263d5b2f28eb2a6d2e8bf66a5d30b415eafce346cb",
     "requirements/docs.txt": "baf122c71989e7fa24a8cb8726dc492bf5eb1542f191921f6ab21f4a7354e04c",
     "requirements/ml.txt": "e2fa147e3446dcf6c38f372b31dea2d887067abe5ebda63c9ad70dc186956ade"
   },
@@ -33,7 +33,7 @@
   "node": {
     "available": true,
     "exit_code": 0,
-    "version": "v26.0.0"
+    "version": "v22.22.3"
   },
   "pip": {
     "available": true,
@@ -42,9 +42,8 @@
   },
   "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
   "pnpm": {
-    "available": true,
-    "exit_code": 0,
-    "version": "9.14.4"
+    "available": false,
+    "error": "[Errno 2] No such file or directory: 'pnpm'"
   },
   "postgres_client": {
     "available": true,

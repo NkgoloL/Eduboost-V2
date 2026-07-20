@@ -1,5 +1,6 @@
 from __future__ import annotations
-import argparse, json, subprocess
+import argparse, json
+from scripts._subprocess import run
 from pathlib import Path
 from scripts.true_state_remediation.core import load_json, register_path, root_from
 ALLOWED_PREFIXES=("fix(","chore(remediation)","security(","privacy(","test(","refactor(","docs(current-state)","evidence(","control(")

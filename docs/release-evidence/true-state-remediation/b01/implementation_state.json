@@ -1,47 +1,10 @@
 {
   "bundle_id": "B01",
-  "phase": "verify",
-  "phases": {
-    "verify": {
-      "checks": {
-        "baseline": {
-          "valid": true
-        },
-        "boundaries": {
-          "failures": [],
-          "inspected": [
-            "docs/roadmap/production_readiness/production_readiness_register.json",
-            "docs/roadmap/production_readiness/prd11_production_release_register.json",
-            "docs/roadmap/production_readiness/true_state_remediation_register.json"
-          ],
-          "valid": true
-        },
-        "mcp_isolation": {
-          "valid": true
-        },
-        "register": {
-          "errors": [],
-          "release_boundaries": {
-            "failures": [],
-            "inspected": [
-              "docs/roadmap/production_readiness/production_readiness_register.json",
-              "docs/roadmap/production_readiness/prd11_production_release_register.json",
-              "docs/roadmap/production_readiness/true_state_remediation_register.json"
-            ],
-            "valid": true
-          },
-          "task_count": 174,
-          "valid": true
-        }
-      },
-      "structural_only": true,
-      "valid": true
-    }
-  },
-  "reason": "skip-heavy cannot close a bundle",
-  "recorded_at": "2026-07-20T06:58:40.681272+00:00",
+  "error": "B01 apply failed: {'valid': False, 'capture': {'name': 'capture_baseline', 'command': ['/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python', 'scripts/true_state_remediation/capture_baseline.py', '--repo', '/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1'], 'cwd': '.', 'started_at': '2026-07-20T08:43:07.479898+00:00', 'finished_at': '2026-07-20T08:43:10.207681+00:00', 'exit_code': 1, 'required': True, 'passed': False, 'stdout_sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'stderr_sha256': '7c558d0cabe420d8adb1f70bf6e2d68a4829c04fd192f9d09479aafa1a92058e'}}",
+  "phase": "all",
+  "recorded_at": "2026-07-20T08:43:10.212340+00:00",
   "schema_version": "eduboost/true-state-remediation/bundle-state/v1",
-  "skip_heavy": true,
-  "smoke_valid": true,
+  "skip_heavy": false,
+  "traceback": "Traceback (most recent call last):\n  File \"/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/scripts/true_state_remediation/execute_bundle.py\", line 49, in main\n    raise BundleError(f\"{bundle_id} {phase} failed: {phase_results[phase]}\")\nscripts.true_state_remediation.core.BundleError: B01 apply failed: {'valid': False, 'capture': {'name': 'capture_baseline', 'command': ['/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python', 'scripts/true_state_remediation/capture_baseline.py', '--repo', '/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1'], 'cwd': '.', 'started_at': '2026-07-20T08:43:07.479898+00:00', 'finished_at': '2026-07-20T08:43:10.207681+00:00', 'exit_code': 1, 'required': True, 'passed': False, 'stdout_sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'stderr_sha256': '7c558d0cabe420d8adb1f70bf6e2d68a4829c04fd192f9d09479aafa1a92058e'}}\n",
   "valid": false
 }
