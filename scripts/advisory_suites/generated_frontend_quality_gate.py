@@ -10,7 +10,7 @@ from __future__ import annotations
 import json
 import os
 import shutil
-import subprocess
+from scripts._subprocess import run
 import sys
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -174,7 +174,7 @@ def _run_command(command: list[str], cwd: Path) -> dict[str, Any]:
             "stderr_tail": "\n".join(combined_stderr)[-4000:],
             "captured_at": datetime.now(timezone.utc).isoformat(),
         }
-    completed = subprocess.run(command, cwd=cwd, text=True, capture_output=True)
+    completed = run(command, cwd=cwd, text=True, capture_output=True)
     return {
         "command": " ".join(command),
         "exit_code": completed.returncode,

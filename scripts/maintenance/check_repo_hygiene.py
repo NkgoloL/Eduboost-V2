@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 import fnmatch
-import subprocess
+from scripts._subprocess import run
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -90,7 +90,7 @@ class HygieneFailure:
 
 
 def _git_ls_files(repo_root: Path) -> list[str]:
-    result = subprocess.run(
+    result = run(
         ['git', 'ls-files'],
         cwd=repo_root,
         text=True,

@@ -6,7 +6,7 @@ import argparse
 import json
 import os
 import shlex
-import subprocess
+from scripts._subprocess import run
 import time
 from pathlib import Path
 from typing import Any
@@ -22,7 +22,7 @@ def run_backend_fast(command: str, output_dir: Path, root: Path = ROOT) -> dict[
     env = os.environ.copy()
     env.setdefault("PYTHONPATH", ".")
     started = time.time()
-    completed = subprocess.run(
+    completed = run(
         command,
         cwd=root,
         shell=True,  # nosec B602

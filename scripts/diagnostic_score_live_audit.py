@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 import json
 from pathlib import Path
 import re
-import subprocess
+from scripts._subprocess import run
 from typing import Any
 from urllib.parse import urlparse
 import os
@@ -84,7 +84,7 @@ class DiagnosticScoreLiveAuditStatus:
 
 
 def _run(command: list[str]) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
+    return run(
         command,
         cwd=ROOT,
         text=True,

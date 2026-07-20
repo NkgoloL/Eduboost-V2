@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 import time
 from dataclasses import asdict, dataclass
@@ -100,7 +100,7 @@ def run_pytest_probe(
     ]
     started = time.time()
     try:
-        completed = subprocess.run(
+        completed = run(
             command,
             cwd=root,
             env=sanitized_test_environment(),

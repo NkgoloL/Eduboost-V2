@@ -6,7 +6,7 @@ import json
 import os
 from pathlib import Path
 import re
-import subprocess
+from scripts._subprocess import run
 from typing import Any
 from urllib.parse import urlparse
 
@@ -56,7 +56,7 @@ class StagingSmokeEvidenceStatus:
 
 
 def _run(command: list[str]) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
+    return run(
         command,
         cwd=ROOT,
         text=True,

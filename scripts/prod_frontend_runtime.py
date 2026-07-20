@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import re
 import shutil
-import subprocess
+from scripts._subprocess import run
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -75,7 +75,7 @@ class ProductionFrontendRuntimeStatus:
 
 
 def current_commit() -> str:
-    result = subprocess.run(
+    result = run(
         ["git", "rev-parse", "HEAD"],
         cwd=ROOT,
         text=True,
@@ -157,7 +157,7 @@ def _docker_compose_cmd() -> list[str] | None:
     if not docker:
         return None
 
-    plugin = subprocess.run(
+    plugin = run(
         [docker, "compose", "version"],
         cwd=ROOT,
         text=True,
@@ -185,7 +185,7 @@ def run_compose_config() -> ComposeConfigResult:
         )
 
     try:
-        result = subprocess.run(
+        result = run(
             [*cmd, "-f", "docker-compose.prod.yml", "config"],
             cwd=ROOT,
             text=True,

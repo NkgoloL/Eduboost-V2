@@ -28,7 +28,7 @@ Add to Makefile:
 from __future__ import annotations
 
 import argparse
-import subprocess
+from scripts._subprocess import check_output, run
 import sys
 import textwrap
 from datetime import datetime, timezone
@@ -113,7 +113,7 @@ def run_check(label: str, command: list[str], required: bool) -> CheckResult:
     import time
     start = time.monotonic()
     try:
-        result = subprocess.run(
+        result = run(
             command,
             cwd=str(REPO_ROOT),
             capture_output=True,
@@ -274,7 +274,7 @@ def render_dated_report(
 
 def git_head() -> str:
     try:
-        return subprocess.check_output(
+        return check_output(
             ["git", "rev-parse", "HEAD"], cwd=str(REPO_ROOT), text=True
         ).strip()
     except Exception:
@@ -283,7 +283,7 @@ def git_head() -> str:
 
 def git_upstream_label() -> str:
     try:
-        return subprocess.check_output(
+        return check_output(
             ["git", "rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}"],
             cwd=str(REPO_ROOT),
             text=True,
@@ -295,7 +295,7 @@ def git_upstream_label() -> str:
 def git_remote_head(upstream: str | None = None) -> str:
     upstream = upstream or git_upstream_label()
     try:
-        return subprocess.check_output(
+        return check_output(
             ["git", "rev-parse", upstream],
             cwd=str(REPO_ROOT),
             text=True,
@@ -307,11 +307,11 @@ def git_remote_head(upstream: str | None = None) -> str:
 def git_divergence(upstream: str | None = None) -> tuple[int, int]:
     upstream = upstream or git_upstream_label()
     try:
-        ahead = int(subprocess.check_output(
+        ahead = int(check_output(
             ["git", "rev-list", "--count", f"{upstream}..HEAD"],
             cwd=str(REPO_ROOT), text=True,
         ).strip())
-        behind = int(subprocess.check_output(
+        behind = int(check_output(
             ["git", "rev-list", "--count", f"HEAD..{upstream}"],
             cwd=str(REPO_ROOT), text=True,
         ).strip())

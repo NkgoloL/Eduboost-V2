@@ -16,7 +16,7 @@ import json
 import os
 import pathlib
 import re
-import subprocess
+from scripts._subprocess import run
 import sys
 from typing import Any
 
@@ -34,7 +34,7 @@ def utc_now() -> str:
 
 
 def run(cmd: list[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(cmd, check=check, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    return run(cmd, check=check, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
 def git_value(args: list[str], default: str | None = None) -> str | None:

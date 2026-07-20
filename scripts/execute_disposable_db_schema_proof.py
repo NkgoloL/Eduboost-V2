@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 import os
-import subprocess
+from scripts._subprocess import run
 from datetime import datetime, timezone
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
@@ -14,7 +14,7 @@ def safe(url):
     if "test" not in low and "disposable" not in low: return False,"DATABASE_URL must be test/disposable"
     return True,"safe disposable DB URL shape"
 def run(cmd):
-    r=subprocess.run(cmd,cwd=ROOT,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,check=False)
+    r=run(cmd,cwd=ROOT,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,check=False)
     return r.returncode,r.stdout
 url=os.getenv("DATABASE_URL",""); ok,reason=safe(url)
 lines=["# Disposable DB Schema Proof Execution Report","",f"Generated: `{datetime.now(timezone.utc).isoformat()}`","",f"Safety: `{reason}`",""]

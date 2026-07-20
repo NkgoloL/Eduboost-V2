@@ -45,11 +45,9 @@ def load_documents(path: Path) -> list[tuple[dict, list[dict]]]:
         documents = [
             dict(row)
             for row in connection.execute(
-                f"""  # nosec B608
-                SELECT * FROM documents
-                WHERE processing_status IN ({placeholders})
-                ORDER BY document_id
-                """,
+                """SELECT * FROM documents
+                WHERE processing_status IN (""" + placeholders + """)
+                ORDER BY document_id""",
                 SEARCHABLE,
             ).fetchall()
         ]

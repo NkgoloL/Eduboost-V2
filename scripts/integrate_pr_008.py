@@ -10,7 +10,7 @@ Run from repo root.
 """
 import filecmp
 import shutil
-import subprocess
+from scripts._subprocess import run
 from pathlib import Path
 
 
@@ -20,18 +20,18 @@ STAGING = ROOT / "staging" / "pr_008"
 
 
 def git(cmd_args):
-    return subprocess.check_call(["git"] + cmd_args)
+    return run(["git"] + cmd_args)
 
 
 def try_git_mv(src: str, dst: str):
     """Try `git mv`, fallback to filesystem move for untracked sources."""
     try:
-        return subprocess.check_call(["git", "mv", src, dst])
+        return run(["git", "mv", src, dst])
     except subprocess.CalledProcessError:
         # fallback: filesystem move and add dst to git (source may be untracked)
         Path(dst).parent.mkdir(parents=True, exist_ok=True)
         shutil.move(src, dst)
-        return subprocess.check_call(["git", "add", dst])
+        return run(["git", "add", dst])
 
 
 def ensure_staging(path: Path):

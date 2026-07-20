@@ -21,7 +21,7 @@ from pathlib import Path
 import re
 import shutil
 import signal
-import subprocess
+from scripts._subprocess import run
 import sys
 import time
 from typing import Any, Sequence
@@ -307,7 +307,7 @@ def run_bounded_command(
     started = _utc_now()
     monotonic_started = time.monotonic()
     timed_out = False
-    process = subprocess.Popen(
+    process = run(
         list(command),
         cwd=root,
         text=True,
@@ -366,7 +366,7 @@ def run_bounded_command(
 def _git_tracked_status(root: Path) -> dict[str, Any]:
     if not (root / ".git").exists() or shutil.which("git") is None:
         return {"available": False, "entries": [], "clean": None}
-    completed = subprocess.run(
+    completed = run(
         ["git", "status", "--porcelain=v1", "--untracked-files=no"],
         cwd=root,
         text=True,

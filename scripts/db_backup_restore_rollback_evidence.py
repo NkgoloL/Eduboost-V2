@@ -8,7 +8,7 @@ import os
 from pathlib import Path
 import re
 import shutil
-import subprocess
+from scripts._subprocess import run
 from urllib.parse import urlparse
 
 try:
@@ -40,7 +40,7 @@ def env(name: str) -> str:
 
 
 def run(cmd: list[str]) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
+    return run(
         cmd,
         cwd=ROOT,
         text=True,

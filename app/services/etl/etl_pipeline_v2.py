@@ -710,10 +710,10 @@ class EduboostETLv2(EduboostETL):
             params = []
 
         rows = self._db().execute(
-            f"""SELECT dc.*, d.grade, d.subject, d.document_type, d.title  # nosec B608
+            """SELECT dc.*, d.grade, d.subject, d.document_type, d.title
                 FROM document_chunks dc
                 JOIN documents d ON dc.document_id = d.document_id
-                WHERE {clause}
+                WHERE """ + clause + """
                 ORDER BY dc.document_id, dc.chunk_index""",
             params
         ).fetchall()
@@ -983,11 +983,11 @@ class EduboostETLv2(EduboostETL):
         early_statuses = ("acquired", "extracted", "normalized", "metadata_enriched", "chunked")
         placeholders = ",".join("?" * len(early_statuses))
         rows = self._db().execute(
-            f"""SELECT document_id, title, processing_status, grade, subject,  # nosec B608
+            """SELECT document_id, title, processing_status, grade, subject,
                        document_type, updated_at, created_at,
                        julianday('now') - julianday(updated_at) AS days_stale
                 FROM documents
-                WHERE processing_status IN ({placeholders})
+                WHERE processing_status IN (""" + placeholders + """)
                   AND updated_at < ?
                 ORDER BY days_stale DESC""",
             [*early_statuses, cutoff]

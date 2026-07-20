@@ -10,7 +10,7 @@ from __future__ import annotations
 import json
 import os
 import shutil
-import subprocess
+from scripts._subprocess import run
 import sys
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -164,7 +164,7 @@ def _age_days(value: Any, *, now: datetime | None = None) -> int | None:
 
 
 def _run_single(command: list[str], cwd: Path) -> dict[str, Any]:
-    completed = subprocess.run(command, cwd=cwd, text=True, capture_output=True)
+    completed = run(command, cwd=cwd, text=True, capture_output=True)
     return {
         "command": " ".join(command),
         "exit_code": completed.returncode,

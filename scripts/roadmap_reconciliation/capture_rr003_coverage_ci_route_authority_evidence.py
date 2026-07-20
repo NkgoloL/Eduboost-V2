@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import subprocess
+from scripts._subprocess import check_output, run
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
@@ -34,7 +34,7 @@ CHECKSUM_FILES = [
 
 def _run(args: list[str]) -> dict[str, Any]:
     try:
-        proc = subprocess.run(args, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120)
+        proc = run(args, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120)
         return {"command": args, "returncode": proc.returncode, "output": proc.stdout}
     except Exception as exc:
         return {"command": args, "returncode": 127, "output": f"{type(exc).__name__}: {exc}"}
@@ -42,7 +42,7 @@ def _run(args: list[str]) -> dict[str, Any]:
 
 def _run_git(args: list[str]) -> str:
     try:
-        return subprocess.check_output(["git", *args], cwd=ROOT, text=True, stderr=subprocess.STDOUT).strip()
+        return check_output(["git", *args], cwd=ROOT, text=True, stderr=subprocess.STDOUT).strip()
     except Exception as exc:
         return f"unavailable: {exc}"
 

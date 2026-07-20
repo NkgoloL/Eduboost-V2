@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import ast
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -22,7 +22,7 @@ def read(path: str) -> str:
 
 
 def _run_case(label: str, code: str) -> tuple[bool, str]:
-    result = subprocess.run(
+    result = run(
         [sys.executable, "-c", code],
         cwd=ROOT,
         text=True,
@@ -62,7 +62,7 @@ def main() -> int:
             failures.append(label)
             print(output)
 
-    pytest_result = subprocess.run(
+    pytest_result = run(
         [sys.executable, "-m", "pytest", "-c", "pytest.ini", "tests/unit/test_jwt_keyring_production_guard.py", "-q", "--no-cov", "--tb=short"],
         cwd=ROOT,
         text=True,
@@ -76,7 +76,7 @@ def main() -> int:
     else:
         failures.append("JWT production guard tests failed")
 
-    import_result = subprocess.run(
+    import_result = run(
         [sys.executable, "-c", "import os; os.environ['JWT_SECRET']='safe-import-secret-32chars-padded!!'; import app.api_v2; print('OK')"],
         cwd=ROOT,
         text=True,
@@ -91,7 +91,7 @@ def main() -> int:
         failures.append("app.api_v2 import failed with safe JWT secret")
         print(import_result.stdout)
 
-    ruff = subprocess.run(
+    ruff = run(
         [sys.executable, "-m", "ruff", "check", *CRITICAL, "--select", "F821,F401,F811,E402"],
         cwd=ROOT,
         text=True,

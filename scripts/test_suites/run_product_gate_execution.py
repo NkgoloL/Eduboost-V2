@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import run
 from typing import Any
 
 from scripts.test_suites.product_gate_execution import flow_command_plan
@@ -33,7 +33,7 @@ def main() -> int:
     for item in commands:
         for kind in ("positive", "negative"):
             command = item[f"{kind}_command"]
-            completed = subprocess.run(command, shell=True, text=True, capture_output=True)  # nosec B602
+            completed = run(command, shell=True, text=True, capture_output=True)  # nosec B602
             results.append({
                 "flow_id": item["flow_id"],
                 "kind": kind,

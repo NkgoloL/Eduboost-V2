@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import ast
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -46,7 +46,7 @@ def main() -> int:
 
     if os.getenv("SKIP_PYTEST_RECURSION") != "1":
         env = {**os.environ, "PYTHONPATH": str(ROOT), "SKIP_PYTEST_RECURSION": "1"}
-        pytest_result = subprocess.run(
+        pytest_result = run(
             [
                 sys.executable,
                 "-m",
@@ -74,7 +74,7 @@ def main() -> int:
     else:
         print("- INFO nested pytest execution skipped by SKIP_PYTEST_RECURSION")
 
-    ruff = subprocess.run(
+    ruff = run(
         [sys.executable, "-m", "ruff", "check", *CRITICAL, "--select", "F821,F401,F811,E402"],
         cwd=ROOT,
         text=True,

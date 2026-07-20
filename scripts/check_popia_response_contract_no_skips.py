@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import ast
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -45,7 +45,7 @@ def main() -> int:
         print(f"- PASS syntax {path}")
 
     venv_py = str((ROOT / ".venv" / "bin" / "python")) if (ROOT / ".venv" / "bin" / "python").exists() else sys.executable
-    ruff = subprocess.run(
+    ruff = run(
         [
             venv_py,
             "-m",

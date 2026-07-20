@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 import re
-import subprocess
+from scripts._subprocess import run
 import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -52,7 +52,7 @@ def _timestamp() -> str:
 def _run(evidence: EvidenceRun) -> int:
     RELEASE_DIR.mkdir(parents=True, exist_ok=True)
     print(f"Running {evidence.name}: {' '.join(evidence.command)}")
-    result = subprocess.run(
+    result = run(
         evidence.command,
         cwd=REPO_ROOT,
         text=True,

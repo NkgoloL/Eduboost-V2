@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import ast
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -24,7 +24,7 @@ def main() -> int:
     failures: list[str] = []
     print("Documentation intelligence check")
 
-    generate = subprocess.run(
+    generate = run(
         [sys.executable, "scripts/docs_inventory.py", "--write"],
         cwd=ROOT,
         text=True,
@@ -38,7 +38,7 @@ def main() -> int:
     else:
         failures.append("docs inventory generation failed")
 
-    check = subprocess.run(
+    check = run(
         [sys.executable, "scripts/docs_inventory.py", "--check"],
         cwd=ROOT,
         text=True,
@@ -58,7 +58,7 @@ def main() -> int:
 
     if not os.getenv("SKIP_PYTEST_RECURSION"):
         env = {**os.environ, "PYTHONPATH": str(ROOT), "SKIP_PYTEST_RECURSION": "1"}
-        result = subprocess.run(
+        result = run(
             [
                 sys.executable,
                 "-m",
@@ -83,7 +83,7 @@ def main() -> int:
         else:
             failures.append("docs intelligence unit tests failed")
 
-    ruff = subprocess.run(
+    ruff = run(
         [
             sys.executable,
             "-m",

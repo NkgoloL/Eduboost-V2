@@ -13,12 +13,12 @@ import os
 import sys
 import shutil
 from pathlib import Path
-import subprocess
+from scripts._subprocess import run
 
 
 def run(cmd, cwd=None):
     print(f"> {cmd}")
-    subprocess.check_call(cmd, shell=True, cwd=cwd)  # nosec B602
+    run(cmd, shell=True, cwd=cwd)  # nosec B602
 
 
 def main():

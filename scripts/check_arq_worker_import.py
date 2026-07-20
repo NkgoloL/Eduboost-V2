@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import ast
 import importlib
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -98,7 +98,7 @@ def main() -> int:
         ast.parse(read(path))
         print(f"- PASS syntax {path}")
 
-    pytest_result = subprocess.run(
+    pytest_result = run(
         [
             sys.executable,
             "-m",
@@ -122,7 +122,7 @@ def main() -> int:
     else:
         failures.append("ARQ worker import contract tests failed")
 
-    ruff = subprocess.run(
+    ruff = run(
         [
             sys.executable,
             "-m",

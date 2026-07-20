@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import ast
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -55,7 +55,7 @@ def main() -> int:
     if not os.getenv("SKIP_PYTEST_RECURSION"):
         venv_py = str((ROOT / ".venv" / "bin" / "python")) if (ROOT / ".venv" / "bin" / "python").exists() else sys.executable
         env = {**os.environ, "PYTHONPATH": str(ROOT), "SKIP_PYTEST_RECURSION": "1"}
-        result = subprocess.run(
+        result = run(
             [
                 venv_py,
                 "-m",
@@ -81,7 +81,7 @@ def main() -> int:
             failures.append("production frontend runtime tests failed")
 
     venv_py = str((ROOT / ".venv" / "bin" / "python")) if (ROOT / ".venv" / "bin" / "python").exists() else sys.executable
-    ruff = subprocess.run(
+    ruff = run(
         [
             venv_py,
             "-m",

@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import run
 from pathlib import Path
 from typing import Any
 
@@ -55,7 +55,7 @@ REQUIRED_ASSETS = [
 
 def _run_git(args: list[str]) -> str | None:
     try:
-        proc = subprocess.run(
+        proc = run(
             ["git", *args],
             cwd=ROOT,
             text=True,

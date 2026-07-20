@@ -6,7 +6,7 @@ import argparse
 import json
 import os
 import re
-import subprocess
+from scripts._subprocess import run
 import sys
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -66,7 +66,7 @@ def _database_url_is_disposable(url: str) -> bool:
 
 
 def _run_command(name: str, command: list[str], env: dict[str, str]) -> CommandResult:
-    result = subprocess.run(
+    result = run(
         command,
         cwd=REPO_ROOT,
         env=env,

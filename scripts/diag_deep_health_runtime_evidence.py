@@ -6,7 +6,7 @@ import json
 import os
 from pathlib import Path
 import re
-import subprocess
+from scripts._subprocess import run
 from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
@@ -60,7 +60,7 @@ class DiagDeepHealthRuntimeStatus:
     blockers: list[str]
 
 def _run(command: list[str]) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
+    return run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
 
 def current_commit() -> str:
     result = _run(["git", "rev-parse", "HEAD"])

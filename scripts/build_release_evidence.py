@@ -6,7 +6,7 @@ import argparse
 import hashlib
 import json
 import os
-import subprocess
+from scripts._subprocess import check_output, run
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -32,7 +32,7 @@ def sha256(path: Path) -> str:
 
 def git(cmd: list[str]) -> str:
     try:
-        return subprocess.check_output(["git", *cmd], cwd=ROOT, text=True).strip()
+        return check_output(["git", *cmd], cwd=ROOT, text=True).strip()
     except Exception:  # noqa: BLE001 - evidence should still be generated from ZIP snapshots
         return "unknown"
 

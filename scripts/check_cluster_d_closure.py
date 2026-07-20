@@ -2,7 +2,7 @@
 """Run the full Cluster D CI/deployment/environment closure suite."""
 from __future__ import annotations
 
-import subprocess
+from scripts._subprocess import run
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -51,7 +51,7 @@ class ClusterDClosureResult:
 
 
 def run_command(name: str, command: list[str]) -> ClusterDClosureResult:
-    result = subprocess.run(
+    result = run(
         command,
         cwd=REPO_ROOT,
         check=False,

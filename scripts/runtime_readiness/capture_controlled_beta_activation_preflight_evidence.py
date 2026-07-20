@@ -13,7 +13,7 @@ import argparse
 import hashlib
 import json
 import pathlib
-import subprocess
+from scripts._subprocess import run
 from datetime import datetime, timezone
 from typing import Any
 
@@ -62,7 +62,7 @@ def sha256_file(path: pathlib.Path) -> str:
 
 
 def run_command(args: list[str]) -> dict[str, Any]:
-    proc = subprocess.run(args, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
+    proc = run(args, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
     payload: dict[str, Any] | None = None
     if proc.stdout.strip():
         try:
@@ -80,10 +80,10 @@ def run_command(args: list[str]) -> dict[str, Any]:
 
 
 def git_state(target_branch: str) -> dict[str, Any]:
-    head = subprocess.run(["git", "rev-parse", "HEAD"], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False).stdout.strip()
-    branch = subprocess.run(["git", "branch", "--show-current"], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False).stdout.strip()
-    status = subprocess.run(["git", "status", "--short"], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
-    remote = subprocess.run(["git", "rev-parse", f"origin/{target_branch}"], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
+    head = run(["git", "rev-parse", "HEAD"], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False).stdout.strip()
+    branch = run(["git", "branch", "--show-current"], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False).stdout.strip()
+    status = run(["git", "status", "--short"], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
+    remote = run(["git", "rev-parse", f"origin/{target_branch}"], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
     remote_sha = remote.stdout.strip() if remote.returncode == 0 else ""
     return {
         "branch": branch,

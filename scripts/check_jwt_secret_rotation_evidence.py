@@ -3,7 +3,7 @@ from __future__ import annotations
 import ast
 import os
 import re
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
@@ -36,10 +36,10 @@ def main() -> int:
         print("- INFO acceptance not requested; tooling check only")
     if not os.getenv("SKIP_PYTEST_RECURSION"):
         env = {**os.environ, "PYTHONPATH": str(ROOT), "SKIP_PYTEST_RECURSION": "1"}
-        r = subprocess.run([sys.executable, "-m", "pytest", "-c", "pytest.ini", "tests/unit/test_jwt_secret_rotation_evidence.py", "-q", "--no-cov", "--tb=short"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=env, check=False)
+        r = run([sys.executable, "-m", "pytest", "-c", "pytest.ini", "tests/unit/test_jwt_secret_rotation_evidence.py", "-q", "--no-cov", "--tb=short"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=env, check=False)
         print(r.stdout)
         if r.returncode != 0: failures.append("JWT secret rotation unit tests failed")
-    ruff = subprocess.run([sys.executable, "-m", "ruff", "check", *CRITICAL, "--select", "F821,F401,F811,E402"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+    ruff = run([sys.executable, "-m", "ruff", "check", *CRITICAL, "--select", "F821,F401,F811,E402"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
     if ruff.returncode == 0: print("- PASS focused Ruff JWT secret rotation check")
     else: failures.append("focused Ruff failed"); print(ruff.stdout)
     if failures:

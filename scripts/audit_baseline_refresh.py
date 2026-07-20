@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 import json
 from pathlib import Path
 import re
-import subprocess
+from scripts._subprocess import run
 from typing import Any
 
 
@@ -109,7 +109,7 @@ class AuditBaselineRefreshStatus:
 
 
 def _run(command: list[str]) -> CommandResult:
-    result = subprocess.run(
+    result = run(
         command,
         cwd=ROOT,
         text=True,
@@ -125,7 +125,7 @@ def _run(command: list[str]) -> CommandResult:
 
 
 def current_commit() -> str:
-    result = subprocess.run(
+    result = run(
         ["git", "rev-parse", "HEAD"],
         cwd=ROOT,
         text=True,
@@ -137,7 +137,7 @@ def current_commit() -> str:
 
 
 def current_branch() -> str:
-    result = subprocess.run(
+    result = run(
         ["git", "branch", "--show-current"],
         cwd=ROOT,
         text=True,

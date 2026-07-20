@@ -85,7 +85,7 @@ class SemanticRetrievalRepository:
             }
         )
         sql = text(
-            f"""  # nosec B608
+            """
             SELECT {_COMMON_SELECT},
                    GREATEST(0.0, LEAST(1.0,
                        1.0 - (c.embedding <=> CAST(:query_vector AS vector))
@@ -118,7 +118,7 @@ class SemanticRetrievalRepository:
         document = "to_tsvector('simple', COALESCE(c.heading, '') || ' ' || c.content)"
         tsquery = "websearch_to_tsquery('simple', :query)"
         sql = text(
-            f"""  # nosec B608
+            """
             SELECT {_COMMON_SELECT},
                    ts_rank_cd({document}, {tsquery}, 32) AS score
             FROM retrieval_source_chunks c
@@ -146,7 +146,7 @@ class SemanticRetrievalRepository:
         params = _filter_params(filters)
         params.update(dict(zip(names, chunk_ids)))
         sql = text(
-            f"""  # nosec B608
+            """
             SELECT {_COMMON_SELECT}, 1.0 AS score
             FROM retrieval_source_chunks c
             JOIN retrieval_source_documents d ON d.document_id = c.document_id
@@ -175,7 +175,7 @@ class SemanticRetrievalRepository:
             }
         )
         sql = text(
-            f"""  # nosec B608
+            """
             EXPLAIN (FORMAT TEXT)
             SELECT c.chunk_id
             FROM retrieval_source_chunks c

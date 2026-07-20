@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import shutil
-import subprocess
+from scripts._subprocess import run
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -29,7 +29,7 @@ def main() -> int:
         print(f"Wrote {OUT.relative_to(ROOT)}")
         return 0
 
-    result = subprocess.run([exe], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+    result = run([exe], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
     lines.extend([f"**Status:** {'pass' if result.returncode == 0 else 'findings'}", "", "```text", result.stdout.rstrip(), "```", ""])
     OUT.write_text("\n".join(lines), encoding="utf-8")
     print(f"Wrote {OUT.relative_to(ROOT)}")

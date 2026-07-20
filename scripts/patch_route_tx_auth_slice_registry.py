@@ -16,7 +16,7 @@ REGISTRY = ROOT / "docs/release/evidence_status_registry.yml"
 def current_commit() -> str:
     import subprocess
 
-    result = subprocess.run(
+    result = run(
         ["git", "rev-parse", "HEAD"],
         cwd=ROOT,
         text=True,

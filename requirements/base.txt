@@ -140,8 +140,9 @@ httpx==0.27.1
     #   openai
 httpx-sse==0.4.3
     # via mcp
-idna==3.13
+idna==3.15
     # via
+    #   -r requirements/base.in
     #   anyio
     #   email-validator
     #   httpx
@@ -149,7 +150,7 @@ idna==3.13
     #   yarl
 isodate==0.7.2
     # via azure-keyvault-secrets
-jinja2==3.1.4
+jinja2==3.1.6
     # via
     #   -r requirements/base.in
     #   fastapi
@@ -177,7 +178,7 @@ markupsafe==3.0.3
     # via
     #   jinja2
     #   mako
-mcp[cli]==1.12.4
+mcp[cli]==1.28.1
     # via -r requirements/base.in
 mdurl==0.1.2
     # via markdown-it-py
@@ -209,8 +210,10 @@ passlib[bcrypt]==1.7.4
     # via -r requirements/base.in
 phonenumbers==8.13.37
     # via -r requirements/base.in
-pillow==12.2.0
-    # via reportlab
+pillow==12.3.0
+    # via
+    #   -r requirements/base.in
+    #   reportlab
 posthog==7.14.0
     # via -r requirements/base.in
 prometheus-client==0.25.0
@@ -242,9 +245,10 @@ pydantic-settings==2.5.2
     #   mcp
 pygments==2.20.0
     # via rich
-pyjwt[crypto]==2.12.1
+pyjwt[crypto]==2.13.0
     # via
     #   -r requirements/base.in
+    #   mcp
     #   msal
 pypdf==6.13.3
     # via -r requirements/base.in
@@ -360,6 +364,7 @@ typing-extensions==4.15.0
     #   fastapi
     #   groq
     #   limits
+    #   mcp
     #   openai
     #   posthog
     #   pydantic
@@ -370,17 +375,22 @@ typing-extensions==4.15.0
     #   stripe
     #   typing-inspection
 typing-inspection==0.4.2
-    # via pydantic
+    # via
+    #   mcp
+    #   pydantic
 tzdata==2026.2
     # via pandas
-ujson==5.12.0
-    # via fastapi
-urllib3==2.6.3
+ujson==5.13.0
     # via
+    #   -r requirements/base.in
+    #   fastapi
+urllib3==2.7.0
+    # via
+    #   -r requirements/base.in
     #   botocore
     #   requests
     #   sentry-sdk
-uvicorn[standard]==0.29.0
+uvicorn[standard]==0.34.3
     # via
     #   -r requirements/base.in
     #   fastapi

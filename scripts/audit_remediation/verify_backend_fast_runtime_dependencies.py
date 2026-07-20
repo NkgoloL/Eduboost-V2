@@ -12,7 +12,7 @@ import argparse
 import json
 import os
 import re
-import subprocess
+from scripts._subprocess import run
 import sys
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -85,7 +85,7 @@ def authority_interpreter() -> tuple[str, str | None]:
 def _import_module(interpreter: Path, module: str, root: Path) -> ImportCheck:
     env = dict(os.environ)
     env["PYTHONPATH"] = str(root)
-    proc = subprocess.run(
+    proc = run(
         [str(interpreter), "-c", f"import {module}; print('ok')"],
         cwd=root,
         text=True,

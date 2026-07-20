@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import ast
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -54,7 +54,7 @@ def main() -> int:
         ast.parse((ROOT / path).read_text(encoding="utf-8"))
         print(f"- PASS syntax {path}")
 
-    pytest_result = subprocess.run(
+    pytest_result = run(
         [
             sys.executable,
             "-m",
@@ -78,7 +78,7 @@ def main() -> int:
     else:
         failures.append("evidence registry unit tests failed")
 
-    ruff = subprocess.run(
+    ruff = run(
         [
             sys.executable,
             "-m",

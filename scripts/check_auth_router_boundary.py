@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -15,7 +15,7 @@ def main() -> int:
     failures: list[str] = []
     print("Auth router boundary check")
 
-    subprocess.run([sys.executable, "scripts/inspect_auth_router_boundary.py"], cwd=ROOT, check=True)
+    run([sys.executable, "scripts/inspect_auth_router_boundary.py"], cwd=ROOT, check=True)
 
     source = AUTH_ROUTER.read_text(encoding="utf-8")
 

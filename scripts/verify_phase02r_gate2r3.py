@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
-import subprocess
+from scripts._subprocess import run
 import sys
 import tempfile
 from pathlib import Path
@@ -15,7 +15,7 @@ if str(ROOT) not in sys.path:
 
 
 def run(command: list[str]) -> dict[str, object]:
-    proc = subprocess.run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    proc = run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     return {"command": command, "exit_code": proc.returncode, "output": proc.stdout[-6000:]}
 
 

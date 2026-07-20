@@ -12,7 +12,7 @@ import argparse
 import hashlib
 import json
 import pathlib
-import subprocess
+from scripts._subprocess import run
 import sys
 from datetime import datetime, timezone
 from typing import Any
@@ -38,7 +38,7 @@ def utc_now() -> str:
 
 
 def run(cmd: list[str]) -> dict[str, Any]:
-    proc = subprocess.run(cmd, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    proc = run(cmd, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     return {"cmd": cmd, "returncode": proc.returncode, "stdout": proc.stdout, "stderr": proc.stderr}
 
 

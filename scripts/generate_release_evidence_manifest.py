@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-import subprocess
+from scripts._subprocess import run
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -32,7 +32,7 @@ class EvidenceCommand:
 
 
 def _git_value(args: list[str], fallback: str = "unknown") -> str:
-    result = subprocess.run(
+    result = run(
         ["git", *args],
         cwd=REPO_ROOT,
         check=False,

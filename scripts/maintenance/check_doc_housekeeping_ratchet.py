@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -18,7 +18,7 @@ def main() -> int:
     root = Path(args.root).resolve()
 
     if args.regenerate:
-        rc = subprocess.call([
+        rc = run([
             sys.executable,
             "scripts/maintenance/check_doc_inventory_reproducible.py",
             "--root",

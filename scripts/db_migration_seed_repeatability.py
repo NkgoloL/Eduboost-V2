@@ -6,7 +6,7 @@ import importlib.util
 import json
 from pathlib import Path
 import re
-import subprocess
+from scripts._subprocess import run
 from typing import Any
 
 
@@ -88,7 +88,7 @@ class DbRepeatabilityStatus:
 
 
 def _run(command: list[str], env: dict[str, str] | None = None) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
+    return run(
         command,
         cwd=ROOT,
         env=env,

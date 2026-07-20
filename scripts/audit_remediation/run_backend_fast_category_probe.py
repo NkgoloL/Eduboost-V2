@@ -6,7 +6,7 @@ import argparse
 import json
 import os
 import shlex
-import subprocess
+from scripts._subprocess import run
 import time
 from pathlib import Path
 from typing import Any
@@ -31,7 +31,7 @@ def run_probe(name: str, command: str, *, root: Path, output_dir: Path) -> dict[
     output_dir.mkdir(parents=True, exist_ok=True)
     output_file = output_dir / f"{name}.txt"
     started = time.time()
-    completed = subprocess.run(
+    completed = run(
         command,
         cwd=root,
         shell=True,  # nosec B602

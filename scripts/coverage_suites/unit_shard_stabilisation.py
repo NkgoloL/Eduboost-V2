@@ -21,7 +21,7 @@ import os
 from pathlib import Path
 import re
 import shutil
-import subprocess
+from scripts._subprocess import run
 import sys
 import tempfile
 from typing import Any, Iterable, Sequence
@@ -326,7 +326,7 @@ def _git_available(root: Path) -> bool:
 
 
 def _git_output(root: Path, *args: str) -> tuple[int, str, str]:
-    completed = subprocess.run(
+    completed = run(
         ["git", *args],
         cwd=root,
         text=True,
@@ -342,7 +342,7 @@ def _sha256_bytes(value: bytes) -> str:
 
 def _tracked_file_sha(root: Path, relative_path: str, *, ref: str | None = None) -> str | None:
     if ref is not None:
-        completed = subprocess.run(
+        completed = run(
             ["git", "show", f"{ref}:{relative_path}"],
             cwd=root,
             capture_output=True,

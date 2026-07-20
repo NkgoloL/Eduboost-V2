@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 import re
-import subprocess
+from scripts._subprocess import run
 from pathlib import Path
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
@@ -21,7 +21,7 @@ USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTM
 
 def fetch_html(url):
     print(f"Fetching: {url}")
-    result = subprocess.run([
+    result = run([
         "curl", "-s", "-L", "-H", f"User-Agent: {USER_AGENT}", url
     ], capture_output=True, text=True)
     if result.returncode != 0:
@@ -45,7 +45,7 @@ def download_pdf(url, dest_path):
         return
     dest_path.parent.mkdir(parents=True, exist_ok=True)
     print(f"Downloading: {url} -> {dest_path}")
-    subprocess.run([
+    run([
         "curl", "-s", "-L", "-H", f"User-Agent: {USER_AGENT}", "-o", str(dest_path), url
     ])
 

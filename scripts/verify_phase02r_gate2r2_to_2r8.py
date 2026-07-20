@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import run
 import sys
 import tempfile
 from pathlib import Path
@@ -21,7 +21,7 @@ SUPPORTED_GATES = {"2R.2", "2R.3", "2R.4", "2R.5", "2R.6", "2R.7", "2R.8"}
 
 
 def _run(command: list[str]) -> dict[str, object]:
-    proc = subprocess.run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    proc = run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     return {"command": command, "exit_code": proc.returncode, "output": proc.stdout[-8000:]}
 
 

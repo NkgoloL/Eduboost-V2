@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
-import subprocess
+from scripts._subprocess import run
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -37,7 +37,7 @@ def main() -> int:
     args = parser.parse_args()
 
     pytest_args = args.pytest_args or ["-c", "pytest.ini", "-q", "--no-cov"]
-    result = subprocess.run(
+    result = run(
         [sys.executable, "-m", "pytest", *pytest_args],
         cwd=ROOT,
         text=True,

@@ -5,7 +5,7 @@ import json
 import os
 import platform
 import shutil
-import subprocess
+from scripts._subprocess import run
 import sys
 import tempfile
 from dataclasses import dataclass
@@ -71,7 +71,7 @@ def sha256_text(text: str) -> str:
 
 def command_version(command: list[str]) -> dict[str, Any]:
     try:
-        proc = subprocess.run(command, text=True, capture_output=True, timeout=20, check=False)
+        proc = run(command, text=True, capture_output=True, timeout=20, check=False)
         output = (proc.stdout or proc.stderr).strip().splitlines()
         return {"available": proc.returncode == 0, "exit_code": proc.returncode, "version": output[0] if output else ""}
     except (OSError, subprocess.TimeoutExpired) as exc:
@@ -82,7 +82,7 @@ def git_state(root: Path) -> dict[str, Any]:
     if not (root / ".git").exists():
         return {"available": False, "reason": ".git metadata absent"}
     def run(*args: str) -> str:
-        proc = subprocess.run(["git", *args], cwd=root, text=True, capture_output=True, check=False)
+        proc = run(["git", *args], cwd=root, text=True, capture_output=True, check=False)
         return proc.stdout.strip() if proc.returncode == 0 else ""
     status = run("status", "--porcelain")
     return {
@@ -137,7 +137,7 @@ def run_command(root: Path, spec: CommandSpec, evidence_dir: Path) -> dict[str, 
     if spec.env:
         env.update(spec.env)
     try:
-        proc = subprocess.run(
+        proc = run(
             list(spec.command), cwd=workdir, env=env, text=True, capture_output=True,
             timeout=spec.timeout, check=False,
         )

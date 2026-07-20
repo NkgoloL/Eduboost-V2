@@ -11,7 +11,7 @@ from __future__ import annotations
 import argparse
 import json
 import platform
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 from typing import Any
@@ -73,7 +73,7 @@ def _resolve_python_bin(root: Path, python_bin: str) -> Path:
 
 
 def _python_version(python_bin: Path) -> str:
-    completed = subprocess.run(
+    completed = run(
         [str(python_bin), "-c", "import platform; print(platform.python_version())"],
         cwd=ROOT,
         text=True,
@@ -87,7 +87,7 @@ def _python_version(python_bin: Path) -> str:
 def import_status(python_bin: Path, root: Path = ROOT) -> list[dict[str, Any]]:
     results: list[dict[str, Any]] = []
     for module_name, reason, hint in REQUIRED_IMPORTS:
-        completed = subprocess.run(
+        completed = run(
             [str(python_bin), "-c", f"import {module_name}; print('ok')"],
             cwd=root,
             text=True,
@@ -104,7 +104,7 @@ def import_status(python_bin: Path, root: Path = ROOT) -> list[dict[str, Any]]:
                 "error": (completed.stderr or completed.stdout).strip(),
             })
         else:
-            version_completed = subprocess.run(
+            version_completed = run(
                 [str(python_bin), "-c", f"import {module_name} as m; print(getattr(m, '__version__', ''))"],
                 cwd=root,
                 text=True,
@@ -124,7 +124,7 @@ def import_status(python_bin: Path, root: Path = ROOT) -> list[dict[str, Any]]:
 
 
 def run_pip_check(python_bin: Path) -> dict[str, Any]:
-    completed = subprocess.run(
+    completed = run(
         [str(python_bin), "-m", "pip", "check"],
         text=True,
         stdout=subprocess.PIPE,

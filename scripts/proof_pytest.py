@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 import re
-import subprocess
+from scripts._subprocess import run
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -58,7 +58,7 @@ def run_pytest_proof(
     if extra_env:
         env.update(extra_env)
 
-    result = subprocess.run(
+    result = run(
         [sys.executable, "-m", "pytest", *args],
         cwd=root,
         text=True,

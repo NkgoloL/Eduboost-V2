@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import ast
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -48,7 +48,7 @@ def main() -> int:
         "app/modules/jobs.py",
     ]:
         ast.parse(read(path))
-    ruff = subprocess.run(
+    ruff = run(
         [sys.executable, "-m", "ruff", "check", "app/api_v2_routers/auth.py", "app/modules/jobs.py", "app/api_v2_routers/popia.py", "app/api_v2_routers/diagnostics.py"],
         cwd=ROOT,
         text=True,

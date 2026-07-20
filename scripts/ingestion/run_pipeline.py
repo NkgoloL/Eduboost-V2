@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import run
 import sys
 from datetime import UTC, datetime
 from pathlib import Path
@@ -25,7 +25,7 @@ def now_utc() -> str:
 def run_cmd(label: str, args: list[str], *, capture_json: bool = False) -> dict[str, Any]:
     print(f"\n=== {label} ===")
     print(" ".join(str(part) for part in args))
-    result = subprocess.run(args, cwd=ROOT, capture_output=True, text=True)
+    result = run(args, cwd=ROOT, capture_output=True, text=True)
     if result.stdout.strip():
         print(result.stdout.strip())
     if result.stderr.strip():
@@ -69,7 +69,7 @@ def stage_1_inventory(*, strict: bool) -> dict[str, Any]:
     args = [str(PYTHON), "scripts/curriculum/source_inventory.py", "--json"]
     if strict:
         args.append("--strict")
-    result = subprocess.run(args, cwd=ROOT, capture_output=True, text=True)
+    result = run(args, cwd=ROOT, capture_output=True, text=True)
     if result.stdout.strip():
         report_path.write_text(result.stdout.strip() + "\n", encoding="utf-8")
         print(result.stdout.strip())

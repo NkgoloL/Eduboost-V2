@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-import subprocess
+from scripts._subprocess import run
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -10,7 +10,7 @@ PROVEN = {"runtime-passing", "integration-passing", "production-ready"}
 
 
 def current_commit() -> str:
-    result = subprocess.run(
+    result = run(
         ["git", "rev-parse", "--short", "HEAD"],
         cwd=ROOT,
         text=True,

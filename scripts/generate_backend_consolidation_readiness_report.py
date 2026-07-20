@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -20,7 +20,7 @@ def _utc_now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 def _run(command: list[str]) -> tuple[int, str]:
-    result = subprocess.run(
+    result = run(
         command,
         cwd=REPO_ROOT,
         env={**os.environ, "PYTHONPATH": str(REPO_ROOT)},

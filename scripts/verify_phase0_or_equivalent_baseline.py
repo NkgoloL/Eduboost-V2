@@ -7,7 +7,7 @@ import hashlib
 import json
 import os
 import shutil
-import subprocess
+from scripts._subprocess import run
 import sys
 from datetime import UTC, datetime
 from pathlib import Path
@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def run(args: list[str], *, timeout: int = 60) -> tuple[int, str]:
-    completed = subprocess.run(
+    completed = run(
         args,
         cwd=ROOT,
         text=True,

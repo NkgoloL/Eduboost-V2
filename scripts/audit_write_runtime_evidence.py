@@ -7,7 +7,7 @@ import json
 import os
 from pathlib import Path
 import re
-import subprocess
+from scripts._subprocess import run
 from typing import Any
 from urllib.parse import urlparse
 
@@ -68,7 +68,7 @@ class AuditWriteRuntimeEvidenceStatus:
 
 
 def _run(command: list[str], *, env: dict[str, str] | None = None) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(command, cwd=ROOT, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+    return run(command, cwd=ROOT, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
 
 
 def current_commit() -> str:
@@ -227,7 +227,7 @@ def _run_flow_command(command: str, trace_id: str) -> FlowCommandResult:
     if not command:
         return FlowCommandResult("", None, "")
     env = {**os.environ, "AUDIT_WRITE_TRACE_ID": trace_id}
-    result = subprocess.run(["bash", "-c", command], cwd=ROOT, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+    result = run(["bash", "-c", command], cwd=ROOT, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
     return FlowCommandResult(command=command, return_code=result.returncode, output_excerpt=result.stdout[-5000:])
 
 

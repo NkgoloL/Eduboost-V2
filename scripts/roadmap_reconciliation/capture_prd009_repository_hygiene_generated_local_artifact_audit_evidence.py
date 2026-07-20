@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import check_output, run
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -26,7 +26,7 @@ EVIDENCE_DIR = Path("docs/release-evidence/production-readiness/prd-009-reposito
 def git_state(target_branch: str) -> dict:
     def run(args: list[str]) -> str | None:
         try:
-            return subprocess.check_output(args, text=True, stderr=subprocess.DEVNULL).strip()
+            return check_output(args, text=True, stderr=subprocess.DEVNULL).strip()
         except (subprocess.CalledProcessError, FileNotFoundError):
             return None
 

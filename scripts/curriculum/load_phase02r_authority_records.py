@@ -517,7 +517,7 @@ async def verify_persisted_records(conn: Any, records: dict[str, Any]) -> None:
 
     decision = records["rights_decision"]
     persisted_decision = await conn.fetchrow(
-        f"""  # nosec B608
+        """
         SELECT rights_decision_id,source_version_id,decision_status,{','.join(RIGHTS_FIELDS)},
                conditions,decision_basis,evidence_uri,reviewed_by,reviewed_at,expires_at,idempotency_key
         FROM curriculum_rights_decisions

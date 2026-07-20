@@ -10,7 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 import time
 from dataclasses import asdict, dataclass
@@ -42,7 +42,7 @@ class CommandResult:
 
 def _git(args: list[str], default: str) -> str:
     try:
-        completed = subprocess.run(
+        completed = run(
             ["git", *args],
             cwd=REPO_ROOT,
             check=False,
@@ -69,7 +69,7 @@ def _run_step(name: str, command: list[str], cwd: Path, output_dir: Path, timeou
     stderr_path = output_dir / f"{name}_stderr.txt"
     started = time.monotonic()
     try:
-        completed = subprocess.run(
+        completed = run(
             command,
             cwd=cwd,
             text=True,

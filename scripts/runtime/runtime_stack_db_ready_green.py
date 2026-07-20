@@ -11,7 +11,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 import time
 from dataclasses import asdict, dataclass
@@ -96,7 +96,7 @@ def _write_json(path: Path, payload: dict[str, Any]) -> None:
 def _run_command(command: list[str], root: Path, *, timeout: int = 300) -> dict[str, Any]:
     started = time.time()
     try:
-        completed = subprocess.run(
+        completed = run(
             command,
             cwd=root,
             text=True,

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -62,7 +62,7 @@ def main() -> int:
                 print(f"- FAIL [guard] {relative}: forbidden phrase {phrase!r}")
                 failures.append(f"forbidden phrase {phrase!r}")
 
-    result = subprocess.run(
+    result = run(
         [sys.executable, "-m", "py_compile", "app/services/backend_consolidation_runtime.py"],
         cwd=REPO_ROOT,
         text=True,

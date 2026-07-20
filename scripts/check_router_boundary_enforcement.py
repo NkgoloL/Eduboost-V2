@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import json
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -13,7 +13,7 @@ P0_FAIL_ROUTERS = {"app/api_v2_routers/popia.py", "app/api_v2_routers/lessons.py
 
 def main() -> int:
     print("Router boundary enforcement check")
-    subprocess.run([sys.executable, "scripts/generate_router_boundary_matrix.py"], cwd=ROOT, check=True)
+    run([sys.executable, "scripts/generate_router_boundary_matrix.py"], cwd=ROOT, check=True)
 
     data = json.loads(MATRIX.read_text(encoding="utf-8"))
     failures = []

@@ -10,7 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import subprocess
+from scripts._subprocess import run
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -53,7 +53,7 @@ class LineageProbeConfig:
 
 def _run(cmd: list[str], root: Path, timeout: int = 60) -> dict[str, Any]:
     try:
-        completed = subprocess.run(
+        completed = run(
             cmd,
             cwd=root,
             text=True,

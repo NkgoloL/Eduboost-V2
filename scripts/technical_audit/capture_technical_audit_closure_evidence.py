@@ -15,7 +15,7 @@ import hashlib
 import json
 import pathlib
 import re
-import subprocess
+from scripts._subprocess import run
 import sys
 from typing import Any
 
@@ -38,7 +38,7 @@ def utc_now() -> str:
 
 
 def run(cmd: list[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(cmd, check=check, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    return run(cmd, check=check, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
 def git_value(args: list[str], default: str | None = None) -> str | None:
@@ -52,7 +52,7 @@ def git_is_ancestor_or_equal(candidate: str, descendant: str) -> bool:
     if candidate == descendant:
         return True
     try:
-        result = subprocess.run(
+        result = run(
             ["git", "merge-base", "--is-ancestor", candidate, descendant],
             capture_output=True,
             text=True,
@@ -63,8 +63,8 @@ def git_is_ancestor_or_equal(candidate: str, descendant: str) -> bool:
 
 
 def tracked_worktree_clean() -> bool:
-    diff = subprocess.run(["git", "diff", "--quiet"], text=True)
-    staged = subprocess.run(["git", "diff", "--cached", "--quiet"], text=True)
+    diff = run(["git", "diff", "--quiet"], text=True)
+    staged = run(["git", "diff", "--cached", "--quiet"], text=True)
     return diff.returncode == 0 and staged.returncode == 0
 
 

@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 import json
 from pathlib import Path
 import re
-import subprocess
+from scripts._subprocess import run
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -54,7 +54,7 @@ class DiagnosticItemBankCanonicalityStatus:
 
 
 def _run(command: list[str]) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
+    return run(
         command,
         cwd=ROOT,
         text=True,

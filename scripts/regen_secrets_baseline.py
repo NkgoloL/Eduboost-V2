@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 import json
-import subprocess
+from scripts._subprocess import run
 import os
 
 os.chdir('/home/nkgolol/Dev/Development/Eduboost-V2')
 
 # Generate baseline
-result = subprocess.run(
+result = run(
     ['detect-secrets', 'scan', '--all-files', '.'],
     capture_output=True,
     text=True

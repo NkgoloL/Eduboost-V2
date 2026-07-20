@@ -5,7 +5,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
-import subprocess
+from scripts._subprocess import check_output, run
 from pathlib import Path
 from typing import Any
 
@@ -19,7 +19,7 @@ EVIDENCE_DIR = Path("docs/release-evidence/roadmap-reconciliation/rr-013-advance
 
 def _git(root: Path, *args: str) -> str:
     try:
-        return subprocess.check_output(["git", *args], cwd=root, text=True, stderr=subprocess.DEVNULL).strip()
+        return check_output(["git", *args], cwd=root, text=True, stderr=subprocess.DEVNULL).strip()
     except Exception:
         return ""
 

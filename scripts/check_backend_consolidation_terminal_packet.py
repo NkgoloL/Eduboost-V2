@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -48,7 +48,7 @@ def main() -> int:
                 failures.append(f"packet missing {needle!r}")
 
     for command in COMMANDS:
-        result = subprocess.run(
+        result = run(
             command,
             cwd=REPO_ROOT,
             text=True,

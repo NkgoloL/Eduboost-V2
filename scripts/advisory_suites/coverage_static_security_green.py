@@ -14,7 +14,7 @@ import json
 import os
 from pathlib import Path
 import re
-import subprocess
+from scripts._subprocess import run
 import sys
 import time
 from typing import Any
@@ -122,7 +122,7 @@ def command_plan() -> list[CoverageStaticSecurityCommand]:
         CoverageStaticSecurityCommand(
             "secret_baseline_review",
             "Secret-baseline drift/reviewability scan over release-relevant source paths.",
-            ["bash", "-lc", "detect-secrets scan --baseline .secrets.baseline app scripts .github"],
+            [sys.executable, "-m", "detect_secrets", "scan", "--baseline", ".secrets.baseline", "app", "scripts", ".github"],
             "secret-baseline-review.json",
             300,
         ),
@@ -331,7 +331,7 @@ def _run_one(item: CoverageStaticSecurityCommand, output_dir: Path) -> dict[str,
     monotonic_started = time.monotonic()
     timed_out = False
     try:
-        completed = subprocess.run(
+        completed = run(
             item.command,
             cwd=ROOT,
             text=True,

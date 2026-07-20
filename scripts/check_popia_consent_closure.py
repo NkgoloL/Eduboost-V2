@@ -2,7 +2,7 @@
 """Run the full Cluster C POPIA consent/audit closure suite."""
 from __future__ import annotations
 
-import subprocess
+from scripts._subprocess import run
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -32,7 +32,7 @@ class ClosureResult:
 
 
 def run_command(name: str, command: list[str]) -> ClosureResult:
-    result = subprocess.run(
+    result = run(
         command,
         cwd=REPO_ROOT,
         check=False,

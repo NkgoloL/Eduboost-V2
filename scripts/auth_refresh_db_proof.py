@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import os
 import re
-import subprocess
+from scripts._subprocess import run
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -62,7 +62,7 @@ class AuthRefreshDbProofStatus:
 
 
 def current_commit() -> str:
-    result = subprocess.run(
+    result = run(
         ["git", "rev-parse", "HEAD"],
         cwd=ROOT,
         text=True,
@@ -153,7 +153,7 @@ def run_db_pytest() -> tuple[int | None, str]:
         return None, "AUTH_REFRESH_DB_PROOF_DSN not set; DB proof not executed"
 
     env = {**os.environ, "PYTHONPATH": str(ROOT), "AUTH_REFRESH_DB_PROOF_ENABLED": "1"}
-    result = subprocess.run(
+    result = run(
         [
             "python3",
             "-m",

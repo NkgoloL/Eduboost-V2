@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -20,14 +20,14 @@ def run_step(command: list[str], *, dry_run: bool) -> None:
     print("+", " ".join(command))
     if dry_run:
         return
-    subprocess.run(command, cwd=PROJECT_ROOT, check=True)
+    run(command, cwd=PROJECT_ROOT, check=True)
 
 
 def run_quality_gate(command: list[str], *, dry_run: bool, continue_on_failure: bool) -> None:
     print("+", " ".join(command))
     if dry_run:
         return
-    result = subprocess.run(command, cwd=PROJECT_ROOT, check=False)
+    result = run(command, cwd=PROJECT_ROOT, check=False)
     if result.returncode and not continue_on_failure:
         raise subprocess.CalledProcessError(result.returncode, command)
     if result.returncode:

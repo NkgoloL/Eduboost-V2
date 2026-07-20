@@ -11,7 +11,7 @@ EVIDENCE_DIR = Path("docs/release-evidence/knowledge-graph/kg-000-formal-kg-road
 BOUNDARY_FALSE = {"runtime_kg_implementation_claimed": False, "runtime_kg_authority_switch_authorised": False, "database_schema_migration_authorised": False, "learner_facing_model_change_authorised": False, "production_release_authorised": False, "deployment_authorised": False, "release_tag_authorised": False, "public_beta_authorised": False, "billing_launch_authorised": False, "live_payment_processing_authorised": False}
 
 def git_value(args: list[str]) -> str:
-    try: return subprocess.check_output(["git", *args], text=True, stderr=subprocess.DEVNULL).strip()
+    try: return check_output(["git", *args], text=True, stderr=subprocess.DEVNULL).strip()
     except Exception: return ""
 
 def git_state(target_branch: str) -> dict[str, str]:

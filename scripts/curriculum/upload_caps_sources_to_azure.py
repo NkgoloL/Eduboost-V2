@@ -6,7 +6,7 @@ import argparse
 import hashlib
 import json
 import re
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 from typing import Any
@@ -58,7 +58,7 @@ def sha256_file(path: Path) -> str:
 
 
 def run_az(args: list[str]) -> None:
-    subprocess.run(["az", *args], check=True)
+    run(["az", *args], check=True)
 
 
 def upload_document(

@@ -6,7 +6,7 @@ import json
 import os
 from pathlib import Path
 import re
-import subprocess
+from scripts._subprocess import run
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -41,7 +41,7 @@ class CiEvidenceStatus:
 
 
 def _run(command: list[str]) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
+    return run(
         command,
         cwd=ROOT,
         text=True,

@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import ast
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -56,7 +56,7 @@ def main() -> int:
             ast.parse(read(path))
             print(f"- PASS syntax {path}")
 
-    ruff = subprocess.run(
+    ruff = run(
         [
             sys.executable,
             "-m",

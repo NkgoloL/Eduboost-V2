@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import ast
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -44,7 +44,7 @@ def main() -> int:
         [sys.executable, "scripts/generate_router_service_dependency_map.py"],
         [sys.executable, "scripts/generate_legacy_learner_access_guard_report.py"],
     ]:
-        result = subprocess.run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+        result = run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
         if result.returncode != 0:
             failures.append(f"{' '.join(command)} failed: {result.stdout}")
 

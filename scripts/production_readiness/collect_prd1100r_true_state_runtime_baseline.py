@@ -8,7 +8,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 from typing import Any
@@ -38,7 +38,7 @@ STATIC_REQUIRED_FILES = (
 
 def _run(cmd: list[str], root: Path, timeout: int = 45) -> dict[str, Any]:
     try:
-        completed = subprocess.run(
+        completed = run(
             cmd,
             cwd=root,
             text=True,

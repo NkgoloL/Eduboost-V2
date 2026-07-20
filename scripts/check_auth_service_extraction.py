@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import ast
 import importlib
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -26,7 +26,7 @@ def main() -> int:
     failures: list[str] = []
     print("Auth service extraction check")
 
-    repair = subprocess.run(
+    repair = run(
         [sys.executable, "scripts/repair_auth_service_extraction.py"],
         cwd=ROOT,
         text=True,
@@ -83,7 +83,7 @@ def main() -> int:
     except Exception as exc:
         failures.append(f"app.api_v2 import failed: {exc!r}")
 
-    ruff = subprocess.run(
+    ruff = run(
         [
             sys.executable,
             "-m",

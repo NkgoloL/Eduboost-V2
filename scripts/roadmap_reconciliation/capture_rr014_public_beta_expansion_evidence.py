@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import check_output, run
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -19,7 +19,7 @@ EVIDENCE_DIR = Path("docs/release-evidence/roadmap-reconciliation/rr-014-public-
 
 def _run(root: Path, cmd: list[str]) -> str:
     try:
-        return subprocess.check_output(cmd, cwd=root, text=True, stderr=subprocess.STDOUT).strip()
+        return check_output(cmd, cwd=root, text=True, stderr=subprocess.STDOUT).strip()
     except Exception:
         return ""
 
