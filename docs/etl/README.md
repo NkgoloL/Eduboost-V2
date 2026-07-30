@@ -132,10 +132,11 @@ The startup wrapper supports both newer and older FastMCP SDK behavior. Newer SD
 
 ## Step-By-Step Startup
 
-### 1. SSH To The VM
+### 1. Use The Local WSL Checkout
 
 ```bash
-ssh azureuser@135.119.52.214
+export REPO_ROOT="$(pwd)"
+cd "$REPO_ROOT"
 ```
 
 ### 2. Change Into The Repo
@@ -251,14 +252,14 @@ Use this when the MCP host can execute commands on the same machine as the repos
 {
   "mcpServers": {
     "eduboost-etl": {
-      "command": "/home/azureuser/Dev/SandBox/ml/Eduboost-V2/.venv/bin/python",
+      "command": "\${REPO_ROOT}/.venv/bin/python",
       "args": [
         "-m",
         "tools.etl.etl_mcp_server_v2",
         "--transport",
         "stdio"
       ],
-      "cwd": "/home/azureuser/Dev/SandBox/ml/Eduboost-V2",
+      "cwd": "\${REPO_ROOT}",
       "env": {
         "ETL_DB_URL": "sqlite:///temp/etl_mcp_smoke.db",
         "ETL_STORAGE_ROOT": "temp/etl_mcp_storage",
@@ -283,13 +284,6 @@ Use this when the server is already running as a daemon or remote process:
 }
 ```
 
-If the client runs on your local workstation and the server binds only to `127.0.0.1` on the VM, create an SSH tunnel:
-
-```bash
-ssh -L 8765:127.0.0.1:8765 azureuser@135.119.52.214
-```
-
-Then point the local MCP client at:
 
 ```text
 http://127.0.0.1:8765/mcp

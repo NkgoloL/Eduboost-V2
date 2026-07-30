@@ -2,8 +2,9 @@
 import json
 from scripts._subprocess import run
 import os
+from pathlib import Path
 
-os.chdir('/home/nkgolol/Dev/Development/Eduboost-V2')
+os.chdir(Path(__file__).resolve().parents[1])
 
 # Generate baseline
 result = run(
