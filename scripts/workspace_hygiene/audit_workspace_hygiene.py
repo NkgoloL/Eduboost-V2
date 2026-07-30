@@ -6,6 +6,7 @@ inventory when a .git directory is present, and falls back to filesystem counts
 for archive/snapshot validation.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

@@ -6,6 +6,7 @@ install so that passing evidence proves the frontend lockfile and scripts are
 usable under pnpm. Use --skip-install only for diagnostics, not passing evidence.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

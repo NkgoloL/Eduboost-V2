@@ -6,6 +6,7 @@ blocked until a disposable PostgreSQL/Redis/API/worker/frontend stack is running
 and the live database revision exactly matches the repository Alembic head.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

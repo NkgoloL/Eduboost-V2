@@ -7,6 +7,7 @@ separate from `make test-fast`: passing this verifier only means the Python
 runtime is dependency-complete enough to retry the real gate.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

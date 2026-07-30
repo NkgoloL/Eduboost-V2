@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Verify the Phase 0-equivalent reproducibility baseline for Gate 2R.0."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import hashlib

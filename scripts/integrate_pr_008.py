@@ -8,6 +8,7 @@ Rules:
 
 Run from repo root.
 """
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 import filecmp
 import shutil
 from scripts._subprocess import run

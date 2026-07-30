@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Capture PRD-0.9 repository hygiene and generated/local artifact audit evidence."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

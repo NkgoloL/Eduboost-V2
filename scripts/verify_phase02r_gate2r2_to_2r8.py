@@ -6,6 +6,7 @@ static environments may not have the async PostgreSQL driver installed. Live ORM
 and trigger behavior is proven by scripts/verify_phase02r_postgres.sh.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

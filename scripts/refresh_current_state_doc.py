@@ -26,6 +26,7 @@ Add to Makefile:
 """
 
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 from scripts._subprocess import check_output, run

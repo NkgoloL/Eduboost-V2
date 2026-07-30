@@ -7,6 +7,7 @@ Alembic/schema lineage, Redis, and the HTTP /ready endpoint.  It is fail-closed:
 when a live stack is absent, evidence is recorded as blocked/red, not accepted.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

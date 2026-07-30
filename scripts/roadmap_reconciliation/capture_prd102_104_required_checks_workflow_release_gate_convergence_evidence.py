@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Capture PRD-1.2-1.4 required-check, workflow, and release-gate convergence evidence."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

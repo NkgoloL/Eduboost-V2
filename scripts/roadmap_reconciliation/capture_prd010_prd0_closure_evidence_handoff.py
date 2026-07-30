@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Capture PRD-0.10 PRD-0 closure evidence and PRD-1 handoff."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

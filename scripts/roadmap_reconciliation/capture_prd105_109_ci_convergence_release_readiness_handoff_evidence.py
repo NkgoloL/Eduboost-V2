@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Capture PRD-1.5-1.9 CI convergence, release-readiness, final evidence, and PRD-2 handoff."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

@@ -5,6 +5,7 @@ Default behavior is safe and read-only. Actual deletion requires both --execute
 and --confirm-delete-ignored-artifacts and delegates to git clean -fdX.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

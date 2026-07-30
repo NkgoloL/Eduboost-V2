@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Gate 2R.5 implementation verifier."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

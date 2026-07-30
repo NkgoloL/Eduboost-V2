@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Capture KG-6 tutor/study-plan/gamification/parent alignment evidence."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

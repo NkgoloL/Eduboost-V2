@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Capture RR-008 operational readiness evidence."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

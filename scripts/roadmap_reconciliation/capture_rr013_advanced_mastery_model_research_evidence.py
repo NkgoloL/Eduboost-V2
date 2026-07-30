@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Capture RR-013 advanced mastery-model research evidence."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import datetime as dt

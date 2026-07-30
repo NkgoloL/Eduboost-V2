@@ -8,6 +8,7 @@ launch, release tagging, deployment, live learner traffic, or runtime KG work.
 """
 
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import datetime as dt

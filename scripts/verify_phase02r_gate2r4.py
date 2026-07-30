@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Static and focused behavioral verifier for Phase 02R Gate 2R.4."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

@@ -6,6 +6,7 @@ control plane exists and that prior local/static gates have evidence bundles
 available. It does not claim hosted GitHub Actions success.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

@@ -7,6 +7,7 @@ Green evidence requires every gate to be backed by independent command
 output, with blocker records when anything fails.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone

@@ -7,6 +7,7 @@ installation, config discovery, and executable E2E command wiring without
 claiming full backend-backed production journey readiness.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

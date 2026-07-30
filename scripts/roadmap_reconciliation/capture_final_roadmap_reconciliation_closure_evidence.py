@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Capture final roadmap reconciliation closure evidence."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import hashlib

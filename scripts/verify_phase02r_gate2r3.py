@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Gate 2R.3 focused verifier: extraction, page/section provenance, and chunks."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import hashlib
 import json

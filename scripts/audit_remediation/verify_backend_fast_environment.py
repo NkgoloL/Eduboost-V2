@@ -7,6 +7,7 @@ spawns `--python-bin` for each import check instead of importing modules in the
 verifier process by default.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

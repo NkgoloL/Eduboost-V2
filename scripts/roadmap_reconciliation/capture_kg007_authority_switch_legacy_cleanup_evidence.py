@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Capture KG-7 authority-switch readiness and legacy-cleanup evidence."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json

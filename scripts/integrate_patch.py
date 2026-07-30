@@ -9,6 +9,7 @@ Behavior:
 - If destination already exists, copy the source into `staging/<staging-name>/...` for manual review.
 - Stage all moved files and newly created staging files and create a commit summarizing the action.
 """
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 import os
 import sys
 import shutil
