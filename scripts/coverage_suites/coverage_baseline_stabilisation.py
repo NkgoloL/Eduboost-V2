@@ -21,6 +21,7 @@ from pathlib import Path
 import re
 import shutil
 import signal
+import subprocess
 from scripts._subprocess import run
 import sys
 import time

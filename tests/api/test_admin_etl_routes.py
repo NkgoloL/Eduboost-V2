@@ -5,7 +5,6 @@ from fastapi.testclient import TestClient
 
 from app.api_v2 import app
 from app.api_v2_deps.auth import get_auth_context, AuthContext
-from app.core.security import get_current_user
 from app.models import UserRole
 
 pytestmark = pytest.mark.unit

@@ -101,7 +101,7 @@ def command_plan() -> list[CoverageStaticSecurityCommand]:
         CoverageStaticSecurityCommand(
             "bandit_release_security",
             "Bandit security scan over application and script code.",
-            [_py(), "-m", "bandit", "-r", "app", "scripts", "-q"],
+            [_py(), "-m", "bandit", "-r", "app", "scripts", "-c", ".bandit", "-q"],
             "bandit-release-security.json",
             600,
         ),

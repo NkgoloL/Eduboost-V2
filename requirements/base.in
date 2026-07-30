@@ -1,5 +1,5 @@
 # EduBoost runtime dependencies (production-safe surface only).
-fastapi==0.111.0
+fastapi==0.141.1
 uvicorn[standard]==0.34.3
 python-multipart==0.0.31
 
@@ -55,7 +55,7 @@ phonenumbers==8.13.37
 python-dateutil==2.9.0
 babel==2.15.0
 reportlab==4.5.1
-pypdf==6.13.3
+pypdf==6.14.2
 
 # MCP SDK for local ETL FastMCP tooling.
 mcp[cli]>=1.28.1
@@ -63,4 +63,4 @@ aiohttp==3.14.1
 beautifulsoup4==4.12.3
 
 # Align greenlet version with dev requirements (playwright constraint)
-greenlet==3.0.3
+greenlet==3.2.4
