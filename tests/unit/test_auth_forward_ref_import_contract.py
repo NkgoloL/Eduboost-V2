@@ -15,7 +15,7 @@ def test_auth_router_exports_register_request_for_fastapi_forward_refs():
 def test_app_api_v2_imports_after_auth_forward_ref_repair():
     api_v2 = importlib.import_module("app.api_v2")
     app = api_v2.app
-    paths = {getattr(route, "path", "") for route in getattr(app, "routes", [])}
+    paths = set(app.openapi()["paths"])
     assert any("/register" in path for path in paths)
 
 

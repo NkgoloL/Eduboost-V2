@@ -137,11 +137,11 @@ def _dependency_remediation_valid(root: Path) -> bool:
     dev_txt = (root / "requirements/dev.txt").read_text() if (root / "requirements/dev.txt").exists() else ""
     security_plan = _load_json(root / SECURITY_PLAN.relative_to(ROOT))
     return all([
-        "aiohttp==3.13.5" in base_in,
+        "aiohttp==3.14.1" in base_in,
         "beautifulsoup4==4.12.3" in base_in,
-        "aiohttp==3.13.5" in dev_in,
+        "aiohttp==3.14.1" in dev_in,
         "beautifulsoup4==4.12.3" in dev_in,
-        "aiohttp==3.13.5" in dev_txt,
+        "aiohttp==3.14.1" in dev_txt,
         "beautifulsoup4==4.12.3" in dev_txt,
         "cryptography==49.0.0" in base_in,
         security_plan.get("cryptography_bumped_in_requirements") is True,
