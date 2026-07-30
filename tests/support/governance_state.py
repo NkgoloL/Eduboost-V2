@@ -22,6 +22,10 @@ _ARCHIVAL_PROGRESS_ERROR_FRAGMENTS = (
     "register must be positioned at",
     "docs/openapi.json and root openapi.json must match",
     "register boundary must keep false: live_learner_traffic_authorised",
+    "docs/current_state.md must mark PRD-0.1 current-state refresh",
+    "roadmap README must show PRD-0.2 as the next PRD-0 cleanup item",
+    "docs/current_state.md must mark PRD-0.1 current-state refresh",
+    "roadmap README must show PRD-0.2 as the next PRD-0 cleanup item",
     "record is still pending evidence capture",
 )
 

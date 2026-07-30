@@ -124,7 +124,7 @@ def registered_routes() -> tuple[bool, bool, dict[str, dict[str, list[str]]]]:
         app = FastAPI()
         app.include_router(router)
         routes: dict[str, dict[str, list[str]]] = {}
-        for route in app.routes:
+        for route in router.routes:
             if not isinstance(route, APIRoute):
                 continue
             endpoint_name = getattr(route.endpoint, "__name__", "")

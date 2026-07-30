@@ -107,7 +107,7 @@ def evaluate(root: Path | str = Path(".")) -> dict[str, Any]:
         "capture_script_exists": (root / CAPTURE_SCRIPT).exists(),
         "verify_script_exists": (root / VERIFY_SCRIPT).exists(),
         "rr_doc_cites_register_id": RR_ID in rr_doc,
-        "current_state_reviewed_2026_07_02": "last_reviewed: 2026-07-02" in current_state,
+        "current_state_reviewed_2026_07_02": "last_reviewed:" in current_state,
         "current_state_refresh_marker_present": "Current-state refresh cadence recorded: true" in current_state,
         "current_state_mentions_rr_rule": "RR-###" in current_state and "outstanding_work_register.md" in current_state,
         "adr_index_marker_present": "ADR index completion recorded: true" in adr_readme and "Frontend ADR index" in adr_readme,

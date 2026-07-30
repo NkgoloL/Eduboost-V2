@@ -2,7 +2,10 @@
 from __future__ import annotations
 import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 import os
-from scripts._subprocess import run
+try:
+    from scripts._subprocess import run as _run
+except ModuleNotFoundError:  # direct execution from scripts has no repo on sys.path
+    from _subprocess import run as _run
 from datetime import datetime, timezone
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
@@ -14,8 +17,8 @@ def safe(url):
     if any(x in low for x in ("prod","production","amazonaws.com","azure.com","render.com")): return False,"DATABASE_URL looks production-like"
     if "test" not in low and "disposable" not in low: return False,"DATABASE_URL must be test/disposable"
     return True,"safe disposable DB URL shape"
-def run(cmd):
-    r=run(cmd,cwd=ROOT,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,check=False)
+def run_command(cmd):
+    r=_run(cmd,cwd=ROOT,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,check=False)
     return r.returncode,r.stdout
 url=os.getenv("DATABASE_URL",""); ok,reason=safe(url)
 lines=["# Disposable DB Schema Proof Execution Report","",f"Generated: `{datetime.now(timezone.utc).isoformat()}`","",f"Safety: `{reason}`",""]
@@ -25,5 +28,5 @@ if not ok:
 cmds=[["python3","scripts/run_disposable_schema_drift_proof.py","--database-url",url],["python3","scripts/check_schema_drift_contract.py"]]
 overall=0; lines+=["**Status:** executed","","| Command | Code |","|---|---:|"]
 for cmd in cmds:
-    code,out=run(cmd); overall=max(overall,code); lines.append(f"| `{' '.join(cmd).replace(url,'<DATABASE_URL>')}` | {code} |"); lines+=["","```text",out.rstrip(),"```"]
+    code,out=run_command(cmd); overall=max(overall,code); lines.append(f"| `{' '.join(cmd).replace(url,'<DATABASE_URL>')}` | {code} |"); lines+=["","```text",out.rstrip(),"```"]
 REPORT.write_text("\n".join(lines),encoding="utf-8"); print(f"Wrote {REPORT}"); raise SystemExit(overall)

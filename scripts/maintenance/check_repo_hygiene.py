@@ -11,6 +11,7 @@ from pathlib import Path
 
 ROOT_ALLOWED_FILES = {
     '.agent.md',
+    '.bandit',
     '.coveragerc',
     '.dockerignore',
     '.env.example',
@@ -41,6 +42,7 @@ ROOT_ALLOWED_FILES = {
     'docker-compose.v2.yml',
     'docker-compose.yml',
     'mkdocs.yml',
+    'mypy.ini',
     'package-lock.json',
     'package.json',
     'pnpm-lock.yaml',
