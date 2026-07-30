@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import subprocess
+import subprocess  # nosec B404 — subprocess constants are passed to the controlled wrapper
 from scripts._subprocess import run
 import sys
 from pathlib import Path

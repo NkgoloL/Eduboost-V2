@@ -4,7 +4,7 @@ from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 import importlib.util
 import json
-import subprocess
+import subprocess  # nosec B404 — subprocess constants are passed to the controlled wrapper
 from pathlib import Path
 import re
 from scripts._subprocess import run
