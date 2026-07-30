@@ -287,7 +287,7 @@ class KhanAcademyScraper(BaseScraper):
                         if await loc.count() > 0:
                             await loc.click(timeout=1500)
                     except Exception:  # best-effort probe, cannot fail-close
-            pass
+                        pass
                 await page.wait_for_timeout(1500)
                 return await page.content()
             finally:

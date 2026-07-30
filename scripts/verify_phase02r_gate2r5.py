@@ -86,7 +86,7 @@ def _behavioral_errors() -> list[str]:
                 )
                 errors.append(f"ineligible candidate was accepted: {bad}")
             except Exception:  # best-effort probe, cannot fail-close
-            pass
+                pass
         try:
             builder.build_manifest(
                 corpus_code="CAPS-G4-MATH-EN",

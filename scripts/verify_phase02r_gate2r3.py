@@ -49,7 +49,7 @@ def behavioral_checks() -> list[str]:
                 StructuredTextExtractor().extract_text_fixture(source, language="zu")
                 errors.append("invalid language was not rejected")
             except Exception:  # best-effort probe, cannot fail-close
-            pass
+                pass
     except Exception as exc:
         errors.append(f"behavioral checks crashed: {exc}")
     return errors

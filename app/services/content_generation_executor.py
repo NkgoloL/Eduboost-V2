@@ -158,7 +158,7 @@ class ContentGenerationExecutor:
 
                         artifact.status = ContentArtifactStatus.VALIDATION_FAILED
                     except Exception:  # best-effort probe, cannot fail-close
-            pass
+                        pass
             artifact_ids.append(artifact.artifact_id)
             existing_hashes.add(artifact.artifact_hash)
 

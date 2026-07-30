@@ -56,7 +56,7 @@ def _behavioral_contracts() -> list[str]:
                 assert_no_learner_pii_in_source_metadata({"learner_id": "L1"})
                 errors.append("PII metadata was not rejected")
             except Exception:  # best-effort probe, cannot fail-close
-            pass
+                pass
             extracted = StructuredTextExtractor(max_chunk_chars=180).extract_text_fixture(path, language="en")
             if len(extracted.pages) != 2 or not extracted.chunks:
                 errors.append("structured extraction did not preserve pages/chunks")

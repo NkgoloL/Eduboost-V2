@@ -5,7 +5,7 @@ import argparse
 import hashlib
 import json
 from scripts._subprocess import check_output, run
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET  # nosec B405 -- parses locally-generated coverage.xml only, not external input
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any

@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
-from scripts._subprocess import run
+from scripts._subprocess import run_shell
 from scripts.test_suites.test_suite_taxonomy import DEFAULT_SUITE_COMMANDS
 
 
@@ -25,7 +25,7 @@ def main() -> int:
     if args.dry_run:
         print(json.dumps(payload, indent=2, sort_keys=True) if args.json else command.command)
         return 0
-    result = run(command.command, shell=True)  # nosec B602
+    result = run_shell(command.command)
     payload["returncode"] = result.returncode
     if args.json:
         print(json.dumps(payload, indent=2, sort_keys=True))

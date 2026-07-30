@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import argparse
 import json
-from scripts._subprocess import run
+from scripts._subprocess import run_shell
 from typing import Any
 
 from scripts.test_suites.product_runtime_gate import evaluate_product_runtime_gate_contract, load_contract, ROOT
@@ -33,7 +33,7 @@ def main() -> int:
     results: list[dict[str, Any]] = []
     if args.execute:
         for item in selected:
-            completed = run(str(item["command"]), shell=True, cwd=ROOT)  # nosec B602
+            completed = run_shell(str(item["command"]), cwd=ROOT)
             results.append({"id": item.get("id"), "class": item.get("class"), "command": item.get("command"), "returncode": completed.returncode})
     payload = {
         "valid": contract.get("valid") is True and (not args.execute or all(item["returncode"] == 0 for item in results)),

@@ -13,12 +13,12 @@ import os
 import sys
 import shutil
 from pathlib import Path
-from scripts._subprocess import run
+from scripts._subprocess import run_shell
 
 
-def run(cmd, cwd=None):
+def _run(cmd, cwd=None):
     print(f"> {cmd}")
-    run(cmd, shell=True, cwd=cwd)  # nosec B602
+    run_shell(cmd, cwd=cwd)
 
 
 def main():
@@ -74,9 +74,9 @@ def main():
 
     # Stage changes
     try:
-        run("git add -A")
+        _run("git add -A")
         commit_msg = f"chore(integrate): apply patch from {src} (moved {len(moved)} files, staged {len(staged_conflicts)} conflicts)"
-        run(f"git commit -m \"{commit_msg}\" || echo 'No changes to commit'")
+        _run(f"git commit -m \"{commit_msg}\" || echo 'No changes to commit'")
     except subprocess.CalledProcessError as e:
         print("Git operations failed:", e)
         sys.exit(1)

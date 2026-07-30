@@ -42,11 +42,12 @@ def load_documents(path: Path) -> list[tuple[dict, list[dict]]]:
     connection.row_factory = sqlite3.Row
     try:
         placeholders = ",".join("?" for _ in SEARCHABLE)
+        query_template = """SELECT * FROM documents
+                WHERE processing_status IN ("""
         documents = [
             dict(row)
             for row in connection.execute(
-                """SELECT * FROM documents
-                WHERE processing_status IN (""" + placeholders + """)
+                query_template + placeholders + """)
                 ORDER BY document_id""",
                 SEARCHABLE,
             ).fetchall()

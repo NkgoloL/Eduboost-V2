@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Capture KG-0 formal KG roadmap approval evidence."""
 from __future__ import annotations
-import argparse, json, subprocess
+import argparse, json
+import subprocess  # nosec B404 -- only .DEVNULL constant used here
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any

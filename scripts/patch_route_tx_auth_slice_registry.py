@@ -14,7 +14,7 @@ REGISTRY = ROOT / "docs/release/evidence_status_registry.yml"
 
 
 def current_commit() -> str:
-    import subprocess
+    import subprocess  # nosec B404 -- only .PIPE/.DEVNULL constants used here
 
     result = run(
         ["git", "rev-parse", "HEAD"],

@@ -6,7 +6,8 @@ import argparse
 import json
 import os
 import shlex
-from scripts._subprocess import run
+import subprocess  # nosec B404 -- only .PIPE/.STDOUT constants used; calls go through run_shell()
+from scripts._subprocess import run_shell
 import time
 from pathlib import Path
 from typing import Any
@@ -31,11 +32,11 @@ def run_probe(name: str, command: str, *, root: Path, output_dir: Path) -> dict[
     output_dir.mkdir(parents=True, exist_ok=True)
     output_file = output_dir / f"{name}.txt"
     started = time.time()
-    completed = run(
+    completed = run_shell(
         command,
         cwd=root,
-        shell=True,  # nosec B602
         text=True,
+        capture_output=False,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         env={**os.environ, "PYTHONPATH": os.environ.get("PYTHONPATH", ".")},

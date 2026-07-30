@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
-from scripts._subprocess import run
+from scripts._subprocess import run_shell
 from datetime import datetime, timezone
 from typing import Any
 
@@ -11,7 +11,7 @@ from scripts.advisory_suites.advisory_gate import gate_command_plan
 
 
 def _run(command: str) -> dict[str, Any]:
-    completed = run(command, shell=True, text=True, capture_output=True)  # nosec B602
+    completed = run_shell(command, text=True, capture_output=True)
     return {
         "command": command,
         "exit_code": completed.returncode,
