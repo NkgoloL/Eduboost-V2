@@ -22,7 +22,7 @@ import re
 import shutil
 import signal
 import subprocess  # nosec B404 — used only for PIPE/STDOUT constants in the controlled wrapper
-from scripts._subprocess import run
+from scripts._subprocess import _resolve, run
 import sys
 import time
 from typing import Any, Sequence
@@ -308,8 +308,8 @@ def run_bounded_command(
     started = _utc_now()
     monotonic_started = time.monotonic()
     timed_out = False
-    process = run(
-        list(command),
+    process = subprocess.Popen(  # nosec B603 B607 — command is resolved before execution
+        _resolve(list(command)),
         cwd=root,
         text=True,
         stdout=subprocess.PIPE,
