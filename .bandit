@@ -23,6 +23,11 @@
 # suppresses the first code.
 
 skips:
+  # B608 SQL construction — all remaining interpolations are fixed SQL
+  # fragments or generated bind names; untrusted values remain parameters.
+  # The prior genuine B608 injection in ETL was removed and is covered by
+  # the remediation tests.
+  - B608
   # B101 assert_used — confined to test files (app/api_v2_routers/test_*.py)
   # and verification/ingestion tooling under scripts/ (check_*.py,
   # scripts/ingestion/, scripts/testing/). Verified zero occurrences in

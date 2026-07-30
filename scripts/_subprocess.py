@@ -83,10 +83,15 @@ def run(
             "single string. Use run_shell() for string commands."
         )
     resolved = _resolve(cmd)
+    # Some legacy callers provide explicit stdout/stderr streams. Python's
+    # subprocess API forbids combining those with capture_output=True.
+    effective_capture_output = capture_output and not (
+        "stdout" in kwargs or "stderr" in kwargs
+    )
     return subprocess.run(  # nosec B603 B607 — path resolved above, no shell=True
         resolved,
         cwd=cwd,
-        capture_output=capture_output,
+        capture_output=effective_capture_output,
         text=text,
         check=check,
         timeout=timeout,

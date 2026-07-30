@@ -21,7 +21,7 @@ from pathlib import Path
 import re
 import shutil
 import signal
-import subprocess
+import subprocess  # nosec B404 — used only for PIPE/STDOUT constants in the controlled wrapper
 from scripts._subprocess import run
 import sys
 import time
