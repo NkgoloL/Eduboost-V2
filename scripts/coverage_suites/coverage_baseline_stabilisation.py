@@ -39,7 +39,8 @@ PRD_ID = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7"
 REMEDIATION_ID = "PRD-11.0R.EXECUTION-7.COVERAGE-BASELINE-STABILISATION"
 OUTPUT_DIR = ROOT / "var/prd11/runtime-restore/execution-7/coverage-baseline-stabilisation"
 CONTRACT = ROOT / "docs/roadmap/production_readiness/coverage_baseline_stabilisation_contract.json"
-MARKER_EXPRESSION = "not governance and not slow and not llm and not e2e"
+# Governance tests are part of the authoritative B01 coverage baseline. The remaining exclusions require opt-in infrastructure or materially longer execution and are kept out of this deterministic transaction.
+MARKER_EXPRESSION = "not slow and not llm and not e2e"
 DEFAULT_THRESHOLD = 70
 DEFAULT_UNIT_SHARDS = 8
 DEFAULT_INTEGRATION_SHARDS = 2

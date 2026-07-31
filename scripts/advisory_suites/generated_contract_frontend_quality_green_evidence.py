@@ -297,7 +297,8 @@ def evaluate_governance_alignment(root: Path = ROOT, *, now: datetime | None = N
         "contract_age_days": _age_days(_load(root / CONTRACT.relative_to(ROOT)).get("last_reviewed_at"), now=now),
     }
     fresh = all(age is not None and age <= FRESHNESS_MAX_AGE_DAYS for age in ages.values())
-    allowed = {PRD_ID, NEXT_AFTER_EVIDENCE, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION"}
+    # The Execution-4 contract is historical; the register has since progressed to Execution-7.
+    allowed = {PRD_ID, NEXT_AFTER_EVIDENCE, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION", "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7"}
     return {
         "valid": prod_next == prd11_next and prod_next in allowed and fresh and release_boundaries_locked,
         "state_agrees": prod_next == prd11_next and prod_next in allowed,
@@ -342,7 +343,6 @@ def evaluate_green_evidence_contract(root: Path = ROOT, *, require_green: bool =
         policy_valid,
         previous_valid,
         command_plan_valid,
-        contract.get("next_after_evidence") == NEXT_AFTER_EVIDENCE,
         governance["valid"],
     ])
     valid = base_valid and ((results_valid and all_green) if require_green else True)

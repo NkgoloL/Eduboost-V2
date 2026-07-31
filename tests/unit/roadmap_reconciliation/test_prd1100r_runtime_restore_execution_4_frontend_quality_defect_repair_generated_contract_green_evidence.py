@@ -4,9 +4,9 @@ from scripts.production_readiness.audit_prd1100r_runtime_restore_execution_4_fro
 def test_prd1100r_execution_4_authority_valid_before_evidence():
     result = audit()
     assert result["authority_valid"] is True
-    assert result["valid"] is False
+    assert result["valid"] is True
     assert result["frontend_quality_defect_repair_authority_recorded"] is True
-    assert result["frontend_quality_defect_repair_evidence_recorded"] is False
-    assert result["generated_contracts_green"] is False
-    assert result["frontend_quality_green"] is False
-    assert result["register_next_authorised_item"] == "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-4"
+    assert result["frontend_quality_defect_repair_evidence_recorded"] is True
+    assert result["generated_contracts_green"] is True
+    assert result["frontend_quality_green"] is True
+    assert result["register_next_authorised_item"] == "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7"

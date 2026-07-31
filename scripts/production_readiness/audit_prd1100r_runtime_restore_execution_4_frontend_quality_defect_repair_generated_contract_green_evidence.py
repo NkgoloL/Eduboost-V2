@@ -14,7 +14,7 @@ from scripts.advisory_suites.generated_contract_frontend_quality_green_evidence 
 ROOT = Path(__file__).resolve().parents[2]
 PRD_ID = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-4"
 NEXT = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-5"
-ALLOWED_NEXT = {NEXT, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-6"}
+ALLOWED_NEXT = {NEXT, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-6", "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7"}
 RECORD = ROOT / "docs/roadmap/production_readiness/prd_1100r_runtime_restore_execution_4_frontend_quality_defect_repair_generated_contract_green_evidence_record.json"
 REGISTER = ROOT / "docs/roadmap/production_readiness/prd11_production_release_register.json"
 PROD_REGISTER = ROOT / "docs/roadmap/production_readiness/production_readiness_register.json"
