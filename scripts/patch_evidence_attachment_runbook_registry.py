@@ -3,8 +3,9 @@ from __future__ import annotations
 import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 from pathlib import Path
-from scripts._subprocess import run
 import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from scripts._subprocess import run
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
