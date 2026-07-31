@@ -3,12 +3,14 @@ from __future__ import annotations
 import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import shutil
-from scripts._subprocess import run
 from datetime import datetime, timezone
 from pathlib import Path
-
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from scripts._subprocess import run  # noqa: E402
 OUT = ROOT / "docs/architecture/import_linter_contract_run.md"
 
 

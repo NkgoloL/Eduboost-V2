@@ -2,13 +2,15 @@
 """Run the full Cluster E data-resilience closure suite."""
 from __future__ import annotations
 
-from scripts._subprocess import run
+from sys import path
 import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-
 REPO_ROOT = Path(__file__).resolve().parents[1]
+path.insert(0, str(REPO_ROOT))
+
+from scripts._subprocess import run  # noqa: E402
 
 COMMANDS = (
     ("production restore approval", ["make", "production-restore-approval-check"]),

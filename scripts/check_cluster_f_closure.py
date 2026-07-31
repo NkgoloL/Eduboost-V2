@@ -2,6 +2,9 @@
 """Run the full Cluster F AI/CAPS/safety closure suite."""
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scripts._subprocess import run
 import sys
 from dataclasses import dataclass

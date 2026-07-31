@@ -11,6 +11,9 @@ from __future__ import annotations
 import argparse
 import os
 import shutil
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scripts._subprocess import run
 from dataclasses import dataclass
 from pathlib import Path

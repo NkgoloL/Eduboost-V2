@@ -5,10 +5,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from scripts._subprocess import run
-
+import sys
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT))
+
+from scripts._subprocess import run  # noqa: E402
 OUTPUT = REPO_ROOT / "docs" / "operations" / "release_evidence_manifest.md"
 
 EVIDENCE_COMMANDS = (

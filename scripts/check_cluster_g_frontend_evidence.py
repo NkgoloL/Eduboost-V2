@@ -124,7 +124,7 @@ CONTENT_REQUIREMENTS = {
     ),
     ".github/workflows/frontend-e2e.yml": (
         "workflow_dispatch:",
-        "npx playwright test",
+        "pnpm exec playwright test",
         "PLAYWRIGHT_MOCK_API",
     ),
     "docs/frontend/frontend_e2e_opt_in_workflow.md": (

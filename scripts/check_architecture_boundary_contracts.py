@@ -3,12 +3,13 @@ from __future__ import annotations
 import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import ast
-from scripts._subprocess import run
 import sys
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from scripts._subprocess import run  # noqa: E402
 STRICT_ROUTERS = {
     "app/api_v2_routers/popia.py": {
         "forbidden_import_prefixes": ("app.repositories",),
