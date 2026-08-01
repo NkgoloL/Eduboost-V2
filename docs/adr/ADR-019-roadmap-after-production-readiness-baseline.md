@@ -77,3 +77,13 @@ The production-readiness baseline has been achieved. This ADR defines the strate
 - Production Readiness Baseline: `docs/backlog/production_readiness/20_final_release-blocker_checklist.md`
 - Post-Baseline Roadmap: `docs/backlog/production_readiness/19_roadmap_after_production-readiness_baseline.md`
 - Architecture Contract: `docs/roadmap/post_baseline_roadmap_architecture_contract.md`
+## Governance Requirements
+
+- Roadmap After Production-Readiness Baseline governance applies.
+- The roadmap owner is required.
+- The deferred scope register is required.
+- Dependency mapping is required.
+- Graduation criteria are required.
+- External/manual dependencies must be explicit.
+
+Required authority phrases: roadmap owner is required; deferred scope register is required; dependency mapping is required; graduation criteria are required; external/manual dependencies must be explicit.

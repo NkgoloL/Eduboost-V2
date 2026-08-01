@@ -117,3 +117,8 @@ To extend the baseline:
 - ADR-019: Roadmap After Production Readiness Baseline
 - Post-Baseline Architecture Contract: `docs/roadmap/post_baseline_roadmap_architecture_contract.md`
 - Production Readiness Checklist: `docs/backlog/production_readiness/20_final_release-blocker_checklist.md`
+## Boundary Vocabulary
+
+The baseline boundary records what is included, deferred, and excluded. Any external manual boundary requires manual dependency tracking.
+
+Control: external/manual boundary requires manual dependency.
