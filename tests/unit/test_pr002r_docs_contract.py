@@ -51,7 +51,7 @@ def test_route_inventory_records_legacy_exclusion() -> None:
     assert "/api/v2" in content
     assert "/v2" in content
     assert "/system" in content
-    assert "/api/v1/lessons/generate" in content
+    assert "/api/v1/lessons/generate" not in content
     assert "must not be part of the canonical" in content
 
 

@@ -1,7 +1,6 @@
 def test_fastapi_app_imports():
-    from app.legacy.api.main import app
+    from app.api_v2 import app
 
-    route_paths = {route.path for route in app.routes}
+    route_paths = {route.path for route in app.routes if hasattr(route, "path")}
 
     assert "/health" in route_paths
-    assert "/api/v1/lessons/generate" in route_paths

@@ -40,7 +40,6 @@ This inventory records frontend route, page, and journey-related surfaces.
 | `app/frontend/__tests__/FeaturePanels.test.tsx` | `_none_` | `learner, dashboard, lesson, diagnostic` |
 | `app/frontend/__tests__/InteractiveDiagnostic.test.tsx` | `_none_` | `learner, diagnostic, assessment` |
 | `app/frontend/__tests__/InteractiveDiagnosticFlow.test.tsx` | `_none_` | `learner, diagnostic, assessment` |
-| `app/frontend/__tests__/LegacyApiHelpers.test.ts` | `_none_` | `learner, diagnostic` |
 | `app/frontend/__tests__/ParentDashboard.test.tsx` | `_none_` | `learner, parent, dashboard, lesson, progress, consent` |
 | `app/frontend/__tests__/RouteGuard.test.tsx` | `Route, Routes` | `learner, parent` |
 | `app/frontend/__tests__/RoutingIntegration.test.tsx` | `Route, Routes` | `learner, dashboard, lesson, diagnostic, assessment` |

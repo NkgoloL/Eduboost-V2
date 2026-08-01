@@ -3,8 +3,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useLearner } from "../../../context/LearnerContext";
 import { LearnerService } from "../../../lib/api/services";
-import { Card } from "../../../components/ui/Card-legacy";
-import { Badge } from "../../../components/ui/Badge-legacy";
+import { Card } from "../../../components/ui/card";
+import { Badge } from "../../../components/ui/badge";
 import { LoadingSpinner } from "../../../components/ui/LoadingSpinner";
 import { ErrorMessage } from "../../../components/ui/ErrorMessage";
 import type { GamificationBadge, GamificationProfile } from "../../../lib/api/types";

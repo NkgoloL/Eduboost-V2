@@ -211,7 +211,6 @@ def render_current_state(
         ## Architecture Summary
 
         - **Canonical backend:** `app.api_v2:app` (FastAPI)
-        - **Compatibility shim:** `app.legacy.api.main:app`
         - **Frontend:** Next.js 14 / React 18 / TypeScript (Node ≥20)
         - **Key middleware:** PostgreSQL · Redis · Alembic migrations
 

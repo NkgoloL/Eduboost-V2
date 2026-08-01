@@ -32,14 +32,9 @@ During the current migration window, production V2 routers are exposed under bot
 - `docs/openapi.json` must be regenerated when route, request, or response contracts change.
 - `make openapi-check` must pass before merge.
 
-## Compatibility Policy
+## Runtime Policy
 
-`app.legacy.api.main:app` may remain as a compatibility import shim, but it is not the canonical production runtime.
-
-Known legacy compatibility behavior:
-
-- `/api/v1/lessons/generate` may return HTTP 410 Gone when the legacy shim is explicitly imported.
-- That route must not appear in the canonical V2 OpenAPI schema.
+app.api_v2:app is the sole supported API runtime. V1 and legacy-prefixed routes must not appear in the canonical V2 OpenAPI schema.
 
 ## Evidence
 

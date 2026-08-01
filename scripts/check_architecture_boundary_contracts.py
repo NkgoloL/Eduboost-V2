@@ -44,7 +44,6 @@ def main() -> int:
     for command in [
         [sys.executable, "scripts/generate_service_family_map.py"],
         [sys.executable, "scripts/generate_router_service_dependency_map.py"],
-        [sys.executable, "scripts/generate_legacy_learner_access_guard_report.py"],
     ]:
         result = run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
         if result.returncode != 0:

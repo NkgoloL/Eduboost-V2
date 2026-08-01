@@ -6,7 +6,7 @@ from pathlib import Path
 import re
 
 
-REQUIRED_NORECURSEDIRS = {".hypothesis", ".pytest_cache", "tests/legacy", ".venv", "venv", "node_modules"}
+REQUIRED_NORECURSEDIRS = {".hypothesis", ".pytest_cache", ".venv", "venv", "node_modules"}
 
 
 def _pytest_norecursedirs() -> set[str]:
