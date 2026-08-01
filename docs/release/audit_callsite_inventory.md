@@ -115,16 +115,16 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/api_v2_routers/auth_extended.py` | 96 | audit_append_call | `errors.append("at least 8 characters")` |
 | `app/api_v2_routers/auth_extended.py` | 98 | audit_append_call | `errors.append("one uppercase letter")` |
 | `app/api_v2_routers/auth_extended.py` | 100 | audit_append_call | `errors.append("one digit")` |
-| `app/api_v2_routers/billing.py` | 44 | audit_record_call | `await audit.record("STRIPE_WEBHOOK", payload=result)` |
+| `app/api_v2_routers/billing.py` | 45 | audit_record_call | `await audit.record("STRIPE_WEBHOOK", payload=result)` |
 | `app/api_v2_routers/consent.py` | 50 | audit_log_identifier | `# AuditLog emission is handled inside ConsentService.grant().` |
 | `app/api_v2_routers/consent.py` | 83 | audit_log_identifier | `# AuditLog emission is handled inside ConsentService.revoke().` |
-| `app/api_v2_routers/content_review.py` | 328 | audit_record_call | `result = await service.record(` |
+| `app/api_v2_routers/content_review.py` | 329 | audit_record_call | `result = await service.record(` |
+| `app/api_v2_routers/diagnostics.py` | 67 | audit_append_call | `payload.append({"key": key, "label": label})` |
+| `app/api_v2_routers/diagnostics.py` | 69 | audit_append_call | `payload.append({"key": fallback_key, "label": str(option)})` |
 | `app/api_v2_routers/gamification.py` | 63 | audit_record_call | `await FourthEstateService(db).record(` |
-| `app/api_v2_routers/learners.py` | 151 | audit_record_call | `await audit.record(` |
-| `app/api_v2_routers/parents.py` | 77 | audit_append_call | `dashboard_learners.append(` |
-| `app/api_v2_routers/parents.py` | 157 | audit_append_call | `response_learners.append(` |
-| `app/api_v2_routers/parents.py` | 204 | audit_append_call | `exports.append(` |
-| `app/api_v2_routers/parents.py` | 286 | audit_record_call | `await FourthEstateService(db).record(` |
+| `app/api_v2_routers/parents.py` | 75 | audit_append_call | `dashboard_learners.append(` |
+| `app/api_v2_routers/parents.py` | 155 | audit_append_call | `response_learners.append(` |
+| `app/api_v2_routers/parents.py` | 202 | audit_append_call | `exports.append(` |
 | `app/core/audit.py` | 11 | audit_repository | `from app.repositories.repositories import AuditRepository` |
 | `app/core/audit.py` | 23 | audit_repository | `self._repo = AuditRepository(db)` |
 | `app/core/audit.py` | 62 | audit_record_call | `await self.record(` |
@@ -138,17 +138,17 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/core/audit.py` | 122 | audit_record_call | `await self.record(` |
 | `app/core/config.py` | 214 | audit_append_call | `qlist.append(("ssl", val))` |
 | `app/core/config.py` | 216 | audit_append_call | `qlist.append((k, val))` |
-| `app/core/database.py` | 84 | audit_events_table | `await conn.execute(text("DROP RULE IF EXISTS audit_events_no_update ON audit_events"))` |
-| `app/core/database.py` | 85 | audit_events_table | `await conn.execute(text("DROP RULE IF EXISTS audit_events_no_delete ON audit_events"))` |
-| `app/core/database.py` | 90 | audit_events_table | `ON UPDATE TO audit_events` |
-| `app/core/database.py` | 99 | audit_events_table | `ON DELETE TO audit_events` |
-| `app/core/database.py` | 144 | audit_append_call | `conn.info.setdefault("query_start_time", []).append(time.time())` |
+| `app/core/database.py` | 85 | audit_events_table | `await conn.execute(text("DROP RULE IF EXISTS audit_events_no_update ON audit_events"))` |
+| `app/core/database.py` | 86 | audit_events_table | `await conn.execute(text("DROP RULE IF EXISTS audit_events_no_delete ON audit_events"))` |
+| `app/core/database.py` | 91 | audit_events_table | `ON UPDATE TO audit_events` |
+| `app/core/database.py` | 100 | audit_events_table | `ON DELETE TO audit_events` |
+| `app/core/database.py` | 146 | audit_append_call | `conn.info.setdefault("query_start_time", []).append(time.time())` |
 | `app/core/exceptions.py` | 113 | audit_append_call | `field_errors.append(` |
-| `app/core/health.py` | 102 | audit_append_call | `missing.append("JWT_SECRET_KEY")` |
-| `app/core/health.py` | 105 | audit_append_call | `missing.append("JWT_SECRET")` |
-| `app/core/health.py` | 108 | audit_append_call | `missing.append(name)` |
-| `app/core/health.py` | 155 | audit_events_table | `await session.execute(text("SELECT 1 FROM audit_events LIMIT 1"))` |
-| `app/core/llm_gateway.py` | 686 | audit_append_call | `positions.append((start, label, start + len(needle)))` |
+| `app/core/health.py` | 106 | audit_append_call | `missing.append("JWT_SECRET_KEY")` |
+| `app/core/health.py` | 109 | audit_append_call | `missing.append("JWT_SECRET")` |
+| `app/core/health.py` | 112 | audit_append_call | `missing.append(name)` |
+| `app/core/health.py` | 144 | audit_events_table | `await session.execute(text("SELECT 1 FROM audit_events LIMIT 1"))` |
+| `app/core/llm.py` | 689 | audit_append_call | `positions.append((start, label, start + len(needle)))` |
 | `app/core/password.py` | 87 | audit_append_call | `errors.append(f"Password must be at least {_MIN_LENGTH} characters.")` |
 | `app/core/password.py` | 90 | audit_append_call | `errors.append("Password must contain at least one uppercase letter.")` |
 | `app/core/password.py` | 93 | audit_append_call | `errors.append("Password must contain at least one lowercase letter.")` |
@@ -162,12 +162,180 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/core/password_policy.py` | 85 | audit_append_call | `errors.append("must contain at least one number")` |
 | `app/core/password_policy.py` | 87 | audit_append_call | `errors.append("must contain at least one symbol")` |
 | `app/core/refresh_tokens.py` | 137 | audit_append_call | `sessions.append({"jti": jti, "family_id": family_id, "ttl_seconds": ttl})` |
-| `app/core/stripe_client.py` | 67 | audit_record_call | `await self._event_repo.record(event["id"], event["type"], dict(event))` |
+| `app/core/runtime_readiness.py` | 33 | audit_events_table | `"audit_events",` |
+| `app/core/runtime_readiness.py` | 118 | audit_append_call | `version_files.append(path.name)` |
+| `app/core/runtime_readiness.py` | 138 | audit_append_call | `reasons.append("repository_alembic_graph_must_have_exactly_one_head")` |
+| `app/core/runtime_readiness.py` | 140 | audit_append_call | `reasons.append("live_alembic_version_missing_or_base_only")` |
+| `app/core/runtime_readiness.py` | 142 | audit_append_call | `reasons.append("live_database_has_multiple_alembic_revisions")` |
+| `app/core/runtime_readiness.py` | 144 | audit_append_call | `reasons.append("live_database_revision_unknown_to_repository")` |
+| `app/core/runtime_readiness.py` | 146 | audit_append_call | `reasons.append("live_database_revision_does_not_match_repository_head")` |
+| `app/core/stripe_client.py` | 68 | audit_record_call | `await self._event_repo.record(event["id"], event["type"], dict(event))` |
 | `app/domain/consent.py` | 70 | audit_log_identifier | `# audit_log` |
 | `app/domain/entities.py` | 18 | audit_log_identifier | `class AuditLog:` |
-| `app/models/__init__.py` | 323 | audit_events_table | `__tablename__ = "audit_events"` |
-| `app/models/__init__.py` | 699 | audit_log_identifier | `class AuditLog(Base):` |
-| `app/models/__init__.py` | 700 | audit_logs_table | `__tablename__ = "audit_logs"` |
+| `app/domain/knowledge_graph_authority_switch.py` | 158 | audit_append_call | `readiness_checks.append({` |
+| `app/domain/knowledge_graph_authority_switch.py` | 181 | audit_append_call | `legacy_projection_mappings.append({` |
+| `app/domain/knowledge_graph_authority_switch.py` | 205 | audit_append_call | `switch_control_edges.append({` |
+| `app/domain/knowledge_graph_authority_switch.py` | 231 | audit_append_call | `legacy_cleanup_tasks.append({` |
+| `app/domain/knowledge_graph_authority_switch.py` | 255 | audit_append_call | `rollback_controls.append({` |
+| `app/domain/knowledge_graph_authority_switch.py` | 339 | audit_append_call | `errors.append("graph_id must match KG-7 authority-switch readiness graph")` |
+| `app/domain/knowledge_graph_authority_switch.py` | 341 | audit_append_call | `errors.append("status must be authority_switch_readiness_pack_generated")` |
+| `app/domain/knowledge_graph_authority_switch.py` | 344 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `app/domain/knowledge_graph_authority_switch.py` | 346 | audit_append_call | `errors.append("boundary readiness_only must be true")` |
+| `app/domain/knowledge_graph_authority_switch.py` | 348 | audit_append_call | `errors.append("boundary uses_live_learner_data must be false")` |
+| `app/domain/knowledge_graph_authority_switch.py` | 350 | audit_append_call | `errors.append("boundary uses_guardian_pii must be false")` |
+| `app/domain/knowledge_graph_authority_switch.py` | 361 | audit_append_call | `errors.append(f"count mismatch for {key}")` |
+| `app/domain/knowledge_graph_authority_switch.py` | 363 | audit_append_call | `errors.append("KG-7 should map at least 700 KG-6 product alignment records")` |
+| `app/domain/knowledge_graph_authority_switch.py` | 365 | audit_append_call | `errors.append("KG-7 should record at least 10 readiness checks")` |
+| `app/domain/knowledge_graph_authority_switch.py` | 369 | audit_append_call | `errors.append("all authority readiness checks must pass and be blocking")` |
+| `app/domain/knowledge_graph_authority_switch.py` | 372 | audit_append_call | `errors.append("all legacy projection mappings must remain readiness-only and not executed")` |
+| `app/domain/knowledge_graph_authority_switch.py` | 375 | audit_append_call | `errors.append("all cleanup tasks must be planned but not executed")` |
+| `app/domain/knowledge_graph_authority_switch.py` | 378 | audit_append_call | `errors.append("all rollback controls must be available")` |
+| `app/domain/knowledge_graph_authority_switch.py` | 384 | audit_append_call | `errors.append("switch control edges must reference product alignment mappings")` |
+| `app/domain/knowledge_graph_authority_switch.py` | 429 | audit_append_call | `errors.append(f"validation flag failed: {key}")` |
+| `app/domain/knowledge_graph_caps.py` | 261 | audit_append_call | `errors.append("duplicate node keys found")` |
+| `app/domain/knowledge_graph_caps.py` | 263 | audit_append_call | `errors.append("Grade 4 Mathematics CAPS graph must contain 4 terms")` |
+| `app/domain/knowledge_graph_caps.py` | 265 | audit_append_call | `errors.append("CAPS graph must contain at least 20 topic nodes")` |
+| `app/domain/knowledge_graph_caps.py` | 267 | audit_append_call | `errors.append("CAPS graph must contain at least 25 subtopic nodes")` |
+| `app/domain/knowledge_graph_caps.py` | 270 | audit_append_call | `errors.append(f"node must be approved: {node.get('node_key')}")` |
+| `app/domain/knowledge_graph_caps.py` | 272 | audit_append_call | `errors.append(f"node missing provenance: {node.get('node_key')}")` |
+| `app/domain/knowledge_graph_caps.py` | 275 | audit_append_call | `errors.append(f"edge must be approved: {edge.get('edge_id')}")` |
+| `app/domain/knowledge_graph_caps.py` | 277 | audit_append_call | `errors.append(f"edge has orphan endpoint: {edge.get('edge_id')}")` |
+| `app/domain/knowledge_graph_caps.py` | 279 | audit_append_call | `errors.append(f"edge missing provenance: {edge.get('edge_id')}")` |
+| `app/domain/knowledge_graph_caps.py` | 282 | audit_append_call | `errors.append(f"boundary flag must be false: {key}")` |
+| `app/domain/knowledge_graph_gap_engine.py` | 337 | audit_append_call | `gap_items.append(gap_item)` |
+| `app/domain/knowledge_graph_gap_engine.py` | 338 | audit_append_call | `interventions.append(intervention)` |
+| `app/domain/knowledge_graph_gap_engine.py` | 417 | audit_append_call | `errors.append("unexpected KG-4 plan graph_id")` |
+| `app/domain/knowledge_graph_gap_engine.py` | 419 | audit_append_call | `errors.append("KG-4 plan must be advisory only")` |
+| `app/domain/knowledge_graph_gap_engine.py` | 421 | audit_append_call | `errors.append("KG-4 plan must not use live learner data")` |
+| `app/domain/knowledge_graph_gap_engine.py` | 428 | audit_append_call | `errors.append("duplicate gap keys found")` |
+| `app/domain/knowledge_graph_gap_engine.py` | 430 | audit_append_call | `errors.append("duplicate intervention keys found")` |
+| `app/domain/knowledge_graph_gap_engine.py` | 438 | audit_append_call | `errors.append("not all gap items reference KG-3 shadow states")` |
+| `app/domain/knowledge_graph_gap_engine.py` | 440 | audit_append_call | `errors.append("not all gap items are source grounded")` |
+| `app/domain/knowledge_graph_gap_engine.py` | 442 | audit_append_call | `errors.append("not all interventions are source grounded")` |
+| `app/domain/knowledge_graph_gap_engine.py` | 444 | audit_append_call | `errors.append("not all interventions are advisory shadow-mode recommendations")` |
+| `app/domain/knowledge_graph_gap_engine.py` | 446 | audit_append_call | `errors.append("orphan planner edges found")` |
+| `app/domain/knowledge_graph_gap_engine.py` | 449 | audit_append_call | `errors.append("gap item count mismatch")` |
+| `app/domain/knowledge_graph_gap_engine.py` | 451 | audit_append_call | `errors.append("intervention count mismatch")` |
+| `app/domain/knowledge_graph_gap_engine.py` | 453 | audit_append_call | `errors.append("planner edge count mismatch")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 346 | audit_append_call | `lesson_drafts.append(lesson)` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 347 | audit_append_call | `assessment_drafts.append(assessment)` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 420 | audit_append_call | `errors.append("unexpected KG-5 generation pack graph_id")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 423 | audit_append_call | `errors.append("KG-5 pack must be generation preview only")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 425 | audit_append_call | `errors.append("KG-5 pack must not use live learner data")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 427 | audit_append_call | `errors.append("KG-5 pack must not authorise LLM provider calls")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 438 | audit_append_call | `errors.append("duplicate lesson keys found")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 440 | audit_append_call | `errors.append("duplicate assessment keys found")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 463 | audit_append_call | `orphan_edges.append(edge)` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 465 | audit_append_call | `orphan_edges.append(edge)` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 468 | audit_append_call | `errors.append("not all lessons reference KG-4 interventions")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 470 | audit_append_call | `errors.append("not all lessons are source grounded")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 472 | audit_append_call | `errors.append("not all assessments reference KG-5 lessons")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 474 | audit_append_call | `errors.append("not all assessments are source grounded")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 476 | audit_append_call | `errors.append("not all generation items require human review and preview-only mode")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 478 | audit_append_call | `errors.append("not all lessons are advisory shadow-mode drafts")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 480 | audit_append_call | `errors.append("not all assessments are advisory shadow-mode drafts")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 482 | audit_append_call | `errors.append("generation pack contains non-synthetic learner aliases")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 484 | audit_append_call | `errors.append("orphan generation edges found")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 488 | audit_append_call | `errors.append("lesson draft count mismatch")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 490 | audit_append_call | `errors.append("assessment draft count mismatch")` |
+| `app/domain/knowledge_graph_grounded_generation.py` | 492 | audit_append_call | `errors.append("generation edge count mismatch")` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 283 | audit_append_call | `states.append(state.as_dict())` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 284 | audit_append_call | `events.append(event.as_dict())` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 355 | audit_append_call | `errors.append("unexpected KG-3 graph_id")` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 357 | audit_append_call | `errors.append("KG-3 requires at least two synthetic learners")` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 359 | audit_append_call | `errors.append("KG-3 must reference at least 100 KG-2 target states")` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 361 | audit_append_call | `errors.append("learner shadow state count mismatch")` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 363 | audit_append_call | `errors.append("shadow evidence event count mismatch")` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 365 | audit_append_call | `errors.append("shadow edge count mismatch")` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 367 | audit_append_call | `errors.append("duplicate learner shadow state keys found")` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 369 | audit_append_call | `errors.append("duplicate shadow event keys found")` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 371 | audit_append_call | `errors.append("KG-3 states must reference KG-2 target keys")` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 375 | audit_append_call | `errors.append("all learner shadow states must be shadow_mode true")` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 378 | audit_append_call | `errors.append("all learner shadow states must confirm no_live_learner_data")` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 381 | audit_append_call | `errors.append("learner aliases must be synthetic and non-identifying")` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 384 | audit_append_call | `errors.append("shadow states must carry target provenance")` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 387 | audit_append_call | `errors.append("shadow states must carry fixture provenance")` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 391 | audit_append_call | `errors.append("shadow events must preserve shadow/no-live-data flags")` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 394 | audit_append_call | `errors.append("runtime KG authority switch must remain false")` |
+| `app/domain/knowledge_graph_learner_shadow.py` | 396 | audit_append_call | `errors.append("database schema migration must remain false")` |
+| `app/domain/knowledge_graph_post_switch_review.py` | 145 | audit_append_call | `post_switch_edges.append({` |
+| `app/domain/knowledge_graph_post_switch_review.py` | 240 | audit_append_call | `errors.append("graph_id must match KG-8 post-switch review graph")` |
+| `app/domain/knowledge_graph_post_switch_review.py` | 242 | audit_append_call | `errors.append("status must be post_switch_optimisation_scale_review_recorded")` |
+| `app/domain/knowledge_graph_post_switch_review.py` | 245 | audit_append_call | `errors.append(f"runtime activation flag must remain true: {key}")` |
+| `app/domain/knowledge_graph_post_switch_review.py` | 248 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `app/domain/knowledge_graph_post_switch_review.py` | 251 | audit_append_call | `errors.append(f"execution boundary flag must remain false: {key}")` |
+| `app/domain/knowledge_graph_post_switch_review.py` | 253 | audit_append_call | `errors.append("uses_live_learner_data must be false")` |
+| `app/domain/knowledge_graph_post_switch_review.py` | 255 | audit_append_call | `errors.append("uses_guardian_pii must be false")` |
+| `app/domain/knowledge_graph_post_switch_review.py` | 257 | audit_append_call | `errors.append("uses_llm_provider must be false")` |
+| `app/domain/knowledge_graph_post_switch_review.py` | 268 | audit_append_call | `errors.append(f"count mismatch for {key}")` |
+| `app/domain/knowledge_graph_post_switch_review.py` | 270 | audit_append_call | `errors.append("KG-8 must record at least 8 optimisation candidates")` |
+| `app/domain/knowledge_graph_post_switch_review.py` | 272 | audit_append_call | `errors.append("KG-8 must record at least 10 scale review checks")` |
+| `app/domain/knowledge_graph_post_switch_review.py` | 274 | audit_append_call | `errors.append("KG-8 must record at least 8 monitoring requirements")` |
+| `app/domain/knowledge_graph_post_switch_review.py` | 276 | audit_append_call | `errors.append("KG-8 must record at least 6 rollback observability checks")` |
+| `app/domain/knowledge_graph_post_switch_review.py` | 278 | audit_append_call | `errors.append("KG-8 must inherit KG-7 readiness checks through KG-ACT-001")` |
+| `app/domain/knowledge_graph_post_switch_review.py` | 280 | audit_append_call | `errors.append("KG-8 must inherit legacy projection mapping volume")` |
+| `app/domain/knowledge_graph_post_switch_review.py` | 326 | audit_append_call | `errors.append(f"validation flag failed: {key}")` |
+| `app/domain/knowledge_graph_product_alignment.py` | 98 | audit_append_call | `tutor_previews.append({` |
+| `app/domain/knowledge_graph_product_alignment.py` | 126 | audit_append_call | `study_plan_items.append({` |
+| `app/domain/knowledge_graph_product_alignment.py` | 149 | audit_append_call | `gamification_award_candidates.append({` |
+| `app/domain/knowledge_graph_product_alignment.py` | 231 | audit_append_call | `parent_alignment_summaries.append({` |
+| `app/domain/knowledge_graph_product_alignment.py` | 367 | audit_append_call | `errors.append(f"validation failed: {name}")` |
+| `app/domain/knowledge_graph_runtime_activation.py` | 133 | audit_append_call | `activation_edges.append({` |
+| `app/domain/knowledge_graph_runtime_activation.py` | 212 | audit_append_call | `errors.append("graph_id must match KG-ACT-001 runtime activation graph")` |
+| `app/domain/knowledge_graph_runtime_activation.py` | 214 | audit_append_call | `errors.append("status must be controlled_runtime_kg_authority_activation_recorded")` |
+| `app/domain/knowledge_graph_runtime_activation.py` | 217 | audit_append_call | `errors.append(f"activation flag must be true: {key}")` |
+| `app/domain/knowledge_graph_runtime_activation.py` | 219 | audit_append_call | `errors.append("runtime_kg_implementation_claimed must be true for the controlled activation artifact")` |
+| `app/domain/knowledge_graph_runtime_activation.py` | 222 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `app/domain/knowledge_graph_runtime_activation.py` | 224 | audit_append_call | `errors.append("uses_live_learner_data must be false")` |
+| `app/domain/knowledge_graph_runtime_activation.py` | 226 | audit_append_call | `errors.append("uses_guardian_pii must be false")` |
+| `app/domain/knowledge_graph_runtime_activation.py` | 228 | audit_append_call | `errors.append("uses_llm_provider must be false")` |
+| `app/domain/knowledge_graph_runtime_activation.py` | 230 | audit_append_call | `errors.append("count mismatch for activation_controls")` |
+| `app/domain/knowledge_graph_runtime_activation.py` | 232 | audit_append_call | `errors.append("count mismatch for activation_edges")` |
+| `app/domain/knowledge_graph_runtime_activation.py` | 234 | audit_append_call | `errors.append("KG-ACT-001 must inherit at least 10 KG-7 readiness checks")` |
+| `app/domain/knowledge_graph_runtime_activation.py` | 236 | audit_append_call | `errors.append("KG-ACT-001 must inherit at least 700 legacy projection mappings")` |
+| `app/domain/knowledge_graph_runtime_activation.py` | 239 | audit_append_call | `errors.append("all activation controls must be executed and blocking")` |
+| `app/domain/knowledge_graph_runtime_activation.py` | 244 | audit_append_call | `errors.append("activation edges must reference activation controls")` |
+| `app/domain/knowledge_graph_runtime_activation.py` | 276 | audit_append_call | `errors.append(f"validation flag failed: {key}")` |
+| `app/domain/knowledge_graph_target.py` | 292 | audit_append_call | `errors.append("target graph id must be KG-2 target graph id")` |
+| `app/domain/knowledge_graph_target.py` | 294 | audit_append_call | `errors.append("target graph must be scoped to Grade 4")` |
+| `app/domain/knowledge_graph_target.py` | 296 | audit_append_call | `errors.append("target graph must be scoped to Mathematics")` |
+| `app/domain/knowledge_graph_target.py` | 298 | audit_append_call | `errors.append("duplicate target keys found")` |
+| `app/domain/knowledge_graph_target.py` | 300 | audit_append_call | `errors.append("target graph must contain at least 100 target states")` |
+| `app/domain/knowledge_graph_target.py` | 302 | audit_append_call | `errors.append("target graph must preserve prerequisite target edges")` |
+| `app/domain/knowledge_graph_target.py` | 306 | audit_append_call | `errors.append(f"target state must be approved: {state.get('target_key')}")` |
+| `app/domain/knowledge_graph_target.py` | 308 | audit_append_call | `errors.append(f"target state outside Grade 4 Mathematics scope: {state.get('target_key')}")` |
+| `app/domain/knowledge_graph_target.py` | 310 | audit_append_call | `errors.append(f"target state missing CAPS reference: {state.get('target_key')}")` |
+| `app/domain/knowledge_graph_target.py` | 312 | audit_append_call | `errors.append(f"target state references missing CAPS node: {state.get('target_key')}")` |
+| `app/domain/knowledge_graph_target.py` | 314 | audit_append_call | `errors.append(f"target state missing KG-1 provenance: {state.get('target_key')}")` |
+| `app/domain/knowledge_graph_target.py` | 316 | audit_append_call | `errors.append(f"target state missing CAPS source provenance: {state.get('target_key')}")` |
+| `app/domain/knowledge_graph_target.py` | 320 | audit_append_call | `errors.append(f"target state has invalid {key}: {state.get('target_key')}")` |
+| `app/domain/knowledge_graph_target.py` | 322 | audit_append_call | `errors.append(f"target state missing pacing window: {state.get('target_key')}")` |
+| `app/domain/knowledge_graph_target.py` | 326 | audit_append_call | `errors.append(f"target edge must be approved: {edge.get('target_edge_id')}")` |
+| `app/domain/knowledge_graph_target.py` | 328 | audit_append_call | `errors.append(f"target edge has orphan endpoint: {edge.get('target_edge_id')}")` |
+| `app/domain/knowledge_graph_target.py` | 330 | audit_append_call | `errors.append(f"target edge missing provenance: {edge.get('target_edge_id')}")` |
+| `app/domain/knowledge_graph_target.py` | 334 | audit_append_call | `errors.append(f"boundary flag must be false: {key}")` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 46 | audit_append_call | `input.append(value)` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 48 | audit_append_call | `known.key.append(value)` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 49 | audit_append_call | `known.value.append(index)` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 70 | audit_append_call | `parsed.append(tmp)` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 71 | audit_append_call | `lazy.append([output, key])` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 81 | audit_append_call | `output.append(_relate(known, input, val))` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 112 | audit_append_call | `wrapped.append(_wrap(value))` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 117 | audit_append_call | `input.append(value.value)` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 119 | audit_append_call | `input.append(value)` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 142 | audit_append_call | `output.append(_transform(known, input, input[i]))` |
+| `app/frontend/node_modules/.pnpm/jsdom@29.1.1/node_modules/jsdom/README.md` | 69 | audit_append_call | `<script>document.getElementById("content").append(document.createElement("hr"));</script>` |
+| `app/frontend/node_modules/.pnpm/jsdom@29.1.1/node_modules/jsdom/README.md` | 81 | audit_append_call | `<script>document.getElementById("content").append(document.createElement("hr"));</script>` |
+| `app/frontend/node_modules/.pnpm/jsdom@29.1.1/node_modules/jsdom/README.md` | 99 | audit_append_call | `<script>document.getElementById("content").append(document.createElement("hr"));</script>` |
+| `app/frontend/node_modules/.pnpm/jsdom@29.1.1/node_modules/jsdom/README.md` | 103 | audit_append_call | `dom.window.eval('document.getElementById("content").append(document.createElement("p"));');` |
+| `app/frontend/node_modules/.pnpm/magic-string@0.30.21/node_modules/magic-string/README.md` | 52 | audit_append_call | `s.prepend('var ').append(';'); // most methods are chainable` |
+| `app/frontend/node_modules/.pnpm/magic-string@0.30.21/node_modules/magic-string/README.md` | 101 | audit_append_call | `### s.append( content )` |
+| `app/frontend/node_modules/.pnpm/magic-string@0.30.21/node_modules/magic-string/README.md` | 296 | audit_append_call | `.append('}());');` |
+| `app/frontend/node_modules/.pnpm/postcss-selector-parser@6.1.2/node_modules/postcss-selector-parser/API.md` | 520 | audit_append_call | `### `container.prepend(node)` & `container.append(node)`` |
+| `app/frontend/node_modules/.pnpm/postcss-selector-parser@6.1.2/node_modules/postcss-selector-parser/API.md` | 527 | audit_append_call | `selector.append(id);` |
+| `app/models/__init__.py` | 325 | audit_events_table | `__tablename__ = "audit_events"` |
+| `app/models/__init__.py` | 755 | audit_log_identifier | `class AuditLog(Base):` |
+| `app/models/__init__.py` | 756 | audit_logs_table | `__tablename__ = "audit_logs"` |
 | `app/models/retrieval.py` | 52 | audit_append_call | `numbers.append(format(number, ".9g"))` |
 | `app/modules/beta_launch/production_readiness_contracts.py` | 71 | audit_append_call | `issues.append("beta launch decision must be documented in docs/adr/")` |
 | `app/modules/beta_launch/production_readiness_contracts.py` | 73 | audit_append_call | `issues.append("beta launch architecture must be documented in docs/beta_launch/")` |
@@ -253,6 +421,16 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/modules/billing/production_readiness_contracts.py` | 289 | audit_append_call | `issues.append("request_id is required")` |
 | `app/modules/billing/production_readiness_contracts.py` | 291 | audit_append_call | `issues.append("idempotency_key is required")` |
 | `app/modules/billing/production_readiness_contracts.py` | 293 | audit_append_call | `issues.append("raw provider payloads must not be retained without redaction")` |
+| `app/modules/commercial_launch/readiness.py` | 149 | audit_append_call | `blockers.append("billing_provider_test_mode_missing")` |
+| `app/modules/commercial_launch/readiness.py` | 151 | audit_append_call | `blockers.append("pricing_packaging_missing")` |
+| `app/modules/commercial_launch/readiness.py` | 153 | audit_append_call | `blockers.append("checkout_webhook_contract_missing")` |
+| `app/modules/commercial_launch/readiness.py` | 155 | audit_append_call | `blockers.append("subscription_entitlement_matrix_missing")` |
+| `app/modules/commercial_launch/readiness.py` | 157 | audit_append_call | `blockers.append("invoice_tax_refund_support_missing")` |
+| `app/modules/commercial_launch/readiness.py` | 159 | audit_append_call | `blockers.append("sponsorship_school_procurement_missing")` |
+| `app/modules/commercial_launch/readiness.py` | 161 | audit_append_call | `blockers.append("commercial_support_reconciliation_missing")` |
+| `app/modules/commercial_launch/readiness.py` | 163 | audit_append_call | `blockers.append("terms_privacy_launch_comms_missing")` |
+| `app/modules/commercial_launch/readiness.py` | 165 | audit_append_call | `blockers.append("existing_billing_contracts_not_valid")` |
+| `app/modules/commercial_launch/readiness.py` | 167 | audit_append_call | `blockers.append("commercial_evidence_matrix_incomplete")` |
 | `app/modules/consent/service.py` | 6 | audit_repository | `:class:`~app.repositories.audit_repository.AuditRepository` or the` |
 | `app/modules/consent/service.py` | 29 | audit_repository | `from app.repositories.audit_repository import AuditRepository` |
 | `app/modules/consent/service.py` | 43 | audit_repository | `audit trail via :class:`~app.repositories.audit_repository.AuditRepository`` |
@@ -265,6 +443,15 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/modules/consent/service.py` | 369 | audit_repository | `Tries :class:`~app.repositories.audit_repository.AuditRepository`` |
 | `app/modules/consent/service.py` | 381 | audit_append_call | `await self._audit_repo.append(` |
 | `app/modules/consent/service.py` | 389 | audit_record_call | `await FourthEstateService(self._db).record(` |
+| `app/modules/content_quality/acceptance.py` | 59 | audit_append_call | `blockers.append("educator_signoff_missing")` |
+| `app/modules/content_quality/acceptance.py` | 61 | audit_append_call | `blockers.append("human_review_queue_not_ready")` |
+| `app/modules/content_quality/acceptance.py` | 63 | audit_append_call | `blockers.append("prd4_final_evidence_missing")` |
+| `app/modules/content_quality/acceptance.py` | 65 | audit_append_call | `blockers.append("prd4_final_reconciliation_missing")` |
+| `app/modules/content_quality/readiness.py` | 140 | audit_append_call | `blockers.append("educator_reviewed_item_bank_missing")` |
+| `app/modules/content_quality/readiness.py` | 142 | audit_append_call | `blockers.append("caps_coverage_matrix_incomplete")` |
+| `app/modules/content_quality/readiness.py` | 144 | audit_append_call | `blockers.append("human_review_queue_missing")` |
+| `app/modules/content_quality/readiness.py` | 146 | audit_append_call | `blockers.append("bias_language_accessibility_review_incomplete")` |
+| `app/modules/content_quality/readiness.py` | 148 | audit_append_call | `blockers.append("misconception_remediation_validation_incomplete")` |
 | `app/modules/deployment/production_readiness_contracts.py` | 100 | audit_append_call | `issues.append("infrastructure provider is required")` |
 | `app/modules/deployment/production_readiness_contracts.py` | 102 | audit_append_call | `issues.append("container registry is required")` |
 | `app/modules/deployment/production_readiness_contracts.py` | 104 | audit_append_call | `issues.append("deployment platform is required")` |
@@ -591,6 +778,16 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/modules/notifications/production_readiness_contracts.py` | 310 | audit_append_call | `issues.append("idempotency_key is required")` |
 | `app/modules/notifications/production_readiness_contracts.py` | 312 | audit_append_call | `issues.append("occurred_at_utc must be timezone-aware")` |
 | `app/modules/notifications/production_readiness_contracts.py` | 314 | audit_append_call | `issues.append("raw provider payloads must not be retained without redaction")` |
+| `app/modules/observability/assurance.py` | 143 | audit_append_call | `blockers.append("prd7_observability_sre_readiness_incomplete")` |
+| `app/modules/observability/assurance.py` | 146 | audit_append_call | `blockers.append("final_observability_sre_evidence_matrix_incomplete")` |
+| `app/modules/observability/assurance.py` | 148 | audit_append_call | `blockers.append("dashboard_alert_slo_evidence_incomplete")` |
+| `app/modules/observability/assurance.py` | 150 | audit_append_call | `blockers.append("incident_runbook_on_call_evidence_incomplete")` |
+| `app/modules/observability/assurance.py` | 152 | audit_append_call | `blockers.append("backup_restore_rollback_evidence_incomplete")` |
+| `app/modules/observability/assurance.py` | 154 | audit_append_call | `blockers.append("privacy_escalation_support_evidence_incomplete")` |
+| `app/modules/observability/assurance.py` | 156 | audit_append_call | `blockers.append("telemetry_pii_redaction_evidence_incomplete")` |
+| `app/modules/observability/assurance.py` | 158 | audit_append_call | `blockers.append("incident_readiness_reconciliation_not_recorded")` |
+| `app/modules/observability/assurance.py` | 160 | audit_append_call | `blockers.append("sre_signoff_not_recorded")` |
+| `app/modules/observability/assurance.py` | 162 | audit_append_call | `blockers.append("prd7_final_reconciliation_not_recorded")` |
 | `app/modules/observability/production_readiness_contracts.py` | 82 | audit_append_call | `issues.append("observability provider decision must be documented in docs/adr/")` |
 | `app/modules/observability/production_readiness_contracts.py` | 84 | audit_append_call | `issues.append("observability architecture must be documented in docs/observability/")` |
 | `app/modules/observability/production_readiness_contracts.py` | 93 | audit_append_call | `issues.append(f"{name} is required")` |
@@ -641,6 +838,17 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/modules/observability/production_readiness_contracts.py` | 291 | audit_append_call | `issues.append("PII redaction is required")` |
 | `app/modules/observability/production_readiness_contracts.py` | 293 | audit_append_call | `issues.append("telemetry deletion workflow is required")` |
 | `app/modules/observability/production_readiness_contracts.py` | 295 | audit_append_call | `issues.append("telemetry export workflow is required")` |
+| `app/modules/observability/readiness.py` | 167 | audit_append_call | `blockers.append("dashboards_missing")` |
+| `app/modules/observability/readiness.py` | 169 | audit_append_call | `blockers.append("alerts_missing")` |
+| `app/modules/observability/readiness.py` | 171 | audit_append_call | `blockers.append("slos_missing")` |
+| `app/modules/observability/readiness.py` | 173 | audit_append_call | `blockers.append("incident_runbooks_missing")` |
+| `app/modules/observability/readiness.py` | 175 | audit_append_call | `blockers.append("on_call_ownership_missing")` |
+| `app/modules/observability/readiness.py` | 177 | audit_append_call | `blockers.append("backup_restore_drill_missing")` |
+| `app/modules/observability/readiness.py` | 179 | audit_append_call | `blockers.append("rollback_drill_missing")` |
+| `app/modules/observability/readiness.py` | 181 | audit_append_call | `blockers.append("privacy_escalation_process_missing")` |
+| `app/modules/observability/readiness.py` | 183 | audit_append_call | `blockers.append("telemetry_pii_redaction_missing")` |
+| `app/modules/observability/readiness.py` | 185 | audit_append_call | `blockers.append("support_status_comms_missing")` |
+| `app/modules/observability/readiness.py` | 187 | audit_append_call | `blockers.append("observability_sre_evidence_matrix_incomplete")` |
 | `app/modules/operations_support/production_readiness_contracts.py` | 79 | audit_append_call | `issues.append("operations support decision must be documented in docs/adr/")` |
 | `app/modules/operations_support/production_readiness_contracts.py` | 81 | audit_append_call | `issues.append("operations support architecture must be documented in docs/operations_support/")` |
 | `app/modules/operations_support/production_readiness_contracts.py` | 92 | audit_append_call | `issues.append(f"{name} is required")` |
@@ -691,6 +899,41 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/modules/operations_support/production_readiness_contracts.py` | 311 | audit_append_call | `issues.append("release owner is required")` |
 | `app/modules/operations_support/production_readiness_contracts.py` | 313 | audit_append_call | `issues.append("support owner is required")` |
 | `app/modules/operations_support/production_readiness_contracts.py` | 323 | audit_append_call | `issues.append(f"{name} must be true")` |
+| `app/modules/performance_scale_cost/assurance.py` | 151 | audit_append_call | `blockers.append("prd8_performance_scale_cost_readiness_incomplete")` |
+| `app/modules/performance_scale_cost/assurance.py` | 154 | audit_append_call | `blockers.append("final_performance_scale_cost_evidence_matrix_incomplete")` |
+| `app/modules/performance_scale_cost/assurance.py` | 156 | audit_append_call | `blockers.append("load_test_evidence_incomplete")` |
+| `app/modules/performance_scale_cost/assurance.py` | 158 | audit_append_call | `blockers.append("runtime_kg_query_performance_evidence_incomplete")` |
+| `app/modules/performance_scale_cost/assurance.py` | 160 | audit_append_call | `blockers.append("database_index_review_evidence_incomplete")` |
+| `app/modules/performance_scale_cost/assurance.py` | 162 | audit_append_call | `blockers.append("llm_cost_guardrail_evidence_incomplete")` |
+| `app/modules/performance_scale_cost/assurance.py` | 164 | audit_append_call | `blockers.append("queue_backpressure_capacity_evidence_incomplete")` |
+| `app/modules/performance_scale_cost/assurance.py` | 166 | audit_append_call | `blockers.append("frontend_performance_budget_evidence_incomplete")` |
+| `app/modules/performance_scale_cost/assurance.py` | 168 | audit_append_call | `blockers.append("scale_cost_reconciliation_not_recorded")` |
+| `app/modules/performance_scale_cost/assurance.py` | 170 | audit_append_call | `blockers.append("performance_signoff_not_recorded")` |
+| `app/modules/performance_scale_cost/assurance.py` | 172 | audit_append_call | `blockers.append("prd8_final_reconciliation_not_recorded")` |
+| `app/modules/performance_scale_cost/readiness.py` | 150 | audit_append_call | `blockers.append("load_tests_missing")` |
+| `app/modules/performance_scale_cost/readiness.py` | 152 | audit_append_call | `blockers.append("runtime_kg_query_performance_missing")` |
+| `app/modules/performance_scale_cost/readiness.py` | 154 | audit_append_call | `blockers.append("database_index_review_missing")` |
+| `app/modules/performance_scale_cost/readiness.py` | 156 | audit_append_call | `blockers.append("llm_cost_simulation_missing")` |
+| `app/modules/performance_scale_cost/readiness.py` | 158 | audit_append_call | `blockers.append("queue_backpressure_tests_missing")` |
+| `app/modules/performance_scale_cost/readiness.py` | 160 | audit_append_call | `blockers.append("frontend_performance_budget_missing")` |
+| `app/modules/performance_scale_cost/readiness.py` | 162 | audit_append_call | `blockers.append("capacity_plan_missing")` |
+| `app/modules/performance_scale_cost/readiness.py` | 164 | audit_append_call | `blockers.append("cost_guardrails_missing")` |
+| `app/modules/performance_scale_cost/readiness.py` | 166 | audit_append_call | `blockers.append("performance_scale_cost_evidence_matrix_incomplete")` |
+| `app/modules/privacy_ops/assurance.py` | 120 | audit_append_call | `blockers.append("prd5_live_data_readiness_incomplete")` |
+| `app/modules/privacy_ops/assurance.py` | 123 | audit_append_call | `blockers.append("data_subject_rights_drills_incomplete")` |
+| `app/modules/privacy_ops/assurance.py` | 125 | audit_append_call | `blockers.append("ai_prompt_telemetry_redaction_incomplete")` |
+| `app/modules/privacy_ops/assurance.py` | 127 | audit_append_call | `blockers.append("privacy_signoff_not_recorded")` |
+| `app/modules/privacy_ops/assurance.py` | 129 | audit_append_call | `blockers.append("prd5_final_reconciliation_not_recorded")` |
+| `app/modules/privacy_ops/assurance.py` | 131 | audit_append_call | `blockers.append("audit_2026_07_09_crosswalk_not_reconciled")` |
+| `app/modules/privacy_ops/readiness.py` | 129 | audit_append_call | `blockers.append("live_data_processing_impact_assessment_missing")` |
+| `app/modules/privacy_ops/readiness.py` | 131 | audit_append_call | `blockers.append("data_flow_matrix_incomplete")` |
+| `app/modules/privacy_ops/readiness.py` | 133 | audit_append_call | `blockers.append("consent_withdrawal_drill_missing")` |
+| `app/modules/privacy_ops/readiness.py` | 135 | audit_append_call | `blockers.append("export_drill_missing")` |
+| `app/modules/privacy_ops/readiness.py` | 137 | audit_append_call | `blockers.append("deletion_drill_missing")` |
+| `app/modules/privacy_ops/readiness.py` | 139 | audit_append_call | `blockers.append("retention_drill_missing")` |
+| `app/modules/privacy_ops/readiness.py` | 141 | audit_append_call | `blockers.append("ai_prompt_telemetry_pii_redaction_missing")` |
+| `app/modules/privacy_ops/readiness.py` | 143 | audit_append_call | `blockers.append("subprocessor_data_flow_confirmation_missing")` |
+| `app/modules/privacy_ops/readiness.py` | 145 | audit_append_call | `blockers.append("privacy_signoff_path_missing")` |
 | `app/modules/progress/learning_velocity_service.py` | 41 | audit_append_call | `ranked.append({"caps_ref": caps_ref, "activity": activity, "mastery_score": score, "priority": priority})` |
 | `app/modules/progress/progress_timeline_service.py` | 28 | audit_append_call | `groups[row.caps_ref.split('.')[1] if '.' in row.caps_ref else 'unknown'].append(row)` |
 | `app/modules/progress/progress_timeline_service.py` | 32 | audit_append_call | `summaries.append({"subject_code": key, "topic_count": len(values), "average_mastery": round(avg, 4)})` |
@@ -791,6 +1034,24 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/modules/roadmap/production_readiness_contracts.py` | 314 | audit_append_call | `issues.append("risk evidence path must live under docs/roadmap/")` |
 | `app/modules/roadmap/production_readiness_contracts.py` | 316 | audit_append_call | `issues.append("critical post-baseline risk must block GA")` |
 | `app/modules/roadmap/production_readiness_contracts.py` | 352 | audit_append_call | `issues.append(f"{dependency.dependency_id} references unknown roadmap item")` |
+| `app/modules/security_assurance/assurance.py` | 120 | audit_append_call | `blockers.append("prd6_security_readiness_incomplete")` |
+| `app/modules/security_assurance/assurance.py` | 123 | audit_append_call | `blockers.append("final_security_evidence_matrix_incomplete")` |
+| `app/modules/security_assurance/assurance.py` | 125 | audit_append_call | `blockers.append("dast_api_fuzzing_evidence_incomplete")` |
+| `app/modules/security_assurance/assurance.py` | 127 | audit_append_call | `blockers.append("dependency_container_sbom_evidence_incomplete")` |
+| `app/modules/security_assurance/assurance.py` | 129 | audit_append_call | `blockers.append("operational_security_evidence_incomplete")` |
+| `app/modules/security_assurance/assurance.py` | 131 | audit_append_call | `blockers.append("external_review_evidence_incomplete")` |
+| `app/modules/security_assurance/assurance.py` | 133 | audit_append_call | `blockers.append("external_or_independent_review_not_recorded")` |
+| `app/modules/security_assurance/assurance.py` | 135 | audit_append_call | `blockers.append("security_signoff_not_recorded")` |
+| `app/modules/security_assurance/assurance.py` | 137 | audit_append_call | `blockers.append("prd6_final_reconciliation_not_recorded")` |
+| `app/modules/security_assurance/readiness.py` | 132 | audit_append_call | `blockers.append("dast_api_fuzzing_plan_missing")` |
+| `app/modules/security_assurance/readiness.py` | 134 | audit_append_call | `blockers.append("dependency_scanning_plan_missing")` |
+| `app/modules/security_assurance/readiness.py` | 136 | audit_append_call | `blockers.append("container_image_scanning_plan_missing")` |
+| `app/modules/security_assurance/readiness.py` | 138 | audit_append_call | `blockers.append("sbom_generation_plan_missing")` |
+| `app/modules/security_assurance/readiness.py` | 140 | audit_append_call | `blockers.append("secret_rotation_drill_missing")` |
+| `app/modules/security_assurance/readiness.py` | 142 | audit_append_call | `blockers.append("rate_limit_abuse_testing_plan_missing")` |
+| `app/modules/security_assurance/readiness.py` | 144 | audit_append_call | `blockers.append("critical_endpoint_authz_tests_missing")` |
+| `app/modules/security_assurance/readiness.py` | 146 | audit_append_call | `blockers.append("external_review_path_missing")` |
+| `app/modules/security_assurance/readiness.py` | 148 | audit_append_call | `blockers.append("security_evidence_matrix_incomplete")` |
 | `app/modules/security_posture/production_readiness_contracts.py` | 98 | audit_append_call | `issues.append("security posture decision must be documented in docs/adr/")` |
 | `app/modules/security_posture/production_readiness_contracts.py` | 100 | audit_append_call | `issues.append("security architecture must be documented in docs/security/")` |
 | `app/modules/security_posture/production_readiness_contracts.py` | 111 | audit_append_call | `issues.append(f"{name} is required")` |
@@ -849,30 +1110,36 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/modules/security_posture/production_readiness_contracts.py` | 347 | audit_append_call | `issues.append("risk acceptance expiry must be between 1 and 90 days")` |
 | `app/modules/security_posture/production_readiness_contracts.py` | 349 | audit_append_call | `issues.append("risk acceptance requires compensating controls")` |
 | `app/modules/security_posture/production_readiness_contracts.py` | 351 | audit_append_call | `issues.append("risk acceptance evidence must live under docs/security/")` |
+| `app/modules/vertical_journey/service.py` | 130 | audit_append_call | `blockers.append("learner_profile_missing")` |
+| `app/modules/vertical_journey/service.py` | 145 | audit_append_call | `blockers.append("guardian_consent_inactive")` |
+| `app/modules/vertical_journey/service.py` | 147 | audit_append_call | `blockers.append("diagnostic_not_completed")` |
+| `app/modules/vertical_journey/service.py` | 149 | audit_append_call | `blockers.append("lesson_not_generated")` |
+| `app/modules/vertical_journey/service.py` | 151 | audit_append_call | `blockers.append("guardian_context_missing")` |
+| `app/modules/vertical_journey/service.py` | 165 | audit_append_call | `milestones.append(` |
 | `app/repositories/__init__.py` | 4 | audit_repository | `from app.repositories.audit_repository import AuditRepository` |
 | `app/repositories/__init__.py` | 14 | audit_repository | `"AuditRepository",` |
 | `app/repositories/audit_compat.py` | 73 | audit_record_call | `return await _maybe_await(self.repository.record(**canonical))` |
 | `app/repositories/audit_compat.py` | 75 | audit_append_call | `return await _maybe_await(self.repository.append(**canonical))` |
 | `app/repositories/audit_compat.py` | 84 | audit_record_call | `return await self.record(**kwargs)` |
 | `app/repositories/audit_repository.py` | 75 | audit_repository | `class AuditRepository:` |
-| `app/repositories/audit_repository.py` | 149 | audit_events_table | `INSERT INTO audit_events (` |
-| `app/repositories/audit_repository.py` | 219 | audit_events_table | `INSERT INTO audit_events (` |
-| `app/repositories/audit_repository.py` | 257 | audit_events_table | `SELECT * FROM audit_events` |
-| `app/repositories/audit_repository.py` | 263 | audit_append_call | `args.append(event_type)` |
-| `app/repositories/audit_repository.py` | 279 | audit_events_table | `SELECT * FROM audit_events` |
-| `app/repositories/audit_repository.py` | 285 | audit_append_call | `args.append(event_type)` |
-| `app/repositories/audit_repository.py` | 317 | audit_events_table | `FROM audit_events` |
-| `app/repositories/audit_repository.py` | 356 | audit_append_call | `errors.append(f"[{eid}] event_hash mismatch")` |
-| `app/repositories/audit_repository.py` | 358 | audit_append_call | `errors.append(f"[{eid}] HMAC mismatch")` |
-| `app/repositories/audit_repository.py` | 360 | audit_append_call | `errors.append(` |
-| `app/repositories/audit_repository.py` | 389 | audit_events_table | `SELECT event_hash FROM audit_events` |
+| `app/repositories/audit_repository.py` | 150 | audit_events_table | `INSERT INTO audit_events (` |
+| `app/repositories/audit_repository.py` | 220 | audit_events_table | `INSERT INTO audit_events (` |
+| `app/repositories/audit_repository.py` | 259 | audit_events_table | `SELECT * FROM audit_events` |
+| `app/repositories/audit_repository.py` | 265 | audit_append_call | `args.append(event_type)` |
+| `app/repositories/audit_repository.py` | 281 | audit_events_table | `SELECT * FROM audit_events` |
+| `app/repositories/audit_repository.py` | 287 | audit_append_call | `args.append(event_type)` |
+| `app/repositories/audit_repository.py` | 320 | audit_events_table | `FROM audit_events` |
+| `app/repositories/audit_repository.py` | 359 | audit_append_call | `errors.append(f"[{eid}] event_hash mismatch")` |
+| `app/repositories/audit_repository.py` | 361 | audit_append_call | `errors.append(f"[{eid}] HMAC mismatch")` |
+| `app/repositories/audit_repository.py` | 363 | audit_append_call | `errors.append(` |
+| `app/repositories/audit_repository.py` | 392 | audit_events_table | `SELECT event_hash FROM audit_events` |
 | `app/repositories/diagnostic_session_repository.py` | 56 | audit_append_call | `items.append(response)` |
 | `app/repositories/item_bank_repository.py` | 151 | audit_append_call | `heatmap.append(` |
 | `app/repositories/repositories.py` | 13 | audit_log_identifier | `AuditLog,` |
 | `app/repositories/repositories.py` | 313 | audit_repository | `class AuditRepository:` |
 | `app/repositories/repositories.py` | 324 | audit_log_identifier | `) -> AuditLog:` |
 | `app/repositories/repositories.py` | 325 | audit_log_identifier | `entry = AuditLog(` |
-| `app/security/dependencies.py` | 35 | audit_append_call | `roles.append(Role(raw_role))` |
+| `app/security/dependencies.py` | 37 | audit_append_call | `roles.append(Role(raw_role))` |
 | `app/services/ai_operations.py` | 207 | audit_append_call | `overages.append(` |
 | `app/services/ai_operations.py` | 328 | audit_append_call | `result.append({` |
 | `app/services/audit_canonicalization_registry.py` | 46 | audit_logs_table | `current_shape="legacy audit_logs/AuditLog references",` |
@@ -882,7 +1149,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/audit_service.py` | 21 | audit_append_call | `row = await self.repository.append(` |
 | `app/services/auth_application_service.py` | 28 | audit_repository | `"app.repositories.repositories.AuditRepository",` |
 | `app/services/auth_application_service.py` | 29 | audit_repository | `"app.repositories.audit_repository.AuditRepository",` |
-| `app/services/auth_lifecycle_impl.py` | 106 | audit_append_call | `learner_ids.append(str(learner.id))` |
+| `app/services/auth_lifecycle_impl.py` | 151 | audit_append_call | `learner_ids.append(str(learner.id))` |
 | `app/services/backend_adapter_wiring_service.py` | 28 | audit_append_call | `self.events.append(kwargs)` |
 | `app/services/backend_adapter_wiring_service.py` | 36 | audit_record_call | `response = await adapter.record(` |
 | `app/services/backend_adapter_wiring_service.py` | 53 | audit_append_call | `results.append(await record_candidate_payload(repository, payload))` |
@@ -912,8 +1179,8 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/consent_service.py` | 211 | audit_append_call | `flagged.append(saved)` |
 | `app/services/content_blueprint_validation.py` | 18 | audit_append_call | `errors.append("Blueprint requires content_json or blueprint_json.")` |
 | `app/services/content_blueprint_validation.py` | 21 | audit_append_call | `errors.append("Blueprint may reference only approved diagnostic items: " + ", ".join(sorted(missing)))` |
-| `app/services/content_bulk_review.py` | 55 | audit_append_call | `rejected.append((await self.lifecycle_service.reject_artifact(session, uuid.UUID(str(artifact_id)), reviewer_id, reason)).artifact_id)` |
-| `app/services/content_bulk_review.py` | 63 | audit_append_call | `quarantined.append((await self.lifecycle_service.quarantine_artifact(session, uuid.UUID(str(artifact_id)), reviewer_id, reason)).artifact_id)` |
+| `app/services/content_bulk_review.py` | 54 | audit_append_call | `rejected.append((await self.lifecycle_service.reject_artifact(session, uuid.UUID(str(artifact_id)), reviewer_id, reason)).artifact_id)` |
+| `app/services/content_bulk_review.py` | 62 | audit_append_call | `quarantined.append((await self.lifecycle_service.quarantine_artifact(session, uuid.UUID(str(artifact_id)), reviewer_id, reason)).artifact_id)` |
 | `app/services/content_factory.py` | 79 | audit_append_call | `errors.append(f"{label}.source_document_id is required.")` |
 | `app/services/content_factory.py` | 81 | audit_append_call | `errors.append(f"{label}.source_chunk_id is required.")` |
 | `app/services/content_factory.py` | 85 | audit_append_call | `errors.append(` |
@@ -1116,8 +1383,8 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/curriculum/evaluation.py` | 189 | audit_append_call | `failures.append("recall_at_k below threshold")` |
 | `app/services/curriculum/evaluation.py` | 191 | audit_append_call | `failures.append("precision_at_k below threshold")` |
 | `app/services/curriculum/evaluation.py` | 193 | audit_append_call | `failures.append("mrr below threshold")` |
-| `app/services/curriculum/evaluation.py` | 226 | audit_append_call | `cases.append(` |
-| `app/services/curriculum/evaluation.py` | 238 | audit_append_call | `cases.append(` |
+| `app/services/curriculum/evaluation.py` | 225 | audit_append_call | `cases.append(` |
+| `app/services/curriculum/evaluation.py` | 237 | audit_append_call | `cases.append(` |
 | `app/services/curriculum/extraction.py` | 97 | audit_append_call | `warnings.append("no_extractable_text")` |
 | `app/services/curriculum/extraction.py` | 99 | audit_append_call | `warnings.append("very_low_text_density")` |
 | `app/services/curriculum/extraction.py` | 101 | audit_append_call | `warnings.append("formula_or_arithmetic_expression_detected")` |
@@ -1160,14 +1427,14 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/curriculum/graph.py` | 697 | audit_append_call | `errors.append(str(exc))` |
 | `app/services/curriculum/graph.py` | 705 | audit_append_call | `errors.append(str(exc))` |
 | `app/services/curriculum/graph.py` | 981 | audit_append_call | `violations.append(normalized)` |
-| `app/services/curriculum/grounding.py` | 50 | audit_append_call | `reasons.append("active_corpus_version_missing")` |
-| `app/services/curriculum/grounding.py` | 52 | audit_append_call | `reasons.append("requested_objectives_missing")` |
-| `app/services/curriculum/grounding.py` | 54 | audit_append_call | `reasons.append("retrieved_chunks_missing")` |
-| `app/services/curriculum/grounding.py` | 56 | audit_append_call | `reasons.append("tier_1_grounding_missing")` |
-| `app/services/curriculum/grounding.py` | 59 | audit_append_call | `reasons.append("mixed_corpus_version")` |
-| `app/services/curriculum/grounding.py` | 61 | audit_append_call | `reasons.append("rights_not_approved")` |
-| `app/services/curriculum/grounding.py` | 63 | audit_append_call | `reasons.append("chunk_not_approved")` |
-| `app/services/curriculum/grounding.py` | 67 | audit_append_call | `reasons.append("objective_coverage_incomplete:" + ",".join(missing_objectives))` |
+| `app/services/curriculum/grounding.py` | 49 | audit_append_call | `reasons.append("active_corpus_version_missing")` |
+| `app/services/curriculum/grounding.py` | 51 | audit_append_call | `reasons.append("requested_objectives_missing")` |
+| `app/services/curriculum/grounding.py` | 53 | audit_append_call | `reasons.append("retrieved_chunks_missing")` |
+| `app/services/curriculum/grounding.py` | 55 | audit_append_call | `reasons.append("tier_1_grounding_missing")` |
+| `app/services/curriculum/grounding.py` | 58 | audit_append_call | `reasons.append("mixed_corpus_version")` |
+| `app/services/curriculum/grounding.py` | 60 | audit_append_call | `reasons.append("rights_not_approved")` |
+| `app/services/curriculum/grounding.py` | 62 | audit_append_call | `reasons.append("chunk_not_approved")` |
+| `app/services/curriculum/grounding.py` | 66 | audit_append_call | `reasons.append("objective_coverage_incomplete:" + ",".join(missing_objectives))` |
 | `app/services/curriculum/phase02r_closure.py` | 73 | audit_append_call | `refs.append(` |
 | `app/services/curriculum/phase02r_closure.py` | 91 | audit_append_call | `failures.append(f"missing evidence index for {ref.gate}")` |
 | `app/services/curriculum/phase02r_closure.py` | 96 | audit_append_call | `failures.append(f"missing approved manifest for {ref.gate}")` |
@@ -1215,13 +1482,13 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/data_subject_rights_service.py` | 194 | audit_events_table | `Deletes learner PII but PRESERVES audit_events rows (anonymised).` |
 | `app/services/data_subject_rights_service.py` | 213 | audit_events_table | `UPDATE audit_events` |
 | `app/services/data_subject_rights_service.py` | 242 | audit_record_call | `await self._audit.record(` |
-| `app/services/deep_readiness_runtime.py` | 30 | audit_append_call | `checks.append(DeepReadinessCheckResult("database_connectivity","pass","read-only connectivity check completed"))` |
-| `app/services/deep_readiness_runtime.py` | 32 | audit_append_call | `checks.append(DeepReadinessCheckResult("database_connectivity","fail",f"{type(exc).__name__}: {exc}"))` |
-| `app/services/deep_readiness_runtime.py` | 35 | audit_append_call | `checks.append(DeepReadinessCheckResult("alembic_revision","pass","read-only Alembic revision query completed"))` |
-| `app/services/deep_readiness_runtime.py` | 37 | audit_append_call | `checks.append(DeepReadinessCheckResult("alembic_revision","warn",f"{type(exc).__name__}: {exc}"))` |
-| `app/services/deep_readiness_runtime.py` | 41 | audit_append_call | `checks.append(DeepReadinessCheckResult(f"table:{table}","pass","read-only table presence query completed"))` |
-| `app/services/deep_readiness_runtime.py` | 43 | audit_append_call | `checks.append(DeepReadinessCheckResult(f"table:{table}","warn",f"{type(exc).__name__}: {exc}"))` |
-| `app/services/deep_readiness_runtime.py` | 49 | audit_append_call | `checks.append(DeepReadinessCheckResult("cache_ping","pass","cache ping completed"))` |
+| `app/services/deep_readiness_runtime.py` | 41 | audit_append_call | `checks.append(DeepReadinessCheckResult("database_connectivity", "pass", "read-only connectivity check completed"))` |
+| `app/services/deep_readiness_runtime.py` | 43 | audit_append_call | `checks.append(DeepReadinessCheckResult("database_connectivity", "fail", f"{type(exc).__name__}: {exc}"))` |
+| `app/services/deep_readiness_runtime.py` | 46 | audit_append_call | `checks.append(DeepReadinessCheckResult("alembic_revision", "pass", "read-only Alembic revision query completed"))` |
+| `app/services/deep_readiness_runtime.py` | 48 | audit_append_call | `checks.append(DeepReadinessCheckResult("alembic_revision", "warn", f"{type(exc).__name__}: {exc}"))` |
+| `app/services/deep_readiness_runtime.py` | 52 | audit_append_call | `checks.append(DeepReadinessCheckResult(f"table:{table}", "pass", "read-only table presence query completed"))` |
+| `app/services/deep_readiness_runtime.py` | 54 | audit_append_call | `checks.append(DeepReadinessCheckResult(f"table:{table}", "warn", f"{type(exc).__name__}: {exc}"))` |
+| `app/services/deep_readiness_runtime.py` | 61 | audit_append_call | `checks.append(DeepReadinessCheckResult("cache_ping", "pass", "cache ping completed"))` |
 | `app/services/diagnostic_data_integrity.py` | 39 | audit_append_call | `found.append(item)` |
 | `app/services/diagnostic_data_integrity.py` | 47 | audit_append_call | `found.append(item)` |
 | `app/services/diagnostic_data_integrity.py` | 77 | audit_append_call | `duplicates.append(item_id)` |
@@ -1236,30 +1503,34 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/etl/etl_pipeline.py` | 526 | audit_append_call | `paras.append(para.text)` |
 | `app/services/etl/etl_pipeline.py` | 532 | audit_append_call | `tables.append({"headers": rows[0], "rows": rows[1:]})` |
 | `app/services/etl/etl_pipeline.py` | 533 | audit_append_call | `pages.append({"page_num": 1, "text": raw_text, "headings": headings})` |
-| `app/services/etl/etl_pipeline.py` | 743 | audit_append_call | `chunks.append(DocumentChunk(` |
-| `app/services/etl/etl_pipeline.py` | 770 | audit_append_call | `chunks.append(DocumentChunk(` |
-| `app/services/etl/etl_pipeline.py` | 787 | audit_append_call | `positions.append((len(text), 0, ""))   # sentinel` |
-| `app/services/etl/etl_pipeline.py` | 798 | audit_append_call | `chunks.append(DocumentChunk(` |
-| `app/services/etl/etl_pipeline.py` | 823 | audit_append_call | `chunks.append(DocumentChunk(` |
-| `app/services/etl/etl_pipeline.py` | 842 | audit_append_call | `chunks.append(DocumentChunk(` |
-| `app/services/etl/etl_pipeline.py` | 852 | audit_append_call | `buf.append(para); buf_tokens += t` |
-| `app/services/etl/etl_pipeline.py` | 854 | audit_append_call | `chunks.append(DocumentChunk(` |
-| `app/services/etl/etl_pipeline.py` | 873 | audit_append_call | `buf.append(word); chars += len(word) + 1` |
-| `app/services/etl/etl_pipeline.py` | 875 | audit_append_call | `results.append(" ".join(buf)); buf=[]; chars=0` |
-| `app/services/etl/etl_pipeline.py` | 876 | audit_append_call | `if buf: results.append(" ".join(buf))` |
-| `app/services/etl/etl_pipeline.py` | 901 | audit_append_call | `issues.append(f"Incomplete metadata: {required_present}/{len(self.REQUIRED_METADATA)} required fields")` |
-| `app/services/etl/etl_pipeline.py` | 906 | audit_append_call | `issues.append(f"Extraction failed: {extraction.error}")` |
-| `app/services/etl/etl_pipeline.py` | 909 | audit_append_call | `issues.append("Very little text extracted — possible scanned PDF or empty document")` |
-| `app/services/etl/etl_pipeline.py` | 922 | audit_append_call | `issues.append("No headings detected — document may lack structure")` |
-| `app/services/etl/etl_pipeline.py` | 928 | audit_append_call | `issues.append("No chunks produced — document too short or extraction failed")` |
-| `app/services/etl/etl_pipeline.py` | 931 | audit_append_call | `issues.append(f"Very few chunks ({chunk_count}) — document may be incomplete")` |
-| `app/services/etl/etl_pipeline.py` | 938 | audit_append_call | `issues.append("Duplicate chunks detected")` |
-| `app/services/etl/etl_pipeline.py` | 946 | audit_append_call | `issues.append("License status unknown — confirm before AI use")` |
-| `app/services/etl/etl_pipeline.py` | 954 | audit_append_call | `issues.append("License not cleared for training use")` |
-| `app/services/etl/etl_pipeline.py` | 1262 | audit_append_call | `if status:        clauses.append("processing_status=?"); params.append(status)` |
-| `app/services/etl/etl_pipeline.py` | 1263 | audit_append_call | `if grade:         clauses.append("grade=?");             params.append(grade)` |
-| `app/services/etl/etl_pipeline.py` | 1264 | audit_append_call | `if subject:       clauses.append("subject=?");           params.append(subject)` |
-| `app/services/etl/etl_pipeline.py` | 1265 | audit_append_call | `if document_type: clauses.append("document_type=?");     params.append(document_type)` |
+| `app/services/etl/etl_pipeline.py` | 747 | audit_append_call | `chunks.append(DocumentChunk(` |
+| `app/services/etl/etl_pipeline.py` | 774 | audit_append_call | `chunks.append(DocumentChunk(` |
+| `app/services/etl/etl_pipeline.py` | 791 | audit_append_call | `positions.append((len(text), 0, ""))   # sentinel` |
+| `app/services/etl/etl_pipeline.py` | 802 | audit_append_call | `chunks.append(DocumentChunk(` |
+| `app/services/etl/etl_pipeline.py` | 827 | audit_append_call | `chunks.append(DocumentChunk(` |
+| `app/services/etl/etl_pipeline.py` | 846 | audit_append_call | `chunks.append(DocumentChunk(` |
+| `app/services/etl/etl_pipeline.py` | 856 | audit_append_call | `buf.append(para)` |
+| `app/services/etl/etl_pipeline.py` | 859 | audit_append_call | `chunks.append(DocumentChunk(` |
+| `app/services/etl/etl_pipeline.py` | 878 | audit_append_call | `buf.append(word)` |
+| `app/services/etl/etl_pipeline.py` | 881 | audit_append_call | `results.append(" ".join(buf))` |
+| `app/services/etl/etl_pipeline.py` | 885 | audit_append_call | `results.append(" ".join(buf))` |
+| `app/services/etl/etl_pipeline.py` | 910 | audit_append_call | `issues.append(f"Incomplete metadata: {required_present}/{len(self.REQUIRED_METADATA)} required fields")` |
+| `app/services/etl/etl_pipeline.py` | 915 | audit_append_call | `issues.append(f"Extraction failed: {extraction.error}")` |
+| `app/services/etl/etl_pipeline.py` | 918 | audit_append_call | `issues.append("Very little text extracted — possible scanned PDF or empty document")` |
+| `app/services/etl/etl_pipeline.py` | 931 | audit_append_call | `issues.append("No headings detected — document may lack structure")` |
+| `app/services/etl/etl_pipeline.py` | 937 | audit_append_call | `issues.append("No chunks produced — document too short or extraction failed")` |
+| `app/services/etl/etl_pipeline.py` | 940 | audit_append_call | `issues.append(f"Very few chunks ({chunk_count}) — document may be incomplete")` |
+| `app/services/etl/etl_pipeline.py` | 947 | audit_append_call | `issues.append("Duplicate chunks detected")` |
+| `app/services/etl/etl_pipeline.py` | 955 | audit_append_call | `issues.append("License status unknown — confirm before AI use")` |
+| `app/services/etl/etl_pipeline.py` | 963 | audit_append_call | `issues.append("License not cleared for training use")` |
+| `app/services/etl/etl_pipeline.py` | 1272 | audit_append_call | `clauses.append("processing_status=?")` |
+| `app/services/etl/etl_pipeline.py` | 1273 | audit_append_call | `params.append(status)` |
+| `app/services/etl/etl_pipeline.py` | 1275 | audit_append_call | `clauses.append("grade=?")` |
+| `app/services/etl/etl_pipeline.py` | 1276 | audit_append_call | `params.append(grade)` |
+| `app/services/etl/etl_pipeline.py` | 1278 | audit_append_call | `clauses.append("subject=?")` |
+| `app/services/etl/etl_pipeline.py` | 1279 | audit_append_call | `params.append(subject)` |
+| `app/services/etl/etl_pipeline.py` | 1281 | audit_append_call | `clauses.append("document_type=?")` |
+| `app/services/etl/etl_pipeline.py` | 1282 | audit_append_call | `params.append(document_type)` |
 | `app/services/etl/etl_pipeline_v2.py` | 499 | audit_append_call | `params.append(grade)` |
 | `app/services/etl/etl_pipeline_v2.py` | 502 | audit_append_call | `params.append(subject)` |
 | `app/services/etl/etl_pipeline_v2.py` | 505 | audit_append_call | `params.append(document_type)` |
@@ -1267,14 +1538,14 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/etl/etl_pipeline_v2.py` | 528 | audit_append_call | `params.append(subject)` |
 | `app/services/etl/etl_pipeline_v2.py` | 531 | audit_append_call | `params.append(document_type)` |
 | `app/services/etl/etl_pipeline_v2.py` | 547 | audit_append_call | `results.append(row)` |
-| `app/services/etl/etl_pipeline_v2.py` | 625 | audit_append_call | `scored.append({"score": score, **dict(r)})` |
-| `app/services/etl/etl_pipeline_v2.py` | 729 | audit_append_call | `examples.append(ex)` |
-| `app/services/etl/etl_pipeline_v2.py` | 1054 | audit_append_call | `alerts.append(f"HIGH job failure rate: {jobs['failure_rate']*100:.0f}% in last 24h.")` |
-| `app/services/etl/etl_pipeline_v2.py` | 1056 | audit_append_call | `alerts.append(f"{stats['pending_reviews']} documents pending human review.")` |
-| `app/services/etl/etl_pipeline_v2.py` | 1058 | audit_append_call | `alerts.append(f"{len(stale)} documents have been stale for >90 days.")` |
-| `app/services/etl/etl_pipeline_v2.py` | 1060 | audit_append_call | `alerts.append(f"Low approval rate: {approval_rate*100:.0f}% in last 30 days.")` |
-| `app/services/etl/etl_pipeline_v2.py` | 1062 | audit_append_call | `alerts.append(f"{feedback['incorrect_answer']} 'incorrect_answer' reports in last 30 days.")` |
-| `app/services/etl/etl_pipeline_v2.py` | 1095 | audit_append_call | `missing.append({"grade": g, "subject": s, "document_type": t})` |
+| `app/services/etl/etl_pipeline_v2.py` | 629 | audit_append_call | `scored.append({"score": score, **dict(r)})` |
+| `app/services/etl/etl_pipeline_v2.py` | 736 | audit_append_call | `examples.append(ex)` |
+| `app/services/etl/etl_pipeline_v2.py` | 1064 | audit_append_call | `alerts.append(f"HIGH job failure rate: {jobs['failure_rate']*100:.0f}% in last 24h.")` |
+| `app/services/etl/etl_pipeline_v2.py` | 1066 | audit_append_call | `alerts.append(f"{stats['pending_reviews']} documents pending human review.")` |
+| `app/services/etl/etl_pipeline_v2.py` | 1068 | audit_append_call | `alerts.append(f"{len(stale)} documents have been stale for >90 days.")` |
+| `app/services/etl/etl_pipeline_v2.py` | 1070 | audit_append_call | `alerts.append(f"Low approval rate: {approval_rate*100:.0f}% in last 30 days.")` |
+| `app/services/etl/etl_pipeline_v2.py` | 1072 | audit_append_call | `alerts.append(f"{feedback['incorrect_answer']} 'incorrect_answer' reports in last 30 days.")` |
+| `app/services/etl/etl_pipeline_v2.py` | 1105 | audit_append_call | `missing.append({"grade": g, "subject": s, "document_type": t})` |
 | `app/services/etl/etl_pipeline_v3_additions.py` | 291 | audit_append_call | `set_clauses.append(f"{col}=?")` |
 | `app/services/etl/etl_pipeline_v3_additions.py` | 292 | audit_append_call | `params.append(new_val)` |
 | `app/services/etl/etl_pipeline_v3_additions.py` | 293 | audit_append_call | `changes.append((col, str(old_doc[col]), str(new_val)))` |
@@ -1294,6 +1565,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/irt_quality_service.py` | 446 | audit_append_call | `observations.append(` |
 | `app/services/job_dependency_factory.py` | 56 | audit_repository | `audit_repo_cls = _import_symbol("app.repositories.audit_repository.AuditRepository") or _import_symbol("app.repositories.repositories.AuditRepository")` |
 | `app/services/jwt_keyring.py` | 167 | audit_append_call | `keys.append(JWTKey(kid=kid, secret=secret, algorithm=algorithm, status=status))` |
+| `app/services/learner_service.py` | 76 | audit_record_call | `await audit.record(` |
 | `app/services/lesson_authorization.py` | 185 | audit_append_call | `found.append(item)` |
 | `app/services/lesson_authorization.py` | 198 | audit_append_call | `found.append(item)` |
 | `app/services/lesson_context_builder.py` | 216 | audit_append_call | `parts.append(f"({subtopic})")` |
@@ -1318,21 +1590,24 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/popia_consent_lifecycle_adapter.py` | 194 | audit_append_call | `positional.append(_value(kwargs, "consent_version", "privacy_notice_version"))` |
 | `app/services/popia_consent_lifecycle_adapter.py` | 196 | audit_append_call | `positional.append(_value(kwargs, "actor_id", "guardian_id"))` |
 | `app/services/popia_service.py` | 42 | audit_repository | `from app.repositories.audit_repository import AuditRepository` |
-| `app/services/popia_service.py` | 122 | audit_repository | `self.audit = AuditRepository(db)` |
-| `app/services/popia_service.py` | 157 | audit_append_call | `await self.audit.append(` |
-| `app/services/popia_service.py` | 233 | audit_append_call | `await self.audit.append(` |
-| `app/services/popia_service.py` | 320 | audit_append_call | `await self.audit.append(` |
-| `app/services/popia_service.py` | 357 | audit_append_call | `await self.audit.append(` |
-| `app/services/popia_service.py` | 376 | audit_append_call | `await self.audit.append(` |
-| `app/services/popia_service.py` | 466 | audit_append_call | `await self.audit.append(` |
-| `app/services/popia_service.py` | 514 | audit_events_table | `audit_events = await self.db.scalar(` |
-| `app/services/popia_service.py` | 517 | audit_events_table | `verification["audit_records_preserved"] = audit_events is not None or method == ERASURE_METHOD_PHYSICAL` |
-| `app/services/popia_service.py` | 539 | audit_events_table | `audit_events = list((await self.db.scalars(select(AuditEvent).where(AuditEvent.resource_id == learner_id))).all())` |
-| `app/services/popia_service.py` | 709 | audit_events_table | `"audit_events": [` |
-| `app/services/popia_service.py` | 720 | audit_events_table | `for row in audit_events` |
-| `app/services/popia_service.py` | 740 | audit_events_table | `"audit_events",` |
+| `app/services/popia_service.py` | 123 | audit_repository | `self.audit = AuditRepository(db)` |
+| `app/services/popia_service.py` | 158 | audit_append_call | `await self.audit.append(` |
+| `app/services/popia_service.py` | 234 | audit_append_call | `await self.audit.append(` |
+| `app/services/popia_service.py` | 324 | audit_append_call | `await self.audit.append(` |
+| `app/services/popia_service.py` | 361 | audit_append_call | `await self.audit.append(` |
+| `app/services/popia_service.py` | 380 | audit_append_call | `await self.audit.append(` |
+| `app/services/popia_service.py` | 470 | audit_append_call | `await self.audit.append(` |
+| `app/services/popia_service.py` | 518 | audit_events_table | `audit_events = await self.db.scalar(` |
+| `app/services/popia_service.py` | 521 | audit_events_table | `verification["audit_records_preserved"] = audit_events is not None or method == ERASURE_METHOD_PHYSICAL` |
+| `app/services/popia_service.py` | 543 | audit_events_table | `audit_events = list((await self.db.scalars(select(AuditEvent).where(AuditEvent.resource_id == learner_id))).all())` |
+| `app/services/popia_service.py` | 713 | audit_events_table | `"audit_events": [` |
+| `app/services/popia_service.py` | 724 | audit_events_table | `for row in audit_events` |
+| `app/services/popia_service.py` | 744 | audit_events_table | `"audit_events",` |
 | `app/services/popia_transactional_lifecycle.py` | 60 | audit_append_call | `missing.append(method_name)` |
 | `app/services/runtime_audit_facade.py` | 25 | audit_record_call | `await AuditRepositoryCompatAdapter(repository).record(` |
+| `app/services/runtime_kg/integration.py` | 88 | audit_append_call | `evidence.append(LearnerEvidence(stable_code=stable_code, correct=bool(correct), evidence_source=evidence_source))` |
+| `app/services/runtime_kg/service.py` | 28 | audit_append_call | `evidence_by_code.setdefault(item.stable_code, []).append(item)` |
+| `app/services/runtime_kg/service.py` | 40 | audit_append_call | `projections.append(` |
 | `app/services/safety_filter.py` | 176 | audit_append_call | `violations.append(` |
 | `app/services/safety_filter.py` | 186 | audit_append_call | `violations.append(` |
 | `app/services/safety_filter.py` | 196 | audit_append_call | `violations.append(` |
@@ -1346,31 +1621,60 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/semantic_retrieval/evaluation.py` | 53 | audit_append_call | `reciprocal_ranks.append(reciprocal_rank)` |
 | `app/services/semantic_retrieval/evaluation.py` | 54 | audit_append_call | `case_results.append(` |
 | `app/services/study_plan_service_v2.py` | 106 | audit_append_call | `days.setdefault(slot["day"], []).append({` |
-| `scripts/approval_evidence.py` | 170 | audit_append_call | `blockers.append("decision must be approved/accepted/pass")` |
-| `scripts/approval_evidence.py` | 172 | audit_append_call | `blockers.append("approver is pending")` |
-| `scripts/approval_evidence.py` | 174 | audit_append_call | `blockers.append("evidence URL is pending or invalid")` |
-| `scripts/approval_evidence.py` | 176 | audit_append_call | `blockers.append("date verified is pending")` |
-| `scripts/approval_evidence.py` | 178 | audit_append_call | `blockers.append("scope is pending")` |
-| `scripts/approval_evidence.py` | 287 | audit_append_call | `lines.append(` |
-| `scripts/approval_evidence.py` | 296 | audit_append_call | `lines.append("- None")` |
+| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 185 | audit_append_call | `parts.append(current)` |
+| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 188 | audit_append_call | `current.append(token)` |
+| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 190 | audit_append_call | `parts.append(current)` |
+| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 196 | audit_append_call | `stdout.append(result.get("stdout_tail", ""))` |
+| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 197 | audit_append_call | `stderr.append(result.get("stderr_tail", ""))` |
+| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 228 | audit_append_call | `results.append(payload)` |
+| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 184 | audit_append_call | `parts.append(current)` |
+| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 187 | audit_append_call | `current.append(token)` |
+| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 189 | audit_append_call | `parts.append(current)` |
+| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 196 | audit_append_call | `executed.append(result["command"])` |
+| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 197 | audit_append_call | `stdout.append(result.get("stdout_tail", ""))` |
+| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 198 | audit_append_call | `stderr.append(result.get("stderr_tail", ""))` |
+| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 229 | audit_append_call | `results.append(payload)` |
+| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 154 | audit_append_call | `parts.append(current)` |
+| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 157 | audit_append_call | `current.append(token)` |
+| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 159 | audit_append_call | `parts.append(current)` |
+| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 165 | audit_append_call | `combined_stdout.append(result.get("stdout_tail", ""))` |
+| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 166 | audit_append_call | `combined_stderr.append(result.get("stderr_tail", ""))` |
+| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 195 | audit_append_call | `results.append({**item, "result": result, "green": result["exit_code"] == 0})` |
+| `scripts/advisory_suites/run_advisory_quality_gates.py` | 36 | audit_append_call | `results.append({**item, "result": _run(item["command"])})` |
+| `scripts/approval_evidence.py` | 171 | audit_append_call | `blockers.append("decision must be approved/accepted/pass")` |
+| `scripts/approval_evidence.py` | 173 | audit_append_call | `blockers.append("approver is pending")` |
+| `scripts/approval_evidence.py` | 175 | audit_append_call | `blockers.append("evidence URL is pending or invalid")` |
+| `scripts/approval_evidence.py` | 177 | audit_append_call | `blockers.append("date verified is pending")` |
+| `scripts/approval_evidence.py` | 179 | audit_append_call | `blockers.append("scope is pending")` |
+| `scripts/approval_evidence.py` | 288 | audit_append_call | `lines.append(` |
+| `scripts/approval_evidence.py` | 297 | audit_append_call | `lines.append("- None")` |
+| `scripts/approvals/audit_rr015_external_approvals.py` | 162 | audit_append_call | `errors.append(f"missing RR-015 authority file: {rel}")` |
+| `scripts/approvals/audit_rr015_external_approvals.py` | 166 | audit_append_call | `errors.append(f"RR-015 manifest JSON invalid: {manifest['__json_error__']}")` |
+| `scripts/approvals/audit_rr015_external_approvals.py` | 170 | audit_append_call | `errors.append("RR-015 manifest must carry rr_id=RR-015")` |
+| `scripts/approvals/audit_rr015_external_approvals.py` | 175 | audit_append_call | `errors.append(f"RR-015 manifest missing true key: {key}")` |
+| `scripts/approvals/audit_rr015_external_approvals.py` | 180 | audit_append_call | `errors.append(f"RR-015 manifest boundary must be false: {key}")` |
+| `scripts/approvals/audit_rr015_external_approvals.py` | 187 | audit_append_call | `errors.append(f"RR-015 policy missing marker: {marker}")` |
+| `scripts/approvals/audit_rr015_external_approvals.py` | 198 | audit_append_call | `errors.append(f"missing final RR-015 evidence file: {rel}")` |
+| `scripts/approvals/audit_rr015_external_approvals.py` | 204 | audit_append_call | `errors.append(f"RR-015 final file {rel} missing marker: {marker}")` |
+| `scripts/approvals/audit_rr015_external_approvals.py` | 207 | audit_append_call | `warnings.append("final RR-015 external approval evidence files are not required for authority-only audit")` |
 | `scripts/archive/db_migration_phase2.sql` | 205 | audit_events_table | `CREATE TABLE IF NOT EXISTS audit_events (` |
 | `scripts/archive/db_migration_phase2.sql` | 219 | audit_events_table | `CREATE INDEX IF NOT EXISTS ix_audit_events_learner ON audit_events(learner_id);` |
 | `scripts/archive/db_migration_phase2.sql` | 220 | audit_events_table | `CREATE INDEX IF NOT EXISTS ix_audit_events_occurred ON audit_events(occurred_at);` |
 | `scripts/archive/db_migration_phase2.sql` | 221 | audit_events_table | `CREATE INDEX IF NOT EXISTS ix_audit_events_type ON audit_events(event_type);` |
-| `scripts/audit_baseline_refresh.py` | 170 | audit_append_call | `values.append(str(value))` |
-| `scripts/audit_baseline_refresh.py` | 252 | audit_append_call | `blockers.append(item_id)` |
-| `scripts/audit_baseline_refresh.py` | 299 | audit_append_call | `lines.append("- None")` |
-| `scripts/audit_baseline_refresh.py` | 359 | audit_append_call | `commands.append(` |
-| `scripts/audit_baseline_refresh.py` | 367 | audit_append_call | `commands.append(_refresh_docs_inventory())` |
-| `scripts/audit_baseline_refresh.py` | 389 | audit_append_call | `blockers.append(f"command failed: {command.command}")` |
-| `scripts/audit_baseline_refresh.py` | 394 | audit_append_call | `blockers.append(f"required status surface missing: {surface.name}")` |
-| `scripts/audit_baseline_refresh.py` | 396 | audit_append_call | `blockers.append(` |
-| `scripts/audit_baseline_refresh.py` | 401 | audit_append_call | `blockers.append("final gate reports GO while registry still contains beta blockers")` |
-| `scripts/audit_baseline_refresh.py` | 444 | audit_append_call | `lines.append(f"\| `{command.command}` \| {command.return_code} \|")` |
-| `scripts/audit_baseline_refresh.py` | 457 | audit_append_call | `lines.append(` |
-| `scripts/audit_baseline_refresh.py` | 473 | audit_append_call | `lines.append(` |
-| `scripts/audit_baseline_refresh.py` | 482 | audit_append_call | `lines.append("- None")` |
-| `scripts/audit_baseline_refresh.py` | 488 | audit_append_call | `lines.append("- None")` |
+| `scripts/audit_baseline_refresh.py` | 171 | audit_append_call | `values.append(str(value))` |
+| `scripts/audit_baseline_refresh.py` | 253 | audit_append_call | `blockers.append(item_id)` |
+| `scripts/audit_baseline_refresh.py` | 300 | audit_append_call | `lines.append("- None")` |
+| `scripts/audit_baseline_refresh.py` | 360 | audit_append_call | `commands.append(` |
+| `scripts/audit_baseline_refresh.py` | 368 | audit_append_call | `commands.append(_refresh_docs_inventory())` |
+| `scripts/audit_baseline_refresh.py` | 390 | audit_append_call | `blockers.append(f"command failed: {command.command}")` |
+| `scripts/audit_baseline_refresh.py` | 395 | audit_append_call | `blockers.append(f"required status surface missing: {surface.name}")` |
+| `scripts/audit_baseline_refresh.py` | 397 | audit_append_call | `blockers.append(` |
+| `scripts/audit_baseline_refresh.py` | 402 | audit_append_call | `blockers.append("final gate reports GO while registry still contains beta blockers")` |
+| `scripts/audit_baseline_refresh.py` | 445 | audit_append_call | `lines.append(f"\| `{command.command}` \| {command.return_code} \|")` |
+| `scripts/audit_baseline_refresh.py` | 458 | audit_append_call | `lines.append(` |
+| `scripts/audit_baseline_refresh.py` | 474 | audit_append_call | `lines.append(` |
+| `scripts/audit_baseline_refresh.py` | 483 | audit_append_call | `lines.append("- None")` |
+| `scripts/audit_baseline_refresh.py` | 489 | audit_append_call | `lines.append("- None")` |
 | `scripts/audit_remediation/backend_fast_failure_report.py` | 68 | audit_append_call | `recommendations.append("Install and verify requirements/dev.txt in the authority Python environment before re-running make test-fast.")` |
 | `scripts/audit_remediation/backend_fast_failure_report.py` | 70 | audit_append_call | `recommendations.append("Separate import-time database engine creation from model imports or ensure test DATABASE_URL uses an installed driver.")` |
 | `scripts/audit_remediation/backend_fast_failure_report.py` | 72 | audit_append_call | `recommendations.append("Run focused POPIA unit tests and router contract tests before full backend-fast retry.")` |
@@ -1378,15 +1682,18 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/audit_remediation/backend_fast_failure_report.py` | 76 | audit_append_call | `recommendations.append("Verify Content Factory registries and generated fixture assumptions before full backend-fast retry.")` |
 | `scripts/audit_remediation/backend_fast_failure_report.py` | 78 | audit_append_call | `recommendations.append("Inspect the failed tests list and split the next remediation package by the largest domain cluster.")` |
 | `scripts/audit_remediation/classify_backend_fast_failures.py` | 82 | audit_append_call | `snippets.append(snippet)` |
-| `scripts/audit_remediation/verify_backend_fast_environment.py` | 99 | audit_append_call | `results.append({` |
-| `scripts/audit_remediation/verify_backend_fast_environment.py` | 116 | audit_append_call | `results.append({` |
-| `scripts/audit_remediation/verify_backend_fast_environment.py` | 148 | audit_append_call | `errors.append(f"python interpreter not found: {resolved_python}")` |
-| `scripts/audit_remediation/verify_backend_fast_environment.py` | 153 | audit_append_call | `checked.append(rel_path)` |
-| `scripts/audit_remediation/verify_backend_fast_environment.py` | 155 | audit_append_call | `errors.append(f"missing {rel_path}")` |
-| `scripts/audit_remediation/verify_backend_fast_environment.py` | 174 | audit_append_call | `errors.append(f"{len(missing)} backend-fast Python import requirement(s) missing")` |
-| `scripts/audit_remediation/verify_backend_fast_environment.py` | 179 | audit_append_call | `checked.append("python -m pip check")` |
-| `scripts/audit_remediation/verify_backend_fast_environment.py` | 181 | audit_append_call | `errors.append("pip check failed")` |
-| `scripts/audit_remediation/verify_backend_fast_environment.py` | 186 | audit_append_call | `warnings.append(f"Python {version} is outside the expected 3.11-3.13 range")` |
+| `scripts/audit_remediation/run_e2e_playwright_authority.py` | 87 | audit_append_call | `commands.append(("playwright_install_chromium", ["pnpm", "exec", "playwright", "install", "chromium"], 900))` |
+| `scripts/audit_remediation/run_e2e_playwright_authority.py` | 89 | audit_append_call | `commands.append((` |
+| `scripts/audit_remediation/run_frontend_tooling_authority.py` | 115 | audit_append_call | `commands.append(` |
+| `scripts/audit_remediation/verify_backend_fast_environment.py` | 100 | audit_append_call | `results.append({` |
+| `scripts/audit_remediation/verify_backend_fast_environment.py` | 117 | audit_append_call | `results.append({` |
+| `scripts/audit_remediation/verify_backend_fast_environment.py` | 149 | audit_append_call | `errors.append(f"python interpreter not found: {resolved_python}")` |
+| `scripts/audit_remediation/verify_backend_fast_environment.py` | 154 | audit_append_call | `checked.append(rel_path)` |
+| `scripts/audit_remediation/verify_backend_fast_environment.py` | 156 | audit_append_call | `errors.append(f"missing {rel_path}")` |
+| `scripts/audit_remediation/verify_backend_fast_environment.py` | 175 | audit_append_call | `errors.append(f"{len(missing)} backend-fast Python import requirement(s) missing")` |
+| `scripts/audit_remediation/verify_backend_fast_environment.py` | 180 | audit_append_call | `checked.append("python -m pip check")` |
+| `scripts/audit_remediation/verify_backend_fast_environment.py` | 182 | audit_append_call | `errors.append("pip check failed")` |
+| `scripts/audit_remediation/verify_backend_fast_environment.py` | 187 | audit_append_call | `warnings.append(f"Python {version} is outside the expected 3.11-3.13 range")` |
 | `scripts/audit_remediation/verify_backend_fast_evidence.py` | 20 | audit_append_call | `errors.append(f"raw/{path.name} must be valid JSON: {exc.msg} at line {exc.lineno} column {exc.colno}")` |
 | `scripts/audit_remediation/verify_backend_fast_evidence.py` | 22 | audit_append_call | `errors.append(f"raw/{path.name} could not be read: {exc}")` |
 | `scripts/audit_remediation/verify_backend_fast_evidence.py` | 32 | audit_append_call | `errors.append("raw/SHA256SUMS.txt must not be empty")` |
@@ -1487,45 +1794,48 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/audit_remediation/verify_backend_fast_phase02j.py` | 67 | audit_append_call | `checks.append(Check("manifest_exists", MANIFEST.exists(), f"{MANIFEST.relative_to(ROOT)} exists in the tracked tree."))` |
 | `scripts/audit_remediation/verify_backend_fast_phase02j.py` | 68 | audit_append_call | `checks.append(Check("manifest_single_senior_math_record", len(expected_records) == 1, "Exactly one Senior Phase Mathematics text-extract provenance record is present."))` |
 | `scripts/audit_remediation/verify_backend_fast_phase02j.py` | 80 | audit_append_call | `checks.append(Check("worklist_item_present", item is not None, "Grade 7 Mathematics is present in the generated worklist."))` |
-| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 25 | audit_append_call | `errors.append(f"missing required asset: {rel}")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 27 | audit_append_call | `checked.append(rel)` |
-| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 33 | audit_append_call | `errors.append("collector must use run_json_capture for machine-readable JSON artifacts")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 35 | audit_append_call | `errors.append("collector must not prefix candidate JSON evidence with shell command banners")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 37 | audit_append_call | `errors.append("collector must exclude SHA256SUMS.txt from its own hash manifest")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 39 | audit_append_call | `errors.append("collector must run the backend-fast evidence verifier before claiming candidate evidence")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 53 | audit_append_call | `errors.append(f"verifier missing fail-closed check: {term}")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 60 | audit_append_call | `errors.append("blocker register active_slice must remain within the backend-fast 02-series remediation stream")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 63 | audit_append_call | `errors.append("blocker register must record returncode 0 evidence policy")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 65 | audit_append_call | `errors.append("missing blocker register")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 24 | audit_append_call | `errors.append(f"missing required asset: {rel}")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 26 | audit_append_call | `checked.append(rel)` |
-| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 32 | audit_append_call | `errors.append("backend-fast evidence verifier must explicitly document xfailed-safe handling")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 34 | audit_append_call | `errors.append("backend-fast evidence verifier must not use substring failed matching that catches xfailed")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 36 | audit_append_call | `errors.append("backend-fast evidence verifier must use a word/count based failed-summary regex")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 38 | audit_append_call | `errors.append("backend-fast evidence verifier must still reject make error lines")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 45 | audit_append_call | `errors.append("blocker register active_slice must remain within the backend-fast 02-series remediation stream")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 48 | audit_append_call | `errors.append("blocker register must record xfailed-safe evidence policy")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 50 | audit_append_call | `errors.append("missing blocker register")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 31 | audit_append_call | `errors.append(f"missing required asset: {rel}")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 33 | audit_append_call | `checked.append(rel)` |
-| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 47 | audit_append_call | `errors.append(f"backend fast evidence test fixture missing hardened contract term: {term}")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 57 | audit_append_call | `errors.append(f"{rel} still has an exact active_slice assertion")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 59 | audit_append_call | `errors.append(f"{rel} must allow later 02-series slices while preserving stream discipline")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 66 | audit_append_call | `errors.append(f"PR-002R contract missing required term: {term}")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 72 | audit_append_call | `errors.append("project assistance status document is not in generated format")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 78 | audit_append_call | `errors.append("blocker register active_slice must be 02m-backend-fast-head-aligned-finalization")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 81 | audit_append_call | `errors.append("blocker register must record HEAD-aligned evidence policy")` |
-| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 83 | audit_append_call | `errors.append("missing blocker register")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 42 | audit_append_call | `errors.append(f"missing required asset: {rel}")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 44 | audit_append_call | `checked.append(rel)` |
+| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 50 | audit_append_call | `errors.append("collector must use run_json_capture for machine-readable JSON artifacts")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 52 | audit_append_call | `errors.append("collector must not prefix candidate JSON evidence with shell command banners")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 54 | audit_append_call | `errors.append("collector must exclude SHA256SUMS.txt from its own hash manifest")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 56 | audit_append_call | `errors.append("collector must run the backend-fast evidence verifier before claiming candidate evidence")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 70 | audit_append_call | `errors.append(f"verifier missing fail-closed check: {term}")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 78 | audit_append_call | `errors.append("blocker register active_slice must remain within the backend-fast 02-series remediation stream")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 81 | audit_append_call | `errors.append("blocker register must record returncode 0 evidence policy")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 86 | audit_append_call | `errors.append("terminal register must archive TA-BACKEND-FAST-001 as evidence_recorded")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02k.py` | 88 | audit_append_call | `errors.append("missing blocker register")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 41 | audit_append_call | `errors.append(f"missing required asset: {rel}")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 43 | audit_append_call | `checked.append(rel)` |
+| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 49 | audit_append_call | `errors.append("backend-fast evidence verifier must explicitly document xfailed-safe handling")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 51 | audit_append_call | `errors.append("backend-fast evidence verifier must not use substring failed matching that catches xfailed")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 53 | audit_append_call | `errors.append("backend-fast evidence verifier must use a word/count based failed-summary regex")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 55 | audit_append_call | `errors.append("backend-fast evidence verifier must still reject make error lines")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 63 | audit_append_call | `errors.append("blocker register active_slice must remain within the backend-fast 02-series remediation stream")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 66 | audit_append_call | `errors.append("blocker register must record xfailed-safe evidence policy")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 71 | audit_append_call | `errors.append("terminal register must archive TA-BACKEND-FAST-001 as evidence_recorded")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02l.py` | 73 | audit_append_call | `errors.append("missing blocker register")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 48 | audit_append_call | `errors.append(f"missing required asset: {rel}")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 50 | audit_append_call | `checked.append(rel)` |
+| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 64 | audit_append_call | `errors.append(f"backend fast evidence test fixture missing hardened contract term: {term}")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 74 | audit_append_call | `errors.append(f"{rel} still has an exact active_slice assertion")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 76 | audit_append_call | `errors.append(f"{rel} must allow later 02-series slices while preserving stream discipline")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 83 | audit_append_call | `errors.append(f"PR-002R contract missing required term: {term}")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 89 | audit_append_call | `errors.append("project assistance status document is not in generated format")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 96 | audit_append_call | `errors.append("blocker register active_slice must be 02m-backend-fast-head-aligned-finalization")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 99 | audit_append_call | `errors.append("blocker register must record HEAD-aligned evidence policy")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 104 | audit_append_call | `errors.append("terminal register must archive TA-BACKEND-FAST-001 as evidence_recorded")` |
+| `scripts/audit_remediation/verify_backend_fast_phase02m.py` | 106 | audit_append_call | `errors.append("missing blocker register")` |
 | `scripts/audit_remediation/verify_backend_fast_phase02n.py` | 15 | audit_append_call | `errors.append(f"missing required asset: {path.relative_to(ROOT)}")` |
 | `scripts/audit_remediation/verify_backend_fast_phase02n.py` | 19 | audit_append_call | `errors.append(f"{path.relative_to(ROOT)} must contain {needle!r}")` |
 | `scripts/audit_remediation/verify_backend_fast_phase02n.py` | 35 | audit_append_call | `checked.append(str(path.relative_to(root)))` |
 | `scripts/audit_remediation/verify_backend_fast_phase02n.py` | 37 | audit_append_call | `errors.append(f"missing required asset: {path.relative_to(root)}")` |
 | `scripts/audit_remediation/verify_backend_fast_phase02n.py` | 43 | audit_append_call | `_contains(verifier, "warnings.append(\"backend fast failure classification recorded diagnostic categories despite zero failures\")", errors)` |
-| `scripts/audit_remediation/verify_backend_fast_runtime_dependencies.py` | 150 | audit_append_call | `recommendations.append("Create the repo .venv or run scripts/audit_remediation/sync_backend_fast_runtime_dependencies.sh.")` |
-| `scripts/audit_remediation/verify_backend_fast_runtime_dependencies.py` | 152 | audit_append_call | `recommendations.append("Install requirements/dev.txt into the Makefile authority interpreter, then rerun this verifier.")` |
-| `scripts/audit_remediation/verify_backend_fast_runtime_dependencies.py` | 154 | audit_append_call | `recommendations.append("Review requirements/dev.txt declarations for missing backend-fast runtime dependencies: " + ", ".join(missing_declared))` |
-| `scripts/audit_remediation/verify_backend_fast_runtime_dependencies.py` | 156 | audit_append_call | `recommendations.append("Optional modules missing but not release-blocking for this verifier: " + ", ".join(missing_optional))` |
-| `scripts/audit_remediation/verify_backend_fast_runtime_dependencies.py` | 158 | audit_append_call | `recommendations.append("Runtime dependency check passed; rerun the backend fast authority gate or proceed to application-failure remediation if it still fails.")` |
+| `scripts/audit_remediation/verify_backend_fast_runtime_dependencies.py` | 151 | audit_append_call | `recommendations.append("Create the repo .venv or run scripts/audit_remediation/sync_backend_fast_runtime_dependencies.sh.")` |
+| `scripts/audit_remediation/verify_backend_fast_runtime_dependencies.py` | 153 | audit_append_call | `recommendations.append("Install requirements/dev.txt into the Makefile authority interpreter, then rerun this verifier.")` |
+| `scripts/audit_remediation/verify_backend_fast_runtime_dependencies.py` | 155 | audit_append_call | `recommendations.append("Review requirements/dev.txt declarations for missing backend-fast runtime dependencies: " + ", ".join(missing_declared))` |
+| `scripts/audit_remediation/verify_backend_fast_runtime_dependencies.py` | 157 | audit_append_call | `recommendations.append("Optional modules missing but not release-blocking for this verifier: " + ", ".join(missing_optional))` |
+| `scripts/audit_remediation/verify_backend_fast_runtime_dependencies.py` | 159 | audit_append_call | `recommendations.append("Runtime dependency check passed; rerun the backend fast authority gate or proceed to application-failure remediation if it still fails.")` |
 | `scripts/audit_remediation/verify_baseline_reset.py` | 38 | audit_append_call | `errors.append(f"missing {control_path}")` |
 | `scripts/audit_remediation/verify_baseline_reset.py` | 42 | audit_append_call | `errors.append("Phase 02R must be terminally approved at Gate 2R.8 before technical-audit reset")` |
 | `scripts/audit_remediation/verify_baseline_reset.py` | 44 | audit_append_call | `errors.append("Phase 02R authorised_next_gate must be null before technical-audit reset")` |
@@ -1536,6 +1846,31 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/audit_remediation/verify_baseline_reset.py` | 60 | audit_append_call | `errors.append("blocker register stream must be technical-audit-remediation")` |
 | `scripts/audit_remediation/verify_baseline_reset.py` | 62 | audit_append_call | `errors.append("blocker register must preserve remaining release blockers")` |
 | `scripts/audit_remediation/verify_baseline_reset.py` | 66 | audit_append_call | `errors.append("missing technical audit control-reset document")` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | 47 | audit_append_call | `ids.append(match.group(1))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | 64 | audit_append_call | `findings.append(Finding(CI_CD.exists(), ".github/workflows/ci-cd.yml exists" if CI_CD.exists() else ".github/workflows/ci-cd.yml missing"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | 65 | audit_append_call | `findings.append(Finding(FRONTEND_LOCKFILE.exists(), "frontend pnpm-lock.yaml exists" if FRONTEND_LOCKFILE.exists() else "frontend pnpm-lock.yaml missing"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | 69 | audit_append_call | `findings.append(Finding('"packageManager": "pnpm@' in root_package, "root packageManager uses pnpm" if '"packageManager": "pnpm@' in root_package else "root packageManager must use pnpm"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | 71 | audit_append_call | `findings.append(Finding(False, "root package.json missing"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | 75 | audit_append_call | `findings.append(Finding('"packageManager": "pnpm@' in frontend_package, "frontend packageManager uses pnpm" if '"packageManager": "pnpm@' in frontend_package else "frontend packageManager must use pnpm"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | 77 | audit_append_call | `findings.append(Finding(False, "frontend package.json missing"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | 81 | audit_append_call | `findings.append(Finding(not duplicates, "workflow job ids are unique" if not duplicates else f"duplicate workflow job ids: {duplicates}"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | 83 | audit_append_call | `findings.append(Finding(required in jobs, f"job {required} present" if required in jobs else f"job {required} missing"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | 94 | audit_append_call | `findings.append(Finding(snippet not in text, f"forbidden snippet absent: {snippet}" if snippet not in text else f"forbidden snippet present: {snippet}"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | 111 | audit_append_call | `findings.append(Finding(snippet in text, f"required snippet present: {snippet}" if snippet in text else f"required snippet missing: {snippet}"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | 115 | audit_append_call | `findings.append(Finding(required_need in needs, f"production-promote needs {required_need}" if required_need in needs else f"production-promote missing need {required_need}"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | 122 | audit_append_call | `findings.append(Finding(ci is not None, "TA-CI-001 blocker registered" if ci else "TA-CI-001 blocker missing"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | 124 | audit_append_call | `findings.append(Finding(ci.get("status") in {"workflow_cleanup_ready", "evidence_recorded"}, f"TA-CI-001 status {ci.get('status')}"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | 135 | audit_append_call | `findings.append(Finding(data.get("active_slice") in allowed_active_slices or terminal_closed, f"active_slice is {data.get('active_slice')}"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | 137 | audit_append_call | `findings.append(Finding(False, f"blocker register invalid JSON: {exc}"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | 139 | audit_append_call | `findings.append(Finding(False, "blocker register missing"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow_evidence.py` | 45 | audit_append_call | `findings.append(Finding(False, f"malformed SHA256SUMS line: {line!r}"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow_evidence.py` | 49 | audit_append_call | `findings.append(Finding(False, "SHA256SUMS.txt must not include itself"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow_evidence.py` | 52 | audit_append_call | `findings.append(Finding(False, "ci_authority_workflow_evidence_check.json must not be self-hashed"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow_evidence.py` | 56 | audit_append_call | `findings.append(Finding(False, f"raw/SHA256SUMS.txt references missing file {rel}"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow_evidence.py` | 59 | audit_append_call | `findings.append(Finding(actual == expected, f"raw/SHA256SUMS.txt {'matches' if actual == expected else 'digest mismatch for'} {rel}"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow_evidence.py` | 75 | audit_append_call | `findings.append(Finding(error is None, "workflow verification JSON is valid" if error is None else f"workflow verification JSON invalid: {error}"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow_evidence.py` | 77 | audit_append_call | `findings.append(Finding(payload.get("valid") is True, "workflow verification valid=true" if payload.get("valid") is True else "workflow verification valid is not true"))` |
+| `scripts/audit_remediation/verify_ci_authority_workflow_evidence.py` | 86 | audit_append_call | `findings.append(Finding(required in messages, f"evidence contains {required}" if required in messages else f"evidence missing {required}"))` |
 | `scripts/audit_remediation/verify_content_scope_registry_expansion.py` | 42 | audit_append_call | `refs.append(str(topic["caps_ref"]))` |
 | `scripts/audit_remediation/verify_content_scope_registry_expansion.py` | 59 | audit_append_call | `errors.append("data/content_factory/scopes.json schema_version must be 1.0")` |
 | `scripts/audit_remediation/verify_content_scope_registry_expansion.py` | 61 | audit_append_call | `errors.append("data/content_factory/scopes.json contains duplicate scope_id values")` |
@@ -1558,15 +1893,175 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/audit_remediation/verify_content_scope_registry_expansion.py` | 133 | audit_append_call | `errors.append("grade4_mathematics_en launch caps_refs changed unexpectedly")` |
 | `scripts/audit_remediation/verify_content_scope_registry_expansion.py` | 150 | audit_append_call | `errors.append("ContentScopeRegistry import contract did not match expanded registry expectations")` |
 | `scripts/audit_remediation/verify_content_scope_registry_expansion.py` | 153 | audit_append_call | `errors.append(f"ContentScopeRegistry import verification failed: {type(exc).__name__}: {exc}")` |
-| `scripts/audit_remediation/verify_dependency_scan_workflow.py` | 22 | audit_append_call | `errors.append("dependency-scan workflow must define pnpm-audit job")` |
-| `scripts/audit_remediation/verify_dependency_scan_workflow.py` | 24 | audit_append_call | `errors.append("dependency-scan workflow still references needs.npm-audit")` |
-| `scripts/audit_remediation/verify_dependency_scan_workflow.py` | 26 | audit_append_call | `errors.append("dependency-scan workflow summary must reference needs.pnpm-audit.result")` |
-| `scripts/audit_remediation/verify_dependency_scan_workflow.py` | 28 | audit_append_call | `errors.append("dependency-scan workflow must not broadly suppress audit failures with \|\| true")` |
-| `scripts/audit_remediation/verify_dependency_scan_workflow.py` | 30 | audit_append_call | `errors.append("dependency-scan workflow must run pnpm audit at the configured critical threshold")` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 44 | audit_append_call | `ids.append(match.group(1))` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 62 | audit_append_call | `findings.append(Finding(WORKFLOW.exists(), "dependency-scan workflow exists" if WORKFLOW.exists() else "dependency-scan workflow missing"))` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 65 | audit_append_call | `findings.append(Finding(not duplicates, "dependency-scan job ids are unique" if not duplicates else f"duplicate dependency-scan job ids: {duplicates}"))` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 67 | audit_append_call | `findings.append(Finding(job in jobs, f"job {job} present" if job in jobs else f"job {job} missing"))` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 70 | audit_append_call | `findings.append(Finding(snippet not in text, f"forbidden snippet absent: {snippet}" if snippet not in text else f"forbidden snippet present: {snippet}"))` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 81 | audit_append_call | `findings.append(Finding(snippet in text, f"required snippet present: {snippet}" if snippet in text else f"required snippet missing: {snippet}"))` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 84 | audit_append_call | `findings.append(Finding("set -euo pipefail" in pip, "pip-audit uses fail-closed shell options" if "set -euo pipefail" in pip else "pip-audit must use set -euo pipefail"))` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 85 | audit_append_call | `findings.append(Finding("pip-audit -r ${{ matrix.requirements }} --format=json" in pip, "pip-audit scans requirements matrix" if "pip-audit -r ${{ matrix.requirements }} --format=json" in pip else "pip-audit requirements` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 86 | audit_append_call | `findings.append(Finding("tee pip-audit.json" in pip, "pip-audit JSON artifact is captured" if "tee pip-audit.json" in pip else "pip-audit JSON artifact not captured"))` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 87 | audit_append_call | `findings.append(Finding("requirements/base.txt" in pip and "requirements/dev.txt" in pip and "requirements/docs.txt" in pip and "requirements-ml.txt" in pip, "pip-audit matrix covers tracked requirement sets" if "require` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 90 | audit_append_call | `findings.append(Finding("set -euo pipefail" in pnpm, "pnpm-audit uses fail-closed shell options" if "set -euo pipefail" in pnpm else "pnpm-audit must use set -euo pipefail"))` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 91 | audit_append_call | `findings.append(Finding("pnpm audit --audit-level=critical --json" in pnpm, "pnpm audit uses critical threshold" if "pnpm audit --audit-level=critical --json" in pnpm else "pnpm audit critical threshold missing"))` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 92 | audit_append_call | `findings.append(Finding("tee pnpm-audit.json" in pnpm, "pnpm audit JSON artifact is captured" if "tee pnpm-audit.json" in pnpm else "pnpm audit JSON artifact not captured"))` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 93 | audit_append_call | `findings.append(Finding("critical > 0" in pnpm and "process.exitCode = 1" in pnpm, "pnpm critical vulnerabilities fail the job" if "critical > 0" in pnpm and "process.exitCode = 1" in pnpm else "pnpm critical vulnerabili` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 94 | audit_append_call | `findings.append(Finding("pnpm install --frozen-lockfile" in pnpm, "pnpm audit installs from frozen lockfile" if "pnpm install --frozen-lockfile" in pnpm else "pnpm audit must use frozen lockfile"))` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 97 | audit_append_call | `findings.append(Finding(bool(uploads), "dependency scan uploads audit artifacts" if uploads else "dependency scan artifact uploads missing"))` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 98 | audit_append_call | `findings.append(Finding(all(line.endswith("@v4") for line in uploads), "all dependency scan artifact uploads use v4" if uploads and all(line.endswith("@v4") for line in uploads) else f"artifact uploads must use v4: {uplo` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 105 | audit_append_call | `findings.append(Finding(isinstance(security, dict), "TA-SECURITY-001 blocker registered" if isinstance(security, dict) else "TA-SECURITY-001 blocker missing"))` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 107 | audit_append_call | `findings.append(Finding(security.get("status") in {"dependency_scan_enforcement_ready", "evidence_recorded", "partially_addressed_in_baseline_reset"}, f"TA-SECURITY-001 status {security.get('status')}"))` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 119 | audit_append_call | `findings.append(Finding(data.get("active_slice") in allowed_active_slices or terminal_closed, f"active_slice is {data.get('active_slice')}"))` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 121 | audit_append_call | `findings.append(Finding(False, f"blocker register invalid JSON: {exc}"))` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | 123 | audit_append_call | `findings.append(Finding(False, "blocker register missing"))` |
+| `scripts/audit_remediation/verify_dependency_scan_evidence.py` | 34 | audit_append_call | `findings.append(Finding(bool(lines), "SHA256SUMS.txt has entries" if lines else "SHA256SUMS.txt is empty"))` |
+| `scripts/audit_remediation/verify_dependency_scan_evidence.py` | 39 | audit_append_call | `findings.append(Finding(False, f"invalid SHA256SUMS line: {line}"))` |
+| `scripts/audit_remediation/verify_dependency_scan_evidence.py` | 43 | audit_append_call | `findings.append(Finding(False, f"{filename} must not be self-hashed"))` |
+| `scripts/audit_remediation/verify_dependency_scan_evidence.py` | 47 | audit_append_call | `findings.append(Finding(False, f"raw/{filename} missing"))` |
+| `scripts/audit_remediation/verify_dependency_scan_evidence.py` | 50 | audit_append_call | `findings.append(Finding(actual == digest, f"raw/{filename} digest matches" if actual == digest else f"raw/SHA256SUMS.txt digest mismatch for {filename}"))` |
+| `scripts/audit_remediation/verify_dependency_scan_evidence.py` | 57 | audit_append_call | `findings.append(Finding(evidence_dir.exists(), "evidence directory exists" if evidence_dir.exists() else "evidence directory missing"))` |
+| `scripts/audit_remediation/verify_dependency_scan_evidence.py` | 58 | audit_append_call | `findings.append(Finding((evidence_dir / "evidence_index.md").exists(), "evidence index exists" if (evidence_dir / "evidence_index.md").exists() else "evidence index missing"))` |
+| `scripts/audit_remediation/verify_dependency_scan_evidence.py` | 59 | audit_append_call | `findings.append(Finding(raw.exists(), "raw evidence directory exists" if raw.exists() else "raw evidence directory missing"))` |
+| `scripts/audit_remediation/verify_dependency_scan_evidence.py` | 62 | audit_append_call | `findings.append(Finding(error is None, "dependency scan verification JSON is readable" if error is None else f"dependency scan verification JSON invalid: {error}"))` |
+| `scripts/audit_remediation/verify_dependency_scan_evidence.py` | 64 | audit_append_call | `findings.append(Finding(verification.get("valid") is True, "dependency scan verifier returned valid true" if verification.get("valid") is True else "dependency scan verifier did not return valid true"))` |
+| `scripts/audit_remediation/verify_dependency_scan_evidence.py` | 67 | audit_append_call | `findings.append(Finding(message in messages, f"verification proves: {message}" if message in messages else f"verification missing proof: {message}"))` |
+| `scripts/audit_remediation/verify_dependency_scan_evidence.py` | 69 | audit_append_call | `findings.append(Finding(workflow_snapshot.exists(), "workflow snapshot captured" if workflow_snapshot.exists() else "workflow snapshot missing"))` |
+| `scripts/audit_remediation/verify_dependency_scan_evidence.py` | 72 | audit_append_call | `findings.append(Finding("\|\| true" not in text, "workflow snapshot has no broad audit suppression" if "\|\| true" not in text else "workflow snapshot still contains \|\| true"))` |
+| `scripts/audit_remediation/verify_dependency_scan_evidence.py` | 73 | audit_append_call | `findings.append(Finding("actions/upload-artifact@v7" not in text, "workflow snapshot has no unsupported upload-artifact@v7" if "actions/upload-artifact@v7" not in text else "workflow snapshot still contains upload-artifa` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | 41 | audit_append_call | `findings.append(Finding(root_pkg.exists(), "root package.json exists" if root_pkg.exists() else "root package.json missing"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | 42 | audit_append_call | `findings.append(Finding(frontend_pkg.exists(), "frontend package.json exists" if frontend_pkg.exists() else "frontend package.json missing"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | 43 | audit_append_call | `findings.append(Finding(root_lock.exists(), "root pnpm lockfile exists" if root_lock.exists() else "root pnpm lockfile missing"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | 44 | audit_append_call | `findings.append(Finding(frontend_lock.exists(), "frontend pnpm lockfile exists" if frontend_lock.exists() else "frontend pnpm lockfile missing"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | 49 | audit_append_call | `findings.append(Finding(str(root_payload.get("packageManager", "")).startswith("pnpm@"), "root package manager is pnpm"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | 50 | audit_append_call | `findings.append(Finding("@playwright/test" in dev_deps, "root @playwright/test dependency declared"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | 53 | audit_append_call | `findings.append(Finding(str(frontend_payload.get("packageManager", "")).startswith("pnpm@"), "frontend package manager is pnpm"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | 55 | audit_append_call | `findings.append(Finding('"http://127.0.0.1:3050"' in playwright_config, "Playwright default base URL uses Next.js port 3050"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | 56 | audit_append_call | `findings.append(Finding("pnpm --dir app/frontend exec next dev" in playwright_config, "Playwright webServer starts frontend through pnpm"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | 57 | audit_append_call | `findings.append(Finding("testDir: \"./tests/e2e\"" in playwright_config, "Playwright testDir is tests/e2e"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | 58 | audit_append_call | `findings.append(Finding("playwright-report" in playwright_config and "test-results" in playwright_config, "Playwright report/result directories are configured"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | 65 | audit_append_call | `findings.append(Finding((REPO_ROOT / spec).exists(), f"required mocked E2E spec exists: {spec}"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | 69 | audit_append_call | `findings.append(Finding(forbidden not in all_workflows, f"workflow does not use forbidden E2E pattern: {forbidden}"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | 79 | audit_append_call | `findings.append(Finding(required in all_workflows, f"workflow contains required E2E snippet: {required}"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | 84 | audit_append_call | `findings.append(Finding("pnpm-lock.yaml" in text and "app/frontend/pnpm-lock.yaml" in text, f"{name} caches root and frontend pnpm lockfiles"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | 86 | audit_append_call | `findings.append(Finding("TA-E2E-001" in blocker_register, "TA-E2E-001 blocker registered"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | 92 | audit_append_call | `findings.append(Finding(phase_active or terminal_closed, "Phase 06 active or archived terminal slice registered"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_evidence.py` | 44 | audit_append_call | `findings.append(Finding(bool(lines), "SHA256SUMS.txt has entries" if lines else "SHA256SUMS.txt is empty"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_evidence.py` | 49 | audit_append_call | `findings.append(Finding(False, f"malformed SHA256SUMS line: {line!r}"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_evidence.py` | 53 | audit_append_call | `findings.append(Finding(False, f"{rel} must not be self-hashed"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_evidence.py` | 57 | audit_append_call | `findings.append(Finding(False, f"raw/SHA256SUMS.txt references missing file {rel}"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_evidence.py` | 60 | audit_append_call | `findings.append(Finding(actual == expected, f"raw/{rel} digest matches" if actual == expected else f"raw/SHA256SUMS.txt digest mismatch for {rel}"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_evidence.py` | 73 | audit_append_call | `findings.append(Finding(verification_error is None, "static authority verification JSON is readable" if verification_error is None else f"static authority verification JSON invalid: {verification_error}"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_evidence.py` | 75 | audit_append_call | `findings.append(Finding(verification.get("valid") is True, "static authority verification returned valid true" if verification.get("valid") is True else "static authority verification did not return valid true"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_evidence.py` | 78 | audit_append_call | `findings.append(Finding(result_error is None, "Playwright authority result JSON is readable" if result_error is None else f"Playwright authority result JSON invalid: {result_error}"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_evidence.py` | 80 | audit_append_call | `findings.append(Finding(result.get("valid") is True, "Playwright authority result valid true" if result.get("valid") is True else "Playwright authority result is not valid true"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_evidence.py` | 81 | audit_append_call | `findings.append(Finding(result.get("remote_ci_run_claimed") is False, "remote CI run is not claimed" if result.get("remote_ci_run_claimed") is False else "remote CI run must not be claimed"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_evidence.py` | 82 | audit_append_call | `findings.append(Finding(result.get("full_backend_backed_e2e_claimed") is False, "full backend-backed E2E is not claimed" if result.get("full_backend_backed_e2e_claimed") is False else "full backend-backed E2E must not be` |
+| `scripts/audit_remediation/verify_e2e_playwright_evidence.py` | 87 | audit_append_call | `findings.append(Finding(required in step_names, f"authority step recorded: {required}" if required in step_names else f"authority step missing: {required}"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_evidence.py` | 90 | audit_append_call | `findings.append(Finding(step.get("returncode") == 0, f"{step.get('name')} returned 0" if step.get("returncode") == 0 else f"{step.get('name')} returned {step.get('returncode')}"))` |
+| `scripts/audit_remediation/verify_e2e_playwright_evidence.py` | 93 | audit_append_call | `findings.append(Finding((raw_dir / snapshot).exists(), f"{snapshot} captured" if (raw_dir / snapshot).exists() else f"{snapshot} missing"))` |
 | `scripts/audit_remediation/verify_frontend_env_contract.py` | 22 | audit_append_call | `errors.append("next.config.js still contains hosted production API fallback")` |
 | `scripts/audit_remediation/verify_frontend_env_contract.py` | 24 | audit_append_call | `errors.append("next.config.js must fail closed when NEXT_PUBLIC_API_URL is missing outside development/test")` |
 | `scripts/audit_remediation/verify_frontend_env_contract.py` | 26 | audit_append_call | `errors.append("next.config.js must restrict empty API fallback to development/test")` |
 | `scripts/audit_remediation/verify_frontend_env_contract.py` | 28 | audit_append_call | `errors.append("next.config.js should keep localhost fallback for development/test only")` |
+| `scripts/audit_remediation/verify_frontend_tooling_authority.py` | 46 | audit_append_call | `checks.append(Check(str(path.relative_to(REPO_ROOT)), path.exists(), "present" if path.exists() else "missing"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_authority.py` | 48 | audit_append_call | `checks.append(Check("root package.json", ROOT_PACKAGE.exists(), "present" if ROOT_PACKAGE.exists() else "missing"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_authority.py` | 49 | audit_append_call | `checks.append(Check("frontend package.json", FRONTEND_PACKAGE.exists(), "present" if FRONTEND_PACKAGE.exists() else "missing"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_authority.py` | 50 | audit_append_call | `checks.append(Check("frontend pnpm-lock.yaml", FRONTEND_LOCKFILE.exists(), "present" if FRONTEND_LOCKFILE.exists() else "missing"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_authority.py` | 56 | audit_append_call | `checks.append(Check("root packageManager", root_pm.startswith("pnpm@"), root_pm or "missing"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_authority.py` | 57 | audit_append_call | `checks.append(Check("frontend packageManager", frontend_pm.startswith("pnpm@"), frontend_pm or "missing"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_authority.py` | 63 | audit_append_call | `checks.append(Check(f"frontend script {script}", script in scripts, "present" if script in scripts else "missing"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_authority.py` | 66 | audit_append_call | `checks.append(Check(str(path.relative_to(REPO_ROOT)), not path.exists(), "absent" if not path.exists() else "forbidden lockfile present"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_authority.py` | 70 | audit_append_call | `checks.append(Check(f"runner step {snippet}", snippet in runner_text, "present" if snippet in runner_text else "missing"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_evidence.py` | 54 | audit_append_call | `findings.append(Finding(False, f"malformed SHA256SUMS line: {line!r}"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_evidence.py` | 58 | audit_append_call | `findings.append(Finding(False, "SHA256SUMS.txt must not include itself"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_evidence.py` | 62 | audit_append_call | `findings.append(Finding(False, f"raw/SHA256SUMS.txt references missing file {rel}"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_evidence.py` | 65 | audit_append_call | `findings.append(Finding(actual == expected, f"raw/SHA256SUMS.txt {'matches' if actual == expected else 'digest mismatch for'} {rel}"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_evidence.py` | 81 | audit_append_call | `findings.append(Finding(error is None, "authority result is valid JSON" if error is None else f"authority result invalid JSON: {error}"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_evidence.py` | 83 | audit_append_call | `findings.append(Finding(result.get("valid") is True, "authority result valid=true" if result.get("valid") is True else "authority result valid is not true"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_evidence.py` | 84 | audit_append_call | `findings.append(Finding(result.get("diagnostic_only") is False, "authority result is not diagnostic-only" if result.get("diagnostic_only") is False else "diagnostic-only run cannot be passing evidence"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_evidence.py` | 92 | audit_append_call | `findings.append(Finding(step is not None, f"step {name} present" if step is not None else f"step {name} missing"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_evidence.py` | 94 | audit_append_call | `findings.append(Finding(step.get("returncode") == 0, f"step {name} returncode 0" if step.get("returncode") == 0 else f"step {name} returncode {step.get('returncode')}"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_phase03a.py` | 26 | audit_append_call | `findings.append(Finding("/api/backend/popia/erasure/L1/cancel" in services, "services smoke test asserts canonical erasure cancel proxy path"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_phase03a.py` | 27 | audit_append_call | `findings.append(Finding("/api/backend/popia/erasure/L1/status" in services, "services smoke test asserts canonical erasure status proxy path"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_phase03a.py` | 28 | audit_append_call | `findings.append(Finding("/popia/deletion-cancel" not in services and "/popia/deletion-status" not in services, "services smoke test no longer encodes stale POPIA alias paths"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_phase03a.py` | 31 | audit_append_call | `findings.append(Finding('typeof bottomRef.current?.scrollIntoView === "function"' in tutor, "AI tutor scrollIntoView is guarded for jsdom"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_phase03a.py` | 34 | audit_append_call | `findings.append(Finding("! -name 'frontend_tooling_evidence_check.json'" in collector, "frontend tooling collector excludes verifier output from SHA manifest"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_phase03a.py` | 35 | audit_append_call | `findings.append(Finding("write_sha_manifest" in collector, "frontend tooling collector has stable SHA manifest helper"))` |
+| `scripts/audit_remediation/verify_frontend_tooling_phase03a.py` | 38 | audit_append_call | `findings.append(Finding(doc.exists(), "Phase 03A execution note exists"))` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py` | 67 | audit_append_call | `checked.append(str(rel))` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py` | 69 | audit_append_call | `errors.append(f"required Phase 09 file missing: {rel}")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py` | 72 | audit_append_call | `errors.append(f"blocker register missing: {REGISTER.relative_to(ROOT)}")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py` | 77 | audit_append_call | `checked.append(str(REGISTER.relative_to(ROOT)))` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py` | 80 | audit_append_call | `errors.append(f"blocker register is not valid JSON: {exc}")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py` | 85 | audit_append_call | `errors.append("TA-HOSTED-CI-001 blocker entry missing")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py` | 87 | audit_append_call | `checked.append("TA-HOSTED-CI-001")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py` | 89 | audit_append_call | `errors.append("TA-HOSTED-CI-001 status is not Phase 09-ready/evidence_recorded")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py` | 91 | audit_append_call | `errors.append("TA-HOSTED-CI-001 remote_ci_run_claimed must be a boolean")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py` | 93 | audit_append_call | `errors.append("TA-HOSTED-CI-001 must not claim release readiness")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py` | 97 | audit_append_call | `warnings.append(f"prior blocker not found in register: {blocker_id}")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py` | 99 | audit_append_call | `checked.append(blocker_id)` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py` | 101 | audit_append_call | `warnings.append(f"prior blocker {blocker_id} is not evidence_recorded")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py` | 104 | audit_append_call | `checked.append(str(rel))` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py` | 106 | audit_append_call | `warnings.append(f"prior evidence index not present yet for {name}: {rel}")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py` | 116 | audit_append_call | `errors.append(f"Phase 09 doc missing required phrase: {phrase}")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 47 | audit_append_call | `errors.append(f"raw/SHA256SUMS.txt line {line_no} is malformed")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 51 | audit_append_call | `errors.append("raw/SHA256SUMS.txt must not include itself")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 55 | audit_append_call | `errors.append(f"raw/SHA256SUMS.txt references missing file: {rel}")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 59 | audit_append_call | `errors.append(f"raw/SHA256SUMS.txt digest mismatch for {rel}")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 72 | audit_append_call | `errors.append("raw evidence directory missing")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 74 | audit_append_call | `checked.append("raw")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 79 | audit_append_call | `checked.append(name)` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 81 | audit_append_call | `errors.append(f"{name} missing")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 89 | audit_append_call | `errors.append("evidence_index.sha256 mismatch")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 96 | audit_append_call | `checked.append(f"raw/{name}")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 98 | audit_append_call | `errors.append(f"raw/{name} missing")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 103 | audit_append_call | `errors.append(f"raw/{name} is not valid JSON: {exc}")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 112 | audit_append_call | `errors.append("branch_state.head_sha missing")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 114 | audit_append_call | `errors.append("branch_state.clean_worktree_before_collection must be true")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 117 | audit_append_call | `errors.append("prior_gate_evidence_summary.checks missing")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 121 | audit_append_call | `errors.append(f"prior gate evidence checks are not all valid: {failed_prior}")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 124 | audit_append_call | `errors.append("hosted_ci_status.remote_ci_run_claimed must be true for Phase 09 closure")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 126 | audit_append_call | `errors.append("hosted_ci_status.conclusion must be success")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 128 | audit_append_call | `errors.append("hosted_ci_status.head_sha must match branch_state.head_sha")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 130 | audit_append_call | `errors.append("hosted_ci_status.workflow is required")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 132 | audit_append_call | `errors.append("hosted_ci_status must include run_id, run_url, or html_url")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 135 | audit_append_call | `errors.append("merge_readiness_result.valid must be true")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 137 | audit_append_call | `errors.append("merge_readiness_result.release_readiness_claimed must be false")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 139 | audit_append_call | `errors.append("merge_readiness_result.runtime_kg_implementation_claimed must be false")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 141 | audit_append_call | `errors.append("merge_readiness_result.remote_ci_run_claimed must be true")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 145 | audit_append_call | `errors.append("evidence_index.md must record Hosted CI merge-readiness passed")` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_evidence.py` | 147 | audit_append_call | `errors.append("evidence_index.md must explicitly avoid release-readiness claim")` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract.py` | 115 | audit_append_call | `checked.append(rel_path)` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract.py` | 117 | audit_append_call | `errors.append(f'missing required file: {rel_path}')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract.py` | 124 | audit_append_call | `errors.append(f'docs/openapi.json is invalid JSON: {exc}')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract.py` | 129 | audit_append_call | `errors.append('docs/openapi.json must contain object-valued paths')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract.py` | 138 | audit_append_call | `errors.append(f'OpenAPI missing {route.method.upper()} {route.openapi_path} ({route.reason})')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract.py` | 141 | audit_append_call | `errors.append(f'OpenAPI missing {route.method.upper()} {alias} alias ({route.reason})')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract.py` | 143 | audit_append_call | `errors.append(f'frontend services.ts missing route fragment {route.frontend_fragment} ({route.reason})')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract.py` | 147 | audit_append_call | `errors.append(f'frontend services.ts still references retired route fragment {forbidden}')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract.py` | 151 | audit_append_call | `errors.append(f'parent router still emits retired route fragment {forbidden}')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract.py` | 154 | audit_append_call | `errors.append('parent router must emit canonical /api/v2/popia/exports?learner_id= export URLs')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract.py` | 157 | audit_append_call | `errors.append('POPIA router must expose GET /erasure/{learner_id}/status')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract.py` | 160 | audit_append_call | `warnings.append('Regenerate OpenAPI with PYTHON_BIN=.venv/bin/python bash scripts/audit_remediation/finalize_openapi_frontend_contract.sh --regenerate')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 50 | audit_append_call | `errors.append(f'malformed SHA line: {line}')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 54 | audit_append_call | `errors.append('SHA256SUMS.txt must not hash itself')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 58 | audit_append_call | `errors.append(f'SHA manifest references missing file: {rel}')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 62 | audit_append_call | `errors.append(f'SHA mismatch for {rel}: expected {expected}, actual {actual}')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 71 | audit_append_call | `errors.append('missing raw evidence directory')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 76 | audit_append_call | `checked.append('evidence_index.md')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 79 | audit_append_call | `errors.append('evidence index must record passed OpenAPI / frontend contract status')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 81 | audit_append_call | `errors.append('evidence index must preserve release-readiness boundary')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 83 | audit_append_call | `errors.append('missing evidence_index.md')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 89 | audit_append_call | `errors.append(error)` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 91 | audit_append_call | `checked.append(f'raw/{name}')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 93 | audit_append_call | `errors.append(f'raw/{name} must report valid=true')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 95 | audit_append_call | `errors.append(f'raw/{name} must not contain errors: {data.get("errors")}')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 100 | audit_append_call | `errors.append(f'missing raw/{name}')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 102 | audit_append_call | `checked.append(f'raw/{name}')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 106 | audit_append_call | `errors.append('openapi_finalize_check.txt must record a passed finalize/check run')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 108 | audit_append_call | `errors.append('unit_tests.txt must record passing focused tests')` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract_evidence.py` | 112 | audit_append_call | `checked.append('raw/SHA256SUMS.txt')` |
 | `scripts/audit_remediation/verify_openapi_route_contract.py` | 81 | audit_append_call | `errors.append("missing docs/openapi.json")` |
 | `scripts/audit_remediation/verify_openapi_route_contract.py` | 84 | audit_append_call | `checked.append("docs/openapi.json")` |
 | `scripts/audit_remediation/verify_openapi_route_contract.py` | 88 | audit_append_call | `errors.append(f"docs/openapi.json is invalid JSON: {exc}")` |
@@ -1586,6 +2081,45 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/audit_remediation/verify_popia_route_contract.py` | 62 | audit_append_call | `errors.append(f"frontend missing canonical POPIA snippet: {snippet}")` |
 | `scripts/audit_remediation/verify_popia_route_contract.py` | 65 | audit_append_call | `errors.append(f"backend missing canonical POPIA route snippet: {snippet}")` |
 | `scripts/audit_remediation/verify_popia_route_contract.py` | 67 | audit_append_call | `errors.append("POPIADataRightsService missing erasure_status method")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_authority.py` | 76 | audit_append_call | `errors.append(f"missing required JSON file: {path.relative_to(ROOT)}")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_authority.py` | 81 | audit_append_call | `errors.append(f"invalid JSON in {path.relative_to(ROOT)}: {exc}")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_authority.py` | 84 | audit_append_call | `errors.append(f"expected object JSON in {path.relative_to(ROOT)}")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_authority.py` | 104 | audit_append_call | `errors.append(f"missing authority asset: {path.relative_to(ROOT)}")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_authority.py` | 119 | audit_append_call | `errors.append(` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_authority.py` | 127 | audit_append_call | `errors.append(` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_authority.py` | 132 | audit_append_call | `errors.append("missing TA-REMOTE-CI-001 in blocker register")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_authority.py` | 135 | audit_append_call | `errors.append("TA-REMOTE-CI-001.remote_ci_run_claimed must be boolean")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_authority.py` | 137 | audit_append_call | `errors.append("TA-REMOTE-CI-001.full_release_readiness_claimed must remain false")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_authority.py` | 139 | audit_append_call | `errors.append("TA-REMOTE-CI-001.branch_integration_authority_result must be pending or valid")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_authority.py` | 153 | audit_append_call | `errors.append(f"missing prior evidence directory: {spec['dir']}")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_authority.py` | 155 | audit_append_call | `errors.append(f"missing prior evidence verifier: {spec['verifier']}")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_authority.py` | 157 | audit_append_call | `errors.append(f"missing prior evidence index: {spec['dir']}/evidence_index.md")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_authority.py` | 163 | audit_append_call | `warnings.append("working tree has uncommitted changes; collect final evidence from a clean tree")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 39 | audit_append_call | `errors.append(f"missing JSON evidence file: {path}")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 44 | audit_append_call | `errors.append(f"malformed JSON evidence file {path.name}: {exc}")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 47 | audit_append_call | `errors.append(f"JSON evidence file {path.name} must contain an object")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 64 | audit_append_call | `errors.append("missing raw/SHA256SUMS.txt")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 72 | audit_append_call | `errors.append(f"invalid SHA256SUMS line {lineno}: {line!r}")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 76 | audit_append_call | `errors.append(f"self-mutating evidence file must not be listed in SHA256SUMS.txt: {rel}")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 80 | audit_append_call | `errors.append(f"SHA256SUMS references missing file: {rel}")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 84 | audit_append_call | `result["checked"].append(item)` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 86 | audit_append_call | `result["mismatches"].append(item)` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 87 | audit_append_call | `errors.append(f"raw/SHA256SUMS.txt digest mismatch for {rel}")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 96 | audit_append_call | `errors.append(f"missing evidence directory: {evidence_dir}")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 98 | audit_append_call | `errors.append("missing raw evidence directory")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 102 | audit_append_call | `errors.append("missing evidence_index.md")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 114 | audit_append_call | `errors.append("remote CI branch integration authority verifier did not pass")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 119 | audit_append_call | `errors.append(f"prior evidence verifier did not pass: {filename}")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 128 | audit_append_call | `errors.append("remote CI run is claimed but conclusion is not success")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 130 | audit_append_call | `errors.append("remote CI run is claimed but head_sha is missing/invalid")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 132 | audit_append_call | `errors.append("remote CI run is claimed but workflow name/id is missing")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 134 | audit_append_call | `warnings.append("remote hosted CI success is not claimed by this evidence bundle")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 136 | audit_append_call | `errors.append("remote_ci_status.remote_ci_run_claimed must be boolean")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 141 | audit_append_call | `errors.append("branch integration summary must record valid result")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 143 | audit_append_call | `errors.append("release readiness must not be claimed in Phase 08 evidence")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 145 | audit_append_call | `errors.append("runtime KG implementation must not be claimed in Phase 08 evidence")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 150 | audit_append_call | `errors.append("Phase 08 evidence must be collected from a clean working tree")` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_evidence.py` | 152 | audit_append_call | `errors.append("git_state.head is missing")` |
 | `scripts/audit_router_thinness.py` | 187 | audit_append_call | `report.violations.append(` |
 | `scripts/audit_router_thinness.py` | 198 | audit_append_call | `report.violations.append(` |
 | `scripts/audit_router_thinness.py` | 212 | audit_append_call | `report.violations.append(` |
@@ -1595,95 +2129,124 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/audit_write_flow_command.py` | 4 | audit_repository | `Writes one real audit_events row via the app's AuditRepository using psycopg2 (sync)` |
 | `scripts/audit_write_flow_command.py` | 4 | audit_events_table | `Writes one real audit_events row via the app's AuditRepository using psycopg2 (sync)` |
 | `scripts/audit_write_flow_command.py` | 40 | audit_events_table | `INSERT INTO audit_events (` |
-| `scripts/audit_write_runtime_evidence.py` | 27 | audit_events_table | `AUDIT_TABLE = "audit_events"` |
-| `scripts/audit_write_runtime_evidence.py` | 129 | audit_append_call | `blockers.append("AUDIT_WRITE_RUN_ID is required for accepted evidence")` |
-| `scripts/audit_write_runtime_evidence.py` | 132 | audit_append_call | `blockers.append("AUDIT_WRITE_RUN_ID is not numeric")` |
-| `scripts/audit_write_runtime_evidence.py` | 135 | audit_append_call | `blockers.append("GitHub CLI is unavailable or not authenticated")` |
-| `scripts/audit_write_runtime_evidence.py` | 140 | audit_append_call | `blockers.append(f"unable to read GitHub Actions run {run_id}")` |
-| `scripts/audit_write_runtime_evidence.py` | 150 | audit_append_call | `blockers.append("run URL does not contain numeric run ID")` |
-| `scripts/audit_write_runtime_evidence.py` | 152 | audit_append_call | `blockers.append(f"GitHub Actions run status is {run_status or 'missing'}, expected completed")` |
-| `scripts/audit_write_runtime_evidence.py` | 154 | audit_append_call | `blockers.append(f"GitHub Actions run conclusion is {conclusion or 'missing'}, expected success")` |
-| `scripts/audit_write_runtime_evidence.py` | 156 | audit_append_call | `blockers.append(f"GitHub Actions run SHA {head_sha or 'missing'} does not match current commit {expected_sha}")` |
-| `scripts/audit_write_runtime_evidence.py` | 158 | audit_append_call | `blockers.append("workflow name is missing")` |
-| `scripts/audit_write_runtime_evidence.py` | 252 | audit_append_call | `blockers.append("AUDIT_WRITE_DATABASE_URL/DATABASE_URL is missing, placeholder, local, or invalid")` |
-| `scripts/audit_write_runtime_evidence.py` | 259 | audit_append_call | `blockers.append("audit_events table is missing")` |
-| `scripts/audit_write_runtime_evidence.py` | 259 | audit_events_table | `blockers.append("audit_events table is missing")` |
-| `scripts/audit_write_runtime_evidence.py` | 265 | audit_append_call | `blockers.append(f"flow command failed with exit code {flow_result.return_code}")` |
-| `scripts/audit_write_runtime_evidence.py` | 271 | audit_append_call | `blockers.append("audit_events did not increase and trace ID was not found")` |
-| `scripts/audit_write_runtime_evidence.py` | 271 | audit_events_table | `blockers.append("audit_events did not increase and trace ID was not found")` |
-| `scripts/audit_write_runtime_evidence.py` | 273 | audit_append_call | `blockers.append("audit_events has no rows after audited flow")` |
-| `scripts/audit_write_runtime_evidence.py` | 273 | audit_events_table | `blockers.append("audit_events has no rows after audited flow")` |
-| `scripts/audit_write_runtime_evidence.py` | 275 | audit_append_call | `blockers.append(f"database audit-write check failed: {type(exc).__name__}: {exc}")` |
-| `scripts/audit_write_runtime_evidence.py` | 279 | audit_append_call | `blockers.append("accepted evidence requires run_flow unless AUDIT_WRITE_ATTACH_ONLY=1")` |
-| `scripts/audit_write_runtime_evidence.py` | 281 | audit_append_call | `blockers.append("AUDIT_WRITE_FLOW_COMMAND is missing or placeholder")` |
-| `scripts/audit_write_runtime_evidence.py` | 283 | audit_append_call | `blockers.append("AUDIT_WRITE_FLOW_RESULT must be passed when provided")` |
-| `scripts/audit_write_runtime_evidence.py` | 323 | audit_events_table | `f"**audit_events exists:** `{status.audit_table_exists}`",` |
-| `scripts/audit_write_runtime_evidence.py` | 324 | audit_events_table | `f"**audit_events before:** `{status.audit_events_count_before}`",` |
-| `scripts/audit_write_runtime_evidence.py` | 325 | audit_events_table | `f"**audit_events after:** `{status.audit_events_count_after}`",` |
-| `scripts/audit_write_runtime_evidence.py` | 326 | audit_events_table | `f"**audit_events delta:** `{status.audit_events_delta}`",` |
-| `scripts/audit_write_runtime_evidence.py` | 347 | audit_append_call | `lines.append("- None")` |
-| `scripts/audit_write_runtime_evidence.py` | 354 | audit_events_table | `"- The audit_events table must contain rows after the flow.",` |
-| `scripts/audit_write_runtime_evidence.py` | 355 | audit_events_table | `"- Either audit_events count must increase or the trace ID must be found in recent audit rows.",` |
-| `scripts/auth_lifecycle_http_proof.py` | 88 | audit_append_call | `parts.append(value.attr)` |
-| `scripts/auth_lifecycle_http_proof.py` | 91 | audit_append_call | `parts.append(value.id)` |
-| `scripts/auth_lifecycle_http_proof.py` | 131 | audit_append_call | `routes[endpoint_name]["paths"].append(route.path)` |
-| `scripts/auth_lifecycle_http_proof.py` | 147 | audit_append_call | `blockers.append("auth router import failed")` |
-| `scripts/auth_lifecycle_http_proof.py` | 149 | audit_append_call | `blockers.append("auth router synthetic FastAPI registration failed")` |
-| `scripts/auth_lifecycle_http_proof.py` | 173 | audit_append_call | `blockers.append(f"{function} HTTP route/service proof incomplete")` |
-| `scripts/auth_lifecycle_http_proof.py` | 174 | audit_append_call | `proofs.append(proof)` |
-| `scripts/auth_lifecycle_http_proof.py` | 205 | audit_append_call | `lines.append(` |
-| `scripts/auth_lifecycle_http_proof.py` | 216 | audit_append_call | `lines.append("- None")` |
-| `scripts/auth_lifecycle_semantic_proof.py` | 66 | audit_append_call | `self.deleted_cookies.append(key)` |
-| `scripts/auth_lifecycle_semantic_proof.py` | 106 | audit_append_call | `parts.append(value.attr)` |
-| `scripts/auth_lifecycle_semantic_proof.py` | 109 | audit_append_call | `parts.append(value.id)` |
-| `scripts/auth_lifecycle_semantic_proof.py` | 194 | audit_append_call | `proofs.append(RouteSemanticProof(method, delegated, has_param, keywords, prohibited, delegated and has_param and not prohibited))` |
-| `scripts/auth_lifecycle_semantic_proof.py` | 214 | audit_append_call | `blockers.append(f"AuthApplicationService missing {method}")` |
-| `scripts/auth_lifecycle_semantic_proof.py` | 217 | audit_append_call | `blockers.append(f"{proof.function} route semantic delegation incomplete")` |
-| `scripts/auth_lifecycle_semantic_proof.py` | 220 | audit_append_call | `blockers.append(f"{proof.method} controlled cookie clearing proof failed: {proof.detail}")` |
-| `scripts/auth_lifecycle_semantic_proof.py` | 249 | audit_append_call | `lines.append(` |
-| `scripts/auth_lifecycle_semantic_proof.py` | 255 | audit_append_call | `lines.append(` |
-| `scripts/auth_lifecycle_semantic_proof.py` | 262 | audit_append_call | `lines.append("- None")` |
-| `scripts/auth_refresh_db_evidence_gate.py` | 287 | audit_append_call | `lines.append(f"\| `{field.name}` \| `{field.value}` \| {field.valid} \| {field.reason} \|")` |
-| `scripts/auth_refresh_db_evidence_gate.py` | 292 | audit_append_call | `lines.append("- None")` |
-| `scripts/auth_refresh_db_proof.py` | 136 | audit_append_call | `fields.append(EvidenceField(name, value, False, "pending"))` |
-| `scripts/auth_refresh_db_proof.py` | 138 | audit_append_call | `fields.append(EvidenceField(name, value, False, "placeholder value"))` |
-| `scripts/auth_refresh_db_proof.py` | 140 | audit_append_call | `fields.append(EvidenceField(name, value, False, "must be passed"))` |
-| `scripts/auth_refresh_db_proof.py` | 142 | audit_append_call | `fields.append(EvidenceField(name, value, False, "must be non-placeholder URL"))` |
-| `scripts/auth_refresh_db_proof.py` | 144 | audit_append_call | `fields.append(EvidenceField(name, value, False, "must look like git SHA"))` |
-| `scripts/auth_refresh_db_proof.py` | 146 | audit_append_call | `fields.append(EvidenceField(name, value, True, "ok"))` |
-| `scripts/auth_refresh_db_proof.py` | 197 | audit_append_call | `blockers.append("AUTH_REFRESH_DB_PROOF_DSN is not set")` |
-| `scripts/auth_refresh_db_proof.py` | 199 | audit_append_call | `blockers.append("DB pytest did not pass")` |
-| `scripts/auth_refresh_db_proof.py` | 201 | audit_append_call | `blockers.append("DB pytest output contains skipped tests; skipped DB proof is not accepted")` |
-| `scripts/auth_refresh_db_proof.py` | 204 | audit_append_call | `blockers.append(f"evidence field {field.name}: {field.reason}")` |
-| `scripts/auth_refresh_db_proof.py` | 247 | audit_append_call | `lines.append(f"\| `{field.name}` \| `{field.value}` \| {field.valid} \| {field.reason} \|")` |
-| `scripts/auth_refresh_db_proof.py` | 253 | audit_append_call | `lines.append("- None")` |
-| `scripts/auth_refresh_db_proof.py` | 257 | audit_append_call | `lines.append("")` |
-| `scripts/auth_route_logout_delegate.py` | 87 | audit_append_call | `parts.append(value.attr)` |
-| `scripts/auth_route_logout_delegate.py` | 90 | audit_append_call | `parts.append(value.id)` |
-| `scripts/auth_route_logout_delegate.py` | 265 | audit_append_call | `blockers.append(f"{route} route is not fully delegated to auth service")` |
-| `scripts/auth_route_logout_delegate.py` | 266 | audit_append_call | `targets.append(TargetStatus(route, exists, has_param, delegates, direct, passed))` |
-| `scripts/auth_route_logout_delegate.py` | 292 | audit_append_call | `lines.append(` |
-| `scripts/auth_route_logout_delegate.py` | 299 | audit_append_call | `lines.append("- None")` |
-| `scripts/auth_route_service_dependency_repair.py` | 154 | audit_append_call | `missing.append(node.name)` |
-| `scripts/auth_route_service_dependency_repair.py` | 182 | audit_append_call | `blockers.append(f"{node.name} references auth_service without dependency parameter")` |
-| `scripts/auth_route_service_dependency_repair.py` | 183 | audit_append_call | `functions.append(FunctionStatus(node.name, node.lineno, refs, has, passed))` |
-| `scripts/auth_route_service_dependency_repair.py` | 208 | audit_append_call | `lines.append(f"\| `{item.function}` \| {item.line} \| {item.references_auth_service} \| {item.has_auth_service_param} \| {item.passed} \|")` |
-| `scripts/auth_route_service_dependency_repair.py` | 212 | audit_append_call | `lines.append("- None")` |
-| `scripts/auth_service_cleanup.py` | 77 | audit_append_call | `parts.append(value.attr)` |
-| `scripts/auth_service_cleanup.py` | 80 | audit_append_call | `parts.append(value.id)` |
-| `scripts/auth_service_cleanup.py` | 179 | audit_append_call | `additions.append(_wrapper(method, impl))` |
-| `scripts/auth_service_cleanup.py` | 183 | audit_append_call | `additions.append(_fallback(method))` |
-| `scripts/auth_service_cleanup.py` | 207 | audit_append_call | `blockers.append("AuthApplicationService module-level monkey-patches remain")` |
-| `scripts/auth_service_cleanup.py` | 210 | audit_append_call | `blockers.append("AuthApplicationService missing methods: " + ", ".join(missing_methods))` |
-| `scripts/auth_service_cleanup.py` | 257 | audit_append_call | `lines.append("- None")` |
-| `scripts/auth_service_cleanup.py` | 261 | audit_append_call | `lines.append("- None")` |
-| `scripts/beta_blocker_burndown.py` | 86 | audit_append_call | `items.append(current)` |
-| `scripts/beta_blocker_burndown.py` | 97 | audit_append_call | `items.append(current)` |
-| `scripts/beta_blocker_burndown.py` | 174 | audit_append_call | `actions.append(make_action(item_id, reason.strip(), findings.get(item_id, {}), registry.get(item_id, {})))` |
-| `scripts/beta_blocker_burndown.py` | 179 | audit_append_call | `actions.append(make_action(item_id, str(registry_item.get("closure_blocker") or "release-critical blocker"), findings.get(item_id, {}), registry_item))` |
-| `scripts/beta_blocker_burndown.py` | 220 | audit_append_call | `lines.append(` |
-| `scripts/beta_no_go_handoff_packet.py` | 249 | audit_append_call | `lines.append(f"\| `{source.name}` \| {source.exists} \| `{source.status}` \| `{source.path}` \|")` |
-| `scripts/beta_no_go_handoff_packet.py` | 261 | audit_append_call | `lines.append(` |
+| `scripts/audit_write_runtime_evidence.py` | 28 | audit_events_table | `AUDIT_TABLE = "audit_events"` |
+| `scripts/audit_write_runtime_evidence.py` | 130 | audit_append_call | `blockers.append("AUDIT_WRITE_RUN_ID is required for accepted evidence")` |
+| `scripts/audit_write_runtime_evidence.py` | 133 | audit_append_call | `blockers.append("AUDIT_WRITE_RUN_ID is not numeric")` |
+| `scripts/audit_write_runtime_evidence.py` | 136 | audit_append_call | `blockers.append("GitHub CLI is unavailable or not authenticated")` |
+| `scripts/audit_write_runtime_evidence.py` | 141 | audit_append_call | `blockers.append(f"unable to read GitHub Actions run {run_id}")` |
+| `scripts/audit_write_runtime_evidence.py` | 151 | audit_append_call | `blockers.append("run URL does not contain numeric run ID")` |
+| `scripts/audit_write_runtime_evidence.py` | 153 | audit_append_call | `blockers.append(f"GitHub Actions run status is {run_status or 'missing'}, expected completed")` |
+| `scripts/audit_write_runtime_evidence.py` | 155 | audit_append_call | `blockers.append(f"GitHub Actions run conclusion is {conclusion or 'missing'}, expected success")` |
+| `scripts/audit_write_runtime_evidence.py` | 157 | audit_append_call | `blockers.append(f"GitHub Actions run SHA {head_sha or 'missing'} does not match current commit {expected_sha}")` |
+| `scripts/audit_write_runtime_evidence.py` | 159 | audit_append_call | `blockers.append("workflow name is missing")` |
+| `scripts/audit_write_runtime_evidence.py` | 253 | audit_append_call | `blockers.append("AUDIT_WRITE_DATABASE_URL/DATABASE_URL is missing, placeholder, local, or invalid")` |
+| `scripts/audit_write_runtime_evidence.py` | 260 | audit_append_call | `blockers.append("audit_events table is missing")` |
+| `scripts/audit_write_runtime_evidence.py` | 260 | audit_events_table | `blockers.append("audit_events table is missing")` |
+| `scripts/audit_write_runtime_evidence.py` | 266 | audit_append_call | `blockers.append(f"flow command failed with exit code {flow_result.return_code}")` |
+| `scripts/audit_write_runtime_evidence.py` | 272 | audit_append_call | `blockers.append("audit_events did not increase and trace ID was not found")` |
+| `scripts/audit_write_runtime_evidence.py` | 272 | audit_events_table | `blockers.append("audit_events did not increase and trace ID was not found")` |
+| `scripts/audit_write_runtime_evidence.py` | 274 | audit_append_call | `blockers.append("audit_events has no rows after audited flow")` |
+| `scripts/audit_write_runtime_evidence.py` | 274 | audit_events_table | `blockers.append("audit_events has no rows after audited flow")` |
+| `scripts/audit_write_runtime_evidence.py` | 276 | audit_append_call | `blockers.append(f"database audit-write check failed: {type(exc).__name__}: {exc}")` |
+| `scripts/audit_write_runtime_evidence.py` | 280 | audit_append_call | `blockers.append("accepted evidence requires run_flow unless AUDIT_WRITE_ATTACH_ONLY=1")` |
+| `scripts/audit_write_runtime_evidence.py` | 282 | audit_append_call | `blockers.append("AUDIT_WRITE_FLOW_COMMAND is missing or placeholder")` |
+| `scripts/audit_write_runtime_evidence.py` | 284 | audit_append_call | `blockers.append("AUDIT_WRITE_FLOW_RESULT must be passed when provided")` |
+| `scripts/audit_write_runtime_evidence.py` | 324 | audit_events_table | `f"**audit_events exists:** `{status.audit_table_exists}`",` |
+| `scripts/audit_write_runtime_evidence.py` | 325 | audit_events_table | `f"**audit_events before:** `{status.audit_events_count_before}`",` |
+| `scripts/audit_write_runtime_evidence.py` | 326 | audit_events_table | `f"**audit_events after:** `{status.audit_events_count_after}`",` |
+| `scripts/audit_write_runtime_evidence.py` | 327 | audit_events_table | `f"**audit_events delta:** `{status.audit_events_delta}`",` |
+| `scripts/audit_write_runtime_evidence.py` | 348 | audit_append_call | `lines.append("- None")` |
+| `scripts/audit_write_runtime_evidence.py` | 355 | audit_events_table | `"- The audit_events table must contain rows after the flow.",` |
+| `scripts/audit_write_runtime_evidence.py` | 356 | audit_events_table | `"- Either audit_events count must increase or the trace ID must be found in recent audit rows.",` |
+| `scripts/auth_lifecycle_http_proof.py` | 89 | audit_append_call | `parts.append(value.attr)` |
+| `scripts/auth_lifecycle_http_proof.py` | 92 | audit_append_call | `parts.append(value.id)` |
+| `scripts/auth_lifecycle_http_proof.py` | 132 | audit_append_call | `routes[endpoint_name]["paths"].append(route.path)` |
+| `scripts/auth_lifecycle_http_proof.py` | 148 | audit_append_call | `blockers.append("auth router import failed")` |
+| `scripts/auth_lifecycle_http_proof.py` | 150 | audit_append_call | `blockers.append("auth router synthetic FastAPI registration failed")` |
+| `scripts/auth_lifecycle_http_proof.py` | 174 | audit_append_call | `blockers.append(f"{function} HTTP route/service proof incomplete")` |
+| `scripts/auth_lifecycle_http_proof.py` | 175 | audit_append_call | `proofs.append(proof)` |
+| `scripts/auth_lifecycle_http_proof.py` | 206 | audit_append_call | `lines.append(` |
+| `scripts/auth_lifecycle_http_proof.py` | 217 | audit_append_call | `lines.append("- None")` |
+| `scripts/auth_lifecycle_semantic_proof.py` | 67 | audit_append_call | `self.deleted_cookies.append(key)` |
+| `scripts/auth_lifecycle_semantic_proof.py` | 107 | audit_append_call | `parts.append(value.attr)` |
+| `scripts/auth_lifecycle_semantic_proof.py` | 110 | audit_append_call | `parts.append(value.id)` |
+| `scripts/auth_lifecycle_semantic_proof.py` | 195 | audit_append_call | `proofs.append(RouteSemanticProof(method, delegated, has_param, keywords, prohibited, delegated and has_param and not prohibited))` |
+| `scripts/auth_lifecycle_semantic_proof.py` | 215 | audit_append_call | `blockers.append(f"AuthApplicationService missing {method}")` |
+| `scripts/auth_lifecycle_semantic_proof.py` | 218 | audit_append_call | `blockers.append(f"{proof.function} route semantic delegation incomplete")` |
+| `scripts/auth_lifecycle_semantic_proof.py` | 221 | audit_append_call | `blockers.append(f"{proof.method} controlled cookie clearing proof failed: {proof.detail}")` |
+| `scripts/auth_lifecycle_semantic_proof.py` | 250 | audit_append_call | `lines.append(` |
+| `scripts/auth_lifecycle_semantic_proof.py` | 256 | audit_append_call | `lines.append(` |
+| `scripts/auth_lifecycle_semantic_proof.py` | 263 | audit_append_call | `lines.append("- None")` |
+| `scripts/auth_refresh_db_evidence_gate.py` | 288 | audit_append_call | `lines.append(f"\| `{field.name}` \| `{field.value}` \| {field.valid} \| {field.reason} \|")` |
+| `scripts/auth_refresh_db_evidence_gate.py` | 293 | audit_append_call | `lines.append("- None")` |
+| `scripts/auth_refresh_db_proof.py` | 137 | audit_append_call | `fields.append(EvidenceField(name, value, False, "pending"))` |
+| `scripts/auth_refresh_db_proof.py` | 139 | audit_append_call | `fields.append(EvidenceField(name, value, False, "placeholder value"))` |
+| `scripts/auth_refresh_db_proof.py` | 141 | audit_append_call | `fields.append(EvidenceField(name, value, False, "must be passed"))` |
+| `scripts/auth_refresh_db_proof.py` | 143 | audit_append_call | `fields.append(EvidenceField(name, value, False, "must be non-placeholder URL"))` |
+| `scripts/auth_refresh_db_proof.py` | 145 | audit_append_call | `fields.append(EvidenceField(name, value, False, "must look like git SHA"))` |
+| `scripts/auth_refresh_db_proof.py` | 147 | audit_append_call | `fields.append(EvidenceField(name, value, True, "ok"))` |
+| `scripts/auth_refresh_db_proof.py` | 198 | audit_append_call | `blockers.append("AUTH_REFRESH_DB_PROOF_DSN is not set")` |
+| `scripts/auth_refresh_db_proof.py` | 200 | audit_append_call | `blockers.append("DB pytest did not pass")` |
+| `scripts/auth_refresh_db_proof.py` | 202 | audit_append_call | `blockers.append("DB pytest output contains skipped tests; skipped DB proof is not accepted")` |
+| `scripts/auth_refresh_db_proof.py` | 205 | audit_append_call | `blockers.append(f"evidence field {field.name}: {field.reason}")` |
+| `scripts/auth_refresh_db_proof.py` | 248 | audit_append_call | `lines.append(f"\| `{field.name}` \| `{field.value}` \| {field.valid} \| {field.reason} \|")` |
+| `scripts/auth_refresh_db_proof.py` | 254 | audit_append_call | `lines.append("- None")` |
+| `scripts/auth_refresh_db_proof.py` | 258 | audit_append_call | `lines.append("")` |
+| `scripts/auth_route_logout_delegate.py` | 88 | audit_append_call | `parts.append(value.attr)` |
+| `scripts/auth_route_logout_delegate.py` | 91 | audit_append_call | `parts.append(value.id)` |
+| `scripts/auth_route_logout_delegate.py` | 266 | audit_append_call | `blockers.append(f"{route} route is not fully delegated to auth service")` |
+| `scripts/auth_route_logout_delegate.py` | 267 | audit_append_call | `targets.append(TargetStatus(route, exists, has_param, delegates, direct, passed))` |
+| `scripts/auth_route_logout_delegate.py` | 293 | audit_append_call | `lines.append(` |
+| `scripts/auth_route_logout_delegate.py` | 300 | audit_append_call | `lines.append("- None")` |
+| `scripts/auth_route_service_dependency_repair.py` | 155 | audit_append_call | `missing.append(node.name)` |
+| `scripts/auth_route_service_dependency_repair.py` | 183 | audit_append_call | `blockers.append(f"{node.name} references auth_service without dependency parameter")` |
+| `scripts/auth_route_service_dependency_repair.py` | 184 | audit_append_call | `functions.append(FunctionStatus(node.name, node.lineno, refs, has, passed))` |
+| `scripts/auth_route_service_dependency_repair.py` | 209 | audit_append_call | `lines.append(f"\| `{item.function}` \| {item.line} \| {item.references_auth_service} \| {item.has_auth_service_param} \| {item.passed} \|")` |
+| `scripts/auth_route_service_dependency_repair.py` | 213 | audit_append_call | `lines.append("- None")` |
+| `scripts/auth_service_cleanup.py` | 78 | audit_append_call | `parts.append(value.attr)` |
+| `scripts/auth_service_cleanup.py` | 81 | audit_append_call | `parts.append(value.id)` |
+| `scripts/auth_service_cleanup.py` | 180 | audit_append_call | `additions.append(_wrapper(method, impl))` |
+| `scripts/auth_service_cleanup.py` | 184 | audit_append_call | `additions.append(_fallback(method))` |
+| `scripts/auth_service_cleanup.py` | 208 | audit_append_call | `blockers.append("AuthApplicationService module-level monkey-patches remain")` |
+| `scripts/auth_service_cleanup.py` | 211 | audit_append_call | `blockers.append("AuthApplicationService missing methods: " + ", ".join(missing_methods))` |
+| `scripts/auth_service_cleanup.py` | 258 | audit_append_call | `lines.append("- None")` |
+| `scripts/auth_service_cleanup.py` | 262 | audit_append_call | `lines.append("- None")` |
+| `scripts/beta_blocker_burndown.py` | 87 | audit_append_call | `items.append(current)` |
+| `scripts/beta_blocker_burndown.py` | 98 | audit_append_call | `items.append(current)` |
+| `scripts/beta_blocker_burndown.py` | 175 | audit_append_call | `actions.append(make_action(item_id, reason.strip(), findings.get(item_id, {}), registry.get(item_id, {})))` |
+| `scripts/beta_blocker_burndown.py` | 180 | audit_append_call | `actions.append(make_action(item_id, str(registry_item.get("closure_blocker") or "release-critical blocker"), findings.get(item_id, {}), registry_item))` |
+| `scripts/beta_blocker_burndown.py` | 221 | audit_append_call | `lines.append(` |
+| `scripts/beta_no_go_handoff_packet.py` | 250 | audit_append_call | `lines.append(f"\| `{source.name}` \| {source.exists} \| `{source.status}` \| `{source.path}` \|")` |
+| `scripts/beta_no_go_handoff_packet.py` | 262 | audit_append_call | `lines.append(` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 121 | audit_append_call | `errors.append(f"missing RR-010 authority document: {rel}")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 127 | audit_append_call | `errors.append(f"missing authority marker in {AUTHORITY_DOCS[key]}: {marker}")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 131 | audit_append_call | `errors.append(f"RR-010 manifest JSON invalid: {manifest['__json_error__']}")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 133 | audit_append_call | `errors.append("RR-010 manifest is missing")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 136 | audit_append_call | `errors.append("RR-010 manifest rr_id must be RR-010")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 150 | audit_append_call | `errors.append(f"RR-010 manifest flag must be true: {key}")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 153 | audit_append_call | `errors.append(f"RR-010 manifest boundary flag must be false: {key}")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 157 | audit_append_call | `errors.append("RR-010 policy must carry RR-003 fallback coverage caveat")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 159 | audit_append_call | `errors.append("RR-010 policy must carry RR-006 non-required checks caveat")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 161 | audit_append_call | `errors.append("RR-010 policy must keep RR-015/RR-016 outstanding visible")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 163 | audit_append_call | `errors.append("RR-010 policy must preserve public beta boundary")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 165 | audit_append_call | `errors.append("RR-010 policy must preserve runtime KG boundary")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 172 | audit_append_call | `errors.append(f"missing final RR-010 outcome file: {rel}")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 182 | audit_append_call | `errors.append(f"missing final marker in {FINAL_DOCS[key]}: {marker}")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 185 | audit_append_call | `errors.append(f"RR-010 metrics summary JSON invalid: {metrics['__json_error__']}")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 187 | audit_append_call | `errors.append("RR-010 metrics summary is missing")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 190 | audit_append_call | `errors.append("RR-010 metrics rr_id must be RR-010")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 193 | audit_append_call | `errors.append(f"RR-010 metrics flag must be true: {key}")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 196 | audit_append_call | `errors.append(f"RR-010 metrics boundary flag must be false: {key}")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 215 | audit_append_call | `errors.append(f"RR-010 numeric threshold failed: {key}")` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | 217 | audit_append_call | `warnings.append("final beta outcome files are not present yet; authority can merge but evidence capture will fail until they exist")` |
+| `scripts/billing/audit_rr011_live_billing_provider_integration.py` | 131 | audit_append_call | `errors.append(f"missing RR-011 authority file: {path}")` |
+| `scripts/billing/audit_rr011_live_billing_provider_integration.py` | 137 | audit_append_call | `errors.append(f"missing existing billing contract: {path}")` |
+| `scripts/billing/audit_rr011_live_billing_provider_integration.py` | 144 | audit_append_call | `errors.append(f"RR-011 policy missing marker: {marker}")` |
+| `scripts/billing/audit_rr011_live_billing_provider_integration.py` | 148 | audit_append_call | `errors.append(f"RR-011 manifest JSON invalid: {manifest['__json_error__']}")` |
+| `scripts/billing/audit_rr011_live_billing_provider_integration.py` | 164 | audit_append_call | `errors.append(f"RR-011 manifest boundary must be false: {key}")` |
+| `scripts/billing/audit_rr011_live_billing_provider_integration.py` | 173 | audit_append_call | `errors.append(f"missing final RR-011 evidence file: {path}")` |
+| `scripts/billing/audit_rr011_live_billing_provider_integration.py` | 179 | audit_append_call | `errors.append(f"final RR-011 evidence file {path} missing marker: {marker}")` |
+| `scripts/billing/audit_rr011_live_billing_provider_integration.py` | 183 | audit_append_call | `warnings.append(f"missing final RR-011 evidence file before capture: {path}")` |
 | `scripts/build_corrective_caps_v2.py` | 111 | audit_append_call | `records.append(` |
 | `scripts/build_corrective_caps_v2.py` | 132 | audit_append_call | `records.append(` |
 | `scripts/build_corrective_caps_v2.py` | 153 | audit_append_call | `records.append(` |
@@ -1694,10 +2257,10 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/build_focused_caps_dataset.py` | 175 | audit_append_call | `deduped.append(record)` |
 | `scripts/build_guardrails_dataset.py` | 66 | audit_append_call | `records.append(` |
 | `scripts/build_release_evidence.py` | 52 | audit_append_call | `artifacts.append({"path": relative, "sha256": sha256(path), "bytes": path.stat().st_size})` |
-| `scripts/capture_migration_evidence.py` | 101 | audit_append_call | `commands.append((name, [sys.executable, script]))` |
-| `scripts/capture_migration_evidence.py` | 104 | audit_append_call | `commands.append(("alembic_downgrade_minus_one", ["alembic", "downgrade", "-1"]))` |
-| `scripts/capture_migration_evidence.py` | 105 | audit_append_call | `commands.append(("alembic_upgrade_head_after_downgrade", ["alembic", "upgrade", "head"]))` |
-| `scripts/capture_migration_evidence.py` | 163 | audit_append_call | `lines.append(` |
+| `scripts/capture_migration_evidence.py` | 102 | audit_append_call | `commands.append((name, [sys.executable, script]))` |
+| `scripts/capture_migration_evidence.py` | 105 | audit_append_call | `commands.append(("alembic_downgrade_minus_one", ["alembic", "downgrade", "-1"]))` |
+| `scripts/capture_migration_evidence.py` | 106 | audit_append_call | `commands.append(("alembic_upgrade_head_after_downgrade", ["alembic", "upgrade", "head"]))` |
+| `scripts/capture_migration_evidence.py` | 164 | audit_append_call | `lines.append(` |
 | `scripts/check_active_consent_route_order.py` | 57 | audit_append_call | `results.append(OrderResult(target, False, f"missing {CONSENT_MARKER}"))` |
 | `scripts/check_active_consent_route_order.py` | 64 | audit_append_call | `results.append(OrderResult(target, True, "active consent present; no local object-auth marker in function"))` |
 | `scripts/check_active_consent_route_order.py` | 68 | audit_append_call | `results.append(` |
@@ -1730,35 +2293,35 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_api_envelope_error_contract.py` | 91 | audit_append_call | `results.append(EvidenceResult(rel_path, path.exists(), "present" if path.exists() else "missing"))` |
 | `scripts/check_api_envelope_error_contract.py` | 97 | audit_append_call | `results.append(` |
 | `scripts/check_api_envelope_error_contract.py` | 107 | audit_append_call | `results.append(` |
-| `scripts/check_approval_evidence.py` | 39 | audit_append_call | `failures.append("not all approval records evaluated")` |
-| `scripts/check_approval_evidence.py` | 46 | audit_append_call | `failures.append(f"unexpected approval evidence status: {status.status}")` |
-| `scripts/check_approval_evidence.py` | 49 | audit_append_call | `failures.append("release mode requires all legal/security/content approvals complete")` |
-| `scripts/check_approval_evidence.py` | 80 | audit_append_call | `failures.append("approval evidence tests failed")` |
-| `scripts/check_approval_evidence.py` | 101 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_architecture_boundary_contracts.py` | 31 | audit_append_call | `modules.append(node.module or "")` |
-| `scripts/check_architecture_boundary_contracts.py` | 49 | audit_append_call | `failures.append(f"{' '.join(command)} failed: {result.stdout}")` |
-| `scripts/check_architecture_boundary_contracts.py` | 54 | audit_append_call | `failures.append(f"{router} missing")` |
-| `scripts/check_architecture_boundary_contracts.py` | 63 | audit_append_call | `failures.append(f"{router}: missing required import {required}")` |
-| `scripts/check_architecture_boundary_contracts.py` | 68 | audit_append_call | `failures.append(f"{router}: forbidden import {forbidden}")` |
-| `scripts/check_architecture_boundary_contracts.py` | 76 | audit_append_call | `failures.append(f"{router}: forbidden {prefix} imports {offenders}")` |
-| `scripts/check_architecture_boundary_contracts.py` | 85 | audit_append_call | `failures.append(".importlinter missing")` |
-| `scripts/check_architecture_boundary_contracts.py` | 92 | audit_append_call | `failures.append("service boundary classification policy missing")` |
+| `scripts/check_approval_evidence.py` | 40 | audit_append_call | `failures.append("not all approval records evaluated")` |
+| `scripts/check_approval_evidence.py` | 47 | audit_append_call | `failures.append(f"unexpected approval evidence status: {status.status}")` |
+| `scripts/check_approval_evidence.py` | 50 | audit_append_call | `failures.append("release mode requires all legal/security/content approvals complete")` |
+| `scripts/check_approval_evidence.py` | 81 | audit_append_call | `failures.append("approval evidence tests failed")` |
+| `scripts/check_approval_evidence.py` | 102 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_architecture_boundary_contracts.py` | 33 | audit_append_call | `modules.append(node.module or "")` |
+| `scripts/check_architecture_boundary_contracts.py` | 50 | audit_append_call | `failures.append(f"{' '.join(command)} failed: {result.stdout}")` |
+| `scripts/check_architecture_boundary_contracts.py` | 55 | audit_append_call | `failures.append(f"{router} missing")` |
+| `scripts/check_architecture_boundary_contracts.py` | 64 | audit_append_call | `failures.append(f"{router}: missing required import {required}")` |
+| `scripts/check_architecture_boundary_contracts.py` | 69 | audit_append_call | `failures.append(f"{router}: forbidden import {forbidden}")` |
+| `scripts/check_architecture_boundary_contracts.py` | 77 | audit_append_call | `failures.append(f"{router}: forbidden {prefix} imports {offenders}")` |
+| `scripts/check_architecture_boundary_contracts.py` | 86 | audit_append_call | `failures.append(".importlinter missing")` |
+| `scripts/check_architecture_boundary_contracts.py` | 93 | audit_append_call | `failures.append("service boundary classification policy missing")` |
 | `scripts/check_archival_lock_assertion.py` | 51 | audit_append_call | `results.append(` |
-| `scripts/check_arq_worker_import.py` | 41 | audit_append_call | `found.append(item)` |
-| `scripts/check_arq_worker_import.py` | 61 | audit_append_call | `failures.append("arq not pinned in dependency files")` |
-| `scripts/check_arq_worker_import.py` | 67 | audit_append_call | `failures.append(f"app.modules.jobs import failed: {exc!r}")` |
-| `scripts/check_arq_worker_import.py` | 75 | audit_append_call | `failures.append(f"arq compat import failed: {exc!r}")` |
-| `scripts/check_arq_worker_import.py` | 89 | audit_append_call | `failures.append(f"WorkerSettings/functions missing {expected}")` |
-| `scripts/check_arq_worker_import.py` | 95 | audit_append_call | `failures.append("jobs.py missing run_consent_reminder_cycle")` |
-| `scripts/check_arq_worker_import.py` | 123 | audit_append_call | `failures.append("ARQ worker import contract tests failed")` |
-| `scripts/check_arq_worker_import.py` | 144 | audit_append_call | `failures.append("focused ruff failed")` |
-| `scripts/check_audit_baseline_refresh.py` | 42 | audit_append_call | `failures.append(f"unexpected branch {status.current_branch}")` |
-| `scripts/check_audit_baseline_refresh.py` | 45 | audit_append_call | `failures.append("beta decision is GO while beta blockers remain")` |
-| `scripts/check_audit_baseline_refresh.py` | 49 | audit_append_call | `failures.append("audit status JSON commit does not match current commit")` |
-| `scripts/check_audit_baseline_refresh.py` | 59 | audit_append_call | `failures.append(f"missing required surface {name}")` |
-| `scripts/check_audit_baseline_refresh.py` | 61 | audit_append_call | `failures.append(f"surface {name} is stale")` |
-| `scripts/check_audit_baseline_refresh.py` | 86 | audit_append_call | `failures.append("audit baseline refresh unit tests failed")` |
-| `scripts/check_audit_baseline_refresh.py` | 108 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_arq_worker_import.py` | 42 | audit_append_call | `found.append(item)` |
+| `scripts/check_arq_worker_import.py` | 62 | audit_append_call | `failures.append("arq not pinned in dependency files")` |
+| `scripts/check_arq_worker_import.py` | 68 | audit_append_call | `failures.append(f"app.modules.jobs import failed: {exc!r}")` |
+| `scripts/check_arq_worker_import.py` | 76 | audit_append_call | `failures.append(f"arq compat import failed: {exc!r}")` |
+| `scripts/check_arq_worker_import.py` | 90 | audit_append_call | `failures.append(f"WorkerSettings/functions missing {expected}")` |
+| `scripts/check_arq_worker_import.py` | 96 | audit_append_call | `failures.append("jobs.py missing run_consent_reminder_cycle")` |
+| `scripts/check_arq_worker_import.py` | 124 | audit_append_call | `failures.append("ARQ worker import contract tests failed")` |
+| `scripts/check_arq_worker_import.py` | 145 | audit_append_call | `failures.append("focused ruff failed")` |
+| `scripts/check_audit_baseline_refresh.py` | 43 | audit_append_call | `failures.append(f"unexpected branch {status.current_branch}")` |
+| `scripts/check_audit_baseline_refresh.py` | 46 | audit_append_call | `failures.append("beta decision is GO while beta blockers remain")` |
+| `scripts/check_audit_baseline_refresh.py` | 50 | audit_append_call | `failures.append("audit status JSON commit does not match current commit")` |
+| `scripts/check_audit_baseline_refresh.py` | 60 | audit_append_call | `failures.append(f"missing required surface {name}")` |
+| `scripts/check_audit_baseline_refresh.py` | 62 | audit_append_call | `failures.append(f"surface {name} is stale")` |
+| `scripts/check_audit_baseline_refresh.py` | 87 | audit_append_call | `failures.append("audit baseline refresh unit tests failed")` |
+| `scripts/check_audit_baseline_refresh.py` | 109 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_audit_canonicalization_registry.py` | 25 | audit_append_call | `failures.append("no ready candidates")` |
 | `scripts/check_audit_canonicalization_registry.py` | 38 | audit_append_call | `failures.append("registry doc missing")` |
 | `scripts/check_audit_canonicalization_slice.py` | 18 | audit_append_call | `failures.append("action mismatch")` |
@@ -1768,99 +2331,99 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_audit_event_contracts.py` | 33 | audit_log_identifier | `"AuditLog emission is handled inside ConsentService",` |
 | `scripts/check_audit_event_contracts.py` | 51 | audit_append_call | `results.append(CheckResult(rel_path, marker, marker in text))` |
 | `scripts/check_audit_review_closeout_certificate.py` | 55 | audit_append_call | `results.append(` |
-| `scripts/check_audit_write_runtime_evidence.py` | 41 | audit_events_table | `print(f"- INFO audit_events before: {status.audit_events_count_before}")` |
-| `scripts/check_audit_write_runtime_evidence.py` | 42 | audit_events_table | `print(f"- INFO audit_events after: {status.audit_events_count_after}")` |
-| `scripts/check_audit_write_runtime_evidence.py` | 43 | audit_events_table | `print(f"- INFO audit_events delta: {status.audit_events_delta}")` |
-| `scripts/check_audit_write_runtime_evidence.py` | 60 | audit_append_call | `failures.append(f"{item_id} missing {required}")` |
-| `scripts/check_audit_write_runtime_evidence.py` | 72 | audit_append_call | `failures.append("audit write runtime evidence unit tests failed")` |
-| `scripts/check_audit_write_runtime_evidence.py` | 81 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_audit_write_runtime_evidence.py` | 42 | audit_events_table | `print(f"- INFO audit_events before: {status.audit_events_count_before}")` |
+| `scripts/check_audit_write_runtime_evidence.py` | 43 | audit_events_table | `print(f"- INFO audit_events after: {status.audit_events_count_after}")` |
+| `scripts/check_audit_write_runtime_evidence.py` | 44 | audit_events_table | `print(f"- INFO audit_events delta: {status.audit_events_delta}")` |
+| `scripts/check_audit_write_runtime_evidence.py` | 61 | audit_append_call | `failures.append(f"{item_id} missing {required}")` |
+| `scripts/check_audit_write_runtime_evidence.py` | 73 | audit_append_call | `failures.append("audit write runtime evidence unit tests failed")` |
+| `scripts/check_audit_write_runtime_evidence.py` | 82 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_auth_boundary_evidence.py` | 58 | audit_append_call | `results.append(EvidenceResult(rel_path, path.exists(), "present" if path.exists() else "missing"))` |
 | `scripts/check_auth_boundary_evidence.py` | 62 | audit_append_call | `results.append(EvidenceResult(rel_path, snippet in text, f"contains {snippet!r}" if snippet in text else f"missing {snippet!r}"))` |
-| `scripts/check_auth_db_lifecycle_proof.py` | 37 | audit_append_call | `failures.append(f"proof source missing {token}")` |
-| `scripts/check_auth_db_lifecycle_proof.py` | 63 | audit_append_call | `failures.append("transactional auth DB lifecycle tests failed")` |
-| `scripts/check_auth_db_lifecycle_proof.py` | 84 | audit_append_call | `failures.append("focused ruff failed")` |
-| `scripts/check_auth_forward_refs.py` | 27 | audit_append_call | `failures.append("repair_auth_forward_refs.py failed")` |
-| `scripts/check_auth_forward_refs.py` | 35 | audit_append_call | `failures.append("auth.RegisterRequest missing")` |
-| `scripts/check_auth_forward_refs.py` | 38 | audit_append_call | `failures.append(f"auth router import failed: {exc!r}")` |
-| `scripts/check_auth_forward_refs.py` | 48 | audit_append_call | `failures.append("register route missing after app import")` |
-| `scripts/check_auth_forward_refs.py` | 51 | audit_append_call | `failures.append(f"app.api_v2 import failed: {exc!r}")` |
-| `scripts/check_auth_forward_refs.py` | 58 | audit_append_call | `failures.append("repair report missing")` |
-| `scripts/check_auth_http_success_scope.py` | 32 | audit_append_call | `failures.append("auth.py has future annotations")` |
-| `scripts/check_auth_http_success_scope.py` | 37 | audit_append_call | `failures.append("auth.py imports app.repositories")` |
-| `scripts/check_auth_http_success_scope.py` | 45 | audit_append_call | `failures.append(f"missing {token}")` |
-| `scripts/check_auth_http_success_scope.py` | 59 | audit_append_call | `failures.append(f"test missing {token}")` |
-| `scripts/check_auth_http_success_scope.py` | 66 | audit_append_call | `failures.append(f"missing {path}")` |
-| `scripts/check_auth_http_success_scope.py` | 87 | audit_append_call | `failures.append("focused ruff failed")` |
-| `scripts/check_auth_http_success_scope.py` | 112 | audit_append_call | `failures.append("auth HTTP success/scope integration tests failed")` |
-| `scripts/check_auth_lifecycle_http_proof.py` | 40 | audit_append_call | `failures.append("release mode requires auth lifecycle HTTP route proof passing")` |
-| `scripts/check_auth_lifecycle_http_proof.py` | 59 | audit_append_call | `failures.append("auth lifecycle HTTP proof tests failed")` |
-| `scripts/check_auth_lifecycle_http_proof.py` | 72 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_auth_lifecycle_method_extraction.py` | 25 | audit_append_call | `failures.append("auth.py still has future annotations")` |
-| `scripts/check_auth_lifecycle_method_extraction.py` | 30 | audit_append_call | `failures.append("auth.py imports app.repositories")` |
-| `scripts/check_auth_lifecycle_method_extraction.py` | 36 | audit_append_call | `failures.append(f"direct constructor remains: {constructor}")` |
-| `scripts/check_auth_lifecycle_method_extraction.py` | 44 | audit_append_call | `failures.append(f"auth_service.{method} missing")` |
-| `scripts/check_auth_lifecycle_method_extraction.py` | 52 | audit_append_call | `failures.append(f"missing helper {helper} in service impl")` |
-| `scripts/check_auth_lifecycle_method_extraction.py` | 58 | audit_append_call | `failures.append(f"missing service marker {marker}")` |
-| `scripts/check_auth_lifecycle_method_extraction.py` | 66 | audit_append_call | `failures.append("RegisterRequest missing in auth globals")` |
-| `scripts/check_auth_lifecycle_method_extraction.py` | 68 | audit_append_call | `failures.append(f"auth import failed: {exc!r}")` |
-| `scripts/check_auth_lifecycle_method_extraction.py` | 75 | audit_append_call | `failures.append(f"app.api_v2 import failed: {exc!r}")` |
-| `scripts/check_auth_lifecycle_method_extraction.py` | 101 | audit_append_call | `failures.append("focused ruff failed")` |
-| `scripts/check_auth_lifecycle_semantic_proof.py` | 40 | audit_append_call | `failures.append("release mode requires controlled auth lifecycle semantic proof passing")` |
-| `scripts/check_auth_lifecycle_semantic_proof.py` | 59 | audit_append_call | `failures.append("auth lifecycle semantic proof tests failed")` |
-| `scripts/check_auth_lifecycle_semantic_proof.py` | 72 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_auth_refresh_db_evidence_gate.py` | 36 | audit_append_call | `failures.append("release mode requires accepted auth refresh DB evidence")` |
-| `scripts/check_auth_refresh_db_evidence_gate.py` | 67 | audit_append_call | `failures.append("auth refresh DB evidence gate unit tests failed")` |
-| `scripts/check_auth_refresh_db_evidence_gate.py` | 80 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_auth_refresh_db_proof.py` | 36 | audit_append_call | `failures.append("release mode requires accepted auth refresh DB proof")` |
-| `scripts/check_auth_refresh_db_proof.py` | 58 | audit_append_call | `failures.append("auth refresh DB proof unit tests failed")` |
-| `scripts/check_auth_refresh_db_proof.py` | 72 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_auth_repository_fixture_proof.py` | 43 | audit_append_call | `failures.append(f"{source_name} does not prefer {canonical}")` |
-| `scripts/check_auth_repository_fixture_proof.py` | 72 | audit_append_call | `failures.append("auth repository fixture proof tests failed")` |
-| `scripts/check_auth_repository_fixture_proof.py` | 93 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_auth_route_logout_delegate.py` | 56 | audit_append_call | `failures.append("auth route logout delegation tests failed")` |
-| `scripts/check_auth_route_logout_delegate.py` | 69 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_auth_route_service_dependencies.py` | 54 | audit_append_call | `failures.append("auth route service dependency tests failed")` |
-| `scripts/check_auth_route_service_dependencies.py` | 67 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_auth_db_lifecycle_proof.py` | 38 | audit_append_call | `failures.append(f"proof source missing {token}")` |
+| `scripts/check_auth_db_lifecycle_proof.py` | 64 | audit_append_call | `failures.append("transactional auth DB lifecycle tests failed")` |
+| `scripts/check_auth_db_lifecycle_proof.py` | 85 | audit_append_call | `failures.append("focused ruff failed")` |
+| `scripts/check_auth_forward_refs.py` | 28 | audit_append_call | `failures.append("repair_auth_forward_refs.py failed")` |
+| `scripts/check_auth_forward_refs.py` | 36 | audit_append_call | `failures.append("auth.RegisterRequest missing")` |
+| `scripts/check_auth_forward_refs.py` | 39 | audit_append_call | `failures.append(f"auth router import failed: {exc!r}")` |
+| `scripts/check_auth_forward_refs.py` | 49 | audit_append_call | `failures.append("register route missing after app import")` |
+| `scripts/check_auth_forward_refs.py` | 52 | audit_append_call | `failures.append(f"app.api_v2 import failed: {exc!r}")` |
+| `scripts/check_auth_forward_refs.py` | 59 | audit_append_call | `failures.append("repair report missing")` |
+| `scripts/check_auth_http_success_scope.py` | 33 | audit_append_call | `failures.append("auth.py has future annotations")` |
+| `scripts/check_auth_http_success_scope.py` | 38 | audit_append_call | `failures.append("auth.py imports app.repositories")` |
+| `scripts/check_auth_http_success_scope.py` | 46 | audit_append_call | `failures.append(f"missing {token}")` |
+| `scripts/check_auth_http_success_scope.py` | 60 | audit_append_call | `failures.append(f"test missing {token}")` |
+| `scripts/check_auth_http_success_scope.py` | 67 | audit_append_call | `failures.append(f"missing {path}")` |
+| `scripts/check_auth_http_success_scope.py` | 88 | audit_append_call | `failures.append("focused ruff failed")` |
+| `scripts/check_auth_http_success_scope.py` | 113 | audit_append_call | `failures.append("auth HTTP success/scope integration tests failed")` |
+| `scripts/check_auth_lifecycle_http_proof.py` | 41 | audit_append_call | `failures.append("release mode requires auth lifecycle HTTP route proof passing")` |
+| `scripts/check_auth_lifecycle_http_proof.py` | 60 | audit_append_call | `failures.append("auth lifecycle HTTP proof tests failed")` |
+| `scripts/check_auth_lifecycle_http_proof.py` | 73 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_auth_lifecycle_method_extraction.py` | 26 | audit_append_call | `failures.append("auth.py still has future annotations")` |
+| `scripts/check_auth_lifecycle_method_extraction.py` | 31 | audit_append_call | `failures.append("auth.py imports app.repositories")` |
+| `scripts/check_auth_lifecycle_method_extraction.py` | 37 | audit_append_call | `failures.append(f"direct constructor remains: {constructor}")` |
+| `scripts/check_auth_lifecycle_method_extraction.py` | 45 | audit_append_call | `failures.append(f"auth_service.{method} missing")` |
+| `scripts/check_auth_lifecycle_method_extraction.py` | 53 | audit_append_call | `failures.append(f"missing helper {helper} in service impl")` |
+| `scripts/check_auth_lifecycle_method_extraction.py` | 59 | audit_append_call | `failures.append(f"missing service marker {marker}")` |
+| `scripts/check_auth_lifecycle_method_extraction.py` | 67 | audit_append_call | `failures.append("RegisterRequest missing in auth globals")` |
+| `scripts/check_auth_lifecycle_method_extraction.py` | 69 | audit_append_call | `failures.append(f"auth import failed: {exc!r}")` |
+| `scripts/check_auth_lifecycle_method_extraction.py` | 76 | audit_append_call | `failures.append(f"app.api_v2 import failed: {exc!r}")` |
+| `scripts/check_auth_lifecycle_method_extraction.py` | 102 | audit_append_call | `failures.append("focused ruff failed")` |
+| `scripts/check_auth_lifecycle_semantic_proof.py` | 41 | audit_append_call | `failures.append("release mode requires controlled auth lifecycle semantic proof passing")` |
+| `scripts/check_auth_lifecycle_semantic_proof.py` | 60 | audit_append_call | `failures.append("auth lifecycle semantic proof tests failed")` |
+| `scripts/check_auth_lifecycle_semantic_proof.py` | 73 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_auth_refresh_db_evidence_gate.py` | 37 | audit_append_call | `failures.append("release mode requires accepted auth refresh DB evidence")` |
+| `scripts/check_auth_refresh_db_evidence_gate.py` | 68 | audit_append_call | `failures.append("auth refresh DB evidence gate unit tests failed")` |
+| `scripts/check_auth_refresh_db_evidence_gate.py` | 81 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_auth_refresh_db_proof.py` | 37 | audit_append_call | `failures.append("release mode requires accepted auth refresh DB proof")` |
+| `scripts/check_auth_refresh_db_proof.py` | 59 | audit_append_call | `failures.append("auth refresh DB proof unit tests failed")` |
+| `scripts/check_auth_refresh_db_proof.py` | 73 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_auth_repository_fixture_proof.py` | 44 | audit_append_call | `failures.append(f"{source_name} does not prefer {canonical}")` |
+| `scripts/check_auth_repository_fixture_proof.py` | 73 | audit_append_call | `failures.append("auth repository fixture proof tests failed")` |
+| `scripts/check_auth_repository_fixture_proof.py` | 94 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_auth_route_logout_delegate.py` | 57 | audit_append_call | `failures.append("auth route logout delegation tests failed")` |
+| `scripts/check_auth_route_logout_delegate.py` | 70 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_auth_route_service_dependencies.py` | 55 | audit_append_call | `failures.append("auth route service dependency tests failed")` |
+| `scripts/check_auth_route_service_dependencies.py` | 68 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_auth_router_boundary.py` | 25 | audit_append_call | `failures.append("missing auth runtime dependency import")` |
 | `scripts/check_auth_router_boundary.py` | 31 | audit_append_call | `failures.append("LearnerRepository remains in auth router")` |
 | `scripts/check_auth_router_boundary.py` | 37 | audit_append_call | `failures.append("direct get_by_guardian remains")` |
 | `scripts/check_auth_router_boundary.py` | 44 | audit_append_call | `failures.append("guardian learner ids not referenced in service impl")` |
 | `scripts/check_auth_router_boundary.py` | 51 | audit_append_call | `failures.append("missing repair report")` |
-| `scripts/check_auth_service_cleanup.py` | 41 | audit_append_call | `failures.append("release mode requires logout/revoke route delegation")` |
-| `scripts/check_auth_service_cleanup.py` | 60 | audit_append_call | `failures.append("auth service cleanup tests failed")` |
-| `scripts/check_auth_service_cleanup.py` | 73 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_auth_service_extraction.py` | 19 | audit_repository | `"AuditRepository",` |
-| `scripts/check_auth_service_extraction.py` | 39 | audit_append_call | `failures.append("repair_auth_service_extraction.py failed")` |
-| `scripts/check_auth_service_extraction.py` | 46 | audit_append_call | `failures.append(f"auth.py syntax error: {exc}")` |
-| `scripts/check_auth_service_extraction.py` | 51 | audit_append_call | `failures.append("auth router missing AuthApplicationService dependency import")` |
-| `scripts/check_auth_service_extraction.py` | 54 | audit_append_call | `failures.append("auth router still imports app.repositories")` |
-| `scripts/check_auth_service_extraction.py` | 61 | audit_append_call | `failures.append(f"auth router still directly constructs {token}")` |
-| `scripts/check_auth_service_extraction.py` | 65 | audit_append_call | `failures.append("auth.py future annotations can reintroduce FastAPI forward-ref failures")` |
-| `scripts/check_auth_service_extraction.py` | 74 | audit_append_call | `failures.append(f"auth router import failed: {exc!r}")` |
-| `scripts/check_auth_service_extraction.py` | 82 | audit_append_call | `failures.append("app.api_v2 has no routes")` |
-| `scripts/check_auth_service_extraction.py` | 84 | audit_append_call | `failures.append(f"app.api_v2 import failed: {exc!r}")` |
-| `scripts/check_auth_service_extraction.py` | 107 | audit_append_call | `failures.append("focused ruff auth service extraction check failed")` |
-| `scripts/check_auth_service_ownership.py` | 23 | audit_append_call | `failures.append(f"missing {path.relative_to(ROOT)}")` |
-| `scripts/check_auth_service_ownership.py` | 33 | audit_append_call | `failures.append("auth.py still contains legacy lifecycle helpers")` |
-| `scripts/check_auth_service_ownership.py` | 41 | audit_append_call | `failures.append(f"auth.py does not delegate {method}")` |
-| `scripts/check_auth_service_ownership.py` | 45 | audit_append_call | `failures.append(f"AuthApplicationService.{method} assignment missing")` |
-| `scripts/check_auth_service_ownership.py` | 49 | audit_append_call | `failures.append(f"implementation module missing {method}_impl")` |
-| `scripts/check_auth_service_ownership.py` | 52 | audit_append_call | `failures.append("auth.py has future annotations")` |
-| `scripts/check_auth_service_ownership.py` | 57 | audit_append_call | `failures.append("auth.py imports app.repositories")` |
-| `scripts/check_auth_service_ownership.py` | 67 | audit_append_call | `failures.append("RegisterRequest missing from auth module")` |
-| `scripts/check_auth_service_ownership.py` | 69 | audit_append_call | `failures.append(f"auth import failed: {exc!r}")` |
-| `scripts/check_auth_service_ownership.py` | 76 | audit_append_call | `failures.append(f"app.api_v2 import failed: {exc!r}")` |
-| `scripts/check_auth_service_ownership.py` | 100 | audit_append_call | `failures.append("focused ruff failed")` |
+| `scripts/check_auth_service_cleanup.py` | 42 | audit_append_call | `failures.append("release mode requires logout/revoke route delegation")` |
+| `scripts/check_auth_service_cleanup.py` | 61 | audit_append_call | `failures.append("auth service cleanup tests failed")` |
+| `scripts/check_auth_service_cleanup.py` | 74 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_auth_service_extraction.py` | 20 | audit_repository | `"AuditRepository",` |
+| `scripts/check_auth_service_extraction.py` | 40 | audit_append_call | `failures.append("repair_auth_service_extraction.py failed")` |
+| `scripts/check_auth_service_extraction.py` | 47 | audit_append_call | `failures.append(f"auth.py syntax error: {exc}")` |
+| `scripts/check_auth_service_extraction.py` | 52 | audit_append_call | `failures.append("auth router missing AuthApplicationService dependency import")` |
+| `scripts/check_auth_service_extraction.py` | 55 | audit_append_call | `failures.append("auth router still imports app.repositories")` |
+| `scripts/check_auth_service_extraction.py` | 62 | audit_append_call | `failures.append(f"auth router still directly constructs {token}")` |
+| `scripts/check_auth_service_extraction.py` | 66 | audit_append_call | `failures.append("auth.py future annotations can reintroduce FastAPI forward-ref failures")` |
+| `scripts/check_auth_service_extraction.py` | 75 | audit_append_call | `failures.append(f"auth router import failed: {exc!r}")` |
+| `scripts/check_auth_service_extraction.py` | 83 | audit_append_call | `failures.append("app.api_v2 has no routes")` |
+| `scripts/check_auth_service_extraction.py` | 85 | audit_append_call | `failures.append(f"app.api_v2 import failed: {exc!r}")` |
+| `scripts/check_auth_service_extraction.py` | 108 | audit_append_call | `failures.append("focused ruff auth service extraction check failed")` |
+| `scripts/check_auth_service_ownership.py` | 24 | audit_append_call | `failures.append(f"missing {path.relative_to(ROOT)}")` |
+| `scripts/check_auth_service_ownership.py` | 34 | audit_append_call | `failures.append("auth.py still contains legacy lifecycle helpers")` |
+| `scripts/check_auth_service_ownership.py` | 42 | audit_append_call | `failures.append(f"auth.py does not delegate {method}")` |
+| `scripts/check_auth_service_ownership.py` | 46 | audit_append_call | `failures.append(f"AuthApplicationService.{method} assignment missing")` |
+| `scripts/check_auth_service_ownership.py` | 50 | audit_append_call | `failures.append(f"implementation module missing {method}_impl")` |
+| `scripts/check_auth_service_ownership.py` | 53 | audit_append_call | `failures.append("auth.py has future annotations")` |
+| `scripts/check_auth_service_ownership.py` | 58 | audit_append_call | `failures.append("auth.py imports app.repositories")` |
+| `scripts/check_auth_service_ownership.py` | 68 | audit_append_call | `failures.append("RegisterRequest missing from auth module")` |
+| `scripts/check_auth_service_ownership.py` | 70 | audit_append_call | `failures.append(f"auth import failed: {exc!r}")` |
+| `scripts/check_auth_service_ownership.py` | 77 | audit_append_call | `failures.append(f"app.api_v2 import failed: {exc!r}")` |
+| `scripts/check_auth_service_ownership.py` | 101 | audit_append_call | `failures.append("focused ruff failed")` |
 | `scripts/check_auth_token_claims_repair.py` | 38 | audit_append_call | `failures.append("helper missing")` |
 | `scripts/check_auth_token_claims_repair.py` | 43 | audit_append_call | `failures.append("router missing")` |
 | `scripts/check_auth_token_claims_repair.py` | 51 | audit_append_call | `failures.append("helper import missing")` |
 | `scripts/check_auth_token_claims_repair.py` | 56 | audit_append_call | `failures.append("helper marker missing")` |
 | `scripts/check_auth_token_claims_repair.py` | 59 | audit_append_call | `failures.append("raw email_encrypted")` |
 | `scripts/check_auth_token_claims_repair.py` | 67 | audit_append_call | `failures.append("report missing")` |
-| `scripts/check_auth_transaction_rollback_proof.py` | 39 | audit_append_call | `failures.append(f"service missing {token}")` |
-| `scripts/check_auth_transaction_rollback_proof.py` | 51 | audit_append_call | `failures.append(f"test missing {token}")` |
-| `scripts/check_auth_transaction_rollback_proof.py` | 83 | audit_append_call | `failures.append("auth transaction rollback proof tests failed")` |
-| `scripts/check_auth_transaction_rollback_proof.py` | 104 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_auth_transaction_rollback_proof.py` | 40 | audit_append_call | `failures.append(f"service missing {token}")` |
+| `scripts/check_auth_transaction_rollback_proof.py` | 52 | audit_append_call | `failures.append(f"test missing {token}")` |
+| `scripts/check_auth_transaction_rollback_proof.py` | 84 | audit_append_call | `failures.append("auth transaction rollback proof tests failed")` |
+| `scripts/check_auth_transaction_rollback_proof.py` | 105 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_backend_consolidation_dragons.py` | 28 | audit_append_call | `paths.append(path)` |
 | `scripts/check_backend_consolidation_dragons.py` | 44 | audit_append_call | `matched_paths.append(str(path.relative_to(REPO_ROOT)))` |
 | `scripts/check_backend_consolidation_dragons.py` | 51 | audit_events_table | `"audit_events": _scan(r"\baudit_events\b"),` |
@@ -1868,10 +2431,10 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_backend_consolidation_execution_packet.py` | 54 | audit_append_call | `failures.append(f"missing {path}")` |
 | `scripts/check_backend_consolidation_execution_packet.py` | 64 | audit_append_call | `failures.append(f"{path} missing {needle!r}")` |
 | `scripts/check_backend_consolidation_execution_packet.py` | 68 | audit_append_call | `failures.append(f"{path} has premature phrase {phrase!r}")` |
-| `scripts/check_backend_consolidation_implementation_foundation.py` | 49 | audit_append_call | `failures.append(f"missing {relative}")` |
-| `scripts/check_backend_consolidation_implementation_foundation.py` | 59 | audit_append_call | `failures.append(f"{relative} missing {needle!r}")` |
-| `scripts/check_backend_consolidation_implementation_foundation.py` | 63 | audit_append_call | `failures.append(f"forbidden phrase {phrase!r}")` |
-| `scripts/check_backend_consolidation_implementation_foundation.py` | 77 | audit_append_call | `failures.append("backend_consolidation_runtime.py compile failed")` |
+| `scripts/check_backend_consolidation_implementation_foundation.py` | 50 | audit_append_call | `failures.append(f"missing {relative}")` |
+| `scripts/check_backend_consolidation_implementation_foundation.py` | 60 | audit_append_call | `failures.append(f"{relative} missing {needle!r}")` |
+| `scripts/check_backend_consolidation_implementation_foundation.py` | 64 | audit_append_call | `failures.append(f"forbidden phrase {phrase!r}")` |
+| `scripts/check_backend_consolidation_implementation_foundation.py` | 78 | audit_append_call | `failures.append("backend_consolidation_runtime.py compile failed")` |
 | `scripts/check_backend_consolidation_noop_guard.py` | 39 | audit_append_call | `failures.append(f"missing {relative}")` |
 | `scripts/check_backend_consolidation_noop_guard.py` | 46 | audit_append_call | `failures.append("pending decision marker missing")` |
 | `scripts/check_backend_consolidation_noop_guard.py` | 54 | audit_append_call | `failures.append("retention default safeguards missing")` |
@@ -1879,9 +2442,9 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_backend_consolidation_release_guard.py` | 40 | audit_append_call | `failures.append(f"missing {relative}")` |
 | `scripts/check_backend_consolidation_release_guard.py` | 49 | audit_append_call | `failures.append("decision record status marker missing")` |
 | `scripts/check_backend_consolidation_release_guard.py` | 54 | audit_append_call | `failures.append(f"forbidden phrase {phrase!r}")` |
-| `scripts/check_backend_consolidation_terminal_packet.py` | 38 | audit_append_call | `failures.append(f"missing {relative}")` |
-| `scripts/check_backend_consolidation_terminal_packet.py` | 48 | audit_append_call | `failures.append(f"packet missing {needle!r}")` |
-| `scripts/check_backend_consolidation_terminal_packet.py` | 61 | audit_append_call | `failures.append("command failed: " + " ".join(command))` |
+| `scripts/check_backend_consolidation_terminal_packet.py` | 39 | audit_append_call | `failures.append(f"missing {relative}")` |
+| `scripts/check_backend_consolidation_terminal_packet.py` | 49 | audit_append_call | `failures.append(f"packet missing {needle!r}")` |
+| `scripts/check_backend_consolidation_terminal_packet.py` | 62 | audit_append_call | `failures.append("command failed: " + " ".join(command))` |
 | `scripts/check_backend_destructive_action_blocklist.py` | 15 | audit_logs_table | `"audit_logs deletion: approved",` |
 | `scripts/check_backend_destructive_action_blocklist.py` | 31 | audit_append_call | `failures.append(f"missing {relative}")` |
 | `scripts/check_backend_destructive_action_blocklist.py` | 37 | audit_append_call | `failures.append(f"{relative}: {phrase}")` |
@@ -1934,11 +2497,11 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_backup_restore_disaster_recovery_production_readiness.py` | 156 | audit_append_call | `results.append(` |
 | `scripts/check_backup_restore_disaster_recovery_production_readiness.py` | 180 | audit_append_call | `results.append(DisasterRecoveryReadinessResult("disaster_recovery_contracts", False, f"contract check failed: {exc}"))` |
 | `scripts/check_beta_acceptance_exit_criteria.py` | 53 | audit_append_call | `results.append(` |
-| `scripts/check_beta_blocker_burndown.py` | 35 | audit_append_call | `failures.append("NO-GO source decision must have blocker actions")` |
-| `scripts/check_beta_blocker_burndown.py` | 39 | audit_append_call | `failures.append("release mode cannot be allowed while blocker actions exist")` |
-| `scripts/check_beta_blocker_burndown.py` | 43 | audit_append_call | `failures.append("release mode requires blocker burn-down status clear")` |
-| `scripts/check_beta_blocker_burndown.py` | 62 | audit_append_call | `failures.append("beta blocker burn-down tests failed")` |
-| `scripts/check_beta_blocker_burndown.py` | 74 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_beta_blocker_burndown.py` | 36 | audit_append_call | `failures.append("NO-GO source decision must have blocker actions")` |
+| `scripts/check_beta_blocker_burndown.py` | 40 | audit_append_call | `failures.append("release mode cannot be allowed while blocker actions exist")` |
+| `scripts/check_beta_blocker_burndown.py` | 44 | audit_append_call | `failures.append("release mode requires blocker burn-down status clear")` |
+| `scripts/check_beta_blocker_burndown.py` | 63 | audit_append_call | `failures.append("beta blocker burn-down tests failed")` |
+| `scripts/check_beta_blocker_burndown.py` | 75 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_beta_evidence_consistency.py` | 55 | audit_append_call | `results.append(` |
 | `scripts/check_beta_evidence_consistency.py` | 71 | audit_append_call | `results.append(` |
 | `scripts/check_beta_evidence_consistency.py` | 83 | audit_append_call | `results.append(` |
@@ -1955,10 +2518,10 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_beta_launch_staging_acceptance_production_readiness.py` | 158 | audit_append_call | `results.append(` |
 | `scripts/check_beta_launch_staging_acceptance_production_readiness.py` | 185 | audit_append_call | `results.append(BetaLaunchReadinessResult("beta_launch_contracts", False, f"contract check failed: {exc}"))` |
 | `scripts/check_beta_monitoring_incident_trigger.py` | 55 | audit_append_call | `results.append(` |
-| `scripts/check_beta_no_go_handoff_packet.py` | 45 | audit_append_call | `failures.append("required evidence items missing")` |
-| `scripts/check_beta_no_go_handoff_packet.py` | 50 | audit_append_call | `failures.append("some required evidence item is locally closeable")` |
-| `scripts/check_beta_no_go_handoff_packet.py` | 81 | audit_append_call | `failures.append("beta NO-GO handoff packet tests failed")` |
-| `scripts/check_beta_no_go_handoff_packet.py` | 102 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_beta_no_go_handoff_packet.py` | 46 | audit_append_call | `failures.append("required evidence items missing")` |
+| `scripts/check_beta_no_go_handoff_packet.py` | 51 | audit_append_call | `failures.append("some required evidence item is locally closeable")` |
+| `scripts/check_beta_no_go_handoff_packet.py` | 82 | audit_append_call | `failures.append("beta NO-GO handoff packet tests failed")` |
+| `scripts/check_beta_no_go_handoff_packet.py` | 103 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_beta_outcome_report_template.py` | 57 | audit_append_call | `results.append(` |
 | `scripts/check_beta_participant_support_handoff.py` | 57 | audit_append_call | `results.append(` |
 | `scripts/check_beta_pr_body.py` | 56 | audit_append_call | `results.append(` |
@@ -1984,28 +2547,28 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_branch_sync_rebase_checklist.py` | 43 | audit_append_call | `results.append(` |
 | `scripts/check_caps_alignment_contract.py` | 36 | audit_append_call | `results.append(` |
 | `scripts/check_caps_learning_proof.py` | 33 | audit_append_call | `results.append(Result("docs/caps/grade4_maths_coverage_matrix.md", snippet in matrix, f"contains {snippet!r}"))` |
-| `scripts/check_ci_auth_refresh_db_proof_workflow.py` | 55 | audit_append_call | `failures.append("CI auth refresh DB proof workflow unit tests failed")` |
-| `scripts/check_ci_auth_refresh_db_proof_workflow.py` | 68 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_ci_authority.py` | 39 | audit_append_call | `failures.append("No GitHub workflow file found")` |
-| `scripts/check_ci_authority.py` | 44 | audit_append_call | `failures.append("No required local CI-equivalent targets found")` |
-| `scripts/check_ci_authority.py` | 49 | audit_append_call | `failures.append("ci_evidence.md missing")` |
-| `scripts/check_ci_authority.py` | 57 | audit_append_call | `failures.append(f"Unexpected CI-001 registry proof_status: {registry_status}")` |
-| `scripts/check_ci_authority.py` | 65 | audit_append_call | `failures.append("release mode requires real GitHub Actions run URL")` |
-| `scripts/check_ci_authority.py` | 96 | audit_append_call | `failures.append("CI authority unit tests failed")` |
-| `scripts/check_ci_authority.py` | 117 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_ci_auth_refresh_db_proof_workflow.py` | 56 | audit_append_call | `failures.append("CI auth refresh DB proof workflow unit tests failed")` |
+| `scripts/check_ci_auth_refresh_db_proof_workflow.py` | 69 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_ci_authority.py` | 40 | audit_append_call | `failures.append("No GitHub workflow file found")` |
+| `scripts/check_ci_authority.py` | 45 | audit_append_call | `failures.append("No required local CI-equivalent targets found")` |
+| `scripts/check_ci_authority.py` | 50 | audit_append_call | `failures.append("ci_evidence.md missing")` |
+| `scripts/check_ci_authority.py` | 58 | audit_append_call | `failures.append(f"Unexpected CI-001 registry proof_status: {registry_status}")` |
+| `scripts/check_ci_authority.py` | 66 | audit_append_call | `failures.append("release mode requires real GitHub Actions run URL")` |
+| `scripts/check_ci_authority.py` | 97 | audit_append_call | `failures.append("CI authority unit tests failed")` |
+| `scripts/check_ci_authority.py` | 118 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_ci_cd_deployment_production_readiness.py` | 147 | audit_append_call | `results.append(` |
 | `scripts/check_ci_cd_deployment_production_readiness.py` | 158 | audit_append_call | `results.append(` |
 | `scripts/check_ci_cd_deployment_production_readiness.py` | 183 | audit_append_call | `results.append(DeploymentReadinessResult("deployment_contracts", False, f"contract check failed: {exc}"))` |
-| `scripts/check_ci_evidence_acceptance.py` | 82 | audit_append_call | `failures.append("CI evidence acceptance unit tests failed")` |
-| `scripts/check_ci_evidence_acceptance.py` | 106 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_ci_evidence_acceptance.py` | 121 | audit_append_call | `failures.append(f"{item_id} missing {required}")` |
-| `scripts/check_ci_evidence_acceptance.py` | 123 | audit_append_call | `failures.append(f"{item_id} missing run ID {status.run_id}")` |
-| `scripts/check_ci_evidence_acceptance.py` | 125 | audit_append_call | `failures.append(f"{item_id} missing commit SHA {status.current_commit}")` |
-| `scripts/check_ci_run_evidence.py` | 39 | audit_append_call | `failures.append("GitHub Actions run URL validator rejected canonical URL")` |
-| `scripts/check_ci_run_evidence.py` | 46 | audit_append_call | `failures.append(f"unexpected CI run evidence status: {status.status}")` |
-| `scripts/check_ci_run_evidence.py` | 49 | audit_append_call | `failures.append("release mode requires accepted CI run evidence")` |
-| `scripts/check_ci_run_evidence.py` | 70 | audit_append_call | `failures.append("CI run evidence tests failed")` |
-| `scripts/check_ci_run_evidence.py` | 83 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_ci_evidence_acceptance.py` | 83 | audit_append_call | `failures.append("CI evidence acceptance unit tests failed")` |
+| `scripts/check_ci_evidence_acceptance.py` | 107 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_ci_evidence_acceptance.py` | 122 | audit_append_call | `failures.append(f"{item_id} missing {required}")` |
+| `scripts/check_ci_evidence_acceptance.py` | 124 | audit_append_call | `failures.append(f"{item_id} missing run ID {status.run_id}")` |
+| `scripts/check_ci_evidence_acceptance.py` | 126 | audit_append_call | `failures.append(f"{item_id} missing commit SHA {status.current_commit}")` |
+| `scripts/check_ci_run_evidence.py` | 40 | audit_append_call | `failures.append("GitHub Actions run URL validator rejected canonical URL")` |
+| `scripts/check_ci_run_evidence.py` | 47 | audit_append_call | `failures.append(f"unexpected CI run evidence status: {status.status}")` |
+| `scripts/check_ci_run_evidence.py` | 50 | audit_append_call | `failures.append("release mode requires accepted CI run evidence")` |
+| `scripts/check_ci_run_evidence.py` | 71 | audit_append_call | `failures.append("CI run evidence tests failed")` |
+| `scripts/check_ci_run_evidence.py` | 84 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_ci_workflow_consolidation.py` | 45 | audit_append_call | `failures.append(f"missing file {path}")` |
 | `scripts/check_ci_workflow_consolidation.py` | 54 | audit_append_call | `failures.append(f"{path} missing {needle!r}")` |
 | `scripts/check_cluster_d_ci_evidence.py` | 117 | audit_append_call | `results.append(` |
@@ -2039,41 +2602,41 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_database_resilience_env_matrix.py` | 33 | audit_append_call | `results.append(` |
 | `scripts/check_database_restore_integrity.py` | 41 | audit_append_call | `results.append(` |
 | `scripts/check_database_restore_integrity.py` | 52 | audit_append_call | `results.append(` |
-| `scripts/check_db_backup_restore_rollback_evidence.py` | 66 | audit_append_call | `failures.append(f"{item_id} missing {required}")` |
-| `scripts/check_db_backup_restore_rollback_evidence.py` | 83 | audit_append_call | `failures.append("DB backup/restore/rollback unit tests failed")` |
-| `scripts/check_db_backup_restore_rollback_evidence.py` | 96 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_db_live_only_table_ownership.py` | 48 | audit_append_call | `failures.append(f"missing ownership record for {table}")` |
-| `scripts/check_db_live_only_table_ownership.py` | 58 | audit_append_call | `failures.append("DB-OWNERSHIP-001R should not block beta unless ownership is migration-required")` |
-| `scripts/check_db_live_only_table_ownership.py` | 83 | audit_append_call | `failures.append("DB live-only table ownership unit tests failed")` |
-| `scripts/check_db_live_only_table_ownership.py` | 105 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_db_migration_seed_repeatability.py` | 56 | audit_append_call | `failures.append(f"Supabase SQL still contains forbidden token: {token}")` |
-| `scripts/check_db_migration_seed_repeatability.py` | 59 | audit_append_call | `failures.append("IRT seed SQL insert count does not match expected row count")` |
-| `scripts/check_db_migration_seed_repeatability.py` | 84 | audit_append_call | `failures.append("DB repeatability unit tests failed")` |
-| `scripts/check_db_migration_seed_repeatability.py` | 106 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_db_backup_restore_rollback_evidence.py` | 67 | audit_append_call | `failures.append(f"{item_id} missing {required}")` |
+| `scripts/check_db_backup_restore_rollback_evidence.py` | 84 | audit_append_call | `failures.append("DB backup/restore/rollback unit tests failed")` |
+| `scripts/check_db_backup_restore_rollback_evidence.py` | 97 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_db_live_only_table_ownership.py` | 49 | audit_append_call | `failures.append(f"missing ownership record for {table}")` |
+| `scripts/check_db_live_only_table_ownership.py` | 59 | audit_append_call | `failures.append("DB-OWNERSHIP-001R should not block beta unless ownership is migration-required")` |
+| `scripts/check_db_live_only_table_ownership.py` | 84 | audit_append_call | `failures.append("DB live-only table ownership unit tests failed")` |
+| `scripts/check_db_live_only_table_ownership.py` | 106 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_db_migration_seed_repeatability.py` | 57 | audit_append_call | `failures.append(f"Supabase SQL still contains forbidden token: {token}")` |
+| `scripts/check_db_migration_seed_repeatability.py` | 60 | audit_append_call | `failures.append("IRT seed SQL insert count does not match expected row count")` |
+| `scripts/check_db_migration_seed_repeatability.py` | 85 | audit_append_call | `failures.append("DB repeatability unit tests failed")` |
+| `scripts/check_db_migration_seed_repeatability.py` | 107 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_deep_readiness_readonly_guard.py` | 21 | audit_append_call | `failures.append("invalid readiness spec summary")` |
 | `scripts/check_deep_readiness_readonly_guard.py` | 23 | audit_events_table | `for bad in ["session.commit()", "INSERT INTO audit_events", "alembic stamp head"]:` |
 | `scripts/check_deep_readiness_readonly_guard.py` | 30 | audit_append_call | `failures.append(f"accepted {bad!r}")` |
 | `scripts/check_deep_readiness_readonly_guard.py` | 39 | audit_append_call | `failures.append("deep readiness checklist lacks guardrails")` |
 | `scripts/check_dev_only_endpoint_exposure.py` | 42 | audit_append_call | `results.append(` |
-| `scripts/check_diag_deep_health_runtime.py` | 48 | audit_append_call | `failures.append("diagnostic deep-health runtime unit tests failed")` |
-| `scripts/check_diag_deep_health_runtime.py` | 53 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_diag_deep_health_runtime.py` | 66 | audit_append_call | `failures.append(f"{item_id} missing {required}")` |
+| `scripts/check_diag_deep_health_runtime.py` | 49 | audit_append_call | `failures.append("diagnostic deep-health runtime unit tests failed")` |
+| `scripts/check_diag_deep_health_runtime.py` | 54 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_diag_deep_health_runtime.py` | 67 | audit_append_call | `failures.append(f"{item_id} missing {required}")` |
 | `scripts/check_diagnostic_generation_safety_contract.py` | 40 | audit_append_call | `results.append(` |
-| `scripts/check_diagnostic_item_bank_canonicality.py` | 68 | audit_append_call | `failures.append(f"DIAG-ITEMS-001R missing {required}")` |
-| `scripts/check_diagnostic_item_bank_canonicality.py` | 76 | audit_append_call | `failures.append(f"DIAG-SCORE-001 missing {required}")` |
-| `scripts/check_diagnostic_item_bank_canonicality.py` | 101 | audit_append_call | `failures.append("diagnostic item-bank policy unit tests failed")` |
-| `scripts/check_diagnostic_item_bank_canonicality.py` | 123 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_diagnostic_score_live_audit.py` | 68 | audit_append_call | `failures.append(f"{item_id} missing {required}")` |
-| `scripts/check_diagnostic_score_live_audit.py` | 95 | audit_append_call | `failures.append("diagnostic score live audit unit tests failed")` |
-| `scripts/check_diagnostic_score_live_audit.py` | 117 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_diagnostic_item_bank_canonicality.py` | 69 | audit_append_call | `failures.append(f"DIAG-ITEMS-001R missing {required}")` |
+| `scripts/check_diagnostic_item_bank_canonicality.py` | 77 | audit_append_call | `failures.append(f"DIAG-SCORE-001 missing {required}")` |
+| `scripts/check_diagnostic_item_bank_canonicality.py` | 102 | audit_append_call | `failures.append("diagnostic item-bank policy unit tests failed")` |
+| `scripts/check_diagnostic_item_bank_canonicality.py` | 124 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_diagnostic_score_live_audit.py` | 69 | audit_append_call | `failures.append(f"{item_id} missing {required}")` |
+| `scripts/check_diagnostic_score_live_audit.py` | 96 | audit_append_call | `failures.append("diagnostic score live audit unit tests failed")` |
+| `scripts/check_diagnostic_score_live_audit.py` | 118 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_diagnostics_assessment_production_readiness.py` | 113 | audit_append_call | `results.append(CheckResult(rel_path, path.exists(), "present" if path.exists() else "missing"))` |
 | `scripts/check_diagnostics_assessment_production_readiness.py` | 117 | audit_append_call | `results.append(` |
-| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 51 | audit_append_call | `failures.append(f"diagnostics.py still contains disallowed token: {token}")` |
-| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 57 | audit_append_call | `failures.append(f"diagnostics.py still directly constructs/resolves repository: {call}")` |
-| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 70 | audit_append_call | `failures.append(f"diagnostics.py missing required boundary token: {token}")` |
-| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 83 | audit_append_call | `failures.append(f"diagnostic_repositories.py missing {token}")` |
-| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 111 | audit_append_call | `failures.append("diagnostics dynamic boundary unit tests failed")` |
-| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 132 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 52 | audit_append_call | `failures.append(f"diagnostics.py still contains disallowed token: {token}")` |
+| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 58 | audit_append_call | `failures.append(f"diagnostics.py still directly constructs/resolves repository: {call}")` |
+| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 71 | audit_append_call | `failures.append(f"diagnostics.py missing required boundary token: {token}")` |
+| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 84 | audit_append_call | `failures.append(f"diagnostic_repositories.py missing {token}")` |
+| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 112 | audit_append_call | `failures.append("diagnostics dynamic boundary unit tests failed")` |
+| `scripts/check_diagnostics_dynamic_repository_boundary.py` | 133 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_diagnostics_jobs_integrity.py` | 23 | audit_append_call | `failures.append("missing diagnostic helper")` |
 | `scripts/check_diagnostics_jobs_integrity.py` | 29 | audit_append_call | `failures.append("missing job runtime helper")` |
 | `scripts/check_diagnostics_jobs_integrity.py` | 36 | audit_append_call | `failures.append("diagnostics helper import")` |
@@ -2081,45 +2644,45 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_diagnostics_jobs_integrity.py` | 47 | audit_append_call | `failures.append("ConsentService empty constructor")` |
 | `scripts/check_diagnostics_jobs_integrity.py` | 56 | audit_append_call | `failures.append(f"jobs missing {token}")` |
 | `scripts/check_diagnostics_jobs_integrity.py` | 63 | audit_append_call | `failures.append("background task policy")` |
-| `scripts/check_diagnostics_scoring_snapshot.py` | 28 | audit_append_call | `failures.append("diagnostic session service still scores all history with current item")` |
-| `scripts/check_diagnostics_scoring_snapshot.py` | 32 | audit_append_call | `failures.append("diagnostic item reconstruction missing")` |
-| `scripts/check_diagnostics_scoring_snapshot.py` | 36 | audit_append_call | `failures.append("diagnostic response scoring snapshot missing")` |
-| `scripts/check_diagnostics_scoring_snapshot.py` | 63 | audit_append_call | `failures.append("diagnostics scoring snapshot tests failed")` |
-| `scripts/check_diagnostics_scoring_snapshot.py` | 76 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_diagnostics_session_binding.py` | 39 | audit_append_call | `failures.append(f"diagnostics.py missing {token}")` |
-| `scripts/check_diagnostics_session_binding.py` | 63 | audit_append_call | `failures.append(str(exc))` |
-| `scripts/check_diagnostics_session_binding.py` | 76 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_diagnostics_transaction_rollback_proof.py` | 40 | audit_append_call | `failures.append(f"service missing {token}")` |
-| `scripts/check_diagnostics_transaction_rollback_proof.py` | 53 | audit_append_call | `failures.append(f"test missing {token}")` |
-| `scripts/check_diagnostics_transaction_rollback_proof.py` | 85 | audit_append_call | `failures.append("diagnostic transaction rollback proof tests failed")` |
-| `scripts/check_diagnostics_transaction_rollback_proof.py` | 106 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_diagnostics_scoring_snapshot.py` | 29 | audit_append_call | `failures.append("diagnostic session service still scores all history with current item")` |
+| `scripts/check_diagnostics_scoring_snapshot.py` | 33 | audit_append_call | `failures.append("diagnostic item reconstruction missing")` |
+| `scripts/check_diagnostics_scoring_snapshot.py` | 37 | audit_append_call | `failures.append("diagnostic response scoring snapshot missing")` |
+| `scripts/check_diagnostics_scoring_snapshot.py` | 64 | audit_append_call | `failures.append("diagnostics scoring snapshot tests failed")` |
+| `scripts/check_diagnostics_scoring_snapshot.py` | 77 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_diagnostics_session_binding.py` | 40 | audit_append_call | `failures.append(f"diagnostics.py missing {token}")` |
+| `scripts/check_diagnostics_session_binding.py` | 64 | audit_append_call | `failures.append(str(exc))` |
+| `scripts/check_diagnostics_session_binding.py` | 77 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_diagnostics_transaction_rollback_proof.py` | 41 | audit_append_call | `failures.append(f"service missing {token}")` |
+| `scripts/check_diagnostics_transaction_rollback_proof.py` | 54 | audit_append_call | `failures.append(f"test missing {token}")` |
+| `scripts/check_diagnostics_transaction_rollback_proof.py` | 86 | audit_append_call | `failures.append("diagnostic transaction rollback proof tests failed")` |
+| `scripts/check_diagnostics_transaction_rollback_proof.py` | 107 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_docker_production_hardening.py` | 27 | audit_append_call | `failures.append(msg)` |
-| `scripts/check_docs_intelligence.py` | 39 | audit_append_call | `failures.append("docs inventory generation failed")` |
-| `scripts/check_docs_intelligence.py` | 53 | audit_append_call | `failures.append("docs inventory check failed")` |
-| `scripts/check_docs_intelligence.py` | 84 | audit_append_call | `failures.append("docs intelligence unit tests failed")` |
-| `scripts/check_docs_intelligence.py` | 105 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_docs_intelligence.py` | 40 | audit_append_call | `failures.append("docs inventory generation failed")` |
+| `scripts/check_docs_intelligence.py` | 54 | audit_append_call | `failures.append("docs inventory check failed")` |
+| `scripts/check_docs_intelligence.py` | 85 | audit_append_call | `failures.append("docs intelligence unit tests failed")` |
+| `scripts/check_docs_intelligence.py` | 106 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_documentation_adrs_claim_discipline_production_readiness.py` | 109 | audit_append_call | `results.append(DocumentationGovernanceReadinessResult(rel_path, path.exists(), "file present" if path.exists() else "file missing"))` |
 | `scripts/check_documentation_adrs_claim_discipline_production_readiness.py` | 113 | audit_append_call | `results.append(DocumentationGovernanceReadinessResult(rel_path, snippet in text, f"contains {snippet!r}" if snippet in text else f"missing {snippet!r}"))` |
 | `scripts/check_documentation_adrs_claim_discipline_production_readiness.py` | 131 | audit_append_call | `results.append(DocumentationGovernanceReadinessResult("documentation_governance_contracts", False, f"contract check failed: {exc}"))` |
 | `scripts/check_environment_security_contract.py` | 41 | audit_append_call | `results.append(` |
 | `scripts/check_evidence_archive_completeness_guard.py` | 58 | audit_append_call | `results.append(EvidenceArchiveCompletenessGuardResult(snippet in text, f"contains {snippet!r}" if snippet in text else f"missing {snippet!r}"))` |
-| `scripts/check_evidence_attachment_runbook.py` | 35 | audit_append_call | `failures.append("too few evidence attachment commands")` |
-| `scripts/check_evidence_attachment_runbook.py` | 42 | audit_append_call | `failures.append(f"runbook missing {item}")` |
-| `scripts/check_evidence_attachment_runbook.py` | 48 | audit_append_call | `failures.append(f"release sequence missing {command}")` |
-| `scripts/check_evidence_attachment_runbook.py` | 64 | audit_append_call | `failures.append("evidence attachment runbook tests failed")` |
-| `scripts/check_evidence_attachment_runbook.py` | 70 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_evidence_attachment_runbook.py` | 36 | audit_append_call | `failures.append("too few evidence attachment commands")` |
+| `scripts/check_evidence_attachment_runbook.py` | 43 | audit_append_call | `failures.append(f"runbook missing {item}")` |
+| `scripts/check_evidence_attachment_runbook.py` | 49 | audit_append_call | `failures.append(f"release sequence missing {command}")` |
+| `scripts/check_evidence_attachment_runbook.py` | 65 | audit_append_call | `failures.append("evidence attachment runbook tests failed")` |
+| `scripts/check_evidence_attachment_runbook.py` | 71 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_evidence_freeze_confirmation_record.py` | 55 | audit_append_call | `results.append(` |
-| `scripts/check_evidence_registry_commit_provenance.py` | 39 | audit_append_call | `failures.append(f"{finding.id} missing last_verified_commit")` |
-| `scripts/check_evidence_registry_commit_provenance.py` | 66 | audit_append_call | `failures.append("evidence registry commit provenance tests failed")` |
-| `scripts/check_evidence_status_registry.py` | 51 | audit_append_call | `failures.append("POPIA-001 must remain not-proven while focused tests skip cases")` |
-| `scripts/check_evidence_status_registry.py` | 79 | audit_append_call | `failures.append("evidence registry unit tests failed")` |
-| `scripts/check_evidence_status_registry.py` | 100 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_external_approval_gate.py` | 39 | audit_append_call | `failures.append("not all approval records evaluated")` |
-| `scripts/check_external_approval_gate.py` | 45 | audit_append_call | `failures.append(f"{approval.id} evidence file missing")` |
-| `scripts/check_external_approval_gate.py` | 59 | audit_append_call | `failures.append(f"{approval_id} registry status is unexpected: {registry_status}")` |
-| `scripts/check_external_approval_gate.py` | 62 | audit_append_call | `failures.append("release mode requires all external approvals to be complete")` |
-| `scripts/check_external_approval_gate.py` | 93 | audit_append_call | `failures.append("external approval gate tests failed")` |
-| `scripts/check_external_approval_gate.py` | 114 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_evidence_registry_commit_provenance.py` | 40 | audit_append_call | `failures.append(f"{finding.id} missing last_verified_commit")` |
+| `scripts/check_evidence_registry_commit_provenance.py` | 67 | audit_append_call | `failures.append("evidence registry commit provenance tests failed")` |
+| `scripts/check_evidence_status_registry.py` | 52 | audit_append_call | `failures.append("POPIA-001 must remain not-proven while focused tests skip cases")` |
+| `scripts/check_evidence_status_registry.py` | 80 | audit_append_call | `failures.append("evidence registry unit tests failed")` |
+| `scripts/check_evidence_status_registry.py` | 101 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_external_approval_gate.py` | 40 | audit_append_call | `failures.append("not all approval records evaluated")` |
+| `scripts/check_external_approval_gate.py` | 46 | audit_append_call | `failures.append(f"{approval.id} evidence file missing")` |
+| `scripts/check_external_approval_gate.py` | 60 | audit_append_call | `failures.append(f"{approval_id} registry status is unexpected: {registry_status}")` |
+| `scripts/check_external_approval_gate.py` | 63 | audit_append_call | `failures.append("release mode requires all external approvals to be complete")` |
+| `scripts/check_external_approval_gate.py` | 94 | audit_append_call | `failures.append("external approval gate tests failed")` |
+| `scripts/check_external_approval_gate.py` | 115 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_final_acceptance_memo.py` | 55 | audit_append_call | `results.append(` |
 | `scripts/check_final_acceptance_packet_index.py` | 57 | audit_append_call | `results.append(` |
 | `scripts/check_final_archive_accession_record.py` | 55 | audit_append_call | `results.append(` |
@@ -2127,15 +2690,15 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_final_beta_operator_packet.py` | 51 | audit_append_call | `results.append(` |
 | `scripts/check_final_closure_manifest.py` | 55 | audit_append_call | `results.append(` |
 | `scripts/check_final_evidence_noop_execution_assertion.py` | 51 | audit_append_call | `results.append(` |
-| `scripts/check_final_gate_refresh.py` | 40 | audit_append_call | `failures.append("no status surfaces refreshed")` |
-| `scripts/check_final_gate_refresh.py` | 47 | audit_append_call | `failures.append(f"unexpected beta decision: {refresh.beta_decision}")` |
-| `scripts/check_final_gate_refresh.py` | 50 | audit_append_call | `failures.append("release mode requires final beta gate decision GO")` |
-| `scripts/check_final_gate_refresh.py` | 82 | audit_append_call | `failures.append("final gate refresh tests failed")` |
-| `scripts/check_final_gate_refresh.py` | 104 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_final_gate_refresh_classifier.py` | 38 | audit_append_call | `failures.append(f"{item_id} is not classified as resolved non-blocking accepted finding")` |
-| `scripts/check_final_gate_refresh_classifier.py` | 43 | audit_append_call | `failures.append(f"{item_id} must remain beta-blocking")` |
-| `scripts/check_final_gate_refresh_classifier.py` | 62 | audit_append_call | `failures.append("final gate refresh classifier unit tests failed")` |
-| `scripts/check_final_gate_refresh_classifier.py` | 75 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_final_gate_refresh.py` | 41 | audit_append_call | `failures.append("no status surfaces refreshed")` |
+| `scripts/check_final_gate_refresh.py` | 48 | audit_append_call | `failures.append(f"unexpected beta decision: {refresh.beta_decision}")` |
+| `scripts/check_final_gate_refresh.py` | 51 | audit_append_call | `failures.append("release mode requires final beta gate decision GO")` |
+| `scripts/check_final_gate_refresh.py` | 83 | audit_append_call | `failures.append("final gate refresh tests failed")` |
+| `scripts/check_final_gate_refresh.py` | 105 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_final_gate_refresh_classifier.py` | 39 | audit_append_call | `failures.append(f"{item_id} is not classified as resolved non-blocking accepted finding")` |
+| `scripts/check_final_gate_refresh_classifier.py` | 44 | audit_append_call | `failures.append(f"{item_id} must remain beta-blocking")` |
+| `scripts/check_final_gate_refresh_classifier.py` | 63 | audit_append_call | `failures.append("final gate refresh classifier unit tests failed")` |
+| `scripts/check_final_gate_refresh_classifier.py` | 76 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_final_merge_signoff_lock.py` | 53 | audit_append_call | `results.append(` |
 | `scripts/check_final_pr_handoff_summary.py` | 55 | audit_append_call | `results.append(` |
 | `scripts/check_final_pr_merge_readiness.py` | 48 | audit_append_call | `results.append(` |
@@ -2148,8 +2711,8 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_final_release_handoff_package.py` | 54 | audit_append_call | `results.append(FinalReleaseHandoffPackageResult(snippet in text, f"contains {snippet!r}" if snippet in text else f"missing {snippet!r}"))` |
 | `scripts/check_final_release_operator_brief.py` | 55 | audit_append_call | `results.append(` |
 | `scripts/check_final_release_readiness_rollup.py` | 54 | audit_append_call | `results.append(` |
-| `scripts/check_final_release_verification_bundle.py` | 52 | audit_append_call | `results.append(` |
-| `scripts/check_final_release_verification_bundle.py` | 66 | audit_append_call | `results.append(` |
+| `scripts/check_final_release_verification_bundle.py` | 55 | audit_append_call | `results.append(` |
+| `scripts/check_final_release_verification_bundle.py` | 69 | audit_append_call | `results.append(` |
 | `scripts/check_final_reviewer_disposition_record.py` | 56 | audit_append_call | `results.append(` |
 | `scripts/check_final_reviewer_pack_checklist.py` | 52 | audit_append_call | `results.append(` |
 | `scripts/check_final_sealed_package_manifest.py` | 55 | audit_append_call | `results.append(` |
@@ -2215,43 +2778,43 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_incident_response_operations_support_production_readiness.py` | 148 | audit_append_call | `results.append(` |
 | `scripts/check_incident_response_operations_support_production_readiness.py` | 159 | audit_append_call | `results.append(` |
 | `scripts/check_incident_response_operations_support_production_readiness.py` | 191 | audit_append_call | `results.append(OperationsSupportReadinessResult("operations_support_contracts", False, f"contract check failed: {exc}"))` |
-| `scripts/check_jwt_production_guard.py` | 46 | audit_append_call | `failures.append(f"jwt_keyring.py missing {token}")` |
-| `scripts/check_jwt_production_guard.py` | 62 | audit_append_call | `failures.append(label)` |
-| `scripts/check_jwt_production_guard.py` | 77 | audit_append_call | `failures.append("JWT production guard tests failed")` |
-| `scripts/check_jwt_production_guard.py` | 91 | audit_append_call | `failures.append("app.api_v2 import failed with safe JWT secret")` |
-| `scripts/check_jwt_production_guard.py` | 105 | audit_append_call | `failures.append("focused ruff failed")` |
+| `scripts/check_jwt_production_guard.py` | 47 | audit_append_call | `failures.append(f"jwt_keyring.py missing {token}")` |
+| `scripts/check_jwt_production_guard.py` | 63 | audit_append_call | `failures.append(label)` |
+| `scripts/check_jwt_production_guard.py` | 78 | audit_append_call | `failures.append("JWT production guard tests failed")` |
+| `scripts/check_jwt_production_guard.py` | 92 | audit_append_call | `failures.append("app.api_v2 import failed with safe JWT secret")` |
+| `scripts/check_jwt_production_guard.py` | 106 | audit_append_call | `failures.append("focused ruff failed")` |
 | `scripts/check_jwt_rotation.py` | 21 | audit_append_call | `failures.append("missing keyring helper")` |
 | `scripts/check_jwt_rotation.py` | 27 | audit_append_call | `failures.append("security.py missing keyring import")` |
 | `scripts/check_jwt_rotation.py` | 33 | audit_append_call | `failures.append("no kid header path or blocker")` |
-| `scripts/check_jwt_secret_rotation_evidence.py` | 34 | audit_append_call | `if req not in e: failures.append(f"{item} missing {req}")` |
-| `scripts/check_jwt_secret_rotation_evidence.py` | 41 | audit_append_call | `if r.returncode != 0: failures.append("JWT secret rotation unit tests failed")` |
-| `scripts/check_jwt_secret_rotation_evidence.py` | 44 | audit_append_call | `else: failures.append("focused Ruff failed"); print(ruff.stdout)` |
+| `scripts/check_jwt_secret_rotation_evidence.py` | 35 | audit_append_call | `if req not in e: failures.append(f"{item} missing {req}")` |
+| `scripts/check_jwt_secret_rotation_evidence.py` | 42 | audit_append_call | `if r.returncode != 0: failures.append("JWT secret rotation unit tests failed")` |
+| `scripts/check_jwt_secret_rotation_evidence.py` | 45 | audit_append_call | `else: failures.append("focused Ruff failed"); print(ruff.stdout)` |
 | `scripts/check_learner_vertical_journey_contract.py` | 49 | audit_append_call | `results.append(` |
 | `scripts/check_learner_vertical_journey_contract.py` | 54 | audit_append_call | `results.append(` |
 | `scripts/check_learner_vertical_journey_contract.py` | 62 | audit_append_call | `results.append(` |
 | `scripts/check_learner_vertical_journey_contract.py` | 71 | audit_append_call | `results.append(` |
 | `scripts/check_learning_evidence.py` | 74 | audit_append_call | `results.append(EvidenceResult(rel_path, path.exists(), "present" if path.exists() else "missing"))` |
 | `scripts/check_learning_evidence.py` | 80 | audit_append_call | `results.append(` |
-| `scripts/check_lesson_authorization_hardening.py` | 43 | audit_append_call | `failures.append("lesson_owner_learner_id still swallows broad Exception")` |
-| `scripts/check_lesson_authorization_hardening.py` | 51 | audit_append_call | `failures.append("expected narrowed compatibility exceptions missing")` |
-| `scripts/check_lesson_authorization_hardening.py` | 67 | audit_append_call | `failures.append(f"missing router token {token}")` |
-| `scripts/check_lesson_authorization_hardening.py` | 96 | audit_append_call | `failures.append("lesson authorization hardening tests failed")` |
-| `scripts/check_lesson_authorization_hardening.py` | 110 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_lesson_gamification_transaction_rollback_proof.py` | 39 | audit_append_call | `failures.append(f"service missing {token}")` |
-| `scripts/check_lesson_gamification_transaction_rollback_proof.py` | 52 | audit_append_call | `failures.append(f"test missing {token}")` |
-| `scripts/check_lesson_gamification_transaction_rollback_proof.py` | 84 | audit_append_call | `failures.append("lesson gamification transaction rollback proof tests failed")` |
-| `scripts/check_lesson_gamification_transaction_rollback_proof.py` | 105 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_lesson_authorization_hardening.py` | 44 | audit_append_call | `failures.append("lesson_owner_learner_id still swallows broad Exception")` |
+| `scripts/check_lesson_authorization_hardening.py` | 52 | audit_append_call | `failures.append("expected narrowed compatibility exceptions missing")` |
+| `scripts/check_lesson_authorization_hardening.py` | 68 | audit_append_call | `failures.append(f"missing router token {token}")` |
+| `scripts/check_lesson_authorization_hardening.py` | 97 | audit_append_call | `failures.append("lesson authorization hardening tests failed")` |
+| `scripts/check_lesson_authorization_hardening.py` | 111 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_lesson_gamification_transaction_rollback_proof.py` | 40 | audit_append_call | `failures.append(f"service missing {token}")` |
+| `scripts/check_lesson_gamification_transaction_rollback_proof.py` | 53 | audit_append_call | `failures.append(f"test missing {token}")` |
+| `scripts/check_lesson_gamification_transaction_rollback_proof.py` | 85 | audit_append_call | `failures.append("lesson gamification transaction rollback proof tests failed")` |
+| `scripts/check_lesson_gamification_transaction_rollback_proof.py` | 106 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_lesson_generation_safety_contract.py` | 41 | audit_append_call | `results.append(` |
 | `scripts/check_lesson_object_authorization_repair.py` | 34 | audit_append_call | `failures.append("helper import")` |
 | `scripts/check_lesson_object_authorization_repair.py` | 45 | audit_append_call | `failures.append(f"{node.name} read")` |
 | `scripts/check_lesson_object_authorization_repair.py` | 51 | audit_append_call | `failures.append(f"{node.name} write")` |
 | `scripts/check_lesson_object_authorization_repair.py` | 57 | audit_append_call | `failures.append(f"{node.name} sync")` |
 | `scripts/check_lesson_object_authorization_repair.py` | 65 | audit_append_call | `failures.append("report")` |
-| `scripts/check_live_db_tx_evidence.py` | 39 | audit_append_call | `failures.append("not all route transaction slices evaluated")` |
-| `scripts/check_live_db_tx_evidence.py` | 46 | audit_append_call | `failures.append(f"unexpected live DB evidence status: {status.status}")` |
-| `scripts/check_live_db_tx_evidence.py` | 49 | audit_append_call | `failures.append("release mode requires complete live DB transaction evidence")` |
-| `scripts/check_live_db_tx_evidence.py` | 80 | audit_append_call | `failures.append("live DB transaction evidence tests failed")` |
-| `scripts/check_live_db_tx_evidence.py` | 101 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_live_db_tx_evidence.py` | 40 | audit_append_call | `failures.append("not all route transaction slices evaluated")` |
+| `scripts/check_live_db_tx_evidence.py` | 47 | audit_append_call | `failures.append(f"unexpected live DB evidence status: {status.status}")` |
+| `scripts/check_live_db_tx_evidence.py` | 50 | audit_append_call | `failures.append("release mode requires complete live DB transaction evidence")` |
+| `scripts/check_live_db_tx_evidence.py` | 81 | audit_append_call | `failures.append("live DB transaction evidence tests failed")` |
+| `scripts/check_live_db_tx_evidence.py` | 102 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_llm_provider_fallback_contract.py` | 47 | audit_append_call | `results.append(` |
 | `scripts/check_llm_provider_fallback_contract.py` | 56 | audit_append_call | `results.append(` |
 | `scripts/check_llm_provider_fallback_contract.py` | 65 | audit_append_call | `results.append(` |
@@ -2290,14 +2853,14 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_popia_consent_lifecycle_repair.py` | 77 | audit_append_call | `failures.append(f"{node.name} actor")` |
 | `scripts/check_popia_consent_lifecycle_repair.py` | 85 | audit_append_call | `failures.append("repair report")` |
 | `scripts/check_popia_legal_evidence.py` | 34 | audit_append_call | `results.append(Result("docs/legal/legal_documents_index.md", snippet.lower() in text.lower(), f"contains {snippet!r}"))` |
-| `scripts/check_popia_response_contract_no_skips.py` | 69 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_popia_route_tx_no_false_closure.py` | 64 | audit_append_call | `failures.append(` |
-| `scripts/check_popia_route_tx_no_false_closure.py` | 73 | audit_append_call | `failures.append("gap plan with actions must remain blocked")` |
-| `scripts/check_popia_route_tx_no_false_closure.py` | 106 | audit_append_call | `failures.append("POPIA route transaction gap-plan tests failed")` |
-| `scripts/check_popia_route_tx_no_false_closure.py` | 127 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_popia_transaction_rollback_proof.py` | 41 | audit_append_call | `failures.append(f"service missing {token}")` |
-| `scripts/check_popia_transaction_rollback_proof.py` | 73 | audit_append_call | `failures.append("POPIA transaction rollback proof tests failed")` |
-| `scripts/check_popia_transaction_rollback_proof.py` | 88 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_popia_response_contract_no_skips.py` | 70 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_popia_route_tx_no_false_closure.py` | 65 | audit_append_call | `failures.append(` |
+| `scripts/check_popia_route_tx_no_false_closure.py` | 74 | audit_append_call | `failures.append("gap plan with actions must remain blocked")` |
+| `scripts/check_popia_route_tx_no_false_closure.py` | 107 | audit_append_call | `failures.append("POPIA route transaction gap-plan tests failed")` |
+| `scripts/check_popia_route_tx_no_false_closure.py` | 128 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_popia_transaction_rollback_proof.py` | 42 | audit_append_call | `failures.append(f"service missing {token}")` |
+| `scripts/check_popia_transaction_rollback_proof.py` | 74 | audit_append_call | `failures.append("POPIA transaction rollback proof tests failed")` |
+| `scripts/check_popia_transaction_rollback_proof.py` | 89 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_post_beta_evidence_archive_manifest.py` | 59 | audit_append_call | `results.append(` |
 | `scripts/check_post_closeout_custody_register.py` | 55 | audit_append_call | `results.append(` |
 | `scripts/check_post_closeout_evidence_access_policy.py` | 50 | audit_append_call | `results.append(` |
@@ -2306,21 +2869,21 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_post_merge_evidence_continuity_note.py` | 51 | audit_append_call | `results.append(` |
 | `scripts/check_post_merge_release_handoff.py` | 52 | audit_append_call | `results.append(` |
 | `scripts/check_post_terminal_audit_readiness.py` | 50 | audit_append_call | `results.append(PostTerminalAuditReadinessResult(snippet in text, f"contains {snippet!r}" if snippet in text else f"missing {snippet!r}"))` |
-| `scripts/check_pr002r_evidence.py` | 103 | audit_append_call | `results.append(` |
-| `scripts/check_pr002r_evidence.py` | 121 | audit_append_call | `results.append(` |
-| `scripts/check_pr002r_evidence.py` | 133 | audit_append_call | `results.append(` |
-| `scripts/check_pr002r_evidence.py` | 154 | audit_append_call | `lines.append(f"- {status} [{result.kind}] {result.path}: {result.message}")` |
+| `scripts/check_pr002r_evidence.py` | 101 | audit_append_call | `results.append(` |
+| `scripts/check_pr002r_evidence.py` | 119 | audit_append_call | `results.append(` |
+| `scripts/check_pr002r_evidence.py` | 131 | audit_append_call | `results.append(` |
+| `scripts/check_pr002r_evidence.py` | 152 | audit_append_call | `lines.append(f"- {status} [{result.kind}] {result.path}: {result.message}")` |
 | `scripts/check_pr_closeout_evidence_checklist.py` | 47 | audit_append_call | `results.append(` |
 | `scripts/check_pr_merge_evidence_summary.py` | 55 | audit_append_call | `results.append(` |
 | `scripts/check_pr_ready_final_closure_certificate.py` | 53 | audit_append_call | `results.append(` |
 | `scripts/check_privacy_boundary_evidence.py` | 66 | audit_append_call | `results.append(` |
 | `scripts/check_privacy_boundary_evidence.py` | 74 | audit_append_call | `results.append(` |
-| `scripts/check_prod_frontend_deployment.py` | 42 | audit_append_call | `failures.append("release mode requires production frontend deployment configuration")` |
-| `scripts/check_prod_frontend_deployment.py` | 74 | audit_append_call | `failures.append("production frontend deployment tests failed")` |
-| `scripts/check_prod_frontend_deployment.py` | 96 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_prod_frontend_runtime.py` | 49 | audit_append_call | `failures.append("release mode requires accepted production frontend runtime evidence")` |
-| `scripts/check_prod_frontend_runtime.py` | 81 | audit_append_call | `failures.append("production frontend runtime tests failed")` |
-| `scripts/check_prod_frontend_runtime.py` | 103 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_prod_frontend_deployment.py` | 43 | audit_append_call | `failures.append("release mode requires production frontend deployment configuration")` |
+| `scripts/check_prod_frontend_deployment.py` | 75 | audit_append_call | `failures.append("production frontend deployment tests failed")` |
+| `scripts/check_prod_frontend_deployment.py` | 97 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_prod_frontend_runtime.py` | 50 | audit_append_call | `failures.append("release mode requires accepted production frontend runtime evidence")` |
+| `scripts/check_prod_frontend_runtime.py` | 82 | audit_append_call | `failures.append("production frontend runtime tests failed")` |
+| `scripts/check_prod_frontend_runtime.py` | 104 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_production_restore_approval.py` | 43 | audit_append_call | `results.append(` |
 | `scripts/check_production_restore_approval.py` | 52 | audit_append_call | `results.append(` |
 | `scripts/check_production_restore_approval.py` | 61 | audit_append_call | `results.append(` |
@@ -2341,10 +2904,10 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_release_evidence_index.py` | 41 | audit_append_call | `failures.append(f"missing file {path}")` |
 | `scripts/check_release_evidence_index.py` | 50 | audit_append_call | `failures.append(f"{path} missing {needle!r}")` |
 | `scripts/check_release_evidence_retention_finalization.py` | 53 | audit_append_call | `results.append(` |
-| `scripts/check_release_go_no_go.py` | 42 | audit_append_call | `failures.append(f"unexpected decision: {status.decision}")` |
-| `scripts/check_release_go_no_go.py` | 45 | audit_append_call | `failures.append("release mode requires generated decision GO")` |
-| `scripts/check_release_go_no_go.py` | 76 | audit_append_call | `failures.append("release go/no-go unit tests failed")` |
-| `scripts/check_release_go_no_go.py` | 97 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_release_go_no_go.py` | 43 | audit_append_call | `failures.append(f"unexpected decision: {status.decision}")` |
+| `scripts/check_release_go_no_go.py` | 46 | audit_append_call | `failures.append("release mode requires generated decision GO")` |
+| `scripts/check_release_go_no_go.py` | 77 | audit_append_call | `failures.append("release go/no-go unit tests failed")` |
+| `scripts/check_release_go_no_go.py` | 98 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_release_handoff_freeze_assertion.py` | 50 | audit_append_call | `results.append(` |
 | `scripts/check_release_owner_accountability.py` | 52 | audit_append_call | `results.append(` |
 | `scripts/check_release_owner_execution_guardrail.py` | 50 | audit_append_call | `results.append(` |
@@ -2358,83 +2921,83 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_roadmap_after_production_readiness_baseline.py` | 161 | audit_append_call | `results.append(` |
 | `scripts/check_roadmap_after_production_readiness_baseline.py` | 187 | audit_append_call | `results.append(RoadmapReadinessResult("roadmap_contracts", False, f"contract check failed: {exc}"))` |
 | `scripts/check_route_alias_matrix.py` | 79 | audit_append_call | `lines.append(f"{row.method.upper()} {row.canonical_path} -- baseline exception; review before release")` |
-| `scripts/check_route_tx_auth_slice.py` | 40 | audit_append_call | `failures.append("auth route delegation slice is not locally proven")` |
-| `scripts/check_route_tx_auth_slice.py` | 47 | audit_append_call | `failures.append(f"unexpected live DB status: {report.live_db_status}")` |
-| `scripts/check_route_tx_auth_slice.py` | 50 | audit_append_call | `failures.append("release mode requires live DB auth route transaction evidence")` |
-| `scripts/check_route_tx_auth_slice.py` | 81 | audit_append_call | `failures.append("auth route transaction slice tests failed")` |
-| `scripts/check_route_tx_auth_slice.py` | 102 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_route_tx_diagnostics_slice.py` | 43 | audit_append_call | `failures.append("gap plan with actions must remain blocked")` |
-| `scripts/check_route_tx_diagnostics_slice.py` | 51 | audit_append_call | `failures.append(f"unexpected live DB status: {report.live_db_status}")` |
-| `scripts/check_route_tx_diagnostics_slice.py` | 53 | audit_append_call | `failures.append("release mode requires local diagnostics route source passing and live DB evidence")` |
-| `scripts/check_route_tx_diagnostics_slice.py` | 64 | audit_append_call | `failures.append("diagnostics route transaction slice tests failed")` |
-| `scripts/check_route_tx_diagnostics_slice.py` | 69 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_route_tx_impl_plan.py` | 38 | audit_append_call | `failures.append("TX route inventory is missing")` |
-| `scripts/check_route_tx_impl_plan.py` | 50 | audit_append_call | `failures.append("route transaction actions must not be closable by static marker")` |
-| `scripts/check_route_tx_impl_plan.py` | 55 | audit_append_call | `failures.append("release mode requires route transaction implementation actions to be zero")` |
-| `scripts/check_route_tx_impl_plan.py` | 86 | audit_append_call | `failures.append("route transaction implementation plan tests failed")` |
-| `scripts/check_route_tx_impl_plan.py` | 107 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_route_tx_popia_slice.py` | 41 | audit_append_call | `failures.append("no POPIA routes selected for slice")` |
-| `scripts/check_route_tx_popia_slice.py` | 46 | audit_append_call | `failures.append("POPIA route delegation slice is not locally proven")` |
-| `scripts/check_route_tx_popia_slice.py` | 53 | audit_append_call | `failures.append(f"unexpected live DB status: {report.live_db_status}")` |
-| `scripts/check_route_tx_popia_slice.py` | 56 | audit_append_call | `failures.append("release mode requires live DB POPIA route transaction evidence")` |
-| `scripts/check_route_tx_popia_slice.py` | 87 | audit_append_call | `failures.append("POPIA route transaction slice tests failed")` |
-| `scripts/check_route_tx_popia_slice.py` | 108 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_route_tx_slice_rollup.py` | 40 | audit_append_call | `failures.append("expected three route transaction slices in rollup")` |
-| `scripts/check_route_tx_slice_rollup.py` | 47 | audit_append_call | `failures.append(f"unexpected rollup status: {rollup.status}")` |
-| `scripts/check_route_tx_slice_rollup.py` | 50 | audit_append_call | `failures.append("release mode requires route transaction slice rollup release-ready")` |
-| `scripts/check_route_tx_slice_rollup.py` | 81 | audit_append_call | `failures.append("route transaction slice rollup tests failed")` |
-| `scripts/check_route_tx_slice_rollup.py` | 102 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_route_tx_auth_slice.py` | 41 | audit_append_call | `failures.append("auth route delegation slice is not locally proven")` |
+| `scripts/check_route_tx_auth_slice.py` | 48 | audit_append_call | `failures.append(f"unexpected live DB status: {report.live_db_status}")` |
+| `scripts/check_route_tx_auth_slice.py` | 51 | audit_append_call | `failures.append("release mode requires live DB auth route transaction evidence")` |
+| `scripts/check_route_tx_auth_slice.py` | 82 | audit_append_call | `failures.append("auth route transaction slice tests failed")` |
+| `scripts/check_route_tx_auth_slice.py` | 103 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_route_tx_diagnostics_slice.py` | 44 | audit_append_call | `failures.append("gap plan with actions must remain blocked")` |
+| `scripts/check_route_tx_diagnostics_slice.py` | 52 | audit_append_call | `failures.append(f"unexpected live DB status: {report.live_db_status}")` |
+| `scripts/check_route_tx_diagnostics_slice.py` | 54 | audit_append_call | `failures.append("release mode requires local diagnostics route source passing and live DB evidence")` |
+| `scripts/check_route_tx_diagnostics_slice.py` | 65 | audit_append_call | `failures.append("diagnostics route transaction slice tests failed")` |
+| `scripts/check_route_tx_diagnostics_slice.py` | 70 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_route_tx_impl_plan.py` | 39 | audit_append_call | `failures.append("TX route inventory is missing")` |
+| `scripts/check_route_tx_impl_plan.py` | 51 | audit_append_call | `failures.append("route transaction actions must not be closable by static marker")` |
+| `scripts/check_route_tx_impl_plan.py` | 56 | audit_append_call | `failures.append("release mode requires route transaction implementation actions to be zero")` |
+| `scripts/check_route_tx_impl_plan.py` | 87 | audit_append_call | `failures.append("route transaction implementation plan tests failed")` |
+| `scripts/check_route_tx_impl_plan.py` | 108 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_route_tx_popia_slice.py` | 42 | audit_append_call | `failures.append("no POPIA routes selected for slice")` |
+| `scripts/check_route_tx_popia_slice.py` | 47 | audit_append_call | `failures.append("POPIA route delegation slice is not locally proven")` |
+| `scripts/check_route_tx_popia_slice.py` | 54 | audit_append_call | `failures.append(f"unexpected live DB status: {report.live_db_status}")` |
+| `scripts/check_route_tx_popia_slice.py` | 57 | audit_append_call | `failures.append("release mode requires live DB POPIA route transaction evidence")` |
+| `scripts/check_route_tx_popia_slice.py` | 88 | audit_append_call | `failures.append("POPIA route transaction slice tests failed")` |
+| `scripts/check_route_tx_popia_slice.py` | 109 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_route_tx_slice_rollup.py` | 41 | audit_append_call | `failures.append("expected three route transaction slices in rollup")` |
+| `scripts/check_route_tx_slice_rollup.py` | 48 | audit_append_call | `failures.append(f"unexpected rollup status: {rollup.status}")` |
+| `scripts/check_route_tx_slice_rollup.py` | 51 | audit_append_call | `failures.append("release mode requires route transaction slice rollup release-ready")` |
+| `scripts/check_route_tx_slice_rollup.py` | 82 | audit_append_call | `failures.append("route transaction slice rollup tests failed")` |
+| `scripts/check_route_tx_slice_rollup.py` | 103 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_router_boundary_enforcement.py` | 24 | audit_append_call | `failures.append(f"{router}: {violations}")` |
-| `scripts/check_runtime_blockers_after_followup_audit.py` | 23 | audit_append_call | `failures.append(f"POPIA adapter missing {method}")` |
-| `scripts/check_runtime_blockers_after_followup_audit.py` | 26 | audit_append_call | `failures.append("consent dependency missing POPIA adapter")` |
-| `scripts/check_runtime_blockers_after_followup_audit.py` | 29 | audit_append_call | `failures.append("auth.py still contains `learners` token")` |
-| `scripts/check_runtime_blockers_after_followup_audit.py` | 32 | audit_append_call | `failures.append(f"auth.py direct constructor remains: {token}")` |
-| `scripts/check_runtime_blockers_after_followup_audit.py` | 35 | audit_append_call | `failures.append("diagnostics still uses require_items=False")` |
-| `scripts/check_runtime_blockers_after_followup_audit.py` | 39 | audit_append_call | `failures.append(f"jobs missing {name}")` |
-| `scripts/check_runtime_blockers_after_followup_audit.py` | 42 | audit_append_call | `failures.append(f"jobs.py still directly references {token}")` |
-| `scripts/check_runtime_entrypoints.py` | 123 | audit_append_call | `results.append(check_entrypoint(spec, canonical=index == 0))` |
-| `scripts/check_runtime_entrypoints.py` | 153 | audit_append_call | `lines.append(f"- {status} {result.spec}")` |
-| `scripts/check_runtime_entrypoints.py` | 156 | audit_append_call | `lines.append(f"  title: {result.title}")` |
-| `scripts/check_runtime_entrypoints.py` | 158 | audit_append_call | `lines.append(f"  version: {result.version}")` |
-| `scripts/check_runtime_entrypoints.py` | 160 | audit_append_call | `lines.append(f"  route_count: {result.route_count}")` |
-| `scripts/check_runtime_entrypoints.py` | 162 | audit_append_call | `lines.append(f"  missing_routes: {', '.join(result.missing_routes)}")` |
-| `scripts/check_runtime_entrypoints.py` | 164 | audit_append_call | `lines.append(f"  missing_prefixes: {', '.join(result.missing_prefixes)}")` |
-| `scripts/check_runtime_entrypoints.py` | 166 | audit_append_call | `lines.append(f"  error: {result.error}")` |
-| `scripts/check_runtime_integration_proof.py` | 35 | audit_append_call | `failures.append("POPIA dependency missing lifecycle adapter")` |
-| `scripts/check_runtime_integration_proof.py` | 40 | audit_append_call | `failures.append(f"POPIA adapter missing {method}")` |
-| `scripts/check_runtime_integration_proof.py` | 44 | audit_append_call | `failures.append("diagnostics contains require_items=False")` |
-| `scripts/check_runtime_integration_proof.py` | 52 | audit_append_call | `failures.append("missing validate_session_served_item_binding helper")` |
-| `scripts/check_runtime_integration_proof.py` | 78 | audit_append_call | `failures.append("focused ruff critical runtime check failed")` |
+| `scripts/check_runtime_blockers_after_followup_audit.py` | 24 | audit_append_call | `failures.append(f"POPIA adapter missing {method}")` |
+| `scripts/check_runtime_blockers_after_followup_audit.py` | 27 | audit_append_call | `failures.append("consent dependency missing POPIA adapter")` |
+| `scripts/check_runtime_blockers_after_followup_audit.py` | 30 | audit_append_call | `failures.append("auth.py still contains `learners` token")` |
+| `scripts/check_runtime_blockers_after_followup_audit.py` | 33 | audit_append_call | `failures.append(f"auth.py direct constructor remains: {token}")` |
+| `scripts/check_runtime_blockers_after_followup_audit.py` | 36 | audit_append_call | `failures.append("diagnostics still uses require_items=False")` |
+| `scripts/check_runtime_blockers_after_followup_audit.py` | 40 | audit_append_call | `failures.append(f"jobs missing {name}")` |
+| `scripts/check_runtime_blockers_after_followup_audit.py` | 43 | audit_append_call | `failures.append(f"jobs.py still directly references {token}")` |
+| `scripts/check_runtime_entrypoints.py` | 122 | audit_append_call | `results.append(check_entrypoint(spec, canonical=index == 0))` |
+| `scripts/check_runtime_entrypoints.py` | 134 | audit_append_call | `lines.append(f"- {status} {result.spec}")` |
+| `scripts/check_runtime_entrypoints.py` | 137 | audit_append_call | `lines.append(f"  title: {result.title}")` |
+| `scripts/check_runtime_entrypoints.py` | 139 | audit_append_call | `lines.append(f"  version: {result.version}")` |
+| `scripts/check_runtime_entrypoints.py` | 141 | audit_append_call | `lines.append(f"  route_count: {result.route_count}")` |
+| `scripts/check_runtime_entrypoints.py` | 143 | audit_append_call | `lines.append(f"  missing_routes: {', '.join(result.missing_routes)}")` |
+| `scripts/check_runtime_entrypoints.py` | 145 | audit_append_call | `lines.append(f"  missing_prefixes: {', '.join(result.missing_prefixes)}")` |
+| `scripts/check_runtime_entrypoints.py` | 147 | audit_append_call | `lines.append(f"  error: {result.error}")` |
+| `scripts/check_runtime_integration_proof.py` | 36 | audit_append_call | `failures.append("POPIA dependency missing lifecycle adapter")` |
+| `scripts/check_runtime_integration_proof.py` | 41 | audit_append_call | `failures.append(f"POPIA adapter missing {method}")` |
+| `scripts/check_runtime_integration_proof.py` | 45 | audit_append_call | `failures.append("diagnostics contains require_items=False")` |
+| `scripts/check_runtime_integration_proof.py` | 53 | audit_append_call | `failures.append("missing validate_session_served_item_binding helper")` |
+| `scripts/check_runtime_integration_proof.py` | 79 | audit_append_call | `failures.append("focused ruff critical runtime check failed")` |
 | `scripts/check_runtime_release_evidence.py` | 67 | audit_append_call | `failures.append(f"missing file {path}")` |
 | `scripts/check_runtime_release_evidence.py` | 77 | audit_append_call | `failures.append(f"{path} missing {needle!r}")` |
 | `scripts/check_runtime_release_evidence.py` | 88 | audit_append_call | `failures.append(f"{path} pending status removed")` |
 | `scripts/check_runtime_wiring_no_destructive_actions.py` | 35 | audit_append_call | `failures.append(f"missing {relative}")` |
 | `scripts/check_runtime_wiring_no_destructive_actions.py` | 41 | audit_append_call | `failures.append(f"{relative}: {pattern}")` |
-| `scripts/check_schema_drift_contract.py` | 27 | audit_append_call | `failures.append(f"missing {path}")` |
-| `scripts/check_schema_drift_contract.py` | 41 | audit_append_call | `failures.append("compare_orm_tables_to_database.py failed without DB")` |
+| `scripts/check_schema_drift_contract.py` | 28 | audit_append_call | `failures.append(f"missing {path}")` |
+| `scripts/check_schema_drift_contract.py` | 42 | audit_append_call | `failures.append("compare_orm_tables_to_database.py failed without DB")` |
 | `scripts/check_sealed_evidence_access_handoff.py` | 54 | audit_append_call | `results.append(` |
 | `scripts/check_sealed_reviewer_closeout_packet.py` | 55 | audit_append_call | `results.append(` |
 | `scripts/check_security_posture_threat_modeling_production_readiness.py` | 172 | audit_append_call | `results.append(` |
 | `scripts/check_security_posture_threat_modeling_production_readiness.py` | 183 | audit_append_call | `results.append(` |
 | `scripts/check_security_posture_threat_modeling_production_readiness.py` | 211 | audit_append_call | `results.append(SecurityPostureReadinessResult("security_posture_contracts", False, f"contract check failed: {exc}"))` |
-| `scripts/check_staging_acceptance.py` | 41 | audit_append_call | `failures.append(f"unexpected staging status: {status.status}")` |
-| `scripts/check_staging_acceptance.py` | 49 | audit_append_call | `failures.append(f"unexpected STAGING-001 registry status: {registry_status}")` |
-| `scripts/check_staging_acceptance.py` | 52 | audit_append_call | `failures.append("release mode requires accepted staging evidence")` |
-| `scripts/check_staging_acceptance.py` | 83 | audit_append_call | `failures.append("staging acceptance evidence tests failed")` |
-| `scripts/check_staging_acceptance.py` | 104 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_staging_acceptance.py` | 42 | audit_append_call | `failures.append(f"unexpected staging status: {status.status}")` |
+| `scripts/check_staging_acceptance.py` | 50 | audit_append_call | `failures.append(f"unexpected STAGING-001 registry status: {registry_status}")` |
+| `scripts/check_staging_acceptance.py` | 53 | audit_append_call | `failures.append("release mode requires accepted staging evidence")` |
+| `scripts/check_staging_acceptance.py` | 84 | audit_append_call | `failures.append("staging acceptance evidence tests failed")` |
+| `scripts/check_staging_acceptance.py` | 105 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_staging_release_gate.py` | 45 | audit_append_call | `results.append(StagingGateResult("file", str(DOC.relative_to(REPO_ROOT)), DOC.exists(), "present" if DOC.exists() else "missing"))` |
 | `scripts/check_staging_release_gate.py` | 48 | audit_append_call | `results.append(` |
 | `scripts/check_staging_release_gate.py` | 59 | audit_append_call | `results.append(` |
-| `scripts/check_staging_smoke_evidence_acceptance.py` | 81 | audit_append_call | `failures.append("staging smoke evidence unit tests failed")` |
-| `scripts/check_staging_smoke_evidence_acceptance.py` | 103 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_staging_smoke_evidence_acceptance.py` | 118 | audit_append_call | `failures.append(f"{item_id} missing {required}")` |
-| `scripts/check_staging_smoke_evidence_acceptance.py` | 120 | audit_append_call | `failures.append(f"{item_id} missing run ID {status.run_id}")` |
-| `scripts/check_staging_smoke_evidence_acceptance.py` | 122 | audit_append_call | `failures.append(f"{item_id} missing commit SHA {status.current_commit}")` |
-| `scripts/check_staging_smoke_evidence_acceptance.py` | 124 | audit_append_call | `failures.append(f"{item_id} missing staging URL {status.staging_base_url}")` |
+| `scripts/check_staging_smoke_evidence_acceptance.py` | 82 | audit_append_call | `failures.append("staging smoke evidence unit tests failed")` |
+| `scripts/check_staging_smoke_evidence_acceptance.py` | 104 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_staging_smoke_evidence_acceptance.py` | 119 | audit_append_call | `failures.append(f"{item_id} missing {required}")` |
+| `scripts/check_staging_smoke_evidence_acceptance.py` | 121 | audit_append_call | `failures.append(f"{item_id} missing run ID {status.run_id}")` |
+| `scripts/check_staging_smoke_evidence_acceptance.py` | 123 | audit_append_call | `failures.append(f"{item_id} missing commit SHA {status.current_commit}")` |
+| `scripts/check_staging_smoke_evidence_acceptance.py` | 125 | audit_append_call | `failures.append(f"{item_id} missing staging URL {status.staging_base_url}")` |
 | `scripts/check_staging_smoke_evidence_manifest.py` | 49 | audit_append_call | `results.append(` |
 | `scripts/check_staging_smoke_evidence_manifest.py` | 58 | audit_append_call | `results.append(` |
-| `scripts/check_staging_smoke_workflow_config.py` | 67 | audit_append_call | `blockers.append(blocker)` |
-| `scripts/check_staging_smoke_workflow_config.py` | 113 | audit_append_call | `lines.append("- None")` |
+| `scripts/check_staging_smoke_workflow_config.py` | 68 | audit_append_call | `blockers.append(blocker)` |
+| `scripts/check_staging_smoke_workflow_config.py` | 114 | audit_append_call | `lines.append("- None")` |
 | `scripts/check_terminal_evidence_retrieval_guide.py` | 55 | audit_append_call | `results.append(` |
 | `scripts/check_terminal_evidence_seal.py` | 61 | audit_append_call | `results.append(` |
 | `scripts/check_terminal_handoff_closure_note.py` | 55 | audit_append_call | `results.append(` |
@@ -2448,60 +3011,98 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_todo_implementation_plan.py` | 67 | audit_append_call | `results.append(` |
 | `scripts/check_todo_implementation_plan.py` | 75 | audit_append_call | `results.append(` |
 | `scripts/check_todo_implementation_plan.py` | 83 | audit_append_call | `results.append(` |
-| `scripts/check_transaction_boundary_guardrails.py` | 43 | audit_append_call | `failures.append("transaction boundary inventory generation failed")` |
-| `scripts/check_transaction_boundary_guardrails.py` | 56 | audit_append_call | `failures.append("inventory contains no findings")` |
-| `scripts/check_transaction_boundary_guardrails.py` | 63 | audit_append_call | `failures.append(f"inventory missing expected term: {term}")` |
-| `scripts/check_transaction_boundary_guardrails.py` | 68 | audit_append_call | `failures.append("evidence registry missing TX-001")` |
-| `scripts/check_transaction_boundary_guardrails.py` | 97 | audit_append_call | `failures.append("transaction boundary guardrail unit tests failed")` |
-| `scripts/check_transaction_boundary_guardrails.py` | 120 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_transaction_rollback_rollup.py` | 37 | audit_append_call | `failures.append("isolated rollback coverage incomplete")` |
-| `scripts/check_transaction_rollback_rollup.py` | 43 | audit_append_call | `failures.append(f"{proof.id} missing from registry")` |
-| `scripts/check_transaction_rollback_rollup.py` | 47 | audit_append_call | `failures.append(f"{proof.id} is not integration-passing")` |
-| `scripts/check_transaction_rollback_rollup.py` | 51 | audit_append_call | `failures.append(f"{proof.id} evidence file missing: {proof.evidence_file}")` |
-| `scripts/check_transaction_rollback_rollup.py` | 56 | audit_append_call | `failures.append(f"registry missing {proof_id}")` |
-| `scripts/check_transaction_rollback_rollup.py` | 61 | audit_append_call | `failures.append("TX-001 must not be marked production-ready by this rollup")` |
-| `scripts/check_transaction_rollback_rollup.py` | 92 | audit_append_call | `failures.append("transaction rollback rollup tests failed")` |
-| `scripts/check_transaction_rollback_rollup.py` | 113 | audit_append_call | `failures.append("focused Ruff failed")` |
-| `scripts/check_tx_route_wiring.py` | 37 | audit_append_call | `failures.append("no route functions scanned")` |
-| `scripts/check_tx_route_wiring.py` | 81 | audit_append_call | `failures.append("TX route wiring inventory tests failed")` |
-| `scripts/check_tx_route_wiring.py` | 102 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_transaction_boundary_guardrails.py` | 44 | audit_append_call | `failures.append("transaction boundary inventory generation failed")` |
+| `scripts/check_transaction_boundary_guardrails.py` | 57 | audit_append_call | `failures.append("inventory contains no findings")` |
+| `scripts/check_transaction_boundary_guardrails.py` | 64 | audit_append_call | `failures.append(f"inventory missing expected term: {term}")` |
+| `scripts/check_transaction_boundary_guardrails.py` | 69 | audit_append_call | `failures.append("evidence registry missing TX-001")` |
+| `scripts/check_transaction_boundary_guardrails.py` | 98 | audit_append_call | `failures.append("transaction boundary guardrail unit tests failed")` |
+| `scripts/check_transaction_boundary_guardrails.py` | 121 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_transaction_rollback_rollup.py` | 38 | audit_append_call | `failures.append("isolated rollback coverage incomplete")` |
+| `scripts/check_transaction_rollback_rollup.py` | 44 | audit_append_call | `failures.append(f"{proof.id} missing from registry")` |
+| `scripts/check_transaction_rollback_rollup.py` | 48 | audit_append_call | `failures.append(f"{proof.id} is not integration-passing")` |
+| `scripts/check_transaction_rollback_rollup.py` | 52 | audit_append_call | `failures.append(f"{proof.id} evidence file missing: {proof.evidence_file}")` |
+| `scripts/check_transaction_rollback_rollup.py` | 57 | audit_append_call | `failures.append(f"registry missing {proof_id}")` |
+| `scripts/check_transaction_rollback_rollup.py` | 62 | audit_append_call | `failures.append("TX-001 must not be marked production-ready by this rollup")` |
+| `scripts/check_transaction_rollback_rollup.py` | 93 | audit_append_call | `failures.append("transaction rollback rollup tests failed")` |
+| `scripts/check_transaction_rollback_rollup.py` | 114 | audit_append_call | `failures.append("focused Ruff failed")` |
+| `scripts/check_tx_route_wiring.py` | 38 | audit_append_call | `failures.append("no route functions scanned")` |
+| `scripts/check_tx_route_wiring.py` | 82 | audit_append_call | `failures.append("TX route wiring inventory tests failed")` |
+| `scripts/check_tx_route_wiring.py` | 103 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_warning_cleanup.py` | 36 | audit_append_call | `failures.append("pytest.ini norecursedirs missing: " + ", ".join(sorted(missing)))` |
 | `scripts/check_warning_cleanup.py` | 45 | audit_append_call | `failures.append(f"{repo_test} _mock_session block {idx} lacks synchronous add MagicMock")` |
 | `scripts/check_warning_cleanup.py` | 49 | audit_append_call | `failures.append(f"missing {repo_test}")` |
 | `scripts/check_warning_cleanup.py` | 55 | audit_append_call | `failures.append(f"{register} missing or incomplete")` |
 | `scripts/ci/ci_lesson_bank_check.py` | 169 | audit_append_call | `results.append(result)` |
 | `scripts/ci/ci_lesson_bank_check.py` | 218 | audit_append_call | `violations.append(violation)` |
-| `scripts/ci_auth_refresh_db_proof_workflow.py` | 88 | audit_append_call | `lines.append(f"\| `{check.name}` \| {check.passed} \| {check.detail} \|")` |
-| `scripts/ci_auth_refresh_db_proof_workflow.py` | 90 | audit_append_call | `lines.extend(f"- {blocker}" for blocker in status.blockers) if status.blockers else lines.append("- None")` |
-| `scripts/ci_authority.py` | 106 | audit_append_call | `blockers.append("No GitHub Actions workflow file found under .github/workflows")` |
-| `scripts/ci_authority.py` | 108 | audit_append_call | `blockers.append("Workflow file does not mention every required local CI-equivalent command family")` |
-| `scripts/ci_authority.py` | 110 | audit_append_call | `blockers.append("Missing local CI-equivalent Makefile targets: " + ", ".join(missing_targets))` |
-| `scripts/ci_authority.py` | 112 | audit_append_call | `blockers.append("No GitHub Actions run URL recorded in docs/release/ci_evidence.md")` |
-| `scripts/ci_authority.py` | 214 | audit_append_call | `lines.append(f"\| `{target}` \| {target in present} \|")` |
-| `scripts/ci_authority.py` | 220 | audit_append_call | `lines.append("- None")` |
-| `scripts/ci_evidence_acceptance.py` | 168 | audit_append_call | `blockers.append("GitHub CLI is unavailable or not authenticated")` |
-| `scripts/ci_evidence_acceptance.py` | 177 | audit_append_call | `blockers.append("CI_EVIDENCE_RUN_ID is not numeric")` |
-| `scripts/ci_evidence_acceptance.py` | 181 | audit_append_call | `blockers.append(f"unable to read GitHub Actions run {requested_run_id}")` |
-| `scripts/ci_evidence_acceptance.py` | 185 | audit_append_call | `blockers.append("no successful non-auth-refresh GitHub Actions run found for current commit")` |
-| `scripts/ci_evidence_acceptance.py` | 198 | audit_append_call | `blockers.append("run ID is missing or non-numeric")` |
-| `scripts/ci_evidence_acceptance.py` | 201 | audit_append_call | `blockers.append("run URL does not contain the numeric run ID")` |
-| `scripts/ci_evidence_acceptance.py` | 204 | audit_append_call | `blockers.append("run URL contains placeholder evidence")` |
-| `scripts/ci_evidence_acceptance.py` | 207 | audit_append_call | `blockers.append(f"GitHub Actions run status is {run_status or 'missing'}, expected completed")` |
-| `scripts/ci_evidence_acceptance.py` | 210 | audit_append_call | `blockers.append(f"GitHub Actions run conclusion is {conclusion or 'missing'}, expected success")` |
-| `scripts/ci_evidence_acceptance.py` | 213 | audit_append_call | `blockers.append(f"GitHub Actions run SHA {head_sha or 'missing'} does not match current commit {sha}")` |
-| `scripts/ci_evidence_acceptance.py` | 216 | audit_append_call | `blockers.append("workflow name is missing")` |
-| `scripts/ci_evidence_acceptance.py` | 219 | audit_append_call | `blockers.append(f"workflow {workflow_name!r} is not valid general CI evidence")` |
-| `scripts/ci_evidence_acceptance.py` | 222 | audit_append_call | `blockers.append(` |
-| `scripts/ci_evidence_acceptance.py` | 273 | audit_append_call | `lines.append("- None")` |
-| `scripts/ci_run_evidence.py` | 164 | audit_append_call | `blockers.append("repository is pending")` |
-| `scripts/ci_run_evidence.py` | 166 | audit_append_call | `blockers.append("branch is pending")` |
-| `scripts/ci_run_evidence.py` | 168 | audit_append_call | `blockers.append("commit SHA is pending or invalid")` |
-| `scripts/ci_run_evidence.py` | 170 | audit_append_call | `blockers.append("GitHub Actions run URL is pending or invalid")` |
-| `scripts/ci_run_evidence.py` | 172 | audit_append_call | `blockers.append("result must be pass/passed/success/successful/green/ok")` |
-| `scripts/ci_run_evidence.py` | 174 | audit_append_call | `blockers.append("workflow is pending")` |
-| `scripts/ci_run_evidence.py` | 176 | audit_append_call | `blockers.append("verified by is pending")` |
-| `scripts/ci_run_evidence.py` | 178 | audit_append_call | `blockers.append("date verified is pending")` |
-| `scripts/ci_run_evidence.py` | 257 | audit_append_call | `lines.extend(f"- {b}" for b in status.blockers) if status.blockers else lines.append("- None")` |
+| `scripts/ci_auth_refresh_db_proof_workflow.py` | 93 | audit_append_call | `lines.append(f"\| `{check.name}` \| {check.passed} \| {check.detail} \|")` |
+| `scripts/ci_auth_refresh_db_proof_workflow.py` | 95 | audit_append_call | `lines.extend(f"- {blocker}" for blocker in status.blockers) if status.blockers else lines.append("- None")` |
+| `scripts/ci_authority.py` | 107 | audit_append_call | `blockers.append("No GitHub Actions workflow file found under .github/workflows")` |
+| `scripts/ci_authority.py` | 109 | audit_append_call | `blockers.append("Workflow file does not mention every required local CI-equivalent command family")` |
+| `scripts/ci_authority.py` | 111 | audit_append_call | `blockers.append("Missing local CI-equivalent Makefile targets: " + ", ".join(missing_targets))` |
+| `scripts/ci_authority.py` | 113 | audit_append_call | `blockers.append("No GitHub Actions run URL recorded in docs/release/ci_evidence.md")` |
+| `scripts/ci_authority.py` | 215 | audit_append_call | `lines.append(f"\| `{target}` \| {target in present} \|")` |
+| `scripts/ci_authority.py` | 221 | audit_append_call | `lines.append("- None")` |
+| `scripts/ci_evidence_acceptance.py` | 169 | audit_append_call | `blockers.append("GitHub CLI is unavailable or not authenticated")` |
+| `scripts/ci_evidence_acceptance.py` | 178 | audit_append_call | `blockers.append("CI_EVIDENCE_RUN_ID is not numeric")` |
+| `scripts/ci_evidence_acceptance.py` | 182 | audit_append_call | `blockers.append(f"unable to read GitHub Actions run {requested_run_id}")` |
+| `scripts/ci_evidence_acceptance.py` | 186 | audit_append_call | `blockers.append("no successful non-auth-refresh GitHub Actions run found for current commit")` |
+| `scripts/ci_evidence_acceptance.py` | 199 | audit_append_call | `blockers.append("run ID is missing or non-numeric")` |
+| `scripts/ci_evidence_acceptance.py` | 202 | audit_append_call | `blockers.append("run URL does not contain the numeric run ID")` |
+| `scripts/ci_evidence_acceptance.py` | 205 | audit_append_call | `blockers.append("run URL contains placeholder evidence")` |
+| `scripts/ci_evidence_acceptance.py` | 208 | audit_append_call | `blockers.append(f"GitHub Actions run status is {run_status or 'missing'}, expected completed")` |
+| `scripts/ci_evidence_acceptance.py` | 211 | audit_append_call | `blockers.append(f"GitHub Actions run conclusion is {conclusion or 'missing'}, expected success")` |
+| `scripts/ci_evidence_acceptance.py` | 214 | audit_append_call | `blockers.append(f"GitHub Actions run SHA {head_sha or 'missing'} does not match current commit {sha}")` |
+| `scripts/ci_evidence_acceptance.py` | 217 | audit_append_call | `blockers.append("workflow name is missing")` |
+| `scripts/ci_evidence_acceptance.py` | 220 | audit_append_call | `blockers.append(f"workflow {workflow_name!r} is not valid general CI evidence")` |
+| `scripts/ci_evidence_acceptance.py` | 223 | audit_append_call | `blockers.append(` |
+| `scripts/ci_evidence_acceptance.py` | 274 | audit_append_call | `lines.append("- None")` |
+| `scripts/ci_run_evidence.py` | 165 | audit_append_call | `blockers.append("repository is pending")` |
+| `scripts/ci_run_evidence.py` | 167 | audit_append_call | `blockers.append("branch is pending")` |
+| `scripts/ci_run_evidence.py` | 169 | audit_append_call | `blockers.append("commit SHA is pending or invalid")` |
+| `scripts/ci_run_evidence.py` | 171 | audit_append_call | `blockers.append("GitHub Actions run URL is pending or invalid")` |
+| `scripts/ci_run_evidence.py` | 173 | audit_append_call | `blockers.append("result must be pass/passed/success/successful/green/ok")` |
+| `scripts/ci_run_evidence.py` | 175 | audit_append_call | `blockers.append("workflow is pending")` |
+| `scripts/ci_run_evidence.py` | 177 | audit_append_call | `blockers.append("verified by is pending")` |
+| `scripts/ci_run_evidence.py` | 179 | audit_append_call | `blockers.append("date verified is pending")` |
+| `scripts/ci_run_evidence.py` | 258 | audit_append_call | `lines.extend(f"- {b}" for b in status.blockers) if status.blockers else lines.append("- None")` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 160 | audit_append_call | `buckets[index].append(path)` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 166 | audit_append_call | `shards.append(` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 237 | audit_append_call | `counts.append(int(match.group(1)))` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 465 | audit_append_call | `results.append(future.result())` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 577 | audit_append_call | `collection_results.append(result)` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 643 | audit_append_call | `report_results.append(combine_result)` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 652 | audit_append_call | `report_results.append(` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 702 | audit_append_call | `blockers.append("coverage_collection")` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 704 | audit_append_call | `blockers.append("coverage_test_shards")` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 706 | audit_append_call | `blockers.append("coverage_incomplete_shards")` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 708 | audit_append_call | `blockers.append("coverage_execution_budget_exhausted")` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 710 | audit_append_call | `blockers.append("coverage_report_budget_exhausted")` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 712 | audit_append_call | `blockers.append("coverage_data_combine")` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 714 | audit_append_call | `blockers.append("coverage_report_generation")` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 716 | audit_append_call | `blockers.append("coverage_threshold")` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 718 | audit_append_call | `blockers.append("git_worktree_observation_unavailable")` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 720 | audit_append_call | `blockers.append("tracked_worktree_mutation")` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | 852 | audit_append_call | `registers.append(json.loads(path.read_text(encoding="utf-8")) if path.exists() else {})` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 108 | audit_append_call | `buckets[index].append(item)` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 134 | audit_append_call | `leaves.append(` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 207 | audit_append_call | `statuses[status].append(nodeid)` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 214 | audit_append_call | `statuses[key].append(match.group(1))` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 226 | audit_append_call | `duration_rows.append(` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 372 | audit_append_call | `entries.append(` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 534 | audit_append_call | `nodeids.append(value)` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 708 | audit_append_call | `collect_attempts.append(collect_result)` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 760 | audit_append_call | `node_attempts.append(node_result)` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 924 | audit_append_call | `results.append(terminal_result)` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 999 | audit_append_call | `results.append(future.result())` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 1027 | audit_append_call | `results.append(failure)` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 1168 | audit_append_call | `final_results.append(result)` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 1294 | audit_append_call | `blockers.append("unit_shard_execution_incomplete")` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 1296 | audit_append_call | `blockers.append("terminal_execution_budget_exhausted")` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 1298 | audit_append_call | `blockers.append("unit_test_failures")` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 1300 | audit_append_call | `blockers.append("terminal_timeout_nodes")` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 1302 | audit_append_call | `blockers.append("terminal_test_failures")` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 1304 | audit_append_call | `blockers.append("tracked_worktree_mutation_attributed")` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | 1423 | audit_append_call | `registers.append(json.loads(path.read_text(encoding="utf-8")) if path.exists() else {})` |
 | `scripts/curriculum/build_launch_content_artifacts.py` | 40 | audit_append_call | `targets.append(` |
 | `scripts/curriculum/build_scope_content_artifacts.py` | 231 | audit_append_call | `item_errors.append(f"{ref}/{item['item_id']}: {[error.rule for error in validation_errors]}")` |
 | `scripts/curriculum/build_scope_content_artifacts.py` | 234 | audit_append_call | `item_errors.append(` |
@@ -2552,9 +3153,9 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/curriculum/seed_staging_review_scopes.py` | 130 | audit_append_call | `failed_scopes.append(scope_id)` |
 | `scripts/curriculum/source_inventory.py` | 74 | audit_append_call | `rows.append(` |
 | `scripts/curriculum/stamp_dev_approved_review_scopes.py` | 47 | audit_append_call | `rows.append({` |
-| `scripts/curriculum/upload_caps_sources_to_azure.py` | 143 | audit_append_call | `errors.append(f"container create failed: {exc}")` |
-| `scripts/curriculum/upload_caps_sources_to_azure.py` | 157 | audit_append_call | `errors.append(f"{document.get('document_id')}: {exc}")` |
-| `scripts/curriculum/upload_caps_sources_to_azure.py` | 159 | audit_append_call | `uploads.append(upload)` |
+| `scripts/curriculum/upload_caps_sources_to_azure.py` | 144 | audit_append_call | `errors.append(f"container create failed: {exc}")` |
+| `scripts/curriculum/upload_caps_sources_to_azure.py` | 158 | audit_append_call | `errors.append(f"{document.get('document_id')}: {exc}")` |
+| `scripts/curriculum/upload_caps_sources_to_azure.py` | 160 | audit_append_call | `uploads.append(upload)` |
 | `scripts/curriculum/validate_phase02r_gate2r4_graph.py` | 26 | audit_append_call | `errors.append(f"expected approved_gate=2R.3 before Gate 2R.4 execution, got {approved!r}")` |
 | `scripts/curriculum/validate_phase02r_gate2r4_graph.py` | 28 | audit_append_call | `errors.append(f"expected authorised_next_gate=2R.4 before Gate 2R.4 execution, got {authorised!r}")` |
 | `scripts/curriculum/validate_phase02r_gate2r4_graph.py` | 30 | audit_append_call | `errors.append("Gate 2R.5+ is already authorised; Gate 2R.4 implementation must not proceed")` |
@@ -2670,154 +3271,154 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/curriculum/validate_topic_maps.py` | 159 | audit_append_call | `result.errors.append(f"runtime map {path.relative_to(ROOT)} has no terms")` |
 | `scripts/curriculum/validate_topic_maps.py` | 163 | audit_append_call | `result.errors.append(f"runtime map {path.relative_to(ROOT)} has duplicate caps_refs: {duplicate_refs}")` |
 | `scripts/curriculum/validate_topic_maps.py` | 196 | audit_append_call | `result.errors.append(f"active scope {scope_id} has no runtime topic map")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 29 | audit_events_table | `"audit_events",` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 175 | audit_append_call | `out["blockers"].append(f"database smoke failed: {type(exc).__name__}: {exc}")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 178 | audit_append_call | `out["blockers"].append("alembic_version not detected")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 180 | audit_append_call | `out["blockers"].append("no public tables detected")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 219 | audit_append_call | `blockers.append("DB_ROLLBACK_RUN_ID is required")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 222 | audit_append_call | `blockers.append("DB_ROLLBACK_RUN_ID is not numeric")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 225 | audit_append_call | `blockers.append("GitHub CLI is unavailable")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 233 | audit_append_call | `blockers.append(f"unable to read GitHub Actions run {run_id}")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 247 | audit_append_call | `blockers.append(f"run status is {evidence['run_status']}, expected completed")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 249 | audit_append_call | `blockers.append(f"run conclusion is {evidence['conclusion']}, expected success")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 251 | audit_append_call | `blockers.append(f"run SHA {evidence['head_sha']} does not match current commit {expected_sha}")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 253 | audit_append_call | `blockers.append("run URL does not contain run ID")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 286 | audit_append_call | `blockers.append("DB_ROLLBACK_SOURCE_DATABASE_URL is missing, placeholder, local, or invalid")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 288 | audit_append_call | `blockers.append("DB_ROLLBACK_RESTORE_DATABASE_URL is missing, placeholder, local, or invalid")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 290 | audit_append_call | `blockers.append("source and restore database URLs must differ")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 307 | audit_append_call | `blockers.append("pg_dump is not installed")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 309 | audit_append_call | `blockers.append("pg_restore is not installed")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 319 | audit_append_call | `blockers.append(f"backup command failed with exit code {backup.returncode}")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 325 | audit_append_call | `blockers.append("backup dump was not created or was empty")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 331 | audit_append_call | `blockers.append(f"restore command failed with exit code {restore.returncode}")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 337 | audit_append_call | `blockers.append(f"table count mismatch: source={src_smoke['table_count']}, restore={dst_smoke['table_count']}")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 339 | audit_append_call | `blockers.append(f"alembic mismatch: source={src_smoke['alembic_version']}, restore={dst_smoke['alembic_version']}")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 342 | audit_append_call | `blockers.append("key table count mismatches detected")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 349 | audit_append_call | `blockers.append("accepted evidence requires run_drill unless DB_ROLLBACK_ATTACH_ONLY=1")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 351 | audit_append_call | `blockers.append("valid dump SHA256 checksum is required")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 353 | audit_append_call | `blockers.append("non-empty dump size is required")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 355 | audit_append_call | `blockers.append("restore command did not run")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 415 | audit_append_call | `lines.append(f"\| `{table}` \| {status['source_smoke']['key_table_counts'].get(table)} \| {status['restore_smoke']['key_table_counts'].get(table)} \|")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 420 | audit_append_call | `lines.append(f"- `{table}` source={values.get('source')} restore={values.get('restore')}")` |
-| `scripts/db_backup_restore_rollback_evidence.py` | 422 | audit_append_call | `lines.append("- None")` |
-| `scripts/db_live_only_table_ownership.py` | 129 | audit_append_call | `blockers.append("table missing from ownership policy")` |
-| `scripts/db_live_only_table_ownership.py` | 140 | audit_append_call | `blockers.append("domain is missing")` |
-| `scripts/db_live_only_table_ownership.py` | 143 | audit_append_call | `blockers.append(f"ownership must be one of {sorted(ALLOWED_OWNERSHIP)}")` |
-| `scripts/db_live_only_table_ownership.py` | 146 | audit_append_call | `blockers.append("reason is missing")` |
-| `scripts/db_live_only_table_ownership.py` | 149 | audit_append_call | `blockers.append("migration_action is missing")` |
-| `scripts/db_live_only_table_ownership.py` | 152 | audit_append_call | `blockers.append("orm_model_required must be boolean")` |
-| `scripts/db_live_only_table_ownership.py` | 155 | audit_append_call | `blockers.append("beta_blocking must be boolean")` |
-| `scripts/db_live_only_table_ownership.py` | 158 | audit_append_call | `blockers.append("ownership is orm-managed but no ORM table declaration was detected")` |
-| `scripts/db_live_only_table_ownership.py` | 161 | audit_append_call | `blockers.append("sql-owned table cannot require ORM model in this policy")` |
-| `scripts/db_live_only_table_ownership.py` | 164 | audit_append_call | `blockers.append("migration-required table must remain beta_blocking")` |
-| `scripts/db_live_only_table_ownership.py` | 168 | audit_append_call | `records.append(` |
-| `scripts/db_live_only_table_ownership.py` | 237 | audit_append_call | `lines.append(` |
-| `scripts/db_live_only_table_ownership.py` | 247 | audit_append_call | `lines.append("- None")` |
-| `scripts/db_migration_seed_repeatability.py` | 26 | audit_events_table | `"audit_events",` |
-| `scripts/db_migration_seed_repeatability.py` | 27 | audit_logs_table | `"audit_logs",` |
-| `scripts/db_migration_seed_repeatability.py` | 156 | audit_append_call | `unique.append(row)` |
-| `scripts/db_migration_seed_repeatability.py` | 172 | audit_append_call | `lines.append(` |
-| `scripts/db_migration_seed_repeatability.py` | 177 | audit_append_call | `lines.append("COMMIT;")` |
-| `scripts/db_migration_seed_repeatability.py` | 191 | audit_append_call | `blockers.append("alembic upgrade head --sql failed")` |
-| `scripts/db_migration_seed_repeatability.py` | 202 | audit_append_call | `blockers.append(f"expected Alembic head {EXPECTED_HEAD} missing from generated SQL")` |
-| `scripts/db_migration_seed_repeatability.py` | 206 | audit_append_call | `blockers.append("required runtime table DDL missing: " + ", ".join(missing_tables))` |
-| `scripts/db_migration_seed_repeatability.py` | 209 | audit_append_call | `blockers.append("generated Supabase SQL still contains non-SQL chatter")` |
-| `scripts/db_migration_seed_repeatability.py` | 212 | audit_append_call | `blockers.append("generated Supabase SQL still contains broken null IRT seed rows")` |
-| `scripts/db_migration_seed_repeatability.py` | 215 | audit_append_call | `blockers.append("generated Supabase SQL still references missing Supabase role eduboost_app")` |
-| `scripts/db_migration_seed_repeatability.py` | 218 | audit_append_call | `blockers.append(f"expected {EXPECTED_IRT_ROWS} unique IRT seed rows, generated {unique_rows}")` |
-| `scripts/db_migration_seed_repeatability.py` | 221 | audit_append_call | `blockers.append("IRT seed SQL is not idempotent")` |
-| `scripts/db_migration_seed_repeatability.py` | 279 | audit_append_call | `lines.append(f"\| `{table}` \| {present} \|")` |
-| `scripts/db_migration_seed_repeatability.py` | 301 | audit_append_call | `lines.append("- None")` |
-| `scripts/db_migration_seed_repeatability.py` | 336 | audit_append_call | `lines.append(line)` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 30 | audit_events_table | `"audit_events",` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 176 | audit_append_call | `out["blockers"].append(f"database smoke failed: {type(exc).__name__}: {exc}")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 179 | audit_append_call | `out["blockers"].append("alembic_version not detected")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 181 | audit_append_call | `out["blockers"].append("no public tables detected")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 220 | audit_append_call | `blockers.append("DB_ROLLBACK_RUN_ID is required")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 223 | audit_append_call | `blockers.append("DB_ROLLBACK_RUN_ID is not numeric")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 226 | audit_append_call | `blockers.append("GitHub CLI is unavailable")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 234 | audit_append_call | `blockers.append(f"unable to read GitHub Actions run {run_id}")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 248 | audit_append_call | `blockers.append(f"run status is {evidence['run_status']}, expected completed")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 250 | audit_append_call | `blockers.append(f"run conclusion is {evidence['conclusion']}, expected success")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 252 | audit_append_call | `blockers.append(f"run SHA {evidence['head_sha']} does not match current commit {expected_sha}")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 254 | audit_append_call | `blockers.append("run URL does not contain run ID")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 287 | audit_append_call | `blockers.append("DB_ROLLBACK_SOURCE_DATABASE_URL is missing, placeholder, local, or invalid")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 289 | audit_append_call | `blockers.append("DB_ROLLBACK_RESTORE_DATABASE_URL is missing, placeholder, local, or invalid")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 291 | audit_append_call | `blockers.append("source and restore database URLs must differ")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 308 | audit_append_call | `blockers.append("pg_dump is not installed")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 310 | audit_append_call | `blockers.append("pg_restore is not installed")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 320 | audit_append_call | `blockers.append(f"backup command failed with exit code {backup.returncode}")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 326 | audit_append_call | `blockers.append("backup dump was not created or was empty")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 332 | audit_append_call | `blockers.append(f"restore command failed with exit code {restore.returncode}")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 338 | audit_append_call | `blockers.append(f"table count mismatch: source={src_smoke['table_count']}, restore={dst_smoke['table_count']}")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 340 | audit_append_call | `blockers.append(f"alembic mismatch: source={src_smoke['alembic_version']}, restore={dst_smoke['alembic_version']}")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 343 | audit_append_call | `blockers.append("key table count mismatches detected")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 350 | audit_append_call | `blockers.append("accepted evidence requires run_drill unless DB_ROLLBACK_ATTACH_ONLY=1")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 352 | audit_append_call | `blockers.append("valid dump SHA256 checksum is required")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 354 | audit_append_call | `blockers.append("non-empty dump size is required")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 356 | audit_append_call | `blockers.append("restore command did not run")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 416 | audit_append_call | `lines.append(f"\| `{table}` \| {status['source_smoke']['key_table_counts'].get(table)} \| {status['restore_smoke']['key_table_counts'].get(table)} \|")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 421 | audit_append_call | `lines.append(f"- `{table}` source={values.get('source')} restore={values.get('restore')}")` |
+| `scripts/db_backup_restore_rollback_evidence.py` | 423 | audit_append_call | `lines.append("- None")` |
+| `scripts/db_live_only_table_ownership.py` | 130 | audit_append_call | `blockers.append("table missing from ownership policy")` |
+| `scripts/db_live_only_table_ownership.py` | 141 | audit_append_call | `blockers.append("domain is missing")` |
+| `scripts/db_live_only_table_ownership.py` | 144 | audit_append_call | `blockers.append(f"ownership must be one of {sorted(ALLOWED_OWNERSHIP)}")` |
+| `scripts/db_live_only_table_ownership.py` | 147 | audit_append_call | `blockers.append("reason is missing")` |
+| `scripts/db_live_only_table_ownership.py` | 150 | audit_append_call | `blockers.append("migration_action is missing")` |
+| `scripts/db_live_only_table_ownership.py` | 153 | audit_append_call | `blockers.append("orm_model_required must be boolean")` |
+| `scripts/db_live_only_table_ownership.py` | 156 | audit_append_call | `blockers.append("beta_blocking must be boolean")` |
+| `scripts/db_live_only_table_ownership.py` | 159 | audit_append_call | `blockers.append("ownership is orm-managed but no ORM table declaration was detected")` |
+| `scripts/db_live_only_table_ownership.py` | 162 | audit_append_call | `blockers.append("sql-owned table cannot require ORM model in this policy")` |
+| `scripts/db_live_only_table_ownership.py` | 165 | audit_append_call | `blockers.append("migration-required table must remain beta_blocking")` |
+| `scripts/db_live_only_table_ownership.py` | 169 | audit_append_call | `records.append(` |
+| `scripts/db_live_only_table_ownership.py` | 238 | audit_append_call | `lines.append(` |
+| `scripts/db_live_only_table_ownership.py` | 248 | audit_append_call | `lines.append("- None")` |
+| `scripts/db_migration_seed_repeatability.py` | 27 | audit_events_table | `"audit_events",` |
+| `scripts/db_migration_seed_repeatability.py` | 28 | audit_logs_table | `"audit_logs",` |
+| `scripts/db_migration_seed_repeatability.py` | 157 | audit_append_call | `unique.append(row)` |
+| `scripts/db_migration_seed_repeatability.py` | 173 | audit_append_call | `lines.append(` |
+| `scripts/db_migration_seed_repeatability.py` | 178 | audit_append_call | `lines.append("COMMIT;")` |
+| `scripts/db_migration_seed_repeatability.py` | 193 | audit_append_call | `blockers.append("alembic upgrade head --sql failed")` |
+| `scripts/db_migration_seed_repeatability.py` | 204 | audit_append_call | `blockers.append(f"expected Alembic head {EXPECTED_HEAD} missing from generated SQL")` |
+| `scripts/db_migration_seed_repeatability.py` | 208 | audit_append_call | `blockers.append("required runtime table DDL missing: " + ", ".join(missing_tables))` |
+| `scripts/db_migration_seed_repeatability.py` | 211 | audit_append_call | `blockers.append("generated Supabase SQL still contains non-SQL chatter")` |
+| `scripts/db_migration_seed_repeatability.py` | 214 | audit_append_call | `blockers.append("generated Supabase SQL still contains broken null IRT seed rows")` |
+| `scripts/db_migration_seed_repeatability.py` | 217 | audit_append_call | `blockers.append("generated Supabase SQL still references missing Supabase role eduboost_app")` |
+| `scripts/db_migration_seed_repeatability.py` | 220 | audit_append_call | `blockers.append(f"expected {EXPECTED_IRT_ROWS} unique IRT seed rows, generated {unique_rows}")` |
+| `scripts/db_migration_seed_repeatability.py` | 223 | audit_append_call | `blockers.append("IRT seed SQL is not idempotent")` |
+| `scripts/db_migration_seed_repeatability.py` | 281 | audit_append_call | `lines.append(f"\| `{table}` \| {present} \|")` |
+| `scripts/db_migration_seed_repeatability.py` | 303 | audit_append_call | `lines.append("- None")` |
+| `scripts/db_migration_seed_repeatability.py` | 338 | audit_append_call | `lines.append(line)` |
 | `scripts/deduplicate_makefile_targets.py` | 64 | audit_append_call | `occurrences[m.group(1)].append(i)` |
 | `scripts/deduplicate_makefile_targets.py` | 89 | audit_append_call | `block.append(i)` |
 | `scripts/deduplicate_makefile_targets.py` | 149 | audit_append_call | `new_lines.append(phony_line)` |
 | `scripts/deduplicate_makefile_targets.py` | 152 | audit_append_call | `new_lines.append(line)` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 121 | audit_append_call | `items.append((prefix, obj))` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 132 | audit_log_identifier | `"audit": ("audit", "audit_log", "auditlog"),` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 163 | audit_append_call | `blockers.append("DIAG_DEEP_HEALTH_RUN_ID is required for accepted evidence")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 166 | audit_append_call | `blockers.append("DIAG_DEEP_HEALTH_RUN_ID is not numeric")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 169 | audit_append_call | `blockers.append("GitHub CLI is unavailable or not authenticated")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 173 | audit_append_call | `blockers.append(f"unable to read GitHub Actions run {run_id}")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 181 | audit_append_call | `blockers.append("run URL does not contain numeric run ID")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 183 | audit_append_call | `blockers.append(f"GitHub Actions run status is {run_status or 'missing'}, expected completed")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 185 | audit_append_call | `blockers.append(f"GitHub Actions run conclusion is {conclusion or 'missing'}, expected success")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 187 | audit_append_call | `blockers.append(f"GitHub Actions run SHA {head_sha or 'missing'} does not match current commit {expected_sha}")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 189 | audit_append_call | `blockers.append("workflow name is missing")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 191 | audit_append_call | `blockers.append("auth refresh DB proof workflow is not valid deep-health runtime evidence")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 204 | audit_append_call | `blockers.append("deep health URL is missing, non-HTTPS, localhost/example, or placeholder")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 206 | audit_append_call | `blockers.append("deep health URL must target /api/v2/health/deep or an equivalent /deep endpoint")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 208 | audit_append_call | `blockers.append("DIAG_DEEP_HEALTH_TEST_COMMAND is missing or placeholder")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 211 | audit_append_call | `blockers.append(f"deep health HTTP probe error: {probe.error}")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 213 | audit_append_call | `blockers.append(f"deep health HTTP status is {probe.status_code}, expected 200")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 215 | audit_append_call | `blockers.append("deep health HTTP probe was not attempted")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 219 | audit_append_call | `blockers.append(f"DIAG_DEEP_HEALTH_{component.upper()}_RESULT must be passed")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 242 | audit_append_call | `lines.append(f"\| `{component}` \| `{result}` \|")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 246 | audit_append_call | `lines.append(f"\| `{component}` \| `{signal}` \|")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 248 | audit_append_call | `lines.append("\| `-` \| `none inferred` \|")` |
-| `scripts/diag_deep_health_runtime_evidence.py` | 250 | audit_append_call | `lines.extend(f"- {blocker}" for blocker in status.blockers) if status.blockers else lines.append("- None")` |
-| `scripts/diagnostic_item_bank_canonicality.py` | 110 | audit_append_call | `records.append(` |
-| `scripts/diagnostic_item_bank_canonicality.py` | 131 | audit_append_call | `blockers.append("diagnostic item-bank canonicality policy file is missing")` |
-| `scripts/diagnostic_item_bank_canonicality.py` | 136 | audit_append_call | `blockers.append(f"policy missing marker: {marker}")` |
-| `scripts/diagnostic_item_bank_canonicality.py` | 142 | audit_append_call | `blockers.append("no diagnostic_items references found; runtime-required policy is unsupported")` |
-| `scripts/diagnostic_item_bank_canonicality.py` | 145 | audit_append_call | `blockers.append(` |
-| `scripts/diagnostic_item_bank_canonicality.py` | 196 | audit_append_call | `lines.append(f"\| `{marker}` \| {present} \|")` |
-| `scripts/diagnostic_item_bank_canonicality.py` | 210 | audit_append_call | `lines.append(` |
-| `scripts/diagnostic_item_bank_canonicality.py` | 214 | audit_append_call | `lines.append("\| `-` \| 0 \| `none` \|")` |
-| `scripts/diagnostic_item_bank_canonicality.py` | 220 | audit_append_call | `lines.append("- None")` |
-| `scripts/diagnostic_score_live_audit.py` | 359 | audit_append_call | `unsupported.append(column.name)` |
-| `scripts/diagnostic_score_live_audit.py` | 361 | audit_append_call | `insert_columns.append(column.name)` |
-| `scripts/diagnostic_score_live_audit.py` | 362 | audit_append_call | `select_exprs.append(expr)` |
-| `scripts/diagnostic_score_live_audit.py` | 413 | audit_append_call | `blockers.append("DIAG_SCORE_RUN_ID is required for accepted evidence")` |
-| `scripts/diagnostic_score_live_audit.py` | 417 | audit_append_call | `blockers.append("DIAG_SCORE_RUN_ID is not numeric")` |
-| `scripts/diagnostic_score_live_audit.py` | 421 | audit_append_call | `blockers.append("GitHub CLI is unavailable or not authenticated")` |
-| `scripts/diagnostic_score_live_audit.py` | 426 | audit_append_call | `blockers.append(f"unable to read GitHub Actions run {run_id}")` |
-| `scripts/diagnostic_score_live_audit.py` | 436 | audit_append_call | `blockers.append("run URL does not contain numeric run ID")` |
-| `scripts/diagnostic_score_live_audit.py` | 438 | audit_append_call | `blockers.append(f"GitHub Actions run status is {run_status or 'missing'}, expected completed")` |
-| `scripts/diagnostic_score_live_audit.py` | 440 | audit_append_call | `blockers.append(f"GitHub Actions run conclusion is {conclusion or 'missing'}, expected success")` |
-| `scripts/diagnostic_score_live_audit.py` | 442 | audit_append_call | `blockers.append(f"GitHub Actions run SHA {head_sha or 'missing'} does not match current commit {expected_sha}")` |
-| `scripts/diagnostic_score_live_audit.py` | 444 | audit_append_call | `blockers.append("workflow name is missing")` |
-| `scripts/diagnostic_score_live_audit.py` | 476 | audit_append_call | `blockers.append("DIAG_SCORE_DATABASE_URL/DATABASE_URL is missing, non-Postgres async, local, example, or placeholder")` |
-| `scripts/diagnostic_score_live_audit.py` | 494 | audit_append_call | `blockers.append("diagnostic_items table is missing")` |
-| `scripts/diagnostic_score_live_audit.py` | 496 | audit_append_call | `blockers.append("irt_items table is missing")` |
-| `scripts/diagnostic_score_live_audit.py` | 509 | audit_append_call | `blockers.append(f"irt_items has {irt_count} rows, expected at least {EXPECTED_IRT_MIN_ROWS}")` |
-| `scripts/diagnostic_score_live_audit.py` | 514 | audit_append_call | `blockers.append("DIAG_SCORE_ALLOW_BRIDGE_SEED must be 1 before mutating diagnostic_items")` |
-| `scripts/diagnostic_score_live_audit.py` | 516 | audit_append_call | `blockers.append("cannot bridge-seed without both diagnostic_items and irt_items")` |
-| `scripts/diagnostic_score_live_audit.py` | 524 | audit_append_call | `blockers.append(` |
-| `scripts/diagnostic_score_live_audit.py` | 532 | audit_append_call | `blockers.append("diagnostic_items has 0 rows; runtime-required item bank is not seeded")` |
-| `scripts/diagnostic_score_live_audit.py` | 538 | audit_append_call | `blockers.append(f"DB connection/query error: {exc}")` |
-| `scripts/diagnostic_score_live_audit.py` | 547 | audit_append_call | `blockers.append("DIAG_SCORE_TEST_COMMAND is missing or placeholder")` |
-| `scripts/diagnostic_score_live_audit.py` | 549 | audit_append_call | `blockers.append("DIAG_SCORE_SEED_RESULT must be passed")` |
-| `scripts/diagnostic_score_live_audit.py` | 551 | audit_append_call | `blockers.append("DIAG_SCORE_SCORING_RESULT must be passed")` |
-| `scripts/diagnostic_score_live_audit.py` | 553 | audit_append_call | `blockers.append("DIAG_SCORE_AUDIT_RESULT must be passed")` |
-| `scripts/diagnostic_score_live_audit.py` | 621 | audit_append_call | `lines.append("- None")` |
-| `scripts/diagnostic_score_live_audit.py` | 627 | audit_append_call | `lines.append("- None")` |
-| `scripts/diagnostic_score_live_audit.py` | 631 | audit_append_call | `lines.append(` |
-| `scripts/diagnostic_score_live_audit.py` | 639 | audit_append_call | `lines.append("- None")` |
-| `scripts/docs_inventory.py` | 84 | audit_append_call | `headings.append(` |
-| `scripts/docs_inventory.py` | 124 | audit_append_call | `statuses.append(status)` |
-| `scripts/docs_inventory.py` | 133 | audit_append_call | `dates.append(value)` |
-| `scripts/docs_inventory.py` | 142 | audit_append_call | `markdown_spans.append(match.span(2))` |
-| `scripts/docs_inventory.py` | 143 | audit_append_call | `links.append(` |
-| `scripts/docs_inventory.py` | 154 | audit_append_call | `links.append({"text": match.group(0), "target": match.group(0), "kind": "external"})` |
-| `scripts/docs_inventory.py` | 163 | audit_append_call | `references.append(value)` |
-| `scripts/docs_inventory.py` | 174 | audit_append_call | `refs.append(candidate)` |
-| `scripts/docs_inventory.py` | 217 | audit_append_call | `paths.append(resolved)` |
-| `scripts/docs_inventory.py` | 251 | audit_append_call | `items.append(` |
-| `scripts/docs_inventory.py` | 308 | audit_append_call | `lines.append(f"\| `{category}` \| {count} \|")` |
-| `scripts/docs_inventory.py` | 312 | audit_append_call | `lines.append(f"\| `{item.path}` \| `{item.category}` \| {item.title} \| {item.size_bytes} \| {item.generated} \|")` |
-| `scripts/docs_inventory.py` | 331 | audit_append_call | `lines.append(f"\| `{path}` \| {path not in missing} \|")` |
-| `scripts/docs_inventory.py` | 337 | audit_append_call | `lines.append("- No required documentation intelligence gaps detected.")` |
-| `scripts/docs_inventory.py` | 405 | audit_append_call | `errors.append("docs/docs_inventory.json is stale")` |
-| `scripts/docs_inventory.py` | 407 | audit_append_call | `errors.append("docs/docs_inventory.json is missing")` |
-| `scripts/docs_inventory.py` | 410 | audit_append_call | `errors.append("docs/docs_inventory.md is missing")` |
-| `scripts/docs_inventory.py` | 412 | audit_append_call | `errors.append("docs/docs_gap_report.md is missing")` |
-| `scripts/docs_inventory.py` | 414 | audit_append_call | `errors.append("docs/docs_generation_plan.md is missing")` |
-| `scripts/docs_inventory.py` | 417 | audit_append_call | `errors.append("Missing important docs: " + ", ".join(expected.missing_important_docs))` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 122 | audit_append_call | `items.append((prefix, obj))` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 133 | audit_log_identifier | `"audit": ("audit", "audit_log", "auditlog"),` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 164 | audit_append_call | `blockers.append("DIAG_DEEP_HEALTH_RUN_ID is required for accepted evidence")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 167 | audit_append_call | `blockers.append("DIAG_DEEP_HEALTH_RUN_ID is not numeric")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 170 | audit_append_call | `blockers.append("GitHub CLI is unavailable or not authenticated")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 174 | audit_append_call | `blockers.append(f"unable to read GitHub Actions run {run_id}")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 182 | audit_append_call | `blockers.append("run URL does not contain numeric run ID")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 184 | audit_append_call | `blockers.append(f"GitHub Actions run status is {run_status or 'missing'}, expected completed")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 186 | audit_append_call | `blockers.append(f"GitHub Actions run conclusion is {conclusion or 'missing'}, expected success")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 188 | audit_append_call | `blockers.append(f"GitHub Actions run SHA {head_sha or 'missing'} does not match current commit {expected_sha}")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 190 | audit_append_call | `blockers.append("workflow name is missing")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 192 | audit_append_call | `blockers.append("auth refresh DB proof workflow is not valid deep-health runtime evidence")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 205 | audit_append_call | `blockers.append("deep health URL is missing, non-HTTPS, localhost/example, or placeholder")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 207 | audit_append_call | `blockers.append("deep health URL must target /api/v2/health/deep or an equivalent /deep endpoint")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 209 | audit_append_call | `blockers.append("DIAG_DEEP_HEALTH_TEST_COMMAND is missing or placeholder")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 212 | audit_append_call | `blockers.append(f"deep health HTTP probe error: {probe.error}")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 214 | audit_append_call | `blockers.append(f"deep health HTTP status is {probe.status_code}, expected 200")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 216 | audit_append_call | `blockers.append("deep health HTTP probe was not attempted")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 220 | audit_append_call | `blockers.append(f"DIAG_DEEP_HEALTH_{component.upper()}_RESULT must be passed")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 243 | audit_append_call | `lines.append(f"\| `{component}` \| `{result}` \|")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 247 | audit_append_call | `lines.append(f"\| `{component}` \| `{signal}` \|")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 249 | audit_append_call | `lines.append("\| `-` \| `none inferred` \|")` |
+| `scripts/diag_deep_health_runtime_evidence.py` | 251 | audit_append_call | `lines.extend(f"- {blocker}" for blocker in status.blockers) if status.blockers else lines.append("- None")` |
+| `scripts/diagnostic_item_bank_canonicality.py` | 111 | audit_append_call | `records.append(` |
+| `scripts/diagnostic_item_bank_canonicality.py` | 132 | audit_append_call | `blockers.append("diagnostic item-bank canonicality policy file is missing")` |
+| `scripts/diagnostic_item_bank_canonicality.py` | 137 | audit_append_call | `blockers.append(f"policy missing marker: {marker}")` |
+| `scripts/diagnostic_item_bank_canonicality.py` | 143 | audit_append_call | `blockers.append("no diagnostic_items references found; runtime-required policy is unsupported")` |
+| `scripts/diagnostic_item_bank_canonicality.py` | 146 | audit_append_call | `blockers.append(` |
+| `scripts/diagnostic_item_bank_canonicality.py` | 197 | audit_append_call | `lines.append(f"\| `{marker}` \| {present} \|")` |
+| `scripts/diagnostic_item_bank_canonicality.py` | 211 | audit_append_call | `lines.append(` |
+| `scripts/diagnostic_item_bank_canonicality.py` | 215 | audit_append_call | `lines.append("\| `-` \| 0 \| `none` \|")` |
+| `scripts/diagnostic_item_bank_canonicality.py` | 221 | audit_append_call | `lines.append("- None")` |
+| `scripts/diagnostic_score_live_audit.py` | 360 | audit_append_call | `unsupported.append(column.name)` |
+| `scripts/diagnostic_score_live_audit.py` | 362 | audit_append_call | `insert_columns.append(column.name)` |
+| `scripts/diagnostic_score_live_audit.py` | 363 | audit_append_call | `select_exprs.append(expr)` |
+| `scripts/diagnostic_score_live_audit.py` | 414 | audit_append_call | `blockers.append("DIAG_SCORE_RUN_ID is required for accepted evidence")` |
+| `scripts/diagnostic_score_live_audit.py` | 418 | audit_append_call | `blockers.append("DIAG_SCORE_RUN_ID is not numeric")` |
+| `scripts/diagnostic_score_live_audit.py` | 422 | audit_append_call | `blockers.append("GitHub CLI is unavailable or not authenticated")` |
+| `scripts/diagnostic_score_live_audit.py` | 427 | audit_append_call | `blockers.append(f"unable to read GitHub Actions run {run_id}")` |
+| `scripts/diagnostic_score_live_audit.py` | 437 | audit_append_call | `blockers.append("run URL does not contain numeric run ID")` |
+| `scripts/diagnostic_score_live_audit.py` | 439 | audit_append_call | `blockers.append(f"GitHub Actions run status is {run_status or 'missing'}, expected completed")` |
+| `scripts/diagnostic_score_live_audit.py` | 441 | audit_append_call | `blockers.append(f"GitHub Actions run conclusion is {conclusion or 'missing'}, expected success")` |
+| `scripts/diagnostic_score_live_audit.py` | 443 | audit_append_call | `blockers.append(f"GitHub Actions run SHA {head_sha or 'missing'} does not match current commit {expected_sha}")` |
+| `scripts/diagnostic_score_live_audit.py` | 445 | audit_append_call | `blockers.append("workflow name is missing")` |
+| `scripts/diagnostic_score_live_audit.py` | 477 | audit_append_call | `blockers.append("DIAG_SCORE_DATABASE_URL/DATABASE_URL is missing, non-Postgres async, local, example, or placeholder")` |
+| `scripts/diagnostic_score_live_audit.py` | 495 | audit_append_call | `blockers.append("diagnostic_items table is missing")` |
+| `scripts/diagnostic_score_live_audit.py` | 497 | audit_append_call | `blockers.append("irt_items table is missing")` |
+| `scripts/diagnostic_score_live_audit.py` | 510 | audit_append_call | `blockers.append(f"irt_items has {irt_count} rows, expected at least {EXPECTED_IRT_MIN_ROWS}")` |
+| `scripts/diagnostic_score_live_audit.py` | 515 | audit_append_call | `blockers.append("DIAG_SCORE_ALLOW_BRIDGE_SEED must be 1 before mutating diagnostic_items")` |
+| `scripts/diagnostic_score_live_audit.py` | 517 | audit_append_call | `blockers.append("cannot bridge-seed without both diagnostic_items and irt_items")` |
+| `scripts/diagnostic_score_live_audit.py` | 525 | audit_append_call | `blockers.append(` |
+| `scripts/diagnostic_score_live_audit.py` | 533 | audit_append_call | `blockers.append("diagnostic_items has 0 rows; runtime-required item bank is not seeded")` |
+| `scripts/diagnostic_score_live_audit.py` | 539 | audit_append_call | `blockers.append(f"DB connection/query error: {exc}")` |
+| `scripts/diagnostic_score_live_audit.py` | 548 | audit_append_call | `blockers.append("DIAG_SCORE_TEST_COMMAND is missing or placeholder")` |
+| `scripts/diagnostic_score_live_audit.py` | 550 | audit_append_call | `blockers.append("DIAG_SCORE_SEED_RESULT must be passed")` |
+| `scripts/diagnostic_score_live_audit.py` | 552 | audit_append_call | `blockers.append("DIAG_SCORE_SCORING_RESULT must be passed")` |
+| `scripts/diagnostic_score_live_audit.py` | 554 | audit_append_call | `blockers.append("DIAG_SCORE_AUDIT_RESULT must be passed")` |
+| `scripts/diagnostic_score_live_audit.py` | 622 | audit_append_call | `lines.append("- None")` |
+| `scripts/diagnostic_score_live_audit.py` | 628 | audit_append_call | `lines.append("- None")` |
+| `scripts/diagnostic_score_live_audit.py` | 632 | audit_append_call | `lines.append(` |
+| `scripts/diagnostic_score_live_audit.py` | 640 | audit_append_call | `lines.append("- None")` |
+| `scripts/docs_inventory.py` | 88 | audit_append_call | `headings.append(` |
+| `scripts/docs_inventory.py` | 128 | audit_append_call | `statuses.append(status)` |
+| `scripts/docs_inventory.py` | 137 | audit_append_call | `dates.append(value)` |
+| `scripts/docs_inventory.py` | 146 | audit_append_call | `markdown_spans.append(match.span(2))` |
+| `scripts/docs_inventory.py` | 147 | audit_append_call | `links.append(` |
+| `scripts/docs_inventory.py` | 158 | audit_append_call | `links.append({"text": match.group(0), "target": match.group(0), "kind": "external"})` |
+| `scripts/docs_inventory.py` | 167 | audit_append_call | `references.append(value)` |
+| `scripts/docs_inventory.py` | 178 | audit_append_call | `refs.append(candidate)` |
+| `scripts/docs_inventory.py` | 221 | audit_append_call | `paths.append(resolved)` |
+| `scripts/docs_inventory.py` | 255 | audit_append_call | `items.append(` |
+| `scripts/docs_inventory.py` | 312 | audit_append_call | `lines.append(f"\| `{category}` \| {count} \|")` |
+| `scripts/docs_inventory.py` | 316 | audit_append_call | `lines.append(f"\| `{item.path}` \| `{item.category}` \| {item.title} \| {item.size_bytes} \| {item.generated} \|")` |
+| `scripts/docs_inventory.py` | 335 | audit_append_call | `lines.append(f"\| `{path}` \| {path not in missing} \|")` |
+| `scripts/docs_inventory.py` | 341 | audit_append_call | `lines.append("- No required documentation intelligence gaps detected.")` |
+| `scripts/docs_inventory.py` | 409 | audit_append_call | `errors.append("docs/docs_inventory.json is stale")` |
+| `scripts/docs_inventory.py` | 411 | audit_append_call | `errors.append("docs/docs_inventory.json is missing")` |
+| `scripts/docs_inventory.py` | 414 | audit_append_call | `errors.append("docs/docs_inventory.md is missing")` |
+| `scripts/docs_inventory.py` | 416 | audit_append_call | `errors.append("docs/docs_gap_report.md is missing")` |
+| `scripts/docs_inventory.py` | 418 | audit_append_call | `errors.append("docs/docs_generation_plan.md is missing")` |
+| `scripts/docs_inventory.py` | 421 | audit_append_call | `errors.append("Missing important docs: " + ", ".join(expected.missing_important_docs))` |
 | `scripts/ensure_irt_seed.py` | 88 | audit_append_call | `rows.append(` |
 | `scripts/evaluate_pedagogy.py` | 88 | audit_append_call | `cases.append(BenchmarkCase(**record))` |
 | `scripts/evaluate_pedagogy.py` | 171 | audit_append_call | `case_results.append(result)` |
-| `scripts/evidence_attachment_runbook.py` | 84 | audit_append_call | `lines.append(f"\| `{command.id}` \| `{command.category}` \| {command.purpose} \| `{command.command}` \| {command.expected_until_evidence} \|")` |
+| `scripts/evidence_attachment_runbook.py` | 85 | audit_append_call | `lines.append(f"\| `{command.id}` \| `{command.category}` \| {command.purpose} \| `{command.command}` \| {command.expected_until_evidence} \|")` |
 | `scripts/evidence_registry.py` | 66 | audit_append_call | `findings.append(current)` |
 | `scripts/evidence_registry.py` | 78 | audit_append_call | `findings.append(current)` |
 | `scripts/evidence_registry.py` | 89 | audit_append_call | `errors.append(f"duplicate finding id: {finding.id}")` |
@@ -2828,21 +3429,21 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/evidence_registry.py` | 105 | audit_append_call | `errors.append(f"{finding.id}: production-ready cannot have closure_blocker")` |
 | `scripts/evidence_registry.py` | 109 | audit_append_call | `errors.append(f"{finding.id}: beta-blocking incomplete item must name closure_blocker")` |
 | `scripts/evidence_registry.py` | 118 | audit_append_call | `errors.append(f"{finding.id}: evidence_file missing: {finding.evidence_file}")` |
-| `scripts/execute_disposable_db_schema_proof.py` | 27 | audit_append_call | `code,out=run(cmd); overall=max(overall,code); lines.append(f"\| `{' '.join(cmd).replace(url,'<DATABASE_URL>')}` \| {code} \|"); lines+=["","```text",out.rstrip(),"```"]` |
-| `scripts/external_approval_gate.py` | 167 | audit_append_call | `blockers.append(f"decision must be {meta['required_decision']}")` |
-| `scripts/external_approval_gate.py` | 169 | audit_append_call | `blockers.append("approver is pending")` |
-| `scripts/external_approval_gate.py` | 171 | audit_append_call | `blockers.append("evidence URL is pending or invalid")` |
-| `scripts/external_approval_gate.py` | 173 | audit_append_call | `blockers.append("date verified is pending")` |
-| `scripts/external_approval_gate.py` | 222 | audit_append_call | `lines.append(` |
-| `scripts/external_approval_gate.py` | 231 | audit_append_call | `lines.append("- None")` |
-| `scripts/final_gate_classifier.py` | 165 | audit_append_call | `findings.append(item)` |
-| `scripts/final_gate_classifier.py` | 197 | audit_append_call | `findings.append(` |
-| `scripts/final_gate_classifier.py` | 276 | audit_append_call | `required_actions.append(action)` |
-| `scripts/final_gate_classifier.py` | 320 | audit_append_call | `lines.append(f"\| `{surface.name}` \| `{surface.status}` \| `{surface.detail}` \|")` |
-| `scripts/final_gate_classifier.py` | 332 | audit_append_call | `lines.append(` |
-| `scripts/final_gate_classifier.py` | 348 | audit_append_call | `lines.append(` |
-| `scripts/final_gate_classifier.py` | 354 | audit_append_call | `lines.append("\| `-` \| `-` \| False \| False \| False \| False \| none \|")` |
-| `scripts/final_gate_classifier.py` | 360 | audit_append_call | `lines.append("- None")` |
+| `scripts/execute_disposable_db_schema_proof.py` | 31 | audit_append_call | `code,out=run_command(cmd); overall=max(overall,code); lines.append(f"\| `{' '.join(cmd).replace(url,'<DATABASE_URL>')}` \| {code} \|"); lines+=["","```text",out.rstrip(),"```"]` |
+| `scripts/external_approval_gate.py` | 168 | audit_append_call | `blockers.append(f"decision must be {meta['required_decision']}")` |
+| `scripts/external_approval_gate.py` | 170 | audit_append_call | `blockers.append("approver is pending")` |
+| `scripts/external_approval_gate.py` | 172 | audit_append_call | `blockers.append("evidence URL is pending or invalid")` |
+| `scripts/external_approval_gate.py` | 174 | audit_append_call | `blockers.append("date verified is pending")` |
+| `scripts/external_approval_gate.py` | 223 | audit_append_call | `lines.append(` |
+| `scripts/external_approval_gate.py` | 232 | audit_append_call | `lines.append("- None")` |
+| `scripts/final_gate_classifier.py` | 166 | audit_append_call | `findings.append(item)` |
+| `scripts/final_gate_classifier.py` | 198 | audit_append_call | `findings.append(` |
+| `scripts/final_gate_classifier.py` | 277 | audit_append_call | `required_actions.append(action)` |
+| `scripts/final_gate_classifier.py` | 321 | audit_append_call | `lines.append(f"\| `{surface.name}` \| `{surface.status}` \| `{surface.detail}` \|")` |
+| `scripts/final_gate_classifier.py` | 333 | audit_append_call | `lines.append(` |
+| `scripts/final_gate_classifier.py` | 349 | audit_append_call | `lines.append(` |
+| `scripts/final_gate_classifier.py` | 355 | audit_append_call | `lines.append("\| `-` \| `-` \| False \| False \| False \| False \| none \|")` |
+| `scripts/final_gate_classifier.py` | 361 | audit_append_call | `lines.append("- None")` |
 | `scripts/generate_ai_prompt_surface_inventory.py` | 49 | audit_append_call | `surfaces.append(PromptSurface(str(path.relative_to(REPO_ROOT)), markers))` |
 | `scripts/generate_ai_prompt_surface_inventory.py` | 76 | audit_append_call | `lines.append("\| _none found_ \| _none_ \|")` |
 | `scripts/generate_ai_prompt_surface_inventory.py` | 79 | audit_append_call | `lines.append(f"\| `{surface.path}` \| `{', '.join(surface.markers)}` \|")` |
@@ -2859,47 +3460,47 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/generate_backend_consolidation_evidence_manifest.py` | 62 | audit_append_call | `rows.append(ManifestRow(relative, True, path.stat().st_size, _sha256(path)))` |
 | `scripts/generate_backend_consolidation_evidence_manifest.py` | 64 | audit_append_call | `rows.append(ManifestRow(relative, False, 0, ""))` |
 | `scripts/generate_backend_consolidation_evidence_manifest.py` | 80 | audit_append_call | `lines.append(` |
-| `scripts/generate_backend_consolidation_execution_report.py` | 48 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
-| `scripts/generate_backend_consolidation_execution_report.py` | 60 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
-| `scripts/generate_backend_consolidation_implementation_report.py` | 48 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
-| `scripts/generate_backend_consolidation_implementation_report.py` | 59 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
-| `scripts/generate_backend_consolidation_progress_report.py` | 43 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
-| `scripts/generate_backend_consolidation_progress_report.py` | 55 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
-| `scripts/generate_backend_consolidation_readiness_report.py` | 42 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
-| `scripts/generate_backend_consolidation_readiness_report.py` | 52 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
-| `scripts/generate_backend_consolidation_report.py` | 47 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
-| `scripts/generate_backend_consolidation_report.py` | 59 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
-| `scripts/generate_backend_consolidation_terminal_report.py` | 49 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
-| `scripts/generate_backend_consolidation_terminal_report.py` | 60 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_backend_consolidation_execution_report.py` | 49 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
+| `scripts/generate_backend_consolidation_execution_report.py` | 61 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_backend_consolidation_implementation_report.py` | 49 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
+| `scripts/generate_backend_consolidation_implementation_report.py` | 60 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_backend_consolidation_progress_report.py` | 44 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
+| `scripts/generate_backend_consolidation_progress_report.py` | 56 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_backend_consolidation_readiness_report.py` | 43 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
+| `scripts/generate_backend_consolidation_readiness_report.py` | 53 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_backend_consolidation_report.py` | 48 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
+| `scripts/generate_backend_consolidation_report.py` | 60 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_backend_consolidation_terminal_report.py` | 50 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
+| `scripts/generate_backend_consolidation_terminal_report.py` | 61 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
 | `scripts/generate_backend_deletion_candidate_inventory.py` | 13 | audit_logs_table | `("legacy_audit", re.compile(r"audit_logs\|AuditLog\|legacy audit", re.IGNORECASE)),` |
 | `scripts/generate_backend_deletion_candidate_inventory.py` | 13 | audit_log_identifier | `("legacy_audit", re.compile(r"audit_logs\|AuditLog\|legacy audit", re.IGNORECASE)),` |
 | `scripts/generate_backend_deletion_candidate_inventory.py` | 15 | audit_repository | `("duplicate_repository", re.compile(r"class\s+\w*Repository\|AuditRepository\|ConsentRepository")),` |
 | `scripts/generate_backend_deletion_candidate_inventory.py` | 34 | audit_append_call | `files.append(path)` |
 | `scripts/generate_backend_deletion_candidate_inventory.py` | 47 | audit_append_call | `candidates.append(Candidate(str(path.relative_to(REPO_ROOT)), line_number, category, line.strip()[:220]))` |
 | `scripts/generate_backend_deletion_candidate_inventory.py` | 61 | audit_append_call | `lines.append(f"\| `{candidate.path}` \| {candidate.line} \| {candidate.category} \| `{text}` \| TODO \| no \|")` |
-| `scripts/generate_backend_first_wiring_candidates_report.py` | 41 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
-| `scripts/generate_backend_first_wiring_candidates_report.py` | 53 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
-| `scripts/generate_backend_implementation_371_375_report.py` | 42 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
-| `scripts/generate_backend_implementation_371_375_report.py` | 54 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
-| `scripts/generate_backend_runtime_compatibility_report.py` | 48 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
-| `scripts/generate_backend_runtime_compatibility_report.py` | 60 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
-| `scripts/generate_backend_runtime_enablement_report.py` | 62 | audit_append_call | `lines.append(f"\| `{relative}` \| `{_sha256(path)}` \|")` |
-| `scripts/generate_backend_runtime_enablement_report.py` | 64 | audit_append_call | `lines.append(f"\| `{relative}` \| `MISSING` \|")` |
-| `scripts/generate_backend_runtime_enablement_report.py` | 75 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
-| `scripts/generate_backend_runtime_enablement_report.py` | 89 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
-| `scripts/generate_backend_runtime_integration_readiness_report.py` | 56 | audit_append_call | `lines.append(f"\| `{relative}` \| `{_sha(path) if path.exists() else 'MISSING'}` \|")` |
-| `scripts/generate_backend_runtime_integration_readiness_report.py` | 67 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
-| `scripts/generate_backend_runtime_integration_readiness_report.py` | 81 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
-| `scripts/generate_backend_runtime_probe_report.py` | 48 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
-| `scripts/generate_backend_runtime_probe_report.py` | 59 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
-| `scripts/generate_backend_runtime_wiring_cases_report.py` | 41 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
-| `scripts/generate_backend_runtime_wiring_cases_report.py` | 53 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
-| `scripts/generate_backend_runtime_wiring_preflight_report.py` | 42 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
-| `scripts/generate_backend_runtime_wiring_preflight_report.py` | 54 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_backend_first_wiring_candidates_report.py` | 42 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
+| `scripts/generate_backend_first_wiring_candidates_report.py` | 54 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_backend_implementation_371_375_report.py` | 43 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
+| `scripts/generate_backend_implementation_371_375_report.py` | 55 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_backend_runtime_compatibility_report.py` | 49 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
+| `scripts/generate_backend_runtime_compatibility_report.py` | 61 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_backend_runtime_enablement_report.py` | 63 | audit_append_call | `lines.append(f"\| `{relative}` \| `{_sha256(path)}` \|")` |
+| `scripts/generate_backend_runtime_enablement_report.py` | 65 | audit_append_call | `lines.append(f"\| `{relative}` \| `MISSING` \|")` |
+| `scripts/generate_backend_runtime_enablement_report.py` | 76 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
+| `scripts/generate_backend_runtime_enablement_report.py` | 90 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_backend_runtime_integration_readiness_report.py` | 57 | audit_append_call | `lines.append(f"\| `{relative}` \| `{_sha(path) if path.exists() else 'MISSING'}` \|")` |
+| `scripts/generate_backend_runtime_integration_readiness_report.py` | 68 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
+| `scripts/generate_backend_runtime_integration_readiness_report.py` | 82 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_backend_runtime_probe_report.py` | 49 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
+| `scripts/generate_backend_runtime_probe_report.py` | 60 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_backend_runtime_wiring_cases_report.py` | 42 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
+| `scripts/generate_backend_runtime_wiring_cases_report.py` | 54 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_backend_runtime_wiring_preflight_report.py` | 43 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
+| `scripts/generate_backend_runtime_wiring_preflight_report.py` | 55 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
 | `scripts/generate_beta_readiness_status.py` | 40 | audit_append_call | `lines.append(f"\| {name} \| {item.get('status')} \|")` |
-| `scripts/generate_beta_release_evidence_bundle.py` | 71 | audit_append_call | `lines.append(f"\| {artifact.category} \| `{artifact.path}` \| `{present}` \|")` |
-| `scripts/generate_beta_signoff_manifest.py` | 69 | audit_append_call | `lines.append(f"\| {area.name} \| {area.evidence} \| _pending_ \| _pending_ \|")` |
-| `scripts/generate_beta_signoff_manifest.py` | 79 | audit_append_call | `lines.append(f"- `{rel_path}`")` |
+| `scripts/generate_beta_release_evidence_bundle.py` | 73 | audit_append_call | `lines.append(f"\| {artifact.category} \| `{artifact.path}` \| `{present}` \|")` |
+| `scripts/generate_beta_signoff_manifest.py` | 71 | audit_append_call | `lines.append(f"\| {area.name} \| {area.evidence} \| _pending_ \| _pending_ \|")` |
+| `scripts/generate_beta_signoff_manifest.py` | 81 | audit_append_call | `lines.append(f"- `{rel_path}`")` |
 | `scripts/generate_consent_callsite_inventory.py` | 44 | audit_append_call | `files.append(path)` |
 | `scripts/generate_consent_callsite_inventory.py` | 59 | audit_append_call | `rows.append(` |
 | `scripts/generate_consent_callsite_inventory.py` | 81 | audit_append_call | `output.append(f"\| `{row.path}` \| {row.line} \| {row.category} \| `{text}` \|")` |
@@ -2915,8 +3516,8 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/generate_dependency_pin_report.py` | 46 | audit_append_call | `blockers.append(f"{path.relative_to(ROOT)}:{lineno}: {line.strip()}")` |
 | `scripts/generate_dependency_pin_report.py` | 47 | audit_append_call | `rows.append({"file": str(path.relative_to(ROOT)), "line": lineno, "classification": classification, "text": line.strip()})` |
 | `scripts/generate_dependency_pin_report.py` | 59 | audit_append_call | `lines.append("- None")` |
-| `scripts/generate_first_audit_runtime_wiring_report.py` | 42 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
-| `scripts/generate_first_audit_runtime_wiring_report.py` | 54 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_first_audit_runtime_wiring_report.py` | 43 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
+| `scripts/generate_first_audit_runtime_wiring_report.py` | 55 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
 | `scripts/generate_frontend_api_client_inventory.py` | 73 | audit_append_call | `surfaces.append(` |
 | `scripts/generate_frontend_api_client_inventory.py` | 110 | audit_append_call | `lines.append("\| _none found_ \| _none_ \| _none_ \|")` |
 | `scripts/generate_frontend_api_client_inventory.py` | 115 | audit_append_call | `lines.append(f"\| `{surface.path}` \| `{api_text}` \| `{domain_text}` \|")` |
@@ -2935,9 +3536,6 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/generate_learner_authz_matrix.py` | 127 | audit_append_call | `rows.append(` |
 | `scripts/generate_learner_authz_matrix.py` | 161 | audit_append_call | `lines.append(` |
 | `scripts/generate_learner_authz_matrix.py` | 169 | audit_append_call | `lines.append(f"- `{row.router}` `{row.method} {row.path}` via `{row.function}`")` |
-| `scripts/generate_legacy_learner_access_guard_report.py` | 18 | audit_append_call | `rows.append({"path": str(path.relative_to(ROOT)), "count": text.count("assert_can_access_learner")})` |
-| `scripts/generate_legacy_learner_access_guard_report.py` | 29 | audit_append_call | `lines.append(f"\| `{row['path']}` \| {row['count']} \|")` |
-| `scripts/generate_legacy_learner_access_guard_report.py` | 31 | audit_append_call | `lines.append("\| - \| 0 \|")` |
 | `scripts/generate_phase2_authorization_closure_report.py` | 71 | audit_append_call | `lines.append(f"- `{rel_path}` — {status}")` |
 | `scripts/generate_phase2_authorization_closure_report.py` | 100 | audit_append_call | `lines.append(f"- `{rel_path}` — {status}")` |
 | `scripts/generate_phase2_authorization_closure_report.py` | 114 | audit_append_call | `lines.append("Status: **not closed** — missing learner authorization markers remain.")` |
@@ -2950,7 +3548,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/generate_popia_consent_boundary_matrix.py` | 125 | audit_append_call | `rows.append(BoundaryRow(router, function, "source-evidence", "SOURCE", decision, marker))` |
 | `scripts/generate_popia_consent_boundary_matrix.py` | 142 | audit_append_call | `lines.append(f"- `{decision}`: {counts[decision]}")` |
 | `scripts/generate_popia_consent_boundary_matrix.py` | 151 | audit_append_call | `lines.append(f"\| `{row.router}` \| `{row.method}` \| `{row.route}` \| `{row.function}` \| `{row.decision}` \| `{row.marker}` \|")` |
-| `scripts/generate_release_evidence_manifest.py` | 69 | audit_append_call | `lines.append(f"\| {item.name} \| `{item.command}` \| pending \|")` |
+| `scripts/generate_release_evidence_manifest.py` | 71 | audit_append_call | `lines.append(f"\| {item.name} \| `{item.command}` \| pending \|")` |
 | `scripts/generate_release_owner_beta_go_no_go.py` | 27 | audit_logs_table | `"This memo does not approve production launch, destructive database changes, consent-table merge, audit_logs drop, or public mutating health probes.", "",` |
 | `scripts/generate_release_state_snapshot.py` | 69 | audit_append_call | `lines.append(f"\| `{rel_path}` \| `{present}` \|")` |
 | `scripts/generate_route_alias_matrix.py` | 47 | audit_append_call | `rows.append(` |
@@ -2962,8 +3560,8 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/generate_route_inventory.py` | 164 | audit_append_call | `lines.append(f"\| `{route}` \| {status} \|")` |
 | `scripts/generate_route_inventory.py` | 182 | audit_append_call | `lines.append(f"\| `{prefix}` \| `{fragment}` \| {status} \|")` |
 | `scripts/generate_route_inventory.py` | 195 | audit_append_call | `lines.append(f"- `{prefix}`")` |
-| `scripts/generate_route_inventory.py` | 212 | audit_append_call | `lines.append(` |
-| `scripts/generate_route_inventory.py` | 216 | audit_append_call | `lines.append("")` |
+| `scripts/generate_route_inventory.py` | 208 | audit_append_call | `lines.append(` |
+| `scripts/generate_route_inventory.py` | 212 | audit_append_call | `lines.append("")` |
 | `scripts/generate_router_boundary_matrix.py` | 26 | audit_append_call | `modules.append(node.module or "")` |
 | `scripts/generate_router_boundary_matrix.py` | 42 | audit_append_call | `allowed.append(module)` |
 | `scripts/generate_router_boundary_matrix.py` | 44 | audit_append_call | `violations.append(module)` |
@@ -2972,18 +3570,23 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/generate_router_service_dependency_map.py` | 21 | audit_append_call | `modules.append(node.module or "")` |
 | `scripts/generate_router_service_dependency_map.py` | 32 | audit_append_call | `rows.append({` |
 | `scripts/generate_router_service_dependency_map.py` | 55 | audit_append_call | `lines.append(` |
-| `scripts/generate_runtime_wiring_431_450_report.py` | 42 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
-| `scripts/generate_runtime_wiring_431_450_report.py` | 54 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
+| `scripts/generate_runtime_wiring_431_450_report.py` | 43 | audit_append_call | `rows.append((name, code, " ".join(command), output))` |
+| `scripts/generate_runtime_wiring_431_450_report.py` | 55 | audit_append_call | `lines.append(f"\| {name} \| {code} \| `{command}` \|")` |
 | `scripts/generate_service_boundary_inventory.py` | 35 | audit_append_call | `rows.append({"path": str(path.relative_to(ROOT)), "classification": classify(path)})` |
 | `scripts/generate_service_boundary_inventory.py` | 45 | audit_append_call | `lines.append(f"\| `{row['path']}` \| {row['classification']} \|")` |
 | `scripts/generate_service_family_map.py` | 74 | audit_append_call | `rows.append({` |
 | `scripts/generate_service_family_map.py` | 83 | audit_append_call | `grouped[row["domain"]].append(row)` |
 | `scripts/generate_service_family_map.py` | 101 | audit_append_call | `lines.append(` |
-| `scripts/generate_staging_smoke_evidence_manifest.py` | 63 | audit_append_call | `lines.append(f"\| {entry.name} \| `{entry.command}` \|")` |
+| `scripts/generate_staging_smoke_evidence_manifest.py` | 66 | audit_append_call | `lines.append(f"\| {entry.name} \| `{entry.command}` \|")` |
 | `scripts/generate_truthful_beta_readiness_status.py` | 71 | audit_append_call | `lines.append(f"\| {gate} \| {data.get('status')} \| {data.get('integrity_status')} \| {data.get('evidence_source_type', 'unknown')} \|")` |
 | `scripts/generate_truthful_beta_readiness_status.py` | 76 | audit_append_call | `lines.append("- None")` |
 | `scripts/generate_truthful_release_owner_beta_go_no_go.py` | 38 | audit_append_call | `lines.append("- None")` |
 | `scripts/generate_truthful_release_owner_beta_go_no_go.py` | 43 | audit_logs_table | `"This memo does not approve production launch, destructive database changes, consent-table merge, audit_logs drop, public mutating health probes, or synthetic evidence substitution.",` |
+| `scripts/governance/audit_rr009_governance_process.py` | 47 | audit_append_call | `files.append(path.relative_to(root / ROOT_ADR_DIR))` |
+| `scripts/governance/audit_rr009_governance_process.py` | 87 | audit_append_call | `errors.append(f"manifest JSON invalid: {manifest['__json_error__']}")` |
+| `scripts/governance/audit_rr009_governance_process.py` | 101 | audit_append_call | `errors.append(f"manifest flag must be true: {key}")` |
+| `scripts/governance/audit_rr009_governance_process.py` | 110 | audit_append_call | `errors.append(f"manifest boundary flag must be false: {key}")` |
+| `scripts/governance/audit_rr009_governance_process.py` | 112 | audit_append_call | `errors.append("manifest is missing")` |
 | `scripts/ingestion/api.py` | 133 | audit_append_call | `result.append(SourceInfo(` |
 | `scripts/ingestion/main.py` | 356 | audit_append_call | `resolved.append(sid)` |
 | `scripts/ingestion/pipeline/__init__.py` | 181 | audit_append_call | `self._raw_buf.append(raw)` |
@@ -3050,50 +3653,105 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/inspect_learner_routes.py` | 178 | audit_append_call | `lines.append(f"\| — \| — \| `{len(references) - 200} additional references omitted` \|")` |
 | `scripts/inspect_lesson_object_authorization.py` | 23 | audit_append_call | `rows.append({"name": node.name, "args": args, "lineno": node.lineno})` |
 | `scripts/inspect_popia_consent_lifecycle.py` | 34 | audit_append_call | `imports.append(node.module or "")` |
-| `scripts/integrate_patch.py` | 59 | audit_append_call | `staged_conflicts.append(target)` |
-| `scripts/integrate_patch.py` | 64 | audit_append_call | `moved.append(dest_file)` |
+| `scripts/integrate_patch.py` | 60 | audit_append_call | `staged_conflicts.append(target)` |
+| `scripts/integrate_patch.py` | 65 | audit_append_call | `moved.append(dest_file)` |
 | `scripts/inventory_services.py` | 92 | audit_append_call | `found_duplicates.append((dup_path, canonical_rel))` |
-| `scripts/jwt_secret_rotation_evidence.py` | 159 | audit_append_call | `blockers.append(f"JWT self-test raised {type(exc).__name__}: {exc}")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 160 | audit_append_call | `if not access_ok: blockers.append("access token issue/verify self-test failed")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 161 | audit_append_call | `if not refresh_ok: blockers.append("refresh token issue/verify self-test failed")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 162 | audit_append_call | `if not access_tamper: blockers.append("access token tamper rejection failed")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 163 | audit_append_call | `if not refresh_tamper: blockers.append("refresh token tamper rejection failed")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 164 | audit_append_call | `if not separated: blockers.append("access and refresh secrets must be different")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 180 | audit_append_call | `if not re.fullmatch(r"[0-9]+", run_id): blockers.append("JWT_EVIDENCE_RUN_ID is not numeric")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 181 | audit_append_call | `if not _gh_available(): blockers.append("GitHub CLI is unavailable or not authenticated")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 184 | audit_append_call | `blockers.append(f"unable to read GitHub Actions run {run_id}")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 191 | audit_append_call | `if f"/actions/runs/{run_id}" not in url: blockers.append("run URL does not contain numeric run ID")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 192 | audit_append_call | `if status != "completed": blockers.append(f"GitHub Actions run status is {status or 'missing'}, expected completed")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 193 | audit_append_call | `if conclusion != "success": blockers.append(f"GitHub Actions run conclusion is {conclusion or 'missing'}, expected success")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 194 | audit_append_call | `if head_sha != expected_sha: blockers.append(f"GitHub Actions run SHA {head_sha or 'missing'} does not match current commit {expected_sha}")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 195 | audit_append_call | `if not workflow: blockers.append("workflow name is missing")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 208 | audit_append_call | `if not ev.present: blockers.append(f"current {label} JWT secret is missing")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 209 | audit_append_call | `if ev.present and ev.length < MIN_SECRET_LENGTH: blockers.append(f"current {label} JWT secret length is {ev.length}, expected at least {MIN_SECRET_LENGTH}")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 210 | audit_append_call | `if ev.placeholder_like: blockers.append(f"current {label} JWT secret looks placeholder-like")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 214 | audit_append_call | `if evidence_env not in {"staging", "production"}: blockers.append("JWT_EVIDENCE_ENV must be staging or production")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 215 | audit_append_call | `if not store or has_placeholder(store): blockers.append("JWT_SECRET_STORE is missing or placeholder-like")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 216 | audit_append_call | `if not ref or has_placeholder(ref): blockers.append("JWT_ROTATION_REFERENCE is missing or placeholder-like")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 217 | audit_append_call | `if not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", date): blockers.append("JWT_ROTATION_DATE must be YYYY-MM-DD")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 218 | audit_append_call | `if rotation_result != "passed": blockers.append("JWT_ROTATION_RESULT must be passed")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 219 | audit_append_call | `if not prev_access: blockers.append("previous access JWT fingerprint/secret is required for rotation evidence")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 220 | audit_append_call | `if not prev_refresh: blockers.append("previous refresh JWT fingerprint/secret is required for rotation evidence")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 221 | audit_append_call | `if prev_access and not access_rotated: blockers.append("current access JWT fingerprint matches previous fingerprint; rotation not proven")` |
-| `scripts/jwt_secret_rotation_evidence.py` | 222 | audit_append_call | `if prev_refresh and not refresh_rotated: blockers.append("current refresh JWT fingerprint matches previous fingerprint; rotation not proven")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 160 | audit_append_call | `blockers.append(f"JWT self-test raised {type(exc).__name__}: {exc}")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 161 | audit_append_call | `if not access_ok: blockers.append("access token issue/verify self-test failed")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 162 | audit_append_call | `if not refresh_ok: blockers.append("refresh token issue/verify self-test failed")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 163 | audit_append_call | `if not access_tamper: blockers.append("access token tamper rejection failed")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 164 | audit_append_call | `if not refresh_tamper: blockers.append("refresh token tamper rejection failed")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 165 | audit_append_call | `if not separated: blockers.append("access and refresh secrets must be different")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 181 | audit_append_call | `if not re.fullmatch(r"[0-9]+", run_id): blockers.append("JWT_EVIDENCE_RUN_ID is not numeric")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 182 | audit_append_call | `if not _gh_available(): blockers.append("GitHub CLI is unavailable or not authenticated")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 185 | audit_append_call | `blockers.append(f"unable to read GitHub Actions run {run_id}")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 192 | audit_append_call | `if f"/actions/runs/{run_id}" not in url: blockers.append("run URL does not contain numeric run ID")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 193 | audit_append_call | `if status != "completed": blockers.append(f"GitHub Actions run status is {status or 'missing'}, expected completed")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 194 | audit_append_call | `if conclusion != "success": blockers.append(f"GitHub Actions run conclusion is {conclusion or 'missing'}, expected success")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 195 | audit_append_call | `if head_sha != expected_sha: blockers.append(f"GitHub Actions run SHA {head_sha or 'missing'} does not match current commit {expected_sha}")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 196 | audit_append_call | `if not workflow: blockers.append("workflow name is missing")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 209 | audit_append_call | `if not ev.present: blockers.append(f"current {label} JWT secret is missing")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 210 | audit_append_call | `if ev.present and ev.length < MIN_SECRET_LENGTH: blockers.append(f"current {label} JWT secret length is {ev.length}, expected at least {MIN_SECRET_LENGTH}")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 211 | audit_append_call | `if ev.placeholder_like: blockers.append(f"current {label} JWT secret looks placeholder-like")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 215 | audit_append_call | `if evidence_env not in {"staging", "production"}: blockers.append("JWT_EVIDENCE_ENV must be staging or production")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 216 | audit_append_call | `if not store or has_placeholder(store): blockers.append("JWT_SECRET_STORE is missing or placeholder-like")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 217 | audit_append_call | `if not ref or has_placeholder(ref): blockers.append("JWT_ROTATION_REFERENCE is missing or placeholder-like")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 218 | audit_append_call | `if not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", date): blockers.append("JWT_ROTATION_DATE must be YYYY-MM-DD")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 219 | audit_append_call | `if rotation_result != "passed": blockers.append("JWT_ROTATION_RESULT must be passed")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 220 | audit_append_call | `if not prev_access: blockers.append("previous access JWT fingerprint/secret is required for rotation evidence")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 221 | audit_append_call | `if not prev_refresh: blockers.append("previous refresh JWT fingerprint/secret is required for rotation evidence")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 222 | audit_append_call | `if prev_access and not access_rotated: blockers.append("current access JWT fingerprint matches previous fingerprint; rotation not proven")` |
+| `scripts/jwt_secret_rotation_evidence.py` | 223 | audit_append_call | `if prev_refresh and not refresh_rotated: blockers.append("current refresh JWT fingerprint matches previous fingerprint; rotation not proven")` |
+| `scripts/knowledge_graph/audit_kg000_formal_kg_roadmap_approval.py` | 62 | audit_append_call | `errors.append("missing KG-0 docs: " + ", ".join(missing_docs))` |
+| `scripts/knowledge_graph/audit_kg000_formal_kg_roadmap_approval.py` | 69 | audit_append_call | `errors.append(f"{rel} is missing KG-0 index references")` |
+| `scripts/knowledge_graph/audit_kg000_formal_kg_roadmap_approval.py` | 74 | audit_append_call | `errors.append(f"kg_roadmap_register kg_sequence must be {KG_IDS}; got {kg_ids}")` |
+| `scripts/knowledge_graph/audit_kg000_formal_kg_roadmap_approval.py` | 78 | audit_append_call | `errors.append(f"KG roadmap register boundary must remain false: {key}")` |
+| `scripts/knowledge_graph/audit_kg000_formal_kg_roadmap_approval.py` | 82 | audit_append_call | `errors.append("final roadmap reconciliation closure must be valid before KG-0")` |
+| `scripts/knowledge_graph/audit_kg000_formal_kg_roadmap_approval.py` | 98 | audit_append_call | `errors.append(f"authority check failed: {key}")` |
+| `scripts/knowledge_graph/audit_kg001_caps_graph_foundation.py` | 101 | audit_append_call | `errors.append(f"CAPS graph source build failed: {exc}")` |
+| `scripts/knowledge_graph/audit_kg001_caps_graph_foundation.py` | 112 | audit_append_call | `errors.append(f"generated CAPS graph artifact invalid: {exc}")` |
+| `scripts/knowledge_graph/audit_kg001_caps_graph_foundation.py` | 114 | audit_append_call | `warnings.append("KG-1 graph artifact is not generated yet")` |
+| `scripts/knowledge_graph/audit_kg002_target_graph_generation.py` | 102 | audit_append_call | `errors.append(f"target graph source build failed: {exc}")` |
+| `scripts/knowledge_graph/audit_kg002_target_graph_generation.py` | 113 | audit_append_call | `errors.append(f"generated target graph artifact invalid: {exc}")` |
+| `scripts/knowledge_graph/audit_kg002_target_graph_generation.py` | 115 | audit_append_call | `warnings.append("KG-2 target graph artifact is not generated yet")` |
+| `scripts/knowledge_graph/audit_kg003_learner_graph_shadow_mode.py` | 45 | audit_append_call | `errors.append("KG-3 record must have kg_id KG-3")` |
+| `scripts/knowledge_graph/audit_kg003_learner_graph_shadow_mode.py` | 47 | audit_append_call | `errors.append("KG-3 manifest must have kg_id KG-3")` |
+| `scripts/knowledge_graph/audit_kg003_learner_graph_shadow_mode.py` | 49 | audit_append_call | `errors.append("KG-3 fixture must explicitly avoid live learner data")` |
+| `scripts/knowledge_graph/audit_kg004_gap_engine_intervention_planner.py` | 42 | audit_append_call | `errors.append("KG-4 record must have kg_id KG-4")` |
+| `scripts/knowledge_graph/audit_kg004_gap_engine_intervention_planner.py` | 44 | audit_append_call | `errors.append("KG-4 manifest must have kg_id KG-4")` |
+| `scripts/knowledge_graph/audit_kg005_graph_grounded_lesson_assessment_generation.py` | 43 | audit_append_call | `errors.append("KG-5 record must have kg_id KG-5")` |
+| `scripts/knowledge_graph/audit_kg005_graph_grounded_lesson_assessment_generation.py` | 45 | audit_append_call | `errors.append("KG-5 manifest must have kg_id KG-5")` |
+| `scripts/knowledge_graph/audit_kg006_tutor_study_plan_gamification_parent_alignment.py` | 44 | audit_append_call | `errors.append("KG-6 record must have kg_id KG-6")` |
+| `scripts/knowledge_graph/audit_kg006_tutor_study_plan_gamification_parent_alignment.py` | 46 | audit_append_call | `errors.append("KG-6 manifest must have kg_id KG-6")` |
+| `scripts/knowledge_graph/audit_kg007_authority_switch_legacy_cleanup.py` | 43 | audit_append_call | `errors.append("KG-7 record must have kg_id KG-7")` |
+| `scripts/knowledge_graph/audit_kg007_authority_switch_legacy_cleanup.py` | 45 | audit_append_call | `errors.append("KG-7 manifest must have kg_id KG-7")` |
+| `scripts/knowledge_graph/audit_kg008_post_switch_optimisation_scale_review.py` | 120 | audit_append_call | `problems.append(f"{path}: Reviewer must be a real named reviewer, not a placeholder")` |
+| `scripts/knowledge_graph/audit_kg008_post_switch_optimisation_scale_review.py` | 122 | audit_append_call | `problems.append(f"{path}: Reviewed at must be an ISO date or UTC timestamp")` |
+| `scripts/knowledge_graph/audit_kg008_post_switch_optimisation_scale_review.py` | 134 | audit_append_call | `errors.append("KG-8 record must have kg_id KG-8")` |
+| `scripts/knowledge_graph/audit_kg008_post_switch_optimisation_scale_review.py` | 136 | audit_append_call | `errors.append("KG-8 must record valid KG-ACT-001 dependency")` |
+| `scripts/knowledge_graph/audit_kg008_post_switch_optimisation_scale_review.py` | 143 | audit_append_call | `final_doc_errors.append(f"{path}: expected marker {label}: {expected}")` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 62 | audit_append_call | `rows.append({` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 96 | audit_append_call | `errors.append("missing KG records: " + ", ".join(missing_records))` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 98 | audit_append_call | `errors.append("incomplete KG records: " + ", ".join(incomplete_records))` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 102 | audit_append_call | `errors.append("KG-8 record must be present and identify kg_id KG-8")` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 104 | audit_append_call | `errors.append("KG-8 must record kg_roadmap_completed_through_kg8 true")` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 106 | audit_append_call | `errors.append("KG-8 must inherit runtime_kg_implementation_claimed true from KG-ACT-001")` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 108 | audit_append_call | `errors.append("KG-8 must inherit runtime_kg_authority_switch_authorised true from KG-ACT-001")` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 110 | audit_append_call | `errors.append("KG-8 must inherit authority_switch_executed true from KG-ACT-001")` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 113 | audit_append_call | `errors.append(f"KG-8 boundary flag must remain false: {key}")` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 118 | audit_append_call | `errors.append("closure matrix must identify KG-ROADMAP-CLOSURE")` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 122 | audit_append_call | `errors.append("closure matrix KG item order must match KG-0..KG-8 with KG-ACT-001 before KG-8")` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 124 | audit_append_call | `errors.append("closure matrix must preserve the KG-8 non-required pytest/PATH caveat")` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 137 | audit_append_call | `errors.append(f"closure record flag must be true: {key}")` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 139 | audit_append_call | `errors.append(f"closure record kg_item_count must be {len(KG_RECORDS)}")` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 141 | audit_append_call | `errors.append("closure record must preserve runtime KG implementation claimed true")` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 143 | audit_append_call | `errors.append("closure record must preserve runtime KG authority switch authorised true")` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 145 | audit_append_call | `errors.append("closure record must preserve authority switch executed true")` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 148 | audit_append_call | `errors.append(f"closure boundary flag must remain false: {key}")` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | 150 | audit_append_call | `warnings.append("KG roadmap closure record is pending evidence capture")` |
+| `scripts/knowledge_graph/audit_kgact001_controlled_runtime_kg_authority_activation.py` | 121 | audit_append_call | `problems.append(f"{path}: Reviewer must be a real named reviewer, not a placeholder")` |
+| `scripts/knowledge_graph/audit_kgact001_controlled_runtime_kg_authority_activation.py` | 123 | audit_append_call | `problems.append(f"{path}: Reviewed at must be an ISO date or UTC timestamp")` |
+| `scripts/knowledge_graph/audit_kgact001_controlled_runtime_kg_authority_activation.py` | 135 | audit_append_call | `errors.append("KG-ACT-001 record must have kg_id KG-ACT-001")` |
+| `scripts/knowledge_graph/audit_kgact001_controlled_runtime_kg_authority_activation.py` | 137 | audit_append_call | `errors.append("KG-ACT-001 must record valid KG-7 dependency")` |
+| `scripts/knowledge_graph/audit_kgact001_controlled_runtime_kg_authority_activation.py` | 145 | audit_append_call | `final_doc_errors.append(f"{path}: expected marker {label}: {expected}")` |
 | `scripts/lessons/generate_lessons.py` | 150 | audit_append_call | `result.errors.append(msg)` |
 | `scripts/lessons/generate_lessons.py` | 157 | audit_append_call | `result.errors.append(msg)` |
 | `scripts/lessons/generate_lessons.py` | 164 | audit_append_call | `result.errors.append(msg)` |
 | `scripts/lessons/generate_lessons.py` | 227 | audit_append_call | `results.append(result)` |
 | `scripts/lessons/validate_lessons.py` | 185 | audit_append_call | `failed_lessons.append((lesson_id, caps_ref, result))` |
-| `scripts/live_db_tx_evidence.py` | 181 | audit_append_call | `blockers.append("route slice is pending")` |
-| `scripts/live_db_tx_evidence.py` | 183 | audit_append_call | `blockers.append("live DB evidence URL is pending or invalid")` |
-| `scripts/live_db_tx_evidence.py` | 185 | audit_append_call | `blockers.append("test result must be pass/passed/success/successful/green/ok")` |
-| `scripts/live_db_tx_evidence.py` | 187 | audit_append_call | `blockers.append("database is pending")` |
-| `scripts/live_db_tx_evidence.py` | 189 | audit_append_call | `blockers.append("commit SHA is pending or invalid")` |
-| `scripts/live_db_tx_evidence.py` | 191 | audit_append_call | `blockers.append("verified by is pending")` |
-| `scripts/live_db_tx_evidence.py` | 193 | audit_append_call | `blockers.append("date verified is pending")` |
-| `scripts/live_db_tx_evidence.py` | 328 | audit_append_call | `lines.append(` |
-| `scripts/live_db_tx_evidence.py` | 337 | audit_append_call | `lines.append("- None")` |
+| `scripts/live_db_tx_evidence.py` | 182 | audit_append_call | `blockers.append("route slice is pending")` |
+| `scripts/live_db_tx_evidence.py` | 184 | audit_append_call | `blockers.append("live DB evidence URL is pending or invalid")` |
+| `scripts/live_db_tx_evidence.py` | 186 | audit_append_call | `blockers.append("test result must be pass/passed/success/successful/green/ok")` |
+| `scripts/live_db_tx_evidence.py` | 188 | audit_append_call | `blockers.append("database is pending")` |
+| `scripts/live_db_tx_evidence.py` | 190 | audit_append_call | `blockers.append("commit SHA is pending or invalid")` |
+| `scripts/live_db_tx_evidence.py` | 192 | audit_append_call | `blockers.append("verified by is pending")` |
+| `scripts/live_db_tx_evidence.py` | 194 | audit_append_call | `blockers.append("date verified is pending")` |
+| `scripts/live_db_tx_evidence.py` | 329 | audit_append_call | `lines.append(` |
+| `scripts/live_db_tx_evidence.py` | 338 | audit_append_call | `lines.append("- None")` |
 | `scripts/maintenance/apply_doc_stage3_cleanup.py` | 170 | audit_append_call | `metadata_paths.append(root / "README.md")` |
+| `scripts/maintenance/apply_doc_stage5_cleanup.py` | 183 | audit_append_call | `items.append(parsed_item)` |
+| `scripts/maintenance/apply_doc_stage5_cleanup.py` | 276 | audit_append_call | `lines.append(f"{key}: {format_value(data[key])}")` |
+| `scripts/maintenance/apply_doc_stage5_cleanup.py` | 277 | audit_append_call | `lines.append("---")` |
 | `scripts/maintenance/apply_documentation_housekeeping.py` | 126 | audit_append_call | `manifest.append(entry)` |
 | `scripts/maintenance/apply_documentation_housekeeping.py` | 130 | audit_append_call | `manifest.append(entry)` |
 | `scripts/maintenance/apply_documentation_housekeeping.py` | 141 | audit_append_call | `manifest.append(entry)` |
@@ -3101,6 +3759,18 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/maintenance/apply_documentation_housekeeping.py` | 159 | audit_append_call | `manifest.append(entry)` |
 | `scripts/maintenance/apply_documentation_housekeeping.py` | 170 | audit_append_call | `manifest.append(entry)` |
 | `scripts/maintenance/apply_documentation_housekeeping.py` | 191 | audit_append_call | `manifest.append(entry)` |
+| `scripts/maintenance/apply_execution7_targeted_baseline_reconciliation.py` | 107 | audit_append_call | `changed.append(str(conftest.relative_to(ROOT)))` |
+| `scripts/maintenance/apply_execution7_targeted_baseline_reconciliation.py` | 119 | audit_append_call | `changed.append(rel)` |
+| `scripts/maintenance/apply_execution7_targeted_baseline_reconciliation.py` | 138 | audit_append_call | `changed.append(rel)` |
+| `scripts/maintenance/apply_execution7_targeted_baseline_reconciliation.py` | 153 | audit_append_call | `changed.append(rel)` |
+| `scripts/maintenance/apply_execution7_targeted_baseline_reconciliation.py` | 166 | audit_append_call | `changed.append(str(path.relative_to(ROOT)))` |
+| `scripts/maintenance/apply_execution7_targeted_baseline_reconciliation.py` | 176 | audit_append_call | `changed.append(str(path.relative_to(ROOT)))` |
+| `scripts/maintenance/apply_execution7_targeted_baseline_reconciliation.py` | 195 | audit_append_call | `residual.append(f"missing:{rel}")` |
+| `scripts/maintenance/apply_execution7_targeted_baseline_reconciliation.py` | 201 | audit_append_call | `residual.append(f"syntax:{rel}")` |
+| `scripts/maintenance/apply_execution7_targeted_baseline_reconciliation.py` | 233 | audit_append_call | `changed.append(rel)` |
+| `scripts/maintenance/apply_execution7_targeted_baseline_reconciliation.py` | 260 | audit_append_call | `changes.append(rel)` |
+| `scripts/maintenance/apply_execution7_targeted_baseline_reconciliation.py` | 303 | audit_append_call | `changed.append(rel)` |
+| `scripts/maintenance/apply_execution7_targeted_baseline_reconciliation.py` | 313 | audit_append_call | `changed.append(str(kgact.relative_to(ROOT)))` |
 | `scripts/maintenance/audit_documentation_inventory.py` | 125 | audit_append_call | `titles[title.lower()].append(rel)` |
 | `scripts/maintenance/audit_documentation_inventory.py` | 145 | audit_append_call | `rows.append(row)` |
 | `scripts/maintenance/audit_documentation_inventory.py` | 152 | audit_append_call | `findings.append(finding)` |
@@ -3161,16 +3831,41 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/maintenance/check_doc_workflow_consolidation.py` | 18 | audit_append_call | `failures.append("missing consolidated workflow: .github/workflows/documentation-governance.yml")` |
 | `scripts/maintenance/check_doc_workflow_consolidation.py` | 29 | audit_append_call | `failures.append(f"consolidated workflow missing token: {token}")` |
 | `scripts/maintenance/check_doc_workflow_consolidation.py` | 31 | audit_append_call | `failures.append("retired Stage 2 workflow still exists: .github/workflows/documentation-governance-stage2.yml")` |
-| `scripts/maintenance/check_repo_hygiene.py` | 110 | audit_append_call | `failures.append(` |
-| `scripts/maintenance/check_repo_hygiene.py` | 118 | audit_append_call | `failures.append(` |
+| `scripts/maintenance/check_repo_hygiene.py` | 119 | audit_append_call | `failures.append(` |
 | `scripts/maintenance/check_repo_hygiene.py` | 127 | audit_append_call | `failures.append(` |
-| `scripts/maintenance/doc_utils.py` | 141 | audit_append_call | `paths.append(path)` |
-| `scripts/maintenance/doc_utils.py` | 156 | audit_append_call | `paths.append(root / value)` |
+| `scripts/maintenance/check_repo_hygiene.py` | 136 | audit_append_call | `failures.append(` |
+| `scripts/maintenance/doc_utils.py` | 142 | audit_append_call | `paths.append(path)` |
+| `scripts/maintenance/doc_utils.py` | 157 | audit_append_call | `paths.append(root / value)` |
+| `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | 144 | audit_append_call | `errors.append(f"missing RR-013 authority file: {rel}")` |
+| `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | 150 | audit_append_call | `errors.append(f"missing existing mastery-model evidence anchor: {rel}")` |
+| `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | 154 | audit_append_call | `errors.append(f"RR-013 manifest JSON invalid: {manifest['__json_error__']}")` |
+| `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | 158 | audit_append_call | `errors.append("RR-013 manifest must carry rr_id=RR-013")` |
+| `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | 163 | audit_append_call | `errors.append(f"RR-013 manifest missing true key: {key}")` |
+| `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | 168 | audit_append_call | `errors.append(f"RR-013 manifest boundary must be false: {key}")` |
+| `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | 174 | audit_append_call | `errors.append(f"RR-013 manifest missing candidate model family: {candidate}")` |
+| `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | 181 | audit_append_call | `errors.append(f"RR-013 policy missing marker: {marker}")` |
+| `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | 194 | audit_append_call | `errors.append(f"RR-013 agenda missing marker: {marker}")` |
+| `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | 205 | audit_append_call | `errors.append(f"missing final RR-013 evidence file: {rel}")` |
+| `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | 211 | audit_append_call | `errors.append(f"RR-013 final file {rel} missing marker: {marker}")` |
+| `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | 214 | audit_append_call | `warnings.append("final RR-013 research evidence files are not required for authority-only audit")` |
 | `scripts/migrate_auth_lifecycle_helpers_to_service.py` | 60 | audit_append_call | `imports.append(text)` |
 | `scripts/migrate_auth_lifecycle_helpers_to_service.py` | 66 | audit_append_call | `unique.append(item)` |
 | `scripts/migrate_auth_lifecycle_helpers_to_service.py` | 87 | audit_append_call | `helpers.append((node.name, method, start, end))` |
 | `scripts/migrate_auth_lifecycle_helpers_to_service.py` | 99 | audit_append_call | `extracted.append((method, block))` |
 | `scripts/migrate_auth_lifecycle_helpers_to_service.py` | 132 | audit_append_call | `exported.append(f"{method}_impl")` |
+| `scripts/operations_readiness/audit_rr008_operational_readiness.py` | 71 | audit_append_call | `errors.append(f"missing required RR-008 document: {rel}")` |
+| `scripts/operations_readiness/audit_rr008_operational_readiness.py` | 78 | audit_append_call | `errors.append(f"missing marker in {rel}: {marker}")` |
+| `scripts/operations_readiness/audit_rr008_operational_readiness.py` | 85 | audit_append_call | `warnings.append(f"reference operations document not found: {rel}")` |
+| `scripts/operations_readiness/audit_rr008_operational_readiness.py` | 89 | audit_append_call | `errors.append(f"RR-008 manifest JSON invalid: {manifest['__json_error__']}")` |
+| `scripts/operations_readiness/audit_rr008_operational_readiness.py` | 91 | audit_append_call | `errors.append("RR-008 operational readiness manifest is missing")` |
+| `scripts/operations_readiness/audit_rr008_operational_readiness.py` | 94 | audit_append_call | `errors.append("RR-008 manifest rr_id must be RR-008")` |
+| `scripts/operations_readiness/audit_rr008_operational_readiness.py` | 97 | audit_append_call | `errors.append(f"RR-008 manifest flag must be true: {flag}")` |
+| `scripts/operations_readiness/audit_rr008_operational_readiness.py` | 106 | audit_append_call | `errors.append(f"RR-008 manifest boundary flag must be false: {flag}")` |
+| `scripts/operations_readiness/audit_rr008_operational_readiness.py` | 116 | audit_append_call | `errors.append(f"workflow check failed: {key}")` |
+| `scripts/operations_readiness/audit_rr008_operational_readiness.py` | 120 | audit_append_call | `errors.append("RR-008 policy must carry the RR-003 fallback coverage caveat")` |
+| `scripts/operations_readiness/audit_rr008_operational_readiness.py` | 122 | audit_append_call | `errors.append("RR-008 policy must carry the RR-006 non-required checks caveat")` |
+| `scripts/operations_readiness/audit_rr008_operational_readiness.py` | 124 | audit_append_call | `errors.append("RR-008 policy must preserve runtime KG boundary")` |
+| `scripts/operations_readiness/audit_rr008_operational_readiness.py` | 126 | audit_append_call | `errors.append("RR-008 policy must distinguish readiness from RR-016 operational drills")` |
 | `scripts/patch_audit_write_runtime_registry.py` | 34 | audit_events_table | `closure_blocker = "none" if accepted else "real audit_events write proof required"` |
 | `scripts/patch_audit_write_runtime_registry.py` | 39 | audit_events_table | `title: Runtime audit_events write proof` |
 | `scripts/patch_audit_write_runtime_registry.py` | 63 | audit_events_table | `title: Runtime audit_events write evidence repair` |
@@ -3243,21 +3938,21 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/phase02r_gate_control.py` | 374 | audit_append_call | `errors.append(f"control.{field} must be a real 40-character lowercase Git SHA")` |
 | `scripts/phase02r_gate_control.py` | 379 | audit_append_call | `errors.append(f"automation for authorised gate {authorised_gate} is incomplete")` |
 | `scripts/phase02r_gate_control.py` | 381 | audit_append_call | `errors.append(f"automation for authorised gate {authorised_gate} lacks apply support")` |
-| `scripts/phase2_import_etl_corpus.py` | 60 | audit_append_call | `chunks_by_document[str(row["document_id"])].append(dict(row))` |
-| `scripts/popia_response_contract_no_skips.py` | 115 | audit_append_call | `contracts.append(` |
-| `scripts/popia_response_contract_no_skips.py` | 190 | audit_append_call | `blockers.append(f"{route.name} route missing response_model=ConsentRecord for {route.path}")` |
-| `scripts/popia_response_contract_no_skips.py` | 194 | audit_append_call | `blockers.append(f"adapter contract missing: {name}")` |
-| `scripts/popia_response_contract_no_skips.py` | 197 | audit_append_call | `blockers.append("POPIA no-skip response-contract pytest failed")` |
-| `scripts/popia_response_contract_no_skips.py` | 200 | audit_append_call | `blockers.append("pytest output contains skipped tests; skipped tests are not proof")` |
-| `scripts/popia_response_contract_no_skips.py` | 235 | audit_append_call | `lines.append(` |
-| `scripts/popia_response_contract_no_skips.py` | 242 | audit_append_call | `lines.append(f"\| `{name}` \| {passed} \|")` |
-| `scripts/popia_response_contract_no_skips.py` | 248 | audit_append_call | `lines.append("- None")` |
-| `scripts/popia_route_tx_gap_plan.py` | 73 | audit_append_call | `problems.append("no POPIA service delegate call found")` |
-| `scripts/popia_route_tx_gap_plan.py` | 75 | audit_append_call | `problems.append("direct DB mutations present")` |
-| `scripts/popia_route_tx_gap_plan.py` | 91 | audit_append_call | `actions.append(` |
-| `scripts/popia_route_tx_gap_plan.py` | 154 | audit_append_call | `lines.append(` |
-| `scripts/popia_route_tx_gap_plan.py` | 159 | audit_append_call | `lines.append("\| `-` \| 0 \| `none` \| No local source gaps detected \| False \|")` |
-| `scripts/popia_route_tx_gap_plan.py` | 174 | audit_append_call | `lines.append("- No POPIA route-source implementation gaps detected by the current report.")` |
+| `scripts/phase2_import_etl_corpus.py` | 59 | audit_append_call | `chunks_by_document[str(row["document_id"])].append(dict(row))` |
+| `scripts/popia_response_contract_no_skips.py` | 116 | audit_append_call | `contracts.append(` |
+| `scripts/popia_response_contract_no_skips.py` | 191 | audit_append_call | `blockers.append(f"{route.name} route missing response_model=ConsentRecord for {route.path}")` |
+| `scripts/popia_response_contract_no_skips.py` | 195 | audit_append_call | `blockers.append(f"adapter contract missing: {name}")` |
+| `scripts/popia_response_contract_no_skips.py` | 198 | audit_append_call | `blockers.append("POPIA no-skip response-contract pytest failed")` |
+| `scripts/popia_response_contract_no_skips.py` | 201 | audit_append_call | `blockers.append("pytest output contains skipped tests; skipped tests are not proof")` |
+| `scripts/popia_response_contract_no_skips.py` | 236 | audit_append_call | `lines.append(` |
+| `scripts/popia_response_contract_no_skips.py` | 243 | audit_append_call | `lines.append(f"\| `{name}` \| {passed} \|")` |
+| `scripts/popia_response_contract_no_skips.py` | 249 | audit_append_call | `lines.append("- None")` |
+| `scripts/popia_route_tx_gap_plan.py` | 74 | audit_append_call | `problems.append("no POPIA service delegate call found")` |
+| `scripts/popia_route_tx_gap_plan.py` | 76 | audit_append_call | `problems.append("direct DB mutations present")` |
+| `scripts/popia_route_tx_gap_plan.py` | 92 | audit_append_call | `actions.append(` |
+| `scripts/popia_route_tx_gap_plan.py` | 155 | audit_append_call | `lines.append(` |
+| `scripts/popia_route_tx_gap_plan.py` | 160 | audit_append_call | `lines.append("\| `-` \| 0 \| `none` \| No local source gaps detected \| False \|")` |
+| `scripts/popia_route_tx_gap_plan.py` | 175 | audit_append_call | `lines.append("- No POPIA route-source implementation gaps detected by the current report.")` |
 | `scripts/popia_sweep.py` | 126 | audit_append_call | `self.issues.append(issue)` |
 | `scripts/popia_sweep.py` | 146 | audit_append_call | `files.append(path)` |
 | `scripts/popia_sweep.py` | 246 | audit_append_call | `decorator_names.append(decorator.attr)` |
@@ -3273,17 +3968,326 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/prepare_training_data.py` | 105 | audit_append_call | `pairs.append({` |
 | `scripts/prepare_training_data.py` | 117 | audit_append_call | `pairs.append({` |
 | `scripts/prepare_training_data.py` | 125 | audit_append_call | `pairs.append({` |
-| `scripts/prod_frontend_deployment.py` | 163 | audit_append_call | `lines.append(f"\| `{check.name}` \| {check.passed} \| {check.detail} \|")` |
-| `scripts/prod_frontend_deployment.py` | 169 | audit_append_call | `lines.append("- None")` |
-| `scripts/prod_frontend_runtime.py` | 290 | audit_append_call | `fields.append(RuntimeEvidenceField(name, value, False, "pending"))` |
-| `scripts/prod_frontend_runtime.py` | 300 | audit_append_call | `fields.append(RuntimeEvidenceField(name, value, False, "must be pass/passed/green/ok/success"))` |
-| `scripts/prod_frontend_runtime.py` | 304 | audit_append_call | `fields.append(RuntimeEvidenceField(name, value, False, "must be URL"))` |
-| `scripts/prod_frontend_runtime.py` | 308 | audit_append_call | `fields.append(RuntimeEvidenceField(name, value, False, "must look like git SHA"))` |
-| `scripts/prod_frontend_runtime.py` | 311 | audit_append_call | `fields.append(RuntimeEvidenceField(name, value, True, "ok"))` |
-| `scripts/prod_frontend_runtime.py` | 352 | audit_append_call | `blockers.append("docker compose config failed")` |
-| `scripts/prod_frontend_runtime.py` | 411 | audit_append_call | `lines.append(f"\| `{check.name}` \| {check.passed} \| {check.detail} \|")` |
-| `scripts/prod_frontend_runtime.py` | 415 | audit_append_call | `lines.append(f"\| `{field.name}` \| `{field.value}` \| {field.valid} \| {field.reason} \|")` |
-| `scripts/prod_frontend_runtime.py` | 421 | audit_append_call | `lines.append("- None")` |
+| `scripts/prod_frontend_deployment.py` | 164 | audit_append_call | `lines.append(f"\| `{check.name}` \| {check.passed} \| {check.detail} \|")` |
+| `scripts/prod_frontend_deployment.py` | 170 | audit_append_call | `lines.append("- None")` |
+| `scripts/prod_frontend_runtime.py` | 291 | audit_append_call | `fields.append(RuntimeEvidenceField(name, value, False, "pending"))` |
+| `scripts/prod_frontend_runtime.py` | 301 | audit_append_call | `fields.append(RuntimeEvidenceField(name, value, False, "must be pass/passed/green/ok/success"))` |
+| `scripts/prod_frontend_runtime.py` | 305 | audit_append_call | `fields.append(RuntimeEvidenceField(name, value, False, "must be URL"))` |
+| `scripts/prod_frontend_runtime.py` | 309 | audit_append_call | `fields.append(RuntimeEvidenceField(name, value, False, "must look like git SHA"))` |
+| `scripts/prod_frontend_runtime.py` | 312 | audit_append_call | `fields.append(RuntimeEvidenceField(name, value, True, "ok"))` |
+| `scripts/prod_frontend_runtime.py` | 353 | audit_append_call | `blockers.append("docker compose config failed")` |
+| `scripts/prod_frontend_runtime.py` | 412 | audit_append_call | `lines.append(f"\| `{check.name}` \| {check.passed} \| {check.detail} \|")` |
+| `scripts/prod_frontend_runtime.py` | 416 | audit_append_call | `lines.append(f"\| `{field.name}` \| `{field.value}` \| {field.valid} \| {field.reason} \|")` |
+| `scripts/prod_frontend_runtime.py` | 422 | audit_append_call | `lines.append("- None")` |
+| `scripts/product_quality/audit_rr007_product_quality_gates.py` | 60 | audit_append_call | `errors.append(f"missing required RR-007 document: {rel}")` |
+| `scripts/product_quality/audit_rr007_product_quality_gates.py` | 67 | audit_append_call | `errors.append(f"missing marker in {rel}: {marker}")` |
+| `scripts/product_quality/audit_rr007_product_quality_gates.py` | 71 | audit_append_call | `errors.append(f"RR-007 manifest JSON invalid: {manifest['__json_error__']}")` |
+| `scripts/product_quality/audit_rr007_product_quality_gates.py` | 83 | audit_append_call | `errors.append(f"RR-007 manifest flag must be true: {flag}")` |
+| `scripts/product_quality/audit_rr007_product_quality_gates.py` | 96 | audit_append_call | `errors.append(f"workflow check failed: {key}")` |
+| `scripts/product_quality/audit_rr007_product_quality_gates.py` | 99 | audit_append_call | `errors.append("manifest production_release_authorised must be false")` |
+| `scripts/product_quality/audit_rr007_product_quality_gates.py` | 101 | audit_append_call | `errors.append("manifest public_beta_authorised must be false")` |
+| `scripts/product_quality/audit_rr007_product_quality_gates.py` | 103 | audit_append_call | `errors.append("manifest runtime_kg_implementation_claimed must be false")` |
+| `scripts/production_readiness/apply_prd006_workflow_command_hygiene.py` | 46 | audit_append_call | `changed_lines.append(idx)` |
+| `scripts/production_readiness/apply_prd006_workflow_command_hygiene.py` | 47 | audit_append_call | `new_lines.append(rewritten)` |
+| `scripts/production_readiness/apply_prd010_prd0_closure_evidence_handoff.py` | 270 | audit_append_call | `changed.append(str(rel))` |
+| `scripts/production_readiness/apply_prd010_prd0_closure_evidence_handoff.py` | 275 | audit_append_call | `changed.append(str(RECORD))` |
+| `scripts/production_readiness/apply_prd100_ci_release_gate_stream_authority.py` | 266 | audit_append_call | `items.append({"prd_id": prd_id, "name": name, "authorised": True, "status": "authority_pending"})` |
+| `scripts/production_readiness/apply_prd100_ci_release_gate_stream_authority.py` | 268 | audit_append_call | `items.append({"prd_id": prd_id, "name": name, "authorised": False, "status": "blocked"})` |
+| `scripts/production_readiness/apply_prd100_ci_release_gate_stream_authority.py` | 363 | audit_append_call | `changed.append(str(rel))` |
+| `scripts/production_readiness/apply_prd100_ci_release_gate_stream_authority.py` | 369 | audit_append_call | `changed.append(str(PRD1_REGISTER))` |
+| `scripts/production_readiness/apply_prd100_ci_release_gate_stream_authority.py` | 384 | audit_append_call | `changed.append(str(RECORD))` |
+| `scripts/production_readiness/apply_prd100_ci_release_gate_stream_authority.py` | 396 | audit_append_call | `changed.append("Makefile")` |
+| `scripts/production_readiness/apply_prd100_ci_release_gate_stream_authority.py` | 400 | audit_append_call | `changed.append("Makefile")` |
+| `scripts/production_readiness/apply_prd101_ci_inventory_authority.py` | 15 | audit_append_call | `FILES = {'.github/workflows/prd101-ci-inventory-authority.yml': "name: PRD-1.1 CI Inventory Authority\n\non:\n  pull_request:\n    paths:\n      - '.github/workflows/prd101-ci-inventory-authority.yml'\n      - 'docs/engi` |
+| `scripts/production_readiness/apply_prd102_104_required_checks_workflow_release_gate_convergence.py` | 115 | audit_append_call | `candidates.append(makefile)` |
+| `scripts/production_readiness/apply_prd102_104_required_checks_workflow_release_gate_convergence.py` | 124 | audit_append_call | `changed.append({` |
+| `scripts/production_readiness/apply_prd102_104_required_checks_workflow_release_gate_convergence.py` | 145 | audit_append_call | `python_m.append(rel)` |
+| `scripts/production_readiness/apply_prd102_104_required_checks_workflow_release_gate_convergence.py` | 147 | audit_append_call | `python3_m.append(rel)` |
+| `scripts/production_readiness/apply_prd102_104_required_checks_workflow_release_gate_convergence.py` | 149 | audit_append_call | `release_refs.append(rel)` |
+| `scripts/production_readiness/apply_prd102_104_required_checks_workflow_release_gate_convergence.py` | 151 | audit_append_call | `deployment_refs.append(rel)` |
+| `scripts/production_readiness/apply_prd102_104_required_checks_workflow_release_gate_convergence.py` | 153 | audit_append_call | `main_refs.append(rel)` |
+| `scripts/production_readiness/apply_prd102_104_required_checks_workflow_release_gate_convergence.py` | 155 | audit_append_call | `master_refs.append(rel)` |
+| `scripts/production_readiness/apply_prd102_104_required_checks_workflow_release_gate_convergence.py` | 157 | audit_append_call | `openapi_refs.append(rel)` |
+| `scripts/production_readiness/apply_prd102_104_required_checks_workflow_release_gate_convergence.py` | 281 | audit_append_call | `errors.append(f"{key} must remain false in PRD-1.0")` |
+| `scripts/production_readiness/apply_prd102_104_required_checks_workflow_release_gate_convergence.py` | 283 | audit_append_call | `errors.append(f"PRD-1 register {key} must remain false")` |
+| `scripts/production_readiness/apply_prd102_104_required_checks_workflow_release_gate_convergence.py` | 287 | audit_append_call | `errors.append(f"{key} must remain false in PRD-1.0")` |
+| `scripts/production_readiness/apply_prd102_104_required_checks_workflow_release_gate_convergence.py` | 289 | audit_append_call | `errors.append(f"PRD-1 register {key} must remain false")` |
+| `scripts/production_readiness/apply_prd102_104_required_checks_workflow_release_gate_convergence.py` | 303 | audit_append_call | `'errors.append("production readiness register must be positioned at PRD-1.0/PRD-1.1 or PRD-1.1/PRD-1.2")',` |
+| `scripts/production_readiness/apply_prd102_104_required_checks_workflow_release_gate_convergence.py` | 304 | audit_append_call | `'errors.append("production readiness register must be positioned at PRD-1.0/PRD-1.1, PRD-1.1/PRD-1.2, PRD-1.4/PRD-1.5, or PRD-1.9/PRD-2")',` |
+| `scripts/production_readiness/apply_prd105_109_ci_convergence_release_readiness_handoff.py` | 91 | audit_append_call | `python_m.append(rel)` |
+| `scripts/production_readiness/apply_prd105_109_ci_convergence_release_readiness_handoff.py` | 93 | audit_append_call | `python3_m.append(rel)` |
+| `scripts/production_readiness/apply_prd105_109_ci_convergence_release_readiness_handoff.py` | 95 | audit_append_call | `release_refs.append(rel)` |
+| `scripts/production_readiness/apply_prd105_109_ci_convergence_release_readiness_handoff.py` | 97 | audit_append_call | `deployment_refs.append(rel)` |
+| `scripts/production_readiness/apply_prd105_109_ci_convergence_release_readiness_handoff.py` | 99 | audit_append_call | `required_signal_refs["python-package-and-unit-tests"].append(rel)` |
+| `scripts/production_readiness/apply_prd105_109_ci_convergence_release_readiness_handoff.py` | 101 | audit_append_call | `required_signal_refs["openapi-contract-and-drift"].append(rel)` |
+| `scripts/production_readiness/apply_prd105_109_ci_convergence_release_readiness_handoff.py` | 103 | audit_append_call | `required_signal_refs["security-and-dependency-scan"].append(rel)` |
+| `scripts/production_readiness/apply_prd105_109_ci_convergence_release_readiness_handoff.py` | 105 | audit_append_call | `required_signal_refs["migration-and-runtime-contracts"].append(rel)` |
+| `scripts/production_readiness/apply_prd105_109_ci_convergence_release_readiness_handoff.py` | 107 | audit_append_call | `required_signal_refs["release-readiness-cluster"].append(rel)` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 75 | audit_append_call | `errors.append("final RR roadmap reconciliation closure verifier must be valid")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 77 | audit_append_call | `errors.append("KG roadmap closure verifier must be valid")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 79 | audit_append_call | `errors.append("KG closure must preserve runtime KG implementation claimed true")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 81 | audit_append_call | `errors.append("KG closure must preserve runtime KG authority switch authorised true")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 83 | audit_append_call | `errors.append("KG closure must preserve authority switch executed true")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 87 | audit_append_call | `errors.append(f"missing PRD-0.0 authority file: {path}")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 90 | audit_append_call | `errors.append("production readiness register must identify PRD-PRODUCTION-READINESS")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 92 | audit_append_call | `errors.append("production readiness register next_authorised_item must remain within PRD-0.0 through PRD-0.10, or PRD-1/PRD-2 after PRD-0.10 closure")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 96 | audit_append_call | `errors.append("PRD-0 register sequence must contain PRD-0.0 through PRD-0.10 in order")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 99 | audit_append_call | `errors.append("production readiness sequence must contain PRD-1 through PRD-11 in order")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 110 | audit_append_call | `errors.append(f"production readiness gate must be true: {key}")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 115 | audit_append_call | `errors.append(f"register boundary must preserve true runtime KG flag: {key}")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 118 | audit_append_call | `errors.append(f"register boundary must keep false: {key}")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 127 | audit_append_call | `errors.append(f"authority doc must include: {required}")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 130 | audit_append_call | `errors.append(f"expanded PRD-0 doc must include {required}")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 133 | audit_append_call | `errors.append(f"boundary contract must include: {required}")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 138 | audit_append_call | `errors.append("captured PRD-0.0 record must identify PRD-0.0")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 140 | audit_append_call | `errors.append("captured PRD-0.0 record must identify PRD-PRODUCTION-READINESS")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 149 | audit_append_call | `errors.append(f"captured PRD-0.0 record flag must be true: {key}")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 152 | audit_append_call | `errors.append(f"captured PRD-0.0 record must preserve true runtime KG flag: {key}")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 155 | audit_append_call | `errors.append(f"captured PRD-0.0 record boundary must remain false: {key}")` |
+| `scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py` | 157 | audit_append_call | `warnings.append("PRD-0.0 evidence has not been captured yet")` |
+| `scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py` | 48 | audit_append_call | `errors.append("PRD-0.0 production-readiness stream authority verifier or captured record must be valid")` |
+| `scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py` | 54 | audit_append_call | `errors.append(f"missing PRD-0.1 file: {path}")` |
+| `scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py` | 56 | audit_append_call | `errors.append("production readiness register must identify PRD-PRODUCTION-READINESS")` |
+| `scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py` | 60 | audit_append_call | `errors.append("production readiness register last_recorded_item must be a valid PRD-0.x state")` |
+| `scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py` | 62 | audit_append_call | `errors.append("production readiness register next_authorised_item must be a valid PRD-0.x state, or PRD-1/PRD-2 after PRD-0.10 closure")` |
+| `scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py` | 66 | audit_append_call | `errors.append(f"register boundary must preserve true runtime KG flag: {key}")` |
+| `scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py` | 69 | audit_append_call | `errors.append(f"register boundary must keep false: {key}")` |
+| `scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py` | 72 | audit_append_call | `errors.append("truth map must list the canonical current-state documentation files in order")` |
+| `scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py` | 76 | audit_append_call | `errors.append(f"canonical docs must include required truth phrase: {phrase}")` |
+| `scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py` | 79 | audit_append_call | `errors.append(f"canonical docs must not contain stale phrase: {phrase}")` |
+| `scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py` | 81 | audit_append_call | `errors.append("docs/current_state.md must mark PRD-0.1 current-state refresh")` |
+| `scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py` | 83 | audit_append_call | `errors.append("roadmap README must show PRD-0.2 as the next PRD-0 cleanup item")` |
+| `scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py` | 87 | audit_append_call | `errors.append("captured PRD-0.1 record must identify PRD-0.1")` |
+| `scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py` | 90 | audit_append_call | `errors.append(f"captured PRD-0.1 record flag must be true: {key}")` |
+| `scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py` | 93 | audit_append_call | `errors.append(f"captured PRD-0.1 record must preserve true runtime KG flag: {key}")` |
+| `scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py` | 96 | audit_append_call | `errors.append(f"captured PRD-0.1 record boundary must remain false: {key}")` |
+| `scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py` | 98 | audit_append_call | `warnings.append("PRD-0.1 evidence has not been captured yet")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 61 | audit_append_call | `errors.append("PRD-0.1 canonical current-state documentation refresh verifier or captured record must be valid before PRD-0.2")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 65 | audit_append_call | `errors.append(f"missing PRD-0.2 file: {path}")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 67 | audit_append_call | `errors.append("Windows Zone.Identifier report sidecar must be removed/quarantined outside the repo")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 72 | audit_append_call | `errors.append("production readiness register must identify PRD-PRODUCTION-READINESS")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 76 | audit_append_call | `errors.append("production readiness register last_recorded_item must be a valid PRD-0.x state")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 78 | audit_append_call | `errors.append("production readiness register next_authorised_item must be a valid PRD-0.x state, or PRD-1/PRD-2 after PRD-0.10 closure")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 81 | audit_append_call | `errors.append(f"register boundary must preserve true runtime KG flag: {key}")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 84 | audit_append_call | `errors.append(f"register boundary must keep false: {key}")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 88 | audit_append_call | `errors.append("stale-source quarantine register must identify STALE-SOURCE-QUARANTINE-REGISTER")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 90 | audit_append_call | `errors.append("stale-source quarantine register must list current authority sources in order")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 93 | audit_append_call | `errors.append("stale-source quarantine register must list at least one quarantined source")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 97 | audit_append_call | `errors.append("quarantined source path must be the July 2026 true-status report")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 99 | audit_append_call | `errors.append("quarantined source status must be historical_superseded")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 101 | audit_append_call | `errors.append("quarantined source must not be a source of truth")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 103 | audit_append_call | `errors.append("quarantined source must be superseded by the current authority sources")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 105 | audit_append_call | `errors.append("stale-source register must forbid tracked Zone.Identifier sidecars")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 110 | audit_append_call | `errors.append(f"historical report must include quarantine phrase: {phrase}")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 114 | audit_append_call | `errors.append(f"reports README must include quarantine phrase: {phrase}")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 121 | audit_append_call | `errors.append(f"captured PRD-0.2 record flag must be true: {key}")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 124 | audit_append_call | `errors.append(f"captured PRD-0.2 record must preserve true runtime KG flag: {key}")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 127 | audit_append_call | `errors.append(f"captured PRD-0.2 record boundary must remain false: {key}")` |
+| `scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py` | 129 | audit_append_call | `warnings.append("PRD-0.2 evidence has not been captured yet")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 51 | audit_append_call | `errors.append("PRD-0.2 historical report and stale-source quarantine must be valid before PRD-0.3")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 56 | audit_append_call | `errors.append(f"missing PRD-0.3 required file: {path}")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 60 | audit_append_call | `errors.append("production readiness register must identify PRD-PRODUCTION-READINESS")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 64 | audit_append_call | `errors.append(f"register boundary must preserve true runtime KG flag: {key}")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 67 | audit_append_call | `errors.append(f"register boundary must keep false: {key}")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 72 | audit_append_call | `errors.append("production readiness register last_recorded_item must be PRD-0.2 or a later PRD-0 archival state")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 74 | audit_append_call | `errors.append("production readiness register next_authorised_item must be PRD-0.3 or a later authorised state")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 80 | audit_append_call | `errors.append("documentation inventory must use doc-inventory/v2-deterministic-lfs-aware")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 82 | audit_append_call | `errors.append("documentation inventory summary must record markdown_files > 0")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 84 | audit_append_call | `errors.append("documentation inventory summary must record finding_count")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 86 | audit_append_call | `errors.append("documentation inventory must contain documents")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 88 | audit_append_call | `errors.append("documentation inventory must contain summary and findings")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 91 | audit_append_call | `errors.append("housekeeping ratchet baseline must use doc-housekeeping-ratchet/v1")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 93 | audit_append_call | `errors.append("housekeeping ratchet baseline must reference docs/generated/documentation_inventory.json")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 95 | audit_append_call | `errors.append("housekeeping ratchet baseline must keep strict_zero_new_finding_types true")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 98 | audit_append_call | `errors.append(f"housekeeping baseline max_summary must include {key}")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 101 | audit_append_call | `errors.append(f"housekeeping baseline min_summary must include {key}")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 106 | audit_append_call | `errors.append(f"PRD-0.3 plan must include phrase: {phrase}")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 113 | audit_append_call | `errors.append(f"captured PRD-0.3 record flag must be true: {key}")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 115 | audit_append_call | `warnings.append(` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 120 | audit_append_call | `errors.append("captured PRD-0.3 baseline note must identify PRD-0.3")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 125 | audit_append_call | `errors.append(f"captured PRD-0.3 record must preserve true runtime KG flag: {key}")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 128 | audit_append_call | `errors.append(f"captured PRD-0.3 record boundary must remain false: {key}")` |
+| `scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py` | 130 | audit_append_call | `warnings.append("PRD-0.3 evidence has not been captured yet")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 78 | audit_append_call | `direct_pytest.append(rel)` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 80 | audit_append_call | `module_pytest.append(rel)` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 82 | audit_append_call | `dev_installs.append(rel)` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 120 | audit_append_call | `errors.append("PRD-0.3 documentation housekeeping ratchet refresh must be valid before PRD-0.4")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 123 | audit_append_call | `errors.append(f"missing PRD-0.4 required file: {path}")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 127 | audit_append_call | `errors.append("production readiness register must identify PRD-PRODUCTION-READINESS")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 130 | audit_append_call | `errors.append(f"register boundary must preserve true runtime KG flag: {key}")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 133 | audit_append_call | `errors.append(f"register boundary must keep false: {key}")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 137 | audit_append_call | `errors.append("production readiness register last_recorded_item must be PRD-0.3 or a later PRD-0 archival state")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 139 | audit_append_call | `errors.append("production readiness register next_authorised_item must be PRD-0.4 or a later authorised state")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 143 | audit_append_call | `errors.append(f"python dependency marker must be true: {key}")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 147 | audit_append_call | `errors.append(f"frontend dependency marker must be true: {key}")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 151 | audit_append_call | `errors.append(f"PRD-0.4 plan must include phrase: {phrase}")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 158 | audit_append_call | `errors.append(f"captured PRD-0.4 record flag must be true: {key}")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 160 | audit_append_call | `errors.append("captured PRD-0.4 baseline must use prd-test-dependency-bootstrap/v1")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 162 | audit_append_call | `errors.append("captured PRD-0.4 baseline must identify PRD-0.4")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 164 | audit_append_call | `errors.append("captured PRD-0.4 baseline must record python3 -m pytest backend test contract")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 166 | audit_append_call | `errors.append("captured PRD-0.4 baseline must record pytest declared")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 168 | audit_append_call | `errors.append("captured PRD-0.4 baseline must record vitest declared")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 171 | audit_append_call | `errors.append(f"captured PRD-0.4 record must preserve true runtime KG flag: {key}")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 174 | audit_append_call | `errors.append(f"captured PRD-0.4 record boundary must remain false: {key}")` |
+| `scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py` | 176 | audit_append_call | `warnings.append("PRD-0.4 evidence has not been captured yet")` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 62 | audit_append_call | `parse_errors.append({"path": str(rel), "error": str(exc)})` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 87 | audit_append_call | `direct_pytest.append(rel)` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 89 | audit_append_call | `module_pytest.append(rel)` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 91 | audit_append_call | `frontend_commands.append(rel)` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 144 | audit_append_call | `errors.append("PRD-0.4 test/dependency bootstrap baseline must be valid before PRD-0.5")` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 147 | audit_append_call | `errors.append(f"missing PRD-0.5 required file: {path}")` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 151 | audit_append_call | `errors.append("production readiness register must identify PRD-PRODUCTION-READINESS")` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 154 | audit_append_call | `errors.append(f"register boundary must preserve true runtime KG flag: {key}")` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 157 | audit_append_call | `errors.append(f"register boundary must keep false: {key}")` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 161 | audit_append_call | `errors.append("production readiness register last_recorded_item must be PRD-0.4 or a later PRD-0 archival state")` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 163 | audit_append_call | `errors.append("production readiness register next_authorised_item must be PRD-0.5 or a later authorised state")` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 167 | audit_append_call | `errors.append(f"PRD-0.5 plan must include phrase: {phrase}")` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 174 | audit_append_call | `errors.append(f"record must mark {key} true after capture")` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 176 | audit_append_call | `errors.append("test failure collection stabilisation register must use schema v1")` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 178 | audit_append_call | `errors.append("test inventory must record at least one test file")` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 180 | audit_append_call | `errors.append("collection command matrix must include at least five commands")` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 184 | audit_append_call | `errors.append(f"failure classification schema missing category: {category}")` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 186 | audit_append_call | `errors.append("triage register must include at least five baseline triage entries")` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 190 | audit_append_call | `errors.append(f"stabilisation boundary must be true: {key}")` |
+| `scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py` | 193 | audit_append_call | `warnings.append("test failure collection stabilisation register exists before capture")` |
+| `scripts/production_readiness/audit_prd006_workflow_command_hygiene_ci_inventory.py` | 63 | audit_append_call | `direct_commands.append({"path": rel, "line": idx, "command": line.strip()})` |
+| `scripts/production_readiness/audit_prd006_workflow_command_hygiene_ci_inventory.py` | 64 | audit_append_call | `direct_line_numbers.append(idx)` |
+| `scripts/production_readiness/audit_prd006_workflow_command_hygiene_ci_inventory.py` | 66 | audit_append_call | `module_commands.append({"path": rel, "line": idx, "command": line.strip()})` |
+| `scripts/production_readiness/audit_prd006_workflow_command_hygiene_ci_inventory.py` | 67 | audit_append_call | `module_line_numbers.append(idx)` |
+| `scripts/production_readiness/audit_prd006_workflow_command_hygiene_ci_inventory.py` | 71 | audit_append_call | `dev_installs.append(rel)` |
+| `scripts/production_readiness/audit_prd006_workflow_command_hygiene_ci_inventory.py` | 76 | audit_append_call | `per_workflow.append({` |
+| `scripts/production_readiness/audit_prd006_workflow_command_hygiene_ci_inventory.py` | 131 | audit_append_call | `errors.append("PRD-0.5 test failure and collection stabilisation register must be valid before PRD-0.6")` |
+| `scripts/production_readiness/audit_prd006_workflow_command_hygiene_ci_inventory.py` | 136 | audit_append_call | `errors.append("production readiness register last_recorded_item must be PRD-0.5 or a later PRD-0 archival state")` |
+| `scripts/production_readiness/audit_prd006_workflow_command_hygiene_ci_inventory.py` | 138 | audit_append_call | `errors.append("production readiness register next_authorised_item must be PRD-0.6 or a later authorised state")` |
+| `scripts/production_readiness/audit_prd006_workflow_command_hygiene_ci_inventory.py` | 141 | audit_append_call | `errors.append(f"missing PRD-0.6 authority file: {path}")` |
+| `scripts/production_readiness/audit_prd006_workflow_command_hygiene_ci_inventory.py` | 158 | audit_append_call | `errors.append(f"{key} must remain true")` |
+| `scripts/production_readiness/audit_prd006_workflow_command_hygiene_ci_inventory.py` | 161 | audit_append_call | `errors.append(f"{key} must remain false")` |
+| `scripts/production_readiness/audit_prd007_openapi_generated_artifact_canonicalisation.py` | 84 | audit_append_call | `generated_artifacts.append({` |
+| `scripts/production_readiness/audit_prd007_openapi_generated_artifact_canonicalisation.py` | 145 | audit_append_call | `errors.append("PRD-0.6 workflow command hygiene and CI inventory must be valid before PRD-0.7")` |
+| `scripts/production_readiness/audit_prd007_openapi_generated_artifact_canonicalisation.py` | 150 | audit_append_call | `errors.append("production readiness register last_recorded_item must be PRD-0.6 or a later PRD-0 archival state")` |
+| `scripts/production_readiness/audit_prd007_openapi_generated_artifact_canonicalisation.py` | 152 | audit_append_call | `errors.append("production readiness register next_authorised_item must be PRD-0.7 or a later authorised state")` |
+| `scripts/production_readiness/audit_prd007_openapi_generated_artifact_canonicalisation.py` | 155 | audit_append_call | `errors.append(f"missing PRD-0.7 authority file: {path}")` |
+| `scripts/production_readiness/audit_prd007_openapi_generated_artifact_canonicalisation.py` | 171 | audit_append_call | `errors.append(f"{key} must remain true")` |
+| `scripts/production_readiness/audit_prd007_openapi_generated_artifact_canonicalisation.py` | 174 | audit_append_call | `errors.append(f"{key} must remain false")` |
+| `scripts/production_readiness/audit_prd007_openapi_generated_artifact_canonicalisation.py` | 195 | audit_append_call | `warnings.append("PRD-0.7 authority is valid but evidence capture has not completed")` |
+| `scripts/production_readiness/audit_prd008_branch_release_naming_reconciliation.py` | 59 | audit_append_call | `master_refs.append(name)` |
+| `scripts/production_readiness/audit_prd008_branch_release_naming_reconciliation.py` | 61 | audit_append_call | `main_refs.append(name)` |
+| `scripts/production_readiness/audit_prd008_branch_release_naming_reconciliation.py` | 63 | audit_append_call | `release_branch_refs.append(name)` |
+| `scripts/production_readiness/audit_prd008_branch_release_naming_reconciliation.py` | 65 | audit_append_call | `release_event_workflows.append(name)` |
+| `scripts/production_readiness/audit_prd008_branch_release_naming_reconciliation.py` | 67 | audit_append_call | `deployment_refs.append(name)` |
+| `scripts/production_readiness/audit_prd008_branch_release_naming_reconciliation.py` | 126 | audit_append_call | `errors.append("PRD-0.7 OpenAPI/generated artifact canonicalisation must be valid before PRD-0.8")` |
+| `scripts/production_readiness/audit_prd008_branch_release_naming_reconciliation.py` | 131 | audit_append_call | `errors.append("production readiness register last_recorded_item must be PRD-0.7 or a later PRD-0 archival state")` |
+| `scripts/production_readiness/audit_prd008_branch_release_naming_reconciliation.py` | 133 | audit_append_call | `errors.append("production readiness register next_authorised_item must be PRD-0.8 or a later authorised state")` |
+| `scripts/production_readiness/audit_prd008_branch_release_naming_reconciliation.py` | 136 | audit_append_call | `errors.append(f"missing PRD-0.8 authority file: {path}")` |
+| `scripts/production_readiness/audit_prd008_branch_release_naming_reconciliation.py` | 146 | audit_append_call | `errors.append(f"{key} must remain true")` |
+| `scripts/production_readiness/audit_prd008_branch_release_naming_reconciliation.py` | 149 | audit_append_call | `errors.append(f"{key} must remain false")` |
+| `scripts/production_readiness/audit_prd008_branch_release_naming_reconciliation.py` | 178 | audit_append_call | `warnings.append("PRD-0.8 authority is valid but evidence capture has not completed")` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 125 | audit_append_call | `markers.append("ansi_escape_sequence")` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 127 | audit_append_call | `markers.append("backspace_overstrike_sequence")` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 129 | audit_append_call | `markers.append("branch_or_git_output")` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 142 | audit_append_call | `items.append({` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 164 | audit_append_call | `reasons.append(SUSPICIOUS_TOP_LEVEL_EXACT[name])` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 167 | audit_append_call | `reasons.append(reason)` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 175 | audit_append_call | `items.append({` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 259 | audit_append_call | `errors.append(f"missing required PRD-0.9 file: {path}")` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 261 | audit_append_call | `errors.append("PRD-0.8 verifier must be valid before PRD-0.9")` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 263 | audit_append_call | `errors.append("production readiness register must be positioned at PRD-0.8, PRD-0.9, or terminal PRD-0.10 handoff")` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 265 | audit_append_call | `errors.append("production readiness register must authorise PRD-0.9 after PRD-0.8")` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 268 | audit_append_call | `errors.append(f"{key} must remain true")` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 271 | audit_append_call | `errors.append(f"{key} must remain false")` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 274 | audit_append_call | `errors.append(f"{key} must remain false")` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 276 | audit_append_call | `errors.append("no_cleanup_performed must be true")` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 278 | audit_append_call | `errors.append("no_file_deletion_performed must be true")` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 280 | audit_append_call | `errors.append("prd0_closure_deferred_to_prd010 must be true")` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | 312 | audit_append_call | `warnings.append("PRD-0.9 authority is valid but evidence capture has not completed")` |
+| `scripts/production_readiness/audit_prd010_prd0_closure_evidence_handoff.py` | 153 | audit_append_call | `errors.append(f"missing required PRD-0.10 file: {path}")` |
+| `scripts/production_readiness/audit_prd010_prd0_closure_evidence_handoff.py` | 158 | audit_append_call | `errors.append("production readiness register must be positioned at PRD-0.9, terminal PRD-0.10, or authorised downstream PRD state")` |
+| `scripts/production_readiness/audit_prd010_prd0_closure_evidence_handoff.py` | 160 | audit_append_call | `errors.append("production readiness register must authorise PRD-0.10 after PRD-0.9")` |
+| `scripts/production_readiness/audit_prd010_prd0_closure_evidence_handoff.py` | 162 | audit_append_call | `errors.append("terminal PRD-0.10 register state must authorise PRD-1 next")` |
+| `scripts/production_readiness/audit_prd010_prd0_closure_evidence_handoff.py` | 164 | audit_append_call | `errors.append("advanced PRD-1 register state must preserve PRD-1 handoff readiness")` |
+| `scripts/production_readiness/audit_prd010_prd0_closure_evidence_handoff.py` | 168 | audit_append_call | `errors.append(f"{prd_id} verifier must be valid before PRD-0.10 closure")` |
+| `scripts/production_readiness/audit_prd010_prd0_closure_evidence_handoff.py` | 185 | audit_append_call | `errors.append(message)` |
+| `scripts/production_readiness/audit_prd010_prd0_closure_evidence_handoff.py` | 189 | audit_append_call | `errors.append(f"{key} must remain true")` |
+| `scripts/production_readiness/audit_prd010_prd0_closure_evidence_handoff.py` | 192 | audit_append_call | `errors.append(f"{key} must remain false")` |
+| `scripts/production_readiness/audit_prd010_prd0_closure_evidence_handoff.py` | 195 | audit_append_call | `errors.append("PRD-0.9 validity must be recorded")` |
+| `scripts/production_readiness/audit_prd010_prd0_closure_evidence_handoff.py` | 197 | audit_append_call | `errors.append("all PRD-0 predecessor validity must be recorded")` |
+| `scripts/production_readiness/audit_prd010_prd0_closure_evidence_handoff.py` | 199 | audit_append_call | `errors.append("PRD-0 closure checklist must be refreshed")` |
+| `scripts/production_readiness/audit_prd010_prd0_closure_evidence_handoff.py` | 201 | audit_append_call | `errors.append("PRD-1 handoff document must be refreshed")` |
+| `scripts/production_readiness/audit_prd010_prd0_closure_evidence_handoff.py` | 203 | audit_append_call | `errors.append("no_prd1_implementation_performed must be true")` |
+| `scripts/production_readiness/audit_prd010_prd0_closure_evidence_handoff.py` | 229 | audit_append_call | `warnings.append("PRD-0.10 authority is valid but closure evidence capture has not completed")` |
+| `scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py` | 133 | audit_append_call | `errors.append(f"missing required PRD-1.0 file: {path}")` |
+| `scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py` | 136 | audit_append_call | `errors.append("PRD-0.10 verifier must remain valid before PRD-1.0")` |
+| `scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py` | 138 | audit_append_call | `errors.append("production readiness register must be positioned at PRD-0.10/PRD-1, PRD-1.0/PRD-1.1, or a later PRD-1.x slice")` |
+| `scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py` | 140 | audit_append_call | `errors.append("PRD-1 register schema_version must be prd1-ci-release-gate-register/v1")` |
+| `scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py` | 142 | audit_append_call | `errors.append("PRD-1 register stream_id must be canonical")` |
+| `scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py` | 144 | audit_append_call | `errors.append("PRD-1 register parent stream must be PRD-PRODUCTION-READINESS")` |
+| `scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py` | 146 | audit_append_call | `errors.append("PRD-1 register must be authorised by PRD-0.10 handoff")` |
+| `scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py` | 148 | audit_append_call | `errors.append("PRD-1 register must contain PRD-1.0 through PRD-1.9 sequence")` |
+| `scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py` | 160 | audit_append_call | `errors.append(message)` |
+| `scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py` | 164 | audit_append_call | `errors.append(f"{key} must remain true")` |
+| `scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py` | 166 | audit_append_call | `errors.append(f"PRD-1 register {key} must remain true")` |
+| `scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py` | 169 | audit_append_call | `errors.append(f"{key} must remain false")` |
+| `scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py` | 171 | audit_append_call | `errors.append(f"PRD-1 register {key} must remain false")` |
+| `scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py` | 174 | audit_append_call | `errors.append(f"{key} must remain false in PRD-1.0")` |
+| `scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py` | 176 | audit_append_call | `errors.append(f"PRD-1 register {key} must remain false")` |
+| `scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py` | 187 | audit_append_call | `errors.append(f"{key} must be true")` |
+| `scripts/production_readiness/audit_prd100_ci_release_gate_stream_authority.py` | 206 | audit_append_call | `warnings.append("PRD-1.0 authority is valid but evidence capture has not completed")` |
+| `scripts/production_readiness/audit_prd101_ci_inventory_authority.py` | 74 | audit_append_call | `items.append({` |
+| `scripts/production_readiness/audit_prd101_ci_inventory_authority.py` | 99 | audit_append_call | `targets.append(name)` |
+| `scripts/production_readiness/audit_prd101_ci_inventory_authority.py` | 138 | audit_append_call | `refs.append({"path": rel, "matched_terms": matched})` |
+| `scripts/production_readiness/audit_prd101_ci_inventory_authority.py` | 237 | audit_append_call | `errors.append(f"missing required PRD-1.1 file: {path}")` |
+| `scripts/production_readiness/audit_prd101_ci_inventory_authority.py` | 240 | audit_append_call | `errors.append("PRD-1.0 verifier must remain valid before PRD-1.1")` |
+| `scripts/production_readiness/audit_prd101_ci_inventory_authority.py` | 242 | audit_append_call | `errors.append("production readiness register must be positioned at PRD-1.0/PRD-1.1, PRD-1.1/PRD-1.2, PRD-1.4/PRD-1.5, or PRD-1.9/PRD-2")` |
+| `scripts/production_readiness/audit_prd101_ci_inventory_authority.py` | 244 | audit_append_call | `errors.append("PRD-1 register schema_version must remain prd1-ci-release-gate-register/v1")` |
+| `scripts/production_readiness/audit_prd101_ci_inventory_authority.py` | 246 | audit_append_call | `errors.append("PRD-1 register stream_id must remain canonical")` |
+| `scripts/production_readiness/audit_prd101_ci_inventory_authority.py` | 257 | audit_append_call | `errors.append(message)` |
+| `scripts/production_readiness/audit_prd101_ci_inventory_authority.py` | 261 | audit_append_call | `errors.append(f"{key} must remain true")` |
+| `scripts/production_readiness/audit_prd101_ci_inventory_authority.py` | 264 | audit_append_call | `errors.append(f"{key} must remain false")` |
+| `scripts/production_readiness/audit_prd101_ci_inventory_authority.py` | 267 | audit_append_call | `errors.append(f"{key} must remain false in PRD-1.1")` |
+| `scripts/production_readiness/audit_prd101_ci_inventory_authority.py` | 280 | audit_append_call | `errors.append(f"{key} must be true")` |
+| `scripts/production_readiness/audit_prd101_ci_inventory_authority.py` | 283 | audit_append_call | `errors.append("CI inventory must include at least one workflow")` |
+| `scripts/production_readiness/audit_prd101_ci_inventory_authority.py` | 285 | audit_append_call | `errors.append("CI inventory must include Makefile inventory")` |
+| `scripts/production_readiness/audit_prd101_ci_inventory_authority.py` | 287 | audit_append_call | `errors.append("CI inventory must include OpenAPI inventory")` |
+| `scripts/production_readiness/audit_prd101_ci_inventory_authority.py` | 312 | audit_append_call | `warnings.append("PRD-1.1 authority is valid but evidence capture has not completed")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 76 | audit_append_call | `errors.append(f"missing required PRD-1.2-1.4 file: {path}")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 79 | audit_append_call | `errors.append("PRD-1.1 verifier must remain valid before PRD-1.2-1.4")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 81 | audit_append_call | `errors.append("PRD-1 register schema_version must remain canonical")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 83 | audit_append_call | `errors.append("PRD-1 register stream_id must remain canonical")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 85 | audit_append_call | `errors.append("PRD-1 register must be positioned at PRD-1.1/PRD-1.2 or PRD-1.4/PRD-1.5")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 88 | audit_append_call | `errors.append("required-check/workflow/release-gate config must use canonical schema")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 90 | audit_append_call | `errors.append("config must declare merged PRD-1.2, PRD-1.3, and PRD-1.4 scope")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 92 | audit_append_call | `errors.append("required-check classification must include the baseline required checks")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 94 | audit_append_call | `errors.append("repository workflow pytest calls must be canonicalised to python3 -m pytest")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 96 | audit_append_call | `errors.append("live workflow scan still finds python -m pytest")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 98 | audit_append_call | `errors.append("docs/openapi.json and root openapi.json must match")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 100 | audit_append_call | `errors.append("release gate definition must preserve master as canonical trunk")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 102 | audit_append_call | `errors.append("PRD-1.2-1.4 must not claim branch protection was modified")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 104 | audit_append_call | `errors.append("PRD-1.2-1.4 must define but not enforce the release gate")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 115 | audit_append_call | `errors.append(message)` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 119 | audit_append_call | `errors.append(f"{key} must remain true")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 122 | audit_append_call | `errors.append(f"{key} must remain false")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 130 | audit_append_call | `errors.append(f"{key} must be true")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 133 | audit_append_call | `errors.append(f"{key} must remain false")` |
+| `scripts/production_readiness/audit_prd102_104_required_checks_workflow_release_gate_convergence.py` | 151 | audit_append_call | `warnings.append("PRD-1.2-1.4 authority is valid but evidence capture has not completed")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 92 | audit_append_call | `errors.append(f"missing required PRD-1.5-1.9 file: {path}")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 95 | audit_append_call | `errors.append("PRD-1.0 verifier must remain valid")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 97 | audit_append_call | `errors.append("PRD-1.1 verifier must remain valid")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 99 | audit_append_call | `errors.append("PRD-1.2-1.4 verifier must remain valid")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 101 | audit_append_call | `errors.append("PRD-1 register must be positioned at PRD-1.4/PRD-1.5 or PRD-1.9/PRD-2")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 103 | audit_append_call | `errors.append("production readiness register must be positioned at PRD-1.4/PRD-1.5 or PRD-1.9/PRD-2")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 106 | audit_append_call | `errors.append("PRD-1.5-1.9 config schema_version must be canonical")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 108 | audit_append_call | `errors.append("config must declare merged PRD-1.5 through PRD-1.9 scope")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 110 | audit_append_call | `errors.append("config must show no remaining workflow-level python -m pytest calls")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 112 | audit_append_call | `errors.append("live workflow scan still finds python -m pytest")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 114 | audit_append_call | `errors.append("config must show root and docs OpenAPI artifacts still match")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 116 | audit_append_call | `errors.append("live root and docs OpenAPI artifacts do not match")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 120 | audit_append_call | `errors.append(f"required signal coverage missing for {key}")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 131 | audit_append_call | `errors.append(message)` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 135 | audit_append_call | `errors.append(f"{key} must remain true")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 138 | audit_append_call | `errors.append(f"{key} must remain false")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 141 | audit_append_call | `errors.append(f"{key} must remain false")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 153 | audit_append_call | `errors.append(f"{key} must be false")` |
+| `scripts/production_readiness/audit_prd105_109_ci_convergence_release_readiness_handoff.py` | 179 | audit_append_call | `warnings.append("PRD-1.5-1.9 authority is valid but final evidence capture has not completed")` |
 | `scripts/project_assistance_status.py` | 119 | audit_append_call | `lines.append(f"\| `{source}` \| {_path_status(source)} \|")` |
 | `scripts/project_assistance_status.py` | 131 | audit_append_call | `lines.append(f"\| {lane.number} \| {lane.name} \| {lane.output} \| `{lane.commands[0]}` \|")` |
 | `scripts/prove_phase02r_object_storage.py` | 60 | audit_append_call | `errors.append("PHASE02R_OBJECT_STORAGE_BACKEND must be s3 or minio")` |
@@ -3297,18 +4301,30 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/prove_phase02r_object_storage.py` | 168 | audit_append_call | `errors.append("backup directory is inside the repository")` |
 | `scripts/prove_phase02r_object_storage.py` | 170 | audit_append_call | `errors.append("restored backup SHA-256 does not match original")` |
 | `scripts/prove_phase02r_object_storage.py` | 179 | audit_append_call | `errors.append("scoped credential probe did not deny out-of-scope read")` |
+| `scripts/public_beta/audit_rr014_public_beta_expansion.py` | 151 | audit_append_call | `errors.append(f"missing RR-014 authority file: {rel}")` |
+| `scripts/public_beta/audit_rr014_public_beta_expansion.py` | 155 | audit_append_call | `errors.append(f"RR-014 manifest JSON invalid: {manifest['__json_error__']}")` |
+| `scripts/public_beta/audit_rr014_public_beta_expansion.py` | 159 | audit_append_call | `errors.append("RR-014 manifest must carry rr_id=RR-014")` |
+| `scripts/public_beta/audit_rr014_public_beta_expansion.py` | 164 | audit_append_call | `errors.append(f"RR-014 manifest missing true key: {key}")` |
+| `scripts/public_beta/audit_rr014_public_beta_expansion.py` | 169 | audit_append_call | `errors.append(f"RR-014 manifest boundary must be false: {key}")` |
+| `scripts/public_beta/audit_rr014_public_beta_expansion.py` | 176 | audit_append_call | `errors.append(f"RR-014 policy missing marker: {marker}")` |
+| `scripts/public_beta/audit_rr014_public_beta_expansion.py` | 188 | audit_append_call | `errors.append(f"missing or invalid final RR-014 evidence file: {rel}")` |
+| `scripts/public_beta/audit_rr014_public_beta_expansion.py` | 194 | audit_append_call | `errors.append(f"RR-014 cohort plan {rel} must set {key}={expected}")` |
+| `scripts/public_beta/audit_rr014_public_beta_expansion.py` | 199 | audit_append_call | `errors.append("RR-014 cohort plan must set initial_public_beta_cohort_size between 1 and 200")` |
+| `scripts/public_beta/audit_rr014_public_beta_expansion.py` | 205 | audit_append_call | `errors.append(f"missing final RR-014 evidence file: {rel}")` |
+| `scripts/public_beta/audit_rr014_public_beta_expansion.py` | 211 | audit_append_call | `errors.append(f"RR-014 final file {rel} missing marker: {marker}")` |
+| `scripts/public_beta/audit_rr014_public_beta_expansion.py` | 214 | audit_append_call | `warnings.append("final RR-014 public beta expansion evidence files are not required for authority-only audit")` |
 | `scripts/reconcile_agent_roadmap.py` | 69 | audit_append_call | `lines.append(f"\| {task.id} \| {task.priority} \| {task.area} \| {task.status} \| {task.title} \| {task.next_action} \|")` |
 | `scripts/refresh_current_state_doc.py` | 358 | audit_append_call | `results.append(r)` |
-| `scripts/release_go_no_go.py` | 88 | audit_append_call | `items.append(current)` |
-| `scripts/release_go_no_go.py` | 99 | audit_append_call | `items.append(current)` |
-| `scripts/release_go_no_go.py` | 160 | audit_append_call | `findings.append(finding)` |
-| `scripts/release_go_no_go.py` | 162 | audit_append_call | `blockers.append(f"{finding.id}: {finding.reason}")` |
-| `scripts/release_go_no_go.py` | 171 | audit_append_call | `actions.append("Attach a passing GitHub Actions run URL for CI-001.")` |
-| `scripts/release_go_no_go.py` | 173 | audit_append_call | `actions.append("Complete external approval files for legal, security, content, and staging gates.")` |
-| `scripts/release_go_no_go.py` | 175 | audit_append_call | `actions.append("Resolve remaining beta-blocking engineering evidence items.")` |
-| `scripts/release_go_no_go.py` | 177 | audit_append_call | `actions.append("Review release_decision_log.md and obtain explicit release-owner sign-off.")` |
-| `scripts/release_go_no_go.py` | 258 | audit_append_call | `lines.append(` |
-| `scripts/release_go_no_go.py` | 267 | audit_append_call | `lines.append("- None")` |
+| `scripts/release_go_no_go.py` | 89 | audit_append_call | `items.append(current)` |
+| `scripts/release_go_no_go.py` | 100 | audit_append_call | `items.append(current)` |
+| `scripts/release_go_no_go.py` | 161 | audit_append_call | `findings.append(finding)` |
+| `scripts/release_go_no_go.py` | 163 | audit_append_call | `blockers.append(f"{finding.id}: {finding.reason}")` |
+| `scripts/release_go_no_go.py` | 172 | audit_append_call | `actions.append("Attach a passing GitHub Actions run URL for CI-001.")` |
+| `scripts/release_go_no_go.py` | 174 | audit_append_call | `actions.append("Complete external approval files for legal, security, content, and staging gates.")` |
+| `scripts/release_go_no_go.py` | 176 | audit_append_call | `actions.append("Resolve remaining beta-blocking engineering evidence items.")` |
+| `scripts/release_go_no_go.py` | 178 | audit_append_call | `actions.append("Review release_decision_log.md and obtain explicit release-owner sign-off.")` |
+| `scripts/release_go_no_go.py` | 259 | audit_append_call | `lines.append(` |
+| `scripts/release_go_no_go.py` | 268 | audit_append_call | `lines.append("- None")` |
 | `scripts/remove_proven_dead_backend_consolidation_artifacts.py` | 9 | audit_append_call | `skipped.append(f"{p.relative_to(ROOT)}: active/protected"); continue` |
 | `scripts/remove_proven_dead_backend_consolidation_artifacts.py` | 12 | audit_append_call | `skipped.append(f"{p.relative_to(ROOT)}: referenced"); continue` |
 | `scripts/remove_proven_dead_backend_consolidation_artifacts.py` | 13 | audit_append_call | `p.unlink(); removed.append(str(p.relative_to(ROOT)))` |
@@ -3361,95 +4377,807 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/repair_runtime_blockers_after_followup_audit.py` | 145 | audit_append_call | `ranges.append((node.lineno - 1, node.end_lineno or node.lineno))` |
 | `scripts/repair_runtime_blockers_after_followup_audit.py` | 156 | audit_repository | `if stripped.startswith("from app.repositories") and any(name in line for name in ("ConsentRepository", "AuditRepository")):` |
 | `scripts/repair_runtime_blockers_after_followup_audit.py` | 158 | audit_append_call | `new_lines.append(line)` |
-| `scripts/route_tx_auth_slice.py` | 107 | audit_append_call | `parts.append(value.attr)` |
-| `scripts/route_tx_auth_slice.py` | 110 | audit_append_call | `parts.append(value.id)` |
-| `scripts/route_tx_auth_slice.py` | 130 | audit_append_call | `mutations.append(name)` |
-| `scripts/route_tx_auth_slice.py` | 142 | audit_append_call | `chunks.append(path.read_text(encoding="utf-8", errors="ignore"))` |
-| `scripts/route_tx_auth_slice.py` | 219 | audit_append_call | `blockers.append(f"{name} is pending")` |
-| `scripts/route_tx_auth_slice.py` | 221 | audit_append_call | `blockers.append("Live DB evidence URL must be a URL")` |
-| `scripts/route_tx_auth_slice.py` | 223 | audit_append_call | `blockers.append("Test result must be passed/pass/green/ok")` |
-| `scripts/route_tx_auth_slice.py` | 225 | audit_append_call | `blockers.append("Commit SHA must look like a git SHA")` |
-| `scripts/route_tx_auth_slice.py` | 234 | audit_append_call | `blockers.append("auth router file missing")` |
-| `scripts/route_tx_auth_slice.py` | 254 | audit_append_call | `findings.append(finding)` |
-| `scripts/route_tx_auth_slice.py` | 255 | audit_append_call | `blockers.append(f"{route_name}: route function missing")` |
-| `scripts/route_tx_auth_slice.py` | 268 | audit_append_call | `missing.append(f"expected delegate {expected_delegate} missing")` |
-| `scripts/route_tx_auth_slice.py` | 270 | audit_append_call | `missing.append("auth_service dependency missing")` |
-| `scripts/route_tx_auth_slice.py` | 272 | audit_append_call | `missing.append("direct db mutations present: " + ", ".join(mutations))` |
-| `scripts/route_tx_auth_slice.py` | 274 | audit_append_call | `blockers.append(f"{route_name}: {reason}")` |
-| `scripts/route_tx_auth_slice.py` | 276 | audit_append_call | `findings.append(` |
-| `scripts/route_tx_auth_slice.py` | 291 | audit_append_call | `blockers.append("no auth transactional service markers found in app/services")` |
-| `scripts/route_tx_auth_slice.py` | 334 | audit_append_call | `lines.append(` |
-| `scripts/route_tx_auth_slice.py` | 344 | audit_append_call | `lines.append("- None")` |
-| `scripts/route_tx_auth_slice.py` | 350 | audit_append_call | `lines.append("- None")` |
-| `scripts/route_tx_diagnostics_slice.py` | 140 | audit_append_call | `chunks.append("\n".join(lines[start:end]))` |
-| `scripts/route_tx_diagnostics_slice.py` | 154 | audit_append_call | `parts.append(value.attr)` |
-| `scripts/route_tx_diagnostics_slice.py` | 157 | audit_append_call | `parts.append(value.id)` |
-| `scripts/route_tx_diagnostics_slice.py` | 170 | audit_append_call | `mutations.append(name)` |
-| `scripts/route_tx_diagnostics_slice.py` | 181 | audit_append_call | `calls.append(name)` |
-| `scripts/route_tx_diagnostics_slice.py` | 195 | audit_append_call | `chunks.append(path.read_text(encoding="utf-8", errors="ignore"))` |
-| `scripts/route_tx_diagnostics_slice.py` | 270 | audit_append_call | `blockers.append(f"{name} is pending")` |
-| `scripts/route_tx_diagnostics_slice.py` | 272 | audit_append_call | `blockers.append("Live DB evidence URL must be a URL")` |
-| `scripts/route_tx_diagnostics_slice.py` | 274 | audit_append_call | `blockers.append("Test result must be passed/pass/green/ok")` |
-| `scripts/route_tx_diagnostics_slice.py` | 276 | audit_append_call | `blockers.append("Commit SHA must look like a git SHA")` |
-| `scripts/route_tx_diagnostics_slice.py` | 284 | audit_append_call | `funcs.append(node)` |
-| `scripts/route_tx_diagnostics_slice.py` | 294 | audit_append_call | `blockers.append("diagnostics router file missing")` |
-| `scripts/route_tx_diagnostics_slice.py` | 318 | audit_append_call | `reasons.append("no diagnostics service delegate call found")` |
-| `scripts/route_tx_diagnostics_slice.py` | 320 | audit_append_call | `reasons.append("direct db mutations present: " + ", ".join(mutations))` |
-| `scripts/route_tx_diagnostics_slice.py` | 322 | audit_append_call | `blockers.append(f"{node.name}: {reason}")` |
-| `scripts/route_tx_diagnostics_slice.py` | 323 | audit_append_call | `findings.append(DiagnosticsRouteSliceFinding(` |
-| `scripts/route_tx_diagnostics_slice.py` | 334 | audit_append_call | `blockers.append("selected diagnostics routes were not found in router source")` |
-| `scripts/route_tx_diagnostics_slice.py` | 338 | audit_append_call | `blockers.append("no diagnostics transactional service markers found")` |
-| `scripts/route_tx_diagnostics_slice.py` | 382 | audit_append_call | `lines.append(` |
-| `scripts/route_tx_diagnostics_slice.py` | 391 | audit_append_call | `lines.append("- None")` |
-| `scripts/route_tx_diagnostics_slice.py` | 396 | audit_append_call | `lines.append("- None")` |
-| `scripts/route_tx_diagnostics_slice.py` | 410 | audit_append_call | `actions.append(DiagnosticsRouteTxGapAction(` |
-| `scripts/route_tx_diagnostics_slice.py` | 465 | audit_append_call | `lines.append(f"\| `{action.route_function}` \| {action.line} \| `{action.current_status}` \| {action.blocker_reason} \| {action.can_be_closed_by_current_report} \|")` |
-| `scripts/route_tx_diagnostics_slice.py` | 467 | audit_append_call | `lines.append("\| `-` \| 0 \| `none` \| No local source gaps detected \| False \|")` |
-| `scripts/route_tx_impl_plan.py` | 143 | audit_append_call | `actions.append(` |
-| `scripts/route_tx_impl_plan.py` | 206 | audit_append_call | `lines.append(` |
-| `scripts/route_tx_impl_plan.py` | 226 | audit_append_call | `lines.append("- No unproven mutation routes detected by the current inventory.")` |
-| `scripts/route_tx_popia_slice.py` | 131 | audit_append_call | `chunks.append("\n".join(lines[start:end]))` |
-| `scripts/route_tx_popia_slice.py` | 145 | audit_append_call | `parts.append(value.attr)` |
-| `scripts/route_tx_popia_slice.py` | 148 | audit_append_call | `parts.append(value.id)` |
-| `scripts/route_tx_popia_slice.py` | 161 | audit_append_call | `mutations.append(name)` |
-| `scripts/route_tx_popia_slice.py` | 172 | audit_append_call | `calls.append(name)` |
-| `scripts/route_tx_popia_slice.py` | 186 | audit_append_call | `chunks.append(path.read_text(encoding="utf-8", errors="ignore"))` |
-| `scripts/route_tx_popia_slice.py` | 263 | audit_append_call | `blockers.append(f"{name} is pending")` |
-| `scripts/route_tx_popia_slice.py` | 265 | audit_append_call | `blockers.append("Live DB evidence URL must be a URL")` |
-| `scripts/route_tx_popia_slice.py` | 267 | audit_append_call | `blockers.append("Test result must be passed/pass/green/ok")` |
-| `scripts/route_tx_popia_slice.py` | 269 | audit_append_call | `blockers.append("Commit SHA must look like a git SHA")` |
-| `scripts/route_tx_popia_slice.py` | 277 | audit_append_call | `funcs.append(node)` |
-| `scripts/route_tx_popia_slice.py` | 287 | audit_append_call | `blockers.append("POPIA router file missing")` |
-| `scripts/route_tx_popia_slice.py` | 316 | audit_append_call | `reasons.append("no POPIA service delegate call found")` |
-| `scripts/route_tx_popia_slice.py` | 318 | audit_append_call | `reasons.append("direct db mutations present: " + ", ".join(mutations))` |
-| `scripts/route_tx_popia_slice.py` | 320 | audit_append_call | `blockers.append(f"{node.name}: {reason}")` |
-| `scripts/route_tx_popia_slice.py` | 322 | audit_append_call | `findings.append(` |
-| `scripts/route_tx_popia_slice.py` | 335 | audit_append_call | `blockers.append("selected POPIA routes were not found in router source")` |
-| `scripts/route_tx_popia_slice.py` | 339 | audit_append_call | `blockers.append("no POPIA transactional service markers found")` |
-| `scripts/route_tx_popia_slice.py` | 385 | audit_append_call | `lines.append(` |
-| `scripts/route_tx_popia_slice.py` | 395 | audit_append_call | `lines.append("- None")` |
-| `scripts/route_tx_popia_slice.py` | 401 | audit_append_call | `lines.append("- None")` |
-| `scripts/route_tx_slice_rollup.py` | 144 | audit_append_call | `slice_blockers.append("slice report missing")` |
-| `scripts/route_tx_slice_rollup.py` | 146 | audit_append_call | `slice_blockers.append(f"{local_gaps} local route-source gap(s) remain")` |
-| `scripts/route_tx_slice_rollup.py` | 148 | audit_append_call | `slice_blockers.append("live DB rollback evidence missing")` |
-| `scripts/route_tx_slice_rollup.py` | 151 | audit_append_call | `blockers.append(f"{slice_id}: not release-ready")` |
-| `scripts/route_tx_slice_rollup.py` | 152 | audit_append_call | `slices.append(` |
-| `scripts/route_tx_slice_rollup.py` | 217 | audit_append_call | `lines.append(` |
-| `scripts/run_database_backup.py` | 50 | audit_append_call | `results.append(` |
-| `scripts/run_database_backup.py` | 78 | audit_append_call | `lines.append(f"- `{name}`")` |
-| `scripts/run_database_backup.py` | 143 | audit_append_call | `results.append(validate_backup_tool())` |
-| `scripts/run_database_restore.py` | 40 | audit_append_call | `results.append(` |
-| `scripts/run_database_restore.py` | 133 | audit_append_call | `results.append(validate_target_environment(args.target_environment, args.allow_production_target))` |
-| `scripts/run_database_restore.py` | 134 | audit_append_call | `results.append(validate_restore_confirmation(args.target_environment, args.confirm_restore))` |
-| `scripts/run_database_restore.py` | 136 | audit_append_call | `results.append(validate_restore_tool(args.backup_artifact))` |
-| `scripts/run_disposable_schema_drift_proof.py` | 79 | audit_append_call | `failures.append("DATABASE_URL is required")` |
-| `scripts/run_disposable_schema_drift_proof.py` | 81 | audit_append_call | `failures.append("DATABASE_URL does not look disposable/test-like")` |
-| `scripts/run_disposable_schema_drift_proof.py` | 83 | audit_append_call | `failures.append("DATABASE_URL contains placeholder credentials")` |
-| `scripts/run_disposable_schema_drift_proof.py` | 94 | audit_append_call | `drift_cmd.append("--ignore-consolidation-tables")` |
-| `scripts/run_disposable_schema_drift_proof.py` | 95 | audit_append_call | `commands.append(("schema_drift_db", drift_cmd))` |
-| `scripts/run_disposable_schema_drift_proof.py` | 113 | audit_append_call | `lines.append(f"\| {result['name']} \| {result['return_code']} \| {result['passed']} \|")` |
+| `scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_1_runtime_stack_db_lineage_readiness_evidence.py` | 106 | audit_append_call | `sequence.append({"prd_id": PRD_ID, "title": "Runtime stack, DB lineage, and readiness restoration", "status": "evidence_recorded", "authorised": True})` |
+| `scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_2_disposable_stack_schema_lineage_evidence.py` | 111 | audit_append_call | `sequence.append({"prd_id": PRD_ID, "title": "Disposable stack execution and schema lineage reconciliation", "status": "evidence_recorded", "authorised": True})` |
+| `scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_3_product_runtime_test_gate_repair_evidence.py` | 116 | audit_append_call | `sequence.append({"prd_id": PRD_ID, "title": "Product and runtime test gate repair", "status": "evidence_recorded", "authorised": True})` |
+| `scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_4_product_gate_execution_critical_flow_repair_evidence.py` | 123 | audit_append_call | `sequence.append({"prd_id": PRD_ID, "title": "Product gate execution and critical-flow repair", "status": "evidence_recorded", "authorised": True})` |
+| `scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_5_coverage_frontend_advisory_gate_repair_evidence.py` | 135 | audit_append_call | `sequence.append({"prd_id": PRD_ID, "title": "Coverage execution, frontend quality, and advisory gate repair", "status": "evidence_recorded", "authorised": True})` |
+| `scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_6_final_true_state_baseline_handoff_evidence.py` | 143 | audit_append_call | `sequence.append({"prd_id": PRD_ID, "title": "Final true-state baseline proof and controlled handoff", "status": "evidence_recorded", "authorised": True})` |
+| `scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_execution_1_runtime_command_frontend_generated_contracts_evidence.py` | 107 | audit_append_call | `sequence.append({"prd_id": PRD_ID, "title": "Runtime command execution, frontend hook repair, and generated contract gate activation", "status": "evidence_recorded", "authorised": True})` |
+| `scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_execution_2_generated_contract_frontend_quality_evidence.py` | 52 | audit_append_call | `flattened.append({` |
+| `scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_execution_2_generated_contract_frontend_quality_evidence.py` | 143 | audit_append_call | `sequence.append({"prd_id": PRD_ID, "title": "Generated contract regeneration and frontend quality execution", "status": "evidence_recorded", "authorised": True})` |
+| `scripts/roadmap_reconciliation/capture_roadmap_reconciliation_evidence.py` | 165 | audit_append_call | `errors.append("--claim-roadmap-reconciliation was not supplied")` |
+| `scripts/roadmap_reconciliation/capture_rr001_atlas_phase_status_reconciliation_evidence.py` | 78 | audit_append_call | `snapshots.append({"path": rel, "sha256": _sha256(src)})` |
+| `scripts/roadmap_reconciliation/capture_rr001_atlas_phase_status_reconciliation_evidence.py` | 134 | audit_append_call | `lines.append(f"- `{item['path']}` — `{item['sha256']}`")` |
+| `scripts/roadmap_reconciliation/capture_rr001_atlas_phase_status_reconciliation_evidence.py` | 141 | audit_append_call | `sha_lines.append(f"{_sha256(path)}  {path.relative_to(EVIDENCE_DIR)}")` |
+| `scripts/roadmap_reconciliation/capture_rr002_privacy_popia_completion_evidence.py` | 91 | audit_append_call | `lines.append(f"{_sha(path)}  {rel}")` |
+| `scripts/roadmap_reconciliation/capture_rr003_coverage_ci_route_authority_evidence.py` | 148 | audit_append_call | `lines.append(f"{_sha(path)}  {rel}")` |
+| `scripts/roadmap_reconciliation/capture_rr003_coverage_ci_route_authority_evidence.py` | 154 | audit_append_call | `lines.append(f"{_sha(coverage_xml)}  {rel}")` |
+| `scripts/roadmap_reconciliation/verify_final_roadmap_reconciliation_closure.py` | 90 | audit_append_call | `errors.append("outstanding_work_register.md is missing")` |
+| `scripts/roadmap_reconciliation/verify_final_roadmap_reconciliation_closure.py` | 96 | audit_append_call | `rr_results.append({` |
+| `scripts/roadmap_reconciliation/verify_final_roadmap_reconciliation_closure.py` | 107 | audit_append_call | `errors.append(f"register must still cite {rr_id}")` |
+| `scripts/roadmap_reconciliation/verify_final_roadmap_reconciliation_closure.py` | 109 | audit_append_call | `errors.append(f"missing record for {rr_id}: {record_path}")` |
+| `scripts/roadmap_reconciliation/verify_final_roadmap_reconciliation_closure.py` | 111 | audit_append_call | `errors.append(f"{filename} rr_id must be {rr_id}")` |
+| `scripts/roadmap_reconciliation/verify_final_roadmap_reconciliation_closure.py` | 113 | audit_append_call | `errors.append(f"{rr_id} completion flag must be true: {required_flag}")` |
+| `scripts/roadmap_reconciliation/verify_final_roadmap_reconciliation_closure.py` | 115 | audit_append_call | `errors.append(f"{rr_id} has an authorised boundary flag that must remain false")` |
+| `scripts/roadmap_reconciliation/verify_final_roadmap_reconciliation_closure.py` | 129 | audit_append_call | `errors.append(f"authority check failed: {key}")` |
+| `scripts/roadmap_reconciliation/verify_final_roadmap_reconciliation_closure.py` | 135 | audit_append_call | `errors.append(f"closure record flag must be true after capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_final_roadmap_reconciliation_closure.py` | 137 | audit_append_call | `warnings.append("final roadmap closure record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_final_roadmap_reconciliation_closure.py` | 141 | audit_append_call | `errors.append(f"closure boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg000_formal_kg_roadmap_approval.py` | 23 | audit_append_call | `errors.append(f"missing KG-0 record: {RECORD}")` |
+| `scripts/roadmap_reconciliation/verify_kg000_formal_kg_roadmap_approval.py` | 25 | audit_append_call | `errors.append("KG-0 record must have kg_id KG-0")` |
+| `scripts/roadmap_reconciliation/verify_kg000_formal_kg_roadmap_approval.py` | 30 | audit_append_call | `errors.append(f"KG-0 captured record flag must be true: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg000_formal_kg_roadmap_approval.py` | 32 | audit_append_call | `warnings.append("KG-0 record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_kg000_formal_kg_roadmap_approval.py` | 35 | audit_append_call | `errors.append(f"KG-0 boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg001_caps_graph_foundation.py` | 59 | audit_append_call | `errors.append("KG-0 formal roadmap approval must be recorded before KG-1")` |
+| `scripts/roadmap_reconciliation/verify_kg001_caps_graph_foundation.py` | 61 | audit_append_call | `errors.append("KG-1 record must have kg_id KG-1")` |
+| `scripts/roadmap_reconciliation/verify_kg001_caps_graph_foundation.py` | 71 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg001_caps_graph_foundation.py` | 73 | audit_append_call | `errors.append("KG-1 node count must be at least 150")` |
+| `scripts/roadmap_reconciliation/verify_kg001_caps_graph_foundation.py` | 75 | audit_append_call | `errors.append("KG-1 edge count must be at least 150")` |
+| `scripts/roadmap_reconciliation/verify_kg001_caps_graph_foundation.py` | 77 | audit_append_call | `warnings.append("KG-1 record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_kg001_caps_graph_foundation.py` | 81 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg002_target_graph_generation.py` | 62 | audit_append_call | `errors.append("KG-1 CAPS graph foundation must be recorded before KG-2")` |
+| `scripts/roadmap_reconciliation/verify_kg002_target_graph_generation.py` | 64 | audit_append_call | `errors.append("KG-2 record must have kg_id KG-2")` |
+| `scripts/roadmap_reconciliation/verify_kg002_target_graph_generation.py` | 74 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg002_target_graph_generation.py` | 76 | audit_append_call | `errors.append("KG-2 target graph state count must be at least 100")` |
+| `scripts/roadmap_reconciliation/verify_kg002_target_graph_generation.py` | 78 | audit_append_call | `errors.append("KG-2 target graph edge count must be at least 100")` |
+| `scripts/roadmap_reconciliation/verify_kg002_target_graph_generation.py` | 80 | audit_append_call | `warnings.append("KG-2 record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_kg002_target_graph_generation.py` | 84 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg003_learner_graph_shadow_mode.py` | 63 | audit_append_call | `errors.append("KG-2 target graph generation must be recorded before KG-3")` |
+| `scripts/roadmap_reconciliation/verify_kg003_learner_graph_shadow_mode.py` | 65 | audit_append_call | `errors.append("KG-3 record must have kg_id KG-3")` |
+| `scripts/roadmap_reconciliation/verify_kg003_learner_graph_shadow_mode.py` | 75 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg003_learner_graph_shadow_mode.py` | 77 | audit_append_call | `errors.append("KG-3 learner shadow state count must be at least 200")` |
+| `scripts/roadmap_reconciliation/verify_kg003_learner_graph_shadow_mode.py` | 79 | audit_append_call | `errors.append("KG-3 shadow evidence event count must be at least 200")` |
+| `scripts/roadmap_reconciliation/verify_kg003_learner_graph_shadow_mode.py` | 81 | audit_append_call | `warnings.append("KG-3 record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_kg003_learner_graph_shadow_mode.py` | 85 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg004_gap_engine_intervention_planner.py` | 67 | audit_append_call | `errors.append("KG-3 learner graph shadow mode must be recorded before KG-4")` |
+| `scripts/roadmap_reconciliation/verify_kg004_gap_engine_intervention_planner.py` | 69 | audit_append_call | `errors.append("KG-4 record must have kg_id KG-4")` |
+| `scripts/roadmap_reconciliation/verify_kg004_gap_engine_intervention_planner.py` | 79 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg004_gap_engine_intervention_planner.py` | 81 | audit_append_call | `errors.append("KG-4 gap item count must be at least 200")` |
+| `scripts/roadmap_reconciliation/verify_kg004_gap_engine_intervention_planner.py` | 83 | audit_append_call | `errors.append("KG-4 intervention recommendation count must be at least 200")` |
+| `scripts/roadmap_reconciliation/verify_kg004_gap_engine_intervention_planner.py` | 85 | audit_append_call | `warnings.append("KG-4 record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_kg004_gap_engine_intervention_planner.py` | 89 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg005_graph_grounded_lesson_assessment_generation.py` | 73 | audit_append_call | `errors.append("KG-4 gap engine and intervention planner must be recorded before KG-5")` |
+| `scripts/roadmap_reconciliation/verify_kg005_graph_grounded_lesson_assessment_generation.py` | 75 | audit_append_call | `errors.append("KG-5 record must have kg_id KG-5")` |
+| `scripts/roadmap_reconciliation/verify_kg005_graph_grounded_lesson_assessment_generation.py` | 85 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg005_graph_grounded_lesson_assessment_generation.py` | 87 | audit_append_call | `errors.append("KG-5 lesson draft count must be at least 200")` |
+| `scripts/roadmap_reconciliation/verify_kg005_graph_grounded_lesson_assessment_generation.py` | 89 | audit_append_call | `errors.append("KG-5 assessment draft count must be at least 200")` |
+| `scripts/roadmap_reconciliation/verify_kg005_graph_grounded_lesson_assessment_generation.py` | 91 | audit_append_call | `warnings.append("KG-5 record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_kg005_graph_grounded_lesson_assessment_generation.py` | 95 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg006_tutor_study_plan_gamification_parent_alignment.py` | 83 | audit_append_call | `errors.append("KG-5 graph-grounded generation must be recorded before KG-6")` |
+| `scripts/roadmap_reconciliation/verify_kg006_tutor_study_plan_gamification_parent_alignment.py` | 85 | audit_append_call | `errors.append("KG-6 record must have kg_id KG-6")` |
+| `scripts/roadmap_reconciliation/verify_kg006_tutor_study_plan_gamification_parent_alignment.py` | 95 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg006_tutor_study_plan_gamification_parent_alignment.py` | 97 | audit_append_call | `errors.append("KG-6 tutor preview count must be at least 200")` |
+| `scripts/roadmap_reconciliation/verify_kg006_tutor_study_plan_gamification_parent_alignment.py` | 99 | audit_append_call | `errors.append("KG-6 study plan item count must be at least 200")` |
+| `scripts/roadmap_reconciliation/verify_kg006_tutor_study_plan_gamification_parent_alignment.py` | 101 | audit_append_call | `errors.append("KG-6 gamification candidate count must be at least 200")` |
+| `scripts/roadmap_reconciliation/verify_kg006_tutor_study_plan_gamification_parent_alignment.py` | 103 | audit_append_call | `warnings.append("KG-6 record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_kg006_tutor_study_plan_gamification_parent_alignment.py` | 107 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg007_authority_switch_legacy_cleanup.py` | 84 | audit_append_call | `errors.append("KG-6 product alignment must be recorded before KG-7")` |
+| `scripts/roadmap_reconciliation/verify_kg007_authority_switch_legacy_cleanup.py` | 86 | audit_append_call | `errors.append("KG-7 record must have kg_id KG-7")` |
+| `scripts/roadmap_reconciliation/verify_kg007_authority_switch_legacy_cleanup.py` | 96 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg007_authority_switch_legacy_cleanup.py` | 98 | audit_append_call | `errors.append("KG-7 legacy projection mapping count must be at least 700")` |
+| `scripts/roadmap_reconciliation/verify_kg007_authority_switch_legacy_cleanup.py` | 100 | audit_append_call | `errors.append("KG-7 readiness check count must be at least 10")` |
+| `scripts/roadmap_reconciliation/verify_kg007_authority_switch_legacy_cleanup.py` | 102 | audit_append_call | `warnings.append("KG-7 record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_kg007_authority_switch_legacy_cleanup.py` | 106 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg008_post_switch_optimisation_scale_review.py` | 81 | audit_append_call | `errors.append("KG-8 requires valid KG-ACT-001 controlled runtime KG activation evidence")` |
+| `scripts/roadmap_reconciliation/verify_kg008_post_switch_optimisation_scale_review.py` | 83 | audit_append_call | `errors.append("KG-8 record must have kg_id KG-8")` |
+| `scripts/roadmap_reconciliation/verify_kg008_post_switch_optimisation_scale_review.py` | 93 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg008_post_switch_optimisation_scale_review.py` | 95 | audit_append_call | `errors.append("KG-8 optimisation candidate count must be at least 8")` |
+| `scripts/roadmap_reconciliation/verify_kg008_post_switch_optimisation_scale_review.py` | 97 | audit_append_call | `errors.append("KG-8 scale review check count must be at least 10")` |
+| `scripts/roadmap_reconciliation/verify_kg008_post_switch_optimisation_scale_review.py` | 99 | audit_append_call | `errors.append("KG-8 monitoring requirement count must be at least 8")` |
+| `scripts/roadmap_reconciliation/verify_kg008_post_switch_optimisation_scale_review.py` | 101 | audit_append_call | `errors.append("KG-8 rollback observability count must be at least 6")` |
+| `scripts/roadmap_reconciliation/verify_kg008_post_switch_optimisation_scale_review.py` | 103 | audit_append_call | `warnings.append("KG-8 record is still pending post-switch review evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_kg008_post_switch_optimisation_scale_review.py` | 107 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg_roadmap_closure.py` | 40 | audit_append_call | `errors.append("closure record must identify KG-ROADMAP-CLOSURE")` |
+| `scripts/roadmap_reconciliation/verify_kg_roadmap_closure.py` | 45 | audit_append_call | `errors.append("captured closure record must identify KG-ROADMAP-CLOSURE")` |
+| `scripts/roadmap_reconciliation/verify_kg_roadmap_closure.py` | 55 | audit_append_call | `errors.append(f"closure record flag must be true: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg_roadmap_closure.py` | 58 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kg_roadmap_closure.py` | 60 | audit_append_call | `warnings.append("KG roadmap closure evidence has not been captured yet")` |
+| `scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py` | 74 | audit_append_call | `errors.append("KG-7 authority-switch readiness must be valid and non-executed before KG-ACT-001")` |
+| `scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py` | 76 | audit_append_call | `errors.append("KG-ACT-001 record must have kg_id KG-ACT-001")` |
+| `scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py` | 86 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py` | 88 | audit_append_call | `errors.append("KG-ACT-001 activation control count must be at least 4")` |
+| `scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py` | 90 | audit_append_call | `errors.append("KG-ACT-001 must inherit at least 10 readiness checks")` |
+| `scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py` | 92 | audit_append_call | `errors.append("KG-ACT-001 must inherit at least 700 legacy projection mappings")` |
+| `scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py` | 94 | audit_append_call | `warnings.append("KG-ACT-001 record is still pending activation evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py` | 98 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 79 | audit_append_call | `errors.append(f"malformed SHA256SUMS line: {line}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 83 | audit_append_call | `errors.append(f"SHA target missing: {path}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 87 | audit_append_call | `errors.append(f"SHA mismatch for {path}: expected {expected}, got {actual}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 103 | audit_append_call | `errors.append("canonical_sources must be a list")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 108 | audit_append_call | `errors.append(f"canonical source missing from inventory: {required}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 110 | audit_append_call | `errors.append(f"canonical source file missing: {required}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 113 | audit_append_call | `errors.append("new_work_rule must reference the Outstanding Work Register")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 124 | audit_append_call | `errors.append(f"outstanding work register missing ID: {rr_id}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 134 | audit_append_call | `errors.append(f"outstanding work register missing marker: {marker}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 153 | audit_append_call | `errors.append(f"classification document missing marker: {marker}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 170 | audit_append_call | `errors.append(f"new-work freeze missing marker: {marker}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 177 | audit_append_call | `errors.append(f"required evidence file missing: {path}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 182 | audit_append_call | `errors.append(f"invalid JSON evidence file {path}: {exc}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 185 | audit_append_call | `errors.append(f"evidence file must contain an object: {path}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 195 | audit_append_call | `errors.append(f"record missing: {record_path}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 200 | audit_append_call | `errors.append(f"record is not valid JSON: {exc}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 203 | audit_append_call | `errors.append("record must be a JSON object")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 207 | audit_append_call | `errors.append("record status must be roadmap_reconciliation_recorded")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 210 | audit_append_call | `errors.append(f"{field} must be true")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 213 | audit_append_call | `errors.append(f"{field} must be false")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 215 | audit_append_call | `errors.append(f"record contains errors: {record.get('errors')}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 225 | audit_append_call | `errors.append(f"evidence directory missing: {evidence_dir}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 229 | audit_append_call | `errors.append(f"evidence index missing: {index}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 243 | audit_append_call | `errors.append(f"evidence index missing marker: {marker}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 248 | audit_append_call | `errors.append(f"required evidence file missing: {evidence_dir / rel}")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 253 | audit_append_call | `errors.append("record snapshot does not match record")` |
+| `scripts/roadmap_reconciliation/verify_roadmap_reconciliation.py` | 256 | audit_append_call | `errors.append("raw roadmap reconciliation result must be valid")` |
+| `scripts/roadmap_reconciliation/verify_rr001_atlas_phase_status_reconciliation.py` | 59 | audit_append_call | `errors.append(f"missing required file: {path.relative_to(ROOT)}")` |
+| `scripts/roadmap_reconciliation/verify_rr001_atlas_phase_status_reconciliation.py` | 64 | audit_append_call | `errors.append(f"PHASE_STATUS_REGISTER missing marker: {marker}")` |
+| `scripts/roadmap_reconciliation/verify_rr001_atlas_phase_status_reconciliation.py` | 67 | audit_append_call | `errors.append(f"PHASE_STATUS_REGISTER still contains stale active-blocked marker: {marker}")` |
+| `scripts/roadmap_reconciliation/verify_rr001_atlas_phase_status_reconciliation.py` | 72 | audit_append_call | `errors.append("outstanding register does not contain RR-001")` |
+| `scripts/roadmap_reconciliation/verify_rr001_atlas_phase_status_reconciliation.py` | 74 | audit_append_call | `errors.append("outstanding register missing anti-scope-creep rule")` |
+| `scripts/roadmap_reconciliation/verify_rr001_atlas_phase_status_reconciliation.py` | 79 | audit_append_call | `errors.append("roadmap reconciliation baseline must be recorded before RR-001 closure")` |
+| `scripts/roadmap_reconciliation/verify_rr001_atlas_phase_status_reconciliation.py` | 81 | audit_append_call | `errors.append("roadmap reconciliation record must keep new_work_freeze_active true")` |
+| `scripts/roadmap_reconciliation/verify_rr001_atlas_phase_status_reconciliation.py` | 91 | audit_append_call | `errors.append(f"matrix missing Atlas phases: {', '.join(missing)}")` |
+| `scripts/roadmap_reconciliation/verify_rr001_atlas_phase_status_reconciliation.py` | 94 | audit_append_call | `errors.append(` |
+| `scripts/roadmap_reconciliation/verify_rr001_atlas_phase_status_reconciliation.py` | 98 | audit_append_call | `errors.append(f"phase {phase.get('phase')} must not be release authority")` |
+| `scripts/roadmap_reconciliation/verify_rr001_atlas_phase_status_reconciliation.py` | 100 | audit_append_call | `errors.append("matrix next_work_source must be outstanding work register")` |
+| `scripts/roadmap_reconciliation/verify_rr001_atlas_phase_status_reconciliation.py` | 107 | audit_append_call | `errors.append(f"unexpected RR-001 record status: {record.get('status')}")` |
+| `scripts/roadmap_reconciliation/verify_rr001_atlas_phase_status_reconciliation.py` | 109 | audit_append_call | `errors.append("RR-001 record must have rr_id RR-001")` |
+| `scripts/roadmap_reconciliation/verify_rr001_atlas_phase_status_reconciliation.py` | 111 | audit_append_call | `errors.append("RR-001 record must mark atlas_phase_register_reconciled true")` |
+| `scripts/roadmap_reconciliation/verify_rr001_atlas_phase_status_reconciliation.py` | 113 | audit_append_call | `errors.append("RR-001 record must classify Phase 18-21 as auxiliary governance")` |
+| `scripts/roadmap_reconciliation/verify_rr001_atlas_phase_status_reconciliation.py` | 115 | audit_append_call | `errors.append("RR-001 record must require next work to cite RR ID")` |
+| `scripts/roadmap_reconciliation/verify_rr001_atlas_phase_status_reconciliation.py` | 118 | audit_append_call | `errors.append(f"{flag} must be false in RR-001 record")` |
+| `scripts/roadmap_reconciliation/verify_rr002_privacy_popia_completion.py` | 25 | audit_append_call | `if not (ROOT / rel).exists(): errors.append(f"required file missing: {rel}")` |
+| `scripts/roadmap_reconciliation/verify_rr002_privacy_popia_completion.py` | 31 | audit_append_call | `if marker not in text: errors.append(f"missing marker in {rel}: {marker}")` |
+| `scripts/roadmap_reconciliation/verify_rr002_privacy_popia_completion.py` | 35 | audit_append_call | `if "RR-002" not in rtext or "Privacy / POPIA" not in rtext: errors.append("RR-002 register item missing")` |
+| `scripts/roadmap_reconciliation/verify_rr002_privacy_popia_completion.py` | 37 | audit_append_call | `if record.get("rr_id") != "RR-002": errors.append("record rr_id must be RR-002")` |
+| `scripts/roadmap_reconciliation/verify_rr002_privacy_popia_completion.py` | 39 | audit_append_call | `if record.get(field) is not False: errors.append(f"boundary field must remain false: {field}")` |
+| `scripts/roadmap_reconciliation/verify_rr002_privacy_popia_completion.py` | 42 | audit_append_call | `if record.get(field) is not True: errors.append(f"claimed completion missing field: {field}")` |
+| `scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py` | 88 | audit_append_call | `errors.append(f"required file missing: {rel}")` |
+| `scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py` | 97 | audit_append_call | `errors.append(f"missing marker in {rel}: {marker}")` |
+| `scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py` | 101 | audit_append_call | `errors.append(f"policy JSON invalid: {policy['__json_error__']}")` |
+| `scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py` | 104 | audit_append_call | `errors.append("policy rr_id must be RR-003")` |
+| `scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py` | 106 | audit_append_call | `errors.append("policy canonical_prefix must be /api/v2")` |
+| `scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py` | 108 | audit_append_call | `errors.append("policy compatibility_prefix must be /v2")` |
+| `scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py` | 110 | audit_append_call | `errors.append("policy must require coverage baseline")` |
+| `scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py` | 112 | audit_append_call | `errors.append("policy must require visible release-blocking CI checks")` |
+| `scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py` | 114 | audit_append_call | `errors.append("policy must block new unapproved route alias exceptions")` |
+| `scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py` | 118 | audit_append_call | `errors.append(f"record JSON invalid: {record['__json_error__']}")` |
+| `scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py` | 121 | audit_append_call | `errors.append("record rr_id must be RR-003")` |
+| `scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py` | 124 | audit_append_call | `errors.append(f"boundary field must remain false: {field}")` |
+| `scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py` | 128 | audit_append_call | `errors.append(f"claimed completion missing field: {field}")` |
+| `scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py` | 132 | audit_append_call | `errors.append("coverage_baseline_percent must be numeric when recorded")` |
+| `scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py` | 134 | audit_append_call | `errors.append("coverage_threshold_percent must be numeric when recorded")` |
+| `scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py` | 136 | audit_append_call | `errors.append("coverage baseline is below threshold")` |
+| `scripts/roadmap_reconciliation/verify_rr004_workspace_hygiene.py` | 96 | audit_append_call | `errors.append(f"missing or failed check: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr004_workspace_hygiene.py` | 99 | audit_append_call | `errors.append(f"record JSON invalid: {record['__json_error__']}")` |
+| `scripts/roadmap_reconciliation/verify_rr004_workspace_hygiene.py` | 102 | audit_append_call | `errors.append(f"record rr_id must be {RR_ID}")` |
+| `scripts/roadmap_reconciliation/verify_rr004_workspace_hygiene.py` | 105 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr004_workspace_hygiene.py` | 109 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr004_workspace_hygiene.py` | 112 | audit_append_call | `errors.append("scanner_counts.tracked_file_count must be an integer after capture")` |
+| `scripts/roadmap_reconciliation/verify_rr004_workspace_hygiene.py` | 114 | audit_append_call | `warnings.append("record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_rr004_workspace_hygiene.py` | 116 | audit_append_call | `errors.append("record JSON is missing")` |
+| `scripts/roadmap_reconciliation/verify_rr005_technical_debt_burndown.py` | 115 | audit_append_call | `errors.append(f"missing or failed check: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr005_technical_debt_burndown.py` | 118 | audit_append_call | `errors.append(f"record JSON invalid: {record['__json_error__']}")` |
+| `scripts/roadmap_reconciliation/verify_rr005_technical_debt_burndown.py` | 121 | audit_append_call | `errors.append(f"record rr_id must be {RR_ID}")` |
+| `scripts/roadmap_reconciliation/verify_rr005_technical_debt_burndown.py` | 124 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr005_technical_debt_burndown.py` | 128 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr005_technical_debt_burndown.py` | 130 | audit_append_call | `errors.append("technical_debt_audit must be embedded after capture")` |
+| `scripts/roadmap_reconciliation/verify_rr005_technical_debt_burndown.py` | 132 | audit_append_call | `errors.append("RR-003 fallback coverage caveat must remain visible")` |
+| `scripts/roadmap_reconciliation/verify_rr005_technical_debt_burndown.py` | 134 | audit_append_call | `warnings.append("record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_rr005_technical_debt_burndown.py` | 136 | audit_append_call | `errors.append("record JSON is missing")` |
+| `scripts/roadmap_reconciliation/verify_rr006_security_posture_deepening.py` | 103 | audit_append_call | `errors.append(f"record rr_id must be {RR_ID}")` |
+| `scripts/roadmap_reconciliation/verify_rr006_security_posture_deepening.py` | 107 | audit_append_call | `errors.append(f"missing or failed check: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr006_security_posture_deepening.py` | 112 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr006_security_posture_deepening.py` | 114 | audit_append_call | `warnings.append("record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_rr006_security_posture_deepening.py` | 118 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr007_product_quality_gates.py` | 138 | audit_append_call | `errors.append(f"missing or failed check: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr007_product_quality_gates.py` | 141 | audit_append_call | `errors.append(f"manifest JSON invalid: {manifest['__json_error__']}")` |
+| `scripts/roadmap_reconciliation/verify_rr007_product_quality_gates.py` | 153 | audit_append_call | `errors.append(f"manifest flag must be true: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr007_product_quality_gates.py` | 156 | audit_append_call | `errors.append(f"manifest boundary flag must be false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr007_product_quality_gates.py` | 158 | audit_append_call | `errors.append("RR-007 quality gate manifest is missing")` |
+| `scripts/roadmap_reconciliation/verify_rr007_product_quality_gates.py` | 161 | audit_append_call | `errors.append(f"record JSON invalid: {record['__json_error__']}")` |
+| `scripts/roadmap_reconciliation/verify_rr007_product_quality_gates.py` | 164 | audit_append_call | `errors.append(f"record rr_id must be {RR_ID}")` |
+| `scripts/roadmap_reconciliation/verify_rr007_product_quality_gates.py` | 167 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr007_product_quality_gates.py` | 171 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr007_product_quality_gates.py` | 173 | audit_append_call | `errors.append("product_quality_audit must be embedded after capture")` |
+| `scripts/roadmap_reconciliation/verify_rr007_product_quality_gates.py` | 175 | audit_append_call | `warnings.append("record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_rr007_product_quality_gates.py` | 177 | audit_append_call | `errors.append("record JSON is missing")` |
+| `scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py` | 126 | audit_append_call | `errors.append(f"missing or failed check: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py` | 129 | audit_append_call | `errors.append(f"manifest JSON invalid: {manifest['__json_error__']}")` |
+| `scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py` | 139 | audit_append_call | `errors.append(f"manifest flag must be true: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py` | 142 | audit_append_call | `errors.append(f"manifest boundary flag must be false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py` | 144 | audit_append_call | `errors.append("RR-008 operational readiness manifest is missing")` |
+| `scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py` | 147 | audit_append_call | `errors.append(f"record JSON invalid: {record['__json_error__']}")` |
+| `scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py` | 150 | audit_append_call | `errors.append(f"record rr_id must be {RR_ID}")` |
+| `scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py` | 153 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py` | 157 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py` | 159 | audit_append_call | `errors.append("operational_readiness_audit must be embedded after capture")` |
+| `scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py` | 161 | audit_append_call | `warnings.append("record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py` | 163 | audit_append_call | `errors.append("record JSON is missing")` |
+| `scripts/roadmap_reconciliation/verify_rr009_governance_process.py` | 138 | audit_append_call | `errors.append(f"missing or failed check: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr009_governance_process.py` | 141 | audit_append_call | `errors.append(f"manifest JSON invalid: {manifest['__json_error__']}")` |
+| `scripts/roadmap_reconciliation/verify_rr009_governance_process.py` | 145 | audit_append_call | `errors.append(f"manifest flag must be true: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr009_governance_process.py` | 148 | audit_append_call | `errors.append(f"manifest boundary flag must be false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr009_governance_process.py` | 150 | audit_append_call | `errors.append("RR-009 manifest is missing")` |
+| `scripts/roadmap_reconciliation/verify_rr009_governance_process.py` | 153 | audit_append_call | `errors.append(f"record JSON invalid: {record['__json_error__']}")` |
+| `scripts/roadmap_reconciliation/verify_rr009_governance_process.py` | 156 | audit_append_call | `errors.append(f"record rr_id must be {RR_ID}")` |
+| `scripts/roadmap_reconciliation/verify_rr009_governance_process.py` | 159 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr009_governance_process.py` | 163 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr009_governance_process.py` | 165 | audit_append_call | `errors.append("governance_process_audit must be embedded after capture")` |
+| `scripts/roadmap_reconciliation/verify_rr009_governance_process.py` | 167 | audit_append_call | `warnings.append("record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_rr009_governance_process.py` | 169 | audit_append_call | `errors.append("record JSON is missing")` |
+| `scripts/roadmap_reconciliation/verify_rr010_beta_outcome_reporting.py` | 100 | audit_append_call | `errors.append(f"missing or failed check: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr010_beta_outcome_reporting.py` | 110 | audit_append_call | `errors.append(f"audit error: {error}")` |
+| `scripts/roadmap_reconciliation/verify_rr010_beta_outcome_reporting.py` | 115 | audit_append_call | `errors.append(f"record JSON invalid: {record['__json_error__']}")` |
+| `scripts/roadmap_reconciliation/verify_rr010_beta_outcome_reporting.py` | 118 | audit_append_call | `errors.append(f"record rr_id must be {RR_ID}")` |
+| `scripts/roadmap_reconciliation/verify_rr010_beta_outcome_reporting.py` | 121 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr010_beta_outcome_reporting.py` | 125 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr010_beta_outcome_reporting.py` | 127 | audit_append_call | `errors.append("beta_outcome_audit must be embedded after capture")` |
+| `scripts/roadmap_reconciliation/verify_rr010_beta_outcome_reporting.py` | 129 | audit_append_call | `errors.append("beta_outcome_audit.final_outputs_valid must be true after capture")` |
+| `scripts/roadmap_reconciliation/verify_rr010_beta_outcome_reporting.py` | 131 | audit_append_call | `warnings.append("record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_rr010_beta_outcome_reporting.py` | 133 | audit_append_call | `errors.append("record JSON is missing")` |
+| `scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py` | 101 | audit_append_call | `errors.append(f"missing or failed check: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py` | 106 | audit_append_call | `errors.append(f"audit error: {error}")` |
+| `scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py` | 111 | audit_append_call | `errors.append(f"record JSON invalid: {record['__json_error__']}")` |
+| `scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py` | 114 | audit_append_call | `errors.append(f"record rr_id must be {RR_ID}")` |
+| `scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py` | 117 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py` | 121 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py` | 123 | audit_append_call | `errors.append("billing_provider_integration_audit must be embedded after capture")` |
+| `scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py` | 125 | audit_append_call | `errors.append("billing_provider_integration_audit.final_outputs_valid must be true after capture")` |
+| `scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py` | 127 | audit_append_call | `warnings.append("record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py` | 129 | audit_append_call | `errors.append("record JSON is missing")` |
+| `scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py` | 92 | audit_append_call | `errors.append(f"missing required RR-012 file: {path}")` |
+| `scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py` | 97 | audit_append_call | `errors.append("outstanding work register must mention RR-012 production telemetry dashboard implementation")` |
+| `scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py` | 102 | audit_append_call | `errors.append("RR-011 live billing provider integration must be recorded before RR-012")` |
+| `scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py` | 109 | audit_append_call | `errors.append(f"Makefile missing target: {target}")` |
+| `scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py` | 114 | audit_append_call | `errors.append("RR-012 workflow must identify the RR-012 check")` |
+| `scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py` | 123 | audit_append_call | `errors.append(f"RR-012 record JSON invalid: {record['__json_error__']}")` |
+| `scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py` | 127 | audit_append_call | `errors.append("RR-012 record must carry rr_id=RR-012")` |
+| `scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py` | 135 | audit_append_call | `errors.append(f"RR-012 boundary key must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py` | 140 | audit_append_call | `errors.append(f"RR-012 recorded evidence missing true flag: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py` | 143 | audit_append_call | `warnings.append("record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py` | 154 | audit_append_call | `errors.append("RR-012 record must embed a valid production telemetry dashboard audit")` |
+| `scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py` | 91 | audit_append_call | `errors.append(f"missing required RR-013 file: {path}")` |
+| `scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py` | 96 | audit_append_call | `errors.append("outstanding work register must mention RR-013 advanced mastery-model research")` |
+| `scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py` | 101 | audit_append_call | `errors.append("RR-012 production telemetry dashboard must be recorded before RR-013")` |
+| `scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py` | 108 | audit_append_call | `errors.append(f"Makefile missing target: {target}")` |
+| `scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py` | 113 | audit_append_call | `errors.append("RR-013 workflow must identify the RR-013 check")` |
+| `scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py` | 122 | audit_append_call | `errors.append(f"RR-013 record JSON invalid: {record['__json_error__']}")` |
+| `scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py` | 126 | audit_append_call | `errors.append("RR-013 record must carry rr_id=RR-013")` |
+| `scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py` | 132 | audit_append_call | `errors.append(f"RR-013 boundary key must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py` | 137 | audit_append_call | `errors.append(f"RR-013 recorded evidence missing true flag: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py` | 140 | audit_append_call | `warnings.append("record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py` | 151 | audit_append_call | `errors.append("RR-013 record must embed a valid advanced mastery-model research audit")` |
+| `scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py` | 160 | audit_append_call | `structural_errors.append(e)` |
+| `scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py` | 91 | audit_append_call | `errors.append(f"missing required RR-014 file: {path}")` |
+| `scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py` | 96 | audit_append_call | `errors.append("outstanding work register must mention RR-014 public beta expansion")` |
+| `scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py` | 101 | audit_append_call | `errors.append("RR-013 advanced mastery-model research must be recorded before RR-014")` |
+| `scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py` | 108 | audit_append_call | `errors.append(f"Makefile missing target: {target}")` |
+| `scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py` | 113 | audit_append_call | `errors.append("RR-014 workflow must identify the RR-014 check")` |
+| `scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py` | 122 | audit_append_call | `errors.append(f"RR-014 record JSON invalid: {record['__json_error__']}")` |
+| `scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py` | 126 | audit_append_call | `errors.append("RR-014 record must carry rr_id=RR-014")` |
+| `scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py` | 132 | audit_append_call | `errors.append(f"RR-014 boundary key must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py` | 137 | audit_append_call | `errors.append(f"RR-014 recorded evidence missing true flag: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py` | 140 | audit_append_call | `warnings.append("record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py` | 150 | audit_append_call | `errors.append("RR-014 record must embed a valid public beta expansion audit")` |
+| `scripts/roadmap_reconciliation/verify_rr015_external_approvals.py` | 88 | audit_append_call | `errors.append(f"missing required RR-015 file: {path}")` |
+| `scripts/roadmap_reconciliation/verify_rr015_external_approvals.py` | 93 | audit_append_call | `errors.append("outstanding work register must mention RR-015 external approval")` |
+| `scripts/roadmap_reconciliation/verify_rr015_external_approvals.py` | 98 | audit_append_call | `errors.append("RR-014 public beta expansion readiness must be recorded before RR-015")` |
+| `scripts/roadmap_reconciliation/verify_rr015_external_approvals.py` | 105 | audit_append_call | `errors.append(f"Makefile missing target: {target}")` |
+| `scripts/roadmap_reconciliation/verify_rr015_external_approvals.py` | 110 | audit_append_call | `errors.append("RR-015 workflow must identify the RR-015 check")` |
+| `scripts/roadmap_reconciliation/verify_rr015_external_approvals.py` | 119 | audit_append_call | `errors.append(f"RR-015 record JSON invalid: {record['__json_error__']}")` |
+| `scripts/roadmap_reconciliation/verify_rr015_external_approvals.py` | 123 | audit_append_call | `errors.append("RR-015 record must carry rr_id=RR-015")` |
+| `scripts/roadmap_reconciliation/verify_rr015_external_approvals.py` | 129 | audit_append_call | `errors.append(f"RR-015 boundary key must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr015_external_approvals.py` | 134 | audit_append_call | `errors.append(f"RR-015 recorded evidence missing true flag: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr015_external_approvals.py` | 137 | audit_append_call | `warnings.append("record is still pending evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_rr015_external_approvals.py` | 147 | audit_append_call | `errors.append("RR-015 record must embed a valid external approvals audit")` |
+| `scripts/roadmap_reconciliation/verify_rr016_operational_drills.py` | 66 | audit_append_call | `errors.append("RR-016 must remain listed in outstanding_work_register.md")` |
+| `scripts/roadmap_reconciliation/verify_rr016_operational_drills.py` | 68 | audit_append_call | `errors.append(f"record rr_id must be {RR_ID}")` |
+| `scripts/roadmap_reconciliation/verify_rr016_operational_drills.py` | 70 | audit_append_call | `errors.append("RR-015 external approvals must be valid before RR-016 capture")` |
+| `scripts/roadmap_reconciliation/verify_rr016_operational_drills.py` | 79 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr016_operational_drills.py` | 81 | audit_append_call | `warnings.append("record is still pending RR-016 evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_rr016_operational_drills.py` | 85 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr017_release_safety_controls.py` | 72 | audit_append_call | `errors.append("RR-017 must remain listed in outstanding_work_register.md")` |
+| `scripts/roadmap_reconciliation/verify_rr017_release_safety_controls.py` | 74 | audit_append_call | `errors.append(f"record rr_id must be {RR_ID}")` |
+| `scripts/roadmap_reconciliation/verify_rr017_release_safety_controls.py` | 76 | audit_append_call | `errors.append("RR-016 operational drills must be valid before RR-017 capture")` |
+| `scripts/roadmap_reconciliation/verify_rr017_release_safety_controls.py` | 85 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr017_release_safety_controls.py` | 87 | audit_append_call | `warnings.append("record is still pending RR-017 evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_rr017_release_safety_controls.py` | 91 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr018_trustworthy_beta_quality.py` | 71 | audit_append_call | `errors.append("RR-018 must remain listed in outstanding_work_register.md")` |
+| `scripts/roadmap_reconciliation/verify_rr018_trustworthy_beta_quality.py` | 73 | audit_append_call | `errors.append(f"record rr_id must be {RR_ID}")` |
+| `scripts/roadmap_reconciliation/verify_rr018_trustworthy_beta_quality.py` | 75 | audit_append_call | `errors.append("RR-017 release safety controls must be valid before RR-018 capture")` |
+| `scripts/roadmap_reconciliation/verify_rr018_trustworthy_beta_quality.py` | 84 | audit_append_call | `errors.append(f"record flag must be true after evidence capture: {key}")` |
+| `scripts/roadmap_reconciliation/verify_rr018_trustworthy_beta_quality.py` | 86 | audit_append_call | `warnings.append("record is still pending RR-018 evidence capture")` |
+| `scripts/roadmap_reconciliation/verify_rr018_trustworthy_beta_quality.py` | 90 | audit_append_call | `errors.append(f"boundary flag must remain false: {key}")` |
+| `scripts/route_tx_auth_slice.py` | 108 | audit_append_call | `parts.append(value.attr)` |
+| `scripts/route_tx_auth_slice.py` | 111 | audit_append_call | `parts.append(value.id)` |
+| `scripts/route_tx_auth_slice.py` | 131 | audit_append_call | `mutations.append(name)` |
+| `scripts/route_tx_auth_slice.py` | 143 | audit_append_call | `chunks.append(path.read_text(encoding="utf-8", errors="ignore"))` |
+| `scripts/route_tx_auth_slice.py` | 220 | audit_append_call | `blockers.append(f"{name} is pending")` |
+| `scripts/route_tx_auth_slice.py` | 222 | audit_append_call | `blockers.append("Live DB evidence URL must be a URL")` |
+| `scripts/route_tx_auth_slice.py` | 224 | audit_append_call | `blockers.append("Test result must be passed/pass/green/ok")` |
+| `scripts/route_tx_auth_slice.py` | 226 | audit_append_call | `blockers.append("Commit SHA must look like a git SHA")` |
+| `scripts/route_tx_auth_slice.py` | 235 | audit_append_call | `blockers.append("auth router file missing")` |
+| `scripts/route_tx_auth_slice.py` | 255 | audit_append_call | `findings.append(finding)` |
+| `scripts/route_tx_auth_slice.py` | 256 | audit_append_call | `blockers.append(f"{route_name}: route function missing")` |
+| `scripts/route_tx_auth_slice.py` | 269 | audit_append_call | `missing.append(f"expected delegate {expected_delegate} missing")` |
+| `scripts/route_tx_auth_slice.py` | 271 | audit_append_call | `missing.append("auth_service dependency missing")` |
+| `scripts/route_tx_auth_slice.py` | 273 | audit_append_call | `missing.append("direct db mutations present: " + ", ".join(mutations))` |
+| `scripts/route_tx_auth_slice.py` | 275 | audit_append_call | `blockers.append(f"{route_name}: {reason}")` |
+| `scripts/route_tx_auth_slice.py` | 277 | audit_append_call | `findings.append(` |
+| `scripts/route_tx_auth_slice.py` | 292 | audit_append_call | `blockers.append("no auth transactional service markers found in app/services")` |
+| `scripts/route_tx_auth_slice.py` | 335 | audit_append_call | `lines.append(` |
+| `scripts/route_tx_auth_slice.py` | 345 | audit_append_call | `lines.append("- None")` |
+| `scripts/route_tx_auth_slice.py` | 351 | audit_append_call | `lines.append("- None")` |
+| `scripts/route_tx_diagnostics_slice.py` | 141 | audit_append_call | `chunks.append("\n".join(lines[start:end]))` |
+| `scripts/route_tx_diagnostics_slice.py` | 155 | audit_append_call | `parts.append(value.attr)` |
+| `scripts/route_tx_diagnostics_slice.py` | 158 | audit_append_call | `parts.append(value.id)` |
+| `scripts/route_tx_diagnostics_slice.py` | 171 | audit_append_call | `mutations.append(name)` |
+| `scripts/route_tx_diagnostics_slice.py` | 182 | audit_append_call | `calls.append(name)` |
+| `scripts/route_tx_diagnostics_slice.py` | 196 | audit_append_call | `chunks.append(path.read_text(encoding="utf-8", errors="ignore"))` |
+| `scripts/route_tx_diagnostics_slice.py` | 271 | audit_append_call | `blockers.append(f"{name} is pending")` |
+| `scripts/route_tx_diagnostics_slice.py` | 273 | audit_append_call | `blockers.append("Live DB evidence URL must be a URL")` |
+| `scripts/route_tx_diagnostics_slice.py` | 275 | audit_append_call | `blockers.append("Test result must be passed/pass/green/ok")` |
+| `scripts/route_tx_diagnostics_slice.py` | 277 | audit_append_call | `blockers.append("Commit SHA must look like a git SHA")` |
+| `scripts/route_tx_diagnostics_slice.py` | 285 | audit_append_call | `funcs.append(node)` |
+| `scripts/route_tx_diagnostics_slice.py` | 295 | audit_append_call | `blockers.append("diagnostics router file missing")` |
+| `scripts/route_tx_diagnostics_slice.py` | 319 | audit_append_call | `reasons.append("no diagnostics service delegate call found")` |
+| `scripts/route_tx_diagnostics_slice.py` | 321 | audit_append_call | `reasons.append("direct db mutations present: " + ", ".join(mutations))` |
+| `scripts/route_tx_diagnostics_slice.py` | 323 | audit_append_call | `blockers.append(f"{node.name}: {reason}")` |
+| `scripts/route_tx_diagnostics_slice.py` | 324 | audit_append_call | `findings.append(DiagnosticsRouteSliceFinding(` |
+| `scripts/route_tx_diagnostics_slice.py` | 335 | audit_append_call | `blockers.append("selected diagnostics routes were not found in router source")` |
+| `scripts/route_tx_diagnostics_slice.py` | 339 | audit_append_call | `blockers.append("no diagnostics transactional service markers found")` |
+| `scripts/route_tx_diagnostics_slice.py` | 383 | audit_append_call | `lines.append(` |
+| `scripts/route_tx_diagnostics_slice.py` | 392 | audit_append_call | `lines.append("- None")` |
+| `scripts/route_tx_diagnostics_slice.py` | 397 | audit_append_call | `lines.append("- None")` |
+| `scripts/route_tx_diagnostics_slice.py` | 411 | audit_append_call | `actions.append(DiagnosticsRouteTxGapAction(` |
+| `scripts/route_tx_diagnostics_slice.py` | 466 | audit_append_call | `lines.append(f"\| `{action.route_function}` \| {action.line} \| `{action.current_status}` \| {action.blocker_reason} \| {action.can_be_closed_by_current_report} \|")` |
+| `scripts/route_tx_diagnostics_slice.py` | 468 | audit_append_call | `lines.append("\| `-` \| 0 \| `none` \| No local source gaps detected \| False \|")` |
+| `scripts/route_tx_impl_plan.py` | 144 | audit_append_call | `actions.append(` |
+| `scripts/route_tx_impl_plan.py` | 207 | audit_append_call | `lines.append(` |
+| `scripts/route_tx_impl_plan.py` | 227 | audit_append_call | `lines.append("- No unproven mutation routes detected by the current inventory.")` |
+| `scripts/route_tx_popia_slice.py` | 132 | audit_append_call | `chunks.append("\n".join(lines[start:end]))` |
+| `scripts/route_tx_popia_slice.py` | 146 | audit_append_call | `parts.append(value.attr)` |
+| `scripts/route_tx_popia_slice.py` | 149 | audit_append_call | `parts.append(value.id)` |
+| `scripts/route_tx_popia_slice.py` | 162 | audit_append_call | `mutations.append(name)` |
+| `scripts/route_tx_popia_slice.py` | 173 | audit_append_call | `calls.append(name)` |
+| `scripts/route_tx_popia_slice.py` | 187 | audit_append_call | `chunks.append(path.read_text(encoding="utf-8", errors="ignore"))` |
+| `scripts/route_tx_popia_slice.py` | 264 | audit_append_call | `blockers.append(f"{name} is pending")` |
+| `scripts/route_tx_popia_slice.py` | 266 | audit_append_call | `blockers.append("Live DB evidence URL must be a URL")` |
+| `scripts/route_tx_popia_slice.py` | 268 | audit_append_call | `blockers.append("Test result must be passed/pass/green/ok")` |
+| `scripts/route_tx_popia_slice.py` | 270 | audit_append_call | `blockers.append("Commit SHA must look like a git SHA")` |
+| `scripts/route_tx_popia_slice.py` | 278 | audit_append_call | `funcs.append(node)` |
+| `scripts/route_tx_popia_slice.py` | 288 | audit_append_call | `blockers.append("POPIA router file missing")` |
+| `scripts/route_tx_popia_slice.py` | 317 | audit_append_call | `reasons.append("no POPIA service delegate call found")` |
+| `scripts/route_tx_popia_slice.py` | 319 | audit_append_call | `reasons.append("direct db mutations present: " + ", ".join(mutations))` |
+| `scripts/route_tx_popia_slice.py` | 321 | audit_append_call | `blockers.append(f"{node.name}: {reason}")` |
+| `scripts/route_tx_popia_slice.py` | 323 | audit_append_call | `findings.append(` |
+| `scripts/route_tx_popia_slice.py` | 336 | audit_append_call | `blockers.append("selected POPIA routes were not found in router source")` |
+| `scripts/route_tx_popia_slice.py` | 340 | audit_append_call | `blockers.append("no POPIA transactional service markers found")` |
+| `scripts/route_tx_popia_slice.py` | 386 | audit_append_call | `lines.append(` |
+| `scripts/route_tx_popia_slice.py` | 396 | audit_append_call | `lines.append("- None")` |
+| `scripts/route_tx_popia_slice.py` | 402 | audit_append_call | `lines.append("- None")` |
+| `scripts/route_tx_slice_rollup.py` | 145 | audit_append_call | `slice_blockers.append("slice report missing")` |
+| `scripts/route_tx_slice_rollup.py` | 147 | audit_append_call | `slice_blockers.append(f"{local_gaps} local route-source gap(s) remain")` |
+| `scripts/route_tx_slice_rollup.py` | 149 | audit_append_call | `slice_blockers.append("live DB rollback evidence missing")` |
+| `scripts/route_tx_slice_rollup.py` | 152 | audit_append_call | `blockers.append(f"{slice_id}: not release-ready")` |
+| `scripts/route_tx_slice_rollup.py` | 153 | audit_append_call | `slices.append(` |
+| `scripts/route_tx_slice_rollup.py` | 218 | audit_append_call | `lines.append(` |
+| `scripts/run_database_backup.py` | 53 | audit_append_call | `results.append(` |
+| `scripts/run_database_backup.py` | 81 | audit_append_call | `lines.append(f"- `{name}`")` |
+| `scripts/run_database_backup.py` | 146 | audit_append_call | `results.append(validate_backup_tool())` |
+| `scripts/run_database_restore.py` | 43 | audit_append_call | `results.append(` |
+| `scripts/run_database_restore.py` | 136 | audit_append_call | `results.append(validate_target_environment(args.target_environment, args.allow_production_target))` |
+| `scripts/run_database_restore.py` | 137 | audit_append_call | `results.append(validate_restore_confirmation(args.target_environment, args.confirm_restore))` |
+| `scripts/run_database_restore.py` | 139 | audit_append_call | `results.append(validate_restore_tool(args.backup_artifact))` |
+| `scripts/run_disposable_schema_drift_proof.py` | 80 | audit_append_call | `failures.append("DATABASE_URL is required")` |
+| `scripts/run_disposable_schema_drift_proof.py` | 82 | audit_append_call | `failures.append("DATABASE_URL does not look disposable/test-like")` |
+| `scripts/run_disposable_schema_drift_proof.py` | 84 | audit_append_call | `failures.append("DATABASE_URL contains placeholder credentials")` |
+| `scripts/run_disposable_schema_drift_proof.py` | 95 | audit_append_call | `drift_cmd.append("--ignore-consolidation-tables")` |
+| `scripts/run_disposable_schema_drift_proof.py` | 96 | audit_append_call | `commands.append(("schema_drift_db", drift_cmd))` |
+| `scripts/run_disposable_schema_drift_proof.py` | 114 | audit_append_call | `lines.append(f"\| {result['name']} \| {result['return_code']} \| {result['passed']} \|")` |
 | `scripts/run_live_ingestion.py` | 77 | audit_append_call | `self.metrics["confidence_scores"].append(data["confidence"])` |
 | `scripts/run_staging_smoke.py` | 186 | audit_append_call | `rows.append(` |
+| `scripts/runtime/runtime_stack_db_ready_green.py` | 222 | audit_append_call | `blockers.append(item.gate_id)` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 101 | audit_append_call | `entries.append((sha256_file(path), path.as_posix()))` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 183 | audit_append_call | `errors.append("API /health must return HTTP 200")` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 185 | audit_append_call | `errors.append("API /health JSON status must be ok")` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 188 | audit_append_call | `errors.append("API /ready must return HTTP 200")` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 191 | audit_append_call | `errors.append("API /api/v2/health/deep must return HTTP 200")` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 194 | audit_append_call | `errors.append("frontend root must return HTTP 200 before backend-backed E2E capture")` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 196 | audit_append_call | `errors.append("frontend root must not be blank before backend-backed E2E capture")` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 199 | audit_append_call | `errors.append("frontend /api/v2/system/health rewrite must return HTTP 200")` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 229 | audit_append_call | `errors.append("backend-backed E2E capture must not run mocked Playwright specs")` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 231 | audit_append_call | `errors.append("--e2e-owner is required when claiming backend-backed E2E readiness")` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 248 | audit_append_call | `errors.append(f"backend-backed E2E readiness must be captured from {args.target_branch}; current branch is {branch}")` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 250 | audit_append_call | `errors.append(f"HEAD must match origin/{args.target_branch}; HEAD={head_sha}, origin/{args.target_branch}={remote_sha}")` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 252 | audit_append_call | `errors.append("tracked worktree must be clean before backend-backed E2E capture")` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 256 | audit_append_call | `errors.append("Phase 14 live-stack readiness verifier must be valid before Phase 15 capture")` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 294 | audit_append_call | `commands.append(("playwright_version", ["pnpm", "exec", "playwright", "--version"], 120))` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 296 | audit_append_call | `commands.append(("playwright_install_chromium", ["pnpm", "exec", "playwright", "install", "chromium"], 900))` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 297 | audit_append_call | `commands.append((` |
+| `scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py` | 306 | audit_append_call | `errors.append("one or more backend-backed E2E execution steps failed")` |
+| `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | 113 | audit_append_call | `entries.append((sha256_file(path), path.as_posix()))` |
+| `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | 202 | audit_append_call | `errors.append(f"{label} must return HTTP 200")` |
+| `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | 205 | audit_append_call | `errors.append("API /health JSON status must be ok")` |
+| `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | 235 | audit_append_call | `errors.append("seeded backend-backed E2E capture must not run mocked Playwright specs")` |
+| `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | 237 | audit_append_call | `errors.append("seeded backend-backed E2E capture must include tests/e2e/auth.setup.ts to create a fresh dev learner session")` |
+| `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | 239 | audit_append_call | `errors.append("--e2e-owner is required when claiming seeded backend-backed E2E readiness")` |
+| `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | 256 | audit_append_call | `errors.append(f"seeded backend-backed E2E readiness must be captured from {args.target_branch}; current branch is {branch}")` |
+| `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | 258 | audit_append_call | `errors.append(f"HEAD must match origin/{args.target_branch}; HEAD={head_sha}, origin/{args.target_branch}={remote_sha}")` |
+| `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | 260 | audit_append_call | `errors.append("tracked worktree must be clean before seeded backend-backed E2E capture")` |
+| `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | 264 | audit_append_call | `errors.append("Phase 15 backend-backed E2E verifier must be valid before Phase 16 capture")` |
+| `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | 298 | audit_append_call | `steps.append(_run_step("root_pnpm_install", ["pnpm", "install", "--frozen-lockfile"], raw_dir, env, 900))` |
+| `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | 299 | audit_append_call | `steps.append(_run_step("frontend_pnpm_install", ["pnpm", "--dir", "app/frontend", "install", "--frozen-lockfile"], raw_dir, env, 900))` |
+| `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | 300 | audit_append_call | `steps.append(_run_step("playwright_version", ["pnpm", "exec", "playwright", "--version"], raw_dir, env, 120))` |
+| `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | 302 | audit_append_call | `steps.append(_run_step("playwright_install_chromium", ["pnpm", "exec", "playwright", "install", "chromium"], raw_dir, env, 900))` |
+| `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | 309 | audit_append_call | `steps.append(_run_step(` |
+| `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | 319 | audit_append_call | `errors.append("one or more seeded backend-backed E2E execution steps failed")` |
+| `scripts/runtime_readiness/capture_controlled_beta_activation_preflight_evidence.py` | 124 | audit_append_call | `errors.append(f"missing preflight document: {doc}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_activation_preflight_evidence.py` | 125 | audit_append_call | `documents.append(item)` |
+| `scripts/runtime_readiness/capture_controlled_beta_activation_preflight_evidence.py` | 131 | audit_append_call | `errors.append(f"{doc} missing marker: {marker}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_activation_preflight_evidence.py` | 132 | audit_append_call | `documents.append(item)` |
+| `scripts/runtime_readiness/capture_controlled_beta_activation_preflight_evidence.py` | 140 | audit_append_call | `errors.append("controlled beta activation preflight was not claimed")` |
+| `scripts/runtime_readiness/capture_controlled_beta_activation_preflight_evidence.py` | 142 | audit_append_call | `errors.append("Phase 18 controlled beta launch-governance verifier is not valid")` |
+| `scripts/runtime_readiness/capture_controlled_beta_activation_preflight_evidence.py` | 144 | audit_append_call | `errors.append("tracked worktree must be clean before activation-preflight capture")` |
+| `scripts/runtime_readiness/capture_controlled_beta_activation_preflight_evidence.py` | 146 | audit_append_call | `errors.append("HEAD must match origin target branch before activation-preflight capture")` |
+| `scripts/runtime_readiness/capture_controlled_beta_activation_preflight_evidence.py` | 203 | audit_append_call | `lines.append(f"{sha256_file(path)}  {path.as_posix()}\n")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 116 | audit_append_call | `errors.append(f"missing activation document: {path}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 123 | audit_append_call | `errors.append(f"{path} missing marker: {marker}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 130 | audit_append_call | `errors.append(f"missing cohort manifest: {path}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 136 | audit_append_call | `errors.append(f"invalid cohort manifest JSON {path}: {exc}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 140 | audit_append_call | `errors.append("cohort manifest must be a JSON object")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 143 | audit_append_call | `errors.append("cohort manifest must include cohort_id")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 145 | audit_append_call | `errors.append("cohort manifest public_beta_authorised must be false")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 147 | audit_append_call | `errors.append("cohort manifest controlled_beta_launch_authorised must be true")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 149 | audit_append_call | `errors.append("cohort manifest live_learner_traffic_authorised must be true")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 151 | audit_append_call | `errors.append("cohort manifest guardian_consent_required must be true")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 154 | audit_append_call | `errors.append("cohort manifest learner_count must be a positive integer")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 156 | audit_append_call | `errors.append("cohort manifest learner_count exceeds max_allowed_learners")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 159 | audit_append_call | `errors.append("cohort manifest grades must be [4]")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 162 | audit_append_call | `errors.append("cohort manifest subjects must include Mathematics")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 166 | audit_append_call | `errors.append(f"cohort manifest must include {owner}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 173 | audit_append_call | `errors.append(f"missing live traffic window: {path}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 179 | audit_append_call | `errors.append(f"invalid live traffic window JSON {path}: {exc}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 183 | audit_append_call | `errors.append("live traffic window must be a JSON object")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 187 | audit_append_call | `errors.append(f"live traffic window must include {field}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 190 | audit_append_call | `errors.append("live traffic window cohort_traffic_percentage must be an integer from 1 to 100")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 192 | audit_append_call | `errors.append("live traffic window public_beta_authorised must be false")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 194 | audit_append_call | `errors.append("live traffic window controlled_beta_launch_authorised must be true")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 196 | audit_append_call | `errors.append("live traffic window live_learner_traffic_authorised must be true")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 209 | audit_append_call | `documents.append(_text_markers(go_no_go, (` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 217 | audit_append_call | `documents.append(_validate_cohort_manifest(cohort_manifest, errors))` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 218 | audit_append_call | `documents.append(_text_markers(consent_attestation, (` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 225 | audit_append_call | `documents.append(_validate_traffic_window(traffic_window, errors))` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 242 | audit_append_call | `errors.append("controlled beta launch activation was not claimed")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 244 | audit_append_call | `errors.append("controlled beta launch must be explicitly authorised")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 246 | audit_append_call | `errors.append("live learner traffic must be explicitly authorised for controlled beta activation")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 248 | audit_append_call | `errors.append("learner data migration must be explicitly authorised for controlled beta activation")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 250 | audit_append_call | `errors.append("Phase 19 activation-preflight verifier is not valid")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 252 | audit_append_call | `errors.append("tracked worktree must be clean before launch-activation capture")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 254 | audit_append_call | `errors.append("HEAD must match origin target branch before launch-activation capture")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_activation_evidence.py` | 315 | audit_append_call | `lines.append(f"{sha256_file(path)}  {path.as_posix()}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_governance_evidence.py` | 134 | audit_append_call | `errors.append(f"missing launch operation document: {rel}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_governance_evidence.py` | 135 | audit_append_call | `docs.append({"path": rel, "exists": False})` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_governance_evidence.py` | 141 | audit_append_call | `errors.append(f"launch operation document is too short: {rel}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_governance_evidence.py` | 143 | audit_append_call | `errors.append(f"launch operation document missing markers {missing}: {rel}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_governance_evidence.py` | 144 | audit_append_call | `docs.append({` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_governance_evidence.py` | 158 | audit_append_call | `errors.append("controlled beta launch governance must be explicitly claimed")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_governance_evidence.py` | 160 | audit_append_call | `errors.append("Phase 17 controlled beta readiness verifier must be valid")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_governance_evidence.py` | 164 | audit_append_call | `errors.append("tracked worktree must be clean before Phase 18 launch-governance capture")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_governance_evidence.py` | 166 | audit_append_call | `warnings.append("HEAD does not match origin target branch; final master evidence should be captured from protected master")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_governance_evidence.py` | 209 | audit_append_call | `lines.append(f"- `{doc.get('path')}` — exists: {str(doc.get('exists')).lower()}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_governance_evidence.py` | 229 | audit_append_call | `lines.append(f"{sha256_file(path)}  {path.as_posix()}\n")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 132 | audit_append_call | `errors.append("support log must include support_owner")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 134 | audit_append_call | `errors.append("support log must include support_channel")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 136 | audit_append_call | `errors.append("support log unresolved_p0_tickets must be 0")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 138 | audit_append_call | `errors.append("support log unresolved_p1_tickets must be 0")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 140 | audit_append_call | `errors.append("support log must keep controlled_beta_launch_authorised true")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 142 | audit_append_call | `errors.append("support log must keep public_beta_authorised false")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 157 | audit_append_call | `errors.append("incident log must include incident_commander")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 159 | audit_append_call | `errors.append("incident log open_p0_incidents must be 0")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 161 | audit_append_call | `errors.append("incident log open_p1_incidents must be 0")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 163 | audit_append_call | `errors.append("incident log critical_incidents_open must be false")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 165 | audit_append_call | `errors.append("incident log rollback_required must be false")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 167 | audit_append_call | `errors.append("incident log must keep production_release_authorised false")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 182 | audit_append_call | `errors.append("metrics snapshot must set live_learner_traffic_observed true")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 184 | audit_append_call | `errors.append("metrics snapshot must set health_checks_green true")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 186 | audit_append_call | `errors.append("metrics snapshot must set seeded_e2e_regression_green true")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 188 | audit_append_call | `errors.append("metrics snapshot must set error_budget_breached false")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 190 | audit_append_call | `errors.append("metrics snapshot must set data_rights_routes_available true")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 207 | audit_append_call | `errors.append(f"monitoring report missing: {monitoring_report}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 216 | audit_append_call | `errors.append(f"rollback decision missing: {rollback_decision}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 259 | audit_append_call | `errors.append("controlled beta launch monitoring was not claimed")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 261 | audit_append_call | `errors.append("monitoring owner is required")` |
+| `scripts/runtime_readiness/capture_controlled_beta_launch_monitoring_evidence.py` | 263 | audit_append_call | `errors.append("Phase 20 controlled beta launch activation verifier is not valid")` |
+| `scripts/runtime_readiness/capture_controlled_beta_readiness_evidence.py` | 93 | audit_append_call | `entries.append((sha256_file(path), path.as_posix()))` |
+| `scripts/runtime_readiness/capture_controlled_beta_readiness_evidence.py` | 154 | audit_append_call | `missing.append(rel)` |
+| `scripts/runtime_readiness/capture_controlled_beta_readiness_evidence.py` | 155 | audit_append_call | `documents.append(item)` |
+| `scripts/runtime_readiness/capture_controlled_beta_readiness_evidence.py` | 183 | audit_append_call | `errors.append(f"required verifier is not valid: {name}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_readiness_evidence.py` | 185 | audit_append_call | `errors.append("tracked worktree must be clean before controlled beta readiness capture")` |
+| `scripts/runtime_readiness/capture_controlled_beta_readiness_evidence.py` | 187 | audit_append_call | `warnings.append("HEAD does not match origin target branch; record will remain reviewable but not ideal for final master evidence")` |
+| `scripts/runtime_readiness/capture_controlled_beta_readiness_evidence.py` | 189 | audit_append_call | `errors.append(f"required readiness documents missing: {documents.get('missing')}")` |
+| `scripts/runtime_readiness/capture_controlled_beta_readiness_evidence.py` | 239 | audit_append_call | `lines.append(f"- {name}: valid={str(verifier.get('valid') is True).lower()} script=`{verifier.get('script')}`")` |
+| `scripts/runtime_readiness/capture_controlled_beta_readiness_evidence.py` | 266 | audit_append_call | `result.setdefault("errors", []).append("--claim-controlled-beta-readiness is required")` |
+| `scripts/runtime_readiness/capture_controlled_beta_readiness_evidence.py` | 270 | audit_append_call | `result.setdefault("errors", []).append("--readiness-owner is required")` |
+| `scripts/runtime_readiness/capture_live_stack_readiness_evidence.py` | 75 | audit_append_call | `entries.append((sha256_file(path), path.as_posix()))` |
+| `scripts/runtime_readiness/capture_live_stack_readiness_evidence.py` | 151 | audit_append_call | `errors.append("/health must return HTTP 200")` |
+| `scripts/runtime_readiness/capture_live_stack_readiness_evidence.py` | 153 | audit_append_call | `errors.append("/health JSON status must be ok")` |
+| `scripts/runtime_readiness/capture_live_stack_readiness_evidence.py` | 157 | audit_append_call | `errors.append("/openapi.json must return HTTP 200")` |
+| `scripts/runtime_readiness/capture_live_stack_readiness_evidence.py` | 159 | audit_append_call | `errors.append("/openapi.json must contain an OpenAPI document")` |
+| `scripts/runtime_readiness/capture_live_stack_readiness_evidence.py` | 164 | audit_append_call | `errors.append(f"{probe.get('path', name)} must return HTTP 200")` |
+| `scripts/runtime_readiness/capture_live_stack_readiness_evidence.py` | 168 | audit_append_call | `errors.append(f"{probe.get('path', name)} must return JSON")` |
+| `scripts/runtime_readiness/capture_live_stack_readiness_evidence.py` | 173 | audit_append_call | `errors.append(f"{probe.get('path', name)} status must be ok or degraded")` |
+| `scripts/runtime_readiness/capture_live_stack_readiness_evidence.py` | 180 | audit_append_call | `errors.append(f"{probe.get('path', name)} critical.{component}.status must be ok")` |
+| `scripts/runtime_readiness/capture_live_stack_readiness_evidence.py` | 184 | audit_append_call | `errors.append(f"{probe.get('path', name)} optional.{component}.status must be ok or skipped")` |
+| `scripts/runtime_readiness/capture_live_stack_readiness_evidence.py` | 220 | audit_append_call | `errors.append(f"live-stack readiness must be captured from {args.target_branch}; current branch is {branch}")` |
+| `scripts/runtime_readiness/capture_live_stack_readiness_evidence.py` | 222 | audit_append_call | `errors.append(f"HEAD must match origin/{args.target_branch}; HEAD={head_sha}, origin/{args.target_branch}={remote_sha}")` |
+| `scripts/runtime_readiness/capture_live_stack_readiness_evidence.py` | 224 | audit_append_call | `errors.append("tracked worktree must be clean before live-stack readiness capture")` |
+| `scripts/runtime_readiness/capture_live_stack_readiness_evidence.py` | 226 | audit_append_call | `errors.append("--readiness-owner is required when claiming live-stack readiness")` |
+| `scripts/runtime_readiness/capture_live_stack_readiness_evidence.py` | 230 | audit_append_call | `errors.append("post-merge protected-branch baseline verifier must be valid before Phase 14 capture")` |
+| `scripts/runtime_readiness/capture_live_stack_readiness_evidence.py` | 244 | audit_append_call | `warnings.append("--require-valid was supplied and live-stack readiness is not valid")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 54 | audit_append_call | `errors.append(f"malformed SHA256SUMS line: {line}")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 58 | audit_append_call | `errors.append(f"SHA target missing: {path}")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 62 | audit_append_call | `errors.append(f"SHA mismatch for {path}: expected {expected}, got {actual}")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 69 | audit_append_call | `errors.append(f"required evidence file missing: {path}")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 74 | audit_append_call | `errors.append(f"invalid JSON evidence file {path}: {exc}")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 95 | audit_append_call | `checked.append(record_path.as_posix())` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 97 | audit_append_call | `errors.append("schema_version must be 1")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 99 | audit_append_call | `errors.append("slice must be PHASE-15-BACKEND-BACKED-E2E-AUTHORITY")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 101 | audit_append_call | `errors.append("status must be backend_backed_e2e_recorded")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 103 | audit_append_call | `errors.append("backend_backed_e2e_claimed must be true")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 105 | audit_append_call | `errors.append("backend_backed_e2e_recorded must be true")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 107 | audit_append_call | `errors.append("live_stack_readiness_valid must be true")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 109 | audit_append_call | `errors.append("e2e_scope must be backend_backed_smoke")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 111 | audit_append_call | `errors.append("full_production_e2e_claimed must remain false")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 113 | audit_append_call | `errors.append("mocked_api_used must be false")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 115 | audit_append_call | `errors.append("playwright_mock_api must be '0'")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 117 | audit_append_call | `errors.append("e2e_owner is required")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 120 | audit_append_call | `errors.append(f"{field} must remain false")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 124 | audit_append_call | `errors.append("evidence_dir is required")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 128 | audit_append_call | `checked.append(evidence_dir.as_posix())` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 130 | audit_append_call | `errors.append(f"evidence_dir missing: {evidence_dir}")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 134 | audit_append_call | `errors.append("sha256sums is required")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 137 | audit_append_call | `checked.append(sums_path.as_posix())` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 147 | audit_append_call | `errors.append("git_state.branch must equal record target_branch")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 149 | audit_append_call | `errors.append("git_state.head_sha must equal record source_commit")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 151 | audit_append_call | `errors.append("git_state.remote_target_sha must equal record remote_target_sha")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 153 | audit_append_call | `errors.append("tracked worktree must have been clean before capture")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 157 | audit_append_call | `errors.append("Phase 14 live-stack readiness verification must be valid")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 168 | audit_append_call | `errors.append(f"{label} probe must return HTTP 200")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 173 | audit_append_call | `errors.append("backend_backed_e2e_result.valid must be true")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 175 | audit_append_call | `errors.append("backend_backed_e2e_result.backend_backed_e2e_recorded must be true")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 177 | audit_append_call | `errors.append("backend_backed_e2e_result.mocked_api_used must be false")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 179 | audit_append_call | `errors.append("backend_backed_e2e_result.playwright_mock_api must be '0'")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 182 | audit_append_call | `errors.append("backend_backed_e2e_result.specs must be non-empty")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 186 | audit_append_call | `errors.append(f"mocked Playwright spec is not allowed in backend-backed E2E evidence: {spec}")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 189 | audit_append_call | `errors.append("backend_backed_e2e_result.steps must be non-empty")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 191 | audit_append_call | `errors.append("playwright_backend_backed_smoke step is required")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 196 | audit_append_call | `errors.append(f"step {step.get('name')} must return 0")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 199 | audit_append_call | `errors.append("backend-backed E2E command must not run mocked-api specs")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 202 | audit_append_call | `errors.append(f"backend_backed_e2e_result.{field} must remain false")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 206 | audit_append_call | `errors.append("evidence_index is required")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 209 | audit_append_call | `checked.append(index_path.as_posix())` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 211 | audit_append_call | `errors.append(f"evidence_index missing: {index_path}")` |
+| `scripts/runtime_readiness/verify_backend_backed_e2e.py` | 224 | audit_append_call | `errors.append(f"evidence_index.md missing required phrase: {phrase}")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 61 | audit_append_call | `errors.append(f"malformed SHA256SUMS line: {line}")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 65 | audit_append_call | `errors.append(f"SHA target missing: {path}")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 69 | audit_append_call | `errors.append(f"SHA mismatch for {path}: expected {expected}, got {actual}")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 76 | audit_append_call | `errors.append(f"required evidence file missing: {path}")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 81 | audit_append_call | `errors.append(f"invalid JSON evidence file {path}: {exc}")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 102 | audit_append_call | `checked.append(record_path.as_posix())` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 104 | audit_append_call | `errors.append("schema_version must be 1")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 106 | audit_append_call | `errors.append("slice must be PHASE-16-BACKEND-BACKED-SEEDED-E2E-AUTHORITY")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 108 | audit_append_call | `errors.append("status must be seeded_backend_backed_e2e_recorded")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 110 | audit_append_call | `errors.append("seeded_e2e_claimed must be true")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 112 | audit_append_call | `errors.append("seeded_e2e_recorded must be true")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 114 | audit_append_call | `errors.append("backend_backed_e2e_valid must be true")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 116 | audit_append_call | `errors.append("e2e_scope must be backend_backed_seeded_journeys")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 118 | audit_append_call | `errors.append("mocked_api_used must be false")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 120 | audit_append_call | `errors.append("playwright_mock_api must be '0'")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 123 | audit_append_call | `errors.append(f"{field} must remain false")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 127 | audit_append_call | `errors.append("evidence_dir must be recorded")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 132 | audit_append_call | `errors.append(f"evidence_dir missing: {evidence_dir}")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 135 | audit_append_call | `errors.append("evidence_index must exist")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 137 | audit_append_call | `checked.append(evidence_index_value)` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 148 | audit_append_call | `errors.append(f"evidence index missing marker: {marker}")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 152 | audit_append_call | `errors.append("sha256sums path must be recorded")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 155 | audit_append_call | `checked.append(sums_value)` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 163 | audit_append_call | `errors.append("tracked worktree must have been clean before seeded E2E capture")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 165 | audit_append_call | `errors.append("source_commit must match remote_target_sha")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 167 | audit_append_call | `errors.append("record source_commit must match raw git_state head_sha")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 171 | audit_append_call | `errors.append("Phase 15 backend-backed E2E verification raw evidence must be valid")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 175 | audit_append_call | `errors.append("seeded backend-backed E2E result must be valid")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 177 | audit_append_call | `errors.append("seeded backend-backed E2E result must record seeded_e2e_recorded true")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 179 | audit_append_call | `errors.append("seeded backend-backed E2E result must not use mocked API")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 181 | audit_append_call | `errors.append("seeded backend-backed E2E result has wrong e2e_scope")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 185 | audit_append_call | `errors.append("seeded backend-backed E2E result must list specs")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 189 | audit_append_call | `errors.append(f"required seeded E2E spec missing from result: {spec}")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 192 | audit_append_call | `errors.append(f"mocked spec must not be included: {spec}")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 196 | audit_append_call | `errors.append("seeded backend-backed E2E result must include execution steps")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 200 | audit_append_call | `errors.append(f"all seeded E2E steps must pass; failing steps: {[step.get('name') for step in failing]}")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 204 | audit_append_call | `errors.append(f"required ordered execution step missing: {required}")` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | 209 | audit_append_call | `errors.append(f"{raw_name} must record HTTP 200")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 67 | audit_append_call | `errors.append(f"malformed SHA256SUMS line: {line}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 71 | audit_append_call | `errors.append(f"SHA target missing: {path}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 75 | audit_append_call | `errors.append(f"SHA mismatch for {path}: expected {expected}, got {actual}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 82 | audit_append_call | `errors.append(f"required evidence file missing: {path}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 87 | audit_append_call | `errors.append(f"invalid JSON evidence file {path}: {exc}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 90 | audit_append_call | `errors.append(f"evidence file must contain an object: {path}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 110 | audit_append_call | `checked.append(record_path.as_posix())` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 113 | audit_append_call | `errors.append("schema_version must be 1")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 115 | audit_append_call | `errors.append("slice must be PHASE-19-CONTROLLED-BETA-ACTIVATION-PREFLIGHT-AUTHORITY")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 117 | audit_append_call | `errors.append("status must be controlled_beta_activation_preflight_recorded")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 119 | audit_append_call | `errors.append("beta_scope must be controlled_beta_activation_preflight_gate")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 121 | audit_append_call | `errors.append("scope must be controlled_beta_activation_preflight_only")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 125 | audit_append_call | `errors.append(f"{field} must be true")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 128 | audit_append_call | `errors.append(f"{field} must remain false")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 133 | audit_append_call | `errors.append(f"evidence_dir must exist: {evidence_dir_value}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 137 | audit_append_call | `errors.append("evidence_index must exist")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 139 | audit_append_call | `checked.append(index_value)` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 150 | audit_append_call | `errors.append(f"evidence index missing marker: {marker}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 154 | audit_append_call | `errors.append("sha256sums path must be recorded")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 156 | audit_append_call | `checked.append(sums_value)` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 164 | audit_append_call | `errors.append("controlled beta activation-preflight raw result must be valid")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 166 | audit_append_call | `errors.append("controlled beta activation-preflight raw result must record true")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 169 | audit_append_call | `errors.append(f"raw result {field} must remain false")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 173 | audit_append_call | `errors.append("Phase 18 launch-governance verification must be valid with returncode 0")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 177 | audit_append_call | `errors.append("activation preflight documents raw evidence must be valid")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 181 | audit_append_call | `errors.append("tracked worktree must have been clean before activation-preflight capture")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 184 | audit_append_call | `errors.append("source_commit must match remote_target_sha for final activation-preflight evidence")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 186 | audit_append_call | `errors.append("record source_commit must match raw git_state head_sha")` |
+| `scripts/runtime_readiness/verify_controlled_beta_activation_preflight.py` | 190 | audit_append_call | `errors.append("record snapshot status must match record")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 61 | audit_append_call | `errors.append(f"malformed SHA256SUMS line: {line}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 65 | audit_append_call | `errors.append(f"SHA target missing: {path}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 69 | audit_append_call | `errors.append(f"SHA mismatch for {path}: expected {expected}, got {actual}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 76 | audit_append_call | `errors.append(f"required evidence file missing: {path}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 81 | audit_append_call | `errors.append(f"invalid JSON evidence file {path}: {exc}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 84 | audit_append_call | `errors.append(f"evidence file must contain an object: {path}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 104 | audit_append_call | `checked.append(record_path.as_posix())` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 106 | audit_append_call | `errors.append("schema_version must be 1")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 108 | audit_append_call | `errors.append("slice must be PHASE-20-CONTROLLED-BETA-LAUNCH-ACTIVATION-AUTHORITY")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 110 | audit_append_call | `errors.append("status must be controlled_beta_launch_activation_recorded")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 112 | audit_append_call | `errors.append("beta_scope must be controlled_beta_launch_activation_gate")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 114 | audit_append_call | `errors.append("scope must be controlled_beta_launch_activation_only")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 118 | audit_append_call | `errors.append(f"{field} must be true")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 121 | audit_append_call | `errors.append(f"{field} must remain false")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 126 | audit_append_call | `errors.append(f"evidence_dir must exist: {evidence_dir_value}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 130 | audit_append_call | `errors.append("evidence_index must exist")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 132 | audit_append_call | `checked.append(index_value)` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 145 | audit_append_call | `errors.append(f"evidence index missing marker: {marker}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 149 | audit_append_call | `errors.append("sha256sums path must be recorded")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 151 | audit_append_call | `checked.append(sums_value)` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 159 | audit_append_call | `errors.append("controlled beta launch-activation raw result must be valid")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 162 | audit_append_call | `errors.append(f"raw result {field} must be true")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 165 | audit_append_call | `errors.append(f"raw result {field} must remain false")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 169 | audit_append_call | `errors.append("Phase 19 activation-preflight verification must be valid with returncode 0")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 173 | audit_append_call | `errors.append("launch activation documents raw evidence must be valid")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 177 | audit_append_call | `errors.append("tracked worktree must have been clean before launch-activation capture")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 180 | audit_append_call | `errors.append("source_commit must match remote_target_sha for final launch-activation evidence")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 182 | audit_append_call | `errors.append("record source_commit must match raw git_state head_sha")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_activation.py` | 186 | audit_append_call | `errors.append("record snapshot status must match record")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 61 | audit_append_call | `errors.append(f"malformed SHA256SUMS line: {line}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 65 | audit_append_call | `errors.append(f"SHA target missing: {path}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 69 | audit_append_call | `errors.append(f"SHA mismatch for {path}: expected {expected}, got {actual}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 76 | audit_append_call | `errors.append(f"required evidence file missing: {path}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 81 | audit_append_call | `errors.append(f"invalid JSON evidence file {path}: {exc}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 84 | audit_append_call | `errors.append(f"evidence file must contain an object: {path}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 96 | audit_append_call | `checked.append(record_path.as_posix())` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 98 | audit_append_call | `errors.append("schema_version must be 1")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 100 | audit_append_call | `errors.append("slice must be PHASE-18-CONTROLLED-BETA-LAUNCH-GOVERNANCE-AUTHORITY")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 102 | audit_append_call | `errors.append("status must be controlled_beta_launch_governance_recorded")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 104 | audit_append_call | `errors.append("beta_scope must be controlled_beta_launch_governance_gate")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 107 | audit_append_call | `errors.append(f"{field} must be true")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 110 | audit_append_call | `errors.append(f"{field} must remain false")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 114 | audit_append_call | `errors.append(f"evidence_dir must exist: {evidence_dir_value}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 117 | audit_append_call | `errors.append("evidence_index must exist")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 119 | audit_append_call | `checked.append(index_value)` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 131 | audit_append_call | `errors.append(f"evidence index missing marker: {marker}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 134 | audit_append_call | `errors.append("sha256sums path must be recorded")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 136 | audit_append_call | `checked.append(sums_value)` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 142 | audit_append_call | `errors.append("controlled beta launch-governance raw result must be valid")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 144 | audit_append_call | `errors.append("controlled beta launch-governance raw result must record true")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 147 | audit_append_call | `errors.append(f"raw result {field} must remain false")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 150 | audit_append_call | `errors.append("Phase 17 readiness verification must be valid with returncode 0")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 153 | audit_append_call | `errors.append("launch operations documents raw evidence must be valid")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 156 | audit_append_call | `errors.append("tracked worktree must have been clean before launch-governance capture")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 158 | audit_append_call | `errors.append("source_commit must match remote_target_sha for final launch-governance evidence")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 160 | audit_append_call | `errors.append("record source_commit must match raw git_state head_sha")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_governance.py` | 163 | audit_append_call | `errors.append("record snapshot status must match record")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 66 | audit_append_call | `errors.append(f"malformed SHA256SUMS line: {line}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 70 | audit_append_call | `errors.append(f"SHA target missing: {path}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 74 | audit_append_call | `errors.append(f"SHA mismatch for {path}: expected {expected}, got {actual}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 81 | audit_append_call | `errors.append(f"required evidence file missing: {path}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 86 | audit_append_call | `errors.append(f"invalid JSON evidence file {path}: {exc}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 89 | audit_append_call | `errors.append(f"evidence file must contain an object: {path}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 99 | audit_append_call | `errors.append(f"record missing: {record_path}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 105 | audit_append_call | `errors.append(f"record is not valid JSON: {exc}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 109 | audit_append_call | `errors.append("record must be a JSON object")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 113 | audit_append_call | `errors.append("record status must be controlled_beta_launch_monitoring_recorded")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 117 | audit_append_call | `errors.append(f"{field} must be true")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 121 | audit_append_call | `errors.append(f"{field} must be false")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 124 | audit_append_call | `errors.append(f"record contains errors: {record.get('errors')}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 128 | audit_append_call | `errors.append(f"evidence directory missing: {evidence_dir}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 132 | audit_append_call | `errors.append(f"evidence index missing: {index}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 145 | audit_append_call | `errors.append(f"evidence index missing marker: {marker}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 154 | audit_append_call | `errors.append("raw Phase 20 launch activation verification must be valid")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 158 | audit_append_call | `errors.append("raw monitoring document validation must be valid")` |
+| `scripts/runtime_readiness/verify_controlled_beta_launch_monitoring.py` | 162 | audit_append_call | `errors.append("record snapshot does not match record")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 69 | audit_append_call | `errors.append(f"malformed SHA256SUMS line: {line}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 73 | audit_append_call | `errors.append(f"SHA target missing: {path}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 77 | audit_append_call | `errors.append(f"SHA mismatch for {path}: expected {expected}, got {actual}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 84 | audit_append_call | `errors.append(f"required evidence file missing: {path}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 89 | audit_append_call | `errors.append(f"invalid JSON evidence file {path}: {exc}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 92 | audit_append_call | `errors.append(f"evidence file must contain an object: {path}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 113 | audit_append_call | `checked.append(record_path.as_posix())` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 116 | audit_append_call | `errors.append("schema_version must be 1")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 118 | audit_append_call | `errors.append("slice must be PHASE-17-CONTROLLED-BETA-READINESS-AUTHORITY")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 120 | audit_append_call | `errors.append("status must be controlled_beta_readiness_recorded")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 122 | audit_append_call | `errors.append("beta_scope must be controlled_beta_readiness_gate")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 125 | audit_append_call | `errors.append(f"{field} must be true")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 128 | audit_append_call | `errors.append(f"{field} must remain false")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 133 | audit_append_call | `errors.append(f"evidence_dir must exist: {evidence_dir_value}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 137 | audit_append_call | `errors.append("evidence_index must exist")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 139 | audit_append_call | `checked.append(evidence_index_value)` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 152 | audit_append_call | `errors.append(f"evidence index missing marker: {marker}")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 156 | audit_append_call | `errors.append("sha256sums path must be recorded")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 158 | audit_append_call | `checked.append(sums_value)` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 166 | audit_append_call | `errors.append("controlled beta readiness raw result must be valid")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 168 | audit_append_call | `errors.append("controlled beta readiness raw result must record controlled_beta_readiness_recorded true")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 171 | audit_append_call | `errors.append(f"raw result {field} must remain false")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 175 | audit_append_call | `errors.append("tracked worktree must have been clean before controlled beta readiness capture")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 177 | audit_append_call | `errors.append("source_commit must match remote_target_sha for final controlled beta readiness evidence")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 179 | audit_append_call | `errors.append("record source_commit must match raw git_state head_sha")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 190 | audit_append_call | `errors.append(f"{raw_name} must be valid")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 192 | audit_append_call | `errors.append(f"{raw_name} verifier returncode must be 0")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 196 | audit_append_call | `errors.append("readiness documents raw evidence must be valid")` |
+| `scripts/runtime_readiness/verify_controlled_beta_readiness.py` | 200 | audit_append_call | `errors.append("record snapshot status must match record")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 58 | audit_append_call | `errors.append(f"invalid SHA256SUMS line {idx}: {line!r}")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 63 | audit_append_call | `errors.append("SHA256SUMS must not include itself")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 67 | audit_append_call | `errors.append(f"SHA256SUMS references missing file: {target}")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 71 | audit_append_call | `errors.append(f"SHA mismatch for {target}: expected {expected}, got {actual}")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 73 | audit_append_call | `errors.append("SHA256SUMS contains no file entries")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 85 | audit_append_call | `errors.append(f"{label} must return HTTP 200")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 89 | audit_append_call | `errors.append(f"{label} must contain JSON")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 92 | audit_append_call | `errors.append(f"{label} status must be ok or degraded")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 98 | audit_append_call | `errors.append(f"{label} critical.{component}.status must be ok")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 102 | audit_append_call | `errors.append(f"{label} optional.{name}.status must be ok or skipped")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 115 | audit_append_call | `checked.append(record_path.as_posix())` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 120 | audit_append_call | `errors.append("schema_version must be 1")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 122 | audit_append_call | `errors.append("slice must be PHASE-14-LIVE-STACK-READINESS-AUTHORITY")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 124 | audit_append_call | `errors.append("status must be live_stack_readiness_recorded")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 126 | audit_append_call | `errors.append("live_stack_readiness_claimed must be true")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 128 | audit_append_call | `errors.append("live_stack_readiness_recorded must be true")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 130 | audit_append_call | `errors.append("post_merge_baseline_valid must be true")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 133 | audit_append_call | `errors.append(f"{field} must be true")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 137 | audit_append_call | `errors.append(f"{field} must be a 40-character lowercase git SHA")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 139 | audit_append_call | `errors.append("source_commit must match remote_target_sha")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 141 | audit_append_call | `errors.append("target_branch must be master")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 143 | audit_append_call | `errors.append("readiness_owner is required")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 146 | audit_append_call | `errors.append(f"{field} must remain false")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 150 | audit_append_call | `errors.append("evidence_dir is required")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 154 | audit_append_call | `checked.append(evidence_dir.as_posix())` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 156 | audit_append_call | `errors.append(f"evidence_dir missing: {evidence_dir}")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 160 | audit_append_call | `errors.append("sha256sums is required")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 163 | audit_append_call | `checked.append(sums_path.as_posix())` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 169 | audit_append_call | `checked.append(path.as_posix())` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 171 | audit_append_call | `errors.append(f"required raw evidence file missing: {path}")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 176 | audit_append_call | `errors.append(f"could not read {path}: {exc}")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 180 | audit_append_call | `errors.append("post-merge baseline verification must be valid")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 185 | audit_append_call | `errors.append("git_state.tracked_worktree_clean_before_capture must be true")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 187 | audit_append_call | `errors.append("git_state.branch must match target_branch")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 189 | audit_append_call | `errors.append("git_state.head_sha must match source_commit")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 191 | audit_append_call | `errors.append("git_state.remote_target_sha must match source_commit")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 195 | audit_append_call | `errors.append("/health must return HTTP 200")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 197 | audit_append_call | `errors.append("/health JSON status must be ok")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 201 | audit_append_call | `errors.append("/openapi.json must return HTTP 200")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 203 | audit_append_call | `errors.append("/openapi.json must contain an OpenAPI document")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 217 | audit_append_call | `errors.append("live_stack_readiness_result.valid must be true")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 219 | audit_append_call | `errors.append("live_stack_readiness_result.live_stack_readiness_recorded must be true")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 222 | audit_append_call | `errors.append(f"live_stack_readiness_result.{field} must remain false")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 226 | audit_append_call | `errors.append("evidence_index is required")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 229 | audit_append_call | `checked.append(index_path.as_posix())` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 231 | audit_append_call | `errors.append(f"evidence_index missing: {index_path}")` |
+| `scripts/runtime_readiness/verify_live_stack_readiness.py` | 241 | audit_append_call | `errors.append(f"evidence_index.md missing required phrase: {phrase}")` |
 | `scripts/scrape_caps.py` | 168 | audit_append_call | `docs.append(doc)` |
 | `scripts/scrape_caps.py` | 205 | audit_append_call | `self._anchor_text.append(data)` |
 | `scripts/scrape_caps.py` | 207 | audit_append_call | `self._cell_text.append(data)` |
@@ -3461,31 +5189,32 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/scrape_caps.py` | 395 | audit_append_call | `parts.append(page.get_text("text"))` |
 | `scripts/scrape_caps.py` | 481 | audit_append_call | `records.append(record)` |
 | `scripts/scrape_teaching_materials.py` | 40 | audit_append_call | `links.append({"url": full_url, "text": text})` |
+| `scripts/script_suites/script_taxonomy.py` | 152 | audit_append_call | `items.append(classify_script_path(str(path.relative_to(root))))` |
 | `scripts/seed_item_bank.py` | 109 | audit_append_call | `failing.append({"item": item, "errors": errors})` |
 | `scripts/seed_item_bank.py` | 119 | audit_append_call | `passing.append(item)` |
-| `scripts/staging_acceptance_evidence.py` | 192 | audit_append_call | `lines.append(f"\| `{field.name}` \| `{field.value}` \| {field.valid} \| {field.reason} \|")` |
-| `scripts/staging_acceptance_evidence.py` | 198 | audit_append_call | `lines.append("- None")` |
+| `scripts/staging_acceptance_evidence.py` | 193 | audit_append_call | `lines.append(f"\| `{field.name}` \| `{field.value}` \| {field.valid} \| {field.reason} \|")` |
+| `scripts/staging_acceptance_evidence.py` | 199 | audit_append_call | `lines.append("- None")` |
 | `scripts/staging_smoke.py` | 60 | audit_append_call | `results.append({"path": check.path, "status": status, "passed": passed})` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 189 | audit_append_call | `blockers.append("GitHub CLI is unavailable or not authenticated")` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 194 | audit_append_call | `blockers.append("STAGING_SMOKE_RUN_ID is not numeric")` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 198 | audit_append_call | `blockers.append(f"unable to read GitHub Actions run {requested_run_id}")` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 202 | audit_append_call | `blockers.append(` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 224 | audit_append_call | `blockers.append("run ID is missing or non-numeric")` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 227 | audit_append_call | `blockers.append("run URL does not contain the numeric run ID")` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 230 | audit_append_call | `blockers.append("run URL contains placeholder evidence")` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 233 | audit_append_call | `blockers.append(f"GitHub Actions run status is {run_status or 'missing'}, expected completed")` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 236 | audit_append_call | `blockers.append(f"GitHub Actions run conclusion is {conclusion or 'missing'}, expected success")` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 239 | audit_append_call | `blockers.append(f"GitHub Actions run SHA {head_sha or 'missing'} does not match current commit {sha}")` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 242 | audit_append_call | `blockers.append("workflow name is missing")` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 245 | audit_append_call | `blockers.append(` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 250 | audit_append_call | `blockers.append("auth refresh DB proof workflow is not valid staging smoke evidence")` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 253 | audit_append_call | `blockers.append("staging base URL is missing, non-HTTPS, localhost/example, or placeholder")` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 256 | audit_append_call | `blockers.append("staging smoke test command is missing or placeholder")` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 259 | audit_append_call | `blockers.append("STAGING_SMOKE_RESULT must be passed")` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 262 | audit_append_call | `blockers.append("STAGING_SMOKE_HEALTHCHECK_RESULT must be passed")` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 265 | audit_append_call | `blockers.append("STAGING_SMOKE_API_RESULT must be passed")` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 268 | audit_append_call | `blockers.append("STAGING_SMOKE_FRONTEND_RESULT must be passed or omitted")` |
-| `scripts/staging_smoke_evidence_acceptance.py` | 341 | audit_append_call | `lines.append("- None")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 190 | audit_append_call | `blockers.append("GitHub CLI is unavailable or not authenticated")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 195 | audit_append_call | `blockers.append("STAGING_SMOKE_RUN_ID is not numeric")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 199 | audit_append_call | `blockers.append(f"unable to read GitHub Actions run {requested_run_id}")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 203 | audit_append_call | `blockers.append(` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 225 | audit_append_call | `blockers.append("run ID is missing or non-numeric")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 228 | audit_append_call | `blockers.append("run URL does not contain the numeric run ID")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 231 | audit_append_call | `blockers.append("run URL contains placeholder evidence")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 234 | audit_append_call | `blockers.append(f"GitHub Actions run status is {run_status or 'missing'}, expected completed")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 237 | audit_append_call | `blockers.append(f"GitHub Actions run conclusion is {conclusion or 'missing'}, expected success")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 240 | audit_append_call | `blockers.append(f"GitHub Actions run SHA {head_sha or 'missing'} does not match current commit {sha}")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 243 | audit_append_call | `blockers.append("workflow name is missing")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 246 | audit_append_call | `blockers.append(` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 251 | audit_append_call | `blockers.append("auth refresh DB proof workflow is not valid staging smoke evidence")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 254 | audit_append_call | `blockers.append("staging base URL is missing, non-HTTPS, localhost/example, or placeholder")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 257 | audit_append_call | `blockers.append("staging smoke test command is missing or placeholder")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 260 | audit_append_call | `blockers.append("STAGING_SMOKE_RESULT must be passed")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 263 | audit_append_call | `blockers.append("STAGING_SMOKE_HEALTHCHECK_RESULT must be passed")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 266 | audit_append_call | `blockers.append("STAGING_SMOKE_API_RESULT must be passed")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 269 | audit_append_call | `blockers.append("STAGING_SMOKE_FRONTEND_RESULT must be passed or omitted")` |
+| `scripts/staging_smoke_evidence_acceptance.py` | 342 | audit_append_call | `lines.append("- None")` |
 | `scripts/staging_smoke_probe.py` | 130 | audit_append_call | `blockers.append("staging base URL must be real, HTTPS, and non-placeholder")` |
 | `scripts/staging_smoke_probe.py` | 137 | audit_append_call | `probes.append(smoke_get("healthcheck", build_url(base_url, health_path)))` |
 | `scripts/staging_smoke_probe.py` | 138 | audit_append_call | `probes.append(smoke_get("api", build_url(base_url, api_path)))` |
@@ -3493,13 +5222,327 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/staging_smoke_probe.py` | 144 | audit_append_call | `blockers.append(f"{probe.name} probe failed: {probe.detail}")` |
 | `scripts/staging_smoke_probe.py` | 196 | audit_append_call | `lines.append(` |
 | `scripts/staging_smoke_probe.py` | 204 | audit_append_call | `lines.append("- None")` |
-| `scripts/stamp_evidence_registry_commit.py` | 34 | audit_append_call | `output.append(line)` |
-| `scripts/stamp_evidence_registry_commit.py` | 37 | audit_append_call | `output.append(f"    last_verified_commit: {sha}")` |
-| `scripts/stamp_evidence_registry_commit.py` | 39 | audit_append_call | `output.append(line)` |
+| `scripts/stamp_evidence_registry_commit.py` | 35 | audit_append_call | `output.append(line)` |
+| `scripts/stamp_evidence_registry_commit.py` | 38 | audit_append_call | `output.append(f"    last_verified_commit: {sha}")` |
+| `scripts/stamp_evidence_registry_commit.py` | 40 | audit_append_call | `output.append(line)` |
 | `scripts/sync_caps_r2.py` | 58 | audit_append_call | `items.append(SyncItem(path, f"{prefix.rstrip('/')}/{rel}"))` |
 | `scripts/sync_caps_r2.py` | 95 | audit_append_call | `synced.append({"local_path": str(item.local_path), "key": item.key})` |
 | `scripts/sync_caps_r2.py` | 112 | audit_append_call | `synced.append({"local_path": str(local_path), "key": key})` |
 | `scripts/sync_git_to_redmine.py` | 13 | audit_events_table | `"fourth estate": 5, "estate": 5, "audit_events": 5,` |
+| `scripts/technical_audit/capture_branch_protection_evidence.py` | 202 | audit_append_call | `active_matching_rulesets.append(` |
+| `scripts/technical_audit/capture_branch_protection_evidence.py` | 375 | audit_append_call | `raw_files.append(raw_path)` |
+| `scripts/technical_audit/capture_branch_protection_evidence.py` | 390 | audit_append_call | `constraints.append("Branch protection evidence is derived from GitHub API classic protection and ruleset payloads.")` |
+| `scripts/technical_audit/capture_hosted_ci_evidence.py` | 85 | audit_append_call | `lines.append(f"{digest}  {rel}")` |
+| `scripts/technical_audit/capture_hosted_ci_evidence.py` | 240 | audit_append_call | `raw_files.append(branch_protection_file)` |
+| `scripts/technical_audit/capture_hosted_ci_evidence.py` | 275 | audit_append_call | `raw_files.append(run_view_path)` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 94 | audit_append_call | `entries.append((sha256_file(path), path.as_posix()))` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 143 | audit_append_call | `errors.append(f"post-merge baseline must be captured from {args.target_branch}; current branch is {branch}")` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 145 | audit_append_call | `errors.append("could not resolve HEAD")` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 147 | audit_append_call | `errors.append(f"HEAD must match origin/{args.target_branch}; HEAD={head_sha}, origin/{args.target_branch}={remote_sha}")` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 149 | audit_append_call | `errors.append("tracked worktree must be clean before post-merge baseline capture")` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 151 | audit_append_call | `errors.append("--baseline-owner is required when claiming post-merge baseline")` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 161 | audit_append_call | `errors.append(f"{name} verifier must be valid before post-merge baseline capture")` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 171 | audit_append_call | `errors.append("blocker_register.status must show closed technical-audit remediation or Phase 13B baseline state")` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 177 | audit_append_call | `errors.append("blocker_register.active_slice is not a recognised terminal/post-merge state")` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 182 | audit_append_call | `errors.append(f"hosted CI authority record is missing split provenance fields: {', '.join(missing_split)}")` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 189 | audit_append_call | `errors.append("could not read GitHub target branch state with gh api")` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 191 | audit_append_call | `errors.append("GitHub target branch SHA does not match local HEAD")` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 194 | audit_append_call | `errors.append("could not read GitHub branch protection state with gh api")` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 198 | audit_append_call | `errors.append("branch protection required_status_checks.strict must be true")` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 200 | audit_append_call | `errors.append(f"required check is not configured in branch protection: {args.required_check}")` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 202 | audit_append_call | `errors.append("branch protection must not allow force pushes")` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 204 | audit_append_call | `errors.append("branch protection must not allow deletions")` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 215 | audit_append_call | `errors.append(f"required check run not found on current HEAD: {args.required_check}")` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | 217 | audit_append_call | `errors.append(f"required check run is not successful on current HEAD: {args.required_check}")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 160 | audit_append_call | `extra_errors.append("remote_ci_run_claimed must be true")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 162 | audit_append_call | `extra_errors.append("branch_protection_claimed must be true")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 164 | audit_append_call | `extra_errors.append("merge_readiness_authorised must be true")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 195 | audit_append_call | `errors.append("release readiness is not claimed; rerun with --claim-release-readiness to close this phase")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 197 | audit_append_call | `errors.append("release_owner is required")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 199 | audit_append_call | `errors.append("source_commit must be a 40-character lowercase git SHA")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 201 | audit_append_call | `errors.append("tracked worktree must be clean before release-readiness capture")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 204 | audit_append_call | `errors.append("merge-readiness verifier must be valid")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 206 | audit_append_call | `errors.append("merge-readiness verifier must report hosted_ci_run_claimed=true")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 208 | audit_append_call | `errors.append("merge-readiness verifier must report branch_protection_claimed=true")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 210 | audit_append_call | `errors.append("merge-readiness verifier must report merge_readiness_authorised=true")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 213 | audit_append_call | `errors.append("hosted authority record must claim hosted CI run")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 215 | audit_append_call | `errors.append("hosted authority record hosted_ci_conclusion must be success")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 217 | audit_append_call | `errors.append("hosted authority record must claim branch protection")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 219 | audit_append_call | `errors.append("hosted authority record must authorise merge readiness")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 223 | audit_append_call | `errors.append(` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 228 | audit_append_call | `errors.append("hosted authority record head_sha is missing or invalid")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 231 | audit_append_call | `errors.append(f"required blockers are not all closed: {blocker_summary.get('failed_blockers')}")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 234 | audit_append_call | `errors.append("runtime KG implementation must not be claimed by this release-readiness gate")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 236 | audit_append_call | `errors.append("production release must not be authorised by this technical-audit gate")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 283 | audit_append_call | `lines.append(f"- `{path.as_posix()}`")` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | 382 | audit_append_call | `raw_files.append(path)` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 146 | audit_append_call | `errors.append("technical-audit remediation closure is not claimed; rerun with --claim-closure")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 148 | audit_append_call | `errors.append("closure_owner is required")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 150 | audit_append_call | `errors.append("source_commit must be a 40-character lowercase git SHA")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 152 | audit_append_call | `errors.append("tracked worktree must be clean before closure capture")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 155 | audit_append_call | `errors.append("release-readiness verifier must be valid")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 157 | audit_append_call | `errors.append("release-readiness verifier must report release_readiness_claimed=true")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 159 | audit_append_call | `errors.append("release-readiness verifier must report technical_audit_release_readiness_claimed=true")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 161 | audit_append_call | `errors.append("release-readiness verifier must report production_release_authorised=false")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 163 | audit_append_call | `errors.append("release-readiness verifier must report merge_readiness_authorised=true")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 167 | audit_append_call | `errors.append(f"hosted authority record must have {field}=true")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 169 | audit_append_call | `errors.append("hosted authority record must not authorise production release")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 171 | audit_append_call | `errors.append("hosted authority record must not claim runtime KG implementation")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 183 | audit_append_call | `errors.append(f"release-readiness record must have {field}=true")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 191 | audit_append_call | `errors.append(f"release-readiness record must have {field}=false")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 193 | audit_append_call | `errors.append("release-readiness record status must be technical_audit_release_readiness_authorised")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 196 | audit_append_call | `errors.append("release-readiness record source_commit is missing or invalid")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 198 | audit_append_call | `errors.append(` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 208 | audit_append_call | `errors.append(f"blocker register status is not an allowed closure precursor: {register.get('status')}")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 211 | audit_append_call | `errors.append("blocker register phase_11_release_readiness_authority must claim technical-audit release readiness")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 213 | audit_append_call | `warnings.append("blocker register already reports technical-audit remediation closed")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 266 | audit_append_call | `lines.append(f"- `{path.as_posix()}`")` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | 367 | audit_append_call | `raw_files.append(path)` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 51 | audit_append_call | `errors.append(f"invalid SHA256SUMS line {idx}: {line!r}")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 56 | audit_append_call | `errors.append(f"SHA256SUMS references missing file: {rel}")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 60 | audit_append_call | `errors.append(f"SHA mismatch for {rel}: expected {expected}, got {actual}")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 69 | audit_append_call | `errors.append("schema_version must be 1")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 71 | audit_append_call | `errors.append("slice must be TA-PHASE-09-HOSTED-CI-RUN-EVIDENCE")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 76 | audit_append_call | `errors.append("head_sha must be a 40-character lowercase git SHA")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 88 | audit_append_call | `errors.append(f"{key} must be a 40-character lowercase git SHA")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 91 | audit_append_call | `errors.append("hosted_ci_run_claimed must be boolean")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 95 | audit_append_call | `errors.append("raw_evidence_files must be a list")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 99 | audit_append_call | `errors.append(f"raw evidence file missing or invalid: {raw!r}")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 105 | audit_append_call | `errors.append("sha256sums must point to a SHA256SUMS file")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 110 | audit_append_call | `errors.append("merge_readiness_authorised cannot be true while hosted CI is unclaimed")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 111 | audit_append_call | `warnings.append("Hosted CI run is formally unclaimed; preparatory verification only.")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 113 | audit_append_call | `errors.append("hosted CI run is unclaimed; rerun without --allow-unclaimed only after real GitHub Actions evidence is captured")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 126 | audit_append_call | `errors.append(f"{key} is required when hosted_ci_run_claimed is true")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 129 | audit_append_call | `errors.append("hosted_ci_status must be completed")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 131 | audit_append_call | `errors.append("hosted_ci_conclusion must be success")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 135 | audit_append_call | `errors.append("missing gh_run_view raw evidence file")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 140 | audit_append_call | `errors.append("run view headSha does not match hosted CI run provenance SHA")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 142 | audit_append_call | `errors.append("run view status is not completed")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 144 | audit_append_call | `errors.append("run view conclusion is not success")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 146 | audit_append_call | `errors.append("run view databaseId does not match hosted_ci_run_id")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 149 | audit_append_call | `errors.append("merge readiness cannot be authorised without branch protection evidence")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 154 | audit_append_call | `errors.append("branch_protection_claimed is true but evidence file is missing")` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | 156 | audit_append_call | `errors.append("branch protection must be claimed before merge readiness is authorised")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 47 | audit_append_call | `errors.append(f"invalid SHA256SUMS line {idx}: {line!r}")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 51 | audit_append_call | `errors.append(f"SHA256SUMS references missing file: {target}")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 55 | audit_append_call | `errors.append(f"SHA mismatch for {target}: expected {expected}, got {actual}")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 67 | audit_append_call | `checked.append(record_path.as_posix())` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 70 | audit_append_call | `errors.append("schema_version must be 1")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 72 | audit_append_call | `errors.append("slice must be TA-PHASE-09-HOSTED-CI-RUN-EVIDENCE")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 74 | audit_append_call | `errors.append("hosted_ci_run_claimed must be true")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 76 | audit_append_call | `errors.append("hosted_ci_status must be completed")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 78 | audit_append_call | `errors.append("hosted_ci_conclusion must be success")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 80 | audit_append_call | `errors.append("head_sha must be a 40-character lowercase git SHA")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 82 | audit_append_call | `errors.append("branch_protection_claimed must be true")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 84 | audit_append_call | `errors.append("merge_readiness_authorised must be true")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 88 | audit_append_call | `checked.append(sums)` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 91 | audit_append_call | `errors.append("sha256sums must point to a SHA256SUMS file")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 95 | audit_append_call | `errors.append("branch_protection_evidence must point to a JSON evidence file")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 99 | audit_append_call | `checked.append(evidence_file.as_posix())` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 101 | audit_append_call | `errors.append(f"branch_protection_evidence missing: {evidence_path}")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 108 | audit_append_call | `errors.append("branch_protection_result.schema_version must be 1")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 110 | audit_append_call | `errors.append("branch_protection_result.branch_protection_claimed must be true")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 112 | audit_append_call | `errors.append("branch_protection_result must not claim release readiness")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 114 | audit_append_call | `errors.append("branch_protection_result must not claim runtime KG implementation")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 116 | audit_append_call | `errors.append("branch_protection_result target_branch must match authority record")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 118 | audit_append_call | `errors.append("branch protection mechanism must be classic protection and/or active rulesets")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 120 | audit_append_call | `errors.append("branch protection result payload is missing or invalid")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 123 | audit_append_call | `errors.append("authority record must not claim release readiness")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 125 | audit_append_call | `errors.append("authority record must not claim runtime KG implementation")` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | 129 | audit_append_call | `warnings.append(` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 70 | audit_append_call | `errors.append(f"invalid SHA256SUMS line {idx}: {line!r}")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 75 | audit_append_call | `errors.append("SHA256SUMS must not include itself")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 79 | audit_append_call | `errors.append(f"SHA256SUMS references missing file: {target}")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 83 | audit_append_call | `errors.append(f"SHA mismatch for {target}: expected {expected}, got {actual}")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 85 | audit_append_call | `errors.append("SHA256SUMS contains no file entries")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 96 | audit_append_call | `checked.append(record_path.as_posix())` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 101 | audit_append_call | `errors.append("schema_version must be 1")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 103 | audit_append_call | `errors.append("slice must be TA-PHASE-13B-POST-MERGE-PROTECTED-BRANCH-BASELINE")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 105 | audit_append_call | `errors.append("status must be post_merge_protected_branch_baseline_recorded")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 107 | audit_append_call | `errors.append("post_merge_baseline_claimed must be true")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 109 | audit_append_call | `errors.append("post_merge_baseline_recorded must be true")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 111 | audit_append_call | `errors.append("technical_audit_remediation_closed must be true")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 113 | audit_append_call | `errors.append("hosted_ci_authority_valid must be true")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 115 | audit_append_call | `errors.append("merge_readiness_authorised must be true")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 117 | audit_append_call | `errors.append("technical_audit_release_readiness_claimed must be true")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 119 | audit_append_call | `errors.append("hosted_ci_provenance_model must use split provenance")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 124 | audit_append_call | `errors.append(f"{field} must be a 40-character lowercase git SHA")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 126 | audit_append_call | `errors.append("source_commit must match remote_target_sha")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 128 | audit_append_call | `errors.append("source_commit must match post_merge_baseline_sha")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 130 | audit_append_call | `errors.append("baseline_owner is required")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 132 | audit_append_call | `errors.append("repository must be owner/name")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 134 | audit_append_call | `errors.append("target_branch must be master")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 136 | audit_append_call | `errors.append("required_check is required")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 139 | audit_append_call | `errors.append(f"{field} must remain false")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 143 | audit_append_call | `errors.append("evidence_dir is required")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 147 | audit_append_call | `checked.append(evidence_dir.as_posix())` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 149 | audit_append_call | `errors.append(f"evidence_dir missing: {evidence_dir}")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 153 | audit_append_call | `errors.append("sha256sums is required")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 156 | audit_append_call | `checked.append(sums_path.as_posix())` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 162 | audit_append_call | `checked.append(path.as_posix())` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 164 | audit_append_call | `errors.append(f"required raw evidence file missing: {path}")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 169 | audit_append_call | `errors.append(str(exc))` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 174 | audit_append_call | `errors.append("git_state.tracked_worktree_clean_before_capture must be true")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 176 | audit_append_call | `errors.append("git_state.branch must match target_branch")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 178 | audit_append_call | `errors.append("git_state.head_sha must match source_commit")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 180 | audit_append_call | `errors.append("git_state.remote_target_sha must match source_commit")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 190 | audit_append_call | `errors.append(f"{label} verification must be valid")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 195 | audit_append_call | `errors.append(f"hosted CI snapshot {field} must match record")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 200 | audit_append_call | `errors.append("github_branch_state.ok must be true")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 202 | audit_append_call | `errors.append("github branch state commit SHA must match source_commit")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 207 | audit_append_call | `errors.append("github_branch_protection.ok must be true")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 210 | audit_append_call | `errors.append("branch protection must require up-to-date status checks")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 221 | audit_append_call | `errors.append("required_check must be configured by branch protection")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 223 | audit_append_call | `errors.append("branch protection must not allow force pushes")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 225 | audit_append_call | `errors.append("branch protection must not allow deletions")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 230 | audit_append_call | `errors.append("github_check_runs.ok must be true")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 233 | audit_append_call | `errors.append("required check run must exist on post-merge baseline commit")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 235 | audit_append_call | `errors.append("required check run must be successful on post-merge baseline commit")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 240 | audit_append_call | `errors.append("post_merge_baseline_result.valid must be true")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 242 | audit_append_call | `errors.append("post_merge_baseline_result.post_merge_baseline_recorded must be true")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 244 | audit_append_call | `errors.append("post_merge_baseline_result.production_release_authorised must be false")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 248 | audit_append_call | `errors.append("evidence_index is required")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 251 | audit_append_call | `checked.append(index_path.as_posix())` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 253 | audit_append_call | `errors.append(f"evidence_index missing: {index_path}")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 262 | audit_append_call | `errors.append(f"evidence_index.md missing required phrase: {phrase}")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 265 | audit_append_call | `checked.append(REGISTER_PATH.as_posix())` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 268 | audit_append_call | `errors.append("blocker_register.status must be phase_13b_post_merge_baseline_recorded")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 270 | audit_append_call | `errors.append("blocker_register.active_slice must be technical-audit-post-merge-baseline-recorded")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 273 | audit_append_call | `errors.append("blocker_register.phase_13b_post_merge_baseline_authority is required")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 276 | audit_append_call | `errors.append("phase_13b_post_merge_baseline_authority.post_merge_baseline_recorded must be true")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 278 | audit_append_call | `errors.append("phase_13b_post_merge_baseline_authority.source_commit must match record.source_commit")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 281 | audit_append_call | `errors.append(f"phase_13b_post_merge_baseline_authority.{field} must remain false")` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | 283 | audit_append_call | `errors.append(f"missing blocker register: {REGISTER_PATH}")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 56 | audit_append_call | `errors.append(f"invalid SHA256SUMS line {idx}: {line!r}")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 60 | audit_append_call | `errors.append("SHA256SUMS must not include itself")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 65 | audit_append_call | `errors.append(f"SHA256SUMS references missing file: {target}")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 69 | audit_append_call | `errors.append(f"SHA mismatch for {target}: expected {expected}, got {actual}")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 71 | audit_append_call | `errors.append("SHA256SUMS contains no file entries")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 83 | audit_append_call | `checked.append(record_path.as_posix())` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 86 | audit_append_call | `errors.append("schema_version must be 1")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 88 | audit_append_call | `errors.append("slice must be TA-PHASE-11-TECHNICAL-AUDIT-RELEASE-READINESS")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 90 | audit_append_call | `errors.append("status must be technical_audit_release_readiness_authorised")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 92 | audit_append_call | `errors.append("release_readiness_claimed must be true")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 94 | audit_append_call | `errors.append("technical_audit_release_readiness_claimed must be true")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 96 | audit_append_call | `errors.append("production_release_authorised must remain false")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 98 | audit_append_call | `errors.append("runtime_kg_implementation_claimed must remain false")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 100 | audit_append_call | `errors.append("full_backend_backed_e2e_claimed must remain false")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 102 | audit_append_call | `errors.append("release_decision must be authorised")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 104 | audit_append_call | `errors.append("release_owner is required")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 106 | audit_append_call | `errors.append("source_commit must be a 40-character lowercase git SHA")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 108 | audit_append_call | `errors.append("hosted_ci_run_claimed must be true")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 110 | audit_append_call | `errors.append("branch_protection_claimed must be true")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 112 | audit_append_call | `errors.append("merge_readiness_authorised must be true")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 114 | audit_append_call | `errors.append("required_blockers_closed must be true")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 118 | audit_append_call | `errors.append("evidence_dir is required")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 122 | audit_append_call | `checked.append(evidence_dir.as_posix())` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 124 | audit_append_call | `errors.append(f"evidence_dir missing: {evidence_dir}")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 128 | audit_append_call | `errors.append("sha256sums path is required")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 131 | audit_append_call | `checked.append(sums_path.as_posix())` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 138 | audit_append_call | `checked.append(path.as_posix())` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 140 | audit_append_call | `errors.append(f"required raw evidence file missing: {path}")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 145 | audit_append_call | `errors.append(str(exc))` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 150 | audit_append_call | `errors.append("git_state.tracked_worktree_clean_before_capture must be true")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 152 | audit_append_call | `errors.append("git_state.head_sha must match record.source_commit")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 157 | audit_append_call | `errors.append("merge_readiness_verification.valid must be true")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 159 | audit_append_call | `errors.append("merge_readiness_verification.hosted_ci_run_claimed must be true")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 161 | audit_append_call | `errors.append("merge_readiness_verification.branch_protection_claimed must be true")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 163 | audit_append_call | `errors.append("merge_readiness_verification.merge_readiness_authorised must be true")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 168 | audit_append_call | `errors.append("required_blocker_summary.required_blockers_closed must be true")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 171 | audit_append_call | `errors.append(f"required_blocker_summary has failed blockers: {failed}")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 176 | audit_append_call | `errors.append("release_readiness_result.valid must be true")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 178 | audit_append_call | `errors.append("release_readiness_result.release_readiness_claimed must be true")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 180 | audit_append_call | `errors.append("release_readiness_result.production_release_authorised must be false")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 182 | audit_append_call | `errors.append("release_readiness_result.runtime_kg_implementation_claimed must be false")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 186 | audit_append_call | `errors.append("evidence_index path is required")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 189 | audit_append_call | `checked.append(index_path.as_posix())` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 191 | audit_append_call | `errors.append(f"evidence_index missing: {index_path}")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 200 | audit_append_call | `errors.append(f"evidence_index.md missing required phrase: {phrase}")` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | 204 | audit_append_call | `warnings.append(` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 57 | audit_append_call | `errors.append(f"invalid SHA256SUMS line {idx}: {line!r}")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 61 | audit_append_call | `errors.append("SHA256SUMS must not include itself")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 66 | audit_append_call | `errors.append(f"SHA256SUMS references missing file: {target}")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 70 | audit_append_call | `errors.append(f"SHA mismatch for {target}: expected {expected}, got {actual}")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 72 | audit_append_call | `errors.append("SHA256SUMS contains no file entries")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 84 | audit_append_call | `checked.append(record_path.as_posix())` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 87 | audit_append_call | `errors.append("schema_version must be 1")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 89 | audit_append_call | `errors.append("slice must be TA-PHASE-12-TECHNICAL-AUDIT-REMEDIATION-CLOSURE")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 91 | audit_append_call | `errors.append("status must be technical_audit_remediation_closed")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 93 | audit_append_call | `errors.append("technical_audit_remediation_closure_claimed must be true")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 95 | audit_append_call | `errors.append("technical_audit_remediation_closed must be true")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 97 | audit_append_call | `errors.append("technical_audit_release_readiness_claimed must be true")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 99 | audit_append_call | `errors.append("release_readiness_claimed must be true")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 101 | audit_append_call | `errors.append("production_release_authorised must remain false")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 103 | audit_append_call | `errors.append("deployment_authorised must remain false")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 105 | audit_append_call | `errors.append("release_tag_authorised must remain false")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 107 | audit_append_call | `errors.append("live_learner_traffic_authorised must remain false")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 109 | audit_append_call | `errors.append("runtime_kg_implementation_claimed must remain false")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 111 | audit_append_call | `errors.append("full_backend_backed_e2e_claimed must remain false")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 113 | audit_append_call | `errors.append("closure_decision must be authorised")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 115 | audit_append_call | `errors.append("closure_owner is required")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 117 | audit_append_call | `errors.append("source_commit must be a 40-character lowercase git SHA")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 121 | audit_append_call | `errors.append("evidence_dir is required")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 125 | audit_append_call | `checked.append(evidence_dir.as_posix())` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 127 | audit_append_call | `errors.append(f"evidence_dir missing: {evidence_dir}")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 131 | audit_append_call | `errors.append("sha256sums path is required")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 134 | audit_append_call | `checked.append(sums_path.as_posix())` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 141 | audit_append_call | `checked.append(path.as_posix())` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 143 | audit_append_call | `errors.append(f"required raw evidence file missing: {path}")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 148 | audit_append_call | `errors.append(str(exc))` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 153 | audit_append_call | `errors.append("git_state.tracked_worktree_clean_before_capture must be true")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 155 | audit_append_call | `errors.append("git_state.head_sha must match record.source_commit")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 160 | audit_append_call | `errors.append("release_readiness_verification.valid must be true")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 162 | audit_append_call | `errors.append("release_readiness_verification.release_readiness_claimed must be true")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 164 | audit_append_call | `errors.append("release_readiness_verification.technical_audit_release_readiness_claimed must be true")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 166 | audit_append_call | `errors.append("release_readiness_verification.production_release_authorised must be false")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 171 | audit_append_call | `errors.append("release_readiness_record_snapshot.status must be technical_audit_release_readiness_authorised")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 173 | audit_append_call | `errors.append("release_readiness_record_snapshot.technical_audit_release_readiness_claimed must be true")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 175 | audit_append_call | `errors.append("release_readiness_record_snapshot.production_release_authorised must be false")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 177 | audit_append_call | `errors.append("release_readiness_record_snapshot.runtime_kg_implementation_claimed must be false")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 182 | audit_append_call | `errors.append("technical_audit_closure_result.valid must be true")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 184 | audit_append_call | `errors.append("technical_audit_closure_result.technical_audit_remediation_closed must be true")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 186 | audit_append_call | `errors.append("technical_audit_closure_result.production_release_authorised must be false")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 188 | audit_append_call | `errors.append("technical_audit_closure_result.runtime_kg_implementation_claimed must be false")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 192 | audit_append_call | `errors.append("evidence_index path is required")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 195 | audit_append_call | `checked.append(index_path.as_posix())` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 197 | audit_append_call | `errors.append(f"evidence_index missing: {index_path}")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 206 | audit_append_call | `errors.append(f"evidence_index.md missing required phrase: {phrase}")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 209 | audit_append_call | `checked.append(REGISTER_PATH.as_posix())` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 220 | audit_append_call | `errors.append(` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 224 | audit_append_call | `errors.append(` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 229 | audit_append_call | `errors.append("blocker_register.phase_12_technical_audit_closure_authority is required")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 232 | audit_append_call | `errors.append("phase_12_technical_audit_closure_authority.technical_audit_remediation_closed must be true")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 234 | audit_append_call | `errors.append("phase_12_technical_audit_closure_authority.production_release_authorised must be false")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 236 | audit_append_call | `errors.append("phase_12_technical_audit_closure_authority.authority_record must match closure record path")` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | 240 | audit_append_call | `warnings.append(` |
+| `scripts/technical_debt/audit_rr005_technical_debt.py` | 157 | audit_append_call | `ignore_entries.append(stripped)` |
+| `scripts/technical_debt/audit_rr005_technical_debt.py` | 186 | audit_append_call | `findings.append(` |
+| `scripts/technical_debt/audit_rr005_technical_debt.py` | 235 | audit_append_call | `info.append(row)` |
+| `scripts/technical_debt/audit_rr005_technical_debt.py` | 254 | audit_append_call | `rows.append({"router": router, "exists": path.exists(), "status": "review required before retirement/archive"})` |
+| `scripts/telemetry/audit_rr012_production_telemetry_dashboard.py` | 133 | audit_append_call | `errors.append(f"RR-012 manifest JSON invalid: {manifest['__json_error__']}")` |
+| `scripts/telemetry/audit_rr012_production_telemetry_dashboard.py` | 142 | audit_append_call | `errors.append(f"RR-012 manifest missing dashboard id: {dashboard_id}")` |
+| `scripts/telemetry/audit_rr012_production_telemetry_dashboard.py` | 155 | audit_append_call | `errors.append(f"RR-012 manifest boundary must be false: {key}")` |
+| `scripts/telemetry/audit_rr012_production_telemetry_dashboard.py` | 161 | audit_append_call | `errors.append(f"RR-012 dashboard inventory JSON invalid: {inventory['__json_error__']}")` |
+| `scripts/telemetry/audit_rr012_production_telemetry_dashboard.py` | 171 | audit_append_call | `errors.append(f"RR-012 dashboard inventory missing dashboard id: {dashboard_id}")` |
+| `scripts/telemetry/audit_rr012_production_telemetry_dashboard.py` | 184 | audit_append_call | `errors.append(f"RR-012 dashboard inventory must set {key}=true")` |
+| `scripts/telemetry/audit_rr012_production_telemetry_dashboard.py` | 197 | audit_append_call | `errors.append(f"missing RR-012 authority file: {path}")` |
+| `scripts/telemetry/audit_rr012_production_telemetry_dashboard.py` | 203 | audit_append_call | `errors.append(f"missing existing observability contract: {path}")` |
+| `scripts/telemetry/audit_rr012_production_telemetry_dashboard.py` | 210 | audit_append_call | `errors.append(f"RR-012 policy missing marker: {marker}")` |
+| `scripts/telemetry/audit_rr012_production_telemetry_dashboard.py` | 222 | audit_append_call | `errors.append(f"missing final RR-012 evidence file: {path}")` |
+| `scripts/telemetry/audit_rr012_production_telemetry_dashboard.py` | 228 | audit_append_call | `errors.append(f"final RR-012 evidence file {path} missing marker: {marker}")` |
+| `scripts/telemetry/audit_rr012_production_telemetry_dashboard.py` | 234 | audit_append_call | `warnings.append(f"missing final RR-012 evidence file before capture: {path}")` |
+| `scripts/test_suites/run_product_gate_execution.py` | 37 | audit_append_call | `results.append({` |
+| `scripts/test_suites/run_product_runtime_gates.py` | 37 | audit_append_call | `results.append({"id": item.get("id"), "class": item.get("class"), "command": item.get("command"), "returncode": completed.returncode})` |
+| `scripts/testing/targeted_baseline_reconciliation.py` | 149 | audit_append_call | `errors.append(f"{key} must be {expected!r}, got {env.get(key)!r}")` |
+| `scripts/testing/targeted_baseline_reconciliation.py` | 157 | audit_append_call | `errors.append("tools/etl/mcp_compat.py is missing")` |
+| `scripts/testing/targeted_baseline_reconciliation.py` | 162 | audit_append_call | `errors.append(f"MCP compatibility adapter missing {required}")` |
+| `scripts/testing/targeted_baseline_reconciliation.py` | 170 | audit_append_call | `errors.append(f"{rel} is not wired to the compatibility adapter")` |
+| `scripts/testing/verify_targeted_baseline_reconciliation.py` | 20 | audit_append_call | `errors.append(f"tests/conftest.py does not force {key}={value}")` |
+| `scripts/testing/verify_targeted_baseline_reconciliation.py` | 27 | audit_append_call | `errors.append(f"{rel} still uses setdefault for DEBUG")` |
+| `scripts/testing/verify_targeted_baseline_reconciliation.py` | 29 | audit_append_call | `errors.append(f"{rel} does not force DEBUG=false")` |
+| `scripts/testing/verify_targeted_baseline_reconciliation.py` | 35 | audit_append_call | `errors.append(f"{rel} does not enforce the supported MCP dependency floor")` |
+| `scripts/testing/verify_targeted_baseline_reconciliation.py` | 39 | audit_append_call | `errors.append("targeted baseline reconciliation apply report is missing")` |
+| `scripts/testing/verify_targeted_baseline_reconciliation.py` | 43 | audit_append_call | `errors.append(f"{key} must remain false")` |
 | `scripts/train_qlora.py` | 41 | audit_append_call | `records.append(json.loads(line))` |
 | `scripts/transaction_boundary_inventory.py` | 102 | audit_append_call | `found.append(marker)` |
 | `scripts/transaction_boundary_inventory.py` | 111 | audit_append_call | `areas.append(area)` |
@@ -3508,6 +5551,22 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/transaction_boundary_inventory.py` | 199 | audit_append_call | `lines.append(` |
 | `scripts/transaction_rollback_rollup.py` | 73 | audit_append_call | `proofs.append(` |
 | `scripts/transaction_rollback_rollup.py` | 116 | audit_append_call | `lines.append(` |
+| `scripts/true_state_remediation/capture_baseline.py` | 16 | audit_append_call | `if r: revisions.append(r.group(1))` |
+| `scripts/true_state_remediation/capture_baseline.py` | 17 | audit_append_call | `if d: parents.append(d.group(1))` |
+| `scripts/true_state_remediation/core.py` | 189 | audit_append_call | `results.append(result)` |
+| `scripts/true_state_remediation/core.py` | 215 | audit_append_call | `inspected.append(str(path.relative_to(root)))` |
+| `scripts/true_state_remediation/core.py` | 218 | audit_append_call | `containers.append(data["authority_boundaries"])` |
+| `scripts/true_state_remediation/core.py` | 222 | audit_append_call | `failures.append(f"{path.relative_to(root)}:{key}={container[key]!r}")` |
+| `scripts/true_state_remediation/core.py` | 241 | audit_append_call | `missing.append(control)` |
+| `scripts/true_state_remediation/core.py` | 249 | audit_append_call | `invalid.append(f"{control}: reviewer metadata missing")` |
+| `scripts/true_state_remediation/core.py` | 251 | audit_append_call | `invalid.append(f"{control}: evidence artifact missing or not a file")` |
+| `scripts/true_state_remediation/core.py` | 253 | audit_append_call | `invalid.append(f"{control}: artifact digest mismatch")` |
+| `scripts/true_state_remediation/core.py` | 255 | audit_append_call | `invalid.append(f"{control}: decision is not approval/completion")` |
+| `scripts/true_state_remediation/core.py` | 301 | audit_append_call | `task["evidence"].append(item)` |
+| `scripts/true_state_remediation/core.py` | 318 | audit_append_call | `errors.append("tasks must be a non-empty list")` |
+| `scripts/true_state_remediation/core.py` | 322 | audit_append_call | `errors.append("duplicate task ids")` |
+| `scripts/true_state_remediation/core.py` | 328 | audit_append_call | `errors.append(f"{task.get('id')}: missing {sorted(missing)}")` |
+| `scripts/true_state_remediation/core.py` | 330 | audit_append_call | `errors.append(f"{task.get('id')}: invalid status {task.get('status')!r}")` |
 | `scripts/tx_route_wiring_inventory.py` | 63 | audit_append_call | `chunks.append("\n".join(lines[start:end]))` |
 | `scripts/tx_route_wiring_inventory.py` | 109 | audit_append_call | `rows.append(` |
 | `scripts/tx_route_wiring_inventory.py` | 160 | audit_append_call | `lines.append(` |
@@ -3596,196 +5655,198 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/verify_phase02r_gate2r1.py` | 107 | audit_append_call | `checks.append(_capture_main("migration_graph", migration_module.main))` |
 | `scripts/verify_phase02r_gate2r1.py` | 110 | audit_append_call | `checks.append(_capture_main("schema_integrity", schema_module.main))` |
 | `scripts/verify_phase02r_gate2r1.py` | 113 | audit_append_call | `checks.append(_capture_main("phase_control_sets", controls_module.main))` |
-| `scripts/verify_phase02r_gate2r2.py` | 44 | audit_append_call | `errors.append("successful acquisition contract failed")` |
-| `scripts/verify_phase02r_gate2r2.py` | 48 | audit_append_call | `errors.append("same SHA acquisition is not idempotent")` |
-| `scripts/verify_phase02r_gate2r2.py` | 52 | audit_append_call | `errors.append("checksum mismatch was not rejected")` |
-| `scripts/verify_phase02r_gate2r2.py` | 58 | audit_append_call | `errors.append("denied may_store_original was not rejected")` |
-| `scripts/verify_phase02r_gate2r2.py` | 64 | audit_append_call | `errors.append("missing rights decision was not rejected")` |
-| `scripts/verify_phase02r_gate2r2.py` | 73 | audit_append_call | `errors.append("path escape was not rejected")` |
-| `scripts/verify_phase02r_gate2r2.py` | 77 | audit_append_call | `errors.append(f"behavioral checks crashed: {exc}")` |
-| `scripts/verify_phase02r_gate2r2.py` | 94 | audit_append_call | `errors.append(f"missing required files: {missing}")` |
-| `scripts/verify_phase02r_gate2r2.py` | 105 | audit_append_call | `checks.append(gate)` |
-| `scripts/verify_phase02r_gate2r2.py` | 107 | audit_append_call | `errors.append("gate control does not authorise 2R.2")` |
-| `scripts/verify_phase02r_gate2r2.py` | 119 | audit_append_call | `checks.append(compile_check)` |
-| `scripts/verify_phase02r_gate2r2.py` | 121 | audit_append_call | `errors.append("compileall failed")` |
-| `scripts/verify_phase02r_gate2r2.py` | 124 | audit_append_call | `checks.append(tests)` |
-| `scripts/verify_phase02r_gate2r2.py` | 126 | audit_append_call | `errors.append("Gate 2R.2 focused unit tests failed")` |
-| `scripts/verify_phase02r_gate2r2.py` | 129 | audit_append_call | `checks.append(dry_run)` |
-| `scripts/verify_phase02r_gate2r2.py` | 131 | audit_append_call | `errors.append("Gate 2R.2 acquisition dry-run failed")` |
-| `scripts/verify_phase02r_gate2r2.py` | 135 | audit_append_call | `checks.append(acquire)` |
-| `scripts/verify_phase02r_gate2r2.py` | 137 | audit_append_call | `errors.append("Gate 2R.2 real source acquisition failed")` |
-| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 54 | audit_append_call | `errors.append("acquisition checksum contract failed")` |
-| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 57 | audit_append_call | `errors.append("PII metadata was not rejected")` |
-| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 62 | audit_append_call | `errors.append("structured extraction did not preserve pages/chunks")` |
-| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 68 | audit_append_call | `errors.append("unapproved mapping was not rejected")` |
-| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 93 | audit_append_call | `errors.append("corpus manifest hash contract failed")` |
-| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 95 | audit_append_call | `errors.append("versioned cache key contract failed")` |
-| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 116 | audit_append_call | `errors.append("generation grounding contract failed")` |
-| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 118 | audit_append_call | `errors.append("claim validation contract failed")` |
-| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 120 | audit_append_call | `errors.append("deterministic answer verifier contract failed")` |
-| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 123 | audit_append_call | `errors.append("legacy classifier contract failed")` |
-| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 128 | audit_append_call | `errors.append("retrieval evaluation threshold contract failed")` |
-| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 130 | audit_append_call | `errors.append(f"behavioral contract execution failed: {exc}")` |
-| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 146 | audit_append_call | `checks.append(compile_check)` |
-| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 148 | audit_append_call | `errors.append("compileall failed for Phase 2R grounding modules")` |
-| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 153 | audit_append_call | `checks.append(graph_check)` |
-| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 155 | audit_append_call | `errors.append("migration graph check failed")` |
-| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 158 | audit_append_call | `errors.append(` |
-| `scripts/verify_phase02r_gate2r3.py` | 39 | audit_append_call | `errors.append("valid fixture extraction failed validation: " + "; ".join(validation))` |
-| `scripts/verify_phase02r_gate2r3.py` | 41 | audit_append_call | `errors.append("page numbering/provenance failed")` |
-| `scripts/verify_phase02r_gate2r3.py` | 43 | audit_append_call | `errors.append("sections/chunks were not created")` |
-| `scripts/verify_phase02r_gate2r3.py` | 45 | audit_append_call | `errors.append("page/chunk text SHA-256 missing or invalid")` |
-| `scripts/verify_phase02r_gate2r3.py` | 47 | audit_append_call | `errors.append("formula warning not propagated to chunks")` |
-| `scripts/verify_phase02r_gate2r3.py` | 50 | audit_append_call | `errors.append("invalid language was not rejected")` |
-| `scripts/verify_phase02r_gate2r3.py` | 54 | audit_append_call | `errors.append(f"behavioral checks crashed: {exc}")` |
-| `scripts/verify_phase02r_gate2r3.py` | 71 | audit_append_call | `errors.append(f"missing required files: {missing}")` |
-| `scripts/verify_phase02r_gate2r3.py` | 82 | audit_append_call | `checks.append(gate)` |
-| `scripts/verify_phase02r_gate2r3.py` | 84 | audit_append_call | `errors.append("gate control does not authorise 2R.3")` |
-| `scripts/verify_phase02r_gate2r3.py` | 94 | audit_append_call | `checks.append(compile_check)` |
-| `scripts/verify_phase02r_gate2r3.py` | 96 | audit_append_call | `errors.append("compileall failed")` |
-| `scripts/verify_phase02r_gate2r3.py` | 99 | audit_append_call | `checks.append(tests)` |
-| `scripts/verify_phase02r_gate2r3.py` | 101 | audit_append_call | `errors.append("Gate 2R.3 focused unit tests failed")` |
-| `scripts/verify_phase02r_gate2r3.py` | 106 | audit_append_call | `checks.append(dry_run)` |
-| `scripts/verify_phase02r_gate2r3.py` | 108 | audit_append_call | `errors.append("Gate 2R.3 real-source extraction dry-run failed")` |
-| `scripts/verify_phase02r_gate2r3.py` | 110 | audit_append_call | `checks.append({"command": ["real-source-dry-run"], "exit_code": 0, "output": "skipped: controlled source PDF not present in this checkout"})` |
-| `scripts/verify_phase02r_gate2r3.py` | 114 | audit_append_call | `checks.append(real_run)` |
-| `scripts/verify_phase02r_gate2r3.py` | 116 | audit_append_call | `errors.append("Gate 2R.3 real-source extraction failed")` |
-| `scripts/verify_phase02r_gate2r3.py` | 121 | audit_append_call | `errors.append("Gate 2R.3 real-source extraction payload did not pass")` |
-| `scripts/verify_phase02r_gate2r3.py` | 123 | audit_append_call | `errors.append("Gate 2R.3 extraction attempted to create corpus membership")` |
-| `scripts/verify_phase02r_gate2r3.py` | 125 | audit_append_call | `errors.append(f"Gate 2R.3 real-source payload was not valid JSON: {exc}")` |
-| `scripts/verify_phase02r_gate2r4.py` | 40 | audit_append_call | `errors.append(f"expected approved_gate={expected_approved}, got {data.get('approved_gate')!r}")` |
-| `scripts/verify_phase02r_gate2r4.py` | 42 | audit_append_call | `errors.append(f"expected authorised_next_gate={expected_authorised}, got {data.get('authorised_next_gate')!r}")` |
-| `scripts/verify_phase02r_gate2r4.py` | 44 | audit_append_call | `errors.append("Gate 2R.5+ appears authorised; Gate 2R.4 verification refuses to proceed")` |
-| `scripts/verify_phase02r_gate2r4.py` | 76 | audit_append_call | `checks.append(compile_check)` |
-| `scripts/verify_phase02r_gate2r4.py` | 78 | audit_append_call | `errors.append("compileall failed for Gate 2R.4 Python modules")` |
-| `scripts/verify_phase02r_gate2r4.py` | 81 | audit_append_call | `checks.append({"name": "migration_contract", **migration})` |
-| `scripts/verify_phase02r_gate2r4.py` | 83 | audit_append_call | `errors.append(f"Gate 2R.4 migration contract missing tokens: {migration['missing_tokens']}")` |
-| `scripts/verify_phase02r_gate2r4.py` | 87 | audit_append_call | `validation_cmd.append("--skip-gate-control")` |
-| `scripts/verify_phase02r_gate2r4.py` | 89 | audit_append_call | `checks.append(validation_check)` |
-| `scripts/verify_phase02r_gate2r4.py` | 91 | audit_append_call | `errors.append("Gate 2R.4 graph validation failed")` |
-| `scripts/verify_phase02r_gate2r4.py` | 97 | audit_append_call | `errors.append("Gate 2R.4 graph export failed")` |
-| `scripts/verify_phase02r_gate2r4.py` | 99 | audit_append_call | `errors.append("Gate 2R.4 graph export is not deterministic")` |
-| `scripts/verify_phase02r_gate2r4.py` | 104 | audit_append_call | `checks.append(pytest_check)` |
-| `scripts/verify_phase02r_gate2r4.py` | 106 | audit_append_call | `errors.append("Gate 2R.4 focused tests failed")` |
-| `scripts/verify_phase02r_gate2r4.py` | 109 | audit_append_call | `checks.append(migration_graph)` |
-| `scripts/verify_phase02r_gate2r4.py` | 111 | audit_append_call | `errors.append("migration graph verifier failed")` |
-| `scripts/verify_phase02r_gate2r4.py` | 115 | audit_append_call | `checks.append({"name": "gate_control", **control})` |
-| `scripts/verify_phase02r_gate2r5.py` | 26 | audit_append_call | `errors.append("Phase 02R start_approved must remain true")` |
-| `scripts/verify_phase02r_gate2r5.py` | 28 | audit_append_call | `errors.append(f"Gate 2R.5 implementation requires approved_gate=2R.4, found {control.get('approved_gate')!r}")` |
-| `scripts/verify_phase02r_gate2r5.py` | 30 | audit_append_call | `errors.append(f"Gate 2R.5 implementation requires authorised_next_gate=2R.5, found {control.get('authorised_next_gate')!r}")` |
-| `scripts/verify_phase02r_gate2r5.py` | 32 | audit_append_call | `errors.append("Gate 2R.6+ is authorised; Gate 2R.5 verifier must not run against downstream state")` |
-| `scripts/verify_phase02r_gate2r5.py` | 56 | audit_append_call | `errors.append("activation key contract changed unexpectedly")` |
-| `scripts/verify_phase02r_gate2r5.py` | 59 | audit_append_call | `errors.append("manifest/projection hash contract failed")` |
-| `scripts/verify_phase02r_gate2r5.py` | 61 | audit_append_call | `errors.append("real-source retrieval dry-run produced no hits")` |
-| `scripts/verify_phase02r_gate2r5.py` | 63 | audit_append_call | `errors.append("versioned cache key must include binding epoch")` |
-| `scripts/verify_phase02r_gate2r5.py` | 87 | audit_append_call | `errors.append(f"ineligible candidate was accepted: {bad}")` |
-| `scripts/verify_phase02r_gate2r5.py` | 101 | audit_append_call | `errors.append("corpus without Tier 1 authority was accepted")` |
-| `scripts/verify_phase02r_gate2r5.py` | 111 | audit_append_call | `errors.append("mixed active binding/projection corpus was accepted")` |
-| `scripts/verify_phase02r_gate2r5.py` | 123 | audit_append_call | `errors.append("stale query binding epoch was accepted")` |
-| `scripts/verify_phase02r_gate2r5.py` | 134 | audit_append_call | `errors.append("retrieval projection is not deterministic under candidate ordering")` |
-| `scripts/verify_phase02r_gate2r5.py` | 136 | audit_append_call | `errors.append(f"Gate 2R.5 behavioral checks failed to execute: {exc}")` |
-| `scripts/verify_phase02r_gate2r5.py` | 158 | audit_append_call | `checks.append(_run([sys.executable, "-m", "compileall", "-q", *compile_targets]))` |
-| `scripts/verify_phase02r_gate2r5.py` | 160 | audit_append_call | `errors.append("compileall failed for Gate 2R.5 files")` |
-| `scripts/verify_phase02r_gate2r5.py` | 168 | audit_append_call | `checks.append(_run(command))` |
-| `scripts/verify_phase02r_gate2r5.py` | 170 | audit_append_call | `errors.append(message)` |
-| `scripts/verify_phase02r_gate2r5.py` | 174 | audit_append_call | `errors.append("Gate 2R.5 closure requires committed candidate evidence, approvals, and a separate transition; implementation verifier cannot close the gate")` |
-| `scripts/verify_phase02r_gate2r6.py` | 26 | audit_append_call | `errors.append("Phase 02R start_approved must remain true")` |
-| `scripts/verify_phase02r_gate2r6.py` | 28 | audit_append_call | `errors.append(f"Gate 2R.6 implementation requires approved_gate=2R.5, found {control.get('approved_gate')!r}")` |
-| `scripts/verify_phase02r_gate2r6.py` | 30 | audit_append_call | `errors.append(f"Gate 2R.6 implementation requires authorised_next_gate=2R.6, found {control.get('authorised_next_gate')!r}")` |
-| `scripts/verify_phase02r_gate2r6.py` | 32 | audit_append_call | `errors.append("Gate 2R.7+ is authorised; Gate 2R.6 verifier must not run against downstream state")` |
-| `scripts/verify_phase02r_gate2r6.py` | 55 | audit_append_call | `errors.append("fixture artifact is not grounded_verified")` |
-| `scripts/verify_phase02r_gate2r6.py` | 57 | audit_append_call | `errors.append("generation policy version mismatch")` |
-| `scripts/verify_phase02r_gate2r6.py` | 59 | audit_append_call | `errors.append("artifact must carry source provenance")` |
-| `scripts/verify_phase02r_gate2r6.py` | 61 | audit_append_call | `errors.append("artifact contains mixed corpus provenance")` |
-| `scripts/verify_phase02r_gate2r6.py` | 63 | audit_append_call | `errors.append("assessment item deterministic answer verification failed")` |
-| `scripts/verify_phase02r_gate2r6.py` | 65 | audit_append_call | `errors.append("unsupported curriculum claim was not rejected")` |
-| `scripts/verify_phase02r_gate2r6.py` | 67 | audit_append_call | `errors.append("incorrect deterministic answer was not rejected")` |
-| `scripts/verify_phase02r_gate2r6.py` | 81 | audit_append_call | `errors.append("missing objective generation did not fail closed")` |
-| `scripts/verify_phase02r_gate2r6.py` | 86 | audit_append_call | `errors.append("explicit safe fallback contract failed")` |
-| `scripts/verify_phase02r_gate2r6.py` | 90 | audit_append_call | `errors.append("generation packet hash is not deterministic")` |
-| `scripts/verify_phase02r_gate2r6.py` | 92 | audit_append_call | `errors.append("Gate 2R.6 must not wire tutor runtime behavior")` |
-| `scripts/verify_phase02r_gate2r6.py` | 94 | audit_append_call | `errors.append("Gate 2R.6 packet must not authorise Gate 2R.7")` |
-| `scripts/verify_phase02r_gate2r6.py` | 96 | audit_append_call | `errors.append(f"Gate 2R.6 behavioral checks failed to execute: {exc}")` |
-| `scripts/verify_phase02r_gate2r6.py` | 120 | audit_append_call | `checks.append(_run([sys.executable, "-m", "compileall", "-q", *compile_targets]))` |
-| `scripts/verify_phase02r_gate2r6.py` | 122 | audit_append_call | `errors.append("compileall failed for Gate 2R.6 files")` |
-| `scripts/verify_phase02r_gate2r6.py` | 130 | audit_append_call | `checks.append(_run(command))` |
-| `scripts/verify_phase02r_gate2r6.py` | 132 | audit_append_call | `errors.append(message)` |
-| `scripts/verify_phase02r_gate2r6.py` | 136 | audit_append_call | `errors.append("Gate 2R.6 closure requires committed candidate evidence, approvals, and a separate transition; implementation verifier cannot close the gate")` |
-| `scripts/verify_phase02r_gate2r7.py` | 26 | audit_append_call | `errors.append("Phase 02R start_approved must remain true")` |
-| `scripts/verify_phase02r_gate2r7.py` | 28 | audit_append_call | `errors.append(f"Gate 2R.7 implementation requires approved_gate=2R.6, found {control.get('approved_gate')!r}")` |
-| `scripts/verify_phase02r_gate2r7.py` | 30 | audit_append_call | `errors.append(f"Gate 2R.7 implementation requires authorised_next_gate=2R.7, found {control.get('authorised_next_gate')!r}")` |
-| `scripts/verify_phase02r_gate2r7.py` | 32 | audit_append_call | `errors.append("Gate 2R.8 is already authorised; refusing Gate 2R.7 implementation verification")` |
-| `scripts/verify_phase02r_gate2r7.py` | 34 | audit_append_call | `errors.append("Gate 2R.7 approval manifest already exists; implementation verifier must run before approval")` |
-| `scripts/verify_phase02r_gate2r7.py` | 58 | audit_append_call | `errors.append("fixture tutor response is not grounded")` |
-| `scripts/verify_phase02r_gate2r7.py` | 60 | audit_append_call | `errors.append("fixture tutor trace did not pass grounding")` |
-| `scripts/verify_phase02r_gate2r7.py` | 62 | audit_append_call | `errors.append("fixture tutor trace lacks source provenance")` |
-| `scripts/verify_phase02r_gate2r7.py` | 64 | audit_append_call | `errors.append("fixture tutor claim validation did not pass")` |
-| `scripts/verify_phase02r_gate2r7.py` | 68 | audit_append_call | `errors.append("tutor provenance was not persisted")` |
-| `scripts/verify_phase02r_gate2r7.py` | 71 | audit_append_call | `errors.append("duplicate tutor_message_id was not rejected")` |
-| `scripts/verify_phase02r_gate2r7.py` | 82 | audit_append_call | `errors.append("safe fallback contract failed")` |
-| `scripts/verify_phase02r_gate2r7.py` | 84 | audit_append_call | `errors.append("safe fallback emitted authoritative grounding")` |
-| `scripts/verify_phase02r_gate2r7.py` | 92 | audit_append_call | `errors.append("missing grounding without fallback did not fail closed")` |
-| `scripts/verify_phase02r_gate2r7.py` | 101 | audit_append_call | `errors.append("failed consent control did not block tutor request")` |
-| `scripts/verify_phase02r_gate2r7.py` | 107 | audit_append_call | `errors.append("learner provenance view exposes raw source chunk ids")` |
-| `scripts/verify_phase02r_gate2r7.py` | 109 | audit_append_call | `errors.append("auditor provenance view lacks source references")` |
-| `scripts/verify_phase02r_gate2r7.py` | 113 | audit_append_call | `errors.append("tutor packet hash is not deterministic")` |
-| `scripts/verify_phase02r_gate2r7.py` | 115 | audit_append_call | `errors.append("Gate 2R.7 packet must not authorise Gate 2R.8")` |
-| `scripts/verify_phase02r_gate2r7.py` | 117 | audit_append_call | `errors.append("Gate 2R.7 packet must not wire legacy migration")` |
-| `scripts/verify_phase02r_gate2r7.py` | 119 | audit_append_call | `errors.append(f"Gate 2R.7 behavioral checks failed to execute: {exc}")` |
-| `scripts/verify_phase02r_gate2r7.py` | 140 | audit_append_call | `checks.append(_run([sys.executable, "-m", "compileall", "-q", *compile_targets]))` |
-| `scripts/verify_phase02r_gate2r7.py` | 142 | audit_append_call | `errors.append("compileall failed for Gate 2R.7 files")` |
-| `scripts/verify_phase02r_gate2r7.py` | 150 | audit_append_call | `checks.append(_run(command))` |
-| `scripts/verify_phase02r_gate2r7.py` | 152 | audit_append_call | `errors.append(message)` |
-| `scripts/verify_phase02r_gate2r7.py` | 156 | audit_append_call | `errors.append("Gate 2R.7 closure requires committed candidate evidence, approvals, and a separate transition; implementation verifier cannot close the gate")` |
-| `scripts/verify_phase02r_gate2r8.py` | 27 | audit_append_call | `errors.append("Phase 02R start_approved must remain true")` |
-| `scripts/verify_phase02r_gate2r8.py` | 29 | audit_append_call | `errors.append(f"Gate 2R.8 implementation requires approved_gate=2R.7, found {control.get('approved_gate')!r}")` |
-| `scripts/verify_phase02r_gate2r8.py` | 31 | audit_append_call | `errors.append(f"Gate 2R.8 implementation requires authorised_next_gate=2R.8, found {control.get('authorised_next_gate')!r}")` |
-| `scripts/verify_phase02r_gate2r8.py` | 33 | audit_append_call | `errors.append("Gate 2R.8 approval manifest already exists; implementation verifier must run before approval")` |
-| `scripts/verify_phase02r_gate2r8.py` | 36 | audit_append_call | `errors.append("execution plan must authorise Gate 2R.8 only")` |
-| `scripts/verify_phase02r_gate2r8.py` | 38 | audit_append_call | `errors.append("execution plan must record Gate 2R.7 verified complete and Gate 2R.8 authorised")` |
-| `scripts/verify_phase02r_gate2r8.py` | 68 | audit_append_call | `errors.append("evaluation fixture lacks required positive/negative cases")` |
-| `scripts/verify_phase02r_gate2r8.py` | 71 | audit_append_call | `errors.append("Gate 2R.8 evaluation fixture did not pass thresholds")` |
-| `scripts/verify_phase02r_gate2r8.py` | 73 | audit_append_call | `errors.append("recall_at_k is below threshold")` |
-| `scripts/verify_phase02r_gate2r8.py` | 75 | audit_append_call | `errors.append("precision_at_k is below threshold")` |
-| `scripts/verify_phase02r_gate2r8.py` | 77 | audit_append_call | `errors.append("mrr is below threshold")` |
-| `scripts/verify_phase02r_gate2r8.py` | 90 | audit_append_call | `errors.append("negative retrieval hit was not rejected")` |
-| `scripts/verify_phase02r_gate2r8.py` | 95 | audit_append_call | `errors.append("legacy migration manifest is not review-ready")` |
-| `scripts/verify_phase02r_gate2r8.py` | 97 | audit_append_call | `errors.append("Gate 2R.8 legacy manifest must not execute migration")` |
-| `scripts/verify_phase02r_gate2r8.py` | 106 | audit_append_call | `errors.append("published ungrounded legacy artifact was not quarantined")` |
-| `scripts/verify_phase02r_gate2r8.py` | 109 | audit_append_call | `errors.append("evaluation report must not declare Phase 02R completion")` |
-| `scripts/verify_phase02r_gate2r8.py` | 116 | audit_append_call | `errors.append("audit bundle hash is not deterministic")` |
-| `scripts/verify_phase02r_gate2r8.py` | 118 | audit_append_call | `errors.append("audit bundle must not declare Phase 02R completion")` |
-| `scripts/verify_phase02r_gate2r8.py` | 120 | audit_append_call | `errors.append(f"Gate 2R.8 behavioral checks failed to execute: {exc}")` |
-| `scripts/verify_phase02r_gate2r8.py` | 144 | audit_append_call | `checks.append(_run([sys.executable, "-m", "compileall", "-q", *compile_targets]))` |
-| `scripts/verify_phase02r_gate2r8.py` | 146 | audit_append_call | `errors.append("compileall failed for Gate 2R.8 files")` |
-| `scripts/verify_phase02r_gate2r8.py` | 155 | audit_append_call | `checks.append(_run(command))` |
-| `scripts/verify_phase02r_gate2r8.py` | 157 | audit_append_call | `errors.append(message)` |
-| `scripts/verify_phase02r_gate2r8.py` | 161 | audit_append_call | `errors.append("Gate 2R.8 closure requires committed candidate evidence, approvals, and a final Phase 02R closure decision; implementation verifier cannot close the phase")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 77 | audit_append_call | `errors.append("PHASE02R_OBJECT_STORAGE_BACKEND is not configured")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 79 | audit_append_call | `errors.append("local filesystem object-storage probe is development-only and does not prove staging object storage")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 81 | audit_append_call | `errors.append("PHASE02R_OBJECT_STORAGE_PROBE_DIR is not configured")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 83 | audit_append_call | `errors.append("PHASE02R_OBJECT_STORAGE_BACKUP_DIR is not configured")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 85 | audit_append_call | `errors.append("PHASE02R_OBJECT_STORAGE_SCOPED_TOKEN is not configured")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 92 | audit_append_call | `errors.append("object-storage probe directory must be outside the repository")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 94 | audit_append_call | `errors.append("object-storage backup directory must be outside the repository")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 96 | audit_append_call | `errors.append("object-storage backup directory must be separate from probe directory")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 114 | audit_append_call | `errors.append("object-storage readback SHA-256 mismatch")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 121 | audit_append_call | `errors.append("object-storage overwrite probe could not find original object")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 141 | audit_append_call | `errors.append("object-storage restored object SHA-256 mismatch")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 143 | audit_append_call | `errors.append(f"object-storage functional probe failed: {exc}")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 161 | audit_append_call | `errors.append("Python 3.12+ is required")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 171 | audit_append_call | `errors.append(f"{executable} is not available on PATH")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 176 | audit_append_call | `errors.append("git status --porcelain failed")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 178 | audit_append_call | `errors.append("worktree is not clean")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 180 | audit_append_call | `warnings.append("worktree is dirty")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 190 | audit_append_call | `errors.append(f"required reproducibility file missing: {relative}")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 192 | audit_append_call | `errors.append("required Python dependency lock/input files are missing")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 197 | audit_append_call | `errors.append("migration graph check failed")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 202 | audit_append_call | `errors.append("schema integrity check failed")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 207 | audit_append_call | `errors.append("backend app.api_v2 entrypoint import failed")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 212 | audit_append_call | `errors.append("frontend package.json missing")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 218 | audit_append_call | `warnings.append(f"required runtime env vars are unset for local proof: {', '.join(missing_env)}")` |
-| `scripts/verify_phase0_or_equivalent_baseline.py` | 227 | audit_append_call | `warnings.append("Redis CLI/server not found on PATH; Docker-backed Redis may still be available in later gates")` |
+| `scripts/verify_phase02r_gate2r2.py` | 45 | audit_append_call | `errors.append("successful acquisition contract failed")` |
+| `scripts/verify_phase02r_gate2r2.py` | 49 | audit_append_call | `errors.append("same SHA acquisition is not idempotent")` |
+| `scripts/verify_phase02r_gate2r2.py` | 53 | audit_append_call | `errors.append("checksum mismatch was not rejected")` |
+| `scripts/verify_phase02r_gate2r2.py` | 59 | audit_append_call | `errors.append("denied may_store_original was not rejected")` |
+| `scripts/verify_phase02r_gate2r2.py` | 65 | audit_append_call | `errors.append("missing rights decision was not rejected")` |
+| `scripts/verify_phase02r_gate2r2.py` | 74 | audit_append_call | `errors.append("path escape was not rejected")` |
+| `scripts/verify_phase02r_gate2r2.py` | 78 | audit_append_call | `errors.append(f"behavioral checks crashed: {exc}")` |
+| `scripts/verify_phase02r_gate2r2.py` | 95 | audit_append_call | `errors.append(f"missing required files: {missing}")` |
+| `scripts/verify_phase02r_gate2r2.py` | 106 | audit_append_call | `checks.append(gate)` |
+| `scripts/verify_phase02r_gate2r2.py` | 108 | audit_append_call | `errors.append("gate control does not authorise 2R.2")` |
+| `scripts/verify_phase02r_gate2r2.py` | 120 | audit_append_call | `checks.append(compile_check)` |
+| `scripts/verify_phase02r_gate2r2.py` | 122 | audit_append_call | `errors.append("compileall failed")` |
+| `scripts/verify_phase02r_gate2r2.py` | 125 | audit_append_call | `checks.append(tests)` |
+| `scripts/verify_phase02r_gate2r2.py` | 127 | audit_append_call | `errors.append("Gate 2R.2 focused unit tests failed")` |
+| `scripts/verify_phase02r_gate2r2.py` | 130 | audit_append_call | `checks.append(dry_run)` |
+| `scripts/verify_phase02r_gate2r2.py` | 132 | audit_append_call | `errors.append("Gate 2R.2 acquisition dry-run failed")` |
+| `scripts/verify_phase02r_gate2r2.py` | 136 | audit_append_call | `checks.append(acquire)` |
+| `scripts/verify_phase02r_gate2r2.py` | 138 | audit_append_call | `errors.append("Gate 2R.2 real source acquisition failed")` |
+| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 55 | audit_append_call | `errors.append("acquisition checksum contract failed")` |
+| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 58 | audit_append_call | `errors.append("PII metadata was not rejected")` |
+| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 63 | audit_append_call | `errors.append("structured extraction did not preserve pages/chunks")` |
+| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 69 | audit_append_call | `errors.append("unapproved mapping was not rejected")` |
+| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 94 | audit_append_call | `errors.append("corpus manifest hash contract failed")` |
+| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 96 | audit_append_call | `errors.append("versioned cache key contract failed")` |
+| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 117 | audit_append_call | `errors.append("generation grounding contract failed")` |
+| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 119 | audit_append_call | `errors.append("claim validation contract failed")` |
+| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 121 | audit_append_call | `errors.append("deterministic answer verifier contract failed")` |
+| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 124 | audit_append_call | `errors.append("legacy classifier contract failed")` |
+| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 129 | audit_append_call | `errors.append("retrieval evaluation threshold contract failed")` |
+| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 131 | audit_append_call | `errors.append(f"behavioral contract execution failed: {exc}")` |
+| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 147 | audit_append_call | `checks.append(compile_check)` |
+| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 149 | audit_append_call | `errors.append("compileall failed for Phase 2R grounding modules")` |
+| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 154 | audit_append_call | `checks.append(graph_check)` |
+| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 156 | audit_append_call | `errors.append("migration graph check failed")` |
+| `scripts/verify_phase02r_gate2r2_to_2r8.py` | 159 | audit_append_call | `errors.append(` |
+| `scripts/verify_phase02r_gate2r3.py` | 40 | audit_append_call | `errors.append("valid fixture extraction failed validation: " + "; ".join(validation))` |
+| `scripts/verify_phase02r_gate2r3.py` | 42 | audit_append_call | `errors.append("page numbering/provenance failed")` |
+| `scripts/verify_phase02r_gate2r3.py` | 44 | audit_append_call | `errors.append("sections/chunks were not created")` |
+| `scripts/verify_phase02r_gate2r3.py` | 46 | audit_append_call | `errors.append("page/chunk text SHA-256 missing or invalid")` |
+| `scripts/verify_phase02r_gate2r3.py` | 48 | audit_append_call | `errors.append("formula warning not propagated to chunks")` |
+| `scripts/verify_phase02r_gate2r3.py` | 51 | audit_append_call | `errors.append("invalid language was not rejected")` |
+| `scripts/verify_phase02r_gate2r3.py` | 55 | audit_append_call | `errors.append(f"behavioral checks crashed: {exc}")` |
+| `scripts/verify_phase02r_gate2r3.py` | 72 | audit_append_call | `errors.append(f"missing required files: {missing}")` |
+| `scripts/verify_phase02r_gate2r3.py` | 83 | audit_append_call | `checks.append(gate)` |
+| `scripts/verify_phase02r_gate2r3.py` | 85 | audit_append_call | `errors.append("gate control does not authorise 2R.3")` |
+| `scripts/verify_phase02r_gate2r3.py` | 95 | audit_append_call | `checks.append(compile_check)` |
+| `scripts/verify_phase02r_gate2r3.py` | 97 | audit_append_call | `errors.append("compileall failed")` |
+| `scripts/verify_phase02r_gate2r3.py` | 100 | audit_append_call | `checks.append(tests)` |
+| `scripts/verify_phase02r_gate2r3.py` | 102 | audit_append_call | `errors.append("Gate 2R.3 focused unit tests failed")` |
+| `scripts/verify_phase02r_gate2r3.py` | 107 | audit_append_call | `checks.append(dry_run)` |
+| `scripts/verify_phase02r_gate2r3.py` | 109 | audit_append_call | `errors.append("Gate 2R.3 real-source extraction dry-run failed")` |
+| `scripts/verify_phase02r_gate2r3.py` | 111 | audit_append_call | `checks.append({"command": ["real-source-dry-run"], "exit_code": 0, "output": "skipped: controlled source PDF not present in this checkout"})` |
+| `scripts/verify_phase02r_gate2r3.py` | 115 | audit_append_call | `checks.append(real_run)` |
+| `scripts/verify_phase02r_gate2r3.py` | 117 | audit_append_call | `errors.append("Gate 2R.3 real-source extraction failed")` |
+| `scripts/verify_phase02r_gate2r3.py` | 122 | audit_append_call | `errors.append("Gate 2R.3 real-source extraction payload did not pass")` |
+| `scripts/verify_phase02r_gate2r3.py` | 124 | audit_append_call | `errors.append("Gate 2R.3 extraction attempted to create corpus membership")` |
+| `scripts/verify_phase02r_gate2r3.py` | 126 | audit_append_call | `errors.append(f"Gate 2R.3 real-source payload was not valid JSON: {exc}")` |
+| `scripts/verify_phase02r_gate2r4.py` | 41 | audit_append_call | `errors.append(f"expected approved_gate={expected_approved}, got {data.get('approved_gate')!r}")` |
+| `scripts/verify_phase02r_gate2r4.py` | 43 | audit_append_call | `errors.append(f"expected authorised_next_gate={expected_authorised}, got {data.get('authorised_next_gate')!r}")` |
+| `scripts/verify_phase02r_gate2r4.py` | 45 | audit_append_call | `errors.append("Gate 2R.5+ appears authorised; Gate 2R.4 verification refuses to proceed")` |
+| `scripts/verify_phase02r_gate2r4.py` | 77 | audit_append_call | `checks.append(compile_check)` |
+| `scripts/verify_phase02r_gate2r4.py` | 79 | audit_append_call | `errors.append("compileall failed for Gate 2R.4 Python modules")` |
+| `scripts/verify_phase02r_gate2r4.py` | 82 | audit_append_call | `checks.append({"name": "migration_contract", **migration})` |
+| `scripts/verify_phase02r_gate2r4.py` | 84 | audit_append_call | `errors.append(f"Gate 2R.4 migration contract missing tokens: {migration['missing_tokens']}")` |
+| `scripts/verify_phase02r_gate2r4.py` | 88 | audit_append_call | `validation_cmd.append("--skip-gate-control")` |
+| `scripts/verify_phase02r_gate2r4.py` | 90 | audit_append_call | `checks.append(validation_check)` |
+| `scripts/verify_phase02r_gate2r4.py` | 92 | audit_append_call | `errors.append("Gate 2R.4 graph validation failed")` |
+| `scripts/verify_phase02r_gate2r4.py` | 98 | audit_append_call | `errors.append("Gate 2R.4 graph export failed")` |
+| `scripts/verify_phase02r_gate2r4.py` | 100 | audit_append_call | `errors.append("Gate 2R.4 graph export is not deterministic")` |
+| `scripts/verify_phase02r_gate2r4.py` | 105 | audit_append_call | `checks.append(pytest_check)` |
+| `scripts/verify_phase02r_gate2r4.py` | 107 | audit_append_call | `errors.append("Gate 2R.4 focused tests failed")` |
+| `scripts/verify_phase02r_gate2r4.py` | 110 | audit_append_call | `checks.append(migration_graph)` |
+| `scripts/verify_phase02r_gate2r4.py` | 112 | audit_append_call | `errors.append("migration graph verifier failed")` |
+| `scripts/verify_phase02r_gate2r4.py` | 116 | audit_append_call | `checks.append({"name": "gate_control", **control})` |
+| `scripts/verify_phase02r_gate2r5.py` | 27 | audit_append_call | `errors.append("Phase 02R start_approved must remain true")` |
+| `scripts/verify_phase02r_gate2r5.py` | 29 | audit_append_call | `errors.append(f"Gate 2R.5 implementation requires approved_gate=2R.4, found {control.get('approved_gate')!r}")` |
+| `scripts/verify_phase02r_gate2r5.py` | 31 | audit_append_call | `errors.append(f"Gate 2R.5 implementation requires authorised_next_gate=2R.5, found {control.get('authorised_next_gate')!r}")` |
+| `scripts/verify_phase02r_gate2r5.py` | 33 | audit_append_call | `errors.append("Gate 2R.6+ is authorised; Gate 2R.5 verifier must not run against downstream state")` |
+| `scripts/verify_phase02r_gate2r5.py` | 57 | audit_append_call | `errors.append("activation key contract changed unexpectedly")` |
+| `scripts/verify_phase02r_gate2r5.py` | 60 | audit_append_call | `errors.append("manifest/projection hash contract failed")` |
+| `scripts/verify_phase02r_gate2r5.py` | 62 | audit_append_call | `errors.append("real-source retrieval dry-run produced no hits")` |
+| `scripts/verify_phase02r_gate2r5.py` | 64 | audit_append_call | `errors.append("versioned cache key must include binding epoch")` |
+| `scripts/verify_phase02r_gate2r5.py` | 88 | audit_append_call | `errors.append(f"ineligible candidate was accepted: {bad}")` |
+| `scripts/verify_phase02r_gate2r5.py` | 102 | audit_append_call | `errors.append("corpus without Tier 1 authority was accepted")` |
+| `scripts/verify_phase02r_gate2r5.py` | 112 | audit_append_call | `errors.append("mixed active binding/projection corpus was accepted")` |
+| `scripts/verify_phase02r_gate2r5.py` | 124 | audit_append_call | `errors.append("stale query binding epoch was accepted")` |
+| `scripts/verify_phase02r_gate2r5.py` | 135 | audit_append_call | `errors.append("retrieval projection is not deterministic under candidate ordering")` |
+| `scripts/verify_phase02r_gate2r5.py` | 137 | audit_append_call | `errors.append(f"Gate 2R.5 behavioral checks failed to execute: {exc}")` |
+| `scripts/verify_phase02r_gate2r5.py` | 159 | audit_append_call | `checks.append(_run([sys.executable, "-m", "compileall", "-q", *compile_targets]))` |
+| `scripts/verify_phase02r_gate2r5.py` | 161 | audit_append_call | `errors.append("compileall failed for Gate 2R.5 files")` |
+| `scripts/verify_phase02r_gate2r5.py` | 169 | audit_append_call | `checks.append(_run(command))` |
+| `scripts/verify_phase02r_gate2r5.py` | 171 | audit_append_call | `errors.append(message)` |
+| `scripts/verify_phase02r_gate2r5.py` | 175 | audit_append_call | `errors.append("Gate 2R.5 closure requires committed candidate evidence, approvals, and a separate transition; implementation verifier cannot close the gate")` |
+| `scripts/verify_phase02r_gate2r6.py` | 27 | audit_append_call | `errors.append("Phase 02R start_approved must remain true")` |
+| `scripts/verify_phase02r_gate2r6.py` | 29 | audit_append_call | `errors.append(f"Gate 2R.6 implementation requires approved_gate=2R.5, found {control.get('approved_gate')!r}")` |
+| `scripts/verify_phase02r_gate2r6.py` | 31 | audit_append_call | `errors.append(f"Gate 2R.6 implementation requires authorised_next_gate=2R.6, found {control.get('authorised_next_gate')!r}")` |
+| `scripts/verify_phase02r_gate2r6.py` | 33 | audit_append_call | `errors.append("Gate 2R.7+ is authorised; Gate 2R.6 verifier must not run against downstream state")` |
+| `scripts/verify_phase02r_gate2r6.py` | 56 | audit_append_call | `errors.append("fixture artifact is not grounded_verified")` |
+| `scripts/verify_phase02r_gate2r6.py` | 58 | audit_append_call | `errors.append("generation policy version mismatch")` |
+| `scripts/verify_phase02r_gate2r6.py` | 60 | audit_append_call | `errors.append("artifact must carry source provenance")` |
+| `scripts/verify_phase02r_gate2r6.py` | 62 | audit_append_call | `errors.append("artifact contains mixed corpus provenance")` |
+| `scripts/verify_phase02r_gate2r6.py` | 64 | audit_append_call | `errors.append("assessment item deterministic answer verification failed")` |
+| `scripts/verify_phase02r_gate2r6.py` | 66 | audit_append_call | `errors.append("unsupported curriculum claim was not rejected")` |
+| `scripts/verify_phase02r_gate2r6.py` | 68 | audit_append_call | `errors.append("incorrect deterministic answer was not rejected")` |
+| `scripts/verify_phase02r_gate2r6.py` | 82 | audit_append_call | `errors.append("missing objective generation did not fail closed")` |
+| `scripts/verify_phase02r_gate2r6.py` | 87 | audit_append_call | `errors.append("explicit safe fallback contract failed")` |
+| `scripts/verify_phase02r_gate2r6.py` | 91 | audit_append_call | `errors.append("generation packet hash is not deterministic")` |
+| `scripts/verify_phase02r_gate2r6.py` | 93 | audit_append_call | `errors.append("Gate 2R.6 must not wire tutor runtime behavior")` |
+| `scripts/verify_phase02r_gate2r6.py` | 95 | audit_append_call | `errors.append("Gate 2R.6 packet must not authorise Gate 2R.7")` |
+| `scripts/verify_phase02r_gate2r6.py` | 97 | audit_append_call | `errors.append(f"Gate 2R.6 behavioral checks failed to execute: {exc}")` |
+| `scripts/verify_phase02r_gate2r6.py` | 121 | audit_append_call | `checks.append(_run([sys.executable, "-m", "compileall", "-q", *compile_targets]))` |
+| `scripts/verify_phase02r_gate2r6.py` | 123 | audit_append_call | `errors.append("compileall failed for Gate 2R.6 files")` |
+| `scripts/verify_phase02r_gate2r6.py` | 131 | audit_append_call | `checks.append(_run(command))` |
+| `scripts/verify_phase02r_gate2r6.py` | 133 | audit_append_call | `errors.append(message)` |
+| `scripts/verify_phase02r_gate2r6.py` | 137 | audit_append_call | `errors.append("Gate 2R.6 closure requires committed candidate evidence, approvals, and a separate transition; implementation verifier cannot close the gate")` |
+| `scripts/verify_phase02r_gate2r7.py` | 27 | audit_append_call | `errors.append("Phase 02R start_approved must remain true")` |
+| `scripts/verify_phase02r_gate2r7.py` | 29 | audit_append_call | `errors.append(f"Gate 2R.7 implementation requires approved_gate=2R.6, found {control.get('approved_gate')!r}")` |
+| `scripts/verify_phase02r_gate2r7.py` | 31 | audit_append_call | `errors.append(f"Gate 2R.7 implementation requires authorised_next_gate=2R.7, found {control.get('authorised_next_gate')!r}")` |
+| `scripts/verify_phase02r_gate2r7.py` | 33 | audit_append_call | `errors.append("Gate 2R.8 is already authorised; refusing Gate 2R.7 implementation verification")` |
+| `scripts/verify_phase02r_gate2r7.py` | 35 | audit_append_call | `errors.append("Gate 2R.7 approval manifest already exists; implementation verifier must run before approval")` |
+| `scripts/verify_phase02r_gate2r7.py` | 59 | audit_append_call | `errors.append("fixture tutor response is not grounded")` |
+| `scripts/verify_phase02r_gate2r7.py` | 61 | audit_append_call | `errors.append("fixture tutor trace did not pass grounding")` |
+| `scripts/verify_phase02r_gate2r7.py` | 63 | audit_append_call | `errors.append("fixture tutor trace lacks source provenance")` |
+| `scripts/verify_phase02r_gate2r7.py` | 65 | audit_append_call | `errors.append("fixture tutor claim validation did not pass")` |
+| `scripts/verify_phase02r_gate2r7.py` | 69 | audit_append_call | `errors.append("tutor provenance was not persisted")` |
+| `scripts/verify_phase02r_gate2r7.py` | 72 | audit_append_call | `errors.append("duplicate tutor_message_id was not rejected")` |
+| `scripts/verify_phase02r_gate2r7.py` | 83 | audit_append_call | `errors.append("safe fallback contract failed")` |
+| `scripts/verify_phase02r_gate2r7.py` | 85 | audit_append_call | `errors.append("safe fallback emitted authoritative grounding")` |
+| `scripts/verify_phase02r_gate2r7.py` | 93 | audit_append_call | `errors.append("missing grounding without fallback did not fail closed")` |
+| `scripts/verify_phase02r_gate2r7.py` | 102 | audit_append_call | `errors.append("failed consent control did not block tutor request")` |
+| `scripts/verify_phase02r_gate2r7.py` | 108 | audit_append_call | `errors.append("learner provenance view exposes raw source chunk ids")` |
+| `scripts/verify_phase02r_gate2r7.py` | 110 | audit_append_call | `errors.append("auditor provenance view lacks source references")` |
+| `scripts/verify_phase02r_gate2r7.py` | 114 | audit_append_call | `errors.append("tutor packet hash is not deterministic")` |
+| `scripts/verify_phase02r_gate2r7.py` | 116 | audit_append_call | `errors.append("Gate 2R.7 packet must not authorise Gate 2R.8")` |
+| `scripts/verify_phase02r_gate2r7.py` | 118 | audit_append_call | `errors.append("Gate 2R.7 packet must not wire legacy migration")` |
+| `scripts/verify_phase02r_gate2r7.py` | 120 | audit_append_call | `errors.append(f"Gate 2R.7 behavioral checks failed to execute: {exc}")` |
+| `scripts/verify_phase02r_gate2r7.py` | 141 | audit_append_call | `checks.append(_run([sys.executable, "-m", "compileall", "-q", *compile_targets]))` |
+| `scripts/verify_phase02r_gate2r7.py` | 143 | audit_append_call | `errors.append("compileall failed for Gate 2R.7 files")` |
+| `scripts/verify_phase02r_gate2r7.py` | 151 | audit_append_call | `checks.append(_run(command))` |
+| `scripts/verify_phase02r_gate2r7.py` | 153 | audit_append_call | `errors.append(message)` |
+| `scripts/verify_phase02r_gate2r7.py` | 157 | audit_append_call | `errors.append("Gate 2R.7 closure requires committed candidate evidence, approvals, and a separate transition; implementation verifier cannot close the gate")` |
+| `scripts/verify_phase02r_gate2r8.py` | 28 | audit_append_call | `errors.append("Phase 02R start_approved must remain true")` |
+| `scripts/verify_phase02r_gate2r8.py` | 30 | audit_append_call | `errors.append(f"Gate 2R.8 implementation requires approved_gate=2R.7, found {control.get('approved_gate')!r}")` |
+| `scripts/verify_phase02r_gate2r8.py` | 32 | audit_append_call | `errors.append(f"Gate 2R.8 implementation requires authorised_next_gate=2R.8, found {control.get('authorised_next_gate')!r}")` |
+| `scripts/verify_phase02r_gate2r8.py` | 34 | audit_append_call | `errors.append("Gate 2R.8 approval manifest already exists; implementation verifier must run before approval")` |
+| `scripts/verify_phase02r_gate2r8.py` | 37 | audit_append_call | `errors.append("execution plan must authorise Gate 2R.8 only")` |
+| `scripts/verify_phase02r_gate2r8.py` | 39 | audit_append_call | `errors.append("execution plan must record Gate 2R.7 verified complete and Gate 2R.8 authorised")` |
+| `scripts/verify_phase02r_gate2r8.py` | 69 | audit_append_call | `errors.append("evaluation fixture lacks required positive/negative cases")` |
+| `scripts/verify_phase02r_gate2r8.py` | 72 | audit_append_call | `errors.append("Gate 2R.8 evaluation fixture did not pass thresholds")` |
+| `scripts/verify_phase02r_gate2r8.py` | 74 | audit_append_call | `errors.append("recall_at_k is below threshold")` |
+| `scripts/verify_phase02r_gate2r8.py` | 76 | audit_append_call | `errors.append("precision_at_k is below threshold")` |
+| `scripts/verify_phase02r_gate2r8.py` | 78 | audit_append_call | `errors.append("mrr is below threshold")` |
+| `scripts/verify_phase02r_gate2r8.py` | 91 | audit_append_call | `errors.append("negative retrieval hit was not rejected")` |
+| `scripts/verify_phase02r_gate2r8.py` | 96 | audit_append_call | `errors.append("legacy migration manifest is not review-ready")` |
+| `scripts/verify_phase02r_gate2r8.py` | 98 | audit_append_call | `errors.append("Gate 2R.8 legacy manifest must not execute migration")` |
+| `scripts/verify_phase02r_gate2r8.py` | 107 | audit_append_call | `errors.append("published ungrounded legacy artifact was not quarantined")` |
+| `scripts/verify_phase02r_gate2r8.py` | 110 | audit_append_call | `errors.append("evaluation report must not declare Phase 02R completion")` |
+| `scripts/verify_phase02r_gate2r8.py` | 117 | audit_append_call | `errors.append("audit bundle hash is not deterministic")` |
+| `scripts/verify_phase02r_gate2r8.py` | 119 | audit_append_call | `errors.append("audit bundle must not declare Phase 02R completion")` |
+| `scripts/verify_phase02r_gate2r8.py` | 121 | audit_append_call | `errors.append(f"Gate 2R.8 behavioral checks failed to execute: {exc}")` |
+| `scripts/verify_phase02r_gate2r8.py` | 145 | audit_append_call | `checks.append(_run([sys.executable, "-m", "compileall", "-q", *compile_targets]))` |
+| `scripts/verify_phase02r_gate2r8.py` | 147 | audit_append_call | `errors.append("compileall failed for Gate 2R.8 files")` |
+| `scripts/verify_phase02r_gate2r8.py` | 156 | audit_append_call | `checks.append(_run(command))` |
+| `scripts/verify_phase02r_gate2r8.py` | 158 | audit_append_call | `errors.append(message)` |
+| `scripts/verify_phase02r_gate2r8.py` | 162 | audit_append_call | `errors.append("Gate 2R.8 closure requires committed candidate evidence, approvals, and a final Phase 02R closure decision; implementation verifier cannot close the phase")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 78 | audit_append_call | `errors.append("PHASE02R_OBJECT_STORAGE_BACKEND is not configured")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 80 | audit_append_call | `errors.append("local filesystem object-storage probe is development-only and does not prove staging object storage")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 82 | audit_append_call | `errors.append("PHASE02R_OBJECT_STORAGE_PROBE_DIR is not configured")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 84 | audit_append_call | `errors.append("PHASE02R_OBJECT_STORAGE_BACKUP_DIR is not configured")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 86 | audit_append_call | `errors.append("PHASE02R_OBJECT_STORAGE_SCOPED_TOKEN is not configured")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 93 | audit_append_call | `errors.append("object-storage probe directory must be outside the repository")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 95 | audit_append_call | `errors.append("object-storage backup directory must be outside the repository")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 97 | audit_append_call | `errors.append("object-storage backup directory must be separate from probe directory")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 115 | audit_append_call | `errors.append("object-storage readback SHA-256 mismatch")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 122 | audit_append_call | `errors.append("object-storage overwrite probe could not find original object")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 142 | audit_append_call | `errors.append("object-storage restored object SHA-256 mismatch")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 144 | audit_append_call | `errors.append(f"object-storage functional probe failed: {exc}")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 162 | audit_append_call | `errors.append("Python 3.12+ is required")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 172 | audit_append_call | `errors.append(f"{executable} is not available on PATH")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 177 | audit_append_call | `errors.append("git status --porcelain failed")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 179 | audit_append_call | `errors.append("worktree is not clean")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 181 | audit_append_call | `warnings.append("worktree is dirty")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 191 | audit_append_call | `errors.append(f"required reproducibility file missing: {relative}")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 193 | audit_append_call | `errors.append("required Python dependency lock/input files are missing")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 198 | audit_append_call | `errors.append("migration graph check failed")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 203 | audit_append_call | `errors.append("schema integrity check failed")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 208 | audit_append_call | `errors.append("backend app.api_v2 entrypoint import failed")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 213 | audit_append_call | `errors.append("frontend package.json missing")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 219 | audit_append_call | `warnings.append(f"required runtime env vars are unset for local proof: {', '.join(missing_env)}")` |
+| `scripts/verify_phase0_or_equivalent_baseline.py` | 228 | audit_append_call | `warnings.append("Redis CLI/server not found on PATH; Docker-backed Redis may still be available in later gates")` |
+| `scripts/workspace_hygiene/audit_workspace_hygiene.py` | 45 | audit_append_call | `files.append(path.relative_to(ROOT).as_posix())` |
+| `scripts/workspace_hygiene/audit_workspace_hygiene.py` | 58 | audit_append_call | `candidates.append(line[3:].strip())` |
 | `tests/ci/test_item_bank_ci_jobs.py` | 180 | audit_append_call | `failures.append(f"{item.get('item_id', '?')}: missing {missing}")` |
 | `tests/ci/test_item_bank_ci_jobs.py` | 184 | audit_append_call | `failures.append(` |
 | `tests/ci/test_item_bank_ci_jobs.py` | 253 | audit_append_call | `latencies.append(lat)` |
@@ -3822,22 +5883,12 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `tests/integration/test_lesson_gamification_transaction_rollback_proof.py` | 89 | audit_events_table | `audit_events_table=audit_events,` |
 | `tests/integration/test_lesson_sync.py` | 54 | audit_append_call | `calls.append(("complete", lesson_id, None))` |
 | `tests/integration/test_lesson_sync.py` | 57 | audit_append_call | `calls.append(("feedback", lesson_id, score))` |
-| `tests/integration/test_popia_lifecycle_response_contract.py` | 35 | audit_append_call | `self.events.append("consent.granted")` |
-| `tests/integration/test_popia_lifecycle_response_contract.py` | 47 | audit_append_call | `self.events.append(f"consent.{reason}")` |
-| `tests/integration/test_popia_lifecycle_response_contract.py` | 51 | audit_append_call | `self.events.append("consent.renewed")` |
+| `tests/integration/test_popia_lifecycle_response_contract.py` | 32 | audit_append_call | `self.events.append("consent.granted")` |
+| `tests/integration/test_popia_lifecycle_response_contract.py` | 44 | audit_append_call | `self.events.append(f"consent.{reason}")` |
+| `tests/integration/test_popia_lifecycle_response_contract.py` | 48 | audit_append_call | `self.events.append("consent.renewed")` |
 | `tests/integration/test_popia_lifecycle_runtime_contract.py` | 14 | audit_append_call | `self.calls.append(("grant", guardian_id, learner_id, consent_version, actor_id))` |
 | `tests/integration/test_popia_lifecycle_runtime_contract.py` | 18 | audit_append_call | `self.calls.append(("revoke", guardian_id, learner_id, actor_id, reason))` |
 | `tests/integration/test_stripe_webhooks.py` | 32 | audit_append_call | `calls.append(guardian_id)` |
-| `tests/legacy/integration/test_api_contracts.py` | 114 | audit_events_table | `assert "audit_events" in payload` |
-| `tests/legacy/integration/test_five_pillar_pipeline.py` | 121 | audit_append_call | `captured_calls.append({"args": args, "kwargs": kwargs})` |
-| `tests/legacy/integration/test_lesson_api.py` | 59 | audit_append_call | `captured_prompts.append({"system": system, "user": user})` |
-| `tests/legacy/popia/test_popia_compliance.py` | 237 | audit_log_identifier | `from app.models import AuditLog` |
-| `tests/legacy/popia/test_popia_compliance.py` | 239 | audit_log_identifier | `log = AuditLog()` |
-| `tests/legacy/unit/test_irt_benchmarks.py` | 27 | audit_append_call | `session.responses.append(Response(item.item_id, is_correct, 5000))` |
-| `tests/legacy/unit/test_irt_benchmarks.py` | 43 | audit_append_call | `bank.append(Item(` |
-| `tests/legacy/unit/test_irt_benchmarks.py` | 57 | audit_append_call | `estimates.append(est)` |
-| `tests/legacy/unit/test_irt_benchmarks.py` | 61 | audit_append_call | `results.append((true_theta, avg_est, error))` |
-| `tests/legacy/unit/test_profiler.py` | 21 | audit_append_call | `events.append({` |
 | `tests/phase01/test_batch_generation.py` | 200 | audit_append_call | `db.add = MagicMock(side_effect=lambda obj: added_objects.append(obj))` |
 | `tests/phase01/test_batch_generation.py` | 383 | audit_append_call | `db.add = MagicMock(side_effect=lambda o: added_objects.append(o))` |
 | `tests/phase01/test_phase1_hardening.py` | 317 | audit_append_call | `self.added.append(obj)` |
@@ -3848,18 +5899,30 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `tests/phase02/test_service.py` | 45 | audit_append_call | `self.calls.append(("full_text", filters))` |
 | `tests/phase02/test_service.py` | 49 | audit_append_call | `self.calls.append(("fetch", filters))` |
 | `tests/phase04/test_phase4_unit.py` | 105 | audit_append_call | `observations.append(` |
-| `tests/phase07/test_phase7_postgres_integration.py` | 91 | audit_append_call | `eligible.sources.append(` |
-| `tests/phase07/test_phase7_postgres_integration.py` | 118 | audit_append_call | `excluded.sources.append(` |
+| `tests/phase07/test_phase7_postgres_integration.py` | 89 | audit_append_call | `eligible.sources.append(` |
+| `tests/phase07/test_phase7_postgres_integration.py` | 116 | audit_append_call | `excluded.sources.append(` |
 | `tests/reconciliation/test_phases_1_7_reconciliation.py` | 72 | audit_record_call | `result = await ContentAnswerKeyVerificationService().record(` |
-| `tests/test_entrypoints.py` | 94 | audit_append_call | `missing.append(f"{prefix}{fragment}")` |
+| `tests/test_entrypoints.py` | 93 | audit_append_call | `missing.append(f"{prefix}{fragment}")` |
 | `tests/unit/audit_remediation/test_backend_fast_phase02n.py` | 65 | audit_append_call | `lines.append(f"{hashlib.sha256(path.read_bytes()).hexdigest()}  raw/{path.name}\n")` |
+| `tests/unit/audit_remediation/test_e2e_playwright_authority.py` | 100 | audit_append_call | `lines.append(f"{hashlib.sha256(path.read_bytes()).hexdigest()}  {path.name}")` |
+| `tests/unit/audit_remediation/test_frontend_tooling_authority.py` | 51 | audit_append_call | `steps.append({"name": name, "returncode": 0})` |
+| `tests/unit/audit_remediation/test_frontend_tooling_authority.py` | 71 | audit_append_call | `lines.append(f"{_sha(path)}  {path.name}")` |
+| `tests/unit/audit_remediation/test_frontend_tooling_authority.py` | 121 | audit_append_call | `lines.append(f"{_sha(path)}  {path.name}")` |
+| `tests/unit/audit_remediation/test_hosted_ci_merge_readiness_authority.py` | 50 | audit_append_call | `entries.append(f"{_sha(item)}  {item.name}\n")` |
+| `tests/unit/audit_remediation/test_openapi_frontend_contract_finalization.py` | 123 | audit_append_call | `lines.append(f"{hashlib.sha256(path.read_bytes()).hexdigest()}  {path.name}")` |
+| `tests/unit/audit_remediation/test_remote_ci_branch_integration_authority.py` | 37 | audit_append_call | `lines.append(f"{digest}  {path.name}\n")` |
+| `tests/unit/coverage_suites/test_unit_shard_stabilisation.py` | 35 | audit_append_call | `files.append(relative)` |
 | `tests/unit/modules/lessons/test_lesson_generation_perf.py` | 182 | audit_append_call | `latencies.append(elapsed)` |
 | `tests/unit/modules/lessons/test_lesson_generation_perf.py` | 227 | audit_append_call | `latencies.append(elapsed * 1000)  # convert to ms` |
 | `tests/unit/modules/lessons/test_lesson_generation_perf.py` | 268 | audit_append_call | `latencies.append((time.perf_counter() - start) * 1000)` |
-| `tests/unit/test_api_v2_router_contract.py` | 57 | audit_append_call | `missing.append(f"{router_name}:{expected_prefix}")` |
+| `tests/unit/runtime_readiness/test_backend_backed_seeded_e2e_authority.py` | 149 | audit_append_call | `payload["specs"].append("tests/e2e/learner-mocked-api-journey.spec.ts")` |
+| `tests/unit/runtime_readiness/test_controlled_beta_activation_preflight_authority.py` | 37 | audit_append_call | `lines.append(f"{hashlib.sha256(path.read_bytes()).hexdigest()}  {path.as_posix()}\n")` |
+| `tests/unit/runtime_readiness/test_controlled_beta_launch_governance_authority.py` | 37 | audit_append_call | `lines.append(f"{hashlib.sha256(path.read_bytes()).hexdigest()}  {path.as_posix()}\n")` |
+| `tests/unit/runtime_readiness/test_controlled_beta_readiness_authority.py` | 30 | audit_append_call | `lines.append(f"{digest}  {path.as_posix()}\n")` |
+| `tests/unit/test_api_v2_router_contract.py` | 66 | audit_append_call | `missing.append(f"{router_name}:{expected_prefix}")` |
 | `tests/unit/test_arq_worker_import_contract.py` | 22 | audit_append_call | `matching.append(path)` |
-| `tests/unit/test_assessments_router_contract.py` | 27 | audit_append_call | `self.list_calls.append({"limit": limit, "offset": offset})` |
-| `tests/unit/test_assessments_router_contract.py` | 37 | audit_append_call | `self.submit_calls.append(` |
+| `tests/unit/test_assessments_router_contract.py` | 30 | audit_append_call | `self.list_calls.append({"limit": limit, "offset": offset})` |
+| `tests/unit/test_assessments_router_contract.py` | 40 | audit_append_call | `self.submit_calls.append(` |
 | `tests/unit/test_audit_callsite_inventory_and_adapter.py` | 44 | audit_append_call | `self.calls.append(kwargs)` |
 | `tests/unit/test_audit_callsite_inventory_and_adapter.py` | 50 | audit_append_call | `result = await adapter.append(action="x", resource_id="r1")` |
 | `tests/unit/test_audit_repository.py` | 4 | audit_repository | `Task 23: AuditRepository unit tests` |
@@ -3902,9 +5965,9 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `tests/unit/test_backend_runtime_wiring_preflight.py` | 24 | audit_logs_table | `assert "`audit_logs` deletion allowed" in text` |
 | `tests/unit/test_billing_monetization_production_readiness.py` | 69 | audit_log_identifier | `assert "processed:evt_1:invoice.created:1" in store.audit_log` |
 | `tests/unit/test_billing_monetization_production_readiness.py` | 70 | audit_log_identifier | `assert "duplicate:evt_1:invoice.created" in store.audit_log` |
-| `tests/unit/test_billing_router_contract.py` | 36 | audit_append_call | `self.checkout_calls.append({"guardian_id": guardian_id, "email_plaintext": email_plaintext})` |
-| `tests/unit/test_billing_router_contract.py` | 40 | audit_append_call | `self.webhook_calls.append({"payload_len": len(payload), "signature": signature})` |
-| `tests/unit/test_billing_router_contract.py` | 49 | audit_append_call | `self.records.append((event_type, payload))` |
+| `tests/unit/test_billing_router_contract.py` | 34 | audit_append_call | `self.checkout_calls.append({"guardian_id": guardian_id, "email_plaintext": email_plaintext})` |
+| `tests/unit/test_billing_router_contract.py` | 38 | audit_append_call | `self.webhook_calls.append({"payload_len": len(payload), "signature": signature})` |
+| `tests/unit/test_billing_router_contract.py` | 47 | audit_append_call | `self.records.append((event_type, payload))` |
 | `tests/unit/test_consent_policy.py` | 75 | audit_append_call | `self.events.append(kwargs)` |
 | `tests/unit/test_content_bulk_review.py` | 35 | audit_append_call | `self.rejected.append(artifact_id)` |
 | `tests/unit/test_content_bulk_review.py` | 39 | audit_append_call | `self.quarantined.append(artifact_id)` |
@@ -3928,9 +5991,9 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `tests/unit/test_db_migration_seed_repeatability.py` | 90 | audit_events_table | `'CREATE TABLE public."audit_events" (',` |
 | `tests/unit/test_db_migration_seed_repeatability.py` | 102 | audit_events_table | `assert presence['audit_events'] is True` |
 | `tests/unit/test_diagnostics_scoring_snapshot.py` | 67 | audit_append_call | `captured.append([float(getattr(item, "difficulty_b", getattr(item, "b_param", 0.0))) for item, _ in responses])` |
-| `tests/unit/test_envelope_route_background.py` | 12 | audit_append_call | `calls.append("ran")` |
-| `tests/unit/test_etl_mcp_server_startup.py` | 22 | audit_append_call | `self.calls.append(kwargs)` |
-| `tests/unit/test_etl_mcp_server_startup.py` | 30 | audit_append_call | `called.append((mcp_server, host, port))` |
+| `tests/unit/test_envelope_route_background.py` | 13 | audit_append_call | `calls.append("ran")` |
+| `tests/unit/test_etl_mcp_server_startup.py` | 85 | audit_append_call | `self.calls.append(kwargs)` |
+| `tests/unit/test_etl_mcp_server_startup.py` | 93 | audit_append_call | `called.append((mcp_server, host, port))` |
 | `tests/unit/test_lesson_object_authorization_contracts.py` | 48 | audit_append_call | `candidates.append(node)` |
 | `tests/unit/test_lesson_object_authorization_contracts.py` | 62 | audit_append_call | `candidates.append(node)` |
 | `tests/unit/test_no_raw_dict_responses.py` | 74 | audit_append_call | `violations.append(` |
@@ -3951,9 +6014,9 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `tests/unit/test_popia_service_authority.py` | 62 | audit_append_call | `violations.append((str(service_file.relative_to(repo_root)), pattern))` |
 | `tests/unit/test_practice_session_authorization.py` | 81 | audit_append_call | `consent_calls.append((db, current_user, checked_learner_id))` |
 | `tests/unit/test_practice_session_authorization.py` | 168 | audit_append_call | `consent_calls.append((db, current_user, checked_learner_id))` |
-| `tests/unit/test_readonly_deep_readiness_runtime.py` | 7 | audit_append_call | `async def execute(self, statement): self.statements.append(str(statement)); return R()` |
-| `tests/unit/test_real_audit_runtime_facade.py` | 6 | audit_append_call | `async def record(self, **kw): self.events.append(kw); return {"ok": True}` |
-| `tests/unit/test_real_consent_runtime_facade.py` | 5 | audit_append_call | `async def record(self, **kw): self.events.append(kw); return {"ok": True}` |
+| `tests/unit/test_readonly_deep_readiness_runtime.py` | 7 | audit_append_call | `async def execute(self, statement): self.statements.append(str(statement)); return R()  # noqa: E702` |
+| `tests/unit/test_real_audit_runtime_facade.py` | 6 | audit_append_call | `async def record(self, **kw): self.events.append(kw); return {"ok": True}  # noqa: E702` |
+| `tests/unit/test_real_consent_runtime_facade.py` | 5 | audit_append_call | `async def record(self, **kw): self.events.append(kw); return {"ok": True}  # noqa: E702` |
 | `tests/unit/test_runtime_blockers_after_followup_audit.py` | 16 | audit_append_call | `self.calls.append(("grant", guardian_id, learner_id, consent_version, actor_id))` |
 | `tests/unit/test_runtime_blockers_after_followup_audit.py` | 20 | audit_append_call | `self.calls.append(("revoke", guardian_id, learner_id, actor_id, reason))` |
 | `tests/unit/test_schema_drift_deep_readiness_audit_slice.py` | 48 | audit_events_table | `for bad in ["session.commit()", "INSERT INTO audit_events", "alembic stamp head"]:` |
@@ -3965,7 +6028,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `tests/unit/test_sprint3_popia_router_data_rights.py` | 36 | audit_append_call | `self.calls.append(("correction", {"learner_id": learner_id, "current_user": current_user, "fields": fields, "reason": reason}))` |
 | `tests/unit/test_sprint3_popia_router_data_rights.py` | 40 | audit_append_call | `self.calls.append(("restriction", {"learner_id": learner_id, "current_user": current_user, "reason": reason}))` |
 | `tests/unit/test_v2_services.py` | 6 | audit_log_identifier | `from app.domain.entities import AuditLog, LearnerProfile` |
-| `tests/unit/test_v2_services.py` | 35 | audit_log_identifier | `repo.append.return_value = AuditLog(` |
+| `tests/unit/test_v2_services.py` | 36 | audit_log_identifier | `repo.append.return_value = AuditLog(` |
 | `tests/unit/test_v2_services_full.py` | 15 | audit_log_identifier | `from app.domain.entities import LearnerProfile, AuditLog` |
 | `tests/unit/test_v2_services_full.py` | 29 | audit_log_identifier | `def _audit_log(event_type: str = "TEST") -> AuditLog:` |
 | `tests/unit/test_v2_services_full.py` | 30 | audit_log_identifier | `return AuditLog(event_id=str(uuid.uuid4()), learner_id=LEARNER_ID, event_type=event_type,` |

@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-05-20T23:54:20Z",
-  "current_commit": "aa1e1e883fe9ea07116238229dca4694c7216d3a",
+  "generated_at": "2026-08-01T20:59:08Z",
+  "current_commit": "66323711cba9ebc39919f32491c707aeb92e5e58",
   "status": "auth-refresh-db-proof-external-blocked",
   "dsn_present": false,
   "pytest_return_code": null,
-  "pytest_summary": "AUTH_REFRESH_DB_PROOF_DSN not set; DB proof not executed",
+  "pytest_summary": "DB pytest not requested",
   "evidence_fields": [
     {
       "name": "Database DSN label",
-      "value": "staging-postgres",
+      "value": "github-actions-postgres-service",
       "valid": true,
       "reason": "ok"
     },
     {
       "name": "Test command",
-      "value": "AUTH_REFRESH_DB_PROOF_DSN=\"$REAL_AUTH_REFRESH_DB_PROOF_DSN\" make auth-refresh-db-proof-release-check",
+      "value": "python -m pytest -c pytest.ini tests/integration/test_auth_refresh_db_proof.py -q --no-cov --tb=short -rs",
       "valid": true,
       "reason": "ok"
     },
@@ -50,19 +50,19 @@
     },
     {
       "name": "Evidence URL",
-      "value": "https://github.com/NkgoloL/Eduboost-V2/actions/runs/REAL_RUN_ID",
+      "value": "https://github.com/NkgoloL/Eduboost-V2/actions/runs/26226114014",
       "valid": true,
       "reason": "ok"
     },
     {
       "name": "Commit SHA",
-      "value": "aa1e1e883fe9ea07116238229dca4694c7216d3a",
+      "value": "84ace987e1f577fcf647fbe105f78680003c5aaa",
       "valid": true,
       "reason": "ok"
     },
     {
       "name": "Verified by",
-      "value": "Nkgolo Lebelo",
+      "value": "github-actions",
       "valid": true,
       "reason": "ok"
     },
@@ -74,8 +74,7 @@
     }
   ],
   "blockers": [
-    "AUTH_REFRESH_DB_PROOF_DSN is not set",
-    "DB pytest did not pass"
+    "AUTH_REFRESH_DB_PROOF_DSN is not set"
   ],
   "no_false_closure_rules": [
     "Skipped DB tests are not proof.",

@@ -1,6 +1,6 @@
 # Backend Runtime Wiring Preflight Report
 
-Generated at: `2026-06-27T02:22:35Z`
+Generated at: `2026-08-01T21:01:55Z`
 
 | Check | Return code | Command |
 |---|---:|---|
@@ -20,6 +20,8 @@ Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/pytho
 Return code: `0`
 
 ```text
+/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/modules/consent/service.py:27: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+  from app.core.exceptions import ConsentExpiredError, ConsentRequiredError
 Backend runtime wiring preflight check
 - PASS [audit] audit adapter-ready candidate produces canonical payload: {'candidate': 'consent_audit_events', 'payload_keys': ['action', 'actor_id', 'payload', 'resource_id', 'resource_type']}
 - PASS [consent] consent runtime normalization and constructor probes are stable: {'importable_surfaces': 3, 'missing_surfaces': 0, 'required_parameter_total': 3}
@@ -42,6 +44,8 @@ Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/pytho
 Return code: `0`
 
 ```text
+/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/modules/consent/service.py:27: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+  from app.core.exceptions import ConsentExpiredError, ConsentRequiredError
 Backend implementation 371-375 check
 - PASS audit migration allowed candidates: ('consent_audit_events', 'popia_data_rights_audit')
 - PASS audit migration event maps learner to resource
@@ -74,7 +78,7 @@ Return code: `0`
 
 ```text
 {
-  "captured_at": "2026-06-27T02:22:35Z",
+  "captured_at": "2026-08-01T21:01:55Z",
   "database_url_redacted": "postgresql+asyncpg://real_user:***@localhost:5432/eduboost_test",
   "dry_run": true,
   "passed": true,

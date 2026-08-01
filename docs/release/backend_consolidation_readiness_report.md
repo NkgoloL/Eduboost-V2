@@ -1,6 +1,6 @@
 # Backend Consolidation Readiness Report
 
-Generated at: `2026-06-27T02:21:56Z`
+Generated at: `2026-08-01T21:01:36Z`
 
 | Check | Return code | Command |
 |---|---:|---|
@@ -40,7 +40,7 @@ Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/pytho
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/backend_deletion_candidate_inventory.md (340905 candidate row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/backend_deletion_candidate_inventory.md (349951 candidate row(s))
 ```
 
 ## no-op guard

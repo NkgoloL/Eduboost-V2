@@ -1,6 +1,6 @@
 # Backend Consolidation Terminal Report
 
-Generated at: `2026-06-27T02:22:04Z`
+Generated at: `2026-08-01T21:01:47Z`
 
 | Check | Return code | Command |
 |---|---:|---|
@@ -125,6 +125,8 @@ Backend consolidation release guard
 - PASS [report] diagnostic report present
 - PASS backend consolidation release guard
 
+/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/modules/consent/service.py:27: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+  from app.core.exceptions import ConsentExpiredError, ConsentRequiredError
 Audit runtime compatibility surface
 - PASS [audit compat] AuditRepositoryCompatAdapter: present
 - PASS [audit compat] AuditEventInput: present

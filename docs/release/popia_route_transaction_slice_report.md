@@ -1,7 +1,7 @@
 # POPIA Route Transaction Slice Report
 
-Generated at: `2026-06-12T17:40:54Z`
-Commit: `a70b57616bb29572fcb57961b91a3f68f0c66329`
+Generated at: `2026-08-01T20:58:43Z`
+Commit: `66323711cba9ebc39919f32491c707aeb92e5e58`
 
 - Route file: `app/api_v2_routers/popia.py`
 - Local status: `route-popia-delegation-passing`

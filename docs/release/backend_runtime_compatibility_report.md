@@ -1,6 +1,6 @@
 # Backend Runtime Compatibility Report
 
-Generated at: `2026-06-27T02:21:34Z`
+Generated at: `2026-08-01T21:00:58Z`
 
 | Check | Return code | Command |
 |---|---:|---|
@@ -20,6 +20,8 @@ Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/pytho
 Return code: `0`
 
 ```text
+/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/modules/consent/service.py:27: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+  from app.core.exceptions import ConsentExpiredError, ConsentRequiredError
 Audit runtime compatibility surface
 - PASS [audit compat] AuditRepositoryCompatAdapter: present
 - PASS [audit compat] AuditEventInput: present
@@ -46,7 +48,7 @@ Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/pytho
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/audit_callsite_inventory.md (3966 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/audit_callsite_inventory.md (6029 row(s))
 ```
 
 ## consent compatibility
@@ -56,7 +58,7 @@ Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/pytho
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/consent_callsite_inventory.md (600 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/consent_callsite_inventory.md (593 row(s))
 ```
 
 ## health readiness

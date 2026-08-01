@@ -1,6 +1,6 @@
 # Backend Runtime Wiring Cases Report
 
-Generated at: `2026-06-27T02:22:36Z`
+Generated at: `2026-08-01T20:58:19Z`
 
 | Check | Return code | Command |
 |---|---:|---|
@@ -43,6 +43,8 @@ Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/pytho
 Return code: `0`
 
 ```text
+/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/modules/consent/service.py:27: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+  from app.core.exceptions import ConsentExpiredError, ConsentRequiredError
 Backend runtime wiring preflight check
 - PASS [audit] audit adapter-ready candidate produces canonical payload: {'candidate': 'consent_audit_events', 'payload_keys': ['action', 'actor_id', 'payload', 'resource_id', 'resource_type']}
 - PASS [consent] consent runtime normalization and constructor probes are stable: {'importable_surfaces': 3, 'missing_surfaces': 0, 'required_parameter_total': 3}
