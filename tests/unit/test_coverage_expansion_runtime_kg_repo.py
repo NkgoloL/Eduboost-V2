@@ -32,7 +32,15 @@ async def test_load_graph_idempotent_existing():
     mock_result.scalar_one_or_none.return_value = existing_load
     db.execute.return_value = mock_result
 
-    from app.services.runtime_kg.schemas import RuntimeKGGraphInput
+    from app.services.runtime_kg.schemas import RuntimeKGGraphInput, RuntimeKGNodeInput
+    node = RuntimeKGNodeInput(
+        stable_code="NODE-01",
+        node_type="concept",
+        label="Test Node",
+        curriculum_code="CAPS",
+        grade=4,
+        subject_code="MATH",
+    )
     graph_input = RuntimeKGGraphInput(
         graph_version="v1.0",
         curriculum_code="CAPS",
@@ -41,7 +49,7 @@ async def test_load_graph_idempotent_existing():
         source_ref="ref",
         source_sha256="a" * 64,
         loaded_by="tester",
-        nodes=(),
+        nodes=(node,),
         edges=(),
     )
 
