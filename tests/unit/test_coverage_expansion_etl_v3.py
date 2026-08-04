@@ -5,16 +5,10 @@ dataset splitting, contamination checks, and feedback resolutions.
 """
 from __future__ import annotations
 
-import os
-import tempfile
 import pytest
 
 from app.services.etl.etl_pipeline_v3_additions import (
     EduboostETLv3,
-    AuditEntry,
-    BulkReviewResult,
-    ContaminationReport,
-    DatasetSplitResult,
 )
 
 

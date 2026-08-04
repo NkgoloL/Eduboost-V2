@@ -7,7 +7,6 @@ Unit tests for app.services.content_generation.source_context:
 from __future__ import annotations
 
 from types import SimpleNamespace
-import pytest
 
 from app.services.content_generation.prompt_payloads import SourceContextChunk
 from app.services.content_generation.source_context import (

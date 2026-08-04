@@ -34,13 +34,13 @@ def utc_now() -> str:
     return dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
-def run(cmd: list[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
+def run_command(cmd: list[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
     return run(cmd, check=check, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
 def git_value(args: list[str], default: str | None = None) -> str | None:
     try:
-        return run(["git", *args]).stdout.strip()
+        return run_command(["git", *args]).stdout.strip()
     except Exception:
         return default
 
@@ -62,7 +62,7 @@ def gh_repo_from_origin() -> str | None:
 
 def require_gh() -> None:
     try:
-        run(["gh", "--version"])
+        run_command(["gh", "--version"])
     except Exception as exc:
         raise SystemExit(
             "GitHub CLI 'gh' is required to capture branch-protection evidence. "
@@ -85,7 +85,7 @@ def load_json(path: pathlib.Path) -> Any:
 
 
 def gh_api_json(path: str) -> tuple[bool, Any, dict[str, Any]]:
-    completed = run(["gh", "api", path], check=False)
+    completed = run_command(["gh", "api", path], check=False)
     meta = {
         "command": f"gh api {path}",
         "returncode": completed.returncode,

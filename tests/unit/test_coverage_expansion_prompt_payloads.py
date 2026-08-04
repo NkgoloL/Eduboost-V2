@@ -7,12 +7,10 @@ Unit tests for app.services.content_generation.prompt_payloads:
 """
 from __future__ import annotations
 
-import pytest
 
 from app.services.content_generation.prompt_payloads import (
     DiagnosticGenerationRequest,
     GeneratedDiagnosticItem,
-    GeneratedLesson,
     GenerationRequestBase,
     LessonGenerationRequest,
     SourceContextChunk,

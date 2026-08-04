@@ -8,8 +8,6 @@ import pytest
 from app.services.pii_sweep import (
     PIIScanner,
     PIISweepError,
-    PIIFinding,
-    SweepResult,
     _luhn_valid,
     assert_no_pii,
 )

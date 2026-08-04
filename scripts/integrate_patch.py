@@ -9,17 +9,11 @@ Behavior:
 - If destination already exists, copy the source into `staging/<staging-name>/...` for manual review.
 - Stage all moved files and newly created staging files and create a commit summarizing the action.
 """
-import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 import os
 import sys
 import shutil
 from pathlib import Path
-from scripts._subprocess import run_shell
-
-
-def _run(cmd, cwd=None):
-    print(f"> {cmd}")
-    run_shell(cmd, cwd=cwd)
+from scripts._subprocess import run
 
 
 def main():
@@ -73,13 +67,14 @@ def main():
     except Exception:  # best-effort probe, cannot fail-close
             pass
 
-    # Stage changes
-    try:
-        _run("git add -A")
-        commit_msg = f"chore(integrate): apply patch from {src} (moved {len(moved)} files, staged {len(staged_conflicts)} conflicts)"
-        _run(f"git commit -m \"{commit_msg}\" || echo 'No changes to commit'")
-    except subprocess.CalledProcessError as e:
-        print("Git operations failed:", e)
+    # Stage changes. Argv-list form (no shell=True): commit_msg embeds
+    # `src`, which comes from sys.argv[1] and must never be interpolated
+    # into a shell command string.
+    run(["git", "add", "-A"])
+    commit_msg = f"chore(integrate): apply patch from {src} (moved {len(moved)} files, staged {len(staged_conflicts)} conflicts)"
+    commit_result = run(["git", "commit", "-m", commit_msg], check=False)
+    if commit_result.returncode != 0 and "nothing to commit" not in (commit_result.stdout or ""):
+        print("Git commit failed:", commit_result.stdout, commit_result.stderr)
         sys.exit(1)
 
     print("Integration complete.")

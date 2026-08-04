@@ -5,18 +5,12 @@ Covers DSR data export, erasure, correction, and restriction handling with mocke
 from __future__ import annotations
 
 import uuid
-from datetime import datetime, timezone
-from unittest.mock import AsyncMock, MagicMock
+from unittest.mock import AsyncMock
 
 import pytest
 
-from app.domain.consent import AuditEventType
 from app.domain.data_subject_rights import (
-    CorrectionRequest,
-    DataExportRequest,
-    ErasureRequest,
     RequestStatus,
-    RestrictionRequest,
 )
 from app.services.data_subject_rights_service import DataSubjectRightsService
 

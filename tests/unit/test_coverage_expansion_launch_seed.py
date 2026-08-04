@@ -11,7 +11,6 @@ import uuid
 from pathlib import Path
 from unittest.mock import MagicMock
 
-import pytest
 
 from app.services.launch_content_seed import (
     ADVISORY_LOCK,

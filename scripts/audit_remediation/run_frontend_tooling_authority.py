@@ -130,7 +130,7 @@ def _commands(skip_install: bool) -> list[tuple[str, list[str], Path]]:
     return commands
 
 
-def run(output_dir: Path, *, timeout: int, skip_install: bool) -> dict[str, object]:
+def run_frontend_tooling_authority(output_dir: Path, *, timeout: int, skip_install: bool) -> dict[str, object]:
     results = [_run_step(name, command, cwd, output_dir, timeout) for name, command, cwd in _commands(skip_install)]
     expected = list(EXPECTED_STEP_NAMES)
     if skip_install:
@@ -160,7 +160,7 @@ def main(argv: Iterable[str] | None = None) -> int:
     parser.add_argument("--skip-install", action="store_true")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args(list(argv) if argv is not None else None)
-    payload = run(args.output_dir, timeout=args.timeout, skip_install=args.skip_install)
+    payload = run_frontend_tooling_authority(args.output_dir, timeout=args.timeout, skip_install=args.skip_install)
     if args.json:
         print(json.dumps(payload, indent=2, sort_keys=True))
     else:

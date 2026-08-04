@@ -5,8 +5,6 @@ Unit tests for:
 """
 from __future__ import annotations
 
-import json
-import pytest
 
 from app.services.content_validator import ContentValidator, ValidationResult
 from app.services.pii_sweep import (

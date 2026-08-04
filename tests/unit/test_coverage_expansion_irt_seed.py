@@ -4,8 +4,6 @@ Unit tests for app/api_v2_routers/0005_irt_seed.py migration functions and item 
 from __future__ import annotations
 
 import importlib
-import sys
-import pytest
 
 
 def test_irt_seed_items_structure():

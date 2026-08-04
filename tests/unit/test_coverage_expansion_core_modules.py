@@ -10,7 +10,7 @@ from unittest.mock import AsyncMock, MagicMock
 from fastapi import HTTPException
 
 from app.core.consent_gate import _get_learner_id_from_request, require_active_consent
-from app.modules.diagnostics.irt_params import assign_irt_params, BAND_MIDPOINTS, BAND_BOUNDS
+from app.modules.diagnostics.irt_params import assign_irt_params, BAND_MIDPOINTS
 
 
 @pytest.mark.asyncio

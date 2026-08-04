@@ -5,8 +5,7 @@ _normalise_answer, _answers_agree, and AnswerKeyVerifier pure logic.
 """
 from __future__ import annotations
 
-import pytest
-from unittest.mock import AsyncMock, MagicMock
+from unittest.mock import MagicMock
 
 from app.modules.lessons.answer_key_verifier import (
     AnswerKeyVerifier,

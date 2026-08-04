@@ -10,7 +10,6 @@ from __future__ import annotations
 
 from unittest.mock import AsyncMock, MagicMock
 
-import pytest
 
 from app.services.curriculum_expansion import (
     artifact_eligibility_reasons,

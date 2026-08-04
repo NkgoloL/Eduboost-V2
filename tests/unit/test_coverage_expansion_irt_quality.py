@@ -8,7 +8,6 @@ level fixtures not available here.
 """
 from __future__ import annotations
 
-import math
 from unittest.mock import MagicMock
 
 import pytest

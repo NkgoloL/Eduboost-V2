@@ -11,7 +11,6 @@ from app.core.security import hash_email, hash_password, verify_password
 from app.services.content_schemas import (
     CONTENT_TYPE_SCHEMA_VERSIONS,
     DiagnosticItemPayload,
-    LessonPayload,
     get_schema_version,
 )
 

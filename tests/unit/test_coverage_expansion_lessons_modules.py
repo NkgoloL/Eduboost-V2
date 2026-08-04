@@ -4,7 +4,6 @@ app.modules.lessons.lesson_metrics to further expand test coverage.
 """
 from __future__ import annotations
 
-import os
 import tempfile
 import pytest
 from pathlib import Path
@@ -13,7 +12,7 @@ from app.modules.lessons.prompt_version_registry import (
     PromptTemplateRegistry,
     validate_version_immutable,
 )
-from app.modules.lessons.lesson_metrics import LessonMetrics, lesson_metrics
+from app.modules.lessons.lesson_metrics import lesson_metrics
 
 
 def test_prompt_template_registry_flow():

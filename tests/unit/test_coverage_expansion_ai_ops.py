@@ -7,7 +7,6 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from decimal import Decimal
 
-import pytest
 
 from app.services.ai_operations import (
     AIBudgetExceededError,

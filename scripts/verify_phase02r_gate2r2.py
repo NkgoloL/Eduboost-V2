@@ -16,7 +16,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 
-def run(command: list[str]) -> dict[str, object]:
+def run_command(command: list[str]) -> dict[str, object]:
     proc = run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     return {"command": command, "exit_code": proc.returncode, "output": proc.stdout[-4000:]}
 
@@ -94,7 +94,7 @@ def verify(*, include_real_source: bool) -> dict[str, object]:
     if missing:
         errors.append(f"missing required files: {missing}")
 
-    gate = run([
+    gate = run_command([
         sys.executable,
         "scripts/phase02r_gate_control.py",
         "--expected-approved-gate", "2R.1",
@@ -107,7 +107,7 @@ def verify(*, include_real_source: bool) -> dict[str, object]:
     if gate["exit_code"] != 0:
         errors.append("gate control does not authorise 2R.2")
 
-    compile_check = run([
+    compile_check = run_command([
         sys.executable,
         "-m",
         "compileall",
@@ -121,18 +121,18 @@ def verify(*, include_real_source: bool) -> dict[str, object]:
     if compile_check["exit_code"] != 0:
         errors.append("compileall failed")
 
-    tests = run([sys.executable, "-m", "pytest", "-q", "tests/unit/phase02r/test_gate2r2_secure_acquisition.py", "--no-cov"])
+    tests = run_command([sys.executable, "-m", "pytest", "-q", "tests/unit/phase02r/test_gate2r2_secure_acquisition.py", "--no-cov"])
     checks.append(tests)
     if tests["exit_code"] != 0:
         errors.append("Gate 2R.2 focused unit tests failed")
 
-    dry_run = run([sys.executable, "scripts/curriculum/acquire_phase02r_sources.py", "--dry-run", "--json"])
+    dry_run = run_command([sys.executable, "scripts/curriculum/acquire_phase02r_sources.py", "--dry-run", "--json"])
     checks.append(dry_run)
     if dry_run["exit_code"] != 0:
         errors.append("Gate 2R.2 acquisition dry-run failed")
 
     if include_real_source:
-        acquire = run([sys.executable, "scripts/curriculum/acquire_phase02r_sources.py", "--json"])
+        acquire = run_command([sys.executable, "scripts/curriculum/acquire_phase02r_sources.py", "--json"])
         checks.append(acquire)
         if acquire["exit_code"] != 0:
             errors.append("Gate 2R.2 real source acquisition failed")

@@ -8,16 +8,11 @@ Unit tests for app.services.content_factory pure service logic:
 """
 from __future__ import annotations
 
-import uuid
-from dataclasses import dataclass
 
-import pytest
 
 from app.services.content_factory import (
-    ArtifactProvenanceReport,
     ContentValidationService,
     ETLProvenanceService,
-    SourceGateResult,
     _enum_value,
     stable_json_hash,
 )
