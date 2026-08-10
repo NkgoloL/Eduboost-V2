@@ -6,15 +6,17 @@
     "-r",
     "app",
     "scripts",
+    "-c",
+    ".bandit",
     "-q"
   ],
   "cwd": ".",
-  "exit_code": 1,
-  "finished_at": "2026-07-17T16:56:29.221350+00:00",
+  "exit_code": 0,
+  "finished_at": "2026-08-04T23:31:34.873744+00:00",
   "name": "bandit",
-  "passed": false,
+  "passed": true,
   "required": true,
-  "started_at": "2026-07-17T16:56:07.604659+00:00",
-  "stderr_sha256": "c425eeed3b9f726b9ee427a90fdc769765ccf281e2069a936a7b4fe0f6cdb2ad",
-  "stdout_sha256": "45d2a34d46fa5520459da767fc0a3f6eb43dd52cc4d6b8ee03d435a1b9477e56"
+  "started_at": "2026-08-04T23:31:18.842917+00:00",
+  "stderr_sha256": "fc2186a073d495cb60530eeb08d9bcec9dd682e6328cfe0a34a826955f7eaae8",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 }

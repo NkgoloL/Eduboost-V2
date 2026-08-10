@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-06-12T17:37:43.107984+00:00`
-- branch: `phase-11/technical-debt-burn-down`
-- commit: `a70b57616bb29572fcb57961b91a3f68f0c66329`
+- generated_at_utc: `2026-08-03T14:14:03.401398+00:00`
+- branch: `fix/tsr-b01-gate-remediation`
+- commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 - release_candidate: `unset`
 
 ## Evidence Artifacts
