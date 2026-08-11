@@ -100,10 +100,10 @@
       "id": "TSR-0.1",
       "owner_role": "evidence",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-0",
       "title": "Create `true_state_remediation_register.json` containing every finding in the audit",
-      "updated_at": "2026-08-10T23:37:56.935339+00:00"
+      "updated_at": "2026-08-11T10:33:18.117360+00:00"
     },
     {
       "acceptance_criteria": "Branch, commit, worktree status, submodules, source archive digest, lockfile digests, migration head, and OpenAPI digest are recorded.",
@@ -117,10 +117,10 @@
       "id": "TSR-0.2",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-0",
       "title": "Record exact canonical source state",
-      "updated_at": "2026-08-10T23:37:56.935410+00:00"
+      "updated_at": "2026-08-11T10:33:18.117377+00:00"
     },
     {
       "acceptance_criteria": "Python, pip, OS, Node, pnpm, Docker, Postgres/pgvector, Redis, browser, and relevant native-library versions are machine-readable.",
@@ -134,10 +134,10 @@
       "id": "TSR-0.3",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-0",
       "title": "Capture canonical environment identity",
-      "updated_at": "2026-08-10T23:37:56.935417+00:00"
+      "updated_at": "2026-08-11T10:33:18.117380+00:00"
     },
     {
       "acceptance_criteria": "Backend and frontend install from locked inputs; undeclared/manual dependencies are not required.",
@@ -151,10 +151,10 @@
       "id": "TSR-0.4",
       "owner_role": "evidence",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-0",
       "title": "Reproduce clean dependency installs without using prior caches",
-      "updated_at": "2026-08-10T23:37:56.935421+00:00"
+      "updated_at": "2026-08-11T10:33:18.117382+00:00"
     },
     {
       "acceptance_criteria": "Coverage, collection, Ruff, mypy, Bandit, pip-audit, pnpm audit, secrets, frontend quality, product/runtime, route, schema, and migration checks have raw outputs.",
@@ -168,10 +168,10 @@
       "id": "TSR-0.5",
       "owner_role": "evidence",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-0",
       "title": "Capture the complete starting failure profile",
-      "updated_at": "2026-08-10T23:37:56.935425+00:00"
+      "updated_at": "2026-08-11T10:33:18.117383+00:00"
     },
     {
       "acceptance_criteria": "Pull requests outside remediation/safety/reliability require an explicit exception; no release flag changes are allowed.",
@@ -185,10 +185,10 @@
       "id": "TSR-0.6",
       "owner_role": "evidence",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-0",
       "title": "Enforce temporary feature freeze",
-      "updated_at": "2026-08-10T23:37:56.935429+00:00"
+      "updated_at": "2026-08-11T10:33:18.117385+00:00"
     },
     {
       "acceptance_criteria": "Engineering, release, evidence, security, privacy, curriculum, and operations responsibilities are named; self-review conflicts are disclosed.",
@@ -202,10 +202,10 @@
       "id": "TSR-0.7",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-0",
       "title": "Define owners and independence controls",
-      "updated_at": "2026-08-10T23:37:56.935433+00:00"
+      "updated_at": "2026-08-11T10:33:18.117386+00:00"
     },
     {
       "acceptance_criteria": "Missing finding IDs, duplicate authorities, impossible status transitions, stale evidence pointers, or unauthorised release flags fail closed.",
@@ -219,10 +219,10 @@
       "id": "TSR-0.8",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-0",
       "title": "Add roadmap/register schema validation",
-      "updated_at": "2026-08-10T23:37:56.935437+00:00"
+      "updated_at": "2026-08-11T10:33:18.117388+00:00"
     },
     {
       "acceptance_criteria": "Stub tests explicitly prevent real backend import, assert `FASTMCP_BACKEND == \"test-stub\"`, and pass whether or not the real MCP package is installed.",
@@ -236,10 +236,10 @@
       "id": "TSR-1.1",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-1",
       "title": "Repair MCP startup-test isolation",
-      "updated_at": "2026-08-10T23:37:56.935441+00:00"
+      "updated_at": "2026-08-11T10:33:18.117389+00:00"
     },
     {
       "acceptance_criteria": "With the stub flag unset and the real dependency installed, the real backend path is exercised and verified independently.",
@@ -253,10 +253,10 @@
       "id": "TSR-1.2",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-1",
       "title": "Preserve real-backend startup coverage",
-      "updated_at": "2026-08-10T23:37:56.935444+00:00"
+      "updated_at": "2026-08-11T10:33:18.117390+00:00"
     },
     {
       "acceptance_criteria": "Zero unexpected collection errors; required dependencies are declared in the correct profile; skips and xfails are explicit.",
@@ -270,10 +270,10 @@
       "id": "TSR-1.3",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-1",
       "title": "Stabilize test collection in the canonical environment",
-      "updated_at": "2026-08-10T23:37:56.935447+00:00"
+      "updated_at": "2026-08-11T10:33:18.117392+00:00"
     },
     {
       "acceptance_criteria": "All shards terminate, no unresolved timeout leaves remain, combined line coverage meets or exceeds 70%, and missing-line data is published.",
@@ -287,10 +287,10 @@
       "id": "TSR-1.4",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-1",
       "title": "Complete bounded, sharded coverage execution",
-      "updated_at": "2026-08-10T23:37:56.935451+00:00"
+      "updated_at": "2026-08-11T10:33:18.117393+00:00"
     },
     {
       "acceptance_criteria": "New coverage primarily targets authorization, consent, payments-disabled paths, learner state, data export/erasure, migration, and failure handling.",
@@ -304,10 +304,10 @@
       "id": "TSR-1.5",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-1",
       "title": "Add risk-based tests rather than superficial line padding",
-      "updated_at": "2026-08-10T23:37:56.935454+00:00"
+      "updated_at": "2026-08-11T10:33:18.117395+00:00"
     },
     {
       "acceptance_criteria": "`python3 -m ruff check app tests` exits zero; no blanket ignores are introduced.",
@@ -321,10 +321,10 @@
       "id": "TSR-1.6",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-1",
       "title": "Close Ruff findings in `app` and `tests`",
-      "updated_at": "2026-08-10T23:37:56.935497+00:00"
+      "updated_at": "2026-08-11T10:33:18.117396+00:00"
     },
     {
       "acceptance_criteria": "`python3 -m mypy app` exits zero under the committed configuration; CI no longer uses `continue-on-error` for the release job.",
@@ -338,10 +338,10 @@
       "id": "TSR-1.7",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-1",
       "title": "Close mypy findings in `app`",
-      "updated_at": "2026-08-10T23:37:56.935502+00:00"
+      "updated_at": "2026-08-11T10:33:18.117397+00:00"
     },
     {
       "acceptance_criteria": "No unreviewed high findings; medium findings are fixed or narrowly accepted with owner and expiry; no blanket `# nosec`.",
@@ -355,10 +355,10 @@
       "id": "TSR-1.8",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-1",
       "title": "Close Bandit findings",
-      "updated_at": "2026-08-10T23:37:56.935506+00:00"
+      "updated_at": "2026-08-11T10:33:18.117399+00:00"
     },
     {
       "acceptance_criteria": "Base and development requirements have no unaccepted known vulnerabilities; exceptions are time-boxed and approved.",
@@ -372,10 +372,10 @@
       "id": "TSR-1.9",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-1",
       "title": "Close Python dependency findings",
-      "updated_at": "2026-08-10T23:37:56.935509+00:00"
+      "updated_at": "2026-08-11T10:33:18.117400+00:00"
     },
     {
       "acceptance_criteria": "Production dependency audit is green under the approved policy after dependency alignment; high/critical issues are zero or independently accepted.",
@@ -389,10 +389,10 @@
       "id": "TSR-1.10",
       "owner_role": "release",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-1",
       "title": "Close frontend production dependency findings",
-      "updated_at": "2026-08-10T23:37:56.935513+00:00"
+      "updated_at": "2026-08-11T10:33:18.117401+00:00"
     },
     {
       "acceptance_criteria": "Every detected candidate is human-reviewed; real secrets are rotated and removed from history where necessary; baseline regeneration alone is insufficient.",
@@ -406,10 +406,10 @@
       "id": "TSR-1.11",
       "owner_role": "security",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-1",
       "title": "Review the secret baseline",
-      "updated_at": "2026-08-10T23:37:56.935516+00:00"
+      "updated_at": "2026-08-11T10:33:18.117403+00:00"
     },
     {
       "acceptance_criteria": "Every gate is run independently from the exact merged source; command, exit code, duration, environment, artifact hash, warnings, skips, and failures are retained.",
@@ -423,10 +423,10 @@
       "id": "TSR-1.12",
       "owner_role": "evidence",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-1",
       "title": "Capture independent Execution-7 evidence",
-      "updated_at": "2026-08-10T23:37:56.935521+00:00"
+      "updated_at": "2026-08-11T10:33:18.117404+00:00"
     },
     {
       "acceptance_criteria": "Previously green critical product, runtime stack, frontend, schema, generated-contract, and database-lineage gates remain green.",
@@ -440,10 +440,10 @@
       "id": "TSR-1.13",
       "owner_role": "evidence",
       "priority": "P0",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-1",
       "title": "Re-run product/runtime regression gates",
-      "updated_at": "2026-08-10T23:37:56.935525+00:00"
+      "updated_at": "2026-08-11T10:33:18.117406+00:00"
     },
     {
       "acceptance_criteria": "Ruff, mypy, Bandit, vulnerabilities, secret candidates, coverage gaps, timeouts, and test collection deltas are quantified.",
@@ -457,10 +457,10 @@
       "id": "TSR-1.14",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "evidence_pending",
+      "status": "verified",
       "target_gate": "RG-1",
       "title": "Publish a debt delta",
-      "updated_at": "2026-08-10T23:37:56.935528+00:00"
+      "updated_at": "2026-08-11T10:33:18.117407+00:00"
     },
     {
       "acceptance_criteria": "Top-level status, current truth, active item, closed predecessors, and release flags are derived from one canonical state object and cannot disagree.",
@@ -2439,5 +2439,5 @@
       "title": "Lift feature freeze only after RG-6"
     }
   ],
-  "updated_at": "2026-08-10T23:37:56.936355+00:00"
+  "updated_at": "2026-08-11T10:33:18.117415+00:00"
 }
