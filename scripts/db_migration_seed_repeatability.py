@@ -3,6 +3,8 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 import importlib.util
+import shutil
+import sys
 import json
 import subprocess  # nosec B404 — subprocess constants are passed to the controlled wrapper
 from pathlib import Path
@@ -111,7 +113,10 @@ def generate_raw_alembic_sql() -> tuple[bool, str]:
         **__import__("os").environ,
         "DATABASE_URL": "postgresql+asyncpg://user:pass@localhost:5432/eduboost",
     }
-    alembic_path = ROOT / ".venv" / "bin" / "alembic"
+    active_alembic = Path(sys.executable).with_name("alembic")
+    alembic_path = active_alembic if active_alembic.is_file() else shutil.which("alembic")
+    if not alembic_path:
+        raise RuntimeError("alembic executable is not available in the active environment")
     result = _run([str(alembic_path), "upgrade", "head", "--sql"], env=env)
     RAW_SQL.write_text(result.stdout, encoding="utf-8")
     return result.returncode == 0, result.stdout
