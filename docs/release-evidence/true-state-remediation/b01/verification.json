@@ -14,7 +14,7 @@
     },
     "commands": {
       "summary": {
-        "all_required_green": true,
+        "all_required_green": false,
         "captured_at": "2026-08-04T23:33:59.544800+00:00",
         "commands": [
           {
@@ -84,10 +84,10 @@
               "--require-green"
             ],
             "cwd": ".",
-            "exit_code": 0,
+            "exit_code": 1,
             "finished_at": "2026-08-04T23:31:17.383444+00:00",
             "name": "execution7_gate_suite",
-            "passed": true,
+            "passed": false,
             "required": true,
             "started_at": "2026-08-04T23:10:28.566020+00:00",
             "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -271,10 +271,10 @@
               "--json"
             ],
             "cwd": ".",
-            "exit_code": 0,
+            "exit_code": 1,
             "finished_at": "2026-08-04T23:33:59.543616+00:00",
             "name": "execution7_verifier",
-            "passed": true,
+            "passed": false,
             "required": true,
             "started_at": "2026-08-04T23:33:59.464420+00:00",
             "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -282,7 +282,7 @@
           }
         ]
       },
-      "valid": true
+      "valid": false
     },
     "manual": {
       "invalid": [],
@@ -307,6 +307,6 @@
       "valid": true
     }
   },
-  "valid": true,
-  "verified_at": "2026-08-11T10:33:18.119508+00:00"
+  "valid": false,
+  "verified_at": "2026-08-10T23:37:56.946476+00:00"
 }
