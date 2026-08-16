@@ -280,6 +280,38 @@ def record_manual_evidence(root: Path, bundle_id: str, control_id: str, *, revie
     return path
 
 
+
+def require_reviewed_artifact(
+    root: Path,
+    bundle_id: str,
+    control_id: str,
+    artifact_path: str | Path,
+) -> dict[str, Any]:
+    """Require a digest-bound manual decision for one expected artifact.
+
+    The generic helper verifies both the existing manual-evidence schema and
+    that the record binds the exact contract/evidence artifact the caller owns.
+    It is reusable by later PRD-11 execution stages without another recorder
+    or a writable validity flag.
+    """
+    expected = Path(artifact_path)
+    if not expected.is_absolute():
+        expected = (root / expected).resolve()
+    result = require_manual_evidence(root, bundle_id, (control_id,))
+    path = manual_evidence_path(root, bundle_id, control_id)
+    if not path.exists():
+        return result
+    data = load_json(path, {})
+    recorded = Path(str(data.get("artifact_path", "")))
+    if not recorded.is_absolute():
+        recorded = (root / recorded).resolve()
+    if recorded != expected:
+        result["valid"] = False
+        result["invalid"].append(
+            f"{control_id}: record must bind {expected.relative_to(root)}"
+        )
+    return result
+
 def register_path(root: Path) -> Path:
     return root / "docs/roadmap/production_readiness/true_state_remediation_register.json"
 

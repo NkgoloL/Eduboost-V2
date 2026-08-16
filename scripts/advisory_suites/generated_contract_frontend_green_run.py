@@ -11,6 +11,7 @@ import json
 import os
 import shutil
 from scripts._subprocess import run
+from scripts.true_state_remediation.core import require_reviewed_artifact
 import sys
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -301,7 +302,7 @@ def evaluate_green_run_contract(root: Path = ROOT) -> dict[str, Any]:
     missing_gates = [gate_id for gate_id in REQUIRED_GATE_IDS if gate_id not in gate_ids]
     gates_valid = all(_gate_valid(item) for item in gates if isinstance(item, dict)) and not missing_gates
     execution_results = contract.get("execution_results", []) if isinstance(contract.get("execution_results"), list) else []
-    execution_results_valid = all(_result_valid(item) for item in execution_results if isinstance(item, dict))
+    execution_results_valid = bool(execution_results) and all(_result_valid(item) for item in execution_results if isinstance(item, dict))
     policy = contract.get("execution_policy", {}) if isinstance(contract.get("execution_policy"), dict) else {}
     policy_valid = all([
         policy.get("regenerate_then_readonly_check_required") is True,
@@ -314,6 +315,7 @@ def evaluate_green_run_contract(root: Path = ROOT) -> dict[str, Any]:
     previous_contract = _load(root / PREVIOUS_CONTRACT.relative_to(ROOT))
     previous_valid = previous_contract.get("prd_id") == "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-2"
     governance = evaluate_governance_alignment(root)
+    manual_review = require_reviewed_artifact(root, "B01", PRD_ID, CONTRACT.relative_to(ROOT))
     command_plan = green_run_command_plan(root)
     command_plan_valid = {item["gate_id"] for item in command_plan} == set(REQUIRED_GATE_IDS)
     all_green_from_results = bool(execution_results) and all(item.get("green") is True for item in execution_results)
@@ -325,10 +327,12 @@ def evaluate_green_run_contract(root: Path = ROOT) -> dict[str, Any]:
         execution_results_valid,
         previous_valid,
         command_plan_valid,
+        all_green_from_results,
         contract.get("generated_contracts_green") is False,
         contract.get("frontend_quality_green") is False,
         contract.get("next_after_evidence") == NEXT_AFTER_EVIDENCE,
         governance["valid"],
+        manual_review["valid"],
     ])
     return {
         "valid": valid,
@@ -345,6 +349,7 @@ def evaluate_green_run_contract(root: Path = ROOT) -> dict[str, Any]:
         "all_green_from_results": all_green_from_results,
         "governance_alignment_valid": governance["valid"],
         "governance_alignment": governance,
+        "manual_review": manual_review,
         "next_after_evidence": contract.get("next_after_evidence"),
         "commands": command_plan,
     }

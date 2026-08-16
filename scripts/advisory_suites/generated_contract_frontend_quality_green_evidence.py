@@ -12,6 +12,7 @@ import json
 import os
 import shutil
 from scripts._subprocess import run
+from scripts.true_state_remediation.core import require_reviewed_artifact
 import sys
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -330,6 +331,7 @@ def evaluate_green_evidence_contract(root: Path = ROOT, *, require_green: bool =
     previous_contract = _load(root / PREVIOUS_CONTRACT.relative_to(ROOT))
     previous_valid = previous_contract.get("prd_id") == "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-3"
     governance = evaluate_governance_alignment(root)
+    manual_review = require_reviewed_artifact(root, "B01", PRD_ID, CONTRACT.relative_to(ROOT))
     command_plan = green_evidence_command_plan(root)
     command_plan_valid = {item["gate_id"] for item in command_plan} == set(REQUIRED_GATE_IDS)
     green_summary = load_green_evidence_summary(root)
@@ -344,8 +346,9 @@ def evaluate_green_evidence_contract(root: Path = ROOT, *, require_green: bool =
         previous_valid,
         command_plan_valid,
         governance["valid"],
+        manual_review["valid"],
     ])
-    valid = base_valid and ((results_valid and all_green) if require_green else True)
+    valid = base_valid and results_valid and all_green
     return {
         "valid": valid,
         "base_valid": base_valid,
@@ -364,6 +367,7 @@ def evaluate_green_evidence_contract(root: Path = ROOT, *, require_green: bool =
         "blockers": green_summary.get("blockers", []),
         "governance_alignment_valid": governance["valid"],
         "governance_alignment": governance,
+        "manual_review": manual_review,
         "next_after_evidence": contract.get("next_after_evidence"),
         "commands": command_plan,
     }

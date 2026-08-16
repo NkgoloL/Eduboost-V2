@@ -15,10 +15,11 @@ def test_green_evidence_command_plan_contains_all_release_blockers():
     assert any(item["gate_id"] == "frontend_build_side_effect_check" for item in plan)
 
 
-def test_green_evidence_contract_is_valid_before_live_green_run():
+def test_green_evidence_contract_fails_closed_without_manual_review():
     result = evaluate_green_evidence_contract(require_green=False)
-    assert result["base_valid"] is True
-    assert result["valid"] is True
+    assert result["base_valid"] is False
+    assert result["valid"] is False
+    assert result["manual_review"]["missing"] == ["PRD-11.0R.RUNTIME-RESTORE.EXECUTION-4"]
     assert result["all_green"] is False
 
 

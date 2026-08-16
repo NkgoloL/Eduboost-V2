@@ -57,6 +57,7 @@ def run(
     check: bool = False,
     timeout: int | None = None,
     env: dict[str, str] | None = None,
+    missing_executable: str = "raise",
     **kwargs: Any,
 ) -> subprocess.CompletedProcess[str]:
     """Run a subprocess command (argv list) with resolved path.
@@ -82,23 +83,37 @@ def run(
             "run() expects an argv sequence, e.g. ['git', 'status'], not a "
             "single string. Use run_shell() for string commands."
         )
+    if missing_executable not in {"raise", "return"}:
+        raise ValueError("missing_executable must be 'raise' or 'return'")
     resolved = _resolve(cmd)
     # Some legacy callers provide explicit stdout/stderr streams. Python's
     # subprocess API forbids combining those with capture_output=True.
     effective_capture_output = capture_output and not (
         "stdout" in kwargs or "stderr" in kwargs
     )
-    return subprocess.run(  # nosec B603 B607 — path resolved above, no shell=True
-        resolved,
-        cwd=cwd,
-        capture_output=effective_capture_output,
-        text=text,
-        check=check,
-        timeout=timeout,
-        env=env,
-        **kwargs,
-    )
-
+    try:
+        return subprocess.run(  # nosec B603 B607 -- path resolved above, no shell=True
+            resolved,
+            cwd=cwd,
+            capture_output=effective_capture_output,
+            text=text,
+            check=check,
+            timeout=timeout,
+            env=env,
+            **kwargs,
+        )
+    except FileNotFoundError as exc:
+        if missing_executable == "raise":
+            raise
+        stderr: str | bytes = f"executable not found: {resolved[0]} ({exc})"
+        stdout: str | bytes = ""
+        if not text:
+            stderr = stderr.encode()
+            stdout = b""
+        result = subprocess.CompletedProcess(resolved, 127, stdout, stderr)
+        if check:
+            raise subprocess.CalledProcessError(127, resolved, output=stdout, stderr=stderr)
+        return result
 
 def run_shell(
     command: str,

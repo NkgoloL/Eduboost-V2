@@ -11,6 +11,7 @@ import json
 import os
 import shutil
 from scripts._subprocess import run
+from scripts.true_state_remediation.core import require_reviewed_artifact
 import sys
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -254,7 +255,8 @@ def evaluate_generated_frontend_quality_contract(root: Path = ROOT) -> dict[str,
     missing_gates = [gate_id for gate_id in REQUIRED_GATE_IDS if gate_id not in gate_ids]
     gates_valid = all(_gate_valid(item) for item in gates if isinstance(item, dict)) and not missing_gates
     execution_results = contract.get("execution_results", []) if isinstance(contract.get("execution_results"), list) else []
-    execution_results_valid = all(_execution_result_valid(item) for item in execution_results if isinstance(item, dict))
+    execution_results_valid = bool(execution_results) and all(_execution_result_valid(item) for item in execution_results if isinstance(item, dict))
+    all_green_from_results = execution_results_valid and all(item.get("green") is True for item in execution_results if isinstance(item, dict))
     policy = contract.get("execution_policy", {}) if isinstance(contract.get("execution_policy"), dict) else {}
     policy_valid = all([
         policy.get("openapi_and_route_inventory_must_be_checked_read_only") is True,
@@ -268,17 +270,20 @@ def evaluate_generated_frontend_quality_contract(root: Path = ROOT) -> dict[str,
     scripts = package.get("scripts", {}) if isinstance(package.get("scripts"), dict) else {}
     frontend_scripts_valid = all(name in scripts for name in ("type-check", "lint", "lint:strict", "test", "build", "quality", "quality:release"))
     governance = evaluate_governance_alignment(root)
+    manual_review = require_reviewed_artifact(root, "B01", PRD_ID, CONTRACT.relative_to(ROOT))
     valid = all([
         contract.get("prd_id") == PRD_ID,
         contract.get("schema_version") == "prd11.0r/runtime-restore-execution-2/generated-frontend/v1",
         gates_valid,
         policy_valid,
         execution_results_valid,
+        all_green_from_results,
         frontend_scripts_valid,
         contract.get("generated_contracts_green") is False,
         contract.get("frontend_quality_green") is False,
         contract.get("next_after_evidence") == NEXT_AFTER_EVIDENCE,
         governance["valid"],
+        manual_review["valid"],
     ])
     return {
         "valid": valid,
@@ -288,11 +293,13 @@ def evaluate_generated_frontend_quality_contract(root: Path = ROOT) -> dict[str,
         "gates_valid": gates_valid,
         "policy_valid": policy_valid,
         "execution_results_valid": execution_results_valid,
+        "all_green_from_results": all_green_from_results,
         "frontend_scripts_valid": frontend_scripts_valid,
         "generated_contracts_green": contract.get("generated_contracts_green") is True,
         "frontend_quality_green": contract.get("frontend_quality_green") is True,
         "governance_alignment_valid": governance["valid"],
         "governance_alignment": governance,
+        "manual_review": manual_review,
         "next_after_evidence": contract.get("next_after_evidence"),
         "commands": gate_command_plan(root),
     }
