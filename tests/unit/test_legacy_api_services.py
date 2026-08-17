@@ -6,7 +6,7 @@ import json
 import pytest
 
 from app.services.diagnostic import DiagnosticEngine, p_correct, update_theta_mle
-from app.services.judiciary import ConstitutionalViolation, PolicyService
+from app.core.policy import ConstitutionalViolation, PolicyService
 from app.services.archetype_service import ArchetypeService
 from app.domain.models import ArchetypeLabel
 
@@ -90,7 +90,7 @@ VALID_LESSON = {
     "main_content": "A fraction has a numerator and denominator.",
     "worked_example": "1/2 of 8 = 4.",
     "practice_question": "What is 1/4 of 12?",
-    "answer": "3",
+    "answer": "3 learners",
     "cultural_hook": "Think of cutting a braaibroodjie into equal pieces.",
 }
 
@@ -124,7 +124,7 @@ class TestJudiciary:
         svc = PolicyService()
         wrapped = f"```json\n{json.dumps(VALID_LESSON)}\n```"
         result = svc.stamp_lesson(wrapped)
-        assert result.answer == "3"
+        assert result.answer == "3 learners"
 
 
 # ── Ether Service Tests ───────────────────────────────────────────────────────
@@ -139,9 +139,10 @@ class TestEther:
             {"question_id": 4, "answer": "A"},
             {"question_id": 5, "answer": "A"},
         ]
-        archetype, description = svc.classify_archetype(answers)
+        archetype, description, probabilities = svc.classify_archetype(answers)
         assert archetype in ArchetypeLabel
         assert len(description) > 0
+        assert sum(probabilities.values()) == pytest.approx(1.0)
 
     def test_five_questions_returned(self):
         svc = ArchetypeService()

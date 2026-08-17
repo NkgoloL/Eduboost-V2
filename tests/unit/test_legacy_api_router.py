@@ -5,9 +5,34 @@ Requires test DB + Redis. Run with: pytest tests/integration/ -v
 """
 import pytest
 import pytest_asyncio
+from fastapi import HTTPException
 from httpx import AsyncClient, ASGITransport
 
 from app.api_v2 import app
+from app.api_v2_deps.auth_runtime import get_auth_runtime_context
+from app.api_v2_deps.auth_service import get_auth_application_service
+from app.core.database import get_db
+from app.core.rate_limit import limiter
+
+
+class _RejectedLoginService:
+    async def login(self, **_kwargs):
+        raise HTTPException(status_code=401, detail="Invalid email or password")
+
+
+@pytest.fixture(autouse=True)
+def isolated_api_dependencies(monkeypatch):
+    """Keep router contract tests independent of live Redis and PostgreSQL."""
+    async def fake_db():
+        yield object()
+
+    app.dependency_overrides[get_db] = fake_db
+    app.dependency_overrides[get_auth_runtime_context] = lambda: object()
+    app.dependency_overrides[get_auth_application_service] = lambda: _RejectedLoginService()
+    monkeypatch.setattr(limiter, "enabled", False)
+    yield
+    app.dependency_overrides.clear()
+
 
 
 @pytest.fixture(scope="session")
@@ -47,8 +72,7 @@ class TestAuthEndpoints:
             "/api/v2/auth/login",
             json={"email": "nobody@edu.co.za", "password": "wrongpass"},
         )
-        # DB not connected in unit context, expect 500 or 401
-        assert r.status_code in (401, 500)
+        assert r.status_code == 401
 
 
 @pytest.mark.anyio
@@ -58,15 +82,15 @@ class TestConsentGating:
             "/api/v2/lessons/",
             json={"learner_id": "fake-id", "subject": "Math", "topic": "Fractions"},
         )
-        assert r.status_code == 403  # No bearer token
+        assert r.status_code == 401  # No bearer token
 
     async def test_learner_without_token_returns_403(self, client: AsyncClient):
         r = await client.get("/api/v2/learners/fake-id")
-        assert r.status_code == 403
+        assert r.status_code == 401
 
 
 @pytest.mark.anyio
 class TestOnboardingEndpoints:
     async def test_questions_require_auth(self, client: AsyncClient):
         r = await client.get("/api/v2/onboarding/questions")
-        assert r.status_code == 403
+        assert r.status_code == 401
