@@ -9,10 +9,12 @@ from scripts.runtime.final_true_state_baseline import (
 )
 
 
-def test_final_true_state_handoff_contract_fails_closed_without_manual_review() -> None:
+def test_final_true_state_handoff_contract_stays_red_when_reviewed_raw_release_state_is_red() -> None:
     result = evaluate_final_true_state_handoff_contract()
     assert result["valid"] is False
-    assert result["manual_review"]["missing"] == ["PRD-11.0R.RUNTIME-RESTORE-6"]
+    assert result["manual_review"]["valid"] is True
+    assert result["raw_execution_valid"] is True
+    assert result["raw_all_release_gates_green"] is False
     assert not result["missing_gates"]
     assert result["gates_valid"] is True
     assert result["policy_valid"] is True

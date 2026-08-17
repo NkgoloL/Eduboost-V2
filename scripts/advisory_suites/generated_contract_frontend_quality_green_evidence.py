@@ -54,6 +54,7 @@ REQUIRED_EVIDENCE_TYPES = (
     "fresh_artifact_reference",
     "blocker_record_when_not_green",
 )
+RAW_SUMMARY = ROOT / "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/raw-20260816/summary.json"
 
 
 @dataclass(frozen=True)
@@ -331,13 +332,17 @@ def evaluate_green_evidence_contract(root: Path = ROOT, *, require_green: bool =
     previous_contract = _load(root / PREVIOUS_CONTRACT.relative_to(ROOT))
     previous_valid = previous_contract.get("prd_id") == "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-3"
     governance = evaluate_governance_alignment(root)
-    manual_review = require_reviewed_artifact(root, "B01", PRD_ID, CONTRACT.relative_to(ROOT))
+    manual_review = require_reviewed_artifact(root, "B01", PRD_ID, Path("docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/raw-20260816/summary.json"))
     command_plan = green_evidence_command_plan(root)
     command_plan_valid = {item["gate_id"] for item in command_plan} == set(REQUIRED_GATE_IDS)
-    green_summary = load_green_evidence_summary(root)
+    green_summary = _load(root / RAW_SUMMARY.relative_to(ROOT))
     results = green_summary.get("results", []) if isinstance(green_summary.get("results"), list) else []
-    results_valid = bool(results) and all(_result_valid(item) for item in results if isinstance(item, dict))
-    all_green = green_summary.get("all_green") is True
+    raw_identity_valid = green_summary.get("prd_id") == PRD_ID and green_summary.get("executed") is True
+    results_valid = raw_identity_valid and bool(results) and all(
+        _result_valid(item) and item.get("exit_code") == 0 and item.get("green") is True
+        for item in results if isinstance(item, dict)
+    )
+    all_green = results_valid and green_summary.get("all_green") is True
     base_valid = all([
         contract.get("prd_id") == PRD_ID,
         contract.get("schema_version") == "prd11.0r/runtime-restore-execution-4/generated-frontend-green-evidence/v1",
@@ -364,6 +369,8 @@ def evaluate_green_evidence_contract(root: Path = ROOT, *, require_green: bool =
         "generated_contracts_green": green_summary.get("generated_contracts_green") is True,
         "frontend_quality_green": green_summary.get("frontend_quality_green") is True,
         "green_summary_present": bool(green_summary),
+        "raw_summary": str(RAW_SUMMARY.relative_to(ROOT)),
+        "raw_identity_valid": raw_identity_valid,
         "blockers": green_summary.get("blockers", []),
         "governance_alignment_valid": governance["valid"],
         "governance_alignment": governance,

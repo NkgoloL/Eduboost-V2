@@ -1,0 +1,13 @@
+{
+  "captured_at": "2026-08-16T21:41:34.748540+00:00",
+  "command": "/usr/bin/python3 scripts/generate_route_inventory.py",
+  "cwd": ".",
+  "exit_code": 0,
+  "gate_id": "route_inventory_regenerate",
+  "green": true,
+  "output_artifact": "route-inventory-regenerate.json",
+  "release_blocking": true,
+  "repairs_blocker": "route_inventory_regenerate",
+  "stderr_tail": "/home/nkgolol/.local/lib/python3.12/site-packages/pydantic/_internal/_fields.py:160: UserWarning: Field \"model_version\" has conflict with protected namespace \"model_\".\n\nYou may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.\n  warnings.warn(\n",
+  "stdout_tail": "Wrote route inventory to docs/route_inventory.md\n"
+}

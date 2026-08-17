@@ -1,10 +1,10 @@
 from scripts.production_readiness.audit_prd1100r_runtime_restore_execution_4_frontend_quality_defect_repair_generated_contract_green_evidence import audit
 
 
-def test_prd1100r_execution_4_fails_closed_without_manual_review():
+def test_prd1100r_execution_4_uses_completed_digest_bound_review():
     result = audit()
-    assert result["authority_valid"] is False
-    assert result["valid"] is False
+    assert result["authority_valid"] is True
+    assert result["valid"] is True
     assert result["frontend_quality_defect_repair_authority_recorded"] is True
     assert result["frontend_quality_defect_repair_evidence_recorded"] is True
     assert result["generated_contracts_green"] is True

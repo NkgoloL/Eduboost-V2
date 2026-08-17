@@ -52,6 +52,7 @@ REQUIRED_EVIDENCE_TYPES = (
     "fresh_artifact_reference",
     "blocker_record_when_not_green",
 )
+RAW_SUMMARY = ROOT / "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-2-generated-contract-frontend-quality/raw-20260817/summary.json"
 
 
 @dataclass(frozen=True)
@@ -195,6 +196,7 @@ def execute_gate_plan(root: Path = ROOT, *, gates: Iterable[str] | None = None) 
         result = _run_command(list(item["command"]), cwd)
         results.append({**item, "result": result, "green": result["exit_code"] == 0})
     return {
+        "prd_id": PRD_ID,
         "executed": True,
         "results": results,
         "all_green": bool(results) and all(item["green"] for item in results),
@@ -219,7 +221,16 @@ def _gate_valid(item: dict[str, Any]) -> bool:
 
 
 def _execution_result_valid(item: dict[str, Any]) -> bool:
-    return all(key in item for key in ("gate_id", "command", "exit_code", "output_artifact", "captured_at", "green"))
+    result = item.get("result") if isinstance(item.get("result"), dict) else item
+    return all([
+        item.get("gate_id") in REQUIRED_GATE_IDS,
+        isinstance(item.get("command"), (list, str)) and bool(item.get("command")),
+        isinstance(result.get("exit_code"), int),
+        isinstance(item.get("evidence_artifact"), str) and bool(item.get("evidence_artifact")),
+        isinstance(result.get("captured_at"), str) and bool(result.get("captured_at")),
+        item.get("green") is True,
+        result.get("exit_code") == 0,
+    ])
 
 
 def evaluate_governance_alignment(root: Path = ROOT, *, now: datetime | None = None) -> dict[str, Any]:
@@ -254,9 +265,13 @@ def evaluate_generated_frontend_quality_contract(root: Path = ROOT) -> dict[str,
     gate_ids = {item.get("id") for item in gates if isinstance(item, dict)}
     missing_gates = [gate_id for gate_id in REQUIRED_GATE_IDS if gate_id not in gate_ids]
     gates_valid = all(_gate_valid(item) for item in gates if isinstance(item, dict)) and not missing_gates
-    execution_results = contract.get("execution_results", []) if isinstance(contract.get("execution_results"), list) else []
-    execution_results_valid = bool(execution_results) and all(_execution_result_valid(item) for item in execution_results if isinstance(item, dict))
-    all_green_from_results = execution_results_valid and all(item.get("green") is True for item in execution_results if isinstance(item, dict))
+    raw_summary = _load(root / RAW_SUMMARY.relative_to(ROOT))
+    execution_results = raw_summary.get("results", []) if isinstance(raw_summary.get("results"), list) else []
+    raw_identity_valid = raw_summary.get("prd_id") == PRD_ID and raw_summary.get("executed") is True
+    execution_results_valid = raw_identity_valid and bool(execution_results) and all(
+        _execution_result_valid(item) for item in execution_results if isinstance(item, dict)
+    )
+    all_green_from_results = execution_results_valid and raw_summary.get("all_green") is True
     policy = contract.get("execution_policy", {}) if isinstance(contract.get("execution_policy"), dict) else {}
     policy_valid = all([
         policy.get("openapi_and_route_inventory_must_be_checked_read_only") is True,
@@ -270,7 +285,7 @@ def evaluate_generated_frontend_quality_contract(root: Path = ROOT) -> dict[str,
     scripts = package.get("scripts", {}) if isinstance(package.get("scripts"), dict) else {}
     frontend_scripts_valid = all(name in scripts for name in ("type-check", "lint", "lint:strict", "test", "build", "quality", "quality:release"))
     governance = evaluate_governance_alignment(root)
-    manual_review = require_reviewed_artifact(root, "B01", PRD_ID, CONTRACT.relative_to(ROOT))
+    manual_review = require_reviewed_artifact(root, "B01", PRD_ID, Path("docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-2-generated-contract-frontend-quality/raw-20260817/summary.json"))
     valid = all([
         contract.get("prd_id") == PRD_ID,
         contract.get("schema_version") == "prd11.0r/runtime-restore-execution-2/generated-frontend/v1",
@@ -279,8 +294,6 @@ def evaluate_generated_frontend_quality_contract(root: Path = ROOT) -> dict[str,
         execution_results_valid,
         all_green_from_results,
         frontend_scripts_valid,
-        contract.get("generated_contracts_green") is False,
-        contract.get("frontend_quality_green") is False,
         contract.get("next_after_evidence") == NEXT_AFTER_EVIDENCE,
         governance["valid"],
         manual_review["valid"],
@@ -295,8 +308,10 @@ def evaluate_generated_frontend_quality_contract(root: Path = ROOT) -> dict[str,
         "execution_results_valid": execution_results_valid,
         "all_green_from_results": all_green_from_results,
         "frontend_scripts_valid": frontend_scripts_valid,
-        "generated_contracts_green": contract.get("generated_contracts_green") is True,
-        "frontend_quality_green": contract.get("frontend_quality_green") is True,
+        "generated_contracts_green": all_green_from_results,
+        "frontend_quality_green": all_green_from_results,
+        "raw_summary": str(RAW_SUMMARY.relative_to(ROOT)),
+        "raw_identity_valid": raw_identity_valid,
         "governance_alignment_valid": governance["valid"],
         "governance_alignment": governance,
         "manual_review": manual_review,
