@@ -22,10 +22,6 @@ from app.core.dependencies import (
 )
 from app.core.exceptions import AuthenticationError, ConsentRequiredError
 from app.core.security import create_access_token
-from app.domain.trustworthy_beta_quality import (
-    TRUSTWORTHY_BETA_REQUIRED_REQUIREMENTS,
-    TrustworthyBetaQualityRequirement,
-)
 from app.jobs.consent_renewal_job import run_consent_renewal_reminders
 from app.models import Language, UserRole
 from app.modules.lessons.mock_llm_provider import MockLLMProvider, MockMode
