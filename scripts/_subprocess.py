@@ -48,6 +48,17 @@ def _resolve(cmd: Sequence[str]) -> list[str]:
     return list(cmd)
 
 
+def _prepare_env(env: dict[str, str] | None) -> dict[str, str]:
+    effective = dict(os.environ if env is None else env)
+    repo_root = str(Path(__file__).resolve().parents[1])
+    current_pp = effective.get("PYTHONPATH", "")
+    parts = [p for p in current_pp.split(os.pathsep) if p]
+    if repo_root not in parts:
+        parts.insert(0, repo_root)
+        effective["PYTHONPATH"] = os.pathsep.join(parts)
+    return effective
+
+
 def run(
     cmd: Sequence[str],
     *,
@@ -99,21 +110,23 @@ def run(
             text=text,
             check=check,
             timeout=timeout,
-            env=env,
+            env=_prepare_env(env),
             **kwargs,
         )
     except FileNotFoundError as exc:
         if missing_executable == "raise":
             raise
-        stderr: str | bytes = f"executable not found: {resolved[0]} ({exc})"
-        stdout: str | bytes = ""
+        err_msg = f"executable not found: {resolved[0]} ({exc})"
         if not text:
-            stderr = stderr.encode()
-            stdout = b""
-        result = subprocess.CompletedProcess(resolved, 127, stdout, stderr)
+            raw_err: bytes = err_msg.encode()
+            raw_out: bytes = b""
+            if check:
+                raise subprocess.CalledProcessError(127, resolved, output=raw_out, stderr=raw_err)
+            return subprocess.CompletedProcess(resolved, 127, raw_out, raw_err)  # type: ignore[arg-type,return-value]
         if check:
-            raise subprocess.CalledProcessError(127, resolved, output=stdout, stderr=stderr)
-        return result
+            raise subprocess.CalledProcessError(127, resolved, output="", stderr=err_msg)
+        return subprocess.CompletedProcess(resolved, 127, "", err_msg)
+
 
 def run_shell(
     command: str,
@@ -145,7 +158,7 @@ def run_shell(
         text=text,
         check=check,
         timeout=timeout,
-        env=env,
+        env=_prepare_env(env),
         **kwargs,
     )
 
