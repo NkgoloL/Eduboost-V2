@@ -1,6 +1,6 @@
 {
-  "advisory_static_gate_green": false,
-  "all_advisory_gates_green": false,
+  "advisory_static_gate_green": true,
+  "all_advisory_gates_green": true,
   "all_release_gates_green": false,
   "authority_boundaries": {
     "authority_switch_executed": true,
@@ -31,7 +31,7 @@
   "billing_launch_authorised": false,
   "controlled_beta_activation_operational_hold": true,
   "controlled_handoff_to_prd1100_1104_authorised": false,
-  "coverage_gate_green": false,
+  "coverage_gate_green": true,
   "critical_product_flows_green": true,
   "current_truth": {
     "advisory_static_gate_green": false,
@@ -179,7 +179,7 @@
     "stream_id": "PRD-PRODUCTION-READINESS"
   },
   "database_lineage_green": true,
-  "dependency_audit_gate_green": false,
+  "dependency_audit_gate_green": true,
   "deployment_authorised": false,
   "frontend_quality_green": true,
   "gates": {
@@ -191,11 +191,11 @@
     "public_beta_blocked_until_prd10": true
   },
   "generated_contracts_green": true,
-  "last_recorded_at": "2026-08-01T21:00:54.363584+00:00",
+  "last_recorded_at": "2026-08-20T16:52:33.802355+00:00",
   "last_recorded_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7",
   "live_learner_traffic_operationally_safe": false,
   "live_payment_processing_authorised": false,
-  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7",
+  "next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8",
   "prd0_closed": true,
   "prd0_closed_at": "2026-07-08T13:19:32.478770+00:00",
   "prd0_sequence": [
@@ -487,7 +487,7 @@
   "runtime_restore_handoff_authorised": true,
   "runtime_stack_green": true,
   "schema_contract_green": true,
-  "secret_baseline_gate_green": false,
+  "secret_baseline_gate_green": true,
   "status": "prd11_runtime_restore_execution_5_evidence_recorded",
   "stream_id": "PRD-PRODUCTION-READINESS"
 }
