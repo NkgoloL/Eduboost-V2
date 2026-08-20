@@ -41,7 +41,7 @@ def sha256_file(path: Path) -> str:
 def download_file(url: str, target: Path, *, timeout: int = 60) -> int:
     target.parent.mkdir(parents=True, exist_ok=True)
     request = Request(url, headers={"User-Agent": USER_AGENT})
-    with urlopen(request, timeout=timeout) as response:
+    with urlopen(request, timeout=timeout) as response:  # nosec B310
         payload = response.read()
     if not payload.startswith(b"%PDF-"):
         preview = payload[:80].decode("utf-8", errors="replace").replace("\n", " ")

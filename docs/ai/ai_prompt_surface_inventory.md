@@ -1,18 +1,3 @@
----
-title: "AI Prompt Surface Inventory"
-status: "current-evidence"
-owner: "ai-safety"
-reviewers: ["ai-safety", "curriculum", "privacy"]
-audience: "safety-reviewer"
-source_of_truth: false
-supersedes: []
-superseded_by: null
-last_reviewed: "2026-06-24"
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: "[app/services, docs/ai]"
----
-
 # AI Prompt Surface Inventory
 
 ## Purpose
@@ -36,13 +21,15 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/api_v2_routers/api_v2.py` | `diagnostic` |
 | `app/api_v2_routers/auth.py` | `remediation` |
 | `app/api_v2_routers/auth_extended.py` | `diagnostic` |
+| `app/api_v2_routers/commercial_launch.py` | `remediation` |
 | `app/api_v2_routers/content_factory.py` | `llm, diagnostic` |
 | `app/api_v2_routers/diagnostics.py` | `diagnostic` |
 | `app/api_v2_routers/generation.py` | `prompt, llm, diagnostic` |
 | `app/api_v2_routers/irt_quality.py` | `diagnostic` |
 | `app/api_v2_routers/learner_content.py` | `diagnostic` |
 | `app/api_v2_routers/lessons.py` | `llm, generate_lesson` |
-| `app/api_v2_routers/test_services.py` | `prompt, diagnostic` |
+| `app/api_v2_routers/performance_scale_cost.py` | `llm` |
+| `app/api_v2_routers/vertical_journey.py` | `diagnostic` |
 | `app/core/analytics.py` | `diagnostic` |
 | `app/core/authorization.py` | `generate_lesson, diagnostic` |
 | `app/core/config.py` | `llm, anthropic, groq` |
@@ -50,10 +37,12 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/core/degraded_mode.py` | `llm, anthropic, groq` |
 | `app/core/exceptions.py` | `llm, remediation` |
 | `app/core/health.py` | `llm, anthropic, groq, diagnostic` |
-| `app/core/judiciary.py` | `llm, diagnostic` |
-| `app/core/llm_gateway.py` | `prompt, llm, anthropic, groq, generate_lesson` |
+| `app/core/llm.py` | `prompt, llm, anthropic, groq, generate_lesson` |
+| `app/core/llm_gateway.py` | `llm` |
 | `app/core/metrics.py` | `llm, anthropic, groq, diagnostic` |
+| `app/core/policy.py` | `llm, diagnostic` |
 | `app/core/rate_limit.py` | `llm` |
+| `app/core/runtime_readiness.py` | `diagnostic` |
 | `app/domain/ai_operations_schemas.py` | `prompt` |
 | `app/domain/api_v2_models.py` | `remediation` |
 | `app/domain/consent.py` | `llm, diagnostic` |
@@ -61,10 +50,16 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/domain/content_factory_schemas.py` | `prompt, diagnostic` |
 | `app/domain/curriculum_expansion_schemas.py` | `diagnostic` |
 | `app/domain/item_schema.py` | `llm, diagnostic` |
+| `app/domain/knowledge_graph_authority_switch.py` | `llm, diagnostic` |
+| `app/domain/knowledge_graph_grounded_generation.py` | `prompt, llm, diagnostic` |
+| `app/domain/knowledge_graph_post_switch_review.py` | `llm` |
+| `app/domain/knowledge_graph_product_alignment.py` | `prompt, llm` |
+| `app/domain/knowledge_graph_runtime_activation.py` | `llm` |
 | `app/domain/lesson.py` | `llm` |
 | `app/domain/llm_schemas.py` | `diagnostic` |
 | `app/domain/roles.py` | `diagnostic` |
 | `app/domain/schemas.py` | `diagnostic` |
+| `app/domain/trustworthy_beta_quality.py` | `prompt` |
 | `app/jobs/batch_generation_job.py` | `llm` |
 | `app/jobs/irt_quality_job.py` | `diagnostic` |
 | `app/models/__init__.py` | `prompt, llm, groq, diagnostic, remediation` |
@@ -79,6 +74,10 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/models/tutor.py` | `prompt` |
 | `app/modules/beta_launch/production_readiness_contracts.py` | `diagnostic` |
 | `app/modules/billing/production_readiness_contracts.py` | `llm` |
+| `app/modules/commercial_launch/__init__.py` | `remediation` |
+| `app/modules/commercial_launch/remediation.py` | `remediation` |
+| `app/modules/content_quality/acceptance.py` | `remediation` |
+| `app/modules/content_quality/readiness.py` | `llm, remediation` |
 | `app/modules/deployment/production_readiness_contracts.py` | `llm` |
 | `app/modules/diagnostics/__init__.py` | `diagnostic` |
 | `app/modules/diagnostics/diagnostic_session_service.py` | `diagnostic` |
@@ -99,7 +98,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/modules/final_release_blockers/production_readiness_contracts.py` | `llm` |
 | `app/modules/jobs.py` | `generate_lesson, diagnostic` |
 | `app/modules/learners/__init__.py` | `prompt, llm, diagnostic` |
-| `app/modules/learners/ether_service.py` | `prompt, llm, diagnostic` |
+| `app/modules/learners/archetype_service.py` | `prompt, llm, diagnostic` |
 | `app/modules/lessons/__init__.py` | `llm, anthropic, groq` |
 | `app/modules/lessons/adaptive_remediation.py` | `prompt, diagnostic, remediation` |
 | `app/modules/lessons/answer_key_verifier.py` | `prompt, llm` |
@@ -120,10 +119,17 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/modules/lessons/service.py` | `llm, generate_lesson` |
 | `app/modules/lessons/teacher_insight_mode.py` | `prompt, llm, anthropic, groq, diagnostic` |
 | `app/modules/observability/production_readiness_contracts.py` | `prompt, llm, diagnostic` |
+| `app/modules/observability/readiness.py` | `llm` |
+| `app/modules/performance_scale_cost/assurance.py` | `llm` |
+| `app/modules/performance_scale_cost/readiness.py` | `llm` |
 | `app/modules/practice/practice_generator.py` | `diagnostic` |
+| `app/modules/privacy_ops/assurance.py` | `prompt` |
+| `app/modules/privacy_ops/readiness.py` | `prompt, llm, diagnostic` |
 | `app/modules/quality_gates/production_readiness_contracts.py` | `llm` |
 | `app/modules/roadmap/production_readiness_contracts.py` | `llm, diagnostic` |
 | `app/modules/security_posture/production_readiness_contracts.py` | `prompt` |
+| `app/modules/vertical_journey/hardening.py` | `diagnostic` |
+| `app/modules/vertical_journey/service.py` | `diagnostic` |
 | `app/repositories/__init__.py` | `diagnostic` |
 | `app/repositories/diagnostic_repository.py` | `diagnostic` |
 | `app/repositories/diagnostic_session_repository.py` | `diagnostic` |
@@ -132,6 +138,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/repositories/practice_session_repository.py` | `remediation` |
 | `app/repositories/repositories.py` | `diagnostic` |
 | `app/services/ai_operations.py` | `prompt, anthropic, groq` |
+| `app/services/auth_lifecycle_impl.py` | `diagnostic` |
 | `app/services/backend_consolidation_runtime.py` | `diagnostic` |
 | `app/services/batch_generation.py` | `prompt, llm, diagnostic` |
 | `app/services/content_answer_key_verification.py` | `diagnostic` |
@@ -168,6 +175,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/services/content_safety/pii.py` | `prompt, llm` |
 | `app/services/content_schemas.py` | `llm, diagnostic` |
 | `app/services/content_validator.py` | `llm, diagnostic` |
+| `app/services/contracts.py` | `generate_lesson, diagnostic` |
 | `app/services/curriculum/corpus.py` | `llm` |
 | `app/services/curriculum/coverage.py` | `diagnostic` |
 | `app/services/curriculum/extraction.py` | `prompt, llm` |
@@ -179,6 +187,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/services/curriculum/tutor_grounding.py` | `prompt` |
 | `app/services/curriculum_expansion.py` | `diagnostic` |
 | `app/services/data_subject_rights_service.py` | `prompt, llm, diagnostic` |
+| `app/services/dev_diagnostic_seed.py` | `diagnostic` |
 | `app/services/diagnostic.py` | `diagnostic` |
 | `app/services/diagnostic_data_integrity.py` | `diagnostic` |
 | `app/services/diagnostic_route_integrity.py` | `diagnostic` |
@@ -191,10 +200,12 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/services/etl/etl_pipeline.py` | `remediation` |
 | `app/services/etl/etl_pipeline_v2.py` | `llm` |
 | `app/services/executive.py` | `llm` |
+| `app/services/fourth_estate.py` | `diagnostic` |
 | `app/services/irt_quality_service.py` | `prompt, diagnostic` |
 | `app/services/launch_content_seed.py` | `prompt, llm, diagnostic, remediation` |
 | `app/services/learner_tutor.py` | `prompt, llm` |
 | `app/services/lesson_context_builder.py` | `prompt, diagnostic, remediation` |
+| `app/services/lesson_generator.py` | `llm` |
 | `app/services/lesson_service_v2.py` | `llm, generate_lesson` |
 | `app/services/llm/__init__.py` | `llm` |
 | `app/services/llm/gateway.py` | `prompt, llm` |
@@ -205,17 +216,25 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/services/prompt_registry.py` | `prompt, diagnostic` |
 | `app/services/quota_service.py` | `llm` |
 | `app/services/rlhf_service.py` | `anthropic` |
+| `app/services/runtime_kg/integration.py` | `diagnostic` |
+| `app/services/runtime_kg/repository.py` | `diagnostic` |
+| `app/services/runtime_kg/route_integration.py` | `diagnostic` |
+| `app/services/runtime_kg/schemas.py` | `diagnostic` |
 | `app/services/safety_filter.py` | `prompt, llm` |
 | `app/services/semantic_retrieval/generation_context.py` | `prompt` |
 | `app/services/study_plan_updater.py` | `diagnostic, remediation` |
 | `app/services/system_service_v2.py` | `diagnostic` |
 | `app/services/tutor_safety.py` | `prompt` |
+| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | `remediation` |
+| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | `remediation` |
+| `scripts/advisory_suites/generated_frontend_quality_gate.py` | `remediation` |
 | `scripts/assign_irt_params.py` | `diagnostic` |
 | `scripts/audit_baseline_refresh.py` | `llm` |
 | `scripts/audit_remediation/backend_fast_failure_report.py` | `prompt, llm, diagnostic, remediation` |
 | `scripts/audit_remediation/classify_backend_fast_failures.py` | `diagnostic, remediation` |
 | `scripts/audit_remediation/run_backend_fast_category_probe.py` | `remediation` |
 | `scripts/audit_remediation/run_backend_fast_gate.py` | `remediation` |
+| `scripts/audit_remediation/run_frontend_tooling_authority.py` | `diagnostic` |
 | `scripts/audit_remediation/verify_backend_fast_environment.py` | `llm, anthropic, groq, diagnostic` |
 | `scripts/audit_remediation/verify_backend_fast_evidence.py` | `llm, diagnostic` |
 | `scripts/audit_remediation/verify_backend_fast_failure_triage.py` | `diagnostic, remediation` |
@@ -232,14 +251,25 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/audit_remediation/verify_backend_fast_phase02n.py` | `diagnostic, remediation` |
 | `scripts/audit_remediation/verify_backend_fast_runtime_dependencies.py` | `anthropic, remediation` |
 | `scripts/audit_remediation/verify_baseline_reset.py` | `remediation` |
+| `scripts/audit_remediation/verify_ci_authority_workflow.py` | `remediation` |
 | `scripts/audit_remediation/verify_content_scope_registry_expansion.py` | `diagnostic` |
+| `scripts/audit_remediation/verify_dependency_scan_enforcement.py` | `remediation` |
+| `scripts/audit_remediation/verify_dependency_scan_workflow.py` | `remediation` |
+| `scripts/audit_remediation/verify_e2e_playwright_authority.py` | `remediation` |
+| `scripts/audit_remediation/verify_frontend_tooling_authority.py` | `remediation` |
+| `scripts/audit_remediation/verify_frontend_tooling_evidence.py` | `diagnostic` |
+| `scripts/audit_remediation/verify_frontend_tooling_phase03a.py` | `remediation` |
+| `scripts/audit_remediation/verify_hosted_ci_merge_readiness_authority.py` | `remediation` |
+| `scripts/audit_remediation/verify_openapi_frontend_contract.py` | `diagnostic, remediation` |
 | `scripts/audit_remediation/verify_openapi_route_contract.py` | `remediation` |
+| `scripts/audit_remediation/verify_remote_ci_branch_integration_authority.py` | `remediation` |
 | `scripts/audit_write_flow.py` | `diagnostic` |
 | `scripts/audit_write_runtime_evidence.py` | `llm` |
 | `scripts/auth_refresh_db_evidence_gate.py` | `llm` |
 | `scripts/auth_refresh_db_proof.py` | `llm` |
 | `scripts/auto_approve_item_bank.py` | `diagnostic` |
 | `scripts/beta_no_go_handoff_packet.py` | `diagnostic` |
+| `scripts/beta_outcomes/audit_rr010_beta_outcome_reporting.py` | `diagnostic` |
 | `scripts/build_corrective_caps_v2.py` | `prompt, llm, remediation` |
 | `scripts/build_focused_caps_dataset.py` | `remediation` |
 | `scripts/build_guardrails_dataset.py` | `remediation` |
@@ -311,6 +341,10 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/ci_evidence_acceptance.py` | `llm, diagnostic` |
 | `scripts/compare_orm_tables_to_database.py` | `diagnostic` |
 | `scripts/content_factory/run_full_generation.py` | `diagnostic` |
+| `scripts/coverage_suites/budgeted_terminal_isolation.py` | `remediation` |
+| `scripts/coverage_suites/coverage_baseline_stabilisation.py` | `llm, remediation` |
+| `scripts/coverage_suites/unit_shard_stabilisation.py` | `diagnostic, remediation` |
+| `scripts/coverage_suites/verify_budgeted_terminal_isolation.py` | `diagnostic, remediation` |
 | `scripts/create_diagnostic_items.py` | `llm, diagnostic` |
 | `scripts/curriculum/build_launch_content_artifacts.py` | `diagnostic` |
 | `scripts/curriculum/build_launch_item_bank.py` | `diagnostic` |
@@ -352,12 +386,17 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/inspect_diagnostics_and_jobs_integrity.py` | `diagnostic` |
 | `scripts/inventory_services.py` | `diagnostic` |
 | `scripts/jwt_secret_rotation_evidence.py` | `llm` |
+| `scripts/knowledge_graph/audit_kg_roadmap_closure.py` | `llm` |
 | `scripts/lessons/generate_lessons.py` | `llm, generate_lesson, remediation` |
 | `scripts/lessons/seed_lesson_bank.py` | `prompt, llm, remediation` |
 | `scripts/lessons/validate_lessons.py` | `prompt, llm, groq` |
 | `scripts/live_db_tx_evidence.py` | `llm, diagnostic` |
+| `scripts/maintenance/apply_doc_stage5_cleanup.py` | `llm, diagnostic` |
+| `scripts/maintenance/apply_execution7_targeted_baseline_reconciliation.py` | `remediation` |
 | `scripts/maintenance/audit_todo_backlog.py` | `prompt, llm, diagnostic, remediation` |
+| `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | `diagnostic` |
 | `scripts/merge_lora.py` | `llm` |
+| `scripts/operations_readiness/audit_rr008_operational_readiness.py` | `llm` |
 | `scripts/patch_diag_deep_health_runtime_registry.py` | `diagnostic` |
 | `scripts/patch_diagnostic_item_bank_canonicality_registry.py` | `diagnostic` |
 | `scripts/patch_diagnostic_score_live_audit_registry.py` | `diagnostic` |
@@ -372,24 +411,86 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/populate_register.py` | `prompt` |
 | `scripts/prepare_training_data.py` | `llm` |
 | `scripts/prod_frontend_runtime.py` | `llm` |
+| `scripts/production_readiness/apply_prd009_repository_hygiene_generated_local_artifact_audit.py` | `remediation` |
+| `scripts/production_readiness/audit_prd009_repository_hygiene_generated_local_artifact_audit.py` | `llm` |
+| `scripts/production_readiness/audit_prd1000_1004_controlled_beta_live_traffic_preflight_foundation.py` | `remediation` |
+| `scripts/production_readiness/audit_prd1100r_runtime_restore_1_runtime_stack_db_lineage_readiness.py` | `diagnostic` |
+| `scripts/production_readiness/audit_prd1100r_runtime_restore_execution_6_product_critical_flow_green.py` | `diagnostic` |
+| `scripts/production_readiness/audit_prd1100r_true_state_runtime_baseline_restoration.py` | `diagnostic` |
+| `scripts/production_readiness/audit_prd200_203_runtime_kg_persistence_foundation.py` | `diagnostic` |
+| `scripts/production_readiness/audit_prd204_206_runtime_kg_route_projection_behaviour.py` | `diagnostic` |
+| `scripts/production_readiness/audit_prd207_209_runtime_kg_acceptance_handoff.py` | `diagnostic` |
+| `scripts/production_readiness/audit_prd300_304_learner_parent_vertical_journey_foundation.py` | `diagnostic` |
+| `scripts/production_readiness/audit_prd305_309_learner_parent_vertical_journey_hardening_handoff.py` | `diagnostic` |
+| `scripts/production_readiness/audit_prd400_404_content_caps_quality_readiness_foundation.py` | `remediation` |
+| `scripts/production_readiness/audit_prd500_504_popia_live_data_privacy_ops_foundation.py` | `prompt` |
+| `scripts/production_readiness/audit_prd800_804_performance_scale_cost_execution_foundation.py` | `llm` |
+| `scripts/production_readiness/audit_prd805_809_performance_scale_cost_final_handoff.py` | `llm` |
+| `scripts/production_readiness/audit_prd905_909_commercial_runtime_audit_remediation_handoff.py` | `remediation` |
 | `scripts/refresh_current_state_doc.py` | `llm` |
 | `scripts/repair_arq_dependency_worker_import.py` | `diagnostic` |
 | `scripts/repair_diagnostics_data_integrity.py` | `diagnostic` |
 | `scripts/repair_runtime_blockers_after_followup_audit.py` | `diagnostic` |
+| `scripts/roadmap_reconciliation/capture_kg005_graph_grounded_lesson_assessment_generation_evidence.py` | `llm` |
+| `scripts/roadmap_reconciliation/capture_kg008_post_switch_optimisation_scale_review_evidence.py` | `llm` |
+| `scripts/roadmap_reconciliation/capture_kgact001_controlled_runtime_kg_authority_activation_evidence.py` | `llm` |
+| `scripts/roadmap_reconciliation/capture_prd300_304_learner_parent_vertical_journey_foundation_evidence.py` | `diagnostic` |
+| `scripts/roadmap_reconciliation/capture_prd305_309_learner_parent_vertical_journey_hardening_handoff_evidence.py` | `diagnostic` |
+| `scripts/roadmap_reconciliation/capture_prd905_909_commercial_runtime_audit_remediation_handoff_evidence.py` | `remediation` |
+| `scripts/roadmap_reconciliation/capture_rr008_operational_readiness_evidence.py` | `llm` |
+| `scripts/roadmap_reconciliation/capture_rr010_beta_outcome_reporting_evidence.py` | `diagnostic` |
+| `scripts/roadmap_reconciliation/capture_rr012_production_telemetry_dashboard_evidence.py` | `llm` |
+| `scripts/roadmap_reconciliation/capture_rr014_public_beta_expansion_evidence.py` | `diagnostic` |
+| `scripts/roadmap_reconciliation/verify_kg005_graph_grounded_lesson_assessment_generation.py` | `llm` |
+| `scripts/roadmap_reconciliation/verify_kg006_tutor_study_plan_gamification_parent_alignment.py` | `llm` |
+| `scripts/roadmap_reconciliation/verify_kg007_authority_switch_legacy_cleanup.py` | `llm` |
+| `scripts/roadmap_reconciliation/verify_kg008_post_switch_optimisation_scale_review.py` | `llm` |
+| `scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py` | `llm` |
+| `scripts/roadmap_reconciliation/verify_prd905_909_commercial_runtime_audit_remediation_handoff.py` | `remediation` |
+| `scripts/roadmap_reconciliation/verify_rr003_coverage_ci_route_authority.py` | `diagnostic` |
+| `scripts/roadmap_reconciliation/verify_rr006_security_posture_deepening.py` | `llm` |
+| `scripts/roadmap_reconciliation/verify_rr008_operational_readiness.py` | `llm` |
+| `scripts/roadmap_reconciliation/verify_rr010_beta_outcome_reporting.py` | `diagnostic` |
+| `scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py` | `llm` |
 | `scripts/route_tx_auth_slice.py` | `llm` |
 | `scripts/route_tx_diagnostics_slice.py` | `llm, diagnostic` |
 | `scripts/route_tx_impl_plan.py` | `diagnostic` |
 | `scripts/route_tx_popia_slice.py` | `llm` |
 | `scripts/route_tx_slice_rollup.py` | `diagnostic` |
+| `scripts/runtime/final_true_state_baseline.py` | `remediation` |
+| `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | `diagnostic` |
+| `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | `diagnostic` |
 | `scripts/seed_irt_items.py` | `diagnostic` |
 | `scripts/seed_item_bank.py` | `diagnostic` |
 | `scripts/staging_acceptance_evidence.py` | `llm` |
 | `scripts/staging_smoke_evidence_acceptance.py` | `llm, diagnostic` |
 | `scripts/staging_smoke_probe.py` | `diagnostic` |
 | `scripts/sync_git_to_redmine.py` | `diagnostic` |
+| `scripts/technical_audit/capture_branch_protection_evidence.py` | `llm, remediation` |
+| `scripts/technical_audit/capture_hosted_ci_evidence.py` | `remediation` |
+| `scripts/technical_audit/capture_post_merge_baseline_evidence.py` | `remediation` |
+| `scripts/technical_audit/capture_release_readiness_evidence.py` | `remediation` |
+| `scripts/technical_audit/capture_technical_audit_closure_evidence.py` | `remediation` |
+| `scripts/technical_audit/verify_hosted_ci_authority.py` | `remediation` |
+| `scripts/technical_audit/verify_merge_readiness_authority.py` | `diagnostic, remediation` |
+| `scripts/technical_audit/verify_post_merge_baseline.py` | `remediation` |
+| `scripts/technical_audit/verify_release_readiness_authority.py` | `diagnostic, remediation` |
+| `scripts/technical_audit/verify_technical_audit_closure.py` | `diagnostic, remediation` |
+| `scripts/telemetry/audit_rr012_production_telemetry_dashboard.py` | `prompt, llm, diagnostic` |
+| `scripts/test_suites/product_critical_flow_green.py` | `diagnostic` |
+| `scripts/test_suites/product_gate_execution.py` | `diagnostic` |
+| `scripts/test_suites/product_runtime_gate.py` | `diagnostic` |
 | `scripts/train_qlora.py` | `prompt, llm` |
 | `scripts/transaction_boundary_inventory.py` | `diagnostic` |
 | `scripts/transaction_rollback_rollup.py` | `diagnostic` |
+| `scripts/true_state_remediation/__init__.py` | `remediation` |
+| `scripts/true_state_remediation/bundles/bundle_01.py` | `remediation` |
+| `scripts/true_state_remediation/capture_baseline.py` | `remediation` |
+| `scripts/true_state_remediation/check_feature_freeze.py` | `remediation` |
+| `scripts/true_state_remediation/core.py` | `remediation` |
+| `scripts/true_state_remediation/execute_bundle.py` | `remediation` |
+| `scripts/true_state_remediation/record_manual_evidence.py` | `remediation` |
+| `scripts/true_state_remediation/run_release_gates.py` | `remediation` |
 | `scripts/tx_route_wiring_inventory.py` | `diagnostic` |
 | `scripts/validate_ai_output_fixtures.py` | `prompt, diagnostic, remediation` |
 | `scripts/validate_focused_adapter.py` | `llm` |

@@ -3,10 +3,10 @@ from uuid import uuid4
 pytestmark = pytest.mark.integration
 
 """Integration tests for JWT refresh token rotation."""
-import pytest
-from httpx import ASGITransport, AsyncClient
+import pytest  # noqa: E402
+from httpx import ASGITransport, AsyncClient  # noqa: E402
 
-from app.api_v2 import app
+from app.api_v2 import app  # noqa: E402
 
 
 @pytest.mark.asyncio

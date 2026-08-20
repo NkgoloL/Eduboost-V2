@@ -1,14 +1,14 @@
 # Backend Consolidation Terminal Report
 
-Generated at: `2026-06-27T02:22:04Z`
+Generated at: `2026-08-19T19:17:29Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| evidence manifest | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_evidence_manifest.py` |
-| execution report | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_execution_report.py` |
-| readiness report | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_readiness_report.py` |
-| runtime probe report | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_runtime_probe_report.py` |
-| terminal packet check | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_terminal_packet.py` |
+| evidence manifest | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/generate_backend_consolidation_evidence_manifest.py` |
+| execution report | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/generate_backend_consolidation_execution_report.py` |
+| readiness report | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/generate_backend_consolidation_readiness_report.py` |
+| runtime probe report | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/generate_backend_runtime_probe_report.py` |
+| terminal packet check | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_backend_consolidation_terminal_packet.py` |
 
 ## Boundary
 
@@ -16,7 +16,7 @@ This terminal report closes the diagnostic packet only. It does not approve dest
 
 ## evidence manifest
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_evidence_manifest.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/generate_backend_consolidation_evidence_manifest.py`
 
 Return code: `0`
 
@@ -26,7 +26,7 @@ Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/backen
 
 ## execution report
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_execution_report.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/generate_backend_consolidation_execution_report.py`
 
 Return code: `0`
 
@@ -36,7 +36,7 @@ Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/backen
 
 ## readiness report
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_readiness_report.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/generate_backend_consolidation_readiness_report.py`
 
 Return code: `0`
 
@@ -46,7 +46,7 @@ Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/backen
 
 ## runtime probe report
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_runtime_probe_report.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/generate_backend_runtime_probe_report.py`
 
 Return code: `0`
 
@@ -56,7 +56,7 @@ Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/backen
 
 ## terminal packet check
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_terminal_packet.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_backend_consolidation_terminal_packet.py`
 
 Return code: `0`
 
@@ -125,6 +125,8 @@ Backend consolidation release guard
 - PASS [report] diagnostic report present
 - PASS backend consolidation release guard
 
+/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/modules/consent/service.py:27: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+  from app.core.exceptions import ConsentExpiredError, ConsentRequiredError
 Audit runtime compatibility surface
 - PASS [audit compat] AuditRepositoryCompatAdapter: present
 - PASS [audit compat] AuditEventInput: present

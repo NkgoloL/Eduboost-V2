@@ -4,16 +4,16 @@ Updated: 2026-06-13
 
 ## Decision
 
-The local WSL checkout is the main working directory and current source-of-truth workspace for EduBoost V2 work:
+The local WSL checkout is the main working directory and current source-of-truth workspace for EduBoost V2 work. Resolve its path from the active shell with pwd; do not use a hard-coded VM or checkout path:
 
 ```text
-/home/nkgolol/Dev/Development/Eduboost-V2
+$(pwd)
 ```
 
-The Windows path exposed to desktop tooling is:
+When a command needs the repository root, use the current WSL checkout:
 
 ```text
-\\wsl.localhost\Ubuntu\home\nkgolol\Dev\Development\Eduboost-V2
+REPO_ROOT="$(pwd)"
 ```
 
 ## Remote VM Status

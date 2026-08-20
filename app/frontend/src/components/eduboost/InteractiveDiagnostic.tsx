@@ -2,7 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import { DiagnosticService } from "../../lib/api/services";
-import { Card } from "../ui/Card-legacy";
+import { Card } from "../ui/card";
 import { Stars } from "./EntryScreens";
 import type { ActiveLearner, DiagnosticAnswerInput, DiagnosticItem, DiagnosticResult, RankedGap, SubjectCode } from "../../lib/api/types";
 

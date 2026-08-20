@@ -1,0 +1,87 @@
+ M .agent.md
+ T .bandit
+ M .secrets.baseline
+ M app/frontend/package.json
+ M app/frontend/pnpm-lock.yaml
+ M docs/ai/ai_prompt_surface_inventory.md
+ M docs/architecture/auth_boundary_debt_report.json
+ M docs/architecture/auth_boundary_debt_report.md
+ M docs/architecture/auth_service_extraction_report.json
+ M docs/architecture/auth_service_extraction_report.md
+ M docs/architecture/import_linter_availability.md
+ M docs/architecture/import_linter_contract_run.md
+ M docs/architecture/router_repository_boundary_matrix.json
+ M docs/architecture/router_repository_boundary_matrix.md
+ M docs/architecture/router_service_dependency_map.json
+ M docs/architecture/router_service_dependency_map.md
+ M docs/architecture/service_boundary_inventory.json
+ M docs/architecture/service_boundary_inventory.md
+ M docs/architecture/service_family_map.json
+ M docs/architecture/service_family_map.md
+ M docs/architecture/transaction_boundary_inventory.json
+ M docs/architecture/transaction_boundary_inventory.md
+ M docs/architecture/tx_route_wiring_inventory.json
+ M docs/architecture/tx_route_wiring_inventory.md
+ M docs/beta/beta_content_hard_gate.json
+ M docs/beta/beta_content_hard_gate.md
+ M docs/docs_gap_report.md
+ M docs/docs_generation_plan.md
+ M docs/docs_inventory.json
+ M docs/docs_inventory.md
+ M docs/frontend/frontend_api_client_inventory.md
+ M docs/frontend/frontend_route_inventory.md
+ M docs/frontend/frontend_runtime_inventory.md
+ M docs/operations/beta_release_evidence_bundle.md
+ M docs/operations/beta_release_pr_body.md
+ M docs/operations/beta_signoff_manifest.md
+ M docs/operations/database_backup_manifest.md
+ M docs/operations/database_restore_evidence.md
+ M docs/operations/release_candidate_tag_manifest.md
+ M docs/operations/release_evidence_manifest.md
+ M docs/operations/release_state_snapshot.md
+ M docs/operations/staging_smoke_evidence_manifest.md
+ M docs/release-evidence/true-state-remediation/b01/commands/bandit.json
+ M docs/release-evidence/true-state-remediation/b01/commands/command_summary.json
+ M docs/release-evidence/true-state-remediation/b01/commands/compileall.json
+ M docs/release-evidence/true-state-remediation/b01/commands/execution7_gate_suite.json
+ M docs/release-evidence/true-state-remediation/b01/commands/execution7_verifier.json
+ M docs/release-evidence/true-state-remediation/b01/commands/frontend_audit.json
+ M docs/release-evidence/true-state-remediation/b01/commands/frontend_quality.json
+ M docs/release-evidence/true-state-remediation/b01/commands/mcp_stub_isolation.json
+ M docs/release-evidence/true-state-remediation/b01/commands/mypy.json
+ M docs/release-evidence/true-state-remediation/b01/commands/pip_audit_base.json
+ M docs/release-evidence/true-state-remediation/b01/commands/pip_audit_dev.json
+ M docs/release-evidence/true-state-remediation/b01/commands/product_gate.json
+ M docs/release-evidence/true-state-remediation/b01/commands/product_runtime_gate.json
+ M docs/release-evidence/true-state-remediation/b01/commands/ruff.json
+ M docs/release-evidence/true-state-remediation/b01/commands/test_collection.json
+ M docs/release-evidence/true-state-remediation/b01/manual/tsr-0-7.json
+ M docs/release-evidence/true-state-remediation/b01/manual/tsr-0.7-responsibility-matrix.md
+ M docs/roadmap/production_readiness/prd1_required_checks_workflow_release_gate_convergence.json
+ M docs/roadmap/production_readiness/true_state_remediation_register.json
+ M docs/security/PHASE2_AUTHORIZATION_CLOSURE.md
+ M docs/security/auth_hardening_status.md
+ M docs/security/dependency_constraints_snapshot.md
+ M docs/security/dependency_pin_report.json
+ M docs/security/dependency_pin_report.md
+ M docs/security/jwt_rotation_introspection.json
+ M docs/security/jwt_rotation_introspection.md
+ M docs/security/jwt_rotation_repair_report.md
+ M docs/security/popia_consent_boundary_matrix.md
+ M docs/security/popia_consent_gate_inventory.md
+ M requirements/base.in
+ M requirements/base.txt
+ M requirements/constraints.snapshot.txt
+ M requirements/dev.in
+ M requirements/dev.txt
+ M requirements/ml.txt
+?? .tsr/backups/b01/20260803T131949Z/
+?? .tsr/backups/b01/20260803T135622Z/
+?? docs/release-evidence/true-state-remediation/b01/manual/tsr-1.11-review-head.txt
+?? docs/release-evidence/true-state-remediation/b01/manual/tsr-1.11-review-status.porcelain
+?? git_history.txt
+?? "h -lc echo hi && pwd"
+?? llm_context_pack/
+?? pack_codebase.sh
+?? scripts/.bandit
+?? "ys; print(sys.executable)\""

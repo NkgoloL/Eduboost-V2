@@ -1,25 +1,12 @@
----
-title: "Service Family Map"
-status: active
-owner: architecture
-reviewers: [architecture, engineering]
-audience: developer
-source_of_truth: false
-supersedes: []
-superseded_by: null
-last_reviewed: 2026-06-23
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage4-check"
-code_anchors: [docs/architecture/README.md]
----
-
 # Service Family Map
 
-Generated at: `2026-06-12T17:31:09Z`
+Generated at: `2026-08-19T20:02:13Z`
 
 | Domain | Path | Classification | Classes |
 |---|---|---|---|
+| other | `app/services/ai_operations.py` | unclassified | `AIBudgetExceededError`, `AIOperationsService`, `BudgetLimits` |
 | other | `app/services/ai_safety.py` | unclassified | `ContentQualityScore` |
+| other | `app/services/archetype_service.py` | duplicate_domain_service | - |
 | other | `app/services/arq_import_compat.py` | migration_or_compat_helper | `RedisSettings` |
 | assessment | `app/services/assessment_service_v2.py` | duplicate_domain_service | `AssessmentServiceV2` |
 | audit | `app/services/audit_canonicalization_registry.py` | unclassified | `AuditMigrationCandidate`, `MigrationStatus` |
@@ -40,6 +27,7 @@ Generated at: `2026-06-12T17:31:09Z`
 | other | `app/services/backend_runtime_integration_readiness.py` | active_runtime_facade | `IntegrationArea`, `RuntimeIntegrationDryRunResult`, `RuntimeIntegrationTarget` |
 | other | `app/services/backend_runtime_wiring_cases.py` | active_runtime_facade | `WiringCaseResult` |
 | other | `app/services/backend_runtime_wiring_preflight.py` | active_runtime_facade | `PreflightArea`, `RuntimeWiringPreflightResult` |
+| other | `app/services/batch_generation.py` | deprecated_legacy_service | `BatchGenerationEngine`, `GenerationTaskSpec`, `RunResult` |
 | other | `app/services/caps_validator.py` | unclassified | `CAPSAlignmentValidator`, `CAPSValidationResult` |
 | consent | `app/services/consent.py` | unclassified | - |
 | consent | `app/services/consent_compat.py` | migration_or_compat_helper | `ConsentAuditEvent` |
@@ -48,6 +36,7 @@ Generated at: `2026-06-12T17:31:09Z`
 | consent | `app/services/consent_runtime_compatibility.py` | active_runtime_facade | `ConsentRuntimeOperation`, `ConstructorProbe` |
 | consent | `app/services/consent_runtime_orchestrator.py` | active_runtime_facade | `ConsentRuntimeCompatibilitySummary` |
 | consent | `app/services/consent_service.py` | deprecated_legacy_service | `ConsentService` |
+| other | `app/services/content_answer_key_verification.py` | unclassified | `AnswerKeyVerificationResult`, `ContentAnswerKeyVerificationService` |
 | other | `app/services/content_artifact_lifecycle.py` | unclassified | `ArtifactStatusTransition`, `ContentArtifactLifecycleService` |
 | other | `app/services/content_blueprint_validation.py` | unclassified | `AssessmentBlueprintValidationService`, `BlueprintValidationResult` |
 | other | `app/services/content_bulk_review.py` | unclassified | `BulkReviewResult`, `ContentBulkReviewService` |
@@ -85,11 +74,13 @@ Generated at: `2026-06-12T17:31:09Z`
 | other | `app/services/content_production_promotion_executor.py` | unclassified | `ContentProductionPromotionExecutor`, `ProductionPromotionPage`, `ProductionPromotionPlan`, `ProductionPromotionResult`, `ProductionRollbackResult` |
 | other | `app/services/content_production_promotion_gate.py` | unclassified | `ContentProductionPromotionGate`, `ProductionGateBlocker`, `ProductionGateReport`, `ProductionGateStatus` |
 | other | `app/services/content_production_read_verification.py` | unclassified | `ContentProductionReadVerificationService`, `ProductionReadVerificationReport`, `ScopeProductionReadReport` |
+| other | `app/services/content_review_governance.py` | unclassified | `ArtifactRevisionResult`, `ContentReviewEligibilityService`, `ContentReviewGovernanceService`, `ReviewAssignmentResult`, `ReviewConflictError`, `ReviewDecisionResult`, `ReviewGovernancePolicy` |
 | other | `app/services/content_review_queue.py` | unclassified | `ArtifactReviewBundle`, `ContentReviewQueueService`, `ReviewQueueItem`, `ReviewQueuePage`, `ReviewSummary` |
 | other | `app/services/content_review_risk.py` | deprecated_legacy_service | `ContentReviewRiskService`, `ReviewRisk` |
 | other | `app/services/content_reviewer_assignment.py` | unclassified | `ContentReviewerAssignmentService`, `ReviewerWorkload` |
 | lesson | `app/services/content_safety/lesson_contracts.py` | unclassified | `LessonOutput`, `LessonValidationResult` |
 | other | `app/services/content_safety/pii.py` | unclassified | `PIIFinding` |
+| other | `app/services/content_schemas.py` | unclassified | `DiagnosticItemBatch`, `DiagnosticItemPayload`, `LessonPayload`, `StrictPayload`, `VocabularyEntry`, `WorkedExample` |
 | other | `app/services/content_scope_registry.py` | unclassified | `ContentScopeRegistry`, `ContentScopeRegistryError` |
 | other | `app/services/content_seed_promotion.py` | unclassified | `ContentSeedPromotionService`, `GateResult` |
 | other | `app/services/content_staging_preview_service.py` | duplicate_domain_service | `ContentStagingPreviewService`, `StagingArtifactPreview`, `StagingCapsRefPreview`, `StagingPreviewReport` |
@@ -97,12 +88,33 @@ Generated at: `2026-06-12T17:31:09Z`
 | other | `app/services/content_staging_readiness.py` | unclassified | `AllScopeStagingVerificationReport`, `BlockerSeverity`, `ContentStagingReadinessService`, `LayerReadinessSummary`, `ScopeBlocker`, `ScopeStagingVerificationReport`, `StagingReadinessStatus` |
 | other | `app/services/content_staging_seed_executor.py` | unclassified | `ContentStagingSeedExecutor`, `MissingForeignKeyError`, `SeedableArtifact`, `SkippedArtifact`, `StagingRollbackResult`, `StagingSeedItemResult`, `StagingSeedPlan`, `StagingSeedRunPage`, `StagingSeedRunResult` |
 | other | `app/services/content_template_validation.py` | unclassified | `StudyPlanTemplateValidationResult`, `StudyPlanTemplateValidationService` |
+| other | `app/services/content_validator.py` | unclassified | `ContentValidator`, `ValidationResult` |
+| other | `app/services/contracts.py` | unclassified | `IAuthService`, `IConsentService`, `IDiagnosticService`, `ILearnerService`, `ILessonService` |
+| other | `app/services/curriculum/acquisition.py` | unclassified | `AcquiredObject`, `AcquisitionPolicy`, `AcquisitionRejectedError`, `ControlledAcquisitionService` |
+| other | `app/services/curriculum/answer_verification.py` | unclassified | `AnswerVerificationError`, `AnswerVerificationOutcome`, `DeterministicMathAnswerVerifier` |
 | other | `app/services/curriculum/caps_topic_map.py` | unclassified | `CAPSTopic`, `CAPSTopicMap` |
+| other | `app/services/curriculum/claim_validation.py` | unclassified | `Claim`, `ClaimValidationError`, `ClaimValidationOutcome`, `ClaimValidator` |
+| other | `app/services/curriculum/corpus.py` | unclassified | `ActivationPlan`, `ActiveCorpusBinding`, `ActiveCorpusRetriever`, `CorpusActivationPlanner`, `CorpusBuilder`, `CorpusChunkCandidate`, `CorpusManifest`, `CorpusRejectedError`, `CorpusRetrievalRecord`, `EligibilityDecision`, `FrozenCorpusPackage`, `RetrievalHit`, `RetrievalProjection`, `RetrievalProjectionBuilder`, `RetrievalQuery`, `RetrievalResult` |
 | other | `app/services/curriculum/coverage.py` | unclassified | `CurriculumCoverageAnalyzer`, `CurriculumGap` |
+| other | `app/services/curriculum/evaluation.py` | unclassified | `EvaluationRejectedError`, `Gate2R8EvaluationPolicy`, `Gate2R8EvaluationResult`, `RetrievalEvaluationCase`, `RetrievalEvaluationScorer`, `RetrievalMetrics` |
+| other | `app/services/curriculum/extraction.py` | unclassified | `ChunkProposal`, `ExtractedPage`, `ExtractedSection`, `ExtractionRejectedError`, `ExtractionResult`, `StructuredTextExtractor` |
+| other | `app/services/curriculum/generation.py` | unclassified | `GeneratedAssessmentItem`, `GeneratedClaim`, `GroundedGenerationArtifact`, `GroundedGenerationRejectedError`, `GroundedGenerationRequest`, `GroundedGenerationService`, `LessonSection`, `SourceReference` |
+| other | `app/services/curriculum/graph.py` | unclassified | `CurriculumEdgeVersion`, `CurriculumLanguageLink`, `CurriculumNodeVersion`, `EdgeType`, `Gate2R4CurriculumGraph`, `Gate2R4ValidationError`, `GraphNodeDraft`, `LanguageAuthorityStatus`, `MappingDraft`, `MappingRejectedError`, `MappingReviewEvent`, `NodeStatus`, `ReviewStatus`, `SourceCurriculumMappingVersion`, `SupportType` |
+| other | `app/services/curriculum/grounding.py` | unclassified | `GroundingDecision`, `GroundingPolicyEngine`, `GroundingRejectedError`, `RetrievedChunk` |
+| other | `app/services/curriculum/legacy.py` | unclassified | `LegacyArtifactView`, `LegacyDispositionDecision`, `LegacyDispositionError`, `LegacyMigrationClassifier` |
+| other | `app/services/curriculum/legacy_migration.py` | migration_or_compat_helper | `LegacyArtifactView`, `LegacyDispositionDecision`, `LegacyDispositionError`, `LegacyMigrationClassifier` |
+| other | `app/services/curriculum/object_storage.py` | unclassified | `LocalImmutableObjectStore`, `ObjectStorageRejectedError`, `StoredObject` |
+| other | `app/services/curriculum/phase02r_closure.py` | unclassified | `EvidenceReference`, `Gate2R8ClosureReadiness`, `Phase02RClosureRejectedError` |
+| other | `app/services/curriculum/phase02r_verification.py` | unclassified | - |
+| other | `app/services/curriculum/retrieval.py` | unclassified | - |
+| other | `app/services/curriculum/rights_policy.py` | unclassified | `RightsDecisionView`, `RightsDeniedError`, `RightsPolicyEngine`, `RightsRequestContext`, `RightsUse` |
+| other | `app/services/curriculum/tutor_grounding.py` | unclassified | `GroundedTutorResponse`, `GroundedTutorService`, `TutorGroundingError`, `TutorGroundingPolicy`, `TutorGroundingRequest`, `TutorGroundingTrace`, `TutorProvenanceStore`, `TutorRequestControls`, `TutorSourceReference` |
+| other | `app/services/curriculum_expansion.py` | unclassified | `CurriculumExpansionService`, `TrainingDatasetGovernanceService` |
 | other | `app/services/data_subject_rights_service.py` | duplicate_domain_service | `DataSubjectRightsService` |
 | other | `app/services/deep_readiness_readonly.py` | unclassified | `ReadinessCheckResult`, `ReadinessCheckSpec`, `ReadinessSeverity` |
 | other | `app/services/deep_readiness_route_contracts.py` | unclassified | `DeepReadinessRouteCheck`, `ReadinessCheckMode` |
 | other | `app/services/deep_readiness_runtime.py` | active_runtime_facade | `DeepReadinessCheckResult`, `DeepReadinessRuntimeResult` |
+| diagnostic | `app/services/dev_diagnostic_seed.py` | unclassified | - |
 | diagnostic | `app/services/diagnostic.py` | unclassified | - |
 | diagnostic | `app/services/diagnostic_data_integrity.py` | unclassified | `DiagnosticIntegrityError`, `DiagnosticSubmissionIntegrityResult` |
 | diagnostic | `app/services/diagnostic_route_integrity.py` | unclassified | - |
@@ -114,7 +126,6 @@ Generated at: `2026-06-12T17:31:09Z`
 | diagnostic | `app/services/diagnostic_transactional_response.py` | unclassified | `DiagnosticTransactionError`, `DiagnosticTransactionInput`, `DiagnosticTransactionResult`, `TransactionalDiagnosticResponseService` |
 | other | `app/services/email_service.py` | duplicate_domain_service | - |
 | other | `app/services/ether.py` | unclassified | - |
-| other | `app/services/ether_service.py` | duplicate_domain_service | `OnboardingResponse` |
 | other | `app/services/etl/etl_pipeline.py` | unclassified | `ChunkType`, `Chunker`, `Document`, `DocumentChunk`, `DocumentSource`, `DocumentType`, `EduboostETL`, `ExtractionResult`, `Extractor`, `IngestRequest`, `LicenseStatus`, `Normalizer`, `ProcessingJob`, `ProcessingStatus`, `QualityCheckResult`, `QualityValidator`, `SourceType` |
 | other | `app/services/etl/etl_pipeline_v2.py` | deprecated_legacy_service | `DocumentVersion`, `EduboostETLv2`, `FeedbackRecord`, `MonitoringReport`, `TrainingDataset`, `TrainingExample` |
 | other | `app/services/etl/etl_pipeline_v3_additions.py` | deprecated_legacy_service | `AuditEntry`, `BulkReviewResult`, `ContaminationReport`, `DatasetSplitResult`, `EduboostETLv3` |
@@ -125,37 +136,68 @@ Generated at: `2026-06-12T17:31:09Z`
 | other | `app/services/first_deep_readiness_runtime_wiring.py` | active_runtime_facade | `DeepReadinessRuntimePlan`, `FirstDeepReadinessRuntimeCandidate` |
 | other | `app/services/fourth_estate.py` | unclassified | - |
 | gamification | `app/services/gamification_service_v2.py` | duplicate_domain_service | `GamificationServiceV2`, `_EmptyGamificationRepository` |
+| other | `app/services/irt_quality_service.py` | duplicate_domain_service | `IRTQualityConflict`, `IRTQualityError`, `IRTQualityService` |
 | other | `app/services/job_dependency_factory.py` | unclassified | - |
 | other | `app/services/job_runtime_integrity.py` | active_runtime_facade | `JobRuntimeIntegrityError` |
 | other | `app/services/judiciary.py` | unclassified | - |
 | other | `app/services/jwt_keyring.py` | unclassified | `JWTKey`, `JWTKeyringError` |
 | other | `app/services/launch_content_seed.py` | unclassified | - |
 | learner | `app/services/learner_service.py` | duplicate_domain_service | `LearnerService` |
+| learner | `app/services/learner_tutor.py` | unclassified | `LearnerTutorService` |
 | auth | `app/services/lesson_authorization.py` | authorization_helper | - |
 | lesson | `app/services/lesson_context_builder.py` | unclassified | `LessonContext`, `LessonContextBuilder` |
+| lesson | `app/services/lesson_generator.py` | unclassified | - |
 | lesson | `app/services/lesson_service_v2.py` | duplicate_domain_service | `LessonServiceV2` |
 | lesson | `app/services/lesson_transactional_completion.py` | unclassified | `LessonCompletionInput`, `LessonCompletionNotFoundError`, `LessonCompletionResult`, `LessonCompletionTransactionError`, `TransactionalLessonCompletionService` |
 | other | `app/services/llm/gateway.py` | unclassified | `CanonicalLLMGateway`, `DeterministicMockProvider`, `LLMGatewayMetadata`, `LLMGatewayRequest`, `LLMGatewayResponse`, `LLMProvider`, `ProviderHealth`, `ProviderPolicy`, `ProviderResult`, `TokenUsage` |
 | other | `app/services/llm/json_completion.py` | unclassified | `JsonCompletionError`, `JsonCompletionGateway`, `JsonCompletionResponse` |
+| other | `app/services/llm_provider.py` | unclassified | `AllProvidersFailedError`, `AnthropicProvider`, `AzureOpenAIProvider`, `CircuitBreaker`, `CircuitState`, `DeterministicProvider`, `GenerationResult`, `GroqProvider`, `LLMProvider`, `ProviderContentPolicyError`, `ProviderError`, `ProviderRateLimitError`, `ProviderRouter`, `ProviderTimeoutError`, `TokenUsage` |
 | other | `app/services/parent_report_service_v2.py` | duplicate_domain_service | `ParentReportServiceV2` |
 | other | `app/services/pii_sweep.py` | unclassified | `PIIFinding`, `PIIScanner`, `PIISweepError`, `SweepResult` |
+| other | `app/services/policy_service.py` | duplicate_domain_service | - |
 | consent | `app/services/popia_consent_lifecycle_adapter.py` | unclassified | `POPIAConsentLifecycleAdapter` |
+| popia | `app/services/popia_erasure_safety.py` | unclassified | `ErasurePreflightDecision` |
 | popia | `app/services/popia_service.py` | duplicate_domain_service | `POPIADataRightsService`, `RightsRequestStatus` |
 | popia | `app/services/popia_transactional_lifecycle.py` | unclassified | `POPIATransactionError`, `TransactionalPOPIAConsentLifecycleService`, `_NullAsyncContext` |
+| other | `app/services/prompt_registry.py` | unclassified | `PromptRegistry`, `PromptTemplate` |
 | other | `app/services/quota_service.py` | duplicate_domain_service | `QuotaExceededError`, `QuotaService`, `SemanticCacheService` |
 | other | `app/services/rlhf_service.py` | duplicate_domain_service | `RLHFService` |
 | audit | `app/services/runtime_audit_facade.py` | active_runtime_facade | `AuditRecordRepository`, `RuntimeAuditRecord` |
 | consent | `app/services/runtime_consent_facade.py` | active_runtime_facade | `ConsentRuntimeEmission` |
+| other | `app/services/runtime_kg/acceptance.py` | unclassified | `RuntimeKGAcceptanceCheck`, `RuntimeKGAcceptanceReport` |
+| other | `app/services/runtime_kg/feature_flags.py` | unclassified | `RuntimeKGFeatureFlags` |
+| other | `app/services/runtime_kg/integration.py` | unclassified | - |
+| other | `app/services/runtime_kg/loader.py` | unclassified | `RuntimeKGLoadError`, `RuntimeKGLoadPlan`, `RuntimeKGLoader` |
+| other | `app/services/runtime_kg/repository.py` | unclassified | `RuntimeKGRepository` |
+| other | `app/services/runtime_kg/route_integration.py` | unclassified | `RuntimeKGRouteResult` |
+| other | `app/services/runtime_kg/schemas.py` | unclassified | `LearnerEvidence`, `LearnerKGNodeProjection`, `RuntimeKGEdgeInput`, `RuntimeKGGraphInput`, `RuntimeKGNodeInput`, `RuntimeKGProjection` |
+| other | `app/services/runtime_kg/service.py` | duplicate_domain_service | `RuntimeKGProjectionService` |
+| other | `app/services/safety_filter.py` | unclassified | `SafetyCheckResult`, `SafetyFilter`, `SafetyViolation`, `ViolationCategory` |
+| other | `app/services/semantic_retrieval/embedding.py` | unclassified | `AzureOpenAIEmbeddingProvider`, `DeterministicEmbeddingProvider`, `EmbeddingProvider`, `EmbeddingProviderError`, `EmbeddingProviderSettings` |
+| other | `app/services/semantic_retrieval/evaluation.py` | unclassified | - |
+| other | `app/services/semantic_retrieval/generation_context.py` | unclassified | `SemanticContentGenerationSourceContextService`, `SemanticSourceContextResult` |
+| other | `app/services/semantic_retrieval/indexing.py` | unclassified | `RetrievalIndexingService`, `SourceChunkInput`, `SourceDocumentInput` |
+| other | `app/services/semantic_retrieval/repository.py` | unclassified | `SemanticRetrievalRepository` |
+| other | `app/services/semantic_retrieval/service.py` | duplicate_domain_service | `FallbackPolicy`, `SemanticRetrievalService` |
+| other | `app/services/semantic_retrieval/types.py` | unclassified | `EvaluationCase`, `EvaluationMetrics`, `RetrievalFilters`, `RetrievalHit`, `RetrievalResult` |
 | other | `app/services/stripe_service.py` | duplicate_domain_service | `StripeService` |
 | other | `app/services/study_plan_service_v2.py` | duplicate_domain_service | `StudyPlanServiceV2`, `_MemoryStudyPlanRepository`, `_MissingLearnerRepository` |
 | other | `app/services/study_plan_updater.py` | unclassified | `StudyPlanUpdater` |
 | other | `app/services/subscription_service.py` | duplicate_domain_service | `SubscriptionService` |
 | other | `app/services/system_service_v2.py` | duplicate_domain_service | `SystemServiceV2` |
 | other | `app/services/telemetry.py` | unclassified | `TelemetryService` |
+| other | `app/services/trustworthy_beta_quality.py` | unclassified | - |
+| other | `app/services/tutor_safety.py` | unclassified | `PreparedInput`, `ValidatedOutput` |
 | auth | `app/modules/auth/service.py` | canonical_domain_service | `AuthService` |
 | other | `app/modules/beta_launch/production_readiness_contracts.py` | unclassified | `AcceptanceStatus`, `BetaCohortPlan`, `BetaEntryCriterion`, `BetaExitCriterion`, `BetaLaunchDecision`, `BetaStage`, `FeedbackIntakeRule`, `FeedbackSeverity`, `KnownIssue`, `LaunchDecision`, `LaunchReadinessReview`, `ProductScopeArea`, `ProductScopeItem`, `StagingAcceptanceCriterion` |
 | billing | `app/modules/billing/production_readiness_contracts.py` | unclassified | `BillingAuditEvent`, `BillingPlan`, `BillingProvider`, `BillingProviderDecision`, `PricingPolicy`, `SubscriptionSnapshot`, `SubscriptionState`, `WebhookIdempotencyStore`, `WebhookRetryPolicy` |
+| other | `app/modules/commercial_launch/readiness.py` | unclassified | `CommercialLaunchEvidenceControl`, `CommercialLaunchReadinessInputs`, `CommercialLaunchReadinessReport` |
+| other | `app/modules/commercial_launch/remediation.py` | unclassified | `CommercialRuntimeAuditRemediationReport` |
 | consent | `app/modules/consent/service.py` | canonical_domain_service | `ConsentService` |
+| other | `app/modules/content_quality/acceptance.py` | unclassified | `ContentQualityFinalAcceptanceReport` |
+| other | `app/modules/content_quality/readiness.py` | unclassified | `CAPSStrandReadiness`, `ContentQualityReadinessInputs`, `ContentQualityReadinessReport` |
+| auth | `app/modules/controlled_beta/authorisation.py` | unclassified | `ControlledBetaFinalAuthorisationReport` |
+| other | `app/modules/controlled_beta/preflight.py` | unclassified | `ControlledBetaPreflightReport` |
 | other | `app/modules/deployment/production_readiness_contracts.py` | unclassified | `ArtifactProvenance`, `DeploymentGate`, `DeploymentStrategy`, `DockerImageContract`, `EnvironmentContract`, `EnvironmentName`, `InfrastructureProviderDecision`, `PipelineCheck`, `PipelineStage`, `RollbackContract`, `RuntimeRole` |
 | diagnostic | `app/modules/diagnostics/bias_review_router.py` | unclassified | `BiasReviewRequest` |
 | diagnostic | `app/modules/diagnostics/calibration_service.py` | canonical_domain_service | `CalibrationResult`, `CalibrationService` |
@@ -176,7 +218,7 @@ Generated at: `2026-06-12T17:31:09Z`
 | other | `app/modules/documentation_governance/production_readiness_contracts.py` | unclassified | `AdrRecord`, `AdrStatus`, `ClaimConfidence`, `ClaimDisciplineRule`, `ClaimRecord`, `ClaimType`, `DocumentationAudience`, `DocumentationGovernanceDecision`, `DocumentationInventoryEntry`, `DocumentationReviewGate`, `DocumentationStatus`, `ReleaseNoteEntry`, `ReleaseNoteType`, `StaleDocumentationFinding` |
 | other | `app/modules/final_release_blockers/production_readiness_contracts.py` | unclassified | `BlockerSeverity`, `BlockerStatus`, `ExternalManualDependency`, `FinalDecision`, `FinalGoNoGoChecklist`, `FinalReleaseBlockerDecision`, `LaunchAuthority`, `ReleaseBlockerClosureRecord`, `ReleaseBlockerDomain`, `ReleaseBlockerDomainSummary`, `ReleaseBlockerItem`, `ReleaseWaiverRule` |
 | other | `app/modules/jobs.py` | unclassified | `WorkerSettings` |
-| learner | `app/modules/learners/ether_service.py` | canonical_domain_service | `EtherService` |
+| learner | `app/modules/learners/archetype_service.py` | canonical_domain_service | `ArchetypeService` |
 | lesson | `app/modules/lessons/adaptive_remediation.py` | unclassified | `RemediationPromptConfig`, `RemediationStrategy` |
 | lesson | `app/modules/lessons/answer_key_verifier.py` | unclassified | `AnswerKeyVerifier`, `QuestionVerification`, `VerificationResult` |
 | lesson | `app/modules/lessons/budget_guardrails.py` | unclassified | `BudgetConfig`, `BudgetExceededError`, `BudgetGuardrails`, `_InProcessCounter`, `_RedisCounter` |
@@ -196,14 +238,27 @@ Generated at: `2026-06-12T17:31:09Z`
 | lesson | `app/modules/lessons/service.py` | canonical_domain_service | `LessonService` |
 | lesson | `app/modules/lessons/teacher_insight_mode.py` | unclassified | `InterventionGroup`, `LearnerMisconceptionRecord`, `MisconceptionCluster`, `TeacherInsightGenerationError`, `TeacherInsightRequest`, `TeacherInsightResponse` |
 | notification | `app/modules/notifications/production_readiness_contracts.py` | unclassified | `CommunicationProviderDecision`, `DeliveryRetryPolicy`, `DeliveryStatus`, `NotificationAudience`, `NotificationAuditEvent`, `NotificationChannel`, `NotificationOutbox`, `NotificationPolicy`, `NotificationPreference`, `NotificationPurpose`, `NotificationRequest`, `NotificationTemplate` |
+| other | `app/modules/observability/assurance.py` | unclassified | `ObservabilityFinalAssuranceInputs`, `ObservabilityFinalAssuranceReport`, `ObservabilityFinalEvidenceItem` |
 | other | `app/modules/observability/production_readiness_contracts.py` | unclassified | `AlertRule`, `AlertSeverity`, `DashboardDefinition`, `IncidentRoute`, `LogEventContract`, `MetricDefinition`, `ObservabilityProviderDecision`, `ServiceTier`, `SloDefinition`, `TelemetryRetentionPolicy`, `TelemetrySignal`, `TraceSpanContract` |
+| other | `app/modules/observability/readiness.py` | unclassified | `ObservabilityEvidenceControl`, `ObservabilitySreReadinessInputs`, `ObservabilitySreReadinessReport` |
 | other | `app/modules/operations_support/production_readiness_contracts.py` | unclassified | `CustomerImpact`, `IncidentClassificationRule`, `IncidentRecord`, `IncidentSeverity`, `IncidentStatus`, `OnCallEscalationPolicy`, `OperationalHandoverChecklist`, `OperationalRole`, `OperationalRunbook`, `OperationsSupportDecision`, `PostIncidentReview`, `StatusCommunicationTemplate`, `SupportChannel`, `SupportPriority`, `SupportSla` |
+| other | `app/modules/performance_scale_cost/assurance.py` | unclassified | `PerformanceScaleCostFinalAssuranceInputs`, `PerformanceScaleCostFinalAssuranceReport`, `PerformanceScaleCostFinalEvidenceItem` |
+| other | `app/modules/performance_scale_cost/readiness.py` | unclassified | `PerformanceScaleCostEvidenceControl`, `PerformanceScaleCostReadinessInputs`, `PerformanceScaleCostReadinessReport` |
 | other | `app/modules/practice/practice_generator.py` | unclassified | `PracticeGenerator` |
 | other | `app/modules/practice/router.py` | unclassified | `PracticeResponseRequest`, `PracticeSessionRequest` |
 | other | `app/modules/practice/spaced_repetition_scheduler.py` | unclassified | `SpacedRepetitionScheduler`, `SpacedReviewPlan` |
+| other | `app/modules/privacy_ops/assurance.py` | unclassified | `AuditCrosswalkItem`, `PrivacyFinalAssuranceInputs`, `PrivacyFinalAssuranceReport` |
+| other | `app/modules/privacy_ops/readiness.py` | unclassified | `DataFlowControl`, `PrivacyLiveDataReadinessInputs`, `PrivacyLiveDataReadinessReport` |
+| other | `app/modules/production_release/readiness.py` | unclassified | `ProductionReleasePreflightReport` |
+| other | `app/modules/production_release/true_state_baseline.py` | unclassified | `TrueStateRuntimeBaselineReport` |
 | other | `app/modules/progress/learning_velocity_service.py` | canonical_domain_service | `LearningVelocityService` |
 | other | `app/modules/progress/mastery_model.py` | unclassified | `MasteryLabel` |
 | other | `app/modules/progress/progress_timeline_service.py` | canonical_domain_service | `ProgressTimelineService` |
 | other | `app/modules/quality_gates/production_readiness_contracts.py` | unclassified | `CoverageThreshold`, `DefectSeverity`, `DefectTriageRule`, `EvidenceType`, `QualityGate`, `QualityGateStatus`, `ReleaseChecklist`, `ReleaseEvidenceItem`, `ReleaseStage`, `TestLayer`, `TestSuiteContract`, `TestingStrategyDecision` |
 | other | `app/modules/roadmap/production_readiness_contracts.py` | unclassified | `BaselineBoundary`, `BaselineBoundaryItem`, `DeferredScopeItem`, `DependencyType`, `GraduationCriterion`, `PostBaselineRisk`, `PriorityLevel`, `RoadmapCategory`, `RoadmapDependency`, `RoadmapGovernanceDecision`, `RoadmapHorizon`, `RoadmapItem`, `RoadmapReviewCadence`, `RoadmapStatus` |
+| other | `app/modules/security_assurance/assurance.py` | unclassified | `SecurityFinalAssuranceInputs`, `SecurityFinalAssuranceReport`, `SecurityFinalEvidenceItem` |
+| other | `app/modules/security_assurance/readiness.py` | unclassified | `SecurityAssuranceReadinessInputs`, `SecurityAssuranceReadinessReport`, `SecurityEvidenceControl` |
 | other | `app/modules/security_posture/production_readiness_contracts.py` | unclassified | `ControlStatus`, `IncidentSeverity`, `RiskAcceptanceRecord`, `SecretHygieneRule`, `SecurityControl`, `SecurityDomain`, `SecurityIncidentRunbook`, `SecurityPostureDecision`, `SecurityTestContract`, `SecurityTestType`, `SupplyChainControl`, `ThreatCategory`, `ThreatModelEntry`, `VulnerabilityPolicy`, `VulnerabilitySeverity` |
+| other | `app/modules/study_plans/runtime_kg_planner.py` | active_runtime_facade | - |
+| other | `app/modules/vertical_journey/hardening.py` | unclassified | `VerticalJourneyHardeningReport` |
+| other | `app/modules/vertical_journey/service.py` | canonical_domain_service | `VerticalJourneyInputs`, `VerticalJourneyMilestone`, `VerticalJourneySnapshot` |

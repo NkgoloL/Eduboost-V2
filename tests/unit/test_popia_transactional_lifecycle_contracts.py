@@ -10,7 +10,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
 
-from app.services.popia_transactional_lifecycle import (
+from app.services.popia_transactional_lifecycle import (  # noqa: E402
     POPIATransactionError,
     TransactionalPOPIAConsentLifecycleService,
     _call_flexible,

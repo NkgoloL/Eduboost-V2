@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import ast
 import os
 from pathlib import Path
 import re
-import subprocess
+from scripts._subprocess import run
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -63,7 +64,7 @@ def main() -> int:
 
     if not os.getenv("SKIP_PYTEST_RECURSION"):
         env = {**os.environ, "PYTHONPATH": str(ROOT), "SKIP_PYTEST_RECURSION": "1"}
-        result = subprocess.run(
+        result = run(
             [sys.executable, "-m", "pytest", "-c", "pytest.ini", "tests/unit/test_audit_write_runtime_evidence.py", "-q", "--no-cov", "--tb=short"],
             cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=env, check=False
         )
@@ -71,7 +72,7 @@ def main() -> int:
         if result.returncode != 0:
             failures.append("audit write runtime evidence unit tests failed")
 
-    ruff = subprocess.run(
+    ruff = run(
         [sys.executable, "-m", "ruff", "check", *CRITICAL, "--select", "F821,F401,F811,E402"],
         cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False
     )

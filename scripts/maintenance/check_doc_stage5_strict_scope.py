@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -14,7 +14,7 @@ def main() -> int:
         if idx + 1 < len(args):
             root = Path(args[idx + 1]).resolve()
     command = [sys.executable, str(root / "scripts/maintenance/check_doc_stage3_strict_scope.py"), "--root", str(root), "--scope", "docs/documentation/stage_5_strict_scope.json"]
-    return subprocess.call(command)
+    return run(command)
 
 
 if __name__ == "__main__":

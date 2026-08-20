@@ -1,6 +1,6 @@
 # Backend Consolidation Diagnostic Report
 
-Generated at: `2026-06-27T02:21:31Z`
+Generated at: `2026-08-19T20:02:43Z`
 
 | Check | Return code | Command |
 |---|---:|---|
@@ -25,7 +25,7 @@ Return code: `0`
 
 ```text
 Backend consolidation dragon diagnostic
-- audit_repository: 49 match(es)
+- audit_repository: 50 match(es)
   - app/core/audit.py
   - app/modules/consent/service.py
   - app/repositories/__init__.py
@@ -38,7 +38,7 @@ Backend consolidation dragon diagnostic
   - app/services/popia_service.py
   - scripts/audit_write_flow_command.py
   - scripts/check_auth_service_extraction.py
-  - ... 8 more file(s)
+  - ... 9 more file(s)
 - audit_events: 151 match(es)
   - alembic/versions/0006_v2_audit_events.py
   - alembic/versions/20260507_1200_popia_consent_audit_hardening.py
@@ -49,9 +49,9 @@ Backend consolidation dragon diagnostic
   - alembic/versions/_deprecated/0001_schema_from_technical_report.py
   - app/core/database.py
   - app/core/health.py
+  - app/core/runtime_readiness.py
   - app/models/__init__.py
   - app/repositories/audit_repository.py
-  - app/services/data_subject_rights_service.py
   - ... 24 more file(s)
 - audit_logs: 26 match(es)
   - alembic/versions/0001_v2_consolidated_schema.py
@@ -67,7 +67,7 @@ Backend consolidation dragon diagnostic
   - scripts/generate_release_owner_beta_go_no_go.py
   - scripts/generate_truthful_release_owner_beta_go_no_go.py
   - ... 3 more file(s)
-- consent_records: 20 match(es)
+- consent_records: 17 match(es)
   - alembic/env.py
   - alembic/versions/20260510_0300_popia_consent_audit_dsr.py
   - app/repositories/consent_repository.py
@@ -78,8 +78,6 @@ Backend consolidation dragon diagnostic
   - scripts/compare_orm_tables_to_database.py
   - scripts/db_live_only_table_ownership.py
   - scripts/generate_consent_callsite_inventory.py
-  - tests/legacy/integration/test_api_contracts.py
-  - tests/legacy/integration/test_parent_portal_integration.py
 - parental_consents: 54 match(es)
   - alembic/versions/0001_v2_consolidated_schema.py
   - alembic/versions/20260505_1734_add_missing_production_indexes.py
@@ -94,12 +92,11 @@ Backend consolidation dragon diagnostic
   - scripts/check_first_audit_runtime_wiring_no_destructive_actions.py
   - scripts/check_runtime_wiring_no_destructive_actions.py
   - ... 7 more file(s)
-- consent_service: 174 match(es)
+- consent_service: 173 match(es)
   - app/api_v2_deps/consent_lifecycle.py
   - app/api_v2_routers/consent.py
-  - app/api_v2_routers/learners.py
-  - app/api_v2_routers/parents.py
   - app/api_v2_routers/popia.py
+  - app/api_v2_routers/vertical_journey.py
   - app/core/consent_gate.py
   - app/modules/consent/__init__.py
   - app/modules/consent/service.py
@@ -107,8 +104,9 @@ Backend consolidation dragon diagnostic
   - app/modules/lessons/service.py
   - app/security/dependencies.py
   - app/services/consent.py
-  - ... 40 more file(s)
-- deep_health: 42 match(es)
+  - app/services/consent_runtime_compatibility.py
+  - ... 39 more file(s)
+- deep_health: 51 match(es)
   - app/api_v2.py
   - app/core/health.py
   - scripts/check_backend_consolidation_dragons.py
@@ -117,11 +115,11 @@ Backend consolidation dragon diagnostic
   - scripts/diag_deep_health_runtime_evidence.py
   - scripts/generate_route_inventory.py
   - scripts/run_staging_smoke.py
-  - scripts/staging_smoke_evidence_acceptance.py
-  - tests/integration/test_deep_health.py
-  - tests/test_entrypoints.py
-  - tests/test_health_checks.py
-  - ... 3 more file(s)
+  - scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py
+  - scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py
+  - scripts/runtime_readiness/capture_live_stack_readiness_evidence.py
+  - scripts/runtime_readiness/verify_backend_backed_e2e.py
+  - ... 8 more file(s)
 - PASS backend consolidation dragons documented and inventoried
 ```
 
@@ -132,7 +130,7 @@ Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/pytho
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/audit_callsite_inventory.md (3966 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/audit_callsite_inventory.md (6031 row(s))
 ```
 
 ## consent inventory
@@ -183,7 +181,9 @@ ORM tables
 - ai_budget_counters
 - ai_usage_events
 - ai_usage_reservations
+- assessment_attempts
 - assessment_blueprints
+- assessments
 - audit_events
 - audit_logs
 - calibration_audits
@@ -267,6 +267,7 @@ ORM tables
 - spaced_review_schedule
 - stripe_webhook_events
 - study_plan_templates
+- study_plans
 - subject_mastery
 - topic_mastery
 - training_dataset_entries

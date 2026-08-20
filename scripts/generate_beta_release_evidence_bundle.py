@@ -3,13 +3,15 @@
 from __future__ import annotations
 
 import os
-import subprocess
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-
+import sys
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT))
+
+from scripts._subprocess import check_output  # noqa: E402
 OUTPUT = REPO_ROOT / "docs" / "operations" / "beta_release_evidence_bundle.md"
 
 BUNDLE_ARTIFACTS = (
@@ -39,7 +41,7 @@ class BundleArtifact:
 
 def _git_value(args: list[str]) -> str:
     try:
-        return subprocess.check_output(["git", *args], cwd=REPO_ROOT, text=True).strip()
+        return check_output(["git", *args], cwd=REPO_ROOT, text=True).strip()
     except Exception:
         return "unknown"
 

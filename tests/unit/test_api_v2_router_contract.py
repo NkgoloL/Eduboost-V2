@@ -17,7 +17,7 @@ def test_router_registry_has_unique_names() -> None:
 
 @pytest.mark.unit
 def test_registered_router_fragments_are_exposed_under_each_v2_prefix() -> None:
-    route_paths = {route.path for route in app.routes}
+    route_paths = set(app.openapi()["paths"])
     expected_fragments = {
         "assessments": "/assessments",
         "auth": "/auth",
@@ -71,7 +71,7 @@ def test_registered_router_fragments_are_exposed_under_each_v2_prefix() -> None:
 @pytest.mark.unit
 def test_legacy_prefixes_are_not_exposed_by_canonical_runtime() -> None:
     forbidden_prefixes = ("/api/v1", "/v1", "/api/legacy", "/legacy")
-    route_paths = {route.path for route in app.routes}
+    route_paths = set(app.openapi()["paths"])
 
     assert [
         path for path in route_paths if path.startswith(forbidden_prefixes)

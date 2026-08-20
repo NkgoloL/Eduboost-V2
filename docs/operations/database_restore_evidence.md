@@ -1,8 +1,8 @@
 # Database Restore Evidence
 
-Generated: `2026-06-12T17:40:07Z`
-Branch: `phase-11/technical-debt-burn-down`
-Commit: `a70b57616bb29572fcb57961b91a3f68f0c66329`
+Generated: `2026-08-19T20:02:45Z`
+Branch: `fix/tsr-b01-gate-remediation`
+Commit: `d5ae429bdec24b4d0123ea3362323fa3e4f25e4b`
 
 ## Restore Metadata
 

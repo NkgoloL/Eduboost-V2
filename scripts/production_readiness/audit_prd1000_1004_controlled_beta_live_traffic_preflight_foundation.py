@@ -73,7 +73,7 @@ def _pyjwt_migration_valid(root: Path) -> bool:
         "from jose" not in app_text,
         "import jose" not in app_text,
         "python-jose" not in req_text.lower(),
-        "pyjwt[crypto]==2.12.1" in (root / "requirements/base.in").read_text().lower(),
+        "pyjwt[crypto]==2.13.0" in (root / "requirements/base.in").read_text().lower(),
         "import jwt as _pyjwt" in (root / "app/core/jwt_compat.py").read_text(),
         "decode_options(options)" in (root / "app/services/jwt_keyring.py").read_text(),
         "decode_options()" in (root / "app/core/token_config.py").read_text(),

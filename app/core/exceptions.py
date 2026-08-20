@@ -5,7 +5,7 @@ Consistent canonical V2 JSON error responses across all modules.
 from __future__ import annotations
 
 import logging
-from typing import Any
+from typing import Any, Mapping
 
 from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.exceptions import RequestValidationError
@@ -129,7 +129,7 @@ def _error_response(
     *,
     field_errors: list[FieldError] | None = None,
     remediation: str | None = None,
-    headers: dict[str, str] | None = None,
+    headers: Mapping[str, str] | None = None,
 ) -> JSONResponse:
     return JSONResponse(
         status_code=status_code,

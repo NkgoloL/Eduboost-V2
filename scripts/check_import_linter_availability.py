@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import shutil
-import subprocess
+from scripts._subprocess import run
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -22,7 +23,7 @@ def main() -> int:
         "",
     ]
     if executable:
-        result = subprocess.run(["lint-imports", "--version"], text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+        result = run(["lint-imports", "--version"], text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
         lines.extend(["```text", result.stdout.strip(), "```", ""])
     else:
         lines.extend([

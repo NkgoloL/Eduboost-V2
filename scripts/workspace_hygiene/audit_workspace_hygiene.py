@@ -6,10 +6,11 @@ inventory when a .git directory is present, and falls back to filesystem counts
 for archive/snapshot validation.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import run
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -22,7 +23,7 @@ GENERATED_PREFIXES = ("docs/generated/", "docs/release-evidence/")
 
 def _run_git(args: list[str]) -> tuple[int, str]:
     try:
-        proc = subprocess.run(["git", *args], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120)
+        proc = run(["git", *args], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120)
         return proc.returncode, proc.stdout
     except Exception as exc:  # pragma: no cover - defensive on minimal runners
         return 127, f"{type(exc).__name__}: {exc}"

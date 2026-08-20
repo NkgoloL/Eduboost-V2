@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify canonical and compatibility FastAPI runtime entrypoints."""
+"""Verify canonical FastAPI runtime entrypoints."""
 from __future__ import annotations
 
 import argparse
@@ -15,7 +15,6 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 DEFAULT_ENTRYPOINTS = (
     "app.api_v2:app",
-    "app.legacy.api.main:app",
 )
 
 REQUIRED_CANONICAL_ROUTES = (
@@ -122,24 +121,6 @@ def check_entrypoints(entrypoints: list[str]) -> list[EntrypointResult]:
     for index, spec in enumerate(entrypoints):
         results.append(check_entrypoint(spec, canonical=index == 0))
 
-    canonical = results[0] if results else None
-    if canonical and canonical.ok:
-        for result in results[1:]:
-            if result.ok and result.title != canonical.title:
-                results[results.index(result)] = EntrypointResult(
-                    spec=result.spec,
-                    ok=False,
-                    title=result.title,
-                    version=result.version,
-                    app_id=result.app_id,
-                    route_count=result.route_count,
-                    missing_routes=result.missing_routes,
-                    missing_prefixes=result.missing_prefixes,
-                    error=(
-                        f"Compatibility entrypoint title {result.title!r} does not match "
-                        f"canonical title {canonical.title!r}."
-                    ),
-                )
 
     return results
 
@@ -170,7 +151,7 @@ def render_text(results: list[EntrypointResult]) -> str:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Verify canonical and compatibility FastAPI runtime entrypoints."
+        description="Verify canonical FastAPI runtime entrypoints."
     )
     parser.add_argument(
         "--entrypoint",
@@ -178,7 +159,7 @@ def parse_args() -> argparse.Namespace:
         dest="entrypoints",
         help=(
             "Entrypoint to verify in module:attribute form. "
-            "May be supplied multiple times. Defaults to canonical and compatibility entrypoints."
+            "May be supplied multiple times. Defaults to canonical entrypoints."
         ),
     )
     parser.add_argument(

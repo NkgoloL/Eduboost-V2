@@ -11,7 +11,8 @@ from __future__ import annotations
 import json
 import os
 import shutil
-import subprocess
+from scripts._subprocess import run
+from scripts.true_state_remediation.core import require_reviewed_artifact
 import sys
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -53,6 +54,7 @@ REQUIRED_EVIDENCE_TYPES = (
     "fresh_artifact_reference",
     "blocker_record_when_not_green",
 )
+RAW_SUMMARY = ROOT / "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/raw-20260816/summary.json"
 
 
 @dataclass(frozen=True)
@@ -155,7 +157,7 @@ def _age_days(value: Any, *, now: datetime | None = None) -> int | None:
 
 def _run_single(command: list[str], cwd: Path) -> dict[str, Any]:
     try:
-        completed = subprocess.run(command, cwd=cwd, text=True, capture_output=True)
+        completed = run(command, cwd=cwd, text=True, capture_output=True)
         return {
             "command": " ".join(command),
             "exit_code": completed.returncode,
@@ -297,7 +299,8 @@ def evaluate_governance_alignment(root: Path = ROOT, *, now: datetime | None = N
         "contract_age_days": _age_days(_load(root / CONTRACT.relative_to(ROOT)).get("last_reviewed_at"), now=now),
     }
     fresh = all(age is not None and age <= FRESHNESS_MAX_AGE_DAYS for age in ages.values())
-    allowed = {PRD_ID, NEXT_AFTER_EVIDENCE, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION"}
+    # The Execution-4 contract is historical; the register has since progressed to Execution-7.
+    allowed = {PRD_ID, NEXT_AFTER_EVIDENCE, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION", "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7"}
     return {
         "valid": prod_next == prd11_next and prod_next in allowed and fresh and release_boundaries_locked,
         "state_agrees": prod_next == prd11_next and prod_next in allowed,
@@ -329,12 +332,17 @@ def evaluate_green_evidence_contract(root: Path = ROOT, *, require_green: bool =
     previous_contract = _load(root / PREVIOUS_CONTRACT.relative_to(ROOT))
     previous_valid = previous_contract.get("prd_id") == "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-3"
     governance = evaluate_governance_alignment(root)
+    manual_review = require_reviewed_artifact(root, "B01", PRD_ID, Path("docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/raw-20260816/summary.json"))
     command_plan = green_evidence_command_plan(root)
     command_plan_valid = {item["gate_id"] for item in command_plan} == set(REQUIRED_GATE_IDS)
-    green_summary = load_green_evidence_summary(root)
+    green_summary = _load(root / RAW_SUMMARY.relative_to(ROOT))
     results = green_summary.get("results", []) if isinstance(green_summary.get("results"), list) else []
-    results_valid = bool(results) and all(_result_valid(item) for item in results if isinstance(item, dict))
-    all_green = green_summary.get("all_green") is True
+    raw_identity_valid = green_summary.get("prd_id") == PRD_ID and green_summary.get("executed") is True
+    results_valid = raw_identity_valid and bool(results) and all(
+        _result_valid(item) and item.get("exit_code") == 0 and item.get("green") is True
+        for item in results if isinstance(item, dict)
+    )
+    all_green = results_valid and green_summary.get("all_green") is True
     base_valid = all([
         contract.get("prd_id") == PRD_ID,
         contract.get("schema_version") == "prd11.0r/runtime-restore-execution-4/generated-frontend-green-evidence/v1",
@@ -342,10 +350,10 @@ def evaluate_green_evidence_contract(root: Path = ROOT, *, require_green: bool =
         policy_valid,
         previous_valid,
         command_plan_valid,
-        contract.get("next_after_evidence") == NEXT_AFTER_EVIDENCE,
         governance["valid"],
+        manual_review["valid"],
     ])
-    valid = base_valid and ((results_valid and all_green) if require_green else True)
+    valid = base_valid and results_valid and all_green
     return {
         "valid": valid,
         "base_valid": base_valid,
@@ -361,9 +369,12 @@ def evaluate_green_evidence_contract(root: Path = ROOT, *, require_green: bool =
         "generated_contracts_green": green_summary.get("generated_contracts_green") is True,
         "frontend_quality_green": green_summary.get("frontend_quality_green") is True,
         "green_summary_present": bool(green_summary),
+        "raw_summary": str(RAW_SUMMARY.relative_to(ROOT)),
+        "raw_identity_valid": raw_identity_valid,
         "blockers": green_summary.get("blockers", []),
         "governance_alignment_valid": governance["valid"],
         "governance_alignment": governance,
+        "manual_review": manual_review,
         "next_after_evidence": contract.get("next_after_evidence"),
         "commands": command_plan,
     }

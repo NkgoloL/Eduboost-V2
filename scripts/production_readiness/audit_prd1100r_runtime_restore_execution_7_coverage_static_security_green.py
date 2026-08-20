@@ -1,5 +1,6 @@
 """Audit PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import json
 from pathlib import Path
@@ -61,7 +62,7 @@ def _source_checks(root: Path) -> dict[str, bool]:
     capture = (root / "scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_execution_7_coverage_static_security_green_evidence.py").read_text()
     return {
         "uses_current_python_interpreter": "sys.executable" in helper,
-        "independent_commands_recorded": "subprocess.run" in helper and "command_plan" in helper,
+        "independent_commands_recorded": "command_plan" in helper and "scripts._subprocess" in helper,
         "coverage_gate_recorded": "coverage_execution" in helper,
         "static_quality_gates_recorded": all(token in helper for token in ("ruff_release_static_quality", "mypy_release_static_quality", "bandit_release_security")),
         "dependency_and_secret_gates_recorded": all(token in helper for token in ("python_dependency_security_audit", "frontend_dependency_security_audit", "secret_baseline_review")),

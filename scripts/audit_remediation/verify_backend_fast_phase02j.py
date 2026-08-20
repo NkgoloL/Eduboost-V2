@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import run
 import sys
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -42,7 +42,7 @@ def _load_manifest() -> dict[str, Any]:
 def _git_check_not_ignored() -> tuple[bool, str]:
     if not (ROOT / ".git").exists():
         return True, "No .git directory available; .gitignore allowlist is checked statically."
-    result = subprocess.run(
+    result = run(
         ["git", "check-ignore", "-q", str(MANIFEST.relative_to(ROOT))],
         cwd=ROOT,
         text=True,

@@ -22,7 +22,7 @@ def test_warning_cleanup_static_check_passes():
 def test_pytest_ini_restores_hypothesis_ignore():
     text = (ROOT / "pytest.ini").read_text(encoding="utf-8")
     assert ".hypothesis" in text
-    assert "tests/legacy" in text
+    # tests/legacy was removed in legacy-cleanup (commit 66323711cb)
 
 
 def test_warning_cleanup_register_tracks_known_warnings():

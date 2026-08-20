@@ -3,8 +3,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { Card } from "@/components/ui/Card-legacy";
-import { Button } from "@/components/ui/Button-legacy";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
 import { SUBJECTS } from "@/components/eduboost/constants";

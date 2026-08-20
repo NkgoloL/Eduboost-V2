@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import run
 import sys
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -42,7 +42,7 @@ class CheckResult:
 
 
 def git(args: list[str], cwd: Path = REPO_ROOT) -> str:
-    result = subprocess.run(
+    result = run(
         ["git", *args],
         cwd=cwd,
         check=False,

@@ -3,7 +3,7 @@ from app.services.runtime_audit_facade import record_runtime_audit_event
 
 class Sink:
     def __init__(self): self.events=[]
-    async def record(self, **kw): self.events.append(kw); return {"ok": True}
+    async def record(self, **kw): self.events.append(kw); return {"ok": True}  # noqa: E702
 
 def test_runtime_audit_facade_records():
     async def run():

@@ -10,7 +10,7 @@ import requests
 from pathlib import Path
 
 # Base directories
-BASE_DIR = Path("/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/data/caps")
+BASE_DIR = Path(__file__).resolve().parents[1] / "data" / "caps"
 PDF_DIR = BASE_DIR / "pdf"
 MANIFEST_FILE = BASE_DIR / "books_manifest.jsonl"
 

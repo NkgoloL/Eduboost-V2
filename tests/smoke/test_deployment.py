@@ -7,7 +7,6 @@ from importlib import import_module
 
 @pytest.mark.parametrize("import_path", [
     "app.api_v2",
-    "app.legacy.api.main",
 ])
 def test_app_importable(import_path):
     """Verify that the FastAPI app instance is available at each entrypoint."""

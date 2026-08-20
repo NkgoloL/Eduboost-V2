@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 from pathlib import Path
-import subprocess
+from scripts._subprocess import run
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -15,7 +16,7 @@ REGISTRY = ROOT / "docs/release/evidence_status_registry.yml"
 
 
 def current_commit() -> str:
-    result = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, check=False)
+    result = run(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, check=False)
     return result.stdout.strip() if result.returncode == 0 else "unknown"
 
 

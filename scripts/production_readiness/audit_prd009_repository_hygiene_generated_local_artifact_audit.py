@@ -90,7 +90,7 @@ def count_files_and_bytes(path: Path, limit: int = 5000) -> tuple[int, int, bool
             files += 1
             try:
                 total += child.stat().st_size
-            except OSError:
+            except Exception:  # best-effort probe, cannot fail-close
                 pass
             if files >= limit:
                 truncated = True

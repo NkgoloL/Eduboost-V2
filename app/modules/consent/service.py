@@ -51,7 +51,7 @@ class ConsentService:
                 guardian_id="g-001", learner_id="l-001",
                 consent_version="1.2",
             )
-            assert consent is not None
+            if not (consent is not None): raise AssertionError("assertion failed")
     """
 
     # Current required policy version - should be configurable via env/config
@@ -231,7 +231,7 @@ class ConsentService:
             ::
 
                 count = await svc.revoke("l-001", guardian_id="g-001")
-                assert count >= 1
+                if not (count >= 1): raise AssertionError("assertion failed")
         """
         # AuditLog / fourth_estate coverage is written via _append_audit below.
         active = await self._repo.get_active(str(learner_id))

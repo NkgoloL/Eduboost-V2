@@ -12,7 +12,7 @@ from dataclasses import asdict, dataclass
 import json
 import os
 from pathlib import Path
-import subprocess
+from scripts._subprocess import run
 import sys
 from typing import Any
 
@@ -189,7 +189,7 @@ def _run_one(item: ProductFlowCommand, output_dir: Path) -> dict[str, Any]:
     env["APP_ENV"] = "test"
     env["ENVIRONMENT"] = "test"
     env["PYTHONPATH"] = "." + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
-    completed = subprocess.run(item.command, cwd=ROOT, text=True, capture_output=True, env=env)
+    completed = run(item.command, cwd=ROOT, text=True, capture_output=True, env=env)
     payload = {
         "flow_id": item.flow_id,
         "description": item.description,

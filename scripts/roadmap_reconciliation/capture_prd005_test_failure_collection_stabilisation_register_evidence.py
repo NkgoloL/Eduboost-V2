@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import check_output, run
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -28,11 +28,11 @@ def write_json(path: Path, data: dict) -> None:
 
 def git_state(target_branch: str) -> dict:
     def run(args: list[str]) -> str:
-        return subprocess.check_output(args, text=True).strip()
+        return check_output(args, text=True).strip()
     return {
         "branch": run(["git", "branch", "--show-current"]),
         "head_sha": run(["git", "rev-parse", "HEAD"]),
-        "status_short": subprocess.check_output(["git", "status", "--short"], text=True),
+        "status_short": check_output(["git", "status", "--short"], text=True),
         "target_branch": target_branch,
     }
 

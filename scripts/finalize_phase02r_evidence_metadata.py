@@ -6,7 +6,7 @@ import argparse
 import hashlib
 import json
 import re
-import subprocess
+from scripts._subprocess import check_output, run
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -17,7 +17,7 @@ SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 
 
 def _run_git(*args: str) -> str:
-    return subprocess.check_output(["git", *args], cwd=ROOT, text=True).strip()
+    return check_output(["git", *args], cwd=ROOT, text=True).strip()
 
 
 def _sha256(path: Path) -> str:

@@ -5,10 +5,11 @@ Default behavior is safe and read-only. Actual deletion requires both --execute
 and --confirm-delete-ignored-artifacts and delegates to git clean -fdX.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import run
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -18,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def _run(args: list[str]) -> dict[str, Any]:
     try:
-        proc = subprocess.run(args, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120)
+        proc = run(args, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120)
         return {"command": args, "returncode": proc.returncode, "output": proc.stdout}
     except Exception as exc:  # pragma: no cover - defensive
         return {"command": args, "returncode": 127, "output": f"{type(exc).__name__}: {exc}"}

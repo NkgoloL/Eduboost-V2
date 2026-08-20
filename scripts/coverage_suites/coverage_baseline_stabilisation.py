@@ -21,7 +21,8 @@ from pathlib import Path
 import re
 import shutil
 import signal
-import subprocess
+import subprocess  # nosec B404 — used only for PIPE/STDOUT constants in the controlled wrapper
+from scripts._subprocess import _resolve, run
 import sys
 import time
 from typing import Any, Sequence
@@ -38,7 +39,8 @@ PRD_ID = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7"
 REMEDIATION_ID = "PRD-11.0R.EXECUTION-7.COVERAGE-BASELINE-STABILISATION"
 OUTPUT_DIR = ROOT / "var/prd11/runtime-restore/execution-7/coverage-baseline-stabilisation"
 CONTRACT = ROOT / "docs/roadmap/production_readiness/coverage_baseline_stabilisation_contract.json"
-MARKER_EXPRESSION = "not governance and not slow and not llm and not e2e"
+# Governance tests are part of the authoritative B01 coverage baseline. The remaining exclusions require opt-in infrastructure or materially longer execution and are kept out of this deterministic transaction.
+MARKER_EXPRESSION = "not slow and not llm and not e2e"
 DEFAULT_THRESHOLD = 70
 DEFAULT_UNIT_SHARDS = 8
 DEFAULT_INTEGRATION_SHARDS = 2
@@ -307,8 +309,8 @@ def run_bounded_command(
     started = _utc_now()
     monotonic_started = time.monotonic()
     timed_out = False
-    process = subprocess.Popen(
-        list(command),
+    process = subprocess.Popen(  # nosec B603 B607 — command is resolved before execution
+        _resolve(list(command)),
         cwd=root,
         text=True,
         stdout=subprocess.PIPE,
@@ -366,7 +368,7 @@ def run_bounded_command(
 def _git_tracked_status(root: Path) -> dict[str, Any]:
     if not (root / ".git").exists() or shutil.which("git") is None:
         return {"available": False, "entries": [], "clean": None}
-    completed = subprocess.run(
+    completed = run(
         ["git", "status", "--porcelain=v1", "--untracked-files=no"],
         cwd=root,
         text=True,

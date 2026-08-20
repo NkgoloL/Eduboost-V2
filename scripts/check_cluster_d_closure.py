@@ -2,14 +2,16 @@
 """Run the full Cluster D CI/deployment/environment closure suite."""
 from __future__ import annotations
 
-import subprocess
 import sys
+from sys import path
 from dataclasses import dataclass
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
+if str(REPO_ROOT) not in path:
+    path.insert(0, str(REPO_ROOT))
+
+from scripts._subprocess import run  # noqa: E402
 
 COMMANDS = (
     ("release evidence artifacts", ["make", "release-evidence-artifacts-check"]),
@@ -51,7 +53,7 @@ class ClusterDClosureResult:
 
 
 def run_command(name: str, command: list[str]) -> ClusterDClosureResult:
-    result = subprocess.run(
+    result = run(
         command,
         cwd=REPO_ROOT,
         check=False,

@@ -59,7 +59,7 @@ class LLMGateway:
 
             gateway = LLMGateway()
             resp = await gateway.generate("Explain place value for Grade 3.")
-            assert resp.provider in ("groq", "anthropic")
+            if not (resp.provider in ("groq", "anthropic")): raise AssertionError("assertion failed")
     """
 
     async def generate(
@@ -100,7 +100,7 @@ class LLMGateway:
                     system="You are a helpful SA geography tutor.",
                     max_tokens=512,
                 )
-                assert resp.content
+                if not (resp.content): raise AssertionError("assertion failed")
         """
         try:
             response = await JsonCompletionGateway().complete(

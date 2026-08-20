@@ -3,7 +3,10 @@
 from __future__ import annotations
 
 import os
-import subprocess
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from scripts._subprocess import check_output, run
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -14,7 +17,7 @@ OUTPUT = REPO_ROOT / "docs" / "operations" / "release_candidate_tag_manifest.md"
 
 def _git_value(args: list[str]) -> str:
     try:
-        return subprocess.check_output(["git", *args], cwd=REPO_ROOT, text=True).strip()
+        return check_output(["git", *args], cwd=REPO_ROOT, text=True).strip()
     except Exception:
         return "unknown"
 

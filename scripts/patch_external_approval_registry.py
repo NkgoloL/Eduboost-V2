@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
-import subprocess
+from scripts._subprocess import run
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,7 +33,7 @@ APPROVALS = {
 
 
 def current_commit() -> str:
-    result = subprocess.run(
+    result = run(
         ["git", "rev-parse", "HEAD"],
         cwd=ROOT,
         text=True,

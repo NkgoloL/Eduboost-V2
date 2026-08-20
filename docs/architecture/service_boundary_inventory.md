@@ -1,26 +1,12 @@
----
-title: "Service Boundary Inventory"
-status: current-evidence
-owner: architecture
-reviewers: [architecture, engineering]
-audience: developer
-source_of_truth: false
-supersedes: []
-superseded_by: null
-last_reviewed: 2026-07-02
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage4-check"
-code_anchors: [docs/architecture/README.md]
----
-
 # Service Boundary Inventory
 
-Generated at: `2026-06-27T02:18:44Z`
+Generated at: `2026-08-19T20:02:11Z`
 
 | Path | Classification |
 |---|---|
 | `app/services/ai_operations.py` | unclassified |
 | `app/services/ai_safety.py` | unclassified |
+| `app/services/archetype_service.py` | domain_or_cross_cutting_service |
 | `app/services/arq_import_compat.py` | migration_or_compat_helper |
 | `app/services/assessment_service_v2.py` | domain_or_cross_cutting_service |
 | `app/services/audit_canonicalization_registry.py` | unclassified |
@@ -103,6 +89,7 @@ Generated at: `2026-06-27T02:18:44Z`
 | `app/services/content_staging_seed_executor.py` | unclassified |
 | `app/services/content_template_validation.py` | unclassified |
 | `app/services/content_validator.py` | unclassified |
+| `app/services/contracts.py` | unclassified |
 | `app/services/curriculum/acquisition.py` | unclassified |
 | `app/services/curriculum/answer_verification.py` | unclassified |
 | `app/services/curriculum/caps_topic_map.py` | unclassified |
@@ -127,6 +114,7 @@ Generated at: `2026-06-27T02:18:44Z`
 | `app/services/deep_readiness_readonly.py` | unclassified |
 | `app/services/deep_readiness_route_contracts.py` | unclassified |
 | `app/services/deep_readiness_runtime.py` | active_runtime_facade |
+| `app/services/dev_diagnostic_seed.py` | unclassified |
 | `app/services/diagnostic.py` | unclassified |
 | `app/services/diagnostic_data_integrity.py` | unclassified |
 | `app/services/diagnostic_route_integrity.py` | unclassified |
@@ -138,7 +126,6 @@ Generated at: `2026-06-27T02:18:44Z`
 | `app/services/diagnostic_transactional_response.py` | unclassified |
 | `app/services/email_service.py` | domain_or_cross_cutting_service |
 | `app/services/ether.py` | unclassified |
-| `app/services/ether_service.py` | domain_or_cross_cutting_service |
 | `app/services/etl/etl_pipeline.py` | unclassified |
 | `app/services/etl/etl_pipeline_v2.py` | deprecated_pending_callsite_removal |
 | `app/services/etl/etl_pipeline_v3_additions.py` | deprecated_pending_callsite_removal |
@@ -159,6 +146,7 @@ Generated at: `2026-06-27T02:18:44Z`
 | `app/services/learner_tutor.py` | unclassified |
 | `app/services/lesson_authorization.py` | unclassified |
 | `app/services/lesson_context_builder.py` | unclassified |
+| `app/services/lesson_generator.py` | unclassified |
 | `app/services/lesson_service_v2.py` | domain_or_cross_cutting_service |
 | `app/services/lesson_transactional_completion.py` | unclassified |
 | `app/services/llm/gateway.py` | unclassified |
@@ -166,7 +154,9 @@ Generated at: `2026-06-27T02:18:44Z`
 | `app/services/llm_provider.py` | unclassified |
 | `app/services/parent_report_service_v2.py` | domain_or_cross_cutting_service |
 | `app/services/pii_sweep.py` | unclassified |
+| `app/services/policy_service.py` | domain_or_cross_cutting_service |
 | `app/services/popia_consent_lifecycle_adapter.py` | unclassified |
+| `app/services/popia_erasure_safety.py` | unclassified |
 | `app/services/popia_service.py` | domain_or_cross_cutting_service |
 | `app/services/popia_transactional_lifecycle.py` | unclassified |
 | `app/services/prompt_registry.py` | unclassified |
@@ -174,6 +164,14 @@ Generated at: `2026-06-27T02:18:44Z`
 | `app/services/rlhf_service.py` | domain_or_cross_cutting_service |
 | `app/services/runtime_audit_facade.py` | active_runtime_facade |
 | `app/services/runtime_consent_facade.py` | active_runtime_facade |
+| `app/services/runtime_kg/acceptance.py` | unclassified |
+| `app/services/runtime_kg/feature_flags.py` | unclassified |
+| `app/services/runtime_kg/integration.py` | unclassified |
+| `app/services/runtime_kg/loader.py` | unclassified |
+| `app/services/runtime_kg/repository.py` | unclassified |
+| `app/services/runtime_kg/route_integration.py` | unclassified |
+| `app/services/runtime_kg/schemas.py` | unclassified |
+| `app/services/runtime_kg/service.py` | domain_or_cross_cutting_service |
 | `app/services/safety_filter.py` | unclassified |
 | `app/services/semantic_retrieval/embedding.py` | unclassified |
 | `app/services/semantic_retrieval/evaluation.py` | unclassified |
@@ -188,11 +186,18 @@ Generated at: `2026-06-27T02:18:44Z`
 | `app/services/subscription_service.py` | domain_or_cross_cutting_service |
 | `app/services/system_service_v2.py` | domain_or_cross_cutting_service |
 | `app/services/telemetry.py` | unclassified |
+| `app/services/trustworthy_beta_quality.py` | unclassified |
 | `app/services/tutor_safety.py` | unclassified |
 | `app/modules/auth/service.py` | domain_or_cross_cutting_service |
 | `app/modules/beta_launch/production_readiness_contracts.py` | unclassified |
 | `app/modules/billing/production_readiness_contracts.py` | unclassified |
+| `app/modules/commercial_launch/readiness.py` | unclassified |
+| `app/modules/commercial_launch/remediation.py` | unclassified |
 | `app/modules/consent/service.py` | domain_or_cross_cutting_service |
+| `app/modules/content_quality/acceptance.py` | unclassified |
+| `app/modules/content_quality/readiness.py` | unclassified |
+| `app/modules/controlled_beta/authorisation.py` | unclassified |
+| `app/modules/controlled_beta/preflight.py` | unclassified |
 | `app/modules/deployment/production_readiness_contracts.py` | unclassified |
 | `app/modules/diagnostics/bias_review_router.py` | unclassified |
 | `app/modules/diagnostics/calibration_service.py` | domain_or_cross_cutting_service |
@@ -213,7 +218,7 @@ Generated at: `2026-06-27T02:18:44Z`
 | `app/modules/documentation_governance/production_readiness_contracts.py` | unclassified |
 | `app/modules/final_release_blockers/production_readiness_contracts.py` | unclassified |
 | `app/modules/jobs.py` | unclassified |
-| `app/modules/learners/ether_service.py` | domain_or_cross_cutting_service |
+| `app/modules/learners/archetype_service.py` | domain_or_cross_cutting_service |
 | `app/modules/lessons/adaptive_remediation.py` | unclassified |
 | `app/modules/lessons/answer_key_verifier.py` | unclassified |
 | `app/modules/lessons/budget_guardrails.py` | unclassified |
@@ -233,14 +238,27 @@ Generated at: `2026-06-27T02:18:44Z`
 | `app/modules/lessons/service.py` | domain_or_cross_cutting_service |
 | `app/modules/lessons/teacher_insight_mode.py` | unclassified |
 | `app/modules/notifications/production_readiness_contracts.py` | unclassified |
+| `app/modules/observability/assurance.py` | unclassified |
 | `app/modules/observability/production_readiness_contracts.py` | unclassified |
+| `app/modules/observability/readiness.py` | unclassified |
 | `app/modules/operations_support/production_readiness_contracts.py` | unclassified |
+| `app/modules/performance_scale_cost/assurance.py` | unclassified |
+| `app/modules/performance_scale_cost/readiness.py` | unclassified |
 | `app/modules/practice/practice_generator.py` | unclassified |
 | `app/modules/practice/router.py` | unclassified |
 | `app/modules/practice/spaced_repetition_scheduler.py` | unclassified |
+| `app/modules/privacy_ops/assurance.py` | unclassified |
+| `app/modules/privacy_ops/readiness.py` | unclassified |
+| `app/modules/production_release/readiness.py` | unclassified |
+| `app/modules/production_release/true_state_baseline.py` | unclassified |
 | `app/modules/progress/learning_velocity_service.py` | domain_or_cross_cutting_service |
 | `app/modules/progress/mastery_model.py` | unclassified |
 | `app/modules/progress/progress_timeline_service.py` | domain_or_cross_cutting_service |
 | `app/modules/quality_gates/production_readiness_contracts.py` | unclassified |
 | `app/modules/roadmap/production_readiness_contracts.py` | unclassified |
+| `app/modules/security_assurance/assurance.py` | unclassified |
+| `app/modules/security_assurance/readiness.py` | unclassified |
 | `app/modules/security_posture/production_readiness_contracts.py` | unclassified |
+| `app/modules/study_plans/runtime_kg_planner.py` | active_runtime_facade |
+| `app/modules/vertical_journey/hardening.py` | unclassified |
+| `app/modules/vertical_journey/service.py` | domain_or_cross_cutting_service |

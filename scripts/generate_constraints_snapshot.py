@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
-import subprocess
+from scripts._subprocess import run
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -13,7 +14,7 @@ REPORT = ROOT / "docs/security/dependency_constraints_snapshot.md"
 
 def main() -> int:
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    result = subprocess.run([sys.executable, "-m", "pip", "freeze"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+    result = run([sys.executable, "-m", "pip", "freeze"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
     OUT.write_text(result.stdout, encoding="utf-8")
     REPORT.write_text(
         "\n".join([

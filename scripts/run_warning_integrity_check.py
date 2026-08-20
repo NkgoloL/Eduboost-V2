@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
-import subprocess
+from scripts._subprocess import run
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -11,7 +12,7 @@ OUT = ROOT / "docs/release/warning_integrity_evidence.md"
 
 def main() -> int:
     cmd = [sys.executable, "-m", "pytest", "-c", "pytest.ini", "tests/unit", "-q", "--no-cov", "-W", "error::RuntimeWarning"]
-    result = subprocess.run(cmd, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+    result = run(cmd, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(
         f"# Warning Integrity Evidence\n\nGenerated: `{datetime.now(timezone.utc).isoformat()}`\n\n"

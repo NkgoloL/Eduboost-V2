@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import ast
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -45,7 +46,7 @@ def main() -> int:
 
     if not os.getenv("SKIP_PYTEST_RECURSION"):
         env = {**os.environ, "PYTHONPATH": str(ROOT), "SKIP_PYTEST_RECURSION": "1"}
-        result = subprocess.run(
+        result = run(
             [sys.executable, "-m", "pytest", "-c", "pytest.ini", "tests/unit/test_auth_lifecycle_http_proof.py", "-q", "--no-cov", "--tb=short"],
             cwd=ROOT,
             text=True,
@@ -58,7 +59,7 @@ def main() -> int:
         if result.returncode != 0:
             failures.append("auth lifecycle HTTP proof tests failed")
 
-    ruff = subprocess.run(
+    ruff = run(
         [sys.executable, "-m", "ruff", "check", *CRITICAL, "app/api_v2_routers/auth.py", "app/services/auth_application_service.py", "--select", "F821,F401,F811,E402"],
         cwd=ROOT,
         text=True,

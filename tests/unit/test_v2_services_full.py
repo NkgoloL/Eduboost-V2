@@ -125,7 +125,7 @@ class TestLessonServiceV2:
 class TestStudyPlanServiceV2:
     def _svc(self, learner=None, mastery=None, plan=None):
         from app.services.study_plan_service_v2 import StudyPlanServiceV2
-        lr = AsyncMock(); lr.get_by_id = AsyncMock(return_value=learner)
+        lr = AsyncMock(); lr.get_by_id = AsyncMock(return_value=learner)  # noqa: E702
         pr = AsyncMock()
         pr.get_subject_mastery = AsyncMock(return_value=mastery or [])
         pr.create = AsyncMock(return_value=plan or {"plan_id": PLAN_ID, "learner_id": LEARNER_ID,
@@ -172,7 +172,7 @@ class TestStudyPlanServiceV2:
 class TestParentReportServiceV2:
     def _svc(self, learner=None, linked=True, subjects=None):
         from app.services.parent_report_service_v2 import ParentReportServiceV2
-        lr = AsyncMock(); lr.get_by_id = AsyncMock(return_value=learner)
+        lr = AsyncMock(); lr.get_by_id = AsyncMock(return_value=learner)  # noqa: E702
         rr = AsyncMock()
         rr.verify_guardian_link = AsyncMock(return_value=linked)
         rr.get_subject_mastery = AsyncMock(return_value=subjects or [])
@@ -229,7 +229,7 @@ class TestAssessmentServiceV2:
     @pytest.mark.asyncio
     async def test_submit_raises_not_found(self):
         from app.services.assessment_service_v2 import AssessmentServiceV2
-        repo = AsyncMock(); repo.get_assessment = AsyncMock(return_value=None)
+        repo = AsyncMock(); repo.get_assessment = AsyncMock(return_value=None)  # noqa: E702
         svc = AssessmentServiceV2(repository=repo)
         with pytest.raises(ValueError, match="Assessment not found"):
             await svc.submit_attempt(ASSESSMENT_ID, LEARNER_ID, responses=[])
@@ -378,7 +378,7 @@ class TestGamificationServiceV2:
     @pytest.mark.asyncio
     async def test_get_profile_raises_not_found(self):
         from app.services.gamification_service_v2 import GamificationServiceV2
-        repo = AsyncMock(); repo.get_profile_rows = AsyncMock(return_value=(None, []))
+        repo = AsyncMock(); repo.get_profile_rows = AsyncMock(return_value=(None, []))  # noqa: E702
         svc = GamificationServiceV2(repository=repo)
         with pytest.raises(ValueError, match="Learner not found"):
             await svc.get_profile(LEARNER_ID)
@@ -386,8 +386,8 @@ class TestGamificationServiceV2:
     @pytest.mark.asyncio
     async def test_get_profile_calculates_level(self):
         from app.services.gamification_service_v2 import GamificationServiceV2
-        ml = MagicMock(); ml.learner_id = uuid.UUID(LEARNER_ID); ml.total_xp = 350; ml.streak_days = 7
-        repo = AsyncMock(); repo.get_profile_rows = AsyncMock(return_value=(ml, []))
+        ml = MagicMock(); ml.learner_id = uuid.UUID(LEARNER_ID); ml.total_xp = 350; ml.streak_days = 7  # noqa: E702
+        repo = AsyncMock(); repo.get_profile_rows = AsyncMock(return_value=(ml, []))  # noqa: E702
         svc = GamificationServiceV2(repository=repo)
         with patch("app.services.gamification_service_v2.AuditService") as a:
             a.return_value.log_event = AsyncMock()
@@ -399,9 +399,9 @@ class TestGamificationServiceV2:
         from app.services.gamification_service_v2 import GamificationServiceV2
         learners = []
         for xp in [500, 300]:
-            m = MagicMock(); m.learner_id = uuid.uuid4(); m.total_xp = xp; m.streak_days = 1
+            m = MagicMock(); m.learner_id = uuid.uuid4(); m.total_xp = xp; m.streak_days = 1  # noqa: E702
             learners.append(m)
-        repo = AsyncMock(); repo.get_leaderboard_rows = AsyncMock(return_value=learners)
+        repo = AsyncMock(); repo.get_leaderboard_rows = AsyncMock(return_value=learners)  # noqa: E702
         svc = GamificationServiceV2(repository=repo)
         r = await svc.leaderboard()
         assert r[0]["total_xp"] == 500
@@ -452,7 +452,7 @@ class TestAuditService:
     @pytest.mark.asyncio
     async def test_log_event(self):
         from app.services.audit_service import AuditService
-        repo = AsyncMock(); repo.append = AsyncMock(return_value=_audit_log("EV"))
+        repo = AsyncMock(); repo.append = AsyncMock(return_value=_audit_log("EV"))  # noqa: E702
         svc = AuditService(repository=repo)
         e = await svc.log_event("EV", payload={}, learner_id=LEARNER_ID)
         assert isinstance(e, AuditLogEntry)
@@ -461,7 +461,7 @@ class TestAuditService:
     @pytest.mark.asyncio
     async def test_get_recent_events(self):
         from app.services.audit_service import AuditService
-        repo = AsyncMock(); repo.latest = AsyncMock(return_value=[_audit_log(f"E{i}") for i in range(3)])
+        repo = AsyncMock(); repo.latest = AsyncMock(return_value=[_audit_log(f"E{i}") for i in range(3)])  # noqa: E702
         svc = AuditService(repository=repo)
         result = await svc.get_recent_events(limit=3)
         assert len(result) == 3

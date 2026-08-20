@@ -9,7 +9,6 @@ from __future__ import annotations
 import sys
 from importlib import import_module
 from pathlib import Path
-from typing import Any
 
 import pytest
 from fastapi import FastAPI
@@ -50,7 +49,7 @@ def test_canonical_v2_app_import_contract() -> None:
 def test_v2_runtime_exposes_required_operational_routes() -> None:
     """Deployment and monitoring depend on these process-local routes existing."""
     app = _load_app("app.api_v2:app")
-    route_paths = {route.path for route in app.routes}
+    route_paths = {route.path for route in app.routes if hasattr(route, "path")}
 
     assert {
         "/",
@@ -68,7 +67,7 @@ def test_v2_runtime_exposes_required_operational_routes() -> None:
 def test_v2_runtime_registers_dual_api_prefixes() -> None:
     """During migration, V2 routers must be reachable under both supported prefixes."""
     app = _load_app("app.api_v2:app")
-    route_paths = {route.path for route in app.routes}
+    route_paths = set(app.openapi().get("paths", {}))
 
     required_prefixes = ("/api/v2", "/v2")
     required_router_fragments = (
@@ -95,26 +94,6 @@ def test_v2_runtime_registers_dual_api_prefixes() -> None:
 
     assert missing == []
 
-
-@pytest.mark.unit
-def test_legacy_compatibility_shim_reuses_canonical_v2_app() -> None:
-    """The archived legacy entrypoint must not construct a separate FastAPI app."""
-    canonical_app = _load_app("app.api_v2:app")
-    legacy_app = _load_app("app.legacy.api.main:app")
-
-    canonical_routes = {route.path for route in canonical_app.routes}
-    legacy_routes = {route.path for route in legacy_app.routes}
-
-    assert canonical_routes.issubset(legacy_routes)
-
-
-@pytest.mark.unit
-def test_legacy_routes_hidden_from_v2_openapi_schema() -> None:
-    """Legacy compatibility routes must not appear in the production API schema."""
-    app = _load_app("app.api_v2:app")
-    paths: dict[str, Any] = app.openapi().get("paths", {})
-
-    assert "/api/v1/lessons/generate" not in paths
 
 
 

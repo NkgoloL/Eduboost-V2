@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import ast
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -39,7 +40,7 @@ def main() -> int:
         ast.parse(read(path))
         print(f"- PASS syntax {path}")
 
-    result = subprocess.run(
+    result = run(
         [
             sys.executable,
             "-m",
@@ -62,7 +63,7 @@ def main() -> int:
     if result.returncode != 0:
         failures.append("diagnostics scoring snapshot tests failed")
 
-    ruff = subprocess.run(
+    ruff = run(
         [sys.executable, "-m", "ruff", "check", *CRITICAL, "--select", "F821,F401,F811,E402"],
         cwd=ROOT,
         text=True,

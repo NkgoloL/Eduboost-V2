@@ -29,7 +29,6 @@ The active backend is the V2 FastAPI modular monolith rooted at `app/api_v2.py`.
 ## Current implementation notes
 
 - New backend work should use V2 routers and service/repository boundaries.
-- Legacy code under `app/legacy/` is compatibility-only and should not grow.
 - Deterministic/mock providers are allowed for tests and local dry-runs only.
 - Production-sensitive paths must fail closed when required secrets or providers are missing.
 

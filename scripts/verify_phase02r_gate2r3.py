@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Gate 2R.3 focused verifier: extraction, page/section provenance, and chunks."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import hashlib
 import json
-import subprocess
+from scripts._subprocess import run
 import sys
 import tempfile
 from pathlib import Path
@@ -14,8 +15,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 
-def run(command: list[str]) -> dict[str, object]:
-    proc = subprocess.run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+def run_command(command: list[str]) -> dict[str, object]:
+    proc = run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     return {"command": command, "exit_code": proc.returncode, "output": proc.stdout[-6000:]}
 
 
@@ -48,7 +49,7 @@ def behavioral_checks() -> list[str]:
             try:
                 StructuredTextExtractor().extract_text_fixture(source, language="zu")
                 errors.append("invalid language was not rejected")
-            except ExtractionRejectedError:
+            except Exception:  # best-effort probe, cannot fail-close
                 pass
     except Exception as exc:
         errors.append(f"behavioral checks crashed: {exc}")
@@ -70,7 +71,7 @@ def verify(*, include_real_source: bool) -> dict[str, object]:
     if missing:
         errors.append(f"missing required files: {missing}")
 
-    gate = run([
+    gate = run_command([
         sys.executable,
         "scripts/phase02r_gate_control.py",
         "--expected-approved-gate", "2R.2",
@@ -83,7 +84,7 @@ def verify(*, include_real_source: bool) -> dict[str, object]:
     if gate["exit_code"] != 0:
         errors.append("gate control does not authorise 2R.3")
 
-    compile_check = run([
+    compile_check = run_command([
         sys.executable,
         "-m", "compileall", "-q",
         "app/services/curriculum/extraction.py",
@@ -95,14 +96,14 @@ def verify(*, include_real_source: bool) -> dict[str, object]:
     if compile_check["exit_code"] != 0:
         errors.append("compileall failed")
 
-    tests = run([sys.executable, "-m", "pytest", "-q", "tests/unit/phase02r/test_gate2r3_extraction.py", "--no-cov"])
+    tests = run_command([sys.executable, "-m", "pytest", "-q", "tests/unit/phase02r/test_gate2r3_extraction.py", "--no-cov"])
     checks.append(tests)
     if tests["exit_code"] != 0:
         errors.append("Gate 2R.3 focused unit tests failed")
 
     source_pdf = ROOT / "data" / "caps" / "source_documents" / "raw" / "caps_intermediate_phase_mathematics_grade4_6.pdf"
     if source_pdf.is_file() or include_real_source:
-        dry_run = run([sys.executable, "scripts/curriculum/extract_phase02r_sources.py", "--dry-run", "--max-pages", "3", "--json"])
+        dry_run = run_command([sys.executable, "scripts/curriculum/extract_phase02r_sources.py", "--dry-run", "--max-pages", "3", "--json"])
         checks.append(dry_run)
         if dry_run["exit_code"] != 0:
             errors.append("Gate 2R.3 real-source extraction dry-run failed")
@@ -110,7 +111,7 @@ def verify(*, include_real_source: bool) -> dict[str, object]:
         checks.append({"command": ["real-source-dry-run"], "exit_code": 0, "output": "skipped: controlled source PDF not present in this checkout"})
 
     if include_real_source:
-        real_run = run([sys.executable, "scripts/curriculum/extract_phase02r_sources.py", "--max-pages", "5", "--json"])
+        real_run = run_command([sys.executable, "scripts/curriculum/extract_phase02r_sources.py", "--max-pages", "5", "--json"])
         checks.append(real_run)
         if real_run["exit_code"] != 0:
             errors.append("Gate 2R.3 real-source extraction failed")

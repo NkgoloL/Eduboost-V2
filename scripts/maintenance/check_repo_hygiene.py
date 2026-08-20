@@ -2,14 +2,16 @@
 """Repository hygiene checks for root clutter and tracked generated artifacts."""
 
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import fnmatch
-import subprocess
+from scripts._subprocess import run
 from dataclasses import dataclass
 from pathlib import Path
 
 ROOT_ALLOWED_FILES = {
     '.agent.md',
+    '.bandit',
     '.coveragerc',
     '.dockerignore',
     '.env.example',
@@ -40,6 +42,7 @@ ROOT_ALLOWED_FILES = {
     'docker-compose.v2.yml',
     'docker-compose.yml',
     'mkdocs.yml',
+    'mypy.ini',
     'package-lock.json',
     'package.json',
     'pnpm-lock.yaml',
@@ -90,7 +93,7 @@ class HygieneFailure:
 
 
 def _git_ls_files(repo_root: Path) -> list[str]:
-    result = subprocess.run(
+    result = run(
         ['git', 'ls-files'],
         cwd=repo_root,
         text=True,

@@ -828,12 +828,7 @@ rec-all-checks: deduplicate-check \
 	@echo "All recommendation checks passed."
 	@echo "Review docs/current_state.md and commit."
 
-legacy-route-guard:
-	pytest tests/unit/test_api_v2_router_contract.py tests/test_entrypoints.py \
-		-v -k "legacy" --tb=short --no-cov
-	$(PYTHON) scripts/check_runtime_entrypoints.py
-
-pr-002r-check: runtime-check openapi-check legacy-route-guard
+pr-002r-check: runtime-check openapi-check
 	pytest \
 		tests/test_entrypoints.py \
 		tests/unit/test_api_v2_router_contract.py \
@@ -1412,7 +1407,7 @@ backend-implementation-631-650-full-check: auth-token-claims-inspect auth-token-
 	python3 -m compileall -q app/api_v2_routers app/services app/modules/auth app/repositories
 	pytest -c pytest.ini tests/unit/test_auth_token_claims_contracts.py -q --no-cov --tb=short
 
-.PHONY: popia-router-boundary-repair router-boundary-matrix router-boundary-check import-linter-availability service-boundary-inventory legacy-learner-access-guard-report backend-implementation-651-670-full-check
+.PHONY: popia-router-boundary-repair router-boundary-matrix router-boundary-check import-linter-availability service-boundary-inventory backend-implementation-651-670-full-check
 
 popia-router-boundary-repair:
 	PYTHONPATH=. python3 scripts/patch_popia_router_boundary.py
@@ -1429,10 +1424,7 @@ import-linter-availability:
 service-boundary-inventory:
 	PYTHONPATH=. python3 scripts/generate_service_boundary_inventory.py
 
-legacy-learner-access-guard-report:
-	PYTHONPATH=. python3 scripts/generate_legacy_learner_access_guard_report.py
-
-backend-implementation-651-670-full-check: popia-router-boundary-repair router-boundary-check import-linter-availability service-boundary-inventory legacy-learner-access-guard-report
+backend-implementation-651-670-full-check: popia-router-boundary-repair router-boundary-check import-linter-availability service-boundary-inventory
 	python3 -m compileall -q app/api_v2_deps app/api_v2_routers app/services app/repositories
 	pytest -c pytest.ini tests/unit/test_boundary_enforcement_contracts.py -q --no-cov --tb=short
 

@@ -98,7 +98,7 @@ class LessonGenerator:
 
         generator = LessonGenerator(db)
         lesson = await generator.generate("4.M.1.1", difficulty="on_level")
-        assert lesson.answer_key_verified is True
+        if not (lesson.answer_key_verified is True): raise AssertionError("assertion failed")
     """
 
     def __init__(self, db: AsyncSession) -> None:

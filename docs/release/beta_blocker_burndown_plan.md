@@ -1,7 +1,7 @@
 # Beta Blocker Burn-Down Plan
 
-Generated at: `2026-06-12T17:35:54Z`
-Commit: `b33e49720860a084e7a7c42ead1b620cb859e64f`
+Generated at: `2026-08-19T19:18:10Z`
+Commit: `d5ae429bdec24b4d0123ea3362323fa3e4f25e4b`
 
 - Source decision: `NO-GO`
 - Source beta blocker count: `7`

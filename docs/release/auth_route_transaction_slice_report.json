@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-12T17:40:53Z",
-  "current_commit": "a70b57616bb29572fcb57961b91a3f68f0c66329",
+  "generated_at": "2026-08-19T19:16:35Z",
+  "current_commit": "d5ae429bdec24b4d0123ea3362323fa3e4f25e4b",
   "route_file": "app/api_v2_routers/auth.py",
   "local_status": "route-auth-delegation-passing",
   "live_db_status": "external-blocked",
@@ -12,7 +12,7 @@
   "findings": [
     {
       "route_function": "register",
-      "line": 87,
+      "line": 86,
       "expected_delegate": "auth_service.register",
       "delegate_found": true,
       "auth_service_dependency_found": true,
@@ -22,7 +22,7 @@
     },
     {
       "route_function": "create_dev_session",
-      "line": 124,
+      "line": 123,
       "expected_delegate": "auth_service.create_dev_session",
       "delegate_found": true,
       "auth_service_dependency_found": true,

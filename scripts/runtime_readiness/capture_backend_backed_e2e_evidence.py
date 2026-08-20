@@ -8,13 +8,14 @@ traffic, or runtime knowledge-graph implementation.
 """
 
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import hashlib
 import json
 import os
 import pathlib
-import subprocess
+from scripts._subprocess import run
 import sys
 import time
 from dataclasses import asdict, dataclass
@@ -55,9 +56,9 @@ def utc_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
-def run(cmd: list[str], *, env: dict[str, str] | None = None, timeout: int | None = None) -> dict[str, Any]:
+def run_command(cmd: list[str], *, env: dict[str, str] | None = None, timeout: int | None = None) -> dict[str, Any]:
     try:
-        proc = subprocess.run(cmd, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=env, timeout=timeout)
+        proc = run(cmd, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=env, timeout=timeout)
         return {"cmd": cmd, "returncode": proc.returncode, "stdout": proc.stdout, "stderr": proc.stderr}
     except subprocess.TimeoutExpired as exc:
         return {
@@ -69,7 +70,7 @@ def run(cmd: list[str], *, env: dict[str, str] | None = None, timeout: int | Non
 
 
 def git_value(args: list[str]) -> str | None:
-    proc = run(["git", *args])
+    proc = run_command(["git", *args])
     if proc["returncode"] != 0:
         return None
     return str(proc["stdout"]).strip()
@@ -103,7 +104,7 @@ def write_sha256sums(evidence_dir: pathlib.Path) -> pathlib.Path:
 
 
 def collect_verifier(script: str) -> dict[str, Any]:
-    proc = run([sys.executable, script, "--json"])
+    proc = run_command([sys.executable, script, "--json"])
     try:
         parsed = json.loads(proc["stdout"] or "{}")
     except json.JSONDecodeError:
@@ -132,7 +133,7 @@ def http_probe(base_url: str, path: str, timeout: int, *, method: str = "GET") -
     body = ""
     try:
         req = Request(url, headers={"User-Agent": "EduBoost-Phase15-Backend-Backed-E2E/1.0"}, method=method)
-        with urlopen(req, timeout=timeout) as response:
+        with urlopen(req, timeout=timeout) as response:  # nosec B310
             body = response.read(8 * 1024 * 1024).decode("utf-8", errors="replace")
             result["status_code"] = int(getattr(response, "status", 0))
             result["body_excerpt"] = body[:4000]
@@ -162,7 +163,7 @@ def _run_step(name: str, command: list[str], output_dir: pathlib.Path, env: dict
     start = time.monotonic()
     stdout_path = output_dir / f"{name}.stdout.txt"
     stderr_path = output_dir / f"{name}.stderr.txt"
-    proc = run(command, env=env, timeout=timeout)
+    proc = run_command(command, env=env, timeout=timeout)
     stdout_path.write_text(str(proc.get("stdout") or ""), encoding="utf-8")
     stderr_path.write_text(str(proc.get("stderr") or ""), encoding="utf-8")
     return StepResult(
@@ -232,8 +233,8 @@ def main() -> int:
     branch = git_value(["branch", "--show-current"])
     head_sha = git_value(["rev-parse", "HEAD"])
     remote_sha = git_value(["rev-parse", f"origin/{args.target_branch}"])
-    tracked_status = run(["git", "status", "--porcelain", "--untracked-files=no"])
-    all_status = run(["git", "status", "--porcelain", "--untracked-files=normal"])
+    tracked_status = run_command(["git", "status", "--porcelain", "--untracked-files=no"])
+    all_status = run_command(["git", "status", "--porcelain", "--untracked-files=normal"])
     git_state = {
         "branch": branch,
         "head_sha": head_sha,

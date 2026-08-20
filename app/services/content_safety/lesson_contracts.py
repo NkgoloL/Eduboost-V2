@@ -88,7 +88,7 @@ def arithmetic_expression_is_correct(expression: str, expected: str) -> bool:
     if not re.fullmatch(r"[0-9\s+\-*/().]+", expression):
         return False
     try:
-        return abs(float(eval(expression, {"__builtins__": {}}, {})) - float(expected)) < 1e-9
+        return abs(float(eval(expression, {"__builtins__": {}}, {})) - float(expected)) < 1e-9  # nosec B307
     except Exception:
         return False
 

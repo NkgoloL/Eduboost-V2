@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-27T02:18:44Z",
+  "generated_at": "2026-08-19T20:02:11Z",
   "rows": [
     {
       "path": "app/services/ai_operations.py",
@@ -8,6 +8,10 @@
     {
       "path": "app/services/ai_safety.py",
       "classification": "unclassified"
+    },
+    {
+      "path": "app/services/archetype_service.py",
+      "classification": "domain_or_cross_cutting_service"
     },
     {
       "path": "app/services/arq_import_compat.py",
@@ -338,6 +342,10 @@
       "classification": "unclassified"
     },
     {
+      "path": "app/services/contracts.py",
+      "classification": "unclassified"
+    },
+    {
       "path": "app/services/curriculum/acquisition.py",
       "classification": "unclassified"
     },
@@ -434,6 +442,10 @@
       "classification": "active_runtime_facade"
     },
     {
+      "path": "app/services/dev_diagnostic_seed.py",
+      "classification": "unclassified"
+    },
+    {
       "path": "app/services/diagnostic.py",
       "classification": "unclassified"
     },
@@ -476,10 +488,6 @@
     {
       "path": "app/services/ether.py",
       "classification": "unclassified"
-    },
-    {
-      "path": "app/services/ether_service.py",
-      "classification": "domain_or_cross_cutting_service"
     },
     {
       "path": "app/services/etl/etl_pipeline.py",
@@ -562,6 +570,10 @@
       "classification": "unclassified"
     },
     {
+      "path": "app/services/lesson_generator.py",
+      "classification": "unclassified"
+    },
+    {
       "path": "app/services/lesson_service_v2.py",
       "classification": "domain_or_cross_cutting_service"
     },
@@ -590,7 +602,15 @@
       "classification": "unclassified"
     },
     {
+      "path": "app/services/policy_service.py",
+      "classification": "domain_or_cross_cutting_service"
+    },
+    {
       "path": "app/services/popia_consent_lifecycle_adapter.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/popia_erasure_safety.py",
       "classification": "unclassified"
     },
     {
@@ -620,6 +640,38 @@
     {
       "path": "app/services/runtime_consent_facade.py",
       "classification": "active_runtime_facade"
+    },
+    {
+      "path": "app/services/runtime_kg/acceptance.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/runtime_kg/feature_flags.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/runtime_kg/integration.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/runtime_kg/loader.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/runtime_kg/repository.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/runtime_kg/route_integration.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/runtime_kg/schemas.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/services/runtime_kg/service.py",
+      "classification": "domain_or_cross_cutting_service"
     },
     {
       "path": "app/services/safety_filter.py",
@@ -678,6 +730,10 @@
       "classification": "unclassified"
     },
     {
+      "path": "app/services/trustworthy_beta_quality.py",
+      "classification": "unclassified"
+    },
+    {
       "path": "app/services/tutor_safety.py",
       "classification": "unclassified"
     },
@@ -694,8 +750,32 @@
       "classification": "unclassified"
     },
     {
+      "path": "app/modules/commercial_launch/readiness.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/commercial_launch/remediation.py",
+      "classification": "unclassified"
+    },
+    {
       "path": "app/modules/consent/service.py",
       "classification": "domain_or_cross_cutting_service"
+    },
+    {
+      "path": "app/modules/content_quality/acceptance.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/content_quality/readiness.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/controlled_beta/authorisation.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/controlled_beta/preflight.py",
+      "classification": "unclassified"
     },
     {
       "path": "app/modules/deployment/production_readiness_contracts.py",
@@ -778,7 +858,7 @@
       "classification": "unclassified"
     },
     {
-      "path": "app/modules/learners/ether_service.py",
+      "path": "app/modules/learners/archetype_service.py",
       "classification": "domain_or_cross_cutting_service"
     },
     {
@@ -858,11 +938,27 @@
       "classification": "unclassified"
     },
     {
+      "path": "app/modules/observability/assurance.py",
+      "classification": "unclassified"
+    },
+    {
       "path": "app/modules/observability/production_readiness_contracts.py",
       "classification": "unclassified"
     },
     {
+      "path": "app/modules/observability/readiness.py",
+      "classification": "unclassified"
+    },
+    {
       "path": "app/modules/operations_support/production_readiness_contracts.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/performance_scale_cost/assurance.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/performance_scale_cost/readiness.py",
       "classification": "unclassified"
     },
     {
@@ -875,6 +971,22 @@
     },
     {
       "path": "app/modules/practice/spaced_repetition_scheduler.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/privacy_ops/assurance.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/privacy_ops/readiness.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/production_release/readiness.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/production_release/true_state_baseline.py",
       "classification": "unclassified"
     },
     {
@@ -898,8 +1010,28 @@
       "classification": "unclassified"
     },
     {
+      "path": "app/modules/security_assurance/assurance.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/security_assurance/readiness.py",
+      "classification": "unclassified"
+    },
+    {
       "path": "app/modules/security_posture/production_readiness_contracts.py",
       "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/study_plans/runtime_kg_planner.py",
+      "classification": "active_runtime_facade"
+    },
+    {
+      "path": "app/modules/vertical_journey/hardening.py",
+      "classification": "unclassified"
+    },
+    {
+      "path": "app/modules/vertical_journey/service.py",
+      "classification": "domain_or_cross_cutting_service"
     }
   ]
 }

@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import ast
-import subprocess
 import sys
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from scripts._subprocess import run  # noqa: E402
 STRICT_ROUTERS = {
     "app/api_v2_routers/popia.py": {
         "forbidden_import_prefixes": ("app.repositories",),
@@ -42,9 +44,8 @@ def main() -> int:
     for command in [
         [sys.executable, "scripts/generate_service_family_map.py"],
         [sys.executable, "scripts/generate_router_service_dependency_map.py"],
-        [sys.executable, "scripts/generate_legacy_learner_access_guard_report.py"],
     ]:
-        result = subprocess.run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+        result = run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
         if result.returncode != 0:
             failures.append(f"{' '.join(command)} failed: {result.stdout}")
 

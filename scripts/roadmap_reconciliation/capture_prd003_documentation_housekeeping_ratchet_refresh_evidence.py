@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import run
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -32,7 +32,7 @@ def write_json(path: Path, payload: dict[str, Any]) -> None:
 
 
 def git(args: list[str]) -> str:
-    return subprocess.run(["git", *args], check=False, text=True, capture_output=True).stdout.strip()
+    return run(["git", *args], check=False, text=True, capture_output=True).stdout.strip()
 
 
 def git_state(target_branch: str) -> dict[str, Any]:
@@ -45,7 +45,7 @@ def git_state(target_branch: str) -> dict[str, Any]:
 
 
 def run_checked(cmd: list[str]) -> None:
-    completed = subprocess.run(cmd, check=False, text=True, capture_output=True)
+    completed = run(cmd, check=False, text=True, capture_output=True)
     if completed.returncode != 0:
         detail = completed.stdout + completed.stderr
         raise SystemExit(f"command failed ({completed.returncode}): {' '.join(cmd)}\n{detail}")

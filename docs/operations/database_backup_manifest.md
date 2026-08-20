@@ -1,9 +1,9 @@
 # Database Backup Manifest
 
-Manifest ID: `fdf3cdc7dc71ac55`
-Generated: `2026-06-12T17:40:07Z`
-Branch: `phase-11/technical-debt-burn-down`
-Commit: `a70b57616bb29572fcb57961b91a3f68f0c66329`
+Manifest ID: `31759b07eeef1dd5`
+Generated: `2026-08-19T20:02:45Z`
+Branch: `fix/tsr-b01-gate-remediation`
+Commit: `d5ae429bdec24b4d0123ea3362323fa3e4f25e4b`
 
 ## Backup Metadata
 

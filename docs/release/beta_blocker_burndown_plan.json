@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-12T17:35:54Z",
-  "current_commit": "b33e49720860a084e7a7c42ead1b620cb859e64f",
+  "generated_at": "2026-08-19T19:18:10Z",
+  "current_commit": "d5ae429bdec24b4d0123ea3362323fa3e4f25e4b",
   "source_decision": "NO-GO",
   "source_beta_blocker_count": 7,
   "burn_down_status": "blocked",
@@ -71,7 +71,7 @@
       "status": "external-blocked",
       "reason": "external approval remains incomplete",
       "owner": "release",
-      "evidence_file": "docs/release/external_approvals/staging_acceptance.md",
+      "evidence_file": "docs/release/staging_smoke_evidence.md",
       "next_action": "Run staging acceptance, attach evidence URL, and replace pending metadata in staging_acceptance.md.",
       "verification_command": "make external-approval-release-check",
       "priority": "P0",

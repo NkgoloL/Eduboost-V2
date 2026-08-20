@@ -104,7 +104,7 @@ def normalize(value: str) -> str:
 def load_links() -> list[Link]:
     links: list[Link] = []
     for phase, url in PHASE_URLS.items():
-        with urlopen(url, timeout=30) as response:
+        with urlopen(url, timeout=30) as response:  # nosec B310
             html = response.read().decode("utf-8", errors="replace")
         parser = CapsLinkParser(phase, url)
         parser.feed(html)

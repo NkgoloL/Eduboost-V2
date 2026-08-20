@@ -75,12 +75,12 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         boundaries_locked,
         register_agrees,
     ])
-    evidence_recorded = record.get("evidence_recorded") is True and SUMMARY.exists()
+    evidence_recorded = contract.get("execution_results_valid") is True and contract.get("all_green_from_results") is True
     valid = all([
         authority_valid,
         evidence_recorded,
-        register.get("next_authorised_item") in {NEXT, NEXT_AFTER_EXECUTION_3},
-        prod_register.get("next_authorised_item") in {NEXT, NEXT_AFTER_EXECUTION_3},
+        register.get("next_authorised_item") in {NEXT, NEXT_AFTER_EXECUTION_3, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7"},
+        prod_register.get("next_authorised_item") in {NEXT, NEXT_AFTER_EXECUTION_3, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7"},
     ])
     return {
         "valid": valid,
@@ -92,8 +92,8 @@ def audit(root: Path = ROOT) -> dict[str, Any]:
         "generated_frontend_contract_valid": contract.get("valid") is True,
         "generated_contract_frontend_quality_authority_recorded": record.get("authority_recorded") is True,
         "generated_contract_frontend_quality_evidence_recorded": evidence_recorded,
-        "generated_contracts_green": record.get("generated_contracts_green") is True,
-        "frontend_quality_green": record.get("frontend_quality_green") is True,
+        "generated_contracts_green": contract.get("generated_contracts_green") is True,
+        "frontend_quality_green": contract.get("frontend_quality_green") is True,
         "runtime_baseline_green": record.get("runtime_baseline_green") is True,
         "controlled_beta_activation_operational_hold": record.get("controlled_beta_activation_operational_hold") is True,
         "live_learner_traffic_operationally_safe": record.get("live_learner_traffic_operationally_safe") is True,

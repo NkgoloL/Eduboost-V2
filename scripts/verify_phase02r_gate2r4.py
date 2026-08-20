@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Static and focused behavioral verifier for Phase 02R Gate 2R.4."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -26,7 +27,7 @@ REQUIRED_FILES = [
 
 
 def _run(command: list[str]) -> dict[str, object]:
-    proc = subprocess.run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    proc = run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     return {"command": command, "exit_code": proc.returncode, "output": proc.stdout[-12000:]}
 
 

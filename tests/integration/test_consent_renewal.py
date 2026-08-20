@@ -8,10 +8,10 @@ Integration Tests — POPIA Annual Consent Renewal Reminder  (Task #24)
 Run: pytest tests/integration/test_consent_renewal.py -v
 """
 
-from datetime import datetime, timedelta, timezone
-from unittest.mock import AsyncMock, MagicMock
+from datetime import datetime, timedelta, timezone  # noqa: E402
+from unittest.mock import AsyncMock, MagicMock  # noqa: E402
 
-import pytest
+import pytest  # noqa: E402
 
 
 # ---------------------------------------------------------------------------

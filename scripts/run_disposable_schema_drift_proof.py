@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Run guarded disposable DB schema-drift proof commands."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json
 import os
 import re
-import subprocess
+from scripts._subprocess import run
 import sys
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -62,7 +63,7 @@ def _redact_url(url: str) -> str:
 
 
 def _run(name: str, command: list[str]) -> CommandResult:
-    result = subprocess.run(
+    result = run(
         command,
         cwd=REPO_ROOT,
         text=True,

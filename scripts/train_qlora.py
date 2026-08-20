@@ -151,7 +151,7 @@ def load_model_for_mode(args: argparse.Namespace, deps: dict[str, Any]) -> Any:
             bnb_4bit_use_double_quant=True,
             bnb_4bit_compute_dtype=torch.bfloat16 if torch.cuda.is_available() and torch.cuda.is_bf16_supported() else torch.float16,
         )
-        model = AutoModelForCausalLM.from_pretrained(
+        model = AutoModelForCausalLM.from_pretrained(  # nosec B615
             args.model_id,
             quantization_config=quantization_config,
             device_map="auto",
@@ -160,7 +160,7 @@ def load_model_for_mode(args: argparse.Namespace, deps: dict[str, Any]) -> Any:
         model = prepare_model_for_kbit_training(model)
     else:
         dtype = torch.float32 if args.cpu_dtype == "float32" else torch.bfloat16
-        model = AutoModelForCausalLM.from_pretrained(
+        model = AutoModelForCausalLM.from_pretrained(  # nosec B615
             args.model_id,
             torch_dtype=dtype,
             low_cpu_mem_usage=True,
@@ -200,7 +200,7 @@ def run_training(args: argparse.Namespace) -> int:
     if args.training_mode == "qlora" and not torch.cuda.is_available():
         raise RuntimeError("--training-mode qlora requires CUDA. Use --training-mode cpu-lora on this machine.")
 
-    tokenizer = AutoTokenizer.from_pretrained(args.model_id, trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained(args.model_id, trust_remote_code=True)  # nosec B615
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 

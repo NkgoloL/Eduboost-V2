@@ -30,7 +30,7 @@
   "openapi_reconciliation": {
     "canonical_openapi_path": "docs/openapi.json",
     "compatibility_mirror_path": "openapi.json",
-    "docs_openapi_sha256": "c22923cbbbf0bad9d2af3af8fe2c53fbb323009a8b684cb2139db5099f26b5bc",
+    "docs_openapi_sha256": "8f695dd5a96ee30dd0e901b86e4f3f4f2c78e9f4f1817bb7c5cefea349be51b2",
     "file_copy_required": false,
     "reconciliation_performed": true,
     "root_and_docs_openapi_match": false,
@@ -123,11 +123,11 @@
     "changed_files": [],
     "deprecated_pytest_command": "python -m pytest",
     "workflow_summary_after_canonicalisation": {
-      "deployment_reference_workflow_count": 34,
-      "main_reference_workflow_count": 24,
-      "master_reference_workflow_count": 47,
+      "deployment_reference_workflow_count": 33,
+      "main_reference_workflow_count": 23,
+      "master_reference_workflow_count": 46,
       "openapi_reference_workflow_count": 5,
-      "python3_m_pytest_workflow_count": 39,
+      "python3_m_pytest_workflow_count": 38,
       "python3_m_pytest_workflows": [
         ".github/workflows/api-envelope-error-contract.yml",
         ".github/workflows/auth-boundary.yml",
@@ -148,7 +148,6 @@
         ".github/workflows/kg008-post-switch-optimisation-scale-review.yml",
         ".github/workflows/kgact001-controlled-runtime-kg-authority-activation.yml",
         ".github/workflows/learning-evidence.yml",
-        ".github/workflows/legacy-route-guard.yml",
         ".github/workflows/persistence-resilience.yml",
         ".github/workflows/popia-consent-audit.yml",
         ".github/workflows/prd000-production-readiness-stream-authority.yml",
@@ -172,7 +171,7 @@
       "python_m_pytest_workflow_count": 0,
       "python_m_pytest_workflows": [],
       "release_reference_workflow_count": 26,
-      "workflow_count": 86
+      "workflow_count": 85
     }
   }
 }

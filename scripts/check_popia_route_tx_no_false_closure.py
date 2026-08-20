@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import ast
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -80,7 +81,7 @@ def main() -> int:
 
     if not os.getenv("SKIP_PYTEST_RECURSION"):
         env = {**os.environ, "PYTHONPATH": str(ROOT), "SKIP_PYTEST_RECURSION": "1"}
-        result = subprocess.run(
+        result = run(
             [
                 sys.executable,
                 "-m",
@@ -105,7 +106,7 @@ def main() -> int:
         else:
             failures.append("POPIA route transaction gap-plan tests failed")
 
-    ruff = subprocess.run(
+    ruff = run(
         [
             sys.executable,
             "-m",

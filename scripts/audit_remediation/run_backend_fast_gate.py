@@ -6,7 +6,8 @@ import argparse
 import json
 import os
 import shlex
-import subprocess
+import subprocess  # nosec B404 -- only .PIPE/.STDOUT constants used; calls go through run_shell()
+from scripts._subprocess import run_shell
 import time
 from pathlib import Path
 from typing import Any
@@ -22,11 +23,11 @@ def run_backend_fast(command: str, output_dir: Path, root: Path = ROOT) -> dict[
     env = os.environ.copy()
     env.setdefault("PYTHONPATH", ".")
     started = time.time()
-    completed = subprocess.run(
+    completed = run_shell(
         command,
         cwd=root,
-        shell=True,
         text=True,
+        capture_output=False,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         env=env,

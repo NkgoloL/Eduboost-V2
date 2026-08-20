@@ -5,9 +5,9 @@
 This PR closes the EduBoost V2 staging/beta release evidence layer.
 
 - release_candidate: `unset`
-- branch: `feature/atlas-phase-02r-gate-2r1-remediation`
-- commit: `88840fc52a05c694c6d313e57bc8cba4bcda4c63`
-- generated_at_utc: `2026-06-27T02:18:42.667801+00:00`
+- branch: `fix/tsr-b01-gate-remediation`
+- commit: `d5ae429bdec24b4d0123ea3362323fa3e4f25e4b`
+- generated_at_utc: `2026-08-19T19:18:10.886670+00:00`
 
 ## Verification
 

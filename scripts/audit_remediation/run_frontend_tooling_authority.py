@@ -6,11 +6,12 @@ install so that passing evidence proves the frontend lockfile and scripts are
 usable under pnpm. Use --skip-install only for diagnostics, not passing evidence.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 import time
 from dataclasses import asdict, dataclass
@@ -42,7 +43,7 @@ class CommandResult:
 
 def _git(args: list[str], default: str) -> str:
     try:
-        completed = subprocess.run(
+        completed = run(
             ["git", *args],
             cwd=REPO_ROOT,
             check=False,
@@ -69,7 +70,7 @@ def _run_step(name: str, command: list[str], cwd: Path, output_dir: Path, timeou
     stderr_path = output_dir / f"{name}_stderr.txt"
     started = time.monotonic()
     try:
-        completed = subprocess.run(
+        completed = run(
             command,
             cwd=cwd,
             text=True,
@@ -129,7 +130,7 @@ def _commands(skip_install: bool) -> list[tuple[str, list[str], Path]]:
     return commands
 
 
-def run(output_dir: Path, *, timeout: int, skip_install: bool) -> dict[str, object]:
+def run_frontend_tooling_authority(output_dir: Path, *, timeout: int, skip_install: bool) -> dict[str, object]:
     results = [_run_step(name, command, cwd, output_dir, timeout) for name, command, cwd in _commands(skip_install)]
     expected = list(EXPECTED_STEP_NAMES)
     if skip_install:
@@ -159,7 +160,7 @@ def main(argv: Iterable[str] | None = None) -> int:
     parser.add_argument("--skip-install", action="store_true")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args(list(argv) if argv is not None else None)
-    payload = run(args.output_dir, timeout=args.timeout, skip_install=args.skip_install)
+    payload = run_frontend_tooling_authority(args.output_dir, timeout=args.timeout, skip_install=args.skip_install)
     if args.json:
         print(json.dumps(payload, indent=2, sort_keys=True))
     else:

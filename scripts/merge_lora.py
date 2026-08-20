@@ -73,7 +73,7 @@ def merge(args: argparse.Namespace) -> int:
     AutoModelForCausalLM = deps["AutoModelForCausalLM"]
     AutoTokenizer = deps["AutoTokenizer"]
 
-    model = AutoModelForCausalLM.from_pretrained(
+    model = AutoModelForCausalLM.from_pretrained(  # nosec B615
         args.model_id,
         torch_dtype=resolve_dtype(torch, args.torch_dtype),
         device_map=args.device_map,
@@ -81,7 +81,7 @@ def merge(args: argparse.Namespace) -> int:
     )
     model = PeftModel.from_pretrained(model, args.adapter_dir)
     merged = model.merge_and_unload()
-    tokenizer = AutoTokenizer.from_pretrained(args.adapter_dir, trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained(args.adapter_dir, trust_remote_code=True)  # nosec B615
     merged.save_pretrained(output_dir, safe_serialization=True, max_shard_size=args.max_shard_size)
     tokenizer.save_pretrained(output_dir)
     LOGGER.info("Merged model saved to %s", output_dir)

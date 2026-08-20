@@ -38,7 +38,6 @@ def test_boundary_scripts_run():
         [sys.executable, "scripts/check_router_boundary_enforcement.py"],
         [sys.executable, "scripts/check_import_linter_availability.py"],
         [sys.executable, "scripts/generate_service_boundary_inventory.py"],
-        [sys.executable, "scripts/generate_legacy_learner_access_guard_report.py"],
     ]:
         result = subprocess.run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
         assert result.returncode == 0, result.stdout

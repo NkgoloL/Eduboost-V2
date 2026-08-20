@@ -2,7 +2,10 @@
 """Run the full Cluster G frontend journey closure suite."""
 from __future__ import annotations
 
-import subprocess
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from scripts._subprocess import run
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -87,7 +90,7 @@ class ClusterGClosureResult:
 
 
 def run_command(name: str, command: list[str]) -> ClusterGClosureResult:
-    result = subprocess.run(command, cwd=REPO_ROOT, check=False, capture_output=True, text=True)
+    result = run(command, cwd=REPO_ROOT, check=False, capture_output=True, text=True)
     return ClusterGClosureResult(
         name=name,
         ok=result.returncode == 0,

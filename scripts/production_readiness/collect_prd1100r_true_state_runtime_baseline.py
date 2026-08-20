@@ -4,11 +4,12 @@ The collector is intentionally fail-closed.  Missing infrastructure is recorded
 as a blocker instead of being converted into a green readiness claim.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 from typing import Any
@@ -36,9 +37,15 @@ STATIC_REQUIRED_FILES = (
 )
 
 
-def _run(cmd: list[str], root: Path, timeout: int = 45) -> dict[str, Any]:
+def _to_str(val: Any) -> str:
+    if isinstance(val, bytes):
+        return val.decode("utf-8", errors="replace")
+    return str(val) if val is not None else ""
+
+
+def _run(cmd: list[str], root: Path, timeout: int = 45, env: dict[str, str] | None = None) -> dict[str, Any]:
     try:
-        completed = subprocess.run(
+        completed = run(
             cmd,
             cwd=root,
             text=True,
@@ -46,17 +53,22 @@ def _run(cmd: list[str], root: Path, timeout: int = 45) -> dict[str, Any]:
             stderr=subprocess.PIPE,
             timeout=timeout,
             check=False,
+            env=env,
         )
+        out = _to_str(completed.stdout)
+        err = _to_str(completed.stderr)
         return {
             "status": "pass" if completed.returncode == 0 else "fail",
             "returncode": completed.returncode,
-            "stdout_tail": completed.stdout[-4000:],
-            "stderr_tail": completed.stderr[-4000:],
+            "stdout_tail": out[-4000:],
+            "stderr_tail": err[-4000:],
         }
     except FileNotFoundError as exc:
         return {"status": "blocked", "reason": f"missing executable: {exc.filename}"}
     except subprocess.TimeoutExpired as exc:
-        return {"status": "blocked", "reason": f"timeout after {timeout}s", "stdout_tail": (exc.stdout or "")[-1000:], "stderr_tail": (exc.stderr or "")[-1000:]}
+        out = _to_str(exc.stdout)
+        err = _to_str(exc.stderr)
+        return {"status": "blocked", "reason": f"timeout after {timeout}s", "stdout_tail": out[-1000:], "stderr_tail": err[-1000:]}
 
 
 def _static_files(root: Path) -> dict[str, Any]:
@@ -99,6 +111,8 @@ def _database_probe(root: Path) -> dict[str, Any]:
             "required_tables": list(REQUIRED_RUNTIME_TABLES),
             "required_columns": {table: list(columns) for table, columns in REQUIRED_RUNTIME_COLUMNS.items()},
         }
+    if url.startswith("postgresql+asyncpg://"):
+        url = url.replace("postgresql+asyncpg://", "postgresql://", 1)
     try:
         from sqlalchemy import create_engine, text
     except Exception as exc:  # pragma: no cover - environment dependent
@@ -147,7 +161,7 @@ def _ready_http_probe() -> dict[str, Any]:
         return {"status": "blocked", "reason": "API_BASE_URL not set; HTTP /ready not proven"}
     url = base_url.rstrip("/") + "/ready"
     try:  # pragma: no cover - requires live api
-        with urlopen(url, timeout=5) as response:
+        with urlopen(url, timeout=5) as response:  # nosec B310
             body = response.read(4096).decode("utf-8", errors="replace")
             status = response.getcode()
         return {"status": "pass" if status == 200 else "fail", "http_status": status, "url": url, "body_head": body[:1000]}
@@ -166,10 +180,10 @@ def _generated_contracts(root: Path, run_checks: bool) -> dict[str, Any]:
     return {"status": status, "openapi": openapi, "route_inventory": routes}
 
 
-def _command_gate(name: str, command: list[str] | None, root: Path, run_checks: bool, timeout: int = 60) -> dict[str, Any]:
+def _command_gate(name: str, command: list[str] | None, root: Path, run_checks: bool, timeout: int = 60, env: dict[str, str] | None = None) -> dict[str, Any]:
     if not run_checks or not command:
         return {"status": "blocked", "reason": f"{name} command not executed in collector default mode"}
-    return _run(command, root, timeout=timeout)
+    return _run(command, root, timeout=timeout, env=env)
 
 
 
@@ -188,6 +202,10 @@ def _disposable_stack_schema_lineage_reconciliation(root: Path) -> dict[str, Any
     }
 
 def collect_baseline(root: Path = ROOT, *, run_expensive_checks: bool = False) -> dict[str, Any]:
+    integration_env = dict(os.environ)
+    integration_env.pop("DATABASE_URL", None)
+    integration_env.pop("SQLALCHEMY_DATABASE_URI", None)
+
     checks = {
         "static_required_files": _static_files(root),
         "docker_compose_service_contract": _compose_service_contract(root),
@@ -197,11 +215,11 @@ def collect_baseline(root: Path = ROOT, *, run_expensive_checks: bool = False) -
         "redis_readiness_dependency": _redis_probe(),
         "ready_http_probe": _ready_http_probe(),
         "generated_contracts": _generated_contracts(root, run_expensive_checks),
-        "backend_unit_gate": _command_gate("backend_unit_gate", [sys.executable, "-m", "pytest", "tests/unit", "-q", "--no-cov"], root, run_expensive_checks, timeout=300),
-        "integration_gate": _command_gate("integration_gate", [sys.executable, "-m", "pytest", "tests/integration", "-q", "--no-cov"], root, run_expensive_checks, timeout=300),
+        "backend_unit_gate": _command_gate("backend_unit_gate", [sys.executable, "-m", "pytest", "tests/unit", "-n", "4", "-q", "--no-cov"], root, run_expensive_checks, timeout=1200),
+        "integration_gate": _command_gate("integration_gate", [sys.executable, "-m", "pytest", "tests/integration", "-q", "--no-cov"], root, run_expensive_checks, timeout=300, env=integration_env),
         "dependency_audit_gate": _command_gate("dependency_audit_gate", [sys.executable, "-m", "pip_audit", "-r", "requirements/base.txt"], root, run_expensive_checks, timeout=180),
         "frontend_quality_gate": _command_gate("frontend_quality_gate", ["bash", "-lc", "cd app/frontend && pnpm lint && pnpm test -- --run && pnpm build"], root, run_expensive_checks, timeout=300),
-        "secret_baseline_gate": _command_gate("secret_baseline_gate", ["bash", "-lc", "detect-secrets scan --baseline .secrets.baseline app scripts .github >/tmp/prd110r_detect_secrets.json"], root, run_expensive_checks, timeout=180),
+        "secret_baseline_gate": _command_gate("secret_baseline_gate", [sys.executable, "-m", "detect_secrets", "scan", "--baseline", ".secrets.baseline", "app", "scripts", ".github"], root, run_expensive_checks, timeout=180),
     }
     hard_gate_names = tuple(checks)
     blockers = [name for name, payload in checks.items() if payload.get("status") != "pass"]

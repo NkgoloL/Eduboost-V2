@@ -5,6 +5,7 @@ from fastapi import APIRouter, Depends, Query
 
 from app.api_v2_deps.auth import require_admin
 from app.core.envelope_route import EnvelopedRoute
+from app.domain.api_v2_models import ApiSuccessEnvelope, ok
 
 router = APIRouter(
     route_class=EnvelopedRoute,
@@ -25,8 +26,12 @@ _DOCUMENTS = [
 
 
 @router.get("/status")
-async def etl_admin_status() -> dict:
-    return {"status": "available", "mcp_runtime_imported": False, "documents_indexed": len(_DOCUMENTS)}
+async def etl_admin_status() -> ApiSuccessEnvelope[dict[str, object]]:
+    return ok({
+        "status": "available",
+        "mcp_runtime_imported": False,
+        "documents_indexed": len(_DOCUMENTS),
+    })
 
 
 @router.get("/documents")

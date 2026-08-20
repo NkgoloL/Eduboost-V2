@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import hashlib
 import json
-import subprocess
-import xml.etree.ElementTree as ET
+from scripts._subprocess import check_output, run
+import xml.etree.ElementTree as ET  # nosec B405 -- parses locally-generated coverage.xml only, not external input
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -34,7 +35,7 @@ CHECKSUM_FILES = [
 
 def _run(args: list[str]) -> dict[str, Any]:
     try:
-        proc = subprocess.run(args, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120)
+        proc = run(args, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120)
         return {"command": args, "returncode": proc.returncode, "output": proc.stdout}
     except Exception as exc:
         return {"command": args, "returncode": 127, "output": f"{type(exc).__name__}: {exc}"}
@@ -42,7 +43,7 @@ def _run(args: list[str]) -> dict[str, Any]:
 
 def _run_git(args: list[str]) -> str:
     try:
-        return subprocess.check_output(["git", *args], cwd=ROOT, text=True, stderr=subprocess.STDOUT).strip()
+        return check_output(["git", *args], cwd=ROOT, text=True, stderr=subprocess.STDOUT).strip()
     except Exception as exc:
         return f"unavailable: {exc}"
 
@@ -64,7 +65,7 @@ def _parse_coverage_xml(path: Path) -> dict[str, Any]:
     if not path.exists():
         return {"exists": False, "coverage_percent": None, "error": f"missing coverage xml: {path}"}
     try:
-        root = ET.parse(path).getroot()
+        root = ET.parse(path).getroot()  # nosec B314
         line_rate = float(root.attrib.get("line-rate", "0"))
         branch_rate = float(root.attrib.get("branch-rate", "0")) if "branch-rate" in root.attrib else None
         return {

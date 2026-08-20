@@ -6,7 +6,7 @@ Generator identifier: generate_beta_pr_body.
 from __future__ import annotations
 
 import os
-import subprocess
+from scripts._subprocess import check_output, run
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -17,7 +17,7 @@ OUTPUT = REPO_ROOT / "docs" / "operations" / "beta_release_pr_body.md"
 
 def _git_value(args: list[str]) -> str:
     try:
-        return subprocess.check_output(["git", *args], cwd=REPO_ROOT, text=True).strip()
+        return check_output(["git", *args], cwd=REPO_ROOT, text=True).strip()
     except Exception:
         return "unknown"
 

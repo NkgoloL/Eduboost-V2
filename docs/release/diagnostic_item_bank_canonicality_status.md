@@ -1,7 +1,7 @@
 # Diagnostic Item-Bank Policy Status
 
-Generated at: `2026-06-27T02:19:19Z`
-Commit: `88840fc52a05c694c6d313e57bc8cba4bcda4c63`
+Generated at: `2026-08-19T19:13:29Z`
+Commit: `d5ae429bdec24b4d0123ea3362323fa3e4f25e4b`
 
 **Status:** `diagnostic-item-bank-policy-accepted`
 **Policy:** `docs/architecture/diagnostic_item_bank_canonicality.yml`
@@ -30,6 +30,8 @@ Commit: `88840fc52a05c694c6d313e57bc8cba4bcda4c63`
 | `app/api_v2_routers/content_factory.py` | 1077 | `diagnostic_items = await service.get_diagnostic_items(session, scope_id=scope_id, caps_ref=caps_ref)` |
 | `app/api_v2_routers/content_factory.py` | 1079 | `return {"diagnostic_items": diagnostic_items, "lessons": lessons}` |
 | `app/api_v2_routers/content_factory.py` | 1100 | `run_metadata={"layers": ["diagnostic_items", "lessons", "assessment_blueprints", "study_plan_templates"]},` |
+| `app/core/runtime_readiness.py` | 23 | `"diagnostic_items",` |
+| `app/core/runtime_readiness.py` | 37 | `"diagnostic_items": (` |
 | `app/domain/content_coverage.py` | 11 | `DIAGNOSTIC_ITEMS = "diagnostic_items"` |
 | `app/domain/curriculum_expansion_schemas.py` | 17 | `layers: list[str] = Field(default_factory=lambda: ["diagnostic_items", "lessons"], min_length=1, max_length=8)` |
 | `app/models/content_factory.py` | 59 | `DIAGNOSTIC_ITEMS = "diagnostic_items"` |

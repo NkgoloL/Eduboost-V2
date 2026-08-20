@@ -6,7 +6,7 @@ Generator identifier: generate_release_state_snapshot.
 from __future__ import annotations
 
 import os
-import subprocess
+from scripts._subprocess import check_output, run
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -30,7 +30,7 @@ STATE_ARTIFACTS = (
 
 def _git_value(args: list[str]) -> str:
     try:
-        return subprocess.check_output(["git", *args], cwd=REPO_ROOT, text=True).strip()
+        return check_output(["git", *args], cwd=REPO_ROOT, text=True).strip()
     except Exception:
         return "unknown"
 

@@ -7,11 +7,12 @@ Alembic/schema lineage, Redis, and the HTTP /ready endpoint.  It is fail-closed:
 when a live stack is absent, evidence is recorded as blocked/red, not accepted.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 import time
 from dataclasses import asdict, dataclass
@@ -96,7 +97,7 @@ def _write_json(path: Path, payload: dict[str, Any]) -> None:
 def _run_command(command: list[str], root: Path, *, timeout: int = 300) -> dict[str, Any]:
     started = time.time()
     try:
-        completed = subprocess.run(
+        completed = run(
             command,
             cwd=root,
             text=True,
@@ -145,7 +146,7 @@ def _ready_probe() -> dict[str, Any]:
     url = _api_base_url().rstrip("/") + "/ready"
     request = Request(url, headers={"Accept": "application/json"})
     try:  # pragma: no cover - requires live api
-        with urlopen(request, timeout=15) as response:  # noqa: S310 - configured local/staging probe URL
+        with urlopen(request, timeout=15) as response:  # noqa: S310 - configured local/staging probe URL  # nosec B310
             body = response.read().decode("utf-8", errors="replace")
             status_code = getattr(response, "status", 200)
         parsed: Any

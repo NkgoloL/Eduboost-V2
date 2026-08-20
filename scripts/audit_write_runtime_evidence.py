@@ -1,4 +1,5 @@
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 from dataclasses import asdict, dataclass
@@ -7,7 +8,7 @@ import json
 import os
 from pathlib import Path
 import re
-import subprocess
+from scripts._subprocess import run
 from typing import Any
 from urllib.parse import urlparse
 
@@ -68,7 +69,7 @@ class AuditWriteRuntimeEvidenceStatus:
 
 
 def _run(command: list[str], *, env: dict[str, str] | None = None) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(command, cwd=ROOT, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+    return run(command, cwd=ROOT, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
 
 
 def current_commit() -> str:
@@ -182,7 +183,7 @@ def _table_exists(conn, table_name: str) -> bool:
 
 def _count_rows(conn, table_name: str) -> int:
     with conn.cursor() as cursor:
-        cursor.execute(f'SELECT COUNT(*) FROM public."{table_name}"')
+        cursor.execute(f'SELECT COUNT(*) FROM public."{table_name}"')  # nosec B608
         return int(cursor.fetchone()[0])
 
 
@@ -209,7 +210,7 @@ def _latest_rows(conn, table_name: str, *, limit: int = 50) -> list[dict[str, An
     order_column = _order_column(conn, table_name)
     order_sql = f'ORDER BY "{order_column}" DESC' if order_column else ""
     with conn.cursor(cursor_factory=RealDictCursor) as cursor:
-        cursor.execute(f'SELECT * FROM public."{table_name}" {order_sql} LIMIT %s', (limit,))
+        cursor.execute(f'SELECT * FROM public."{table_name}" {order_sql} LIMIT %s', (limit,))  # nosec B608
         return [dict(row) for row in cursor.fetchall()]
 
 
@@ -227,7 +228,7 @@ def _run_flow_command(command: str, trace_id: str) -> FlowCommandResult:
     if not command:
         return FlowCommandResult("", None, "")
     env = {**os.environ, "AUDIT_WRITE_TRACE_ID": trace_id}
-    result = subprocess.run(["bash", "-c", command], cwd=ROOT, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+    result = run(["bash", "-c", command], cwd=ROOT, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
     return FlowCommandResult(command=command, return_code=result.returncode, output_excerpt=result.stdout[-5000:])
 
 

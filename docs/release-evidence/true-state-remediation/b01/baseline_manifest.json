@@ -1,17 +1,17 @@
 {
-  "captured_at": "2026-07-16T21:08:41.120834+00:00",
+  "captured_at": "2026-07-20T08:48:58.052319+00:00",
   "digests": {
     "README.md": "e3d5052b7a614bf4e7e3de62fb8c453184be718e73af58de2624219197597824",
-    "docs/current_state.md": "6b98ab22a003285987b924af425f6a968a16b5e1af566efb0735338b26c9a4bd",
+    "docs/current_state.md": "f44570bd5647749173ccba8fe35cec0dcacf3b6fa59d8e3ab5ae60d2ac123098",
     "docs/openapi.json": "c22923cbbbf0bad9d2af3af8fe2c53fbb323009a8b684cb2139db5099f26b5bc",
     "openapi.json": "f08d8d60400d4091fdd658462d02c8f2782f1579b707334951867a48d813200d",
     "openapi.yaml": "f08d8d60400d4091fdd658462d02c8f2782f1579b707334951867a48d813200d",
     "pnpm-lock.yaml": "9e280652ecab533b5542e225a4ed06488a5c155ec4fc79498b2e8f36dbd9c665",
-    "requirements/base.txt": "60a795579ff7bc34f0cd1fb428eb64f54f98e2e5e66ea466847e9aba0ac83c1c",
-    "requirements/dev.txt": "2a2ea8ff64e132e5b821916a6d4578cba50b0f69b91e96c6e48010747a288817"
+    "requirements/base.txt": "b2ad089eb082f2f4f5230e87a980f86d1e095802522dd3745f63921a9aecfda9",
+    "requirements/dev.txt": "ea7a8f4340a259050157d0263d5b2f28eb2a6d2e8bf66a5d30b415eafce346cb"
   },
   "environment": {
-    "captured_at": "2026-07-16T21:08:41.189155+00:00",
+    "captured_at": "2026-07-20T08:48:58.164729+00:00",
     "docker": {
       "available": true,
       "exit_code": 0,
@@ -24,20 +24,20 @@
     },
     "git": {
       "available": true,
-      "branch": "master",
+      "branch": "fix/tsr-b01-gate-remediation",
       "clean": false,
-      "commit": "ede543a7a9d0bc7d762903b133a5cb706d912238",
-      "status_porcelain": "?? .tsr/\n?? config/\n?? docs/engineering/audits/\n?? docs/release-evidence/true-state-remediation/\n?? docs/roadmap/execution/true_state_remediation_roadmap_2026-07-13.md\n?? docs/roadmap/production_readiness/true_state_remediation_register.json\n?? scripts/true_state_remediation/",
+      "commit": "991fd8a65a108a2dc5edefb016a7970d56f91f37",
+      "status_porcelain": "M docs/release-evidence/true-state-remediation/b01/apply/capture_baseline.json\n M docs/release-evidence/true-state-remediation/b01/baseline_manifest.json\n M docs/release-evidence/true-state-remediation/b01/environment_manifest.json\n M docs/release-evidence/true-state-remediation/b01/implementation_state.json\n M scripts/_subprocess.py\n M scripts/true_state_remediation/bundles/bundle_01.py\n M scripts/true_state_remediation/capture_baseline.py\n M scripts/true_state_remediation/check_feature_freeze.py\n M scripts/true_state_remediation/core.py\n?? .tsr/backups/b01/20260720T084304Z/",
       "submodules": ""
     },
     "input_digests": {
       ".python-version": "fa682ae9d943f5c8076e68335c9ba3ab4d063ad035c07ac6928653dd4ac50af7",
-      "app/frontend/package.json": "61ea7cd241e6af05935b3d705eccf694b93ee2f459e06dc768163d6f51cba7a5",
+      "app/frontend/package.json": "763b1987e84c419185a469813847726bf2af79efb643edbc496564ee27b578e5",
       "package.json": "0f1b96117bd811f6fb46fb8f06f4f63729d1a5dfc501efa556f26f59495403f9",
       "pnpm-lock.yaml": "9e280652ecab533b5542e225a4ed06488a5c155ec4fc79498b2e8f36dbd9c665",
       "pyproject.toml": "4240162de806751c5976aee2f270187032d9c95de0482b8b15ae4b912d36403a",
-      "requirements/base.txt": "60a795579ff7bc34f0cd1fb428eb64f54f98e2e5e66ea466847e9aba0ac83c1c",
-      "requirements/dev.txt": "2a2ea8ff64e132e5b821916a6d4578cba50b0f69b91e96c6e48010747a288817",
+      "requirements/base.txt": "b2ad089eb082f2f4f5230e87a980f86d1e095802522dd3745f63921a9aecfda9",
+      "requirements/dev.txt": "ea7a8f4340a259050157d0263d5b2f28eb2a6d2e8bf66a5d30b415eafce346cb",
       "requirements/docs.txt": "baf122c71989e7fa24a8cb8726dc492bf5eb1542f191921f6ab21f4a7354e04c",
       "requirements/ml.txt": "e2fa147e3446dcf6c38f372b31dea2d887067abe5ebda63c9ad70dc186956ade"
     },
@@ -45,7 +45,7 @@
     "node": {
       "available": true,
       "exit_code": 0,
-      "version": "v26.0.0"
+      "version": "v22.22.3"
     },
     "pip": {
       "available": true,
@@ -54,9 +54,8 @@
     },
     "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
     "pnpm": {
-      "available": true,
-      "exit_code": 0,
-      "version": "9.14.4"
+      "available": false,
+      "error": "[Errno 2] No such file or directory: 'pnpm'"
     },
     "postgres_client": {
       "available": true,
@@ -74,10 +73,10 @@
   },
   "git": {
     "available": true,
-    "branch": "master",
+    "branch": "fix/tsr-b01-gate-remediation",
     "clean": false,
-    "commit": "ede543a7a9d0bc7d762903b133a5cb706d912238",
-    "status_porcelain": "?? .tsr/\n?? config/\n?? docs/engineering/audits/\n?? docs/release-evidence/true-state-remediation/\n?? docs/roadmap/execution/true_state_remediation_roadmap_2026-07-13.md\n?? docs/roadmap/production_readiness/true_state_remediation_register.json\n?? scripts/true_state_remediation/",
+    "commit": "991fd8a65a108a2dc5edefb016a7970d56f91f37",
+    "status_porcelain": "M docs/release-evidence/true-state-remediation/b01/apply/capture_baseline.json\n M docs/release-evidence/true-state-remediation/b01/baseline_manifest.json\n M docs/release-evidence/true-state-remediation/b01/environment_manifest.json\n M docs/release-evidence/true-state-remediation/b01/implementation_state.json\n M scripts/_subprocess.py\n M scripts/true_state_remediation/bundles/bundle_01.py\n M scripts/true_state_remediation/capture_baseline.py\n M scripts/true_state_remediation/check_feature_freeze.py\n M scripts/true_state_remediation/core.py\n?? .tsr/backups/b01/20260720T084304Z/",
     "submodules": ""
   },
   "migration_heads": [

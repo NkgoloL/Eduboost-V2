@@ -42,8 +42,8 @@ def _previous_prd5_handoff_valid(root: Path) -> bool:
         result = audit_prd505(root)
         if result.get("valid") is True:
             return True
-    except Exception:
-        pass
+    except Exception:  # best-effort probe, cannot fail-close
+            pass
 
     record = root / "docs/roadmap/production_readiness/prd_505_509_popia_final_assurance_handoff_record.json"
     if not record.exists():

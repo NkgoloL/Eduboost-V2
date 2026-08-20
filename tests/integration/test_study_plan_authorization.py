@@ -2,15 +2,15 @@ from __future__ import annotations
 
 """Direct-call authorization tests for study-plan write access."""
 
-from typing import Any
+from typing import Any  # noqa: E402
 
-import pytest
-from fastapi import HTTPException
+import pytest  # noqa: E402
+from fastapi import HTTPException  # noqa: E402
 
-from app.api_v2_deps.auth import AuthContext, TokenType
-from app.api_v2_routers import study_plans as study_plans_router
-from app.domain.api_v2_models import StudyPlanGenerateRequest
-from app.models import UserRole
+from app.api_v2_deps.auth import AuthContext, TokenType  # noqa: E402
+from app.api_v2_routers import study_plans as study_plans_router  # noqa: E402
+from app.domain.api_v2_models import StudyPlanGenerateRequest  # noqa: E402
+from app.models import UserRole  # noqa: E402
 
 pytestmark = pytest.mark.integration
 

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-c",
+    "pytest.ini",
+    "tests/unit/test_etl_mcp_server_startup.py",
+    "-q"
+  ],
+  "cwd": ".",
+  "exit_code": 0,
+  "finished_at": "2026-08-04T23:10:17.348937+00:00",
+  "name": "mcp_stub_isolation",
+  "passed": true,
+  "required": true,
+  "started_at": "2026-08-04T23:10:15.315104+00:00",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "3f0757e9439b62915b44675c18703deb8095dfc44e346d7a86d724b0131ff452"
+}

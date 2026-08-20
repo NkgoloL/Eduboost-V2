@@ -6,10 +6,11 @@ static environments may not have the async PostgreSQL driver installed. Live ORM
 and trigger behavior is proven by scripts/verify_phase02r_postgres.sh.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import run
 import sys
 import tempfile
 from pathlib import Path
@@ -21,7 +22,7 @@ SUPPORTED_GATES = {"2R.2", "2R.3", "2R.4", "2R.5", "2R.6", "2R.7", "2R.8"}
 
 
 def _run(command: list[str]) -> dict[str, object]:
-    proc = subprocess.run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    proc = run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     return {"command": command, "exit_code": proc.returncode, "output": proc.stdout[-8000:]}
 
 
@@ -55,7 +56,7 @@ def _behavioral_contracts() -> list[str]:
             try:
                 assert_no_learner_pii_in_source_metadata({"learner_id": "L1"})
                 errors.append("PII metadata was not rejected")
-            except Exception:
+            except Exception:  # best-effort probe, cannot fail-close
                 pass
             extracted = StructuredTextExtractor(max_chunk_chars=180).extract_text_fixture(path, language="en")
             if len(extracted.pages) != 2 or not extracted.chunks:
@@ -66,7 +67,7 @@ def _behavioral_contracts() -> list[str]:
         try:
             MappingDraft("chunk", "node", "DEFINED_IN", "machine_proposed", "review_required").validate_for_retrieval()
             errors.append("unapproved mapping was not rejected")
-        except Exception:
+        except Exception:  # best-effort probe, cannot fail-close
             pass
 
         candidate = CorpusChunkCandidate(

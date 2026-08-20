@@ -48,4 +48,4 @@ def test_python_jose_removed_from_runtime_requirements():
     for path in files:
         text = open(path, encoding="utf-8").read().lower()
         assert "python-jose" not in text
-    assert "pyjwt[crypto]==2.12.1" in open("requirements/base.in", encoding="utf-8").read().lower()
+    assert "pyjwt[crypto]==2.13.0" in open("requirements/base.in", encoding="utf-8").read().lower()

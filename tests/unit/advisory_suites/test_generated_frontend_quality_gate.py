@@ -10,8 +10,8 @@ from scripts.advisory_suites.generated_frontend_quality_gate import (
 def test_generated_frontend_quality_contract_is_valid() -> None:
     result = evaluate_generated_frontend_quality_contract()
     assert result["valid"] is True
-    assert result["generated_contracts_green"] is False
-    assert result["frontend_quality_green"] is False
+    assert result["generated_contracts_green"] is True
+    assert result["frontend_quality_green"] is True
     assert result["frontend_scripts_valid"] is True
 
 

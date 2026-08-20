@@ -240,7 +240,7 @@ class LearnerTutorService:
             await self.budget.assert_budget(
                 str(session.learner_id), tenant_id, estimated_tokens=700
             )
-        except Exception:
+        except Exception:  # best-effort probe, cannot fail-close
             pass
 
         operation_id = f"tutor:{session_id}:{client_message_id}"

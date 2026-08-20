@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import ast
 import os
 from pathlib import Path
 import re
-import subprocess
+from scripts._subprocess import run
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -58,7 +59,7 @@ def main() -> int:
         env = {**os.environ, "PYTHONPATH": str(ROOT), "SKIP_PYTEST_RECURSION": "1"}
         venv_py = ROOT / ".venv" / "bin" / "python"
         py = str(venv_py) if venv_py.exists() else sys.executable
-        result = subprocess.run(
+        result = run(
             [
                 py,
                 "-m",
@@ -83,7 +84,7 @@ def main() -> int:
 
     venv_py = ROOT / ".venv" / "bin" / "python"
     py = str(venv_py) if venv_py.exists() else sys.executable
-    ruff = subprocess.run(
+    ruff = run(
         [
             py,
             "-m",

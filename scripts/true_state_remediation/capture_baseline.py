@@ -1,10 +1,11 @@
 from __future__ import annotations
-import argparse, json, re, subprocess
+import argparse, json, re
+from scripts._subprocess import run
 from pathlib import Path
 from scripts.true_state_remediation.core import atomic_write_json, environment_manifest, git_state, root_from, sha256_file, utc_now
 
 def migration_heads(root: Path) -> list[str]:
-    proc=subprocess.run(["alembic","heads"],cwd=root,text=True,capture_output=True,check=False)
+    proc=run(["alembic","heads"],cwd=root,text=True,capture_output=True,check=False, missing_executable="return")
     if proc.returncode==0:
         return [line.split()[0] for line in proc.stdout.splitlines() if line.strip()]
     revisions=[]; parents=[]

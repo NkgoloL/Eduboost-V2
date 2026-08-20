@@ -4,14 +4,14 @@ pytestmark = pytest.mark.integration
 
 """HTTP contract tests for consent-revoke authorization."""
 
-from types import SimpleNamespace
-from typing import Any
+from types import SimpleNamespace  # noqa: E402
+from typing import Any  # noqa: E402
 
-import pytest
-from fastapi.testclient import TestClient
+import pytest  # noqa: E402
+from fastapi.testclient import TestClient  # noqa: E402
 
-from app.api_v2 import app
-from app.api_v2_routers import consent as consent_router
+from app.api_v2 import app  # noqa: E402
+from app.api_v2_routers import consent as consent_router  # noqa: E402
 
 
 LEARNER_ID = "11111111-1111-1111-1111-111111111111"

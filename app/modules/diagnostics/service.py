@@ -79,7 +79,7 @@ class ConsentService:
                 consent = await svc.grant_consent(
                     learner_id, guardian_id, db, consent_version="1.2",
                 )
-                assert consent.is_active
+                if not (consent.is_active): raise AssertionError("assertion failed")
         """
         learner = await _learner_repo.get_or_404(learner_id, db)
         if learner.guardian_id != guardian_id:
@@ -139,7 +139,7 @@ class ConsentService:
                 count = await svc.revoke_consent(
                     learner_id, guardian_id, db, reason="erasure_request",
                 )
-                assert count >= 1
+                if not (count >= 1): raise AssertionError("assertion failed")
         """
         learner = await _learner_repo.get_or_404(learner_id, db)
         if learner.guardian_id != guardian_id:

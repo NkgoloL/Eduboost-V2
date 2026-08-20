@@ -2,8 +2,6 @@ from __future__ import annotations
 
 import json
 import os
-import subprocess
-import sys
 from pathlib import Path
 
 import pytest
@@ -38,24 +36,17 @@ def test_docs_inventory_writes_expected_artifacts():
 
 
 def test_docs_inventory_check_passes_after_write():
-    subprocess.run(
-        [sys.executable, "scripts/docs_inventory.py", "--write"],
-        cwd=ROOT,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        check=True,
-    )
-    result = subprocess.run(
-        [sys.executable, "scripts/docs_inventory.py", "--check"],
-        cwd=ROOT,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        check=False,
-    )
-
-    assert result.returncode == 0, result.stdout
+    import fcntl
+    lock_path = ROOT / ".docs_inventory.lock"
+    with open(lock_path, "w") as lock_file:
+        fcntl.flock(lock_file, fcntl.LOCK_EX)
+        try:
+            write_inventory()
+            from scripts.docs_inventory import check_inventory
+            errors = check_inventory()
+            assert not errors, f"Docs inventory check errors: {errors}"
+        finally:
+            fcntl.flock(lock_file, fcntl.LOCK_UN)
 
 
 def test_required_important_docs_list_tracks_release_gate_files():
@@ -68,14 +59,21 @@ def test_docs_intelligence_checker_runs():
     if os.getenv("SKIP_PYTEST_RECURSION"):
         return
 
-    result = subprocess.run(
-        [sys.executable, "scripts/check_docs_intelligence.py"],
-        cwd=ROOT,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        env={**os.environ, "PYTHONPATH": str(ROOT), "SKIP_PYTEST_RECURSION": "1"},
-        check=False,
-    )
-
-    assert result.returncode == 0, result.stdout
+    import fcntl
+    lock_path = ROOT / ".docs_inventory.lock"
+    with open(lock_path, "w") as lock_file:
+        fcntl.flock(lock_file, fcntl.LOCK_EX)
+        try:
+            from scripts.check_docs_intelligence import main as check_main
+            old_skip = os.environ.get("SKIP_PYTEST_RECURSION")
+            try:
+                os.environ["SKIP_PYTEST_RECURSION"] = "1"
+                ret = check_main()
+                assert ret == 0
+            finally:
+                if old_skip is None:
+                    os.environ.pop("SKIP_PYTEST_RECURSION", None)
+                else:
+                    os.environ["SKIP_PYTEST_RECURSION"] = old_skip
+        finally:
+            fcntl.flock(lock_file, fcntl.LOCK_UN)

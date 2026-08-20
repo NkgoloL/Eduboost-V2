@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Capture RR-006 security posture deepening evidence."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import check_output, run
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -19,7 +20,7 @@ EVIDENCE_DIR = Path("docs/release-evidence/roadmap-reconciliation/rr-006-securit
 def _git_state(target_branch: str) -> dict[str, Any]:
     def run(*args: str) -> str:
         try:
-            return subprocess.check_output(["git", *args], text=True, stderr=subprocess.DEVNULL).strip()
+            return check_output(["git", *args], text=True, stderr=subprocess.DEVNULL).strip()
         except Exception:
             return ""
 

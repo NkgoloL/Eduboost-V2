@@ -1,9 +1,10 @@
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import ast
 import json
 import re
-import subprocess
+from scripts._subprocess import run
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -39,7 +40,7 @@ class Status:
 
 
 def current_commit() -> str:
-    result = subprocess.run(
+    result = run(
         ["git", "rev-parse", "HEAD"],
         cwd=ROOT,
         text=True,

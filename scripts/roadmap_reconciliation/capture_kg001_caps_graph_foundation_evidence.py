@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Capture KG-1 CAPS graph foundation evidence."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import check_output, run
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -32,7 +33,7 @@ BOUNDARY_FALSE = {
 def git_state(target_branch: str) -> dict[str, str]:
     def run(*args: str) -> str:
         try:
-            return subprocess.check_output(["git", *args], text=True, stderr=subprocess.DEVNULL).strip()
+            return check_output(["git", *args], text=True, stderr=subprocess.DEVNULL).strip()
         except Exception:
             return ""
     return {

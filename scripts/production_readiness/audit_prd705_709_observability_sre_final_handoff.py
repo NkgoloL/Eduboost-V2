@@ -42,8 +42,8 @@ def _previous_prd7_foundation_valid(root: Path) -> bool:
         result = audit_prd700(root)
         if result.get("valid") is True:
             return True
-    except Exception:
-        pass
+    except Exception:  # best-effort probe, cannot fail-close
+            pass
 
     record = root / "docs/roadmap/production_readiness/prd_700_704_observability_sre_incident_readiness_foundation_record.json"
     if not record.exists():

@@ -13,9 +13,12 @@ def test_green_run_command_plan_covers_generated_and_frontend_gates():
     assert any(item["gate_id"] == "frontend_release_quality" for item in plan)
 
 
-def test_green_run_contract_is_valid_and_not_self_green():
+def test_green_run_contract_uses_completed_digest_bound_raw_review():
     result = evaluate_green_run_contract()
     assert result["valid"] is True
-    assert result["generated_contracts_green"] is False
-    assert result["frontend_quality_green"] is False
+    assert result["manual_review"]["valid"] is True
+    assert result["raw_identity_valid"] is True
+    assert result["execution_results_valid"] is True
+    assert result["generated_contracts_green"] is True
+    assert result["frontend_quality_green"] is True
     assert result["command_plan_valid"] is True

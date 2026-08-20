@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-27T02:18:43Z",
+  "generated_at": "2026-08-19T20:02:10Z",
   "rows": [
     {
       "router": "app/api_v2_routers/0005_irt_seed.py",
@@ -72,6 +72,13 @@
       "violations": []
     },
     {
+      "router": "app/api_v2_routers/commercial_launch.py",
+      "p0_router": false,
+      "repository_imports": [],
+      "transition_allowed": [],
+      "violations": []
+    },
+    {
       "router": "app/api_v2_routers/consent.py",
       "p0_router": false,
       "repository_imports": [
@@ -103,7 +110,21 @@
       ]
     },
     {
+      "router": "app/api_v2_routers/content_quality.py",
+      "p0_router": false,
+      "repository_imports": [],
+      "transition_allowed": [],
+      "violations": []
+    },
+    {
       "router": "app/api_v2_routers/content_review.py",
+      "p0_router": false,
+      "repository_imports": [],
+      "transition_allowed": [],
+      "violations": []
+    },
+    {
+      "router": "app/api_v2_routers/controlled_beta.py",
       "p0_router": false,
       "repository_imports": [],
       "transition_allowed": [],
@@ -192,6 +213,13 @@
       "violations": []
     },
     {
+      "router": "app/api_v2_routers/observability_sre.py",
+      "p0_router": false,
+      "repository_imports": [],
+      "transition_allowed": [],
+      "violations": []
+    },
+    {
       "router": "app/api_v2_routers/onboarding.py",
       "p0_router": false,
       "repository_imports": [
@@ -214,8 +242,36 @@
       ]
     },
     {
+      "router": "app/api_v2_routers/performance_scale_cost.py",
+      "p0_router": false,
+      "repository_imports": [],
+      "transition_allowed": [],
+      "violations": []
+    },
+    {
       "router": "app/api_v2_routers/popia.py",
       "p0_router": true,
+      "repository_imports": [],
+      "transition_allowed": [],
+      "violations": []
+    },
+    {
+      "router": "app/api_v2_routers/privacy_operations.py",
+      "p0_router": false,
+      "repository_imports": [],
+      "transition_allowed": [],
+      "violations": []
+    },
+    {
+      "router": "app/api_v2_routers/production_release.py",
+      "p0_router": false,
+      "repository_imports": [],
+      "transition_allowed": [],
+      "violations": []
+    },
+    {
+      "router": "app/api_v2_routers/security_assurance.py",
+      "p0_router": false,
       "repository_imports": [],
       "transition_allowed": [],
       "violations": []
@@ -235,21 +291,14 @@
       "violations": []
     },
     {
-      "router": "app/api_v2_routers/test_api.py",
-      "p0_router": false,
-      "repository_imports": [],
-      "transition_allowed": [],
-      "violations": []
-    },
-    {
-      "router": "app/api_v2_routers/test_services.py",
-      "p0_router": false,
-      "repository_imports": [],
-      "transition_allowed": [],
-      "violations": []
-    },
-    {
       "router": "app/api_v2_routers/tutor.py",
+      "p0_router": false,
+      "repository_imports": [],
+      "transition_allowed": [],
+      "violations": []
+    },
+    {
+      "router": "app/api_v2_routers/vertical_journey.py",
       "p0_router": false,
       "repository_imports": [],
       "transition_allowed": [],

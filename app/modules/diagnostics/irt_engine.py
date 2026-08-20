@@ -73,7 +73,7 @@ def p_correct(theta: float, a: float, b: float) -> float:
         ::
 
             p = p_correct(theta=0.0, a=1.0, b=0.0)
-            assert abs(p - 0.5) < 1e-9  # theta == b → P = 0.5
+            if not (abs(p - 0.5) < 1e-9  # theta == b → P = 0.5): raise AssertionError("assertion failed")
     """
     # Hard bounds for parameters to prevent overflow/divergence
     a = max(0.1, min(4.0, a))
@@ -107,7 +107,7 @@ def fisher_information(theta: float, a: float, b: float) -> float:
         ::
 
             info = fisher_information(theta=0.0, a=1.5, b=0.0)
-            assert info > 0  # maximum info when theta == b
+            if not (info > 0  # maximum info when theta == b): raise AssertionError("assertion failed")
     """
     p = p_correct(theta, a, b)
     q = 1.0 - p
@@ -135,7 +135,7 @@ def update_theta_mle(theta: float, responses: list[tuple[IRTItem, bool]], max_it
         ::
 
             theta = update_theta_mle(0.0, [(item, True), (item2, False)])
-            assert -4.0 <= theta <= 4.0
+            if not (-4.0 <= theta <= 4.0): raise AssertionError("assertion failed")
     """
     current = theta
     for _ in range(max_iter):
@@ -204,7 +204,7 @@ class DiagnosticEngine:
             ::
 
                 theta = engine.compute_theta(0.0, items, {"q1", "q3"})
-                assert -4.0 <= theta <= 4.0
+                if not (-4.0 <= theta <= 4.0): raise AssertionError("assertion failed")
         """
         responses = [(item, item.id in correct_item_ids) for item in items]
         theta, _sem = self.estimate_theta_eap(responses, prior_mean=starting_theta)
@@ -248,7 +248,7 @@ class DiagnosticEngine:
                     [(item1, True), (item2, False)],
                     prior_mean=0.0,
                 )
-                assert -4.0 <= theta <= 4.0
+                if not (-4.0 <= theta <= 4.0): raise AssertionError("assertion failed")
         """
         grid: list[float] = []
         value = theta_min
@@ -298,7 +298,7 @@ class DiagnosticEngine:
             ::
 
                 gaps = engine.identify_gaps(items, {"q1"})
-                assert all("severity" in g for g in gaps)
+                if not (all("severity" in g for g in gaps)): raise AssertionError("assertion failed")
         """
         gaps: dict[str, dict] = {}
         for item in items:
@@ -366,9 +366,9 @@ class DiagnosticEngine:
         Example:
             ::
 
-                assert engine.should_stop(20, 0.5) is True
-                assert engine.should_stop(5, 0.2) is True
-                assert engine.should_stop(5, 0.5) is False
+                if not (engine.should_stop(20, 0.5) is True): raise AssertionError("assertion failed")
+                if not (engine.should_stop(5, 0.2) is True): raise AssertionError("assertion failed")
+                if not (engine.should_stop(5, 0.5) is False): raise AssertionError("assertion failed")
         """
         return administered_count >= 20 or standard_error < 0.3
 
@@ -394,8 +394,8 @@ class DiagnosticEngine:
         Example:
             ::
 
-                assert engine.map_grade_equivalent(2.0, 3) == 5
-                assert engine.map_grade_equivalent(-2.0, 3) == 1
+                if not (engine.map_grade_equivalent(2.0, 3) == 5): raise AssertionError("assertion failed")
+                if not (engine.map_grade_equivalent(-2.0, 3) == 1): raise AssertionError("assertion failed")
         """
         shift = 0
         if theta <= -1.8:
@@ -446,8 +446,8 @@ class DiagnosticEngine:
                     learner_grade=4, items=bank,
                     correct_item_ids={"q1", "q3"},
                 )
-                assert "theta" in result
-                assert "ranked_gaps" in result
+                if not ("theta" in result): raise AssertionError("assertion failed")
+                if not ("ranked_gaps" in result): raise AssertionError("assertion failed")
         """
         administered = items[:20]
         responses = [(item, item.id in correct_item_ids) for item in administered]

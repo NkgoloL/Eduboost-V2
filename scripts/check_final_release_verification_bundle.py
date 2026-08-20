@@ -2,7 +2,10 @@
 """Validate final release verification bundle."""
 from __future__ import annotations
 
-import subprocess
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from scripts._subprocess import run
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -62,7 +65,7 @@ def run_static_checks() -> list[FinalReleaseVerificationResult]:
 def run_command_bundle() -> list[FinalReleaseVerificationResult]:
     results: list[FinalReleaseVerificationResult] = []
     for name, command in COMMANDS:
-        result = subprocess.run(command, cwd=REPO_ROOT, check=False, capture_output=True, text=True)
+        result = run(command, cwd=REPO_ROOT, check=False, capture_output=True, text=True)
         results.append(
             FinalReleaseVerificationResult(
                 name,

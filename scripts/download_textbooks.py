@@ -4,7 +4,7 @@ import requests
 from pathlib import Path
 
 # Base directories
-BASE_DIR = Path("/home/nkgolol/Dev/SandBox/dev/Eduboost-V2/data/caps/pdf")
+BASE_DIR = Path(__file__).resolve().parents[1] / "data" / "caps" / "pdf"
 
 # Siyavula Textbook patterns
 SIYAVULA_URLS = [

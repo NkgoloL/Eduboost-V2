@@ -12,7 +12,7 @@ import argparse
 import hashlib
 import json
 import pathlib
-import subprocess
+from scripts._subprocess import run
 from datetime import datetime, timezone
 from typing import Any
 
@@ -47,7 +47,7 @@ def utc_now() -> str:
 
 def run_cmd(args: list[str]) -> tuple[int, str, str]:
     try:
-        proc = subprocess.run(args, check=False, text=True, capture_output=True)
+        proc = run(args, check=False, text=True, capture_output=True)
         return proc.returncode, proc.stdout, proc.stderr
     except FileNotFoundError as exc:
         return 127, "", str(exc)

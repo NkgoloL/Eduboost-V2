@@ -8,12 +8,13 @@ live learner traffic, learner data migration, or runtime KG implementation.
 """
 
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import hashlib
 import json
 import pathlib
-import subprocess
+from scripts._subprocess import run
 import sys
 from datetime import datetime, timezone
 from typing import Any
@@ -55,13 +56,13 @@ def utc_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
-def run(cmd: list[str]) -> dict[str, Any]:
-    proc = subprocess.run(cmd, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+def run_command(cmd: list[str]) -> dict[str, Any]:
+    proc = run(cmd, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     return {"cmd": cmd, "returncode": proc.returncode, "stdout": proc.stdout, "stderr": proc.stderr}
 
 
 def git_value(args: list[str]) -> str | None:
-    proc = run(["git", *args])
+    proc = run_command(["git", *args])
     if proc["returncode"] != 0:
         return None
     return str(proc["stdout"]).strip()
@@ -104,7 +105,7 @@ def collect_verifier(name: str, script: str) -> dict[str, Any]:
             "payload": {},
             "stderr": f"verifier missing: {script}",
         }
-    proc = run([sys.executable, script, "--json"])
+    proc = run_command([sys.executable, script, "--json"])
     try:
         parsed = json.loads(proc["stdout"] or "{}")
     except json.JSONDecodeError:

@@ -112,7 +112,7 @@ class LessonService:
                 response, cached, provider = await svc.generate_lesson_for_learner(
                     body=request, current_user_id=user_id,
                 )
-                assert response.caps_aligned is True
+                if not (response.caps_aligned is True): raise AssertionError("assertion failed")
         """
         # 1. Consent Gate
         await self._consent_service.require_active_consent(

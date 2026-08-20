@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Execution-7 targeted baseline reconciliation helpers."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import json
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 import time
 from dataclasses import asdict, dataclass
@@ -100,7 +101,7 @@ def run_pytest_probe(
     ]
     started = time.time()
     try:
-        completed = subprocess.run(
+        completed = run(
             command,
             cwd=root,
             env=sanitized_test_environment(),
