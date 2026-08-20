@@ -1,6 +1,6 @@
 # Backend Runtime Compatibility Report
 
-Generated at: `2026-08-01T21:00:58Z`
+Generated at: `2026-08-19T20:02:54Z`
 
 | Check | Return code | Command |
 |---|---:|---|
@@ -48,7 +48,7 @@ Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/pytho
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/audit_callsite_inventory.md (6029 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/audit_callsite_inventory.md (6031 row(s))
 ```
 
 ## consent compatibility
@@ -58,7 +58,7 @@ Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/pytho
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/consent_callsite_inventory.md (593 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/consent_callsite_inventory.md (600 row(s))
 ```
 
 ## health readiness

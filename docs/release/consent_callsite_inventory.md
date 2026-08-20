@@ -298,7 +298,7 @@ This inventory supports consent service/table consolidation. It is diagnostic on
 | `scripts/compare_orm_tables_to_database.py` | 94 | consent_records_table | `"consent_records",` |
 | `scripts/db_backup_restore_rollback_evidence.py` | 33 | parental_consents_table | `"parental_consents",` |
 | `scripts/db_live_only_table_ownership.py` | 18 | consent_records_table | `"consent_records",` |
-| `scripts/db_migration_seed_repeatability.py` | 40 | parental_consents_table | `"parental_consents",` |
+| `scripts/db_migration_seed_repeatability.py` | 42 | parental_consents_table | `"parental_consents",` |
 | `scripts/generate_backend_deletion_candidate_inventory.py` | 14 | parental_consents_table | `("legacy_consent", re.compile(r"parental_consents\|ParentalConsent\|legacy consent", re.IGNORECASE)),` |
 | `scripts/generate_backend_deletion_candidate_inventory.py` | 14 | parental_consent_model | `("legacy_consent", re.compile(r"parental_consents\|ParentalConsent\|legacy consent", re.IGNORECASE)),` |
 | `scripts/generate_backend_deletion_candidate_inventory.py` | 15 | consent_repository | `("duplicate_repository", re.compile(r"class\s+\w*Repository\|AuditRepository\|ConsentRepository")),` |
@@ -497,6 +497,13 @@ This inventory supports consent service/table consolidation. It is diagnostic on
 | `tests/unit/test_consent_state_machine.py` | 308 | consent_service | `svc = ConsentService(consent_repo=mock_repo)` |
 | `tests/unit/test_consent_state_machine.py` | 308 | consent_repository | `svc = ConsentService(consent_repo=mock_repo)` |
 | `tests/unit/test_consent_state_machine.py` | 309 | require_active_consent | `result = await svc.require_active_consent("learner-active")` |
+| `tests/unit/test_coverage_expansion_b01_remediation.py` | 20 | require_active_consent | `require_active_consent,` |
+| `tests/unit/test_coverage_expansion_b01_remediation.py` | 129 | consent_repository | `with patch("app.core.dependencies.ConsentRepository") as mock_repo_cls:` |
+| `tests/unit/test_coverage_expansion_b01_remediation.py` | 171 | require_active_consent | `await require_active_consent(learner_id=learner_id, db=mock_db, repo=mock_repo)` |
+| `tests/unit/test_coverage_expansion_b01_remediation.py` | 182 | require_active_consent | `await require_active_consent(learner_id=learner_id, db=mock_db, repo=mock_repo)` |
+| `tests/unit/test_coverage_expansion_core_modules.py` | 12 | require_active_consent | `from app.core.consent_gate import _get_learner_id_from_request, require_active_consent` |
+| `tests/unit/test_coverage_expansion_core_modules.py` | 68 | require_active_consent | `res = await require_active_consent(request, consent_service)` |
+| `tests/unit/test_coverage_expansion_core_modules.py` | 83 | require_active_consent | `await require_active_consent(request, consent_service)` |
 | `tests/unit/test_diagnostics_central_consent_source.py` | 17 | consent_service | `assert "ConsentService(db).require_active_consent" not in source` |
 | `tests/unit/test_diagnostics_central_consent_source.py` | 17 | require_active_consent | `assert "ConsentService(db).require_active_consent" not in source` |
 | `tests/unit/test_diagnostics_central_consent_source.py` | 18 | consent_service | `assert "from app.services.consent import ConsentService" not in source` |

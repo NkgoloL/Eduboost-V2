@@ -1,13 +1,13 @@
 # Backend Implementation 371-375 Report
 
-Generated at: `2026-08-01T20:58:33Z`
+Generated at: `2026-08-19T19:17:37Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| backend implementation 371-375 | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_implementation_371_375.py` |
-| audit registry | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_audit_canonicalization_registry.py` |
-| consent runtime | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_consent_runtime_compatibility_slice.py` |
-| deep readiness | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_deep_readiness_readonly_guard.py` |
+| backend implementation 371-375 | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_backend_implementation_371_375.py` |
+| audit registry | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_audit_canonicalization_registry.py` |
+| consent runtime | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_consent_runtime_compatibility_slice.py` |
+| deep readiness | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_deep_readiness_readonly_guard.py` |
 
 ## Boundary
 
@@ -15,7 +15,7 @@ This report proves non-destructive implementation progress only.
 
 ## backend implementation 371-375
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_implementation_371_375.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_backend_implementation_371_375.py`
 
 Return code: `0`
 
@@ -38,7 +38,7 @@ Backend implementation 371-375 check
 
 ## audit registry
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_audit_canonicalization_registry.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_audit_canonicalization_registry.py`
 
 Return code: `0`
 
@@ -53,7 +53,7 @@ Audit canonicalization migration registry check
 
 ## consent runtime
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_consent_runtime_compatibility_slice.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_consent_runtime_compatibility_slice.py`
 
 Return code: `0`
 
@@ -71,7 +71,7 @@ Consent runtime compatibility slice check
 
 ## deep readiness
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_deep_readiness_readonly_guard.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_deep_readiness_readonly_guard.py`
 
 Return code: `0`
 

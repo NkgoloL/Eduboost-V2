@@ -1,13 +1,13 @@
 # Backend Consolidation Progress Report
 
-Generated at: `2026-08-01T21:01:55Z`
+Generated at: `2026-08-19T19:18:08Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| consent runtime compatibility | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_consent_runtime_compatibility_slice.py` |
-| audit registry | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_audit_canonicalization_registry.py` |
-| implementation foundation | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_implementation_foundation.py` |
-| schema/deep/audit slice | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_audit_canonicalization_slice.py` |
+| consent runtime compatibility | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_consent_runtime_compatibility_slice.py` |
+| audit registry | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_audit_canonicalization_registry.py` |
+| implementation foundation | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_backend_consolidation_implementation_foundation.py` |
+| schema/deep/audit slice | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_audit_canonicalization_slice.py` |
 
 ## Boundary
 
@@ -15,7 +15,7 @@ This report tracks non-destructive implementation progress only.
 
 ## consent runtime compatibility
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_consent_runtime_compatibility_slice.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_consent_runtime_compatibility_slice.py`
 
 Return code: `0`
 
@@ -33,7 +33,7 @@ Consent runtime compatibility slice check
 
 ## audit registry
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_audit_canonicalization_registry.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_audit_canonicalization_registry.py`
 
 Return code: `0`
 
@@ -48,7 +48,7 @@ Audit canonicalization migration registry check
 
 ## implementation foundation
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_implementation_foundation.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_backend_consolidation_implementation_foundation.py`
 
 Return code: `0`
 
@@ -73,7 +73,7 @@ Backend consolidation implementation foundation check
 
 ## schema/deep/audit slice
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_audit_canonicalization_slice.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python3 scripts/check_audit_canonicalization_slice.py`
 
 Return code: `0`
 

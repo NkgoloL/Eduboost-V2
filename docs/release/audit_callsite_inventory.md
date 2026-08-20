@@ -1621,25 +1621,25 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/semantic_retrieval/evaluation.py` | 53 | audit_append_call | `reciprocal_ranks.append(reciprocal_rank)` |
 | `app/services/semantic_retrieval/evaluation.py` | 54 | audit_append_call | `case_results.append(` |
 | `app/services/study_plan_service_v2.py` | 106 | audit_append_call | `days.setdefault(slot["day"], []).append({` |
-| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 185 | audit_append_call | `parts.append(current)` |
-| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 188 | audit_append_call | `current.append(token)` |
-| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 190 | audit_append_call | `parts.append(current)` |
-| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 196 | audit_append_call | `stdout.append(result.get("stdout_tail", ""))` |
-| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 197 | audit_append_call | `stderr.append(result.get("stderr_tail", ""))` |
-| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 228 | audit_append_call | `results.append(payload)` |
-| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 184 | audit_append_call | `parts.append(current)` |
-| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 187 | audit_append_call | `current.append(token)` |
-| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 189 | audit_append_call | `parts.append(current)` |
-| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 196 | audit_append_call | `executed.append(result["command"])` |
-| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 197 | audit_append_call | `stdout.append(result.get("stdout_tail", ""))` |
-| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 198 | audit_append_call | `stderr.append(result.get("stderr_tail", ""))` |
-| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 229 | audit_append_call | `results.append(payload)` |
-| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 154 | audit_append_call | `parts.append(current)` |
-| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 157 | audit_append_call | `current.append(token)` |
-| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 159 | audit_append_call | `parts.append(current)` |
-| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 165 | audit_append_call | `combined_stdout.append(result.get("stdout_tail", ""))` |
-| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 166 | audit_append_call | `combined_stderr.append(result.get("stderr_tail", ""))` |
-| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 195 | audit_append_call | `results.append({**item, "result": result, "green": result["exit_code"] == 0})` |
+| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 187 | audit_append_call | `parts.append(current)` |
+| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 190 | audit_append_call | `current.append(token)` |
+| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 192 | audit_append_call | `parts.append(current)` |
+| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 198 | audit_append_call | `stdout.append(result.get("stdout_tail", ""))` |
+| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 199 | audit_append_call | `stderr.append(result.get("stderr_tail", ""))` |
+| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | 230 | audit_append_call | `results.append(payload)` |
+| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 186 | audit_append_call | `parts.append(current)` |
+| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 189 | audit_append_call | `current.append(token)` |
+| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 191 | audit_append_call | `parts.append(current)` |
+| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 198 | audit_append_call | `executed.append(result["command"])` |
+| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 199 | audit_append_call | `stdout.append(result.get("stdout_tail", ""))` |
+| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 200 | audit_append_call | `stderr.append(result.get("stderr_tail", ""))` |
+| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | 231 | audit_append_call | `results.append(payload)` |
+| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 156 | audit_append_call | `parts.append(current)` |
+| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 159 | audit_append_call | `current.append(token)` |
+| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 161 | audit_append_call | `parts.append(current)` |
+| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 167 | audit_append_call | `combined_stdout.append(result.get("stdout_tail", ""))` |
+| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 168 | audit_append_call | `combined_stderr.append(result.get("stderr_tail", ""))` |
+| `scripts/advisory_suites/generated_frontend_quality_gate.py` | 197 | audit_append_call | `results.append({**item, "result": result, "green": result["exit_code"] == 0})` |
 | `scripts/advisory_suites/run_advisory_quality_gates.py` | 36 | audit_append_call | `results.append({**item, "result": _run(item["command"])})` |
 | `scripts/approval_evidence.py` | 171 | audit_append_call | `blockers.append("decision must be approved/accepted/pass")` |
 | `scripts/approval_evidence.py` | 173 | audit_append_call | `blockers.append("approver is pending")` |
@@ -3314,22 +3314,22 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/db_live_only_table_ownership.py` | 169 | audit_append_call | `records.append(` |
 | `scripts/db_live_only_table_ownership.py` | 238 | audit_append_call | `lines.append(` |
 | `scripts/db_live_only_table_ownership.py` | 248 | audit_append_call | `lines.append("- None")` |
-| `scripts/db_migration_seed_repeatability.py` | 27 | audit_events_table | `"audit_events",` |
-| `scripts/db_migration_seed_repeatability.py` | 28 | audit_logs_table | `"audit_logs",` |
-| `scripts/db_migration_seed_repeatability.py` | 157 | audit_append_call | `unique.append(row)` |
-| `scripts/db_migration_seed_repeatability.py` | 173 | audit_append_call | `lines.append(` |
-| `scripts/db_migration_seed_repeatability.py` | 178 | audit_append_call | `lines.append("COMMIT;")` |
-| `scripts/db_migration_seed_repeatability.py` | 193 | audit_append_call | `blockers.append("alembic upgrade head --sql failed")` |
-| `scripts/db_migration_seed_repeatability.py` | 204 | audit_append_call | `blockers.append(f"expected Alembic head {EXPECTED_HEAD} missing from generated SQL")` |
-| `scripts/db_migration_seed_repeatability.py` | 208 | audit_append_call | `blockers.append("required runtime table DDL missing: " + ", ".join(missing_tables))` |
-| `scripts/db_migration_seed_repeatability.py` | 211 | audit_append_call | `blockers.append("generated Supabase SQL still contains non-SQL chatter")` |
-| `scripts/db_migration_seed_repeatability.py` | 214 | audit_append_call | `blockers.append("generated Supabase SQL still contains broken null IRT seed rows")` |
-| `scripts/db_migration_seed_repeatability.py` | 217 | audit_append_call | `blockers.append("generated Supabase SQL still references missing Supabase role eduboost_app")` |
-| `scripts/db_migration_seed_repeatability.py` | 220 | audit_append_call | `blockers.append(f"expected {EXPECTED_IRT_ROWS} unique IRT seed rows, generated {unique_rows}")` |
-| `scripts/db_migration_seed_repeatability.py` | 223 | audit_append_call | `blockers.append("IRT seed SQL is not idempotent")` |
-| `scripts/db_migration_seed_repeatability.py` | 281 | audit_append_call | `lines.append(f"\| `{table}` \| {present} \|")` |
-| `scripts/db_migration_seed_repeatability.py` | 303 | audit_append_call | `lines.append("- None")` |
-| `scripts/db_migration_seed_repeatability.py` | 338 | audit_append_call | `lines.append(line)` |
+| `scripts/db_migration_seed_repeatability.py` | 29 | audit_events_table | `"audit_events",` |
+| `scripts/db_migration_seed_repeatability.py` | 30 | audit_logs_table | `"audit_logs",` |
+| `scripts/db_migration_seed_repeatability.py` | 162 | audit_append_call | `unique.append(row)` |
+| `scripts/db_migration_seed_repeatability.py` | 178 | audit_append_call | `lines.append(` |
+| `scripts/db_migration_seed_repeatability.py` | 183 | audit_append_call | `lines.append("COMMIT;")` |
+| `scripts/db_migration_seed_repeatability.py` | 198 | audit_append_call | `blockers.append("alembic upgrade head --sql failed")` |
+| `scripts/db_migration_seed_repeatability.py` | 209 | audit_append_call | `blockers.append(f"expected Alembic head {EXPECTED_HEAD} missing from generated SQL")` |
+| `scripts/db_migration_seed_repeatability.py` | 213 | audit_append_call | `blockers.append("required runtime table DDL missing: " + ", ".join(missing_tables))` |
+| `scripts/db_migration_seed_repeatability.py` | 216 | audit_append_call | `blockers.append("generated Supabase SQL still contains non-SQL chatter")` |
+| `scripts/db_migration_seed_repeatability.py` | 219 | audit_append_call | `blockers.append("generated Supabase SQL still contains broken null IRT seed rows")` |
+| `scripts/db_migration_seed_repeatability.py` | 222 | audit_append_call | `blockers.append("generated Supabase SQL still references missing Supabase role eduboost_app")` |
+| `scripts/db_migration_seed_repeatability.py` | 225 | audit_append_call | `blockers.append(f"expected {EXPECTED_IRT_ROWS} unique IRT seed rows, generated {unique_rows}")` |
+| `scripts/db_migration_seed_repeatability.py` | 228 | audit_append_call | `blockers.append("IRT seed SQL is not idempotent")` |
+| `scripts/db_migration_seed_repeatability.py` | 286 | audit_append_call | `lines.append(f"\| `{table}` \| {present} \|")` |
+| `scripts/db_migration_seed_repeatability.py` | 308 | audit_append_call | `lines.append("- None")` |
+| `scripts/db_migration_seed_repeatability.py` | 343 | audit_append_call | `lines.append(line)` |
 | `scripts/deduplicate_makefile_targets.py` | 64 | audit_append_call | `occurrences[m.group(1)].append(i)` |
 | `scripts/deduplicate_makefile_targets.py` | 89 | audit_append_call | `block.append(i)` |
 | `scripts/deduplicate_makefile_targets.py` | 149 | audit_append_call | `new_lines.append(phony_line)` |
@@ -3653,8 +3653,8 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/inspect_learner_routes.py` | 178 | audit_append_call | `lines.append(f"\| — \| — \| `{len(references) - 200} additional references omitted` \|")` |
 | `scripts/inspect_lesson_object_authorization.py` | 23 | audit_append_call | `rows.append({"name": node.name, "args": args, "lineno": node.lineno})` |
 | `scripts/inspect_popia_consent_lifecycle.py` | 34 | audit_append_call | `imports.append(node.module or "")` |
-| `scripts/integrate_patch.py` | 60 | audit_append_call | `staged_conflicts.append(target)` |
-| `scripts/integrate_patch.py` | 65 | audit_append_call | `moved.append(dest_file)` |
+| `scripts/integrate_patch.py` | 54 | audit_append_call | `staged_conflicts.append(target)` |
+| `scripts/integrate_patch.py` | 59 | audit_append_call | `moved.append(dest_file)` |
 | `scripts/inventory_services.py` | 92 | audit_append_call | `found_duplicates.append((dup_path, canonical_rel))` |
 | `scripts/jwt_secret_rotation_evidence.py` | 160 | audit_append_call | `blockers.append(f"JWT self-test raised {type(exc).__name__}: {exc}")` |
 | `scripts/jwt_secret_rotation_evidence.py` | 161 | audit_append_call | `if not access_ok: blockers.append("access token issue/verify self-test failed")` |
@@ -4382,7 +4382,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_3_product_runtime_test_gate_repair_evidence.py` | 116 | audit_append_call | `sequence.append({"prd_id": PRD_ID, "title": "Product and runtime test gate repair", "status": "evidence_recorded", "authorised": True})` |
 | `scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_4_product_gate_execution_critical_flow_repair_evidence.py` | 123 | audit_append_call | `sequence.append({"prd_id": PRD_ID, "title": "Product gate execution and critical-flow repair", "status": "evidence_recorded", "authorised": True})` |
 | `scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_5_coverage_frontend_advisory_gate_repair_evidence.py` | 135 | audit_append_call | `sequence.append({"prd_id": PRD_ID, "title": "Coverage execution, frontend quality, and advisory gate repair", "status": "evidence_recorded", "authorised": True})` |
-| `scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_6_final_true_state_baseline_handoff_evidence.py` | 143 | audit_append_call | `sequence.append({"prd_id": PRD_ID, "title": "Final true-state baseline proof and controlled handoff", "status": "evidence_recorded", "authorised": True})` |
+| `scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_6_final_true_state_baseline_handoff_evidence.py` | 162 | audit_append_call | `sequence.append({"prd_id": PRD_ID, "title": "Final true-state baseline proof and controlled handoff", "status": "evidence_recorded", "authorised": True})` |
 | `scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_execution_1_runtime_command_frontend_generated_contracts_evidence.py` | 107 | audit_append_call | `sequence.append({"prd_id": PRD_ID, "title": "Runtime command execution, frontend hook repair, and generated contract gate activation", "status": "evidence_recorded", "authorised": True})` |
 | `scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_execution_2_generated_contract_frontend_quality_evidence.py` | 52 | audit_append_call | `flattened.append({` |
 | `scripts/roadmap_reconciliation/capture_prd1100r_runtime_restore_execution_2_generated_contract_frontend_quality_evidence.py` | 143 | audit_append_call | `sequence.append({"prd_id": PRD_ID, "title": "Generated contract regeneration and frontend quality execution", "status": "evidence_recorded", "authorised": True})` |
@@ -5562,11 +5562,12 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/true_state_remediation/core.py` | 251 | audit_append_call | `invalid.append(f"{control}: evidence artifact missing or not a file")` |
 | `scripts/true_state_remediation/core.py` | 253 | audit_append_call | `invalid.append(f"{control}: artifact digest mismatch")` |
 | `scripts/true_state_remediation/core.py` | 255 | audit_append_call | `invalid.append(f"{control}: decision is not approval/completion")` |
-| `scripts/true_state_remediation/core.py` | 301 | audit_append_call | `task["evidence"].append(item)` |
-| `scripts/true_state_remediation/core.py` | 318 | audit_append_call | `errors.append("tasks must be a non-empty list")` |
-| `scripts/true_state_remediation/core.py` | 322 | audit_append_call | `errors.append("duplicate task ids")` |
-| `scripts/true_state_remediation/core.py` | 328 | audit_append_call | `errors.append(f"{task.get('id')}: missing {sorted(missing)}")` |
-| `scripts/true_state_remediation/core.py` | 330 | audit_append_call | `errors.append(f"{task.get('id')}: invalid status {task.get('status')!r}")` |
+| `scripts/true_state_remediation/core.py` | 310 | audit_append_call | `result["invalid"].append(` |
+| `scripts/true_state_remediation/core.py` | 333 | audit_append_call | `task["evidence"].append(item)` |
+| `scripts/true_state_remediation/core.py` | 350 | audit_append_call | `errors.append("tasks must be a non-empty list")` |
+| `scripts/true_state_remediation/core.py` | 354 | audit_append_call | `errors.append("duplicate task ids")` |
+| `scripts/true_state_remediation/core.py` | 360 | audit_append_call | `errors.append(f"{task.get('id')}: missing {sorted(missing)}")` |
+| `scripts/true_state_remediation/core.py` | 362 | audit_append_call | `errors.append(f"{task.get('id')}: invalid status {task.get('status')!r}")` |
 | `scripts/tx_route_wiring_inventory.py` | 63 | audit_append_call | `chunks.append("\n".join(lines[start:end]))` |
 | `scripts/tx_route_wiring_inventory.py` | 109 | audit_append_call | `rows.append(` |
 | `scripts/tx_route_wiring_inventory.py` | 160 | audit_append_call | `lines.append(` |
@@ -5985,6 +5986,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `tests/unit/test_content_reviewer_assignment.py` | 33 | audit_append_call | `self.added.append(obj)` |
 | `tests/unit/test_content_staging_readiness.py` | 36 | audit_append_call | `self.added.append(obj)` |
 | `tests/unit/test_content_staging_seed_executor.py` | 46 | audit_append_call | `self.added.append(obj)` |
+| `tests/unit/test_coverage_expansion_dsr.py` | 3 | audit_repository | `Covers DSR data export, erasure, correction, and restriction handling with mocked Pool and AuditRepository.` |
 | `tests/unit/test_db_backup_restore_rollback_evidence.py` | 32 | audit_events_table | `source = {"key_table_counts": {"audit_events": 6, "irt_items": 1600}}` |
 | `tests/unit/test_db_backup_restore_rollback_evidence.py` | 33 | audit_events_table | `restore = {"key_table_counts": {"audit_events": 6, "irt_items": 1599}}` |
 | `tests/unit/test_db_backup_restore_rollback_evidence.py` | 36 | audit_events_table | `assert "audit_events" not in mismatches` |

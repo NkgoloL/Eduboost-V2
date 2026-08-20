@@ -1,8 +1,8 @@
 # Diagnostic Deep Health Runtime Evidence Status
 
-Generated at: `2026-06-12T17:38:05Z`
-Commit: `a70b57616bb29572fcb57961b91a3f68f0c66329`
-Branch: `phase-11/technical-debt-burn-down`
+Generated at: `2026-08-19T20:03:50Z`
+Commit: `d5ae429bdec24b4d0123ea3362323fa3e4f25e4b`
+Branch: `fix/tsr-b01-gate-remediation`
 
 **Status:** `diag-deep-health-runtime-not-accepted`
 **Deep health URL:** ``
@@ -15,7 +15,7 @@ Branch: `phase-11/technical-debt-burn-down`
 **Head SHA:** ``
 **Test command:** ``
 **Verified by:** `unverified`
-**Date verified:** `2026-06-12`
+**Date verified:** `2026-08-19`
 
 ## Required component results
 

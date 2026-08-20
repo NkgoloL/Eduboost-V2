@@ -1,6 +1,6 @@
 # Auth Router Boundary Introspection
 
-Generated at: `2026-06-27T02:18:40Z`
+Generated at: `2026-08-19T20:03:13Z`
 
 | Check | Value |
 |---|---|

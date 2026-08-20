@@ -6,7 +6,7 @@
 
 - Canonical runtime: `app.api_v2:app`
 - Application title: `EduBoost SA V2`
-- Application version: `1.0.0-rc1`
+- Application version: `0.1.0`
 - Total route entries: `83`
 
 ## Contract Checks

@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-08-03T14:14:03.938997+00:00`
+- generated_at_utc: `2026-08-19T19:18:11.524962+00:00`
 - branch: `fix/tsr-b01-gate-remediation`
-- commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
+- commit: `d5ae429bdec24b4d0123ea3362323fa3e4f25e4b`
 - release_candidate: `unset`
 
 ## Required Sign-Off Areas

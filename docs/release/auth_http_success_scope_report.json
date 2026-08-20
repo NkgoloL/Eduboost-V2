@@ -1,80 +1,8 @@
 {
-  "generated_at": "2026-06-27T02:19:22Z",
+  "generated_at": "2026-08-19T20:02:46Z",
   "status": "controlled_dependency_override_success_scope_proof",
-  "route_count": 9,
+  "route_count": 1,
   "routes": [
-    {
-      "path": "/api/v2/auth/register",
-      "methods": [
-        "POST"
-      ],
-      "name": "register",
-      "endpoint": "register",
-      "response_model": "TokenResponse"
-    },
-    {
-      "path": "/api/v2/auth/login",
-      "methods": [
-        "POST"
-      ],
-      "name": "login",
-      "endpoint": "login",
-      "response_model": "TokenResponse"
-    },
-    {
-      "path": "/api/v2/auth/dev-session",
-      "methods": [
-        "POST"
-      ],
-      "name": "create_dev_session",
-      "endpoint": "create_dev_session",
-      "response_model": null
-    },
-    {
-      "path": "/api/v2/auth/refresh",
-      "methods": [
-        "POST"
-      ],
-      "name": "refresh",
-      "endpoint": "refresh",
-      "response_model": "TokenResponse"
-    },
-    {
-      "path": "/v2/auth/register",
-      "methods": [
-        "POST"
-      ],
-      "name": "register",
-      "endpoint": "register",
-      "response_model": "TokenResponse"
-    },
-    {
-      "path": "/v2/auth/login",
-      "methods": [
-        "POST"
-      ],
-      "name": "login",
-      "endpoint": "login",
-      "response_model": "TokenResponse"
-    },
-    {
-      "path": "/v2/auth/dev-session",
-      "methods": [
-        "POST"
-      ],
-      "name": "create_dev_session",
-      "endpoint": "create_dev_session",
-      "response_model": null
-    },
-    {
-      "path": "/v2/auth/refresh",
-      "methods": [
-        "POST"
-      ],
-      "name": "refresh",
-      "endpoint": "refresh",
-      "response_model": "TokenResponse"
-    },
     {
       "path": "/__dev/slow_query",
       "methods": [

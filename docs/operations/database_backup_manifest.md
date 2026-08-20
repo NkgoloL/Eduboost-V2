@@ -1,9 +1,9 @@
 # Database Backup Manifest
 
-Manifest ID: `20473b902a47040a`
-Generated: `2026-08-03T14:18:09Z`
+Manifest ID: `31759b07eeef1dd5`
+Generated: `2026-08-19T20:02:45Z`
 Branch: `fix/tsr-b01-gate-remediation`
-Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
+Commit: `d5ae429bdec24b4d0123ea3362323fa3e4f25e4b`
 
 ## Backup Metadata
 

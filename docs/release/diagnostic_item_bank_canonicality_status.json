@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-27T02:19:19Z",
-  "current_commit": "88840fc52a05c694c6d313e57bc8cba4bcda4c63",
+  "generated_at": "2026-08-19T19:13:29Z",
+  "current_commit": "d5ae429bdec24b4d0123ea3362323fa3e4f25e4b",
   "status": "diagnostic-item-bank-policy-accepted",
   "policy_path": "docs/architecture/diagnostic_item_bank_canonicality.yml",
   "decision": "diagnostic_items-runtime-required",
@@ -325,6 +325,48 @@
       "runtime_surface": false
     },
     {
+      "path": "alembic/versions/20260711_1510_prd11_runtime_restore_execution_5_runtime_stack_db_lineage_ready_green.py",
+      "line_number": 67,
+      "line_excerpt": "op.add_column(\"diagnostic_items\", sa.Column(\"irt_discrimination\", sa.Float(), nullable=True))",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260711_1510_prd11_runtime_restore_execution_5_runtime_stack_db_lineage_ready_green.py",
+      "line_number": 68,
+      "line_excerpt": "op.add_column(\"diagnostic_items\", sa.Column(\"irt_difficulty\", sa.Float(), nullable=True))",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260711_1510_prd11_runtime_restore_execution_5_runtime_stack_db_lineage_ready_green.py",
+      "line_number": 69,
+      "line_excerpt": "op.add_column(\"diagnostic_items\", sa.Column(\"irt_guessing\", sa.Float(), nullable=True))",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260711_1510_prd11_runtime_restore_execution_5_runtime_stack_db_lineage_ready_green.py",
+      "line_number": 73,
+      "line_excerpt": "UPDATE diagnostic_items",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260711_1510_prd11_runtime_restore_execution_5_runtime_stack_db_lineage_ready_green.py",
+      "line_number": 124,
+      "line_excerpt": "op.drop_column(\"diagnostic_items\", \"irt_guessing\")",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260711_1510_prd11_runtime_restore_execution_5_runtime_stack_db_lineage_ready_green.py",
+      "line_number": 125,
+      "line_excerpt": "op.drop_column(\"diagnostic_items\", \"irt_difficulty\")",
+      "runtime_surface": false
+    },
+    {
+      "path": "alembic/versions/20260711_1510_prd11_runtime_restore_execution_5_runtime_stack_db_lineage_ready_green.py",
+      "line_number": 126,
+      "line_excerpt": "op.drop_column(\"diagnostic_items\", \"irt_discrimination\")",
+      "runtime_surface": false
+    },
+    {
       "path": "app/api_v2_routers/content_factory.py",
       "line_number": 1077,
       "line_excerpt": "diagnostic_items = await service.get_diagnostic_items(session, scope_id=scope_id, caps_ref=caps_ref)",
@@ -340,6 +382,18 @@
       "path": "app/api_v2_routers/content_factory.py",
       "line_number": 1100,
       "line_excerpt": "run_metadata={\"layers\": [\"diagnostic_items\", \"lessons\", \"assessment_blueprints\", \"study_plan_templates\"]},",
+      "runtime_surface": true
+    },
+    {
+      "path": "app/core/runtime_readiness.py",
+      "line_number": 23,
+      "line_excerpt": "\"diagnostic_items\",",
+      "runtime_surface": true
+    },
+    {
+      "path": "app/core/runtime_readiness.py",
+      "line_number": 37,
+      "line_excerpt": "\"diagnostic_items\": (",
       "runtime_surface": true
     },
     {
@@ -530,68 +584,38 @@
     },
     {
       "path": "docs/content_factory/controlled_generation.md",
-      "line_number": 28,
+      "line_number": 43,
       "line_excerpt": "The planner uses staging readiness reports and configured coverage targets to create generation tasks only for missing `diagnostic_items` and `lessons`. It skips assessment blueprints, study plan templates, fully green targets, missing sour",
       "runtime_surface": false
     },
     {
       "path": "docs/content_factory/full_generation_runner.md",
-      "line_number": 78,
+      "line_number": 93,
       "line_excerpt": "--layers diagnostic_items,lessons,assessment_blueprints,study_plan_templates \\",
       "runtime_surface": false
     },
     {
       "path": "docs/content_factory/full_generation_runner.md",
-      "line_number": 90,
+      "line_number": 105,
       "line_excerpt": "--layers diagnostic_items,lessons,assessment_blueprints,study_plan_templates \\",
       "runtime_surface": false
     },
     {
       "path": "docs/content_factory/full_generation_runner.md",
-      "line_number": 128,
+      "line_number": 143,
       "line_excerpt": "- diagnostic_items",
       "runtime_surface": false
     },
     {
       "path": "docs/content_factory/full_generation_runner.md",
-      "line_number": 140,
+      "line_number": 155,
       "line_excerpt": "--layers diagnostic_items,lessons,assessment_blueprints,study_plan_templates \\",
       "runtime_surface": false
     },
     {
       "path": "docs/content_factory/full_generation_runner.md",
-      "line_number": 150,
+      "line_number": 165,
       "line_excerpt": "--layers diagnostic_items,lessons,assessment_blueprints,study_plan_templates \\",
-      "runtime_surface": false
-    },
-    {
-      "path": "docs/generated/release-inventories/20260622T193052Z/audit_callsite_inventory.md",
-      "line_number": 2336,
-      "line_excerpt": "| `scripts/diagnostic_item_bank_canonicality.py` | 142 | audit_append_call | `blockers.append(\"no diagnostic_items references found; runtime-required policy is unsupported\")` |",
-      "runtime_surface": false
-    },
-    {
-      "path": "docs/generated/release-inventories/20260622T193052Z/audit_callsite_inventory.md",
-      "line_number": 2355,
-      "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 493 | audit_append_call | `blockers.append(\"diagnostic_items table is missing\")` |",
-      "runtime_surface": false
-    },
-    {
-      "path": "docs/generated/release-inventories/20260622T193052Z/audit_callsite_inventory.md",
-      "line_number": 2358,
-      "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 513 | audit_append_call | `blockers.append(\"DIAG_SCORE_ALLOW_BRIDGE_SEED must be 1 before mutating diagnostic_items\")` |",
-      "runtime_surface": false
-    },
-    {
-      "path": "docs/generated/release-inventories/20260622T193052Z/audit_callsite_inventory.md",
-      "line_number": 2359,
-      "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 515 | audit_append_call | `blockers.append(\"cannot bridge-seed without both diagnostic_items and irt_items\")` |",
-      "runtime_surface": false
-    },
-    {
-      "path": "docs/generated/release-inventories/20260622T193052Z/audit_callsite_inventory.md",
-      "line_number": 2361,
-      "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 531 | audit_append_call | `blockers.append(\"diagnostic_items has 0 rows; runtime-required item bank is not seeded\")` |",
       "runtime_surface": false
     },
     {
@@ -674,32 +698,32 @@
     },
     {
       "path": "docs/release/audit_callsite_inventory.md",
-      "line_number": 2762,
-      "line_excerpt": "| `scripts/diagnostic_item_bank_canonicality.py` | 142 | audit_append_call | `blockers.append(\"no diagnostic_items references found; runtime-required policy is unsupported\")` |",
+      "line_number": 3363,
+      "line_excerpt": "| `scripts/diagnostic_item_bank_canonicality.py` | 143 | audit_append_call | `blockers.append(\"no diagnostic_items references found; runtime-required policy is unsupported\")` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/audit_callsite_inventory.md",
-      "line_number": 2781,
-      "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 494 | audit_append_call | `blockers.append(\"diagnostic_items table is missing\")` |",
+      "line_number": 3382,
+      "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 495 | audit_append_call | `blockers.append(\"diagnostic_items table is missing\")` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/audit_callsite_inventory.md",
-      "line_number": 2784,
-      "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 514 | audit_append_call | `blockers.append(\"DIAG_SCORE_ALLOW_BRIDGE_SEED must be 1 before mutating diagnostic_items\")` |",
+      "line_number": 3385,
+      "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 515 | audit_append_call | `blockers.append(\"DIAG_SCORE_ALLOW_BRIDGE_SEED must be 1 before mutating diagnostic_items\")` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/audit_callsite_inventory.md",
-      "line_number": 2785,
-      "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 516 | audit_append_call | `blockers.append(\"cannot bridge-seed without both diagnostic_items and irt_items\")` |",
+      "line_number": 3386,
+      "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 517 | audit_append_call | `blockers.append(\"cannot bridge-seed without both diagnostic_items and irt_items\")` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/audit_callsite_inventory.md",
-      "line_number": 2787,
-      "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 532 | audit_append_call | `blockers.append(\"diagnostic_items has 0 rows; runtime-required item bank is not seeded\")` |",
+      "line_number": 3388,
+      "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 533 | audit_append_call | `blockers.append(\"diagnostic_items has 0 rows; runtime-required item bank is not seeded\")` |",
       "runtime_surface": false
     },
     {
@@ -710,13 +734,13 @@
     },
     {
       "path": "docs/release/backend_deletion_candidate_inventory.md",
-      "line_number": 334312,
-      "line_excerpt": "| `docs/release/backend_deletion_candidate_inventory.md` | 333871 | legacy_consent | `\\| `docs/release/no_false_closure_status_after_3311_3350.md` \\| 20 \\| legacy_consent \\| `- Key table counts match for `alembic_version`, `audit_events`, `",
+      "line_number": 417791,
+      "line_excerpt": "| `docs/release/backend_deletion_candidate_inventory.md` | 416634 | legacy_consent | `\\| `docs/release/no_false_closure_status_after_3311_3350.md` \\| 20 \\| legacy_consent \\| `- Key table counts match for `alembic_version`, `audit_events`, `",
       "runtime_surface": false
     },
     {
       "path": "docs/release/backend_deletion_candidate_inventory.md",
-      "line_number": 335439,
+      "line_number": 418961,
       "line_excerpt": "| `docs/release/no_false_closure_status_after_3311_3350.md` | 20 | legacy_consent | `- Key table counts match for `alembic_version`, `audit_events`, `diagnostic_items`, `irt_items`, and `parental_consents`.` | TODO | no |",
       "runtime_surface": false
     },
@@ -783,132 +807,144 @@
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 33,
-      "line_excerpt": "| `app/domain/content_coverage.py` | 11 | `DIAGNOSTIC_ITEMS = \"diagnostic_items\"` |",
+      "line_excerpt": "| `app/core/runtime_readiness.py` | 23 | `\"diagnostic_items\",` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 34,
-      "line_excerpt": "| `app/domain/curriculum_expansion_schemas.py` | 17 | `layers: list[str] = Field(default_factory=lambda: [\"diagnostic_items\", \"lessons\"], min_length=1, max_length=8)` |",
+      "line_excerpt": "| `app/core/runtime_readiness.py` | 37 | `\"diagnostic_items\": (` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 35,
-      "line_excerpt": "| `app/models/content_factory.py` | 59 | `DIAGNOSTIC_ITEMS = \"diagnostic_items\"` |",
+      "line_excerpt": "| `app/domain/content_coverage.py` | 11 | `DIAGNOSTIC_ITEMS = \"diagnostic_items\"` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 36,
-      "line_excerpt": "| `app/models/diagnostic_item.py` | 111 | `ORM representation of the diagnostic_items table.` |",
+      "line_excerpt": "| `app/domain/curriculum_expansion_schemas.py` | 17 | `layers: list[str] = Field(default_factory=lambda: [\"diagnostic_items\", \"lessons\"], min_length=1, max_length=8)` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 37,
-      "line_excerpt": "| `app/models/diagnostic_item.py` | 117 | `__tablename__ = \"diagnostic_items\"` |",
+      "line_excerpt": "| `app/models/content_factory.py` | 59 | `DIAGNOSTIC_ITEMS = \"diagnostic_items\"` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 38,
-      "line_excerpt": "| `app/models/irt_quality.py` | 48 | `ForeignKey(\"diagnostic_items.item_id\", ondelete=\"RESTRICT\"), nullable=False` |",
+      "line_excerpt": "| `app/models/diagnostic_item.py` | 111 | `ORM representation of the diagnostic_items table.` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 39,
-      "line_excerpt": "| `app/models/item_exposure.py` | 58 | `ForeignKey(\"diagnostic_items.item_id\", ondelete=\"RESTRICT\"),` |",
+      "line_excerpt": "| `app/models/diagnostic_item.py` | 117 | `__tablename__ = \"diagnostic_items\"` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 40,
-      "line_excerpt": "| `app/services/content_answer_key_verification.py` | 112 | `if layer != \"diagnostic_items\" and artifact_type != \"diagnostic_item\":` |",
+      "line_excerpt": "| `app/models/irt_quality.py` | 48 | `ForeignKey(\"diagnostic_items.item_id\", ondelete=\"RESTRICT\"), nullable=False` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 41,
-      "line_excerpt": "| `app/services/content_file_artifact_import.py` | 29 | `\"diagnostic_items\": (ContentLayer.DIAGNOSTIC_ITEMS, ContentArtifactType.DIAGNOSTIC_ITEM, \"items\"),` |",
+      "line_excerpt": "| `app/models/item_exposure.py` | 58 | `ForeignKey(\"diagnostic_items.item_id\", ondelete=\"RESTRICT\"),` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 42,
-      "line_excerpt": "| `app/services/content_file_promotion_readiness.py` | 22 | `\"diagnostic_items\": \"diagnostic_items\",` |",
+      "line_excerpt": "| `app/services/content_answer_key_verification.py` | 112 | `if layer != \"diagnostic_items\" and artifact_type != \"diagnostic_item\":` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 43,
-      "line_excerpt": "| `app/services/content_file_promotion_readiness.py` | 252 | `if layer == \"diagnostic_items\":` |",
+      "line_excerpt": "| `app/services/content_file_artifact_import.py` | 29 | `\"diagnostic_items\": (ContentLayer.DIAGNOSTIC_ITEMS, ContentArtifactType.DIAGNOSTIC_ITEM, \"items\"),` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 44,
-      "line_excerpt": "| `app/services/content_generation/providers/llm.py` | 169 | `values = payload.get(\"diagnostic_items\")` |",
+      "line_excerpt": "| `app/services/content_file_promotion_readiness.py` | 22 | `\"diagnostic_items\": \"diagnostic_items\",` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 45,
-      "line_excerpt": "| `app/services/content_generation/scope_blueprint_generator.py` | 80 | `\"source_item_bank\": \"diagnostic_items\",` |",
+      "line_excerpt": "| `app/services/content_file_promotion_readiness.py` | 252 | `if layer == \"diagnostic_items\":` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 46,
-      "line_excerpt": "| `app/services/content_review_governance.py` | 355 | `if _value(artifact.artifact_type) == \"diagnostic_item\" or _value(artifact.content_layer) == \"diagnostic_items\":` |",
+      "line_excerpt": "| `app/services/content_generation/providers/llm.py` | 169 | `values = payload.get(\"diagnostic_items\")` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 47,
-      "line_excerpt": "| `app/services/content_review_governance.py` | 545 | `or _value(artifact.content_layer) == \"diagnostic_items\"` |",
+      "line_excerpt": "| `app/services/content_generation/scope_blueprint_generator.py` | 80 | `\"source_item_bank\": \"diagnostic_items\",` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 48,
-      "line_excerpt": "| `app/services/curriculum/coverage.py` | 24 | `def detect_gaps(self, *, lessons: Iterable[Mapping[str, Any]], diagnostic_items: Iterable[Mapping[str, Any]]) -> list[CurriculumGap]:` |",
+      "line_excerpt": "| `app/services/content_review_governance.py` | 355 | `if _value(artifact.artifact_type) == \"diagnostic_item\" or _value(artifact.content_layer) == \"diagnostic_items\":` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 49,
-      "line_excerpt": "| `app/services/curriculum/coverage.py` | 27 | `item_refs = {row.get(\"caps_reference\") for row in diagnostic_items if row.get(\"caps_reference\")}` |",
+      "line_excerpt": "| `app/services/content_review_governance.py` | 545 | `or _value(artifact.content_layer) == \"diagnostic_items\"` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 50,
-      "line_excerpt": "| `app/services/curriculum_expansion.py` | 177 | `if _enum_value(artifact.content_layer) == \"diagnostic_items\" and not artifact.answer_key_verified:` |",
+      "line_excerpt": "| `app/services/curriculum/coverage.py` | 24 | `def detect_gaps(self, *, lessons: Iterable[Mapping[str, Any]], diagnostic_items: Iterable[Mapping[str, Any]]) -> list[CurriculumGap]:` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 51,
-      "line_excerpt": "| `app/services/launch_content_seed.py` | 48 | `item_bank_path = _artifact_path(scope, \"diagnostic_items\", \"data/generated/items/grade4_maths_launch_item_bank.json\")` |",
+      "line_excerpt": "| `app/services/curriculum/coverage.py` | 27 | `item_refs = {row.get(\"caps_reference\") for row in diagnostic_items if row.get(\"caps_reference\")}` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 52,
+      "line_excerpt": "| `app/services/curriculum_expansion.py` | 177 | `if _enum_value(artifact.content_layer) == \"diagnostic_items\" and not artifact.answer_key_verified:` |",
+      "runtime_surface": false
+    },
+    {
+      "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
+      "line_number": 53,
+      "line_excerpt": "| `app/services/launch_content_seed.py` | 48 | `item_bank_path = _artifact_path(scope, \"diagnostic_items\", \"data/generated/items/grade4_maths_launch_item_bank.json\")` |",
+      "runtime_surface": false
+    },
+    {
+      "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
+      "line_number": 54,
       "line_excerpt": "| `app/services/launch_content_seed.py` | 66 | `item_target = _target_for(scope, \"diagnostic_items.approved\", DEFAULT_ITEM_TARGET, registry=registry)` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
-      "line_number": 61,
+      "line_number": 63,
       "line_excerpt": "- Empty `diagnostic_items` remains beta-blocking under DIAG-SCORE-001.",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
-      "line_number": 62,
+      "line_number": 64,
       "line_excerpt": "- This policy does not seed `diagnostic_items`.",
       "runtime_surface": false
     },
@@ -1040,7 +1076,7 @@
     },
     {
       "path": "scripts/check_diagnostic_item_bank_canonicality.py",
-      "line_number": 45,
+      "line_number": 46,
       "line_excerpt": "print(f\"- INFO runtime diagnostic_items refs: {len(status.runtime_diagnostic_items_references)}\")",
       "runtime_surface": false
     },
@@ -1124,139 +1160,139 @@
     },
     {
       "path": "scripts/db_backup_restore_rollback_evidence.py",
-      "line_number": 30,
+      "line_number": 31,
       "line_excerpt": "\"diagnostic_items\",",
       "runtime_surface": false
     },
     {
       "path": "scripts/db_migration_seed_repeatability.py",
-      "line_number": 29,
+      "line_number": 32,
       "line_excerpt": "\"diagnostic_items\",",
       "runtime_surface": false
     },
     {
       "path": "scripts/db_migration_seed_repeatability.py",
-      "line_number": 310,
+      "line_number": 317,
       "line_excerpt": "\"- It does not decide whether `diagnostic_items` should be populated.\",",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_item_bank_canonicality.py",
-      "line_number": 16,
+      "line_number": 17,
       "line_excerpt": "CANONICAL_TABLE = \"diagnostic_items\"",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_item_bank_canonicality.py",
-      "line_number": 21,
+      "line_number": 22,
       "line_excerpt": "\"decision: diagnostic_items-runtime-required\",",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_item_bank_canonicality.py",
-      "line_number": 22,
+      "line_number": 23,
       "line_excerpt": "\"canonical_item_bank: diagnostic_items\",",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_item_bank_canonicality.py",
-      "line_number": 142,
+      "line_number": 143,
       "line_excerpt": "blockers.append(\"no diagnostic_items references found; runtime-required policy is unsupported\")",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_item_bank_canonicality.py",
-      "line_number": 146,
+      "line_number": 147,
       "line_excerpt": "\"no runtime diagnostic_items references found; policy should be reconsidered before marking runtime-required\"",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_item_bank_canonicality.py",
-      "line_number": 160,
+      "line_number": 161,
       "line_excerpt": "decision=\"diagnostic_items-runtime-required\",",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_item_bank_canonicality.py",
-      "line_number": 201,
+      "line_number": 202,
       "line_excerpt": "\"## Runtime diagnostic_items references\",",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_item_bank_canonicality.py",
-      "line_number": 228,
+      "line_number": 229,
       "line_excerpt": "\"- Empty `diagnostic_items` remains beta-blocking under DIAG-SCORE-001.\",",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_item_bank_canonicality.py",
-      "line_number": 229,
+      "line_number": 230,
       "line_excerpt": "\"- This policy does not seed `diagnostic_items`.\",",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_score_live_audit.py",
-      "line_number": 26,
+      "line_number": 27,
       "line_excerpt": "DIAG_TABLE = \"diagnostic_items\"",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_score_live_audit.py",
-      "line_number": 246,
+      "line_number": 247,
       "line_excerpt": "# diagnostic_items.item_id is generated by the target schema; do not reuse the IRT source id.",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_score_live_audit.py",
-      "line_number": 368,
+      "line_number": 369,
       "line_excerpt": "return 0, insert_columns, [\"no insertable diagnostic_items columns found\"]",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_score_live_audit.py",
-      "line_number": 494,
+      "line_number": 495,
       "line_excerpt": "blockers.append(\"diagnostic_items table is missing\")",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_score_live_audit.py",
-      "line_number": 514,
+      "line_number": 515,
       "line_excerpt": "blockers.append(\"DIAG_SCORE_ALLOW_BRIDGE_SEED must be 1 before mutating diagnostic_items\")",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_score_live_audit.py",
-      "line_number": 516,
+      "line_number": 517,
       "line_excerpt": "blockers.append(\"cannot bridge-seed without both diagnostic_items and irt_items\")",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_score_live_audit.py",
-      "line_number": 525,
+      "line_number": 526,
       "line_excerpt": "\"unsupported required diagnostic_items columns for bridge seed: \"",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_score_live_audit.py",
-      "line_number": 532,
+      "line_number": 533,
       "line_excerpt": "blockers.append(\"diagnostic_items has 0 rows; runtime-required item bank is not seeded\")",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_score_live_audit.py",
-      "line_number": 604,
+      "line_number": 605,
       "line_excerpt": "f\"**diagnostic_items count:** `{status.diagnostic_items_count}`\",",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_score_live_audit.py",
-      "line_number": 629,
+      "line_number": 630,
       "line_excerpt": "lines.extend([\"\", \"## diagnostic_items columns\", \"\", \"| Column | Nullable | Default | Type | UDT |\", \"|---|---:|---:|---|---|\"])",
       "runtime_surface": false
     },
     {
       "path": "scripts/diagnostic_score_live_audit.py",
-      "line_number": 648,
+      "line_number": 649,
       "line_excerpt": "\"- diagnostic_items must have rows after seed/audit.\",",
       "runtime_surface": false
     },
@@ -1501,6 +1537,36 @@
       "runtime_surface": false
     },
     {
+      "path": "tests/unit/runtime/test_runtime_readiness_contract.py",
+      "line_number": 42,
+      "line_excerpt": "present_tables={\"diagnostic_items\"},",
+      "runtime_surface": false
+    },
+    {
+      "path": "tests/unit/runtime/test_runtime_readiness_contract.py",
+      "line_number": 43,
+      "line_excerpt": "present_columns={\"diagnostic_items\": {\"id\"}},",
+      "runtime_surface": false
+    },
+    {
+      "path": "tests/unit/runtime/test_runtime_readiness_contract.py",
+      "line_number": 44,
+      "line_excerpt": "required_tables=(\"diagnostic_items\", \"runtime_kg_nodes\"),",
+      "runtime_surface": false
+    },
+    {
+      "path": "tests/unit/runtime/test_runtime_readiness_contract.py",
+      "line_number": 45,
+      "line_excerpt": "required_columns={\"diagnostic_items\": (\"irt_difficulty\",)},",
+      "runtime_surface": false
+    },
+    {
+      "path": "tests/unit/runtime/test_runtime_readiness_contract.py",
+      "line_number": 49,
+      "line_excerpt": "assert result[\"missing_columns\"] == {\"diagnostic_items\": [\"irt_difficulty\"]}",
+      "runtime_surface": false
+    },
+    {
       "path": "tests/unit/test_content_file_promotion_readiness.py",
       "line_number": 23,
       "line_excerpt": "assert result.manifest[\"layers\"][\"diagnostic_items\"][\"record_count\"] >= 40",
@@ -1645,6 +1711,18 @@
       "runtime_surface": false
     },
     {
+      "path": "tests/unit/test_coverage_expansion_launch_seed.py",
+      "line_number": 135,
+      "line_excerpt": "scope.artifact_paths = {\"diagnostic_items\": \"data/items\"}",
+      "runtime_surface": false
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_launch_seed.py",
+      "line_number": 136,
+      "line_excerpt": "path = _artifact_path(scope, \"diagnostic_items\", \"fallback/items.json\")",
+      "runtime_surface": false
+    },
+    {
       "path": "tests/unit/test_curriculum_coverage.py",
       "line_number": 12,
       "line_excerpt": "diagnostic_items=[],",
@@ -1734,6 +1812,18 @@
       "path": "app/api_v2_routers/content_factory.py",
       "line_number": 1100,
       "line_excerpt": "run_metadata={\"layers\": [\"diagnostic_items\", \"lessons\", \"assessment_blueprints\", \"study_plan_templates\"]},",
+      "runtime_surface": true
+    },
+    {
+      "path": "app/core/runtime_readiness.py",
+      "line_number": 23,
+      "line_excerpt": "\"diagnostic_items\",",
+      "runtime_surface": true
+    },
+    {
+      "path": "app/core/runtime_readiness.py",
+      "line_number": 37,
+      "line_excerpt": "\"diagnostic_items\": (",
       "runtime_surface": true
     },
     {

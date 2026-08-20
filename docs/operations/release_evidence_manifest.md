@@ -1,8 +1,8 @@
 # Release Evidence Manifest
 
-Generated: `2026-08-03T14:11:36Z`
+Generated: `2026-08-19T20:02:31Z`
 Branch: `fix/tsr-b01-gate-remediation`
-Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
+Commit: `d5ae429bdec24b4d0123ea3362323fa3e4f25e4b`
 
 ## Required Evidence Commands
 

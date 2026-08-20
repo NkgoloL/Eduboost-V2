@@ -1,9 +1,9 @@
 # Staging Smoke Workflow Status
 
-Generated at: `2026-06-12T17:41:08Z`
-Commit: `a70b57616bb29572fcb57961b91a3f68f0c66329`
+Generated at: `2026-08-19T19:16:40Z`
+Commit: `d5ae429bdec24b4d0123ea3362323fa3e4f25e4b`
 
-**Status:** `staging-smoke-workflow-not-configured`
+**Status:** `staging-smoke-workflow-configured`
 
 | Check | Passed |
 |---|---:|
@@ -12,11 +12,11 @@ Commit: `a70b57616bb29572fcb57961b91a3f68f0c66329`
 | workflow_dispatch | True |
 | STAGING_SMOKE_BASE_URL secret reference | True |
 | Probe step | True |
-| Artifact upload | False |
+| Artifact upload | True |
 
 ## Blockers
 
-- artifact upload missing
+- None
 
 ## No false-closure rules
 
