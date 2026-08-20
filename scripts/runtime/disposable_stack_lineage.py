@@ -141,6 +141,8 @@ def live_database_lineage_schema_probe(database_url: str | None, root: Path = RO
             "expected_repository_head": graph.single_head,
             "policy": NON_NEGOTIABLE_POLICY_FLAGS,
         }
+    if database_url.startswith("postgresql+asyncpg://"):
+        database_url = database_url.replace("postgresql+asyncpg://", "postgresql://", 1)
     try:
         from sqlalchemy import create_engine, text
     except Exception as exc:  # pragma: no cover - environment dependent

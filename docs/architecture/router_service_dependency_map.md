@@ -1,6 +1,6 @@
 # Router Service Dependency Map
 
-Generated at: `2026-08-03T14:01:56Z`
+Generated at: `2026-08-19T20:02:13Z`
 
 | Router | Dependencies | Services/modules | Repositories | Database imports |
 |---|---|---|---|---|
@@ -41,7 +41,5 @@ Generated at: `2026-08-03T14:01:56Z`
 | `app/api_v2_routers/security_assurance.py` | - | `app.modules.security_assurance` | - | - |
 | `app/api_v2_routers/study_plans.py` | `app.api_v2_deps.auth` | `app.modules.jobs`, `app.services.runtime_kg.route_integration` | - | `app.core.database`, `sqlalchemy.ext.asyncio` |
 | `app/api_v2_routers/system.py` | - | `app.services.system_service_v2` | - | - |
-| `app/api_v2_routers/test_api.py` | - | - | - | - |
-| `app/api_v2_routers/test_services.py` | - | `app.services.archetype_service`, `app.services.diagnostic`, `app.services.judiciary` | - | - |
 | `app/api_v2_routers/tutor.py` | `app.api_v2_deps.auth` | `app.services.learner_tutor`, `app.services.lesson_authorization` | - | `app.core.database`, `sqlalchemy.ext.asyncio` |
 | `app/api_v2_routers/vertical_journey.py` | `app.api_v2_deps.auth` | `app.modules.consent.service`, `app.modules.vertical_journey.hardening`, `app.modules.vertical_journey.service`, `app.services.learner_service`, `app.services.runtime_kg.route_integration` | - | `app.core.database`, `sqlalchemy.ext.asyncio` |

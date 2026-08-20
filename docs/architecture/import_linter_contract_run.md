@@ -1,6 +1,6 @@
 # Import-Linter Contract Run
 
-Generated at: `2026-08-03T14:01:56Z`
+Generated at: `2026-08-19T20:02:13Z`
 
 **Status:** pass
 
@@ -20,7 +20,7 @@ Generated at: `2026-08-03T14:01:56Z`
 Contracts
 ---------
 
-Analyzed 532 files, 2718 dependencies.
+Analyzed 528 files, 2708 dependencies.
 --------------------------------------
 
 FastAPI v2 routers should not import repositories directly KEPT

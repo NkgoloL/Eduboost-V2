@@ -1,6 +1,6 @@
 # Router Repository Boundary Matrix
 
-Generated at: `2026-08-03T14:11:17Z`
+Generated at: `2026-08-19T20:02:10Z`
 
 | Router | P0 | Repository imports | Transition allowed | Violations |
 |---|---:|---|---|---|
@@ -41,7 +41,5 @@ Generated at: `2026-08-03T14:11:17Z`
 | `app/api_v2_routers/security_assurance.py` | False | - | - | - |
 | `app/api_v2_routers/study_plans.py` | False | - | - | - |
 | `app/api_v2_routers/system.py` | False | - | - | - |
-| `app/api_v2_routers/test_api.py` | False | - | - | - |
-| `app/api_v2_routers/test_services.py` | False | - | - | - |
 | `app/api_v2_routers/tutor.py` | False | - | - | - |
 | `app/api_v2_routers/vertical_journey.py` | False | - | - | - |

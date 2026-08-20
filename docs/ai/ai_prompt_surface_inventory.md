@@ -29,7 +29,6 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/api_v2_routers/learner_content.py` | `diagnostic` |
 | `app/api_v2_routers/lessons.py` | `llm, generate_lesson` |
 | `app/api_v2_routers/performance_scale_cost.py` | `llm` |
-| `app/api_v2_routers/test_services.py` | `prompt, diagnostic` |
 | `app/api_v2_routers/vertical_journey.py` | `diagnostic` |
 | `app/core/analytics.py` | `diagnostic` |
 | `app/core/authorization.py` | `generate_lesson, diagnostic` |
@@ -226,6 +225,9 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/services/study_plan_updater.py` | `diagnostic, remediation` |
 | `app/services/system_service_v2.py` | `diagnostic` |
 | `app/services/tutor_safety.py` | `prompt` |
+| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | `remediation` |
+| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | `remediation` |
+| `scripts/advisory_suites/generated_frontend_quality_gate.py` | `remediation` |
 | `scripts/assign_irt_params.py` | `diagnostic` |
 | `scripts/audit_baseline_refresh.py` | `llm` |
 | `scripts/audit_remediation/backend_fast_failure_report.py` | `prompt, llm, diagnostic, remediation` |
@@ -455,6 +457,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/route_tx_impl_plan.py` | `diagnostic` |
 | `scripts/route_tx_popia_slice.py` | `llm` |
 | `scripts/route_tx_slice_rollup.py` | `diagnostic` |
+| `scripts/runtime/final_true_state_baseline.py` | `remediation` |
 | `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | `diagnostic` |
 | `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | `diagnostic` |
 | `scripts/seed_irt_items.py` | `diagnostic` |

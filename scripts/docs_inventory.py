@@ -223,13 +223,13 @@ def iter_docs(source_roots: list[Path] | None = None) -> list[Path]:
             if resolved.is_dir():
                 for pattern in ["**/*.md", "**/*.json", "**/*.yml", "**/*.yaml"]:
                     paths.extend(resolved.glob(pattern))
-        return sorted({path for path in paths if path.is_file()})
+        return sorted({path for path in paths if path.is_file() and not path.name.startswith(".") and not path.name.endswith(".tmp")})
     if not DOCS.exists():
         return []
     paths: list[Path] = []
     for pattern in ["**/*.md", "**/*.json", "**/*.yml", "**/*.yaml"]:
         paths.extend(DOCS.glob(pattern))
-    return sorted({path for path in paths if path.is_file()})
+    return sorted({path for path in paths if path.is_file() and not path.name.startswith(".") and not path.name.endswith(".tmp")})
 
 
 def build_inventory(source_roots: list[Path] | None = None) -> DocumentInventory:

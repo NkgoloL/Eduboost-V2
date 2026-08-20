@@ -284,6 +284,7 @@ async def test_groq_path_success(monkeypatch):
     from app.core import config
     monkeypatch.setattr(config.settings, "LLM_PROVIDER", "groq", raising=False)
     monkeypatch.setattr(config.settings, "GROQ_API_KEY", "k", raising=False)
+    monkeypatch.setattr(config.settings, "GROQ_MODEL", "llama3-70b-8192", raising=False)
 
     mock_completion = MagicMock()
     mock_completion.usage.prompt_tokens = 10
