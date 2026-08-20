@@ -8,7 +8,7 @@ from typing import Any
 
 from scripts.testing.targeted_baseline_reconciliation import assert_release_boundaries_closed
 
-CURRENT_EXECUTION_STATE = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7"
+CURRENT_EXECUTION_STATE = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8"
 
 _ARCHIVAL_PROGRESS_ERROR_FRAGMENTS = (
     "last_recorded_item must be",

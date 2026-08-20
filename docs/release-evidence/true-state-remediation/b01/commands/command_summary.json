@@ -1,10 +1,10 @@
 {
   "all_required_green": false,
-  "captured_at": "2026-08-04T23:33:59.544800+00:00",
+  "captured_at": "2026-08-20T19:04:24.712048+00:00",
   "commands": [
     {
       "command": [
-        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
         "-m",
         "compileall",
         "-q",
@@ -15,17 +15,17 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-04T23:10:15.311979+00:00",
+      "finished_at": "2026-08-20T18:41:28.996846+00:00",
       "name": "compileall",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-04T23:10:13.934577+00:00",
+      "started_at": "2026-08-20T18:41:26.864542+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "command": [
-        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
         "-m",
         "pytest",
         "-c",
@@ -35,17 +35,17 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-04T23:10:17.348937+00:00",
+      "finished_at": "2026-08-20T18:41:32.611284+00:00",
       "name": "mcp_stub_isolation",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-04T23:10:15.315104+00:00",
+      "started_at": "2026-08-20T18:41:28.997911+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "3f0757e9439b62915b44675c18703deb8095dfc44e346d7a86d724b0131ff452"
+      "stdout_sha256": "83d6b6eccb049277a9385735449b549af424dc7073334c1f62ecbfd5e62c34e3"
     },
     {
       "command": [
-        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
         "-m",
         "pytest",
         "--collect-only",
@@ -53,34 +53,34 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-04T23:10:28.555768+00:00",
+      "finished_at": "2026-08-20T18:41:46.918120+00:00",
       "name": "test_collection",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-04T23:10:17.351648+00:00",
+      "started_at": "2026-08-20T18:41:32.612797+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "a07bb26ad9c87b52ae9682e76e951464d98edadacf311c341b70e748175ea2d9"
+      "stdout_sha256": "1d0f6d7a4212966b16b50fa75e4826528ebc36ca4a50a69745dd0c1e0db1f3a0"
     },
     {
       "command": [
-        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
-        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/scripts/advisory_suites/run_coverage_static_security_green.py",
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/scripts/advisory_suites/run_coverage_static_security_green.py",
         "--execute",
         "--require-green"
       ],
       "cwd": ".",
       "exit_code": 1,
-      "finished_at": "2026-08-04T23:31:17.383444+00:00",
+      "finished_at": "2026-08-20T19:03:38.939676+00:00",
       "name": "execution7_gate_suite",
       "passed": false,
       "required": true,
-      "started_at": "2026-08-04T23:10:28.566020+00:00",
+      "started_at": "2026-08-20T18:41:46.919820+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "c1a55454bcddb8f4652dce6bfd51168ebe5f3edf5b618ed83c8e3f7da2c72045"
+      "stdout_sha256": "f3507759bef3cb804a26c2a8413654092eba00fbaa0006e548713b5ee85482cb"
     },
     {
       "command": [
-        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
         "-m",
         "ruff",
         "check",
@@ -89,34 +89,34 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-04T23:31:17.419208+00:00",
+      "finished_at": "2026-08-20T19:03:38.980130+00:00",
       "name": "ruff",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-04T23:31:17.390136+00:00",
+      "started_at": "2026-08-20T19:03:38.943098+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
     },
     {
       "command": [
-        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
         "-m",
         "mypy",
         "app"
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-04T23:31:18.840463+00:00",
+      "finished_at": "2026-08-20T19:03:40.229047+00:00",
       "name": "mypy",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-04T23:31:17.420850+00:00",
+      "started_at": "2026-08-20T19:03:38.981936+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "5a58f370f1a2c7edf4f9cf7518a45048c79b619a989ed021d1125d4ec8da7ecb"
+      "stdout_sha256": "c03a022ee0faf6e3859009834422efdd70ba84810630679740b4bdd750ca506d"
     },
     {
       "command": [
-        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
         "-m",
         "bandit",
         "-r",
@@ -128,17 +128,17 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-04T23:31:34.873744+00:00",
+      "finished_at": "2026-08-20T19:03:56.110188+00:00",
       "name": "bandit",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-04T23:31:18.842917+00:00",
-      "stderr_sha256": "fc2186a073d495cb60530eeb08d9bcec9dd682e6328cfe0a34a826955f7eaae8",
+      "started_at": "2026-08-20T19:03:40.229903+00:00",
+      "stderr_sha256": "1f74afa6a1f741f9a57f451f72135fab88a0a35c85218e72047f7214b7cb3780",
       "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "command": [
-        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
         "-m",
         "pip_audit",
         "-r",
@@ -160,17 +160,17 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-04T23:31:48.082350+00:00",
+      "finished_at": "2026-08-20T19:04:08.478819+00:00",
       "name": "pip_audit_base",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-04T23:31:34.880102+00:00",
+      "started_at": "2026-08-20T19:03:56.122389+00:00",
       "stderr_sha256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955",
       "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "command": [
-        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
         "-m",
         "pip_audit",
         "-r",
@@ -178,11 +178,11 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-04T23:32:18.343328+00:00",
+      "finished_at": "2026-08-20T19:04:22.799834+00:00",
       "name": "pip_audit_dev",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-04T23:31:48.084920+00:00",
+      "started_at": "2026-08-20T19:04:08.479734+00:00",
       "stderr_sha256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955",
       "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
@@ -194,12 +194,12 @@
       ],
       "cwd": "app/frontend",
       "exit_code": 0,
-      "finished_at": "2026-08-04T23:32:19.516383+00:00",
+      "finished_at": "2026-08-20T19:04:23.770434+00:00",
       "name": "frontend_audit",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-04T23:32:18.345854+00:00",
-      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "started_at": "2026-08-20T19:04:22.810534+00:00",
+      "stderr_sha256": "11941d74f8bd9dfa1e2e40be5b61aad34fbc16ece4fb454c43b1c9aa1bab5a41",
       "stdout_sha256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955"
     },
     {
@@ -209,61 +209,61 @@
         "quality:release"
       ],
       "cwd": "app/frontend",
-      "exit_code": 0,
-      "finished_at": "2026-08-04T23:33:59.308718+00:00",
+      "exit_code": 1,
+      "finished_at": "2026-08-20T19:04:24.562802+00:00",
       "name": "frontend_quality",
-      "passed": true,
+      "passed": false,
       "required": true,
-      "started_at": "2026-08-04T23:32:19.518650+00:00",
-      "stderr_sha256": "06397fb3a7fae27928f4dfb582b178df3596eaa1d00b852c5b27bf2168a1e298",
-      "stdout_sha256": "6a508512e850daaba1b40aac928eaa800793e659e4fdd161ad42f649278a9b2c"
+      "started_at": "2026-08-20T19:04:23.771169+00:00",
+      "stderr_sha256": "33af716eb914a6da553969f1903c61938cd8d2741492b02d8e4a08c3faf3943a",
+      "stdout_sha256": "99ca0d9201336e6c27e1c288d397a651a26ed8d4ac37424b40de01efeb660fe4"
     },
     {
       "command": [
-        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
         "scripts/test_suites/verify_product_gate_execution.py"
       ],
       "cwd": ".",
-      "exit_code": 0,
-      "finished_at": "2026-08-04T23:33:59.396325+00:00",
+      "exit_code": 1,
+      "finished_at": "2026-08-20T19:04:24.610048+00:00",
       "name": "product_gate",
-      "passed": true,
+      "passed": false,
       "required": true,
-      "started_at": "2026-08-04T23:33:59.311080+00:00",
+      "started_at": "2026-08-20T19:04:24.563372+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "2f9558dcdc4cf575f42178a074916ae9103bc5fbf0571c048d3786c276832d68"
+      "stdout_sha256": "6932db7cbb1bdf736d4d77dd79775f0ed189ffc78253b3d5b1b281f31826f8ce"
     },
     {
       "command": [
-        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
         "scripts/test_suites/verify_product_runtime_test_gates.py"
       ],
       "cwd": ".",
-      "exit_code": 0,
-      "finished_at": "2026-08-04T23:33:59.462806+00:00",
+      "exit_code": 1,
+      "finished_at": "2026-08-20T19:04:24.658741+00:00",
       "name": "product_runtime_gate",
-      "passed": true,
+      "passed": false,
       "required": true,
-      "started_at": "2026-08-04T23:33:59.397245+00:00",
+      "started_at": "2026-08-20T19:04:24.611534+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "1959d6b856742a742679a29f196b9033fd3558ac7c818a27a990192907069452"
+      "stdout_sha256": "640ae8914ecde0f1a9914d1998087cb3ed322125643d820b5e9890bbd3578db5"
     },
     {
       "command": [
-        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
         "scripts/roadmap_reconciliation/verify_prd1100r_runtime_restore_execution_7_coverage_static_security_green.py",
         "--require-green",
         "--json"
       ],
       "cwd": ".",
       "exit_code": 1,
-      "finished_at": "2026-08-04T23:33:59.543616+00:00",
+      "finished_at": "2026-08-20T19:04:24.710832+00:00",
       "name": "execution7_verifier",
       "passed": false,
       "required": true,
-      "started_at": "2026-08-04T23:33:59.464420+00:00",
+      "started_at": "2026-08-20T19:04:24.659428+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "318968a2acd3c3e970d6cf942e20d13458363ca3acd7bb42d16f433b6b3b008b"
+      "stdout_sha256": "f0475b3d416c5fcb6a2182d5fc8de87e791be93d87cfcfa3b7a1e999b8aebeef"
     }
   ]
 }

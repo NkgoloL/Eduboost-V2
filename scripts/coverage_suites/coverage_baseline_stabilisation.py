@@ -877,9 +877,15 @@ def evaluate_coverage_baseline_stabilisation_contract(
             "--resume" in advisory_text,
         ]
     )
-    governance_valid = all(
-        record.get("next_authorised_item") == PRD_ID for record in registers
-    ) and registers[-1].get("evidence_recorded") is False
+    _open_state = (
+        all(record.get("next_authorised_item") == PRD_ID for record in registers)
+        and registers[-1].get("evidence_recorded") is False
+    )
+    _closed_state = (
+        all(record.get("next_authorised_item") in {PRD_ID, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8"} for record in registers)
+        and registers[-1].get("evidence_recorded") is True
+    )
+    governance_valid = _open_state or _closed_state
     green_valid = (not require_green) or summary.get("all_green") is True
     return {
         "valid": contract_valid and wiring_valid and governance_valid and green_valid,
