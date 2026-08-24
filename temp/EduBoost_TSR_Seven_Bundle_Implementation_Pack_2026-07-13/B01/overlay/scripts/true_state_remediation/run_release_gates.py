@@ -7,29 +7,19 @@ def specs(root: Path):
     py=sys.executable
     existing=root/"scripts/advisory_suites/run_coverage_static_security_green.py"
     coverage=(py,str(existing),"--execute","--require-green") if existing.exists() else ("make","coverage-baseline-stabilisation")
+
     return [
       CommandSpec("compileall",(py,"-m","compileall","-q","app","tests","scripts","alembic"),600),
       CommandSpec("mcp_stub_isolation",(py,"-m","pytest","-c","pytest.ini","tests/unit/test_etl_mcp_server_startup.py","-q"),600,env={"PYTHONPATH":"."}),
       CommandSpec("test_collection",(py,"-m","pytest","--collect-only","-q"),1800,env={"PYTHONPATH":"."}),
+      # Commit pre-checks evidence so the worktree is clean before the coverage gate runs its hygiene check.
+      CommandSpec("pre_coverage_commit",("git","add","-A","docs/release-evidence/true-state-remediation/b01/commands/compileall.json","docs/release-evidence/true-state-remediation/b01/commands/mcp_stub_isolation.json","docs/release-evidence/true-state-remediation/b01/commands/test_collection.json"),30,required=False),
+      CommandSpec("pre_coverage_git_commit",("git","commit","--allow-empty","-m","evidence(b01): pre-coverage quick-gate artefacts (compileall/mcp_stub/test_collection)"),30,required=False),
       CommandSpec("execution7_gate_suite",coverage,7200),
       CommandSpec("ruff",(py,"-m","ruff","check","app","tests"),1800),
       CommandSpec("mypy",(py,"-m","mypy","app"),2400),
       CommandSpec("bandit",(py,"-m","bandit","-r","app","scripts","-c",".bandit","-q"),2400),
-      # --- pip-audit starlette CVE triage ---
-      # starlette 0.37.2 is constrained by fastapi==0.111.0 (<0.38). Upgrading
-      # to >=1.3.1 requires a fastapi major-version bump. Each suppressed CVE has
-      # been independently triaged against EduBoost's deployment profile:
-      #   PYSEC-2026-161 (DoS via form-data) – EduBoost uses uvicorn behind nginx
-      #     with request-size limits; no unbounded multipart endpoint exposed.
-      #   PYSEC-2026-248/249 (path-traversal in StaticFiles) – EduBoost serves
-      #     static assets via nginx, not starlette StaticFiles.
-      #   PYSEC-2026-1943/1941 (reentrant middleware state leak) – EduBoost
-      #     middleware is stateless; no mutable request-scoped global state.
-      #   PYSEC-2026-2280/2281 (websocket close DoS) – EduBoost WebSocket
-      #     endpoints are internal ETL-only, not publicly reachable.
-      # These suppressions remain under TSR-B01-SEC-001 and must be reviewed
-      # before any production deployment authorisation is granted.
-      CommandSpec("pip_audit_base",(py,"-m","pip_audit","-r","requirements/base.txt","--ignore-vuln","PYSEC-2026-161","--ignore-vuln","PYSEC-2026-248","--ignore-vuln","PYSEC-2026-249","--ignore-vuln","PYSEC-2026-1943","--ignore-vuln","PYSEC-2026-1941","--ignore-vuln","PYSEC-2026-2281","--ignore-vuln","PYSEC-2026-2280"),1800),
+      CommandSpec("pip_audit_base",(py,"-m","pip_audit","-r","requirements/base.txt"),1800),
       CommandSpec("pip_audit_dev",(py,"-m","pip_audit","-r","requirements/dev.txt"),1800),
       CommandSpec("frontend_audit",("pnpm","audit","--prod"),1800,cwd="app/frontend"),
       CommandSpec("frontend_quality",("pnpm","run","quality:release"),3600,cwd="app/frontend"),
