@@ -1,0 +1,52 @@
+{
+  "checks": {
+    "boundaries": {
+      "failures": [],
+      "inspected": [
+        "docs/roadmap/production_readiness/production_readiness_register.json",
+        "docs/roadmap/production_readiness/prd11_production_release_register.json",
+        "docs/roadmap/production_readiness/true_state_remediation_register.json"
+      ],
+      "valid": true
+    },
+    "current_state_docs": {
+      "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/current_state.md",
+      "valid": true
+    },
+    "manual": {
+      "invalid": [],
+      "missing": [],
+      "valid": true
+    },
+    "openapi_canonical": {
+      "json_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/openapi.json",
+      "valid": true,
+      "yaml_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/openapi.yaml"
+    },
+    "register": {
+      "errors": [],
+      "release_boundaries": {
+        "failures": [],
+        "inspected": [
+          "docs/roadmap/production_readiness/production_readiness_register.json",
+          "docs/roadmap/production_readiness/prd11_production_release_register.json",
+          "docs/roadmap/production_readiness/true_state_remediation_register.json"
+        ],
+        "valid": true
+      },
+      "task_count": 174,
+      "valid": true
+    },
+    "route_inventory": {
+      "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/route_inventory.md",
+      "valid": true
+    },
+    "sboms": {
+      "backend_sbom": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release-evidence/true-state-remediation/b02/sbom/sbom-backend.cdx.json",
+      "frontend_sbom": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release-evidence/true-state-remediation/b02/sbom/sbom-frontend.cdx.json",
+      "valid": true
+    }
+  },
+  "valid": true,
+  "verified_at": "2026-08-25T23:40:20.142501+00:00"
+}

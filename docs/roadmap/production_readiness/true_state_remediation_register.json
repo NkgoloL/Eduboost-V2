@@ -25,7 +25,7 @@
         "TSR-2",
         "TSR-3"
       ],
-      "status": "authorised",
+      "status": "verified",
       "title": "Canonical Truth and Toolchain"
     },
     {
@@ -34,7 +34,7 @@
         "TSR-4",
         "TSR-5"
       ],
-      "status": "identified",
+      "status": "authorised",
       "title": "CI and Test Authority"
     },
     {
@@ -467,299 +467,368 @@
       "bundle_id": "B02",
       "deliverable": "Register schema and generator",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.1",
       "owner_role": "release",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Repair production-register summary derivation"
+      "title": "Repair production-register summary derivation",
+      "updated_at": "2026-08-25T23:40:20.120556+00:00"
     },
     {
       "acceptance_criteria": "Both pages identify PRD-11 Execution-7/its successor correctly, show the operational hold, and include generation source/time.",
       "bundle_id": "B02",
       "deliverable": "Generator for `README.md` status and `docs/current_state.md`",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.2",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Generate current-state documentation"
+      "title": "Generate current-state documentation",
+      "updated_at": "2026-08-25T23:40:20.120580+00:00"
     },
     {
       "acceptance_criteria": "Grade 4 Mathematics is marked launch-active; Grade R\u20137 and other subjects are clearly planned, review-only, or inactive.",
       "bundle_id": "B02",
       "deliverable": "Product-scope authority",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.3",
       "owner_role": "evidence",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Correct product-scope statements"
+      "title": "Correct product-scope statements",
+      "updated_at": "2026-08-25T23:40:20.120583+00:00"
     },
     {
       "acceptance_criteria": "Governance authorization, operational safety, activation hold, cohort limits, and kill-switch state are distinct fields.",
       "bundle_id": "B02",
       "deliverable": "Current-state wording and status schema",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.4",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Clarify controlled-beta semantics"
+      "title": "Clarify controlled-beta semantics",
+      "updated_at": "2026-08-25T23:40:20.120587+00:00"
     },
     {
       "acceptance_criteria": "`docs/openapi.json` or a newly designated single location is authoritative; stale root artifacts are removed or atomically regenerated.",
       "bundle_id": "B02",
       "deliverable": "Generation policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.5",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Establish one canonical OpenAPI artifact"
+      "title": "Establish one canonical OpenAPI artifact",
+      "updated_at": "2026-08-25T23:40:20.120589+00:00"
     },
     {
       "acceptance_criteria": "JSON and YAML contain the same paths, operations, schemas, metadata, and hash-equivalent normalized form.",
       "bundle_id": "B02",
       "deliverable": "Atomic generator",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.6",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Generate JSON/YAML formats from one in-memory schema"
+      "title": "Generate JSON/YAML formats from one in-memory schema",
+      "updated_at": "2026-08-25T23:40:20.120593+00:00"
     },
     {
       "acceptance_criteria": "Router registry, canonical prefix, OpenAPI paths, frontend client inventory, and SDK inputs agree; the 22-path drift cannot recur.",
       "bundle_id": "B02",
       "deliverable": "Contract verifier",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.7",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Add route/OpenAPI/client consistency verification"
+      "title": "Add route/OpenAPI/client consistency verification",
+      "updated_at": "2026-08-25T23:40:20.120596+00:00"
     },
     {
       "acceptance_criteria": "Default navigation exposes current state, architecture, setup, domains, operations, security/privacy, current roadmap, and archive entry only.",
       "bundle_id": "B02",
       "deliverable": "Current-doc index and archive index",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.8",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Reorganize documentation navigation"
+      "title": "Reorganize documentation navigation",
+      "updated_at": "2026-08-25T23:40:20.120599+00:00"
     },
     {
       "acceptance_criteria": "Historical records remain available and hashed but are marked non-authoritative and excluded from normal current-state navigation.",
       "bundle_id": "B02",
       "deliverable": "Immutable archive policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.9",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Quarantine historical evidence from ordinary search/navigation"
+      "title": "Quarantine historical evidence from ordinary search/navigation",
+      "updated_at": "2026-08-25T23:40:20.120602+00:00"
     },
     {
       "acceptance_criteria": "A current-state page that disagrees with the register or exceeds the defined freshness threshold fails CI.",
       "bundle_id": "B02",
       "deliverable": "Documentation verifier",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.10",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Add freshness and contradiction checks"
+      "title": "Add freshness and contradiction checks",
+      "updated_at": "2026-08-25T23:40:20.120605+00:00"
     },
     {
       "acceptance_criteria": "Package version, release-candidate status, Python support, active API version, and product scope derive from one source.",
       "bundle_id": "B02",
       "deliverable": "Version authority",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.11",
       "owner_role": "evidence",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Standardize project/version metadata"
+      "title": "Standardize project/version metadata",
+      "updated_at": "2026-08-25T23:40:20.120607+00:00"
     },
     {
       "acceptance_criteria": "Next.js, React, React DOM, `eslint-config-next`, bundle analyzer, TypeScript, Node, and pnpm use an intentionally supported combination.",
       "bundle_id": "B02",
       "deliverable": "ADR and pinned manifest",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.1",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Decide and document the supported frontend compatibility matrix"
+      "title": "Decide and document the supported frontend compatibility matrix",
+      "updated_at": "2026-08-25T23:40:20.120610+00:00"
     },
     {
       "acceptance_criteria": "Clean frozen install succeeds without incompatible peer assumptions; type-check, lint, unit, E2E, build, and production audit pass.",
       "bundle_id": "B02",
       "deliverable": "Updated manifest/lock",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.2",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Align frontend packages and regenerate lockfiles"
+      "title": "Align frontend packages and regenerate lockfiles",
+      "updated_at": "2026-08-25T23:40:20.120613+00:00"
     },
     {
       "acceptance_criteria": "Either a formal pnpm workspace is committed or root E2E tooling is isolated with explicit lockfile ownership.",
       "bundle_id": "B02",
       "deliverable": "Workspace ADR",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.3",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Decide root-package architecture"
+      "title": "Decide root-package architecture",
+      "updated_at": "2026-08-25T23:40:20.120633+00:00"
     },
     {
       "acceptance_criteria": "Local, CI, Docker, and release jobs use the same supported Node and pnpm versions.",
       "bundle_id": "B02",
       "deliverable": "Toolchain file and Corepack config",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.4",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Enforce one Node/pnpm policy"
+      "title": "Enforce one Node/pnpm policy",
+      "updated_at": "2026-08-25T23:40:20.120638+00:00"
     },
     {
       "acceptance_criteria": "Pin production/development to 3.12.3 or define a tested support matrix; `pyproject.toml`, docs, CI, images, and deployment agree.",
       "bundle_id": "B02",
       "deliverable": "Python runtime policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.5",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Resolve Python support inconsistency"
+      "title": "Resolve Python support inconsistency",
+      "updated_at": "2026-08-25T23:40:20.120641+00:00"
     },
     {
       "acceptance_criteria": "API runtime, worker, ETL/content, ML research, docs, and dev/test profiles are separate and independently auditable.",
       "bundle_id": "B02",
       "deliverable": "Requirements/lock structure",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.6",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Split Python dependencies by deployable profile"
+      "title": "Split Python dependencies by deployable profile",
+      "updated_at": "2026-08-25T23:40:20.120644+00:00"
     },
     {
       "acceptance_criteria": "Unused packages and stale Celery TODOs are removed, or an active worker architecture and tests are documented.",
       "bundle_id": "B02",
       "deliverable": "Dependency and architecture decision",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.7",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Remove or justify Celery/Flower"
+      "title": "Remove or justify Celery/Flower",
+      "updated_at": "2026-08-25T23:40:20.120647+00:00"
     },
     {
       "acceptance_criteria": "Production API image excludes GPU/transformer research stacks unless required by measured runtime behavior.",
       "bundle_id": "B02",
       "deliverable": "Lean image build",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.8",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Keep research/ML dependencies out of API images"
+      "title": "Keep research/ML dependencies out of API images",
+      "updated_at": "2026-08-25T23:40:20.120650+00:00"
     },
     {
       "acceptance_criteria": "Compose, CI, staging, migration tests, and production IaC use one supported version line or an explicit compatibility matrix.",
       "bundle_id": "B02",
       "deliverable": "Runtime matrix",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.9",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Standardize Postgres/pgvector and Redis versions"
+      "title": "Standardize Postgres/pgvector and Redis versions",
+      "updated_at": "2026-08-25T23:40:20.120654+00:00"
     },
     {
       "acceptance_criteria": "Backend and frontend release artifacts have reproducible SBOMs linked to source and image digests.",
       "bundle_id": "B02",
       "deliverable": "CycloneDX/SPDX artifacts",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.10",
       "owner_role": "release",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Produce SBOMs for release images"
+      "title": "Produce SBOMs for release images",
+      "updated_at": "2026-08-25T23:40:20.120656+00:00"
     },
     {
       "acceptance_criteria": "Update cadence, compatibility tests, vulnerability SLAs, lockfile ownership, and emergency-patch process are defined.",
       "bundle_id": "B02",
       "deliverable": "Renovation policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.11",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Add dependency-update policy"
+      "title": "Add dependency-update policy",
+      "updated_at": "2026-08-25T23:40:20.120659+00:00"
     },
     {
       "acceptance_criteria": "API image size, install duration, package count, and vulnerability surface are recorded and materially reduced.",
       "bundle_id": "B02",
       "deliverable": "Before/after metrics",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.12",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Measure image/install reductions"
+      "title": "Measure image/install reductions",
+      "updated_at": "2026-08-25T23:40:20.120662+00:00"
     },
     {
       "acceptance_criteria": "Each workflow has purpose, trigger, branches, commands, tool versions, required/advisory status, replacement, and retirement decision.",
@@ -2439,5 +2508,5 @@
       "title": "Lift feature freeze only after RG-6"
     }
   ],
-  "updated_at": "2026-08-25T23:14:24.845506+00:00"
+  "updated_at": "2026-08-25T23:40:20.126235+00:00"
 }

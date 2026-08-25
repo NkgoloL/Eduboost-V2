@@ -185,6 +185,64 @@
         "title": "AnswerKeyVerificationResponse",
         "type": "object"
       },
+      "ApiMeta": {
+        "description": "Metadata included with every V2 API response.",
+        "properties": {
+          "api_version": {
+            "default": "v2",
+            "title": "Api Version",
+            "type": "string"
+          },
+          "pagination": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PaginationMeta"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
+          }
+        },
+        "title": "ApiMeta",
+        "type": "object"
+      },
+      "ApiSuccessEnvelope_dict_str__object__": {
+        "properties": {
+          "data": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Data"
+          },
+          "error": {
+            "title": "Error",
+            "type": "null"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/ApiMeta"
+          }
+        },
+        "title": "ApiSuccessEnvelope[dict[str, object]]",
+        "type": "object"
+      },
       "ArtifactGovernanceStatusResponse": {
         "additionalProperties": false,
         "properties": {
@@ -3832,6 +3890,72 @@
           "answers"
         ],
         "title": "OnboardingSubmit",
+        "type": "object"
+      },
+      "PaginationMeta": {
+        "description": "Pagination metadata for list endpoints.",
+        "properties": {
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          },
+          "has_more": {
+            "default": false,
+            "title": "Has More",
+            "type": "boolean"
+          },
+          "limit": {
+            "minimum": 0.0,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Cursor"
+          },
+          "offset": {
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Offset"
+          },
+          "total": {
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total"
+          }
+        },
+        "required": [
+          "limit"
+        ],
+        "title": "PaginationMeta",
         "type": "object"
       },
       "ParentDashboardLearner": {
@@ -7491,6 +7615,13 @@
       },
       "ValidationError": {
         "properties": {
+          "ctx": {
+            "title": "Context",
+            "type": "object"
+          },
+          "input": {
+            "title": "Input"
+          },
           "loc": {
             "items": {
               "anyOf": [
@@ -8252,9 +8383,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Quarantine Artifact",
@@ -8311,9 +8439,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -8410,9 +8535,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -9079,9 +9201,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Rollback Promotion Event",
@@ -9128,9 +9247,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -9346,9 +9462,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Assign Reviewer",
@@ -9393,9 +9506,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -9655,9 +9765,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Bulk Approve Review",
@@ -9704,9 +9811,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Bulk Quarantine Review",
@@ -9751,9 +9855,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -9905,9 +10006,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Create Generation Run",
@@ -10004,9 +10102,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Cancel Generation Run",
@@ -10071,9 +10166,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -10172,9 +10264,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Plan Missing Generation Tasks",
@@ -10225,9 +10314,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -10566,9 +10652,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Dry Run Promotion",
@@ -10614,9 +10697,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -10815,9 +10895,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Promote Production",
@@ -10873,9 +10950,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -11077,9 +11151,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -11364,9 +11435,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Rollback Seed Run",
@@ -11413,9 +11481,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -11625,9 +11690,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Run All Scope Staging Verification",
@@ -11800,9 +11862,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -12596,9 +12655,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
-                  "title": "Response Etl Admin Status Api V2 Admin Etl Status Get",
-                  "type": "object"
+                  "$ref": "#/components/schemas/ApiSuccessEnvelope_dict_str__object__"
                 }
               }
             },
@@ -14062,6 +14119,50 @@
         ]
       }
     },
+    "/api/v2/commercial-launch/readiness": {
+      "get": {
+        "description": "Return deterministic PRD-9 billing/commercial readiness.\n\nThis endpoint exposes test-mode billing provider, pricing/packaging,\ncheckout/webhook dry-run, subscription entitlement, invoicing/refund/tax,\nsponsorship/school procurement, support reconciliation, and terms/privacy\nlaunch-comms readiness. It does not authorise billing launch, live payment\nprocessing, live learner traffic, PRD-10 implementation, deployment, release\ntags, public beta, or production release.",
+        "operationId": "get_commercial_launch_readiness_api_v2_commercial_launch_readiness_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Commercial Launch Readiness Api V2 Commercial Launch Readiness Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Commercial Launch Readiness",
+        "tags": [
+          "commercial-launch"
+        ]
+      }
+    },
+    "/api/v2/commercial-launch/runtime-audit-remediation": {
+      "get": {
+        "description": "Return PRD-9.5-9.9 commercial runtime audit remediation readiness.",
+        "operationId": "get_commercial_runtime_audit_remediation_api_v2_commercial_launch_runtime_audit_remediation_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Commercial Runtime Audit Remediation",
+        "tags": [
+          "commercial-launch"
+        ]
+      }
+    },
     "/api/v2/consent/grant": {
       "post": {
         "operationId": "grant_consent_api_v2_consent_grant_post",
@@ -14819,6 +14920,54 @@
         "summary": "Reassign Review",
         "tags": [
           "content-review-governance"
+        ]
+      }
+    },
+    "/api/v2/controlled-beta/final-authorisation": {
+      "get": {
+        "description": "Return PRD-10.5-10.9 final controlled-beta authorisation decision.\n\nThis route records the limited controlled-beta live learner traffic\ndecision and keeps public beta, production release, deployment,\nbilling launch, and live payment processing locked out.",
+        "operationId": "get_controlled_beta_final_authorisation_api_v2_controlled_beta_final_authorisation_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Controlled Beta Final Authorisation Api V2 Controlled Beta Final Authorisation Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Controlled Beta Final Authorisation",
+        "tags": [
+          "controlled-beta"
+        ]
+      }
+    },
+    "/api/v2/controlled-beta/preflight": {
+      "get": {
+        "description": "Return PRD-10.0-10.4 controlled beta/live traffic preflight readiness.\n\nThis route defines the controlled beta cohort, guardian consent,\neligibility, PyJWT auth-token regression, dry-run, kill-switch,\nrollback, support, monitoring, incident escalation, and go/no-go gates.\nIt does not authorise live learner traffic, public beta, production\nrelease, deployment, billing launch, or live payment processing.",
+        "operationId": "get_controlled_beta_preflight_api_v2_controlled_beta_preflight_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Controlled Beta Preflight Api V2 Controlled Beta Preflight Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Controlled Beta Preflight",
+        "tags": [
+          "controlled-beta"
         ]
       }
     },
@@ -17798,6 +17947,54 @@
         ]
       }
     },
+    "/api/v2/production-release/preflight": {
+      "get": {
+        "description": "Return PRD-11.0-11.4 production release preflight readiness.\n\nThis route defines release candidate, versioning, tag freeze, deployment,\nsecrets/config, migration, rollback, beta-to-production go/no-go, support,\nmonitoring, incident, and release-communications gates. It does not\nauthorise production release, deployment, release tagging, public beta,\nbilling launch, or live payment processing.",
+        "operationId": "get_production_release_preflight_api_v2_production_release_preflight_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Production Release Preflight Api V2 Production Release Preflight Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Production Release Preflight",
+        "tags": [
+          "production-release"
+        ]
+      }
+    },
+    "/api/v2/production-release/true-state-runtime-baseline": {
+      "get": {
+        "description": "Return the PRD-11.0R operational hold and runtime-baseline gate.\n\nThis route is intentionally non-authorising.  It exposes that controlled\nbeta live-traffic authority remains under an operational hold until actual\nruntime evidence proves the stack, schema, tests, security, generated\ncontracts, and external approvals are green.",
+        "operationId": "get_true_state_runtime_baseline_api_v2_production_release_true_state_runtime_baseline_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get True State Runtime Baseline Api V2 Production Release True State Runtime Baseline Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get True State Runtime Baseline",
+        "tags": [
+          "production-release"
+        ]
+      }
+    },
     "/api/v2/security-assurance/final-assurance": {
       "get": {
         "description": "Return deterministic PRD-6 final security assurance.\n\nThis endpoint exposes final scanner, SBOM, secret-rotation, abuse-test,\nauthorization-negative-test, and external/independent review acceptance.\nIt does not run scanners, modify branch protection, authorise PRD-7,\nauthorise public beta, live learner traffic, billing, deployment, release\ntags, or production release.",
@@ -18992,9 +19189,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Quarantine Artifact",
@@ -19051,9 +19245,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -19150,9 +19341,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -19819,9 +20007,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Rollback Promotion Event",
@@ -19868,9 +20053,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -20086,9 +20268,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Assign Reviewer",
@@ -20133,9 +20312,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -20395,9 +20571,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Bulk Approve Review",
@@ -20444,9 +20617,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Bulk Quarantine Review",
@@ -20491,9 +20661,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -20645,9 +20812,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Create Generation Run",
@@ -20744,9 +20908,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Cancel Generation Run",
@@ -20811,9 +20972,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -20912,9 +21070,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Plan Missing Generation Tasks",
@@ -20965,9 +21120,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -21306,9 +21458,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Dry Run Promotion",
@@ -21354,9 +21503,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -21555,9 +21701,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Promote Production",
@@ -21613,9 +21756,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -21817,9 +21957,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -22104,9 +22241,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Rollback Seed Run",
@@ -22153,9 +22287,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -22365,9 +22496,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "HTTPBearer": []
           }
         ],
         "summary": "Run All Scope Staging Verification",
@@ -22540,9 +22668,6 @@
           }
         },
         "security": [
-          {
-            "HTTPBearer": []
-          },
           {
             "HTTPBearer": []
           }
@@ -23336,9 +23461,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
-                  "title": "Response Etl Admin Status V2 Admin Etl Status Get",
-                  "type": "object"
+                  "$ref": "#/components/schemas/ApiSuccessEnvelope_dict_str__object__"
                 }
               }
             },
@@ -24802,6 +24925,50 @@
         ]
       }
     },
+    "/v2/commercial-launch/readiness": {
+      "get": {
+        "description": "Return deterministic PRD-9 billing/commercial readiness.\n\nThis endpoint exposes test-mode billing provider, pricing/packaging,\ncheckout/webhook dry-run, subscription entitlement, invoicing/refund/tax,\nsponsorship/school procurement, support reconciliation, and terms/privacy\nlaunch-comms readiness. It does not authorise billing launch, live payment\nprocessing, live learner traffic, PRD-10 implementation, deployment, release\ntags, public beta, or production release.",
+        "operationId": "get_commercial_launch_readiness_v2_commercial_launch_readiness_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Commercial Launch Readiness V2 Commercial Launch Readiness Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Commercial Launch Readiness",
+        "tags": [
+          "commercial-launch"
+        ]
+      }
+    },
+    "/v2/commercial-launch/runtime-audit-remediation": {
+      "get": {
+        "description": "Return PRD-9.5-9.9 commercial runtime audit remediation readiness.",
+        "operationId": "get_commercial_runtime_audit_remediation_v2_commercial_launch_runtime_audit_remediation_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Commercial Runtime Audit Remediation",
+        "tags": [
+          "commercial-launch"
+        ]
+      }
+    },
     "/v2/consent/grant": {
       "post": {
         "operationId": "grant_consent_v2_consent_grant_post",
@@ -25559,6 +25726,54 @@
         "summary": "Reassign Review",
         "tags": [
           "content-review-governance"
+        ]
+      }
+    },
+    "/v2/controlled-beta/final-authorisation": {
+      "get": {
+        "description": "Return PRD-10.5-10.9 final controlled-beta authorisation decision.\n\nThis route records the limited controlled-beta live learner traffic\ndecision and keeps public beta, production release, deployment,\nbilling launch, and live payment processing locked out.",
+        "operationId": "get_controlled_beta_final_authorisation_v2_controlled_beta_final_authorisation_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Controlled Beta Final Authorisation V2 Controlled Beta Final Authorisation Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Controlled Beta Final Authorisation",
+        "tags": [
+          "controlled-beta"
+        ]
+      }
+    },
+    "/v2/controlled-beta/preflight": {
+      "get": {
+        "description": "Return PRD-10.0-10.4 controlled beta/live traffic preflight readiness.\n\nThis route defines the controlled beta cohort, guardian consent,\neligibility, PyJWT auth-token regression, dry-run, kill-switch,\nrollback, support, monitoring, incident escalation, and go/no-go gates.\nIt does not authorise live learner traffic, public beta, production\nrelease, deployment, billing launch, or live payment processing.",
+        "operationId": "get_controlled_beta_preflight_v2_controlled_beta_preflight_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Controlled Beta Preflight V2 Controlled Beta Preflight Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Controlled Beta Preflight",
+        "tags": [
+          "controlled-beta"
         ]
       }
     },
@@ -28538,6 +28753,54 @@
         ]
       }
     },
+    "/v2/production-release/preflight": {
+      "get": {
+        "description": "Return PRD-11.0-11.4 production release preflight readiness.\n\nThis route defines release candidate, versioning, tag freeze, deployment,\nsecrets/config, migration, rollback, beta-to-production go/no-go, support,\nmonitoring, incident, and release-communications gates. It does not\nauthorise production release, deployment, release tagging, public beta,\nbilling launch, or live payment processing.",
+        "operationId": "get_production_release_preflight_v2_production_release_preflight_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Production Release Preflight V2 Production Release Preflight Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Production Release Preflight",
+        "tags": [
+          "production-release"
+        ]
+      }
+    },
+    "/v2/production-release/true-state-runtime-baseline": {
+      "get": {
+        "description": "Return the PRD-11.0R operational hold and runtime-baseline gate.\n\nThis route is intentionally non-authorising.  It exposes that controlled\nbeta live-traffic authority remains under an operational hold until actual\nruntime evidence proves the stack, schema, tests, security, generated\ncontracts, and external approvals are green.",
+        "operationId": "get_true_state_runtime_baseline_v2_production_release_true_state_runtime_baseline_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get True State Runtime Baseline V2 Production Release True State Runtime Baseline Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get True State Runtime Baseline",
+        "tags": [
+          "production-release"
+        ]
+      }
+    },
     "/v2/security-assurance/final-assurance": {
       "get": {
         "description": "Return deterministic PRD-6 final security assurance.\n\nThis endpoint exposes final scanner, SBOM, secret-rotation, abuse-test,\nauthorization-negative-test, and external/independent review acceptance.\nIt does not run scanners, modify branch protection, authorise PRD-7,\nauthorise public beta, live learner traffic, billing, deployment, release\ntags, or production release.",
@@ -29139,6 +29402,14 @@
     {
       "description": "Subscription and payment",
       "name": "billing"
+    },
+    {
+      "description": "Billing and commercial launch readiness",
+      "name": "commercial-launch"
+    },
+    {
+      "description": "Controlled beta and live learner traffic preflight readiness",
+      "name": "controlled-beta"
     },
     {
       "description": "POPIA consent collection",
